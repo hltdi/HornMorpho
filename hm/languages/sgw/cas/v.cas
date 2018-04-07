@@ -1,0 +1,53 @@
+weighting = UNIFICATION
+
+r2l
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# @: labialization
+# ^: palatalization
+# 0: prefix for character that may be deleted
+# *: e deleted when preceded by a prefix
+# =: stem boundary
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u, *}
+# All consonants
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, ', bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+# weak consonants
+WW = {b, bW, w, d, j, z, Z, g, gW, gY, K, KW, KY, r}
+# strong consonants
+SS = {p, pW, t, c, s, x, k, kW, kY, n}
+# labial consonants
+BB = {b, f, m, p, w, bW, fW, mW, pW}
+# coronal consonants
+DD = {d, t, T, s, z}
+# velar consonants
+GG = {g, k, K, q, gW, kW, Kw, qW}
+## Non-phonetic/orthographic characters
+% = {_, /, D, @, ^, 0, =}
+
+#>del_epgem<
+## Insert glottal stop before initial vowel
+##>gs0<
+# Add epenthetic I
+#>epen1<
+## Realize gemination
+#>gem1<
+## Convert /C to C_
+#>pre_gem<
+## ay -> E
+#>ay<
+## y->i between Cs
+#>y2i<
+## Palatalization
+#>pal<
+## Labialization
+#>lab<
+## CC -> C_
+#>gem2<
+# Morphotactics
+>vR2L.mtx<

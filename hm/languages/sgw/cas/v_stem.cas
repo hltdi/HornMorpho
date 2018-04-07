@@ -1,0 +1,55 @@
+# Cascade for verb stems
+
+weighting = UNIFICATION
+
+r2l
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# @: labialization
+# ^: palatalization
+# /: mutation ("gemination")
+# 0: prefix for character that may be deleted
+# *: e deleted when preceded by a prefix
+# 8: second character palatalization in B verbs
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u, *}
+# All consonants
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+# All characters
+XX = {a, e, E, i, I, o, u, *, b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+# Root consonants
+RR = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z, bW, fW, gW, kW, mW, qW, KW}
+# Root consonants plus geminated forms (but not palatalized)
+RG = {p, pW, n, b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z, bW, fW, gW, kW, mW, qW, KW}
+# weak consonants
+WW = {b, bW, w, d, j, z, Z, g, gW, gY, K, KW, KY, r}
+# strong consonants
+SS = {p, pW, t, c, s, x, k, kW, kY, n}
+# labial root consonants
+BB = {b, f, m, p, w, bW, fW, mW, pW}
+# coronal root consonants
+DD = {d, t, T, r, s, z}
+# velar root consonants
+GG = {g, k, K, q, gW, kW, Kw, qW}
+## Non-phonetic/orthographic characters
+% = {_, /, D, @, ^, 0, *, 8}
+
+# Palatalization: actually palatalize consonants
+# >pal<
+# Palatalization: 2sf imf/j_i
+>pal2sf<
+# Palatalization: B verbs
+>palB<
+# Gemination -> devoicing, hardening
+>gem<
+# Reduplication within stem
+##>stem_dup<
+# Gross stem structure
+>v_stem_der<
+# Verb roots
++v_root+

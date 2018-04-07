@@ -1,0 +1,104 @@
+# Cascade for lexical verb analysis
+
+weighting = UNIFICATION
+# Subcascades for full analysis and analysis without morphotactics
+cascade ortho = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
+cascade orthoR = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
+cascade phon = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# !: gemination of t- and n-; obligatory before vowel
+# *: final palatal verbs (selec_e, ley_e, *qer_e)
+# D: reduplication
+# |: separator following first character of n|saff, n|qsaqs, q|bTbT, x|kWrmm
+# 1: possible glottal stop ending prefixed prepositions
+# 3: 3sm object suffix
+# 7: k/h subject suffix
+# 8: palatalization
+
+### Character class abbreviations ("stringsets")
+
+## Vowels
+V = {a, e, E, i, I, o, u}
+
+## Consonants
+# all consonants
+XX = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# consonant "phonemes"
+!X = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, W, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# duplicate phonemes
+# consonants that can be geminated
+G = {b, c, C, d, f, g, j, k, l, m, M, n, N, p, P, q, r, s, S, t, T, v, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# consonants that can't be geminated
+~G = {h, ', hW}
+# possible root consonants
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# root consonants other than L, y, w
+X! = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, x, *, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# laryngeal consonants
+L = {'}
+# non-laryngeal consonants (including h and H because they can be in roots)
+X/L = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, PW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# palatal consonants
+J = {c, C, j, N, x, y, Z}
+# palatalizable consonants
+JJ = {d, l, n, s, S, t, T, z} # , dW, lW, nW, sW, tW, TW, zW}
+# Non-palatal consonants
+~J = {b, d, f, g, h, k, l, m, n, P, q, r, s, S, t, T, w, z, ', bW, dW, fW, gW, hW, kW, lW, mW, nW, PW, qW, rW, sW, SW, tW, TW, zW}
+# Consonants that are not palatal, palatalizable, or labialized
+J! = {b, f, g, h, k, m, q, r, w, '}
+# Consonants that are not palatal or palatalizable
+!J = {b, f, g, h, k, m, P, q, r, w, ', bW, dW, fW, gW, hW, kW, lW, mW, nW, PW, qW, rW, sW, SW, tW, TW, zW}
+# labialized consonants (including some which probably can't be root consonants)
+B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, PW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants that can appear in surface verb forms before e and I as well as a
+BB = {gW, hW, kW, qW}
+# labialized consonants that can only appear before a in surface forms
+B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-labialized consonants
+~B = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, *, z, Z, '}
+# labializable consonants
+!B = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, x, z, Z}
+# "Sibilants"
+9 = {z, Z, S, x}
+
+## Non-phonetic/orthographic characters
+% = {_, /, !, |, D, 1, 3, 7, 8}
+
+### FSTs in cascade
+
+# 0 Delete epenthetic I and gemination characters
+>del_epgem<
+# 1 Insert glottal stop before initial vowel
+>gs0<
+# (Insert >epen< and >pre_gem< here for spoken Amharic)
+# 2 oa, ua -> Wa
+>ou2W<
+# 3 y->i between Cs; insert i between C and y before vowel (or end of word)
+>y2i<
+# 4 Insert y between i and a
+>y_epen<
+# 5 Palatalize palatalizable C before i and E
+>pal_iE<
+# 6 CC -> C_; has to precede pal to get tIwejjiNallex
+>gem<
+# 7 VI -> V
+>VI<
+# 8 other V combinations
+>VV<
+# 9 Optionally assimilate g, q to following k; T to following t
+>CC_ass<
+# 10 -ku/-k
+>kh<
+# 11 3sm object
+>3sm<
+# 12 gemination of t- and n-
+>tn_gem<
+# 13 e1a -> e'a / ea
+>e1a<
+# 14 delete ` unless it starts the word
+# >del_phar<
+# 15 Morphotactics: prefixes, suffixes, and stem (with its own cascade)
+>vb_mtax<

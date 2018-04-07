@@ -1,0 +1,65 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+
+## Vowel stringsets
+V = {a, e, E, i, I, o, u}
+## Consonant stringsets
+# all consonants
+XX = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# consonant "phonemes"
+!X = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, W, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# extra characters
+# possible root consonants
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# root consonants other than L, y, w
+X! = {b, c, C, d, f, g, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, x, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# laryngeal consonants
+L = {'}
+# non-laryngeal consonants (include *h)
+X/L = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# palatal consonants
+J = {c, C, j, N, x, y, Z}
+# palatalizable consonants
+JJ = {d, l, n, s, t, T, z}
+# Non-palatal consonants
+~J = {b, d, f, g, h, k, l, m, n, p, P, q, r, s, S, t, T, v, w, z, '}
+# Consonants that are not palatal or palatalizable
+!J = {b, f, g, h, k, m, p, P, q, r, v, w, ', bW, dW, fW, gW, hW, kW, lW, mW, nW, PW, qW, rW, sW, SW, tW, TW, zW}
+# Consonants that can geminate
+F = {b, c, C, d, f, g, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants (including some which probably can't be root consonants)
+B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants that can appear in surface verb forms before e and I as well as a
+BB = {gw, hW, kW, qW}
+# labialized consonants that can only appear before a in surface forms
+B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-labialized consonants
+~B = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, '}
+# labializable consonants
+!B = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, x, z, Z}
+# "Sibilants"
+9 = {z, Z, S, x}
+## Non-phonetic/orthographic characters
+% = {_, /, *, |, D}
+
+# Delete I, /, and _
+>del_epgem<
+# Insert glottal stop before initial vowel
+>gs0<
+# Insert glottal stop between adjacent vowels
+>n_VgsV<
+# wa -> Wa (3sf poss)
+>w2W<
+# combinations of vowels
+>n_VV<
+# Vu -> Vw (3sm poss)
+>u2w<
+# y and w epenthesis
+>n_C_epen<
+# aoc -> oc optionally
+>ao<
+# Noun morphotactics
+>n_mtax<

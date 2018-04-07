@@ -1,0 +1,7 @@
+'n_ez_ih     yh          [+plr,der=[-ass],poss=[-expl],pos=pron]
+'n_ez_iya    ya          [+plr,der=[-ass],poss=[-expl],pos=pron]
+'ahgur       hager       [+plr,pos=n]
+'arawit     'awrE        [+plr,pos=n]
+kewakbt      kokeb       [+plr,pos=n]
+'adbarat     debr        [+plr,pos=n]
+mesafnt      mesfn       [+plr,pos=n]

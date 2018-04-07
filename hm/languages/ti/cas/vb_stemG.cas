@@ -1,0 +1,48 @@
+# Tigrinya verb stem morphology with root dictionary
+
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# |: separator following first character of n|saff, n|qsaqs, q|bTbT, x|kWrmm
+
+## Vowel stringsets
+V = {a, e, E, i, I, o, u, @, A}
+## Consonant stringsets
+# all consonants
+XX = {b, c, C, d, f, g, h, ^h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, ^s, S, ^S, t, T, v, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, ^hW, HW, jW, kW, KW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, ^sW, SW, ^SW, tW, TW, xW, zW, ZW}
+# possible root consonants
+X = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# possible initial and internal root consonants (no y, NW, others?)
+X! = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# possible initial 5C root consonants (no y, various labial, ', `)
+X5 = {b, c, C, d, f, g, h, H, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, fW, gW, hW, HW, kW, mW, qW, sW, SW, tW, TW, xW, zW, ZW}
+# possible final root consonants (no XW except gW, kW, qW; what about hW, HW)
+X/B = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, ', `, gW, kW, qW}
+# laryngeal consonants
+L = {', `, h, H, hW, HW}
+# non-laryngeal consonants
+X/L = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-laryngeal consonants, no y, no NW
+X!/L = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# Consonants that can geminate
+F = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants     
+B = {bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants that can appear in surface verb forms     
+BB = {bW, fW, gW, hW, HW, kW, mW, qW}
+# labialized consonants that can only appear before a in surface forms
+B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-labialized consonants
+~B = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, ', `}
+## Non-phonetic/orthographic characters
+% = {R, _, /, |, D, !}
+
+>stem_labG<
+>stem_wy<
+>stem_tamG<
+>stem_dup<
+>stem_der<
++vb_root+

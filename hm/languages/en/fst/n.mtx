@@ -1,0 +1,15 @@
+$ stem
+  +n_stem+     [p=n]
+
+$ plur
+  %s           [+plur,pos=n]
+  --           [-plur]
+
+$ adj
+  %y           [pos=a]
+  --           [pos=n]
+
+$ compsup
+  %er          [pos=a,deg=cmp]
+  %est         [pos=a,deg=sup]
+  --           [deg=None]

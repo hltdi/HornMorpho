@@ -1,0 +1,22 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, Y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+V = {a, e, E, i, I, o, u}
+# sonorants; can't end words following a consonant other than w,y
+R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
+
+# 0
+# Delete initial GS if there is one
+>delGS<
+# 1, 2 Epenthetic vowel2
+>epen2<
+>epen1<
+# 3 ku+ -> kW, etc.
+>Ku<
+# 4 Simplify consonants: ^s -> s, etc.
+>simpC<
+# 5 copula morphotactics
+>copula<

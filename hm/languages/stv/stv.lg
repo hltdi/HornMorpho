@@ -1,0 +1,12 @@
+name: silt'e
+
+seg: a e i o u aa ee ii oo uu
+     b bW c cW C CW d dW f fW g gW h hW j jW
+     k kW l lW m mW n nW N NW q qW r rW s sW
+     S SW t tW T TW v vW w x xW y z zW Z ZW ' _
+
+feats:
+
+  pos: v verb
+  tm = imf | prf | ger | j_i
+
