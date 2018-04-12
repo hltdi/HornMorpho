@@ -52,7 +52,7 @@ def load_lang(language, phon=False, segment=False,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, raw=False):
+def seg_word(language, word, nbest=100, raw=False):
     '''Segment a single word and print out the results.
     
     @param language: abbreviation for a language
@@ -66,7 +66,7 @@ def seg_word(language, word, raw=False):
     if language:
         analysis = language.anal_word(word, preproc=True, postproc=True,
                                       gram=False, segment=True, only_guess=False,
-                                      print_out=not raw, string=True)
+                                      print_out=not raw, string=True, nbest=nbest)
         if raw:
             return analysis
 

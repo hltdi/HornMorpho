@@ -5,6 +5,7 @@ hm.py
 horn3.0A_quick.pdf
 setup.py
 hm/__init__.py
+hm/languages/am/cas/cop+.cas
 hm/languages/am/cas/cop.cas
 hm/languages/am/cas/n+.cas
 hm/languages/am/cas/n.cas
@@ -19,9 +20,7 @@ hm/languages/am/cas/vb_stem0.cas
 hm/languages/am/cas/vnoun.cas
 hm/languages/am/cas/vnoun0.cas
 hm/languages/am/data/ag.txt
-hm/languages/am/fst/0__v.fst
-hm/languages/am/fst/1__v.fst
-hm/languages/am/fst/2__v.fst
+hm/languages/am/data/ag_out.txt
 hm/languages/am/fst/3sm.fst
 hm/languages/am/fst/CC_ass.fst
 hm/languages/am/fst/Ku.fst
@@ -34,9 +33,12 @@ hm/languages/am/fst/cnj1+.fst
 hm/languages/am/fst/cnj1.fst
 hm/languages/am/fst/cnj2+.fst
 hm/languages/am/fst/cnj2.fst
+hm/languages/am/fst/cop+.fst
 hm/languages/am/fst/cop.fst
+hm/languages/am/fst/cop_cnj+.fst
 hm/languages/am/fst/cop_cnj.fst
 hm/languages/am/fst/cop_delepgem.fst
+hm/languages/am/fst/copula+.fst
 hm/languages/am/fst/copula.fst
 hm/languages/am/fst/delGS.fst
 hm/languages/am/fst/delGSphon.fst
@@ -64,6 +66,7 @@ hm/languages/am/fst/n_mtax.fst
 hm/languages/am/fst/n_mtax0.fst
 hm/languages/am/fst/n_prep+.fst
 hm/languages/am/fst/n_prep.fst
+hm/languages/am/fst/new+.fst
 hm/languages/am/fst/ou2W.fst
 hm/languages/am/fst/pal_iE.fst
 hm/languages/am/fst/phon.fst
@@ -121,11 +124,13 @@ hm/languages/am/lex/n_place.lex
 hm/languages/am/lex/n_stem.lex
 hm/languages/am/lex/n_stem_an.lex
 hm/languages/am/lex/new.lex
+hm/languages/am/lex/newS.lex
 hm/languages/am/lex/plr_at.lex
 hm/languages/am/lex/plr_oc.lex
 hm/languages/am/lex/ppron.lex
 hm/languages/am/lex/prep_n+.fst
 hm/languages/am/lex/prep_n.lex
+hm/languages/am/lex/roots.txt
 hm/languages/am/lex/v_analyzed.lex
 hm/languages/am/lex/v_analyzed_phon.lex
 hm/languages/am/lex/vb_root.lex

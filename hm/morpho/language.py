@@ -54,6 +54,9 @@ LANGUAGE_DIR = os.path.join(os.path.dirname(__file__),
 from .morphology import *
 from .anal import *
 
+## Regex for extracting root from segmentation string
+SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
+
 ## Regexes for parsing language data
 # Language name
 LG_NAME_RE = re.compile(r'\s*n.*?:\s*(.*)')
@@ -1067,7 +1070,7 @@ class Language:
 #        print("word {}, analyses {}".format(word, analyses))
         if seg:
             if analyses:
-                analyses = [':'.join(a) for a in analyses]
+                analyses = [':'.join((a[0], a[1])) for a in analyses]
                 return "{} -- {}{}".format(word, ';;'.join(analyses), word_sep)
             else:
                 return word + word_sep
@@ -1146,7 +1149,7 @@ class Language:
         cached = self.get_cached_anal(word)
         if cached:
             found = True
-#            print("Found cached anal for {}".format(word))
+#            print("Cached analyses for {}: {}".format(word, cached))
             analyses = self.proc_anal(word, cached, None,
                                       show_root=root, citation=citation, stem=stem,
                                       segment=segment, guess=False,
@@ -1164,13 +1167,10 @@ class Language:
                 if only_anal:
                     return []
                 a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
-                if cache:
-                    to_cache.append((form, ''))
+#                if cache:
+#                    print("Caching {}, given anal {}".format(form, a))
+#                    to_cache.append(a)
                 analyses.append(a)
-#                if segment:
-#                    analyses.append(form)
-#                else:
-#                    analyses.append(a)
             # ... or is already analyzed, without any root/stem (for example, there is a POS and/or
             # a translation
             elif form in self.morphology.analyzed:
@@ -1208,6 +1208,7 @@ class Language:
                     if not only_guess:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         for pos in fsts:
+#                            print("Analyzing {} for POS {}".format(form, pos))
                             analysis = self.morphology[pos].anal(form,
                                                                  phon=phon, segment=segment,
                                                                  to_dict=to_dict, sep_anals=True)
@@ -1246,7 +1247,8 @@ class Language:
             if no_anal != None:
                 no_anal.append(word)
             return analyses
-        if rank and len(analyses) > 1 and not segment:
+        if rank and len(analyses) > 1:
+#            print("Ranking analyses")
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
@@ -1262,19 +1264,28 @@ class Language:
         '''Process analysis for unanalyzed cases.'''
 #        print("simp_anal({})".format(analysis))
         if segment:
-            return analysis
+            return analysis[0], analysis[1], 100000
         elif postproc:
             # Convert the word to Geez.
             analysis[1] = self.postproc(analysis[1])
 #        if segment:
 #            return analysis
         pos, form = analysis
-        return pos, form, None, 100
+        # 100000 makes it likely these will appear first in ranked analyses
+        return pos, form, None, 100000
 
     def proc_anal_noroot(self, form, analyses, segment=False):
         '''Process analyses with no roots/stems.'''
 #        print("Form {}, analyses {}".format(form, analyses))
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
+
+    @staticmethod
+    def root_from_seg(segmentation):
+        """Extract the root from a segmentation expression."""
+        r = SEG_ROOT_RE.match(segmentation)
+        if r:
+            return r.group(1).split("+")[0]
+        return ''
 
     def proc_anal(self, form, analyses, pos, show_root=True, citation=True,
                   segment=False, stem=True, guess=False,
@@ -1283,8 +1294,30 @@ class Language:
         '''Process analyses according to various options, returning a list of analysis tuples.
         If freq, include measure of root and morpheme frequency.'''
         results = set()
+#        print("Analyses")
+#        for analysis in analyses:
+#            print(" {}".format(analysis))
         if segment:
-            return [(analysis[1].get('pos'), self.postpostprocess(analysis[0])) for analysis in analyses]
+            res = []
+            for analysis in analyses:
+                feats = analysis[1]
+                if isinstance(feats, str):
+                    pos = feats
+                else:
+                    pos = feats.get('pos')
+                root = self.postpostprocess(analysis[0])
+                # Remove { } from root
+                real_root = Language.root_from_seg(root)
+#                print("Root {}, real root {}".format(root, real_root))
+                root_freq = 0
+                if freq:
+#                    print("Figuring freq for root {} and feats {}".format(real_root, feats.__repr__()))
+                    root_freq = self.morphology.get_root_freq(real_root, feats)
+                    feat_freq = self.morphology.get_feat_freq(feats)
+                    root_freq *= feat_freq
+                res.append((pos, root, root_freq))
+            return res
+#            return [(analysis[1] if isinstance(analysis[1], str) else analysis[1].get('pos'), self.postpostprocess(analysis[0])) for analysis in analyses]
         for analysis in analyses:
             root = self.postpostprocess(analysis[0])
             grammar = analysis[1]

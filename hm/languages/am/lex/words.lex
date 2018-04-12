@@ -95,6 +95,8 @@ belay post belay
 lay post lay
 sr post sr
 tac post tac_
+wsT post wsT
+wC post wC_
 dafa post dafa
 'and num 'and
 hulet num hulet_
@@ -133,3 +135,6 @@ lamel adv lamel
 yemr adv yemr
 wezete adv wezete
 wezeterefe adv wezeterefe
+mnNa adv mnN_a
+kfuNa adv kfuN_a
+gar post gar

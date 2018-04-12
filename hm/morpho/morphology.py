@@ -193,13 +193,15 @@ class Morphology(dict):
                 return 'nothing'
         return a
         
-    def get_root_freq(self, root, anal):
+    def get_root_freq(self, root, anal, verbosity=0):
         rv = self.root_fv(root, anal)
         if self.root_freqs:
+            if verbosity:
+                print("Root frequency for {}: {}".format(root, self.root_freqs.get(rv, 0)))
             return self.root_freqs.get(rv, 0)
-        return 100
+        return 5
 
-    def get_feat_freq(self, anal):
+    def get_feat_freq(self, anal, verbosity=0):
         freq = 1.0
         if self.feat_freqs:
             for f in self.language.stat_feats:
@@ -208,6 +210,8 @@ class Morphology(dict):
                     feat_name = '+'.join(f)
                     freq0 = self.feat_freqs.get(feat_name, {}).get(v, 1.0)
                     freq *= freq0
+        if verbosity:
+            print("Feat frequency for {}: {}".format(anal.__repr__(), freq))
         return freq
 
     def set_root_freqs(self):

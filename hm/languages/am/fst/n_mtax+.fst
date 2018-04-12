@@ -33,8 +33,8 @@ name0 -> acc       [:}]
 stem0 -> plr_an0   +n_stem_an+   [v=None,-prp]
 plr_an0 -> plr_an   [:}]         
 # Deverbal nouns: v=agt | ins | man | inf
-stem0 -> plr_oc0    >>vnoun<<    [-p1,-p2,-prp]
-stem0 -> plr_oc0   +irr_vnoun+   [-p1,-p2,-prp]
+stem0 -> plr_oc0    >>vnoun<<    [-p1,-p2,-prp,pos=n_dv]
+stem0 -> plr_oc0   +irr_vnoun+   [-p1,-p2,-prp,pos=n_dv]
 # Irregular plurals
 stem0 -> plr_irr0  +irr_plrS+   [v=None,-prp]
 plr_irr0 -> plr_irr       [:}-(plr)]
