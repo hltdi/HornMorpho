@@ -1,7 +1,12 @@
 -> start
 
 ## Set the part of speecn
-start -> pos   [:]     [pos=v]
+start -> light   [:]     [pos=v]
+
+## Light verbs
+light -> light_gap  +v_light+  [+lt]
+light_gap -> pos         <//: >
+light -> pos  [:]        [-lt]
 
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc],-ye]
@@ -62,7 +67,7 @@ sbjp_n -> stem    [!:]
 # Irregular
 stem -> sbjs    +irr_stem+
 # Regular
-stem -> sbjs    >>vb_stem<<
+stem -> sbjs    >>vb_stem<<  
 
 ### SUBJECT SUFFIXES AND OBJECT INFIXES
 sbjs -> sbjs_i        [:]    [tm=imf];[tm=j_i]

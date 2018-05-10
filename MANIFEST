@@ -133,6 +133,7 @@ hm/languages/am/lex/prep_n.lex
 hm/languages/am/lex/roots.txt
 hm/languages/am/lex/v_analyzed.lex
 hm/languages/am/lex/v_analyzed_phon.lex
+hm/languages/am/lex/v_light.lex
 hm/languages/am/lex/vb_root.lex
 hm/languages/am/lex/words.lex
 hm/languages/am/lex/words_phon.lex

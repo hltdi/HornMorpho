@@ -1,14 +1,14 @@
-This is version 2.6 of HornMorpho, a Python program that does morphological
-analysis and generation of Amharic, Oromo, and Tigrinya words.
+This is version 3.0 of HornMorphoA, a Python program that performs morphological
+analysis and generation of Amharic.
 HornMorpho is part of the Processing Languages of the Global South
 project (http://homes.soic.indiana.edu/gasser/plogs.html).
 
-To install HornMorpho, extract the files from the archive. Then go to
-the directory HornMorpho2.6 and do 
+To install HornMorphoA, extract the files from the archive. Then go to
+the directory HornMorphoA3.0 and do 
 
   python setup.py install
 
 making sure that you are using Python 3.
 
 For information about using the program, see the manual that came with
-the distribution: horn2.6.pdf.
+the distribution: horn3.0A_quick.pdf

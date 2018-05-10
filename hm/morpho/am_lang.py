@@ -38,6 +38,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
+    citation = ''
     if root == 'al_e':
         return "'ale"
     # Return root if no citation is found
@@ -49,17 +50,25 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     # Refreeze the feature structure
     fs.freeze()
     # Find the first citation form compatible with the updated feature structure
-    citation = AM.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
-    if citation:
-        result = citation[0][0]
-    elif not vc_as:
-        # Verb may not occur in simplex form; try passive
-        fs = fs.unfreeze()
-        fs.update({'vc': 'ps'})
-        fs.freeze()
+    if ' ' in root:
+        # This is a light verb, just generated the actual verb
+        root_split = root.split()
+        citation = AM.morphology['v'].gen(root_split[-1], fs, from_dict=False, guess=guess)
+        if citation:
+            result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
+    else:
         citation = AM.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
         if citation:
             result = citation[0][0]
+    if not citation:
+        if not vc_as:
+            # Verb may not occur in simplex form; try passive
+            fs = fs.unfreeze()
+            fs.update({'vc': 'ps'})
+            fs.freeze()
+            citation = AM.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
+            if citation:
+                result = citation[0][0]
     return result
 
 def n_get_citation(root, fs, guess=False, vc_as=False):

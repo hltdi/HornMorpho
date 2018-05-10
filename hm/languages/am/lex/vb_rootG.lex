@@ -1,1826 +1,1825 @@
-'Cd
-'C_q
-'N_k
-'T'
-'Tb
-'Tf
-'Tn
-'Tq
-'Tr
-'Z*
-'sr
-'s_s
-'bT
-'bl
-'bs
-'by
-'b_b
-'br
-'db
-'df
-'dg
-'dr
-'d_l
-'d_m
-'d_n
-'d_s
-'fr
-'fs
-'f_f
-'f_g
-'f_n
-'gg
-'gl
-'gm
-'gW_l
-'gW_r
-'g_s
-'g_d
-'g_t
-'g_z
-'j_b
-'j_l
-'kk
-'k_l
-'k_m
-'k_t
-'lb
-'lf
-'lm
-'lq
-'l_T
-'l_l
-'m'
-'mm
-'mn
-'m_g
-'m_s
-'nT
-'nTf
-'nTs
-'ngt
-'nks
-'nq
-'nqf
-'ns
-'qf
-'r'
-'rbd
-'rd
-'rr
-'rs
-'rz
-'r_T
-'r_m
-'r_q
-'sr
-'s_b
-'s_s
-'tb
-'t_m
-'t_t
-'ws
-'w_k
-'x*
-'x_g
-'x_m
-'y_l
-'zl
-'zn
-'zz
-'z_b
-C'C'
-C'n
-C'r
-Cam'
-Cart             ''            [vc=ps];[vc=tr];[v=man,pos=n]
-Cawt             ''            [vc=ps];[vc=tr];[v=man,pos=n]
-CbCb
-CbWd
-Cb_T
-Cb_t
-CfCf
-Cfgg
-Cflq
-Cf_n
-Cf_q
-Cf_r
-Ck_n
-ClCl
-Clg
-Cl_T
-Cl_f
-Cl_m
-CmCm
-Cmalq
-Cmatr
-Cmdd
-Cmq
-Cm_r
-Cm_t
-Cngf
-CngWl
-Cnq
-CnqWr
-CqCq
-Cqy*
-CqW_n
-CrCs
-Cramd
-Cramm
-Cramt
-Crgd
-Cr_f
-Cr_s
-Cwh
-Cwl
-CWrr
-Cys
-C|brbr
-PP_s
-S'f
-SS_t
-Sd'
-Sdq
-Sl_y
-Sn'
-Snn
-Swm
-Sy_f
-T'd
-T'f
-T'l
-T'm
-T'r
-T's
-TT_'
-TT_r
-Tdf             ''            [vc=ps,as=rc];[vc=tr];[v=man,pos=n]
-TafT
-Tass
-Tb'
-TbTb
-Tbb
-Tbdl
-Tbq
-Tbs
-Tbsq
-Tb_q
-Td'
-Tdq
-Tf'
-TfTf
-Tff
-Tf_r
-Tg'
-Tgb
-Tg_g
-Tg_n
-Tl'
-Tlf
-Tlq
-Tl_l
-Tl_z
-Tm'
-TmTm
-Tmd
-Tmm
-Tmq
-Tmrr
-Tmss
-Tmzz
-Tm_r
-Tn'
-TnTn
-Tnabs
-Tnag'
-Tnaqr
-Tnawt
-Tnb'
-Tnbz
-Tnff
-Tnkr
-Tnqq
-TnqWl
-Tnss
-Tnz'
-Tn_n
-Tq'
-TqTq
-Tqll
-Tqm
-Tqs
-TqWr
-TqW_m
-Tr'
-TrTr
-TrTs
-Trb
-Trg
-Trms
-Trnq
-Trqm
-Trr
-Tr_s
-Tr_z
-Ts_q
-Tt_t
-Twf
-Twl
-Twlg
-Twm
-Twr
-Twz
-Tyn
-Tyq
-Tys
-Ty_f
-Ty_m
-Ty_q
-TzTz
-T|brbr
-T|lqlq
-T|mlml
-T|msms
-T|mzmz
-T|wlwl
-Zl_T
-Zrgg
-Z|gWdgWd
-Z|gWrgWr
-'C*
-'bd
-'l_m
-'mT
-'m_q
-'q_d
-'rf
-'rg
-'r_b
-'wq
-'w_d
-'w_r
-'y*
-Sns
-s's'
-s'l
-sg'
-sgr
-slTn
-sl_T
-sl_s
-smr
-sqTT
-sqsq
-sq_q
-sr'
-srsr
-srg
-sw_'
-sw_r
-sy_m
-b'b'
-b'l              ''          [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-b'r'
-b's
-b't
-bT'
-bTbT
-bT_r
-bT_s
-bakn
-balg
-bann
-bark
-bazq
-bazt
-bd'
-bd_l
-bd_r             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-bgn
-bg_r
-bj_*
-bkt
-bk_l
-bl'
-blT
-blTT
-blSg
-blTg
-blax*             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-blg
-blqT
-bl_t
-bl_z
-bnn
-bq'
-bql
-bq_t
-br'
-brbr
-brd
-brgd
-brgg
-brkt
-brqs
-brr
-brt'
-br_q
-br_z
-bs'
-bsaC*
-bsbs
-bsl
-bsr
-bt_n
-bwz
-bw_z
-bxqT
-bx_q
-by_d
-by_n
-bz'
-bzbz
-bWC_q
-bWaCr
-bWaTT
-bWadn
-bWagt
-bWalt
-bWd_s
-bWk'
-bWkbWk
-bWnn
-bWrbWr
-bWr_q
-bWtrf
-bWz_n
-b|knkn
-b|lClC
-b|lTlT
-b|rkrk
-b|rqrq
-b|slsl
-c'l
-cbcb
-cfcf
-cf_g
-cg_r
-ckW_l
-ck_l
-cl_s
-cnkr
-crcm
-crcr
-css
-cyk
-cyr
-d'C
-d'T
-d'h
-d'n
-d'r
-d's
-daN*
-dabr
-dabs
-dagt
-dakr
-dalT
-damn
-damT
-daqWn
-darg
-dass
-dawr
-daxq
-db'
-dbay*
-dbb
-dbdb
-dbll
-dblq
-dbss
-dbzz
-db_l
-db_n
-db_q
-db_t
-dd_b
-dd_q
-dd_r
-df'
-dfT
-dfTT
-dfdf
-dfn
-dfq
-dfr
-dfrs
-dgdg
-dgm
-dgW_m
-dgW_s
-dg_f
-dg_n
-dg_s
-dhy*
-dkm
-dl'
-dlb
-dldl
-dlfs
-dl_h
-dl_l
-dl_q
-dl_z
-dm'
-dmT
-dmdm
-dmq
-dmss
-dm_m
-dm_r
-dnagr
-dnaqf
-dnb'
-dnbr
-dnbz
-dndn
-dnf'
-dngT
-dngg
-dngz
-dngWr
-dnq
-dnqr
-dnqWl
-dnqWr
-dnzz
-dn_n
-dn_s
-dn_z
-dq'
-dqdq
-dqq
-dqW_s
-dq_l
-dq_n
-dr'
-drdr
-drg             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-drgm
-drj*
-drq
-drs
-drsm
-dr_b
-dr_t
-dss
-ds_m
-ds_t             ''           [vc=ps];[vc=cs];[v=man,pos=n]
-dwl
-dw_l
-dxdx
-dxy*
-dzdz
-dWfdWf
-dWldWm
-dWl_t
-d|blbl
-d|bsbs
-d|bWlbWl
-d|fnfn
-d|rqrq
-f'f'
-f'm
-f'q
-f'r
-fC*
-fS_m
-fTT
-fTfT
-fTn
-fTr
-fT_m
-fads
-falm
-fann
-faxg
-fgfg
-fgg
-fg_m
-fj*
-fk'
-fkfk
-fl'
-flT
-flfl
-flq
-flqq
-fls
-flsf
-fl_g
-fnC*
-fnTq
-fnTr
-fnTz
-fnaTT
-fncr
-fnd'
-fndd
-fndq
-fnfn
-fngT
-fngl
-fnkt
-fnql
-fqd
-fqfq
-fqr
-fr'
-frT
-frTT
-frTm
-frd
-frfr
-frks
-frs
-fr_m
-fs'
-fsfs
-fss
-fs_k
-ft'
-ftft
-ftl
-ftlk
-ft_g
-ft_n
-ft_x
-fw_s
-fyz
-fy_d
-fy_l
-fzz
-fWaC*    ''   [vc=ps,as=it];[vc=tr,as=smp];[vc=tr,as=it];[v=man,pos=n]
-fWk_r
-fWk_t
-fWn_n
-fWrx
-f|CrCr
-f|lklk
-f|lqlq
-f|rTrT
-f|rkrk
-f|rqrq
-g'T
-g'g'
-g'l
-g'm
-g'r
-g't
-g'z
-gC*
-gN*    ''   [vc=ps,as=smp];[vc=ps,as=rc];[vc=tr,as=smp];[vc=tr,as=rc];[vc=cs,as=smp];[vc=cs,as=rc]
-gTgT
-gTm
-gT_b
-gs'
-gss
-gaTT
-gabs
-gabz
-gafT
-gafr
-gagr
-galb
-garT
-gard
-gaxb
-gay*
-gb'
-gbadd
-gby*
-gb_r
-gdd
-gdf
-gdgd
-gdl
-gdm
-gd_b
-gg_r
-gf'
-gff
-gfgf
-gftr
-gg_m
-glS
-glagl
-glamT
-glb
-glbT
-gldm
-glfT
-glff
-glgl
-gljj
-gll
-glm'
-glmWt
-gm'
-gmT
-gmdl
-gmgm
-gms
-gm_d
-gm_l
-gm_t
-gnTl
-gnb'
-gnds
-gnf'
-gnfl
-gngn
-gnn
-gntr
-gnz
-gnzb             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-gr'
-grdf
-grf
-grgd
-grjf
-grm
-grmm
-grr
-grx*
-gr_z
-gsgs
-gsr
-gss
-gt'
-gt_r
-gxlT
-gxr
-gx_x
-gyT
-gz'
-gzf
-gzgz
-gz_t
-gW'gW'
-gW'n
-gW'z             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-gWT_T
-gWadd
-gWagWT
-gWagWl
-gWagWr
-gWamT
-gWbN*
-gWbT
-gWbb
-gWbdd
-gWbgWb
-gWb_z
-gWd'
-gWdaN*             ''            [vc=ps];[vc=tr];[v=man,pos=n]
-gWdgWd
-gWdl
-gWfnn
-gWfy*
-gWf_r
-gWl'
-gWladf
-gWlamm
-gWlbt
-gWlgWl
-gWlms
-gWl_t
-gWmall
-gWmd
-gWmj*
-gWmr'
-gWmzz
-gWnC*
-gWnaTf
-gWnazl
-gWnbs             ''            [vc=ps,as=rc];[vc=tr];[vc=cs];[v=man,pos=n]
-gWngWn
-gWnqWl
-gWn_T
-gWn_f
-gWr'
-gWrabt
-gWrb
-gWrbT
-gWrd
-gWrdm
-gWrf
-gWrgWr
-gWrms
-gWrn'
-gWrs
-gWsgWs
-gWsqWl
-gWs_m
-gWs_r
-gWtgWt
-gWt_n
-gWt_t
-gWzgWz
-gW|mTmT
-gW|rTrT
-gW|rbrb
-gW|rmrm
-gW|tmtm
-g|bsbs
-g|drdr
-g|flfl
-g|tltl
-g|trtr
-hwn       ''     [as=smp,vc=smp]
-hyd       ''     [as=smp,vc=smp]
-hWmTT
-jaj*
-jbW_n
-jb_d
-jgn
-jm_r
-jn_n
-jrgg
-jyl
-k'b
-k'd
-k'f'
-k'n
-k's
-ks_t
-kadm
-kbb
-kbd
-kbr
-kbs
-kb_t
-kc_c
-kc_r
-kd'
-kdn
-kf'
-kff
-kfkf
-kfl
-kfn
-kft
-kj_l
-kk_'
-klb
-klbs
-klkl
-kl_f
-kl_l
-kl_s
-kmac*             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-kmkm
-km_r
-knawn             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-knb
-knbl
-knd'
-knf
-knkn
-kntr
-kn_n
-kray*
-krbt
-krdd
-krf'
-krkm
-krkr
-krm
-krr
-krtf
-ks'
-ksb
-ksks
-ksl
-ksm
-ksr
-kss
-ktb
-ktf
-ktkt
-kt_l             ''            [vc=ps];[vc=tr,as=rc];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-ktlb
-ktt
-kt_m
-kt_r
-kxf
-kx_n
-kW'l
-kW't
-kWbkWb
-kWbll
-kWfkWf
-kWf_s
-kWl'
-kWlatf             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-kWlax*
-kWlkWl
-kWll
-kWmatr
-kWmkWm
-kWnatr
-kWn_n
-kWr'
-kWramt
-kWrf
-kWrkWm
-kWrkWr
-kWrt
-kWrtm
-kWrxm
-kWr_T
-kWr_j
-kWs'
-kWskWs
-kWsmn
-kWstr
-kWs_s
-kWtkWt
-kW|nsns
-kW|rfrf
-k|bsbs
-k|lflf
-l'T
-l'b
-l'f
-l'g
-l'k
-l'l'
-l'm
-l'q
-l's
-lTlT
-lT_T
-lT_f
-lT_q
-laC*
-lakk
-laqWT
-lax*
-laxq
-lblb
-lbs
-lb_T
-lb_b
-lb_d
-lb_q
-lf'
-lfaCq
-lflf
-lf_f
-lgW_d
-lgW_m
-lg_'
-lg_m
-lg_s
-lgT
-lklk
-lkW_f
-lkW_s
-lk_'
-lm'
-lmTT
-lmd
-lmlm
-lmss
-lmzg
-lm_T
-lm_n
-lqlq
-lqm
-lqq
-lqs
-lsls
-ls_n
-ls_s
-lt_m
-lw_T
-lw_s
-lxlx
-ly_*
-lz_b
-l|fsfs
-l|gWmgWm
-l|kfkf
-l|ksks
-l|kWskWs
-m'T
-m'g
-m'l
-m'r             ''            [vc=tr];[vc=smp]   # 17.04.06; insures astemare, etc. for "causative"
-m's
-mCmC
-mN*             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-mSadq
-mSwt
-mT'
-mTT
-mTmT
-mTq
-mTwt
-mT_n
-msrt
-magT
-magd
-magr
-mald
-malg
-mall
-maqq
-mark
-matb
-mc_*            ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-mdmd
-md_b
-md_d
-mgl
-mgmg
-mg_b
-mk'
-mkaN*           ''            [vc=ps];[vc=tr,as=smp];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-mkn
-mkr
-mk_t
-mlT
-mlk
-mlkt             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-mll
-mlml
-ml_s
-mnC*
-mnCq
-mnCr
-mnTq
-mnTr
-mnck
-mngg
-mnkWs
-mnmn
-mnqr
-mnt'
-mntf
-mnzr
-mn_n
-mr'
-mrT
-mrg
-mrkWz
-mrmr
-mrqz
-marr
-mrr
-mrt
-mr_n
-mr_q
-mr_z
-msaTr
-msaql
-msgn             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-mskn
-mskr
-mskW'
-msl
-ms_T
-ms_g
-ms_n
-mt'
-mtr
-mwq
-mwt
-mx*
-mx_g
-mx_t
-mzbr
-mzgb
-mzmz
-mz_n
-mz_z
-mW'mW'
-mWClf
-mWCmWC
-mWN_*
-mWTmWT
-mWaC*
-mWaCr
-mWaTT
-mWalT
-mWart
-mWax*
-mWaxx
-mWg_d
-mWg_g
-mWg_s
-mWg_t
-mWj_r
-mWk_k
-mWk_r
-mWk_t
-mWl'
-mWlaqq
-mWlfT
-mWlmWl
-mWl_C
-mWl_l
-mWqmWq
-mWrmWr
-mWr_d
-mWxlq
-mWx_r
-mWz_z
-m|nxnx
-m|zgzg
-n'T
-n'd
-n'q
-n'r
-nC'
-nC*
-nCanC
-nS'
-nSr
-nT'
-nTb
-nTf
-nTnT
-nTq
-nTr
-nT_l
-ns'
-naN*
-nfT             ''        [vc=ps,as=rc];[vc=tr,as=rc];[vc=cs];[v=man,pos=n]
-nafq
-nawz
-nazz
-nb'
-nbnb
-nbr           ''          [tm=prf]
-nbz
-nbW_C
-nb_b
-nd'
-ndd
-ndf
-ndl
-nf'
-nfg
-nfll
-nfnf
-nfr
-nfrq
-nfs
-ng'
-ngs
-ngb
-ngd
-ngr
-ngWd
-ngWr
-ngWt
-nhll
-nk'
-nkr
-nks
-nkt
-nkWt
-nq'
-nqf
-nql
-nqnq
-nqs
-nqz
-nqWT
-nqWr
-nr_t
-nsans
-nsns
-nsr
-ntb
-ntrk
-nwr
-nw_r
-nx_T
-nz'
-nznz
-nzr
-n|C'C'
-n|CrCr
-n|Crff
-n|Sbarq
-n|T'T'
-n|Tall
-n|TbTb
-n|TfTf
-n|TlTl
-n|TraTs
-n|Trar'
-n|Trawz
-n|Trbb
-n|Trzz
-n|TWlTWl
-n|Zabb
-n|Zbarr
-n|Zbb
-n|ZqZq
-n|Zrgg
-n|barq
-n|blbl
-n|brkk
-n|bxbx
-n|bW'bW'
-n|bWCbWC
-n|bWatr
-n|bWgbWg
-n|bWlbWl
-n|bWrqq
-n|c'c'
-n|dball
-n|dbdb
-n|dfadf
-n|dkdk
-n|dlaqq
-n|dqdq
-n|drbb
-n|drdr
-n|drkk
-n|dWldWl
-n|flass
-n|fqfq
-n|frTT
-n|frafr
-n|fragT
-n|fW'fW'
-n|fWaqq
-n|g'g'
-n|gCagC
-n|gaTT
-n|gadd
-n|gall
-n|gbgb
-n|gdgd
-n|gfTT
-n|gfgf
-n|glajj
-n|glat'
-n|glawd
-n|gragr
-n|grbb
-n|grgb
-n|gwall
-n|gxgx
-n|gWadd
-n|gWall
-n|gWdgWd
-n|gWradd
-n|gWragWr
-n|jlajl
-n|jrgg
-n|kball
-n|kbkb
-n|kfrr
-n|klaws
-n|kratt
-n|krff
-n|ktkt
-n|kwatt
-n|kW'kW'
-n|kWaff
-n|qTqT
-n|qZqZ
-n|qarr
-n|qbarr
-n|qbdd
-n|qbqb
-n|qfdd
-n|qlaf'
-n|qlql
-n|qrbb
-n|qrff
-n|qsaqs
-n|qwall
-n|qWaxx
-n|qWraTT
-n|saff
-n|sfsf
-n|sqsq
-n|sWlsWl
-n|tbatb
-n|tgtg
-n|tktk
-n|tlaks
-n|tras
-n|trkk
-n|tWstWs
-n|xaff
-n|xatt
-n|xratt
-n|xrxr
-n|xwarr
-n|xWakk
-n|xWkaxWk
-n|z'z'
-n|zarT
-n|zfTT
-n|zfzf
-n|zlazl
-n|zrTT
-n|zrfT
-n|zrff
-q'T'
-q'm
-q'r
-q't             ''            [vc=tr];[v=man,pos=n]
-qCqC
-qC_C
-qC_m
-qN_*
-qT'
-qTf
-qTn
-qTqT
-qTr
-qT_l
-qsf
-qs_r
-qaCl
-qaN*
-qaZ*
-qabz
-qarm
-qarn             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-qatt
-qaws
-qbT
-qbaTr
-qbajr
-qbqb
-qbr
-qbtt
-qb_'
-qb_l             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-qd'
-qdaj*
-qdd
-qdm
-qd_s
-qfdd
-qff
-qfqf
-qfrr
-ql'
-qlT
-qlTf
-qlTm
-qlamd
-qlaql
-qlawT
-qlbs
-qll
-qlm
-ql_b
-ql_d
-ql_s
-qmaTl
-qml
-qmqm
-qms
-qm_'
-qm_T             ''            [vc=ps];[vc=cs];[vc=tr,as=it];[v=man,pos=n]
-qm_m
-qn'
-qnCb
-qnCr
-qnTb
-qnTs
-qnaT'
-qnbT
-qnbr
-qndb
-qnqn
-qnzr
-qn_f
-qn_s
-qn_t
-qq_l
-qr
-qrS
-qrT
-qrTf
-qr*
-qrb
-qrdd
-qrf
-qrn'
-qrqb
-qrqr
-qrr
-qrx*
-qsaft
-qsm
-qsqs
-qss
-qs_t
-qt_r
-qwm
-qyl
-qym
-qy_T
-qy_s
-qy_d
-qy_m             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-qy_r
-qzf
-qzn
-qzqz
-qzz
-qWC_*
-qWT'             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-qWTqWT
-qWTr
-qWT_b
-qWaC*
-qWaTr
-qWamT
-qWfnn
-qWf_r
-qWlamT
-qWlmm
-qWlqWl
-qWl_'
-qWl_f
-qWl_l
-qWmT
-qWnSl
-qWnTT
-qWnTr
-qWndd
-qWngWl
-qWnj*
-qWn_n
-qWn_s
-qWrT
-qWrTm
-qWraN*
-qWrb
-qWrfd
-qWrmd
-qWrqWr
-qWrqWs
-qWrqWz
-qWrs
-qWr_'
-qWsl
-qWsqWs
-qWx_x
-qWy_*
-qW|lClC
-qW|nTnT
-q|ClCl
-q|bzbz
-q|bTbT
-q|lTlT
-q|lblb
-q|lsls
-q|lxlx
-q|nznz
-r'b
-r'd
-r'q
-r'r'
-r's
-rC*
-rTb
-rTrT
-rakWt
-ramd
-raqWt
-rb'
-rbb
-rbrb
-rb_x
-rd'
-rfd
-rfrf
-rg'
-rgT
-rgb
-rgd
-rgf
-rgm
-rgrg
-rgz
-rj*
-rk'
-rkb
-rks
-rm_T
-rqq
-rs'
-rsrs
-rt'
-rwT
-rx_n
-rzm
-rzrz
-rz_q
-r|bdbd
-r|btbt
-r|gbgb
-r|kfkf
-r|mTmT
-r|msms
-s'b
-s'g
-s'l
-s'm
-s'n             ''            [vc=ps];[v=man,pos=n]
-s'q
-s't
-sN*             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-sT
-sT'
-sT*
-sTm
-satf             ''           [vc=ps];[vc=cs];[v=man,pos=n]
-sb'
-sbaTr
-sbasb
-sbk
-sbq
-sbr
-sbsb
-sb_b
-sdb
-sdd
-sf'
-sff
-sfn
-sfr
-sfsf
-sgd
-sgsg
-sgW_d
-sg_g
-skr
-sksk
-sk_'
-sk_n
-sl'
-slb
-slc*
-slm
-slqT
-slsl
-sl_f
-sl_l
-sl_q
-sl_t
-sm'
-smT
-sm_m
-snTq
-snTr
-snad'             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-snbT
-snbt
-snf
-snfT
-snkl
-snqr
-snzr
-sn_N
-sn_g
-sn_q
-sqay*
-sql
-sq_q
-sq_z
-sraC*             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-srgWd
-srnq
-srq
-srr
-srsr
-sr_z
-ss_n
-st_r
-swT
-syr
-sy_f
-sWmsWm
-s|fnTr
-s|gbgb
-s|lklk
-s|lmlm
-t't'
-tN_'
-tagl
-takt
-tall
-tatr
-tb'
-tbtb
-tc_*
-tf'
-tg'
-tkl
-tkn
-tktk
-tkWr
-tkW_s
-tk_'
-tk_z
-tl'
-tlm
-tltl
-tl_q
-tmtm
-tm_m
-tm_n
-tnakWl
-tnby
-tnfg
-tnfs
-tnkWs
-tntg
-tntn
-tn_n
-trams
-trf
-trgWm
-trkk
-trkWs
-trtr
-tr_b
-tr_k
-tr_t
-tWftWf
-tWstWs
-t|rfrf
-w'T
-w'b
-w'l             ''            [vc=tr];[vc=smp]   # 17.04.06; insures astewale, etc. for "causative"
-w's
-wCamd
-whd
-wT'
-wT_n
-wT_q
-wT_r
-waN*
-waj*
-wall
-watt
-wax*
-waxk
-way*
-wbr'
-wb_q
-wdaj*
-wdd
-wdm
-wdq
-wd_l
-wd_r
-wd_s
-wf_f
-wf_r
-wg'
-wgr
-wg_d
-wk'
-wkb
-wk_l
-wlagd
-wlakf
-wlamm
-wlawl
-wld
-wlq
-wlwl
-wnCf
-wnafl
-wnbd
-wnjl
-wnkr
-wnwn
-wq'
-wqT
-wqr
-wqs
-wr'
-wraC*
-wrd
-wrr
-wrs
-wrwr
-wrz'
-wr_f
-wsb
-wsd
-wslt
-wsws
-ws_'
-ws_n
-wtwt
-wt_f
-wxkt
-wxngr
-wx_l
-wx_m
-wx_q
-wy_b
-wz'
-wzwz
-wz_f
-wz_t
-w|dldl
-w|lblb
-w|rgrg
-w|tbtb
-w|tftf
-w|trtr
-w|zgzg
-x'T
-x'l             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-x'r
-xN_*
-xafd
-xagr             ''           [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-xagt
-xakr
-xam'
-xaql
-xark
-xaxT
-xbll
-xbrq
-xbxb
-xb_b
-xb_r
-xb_t
-xf_T
-xf_f
-xf_n
-xf_t
-xgaxg
-xgW_T
-xgW_r
-xk'
-xkxk
-xkW_t
-xk_f
-xk_m             ''            [vc=ps];[vc=tr];[vc=cs];[v=man,pos=n]
-xlqq
-xlxl
-xl_b
-xl_g
-xl_l
-xl_m
-xl_t
-xmTT
-xmdd
-xmgl
-xmqq
-xm_q
-xm_t
-xn'
-xndr
-xnf
-xngl
-xnkf
-xnqT
-xnqr
-xnqWT
-xnqWr
-xntr
-xnxn
-xn_T
-xqxq
-xq_T
-xq_b
-xq_l
-xrdd
-xrkt
-xrmWT
-xrxr
-xr_T
-xr_f
-xtt
-xwf
-xwl
-xwm
-xwq
-xx*
-xx_g
-xyT
-xyt
-xWTT
-xWkxWk
-xWk_k
-xWlk
-xWl_q
-xW|lklk
-x|blbl
-x|gWaTT
-x|krkr
-x|kWrmm
-x|mdmd
-x|mWaTT
-x|qdadm
-x|qnTr
-x|qWTqWT
-y'z
-z'g
-z'l
-z'q
-z't
-zTzT
-zamd
-zanf
-zatl
-zazn
-zb'
-zbT
-zbann
-zbarq
-zbll
-zbzb
-zb_n
-zb_t
-zfn
-zfzf
-zf_q
-zg'
-zgaj*             ''            [vc=ps];[vc=tr,as=it];[vc=cs];[v=man,pos=n]
-zgb
-zgm
-zgn
-zgnn
-zgrr
-zgy*
-zgWn
-zkr
-zkzk
-zlabd
-zlf
-zll
-zlq
-zlzl
-zl_s
-zmm
-zmt
-zmzm
-zm_r
-znTf
-znTl
-znafl
-znakt
-znb
-znbl
-zng'
-znn
-znqWl
-zntr
-zn'     # changed 10.04.04
-zn_T
-zn_q
-zqzq
-zq_T
-zr'
-zrT
-zrTT
-zrf
-zrfT
-zrg'
-zrgf
-zrkt
-zrnq
-zrzr
-zr_r
-zwr
-zwtr
-zw_r
-zym
-zy_d
-zy_n
-zy_r
-z|gWrgWr
-z|lflf
-z|lglg
-z|rTrT
-z|rbrb
-z|rfrf
-z|rkrk
+'Cd  ''  [-lt]
+'C_q  ''  [-lt]
+'N_k  ''  [-lt]
+'T'  ''  [-lt]
+'Tb  ''  [-lt]
+'Tf  ''  [-lt]
+'Tn  ''  [-lt]
+'Tq  ''  [-lt]
+'Tr  ''  [-lt]
+'Z*  ''  [-lt]
+'sr  ''  [-lt]
+'s_s  ''  [-lt]
+'bT  ''  [-lt]
+'bl  ''  [-lt]
+'bs  ''  [-lt]
+'by  ''  [-lt]
+'b_b  ''  [-lt]
+'br  ''  [-lt]
+'db  ''  [-lt]
+'df  ''  [-lt]
+'dg  ''  [-lt]
+'dr  ''  [-lt]
+'d_l  ''  [-lt]
+'d_m  ''  [-lt]
+'d_n  ''  [-lt]
+'d_s  ''  [-lt]
+'fr  ''  [-lt]
+'fs  ''  [-lt]
+'f_f  ''  [-lt]
+'f_g  ''  [-lt]
+'f_n  ''  [-lt]
+'gg  ''  [-lt]
+'gl  ''  [-lt]
+'gm  ''  [-lt]
+'gW_l  ''  [-lt]
+'gW_r  ''  [-lt]
+'g_s  ''  [-lt]
+'g_d  ''  [-lt]
+'g_t  ''  [-lt]
+'g_z  ''  [-lt]
+'j_b  ''  [-lt]
+'j_l  ''  [-lt]
+'kk  ''  [-lt]
+'k_l  ''  [-lt]
+'k_m  ''  [-lt]
+'k_t  ''  [-lt]
+'lb  ''  [-lt]
+'lf  ''  [-lt]
+'lm  ''  [-lt]
+'lq  ''  [-lt]
+'l_T  ''  [-lt]
+'l_l  ''  [-lt]
+'m'  ''  [-lt]
+'mm  ''  [-lt]
+'mn  ''  [-lt]
+'m_g  ''  [-lt]
+'m_s  ''  [-lt]
+'nT  ''  [-lt]
+'nTf  ''  [-lt]
+'nTs  ''  [-lt]
+'ngt  ''  [-lt]
+'nks  ''  [-lt]
+'nq  ''  [-lt]
+'nqf  ''  [-lt]
+'ns  ''  [-lt]
+'qf  ''  [-lt]
+'r'  ''  [-lt]
+'rbd  ''  [-lt]
+'rd  ''  [-lt]
+'rr  ''  [-lt]
+'rs  ''  [-lt]
+'rz  ''  [-lt]
+'r_T  ''  [-lt]
+'r_m  ''  [-lt]
+'r_q  ''  [-lt]
+'sr  ''  [-lt]
+'s_b  ''  [-lt]
+'s_s  ''  [-lt]
+'tb  ''  [-lt]
+'t_m  ''  [-lt]
+'t_t  ''  [-lt]
+'ws             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+'w_k  ''  [-lt]
+'x*  ''  [-lt]
+'x_g  ''  [-lt]
+'x_m  ''  [-lt]
+'y_l  ''  [-lt]
+'zl  ''  [-lt]
+'zn  ''  [-lt]
+'zz  ''  [-lt]
+'z_b  ''  [-lt]
+C'C'  ''  [-lt]
+C'n  ''  [-lt]
+C'r  ''  [-lt]
+Cam'  ''  [-lt]
+Cart             ''            [vc=ps,-lt];[vc=tr,-lt];[v=man,pos=n,-lt]
+Cawt             ''            [vc=ps,-lt];[vc=tr,-lt];[v=man,pos=n,-lt]
+CbCb  ''  [-lt]
+CbWd  ''  [-lt]
+Cb_T  ''  [-lt]
+Cb_t  ''  [-lt]
+CfCf  ''  [-lt]
+Cfgg  ''  [-lt]
+Cflq  ''  [-lt]
+Cf_n  ''  [-lt]
+Cf_q  ''  [-lt]
+Cf_r  ''  [-lt]
+Ck_n  ''  [-lt]
+ClCl  ''  [-lt]
+Clg  ''  [-lt]
+Cl_T  ''  [-lt]
+Cl_f  ''  [-lt]
+Cl_m  ''  [-lt]
+CmCm  ''  [-lt]
+Cmalq  ''  [-lt]
+Cmatr  ''  [-lt]
+Cmdd  ''  [-lt]
+Cmq  ''  [-lt]
+Cm_r  ''  [-lt]
+Cm_t  ''  [-lt]
+Cngf  ''  [-lt]
+CngWl  ''  [-lt]
+Cnq  ''  [-lt]
+CnqWr  ''  [-lt]
+CqCq  ''  [-lt]
+Cqy*  ''  [-lt]
+CqW_n  ''  [-lt]
+CrCs  ''  [-lt]
+Cramd  ''  [-lt]
+Cramm  ''  [-lt]
+Cramt  ''  [-lt]
+Crgd  ''  [-lt]
+Cr_f  ''  [-lt]
+Cr_s  ''  [-lt]
+Cwh  ''  [-lt]
+Cwl  ''  [-lt]
+CWrr  ''  [-lt]
+Cys  ''  [-lt]
+C|brbr  ''  [-lt]
+PP_s  ''  [-lt]
+S'f  ''  [-lt]
+SS_t  ''  [-lt]
+Sd'  ''  [-lt]
+Sdq  ''  [-lt]
+Sl_y  ''  [-lt]
+Sn'  ''  [-lt]
+Snn  ''  [-lt]
+Swm  ''  [-lt]
+Sy_f  ''  [-lt]
+T'd  ''  [-lt]
+T'f  ''  [-lt]
+T'l  ''  [-lt]
+T'm  ''  [-lt]
+T'r  ''  [-lt]
+T's  ''  [-lt]
+TT_'  ''  [-lt]
+TT_r  ''  [-lt]
+Tdf             ''            [vc=ps,as=rc,-lt];[vc=tr,-lt];[v=man,pos=n,-lt]
+TafT  ''  [-lt]
+Tass  ''  [-lt]
+Tb'  ''  [-lt]
+TbTb  ''  [-lt]
+Tbb  ''  [-lt]
+Tbdl  ''  [-lt]
+Tbq  ''  [-lt]
+Tbs  ''  [-lt]
+Tbsq  ''  [-lt]
+Tb_q  ''  [-lt]
+Td'  ''  [-lt]
+Tdq  ''  [-lt]
+Tf'  ''  [-lt]
+TfTf  ''  [-lt]
+Tff  ''  [-lt]
+Tf_r  ''  [-lt]
+Tg'  ''  [-lt]
+Tgb  ''  [-lt]
+Tg_g  ''  [-lt]
+Tg_n  ''  [-lt]
+Tl'  ''  [-lt]
+Tlf  ''  [-lt]
+Tlq  ''  [-lt]
+Tl_l  ''  [-lt]
+Tl_z  ''  [-lt]
+Tm'  ''  [-lt]
+TmTm  ''  [-lt]
+Tmd  ''  [-lt]
+Tmm  ''  [-lt]
+Tmq  ''  [-lt]
+Tmrr  ''  [-lt]
+Tmss  ''  [-lt]
+Tmzz  ''  [-lt]
+Tm_r  ''  [-lt]
+Tn'  ''  [-lt]
+TnTn  ''  [-lt]
+Tnabs  ''  [-lt]
+Tnag'  ''  [-lt]
+Tnaqr  ''  [-lt]
+Tnawt  ''  [-lt]
+Tnb'  ''  [-lt]
+Tnbz  ''  [-lt]
+Tnff  ''  [-lt]
+Tnkr  ''  [-lt]
+Tnqq  ''  [-lt]
+TnqWl  ''  [-lt]
+Tnss  ''  [-lt]
+Tnz'  ''  [-lt]
+Tn_n  ''  [-lt]
+Tq'  ''  [-lt]
+TqTq  ''  [-lt]
+Tqll  ''  [-lt]
+Tqm  ''  [-lt]
+Tqs  ''  [-lt]
+TqWr  ''  [-lt]
+TqW_m  ''  [-lt]
+Tr'  ''  [-lt]
+TrTr  ''  [-lt]
+TrTs  ''  [-lt]
+Trb  ''  [-lt]
+Trg  ''  [-lt]
+Trms  ''  [-lt]
+Trnq  ''  [-lt]
+Trqm  ''  [-lt]
+Trr  ''  [-lt]
+Tr_s  ''  [-lt]
+Tr_z  ''  [-lt]
+Ts_q  ''  [-lt]
+Tt_t  ''  [-lt]
+Twf  ''  [-lt]
+Twl  ''  [-lt]
+Twlg  ''  [-lt]
+Twm  ''  [-lt]
+Twr  ''  [-lt]
+Twz  ''  [-lt]
+Tyn  ''  [-lt]
+Tyq  ''  [-lt]
+Tys  ''  [-lt]
+Ty_f  ''  [-lt]
+Ty_m  ''  [-lt]
+Ty_q  ''  [-lt]
+TzTz  ''  [-lt]
+T|brbr  ''  [-lt]
+T|lqlq  ''  [-lt]
+T|mlml  ''  [-lt]
+T|msms  ''  [-lt]
+T|mzmz  ''  [-lt]
+T|wlwl  ''  [-lt]
+Zl_T  ''  [-lt]
+Zrgg  ''  [-lt]
+Z|gWdgWd  ''  [-lt]
+Z|gWrgWr  ''  [-lt]
+'C*  ''  [-lt]
+'bd  ''  [-lt]
+'l_m  ''  [-lt]
+'mT  ''  [-lt]
+'m_q  ''  [-lt]
+'q_d  ''  [-lt]
+'rf  ''  [-lt]
+'rg  ''  [-lt]
+'r_b  ''  [-lt]
+'wq  ''  [-lt]
+'w_d  ''  [-lt]
+'w_r  ''  [-lt]
+'y*  ''  [-lt]
+Sns  ''  [-lt]
+s's'  ''  [-lt]
+s'l  ''  [-lt]
+sg'  ''  [-lt]
+sgr  ''  [-lt]
+slTn  ''  [-lt]
+sl_T  ''  [-lt]
+sl_s  ''  [-lt]
+smr  ''  [-lt]
+sqTT  ''  [-lt]
+sqsq  ''  [-lt]
+sq_q  ''  [-lt]
+sr'  ''  [-lt]
+srsr  ''  [-lt]
+srg  ''  [-lt]
+sw_'  ''  [-lt]
+sw_r  ''  [-lt]
+sy_m  ''  [-lt]
+b'b'  ''  [-lt]
+b'l              ''          [vc=ps,+lt];[vc=tr,+lt];[vc=cs,+lt];[v=man,pos=n,+lt]
+b'r'  ''  [-lt]
+b's  ''  [-lt]
+b't  ''  [-lt]
+bT'  ''  [-lt]
+bTbT  ''  [-lt]
+bT_r  ''  [-lt]
+bT_s  ''  [-lt]
+bakn  ''  [-lt]
+balg  ''  [-lt]
+bann  ''  [-lt]
+bark  ''  [-lt]
+bazq  ''  [-lt]
+bazt  ''  [-lt]
+bd'  ''  [-lt]
+bd_l  ''  [-lt]
+bd_r             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+bgn  ''  [-lt]
+bg_r  ''  [-lt]
+bj_*  ''  [-lt]
+bkt  ''  [-lt]
+bk_l  ''  [-lt]
+bl'  ''  [-lt]
+blT  ''  [-lt]
+blTT  ''  [-lt]
+blSg  ''  [-lt]
+blax*             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+blg  ''  [-lt]
+blqT  ''  [-lt]
+bl_t  ''  [-lt]
+bl_z  ''  [-lt]
+bnn  ''  [-lt]
+bq'  ''  [-lt]
+bql  ''  [-lt]
+bq_t  ''  [-lt]
+br'  ''  [-lt]
+brbr  ''  [-lt]
+brd  ''  [-lt]
+brgd  ''  [-lt]
+brgg  ''  [-lt]
+brkt  ''  [-lt]
+brqs  ''  [-lt]
+brr  ''  [-lt]
+brt'  ''  [-lt]
+br_q  ''  [-lt]
+br_z  ''  [-lt]
+bs'  ''  [-lt]
+bsaC*  ''  [-lt]
+bsbs  ''  [-lt]
+bsl  ''  [-lt]
+bsr  ''  [-lt]
+bt_n  ''  [-lt]
+bwz  ''  [-lt]
+bw_z  ''  [-lt]
+bxqT  ''  [-lt]
+bx_q  ''  [-lt]
+by_d  ''  [-lt]
+by_n  ''  [-lt]
+bz'  ''  [-lt]
+bzbz  ''  [-lt]
+bWC_q  ''  [-lt]
+bWaCr  ''  [-lt]
+bWaTT  ''  [-lt]
+bWadn  ''  [-lt]
+bWagt  ''  [-lt]
+bWalt  ''  [-lt]
+bWd_s  ''  [-lt]
+bWk'  ''  [-lt]
+bWkbWk  ''  [-lt]
+bWnn  ''  [-lt]
+bWrbWr  ''  [-lt]
+bWr_q  ''  [-lt]
+bWtrf  ''  [-lt]
+bWz_n  ''  [-lt]
+b|knkn  ''  [-lt]
+b|lClC  ''  [-lt]
+b|lTlT  ''  [-lt]
+b|rkrk  ''  [-lt]
+b|rqrq  ''  [-lt]
+b|slsl  ''  [-lt]
+c'l  ''  [-lt]
+cbcb  ''  [-lt]
+cfcf  ''  [-lt]
+cf_g  ''  [-lt]
+cg_r  ''  [-lt]
+ckW_l  ''  [-lt]
+ck_l  ''  [-lt]
+cl_s  ''  [-lt]
+cnkr  ''  [-lt]
+crcm  ''  [-lt]
+crcr  ''  [-lt]
+css  ''  [-lt]
+cyk  ''  [-lt]
+cyr  ''  [-lt]
+d'C  ''  [-lt]
+d'T  ''  [-lt]
+d'h  ''  [-lt]
+d'n  ''  [-lt]
+d'r  ''  [-lt]
+d's  ''  [-lt]
+daN*  ''  [-lt]
+dabr  ''  [-lt]
+dabs  ''  [-lt]
+dagt  ''  [-lt]
+dakr  ''  [-lt]
+dalT  ''  [-lt]
+damn  ''  [-lt]
+damT  ''  [-lt]
+daqWn  ''  [-lt]
+darg  ''  [-lt]
+dass  ''  [-lt]
+dawr  ''  [-lt]
+daxq  ''  [-lt]
+db'  ''  [-lt]
+dbay*  ''  [-lt]
+dbb  ''  [-lt]
+dbdb  ''  [-lt]
+dbll  ''  [-lt]
+dblq  ''  [-lt]
+dbss  ''  [-lt]
+dbzz  ''  [-lt]
+db_l  ''  [-lt]
+db_n  ''  [-lt]
+db_q  ''  [-lt]
+db_t  ''  [-lt]
+dd_b  ''  [-lt]
+dd_q  ''  [-lt]
+dd_r  ''  [-lt]
+df'  ''  [-lt]
+dfT  ''  [-lt]
+dfTT  ''  [-lt]
+dfdf  ''  [-lt]
+dfn  ''  [-lt]
+dfq  ''  [-lt]
+dfr  ''  [-lt]
+dfrs  ''  [-lt]
+dgdg  ''  [-lt]
+dgm  ''  [-lt]
+dgW_m  ''  [-lt]
+dgW_s  ''  [-lt]
+dg_f  ''  [-lt]
+dg_n  ''  [-lt]
+dg_s  ''  [-lt]
+dhy*  ''  [-lt]
+dkm  ''  [-lt]
+dl'  ''  [-lt]
+dlb  ''  [-lt]
+dldl  ''  [-lt]
+dlfs  ''  [-lt]
+dl_h  ''  [-lt]
+dl_l  ''  [-lt]
+dl_q  ''  [-lt]
+dl_z  ''  [-lt]
+dm'  ''  [-lt]
+dmT  ''  [-lt]
+dmdm  ''  [-lt]
+dmq  ''  [-lt]
+dmss  ''  [-lt]
+dm_m  ''  [-lt]
+dm_r  ''  [-lt]
+dnagr  ''  [-lt]
+dnaqf  ''  [-lt]
+dnb'  ''  [-lt]
+dnbr  ''  [-lt]
+dnbz  ''  [-lt]
+dndn  ''  [-lt]
+dnf'  ''  [-lt]
+dngT  ''  [-lt]
+dngg  ''  [-lt]
+dngz  ''  [-lt]
+dngWr  ''  [-lt]
+dnq  ''  [-lt]
+dnqr  ''  [-lt]
+dnqWl  ''  [-lt]
+dnqWr  ''  [-lt]
+dnzz  ''  [-lt]
+dn_n  ''  [-lt]
+dn_s  ''  [-lt]
+dn_z  ''  [-lt]
+dq'  ''  [-lt]
+dqdq  ''  [-lt]
+dqq  ''  [-lt]
+dqW_s  ''  [-lt]
+dq_l  ''  [-lt]
+dq_n  ''  [-lt]
+dr'  ''  [-lt]
+drdr  ''  [-lt]
+drg             ''            [vc=ps,+lt];[vc=tr,+lt];[vc=cs,+lt];[v=man,pos=n,+lt]
+drgm  ''  [-lt]
+drj*  ''  [-lt]
+drq  ''  [-lt]
+drs  ''  [-lt]
+drsm  ''  [-lt]
+dr_b  ''  [-lt]
+dr_t  ''  [-lt]
+dss  ''  [-lt]
+ds_m  ''  [-lt]
+ds_t             ''           [vc=ps,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+dwl  ''  [-lt]
+dw_l  ''  [-lt]
+dxdx  ''  [-lt]
+dxy*  ''  [-lt]
+dzdz  ''  [-lt]
+dWfdWf  ''  [-lt]
+dWldWm  ''  [-lt]
+dWl_t  ''  [-lt]
+d|blbl  ''  [-lt]
+d|bsbs  ''  [-lt]
+d|bWlbWl  ''  [-lt]
+d|fnfn  ''  [-lt]
+d|rqrq  ''  [-lt]
+f'f'  ''  [-lt]
+f'm  ''  [-lt]
+f'q  ''  [-lt]
+f'r  ''  [-lt]
+fC*  ''  [-lt]
+fS_m  ''  [-lt]
+fTT  ''  [-lt]
+fTfT  ''  [-lt]
+fTn  ''  [-lt]
+fTr  ''  [-lt]
+fT_m  ''  [-lt]
+fads  ''  [-lt]
+falm  ''  [-lt]
+fann  ''  [-lt]
+faxg  ''  [-lt]
+fgfg  ''  [-lt]
+fgg  ''  [-lt]
+fg_m  ''  [-lt]
+fj*  ''  [-lt]
+fk'  ''  [-lt]
+fkfk  ''  [-lt]
+fl'  ''  [-lt]
+flT  ''  [-lt]
+flfl  ''  [-lt]
+flq  ''  [-lt]
+flqq  ''  [-lt]
+fls  ''  [-lt]
+flsf  ''  [-lt]
+fl_g  ''  [-lt]
+fnC*  ''  [-lt]
+fnTq  ''  [-lt]
+fnTr  ''  [-lt]
+fnTz  ''  [-lt]
+fnaTT  ''  [-lt]
+fncr  ''  [-lt]
+fnd'  ''  [-lt]
+fndd  ''  [-lt]
+fndq  ''  [-lt]
+fnfn  ''  [-lt]
+fngT  ''  [-lt]
+fngl  ''  [-lt]
+fnkt  ''  [-lt]
+fnql  ''  [-lt]
+fqd  ''  [-lt]
+fqfq  ''  [-lt]
+fqr  ''  [-lt]
+fr'  ''  [-lt]
+frT  ''  [-lt]
+frTT  ''  [-lt]
+frTm  ''  [-lt]
+frd  ''  [-lt]
+frfr  ''  [-lt]
+frks  ''  [-lt]
+frs  ''  [-lt]
+fr_m  ''  [-lt]
+fs'  ''  [-lt]
+fsfs  ''  [-lt]
+fss  ''  [-lt]
+fs_k  ''  [-lt]
+ft'  ''  [-lt]
+ftft  ''  [-lt]
+ftl  ''  [-lt]
+ftlk  ''  [-lt]
+ft_g  ''  [-lt]
+ft_n  ''  [-lt]
+ft_x  ''  [-lt]
+fw_s  ''  [-lt]
+fyz  ''  [-lt]
+fy_d  ''  [-lt]
+fy_l  ''  [-lt]
+fzz  ''  [-lt]
+fWaC*    ''   [vc=ps,as=it,-lt];[vc=tr,as=smp,-lt];[vc=tr,as=it,-lt];[v=man,pos=n,-lt]
+fWk_r  ''  [-lt]
+fWk_t  ''  [-lt]
+fWn_n  ''  [-lt]
+fWrx  ''  [-lt]
+f|CrCr  ''  [-lt]
+f|lklk  ''  [-lt]
+f|lqlq  ''  [-lt]
+f|rTrT  ''  [-lt]
+f|rkrk  ''  [-lt]
+f|rqrq  ''  [-lt]
+g'T  ''  [-lt]
+g'g'  ''  [-lt]
+g'l  ''  [-lt]
+g'm  ''  [-lt]
+g'r  ''  [-lt]
+g't  ''  [-lt]
+g'z  ''  [-lt]
+gC*  ''  [-lt]
+gN*    ''   [vc=ps,as=smp,-lt];[vc=ps,as=rc,-lt];[vc=tr,as=smp,-lt];[vc=tr,as=rc,-lt];[vc=cs,as=smp,-lt];[vc=cs,as=rc,-lt]
+gTgT  ''  [-lt]
+gTm  ''  [-lt]
+gT_b  ''  [-lt]
+gs'  ''  [-lt]
+gss  ''  [-lt]
+gaTT  ''  [-lt]
+gabs  ''  [-lt]
+gabz  ''  [-lt]
+gafT  ''  [-lt]
+gafr  ''  [-lt]
+gagr  ''  [-lt]
+galb  ''  [-lt]
+garT  ''  [-lt]
+gard  ''  [-lt]
+gaxb  ''  [-lt]
+gay*  ''  [-lt]
+gb'  ''  [-lt]
+gbadd  ''  [-lt]
+gby*  ''  [-lt]
+gb_r  ''  [-lt]
+gdd  ''  [-lt]
+gdf  ''  [-lt]
+gdgd  ''  [-lt]
+gdl  ''  [-lt]
+gdm  ''  [-lt]
+gd_b  ''  [-lt]
+gg_r  ''  [-lt]
+gf'  ''  [-lt]
+gff  ''  [-lt]
+gfgf  ''  [-lt]
+gftr  ''  [-lt]
+gg_m  ''  [-lt]
+glS  ''  [-lt]
+glagl  ''  [-lt]
+glamT  ''  [-lt]
+glb  ''  [-lt]
+glbT  ''  [-lt]
+gldm  ''  [-lt]
+glfT  ''  [-lt]
+glff  ''  [-lt]
+glgl  ''  [-lt]
+gljj  ''  [-lt]
+gll  ''  [-lt]
+glm'  ''  [-lt]
+glmWt  ''  [-lt]
+gm'  ''  [-lt]
+gmT  ''  [-lt]
+gmdl  ''  [-lt]
+gmgm  ''  [-lt]
+gms  ''  [-lt]
+gm_d  ''  [-lt]
+gm_l  ''  [-lt]
+gm_t  ''  [-lt]
+gnTl  ''  [-lt]
+gnb'  ''  [-lt]
+gnds  ''  [-lt]
+gnf'  ''  [-lt]
+gnfl  ''  [-lt]
+gngn  ''  [-lt]
+gnn  ''  [-lt]
+gntr  ''  [-lt]
+gnz  ''  [-lt]
+gnzb             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+gr'  ''  [-lt]
+grdf  ''  [-lt]
+grf  ''  [-lt]
+grgd  ''  [-lt]
+grjf  ''  [-lt]
+grm  ''  [-lt]
+grmm  ''  [-lt]
+grr  ''  [-lt]
+grx*  ''  [-lt]
+gr_z  ''  [-lt]
+gsgs  ''  [-lt]
+gsr  ''  [-lt]
+gss  ''  [-lt]
+gt'  ''  [-lt]
+gt_r  ''  [-lt]
+gxlT  ''  [-lt]
+gxr  ''  [-lt]
+gx_x  ''  [-lt]
+gyT  ''  [-lt]
+gz'  ''  [-lt]
+gzf  ''  [-lt]
+gzgz  ''  [-lt]
+gz_t  ''  [-lt]
+gW'gW'  ''  [-lt]
+gW'n  ''  [-lt]
+gW'z             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+gWT_T  ''  [-lt]
+gWadd  ''  [-lt]
+gWagWT  ''  [-lt]
+gWagWl  ''  [-lt]
+gWagWr  ''  [-lt]
+gWamT  ''  [-lt]
+gWbN*  ''  [-lt]
+gWbT  ''  [-lt]
+gWbb  ''  [-lt]
+gWbdd  ''  [-lt]
+gWbgWb  ''  [-lt]
+gWb_z  ''  [-lt]
+gWd'  ''  [-lt]
+gWdaN*             ''            [vc=ps,-lt];[vc=tr,-lt];[v=man,pos=n,-lt]
+gWdgWd  ''  [-lt]
+gWdl  ''  [-lt]
+gWfnn  ''  [-lt]
+gWfy*  ''  [-lt]
+gWf_r  ''  [-lt]
+gWl'  ''  [-lt]
+gWladf  ''  [-lt]
+gWlamm  ''  [-lt]
+gWlbt  ''  [-lt]
+gWlgWl  ''  [-lt]
+gWlms  ''  [-lt]
+gWl_t  ''  [-lt]
+gWmall  ''  [-lt]
+gWmd  ''  [-lt]
+gWmj*  ''  [-lt]
+gWmr'  ''  [-lt]
+gWmzz  ''  [-lt]
+gWnC*  ''  [-lt]
+gWnaTf  ''  [-lt]
+gWnazl  ''  [-lt]
+gWnbs             ''            [vc=ps,as=rc,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+gWngWn  ''  [-lt]
+gWnqWl  ''  [-lt]
+gWn_T  ''  [-lt]
+gWn_f  ''  [-lt]
+gWr'  ''  [-lt]
+gWrabt  ''  [-lt]
+gWrb  ''  [-lt]
+gWrbT  ''  [-lt]
+gWrd  ''  [-lt]
+gWrdm  ''  [-lt]
+gWrf  ''  [-lt]
+gWrgWr  ''  [-lt]
+gWrms  ''  [-lt]
+gWrn'  ''  [-lt]
+gWrs  ''  [-lt]
+gWsgWs  ''  [-lt]
+gWsqWl  ''  [-lt]
+gWs_m  ''  [-lt]
+gWs_r  ''  [-lt]
+gWtgWt  ''  [-lt]
+gWt_n  ''  [-lt]
+gWt_t  ''  [-lt]
+gWzgWz  ''  [-lt]
+gW|mTmT  ''  [-lt]
+gW|rTrT  ''  [-lt]
+gW|rbrb  ''  [-lt]
+gW|rmrm  ''  [-lt]
+gW|tmtm  ''  [-lt]
+g|bsbs  ''  [-lt]
+g|drdr  ''  [-lt]
+g|flfl  ''  [-lt]
+g|tltl  ''  [-lt]
+g|trtr  ''  [-lt]
+hwn       ''     [as=smp,vc=smp,-lt]
+hyd       ''     [as=smp,vc=smp,-lt]
+hWmTT  ''  [-lt]
+jaj*  ''  [-lt]
+jbW_n  ''  [-lt]
+jb_d  ''  [-lt]
+jgn  ''  [-lt]
+jm_r  ''  [-lt]
+jn_n  ''  [-lt]
+jrgg  ''  [-lt]
+jyl  ''  [-lt]
+k'b  ''  [-lt]
+k'd  ''  [-lt]
+k'f'  ''  [-lt]
+k'n  ''  [-lt]
+k's  ''  [-lt]
+ks_t  ''  [-lt]
+kadm  ''  [-lt]
+kbb  ''  [-lt]
+kbd  ''  [-lt]
+kbr  ''  [-lt]
+kbs  ''  [-lt]
+kb_t  ''  [-lt]
+kc_c  ''  [-lt]
+kc_r  ''  [-lt]
+kd'  ''  [-lt]
+kdn  ''  [-lt]
+kf'  ''  [-lt]
+kff  ''  [-lt]
+kfkf  ''  [-lt]
+kfl  ''  [-lt]
+kfn  ''  [-lt]
+kft  ''  [-lt]
+kj_l  ''  [-lt]
+kk_'  ''  [-lt]
+klb  ''  [-lt]
+klbs  ''  [-lt]
+klkl  ''  [-lt]
+kl_f  ''  [-lt]
+kl_l  ''  [-lt]
+kl_s  ''  [-lt]
+kmac*             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+kmkm  ''  [-lt]
+km_r  ''  [-lt]
+knawn             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+knb  ''  [-lt]
+knbl  ''  [-lt]
+knd'  ''  [-lt]
+knf  ''  [-lt]
+knkn  ''  [-lt]
+kntr  ''  [-lt]
+kn_n  ''  [-lt]
+kray*  ''  [-lt]
+krbt  ''  [-lt]
+krdd  ''  [-lt]
+krf'  ''  [-lt]
+krkm  ''  [-lt]
+krkr  ''  [-lt]
+krm  ''  [-lt]
+krr  ''  [-lt]
+krtf  ''  [-lt]
+ks'  ''  [-lt]
+ksb  ''  [-lt]
+ksks  ''  [-lt]
+ksl  ''  [-lt]
+ksm  ''  [-lt]
+ksr  ''  [-lt]
+kss  ''  [-lt]
+ktb  ''  [-lt]
+ktf  ''  [-lt]
+ktkt  ''  [-lt]
+kt_l             ''            [vc=ps,-lt];[vc=tr,as=rc,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+ktlb  ''  [-lt]
+ktt  ''  [-lt]
+kt_m  ''  [-lt]
+kt_r  ''  [-lt]
+kxf  ''  [-lt]
+kx_n  ''  [-lt]
+kW'l  ''  [-lt]
+kW't  ''  [-lt]
+kWbkWb  ''  [-lt]
+kWbll  ''  [-lt]
+kWfkWf  ''  [-lt]
+kWf_s  ''  [-lt]
+kWl'  ''  [-lt]
+kWlatf             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+kWlax*  ''  [-lt]
+kWlkWl  ''  [-lt]
+kWll  ''  [-lt]
+kWmatr  ''  [-lt]
+kWmkWm  ''  [-lt]
+kWnatr  ''  [-lt]
+kWn_n  ''  [-lt]
+kWr'  ''  [-lt]
+kWramt  ''  [-lt]
+kWrf  ''  [-lt]
+kWrkWm  ''  [-lt]
+kWrkWr  ''  [-lt]
+kWrt  ''  [-lt]
+kWrtm  ''  [-lt]
+kWrxm  ''  [-lt]
+kWr_T  ''  [-lt]
+kWr_j  ''  [-lt]
+kWs'  ''  [-lt]
+kWskWs  ''  [-lt]
+kWsmn  ''  [-lt]
+kWstr  ''  [-lt]
+kWs_s  ''  [-lt]
+kWtkWt  ''  [-lt]
+kW|nsns  ''  [-lt]
+kW|rfrf  ''  [-lt]
+k|bsbs  ''  [-lt]
+k|lflf  ''  [-lt]
+l'T  ''  [-lt]
+l'b  ''  [-lt]
+l'f  ''  [-lt]
+l'g  ''  [-lt]
+l'k  ''  [-lt]
+l'l'  ''  [-lt]
+l'm  ''  [-lt]
+l'q  ''  [-lt]
+l's  ''  [-lt]
+lTlT  ''  [-lt]
+lT_T  ''  [-lt]
+lT_f  ''  [-lt]
+lT_q  ''  [-lt]
+laC*  ''  [-lt]
+lakk  ''  [-lt]
+laqWT  ''  [-lt]
+lax*  ''  [-lt]
+laxq  ''  [-lt]
+lblb  ''  [-lt]
+lbs  ''  [-lt]
+lb_T  ''  [-lt]
+lb_b  ''  [-lt]
+lb_d  ''  [-lt]
+lb_q  ''  [-lt]
+lf'  ''  [-lt]
+lfaCq  ''  [-lt]
+lflf  ''  [-lt]
+lf_f  ''  [-lt]
+lgW_d  ''  [-lt]
+lgW_m  ''  [-lt]
+lg_'  ''  [-lt]
+lg_m  ''  [-lt]
+lg_s  ''  [-lt]
+lgT  ''  [-lt]
+lklk  ''  [-lt]
+lkW_f  ''  [-lt]
+lkW_s  ''  [-lt]
+lk_'  ''  [-lt]
+lm'  ''  [-lt]
+lmTT  ''  [-lt]
+lmd  ''  [-lt]
+lmlm  ''  [-lt]
+lmss  ''  [-lt]
+lmzg  ''  [-lt]
+lm_T  ''  [-lt]
+lm_n  ''  [-lt]
+lqlq  ''  [-lt]
+lqm  ''  [-lt]
+lqq  ''  [-lt]
+lqs  ''  [-lt]
+lsls  ''  [-lt]
+ls_n  ''  [-lt]
+ls_s  ''  [-lt]
+lt_m  ''  [-lt]
+lw_T  ''  [-lt]
+lw_s  ''  [-lt]
+lxlx  ''  [-lt]
+ly_*  ''  [-lt]
+lz_b  ''  [-lt]
+l|fsfs  ''  [-lt]
+l|gWmgWm  ''  [-lt]
+l|kfkf  ''  [-lt]
+l|ksks  ''  [-lt]
+l|kWskWs  ''  [-lt]
+m'T  ''  [-lt]
+m'g  ''  [-lt]
+m'l  ''  [-lt]
+m'r             ''            [vc=tr,-lt];[vc=smp,-lt]   # 17.04.06; insures astemare, etc. for "causative"
+m's  ''  [-lt]
+mCmC  ''  [-lt]
+mN*             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+mSadq  ''  [-lt]
+mSwt  ''  [-lt]
+mT'  ''  [-lt]
+mTT  ''  [-lt]
+mTmT  ''  [-lt]
+mTq  ''  [-lt]
+mTwt  ''  [-lt]
+mT_n  ''  [-lt]
+msrt  ''  [-lt]
+magT  ''  [-lt]
+magd  ''  [-lt]
+magr  ''  [-lt]
+mald  ''  [-lt]
+malg  ''  [-lt]
+mall  ''  [-lt]
+maqq  ''  [-lt]
+mark  ''  [-lt]
+matb  ''  [-lt]
+mc_*            ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+mdmd  ''  [-lt]
+md_b  ''  [-lt]
+md_d  ''  [-lt]
+mgl  ''  [-lt]
+mgmg  ''  [-lt]
+mg_b  ''  [-lt]
+mk'  ''  [-lt]
+mkaN*           ''            [vc=ps,-lt];[vc=tr,as=smp,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+mkn  ''  [-lt]
+mkr  ''  [-lt]
+mk_t  ''  [-lt]
+mlT  ''  [-lt]
+mlk  ''  [-lt]
+mlkt             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+mll  ''  [-lt]
+mlml  ''  [-lt]
+ml_s  ''  [-lt]
+mnC*  ''  [-lt]
+mnCq  ''  [-lt]
+mnCr  ''  [-lt]
+mnTq  ''  [-lt]
+mnTr  ''  [-lt]
+mnck  ''  [-lt]
+mngg  ''  [-lt]
+mnkWs  ''  [-lt]
+mnmn  ''  [-lt]
+mnqr  ''  [-lt]
+mnt'  ''  [-lt]
+mntf  ''  [-lt]
+mnzr  ''  [-lt]
+mn_n  ''  [-lt]
+mr'  ''  [-lt]
+mrT  ''  [-lt]
+mrg  ''  [-lt]
+mrkWz  ''  [-lt]
+mrmr  ''  [-lt]
+mrqz  ''  [-lt]
+marr  ''  [-lt]
+mrr  ''  [-lt]
+mrt  ''  [-lt]
+mr_n  ''  [-lt]
+mr_q  ''  [-lt]
+mr_z  ''  [-lt]
+msaTr  ''  [-lt]
+msaql  ''  [-lt]
+msgn             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+mskn  ''  [-lt]
+mskr  ''  [-lt]
+mskW'  ''  [-lt]
+msl  ''  [-lt]
+ms_T  ''  [-lt]
+ms_g  ''  [-lt]
+ms_n  ''  [-lt]
+mt'  ''  [-lt]
+mtr  ''  [-lt]
+mwq  ''  [-lt]
+mwt  ''  [-lt]
+mx*  ''  [-lt]
+mx_g  ''  [-lt]
+mx_t  ''  [-lt]
+mzbr  ''  [-lt]
+mzgb  ''  [-lt]
+mzmz  ''  [-lt]
+mz_n  ''  [-lt]
+mz_z  ''  [-lt]
+mW'mW'  ''  [-lt]
+mWClf  ''  [-lt]
+mWCmWC  ''  [-lt]
+mWN_*  ''  [-lt]
+mWTmWT  ''  [-lt]
+mWaC*  ''  [-lt]
+mWaCr  ''  [-lt]
+mWaTT  ''  [-lt]
+mWalT  ''  [-lt]
+mWart  ''  [-lt]
+mWax*  ''  [-lt]
+mWaxx  ''  [-lt]
+mWg_d  ''  [-lt]
+mWg_g  ''  [-lt]
+mWg_s  ''  [-lt]
+mWg_t  ''  [-lt]
+mWj_r  ''  [-lt]
+mWk_k  ''  [-lt]
+mWk_r  ''  [-lt]
+mWk_t  ''  [-lt]
+mWl'  ''  [-lt]
+mWlaqq  ''  [-lt]
+mWlfT  ''  [-lt]
+mWlmWl  ''  [-lt]
+mWl_C  ''  [-lt]
+mWl_l  ''  [-lt]
+mWqmWq  ''  [-lt]
+mWrmWr  ''  [-lt]
+mWr_d  ''  [-lt]
+mWxlq  ''  [-lt]
+mWx_r  ''  [-lt]
+mWz_z  ''  [-lt]
+m|nxnx  ''  [-lt]
+m|zgzg  ''  [-lt]
+n'T  ''  [-lt]
+n'd  ''  [-lt]
+n'q  ''  [-lt]
+n'r  ''  [-lt]
+nC'  ''  [-lt]
+nC*  ''  [-lt]
+nCanC  ''  [-lt]
+nS'  ''  [-lt]
+nSr  ''  [-lt]
+nT'  ''  [-lt]
+nTb  ''  [-lt]
+nTf  ''  [-lt]
+nTnT  ''  [-lt]
+nTq  ''  [-lt]
+nTr  ''  [-lt]
+nT_l  ''  [-lt]
+ns'  ''  [-lt]
+naN*  ''  [-lt]
+nfT             ''        [vc=ps,as=rc,-lt];[vc=tr,as=rc,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+nafq  ''  [-lt]
+nawz  ''  [-lt]
+nazz  ''  [-lt]
+nb'  ''  [-lt]
+nbnb  ''  [-lt]
+nbr           ''          [tm=prf,-lt]
+nbz  ''  [-lt]
+nbW_C  ''  [-lt]
+nb_b  ''  [-lt]
+nd'  ''  [-lt]
+ndd  ''  [-lt]
+ndf  ''  [-lt]
+ndl  ''  [-lt]
+nf'  ''  [-lt]
+nfg  ''  [-lt]
+nfll  ''  [-lt]
+nfnf  ''  [-lt]
+nfr  ''  [-lt]
+nfrq  ''  [-lt]
+nfs  ''  [-lt]
+ng'  ''  [-lt]
+ngs  ''  [-lt]
+ngb  ''  [-lt]
+ngd  ''  [-lt]
+ngr  ''  [-lt]
+ngWd  ''  [-lt]
+ngWr  ''  [-lt]
+ngWt  ''  [-lt]
+nhll  ''  [-lt]
+nk'  ''  [-lt]
+nkr  ''  [-lt]
+nks  ''  [-lt]
+nkt  ''  [-lt]
+nkWt  ''  [-lt]
+nq'  ''  [-lt]
+nqf  ''  [-lt]
+nql  ''  [-lt]
+nqnq  ''  [-lt]
+nqs  ''  [-lt]
+nqz  ''  [-lt]
+nqWT  ''  [-lt]
+nqWr  ''  [-lt]
+nr_t  ''  [-lt]
+nsans  ''  [-lt]
+nsns  ''  [-lt]
+nsr  ''  [-lt]
+ntb  ''  [-lt]
+ntrk  ''  [-lt]
+nwr  ''  [-lt]
+nw_r  ''  [-lt]
+nx_T  ''  [-lt]
+nz'  ''  [-lt]
+nznz  ''  [-lt]
+nzr  ''  [-lt]
+n|C'C'  ''  [-lt]
+n|CrCr  ''  [-lt]
+n|Crff  ''  [-lt]
+n|Sbarq  ''  [-lt]
+n|T'T'  ''  [-lt]
+n|Tall  ''  [-lt]
+n|TbTb  ''  [-lt]
+n|TfTf  ''  [-lt]
+n|TlTl  ''  [-lt]
+n|TraTs  ''  [-lt]
+n|Trar'  ''  [-lt]
+n|Trawz  ''  [-lt]
+n|Trbb  ''  [-lt]
+n|Trzz  ''  [-lt]
+n|TWlTWl  ''  [-lt]
+n|Zabb  ''  [-lt]
+n|Zbarr  ''  [-lt]
+n|Zbb  ''  [-lt]
+n|ZqZq  ''  [-lt]
+n|Zrgg  ''  [-lt]
+n|barq  ''  [-lt]
+n|blbl  ''  [-lt]
+n|brkk  ''  [-lt]
+n|bxbx  ''  [-lt]
+n|bW'bW'  ''  [-lt]
+n|bWCbWC  ''  [-lt]
+n|bWatr  ''  [-lt]
+n|bWgbWg  ''  [-lt]
+n|bWlbWl  ''  [-lt]
+n|bWrqq  ''  [-lt]
+n|c'c'  ''  [-lt]
+n|dball  ''  [-lt]
+n|dbdb  ''  [-lt]
+n|dfadf  ''  [-lt]
+n|dkdk  ''  [-lt]
+n|dlaqq  ''  [-lt]
+n|dqdq  ''  [-lt]
+n|drbb  ''  [-lt]
+n|drdr  ''  [-lt]
+n|drkk  ''  [-lt]
+n|dWldWl  ''  [-lt]
+n|flass  ''  [-lt]
+n|fqfq  ''  [-lt]
+n|frTT  ''  [-lt]
+n|frafr  ''  [-lt]
+n|fragT  ''  [-lt]
+n|fW'fW'  ''  [-lt]
+n|fWaqq  ''  [-lt]
+n|g'g'  ''  [-lt]
+n|gCagC  ''  [-lt]
+n|gaTT  ''  [-lt]
+n|gadd  ''  [-lt]
+n|gall  ''  [-lt]
+n|gbgb  ''  [-lt]
+n|gdgd  ''  [-lt]
+n|gfTT  ''  [-lt]
+n|gfgf  ''  [-lt]
+n|glajj  ''  [-lt]
+n|glat'  ''  [-lt]
+n|glawd  ''  [-lt]
+n|gragr  ''  [-lt]
+n|grbb  ''  [-lt]
+n|grgb  ''  [-lt]
+n|gwall  ''  [-lt]
+n|gxgx  ''  [-lt]
+n|gWadd  ''  [-lt]
+n|gWall  ''  [-lt]
+n|gWdgWd  ''  [-lt]
+n|gWradd  ''  [-lt]
+n|gWragWr  ''  [-lt]
+n|jlajl  ''  [-lt]
+n|jrgg  ''  [-lt]
+n|kball  ''  [-lt]
+n|kbkb  ''  [-lt]
+n|kfrr  ''  [-lt]
+n|klaws  ''  [-lt]
+n|kratt  ''  [-lt]
+n|krff  ''  [-lt]
+n|ktkt  ''  [-lt]
+n|kwatt  ''  [-lt]
+n|kW'kW'  ''  [-lt]
+n|kWaff  ''  [-lt]
+n|qTqT  ''  [-lt]
+n|qZqZ  ''  [-lt]
+n|qarr  ''  [-lt]
+n|qbarr  ''  [-lt]
+n|qbdd  ''  [-lt]
+n|qbqb  ''  [-lt]
+n|qfdd  ''  [-lt]
+n|qlaf'  ''  [-lt]
+n|qlql  ''  [-lt]
+n|qrbb  ''  [-lt]
+n|qrff  ''  [-lt]
+n|qsaqs  ''  [-lt]
+n|qwall  ''  [-lt]
+n|qWaxx  ''  [-lt]
+n|qWraTT  ''  [-lt]
+n|saff  ''  [-lt]
+n|sfsf  ''  [-lt]
+n|sqsq  ''  [-lt]
+n|sWlsWl  ''  [-lt]
+n|tbatb  ''  [-lt]
+n|tgtg  ''  [-lt]
+n|tktk  ''  [-lt]
+n|tlaks  ''  [-lt]
+n|tras  ''  [-lt]
+n|trkk  ''  [-lt]
+n|tWstWs  ''  [-lt]
+n|xaff  ''  [-lt]
+n|xatt  ''  [-lt]
+n|xratt  ''  [-lt]
+n|xrxr  ''  [-lt]
+n|xwarr  ''  [-lt]
+n|xWakk  ''  [-lt]
+n|xWkaxWk  ''  [-lt]
+n|z'z'  ''  [-lt]
+n|zarT  ''  [-lt]
+n|zfTT  ''  [-lt]
+n|zfzf  ''  [-lt]
+n|zlazl  ''  [-lt]
+n|zrTT  ''  [-lt]
+n|zrfT  ''  [-lt]
+n|zrff  ''  [-lt]
+q'T'  ''  [-lt]
+q'm  ''  [-lt]
+q'r  ''  [-lt]
+q't             ''            [vc=tr,-lt];[v=man,pos=n,-lt]
+qCqC  ''  [-lt]
+qC_C  ''  [-lt]
+qC_m  ''  [-lt]
+qN_*  ''  [-lt]
+qT'  ''  [-lt]
+qTf  ''  [-lt]
+qTn  ''  [-lt]
+qTqT  ''  [-lt]
+qTr  ''  [-lt]
+qT_l  ''  [-lt]
+qsf  ''  [-lt]
+qs_r  ''  [-lt]
+qaCl  ''  [-lt]
+qaN*  ''  [-lt]
+qaZ*  ''  [-lt]
+qabz  ''  [-lt]
+qarm  ''  [-lt]
+qarn             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+qatt  ''  [-lt]
+qaws  ''  [-lt]
+qbT  ''  [-lt]
+qbaTr  ''  [-lt]
+qbajr  ''  [-lt]
+qbqb  ''  [-lt]
+qbr  ''  [-lt]
+qbtt  ''  [-lt]
+qb_'  ''  [-lt]
+qb_l             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+qd'  ''  [-lt]
+qdaj*  ''  [-lt]
+qdd  ''  [-lt]
+qdm  ''  [-lt]
+qd_s  ''  [-lt]
+qfdd  ''  [-lt]
+qff  ''  [-lt]
+qfqf  ''  [-lt]
+qfrr  ''  [-lt]
+ql'  ''  [-lt]
+qlT  ''  [-lt]
+qlTf  ''  [-lt]
+qlTm  ''  [-lt]
+qlamd  ''  [-lt]
+qlaql  ''  [-lt]
+qlawT  ''  [-lt]
+qlbs  ''  [-lt]
+qll  ''  [-lt]
+qlm  ''  [-lt]
+ql_b  ''  [-lt]
+ql_d  ''  [-lt]
+ql_s  ''  [-lt]
+qmaTl  ''  [-lt]
+qml  ''  [-lt]
+qmqm  ''  [-lt]
+qms  ''  [-lt]
+qm_'  ''  [-lt]
+qm_T             ''            [vc=ps,-lt];[vc=cs,-lt];[vc=tr,as=it,-lt];[v=man,pos=n,-lt]
+qm_m  ''  [-lt]
+qn'  ''  [-lt]
+qnCb  ''  [-lt]
+qnCr  ''  [-lt]
+qnTb  ''  [-lt]
+qnTs  ''  [-lt]
+qnaT'  ''  [-lt]
+qnbT  ''  [-lt]
+qnbr  ''  [-lt]
+qndb  ''  [-lt]
+qnqn  ''  [-lt]
+qnzr  ''  [-lt]
+qn_f  ''  [-lt]
+qn_s  ''  [-lt]
+qn_t  ''  [-lt]
+qq_l  ''  [-lt]
+qr  ''  [-lt]
+qrS  ''  [-lt]
+qrT  ''  [-lt]
+qrTf  ''  [-lt]
+qr*  ''  [-lt]
+qrb  ''  [-lt]
+qrdd  ''  [-lt]
+qrf  ''  [-lt]
+qrn'  ''  [-lt]
+qrqb  ''  [-lt]
+qrqr  ''  [-lt]
+qrr  ''  [-lt]
+qrx*  ''  [-lt]
+qsaft  ''  [-lt]
+qsm  ''  [-lt]
+qsqs  ''  [-lt]
+qss  ''  [-lt]
+qs_t  ''  [-lt]
+qt_r  ''  [-lt]
+qwm  ''  [-lt]
+qyl  ''  [-lt]
+qym  ''  [-lt]
+qy_T  ''  [-lt]
+qy_s  ''  [-lt]
+qy_d  ''  [-lt]
+qy_m             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+qy_r  ''  [-lt]
+qzf  ''  [-lt]
+qzn  ''  [-lt]
+qzqz  ''  [-lt]
+qzz  ''  [-lt]
+qWC_*  ''  [-lt]
+qWT'             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+qWTqWT  ''  [-lt]
+qWTr  ''  [-lt]
+qWT_b  ''  [-lt]
+qWaC*  ''  [-lt]
+qWaTr  ''  [-lt]
+qWamT  ''  [-lt]
+qWfnn  ''  [-lt]
+qWf_r  ''  [-lt]
+qWlamT  ''  [-lt]
+qWlmm  ''  [-lt]
+qWlqWl  ''  [-lt]
+qWl'  ''  [-lt]
+qWl_f  ''  [-lt]
+qWl_l  ''  [-lt]
+qWmT  ''  [-lt]
+qWnSl  ''  [-lt]
+qWnTT  ''  [-lt]
+qWnTr  ''  [-lt]
+qWndd  ''  [-lt]
+qWngWl  ''  [-lt]
+qWnj*  ''  [-lt]
+qWn_n  ''  [-lt]
+qWn_s  ''  [-lt]
+qWrT  ''  [-lt]
+qWrTm  ''  [-lt]
+qWraN*  ''  [-lt]
+qWrb  ''  [-lt]
+qWrfd  ''  [-lt]
+qWrmd  ''  [-lt]
+qWrqWr  ''  [-lt]
+qWrqWs  ''  [-lt]
+qWrqWz  ''  [-lt]
+qWrs  ''  [-lt]
+qWr_'  ''  [-lt]
+qWsl  ''  [-lt]
+qWsqWs  ''  [-lt]
+qWx_x  ''  [-lt]
+qWy_*  ''  [-lt]
+qW|lClC  ''  [-lt]
+qW|nTnT  ''  [-lt]
+q|ClCl  ''  [-lt]
+q|bzbz  ''  [-lt]
+q|bTbT  ''  [-lt]
+q|lTlT  ''  [-lt]
+q|lblb  ''  [-lt]
+q|lsls  ''  [-lt]
+q|lxlx  ''  [-lt]
+q|nznz  ''  [-lt]
+r'b  ''  [-lt]
+r'd  ''  [-lt]
+r'q  ''  [-lt]
+r'r'  ''  [-lt]
+r's  ''  [-lt]
+rC*  ''  [-lt]
+rTb  ''  [-lt]
+rTrT  ''  [-lt]
+rakWt  ''  [-lt]
+ramd  ''  [-lt]
+raqWt  ''  [-lt]
+rb'  ''  [-lt]
+rbb  ''  [-lt]
+rbrb  ''  [-lt]
+rb_x  ''  [-lt]
+rd'  ''  [-lt]
+rfd  ''  [-lt]
+rfrf  ''  [-lt]
+rg'  ''  [-lt]
+rgT  ''  [-lt]
+rgb  ''  [-lt]
+rgd  ''  [-lt]
+rgf  ''  [-lt]
+rgm  ''  [-lt]
+rgrg  ''  [-lt]
+rgz  ''  [-lt]
+rj*  ''  [-lt]
+rk'  ''  [-lt]
+rkb  ''  [-lt]
+rks  ''  [-lt]
+rm_T  ''  [-lt]
+rqq  ''  [-lt]
+rs'  ''  [-lt]
+rsrs  ''  [-lt]
+rt'  ''  [-lt]
+rwT  ''  [-lt]
+rx_n  ''  [-lt]
+rzm  ''  [-lt]
+rzrz  ''  [-lt]
+rz_q  ''  [-lt]
+r|bdbd  ''  [-lt]
+r|btbt  ''  [-lt]
+r|gbgb  ''  [-lt]
+r|kfkf  ''  [-lt]
+r|mTmT  ''  [-lt]
+r|msms  ''  [-lt]
+s'b  ''  [-lt]
+s'g  ''  [-lt]
+s'l  ''  [-lt]
+s'm  ''  [-lt]
+s'n             ''            [vc=ps,-lt];[v=man,pos=n,-lt]
+s'q  ''  [-lt]
+s't  ''  [-lt]
+sN*             ''            [vc=ps,+lt];[vc=tr,as=it,+lt];[vc=cs,+lt];[v=man,pos=n,+lt]
+sT  ''  [-lt]
+sT'  ''  [-lt]
+sT*  ''  [-lt]
+sTm  ''  [-lt]
+satf             ''           [vc=ps,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+sb'  ''  [-lt]
+sbaTr  ''  [-lt]
+sbasb  ''  [-lt]
+sbk  ''  [-lt]
+sbq  ''  [-lt]
+sbr  ''  [-lt]
+sbsb  ''  [-lt]
+sb_b  ''  [-lt]
+sdb  ''  [-lt]
+sdd  ''  [-lt]
+sf'  ''  [-lt]
+sff  ''  [-lt]
+sfn  ''  [-lt]
+sfr  ''  [-lt]
+sfsf  ''  [-lt]
+sgd  ''  [-lt]
+sgsg  ''  [-lt]
+sgW_d  ''  [-lt]
+sg_g  ''  [-lt]
+skr  ''  [-lt]
+sksk  ''  [-lt]
+sk_'  ''  [-lt]
+sk_n  ''  [-lt]
+sl'  ''  [-lt]
+slb  ''  [-lt]
+slc*  ''  [-lt]
+slm  ''  [-lt]
+slqT  ''  [-lt]
+slsl  ''  [-lt]
+sl_f  ''  [-lt]
+sl_l  ''  [-lt]
+sl_q  ''  [-lt]
+sl_t  ''  [-lt]
+sm'  ''  [-lt]
+smT  ''  [-lt]
+sm_m  ''  [-lt]
+snTq  ''  [-lt]
+snTr  ''  [-lt]
+snad'             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+snbT  ''  [-lt]
+snbt  ''  [-lt]
+snf  ''  [-lt]
+snfT  ''  [-lt]
+snkl  ''  [-lt]
+snqr  ''  [-lt]
+snzr  ''  [-lt]
+sn_N  ''  [-lt]
+sn_g  ''  [-lt]
+sn_q  ''  [-lt]
+sqay*  ''  [-lt]
+sql  ''  [-lt]
+sq_q  ''  [-lt]
+sq_z  ''  [-lt]
+sraC*             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+srgWd  ''  [-lt]
+srnq  ''  [-lt]
+srq  ''  [-lt]
+srr  ''  [-lt]
+srsr  ''  [-lt]
+sr_z  ''  [-lt]
+ss_n  ''  [-lt]
+st_r  ''  [-lt]
+swT  ''  [-lt]
+syr  ''  [-lt]
+sy_f  ''  [-lt]
+sWmsWm  ''  [-lt]
+s|fnTr  ''  [-lt]
+s|gbgb  ''  [-lt]
+s|lklk  ''  [-lt]
+s|lmlm  ''  [-lt]
+t't'  ''  [-lt]
+tN_'  ''  [-lt]
+tagl  ''  [-lt]
+takt  ''  [-lt]
+tall  ''  [-lt]
+tatr  ''  [-lt]
+tb'  ''  [-lt]
+tbtb  ''  [-lt]
+tc_*  ''  [-lt]
+tf'  ''  [-lt]
+tg'  ''  [-lt]
+tkl  ''  [-lt]
+tkn  ''  [-lt]
+tktk  ''  [-lt]
+tkWr  ''  [-lt]
+tkW_s  ''  [-lt]
+tk_'  ''  [-lt]
+tk_z  ''  [-lt]
+tl'  ''  [-lt]
+tlm  ''  [-lt]
+tltl  ''  [-lt]
+tl_q  ''  [-lt]
+tmtm  ''  [-lt]
+tm_m  ''  [-lt]
+tm_n  ''  [-lt]
+tnakWl  ''  [-lt]
+tnby  ''  [-lt]
+tnfg  ''  [-lt]
+tnfs  ''  [-lt]
+tnkWs  ''  [-lt]
+tntg  ''  [-lt]
+tntn  ''  [-lt]
+tn_n  ''  [-lt]
+trams  ''  [-lt]
+trf  ''  [-lt]
+trgWm  ''  [-lt]
+trkk  ''  [-lt]
+trkWs  ''  [-lt]
+trtr  ''  [-lt]
+tr_b  ''  [-lt]
+tr_k  ''  [-lt]
+tr_t  ''  [-lt]
+tWftWf  ''  [-lt]
+tWstWs  ''  [-lt]
+t|rfrf  ''  [-lt]
+w'T  ''  [-lt]
+w'b  ''  [-lt]
+w'l             ''            [vc=tr,-lt];[vc=smp,-lt]   # 17.04.06; insures astewale, etc. for "causative"
+w's  ''  [-lt]
+wCamd  ''  [-lt]
+whd  ''  [-lt]
+wT'  ''  [-lt]
+wT_n  ''  [-lt]
+wT_q  ''  [-lt]
+wT_r  ''  [-lt]
+waN*  ''  [-lt]
+waj*  ''  [-lt]
+wall  ''  [-lt]
+watt  ''  [-lt]
+wax*  ''  [-lt]
+waxk  ''  [-lt]
+way*  ''  [-lt]
+wbr'  ''  [-lt]
+wb_q  ''  [-lt]
+wdaj*  ''  [-lt]
+wdd  ''  [-lt]
+wdm  ''  [-lt]
+wdq  ''  [-lt]
+wd_l  ''  [-lt]
+wd_r  ''  [-lt]
+wd_s  ''  [-lt]
+wf_f  ''  [-lt]
+wf_r  ''  [-lt]
+wg'  ''  [-lt]
+wgr  ''  [-lt]
+wg_d  ''  [-lt]
+wk'  ''  [-lt]
+wkb  ''  [-lt]
+wk_l  ''  [-lt]
+wlagd  ''  [-lt]
+wlakf  ''  [-lt]
+wlamm  ''  [-lt]
+wlawl  ''  [-lt]
+wld  ''  [-lt]
+wlq  ''  [-lt]
+wlwl  ''  [-lt]
+wnCf  ''  [-lt]
+wnafl  ''  [-lt]
+wnbd  ''  [-lt]
+wnjl  ''  [-lt]
+wnkr  ''  [-lt]
+wnwn  ''  [-lt]
+wq'  ''  [-lt]
+wqT  ''  [-lt]
+wqr  ''  [-lt]
+wqs  ''  [-lt]
+wr'  ''  [-lt]
+wraC*  ''  [-lt]
+wrd  ''  [-lt]
+wrr  ''  [-lt]
+wrs  ''  [-lt]
+wrwr  ''  [-lt]
+wrz'  ''  [-lt]
+wr_f  ''  [-lt]
+wsb  ''  [-lt]
+wsd  ''  [-lt]
+wslt  ''  [-lt]
+wsws  ''  [-lt]
+ws_'  ''  [-lt]
+ws_n  ''  [-lt]
+wtwt  ''  [-lt]
+wt_f  ''  [-lt]
+wxkt  ''  [-lt]
+wxngr  ''  [-lt]
+wx_l  ''  [-lt]
+wx_m  ''  [-lt]
+wx_q  ''  [-lt]
+wy_b  ''  [-lt]
+wz'  ''  [-lt]
+wzwz  ''  [-lt]
+wz_f  ''  [-lt]
+wz_t  ''  [-lt]
+w|dldl  ''  [-lt]
+w|lblb  ''  [-lt]
+w|rgrg  ''  [-lt]
+w|tbtb  ''  [-lt]
+w|tftf  ''  [-lt]
+w|trtr  ''  [-lt]
+w|zgzg  ''  [-lt]
+x'T  ''  [-lt]
+x'l             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+x'r  ''  [-lt]
+xN_*  ''  [-lt]
+xafd  ''  [-lt]
+xagr             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+xagt  ''  [-lt]
+xakr  ''  [-lt]
+xam'  ''  [-lt]
+xaql  ''  [-lt]
+xark  ''  [-lt]
+xaxT  ''  [-lt]
+xbll  ''  [-lt]
+xbrq  ''  [-lt]
+xbxb  ''  [-lt]
+xb_b  ''  [-lt]
+xb_r  ''  [-lt]
+xb_t  ''  [-lt]
+xf_T  ''  [-lt]
+xf_f  ''  [-lt]
+xf_n  ''  [-lt]
+xf_t  ''  [-lt]
+xgaxg  ''  [-lt]
+xgW_T  ''  [-lt]
+xgW_r  ''  [-lt]
+xk'  ''  [-lt]
+xkxk  ''  [-lt]
+xkW_t  ''  [-lt]
+xk_f  ''  [-lt]
+xk_m             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+xlqq  ''  [-lt]
+xlxl  ''  [-lt]
+xl_b  ''  [-lt]
+xl_g  ''  [-lt]
+xl_l  ''  [-lt]
+xl_m  ''  [-lt]
+xl_t  ''  [-lt]
+xmTT  ''  [-lt]
+xmdd  ''  [-lt]
+xmgl  ''  [-lt]
+xmqq  ''  [-lt]
+xm_q  ''  [-lt]
+xm_t  ''  [-lt]
+xn'  ''  [-lt]
+xndr  ''  [-lt]
+xnf  ''  [-lt]
+xngl  ''  [-lt]
+xnkf  ''  [-lt]
+xnqT  ''  [-lt]
+xnqr  ''  [-lt]
+xnqWT  ''  [-lt]
+xnqWr  ''  [-lt]
+xntr  ''  [-lt]
+xnxn  ''  [-lt]
+xn_T  ''  [-lt]
+xqxq  ''  [-lt]
+xq_T  ''  [-lt]
+xq_b  ''  [-lt]
+xq_l  ''  [-lt]
+xrdd  ''  [-lt]
+xrkt  ''  [-lt]
+xrmWT  ''  [-lt]
+xrxr  ''  [-lt]
+xr_T  ''  [-lt]
+xr_f  ''  [-lt]
+xtt  ''  [-lt]
+xwf  ''  [-lt]
+xwl  ''  [-lt]
+xwm  ''  [-lt]
+xwq  ''  [-lt]
+xx*  ''  [-lt]
+xx_g  ''  [-lt]
+xyT  ''  [-lt]
+xyt  ''  [-lt]
+xWTT  ''  [-lt]
+xWkxWk  ''  [-lt]
+xWk_k  ''  [-lt]
+xWlk  ''  [-lt]
+xWl_q  ''  [-lt]
+xW|lklk  ''  [-lt]
+x|blbl  ''  [-lt]
+x|gWaTT  ''  [-lt]
+x|krkr  ''  [-lt]
+x|kWrmm  ''  [-lt]
+x|mdmd  ''  [-lt]
+x|mWaTT  ''  [-lt]
+x|qdadm  ''  [-lt]
+x|qnTr  ''  [-lt]
+x|qWTqWT  ''  [-lt]
+y'z  ''  [-lt]
+z'g  ''  [-lt]
+z'l  ''  [-lt]
+z'q  ''  [-lt]
+z't  ''  [-lt]
+zTzT  ''  [-lt]
+zamd  ''  [-lt]
+zanf  ''  [-lt]
+zatl  ''  [-lt]
+zazn  ''  [-lt]
+zb'  ''  [-lt]
+zbT  ''  [-lt]
+zbann  ''  [-lt]
+zbarq  ''  [-lt]
+zbll  ''  [-lt]
+zbzb  ''  [-lt]
+zb_n  ''  [-lt]
+zb_t  ''  [-lt]
+zfn  ''  [-lt]
+zfzf  ''  [-lt]
+zf_q  ''  [-lt]
+zg'  ''  [-lt]
+zgaj*             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+zgb  ''  [-lt]
+zgm  ''  [-lt]
+zgn  ''  [-lt]
+zgnn  ''  [-lt]
+zgrr  ''  [-lt]
+zgy*  ''  [-lt]
+zgWn  ''  [-lt]
+zkr  ''  [-lt]
+zkzk  ''  [-lt]
+zlabd  ''  [-lt]
+zlf  ''  [-lt]
+zll  ''  [-lt]
+zlq  ''  [-lt]
+zlzl  ''  [-lt]
+zl_s  ''  [-lt]
+zmm  ''  [-lt]
+zmt  ''  [-lt]
+zmzm  ''  [-lt]
+zm_r  ''  [-lt]
+znTf  ''  [-lt]
+znTl  ''  [-lt]
+znafl  ''  [-lt]
+znakt  ''  [-lt]
+znb  ''  [-lt]
+znbl  ''  [-lt]
+zng'  ''  [-lt]
+znn  ''  [-lt]
+znqWl  ''  [-lt]
+zntr  ''  [-lt]
+zn'  #  [-lt]
+zn_T  ''  [-lt]
+zn_q  ''  [-lt]
+zqzq  ''  [-lt]
+zq_T  ''  [-lt]
+zr'  ''  [-lt]
+zrT  ''  [-lt]
+zrTT  ''  [-lt]
+zrf  ''  [-lt]
+zrfT  ''  [-lt]
+zrg'  ''  [-lt]
+zrgf  ''  [-lt]
+zrkt  ''  [-lt]
+zrnq  ''  [-lt]
+zrzr  ''  [-lt]
+zr_r  ''  [-lt]
+zwr  ''  [-lt]
+zwtr  ''  [-lt]
+zw_r  ''  [-lt]
+zym  ''  [-lt]
+zy_d  ''  [-lt]
+zy_n  ''  [-lt]
+zy_r  ''  [-lt]
+z|gWrgWr  ''  [-lt]
+z|lflf  ''  [-lt]
+z|lglg  ''  [-lt]
+z|rTrT  ''  [-lt]
+z|rbrb  ''  [-lt]
+z|rfrf  ''  [-lt]
+z|rkrk  ''  [-lt]

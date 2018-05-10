@@ -1,7 +1,13 @@
 -> start
 
 ## Set the part of speecn
-start -> pos   [:]     [pos=v]
+start -> light   [:]     [pos=v]
+
+## Light verbs
+light -> light1         [:{]   [+lt]
+light1 -> light_gap     +v_light+
+light_gap -> pos         <//:}->
+light -> pos  [:]        [-lt]
 
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc],-ye]
