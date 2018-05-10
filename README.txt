@@ -4,7 +4,7 @@ HornMorpho is part of the Processing Languages of the Global South
 project (http://homes.soic.indiana.edu/gasser/plogs.html).
 
 To install HornMorphoA, extract the files from the archive. Then go to
-the directory HornMorphoA3.0 and do 
+the directory HornMorphoA-3.0 and do 
 
   python setup.py install
 
