@@ -487,6 +487,13 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     if lang:
         return lang.morphology[pos]
 
+def show_segs(segmentation):
+    """Display the segments in a segmentation."""
+    if isinstance(segmentation, tuple):
+        segmentation = segmentation[1]
+    for seg in segmentation.split('-'):
+        print(seg)
+
 ## Shortcuts for Amharic
 A = lambda w, raw=False: anal_word('am', w, raw=raw)
 S = lambda w, raw=False: seg_word('am', w, raw=raw)

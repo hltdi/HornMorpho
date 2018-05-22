@@ -548,7 +548,7 @@ TI.morphology['cop'].defaultFS = \
     language.FeatStruct("[cj2=None,-neg,ob=[-xpl],-rel,sb=[-fem,-p1,-p2,-plr,-frm],-sub,-yn,tm=prs]")
 
 ## Functions that return the citation forms for words
-TI.morphology['v'].citation = lambda root, fss, simplified, guess, vc_as: vb_get_citation(root, fss, simplified, guess, vc_as)
+TI.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
 
 ## Functions that convert analyses to strings
 TI.morphology['v'].anal2string = lambda fss: vb_anal2string(fss)

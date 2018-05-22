@@ -14,7 +14,7 @@
 ###    You should have received a copy of the GNU General Public License
 ###    along with AmMorpho.  If not, see <http://www.gnu.org/licenses/>.
 ###
-###  Author: Michael Gasser <gasser@cs.indiana.edu>
+###  Author: Michael Gasser <gasser@indiana.edu>
 ### -----------------------------------------------------------------------------------
 ### FST which covers details of the Amharic verb stem.
 ### The prefixes a-, as-, te-, as well as the gemination of the stem initial consonsant

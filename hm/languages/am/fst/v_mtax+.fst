@@ -7,7 +7,7 @@ start -> light   [:]     [pos=v]
 light -> light1         [:{]   [+lt]
 light1 -> light_gap     +v_light+
 light_gap -> pos         <//:}->
-light -> pos  [:]        [-lt]
+light -> pos  [:] 
 
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc],-ye]

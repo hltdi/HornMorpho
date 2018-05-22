@@ -18,6 +18,9 @@ start -> middle  [X]
 middle -> middle [X;V;%-/]
 
 middle -> / [/]
+# single / is possible
+/ -> middle [X]
+# two /s also possible
 / -> //     [/]
 // -> middle [X]
 // -> gs     [':]

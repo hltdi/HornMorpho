@@ -6,7 +6,7 @@ start -> light   [:]     [pos=v]
 ## Light verbs
 light -> light_gap  +v_light+  [+lt]
 light_gap -> pos         <//: >
-light -> pos  [:]        [-lt]
+light -> pos  [:]
 
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc],-ye]
