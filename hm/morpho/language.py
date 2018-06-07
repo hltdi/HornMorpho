@@ -1145,7 +1145,23 @@ class Language:
         analyses = []
         to_cache = [] if cache else None
         fsts = fsts or self.morphology.pos
-        # See if the word is cached (before preprocessing/romanization)
+        if preproc:
+            # Convert to roman, for example
+            form = self.preproc(word)
+        else:
+            form = word
+        # See if the word is unanalyzable ...
+        unal_word = self.morphology.is_word(form)
+        # unal_word is a form, POS pair
+        if unal_word:
+            # Don't cache these
+            cache = False
+            if only_anal:
+                return []
+            a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
+            analyses.append(a)
+
+        # See if the word is cached
         cached = self.get_cached_anal(word)
         if cached:
             found = True
@@ -1154,92 +1170,73 @@ class Language:
                                       show_root=root, citation=citation, stem=stem,
                                       segment=segment, guess=False,
                                       postproc=postproc, gram=gram, freq=rank or report_freq)
+        # Is word already analyzed, without any root/stem (for example, there is a POS and/or
+        # a translation
+        elif form in self.morphology.analyzed:
+            if only_anal:
+                return []
+            # Assume these are the *only* analyses
+            get_all = False
+            a = self.proc_anal_noroot(form, self.morphology.get_analyzed(form), segment=segment)
+            if cache:
+                to_cache.extend(a)
+            analyses.extend(a)
         else:
-            if preproc:
-                # Convert to roman, for example
-                form = self.preproc(word)
-            else:
-                form = word
-            # See if the word is unanalyzable ...
-            unal_word = self.morphology.is_word(form)
-            # unal_word is a form, POS pair
-            if unal_word:
-                if only_anal:
-                    return []
-                a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
-#                if cache:
-#                    print("Caching {}, given anal {}".format(form, a))
-#                    to_cache.append(a)
-                analyses.append(a)
-            # ... or is already analyzed, without any root/stem (for example, there is a POS and/or
-            # a translation
-            elif form in self.morphology.analyzed:
-                if only_anal:
-                    return []
-                # Assume these are the *only* analyses
-                get_all = False
-                a = self.proc_anal_noroot(form, self.morphology.get_analyzed(form), segment=segment)
+            # Try stripping off suffixes
+            suff_anal = self.morphology.strip_suffixes(form)
+            if suff_anal:
                 if cache:
-                    to_cache.extend(a)
-                analyses.extend(a)
-            else:
-                # Try stripping off suffixes
-                suff_anal = self.morphology.strip_suffixes(form)
-                if suff_anal:
-                    if cache:
-                        to_cache.extend(suff_anal)
-                    for stem, fs in suff_anal:
-                        cat = fs.get('pos', '')
-                        analyses.append((cat, stem, stem, fs, 100))
-            if not analyses or get_all:
-                if not only_guess:
-                    for pos in fsts:
-                        #... or already analyzed within a particular POS
-                        preanal = self.morphology[pos].get_analyzed(form, sep_anals=True)
-                        if preanal:
-                            if cache:
-                                to_cache.extend(preanal)
-                            analyses.extend(self.proc_anal(form, preanal, pos,
-                                                           show_root=root, citation=citation, stem=stem,
-                                                           segment=segment, guess=False,
-                                                           postproc=postproc, gram=gram,
-                                                           freq=rank or report_freq))
-                if not analyses or get_all:
-                    if not only_guess:
+                    to_cache.extend(suff_anal)
+                for stem, fs in suff_anal:
+                    cat = fs.get('pos', '')
+                    analyses.append((cat, stem, stem, fs, 100))
+        if not analyses or (not found and get_all):
+            if not only_guess:
+                for pos in fsts:
+                    #... or already analyzed within a particular POS
+                    preanal = self.morphology[pos].get_analyzed(form, sep_anals=True)
+                    if preanal:
+                        if cache:
+                            to_cache.extend(preanal)
+                        analyses.extend(self.proc_anal(form, preanal, pos,
+                                                       show_root=root, citation=citation, stem=stem,
+                                                       segment=segment, guess=False,
+                                                       postproc=postproc, gram=gram,
+                                                       freq=rank or report_freq))
+                    else:
                         # We have to really analyze it; first try lexical FSTs for each POS
-                        for pos in fsts:
-#                            print("Analyzing {} for POS {}".format(form, pos))
-                            analysis = self.morphology[pos].anal(form,
-                                                                 phon=phon, segment=segment,
-                                                                 to_dict=to_dict, sep_anals=True)
-                            if analysis:
-                                if cache:
-                                    to_cache.extend(analysis)
-                                # Keep trying if an analysis is found
-                                analyses.extend(self.proc_anal(form, analysis, pos,
-                                                               show_root=root, citation=citation and not segment,
-                                                               segment=segment,
-                                                               stem=stem,
-                                                               guess=False, postproc=postproc, gram=gram,
-                                                               freq=rank or report_freq))
-                    # If nothing has been found, try guesser FSTs for each POS
-                    if not analyses and guess:
-                        # Accumulate results from all guessers
-                        for pos in fsts:
-                            analysis = self.morphology[pos].anal(form, guess=True,
-                                                                 phon=phon, segment=segment,
-                                                                 to_dict=to_dict, sep_anals=True)
-                            if analysis:
-                                if cache:
-                                    to_cache.extend(analysis)
-                                analyses.extend(self.proc_anal(form, analysis, pos,
-                                                               show_root=root,
-                                                               citation=citation and not segment,
-                                                               segment=segment,
-                                                               guess=True, gram=gram,
-                                                               postproc=postproc,
-                                                               freq=rank or report_freq))
+                        analysis = self.morphology[pos].anal(form,
+                                                             phon=phon, segment=segment,
+                                                             to_dict=to_dict, sep_anals=True)
+                        if analysis:
+                            if cache:
+                                to_cache.extend(analysis)
+                            # Keep trying if an analysis is found
+                            analyses.extend(self.proc_anal(form, analysis, pos,
+                                                           show_root=root, citation=citation and not segment,
+                                                           segment=segment,
+                                                           stem=stem,
+                                                           guess=False, postproc=postproc, gram=gram,
+                                                           freq=rank or report_freq))
+        # If nothing has been found, try guesser FSTs for each POS
+        if not analyses and guess:
+            # Accumulate results from all guessers
+            for pos in fsts:
+                analysis = self.morphology[pos].anal(form, guess=True,
+                                                     phon=phon, segment=segment,
+                                                     to_dict=to_dict, sep_anals=True)
+                if analysis:
+                    if cache:
+                        to_cache.extend(analysis)
+                    analyses.extend(self.proc_anal(form, analysis, pos,
+                                                   show_root=root,
+                                                   citation=citation and not segment,
+                                                   segment=segment,
+                                                   guess=True, gram=gram,
+                                                   postproc=postproc,
+                                                   freq=rank or report_freq))
         if cache and not found:
+#            print("Adding new anal {}, {}".format(word, to_cache))
             # Or use form instead of word
             self.add_new_anal(word, to_cache)
         if not analyses:
