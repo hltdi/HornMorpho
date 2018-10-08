@@ -1,18 +1,18 @@
 ###
-### This file is part of AmMorpho.
+### This file is part of morfo.
 ###
-###    AmMorpho is free software: you can redistribute it and/or modify
+###    morfo is free software: you can redistribute it and/or modify
 ###    it under the terms of the GNU General Public License as published by
 ###    the Free Software Foundation, either version 3 of the License, or
 ###    (at your option) any later version.
 ###
-###    AmMorpho is distributed in the hope that it will be useful,
+###    morfo is distributed in the hope that it will be useful,
 ###    but WITHOUT ANY WARRANTY; without even the implied warranty of
 ###    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ###    GNU General Public License for more details.
 ###
 ###    You should have received a copy of the GNU General Public License
-###    along with AmMorpho.  If not, see <http://www.gnu.org/licenses/>.
+###    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 ###
 ###  Author: Michael Gasser <gasser@indiana.edu>
 ### -----------------------------------------------------------------------------------
@@ -157,8 +157,7 @@ i/ -> -3            [:']
 -3V.2 -> -1          [a:']    [tm=prf];[tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=j_i,vc=smp,as=smp]
 # C2=' surfaces as 0 in other cases: imperfective except passive, gerundive, jussive/imperative except simple (simplex aspect)
 # ... yIsImal, yIsasIm, assasIm
--3V.2 -> -1          [:']     [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=imf,vc=cs];[tm=ger]
--3V.2 -> -1          [:']     [tm=j_i,as=it,vc=smp];[tm=j_i,as=rc,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
+-3V.2 -> -1          [:']     [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=imf,vc=cs];[tm=ger];[tm=j_i,as=it,vc=smp];[tm=j_i,as=rc,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
 
 # C2=w surfaces as o for perfective, imperfective and gerundive simplex (optionally); jussive/imperative passive
 # ... mote, moto (also muto) (CHANGE FOR GENERATION)
@@ -171,8 +170,7 @@ i/ -> -3            [:']
 -3V.2 -> -1          [a:w]    [tm=prf,as=it];[tm=imf,vc=ps,as=it];[tm=j_i,vc=ps,as=it]
 # C2=w surfaces as 0 for iterative aspect in other cases
 # ... yImWamWIt (-> yImWamut)
--3V.2 -> -1          [:w]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
--3V.2 -> -1          [:w]     [tm=j_i,as=it,vc=smp];[tm=j_i,as=it,vc=tr];[tm=j_i,as=it,vc=cs];[tm=ger,as=it]
+-3V.2 -> -1          [:w]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs];[tm=j_i,as=it,vc=smp];[tm=j_i,as=it,vc=tr];[tm=j_i,as=it,vc=cs];[tm=ger,as=it]
 # C1 before special C2: any root consonant other than L (')
 -3.2 -> -3V.2        [X/L]
 
@@ -191,10 +189,8 @@ i/ -> -3            [:']
 -3PV.2 -> -1         [a:y]    [tm=prf,as=it];[tm=imf,vc=ps,as=it];[tm=j_i,vc=ps,as=it]
 # following palatal C1, y surfaces as 0 in gerundive (optionally for simplex),
 # imperfective+jussive/imperative except passive
-# ... yIxIT, xITo
--3PV.2 -> -1         [:y]     [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger]
-# ... xaxITo, yIxaxIT
--3PV.2 -> -1         [:y]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
+# ... yIxIT, xITo; # ... xaxITo, yIxaxIT
+-3PV.2 -> -1         [:y]     [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger];[tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
 
 # following non-palatal C1, y surfaces as E in perfective, imperfective simplex and passive iterative,
 # gerundive simplex (optionally) and jussive/imperative passive (CHANGE FOR GENERATION)

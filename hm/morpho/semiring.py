@@ -131,7 +131,7 @@ class FSSet(set):
         """Get the value of the feature in the first FeatStruct that has one."""
         for fs in self:
             value = fs.get(feature)
-            if value:
+            if value != None:
                 return value
         return default
 
