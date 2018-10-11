@@ -37,7 +37,6 @@ stem0 -> plr_oc0    >>vnoun<<    [-p1,-p2,-prp,pos=n_dv]
 stem0 -> plr_oc0   +irr_vnoun+   [-p1,-p2,-prp,pos=n_dv]
 # Irregular plurals
 stem0 -> plr_irr0  +irr_plrS+   [v=None,-prp]
-plr_irr0 -> plr_irr       [:}-(plr)]
 stem0 -> plr_at0  +plr_at+      [v=None,-prp]
 plr_at0 -> plr_at       [:}]
 # Irregular -oc plurals
@@ -51,7 +50,8 @@ stemdef -> acc    <:}-u(def)>
 plr_an -> poss    <an:-an(plr)>    [+plr]
 #% Infinitives can't be plural
 plr_oc -> poss    <oc_:-oc(plr)>   [+plr,v=None];[+plr,v=ins];[+plr,v=agt];[+plr,v=man]
-plr_irr -> poss    <:-X(plr)>    []
+plr_irr0 -> poss      <:}-(plr)>  []
+#plr_irr -> poss    <:-X(plr)>    []
 plr_at -> poss     <:-at(plr)>   []
 plr_oc1 -> poss    <:-oc(plr)>   []
 plr_an -> poss     [:]           [-plr]
