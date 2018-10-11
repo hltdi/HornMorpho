@@ -138,3 +138,7 @@ wezeterefe adv wezeterefe
 mnNa adv mnN_a
 kfuNa adv kfuN_a
 gar post gar
+hulgizE adv hul_gizE
+qulqul adv qulqul
+wediyaw adv wediyaw
+yemesaselut adv yemesas_elut

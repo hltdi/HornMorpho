@@ -32,7 +32,7 @@ start -> 1L.3 [L]     [as=it];[as=smp]
 # after L, y and w are possible (and treated normally)
 1L.3 -> 2a.3   [X/L]
 
-1a_c.3 -> 2a.3 [X]    # C verbs (w, y? possible)
+1a_c.3 -> 2a.3 [X/L]    # C verbs
 1c.3 -> 2a.3   [X!]
 # non-duplicated CC(_)C
 2a.3 -> 2b.3   [:]     [as=smp];[as=rc]

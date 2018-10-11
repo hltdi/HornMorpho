@@ -32,7 +32,7 @@ rel1 -> neg    <m_I:m_(rel)->  [tm=imf]
 rel1 -> neg    <:(rel)->     [tm=prf];[tm=prs]
 
 ## NEGATIVE PREFIX
-neg -> neg_a      [a]    [+neg,ax=None]
+neg -> neg_a      <a:'a>    [+neg,ax=None]
 neg_a -> sbjp     [:]     [tm=imf];[tm=j_i]
 neg_a -> sbjp     <l:l(neg1)->    [tm=prf]
 # Affirmative

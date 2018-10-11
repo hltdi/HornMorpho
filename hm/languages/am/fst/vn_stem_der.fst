@@ -13,7 +13,7 @@ start -> 1a.3 [X/L]
 start -> 1L.3 [L]     [as=it];[as=smp];[v=man,vc=smp,as=smp]
 1a.3 -> 1b.3  [:]     [as=it];[as=smp];[v=man,vc=smp,as=smp]
 1b.3 -> 1c.3  [:]
-1b.3 -> 1c.3  [a]     # C verbs
+1b.3 -> 1a_c.3  [a]     # C verbs
 
 # C2 = y, w, '; no gemination of w, y
 # redup
@@ -33,6 +33,7 @@ start -> 1L.3 [L]     [as=it];[as=smp];[v=man,vc=smp,as=smp]
 # after L, y and w are possible (and treated normally)
 1L.3 -> 2a.3  [X/L]
 
+1a_c.3 -> 2a.3 [X/L]    # C verbs
 1c.3 -> 2a.3  [X!]
 2a.3 -> 2b.3  [:]     [as=smp,v=agt];[as=rc,v=agt];[as=smp,v=inf];[as=rc,v=inf];[as=smp,v=ins];[as=rc,v=ins]
 2b.3 -> 2c.3  [_;:]

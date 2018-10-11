@@ -1,6 +1,6 @@
 -> start
 
-start -> end   <I:I(prep)->        [pp=I,-acc,rl=[+p,-acc]]
+start -> end   <I:'(prep)->        [pp=I,-acc,rl=[+p,-acc]]
 start -> end   <le:le(prep)->      [pp=le,-acc,rl=[+p,-acc]]
 start -> end   <be:be(prep)->      [pp=be,-acc,rl=[+p,-acc]]
 start -> end   <ke:ke(prep)->      [pp=ke,-acc,rl=[+p,-acc]]

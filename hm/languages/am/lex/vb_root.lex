@@ -921,7 +921,7 @@ l|kWskWs  ''  [-lt]
 m'T  ''  [-lt]
 m'g  ''  [-lt]
 m'l  ''  [-lt]
-m'r             ''            [vc=tr,-lt];[vc=smp,-lt]   # 17.04.06; insures astemare, etc. for "causative"
+m'r             ''      [-lt]
 m's  ''  [-lt]
 mCmC  ''  [-lt]
 mN*             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]

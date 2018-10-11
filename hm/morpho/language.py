@@ -1120,13 +1120,11 @@ class Language:
         else:
             dct[form] = [(root, fs)]
 
-    def anal_word(self, word, fsts=None,
-                  guess=True, only_guess=False,
+    def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False,
                   root=True, stem=True, citation=True, gram=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
-                  cache=True,
-                  no_anal=None, string=False, print_out=False,
+                  cache=True, no_anal=None, string=False, print_out=False,
                   rank=True, report_freq=True, nbest=100,
                   only_anal=False):
         '''Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
@@ -1165,7 +1163,6 @@ class Language:
         cached = self.get_cached_anal(word)
         if cached:
             found = True
-#            print("Cached analyses for {}: {}".format(word, cached))
             analyses = self.proc_anal(word, cached, None,
                                       show_root=root, citation=citation, stem=stem,
                                       segment=segment, guess=False,
@@ -1244,7 +1241,7 @@ class Language:
             if no_anal != None:
                 no_anal.append(word)
             return analyses
-        if rank and len(analyses) > 1:
+        if rank and len(analyses) > 1 and not segment:
 #            print("Ranking analyses")
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
@@ -1298,6 +1295,9 @@ class Language:
             res = []
             for analysis in analyses:
                 feats = analysis[1]
+                if not feats:
+                    # No analysis
+                    continue
                 if isinstance(feats, str):
                     pos = feats
                 else:
@@ -1319,7 +1319,10 @@ class Language:
             root = self.postpostprocess(analysis[0])
             grammar = analysis[1]
             if not grammar:
-                p = pos or ''
+                # No analysis; skip this one
+#                results.add((root, None, 0))
+                continue
+#                p = pos or ''
             elif not pos:
                 p = grammar.get('pos', '')
             else:
