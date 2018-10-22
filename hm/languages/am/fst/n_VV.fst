@@ -1,10 +1,9 @@
 # e(')a -> a (optionally)
 # e(')I -> e (optionally)
-# aa -> a
 
 -> start
 # delete $ not following e
-start -> start   [X;_;/;V-e,a]
+start -> start   [X;_;/;V-e]
 
 # optional: yalga, ye'alga
 start -> e.      [:e]
@@ -22,10 +21,5 @@ e -> e'.         [']
 e'. -> start     [V-I;:I]
 e -> start       [X;/]
 
-# obligatory; algac_ew (never a glottal stop in between?)
-start -> a       [a]
-a -> start       [:a;X;/;V-a]
-
 start ->
 e ->
-a ->

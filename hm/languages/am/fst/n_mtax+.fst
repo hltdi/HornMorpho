@@ -21,28 +21,28 @@ stem0 -> acc0      +prep_n+      [-plr,v=None,-dis,-p1,-p2,poss=[-expl],+def,-it
 stem0 -> acc0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 acc0 -> acc       [:}]
 
-# Non-deverbal common nouns
+## Non-deverbal common nouns
 stem0 -> plr_oc0   +n_stem+      [v=None,-prp]
 plr_oc0 -> plr_oc       [:}]
-# Place names; not necessarily -prp
+## Place names; not necessarily -prp
 stem0 ->  place0   +n_place+     [v=None]
 place0 -> acc       [:}]        [+def,+prp,-itu,poss=[-expl]]
-# Proper nouns (possessive is possible); always 3rd person singular
+## Proper nouns (possessive is possible); always 3rd person singular
 stem0 -> name0     +n_name+      [v=None,-p1,-p2,+def,+prp,-plr,-itu]
 name0 -> acc       [:}]
 stem0 -> plr_an0   +n_stem_an+   [v=None,-prp]
 plr_an0 -> plr_an   [:}]         
-# Deverbal nouns: v=agt | ins | man | inf
+## Deverbal nouns: v=agt | ins | man | inf
 stem0 -> plr_oc0    >>vnoun<<    [-p1,-p2,-prp,pos=n_dv]
 stem0 -> plr_oc0   +irr_vnoun+   [-p1,-p2,-prp,pos=n_dv]
-# Irregular plurals
+## Irregular plurals
 stem0 -> plr_irr0  +irr_plrS+   [v=None,-prp]
 stem0 -> plr_at0  +plr_at+      [v=None,-prp]
 plr_at0 -> plr_at       [:}]
 # Irregular -oc plurals
 stem0 -> plr_oc10  +plr_oc+      [v=None,-prp]
 plr_oc10 -> plr_oc1       [:}]
-# Irregular definite (only sewy_ew?)
+## Irregular definite (only sewy_ew?)
 stem0 -> stemdef   +irr_n+        [v=None,poss=[-expl],-prp]
 stemdef -> acc    <:}-u(def)>
 
@@ -68,12 +68,12 @@ poss -> acc       <u:-u(def)>          [+def,poss=[-expl],-itu,+plr]
 poss -> acc       <u:-u(poss=3sm)>     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu]
 poss -> acc      <itu:-itu(def,fem)>    [+def,poss=[-expl],+fem,-plr,+itu,-prp]
 #% the only deverbal nouns that can be feminine are agents
-poss -> acc      <wa:-wa(def,fem)>    [+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None]
-poss -> acc      <wa:-wa(poss=3sf)>   [+def,-prp,poss=[-p1,-p2,-plr,+fem,+expl],-plr,-itu,v=None]
+poss -> acc      <wa:-wa(def,fem)>    [+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+def,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
+poss -> acc      <wa:-wa(poss=3sf)>   [+def,-prp,poss=[-p1,-p2,-plr,+fem,+expl],-itu]
 poss -> acc     <ac_n:-ac_n(poss=1p)>    [+def,poss=[+p1,-p2,+plr,+expl],-itu]
 poss -> acc     <ac_hu:-ac_hu(poss=2p)>   [+def,poss=[-p1,+p2,+plr,+expl],-itu]
 poss -> acc     <ac_ew:-ac_ew(poss=3p)>   [+def,poss=[-p1,-p2,+plr,+expl],-itu]
-poss -> acc    <wo(t):-wo(poss=2F)>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
+poss -> acc     <wo:-wo(poss=2frm)>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
 
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc,rl=[-acc]]

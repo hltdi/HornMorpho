@@ -7,11 +7,11 @@ start -> X    [X;V]
 X -> X        [X;V;_;/;$]
 start -> z    [z:R]
 X -> z        [z:R]
-# z -> zI       [I:]
-z ->   tn     [t;n]              # environment for gemination (2,1p, passive t-)
+z -> zI       [I:]
+zI ->   tn     [t;n]              # environment for gemination (2,1p, passive t-)
 tn -> tn_     [_:]
 tn_ -> end    [X;V;/]            # after 2,1p C, passive t-
-z -> zX       [X-t,n;A]          # can begin negative or causative prefix (a)
+zI -> zX       [X-t,n;A]          # can begin negative or causative prefix (a)
 zX -> end     [X;V;_;/;$]
 
 # R -> I.._

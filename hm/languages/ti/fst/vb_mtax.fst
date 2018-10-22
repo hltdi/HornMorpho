@@ -2,6 +2,16 @@
 
 -> start
 
+## COPULA handled separately
+
+start -> cop   [':]     [-yn,-rel,pp=None,cj1=None,tm=prs,vc=smp,as=smp,-neg,ob=[-xpl]]
+start -> cop   [d:]     [+yn,-rel,pp=None,cj1=None,tm=prs,vc=smp,as=smp,-neg,ob=[-xpl]]
+
+cop -> copcnj    +iyyu+
+
+copcnj -> end     >>cop_cnj<<
+copcnj -> end     [:]      [cj2=None]
+
 # No conjunction or preposition
 start -> neg   [:]     [cj1=None,pp=None,-rel,-sub]
 

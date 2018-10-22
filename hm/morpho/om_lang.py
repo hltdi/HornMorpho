@@ -1,18 +1,18 @@
 """
-This file is part of HornMorpho.
+This file is part of morfo.
 
-    HornMorpho is free software: you can redistribute it and/or modify
+    morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    HornMorpho is distributed in the hope that it will be useful,
+    morfo is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
@@ -20,7 +20,7 @@ Create Language, Morphology, and POSMorphology objects for Oromo.
 """
 from . import language
 
-OM = language.Language("Oromo", 'Om',
+OM = language.Language("Oromo", 'om',
                        seg_units=[['b', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'q', 'r', 't', 'w', 'x', 'y', "'", '-',
                                    # Only in foreign words
                                    'v', 'z',
@@ -56,7 +56,7 @@ OM.morphology['n'].FS_implic = {}
 OM.morphology['n'].citationFS = \
     language.FeatStruct("[pos=n,cnj=None,case=bs,-gen,-fem,-pl,-def,-1s_sb]")
 
-def n_anal2string(anal):
+def n_anal2string(anal, webdict=None):
     '''Convert a noun/adj analysis to a string.
 
     anal is ("(*)n", stem, citation, gramFS)
@@ -117,7 +117,7 @@ def n_anal2string(anal):
             s += '\n'
     return s
 
-def v_anal2string(anal):
+def v_anal2string(anal, webdict=None):
     '''Convert a verb analysis to a string.
 
     anal is ("(*)v", root, citation, gramFS)
@@ -224,15 +224,15 @@ def v_anal2string(anal):
         s += '\n'
     return s
 
-def arg2string(fs):
+def arg2string(fs, web=False):
     '''Convert an argument Feature Structure to a string.'''
-    s = ''
+    s = '' if web else ' '
     if fs.get('p1'):
-        s += ' 1'
+        s += '1'
     elif fs.get('p2'):
-        s += ' 2'
+        s += '2'
     else:
-        s += ' 3'
+        s += '3'
     if fs.get('pl'):
         s += ', plur'
     else:
@@ -242,7 +242,8 @@ def arg2string(fs):
             s += ', fem'
         else:
             s += ', masc'
-    s += '\n'
+    if not web:
+        s += '\n'
     return s
 
 def v_get_citation(root, fs, guess=False):
@@ -262,10 +263,10 @@ def v_get_citation(root, fs, guess=False):
     return result
 
 ## Function that converts analyses to strings
-OM.morphology['v'].anal2string = lambda fss: v_anal2string(fss)
+OM.morphology['v'].anal2string = lambda fss, webdict: v_anal2string(fss, webdict=webdict)
 ## Functions that return the citation forms for words
-OM.morphology['v'].citation = lambda root, fss, simplified, guess, vc_as: v_get_citation(root, fss, guess)
+OM.morphology['v'].citation = lambda root, fss, simplified, guess: v_get_citation(root, fss, guess)
 ## Function that converts analyses to strings
-OM.morphology['n'].anal2string = lambda fss: n_anal2string(fss)
+OM.morphology['n'].anal2string = lambda fss, webdict: n_anal2string(fss, webdict=webdict)
 ## Functions that return the citation forms for words
-OM.morphology['n'].citation = lambda root, fss, simplified, guess, vc_as: root
+OM.morphology['n'].citation = lambda root, fss, simplified, guess: root

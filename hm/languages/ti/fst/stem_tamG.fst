@@ -65,19 +65,15 @@ a -> tt             <t_e!:>    [as=it]
 -2A_ -> -1L         [a:]      [tm=j_i,vc=ps];[tm=j_i,vc=smp]
 -2A_ -> -2V         [_:]      [tm=imf,vc=ps]
 # Go to final vowel for ger, jus/imp trans, perf smp, perf trans, perf pass with consonant suffix (1p, 2p)
--2A_ -> -2V         [:]       [tm=ger];[tm=j_i,vc=tr]
--2A_ -> -2V         [:]       [tm=prf,vc=smp];[tm=prf,vc=tr];[tm=prf,vc=ps,sb=[+p1]];[tm=prf,vc=ps,sb=[+p2]]
+-2A_ -> -2V         [:]       [tm=ger];[tm=j_i,vc=tr];[tm=prf,vc=smp];[tm=prf,vc=tr];[tm=prf,vc=ps,sb=[+p1]];[tm=prf,vc=ps,sb=[+p2]]
 ## Imperfective simplex/transitive gemination of C2
 # Geminate tr and smp imperf when there is no sb or ob suffix
--2A_ -> -2V         [_:]      [tm=imf,vc=smp,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]]
--2A_ -> -2V         [_:]      [tm=imf,vc=tr,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]]
+-2A_ -> -2V         [_:]      [tm=imf,vc=smp,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]];[tm=imf,vc=tr,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]]
 # No gemination in imperf tr and smp if there is a sb or ob suffix
--2A_ -> -2V         [:]       [tm=imf,vc=smp,ob=[+xpl]];[tm=imf,vc=smp,sb=[+p2,+fem]];[tm=imf,vc=smp,sb=[-p1,+plr]]
--2A_ -> -2V         [:]       [tm=imf,vc=tr,ob=[+xpl]];[tm=imf,vc=tr,sb=[+p2,+fem]];[tm=imf,vc=tr,sb=[-p1,+plr]]
+-2A_ -> -2V         [:]       [tm=imf,vc=smp,ob=[+xpl]];[tm=imf,vc=smp,sb=[+p2,+fem]];[tm=imf,vc=smp,sb=[-p1,+plr]];[tm=imf,vc=tr,ob=[+xpl]];[tm=imf,vc=tr,sb=[+p2,+fem]];[tm=imf,vc=tr,sb=[-p1,+plr]]
 
 -2A -> -2A_         [X/L]
--3AV -> -2A         [e:]      [tm=prf,vc=smp];[tm=prf,vc=ps];[tm=imf,vc=smp]
--3AV -> -2A         [e:]      [tm=ger,vc=smp];[tm=ger,vc=ps];[tm=j_i,vc=ps]
+-3AV -> -2A         [e:]      [tm=prf,vc=smp];[tm=prf,vc=ps];[tm=imf,vc=smp];[tm=ger,vc=smp];[tm=ger,vc=ps];[tm=j_i,vc=ps]
 # First vowel in CCC jussive/imperative non-passive and in imperfective passive/simple and perfective transitive an exception
 -3AV -> -2A         [:]       [tm=imf,vc=ps];[tm=imf,vc=tr];[tm=prf,vc=tr];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
 -3 -> -3AV          [X]

@@ -1,19 +1,19 @@
 
 """
-This file is part of HornMorpho.
+This file is part of morfo.
 
-    HornMorpho is free software: you can redistribute it and/or modify
+    morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    HornMorpho is distributed in the hope that it will be useful,
+    morfo is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 
 ------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
@@ -25,8 +25,17 @@ from geez.py).
 from . import language
 from .geez import *
 
+ROM2GEEZ = {'InkI': "እንክ", "kI": "ክ", "Inte": "እንተ", "mIs": "ምስ", "nI": "ን", "mI": "ም", "nIKI": "ንኽ", "Inna": "እና",
+            "sIle": "ስለ", "kem": "ከም", "nI": "ን", "ab": "ኣብ", "nab": "ናብ", "kab": "ካብ", "bI": "ብ",
+            "n": "ን", "s": "ስ", "ke": "ከ", "do": "ዶ", "Immo": "እሞ"}
+
 ### Various functions that will be values of attributes of Tigrinya Morphology
 ### and POSMorphology objects.
+
+def webfv(webdict, feature, value):
+    """Add value to feature in webdict if there is one."""
+    if webdict != None:
+        webdict[feature] = value
 
 def vb_get_citation(root, fs, simplified=False, guess=False, vc_as=False):
     '''Return the canonical (prf, 3sm) form for the root and language.FeatStructs
@@ -55,7 +64,7 @@ def vb_get_citation(root, fs, simplified=False, guess=False, vc_as=False):
         fs.update({'vc': 'ps'})
         fs.freeze()
         citation = TI.morphology['v'].gen(root, fs, from_dict=False,
-                                           simplified=simplified, guess=guess)
+                                          simplified=simplified, guess=guess)
         if citation:
             result = citation[0][0]
     return result
@@ -70,39 +79,46 @@ def orthographize(word):
     word = word.replace('_', '').replace('I', '')
     return word
 
-def cop_anal2string(anal):
-    '''Convert a copula analysis to a string.
+#def cop_anal2string(anal, webdict=None):
+#    '''Convert a copula analysis to a string.
+#
+#    anal is ("cop", "Iyyu", "Iyyu", gramFS)
+#    '''
+#    s = 'POS: copula'
+#    if anal[1]:
+#        s += ', root: <እይ->'
+#    s += '\n'
+#    webfv(webdict, 'POS', 'copula')
+#    webfv(webdict, 'pos', 'cop')
+#    webfv(webdict, 'root', "እይ-")
+#    fs = anal[3]
+#    if fs:
+#        sb = fs['sb']
+#        s += ' subject:'
+#        s += arg2string(sb, web=webdict)
+#        webfv(webdict, 'subject', arg2string(sb, web=True))
+#        anygram = False
+#        if fs.get('neg'):
+#            s += ' grammar: negative'
+#            anygram = True
+#            webfv(webdict, 'negative', '+')
+#        if fs.get('yn'):
+#            if anygram:
+#                s += ','
+#            else:
+#                s += ' grammar:'
+#            s += ' yes/no'
+#            anygram = True
+#            webfv(webdict, 'YN question', '+')
+#        if anygram:
+#            s += '\n'
+#        cj = fs.get('cj2')
+#        if cj:
+#            s += ' conjunctive suffix: ' + cj + '\n'
+#            webfv(webdict, 'conj suffix', roman2geez(cj, 'ti'))
+#    return s
 
-    anal is ("cop", "Iyyu", "Iyyu", gramFS)
-    '''
-    s = 'POS: copula'
-    if anal[1]:
-        s += ', root: <' + anal[1] + '>'
-    s += '\n'
-    fs = anal[3]
-    if fs:
-        sb = fs['sb']
-        s += ' subject:'
-        s += arg2string(sb)
-        anygram = False
-        if fs.get('neg'):
-            s += ' grammar: negative'
-            anygram = True
-        if fs.get('yn'):
-            if anygram:
-                s += ','
-            else:
-                s += ' grammar:'
-            s += ' yes/no'
-            anygram = True
-        if anygram:
-            s += '\n'
-        cj = fs.get('cj2')
-        if cj:
-            s += ' conjunctive suffix: ' + cj + '\n'
-    return s
-
-def vb_anal2string(anal):
+def vb_anal2string(anal, webdict=None):
     '''Convert a verb analysis to a string.
 
     anal is ("(*)v", root, citation, gramFS)
@@ -113,48 +129,68 @@ def vb_anal2string(anal):
     fs = anal[3]
     POS = '?POS: ' if '?' in anal[0] else 'POS: '
     s = POS + pos
+    webfv(webdict, 'POS', 'verb')
+    webfv(webdict, 'pos', 'v')
+    rc = ''
     if root:
-        s += ', root: <' + root + '>'
+        rc = '<' + root + '>'
+        s += ', root: ' + rc
     if citation:
         s += ', citation: ' + citation
+        rc = "{}({})".format(rc, citation)
+    webfv(webdict, 'root', rc)
     s += '\n'
     if fs:
         sb = fs['sb']
         s += ' subject:'
-        s += arg2string(sb)
+        s += arg2string(sb, web=webdict)
+        webfv(webdict, 'subject', arg2string(sb, web=True))
         ob = fs.get('ob')
         if ob and ob.get('xpl'):
             s += ' object:'
-            s += arg2string(ob, True)
+            s += arg2string(ob, True, web=webdict)
+            webfv(webdict, 'object', arg2string(ob, True, web=True))
         s += ' grammar:'
         tm = fs.get('tm')
         if tm == 'prf':
             s += ' perfective'
+            webfv(webdict, 'TAM', 'perfective')
         elif tm == 'imf':
             s += ' imperfective'
+            webfv(webdict, 'TAM', 'imperfective')
         elif tm == 'j_i':
             s += ' jussive/imperative'
+            webfv(webdict, 'TAM', 'juss/imper')
         elif tm == 'ger':
             s += ' gerundive'
+            webfv(webdict, 'TAM', 'gerundive')
         else:
             s += ' present'
+            webfv(webdict, 'TAM', 'present')
         asp = fs.get('as')
         if asp == 'it':
             s += ', iterative'
+            webfv(webdict, 'aspect', 'iterative')
         elif asp == 'rc':
             s += ', reciprocal'
+            webfv(webdict, 'aspect', 'reciprocal')
         vc = fs.get('vc')
         if vc == 'ps':
             s += ', passive'
+            webfv(webdict, 'aspect', 'passive')
         elif vc == 'tr':
             s += ', transitive'
+            webfv(webdict, 'aspect', 'transitive')
         if fs.get('yn'):
             s += ', yes/no'
+            webfv(webdict, 'YN question', '+')
         if fs.get('rel') or fs.get('neg'):
             if fs.get('rel'):
                 s += ', relative'
+                webfv(webdict, 'relative', "+")
             if fs.get('neg'):
                 s += ', negative'
+                webfv(webdict, 'negative', '+')
         s += '\n'
         cj1 = fs.get('cj1')
         cj2 = fs.get('cj2')
@@ -164,37 +200,41 @@ def vb_anal2string(anal):
             if prep:
                 any_affix = True
                 s += ' preposition: ' + prep
+                webfv(webdict, 'preposition', roman2geez(prep))
             if cj1:
                 if any_affix: s += ','
                 s += ' conjunctive prefix: ' + cj1
+                webfv(webdict, 'conj prefix', roman2geez(cj1))
             if cj2:
                 if any_affix: s += ','
                 s += ' conjunctive suffix: ' + cj2
+                webfv(webdict, 'conj suffix', roman2geez(cj2))
             s += '\n'
     return s
 
-def arg2string(fs, obj=False):
+def arg2string(fs, obj=False, web=False):
     '''Convert an argument Feature Structure to a string.'''
-    s = ''
+    s = '' if web else ' '
     if fs.get('p1'):
-        s += ' 1'
+        s += '1'
     elif fs.get('p2'):
-        s += ' 2'
+        s += '2'
     else:
-        s += ' 3'
+        s += '3'
     if fs.get('plr'):
-        s += ', plur'
+        s += ' plur'
     else:
-        s += ', sing'
+        s += ' sing'
     if not fs.get('p1'):
         if fs.get('fem'):
-            s += ', fem'
+            s += ' fem'
         else:
-            s += ', masc'
+            s += ' mas'
     if obj:
         if fs.get('prp'):
-            s += ', prep'
-    s += '\n'
+            s += ' prep'
+    if not web:
+        s += '\n'
     return s
 
 def ti_preproc(form):
@@ -500,7 +540,7 @@ def dict_to_anal_old(root, dct, freeze=True):
 
 ## Create Language object for Tigrinya, including preprocessing, postprocessing,
 ## and segmentation units (phones).
-TI = language.Language("Tigrinya", 'Ti',
+TI = language.Language("ትግርኛ", 'Ti',
                        postproc=lambda form: sera2geez(GEEZ_SERA['ti'][1], form, lang='ti'),
                        preproc=lambda form: geez2sera(GEEZ_SERA['ti'][0], form, lang='ti'),
                        seg_units=[["a", "e", "E", "i", "I", "o", "u", "@", "A", "w", "y", "'", "`", "|", "_"],
@@ -514,10 +554,11 @@ TI = language.Language("Tigrinya", 'Ti',
                                    "T": ["T", "TW"], "v": ["v", "vW"], "x": ["x", "xW"],
                                    "z": ["z", "zW"], "Z": ["Z", "ZW"]}])
 
-## Create Morphology object and noun, verb, and copula POSMorphology objects for Tigrinya,
+## Create Morphology object and verb POSMorphology objects for Tigrinya,
 ## including punctuation and ASCII characters that are part of the romanization.
 TI.set_morphology(language.Morphology(
-                                      pos_morphs=[('cop', [], [], []), ('v', [], [], [])],
+#                                      pos_morphs=[('cop', [], [], []), ('v', [], [], [])],
+                                      pos_morphs=[('v', [], [], [])],
                                       # Exclude ^ and - (because it can be used in compounds)
                                       punctuation=r'[“‘”’–—:;/,<>?.!%$()[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                                       # Include digits?
@@ -544,15 +585,70 @@ TI.morphology['v'].FS_implic = {'rel': ['sub'], 'cj1': ['sub'], 'pp': ['rel', 's
 # defaultFS with voice and aspect unspecified
 TI.morphology['v'].citationFS = \
     language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-xpl],cj1=None,cj2=None,pp=None,-neg,-yn,-rel,-sub]")
-TI.morphology['cop'].defaultFS = \
-    language.FeatStruct("[cj2=None,-neg,ob=[-xpl],-rel,sb=[-fem,-p1,-p2,-plr,-frm],-sub,-yn,tm=prs]")
+#TI.morphology['cop'].defaultFS = \
+#    language.FeatStruct("[cj2=None,-neg,ob=[-xpl],-rel,sb=[-fem,-p1,-p2,-plr,-frm],-sub,-yn,tm=prs]")
 
 ## Functions that return the citation forms for words
 TI.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
+TI.morphology['v'].explicit_feats = ["sb", "ob", "tm", "neg", "rel", "def", "cj1", "cj2", "pp"]
+TI.morphology['v'].feat_list = \
+  [('pp', ('sIle', 'kem', 'nI', 'ab', 'Inte', 'nab', 'kab', 'bI')),
+   ('vc', ('tr', 'smp', 'ps')),
+  ('d', (True, False)),
+  ('yn', (True, False)),
+  ('neg', (True, False)),
+  ('pos', ('v')),
+  ('ob', [('p2', (True, False)), ('p1', (True, False)), ('plr', (True, False)),
+          ('xpl', (True, False)), ('fem', (True, False)), ('prp', (True, False))]),
+  ('as', ('smp', 'rc', 'it')),
+  ('tm', ('ger', 'imf', 'j_i', 'prf', 'prs')),
+  ('rel', (True, False)),
+  ('cj2', ('n', 's', 'ke', 'do', 'Immo')),
+  ('sb', [('p2', (True, False)), ('fem', (True, False)), ('p1', (True, False)),
+          ('plr', (True, False)), ('p3', (True, False))]),
+  ('cj1', ('InkI', 'kI', 'Inte', 'mIs', 'nI', 'mI', 'nIKI', 'Inna')),
+  ('sub', (True, False))]
+
+TI.morphology['v'].feat_abbrevs = \
+  {'cj1': "conj prefix", 'cj2': "conj suffix", "vc": "voice",
+   "sb": "subject", "ob": "object", "tm": "TAM", "neg": "negative", "rel": "relative", "def": "definite",
+   "pp": "preposition", 'yn': "YN question"}
+TI.morphology['v'].fv_abbrevs = \
+  (([['p1', True], ['p2', False], ['plr', False]], "1 prs sng"),
+   ([['p1', True], ['p2', False], ['plr', True]], "1 prs plr"),
+   ([['p1', False], ['p2', True], ['plr', False], ['fem', False]], "2 prs sng mas"),
+   ([['p1', False], ['p2', True], ['plr', False], ['fem', True]], "2 prs sng fem"),
+   ([['p1', False], ['p2', True], ['plr', True], ['fem', False]], "2 prs plr mas"),
+   ([['p1', False], ['p2', True], ['plr', True], ['fem', True]], "2 prs plr fem"),
+   ([['p1', False], ['p2', False], ['plr', False], ['fem', False]], "3 prs sng mas"),
+   ([['p1', False], ['p2', False], ['plr', False], ['fem', True]], "3 prs sng fem"),
+   ([['p1', False], ['p2', False], ['plr', True], ['fem', False]], "3 prs plr mas"),
+   ([['p1', False], ['p2', False], ['plr', True], ['fem', True]], "3 prs plr fem")
+   )
+# Set this here rather than automatically with POSMorphology.set_web_feats() since all web features have a single value
+TI.morphology['v'].web_feats = \
+  [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1), ('yn', 1)]
 
 ## Functions that convert analyses to strings
-TI.morphology['v'].anal2string = lambda fss: vb_anal2string(fss)
-TI.morphology['cop'].anal2string = lambda fss: cop_anal2string(fss)
+TI.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
+TI.morphology['v'].name = 'verb'
+
+## Copula combined with verb (2018.1
+#TI.morphology['cop'].anal2string = lambda fss, webdict: cop_anal2string(fss, webdict=webdict)
+#TI.morphology['cop'].explicit_feats = ["sb", "neg", "cj2", "tm", "yn"]
+#TI.morphology['cop'].feat_abbrevs = {'sb': "subject", 'cj2': "conj suffix", "neg": "negative", "tm": "tense", "yn": "YN question"}
+#TI.morphology['cop'].fv_abbrevs = \
+#  (([['p1', True], ['p2', False], ['plr', False]], "1 prs sng"),
+#   ([['p1', True], ['p2', False], ['plr', True]], "1 prs plr"),
+#   ([['p1', False], ['p2', True], ['plr', False], ['fem', False]], "2 prs sng mas"),
+#   ([['p1', False], ['p2', True], ['plr', False], ['fem', True]], "2 prs sng fem"),
+#   ([['p1', False], ['p2', True], ['plr', True], ['fem', False]], "2 prs plr mas"),
+#   ([['p1', False], ['p2', True], ['plr', True], ['fem', True]], "2 prs plr fem"),
+#   ([['p1', False], ['p2', False], ['plr', False], ['fem', False]], "3 prs sng mas"),
+#   ([['p1', False], ['p2', False], ['plr', False], ['fem', True]], "3 prs sng fem"),
+#   ([['p1', False], ['p2', False], ['plr', True], ['fem', False]], "3 prs plr mas"),
+#   ([['p1', False], ['p2', False], ['plr', True], ['fem', True]], "3 prs plr fem")
+#   )
 
 ## "Interesting" features
 # Stem
@@ -561,6 +657,12 @@ TI.morphology['v'].sig_features = ['as', 'vc']
 # TI.morphology['v'].sig_features2 = ['sb', 'ob']
 # Defective roots
 TI.morphology['v'].defective = ['al_o']
+# Interface language
+TI.if_language = 'eng'
+
+def roman2geez(value):
+    """Convert a value (prep or conj) to geez."""
+    return ROM2GEEZ.get(value, value)
 
 VOWEL_RULES = [
     # A: transitive, negative

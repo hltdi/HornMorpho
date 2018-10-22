@@ -8,7 +8,7 @@ start -> distrib    <ye:>      [+gen,pp=None,rl=[-p,+gen]]
 
 ## DISTRIBUTIVE
 distrib -> stem     [:]        [-dis]
-#% Deverbal nouns can't be distributive
+# Deverbal nouns can't be distributive
 distrib -> stem     <'y_e:>    [+dis,+def,v=None]
 
 ## STEM
@@ -52,7 +52,7 @@ poss -> acc      <wa:>     [+def,poss=[-p1,-p2,-plr,+fem,+expl],-itu];[+def,-prp
 poss -> acc     <ac_n:>    [+def,poss=[+p1,-p2,+plr,+expl],-itu]
 poss -> acc     <ac_hu:>   [+def,poss=[-p1,+p2,+plr,+expl],-itu]
 poss -> acc     <ac_ew:>   [+def,poss=[-p1,-p2,+plr,+expl],-itu]
-poss -> acc    <wo(t):>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
+poss -> acc     <wo:>      [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
 
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc,rl=[-acc]]

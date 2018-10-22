@@ -5,7 +5,7 @@
 start -> a          [A:]      [vc=tr]
 # Perfective, gerundive, imperative
 start -> te         <te!:>    [vc=ps,tm=prf];[vc=ps,tm=ger];[tm=j_i,vc=ps,sb=[+p2],-neg]
-# ! is needed here are elsewhere to mark the end of stem prefixes;
+# ! is needed here and elsewhere to mark the end of stem prefixes;
 # For cases where imperfective passive has no prefix (CCC, CC_C, CCCC)
 start -> ip         [!:]       [tm=imf,vc=ps]
 
@@ -19,6 +19,7 @@ te -> simp          [:]
 a -> simp           [!:]      [as=smp]
 # transitive a- precedes geminated consonant in reciprocal and iterative aspects
 a -> simp           </!:>     [as=it];[as=rc]
+# no prefix
 start -> simp       [!:]      [vc=smp]
 
 a -> a_te           [!:]
@@ -47,14 +48,12 @@ a -> tt             <t_e!:>    [as=it]
 -2aV -> -1L         [a:]      [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf,sb=[+p1]];[tm=prf,sb=[+p2]]
 # Perfect: 3 person (all voices? aspects?); imperfect not passive
 -2aV -> -1L         [I:]      [tm=prf,sb=[-p1,-p2]];[tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=j_i,vc=smp]
-#-2aV -> -1L         [i:]      [tm=ger]
 
 # Final L
 # Imperfect and jussive-imperative passive, perfect: 1,2 person (all voices? aspects?)
 -2V -> -1L          [a:]     [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf,sb=[+p1]];[tm=prf,sb=[+p2]]
 # Perfect: 3 person (all voices? aspects?); imperfect not passive
 -2V -> -1L          [:]      [tm=prf,sb=[-p1,-p2]];[tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=j_i,vc=smp]
-#-2V -> -1L          [i:]     [tm=ger]
 
 ### A (CCC)
 
@@ -64,22 +63,17 @@ a -> tt             <t_e!:>    [as=it]
 # e for ps and smp in jussive-imperative (a before L)
 -2A_ -> -1          [e:]      [tm=j_i,vc=ps];[tm=j_i,vc=smp]
 -2A_ -> -1L         [a:]      [tm=j_i,vc=ps];[tm=j_i,vc=smp]
--2A_ -> -2V         [_:]      [tm=imf,vc=ps]
--2A_ -> -2V         [:]       [tm=ger];[tm=j_i,vc=tr];[tm=prf]
 ## Imperfective simplex/transitive gemination of C2
 # Geminate tr and smp imperf when there is no sb or ob suffix
--2A_ -> -2V         [_:]      [tm=imf,vc=smp,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]]
--2A_ -> -2V         [_:]      [tm=imf,vc=tr,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]]
+-2A_ -> -2V         [_:]      [tm=imf,vc=smp,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=smp,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]];[tm=imf,vc=tr,ob=[-xpl],sb=[+p1,+plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p2,-plr]];[tm=imf,vc=tr,ob=[-xpl],sb=[-p1,+p2,-plr,-fem]];[tm=imf,vc=ps]
 # No gemination in imperf tr and smp if there is a sb or ob suffix
--2A_ -> -2V         [:]       [tm=imf,vc=smp,ob=[+xpl]];[tm=imf,vc=smp,sb=[+p2,+fem]];[tm=imf,vc=smp,sb=[-p1,+plr]]
--2A_ -> -2V         [:]       [tm=imf,vc=tr,ob=[+xpl]];[tm=imf,vc=tr,sb=[+p2,+fem]];[tm=imf,vc=tr,sb=[-p1,+plr]]
+-2A_ -> -2V         [:]       [tm=imf,vc=smp,ob=[+xpl]];[tm=imf,vc=smp,sb=[+p2,+fem]];[tm=imf,vc=smp,sb=[-p1,+plr]];[tm=imf,vc=tr,ob=[+xpl]];[tm=imf,vc=tr,sb=[+p2,+fem]];[tm=imf,vc=tr,sb=[-p1,+plr]];[tm=ger];[tm=j_i,vc=tr];[tm=prf]
 
 ## C2
 -2A -> -2A_         [X/L]
 
 ## V1
--3AV -> -2A         [e:]      [tm=prf,vc=smp];[tm=prf,vc=ps];[tm=imf,vc=smp]
--3AV -> -2A         [e:]      [tm=ger,vc=smp];[tm=ger,vc=ps];[tm=j_i,vc=ps]
+-3AV -> -2A         [e:]      [tm=prf,vc=smp];[tm=prf,vc=ps];[tm=imf,vc=smp];[tm=ger,vc=smp];[tm=ger,vc=ps];[tm=j_i,vc=ps]
 # First vowel in CCC jussive/imperative non-passive and in imperfective passive/simple and perfective transitive an exception
 -3AV -> -2A         [:]       [tm=imf,vc=ps];[tm=imf,vc=tr];[tm=prf,vc=tr];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
 
@@ -127,10 +121,7 @@ i/ -> -3            [:]       [tm=j_i]
 
 ## prefixes
 simp -> -3L         [:]
-#a -> -3L            [:]
 i/ -> -3L           [:]
-#te -> -3L           [:]
-#start -> -3L        [!:]       [vc=smp]
 
 ### B (CC_C)
 

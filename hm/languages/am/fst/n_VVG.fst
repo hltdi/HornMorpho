@@ -3,7 +3,7 @@
 
 -> start
 # delete $ not following e
-start -> start   [X;_;/;V-e,a]
+start -> start   [X;_;/;V-e]
 
 # obligatory (for generation): ye(')alga -> yalga
 start -> e.      [:e]
@@ -24,10 +24,10 @@ e'. -> start     [V-I,a;:I]
 
 e -> start       [X-';/;V-a]
 
-# obligatory; algac_ew (never a glottal stop in between?)
-start -> a       [a]
-a -> start       [:a;X;/;V-a]
+## obligatory; algac_ew (never a glottal stop in between?)
+#start -> a       [a]
+#a -> start       [:a;X;/;V-a]
 
 start ->
 e ->
-a ->
+#a ->

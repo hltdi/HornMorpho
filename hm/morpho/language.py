@@ -1241,7 +1241,7 @@ class Language:
             if no_anal != None:
                 no_anal.append(word)
             return analyses
-        if rank and len(analyses) > 1 and not segment:
+        if rank and len(analyses) > 1:
 #            print("Ranking analyses")
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
