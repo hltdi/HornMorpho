@@ -1065,9 +1065,9 @@ class Language:
                     s += '  {} {} {}\n'.format(anal[0], anal[1].__repr__(), anal[2])
         return s
 
-    def analyses2string(self, word, analyses, seg=False, form_only=False, word_sep='\n'):
-        '''Convert a list of analyses to a string.'''
-#        print("word {}, analyses {}".format(word, analyses))
+    def analyses2string(self, word, analyses, seg=False, form_only=False, word_sep='\n',
+                        webdicts=None):
+        '''Convert a list of analyses to a string, and if webdicts, add analyses to dict.'''
         if seg:
             if analyses:
                 analyses = [':'.join((a[0], a[1])) for a in analyses]
@@ -1076,24 +1076,29 @@ class Language:
                 return word + word_sep
         elif form_only:
             if analyses:
-                return word + ' -- ' + ', '.join(analyses) + word_sep
+#                print('analyses', analyses)
+                return word + ': ' + ', '.join(analyses) + word_sep
             else:
                 return word + word_sep
         s = ''
         if not analyses:
             s += '?'
-        s += Language.T.tformat('{} -- {}\n', ['word', word], self.tlanguages)
+        s += Language.T.tformat('{}: {}\n', ['word', word], self.tlanguages)
         for analysis in analyses:
             pos = analysis[0]
             if pos:
+                webdict = None
                 pos = pos.replace('?', '')
+                if webdicts != None:
+                    webdict = {}
+                    webdicts.append(webdict)
                 if pos in self.morphology:
                     if self.morphology[pos].anal2string:
-                        s += self.morphology[pos].anal2string(analysis)
+                        s += self.morphology[pos].anal2string(analysis, webdict=webdict)
                     else:
-                        s += self.morphology[pos].pretty_anal(analysis)
+                        s += self.morphology[pos].pretty_anal(analysis, webdict=webdict)
                 elif self.morphology.anal2string:
-                    s += self.morphology.anal2string(analysis)
+                    s += self.morphology.anal2string(analysis, webdict=webdict)
         return s
 
     def analysis2dict(self, analysis, record_none=False, ignore=[]):
@@ -1398,7 +1403,7 @@ class Language:
 #                        anal = count_anal[1:]
                         if gram:
                             if not raw:
-                                anal = [(a[0], posmorph.anal2string(a[1:])) for a in anal]
+                                anal = [(a[0], posmorph.anal2string(a[1:], None)) for a in anal]
                             else:
                                 anal = [(a[0], a[2], a[4]) for a in anal]
                         else:

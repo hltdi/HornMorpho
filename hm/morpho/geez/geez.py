@@ -178,6 +178,9 @@ def sera2geez(table, form, lang='am'):
         n += 1
     return res
 
+def geezify(form, lang='am'):
+    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
+
 def root2geez(table, root, lang='am'):
     '''Convert a verb root to Geez.'''
     # Irregular
