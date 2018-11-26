@@ -2,6 +2,7 @@
 LICENSE.txt
 README.txt
 hm.py
+horn2.6.pdf
 horn3.0A_quick.pdf
 setup.py
 hm/__init__.py
@@ -27,6 +28,7 @@ hm/languages/am/fst/Ku.fst
 hm/languages/am/fst/VI.fst
 hm/languages/am/fst/VV.fst
 hm/languages/am/fst/Yfilt.fst
+hm/languages/am/fst/aa.fst
 hm/languages/am/fst/alle+.fst
 hm/languages/am/fst/ao.fst
 hm/languages/am/fst/cnj1+.fst
@@ -105,6 +107,7 @@ hm/languages/am/fst/vn_stem+.fst
 hm/languages/am/fst/vn_stem.fst
 hm/languages/am/fst/vn_stem_der.fst
 hm/languages/am/fst/vn_stem_der0.fst
+hm/languages/am/fst/w2W+.fst
 hm/languages/am/fst/w2W.fst
 hm/languages/am/fst/y2i.fst
 hm/languages/am/fst/y_epen.fst

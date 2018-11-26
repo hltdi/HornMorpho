@@ -138,7 +138,11 @@ wezeterefe adv wezeterefe
 mnNa adv mnN_a
 kfuNa adv kfuN_a
 gar post gar
+gon post gon
+bestejerba post bestejerba
 hulgizE adv hul_gizE
 qulqul adv qulqul
 wediyaw adv wediyaw
 yemesaselut adv yemesas_elut
+mngizEm adv mngizEm
+lehosas adv lehosas
