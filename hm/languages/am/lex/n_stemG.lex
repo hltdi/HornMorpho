@@ -1,10 +1,10 @@
 yhN_aw      ''     [-fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
 yh          ''     [-fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
-yc_i        ''     [+fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
-yhc         ''     [+fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
+yc_i        ''     [+fem,-plr,cs=None,poss=[-expl]];[+fem,-plr,cs=acc,poss=[-expl]]
+yhc         ''     [+fem,-plr,cs=None,poss=[-expl]];[+fem,-plr,cs=acc,poss=[-expl]]
 ya          ''     [-fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
 yaN_aw      ''     [-fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
-yac_i       ''     [+fem,-plr,cs=None,poss=[-expl]];[-fem,-plr,cs=acc,poss=[-expl]]
+yac_i       ''     [+fem,-plr,cs=None,poss=[-expl]];[+fem,-plr,cs=acc,poss=[-expl]]
 mn
 man
 ma

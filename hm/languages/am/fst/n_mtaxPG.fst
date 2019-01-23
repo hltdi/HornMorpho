@@ -54,9 +54,9 @@ acc -> cnj        [:]      [-acc,rl=[-acc]]
 acc -> cnj        [n:]     [+acc,pp=None,rl=[-p,+acc]]
 
 ## CONJUNCTIVE SUFFIXES
-cnj -> end        [:]      [cnj=None,pos=n]
-cnj -> end        [m:]     [cnj=m,pos=n]
-cnj -> end        <s_:>    [cnj=s,pos=n]
-cnj -> end        <n_a:>   [cnj=na,pos=n]
+cnj -> end        [:]      [cnj=None]
+cnj -> end        [m:]     [cnj=m]
+cnj -> end        <s_:>    [cnj=s]
+cnj -> end        <n_a:>   [cnj=na]
 
 end ->

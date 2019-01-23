@@ -78,6 +78,7 @@ start -> te         <te:>     [vc=ps,tm=prf,tmp=[pre=te,-c1gem]];[vc=ps,tm=ger,t
 start -> as         <as:>     [tmp=[-c1gem]]
 # for C1=L verbs, +iterative
 as -> ast           [t:]      [vc=tr]
+te -> test          <st:>     [as=it]
 ## Passive in imperfective, jussive is special because te- is replaced by ...
 # ... tt for verbs with C1=L: yIttawweqal, yIttewawweqal
 start -> tt0         <t_:>    [vc=ps,tm=imf];[vc=ps,tm=j_i,sb=[-p2]];[vc=ps,tm=j_i,sb=[+p2],+neg]
@@ -472,11 +473,11 @@ ij_ps -> -4a.L      [:]       [as=it,tmp=[n=3,pre=None,-c1gem,c1=1,c2=2,c3=None,
 
 ## CCC with C1=L: iterative
 # causative: asawawweqe
-as -> -4aL          [:]       [vc=cs]
+#as -> -4aL          [:]       [vc=cs]
 # passive: tewawweqe
 te -> -4aL          [:]
 # simplex voice: awawweqe
-start -> -4aL       [:]       [vc=smp]
+#start -> -4aL       [:]       [vc=smp]
 
 ### CCCC with C1=L (aneTTese)
 ## iterative
@@ -496,5 +497,7 @@ te -> -4a0           [:']      [tmp=[v1=None]]
 ast -> -3a        [e:']    [tmp=[n=3,pre=aste,c1=None,c2=2,c3=None,c4=None,v1=None,v2=a,v3=None,v4=None,c_2=2]]
 # Iterative passive imperfective, jussive CCC with C1=L: yIttewawweqal
 tt -> -3a         [e:']    [tmp=[n=3,v1=e,c1=None,c2=2,c3=None,c4=None,v2=a,v3=None,v4=None,c_2=2]]
+# Iterative passive perfective, gerundive CCC with C1=L: testewawweqe
+test -> -3a       [e:']    [tmp=[n=3,pre=teste,c1=None,c2=2,c3=None,c4=None,v1=None,v2=a,v3=None,v4=None,c_2=2]]
 
 end ->

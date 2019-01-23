@@ -1,23 +1,23 @@
 """
-This file is part of HornMorpho, which is part of the PLoGS project.
+This file is part of morfo, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018.
+    Copyleft 2018.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    HornMorpho is free software: you can redistribute it and/or modify
+    morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    HornMorpho is distributed in the hope that it will be useful,
+    morfo is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
@@ -26,17 +26,6 @@ Morphology and POSMorphology objects.
 Analysis, generation.
 Loading, composing, saving FSTs.
 
--- 2011-07-18
-   Morphology responsible for how to pretty print analyses.
--- 2011-07-24
-   gen() presents a menu of options for user to change in FS.
--- 2013-02-26
-   update_feats option for gen() is more flexible. It can be a list
-   of FeatStructs or a FSSet.
--- 2014-06-28
-   (root, FSSet) returned by transduce() separated into list of
-   (root FS) by separate_anals().
-   strip.py called to strip off suffixes before analysis.
 """
 
 import sys, re
@@ -97,9 +86,9 @@ class Morphology(dict):
         self.triv_anal = None
         # Function that converts (POS, root, citation, FS) to a string
         self.anal2string = None
-        # Dicts of unanalyzed words
-        self.words = {}
-        self.words_phon = {}
+        # Pair of lists of unanalyzable words: (complex, simple)
+        self.words = [[], []]
+        self.words_phon = [{}, {}]
         self.seg_units = []
         self.language = None
         # Dictionary of preanalyzed words (varying POS)
@@ -161,10 +150,10 @@ class Morphology(dict):
         if not ortho and not self.words_phon:
             return None
         if ortho:
-            word_rec = self.words
-            return word_rec.get(word, False)
+            word_rec = self.words[Morphology.simple if simple else Morphology.complex]
+            return word in word_rec and word
         else:
-            word_rec = self.words_phon
+            word_rec = self.words_phon[Morphology.simple if simple else Morphology.complex]
             return word_rec.get(word, False)
 
     def feat_name(self, values):
@@ -193,15 +182,13 @@ class Morphology(dict):
                 return 'nothing'
         return a
         
-    def get_root_freq(self, root, anal, verbosity=0):
+    def get_root_freq(self, root, anal):
         rv = self.root_fv(root, anal)
         if self.root_freqs:
-            if verbosity:
-                print("Root frequency for {}: {}".format(root, self.root_freqs.get(rv, 0)))
             return self.root_freqs.get(rv, 0)
-        return 5
+        return 100
 
-    def get_feat_freq(self, anal, verbosity=0):
+    def get_feat_freq(self, anal):
         freq = 1.0
         if self.feat_freqs:
             for f in self.language.stat_feats:
@@ -210,8 +197,6 @@ class Morphology(dict):
                     feat_name = '+'.join(f)
                     freq0 = self.feat_freqs.get(feat_name, {}).get(v, 1.0)
                     freq *= freq0
-        if verbosity:
-            print("Feat frequency for {}: {}".format(anal.__repr__(), freq))
         return freq
 
     def set_root_freqs(self):
@@ -234,51 +219,53 @@ class Morphology(dict):
             pass
 #            print('No file frequency file {} found'.format(path))
 
-    def set_words(self, filename='words.lex', ortho=True):
+    def set_words(self, filename='words.lex', ortho=True, simplify=False):
         '''Set the list/dict of unanalyzed words, reading them in from a file, one per line.'''
         if not ortho:
             filename = 'words_phon.lex'
         path = os.path.join(self.get_lex_dir(), filename)
+#        path = os.path.join(self.directory, filename)
+        position = Morphology.simple if simplify else Morphology.complex
         # Need to split and take first element because there may be semantic categories in the words file.
         if os.path.exists(path):
             with open(path, encoding='utf8') as file:
                 if ortho:
                     # Read in the words as a list
-                    pairs = [w.split() for w in file]
-                    self.words = dict([(w[0].strip(), w[1:]) for w in pairs])
+                    self.words[position] = [w.strip().split()[0] for w in file]
                 else:
                     # Read in ortho:phon pairs as a dict
-                    self.words_phon = dict([w.split() for w in file])
+                    self.words_phon[position] = dict([w.strip().split() for w in file])
         else:
-            self.words = {}
-            self.words_phon = {}
+            self.words = []
+            self.words_phon = []
 
     def get_analyzed(self, word):
         '''Get the pre-analyzed FS for word.'''
         return self.analyzed.get(word)
 
-##    def set_analyzed(self, filename='analyzed.lex', ortho=True, verbose=False):
-##        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
-##        if not ortho:
-##            filename = 'analyzed_phon.lex'
-##        path = os.path.join(self.get_lex_dir(), filename)
-##        if os.path.exists(path):
-##            file = open(path, encoding='utf8')
-##            if verbose:
-##                print('Storing pre-analyzed forms')
-##            if ortho:
-##                for line in file:
-##                    # Word and FS separated by two spaces
-##                    word, anal = line.split('  ')
-##                    fs = FSSet.parse(anal.strip())
-##                    self.analyzed[word] = fs
-##            else:
-##                for line in file:
-##                    # Word and FS separated by two spaces
-##                    word, phon, anal = line.split('  ')
-##                    fs = FSSet.parse(anal.strip())
-##                    self.analyzed_phon[word] = (phon, fs)
-##            file.close()
+    def set_analyzed(self, filename='analyzed.lex', ortho=True, verbose=False):
+        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
+        if not ortho:
+            filename = 'analyzed_phon.lex'
+        path = os.path.join(self.get_lex_dir(), filename)
+#        path = os.path.join(self.directory, filename)
+        if os.path.exists(path):
+            file = open(path, encoding='utf8')
+            if verbose:
+                print('Storing pre-analyzed forms')
+            if ortho:
+                for line in file:
+                    # Word and FS separated by two spaces
+                    word, anal = line.split('  ')
+                    fs = FSSet.parse(anal.strip())
+                    self.analyzed[word] = fs
+            else:
+                for line in file:
+                    # Word and FS separated by two spaces
+                    word, phon, anal = line.split('  ')
+                    fs = FSSet.parse(anal.strip())
+                    self.analyzed_phon[word] = (phon, fs)
+            file.close()
 
     def strip_suffixes(self, word, guess=False, phon=False, segment=False, verbose=False):
         '''Check to see if the word can be directly segmented into a stem and one or more suffixes.'''
@@ -495,7 +482,7 @@ class Morphology(dict):
             # word consists only of numbers
             return [word]
         if self.words_phon:
-            words = self.words_phon
+            words = self.words_phon[Morphology.complex]
             if not isinstance(words, dict):
                 print('Words dict is not loaded!')
                 return
@@ -530,11 +517,14 @@ class POSMorphology:
     guessphon_i = 4
     seg_i = 5
 
-    def __init__(self, pos, feat_list=None, lex_feats=None,
-                 excl_feats=None, feat_abbrevs=None,
-                 fv_abbrevs=None, fv_dependencies=None, fv_priority=None):
+    def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None, feat_abbrevs=None,
+                 fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
+                 feature_groups=None, name=None,
+                 explicit=None, true_explicit=None):
         # A string representing part of speech
         self.pos = pos
+        # A string representing the full name of the POS
+        self.name = name or pos
         # Weight constraint on FST arcs
         self.wc = None if pos == 'all' else FSSet('[pos=' + pos + ']')
         # The string used as type in FSs
@@ -584,10 +574,10 @@ class POSMorphology:
         self.lex_feats = lex_feats or []
         # List of features to exclude from printed analysis output
         self.excl_feats = excl_feats or []
-        # Features to include in pretty analysis output
-        self.explicit_feats = []
+        # Features to include in pretty analysis output and web app
+        self.explicit_feats = explicit or []
         # Features to include in pretty analysis output only if they're not False or None
-        self.true_explicit_feats = []
+        self.true_explicit_feats = true_explicit or []
         # List of abbreviations for features
         self.feat_abbrevs = feat_abbrevs or {}
         # List of abbreviations for feat-value combinations
@@ -596,6 +586,10 @@ class POSMorphology:
         self.fv_dependencies = fv_dependencies or {}
         # List of feature-value pairs that have priority over others in displaying
         self.fv_priority = fv_priority or []
+        # List of feature labels and value count for web app
+        self.web_features = []
+        # List of feature groups [([features], group_name),...]
+        self.feature_groups = feature_groups or None
 
     def __str__(self):
         '''Print name.'''
@@ -673,7 +667,7 @@ class POSMorphology:
     def get_analyzed(self, word, init_weight=None, simple=False, sep_anals=False):
         """Stored analysis of word if there is one."""
         if self.analyzed:
-            anals = self.analyzed
+            anals = self.analyzed[Morphology.simple if simple else Morphology.complex].get(word, None)
             if anals:
                 root = anals[0]
                 gram = anals[1]
@@ -689,44 +683,44 @@ class POSMorphology:
                     anals= [root, gram]
             return anals
 
-##    def set_analyzed(self, filename='analyzed.lex', ortho=True, verbose=False):
-##        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
-##        if not ortho:
-##            filename = 'analyzed_phon.lex'
-##        path = os.path.join(self.morphology.get_lex_dir(), self.pos + '_' + filename)
-##        if os.path.exists(path):
-##            file = open(path, encoding='utf8')
-##            if verbose:
-##                print('Storing irregular pre-analyzed forms:', self.pos)
-##            for line in file:
-##                # For ortho=True, each line is
-##                # word  root  FSS
-##                # For ortho=False, each line is
-##                # word phon root FSS
-##                split_line = line.partition(' ')
-##                word = split_line[0]
-##                if not ortho:
-##                    split_line = split_line[2].strip().partition(' ')
-##                    phon = split_line[0]
-##                split_anal = split_line[2].strip().partition(' ')
-##                root = split_anal[0]
-##                fs = split_anal[2]
-##                if word and fs:
-##                    if not root:
-##                        root = word
-##                    fs = FSSet.parse(fs)
-##                    if ortho:
-##                        self.analyzed[Morphology.complex][word] = [root, fs]
-##                    else:
-##                        self.analyzed_phon[Morphology.complex][word] = [phon, root, fs]
-##                    if simplify and self.morphology.simplify:
-##                        word = self.morphology.simplify(word)
-##                        root = self.morphology.simplify(root)
-##                        if ortho:
-##                            self.analyzed[Morphology.simple][word] = [root, fs]
-##                        else:
-##                            self.analyzed_phon[Morphology.simple][word] = [phon, root, fs]
-##            file.close()
+    def set_analyzed(self, filename='analyzed.lex', ortho=True, simplify=True, verbose=False):
+        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
+        if not ortho:
+            filename = 'analyzed_phon.lex'
+        path = os.path.join(self.morphology.get_lex_dir(), self.pos + '_' + filename)
+        if os.path.exists(path):
+            file = open(path, encoding='utf8')
+            if verbose:
+                print('Storing irregular pre-analyzed forms:', self.pos)
+            for line in file:
+                # For ortho=True, each line is
+                # word  root  FSS
+                # For ortho=False, each line is
+                # word phon root FSS
+                split_line = line.partition(' ')
+                word = split_line[0]
+                if not ortho:
+                    split_line = split_line[2].strip().partition(' ')
+                    phon = split_line[0]
+                split_anal = split_line[2].strip().partition(' ')
+                root = split_anal[0]
+                fs = split_anal[2]
+                if word and fs:
+                    if not root:
+                        root = word
+                    fs = FSSet.parse(fs)
+                    if ortho:
+                        self.analyzed[Morphology.complex][word] = [root, fs]
+                    else:
+                        self.analyzed_phon[Morphology.complex][word] = [phon, root, fs]
+                    if simplify and self.morphology.simplify:
+                        word = self.morphology.simplify(word)
+                        root = self.morphology.simplify(root)
+                        if ortho:
+                            self.analyzed[Morphology.simple][word] = [root, fs]
+                        else:
+                            self.analyzed_phon[Morphology.simple][word] = [phon, root, fs]
+            file.close()
 
     def make_generated(self):
         """Create a dictionary of analyzed words for generation."""
@@ -754,8 +748,29 @@ class POSMorphology:
         name = self.fst_name(generate=generate, simplified=simplified,
                              guess=guess, phon=phon, segment=segment)
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-#        print("Looking for cascade file at {}".format(path))
+        print("Looking for cas at {}".format(path))
         return os.path.exists(path)
+
+    ## Web app stuff
+
+    def set_web_feats(self):
+        """Set the list of feature labels and number of possible values."""
+        if not self.web_features and self.explicit_feats:
+            # Only do this if explicit features have been set and
+            # web features have not been set (as happens in am_lang, etc.)
+            feat_dict = dict(self.feat_list)
+            for f in self.explicit_feats:
+                flabel = self.feat_abbrevs.get(f, f)
+                if flabel in [f[0] for f in self.web_features]:
+                    # Feature already recorded
+                    continue
+                nvalues = 1
+                if f in feat_dict:
+                    # Feature groups won't be in feat_dict
+                    v = feat_dict[f]
+                    if isinstance(v, list):
+                        nvalues = len(v)
+                self.web_features.append((flabel, nvalues))
 
     # This is a mess. Fix it at some point.
 
@@ -1345,17 +1360,26 @@ class POSMorphology:
         fs = FeatStruct(dct)
         return fs
 
-    ## Pretty printing analysis
+    ## Pretty printing and web dictionary analysis
 
-    def pretty_anal(self, anal):
+    def pretty_anal(self, anal, webdict=None):
         root = anal[1]
         fs = anal[3]
         # Leave out the part of speech for now
         s = self.language.T.tformat('{} = {}\n{} = <{}>\n',
-                                    ['POS', self.pos, 'root', root],
+                                    ['POS', self.name, 'root', root],
 #                                    ['root', root],
                                     self.language.tlanguages)
-        s += self.pretty_fs(fs)
+        if webdict != None:
+            webdict['POS'] = self.name
+            if 'pos' not in anal and self.pos != 'all':
+                # we don't want "pos: all" for Qu, for example
+                webdict['pos'] = self.pos
+            webdict['root'] = root
+            # Citation form...
+        s += self.pretty_fs(fs, webdict=webdict)
+#        if webdict:
+#            return webdict
         return s
 
     def print_anal(self, anal, file=sys.stdout):
@@ -1363,10 +1387,10 @@ class POSMorphology:
         s = self.pretty_anal(anal)
         print(s, file=file)
 
-    def pretty_fs(self, fs, printit=False, file=sys.stdout):
-        '''Print out an FS.'''
+    def pretty_fs(self, fs, printit=False, file=sys.stdout, webdict=None):
+        '''Print out an FS and/or store pretty values in webdict.'''
         s = ''
-        expansions, feats_used = self.expfv(fs)
+        expansions, feats_used = self.expfv(fs, webdict=webdict)
         for exp in expansions:
             s += '  {}\n'.format(exp)
         if feats_used is not True:
@@ -1376,23 +1400,33 @@ class POSMorphology:
                 if self.excl(feat, val, feats_used):
                     continue
                 if isinstance(val, FeatStruct):
-                    abbrevs2, feats_used2 = self.expfv(val)
+                    webvals = []
+                    abbrevs2, feats_used2 = self.expfv(val, top=feat, webdict=webdict)
                     fvstring = abbrevs2
                     if feats_used2 is not True:
                         for feat2, val2 in val.items():
                             if self.excl(feat2, val2, feats_used2):
                                 continue
-                            fvstring.append(self.fval_string(feat2, val2))
+                            fvstring.append(self.fval_string(feat2, val2, webdict=None))
+                            if webdict != None:
+                                if val2 is True:
+                                    webvals.append(self.exab(feat2))
+                                elif val2 is not False:
+                                    webvals.append("{}={}".format(self.exab(feat2), self.exab(val2)))
                     if fvstring:
                         fvstring = ', '.join(fvstring)
                         s += '  {} = {}\n'.format(self.exab(feat), fvstring)
+                        if webdict != None and webvals:
+                            webdict[self.exab(feat)] = webvals
                 else:
-                    s += '  {}\n'.format(self.fval_string(feat, val))
+                    if webdict != None:
+                        webdict[self.exab(feat)] = val
+                    s += '  {}\n'.format(self.fval_string(feat, val, webdict=webdict))
         if printit:
             print(s, file=file)
         return s
 
-    def expfv(self, fs):
+    def expfv(self, fs, top=None, webdict=None):
         '''Find feature value sets that have special names (expansions).'''
         expansions = []
         feats_used = []
@@ -1406,6 +1440,8 @@ class POSMorphology:
                 # Found a fv combination with priority; look up its expansion
                 # in fv_abbrevs
                 expansion = some(lambda x: x[1] if x[0] == fvs else False, self.fv_abbrevs)
+                if webdict != None:
+                    webdict[self.exab(fvs[0][0])] = expansion
                 return [expansion], True
         for fvs, exp in self.fv_abbrevs:
             match = True
@@ -1418,8 +1454,66 @@ class POSMorphology:
             if match:
                 if exp:
                     # The expansion may be empty
+                    # Use the top feature if there is one, otherwise first of features in fvs
+                    if not top:
+                        if webdict != None:
+                            webdict[self.exab(fvs[0][0])] = exp
+                        exp = "{} = {}".format(fvs[0][0], exp)
+                    elif webdict != None:
+                        if top in webdict:
+                            webdict[self.exab(top)] += ", " + exp
+                        else:
+                            webdict[self.exab(top)] = exp
                     expansions.append(exp)
                 feats_used.extend([fv[0] for fv in fvs])
+#        if expansions:
+#            print("top {}, fs {}, expansions {}, feats_used {}".format(top, fs.__repr__(), expansions, feats_used))
+        # Check feature groups
+        if not top and self.feature_groups:
+            groupnames = []
+            for feats, properties in self.feature_groups:
+#                if any([(feat in feats_used) for feat in feats]):
+#                    continue
+                for groupvalues, groupname, groupvalue, groupoper in properties:
+                    found = True
+                    for feat, value in zip(feats, groupvalues):
+                        if ":" in feat:
+#                            print("feats {}, properties {}, feat {}, value {}, oper {}".format(feats, properties, feat, value, groupoper))
+#                            print("fs: {}".format(fs.__repr__()))
+                            feat1, feat2 = feat.split(':')
+                            if feat1 not in fs or not fs[feat1] or feat2 not in fs[feat1] or fs[feat1][feat2] != value:
+                                found = False
+                                break
+                            else:
+                                feats_used.append(feat1)
+                        elif feat not in fs or fs[feat] != value:
+                            found = False
+                            break
+                        else:
+                            feats_used.append(feat)
+                    if found:
+                        if groupname in groupnames and groupoper:
+                            # If this groupname already has a value and we're setting the value rather than
+                            # appending it, stop here.
+                            continue
+                        groupnames.append(groupname)
+                        expansions.append("{} = {}".format(groupname, groupvalue))
+                        if webdict != None:
+                            if not groupoper:
+#                                print("Adding {} to {}".format(groupvalue, groupname))
+                                # Add the groupvalue to groupname's values
+                                if groupname not in webdict:
+                                    webdict[groupname] = [groupvalue]
+                                else:
+                                    v = webdict[groupname]
+                                    if not isinstance(v, list):
+                                        v = [v]
+                                    v.append(groupvalue)
+                                    webdict[groupname] = v
+                            else:
+                                # Set the value for groupname
+                                webdict[groupname] = groupvalue
+                    
         return expansions, feats_used
 
     def excl(self, feat, val, feats_used):
@@ -1438,7 +1532,9 @@ class POSMorphology:
         """Just a short form for expand_abbrev."""
         return self.feat_abbrevs.get(string, string)
 
-    def fval_string(self, feat, val):
+    def fval_string(self, feat, val, webdict=None, top=True):
+        if webdict != None:
+            webdict[self.exab(feat)] = self.exab(val)
         if isinstance(val, bool):
             return '{}{}'.format('+' if val else '-', self.exab(feat))
         else:

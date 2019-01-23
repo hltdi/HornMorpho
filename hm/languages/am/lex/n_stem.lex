@@ -1,5 +1,5 @@
 yhN_aw '' [-fem,-plr,pp=None,poss=[-expl],pos=n]
-yh '' [-fem,-plr,pp=None,poss=[-expl],pos=adj]
+yh '' [-fem,-plr,pp=None,poss=[-expl],pos=n]
 yc_i '' [+fem,-plr,pp=None,poss=[-expl],pos=n]
 yhc '' [+fem,-plr,pp=None,poss=[-expl],pos=n]
 ya '' [-fem,-plr,pp=None,poss=[-expl],pos=n]

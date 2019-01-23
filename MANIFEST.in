@@ -1,6 +1,6 @@
 recursive-include hm *.fst *.cas *.lex *.txt *.dct
 recursive-exclude hm ti_lang.py om_lang.py stv_lang.py
-include horn3.0A_quick.pdf
+include horn3.1A_quick.pdf
 include horn2.6.pdf
 include LICENSE.txt
 include README.txt

@@ -10,12 +10,14 @@ bound -> pre    <:tt>     [tmp=[pre=tt]]
 bound -> pre    [:a]      [tmp=[pre=a]]
 # End in vowels that get deleted before a c1=None stem
 bound -> pre    [:t]      [tmp=[pre=te,c1=None,v1=a]]
-bound -> pre    <:te>     [tmp=[pre=te,c1=1]];[tmp=[pre=te,c1=12]];[tmp=[pre=te,c1=None,v1=None]]
+bound -> pre    <:te>     [tmp=[pre=te,c1=1]];[tmp=[pre=te,c1=None,v1=None]]
 bound -> pre    <:ast>    [tmp=[pre=aste,c1=None,v1=a]]
-bound -> pre   <:aste>    [tmp=[pre=aste,c1=1]];[tmp=[pre=aste,c1=12]];[tmp=[pre=aste,c1=None,v1=None]]
+bound -> pre   <:aste>    [tmp=[pre=aste,c1=1]];[tmp=[pre=aste,c1=None,v1=None]]
+bound -> pre   <:teste>   [tmp=[pre=teste,c1=None,v1=None]]
+bound -> pre   <:ste>     [tmp=[pre=ste,c1=None,v1=None]]
 
 pre -> c1       [:]       [tmp=[c1=None]]
-pre -> c1       <:12>     [tmp=[c1=12]]
+# pre -> c1       <:12>     [tmp=[c1=12]]
 pre -> c1_      [:1]      [tmp=[c1=1]]
 
 c1_ -> c1       [:]       [tmp=[-c1gem]]

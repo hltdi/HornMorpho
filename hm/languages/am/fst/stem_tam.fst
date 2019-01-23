@@ -53,6 +53,7 @@ start -> te         <te:>     [vc=ps,tm=prf];[vc=ps,tm=ger];[tm=j_i,vc=ps,sb=[+p
 start -> as         <as:>
 # for C1=L verbs, +iterative
 as -> ast           [t:]      [vc=tr]
+te -> test          <st:>    [as=it]
 ## Passive in imperfective, jussive is special because te- is replaced by ...
 # ... tt for verbs with C1=L: yIttawweqal, yIttewawweqal
 start -> tt         <t_:>     [vc=ps,tm=imf];[vc=ps,tm=j_i,sb=[-p2]];[vc=ps,tm=j_i,sb=[+p2],+neg]
@@ -282,7 +283,7 @@ i/ -> -5.5          [:]
 ## causative and passive of CCC verbs with C1=L connect here
 # ... astawweqe
 ast -> -2.4         [a:']
-# ... yIttewawweqe
+# ... yIttawweqe
 tt -> -2.4          [a:']
 
 ## 4-consonant roots with C1=': no voice prefixes possible
@@ -318,7 +319,7 @@ start -> -4.4L      [:]       [vc=smp]
 ## C1=L of CCC verbs in iterative aspect: causative, passive, simplex
 ## (Note that astewawweqe is considered transitive iterative and handled elsewhere)
 # causative and simplex voice: asawawweqe, awawweqe
--4aL -> -4aLV       [:']      [vc=smp]
+-4aL -> -4aLV       [:']     [vc=smp]
 -4aL -> -4aLV       [:']     [vc=cs]
 -4aLV -> -3a        [a:]
 # passive: tewawweqe
@@ -394,11 +395,11 @@ a/ -> -6a           [:]       [as=it]
 
 ## CCC with C1=L: iterative
 # causative: asawawweqe
-as -> -4aL          [:]       [vc=cs]
+# as -> -4aL          [:]       [vc=cs]
 # passive: tewawweqe
 te -> -4aL          [:]
 # simplex voice: awawweqe
-start -> -4aL       [:]       [vc=smp]
+# start -> -4aL       [:]       [vc=smp]
 
 ## CCCC with C1=': iterative
 # aneTaTTese
@@ -416,5 +417,7 @@ te -> -4a           [:']
 ast -> -3a          [e:']
 # Iterative passive imperfective, jussive CCC with C1=L: yIttewawweqal
 tt -> -3a           [e:']
+# Iterative passive perfective, gerundive CCC with C1=L: testewawweqe
+test -> -3a         [e:']
 
 end ->

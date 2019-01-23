@@ -87,17 +87,25 @@ te -> -3            [:']
 ### A (C*C, imperfective with w, y, L as C2; reduplicated: CaC*C)
 ### the same pattern of vowels works with all reduplicated forms
 
+-3.2 -> -3V.2        [X/L]
+-3.2 -> -3PV.2       [J]
+-3.2 -> -3~PV.2      [~J]
+
+# mWac, zWari
+-3.2 -> -3Vw.2       [gW:g;hW:h;kW:k;qW:q]         [v=agt]
+-3.2 -> -3Vw.2       [bW:b;cW:c;CW:C;dW:d;fW:f]    [v=agt]
+-3.2 -> -3Vw.2       [jW:j;lW:l;mW:m;nW:n]         [v=agt]
+-3.2 -> -3Vw.2       [rW:r;sW:s;SW:S]              [v=agt]
+-3.2 -> -3Vw.2       [tW:t;TW:T;xW:x;zW:z]         [v=agt]
+-3Vw.2 -> -1         [a:w]
+
 # C2='
 -3V.2 -> -1          [a:']
 
 # mote, moto (also muto)
 -3V.2 -> -1          [o:w]     [v=inf,as=smp];[v=ins,as=smp];[v=inf,as=rc];[v=ins,as=rc]
-# mWamWate, yImWmWamWat
--3V.2 -> -1          [a:w]     [v=man];[v=agt];[v=inf,as=it];[v=ins,as=it]
-
--3.2 -> -3V.2        [X/L]
--3.2 -> -3PV.2       [J]
--3.2 -> -3~PV.2      [~J]
+# memWamWat (labialized consonant handled in stem_dup)
+-3V.2 -> -1          [a:w]     [v=man];[v=inf,as=it];[v=ins,as=it]
 
 # xeTe
 -3PV.2 -> -1         [e:y]     [v=inf,as=smp];[v=ins,as=smp];[v=inf,as=rc];[v=ins,as=rc]
@@ -187,6 +195,7 @@ start -> -4.4L      [:]       [vc=smp]
 -2a.LV -> end       [t:']
 -2.LV -> end        [:']      [v=man]
 
+# most reduplicated verbs
 -4a -> -4aV         [X/L]
 -5aV -> -4a         [e:]      
 -5a -> -5aV         [X/L]
@@ -223,15 +232,14 @@ stem -> -4a.L       [:]       [v=inf,vc=ps];[v=ins,vc=ps]
 simp -> -5a         [:]
 
 # To get +it and +cs,+it for C1=L, CCC
-as -> -4aL          [:]       [vc=cs]
+# as -> -4aL          [:]       [vc=cs]
 te -> -4aL          [:]
-stem  -> -4aL       [:]       [vc=smp]
+# stem  -> -4aL       [:]       [vc=smp]
 
 # +it for CCCC with C1=L
 stem -> -4a         [a:']     [vc=smp]
 a/ -> -4a           [:']
 as -> -4a           [:']      [vc=cs]
-i/ -> -4a           [:']
 te -> -4a           [:']
 
 ast -> -3a          [e:']

@@ -61,3 +61,7 @@ astemr     m'r    [tm=imf,vc=cs,as=smp,tmp=[c1=1,-c1gem,c2=None,c3=None,c4=None,
 #tenteras  n|tras [tm=prf,vc=ps,as=smp];[tm=j_i,vc=ps,as=smp,sb=[+p2],-neg];[tm=ger,vc=ps,as=smp]
 #nteras    n|tras [tm=imf,vc=ps,as=smp];[tm=j_i,vc=ps,as=smp,sb=[-p2]];[tm=j_i,vc=ps,as=smp,+neg]
 #anteras   n|tras [vc=tr,as=smp]
+# alternate (more common) forms for 'k_l [vc=ps,as=it]
+testekak_el 'k_l [tm=prf,vc=ps,as=it,tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=teste,v1=None,v2=a,v3=None,v4=None,v_1=e]];[tm=j_i,vc=ps,as=smp,sb=[+p2],-neg,tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=teste,v1=None,v2=a,v3=None,v4=None,v_1=e]]
+stekak_el 'k_l   [tm=imf,vc=ps,as=it,tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=ste,v1=None,v2=a,v3=None,v4=None,v_1=e]];[tm=j_i,vc=ps,as=it,sb=[-p2],tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=ste,v1=None,v2=a,v3=None,v4=None,v_1=e]];[tm=j_i,vc=ps,as=it,+neg,tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=ste,v1=None,v2=a,v3=None,v4=None,v_1=e]]
+testekak_l  'k_l   [tm=ger,vc=ps,as=it,tmp=[c1=None,-c1gem,c2=2,c3=None,c4=None,c_1=c,c_2=2,+c_2gem,n=3,pre=teste,v1=None,v2=a,v3=None,v4=None,v_1=None]]
