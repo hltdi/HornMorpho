@@ -748,7 +748,7 @@ class POSMorphology:
         name = self.fst_name(generate=generate, simplified=simplified,
                              guess=guess, phon=phon, segment=segment)
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-        print("Looking for cas at {}".format(path))
+#        print("Looking for cas at {}".format(path))
         return os.path.exists(path)
 
     ## Web app stuff
