@@ -69,8 +69,8 @@ a/ -> simp          [:]
 -3V -> -2A          [:]       [vc=smp,v=inf];[vc=tr,v=inf];[vc=smp,v=ins];[vc=tr,v=ins];[vc=tr,v=agt]
 -2AL -> -2A_        [X/L]
 
-# initial L; no vc=tr possible
--3L -> -3LV         [:']
+# initial L; no vc=tr, no as=rc possible
+-3L -> -3LV         [:']      [as=it];[as=smp]
 -3LV -> -2AL        [a:]
 
 simp -> -3          [:]
@@ -83,6 +83,8 @@ tt -> -3L           [:]
 as -> -3            [:']      [vc=cs]
 te -> -3            [:']
 /C -> -3            [:']
+stem -> smp4L       [a:']     [v=inf,vc=smp,as=smp];[v=agt,vc=smp,as=smp];[v=ins,vc=smp,as=smp]
+smp4L -> -2A        [X/L]     
 
 ### A (C*C, imperfective with w, y, L as C2; reduplicated: CaC*C)
 ### the same pattern of vowels works with all reduplicated forms
@@ -99,22 +101,23 @@ te -> -3            [:']
 -3.2 -> -3Vw.2       [tW:t;TW:T;xW:x;zW:z]         [v=agt]
 -3Vw.2 -> -1         [a:w]
 
-# C2='
--3V.2 -> -1          [a:']
+# C2=' (no recip)
+-3V.2 -> -1          [a:']     [as=smp];[as=it]
 
-# mote, moto (also muto)
+# memot
 -3V.2 -> -1          [o:w]     [v=inf,as=smp];[v=ins,as=smp];[v=inf,as=rc];[v=ins,as=rc]
 # memWamWat (labialized consonant handled in stem_dup)
--3V.2 -> -1          [a:w]     [v=man];[v=inf,as=it];[v=ins,as=it]
+-3V.2 -> -1          [a:w]     [v=man];[v=agt];[v=inf,as=it];[v=ins,as=it]
 
-# xeTe
+# mexeT
 -3PV.2 -> -1         [e:y]     [v=inf,as=smp];[v=ins,as=smp];[v=inf,as=rc];[v=ins,as=rc]
-# xaxaTe
+# mexaxaT
 -3PV.2 -> -1         [a:y]     [v=man];[v=agt];[v=inf,as=it];[v=ins,as=it]
 
-# hEde, hEdo, fafEze, yIffafEz, fEzo
--3~PV.2 -> -1        [E:y]     [v=inf];[v=ins];[v=agt]  # ?
--3~PV.2 -> -1        [a:y]     [v=man]     # ?
+# mehEd, mefEz, mefafEz
+-3~PV.2 -> -1        [E:y]     [v=inf];[v=ins];[v=man]
+# afiyaZ
+-3~PV.2 -> -1        <iya:y>     [v=agt]
 
 # reduplicated cases: precede by Ca
 -4.2 -> -4V.2        [X]
@@ -123,7 +126,7 @@ te -> -3            [:']
 simp -> -3.2         [:]
 
 # reduplicated cases
-stem -> -4.2         [:]       [as=it]
+stem -> -4.2         [:]       [as=it,vc=smp]
 /C -> -4.2           [:]       [as=it]
 te -> -4.2           [:]       [as=it]
 a/ -> -4.2           [:]       [as=it]
@@ -144,17 +147,17 @@ man -> -4.2          [:]
 
 ### Quad (CCCC, C|CCC)
 
--2.4 -> -2V         [X]
+-2.4 -> -2V         [X/L]
 
--3.4 -> -2.4        [X/L]
--4.4V -> -3.4       [e:]
-
-# C2=L: babba
--4.4V -> -2.4       [a:']
+-3.4 -> -3.4V       [X/L]
+-3.4V -> -2.4       [:]      [as=smp]
+-3.4V -> -2.4       [a]      [as=rc]
 
 -4.4 -> -4.4V       [X/L]
-# C1=L: aneTTese
--4.4L -> -3.4       [a:']
+-4.4V -> -3.4       [e:]
+# C2=L: mebabat (no recip)
+-4.4V -> -2.4       [a:']    [as=smp];[as=it]
+
 -5.4V -> -4.4       [e:]
 -5.4 -> -5.4V       [X]
 
@@ -167,21 +170,30 @@ tt -> -2.4          [a:']
 # C1=L
 start -> -4.4L      [:]       [vc=smp]
 
+### 5-consonant roots
+simp -> -5.5        [:]
+-5.5 -> -5.5V       [X]      
+# vowel following first consonant of 5-consonant verbs (wexeneggere, etc.)
+-5.5V -> -4.5       [e:]
+-4.5 -> -4.5V       [X/L]
+-4.5V -> -3.5       [e:]
+-3.5 -> -3.5V       [X/L]
+-3.5V -> -2.4       [:]
+-3.5V -> -2.4       [a]
+
 ### ...aCC: C (CaCC), CCaCC, C|CaCC, C|CCaCC
 ### including as=it versions of nearly all classes
 
+# 'abelex<a>xet
 -3aV -> -2.4        [a]
+# 'abelexa<x>et
 -2.4 -> -2.4_       [X]
 -2.4_ -> -2V        [_]        [v=agt];[v=inf,vc=tr];[v=inf,vc=cs];[v=inf,vc=smp];[v=ins,vc=tr];[v=ins,vc=cs];[v=ins,vc=smp]
 -2.4_ -> -2V        [:_]       [v=man];[v=inf,vc=ps];[v=ins,vc=ps]
 -2.4_ -> -2V        [:]
 
+# 'abele<x>axet
 -3a -> -3aV         [X]
-# -3aV -> -3aV_       [_;:]
-# most verbs
--4aV -> -3a         [e:]
-# belexaxxe; CCaCC +it verbs
--4aV -> -3a         [e:a]     [as=it];[v=man]
 
 # tegfafi (need to specify the whole path from here to end)
 -4a.L -> -4a.LV     [X/L]
@@ -196,16 +208,25 @@ start -> -4.4L      [:]       [vc=smp]
 -2.LV -> end        [:']      [v=man]
 
 # most reduplicated verbs
+# 'abe<l>exaxet; menke<r>etatet
 -4a -> -4aV         [X/L]
--5aV -> -4a         [e:]      
+# 'abe<>bab
+-4a -> -3a          [:']      [as=smp];[as=it]
+# most verbs; megel<e>babeT
+-4aV -> -3a         [e:]
+# mebel<e>xaxet; menker<e>tatet
+-4aV -> -3a         [e:a]     [as=it];[v=man]
+# 'a<g>elebabeT; 'a<b>elexaxet; men<k>eretatet
 -5a -> -5aV         [X/L]
+# 'ab<e>lexaxet; menk<e>retatet
+-5aV -> -4a         [e:]
+-6a -> -6aV         [X/L]
+-6aV -> -5a         [e:]
 # L in position 1, +it (smp, ps, cs)
 -4aL -> -4aLV       [:']      [vc=smp]
 -4aLV -> -3a        [a:]
--4aL -> -3a         [a:']   [vc=cs]
+-4aL -> -3a         [a:']    [vc=cs]
 -4aL -> -3a         [:']     [vc=ps]
-##-4aL -> -3a         [a:']   [vc=cs];[vc=smp]
-##-4aL -> -3a         [:']     [vc=ps]
 
 aste -> -3a         [:]
 asteM -> -3a        [:]
@@ -217,7 +238,12 @@ asteM -> -3a        [:]
 
 # manner CCC -> CeCaCeC, CCCC -> CeCeCaCeC
 man -> -4a          [:]
+# anneTaTes
+man -> man4L        [:']
+man4L -> man4L.     [X/L]
+man4L. -> -3a       [e:]
 man -> -5a          [:]
+man -> -6a          [:]
 
 simp -> -3a         [:]
 simp -> -4a         [:]
@@ -229,18 +255,13 @@ man0 -> -4a.L       [:]
 a -> -4a.L          [:]
 # megbabat, megbabiya
 stem -> -4a.L       [:]       [v=inf,vc=ps];[v=ins,vc=ps]
-simp -> -5a         [:]
+# CCCC iterative
+simp -> -5a         [:]       [as=it]
+# CCCCC iterative
+simp -> -6a         [:]       [as=it]
 
 # To get +it and +cs,+it for C1=L, CCC
-# as -> -4aL          [:]       [vc=cs]
 te -> -4aL          [:]
-# stem  -> -4aL       [:]       [vc=smp]
-
-# +it for CCCC with C1=L
-stem -> -4a         [a:']     [vc=smp]
-a/ -> -4a           [:']
-as -> -4a           [:']      [vc=cs]
-te -> -4a           [:']
 
 ast -> -3a          [e:']
 tt -> -3a           [e:']

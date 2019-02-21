@@ -14,7 +14,7 @@
 ###    You should have received a copy of the GNU General Public License
 ###    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 ###
-###  Author: Michael Gasser <gasser@cs.indiana.edu>
+###  Author: Michael Gasser <gasser@indiana.edu>
 ### -----------------------------------------------------------------------------------
 ### FST which covers details of the Amharic verb stem.
 ### Segmentation version.
@@ -246,6 +246,8 @@ i/ -> -3t           [:]
 # ... yIfafiz, yafafiz
 -3~PV.2 -> -3~PV.2b  [i:y]    [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
 -3~PV.2b -> -1       [:]      [tmp=[v_1=i,c_2=1,v1=a]]
+# exceptional case ('y*; another others?)
+-3~PV.2 -> -2V       [y]      [tmp=[v1=None,c_2=2],tm=j_i,as=smp,vc=smp]
 
 ## Special CXC cases can be preceded by normal voice prefixes and passive gemination of C1
 i/ -> -3.2t          [:]      
@@ -377,9 +379,9 @@ i/ -> -3_4          [:']
 # vowel after C-5: ge.nefaffele
 -5aV -> -4a         [e:]
 
-# C-6: wexenegaggere
+# C-6: w.exenegaggere
 -6a -> -6aV         [X/L]
-# vowel after C-5: ge.nefaffele
+# vowel after C-5: we.xenegaggere
 -6aV -> -5a         [e:]
 
 ## C1=L of CCC verbs in iterative aspect: causative, passive, simplex
@@ -416,19 +418,6 @@ i/ -> -5a-it        [:]       [as=smp];[as=rc]
 | -> -5aL|          [:|]      [tmp=[n=5,c2=2,c3=None,c4=None,c_2=4,v1=None,v2=a,v3=None,v4=None]]
 -5aL| -> -4aV|      [X/L]
 -4aV| -> -2.4       [a:']
-
-
-## Iterative of CCC verbs
-simp -> -4a         [:]       [as=it,tmp=[n=3,c1=1,c2=2,c3=None,c4=None,c_2=2,v1=e,v2=a,v3=None,v4=None]]
-i/ -> -4a           [:]       [as=it,tmp=[n=3,c1=1,c2=2,c3=None,c4=None,c_2=2,v1=e,v2=a,v3=None,v4=None]]
-
-## Iterative of CCCC verbs
-simp -> -5a         [:]       [as=it,tmp=[n=4,c1=1,c2=2,c3=3,c4=None,c_2=3,v1=e,v2=e,v3=a,v4=None]]
-i/ -> -5a           [:]       [as=it,tmp=[n=4,c1=1,c2=2,c3=3,c4=None,c_2=3,v1=e,v2=e,v3=a,v4=None]]
-
-## Iterative of CCCCC verbs (maybe never happens?)
-simp -> -6a         [:]       [as=it,tmp=[n=5,c1=1,c2=2,c3=3,c4=4,c_2=4,v1=e,v2=e,v3=e,v4=a]]
-i/ -> -6a           [:]       [as=it,tmp=[n=5,c1=1,c2=2,c3=3,c4=4,c_2=4,v1=e,v2=e,v3=e,v4=a]]
 
 ## Transitive iterative, reciprocal: a preceding geminated C1
 # CaCC
@@ -479,10 +468,30 @@ te -> -4aL          [:]
 # simplex voice: awawweqe
 #start -> -4aL       [:]       [vc=smp]
 
+### ITERATIVE
+## Iterative of CCC verbs
+start -> -4a         [:]       [vc=smp,as=it,tmp=[pre=None,-c1gem,c1=1,c2=2,c3=None,c4=None,v1=e,v2=a,v3=None,v4=None,n=3,c_2=2]]
+te -> -4a            [:]       [as=it,tmp=[c1=1,c2=2,c3=None,c4=None,v1=e,v2=a,v3=None,v4=None,n=3,c_2=2]]
+as -> -4a            [:]       [vc=cs,tmp=[pre=as,c1=1,c2=2,c3=None,c4=None,v1=e,v2=a,v3=None,v4=None,n=3,c_2=2]]
+i/ -> -4a           [:]       [as=it,tmp=[n=3,c1=1,c2=2,c3=None,c4=None,c_2=2,v1=e,v2=a,v3=None,v4=None]]
+
+## Iterative of CCCC verbs
+start -> 5i          [X]       [vc=smp,as=it,tmp=[pre=None,-c1gem,c1=1]]
+5i -> 5i0            [e:]      [tmp=[v1=e]]
+5i0 -> -4a           [:]       [tmp=[n=4,c2=2,c_2=3,c3=3,c4=None,v2=e,v3=a,v4=None]]
+te -> -5a            [:]       [as=it,tmp=[c1=1,c2=2,c3=3,c4=None,v1=e,v2=e,v3=a,v4=None,n=4,c_2=3]]
+as -> -5a            [:]       [vc=cs,tmp=[pre=as,c1=1,c2=2,c3=3,c4=None,v1=e,v2=e,v3=a,v4=None,n=4,c_2=2]]
+# [vc=cs,tmp=[pre=as,c1=1,c2=2,c3=None,c4=None,v1=e,v2=a,v3=None,v4=None,n=3,c_2=2]]
+i/ -> -5a           [:]       [as=it,tmp=[n=4,c1=1,c2=2,c3=3,c4=None,c_2=3,v1=e,v2=e,v3=a,v4=None]]
+
+## Iterative of CCCCC verbs: wexenegaggere
+simp -> -6a         [:]       [as=it,tmp=[n=5,c1=1,c2=2,c3=3,c4=4,c_2=4,v1=e,v2=e,v3=e,v4=a]]
+i/ -> -6a           [:]       [as=it,tmp=[n=5,c1=1,c2=2,c3=3,c4=4,c_2=4,v1=e,v2=e,v3=e,v4=a]]
+
 ### CCCC with C1=L (aneTTese)
 ## iterative
 # aneTaTTese
-start -> -4a0        [a:']     [vc=smp,tmp=[v1=a]]
+start -> -4a0        [a:']     [vc=smp,tmp=[v1=a,pre=None,-c1gem]]
 # anneTaTTese
 a/ -> -4a0           [:']      [tmp=[v1=None]]
 # asneTaTTese; like CCC
@@ -491,7 +500,7 @@ as -> -4a0           [:']      [vc=cs,tmp=[v1=None]]
 i/ -> -4a0           [:']      [tmp=[v1=None]]
 # teneTaTTese; like CCC
 te -> -4a0           [:']      [tmp=[v1=None]]
--4a0 -> -4a          [:]       [tmp=[n=4,c1=None,+c_2gem]]
+-4a0 -> -4a          [:]       [tmp=[n=4,c1=None,+c_2gem,c2=2,c_2=3,c3=3,c4=None,v2=e,v3=a,v4=None]]
 
 # Iterative transitive CCC with C1=L: astewawweqe
 ast -> -3a        [e:']    [tmp=[n=3,pre=aste,c1=None,c2=2,c3=None,c4=None,v1=None,v2=a,v3=None,v4=None,c_2=2]]

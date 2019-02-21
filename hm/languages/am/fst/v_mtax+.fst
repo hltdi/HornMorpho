@@ -169,7 +169,7 @@ objs1  -> negs_aux    <at:-at(ob=3sf)>   [ob=[-p1,-p2,-plr,+fem]]
 objs1  -> negs_aux     <n:-n(ob=1p)>    [ob=[+p1,-p2,+plr]]
 objs1  -> negs_aux   <ac_hu:-ac_hu(ob=2p)> [ob=[-p1,+p2,+plr,-frm]]
 objs1  -> negs_aux   <ac_ew:-ac_ew(ob=3p)> [ob=[-p1,-p2,+plr]]
-objs1  -> objs_2frm    <wo:-wo(ob=2F)>  [ob=[-p1,+p2,-plr,+frm]]
+objs1  -> objs_2frm    <wo:-wo(ob=2frm)>  [ob=[-p1,+p2,-plr,+frm]]
 objs_2frm -> negs_aux  [:;t:]
 ## def, 3sm_obj
 # 3sm and 1s subjects

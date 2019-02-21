@@ -8,9 +8,15 @@ start -> distrib   >>n_prep+<<
 start -> distrib    <ye:ye(gen)->    [+gen,pp=None,rl=[-p,+gen]]
 
 ## DISTRIBUTIVE
-distrib -> stem     [:]              [-dis]
+distrib -> prestem     [:]              [-dis]
 #% Deverbal nouns can't be distributive
-distrib -> stem     <'y_e:'ye(distrib)->          [+dis,+def,v=None]
+distrib -> prestem     <'y_e:'ye(distrib)->     [+dis,+def,v=None]
+
+## NEGATIVE (y)ale
+prestem -> stem        [:]             [-neg]
+prestem -> stem      <ale:ale(neg)->   [+neg]
+# preposition not possible before yale?
+prestem -> stem      <yale:yale(neg)-> [+neg,pp=None]
 
 ## STEM
 # Mark off stem
@@ -18,8 +24,9 @@ stem -> stem0     [:{]
 # Irregular prepositional forms: Izzih, Izziya, etc.; can't be distributive
 stem0 -> acc0      +prep_n+      [-plr,v=None,-dis,-p1,-p2,poss=[-expl],+def,-itu,-prp]
 # Personal pronouns: plurality specified, no possessor, not distributive
-stem0 -> acc0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
+stem0 -> poss0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 acc0 -> acc       [:}]
+poss0 -> poss     [:}]
 
 ## Non-deverbal common nouns
 stem0 -> plr_oc0   +n_stem+      [v=None,-prp]
@@ -34,8 +41,8 @@ stem0 -> plr_an0   +n_stem_an+   [v=None,-prp]
 plr_an0 -> plr_an   [:}]         
 
 ## Deverbal nouns: v=agt | ins | man | inf
-stem0 -> vnoun    >>vnoun+<<    [-p1,-p2,-prp,pos=n_dv]
-stem0 -> vnoun   +irr_vnoun+   [-p1,-p2,-prp,pos=n_dv]
+stem0 -> vnoun    >>vnoun+<<      [pos=n_dv,-p1,-p2,-prp]
+stem0 -> plr_oc0   +irr_vnounS+   [pos=n_dv,-p1,-p2,-prp]
 vnoun -> plr_oc0  >>tmp_n<<    
 
 ## Irregular plurals
@@ -62,12 +69,12 @@ plr_oc -> poss     [:]           [-plr]
 
 ## POSSESSIVE, DEFINITE
 # Actually noun could be +def without a suffix
-poss -> acc       [:]      [poss=[-expl],-prp,-itu,-def]
+poss -> acc       [:]      [poss=[-expl],-prp,-itu,-def];[poss=[-expl],+def,pos=pron,-itu,v=None]
 poss -> acc       <E:-E(poss=1s)>     [+def,poss=[+p1,-p2,-plr,+expl],-itu]
 poss -> acc       <h:-h(poss=2sm)>     [+def,poss=[-p1,+p2,-plr,-fem,+expl],-itu]
 poss -> acc       <x:-x(poss=2sf)>     [+def,poss=[-p1,+p2,-plr,+fem,+expl],-itu]
-poss -> acc       <u:-u(def,mas)>      [+def,poss=[-expl],-fem,-itu,-plr]
-poss -> acc       <u:-u(def)>          [+def,poss=[-expl],-itu,+plr]
+#poss -> acc       <u:-u(def,mas)>      [+def,poss=[-expl],-fem,-itu,-plr]
+poss -> acc       <u:-u(def)>          [+def,poss=[-expl],-itu]
 poss -> acc       <u:-u(poss=3sm)>     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu]
 poss -> acc      <itu:-itu(def,fem)>    [+def,poss=[-expl],+fem,-plr,+itu,-prp]
 #% the only deverbal nouns that can be feminine are agents

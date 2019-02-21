@@ -106,7 +106,7 @@ a -> a/             [/:]
 # no vowel for final * in imperfective and jussive/imperative
 -2V -> end          [:*]      [tm=imf];[tm=j_i]
 
-#### "A" verbs (CCC, C2 cannot be L, w, or y; these cases are handled below)
+#### "A" verbs (CCC, C2 cannot be L, w, or y (except when C1 is L); these cases are handled below)
 
 ## Following C2
 # geminate C2 in perfective, causative, imperfective passive
@@ -119,7 +119,7 @@ a -> a/             [/:]
 -2A_ -> end         [a:']     [tm=j_i,vc=ps];[tm=j_i,vc=smp]
 -2A_ -> end         [:*]      [tm=j_i,vc=ps];[tm=j_i,vc=smp]
 # C2 (except after L): all root consonants except ', w, y (treated separately below)
--2A -> -2A_         [X!]
+-2A -> -2A_         [X/L]
 # following C1=L, y and w are also possible for C2
 -2AL -> -2A_        [X/L]
 # first stem vowel: e for perfective, imperfective, gerundive except transitive, jussive/imperative passive or causative
@@ -173,7 +173,7 @@ i/ -> -3            [:']
 # ... yImWamWIt (-> yImWamut)
 -3V.2 -> -1          [:w]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs];[tm=j_i,as=it,vc=smp];[tm=j_i,as=it,vc=tr];[tm=j_i,as=it,vc=cs];[tm=ger,as=it]
 # C1 before special C2: any root consonant other than L (')
--3.2 -> -3V.2        [X/L]
+-3.2 -> -3V.2        [X]
 
 ## Two classes of CCC verbs with C2=y
 # C1 is palatal (cere, xeTe, etc.)
@@ -194,7 +194,8 @@ i/ -> -3            [:']
 -3PV.2 -> -1         [:y]     [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger];[tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
 
 # following non-palatal C1, y surfaces as E in perfective, imperfective simplex and passive iterative,
-# gerundive simplex (optionally) and jussive/imperative passive (CHANGE FOR GENERATION)
+# gerundive simplex (optionally) and jussive/imperative passive (except in the case of 'ayye, and other verbs
+# that have final */')
 # ... hEde, hEdo, fafEze, yIffafEz, fEzo
 -3~PV.2 -> -1        [E:y]    [tm=prf];[tm=imf,as=smp];[tm=ger,as=smp];[tm=j_i,vc=ps];[tm=imf,vc=ps,as=it]
 # following non-palatal C1, in other cases y surfaces as i
@@ -202,6 +203,8 @@ i/ -> -3            [:']
 -3~PV.2 -> -1        [i:y]    [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger]
 # ... yIfafiz, yafafiz
 -3~PV.2 -> -1        [i:y]    [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
+# exceptional case ('y*; another others?)
+-3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
 
 ## reduplicated (iterative) cases of CXC: precede by Ca
 -4.2 -> -4V.2        [X]

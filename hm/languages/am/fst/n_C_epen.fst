@@ -31,7 +31,7 @@ Ey -> start     [a]       # only a possible?
 
 # owa, uwa
 start -> ou     [o;u]
-ou -> ouw       [w:]
+ou -> ouw       [w:;':]
 ouw -> start    [a]       # only a possible
 
 start -> e      [e]

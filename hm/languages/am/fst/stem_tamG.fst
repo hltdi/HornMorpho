@@ -225,6 +225,8 @@ i/ -> -3            [:']
 -3~PV.2 -> -1        [i:y]    [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger,as=it];[tm=ger,as=rc]
 # ... yIfafiz, yafafiz
 -3~PV.2 -> -1        [i:y]    [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
+# exceptional case ('y*; another others?)
+-3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
 
 ## reduplicated (iterative) cases of CXC: precede by Ca
 -4.2 -> -4V.2        [X]

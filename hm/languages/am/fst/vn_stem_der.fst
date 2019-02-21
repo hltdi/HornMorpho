@@ -50,11 +50,14 @@ start -> 1L.3 [L]     [as=it];[as=smp];[v=man,vc=smp,as=smp]
 
 ## CCCC
 start -> 1.4  [X]
-1.4 -> 2a.4   [X]
+# mebabat
+1.4 -> 2a.4   [X/L]
+1.4 -> 2a.4   [']     [as=smp];[as=it]
 2a.4 -> 2b.4  [:]     [as=smp];[as=it];[v=man,as=smp,vc=smp]
+# megelabeT
 2a.4 -> 2b.4  [a:]    [as=rc,v=agt];[as=rc,v=inf];[as=rc,v=ins]
+# megelameT; mebelaxet; menkeratet
 2a.4 -> 2b.4  [a]     [as=smp];[as=it];[v=man,as=smp,vc=smp]
-
 2b.4 -> 3a.4  [X]
 # C3 dup
 3a.4 -> 3b.4  [D:]    [v=agt,as=it];[v=inf,as=it];[v=ins,as=it];[v=man,vc=smp,as=smp]
@@ -62,11 +65,28 @@ start -> 1.4  [X]
 
 3b.4 -> end   [X]
 
-## CCCCC
+## C|CCCC
+# n,x,C,kW,q, etc.
 start -> 1.5  [X]     
 1.5 -> |.5    [|]
-|.5 -> |2.5   [X]
-|2.5 -> 2a.4  [X]
+|.5 -> |2.5   [X/L]
+|2.5 -> 2a.4  [X/L]
+# mengagat (no rc possible)
+|2.5 -> 2b.4  [']     [as=smp];[as=it]
+# ...a... part of root (mensafef
 |2.5 -> 2b.4  [a]     [as=smp];[as=it];[v=man,vc=smp,as=smp]
+|2.5 -> 2b.4  [a:]    [as=rc,v=agt];[as=rc,v=inf];[as=rc,v=ins]
+
+## CCCCC
+1.5 -> 2.5    [X]
+2.5 -> 3a.5   [X]
+3a.5 -> 3b.5  [:]     [as=smp];[as=it];[v=man,as=smp,vc=smp]
+3a.5 -> 3b.5  [a:]    [as=rc,v=agt];[as=rc,v=inf];[as=rc,v=ins]
+3a.5 -> 3b.5  [a]     [as=smp];[as=it];[v=man,as=smp,vc=smp]
+3b.5 -> 4a.5  [X]
+# C4 dup
+4a.5 -> 4b.5  [D:]    [v=agt,as=it];[v=inf,as=it];[v=ins,as=it];[v=man,vc=smp,as=smp]
+4a.5 -> 4b.5  [:]     [as=smp,v=agt];[as=smp,v=inf];[as=smp,v=ins];[as=rc,v=agt];[as=rc,v=inf];[as=rc,v=ins]
+4b.5 -> end   [X]
 
 end ->

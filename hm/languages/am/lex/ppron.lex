@@ -2,7 +2,7 @@
 'ante       ''     [-p1,+p2,-plr,-fem,-frm,pos=pron]
 'anci       ''     [-p1,+p2,-plr,+fem,-frm,pos=pron]
 's_u        ''     [-p1,-p2,-plr,-fem,-frm,pos=pron]
-'rsu        's_u   ''
+'rsu        's_u   [-p1,-p2,-plr,-fem,-frm,pos=pron]
 'sW_a       ''     [-p1,-p2,-plr,+fem,-frm,pos=pron]
 'rsWa       'sW_a  ''
 's_ac_ew     ''    [-p1,-p2,-plr,+frm,pos=pron]

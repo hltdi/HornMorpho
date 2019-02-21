@@ -1,23 +1,23 @@
 """
-This file is part of the HornMorpho package.
+This file is part of morfo.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018.
+    Copyleft 2018.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    HornMorpho is free software: you can redistribute it and/or modify
+    morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    HornMorpho is distributed in the hope that it will be useful,
+    morfo is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------
 
 WEIGHTED FINITE STATE TRANSDUCERS
@@ -35,66 +35,11 @@ The FST class does not provide support for:
 
   - Determinization and minimization of weighted FSTs.
 
-Author: Michael Gasser <gasser@cs.indiana.edu>
+Author: Michael Gasser <gasser@indiana.edu>
 based on the NLTK fst module (URL: <http://www.nltk.org/>)
 written by some unidentified author.
 
 Version 1.0
--- 2009-02-10
-    Includes shelving as a way to save FSTs
-    Regexs used in parsing FSTs are compiled
--- 2009-02-15
-    Arc strings are really strings (not tuples)
-    Weights are simpler FS class
-    Weights are only created (from strings) when needed
--- 2009-03-06
-    Final weights treated similarly to other weights
--- 2009-10-03
-    FST.get_features(): returns or gathers possible feature-value
-    pairs
--- 2010-05-30
-    <..:..> elaborated so all of the following are possible
-      <abc:>
-      <abc>
-      <abc:ab>
-      <a(b)c:>
-      <a(b)c>
-      <a(b)c:ab>
--- 2011-01-05
-    Added tracefeat option to transduce. Shows accumulated weight,
-    arc weight, and output when tracefeat feature is not matched.
--- 2011-03-22
-    Fixed transduce1, replacing next() with __next__().
--- 2011-06-10
-   Friendlier mtax format.
--- 2011-06-15
-   Friendlier alternation rule format.
--- 2011-06-16
-   Alternation rule moved to altrule.py.
--- 2011-07-07
-   FST.state_arcs() and FST.state_inout(): helper functions to
-   get arcs and in:out pairs for source and destination states.
--- 2011-07-07
-   Composition of FSTs checks whether an arc already exists before
-   creating it (should also combine arcs).
--- 2011-07-08
-   MTax parser and compiler moved to mtax.py.
--- 2011-07-16
-   Comments and strings for raw representation of changes and contexts
-   for alternation rules.
--- 2013-02-25
-   Feature weights on *last* arc in a morpheme of more than one character
-   for generation; changes to _make_mult_arcs and _make_mult_arcs1.
--- 2013-02-26
-   For generation, transduce() permits words to be printed immediately,
-   optionally with a list of print_prefixes.
--- 2013-03-28
-   Fixed a problem with transduce() that kept some words during guesser
-   analysis that were identical to the input word (because of empty string
-   characters in the output).
--- 2013-06-24
-   Included contents of two intermediary filter FSTs as strings so they
-   don't have to be read in from files.
 """
 
 import re, os, copy, time, functools, glob
@@ -108,7 +53,7 @@ from .altrule import *
 # Parsing morphotactic rules
 from .mtax import *
 
-from .language import LANGUAGE_DIR
+from morfo.language import LANGUAGE_DIR
 
 ######################################################################
 # CONTENTS
@@ -249,13 +194,17 @@ class FSTCascade(list):
         
     def get_fst_dir(self, dirname='test'):
         if not self.language:
-            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'languages', dirname)
+            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'L', dirname)
         else:
             d = self.language.directory
         return os.path.join(d, 'fst')
 
-    def get_lex_dir(self):
-        return os.path.join(self.language.directory, 'lex')
+    def get_lex_dir(self, dirname=''):
+        if not self.language:
+            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'L', dirname)
+        else:
+            d = self.language.directory
+        return os.path.join(d, 'lex')
 
     def add(self, fst):
         """Add an FST to the dictionary with its label as key."""
@@ -497,7 +446,7 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None, language=None,
-             weight_constraint=None, gen=False, verbose=True):
+             dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
 
@@ -510,12 +459,13 @@ class FSTCascade(list):
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
+                                dirname=dirname,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
 
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
-              subcasc=None, language=None,
+              subcasc=None, language=None, dirname='',
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -574,7 +524,7 @@ class FSTCascade(list):
                 if create_networks:
                     filename = m.group(1)
                     if not subcasc_indices or len(cascade) in subcasc_indices:
-                        fst = FST.load(os.path.join(cascade.get_fst_dir(), filename),
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen,
@@ -592,7 +542,7 @@ class FSTCascade(list):
                 if create_networks:
                     filename = m.group(1)
                     if not subcasc_indices or len(cascade) in subcasc_indices:
-                        fst = FST.load(os.path.join(cascade.get_fst_dir(), filename),
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen,
@@ -611,7 +561,7 @@ class FSTCascade(list):
                     label = m.group(1)
                     filename = label + '.fst'
                     if not subcasc_indices or len(cascade) in subcasc_indices:
-                        fst = FST.load(os.path.join(cascade.get_fst_dir(), filename),
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen,
@@ -633,7 +583,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         if verbose:
                             print('Adding lex FST {} to cascade'.format(label))
-                        fst = FST.load(os.path.join(cascade.get_lex_dir(), filename),
+                        fst = FST.load(os.path.join(cascade.get_lex_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, reverse=cascade.r2l,
@@ -2086,8 +2036,7 @@ class FST:
 
     @staticmethod
     def parse(label, s, weighting=None, cascade=None, fst=None,
-              directory='', seg_units=[], gen=False,
-              verbose=False,
+              directory='', seg_units=[], gen=False, verbose=False,
               weight_constraint=None):
         """
         Parse an FST from a string consisting of multiple lines from a file.
@@ -2166,8 +2115,7 @@ class FST:
                 continue
 
             # Transition arc(s)
-            # MG: Changes here to allow for weight at end,
-            # optional ':' separator, and
+            # MG: Changes here to allow for weight at end, optional ':' separator, and
             # multiple arcs joining the same two states (separated by ';')
             m = ARC_RE.match(line)
             if m:
@@ -2838,10 +2786,10 @@ class FST:
 #                    s = '  Output: ' + output
                     if in_pos >= len(input):
                         print(s + ' end of input')
-                        if trace > 1: print('  weight: {}'.format(accum_weight))
+                        print('  weight: {}'.format(accum_weight))
                     else:
                         print(s + ' input pos: {}, char: {}'.format(in_pos, input[in_pos]))
-                        if trace > 1: print('  weight: {}'.format(accum_weight))
+                        print('  weight: {}'.format(accum_weight))
 
                 # Get a list of arcs we can possibly take.
                 arcs = self.outgoing(state)
@@ -2947,6 +2895,8 @@ class FST:
                         # UNKNOWN as the output character only makes sense if UNKNOWN is the input character;
                         # the same holds for stringsets
                         # add whatever UNKNOWN or the stringset matched on the input to the output
+                        if in_pos > len(input) - 1:
+                            print("Something wrong with {} and/or input {} at position {}".format(out_string, input, in_pos))
                         out_string = input[in_pos]
                     # always add 1 CHAR, unless '', right?
                     if in_string != '':
