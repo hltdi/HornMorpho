@@ -53,7 +53,7 @@ from .altrule import *
 # Parsing morphotactic rules
 from .mtax import *
 
-from morfo.language import LANGUAGE_DIR
+from .language import LANGUAGE_DIR
 
 ######################################################################
 # CONTENTS

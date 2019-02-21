@@ -100,6 +100,7 @@ hm/languages/am/fst/new+.fst
 hm/languages/am/fst/oa_filtG.fst
 hm/languages/am/fst/ou2W.fst
 hm/languages/am/fst/ou2WG.fst
+hm/languages/am/fst/ou2W_n.fst
 hm/languages/am/fst/pal_iE.fst
 hm/languages/am/fst/phon.fst
 hm/languages/am/fst/pre_gem.fst
@@ -165,6 +166,7 @@ hm/languages/am/lex/irr_plrS.lex
 hm/languages/am/lex/irr_stem.lex
 hm/languages/am/lex/irr_stemS.lex
 hm/languages/am/lex/irr_vnoun.lex
+hm/languages/am/lex/irr_vnounS.lex
 hm/languages/am/lex/n_analyzed.lex
 hm/languages/am/lex/n_analyzed_phon.lex
 hm/languages/am/lex/n_name.lex
