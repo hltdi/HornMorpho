@@ -2,13 +2,16 @@
 
 -> start
 
-start -> start  [X]
+# UNCOMMENT TO DELETE a AND _
+# start -> start  [X]
+start -> start  [X;a;_]
 
-# delete a
-start -> start  [a:]
-# delete |
+## delete |
 start -> start  [|:]
-# delete _
-start -> start  [_:]
+
+## delete a; UNCOMMENT TO DELETE
+# start -> start  [a:]
+## delete _; UNCOMMENT TO DELETE
+# start -> start  [_:]
 
 start ->

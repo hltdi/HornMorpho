@@ -146,6 +146,13 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
     else:
         return casc[start_i].inverted().transduce(s, f, seg_units=seg_units, timeout=10)
 
+V1 = ["ይመሳስላሉ", "ይመሳሰላሉ", "ያመሳስላል"]
+V2 = ["ተባበሩ", "ተሳሳሙ", "ተግባቡ", "ተጭበረባበሩ"]
+V3 = ["ይጠብቃል", "ባከነ", "ቀባጠረ"]
+V4 = ["ተጋጠሙ", "አጋጠመ"]
+N1 = ["መቀጠል", "መቀጠያ", "ቀጣይ", "አቀጣጠል"]
+N2 = ["ያለምክንያት", "አለምክንያት", "አለመንሳፈፍ", "ኢፍትሃዊ"]
+
 def main():
     pass
 

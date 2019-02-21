@@ -153,7 +153,7 @@ smp4L -> -2A        [X/L]
 
 # mefEz
 -3~PV.2 -> -1        [E:y]     [v=inf,as=smp,tmp=[v_1=E,v1=None,c_2=None]];[v=ins,as=smp,tmp=[v_1=E,v1=None,c_2=None]]
-# mefafEz v1=a, v_1=E, v2|v3|v4=None; c1=1, c_1=3, c_2=1, c2|c3|c4=None;
+# mefafEz v1=a, v_1=E, v2|v3|v4=None; c1=1, c_1=3, c_2=1, c2|c3|c4=None; DOESN'T WORK YET
 -3~PV.2 -> -1        [E:y]     [v=man,tmp=[v_1=E,v2=None,c2=None,c_2=1]];[v=inf,as=it,tmp=[v_1=E,c_2=1]];[v=ins,as=it,tmp=[v_1=E,c_2=1]]
 # both smp agent (fiyaZ) and it agent (fafiyaZ)
 -3~PV.2 -> -1        <iya:y>   [v=agt,tmp=[v_1=a,v1=i,c_2=2]]
