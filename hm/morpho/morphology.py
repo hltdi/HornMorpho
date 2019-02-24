@@ -87,8 +87,8 @@ class Morphology(dict):
         # Function that converts (POS, root, citation, FS) to a string
         self.anal2string = None
         # Pair of lists of unanalyzable words: (complex, simple)
-        self.words = [[], []]
-        self.words_phon = [{}, {}]
+        self.words = []
+        self.words_phon = {}
         self.seg_units = []
         self.language = None
         # Dictionary of preanalyzed words (varying POS)
@@ -150,11 +150,17 @@ class Morphology(dict):
         if not ortho and not self.words_phon:
             return None
         if ortho:
-            word_rec = self.words[Morphology.simple if simple else Morphology.complex]
-            return word in word_rec and word
-        else:
-            word_rec = self.words_phon[Morphology.simple if simple else Morphology.complex]
+            word_rec = self.words
             return word_rec.get(word, False)
+        else:
+            word_rec = self.words_phon
+            return word_rec.get(word, False)
+#        if ortho:
+#            word_rec = self.words
+#            return word in word_rec and word
+#        else:
+#            word_rec = self.words_phon[Morphology.simple if simple else Morphology.complex]
+#            return word_rec.get(word, False)
 
     def feat_name(self, values):
         if any(values):
@@ -225,16 +231,18 @@ class Morphology(dict):
             filename = 'words_phon.lex'
         path = os.path.join(self.get_lex_dir(), filename)
 #        path = os.path.join(self.directory, filename)
-        position = Morphology.simple if simplify else Morphology.complex
+#        position = Morphology.simple if simplify else Morphology.complex
         # Need to split and take first element because there may be semantic categories in the words file.
         if os.path.exists(path):
             with open(path, encoding='utf8') as file:
                 if ortho:
                     # Read in the words as a list
-                    self.words[position] = [w.strip().split()[0] for w in file]
+                    pairs = [w.split() for w in file]
+                    self.words = dict([(w[0].strip(), w[1:]) for w in pairs])
+#                    self.words = [w.strip().split()[0] for w in file]
                 else:
                     # Read in ortho:phon pairs as a dict
-                    self.words_phon[position] = dict([w.strip().split() for w in file])
+                    self.words_phon = dict([w.strip().split() for w in file])
         else:
             self.words = []
             self.words_phon = []
@@ -482,7 +490,7 @@ class Morphology(dict):
             # word consists only of numbers
             return [word]
         if self.words_phon:
-            words = self.words_phon[Morphology.complex]
+            words = self.words_phon
             if not isinstance(words, dict):
                 print('Words dict is not loaded!')
                 return
