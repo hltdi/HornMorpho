@@ -185,6 +185,11 @@ class Language:
         """Data file for language."""
         return os.path.join(self.get_dir(), self.abbrev + '.lg')
 
+#    def get_stat_dir(self):
+#        """Statistics directory: root and feature frequencies
+#        for disambiguation."""
+#        return os.path.join(self.directory, 'stat')
+
     ## CACHING
 
     def get_cache_dir(self):
@@ -782,29 +787,21 @@ class Language:
                                         [self, ' (' + opt_string + ')' if opt_string else ''],
                                         self.tlanguages)
         print(msg_string)
-#        print()
         # In any case, assume the root frequencies will be needed?
         self.morphology.set_root_freqs()
         self.morphology.set_feat_freqs()
         if ortho:
             # Load unanalyzed words
             self.morphology.set_words(ortho=True)
-            # Load pre-analyzed words
-#            self.morphology.set_analyzed(ortho=True)
             self.morphology.set_suffixes(verbose=verbose)
         if phon:
             # Load unanalyzed words
             self.morphology.set_words(ortho=False)
-            # Load pre-analyzed words
-#            self.morphology.set_analyzed(ortho=False)
             self.morphology.set_suffixes(verbose=verbose)
         for pos in fsts:
             # Load pre-analyzed words if any
             if ortho:
-#                self.morphology[pos].set_analyzed(ortho=True)
                 self.morphology[pos].make_generated()
-#            if phon:
-#                self.morphology[pos].set_analyzed(ortho=False)
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
                 self.morphology[pos].load_fst(gen=not segment,
@@ -826,6 +823,10 @@ class Language:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False,
                                                   recreate=recreate, verbose=verbose)
+            # Load statistics for generation
+            self.morphology[pos].set_root_freqs()
+            self.morphology[pos].set_feat_freqs()
+
         return True
 
     def get_fsts(self, generate=False, phon=False, segment=False):
