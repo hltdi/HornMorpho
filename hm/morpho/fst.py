@@ -3,7 +3,7 @@ This file is part of morfo.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018.
+    Copyleft 2018, 2019.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -77,6 +77,9 @@ from .language import LANGUAGE_DIR
 ######################################################################
 
 UNKNOWN = '?'
+
+## Transducing times out after this many time steps
+TIMEOUT = 2000
 
 ## Regexs for parsing FSTs
 # string_set_label={chars1, chars1, chars2, ...}
@@ -2580,7 +2583,7 @@ class FST:
                   # related to generation
                   gen=False, print_word=False, print_prefixes=None,
                   seg_units=[], reject_same=False,
-                  trace=0, tracefeat='', timeit=False, timeout=500):
+                  trace=0, tracefeat='', timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
         if timeit:
             time1 = time.time()
