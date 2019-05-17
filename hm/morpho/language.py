@@ -230,7 +230,7 @@ class Language:
         file = self.get_cache_file(segment=segment)
         try:
             with open(file, encoding='utf8') as f:
-                print("Reading cached words")
+#                print("Reading cached words")
                 for line in f:
                     if '||' not in line:
                         self.cached[line.strip()] = []
@@ -970,7 +970,8 @@ class Language:
                                 if analyses:
                                     # Convert the analyses to a string
                                     analysis = self.analyses2string(word, analyses,
-                                                                    seg=segment, form_only=not gram, word_sep=word_sep)
+                                                                    seg=segment, form_only=not gram,
+                                                                    short=True, word_sep=word_sep)
                                 elif segment:
                                     analysis = "{}: {}\n".format(word, form)
                                 else:
@@ -1053,7 +1054,7 @@ class Language:
     def pretty_analyses(self, analyses):
         """Print raw analyses."""
         if not analyses:
-            return ''
+            return "- {}\n".format(word)
         form = analyses[0]
         anals = analyses[1]
         s = '- ' + form + '\n'
@@ -1067,7 +1068,7 @@ class Language:
         return s
 
     def analyses2string(self, word, analyses, seg=False, form_only=False, word_sep='\n',
-                        webdicts=None):
+                        short=False, webdicts=None):
         '''Convert a list of analyses to a string, and if webdicts, add analyses to dict.'''
         if seg:
             if analyses:
@@ -1082,24 +1083,36 @@ class Language:
             else:
                 return word + word_sep
         s = ''
-        if not analyses:
-            s += '?'
+#        if not analyses:
+#            s += '?'
         s += Language.T.tformat('{}: {}\n', ['word', word], self.tlanguages)
         for analysis in analyses:
-            pos = analysis[0]
-            if pos:
-                webdict = None
-                pos = pos.replace('?', '')
-                if webdicts != None:
-                    webdict = {}
-                    webdicts.append(webdict)
-                if pos in self.morphology:
-                    if self.morphology[pos].anal2string:
-                        s += self.morphology[pos].anal2string(analysis, webdict=webdict)
-                    else:
-                        s += self.morphology[pos].pretty_anal(analysis, webdict=webdict)
-                elif self.morphology.anal2string:
-                    s += self.morphology.anal2string(analysis, webdict=webdict)
+            if short:
+                # What happens with file analysis
+                root = analysis[0]
+                features = analysis[1]
+                if features:
+                    pos = features.get('pos')
+                    if pos:
+                        if pos in self.morphology:
+                            s += self.morphology[pos].pretty_anal(analysis, root=root, fs=features)
+                        elif self.morphology.anal2string:
+                            s += self.morphology.anal2string(analysis, webdict=webdict)
+            else:
+                pos = analysis[0]
+                if pos:
+                    webdict = None
+                    pos = pos.replace('?', '')
+                    if webdicts != None:
+                        webdict = {}
+                        webdicts.append(webdict)
+                    if pos in self.morphology:
+                        if self.morphology[pos].anal2string:
+                            s += self.morphology[pos].anal2string(analysis, webdict=webdict)
+                        else:
+                            s += self.morphology[pos].pretty_anal(analysis, webdict=webdict)
+                    elif self.morphology.anal2string:
+                        s += self.morphology.anal2string(analysis, webdict=webdict)
         return s
 
     def analysis2dict(self, analysis, record_none=False, ignore=[]):
@@ -1351,7 +1364,7 @@ class Language:
             # Find the citation form of the root if required
             if citation and self.morphology[p].citation:
                 cite = self.morphology[p].citation(root, grammar, guess, stem)
-                if postproc:
+                if postproc and cite:
                     cite = self.postprocess(cite)
             else:
                 cite = None

@@ -142,7 +142,8 @@ class Morphology(dict):
         return text
 
     def is_word(self, word, simple=False, ortho=True):
-        """Is word an unanalyzable word?"""
+        """Is word an unanalyzable word? If so, return the word preceded by its POS
+        if available."""
         if ortho and (word in self.punctuation or word in PUNC_TOKENS):
             return word
         if ortho and not self.words:
@@ -155,12 +156,6 @@ class Morphology(dict):
         else:
             word_rec = self.words_phon
             return word_rec.get(word, False)
-#        if ortho:
-#            word_rec = self.words
-#            return word in word_rec and word
-#        else:
-#            word_rec = self.words_phon[Morphology.simple if simple else Morphology.complex]
-#            return word_rec.get(word, False)
 
     def feat_name(self, values):
         if any(values):
@@ -741,7 +736,8 @@ class POSMorphology:
             with open(path, encoding='utf-8') as roots:
                 self.root_freqs = eval(roots.read())
         except IOError:
-            print('No generation root frequency file {} found for {}'.format(path, self.pos))
+            pass
+#            print('No generation root frequency file {} found for {}'.format(path, self.pos))
 
     def set_feat_freqs(self):
         """If there's a feat statistics file for generation for this POS, load it."""
@@ -751,7 +747,8 @@ class POSMorphology:
             with open(path, encoding='utf-8') as feats:
                 self.feat_freqs = eval(feats.read())
         except IOError:
-            print('No generation feature frequency file {} found for {}'.format(path, self.pos))
+            pass
+#            print('No generation feature frequency file {} found for {}'.format(path, self.pos))
 
     def make_generated(self):
         """Create a dictionary of analyzed words for generation."""

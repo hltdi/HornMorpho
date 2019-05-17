@@ -76,10 +76,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     return result
 
 def n_get_citation(root, fs, guess=False, vc_as=False):
-    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct set fss.
-
-    If vc_as is True, preserve the voice and aspect of the original word.
-    '''
+    '''Return the noun stem, but only if the word is deverbal.'''
     if fs.get('v'):
         # It's a deverbal noun
         return vb_get_citation(root, fs, guess=guess, vc_as=vc_as)

@@ -33,7 +33,7 @@ I -> C          [X-y]
 I -> Iy         [y]
 Iy -> C         [_]
 # ... or y followed by a vowel other than e or I
-Iy -> V         [V-e,I]
+Iy -> V         [V-I]
 
 ## y -> i (not I for generation)
 C   -> y>i      [i:y]
@@ -49,7 +49,7 @@ y-e -> C        [X]
 ## keep y
 C  -> Cy         [y]
 # ... when it's followed by a vowel other than e or I
-Cy -> V          [V-e,I]
+Cy -> V          [V-I]
 # ... or by a consonant, or when it's geminated
 Cy -> C          [X;_]
 

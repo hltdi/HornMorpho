@@ -71,7 +71,8 @@ sbjp0 -> sbjp1    [':]   [sb=[+p1,-plr],ob=[-p1]]
 sbjp0 -> sbjp1    [:]    [sb=[-p1]]; [sb=[+plr]]
 # Another prefix precedes the subject prefix; no glottal stop necessary for 1s
 sbjp* -> sbjp1    [:]    [+sub];[+neg]
-sbjp1 -> stem     [y:]   [sb=[-p1,-p2,+plr]]; [sb=[-p1,-p2,-plr,-fem]]
+# In Tigray Ti, also 1ps
+sbjp1 -> stem     [y:]   [sb=[-p1,-p2,+plr]];[sb=[-p1,-p2,-plr,-fem]]
 # Unless at the beginning of the word there is no 1s prefix, except in jussive
 sbjp1 -> stem     [:]    [tm=imf,sb=[+p1,-plr]];[tm=j_i,sb=[+p1,-plr]]
 sbjp1 -> stem     [t:]   [sb=[+p2,-p1],ob=[-p2]];[sb=[-plr,-p1,-p2,+fem]]
@@ -85,6 +86,7 @@ stemend -> sbjs   [$:]
 ### SUBJECT SUFFIXES AND OBJECT INFIXES
 sbjs -> sbjs_i    [:]    [tm=imf];[tm=j_i]
 sbjs -> sbjs_p    [:]    [tm=prf];[tm=ger]
+
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural
 sbjs_i -> sbjs_iu   [u:]   [sb=[-p1,+plr,-fem]]

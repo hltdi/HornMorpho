@@ -25,7 +25,9 @@ I -> C          [X-y]
 I -> Iy         [y]
 Iy -> C         [_]
 # ... or y followed by a vowel other than e or I
-Iy -> V         [V-e,I]
+#Iy -> V         [V-e,I]
+# make it optional before e
+Iy -> V         [V-I]
 
 ## y -> i/I
 # Keep these states separate because only i can end a word
@@ -45,7 +47,9 @@ y-e -> C        [X]
 ## keep y
 C  -> y         [y]
 # ... when it's followed by a vowel other than e or I
-y -> V          [V-e,I]
+#y -> V          [V-e,I]
+# make it optional for e
+y -> V          [V-I]
 # ... or by a consonant, or when it's geminated
 y -> C          [X;_]
 

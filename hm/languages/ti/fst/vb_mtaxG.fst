@@ -76,6 +76,7 @@ stemend -> sbjs   [$:]
 ### SUBJECT SUFFIXES AND OBJECT INFIXES
 sbjs -> sbjs_i    [:]    [tm=imf];[tm=j_i]
 sbjs -> sbjs_p    [:]    [tm=prf];[tm=ger]
+
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural
 sbjs_i -> sbjs_iu   [u:]   [sb=[-p1,+plr,-fem]]
@@ -98,6 +99,7 @@ sbjs_i0 -> obj      [e:]   [ob=[+prp,+xpl]];[ob=[+p2,-p1,-prp,+xpl]];[ob=[+p1,-p
 sbjs_i0 -> obj      [_:]   [tm=j_i,ob=[-p1,-p2,+xpl,-prp]]
 # Imperfective with 3rd person objects; no object
 sbjs_i0 -> obj      [:]    [ob=[-xpl]];[tm=imf,ob=[-p1,-p2,-prp,+xpl]]
+
 ## PERFECTIVE
 sbjs_p -> obj       [@:]   [tm=prf,sb=[-p1,-p2,-plr,-fem]]
 sbjs_p -> sbjs_p1s  <ku:>  [tm=prf,sb=[+p1,-p2,-plr],ob=[-p1]]
@@ -130,6 +132,7 @@ sbjs_p -> sbjs_p3pf [a:]   [tm=prf,sb=[-p1,-p2,+plr,+fem]]
 sbjs_p -> sbjs_p3pf [I:]   [tm=prf,sb=[-p1,-p2,+plr,+fem],ob=[-p1,-p2,-prp,+xpl]]                 
 sbjs_p3pf -> obj_t3 [':]   [ob=[-p1,-p2,-prp,+xpl]]
 sbjs_p3pf -> obj    [:]    [ob=[+p1,+xpl]];[ob=[+p2,+xpl]];[ob=[+prp,+xpl]];[ob=[-xpl]]
+
 ## GERUNDIVE
 sbjs_p -> sbjs_g1s  [@:]   [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
 sbjs_g1s -> obj_t3  <y_:>  [ob=[-p1,-p2,-prp,+xpl]]
