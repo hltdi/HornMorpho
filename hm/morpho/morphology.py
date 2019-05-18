@@ -1393,13 +1393,12 @@ class POSMorphology:
 
     ## Pretty printing and web dictionary analysis
 
-    def pretty_anal(self, anal, webdict=None):
-        root = anal[1]
-        fs = anal[3]
+    def pretty_anal(self, anal, webdict=None, root=None, fs=None):
+        root = root or anal[1]
+        fs = fs or anal[3]
         # Leave out the part of speech for now
         s = self.language.T.tformat('{} = {}\n{} = <{}>\n',
                                     ['POS', self.name, 'root', root],
-#                                    ['root', root],
                                     self.language.tlanguages)
         if webdict != None:
             webdict['POS'] = self.name
@@ -1409,9 +1408,24 @@ class POSMorphology:
             webdict['root'] = root
             # Citation form...
         s += self.pretty_fs(fs, webdict=webdict)
-#        if webdict:
-#            return webdict
         return s
+
+#    def pretty_anal(self, anal, webdict=None):
+#        root = anal[1]
+#        fs = anal[3]
+#        # Leave out the part of speech for now
+#        s = self.language.T.tformat('{} = {}\n{} = <{}>\n',
+#                                    ['POS', self.name, 'root', root],
+#                                    self.language.tlanguages)
+#        if webdict != None:
+#            webdict['POS'] = self.name
+#            if 'pos' not in anal and self.pos != 'all':
+#                # we don't want "pos: all" for Qu, for example
+#                webdict['pos'] = self.pos
+#            webdict['root'] = root
+#            # Citation form...
+#        s += self.pretty_fs(fs, webdict=webdict)
+#        return s
 
     def print_anal(self, anal, file=sys.stdout):
         '''Print out an analysis.'''

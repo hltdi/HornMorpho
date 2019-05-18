@@ -93,6 +93,30 @@ SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w"
                       "^": ["^s", "^S", "^h", "^hW", "^sW", "^SW"]}],
              }
 
+### TOP-LEVEL FUNCTIONS
+
+def geezify(form, lang='am'):
+    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
+
+def romanize(form, lang='am'):
+    return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
+
+def geezify_root(root, lang='am'):
+    """Convert a sequence of root consonants (and other characters
+    used in HornMorpho representations of roots) to Geez.
+    >>> geezify_root("sbr")
+    '<ስ_ብ_ር>'
+    >>> geezify_root("bakn")
+    '<ባክ_ን>'
+    >>> geezify_root("Ty_q")
+    '<ጥ_ይ:_ቅ>'
+    >>> geezify_root("x|qWTqWT")
+    '<ሽቍ_ጥ_ቍ_ጥ>'
+    """
+    table = GEEZ_SERA.get(lang, [[],[]])[1]
+    if table:
+        return root2geez(table, root, lang=lang)
+
 def no_convert(form):
     '''Skip conversion for simple cases: non-Geez, punctuation, numerals.'''
     if not is_geez(form) or form in GEEZ_PUNCTUATION or is_geez_num(form):
@@ -181,6 +205,22 @@ def geezify(form, lang='am'):
 
 def romanize(form, lang='am'):
     return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
+
+def geezify_root(root, lang='am'):
+    """Convert a sequence of root consonants (and other characters
+    used in HornMorpho representations of roots) to Geez.
+    >>> geezify_root("sbr")
+    '<ስ_ብ_ር>'
+    >>> geezify_root("bakn")
+    '<ባክ_ን>'
+    >>> geezify_root("Ty_q")
+    '<ጥ_ይ:_ቅ>'
+    >>> geezify_root("x|qWTqWT")
+    '<ሽቍ_ጥ_ቍ_ጥ>'
+    """
+    table = GEEZ_SERA.get(lang, [[],[]])[1]
+    if table:
+        return root2geez(table, root, lang=lang)
 
 def root2geez(table, root, lang='am'):
     '''Convert a verb root to Geez.'''

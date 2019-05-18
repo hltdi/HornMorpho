@@ -956,8 +956,7 @@ class Language:
                                                       preproc=False, postproc=postproc and not raw,
                                                       cache=cache, no_anal=no_anal,
                                                       rank=rank, report_freq=report_freq, nbest=nbest,
-                                                      string=not raw, print_out=False,
-                                                      only_anal=storedict)
+                                                      string=not raw, print_out=False, only_anal=storedict)
                             if minim:
                                 analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
                             elif raw and analyses: 
@@ -969,8 +968,7 @@ class Language:
                             elif not minim:
                                 if analyses:
                                     # Convert the analyses to a string
-                                    analysis = self.analyses2string(word, analyses,
-                                                                    seg=segment, form_only=not gram,
+                                    analysis = self.analyses2string(word, analyses, seg=segment, form_only=not gram,
                                                                     short=True, word_sep=word_sep)
                                 elif segment:
                                     analysis = "{}: {}\n".format(word, form)
@@ -1144,7 +1142,7 @@ class Language:
                   root=True, stem=True, citation=True, gram=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=True, no_anal=None, string=False, print_out=False,
-                  rank=True, report_freq=True, nbest=100,
+                  display_feats=None, rank=True, report_freq=True, nbest=100,
                   only_anal=False):
         '''Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
 
@@ -1265,10 +1263,12 @@ class Language:
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
+#        print("Ranked analyses: {}".format(analyses))
+#        print("print_out {}, string {}, segment {}".format(print_out, string, segment))
         if print_out:
             # Print out stringified version
             print(self.analyses2string(word, analyses, seg=segment, form_only=not gram))
-        elif not string and not segment:
+        elif not segment:
             analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
         return analyses
