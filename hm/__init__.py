@@ -502,7 +502,6 @@ def get_language(abbrev):
 A = lambda w, raw=False: anal_word('am', w, raw=raw)
 S = lambda w, raw=False: seg_word('am', w, raw=raw)
 P = lambda w, raw=False: phon_word('am', w, raw=raw)
-AF = lambda infile, outfile=None: anal_file('am', infile, outfile=outfile)
+AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('am', infile, outfile=outfile, raw=raw, gram=False)
 SF = lambda infile, outfile=None: seg_file('am', infile, outfile=outfile)
 PF = lambda infile, outfile=None: phon_file('am', infile, outfile=outfile)
-

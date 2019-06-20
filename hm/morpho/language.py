@@ -944,7 +944,7 @@ class Language:
                             elif segment:
                                 analysis = "{}: {}\n".format(word, analysis)
                             else:
-                                analysis = 'word: ' + analysis + '\n'
+                                analysis = word + ': ' + analysis + '\n'
                         else:
                             # Attempt to analyze the word
                             form = word
@@ -984,9 +984,9 @@ class Language:
                             string += analysis
                         elif raw:
                             analysis = self.pretty_analyses(analysis)
-                            print(analysis, file=out)
+                            print(analysis, file=out, end='')
                         elif not minim:
-                            print(analysis, file=out)
+                            print(analysis, file=out, end='')
                         local_cache[word] = analysis
                 if minim:
                     # End of line
@@ -1076,8 +1076,7 @@ class Language:
                 return word + word_sep
         elif form_only:
             if analyses:
-#                print('analyses', analyses)
-                return word + ': ' + ', '.join(analyses) + word_sep
+                return word + ': ' + ', '.join({a[0] for a in analyses}) + word_sep
             else:
                 return word + word_sep
         s = ''
@@ -1350,7 +1349,7 @@ class Language:
             # grammar is a single FS
             if not show_root and not segment:
                 analysis[0] = None
-            if postproc and self.morphology[p].postproc:
+            if postproc and p in self.morphology and self.morphology[p].postproc:
                 self.morphology[p].postproc(analysis)
 #            proc_root = analysis[0]
             root_freq = 0
@@ -1362,7 +1361,7 @@ class Language:
                 feat_freq = self.morphology.get_feat_freq(grammar)
                 root_freq *= feat_freq
             # Find the citation form of the root if required
-            if citation and self.morphology[p].citation:
+            if citation and p and p in self.morphology and self.morphology[p].citation:
                 cite = self.morphology[p].citation(root, grammar, guess, stem)
                 if postproc and cite:
                     cite = self.postprocess(cite)

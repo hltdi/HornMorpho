@@ -1,22 +1,25 @@
 """
-This file is part of L3Morpho.
+This file is part of HornMorpho, which is a project of PLoGS.
 
-    L3Morpho is free software: you can redistribute it and/or modify
+    <http://homes.soic.indiana.edu/gasser/plogs.html>
+
+    Copyleft 2018, 2019. PLoGS and Michael Gasser <gasser@indiana.edu>.
+
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    L3Morpho is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with L3Morpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------------------
-Support for romanizing Geez and geezing romanized AfSem languages.
-Author: Michael Gasser <gasser@indiana.edu>
+Support for romanizing Geez and geezifying romanized AfSem languages.
 
 Makes use of a modified version of the SERA conventions for romanizing
 Geez (Yitna & Yaqob, 1997).
@@ -28,7 +31,7 @@ DATA_DIR = os.path.dirname(__file__)
 
 ## AfSem segments
 VOWELS = 'aeEiIou@AOU'
-CONSONANTS = ["h", "l", "H", "m", "^s", "r", "s", "x", "q", "Q", "b", "t", "c",
+CONSONANTS = ["h", "l", "H", "m", "^s", "r", "s", "^s", "x", "q", "Q", "b", "t", "c",
               "^h", "n", "N", "'", "k", "K", "w", "`", "z", "Z", "y", "d", "j", "g",
               "T", "C", "P", "S", "^S", "f", "p"]
 
