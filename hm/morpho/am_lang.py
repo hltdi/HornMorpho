@@ -76,7 +76,10 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     return result
 
 def n_get_citation(root, fs, guess=False, vc_as=False):
-    '''Return the noun stem, but only if the word is deverbal.'''
+    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct set fss.
+
+    If vc_as is True, preserve the voice and aspect of the original word.
+    '''
     if fs.get('v'):
         # It's a deverbal noun
         return vb_get_citation(root, fs, guess=guess, vc_as=vc_as)
@@ -647,8 +650,10 @@ AM = language.Language("አማርኛ", 'am',
               postpostproc=lambda form: postproc_root(form),
               stat_root_feats=['vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
-              seg_units=[["a", "e", "E", "i", "I", "o", "u", "H", "w", "y", "'", "`", "_", "|", "*", "/"],
-                         {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
+              # We need + and numerals for segmentation of irregular verbal nouns
+              seg_units=[["a", "e", "E", "i", "I", "o", "u", "H", "w", "y",
+                          "'", "`", "_", "|", "*", "/", "+", "2", "3"],
+                         {"1": ["1", "1W"], "b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
                           "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
                           "h": ["h", "hW"], "j": ["j", "jW"], "k": ["k", "kW"],
                           "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
