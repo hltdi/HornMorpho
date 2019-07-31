@@ -53,6 +53,7 @@ LANGUAGE_DIR = os.path.join(os.path.dirname(__file__),
 
 from .morphology import *
 from .anal import *
+from .utils import some
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -113,11 +114,15 @@ class Language:
 
     T = TDict()
 
+    morphsep = '-'
+
     def __init__(self, label='', abbrev='', backup='',
                  preproc=None, postproc=None, read_cache=False,
                  # There may be a further function for post-processing
                  postpostproc=None,
                  seg_units=None,
+                 # Function that converts segmented word back to a word string
+                 seg2string=None,
                  # list of grammatical features to be combined with roots for statistics,
                  # e.g., voice and aspect for Amharic verb roots (assume there's only
                  # list)
@@ -147,6 +152,7 @@ class Language:
         self.preproc = preproc
         self.postproc = postproc
         self.postpostproc = postpostproc
+        self.seg2string = seg2string
         self.seg_units = seg_units or []
         self.stat_root_feats = stat_root_feats or []
         self.stat_feats = stat_feats or []
@@ -747,6 +753,41 @@ class Language:
         if self.postpostproc:
             return self.postpostproc(form)
         return form
+
+    ## Methods related to segmentation
+
+    def seg2morphs(self, seg):
+        '''Returns the morphemes in a segmentation string, and index of the root.'''
+        # separate morphemes
+        morphs = seg.split(Language.morphsep)
+        rootindex = -1
+        for index, morph in enumerate(morphs):
+            if '(' in morph:
+                morph = morph.split('(')
+                morph = [morph[0], morph[1][:-1]]
+            else:
+                morph = [morph, '']
+            form = morph[0]
+            if '{' in form:
+                morph[0] = form[1:-1]
+                rootindex = index
+            morphs[index] = morph
+        return morphs, rootindex
+
+    def seg2root(self, seg):
+        """Returns the root morpheme (form, features) for a segmentation string."""
+        morphs = self.seg2morphs(seg)
+        return morphs[0][morphs[1]]
+        
+    def segmentation2string(self, segmentation, sep='-', transortho=True):
+        '''Convert a segmentation (POS, segstring, count) to a form string,
+        using a language-specific function if there is one, otherwise using a default function.'''
+        if self.seg2string:
+            return self.seg2string(segmentation, sep=sep, transortho=transortho)
+        else:
+            morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
+            # This ignores whatever alternation rules might operate at boundaries
+            return sep.join(morphs)
 
     def preprocess_file(self, filein, fileout):
         '''Preprocess forms in filein, writing them to fileout.'''

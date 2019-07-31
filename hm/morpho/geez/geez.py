@@ -101,6 +101,14 @@ SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w"
 def geezify(form, lang='am'):
     return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
 
+def geezify_alts(form, lang='am'):
+    """Return a list of possible geez outputs for roman form."""
+    alt_form = convert_labial(form)
+    g = [geezify(form, lang=lang)]
+    if alt_form:
+        g.append(geezify(alt_form, lang=lang))
+    return g
+
 def romanize(form, lang='am'):
     return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
 
@@ -120,6 +128,15 @@ def geezify_root(root, lang='am'):
     if table:
         return root2geez(table, root, lang=lang)
 
+def geezify_morph(morph, lang='am', alt=True):
+    """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
+    if morph[0] in VOWELS:
+        morph = "'" + morph
+    if alt:
+        return geezify_alts(morph, lang='am')
+    else:
+        return geezify(morph, lang='am')
+
 def no_convert(form):
     '''Skip conversion for simple cases: non-Geez, punctuation, numerals.'''
     if not is_geez(form) or form in GEEZ_PUNCTUATION or is_geez_num(form):
@@ -138,6 +155,57 @@ def is_geez(form):
         if 4608 <= ord(char) <= 4988:
             return True
     return False
+
+def convert_labial(form):
+    """For Amharic and Tigrinya, convert *We to *o, *WI to *u."""
+    if 'W' in form:
+        accum = []
+        already_added = False
+        changed = False
+        for index, char in enumerate(form):
+            if already_added:
+                if char == '_':
+                    continue
+                else:
+                    already_added = False
+            elif char == 'W':
+                if len(form) > index + 1:
+                    if form[index+1] == 'e':
+                        accum.append('o')
+                        already_added = True
+                        changed = True
+                    elif form[index+1] == 'I':
+                        accum.append('u')
+                        already_added = True
+                        changed = True
+                    elif form[index+1] == '_':
+                        if len(form) > index + 2:
+                            if form[index+2] in 'aiuE':
+                                accum.append('_')
+                            elif form[index+2] == 'e':
+                                accum.append('_o')
+                                already_added = True
+                                changed = True
+                            elif form[index+2] == 'I':
+                                accum.append('_u')
+                                already_added = True
+                                changed = True
+                            else:
+                                accum.append('_u' + form[index+2])
+                                already_added = True
+                                changed = True
+                        else:
+                            accum.append('_')
+                    elif form[index+1] in 'aiuE':
+                        accum.append('W')
+                    else:
+                        accum.append('u')
+                        changed = True
+            else:
+                accum.append(char)
+        if changed:
+            return ''.join(accum)
+    return ''
 
 def read_conv(filename, simple=False):
     '''Create translation tables (dict), using simple conversions if simple.'''

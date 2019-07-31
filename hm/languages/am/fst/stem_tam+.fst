@@ -300,7 +300,9 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 # vowel following C-3: 0 for gerundive and jussive/imperative
 -3.4V -> -2.4       [:]       [tm=ger,tmp=[v2=None]];[tm=j_i,tmp=[v2=None]]
 # vowel following C-3: e for perfective and imperfective
--3.4V -> -2.4       [e:]      [tm=prf,tmp=[v2=e]];[tm=imf,tmp=[v2=e]]
+-3.4V -> -2.4       [e:]     [tm=prf,tmp=[v2=e]];[tm=imf,tmp=[v2=e]]
+# recip
+-3.4V -> -2.4       [a]      [as=rc,tmp=[v2=a]]
 # C-3: any root consonant except ' (C-3=' handled below)
 -3.4 -> -3.4V       [X/L]     [tmp=[c2=2]]
 # vowel after C-2: always e

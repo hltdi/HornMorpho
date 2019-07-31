@@ -29,6 +29,7 @@ from geez.py).
 
 from . import language
 from .geez import *
+from .utils import segment, allcombs
 
 ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': "እንድ",
             'm': "ም", 'Inji': "እንጂ", 'na': "ና", 'sa': "ሳ", 's': "ስ", 'ma': "ማ",
@@ -648,6 +649,7 @@ AM = language.Language("አማርኛ", 'am',
 #              sera2geez(GEEZ_SERA['am'][1], form, lang='am'),
               preproc=lambda form: geez2sera(GEEZ_SERA['am'][0], form, lang='am', simp=True),
               postpostproc=lambda form: postproc_root(form),
+              seg2string=lambda string, sep='-', transortho=True: seg2string(string, sep=sep, geez=transortho),
               stat_root_feats=['vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
@@ -812,3 +814,51 @@ def postproc_root(root):
 def roman2geez(value):
     """Convert a value (prep or conj) to geez."""
     return ROM2GEEZ.get(value, value)
+
+def seg2string(segmentation, sep='-', geez=True):
+    """Convert a segmentation to a string."""
+    # The segmentation string is second in the list
+    morphs, rootindex = AM.seg2morphs(segmentation[1])
+    # Root string and features
+    root, rootfeats = morphs[rootindex]
+    # Separate the consonants and template, and realize the root
+    root = root2string(root)
+    # Replace the root in the morphemes list
+    morphs[rootindex] = root, rootfeats
+    morphs = [m[0] for m in morphs]
+    if geez:
+         # First make sure separate morphemes are geez
+         morphs = [geezify_morph(m, alt=True) for m in morphs]
+         morphs = allcombs(morphs)
+         return [sep.join(m) for m in morphs]
+    else:
+        morphs2 = []
+        for m in morphs:
+            conv = convert_labial(m)
+            if conv:
+                morphs2.append([m, conv])
+            else:
+                morphs2.append([m])
+        morphs = allcombs(morphs2)
+        return [sep.join(m) for m in morphs]
+
+def root2string(root):
+    """If root contains '+', it consists of a root and a template, which need to be
+    integrated."""
+    if '+' in root:
+        cons, temp = root.split('+')
+        cons = segment(cons, AM.seg_units)
+        cons = [c for c in cons if c not in ['a']]
+        if 'tt' in temp:
+            temp = temp.replace('tt', 't_')
+        temp = [(int(t) if t.isdigit() else t) for t in temp]
+        form = []
+        for t in temp:
+            if isinstance(t, int):
+                # Template positions are 1-based, not 0-based
+                form.append(cons[t-1])
+            else:
+                form.append(t)
+        return ''.join(form)
+    else:
+        return root

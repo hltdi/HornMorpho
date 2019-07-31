@@ -365,6 +365,21 @@ def get_features(language, pos=None):
                 feats.append((pos, posmorph.get_features()))
             return feats
 
+def seg2string(segmentation, language='am', sep='-', geez=True):
+    """Convert a segmentation (triple with seg string as second item)
+    to a series of spelled out morphemes, ignoring any alternation rules.
+    @param language:     abbreviation for a language
+    @type language:      string
+    @param segmentation: triple with seg string as second item
+    @type segmentation:  tuple
+    @param sep:          character to separate morphemes in return string
+    @type sep:           string
+    @return:             word form
+    @rtype:              string
+    """
+    language = morpho.get_language(language, segment=True)
+    return language.segmentation2string(segmentation, sep=sep, transortho=geez)
+
 ### Functions for debugging and creating FSTs
 
 def cascade(language, pos, gen=False, phon=False, segment=False, 
