@@ -103,10 +103,8 @@ def geezify(form, lang='am'):
 
 def geezify_alts(form, lang='am'):
     """Return a list of possible geez outputs for roman form."""
-    alt_form = convert_labial(form)
-    g = [geezify(form, lang=lang)]
-    if alt_form:
-        g.append(geezify(alt_form, lang=lang))
+    forms = convert_labial(form)
+    g = [geezify(f, lang=lang) for f in forms]
     return g
 
 def romanize(form, lang='am'):
@@ -130,6 +128,8 @@ def geezify_root(root, lang='am'):
 
 def geezify_morph(morph, lang='am', alt=True):
     """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
+    if not morph:
+        return '0'
     if morph[0] in VOWELS:
         morph = "'" + morph
     if alt:
@@ -157,11 +157,16 @@ def is_geez(form):
     return False
 
 def convert_labial(form):
-    """For Amharic and Tigrinya, convert *We to *o, *WI to *u."""
+    """For Amharic and Tigrinya, convert *We to *o, *WI to *u.
+    For syllables other than the following, return only this form.
+    kWe, ^hWe, gWe, qWe, kW(I), ^hW(I), gW(I), kW(I)
+    """
     if 'W' in form:
         accum = []
         already_added = False
         changed = False
+        previous = ''
+        reject_original = False
         for index, char in enumerate(form):
             if already_added:
                 if char == '_':
@@ -169,6 +174,11 @@ def convert_labial(form):
                 else:
                     already_added = False
             elif char == 'W':
+                previous = form[index-1]
+                if previous not in ['k', 'g', 'q']:
+                    reject_original = True
+                elif previous == '^' and form[index-2] != 'h':
+                    reject_original = True
                 if len(form) > index + 1:
                     if form[index+1] == 'e':
                         accum.append('o')
@@ -204,8 +214,12 @@ def convert_labial(form):
             else:
                 accum.append(char)
         if changed:
-            return ''.join(accum)
-    return ''
+            altform = ''.join(accum)
+            if reject_original:
+                return [altform]
+            else:
+                return [form, altform]
+    return [form]
 
 def read_conv(filename, simple=False):
     '''Create translation tables (dict), using simple conversions if simple.'''

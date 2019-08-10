@@ -88,6 +88,8 @@ def get_language(language, load=True, phon=False, segment=False, guess=True,
                  cache='', verbose=False):
     """Get the language with lang_id, attempting to load it if it's not found
     and load is True."""
+    if isinstance(language, Language):
+        return language
     lang_id = get_lang_id(language)
     lang = LANGUAGES.get(lang_id, None)
     if lang:

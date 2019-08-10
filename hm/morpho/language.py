@@ -757,14 +757,15 @@ class Language:
     ## Methods related to segmentation
 
     def seg2morphs(self, seg):
-        '''Returns the morphemes in a segmentation string, and index of the root.'''
+        '''Returns the morphemes in a segmentation string, and index of the root.
+        USE REGEX.'''
         # separate morphemes
         morphs = seg.split(Language.morphsep)
         rootindex = -1
         for index, morph in enumerate(morphs):
             if '(' in morph:
                 morph = morph.split('(')
-                morph = [morph[0], morph[1][:-1]]
+                morph = [morph[0], '(' + morph[1]]
             else:
                 morph = [morph, '']
             form = morph[0]
@@ -779,11 +780,11 @@ class Language:
         morphs = self.seg2morphs(seg)
         return morphs[0][morphs[1]]
         
-    def segmentation2string(self, segmentation, sep='-', transortho=True):
+    def segmentation2string(self, segmentation, sep='-', transortho=True, features=False):
         '''Convert a segmentation (POS, segstring, count) to a form string,
         using a language-specific function if there is one, otherwise using a default function.'''
         if self.seg2string:
-            return self.seg2string(segmentation, sep=sep, transortho=transortho)
+            return self.seg2string(segmentation, sep=sep, transortho=transortho, features=features)
         else:
             morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
             # This ignores whatever alternation rules might operate at boundaries
