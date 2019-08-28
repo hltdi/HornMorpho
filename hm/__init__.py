@@ -521,7 +521,7 @@ def show_segs(segmentation):
 
 def get_language(abbrev):
     """Get the language with the abbreviation if it's loaded."""
-    return hm.LANGUAGES.get(abbrev)
+    return morpho.LANGUAGES.get(abbrev)
 
 ## Shortcuts for Amharic
 A = lambda w, raw=False: anal_word('am', w, raw=raw)

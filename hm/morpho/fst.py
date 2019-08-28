@@ -2603,7 +2603,7 @@ class FST:
         if self.r2l():
             # FST operates right-to-left, so reverse the input list of segments
             input.reverse()
-            print("Reversed input {}".format(input))
+#            print("Reversed input {}".format(input))
         for output in self.step_transduce(input, step=False, init_weight=init_weight,
                                           trace=trace, tracefeat=tracefeat):
             # output[0] is 'succeed' or 'fail'
@@ -2614,7 +2614,7 @@ class FST:
                 if self.r2l():
                     # FST operates right-to-left, so reverse the output list of segments before joining
                     output[1].reverse()
-                    print("Reversed output {}".format(output[1]))
+#                    print("Reversed output {}".format(output[1]))
                 word = ''.join(output[1])
                 if reject_same and word == original_word:
 #                    print('{} is the same the original word')
