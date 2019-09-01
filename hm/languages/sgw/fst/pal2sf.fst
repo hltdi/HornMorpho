@@ -4,7 +4,7 @@ reverse
 -> start
 
 # doesn't apply
-start -> start        [XX;^] [sp=1];[sp=3];[sp=None];[sg=m];[sp=2,sn=2,sg=f];[tm=prf]
+start -> start        [XX;^;@] [sp=1];[sp=3];[sp=None];[sg=m];[sp=2,sn=2,sg=f];[tm=prf]
 
 # does apply
 start -> pal          [:]     [sp=2,sn=1,sg=f,tm=imf];[sp=2,sn=1,sg=f,tm=j_i]
@@ -66,6 +66,6 @@ pal3_iVDV -> fin      [^]
 # -3 consonant can be anything
 pal3_iVDV -> fin      [RG]
 
-fin -> fin            [RG;V;^]
+fin -> fin            [RG;V;^;@]
 fin ->
 start ->

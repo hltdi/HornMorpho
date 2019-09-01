@@ -1,6 +1,6 @@
 -> start
 
-start -> start     [RG;V]
+start -> start     [RG;V;@]
 
 ## Palatalize 2nd consonant
 start -> pal2      [^]
@@ -22,7 +22,7 @@ pal1c^ -> pal1cv   [e]
 pal1cv -> pal1cv^  [^]
 pal1cv^ -> end     [DD;GG]
 
-## Palatalize only 1st consonant because 1nd consonant is not coronal
+## Palatalize only 1st consonant because 2nd consonant is not coronal
 start -> pal1      [:^]
 pal1 -> pal1G      [GG]
 pal1G -> pal1G^    [:^]

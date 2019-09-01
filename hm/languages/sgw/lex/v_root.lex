@@ -1,24 +1,33 @@
+## A
 sbr   [root=[+tr,cls=A]]
 trf   [root=[-tr,cls=A]]
 zgr   [root=[-tr,cls=A]]
 kft   [root=[+tr,cls=A]]
 rqm   [root=[+tr,cls=A]]
+ktf   [root=[+tr,cls=A]]
 smh   [root=[+tr,cls=A]]
 brh   [root=[+tr,cls=A]]
 bdh   [root=[+tr,cls=A]]
 rsh   [root=[+tr,cls=A]]
-ktf   [root=[+tr,cls=A]]n
 # no mutation in perfect
 rdf   [root=[+tr,cls=A,-mut]]
+# reduplicated
 qff   [root=[+tr,cls=A,+fred]]
 brr   [root=[-tr,cls=A,+fred]]
-# B
+sTy   [root=[-tr,cls=A]]
+sfy   [root=[-tr,cls=A]]
+Kry   [root=[-tr,cls=A]]
+## B
 gtm   [root=[cls=B]]
 dbr   [root=[cls=B]]
-mkr   [root=[cls=B]]
+mgr   [root=[cls=B]]
+rkr   [root=[cls=B]]
 mTr   [root=[cls=B]]
 grz   [root=[cls=B]]
 Trf   [root=[cls=B]]
+sbt   [root=[cls=B]]
+skt   [root=[cls=B]]
+dgm   [root=[cls=B]]
 try   [root=[cls=B]]
 Try   [root=[cls=B]]
 # not real roots
@@ -26,20 +35,25 @@ gkm   [root=[cls=B]]
 Tkm   [root=[cls=B]]
 # reduplicated
 fTT   [root=[cls=B,+fred]]
-# C
+## C
 mrK   [root=[cls=C]]
-brr   [root=[cls=C]]
 zbt   [root=[cls=C]]
+qsy   [root=[cls=C]]
 # reduplicated
 bzz   [root=[cls=C,+fred]]
-# D
-bWrs   [root=[cls=D]]
-qWmr   [root=[cls=D]]
+brr   [root=[cls=C]]
+## D
+brs   [root=[cls=D]]
+qmr   [root=[cls=D]]
+zbd   [root=[cls=D,-mut]]
 # reduplicated
 qWrr  [root=[cls=D,+fred]]
-# E
+## E, F
 grdm   [root=[cls=E]]
 mskr   [root=[cls=E]]
+frtK   [root=[cls=F]]
+zrgy   [root=[cls=E]]
+brTy   [root=[cls=F]]
 # reduplicated
 qmTT  [root=[cls=E,+fred]]
 drzz  [root=[cls=E,+fred]]
@@ -48,5 +62,4 @@ fqfq  [root=[cls=E,+tred]]
 nsns  [root=[cls=E,+tred]]
 zrzr  [root=[cls=E,+tred]]
 srsr  [root=[cls=E,+tred]]
-
 

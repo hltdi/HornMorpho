@@ -1,6 +1,6 @@
 -> start
 
-start -> start  [XX;^]
+start -> start  [XX;^;@]
 start -> gem    [:/]
 
 gem -> start    [RR-WW]
