@@ -888,6 +888,7 @@ CONS = "[hlHmrsxqbtcnN'kw`zZydjgTCPSfp]|^S|^s|^h"
 RULES = Rules(language = AM)
 
 RULES.add(Del(delpart="'", pre="-{?", post=VOWELS))
+RULES.add(Del(delpart="0-"))
 
 ## CC
 RULES.add(Repl("[lmrsxbtnzdgTSf]", "}-", "h", "", "", "k"))

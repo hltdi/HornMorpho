@@ -521,6 +521,14 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     if lang:
         return lang.morphology[pos]
 
+def join(language, POS, segstring):
+    """Join the sequence of morphemes in segstring, using rules (instances of Rule)
+    implementing alternation rules at the morpheme boundaries.
+    For Amharic, POS is 'v', 'n', or 'n_dv'.
+    """
+    language = morpho.get_language(language, segment=True)
+    return language.join_segments(POS, segstring)
+
 def show_segs(segmentation):
     """Display the segments in a segmentation."""
     if isinstance(segmentation, tuple):
