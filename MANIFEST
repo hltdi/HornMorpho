@@ -2,6 +2,7 @@
 LICENSE.txt
 README.txt
 hm.py
+horn3.0.pdf
 horn3.1A_quick.pdf
 setup.py
 hm/__init__.py
@@ -207,6 +208,7 @@ hm/morpho/menu.py
 hm/morpho/morphology.py
 hm/morpho/morphotax.py
 hm/morpho/mtax.py
+hm/morpho/rule.py
 hm/morpho/semiring.py
 hm/morpho/setup.py
 hm/morpho/strip.py

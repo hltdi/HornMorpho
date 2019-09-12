@@ -19,7 +19,7 @@ Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-_version = '3.0'
+_version = '3.1'
 
 from . import morpho
 
