@@ -30,6 +30,7 @@ from geez.py).
 from . import language
 from .geez import *
 from .utils import segment, allcombs
+from .rule import *
 
 ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': "እንድ",
             'm': "ም", 'Inji': "እንጂ", 'na': "ና", 'sa': "ሳ", 's': "ስ", 'ma': "ማ",
@@ -815,9 +816,11 @@ def roman2geez(value):
     """Convert a value (prep or conj) to geez."""
     return ROM2GEEZ.get(value, value)
 
-def seg2string(segmentation, sep='-', geez=True, features=False):
+def seg2string(segmentation, sep='-', geez=True, features=False,
+               arules=False):
     """Convert a segmentation to a string, including features if features is True."""
     # The segmentation string is second in the list
+#    print("Converting {} to string".format(segmentation))
     morphs, rootindex = AM.seg2morphs(segmentation[1])
     # Root string and features
     root, rootfeats = morphs[rootindex]
@@ -834,6 +837,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False):
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
     morphs = allcombs(morphs2)
+#    print(" Morphs {}".format(morphs))
     if not features:
         morphs = [[w[0] for w in word] for word in morphs]
     else:
@@ -853,14 +857,123 @@ def root2string(root):
             temp = temp.replace('tt', 't_')
         temp = [(int(t) if t.isdigit() else t) for t in temp]
         form = []
+        last_cons = ''
         for index, t in enumerate(temp):
             if isinstance(t, int):
                 # Template positions are 1-based, not 0-based
-                form.append(cons[t-1])
+                c = cons[t-1]
+                if c != last_cons:
+                    form.append(cons[t-1])
+                else:
+                    # Identical consonants; geminate
+                    form.append('_')
+                last_cons = c
             elif index == 0 and t in "aeiouIE":
                 form.append("'" + t)
+            elif t in "stm":
+                form.append(t)
+                last_cons = t
             else:
                 form.append(t)
+                # A vowel or _ character was added so clear the last consonant
+                last_cons = ''
         return '{' + ''.join(form) + '}'
     else:
         return '{' + root + '}'
+
+VOWELS = '[aeEiIou@AOU]'
+CONS = "[hlHmrsxqbtcnN'kw`zZydjgTCPSfp]|^S|^s|^h"
+
+### verb RE rules
+RULES = Rules(language = AM)
+
+RULES.add(Del(delpart="'", pre="-{?", post=VOWELS))
+
+## CC
+RULES.add(Repl("[lmrsxbtnzdgTSf]", "}-", "h", "", "", "k"))
+RULES.add(SimpRepl("Tt", "t_"))
+RULES.add(SimpRepl("[kg]}-k", "k_"))
+
+## VV
+# (a|e)(a|e) ## a => a
+RULES.add(Del(delpart="[ae]?[ae]-*{?}?-?", post="a"))
+# a ## e => a
+RULES.add(Del(pre="a", delpart="-*{?}?-?e"))
+# e ## e => e
+RULES.add(Del(delpart="e", post="}-e"))
+# a|e ## u => u
+RULES.add(Del(delpart="[ae]", post="}-u"))
+# a ## i => i
+RULES.add(Del(delpart="a", post="}-i"))
+
+## palatalization, y, i
+RULES.add(Repl("[bsdlk]", "", "-y", "-{", CONS, "i"))
+RULES.add(Repl("[bsdlk]", "", "-y", "-{", VOWELS, "iy"))
+RULES.add(Assim({'t': 'c', 'd': 'j', 'T': 'C', 's': 'x', 'z': 'Z', 'n': 'N', 'l': 'y'},
+                inter="_?}?-_?", post="[iE]", prog=True, replace=False))
+RULES.add(Repl("[cjCxZNy]", "_?}?-_?", "[iE]-?", "", VOWELS, ""))
+RULES.add(Insert(pre="[iE]-?{?}?-?", post=VOWELS, insertion="y"))
+RULES.add(Del(delpart="i", pre="[aeEiou]y}?-?"))
+
+## labialization
+RULES.add(Repl(CONS, r"_?}?-?", "[ou]", "-", "[aeEIi]", "W"))
+
+## cleanup
+RULES.add(Del(delpart="[-_{}I]"))
+
+AM.morphology['v'].rules = RULES
+
+### noun RE rules
+
+VNRULES = Rules(language=AM)
+
+# palatalization, y, i in deverbal nouns
+VNRULES.add(Assim({'t': 'c', 'd': 'j', 'T': 'C', 's': 'x', 'z': 'Z', 'n': 'N', 'l': 'y'},
+                 inter="", post="i}", prog=True, replace=False))
+VNRULES.add(Assim({'t': 'c', 'd': 'j', 'T': 'C', 's': 'x', 'z': 'Z', 'n': 'N', 'l': 'y'},
+                 inter="", post="iya}", prog=True, replace=False))
+VNRULES.add(Repl("[cjCxZNy]", "", "iya", "", "}", "a"))
+VNRULES.add(Del(delpart="i", pre="[aeEiou]y", post="}"))
+#VNRULES.add(Del(delpart="i", pre="[cjCxZNy]", post="}-"+VOWELS))
+
+NRULES = Rules(language=AM)
+
+# exceptions
+NRULES.add(Repl("e", "-{", "y", '', "h}", "z_i"))
+NRULES.add(Repl("e", "-{", "yc_i", '', "}", "z_ic"))
+NRULES.add(Insert(pre="e-{", post="ya}", insertion="z_i"))
+NRULES.add(Repl("e", "-{", "yac_i", '', "}", "z_iyac"))
+
+# glottal stop
+NRULES.add(Del(delpart="'", pre="-{?", post=VOWELS))
+# aa
+NRULES.add(Del(delpart="a", pre="a}-"))
+# optional: aoc => oc
+#NRULES.add(Del(delpart="a", post="}-oc"))
+
+# epenthesis
+NRULES.add(Insert(pre=VOWELS + "}?-", post="E", insertion="y"))
+NRULES.add(Insert(pre=VOWELS + "}?-", post="o", insertion="w"))
+NRULES.add(Insert(pre="[iE]}?-", post="a", insertion="y"))
+NRULES.add(Insert(pre="[ou]}?-", post="a", insertion="w"))
+
+# -u, -wa
+NRULES.add(Repl(VOWELS, "}-", "u", "", "", "w"))
+NRULES.add(Repl(CONS, "}?-", "w", "", "", "W"))
+
+# prefix VV
+NRULES.add(Del(delpart="e", post="-{?'?a"))
+NRULES.add(Del(delpart="'", pre="e-{", post=CONS))
+
+NRULES.add(Del(delpart="[-_{}]"))
+
+# ' between vowels
+NRULES.add(Insert(pre=VOWELS, post=VOWELS, insertion="'"))
+
+NRULES.add(Del(delpart="I"))
+
+VNRULES.add_rules(NRULES)
+               
+AM.add_rules('n', NRULES)
+AM.add_rules('v', RULES)
+AM.add_rules('n_dv', VNRULES)

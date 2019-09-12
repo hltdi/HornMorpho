@@ -52,7 +52,8 @@ def load_lang(language, phon=False, segment=False,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=100, raw=False, realize=False, features=True):
+def seg_word(language, word, nbest=100, raw=False, realize=False, features=True,
+             transortho=True):
     '''Segment a single word and print out the results.
     
     @param language: abbreviation for a language
@@ -62,6 +63,10 @@ def seg_word(language, word, nbest=100, raw=False, realize=False, features=True)
     @param realize:  whether to realize individual morphemes (in particular
                      the stem of an Amharic verb or deverbal noun)
     @type realize:   boolean
+    @param features: whether to show the grammatical feature labels
+    @type features:  boolean
+    @param transortho: whether to convert output to non-roman orthography
+    @type transortho: boolean
     @return:         analyses (only if raw is True)
     @rtype:          list of (POS, segstring, count) triples or a list of strings
                      (if realize is True)
@@ -75,7 +80,7 @@ def seg_word(language, word, nbest=100, raw=False, realize=False, features=True)
                                       print_out=(not raw and not realize),
                                       string=True, nbest=nbest)
         if realize:
-            return [seg2string(s, language=language, features=features) for s in analysis]
+            return [seg2string(s, language=language, features=features, transortho=transortho) for s in analysis]
         elif raw:
             return analysis
 
@@ -374,7 +379,7 @@ def get_features(language, pos=None):
                 feats.append((pos, posmorph.get_features()))
             return feats
 
-def seg2string(segmentation, language='am', sep='-', geez=True, features=False):
+def seg2string(segmentation, language='am', sep='-', transortho=True, features=False):
     """Convert a segmentation (triple with seg string as second item)
     to a series of spelled out morphemes, ignoring any alternation rules.
     @param language:     abbreviation for a language
@@ -383,11 +388,15 @@ def seg2string(segmentation, language='am', sep='-', geez=True, features=False):
     @type segmentation:  tuple
     @param sep:          character to separate morphemes in return string
     @type sep:           string
+    @param transortho:   for languages written in Geez, whether to output this
+    @type transortho:    boolean
+    @param features:     whether to output feature labels
+    @type features:      boolean
     @return:             word form
     @rtype:              string
     """
     language = morpho.get_language(language, segment=True)
-    return language.segmentation2string(segmentation, sep=sep, transortho=geez,
+    return language.segmentation2string(segmentation, sep=sep, transortho=transortho,
                                         features=features)
 
 ### Functions for debugging and creating FSTs
@@ -525,7 +534,7 @@ def get_language(abbrev):
 
 ## Shortcuts for Amharic
 A = lambda w, raw=False: anal_word('am', w, raw=raw)
-S = lambda w, raw=False, realize=True, features=True: seg_word('am', w, raw=raw, realize=realize, features=features)
+S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('am', w, raw=raw, realize=realize, features=features, transortho=transortho)
 P = lambda w, raw=False: phon_word('am', w, raw=raw)
 AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('am', infile, outfile=outfile, raw=raw, gram=False)
 SF = lambda infile, outfile=None: seg_file('am', infile, outfile=outfile)

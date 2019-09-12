@@ -77,6 +77,7 @@ B.cvX^ -> B.cvX^v [e:]
 B.cvX^v -> end    [MM;r]
 
 ## weak B verbs
+# final h
 
 ## Class C
 # C3
@@ -134,7 +135,6 @@ E.yv^ -> E.yv/      [/:]   [tm=prf];[tm=imf]
 # assumes all ***y verbs have a velar or coronal as C3
 E.yv/ -> E.CVC      [KK;DD]
 E.yv^ -> E.CVC      [KK;DD] [tm=j_i]
-
 # V2
 E.CVC -> E.CVCV     [a:]   [root=[cls=F]]
 E.CVC -> E.CVCV     [e:]   [tm=prf,root=[cls=E]];[tm=imf,root=[cls=E]]

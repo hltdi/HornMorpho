@@ -54,6 +54,7 @@ LANGUAGE_DIR = os.path.join(os.path.dirname(__file__),
 from .morphology import *
 from .anal import *
 from .utils import some
+from .rule import *
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -130,6 +131,7 @@ class Language:
                  # list of lists of grammatical features for statistics, e.g.,
                  # [poss, expl] for Amharic (whether is explicitly possessive)
                  stat_feats=None,
+                 rules=None,
                  citation_separate=True):
 #                 msgs=None, trans=None):
         """
@@ -167,6 +169,7 @@ class Language:
         self.tlanguages = [abbrev]
         if self.backup:
             self.tlanguages.append(self.backup)
+        self.rules = rules or {}
         # Whether the language data and FSTs have been loaded
         self.load_attempted = False
         self.cached = {}
@@ -1608,6 +1611,21 @@ class Language:
                 out.close()
         except IOError:
             print('No such file or path; try another one.')
+
+    ## Using RE rules for joining morphological segments
+
+    def add_rules(self, POS, rules):
+        self.rules[POS] = rules
+
+    def join_segments(self, POS, segstring):
+        rules = self.rules.get(POS)
+        segstring = self.preprocess(segstring)
+        if rules:
+            output = rules.apply(segstring)
+            return self.postprocess(output)
+        else:
+            print("No rules available for {}".format(POS))
+            return segstring
 
 class Multiling(dict):
 
