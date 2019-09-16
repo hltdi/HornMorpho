@@ -8,19 +8,32 @@
 
 -> start
 
-###  get the class
-start -> A   [:]   [root=[cls=A]]
-start -> B   [:]   [root=[cls=B]]
-start -> C   [:]   [root=[cls=C]]
-start -> D   [:]   [root=[cls=D]]
-start -> E   [:]   [root=[cls=E]];[root=[cls=F]]
+### final consonant
+
+start -> .c        [ZZ]
+start -> .h        [:h]
+start -> .c        [:y]   [tm=prf,sp=3,sn=2];[tm=imf,sp=2,sn=2];[tm=imf,sp=3,sn=2];[tm=j_i,sp=2,sn=2];[tm=j_i,sp=3,sn=2];[sp=None]
+start -> .y        [:y]   [sp=1];[sn=1];[tm=prf,sp=2,sn=2]
+
+.h -> .cv          [a:]
+.c -> .cv          [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]];[tm=j_i,root=[-tr]]
+.c -> .cv          [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps],root=[+tr]]
+
+## get the class
+.cv -> A.cv        [:]    [root=[cls=A]]
+.cv -> B.cv        [:]    [root=[cls=B]]
+.cv -> C.cv        [:]    [root=[cls=C]]
+.cv -> D.CV        [:]    [root=[cls=D]]
+.cv -> E.CV        [:]    [root=[cls=E]];[root=[cls=F]]
+
+.y -> A.y          [:]    [root=[cls=A]]
+.y -> B.y          [:]    [root=[cls=B]]
+.y -> C.y          [:]    [root=[cls=C]]
+.y -> E.y          [:]    [root=[cls=E]];[root=[cls=F]]
 
 ### A class
 ## strong verbs
-# final consonant
-A -> A.c          [ZZ]
-A.c -> A.cv       [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]];[tm=j_i,root=[-tr]]
-A.c -> A.cv       [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps],root=[+tr]]
+# 2nd to last consonant
 A.cv -> A.cvc1    [/:]   [tm=prf];[tm=imf,vc=[+ps]]
 A.cv -> A.cvc1    [:]    [tm=imf,vc=[-ps]];[tm=j_i]
 A.cvc1 -> A.cvc   [YY]
@@ -30,31 +43,49 @@ A.cvcv -> end     [YY]
 
 ## weak A verbs
 
-# final 'h'
-A -> A.h          [:h]
-# stem always ends in a (potentially modified by palatalization later); otherwise same as strong
-A.h -> A.cv       [a:]
-
-# final 'y'
-A -> A.y          [:y]
-A.y -> A.yv       [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]];[tm=j_i,root=[-tr]]
+# final y
+# last vowel
+# palatalize final e in tr j_i: sTe->sTE (what about passive j_i?); go to strong template
+A.y -> A.cv       [E:]   [tm=j_i,root=[-tr]]
+# palatalize elsewhere
+A.y -> A.yv       [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
 A.y -> A.yv       [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps],root=[+tr]]
-# palatalize the final consonant, unless the subject is 3p prf, 2/3p imf, or 2/p j_i
-A.yv -> A.yv^     [^:]   [tm=prf,sn=1];[tm=prf,sp=1,sn=2];[tm=prf,sp=2,sn=2];[tm=imf,sn=1];[tm=imf,sp=1,sn=2];[tm=j_i,sn=1];[tm=j_i,sp=1,sn=2]
-A.yv -> A.yv^     [:]    [sp=None];[tm=prf,sp=3,sn=2];[tm=imf,sp=3,sn=2];[tm=imf,sp=2,sn=2];[tm=j_i,sp=3,sn=2];[tm=j_i,sp=2,sn=2]
+# palatalize the final consonant
+A.yv -> A.yv^     [^:]
 A.yv^ -> A.yv^1   [/:]   [tm=prf];[tm=imf,vc=[+ps]]
 A.yv^ -> A.yv^1   [:]    [tm=imf,vc=[-ps]];[tm=j_i]
+# palatalizable final consonants
 A.yv^1 -> A.cvc   [KK;DD]
+# path for non-palatalizable final consonant
 A.yv -> A.yv1     [/:]   [tm=prf];[tm=imf,vc=[+ps]]
 A.yv -> A.yv1     [:]    [tm=imf,vc=[-ps]];[tm=j_i]
+# non-palatalizable final consonants
 A.yv1 -> A.yvc    [MM]
-# palatalize the first vowel
-A.yvc -> A.cvc    [^:]
+# palatalize the first consonant
+A.yvc -> A.cvc    [^:]   [tm=imf];[tm=prf]
+# palatalize the first vowel (I); sif
+A.yvc -> A.cvc    [i:]  [tm=j_i]
+
+# medial w
+# o when the first consonant is not labializable
+.c -> A.co        [o:w]  [root=[cls=A]]
+# first consonant: dental
+A.co -> end       [DD]
+# e or I if the first consonant is labializable
+.c -> A.cw        [e:w]  [tm=prf];[tm=imf]
+.c -> A.cw        [:w]   [tm=j_i]
+# labialize first consonant
+A.cw -> A.cW      [@:]   [root=[cls=A]]
+A.cW -> end       [LL]
+
+# medial h
+.c -> A.cvcv      [a:h]  [tm=prf,root=[cls=A]];[tm=j_i,root=[cls=A]]
+.c -> A.cvcv      [e:h]  [tm=imf,root=[cls=A]]
 
 ### B class
-B -> B.c          [ZZ;:y]
-B.c -> B.cv       [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
-B.c -> B.cv       [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps]]
+# Needed to be consistent with final y in other classes
+B.y -> B.cv       [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
+B.y -> B.cv       [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps]]
 # palatalize 2nd (velar) consonant
 B.cv -> B.cv^     [^:]   [tm=prf];[tm=imf]
 B.cv -> B.cv^     [:]    [tm=j_i]
@@ -71,21 +102,26 @@ B.cvcv -> B.cvcv^ [:]    [tm=j_i]
 B.cvcv^ -> end    [KK;TT]
 # palatalize first vowel
 B.cv/ -> B.cvX    [DD;MM]
-B.cvX -> B.cvX^   [^:]   [tm=prf];[tm=imf]
-B.cvX -> B.cvX^   [:]    [tm=j_i]
-B.cvX^ -> B.cvX^v [e:]
-B.cvX^v -> end    [MM;r]
+B.cvX -> B.cvXv   [E:]   [tm=prf];[tm=imf]
+B.cvX -> B.cvXv   [e:]   [tm=j_i]
+B.cvXv -> end     [MM;r]
 
-## weak B verbs
-# final h
+# medial w
+# o when the first consonant is not labializable
+.c -> B.co        [o:w]  [root=[cls=B]]
+# first consonant: dental
+B.co -> B.co^     [^:]   [tm=prf];[tm=imf]
+B.co -> B.co^     [:]    [tm=j_i]
+B.co^ -> end      [DD]
+# e or I if the first consonant is labializable
+.c -> B.cw        [e:w]  [tm=prf];[tm=imf]
+.c -> B.cw        [:w]   [tm=j_i]
+# labialize first consonant
+B.cw -> B.cW      [@:]   [root=[cls=B]]
+B.cW -> end       [LL]
 
 ## Class C
-# C3
-C -> C.c           [ZZ]
-C -> C.y           [:y]
-# V2
-C.c -> C.cv        [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
-C.c -> C.cv        [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps]]
+# Final y; last vowel
 C.y -> C.yv        [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
 C.y -> C.yv        [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps]]
 # Seems that C2 is always palatalizable for **y C verbs.
@@ -100,11 +136,6 @@ C.cvc -> C.cvcv    [a:]
 C.cvcv -> end      [RR]
 
 ## Class D
-# C3
-D -> D.C           [ZZ]
-# 
-D.C -> D.CV        [e:]   [tm=prf];[tm=imf,vc=[+ps]];[tm=j_i,vc=[+ps]]
-D.C -> D.CV        [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps]]
 # C2 (always geminated)
 D.CV -> D.CV/      [/:]   
 D.CV/ -> D.CVC     [RR]
@@ -116,14 +147,7 @@ D.CVC -> D.CVCo    [o:]
 D.CVCo -> end      [CC-LL]
 
 ## Class E, F
-# C4
-E -> E.C            [ZZ]
-# final y -> palatalization (under certain circumstances)
-E -> E.y            [:y]   [tm=prf,sn=1];[tm=prf,sp=1,sn=2];[tm=prf,sp=2,sn=2];[tm=imf,sn=1];[tm=imf,sp=1,sn=2];[tm=j_i,sn=1];[tm=j_i,sp=1,sn=2]
-E -> E.C            [:y]   [sp=None];[tm=prf,sp=3,sn=2];[tm=imf,sp=3,sn=2];[tm=imf,sp=2,sn=2];[tm=j_i,sp=3,sn=2];[tm=j_i,sp=2,sn=2]
-# V3
-E.C -> E.CV         [e:]   [tm=prf]
-E.C -> E.CV         [:]    [tm=j_i];[tm=imf]
+# final y, last vowel
 E.y -> E.yV         [e:]   [tm=prf]
 E.y -> E.yV         [:]    [tm=j_i];[tm=imf]
 # C3
@@ -135,7 +159,7 @@ E.yv^ -> E.yv/      [/:]   [tm=prf];[tm=imf]
 # assumes all ***y verbs have a velar or coronal as C3
 E.yv/ -> E.CVC      [KK;DD]
 E.yv^ -> E.CVC      [KK;DD] [tm=j_i]
-# V2
+# V2: always a for class F, e or 0 for class E
 E.CVC -> E.CVCV     [a:]   [root=[cls=F]]
 E.CVC -> E.CVCV     [e:]   [tm=prf,root=[cls=E]];[tm=imf,root=[cls=E]]
 E.CVC -> E.CVCV     [:]    [tm=j_i,root=[cls=E]]

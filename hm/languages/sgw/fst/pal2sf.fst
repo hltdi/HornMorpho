@@ -1,5 +1,3 @@
-reverse
-
 # imperfect and jussive/imperative 2 person singular feminine suffix's effect on the verb stem
 -> start
 
@@ -9,16 +7,15 @@ start -> start        [XX;^;@] [sp=1];[sp=3];[sp=None];[sg=m];[sp=2,sn=2,sg=f];[
 # does apply
 start -> pal          [:]     [sp=2,sn=1,sg=f,tm=imf];[sp=2,sn=1,sg=f,tm=j_i]
 
-# do nothing if the final consonant is already palatalized
-pal -> fin            [PP]
+# do nothing if the final consonant or vowel is already palatalized or will be.
+pal -> fin            [PP;^;E]
 
 # Condition A: final a is palatalized without affecting further palatalization (but has to be treated separately)
-pal -> pal_a          [^:]
-pal_a -> pal_a.       [a]
-pal_a. -> pal_aP      [^:]
+pal -> pal_a          [A:a]
+pal_a -> pal_aP       [^:]
 pal_aP -> fin         [DD;GG]
 # -1 (*Ch) consonant is not palatalizable
-pal_a. -> pal_aC      [RG-DD,GG]
+pal_a -> pal_aC       [RG-DD,GG]
 pal_aC -> pal_aCV     [V;:]
 # -2 (C*h) consonant is velar, palatalizable
 pal_aCV -> pal_aCVP   [^:]
@@ -49,10 +46,16 @@ pal2vcv -> pal2vcvP   [^:]
 # palatalize a velar in position -3
 pal2vcvP -> fin       [GG]
 
-# Condition 3: insert i after the last consonant, when nothing can be palatalized
-pal2 -> pal3_i        [i:]
-pal3_i -> pal3_iV     [V;:]
-pal3_iV -> fin        [^]
+# Condition 3: palatalize vowel after the second-to-last consonant, when nothing can be palatalized
+# TEn <Tny>
+pal2 -> pal3_E        [E:e;A:a]
+pal3_E -> end         [DD]
+
+pal2 -> pal3_iV       [i:]
+pal2 -> pal3_^        [^:]
+pal3_^ -> pal3_iV     [V]
+#pal3_i -> pal3_iV     [V;:]
+#pal3_iV -> fin        [^]
 # previous consonant not-palatalizable and not dental
 pal3_iV -> pal3_iVC   [r;RG-DD,GG]
 pal3_iVC -> pal3_iVCV [V;:]
@@ -68,4 +71,5 @@ pal3_iVDV -> fin      [RG]
 
 fin -> fin            [RG;V;^;@]
 fin ->
+end ->
 start ->

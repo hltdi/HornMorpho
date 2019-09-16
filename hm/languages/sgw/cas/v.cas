@@ -14,7 +14,7 @@ r2l
 
 ## Stringsets
 # All vowels
-V = {a, e, E, i, I, o, u, *}
+V = {a, e, E, i, I, o, u, *, A, O}
 # All consonants
 X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, ', bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
 # weak consonants
@@ -31,23 +31,15 @@ GG = {g, k, K, q, gW, kW, Kw, qW}
 % = {_, /, D, @, ^, 0, =}
 
 #>del_epgem<
-## Insert glottal stop before initial vowel
-##>gs0<
 # Add epenthetic I
 #>epen1<
-## Realize gemination
-#>gem1<
-## Convert /C to C_
-#>pre_gem<
-## ay -> E
-#>ay<
-## y->i between Cs
-#>y2i<
+## Realize r as n in certain environments
+>rn<
+## vowel combinations
+#>VV<
 ## Palatalization
 #>pal<
 ## Labialization
 #>lab<
-## CC -> C_
-#>gem2<
 # Morphotactics
->vR2L.mtx<
+>v.mtx<

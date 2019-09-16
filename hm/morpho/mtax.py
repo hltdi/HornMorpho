@@ -129,7 +129,7 @@ class MTax:
             m = LEX_RE.match(line)
             if m:
                 indentation, label, fss = m.groups()
-#                print('Lex', label)
+                print('Lex', label)
                 weight = self.weighting.parse(fss)
                 filename = label + '.lex'
                 if len(indentation) > current_indent and current_fs:
@@ -238,8 +238,8 @@ class MTax:
                     label = in_string.split('.')[0]
                     fst1 = self.cascade.get(label) if self.cascade else None
                     if not fst1:
-                        if verbose:
-                            print('Creating FST from lex file', in_string)
+#                        if verbose:
+                        print('Creating FST from lex file', in_string)
                         fst1 = self.fst.load(os.path.join(self.cascade.get_lex_dir(), in_string),
                                              weighting=self.weighting, cascade=self.cascade,
                                              seg_units=self.seg_units,
@@ -300,7 +300,6 @@ class MTax:
                     fst1 = self.cascade.get(label) if self.cascade else None
                     if not fst1:
                         fst1 = self.fst.load(os.path.join(self.cascade.get_lex_dir(), file),
-# os.path.join(self.directory, file),
                                              weighting=self.weighting, cascade=self.cascade,
                                              seg_units=self.seg_units,
                                              lex_features=True, dest_lex=False)

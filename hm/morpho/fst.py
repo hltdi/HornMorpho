@@ -220,6 +220,8 @@ class FSTCascade(list):
         inv.init_weight = self.init_weight
         inv._weighting = self._weighting
         inv._stringsets = self._stringsets
+        if self.r2l:
+            inv.r2l = True
         return inv
 
     def compose(self, begin=0, end=None, first=None, last=None, subcasc=None, backwards=False,
@@ -1284,6 +1286,8 @@ class FST:
         """Swap all in_string/out_string pairs."""
         fst = self.copy(del_suffix(self.label, '.') + '_inv')
         fst._in_string, fst._out_string = fst._out_string, fst._in_string
+        if self._reverse:
+            fst._reverse = True
         return fst
 
     def reversed(self):
@@ -2585,6 +2589,7 @@ class FST:
                   seg_units=[], reject_same=False,
                   trace=0, tracefeat='', timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
+#        print("{} transducing {}".format(self.__repr__(), input))
         if timeit:
             time1 = time.time()
         words = []
@@ -2603,7 +2608,6 @@ class FST:
         if self.r2l():
             # FST operates right-to-left, so reverse the input list of segments
             input.reverse()
-#            print("Reversed input {}".format(input))
         for output in self.step_transduce(input, step=False, init_weight=init_weight,
                                           trace=trace, tracefeat=tracefeat):
             # output[0] is 'succeed' or 'fail'
@@ -2968,7 +2972,6 @@ class FST:
     @staticmethod
     def compose(fsts, label='', relabel=True, reverse=False, trace=0):
         """Compose a list of FSTs."""
-#        print("Composing fsts, reverse={}".format(reverse))
         weighting = fsts[0].weighting()
         for f in fsts[1:]:
             if f.weighting() != weighting:

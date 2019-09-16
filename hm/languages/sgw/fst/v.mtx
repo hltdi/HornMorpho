@@ -1,32 +1,40 @@
-$ sbj_pre
-  e  [sb=[+p1,-p2,-plr],tm=imf]
-  t  [sb=[-p1,+p2],tm=imf];[sb=[-p1,-p2,+fem,-plr],tm=imf];[sb=[-p1,-p2,+fem,-plr],tm=j_i]
-  y  [sb=[-p1,-p2,+plr],tm=imf];[sb=[-p1,-p2,-fem,-plr],tm=imf]
-  ye [sb=[-p1,-p2,+plr],tm=j_i];[sb=[-p1,-p2,-fem,-plr],tm=j_i]
-  n  [sb=[+p1,-p2,+plr],tm=imf];[sb=[+p1,-p2,+plr],tm=j_i];[sb=[+p1,-p2,-plr],tm=j_i]
-  -- [tm=prf];[sb=[-p1,+p2],tm=j_i,-neg]
+## Subject suffixes reversed
+$ sbj_suff
+  KW    [sp=1,sn=1,sg=m,tm=prf]
+  eK    [sp=2,sn=1,sg=m,tm=prf]
+  KY    [sp=2,sn=1,sg=f,tm=prf]
+  e     [sp=3,sn=1,sg=m,tm=prf]
+  ce    [sp=3,sn=1,sg=f,tm=prf]
+  en    [sp=1,sn=2,sg=m]
+  uK    [sp=2,sn=2,sg=m,tm=prf]
+  amK   [sp=2,sn=2,sg=f,tm=prf]
+  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f,tm=imf];[sp=2,sn=2,sg=f,tm=j_i]
+  o     [sp=3,sn=2,sg=m];[sp=2,sn=2,sg=m,tm=imf];[sp=2,sn=2,sg=m,tm=j_i]
+  # impersonal
+  i     [sp=None,sn=None,sg=m]
+  --    [tm=imf,sp=1,sn=1];[tm=imf,sp=3,sn=1];[tm=imf,sp=2,sn=1];[tm=j_i,sp=1,sn=1];[tm=j_i,sp=3,sn=1];[tm=j_i,sp=2,sn=1]
 
-$ bound1
-  =
-
-$ stem
-  >>v_stem<<
-
+## Boundary separating stem from suffixes
 $ bound2
   =
 
-$ sbj_suff
-  KW    [sb=[+p1,-p2,-plr],tm=prf]
-  Ke    [sb=[-p1,+p2,-fem,-plr],tm=prf]
-  KY    [sb=[-p1,+p2,+fem,-plr],tm=prf]
-  e     [sb=[-p1,-p2,-fem,-plr],tm=prf]
-  ec    [sb=[-p1,-p2,+fem,-plr],tm=prf]
-  ne    [sb=[+p1,-p2,+plr]]
-  Ku    [sb=[-p1,+p2,-fem,+plr],tm=prf]
-  Kma   [sb=[-p1,+p2,+fem,+plr],tm=prf]
-  ema   [sb=[-p1,-p2,+fem,+plr]];[sb=[-p1,+p2,+fem,+plr],tm=imf];[sb=[-p1,+p2,+fem,+plr],tm=j_i]
-  o     [sb=[-p1,-p2,-fem,+plr]];[sb=[-p1,+p2,-fem,+plr],tm=imf];[sb=[-p1,+p2,-fem,+plr],tm=j_i]
-  --    [sb=[-plr]]
+$ stem
+  +v_irr_stem+    []
+  >>v_stem<<
+
+## Boundary separating prefixes from stem
+$ bound1
+  =
+
+## Subject prefixes reversed
+$ sbj_pre
+  e  [sp=1,sn=1,sg=m,tm=imf]
+  t  [sp=2,tm=imf];[sp=3,sn=1,sg=f,tm=imf];[sp=3,sn=1,sg=f,tm=j_i]
+  y  [sp=3,sn=2,tm=imf];[sp=3,sn=1,sg=m,tm=imf];[sp=None,sn=None,sg=m,tm=imf]
+  ey [sp=3,sn=2,tm=j_i];[sp=3,sn=1,sg=m,tm=j_i];[sp=None,sn=None,sg=m,tm=j_i]
+  n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,sg=m,tm=j_i]
+  -- [tm=prf];[sp=2,tm=j_i,-neg]
+
 
 
   

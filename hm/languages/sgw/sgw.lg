@@ -1,13 +1,20 @@
 name: chaha
 
-seg: a e i o u E I
+seg: a e i o u E I A
      b bW c C d f fW g gW gY h j
      k kW kY K KW KY l m mW n p pW q qW qY r s
      S t T w x xW xY y z Z
-     A B D F | % .
+     B D F | % .
 
 feats:
 
   pos: v verb
-  tm = imf | prf | ger | j_i
+
+  tm = prf | imf | j_i
+
+  sp = 3 | 2 | 1 | None
+
+  sn = 1 | 2
+
+  sg = m | f
 
