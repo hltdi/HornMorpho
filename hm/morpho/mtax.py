@@ -63,6 +63,8 @@ SHORTCUT_LEX_FS_RE = re.compile(r'\s*->\s*(\S+)\s*\+(.*?)\+\s*(\[.+?\])$')
 
 class MTax:
 
+    PARSER = FSSet.parse
+
     def __init__(self, fst, directory=''):
         self.fst = fst
         self.cascade = fst.cascade
@@ -70,6 +72,9 @@ class MTax:
         self.directory = directory
         self.weighting = UNIFICATION_SR
         self.states = []
+
+    def __repr__(self):
+        return "MTax {}".format(self.fst.label)
 
     def parse(self, label, s, verbose=False):
         """
@@ -129,7 +134,6 @@ class MTax:
             m = LEX_RE.match(line)
             if m:
                 indentation, label, fss = m.groups()
-                print('Lex', label)
                 weight = self.weighting.parse(fss)
                 filename = label + '.lex'
                 if len(indentation) > current_indent and current_fs:
@@ -166,7 +170,8 @@ class MTax:
             if m:
                 indentation, fs = m.groups()
                 # a FeatStruct, not a FSSet
-                weight = FeatStructParser().parse(fs)
+                weight = MTax.PARSER(fs)
+#                FeatStructParser().parse(fs)
                 current_fs = weight
                 current_indent = len(indentation)
                 continue

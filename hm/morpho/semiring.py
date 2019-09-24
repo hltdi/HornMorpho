@@ -231,14 +231,20 @@ class FSSet(set):
         else:
             return TOPFSS
 
-    @staticmethod
-    def update(fsset, feats):
         """Return a new fsset with feats updated to match each fs in fsset."""
         fslist = []
         for fs in fsset:
-            fs_copy = feats.copy()
-            fs_copy.update(fs)
-            fslist.append(fs_copy)
+            if isinstance(feats, FSSet):
+                fslist1 = []
+                for fs1 in feats:
+                    fs1_copy = fs1.copy()
+                    fs1_copy.update(fs)
+                    fslist1.append(fs1_copy)
+                fslist.extend(fslist1)
+            else:
+                fs_copy = feats.copy()
+                fs_copy.update(fs)
+                fslist.append(fs_copy)
         return FSSet(*fslist)
 
     @staticmethod

@@ -190,7 +190,7 @@ class FSTCascade(list):
 
     def __str__(self):
         """Print name for cascade."""
-        return 'FST cascade ' + self.label
+        return 'Cascade ' + self.label
 
     def get_cas_dir(self):
         return os.path.join(self.language.directory, 'cas')
@@ -264,7 +264,7 @@ class FSTCascade(list):
         return self.compose(begin=begin, end=split_index, last=c1, trace=trace)
 
     def compose_backwards(self, indices=[], subcasc=None, trace=0):
-        print("Cascade backwards composition")
+#        print("Cascade backwards composition")
         if not indices:
             if subcasc:
                 # Use a copy of the cascade indices because we're going to reverse them
@@ -499,7 +499,7 @@ class FSTCascade(list):
             m = R2L_RE.match(line)
             if m:
                 cascade.r2l = True
-                print("Cascade is right-to-left")
+                print("{} is right-to-left".format(cascade))
                 continue
 
             # Subcascade, specifying indices
@@ -532,8 +532,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
-                                       gen=gen,
-                                       verbose=verbose)
+                                       gen=gen, verbose=verbose)
                     else:
                         fst = 'FST' + str(len(cascade))
                         if verbose:
@@ -550,8 +549,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
-                                       gen=gen,
-                                       verbose=verbose)
+                                       gen=gen, verbose=verbose)
                     else:
                         fst = 'FST' + str(len(cascade))
                         if verbose:
@@ -569,8 +567,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
-                                       gen=gen,
-                                       verbose=verbose)
+                                       gen=gen, verbose=verbose)
                     else:
                         fst = 'FST' + str(len(cascade))
                         if verbose:
@@ -587,7 +584,7 @@ class FSTCascade(list):
                     filename = label + '.lex'
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         if verbose:
-                            print('Adding lex FST {} to cascade'.format(label))
+                            print('Adding lex FST {} to cascade, reversed? {}'.format(label, cascade.r2l))
                         fst = FST.load(os.path.join(cascade.get_lex_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
@@ -1903,7 +1900,7 @@ class FST:
             mtax = MTax(fst, directory=directory)
             mtax.parse(label, open(filename, encoding='utf-8').read(),
                        verbose=verbose)
-            FST.compile_mtax(mtax, gen=gen, verbose=verbose)
+            FST.compile_mtax(mtax, gen=gen, cascade=cascade, verbose=verbose)
             return fst
 
         elif suffix == 'ar':
@@ -1928,7 +1925,8 @@ class FST:
                                    dest=dest_lex, verbose=False)
 
     @staticmethod
-    def compile_mtax(mtax, gen=False, verbose=False):
+    def compile_mtax(mtax, gen=False, cascade=None, verbose=False):
+        print("Compiling {} with {}".format(mtax, cascade))
         # Create a final state
         final_label = DFLT_FINAL
         mtax.states.append([final_label, {'paths': [], 'shortcuts': []}])
@@ -1950,8 +1948,8 @@ class FST:
                         if verbose:
                             print('Creating FST from lex file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), in_string),
-                                             weighting=mtax.weighting, cascade=mtax.cascade,
-                                             seg_units=mtax.seg_units,
+                                             weighting=mtax.weighting, cascade=cascade,
+                                             seg_units=mtax.seg_units, reverse=cascade.r2l,
                                              lex_features=True, dest_lex=False)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
@@ -1969,12 +1967,11 @@ class FST:
                         # Record the new composed FST in the higher cascade
                         if mtax.cascade:
                             mtax.cascade.add(fst1)
-#                        if verbose:
-                        print('Inserting cascade {} between {} and {}'.format(label, src, dest))
+                        if verbose:
+                            print('Inserting cascade {} between {} and {}, r2l? {}'.format(label, src, dest, casc.r2l))
                         if casc.r2l:
-                            print(" {} is right-to-left".format(label))
+#                            print("{} (inserted) is right-to-left".format(casc))
                             fst1._reverse = True
-#                            fst1 = fst1.reversed()
                     mtax.fst.insert(fst1, src, dest, weight=weight, mult_dsts=False)
                 elif '.fst' in in_string:
                     # in_string is a FST filename
@@ -2070,7 +2067,7 @@ class FST:
             #{ FST is reversed (right-to-left).
             m = R2L_RE.match(line)
             if m:
-                print("FST is right-to-left")
+#                print("FST is right-to-left")
                 fst._reverse = True
                 continue
             #}
@@ -2233,9 +2230,8 @@ class FST:
                 if not fst1:
                     fst1 = FST.load(os.path.join(directory, filename), weighting=weighting, cascade=cascade,
                                     seg_units=seg_units, weight_constraint=weight_constraint, verbose=verbose)
-                if fst1._reverse:
-                    print("{} is right-to-left".format(fst1))
-#                    fst1 = fst1.reversed()
+#                if fst1._reverse:
+#                    print("{} is right-to-left".format(fst1))
                 fst.insert(fst1, src, dst, weight=weight)
                 continue
             #}
@@ -2617,9 +2613,11 @@ class FST:
             if output[1] and (output not in result):
                 if self.r2l():
                     # FST operates right-to-left, so reverse the output list of segments before joining
-                    output[1].reverse()
+#                    output[1].reverse()
+                    word = ''.join(reversed(output[1]))
 #                    print("Reversed output {}".format(output[1]))
-                word = ''.join(output[1])
+                else:
+                    word = ''.join(output[1])
                 if reject_same and word == original_word:
 #                    print('{} is the same the original word')
                     continue
@@ -2940,7 +2938,7 @@ class FST:
                     else:
                         arc, in_pos, out_pos = frontier.pop()
                     if trace:
-                        print('Backtracking, selected: {}<{},{}>'.format(arc[3:], in_pos, out_pos))
+                        print('Backtracking, selected: {}<{},{}>; {},{}'.format(arc[3:], in_pos, out_pos, output, output[:out_pos]))
                     if step:
                         yield ['backtrack', (arc, in_pos, output[:out_pos]) + ((accum_weight,) if weight else ())]
                     # Using the new triple...,

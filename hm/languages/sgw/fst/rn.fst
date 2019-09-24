@@ -3,11 +3,13 @@
 start -> start  [X-r;V;%]
 
 start -> r      [r]
-
-start -> rn     <n_:rn>
-
-rn -> start     [X;V;%]
-
 r -> start      [X-n;V;%]
 
+start -> r.n    [:r]
+r.n -> start    <n_:n>
+
+start -> r2n    [n:r]
+r2n -> end      [=;:]
+
 start ->
+end ->
