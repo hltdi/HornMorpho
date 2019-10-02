@@ -36,11 +36,5 @@ GG = {g, k, K, q, gW, kW, Kw, qW}
 ## Realize r as n in certain environments
 >rn<
 >e_ps<
-## vowel combinations
-#>VV<
-## Palatalization
-#>pal<
-## Labialization
-#>lab<
 # Morphotactics
 >v.mtx<

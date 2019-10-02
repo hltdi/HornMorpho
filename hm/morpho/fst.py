@@ -3018,7 +3018,7 @@ class FST:
         states = deque()
         states.append((start1, start2))
         if start1 == None or start2 == None:
-            print('One or the other state is null')
+            print('One or the other initial state is null: {}, {}, {}'.format(start1, start2, fst2))
         start_name = fst1._composition_state_name(start1, start2)
         composition.add_state(start_name)
         composition._set_initial_state(start_name)

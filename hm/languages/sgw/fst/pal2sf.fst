@@ -2,7 +2,7 @@
 -> start
 
 # doesn't apply
-start -> start        [XX;^;@] [sp=1];[sp=3];[sp=None];[sg=m];[sp=2,sn=2,sg=f];[tm=prf]
+start -> start        [XX;^;/;@] [sp=1];[sp=3];[sp=None];[sg=m];[sp=2,sn=2,sg=f];[tm=prf]
 
 # does apply
 start -> pal          [:]     [sp=2,sn=1,sg=f,tm=imf];[sp=2,sn=1,sg=f,tm=j_i]
@@ -12,10 +12,21 @@ pal -> fin            [PP;^;E]
 
 # Condition A: final a is palatalized without affecting further palatalization (but has to be treated separately)
 pal -> pal_a          [A:a]
+# palatalize final consonant
 pal_a -> pal_aP       [^:]
+# Penultimate consonant may be geminated
+pal_aP -> pal_aP      [/]
 pal_aP -> fin         [DD;GG]
-# -1 (*Ch) consonant is not palatalizable
-pal_a -> pal_aC       [RG-DD,GG]
+# [dup=None|1];[as=None|rc]
+## double reduplication or frequentative: shsh => txaxE
+#pal_aP -> pal_aPC     [TT]        [dup=2];[as=it]
+#pal_aPC -> pal_aPCV   [a]
+#pal_aPCV -> fin       [^:]
+## -1 (*Ch) consonant is not palatalizable
+
+# penultimate consonant could be mutated
+pal_a -> pal_a/       [/;:]
+pal_a/ -> pal_aC      [RG-DD,GG]
 pal_aC -> pal_aCV     [V;:]
 # -2 (C*h) consonant is velar, palatalizable
 pal_aCV -> pal_aCVP   [^:]
@@ -31,6 +42,16 @@ pal_aCV -> fin        [DD]
 # Condition 1: palatalize final coronal (including r but not n) or velar
 pal -> pal1           [^:]
 pal1 -> fin           [DD;GG]
+# [dup=None]
+## final consonant reduplication
+#pal1 -> pal1C         [DD;GG]     [dup=1];[dup=2]
+#pal1C -> pal1CV       [V;:]
+#pal1CV -> fin         [^:]        [dup=1]
+## double reduplication *X*X
+#pal1CV -> pal1CV/     [/;:]       [dup=2]
+#pal1CV/ -> pal1CVC    [RR]
+#pal1CVC -> pal1CVCV   [V;:]
+#pal1CVCV -> fin       [^:]
 
 # Condition 2: palatalize last velar that's not palatalized unless there's an intervening coronal
 # last consonant can't be palatalized
@@ -38,9 +59,22 @@ pal -> pal2           [RG-DD,GG]
 pal2 -> pal2v         [V;:]
 # palatalize a velar in position -2
 pal2v -> pal2v^       [^:]
+# ...C* could be mutated
+pal2v^ -> pal2v^      [/]
 pal2v^ -> fin         [GG]
-# or if it's a labial or r, look in position -3
-pal2v -> pal2vc       [r;RG-DD,GG]
+# [dup=None|1];[as=None|rc]
+##{ double reduplication X*X* or frequentative *DX*
+#pal2v^ -> pal2vD      [GG]        [dup=2];[as=it,dup=None|1]
+#pal2vD -> pal2vDv     [V;:]
+#pal2vDv -> fin        [^:]        [as=it]
+#pal2vDv -> pal2vDvc   [RR]        [dup=2]
+#pal2vDvc -> pal2vDvcv [V;:]
+#pal2vDvcv -> fin      [^:]
+##}
+
+# or if it's a labial or r, look in position -3; no reduplication
+pal2v -> pal2v/       [/;:]
+pal2v/ -> pal2vc      [r;RG-DD,GG]
 pal2vc -> pal2vcv     [V;:]
 pal2vcv -> pal2vcvP   [^:]
 # palatalize a velar in position -3
@@ -49,14 +83,19 @@ pal2vcvP -> fin       [GG]
 # Condition 3: palatalize vowel after the second-to-last consonant, when nothing can be palatalized
 # TEn <Tny>
 pal2 -> pal3_E        [E:e;A:a]
+# ...C* could be mutated
+pal3_E -> pal3_E      [/]
 pal3_E -> end         [DD]
-
+# i when there's only the epenthetic vowel
 pal2 -> pal3_iV       [i:]
-pal2 -> pal3_^        [^:]
-pal3_^ -> pal3_iV     [V]
-#pal3_i -> pal3_iV     [V;:]
-#pal3_iV -> fin        [^]
-# previous consonant not-palatalizable and not dental
+# other vowel combinations
+pal2 -> pal3_iV       [E:e;A:a]
+# is this right? 
+pal2 -> pal3_iV       <yo:o>
+#pal2 -> pal3_^        [^:]
+#pal3_^ -> pal3_iV     [V]
+# previous consonant not-palatalizable and not dental; could be mutated
+pal3_iV -> pal3_iV    [/]
 pal3_iV -> pal3_iVC   [r;RG-DD,GG]
 pal3_iVC -> pal3_iVCV [V;:]
 pal3_iVCV -> fin      [^]
@@ -69,7 +108,7 @@ pal3_iVDV -> fin      [^]
 # -3 consonant can be anything
 pal3_iVDV -> fin      [RG]
 
-fin -> fin            [RG;V;^;@]
+fin -> fin            [RG;V;^;@;/]
 fin ->
 end ->
 start ->

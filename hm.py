@@ -153,6 +153,10 @@ V4 = ["ተጋጠሙ", "አጋጠመ"]
 N1 = ["መቀጠል", "መቀጠያ", "ቀጣይ", "አቀጣጠል"]
 N2 = ["ያለምክንያት", "አለምክንያት", "አለመንሳፈፍ", "ኢፍትሃዊ"]
 
+# shortcuts for Chaha ('sgw')
+GA = lambda form: hm.anal('sgw', form, raw=True)
+GG = lambda form, feats=None: hm.gen('sgw', form, features=hm.morpho.FSSet(feats))
+
 def main():
     pass
 

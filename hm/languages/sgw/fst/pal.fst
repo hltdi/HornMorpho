@@ -1,6 +1,6 @@
 -> start
 
-start -> start     [X;e;E;a;I]
+start -> start     [X;e;E;a;I;o;A]
 
 start -> pal       [:^]
 

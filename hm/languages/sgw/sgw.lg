@@ -18,3 +18,17 @@ feats:
 
   sg = m | f
 
+  op = 3 | 2 | 1 | None
+
+  on = 1 | 2
+
+  og = m | f
+
+  # accusative | benefactive | malefactive
+  ot = a | b | m
+
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+

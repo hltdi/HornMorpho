@@ -15,8 +15,8 @@ srf   [root=[+tr,cls=Ap],am=ፈራ]
 # no mutation in perfect
 rd.f   [root=[+tr,cls=A]]
 # reduplicated
-qfD   [root=[+tr,cls=A]]
-brD   [root=[-tr,cls=A]]
+qff   [root=[+tr,cls=A],dup=1]
+brr   [root=[-tr,cls=A],dup=1]
 ## weak
 # final
 smh   [root=[+tr,cls=A],am=ሰማ]
@@ -75,17 +75,19 @@ grz   [root=[cls=B]]
 Trf   [root=[cls=B]]
 sbt   [root=[cls=B]]
 skt   [root=[cls=B]]
-dgm   [root=[cls=B]]
+dgm   [root=[cls=B],am=ደበደበ]
 msK   [root=[cls=B]]
-mz.r   [root=[cls=B],am=ቆጠረ]
 dgWr  [root=[cls=B]]
+# mutation exceptions (geminated in Gumer)
+mz.r  [root=[cls=B],am=ቆጠረ]
+gb.r  [root=[cls=B]]
 ## weak
 try   [root=[cls=B],am=መጣ]
 Try   [root=[cls=B],am=ወለደ]
 twt   [root=[cls=B],am=ሠራ]
 zwr   [root=[cls=B]]
 # reduplicated
-fTD   [root=[cls=B]]
+fTT   [root=[cls=B],dup=1]
 ### C
 mrK   [root=[cls=C]]
 zbt   [root=[cls=C]]
@@ -96,14 +98,14 @@ mty   [root=[cls=C]]
 # final U in Banksira
 mWsy  [root=[cls=C]]
 # reduplicated
-bzD   [root=[cls=C]]
-brD   [root=[cls=C]]
+bzz   [root=[cls=C],dup=1]
+brr   [root=[cls=C],dup=1]
 ### D
 brs   [root=[cls=D]]
 qmr   [root=[cls=D]]
 zb.d   [root=[cls=D]]
 # reduplicated
-qWrD  [root=[cls=D]]
+qWrr  [root=[cls=D],dup=1]
 ### E, F
 grdm   [root=[cls=E]]
 mskr   [root=[cls=E]]
@@ -113,12 +115,18 @@ qrbh   [root=[cls=E]]
 zrgh   [root=[cls=F]]
 qmTy   [root=[cls=E]]
 brTy   [root=[cls=F]]
+zrgy   [root=[cls=E],am=ተናገረ]
 # reduplicated
-qmTD   [root=[cls=E]]
-drzD   [root=[cls=E]]
-frqD   [root=[cls=E]]
-fqDD   [root=[cls=E]]
-nsDD   [root=[cls=E]]
-zrDD   [root=[cls=E]]
-srDD   [root=[cls=E]]
+qmTT   [root=[cls=E],dup=1]
+drzz   [root=[cls=E],dup=1]
+frqq   [root=[cls=E],dup=1]
+fqfq   [root=[cls=E],dup=2]
+rsrs   [root=[cls=E],dup=2]
+zrzr   [root=[cls=E],dup=2]
+srsr   [root=[cls=E],dup=2]
+ktkt   [root=[cls=E],dup=2]
+gmgm   [root=[cls=E],dup=2]
+dgd.g   [root=[cls=E],dup=2]
+# this won't work yet
+shsh   [root=[cls=E],dup=2]
 
