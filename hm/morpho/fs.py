@@ -1234,6 +1234,7 @@ def simple_unify(x, y):
     """Unify the expressions x and y, returning the result or 'fail'."""
     # If either expression doesn't exist, return the other, unless this is the top-level
     # If they're the same, return one.
+#    print("simple unify {} ({}), {} ({})".format(x.__repr__(), type(x), y.__repr__(), type(y)))
     if x == y:
         return x
     # If both are dicts, call unify_dict

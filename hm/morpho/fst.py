@@ -1989,10 +1989,12 @@ class FST:
                 elif in_string == NO_INPUT:
                     mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
+#                    print("Making multiple arcs for {} from {} to {}, weight: {}".format(in_string, src, dest, weight))
                     mtax.fst._make_mult_arcs(in_string, '', src, dest, weight, mtax.seg_units, gen=gen)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
+                print("Shortcut: {}, {}, {}".format(dest, file, fss))
                 if file:
                     if fss:
                         wt = fss
@@ -2012,6 +2014,7 @@ class FST:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=wt, mult_dsts=False)
                 else:
+#                    print("FS shortcut from {} to {} with weight {}".format(src, dest, fss))
                     mtax.fst.add_arc(src, dest, '', '', weight=fss)
 
     @staticmethod
@@ -2583,7 +2586,8 @@ class FST:
                   # related to generation
                   gen=False, print_word=False, print_prefixes=None,
                   seg_units=[], reject_same=False,
-                  trace=0, tracefeat='', timeit=False, timeout=TIMEOUT):
+                  trace=0, tracefeat='',
+                  result_limit=5, timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
 #        print("{} transducing {}".format(self.__repr__(), input))
         if timeit:
@@ -2610,6 +2614,8 @@ class FST:
             # output[1] is output string (if success)
             # output[2] is accumulated weight (if success)
             # There can be failures and duplicate successes
+            if len(result) >= result_limit:
+                break
             if output[1] and (output not in result):
                 if self.r2l():
                     # FST operates right-to-left, so reverse the output list of segments before joining

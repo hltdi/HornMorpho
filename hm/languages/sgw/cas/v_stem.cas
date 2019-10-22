@@ -20,9 +20,9 @@ r2l
 # All vowels
 V = {a, e, E, i, I, o, u, *, A, O}
 # All consonants
-X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, D}
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, D}
 # All characters
-XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, D}
+XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
 # basic consonants (not labialized or palatalized)
 CC = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z}
 # basic root consonants (CC-h,w,y)
@@ -33,7 +33,7 @@ YY = {b, d, f, g, k, K, m, q, r, s, t, T, z, l, bW, fW, gW, kW, mW, qW, KW, c, C
 OO = {b, d, f, g, k, K, q, s, T, z}
 # Root consonants
 RR = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z, l, bW, fW, gW, kW, mW, qW, KW}
-# Root consonants plus geminated forms (but not palatalized) and D
+# Root consonants plus geminated forms (but not palatalized)
 RG = {p, b, d, f, g, h, k, K, m, n, q, r, s, t, T, w, y, z, l, bW, fW, gW, kW, mW, pW, qW, KW}
 # Root consonants, including labialized and palatalized consonants
 AA = {b, c, C, d, f, g, gY, h, k, kY, K, KY, m, q, qY, r, s, t, T, w, x, y, z, Z, l, bW, fW, gW, kW, mW, pW, qW, KW}
@@ -49,6 +49,10 @@ MM = {b, f, m, p}
 DD = {d, t, T, r, s, z}
 # coronal obstruent root consonants
 TT = {d, t, T, s, z}
+# all coronal consonants, non palatalized
+NN = {d, t, T, s, z, r, n, l}
+# coronal consonants, including palatalized
+JJ = {d, t, T, r, s, z, c, C, j, x, y, Z}
 # velar root consonants
 GG = {g, k, K, q, gW, kW, KW, qW}
 # non-labial velar root consonants
@@ -62,16 +66,9 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
 % = {_, /, D, @, ^, 0, *}
 
-# Palatalization
->pal<
-# Labialization
->lab<
+#>nd<
 # Gemination -> devoicing, hardening
 >gem<
-# Palatalization: 2sf imf/j_i
->pal2sf<
-# Impersonal
->imp<
 # Frequentative reduplication realized
 >it_dup<
 # Gross stem structure

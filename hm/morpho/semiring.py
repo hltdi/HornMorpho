@@ -231,6 +231,8 @@ class FSSet(set):
         else:
             return TOPFSS
 
+    @staticmethod
+    def update(fsset, feats):
         """Return a new fsset with feats updated to match each fs in fsset."""
         fslist = []
         for fs in fsset:
@@ -246,6 +248,12 @@ class FSSet(set):
                 fs_copy.update(fs)
                 fslist.append(fs_copy)
         return FSSet(*fslist)
+
+#    def updateFS(self, FS, verbose=0):
+#        """Update FSS with features in FS."""
+#        l = list(self)
+#        u = [simple_unify(f, FS) for f in l]
+#        return FSSet(*filter(lambda x: x!='fail', u))
 
     @staticmethod
     def setfeats(fsset, condition, feature, value):

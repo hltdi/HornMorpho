@@ -174,16 +174,20 @@ class MTax:
 #                FeatStructParser().parse(fs)
                 current_fs = weight
                 current_indent = len(indentation)
+#                print("FS for next paths: {}, indent {}".format(current_fs.__repr__(), current_indent))
                 continue
 
             # Path: input string and FSSet
             m = PATH_RE.match(line)
             if m:
                 indentation, in_string, fss = m.groups()
-                weight = self.weighting.parse(fss)
+                weight = MTax.PARSER(fss)
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
-                    weight = weight.update(weight, current_fs)
+#                    print("  String {}, FS {}, current FS {}".format(in_string, weight, current_fs.__repr__()))
+                    weight = weight.unify(current_fs)
+#                    weight.update(weight, current_fs)
+#                    print("  New weight {}".format(weight))
                 current_state[1]['paths'].append((in_string, weight))
                 continue
 
@@ -191,8 +195,9 @@ class MTax:
             m = SHORTCUT_FS_RE.match(line)
             if m:
                 next_state, fss = m.groups()
+                fss = self.weighting.parse(fss)
                 current_state[1]['shortcuts'].append((next_state, None, fss))
-                print("Shortcut {}, {}".format(next_state, fss))
+#                print("Shortcut {}, {}".format(next_state, fss))
                 continue
 
             # Shortcut to another state via a lex file

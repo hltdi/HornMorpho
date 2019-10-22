@@ -157,6 +157,16 @@ N2 = ["ያለምክንያት", "አለምክንያት", "አለመንሳፈፍ",
 GA = lambda form: hm.anal('sgw', form, raw=True)
 GG = lambda form, feats=None: hm.gen('sgw', form, features=hm.morpho.FSSet(feats))
 
+GV1 = [
+    "y=sebr=o", "ye=sbr=", "=seper=ema",
+    "e=jepr=", "n=depr=ne", "=jeper=Ku"
+    ]
+
+GV2 = [
+    "t=seme=", "y=seme=", "=seme=i",
+    "t=beKY=", "y=beKY=i"
+    ]
+
 def main():
     pass
 

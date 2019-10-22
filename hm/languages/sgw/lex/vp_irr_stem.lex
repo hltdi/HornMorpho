@@ -1,0 +1,10 @@
+t*KYer Khr   [vc=[+ps,-cs],root=[-tr,cls=A],dup=None,as=None,am=አወቀ]
+atKYer Khr   [vc=[+ps,+cs],root=[-tr,cls=A],dup=None,as=None,am=አወቀ]
+qYem  qmy    [root=[+tr,cls=A],dup=None,as=None,am=አሸነፈ]
+t*bEr   bhr  [vc=[+ps],root=[-tr,cls=A],dup=None,as=None,am=አለ]
+ba    bhr    [vc=[-ps],sp=2,root=[-tr,cls=A],dup=None,as=None,am=አለ];[vc=[-ps],sp=1,sn=1,root=[-tr,cls=A],dup=None,as=None,am=አለ]
+nwexe rwsy   [root=[cls=E],dup=None,as=None,am=ለመደ]
+smat  smht   [root=[cls=E],dup=None,as=None,am=ሸና]
+nye   nry    [root=[cls=A],dup=None,as=None,am=ተኛ,sp=1];[root=[cls=A],dup=None,as=None,am=ተኛ,sn=1];[root=[cls=A],dup=None,as=None,am=ተኛ,sp=2,sn=2]
+na    nry    [root=[cls=A],dup=None,as=None,am=ተኛ,sp=3,sn=2];[root=[cls=A],dup=None,as=None,am=ተኛ,sn=1,sp=None]
+
