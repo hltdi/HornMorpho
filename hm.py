@@ -155,7 +155,7 @@ N2 = ["ያለምክንያት", "አለምክንያት", "አለመንሳፈፍ",
 
 # shortcuts for Chaha ('sgw')
 GA = lambda form: hm.anal('sgw', form, raw=True)
-GG = lambda form, feats=None: hm.gen('sgw', form, features=hm.morpho.FSSet(feats))
+GG = lambda form, feats=None: hm.gen('sgw', form, features=hm.morpho.FSSet(feats) if feats else None)
 
 GV1 = [
     "y=sebr=o", "ye=sbr=", "=seper=ema",

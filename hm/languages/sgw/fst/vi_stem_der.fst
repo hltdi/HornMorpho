@@ -54,8 +54,8 @@ A.cvcv -> pre_n   [YY]    [as=None|rc]
 
 # final y
 # last vowel
-# palatalize final e in tr j_i: sTe->sTE (what about passive j_i?); go to strong template
-A.y -> A.cv       [E:]   [tm=j_i,root=[-tr]]
+# palatalize final e in -tr j_i: sTe->sTey (what about passive j_i?); go to strong template
+A.y -> A.cv       <ye:>   [tm=j_i,root=[-tr]]
 # palatalize elsewhere
 A.y -> A.yv       [e:]   [vc=[+ps]]
 A.y -> A.yv       [:]    [tm=imf,vc=[-ps]];[tm=j_i,vc=[-ps],root=[+tr]]
@@ -105,8 +105,12 @@ A.cWD -> A.cWDV   [e:]
 A.cWDV -> pre_n   [D:]
 
 # medial h
-.c -> A.cvcv      [a:h]  [tm=j_i,root=[cls=A],vc=[-cs],as=None]
-.c -> A.cvcv      [e:h]  [as=None,tm=imf,root=[cls=A]];[as=None,tm=j_i,root=[cls=A],vc=[+cs]]
+.c -> A.cvhv      [a:h]  [tm=j_i,root=[cls=A],vc=[-cs],as=None]
+.c -> A.cvhv      [e:h]  [as=None,tm=imf,root=[cls=A]];[as=None,tm=j_i,root=[cls=A],vc=[+cs]]
+# duplicated consonant in frequentative; ** check to make sure this works for *h*
+#A.cvhv -> A.cvhvD [D:]   [as=it]
+#A.cvhvD -> pre_n  [YY;w]
+A.cvhv -> pre_n   [YY;w]
 
 # medial y
 # %% what about as=it?

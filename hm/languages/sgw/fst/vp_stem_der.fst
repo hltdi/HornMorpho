@@ -41,6 +41,8 @@ start -> .y        [:y]    [sp=1];[sn=1];[sp=2,sn=2]
 #{ these are needed to handle deletion of e in wendem
 A.T -> A.T1       [/:]
 A.Te -> A.Te1     [/:]
+A.T -> A.T1       [:.]
+A.Te -> A.Te1     [:.]
 # no e inserted for this case n*{t,d,T}
 A.T1 -> A.cvc     [r]
 A.Te1 -> A.cvc    [YY-r]

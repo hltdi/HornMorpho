@@ -98,6 +98,8 @@ CASC_MTAX_RE = re.compile(r'>(.+?\.mtx)<')
 INIT_RE = re.compile(r'->\s*(\S+)$')
 # state ->
 FINAL_RE = re.compile(r'(\S+)\s*->\s*(?:\[([^\]]*)\])?$')
+# Transducer reverses input before transducing
+R2L_RE = re.compile(r'\s*r2l\s*$')
 # src -> dest [arc] [weight]
 ARC_RE = re.compile(r'(\S+)?\s*->\s*(\S+)\s*\[(.*?)\]\s*(.*?)$')
 # src -> dest <arc> [weight]
@@ -1609,7 +1611,9 @@ class FST:
 
         print('Writing FST to {}'.format(filename))
         out = open(filename, 'w', encoding='utf-8')
-        # Write the features and values, defaultFS, and stringsets
+        # Write the features and values, defaultFS, and stringsets; whether FST is reversed (right-to-left)
+        if fst.r2l():
+            out.write("r2l\n")
         if features:
             out.write('features=' + str(fst.get_features(exclude=exclude_features)) + '\n')
         if defaultFS:
@@ -1831,6 +1835,12 @@ class FST:
                 if finalizing_string is not None:
                     finalizing_string = finalizing_string.split()
                     fst.set_finalizing_string(label, finalizing_string)
+                continue
+
+            # right-to-left transduction
+            m = R2L_RE.match(line)
+            if m:
+                fst._reverse = True
                 continue
 
             # Transition arc(s)

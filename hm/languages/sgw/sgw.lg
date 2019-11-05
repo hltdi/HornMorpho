@@ -8,6 +8,34 @@ seg: a e i o u E I A
 
 feats:
 
+## perfective verbs, including prohibitive
+
+  pos: vp verb_perfective
+
+  sp = 3 | 2 | 1 | None
+
+  sn = 1 | 2
+
+  sg = m | f
+
+  op = 3 | 2 | 1 | None
+
+  on = 1 | 2
+
+  og = m | f
+
+  # accusative | benefactive | malefactive
+  ot = a | b | m
+
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+
+  neg = False | True
+
+  sub = None | t | b | y
+
 ## imperfective and jussive-imperative verbs, including both -tE and -xe future forms, and t- converb
   
   pos: vi verb_imperf_jussive
@@ -38,34 +66,7 @@ feats:
 
   sub = None | t | b
 
-  tm2 = None | tfut | xfut
+  fut = None | def | indef
 
-  conv = None | t | m
-
-## perfective verbs, including prohibitive
-  pos: vp verb_perfective
-
-  sp = 3 | 2 | 1 | None
-
-  sn = 1 | 2
-
-  sg = m | f
-
-  op = 3 | 2 | 1 | None
-
-  on = 1 | 2
-
-  og = m | f
-
-  # accusative | benefactive | malefactive
-  ot = a | b | m
-
-  vc = ps = False | True;
-       cs = False | True
-
-  as = None | it | rc
-
-  neg = False | True
-
-  sub = None | t | b | y
+  misc = None | tconv | mconv
 

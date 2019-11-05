@@ -64,7 +64,7 @@ GEEZ_ALPHA_CONSONANTS = ['h', 'l', 'H', 'm', '^s', 'r', 's', 'x', 'q', 'Q', 'b',
                         't', 'c', '^h', 'n', 'N', "'", 'k', 'K', 'w',
                         "`", 'z', 'Z', 'y', 'd', 'j', 'g', 'T', 'C', 'P',
                         'S', '^S', 'f', 'p']
-GEEZ_ALPHA_VOWELS = ['e', '@', 'u', 'i', 'a', 'E', 'I', 'o']
+GEEZ_ALPHA_VOWELS = ['e', '@', 'u', 'i', 'a', 'E', 'A', 'I', 'o']
 
 ## Root boundaries and separators
 ROOT_LEFT = '<'
@@ -74,27 +74,27 @@ ROOT_GEM = ':'
 ROOT_Y = '።'
 
 ### Segmentation units for different languages
-SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w", "y", "'", "_", "|", "*"],
-                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
-                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
-                      "h": ["h", "hW"], "j": ["j", "jW"], "k": ["k", "kW"],
-                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
-                      "p": ["p", "pW"], "P": ["P", "PW"],
-                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
-                      "s": ["s", "sW"], "t": ["t", "tW"], "T": ["T", "TW"],
-                      "x": ["x", "xW"], "z": ["z", "zW"], "Z": ["Z", "ZW"]}],
-             'sem': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "H", "M", "w", "y", "'", "`", "_", "|", "*"],
-                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
-                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
-                      "h": ["h", "hW"], "H": ["H", "HW"], "j": ["j", "jW"], "k": ["k", "kW"],
-                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
-                      "p": ["p", "pW"], "P": ["P", "PW"],
-                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
-                      "s": ["s", "sW"], "S": ["S", "SW"], "t": ["t", "tW"],
-                      "T": ["T", "TW"], "v": ["v", "vW"], "x": ["x", "xW"],
-                      "z": ["z", "zW"], "Z": ["Z", "ZW"],
-                      "^": ["^s", "^S", "^h", "^hW", "^sW", "^SW"]}],
-             }
+#SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w", "y", "'", "_", "|", "*"],
+#                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
+#                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
+#                      "h": ["h", "hW"], "j": ["j", "jW"], "k": ["k", "kW"],
+#                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
+#                      "p": ["p", "pW"], "P": ["P", "PW"],
+#                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
+#                      "s": ["s", "sW"], "t": ["t", "tW"], "T": ["T", "TW"],
+#                      "x": ["x", "xW"], "z": ["z", "zW"], "Z": ["Z", "ZW"]}],
+#             'sem': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "H", "M", "w", "y", "'", "`", "_", "|", "*"],
+#                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
+#                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
+#                      "h": ["h", "hW"], "H": ["H", "HW"], "j": ["j", "jW"], "k": ["k", "kW"],
+#                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
+#                      "p": ["p", "pW"], "P": ["P", "PW"],
+#                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
+#                      "s": ["s", "sW"], "S": ["S", "SW"], "t": ["t", "tW"],
+#                      "T": ["T", "TW"], "v": ["v", "vW"], "x": ["x", "xW"],
+#                      "z": ["z", "zW"], "Z": ["Z", "ZW"],
+#                      "^": ["^s", "^S", "^h", "^hW", "^sW", "^SW"]}],
+#             }
 
 ### TOP-LEVEL FUNCTIONS
 
@@ -267,7 +267,7 @@ def sera2geez(table, form, lang='am'):
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
                 n += 1
-            elif next_char == 'W' or char == '^':
+            elif next_char == 'W' or next_char == 'Y' or char == '^':
                 # Consonant represented by 2 roman characters
                 if n < len(form) - 2 and form[n + 2] in VOWELS:
                     # followed by vowel
@@ -547,6 +547,8 @@ def from_real_sera_file(infile, outfile=None, phon=True, language='am'):
 ## GEEZ<->SERA (modified) conversion tables
 GEEZ_SERA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_sera.txt')),
              'ti': read_conv(os.path.join(DATA_DIR, 'ti_conv_sera.txt')),
+             'sgw': read_conv(os.path.join(DATA_DIR, 'sgw_conv_sera.txt')),
+             'sgwZ': read_conv(os.path.join(DATA_DIR, 'sgwZ_conv_sera.txt')),
              'stv': read_conv(os.path.join(DATA_DIR, 'stv_conv_sera.txt'))}
 
 def geez_alpha(s1, s2, pos1 = 0, pos2 = 0):

@@ -5,34 +5,38 @@ $ fin_suff
   m     [tm=prf,sub=None,-neg]
 
 $ obj_suff
-  --    [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1]
+  # 1p sbj + 1sm acc obj = nE (ne + i)
+  --    [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1];[sp=1,sn=2,op=3,on=1,og=m,ot=a]
+  # 3s light object; 1s heavy object
+  n        [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=f,op=1,on=1,ot=a];[sn=2,op=1,on=1,ot=a];[sp=None,sn=None,op=1,on=1,ot=a]
   ## 3
   # accusative
   [op=3,on=1,og=m,ot=a]
-    n      [sp=1|3];[sp=2,sn=1,sg=m]
-    i      [sp=2,sn=1,sg=f];[sp=1|2,sn=2];[sp=3,sn=2,sg=f];[sp=None,sn=None]
-    yi     [sp=3,sn=2,sg=m]
+#    n      [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
+    i      [sp=2,sn=1,sg=f];[sp=2,sn=2,sg=f];[sp=3,sn=2,sg=f];[sp=None,sn=None]
+    # =rekeb=oyi (** but also =rekeb=ewi); =rekeb=Kuyi
+    iy     [sp=3,sn=2,sg=m];[sp=2,sn=2,sg=m]
   [op=3,on=1,og=f,ot=a]
-    an     [sp=1|3];[sp=2,sn=1,sg=m]
+    an     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     ay     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=3,on=2,og=m,ot=a]
-    on     [sp=1|3];[sp=2,sn=1,sg=m]
+    on     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     oy     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=3,on=2,og=f,ot=a]
-    amen   [sp=1|3];[sp=2,sn=1,sg=m]
+    amen   [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     amey   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # malfactive
   [op=3,on=1,og=m,ot=m]
-    ew      [sp=1|3];[sp=2,sn=1,sg=m]
+    ew      [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     epW     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=3,on=1,og=f,ot=m]
-    ab     [sp=1|3];[sp=2,sn=1,sg=m]
+    ab     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     ap     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=3,on=2,og=m,ot=m]
-    ob     [sp=1|3];[sp=2,sn=1,sg=m]
+    ob     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     op     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=3,on=2,og=f,ot=m]
-    ameb   [sp=1|3];[sp=2,sn=1,sg=m]
+    ameb   [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     amep   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # benefactive
   er       [op=3,on=1,og=m,ot=b]
@@ -82,14 +86,14 @@ $ obj_suff
   # 1
   # accusative
   [op=1,on=1,ot=a]
-    E      [sp=1|3];[sp=2,sn=1,sg=m]
-    n      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+    E      [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
+#    n      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # malfactive
   [op=1,on=1,ot=m]
-    ib     [sp=1|3];[sp=2,sn=1,sg=m]
+    ib     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     ip     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   [op=1,on=2,ot=m]
-    ednb   [sp=1|3];[sp=2,sn=1,sg=m]
+    ednb   [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     ednp   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # benefactive
   in       [op=1,on=1,ot=b]
@@ -98,21 +102,30 @@ $ obj_suff
 
 ## Subject suffixes reversed
 $ sbj_suff
-  KW    [sp=1,sn=1,sg=m,op=None]
-  # KW fuses with second person object suffixes
-  K     [sp=1,sn=1,sg=m,op=3]
-  eK    [sp=2,sn=1,sg=m]
+  # 1s, 2s
+  KW    [sp=1,sn=1,sg=m,op=None];[sp=1,sn=1,sg=m,op=3,on=1,og=m,ot=a|b]
+  # KW fuses with second person object suffixes; in 3 obj (other than 3sm accus and benef) it becomes K; 2sm Ke become K before 1s object -E
+  K     [sp=1,sn=1,sg=m,op=3,on=2];[sp=1,sn=1,sg=m,op=3,on=1,og=f];[sp=1,sn=1,sg=m,op=3,on=1,og=m,ot=m];[sp=2,sn=1,sg=m,op=1,on=1,ot=a]
+  eK    [sp=2,sn=1,sg=m,op=None];[sp=2,sn=1,sg=m,op=1,on=2];[sp=2,sn=1,sg=m,op=1,on=1,ot=m|b];[sp=2,sn=1,sg=m,op=3,on=2];[sp=2,sn=1,sg=m,op=3,on=1,og=f];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=m]
+  # 2sm labialized before 3sm -n
+  eKW   [sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a|b]
   KY    [sp=2,sn=1,sg=f]
-  e     [sp=3,sn=1,sg=m]
-  ce    [sp=3,sn=1,sg=f,op=None]
-  ece   [sp=3,sn=1,sg=f,op=1|2|3]
+  # 3s
+  # delete before 1sO -E
+  e     [sp=3,sn=1,sg=m,op=None|2|3];[sp=3,sn=1,sg=m,op=1,on=2];[sp=3,sn=1,sg=m,op=1,on=1,ot=b|m]
+  ce    [sp=3,sn=1,sg=f,op=None];[sp=3,sn=1,sg=f,op=1,on=1,ot=a]
+  # insert e before obj suffixes beginning with consonants
+  ece   [sp=3,sn=1,sg=f,op=2|3];[sp=3,sn=1,sg=f,op=1,on=2];[sp=3,sn=1,sg=f,op=1,on=1,ot=b|m]
+  # 1p
   en    [sp=1,sn=2,sg=m,op=None];[sp=1,sn=2,sg=m,op=3,on=2,ot=a];[sp=1,sn=2,sg=m,op=3,on=1,og=f,ot=a]
   En    [sp=1,sn=2,sg=m,op=2|3]
+  # 2p
   uK    [sp=2,sn=2,sg=m]
   amK   [sp=2,sn=2,sg=f]
+  # 3p
   ame   [sp=3,sn=2,sg=f]
   o     [sp=3,sn=2,sg=m]
-  --    [sp=None,sn=None,sg=None];[sp=1,sn=1,sg=m,op=2]
+  --    [sp=None,sn=None,sg=None];[sp=1,sn=1,sg=m,op=2];[sp=3,sn=1,sg=f,op=1,on=1,ot=a]
 
 ## Boundary separating stem from suffixes
 $ bound2

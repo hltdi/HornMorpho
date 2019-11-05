@@ -14,9 +14,20 @@ pal -> start       [n]
 start -> lab       [:@]
 
 # don't labialize palatalized consonants
-lab -> start       [pW:p;w:b;mW:m;fW:f;kW:k;gW:g;KW:K;qW:q]
+lab -> start       [pW:p;mW:m;fW:f;kW:k;gW:g;KW:K;qW:q]
+## b -> w | bW
+# b -> w except when word-initial
+lab -> b_w         [w:b]
+b_w -> start       [XX]
+b_w -> b_w=        [=]
+b_w= -> start      [XX]
+# b -> bW when it's word initial
+lab -> b_bW        [bW:b]
+b_bW -> end        [=]
 
 # only vowel that can be palatalized?
 lab -> start       [O:a]
 
 start ->
+
+end ->

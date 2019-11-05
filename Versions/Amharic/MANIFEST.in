@@ -6,8 +6,6 @@ include LICENSE.txt
 include README.txt
 include hm.py
 exclude hm/test.py
-exclude hm/languages/am/fst/nG.fst
-exclude hm/languages/am/fst/vG.fst
 prune hm/languages/ti
 prune hm/languages/om
 prune hm/languages/sgw

@@ -1,15 +1,15 @@
 -> start
 
-start -> start  [X-r;V;%]
+start -> start  [X-r;V]
 
 start -> r      [r]
-r -> start      [X-n;V;%]
+r -> start      [X-n;V]
 
 start -> r.n    [:r]
-r.n -> start    <n_:n>
+# geminate actually
+r.n -> start    [n]
 
-start -> r2n    [n:r]
-r2n -> end      [=;:]
+start -> end    [n:r]
 
 start ->
 end ->

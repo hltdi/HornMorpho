@@ -746,13 +746,10 @@ AM.morphology['v'].web_feats = \
 
 AM.morphology['n'].name = 'noun'
 AM.morphology['n'].defaultFS = \
-    language.FeatStruct("[pos=n,-acc,cs=None,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp,rl=[-p,-gen,-acc]]")
-AM.morphology['n'].FS_implic = {'poss': [['expl'], 'def'],
-                                ('pp', ('be', 'le', 'ke', 'wede', 'Inde', 'sIle', 'Iske')): [['rl', ['p']]],
-                                ('gen', True): [['rl', ['gen']]],
-                                ('acc', True): [['rl', ['acc']]]}
+    language.FeatStruct("[pos=n,cs=None,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
+AM.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
-AM.morphology['n'].citationFS = language.FeatStruct("[-acc,-def,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
+AM.morphology['n'].citationFS = language.FeatStruct("[-def,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
 AM.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis", "devrb"]
 AM.morphology['n'].feat_abbrevs = \
   {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive", "devrb": "deverbal",

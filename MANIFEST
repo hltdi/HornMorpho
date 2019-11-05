@@ -78,6 +78,7 @@ hm/languages/am/fst/n+.fst
 hm/languages/am/fst/n.fst
 hm/languages/am/fst/n0.fst
 hm/languages/am/fst/n0G.fst
+hm/languages/am/fst/nG.fst
 hm/languages/am/fst/nPG.fst
 hm/languages/am/fst/n_C_epen.fst
 hm/languages/am/fst/n_C_epenG.fst
@@ -132,6 +133,7 @@ hm/languages/am/fst/v+.fst
 hm/languages/am/fst/v.fst
 hm/languages/am/fst/v0.fst
 hm/languages/am/fst/v0G.fst
+hm/languages/am/fst/vG.fst
 hm/languages/am/fst/vPG.fst
 hm/languages/am/fst/v_mtax+.fst
 hm/languages/am/fst/v_stem_del.fst
@@ -217,6 +219,8 @@ hm/morpho/utils.py
 hm/morpho/geez/__init__.py
 hm/morpho/geez/am_conv_sera.txt
 hm/morpho/geez/geez.py
+hm/morpho/geez/sgwZ_conv_sera.txt
+hm/morpho/geez/sgw_conv_sera.txt
 hm/morpho/geez/stv_conv_sera.txt
 hm/morpho/geez/ta_conv.py
 hm/morpho/geez/ti_conv_sera.txt

@@ -1,27 +1,34 @@
 ### A
+Kdr   [root=[+tr,cls=A],am=ለበሰ,dup=None]
+rmd   [root=[+tr,cls=A],am=ወደደ,dup=None]
+kbd   [root=[+tr,cls=A],am=ከበደ,dup=None]
 rKb   [root=[+tr,cls=A],am=አገኘ,dup=None]
 sbr   [root=[+tr,cls=A],am=ሰበረ,dup=None]
 qrs   [root=[+tr,cls=A],am=ጀመረ,dup=None]
 qrm   [root=[+tr,cls=A],am=ሰደበ,dup=None]
-trf   [root=[-tr,cls=A],dup=None]
+trf   [root=[-tr,cls=A],am=ቀረ,dup=None]
 zgr   [root=[-tr,cls=A],am=ዘለለ,dup=None]
 rqm   [root=[+tr,cls=A],dup=None]
 ktf   [root=[+tr,cls=A],am=ከተፈ,dup=None]
 TqWr  [root=[-tr,cls=A],am=ጠቈረ,dup=None]
 frd   [root=[-tr,cls=A],am=ፈረደ,dup=None]
+grz   [root=[-tr,cls=A],dup=None,am=አረጀ]
+srq   [root=[+tr,cls=A],dup=None,am=ሰረቀ]
+qTr   [root=[+tr,cls=A],dup=None,am=ገደለ]
 # -> B with at-
 gfr   [root=[+tr,cls=Ap],am=ለቀቀ,dup=None]
 kft   [root=[+tr,cls=Ap],am=ከፈተ,dup=None]
 srf   [root=[+tr,cls=Ap],am=ፈራ,dup=None]
 # no mutation in perfect
-rd.f   [root=[+tr,cls=A],dup=None]
+rd.f  [root=[+tr,cls=A],dup=None]
+Tb.T  [root=[+tr,cls=A],dup=None,am=ያዘ]
 # reduplicated
 qff   [root=[+tr,cls=A],dup=1]
 brr   [root=[-tr,cls=A],dup=1]
 ## weak
 # final
 smh   [root=[+tr,cls=A],am=ሰማ,dup=None]
-brh   [root=[+tr,cls=A],dup=None]
+brh   [root=[+tr,cls=A],am=በላ,dup=None]
 bdh   [root=[+tr,cls=A],am=ወሰደ,dup=None]
 rsh   [root=[+tr,cls=A],dup=None]
 gbh   [root=[-tr,cls=A],am=ገባ,dup=None]
@@ -29,12 +36,13 @@ wgh   [root=[-tr,cls=A],am=ወጋ,dup=None]
 sTy   [root=[-tr,cls=A],am=ጠጣ,dup=None]
 sfy   [root=[+tr,cls=A],dup=None]
 sKy   [root=[+tr,cls=A],dup=None]
-Kry   [root=[+tr,cls=A],dup=None]
 bKy   [root=[+tr,cls=A],am=አለቀሰ,dup=None]
+qmy   [root=[-tr,cls=A],dup=None,vc=[+cs],am=አመመ]
 # *ry
-qry   [root=[-tr,cls=A],am=ጠፋ,dup=None]
-Kry   [root=[-tr,cls=A],am=ቆፈረ,dup=None]
-mry   [root=[-tr,cls=A],dup=None,vc=[+cs],am=አደረገ]
+# (these are not all really transitive, but it seems needed to get right: is qr^ -> qy)
+qry   [root=[+tr,cls=A],am=ጠፋ,dup=None]
+Kry   [root=[+tr,cls=A],am=ቆፈረ,dup=None]
+mry   [root=[+tr,cls=A],dup=None,vc=[+cs],am=አደረገ]
 # final U in Banksira, etc.
 fWsy  [root=[+tr,cls=A],dup=None,am=ፈሳ]
 rqWy  [root=[+tr,cls=A],dup=None,am=ጮኸ]
@@ -44,6 +52,7 @@ TbWy  [root=[+tr,cls=A],dup=None,am=ጠባ,tm=prf];[root=[-tr,cls=A],dup=None,am
 # medial
 qwm  [root=[-tr,cls=A],am=ቆመ,dup=None]
 rwT  [root=[-tr,cls=A],am=ሮጠ,dup=None]
+mwt  [root=[-tr,cls=A],am=ሞተ,dup=None]
 Twm  [root=[-tr,cls=A],am=ጾመ,dup=None]
 mWhq [root=[-tr,cls=A],am=ሞቀ,dup=None]
 dhq  [root=[-tr,cls=A],am=ሳቀ,dup=None]
@@ -72,6 +81,9 @@ hmr  [root=[-tr,cls=A],am=አመነ,dup=None]
 hrq  [root=[-tr,cls=A],am=አለቀ,dup=None]
 hrs  [root=[-tr,cls=A],am=አነሰ,dup=None]
 hdr  [root=[-tr,cls=A],am=አደረ,dup=None]
+# weak in two ways h*y
+hzy  [root=[+tr,cls=A],am=አየ,dup=None]
+hTy  [root=[+tr,cls=A],am=ዘጋ,dup=None]
 ### B
 qrb   [root=[cls=B],am=ቀረበ,dup=None]
 qbr   [root=[cls=B],am=ቀበለ,dup=None]
@@ -87,15 +99,18 @@ sbt   [root=[cls=B],dup=None]
 skt   [root=[cls=B],dup=None]
 dgm   [root=[cls=B],am=ደበደበ,dup=None]
 msK   [root=[cls=B],dup=None]
+fqr   [root=[cls=B],dup=None,am=ጫወተ]
+Ktr   [root=[cls=B],dup=None,am=ከተለ]
 dgWr  [root=[cls=B],dup=None]
 # mutation exceptions (geminated in Gumer)
 mz.r  [root=[cls=B],am=ቆጠረ,dup=None]
 gb.r  [root=[cls=B],dup=None]
 ## weak
-try   [root=[cls=B],am=መጣ,dup=None]
+# irregular imperatives
+try   [root=[cls=B],am=መጣ,dup=None,tm=imf];[root=[cls=B],am=መጣ,dup=None,tm=j_i,sp=1];[root=[cls=B],am=መጣ,dup=None,tm=j_i,sp=3]
 Try   [root=[cls=B],am=ወለደ,dup=None]
 twt   [root=[cls=B],am=ሠራ,dup=None]
-zwr   [root=[cls=B],dup=None]
+zwr   [root=[cls=B],am=ዞረ,dup=None]
 # reduplicated
 fTT   [root=[cls=B],dup=1]
 ### C
@@ -103,8 +118,8 @@ mrK   [root=[cls=C],dup=None]
 zbt   [root=[cls=C],dup=None]
 zqWr  [root=[cls=C],dup=None]
 ## weak
-qsy   [root=[cls=C],dup=None]
-mty   [root=[cls=C],dup=None]
+qsy   [root=[cls=C],dup=None,am=ጣለ]
+mty   [root=[cls=C],dup=None,am=ተቆጣ]
 # final U in Banksira
 mWsy  [root=[cls=C],dup=None]
 # reduplicated
@@ -123,6 +138,7 @@ qWrr  [root=[cls=D],dup=1]
 ### E, F
 grdm   [root=[cls=E],dup=None]
 mskr   [root=[cls=E],dup=None]
+drgr   [root=[cls=E],dup=None]
 frtK   [root=[cls=F],dup=None]
 # weak
 qrbh   [root=[cls=E],dup=None]

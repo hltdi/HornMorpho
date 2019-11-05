@@ -23,7 +23,7 @@ V = {a, e, E, i, I, o, u, *, A, O}
 X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, D}
 # All characters
 XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
-# basic consonants (not labialized or palatalized)
+# basic consonants (not labialized or palatalized, except w and y)
 CC = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z}
 # basic root consonants (CC-h,w,y)
 ZZ = {b, d, f, g, k, K, m, q, r, s, t, T, z, l, n}
@@ -66,7 +66,7 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
 % = {_, /, D, @, ^, 0, *}
 
-#>nd<
+>rn_i<
 # Gemination -> devoicing, hardening
 >gem<
 # Frequentative reduplication realized
