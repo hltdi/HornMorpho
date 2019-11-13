@@ -56,6 +56,7 @@ start -> aE.     [A:E]
 start -> E       [E]
 E -> start       [:]
 E -> E=          [:=]
+# 
 E= -> stem        [X;:e]
 aE. -> a.E       [:=]
 a.E -> stem       [:a]

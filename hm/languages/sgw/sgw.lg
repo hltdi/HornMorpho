@@ -68,5 +68,5 @@ feats:
 
   fut = None | def | indef
 
-  misc = None | tconv | mconv
+  misc = None | tconv | mconv | purp
 

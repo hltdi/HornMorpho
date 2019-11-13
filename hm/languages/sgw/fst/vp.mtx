@@ -1,8 +1,9 @@
 ## Final suffixes
 $ fin_suff
-  --    [tm=prf,sub=t|b|y];[tm=prf,+neg]
+  --    [tm=prf,sub=t|b|y,misc=[-caus]];[tm=prf,+neg,misc=[-caus]]
+  e     [tm=prf,sub=y,misc=[+caus]]
   # can also be converb marker with any tm
-  m     [tm=prf,sub=None,-neg]
+  m     [tm=prf,sub=None,-neg,misc=[-caus]]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)

@@ -18,5 +18,5 @@ setup(name='HornMorphoA',
                              'languages/am/stat/*.dct',
                              'languages/am/cache/am.cch',
                              'languages/am/data/ag.txt'],
-                      'hm.morpho.geez': ['am_conv_sera.txt', 'ti_conv_sera.txt', 'stv_conv_sera.txt']}
+                      'hm.morpho.geez': ['am_conv_sera.txt', 'ti_conv_sera.txt', 'stv_conv_sera.txt', 'sgw_conv_sera.txt']}
      )

@@ -1,4 +1,8 @@
 ## Final suffixes (converb -m, converb -ta(ne); future tE, xe)
+$ final
+  e       [misc=[+purp],fut=None,tm=imf]
+  --      [misc=[-purp]]
+
 $ tense_mod2
   --      [fut=None,misc=[-mconv]]
   Et      [fut=def,tm=imf,-neg,misc=[-tconv,-mconv]]
