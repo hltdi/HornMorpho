@@ -526,7 +526,7 @@ def join(language, POS, segstring):
     implementing alternation rules at the morpheme boundaries.
     For Amharic, POS is 'v', 'n', or 'n_dv'.
     """
-    language = morpho.get_language(language, segment=True)
+    language = morpho.get_language(language, segment=True, load_morph=False)
     return language.join_segments(POS, segstring)
 
 def show_segs(segmentation):

@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2014, 2016, 2018.
+    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -172,6 +172,8 @@ class Language:
         self.rules = rules or {}
         # Whether the language data and FSTs have been loaded
         self.load_attempted = False
+        # Whether the morphology has been loaded
+        self.morpho_loaded = False
         self.cached = {}
         # Cached entries read in when language is loaded
         if read_cache:
@@ -824,7 +826,7 @@ class Language:
         elif phon:
             opt_string = 'phonetic'
         else:
-            opt_string = 'analysis'
+            opt_string = 'analysis/generation'
         if not self.has_cas(generate=phon, guess=False, phon=phon, segment=segment):
             print('No {} FST available for {}!'.format(opt_string, self))
             return False
@@ -872,6 +874,7 @@ class Language:
             self.morphology[pos].set_root_freqs()
             self.morphology[pos].set_feat_freqs()
 
+        self.morpho_loaded = True
         return True
 
     def get_fsts(self, generate=False, phon=False, segment=False):

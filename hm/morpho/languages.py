@@ -85,27 +85,65 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     return True
 
 def get_language(language, load=True, phon=False, segment=False, guess=True,
-                 cache='', verbose=False):
+                 load_morph=True, cache='', verbose=False):
     """Get the language with lang_id, attempting to load it if it's not found
     and load is True."""
     if isinstance(language, Language):
         return language
     lang_id = get_lang_id(language)
     lang = LANGUAGES.get(lang_id, None)
-    if lang:
-        fst = lang.get_fsts(phon=phon, segment=segment)
-        if not fst and load:
-            print("You cannot do both morphological analysis and segmentation in the same session!")
-            if segment:
-                print("Please exit() and start a new session to do segmentation!")
-            else:
-                print("Please exit() and start a new session to do morphological analysis!")
-            return
-    elif not load_lang(lang_id, phon=phon, segment=segment, guess=guess,
-                       load_morph=load, cache=cache,
-                       verbose=verbose):
-        return False
-    return LANGUAGES.get(lang_id, None)
+    if not lang:
+        if load:
+            if not load_lang(lang_id, phon=phon, segment=segment, guess=guess,
+                             load_morph=load_morph, cache=cache,
+                             verbose=verbose):
+                return False
+        return LANGUAGES.get(lang_id, None)
+    if load_morph and not lang.morpho_loaded:
+        lang.load_morpho(phon=phon, segment=segment, guess=guess)
+        return lang
+    if not load_morph:
+        return lang
+    fst = lang.get_fsts(phon=phon, segment=segment)
+    if not fst and load:
+        print("You cannot do both morphological analysis and segmentation in the same session!")
+        if segment:
+            print("Please exit() and start a new session to do segmentation!")
+        else:
+            print("Please exit() and start a new session to do morphological analysis!")
+        return
+    return lang
+    
+#            load_morpho or not lang.get_fsts(phon=phon, segment=segment)):
+#    if not lang_id in LANGUAGES:
+#        if not load_lang(lang_id, phon=phon, segment=segment, guess=guess,
+#                         load_morph=load, cache=cache,
+#                         verbose=verbose):
+#            return False
+#    return LANGUAGES.get(lang_id, None)
+
+#def get_language(language, load=True, phon=False, segment=False, guess=True,
+#                 cache='', verbose=False):
+#    """Get the language with lang_id, attempting to load it if it's not found
+#    and load is True."""
+#    if isinstance(language, Language):
+#        return language
+#    lang_id = get_lang_id(language)
+#    lang = LANGUAGES.get(lang_id, None)
+#    if lang:
+#        fst = lang.get_fsts(phon=phon, segment=segment)
+#        if not fst and load:
+#            print("You cannot do both morphological analysis and segmentation in the same session!")
+#            if segment:
+#                print("Please exit() and start a new session to do segmentation!")
+#            else:
+#                print("Please exit() and start a new session to do morphological analysis!")
+#            return
+#    elif not load_lang(lang_id, phon=phon, segment=segment, guess=guess,
+#                       load_morph=load, cache=cache,
+#                       verbose=verbose):
+#        return False
+#    return LANGUAGES.get(lang_id, None)
 
 def load_pos(language, pos, scratch=False):
     """Load FSTs for a single POS, overriding compiled FST if scratch is True."""
