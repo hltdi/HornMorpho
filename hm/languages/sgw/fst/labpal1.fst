@@ -31,6 +31,7 @@ imp_wi -> imp=wi    [=]
 imp=wi= -> fin      [e]
 
 imp_i -> pal        [=]
+imp -> pal          [=]
 
 # find the end of the stem
 lab0 -> lab0        [XX]
@@ -40,15 +41,15 @@ pal0 -> pal         [=]
 
 ### final vowel
 ## 2sf/imp: palatalize final -a
-# %% later add w to impersonal in -e
 pal -> palV        [e:a]
 # impersonal has -wi for this case
 pal -> palV        [e]        [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
 # final vowel already palatalized
 pal -> fin         [E]
 palV -> palVP      [^:]
-# palatalize final dental
-palVP -> fin       [TT]
+# palatalize final dental (done for 2sf, continue for impers)
+palVP -> fin       [TT]      [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palVP -> labC      [TT]      [sp=None]
 # palatalize final velar for 2sf (but non impers)
 palVP -> fin       [GG]       [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
 # final non-mutated r can be palatalized for 2sf (but not impers)
@@ -133,6 +134,8 @@ labCl -> fin           [KK;MM]
 labC -> labCnl         [:]
 labCnl -> fin          [UU]
 labCnl -> labCC        [DD;n]
+# already palatalized C1/2
+labC -> fin            [^]
 
 ### labialize C1
 labCC -> labCC           [a;e;o;E;A]

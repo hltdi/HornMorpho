@@ -25,7 +25,7 @@ b_w= -> start      [XX]
 lab -> b_bW        [bW:b]
 b_bW -> end        [=]
 
-# only vowel that can be palatalized?
+# only vowel that can be labialized?
 lab -> start       [O:a]
 
 start ->

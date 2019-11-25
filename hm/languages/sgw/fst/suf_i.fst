@@ -53,11 +53,20 @@ oy= -> stem       [e;e:E;:i]
 
 start -> aE.     [A:E]
 start -> E       [E]
-E -> start       [:]
+E -> Csuf        [X]
 E -> E=          [:=]
 E= -> stem        [X;:e]
 aE. -> a.E       [:=]
 a.E -> stem       [:a]
+# delete e before final E
+E -> start        [:e]
+E -> yE           [y:]
+yE -> start       [a;o;E;u]
+yE -> iyE         [i]
+iyE -> start      [X]
+E -> iE           [y:i]
+# ybroyE
+iE -> start       [o]
 
 start -> Vsuf       [V-e,o,i,E]
 Vsuf -> V=          [:=]
@@ -70,6 +79,9 @@ a.i -> start     [:a]
 # other i
 start -> i       [i]
 # vowel other than a possible?
+i -> yi          [y:]
+# y-ud-o-(y)-i
+yi -> start      [o]
 i -> start       [:]
 i -> i=          [:=]
 i= -> stem        [X;V-e]

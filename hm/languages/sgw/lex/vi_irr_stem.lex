@@ -17,6 +17,8 @@ nay   nry    [tm=j_i,root=[cls=A],dup=None,as=None,am=ተኛ,sp=1];[tm=j_i,root=
 na    nry    [tm=j_i,root=[cls=A],dup=None,as=None,am=ተኛ,sp=3,sn=2];[tm=j_i,root=[cls=A],dup=None,as=None,am=ተኛ,sn=1,sp=None]
 Tew   TbWy   [tm=imf,root=[cls=A],dup=None,as=None,am=ጠባ,vc=[-ps]]
 Tw    TbWy   [tm=j_i,root=[cls=A],dup=None,as=None,am=ጠባ,vc=[-ps]]
+Kr    Kr     [tm=j_i,root=[cls=A],dup=None,as=None,am=ሆነ,vc=[-ps]]
+Ker   Kr     [tm=imf,root=[cls=A],dup=None,as=None,am=ሆነ,vc=[-ps]]
 ab    hb     [tm=j_i,root=[cls=A],dup=None,as=None,am=ሰጠ,vc=[-ps]]
 b     hb     [tm=imf,sp=3,sn=1,sg=m,root=[cls=A],dup=None,as=None,am=ሰጠ,vc=[-ps]];[tm=imf,sp=3,sn=2,root=[cls=A],dup=None,as=None,am=ሰጠ,vc=[-ps]]
 ib    hb     [tm=imf,sp=1|2,root=[cls=A],dup=None,as=None,am=ሰጠ,vc=[-ps]];[tm=imf,sp=3,sn=1,sg=f,root=[cls=A],dup=None,as=None,am=ሰጠ,vc=[-ps]]

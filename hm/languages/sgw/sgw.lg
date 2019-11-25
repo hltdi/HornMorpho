@@ -8,6 +8,26 @@ seg: a e i o u E I A
 
 feats:
 
+## nouns
+
+  pos: n noun
+
+  def = False | True
+
+  pp = 0 | 1 | 2 | 3
+  pn = 1 | 2
+  pg = m | f
+
+  cp = 0 | 1 | 2 | 3
+  cn = 1 | 2
+  cg = m | f
+
+  tns = None | prs | pst
+
+  cnj = None | m | x
+
+  prep = None | ye | be | te
+
 ## perfective verbs, including prohibitive
 
   pos: vp verb_perfective
@@ -18,7 +38,7 @@ feats:
 
   sg = m | f
 
-  op = 3 | 2 | 1 | None
+  op = None | 3 | 2 | 1
 
   on = 1 | 2
 
@@ -36,6 +56,8 @@ feats:
 
   sub = None | t | b | y
 
+  misc = caus = False | True
+
 ## imperfective and jussive-imperative verbs, including both -tE and -xe future forms, and t- converb
   
   pos: vi verb_imperf_jussive
@@ -48,7 +70,7 @@ feats:
 
   sg = m | f
 
-  op = 3 | 2 | 1 | None
+  op = None | 3 | 2 | 1
 
   on = 1 | 2
 
@@ -68,5 +90,7 @@ feats:
 
   fut = None | def | indef
 
-  misc = None | tconv | mconv | purp
+  misc = tconv = False | True;
+         mconv = False | True;
+	 purp = False | True;
 

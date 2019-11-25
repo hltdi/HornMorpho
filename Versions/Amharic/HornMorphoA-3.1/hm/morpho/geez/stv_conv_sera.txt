@@ -1,0 +1,53 @@
+ሀ=ha ሁ=hu,huu ሂ=hii ሃ=haa ሄ=he,hee ህ=h,hi ሆ=ho,hoo
+ለ=la ሉ=lu,luu ሊ=lii ላ=laa ሌ=le,lee ል=l,li ሎ=lo,loo
+መ=ma ሙ=mu,muu ሚ=mii ማ=maa ሜ=me,mee ም=m,mi ሞ=mo,moo
+ረ=ra ሩ=ru,ruu ሪ=rii ራ=raa ሬ=re,ree ር=r,ri ሮ=ro,roo
+ሰ=sa ሱ=su,suu ሲ=sii ሳ=saa ሴ=se,see ስ=s,si ሶ=so,soo
+ሸ=xa ሹ=xu,xuu ሺ=xii ሻ=xaa ሼ=xe,xee ሽ=x,xi ሾ=xo,xoo
+ቀ=qa ቁ=qu,quu ቂ=qii ቃ=qaa ቄ=qe,qee ቅ=q,qi ቆ=qo,qoo
+በ=ba ቡ=bu,buu ቢ=bii ባ=baa ቤ=be,bee ብ=b,bi ቦ=bo,boo
+ቨ=va ቩ=vu,vuu ቪ=vii ቫ=vaa ቬ=ve,vee ቭ=v,vi ቮ=vo,voo
+ተ=ta ቱ=tu,tuu ቲ=tii ታ=taa ቴ=te,tee ት=t,ti ቶ=to,too
+ቸ=ca ቹ=cu,cuu ቺ=cii ቻ=caa ቼ=ce,cee ች=c,ci ቾ=co,coo
+ነ=na ኑ=nu,nuu ኒ=nii ና=naa ኔ=ne,nee ን=n,ni ኖ=no,noo
+ኘ=Na ኙ=Nu,Nuu ኚ=Nii ኛ=Naa ኜ=Ne,Nee ኝ=N,Ni ኞ=No,Noo
+አ='a ኡ='u,'uu ኢ='ii ኣ='aa ኤ='e,'ee እ=','i ኦ='o,'oo
+ከ=ka ኩ=ku,kuu ኪ=kii ካ=kaa ኬ=ke,kee ክ=k,ki ኮ=ko,koo
+ወ=wa ዉ=wu,wuu ዊ=wii ዋ=waa ዌ=we,wee ው=w,wi ዎ=wo,woo
+ዘ=za ዙ=zu,zuu ዚ=zii ዛ=zaa ዜ=ze,zee ዝ=z,zi ዞ=zo,zoo
+ዠ=Za ዡ=Zu,Zuu ዢ=Zii ዣ=Zaa ዤ=Ze,Zee ዥ=Z,Zi ዦ=Zo,Zoo
+የ=ya ዩ=yu,yuu ዪ=yii ያ=yaa ዬ=ye,yee ይ=y,yi ዮ=yo,yoo
+ደ=da ዱ=du,duu ዲ=dii ዳ=daa ዴ=de,dee ድ=d,di ዶ=do,doo
+ጀ=ja ጁ=ju,juu ጂ=jii ጃ=jaa ጄ=je,jee ጅ=j,ji ጆ=jo,joo
+ገ=ga ጉ=gu,guu ጊ=gii ጋ=gaa ጌ=ge,gee ግ=g,gi ጎ=go,goo
+ጠ=Ta ጡ=Tu,Tuu ጢ=Tii ጣ=Taa ጤ=Te,Tee ጥ=T,Ti ጦ=To,Too
+ጨ=Ca ጩ=Cu,Cuu ጪ=Cii ጫ=Caa ጬ=Ce,Cee ጭ=C,Ci ጮ=Co,Coo
+ጰ=Pa ጱ=Pu,Puu ጲ=Pii ጳ=Paa ጴ=Pe,Pee ጵ=P,Pi ጶ=Po,Poo
+ጸ=Sa ጹ=Su,Suu ጺ=Sii ጻ=Saa ጼ=Se,See ጽ=S,Si ጾ=So,Soo
+ፈ=fa ፉ=fu,fuu ፊ=fii ፋ=faa ፌ=fe,fee ፍ=f,fi ፎ=fo,foo
+ፐ=pa ፑ=pu,puu ፒ=pii ፓ=paa ፔ=pe,pee ፕ=p,pi ፖ=po,poo
+ሏ=lWaa
+ሟ=mWaa
+ሯ=rWaa
+ሷ=sWaa
+ሿ=šWaa
+ቈ=qWa ቋ=qWaa ቌ=qWe,qWee ቍ=qW,qWi
+ቧ=bWaa
+ቯ=vWaa
+ቷ=tWaa
+ቿ=cWaa
+ኗ=nWaa
+ኟ=NWaa
+ኰ=kWa ኳ=kWaa ኴ=kWe,kWee ኵ=kW,kWi
+ዟ=zWaa
+ዧ=ZWaa
+ዷ=dWaa
+ጇ=jWaa
+ጐ=gWa ጓ=gWaa ጔ=gWe,gWee ጕ=gW,gWi
+ጧ=TWaa
+ጯ=CWaa
+ጷ=PWaa
+ጿ=SWaa
+ፏ=fWaa
+ፗ=pWaa
+።=. ፣=, ፤=; ፥=: ፦=: ፧=*?

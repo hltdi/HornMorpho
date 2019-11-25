@@ -1,0 +1,17 @@
+'afrika
+'awstraliya
+'awrop_a
+'amErika
+'ityoP_ya
+Taliya
+'Ertra
+'uganda
+'sya
+'spanya
+ferensay
+jermen
+meskob
+sudan
+somalya
+kEnya
+hnd

@@ -146,26 +146,9 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
     else:
         return casc[start_i].inverted().transduce(s, f, seg_units=seg_units, timeout=10)
 
-V1 = ["ይመሳስላሉ", "ይመሳሰላሉ", "ያመሳስላል"]
-V2 = ["ተባበሩ", "ተሳሳሙ", "ተግባቡ", "ተጭበረባበሩ"]
-V3 = ["ይጠብቃል", "ባከነ", "ቀባጠረ"]
-V4 = ["ተጋጠሙ", "አጋጠመ"]
-N1 = ["መቀጠል", "መቀጠያ", "ቀጣይ", "አቀጣጠል"]
-N2 = ["ያለምክንያት", "አለምክንያት", "አለመንሳፈፍ", "ኢፍትሃዊ"]
-
 # shortcuts for Chaha ('sgw')
 GA = lambda form: hm.anal('sgw', form, raw=True)
-GG = lambda form, feats=None: hm.gen('sgw', form, features=hm.morpho.FSSet(feats) if feats else None)
-
-GV1 = [
-    "y=sebr=o", "ye=sbr=", "=seper=ema",
-    "e=jepr=", "n=depr=ne", "=jeper=Ku"
-    ]
-
-GV2 = [
-    "t=seme=", "y=seme=", "=seme=i",
-    "t=beKY=", "y=beKY=i"
-    ]
+GG = lambda form, pos, feats=None: hm.gen('sgw', form, pos=pos, features=hm.morpho.FSSet(feats) if feats else None)
 
 def main():
     pass

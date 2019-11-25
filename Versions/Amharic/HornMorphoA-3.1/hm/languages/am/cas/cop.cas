@@ -1,0 +1,13 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, Y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+V = {a, e, E, i, I, o, u}
+
+# Delete I and gemination character
+>cop_delepgem<
+# Add epenthetic stuff for spoken Amharic
+# >epen<
+>copula<

@@ -32,10 +32,14 @@ imp -> imp_i        [i]
 #imp_wi -> imp=wi    [=]
 #imp=wi= -> fin      [e]
 
-# insert w following -e of **y root
-imp_i -> pal        [=]
-pal -> pal_w        [w:]
+# insert w following -e of **y root; no more labialization necessary
+imp_i -> imp_i=     [=]
+imp_i= -> pal_w     [w:]
 pal_w -> fin        [e]
+# no initial i suffix
+imp -> pal          [=]
+# initial i suffix but no stem-final e
+imp_i= -> pal       [:]
 
 ### final vowel
 ## imp: palatalize final -a
@@ -43,8 +47,8 @@ pal -> palV        [e:a]
 # final vowel already palatalized
 pal -> fin         [E]
 palV -> palVP      [^:]
-# palatalize final dental
-palVP -> fin       [TT]
+# palatalize final dental; go on to labialize other
+palVP -> labC      [TT]
 
 ## consonant preceding -a
 # not palatalized
@@ -91,19 +95,21 @@ labCl -> fin           [KK;MM]
 labC -> labCnl         [:]
 labCnl -> fin          [UU]
 labCnl -> labCC        [DD;n]
+# already palatalized C1/2
+labC -> fin            [^]
 
 ### labialize C1
 # no C1
 labCC -> fin           [=]
 # V1
-labCC -> labCC           [a;e;o;E;A]
-labCC -> labCCl          [@:]
-labCCl -> fin            [KK;MM]
+labCC -> labCC         [a;e;o;E;A]
+labCC -> labCCl        [@:]
+labCCl -> fin          [KK;MM]
 # already labialized or unlabializable
-labCC -> labCCnl         [:]
-labCCnl -> fin           [UU;DD;PP]
+labCC -> labCCnl       [:]
+labCCnl -> fin         [UU;DD;PP]
 
-fin -> fin            [X;V;^;@;=]
+fin -> fin             [X;V;^;@;=]
 
 fin ->
 start ->

@@ -1,6 +1,6 @@
 -> stem
 
-stem -> C      [X-r]
+stem -> C       [X-r]
 C -> =C         [:=]
 =C -> end       [y]
 =C -> y2i       [i:y]

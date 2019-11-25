@@ -648,7 +648,7 @@ def list_to_arg(dct, prefix):
 AM = language.Language("አማርኛ", 'am',
               postproc=lambda form: geezify(form),
 #              sera2geez(GEEZ_SERA['am'][1], form, lang='am'),
-              preproc=lambda form: geez2sera(GEEZ_SERA['am'][0], form, lang='am', simp=True),
+              preproc=lambda form: geez2sera(None, form, lang='am', simp=True),
               postpostproc=lambda form: postproc_root(form),
               seg2string=lambda string, sep='-', features=False, transortho=True: seg2string(string, sep=sep, geez=transortho, features=features),
               stat_root_feats=['vc', 'as'],

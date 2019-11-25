@@ -1,13 +1,32 @@
-## Final suffixes (converb -m, converb -ta(ne); future tE, xe)
-$ final
-  e       [misc=[+purp],fut=None,tm=imf]
+$ prag
+  --    [misc=[-x]]
+  x     [misc=[+x]]
+
+$ compound
+  # alternative to separate word bane; -u cleft marker
+  --    [misc=[-cmpd,-clft]]
+  ab    [misc=[+cmpd,-clft]]
+  u     [misc=[+clft]]
+
+$ rel_def
+  # not sure where this goes??
+  --    [-def]
+  tKW   [+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
+  atKW  [+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
+  atKY  [+def,sp=3,sn=1,sg=f,misc=[-cmpd]]
+  onK   [+def,sp=3,sn=2,sg=m,misc=[-cmpd]]
+  amenK [+def,sp=3,sn=2,sg=f,misc=[-cmpd]]
+
+## Final suffixes (converb -m, converb -ta(ne); future tE, xe, purposive E)
+$ purp
+  E       [misc=[+purp,-tconv],fut=None,tm=imf]
   --      [misc=[-purp]]
 
-$ tense_mod2
-  --      [fut=None,misc=[-mconv]]
-  Et      [fut=def,tm=imf,-neg,misc=[-tconv,-mconv]]
-  ex      [fut=indef,tm=j_i,-neg,misc=[-tconv,-mconv]]
-  m       [misc=[+mconv],fut=None]
+$ tense_m
+  --      [fut=None,misc=[-m,-x]]
+  Et      [fut=def,tm=imf,-neg,misc=[-tconv,-m,-x]]
+  ex      [fut=indef,tm=j_i,-neg,misc=[-tconv,-m,-x]]
+  m       [misc=[+m,-x],fut=None]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
@@ -125,9 +144,9 @@ $ sbj_suff
   --    [sn=1,misc=[-tconv]];[sp=None,sn=None,sg=None,misc=[-tconv]]
 
 $ tconverb
-  et      [misc=[+tconv,-mconv],fut=None,tm=j_i,sp=1|2]
+  et      [misc=[+tconv,-m],fut=None,tm=j_i,sp=1|2]
   # delete the e before -e, -ec, -o, -ema
-  t       [misc=[+tconv,-mconv],fut=None,tm=j_i,sp=3]
+  t       [misc=[+tconv,-m],fut=None,tm=j_i,sp=3]
   --      [misc=[-tconv]]
 
 ## Boundary separating stem from suffixes
@@ -158,6 +177,7 @@ $ negative
   -- [-neg]
 
 $ subord
-  t  [sub=t,tm=imf,fut=None,misc=[-tconv,-mconv]]
-  b  [sub=b,tm=imf,fut=None,misc=[-tconv,-mconv]]
-  -- [sub=None];[tm=j_i,sub=None]
+  t  [sub=t,tm=imf,fut=None,misc=[-tconv,-m]]
+  # also negative purposive (with -e suffix)
+  b  [sub=b,tm=imf,fut=None,misc=[-tconv,-m]];[sub=b,tm=imf,fut=None,-neg,misc=[-tconv,-m,+purp]]
+  -- [sub=None];[tm=j_i,sub=None];[sub=None,misc=[+purp],+neg];[sub=None,misc=[-purp]]

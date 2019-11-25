@@ -1,7 +1,21 @@
 ## Final suffixes
+$ compound
+  # alternative to separate word bane
+  --    [misc=[-cmpd]]
+  ab    [misc=[+cmpd]]
+
+$ rel_def
+  # 3 pers pronouns as definite suffixes; not sure where this goes??
+  --    [-def,sub=y];[sub=b|t|None]
+  tKW   [sub=y,+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
+  atKW  [sub=y,+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
+  atKY  [sub=y,+def,sp=3,sn=1,sg=f,misc=[-cmpd]]
+  onK   [sub=y,+def,sp=3,sn=2,sg=m,misc=[-cmpd]]
+  amenK [sub=y,+def,sp=3,sn=2,sg=f,misc=[-cmpd]]
+
 $ fin_suff
   --    [tm=prf,sub=t|b|y,misc=[-caus]];[tm=prf,+neg,misc=[-caus]]
-  e     [tm=prf,sub=y,misc=[+caus]]
+  E     [tm=prf,sub=y,misc=[+caus]]
   # can also be converb marker with any tm
   m     [tm=prf,sub=None,-neg,misc=[-caus]]
 

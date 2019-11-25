@@ -98,8 +98,24 @@ ROOT_Y = '።'
 
 ### TOP-LEVEL FUNCTIONS
 
+def get_language(lang='am'):
+    if lang in GEEZ_SERA:
+        return GEEZ_SERA[lang]
+    else:
+        conv_path = os.path.join(DATA_DIR, lang + "_conv_sera.txt")
+        dicts = read_conv(conv_path)
+        GEEZ_SERA[lang] = dicts
+        return dicts
+
+def get_table(lang='am', fromgeez=True):
+    language = get_language(lang)
+    return language[0 if fromgeez else 1]
+
 def geezify(form, lang='am'):
-    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
+    return sera2geez(get_table(lang, False), form, lang=lang)
+#    language = get_language(lang)
+#    return sera2geez(language[1], form, lang=lang)
+#    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
 
 def geezify_alts(form, lang='am'):
     """Return a list of possible geez outputs for roman form."""
@@ -108,7 +124,9 @@ def geezify_alts(form, lang='am'):
     return g
 
 def romanize(form, lang='am'):
-    return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
+    return geez2sera(get_table(lang, True), form, lang=lang)
+#    language = get_language(lang)
+#    return geez2sera(language[0], form, lang=lang)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters
@@ -249,6 +267,8 @@ def read_conv(filename, simple=False):
 
 def sera2geez(table, form, lang='am'):
     '''Convert form in SERA to Geez, using translation table.'''
+    if not table:
+        table = get_table(lang, False)
     # First delete gemination characters
     form = form.replace('_', '')
     # Segment
@@ -286,10 +306,16 @@ def sera2geez(table, form, lang='am'):
     return res
 
 def geezify(form, lang='am'):
-    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
+    return sera2geez(get_table(lang, False), form, lang=lang)
+#    language = get_language(lang)
+#    return sera2geez(language[1], form, lang=lang)
+#    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
 
 def romanize(form, lang='am'):
-    return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
+    return geez2sera(get_table(lang, True), form, lang=lang)
+#    language = get_language(lang)
+#    return geez2sera(language[0], form, lang=lang)
+#    return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters
@@ -374,6 +400,8 @@ def root2geez(table, root, lang='am'):
 
 def geez2sera(table, form, lang='am', simp=False):
     '''Convert form in Geez to SERA, using translation table.'''
+    if not table:
+        table = get_table(lang, True)
     if form.isdigit():
         return form
     res = ''
@@ -545,11 +573,12 @@ def from_real_sera_file(infile, outfile=None, phon=True, language='am'):
         out_f.close()
 
 ## GEEZ<->SERA (modified) conversion tables
-GEEZ_SERA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_sera.txt')),
-             'ti': read_conv(os.path.join(DATA_DIR, 'ti_conv_sera.txt')),
-             'sgw': read_conv(os.path.join(DATA_DIR, 'sgw_conv_sera.txt')),
-             'sgwZ': read_conv(os.path.join(DATA_DIR, 'sgwZ_conv_sera.txt')),
-             'stv': read_conv(os.path.join(DATA_DIR, 'stv_conv_sera.txt'))}
+GEEZ_SERA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_sera.txt'))
+#             'ti': read_conv(os.path.join(DATA_DIR, 'ti_conv_sera.txt')),
+#             'sgw': read_conv(os.path.join(DATA_DIR, 'sgw_conv_sera.txt')),
+#             'sgwZ': read_conv(os.path.join(DATA_DIR, 'sgwZ_conv_sera.txt')),
+#             'stv': read_conv(os.path.join(DATA_DIR, 'stv_conv_sera.txt'))
+}
 
 def geez_alpha(s1, s2, pos1 = 0, pos2 = 0):
     """Comparator function for two strings or lists using Geez order."""

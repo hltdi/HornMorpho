@@ -58,8 +58,21 @@ E -> start       [:]
 E -> E=          [:=]
 # 
 E= -> stem        [X;:e]
-aE. -> a.E       [:=]
+aE. -> a.E        [:=]
 a.E -> stem       [:a]
+
+E -> start        [:e]
+E -> yE           [y:]
+# yE -> start     [a;o;E]
+yE -> a           [a]
+yE -> o           [o]
+yE -> E           [E]
+# WHAT ABOUT u IN SUFFIXES?
+yE -> start       [u]
+yE -> iyE         [i]
+iyE -> start      [X]
+E -> iE           [y:i]
+iE -> o           [o]
 
 start -> V       [V-e,o,i,E]
 V -> V=          [:=]
