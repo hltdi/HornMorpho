@@ -26,31 +26,30 @@ e -> e=          [:=]
 e= -> stem        [X;V-a,e]
 del_e -> del_e=  [:=]
 del_e= -> stem    [a;e]
-# benemam; impf, j_i also sp=2
-e= -> stem        [:a]      [sn=2,sp=3,sg=f]
+# benemam; seTemam
+e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
 
-# seTebemam
 e -> eb          [b:]      [sn=2,sp=3,sg=f]
 eb -> eb=        [:=]
-eb= -> stem       [e]
+# seTebemam; weTebemam
+eb= -> stem      [e;e:a]
 eb= -> eb=e      [:e]
-# srabemam; only prf
-eb=e -> stem      [a]
+# srabemam
+eb=e -> stem     [a]
 
 start -> o       [o]
 o -> start       [:]
-o -> ob          [b:]
+o -> ob          [b:]      [sn=2,sp=3,sg=m]
 ob -> ob=        [:=]
-# seTebom
-ob= -> stem       [e]
+# seTebom; weTebom
+ob= -> stem      [e;e:a]
 ob= -> ob=e      [:e]
-# srabom; only prf
+# srabom
 ob=e -> stem      [a]
 o -> o=          [:=]
 o= -> stem        [X;V-a,e]
-# benom
-o= -> stem        [:a]
-# [sn=2,sp=3,sg=m]
+# benom; seTom
+o= -> stem        [:a;:e]
 
 start -> aE.     [A:E]
 start -> E       [E]

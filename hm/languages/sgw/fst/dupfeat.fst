@@ -2,9 +2,13 @@
 
 suff -> suff        [XX]
 suff -> stem        [=]
+stem -> end         [:]          [dup=None];[as=rc|None]
 
 stem -> dup         [:]          [dup=1|2];[as=it]
-stem -> end         [:]          [dup=None];[as=rc|None]
+dup -> end          [V]          [dup=1]
+# with final vowel only dup=2 and as=it are possible
+dup -> dup2         [V]          [dup=2];[as=it]
+
 # last consonant is palatalized
 dup -> pal1        [^]
 pal1 -> pal1C      [GG;DD]
@@ -32,7 +36,7 @@ pal1CLCC -> pal1CLCC [V]
 pal1CLCC -> end      [@:]
 
 # last consonant is labialized
-dup -> lab1        [@]         [dup=1|2]
+dup -> lab1        [@]         
 lab1 -> lab1C      [KK;MM]
 # frequentative doesn't care about final labialized consonant
 lab1C -> dup2      [:]         [as=it]
@@ -58,6 +62,8 @@ pal2 -> pal2C      [GG;DD]
 ## palatalize C-2
 pal2C -> pal2C     [V]
 pal2C -> end       [^:]        [as=it]
+# for verbs like shsh
+pal2 -> pal2C      [a]
 # interim consonant could be palatalized or labialized
 pal2C -> pal2C     [^;@]       [dup=2]
 pal2C -> pal2CC    [X]         [dup=2]
@@ -72,6 +78,8 @@ lab2 -> lab2C      [GG;BB]
 lab2C -> lab2C     [V]
 lab2C -> end       [@:]        [as=it]
 # interim consonant could be palatalized or labialized
+# for verbs like shsh
+lab2 -> lab2C      [a]
 lab2C -> lab2C     [^;@]       [dup=2]
 lab2C -> lab2CC    [X]         [dup=2]
 lab2CC -> lab2CC   [V]

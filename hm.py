@@ -51,7 +51,8 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     """
     hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
                  guess=guess, verbose=verbose)
-    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment, load=load_morph,
+    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment,
+                                  load=load_morph, load_morph=load_morph,
                                   verbose=verbose)
     if lang:
         return lang.morphology[pos]

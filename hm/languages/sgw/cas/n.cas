@@ -39,8 +39,7 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 % = {@, ^, 0, =}
 
 # Vowel combinations 
-#>aff<
-#>Vpre<
+>aff_n<
 #{ Palatalization and labialization
 #>labpal2<
 #}

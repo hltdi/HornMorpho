@@ -25,26 +25,29 @@ lab0 -> lab0        [XX]
 lab0 -> lab         [=]
 
 # impersonal
-imp -> imp          [X;V-i]
+imp -> imp          [X;V]
 # bekewim
-imp -> imp_i        [i]
-#imp_i -> imp_wi     [w:]
-#imp_wi -> imp=wi    [=]
-#imp=wi= -> fin      [e]
+imp -> imp_i         [i]
+imp_i -> imp        [p;n]
 
-# insert w following -e of **y root; no more labialization necessary
+# optionally (obligatory in Gumer??) insert w following -e of **y root; no more labialization necessary
 imp_i -> imp_i=     [=]
 imp_i= -> pal_w     [w:]
-pal_w -> fin        [e]
+# bekewim
+pal_w -> pal_we.C   [e]
+pal_we.C -> fin     [X]
+# srawim
+pal_w -> pal_we.a   [:e]
+pal_we.a -> fin     [a]
 # no initial i suffix
 imp -> pal          [=]
 # initial i suffix but no stem-final e
 imp_i= -> pal       [:]
 
 ### final vowel
-## imp: palatalize final -a
-pal -> palV        [e:a]
-# final vowel already palatalized
+## imp: palatalize final -a; delete final e
+pal -> palV        [e:a;:e]
+# final vowel already palatalized (how can this happen?); in any case this is wrong because labialization also needs to happen
 pal -> fin         [E]
 palV -> palVP      [^:]
 # palatalize final dental; go on to labialize other
@@ -89,6 +92,7 @@ pal -> labC         [r;n]        [sp=None]
 
 ### labialize C2
 labC -> labC           [a;e;o;E;A]
+labC -> labC=          [=]
 labC -> labCl          [@:]
 labCl -> fin           [KK;MM]
 # already labialized or labialize C1
@@ -113,3 +117,5 @@ fin -> fin             [X;V;^;@;=]
 
 fin ->
 start ->
+# ojim
+labC= ->

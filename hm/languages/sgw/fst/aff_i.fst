@@ -39,8 +39,8 @@ rn= -> stem        [X-r,n,l;V]
 start -> rndel     [:r;:n]
 rndel -> rn=.rn    [:=]
 # r=r -> rl
+# GEMINATED n: n=n; r=n
 rn=.rn -> stem    [n;l;n:r]
-# suffix r->l following root final r
 start -> r2l      [l:r]
 r2l -> r2l=.      [:=]
 r2l=. -> stem     [r]
@@ -53,17 +53,18 @@ e= -> stem        [X;V-a,e,E,i]
 # y=berema, ye=sTE=ema -> ye=STema??
 e= -> stem        [:a;:E;:i]   [sn=2,sg=f]
 
-# y=seTebema
-e -> eb           [b:]      [sn=2,sp=3,sg=f]
+# ye=sTebema
+e -> eb           [b:]         [sn=2,sp=3,sg=f]
 eb -> eb=         [:=]
-eb= -> stem       [e]
+# y=seTe=bema, y=cone=bema
+eb= -> stem       [e;e:a]
 
 start -> o        [o]
 o -> start        [:]
 o -> ob           [b:]
 ob -> ob=         [:=]
-# y=seTebo
-ob= -> stem       [e]
+# y=seTebo, y=conebo
+ob= -> stem       [e;e:a]
 o -> o=           [:=]
 o= -> stem        [X;V-a,e,E,i]
 # y=beno

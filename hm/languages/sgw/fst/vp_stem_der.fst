@@ -15,6 +15,7 @@ start -> .c        [t;d;T] [root=[cls=Ap|B|C|D|E|F]]
 # need these for <wrd> => wende
 start -> .T        [t;d;T] [root=[cls=A]]
 start -> .h        [:h]
+# for -o, -ema, and impersonal, don't palatalize these verbs (Kry, etc.)
 start -> .c        [:y]    [sp=3,sn=2];[sp=None]
 start -> .y        [:y]    [sp=1];[sn=1];[sp=2,sn=2]
 
@@ -196,9 +197,12 @@ C.yv -> C.cv       [^:]
 C.cv -> C.cvc1     [/:]
 # also geminated for some verbs (C:zbt)?
 C.cvc1 -> C.cvc    [YY]
-# V1, always a
+# V1, always a (except for iterative)
 C.cvc -> C.cvcv    [a:]
 C.cvcv -> pre_n    [RR]
+# iterative
+C.cvc -> B.cvcV.D [a:;e:] [as=it]
+C.cvcV.D -> B.cvcv [D:]
 
 ### Class D
 # C2 (always geminated)
@@ -242,15 +246,13 @@ E.yVh -> E.CVCVC    [y:r]
 E.CVC -> E.CVCV     [a:]   [root=[cls=F]]
 E.CVC -> E.CVCV     [e:]   [root=[cls=E]]
 # *h**: C2+V2+V1 => a (shsh => sasa)
-E.CVC -> E.CVCVCV   [a:h]
+E.CVC -> E.CVCVC    [a:h]
 
 # C2
-E.CVCV -> E.CVCVC   [AA]
-
-# V1 = 0
+E.CVCV -> E.CVCVC   [YY]
 
 # C1
-E.CVCVC -> pre_n   [AA]
+E.CVCVC -> pre_n    [AA]
 
 pre_n -> pre_n1     [n]
 pre_n1 -> voice     [*:]

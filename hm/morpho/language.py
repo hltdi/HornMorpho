@@ -48,8 +48,7 @@ Morphology objects defined in morphology.py).
 import os, sys, re, copy, itertools
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__),
-                            os.path.pardir,
-                            'languages')
+                            os.path.pardir, 'languages')
 
 from .morphology import *
 from .anal import *
@@ -106,6 +105,9 @@ EXPL_FEAT_RE = re.compile(r'\s*xf(.*):\s*(.*)\s*=\s*(.*)')
 # Preprocessing: replace characters in first list with last char
 # clean: â, ä = ã
 CLEAN_RE = re.compile(r'\s*cle.*?:\s*(.*)\s*=\s*(.*)')
+# Pre- and post-processing (only works for Geez script now)
+PREPROC_RE = re.compile(r'\s*preproc.*?:\s*(.*)')
+POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -322,6 +324,9 @@ class Language:
 
         lines = data.split('\n')[::-1]
 
+        postproc = ''
+        preproc = ''
+
         seg = []
         punc = []
         abbrev = {}
@@ -417,6 +422,22 @@ class Language:
                     # Add to the global TDict
                     Language.T.add(w.strip(), g.strip(), self.abbrev)
 #                    self.trans[w.strip()] = g.strip()
+                continue
+
+            m = PREPROC_RE.match(line)
+            if m:
+                preproc = m.group(1)
+                if preproc == 'geez':
+                    from .geez import geez2sera
+                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev)
+                continue
+
+            m = POSTPROC_RE.match(line)
+            if m:
+                postproc = m.group(1)
+                if postproc == 'geez':
+                    from .geez import sera2geez
+                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev)
                 continue
 
             m = CLEAN_RE.match(line)
@@ -607,7 +628,6 @@ class Language:
 
         if feats and not self.morphology:
             pos_args = []
-#            print("feats {}".format(feats))
             for pos in feats:
                 if not poss or pos in poss:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos],

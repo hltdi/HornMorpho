@@ -19,24 +19,22 @@ $ rel_def
 
 ## Final suffixes (converb -m, converb -ta(ne); future tE, xe, purposive E)
 $ purp
-  E       [misc=[+purp,-tconv],fut=None,tm=imf]
+  E       [misc=[+purp],fut=None]
   --      [misc=[-purp]]
 
 $ tense_m
   --      [fut=None,misc=[-m,-x]]
-  Et      [fut=def,tm=imf,-neg,misc=[-tconv,-m,-x]]
-  ex      [fut=indef,tm=j_i,-neg,misc=[-tconv,-m,-x]]
+  Et      [fut=def,-neg,misc=[-m,-x]]
   m       [misc=[+m,-x],fut=None]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
-  --    [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1];[sp=1,sn=2,op=3,on=1,og=m,ot=a]
+  --       [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1];[sp=1,sn=2,op=3,on=1,og=m,ot=a]
   # 3s light object; 1s heavy object
   n        [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=f,op=1,on=1,ot=a];[sn=2,op=1,on=1,ot=a];[sp=None,sn=None,op=1,on=1,ot=a]
   ## 3
   # accusative
   [op=3,on=1,og=m,ot=a]
-#    n      [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     i      [sp=2,sn=1,sg=f];[sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f];[sp=None,sn=None]
     # y=reKb=oyi (** also y=reKb=ewi)
     iy     [sp=2|3,sn=2,sg=m]
@@ -126,28 +124,11 @@ $ obj_suff
 
 ## Subject suffixes reversed
 $ sbj_suff
-  ## t-converb; prf suffixes
-  # singular
-  KW    [sp=1,sn=1,misc=[+tconv]]
-  eK    [sp=2,sn=1,sg=m,misc=[+tconv]]
-  KY    [sp=2,sn=1,sg=f,misc=[+tconv]]
-  e     [sp=3,sn=1,sg=m,misc=[+tconv]]
-  ce    [sp=3,sn=1,sg=f,misc=[+tconv]]
-  # 2 plural
-  uK    [sp=2,sn=2,sg=m,misc=[+tconv]]
-  amK   [sp=2,sn=2,sg=f,misc=[+tconv]]
-  ## prf and imf/j_i suffixes
-  en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a,misc=[-tconv]];[sp=1,sn=2,op=3,on=1,og=f,ot=a,misc=[-tconv]]
-  En    [sp=1,sn=2,op=2,misc=[-tconv]];[sp=1,sn=2,op=3,misc=[-tconv]]
-  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f,misc=[-tconv]]
-  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None,misc=[+tconv]];[sp=2,sn=2,sg=m,misc=[-tconv]]
-  --    [sn=1,misc=[-tconv]];[sp=None,sn=None,sg=None,misc=[-tconv]]
-
-$ tconverb
-  et      [misc=[+tconv,-m],fut=None,tm=j_i,sp=1|2]
-  # delete the e before -e, -ec, -o, -ema
-  t       [misc=[+tconv,-m],fut=None,tm=j_i,sp=3]
-  --      [misc=[-tconv]]
+  en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a];[sp=1,sn=2,op=3,on=1,og=f,ot=a]
+  En    [sp=1,sn=2,op=2];[sp=1,sn=2,op=3]
+  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f]
+  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None,misc=[+tconv]];[sp=2,sn=2,sg=m]
+  --    [sn=1];[sp=None,sn=None,sg=None]
 
 ## Boundary separating stem from suffixes
 $ bound2
@@ -163,21 +144,18 @@ $ bound1
 
 ## Subject prefixes reversed
 $ sbj_pre
-  e   [sp=1,sn=1,tm=imf,-neg,sub=None,fut=None];[sp=1,sn=1,-neg,fut=def];[sp=1,sn=1,fut=indef]
-  t   [sp=2,tm=imf,fut=None|def];[sp=3,sn=1,sg=f,misc=[-tconv]];[sp=2,tm=j_i,fut=indef]
-  y   [sp=3,sn=2,tm=imf,fut=None];[sp=3,sn=1,sg=m,tm=imf,fut=None];[sp=None,sn=None,sg=None,tm=imf,fut=None];
-      [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=None,sn=None,sg=None,tm=j_i,+neg];
-      [sp=3,sn=2,fut=def|indef];[sp=3,sn=1,sg=m,fut=def|indef];[sp=None,sn=None,sg=None,fut=def|indef]
-  n   [sp=1,sn=2,misc=[-tconv]];[sp=1,sn=1,tm=j_i,misc=[-tconv]];[sp=1,sn=1,tm=imf,+neg];[sp=1,sn=1,tm=imf,fut=def];[sp=1,sn=1,tm=imf,sub=t|b]
-  ey  [sp=3,sn=2,tm=j_i,-neg,fut=None,misc=[-tconv]];[sp=3,sn=1,sg=m,tm=j_i,-neg,fut=None,misc=[-tconv]];[sp=None,sn=None,sg=None,tm=j_i,-neg,fut=None,misc=[-tconv]]
-  --  [sp=2,tm=j_i,fut=None,-neg];[misc=[+tconv]]
+  e   [sp=1,sn=1,-neg,sub=None,fut=None];[sp=1,sn=1,-neg,fut=def]
+  t   [sp=2,fut=None|def];[sp=3,sn=1,sg=f]
+  y   [sp=3,sn=2,fut=None];[sp=3,sn=1,sg=m,fut=None];[sp=None,sn=None,sg=None,fut=None];
+      [sp=3,sn=2,fut=def];[sp=3,sn=1,sg=m,fut=def];[sp=None,sn=None,sg=None,fut=def]
+  n   [sp=1,sn=2];[sp=1,sn=1,+neg];[sp=1,sn=1,fut=def];[sp=1,sn=1,sub=t|b]
 
 $ negative
-  a  [+neg,tm=imf|j_i]
-  -- [-neg]
+  a  [+neg,tm=imf]
+  -- [-neg,tm=imf]
 
 $ subord
-  t  [sub=t,tm=imf,fut=None,misc=[-tconv,-m]]
+  t  [sub=t,fut=None,misc=[-m]]
   # also negative purposive (with -e suffix)
-  b  [sub=b,tm=imf,fut=None,misc=[-tconv,-m]];[sub=b,tm=imf,fut=None,-neg,misc=[-tconv,-m,+purp]]
+  b  [sub=b,fut=None,misc=[-m]];[sub=b,fut=None,-neg,misc=[-m,+purp]]
   -- [sub=None];[tm=j_i,sub=None];[sub=None,misc=[+purp],+neg];[sub=None,misc=[-purp]]

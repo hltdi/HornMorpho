@@ -1,5 +1,8 @@
 name: chaha
 
+preproc: geez
+postproc: geez
+
 seg: a e i o u E I A
      b bW c C d f fW g gW gY h j
      k kW kY K KW KY l m mW n p pW q qW qY r s
@@ -21,6 +24,24 @@ feats:
   cp = 0 | 1 | 2 | 3
   cn = 1 | 2
   cg = m | f
+
+  tns = None | prs | pst
+
+  cnj = None | m | x
+
+  prep = None | ye | be | te
+
+## infinitive
+
+  pos: inf infinitive
+
+  def = False | True
+
+  pp = 0 | 1 | 2 | 3
+  pn = 1 | 2
+  pg = m | f
+
+  cp = 0 | 3
 
   tns = None | prs | pst
 
@@ -58,11 +79,11 @@ feats:
 
   misc = caus = False | True
 
-## imperfective and jussive-imperative verbs, including both -tE and -xe future forms, and t- converb
+## imperfective verbs, including both -tE future form
   
-  pos: vi verb_imperf_jussive
+  pos: vi verb_imperf
 
-  tm = imf | j_i
+#  tm = imf | j_i
 
   sp = 3 | 2 | 1 | None
 
@@ -88,9 +109,39 @@ feats:
 
   sub = None | t | b
 
-  fut = None | def | indef
+  fut = None | def
+
+  misc = mconv = False | True;
+	 purp = False | True
+
+## jussive-imperative verbs, including -xe future forms and t- converb
+  
+  pos: vj verb_jussive
+
+  sp = 3 | 2 | 1 | None
+
+  sn = 1 | 2
+
+  sg = m | f
+
+  op = None | 3 | 2 | 1
+
+  on = 1 | 2
+
+  og = m | f
+
+  # accusative | benefactive | malefactive
+  ot = a | b | m
+
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+
+  neg = False | True
+
+  fut = None | indef
 
   misc = tconv = False | True;
-         mconv = False | True;
-	 purp = False | True;
+         mconv = False | True
 

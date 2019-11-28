@@ -49,7 +49,7 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 #{ Palatalization and labialization
 >labpal2<
 >dupfeat<
->labpal1<
+>labpal1i<
 #}
 # Morphotactics
 >vi.mtx<
