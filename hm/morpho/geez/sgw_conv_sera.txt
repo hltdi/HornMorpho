@@ -18,7 +18,7 @@
 ቸ=ce ቹ=cu ቺ=ci ቻ=ca ቼ=cE ች=c ቾ=co
 ነ=ne ኑ=nu ኒ=ni ና=na ኔ=nE ን=n ኖ=no
 ኘ=Ne ኙ=Nu ኚ=Ni ኛ=Na ኜ=NE ኝ=N ኞ=No
-አ='e ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o
+አ=e ኡ=u ኢ=i ኣ=a ኤ=E እ=I ኦ=o
 ከ=ke ኩ=ku ኪ=ki ካ=ka ኬ=kE ክ=k ኮ=ko
 ኸ=kYe ኹ=kYu ኺ=kYi ኻ=kYa ኼ=kYE ኽ=kY ኾ=kYo
 ኰ=kWe ኲ=kWi ኳ=kWa ኴ=kWE ኵ=kW

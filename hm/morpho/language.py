@@ -86,6 +86,8 @@ POS_RE = re.compile(r'\s*pos:\s*(.*)\s+(.*)')
 # Feature abbreviations
 # ab...:
 ABBREV_RE = re.compile(r'\s*ab.*?:\s*(.*)')
+# cod...:
+CODE_RE = re.compile(r'\s*cod.*?:\s*(.*)')
 # Term translations
 # tr...:
 TRANS_RE = re.compile(r'\s*tr.*?:\s*(.*)')
@@ -95,6 +97,8 @@ FEATS_RE = re.compile(r'\s*feat.*?:\s*(.*)')
 FV_RE = re.compile(r'\s*(.*?)\s*=\s*(.*)')
 # FV combinations, could be preceded by ! (= priority)
 FVS_RE = re.compile(r'([!]*)\s*([^!]*)')
+# Feature group: {f1, f2,...} (v1, v2, ...): groupname = groupvalue
+FEAT_GROUP_RE = re.compile(r"\{(.+)\}\s*\((.+)\):\s*(.+)\s+([+=])\s+(.+)")
 # Abbrev, with prefixes, and full name
 ABBREV_NAME_RE = re.compile(r'([*%]*?)([^*%()]*?)\s*\((.*)\)\s*(\[.*\])?')
 NAME_RE = re.compile(r'([*%]*)([^*%\[\]]*)\s*(\[.*\])?')
@@ -150,6 +154,8 @@ class Language:
         """
         self.label = label
         self.abbrev = abbrev or label[:3]
+        # additional abbreviations for language
+        self.codes = []
         # Backup language for term translation, etc.
         self.backup = backup
         self.morphology = None
@@ -295,8 +301,7 @@ class Language:
         self.load_attempted = True
         filename = self.get_data_file()
         if not os.path.exists(filename):
-#            print(Language.T.tformat('No language data file for {}', [self], self.tlanguages))
-            pass
+            print(Language.T.tformat('No language data file for {}', [self], self.tlanguages))
         else:
             if verbose:
                 print(Language.T.tformat('Loading language data from {}', [filename], self.tlanguages))
@@ -342,6 +347,8 @@ class Language:
         true_explicit = {}
         explicit = {}
 
+        feature_groups = {}
+
         chars = ''
 
         current = None
@@ -361,6 +368,8 @@ class Language:
 
         current_explicit = []
         current_true_explicit = []
+
+        current_feature_groups = {}
 
         while lines:
 
@@ -445,6 +454,12 @@ class Language:
                 # Ignore in HornMorpho
                 continue
 
+            m = CODE_RE.match(line)
+            if m:
+                code = m.group(1)
+                self.codes.append(code.strip())
+                continue
+
             m = FEATS_RE.match(line)
             if m:
                 current = 'feats'
@@ -467,6 +482,9 @@ class Language:
                     current_fv_abbrev = []
                     current_fv_dependencies = {}
                     current_fv_priority = []
+                    current_explicit = []
+                    current_true_explicit = []
+                    current_feature_groups = {}
                     lex_feats[pos] = current_lex_feats
                     feats[pos] = current_feats
                     excl[pos] = current_excl
@@ -477,6 +495,7 @@ class Language:
                     explicit[pos] = current_explicit
                     true_explicit[pos] = current_true_explicit
                     fullpos[pos] = fullp
+                    feature_groups[pos] = current_feature_groups
                     continue
 
                 m = ABBREV_RE.match(line)
@@ -498,6 +517,30 @@ class Language:
                     current_explicit.append(fshort)
                     if opt and opt == '~':
                         current_true_explicit.append(fshort)
+                    continue
+
+                m = FEAT_GROUP_RE.match(line)
+                if m:
+                    groupfeats, groupvalues, groupname, oper, groupvalue = m.groups()
+                    groupfeats = tuple([f.strip() for f in groupfeats.split(',')])
+                    groupvalues = [v.strip() for v in groupvalues.split(',')]
+                    for i, v in enumerate(groupvalues):
+                        if v.isdigit():
+                            groupvalues[i] = int(v)
+                        elif v == "False":
+                            groupvalues[i] = False
+                        elif v == "True":
+                            groupvalues[i] = True
+                    groupvalues = tuple(groupvalues)
+                    groupname = groupname.strip()
+#                    print("groupfeats {}, groupname {}, gvalues {}, add {}".format(groupfeats, groupname, groupvalues, oper))
+                    if groupfeats in current_feature_groups:
+                        current_feature_groups[groupfeats].append((groupvalues, groupname, groupvalue, oper=='='))
+                    else:
+                        current_feature_groups[groupfeats] = [(groupvalues, groupname, groupvalue, oper=='=')]
+                    if groupname not in current_explicit:
+                        current_explicit.append(groupname)
+#                    print("feature groups {}".format(current_feature_groups))
                     continue
 
                 m = FV_RE.match(line)
@@ -630,9 +673,16 @@ class Language:
             pos_args = []
             for pos in feats:
                 if not poss or pos in poss:
-                    pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos],
-                                     abbrev[pos], fv_abbrev[pos], fv_dependencies[pos],
-                                     fv_priorities[pos]))
+                    # Make feature_groups into a list, sorted by length of feature matches
+                    fgroups = list(feature_groups[pos].items())
+                    fgroups.sort(key=lambda x: -len(x[0]))
+                    pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
+                                     fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
+                                     fgroups, fullpos[pos],
+                                     explicit[pos], true_explicit[pos]))
+#                    pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos],
+#                                     abbrev[pos], fv_abbrev[pos], fv_dependencies[pos],
+#                                     fv_priorities[pos]))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars)
             self.set_morphology(morph)
@@ -1374,9 +1424,6 @@ class Language:
         '''Process analyses according to various options, returning a list of analysis tuples.
         If freq, include measure of root and morpheme frequency.'''
         results = set()
-#        print("Analyses")
-#        for analysis in analyses:
-#            print(" {}".format(analysis))
         if segment:
             res = []
             for analysis in analyses:
@@ -1391,24 +1438,19 @@ class Language:
                 root = self.postpostprocess(analysis[0])
                 # Remove { } from root
                 real_root = Language.root_from_seg(root)
-#                print("Root {}, real root {}".format(root, real_root))
                 root_freq = 0
                 if freq:
-#                    print("Figuring freq for root {} and feats {}".format(real_root, feats.__repr__()))
                     root_freq = self.morphology.get_root_freq(real_root, feats)
                     feat_freq = self.morphology.get_feat_freq(feats)
                     root_freq *= feat_freq
                 res.append((pos, root, root_freq))
             return res
-#            return [(analysis[1] if isinstance(analysis[1], str) else analysis[1].get('pos'), self.postpostprocess(analysis[0])) for analysis in analyses]
         for analysis in analyses:
             root = self.postpostprocess(analysis[0])
             grammar = analysis[1]
             if not grammar:
                 # No analysis; skip this one
-#                results.add((root, None, 0))
                 continue
-#                p = pos or ''
             elif not pos:
                 p = grammar.get('pos', '')
             else:
@@ -1419,9 +1461,7 @@ class Language:
                 analysis[0] = None
             if postproc and p in self.morphology and self.morphology[p].postproc:
                 self.morphology[p].postproc(analysis)
-#            proc_root = analysis[0]
             root_freq = 0
-#            for g in grammar:
             if freq:
                 # The freq score is the count for the root-feature combination
                 # times the product of the relative frequencies of the grammatical features

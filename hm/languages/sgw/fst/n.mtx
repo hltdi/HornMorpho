@@ -1,6 +1,17 @@
 $ prag
   x       [cnj=x]
+  K       [cnj=K]
+  a       [cnj=a]
   --      [cnj=None|m]
+
+$ obl2
+  eyn     [misc=[+dir]]
+  --      [misc=[-dir]]
+
+$ oblique_case
+  E       [misc=[+goal]]
+  ameK    [mist=[+sim]]
+  --      [misc=[-goal,-sim]]
 
 $ cop
   KWn  [cp=1,cn=1,tns=prs]
@@ -39,14 +50,14 @@ $ defposs
 
 $ conj
   m       [cnj=m]
-  --      [cnj=None|x]
+  --      [cnj=None|x|K|a]
   
 ## Boundary separating stem from suffixes
 $ bound2
   =
 
 $ stem
-  +n_root+    []
+  +n_root+    [pos=n]
 
 ## Boundary separating prefixes from stem
 $ bound1
@@ -56,4 +67,5 @@ $ prep
   ey [prep=ye]
   eb [prep=be]
   et [prep=te]
-  -- [prep=None]
+  en [+assoc]
+  -- [prep=None,-assoc]

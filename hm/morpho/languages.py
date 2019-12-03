@@ -31,6 +31,8 @@ from .language import *
 ###
 
 LANGUAGES = {}
+# maps additional language abbreviations to ISO code
+CODES = {'ch': 'sgw', 'sl': 'stv', 'ks': 'gru'}
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
@@ -56,18 +58,21 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     elif lang_id == 'om':
         from . import om_lang
         language = om_lang.OM
-    elif lang_id == 'stv':
-        from . import stv_lang
-        language = stv_lang.STV
+#    elif lang_id == 'stv':
+#        from . import stv_lang
+#        language = stv_lang.STV
     if language:
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment,
                                     phon=phon, guess=guess, poss=poss, verbose=verbose)
         if not loaded:
+#            print("No additional data")
             # Impossible to load data somehow
-            return False
+            pass
     else:
+        if lang_id in CODES:
+            lang_id = CODES[lang_id]
         # Create the language from scratch
         language = Language.make('', lang_id, load_morph=load_morph,
                                  segment=segment, phon=phon, guess=guess, poss=poss,
@@ -78,6 +83,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     if cache != False:
         language.read_cache(segment=segment)
     LANGUAGES[lang_id] = language
+    for code in language.codes:
+        LANGUAGES[code] = language
     if language.backup:
         # If there's a backup language, load its data file so the translations
         # can be used.

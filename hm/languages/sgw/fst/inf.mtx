@@ -1,6 +1,17 @@
 $ prag
-  x       [cnj=x,tm=inf]
-  --      [cnj=None|m,tm=inf]
+  x       [cnj=x]
+  K       [cnj=K]
+  a       [cnj=a]
+  --      [cnj=None|m]
+
+$ obl2
+  eyn     [misc=[+dir]]
+  --      [misc=[-dir]]
+
+$ oblique_case
+  E       [misc=[+goal]]
+  ameK    [mist=[+sim]]
+  --      [misc=[-goal,-sim]]
 
 $ cop
   u    [cp=3]
@@ -29,7 +40,7 @@ $ defposs
 
 $ conj
   m       [cnj=m]
-  --      [cnj=None|x]
+  --      [cnj=None|x|K|a]
 
 $ ot
   to  [tp=ot]
@@ -48,8 +59,8 @@ $ bound1
   =
 
 $ we
-  ew [tp=we]
-  -- [tp=ot]
+  ew [tp=we,pos=inf]
+  -- [tp=ot,pos=inf]
 
 $ prep
   ey [prep=ye]

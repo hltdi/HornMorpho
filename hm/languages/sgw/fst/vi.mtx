@@ -151,8 +151,8 @@ $ sbj_pre
   n   [sp=1,sn=2];[sp=1,sn=1,+neg];[sp=1,sn=1,fut=def];[sp=1,sn=1,sub=t|b]
 
 $ negative
-  a  [+neg,tm=imf]
-  -- [-neg,tm=imf]
+  a  [+neg,tm=imf,pos=vi]
+  -- [-neg,tm=imf,pos=vi]
 
 $ subord
   t  [sub=t,fut=None,misc=[-m]]

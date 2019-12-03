@@ -398,7 +398,7 @@ def root2geez(table, root, lang='am'):
         n += 1        
     return res + ROOT_RIGHT
 
-def geez2sera(table, form, lang='am', simp=False):
+def geez2sera(table, form, lang='am', simp=False, delete=''):
     '''Convert form in Geez to SERA, using translation table.'''
     if not table:
         table = get_table(lang, True)
@@ -416,6 +416,8 @@ def geez2sera(table, form, lang='am', simp=False):
             res += char
     if simp:
         res = simplify_sera(res, language=lang)
+    if delete:
+        res = res.replace(delete, '')
     return res
 
 def geez2sera_file(table, infile, outfile, first_out=True, simp=False):

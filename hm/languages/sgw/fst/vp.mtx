@@ -14,10 +14,10 @@ $ rel_def
   amenK [sub=y,+def,sp=3,sn=2,sg=f,misc=[-cmpd]]
 
 $ fin_suff
-  --    [tm=prf,sub=t|b|y,misc=[-caus]];[tm=prf,+neg,misc=[-caus]]
-  E     [tm=prf,sub=y,misc=[+caus]]
+  --    [tm=prf,pos=vp,sub=t|b|y,misc=[-caus]];[tm=prf,+neg,misc=[-caus]]
+  E     [tm=prf,pos=vp,sub=y,misc=[+caus]]
   # can also be converb marker with any tm
-  m     [tm=prf,sub=None,-neg,misc=[-caus]]
+  m     [tm=prf,pos=vp,sub=None,-neg,misc=[-caus]]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)

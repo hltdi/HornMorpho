@@ -6,26 +6,26 @@
 start -> fin      [a]
 
 # **y, -tr
-j_i -> y       [y]
+start -> y       [y]
 y -> e         [e]
-j_i -> e       [e;E]
+start -> e       [e;E]
 e -> Ce        [X-m]
 # m in root prevents r->n
 e -> fin       [m]
 Ce -> fin      [n:r;X-r;:]
 
 # **y, +tr
-j_i -> ^       [^]
+start -> ^       [^]
 ^ -> ^C        [KK;DD]
 ^C -> fin      [n:r;X-r;:]
 # does mW prevent r->n?
-j_i -> labpal  [PP;UU]
+start -> labpal  [PP;UU]
 labpal -> fin  [n:r;X-r;V;:]
 
 # other than **y and **h
-j_i -> X       [ZZ-m]
+start -> X       [ZZ-m]
 # m in root prevents r->n: ye=gerdm
-j_i -> fin     [m]
+start -> fin     [m]
 # ye=nKb, ye=dengr
 X -> XV        [V;:]
 XV -> XVC      [X]

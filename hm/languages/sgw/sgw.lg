@@ -1,4 +1,5 @@
 name: chaha
+code: ch
 
 preproc: geez
 postproc: geez
@@ -15,133 +16,353 @@ feats:
 
   pos: n noun
 
-  def = False | True
+  am (Amh stem) =
 
-  pp = 0 | 1 | 2 | 3
-  pn = 1 | 2
-  pg = m | f
+  *def = False | True
+  {def} (True): definite
 
-  cp = 0 | 1 | 2 | 3
-  cn = 1 | 2
-  cg = m | f
+  *pp = 0 | 1 | 2 | 3
+  *pn = 1 | 2
+  *pg = m | f
 
-  tns = None | prs | pst
+  {pp, pn} (1, 1): poses = 1 pers sing
+  {pp, pn} (1, 2): poses = 1 pers plur
+  {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
+  {pp, pn, pg} (2, 1, f): poses = 2 pers sing fem
+  {pp, pn, pg} (2, 2, m): poses = 2 pers plur mas
+  {pp, pn, pg} (2, 2, f): poses = 2 pers plur fem
+  {pp, pn, pg} (3, 1, m): poses = 3 pers sing mas
+  {pp, pn, pg} (3, 1, f): poses = 3 pers sing fem
+  {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
+  {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
 
-  cnj = None | m | x
+  *cp = 0 | 1 | 2 | 3
+  *cn = 1 | 2
+  *cg = m | f
+  {cp, cn} (1, 1): cop = 1 pers sing
+  {cp, cn} (1, 2): cop = 1 pers plur
+  {cp, cn, cg} (2, 1, m): cop = 2 pers sing mas
+  {cp, cn, cg} (2, 1, f): cop = 2 pers sing fem
+  {cp, cn, cg} (2, 2, m): cop = 2 pers plur mas
+  {cp, cn, cg} (2, 2, f): cop = 2 pers plur fem
+  {cp, cn, cg} (3, 1, m): cop = 3 pers sing mas
+  {cp, cn, cg} (3, 1, f): cop = 3 pers sing fem
+  {cp, cn, cg} (3, 2, m): cop = 3 pers plur mas
+  {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
+
+  *tns = None | prs | pst
+  {tns} (prs): pres
+  {tns} (pst): past
+
+  *cnj = None | m | x | K | a
+  {cnj} (m): conj = m
+  {cnj} (x): conj = sh
+  {cnj} (K): conj = x
+  {cnj} (a): conj = a
 
   prep = None | ye | be | te
+
+  *misc = goal = False | True ;
+         sim = False | True ;
+	 dir = False | True
 
 ## infinitive
 
   pos: inf infinitive
 
-  def = False | True
+  am (Amh root) =
 
-  pp = 0 | 1 | 2 | 3
-  pn = 1 | 2
-  pg = m | f
+  *def = False | True
+  {def} (True): definite
+
+  *pp = 0 | 1 | 2 | 3
+  *pn = 1 | 2
+  *pg = m | f
+
+  {pp, pn} (1, 1): poses = 1 pers sing
+  {pp, pn} (1, 2): poses = 1 pers plur
+  {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
+  {pp, pn, pg} (2, 1, f): poses = 2 pers sing fem
+  {pp, pn, pg} (2, 2, m): poses = 2 pers plur mas
+  {pp, pn, pg} (2, 2, f): poses = 2 pers plur fem
+  {pp, pn, pg} (3, 1, m): poses = 3 pers sing mas
+  {pp, pn, pg} (3, 1, f): poses = 3 pers sing fem
+  {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
+  {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
 
   cp = 0 | 3
 
-  tns = None | prs | pst
+  *tns = None | prs | pst
+  {tns} (prs): pres
+  {tns} (pst): past
 
-  cnj = None | m | x
+  *cnj = None | m | x | K | a
+  {cnj} (m): conj = m
+  {cnj} (x): conj = sh
+  {cnj} (K): conj = x
+  {cnj} (a): conj = a
 
   prep = None | ye | be | te
+
+  *misc = goal = False | True ;
+         sim = False | True ;
+	 dir = False | True
 
 ## perfective verbs, including prohibitive
 
   pos: vp verb_perfective
 
-  sp = 3 | 2 | 1 | None
+  *sp = 3 | 2 | 1 | None
+  *sn = 1 | 2
+  *sg = m | f
 
-  sn = 1 | 2
+  root = cls (class) = A | Ap | B | C | D | E | F
 
-  sg = m | f
+  tm (TAM) = prf (perfective)
 
-  op = None | 3 | 2 | 1
+  am (Amh root) =
 
-  on = 1 | 2
+  {sp, sn} (1, 1): subj = 1 pers sing
+  {sp, sn} (1, 2): subj = 1 pers plur
+  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
+  {sp} (None): impersonal
 
-  og = m | f
+  *op = None | 3 | 2 | 1
+  *on = 1 | 2
+  *og = m | f
+  # accusative | benefactive | malefactive objects
+  *ot = a | b | m
 
-  # accusative | benefactive | malefactive
-  ot = a | b | m
+  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
+  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
+  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
 
-  vc = ps = False | True;
-       cs = False | True
+  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
+  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
+  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
 
-  as = None | it | rc
+  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
 
-  neg = False | True
+  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
 
-  sub = None | t | b | y
+  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
 
-  misc = caus = False | True
+  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+
+  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+
+  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+
+  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+
+  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+
+  *vc = ps = False | True;
+        cs = False | True
+
+  *as = None | it | rc
+
+  *neg = False | True
+  {neg} (True): negative
+
+  *sub = None | t | b | y
+
+  *misc = caus = False | True
 
 ## imperfective verbs, including both -tE future form
   
-  pos: vi verb_imperf
+  pos: vi verb_imperfective
 
-#  tm = imf | j_i
+  root = cls (class) = A | Ap | B | C | D | E | F
 
-  sp = 3 | 2 | 1 | None
+  tm (TAM) = imf (imperfective)
 
-  sn = 1 | 2
+  am (Amh root) =
 
-  sg = m | f
+  *sp = 3 | 2 | 1 | None
+  *sn = 1 | 2
+  *sg = m | f
 
-  op = None | 3 | 2 | 1
+  {sp, sn} (1, 1): subj = 1 pers sing
+  {sp, sn} (1, 2): subj = 1 pers plur
+  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
+  {sp} (None): impersonal
 
-  on = 1 | 2
-
-  og = m | f
-
+  *op = None | 3 | 2 | 1
+  *on = 1 | 2
+  *og = m | f
   # accusative | benefactive | malefactive
-  ot = a | b | m
+  *ot = a | b | m
 
-  vc = ps = False | True;
+  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
+  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
+  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+
+  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
+  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
+  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+
+  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+
+  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+
+  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+
+  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+
+  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+
+  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+
+  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+
+  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+
+  *vc = ps = False | True;
        cs = False | True
 
-  as = None | it | rc
+  *as = None | it | rc
 
-  neg = False | True
+  *neg = False | True
+  {neg} (True): negative
 
-  sub = None | t | b
+  *sub = None | t | b
 
-  fut = None | def
+  *fut = None | def
+  {fut} (def): def fut
 
-  misc = mconv = False | True;
+  *misc = mconv = False | True;
 	 purp = False | True
 
 ## jussive-imperative verbs, including -xe future forms and t- converb
   
-  pos: vj verb_jussive
+  pos: vj verb_jussive_imperative
 
-  sp = 3 | 2 | 1 | None
+  root = cls (class) = A | Ap | B | C | D | E | F
 
-  sn = 1 | 2
+  tm (TAM) = j_i (jussive imperative)
 
-  sg = m | f
+  am (Amh root) =
 
-  op = None | 3 | 2 | 1
+  *sp = 3 | 2 | 1 | None
+  *sn = 1 | 2
+  *sg = m | f
 
-  on = 1 | 2
+  {sp, sn} (1, 1): subj = 1 pers sing
+  {sp, sn} (1, 2): subj = 1 pers plur
+  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
+  {sp} (None): impersonal
 
-  og = m | f
-
+  *op = None | 3 | 2 | 1
+  *on = 1 | 2
+  *og = m | f
   # accusative | benefactive | malefactive
-  ot = a | b | m
+  *ot = a | b | m
 
-  vc = ps = False | True;
+  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
+  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
+  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+
+  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
+  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
+  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+
+  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+
+  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+
+  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+
+  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+
+  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+
+  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+
+  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+
+  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+
+  *vc = ps = False | True;
        cs = False | True
 
-  as = None | it | rc
+  *as = None | it | rc
 
-  neg = False | True
+  *neg = False | True
+  {neg} (True): negative
 
-  fut = None | indef
+  *fut = None | indef
+  {fut} (indef): indef fut
 
-  misc = tconv = False | True;
+  *misc = tconv = False | True;
          mconv = False | True
 
