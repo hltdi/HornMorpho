@@ -1,0 +1,16 @@
+### A
+## strong
+sbr   [cls=A,am=ሰበረ,dup=None]
+gdl   [cls=A,am=ገደለ,dup=None]
+kdn   [cls=A,am=ክደነ,dup=None]
+kfl   [cls=A,am=ከፈለ,dup=None]
+lbs   [cls=A,am=ለበሰ,dup=None]
+lgd   [cls=A,am=ነካ,dup=None]
+qrs   [cls=A,am=ጀመረ,dup=None]
+sfr   [cls=A,am=ለካ,dup=None]
+## weak
+hlf   [cls=A,am=ሄደ,dup=None]
+### B
+xkt   [cls=B,am=አበጀ,dup=None] 
+### C
+glb   [cls=C,am=ጋለበ,dup=None]

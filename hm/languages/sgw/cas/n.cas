@@ -30,7 +30,7 @@ TT = {d, t, T, s, z}
 # palatalized consonsants
 PP = {c, C, j, x, y, Z, gY, kY, qY, KY}
 # velar consonants
-GG = {g, k, K, q, gW, kW, Kw, qW}
+GG = {g, k, K, q, gW, kW, KW, qW}
 # non-labial velar root consonants
 KK = {g, k, K, q}
 # labialized consonants

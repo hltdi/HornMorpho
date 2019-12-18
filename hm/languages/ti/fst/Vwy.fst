@@ -19,11 +19,16 @@ i -> iY.$C      [:y;:w]
 iY.$C -> iY$.C  [:$] 
 iY$.C -> start  [X]
 
+# 'atyu, delyu
 # iw/yV -> yV
 start -> i.Y$V  [y:i]
 i.Y$V -> iY.$V  [:y;:w]
 iY.$V -> iY$.V  [:$]
 iY$.V -> start  [V]
+# 'atiyu, deliyu
+i -> iW.$V      [y:w;y]
+iW.$V -> iW$.V  [:$]
+iW$.V -> start  [V]
 
 # escape: any other consonant following i
 i -> start      [X-y,w]

@@ -1,0 +1,48 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# @: labialization
+# ^: palatalization
+# =: stem boundary
+# Y: 2sf suffix
+
+
+## Stringsets
+# All vowels (Y is not really a vowel)
+V = {a, e, E, i, I, o, u, Y}
+# All segments possible in verbs
+XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW}
+# All consonants possible in verbs (even if not realized, like h)
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW}
+# Root consonants plus geminated forms (but not palatalized)
+RG = {p, b, d, f, g, h, k, K, m, n, q, r, s, t, T, w, y, z, l, bW, fW, gW, kW, mW, pW, qW, KW}
+# weak consonants
+WW = {b, bW, w, d, j, z, Z, g, gW, K, KW, r}
+# strong consonants
+SS = {p, pW, t, c, s, x, k, kW, n}
+# labial consonants
+BB = {b, f, m, p, w, bW, fW, mW, pW}
+# non-labialized labial root consonants
+MM = {b, f, m, p}
+# coronal consonants
+DD = {d, t, T, s, z, r}
+# coronal obstruent root consonants
+TT = {d, t, T, s, z}
+# palatalized consonsants
+PP = {c, C, j, x, y, Z}
+# velar consonants
+GG = {g, k, K, q, gW, kW, KW, qW}
+# non-labial velar root consonants
+KK = {g, k, K, q}
+# labialized consonants
+UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
+## Non-phonetic/orthographic characters
+% = {@, ^, =, /, _}
+
+# Realize VV combinations
+>VV<
+# Morphotactics
+>v.mtx<

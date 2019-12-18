@@ -60,7 +60,7 @@ E= -> stem        [X;:e]
 aE. -> a.E        [:=]
 a.E -> stem       [:a]
 
-E -> start        [:e]
+E -> Csuf         [:e]
 E -> yE           [y:]
 # yE -> start     [a;o;E]
 yE -> a           [a]
@@ -96,13 +96,7 @@ a.i -> stem       [:e]
 
 stem -> C        [X-r]
 C -> =C          [:=]
-#=C -> end       [y]
-#=C -> y2i       [i:y]
-#y2i -> pre      [X]
 =C -> pre       [X;V]
-## negative ay -> E
-#=C -> a.y=      [:y]
-#a.y= -> pre     [E:a]
 
 C -> V          [V]
 C -> C          [X-r]
@@ -114,6 +108,7 @@ stem -> r      [r]
 r -> V          [V]
 r -> C          [X]
 # r->n in first position or following n in prefix
+r2n -> end      [:=]
 r2n -> =r2n     [:=]
 # prefix ending in -n, deleted before stem-initial r->n (or copy for geminated nn)
 =r2n -> pre     [:n]
@@ -132,11 +127,7 @@ V -> =V         [:=]
 =V -> end       [y]
 
 pre -> pre      [X;V]
-=r2n ->
 =C ->
 =V ->
 pre ->
 end ->
-
-#stem -> stem       [X;V;=]
-#stem ->

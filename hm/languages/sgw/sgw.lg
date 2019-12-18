@@ -24,7 +24,6 @@ feats:
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
   *pg = m | f
-
   {pp, pn} (1, 1): poses = 1 pers sing
   {pp, pn} (1, 2): poses = 1 pers plur
   {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
@@ -62,9 +61,12 @@ feats:
 
   prep = None | ye | be | te
 
-  *misc = goal = False | True ;
-         sim = False | True ;
-	 dir = False | True
+  *goal = False | True
+  *sim = False | True
+  *dir = False | True
+  {goal} (True): +goal
+  {sim} (True): +sim
+  {dir} (True): +dir
 
 ## infinitive
 
@@ -90,7 +92,8 @@ feats:
   {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
   {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
 
-  cp = 0 | 3
+  *cp = 0 | 3
+  {cp} (3): cop
 
   *tns = None | prs | pst
   {tns} (prs): pres
@@ -104,23 +107,26 @@ feats:
 
   prep = None | ye | be | te
 
-  *misc = goal = False | True ;
-         sim = False | True ;
-	 dir = False | True
+  *goal = False | True
+  *sim = False | True
+  *dir = False | True
+  {goal} (True): +goal
+  {sim} (True): +sim
+  {dir} (True): +dir
 
 ## perfective verbs, including prohibitive
 
   pos: vp verb_perfective
-
-  *sp = 3 | 2 | 1 | None
-  *sn = 1 | 2
-  *sg = m | f
 
   root = cls (class) = A | Ap | B | C | D | E | F
 
   tm (TAM) = prf (perfective)
 
   am (Amh root) =
+
+  *sp = 3 | 2 | 1 | None
+  *sn = 1 | 2
+  *sg = m | f
 
   {sp, sn} (1, 1): subj = 1 pers sing
   {sp, sn} (1, 2): subj = 1 pers plur
@@ -180,17 +186,31 @@ feats:
   {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
   {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
 
-  *vc = ps = False | True;
-        cs = False | True
+  vc (voice) = ps (passive) = False | True;
+              cs (causative) = False | True
 
-  *as = None | it | rc
+  as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
   {neg} (True): negative
 
   *sub = None | t | b | y
+  {sub} (t): subord = te
+  {sub} (b): subord = be
+  {sub} (y): subord = ye
 
-  *misc = caus = False | True
+  *caus = False | True
+  *cmpd = False | True
+  *mconv = False | True
+  *link = False | True
+  *m = False | True
+  *x = False | True
+  {caus} (True): cause
+  {cmpd} (True): cmpd perf
+  {mconv} (True): m-converb
+  {link} (True): +link
+  {m} (True): conj -m
+  {x} (True): conj -sh
 
 ## imperfective verbs, including both -tE future form
   
@@ -264,21 +284,35 @@ feats:
   {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
   {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
 
-  *vc = ps = False | True;
-       cs = False | True
+  vc (voice) = ps (passive) = False | True;
+              cs (causative) = False | True
 
-  *as = None | it | rc
+  as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
   {neg} (True): negative
 
   *sub = None | t | b
+  {sub} (t): subord = t
+  {sub} (b): subord = b
 
   *fut = None | def
   {fut} (def): def fut
 
-  *misc = mconv = False | True;
-	 purp = False | True
+  *x = False | True
+  *m = False | True
+  *mconv = False | True
+  *cmpd = False | True
+  *purp = False | True
+  *clft = False | True
+  *link = False | True
+  {x} (True): conj -sh
+  {m} (True): conj -m
+  {mconv} (True): m-converb
+  {cmpd} (True): compound impf
+  {purp} (True): purposive
+  {clft} (True): cleft
+  {link} (True): +link
 
 ## jussive-imperative verbs, including -xe future forms and t- converb
   
@@ -352,10 +386,10 @@ feats:
   {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
   {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
 
-  *vc = ps = False | True;
-       cs = False | True
+  vc (voice) = ps (passive) = False | True;
+              cs (causative) = False | True
 
-  *as = None | it | rc
+  as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
   {neg} (True): negative
@@ -363,6 +397,14 @@ feats:
   *fut = None | indef
   {fut} (indef): indef fut
 
-  *misc = tconv = False | True;
-         mconv = False | True
+  *tconv = False | True
+  *mconv = False | True
+  *m = False | True
+  *x = False | True
+  *link = False | True
+  {tconv} (True): t-converb
+  {mconv} (True): m-converb
+  {m} (True): conj -m
+  {x} (True): conf -sh
+  {link} (True): +link
 

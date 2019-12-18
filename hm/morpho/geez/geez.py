@@ -578,6 +578,7 @@ def from_real_sera_file(infile, outfile=None, phon=True, language='am'):
 GEEZ_SERA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_sera.txt'))
 #             'ti': read_conv(os.path.join(DATA_DIR, 'ti_conv_sera.txt')),
 #             'sgw': read_conv(os.path.join(DATA_DIR, 'sgw_conv_sera.txt')),
+#             'gru': read_conv(os.path.join(DATA_DIR, 'gru_conv_sera.txt')),
 #             'sgw_old': read_conv(os.path.join(DATA_DIR, 'sgw_old_conv_sera.txt')),
 #             'stv': read_conv(os.path.join(DATA_DIR, 'stv_conv_sera.txt'))
 }

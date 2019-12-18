@@ -7,19 +7,19 @@
 
 ## doesn't apply
 # subject: 1 or 3; object: none or plural or 1, 2 sing or 3sf or 3smM
-start -> sp13       [XX;^;@;=]     [sp=1|3,fut=None,misc=[-tconv]];[sp=1|3,fut=def];[sp=1|3,fut=indef]
+start -> sp13       [XX;^;@;=]     [sp=1|3,fut=None,-tconv];[sp=1|3,fut=def];[sp=1|3,fut=indef]
 sp13 -> start       [:]            [op=None];[on=2];[op=1];[op=2];[op=3,og=f];[op=3,og=m,on=1,ot=m]
 # subject: 2sm, object: none or plural or 3sf or 3smM
-start -> sp2sm      [XX;^;@;=]     [sp=2,sn=1,sg=m,misc=[-tconv]]
+start -> sp2sm      [XX;^;@;=]     [sp=2,sn=1,sg=m,-tconv]
 sp2sm -> start      [:]            [op=None];[on=2];[op=1];[op=3,og=f];[op=3,og=m,on=1,ot=m]
 # subject: 2sf, tm: perfective; or any plural subject
-start -> start      [XX;^;@;=]     [sn=2,misc=[-tconv]]
+start -> start      [XX;^;@;=]     [sn=2,-tconv]
 
 ## applies
 # 3sm object
 start -> lab0       [:]    [op=3,og=m,on=1,ot=a,sn=1,sp=1|3];[op=3,og=m,on=1,ot=a,sn=1,sp=2,sg=m];[op=3,og=m,on=1,ot=b,sn=1,sp=1|3];[op=3,og=m,on=1,ot=b,sn=1,sp=2,sg=m]
 # 2sf, t-converb
-start -> pal0       [:]    [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+start -> pal0       [:]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 # impersonal
 start -> imp        [:]    [sp=None]
 
@@ -48,22 +48,22 @@ pal0 -> pal         [=]
 ## 2sf/imp: palatalize final -a
 pal -> palV        [e:a]
 # impersonal has -wi for this case
-pal -> palV        [e]        [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+pal -> palV        [e]        [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 # final vowel already palatalized
 pal -> fin         [E]
 palV -> palVP      [^:]
 # palatalize final dental (done for 2sf, continue for impers)
-palVP -> fin       [TT]      [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palVP -> fin       [TT]      [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 palVP -> labC      [TT]      [sp=None]
 # palatalize final velar for 2sf (but non impers)
-palVP -> fin       [GG]       [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palVP -> fin       [GG]       [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 # final non-mutated r can be palatalized for 2sf (but not impers)
-palVP -> fin       [r]        [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palVP -> fin       [r]        [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 
 ## consonant preceding -a
 # not palatalized
 palV -> palVnP      [:]
-palVnP -> palVC     [BB;n]    [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palVnP -> palVC     [BB;n]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 palVC -> palVCV     [V;:]
 # 2sf: palatalize previous consonant
 palVCV -> palVCVP   [^:]
@@ -81,18 +81,18 @@ palVnP -> labC      [r;n]   [sp=None]
 ## already palatalized
 pal -> pal^        [^]
 # 2sf: we're done
-pal^ -> fin        [GG;DD]    [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
-pal -> fin         [PP]      [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+pal^ -> fin        [GG;DD]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
+pal -> fin         [PP]      [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 # impers: look for consonant to labialize starting with C-2
 pal^ -> labC       [GG;TT]   [sp=None]
 pal -> labC        [PP]      [sp=None]
 
 ## palatalize final coronal (including r but not n) or velar
 pal -> palCP          [^:]
-palCP -> fin          [DD;GG]    [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+palCP -> fin          [DD;GG]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 palCP -> labC         [TT]       [sp=None]
 # look elsewhere for palatalization for 2sf
-pal -> pal2           [BB;n]     [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+pal -> pal2           [BB;n]     [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 
 ### palatalize last velar that's not palatalized unless there's an intervening coronal
 # last consonant can't be palatalized
@@ -110,7 +110,7 @@ pal2vcvP -> fin       [GG]
 
 ### palatalize vowel after the second-to-last consonant, when nothing can be palatalized
 ## TEn, tCEn <Tny>
-pal -> pal3           [n;BB]    [sp=2,sn=1,sg=f];[tm=j_i,misc=[+tconv]]
+pal -> pal3           [n;BB]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 # vowel palatalization (vowel may already be palatalized, at least E)
 pal3 -> pal3_i        [E:e;A:a;i:;E]
 # C2 could be palatalized: tCEn

@@ -16,6 +16,7 @@ grz   [root=[-tr,cls=A],dup=None,am=አረጀ]
 srq   [root=[+tr,cls=A],dup=None,am=ሰረቀ]
 qTr   [root=[+tr,cls=A],dup=None,am=ገደለ]
 zrb   [root=[-tr,cls=A],dup=None,am=ዘነበ]
+rbr   [root=[-tr,cls=A],dup=None,am=ኖረ]
 # -> B with at-
 gfr   [root=[+tr,cls=Ap],am=ለቀቀ,dup=None]
 kft   [root=[+tr,cls=Ap],am=ከፈተ,dup=None]
@@ -42,6 +43,7 @@ sfy   [root=[+tr,cls=A],dup=None]
 sKy   [root=[+tr,cls=A],dup=None]
 bKy   [root=[+tr,cls=A],am=አለቀሰ,dup=None]
 qmy   [root=[-tr,cls=A],dup=None,am=አመመ,vc=[+ps]]
+rgy   [root=[-tr,cls=A],dup=None,am=ወረወረ,tm=imf];[root=[-tr,cls=A],dup=None,am=ወረወረ,tm=j_i]
 # *ry
 # (these are not all really transitive, but it seems needed to get right: is qr^ -> qy)
 qry   [root=[+tr,cls=A],am=ጠፋ,dup=None]
@@ -168,3 +170,5 @@ nqrqr  [root=[cls=E],dup=2,am=ተንቀሳቀሰ]
 dgd.g   [root=[cls=E],dup=2]
 # this won't work yet
 shsh   [root=[cls=E],dup=2]
+# not sure if this works
+sysy   [root=[cls=E],dup=2,tm=imf];[root=[cls=E],dup=2,tm=j_i]

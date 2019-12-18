@@ -1,23 +1,31 @@
 ## Final suffixes
-$ compound
+$ prag
+  --      [-x,-m]
+  m       [+m,-mconv,-x]
+  x       [+x,-mconv,-m]
+
+$ compound_link
   # alternative to separate word bane
-  --    [misc=[-cmpd]]
-  ab    [misc=[+cmpd]]
+  --      [-cmpd,-link]
+  ab      [+cmpd,-mconv]
+  at      [+link,+mconv,-cmpd]
+  enat    [+link,+mconv,-cmpd]
 
 $ rel_def
   # 3 pers pronouns as definite suffixes; not sure where this goes??
   --    [-def,sub=y];[sub=b|t|None]
-  tKW   [sub=y,+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
-  atKW  [sub=y,+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
-  atKY  [sub=y,+def,sp=3,sn=1,sg=f,misc=[-cmpd]]
-  onK   [sub=y,+def,sp=3,sn=2,sg=m,misc=[-cmpd]]
-  amenK [sub=y,+def,sp=3,sn=2,sg=f,misc=[-cmpd]]
+  tKW   [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-mconv]
+  atKW  [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-mconv]
+  atKY  [sub=y,+def,sp=3,sn=1,sg=f,-cmpd,-mconv]
+  onK   [sub=y,+def,sp=3,sn=2,sg=m,-cmpd,-mconv]
+  amenK [sub=y,+def,sp=3,sn=2,sg=f,-cmpd,-mconv]
 
-$ fin_suff
-  --    [tm=prf,pos=vp,sub=t|b|y,misc=[-caus]];[tm=prf,+neg,misc=[-caus]]
-  E     [tm=prf,pos=vp,sub=y,misc=[+caus]]
-  # can also be converb marker with any tm
-  m     [tm=prf,pos=vp,sub=None,-neg,misc=[-caus]]
+$ prep_conj
+  --    [tm=prf,pos=vp,sub=t|b|y,-caus,-mconv,-comp];[tm=prf,+neg,-caus,-mconv,-comp];[tm=prf,+copex]
+  E     [tm=prf,pos=vp,sub=y,+caus,-comp,-mconv]
+  ameK  [tm=prf,pos=vp,sub=y,-caus,-mconv,+comp]
+  # m is main verb or converb marker
+  m     [tm=prf,pos=vp,sub=None,-neg,-caus,-comp,-mconv,-copex];[tm=prf,pos=vp,sub=None,+mconv,-comp]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
@@ -146,7 +154,8 @@ $ bound2
   =
 
 $ stem
-  +vp_irr_stem+    []
+  +vp_irr_stem+    [-copex]
+  +copex+          [vc=[-ps,-cs],root=[-tr,cls=A],dup=None,as=None,-mconv,-caus,-cmpd,+copex]
   >>vp_stem<<
 
 ## Boundary separating prefixes from stem
@@ -154,9 +163,9 @@ $ bound1
   =
 
 $ negative
-  na [+neg,-proh]
-  nI [+neg,+proh]
-  -- [-neg]
+  na [+neg,-proh,-copex]
+  nI [+neg,+proh,-copex]
+  -- [-neg,-proh,-copex];[+neg,-proh,+copex]
 
 $ subord
   et [sub=t]

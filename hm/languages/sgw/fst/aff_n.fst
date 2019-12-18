@@ -54,7 +54,10 @@ suf_u -> .=u     [:=]
 .=u -> stem      [X]
 suf_uw -> sufV   [V]
 suf_uw -> V.=u   [:=]
-V.=u -> stem     [E;o]
+V.=u -> stem     [V-I,a,e]
+V.=u -> a        [a]
+V.=u -> I        [I]
+V.=u -> e        [e]
 suf_uo -> e.=u   [:=]
 suf_uO -> a.=u   [:=]
 e.=u -> stem     [:e]
@@ -63,7 +66,17 @@ a.=u -> stem     [:a]
 sufC -> stem     [:=]
 sufV -> stem     [:=]
 
-stem -> stem    [X;V-I,a,e]
+stem -> stem    [X-r;V-I,a,e]
+# word-initial r => n
+stem -> r       [r]
+stem -> r2n     [n:r]
+r2n -> r2n=     [:=]
+r -> stem       [X;V-I,a,e]
+r -> I          [I]
+r -> e          [e]
+r -> a          [a]
+r -> r=         [:=]
+r= -> pre       [X;V]
 
 # delete stem-initial I after prefix
 # keep stem-initial a and e after prefix (all prefixes end in e)
@@ -89,5 +102,6 @@ pre -> pre      [X;V]
 
 pre ->
 preC ->
+r2n= ->
 
 # end ->

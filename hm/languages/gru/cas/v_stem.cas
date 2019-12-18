@@ -1,0 +1,45 @@
+# Cascade for verb stems
+
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# @: labialization
+# ^: palatalization
+# /: gemination
+# *: t<e> of passive/reflexive
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u, *}
+# All consonants
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, D}
+# All characters
+XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW}
+# basic consonants (not labialized or palatalized)
+CC = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z}
+# labial root consonants
+BB = {b, f, m, p, w, bW, fW, mW, pW}
+# all coronal consonants, non palatalized
+NN = {d, t, T, s, z, r, n, l}
+# coronal consonants, including palatalized
+JJ = {d, t, T, r, s, z, c, C, j, x, y, Z}
+# velar root consonants
+GG = {g, k, K, q, gW, kW, KW, qW}
+# non-labial velar root consonants
+KK = {g, k, K, q}
+# palatalized consonsants
+PP = {c, C, j, x, y, Z}
+# labialized consonants
+UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
+## Non-phonetic/orthographic characters
+% = {_, /, D, @, ^, *}
+
+# Frequentative reduplication realized
+#>it_dup<
+# Gross stem structure
+>v_stem_der<
+# Verb roots
++v_root+

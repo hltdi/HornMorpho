@@ -1,11 +1,13 @@
-$ prag
-  --    [misc=[-x]]
-  x     [misc=[+x]]
+$ prag_mconv
+  --    [-x,-m,-mconv]
+  x     [+x,-m,-mconv,-tconv,-link]
+  m     [+m,-x,-mconv,-tconv,-link];[+mconv,-m,-x,-tconv]
 
-$ tense_m
-  --      [fut=None,misc=[-m,-x]]
-  ex      [fut=indef,-neg,misc=[-tconv,-m,-x]]
-  m       [misc=[+m,-x],fut=None]
+$ tense_link
+  --      [fut=None,-link]
+  ex      [fut=indef,-neg,-mconv,-tconv,-link]
+  at      [+link,+tconv,-mconv,-m,-x,fut=None];[+link,+mconv,-tconv,-m,-x,fut=None]
+  enat    [+link,+tconv,-mconv,-m,-x,fut=None];[+link,-tconv,+mconv,-m,-x,fut=None]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
@@ -105,26 +107,26 @@ $ obj_suff
 $ sbj_suff
   ## t-converb; prf suffixes
   # singular
-  KW    [sp=1,sn=1,misc=[+tconv]]
-  eK    [sp=2,sn=1,sg=m,misc=[+tconv]]
-  KY    [sp=2,sn=1,sg=f,misc=[+tconv]]
-  e     [sp=3,sn=1,sg=m,misc=[+tconv]]
-  ce    [sp=3,sn=1,sg=f,misc=[+tconv]]
+  KW    [sp=1,sn=1,+tconv]
+  eK    [sp=2,sn=1,sg=m,+tconv]
+  KY    [sp=2,sn=1,sg=f,+tconv]
+  e     [sp=3,sn=1,sg=m,+tconv]
+  ce    [sp=3,sn=1,sg=f,+tconv]
   # 2 plural
-  uK    [sp=2,sn=2,sg=m,misc=[+tconv]]
-  amK   [sp=2,sn=2,sg=f,misc=[+tconv]]
+  uK    [sp=2,sn=2,sg=m,+tconv]
+  amK   [sp=2,sn=2,sg=f,+tconv]
   ## prf and imf/j_i suffixes
-  en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a,misc=[-tconv]];[sp=1,sn=2,op=3,on=1,og=f,ot=a,misc=[-tconv]]
-  En    [sp=1,sn=2,op=2,misc=[-tconv]];[sp=1,sn=2,op=3,misc=[-tconv]]
-  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f,misc=[-tconv]]
-  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None,misc=[+tconv]];[sp=2,sn=2,sg=m,misc=[-tconv]]
-  --    [sn=1,misc=[-tconv]];[sp=None,sn=None,sg=None,misc=[-tconv]]
+  en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a,-tconv];[sp=1,sn=2,op=3,on=1,og=f,ot=a,-tconv]
+  En    [sp=1,sn=2,op=2,-tconv];[sp=1,sn=2,op=3,-tconv]
+  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f,-tconv]
+  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None,+tconv];[sp=2,sn=2,sg=m,-tconv]
+  --    [sn=1,-tconv];[sp=None,sn=None,sg=None,-tconv]
 
 $ tconverb
-  et      [misc=[+tconv,-m],fut=None,sp=1|2]
+  et      [+tconv,-m,fut=None,sp=1|2]
   # delete the e before -e, -ec, -o, -ema
-  t       [misc=[+tconv,-m],fut=None,sp=3]
-  --      [misc=[-tconv]]
+  t       [+tconv,-m,fut=None,sp=3]
+  --      [-tconv]
 
 ## Boundary separating stem from suffixes
 $ bound2
@@ -141,12 +143,12 @@ $ bound1
 ## Subject prefixes reversed
 $ sbj_pre
   e   [sp=1,sn=1,-neg,fut=def];[sp=1,sn=1,fut=indef]
-  t   [sp=3,sn=1,sg=f,misc=[-tconv]];[sp=2,fut=indef]
+  t   [sp=3,sn=1,sg=f,-tconv];[sp=2,fut=indef]
   y   [sp=3,sn=2,+neg];[sp=3,sn=1,sg=m,+neg];[sp=None,sn=None,sg=None,+neg];
       [sp=3,sn=2,fut=def|indef];[sp=3,sn=1,sg=m,fut=def|indef];[sp=None,sn=None,sg=None,fut=def|indef]
-  n   [sp=1,sn=2,misc=[-tconv]];[sp=1,sn=1,misc=[-tconv]]
-  ey  [sp=3,sn=2,-neg,fut=None,misc=[-tconv]];[sp=3,sn=1,sg=m,-neg,fut=None,misc=[-tconv]];[sp=None,sn=None,sg=None,-neg,fut=None,misc=[-tconv]]
-  --  [sp=2,fut=None,-neg];[misc=[+tconv]]
+  n   [sp=1,sn=2,-tconv];[sp=1,sn=1,-tconv]
+  ey  [sp=3,sn=2,-neg,fut=None,-tconv];[sp=3,sn=1,sg=m,-neg,fut=None,-tconv];[sp=None,sn=None,sg=None,-neg,fut=None,-tconv]
+  --  [sp=2,fut=None,-neg];[+tconv]
 
 $ negative
   a  [+neg,tm=j_i,pos=vj]

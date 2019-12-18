@@ -1,31 +1,35 @@
 $ prag
-  --    [misc=[-x]]
-  x     [misc=[+x]]
+  --    [-x,-m]
+  x     [+x,-m]
+  m     [+m,-x,-mconv]
 
 $ compound
   # alternative to separate word bane; -u cleft marker
-  --    [misc=[-cmpd,-clft]]
-  ab    [misc=[+cmpd,-clft]]
-  u     [misc=[+clft]]
+  --    [-cmpd,-clft]
+  ab    [+cmpd,-clft,-mconv,-x,-link]
+  u     [+clft,-mconv,-x,-link]
 
 $ rel_def
   # not sure where this goes??
   --    [-def]
-  tKW   [+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
-  atKW  [+def,sp=3,sn=1,sg=m,misc=[-cmpd]]
-  atKY  [+def,sp=3,sn=1,sg=f,misc=[-cmpd]]
-  onK   [+def,sp=3,sn=2,sg=m,misc=[-cmpd]]
-  amenK [+def,sp=3,sn=2,sg=f,misc=[-cmpd]]
+  tKW   [+def,sp=3,sn=1,sg=m,-cmpd,-mconv,-link]
+  atKW  [+def,sp=3,sn=1,sg=m,-cmpd,-mconv,-link]
+  atKY  [+def,sp=3,sn=1,sg=f,-cmpd,-mconv,-link]
+  onK   [+def,sp=3,sn=2,sg=m,-cmpd,-mconv,-link]
+  amenK [+def,sp=3,sn=2,sg=f,-cmpd,-mconv,-link]
 
 ## Final suffixes (converb -m, converb -ta(ne); future tE, xe, purposive E)
-$ purp
-  E       [misc=[+purp],fut=None]
-  --      [misc=[-purp]]
+$ prep_conj
+  E       [+purp,fut=None,-mconv,-link,-comp]
+  ameK    [-purp,fut=None,-mconv,-link,+comp]
+  at      [+link,+mconv,-purp,-x,fut=None,-comp]
+  enat    [+link,+mconv,-purp,-x,fut=None,-comp]
+  --      [-purp,-link,-comp]
 
 $ tense_m
-  --      [fut=None,misc=[-m,-x]]
-  Et      [fut=def,-neg,misc=[-m,-x]]
-  m       [misc=[+m,-x],fut=None]
+  --      [fut=None,-mconv]
+  Et      [fut=def,-neg,-mconv,-link,sub=None]
+  m       [+mconv,-x,fut=None,-m,sub=None]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
@@ -127,7 +131,7 @@ $ sbj_suff
   en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a];[sp=1,sn=2,op=3,on=1,og=f,ot=a]
   En    [sp=1,sn=2,op=2];[sp=1,sn=2,op=3]
   ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f]
-  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None,misc=[+tconv]];[sp=2,sn=2,sg=m]
+  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None];[sp=2,sn=2,sg=m]
   --    [sn=1];[sp=None,sn=None,sg=None]
 
 ## Boundary separating stem from suffixes
@@ -155,7 +159,7 @@ $ negative
   -- [-neg,tm=imf,pos=vi]
 
 $ subord
-  t  [sub=t,fut=None,misc=[-m]]
+  t  [sub=t,fut=None,-mconv,-link]
   # also negative purposive (with -e suffix)
-  b  [sub=b,fut=None,misc=[-m]];[sub=b,fut=None,-neg,misc=[-m,+purp]]
-  -- [sub=None];[tm=j_i,sub=None];[sub=None,misc=[+purp],+neg];[sub=None,misc=[-purp]]
+  b  [sub=b,fut=None,-mconv,-link];[sub=b,fut=None,-neg,-mconv,-link,+purp]
+  -- [sub=None];[tm=j_i,sub=None];[sub=None,+purp,+neg];[sub=None,-purp]

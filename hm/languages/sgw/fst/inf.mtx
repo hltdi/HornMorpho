@@ -1,17 +1,18 @@
-$ prag
+$ prag_conv
   x       [cnj=x]
   K       [cnj=K]
   a       [cnj=a]
-  --      [cnj=None|m]
+  m       [+mconv]
+  --      [cnj=None|m,-mconv]
 
 $ obl2
-  eyn     [misc=[+dir]]
-  --      [misc=[-dir]]
+  eyn     [+dir]
+  --      [-dir]
 
-$ oblique_case
-  E       [misc=[+goal]]
-  ameK    [mist=[+sim]]
-  --      [misc=[-goal,-sim]]
+$ obl1
+  E       [+goal]
+  ameK    [+sim]
+  --      [-goal,-sim]
 
 $ cop
   u    [cp=3]
@@ -39,7 +40,7 @@ $ defposs
   --      [-def,pp=0]
 
 $ conj
-  m       [cnj=m]
+  m       [cnj=m,-mconv]
   --      [cnj=None|x|K|a]
 
 $ ot

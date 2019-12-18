@@ -258,9 +258,9 @@ pre_n -> pre_n1     [n]
 pre_n1 -> voice     [*:]
 pre_n -> voice      [:]
 
-voice -> end        [:]    [vc=[-ps,-cs]]
-voice -> end        [a:]   [vc=[+cs,-ps]]
-voice -> end        <*t:>  [vc=[+ps,-cs]]
-voice -> end        <ta:>  [vc=[+ps,+cs]]
+voice -> end        [:]    [vc=[-ps,-cs],-copex]
+voice -> end        [a:]   [vc=[+cs,-ps],-copex]
+voice -> end        <*t:>  [vc=[+ps,-cs],-copex]
+voice -> end        <ta:>  [vc=[+ps,+cs],-copex]
 
 end ->
