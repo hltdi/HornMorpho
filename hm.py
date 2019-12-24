@@ -25,6 +25,11 @@ Author: Michael Gasser <gasser@indiana.edu>
 """ 
 import hm
 
+## 2019.12.23
+## Am->Ks translation
+
+AK = hm.morpho.Biling('am', 'ks')
+
 def get_lang(abbrev, segment=False, guess=True, phon=False, cache='', verbose=False):
     """Return the language with abbreviation abbrev, loading it
     if it's not already loaded."""

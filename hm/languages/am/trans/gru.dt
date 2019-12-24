@@ -1,0 +1,21 @@
+v:
+  featmaps:
+    sb:
+      - ['[-p1,-p2,-fem,-plr]', '[sp=3,sn=1,sg=m]']
+      - ['[-p1,-p2,+fem,-plr]', '[sp=3,sn=1,sg=f]']
+      - ['[-p1,-p2,+plr]', '[sp=3,sn=2]']
+      - ['[+p1,-p2,-plr]', '[sp=1,sn=1]']
+      - ['[+p1,-p2,+plr]', '[sp=1,sn=2]']
+      - ['[-p1,+p2,-fem,-plr]', '[sp=2,sn=1,sg=m]']
+      - ['[-p1,+p2,+fem,-plr]', '[sp=2,sn=1,sg=f]']
+      - ['[-p1,+p2,+plr]', '[sp=2,sn=2]']
+    tm:
+      - ['j_i', '[+sub]']
+      - ['imf', '[ax=None]', '[+sub]']
+      - ['imf', '[ax=al]', '[-sub]']
+n:
+  featmaps:
+    poss:
+      - ['[+expl,-p1,-p2,-fem,-plr]', '[pp=3,pn=1,pg=m]']
+      - ['[+expl,-p1,-p2,+fem,-plr]', '[pp=3,pn=1,pg=f]']
+      - ['[+expl,-p1,-p2,+plr]', '[pp=3,pn=2]']

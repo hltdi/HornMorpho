@@ -3,23 +3,22 @@ weighting = UNIFICATION
 ## Special characters
 # _: gemination
 # /: pre-gemination
-# D: reduplication (in v_stem.cas)
+# D: reduplication
+# @: labialization
 # ^: palatalization
 # =: stem boundary
 # Y: 2sf suffix
-# H: k/h in 1s, 2sm suffixes
-# *: e/0 in passive t*
-# @: n_ or _: 3 object pronouns
+
 
 ## Stringsets
 # All vowels (Y is not really a vowel)
 V = {a, e, E, i, I, o, u, Y}
 # All segments possible in verbs
-XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, ', j, k, K, l, m, n, N, p, q, r, s, S, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW, H}
+XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, ', j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW}
 # All consonants possible in verbs (even if not realized, like h)
-X = {b, c, C, d, f, g, h, ', j, k, K, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW, H}
+X = {b, c, C, d, f, g, h, ', j, k, K, l, m, n, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW}
 # Root consonants
-RG = {b, d, f, g, h, ', k, K, m, n, N, q, r, s, S, t, T, w, y, z, l, bW, fW, gW, kW, mW, qW, KW}
+RG = {b, d, f, g, h, ', k, K, m, n, q, r, s, t, T, w, y, z, l, bW, fW, gW, kW, mW, qW, KW}
 # labial consonants
 BB = {b, f, m, p, w, bW, fW, mW, pW}
 # non-labialized labial root consonants
@@ -28,35 +27,22 @@ MM = {b, f, m, p}
 DD = {d, t, T, s, z, r, l, n}
 # palatalized consonsants
 PP = {c, C, j, x, y, Z, N}
-# palatalizable consonants
-YY = {t, T, d, s, S, z, n}
 # velar consonants
 GG = {g, k, K, q, gW, kW, KW, qW}
 # non-labial velar root consonants
 KK = {g, k, K, q}
 # labialized consonants
 UU = {gW, kW, KW, qW}
-# final consonants
-FF = {b, d, f, g, k, m, n, q, r, s, S, t, T, z, l}
 ## Non-phonetic/orthographic characters
-% = {@, ^, =, /, _, *}
+% = {@, ^, =, /, _}
 
 # Delete epenthetic and gemination characters
-#>del_epgem<
+>del_epgem<
 ### 1 Insert glottal stop before initial vowel
 >gs0<
-# clean up gemination
->gem<
->kh<
 # Realize VV combinations; get rid of morpheme boundaries
 >VV<
 # Realize y as i between consonants
 >y<
-# Realize 2sf stem (and suffix?) for imf and j_i
->s2sf<
-# Realize 3 person object suffixes
->o3<
-# Passive t* realized
->te<
 # Morphotactics
->v.mtx<
+>v0.mtx<

@@ -15,9 +15,11 @@ weighting = UNIFICATION
 # All vowels
 V = {a, e, E, i, I, o, u, *}
 # All consonants
-X = {b, c, C, d, f, g, h, j, k, K, l, m, n, N, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, D}
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, D}
 # All characters
-XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, N, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW}
+XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW}
+# basic consonants (not labialized or palatalized)
+CC = {b, d, f, g, h, k, K, m, q, r, s, t, T, w, y, z}
 # labial root consonants
 BB = {b, f, m, p, w, bW, fW, mW, pW}
 # all coronal consonants, non palatalized
@@ -29,18 +31,15 @@ GG = {g, k, K, q, gW, kW, KW, qW}
 # non-labial velar root consonants
 KK = {g, k, K, q}
 # palatalized consonsants
-PP = {c, C, j, x, y, Z, N}
+PP = {c, C, j, x, y, Z}
 # labialized consonants
 UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
-# final root consonants (but not h, w, y)
-FF = {b, d, f, g, k, m, n, q, r, s, S, t, T, z, l}
 ## Non-phonetic/orthographic characters
 % = {_, /, D, @, ^, *}
 
->VV_stem<
 # Frequentative reduplication realized
->v_stem_it<
+#>it_dup<
 # Gross stem structure
 >v_stem_der<
 # Verb roots
-+v_root+
+>v_root<

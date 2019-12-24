@@ -26,7 +26,6 @@
 ጠ=Te ጡ=Tu ጢ=Ti ጣ=Ta ጤ=TE ጥ=T ጦ=To
 ጨ=Ce ጩ=Cu ጪ=Ci ጫ=Ca ጬ=CE ጭ=C ጮ=Co
 ጰ=Pe ጱ=Pu ጲ=Pi ጳ=Pa ጴ=PE ጵ=P ጶ=Po
-ፀ=^Se=Se ፁ=^Su=Su ፂ=^Si=Si ፃ=^Sa=Sa ፄ=^SE=SE ፅ=^S=S ፆ=^So=So
 ጸ=Se ጹ=Su ጺ=Si ጻ=Sa ጼ=SE ጽ=S ጾ=So
 ፈ=fe ፉ=fu ፊ=fi ፋ=fa ፌ=fE ፍ=f ፎ=fo
 ፐ=pe ፑ=pu ፒ=pi ፓ=pa ፔ=pE ፕ=p ፖ=po

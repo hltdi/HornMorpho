@@ -37,4 +37,4 @@ Composition of weighted FSTs is also supported.
 __version__ = '4.0'
 __author__ = 'Michael Gasser'
 
-from .languages import *
+from .trans import *

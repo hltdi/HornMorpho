@@ -19,10 +19,15 @@ This file is part of HornMorpho, which is a project of PLoGS.
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------------------
-Support for romanizing Geez and geezifying romanized AfSem languages.
+Support for romanizing Geez and geezifying romanized EthSem languages.
 
 Makes use of a modified version of the SERA conventions for romanizing
 Geez (Yitna & Yaqob, 1997).
+
+2019.12
+-- Gemination
+-- Chaha palatalized consonants
+
 """
 
 import re, os
@@ -34,6 +39,8 @@ VOWELS = 'aeEiIou@AOU'
 CONSONANTS = ["h", "l", "H", "m", "^s", "r", "s", "^s", "x", "q", "Q", "b", "t", "c",
               "^h", "n", "N", "'", "k", "K", "w", "`", "z", "Z", "y", "d", "j", "g",
               "T", "C", "P", "S", "^S", "f", "p"]
+GEMINATION_GEEZ = "፟"
+GEMINATION_ROMAN = '_'
 
 ## Regular expression objects for converting between "conventional" and
 ## "modified" SERA
@@ -111,22 +118,11 @@ def get_table(lang='am', fromgeez=True):
     language = get_language(lang)
     return language[0 if fromgeez else 1]
 
-def geezify(form, lang='am'):
-    return sera2geez(get_table(lang, False), form, lang=lang)
-#    language = get_language(lang)
-#    return sera2geez(language[1], form, lang=lang)
-#    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
-
 def geezify_alts(form, lang='am'):
     """Return a list of possible geez outputs for roman form."""
     forms = convert_labial(form)
     g = [geezify(f, lang=lang) for f in forms]
     return g
-
-def romanize(form, lang='am'):
-    return geez2sera(get_table(lang, True), form, lang=lang)
-#    language = get_language(lang)
-#    return geez2sera(language[0], form, lang=lang)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters
@@ -265,20 +261,23 @@ def read_conv(filename, simple=False):
                 seg2syl[seg] = syl
     return syl2seg, seg2syl
 
-def sera2geez(table, form, lang='am'):
+def sera2geez(table, form, lang='am', gemination=False):
     '''Convert form in SERA to Geez, using translation table.'''
     if not table:
         table = get_table(lang, False)
     # First delete gemination characters
-    form = form.replace('_', '')
+    if not gemination:
+        form = form.replace(GEMINATION_ROMAN, '')
     # Segment
     res = ''
     n = 0
     nochange = False
     while n < len(form):
         char = form[n]
+#        print("char {}".format(char))
         if n < len(form) - 1:
             next_char = form[n + 1]
+#            print(" next_char {}".format(next_char))
             if next_char in VOWELS:
                 if n < len(form) - 2 and lang == 'stv' and form[n + 2] in VOWELS:
                     # long Silte vowel
@@ -297,25 +296,29 @@ def sera2geez(table, form, lang='am'):
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
                 n += 1
+            elif next_char == GEMINATION_ROMAN:
+                 if n < len(form) - 2 and form[n + 2] in VOWELS:
+                    v = form[n + 2]
+                    trans = table.get(char + v, char + v) + GEMINATION_GEEZ
+                    n += 2
+                else:
+                    trans = table.get(char, char) + GEMINATION_GEEZ
+                    n += 1
             else:
                 trans = table.get(char, char)
+        elif char == GEMINATION_ROMAN:
+            trans = GEMINATION_GEEZ
         else:
             trans = table.get(char, char)
         res += trans
         n += 1
     return res
 
-def geezify(form, lang='am'):
-    return sera2geez(get_table(lang, False), form, lang=lang)
-#    language = get_language(lang)
-#    return sera2geez(language[1], form, lang=lang)
-#    return sera2geez(GEEZ_SERA[lang][1], form, lang=lang)
+def geezify(form, lang='am', gemination=False):
+    return sera2geez(get_table(lang, False), form, lang=lang, gemination=gemination)
 
-def romanize(form, lang='am'):
-    return geez2sera(get_table(lang, True), form, lang=lang)
-#    language = get_language(lang)
-#    return geez2sera(language[0], form, lang=lang)
-#    return geez2sera(GEEZ_SERA[lang][0], form, lang=lang)
+def romanize(form, lang='am', gemination=False):
+    return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters
@@ -398,26 +401,43 @@ def root2geez(table, root, lang='am'):
         n += 1        
     return res + ROOT_RIGHT
 
-def geez2sera(table, form, lang='am', simp=False, delete=''):
+def geez2sera(table, form, lang='am', simp=False, delete='',
+              gemination=False):
     '''Convert form in Geez to SERA, using translation table.'''
     if not table:
         table = get_table(lang, True)
     if form.isdigit():
         return form
     res = ''
+    geminated = []
     for char in form:
+        if char == GEMINATION_GEEZ:
+            if gemination:
+                geminated.append(len(res))
+                res += '_'
+                continue
+            else:
+                continue
         translation = table.get(char)
         if translation:
             res += translation
-#        elif char.isalpha() or char in KEEP_PUNC:
-#            # Mark the next character to remain unchanged
-#            res += u'\\' + char
         else:
             res += char
     if simp:
         res = simplify_sera(res, language=lang)
     if delete:
         res = res.replace(delete, '')
+    if gemination and geminated:
+        res1 = ''
+        for i, c in enumerate(res):
+            if c in VOWELS and i+1 in geminated:
+                res1 += '_' + c
+            elif c == '_':
+                if res[i-1] not in VOWELS:
+                    res1 += '_'
+            else:
+                res1 += c
+        res = res1
     return res
 
 def geez2sera_file(table, infile, outfile, first_out=True, simp=False):

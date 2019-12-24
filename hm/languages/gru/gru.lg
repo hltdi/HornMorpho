@@ -1,4 +1,4 @@
-name: kistane
+name: ክስታንኘ
 code: ks
 
 preproc: geez
@@ -8,7 +8,7 @@ seg: a e i o u I E
      b c C d f g gW h hW j
      k kW l m n N p q qW r s
      S t T w x y z Z
-     * Y _
+     Y _ H *
 
 feats:
 
@@ -18,8 +18,8 @@ feats:
 
   am (Amh stem) =
 
-  *def = False | True
-  {def} (True): definite
+  def (definiteness) = False | True
+##  {def} (True): definite
 
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
@@ -50,49 +50,17 @@ feats:
   {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
 
   *cnj = None | m
-  {cnj} (m): conj = m
+  {cnj} (m): conj m
 
   prep = None | ye | be | te
 
-## infinitive
-
-  pos: inf infinitive
-
-  am (Amh root) =
-
-  *def = False | True
-  {def} (True): definite
-
-  *pp = 0 | 1 | 2 | 3
-  *pn = 1 | 2
-  *pg = m | f
-
-  {pp, pn} (1, 1): poses = 1 pers sing
-  {pp, pn} (1, 2): poses = 1 pers plur
-  {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
-  {pp, pn, pg} (2, 1, f): poses = 2 pers sing fem
-  {pp, pn, pg} (2, 2, m): poses = 2 pers plur mas
-  {pp, pn, pg} (2, 2, f): poses = 2 pers plur fem
-  {pp, pn, pg} (3, 1, m): poses = 3 pers sing mas
-  {pp, pn, pg} (3, 1, f): poses = 3 pers sing fem
-  {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
-  {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
-
-  *cp = False | True
-  {cp} (True): +copula
-
-  *cnj = None | m
-  {cnj} (m): conj = m
-
-  prep = None | ye | be | te
-
-## perfective verbs, including prohibitive
+## verbs
 
   pos: v verb
 
-  tm: prf | imf | j_i
+  tm (TAM) = prf (perfective) | imf (imperfective) | j_i (jussive-imperative)
 
-  root = cls (class) = A | B | C | D | E | F
+#  cls (class) = A | Aw | B | C | D | E | F
 
   am (Amh root) =
 
@@ -110,7 +78,7 @@ feats:
   {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
   {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
   {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): impersonal
+  {sp} (0): subj = impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -159,22 +127,33 @@ feats:
   {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
 
   vc (voice) = ps (passive) = False | True;
-              cs (causative) = False | True
+               cs (causative) = False | True
 
   as (aspect) = None | it (freq) | rc (recip)
 
-  *neg = False | True
-  {neg} (True): negative
+  neg (negative) = False | True
+#  {neg} (True): neg =
 
-  sub = False (main) | True (subordinate)
+  sub (subordinate) = False | True
+#  {sub} (False): +main
+#  {sub} (True): +subordinate
 
-  *cnj = None | t | b | y
-  {cnj} (t): subord = te
-  {cnj} (b): subord = be
-  {cnj} (y): subord = ye
+  *cnj = None | t | b | In | sl | n
+  {cnj} (t): conj = t(e)
+  {cnj} (b): conj = b(e)
+  {cnj} (sl): conj = sle
+  {cnj} (n): conj = n
 
-  *conv = False | True
-  *m = False | True
-  {conv} (True): converb
-  {m} (True): conj -m
+  rel (relative) = False | True
+#  {rel} (True): +relative
 
+  conv (converb) = False | True
+#  {conv} (True): +converb
+
+  def (definite) = False | True
+
+  n = False | True
+#  {n} (True): +n
+
+  *dup = False | True
+  *je = False | True

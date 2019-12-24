@@ -127,6 +127,23 @@ class FSSet(set):
             # Get rid of all instances of TOP and unification failures
             return FSSet(*filter(lambda x: x != 'fail', result1))
 
+    def unify_FS(self, fs, strict=False, verbose=False):
+        """Attempt to unify this FSSet with a simple FeatStruct instance, basically filter
+        the FeatStructs in the set by their unification with fs. Pretty much like FSSet.unify()."""
+        # This is a list of the unifications of the elements of self with fs
+        result1 = [simple_unify(f1, fs, strict=strict, verbose=verbose) for f1 in list(self)]
+        if every(lambda x: x == TOP, result1):
+            return TOPFSS
+        else:
+            # All FeatStructs in self that unify with fs
+            result2 = list(filter(lambda x: x != 'fail', result1))
+            if verbose:
+                print("unify_FS: unifying {} with {}, result {}".format(self, fs.__repr__(), result2))
+            if not result2:
+                # None of the FeatStructs in self unifies with fs
+                return 'fail'
+            return FSSet(*result2)
+
     def get(self, feature, default=None):
         """Get the value of the feature in the first FeatStruct that has one."""
         for fs in self:

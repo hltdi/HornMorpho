@@ -1,0 +1,8 @@
+bal     bhl   [tm=prf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
+bl      bhl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
+bel     bhl   [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
+xal     xhl   [tm=prf|j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
+xl      xhl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
+t*xixil xhl   [vc=[+ps,-cs],as=it,cls=A,-dup,am=ተዋወቀ]
+xe      xy    [tm=prf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ፈለገ]
+ax_e    xy    [tm=prf,vc=[+ps,+cs],cls=A,-dup,as=None,am=ፈለገ]

@@ -1091,19 +1091,13 @@ class FST:
         if trace:
             print('Deleting state {}'.format(label))
 
-#        if len(self._incoming[label]) > 100:
-#            print('Deleting {}, incoming {}'.format(label, self._incoming[label]))
-#        if len(self._outgoing[label]) > 100:
-#            print('Deleting {}, incoming {}'.format(label, self._outgoing[label]))
         # Delete the incoming/outgoing arcs.
         for arc in self._incoming[label]:
             if arc in self._src:    # It may have been deleted already (MG)
-#self.arcs():  
                 self._outgoing[self._src[arc]].remove(arc)   # First remove from other end (MG)
                 del (self._src[arc], self._dst[arc], self._in_string[arc],
                      self._out_string[arc], self._arc_descr[arc])
         for arc in self._outgoing[label]: 
-#            if arc in self.arcs():
             if arc in self._src:    # It may have been deleted already (MG)
                 self._incoming[self._dst[arc]].remove(arc)   # First remove from other end (MG)
                 del (self._src[arc], self._dst[arc], self._in_string[arc],
@@ -1294,18 +1288,11 @@ class FST:
         fst = self.copy()
         fst._incoming, fst._outgoing = fst._outgoing, fst._incoming
         fst._src, fst._dst = fst._dst, fst._src
-#        init = self._initial_state
-#        final = self._get_final_states()
-#        fst._is_final[init] = True
-#        for f in final:
-#            fst._is_final[f] = False
-#        fst._initial_state = final[0]
         return fst
     
     def trim(self, label='', trace=0):
         '''Trim by eliminating deadends.'''
         if trace:
-#            print('Trimming')
             deleted = 0
             t0 = time.clock()
             t = t0
@@ -1335,8 +1322,6 @@ class FST:
                     print('  Retaining {} valid states after {} minute(s)'.format(n_states,
                                                                                   round((t1 - t0) / 60.0, 2)))
                     t = t1
-#            if trace and n_states % 10000 == 0:
-#                print('  Checked {} states starting at final'.format(n_states))
             srcs = [self.src(arc) for arc in self.incoming(state)]
             queue += [s for s in srcs if s not in path_to_final]
             path_to_final.update(srcs)
@@ -1350,8 +1335,6 @@ class FST:
                     print('  Deleted {} states after {} minute(s)'.format(deleted,
                                                                           round((t1 - t0) / 60.0, 2)))
                     t = t1
-#            if trace and deleted % 10000 == 0:
-#                print('  Deleted', deleted, 'states')
             self.del_state(state)
 
         if trace and deleted > 0:
@@ -1864,10 +1847,9 @@ class FST:
                 for arc_spec in strings:
                     arc = fst._parse_arc(arc_spec)
                     if isinstance(arc, list):
-                        # A stringset
-                        # Only works where in_string and out_string are the same
-                        for string in arc:
-                            fst.add_arc(src, dst, string, string, weight=weight)
+                        # out_string is a stringset label
+                        for instring, outstring in arc:
+                            fst.add_arc(src, dst, instring, outstring, weight=weight)
                     else:
                         fst.add_arc(src, dst, arc[0], arc[1], weight=weight)
                 continue
@@ -2154,10 +2136,9 @@ class FST:
                 for arc_spec in strings:
                     arc = fst._parse_arc(arc_spec)
                     if isinstance(arc, list):
-                        # A stringset
-                        # Only works where in_string and out_string are the same
-                        for string in arc:
-                            fst.add_arc(src, dst, string, string, weight=weight)
+                        # out_string is a stringset label
+                        for instring, outstring in arc:
+                            fst.add_arc(src, dst, instring, outstring, weight=weight)
                     else:
                         fst.add_arc(src, dst, arc[0], arc[1], weight=weight)
                 continue
@@ -2313,6 +2294,9 @@ class FST:
                 # There is a value for either in_string or out_string or both
                 in_string = groups[0] if groups[0] else ''
                 out_string = groups[2] if groups[2] else ''
+                outss = self.stringset(out_string)
+                if outss:
+                    return [(in_string, o) for o in outss]
             else:
                 # the : is missing; use the same value for both strings
                 # (which can't be '')
@@ -2837,17 +2821,12 @@ class FST:
                             accumfvals = {fs.get(tracefeat) for fs in accum_weight}
                             if not input_match:
                                 print('OUTPUT: {}; {} FAILED TO MATCH {}'.format(''.join(output), accumfvals, weightfvals))
-#                            else:
-#                                print(' Matched {}'.format(tracefvals))
                     if input_match and (in_pos < len(input) or in_string == ''):
                         # Don't bother if we've already reached the end of the word
                         if trace:
                             matching_arcs.append((arc[3:], in_string, self.out_string(arc), weight))
                             any_matches = True
                         frontier_elem = (arc, in_pos, len(output)) + ((input_match,) if weight else ())
-#                        if not in_string:
-#                            frontier.insert(0, frontier_elem)
-#                        else:
                         frontier.append(frontier_elem)
                     elif trace:
                         if trace > 2 and not input_match:
