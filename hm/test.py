@@ -1,58 +1,26 @@
 #!/usr/bin/env python3
 
 """
-This file is part of the L3Morpho package.
+This file is part of the HornMorpho.
 
-    L3Morpho is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    L3Morpho is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with L3Morpho.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
-Author: Michael Gasser <gasser@cs.indiana.edu>
+Author: Michael Gasser <gasser@indiana.edu>
 """
 
-import l3
+#import hm
 import unittest
-
-GUARANI = \
-    ["ndoguatái", "oñeñapytĩva", "noñemoĝuahẽiva'ekue", "nakarãíri",
-     "chera'arõ", "hemby", "nemoíri", "ñamboryrýi", "nañamboryrýiri",
-     "ndoúi"]
-
-# Examples from HornMorpho 2.5 Quick Reference
-ANAL = [('ti', 'ናብ'), ('ti', 'ፔፕሲ'), ('ti', 'ብዘጋጥመና'), ('ti', 'ዘየብለይ'),
-        ('om', 'afeeramaniiru'), ('om', 'dubbanne'),
-        ('am', 'የማያስፈልጋትስ'), ('am', 'አይደለችም'),
-        ('am', 'ቢያስጨንቁአቸው'),
-        ('am', 'ለዘመዶቻችንም'),
-        ('am', 'ይመጣሉ')]
-
-SEG = [('am', 'ሲያጭበረብሩን'), ('om', 'afeeramaniiru')]
-
-PHON = [('am', "ይመታሉ")]
-
-GEN = [('am', "mWl'"),
-       ('am', "mWl'", '[sb=[+p2,+fem],ob=[+plr,+l]]'),
-       ('am', "mengst", '[+plr,+def]'), ('am', 'sdb', '[pos=n,v=agt,vc=cs,as=rc]'),
-       ('am', 'brkt', '[pos=n,v=ins,pp=ke,cnj=m,+def]'),
-       ('am', 'ne', '[+neg, sb=[+p1,+plr]]'),
-#       ('am', 'kongo', '[pp=be]', guess=True),
-       ('am', 'wdd_r', '[+gen, poss=[+p1,+plr]]'),
-       ('om', 'sirb'), ('om', 'sirb', '[sb=[+fem],tm=prf]'),
-       ('om', 'barbaad', '[+inf,cnj=f]'),
-       ('om', 'sob', '[der=[+autoben],sb=[+p2],+neg,tm=prs]'),
-       ('ti', "gWyy"),
-       ('ti', 'HSb', '[sb=[+p2,+fem],ob=[+plr]]'),
-       ('ti', 'n|qTqT', '[vc=ps,tm=imf,sb=[+p1,+plr]]'),
-       ('ti', 'gdf','[tm=j_i,+neg,sb=[+p2],ob=[+plr],vc=ps,as=rc]')]
 
 AMHARIC = \
     ["'aweTa", "'aweTahu", "'aweTah", "'aweTax", "'aweTac", "'aweTan", "'aweTachu", "'aweTu",

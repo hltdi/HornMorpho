@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS
 
-    Copyleft 2008, 2009, 2010, 2011, 2012, 2017, 2018. Michael Gasser.
+    Copyleft 2008, 2009, 2010, 2011, 2012, 2017, 2018, 2019. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ Composition of weighted FSTs is also supported.
    New modules for translation dictionaries (tdict) and menus (menu).
 """
 
-__version__ = '4.0'
+__version__ = '3.0'
 __author__ = 'Michael Gasser'
 
 from .trans import *

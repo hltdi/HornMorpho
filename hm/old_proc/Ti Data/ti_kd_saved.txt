@@ -1,0 +1,26 @@
+%r bhl
+{[as='smp', vc='smp']: {[sb=[+p1, -p2, -plr]]: [1.0, 2160.5], [sb=[-fem, -p1, -p2, -plr]]: [1.0, 2160.5]}, [as='rc', vc='ps']: {[sb=[-fem, -p1, -p2, -plr]]: [0.5, 577.0]}, [as='smp', vc='ps']: {[sb=[-fem, -p1, -p2, -plr]]: [0.5, 577.0]}}
+%r dany
+{[as='smp', vc='smp']: {[sb=[-fem, -p1, -p2, -plr]]: [0.3333333333333333, 486.66666666666663]}}
+%r kbb
+{[as='it', vc='smp']: {[sb=[+fem, -p1, +p2, -plr]]: [1.0, 1552.0]}}
+%r nbr
+{[as='smp', vc='smp']: {[sb=[-fem, -p1, -p2, -plr]]: [2.0, 4764.0]}}
+%r srH
+{[as='smp', vc='smp']: {[sb=[-fem, -p1, +p2, -plr]]: [1.0, 1830.0]}}
+%r smr
+{[as='smp', vc='tr']: {[ob=[+fem, -p1, -p2, -plr, -prp, +xpl], sb=[-fem, -p1, -p2, -plr]]: [0.5, 782.0], [sb=[+fem, -p1, -p2, +plr]]: [0.5, 782.0]}}
+%r lw_y
+{[as='smp', vc='tr']: {[ob=[-fem, -p1, -p2, -plr, -prp, +xpl], sb=[-fem, -p1, -p2, -plr]]: [1.0, 1792.0]}}
+%r kyd
+{[as='smp', vc='smp']: {[ob=[+fem, -p1, -p2, -plr, -prp, +xpl], sb=[-fem, -p1, +p2, -plr]]: [0.3333333333333333, 486.66666666666663], [sb=[+fem, -p1, +p2, +plr]]: [0.3333333333333333, 486.66666666666663]}}
+%r Hlf
+{[as='smp', vc='smp']: {[sb=[-fem, -p1, -p2, -plr]]: [1.0, 1213.0]}}
+%r qals
+{[as='smp', vc='smp']: {[sb=[+fem, -p1, +p2, -plr]]: [1.0, 1550.0]}}
+%r kWn_n
+{[as='smp', vc='ps']: {[sb=[+p1, -p2, -plr]]: [0.16666666666666666, 417.0], [sb=[-fem, -p1, -p2, -plr]]: [0.16666666666666666, 417.0]}}
+%r kwn
+{[as='smp', vc='tr']: {[sb=[-fem, -p1, -p2, -plr]]: [0.5, 713.5]}, [as='smp', vc='smp']: {[ob=[+fem, -p1, -p2, +plr, -prp, +xpl], sb=[+p1, -p2, -plr]]: [0.16666666666666666, 417.0], [sb=[+p1, -p2, -plr]]: [0.5, 835.0], [sb=[-fem, -p1, -p2, -plr]]: [6.166666666666667, 18149.5]}, [as='smp', vc='ps']: {[ob=[+fem, -p1, -p2, +plr, -prp, +xpl], sb=[+p1, -p2, -plr]]: [0.16666666666666666, 417.0], [ob=[+fem, -p1, -p2, +plr, -prp, +xpl], sb=[-fem, -p1, -p2, -plr]]: [0.16666666666666666, 417.0]}}
+%r k'l
+{[as='smp', vc='smp']: {[sb=[+p1, -p2, -plr]]: [0.5, 578.0], [sb=[-fem, -p1, -p2, -plr]]: [0.5, 578.0]}}

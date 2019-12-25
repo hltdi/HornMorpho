@@ -441,17 +441,19 @@ class Language:
             m = PREPROC_RE.match(line)
             if m:
                 preproc = m.group(1)
-                if preproc == 'geez':
+                if preproc.startswith('geez'):
                     from .geez import geez2sera
-                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev)
+                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev,
+                                                          gemination='gem' in preproc)
                 continue
 
             m = POSTPROC_RE.match(line)
             if m:
                 postproc = m.group(1)
-                if postproc == 'geez':
+                if postproc.startswith('geez'):
                     from .geez import sera2geez
-                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev)
+                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev,
+                                                           gemination='gem' in postproc)
                 continue
 
             m = CLEAN_RE.match(line)
@@ -1260,7 +1262,7 @@ class Language:
             dct[form] = [(root, fs)]
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
-                  phon=False, segment=False,
+                  phon=False, segment=False, init_weight=None,
                   root=True, stem=True, citation=True, gram=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=True, no_anal=None, string=False, print_out=False,
@@ -1341,7 +1343,7 @@ class Language:
                                                        freq=rank or report_freq))
                     else:
                         # We have to really analyze it; first try lexical FSTs for each POS
-                        analysis = self.morphology[pos].anal(form,
+                        analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment,
                                                              to_dict=to_dict, sep_anals=True)
                         if analysis:
@@ -1358,7 +1360,7 @@ class Language:
         if not analyses and guess:
             # Accumulate results from all guessers
             for pos in fsts:
-                analysis = self.morphology[pos].anal(form, guess=True,
+                analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
                                                      phon=phon, segment=segment,
                                                      to_dict=to_dict, sep_anals=True)
                 if analysis:

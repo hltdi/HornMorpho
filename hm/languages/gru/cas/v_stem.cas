@@ -6,9 +6,6 @@ weighting = UNIFICATION
 # _: gemination
 # /: pre-gemination
 # D: reduplication
-# @: labialization
-# ^: palatalization
-# /: gemination
 # *: t<e> of passive/reflexive
 
 ## Stringsets
@@ -32,10 +29,12 @@ KK = {g, k, K, q}
 PP = {c, C, j, x, y, Z, N}
 # labialized consonants
 UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
+# root consonants (FF + h,w,y)
+CC = {b, d, f, g, h, k, l, m, q, r, s, S, t, T, w, y, z}
 # final root consonants (but not h, w, y)
 FF = {b, d, f, g, k, m, n, q, r, s, S, t, T, z, l}
 ## Non-phonetic/orthographic characters
-% = {_, /, D, @, ^, *}
+% = {_, /, D, *}
 
 >VV_stem<
 # Frequentative reduplication realized

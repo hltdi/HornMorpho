@@ -37,12 +37,20 @@ UU = {gW, kW, KW, qW}
 % = {@, ^, =, /, _}
 
 # Delete epenthetic and gemination characters
->del_epgem<
+#>del_epgem<
 ### 1 Insert glottal stop before initial vowel
 >gs0<
+>gem<
+>kh<
 # Realize VV combinations; get rid of morpheme boundaries
 >VV<
 # Realize y as i between consonants
 >y<
+# Realize 2sf stem (and suffix?) for imf and j_i
+>s2sf<
+# Realize 3 person object suffixes
+>o3<
+# Passive t* realized
+>te<
 # Morphotactics
 >v0.mtx<

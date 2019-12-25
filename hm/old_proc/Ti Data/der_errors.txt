@@ -1,0 +1,34 @@
+578 known verbs
+57  no simplex
+  7 known to be no simplex (|)
+  50: 42 agree with dictionary, 8 otherwise
+8 / 57 'errors': 14/86%
+521 normal
+
+66 intransitive
+
+lly
+snbt
+Tq`
+(mlkt 5)
+('zntw', (7, 15, 75, 0, 0))
+('ghd', (5, 36, 44, 7, 0))
+('Tnqq', (7, 54, 36, 1, 0))
+('saqy', (9, 43, 46, 0, 0))
+
+33
+
+msgn 6
+nady 6
+wHs 6
+('`ll', (9, 8, 81, 0, 0))
+('Try', (5, 12, 80, 0, 0))
+
+('qals', (10, 88, 0, 0, 0))
+
+50
+
+42 *
+8 ?
+
+

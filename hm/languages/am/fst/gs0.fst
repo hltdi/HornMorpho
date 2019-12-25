@@ -1,12 +1,11 @@
 # Insert glottal stop at the beginning of a word beginning with a vowel
-# or after a space (realized here as //
+# or after a space (realized here as //)
 
 -> start
 
 # insert the glottal stop
 start -> gs   [':]
 gs -> middle     [V]
-# end -> end    [X;V;%]
 
 # fail if it's not inserted before an initial vowel
 start -> V    [V]

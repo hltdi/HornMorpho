@@ -5,7 +5,7 @@ import sys
 from distutils.core import setup
 
 setup(name='HornMorphoA',
-      version='3.1',
+      version='3.2',
       description='Morphological analyzer for Amharic',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',

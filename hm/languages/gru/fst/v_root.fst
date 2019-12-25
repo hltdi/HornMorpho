@@ -2,21 +2,21 @@
 
 -> start
 
-start -> A1  [X]   [cls=A]
-A1 -> A2     [X]
-A2 -> end    [X]
+start -> A1  [CC]   [cls=A];[cls=Aw]
+A1 -> A2     [CC]
+A2 -> end    [CC]
 
-start -> B1  [X]   [cls=B]
-B1 -> B2     [X-h]
-B2 -> end    [X]
+start -> B1  [CC]   [cls=B]
+B1 -> B2     [CC-h]
+B2 -> end    [CC]
 
-start -> C1  [X]   [cls=C]
-C1 -> C2     [X-h]
-C2 -> end    [X]
+start -> C1  [CC]   [cls=C]
+C1 -> C2     [CC-h]
+C2 -> end    [CC]
 
-start -> E1  [X]   [cls=E]
-E1 -> E2     [X]
-E2 -> E3     [X]
-E3 -> end    [X]
+start -> E1  [CC]   [cls=E];[cls=F]
+E1 -> E2     [CC]
+E2 -> E3     [CC]
+E3 -> end    [CC]
 
 end ->

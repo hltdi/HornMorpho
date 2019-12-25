@@ -1,0 +1,16 @@
+%r km_t
+{[as=u'smp', vc=u'smp']: {[ob=[-xpl], sb=[+fem, -p1, +p2, -plr]]: 1}}
+%r mty
+{[as=u'smp', vc=u'tr']: {[ob=[-xpl], sb=[-fem, -p1, -p2, -plr]]: 1, [ob=[-xpl], sb=[+p1, -p2, -plr]]: 1}}
+%r zwm
+{[as=u'smp', vc=u'smp']: {[ob=[-p1, -xpl], sb=[+p1, -p2, -plr]]: 1}}
+%r 'zWm
+{[as=u'smp', vc=u'smp']: {[ob=[-xpl], sb=[-fem, -p1, +p2, -plr]]: 1}}
+%r zzWm
+{[as=u'smp', vc=u'smp']: {[ob=[-p1, -xpl], sb=[+p1, -p2, -plr]]: 1}}
+%r fl_y
+{[as=u'smp', vc=u'smp']: {[ob=[-xpl], sb=[-fem, -p1, -p2, -plr]]: 1, [ob=[-xpl], sb=[+p1, -p2, -plr]]: 1}}
+%r 'ws
+{[as=u'smp', vc=u'smp']: {[ob=[-p1, -xpl], sb=[+p1, -p2, +plr]]: 1}}
+%r zWym
+{[as=u'smp', vc=u'smp']: {[ob=[-p1, -xpl], sb=[+p1, -p2, -plr]]: 1}}

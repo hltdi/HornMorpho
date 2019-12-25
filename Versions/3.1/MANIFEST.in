@@ -1,11 +1,12 @@
-recursive-include hm *.fst *.cas *.lex *.txt *.dct
-include horn3.0_quick.pdf
+recursive-include hm *.fst *.cas *.lex *.txt *.dct *.trans
+include horn3.1_quick.pdf
 include horn3.0.pdf
 include LICENSE.txt
 include README.txt
 include hm.py
 exclude hm/test.py
 exclude hm/profile.py
+exclude hm/process.py
 prune hm/languages/stv
 prune hm/languages/en
 prune hm/languages/am/data/crawl

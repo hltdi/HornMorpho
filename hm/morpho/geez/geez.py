@@ -301,7 +301,7 @@ def sera2geez(table, form, lang='am', gemination=False):
                     v = form[n + 2]
                     trans = table.get(char + v, char + v) + GEMINATION_GEEZ
                     n += 2
-                else:
+                 else:
                     trans = table.get(char, char) + GEMINATION_GEEZ
                     n += 1
             else:

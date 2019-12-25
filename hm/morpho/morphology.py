@@ -994,7 +994,7 @@ class POSMorphology:
                 init_weight = FSSet(init_weight)
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
-                                  init_weight=init_weight, result_limit=3,
+                                  init_weight=init_weight, result_limit=20 if guess else 3,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit)
             if sep_anals:
                 anals = self.separate_anals(anals)

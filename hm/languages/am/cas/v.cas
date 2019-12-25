@@ -73,32 +73,34 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >del_epgem<
 # 1 Insert glottal stop before initial vowel
 >gs0<
+# 2 optionally replace -nb- with -mb-
+>mb<
 # (Insert >epen< and >pre_gem< here for spoken Amharic)
-# 2 oa, ua -> Wa
+# 3 oa, ua -> Wa
 >ou2W<
-# 3 y->i between Cs; insert i between C and y before vowel (or end of word)
+# 4 y->i between Cs; insert i between C and y before vowel (or end of word)
 >y2i<
-# 4 Insert y between i and a
+# 5 Insert y between i and a
 >y_epen<
-# 5 Palatalize palatalizable C before i and E
+# 6 Palatalize palatalizable C before i and E
 >pal_iE<
-# 6 CC -> C_; has to precede pal to get tIwejjiNallex
+# 7 CC -> C_; has to precede pal to get tIwejjiNallex
 >gem<
-# 7 VI -> V
+# 8 VI -> V
 >VI<
-# 8 other V combinations
+# 9 other V combinations
 >VV<
-# 9 Optionally assimilate g, q to following k; T to following t
+# 10 Optionally assimilate g, q to following k; T to following t
 >CC_ass<
-# 10 -ku/-k
+# 11 -ku/-k
 >kh<
-# 11 3sm object
+# 12 3sm object
 >3sm<
-# 12 gemination of t- and n-
+# 13 gemination of t- and n-
 >tn_gem<
-# 13 e1a -> e'a / ea
+# 14 e1a -> e'a / ea
 >e1a<
-# 14 delete ` unless it starts the word
+# 15 delete ` unless it starts the word
 # >del_phar<
 # 15 Morphotactics: prefixes, suffixes, and stem (with its own cascade)
->vb_mtax<
+>v_mtax<

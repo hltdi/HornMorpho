@@ -13,6 +13,13 @@ v:
       - ['j_i', '[+sub]']
       - ['imf', '[ax=None]', '[+sub]']
       - ['imf', '[ax=al]', '[-sub]']
+    vc:
+      - ['ps', '[vc=[+ps,-cs]]']
+      - ['tr', '[vc=[-ps,+cs]]']
+      - ['cs', '[vc=[+ps,+cs]]']
+      - ['smp', '[vc=[-ps,-cs]]']
+    as:
+      - ['smp', '[as=None]']
 n:
   featmaps:
     poss:

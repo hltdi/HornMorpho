@@ -74,6 +74,8 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >del_epgem<
 # Insert glottal stop before initial vowel
 >gs0<
+# optionally replace -nb- with -mb-
+>mb<
 # oa, ua -> Wa
 >ou2W<
 # y->i between Cs; insert i between C and y before vowel (or end of word)
@@ -94,7 +96,7 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >3sm<
 # t, n gemination with imperfect/jussive 2, 1p prefix
 >tn_gem<
-# 13 e1a -> e'a / ea
+# e1a -> e'a / ea
 >e1a<
 # Morphotactics: prefixes, suffixes, and stem (with its own cascade)
->vb_mtax0<
+>v_mtax0<

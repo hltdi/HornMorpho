@@ -1,0 +1,15 @@
+417 roots
+variants of known roots: 3 (in errors.txt)
+
+competition errors: 75 (in errors_compet.txt)
+errors based on known roots: 9 (in errors.txt)
+58 other errors, 47 ending in y (in errors.txt)
+
+errors: 75+58+9=142
+
+66%
+34%
+
+without competition errors
+
+58+9=67=16/84%%

@@ -1,0 +1,21 @@
+intransitive:
+	no passive/reflexive (or rare)
+	causative (common)
+	obj suffix rare with simplex
+transitive:
+	passive/reflexive
+	causative
+	obj suffix common with simplex
+no simplex:
+	passive/reflexive intransitive or transitive
+	causative common
+
+look for variety of object suffixes (gender, number, ?person)
+look for variety of passive/reflexive, causative, simplex
+	different subjects
+	different TAM
+	+-rel, +-neg
+	conjunctions: ስለ ክ ምስ ከም እንተ
+
+roots
+	look for at least one der cat
