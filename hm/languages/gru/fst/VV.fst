@@ -14,8 +14,8 @@ start -> e     [e]
 e -> start     [X;_;/;V-u]
 e -> e=.C      [:=]
 e=.C -> start  [X;/]
-# delete e before vowels on other side of boundary
 
+# delete e before vowels on other side of boundary
 start -> e.=V  [:e]
 e.=V -> e=.V   [:=]
 # e=e, e=a, e=i, e=I, e=o
@@ -38,7 +38,7 @@ i -> start     [w:u;X;:=;_;/;V-u]
 
 start -> a     [a]
 a -> a=.       [:=]
-a=. -> start   [X;/]
+a=. -> start   [X;/;w:u]
 a=. -> a=.e    [:e]
 a=.e -> start  [w:u;X;V-u]
 a -> start     [X;_;/;V-i]

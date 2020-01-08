@@ -10,6 +10,7 @@ qrs   [cls=A,am=ጀመረ,-dup,-je]
 sfr   [cls=A,am=ለካ,-dup,-je]
 msl   [cls=A,am=መሰለ,-dup,-je]
 gfr   [cls=A,am=ለቀቀ,-dup,-je]
+rgm   [cls=A,am=ረገመ,-dup,-je]
 wdd   [cls=A,am=ወደደ,+dup,-je]
 dst   [cls=A,am=ተደሰተ,-dup,vc=[+ps],-je];[cls=A,am=አስደሰተ,-dup,vc=[+ps,+cs],-je]
 ## weak
@@ -20,12 +21,17 @@ wqh   [cls=A,am=መታ,-dup,-je]
 nsh   [cls=A,am=አነሳ,-dup,-je]
 lhk   [cls=A,am=ላከ,-dup,-je]
 qwm   [cls=A,am=ቆመ,-dup,-je]
+zwr   [cls=A,am=ዞረ,-dup,-je]
 qyT   [cls=A,am=ደከመ,-dup,-je]
 bxy   [cls=A,am=አለቀሰ,-dup,-je]
 hZy   [cls=A,am=አየ,-dup,-je]
-kcy   [cls=Aw,am=ፈራ,-dup,-je]
-fyy   [cls=Aw,am=ዳነ,-dup,-je]
-CNy   [cls=Aw,am=አሸነፈ,-dup,-je]
+gNy   [cls=A,am=አገኘ,-dup,-je,as=None|rc]
+# Aw, AW
+kcy   [cls=Aw,am=ፈራ]
+fyy   [cls=Aw,am=ዳነ]
+CNy   [cls=Aw,am=አሸነፈ]
+rxy   [cls=Aw,-dup,-je,am=ለመደ]
+mkr   [cls=AW,-dup,-je,am=ሞከረ]
 ### B
 ## strong
 xkt   [cls=B,am=አበጀ,-dup]
@@ -45,5 +51,9 @@ mskr  [cls=E,am=መሰከረ,-dup]
 ## weak
 brth  [cls=E,am=በረታ,-dup]
 wzyy  [cls=E,am=ሰራ,-dup]
+## n-
+nkrtt [cls=E,+dup]
 ### F
 qlql  [cls=F,am=ቀላቀለ,-dup]
+##
+nqlql [cls=F,-dup]

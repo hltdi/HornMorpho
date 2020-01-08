@@ -7,8 +7,9 @@ postproc: geez_gem
 seg: a e i o u I E
      b c C d f g gW h hW j
      k kW l m n N p q qW r s
+     bW mW fW
      S t T w x y z Z
-     Y _ H *
+     H G _ *
 
 feats:
 

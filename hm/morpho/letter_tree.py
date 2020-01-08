@@ -107,6 +107,7 @@ def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, verbos
                 else:
                     words.append([word, out, feats])
     infile.close()
+#    print("words {}".format(words))
     return treeify(words, chars=chars, seg_units=seg_units, output=any_out, reverse=reverse,
                    verbose=verbose)
 

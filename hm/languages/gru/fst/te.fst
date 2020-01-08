@@ -8,7 +8,12 @@ start -> stem       [=]
 # t must be first character after =
 stem -> end         [X-t;V;/;_]
 stem -> t           [t]
-t -> end            [e:*;X;V;/;_]
+t -> t*.            [e:*]
+t -> t*.V           [:*]
+# delete second e: t*elal_efe
+t*. -> end          [:_;X;V-e,a;/]
+t*.V -> end         [a;e]
+t -> end            [X;V;/;_]
 stem -> end         [=]
 
 # prefix: t* -> t | /

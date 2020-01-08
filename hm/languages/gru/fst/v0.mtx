@@ -21,8 +21,10 @@ $ sbj_pre
   e  [sp=1,sn=1,tm=imf,-neg]
   t  [sp=2,tm=imf];[sp=3,sn=1,sg=f,tm=imf|j_i];[sp=2,tm=j_i,+neg]
   y  [sp=3,sn=2,tm=imf];[sp=3,sn=1,sg=m,tm=imf];[sp=0,sn=1,tm=imf];
-     [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=0,sn=1,tm=j_i,+neg]
-  yE [sp=3,sn=2,tm=j_i,-neg];[sp=3,sn=1,sg=m,tm=j_i,-neg];[sp=0,sn=1,tm=j_i,-neg]
+     [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=0,sn=1,tm=j_i,+neg];
+     [sp=3,sn=2,tm=j_i,vc=[+cs]];[sp=3,sn=1,sg=m,tm=j_i,vc=[+cs]];[sp=0,sn=1,tm=j_i,vc=[+cs]]
+  yE [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
+  ye [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
   n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=imf,+neg]
   ne [sp=1,sn=1,tm=j_i]
   -- [tm=prf];[sp=2,tm=j_i,-neg]
@@ -32,7 +34,6 @@ $ bound2
   =
 
 $ stem
-#  +v_irr_stem+    []
   >>v_stem0<<
 
 ## Boundary separating prefixes from stem
@@ -40,11 +41,10 @@ $ bound1
   =
 
 $ sbj_suff
-  # %% what happens to suffixes other than 3sm before object suffixes?
-  Y     [sp=2,sn=1,sg=f,tm=imf|j_i]
-  kW    [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,-sub,op=1|2|3]
-  k     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
-  ke    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
+  # G = kW|hW
+  G     [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,op=1|2|3];[sp=1,sn=1,sg=m,tm=prf,+neg]
+  H     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
+  He    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
   x     [sp=2,sn=1,sg=f,tm=prf]
   e     [sp=3,sn=1,sg=m,tm=prf]
   et    [sp=3,sn=1,sg=f,tm=prf,-conv,-def]
@@ -57,7 +57,9 @@ $ sbj_suff
   m     [sp=3,sn=2,sg=m,tm=prf|imf,-conv];[sp=2,sn=2,sg=m,tm=imf];[sp=2|3,sn=2,sg=m,tm=j_i]
   mu    [sp=3,sn=2,sg=m,tm=prf,+conv]
   ma    [sp=3,sn=2,sg=f,tm=prf|imf];[sp=2,sn=2,sg=f,tm=imf];[sp=2|3,sn=2,sg=f,tm=j_i]
-  --    [tm=imf,sp=1,sn=1];[tm=imf,sp=3,sn=1];[tm=imf,sp=2,sn=1,sg=m];[tm=imf,sp=1,sn=2];[tm=j_i,sn=1,sp=1|3];[tm=j_i,sn=1,sp=2,sg=m];[sp=0,sn=1]
+  --    [tm=imf,sp=1,sn=1];[tm=imf,sp=3,sn=1];[tm=imf,sp=2,sn=1,sg=m];[tm=imf,sp=1,sn=2];
+        [tm=j_i,sn=1,sp=1|3];[tm=j_i,sn=1,sp=2,sg=m];[sp=0,sn=1];
+        [sp=2,sn=1,sg=f,tm=imf|j_i]
 
 $ obj_suff
   # impersonal (sp=0) requires an object suffix
@@ -66,20 +68,17 @@ $ obj_suff
   # accusative
   [op=3,on=1,og=m,ot=a]
     u      [sp=0]
+    @      [sp=1|2|3,tm=imf|j_i]
     n_     [sp=1|2|3,tm=prf]
-    _      [sp=1|2|3,tm=imf|j_i]
   [op=3,on=1,og=f,ot=a]
     wa     [sp=0]
-    n_a    [sp=1|2|3,tm=prf]
-    _a     [sp=1|2|3,tm=imf|j_i]
+    @a     [sp=1|2|3]
   [op=3,on=2,og=m,ot=a]
     wem    [sp=0]
-    n_em   [sp=1|2|3,tm=prf]
-    _em    [sp=1|2|3,tm=imf|j_i]
+    @em    [sp=1|2|3]
   [op=3,on=2,og=f,ot=a]
     wema   [sp=0]
-    n_ema  [sp=1|2|3,tm=prf]
-    _ema   [sp=1|2|3,tm=imf|j_i]
+    @ema   [sp=1|2|3]
   # malfactive
   [op=3,on=1,og=m,ot=m]
     be     [sp=1|2|3]
@@ -155,8 +154,8 @@ $ main
   _i    [-sub,-neg,tm=prf,sp=3,sn=1,sg=f,op=None]
   in    [-sub,-neg,tm=imf|prf,sp=2,sn=1,sg=f,op=None];[-sub,-neg,op=2,on=1,og=f]
   i     [-sub,-neg,tm=prf,sp=1,sn=1,op=None];[-sub,-neg,tm=prf|imf,sp=3,sn=1,sg=f,op=None]
-  un    [-sub,-neg,tm=imf|prf,sp=3,sn=2,sg=m,op=None];[-sub,-neg,op=2|3,on=2,og=m]
-  n     [-sub,-neg,tm=imf|prf,sp=2,sn=2,op=None];[-sub,-neg,tm=imf|prf,sp=3,sn=2,sg=f,op=None];[-sub,-neg,op=2|3,on=2,og=f,sp=0]
+  un    [-sub,-neg,tm=imf|prf,sp=3,sn=2,sg=m,op=None];[-sub,-neg,tm=imf,sp=2,sn=2,sg=m,op=None];[-sub,-neg,op=2|3,on=2,og=m]
+  n     [-sub,-neg,tm=imf|prf,sp=2,sn=2,op=None];[-sub,-neg,tm=imf|prf,sp=3,sn=2,sg=f,op=None];[-sub,-neg,op=2|3,on=2,og=f]
   # all 3s impersonal, imf and prf, imp and pers
   t     [-sub,-neg,op=3,on=1]
   u     [-sub,-neg,tm=imf|prf,sp=3,sn=1,sg=m,op=None];[-sub,-neg,tm=imf|prf,sp=1,sg=m,op=None];[-sub,-neg,tm=imf|prf,sp=2,sn=1,sg=m,op=None];
@@ -168,6 +167,6 @@ $ def
   
 ## Final suffixes (converb -m)
 $ converb_n
-  --    [-conv,-n]
-  m     [+conv,+sub,-n]
-  n     [-conv,+n,-sub]
+  --    [-conv,-n,pos=v]
+  m     [+conv,+sub,-n,pos=v]
+  n     [-conv,+n,-sub,pos=v]

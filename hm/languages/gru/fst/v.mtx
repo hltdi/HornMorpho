@@ -24,6 +24,7 @@ $ sbj_pre
      [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=0,sn=1,tm=j_i,+neg];
      [sp=3,sn=2,tm=j_i,vc=[+cs]];[sp=3,sn=1,sg=m,tm=j_i,vc=[+cs]];[sp=0,sn=1,tm=j_i,vc=[+cs]]
   yE [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
+  ye [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
   n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=imf,+neg]
   ne [sp=1,sn=1,tm=j_i]
   -- [tm=prf];[sp=2,tm=j_i,-neg]
@@ -41,8 +42,8 @@ $ bound1
   =
 
 $ sbj_suff
-  # %% what happens to suffixes other than 3sm before object suffixes?
-  Hw    [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,-sub,op=1|2|3]
+  # G = kW|hW
+  G     [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,op=1|2|3];[sp=1,sn=1,sg=m,tm=prf,+neg]
   H     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
   He    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
   x     [sp=2,sn=1,sg=f,tm=prf]
@@ -57,7 +58,6 @@ $ sbj_suff
   m     [sp=3,sn=2,sg=m,tm=prf|imf,-conv];[sp=2,sn=2,sg=m,tm=imf];[sp=2|3,sn=2,sg=m,tm=j_i]
   mu    [sp=3,sn=2,sg=m,tm=prf,+conv]
   ma    [sp=3,sn=2,sg=f,tm=prf|imf];[sp=2,sn=2,sg=f,tm=imf];[sp=2|3,sn=2,sg=f,tm=j_i]
-  # handle 2sf elsewhere
   --    [tm=imf,sp=1,sn=1];[tm=imf,sp=3,sn=1];[tm=imf,sp=2,sn=1,sg=m];[tm=imf,sp=1,sn=2];
         [tm=j_i,sn=1,sp=1|3];[tm=j_i,sn=1,sp=2,sg=m];[sp=0,sn=1];
         [sp=2,sn=1,sg=f,tm=imf|j_i]
@@ -69,7 +69,8 @@ $ obj_suff
   # accusative
   [op=3,on=1,og=m,ot=a]
     u      [sp=0]
-    @      [sp=1|2|3]
+    @      [sp=1|2|3,tm=imf|j_i]
+    n_     [sp=1|2|3,tm=prf]
   [op=3,on=1,og=f,ot=a]
     wa     [sp=0]
     @a     [sp=1|2|3]
@@ -167,6 +168,6 @@ $ def
   
 ## Final suffixes (converb -m)
 $ converb_n
-  --    [-conv,-n]
-  m     [+conv,+sub,-n]
-  n     [-conv,+n,-sub]
+  --    [-conv,-n,pos=v]
+  m     [+conv,+sub,-n,pos=v]
+  n     [-conv,+n,-sub,pos=v]
