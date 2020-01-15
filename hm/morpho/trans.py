@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2019. PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2019, 2020. PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,11 +30,13 @@ from .languages import *
 class Biling():
     """An object storing FSTs and a bilingual root dictionary for a language pair."""
 
-    def __init__(self, source, target,
-                 load_lexicon=False, load_data=True):
+    def __init__(self, source, target, load_lexicon=True, load_data=True,
+                 srcphon=True, targphon=True):
         """source and target are language abbreviations."""
-        self.source = get_language(source)
-        self.target = get_language(target)
+        self.srcphon = srcphon
+        self.targphon = targphon
+        self.source = get_language(source, phon=srcphon)
+        self.target = get_language(target, phon=targphon)
         self.src_abbrev = self.source.abbrev
         self.targ_abbrev = self.target.abbrev
         self.name = "{}=>{}".format(self.src_abbrev, self.targ_abbrev)
@@ -65,6 +67,25 @@ class Biling():
         path = os.path.join(self.get_dir(), self.targ_abbrev + ".lex")
         return path
 
+    def read_lexicon(self):
+        print("Reading lexicon for {}".format(self))
+        path = self.get_lex_file()
+        lexicon = {}
+        with open(path, encoding='utf8') as file:
+            for line in file:
+                root, asptrans = line.split(';')
+                if root not in lexicon:
+                    lexicon[root] = {}
+                entry = lexicon[root]
+                asptrans = eval(asptrans.strip())
+                for at in asptrans:
+                    asp, trans = at.split(':')
+                    troot, tasp = trans.split('_')
+                    troot, tcls = troot.split('.')
+                    tcls = "[cls={}]".format(tcls)
+                    entry[asp] = (troot, tcls, tasp)
+        self.lexicon = lexicon
+
     def read_data(self, expand=True):
         """Read translation data from .dt file."""
         print("Reading data for {}".format(self))
@@ -76,22 +97,136 @@ class Biling():
                         for cat, feats in values.items():
                             for index, sffeats in enumerate(feats):
                                 sffeats = [(FeatStruct(f) if isinstance(f, str) and '[' in f else f) for f in sffeats]
-#                                if isinstance(source, str) and '[' in source:
-#                                    source = FeatStruct(source)
-#                                # otherwise 'source' is a simple string or boolean
-#                                target = FeatStruct(target)
-#                            print("source: {}, target: {}".format(source_fs.__repr__(), target_fs.__repr__()))
                                 feats[index] = sffeats
-#                                (source, target)
-        self.data = dct
+            self.data = dct
 
-    def adapt_features(self, pos, features):
+    def get_source_processor(self, pos):
+        return self.source.morphology.get(pos)
+
+    def get_target_processor(self, pos):
+        return self.target.morphology.get(pos)
+
+    def source_anal(self, word, pos='v', preproc=True):
+        analyzer = self.get_source_processor(pos)
+        return analyzer.anal(word, preproc=preproc)
+
+    def source_gen(self, root, asp='', abbrevs=None, pos='v', postproc=False,
+                   formsonly=True):
+        """Generate source word from root, aspectual, and zero or more
+        additional features. Currently the same as target_gen."""
+        generator = self.get_source_processor(pos)
+        feats = self.make_fs_from_abbrevs(aspectual=asp, abbrevs=abbrevs, pos=pos, src=True)
+        forms_feats = generator.gen(root, update_feats=feats, postproc=postproc, phon=self.srcphon)
+        if formsonly and forms_feats:
+            return [x[0] for x in forms_feats]
+        return forms_feats
+
+    def target_gen(self, root, init=None, asp='', abbrevs=None, pos='v', postproc=False,
+                   formsonly=True):
+        generator = self.get_target_processor(pos)
+        feats = self.make_fs_from_abbrevs(init=init, aspectual=asp, abbrevs=abbrevs, pos=pos, src=False)
+        forms_feats = generator.gen(root, update_feats=feats, postproc=postproc, phon=self.targphon)
+        if formsonly and forms_feats:
+            return [x[0] for x in forms_feats]
+        return forms_feats
+
+    def get_trootasp(self, sroot, sasp):
+        if sroot not in self.lexicon:
+            return
+        entry = self.lexicon[sroot]
+        if sasp not in entry:
+            return
+        return entry[sasp]
+
+#    def translate1(self, word=None, sroot=None, sasp=None, sfeats=None, pos='v',
+#                   preproc=True, postproc=False):
+#        """Either translate a source or a source root-feature combination."""
+#        anals = self.source_anal(word, pos, preproc=preproc)
+#        if not anals:
+#            return
+#        outputs = []
+#        for root, feats in anals:
+#            for f in feats:
+#                # feats is a FSSet
+#        tentry = self.get_trootasp(sroot, sasp)
+#        if not tentry:
+#            print("No target entry for {} : {}".format(sroot, sasp))
+#            return
+#        troot, tcls, tasp = tentry
+#        tfeats = self.adapt_features(pos, sfeats, tfeatvalues=tcls)
+#        translations = self.target_gen(troot, tfeats, pos, postproc=postproc)
+#        return translations
+
+    def translate2(self, sroot=None, sasp='', featabbrevs=None, pos='v',
+                   preproc=True, postproc=False):
+        """Given a source root and aspectual, generate both source and target forms."""
+        """Either translate a source or a source root-feature combination."""
+        tentry = self.get_trootasp(sroot, sasp)
+        if not tentry:
+            print("No target entry for {} : {}".format(sroot, sasp))
+            return
+        troot, tcls, tasp = tentry
+#        tfeats = self.make_fs_from_abbrevs(tasp, featabbrevs, pos=pos, src=False)
+        tforms = self.target_gen(troot, init=tcls, asp=tasp,
+                                 abbrevs=featabbrevs, pos=pos, postproc=postproc)
+        sforms = self.source_gen(sroot, asp=sasp, abbrevs=featabbrevs, pos=pos,
+                                 postproc=postproc)
+        return sforms, tforms
+
+    ## Features
+
+    def expand_feat_abbrev(self, abbrev, pos='v', src=True):
+        posdata = self.data[pos]
+        if 'featabbrevs' not in posdata:
+            print("No feature abbrevs in data for {}!".format(v))
+            return
+        abbrevs = posdata['featabbrevs']
+        if abbrev not in abbrevs:
+            print("Abbrev {} not in feature abbrevs!".format(abbrev))
+        # index for target language is -1 because the forms may be the same for source and target
+        # in which case only one is given
+        return abbrevs[abbrev][0 if src else -1]
+
+    def make_fs_from_abbrevs(self, init=None, aspectual='', abbrevs=None, pos='v', src=True):
+        f = FeatStruct(init)
+        if aspectual:
+            if '[' not in aspectual:
+                # It's an abbrev
+                aspectual = self.expand_feat_abbrev(aspectual, pos=pos, src=True)
+            f.udpate(FeatStruct(aspectual))
+        if abbrevs:
+            for abbrev in abbrevs:
+                feats = self.expand_feat_abbrev(abbrev, pos=pos, src=src)
+                f.update(FeatStruct(feats))
+        return f
+
+    @staticmethod
+    def make_fs(asp=None, sbj=None, obj=None, tam=None, pol=None, rel=None):
+        """Create a FeatStruct for the additional features to be used during generation."""
+        f = FeatStruct(asp)
+        if sbj:
+            f.update(FeatStruct(sbj))
+        if obj:
+            f.update(FeatStruct(obj))
+        if tam:
+            f.update(FeatStruct(tam))
+        if pol:
+            f.update(FeatStruct(pol))
+        if rel:
+            f.update(FeatStruct(rel))
+        return f
+
+    def adapt_features(self, pos, features, tfeatvalues=None, verbosity=1):
         """Convert source features to target features."""
         featmap = self.data[pos]['featmaps']
-        tfeatvalues = FeatStruct(freeze=False)
+        if tfeatvalues:
+            tfeatvalues = FeatStruct(tfeatvalues, freeze=False)
+        else:
+            tfeatvalues = FeatStruct(freeze=False)
         for cat, feats in featmap.items():
             svalues = features.get(cat, 'missing')
-            print("Adapting {}, value {}".format(cat, svalues.__repr__()))
+            if verbosity:
+                print("Adapting {}, value {}".format(cat, svalues.__repr__()))
             if svalues != 'missing':
                 for f in feats:
                     sfeats2 = ''
@@ -99,15 +234,17 @@ class Biling():
                     tfeats = f[-1]
                     if len(feats) == 3:
                         sfeats2 = f[1]
-#                for sfeats, tfeats in feats:
-                    print("Trying {} ({}) => {}".format(sfeats.__repr__(), sfeats2.__repr__(), tfeats.__repr__()))
+                    if verbosity:
+                        print(" Trying {} ({}) => {}".format(sfeats.__repr__(), sfeats2.__repr__(), tfeats.__repr__()))
                     u = simple_unify(svalues, sfeats)
                     if u != 'fail':
+                        if sfeats2:
+                            print("Attempting to unify {} with additional feats {}".format(features.__repr__(), sfeats2.__repr__()))
                         if not sfeats2 or simple_unify(features, sfeats2) != 'fail':
-                            print("  {} unifies with {} ({})".format(features.__repr__(), sfeats.__repr__(), sfeats2.__repr__()))
+                            if verbosity:
+                                print("  {} unifies with {} ({})".format(features.__repr__(), sfeats.__repr__(), sfeats2.__repr__()))
                             tfeatvalues.update(tfeats)
                             break
-                
         return tfeatvalues
 
     def analyze(self, form):
@@ -123,17 +260,6 @@ class Biling():
             return
         return posmorph.gen(root, update_feats=feats, interact=False,
                             postproc=postproc)
-
-    def read_lexicon(self):
-        abbrev = source + target
-        if abbrev in self.lexicons:
-            return self.lexicons[abbrev]
-        else:
-            import yaml
-            file = self.get_lex_file(source, target)
-            lexicon = yaml.load(open(file, encoding='utf8'))
-            self.lexicons[abbrev] = lexicon
-            return lexicon
 
     def tra(self, morph=False, lexicon=False):
         """Make an interactive text menu for translating words or phrases."""

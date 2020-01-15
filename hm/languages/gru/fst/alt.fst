@@ -1,17 +1,22 @@
 ## optional alternate vowels at the beginning of words
 # yC -> yi
 # yE -> ye
+# we -> wo
 # r -> er
 ## anywhere
 # go -> gWe, ko -> kWe, qo -> qWe
-# we -> wo
+# bwa -> bWa, gwa -> gWa, etc.
 
 -> start
 start -> end    [X;V;_]
 
-# erox_o, eraben_t
+## erox_o, eraben_t
 start -> e.r    [e:]
 e.r -> end      [r]
+
+start -> y      [y]
+y -> yi         [i:]
+yi -> end       [X]
 
 start -> w1     [w]
 end -> w        [w]
@@ -21,9 +26,6 @@ w1 -> end       [o:e]
 w1 -> w1.C      [u:]
 w1.C -> end     [X]
 
-start -> y      [y]
-y -> yi         [i:]
-yi -> end       [X]
 y -> end        [e:E]
 
 # b(_)wa -> bW(_)a
@@ -130,61 +132,6 @@ start -> mW.e   [m:mW]
 end -> mW.e     [m:mW]
 mW.e -> mW.e    [_]
 mW.e -> end     [o:e]
-
-##start -> lW.e   [l:lW]
-##end -> lW.e     [l:lW]
-##lW.e -> lW.e    [_]
-##lW.e -> end     [o:e]
-##
-##start -> sW.e   [s:sW]
-##end -> sW.e     [s:sW]
-##sW.e -> sW.e    [_]
-##sW.e -> end     [o:e]
-##
-##start -> TW.e   [T:TW]
-##end -> TW.e     [T:TW]
-##TW.e -> TW.e    [_]
-##TW.e -> end     [o:e]
-##
-##start -> CW.e   [C:CW]
-##end -> CW.e     [C:CW]
-##CW.e -> CW.e    [_]
-##CW.e -> end     [o:e]
-##
-##start -> xW.e   [x:xW]
-##end -> xW.e     [x:xW]
-##xW.e -> xW.e    [_]
-##xW.e -> end     [o:e]
-##
-##start -> l.uC   [l:lW]
-##end   -> l.uC   [l:lW]
-##l.uC -> l.uC    [_]
-##l.uC -> lu.C    [u:]
-##lu.C -> end     [X]
-##
-##start -> s.uC   [s:sW]
-##end   -> s.uC   [s:sW]
-##s.uC -> s.uC    [_]
-##s.uC -> su.C    [u:]
-##su.C -> end     [X]
-##
-##start -> x.uC   [x:xW]
-##end   -> x.uC   [x:xW]
-##x.uC -> x.uC    [_]
-##x.uC -> xu.C    [u:]
-##xu.C -> end     [X]
-##
-##start -> T.uC   [T:TW]
-##end   -> T.uC   [T:TW]
-##T.uC -> T.uC    [_]
-##T.uC -> Tu.C    [u:]
-##Tu.C -> end     [X]
-##
-##start -> C.uC   [C:CW]
-##end   -> C.uC   [C:CW]
-##C.uC -> C.uC    [_]
-##C.uC -> Cu.C    [u:]
-##Cu.C -> end     [X]
 
 end -> end      [X;V;_]
 end ->

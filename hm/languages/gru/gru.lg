@@ -67,7 +67,8 @@ feats:
 
   *sp = 3 | 2 | 1 | None
   *sn = 1 | 2
-  *sg = m | f
+# no default for subject gender?
+#  *sg = m | f
 
   {sp, sn} (1, 1): subj = 1 pers sing
   {sp, sn} (1, 2): subj = 1 pers plur
@@ -83,7 +84,8 @@ feats:
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
-  *og = m | f
+# no default for object gender?  
+#  *og = m | f
   # accusative | benefactive | malefactive objects
   *ot = a | b | m
 
@@ -156,5 +158,5 @@ feats:
   n = False | True
 #  {n} (True): +n
 
-  *dup = False | True
-  *je = False | True
+#  *dup = False | True
+#  *je = False | True

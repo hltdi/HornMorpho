@@ -18,14 +18,14 @@ $ negative
   -- [-neg]
 
 $ sbj_pre
-  e  [sp=1,sn=1,tm=imf,-neg]
+  e  [sp=1,sn=1,tm=imf,+neg,-sub];[sp=1,sn=1,tm=imf,-neg]
   t  [sp=2,tm=imf];[sp=3,sn=1,sg=f,tm=imf|j_i];[sp=2,tm=j_i,+neg]
   y  [sp=3,sn=2,tm=imf];[sp=3,sn=1,sg=m,tm=imf];[sp=0,sn=1,tm=imf];
      [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=0,sn=1,tm=j_i,+neg];
      [sp=3,sn=2,tm=j_i,vc=[+cs]];[sp=3,sn=1,sg=m,tm=j_i,vc=[+cs]];[sp=0,sn=1,tm=j_i,vc=[+cs]]
   yE [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
   ye [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
-  n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=imf,+neg]
+  n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=imf,+neg,+sub]
   ne [sp=1,sn=1,tm=j_i]
   -- [tm=prf];[sp=2,tm=j_i,-neg]
 
@@ -48,8 +48,8 @@ $ sbj_suff
   He    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
   x     [sp=2,sn=1,sg=f,tm=prf]
   e     [sp=3,sn=1,sg=m,tm=prf]
-  et    [sp=3,sn=1,sg=f,tm=prf,-conv,-def]
-  et_   [sp=3,sn=1,sg=f,tm=prf,+conv];[sp=3,sn=1,sg=f,tm=prf,+def,+sub];[sp=3,sn=1,sg=f,tm=prf,-sub]
+  et    [sp=3,sn=1,sg=f,tm=prf,-conv,-def,+sub];[sp=3,sn=1,sg=f,tm=prf,+neg]
+  et_   [sp=3,sn=1,sg=f,tm=prf,+conv];[sp=3,sn=1,sg=f,tm=prf,+def,+sub];[sp=3,sn=1,sg=f,tm=prf,-sub,-neg]
   ne    [sp=1,sn=2,sg=m,tm=prf,-def,+sub];[sp=1,sn=2,sg=m,tm=prf,-sub]
   n     [sp=1,sn=2,sg=m,tm=prf,+sub,+def]
   kmu   [sp=2,sn=2,sg=m,tm=prf,-def];[sp=2,sn=2,sg=m,tm=prf,-sub]
@@ -159,7 +159,7 @@ $ main
   n     [-sub,-neg,tm=imf|prf,sp=2,sn=2,op=None];[-sub,-neg,tm=imf|prf,sp=3,sn=2,sg=f,op=None];[-sub,-neg,op=2|3,on=2,og=f]
   # all 3s impersonal, imf and prf, imp and pers
   t     [-sub,-neg,op=3,on=1]
-  u     [-sub,-neg,tm=imf|prf,sp=3,sn=1,sg=m,op=None];[-sub,-neg,tm=imf|prf,sp=1,sg=m,op=None];[-sub,-neg,tm=imf|prf,sp=2,sn=1,sg=m,op=None];
+  u     [-sub,-neg,tm=imf|prf,sp=3,sn=1,sg=m,op=None];[-sub,-neg,tm=imf,sp=1,op=None];[-sub,-neg,tm=imf|prf,sp=2,sn=1,sg=m,op=None];
         [-sub,-neg,op=2,on=1,og=m];[-sub,-neg,op=1]
 
 $ def

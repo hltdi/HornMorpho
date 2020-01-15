@@ -65,9 +65,9 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 # 0
 # Delete initial GS if there is one
 >delGS<
-# 1, 2 Epenthetic vowel2
->epen2<
->epen1<
+# Uncomment these to generate epenthetic vowels
+#>epen2<
+#>epen1<
 ## ku+ -> kW, etc. (leave this out till it's better understood)
 ## >Ku<
 # 3 Convert pre-geminate / to geminate _

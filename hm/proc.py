@@ -5,16 +5,521 @@ Create Am<->Ks lexicon.
 from . import morpho
 
 #AM = morpho.get_language('am')
-KS = morpho.get_language('ks')
+#KS = morpho.get_language('ks')
 FS = morpho.FeatStruct
 
+IGN_ROOTS = ["'mm", "hwn", "b'l", "drg", "c'l", "gN*", "hyd", "nbr", "'y*", "hl_w", "nwr"]
+
+def classify_ras(anals=None, rootasps=None, write=True):
+    anals = anals or read_aroots()
+    rootasps = rootasps or read_root_trans()
+    missing = 0
+    total = 0
+    ra = {}
+    counted = 0
+    for root, asps in rootasps:
+        if root in IGN_ROOTS:
+            continue
+        anals1 = anals.get(root)
+        if not anals1:
+            missing += len(asps)
+            total += len(asps)
+        else:
+            dct = {}
+            total += len(asps)
+            fp = get_asp_props(anals1)
+            for asp in asps:
+                if asp not in fp:
+                    missing += 1
+                else:
+                    fp1 = fp.get(asp)
+                    so = ra_sbj_obj(fp1)
+                    if so[-1] < 5:
+                        missing += 1
+                        continue
+                    dct[asp] = so
+            if dct:
+                if len(dct) == 1:
+                    soc = list(dct.values())[0]
+                    if soc[0]:
+                        ra[root] = dct
+                        counted += 1
+#                    else:
+#                        print("Eliminated {}".format(root))
+                else:
+                    ra[root] = dct
+                    counted += len(dct)
+    print("Counted {}".format(counted))
+    if write:
+        ra = list(ra.items())
+        ra.sort()
+        with open("../LingData/Am/vcats0.txt", 'w', encoding='utf') as file:
+            for root, asps in ra:
+                asps = list(asps.items())
+                asps = [(a, c[0]) for a, c in asps]
+                print("{};{}".format(root, asps), file=file)
+                    
+    return ra
+
+def ra_sbj_obj(aspcount, categorize=True):
+    s = ra_sbj(aspcount)
+    o = ra_obj(aspcount)
+    total = sum([c for c in aspcount.values()])
+    if categorize:
+        cat = 0
+        if s < 0.1 and o > 0.05:
+            # multiple objects
+            cat = 1
+        elif s >= 0.1 and o <= 0.05:
+            # multiple subjects
+            cat = 2
+        elif s >= 0.1 and o > 0.05:
+            # multiple subjects and objects
+            cat = 3
+        return cat, total
+    else:
+        return s, o, total
+    
+def ra_obj(aspcount, summary=True):
+    total = 0
+    obj = 0
+    noobj = 0
+    for feat, count in aspcount.items():
+        total += count
+        o = feat[1]
+        if o:
+            obj += count
+        else:
+            noobj += count
+    return round(obj/total, 3)
+
+def ra_sbj(aspcount, summary=True):
+    """Given subject feature counts for root+aspectual, are multiple subjects possible?"""
+    total = 0
+    onetwo = 0
+    three = 0
+    for feat, count in aspcount.items():
+        total += count
+        if isinstance(feat, tuple):
+            feat = feat[0]
+        if summary:
+            if feat > 1:
+                # non 3sm/3p subject
+                onetwo += count
+            else:
+                three += count
+        elif '3' in feat:
+            # 3prs subject
+            three += count
+        else:
+            onetwo += count
+    return round(onetwo/total, 3)
+
+def get_tam(f):
+    return f['tm']
+
+def get_asp(f):
+    asp = f.get('as')
+    vc = f.get('vc')
+    if asp == 'smp':
+        if vc == 'smp':
+            return ''
+        elif vc == 'ps':
+            return 'ps'
+        elif vc == 'tr':
+            return 'tr'
+        else:
+            return 'cs'
+    elif asp == 'rc':
+        if vc == 'ps':
+            return 'psrc'
+        else:
+            return 'trrc'
+    elif vc == 'smp':
+        return 'it'
+    elif vc == 'ps':
+        return 'psit'
+    elif vc == 'cs':
+        return 'csit'
+    else:
+        return 'trit'
+
+def get_sb1(f, number=False, gender=True, summarize=True):
+    s = f.get('sb')
+#    print("{}, {}".format(s, f.__repr__()))
+#    if not s:
+#        print("No sbj in {}".format(f.__repr__()))
+    prs = (s.get('p1'), s.get('p2'), s.get('fem'), s.get('plr'))
+    string = ''
+    if not prs[0] and not prs[1]:
+        string += '3'
+        # 3 person
+        if gender and prs[2]:
+            string += 'f'
+    elif prs[0]:
+        # 1 person
+        string += '1'
+    elif prs[1]:
+        string += '2'
+        if gender and prs[2]:
+            string += 'f'
+    if number and prs[3]:
+        string += 'p'
+    if summarize:
+        if string == '3':
+            return 0
+        elif string == '3p':
+            return 1
+        else:
+            return 2
+    return string
+    
+def get_ob1(f, number=False, gender=True, app=False, summarize=True):
+    o = f.get('ob')
+    if not o.get('expl'):
+        if summarize:
+            return 0
+        else:
+            return ''
+    prs = (o.get('p1'), o.get('p2'), o.get('fem'), o.get('plr'), o.get('b'), o.get('l'))
+    if not app and o.get('prp'):
+        if summarize:
+            return 0
+        else:
+            return ''
+    string = ''
+    if not prs[0] and not prs[1]:
+        # 3 person
+        string += '3'
+        if gender and prs[2]:
+            string += 'f'
+    elif prs[0]:
+        # 1 person
+        string += '1'
+    # 2 person
+    elif prs[1]:
+        string += '2'
+        if gender and prs[2]:
+            string += 'f'
+    if number and prs[3]:
+        string += 'p'
+    if app:
+        if prs[4]:
+            string += "_b"
+        elif prs[5]:
+            string += "_l"
+    if summarize:
+        if string == '3':
+            return 1
+        else:
+            return 2
+    return string
+    
+def get_asp_props(fs, obj=True, tam=False, number=True, summarize=True):
+    result = {}
+    for f in fs:
+        res = []
+        asp = get_asp(f)
+        if tam:
+            res.append(get_tam(f))
+        prs = get_sb1(f, number=number, summarize=summarize)
+        res.append(prs)
+        if obj:
+            res.append(get_ob1(f, number=number, summarize=summarize))
+        if len(res) == 1:
+            res = res[0]
+        else:
+            res = tuple(res)
+        if asp not in result:
+            result[asp] = {}
+        r = result[asp]
+        if res in r:
+            r[res] += 1
+        else:
+            r[res] = 1
+    return result
+
+def read_aroots():
+    aroots = {}
+    impersonal = []
+    trans = []
+    with open("../LingData/Am/vroots0.txt", encoding='utf8') as file:
+        for line in file:
+            root, anals = line.split(';')
+            anals = anals.strip().split(':')
+            anals = [FS(a) for a in anals]
+            aroots[root] = anals
+    return aroots
+
+def aroots_from_corpus(start=0, number=25000, result=None, write=False):
+    result = result or {}
+#    POS = morpho.FeatStruct("[pos=v]")
+    n = 0
+    with open("../LingData/Am/Crawl/all.txt", encoding='utf8') as file:
+        lines = list(file)
+        for line in lines[start:start+number]:
+            n += 1
+            if n % 500 == 0:
+                print("{} words processed, {} verb roots".format(n, len(result)))
+#            if n % 10000 == 0:
+#                break
+            x, am = line.split()
+            am = am.strip()
+            anal = AM.anal_word(am, preproc=True, guess=False)
+#            anal = AM.anal_word(am, preproc=True, init_weight=POS, guess=False)
+            if anal and len(anal) == 1: #all([x[1] for x in anal]):
+                for root, feats, count in anal:
+                    if not feats or root in IGN_ROOTS or feats.get('pos') != 'v':
+                        continue
+                    if root in result:
+                        rootentry = result[root]
+                        if len(rootentry) > 99:
+                            # already enough examples for this root
+                            continue
+                        if feats not in rootentry:
+                            result[root].append(feats)
+                    else:
+                        result[root] = [feats]
+    print("Processed from {} to {}".format(start, start+number))
+    if write:
+        res = list(result.items())
+        res.sort()
+        with open("../LingData/Am/vroots0.txt", 'w', encoding='utf8') as file:
+            for root, anals in res:
+                anals = ':'.join([a.__repr__() for a in anals])
+                print("{};{}".format(root, anals), file=file)
+    return result
+
+def make_new_ks_entries(old=None, new=None, write=True):
+    old = old or get_current_ks_roots()
+    new = new or get_new_ks_roots()
+    entries = []
+    for root, asp in new.items():
+        if root in old:
+            continue
+        root, cls = root.split('.')
+        feats = "[cls={}".format(cls)
+        if cls == 'A':
+            feats += ",-je"
+            if root[1] == root[2]:
+                feats += ",+dup"
+            else:
+                feats += ",-dup"
+        feats += "]"
+        entries.append("{}  {}".format(root, feats))
+        entries.sort(key=lambda e: e[e.index('=')+1])
+    if write:
+        with open("../LingData/Ks/new_v_roots.lex", 'w', encoding='utf8') as file:
+            for entry in entries:
+                print(entry, file=file)
+    return entries
+
+def get_current_ks_roots():
+    roots = set()
+    def get_class(feats):
+        if "=Aw" in feats:
+            return 'Aw'
+        elif "=AW" in feats:
+            return 'AW'
+        elif "=A" in feats:
+            return 'A'
+        elif "=B" in feats:
+            return 'B'
+        elif "=C" in feats:
+            return 'C'
+        elif "=E" in feats:
+            return 'E'
+        elif "=F" in feats:
+            return 'F'
+        else:
+            print("No class for {}".format(root))
+    with open("hm/languages/gru/lex/v_root.lex", encoding='utf8') as file:
+        for line in file:
+            if line[0] == '#' or not line.strip():
+                continue
+            root, feats = line.split()
+            cls = get_class(feats)
+            roots.add("{}.{}".format(root, cls))
+    with open("hm/languages/gru/lex/v_irr_stem.lex", encoding='utf8') as file:
+        for line in file:
+            stem, root, feats = line.split()
+            cls = get_class(feats)
+            roots.add("{}.{}".format(root, cls))
+    return roots
+
+def get_new_ks_roots():
+    roots = {}
+    with open("../LingData/Ks/am_v_entries.txt", encoding='utf8') as file:
+        for line in file:
+            aspects = []
+            root, feattrans = line.split(';')
+            feattrans = eval(feattrans.strip())
+            for ft in feattrans:
+                feat, trans = ft.split(':')
+                rootcls, asp = trans.split('_')
+                if rootcls in roots:
+                    roots[rootcls].add(asp)
+                else:
+                    roots[rootcls] = {asp}
+    return roots
+
+def read_root_trans():
+    rt = {}
+    rf = []
+    with open("../LingData/Ks/am_v_entries.txt", encoding='utf8') as file:
+        for line in file:
+            aspects = []
+            root, feattrans = line.split(';')
+            feattrans = eval(feattrans.strip())
+            for ft in feattrans:
+                feat, trans = ft.split(':')
+                feat = feat.replace('3', '')
+                if feat not in aspects:
+                    aspects.append(feat)
+            rf.append((root, aspects))
+    return rf
+
 def read_dict(write=True):
+    ak_roots = {}
+    ka_roots = {}
+    v_unambig = {}
+    v_unambig2 = {}
+    v_a2krf = {}
+    v_entries = {}
+    proc_entries = {}
+    unproc_entries = {}
+    feat_mismatch = {}
+    with open("../LingData/Ks/ak_roots.txt", encoding='utf8') as file:
+        for line in file:
+            a, k = line.split(';')
+            ak_roots[a] = eval(k.strip())
+    with open("../LingData/Ks/ka_roots.txt", encoding='utf8') as file:
+        for line in file:
+            k, a = line.split(';')
+            ka_roots[k] = eval(a.strip())
+    with open("../LingData/Ks/v_unambig.txt", encoding='utf8') as file:
+        for line in file:
+            a, k = line.split(';')
+            if ':' in k:
+                v_unambig2[a] = [kk.strip() for kk in k.split(':')]
+            else:
+                v_unambig[a] = k.strip()
+    with open("../LingData/Ks/v_a2krf.txt", encoding='utf8') as file:
+        for line in file:
+            a, k = line.split(';')
+            v_a2krf[a] = eval(k.strip())
+    with open("../LingData/Ks/v_new_entries1.txt", encoding='utf8') as file:
+        for line in file:
+            a, k = line.split(';')
+            v_entries[a] = eval(k.strip())
+    for aroot, aktrans in v_entries.items():
+        kroots = []
+        if aroot in v_unambig:
+            kroots = [v_unambig[aroot]]
+        elif aroot in v_unambig2:
+            kroots = v_unambig2[aroot]
+        not_found = 0
+        entry = {}
+        if kroots:
+            for afeat, ktrans in aktrans.items():
+                ktrans1 = [kt.split('_') for kt in ktrans]
+                found = False
+                for kr, kf in ktrans1:
+                    if kr in kroots:
+                        entry[afeat] = (kr, kf)
+                        found = True
+                        break
+                if not found:
+                    not_found += 1
+            if len(entry) < 2 and not_found > 1:
+                unproc_entries[aroot] = aktrans
+            else:
+                proc_entries[aroot] = entry
+        else:
+            unproc_entries[aroot] = aktrans
+    delete = []
+    for aroot, entries in unproc_entries.items():
+        aroot1 = aroot.replace('_', '').replace('a', '').replace("'", 'h').replace('|', '').replace('*', 'y')
+        if len(entries) == 1:
+            # Check on entries with only one feature and a root that resembles Am root
+            afeat, k = list(entries.items())[0]
+            if len(k) == 1:
+                # Only one root given
+                krf = list(k)[0]
+                kroot, kfeat = krf.split(krf)
+                proc_entries[aroot] = {afeat: (kroot, kfeat)} 
+                delete.append(aroot)
+                continue
+            for kk in k:
+                kroot, kfeat = kk.split('_')
+                kr = kroot.split('.')[0]
+                if kr == aroot1:
+                    delete.append(aroot)
+                    proc_entries[aroot] = {afeat: (kroot, kfeat)}
+        else:
+            # Check for repeating roots that match Am root
+            kroots = {}
+            # 2, 3 -> 1, 4, 5 -> 2
+            thresh = round(len(entries) / 2)
+            for afeat, k in entries.items():
+                for kk in k:
+                    kroot, kfeat = kk.split('_')
+                    if kroot in kroots:
+                        kroots[kroot] += 1
+                    else:
+                        kroots[kroot] = 1
+            kroots = list(kroots.items())
+            kroots.sort(key=lambda x: x[1], reverse=True)
+            match_root = ''
+            for kroot, count in kroots:
+                if count > 1:
+                    kr = kroot.split('.')[0]
+                    if kr == aroot1:
+                        match_root = kroot
+                        break
+                    elif count >= thresh:
+                        # kroot is in every feat entry
+                        match_root = kroot
+                        break
+            if match_root:
+                new_entry = {}
+                for afeat, k in entries.items():
+                    for kk in k:
+                        kroot, kfeat = kk.split('_')
+                        if kroot == match_root:
+                            new_entry[afeat] = (kroot, kfeat)
+                            break
+                proc_entries[aroot] = new_entry
+#                print("New entry: {} ; {}".format(aroot, new_entry))
+                delete.append(aroot)
+
+    for d in delete:
+        del unproc_entries[d]
+
+    print("Processed {}, unprocessed {}".format(len(proc_entries), len(unproc_entries)))
+
+    proc_entries = list(proc_entries.items())
+    proc_entries.sort()
+
+    if write:
+        with open("../LingData/Ks/am_v_entries.txt", 'w', encoding='utf8') as file:
+            for aroot, afeats in proc_entries:
+                afeats = list(afeats.items())
+                afeats = ["{}:{}".format(a[0], '_'.join(a[1])) for a in afeats]
+                print("{};{}".format(aroot, afeats), file=file)
+        
+    return proc_entries, unproc_entries
+
+def read_dict1(write=True):
     entries = {}
     kanals = {}
     kambig = {}
     newanals = {}
     unanal = []
     noanal = 0
+    a2kroots = {}
+    k2aroots = {}
+    a2krf = {}
     with open("../LingData/Ks/kanals2.txt", encoding='utf8') as file:
         for line in file:
             word, anals = line.split(';')
@@ -62,39 +567,127 @@ def read_dict(write=True):
                             stored = False
                     else:
                         k_anals.append(k_anal)
-                    if k not in newanals:
-                        k_proc = KS.anal_word(k,
-                                              init_weight=FS("[tm=prf,sp=3,-rel,-sub]"),
-                                              guess=True, preproc=True)
-                        if k_proc:
-                            k_proc = [(a[0], proc_source_feats(a[1], True)) for a in k_proc if a[1].get('op') != 1]
-                            k_proc = [(a[0], a[1]['cls'], proc_targ_feats(a[1])) for a in k_proc]
-                            if not stored:
-#                                print("NEW ANALYSES FOR {}: {}".format(k, k_proc))
-                                k_anals.extend(k_proc)
-                            elif len(k_proc) > 1:
-                                if k_anal not in k_proc and not set(k_proc).intersection(ambig):
-                                    print("{}: analysis {} not in {}".format(k, k_anal, k_proc))
-                                if ambig:
-#                                    print("ambig {}".format(ambig))
-                                    newanals[k] = ambig, list(set(k_proc) - set(ambig))
-                                elif k_anal not in k_proc:
-                                    print("Old anal {} not among new anals {}".format(k_anal, k_proc))
-                                else:
-                                    k_proc.remove(k_anal)
-                                    newanals[k] = k_anal, k_proc
-                        elif not stored:
-                            others = len(ks)-1
-                            if not others and k not in unanal:
-#                                print("No analysis for {} in {} with no other translations".format(k, am))
-                                unanal.append(k)
-                                noanal += 1
+#                    if k not in newanals:
+#                        k_proc = KS.anal_word(k,
+#                                              init_weight=FS("[tm=prf,sp=3,-rel,-sub]"),
+#                                              guess=True, preproc=True)
+#                        if k_proc:
+#                            k_proc = [(a[0], proc_source_feats(a[1], True)) for a in k_proc if a[1].get('op') != 1]
+#                            k_proc = [(a[0], a[1]['cls'], proc_targ_feats(a[1])) for a in k_proc]
+#                            if not stored:
+#                                k_anals.extend(k_proc)
+#                            elif len(k_proc) > 1:
+#                                if k_anal not in k_proc and not set(k_proc).intersection(ambig):
+#                                    print("{}: analysis {} not in {}".format(k, k_anal, k_proc))
+#                                if ambig:
+#                                    newanals[k] = ambig, list(set(k_proc) - set(ambig))
+#                                elif k_anal not in k_proc:
+#                                    print("Old anal {} not among new anals {}".format(k_anal, k_proc))
+#                                else:
+#                                    k_proc.remove(k_anal)
+#                                    newanals[k] = k_anal, k_proc
+#                        elif not stored:
+#                            others = len(ks)-1
+#                            if not others and k not in unanal:
+#                                unanal.append(k)
+#                                noanal += 1
             if k_anals:
-                entries[(am, aroot, afeats)] = k_anals
-#        if write:
-#            with open("../LingData/Ks/v_new_entries.txt", 'w'
-        print("{} words without analyses".format(noanal))
-    return entries, newanals, unanal
+                k_anals = [("{}.{}".format(ka[0], ka[1]), ka[2]) for ka in k_anals]
+                kroots = {ka[0] for ka in k_anals}
+                if aroot in a2kroots:
+                    a2kroots[aroot].update(kroots)
+                else:
+                    a2kroots[aroot] = kroots
+                if aroot not in a2krf:
+                    a2krf[aroot] = {}
+                ak = a2krf[aroot]
+                for kr, kf in k_anals:
+                    if kr in ak:
+                        ak[kr].add(kf)
+                    else:
+                        ak[kr] = {kf}
+                for kroot in kroots:
+                    if kroot in k2aroots:
+                        k2aroots[kroot].add(aroot)
+                    else:
+                        k2aroots[kroot] = {aroot}
+                k_anals = ['_'.join(ka) for ka in k_anals]
+                k_anals = set(k_anals)
+                if aroot in entries:
+                    e = entries[aroot]
+                    e[afeats] = k_anals
+                else:
+                    entries[aroot] = {afeats: k_anals}
+        # first isolate unambiguous translations
+        unambig = {}
+        unambig2 = {}
+        kassigned = {}
+        ambig = {}
+        delete = []
+        for a, k in a2kroots.items():
+            if len(k) == 1:
+                # only 1 translation for Am root
+                k = list(k)[0]
+                unambig[a] = k
+                delete.append(a)
+                kassigned[k] = a
+            else:
+                # dict of feature sets for each Ks root
+                ka = a2krf[a]
+                lendict = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: []}
+                for kk, aa in ka.items():
+                    lendict[len(aa)].append((kk, aa))
+                lendict = list(lendict.items())
+                lendict = [d for d in lendict if d[1]]
+                if len(lendict) > 1:
+                    lendict.sort(reverse=True)
+                    lendict0 = lendict[0][1]
+#                    print("lendict0 {}".format(lendict0))
+                    lendict0 = [l for l in lendict0 if '' in l[1]]
+                    if lendict0:
+#                        print("Limiting {} to {}".format(a, lendict0))
+                         if len(lendict0) == 1:
+                             # only one translation left after filtering
+                             unambig[a] = lendict0[0][0]
+                             delete.append(a)
+                         else:
+                             unambig2[a] = [l[0] for l in lendict0]
+                             delete.append(a)
+                
+        for d in delete:
+            del a2kroots[d]
+        if write:
+            a2kroots = list(a2kroots.items())
+            a2kroots.sort()
+            k2aroots = list(k2aroots.items())
+            k2aroots.sort()
+            unambig = list(unambig.items())
+            unambig.sort()
+            with open("../LingData/Ks/ak_roots.txt", 'w', encoding='utf8') as file:
+                for aroot, kroots in a2kroots:
+                    print("{};{}".format(aroot, kroots), file=file)
+            with open("../LingData/Ks/ka_roots.txt", 'w', encoding='utf8') as file:
+                for kroot, aroots in k2aroots:
+                    print("{};{}".format(kroot, aroots), file=file)
+            with open("../LingData/Ks/v_unambig.txt", 'w', encoding='utf8') as file:
+                for a, k in unambig:
+                    print("{};{}".format(a, k), file=file)
+            with open("../LingData/Ks/v_new_entries1.txt", 'w', encoding='utf8') as file1:
+                with open("../LingData/KS/v_new_entries2.txt", 'w', encoding='utf8') as file2:
+                    for am, afeats in entries.items():
+                        for af, ks in afeats.items():
+                            if len(ks) > 1:
+                                print("{}:{}".format(am, af), file=file2)
+                                for k in ks:
+                                    print("  {}".format(k), file=file2)
+#                                print("{}:{};{}".format(am, af, ':'.join(ks)), file=file2)
+                        print("{};{}".format(am, afeats.__repr__()), file=file1)
+            with open("../LingData/Ks/v_unal.txt", 'w', encoding='utf8') as file:
+                for word in unanal:
+                    print(word, file=file)
+#        print("{} words without analyses".format(noanal))
+    return a2krf, unambig2, kassigned
+#    return entries, newanals, unanal
 
 def proc_targ_feats(feats):
     return ''.join(('cs' if feats['vc'].get('cs') else '',

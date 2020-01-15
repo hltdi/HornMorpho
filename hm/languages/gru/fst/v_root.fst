@@ -2,11 +2,10 @@
 
 -> start
 
-start -> A1  [CC-y]  [cls=A];[cls=Aw];[cls=AW]
-#A1 -> A2     [RR]    [cls=A];[cls=Aw];[cls=AW]
-A1 -> A2     [ZZ]    [cls=AW];[cls=A]
-A1 -> A2     [PP]    [cls=Aw];[cls=A]
-A1 -> A2     [UU]    [cls=A]
+start -> A1  [CC-y]     [cls=A];[cls=Aw];[cls=AW]
+A1 -> A2     [ZZ]       [cls=AW];[cls=A]
+A1 -> A2     [PP]       [cls=Aw];[cls=A]
+A1 -> A2     [UU;w;y;h] [cls=A]
 A2 -> end    [CC]
 
 start -> B1  [CC-y]   [cls=B]

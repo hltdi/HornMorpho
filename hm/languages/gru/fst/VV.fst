@@ -23,9 +23,11 @@ e=.V -> start  [I;o]
 e=.V -> E      [E]
 e=.V -> a      [a]
 e=.V -> i      [i]
+e=.V -> e=e.   [e]
+e=e. -> start  [X;_;V-E,u]
 start -> e.E   [:e]
 e.E -> E       [E]
-e=.V -> e      [e]
+e=.V -> e.E    [:e]
 e=.V -> e=e.u  [o:e]
 e=e.u -> start [:u]
 
@@ -40,14 +42,18 @@ start -> a     [a]
 a -> a=.       [:=]
 a=. -> start   [X;/;w:u]
 a=. -> a=.e    [:e]
-a=.e -> start  [w:u;X;V-u]
+a=.e -> start  [w:u;X;V-u,E,i]
 a -> start     [X;_;/;V-i]
-a -> a.i       [y:]
-a.i -> start   [i]
+a=. -> a.iE    [y:]
+a=.e -> a.iE   [y:]
+a -> a.iE      [y:]
+a.iE -> i      [i]
+a.iE -> E      [E]
 
 start ->
 a=. ->
 a=.e ->
+e=e. ->
 i ->
 e ->
 E ->

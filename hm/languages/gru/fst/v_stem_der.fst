@@ -52,13 +52,14 @@ A2v -> end           [FF]
 # h**
 # ab_ero, tab_ero, [atib_ero], abab_ero, tebab_ero, at_bab_ero; yabr, yt_ab_er, [yatib_r], yababr, yt_bab_er, yat_bab_r
 # ebr
-stem -> A1h          [:h]   [cls=A,as=None,vc=[-cs]];[cls=A,as=it]
+stem -> A1h          [:h]   [cls=A,as=None,vc=[-ps]];[cls=A,as=None,vc=[-cs]];[cls=A,as=it]
 A1h -> A1h_          [_:]   [tm=imf,vc=[-cs,+ps]];[as=it,vc=[+cs,+ps]];[tm=j_i,vc=[-cs,+ps],sp=0|1|3]
 A1h -> A1h_          [:]    [tm=prf,as=None];[tm=prf,as=it,vc=[-cs]];[tm=imf,vc=[-cs,-ps]];[tm=j_i,as=None,sp=2];[tm=j_i,vc=[-ps],sp=0|1|3]
 A1h -> A1h_          [t:]   [vc=[+cs,-ps]]
 A1h_ -> A1v          [a:]   [tm=prf|imf,as=None];[as=it,vc=[-ps,-cs]];[tm=j_i,as=None,vc=[+ps]]
 A1h_ -> A1v          [:]    [as=it,vc=[+ps]]
-A1h_ -> A1v          [e:]   [as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[-ps]]
+# alt to a- with iter: e-
+A1h_ -> A1v          [e:]   [as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[-ps]];[as=it,vc=[-ps,-cs]]
 # **h
 A2_ -> end           [e:h]  [sp=3,sn=2];[sp=0,op=1|2];[sp=0,op=3,on=1,og=m]
 A2_ -> end           [a:h]  [sp=1|2];[sp=3,sn=1]
@@ -86,6 +87,8 @@ A2wit_ -> A2v        [I:]   [tm=j_i,sp=1,sn=1,-neg,-je,vc=[-ps]];[tm=j_i,sp=3,sn
 A2wit_ -> A2v        [:]    [tm=imf,vc=[-ps]]
 A1 -> A2v            [o:w]  [as=None,tm=imf|prf,cls=A]
 A1 -> A2v            [u:w]  [as=None,tm=j_i,cls=A]
+A1 -> A1wrc          [a:w]  [cls=A,as=rc,vc=[+ps]]
+A1wrc -> A2          [w:]
 atA1hwy -> A2v       [o:w]  [cls=A,tm=imf|prf]
 atA1hwy -> A2v       [u:w]  [cls=A,tm=j_i]
 # *y*
@@ -121,7 +124,7 @@ B1h -> B1h_          [:]    [tm=prf,as=None];[tm=prf,as=it,vc=[-cs]];[tm=imf,vc=
 B1h_ -> B1v          [i:]   [tm=prf,as=None,-neg];[tm=imf,as=None];[as=it,vc=[-ps,-cs]];[tm=j_i,as=None,vc=[+ps],sp=2]
 B1h_ -> B1v          [a:]   [tm=prf,as=None,+neg];[as=it,vc=[-cs,-ps]];[tm=j_i,as=None,vc=[-ps]];[tm=j_i,as=None,vc=[-cs]]
 # not sure about at_<e>bab_eTo
-B1h_ -> B1v          [e:]   [as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[+cs,+ps]]
+B1h_ -> B1v          [e:]   [as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[+cs,+ps]];[as=it,vc=[-ps,-cs]]
 B1h_ -> B1v          [:]    [as=it,vc=[+ps]]
 # **h
 B2_ -> end           [e:h]  [sp=3,sn=2];[sp=0,op=1|2];[sp=0,op=3,on=1,og=m]
