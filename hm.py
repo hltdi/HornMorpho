@@ -29,6 +29,7 @@ import hm
 ## Am->Ks translation
 
 AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
+T = hm.morpho.TransTask(AK)
 
 def get_lang(abbrev, segment=False, guess=True, phon=False, cache='', verbose=False):
     """Return the language with abbreviation abbrev, loading it

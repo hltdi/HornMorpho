@@ -693,17 +693,18 @@ AM.morphology['v'].name = 'verb'
 ## Default feature structures for POSMorphology objects
 ## Used in generation and production of citation form
 AM.morphology['v'].defaultFS = \
-    language.FeatStruct("[pos=v,tm=prf,as=smp,vc=smp,sb=[-p1,-p2,-plr,-fem],ob=[-expl,-p1,-p2,-plr,-fem,-b,-l,-prp,-frm],cj1=None,cj2=None,pp=None,ax=None,-neg,-rel,-sub,-def,-acc,-ye,rl=[-p,-acc]]")
-AM.morphology['v'].FS_implic = {'rel': ['def', 'sub'],
+    language.FeatStruct("[pos=v,tm=prf,as=smp,vc=smp,sb=[-p1,-p2,-plr],ob=[-expl,-p1,-p2,-plr,-b,-l,-prp,-frm],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-acc,-ye,rl=[-p,-acc]]")
+AM.morphology['v'].FS_implic = {'rel': ['sub'],
                                 'cj1': ['sub'],
                                 'pp': ['rel', 'sub'],
                                 ('pp', ('be', 'le', 'ke', 'wede', 'Inde', 'sIle', 'Iske', 'Iyye')): [['rl', ['p']]],
-                                'def': ['rel', 'sub'],
+#                                'def': ['rel', 'sub'],
                                 'l': ['prp'],
                                 'b': ['prp'],
-                                'ob': [['expl']]}
+                                'ob': [['expl']]
+                                }
 # defaultFS with voice and aspect unspecified
-AM.morphology['v'].citationFS = language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-expl],cj1=None,cj2=None,pp=None,ax=None,-neg,-rel,-sub,-def,-ye,-acc,rl=[-p,-acc]]")
+AM.morphology['v'].citationFS = language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-expl],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-ye,-acc,rl=[-p,-acc]]")
 AM.morphology['v'].explicit_feats = ["sb", "ob", "tm", "neg", "rel", "def", "cj1", "cj2", "pp"]
 AM.morphology['v'].feat_list = \
   [('cj1', ('sI', 'IskI', 'bI', 'lI', 'IndI')),

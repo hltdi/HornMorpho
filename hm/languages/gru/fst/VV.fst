@@ -11,7 +11,7 @@ e.u -> e.u     [:=]
 e.u -> start   [:u]
 
 start -> e     [e]
-e -> start     [X;_;/;V-u]
+e -> start     [X;_;/;V-u,E]
 e -> e=.C      [:=]
 e=.C -> start  [X;/]
 

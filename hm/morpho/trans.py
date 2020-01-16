@@ -25,6 +25,8 @@ Multilingual objects and morphological translation.
 """
 
 import yaml
+from itertools import product
+from random import sample
 from .languages import *
 
 class Biling():
@@ -193,11 +195,18 @@ class Biling():
             if '[' not in aspectual:
                 # It's an abbrev
                 aspectual = self.expand_feat_abbrev(aspectual, pos=pos, src=True)
-            f.udpate(FeatStruct(aspectual))
+            if aspectual:
+                f.udpate(FeatStruct(aspectual))
         if abbrevs:
             for abbrev in abbrevs:
-                feats = self.expand_feat_abbrev(abbrev, pos=pos, src=src)
-                f.update(FeatStruct(feats))
+                # abbrev could be a list of abbrevs for different features, for example, sbj and obj
+                if isinstance(abbrev, list):
+                    for ab in abbrev:
+                        feats = self.expand_feat_abbrev(ab, pos=pos, src=src)
+                        f.update(FeatStruct(feats))
+                else:
+                    feats = self.expand_feat_abbrev(abbrev, pos=pos, src=src)
+                    f.update(FeatStruct(feats))
         return f
 
     @staticmethod
@@ -247,143 +256,165 @@ class Biling():
                             break
         return tfeatvalues
 
-    def analyze(self, form):
-        """Analyze the source form, returning list of (root, feature_FS) pairs."""
-        return self.source.anal_word(form, preproc=True)
+class TransTask:
 
-    def generate(self, pos, root, feats, postproc=True):
-        """Generate the target form, given POS, root, and features.
-        If postproc, convert output to target orthography."""
-        posmorph = self.target.morphology.get(pos)
-        if not posmorph:
-            print("Generation not possible for {}".format(pos))
+    def __init__(self, biling, pos='v', bigen=True):
+        self.biling = biling
+        self.pos = pos
+        # Whether the task is generation of both source and target words
+        # from root and features or translation of source word
+        self.bigen = bigen
+        self.cats = biling.data[pos]['racats']
+
+    def get_abbrev_combs(self, cat, n=0):
+        if cat not in self.cats:
+            print("{} not in cats!".format(cat))
             return
-        return posmorph.gen(root, update_feats=feats, interact=False,
-                            postproc=postproc)
+        p = list(product(*self.cats[cat]))
+        if n:
+            p = sample(p, n)
+        return p
 
-    def tra(self, morph=False, lexicon=False):
-        """Make an interactive text menu for translating words or phrases."""
-        first = True
-        tdir = ''
-        while True:
-            t = '1'
-            if not first:
-                t = input("\n¿Traducir de nuevo?  [1]   |   ¿Terminar?   [2] >> ")
-            if t == '2':
-                return
-            first = False
-            tdir = self.tra1(morph=morph, lexicon=lexicon, tdir=tdir)
+    def generate(self, cat, n=0):
+        abbrevs = self.get_abbrev_combs(cat, n=n)
 
-    def tra1(self, morph=False, lexicon=False, tdir=''):
-        """Make an interactive text menu for translating words or phrases."""
-        lex = True
-        if morph:
-            lex = False
-        elif lexicon:
-            lex = True
-        else:
-            transi = input("-Morfología          [1]   |   +Morfología  [2] >> ")
-            if transi and transi == '2':
-                lex = False
-        if not tdir:
-            dir1 = "{}->{}".format(self.langs2[0], self.langs2[1])
-            dir2 = "{}->{}".format(self.langs2[1], self.langs2[0])
-            direction = input("Dirección: {}    [1]   |   {}       [2] >> ".format(dir1, dir2))
-            if direction and direction == '2':
-                tdir = self.langs2[1] + self.langs2[0]
-            else:
-                tdir = self.langs2[0] + self.langs2[1]
-        item = input("Palabra   o   frase   para   traducir           :: ")
-        if lex:
-            trans = self.tralex(item, direction=tdir)
-            if not trans:
-                print("   Traducción no encontrada")
-        else:
-            trans = self.tramorf(item, direction=tdir)
-            if not trans:
-                print("   Traducción no encontrada")
-        return tdir
-
-    def tramorf(self, phrase, fsts=None, direction='', verbose=False):
-        """Use lexicons and morphological FSTs to attempt to translate phrase."""
-        # phrase must be a list of words
-        if isinstance(phrase, str):
-            phrase = phrase.split()
-        if not fsts:
-            fsts = self.fsts.get(direction)
-        if not fsts:
-            if verbose:
-                print("No FSTs found")
-                return []
-        for f in fsts:
-            if verbose:
-                print("Attempting to translate with FST {}".format(f))
-            trans = f.transduce(phrase, verbose=verbose)
-            if trans:
-                return trans
-        return []
-
-    def tralex(self, item, direction='', root=None, only_one=False):
-        """Use lexicons to attempt to translate item."""
-        dct = self.lexicons.get(direction)
-        if not dct:
-            print('No lexicon loaded')
-            return []
-        key = root if root else item
-        entries = dct.get(key)
-        if not entries:
-            return []
-        res = []
-        for sphrase, troot, tphrase, tpos in entries:
-            if sphrase == item:
-                if only_one:
-                    print('   {}'.format(tphrase))
-                    return [tphrase]
-                else:
-                    print('   {}'.format(tphrase))
-                    res.append(tphrase)
-        return res
-
-    @staticmethod
-    def get_translations(source, lexicon, tlang, one_word=True, one=False, match_all=True):
-        """
-        Get translations for source root in lexicon dict.
-        """
-        targets = lexicon.get(source, [])
-        res = []
-        for sphrase, target, tphrase, tpos in targets:
-            if match_all and source != sphrase:
-                continue
-            if ' ' in tphrase and one_word:
-                continue
-            res.append((target, tpos))
-            if one and len(res) == 1:
-                return res
-        return res
-
-    @staticmethod
-    def gen_target(root, feats, pos, prefixes=None, final=False, verbose=False):
-        if verbose:
-            print('Generating {}: {}'.format(root, feats.__repr__()))
-#        result = pos.gen(root, interact=False, update_feats=feats)
-        result = pos.generate(root, feats, interact=False, print_word=final)
-        return [r[0] for r in result]
-
-    @staticmethod
-    def match_cond(root, feats, condFS):
-        if condFS:
-            if not Multiling.match_feats(feats, condFS):
-                return False
-        return True
-
-    @staticmethod
-    def match_feats(fs1, fs2):
-        """Match two FSSetss, converting strings to FSSets if necessary."""
-        if not isinstance(fs1, FSSet):
-            fs1 = FSSet(fs1)
-        if not isinstance(fs2, FSSet):
-            fs2 = FSSet(fs2)
-        return fs1.unify(fs2)
+##    def analyze(self, form):
+##        """Analyze the source form, returning list of (root, feature_FS) pairs."""
+##        return self.source.anal_word(form, preproc=True)
+##
+##    def generate(self, pos, root, feats, postproc=True):
+##        """Generate the target form, given POS, root, and features.
+##        If postproc, convert output to target orthography."""
+##        posmorph = self.target.morphology.get(pos)
+##        if not posmorph:
+##            print("Generation not possible for {}".format(pos))
+##            return
+##        return posmorph.gen(root, update_feats=feats, interact=False,
+##                            postproc=postproc)
+##
+##    def tra(self, morph=False, lexicon=False):
+##        """Make an interactive text menu for translating words or phrases."""
+##        first = True
+##        tdir = ''
+##        while True:
+##            t = '1'
+##            if not first:
+##                t = input("\n¿Traducir de nuevo?  [1]   |   ¿Terminar?   [2] >> ")
+##            if t == '2':
+##                return
+##            first = False
+##            tdir = self.tra1(morph=morph, lexicon=lexicon, tdir=tdir)
+##
+##    def tra1(self, morph=False, lexicon=False, tdir=''):
+##        """Make an interactive text menu for translating words or phrases."""
+##        lex = True
+##        if morph:
+##            lex = False
+##        elif lexicon:
+##            lex = True
+##        else:
+##            transi = input("-Morfología          [1]   |   +Morfología  [2] >> ")
+##            if transi and transi == '2':
+##                lex = False
+##        if not tdir:
+##            dir1 = "{}->{}".format(self.langs2[0], self.langs2[1])
+##            dir2 = "{}->{}".format(self.langs2[1], self.langs2[0])
+##            direction = input("Dirección: {}    [1]   |   {}       [2] >> ".format(dir1, dir2))
+##            if direction and direction == '2':
+##                tdir = self.langs2[1] + self.langs2[0]
+##            else:
+##                tdir = self.langs2[0] + self.langs2[1]
+##        item = input("Palabra   o   frase   para   traducir           :: ")
+##        if lex:
+##            trans = self.tralex(item, direction=tdir)
+##            if not trans:
+##                print("   Traducción no encontrada")
+##        else:
+##            trans = self.tramorf(item, direction=tdir)
+##            if not trans:
+##                print("   Traducción no encontrada")
+##        return tdir
+##
+##    def tramorf(self, phrase, fsts=None, direction='', verbose=False):
+##        """Use lexicons and morphological FSTs to attempt to translate phrase."""
+##        # phrase must be a list of words
+##        if isinstance(phrase, str):
+##            phrase = phrase.split()
+##        if not fsts:
+##            fsts = self.fsts.get(direction)
+##        if not fsts:
+##            if verbose:
+##                print("No FSTs found")
+##                return []
+##        for f in fsts:
+##            if verbose:
+##                print("Attempting to translate with FST {}".format(f))
+##            trans = f.transduce(phrase, verbose=verbose)
+##            if trans:
+##                return trans
+##        return []
+##
+##    def tralex(self, item, direction='', root=None, only_one=False):
+##        """Use lexicons to attempt to translate item."""
+##        dct = self.lexicons.get(direction)
+##        if not dct:
+##            print('No lexicon loaded')
+##            return []
+##        key = root if root else item
+##        entries = dct.get(key)
+##        if not entries:
+##            return []
+##        res = []
+##        for sphrase, troot, tphrase, tpos in entries:
+##            if sphrase == item:
+##                if only_one:
+##                    print('   {}'.format(tphrase))
+##                    return [tphrase]
+##                else:
+##                    print('   {}'.format(tphrase))
+##                    res.append(tphrase)
+##        return res
+##
+##    @staticmethod
+##    def get_translations(source, lexicon, tlang, one_word=True, one=False, match_all=True):
+##        """
+##        Get translations for source root in lexicon dict.
+##        """
+##        targets = lexicon.get(source, [])
+##        res = []
+##        for sphrase, target, tphrase, tpos in targets:
+##            if match_all and source != sphrase:
+##                continue
+##            if ' ' in tphrase and one_word:
+##                continue
+##            res.append((target, tpos))
+##            if one and len(res) == 1:
+##                return res
+##        return res
+##
+##    @staticmethod
+##    def gen_target(root, feats, pos, prefixes=None, final=False, verbose=False):
+##        if verbose:
+##            print('Generating {}: {}'.format(root, feats.__repr__()))
+###        result = pos.gen(root, interact=False, update_feats=feats)
+##        result = pos.generate(root, feats, interact=False, print_word=final)
+##        return [r[0] for r in result]
+##
+##    @staticmethod
+##    def match_cond(root, feats, condFS):
+##        if condFS:
+##            if not Multiling.match_feats(feats, condFS):
+##                return False
+##        return True
+##
+##    @staticmethod
+##    def match_feats(fs1, fs2):
+##        """Match two FSSetss, converting strings to FSSets if necessary."""
+##        if not isinstance(fs1, FSSet):
+##            fs1 = FSSet(fs1)
+##        if not isinstance(fs2, FSSet):
+##            fs2 = FSSet(fs2)
+##        return fs1.unify(fs2)
 
 class TraFST:
     """FST for phrase translation.

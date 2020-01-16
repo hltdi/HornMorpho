@@ -6,7 +6,7 @@ start -> pos   [:]     [pos=v]
 # No conjunction or preposition
 # Copula (no following conjunction allowed)
 pos   -> end   +newG+
-pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc]]
+pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,rl=[-p,-acc]]
 
 ## CONJUNCTIONS (+sub is redundant)
 pos   -> neg    >>cnj1<<
@@ -55,8 +55,8 @@ sbjp1 -> stem     [y:]   [sb=[-p1,-p2,+plr]]; [sb=[-p1,-p2,-plr,-fem]]
 sbjp1 -> stem     [:]    [tm=imf,sb=[+p1,-plr],ob=[-p1],-neg]
 # Treat t- and n- specially because they can be geminated
 sbjp1 -> sbjp_t   [t:]   [sb=[+p2,-p1],ob=[-p2]];[sb=[-plr,-p1,-p2,+fem]]
-sbjp_t -> stem    [!:]   [+sub];[+neg]
-sbjp_t -> stem    [:]    [-sub,-neg]
+sbjp_t -> stem    [!:]   [+sub,+rel];[+neg]
+sbjp_t -> stem    [:]    [-sub,-neg];[+sub,-rel]
 sbjp1 -> sbjp_n   [n:]   [sb=[+plr,+p1,-p2],ob=[-p1]]
 sbjp_n -> stem    [!:]
 
@@ -72,18 +72,18 @@ sbjs -> sbjs_p        [:]    [tm=prf];[tm=ger]
 
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural; go directly to obj
-sbjs_i -> obj         [u:]   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],+def];[sb=[-p1,+plr],ob=[-expl],ax=None]
+sbjs_i -> obj         [u:]   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None]
 # 2sf; go directly to obj; palatalize previous consonant
 sbjs_i -> obj        <8i:>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
-sbjs_i -> sbjs_i0     [:]    [sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[-p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def]
+sbjs_i -> sbjs_i0     [:]    [sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[-p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl]]
 # Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -0- for 2p, 3p, prp, 3sf, 2s frm, no obj; -I- for 2s
 # -e- for -n, -N, -w, optionally for -wo(t)
-sbjs_i0 -> obj        [e:]   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]];[+def,ob=[-expl]]
+sbjs_i0 -> obj        [e:]   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]]
 # -I- for -h, -x, optionally for -wo(t)
 sbjs_i0 -> obj        [I:]   [ob=[+p2,+expl,-plr,-prp]]
 # No infix for -at, -ac_ew, -ac_hu
-sbjs_i0 -> obj        [:]    [ob=[-expl],-def];[ob=[-p1,+plr,+expl]];[ob=[+prp,+expl]];[ob=[+p2,+expl,+plr,]];[ob=[-p1,-p2,-plr,+fem,+expl]]
+sbjs_i0 -> obj        [:]    [ob=[-expl]];[ob=[-p1,+plr,+expl]];[ob=[+prp,+expl]];[ob=[+p2,+expl,+plr,]];[ob=[-p1,-p2,-plr,+fem,+expl]]
 
 ## PERFECTIVE
 # 3sm
@@ -92,17 +92,17 @@ sbjs_p -> obj         [e:]   [tm=prf,sb=[-p1,-p2,-plr,-fem]]
 sbjs_p -> sbjs_pk     [7:]   [tm=prf,sb=[-plr]]
 # 1s
 sbjs_pk -> obj        [u:]   [sb=[+p1,-p2],ob=[-p1]]
-# 2sm: infix for objects other than prep and for definite suffix
-sbjs_pk -> obj        [e:]   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]];[sb=[-p1,+p2,-fem],ob=[-expl],+def,+rel,+sub]
+# 2sm: infix for objects other than prep
+sbjs_pk -> obj        [e:]   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
 sbjs_pk -> obj        [:]    [sb=[-p1,+p2,-fem,-frm],ob=[-expl]];[sb=[-p1,+p2,-fem,-frm],ob=[-p2,+prp,+expl]]
 # 2sf, no infix
 sbjs_p -> obj         [x:]   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
 # 3sf, no infix
 sbjs_p -> obj        <ec_:>  [tm=prf,sb=[-p1,-p2,-plr,+fem]]
-# 1p, infix for 3sm obj and 2s frm and +def
+# 1p, infix for 3sm obj and 2s frm
 sbjs_p -> sbjs_pn     [n:]   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
-sbjs_pn -> obj        [e:]   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]];[ob=[-expl],+def,+rel,+sub]
-sbjs_pn -> obj        [:]    [ob=[-expl],-def];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
+sbjs_pn -> obj        [e:]   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
+sbjs_pn -> obj        [:]    [ob=[-expl]];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
 # 2p: prf or ger
 sbjs_p -> obj      <ac_hu:>  [sb=[+p2,-p1,+plr],ob=[-p2]]
 # 3p
@@ -114,7 +114,7 @@ sbjs_p -> obj         <_8E:> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
 sbjs_p -> sbj_g1p     <en:>  [tm=ger,sb=[+p1,-p2,+plr],ob=[-p1]]
 # 1p: infix for 2frm (handle later as prefix before -wo(t)?); 3sm
 sbj_g1p -> obj        [e:]   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
-sbj_g1p -> obj        [:]    [ob=[-expl],-def];[ob=[+expl,-p2,+fem,-plr,-prp]];[ob=[+plr,-prp,+expl]];[ob=[+expl,+p2,-frm,-prp]];[ob=[+expl,+prp]]
+sbj_g1p -> obj        [:]    [ob=[-expl]];[ob=[+expl,-p2,+fem,-plr,-prp]];[ob=[+plr,-prp,+expl]];[ob=[+expl,+p2,-frm,-prp]];[ob=[+expl,+prp]]
 # 2s (plural same as perfective)
 sbjs_p -> sbj_g2m     <eh:>  [tm=ger,sb=[+p2,-p1,-plr,-fem,-frm],ob=[-p2]]
 # 2sm: infix for 1 objects, non-prep
@@ -127,12 +127,12 @@ sbjs_p -> obj         [a:]   [tm=ger,sb=[-p2,-p1,-plr,+fem]]
 sbjs_p -> obj         <ew:>  [tm=ger,sb=[-p2,-p1,+plr]]
 
 ### OBJECT SUFFIXES
-# No object; not definite
-obj -> negs_aux        [:]    [ob=[-expl],-def]
-# 3sm suffix doubles as definite marker for relative clauses
-obj -> negs_aux        [3:]   [ob=[-expl],+def,+rel,+sub]
-# Explicit objects, also definite if relative
-obj -> obj0            [:]    [ob=[+expl],+def,+rel];[ob=[+expl],-def,-rel]
+# No object
+obj -> negs_aux        [:]    [ob=[-expl]]
+## 3sm suffix doubles as definite marker for relative clauses
+#obj -> negs_aux        [3:]   [ob=[-expl],+def,+rel,+sub]
+# Explicit objects
+obj -> obj0            [:]    [ob=[+expl],+rel];[ob=[+expl],-sub,-rel]
 # Prepositional
 obj0 -> objs1          <b_:>  [ob=[+prp,+b,-l]]
 obj0 -> objs1          <l_:>  [ob=[+prp,+l,-b]]
