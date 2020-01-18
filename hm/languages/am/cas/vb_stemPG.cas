@@ -34,7 +34,7 @@ F = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, bW,
 # labialized consonants (including some which probably can't be root consonants)
 B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # labialized consonants that can appear in surface verb forms before e and I as well as a
-BB = {gw, hW, kW, qW}
+BB = {gW, hW, kW, qW}
 # labialized consonants that can only appear before a in surface forms
 B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # non-labialized consonants

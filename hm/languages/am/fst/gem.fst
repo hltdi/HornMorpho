@@ -3,7 +3,8 @@
 -> start
 # Anything at the beginning
 start -> mid    [X;V;_;/;8]
-mid -> mid      [L;B;h;V;_;/;8]
+# y here so gemination doesn't happen with yem_I y yz (=> yem_iyz), but it may happen elsewhere?
+mid -> mid      [L;B;h;y;V;_;/;8]
 # the X here prevents two geminations in succession but permits yzelll_et -> yzel_l_et
 gem -> mid      [X;L;B;h;V;/;8]
 nogem -> mid    [_]

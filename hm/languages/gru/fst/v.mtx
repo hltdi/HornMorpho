@@ -19,14 +19,16 @@ $ negative
 
 $ sbj_pre
   e  [sp=1,sn=1,tm=imf,+neg,-sub];[sp=1,sn=1,tm=imf,-neg]
-  t  [sp=2,tm=imf];[sp=3,sn=1,sg=f,tm=imf|j_i];[sp=2,tm=j_i,+neg]
+  t  [sp=2,tm=imf,-neg];[sp=3,sn=1,sg=f,tm=imf|j_i,-neg]
+  t_  [sp=2,tm=imf,+neg];[sp=3,sn=1,sg=f,tm=imf,+neg];[sp=2,tm=j_i,+neg]
   y  [sp=3,sn=2,tm=imf];[sp=3,sn=1,sg=m,tm=imf];[sp=0,sn=1,tm=imf];
      [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=0,sn=1,tm=j_i,+neg];
      [sp=3,sn=2,tm=j_i,vc=[+cs]];[sp=3,sn=1,sg=m,tm=j_i,vc=[+cs]];[sp=0,sn=1,tm=j_i,vc=[+cs]]
   yE [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
   ye [sp=3,sn=2,tm=j_i,-neg,vc=[-cs]];[sp=3,sn=1,sg=m,tm=j_i,-neg,vc=[-cs]];[sp=0,sn=1,tm=j_i,-neg,vc=[-cs]]
-  n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=imf,+neg,+sub]
-  ne [sp=1,sn=1,tm=j_i]
+  n  [sp=1,sn=2,tm=imf,-neg];[sp=1,sn=2,tm=j_i,-neg]
+  n_ [sp=1,sn=2,tm=imf,+neg];[sp=1,sn=2,tm=j_i,+neg];[sp=1,sn=1,tm=imf,+neg,+sub]
+  ne [sp=1,sn=1,tm=j_i,-neg]
   -- [tm=prf];[sp=2,tm=j_i,-neg]
 
 ## Boundary separating stem from suffixes
@@ -44,6 +46,7 @@ $ bound1
 $ sbj_suff
   # G = kW|hW
   G     [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,op=1|2|3];[sp=1,sn=1,sg=m,tm=prf,+neg]
+  # H = k|h
   H     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
   He    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
   x     [sp=2,sn=1,sg=f,tm=prf]
@@ -56,7 +59,7 @@ $ sbj_suff
   km    [sp=2,sn=2,sg=m,tm=prf,+sub,+def]
   kma   [sp=2,sn=2,sg=f,tm=prf]
   m     [sp=3,sn=2,sg=m,tm=prf|imf,-conv];[sp=2,sn=2,sg=m,tm=imf];[sp=2|3,sn=2,sg=m,tm=j_i]
-  mu    [sp=3,sn=2,sg=m,tm=prf,+conv]
+  mu    [sp=3,sn=2,sg=m,tm=prf|imf,+conv]
   ma    [sp=3,sn=2,sg=f,tm=prf|imf];[sp=2,sn=2,sg=f,tm=imf];[sp=2|3,sn=2,sg=f,tm=j_i]
   --    [tm=imf,sp=1,sn=1];[tm=imf,sp=3,sn=1];[tm=imf,sp=2,sn=1,sg=m];[tm=imf,sp=1,sn=2];
         [tm=j_i,sn=1,sp=1|3];[tm=j_i,sn=1,sp=2,sg=m];[sp=0,sn=1];
@@ -100,7 +103,7 @@ $ obj_suff
   [op=2,on=1,og=m,ot=a]
     k_e    [sp=0]
     n_ehe  [sp=1|2|3,tm=prf]
-    ehe    [sp=1|2|3,tm=imf|j_i]
+    He    [sp=1|2|3,tm=imf|j_i]
   [op=2,on=1,og=f,ot=a]
     c_     [sp=0]
     n_x    [sp=1|2|3,tm=prf]
@@ -108,11 +111,11 @@ $ obj_suff
   [op=2,on=2,og=m,ot=a]
     k_m    [sp=0]
     n_hm   [sp=1|2|3,tm=prf]
-    hm     [sp=1|2|3,tm=imf|j_i]
+    Hm     [sp=1|2|3,tm=imf|j_i]
   [op=2,on=2,og=f,ot=a]
     k_ma   [sp=0]
     n_hma  [sp=1|2|3,tm=prf]
-    hma    [sp=1|2|3,tm=imf|j_i]
+    Hma    [sp=1|2|3,tm=imf|j_i]
   # malfactive
   [op=2,on=1,og=m,ot=m]
     bke    [sp=1|2|3]

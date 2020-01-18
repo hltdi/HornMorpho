@@ -26,7 +26,7 @@ stem1 -> stem        [:]
 
 ### A verbs
 ## strong
-stem -> A1           [CC-h] [cls=A,vc=[-cs]];[cls=A,vc=[-ps]];[cls=A,as=rc,vc=[+cs,+ps]]
+stem -> A1           [RR-h] [cls=A,vc=[-cs]];[cls=A,vc=[-ps]];[cls=A,as=rc,vc=[+cs,+ps]]
 stem -> A1w          [CC-h] [cls=AW];[cls=Aw]
 A1w -> A1v           [o:]   [tm=prf|imf,as=None]
 A1w -> A1v           [u:]   [tm=j_i,as=None];[as=it]
@@ -35,6 +35,8 @@ A1 -> A1v            [e:]   [tm=prf|imf,as=None];[tm=j_i,vc=[+ps]]
 A1 -> A1v            [:]    [tm=j_i,vc=[-ps],as=None|it];[as=it]
 A1 -> A1v            [a:]   [as=rc]
 A1v -> A2            [YY]
+# foyyo
+A1v -> A2            [y]    [cls=Aw]
 A2 -> A2it           [:]    [as=rc|None]
 A2 -> A2it           [D:]   [as=it]
 A2it -> A2_          [_:]   [tm=prf,-neg];[tm=imf,vc=[+ps]];[tm=prf,+neg,vc=[+ps]];[tm=imf,cls=Aw,vc=[-ps]]
@@ -45,8 +47,10 @@ A2_ -> A2v           [e:]   [tm=prf];[tm=imf|j_i,vc=[+ps]];[tm=j_i,+je];[tm=j_i,
 # we need the vowel for 2sf
 A2_ -> A2v           [I:]   [tm=j_i,sp=1,sn=1,-neg,-je,vc=[-ps]];[tm=j_i,sp=3,sn=2,-neg,-je,vc=[-ps]];[tm=j_i,sp=3,sn=1,sg=m,-neg,-je,vc=[-ps]]
 A2_ -> A2vi          [:]    [tm=imf,vc=[-ps]]
-A2vi -> end          [_:FF] [+dup]
-A2vi -> end          [FF]   [-dup]
+# ywed_, ywed_E, ywed_x
+A2vi -> end          [_:FF] [+dup,op=None|1|2]
+# ywedId_
+A2vi -> end          [FF]   [-dup];[+dup,op=3]
 A2v -> end           [FF]   
 ## weak
 # h**
@@ -56,10 +60,10 @@ stem -> A1h          [:h]   [cls=A,as=None,vc=[-ps]];[cls=A,as=None,vc=[-cs]];[c
 A1h -> A1h_          [_:]   [tm=imf,vc=[-cs,+ps]];[as=it,vc=[+cs,+ps]];[tm=j_i,vc=[-cs,+ps],sp=0|1|3]
 A1h -> A1h_          [:]    [tm=prf,as=None];[tm=prf,as=it,vc=[-cs]];[tm=imf,vc=[-cs,-ps]];[tm=j_i,as=None,sp=2];[tm=j_i,vc=[-ps],sp=0|1|3]
 A1h -> A1h_          [t:]   [vc=[+cs,-ps]]
-A1h_ -> A1v          [a:]   [tm=prf|imf,as=None];[as=it,vc=[-ps,-cs]];[tm=j_i,as=None,vc=[+ps]]
+A1h_ -> A1v          [a:]   [tm=imf,as=None];[tm=prf,-neg,as=None];[as=it,vc=[-ps,-cs]];[tm=j_i,as=None,vc=[+ps]]
 A1h_ -> A1v          [:]    [as=it,vc=[+ps]]
-# alt to a- with iter: e-
-A1h_ -> A1v          [e:]   [as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[-ps]];[as=it,vc=[-ps,-cs]]
+# alt to a- with iter; prf neg: e-
+A1h_ -> A1v          [e:]   [tm=prf,+neg,as=None];[as=it,vc=[+cs,-ps]];[tm=j_i,as=None,vc=[-ps]];[as=it,vc=[-ps,-cs]]
 # **h
 A2_ -> end           [e:h]  [sp=3,sn=2];[sp=0,op=1|2];[sp=0,op=3,on=1,og=m]
 A2_ -> end           [a:h]  [sp=1|2];[sp=3,sn=1]

@@ -1,3 +1,4 @@
+# yem_I + y + yz => yem_iyz የሚይዝ
 # 1: Iy -> i / C_C;    simeTa
 # 2: I -> i  / C_ya;   siyameTa
 # 3: no change: Iy, yIyew, tIyat (THIS DOESN'T WORK!)

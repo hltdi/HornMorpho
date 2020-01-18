@@ -12,8 +12,9 @@ e.u -> start   [:u]
 
 start -> e     [e]
 e -> start     [X;_;/;V-u,E]
-e -> e=.C      [:=]
-e=.C -> start  [X;/]
+# this could be the end of the word: yxe
+e -> e=        [:=]
+e=   -> start  [X;/]
 
 # delete e before vowels on other side of boundary
 start -> e.=V  [:e]
@@ -54,6 +55,7 @@ start ->
 a=. ->
 a=.e ->
 e=e. ->
+e= ->
 i ->
 e ->
 E ->

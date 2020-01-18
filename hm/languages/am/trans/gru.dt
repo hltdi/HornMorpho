@@ -1,7 +1,7 @@
 v:
   racats:
     0:    [[prf, imprf], [main, rel], [aff, neg]]
-    1:    [[prf, imprf], [main, rel], [aff, neg], [o3sm, o1s, o2p]]
+    1:    [[prf, imprf], [main, rel], [aff, neg], [s3sm, [s3sm, o3sm], [s3sm, o1s], [s3sm, o2p]]]
     2:    [[prf, imprf], [main, rel], [aff, neg], [s3sm, s3sf, s1p]]
     3:    [[prf, imprf], [main, rel], [aff, neg], [[s3sm, o3sm], [s3sm, o1s], [s3sm, o2p], s3sf, s1p]]
   featabbrevs:
@@ -30,13 +30,16 @@ v:
     jus:  ['[tm=j_i]']
     ps:   ['[vc=ps]', '[vc=[+ps,-cs]]']
     tr:   ['[vc=tr]', '[vc=[-ps,+cs]]']
-    cs:   ['[vc=cs]', '[vc=[+ps,+cs]]']
+    cs:   ['[vc=cs]', '[vc=[-ps,+cs]]']
     it:   ['[as=it]']
     psrc: ['[as=rc,vc=ps]', '[as=rc,vc=[+ps,-cs]]']
     trrc: ['[as=rc,vc=tr]', '[as=rc,vc=[-ps,+cs]]']
     psit: ['[as=it,vc=ps]', '[as=it,vc=[+ps,-cs]]']
     trit: ['[as=it,vc=tr]', '[as=it,vc=[-ps,+cs]]']
     csit: ['[as=it,vc=cs]', '[as=it,vc=[+ps,+cs]]']
+    cspsit: ['[as=it,vc=[+ps,+cs]]']
+    csps: ['[vc=[+ps,+cs]]']
+    cspsrc: ['[as=rc,vc=[+ps,+cs]]']
   featmaps:
     sb:
       - ['[-p1,-p2,-fem,-plr]', '[sp=3,sn=1,sg=m]']

@@ -9,17 +9,20 @@
 
 -> start
 # All unlabialized consonants except g,h,k,q; gW,hW,kW,qW
-start -> start   [~B-g,h,k,q;BB;V;_;/]
+# All unlabialized consonants and gW,hW,kW,qW
+#start -> start   [~B-g,h,k,q;BB;V;_;/]
+start -> start   [~B;BB;V;_;/]
 
-# labialize g,h,k,q before o or u
-start -> *2W     [kW:k;gW:g;qW:q]
-*2W -> *2W       [_]
-*2W -> start     [e:o;:u]
+# exclude this possibility for PG 
+## labialize g,h,k,q before o or u
+#start -> *2W     [kW:k;gW:g;qW:q;hW:h]
+#*2W -> *2W       [_]
+#*2W -> start     [e:o;:u]
 
-# other instances of g,h,k,q
-start -> 2W      [g;h;k;q]
-2W -> 2W         [_]
-2W -> start      [V-o,u;X;/]
+## other instances of g,h,k,q
+#start -> 2W      [g;h;k;q]
+#2W -> 2W         [_]
+#2W -> start      [V-o,u;X;/]
 
 # delabialize obligatorily for these consonants except before a
 start -> BW      [B!]

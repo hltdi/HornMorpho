@@ -49,8 +49,8 @@ sbjp1 -> stem     [y:]   [sb=[-p1,-p2,+plr]]; [sb=[-p1,-p2,-plr,-fem]]
 sbjp1 -> stem     [:]    [tm=imf,sb=[+p1,-plr],ob=[-p1],-neg]
 # Treat t- and n- specially because they can be geminated
 sbjp1 -> sbjp_t   [t:]   [sb=[+p2,-p1],ob=[-p2]];[sb=[-plr,-p1,-p2,+fem]]
-sbjp_t -> stem    [!:]   [+sub];[+neg]
-sbjp_t -> stem    [:]    [-sub,-neg]
+sbjp_t -> stem    [!:]   [+sub,+rel];[+neg]
+sbjp_t -> stem    [:]    [-sub,-neg];[+sub,-rel]
 sbjp1 -> sbjp_n   [n:]   [sb=[+plr,+p1,-p2],ob=[-p1]]
 sbjp_n -> stem    [!:]
 

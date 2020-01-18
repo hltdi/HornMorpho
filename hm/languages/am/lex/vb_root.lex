@@ -79,7 +79,7 @@
 'tb  ''  [-lt]
 't_m  ''  [-lt]
 't_t  ''  [-lt]
-'ws             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n_dv,-lt]
+'w_s             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n_dv,-lt]
 'w_k  ''  [-lt]
 'w_j  ''  [-lt]
 'x*  ''  [-lt]

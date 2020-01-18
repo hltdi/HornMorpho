@@ -76,6 +76,18 @@ def segment(word, units, correct=True):
 def isseq(item):
     return isinstance(item, collections.Sequence)
 
+def flatten(seq):
+    """Flattens the sequence, consisting of elements or sequences."""
+    if not seq:
+        return []
+    result = []
+    for thing in seq:
+        if isinstance(thing, (list, tuple, set)):
+            result.extend(flatten(thing))
+        else:
+            result.append(thing)
+    return result
+
 def reduce_lists(lists):
     '''Flatten a list of lists (doesn't mutate lists).'''
     return functools.reduce(lambda x, y: x + y, lists) if lists else []

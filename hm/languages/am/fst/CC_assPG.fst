@@ -18,4 +18,5 @@ start -> T      [T]
 T -> start      [X-t;V;%]
 
 start ->
+T ->
 gq ->

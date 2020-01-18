@@ -1,3 +1,4 @@
+# si + aderg => siyaderg
 -> start
 
 start -> start  [X;V-i,E;_;/]

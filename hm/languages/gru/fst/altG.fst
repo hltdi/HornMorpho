@@ -8,10 +8,10 @@
 # bwa -> bWa, gwa -> gWa, etc.
 
 -> start
-start -> end    [X-r;V;_]
+start -> end    [X-r,kW,gW,qW;V;_]
 
 ## erox_o, eraben_t
-## Make this obligatory for generation because it seems to be some verbs (ኧሮሾ፟)
+## Make this obligatory for generation because it seems to be for some verbs (ኧሮሾ፟)
 start -> e.r    [e:]
 e.r -> end      [r]
 
@@ -67,30 +67,42 @@ q.wa -> q.wa    [_]
 q.wa -> qw.a    [:w]
 qw.a -> end     [a]
 
-start -> g.o    [gW:g]
-end -> g.o      [gW:g]
-g.o -> g.o      [_]
-g.o -> end      [e:o]
+#start -> g.o    [gW:g]
+#end -> g.o      [gW:g]
+#g.o -> g.o      [_]
+#g.o -> end      [e:o]
 
 start -> gW.e   [g:gW]
 end -> gW.e     [g:gW]
 gW.e -> gW.e    [_]
 gW.e -> end     [o:e]
 
-start -> k.o    [kW:k]
-end -> k.o      [kW:k]
-k.o -> k.o      [_]
-k.o -> end      [e:o]
+#start -> k.o    [kW:k]
+#end -> k.o      [kW:k]
+#k.o -> k.o      [_]
+#k.o -> end      [e:o]
 
 start -> kW.e   [k:kW]
 end -> kW.e     [k:kW]
 kW.e -> kW.e    [_]
 kW.e -> end     [o:e]
 
-start -> q.o    [qW:q]
-end -> q.o      [qW:q]
-q.o -> q.o      [_]
-q.o -> end      [e:o]
+start -> kW     [kW]
+end -> kW       [kW]
+kW -> end       [V-e;X;_]
+
+start -> gW     [gW]
+end -> gW       [gW]
+gW -> end       [V-e;X;_]
+
+start -> qW     [qW]
+end -> qW       [qW]
+qW -> end       [V-e;X;_]
+
+#start -> q.o    [qW:q]
+#end -> q.o      [qW:q]
+#q.o -> q.o      [_]
+#q.o -> end      [e:o]
 
 start -> qW.e   [q:qW]
 end -> qW.e     [q:qW]
@@ -137,5 +149,5 @@ end -> mW.e     [m:mW]
 mW.e -> mW.e    [_]
 mW.e -> end     [o:e]
 
-end -> end      [X;V;_]
+end -> end      [X-kW,gW,qW;V;_]
 end ->

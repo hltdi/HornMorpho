@@ -79,7 +79,7 @@
 'tb  ''  [-lt]
 't_m  ''  [-lt]
 't_t  ''  [-lt]
-'ws             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
+'w_s            ''            [vc=ps,-lt];[vc=tr,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]
 'w_k  ''  [-lt]
 'x*  ''  [-lt]
 'x_g  ''  [-lt]
@@ -923,7 +923,7 @@ l|kWskWs  ''  [-lt]
 m'T  ''  [-lt]
 m'g  ''  [-lt]
 m'l  ''  [-lt]
-m'r             ''            [vc=tr,-lt];[vc=smp,-lt]   # 17.04.06; insures astemare, etc. for "causative"
+m'r             ''            [vc=ps,-lt];[vc=tr,-lt];[vc=smp,-lt]   # 17.04.06; insures astemare, etc. for "causative"
 m's  ''  [-lt]
 mCmC  ''  [-lt]
 mN*             ''            [vc=ps,-lt];[vc=tr,as=it,-lt];[vc=cs,-lt];[v=man,pos=n,-lt]

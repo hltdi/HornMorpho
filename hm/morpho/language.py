@@ -209,6 +209,12 @@ class Language:
         """File with cached analyses."""
         return os.path.join(self.get_dir(), 'trans')
 
+    def get_lex_dir(self):
+        return os.path.join(self.get_dir(), 'lex')
+
+    def get_valency_file(self, pos='v'):
+        return os.path.join(self.get_lex_dir(), pos + '.val')
+
 #    def get_stat_dir(self):
 #        """Statistics directory: root and feature frequencies
 #        for disambiguation."""

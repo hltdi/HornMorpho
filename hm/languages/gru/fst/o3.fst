@@ -6,8 +6,9 @@ start -> stem   [=]
 
 stem -> C       [X;/]
 stem -> V       [V]
-C -> C          [X;_]
-C -> V          [V]
+C -> C          [X]
+# C_: V
+C -> V          [V;_]
 V -> V          [V]
 V -> C          [X;/]
 

@@ -91,7 +91,7 @@ sbjs_p -> sbjs_pk     [7:]   [tm=prf,sb=[-plr]]
 # 1s
 sbjs_pk -> obj        [u:]   [sb=[+p1,-p2],ob=[-p1]]
 # 2sm: infix for objects other than prep
-sbjs_pk -> obj        [e:]   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]];[sb=[-p1,+p2,-fem],ob=[-expl],+rel,+sub]
+sbjs_pk -> obj        [e:]   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
 sbjs_pk -> obj        [:]    [sb=[-p1,+p2,-fem,-frm],ob=[-expl]];[sb=[-p1,+p2,-fem,-frm],ob=[-p2,+prp,+expl]]
 # 2sf, no infix
 sbjs_p -> obj         [x:]   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
@@ -99,7 +99,7 @@ sbjs_p -> obj         [x:]   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
 sbjs_p -> obj        <ec_:>  [tm=prf,sb=[-p1,-p2,-plr,+fem]]
 # 1p, infix for 3sm obj and 2s frm
 sbjs_p -> sbjs_pn     [n:]   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
-sbjs_pn -> obj        [e:]   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]];[ob=[-expl],+rel,+sub]
+sbjs_pn -> obj        [e:]   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
 sbjs_pn -> obj        [:]    [ob=[-expl]];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
 # 2p: prf or ger
 sbjs_p -> obj      <ac_hu:>  [sb=[+p2,-p1,+plr],ob=[-p2]]

@@ -28,11 +28,13 @@ import yaml
 from itertools import product
 from random import sample
 from .languages import *
+from .utils import flatten
 
 class Biling():
     """An object storing FSTs and a bilingual root dictionary for a language pair."""
 
-    def __init__(self, source, target, load_lexicon=True, load_data=True,
+    def __init__(self, source, target,
+                 load_lexicon=True, load_data=True, load_valencies=True,
                  srcphon=True, targphon=True):
         """source and target are language abbreviations."""
         self.srcphon = srcphon
@@ -49,10 +51,13 @@ class Biling():
 #        self.name = '<<' + ' | '.join(name) + '>>'
         self.lexicon = {}
         self.data = {}
+        self.valencies = {}
         if load_lexicon:
             self.read_lexicon()
         if load_data:
             self.read_data()
+        if load_valencies:
+            self.read_valencies()
 
     def __repr__(self):
         return self.name
@@ -60,6 +65,14 @@ class Biling():
     def get_dir(self):
         """Where data for this Biling is kept."""
         return self.source.get_trans_dir()
+
+    def read_valencies(self, pos='v'):
+        path = self.source.get_valency_file()
+        with open(path, encoding='utf8') as file:
+            for line in file:
+                root, aspectuals = line.split(';')
+                aspectuals = dict(eval(aspectuals))
+                self.valencies[root] = aspectuals
 
     def get_data_file(self):
         path = os.path.join(self.get_dir(), self.targ_abbrev + ".dt")
@@ -102,7 +115,15 @@ class Biling():
                                 feats[index] = sffeats
             self.data = dct
 
-    def get_source_processor(self, pos):
+    def read_translations(self, filename="1.tr"):
+        """Read in translations from file."""
+        translations = []
+        with open(os.path.join(self.get_dir(), filename), encoding='utf8') as file:
+            for line in file:
+                forms, data = line.split(';;')
+                source, target, abbrevs = forms.split(';')
+
+    def get_source_processor(self, pos='v'):
         return self.source.morphology.get(pos)
 
     def get_target_processor(self, pos):
@@ -127,6 +148,7 @@ class Biling():
                    formsonly=True):
         generator = self.get_target_processor(pos)
         feats = self.make_fs_from_abbrevs(init=init, aspectual=asp, abbrevs=abbrevs, pos=pos, src=False)
+#        print("Generating target form with root {} and feats {}".format(root, feats.__repr__()))
         forms_feats = generator.gen(root, update_feats=feats, postproc=postproc, phon=self.targphon)
         if formsonly and forms_feats:
             return [x[0] for x in forms_feats]
@@ -134,46 +156,23 @@ class Biling():
 
     def get_trootasp(self, sroot, sasp):
         if sroot not in self.lexicon:
+            print(" root {} not in lexicon".format(sroot))
             return
         entry = self.lexicon[sroot]
         if sasp not in entry:
+            print("  aspectual {} not in lexicon entry for {}".format(sasp, sroot))
             return
         return entry[sasp]
 
-#    def translate1(self, word=None, sroot=None, sasp=None, sfeats=None, pos='v',
-#                   preproc=True, postproc=False):
-#        """Either translate a source or a source root-feature combination."""
-#        anals = self.source_anal(word, pos, preproc=preproc)
-#        if not anals:
-#            return
-#        outputs = []
-#        for root, feats in anals:
-#            for f in feats:
-#                # feats is a FSSet
-#        tentry = self.get_trootasp(sroot, sasp)
-#        if not tentry:
-#            print("No target entry for {} : {}".format(sroot, sasp))
-#            return
-#        troot, tcls, tasp = tentry
-#        tfeats = self.adapt_features(pos, sfeats, tfeatvalues=tcls)
-#        translations = self.target_gen(troot, tfeats, pos, postproc=postproc)
-#        return translations
-
-    def translate2(self, sroot=None, sasp='', featabbrevs=None, pos='v',
-                   preproc=True, postproc=False):
-        """Given a source root and aspectual, generate both source and target forms."""
-        """Either translate a source or a source root-feature combination."""
-        tentry = self.get_trootasp(sroot, sasp)
-        if not tentry:
-            print("No target entry for {} : {}".format(sroot, sasp))
+    def get_rootasp_cat(self, root, asp):
+        if root in self.valencies:
+            aspcats = self.valencies[root]
+            if asp in aspcats:
+                return aspcats[asp]
+            print("  {} not in aspectuals for {}".format(asp, root))
             return
-        troot, tcls, tasp = tentry
-#        tfeats = self.make_fs_from_abbrevs(tasp, featabbrevs, pos=pos, src=False)
-        tforms = self.target_gen(troot, init=tcls, asp=tasp,
-                                 abbrevs=featabbrevs, pos=pos, postproc=postproc)
-        sforms = self.source_gen(sroot, asp=sasp, abbrevs=featabbrevs, pos=pos,
-                                 postproc=postproc)
-        return sforms, tforms
+        print(" {} not in valency dict".format(root))
+        return
 
     ## Features
 
@@ -194,9 +193,9 @@ class Biling():
         if aspectual:
             if '[' not in aspectual:
                 # It's an abbrev
-                aspectual = self.expand_feat_abbrev(aspectual, pos=pos, src=True)
+                aspectual = self.expand_feat_abbrev(aspectual, pos=pos, src=src)
             if aspectual:
-                f.udpate(FeatStruct(aspectual))
+                f.update(FeatStruct(aspectual))
         if abbrevs:
             for abbrev in abbrevs:
                 # abbrev could be a list of abbrevs for different features, for example, sbj and obj
@@ -256,6 +255,39 @@ class Biling():
                             break
         return tfeatvalues
 
+    ## Processing
+
+    def translate2(self, sroot=None, sasp='', featabbrevs=None, pos='v',
+                   tentry=None, preproc=True, postproc=False,
+                   select_source=lambda x: -len(x)):
+        """Given a source root and aspectual and a set of feature abbreviations,
+        generate both source and target forms."""
+        tentry = tentry or self.get_trootasp(sroot, sasp)
+        troot, tcls, tasp = tentry
+#        tfeats = self.make_fs_from_abbrevs(tasp, featabbrevs, pos=pos, src=False)
+        tcls = FeatStruct(tcls)
+        tforms = self.target_gen(troot, init=tcls, asp=tasp,
+                                 abbrevs=featabbrevs, pos=pos, postproc=postproc)
+        if not tforms:
+            print("No target form for {}|{}, {}|{}, {}".format(sroot, sasp, troot, tasp, featabbrevs))
+        sforms = self.source_gen(sroot, asp=sasp, abbrevs=featabbrevs, pos=pos,
+                                 postproc=postproc)
+        sform = ''
+        if not sforms:
+            print("No source form for {}, {}, {}".format(sroot, sasp, featabbrevs))
+        else:
+            if len(sforms) > 1:
+                if select_source:
+                    sforms.sort(key=select_source)
+                    sform = sforms[0]
+                    print("More than one source form for {}, {}, {}: selected {}".format(sroot, sasp, featabbrevs, sform))
+                else:
+                    sform = sforms[0]
+            else:
+                sform = sforms[0]
+        trootcls = "{}.{}".format(troot, tcls.get('cls', ''))
+        return sform, tforms, trootcls, tasp
+
 class TransTask:
 
     def __init__(self, biling, pos='v', bigen=True):
@@ -265,18 +297,93 @@ class TransTask:
         # from root and features or translation of source word
         self.bigen = bigen
         self.cats = biling.data[pos]['racats']
+        self.abbrev_combs = {}
+        self.gen_abbrev_combs()
+
+    def gen_abbrev_combs(self):
+        """Generate all combinations of feature abbrevs for rootasp cat."""
+        for cat, abbrevs in self.cats.items():
+            p = list(product(*abbrevs))
+            p = [flatten(pp) for pp in p]
+            self.abbrev_combs[cat] = p
 
     def get_abbrev_combs(self, cat, n=0):
-        if cat not in self.cats:
+        """Find the combination of feature abbreviations for rootasp cat,
+        and randomly select n if n is positive."""
+        if cat not in self.abbrev_combs:
             print("{} not in cats!".format(cat))
             return
-        p = list(product(*self.cats[cat]))
-        if n:
-            p = sample(p, n)
-        return p
+        c = self.abbrev_combs[cat]
+        if n and n < len(c):
+            c = sample(c, n)
+        return c
 
-    def generate(self, cat, n=0):
-        abbrevs = self.get_abbrev_combs(cat, n=n)
+    def translate(self, n=0, write=''):
+        """Go through the lexicon, and for each source root/aspectual, get the
+        target root/aspectual and the valency category, and generate n translation pairs."""
+        results = []
+        rcount = 0
+        acount = 0
+        for sroot, entry in self.biling.lexicon.items():
+            translated = False
+            for sasp, tentry in entry.items():
+                translations = self.translate1(sroot=sroot, sasp=sasp, tentry=tentry, n=n)
+                if translations:
+                    translated = True
+                    results.extend(translations)
+                    acount += 1
+                else:
+                    print("No translations for {}.{}".format(sroot, sasp))
+            if translated:
+                rcount += 1
+            if translated and rcount % 25 == 0:
+                print("TRANSLATED {} ROOTS, {} ROOT/ASPECTUALS".format(rcount, acount))
+        if write:
+            with open(os.path.join(self.biling.get_dir(), write), 'w', encoding='utf8') as file:
+                for result in results:
+                    print(result, file=file)
+        return results
+
+    def translate1(self, sroot=None, sasp='', tentry=None, n=0):
+        """Generate a list of source, target words, given a source foot and aspectual."""
+        results = []
+        tentry = tentry or self.biling.get_trootasp(sroot, sasp)
+        if not tentry:
+            return
+        cat = self.biling.get_rootasp_cat(sroot, sasp)
+        if not cat:
+            return
+        featabbrevs = self.get_abbrev_combs(cat, n=n)
+        if not featabbrevs:
+            return
+#        print("Found translation, cat, and abbrevs for {} / {}".format(sroot, sasp))
+        for fa in featabbrevs:
+            sform, tforms, troot, tasp = self.biling.translate2(sroot, sasp, featabbrevs=fa, tentry=tentry)
+            output = "{};{};;{}.{};{}.{};{}".format(sform, ','.join(tforms), sroot, sasp, troot, tasp, ','.join(fa))
+            results.append(output)
+        return results
+
+#    def translate1(self, word=None, sroot=None, sasp=None, sfeats=None, pos='v',
+#                   preproc=True, postproc=False):
+#        """Either translate a source or a source root-feature combination."""
+#        anals = self.source_anal(word, pos, preproc=preproc)
+#        if not anals:
+#            return
+#        outputs = []
+#        for root, feats in anals:
+#            for f in feats:
+#                # feats is a FSSet
+#        tentry = self.get_trootasp(sroot, sasp)
+#        if not tentry:
+#            print("No target entry for {} : {}".format(sroot, sasp))
+#            return
+#        troot, tcls, tasp = tentry
+#        tfeats = self.adapt_features(pos, sfeats, tfeatvalues=tcls)
+#        translations = self.target_gen(troot, tfeats, pos, postproc=postproc)
+#        return translations
+
+#    def generate(self, cat, n=0):
+#        abbrevs = self.get_abbrev_combs(cat, n=n)
 
 ##    def analyze(self, form):
 ##        """Analyze the source form, returning list of (root, feature_FS) pairs."""

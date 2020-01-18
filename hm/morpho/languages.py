@@ -113,11 +113,8 @@ def get_language(language, load=True, phon=False, segment=False, guess=True,
         return lang
     fst = lang.get_fsts(phon=phon, segment=segment)
     if not fst and load:
-        print("You cannot do both morphological analysis and segmentation in the same session!")
-        if segment:
-            print("Please exit() and start a new session to do segmentation!")
-        else:
-            print("Please exit() and start a new session to do morphological analysis!")
+        print("You cannot do different kinds of analysis or generation in the same session!")
+        print("Please exit() and start a new session!")
         return
     return lang
     

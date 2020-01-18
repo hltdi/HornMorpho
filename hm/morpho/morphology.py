@@ -1207,6 +1207,10 @@ class POSMorphology:
         fs = fs.copy()
         # First make sure features is a FeatStruct
         if isinstance(features, str):
+            if features[0] != '[':
+                features = '[' + features
+            if features[-1] != ']':
+                features += ']'
             features = FeatStruct(features)
         for key, value in features.items():
             # Make True any features that are implied by key
