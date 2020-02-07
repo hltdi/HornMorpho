@@ -1208,9 +1208,8 @@ class POSMorphology:
         # First make sure features is a FeatStruct
         if isinstance(features, str):
             if features[0] != '[':
-                features = '[' + features
-            if features[-1] != ']':
-                features += ']'
+                # Add [] if not there
+                features = '[' + features + ']'
             features = FeatStruct(features)
         for key, value in features.items():
             # Make True any features that are implied by key
@@ -1541,12 +1540,15 @@ class POSMorphology:
                         else:
                             feats_used.append(feat)
                     if found:
-                        if groupname in groupnames and groupoper:
+                        if not groupname:
+                            expansions.append("{}".format(groupvalue))
+                        elif groupname in groupnames and groupoper:
                             # If this groupname already has a value and we're setting the value rather than
                             # appending it, stop here.
                             continue
-                        groupnames.append(groupname)
-                        expansions.append("{} = {}".format(groupname, groupvalue))
+                        else:
+                            groupnames.append(groupname)
+                            expansions.append("{} = {}".format(groupname, groupvalue))
                         if webdict != None:
                             if not groupoper:
 #                                print("Adding {} to {}".format(groupvalue, groupname))
@@ -1559,7 +1561,7 @@ class POSMorphology:
                                         v = [v]
                                     v.append(groupvalue)
                                     webdict[groupname] = v
-                            else:
+                            elif groupname:
                                 # Set the value for groupname
                                 webdict[groupname] = groupvalue
                     

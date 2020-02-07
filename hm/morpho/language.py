@@ -97,7 +97,7 @@ FV_RE = re.compile(r'\s*(.*?)\s*=\s*(.*)')
 # FV combinations, could be preceded by ! (= priority)
 FVS_RE = re.compile(r'([!]*)\s*([^!]*)')
 # Feature group: {f1, f2,...} (v1, v2, ...): groupname = groupvalue
-FEAT_GROUP_RE = re.compile(r"\{(.+)\}\s*\((.+)\):\s*(.+)\s+([+=])\s+(.+)")
+FEAT_GROUP_RE = re.compile(r"\{(.+)\}\s*\((.+)\):\s*(.*)\s+([+=])\s+(.+)")
 # Abbrev, with prefixes, and full name
 ABBREV_NAME_RE = re.compile(r'([*%]*?)([^*%()]*?)\s*\((.*)\)\s*(\[.*\])?')
 NAME_RE = re.compile(r'([*%]*)([^*%\[\]]*)\s*(\[.*\])?')
@@ -544,6 +544,8 @@ class Language:
                             groupvalues[i] = False
                         elif v == "True":
                             groupvalues[i] = True
+                        elif v == "None":
+                            groupvalues[i] = None
                     groupvalues = tuple(groupvalues)
                     groupname = groupname.strip()
 #                    print("groupfeats {}, groupname {}, gvalues {}, add {}".format(groupfeats, groupname, groupvalues, oper))

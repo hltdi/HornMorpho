@@ -170,7 +170,7 @@ $ def
   --    [-def,+sub];[-sub]
   i     [+def,+sub]
   
-## Final suffixes (converb -m)
+## Final suffixes (converb -m and -n)
 $ converb_n
   --    [-conv,-n,pos=v]
   m     [+conv,+sub,-n,pos=v]

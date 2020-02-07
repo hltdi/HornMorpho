@@ -1,5 +1,8 @@
 bal     bhl   [tm=prf,vc=[-ps,-cs],sp=3,cls=A,-dup,as=None,am=አለ];[tm=prf,vc=[-ps,-cs],sp=1,sn=2,cls=A,-dup,as=None,am=አለ]
-bak     bhl   [tmp=prf,vc=[-ps,-cs],sp=2,cls=A,-dup,as=None,am=አለ];[tmp=prf,vc=[-ps,-cs],sp=1,sn=1,cls=A,-dup,as=None,am=አለ]
+# bakko, bakki, bakkmun
+bak     bhl   [tmp=prf,vc=[-ps,-cs],sp=2,sn=2,cls=A,-dup,as=None,am=አለ];[tmp=prf,vc=[-ps,-cs],sp=2,sn=1,sg=m,cls=A,-dup,as=None,am=አለ];[tmp=prf,vc=[-ps,-cs],sp=1,sn=1,cls=A,-dup,as=None,am=አለ]
+# baccin
+bac     bhl   [tmp=prf,vc=[-ps,-cs],sp=2,sn=1,sg=f,cls=A,-dup,as=None,am=አለ]
 bl      bhl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
 bel     bhl   [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
 t*bil   bhl   [vc=[+ps,-cs],cls=A,-dup,as=None,am=አለ]

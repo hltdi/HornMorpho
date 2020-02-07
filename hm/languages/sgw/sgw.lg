@@ -75,7 +75,7 @@ feats:
   am (Amh root) =
 
   *def = False | True
-  {def} (True): definite
+  {def} (True): definiteness = true
 
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
@@ -138,7 +138,7 @@ feats:
   {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
   {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
   {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): impersonal
+  {sp} (None): subj = impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -187,17 +187,19 @@ feats:
   {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
 
   vc (voice) = ps (passive) = False | True;
-              cs (causative) = False | True
+               cs (causative) = False | True
 
   as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
-  {neg} (True): negative
+  {neg} (True): pol = neg
 
   *sub = None | t | b | y
-  {sub} (t): subord = te
-  {sub} (b): subord = be
-  {sub} (y): subord = ye
+  {sub} (t): clause type = subord te+
+  {sub} (b): clause type = subord be+
+  {sub} (y): clause type = subord ye+
+  {sub, mconv} (None, False): clause type = main
+  {sub, mconv} (None, True): clause type = subord, m-converb
 
   *caus = False | True
   *cmpd = False | True
@@ -205,12 +207,17 @@ feats:
   *link = False | True
   *m = False | True
   *x = False | True
-  {caus} (True): cause
-  {cmpd} (True): cmpd perf
-  {mconv} (True): m-converb
-  {link} (True): +link
-  {m} (True): conj -m
-  {x} (True): conj -sh
+  *proh = False | True
+  *copex = False | True
+  *comp = False | True
+  *def = False | True
+  {caus} (True): +caus
+  {cmpd} (True): = compound perf
+#  {mconv} (True): converb = m
+  {link} (True): link = True
+  {m} (True): conj = +m
+  {x} (True): conj = +sh
+  {def} (True): = definite
 
 ## imperfective verbs, including both -tE future form
   
@@ -236,7 +243,7 @@ feats:
   {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
   {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
   {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): impersonal
+  {sp} (None): subj = impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -308,7 +315,7 @@ feats:
   *link = False | True
   {x} (True): conj -sh
   {m} (True): conj -m
-  {mconv} (True): m-converb
+  {mconv} (True): clause type = subordinate, m-converb
   {cmpd} (True): compound impf
   {purp} (True): purposive
   {clft} (True): cleft
@@ -338,7 +345,7 @@ feats:
   {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
   {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
   {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): impersonal
+  {sp} (None): subj = impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -402,9 +409,9 @@ feats:
   *m = False | True
   *x = False | True
   *link = False | True
-  {tconv} (True): t-converb
-  {mconv} (True): m-converb
-  {m} (True): conj -m
-  {x} (True): conf -sh
+  {tconv} (True): converb = -t
+  {mconv} (True): converb = -m
+  {m} (True): conj = -m
+  {x} (True): conf - -sh
   {link} (True): +link
 

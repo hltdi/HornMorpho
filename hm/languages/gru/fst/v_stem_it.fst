@@ -3,7 +3,7 @@
 
 -> start
 
-start -> start  [X;V;/;_]
+start -> start  [X-D,Y;V;/;_]
 
 start -> b   [b]
 b -> ba      [a:D;e:D;i:Y]

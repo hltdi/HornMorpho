@@ -1,0 +1,112 @@
+name: ትግረ
+code: te
+
+preproc: geez_gem
+postproc: geez_gem
+
+seg: a e i o u I E
+     b c C d f g gW h hW H HW j
+     k kW l m n N p q qW r s
+     bW mW fW
+     S t T w x y z Z ` '
+     _
+
+feats:
+
+## nouns
+
+  pos: n noun
+
+## verbs
+
+  pos: v verb
+
+  tm (TAM) = prf (perfective) | imf (imperfective) | j_i (jussive-imperative)
+
+#  cls (class) = A | Aw | B | C | D | E | F
+
+  am (Amh root) =
+
+  *sp = 3 | 2 | 1 | None
+  *sn = 1 | 2
+#  *sg = m | f
+
+  {sp, sn} (1, 1): subj = 1 pers sing
+  {sp, sn} (1, 2): subj = 1 pers plur
+  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
+  {sp} (0): subj = impersonal
+
+  *op = None | 3 | 2 | 1
+  *on = 1 | 2
+#  *og = m | f
+  # accusative | benefactive | malefactive objects
+  *ot = a | b | m
+
+  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
+  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
+  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+
+  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
+  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
+  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+
+  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+
+  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+
+  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+
+  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+
+  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+
+  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+
+  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+
+  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+
+  vc (voice) = ps (passive) = False | True;
+               cs (causative) = False | True
+
+  as (aspect) = None | it (freq) | rc (recip)
+
+  neg (negative) = False | True
+#  {neg} (True): neg =
+
+  sub (subordinate) = False | True
+#  {sub} (False): +main
+#  {sub} (True): +subordinate
+
+#  *cnj = None | t | b | In | sl | n
+#  {cnj} (t): conj = t(e)
+#  {cnj} (b): conj = b(e)
+#  {cnj} (sl): conj = sle
+#  {cnj} (n): conj = n
+
+  rel (relative) = False | True
+
+  def (definite) = False | True
