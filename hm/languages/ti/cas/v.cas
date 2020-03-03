@@ -66,7 +66,7 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >i_fin<
 ### 10 Convert @ to e after non-lar, optionally to E before lar
 >@<
-### 11 Get rid of remaining stem-final boundary characters
+#### 11 Get rid of remaining stem-final boundary characters
 >bound<
 ### 12 e/I/i w/y at stem-final boundary
 ### Vwy has to be below epen because it includes Iw$, Iy$

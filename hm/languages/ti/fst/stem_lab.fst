@@ -18,7 +18,6 @@ BW -> start        [a;i]       # fail if anything else comes next
 
 # delabialize
 start -> C=CW      [g:gW;h:hW;H:HW;k:kW;q:qW]
-
 start -> C=CW      [b:bW;c:cW;C:CW;d:dW;f:fW]
 start -> C=CW      [j:jW;l:lW;m:mW;n:nW;N:NW]
 start -> C=CW      [r:rW;s:sW;S:SW;t:tW;T:TW;x:xW;z:zW;Z:ZW]

@@ -29,10 +29,6 @@ start -> g   [g]
 g -> ga      [a:D]
 ga -> end  [g:]
 
-#start -> gW  [gW]
-#gW -> gWa    [a:D]
-#gWa -> end [gW:]
-
 start -> j   [j]
 j -> ja      [a:D]
 ja -> end  [j:]
@@ -40,10 +36,6 @@ ja -> end  [j:]
 start -> k   [k]
 k -> ka      [a:D]
 ka -> end  [k:]
-
-#start -> kW  [kW]
-#kW -> kWa    [a:D]
-#kWa -> end [kW:]
 
 start -> l   [l]
 l -> la      [a:D]
@@ -64,10 +56,6 @@ Na -> end  [N:]
 start -> q   [q]
 q -> qa      [a:D]
 qa -> end  [q:]
-
-#start -> qW  [qW]
-#qW -> qWa    [a:D]
-#qWa -> end [qW:]
 
 start -> r   [r]
 r -> ra      [a:D]

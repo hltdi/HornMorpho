@@ -58,7 +58,8 @@ e. -> eo=w       [o:w]
 # ey->e
 e. -> ee=y       [e:y]
 # after ew->o, i->y in gerundive (moyt); C follows in imperfective (mot)
-eo=w -> end      [y:i;X;/]
+eo=w -> end      [y:i;/]
+eo=w -> eo=wC    [X]
 # after ey->e, OK if there's a following C in imperfective (xeT)
 ee=y -> end      [X-y;/]
 # after ey->e, ew->o, if there's another e (perfective), we have to check C3
@@ -102,5 +103,10 @@ ey -> eYe.y     [e]
 eYe.y -> end    [y]
 # ewey for perfective with Cwy verbs (dewey)
 ew -> eYe.y     [e]
+# ewCeC for CwCC verbs
+ew -> ewC.C     [X]
+ewC.C -> ewC.C  [V]
+ewC.C -> end    [X]
 
 end ->
+eo=wC ->

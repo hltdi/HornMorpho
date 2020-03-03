@@ -33,13 +33,13 @@ start -> 1c.3 [L]     [as=it];[as=smp]
 
 ## CCCC
 start -> 1.4  [X!]
-1.4 -> 2a.4   [X!]
+1.4 -> 2a.4   [X-y]
 2a.4 -> 2b.4  [:]     [as=smp];[as=it]
 # C2 dup
 2a.4 -> 2b.4  [a:]    [vc=ps,as=rc];[vc=tr,as=rc]
 2a.4 -> 2b.4  [a]     [as=smp];[as=it]
 
-2b.4 -> 3a.4  [X!]
+2b.4 -> 3a.4  [X]
 # C3 dup
 3a.4 -> 3b.4  [D:]    [as=it]
 3a.4 -> 3b.4  [:]     [as=rc];[as=smp]
@@ -52,6 +52,6 @@ start -> 1.5  [X5]
 1.5 -> |.5    [|]
 |.5 -> |2.5   [X!]
 |2.5 -> 2a.4  [X!]
-|2.5 -> 2b.4  [a]     [as=smp];[as=it]
+|2.5 -> 2b.4  [a;:]     [as=smp];[as=it]
 
 end ->

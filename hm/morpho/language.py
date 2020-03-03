@@ -1308,17 +1308,16 @@ class Language:
             a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
             analyses.append(a)
 
-        # See if the word is cached
+        # See if the word is cached (but only if there is no init_weight)
         cached = self.get_cached_anal(word)
         if cached:
-            found = True
-            analyses = self.proc_anal(word, cached, None,
-                                      show_root=root, citation=citation, stem=stem,
-                                      segment=segment, guess=False,
-                                      postproc=postproc, gram=gram, freq=rank or report_freq)
-        # Is word already analyzed, without any root/stem (for example, there is a POS and/or
-        # a translation
-        elif form in self.morphology.analyzed:
+            if not init_weight:
+                found = True
+                analyses = self.proc_anal(word, cached, None,
+                                          show_root=root, citation=citation, stem=stem,
+                                          segment=segment, guess=False, postproc=postproc, gram=gram, freq=rank or report_freq)
+        # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)
+        if not analyses and form in self.morphology.analyzed:
             if only_anal:
                 return []
             # Assume these are the *only* analyses

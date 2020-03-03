@@ -3,60 +3,45 @@ weighting = UNIFICATION
 ## Special characters
 # _: gemination
 # /: pre-gemination
-# D: reduplication
-# @: labialization
-# ^: palatalization
+# D: reduplication (in v_stem.cas)
 # =: stem boundary
+# A: zero or e, depending on following laryngeal
+# @: zero or ', depending on following laryngeal
+# Y: stem-final y
+# O: imperf/juss 23pm suffix
 
 ## Stringsets
-# All vowels (Y is not really a vowel)
-V = {a, e, E, i, I, o, u, Y}
+# All vowels
+V = {a, e, E, i, I, o, u, A}
 # All segments possible in verbs
-XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, ', j, k, K, l, m, n, N, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW, hW, H, G}
-# All consonants possible in verbs (even if not realized, like h)
-X = {b, c, C, d, f, g, h, ', j, k, K, l, m, n, N, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, KW, hW, H, G}
-# basic root consonants, including palatalized and labialized consonants but not h, w, y
-YY = {b, c, C, d, f, g, k, j, l, m, n, N, q, r, s, x, S, t, T, z, Z, bW, fW, gW, hW, kW, mW, qW}
-# Root consonants
-RG = {b, d, f, g, h, ', k, K, m, n, N, q, r, s, t, T, w, y, z, l, bW, fW, gW, hW, kW, mW, qW, KW}
-# labial consonants
-BB = {b, f, m, p, w, bW, fW, mW, pW}
-# non-labialized labial root consonants
-MM = {b, f, m, p}
-# coronal consonants
-DD = {d, t, T, s, z, r, l, n}
-# palatalized consonsants
-PP = {c, C, j, x, y, Z, N}
-# velar consonants
-GG = {g, k, K, q, gW, kW, KW, qW}
-# non-labial velar root consonants
-KK = {g, k, K, q}
-# labialized consonants
-UU = {gW, kW, KW, qW, mW, bW, fW}
+XX = {a, e, E, i, I, o, u, A, b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, @, Y}
+# All consonants possible in verbs
+X = {b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, @, Y}
+# All consonants possible in verbs other than laryngeals and semivowels
+RR = {b, c, C, d, f, g, j, k, K, l, m, n, N, p, q, r, s, S, t, T, x, z, Z}
+# laryngeals
+LL = {h, H, ', `, @}
+# semivowels
+YY = {y, w, Y}
 ## Non-phonetic/orthographic characters
-% = {@, ^, =, /, _}
+% = {=, /, _}
 
 # Delete epenthetic and gemination characters
 #>del_epgem<
->del_ep<
-# Optionally: nb -> mb
->mb<
-### 1 Insert glottal stop before initial vowel
+#>del_ep<
+### Insert glottal stop before initial vowel
 >gs0<
->alt<
+# clean up gemination
 >gem<
->kh<
-# Realize VV combinations; get rid of morpheme boundaries
+# Get rid of boundary characters
+>bound<
+# Realize t-, n-, l- prefix before L** and *Y*
+>LYaff2<
+# Realize vowel combinations
 >VV<
-# CC combinations at morpheme boundaries
->CC<
-# Realize y as i between consonants
->y<
-# Realize 2sf stem (and suffix?) for imf and j_i
->s2sf<
-# Realize 3 person object suffixes
->o3<
-# Passive t* realized
->te<
+# realize Y (root-final semivowel)
+>Y<
+# Realize @ imperf/jus prefix as ' or 0 (before L); realize -o suffix as -u after L
+>LYaff1<
 # Morphotactics
 >v0.mtx<

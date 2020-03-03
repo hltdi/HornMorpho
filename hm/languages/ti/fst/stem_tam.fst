@@ -48,12 +48,16 @@ a -> tt             <t_e!:>    [as=it]
 -2aV -> -1L         [a:]      [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf,sb=[+p1]];[tm=prf,sb=[+p2]]
 # Perfect: 3 person (all voices? aspects?); imperfect not passive
 -2aV -> -1L         [I:]      [tm=prf,sb=[-p1,-p2]];[tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=j_i,vc=smp]
+# Alternate vowel before L (only perfective?)
+-2aV -> -1L         [e:]      [tm=prf,sb=[-p1,-p2]]
 
 # Final L
 # Imperfect and jussive-imperative passive, perfect: 1,2 person (all voices? aspects?)
 -2V -> -1L          [a:]     [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf,sb=[+p1]];[tm=prf,sb=[+p2]]
 # Perfect: 3 person (all voices? aspects?); imperfect not passive
 -2V -> -1L          [:]      [tm=prf,sb=[-p1,-p2]];[tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=j_i,vc=smp]
+# 2020.2.23: alternate for L-final perfect (exclude from generation?)
+-2V -> -1L          [e:]     [tm=prf,sb=[-p1,-p2]]
 
 ### A (CCC)
 
@@ -143,7 +147,7 @@ i/ -> -3B           [:]       [tm=j_i]
 -2.4 -> -2V       [X]
 # ...CaCC verbs
 -2a.4 -> -2a.4V     [X]
-# sebab.ere, feSaSS.eme, feSaS.eme
+# sebab.ere, feSaSS.eme, feSaS.eme, tensaf.efe
 # how to prevent ba*kk*ene?
 -2a.4V -> -2aV      [:;_;:_]
 
@@ -180,7 +184,7 @@ i/ -> -5.4          [:]
 
 # CaCC and end of others
 # seba.bere
--3aV -> -2a.4       [a]
+-3aV -> -2a.4       [a;e:]
 
 # seb.abere
 -3a -> -3aV         [X/L]
@@ -195,6 +199,7 @@ i/ -> -5.4          [:]
 # H.edadere
 -4aL -> -4aV        [L]
 -5aV -> -4a         [e:]
+-5aV -> -4aL        [e:]
 -5a -> -5aV         [X] 
 
 # denegageSe (must be CCCC +it)
@@ -215,6 +220,11 @@ a/ -> -4a           [:]
 a/ -> -5a           [:]
 
 | -> -3a            [:|]
+| -> -3aL           [:|]
+## tenseHabe
+#| -> -3L            [:|]
+## tenTeTewe
+#| -> -3             [:|]
 | -> -4a            [:|]
 | -> -4.4           [:|]
 | -> -5a            [:|]

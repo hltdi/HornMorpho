@@ -29,24 +29,31 @@ start -> 1c.3 [L]     [as=it];[as=smp]
 2L.3 -> 2c.3  [D:]    [as=it]
 2L.3 -> 2c.3  [:]     [as=smp];[as=rc]
 
-# Final consonant can't be labialized
+# final consonant can be labialized, but only gW, kW, qW
 2c.3 -> end   [X/B]
 
 ## CCCC
 start -> 1.4  [X!]
-1.4 -> 2a.4   [X!]
+1.4 -> 2a.4   [X-y]
 2a.4 -> 2b.4  [:]     [as=smp];[as=it]
 # C2 dup
 2a.4 -> 2b.4  [a:]    [vc=ps,as=rc];[vc=tr,as=rc]
-# Iterative of C verbs (eliminate?)
-2a.4 -> 2b.4  [a]     [as=it]
+# Iterative of C verbs (eliminate?); CCaCC verbs
+2a.4 -> 2b.4  [a]     [as=it];[as=smp]
 
-2b.4 -> 3a.4  [X!]
+2b.4 -> 3a.4  [X]
 # C3 dup
 3a.4 -> 3b.4  [D:]    [as=it]
 3a.4 -> 3b.4  [:]     [as=rc];[as=smp]
 
 3b.4 -> end   [X/B]
 3_.4 -> end   [X/B]
+
+## CCCCC
+start -> 1.5  [X5]
+1.5 -> |.5    [|]
+|.5 -> |2.5   [X!]
+|2.5 -> 2a.4  [X!]
+|2.5 -> 2b.4  [a]     [as=smp];[as=it]
 
 end ->

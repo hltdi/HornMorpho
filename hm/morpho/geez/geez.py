@@ -41,6 +41,7 @@ CONSONANTS = ["h", "l", "H", "m", "^s", "r", "s", "^s", "x", "q", "Q", "b", "t",
               "T", "C", "P", "S", "^S", "f", "p"]
 GEMINATION_GEEZ = "፟"
 GEMINATION_ROMAN = '_'
+EPENTHETIC = 'I'
 
 ## Regular expression objects for converting between "conventional" and
 ## "modified" SERA
@@ -189,7 +190,7 @@ def convert_labial(form):
                     already_added = False
             elif char == 'W':
                 previous = form[index-1]
-                if previous not in ['k', 'g', 'q']:
+                if previous not in ['k', 'g', 'q', 'Q']:
                     reject_original = True
                 elif previous == '^' and form[index-2] != 'h':
                     reject_original = True
@@ -268,6 +269,8 @@ def sera2geez(table, form, lang='am', gemination=False):
     # First delete gemination characters
     if not gemination:
         form = form.replace(GEMINATION_ROMAN, '')
+    # there may be epenthetic vowels
+    form = form.replace(EPENTHETIC, '')
     # Segment
     res = ''
     n = 0
@@ -293,6 +296,19 @@ def sera2geez(table, form, lang='am', gemination=False):
                     trans = table.get(form[n : n + 3], char + next_char + form[n + 2])
                     n += 1
                     # followed by consonant
+                elif n < len(form) - 2 and form[n + 2] == GEMINATION_ROMAN:
+                    # followed by gemination character
+                    if n < len(form) - 3 and form[n + 3] in VOWELS:
+                        # and then a vowel
+                        char = form[n:n+2] + form[n+3]
+                        trans = table.get(char, char)
+                        trans += GEMINATION_GEEZ
+                        n += 2
+                    else:
+                        char = form[n:n+2]
+                        trans = table.get(char, char)
+                        trans += GEMINATION_GEEZ
+                        n += 1
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
                 n += 1
@@ -460,9 +476,6 @@ def geez2sera_file(table, infile, outfile, first_out=True, simp=False):
                 trans = table.get(char, char)
             res += trans
             n += 1
-#    if first_out:
-#        outobj.write('# -*- coding= utf-8 -*-\n\n')
-#    outobj.write(res.encode('utf8'))
     outobj.write(res)
 
 def sera2geez_file(table, infile, outfile, has_encoding = False):
@@ -647,3 +660,5 @@ def geez_alpha(s1, s2, pos1 = 0, pos2 = 0):
         else:
             # Both are non-Ethiopic characters
             return cmp(s1[pos1:], s2[pos2:])
+
+    

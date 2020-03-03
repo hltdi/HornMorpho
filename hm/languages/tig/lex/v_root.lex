@@ -4,27 +4,87 @@ sbr   [cls=A,am=ሰበረ,-dup]
 msl   [cls=A,am=መሰለ,-dup]
 rkb   [cls=A,am=አገኘ,-dup]
 fgr   [cls=A,am=ወጣ,-dup]
-dnn   [cls=A,am=ወረደ,+dup]
 qtl   [cls=A,am=ገደለ,-dup]
 xkr   [cls=A,am=ሰከረ,-dup]
+bls   [cls=A,am=መለሰ,-dup]
+dnn   [cls=A,am=ወረደ,+dup]
 ## weak
+# L**
 HSb   [cls=A,am=አጠበ,-dup]
+Hrs   [cls=A,am=አረሰ,-dup]
+Hmm   [cls=A,am=አመመ,+dup]
+# Y**
+wrs   [cls=A,am=ወረሰ,-dup]
+ybs   [cls=A,am=ደረቀ,-dup]
+# *L*
+sHb   [cls=A,am=ሳበ,-dup]
 w`l   [cls=A,am=ዋለ,-dup]
+# mostly irregular
+#bhl   [cls=A,am=አለ,-dup]
+# **L
 bl`   [cls=A,am=በላ,-dup]
+sm`   [cls=A,am=ሰማ,-dup]
+mS'   [cls=A,am=መጣ,-dup]
+ns'   [cls=A,am=ወሰደ,-dup]
+# *Y*
+dwr   [cls=A,am=ዞረ,-dup]
+gyd   [cls=A,am=ቸኰለ,-dup]
+# LY*
+Hys   [cls=A,am=ተሻሻለ,-dup]
+# **Y
+xqy   [cls=A,am=ሠራ,-dup]
+kry   [cls=A,am=አስቀመጠ,-dup]
+# Y*L
+wdy   [cls=A,am=አደረገ,-dup]
+# L*Y
 Hzy   [cls=A,am=ፈለገ,-dup]
-wdy   [cls=a,am=አደረገ,-dup]
+'ty   [cls=A,-dup]
+# *YL
+by'   [cls=A,am=ገባ,-dup]
+qyH   [cls=A,am=ቀላ,-dup]
+# *LY (irregular)
+# r'y   [cls=A,am=አየ,-dup]
+# YL*
+# mostly irregular
+whb   [cls=A,am=ሰጠ,-dup,vc=[+ps,-cs]]
 ### B
 ## strong
-mzn   [cl=B,am=መዘነ,-dup]
-grm   [cl=B,am=አማረ,-dup]
+mzn   [cls=B,am=መዘነ,-dup]
+grm   [cls=B,am=አማረ,-dup]
 ## weak
 'zz   [cls=B,am=አዘዘ,+dup]
 `dm   [cls=B,am=ጋበዘ,-dup]
+xm`   [cls=B,-dup]
+fsy   [cls=B,-dup]
 ### C
+## strong
+ktb   [cls=C,am=ከተበ,-dup]
 ## weak
+xr`   [cls=C,am=ላጨ,-dup]
+# fake to test dup
+#zbb   [cls=C,+dup]
 ### E
+## strong
 mskr  [cls=E,am=መሰከረ,-dup]
+mrmr  [cls=D,am=መረመረ,-dup]
+trgm  [cls=E,am=ተረጐመ,-dup]
 ## weak
-## n-
+'nbt  [cls=E,-dup]
+C`rr  [cls=E,+dup]
+qrqH  [cls=E,-dup]
+fnty  [cls=E,am=ለየ,-dup]
+nwny  [cls=E,am=ተንቀሳቀሰ,-dup]
+gygy  [cls=E,am=ተሳሳተ,-dup]
+### Ew
+grt   [cls=Ew,am=ጫነ,-dup]
 ### F
-
+## strong
+qrTT  [cls=F,-dup]
+## weak
+qrqH  [cls=F,-dup]
+### G (an-, as-)
+nqTqT [cls=G,am=ተንቀጠቀጠ,-dup]
+strgm [cls=G,am=አስተረጐመ,-dup]
+### H (an-a-, as-a-)
+nqlql [cls=H,-dup]
+snqnq [cls=H,-dup]

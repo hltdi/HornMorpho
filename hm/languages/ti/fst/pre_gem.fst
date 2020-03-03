@@ -5,7 +5,7 @@
 start -> start  [X;V;%-/]
 
 start -> /      [:/]
-/ -> /C         [X/L]
+/ -> /C         [X]
 /C -> start     [_:]
 
 start ->

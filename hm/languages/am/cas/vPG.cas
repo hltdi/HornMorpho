@@ -72,6 +72,8 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 #>epen1<
 ## ku+ -> kW, etc. (leave this out till it's better understood)
 ## >Ku<
+# 1 Insert glottal stop before initial vowel (maybe shouldn't be here for Am)
+>gs0<
 # 3 Convert pre-geminate / to geminate _
 >pre_gem<
 # 4 Simplify consonants: ^s -> s, etc.

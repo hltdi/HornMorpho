@@ -19,7 +19,7 @@ X = {b, c, C, d, f, g, G, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, Y, 
 # possible initial root consonants (no y, NW, others?)
 X! = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # possible initial 5C root consonants (no y, various labial, ', `)
-X5 = {b, c, C, d, f, g, h, H, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, fW, gW, hW, HW, kW, mW, qW, sW, SW, tW, TW, xW, zW, ZW}
+X5 = {b, c, C, d, f, g, h, H, ', `, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, fW, gW, hW, HW, kW, mW, qW, sW, SW, tW, TW, xW, zW, ZW}
 # possible final root consonants (no XW except gW, kW, qW; what about hW, HW)
 X/B = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, ', `, gW, kW, qW}
 # laryngeal consonants

@@ -3257,7 +3257,6 @@ class FST:
 
         mult_dsts=True means that different destinations are specified for each
         final state in insertion."""
-#        print("Insertion with weight {}".format(weight))
         no_weight = self.no_weight(weight)
         ins_start = insertion._get_initial_state()
         single_final = len(insertion._get_final_states()) == 1
@@ -3266,6 +3265,7 @@ class FST:
             self._inserted[ins_label] += 1
         else:
             self._inserted[ins_label] = 1
+#        print("Insertion with weight {}, single final? {}".format(weight, single_final))
         # Copy the stringsets of insertion into those in self
         for key, value in insertion._stringsets.items():
             if key not in self._stringsets:

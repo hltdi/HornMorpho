@@ -140,12 +140,18 @@ i/ -> -3B           [:]       [tm=j_i]
 -2.4 -> -2V       [X]
 # ...CaCC verbs
 -2a.4 -> -2a.4V     [X]
-# sebab.ere, feSaSS.eme, feSaS.eme
--2a.4V -> -2aV      [:;_;:_]
+# sebab.ere, feSaSS.eme, tensaf.efe
+-2a.4V -> -2aV      [:;_]
 
 -3.4V -> -2.4       [:]
 
--3.4 -> -3.4V       [X]
+-3.4 -> -3.4V       [X/L]
+
+## added 2020.3.1: meH<a>lalefe
+-3L.4 -> -3.4V      [L]
+## a also possible before laryngeal
+-4.4V -> -3L.4      [a:]      [tm=prf];[tm=ger];[tm=imf,vc=tr]
+
 -4.4V -> -3.4       [e:]      [tm=prf];[tm=ger];[tm=imf,vc=tr];[tm=j_i]
 -4.4V -> -3.4       [I:]      [tm=imf,vc=smp];[tm=imf,vc=ps]
 
@@ -162,22 +168,26 @@ i/ -> -5.4          [:]
 
 ### ...aCC: C (CaCC), CCaCC, C|CaCC, C|CCaCC
 
--3aV -> -2a.4        [a]
+-3aV -> -2a.4        [a;e:]
 
--3a -> -3aV         [X/L]
--3aL -> -3aV        [L]
+-3a -> -3aV         [X]
+#-3aL -> -3aV        [L]
 -4aV -> -3a         [e:]
 # iterative of CaCC, CCaCC verbs
 -4aV -> -3a         [e:a]      [as=it]
--4aV -> -3aL        [e:]
+#-4aV -> -3aL        [e:a]      [as=it]
+# added 2020.3.1 temeH<a>lalefe
+-4aLV -> -3a        [a:;a]     [as=it]
+#-4aLV -> -3a        [a]        [as=smp]
 
 -4a -> -4aV         [X/L]
--4aL -> -4aV        [L]
+-4aL -> -4aLV       [L]
 -5aV -> -4a         [e:]
+-5aV -> -4aL        [e:]
 -5a -> -5aV         [X] 
 
 # denegageSe (must be CCCC +it)
-start -> -5a        [!:]       [as=it]
+start -> -5a        [!:]       [as=it,vc=smp]
 
 # imperfect passive iterative
 i/ -> -3a           [:]
@@ -192,6 +202,7 @@ a/ -> -4a           [:]
 a/ -> -5a           [:]
 
 | -> -3a            [:|]
+| -> -3aL           [:|]
 | -> -4a            [:|]
 | -> -4.4           [:|]
 | -> -5a            [:|]
@@ -200,13 +211,13 @@ i| -> |             [X]
 a_te -> |           [X]
 
 simp -> -3a         [:]
-simp -> -3aL        [:]
+#simp -> -3aL        [:]
 simp -> -4a         [:]
 # No a- or 0- for CCCC iterative
 te -> -5a           [:]
 
 te -> -4aL          [:]
 tt -> -4aL          [:]
-start -> -4aL       [!:]
+start -> -4aL       [!:]     [vc=smp]
 
 end ->

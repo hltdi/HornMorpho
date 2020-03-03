@@ -90,6 +90,7 @@ def flatten(seq):
 
 def reduce_lists(lists):
     '''Flatten a list of lists (doesn't mutate lists).'''
+#    print("Reducing {}".format(lists))
     return functools.reduce(lambda x, y: x + y, lists) if lists else []
 
 def reduce_sets(sets):
