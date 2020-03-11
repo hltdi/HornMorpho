@@ -1,5 +1,5 @@
 ### A
-Kdr   [root=[+tr,cls=A],am=ለበሰ,dup=None]
+kdr   [root=[+tr,cls=A],am=ለበሰ,dup=None]
 rmd   [root=[+tr,cls=A],am=ወደደ,dup=None]
 kbd   [root=[+tr,cls=A],am=ከበደ,dup=None]
 rKb   [root=[+tr,cls=A],am=አገኘ,dup=None]
@@ -17,6 +17,7 @@ srq   [root=[+tr,cls=A],dup=None,am=ሰረቀ]
 qTr   [root=[+tr,cls=A],dup=None,am=ገደለ]
 zrb   [root=[-tr,cls=A],dup=None,am=ዘነበ]
 rbr   [root=[-tr,cls=A],dup=None,am=ኖረ]
+qbr   [root=[-tr,cls=A],dup=None,am=ቀበረ]
 # -> B with at-
 gfr   [root=[+tr,cls=Ap],am=ለቀቀ,dup=None]
 kft   [root=[+tr,cls=Ap],am=ከፈተ,dup=None]

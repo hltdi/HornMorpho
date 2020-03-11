@@ -67,8 +67,8 @@ A1L -> A1v           [i:]   [tm=j_i,as=None|it,vc=[-ps],sp=1,sn=1]
 stem -> A1Yip        [w;y]   [cls=A,tm=prf|imf];[cls=A,tm=j_i,vc=[+ps]];[cls=A,tm=j_i,vc=[+cs]]
 stem -> A1Yj         [:w;:y] [cls=A,tm=j_i,vc=[-ps,-cs]]
 A1Yj -> A1v          [i:]
-A1Yip -> A1v         [e:]   [tm=imf,as=None,vc=[-cs]];[tm=imf,as=None,vc=[-ps]];[tm=j_i,vc=[+ps]];[tm=prf,vc=[-cs]]
-A1Yip -> A1v         [:]    [as=it];[tm=prf,vc=[+cs]];[tm=imf,vc=[+cs,+ps]]
+A1Yip -> A1v         [e:]   [tm=imf,as=None,vc=[-cs]];[tm=imf,as=None,vc=[-ps]];[tm=j_i,as=None,vc=[+ps]];[tm=prf,as=None,vc=[-cs]]
+A1Yip -> A1v         [:]    [as=it];[tm=prf,vc=[+cs],as=None];[tm=imf,vc=[+cs,+ps],as=None]
 ## *L*
 # we`ele; wL* doesn't behave like other w**
 stem -> A1L          [RR;w] [cls=A]
@@ -200,7 +200,7 @@ B2_ -> A2vY          [:]     [tm=imf|j_i,vc=[-ps]];[tm=imf|j_i,vc=[+cs]];[tm=prf
 #### C verbs (no as=rc option)
 ### weak
 # +ps,+cs in B, but it seem atC1aC2_eC3- is also possible for C verbs with [vc=[+ps,+cs],as=None]
-stem -> C1           [RR]   [cls=C]
+stem -> C1           [RR;w] [cls=C]
 C1 -> C1v            [a:]   [as=None]
 C1 -> C1v            [e:]   [as=it]
 C1v -> C2            [RR]
@@ -211,7 +211,7 @@ C2it -> C2v          [*:]   [tm=imf,vc=[+ps,-cs]];[tm=j_i,vc=[+ps,-cs]]
 C2it -> C20          [:]    [tm=imf|j_i,vc=[-ps]];[tm=imf|j_i,vc=[+cs]]
 # final L is the same as for A
 C2it -> A2_L         [:]
-# included for completeness; there may not be any of these
+# twale
 C2it -> A2_Y         [:]
 C20 -> C2v           [!:]   [-dup]
 C20 -> end           [_:RR] [+dup]

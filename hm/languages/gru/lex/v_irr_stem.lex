@@ -1,3 +1,4 @@
+## bhl: say
 bal     bhl   [tm=prf,vc=[-ps,-cs],sp=3,cls=A,-dup,as=None,am=አለ];[tm=prf,vc=[-ps,-cs],sp=1,sn=2,cls=A,-dup,as=None,am=አለ]
 # bakko, bakki, bakkmun
 bak     bhl   [tmp=prf,vc=[-ps,-cs],sp=2,sn=2,cls=A,-dup,as=None,am=አለ];[tmp=prf,vc=[-ps,-cs],sp=2,sn=1,sg=m,cls=A,-dup,as=None,am=አለ];[tmp=prf,vc=[-ps,-cs],sp=1,sn=1,cls=A,-dup,as=None,am=አለ]
@@ -7,21 +8,30 @@ bl      bhl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
 bel     bhl   [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አለ]
 t*bil   bhl   [vc=[+ps,-cs],cls=A,-dup,as=None,am=አለ]
 t*bibil bhl   [vc=[+ps,-cs],cls=A,-dup,as=it,am=አለ]
-atbil   bhl   [vc=[+ps,+cs],cls=A,-dup,as=it,am=አለ]
-xal     xhl   [tm=prf|j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
-xl      xhl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
-t*xil   xhl   [vc=[+ps,-cs],cls=A,-dup,as=None,am=አወቀ]
-t*xixil xhl   [vc=[+ps,-cs],as=it,cls=A,-dup,am=ተዋወቀ]
-ax_il   xhl   [vc=[-ps,+cs],as=None,cls=A,-dup,am=ተዋወቀ]
+atbil   bhl   [vc=[+ps,+cs],cls=A,-dup,as=None,am=አለ]
+## xyl: know
+xal     xyl   [tm=prf|j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
+xil     xyl   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=አወቀ]
+t*xil   xyl   [tm=prf|imf,vc=[+ps,-cs],cls=A,-dup,as=None,am=ታወቀ]
+t*xl    xyl   [tm=j_i,vc=[+ps,-cs],cls=A,-dup,as=None,am=ታወቀ]
+# all tam forms (dict)
+t*xixil xyl   [vc=[+ps,-cs],as=it,cls=A,-dup,am=ተዋወቀ]
+# Leslau
+atxixil xyl   [vc=[+ps,+cs],as=it,cls=A,-dup,am=አስተወዋቀ]
+# dict
+ax_il   xyl   [vc=[+ps,+cs],as=None,cls=A,-dup,am=አሳወቀ]
+## xy: want
 xe      xy    [tm=prf|imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ፈለገ]
 xa      xy    [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=ፈለገ]
 ax_e    xy    [tm=prf|imf,vc=[+ps,+cs],cls=A,-dup,as=None,am=ፈለገ]
+## wnh: sit
 ton_a   wnh   [tm=prf,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተቀመጠ]
 t_on_a  wnh   [tm=imf,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተቀመጠ]
 t_ona   wnh   [tm=j_i,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተቀመጠ]
 wen_a   wnh   [tm=prf,vc=[-ps,+cs],cls=A,-dup,as=None,am=አስቀመጠ]
 awena   wnh   [tm=imf,vc=[-ps,+cs],cls=A,-dup,as=None,am=አስቀመጠ]
 awna    wnh   [tm=j_i,vc=[-ps,+cs],cls=A,-dup,as=None,am=አስቀመጠ]
+## yz: seize
 yiz_e   yz    [tm=prf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ያዘ]
 yiz     yz    [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ያዘ]
 yiz     yz    [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=ያዘ]
@@ -37,6 +47,7 @@ atizize  yz   [tm=prf,vc=[+ps,+cs],cls=A,-dup,as=it,am=አያያዘ]
 tiziz   yz    [tm=imf,vc=[+ps,-cs],cls=A,-dup,as=it,am=ተያያዘ]
 t_iziz yz     [tm=imf,vc=[+ps,-cs],cls=A,-dup,as=it,am=ተያያዘ]
 atiziz  yz    [tm=imf,vc=[+ps,+cs],cls=A,-dup,as=it,am=አያያዘ]
+## wd: tell
 wed     wd    [tm=prf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ነገረ]
 ewd     wd    [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ነገረ]
 awd     wd    [tm=j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=ነገረ]
@@ -44,10 +55,13 @@ t*wed   wd    [tm=prf,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተነገረ]
 w_ed    wd    [tm=imf,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተነገረ];[tm=j_i,sp=0|1|3,vc=[+ps,-cs],cls=A,-dup,as=None,am=ተነገረ]
 tewed   wd    [tm=j_i,sp=2,vc=[-ps,-cs],cls=A,-dup,as=None,am=ተነገረ]
 atwed   wd    [vc=[+ps,+cs],cls=A,-dup,as=None,am=አስነገረ]
+## whb: give
 ab      whb   [tm=prf|j_i,vc=[-ps,-cs],cls=A,-dup,as=None,am=ሰጠ]
 Eb      whb   [tm=imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ሰጠ]
+## hNy: lie down
 IN_e    hNy   [tm=prf|imf,vc=[-ps,-cs],cls=A,-dup,as=None,am=ተኛ]
 atiN_e  hNy   [tm=prf,vc=[+ps,+cs],cls=A,-dup,as=None,am=አስተኛ]
+## gNy: find
 tegnaN_e  gNy [tm=prf,cls=A,-dup,as=it,vc=[-cs,+ps],am=ተገናኘ]
 g_naN_  gNy   [tm=imf,cls=A,-dup,as=it,vc=[-cs,+ps],am=ተገናኘ];[tm=j_i,cls=A,-dup,as=it,am=ተገናኘ,vc=[-cs,+ps],sp=0|1|3]
 tegnaN_  gNy  [tm=j_i,cls=A,-dup,as=it,am=ተገናኘ,vc=[-cs,+ps],sp=2]

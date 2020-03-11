@@ -151,14 +151,16 @@ i/ -> -3B           [:]       [tm=j_i]
 # how to prevent ba*kk*ene?
 -2a.4V -> -2aV      [:;_;:_]
 
+# mes<>kere
 -3.4V -> -2.4       [:]
 
 ## C2 (CCCC), C3 (CCCCC)
+# mes<k>ere
 -3.4 -> -3.4V       [X]
 -3L.4 -> -3.4V      [L]
 
 ## V1 (CCCC), V2 (CCCCC)
-# e in prf, ger, trans imprf, j_i
+# e in prf, ger, trans imprf, j_i; m<e>skere
 -4.4V -> -3.4       [e:]      [tm=prf];[tm=ger];[tm=imf,vc=tr];[tm=j_i]
 # a also possible before laryngeal
 -4.4V -> -3L.4      [a:]      [tm=prf];[tm=ger];[tm=imf,vc=tr]
@@ -184,7 +186,7 @@ i/ -> -5.4          [:]
 
 # CaCC and end of others
 # seba.bere
--3aV -> -2a.4       [a;e:]
+-3aV -> -2a.4       [a]
 
 # seb.abere
 -3a -> -3aV         [X/L]
@@ -193,6 +195,9 @@ i/ -> -5.4          [:]
 # iterative of CaCC, CCaCC verbs
 -4aV -> -3a         [e:a]        [as=it]
 -4aV -> -3aL        [I:;a:;e:]
+# tenTeTewe, tenseHebe
+-3e -> -3eV         [X]
+-3eV -> -2a.4       [e:]
 
 # s.ebabere
 -4a -> -4aV         [X/L]
@@ -221,10 +226,8 @@ a/ -> -5a           [:]
 
 | -> -3a            [:|]
 | -> -3aL           [:|]
-## tenseHabe
-#| -> -3L            [:|]
-## tenTeTewe
-#| -> -3             [:|]
+## tenseHabe, tenTeTewe
+| -> -3e            [:|]
 | -> -4a            [:|]
 | -> -4.4           [:|]
 | -> -5a            [:|]

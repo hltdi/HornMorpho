@@ -140,8 +140,8 @@ i/ -> -3B           [:]       [tm=j_i]
 -2.4 -> -2V       [X]
 # ...CaCC verbs
 -2a.4 -> -2a.4V     [X]
-# sebab.ere, feSaSS.eme, tensaf.efe
--2a.4V -> -2aV      [:;_]
+# sebab.ere, feSaS.eme (prefer over feSaSS.eme), tensaf.efe
+-2a.4V -> -2aV      [:;:_]
 
 -3.4V -> -2.4       [:]
 
@@ -168,10 +168,14 @@ i/ -> -5.4          [:]
 
 ### ...aCC: C (CaCC), CCaCC, C|CaCC, C|CCaCC
 
--3aV -> -2a.4        [a;e:]
+-3aV -> -2a.4        [a]
 
 -3a -> -3aV         [X]
-#-3aL -> -3aV        [L]
+
+# tenTeTewe, tenseHebe
+-3e -> -3eV         [X]
+-3eV -> -2a.4       [e:]
+
 -4aV -> -3a         [e:]
 # iterative of CaCC, CCaCC verbs
 -4aV -> -3a         [e:a]      [as=it]
@@ -203,6 +207,8 @@ a/ -> -5a           [:]
 
 | -> -3a            [:|]
 | -> -3aL           [:|]
+## tenseHabe, tenTeTewe
+| -> -3e            [:|]
 | -> -4a            [:|]
 | -> -4.4           [:|]
 | -> -5a            [:|]

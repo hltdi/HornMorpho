@@ -39,8 +39,7 @@ UU = {gW, kW, KW, qW, mW, bW, fW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, =, /, _}
 
-# Delete epenthetic and gemination characters
-#>del_epgem<
+# Delete epenthetic character
 >del_ep<
 # Optionally: nb -> mb
 >mb<
