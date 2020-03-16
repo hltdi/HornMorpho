@@ -436,7 +436,7 @@ zntw
 zng`
 zk_r
 zwr
-zwtr            ''        [vc=ps];[vc=tr]
+zwtr
 zzw
 dany
 dhss

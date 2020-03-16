@@ -78,6 +78,7 @@ nwny  [cls=E,am=ተንቀሳቀሰ,-dup]
 gygy  [cls=E,am=ተሳሳተ,-dup]
 ### Ew
 grt   [cls=Ew,am=ጫነ,-dup]
+bzn   [cls=Ew,am=ቦዘነ,-dup]
 ### F
 ## strong
 qrTT  [cls=F,-dup]

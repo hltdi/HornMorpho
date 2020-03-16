@@ -52,6 +52,10 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     if lang_id == 'am':
         from . import am_lang
         language = am_lang.AM
+    elif lang_id == 'amh':
+        # 2020.3.14: new Amharic
+        from . import amh_lang
+        language = amh_lang.AMH
     elif lang_id == 'ti':
         from . import ti_lang
         language = ti_lang.TI

@@ -1,5 +1,6 @@
 """
 Create Am<->Ks lexicon.
+Recreate Ti lexicon, eliminating non-root characters.
 """
 
 from . import morpho
@@ -7,6 +8,220 @@ from . import morpho
 #AM = morpho.get_language('am')
 #KS = morpho.get_language('ks')
 FS = morpho.FeatStruct
+
+def convert_am_root(root, rc=None):
+    rc = rc or convert_am_roots()
+    reduced = root.replace('_', '').replace('|', '').replace('a', '')
+    entry = rc.get(reduced)
+    if not entry:
+        print("Something wrong: {} not in lexicon".format(root))
+        return None, ''
+    elif len(entry) == 1:
+        return reduced, entry[0]
+    else:
+        if '_' in root and 'B' in entry:
+            return reduced, 'B'
+        elif 'a' in root:
+            if 'C' in entry:
+                return reduced, 'C'
+            elif 'F' in entry:
+                return reduced, 'F'
+            elif 'J' in entry:
+                return reduced, 'J'
+        elif 'A' in entry:
+            return reduced, 'A'
+        elif 'E' in entry:
+            return reduced, 'E'
+        else:
+            print("Something wrong with {}, {}".format(root, entry))
+            return None, ''
+
+def convert_am_roots(write=True):
+    """Convert old root to (new root, class)."""
+    new_rc = {}
+    with open("hm/languages/amh/lex/v_root.lex", encoding='utf8') as file:
+        for line in file:
+            cls = 'A'
+            line = line.strip().split()
+            root = line[0]
+            if len(line) > 1:
+                features = line[-1]
+                if 'cls' in features:
+                    cls = features.split("cls=")[1][0]
+            if root in new_rc:
+                new_rc[root].append(cls)
+            else:
+                new_rc[root] = [cls]
+    if write:
+        with open("../LingData/Am/roots2class.txt", 'w', encoding='utf8') as file:
+            for root, cls in new_rc.items():
+                print("{} {}".format(root, ','.join(cls)), file=file)
+    return new_rc
+
+def add_class_to_feats(feats, cls):
+    feats = feats.split(';')
+    feats = ["[cls={},{}".format(cls, f[1:]) for f in feats]
+    return ';'.join(feats)
+
+def recreate_am(write=True):
+    result = []
+    with open("hm/languages/amh/lex/vb_root.lex", encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            line = line.split('#')[0].strip()
+            linesplit = line.split()
+            if len(linesplit) != 3:
+                print(line)
+            root, lexeme, feats = line.split()
+            cls = ''
+            if '|' in root:
+                cls = 'G'
+                if 'a' in root:
+                    rootW = root.replace('W', '')
+                    # cls=H or cls=J
+                    if len(root) >= 7:
+                        cls = 'H'
+                    else:
+                        cls = 'J'
+                elif len(root) < 6:
+                    cls = 'I'
+                root = root.replace('|', '').replace('a', '')
+                feats = add_class_to_feats(feats, cls)
+                result.append("{}  ''  {}".format(root, feats))
+            elif '_' in root:
+                cls = 'B'
+                root = root.replace('_', '')
+                feats = add_class_to_feats(feats, cls)
+                result.append("{}  ''  {}".format(root, feats))
+            elif 'a' in root:
+                cls = 'C'
+                rootW = root.replace('W', '')
+                if len(rootW) > 4:
+                    cls = 'F'
+                root = root.replace('a', '')
+                feats = add_class_to_feats(feats, cls)
+                result.append("{}  ''  {}".format(root, feats))
+            else:
+                rootW = root.replace('W', '')
+                if len(rootW) > 4:
+                    cls = 'K'
+                elif len(rootW) > 3:
+                    cls = 'E'
+                if cls:
+                    feats = add_class_to_feats(feats, cls)
+                    result.append("{}  ''  {}".format(root, feats))
+                else:
+                    result.append(line)
+        if write:
+            with open("hm/languages/amh/lex/v_root.lex", 'w', encoding='utf8') as file:
+                for line in result:
+                    print(line, file=file)
+    return result
+
+def convert_ti_root(root, rc=None):
+    rc = rc or convert_ti_roots()
+    reduced = root.replace('_', '').replace('|', '').replace('a', '')
+    entry = rc.get(reduced)
+    if not entry:
+        print("Something wrong: {} not in lexicon".format(root))
+        return None, ''
+    elif len(entry) == 1:
+        return reduced, entry[0]
+    else:
+        if '_' in root and 'B' in entry:
+            return reduced, 'B'
+        elif 'a' in root:
+            if 'C' in entry:
+                return reduced, 'C'
+            elif 'F' in entry:
+                return reduced, 'F'
+            elif 'J' in entry:
+                return reduced, 'J'
+        elif 'A' in entry:
+            return reduced, 'A'
+        elif 'E' in entry:
+            return reduced, 'E'
+        else:
+            print("Something wrong with {}, {}".format(root, entry))
+            return None, ''
+
+def convert_ti_roots(write=True):
+    """Convert old root to (new root, class)."""
+    new_rc = {}
+    with open("hm/languages/ti/lex/v_root.lex", encoding='utf8') as file:
+        for line in file:
+            cls = 'A'
+            line = line.strip().split()
+            root = line[0]
+            if len(line) > 1:
+                features = line[-1]
+                if 'cls' in features:
+                    cls = features.replace(']','').split('cls=')[1]
+            if root in new_rc:
+                new_rc[root].append(cls)
+            else:
+                new_rc[root] = [cls]
+    if write:
+        with open("../LingData/Ti/roots2class.txt", 'w', encoding='utf8') as file:
+            for root, cls in new_rc.items():
+                print("{} {}".format(root, ','.join(cls)), file=file)
+    return new_rc
+
+def recreate_ti(write=True):
+    result = []
+    with open("hm/languages/ti/lex/vb_root.lex", encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            if '|' in line:
+                cls = 'G'
+                if len(line.split()) > 1:
+                    print("Extra stuff in {}".format(line))
+                else:
+                    root = line
+                    if 'a' in root:
+                        # cls=H or cls=J
+                        if len(root) >= 7:
+                            cls = 'H'
+                        else:
+                            cls = 'J'
+                    elif len(root) < 6:
+                        cls = 'I'
+                root = root.replace('|', '').replace('a', '')
+                result.append("{}  ''  [cls={}]".format(root, cls))
+            elif '_' in line:
+                cls = 'B'
+                if len(line.split()) > 1:
+                    print("Extra stuff in {}".format(line))
+                else:
+                    root = line
+                    root = root.replace('_', '')
+                    result.append("{}  ''  [cls={}]".format(root, cls))
+            elif 'a' in line.split()[0]:
+                cls = 'C'
+                if len(line.split()) > 1:
+                    print("Extra stuff in {}".format(line))
+                else:
+                    root = line
+                    if len(root) > 4:
+                        cls = 'F'
+                    root = root.replace('a', '')
+                    result.append("{}  ''  [cls={}]".format(root, cls))
+            else:
+                linesplit = line.split()
+                root = linesplit[0]
+                rootW = root.replace('W', '')
+                if len(rootW) > 3:
+                    if len(line.split()) > 1:
+                        print("Extra stuff in {}".format(line))
+                    else:
+                        result.append("{}  ''  [cls=E]".format(root))
+                else:
+                    result.append(line)
+        if write:
+            with open("hm/languages/ti/lex/v_root.lex", 'w', encoding='utf8') as file:
+                for line in result:
+                    print(line, file=file)
+    return result
 
 IGN_ROOTS = ["'mm", "hwn", "b'l", "drg", "c'l", "gN*", "hyd", "nbr", "'y*", "hl_w", "nwr"]
 

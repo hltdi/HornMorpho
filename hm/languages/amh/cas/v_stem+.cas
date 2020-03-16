@@ -1,0 +1,64 @@
+# Cascade for verb stems
+
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# *: final palatal Amharic verbs (selec_e, ley_e, qer_e)
+# D: reduplication
+# |: separator following first character of n|saff, n|qsaqs, q|bTbT, x|kWrmm
+
+## Vowel stringsets
+V = {a, e, E, i, I, o, u}
+## Consonant stringsets
+# all consonants
+XX = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# consonant "phonemes"
+!X = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, S, t, T, v, w, W, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# extra characters
+# possible root consonants
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# root consonants other than L, y, w
+X! = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, x, *, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# laryngeal consonants
+L = {'}
+# non-laryngeal consonants (include h for Amharic)
+X/L = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# palatal consonants
+J = {c, C, j, N, x, y, Z}
+# palatalizable consonants
+JJ = {d, l, n, s, t, T, z}
+# Non-palatal consonants
+~J = {b, d, f, g, h, k, l, m, n, P, q, r, s, S, t, T, w, z, '}
+# Consonants that can geminate
+F = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants (including some which probably can't be root consonants)
+B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants that can appear in surface verb forms before e and I as well as a
+BB = {gw, hW, kW, qW}
+# labialized consonants that can only appear before a in surface forms
+B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-labialized consonants
+~B = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, *, z, Z, '}
+# labializable consonants
+!B = {b, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, x, z, Z}
+# "Sibilants"
+9 = {z, Z, S, x}
+## Non-phonetic/orthographic characters
+% = {_, /, *, |, D}
+
+# Handle cases where as- precedes a root beginning with s, z, x, Z; sS -> SS (geminated second consonant)
+>stem_SS<
+# Labiabization and delabialization of stem consonants
+>stem_lab<
+# Detailed stem structure
+>stem_tam+<
+# Reduplication within stem
+>stem_dup<
+# Gross stem structure
+>stem_der<
+# Verb roots
++vb_root+
+# Delete symbols other than consonants
+>v_stem_del<

@@ -7,6 +7,7 @@ weighting = UNIFICATION
 # /: pre-gemination
 # D: reduplication
 # |: separator following first character of n|saff, n|qsaqs, q|bTbT, x|kWrmm, n|TTw
+#    2020.3.13: eliminated from root
 # !: prefix-stem boundary
 
 ## Vowel stringsets
@@ -46,4 +47,5 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >stem_tam<
 >stem_dup<
 >stem_der<
-+vb_root+
+>v_root<
++v_root+
