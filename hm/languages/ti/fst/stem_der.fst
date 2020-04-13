@@ -33,7 +33,7 @@ start -> 1c.3 [L]     [as=it];[as=smp]
 
 ## CCCC
 start -> 1.4  [X!]
-1.4 -> 2a.4   [X-y]
+1.4 -> 2a.4   [X]
 2a.4 -> 2b.4  [:]     [as=smp];[as=it]
 # C2 dup
 2a.4 -> 2b.4  [a:]    [vc=ps,as=rc];[vc=tr,as=rc]

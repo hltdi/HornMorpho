@@ -126,7 +126,7 @@ TW_mid -> .C [X-TW,w]
 
 mid   -> w   [w]
 w -> w_mid   [a;:]
-w_mid -> .C  [X-w]
+w_mid -> .C  [X-w,y]
 
 mid   -> x   [x]
 x -> x_mid   [a;:]
@@ -138,7 +138,7 @@ xW_mid -> .C [X-xW,w]
 
 mid   -> y   [y]
 y -> y_mid   [a;:]
-y_mid -> .C  [X-y]
+y_mid -> .C  [X-y,w]
 
 mid   -> z   [z]
 z -> z_mid   [a;:]

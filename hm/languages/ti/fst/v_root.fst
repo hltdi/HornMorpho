@@ -28,6 +28,9 @@ C1a -> C2    [X]
 C2 -> end    [X]
 
 start -> E1  [X]     [cls=E];[cls=F]
+# optional a following C1 (obligatory following C2)
+E1 -> Fa1    [a:]    [cls=F]
+Fa1 -> E2    [X]
 E1 -> E2     [X]     
 E2 -> Fa     [a:]    [cls=F]
 Fa -> E3     [X]

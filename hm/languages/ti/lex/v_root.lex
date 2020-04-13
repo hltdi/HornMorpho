@@ -696,3 +696,8 @@ lmlm  ''  [cls=E]
 mkH  ''  [cls=B]
 qzqz  ''  [cls=E]
 brd
+ndl
+hwS  ''  [cls=B]
+fnkt ''  [cls=E]
+xkt
+bsCw ''  [cls=F]

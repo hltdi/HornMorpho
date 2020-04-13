@@ -46,8 +46,8 @@ y>iI -> C       [X]
 #y-e -> C        [X]
 ## keep y
 C  -> y         [y]
-# make it optional for e
-y -> V          [V-I]
+# make it optional for e and I
+y -> V          [V]
 # ... or by a consonant, or when it's geminated
 y -> C          [X;_]
 

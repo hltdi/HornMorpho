@@ -48,8 +48,8 @@ y-e -> C        [X]
 C  -> y         [y]
 # ... when it's followed by a vowel other than e or I
 #y -> V          [V-e,I]
-# make it optional for e
-y -> V          [V-I]
+# make it optional for e and I
+y -> V          [V]
 # ... or by a consonant, or when it's geminated
 y -> C          [X;_]
 

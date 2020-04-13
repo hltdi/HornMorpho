@@ -48,8 +48,8 @@ y- -> y-e       [e]
 y-e -> C        [X]
 ## keep y
 C  -> Cy         [y]
-# ... when it's followed by a vowel other than e or I
-Cy -> V          [V-I]
+# ... when it's followed by a vowel
+Cy -> V          [V]
 # ... or by a consonant, or when it's geminated
 Cy -> C          [X;_]
 

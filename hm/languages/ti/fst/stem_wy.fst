@@ -69,11 +69,11 @@ eo=w -> eV=Ce    [:e]
 eV=Ce -> end     [X-y]
 
 ## paths with no changes
-# w, y following no V2 (jussive/imperative, transitive)
+# w, y following no V2 (jussive/imperative, transitive; C|wCCC all forms)
 C1 -> w         [w]
 C1 -> y         [y]
 # preserve if geminated or followed by y
-w -> end        [_;y]
+w -> end        [_;y;e]
 y -> end        [_;y]
 # ye also survives if C3=y (trans perf)
 y -> yV         [e]
@@ -107,6 +107,10 @@ ew -> eYe.y     [e]
 ew -> ewC.C     [X]
 ewC.C -> ewC.C  [V]
 ewC.C -> end    [X]
+# eyCeC for CyCC verbs
+ey -> ewC.C     [X]
+# eyL (terey`e); only for following L??
+ey -> end       [L]
 
 end ->
 eo=wC ->

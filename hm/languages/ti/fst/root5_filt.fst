@@ -95,6 +95,10 @@ start -> Z   [Z;ZW]
 Z -> Z|      [|]
 Z| -> mid    [X-Z,ZW,s,x,z,S]
 
-start -> L   [L]
+start -> L   [h;H;';`]
 L -> L|      [|]
 L| -> mid    [X/L]
+
+start -> W   [hW;HW]
+W -> W|      [|]
+W| -> mid    [~B-w]
