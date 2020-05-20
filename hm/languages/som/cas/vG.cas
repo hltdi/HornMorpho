@@ -1,0 +1,31 @@
+weighting = UNIFICATION
+
+## Special characters
+
+## Vowel stringsets
+$ = {a, e, i, o, u, aa, ee, ii, oo, uu}
+$1 = {a, e, i, o, u}
+$2 = {aa, ee, ii, oo, uu}
+## Consonant stringsets
+# all consonants
+! = {b, c, ch, d, dh, f, g, h, j, k, l, m, n, ny, p, ph, q, r, s, sh, t, v, w, x, y, z, ', -}
+# T: 3s suffix; C: infinitive infix; L: vowel lengthening; I: imperative singular
+% = {T, C, L, I}
+
+>T2nG<
+>s2f<
+>t2x<
+>lr_n<
+>t2d<
+# Has to follow t2d to prevent argide
+>CCiC<
+# Has to follow t2d to prevent agarde
+# Follows lr_n to get agarre
+# !! omit for generation
+# >metath<
+>wy+G<
+>VL<
+>GS+G<
+>dh+<
+>N<
+>v_mtaxG<

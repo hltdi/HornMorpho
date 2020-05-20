@@ -32,7 +32,7 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO code
-CODES = {'ch': 'sgw', 'sl': 'stv', 'ks': 'gru'}
+CODES = {'ch': 'sgw', 'sl': 'stv', 'ks': 'gru', 'so': 'som'}
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name

@@ -701,3 +701,14 @@ hwS  ''  [cls=B]
 fnkt ''  [cls=E]
 xkt
 bsCw ''  [cls=F]
+krkr  ''  [cls=E]  # below added 2020.5.19
+lflf  ''  [cls=E]
+Srg
+bTbT  ''  [cls=E]
+fTn
+lqm
+stf  ''  [cls=C]
+mzz
+bdl  ''  [cls=B]
+Hlq
+lhb

@@ -1,0 +1,42 @@
+$ stem
+# -> tense +v_irr+  [pos=v]
+  +v_stem+          [pos=v]
+
+$ bound
+  =
+
+$ deriv
+  --          [v=None]
+
+$ aspect
+  ay          [a=prg]
+  --          [a=None]
+
+$ subject
+  n           [p=1,n=2]
+  T           [p=2];[p=3,g=f,n=1]
+  --          [p=1,n=1];[p=3,n=2];[p=3,g=m,n=1]
+
+$ tense
+  # also relative clauses with other cases besides sbj
+  aa          [t=prs,-neg,n=1,-sub];[t=prs,-neg,p=1,n=2,-sub];[t=prs,-neg,p=1,n=2,+sub,c=sbj];[t=prs,-neg,n=1,+sub,c=sbj]
+  aan         [t=prs,n=2,p=2|3]
+  ay          [t=pst,-neg];[t=ips,-neg,p=1];[t=ips,-neg,p=2,n=1];[t=ips,-neg,p=3,n=1,g=f]
+  e           [t=ips,-neg,n=2,p=2|3]
+  a           [t=imp,-neg,n=2]
+  een         [t=cnd,+neg]
+  in          [t=imp,+neg,n=1];[t=pst,+neg]
+  ina         [t=imp,+neg,n=2]
+  I           [t=inf]
+  n           [t=pst,+neg,a=prg];[t=prs,+neg,a=prg,+sub]
+  nin         [t=pst,+neg,a=prg];[t=prs,+neg,a=prg,+sub]
+  o           [t=prs,+neg,n=1];[t=prs,+neg,p=1,n=2];[t=opt,-neg,n=1];[t=opt,-neg,p=1,n=2];[t=prs,-neg,p=1,n=2,+sub,c=abs];[t=prs,-neg,n=1,+sub,c=abs]
+  een         [t=opt,-neg,n=2,p=2|3];[t=pot,-neg,n=2,p=2|3]
+  id          [t=prs,+neg,p=2,n=1]
+  ee          [t=pot,-neg,n=1];[t=pot,-neg,p=1,n=2]
+  # but ips, 3sm in -so verbs is -[s]ay
+  --          [t=imp,-neg,n=1];[t=ips,-neg,n=1,p=3,g=m]
+
+$ case
+# Subordinate clauses can have case markers
+  --          [-sub];[+sub,c=abs]
