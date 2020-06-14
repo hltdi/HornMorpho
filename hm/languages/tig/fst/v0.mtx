@@ -3,7 +3,7 @@ $ subord
   --  [-rel,-sub]
 
 $ negative
-  i  [+neg]
+  'i [+neg]
   -- [-neg]
 
 $ sbj_pre

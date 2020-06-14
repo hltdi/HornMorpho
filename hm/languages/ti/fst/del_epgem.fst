@@ -2,11 +2,11 @@
 
 start -> start    [V-I]
 
-start -> /        [:/]
-/ -> C            [X;Q;K;QW;KW]
+#start -> /        [:/]
+#/ -> C            [X;Y]
 
-start -> C        [X;Q;K;QW;KW]
-C -> /            [:/]
+start -> C        [X;Y]
+#C -> /            [:/]
 # no K, Q possible here?
 C -> C            [:_;X]
 C -> start        [:I;V-I]

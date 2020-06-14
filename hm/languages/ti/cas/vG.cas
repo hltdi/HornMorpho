@@ -16,6 +16,7 @@ V = {a, e, E, i, I, o, u, @, A}
 XX = {b, c, C, d, f, g, h, ^h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, ^s, S, ^S, t, T, v, v, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, ^hW, HW, jW, kW, KW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, ^sW, SW, ^SW, tW, TW, xW, zW, ZW}
 # possible root consonants
 X = {b, c, C, d, f, g, G, h, H, j, k, l, m, n, N, p, q, r, s, S, t, T, v, w, x, y, Y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+Y = {K, Q, KW, QW}
 # possible initial root consonants (no y, NW, others?)
 X! = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, p, q, r, s, S, t, T, v, w, x, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # possible initial 5C root consonants (no y, various labial, ', `)
@@ -59,12 +60,12 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >CyCG<
 ### 4 CC -> C_ (follows CyC so that yyIC becomes y_IC)
 >gem<
-### 5 IV -> V, eV -> V
->VV<
-### 6 CC# -> CCi, I# -> i#
->i_fin<
-### 7 @ -> e after non-laryngeal
+### 5 @ -> e after non-laryngeal
 >@G<
+### 6 IV -> V, eV -> V
+>VV<
+### 7 CC# -> CCi, I# -> i#
+>i_fin<
 ### 8 Get rid of remaining stem-final boundary characters
 >bound<
 ### 9 e/I/i w/y at stem-final boundary

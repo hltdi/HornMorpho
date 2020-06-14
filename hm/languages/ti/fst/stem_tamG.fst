@@ -86,7 +86,7 @@ i/ -> -3            [:]       [tm=j_i]
 ### A (CLC)
 
 ## V2
-# C1 != a
+# V1 != a
 # C(e)LaC
 -2LV -> -1          [a:]      [tm=prf];[tm=imf,vc=ps];[tm=j_i,vc=smp];[tm=j_i,vc=ps]
 # C(e)LIC
@@ -94,7 +94,7 @@ i/ -> -3            [:]       [tm=j_i]
 # C(e)LiC
 -2LV -> -1          [i:]      [tm=ger]
 
-# C1 = a
+# V1 = a
 # CaLaC
 -2LVa -> -1         [a:]      [tm=prf,vc=smp];[tm=prf,vc=ps];[tm=imf,vc=ps]
 # CaLC

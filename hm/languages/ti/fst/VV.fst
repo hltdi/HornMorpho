@@ -12,7 +12,7 @@ I.V -> start     [V]
 
 # delete e before any other vowel (or only e, o, a?)
 start -> e.V     [:e;:@]
-e.V -> start     [e;o;a]
+e.V -> start     [e;o;a;@]
 
 # it has to happen
 start -> I       [I]

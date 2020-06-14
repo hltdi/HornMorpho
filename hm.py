@@ -108,6 +108,13 @@ def make_casc(name):
 
 ### Debugging functions
 
+def get_feats(fs, feats):
+    """Print values for features feats within feature structure fs."""
+    values = []
+    for feat in feats:
+        values.append("{}={}".format(feat, fs.get(feat)))
+    return ",".join(values)
+
 def casc_anal(casc, string, start_i, end_i=0, trace=0):
     seg_units = casc.seg_units
     s = string

@@ -1,5 +1,5 @@
 $ stem
-# -> tense +v_irr+  [pos=v]
+  -> case  +v_irr+  [pos=v]
   +v_stem+          [pos=v]
 
 $ bound
@@ -9,34 +9,52 @@ $ deriv
   --          [v=None]
 
 $ aspect
-  ay          [a=prg]
+  # Not clear when -ey is preferred
+  ay          [a=prg,t=prs|pst]
+  ey          [a=prg,t=prs|pst]
   --          [a=None]
 
 $ subject
   n           [p=1,n=2]
-  T           [p=2];[p=3,g=f,n=1]
-  --          [p=1,n=1];[p=3,n=2];[p=3,g=m,n=1]
+  T           [p=2,-rsj];[p=2,-sub];[p=3,g=f,n=1]
+  --          [p=1,n=1];[p=3,n=2];[p=3,g=m,n=1];[t=pst,+neg]
 
 $ tense
   # also relative clauses with other cases besides sbj
-  aa          [t=prs,-neg,n=1,-sub];[t=prs,-neg,p=1,n=2,-sub];[t=prs,-neg,p=1,n=2,+sub,c=sbj];[t=prs,-neg,n=1,+sub,c=sbj]
-  aan         [t=prs,n=2,p=2|3]
-  ay          [t=pst,-neg];[t=ips,-neg,p=1];[t=ips,-neg,p=2,n=1];[t=ips,-neg,p=3,n=1,g=f]
-  e           [t=ips,-neg,n=2,p=2|3]
-  a           [t=imp,-neg,n=2]
-  een         [t=cnd,+neg]
-  in          [t=imp,+neg,n=1];[t=pst,+neg]
-  ina         [t=imp,+neg,n=2]
-  I           [t=inf]
-  n           [t=pst,+neg,a=prg];[t=prs,+neg,a=prg,+sub]
-  nin         [t=pst,+neg,a=prg];[t=prs,+neg,a=prg,+sub]
-  o           [t=prs,+neg,n=1];[t=prs,+neg,p=1,n=2];[t=opt,-neg,n=1];[t=opt,-neg,p=1,n=2];[t=prs,-neg,p=1,n=2,+sub,c=abs];[t=prs,-neg,n=1,+sub,c=abs]
-  een         [t=opt,-neg,n=2,p=2|3];[t=pot,-neg,n=2,p=2|3]
-  id          [t=prs,+neg,p=2,n=1]
-  ee          [t=pot,-neg,n=1];[t=pot,-neg,p=1,n=2]
+  [t=inf]     # how to constrain p/n/g?
+    I           [-neg,-sub]
+  [t=prs]
+    aa          [-neg,n=1,-sub];[-neg,p=1,n=2,-sub];[-neg,p=1,n=2,+sub,c=sbj];[-neg,n=1,+sub,c=sbj]
+    aan         [n=2,p=2|3]
+    n           [+neg,a=prg,+sub]
+    nin         [+neg,a=prg,+sub]
+    o           [+neg,n=1];[+neg,p=1,n=2];[-neg,p=1,n=2,+sub,c=abs];[-neg,n=1,+sub,c=abs]
+    id          [+neg,p=2,n=1]
+    a           [+sub,+rsj,c=abs,n=1,p=1|2];[+sub,+rsj,c=abs,n=1,p=3,g=m];[+sub,+rsj,c=abs,n=2,p=2|3]
+  [t=pst]
+    ay          [-neg,a=None]
+    ey          [-neg,a=prg]
+    in          [+neg]
+    n           [+neg,a=prg]
+    nin         [+neg,a=prg]
+  [t=ips]
+    ay          [-neg,p=1];[-neg,p=2,n=1];[-neg,p=3,n=1,g=f]
+    e           [-neg,n=2,p=2|3]
+  [t=imp]
+    a           [-neg,n=2]
+    in          [+neg,n=1]
+    ina         [+neg,n=2]
+  [t=cnd]
+    een         [+neg]
+  [t=opt]
+    o           [-neg,n=1];[-neg,p=1,n=2]
+    een         [t=opt,-neg,n=2,p=2|3];[t=pot,-neg,n=2,p=2|3]
+  [t=pot]
+    een         [-neg,n=2,p=2|3]
+    ee          [-neg,n=1];[-neg,p=1,n=2]
   # but ips, 3sm in -so verbs is -[s]ay
-  --          [t=imp,-neg,n=1];[t=ips,-neg,n=1,p=3,g=m]
+  --            [t=imp,-neg,n=1];[t=ips,-neg,n=1,p=3,g=m]
 
 $ case
-# Subordinate clauses can have case markers
-  --          [-sub];[+sub,c=abs]
+## Subordinate clauses can have case markers
+  --            [-sub];[+sub,c=abs]

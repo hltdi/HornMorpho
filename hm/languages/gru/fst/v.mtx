@@ -45,9 +45,9 @@ $ bound1
 
 $ sbj_suff
   # G = kW|hW
-  G     [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,op=1|2|3];[sp=1,sn=1,sg=m,tm=prf,+neg]
+  G     [sp=1,sn=1,sg=m,tm=prf,-def,+sub];[sp=1,sn=1,sg=m,tm=prf,-def,op=1|2|3];[sp=1,sn=1,sg=m,tm=prf,+neg,-def]
   # H = k|h
-  H     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
+  H     [sp=1,sn=1,sg=m,tm=prf,+def,+sub];[sp=1,sn=1,sg=m,tm=prf,-sub,-neg,op=None];[sp=2,sn=1,sg=m,tm=prf,+sub,+def]
   He    [sp=2,sn=1,sg=m,tm=prf,-def,+sub];[sp=2,sn=1,sg=m,tm=prf,-sub]
   x     [sp=2,sn=1,sg=f,tm=prf]
   e     [sp=3,sn=1,sg=m,tm=prf]

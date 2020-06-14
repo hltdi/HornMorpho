@@ -151,3 +151,6 @@ mW.e -> end     [o:e]
 
 end -> end      [X-kW,gW,qW;V;_]
 end ->
+kW ->
+gW ->
+qW ->

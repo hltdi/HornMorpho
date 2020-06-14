@@ -39,15 +39,15 @@ UU = {gW, kW, KW, qW, mW, bW, fW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, =, /, _}
 
-# Delete epenthetic character
+## Delete epenthetic character
 >del_ep<
-# Optionally: nb -> mb
+## Optionally: nb -> mb
 >mb<
-### 1 Insert glottal stop before initial vowel
+#### 1 Insert glottal stop before initial vowel
 >gs0<
-# Optionally: initial we -> wo, yC -> yi, yE -> ye
+## Initial we -> wo, yC -> yi, yE -> ye; ko -> kWe, etc.
 >altG<
-# clean up gemination
+## clean up gemination
 >gem<
 >kh<
 # Realize VV combinations; get rid of morpheme boundaries

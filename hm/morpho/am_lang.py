@@ -700,8 +700,8 @@ AM.morphology['v'].FS_implic = {'rel': ['sub'],
                                 ('pp', ('be', 'le', 'ke', 'wede', 'Inde', 'sIle', 'Iske', 'Iyye')): [['rl', ['p']]],
 #                                'def': ['rel', 'sub'],
                                 'l': ['prp'],
-                                'b': ['prp'],
-                                'ob': [['expl']]
+                                'b': ['prp']
+#                                'ob': [['expl']]
                                 }
 # defaultFS with voice and aspect unspecified
 AM.morphology['v'].citationFS = language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-expl],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-ye,-acc,rl=[-p,-acc]]")

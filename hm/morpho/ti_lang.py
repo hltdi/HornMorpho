@@ -581,7 +581,8 @@ TI.morphology['v'].dict_to_anal = lambda root, anal: vb_dict_to_anal(root, anal)
 ## Used in generation and production of citation form
 TI.morphology['v'].defaultFS = \
     language.FeatStruct("[pos=v,tm=prf,as=smp,vc=smp,sb=[-p1,-p2,-plr,-fem],ob=[-xpl,-p1,-p2,-plr,-fem,-prp],cj1=None,cj2=None,pp=None,-neg,-yn,-rel,-sub]")
-TI.morphology['v'].FS_implic = {'rel': ['sub'], 'cj1': ['sub'], 'pp': ['rel', 'sub'], 'ob': [['xpl']]}
+TI.morphology['v'].FS_implic = {'rel': ['sub'], 'cj1': ['sub'], 'pp': ['rel', 'sub']}
+                                    #, 'ob': [['xpl']]}
 # defaultFS with voice and aspect unspecified
 TI.morphology['v'].citationFS = \
     language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-xpl],cj1=None,cj2=None,pp=None,-neg,-yn,-rel,-sub]")

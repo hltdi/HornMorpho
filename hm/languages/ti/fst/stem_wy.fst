@@ -23,7 +23,7 @@ start -> bound    [:!]
 
 # C1 (possibly followed by |)
 bound -> C1       [X]
-C1 -> C1          [|]
+# C1 -> C1          [|]
 # as long as there's no w, y, or e, go to the end state
 C1 -> end         [X-w,y;V-e]
 # once we're past C1, e, w, y, finish with anything

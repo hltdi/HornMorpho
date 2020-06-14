@@ -16,6 +16,7 @@ V = {a, e, E, i, I, o, u, @, A}
 XX = {b, c, C, d, f, g, h, ^h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, ^s, S, ^S, t, T, v, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, ^hW, HW, jW, kW, KW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, ^sW, SW, ^SW, tW, TW, xW, zW, ZW}
 # possible root consonants
 X = {b, c, C, d, f, g, G, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, Y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+Y = {K, Q, KW, QW}
 # possible initial root consonants (no y, NW, others?)
 X! = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # possible initial 5C root consonants (no y, various labial, ', `)
@@ -43,40 +44,42 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 
 #### WRITTEN
 ### 0 Delete I and gemination character, but not for phon
-# >del_epgem<
-### initial Le -> La
+### >del_epgem<
+### 0 Delete I (remove this at some point)
+>delep<
+### 1 initial Le -> La
 >Le2aP<
-### 1 Insert glottal stop before initial vowel
+### 2 Insert glottal stop before initial vowel
 >gs0<
 #### PHONEMIC from here (including k, q allophones)
-### 2 k->K, q->Q when postvocalic and ungeminated
+### 3 k->K, q->Q when postvocalic and ungeminated
 >KQ<
 ### Optional uw -> Iw (left out for generation)
-# >u2Iw<
+### >u2Iw<
 ### optional eyC to EC (left out for generation)
-# >ey2E<
-### 3 y->i
+### >ey2E<
+### 4 y->i
 >CyCG<
-### 4 CC -> C_ (follows CyC so that yyIC becomes y_IC)
+### 5 CC -> C_ (follows CyC so that yyIC becomes y_IC)
 >gem<
-### 5 IV -> V, eV -> V
->VV<
-### 6 CC# -> CCi, I# -> i#
->i_fin<
-### 7 @ -> e after non-laryngeal
+### 6 @ -> e after non-laryngeal
 >@G<
-### 8 Get rid of remaining stem-final boundary characters
+### 7 IV -> V, eV -> V
+>VV<
+### 8 CC# -> CCi, I# -> i#
+>i_fin<
+### 9 Get rid of remaining stem-final boundary characters
 >bound<
-### 9 e/I/i w/y at stem-final boundary
+### 10 e/I/i w/y at stem-final boundary
 ### Vwy has to be below epen because it includes Iw$, Iy$
 >VwyG<
-### 10 Add epenthetic I
+### 11 Add epenthetic I
 >epen<
-### 11 Convert /C to C_
+### 12 Convert /C to C_
 >pre_gem<
-### 12 Convert A to a initially, e otherwise
+### 13 Convert A to a initially, e otherwise
 >A<
-### 13 Allomorphs of Ti rel prefix     
+### 14 Allomorphs of Ti rel prefix     
 >relG<
-### 14 Morphotactics with roots
+### 15 Morphotactics with roots
 >vb_mtaxG<

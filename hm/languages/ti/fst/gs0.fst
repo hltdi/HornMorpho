@@ -5,7 +5,7 @@
 # insert the glottal stop
 start -> gs   [':]
 gs -> end     [V]
-end -> end    [X;K;Q;KW;QW;V;_]
+end -> end    [X;Y;V;_]
 
 # succeed if the word starts with a C, including
 # a glottal stop which is already there
