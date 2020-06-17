@@ -206,7 +206,8 @@ C1 -> C1v            [e:]   [as=it]
 C1v -> C2            [RR]
 C2 -> C2it           [D:]   [as=it]
 C2 -> C2it           [:]    [as=None]
-C2it -> C2v          [e:]   [tm=prf]
+# ugly but v3o doesn't work for cls C (and E/F)
+C2it -> C2v            [e:]  [tm=prf];[tm=imf|j_i,vc=[+ps,-cs],op=None|1|2];[tm=imf|j_i,vc=[+ps,-cs],sp=1,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=2,sn=1,sg=m,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=3,sn=1,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=2|3,sn=2,sg=f,op=3]
 C2it -> C2v          [*:]   [tm=imf,vc=[+ps,-cs]];[tm=j_i,vc=[+ps,-cs]]
 C2it -> C20          [:]    [tm=imf|j_i,vc=[-ps]];[tm=imf|j_i,vc=[+cs]]
 # final L is the same as for A
@@ -234,7 +235,8 @@ E2 -> E2v            [:]    [cls=E,as=None]
 E2 -> E2v            [a:]   [cls=F];[cls=E,as=rc]
 # wetwete
 E2v -> E3            [RR;w]
-E3 -> E3v            [e:]  [tm=prf]
+# ugly by v3o doesn't work for this case for some reasons
+E3 -> E3v            [e:]  [tm=prf];[tm=imf|j_i,vc=[+ps,-cs],op=None|1|2];[tm=imf|j_i,vc=[+ps,-cs],sp=1,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=2,sn=1,sg=m,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=3,sn=1,op=3];[tm=imf|j_i,vc=[+ps,-cs],sp=2|3,sn=2,sg=f,op=3]
 E3 -> E3v            [*:]  [tm=imf|j_i,vc=[+ps,-cs]]
 E3 -> E3v            [!:]  [tm=imf|j_i,vc=[-ps]];[tm=imf|j_i,vc=[+cs]]
 # ***L

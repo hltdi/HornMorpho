@@ -26,9 +26,9 @@ YY = {y, w, Y}
 ## Non-phonetic/orthographic characters
 % = {=, /, _}
 
-# Delete epenthetic and gemination characters
-#>del_epgem<
-#>del_ep<
+## Delete epenthetic and gemination characters
+##>del_epgem<
+##>del_ep<
 ### Insert glottal stop before initial vowel
 >gs0<
 # clean up gemination

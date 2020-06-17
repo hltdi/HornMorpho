@@ -108,6 +108,11 @@ def make_casc(name):
 
 ### Debugging functions
 
+def get_subcas(cascade, name, language):
+    abbrev = language.abbrev
+    return hm.morpho.fst.FSTCascade.load("hm/languages/" + abbrev + "/cas/" + name,
+                                         cascade.seg_units, language=language)
+
 def get_feats(fs, feats):
     """Print values for features feats within feature structure fs."""
     values = []
@@ -137,14 +142,17 @@ def casc_anal(casc, string, start_i, end_i=0, trace=0):
         return casc[start_i].transduce(s, seg_units=seg_units, timeout=10)
 
 def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
+    """Generate a form from a cascade, given an input string, features, and a start and end
+    index (start_i > end_i).
+    """
     seg_units = casc.seg_units
     s = string
     if not isinstance(fs, hm.morpho.semiring.FSSet):
         f = hm.morpho.semiring.FSSet(fs)
     else:
         f = fs
-    if end_i:
-        for index in range(start_i, end_i, -1):
+    if end_i != None:
+        for index in range(start_i, end_i-1, -1):
             res = casc[index].inverted().transduce(s, f, seg_units=seg_units,
                                                    timeout=10, trace=trace)
             if not res:
@@ -159,13 +167,13 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
                 i = int(x)
             s = res[i][0]
             f = res[i][1]
-            print(s)
+            print(s, f)
     else:
         return casc[start_i].inverted().transduce(s, f, seg_units=seg_units, timeout=10)
 
-# shortcuts for Chaha ('sgw')
-GA = lambda form: hm.anal('sgw', form, raw=True)
-GG = lambda form, pos, feats=None: hm.gen('sgw', form, pos=pos, features=hm.morpho.FSSet(feats) if feats else None)
+## shortcuts for Chaha ('sgw')
+#GA = lambda form: hm.anal('sgw', form, raw=True)
+#GG = lambda form, pos, feats=None: hm.gen('sgw', form, pos=pos, features=hm.morpho.FSSet(feats) if feats else None)
 
 def main():
     pass
