@@ -1,0 +1,159 @@
+## Final suffixes (main affirm perf -m, converb -m, converb -ta(ne))
+$ fin_suff
+  --    [tm=imf|j_i];[tm=prf,sub=t|b|y];[tm=prf,+neg]
+  # can also be converb marker with any tm
+  m     [tm=prf,sub=None,-neg]
+
+#  [op=3,on=1,og=m]
+#    n     [sp=1|3];[sp=2,sn=1,sg=m]
+#    i     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+#  [op=3,on=1,og=f]
+#    na    [sp=1|3];[sp=2,sn=1,sg=m]
+#    ya    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+
+#  n     [sp=1|3,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a]
+#  an    [sp=1|3,op=3,on=1,og=f,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=f,ot=a]
+#  i     [sp=2,sn=1,sg=f,op=3,on=1,og=m,ot=a];[sn=2,op=3,on=1,og=m,ot=a];[sp=None,sn=None,sg=None,op=3,on=1,og=m,ot=a]
+#  ay    [sp=2,sn=1,sg=f,op=3,on=1,og=f,ot=a];[sn=2,op=3,on=1,og=m,ot=a];[sp=None,sn=None,sg=None,op=3,on=1,og=f,ot=a]
+#  # 3sm
+
+$ obj_suff
+  --    [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1]
+  ## 3
+  # accusative
+  [op=3,on=1,og=m,ot=a]
+    n      [sp=1|3];[sp=2,sn=1,sg=m]
+    i      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=1,og=f,ot=a]
+    an     [sp=1|3];[sp=2,sn=1,sg=m]
+    ay     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=2,og=m,ot=a]
+    on     [sp=1|3];[sp=2,sn=1,sg=m]
+    oy     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=2,og=f,ot=a]
+    amen   [sp=1|3];[sp=2,sn=1,sg=m]
+    amey   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # malfactive
+  [op=3,on=1,og=m,ot=m]
+    ew      [sp=1|3];[sp=2,sn=1,sg=m]
+    epW     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=1,og=f,ot=m]
+    ab     [sp=1|3];[sp=2,sn=1,sg=m]
+    ap     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=2,og=m,ot=m]
+    ob     [sp=1|3];[sp=2,sn=1,sg=m]
+    op     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=3,on=2,og=f,ot=m]
+    ameb   [sp=1|3];[sp=2,sn=1,sg=m]
+    amep   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # benefactive
+  er       [op=3,on=1,og=m,ot=b]
+  ar       [op=3,on=1,og=f,ot=b]
+  or       [op=3,on=2,og=m,ot=b]
+  amer     [op=3,on=2,og=f,ot=b]
+  # 2
+  # accusative
+  [op=2,on=1,og=m,ot=a]
+    eKan   [sp=1|3];[sp=2,sn=1,sg=m]
+    ek     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=1,og=f,ot=a]
+    KYan   [sp=1|3];[sp=2,sn=1,sg=m]
+    kY     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=m,ot=a]
+    uKan   [sp=1|3];[sp=2,sn=1,sg=m]
+    uk     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=f,ot=a]
+    amKan  [sp=1|3];[sp=2,sn=1,sg=m]
+    amk    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # malfactive
+  [op=2,on=1,og=m,ot=m]
+    eKb    [sp=1|3];[sp=2,sn=1,sg=m]
+    ekb    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=1,og=f,ot=m]
+    KYb    [sp=1|3];[sp=2,sn=1,sg=m]
+    kYb    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=m,ot=m]
+    uKb    [sp=1|3];[sp=2,sn=1,sg=m]
+    ukb    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=f,ot=m]
+    amKb   [sp=1|3];[sp=2,sn=1,sg=m]
+    amkb   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # benefactive
+  [op=2,on=1,og=m,ot=b]
+    eKn    [sp=1|3];[sp=2,sn=1,sg=m]
+    ekn    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=1,og=f,ot=b]
+    KYn    [sp=1|3];[sp=2,sn=1,sg=m]
+    kYn    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=m,ot=b]
+    uKn    [sp=1|3];[sp=2,sn=1,sg=m]
+    ukn    [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=2,on=2,og=f,ot=b]
+    amKn   [sp=1|3];[sp=2,sn=1,sg=m]
+    amkn   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # 1
+  # accusative
+  [op=1,on=1,ot=a]
+    E      [sp=1|3];[sp=2,sn=1,sg=m]
+    n      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # malfactive
+  [op=1,on=1,ot=m]
+    ib     [sp=1|3];[sp=2,sn=1,sg=m]
+    ip     [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  [op=1,on=2,ot=m]
+    ednb   [sp=1|3];[sp=2,sn=1,sg=m]
+    ednp   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+  # benefactive
+  in       [op=1,on=1,ot=b]
+  # 1p: benefactive and accusative; light and heavy
+  edn      [op=1,on=2,ot=a|b]
+
+## Subject suffixes reversed
+$ sbj_suff
+  KW    [sp=1,sn=1,sg=m,tm=prf]
+  eK    [sp=2,sn=1,sg=m,tm=prf]
+  KY    [sp=2,sn=1,sg=f,tm=prf]
+  e     [sp=3,sn=1,sg=m,tm=prf]
+  ce    [sp=3,sn=1,sg=f,tm=prf]
+  en    [sp=1,sn=2,sg=m]
+  uK    [sp=2,sn=2,sg=m,tm=prf]
+  amK   [sp=2,sn=2,sg=f,tm=prf]
+  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f,tm=imf|j_i]
+  o     [sp=3,sn=2,sg=m];[sp=2,sn=2,sg=m,tm=imf|j_i]
+  --    [tm=imf,sn=1];[tm=j_i,sn=1];[sp=None,sn=None,sg=None]
+
+## Boundary separating stem from suffixes
+$ bound2
+  =
+
+$ stem
+  +v_irr_stem+    []
+  >>v_stem<<
+
+## Boundary separating prefixes from stem
+$ bound1
+  =
+
+## Subject prefixes reversed
+$ sbj_pre
+  e  [sp=1,sn=1,tm=imf,-neg]
+  t  [sp=2,tm=imf];[sp=3,sn=1,sg=f,tm=imf|j_i];[sp=2,tm=j_i,+neg]
+  y  [sp=3,sn=2,tm=imf];[sp=3,sn=1,sg=m,tm=imf];[sp=None,sn=None,sg=None,tm=imf];
+     [sp=3,sn=2,tm=j_i,+neg];[sp=3,sn=1,sg=m,tm=j_i,+neg];[sp=None,sn=None,sg=None,tm=j_i,+neg]
+  ey [sp=3,sn=2,tm=j_i,-neg];[sp=3,sn=1,sg=m,tm=j_i,-neg];[sp=None,sn=None,sg=None,tm=j_i,-neg]
+  n  [sp=1,sn=2,sg=m,tm=imf];[sp=1,sn=2,sg=m,tm=j_i];[sp=1,sn=1,tm=j_i];[sp=1,sn=1,tm=imf,+neg]
+  -- [tm=prf];[sp=2,tm=j_i,-neg]
+
+$ negative
+  a  [+neg,tm=imf|j_i]
+  na [+neg,tm=prf,-proh]
+  nI [+neg,tm=prf,+proh]
+  -- [-neg]
+
+$ subord
+  et [sub=t,tm=prf]
+  t  [sub=t,tm=imf|j_i]
+  eb [sub=b,tm=prf]
+  b  [sub=b,tm=imf|j_i]
+  ey [sub=y,tm=prf]
+  -- [sub=None]

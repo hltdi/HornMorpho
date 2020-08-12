@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HornMorpho</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Morphological processing, Horn of Africa">
+<meta name="keywords" content="morphology, Amharic, Oromo, Tigrinya, Somali, Tigre, Kistane, Chaha, Guragina, Guraginya">
+<meta name="author" content="Michael Gasser">
+<link rel="stylesheet" href="./Resources/tlj.css" />
+
+</script>
+
+</head>
+
+<body>
+
+<table class="center">
+  <tr>
+    <td class="maintitle" colspan="2">
+      <span style='color: #c86400'>H</span>orn<span style='color: #009696'>M</span>orpho
+    </td>
+    <td class="title" rowspan='4'>
+    <img class='banner' src="./Resources/horn_morpho.png" alt="HornMorpho" width='224' />
+    </td>
+  </tr>
+  <tr>
+    <td class="menu" style="width: 375px"><a href="./hm_ug.html">USER'S GUIDE</a></td>
+    <td class="menu" style="width: 375px"><a href="./hm_contact.html">CONTACT</a></td>
+  </tr>
+  <tr>
+    <td colspan='2'>
+      <hr>
+    </td>
+    <td></td>
+  </tr>
+
+<tr>
+<td colspan="2" style="width:776px">  
+  <h1>Morphological Processing for Languages of the Horn of Africa</h1>
+
+  <h2>What is HornMorpho?</h2>
+  <p>
+  HornMorpho is a program written in the Python programming language
+  that does morphological analysis and generation of words in seven
+  languages of the Horn of Africa.
+  </p>
+
+  <h2>Who is it for?</h2>
+  <p>
+  To use HornMorpho, you should
+  <ol>
+    <li>be at least somewhat familiar with Python programming
+    <li>know at least one of the languages covered by the program, and
+    <li>know some basic morphological terms and concepts, for example, <i>root</i>, <i>suffix</i>, <i>tense</i>,
+    and <i>person</i>
+</ol>    
+  </p>
+  <p>
+  </p>
+
+</td>
+</tr>
+<tr>
+  <td colspan='3' style="width:1000px">
+
+  <h2>What can you do with it?</h2>
+  <p>
+  The purpose of HornMorpho is to analyze or generate morphologically complex
+  words in one of the languages covered.
+  Morphologically complex words are those consisting of multiple morphemes,
+  that is, a root or stem and one or more prefixes, suffixes, or "templates"
+  (more about these later).
+  For example, the Amharic noun ለጓደኞቿ <i>lǝgʷaddǝññoččʷa</i> 'to her
+  friends', consists of the stem ጓደኛ <i>gʷaddǝñña</i>, the suffixes
+  ኦች <i>-očč</i> 'plural' and ዋ <i>-wa</i> 'her', and the
+  prepositional prefix (or case marker) ለ <i>lǝ-</i> 'to'.
+<!--  Nouns and adjectives in the languages covered include ways of
+  indicating case ("subject", "direct object", etc.) in addition to
+  number ("singular", "plural") and possession.
+-->    
+  </p>
+  The most complex words in all of these languages are verbs, which
+  indicate tense-aspect-modality ("past", "continuous", "imperative",
+  etc.), subject agreement ("1st person singular", "2nd person feminine plural", etc.),
+  derivational categories ("passive", "causative", etc.), and a number of other
+  features, depending on the language.
+  Verbs are the main focus of HornMorpho.
+  </p>
+  <p>
+  Other words &mdash; prepositions, postpositions, conjunctions,
+  adverbs &mdash; are mostly ignored by HornMorpho since they either
+  have no internal structure or consist of fixed forms that are
+  treated as lexical items (words) rather than as analyzable forms.
+  For example, the Amharic adverb በተጨማ <i>bǝtǝč'ǝmmari</i> 'in
+  addition' is derived from the verb root &lt;č'mr&gt; 'add', but it
+  appears in this form so often that an analysis of the word is not
+  particularly helpful.
+  </p>
+  <p><strong>Morphological analysis</strong> takes a word and either finds the root or
+  stem and a set of grammatical features or segments the word into its
+    constituent morphemes.
+    I will refer to the first of these as "grammatical analysis" and
+  the second as "segmentation"
+    For example, grammatical analysis applied to the Amharic noun
+  ለጓደኞቿ yields <span class='gram'>stem</span>=ጓደኛ, <span
+class='gram'>poss=3sf</span>, <span class='gram'>num=plur</span>,
+<span class='gram'>prep=</span>ለ. That is, this noun has the stem ጓደኛ
+  ('friend'), plural number, a 3rd person singular feminine
+possessive, and the preposition (or case marker) ለ.
+"Stemming" or "lemmatization" is a subset of the process of
+  grammatical analysis; it returns only the stem, root, or lemma (a
+  canonical form of the stem or root) of the word, in this case ጓደኛ <i>gʷaddǝñña</i>.
+Segmentation applied to the same word yields
+ለ-&lt;ጓደኛ&gt;-ኦች-ዋ (or <i>lǝ-&lt;gʷaddǝñña&gt;-očč-wa</i>).
+</p>
+<p>
+<strong>Morphological generation</strong> is the reverse process. It starts with a root
+or stem and a set of grammatical features and outputs a word form.
+For example, given <span class='gram'>stem</span>=ጓደኛ, <span
+class='gram'>poss=3sf</span>, <span class='gram'>num=plur</span>,
+<span class='gram'>prep=</span>ለ, generation yields the word ለጓደኞቿ.
+</p>
+  <p>
+  Why would you want a program that does morphological analysis or generation?
+  Languages with complex morphology suffer from the problem of data scarcity.
+  Such languages have many more possible words than a language such as
+  English or French, and most of the possible words have little
+  likelihood of occurring in a given corpus or of occurring so few
+times that it is impossible to generalize about them.
+  If you are training a machine translation system, a speech
+  recognition system, or a parser in such a language, it may be
+  possible to alleviate the data sparsity problem by replacing words
+  with grammatical analyses, stems, or lemmas.
+  </p>
+
+  <h2>What can't you do with it?</h2>
+  <p>
+
+
+  <h2>Where can you get it?</h2>
+
+<p> 
+<a href="https://github.com/hltdi/HornMorpho/">https://github.com/hltdi/HornMorpho/</a>.
+</p>
+
+<hr/>
+
+</td>
+</tr>
+
+</table>  
+
+</body>
+</html>

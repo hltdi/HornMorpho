@@ -1,0 +1,82 @@
+weighting = UNIFICATION
+cascade ortho = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
+cascade phono = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# |: separator following first character of n|saff, n|qsaqs, q|bTbT, x|kWrmm
+# !: replaces ' in "contractions"
+
+## Vowel stringsets
+V = {a, e, E, i, I, o, u, @, A}
+## Consonant stringsets
+# all consonants
+XX = {b, c, C, d, f, g, h, ^h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, ^s, S, ^S, t, T, v, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, ^hW, HW, jW, kW, KW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, ^sW, SW, ^SW, tW, TW, xW, zW, ZW}
+# possible root consonants
+X = {b, c, C, d, f, g, G, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, Y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# possible initial root consonants (no y, NW, others?)
+X! = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# possible initial 5C root consonants (no y, various labial, ', `)
+X5 = {b, c, C, d, f, g, h, H, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, fW, gW, hW, HW, kW, mW, qW, sW, SW, tW, TW, xW, zW, ZW}
+# possible final root consonants (no XW except gW, kW, qW; what about hW, HW)
+X/B = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, ', `, gW, kW, qW}
+# laryngeal consonants
+L = {', `, h, H, hW, HW}
+# non-laryngeal consonants
+X/L = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-laryngeal consonants, no y, no NW
+X!/L = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# Consonants that can geminate
+F = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants     
+B = {bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# labialized consonants that can appear in surface verb forms     
+BB = {bW, fW, gW, hW, HW, kW, mW, qW}
+# labialized consonants that can only appear before a in surface forms (needed in vb_stem)
+B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# non-labialized consonants (needed in vb_stem)
+~B = {b, c, C, d, f, g, h, H, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, ', `}
+## Non-phonetic/orthographic characters
+% = {R, _, /, |, D, !, $}
+
+#### WRITTEN
+### 0 Delete I and gemination character
+>del_epgem<
+### 1 Insert glottal stop before initial vowel
+>gs0<
+### Optional: Le -> La
+# >Le2a<
+#### PHONEMIC from here (including k, q allophones)
+### 2 k->K, q->Q when postvocalic and ungeminated
+>KQ<
+### Optional uw -> Iw (left out for generation)
+# >u2Iw<
+### optional eyC to EC (left out for generation)
+# >ey2E<
+### 3 y->i
+>CyCG<
+### 4 CC -> C_ (follows CyC so that yyIC becomes y_IC)
+>gem<
+### 5 IV -> V, eV -> V
+>VV<
+### 6 CC# -> CCi, I# -> i#
+>i_fin<
+### 7 @ -> e after non-laryngeal
+>@G<
+### 8 Get rid of remaining stem-final boundary characters
+>bound<
+### 9 e/I/i w/y at stem-final boundary
+### Vwy has to be below epen because it includes Iw$, Iy$
+>VwyG<
+### 10 Add epenthetic I
+>epen<
+### 11 Convert /C to C_
+>pre_gem<
+### 12 Convert A to a initially, e otherwise
+>A<
+### 13 Allomorphs of Ti rel prefix     
+>relG<
+### 14 Morphotactics with roots
+>vb_mtax0G<

@@ -1,0 +1,47 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication (in v_stem.cas)
+# =: stem boundary
+# A: zero or e, depending on following laryngeal
+# @: zero or ', depending on following laryngeal
+# Y: stem-final y
+# O: imperf/juss 23pm suffix
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u, A}
+# All segments possible in verbs
+XX = {a, e, E, i, I, o, u, A, b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, @, Y}
+# All consonants possible in verbs
+X = {b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, @, Y}
+# All consonants possible in verbs other than laryngeals and semivowels
+RR = {b, c, C, d, f, g, j, k, K, l, m, n, N, p, q, r, s, S, t, T, x, z, Z}
+# laryngeals
+LL = {h, H, ', `, @}
+# semivowels
+YY = {y, w, Y}
+## Non-phonetic/orthographic characters
+% = {=, /, _}
+
+## Delete epenthetic and gemination characters
+##>del_epgem<
+##>del_ep<
+### Insert glottal stop before initial vowel
+>gs0<
+# clean up gemination
+>gem<
+# Get rid of boundary characters
+>bound<
+# Realize t-, n-, l- prefix before L** and *Y*
+>LYaff2<
+# Realize vowel combinations
+>VVG<
+# realize Y (root-final semivowel)
+>Y<
+# Realize @ imperf/jus prefix as ' or 0 (before L); realize -o suffix as -u after L
+>LYaff1<
+# Morphotactics
+>vG.mtx<

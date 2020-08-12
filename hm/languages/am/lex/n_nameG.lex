@@ -1,8 +1,0 @@
-'almaz          ''     [+fem]
-'astEr          ''     [+fem]
-hirut           ''     [+fem]
-rahEl           ''     [+fem]
-yohan_s          ''    [-fem]
-PETros          ''     [-fem]
-'ab_ebe          ''    [-fem]
-beq_ele          ''    [-fem]

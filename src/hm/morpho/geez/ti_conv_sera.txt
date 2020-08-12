@@ -1,0 +1,65 @@
+ሀ=h@,he ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho
+ለ=le ሉ=lu ሊ=li ላ=la ሌ=lE ል=l ሎ=lo
+ሐ=H@,He ሑ=Hu ሒ=Hi ሓ=Ha ሔ=HE ሕ=H ሖ=Ho
+መ=me ሙ=mu ሚ=mi ማ=ma ሜ=mE ም=m ሞ=mo
+ሠ=^se=se ሡ=^su=su ሢ=^si=si ሣ=^sa=sa ሤ=^sE=sE ሥ=^s=s ሦ=^so=so
+ረ=re ሩ=ru ሪ=ri ራ=ra ሬ=rE ር=r ሮ=ro
+ሰ=se ሱ=su ሲ=si ሳ=sa ሴ=sE ስ=s ሶ=so
+ሸ=xe ሹ=xu ሺ=xi ሻ=xa ሼ=xE ሽ=x ሾ=xo
+ቀ=qe ቁ=qu ቂ=qi ቃ=qa ቄ=qE ቅ=q ቆ=qo
+ቐ=Qe ቑ=Qu ቒ=Qi ቓ=Qa ቔ=QE ቕ=Q ቖ=Qo
+በ=be ቡ=bu ቢ=bi ባ=ba ቤ=bE ብ=b ቦ=bo
+ቨ=ve ቩ=vu ቪ=vi ቫ=va ቬ=vE ቭ=v ቮ=vo
+ተ=te ቱ=tu ቲ=ti ታ=ta ቴ=tE ት=t ቶ=to
+ቸ=ce ቹ=cu ቺ=ci ቻ=ca ቼ=cE ች=c ቾ=co
+ኸ=Ke ኹ=Ku ኺ=Ki ኻ=Ka ኼ=KE ኽ=K ኾ=Ko
+ኀ=^h@=he ኁ=^hu=hu ኂ=^hi=hi ኃ=^ha=ha ኄ=^hE=hE ኅ=^h=h ኆ=^ho=ho
+ነ=ne ኑ=nu ኒ=ni ና=na ኔ=nE ን=n ኖ=no
+ኘ=Ne ኙ=Nu ኚ=Ni ኛ=Na ኜ=NE ኝ=N ኞ=No
+አ='@,'e ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o
+ከ=ke ኩ=ku ኪ=ki ካ=ka ኬ=kE ክ=k ኮ=ko
+ወ=we ዉ=wu ዊ=wi ዋ=wa ዌ=wE ው=w ዎ=wo
+ዐ=`@,`e ዑ=`u ዒ=`i ዓ=`a ዔ=`E ዕ=` ዖ=`o
+ዘ=ze ዙ=zu ዚ=zi ዛ=za ዜ=zE ዝ=z ዞ=zo
+ዠ=Ze ዡ=Zu ዢ=Zi ዣ=Za ዤ=ZE ዥ=Z ዦ=Zo
+የ=ye ዩ=yu ዪ=yi ያ=ya ዬ=yE ይ=y ዮ=yo
+ደ=de ዱ=du ዲ=di ዳ=da ዴ=dE ድ=d ዶ=do
+ጀ=je ጁ=ju ጂ=ji ጃ=ja ጄ=jE ጅ=j ጆ=jo
+ገ=ge ጉ=gu ጊ=gi ጋ=ga ጌ=gE ግ=g ጎ=go
+ጠ=Te ጡ=Tu ጢ=Ti ጣ=Ta ጤ=TE ጥ=T ጦ=To
+ጨ=Ce ጩ=Cu ጪ=Ci ጫ=Ca ጬ=CE ጭ=C ጮ=Co
+ጰ=Pe ጱ=Pu ጲ=Pi ጳ=Pa ጴ=PE ጵ=P ጶ=Po
+ፀ=^Se=Se ፁ=^Su=Su ፂ=^Si=Si ፃ=^Sa=Sa ፄ=^SE=SE ፅ=^S=S ፆ=^So=So
+ጸ=Se ጹ=Su ጺ=Si ጻ=Sa ጼ=SE ጽ=S ጾ=So
+ፈ=fe ፉ=fu ፊ=fi ፋ=fa ፌ=fE ፍ=f ፎ=fo
+ፐ=pe ፑ=pu ፒ=pi ፓ=pa ፔ=pE ፕ=p ፖ=po
+ሏ=lWa
+ሗ=HWa
+ሟ=mWa
+ሧ=^sWa=sWa
+ሯ=rWa
+ሷ=sWa
+ሿ=xWa
+ቈ=qWe ቊ=qWi ቋ=qWa ቌ=qWE ቍ=qW
+ቘ=QWe ቚ=QWi ቛ=QWa ቜ=QWE ቝ=QW
+ቧ=bWa
+ቯ=vWa
+ቷ=tWa
+ቿ=cWa
+ኈ=^hWe=hWe ኊ=^hWi=hWi ኋ=^hWa=hWa ኌ=^hWE=hWE ኍ=^hW=hW
+ኗ=nWa
+ኟ=NWa
+ኰ=kWe ኲ=kWi ኳ=kWa ኴ=kWE ኵ=kW
+ዀ=KWe ዂ=KWi ዃ=KWa ዄ=KWE ዅ=KW
+ዟ=zWa
+ዧ=ZWa
+ዷ=dWa
+ጇ=jWa
+ጐ=gWe ጒ=gWi ጓ=gWa ጔ=gWE ጕ=gW
+ጧ=TWa
+ጯ=CWa
+ጷ=PWa
+ጿ=SWa
+ፏ=fWa
+ፗ=pWa
+።=. ፣=, ፤=; ፥=: ፦=: ፧=*?

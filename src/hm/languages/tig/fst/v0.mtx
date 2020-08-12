@@ -1,0 +1,110 @@
+$ subord
+  le  [+rel,+sub,tm=prf|imf]
+  --  [-rel,-sub]
+
+$ negative
+  'i [+neg]
+  -- [-neg]
+
+$ sbj_pre
+  # ', 0 before L** roots, 'i before *Y* jus
+  @A  [sp=1,sn=1,tm=imf|j_i]
+  # te,le,ne before imprf L**, ti,li,ni before CY* jussive
+  tA  [sp=2,tm=imf];[sp=2,tm=j_i,+neg];[sp=3,sn=1,sg=f,tm=imf|j_i]
+  lA  [sp=3,sn=1,sg=m,tm=imf|j_i];[sp=3,sn=2,tm=imf|j_i]
+  # 'n except before L** roots
+  @nA [sp=1,sn=2,tm=imf]
+  nA  [sp=1,sn=2,tm=j_i]
+  # imperfective prefixes are optional, but not jussive
+  --  [tm=prf|imf];[sp=2,tm=j_i,-neg]
+
+## Boundary separating stem from suffixes
+$ bound2
+  =
+
+$ stem
+#  +v_irr_stem+    []
+  >>v_stem0<<
+
+## Boundary separating prefixes from stem
+$ bound1
+  =
+
+$ sbj_suff
+  ko    [sp=1,sn=1,tm=prf,op=2|None]
+  kw    [sp=1,sn=1,tm=prf,op=3]
+  ke    [sp=2,sn=1,sg=m,tm=prf]
+  ki    [sp=2,sn=1,sg=f,tm=prf]
+  e     [sp=3,sn=1,sg=m,tm=prf,op=3|None];[sp=2|3,sn=2,sg=f,tm=imf|j_i]
+  # qatlEn_i, qatlEk_a
+  E     [sp=3,sn=1,sg=m,tm=prf,op=1|2]
+  et    [sp=3,sn=1,sg=f,tm=prf]
+  ne    [sp=1,sn=2,sg=m,tm=prf]
+  kum   [sp=2,sn=2,sg=m,tm=prf,op=3|None]
+  ku    [sp=2,sn=2,sg=m,tm=prf,op=1]
+  kn    [sp=2,sn=2,sg=f,tm=prf]
+  ew    [sp=3,sn=2,sg=m,tm=prf]
+  eye   [sp=3,sn=2,sg=f,tm=prf]
+  # drop with 3 object
+  i     [sp=2,sn=1,sg=f,tm=imf|j_i,op=None];[sp=2,sn=1,sg=f,tm=imf|j_i,op=1]
+  # drop with 3 object
+  O     [sp=2|3,sn=2,sg=m,tm=imf|j_i,op=None]
+  u     [sp=2|3,sn=2,sg=m,tm=imf|j_i,op=1|2]
+  --    [sp=1,tm=imf|j_i];[sp=2,sn=1,sg=m,tm=imf|j_i];[sp=3,sn=1,tm=imf|j_i];[sp=2,sn=1,sg=f,tm=imf|j_i,op=3];[sp=2|3,sn=2,sg=m,tm=imf|j_i,op=3]
+
+$ obj_suff
+  --    [op=None]
+  ## 3
+  [op=3,on=1,og=m]
+    # 'qet_l_o, nqet_l_o, lqet_l_o, tqet_l_o
+    _o   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=prf,sp=3,sn=1,sg=f]
+    o    [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=m];[tm=imf|j_i,sp=3,sn=2,sg=m];[tm=prf,sp=1,sn=1];[tm=prf,sp=2|3,sn=2,sg=m];[tm=prf,sp=2,sn=1,sg=f]
+    yu   [tm=prf,sp=3,sn=1,sg=m]
+    ehu  [tm=prf,sp=2,sn=2,sg=f]
+    hu   [tm=imf|j_i,sp=2,sn=2,sg=f];[tm=imf|j_i,sp=3,sn=2,sg=f];[tm=prf,sp=2,sn=1,sg=m];[tm=prf,sp=1,sn=2];[tm=prf,sp=3,sn=2,sg=f]
+  [op=3,on=1,og=f]
+    _e   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=prf,sp=3,sn=1,sg=f]
+    e    [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=m];[tm=imf|j_i,sp=3,sn=2,sg=m];[tm=prf,sp=1,sn=1];[tm=prf,sp=2|3,sn=2,sg=m];[tm=prf,sp=2,sn=1,sg=f]
+    ye   [tm=prf,sp=3,sn=1,sg=m]
+    ehe  [tm=prf,sp=2,sn=2,sg=f]
+    he   [tm=imf|j_i,sp=2,sn=2,sg=f];[tm=imf|j_i,sp=3,sn=2,sg=f];[tm=prf,sp=2,sn=1,sg=m];[tm=prf,sp=1,sn=2];[tm=prf,sp=3,sn=2,sg=f]
+  [op=3,on=2,og=m]
+    _om  [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=prf,sp=3,sn=1,sg=f]
+    om   [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=m];[tm=imf|j_i,sp=3,sn=2,sg=m];[tm=prf,sp=1,sn=1];[tm=prf,sp=2|3,sn=2,sg=m];[tm=prf,sp=2,sn=1,sg=f]
+    yom  [tm=prf,sp=3,sn=1,sg=m]
+    ehom [tm=prf,sp=2,sn=2,sg=f]
+    hom  [tm=imf|j_i,sp=2,sn=2,sg=f];[tm=imf|j_i,sp=3,sn=2,sg=f];[tm=prf,sp=2,sn=1,sg=m];[tm=prf,sp=1,sn=2];[tm=prf,sp=3,sn=2,sg=f]
+  [op=3,on=2,og=f]
+    _en  [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=prf,sp=3,sn=1,sg=f]
+    en   [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=m];[tm=imf|j_i,sp=3,sn=2,sg=m];[tm=prf,sp=1,sn=1];[tm=prf,sp=2|3,sn=2,sg=m];[tm=prf,sp=2,sn=1,sg=f]
+    yen  [tm=prf,sp=3,sn=1,sg=m]
+    ehen [tm=prf,sp=2,sn=2,sg=f]
+    hen  [tm=imf|j_i,sp=2,sn=2,sg=f];[tm=imf|j_i,sp=3,sn=2,sg=f];[tm=prf,sp=2,sn=1,sg=m];[tm=prf,sp=1,sn=2];[tm=prf,sp=3,sn=2,sg=f]
+  ## 2
+  [op=2,on=1,og=m]
+    ek_e  [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    k_e   [tm=prf,sp=3,sn=1,sg=m]
+    ke    [tm=imf|j_i,sp=3,sn=2];[tm=prf,sp=1];[tm=prf,sp=3,sn=2]
+  [op=2,on=1,og=f]
+    ek_i  [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    k_i   [tm=prf,sp=3,sn=1,sg=m]
+    ki    [tm=imf|j_i,sp=3,sn=2];[tm=prf,sp=1];[tm=prf,sp=3,sn=2]
+  [op=2,on=2,og=m]
+    ek_um [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    k_um  [tm=prf,sp=3,sn=1,sg=m]
+    kum   [tm=imf|j_i,sp=3,sn=2];[tm=prf,sp=1];[tm=prf,sp=3,sn=2]
+  [op=2,on=2,og=f]
+    ek_n  [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    k_n   [tm=prf,sp=3,sn=1,sg=m]
+    kn    [tm=imf|j_i,sp=3,sn=2];[tm=prf,sp=1];[tm=prf,sp=3,sn=2]
+  ## 1
+  [op=1,on=1]
+    en_i   [tm=imf|j_i,sp=2,sn=1,sg=m];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    n_i    [tm=prf,sp=2|3,sn=1,sg=m]
+    ni     [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2|3,sn=2];[tm=prf,sp=2,sn=1,sg=f];[tm=prf,sp=3,sn=2];[tm=prf,sp=2,sn=2,sg=m]
+    eni    [tm=prf,sp=2,sn=2,sg=f]
+  [op=1,on=2]
+    en_e   [tm=imf|j_i,sp=2,sn=1,sg=m];[tm=imf|j_i,sp=3,sn=1];[tm=prf,sp=3,sn=1,sg=f]
+    n_e    [tm=prf,sp=2|3,sn=1,sg=m]
+    ne     [tm=imf|j_i,sp=2,sn=1,sg=f];[tm=imf|j_i,sp=2|3,sn=2];[tm=prf,sp=2,sn=1,sg=f];[tm=prf,sp=3,sn=2];[tm=prf,sp=2,sn=2,sg=m]
+    ene    [tm=prf,sp=2,sn=2,sg=f]
