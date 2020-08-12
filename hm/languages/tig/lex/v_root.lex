@@ -22,7 +22,7 @@ ybs   [cls=A,am=ደረቀ,-dup]
 sHb   [cls=A,am=ሳበ,-dup]
 w`l   [cls=A,am=ዋለ,-dup]
 # mostly irregular
-bhl   [cls=A,am=አለ,-dup,vc=[+ps,-cs]]
+bhl   [cls=A,am=አለ,-dup,vc=[+ps,-cs],tm=prf]
 # **L
 bl`   [cls=A,am=በላ,-dup]
 sm`   [cls=A,am=ሰማ,-dup]

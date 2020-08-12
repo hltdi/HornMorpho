@@ -14,7 +14,7 @@ bel     bhl   [cls=A,tm=j_i,sp=2,-neg,vc=[-ps,-cs],am=አለ]
 # special cases with 3 obj
 beli    bhl   [cls=A,tm=j_i,sp=2,sg=f,sn=1,op=3,-neg,vc=[-ps,-cs],am=አለ]
 belw    bhl   [cls=A,tm=j_i,sp=3,sg=m,sn=2,op=3,-neg,vc=[-ps,-cs],am=አለ]
-# tbehel  bhl   [cls=A,tm=imf|j_i,vc=[+ps,-cs],am=አለ]
+tbehel  bhl   [cls=A,tm=imf|j_i,vc=[+ps,-cs],am=አለ]
 'ebel   bhl   [cls=A,tm=prf,vc=[-ps,+cs],am=አለ]
 'ebl    bhl   [cls=A,tm=imf|j_i,vc=[-ps,+cs],am=አለ]
 # tr'E (doesn't handle t'ri, t'ru, t're)

@@ -150,7 +150,8 @@ i/ -> -3B           [:]       [tm=j_i]
 ## added 2020.3.1: meH<a>lalefe
 -3L.4 -> -3.4V      [L]
 ## a also possible before laryngeal
--4.4V -> -3L.4      [a:]      [tm=prf];[tm=ger];[tm=imf,vc=tr]
+-4.4V -> -3L.4      [a:]      [tm=prf];[tm=ger];[tm=imf,vc=tr];[tm=j_i]
+-4.4V -> -3L.4      [I:]       [tm=imf,vc=smp];[tm=imf,vc=ps]
 
 -4.4V -> -3.4       [e:]      [tm=prf];[tm=ger];[tm=imf,vc=tr];[tm=j_i]
 -4.4V -> -3.4       [I:]      [tm=imf,vc=smp];[tm=imf,vc=ps]

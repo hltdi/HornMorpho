@@ -12,4 +12,5 @@ $2 = {aa, ee, ii, oo, uu}
 # all consonants
 ! = {b, c, d, dh, f, g, h, j, k, kh, l, m, n, p, q, r, s, sh, t, v, w, x, y, z, ', -}
 
+>T<
 >v.mtx<

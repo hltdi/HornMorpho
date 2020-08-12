@@ -6,6 +6,14 @@
 start -> start   [V;X;_;/]
 
 start ->
+#wy ->
+
+#start -> wy       [w;y]
+#wy -> start       [V-u,o;X;_;/]
+#wy -> ou          [u;o]
+#ou -> start       [X;/]
+#ou -> ou'         [':]
+#ou'a -> start     [a]
 
 # ou ->
 

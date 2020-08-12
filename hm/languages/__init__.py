@@ -1,1 +1,1 @@
-"""Language files used in L3 XDG."""
+"""Language files used in HornMorpho."""

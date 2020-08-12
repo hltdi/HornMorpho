@@ -19,7 +19,7 @@ Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-_version = '3.5'
+_version = '4.0'
 
 from . import morpho
 
@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False,
 def seg_word(language, word, nbest=100, raw=False, realize=False, features=True,
              transortho=True):
     '''Segment a single word and print out the results.
-    
+
     @param language: abbreviation for a language
     @type  language: string
     @param word:     word to be analyzed
@@ -119,7 +119,7 @@ def anal_word(language, word, root=True, citation=True, gram=True,
               raw=False):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.
-    
+
     @param language: abbreviation for a language
     @type  language: string
     @param word:     word to be analyzed
@@ -401,7 +401,7 @@ def seg2string(segmentation, language='am', sep='-', transortho=True, features=F
 
 ### Functions for debugging and creating FSTs
 
-def cascade(language, pos, gen=False, phon=False, segment=False, 
+def cascade(language, pos, gen=False, phon=False, segment=False,
             verbose=False):
     '''Returns a cascade for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'

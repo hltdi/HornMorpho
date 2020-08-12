@@ -3,9 +3,10 @@
 # Anything can go at the beginning
 start -> mid    [X;V;_]
 
-mid -> mid      [L;B;V;_]
+# kk -> Kk
+mid -> mid      [L;B;k;V;_]
 # the X here prevents two geminations in succession
-gem -> mid      [X;L;B;V]
+gem -> mid      [X;L;B;k;V]
 nogem -> mid    [_]
 
 mid ->
@@ -16,7 +17,7 @@ d ->
 f ->
 g ->
 j ->
-k ->
+#k ->
 l ->
 m ->
 n ->
@@ -68,10 +69,10 @@ j -> nogem  [j]
 j -> gem    [_:j]
 j -> mid    [X-j;V;_]
 
-mid -> k    [k]
-k -> nogem  [k]
-k -> gem    [_:k]
-k -> mid    [X-k;V;_]
+#mid -> k    [k]
+#k -> nogem  [k]
+#k -> gem    [_:k]
+#k -> mid    [X-k;V;_]
 
 mid -> l    [l]
 l -> nogem  [l]

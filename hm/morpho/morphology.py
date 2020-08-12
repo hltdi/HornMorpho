@@ -845,7 +845,7 @@ class POSMorphology:
         if not self.get_fst(generate, guess, simplified, phon=phon, segment=segment) or recreate:
             # Either there was no composed FST or we're supposed to recreate it anyway, so get
             # the cascade and compose it (well, unless create_fst is False)
-#            if verbose: print('Looking for cascade at', path, 'subcasc', subcasc)
+            if verbose: print('Looking for cascade at', path, 'subcasc', subcasc)
             if os.path.exists(path):
                 # Load each of the FSTs in the cascade and compose them
                 if verbose: print('Recreating...')

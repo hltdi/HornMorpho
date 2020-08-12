@@ -12,7 +12,6 @@
 ተ=te ቱ=tu ቲ=ti ታ=ta ቴ=tE ት=t ቶ=to
 ቸ=ce ቹ=cu ቺ=ci ቻ=ca ቼ=cE ች=c ቾ=co
 ኸ=Ke ኹ=Ku ኺ=Ki ኻ=Ka ኼ=KE ኽ=K ኾ=Ko
-ኀ=he ኁ=hu ኂ=hi ኃ=ha ኄ=hE ኅ=h ኆ=ho
 ነ=ne ኑ=nu ኒ=ni ና=na ኔ=nE ን=n ኖ=no
 ኘ=Ne ኙ=Nu ኚ=Ni ኛ=Na ኜ=NE ኝ=N ኞ=No
 አ='e ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o
@@ -32,32 +31,4 @@
 ጸ=Se ጹ=Su ጺ=Si ጻ=Sa ጼ=SE ጽ=S ጾ=So
 ፈ=fe ፉ=fu ፊ=fi ፋ=fa ፌ=fE ፍ=f ፎ=fo
 ፐ=pe ፑ=pu ፒ=pi ፓ=pa ፔ=pE ፕ=p ፖ=po
-ሏ=lWa
-ሗ=HWa
-ሟ=mWa
-ሧ=^sWa=sWa
-ሯ=rWa
-ሷ=sWa
-ሿ=xWa
-ቈ=qWe ቊ=qWi ቋ=qWa ቌ=qWE ቍ=qW
-ቧ=bWa
-ቯ=vWa
-ቷ=tWa
-ቿ=cWa
-ኈ=hWe ኊ=hWi ኋ=hWa ኌ=hWE ኍ=hW
-ኗ=nWa
-ኟ=NWa
-ኰ=kWe ኲ=kWi ኳ=kWa ኴ=kWE ኵ=kW
-ዀ=KWe ዂ=KWi ዃ=KWa ዄ=KWE ዅ=KW
-ዟ=zWa
-ዧ=ZWa
-ዷ=dWa
-ጇ=jWa
-ጐ=gWe ጒ=gWi ጓ=gWa ጔ=gWE ጕ=gW
-ጧ=TWa
-ጯ=CWa
-ጷ=PWa
-ጿ=SWa
-ፏ=fWa
-ፗ=pWa
 ።=. ፣=, ፤=; ፥=: ፦=: ፧=*?
