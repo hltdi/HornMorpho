@@ -1,0 +1,367 @@
+/*
+Colors:
+hummingbird cyan: #009696
+hummingbird yellow: #F5E754
+background brown: #DDDDDD
+purple: c800c8
+*/
+
+body
+{
+	margin-left: 0pt;
+	margin-right: 0pt;
+	margin-top: 20pt;
+	margin-bottom: 20pt;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+        font-size: 14px;
+	font-family: verdana, geneva, arial, sans-serif;
+	background-color: #FFF;
+}
+a:link { color: #990099; }
+span.fuzzy a:link { color: #66BB66; }
+/* a:visited { color: #006600; } */
+span.fuzzy a:visited { color: #558855; }
+a:active { color: #000000; }
+a:hover { background-color: #C800C8; color: #FFFFFF; }
+span.fuzzy a:hover { background-color: #66FF66; color: #FFFFFF; }
+h1,h2,h3 { clear: left; }
+h1
+{
+	font-size: 150%;
+	margin-top: .25em;
+	margin-bottom: 0;
+        border: thin solid;
+	text-align: left;
+	font-weight: bold;
+	background-color: #DDDDDD;
+/*	color: #DDDDDD;
+	background-color: #F5E754;
+*/
+}
+h2
+{
+	font-size: 130%;
+	font-weight: bold;
+	margin-top: .75em;
+	margin-bottom: .35em;
+	color: #DDDDDD;
+	background-color: #000000;
+}
+div.user
+{
+    font-size: 110%;
+    margin-top: .75em;
+    margin-bottom: .35em;
+}
+div.figure
+{
+    border: thin solid;
+    margin-top: .75em;
+    margin-bottom: .75em;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+h3
+{
+/*    background-color: #000000;
+    color: #DDDDDD;
+*/
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+h4
+{
+ 	font-size: 100%;
+	font-weight: bold;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+p
+{
+	margin-top: .5em;
+	margin-bottom: .5em;
+        clear: left;
+}
+p.center
+{
+        margin-top: .5em;
+        margin-bottom: .5em;
+        text-align: center;
+}
+p.error
+{
+    color: #f00;
+    font-style: italic;
+}
+p.caption
+{
+    border: thin dotted;
+    margin-bottom: 0;
+}
+img.figure
+{
+    display: block;
+    margin: auto;
+}
+table.center
+{
+	table-layout: fixed;
+/*	background-color: #F5E754; */
+	margin-left: auto;
+	margin-right: auto;
+	border: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+table.center td.maintitle
+{
+    font-size: 300%;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+/*    color: #c800c8; */
+    background-color: #DDDDDD;
+}
+table.center tr td
+{
+/*	background-color: #F5E754; */
+	vertical-align: top;
+	padding: 0pt;
+}
+
+table.center td p,h1,h2,h3,h4,ul
+{
+	margin-top: 10pt;
+	margin-bottom: 10pt;
+	margin-left: 0pt;
+	margin-right: 0pt;
+	width: auto;
+}
+
+table.center tr td img.banner
+{
+    vertical-align: bottom;
+}
+span.label
+{
+        font-weight: bold;
+}
+span.document
+{
+   font-size: 100%;
+   font-weight: bold;
+   color: #F00;
+   border: thin solid;
+}
+span.username
+{
+/*    background-color: #f00;
+    color: #fff;
+*/
+    font-style: italic;
+}
+input.text
+{
+        font-family: "Verdana";
+        font-size: 100%;
+        height: 20px;
+	width: 500px;
+}
+#button
+{
+        background-color: #009696;
+        color: #DDDDDD;
+        font-family: "Verdana";
+        font-size: 100%;
+/*        align: center; */
+        width: 200px
+}
+#button:hover, #button:active
+{
+        background-color: #8DFFEE;
+}
+#widebutton
+{
+        background-color: #009696;
+        color: #DDDDDD;
+        font-family: "Verdana";
+        font-size: 100%;
+        align: center;
+        width: 250px;
+}
+#narrowbutton
+{
+        background-color: #009696;
+        color: #DDDDDD;
+        font-family: "Verdana";
+        font-size: 100%;
+        align: center;
+        width: 100px;
+}
+#widebutton:hover, #narrowbutton:hover
+{
+        background-color: #8DFFEE;
+}
+table.center tr td.menu
+{
+    height: 20px;
+    background-color: #DDDDDD;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    border: 0;
+}
+table.center tr td.menu a
+{
+    color: #000000;
+/*    font-weight: bold; */
+    font-size: 100%;
+    text-decoration: none;
+}
+table.center tr td.menu a:visited
+{
+    color: #000000;
+}
+table.center tr td.menu a:hover, a:active
+{
+    color: #C800C8;
+    background-color: #DDDDDD;
+}
+table.title
+{
+    margin-top: .75em;
+    margin-bottom: .25em;
+    margin-right: 0px;
+    margin-left: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+    border-spacing: 0;
+}
+table.title tr
+{
+    border: 0px;
+}
+td.titleleft
+{
+    text-align: left;
+    padding: 0px;
+    border: 0px;
+    width: 70%;
+    color: #000;
+    background-color: #009696;
+    font-size: 130%;
+    font-weight: bold;
+}
+td.titleright
+{
+    text-align: center;
+    font-size: 110%;
+    padding: 0px;
+    border: 0px;
+    width: 30%;
+    background-color: #000;
+    color: #009696;
+}
+input.menu
+{
+    background-color: #DDDDDD;
+/*    color: #009696; */
+    font-family: "Verdana";
+    font-size: 100%;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 4pt;
+    padding-bottom: 0;
+    border: 0;
+}
+input.menu:hover, input.menu:active, input.menu:focus
+{
+    color: #c800c8;
+    outline: none;
+}
+button.menu
+{
+    background-color: #DDDDDD;
+    color: #009696;
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size: 100%;
+    text-align: right;
+    padding-right: 4pt;
+    padding-bottom: 0;
+    border: 0;
+}
+button.menu:hover, button.menu:active, button.menu:focus
+{
+    color: #F5E754;
+    border: 0;
+    outline: none;
+}
+/* Help windows */
+h4.help
+{
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+p.help
+{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
+    clear: left;
+}
+#help
+{
+        background-color: #c00;
+        color: #fff;
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 20%
+}
+#help:hover
+{
+        background-color: #f00;
+}
+span.brown
+{
+    color: #c86400;
+}
+span.green
+{
+    color: #009696;
+}
+span.red
+{
+    color: #ff1919;
+}
+span.blue
+{
+    color: #0000ff;
+}
+span.magenta
+{
+    color: #c800c8;
+}
+span.morfo
+{
+    font-weight: bold;
+    background-color: #ffffff;
+}
+span.main1
+{
+    font-size: 90%;
+    font-weight: normal;
+}
