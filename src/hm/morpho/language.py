@@ -53,6 +53,7 @@ from .morphology import *
 from .anal import *
 from .utils import some
 from .rule import *
+from .um import *
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -61,12 +62,12 @@ SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
 # Language name
 LG_NAME_RE = re.compile(r'\s*n.*?:\s*(.*)')
 # Backup language abbreviation
-# l...: 
+# l...:
 BACKUP_RE = re.compile(r'\s*l.*?:\s*(.*)')
 ## preprocessing function
 #PREPROC_RE = re.compile(r'\s*pre*?:\s*(.*)')
 # Segments (characters)
-# seg...: 
+# seg...:
 SEG_RE = re.compile(r'\s*seg.*?:\s*(.*)')
 # Accent dictionary
 # accent:
@@ -75,7 +76,7 @@ ACC_RE = re.compile(r'\s*accent:\s*(.*)')
 # deaccent:
 DEACC_RE = re.compile(r'\s*deaccent:\s*(.*)')
 # Punctuation
-# pun...: 
+# pun...:
 PUNC_RE = re.compile(r'\s*pun.*?:\s*(.*)')
 # Part of speech categories
 # pos:
@@ -188,6 +189,8 @@ class Language:
         # New analyses since language loaded
         # each entry a wordform and list of (root, FS) analyses
         self.new_anals = {}
+        # If available, create a converter between HM and UM features
+        self.um = UniMorph(self)
 
     def __str__(self):
         return self.label or self.abbrev
@@ -869,7 +872,7 @@ class Language:
         """Returns the root morpheme (form, features) for a segmentation string."""
         morphs = self.seg2morphs(seg)
         return morphs[0][morphs[1]]
-        
+
     def segmentation2string(self, segmentation, sep='-', transortho=True, features=False):
         '''Convert a segmentation (POS, segstring, count) to a form string,
         using a language-specific function if there is one, otherwise using a default function.'''
@@ -1085,14 +1088,14 @@ class Language:
                                 form = self.preproc(form)
                             analyses = self.anal_word(form, fsts=fsts, guess=guess,
                                                       phon=phon, only_guess=only_guess, segment=segment,
-                                                      root=root, stem=True, citation=citation and not raw, gram=gram, 
+                                                      root=root, stem=True, citation=citation and not raw, gram=gram,
                                                       preproc=False, postproc=postproc and not raw,
                                                       cache=cache, no_anal=no_anal,
                                                       rank=rank, report_freq=report_freq, nbest=nbest,
                                                       string=not raw, print_out=False, only_anal=storedict)
                             if minim:
                                 analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
-                            elif raw and analyses: 
+                            elif raw and analyses:
                                 analyses = (form, [(anal[0], anal[1], anal[2]) if len(anal) > 2 else (anal[0],) for anal in analyses])
                             # If we're storing the analyses in a dict, don't convert them to a string
                             if storedict or raw:

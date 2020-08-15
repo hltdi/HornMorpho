@@ -1,5 +1,7 @@
 weighting = UNIFICATION
 
+# 2020.8.14: converted vowels to "Cushitic representation"
+
 ## Special characters
 # _: gemination
 # /: pre-gemination
@@ -12,11 +14,14 @@ weighting = UNIFICATION
 # +: boundary
 
 ## Vowel stringsets
-V = {a, e, E, i, I, o, u, @, A, O, U}
+V = {a, e, i, o, u, aa, ee, ii, oo, uu}
+# V = {a, e, E, i, I, o, u, @, A, O, U}
 # Long vowels
-VV = {a, i, O, U, E}
+VV = {aa, ee, ii, oo, uu}
+#VV = {a, i, O, U, E}
 # Short vowels
-~V = {e, I, o, u, @}
+#~V = {e, I, o, u, @}
+~V = {a, e, i, o, u}
 ## Consonant stringsets
 XX = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, Q, r, s, t, T, w, x, y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, tW, TW, xW, zW, ZW}
 # possible root consonants (excluding M)
@@ -35,9 +40,9 @@ JX = {d, g, k, l, n, s, t, T, z}
 ~J = {b, f, g, k, m, q, r}
 # Consonants that can geminate
 F = {b, c, C, d, f, g, j, k, l, m, n, N, q, r, s, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, qW, rW, sW, tW, TW, xW, zW, ZW}
-# labialized consonants     
+# labialized consonants
 B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, qW, rW, sW, tW, TW, xW, zW, ZW}
-# labialized consonants that can appear in surface verb forms     
+# labialized consonants that can appear in surface verb forms
 BB = {bW, fW, gW, hW, kW, mW, qW}
 ## Non-phonetic/orthographic characters
 % = {_, /, *, !, +, D, =, 0}
@@ -47,7 +52,5 @@ BB = {bW, fW, gW, hW, kW, mW, qW}
 >stem_EO<
 >stem_caus<
 >stem_dup<
-# >stem_dup4V<
-# >stem_dup_am<
 >stem_der<
 +root+

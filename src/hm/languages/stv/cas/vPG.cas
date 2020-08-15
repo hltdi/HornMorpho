@@ -1,25 +1,21 @@
 weighting = UNIFICATION
 
-# 2020.8.14: converted vowels to "Cushitic" representation
-
 ## Special characters
 # _: gemination
 # /: pre-gemination
+# Y: final palatal
 # D: reduplication
 # *: allophone/allomorph prefix
 # !: allophone/allomorph prefix
 # =: allophone/allomorph prefix
-# 2: 2p perfect suffix kumu- mmu-
-# 7: 1s, 2sm perfective suffix (->k|h)
-# 8: 2sf imprf/juss suffix (causes palatalization of previous C)
-# 0: delete following vowel (only -u?) under certain circumstances
+# 0: prefix for character that may be deleted
 
 ## Vowel stringsets
-V = {a, e, i, o, u, aa, ee, ii, oo, uu}
+V = {a, e, E, i, I, o, u, @, A, O, U}
 # Long vowels
-VV = {aa, ee, ii, oo, uu}
+VV = {a, i, O, U, E}
 # Short vowels
-~V = {a, e, i, o, u}
+~V = {e, I, o, u, @}
 ## All consonants
 XX = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW, ZW}
 # possible root consonants
@@ -29,7 +25,7 @@ L = {', h, hW}
 # non-laryngeal consonants
 X/L = {b, c, C, d, f, g, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW, ZW}
 # palatal consonants
-J = {c, C, j, N, x, y, Z}
+J = {c, C, j, N, x, y, Z} #, cW, CW, jW, xW, ZW}
 # palatalizable consonants
 JJ = {d, l, n, s, t, T, z}
 # palatalizable consonants + k, g
@@ -43,28 +39,30 @@ B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW,
 # non-labialized consonants
 X = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, '}
 ## Non-phonetic/orthographic characters
-% = {_, /, *, 0, 2, 8, 7, +}
+% = {_, /, *, D, 3, 7}
 
 # For written Silt'e, the next 2, then start from ou2W
 #>del_epgem<
 # Insert glottal stop before initial vowel
->gs0<
+#>gs0<
 # Convert vowels in single-character scheme to single/double scheme
-#>Vconv<
+>Vconv<
 # Add epenthetic I
-# >epen1<
+>epen1<
 # Convert /C to C_
 >pre_gem<
+# oa, ua -> Wa
+# >ou2W<
+# y->i between Cs; insert i between C and y before vowel (or end of word)
+# >y2i<
+# Insert y between i and a
+# >y_epen<
 # Palatalize palatalizable C before i and E
-# >pal_iiee<
+# >pal_iE<
 # CC -> C_
 >gem<
 # V combinations with a first or second a
 >aVa<
-# delete stem boundary character +
->bound<
-# *t -> t or ta
->*<
 # -ku/-k
 >kh<
 # Morphotactics

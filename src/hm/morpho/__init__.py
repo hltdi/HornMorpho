@@ -34,7 +34,13 @@ Composition of weighted FSTs is also supported.
    New modules for translation dictionaries (tdict) and menus (menu).
 """
 
-__version__ = '3.0'
-__author__ = 'Michael Gasser'
+__all__ = ['altrule', 'amh_lang', 'fs', 'fst', 'internals', 'language',\
+           'languages', 'letter_tree', 'logic', 'morphology', 'mtax',\
+           'om_lang', 'rule', 'semiring', 'strip', 'stv_lang',\
+           'ti_lang', 'um', 'utils', 'anal']
+#           'menu', 'tdict', 'dev'
 
-from .trans import *
+from .languages import *
+
+# 2020.08.14: eliminating trans classes for now
+# from .trans import *

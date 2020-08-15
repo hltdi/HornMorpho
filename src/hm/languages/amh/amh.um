@@ -1,0 +1,23 @@
+POS n
+  pos::
+    n: N
+    adj: ADJ
+    nadj: N
+  plr:: PL
+  def:: DEF
+  acc:: ACC
+  gen:: GEN
+  poss::
+    expl: PSS3SM
+    expl,fem: PSS3SF
+    expl,plr: PSS3P
+    expl,p1: PSS1S
+    expl,p1,plr: PSS1P
+    expl,p2: PSS2SM
+    expl,p2,fem: PSS2SF
+    expl,p2,plr: PSS2P
+  v::
+    agt: N
+    inf: V.MSDR
+    ins: N
+    man: N

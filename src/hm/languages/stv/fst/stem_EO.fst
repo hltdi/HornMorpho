@@ -1,12 +1,12 @@
-# E -> i, O -> U in Silt'e jussive-imperative
+# ee -> ii, oo -> uu in jussive-imperative
 
 -> start
 start -> start  [X;M;%]
-start -> start  [V-E,i,O,U]
+start -> start  [V-ee,ii,oo,uu]
 
-start -> start  [i:E]       [tm=j_i]
-start -> start  [E;i]       [tm=prf];[tm=imf]
-start -> start  [U:O]       [tm=j_i]
-start -> start  [O;U]       [tm=prf];[tm=imf]
+start -> start  [ii:ee]       [tm=j_i]
+start -> start  [ee;ii]       [tm=prf];[tm=imf]
+start -> start  [uu:oo]       [tm=j_i]
+start -> start  [oo;uu]       [tm=prf];[tm=imf]
 
 start ->

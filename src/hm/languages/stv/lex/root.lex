@@ -1,20 +1,23 @@
-sbr
-gagr
-'Ewd
-wdd
-s'm
-bl'
-sky
-fWzy
-sb_r
-msk_r
-gOMbT
-qEbb
-TOl_b
-'Ej_l
-'OMTy
-TWby
-'Mblq
-'Mbass
-'sEt'
-'rdd
+sbr   ''   [am=ሰበረ]
+qtl   ''   [am=ገደለ]
+jm_r  ''   [am=ጀመረ]
+gaagr  ''   [am=ጋገረ]
+'eewd  ''   []
+wdd   ''   []
+s'm   ''   []
+bl'   ''  [am=በላ]
+sky   ''  [am=ጠጣ]
+qry   ''  [am=ቀረ]
+fWzy  ''  []
+dnbT  ''  [am=ደነገጠ]
+msk_r  ''  []
+gooMbT  ''  []
+qeebb   ''  []
+TOl_b  ''  []
+'eej_l  ''  []
+'ooMTy  ''  []
+TWby   ''  []
+'Mblq  ''  []
+'Mbaass  ''  []
+'seet'   ''  []
+'rdd   ''  []

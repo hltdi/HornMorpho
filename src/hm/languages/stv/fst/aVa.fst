@@ -5,23 +5,23 @@
 # upward: generates way too many forms
 
 -> start
-start -> start   [X;_;V-a,e,I]
+start -> start   [X;_;V-aa,a,i]
 
 # Delete vowel before a, i, or u
-start -> v.V     [:e;:I;:a]       # any others?
-v.V -> vV        [a;i;u]
-vV -> start      [X;a]            # only insert V before VC or Va or V#
+start -> v.V     [:a;:i;:aa]       # any others?
+v.V -> vV        [aa;ii;u]
+vV -> start      [X;aa]            # only insert V before VC or Va or V#
 
 # Delete e,I after a
-start -> a       [a]
-a -> av          [:e;:I]
+start -> a       [aa]
+a -> av          [:a;:i]
 av -> start      [X]        # only insert V before C or #
 a -> start       [X]        # any others?
 
-start -> v.V*    [e;I]
-v.V* -> vV*      [a;i;u]          # fail
+start -> v.V*    [a;i]
+v.V* -> vV*      [aa;ii;u]        # fail
 v.V* -> start    [X]              # other vowels?
-a -> aV          [e;I;a;i;u]      # fail (because a_ not deleted or _V not deleted)
+a -> aV          [a;i;aa;ii;u]    # fail (because a_ not deleted or _V not deleted)
 
 start ->
 a ->
