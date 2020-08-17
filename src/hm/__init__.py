@@ -114,10 +114,10 @@ def seg_file(language, infile, outfile=None,
                            start=start, nlines=nlines)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
-              non_roman=True, roman=False, segment=False, guess=False,
+              roman=False, segment=False, guess=False,
               dont_guess=False, cache='',
-              rank=True, freq=True, nbest=5,
-              raw=False):
+              rank=True, freq=False, nbest=5, um=True,
+              raw=True):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.
 
@@ -131,9 +131,6 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @type  citation: boolean
     @param gram:     whether a grammatical analysis is to be included
     @type  gram:     boolean
-    @param non_roman: whether the language is written in non-roman script
-                      (included for backwards compatibility)
-    @type  non_roman: boolean
     @param roman:    whether the language is written in roman script
     @type  roman:    boolean
     @param segment:  whether to return the segmented input string rather than
@@ -149,6 +146,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @type  freq:     boolean
     @param nbest:    maximum number of analyses to return or print out
     @type  nbest:    int
+    @param um:       whether to output UniMorph features
+    @type um:        boolean
     @param raw:      whether the analyses should be returned in "raw" form
     @type  raw:      boolean
     @return:         a list of analyses (only if raw is True)
@@ -156,12 +155,12 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     '''
     language = morpho.get_language(language, cache=cache, phon=False, segment=segment)
     if language:
-        analysis = language.anal_word(word, preproc=non_roman and not roman,
-                                      postproc=(non_roman and not roman) and not raw,
+        analysis = language.anal_word(word, preproc=not roman,
+                                      postproc=not roman,
                                       root=root, citation=citation, gram=gram,
                                       segment=segment, only_guess=guess,
-                                      guess=not dont_guess,
-                                      nbest=nbest,
+                                      guess=not dont_guess, cache=False,
+                                      nbest=nbest, report_freq=freq, um=um,
                                       string=not raw, print_out=not raw)
         if raw:
             return analysis
@@ -236,7 +235,7 @@ def anal_file(language, infile, outfile=None,
 ##        app.MainLoop()
 
 def gen(language, root, features=[], pos=None, guess=False, phon=False,
-        roman=False, non_roman=True, interact=False, return_word=False):
+        roman=False, interact=False, return_word=False):
     '''Generate a word, given stem/root and features (replacing those in default).
     If pos is specified, check only that POS; otherwise, try all in order until one succeeeds.
 
@@ -250,14 +249,12 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
     @type  guess:    boolean
     @param roman:    whether the languages uses a roman script
     @type roman:      boolean
-    @param non_roman: whether the language uses a non-roman script
-    @type  non_roman: boolean
     @param return_word: whether to return the word, rather than printing it out
     @tyupe return_word: boolean
     '''
     language = morpho.get_language(language, segment=False, phon=phon)
     if language:
-        is_not_roman = not roman and non_roman
+        is_not_roman = not roman
         morf = language.morphology
         if pos:
             posmorph = morf[pos]

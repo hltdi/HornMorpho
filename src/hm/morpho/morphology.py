@@ -182,7 +182,7 @@ class Morphology(dict):
             else:
                 return 'nothing'
         return a
-        
+
     def get_root_freq(self, root, anal):
         rv = self.root_fv(root, anal)
         if self.root_freqs:
@@ -303,7 +303,7 @@ class Morphology(dict):
         path = os.path.join(self.get_lex_dir(), filename)
         if os.path.exists(path):
             print("Loading suffixes from {}".format(path))
-            
+
             current_pos = None
             current_suffix = None
             current_attribs = None
@@ -397,7 +397,7 @@ class Morphology(dict):
                         self.suffixes[current_suffix].extend(current_attribs)
                     else:
                         self.suffixes[current_suffix] = current_attribs
-                        
+
 #            print('patterns {}'.format(patterns))
 #            print('functions {}'.format(functions))
 
@@ -596,6 +596,8 @@ class POSMorphology:
         # Frequency statistics for generation
         self.root_freqs = None
         self.feat_freqs = None
+        # A function of root and FeatStruc for postprocessing of roots
+        self.root_proc = None
 
     def __str__(self):
         '''Print name.'''
@@ -1201,7 +1203,7 @@ class POSMorphology:
                         # otherwise keep the original value
             fs.freeze()
         return FSSet(fss2)
-        
+
     def update_FS(self, fs, features, top=True):
         """Add or modify features (a FS or string) in fs."""
         fs = fs.copy()
@@ -1297,7 +1299,7 @@ class POSMorphology:
                         word = o[0]
                         output[word] = output.get(word, []) + [(round(root_count), self.pos, root, None, anal)]
         return output
-    
+
     def anal1(self, input, label='', casc_label='', index=0, load=False):
         """Analyze input in a single sub-FST, given its label or index in the cascade."""
         return self._proc1(input, label=label, casc_label=casc_label, index=index, load=load,
@@ -1372,7 +1374,7 @@ class POSMorphology:
                              timeout=20)
 
     ## Generating default FS from feature-value pairs in Morphology
-    
+
     def make_default_fs(self):
         dct = {}
         lex_feats = self.lex_feats
@@ -1564,7 +1566,7 @@ class POSMorphology:
                             elif groupname:
                                 # Set the value for groupname
                                 webdict[groupname] = groupvalue
-                    
+
         return expansions, feats_used
 
     def excl(self, feat, val, feats_used):

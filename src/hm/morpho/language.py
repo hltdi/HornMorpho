@@ -993,7 +993,7 @@ class Language:
                   knowndict=None, guessdict=None, cache=True, no_anal=True,
                   phon=False, only_guess=False, guess=True, raw=False,
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False,
-                  feats=None, simpfeats=None,
+                  feats=None, simpfeats=None, um=True,
                   # Ambiguity
                   rank=True, report_freq=True, nbest=100,
                   report_n=50000,
@@ -1090,7 +1090,7 @@ class Language:
                                                       phon=phon, only_guess=only_guess, segment=segment,
                                                       root=root, stem=True, citation=citation and not raw, gram=gram,
                                                       preproc=False, postproc=postproc and not raw,
-                                                      cache=cache, no_anal=no_anal,
+                                                      cache=cache, no_anal=no_anal, um=um,
                                                       rank=rank, report_freq=report_freq, nbest=nbest,
                                                       string=not raw, print_out=False, only_anal=storedict)
                             if minim:
@@ -1274,12 +1274,14 @@ class Language:
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None,
-                  root=True, stem=True, citation=True, gram=True,
+                  root=True, stem=True, citation=True, gram=True, um=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=True, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
                   only_anal=False):
-        '''Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
+        '''
+        Analyze a single word, trying all existing POSs, both
+        lexical and guesser FSTs.
 
         [ [POS, {root|citation}, FSSet] ... ]
         '''
@@ -1403,7 +1405,27 @@ class Language:
             # Print out stringified version
             print(self.analyses2string(word, analyses, seg=segment, form_only=not gram))
         elif not segment:
-            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
+            # Do final processing of analyses, given options
+            for i, analysis in enumerate(analyses):
+                if len(analysis) <= 2:
+                    analyses[i] = (analysis[1],)
+                else:
+                    pos, root, cit, gram1, gram2, count = analysis
+                    # Postprocess root if appropriate
+                    root = (root, self.proc_root(self.morphology.get(pos),
+                    root, gram2))
+                    a = [root]
+                    if citation:
+                        a.append(cit)
+                    if um and pos in self.um.hm2um:
+                        ufeats = self.um.convert(gram2, pos=pos)
+                        if ufeats:
+                            gram2 = ufeats
+                    a.append(gram2)
+                    if report_freq:
+                        a.append(count)
+                    analyses[i] = a
+#            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
         return analyses
 
@@ -1419,12 +1441,22 @@ class Language:
 #            return analysis
         pos, form = analysis
         # 100000 makes it likely these will appear first in ranked analyses
-        return pos, form, None, 100000
+        return pos, form, None, None, None, 100000
 
     def proc_anal_noroot(self, form, analyses, segment=False):
         '''Process analyses with no roots/stems.'''
 #        print("Form {}, analyses {}".format(form, analyses))
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
+
+    def proc_root(self, posmorph, root, fs):
+        """
+        If posmorph has a root_proc function, use it to produce
+        a root.
+        """
+        if posmorph and posmorph.root_proc:
+            func = posmorph.root_proc
+            return func(root, fs)
+        return root
 
     @staticmethod
     def root_from_seg(segmentation):
@@ -1488,7 +1520,9 @@ class Language:
             # Find the citation form of the root if required
             if citation and p and p in self.morphology and self.morphology[p].citation:
                 cite = self.morphology[p].citation(root, grammar, guess, stem)
-                if postproc and cite:
+                if not cite:
+                    cite = root
+                if postproc:
                     cite = self.postprocess(cite)
             else:
                 cite = None

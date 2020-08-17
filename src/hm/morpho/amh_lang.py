@@ -253,8 +253,8 @@ def n_anal2string(anal, webdict=None):
                 if pp: s += ','
                 s += ' conj suffix: ' + cnj
                 webfv(webdict, 'conj suffix', roman2geez(cnj))
-            s += '\n'        
-    return s    
+            s += '\n'
+    return s
 
 def vb_anal2string(anal, webdict=None):
     '''Convert a verb analysis to a string.
@@ -493,7 +493,7 @@ def vb_dict_to_anal(root, dct, freeze=True):
         obj['expl'] = False
     fs['sb'] = sbj
     fs['ob'] = obj
-    
+
     # TAMH: labels are the same as FS values
     fs['tm'] = dct.get('tam', 'prf')
 
@@ -721,17 +721,20 @@ AMH.morphology['v'].fv_abbrevs = \
 # Set this here rather than automatically with POSMorphology.set_web_feats() since all web features have a single value
 AMH.morphology['v'].web_feats = \
   [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1)]
+AMH.morphology['v'].root_proc = lambda root, fs: "<" + root + ">:" + fs['cls']
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
-    language.FeatStruct("[pos=n,cs=None,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
+    language.FeatStruct("[pos=n,-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
 AMH.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
-AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
-AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis", "devrb"]
+AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
+AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis"]
 AMH.morphology['n'].feat_abbrevs = \
-  {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive", "devrb": "deverbal",
+  {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive",
    'pp': 'preposition'}
+AMH.morphology['n'].root_proc = \
+  lambda root, fs: "<" + root + ">:" + fs['cls'] if fs['pos'] == 'n_dv' else geezify(root)
 
 AMH.morphology['cop'].name = 'copula'
 AMH.morphology['cop'].defaultFS = language.FeatStruct("[cj2=None,-neg,sb=[-fem,-p1,-p2,-plr,-frm],tm=prs]")
@@ -750,10 +753,12 @@ AMH.morphology['cop'].fv_abbrevs = \
    ([['p1', False], ['p2', False], ['plr', False], ['frm', True]], "3 prs frml"),
    ([['p1', False], ['p2', False], ['plr', True]], "3 prs plr")
    )
+AMH.morphology['cop'].root_proc = lambda root, fs: "ነው"
 
 ## Functions that return the citation forms for words
 AMH.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
 AMH.morphology['n'].citation = lambda root, fss, guess, vc_as: n_get_citation(root, fss, guess, vc_as)
+AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'ነው'
 
 ## Functions that convert analyses to strings
 AMH.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
@@ -949,7 +954,7 @@ NRULES.add(Insert(pre=VOWELS, post=VOWELS, insertion="'"))
 NRULES.add(Del(delpart="I"))
 
 VNRULES.add_rules(NRULES)
-               
+
 AMH.add_rules('n', NRULES)
 AMH.add_rules('v', RULES)
 AMH.add_rules('n_dv', VNRULES)
