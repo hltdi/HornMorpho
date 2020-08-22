@@ -1465,8 +1465,10 @@ class Language:
                         ufeats = self.um.convert(gram2, pos=pos)
                         if ufeats:
                             gram2 = ufeats
+                            a['um'] = gram2
 #                    a.append(gram2)
-                    a['gram'] = gram2
+                    if not um:
+                        a['gram'] = gram2
                     if report_freq:
 #                        a.append(count)
                         a['freq'] = count

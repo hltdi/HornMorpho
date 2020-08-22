@@ -75,11 +75,11 @@ a -> simp           [:]       [as=smp]
 start -> simp       [:]       [vc=smp]
 
 # Transitive and passive before C| verbs is special
-a -> a_te           [:]       
+a -> a_te           [:]
 te -> a_te          [:]
 
 # Transitive iterative, reciprocal: geminate C1 after the prefix
-a -> a/             [/:]      
+a -> a/             [/:]
 
 #### END
 ### State names with "-" represent positions starting from the right:
@@ -223,7 +223,8 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 #### "B" verbs: CC_C, C2 cannot be ', since it can't be geminated
 #### State names contain B
 
-# Geminate C2 in all cases except jussive passive (optionally in imperative passive) (CHANGE FOR GENERATION)
+# Geminate C2 in all cases except jussive passive
+# (optionally in imperative passive) (CHANGE FOR GENERATION)
 -2B_ -> -2V         [_]        [tm=prf];[tm=imf];[tm=ger];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=j_i,vc=ps,sb=[+p2],-neg]
 # No C2 gemination in jussive passive, optionally in the imperative
 -2B_ -> -2V         [:_]       [tm=j_i,vc=ps]
@@ -269,9 +270,9 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 -5.5V -> -4.5       [e:]
 # C1 for 5-consonant verbs: any root consonant
 -5.5 -> -5.5V       [X]
--4.5 -> -4.5V       [X/L]    
--4.5V -> -3.5       [e:]     
--3.5 -> -3.5V       [X/L]    
+-4.5 -> -4.5V       [X/L]
+-4.5V -> -3.5       [e:]
+-3.5 -> -3.5V       [X/L]
 -3.5V -> -2.4       [e:]     [tm=prf];[tm=imf]
 -3.5V -> -2.4       [:]      [tm=ger];[tm=j_i]
 

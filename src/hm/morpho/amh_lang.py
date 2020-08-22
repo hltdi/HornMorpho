@@ -56,7 +56,6 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     # For non-passive te- verbs, te- is citation form
     if fs.get('smp') == False:
         fs.update({'vc': 'ps'})
-#     if vc_as else AMH.morphology['v'].defaultFS)
     # Refreeze the feature structure
     fs.freeze()
     # Find the first citation form compatible with the updated feature structure

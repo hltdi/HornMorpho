@@ -1,17 +1,17 @@
 """
-This file is part of morfo.
+This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019.
+    Copyleft 2018, 2019, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -29,7 +29,7 @@ that can be conveniently composed.
 The FST class does not provide support for:
 
   - Multiple initial states.
-  
+
   - Initializing strings (an output string associated with the initial
     state, which is always generated when the FST begins).
 
@@ -196,7 +196,7 @@ class FSTCascade(list):
 
     def get_cas_dir(self):
         return os.path.join(self.language.directory, 'cas')
-        
+
     def get_fst_dir(self, dirname='test'):
         if not self.language:
             d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'L', dirname)
@@ -482,7 +482,7 @@ class FSTCascade(list):
         cascade = FSTCascade(label)
         cascade.language = language
         cascade.seg_units = seg_units
-        
+
         lines = s.split('\n')[::-1]
         subcasc_indices = []
 
@@ -704,7 +704,7 @@ class FST:
         self._initial_state = None
         """The label of the initial state, or C{None} if this FST
         does not have an initial state."""
-        
+
         self._incoming = {}
         """A dictionary mapping state labels to lists of incoming
         transition arc labels."""
@@ -764,7 +764,7 @@ class FST:
         #}
 
         self._reverse = False
-        
+
     #////////////////////////////////////////////////////////////
     #{ State Information
     #////////////////////////////////////////////////////////////
@@ -867,11 +867,11 @@ class FST:
     def in_string(self, arc):
         """Return the given transition arc's input string."""
         return self._in_string[arc]
-    
+
     def out_string(self, arc):
         """Return the given transition arc's output string."""
         return self._out_string[arc]
-    
+
     def arc_descr(self, arc):
         """Return the description for the given transition arc, if it
         has one; or None, otherwise."""
@@ -927,7 +927,7 @@ class FST:
 
     def r2l(self):
         return self._reverse
-    
+
     def sigma(self):
         """The sigma alphabet. (MG)"""
         return self._sigma
@@ -1046,7 +1046,7 @@ class FST:
         if weighting and weight == weighting.one:
             return True
         return False
-    
+
     #////////////////////////////////////////////////////////////
     #{ State Modification
     #////////////////////////////////////////////////////////////
@@ -1062,11 +1062,11 @@ class FST:
         unique label value will be chosen.  The new state will be
         final iff C{is_final} is true.  C{descr} is an optional
         description string for the new state.
-        
+
         Arguments should be specified using keywords!
         """
         label = self._pick_label(label, 'state', self._incoming)
-        
+
         # Add the state.
         self._incoming[label] = []
         self._outgoing[label] = []
@@ -1074,7 +1074,7 @@ class FST:
         self._state_descr[label] = descr
         self._finalizing_string[label] = tuple(finalizing_string)
         self.set_final_weight(label, final_weight)
-        
+
         # Return the new state's label.
         return label
 
@@ -1097,7 +1097,7 @@ class FST:
                 self._outgoing[self._src[arc]].remove(arc)   # First remove from other end (MG)
                 del (self._src[arc], self._dst[arc], self._in_string[arc],
                      self._out_string[arc], self._arc_descr[arc])
-        for arc in self._outgoing[label]: 
+        for arc in self._outgoing[label]:
             if arc in self._src:    # It may have been deleted already (MG)
                 self._incoming[self._dst[arc]].remove(arc)   # First remove from other end (MG)
                 del (self._src[arc], self._dst[arc], self._in_string[arc],
@@ -1151,7 +1151,7 @@ class FST:
         if state not in self._incoming:
             raise ValueError('Unknown state label %r' % state)
         self._final_dst[state] = dst
-        
+
     def set_descr(self, state, descr):
         """
         Set the given state's description string.
@@ -1176,13 +1176,13 @@ class FST:
         they will I{not} be self-loop arcs).
 
         The state description is I{not} copied.
-            
+
         @param label: The label for the new state.  If not specified,
             a unique integer will be used.
         """
-        if orig_state not in self._incoming: 
+        if orig_state not in self._incoming:
             raise ValueError('Unknown state label %r' % src)
-        
+
         # Create a new state.
         new_state = self.add_state(label=label)
 
@@ -1212,7 +1212,7 @@ class FST:
         Create a new transition arc, and return its label.
 
         Arguments should be specified using keywords!
-        
+
         @param src: The label of the source state.
         @param dst: The label of the destination state.
         @param in_string: The input string
@@ -1250,7 +1250,7 @@ class FST:
         """A unique name for an arc."""
         self._n_arcs += 1
         return 'arc' + str(self._n_arcs)
-            
+
     def del_arc(self, label):
         """
         Delete the transition arc with the given label.
@@ -1289,7 +1289,7 @@ class FST:
         fst._incoming, fst._outgoing = fst._outgoing, fst._incoming
         fst._src, fst._dst = fst._dst, fst._src
         return fst
-    
+
     def trim(self, label='', trace=0):
         '''Trim by eliminating deadends.'''
         if trace:
@@ -1339,7 +1339,7 @@ class FST:
 
         if trace and deleted > 0:
             print('Deleted {} total states'.format(deleted))
-    
+
     def relabeled(self, label=None, relabel_states=True, relabel_arcs=True, trace=0):
         """
         Return a new FST that is identical to this FST, except that
@@ -1420,7 +1420,7 @@ class FST:
             fst._initial_state = state_ids[self._initial_state]
         else:
             fst._initial_state = self._initial_state
-            
+
         return fst
 
     def _relabel_state_ids(self, state, ids):
@@ -1582,7 +1582,7 @@ class FST:
         print('Stringifying weights')
         for arc, weight in fst._weight.items():
             fst._weight[arc] = weight.__str__()
-            
+
     @staticmethod
     def write(fst, filename=None, directory='',
               defaultFS='', stringsets=False,
@@ -1634,7 +1634,7 @@ class FST:
             if fst.weighting():
                 weight = fst.arc_weight(arc)
                 weight_repr = weight.__repr__()
-#                Here because there was a problem with strings including commas in FSs                
+#                Here because there was a problem with strings including commas in FSs
 #                if weight_repr != '[]':
 #                    print("Writing weight for arc {}, {}, {}".format(arc, weight, weight_repr))
                 if isinstance(weight, str):
@@ -1643,7 +1643,9 @@ class FST:
                         out.write(weight)
                 elif weight != fst._weighting.one:
                     # FSSet weight
-                    out.write(weight.__repr__())
+#                    if '"' in weight_repr:
+#                        print(weight_repr)
+                    out.write(weight_repr)
             out.write('\n')
         out.close()
 
@@ -1759,7 +1761,7 @@ class FST:
                       seg_units=[], create_weights=True, verbose=False):
         """Restore an FST from a .fst file."""
 #        label, suffix = fst_file.split('.')
-        
+
         path = path or os.path.join(directory, fst_file)
 
         s = open(path, encoding='utf-8').read()
@@ -1858,7 +1860,7 @@ class FST:
                 print('States created {}'.format(nstates))
 
             raise ValueError("bad line: %r" % line)
-    
+
         return fst
 
     @staticmethod
@@ -2229,7 +2231,7 @@ class FST:
                 fst.insert(fst1, src, dst, weight=weight)
                 continue
             #}
-    
+
             #{ Lex file to be converted to a letter tree, then to an FST and concatenated in (MG)
             # Destination FST specified here, not in file, to be used for all entries.
             # +file+
@@ -2278,7 +2280,7 @@ class FST:
 #            print("Reversing\n{}".format(fst))
 #            fst = fst.reversed()
 #            print("Reversed\n{}".format(fst))
-    
+
         return fst
 
     def _parse_arc(self, string):
@@ -2313,7 +2315,7 @@ class FST:
         in_string_label = in_string.replace(' ', '')
         label_pre = src + '_' + in_string_label
         label_suf = '_' + dst
-        
+
         ## If there are parentheses in in_string, separate the three portions
         in_string1 = in_paren = out_string1 = out_paren = ''
         in_strings1 = in_paren_s = in_strings2 = []
@@ -2515,7 +2517,7 @@ class FST:
                     new_state = label + inchar
                 self.add_state(new_state)
                 # No weight specified
-                inarc = inchar if inchar else '' 
+                inarc = inchar if inchar else ''
                 outarc = outchar if outchar else ''
                 self.add_arc(state, new_state, inarc, outarc)
                 if isinstance(rest, dict):
@@ -2881,7 +2883,7 @@ class FST:
                         print('  Selected: {}<{},{}>'.format(arc[3:], in_pos, out_pos))
                     if step:
                         yield ['step', (arc, in_pos, output[:out_pos]) + ((accum_weight,) if weight else ())]
-                    
+
                     # update our state, input position, & output.
                     state = self.dst(arc)
 #                    if out_pos > len(output):
@@ -3251,7 +3253,7 @@ class FST:
             self.add_arc(state, state, in_string, out_string)
 
     ## CONCATENATION, INSERTION
-            
+
     def insert(self, insertion, src, dst, weight=None, mult_dsts=False):
         """Insert the FST insertion between src and dst states.
 
@@ -3314,7 +3316,7 @@ class FST:
 ##                                                                       insertion.out_string(arc)))
                 self.add_arc(state, new_arc_dst, insertion.in_string(arc), insertion.out_string(arc),
                              weight=arc_weight)
-        
+
     #////////////////////////////////////////////////////////////
     #{ Helper Functions
     #////////////////////////////////////////////////////////////
