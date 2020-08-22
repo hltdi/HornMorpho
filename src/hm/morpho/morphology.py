@@ -598,6 +598,8 @@ class POSMorphology:
         self.feat_freqs = None
         # A function of root and FeatStruc for postprocessing of roots
         self.root_proc = None
+        # A dictionary from orthographic roots to phonetic roots
+        self.ortho2phon = None
 
     def __str__(self):
         '''Print name.'''
@@ -690,6 +692,22 @@ class POSMorphology:
                 else:
                     anals= [root, gram]
             return anals
+
+    def set_ortho2phon(self, verbosity=0):
+        """
+        If <POS>_ortho.lex file exists, set ortho2phon dict.
+        """
+        path = os.path.join(self.morphology.get_lex_dir(),
+                            self.pos + '_ortho.lex')
+        if os.path.exists(path):
+            dct = {}
+            self.ortho2phon = dct
+            with open(path, encoding='utf8') as file:
+                for line in file:
+                    phon, ortho = line.split()
+                    dct[phon.strip()] = ortho.strip()
+        elif verbosity:
+            print("No ortho file for {}:{}".format(self.language, self.pos))
 
     def set_analyzed(self, filename='analyzed.lex', ortho=True, simplify=True, verbose=False):
         '''Set the dict of analyzed words, reading them in from a file, one per line.'''
@@ -996,7 +1014,7 @@ class POSMorphology:
                 init_weight = FSSet(init_weight)
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
-                                  init_weight=init_weight, result_limit=20 if guess else 3,
+                                  init_weight=init_weight, result_limit=20 if guess else 5,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit)
             if sep_anals:
                 anals = self.separate_anals(anals)
@@ -1080,8 +1098,10 @@ class POSMorphology:
             print('No generation FST loaded')
             return []
 
-    def gen(self, root, features=None, from_dict=False, postproc=False, update_feats=None,
-            guess=False, simplified=False, phon=False, segment=False, fst=None, sort=True,
+    def gen(self, root, features=None, from_dict=False,
+            postproc=False, update_feats=None,
+            guess=False, phon=False, segment=False, ortho=False,
+            fst=None, sort=True, um='',
             print_word=False, print_prefixes=None,
             interact=False, timeit=False, timeout=100, trace=False):
         """Generate word from root and features."""
@@ -1091,6 +1111,13 @@ class POSMorphology:
             features = self.fv_menu()
         else:
             features = features or self.defaultFS
+        if um:
+            lang_um = self.language.um
+            if lang_um:
+                update_feats = lang_um.convert_um(self.pos, um)
+            if not update_feats:
+#                print("Couldn't convert UM features {}".format(um))
+                return []
         if update_feats:
             if isinstance(update_feats, (list, set)):
                 fss = self.update_FSS(FeatStruct(features), update_feats)
@@ -1099,7 +1126,7 @@ class POSMorphology:
                 features = self.update_FS(FeatStruct(features), update_feats)
         if not features:
             return []
-        fst = fst or self.get_fst(generate=True, guess=guess, simplified=simplified,
+        fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
                                   phon=phon, segment=segment)
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
@@ -1110,6 +1137,13 @@ class POSMorphology:
             features = fss
         else:
             features = FSSet.cast(features)
+        if ortho and self.ortho2phon:
+            # Have some way to check whether the root is already phonetic
+            # There might be spaces in the orthographic form
+            oroot = root.replace(' ', '//')
+            oroot = self.ortho2phon.get(oroot)
+            if oroot:
+                root = oroot
         if fst:
 #            print('Transducing with features {}'.format(features.__repr__()))
             gens = fst.transduce(root, features, seg_units=self.morphology.seg_units,

@@ -114,7 +114,7 @@ def seg_file(language, infile, outfile=None,
                            start=start, nlines=nlines)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
-              roman=False, segment=False, guess=False,
+              roman=False, segment=False, guess=False, gloss=True,
               dont_guess=False, cache='',
               rank=True, freq=False, nbest=5, um=True,
               raw=True):
@@ -150,14 +150,18 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @type um:        boolean
     @param raw:      whether the analyses should be returned in "raw" form
     @type  raw:      boolean
+    @param gloss:    language to return gloss for, or ''
+    @type gloss:     string
     @return:         a list of analyses (only if raw is True)
     @rtype:          list of (root, feature structure) pairs
     '''
-    language = morpho.get_language(language, cache=cache, phon=False, segment=segment)
+    language = morpho.get_language(language, cache=cache,
+                                   phon=False, segment=segment)
     if language:
         analysis = language.anal_word(word, preproc=not roman,
                                       postproc=not roman,
-                                      root=root, citation=citation, gram=gram,
+                                      root=root, citation=citation,
+                                      gram=gram, gloss=gloss,
                                       segment=segment, only_guess=guess,
                                       guess=not dont_guess, cache=False,
                                       nbest=nbest, report_freq=freq, um=um,
@@ -235,6 +239,7 @@ def anal_file(language, infile, outfile=None,
 ##        app.MainLoop()
 
 def gen(language, root, features=[], pos=None, guess=False, phon=False,
+        ortho=True, um='',
         roman=False, interact=False, return_word=False):
     '''Generate a word, given stem/root and features (replacing those in default).
     If pos is specified, check only that POS; otherwise, try all in order until one succeeeds.
@@ -247,18 +252,27 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
     @type  pos:      string
     @param guess:    whether to use guess generator if lexical generator fails
     @type  guess:    boolean
+    @param phon:     whether to use the 'phonetic' generation FST
+    @type phon:      boolean
+    @param ortho:    whether to first convert the root from orthographic form
+    @type ortho:     boolean
     @param roman:    whether the languages uses a roman script
     @type roman:      boolean
     @param return_word: whether to return the word, rather than printing it out
-    @tyupe return_word: boolean
+    @type return_word: boolean
+    @param um:       whether to accept UniMorph features
+    @type um:        string
     '''
     language = morpho.get_language(language, segment=False, phon=phon)
     if language:
         is_not_roman = not roman
         morf = language.morphology
+        if language.procroot:
+            root, features = language.procroot(root, features, pos)
         if pos:
             posmorph = morf[pos]
-            output = posmorph.gen(root, update_feats=features, interact=interact,
+            output = posmorph.gen(root, update_feats=features,
+                                  interact=interact, ortho=ortho, um=um,
                                   postproc=is_not_roman, guess=guess)
             if output:
                 o = output[0][0]
@@ -269,7 +283,8 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
                     return
         else:
             for posmorph in list(morf.values()):
-                output = posmorph.gen(root, update_feats=features, interact=interact,
+                output = posmorph.gen(root, update_feats=features,
+                                      interact=interact, ortho=ortho, um=um,
                                       postproc=is_not_roman, guess=guess)
                 if output:
                     o = output[0][0]

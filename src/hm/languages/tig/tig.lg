@@ -3,6 +3,7 @@ code: te
 
 preproc: geez_gem
 postproc: geez_gem
+procroot: default
 
 seg: a e i o u I E
      b c C d f g h H j

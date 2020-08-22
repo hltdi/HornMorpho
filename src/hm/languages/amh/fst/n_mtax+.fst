@@ -3,9 +3,9 @@
 
 ## PREPOSITIONS
 # no prepositions
-start -> distrib    [:]              [pp=None,-gen,rl=[-p,-gen]]
+start -> distrib    [:]              [pp=None,-gen]
 start -> distrib   >>n_prep+<<
-start -> distrib    <ye:ye(gen)->    [+gen,pp=None,rl=[-p,+gen]]
+start -> distrib    <ye:ye(gen)->    [+gen,pp=None]
 
 ## DISTRIBUTIVE
 distrib -> prestem     [:]              [-dis]
@@ -38,12 +38,12 @@ place0 -> acc       [:}]        [+def,+prp,-itu,poss=[-expl]]
 stem0 -> name0     +n_name+      [v=None,-p1,-p2,+def,+prp,-plr,-itu]
 name0 -> acc       [:}]
 stem0 -> plr_an0   +n_stem_an+   [v=None,-prp]
-plr_an0 -> plr_an   [:}]         
+plr_an0 -> plr_an   [:}]
 
 ## Deverbal nouns: v=agt | ins | man | inf
 stem0 -> vnoun    >>vnoun+<<      [pos=n_dv,-p1,-p2,-prp]
 stem0 -> plr_oc0   +irr_vnounS+   [pos=n_dv,-p1,-p2,-prp]
-vnoun -> plr_oc0  >>tmp_n<<    
+vnoun -> plr_oc0  >>tmp_n<<
 
 ## Irregular plurals
 stem0 -> plr_irr0  +irr_plrS+   [v=None,-prp]
@@ -86,8 +86,8 @@ poss -> acc     <ac_ew:-ac_ew(poss=3p)>   [+def,poss=[-p1,-p2,+plr,+expl],-itu]
 poss -> acc     <wo:-wo(poss=2frm)>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
 
 ## ACCUSATIVE
-acc -> cnj        [:]      [-acc,rl=[-acc]]
-acc -> cnj        <n:-n(acc)>     [+acc,pp=None,rl=[-p,+acc]]
+acc -> cnj        [:]      [-acc]
+acc -> cnj        <n:-n(acc)>     [+acc,pp=None]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]

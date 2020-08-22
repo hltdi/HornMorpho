@@ -15,13 +15,13 @@ stem -> poss     +prep_n+      [-plr,v=None,-dis,-p1,-p2,poss=[-expl],+def,-itu,
 # Personal pronouns: plurality specified, no possessor, not distributive
 stem -> acc      +ppronG+      [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 # People's names: for generation skip the possibility of proper nouns with possessives
-stem -> acc      +n_nameG+     [v=None,-p1,-p2,+def,+prp,poss=[-expl],-itu]
+stem -> acc      +n_name+     [v=None,-p1,-p2,+def,+prp,poss=[-expl],-itu]
 # Place names; not necessarily +prp because they can take -awi
-stem ->  place   +n_placeG+    [v=None]
+stem ->  place   +n_place+    [v=None]
 # place -> plr_an   <awi:>       [der=[+ass],-prp]
 place -> acc      [:]          [+def,+prp,-itu,poss=[-expl]]
 # Non-deverbal common nouns: v=None
-stem -> plr_oc    +n_stemG+     [v=None,-prp]
+stem -> plr_oc    +n_stem+     [v=None,-prp]
 stem -> plr_an    +n_stem_an+  [v=None,-prp]
 # Deverbal nouns: v=agt | ins | man | inf
 stem -> plr_oc    >>vnounG<<   [-p1,-p2,-prp]
@@ -55,9 +55,9 @@ acc -> cnj        [:]      [-acc]
 acc -> cnj        [n:]     [+acc,pp=None]
 
 ## CONJUNCTIVE SUFFIXES
-cnj -> end        [:]      [cnj=None,pos=n]
-cnj -> end        [m:]     [cnj=m,pos=n]
-cnj -> end        <s_:>    [cnj=s,pos=n]
-cnj -> end        <n_a:>   [cnj=na,pos=n]
+cnj -> end        [:]      [cnj=None]
+cnj -> end        [m:]     [cnj=m]
+cnj -> end        <s_:>    [cnj=s]
+cnj -> end        <n_a:>   [cnj=na]
 
 end ->

@@ -40,7 +40,7 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
 ### and POSMorphology objects.
 
 def vb_get_citation(root, fs, guess=False, vc_as=False):
-    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct set fss.
+    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct fs.
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
@@ -52,17 +52,22 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     # Unfreeze the feature structure
     fs = fs.unfreeze()
     # Update the feature structure to incorporate default (with or without vc and as)
-    fs.update(AMH.morphology['v'].citationFS if vc_as else AMH.morphology['v'].defaultFS)
+    fs.update(AMH.morphology['v'].defaultFS)
+    # For non-passive te- verbs, te- is citation form
+    if fs.get('smp') == False:
+        fs.update({'vc': 'ps'})
+#     if vc_as else AMH.morphology['v'].defaultFS)
     # Refreeze the feature structure
     fs.freeze()
     # Find the first citation form compatible with the updated feature structure
     if ' ' in root:
-        # This is a light verb, just generated the actual verb
+        # This is a light verb, just generate the actual verb
         root_split = root.split()
         citation = AMH.morphology['v'].gen(root_split[-1], fs, from_dict=False, guess=guess)
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
+#        print("Generating citation from {}".format(fs.__repr__()))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
         if citation:
             result = citation[0][0]
@@ -621,11 +626,29 @@ def list_to_arg(dct, prefix):
 
     return arg
 
+def preproc_root(root, fs, pos):
+    """
+    Preprocess root for generation.
+    """
+    if is_geez(root):
+        anal = AMH.morphology['v'].anal(root, preproc=True)
+        if anal:
+            root, fs = anal[0]
+            cls = fs.get('cls')
+            root, fs = language.Language.dflt_procroot("{}:{}".format(root, cls))
+        else:
+#            print("Couldn't analyze {}".format(root))
+            return root, fs
+    else:
+        root, fs = language.Language.dflt_procroot(root, fs)
+    return root, fs
+
 ## Create Language object for Amharic, including preprocessing, postprocessing,
 ## and segmentation units (phones).
 AMH = language.Language("አማርኛ", 'amh',
               postproc=lambda form: geezify(form),
               preproc=lambda form: geez2sera(None, form, lang='am', simp=True),
+              procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
               seg2string=lambda string, sep='-', features=False, transortho=True: seg2string(string, sep=sep, geez=transortho, features=features),
               stat_root_feats=['vc', 'as'],
@@ -670,7 +693,7 @@ AMH.morphology['v'].name = 'verb'
 ## Default feature structures for POSMorphology objects
 ## Used in generation and production of citation form
 AMH.morphology['v'].defaultFS = \
-    language.FeatStruct("[pos=v,tm=prf,as=smp,vc=smp,sb=[-p1,-p2,-plr],ob=[-expl,-p1,-p2,-plr,-b,-l,-prp,-frm],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-acc,-ye,rl=[-p,-acc]]")
+    language.FeatStruct("[pos=v,tm=prf,as=smp,vc=smp,sb=[-p1,-p2,-plr,-fem],ob=[-expl,-p1,-p2,-plr,-b,-l,-prp,-frm,-fem],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-acc,-ye]")
 AMH.morphology['v'].FS_implic = {'rel': ['sub'],
                                 'cj1': ['sub'],
                                 'pp': ['rel', 'sub'],
@@ -681,7 +704,7 @@ AMH.morphology['v'].FS_implic = {'rel': ['sub'],
 #                                'ob': [['expl']]
                                 }
 # defaultFS with voice and aspect unspecified
-AMH.morphology['v'].citationFS = language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-expl],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-ye,-acc,rl=[-p,-acc]]")
+AMH.morphology['v'].citationFS = language.FeatStruct("[pos=v,tm=prf,sb=[-p1,-p2,-plr,-fem],ob=[-expl],cj1=None,cj2=None,pp=None,-neg,-rel,-sub,-ye,-acc]")
 AMH.morphology['v'].explicit_feats = ["sb", "ob", "tm", "neg", "rel", "def", "cj1", "cj2", "pp"]
 AMH.morphology['v'].feat_list = \
   [('cj1', ('sI', 'IskI', 'bI', 'lI', 'IndI')),
@@ -691,7 +714,6 @@ AMH.morphology['v'].feat_list = \
   ('pp', ('wede', 'Iske', 'ke', 'be', 'le', 'Iyye', 'sIle', 'Inde')),
   ('pos', ('n', 'v')),
   ('def', (False, True)),
-  ('rl', [('acc', (False, True)), ('p', (False, True))]),
   ('ax', ('al')),
   ('as', ('it', 'rc', 'smp')),
   ('cj2', ('s', 'm', 'Inji')),
@@ -721,11 +743,11 @@ AMH.morphology['v'].fv_abbrevs = \
 # Set this here rather than automatically with POSMorphology.set_web_feats() since all web features have a single value
 AMH.morphology['v'].web_feats = \
   [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1)]
-AMH.morphology['v'].root_proc = lambda root, fs: "<" + root + ">:" + fs['cls']
+AMH.morphology['v'].root_proc = lambda root, fs: "<" + root + ":" + fs['cls'] + ">"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
-    language.FeatStruct("[pos=n,-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
+    language.FeatStruct("[-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
 AMH.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
 AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
@@ -734,7 +756,7 @@ AMH.morphology['n'].feat_abbrevs = \
   {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive",
    'pp': 'preposition'}
 AMH.morphology['n'].root_proc = \
-  lambda root, fs: "<" + root + ">:" + fs['cls'] if fs['pos'] == 'n_dv' else geezify(root)
+  lambda root, fs: "<" + root + ":" + fs['cls'] + ">" if fs['pos'] == 'n_dv' else geezify(root) + "|" + root
 
 AMH.morphology['cop'].name = 'copula'
 AMH.morphology['cop'].defaultFS = language.FeatStruct("[cj2=None,-neg,sb=[-fem,-p1,-p2,-plr,-frm],tm=prs]")

@@ -2,9 +2,9 @@
 
 ## PREPOSITIONS
 # no prepositions
-start -> distrib    [:]        [pp=None,-gen,rl=[-p,-gen]]
+start -> distrib    [:]        [pp=None,-gen]
 start -> distrib   >>n_prep<<
-start -> distrib    <ye:>      [+gen,pp=None,rl=[-p,+gen]]
+start -> distrib    <ye:>      [+gen,pp=None]
 
 ## DISTRIBUTIVE 'y_e
 distrib -> stem     [:]        [-dis]
@@ -57,8 +57,8 @@ poss -> acc     <ac_ew:>   [+def,poss=[-p1,-p2,+plr,+expl],-itu]
 poss -> acc     <wo:>      [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
 
 ## ACCUSATIVE
-acc -> cnj        [:]      [-acc,rl=[-acc]]
-acc -> cnj        [n:]     [+acc,pp=None,rl=[-p,+acc]]
+acc -> cnj        [:]      [-acc]
+acc -> cnj        [n:]     [+acc,pp=None]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]

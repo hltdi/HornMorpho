@@ -227,7 +227,8 @@ def parse_str(s, start_position):
     position = m.end()
     while True:
         match = _STRING_END_RE.search(s, position)
-        if not match: raise ParseError('close quote', position)
+        if not match:
+            raise ParseError('close quote', position)
         if match.group(0) == '\\': position = match.end()+1
         else: break
 

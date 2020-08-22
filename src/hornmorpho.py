@@ -25,14 +25,23 @@ Author: Michael Gasser <gasser@indiana.edu>
 """ 
 import hm
 
+## test items for UM
+words = ["ቤታችንን", "የቤቴ", "ከቤቱስ",
+         "ሰበራት", "የሰበርናቸው", "ትስበርልን", "ተሰበሩ", "ሰባብሮበት", "አሰባበራቸው",
+         "መስበሬም", "የመስበሪያ", "ስላሰባበሩ", "መሰበራቸው", "መሰባበር"
+         ]
+def hmtest():
+    for word in words:
+        print(word, hm.anal('amh', word))
+
 ## 2019.12.23
 ## Am->Ks translation
-AK = T = None
+# AK = T = None
 
-def biling():
-    global AK, T
-    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
-    T = hm.morpho.TransTask(AK)
+#def biling():
+#    global AK, T
+#    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
+#    T = hm.morpho.TransTask(AK)
 
 def get_lang(abbrev, segment=False, guess=True, phon=False, cache='', verbose=False):
     """Return the language with abbreviation abbrev, loading it

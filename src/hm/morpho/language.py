@@ -112,6 +112,7 @@ CLEAN_RE = re.compile(r'\s*cle.*?:\s*(.*)\s*=\s*(.*)')
 # Pre- and post-processing (only works for Geez script now)
 PREPROC_RE = re.compile(r'\s*preproc.*?:\s*(.*)')
 POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
+PROCROOT_RE = re.compile(r'\s*procroot.*?:\s*(.*)')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -124,10 +125,11 @@ class Language:
     morphsep = '-'
 
     def __init__(self, label='', abbrev='', backup='',
-                 preproc=None, postproc=None, read_cache=False,
-                 # There may be a further function for post-processing
-                 postpostproc=None,
-                 seg_units=None,
+                 # Preprocessing for analysis
+                 preproc=None, procroot=None,
+                 # Post-processing for generation
+                 postproc=None, postpostproc=None,
+                 seg_units=None, read_cache=False,
                  # Function that converts segmented word back to a word string
                  seg2string=None,
                  # list of grammatical features to be combined with roots for statistics,
@@ -143,14 +145,15 @@ class Language:
         """
         Set some basic language-specific attributes.
 
-        @param preproc            Whether to pre-process input to analysis, for example,
+        @param preproc            Pre-process input to analysis, for example,
                                   to convert non-roman to roman characters
-        @param postproc           Whether to post-process output of generation, for
+        @param procroot           Pre-process roots
+        @param postproc           Post-process output of generation, for
                                   example, to convert roman to non-roman characters
         @param seg_units          Segmentation units (graphemes)
         @param citation_separate  Whether citation form of words is separate from roots
-#        @param msgs               Messages in the languages (or some other)
-#        @param trans              Translations of terms from english to this language
+#       @param msgs               Messages in the languages (or some other)
+#       @param trans              Translations of terms from english to this language
         """
         self.label = label
         self.abbrev = abbrev or label[:3]
@@ -160,6 +163,7 @@ class Language:
         self.backup = backup
         self.morphology = None
         self.preproc = preproc
+        self.procroot = procroot
         self.postproc = postproc
         self.postpostproc = postpostproc
         self.seg2string = seg2string
@@ -315,7 +319,8 @@ class Language:
         self.load_attempted = True
         filename = self.get_data_file()
         if not os.path.exists(filename):
-            print(Language.T.tformat('(No language data file for {})', [self], self.tlanguages))
+            if verbose:
+                print(Language.T.tformat('(No language data file for {})', [self], self.tlanguages))
         else:
             if verbose:
                 print(Language.T.tformat('Loading language data from {}', [filename], self.tlanguages))
@@ -454,6 +459,13 @@ class Language:
                     from .geez import geez2sera
                     self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev,
                                                           gemination='gem' in preproc)
+                continue
+
+            m = PROCROOT_RE.match(line)
+            if m:
+                procroot = m.group(1)
+                if procroot.startswith('def'):
+                    self.procroot = Language.dflt_procroot
                 continue
 
             m = POSTPROC_RE.match(line)
@@ -705,7 +717,28 @@ class Language:
                                punctuation=punc, characters=chars)
             self.set_morphology(morph)
 
-    def proc_feat_string(self, feat, abbrev_dict, excl_values, lex_feats, fv_dependencies):
+    @staticmethod
+    def dflt_procroot(root, fs=None, pos=None):
+        """
+        Default function for pre-processing root.
+        <sbr:A> =>  sbr, [cls=A]
+        """
+        print("Processing root {}".format(root))
+        cls = ''
+        if '<' in root:
+            root = root.replace('<', '').replace('>', '')
+        if ':' in root:
+            root, cls = root.split(':')
+        if cls:
+            if fs:
+                # a string: [...]
+                fs = "[cls={},{}]".format(cls, fs[1:-1])
+            else:
+                fs = "[cls={}]".format(cls)
+        return root, fs
+
+    def proc_feat_string(self, feat, abbrev_dict, excl_values,
+                         lex_feats, fv_dependencies):
         prefix = ''
         depend = None
         m = ABBREV_NAME_RE.match(feat)
@@ -937,6 +970,9 @@ class Language:
             # Load pre-analyzed words if any
             if ortho:
                 self.morphology[pos].make_generated()
+            # Load phonetic->orthographic dictionary if file exists
+            if ortho:
+                self.morphology[pos].set_ortho2phon()
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
                 self.morphology[pos].load_fst(gen=not segment,
@@ -1274,7 +1310,8 @@ class Language:
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None,
-                  root=True, stem=True, citation=True, gram=True, um=True,
+                  root=True, stem=True, citation=True, gram=True,
+                  um=True, gloss=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=True, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
@@ -1410,20 +1447,29 @@ class Language:
                 if len(analysis) <= 2:
                     analyses[i] = (analysis[1],)
                 else:
+                    a = {}
                     pos, root, cit, gram1, gram2, count = analysis
                     # Postprocess root if appropriate
-                    root = (root, self.proc_root(self.morphology.get(pos),
-                    root, gram2))
-                    a = [root]
+                    root = self.postproc_root(self.morphology.get(pos),
+                                              root, gram2)
+#                    a = [root]
+                    a['root'] = root
                     if citation:
-                        a.append(cit)
+#                        a.append(cit)
+                        a['lemma'] = cit
+                    if gloss:
+                        g = self.get_gloss(gram2)
+                        if g:
+                            a['gloss'] = g
                     if um and pos in self.um.hm2um:
                         ufeats = self.um.convert(gram2, pos=pos)
                         if ufeats:
                             gram2 = ufeats
-                    a.append(gram2)
+#                    a.append(gram2)
+                    a['gram'] = gram2
                     if report_freq:
-                        a.append(count)
+#                        a.append(count)
+                        a['freq'] = count
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
@@ -1448,7 +1494,7 @@ class Language:
 #        print("Form {}, analyses {}".format(form, analyses))
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
 
-    def proc_root(self, posmorph, root, fs):
+    def postproc_root(self, posmorph, root, fs):
         """
         If posmorph has a root_proc function, use it to produce
         a root.
@@ -1457,6 +1503,17 @@ class Language:
             func = posmorph.root_proc
             return func(root, fs)
         return root
+
+    def get_gloss(self, fs, lg='eng'):
+        """
+        Get the gloss (root/stem translation) in the FeatStruct
+        if there is one.
+        """
+        if 't' in fs:
+            t = fs['t']
+            if lg in t:
+                return t[lg]
+        return ''
 
     @staticmethod
     def root_from_seg(segmentation):

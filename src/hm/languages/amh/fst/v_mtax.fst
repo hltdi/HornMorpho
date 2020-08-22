@@ -9,7 +9,7 @@ light_gap -> pos         <//: >
 light -> pos  [:]
 
 # No conjunction or preposition
-pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,rl=[-p,-acc],-ye]
+pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,-ye]
 
 ## CONJUNCTIONS (+sub is redundant)
 pos   -> neg    >>cnj1<<
@@ -20,12 +20,12 @@ pos   -> obj  +irr_conj+
 # Needed because rel prefix is different in Am imperf following prep
 pos   -> rel1  >>prep<<
 # Relative with no preposition
-pos   -> rel   [:]      [pp=None,+sub,+rel,rl=[-p]]
+pos   -> rel   [:]      [pp=None,+sub,+rel]
 
 ## RELATIVE PREFIX (+sub is redundant)
-rel -> rel1    <ye:>   [+rel,pp=None,+sub,rl=[-p],+ye]
+rel -> rel1    <ye:>   [+rel,pp=None,+sub,+ye]
 # alternate prefix when nothing precedes
-rel -> rel1    [':]    [tm=imf,+rel,pp=None,+sub,rl=[-p],-ye]
+rel -> rel1    [':]    [tm=imf,+rel,pp=None,+sub,-ye]
 # second prefix for imperfective
 rel1 -> neg    <m_I:>  [tm=imf]
 rel1 -> neg    [:]     [tm=prf];[tm=prs]
@@ -50,7 +50,7 @@ sbjp0 -> sbjp1    [':]   [tm=imf,sb=[+p1],ob=[-p1]];[tm=j_i,sb=[+p1,+plr],ob=[-p
 sbjp0 -> sbjp1    [:]    [tm=j_i,sb=[-p1]];[tm=j_i,sb=[+p1,-plr]];[tm=imf,sb=[-p1]]
 # Another prefix precedes the subject prefix
 sbjp* -> sbjp1    [:]    [+sub];[+neg]
-# 1s l: jussive and imperf neg 
+# 1s l: jussive and imperf neg
 sbjp1 -> stem     [l:]   [tm=j_i,sb=[+p1,-plr],ob=[-p1]];[tm=imf,sb=[+p1,-plr],ob=[-p1],+neg]
 # y: 3sm and 3p
 sbjp1 -> stem     [y:]   [sb=[-p1,-p2,+plr]]; [sb=[-p1,-p2,-plr,-fem]]
@@ -67,7 +67,7 @@ sbjp_n -> stem    [!:]
 # Irregular
 stem -> sbjs    +irr_stem+
 # Regular
-stem -> sbjs    >>v_stem<<  
+stem -> sbjs    >>v_stem<<
 
 ### SUBJECT SUFFIXES AND OBJECT INFIXES
 sbjs -> sbjs_i        [:]    [tm=imf];[tm=j_i]
@@ -174,9 +174,9 @@ negs_aux -> noaux  [:]        [ax=None]
 # NEGATIVE
 noaux -> cj2  <Im:>      [+neg,-sub,tm=prf];[+neg,-sub,tm=imf];[+neg,-sub,tm=prs]
 # ACCUSATIVE
-noaux -> cj2  <In:>     [+rel,+acc,pp=None,rl=[-p,+acc]]
+noaux -> cj2  <In:>     [+rel,+acc,pp=None]
 # No negs_aux: juss_imp; imprf, prs, or prf: -neg,-ax,-acc; +neg,-ax,+sub,-acc
-noaux -> cj2  [:]       [tm=j_i]; [tm=ger]; [tm=imf,-neg,-acc,rl=[-acc]]; [tm=imf,+neg,+sub,-acc,rl=[-acc]]; [tm=prs,-neg,-acc,rl=[-acc]]; [tm=prs,+neg,+sub,-acc,rl=[-acc]]; [tm=prf,-neg,-acc,rl=[-acc]]; [tm=prf,+neg,+sub,-acc,rl=[-acc]]
+noaux -> cj2  [:]       [tm=j_i]; [tm=ger]; [tm=imf,-neg,-acc]; [tm=imf,+neg,+sub,-acc]; [tm=prs,-neg,-acc]; [tm=prs,+neg,+sub,-acc]; [tm=prf,-neg,-acc]; [tm=prf,+neg,+sub,-acc]
 
 ## CONJUNCTIVE SUFFIXES
 cj2 -> end     >>cnj2<<

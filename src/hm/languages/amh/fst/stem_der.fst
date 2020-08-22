@@ -5,7 +5,9 @@
 ##   sbr, sb_r, sabr, sbsb, sbasb, sbrbr, sbrabr
 ##   qr*, slc*
 
--> start
+-> start0
+
+start0 -> start [:] [vc=ps,+ps];[vc=tr,+tr];[vc=cs,+cs];[vc=smp,+smp];[pos=n_dv,v=man]
 
 ## CCC
 start -> 1a.3 [X/L]

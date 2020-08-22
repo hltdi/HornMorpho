@@ -56,22 +56,27 @@ class UniMorph:
         """
         umfeats = set(um.split(';'))
         posmap = self.um2hm.get(pos)
+#        print("Converting {} to HM feats for {}".format(umfeats, pos))
         fs = []
         if not posmap:
-            print("Warning: no UM2HM map for {}".format(pos))
+#            print("Warning: no UM2HM map for {}".format(pos))
             return
-        for um, map in posmap:
+        for u, map in posmap:
+#            print(" {}: {}".format(u, map))
             matched = False
-            if isinstance(um, tuple):
-                if umfeats.issuperset(um):
+            if isinstance(u, tuple):
+                if umfeats.issuperset(u):
+#                    print("  {} within {}".format(u, umfeats))
                     matched = True
-            elif um in umfeats:
+            elif u in umfeats:
+#                print("  {} in {}".format(u, umfeats))
                 matched = True
             if matched:
                 # No guidelines how to choose so pick first one
                 map1 = map[0]
+#                print("  Adding {}".format(map1))
                 fs.append(map1)
-        return fs
+        return ','.join(fs)
 
     @staticmethod
     def convert1(fs, feature, valuemap, matched_feats=None, verbosity=1):
@@ -114,9 +119,9 @@ class UniMorph:
                     if not fs.get(feat):
                         found = False
                         break
-            else:
-                if not fs.get(feats):
-                    found = False
+            elif feats != None and not fs.get(feats):
+                # None is default
+                found = False
             if found:
                 return um
         return False
@@ -137,7 +142,7 @@ class UniMorph:
                 if verbosity:
                     print(" Rejecting because of previous match: {}".format(unless))
                 return False
-        fsvalues = tuple([fs.get(f, 'None') for f in features])
+        fsvalues = tuple([fs.get(f, None) for f in features])
         if verbosity:
             print(" FS values: {}".format(fsvalues))
         return valuemap.get(fsvalues, False)
@@ -223,7 +228,7 @@ class UniMorph:
                     # item is a list of pairs:
                     #   boolean_feats, UM feat
                     for feats1, umfeat in item:
-                        if feats1 == 'None':
+                        if feats1 == None:
                             fstring = ''
                         elif isinstance(feats1, str):
                             fstring = "{}=[+{}]".format(feat, feats1)
@@ -328,6 +333,10 @@ class UniMorph:
                                     for ii, mm in enumerate(mapv):
                                         if mm == 'None':
                                             mapv[ii] = None
+                                        elif mm == 'False':
+                                            mapv[ii] = False
+                                        elif mm == 'True':
+                                            mapv[ii] = True
                                     value[i] = (tuple(mapv), uv)
                             value = dict(value)
                         if ',' in feat:
@@ -353,6 +362,8 @@ class UniMorph:
 #                        print("Matched subfeat {}: {}".format(feat, value))
                         if ',' in feat:
                             feat = tuple(feat.split(','))
+                        elif feat == 'None':
+                            feat = None
                         current_feats.append((feat, value))
                         continue
                     print("Failed to match line {}".format(line))
