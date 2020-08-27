@@ -170,7 +170,7 @@ ql_T_
 qom_
 qr_
 qrff_
-quC_
+quC_   ''  [t=[eng="sit"]]
 quT_r_
 quTiT
 qum_T_
@@ -240,7 +240,7 @@ zew_
 zew_//zew_
 zg_
 zm_
-zq_
+zq_       ''   [t=[eng="be quiet"]]
 zq_//zq_
 zr_
 zrgf_

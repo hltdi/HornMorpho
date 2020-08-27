@@ -115,7 +115,7 @@ def seg_file(language, infile, outfile=None,
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
-              dont_guess=False, cache='',
+              dont_guess=True, cache='',
               rank=True, freq=False, nbest=5, um=True,
               raw=True):
     '''Analyze a single word, trying all available analyzers, and print out

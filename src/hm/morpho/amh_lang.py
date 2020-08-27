@@ -51,10 +51,13 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     result = root
     # Unfreeze the feature structure
     fs = fs.unfreeze()
+    fsa, fsv = fs.get('as'), fs.get('vc')
     # Update the feature structure to incorporate default (with or without vc and as)
     fs.update(AMH.morphology['v'].defaultFS)
     # For non-passive te- verbs, te- is citation form
-    if fs.get('smp') == False:
+    if fs.get('lexav') == True:
+        fs.update({'as': fsa, "vc": fsv})
+    elif fs.get('smp') == False:
         fs.update({'vc': 'ps'})
     # Refreeze the feature structure
     fs.freeze()

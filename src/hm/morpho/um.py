@@ -87,7 +87,7 @@ class UniMorph:
         in case there is an unless constraint.
         """
         if verbosity:
-            print("Checking {} : {}".format(feature, valuemap))
+            print(" convert1; checking {} : {}".format(feature, valuemap))
         if '!' in valuemap:
             unless = valuemap['!']
             if matched_feats and unless in matched_feats:
@@ -111,7 +111,7 @@ class UniMorph:
         feature could be a tuple of features.
         """
         if verbosity:
-            print("Checking {}".format(featmap))
+            print(" converb_bool; checking {}".format(featmap))
         for feats, um in featmap:
             found = True
             if isinstance(feats, tuple):
@@ -135,7 +135,7 @@ class UniMorph:
         to a FeatStruc.
         """
         if verbosity:
-            print("Checking {} : {}".format(features, valuemap))
+            print(" convert_mult; checking {} : {}".format(features, valuemap))
         if '!' in valuemap:
             unless = valuemap['!']
             if matched_feats and unless in matched_feats:
@@ -145,7 +145,13 @@ class UniMorph:
         fsvalues = tuple([fs.get(f, None) for f in features])
         if verbosity:
             print(" FS values: {}".format(fsvalues))
-        return valuemap.get(fsvalues, False)
+        ufeat = valuemap.get(fsvalues, False)
+        if verbosity:
+            if not ufeat:
+                print(" No UM feat found")
+            else:
+                print(" Found UM feat {}".format(ufeat))
+        return ufeat
 
     def convert(self, fs, pos='n', verbosity=0):
         """
@@ -157,15 +163,18 @@ class UniMorph:
 #        print("Using psh2u for {}".format(pos))
         if posh2u:
             for f, v in posh2u:
+                if verbosity:
+                    print("CHECKING {} : {}".format(f, v))
+                    print(" FS: {}".format(fs.__repr__()))
+                    print(" MATCHED FEATS: {}".format(feats))
                 if isinstance(f, tuple):
                     # we're checking multiple features
                     multmatch = UniMorph.convert_mult(fs, f, v,
-                    verbosity=verbosity)
+                    feats, verbosity=verbosity)
                     if multmatch:
                         feats.extend(f)
                         um.append(multmatch)
-                    else:
-                        continue
+                    continue
                 if isinstance(v, list):
                     # Subfeats are specified
 #                    print("ffss for {}: {}".format(f, ffss.__repr__()))
@@ -178,7 +187,7 @@ class UniMorph:
                         feats.append(f)
                     continue
                 if isinstance(v, dict):
-                    # Dict gives speficic values for f
+                    # Dict gives specific values for f
                     uv = UniMorph.convert1(fs, f, v, feats,
                     verbosity=verbosity)
                     if uv:
@@ -339,14 +348,14 @@ class UniMorph:
                                             mapv[ii] = True
                                     value[i] = (tuple(mapv), uv)
                             value = dict(value)
-                        if ',' in feat:
-                            feat = tuple(feat.split(','))
-                        elif '!' in feat:
+                        if '!' in feat:
                             feat, unless = feat.split('!')
                             if isinstance(value, dict):
                                 value['!'] = unless
                             else:
                                 value = {'!': unless, '': value}
+                        if ',' in feat:
+                            feat = tuple(feat.split(','))
 #                        print("Matched feat {}: {}".format(feat, value))
                         if current_supfeat:
                             current_pos_list.append((current_supfeat, current_feats))

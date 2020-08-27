@@ -26,8 +26,10 @@ neg:: NEG
 rel:: *RELC;NFIN
 tm:: j_i:IMP; imf:IPFV; prf:PFV
 tm,ax:: imf,None:NFIN
-as,vc:: it,smp:ITER; it,ps:RECP; smp,cs:CAUS
-as,vc,smp:: smp,ps,None:PASS
+as,vc,lexav:: it,smp,None:ITER; it,ps,None:RECP; smp,cs,None:CAUS
+as,vc,lextr:: smp,tr,True:CAUS
+as,vc,cls:: smp,tr,B:CAUS
+as,vc,smp!as:: smp,ps,None:PASS; smp,tr,None:TR; smp,tr,False:TR
 sb::
   p1,plr: 1;PL
   p2,plr: 2;PL
@@ -68,7 +70,7 @@ ob::
 def!ob:: DEF
 pp:: Iske:TERM; sIle:PRP; Inde:EQTV; wede:ALL; ke:ABL; be:INS; le:DAT; I:AT
 cj2:: m:LGSPEC1; s:LGSPEC2
-cj1:: sI:LGSPEC3; bI:COND; IndI:PURP; lI:PURP; IskI:TERM
+cj1:: sI:*TEMP; bI:COND; IndI:PURP; lI:PURP; IskI:TERM
 
 POS cop
 pos:: cop:V

@@ -1447,35 +1447,44 @@ class Language:
                 if len(analysis) <= 2:
                     analyses[i] = (analysis[1],)
                 else:
-                    a = {}
-                    pos, root, cit, gram1, gram2, count = analysis
-                    # Postprocess root if appropriate
-                    root = self.postproc_root(self.morphology.get(pos),
-                                              root, gram2)
-#                    a = [root]
-                    a['root'] = root
-                    if citation:
-#                        a.append(cit)
-                        a['lemma'] = cit
-                    if gloss:
-                        g = self.get_gloss(gram2)
-                        if g:
-                            a['gloss'] = g
-                    if um and pos in self.um.hm2um:
-                        ufeats = self.um.convert(gram2, pos=pos)
-                        if ufeats:
-                            gram2 = ufeats
-                            a['um'] = gram2
-#                    a.append(gram2)
-                    if not um:
-                        a['gram'] = gram2
-                    if report_freq:
-#                        a.append(count)
-                        a['freq'] = count
+                    a = self.finalize_anal(analysis, citation=citation, um=um,
+                                           gloss=gloss, report_freq=report_freq)
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
         return analyses
+
+    def finalize_anal(self, anal, citation=True, um=True, gloss=True,
+                      report_freq=False):
+        """
+        Create dict with analysis.
+        """
+        a = {}
+        pos, root, cit, gram1, gram2, count = anal
+        # Postprocess root if appropriate
+        root = self.postproc_root(self.morphology.get(pos),
+                                  root, gram2)
+        #                    a = [root]
+        a['root'] = root
+        if citation:
+        #                        a.append(cit)
+            a['lemma'] = cit
+        if gloss:
+            g = self.get_gloss(gram2)
+            if g:
+                a['gloss'] = g
+        if um and pos in self.um.hm2um:
+            ufeats = self.um.convert(gram2, pos=pos)
+            if ufeats:
+                gram2 = ufeats
+                a['um'] = gram2
+        #                    a.append(gram2)
+        if not um:
+            a['gram'] = gram2
+        if report_freq:
+        #                        a.append(count)
+            a['freq'] = count
+        return a
 
     def simp_anal(self, analysis, postproc=False, segment=False):
         '''Process analysis for unanalyzed cases.'''
