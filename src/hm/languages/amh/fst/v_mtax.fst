@@ -1,6 +1,6 @@
 -> start
 
-## Set the part of speecn
+## Set the part of speech
 start -> light   [:]     [pos=v]
 
 ## Light verbs

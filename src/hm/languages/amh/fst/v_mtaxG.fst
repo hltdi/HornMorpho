@@ -1,6 +1,6 @@
 -> start
 
-## Set the part of speecn
+## Set the part of speech
 start -> pos   [:]     [pos=v]
 
 # No conjunction or preposition

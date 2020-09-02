@@ -7,36 +7,43 @@ Z ž ʒ
 N ň ɲ
 j ǰ ʤ
 y y j
-C č' ʧ'
-T t'
-S s'
-P p'
+C č̣ ʧ'
+T ṭ t'
+S ṣ s'
+P ṗ p'
 q q k'
 ' ' ʔ
 ` ʕ
-H ħ
+H h
 bW bw
 cW čw ʧw
-CW č'w ʧ'w
+CW č̣w ʧ'w
 dW dw
 fW fw
-gW gw
-hW hW
-HW ħw
+gW gᵂ
+hW hᵂ
+HW hᵂ
 jW ǰw ʤw
-kW kw
+kW kᵂ
 lW lw
 mW mw
 nW nw
 NW ňw ɲw
 pW pw
-PW p'w
+PW ṗw p'w
+qW qᵂ k'ᵂ
 rW rw
 sW sw
-SW s'w
+SW ṣ s'w
 tW tw
-TW t'w
+TW ṭw t'w
 vW vw
 xW šw ʃw
 zW zw
 ZW žw ʒw
+^h h
+^hW hᵂ
+^s s
+^S ṣ s'
+VV a e i o u E I
+EE I

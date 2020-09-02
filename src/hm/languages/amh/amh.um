@@ -1,7 +1,7 @@
 POS n
-v:: agt:*N_AGT; inf:V.MSDR; ins:*N_INS; man:*N_MAN
-pos!v:: n:N; adj:ADJ; nadj:N; nm_pl:PROPN; nm_prs:PROPN
-pp:: Iske:TERM; sIle:PRP; Inde:EQTV; wede:ALL; ke:ABL; be:INS; le:DAT; I:AT
+v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
+pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
+pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 plr:: PL
 acc:: ACC
 gen:: GEN
@@ -15,21 +15,30 @@ poss::
   expl,fem: PSS3SF
   expl: PSS3SM
 def!poss:: DEF
-cnf:: m:LGSPEC1; s:LGSPEC2
+cnf:: m:LGSPEC1;; s:LGSPEC2
 # only relevant for deverbal nouns
-as,vc:: it,smp:ITER; it,ps:RECP; smp,cs:CAUS; smp,ps:PASS
+as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v
 tm,ax:: ger,None:V.CVB
 pos!tm:: v:V
 neg:: NEG
 rel:: *RELC;NFIN
-tm:: j_i:IMP; imf:IPFV; prf:PFV
-tm,ax:: imf,None:NFIN
-as,vc,lexav:: it,smp,None:ITER; it,ps,None:RECP; smp,cs,None:CAUS
+tm:: j_i:IMP;; imf:IPFV;; prf:PFV
+tm,ax:: imf,None:NFIN;; ger,al:PRF
+## different ac,vc and lexicalization combinations
+# CAUS of base form
+as,vc,lexav:: smp,cs,None:CAUS
 as,vc,lextr:: smp,tr,True:CAUS
+# as=rc
+as,vc,lexrp,lexav:: rc,tr,True,None:TR;; rc,ps,None,None:*CON;; rc,tr,None,None:*CON;TR
+# as=it; two lines to make it more readable
+as,vc,lexip,lexav:: it,tr,True,None:TR;; it,cs,True,None:CAUS;; it,smp,None,None:ITER
+as,vc,lexip,lexav::  it,ps,None,None:RECP;; it,tr,None,None:RECP;CAUS;; it,cs,None,None:RECP;CAUS
+# for B verbs, vc=tr is CAUS because base is already TR
 as,vc,cls:: smp,tr,B:CAUS
-as,vc,smp!as:: smp,ps,None:PASS; smp,tr,None:TR; smp,tr,False:TR
+# PASS and TR: verbs with base and no derived lexical entries
+as,vc,smp!as:: smp,ps,None:PASS;; smp,tr,None:TR;; smp,tr,False:TR
 sb::
   p1,plr: 1;PL
   p2,plr: 2;PL
@@ -68,13 +77,13 @@ ob::
   expl,fem: ARGAC3SF
   expl: ARGAC3SM
 def!ob:: DEF
-pp:: Iske:TERM; sIle:PRP; Inde:EQTV; wede:ALL; ke:ABL; be:INS; le:DAT; I:AT
-cj2:: m:LGSPEC1; s:LGSPEC2
-cj1:: sI:*TEMP; bI:COND; IndI:PURP; lI:PURP; IskI:TERM
+pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
+cj2:: m:LGSPEC1;; s:LGSPEC2
+cj1:: sI:*TEMP;; bI:COND;; IndI:PURP;; lI:PURP;; IskI:TERM
 
 POS cop
 pos:: cop:V
-tm:: prs:PRS; pst:PST
+tm:: prs:PRS;; pst:PST
 neg:: NEG
 sb::
   p1,plr: 1;PL

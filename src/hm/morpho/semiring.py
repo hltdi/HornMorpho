@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018, 2019.
+    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ class FSSet(set):
         if len(items) > 0 and isinstance(items[0], (list, set)):
             items = items[0]
         if not isinstance(items, set):
-            items = [(FeatStructParser().parse(i) if (isinstance(i, str) or isinstance(i, str)) else i) for i in items]
+            items = [(FeatStructParser().parse(i) if isinstance(i, str) else i) for i in items]
             # Freeze each feature structure
             for index, itm in enumerate(items):
                 if isinstance(itm, FeatStruct):
@@ -176,7 +176,7 @@ class FSSet(set):
         if not fv_split:
             return fv
         res = FSSet.split_fval(fv_split[0])
-        if len(fv_split) > 1:        
+        if len(fv_split) > 1:
             for fv in fv_split[1:]:
 #                print('res', res, 'fv', fv)
                 res = FSSet.incorp_fval(res, fv)
@@ -347,7 +347,7 @@ class FSSet(set):
             else:
                 diffs[f] = values
         return shared, diffs
-            
+
 ## Feature structure that unifies with anything.
 TOP = FeatStruct('[]')
 TOP.freeze()

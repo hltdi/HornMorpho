@@ -42,10 +42,10 @@ poss -> acc       [h:]     [+def,poss=[-p1,+p2,-plr,-fem,+expl]]
 poss -> acc       [x:]     [+def,poss=[-p1,+p2,-plr,+fem,+expl]]
 poss -> acc       [u:]     [+def,poss=[-p1,-p2,-plr,-fem,+expl]];[+def,poss=[-expl],-fem,-prp]
 # Leave out this option for generation
-poss -> acc      <itu:>    [+def,poss=[-expl],+fem,+itu,-prp]
+#poss -> acc      <itu:>    [+def,poss=[-expl],+fem,+itu,-prp]
 poss -> acc      <wa:>     [+def,poss=[-p1,-p2,-plr,+fem,+expl],-itu];[+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+def,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
 poss -> acc     <ac_n:>    [+def,poss=[+p1,-p2,+plr,+expl]]
-poss -> acc     <ac_hu:>   [+def,poss=[-p1,+p2,+plr,+expl]]
+poss -> acc     <ac_hW:>   [+def,poss=[-p1,+p2,+plr,+expl]]
 poss -> acc     <ac_ew:>   [+def,poss=[-p1,-p2,+plr,+expl]]
 poss -> acc       <wo:>    [+def,poss=[-p1,+p2,-plr,+frm,+expl]]
 

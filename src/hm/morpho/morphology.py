@@ -1014,7 +1014,7 @@ class POSMorphology:
                 init_weight = FSSet(init_weight)
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
-                                  init_weight=init_weight, result_limit=20 if guess else 5,
+                                  init_weight=init_weight, result_limit=40 if guess else 30,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit)
             if sep_anals:
                 anals = self.separate_anals(anals)
@@ -1101,7 +1101,8 @@ class POSMorphology:
     def gen(self, root, features=None, from_dict=False,
             postproc=False, update_feats=None,
             guess=False, phon=False, segment=False, ortho=False,
-            fst=None, sort=True, um='',
+            fst=None, sort=True,
+#            um='',
             print_word=False, print_prefixes=None,
             interact=False, timeit=False, timeout=100, trace=False):
         """Generate word from root and features."""
@@ -1111,13 +1112,13 @@ class POSMorphology:
             features = self.fv_menu()
         else:
             features = features or self.defaultFS
-        if um:
-            lang_um = self.language.um
-            if lang_um:
-                update_feats = lang_um.convert_um(self.pos, um)
-            if not update_feats:
-#                print("Couldn't convert UM features {}".format(um))
-                return []
+#         if um:
+#             lang_um = self.language.um
+#             if lang_um:
+#                 update_feats = lang_um.convert_um(self.pos, um)
+#             if not update_feats:
+# #                print("Couldn't convert UM features {}".format(um))
+#                 return []
         if update_feats:
             if isinstance(update_feats, (list, set)):
                 fss = self.update_FSS(FeatStruct(features), update_feats)
@@ -1134,6 +1135,7 @@ class POSMorphology:
             root = anal[0]
             features = anal[1]
         elif fss:
+#            print("gen: FSS {}".format(fss.__repr__()))
             features = fss
         else:
             features = FSSet.cast(features)
@@ -1156,10 +1158,23 @@ class POSMorphology:
                 # For languages with non-roman orthographies
                 for gen in gens:
                     # Replace the wordforms with postprocessed versions
-                    gen[0] = self.language.postprocess(gen[0])
+                    gen[0] = self.finalize_output(gen[0])
             return gens
         elif trace:
             print('No generation FST loaded')
+
+    def finalize_output(self, word, ipa=False):
+        """
+        Finalize output: orthographic|phonetic.
+        """
+        orthophon = self.language.postprocess(word)
+        # word is presumably in phonetic representation; convert
+        # it to conventional representation
+        if '|' in orthophon:
+            ortho, phon = orthophon.split('|')
+            phon = self.language.convert_phones(word, ipa=ipa)
+            return ortho + "|" + phon
+        return orthophon
 
     def segment(self, word, seg, feature, value, new_value=None):
         """If feature has value in word, segment the word into seg
@@ -1212,16 +1227,21 @@ class POSMorphology:
     def update_FSS(self, fs1, fss2):
         """
         fs1: a FeatStruct, usually the defaultFS for a POS.
-        fss2: a *list* of unfrozen FeatStructs.
+        fss2: a *list* of unfrozen FeatStructs or a FSSet
+         or a list of FeatStruct strings.
         returns the result of adding features in fs1 to each
         FS in fss2, cast to a FSSet.
         """
-#        print('updateFSS: {}, {}'.format(fs1.__repr__(), fss2.__repr__()))
+#        print('update FSS')
         if isinstance(fss2, FSSet):
             fss2 = fss2.unfreeze()
+        fss2upd = set()
         for fs in fss2:
+            if isinstance(fs, str):
+                fs = FeatStruct(fs)
             if fs.frozen():
                 fs = fs.unfreeze()
+#            print(" fss2 {}".format(fs.__repr__()))
             # an FS in the FSSet
             for key, value in fs1.items():
                 value2 = fs.get(key)
@@ -1236,7 +1256,11 @@ class POSMorphology:
                             value2[subkey] = subvalue
                         # otherwise keep the original value
             fs.freeze()
-        return FSSet(fss2)
+#            print(" fss2a after {}".format(fs.__repr__()))
+            fss2upd.add(fs)
+        fss2 = FSSet(fss2upd)
+#        print("fss2 {}".format(fss2.__repr__()))
+        return fss2
 
     def update_FS(self, fs, features, top=True):
         """Add or modify features (a FS or string) in fs."""
@@ -1305,7 +1329,7 @@ class POSMorphology:
 #        print('FS', fs.__repr__())
         return fs
 
-    def ortho2phon(self, form, guess=False, rank=False):
+    def o2p(self, form, guess=False, rank=False):
         """Convert orthographic input to phonetic form.
         If rank is True, rank the analyses by the frequency of their roots."""
         output = {}
@@ -1318,8 +1342,10 @@ class POSMorphology:
         if not gen_fst:
             return
         analyses = self.anal(form, guess=guess)
+#        print("Analyses {}".format(analyses))
         root_count = 0
         if analyses:
+#            print("Analyses: {}".format(analyses))
             for root, anals in analyses:
                 for anal in anals:
                     if rank:
@@ -1331,6 +1357,7 @@ class POSMorphology:
                     out = self.gen(root, features=anal, phon=True, fst=gen_fst)
                     for o in out:
                         word = o[0]
+                        word = self.language.convert_phones(word)
                         output[word] = output.get(word, []) + [(round(root_count), self.pos, root, None, anal)]
         return output
 
@@ -1448,23 +1475,6 @@ class POSMorphology:
             # Citation form...
         s += self.pretty_fs(fs, webdict=webdict)
         return s
-
-#    def pretty_anal(self, anal, webdict=None):
-#        root = anal[1]
-#        fs = anal[3]
-#        # Leave out the part of speech for now
-#        s = self.language.T.tformat('{} = {}\n{} = <{}>\n',
-#                                    ['POS', self.name, 'root', root],
-#                                    self.language.tlanguages)
-#        if webdict != None:
-#            webdict['POS'] = self.name
-#            if 'pos' not in anal and self.pos != 'all':
-#                # we don't want "pos: all" for Qu, for example
-#                webdict['pos'] = self.pos
-#            webdict['root'] = root
-#            # Citation form...
-#        s += self.pretty_fs(fs, webdict=webdict)
-#        return s
 
     def print_anal(self, anal, file=sys.stdout):
         '''Print out an analysis.'''

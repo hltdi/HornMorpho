@@ -1,5 +1,5 @@
 """
-This file is part of HornMorpho, which is a project of PLoGS
+This file is part of HornMorpho, which is a project of PLoGS.
 
     Copyleft 2020. Michael Gasser.
 
@@ -19,7 +19,7 @@ This file is part of HornMorpho, which is a project of PLoGS
 ------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
-Conversion of HornMorpho features to UniMorph features.
+Conversion of HornMorpho features to UniMorph features and vice versa.
 
 -- 2020-08-14
    Created.
@@ -50,33 +50,60 @@ class UniMorph:
     def __repr__(self):
         return "UM:{}".format(self.language.abbrev)
 
-    def convert_um(self, pos, um):
+    def convert_um(self, pos, um, verbosity=0):
         """
         Convert a UM feature string to an HM FeatStruct.
         """
         umfeats = set(um.split(';'))
         posmap = self.um2hm.get(pos)
-#        print("Converting {} to HM feats for {}".format(umfeats, pos))
+        if verbosity:
+            print("Converting {} to HM feats for {}".format(umfeats, pos))
         fs = []
+        # UM features already matched; needed to prevent subsets
+        # of matched features from matching
+        matched_um = []
         if not posmap:
 #            print("Warning: no UM2HM map for {}".format(pos))
             return
         for u, map in posmap:
-#            print(" {}: {}".format(u, map))
+            if matched_um:
+                tupu = (u,) if isinstance(u, str) else u
+                if any([(mu.issuperset(tupu)) for mu in matched_um]):
+                    if verbosity:
+                        print(" Skipping {}".format(u))
+                    continue
             matched = False
             if isinstance(u, tuple):
                 if umfeats.issuperset(u):
-#                    print("  {} within {}".format(u, umfeats))
+                    if verbosity:
+                        print("  {} within {}".format(u, umfeats))
                     matched = True
             elif u in umfeats:
-#                print("  {} in {}".format(u, umfeats))
+                if verbosity:
+                    print("  {} in {}".format(u, umfeats))
                 matched = True
             if matched:
                 # No guidelines how to choose so pick first one
-                map1 = map[0]
-#                print("  Adding {}".format(map1))
-                fs.append(map1)
-        return ','.join(fs)
+                if not any(map):
+                    # map could be empty if not default features are
+                    # to change
+                    continue
+                if verbosity:
+                    print(" Found maps {}".format(map))
+                mu = set(list(u)) if isinstance(u, str) else set(u)
+                matched_um.append(mu)
+                if fs:
+                    newfs = []
+                    for map1 in map:
+                        for ffss in fs:
+                            newfs.append(ffss + ',' + map1)
+                    fs = newfs
+                else:
+                    fs = map
+        fs = ["[{}]".format(f) for f in fs]
+        if verbosity:
+            print("FS: {}".format(fs))
+        return fs
 
     @staticmethod
     def convert1(fs, feature, valuemap, matched_feats=None, verbosity=1):
@@ -219,14 +246,18 @@ class UniMorph:
         else:
             dct[feat] = [value]
 
-    def reverse(self):
+    def reverse(self, verbosity=0):
         """
         Reverse the hm2um list to create a um2hm dict.
         """
+        if verbosity:
+            print("Reversing hm2um list")
         u2h = {}
         for pos, maps in self.hm2um.items():
             posdict = {}
             for feat, item in maps:
+                if verbosity:
+                    print(" feat {}, item {}".format(feat, item))
                 if isinstance(item, str):
                     # item is a UM feature which applies
                     # if feat is True
@@ -249,13 +280,29 @@ class UniMorph:
                 if isinstance(item, dict):
                     # item is a dict of feat value(s), UM feats
                     for values, umfeat in item.items():
+                        if verbosity:
+                            print("  values {}, umfeat {}".format(values, umfeat))
                         if values == '!':
                             # Ignore unless constraint?
                             continue
+                        if ';' in umfeat:
+                            umfeat = tuple(umfeat.split(';'))
                         if isinstance(feat, tuple):
                             fvs = list(zip(feat, values))
-                            fvs = ["{}={}".format(f, v) for f, v in fvs]
-                            fvstring = ','.join(fvs)
+                            fvlist = []
+                            for f, v in fvs:
+                                if v == True:
+                                    fvlist.append("+{}".format(f))
+                                elif v == False:
+                                    fvlist.append("-{}".format(f))
+                                elif v == None:
+                                    fvlist.append("{}=None".format(f))
+                                else:
+                                    fvlist.append("{}={}".format(f, v))
+#                            fvs = ["{}={}".format(f, v) for f, v in fvs]
+                            fvstring = ','.join(fvlist)
+                            if verbosity:
+                                print("  fvstring {}".format(fvstring))
                         elif values == '':
                             fvstring = "+" + feat
                         else:
@@ -332,7 +379,7 @@ class UniMorph:
 #                        print("Matched feat {}".format(feat))
                         unless = ''
                         if ':' in value:
-                            value = value.split(';')
+                            value = value.split(';;')
                             value = [fv.strip().split(':') for fv in value]
 #                            print("value3 {}".format(value))
                             # values could be a list corresponding to feat list

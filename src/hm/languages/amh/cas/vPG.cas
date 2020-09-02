@@ -12,6 +12,7 @@ cascade phon = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
 # 3: 3sm object suffix
 # 7: k/h subject suffix
 # 8: palatalization
+# 9: 1s prf suffix: kW, hW
 
 ## Vowel stringsets
 V = {a, e, E, i, I, o, u}
@@ -60,7 +61,7 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 # "Sibilants"
 9 = {z, Z, S, x}
 ## Non-phonetic/orthographic characters
-% = {_, /, !, |, D, 1, 3, 7, 8}
+% = {_, /, !, |, D, 1, 3, 7, 8, 9}
 
 # 0
 # Delete I
@@ -97,7 +98,7 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 # 13 Assimilate g, q to following k; T to following t
 >CC_assPG<
 # 14 -ku/-k
->khG<
+>khPG<
 # 15 3sm object
 >3sm<
 # 16 gemination of t- and n-: allow for both possibilities

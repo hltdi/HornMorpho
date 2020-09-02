@@ -15,8 +15,8 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 >epen2<
 >epen1<
 # 3 ku+ -> kW, etc.
->Ku<
+#>Ku_cop<
 # 4 Simplify consonants: ^s -> s, etc.
->simpC<
+#>simpC<
 # 5 copula morphotactics
->copula<
+>copulaG<

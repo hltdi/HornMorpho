@@ -3,7 +3,7 @@ This file is part of morfo, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018.
+    Copyleft 2011, 2012, 2013, 2016, 2018, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -45,8 +45,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
     citation = ''
-    if root == 'al_e':
-        return "'ale"
+    if root == 'hl_w':
+        return "አለ"
     # Return root if no citation is found
     result = root
     # Unfreeze the feature structure
@@ -56,8 +56,16 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     fs.update(AMH.morphology['v'].defaultFS)
     # For non-passive te- verbs, te- is citation form
     if fs.get('lexav') == True:
+        # Lexical entry with explicit as, vc features
         fs.update({'as': fsa, "vc": fsv})
+    elif fs.get('lexip') == True:
+        # Lexical entry for as=it,vc=ps and as=it,vc=tr
+        fs.update({'as': 'it', 'vc': 'ps'})
+    elif fs.get('lexrp') == True:
+        # Lexical entry for as=rc, vc=ps and as=rc,vc=tr
+        fs.update({'as': 'rc', 'vc': 'ps'})
     elif fs.get('smp') == False:
+        # No vc=smp form, vc=ps is base/citation form
         fs.update({'vc': 'ps'})
     # Refreeze the feature structure
     fs.freeze()
@@ -65,12 +73,14 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     if ' ' in root:
         # This is a light verb, just generate the actual verb
         root_split = root.split()
-        citation = AMH.morphology['v'].gen(root_split[-1], fs, from_dict=False, guess=guess)
+        citation = AMH.morphology['v'].gen(root_split[-1], fs, from_dict=False,
+                                           phon=True, postproc=False, guess=guess)
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
 #        print("Generating citation from {}".format(fs.__repr__()))
-        citation = AMH.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
+        citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
+                                           phon=True, postproc=False, guess=guess)
         if citation:
             result = citation[0][0]
     if not citation:
@@ -111,17 +121,20 @@ def webfv(webdict, feature, value):
 
 def cop_anal2string(anal, webdict=None):
     '''Convert a copula analysis to a string.
-
-    anal is ("cop", "new", "new", gramFS)
     '''
     s = 'POS: copula'
+    root = anal[1]
+    citation = anal[2]
+    fs = anal[3]
     webfv(webdict, 'POS', 'copula')
     webfv(webdict, 'pos', 'cop')
     webfv(webdict, 'root', "ነ-")
-    if anal[1]:
-        s += ', root: <' + anal[1] + '>'
+#    root = anal.get('root')
+#    if root:
+#        s += ', root: ' + root
+    s += ', lemma: ነው/nǝw, gloss: be'
     s += '\n'
-    fs = anal[3]
+#    fs = anal.get('gram')
     if fs:
         sb = fs['sb']
         s += ' subj:'
@@ -141,11 +154,14 @@ def n_anal2string(anal, webdict=None):
 
     anal is ("(*)n", root, citation, gramFS)
     '''
+    pos = anal[0]
     root = anal[1]
     citation = anal[2]
     fs = anal[3]
+    root = AMH.postproc_root(AMH.morphology.get('n'), root, fs)
     deverbal = fs and fs.get('v')
-    POS = '?POS: ' if '?' in anal[0] else 'POS: '
+    POS = "POS: "
+#    POS = '?POS: ' if '?' in anal[0] else 'POS: '
     s = POS
     webfv(webdict, 'POS', 'noun')
     webfv(webdict, 'pos', 'n')
@@ -163,23 +179,32 @@ def n_anal2string(anal, webdict=None):
             webfv(webdict, 'deverbal', 'instrumental')
             s += 'instrumental noun'
         if root:
-            s += ', root: <' + root + '>'
+            s += ', root: ' + root
             if citation:
                 root = "{}({})".format(root, citation)
             webfv(webdict, 'root', root)
         if citation:
-            s += ', citation: ' + citation
+            s += ', lemma: ' + citation
+        if 't' in fs:
+            if 'eng' in fs['t']:
+                gloss = fs['t']['eng']
+                s += ', gloss: ' + gloss
 #            webfv(webdict, 'citation', citation)
     else:
         s += 'noun'
-        rc = geezify(root)
+#        rc = geezify(root)
+        rc = root
         if citation:
             rc = "{}({})".format(root, citation)
         webfv(webdict, 'root', rc)
         if citation:
-            s += ', stem: ' + citation
+            s += ', lemma: ' + citation
         elif root:
-            s += ', stem: ' + root
+            s += ', lemma: ' + root
+        if 't' in fs:
+            if 'eng' in fs['t']:
+                gloss = fs['t']['eng']
+                s += ', gloss: ' + gloss
     s += '\n'
     if fs:
         poss = fs.get('poss')
@@ -191,7 +216,6 @@ def n_anal2string(anal, webdict=None):
         # For agent, infinitive, instrumental, give aspect and voice unless both are simple
         asp = fs.get('as')
         vc = fs.get('vc')
-        rl = fs.get('rl')
         any_gram = False
         if deverbal and asp == 'it':
             gram += ' iterative'
@@ -238,18 +262,18 @@ def n_anal2string(anal, webdict=None):
             any_gram = True
             gram += ' distrib(Iyye-)'
             webfv(webdict, 'distributive', '+')
-        if rl and rl.get('acc'):
+        if fs.get('acc'):
             if any_gram: gram += ','
             any_gram = True
             gram += ' accusative'
             webfv(webdict, 'accusative', '+')
-        if rl and rl.get('gen'):
+        if fs.get('gen'):
             if any_gram: gram += ','
             any_gram = True
             gram += ' genitive'
             webfv(webdict, 'genitive', '+')
         if any_gram:
-            s += ' grammar:' + gram + '\n'
+            s += ' other:' + gram + '\n'
         pp = fs.get('pp')
         cnj = fs.get('cnj')
         if pp or cnj:
@@ -268,26 +292,37 @@ def vb_anal2string(anal, webdict=None):
 
     anal is ("(*)v", root, citation, gramFS)
     '''
+#    print("verb anal {}".format(anal))
     pos = 'verb'
     root = anal[1]
     citation = anal[2]
     fs = anal[3]
-    POS = '?POS: ' if '?' in anal[0] else 'POS: '
+#    POS = '?POS: ' if '?' in anal[0] else 'POS: '
+    POS = 'POS: '
     s = POS + pos
     webfv(webdict, 'POS', 'verb')
     webfv(webdict, 'pos', 'v')
     if root:
+#        print("root: {}".format(root))
         if '{' in root:
-            # Segmented form; not rootwe
+            # Segmented form; not root
             s += ', segmentation: ' + root
         else:
-            s += ', root: <' + root + '>'
-        rc = '<' + root + '>'
+            root = AMH.postproc_root(AMH.morphology['v'], root, fs)
+            s += ', root: ' + root
+#        else:
+#            s += ', root: <' + root + '>'
+#        rc = '<' + root + '>'
         if citation:
-            rc = "{}({})".format(rc, citation)
-        webfv(webdict, 'root', rc)
+            root = "{}({})".format(root, citation)
+        webfv(webdict, 'root', root)
     if citation:
-        s += ', citation: ' + citation
+#        citation = AMH.finalize_citation(citation)
+        s += ', lemma: ' + citation
+    if 't' in fs:
+        if 'eng' in fs['t']:
+            gloss = fs['t']['eng']
+            s += ', gloss: ' + gloss
     s += '\n'
     if fs:
         sb = fs['sb']
@@ -299,7 +334,7 @@ def vb_anal2string(anal, webdict=None):
             s += ' object:'
             s += arg2string(ob, True)
             webfv(webdict, 'object', arg2string(ob, True, web=True))
-        s += ' grammar:'
+        s += ' aspect/voice/tense:'
         rl = fs.get('rl')
         tm = fs.get('tm')
         if tm == 'prf':
@@ -635,9 +670,9 @@ def preproc_root(root, fs, pos):
     if is_geez(root):
         anal = AMH.morphology['v'].anal(root, preproc=True)
         if anal:
-            root, fs = anal[0]
-            cls = fs.get('cls')
-            root, fs = language.Language.dflt_procroot("{}:{}".format(root, cls))
+            root, ffss = anal[0]
+            cls = ffss.get('cls')
+            root, fs = language.Language.dflt_procroot("{}:{}".format(root, cls), fs)
         else:
 #            print("Couldn't analyze {}".format(root))
             return root, fs
@@ -645,10 +680,35 @@ def preproc_root(root, fs, pos):
         root, fs = language.Language.dflt_procroot(root, fs)
     return root, fs
 
+def postpostproc_root(root, fs):
+    """
+    Convert root to root:class format, also changing internal
+    HM root representation to an alternate conventional
+    representation.
+    """
+    return "<{}:{}>".format(AMH.convert_root(root), fs['cls'])
+
+def postproc_nroot(root, fs):
+    """
+    Convert citation (lemma) to conventional phonetic representation.
+    """
+    if fs.get('pos') == 'n_dv':
+        return "<{}:{}>".format(AMH.convert_root(root), fs['cls'])
+    else:
+        return "{}|{}".format(geezify(root), AMH.convert_phones(root))
+
+def postproc_word(word, ipa=False):
+    """
+    Convert output word to ortho|phon representation, also
+    changing internal HM representation to an alternate
+    conventional representation.
+    """
+    return "{}|{}".format(geezify(word), AMH.convert_phones(word))
+
 ## Create Language object for Amharic, including preprocessing, postprocessing,
 ## and segmentation units (phones).
 AMH = language.Language("አማርኛ", 'amh',
-              postproc=lambda form: geezify(form),
+              postproc=postproc_word,
               preproc=lambda form: geez2sera(None, form, lang='am', simp=True),
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
@@ -745,20 +805,20 @@ AMH.morphology['v'].fv_abbrevs = \
 # Set this here rather than automatically with POSMorphology.set_web_feats() since all web features have a single value
 AMH.morphology['v'].web_feats = \
   [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1)]
-AMH.morphology['v'].root_proc = lambda root, fs: "<" + root + ":" + fs['cls'] + ">"
+AMH.morphology['v'].root_proc = postpostproc_root
+AMH.morphology['n'].root_proc = postproc_nroot
+AMH.morphology['cop'].root_proc = lambda root, fs: "ነው"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
     language.FeatStruct("[-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
 AMH.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
-AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
+AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,-fem,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
 AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis"]
 AMH.morphology['n'].feat_abbrevs = \
   {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive",
    'pp': 'preposition'}
-AMH.morphology['n'].root_proc = \
-  lambda root, fs: "<" + root + ":" + fs['cls'] + ">" if fs['pos'] == 'n_dv' else geezify(root) + "|" + root
 
 AMH.morphology['cop'].name = 'copula'
 AMH.morphology['cop'].defaultFS = language.FeatStruct("[cj2=None,-neg,sb=[-fem,-p1,-p2,-plr,-frm],tm=prs]")
@@ -777,12 +837,11 @@ AMH.morphology['cop'].fv_abbrevs = \
    ([['p1', False], ['p2', False], ['plr', False], ['frm', True]], "3 prs frml"),
    ([['p1', False], ['p2', False], ['plr', True]], "3 prs plr")
    )
-AMH.morphology['cop'].root_proc = lambda root, fs: "ነው"
 
 ## Functions that return the citation forms for words
 AMH.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
 AMH.morphology['n'].citation = lambda root, fss, guess, vc_as: n_get_citation(root, fss, guess, vc_as)
-AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'ነው'
+AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'new'
 
 ## Functions that convert analyses to strings
 AMH.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)

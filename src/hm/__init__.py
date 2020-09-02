@@ -116,8 +116,8 @@ def seg_file(language, infile, outfile=None,
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
               dont_guess=True, cache='',
-              rank=True, freq=False, nbest=5, um=True,
-              raw=True):
+              rank=True, freq=False, nbest=5, um=False,
+              raw=False):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.
 
@@ -164,9 +164,11 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                                       gram=gram, gloss=gloss,
                                       segment=segment, only_guess=guess,
                                       guess=not dont_guess, cache=False,
-                                      nbest=nbest, report_freq=freq, um=um,
-                                      string=not raw, print_out=not raw)
-        if raw:
+                                      nbest=nbest, report_freq=freq,
+                                      um=um,
+                                      string=not raw and not um,
+                                      print_out=not raw and not um)
+        if raw or um:
             return analysis
 
 anal = anal_word
@@ -191,10 +193,11 @@ def anal_files(language, infiles, outsuff='.out',
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
-              root=True, citation=True, gram=True,
+              root=True, citation=True, gram=True, um=False,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
-              feats=None, simpfeats=None, word_sep='\n', sep_ident=False, minim=False,
+              feats=None, simpfeats=None,
+              word_sep='\n', sep_ident=False, minim=False,
               rank=True, freq=True, nbest=100,
               start=0, nlines=0):
     '''Analyze the words in a file, writing the analyses to outfile.
@@ -223,23 +226,18 @@ def anal_file(language, infile, outfile=None,
     '''
     language = morpho.get_language(language)
     if language:
-        language.anal_file(infile, outfile, root=root, citation=citation, gram=gram,
+        language.anal_file(infile, outfile, root=root, citation=citation,
+                           gram=gram, um=um,
                            pos=None, preproc=preproc, postproc=postproc,
-                           only_guess=guess, guess=not dont_guess, raw=raw, nbest=nbest,
+                           only_guess=guess, guess=not dont_guess, raw=raw,
+                           nbest=nbest,
                            sep_punc=sep_punc, feats=feats, simpfeats=simpfeats,
                            word_sep=word_sep, sep_ident=sep_ident, minim=minim,
                            lower_all=lower_all,
                            start=start, nlines=nlines)
 
-##def anal_gui(language, infile, outfile=None):
-##    '''Open a window for reading in a file where words can be clicked for analysis.'''
-##    language = morpho.get_language(language)
-##    if language:
-##        app = morpho.anal_gui.App(language, fname=infile)
-##        app.MainLoop()
-
 def gen(language, root, features=[], pos=None, guess=False, phon=False,
-        ortho=True, um='',
+        ortho=True, um='', all_words=True,
         roman=False, interact=False, return_word=False):
     '''Generate a word, given stem/root and features (replacing those in default).
     If pos is specified, check only that POS; otherwise, try all in order until one succeeeds.
@@ -260,8 +258,10 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
     @type roman:      boolean
     @param return_word: whether to return the word, rather than printing it out
     @type return_word: boolean
-    @param um:       whether to accept UniMorph features
+    @param um:       UniMorph features
     @type um:        string
+    @param all_words: whether to return all words
+    @type all_words: boolean
     '''
     language = morpho.get_language(language, segment=False, phon=phon)
     if language:
@@ -269,30 +269,55 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
         morf = language.morphology
         if language.procroot:
             root, features = language.procroot(root, features, pos)
+        outputs = []
+        um_converted = False
         if pos:
             posmorph = morf[pos]
-            output = posmorph.gen(root, update_feats=features,
-                                  interact=interact, ortho=ortho, um=um,
-                                  postproc=is_not_roman, guess=guess)
-            if output:
-                o = output[0][0]
-                if return_word:
-                    return o
-                else:
-                    print(o)
-                    return
-        else:
-            for posmorph in list(morf.values()):
+            if um:
+                lang_um = language.um
+                if lang_um:
+                    features = lang_um.convert_um(pos, um)
+                if features:
+                    um_converted = True
+            if features or not um:
                 output = posmorph.gen(root, update_feats=features,
-                                      interact=interact, ortho=ortho, um=um,
-                                      postproc=is_not_roman, guess=guess)
+                                    interact=interact, ortho=ortho, phon=phon,
+                                    postproc=is_not_roman, guess=guess)
                 if output:
-                    o = output[0][0]
-                    if return_word:
-                        return o
-                    else:
-                        print(o)
-                        return
+                    outputs.extend(output)
+        if not outputs:
+            for posmorph in list(morf.values()):
+                if um:
+                    lang_um = language.um
+                    if lang_um:
+                        features = lang_um.convert_um(posmorph.pos, um)
+                    if features:
+                        um_converted = True
+                if features or not um:
+#                    print("Generating (POS={})".format(posmorph.pos))
+                    output = posmorph.gen(root, update_feats=features,
+                                        interact=interact, ortho=ortho, phon=phon,
+                                        postproc=is_not_roman, guess=guess)
+#                    print("Output for {}: {}".format(posmorph.pos, output))
+                    if output:
+                        outputs.extend(output)
+#                    if output:
+#                        break
+        if um and not um_converted:
+            print("Couldn't convert UM to HM features")
+            return
+
+        if outputs:
+            if all_words:
+                o = [out[0] for out in outputs]
+            else:
+                o = outputs[0][0]
+            if return_word:
+                return o
+            else:
+                print(o)
+                return
+
         print("This word can't be generated!")
 
 def phon_word(lang_abbrev, word, gram=False, raw=False,

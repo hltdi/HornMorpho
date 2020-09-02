@@ -2611,6 +2611,8 @@ class FST:
             # output[2] is accumulated weight (if success)
             # There can be failures and duplicate successes
             if len(result) >= result_limit:
+#                print("Exceeded {}".format(result_limit))
+#                print("Result {}".format(result))
                 break
             if output[1] and (output not in result):
                 if self.r2l():

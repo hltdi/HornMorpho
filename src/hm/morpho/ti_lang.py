@@ -37,7 +37,7 @@ def webfv(webdict, feature, value):
     if webdict != None:
         webdict[feature] = value
 
-def vb_get_citation(root, fs, simplified=False, guess=False, vc_as=False):
+def vb_get_citation(root, fs, guess=False, vc_as=False):
     '''Return the canonical (prf, 3sm) form for the root and language.FeatStructs
     in language.FeatStruct set fss.
 
@@ -55,7 +55,7 @@ def vb_get_citation(root, fs, simplified=False, guess=False, vc_as=False):
     fs.freeze()
     # Find the first citation form compatible with the updated feature structure
     citation = TI.morphology['v'].gen(root, fs, from_dict=False,
-                                       simplified=simplified, guess=guess)
+                                      phon=True, postproc=False, guess=guess)
     if citation:
         result = citation[0][0]
     elif not vc_as:

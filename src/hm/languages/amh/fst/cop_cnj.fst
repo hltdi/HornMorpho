@@ -11,7 +11,7 @@ start -> end  <n_a:>            [cj2=na]
 start -> end  <nji:>            [cj2=Inji]   # only jussive/imperative?
 
 # Interrogative suffixes
-# start -> end  <nI:>             [tm=imf,cj2=nI,-sub];[tm=prf,cj2=nI,-sub]
-# start -> end  <ndE:>          [tm=imf,cj2=IndE,-sub];[tm=prf,cj2=IndE,-sub]
+# start -> end  <nI:>           [tm=prs,cj2=nI,-sub];[tm=prf,cj2=nI,-sub]
+# start -> end  <ndE:>          [tm=prs,cj2=IndE,-sub];[tm=prf,cj2=IndE,-sub]
 
 end ->

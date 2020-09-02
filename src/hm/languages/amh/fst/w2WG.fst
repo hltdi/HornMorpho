@@ -2,11 +2,11 @@
 
 -> start
 
-start -> start   [B!;L;w;y;V;_;/]
+start -> start   [B!;BB;L;w;y;V;_;/]
 
 # make the change obligatory
 start -> C       [!B]                 # Cs that can be labialized
-C -> start       [B!;L;y;V;/]
+C -> start       [B!;BB;L;y;V;/]
 C -> C           [!B;_]
 
 # common to all labialized consonants

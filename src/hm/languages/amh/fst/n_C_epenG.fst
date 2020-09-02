@@ -5,7 +5,7 @@
 
 -> start
 
-start -> start  [X;_;/;$]
+start -> start  [X;_;/]
 
 start -> V      [V]
 # VyE
@@ -35,13 +35,13 @@ ouw -> start    [a]       # only a possible
 
 start -> e      [e]
 e -> V          [V-o]     # o also possible?
-e -> start      [X;/;$]
+e -> start      [X;/]
 
 i -> start      [X;/]
 E -> start      [X;/]
 ou -> start     [X;/]
 
-V -> start      [X;/;$]
+V -> start      [X;/]
 V -> i          [i]
 # V -> E          [E]
 V -> ou         [u]
