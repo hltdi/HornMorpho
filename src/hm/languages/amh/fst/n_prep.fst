@@ -1,12 +1,12 @@
 -> start
 
-start -> end    [I:]     [pp=I,-acc]
-start -> end   <le:>     [pp=le,-acc]
-start -> end   <be:>     [pp=be,-acc]
-start -> end   <ke:>     [pp=ke,-acc]
-start -> end   <wede:>   [pp=wede,-acc]
-start -> end   <'nde:>   [pp=Inde,-acc]
-start -> end   <sIle:>   [pp=sIle,-acc]
-start -> end   <'ske:>   [pp=Iske,-acc]
+start -> end    [I:]     [prep=I,-acc]
+start -> end   <le:>     [prep=le,-acc]
+start -> end   <be:>     [prep=be,-acc]
+start -> end   <ke:>     [prep=ke,-acc]
+start -> end   <wede:>   [prep=wede,-acc]
+start -> end   <'nde:>   [prep=Inde,-acc]
+start -> end   <sIle:>   [prep=sIle,-acc]
+start -> end   <'ske:>   [prep=Iske,-acc]
 
 end ->

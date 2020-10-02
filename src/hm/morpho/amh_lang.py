@@ -45,7 +45,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
     citation = ''
-    if root == 'hl_w':
+    if root == 'hlw':
         return "አለ"
     # Return root if no citation is found
     result = root
@@ -274,7 +274,7 @@ def n_anal2string(anal, webdict=None):
             webfv(webdict, 'genitive', '+')
         if any_gram:
             s += ' other:' + gram + '\n'
-        pp = fs.get('pp')
+        pp = fs.get('prep')
         cnj = fs.get('cnj')
         if pp or cnj:
             if pp:
@@ -811,14 +811,14 @@ AMH.morphology['cop'].root_proc = lambda root, fs: "ነው"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
-    language.FeatStruct("[-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],pp=None,v=None,vc=smp]")
+    language.FeatStruct("[-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],prep=None,v=None,vc=smp]")
 AMH.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
-AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,-fem,cnj=None,-dis,-gen,-plr,poss=[-expl],pp=None,v=inf]")
+AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,-fem,cnj=None,-dis,-gen,-plr,poss=[-expl],prep=None,v=inf]")
 AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis"]
 AMH.morphology['n'].feat_abbrevs = \
   {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive",
-   'pp': 'preposition'}
+   'prep': 'preposition'}
 
 AMH.morphology['cop'].name = 'copula'
 AMH.morphology['cop'].defaultFS = language.FeatStruct("[cj2=None,-neg,sb=[-fem,-p1,-p2,-plr,-frm],tm=prs]")

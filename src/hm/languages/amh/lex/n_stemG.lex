@@ -1740,6 +1740,7 @@ qoTqWaT_a
 qoT_abi
 quT_b
 quT_eba
+qoC_o
 teqoT_abi
 qoT
 qof_ari
@@ -6410,3 +6411,5 @@ flaSa
 qedamawit
 katolikawit
 ^hfret
+'asrand
+'asrandeNa

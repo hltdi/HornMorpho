@@ -3,9 +3,9 @@
 
 ## PREPOSITIONS
 # no prepositions
-start -> distrib    [:]              [pp=None,-gen]
+start -> distrib    [:]              [prep=None,-gen]
 start -> distrib   >>n_prep+<<
-start -> distrib    <ye:ye(gen)->    [+gen,pp=None]
+start -> distrib    <ye:ye(gen)->    [+gen,prep=None]
 
 ## DISTRIBUTIVE
 distrib -> prestem     [:]              [-dis]
@@ -16,7 +16,7 @@ distrib -> prestem     <'y_e:'ye(distrib)->     [+dis,+def,v=None]
 prestem -> stem        [:]             [-neg]
 prestem -> stem      <ale:ale(neg)->   [+neg]
 # preposition not possible before yale?
-prestem -> stem      <yale:yale(neg)-> [+neg,pp=None]
+prestem -> stem      <yale:yale(neg)-> [+neg,prep=None]
 
 ## STEM
 # Mark off stem
@@ -74,7 +74,7 @@ poss -> acc       <E:-E(poss=1s)>     [+def,poss=[+p1,-p2,-plr,+expl],-itu]
 poss -> acc       <h:-h(poss=2sm)>     [+def,poss=[-p1,+p2,-plr,-fem,+expl],-itu]
 poss -> acc       <x:-x(poss=2sf)>     [+def,poss=[-p1,+p2,-plr,+fem,+expl],-itu]
 #poss -> acc       <u:-u(def,mas)>      [+def,poss=[-expl],-fem,-itu,-plr]
-poss -> acc       <u:-u(def)>          [+def,poss=[-expl],-itu]
+poss -> acc       <u:-u(def)>          [+def,poss=[-expl],-itu,-fem]
 poss -> acc       <u:-u(poss=3sm)>     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu]
 poss -> acc      <itu:-itu(def,fem)>    [+def,poss=[-expl],+fem,-plr,+itu,-prp]
 #% the only deverbal nouns that can be feminine are agents
@@ -87,7 +87,7 @@ poss -> acc     <wo:-wo(poss=2frm)>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu
 
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc]
-acc -> cnj        <n:-n(acc)>     [+acc,pp=None]
+acc -> cnj        <n:-n(acc)>     [+acc,prep=None]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]

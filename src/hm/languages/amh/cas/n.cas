@@ -49,6 +49,8 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >del_epgem<
 # Insert glottal stop before initial vowel
 >gs0<
+# Optionally ko -> kWe, ku -> kW, etc.
+>n_lab<
 # Insert glottal stop between adjacent vowels
 >n_VgsV<
 # oa, ua -> Wa

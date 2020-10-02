@@ -1,9 +1,9 @@
 """
-This file is part of morfo, which is part of the PLoGS project.
+This file is part of HornMorpho and morfo, which are part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018.
+    Copyleft 2018, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -1100,12 +1100,18 @@ class POSMorphology:
 
     def gen(self, root, features=None, from_dict=False,
             postproc=False, update_feats=None,
+            del_feats=None,
             guess=False, phon=False, segment=False, ortho=False,
             fst=None, sort=True,
-#            um='',
             print_word=False, print_prefixes=None,
-            interact=False, timeit=False, timeout=100, trace=False):
-        """Generate word from root and features."""
+            interact=False,
+            timeit=False, timeout=100, limit=10,
+            trace=False):
+        """
+        Generate word from root and features.
+        2020.9.22: Added del_feats, a list of features or feature paths
+          to delete from the features specified
+        """
         fss = None
         if interact and self.feat_list:
             # Get user input from menu
@@ -1119,6 +1125,8 @@ class POSMorphology:
 #             if not update_feats:
 # #                print("Couldn't convert UM features {}".format(um))
 #                 return []
+        if del_feats:
+            features = self.delete_from_FS(del_feats, fs=features)
         if update_feats:
             if isinstance(update_feats, (list, set)):
                 fss = self.update_FSS(FeatStruct(features), update_feats)
@@ -1148,9 +1156,12 @@ class POSMorphology:
                 root = oroot
         if fst:
 #            print('Transducing with features {}'.format(features.__repr__()))
-            gens = fst.transduce(root, features, seg_units=self.morphology.seg_units,
-                                 gen=True, print_word=print_word, print_prefixes=print_prefixes,
-                                 trace=trace, timeit=timeit, timeout=timeout)
+            gens = \
+              fst.transduce(root, features, seg_units=self.morphology.seg_units,
+                            gen=True,
+                            print_word=print_word, print_prefixes=print_prefixes,
+                            trace=trace,
+                            timeit=timeit, timeout=timeout, result_limit=limit)
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)
@@ -1328,6 +1339,18 @@ class POSMorphology:
                                 fs[f] = v
 #        print('FS', fs.__repr__())
         return fs
+
+    def delete_from_FS(self, featpaths, fs=None, freeze=False):
+        """
+        Return a copy of the FeatStruct (by default this POS's defaultFS)
+        with value for feature removed.
+        featlists is a list of feature path lists, one for each feature
+        to be deleted.
+        """
+        fs = fs or self.defaultFS
+        if isinstance(fs, str):
+            fs = FeatStruct(fs)
+        return fs.delete(featpaths, freeze=freeze)
 
     def o2p(self, form, guess=False, rank=False):
         """Convert orthographic input to phonetic form.
@@ -1678,13 +1701,17 @@ class POSMorphology:
         return fs
 
     def score_gen_output(self, root, output):
-        """Given multiple outputs from gen(), score them on the features that distinguish
-        them."""
+        """
+        Given multiple outputs from gen(), score them on the features that
+        distinguish them.
+        """
         forms = [o[0] for o in output]
         feats = [o[1] for o in output]
         diffs = FSSet.compareFSS(feats)
         root_scores = [0.0] * len(forms)
         feat_scores = [0.0] * len(forms)
+#        print("Scoring {}".format(output))
+#        print(" diffs {}".format(diffs.__repr__()))
         # root-feature frequencies
         if self.root_freqs and root in self.root_freqs:
             root_freqs = self.root_freqs[root]
@@ -1704,10 +1731,14 @@ class POSMorphology:
         rootsum = sum(root_scores)
         featsum = sum(feat_scores)
         if featsum:
-            scaling = rootsum/featsum
-            scores = [(r + f * scaling) for r, f in zip(root_scores, feat_scores)]
+            if rootsum:
+                scaling = rootsum/featsum
+                scores = [(r + f * scaling) for r, f in zip(root_scores, feat_scores)]
+            else:
+                scores = feat_scores
         else:
             scores = root_scores
+#        print("scores {}".format(scores))
         # return the outputs with scores appended
         return [o + [s] for o, s in zip(output, scores)]
 

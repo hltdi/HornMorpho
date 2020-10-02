@@ -63,6 +63,9 @@ def segment(word, units, correct=True):
                 else:
                     res.append(ch)
                     pos += 1
+            elif ch == ' ':
+                res.append(' ')
+                pos += 1
             elif correct:
                 print(ch, 'in', word, 'is not an acceptable character')
                 return
@@ -387,7 +390,7 @@ def del_suffix(string, sufstart, last = True):
 ##    for k, v in dct.items():
 ##        if key in k:
 ##            return v
-        
+
 ### Printing
 
 ##VERBOSITY = 0

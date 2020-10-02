@@ -19,10 +19,10 @@ start -> .h        [:h]
 start -> .c        [:y]    [sp=3,sn=2];[sp=None]
 start -> .y        [:y]    [sp=1];[sn=1];[sp=2,sn=2]
 
-.T -> A.T          [:]    
+.T -> A.T          [:]
 .T -> A.Te         [e:]
 .h -> .cv          [a:]
-.c -> .cv          [e:]   
+.c -> .cv          [e:]
 
 ## get the class
 .cv -> A.cv        [:]    [root=[cls=A]];[root=[cls=Ap],vc=[-ps]];[root=[cls=Ap],vc=[-cs]]
@@ -46,13 +46,13 @@ A.T -> A.T1       [:.]
 A.Te -> A.Te1     [:.]
 # no e inserted for this case n*{t,d,T}
 A.T1 -> A.cvc     [r]
-A.Te1 -> A.cvc    [YY-r]
+A.Te1 -> A.cvc    [YY-r,w]
 #}
 # skip mutation
 A.cv -> A.cvc1    [:.]
 A.cv -> A.cvc1    [/:]
 # C2
-A.cvc1 -> A.cvc   [YY]
+A.cvc1 -> A.cvc   [YY-w]
 # V1
 # assume both e and a are possible for frequentative (as=it)
 A.cvc -> A.cvcv   [e:]    [as=None];[as=it]
@@ -156,7 +156,7 @@ B.cvc -> B.cvcV.D [a:;e:] [as=it]
 B.cvcV.D -> B.cvcv [D:]
 B.cvc -> B.cvcv   [e:]   [as=None]
 B.cvc -> B.cvcv   [a:]   [as=rc,vc=[+ps]];[as=rc,vc=[+cs]]
-B.cvcv -> B.cvcv^ [^:]   
+B.cvcv -> B.cvcv^ [^:]
 # C3
 B.cvcvD -> pre_n  [KK]   [root=[cls=Ap],vc=[+cs,+ps]];[root=[cls=B]]
 B.cvcvD -> pre_n  [TT]   [root=[cls=B]]
@@ -180,7 +180,7 @@ B.cvXv -> pre_n   [MM;r]  [root=[cls=B]]
 # o when the first consonant is not labializable
 .c -> B.co        [o:w]  [root=[cls=B],as=None]
 # first consonant: dental
-B.co -> B.co^     [^:]   
+B.co -> B.co^     [^:]
 B.co^ -> pre_n    [DD]
 # e or I if the first consonant is labializable
 .c -> B.cw        [e:w]

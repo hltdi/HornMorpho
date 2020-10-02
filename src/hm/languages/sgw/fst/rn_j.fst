@@ -12,14 +12,14 @@ start -> e       [e;E]
 e -> Ce        [X-m]
 # m in root prevents r->n
 e -> fin       [m]
-Ce -> fin      [n:r;X-r;:]
+Ce -> fin      [n:r;X-r]
 
 # **y, +tr
 start -> ^       [^]
 ^ -> ^C        [KK;DD]
 ^C -> fin      [n:r;X-r;:]
 # does mW prevent r->n?
-start -> labpal  [PP;UU]
+start -> labpal  [PP-y;UU]
 labpal -> fin  [n:r;X-r;V;:]
 
 # other than **y and **h
@@ -42,4 +42,5 @@ end ->
 fin ->
 # ye=ez=o
 XV ->
+Ce ->
 fin -> fin      [X;V;^;@]

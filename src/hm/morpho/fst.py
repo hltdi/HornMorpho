@@ -199,14 +199,14 @@ class FSTCascade(list):
 
     def get_fst_dir(self, dirname='test'):
         if not self.language:
-            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'L', dirname)
+            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'languages', dirname)
         else:
             d = self.language.directory
         return os.path.join(d, 'fst')
 
     def get_lex_dir(self, dirname=''):
         if not self.language:
-            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'L', dirname)
+            d = os.path.join(os.path.dirname(__file__), os.path.pardir, 'languages', dirname)
         else:
             d = self.language.directory
         return os.path.join(d, 'lex')
@@ -452,7 +452,8 @@ class FSTCascade(list):
         self.init_weight = FSSet(fs)
 
     @staticmethod
-    def load(filename, seg_units=[], create_networks=True, subcasc=None, language=None,
+    def load(filename, seg_units=[], create_networks=True, subcasc=None,
+             language=None,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
@@ -1880,9 +1881,11 @@ class FST:
             if verbose:
                 print('Loading FST from {}'.format(filename))
             # It's a file in the standard FST format; parse() it
-            return FST.parse(label, open(filename, encoding='utf-8').read(), weighting=weighting,
+            return FST.parse(label, open(filename, encoding='utf-8').read(),
+                             weighting=weighting,
                              cascade=cascade, directory=directory,
-                             seg_units=seg_units, weight_constraint=weight_constraint,
+                             seg_units=seg_units,
+                             weight_constraint=weight_constraint,
                              gen=gen,
                              verbose=verbose)
 
@@ -2585,8 +2588,7 @@ class FST:
                   trace=0, tracefeat='',
                   result_limit=5, timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
-#        print("{} transducing {}".format(self.__repr__(), input))
-        if timeit:
+         if timeit:
             time1 = time.time()
         words = []
         result = []

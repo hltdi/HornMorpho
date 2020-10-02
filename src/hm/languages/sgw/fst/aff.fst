@@ -1,4 +1,5 @@
-# convert sequences of vowels and consonants across stem-suffix boundaries and within suffixes
+# convert sequences of vowels and consonants across stem-suffix boundaries
+# and within suffixes
 
 -> start
 
@@ -26,7 +27,7 @@ e -> e=          [:=]
 e= -> stem        [X;V-a,e]
 del_e -> del_e=  [:=]
 del_e= -> stem    [a;e]
-# benemam; seTemam
+# benemam; seTemam; SKIP FOR GENERATION
 e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
 
 e -> eb          [b:]      [sn=2,sp=3,sg=f]
@@ -55,7 +56,7 @@ start -> aE.     [A:E]
 start -> E       [E]
 E -> start       [:]
 E -> E=          [:=]
-# 
+#
 E= -> stem        [X;:e]
 aE. -> a.E        [:=]
 a.E -> stem       [:a]
@@ -73,10 +74,10 @@ iyE -> start      [X]
 E -> iE           [y:i]
 iE -> o           [o]
 
-start -> V       [V-e,o,i,E]
-V -> V=          [:=]
+start -> Vsuf     [V-e,o,i,E]
+Vsuf -> V=        [:=]
 V= -> stem        [X;V]
-V -> start       [:]
+Vsuf -> start     [:]
 
 # ai -> A within suffix ema+i (only possibility?
 start -> a.i     [A:i]
@@ -113,7 +114,7 @@ r2n -> =r2n     [:=]
 # prefix ending in -n, deleted before stem-initial r->n (or copy for geminated nn)
 =r2n -> pre     [:n]
 r -> =r         [:=]
-=r -> pre       [X;V]
+=r -> pre       [X-n;V]
 
 stem -> V       [V]
 V -> C          [X-r]

@@ -1,4 +1,5 @@
-# convert sequences of vowels and consonants across stem-affix boundaries and within stems
+# convert sequences of vowels and consonants across stem-affix boundaries
+# and within stems
 
 ## suffix and stem
 -> start
@@ -9,45 +10,33 @@ start -> nosuf   [:=]
 nosuf -> C.y=    [i:y]
 nosuf -> V.y=    [:y]
 nosuf -> stem    [X-y;V]
-# go to stem consonant (this could be the only remaining segment in the stem, as in ye=Ki)
-C.y= -> C        [X-r]
-C.y= -> r        [r]
-C.y= -> r2n      [n:r]
+# go to stem consonant (this could be the only remaining segment in the stem,
+# as in ye=Ki)
+C.y= -> C         [X]
 V.y= -> stem     [A:a;E:e]
 
 # C in suffix
-start -> Csuf     [X-r,n]
+start -> Csuf     [X]
+suf -> Csuf       [X]
 # delete the boundary
 Csuf -> C=        [:=]
 C= -> stem        [X-y;V]
 # del y at boundary after e and a
 C= -> V.y=        [:y]
-V.y= -> stem      [A:a;E:e]
 C= -> C.y=        [i:y]
-C.y= -> C         [X-r]
-C.y= -> r         [r]
-C.y= -> r2n       [n:r]
 # not at boundary yet
-Csuf -> start     [:]
-
-# keep suffix n, r
-start -> rnsuf     [r;n]
-rnsuf -> start     [:]
-rnsuf -> rn=       [:=]
-rn= -> stem        [X-r,n,l;V]
-# delete suffix n, r
-start -> rndel     [:r;:n]
-rndel -> rn=.rn    [:=]
-# r=r -> rl
-# GEMINATED n: n=n; r=n
-rn=.rn -> stem    [n;l;n:r]
-start -> r2l      [l:r]
-r2l -> r2l=.      [:=]
-r2l=. -> stem     [r]
+Csuf -> Csuf      [X]
+Csuf -> e         [e]
+Csuf -> i         [i]
+Csuf -> E         [E]
+Csuf -> o         [o]
+Csuf -> u         [u]
+Csuf -> Vsuf      [V-u,e,o,i,E]
 
 # V in suffix
 start -> e        [e]
-e -> start        [:]
+suf -> e          [e]
+e -> Csuf         [X]
 e -> e=           [:=]
 e= -> stem        [X;V-a,e,E,i]
 # y=berema, ye=sTE=ema -> ye=STema??
@@ -60,7 +49,8 @@ eb -> eb=         [:=]
 eb= -> stem       [e;e:a]
 
 start -> o        [o]
-o -> start        [:]
+suf -> o          [o]
+o -> Csuf         [X]
 o -> ob           [b:]
 ob -> ob=         [:=]
 # y=seTebo, y=conebo
@@ -75,16 +65,17 @@ oy -> oy=         [:=]
 oy= -> stem       [e;e:E;:i]
 
 start -> aE.      [A:E]
+suf -> aE.        [A:E]
 start -> E        [E]
-E -> start        [:]
+suf -> E          [E]
+# delete e before final E
+E -> suf          [V-e;:e]
+E -> Csuf         [X]
 E -> E=           [:=]
 E= -> stem        [X;:e]
 aE. -> a.E        [:=]
 a.E -> stem       [:a]
-# delete e before final E
-E -> start        [:e]
 E -> yE           [y:]
-# yE -> start     [a;o;E]
 yE -> a           [a]
 yE -> o           [o]
 yE -> E           [E]
@@ -94,21 +85,24 @@ CyE -> Csuf       [X]
 CyE -> CyE=       [:=]
 CyE= -> C         [X]
 # WHAT ABOUT u IN SUFFIXES?
-yE -> start       [u]
+yE -> suf         [u]
 E -> iE           [y:i]
 # ybroyE
 iE -> o           [o]
 
-start -> Vsuf       [V-u,e,o,i,E]
-Vsuf -> V=          [:=]
+start -> Vsuf     [V-u,e,o,i,E]
+suf -> Vsuf       [V-u,e,o,i,E]
+Vsuf -> V=        [:=]
 V= -> stem        [X;V]
-Vsuf -> start       [:]
+Vsuf -> suf       [:]
 
 start -> u        [u]
-u -> start        [X]
+suf -> u          [u]
+u -> Csuf         [X]
 u -> u=           [:=]
 u= -> C           [X]
 start -> uw       [w:u]
+suf -> uw         [w:u]
 uw -> E           [E]
 uw -> o           [o]
 uw ->  i          [i]
@@ -119,14 +113,17 @@ uw= -> V          [V]
 
 # ai -> A within suffix ema+i (only possibility?
 start -> a.i     [A:i]
-a.i -> start     [:a]
+suf -> a.i       [A:i]
+a.i -> suf       [:a]
 # other i
 start -> i       [i]
+suf -> i         [i]
 # vowel other than a possible?
-i -> start       [:]
+i -> suf         [:]
 i -> i=          [:=]
 i= -> stem       [X;V-e]
 start -> ei.     [E:i]
+suf -> ei.       [E:i]
 ei. -> e.i       [:=]
 # ei -> E (ysemWE)
 e.i -> V        [:e]
@@ -148,16 +145,16 @@ C -> C          [X-r]
 C -> r          [r]
 C -> r2n        [n:r]
 
-# word initial r -> n
+# word initial r -> n (only for jussive)
 stem -> r       [r]
 r -> V          [V]
 r -> C          [X]
-# r->n in first position or following n in prefix
+# r->n in first position
 r2n -> =r2n     [:=]
-# prefix ending in -n, deleted before stem-initial r->n (or copy for geminated nn)
-=r2n -> pre     [:n]
 r -> =r         [:=]
-=r -> pre       [X;V]
+=r -> pre       [X-y;V]
+=r -> end       [y]
+=r -> y2i       [i:y]
 
 stem -> V       [V]
 V -> C          [X-r]
@@ -170,7 +167,7 @@ V -> =V         [:=]
 =V -> a.y=      [:y]
 =V -> end       [y]
 
-#stem -> pre    [:=]
+suf -> stem     [:=]
 
 pre -> pre      [X;V]
 =r2n ->

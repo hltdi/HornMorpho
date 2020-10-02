@@ -262,7 +262,8 @@ def read_conv(filename, simple=False):
                 seg2syl[seg] = syl
     return syl2seg, seg2syl
 
-def sera2geez(table, form, lang='am', gemination=False):
+def sera2geez(table, form, lang='am', gemination=False,
+              deepenthesize=False):
     '''Convert form in SERA to Geez, using translation table.'''
     if not table:
         table = get_table(lang, False)
@@ -270,7 +271,8 @@ def sera2geez(table, form, lang='am', gemination=False):
     if not gemination:
         form = form.replace(GEMINATION_ROMAN, '')
     # there may be epenthetic vowels
-    form = form.replace(EPENTHETIC, '')
+    if deepenthesize:
+        form = form.replace(EPENTHETIC, '')
     # Segment
     res = ''
     n = 0

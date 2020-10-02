@@ -18,8 +18,8 @@ suf_e -> sufC   [X]
 suf_e -> C.=e    [:=]
 # bEt-eta, aso-eta
 C.=e -> stem     [X;o]
-C.=e -> i.y=e    [y:]
 # temariy-eta
+C.=e -> i.y=e    [y:]
 i.y=e -> stem    [i]
 sufC -> V=.e     [:e]
 V=.e -> V.=e     [:=]
@@ -82,7 +82,7 @@ r= -> pre       [X;V]
 # keep stem-initial a and e after prefix (all prefixes end in e)
 stem -> V=.Ia     [:I;a;e]
 V=.Ia -> V.=Ia     [:=]
-# delete prefix-final 
+# delete prefix-final
 V.=Ia -> pre      [:e]
 
 stem -> I       [I]

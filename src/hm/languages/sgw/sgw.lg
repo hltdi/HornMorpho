@@ -1,14 +1,15 @@
-name: ቸኻ
+name: ቸሓ
 code: ch
 
 preproc: geez
 postproc: geez
+postpostproc: lambda form: form.replace('//', ' ')
 
 seg: a e i o u E I A
      b bW c C d f fW g gW gY h j
      k kW kY K KW KY l m mW n p pW q qW qY r s
      S t T w x xW xY y z Z
-     B D F | % . *
+     B D F | % . * ^ /
 
 feats:
 
@@ -19,7 +20,7 @@ feats:
   am (Amh stem) =
 
   *def = False | True
-  {def} (True): definite
+  {def} (True): = +def
 
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
@@ -50,8 +51,8 @@ feats:
   {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
 
   *tns = None | prs | pst
-  {tns} (prs): pres
-  {tns} (pst): past
+  {tns} (prs): = +prs
+  {tns} (pst): = +pst
 
   *cnj = None | m | x | K | a
   {cnj} (m): conj = m
@@ -64,9 +65,11 @@ feats:
   *goal = False | True
   *sim = False | True
   *dir = False | True
-  {goal} (True): +goal
-  {sim} (True): +sim
-  {dir} (True): +dir
+  *assoc = False | True
+  {goal} (True): = +goal
+  {sim} (True): = +sim
+  {dir} (True): = +dir
+  {assoc} (True): = +assoc
 
 ## infinitive
 
@@ -75,7 +78,7 @@ feats:
   am (Amh root) =
 
   *def = False | True
-  {def} (True): definiteness = true
+  {def} (True): = +def
 
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
@@ -93,11 +96,16 @@ feats:
   {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
 
   *cp = 0 | 3
-  {cp} (3): cop
+  {cp} (3): = cop
+
+  vc (voice) = ps (passive) = False | True;
+               cs (causative) = False | True
+
+  as (aspect) = None | it (freq) | rc (recip)
 
   *tns = None | prs | pst
-  {tns} (prs): pres
-  {tns} (pst): past
+  {tns} (prs): = +prs
+  {tns} (pst): = +pst
 
   *cnj = None | m | x | K | a
   {cnj} (m): conj = m
@@ -110,15 +118,15 @@ feats:
   *goal = False | True
   *sim = False | True
   *dir = False | True
-  {goal} (True): +goal
-  {sim} (True): +sim
-  {dir} (True): +dir
+  {goal} (True): = +goal
+  {sim} (True): = +sim
+  {dir} (True): = +dir
 
 ## perfective verbs, including prohibitive
 
   pos: vp verb_perfective
 
-  root = cls (class) = A | Ap | B | C | D | E | F
+#  root = cls (class) = A | Ap | B | C | D | E | F
 
   tm (TAM) = prf (perfective)
 
@@ -208,22 +216,23 @@ feats:
   *m = False | True
   *x = False | True
   *proh = False | True
-  *copex = False | True
+#  *copex = False | True
+#  *tns = prs | pst
   *comp = False | True
   *def = False | True
-  {caus} (True): +caus
-  {cmpd} (True): = compound perf
+  {caus} (True): = +causative
+  {cmpd} (True): = +compound_perf
 #  {mconv} (True): converb = m
   {link} (True): link = True
   {m} (True): conj = +m
   {x} (True): conj = +sh
-  {def} (True): = definite
+  {def} (True): = +definite
 
 ## imperfective verbs, including both -tE future form
-  
+
   pos: vi verb_imperfective
 
-  root = cls (class) = A | Ap | B | C | D | E | F
+#  root = cls (class) = A | Ap | B | C | D | E | F
 
   tm (TAM) = imf (imperfective)
 
@@ -297,14 +306,17 @@ feats:
   as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
-  {neg} (True): negative
+  {neg} (True): = negative
 
   *sub = None | t | b
   {sub} (t): subord = t
   {sub} (b): subord = b
 
   *fut = None | def
-  {fut} (def): def fut
+  {fut} (def): = def fut
+
+  *def = False | True
+  {def} (True): = +def
 
   *x = False | True
   *m = False | True
@@ -313,19 +325,21 @@ feats:
   *purp = False | True
   *clft = False | True
   *link = False | True
-  {x} (True): conj -sh
-  {m} (True): conj -m
+  *comp = False | True
+  {x} (True): = conj -sh
+  {m} (True): = conj -m
   {mconv} (True): clause type = subordinate, m-converb
-  {cmpd} (True): compound impf
-  {purp} (True): purposive
-  {clft} (True): cleft
-  {link} (True): +link
+  {cmpd} (True): = compound impf
+  {purp} (True): = purposive
+  {clft} (True): = cleft
+  {link} (True): = +link
+  {comp} (True): = comparative
 
 ## jussive-imperative verbs, including -xe future forms and t- converb
-  
+
   pos: vj verb_jussive_imperative
 
-  root = cls (class) = A | Ap | B | C | D | E | F
+#  root = cls (class) = A | Ap | B | C | D | E | F
 
   tm (TAM) = j_i (jussive imperative)
 
@@ -399,10 +413,10 @@ feats:
   as (aspect) = None | it (freq) | rc (recip)
 
   *neg = False | True
-  {neg} (True): negative
+  {neg} (True): = negative
 
   *fut = None | indef
-  {fut} (indef): indef fut
+  {fut} (indef): = indef fut
 
   *tconv = False | True
   *mconv = False | True
@@ -412,6 +426,5 @@ feats:
   {tconv} (True): converb = -t
   {mconv} (True): converb = -m
   {m} (True): conj = -m
-  {x} (True): conf - -sh
-  {link} (True): +link
-
+  {x} (True): conf = -sh
+  {link} (True): = +link

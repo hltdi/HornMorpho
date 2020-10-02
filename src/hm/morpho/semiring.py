@@ -58,11 +58,14 @@ SIMP_FVAL_RE = re.compile(r'([+-]{1,2}\w+?|\w+?\s*=\s*[^\]]+?)(?:,|\]|$)')
 # feat = [...]
 COMP_FVAL_RE = re.compile(r'(\w+?\s*=\s*\[.+?\])')
 
-class FSSet(set):
+class FSSet(set, FS):
     """Sets of feature structures."""
 
     def __init__(self, *items):
-        '''Create a feature structure set from items, normally a list of feature structures or strings.'''
+        '''
+        Create a feature structure set from items, normally a list of
+        feature structures or strings.
+        '''
         # This may sill be needed for unpickling, when items is a tuple of a list of FeatStructs
         if len(items) > 0 and isinstance(items[0], (list, set)):
             items = items[0]
@@ -98,7 +101,10 @@ class FSSet(set):
         return FSSet(fss)
 
     def remove(self, FS):
-        """Remove the FS from all FSs in the set, returning the new FSSet (as a list!)."""
+        """
+        Remove the FS from all FSs in the set, returning the new FSSet
+        (as a list!).
+        """
         fsset = self.unfreeze()
         to_remove = []
         for fs in fsset:
@@ -111,6 +117,12 @@ class FSSet(set):
         for fs in to_remove:
             fsset.remove(fs)
         return fsset
+
+    def delete(self, features, freeze=False):
+        fslist = self.unfreeze()
+        for index, fs in enumerate(fslist):
+            fslist[index] = fs.delete(features)
+        return FSSet(fslist)
 
     def unify(self, fs2, verbose=False):
         fs2_list = list(fs2)

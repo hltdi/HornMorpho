@@ -7,7 +7,7 @@
 
 ## doesn't apply
 # subject: 1 or 3; object: none or plural or 1, 2 sing or 3sf or 3smM
-start -> sp13       [XX;^;@;=]     [sp=1|3,fut=None];[sp=1|3,fut=def]
+start -> sp13       [XX;^;@;=]     [sp=1|3,sn=1,fut=None];[sp=1|3,sn=1,fut=def]
 sp13 -> start       [:]            [op=None];[on=2];[op=1];[op=2];[op=3,og=f];[op=3,og=m,on=1,ot=m]
 # subject: 2sm, object: none or plural or 3sf or 3smM
 start -> sp2sm      [XX;^;@;=]     [sp=2,sn=1,sg=m]
@@ -121,6 +121,9 @@ pal3_i -> fin         [DD;n]
 ## 3smO; don't palatalize final dental
 lab -> lab          [e;a;E;A]
 lab -> labC         [DD;n]
+# final stem consonant is palatalized before 3smO
+lab -> lab^         [^]
+lab^ -> labC        [X]
 ## labialize final labial or velar
 # impers
 pal -> lab1         [@:]      [sp=None]

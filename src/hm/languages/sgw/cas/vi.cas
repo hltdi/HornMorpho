@@ -44,6 +44,8 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, 0, =}
 
+# l, n, r combinations
+>rn<
 # Vowel and consonant combinations
 >aff_i<
 #{ Palatalization and labialization

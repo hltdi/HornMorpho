@@ -118,9 +118,20 @@ def make_casc(name):
 ### Debugging functions
 
 def get_subcas(cascade, name, language):
+    """
+    Get a cascade that is a sub-cascade of a POS cascade.
+    """
     abbrev = language.abbrev
-    return hm.morpho.fst.FSTCascade.load("hm/languages/" + abbrev + "/cas/" + name,
-                                         cascade.seg_units, language=language)
+    return hm.morpho.FSTCascade.load("hm/languages/" + abbrev + "/cas/" + name,
+                                            cascade.seg_units, language=language)
+
+def get_mincasc(language, cascname):
+    """Get a minor cascade, not a POS, for example, v_stem.cas."""
+    su = language.seg_units
+    ab = language.abbrev
+    return \
+    hm.morpho.FSTCascade.load("hm/languages/" + ab + "/cas/" + cascname,
+                                    language=language, seg_units=g.seg_units)
 
 def get_feats(fs, feats):
     """Print values for features feats within feature structure fs."""
@@ -129,12 +140,15 @@ def get_feats(fs, feats):
         values.append("{}={}".format(feat, fs.get(feat)))
     return ",".join(values)
 
-def casc_anal(casc, string, start_i, end_i=0, trace=0):
+def casc_anal(casc, string, start_i, end_i=0, limit=20, timeout=200,trace=0):
     seg_units = casc.seg_units
     s = string
     if end_i:
         for index in range(start_i, end_i):
-            res = casc[index].transduce(s, seg_units=seg_units, timeout=10, trace=trace)
+            res = casc[index].transduce(s, seg_units=seg_units,
+                                             timeout=timeout,
+                                             result_limit=limit,
+                                             trace=trace)
             if not res:
                 print('Analysis failed at {}'.format(index))
                 return
@@ -179,6 +193,10 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
             print(index, s, f)
     else:
         return casc[start_i].inverted().transduce(s, f, seg_units=seg_units, timeout=10)
+
+## shortcuts
+FS = hm.morpho.FeatStruct
+FSS = hm.morpho.FSSet
 
 ## shortcuts for Chaha ('sgw')
 #GA = lambda form: hm.anal('sgw', form, raw=True)

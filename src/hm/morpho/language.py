@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019.
+    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -113,6 +113,7 @@ CLEAN_RE = re.compile(r'\s*cle.*?:\s*(.*)\s*=\s*(.*)')
 PREPROC_RE = re.compile(r'\s*preproc.*?:\s*(.*)')
 POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
 PROCROOT_RE = re.compile(r'\s*procroot.*?:\s*(.*)')
+POSTPOSTPROC_RE = re.compile(r'\s*postpostproc.*?:\s*(.*)')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -481,6 +482,12 @@ class Language:
                     from .geez import sera2geez
                     self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev,
                                                            gemination='gem' in postproc)
+                continue
+
+            m = POSTPOSTPROC_RE.match(line)
+            if m:
+                postpostproc = m.group(1)
+                self.postpostproc = eval(postpostproc)
                 continue
 
             m = CLEAN_RE.match(line)
@@ -1729,8 +1736,10 @@ class Language:
                   segment=False, stem=True, guess=False,
                   postproc=False, gram=True, string=False,
                   freq=True):
-        '''Process analyses according to various options, returning a list of analysis tuples.
-        If freq, include measure of root and morpheme frequency.'''
+        '''
+        Process analyses according to various options, returning a list of analysis tuples.
+        If freq, include measure of root and morpheme frequency.
+        '''
         results = set()
 #        print("proc_anal {}".format(analysis[0]))
         if segment:

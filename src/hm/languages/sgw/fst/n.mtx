@@ -25,7 +25,7 @@ $ cop
   amer [cp=3,cn=2,cg=f,tns=prs]
   ab   [cp=1|2|3,tns=pst]
   --   [cp=0,tns=None]
-  
+
 $ defposs
   ane     [pp=1,pn=1]
   adne    [pp=1,pn=2]
@@ -33,11 +33,11 @@ $ defposs
   KYa     [pp=2,pn=1,pg=f]
   uKa     [pp=2,pn=2,pg=m]
   amKa    [pp=2,pn=2,pg=f]
-  ate     [+def];[pp=3,pg=m,pn=1]
-  atKYe   [+def];[pp=3,pg=f,pn=1]
-  anKWe   [+def];[pp=3,pg=m,pn=2]
-  onKe    [+def];[pp=3,pg=m,pn=2]
-  amenKWe [+def];[pp=3,pg=f,pn=2]
+  ate     [+def,-fem];[pp=3,pg=m,pn=1]
+  atKYe   [+def,+fem];[pp=3,pg=f,pn=1]
+  anKWe   [+def,-fem];[pp=3,pg=m,pn=2]
+  onKe    [+def,-fem];[pp=3,pg=m,pn=2]
+  amenKWe [+def,+fem];[pp=3,pg=f,pn=2]
   # pronouns as definite markers; include gender and number?
   atKW    [+def]
   atKY    [+def]
@@ -51,7 +51,7 @@ $ conj
   m       [cnj=m]
   x       [cnj=x]
   --      [cnj=None|K|a]
-  
+
 ## Boundary separating stem from suffixes
 $ bound2
   =

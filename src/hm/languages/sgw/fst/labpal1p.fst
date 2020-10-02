@@ -28,9 +28,11 @@ lab0 -> lab         [=]
 imp -> imp          [X;V]
 # bekewim
 imp -> imp_i         [i]
+# benefactive, malefactive
 imp_i -> imp        [p;n]
 
-# optionally (obligatory in Gumer??) insert w following -e of **y root; no more labialization necessary
+# optionally (obligatory in Gumer?? AND FOR GENERATION) insert w following -e of
+# **y root; no more labialization necessary
 imp_i -> imp_i=     [=]
 imp_i= -> pal_w     [w:]
 # bekewim

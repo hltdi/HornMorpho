@@ -1,11 +1,11 @@
 -> start
 
 ## PREPOSITIONS
-start -> stem_bound    [:]      [-dis,pp=None,-gen]
+start -> stem_bound    [:]      [-dis,prep=None,-gen]
 # The glottal stop appears only when its word-initial
-start -> stem_bound  <'y_e:>    [+dis,+def,pp=None,-gen]
+start -> stem_bound  <'y_e:>    [+dis,+def,prep=None,-gen]
 start -> distrib     >>n_prep<<
-start -> distrib     <ye:>      [+gen,pp=None]
+start -> distrib     <ye:>      [+gen,prep=None]
 
 ## DISTRIBUTIVE
 distrib -> stem_bound  [:]      [-dis]
@@ -61,7 +61,7 @@ poss -> acc     <wo(t):>    [+def,poss=[-p1,+p2,-plr,+frm,+expl]]
 
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc]
-acc -> cnj        [n:]     [+acc,pp=None]
+acc -> cnj        [n:]     [+acc,prep=None]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None,pos=n]

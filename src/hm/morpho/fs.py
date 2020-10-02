@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2018.
+    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2018, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -61,10 +61,32 @@ def _flatten(lst, cls):
     return result
 
 ######################################################################
+# Interface class for FeatStruct and FSSet
+######################################################################
+
+class FS:
+
+    def delete(self, features):
+        print("delete() not defined")
+
+#    def unify_FS(self, fs, strict=False, verbose=False):
+#        print("Not defined")
+
+#    def agree(self, target, agrs, force=False):
+#        print("Not defined")
+
+#    def upd(self, fs):
+#        """
+#        Return an FS/FSSet with features updated to agree with
+#        fs.
+#        """
+#        print("Not defined")
+
+######################################################################
 # Feature Structure
 ######################################################################
 
-class FeatStruct:
+class FeatStruct(FS):
 
     def __init__(self, features=None, types=None, fsh=None,
                  label='', freeze=False, **morefeatures):
@@ -260,6 +282,22 @@ class FeatStruct:
             if not isinstance(key, self._feature_name_types):
                 raise TypeError('Feature names must be strings')
             self[key] = val
+
+    def delete(self, features, freeze=False):
+        """
+        Return a copy of this FeatStruct with each feature in features
+        removed. features is a list of feature names or feature paths
+        (tuples of feature names).
+        """
+        fs = self.copy()
+        for feat_or_path in features:
+            try:
+                del fs[feat_or_path]
+            except KeyError:
+                print("Warning: {} not in {}".format(feat_or_path, fs.__repr__()))
+        if freeze:
+            fs.freeze()
+        return fs
 
     def _path_parent(self, path, operation):
         """

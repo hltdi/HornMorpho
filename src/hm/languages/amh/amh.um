@@ -1,7 +1,7 @@
 POS n
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
-pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
+prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 plr:: PL
 acc:: ACC
 gen:: GEN

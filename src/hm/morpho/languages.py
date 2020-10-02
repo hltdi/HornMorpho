@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018, 2019.
+    Copyleft 2011, 2012, 2013, 2016, 2018, 2019, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -32,8 +32,13 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'ch': 'sgw', 'sl': 'stv', 'ks': 'gru', 'so': 'som',
-         'ti': 'tir', 'tg': 'tir', 'te': 'tig', 'om': 'orm'}
+CODES = {'ch': 'sgw', 'chh': 'sgw',
+         'sl': 'stv', 'slt': 'stv',
+         'ks': 'gru', 'kst': 'gru',
+         'so': 'som',
+         'ti': 'tir', 'tg': 'tir',
+         'te': 'tig',
+         'om': 'orm'}
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
@@ -49,6 +54,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               cache=True, guess=True, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     lang_id = get_lang_id(lang)
+    if lang_id in CODES:
+        lang_id = CODES[lang_id]
     language = None
     if lang_id == 'am':
         from . import am_lang
@@ -57,7 +64,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # 2020.3.14: new Amharic
         from . import amh_lang
         language = amh_lang.AMH
-    elif lang_id == 'ti' or lang_id == 'tir':
+    elif lang_id == 'tir':
         from . import ti_lang
         language = ti_lang.TI
     elif lang_id == 'om':
@@ -87,6 +94,9 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             return False
     if cache != False:
         language.read_cache(segment=segment)
+    if lang_id in ['sgw', 'gru', 'stv', 'tig']:
+        from . import ees
+        EES = ees.EES(language)
     LANGUAGES[lang_id] = language
     for code in language.codes:
         LANGUAGES[code] = language

@@ -1,4 +1,4 @@
-ሀ=he ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho
+﻿ሀ=he ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho
 ለ=le ሉ=lu ሊ=li ላ=la ሌ=lE ል=l ሎ=lo
 ሐ=Ke ሑ=Ku ሒ=Ki ሓ=Ka ሔ=KE ሕ=K ሖ=Ko
 ⷐ=KYe ⷑ=KYu ⷒ=KYi ⷓ=KYa ⷔ=KYE ⷕ=KY ⷖ=KYo
