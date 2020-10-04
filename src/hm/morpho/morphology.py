@@ -420,7 +420,8 @@ class Morphology(dict):
         return self[pos].gen(form, features, from_dict=from_dict, postproc=postproc,
                              guess=guess, phon=phon, segment=segment, trace=trace)
 
-    def load_fst(self, label, generate=False, create_fst=True, save=False, verbose=False):
+    def load_fst(self, label, generate=False, create_fst=True,
+                 save=False, verbose=False):
         """Load an FST that is not associated with a particular POS."""
         path = os.path.join(self.get_cas_dir(), label + '.cas')
 #        path = os.path.join(self.directory, label + '.cas')
@@ -429,7 +430,8 @@ class Morphology(dict):
         if os.path.exists(path):
             # Load each of the FSTs in the cascade and compose them
             if verbose: print('Loading cascade ...')
-            casc = FSTCascade.load(path, seg_units=self.seg_units, language=self.language,
+            casc = FSTCascade.load(path, seg_units=self.seg_units,
+                                   language=self.language,
                                    create_networks=True)
             # create_fst is False in case we just want to load the individuals fsts.
             if create_fst:
@@ -514,7 +516,7 @@ class POSMorphology:
     gen_i = 1
     # Indices within sublists
     guess_i = 1
-    # Not currently used; save for some future purpose?
+    # Used for Amharic translation
     simp_i = 2
     phon_i = 3
     guessphon_i = 4
@@ -609,7 +611,8 @@ class POSMorphology:
         '''Print name.'''
         return self.pos + '_morphology'
 
-    def get_fst(self, generate=False, guess=False, simplified=False, phon=False, segment=False):
+    def get_fst(self, generate=False, guess=False, simplified=False,
+                phon=False, segment=False):
         """The FST satisfying the parameters."""
         analgen = self.fsts[self.gen_i if generate else self.anal_i]
         if guess:
@@ -648,7 +651,8 @@ class POSMorphology:
             self.defaultFS = fst._defaultFS.__repr__()
 #            print(self, 'assigned default FS', self.defaultFS)
 
-    def relabel(self, generate=False, guess=False, simplified=False, phon=False, segment=False):
+    def relabel(self, generate=False, guess=False, simplified=False,
+                phon=False, segment=False):
         """Relabel an FST by simplifying state names."""
         f = self.get_fst(generate=generate, guess=guess, simplified=simplified,
                          phon=phon, segment=segment)

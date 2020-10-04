@@ -51,7 +51,7 @@ def get_lang_dir(abbrev):
 
 def load_lang(lang, phon=False, segment=False, load_morph=True,
               # False, '', or the name of a cache file
-              cache=True, guess=True, poss=None, verbose=True):
+              cache=True, guess=True, simplified=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     lang_id = get_lang_id(lang)
     if lang_id in CODES:
@@ -77,7 +77,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment,
-                                    phon=phon, guess=guess, poss=poss, verbose=verbose)
+                                    phon=phon, guess=guess, simplified=simplified,
+                                    poss=poss, verbose=verbose)
         if not loaded:
 #            print("No additional data")
             # Impossible to load data somehow
@@ -87,8 +88,9 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             lang_id = CODES[lang_id]
         # Create the language from scratch
         language = Language.make('', lang_id, load_morph=load_morph,
-                                 segment=segment, phon=phon, guess=guess, poss=poss,
-                                 verbose=verbose)
+                                 segment=segment, phon=phon, guess=guess,
+                                 simplified=simplified,
+                                 poss=poss, verbose=verbose)
         if not language:
             # Impossible to make language with desired FST
             return False
@@ -106,7 +108,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         load_lang(language.backup, load_morph=False, guess=guess, verbose=verbose)
     return True
 
-def get_language(language, load=True, phon=False, segment=False, guess=True,
+def get_language(language, load=True,
+                 phon=False, segment=False, guess=True, simplified=False,
                  load_morph=True, cache='', verbose=False):
     """Get the language with lang_id, attempting to load it if it's not found
     and load is True."""
@@ -117,16 +120,18 @@ def get_language(language, load=True, phon=False, segment=False, guess=True,
     if not lang:
         if load:
             if not load_lang(lang_id, phon=phon, segment=segment, guess=guess,
+                             simplified=simplified,
                              load_morph=load_morph, cache=cache,
                              verbose=verbose):
                 return False
         return LANGUAGES.get(lang_id, None)
     if load_morph and not lang.morpho_loaded:
-        lang.load_morpho(phon=phon, segment=segment, guess=guess)
+        lang.load_morpho(phon=phon, segment=segment, guess=guess,
+                         simplified=simplified)
         return lang
     if not load_morph:
         return lang
-    fst = lang.get_fsts(phon=phon, segment=segment)
+    fst = lang.get_fsts(phon=phon, segment=segment, simplified=simplified)
     if not fst and load:
         print("You cannot do different kinds of analysis or generation in the same session!")
         print("Please exit() and start a new session!")
@@ -165,7 +170,9 @@ def get_language(language, load=True, phon=False, segment=False, guess=True,
 #    return LANGUAGES.get(lang_id, None)
 
 def load_pos(language, pos, scratch=False):
-    """Load FSTs for a single POS, overriding compiled FST if scratch is True."""
+    """
+    Load FSTs for a single POS, overriding compiled FST if scratch is True.
+    """
     language.morphology[pos].load_fst(scratch, recreate=True, verbose=True)
 
 def load_langs(abbrev, l1, poss1, l2, poss2,

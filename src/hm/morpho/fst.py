@@ -2588,7 +2588,7 @@ class FST:
                   trace=0, tracefeat='',
                   result_limit=5, timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
-         if timeit:
+        if timeit:
             time1 = time.time()
         words = []
         result = []

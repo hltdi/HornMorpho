@@ -29,7 +29,7 @@ acc0 -> acc       [:}]
 poss0 -> poss     [:}]
 
 ## Non-deverbal common nouns
-stem0 -> plr_oc0   +n_stem+      [v=None,-prp]
+stem0 -> plr_oc0   +n_stemS+      [v=None,-prp]
 plr_oc0 -> plr_oc       [:}]
 ## Place names; not necessarily -prp
 stem0 ->  place0   +n_place+     [v=None]

@@ -2,8 +2,7 @@ $ prag_conv
   x       [cnj=x]
   K       [cnj=K]
   a       [cnj=a]
-  m       [+mconv]
-  --      [cnj=None|m,-mconv]
+  --      [cnj=None|m]
 
 $ obl2
   eyn     [+dir]
@@ -17,7 +16,7 @@ $ obl1
 $ cop
   u    [cp=3]
   --   [cp=0]
-  
+
 $ defposs
   ane     [pp=1,pn=1]
   adne    [pp=1,pn=2]
@@ -26,27 +25,22 @@ $ defposs
   uKa     [pp=2,pn=2,pg=m]
   amKa    [pp=2,pn=2,pg=f]
   ate     [+def];[pp=3,pg=m,pn=1]
-  atKYe   [+def];[pp=3,pg=f,pn=1]
-  anKWe   [+def];[pp=3,pg=m,pn=2]
-  onKe    [+def];[pp=3,pg=m,pn=2]
-  amenKWe [+def];[pp=3,pg=f,pn=2]
-  # pronouns as definite markers; include gender and number?
+  atKYe   [pp=3,pg=f,pn=1]
+  anKWe   [pp=3,pg=m,pn=2]
+  onKe    [pp=3,pg=m,pn=2]
+  amenKWe [pp=3,pg=f,pn=2]
+  # pronoun as definite markers
   atKW    [+def]
-  atKY    [+def]
-  tKW     [+def]
-  tKY     [+def]
-  onK     [+def]
-  amenK   [+def]
   --      [-def,pp=0]
 
 $ conj
-  m       [cnj=m,-mconv]
+  m       [cnj=m]
   --      [cnj=None|x|K|a]
 
 $ ot
   to  [tp=ot]
   --  [tp=we]
-  
+
 ## Boundary separating stem from suffixes
 $ bound2
   =

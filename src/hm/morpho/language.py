@@ -307,19 +307,21 @@ class Language:
 
     @staticmethod
     def make(name, abbrev, load_morph=False,
-             segment=False, phon=False,
+             segment=False, phon=False, simplified=False,
              guess=True, poss=None, verbose=False):
         """Create a language using data in the language data file."""
         lang = Language(abbrev=abbrev)
         # Load data from language file
-        loaded = lang.load_data(load_morph=load_morph, segment=segment, phon=phon,
+        loaded = lang.load_data(load_morph=load_morph,
+                                segment=segment, phon=phon, simplified=simplified,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
             # Loading data failed somewhere; abort
             return
         return lang
 
-    def load_data(self, load_morph=False, segment=False, phon=False, guess=True,
+    def load_data(self, load_morph=False,
+                  segment=False, phon=False, guess=True, simplified=False,
                   poss=None, verbose=False):
         if self.load_attempted:
             return
@@ -335,7 +337,9 @@ class Language:
                 data = stream.read()
                 self.parse(data, poss=poss, verbose=verbose)
         if load_morph:
-            if not self.load_morpho(segment=segment, ortho=True, phon=phon, guess=guess, verbose=verbose):
+            if not self.load_morpho(segment=segment, ortho=True, phon=phon,
+                                    guess=guess, simplified=simplified,
+                                    verbose=verbose):
                 # There is no FST of the desired type
                 return False
         # Create a default FS for each POS
@@ -1101,7 +1105,7 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
-    def load_morpho(self, fsts=None, ortho=True, phon=False,
+    def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
                     segment=False, recreate=False, guess=True, verbose=False):
         """Load words and FSTs for morphological analysis and generation."""
         fsts = fsts or self.morphology.pos
@@ -1112,7 +1116,8 @@ class Language:
             opt_string = 'phonetic'
         else:
             opt_string = 'analysis/generation'
-        if not self.has_cas(generate=phon, guess=False, phon=phon, segment=segment):
+        if not self.has_cas(generate=phon, guess=False, phon=phon,
+                            segment=segment, simplified=simplified):
             print('No {} FST available for {}!'.format(opt_string, self))
             return False
         msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
@@ -1141,11 +1146,13 @@ class Language:
             if ortho:
                 self.morphology[pos].load_fst(gen=not segment,
                                               create_casc=False,
+                                              simplified=simplified,
                                               phon=False, segment=segment,
                                               recreate=recreate, verbose=verbose)
             if phon or (ortho and not segment):
                 self.morphology[pos].load_fst(gen=True,
                                               create_casc=False,
+                                              simplified=simplified,
                                               phon=True, segment=segment,
                                               recreate=recreate, verbose=verbose)
             # Load guesser anal and gen FSTs
@@ -1153,10 +1160,12 @@ class Language:
                 if ortho:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=False, segment=segment,
                                                   create_casc=False,
+                                                  simplified=simplified,
                                                   recreate=recreate, verbose=verbose)
                 if phon:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False,
+                                                  simplified=simplified,
                                                   recreate=recreate, verbose=verbose)
             # Load statistics for generation
             self.morphology[pos].set_root_freqs()

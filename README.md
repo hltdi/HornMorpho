@@ -4,7 +4,7 @@ This is version 4.0 of ***HornMorpho***, a Python program that performs morpholo
 -->
 
 ## Installation
-To install HornMorpho, extract the files from the archive you downloaded with this distribution, `HornMorphoA-4.0.tar.gz`. (You can find this in the `dist` folder.) Then go to the top-level directory in the extracted files, and do
+To install HornMorpho, extract the files from the archive you downloaded with this distribution, `HornMorphoA-4.0.tar.gz`. (You can find this in the `Versions/4.0` folder.) Then go to the top-level directory in the extracted files, and do
 
 	python setup.py install
 

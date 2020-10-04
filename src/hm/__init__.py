@@ -42,14 +42,15 @@ def exit(save=True, cache=''):
     morpho.languages.LANGUAGES.clear()
 
 def load_lang(language, phon=False, segment=False,
-              load_morph=True, cache='',
+              load_morph=True, cache='', simplified=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
     @param language: a language label
     @type  language: string
     """
-    morpho.load_lang(language, phon=phon, segment=segment,
+    morpho.load_lang(language,
+                     phon=phon, segment=segment, simplified=simplified,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 

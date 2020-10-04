@@ -62,6 +62,8 @@ feats:
 
   prep = None | ye | be | te
 
+  *plr = False | True
+
   *goal = False | True
   *sim = False | True
   *dir = False | True

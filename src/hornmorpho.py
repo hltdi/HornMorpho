@@ -50,7 +50,7 @@ def get_lang(abbrev, segment=False, guess=True, phon=False, cache='', verbose=Fa
                                   segment=segment, load=True, verbose=verbose)
 
 def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
-            guess=True, verbose=False):
+            guess=True, simplified=False, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
     @param abbrev: abbreviation for a language, for example, 'am'
@@ -68,8 +68,8 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
 
     """
     hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
-                 guess=guess, verbose=verbose)
-    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment,
+                 guess=guess, simplified=simplified, verbose=verbose)
+    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment, simplified=simplified,
                                   load=load_morph, load_morph=load_morph,
                                   verbose=verbose)
     if lang:
@@ -82,16 +82,17 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False, segment=False, 
     return pos.casc
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-              backwards=False, split_index=0, verbose=True):
+              simplified=False, backwards=False, split_index=0, verbose=True):
     """Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
     Note 1: this can take a very long time for some languages.
     Note 2: the resulting FST is not saved (written to a file). To do this, use the method
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment,
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment,simplified=simplified,
                         load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
+                             simplified=simplified,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
