@@ -9,7 +9,7 @@ setup(name='HornMorpho',
       author_email='gasser@indiana.edu',
       url='http://homes.soic.indiana.edu/gasser/plogs.html',
       license="GPL v3",
-      install_requires=["yaml>=5.0"],
+#      install_requires=["yaml>=5.0"],
       packages=find_packages("src"),
       package_dir={'': "src"},
       package_data = {'hm':
