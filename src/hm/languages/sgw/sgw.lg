@@ -1,10 +1,6 @@
 name: ቸሓ
 code: ch
 
-preproc: geez
-postproc: geez
-postpostproc: lambda form: form.replace('//', ' ')
-
 seg: a e i o u E I A
      b bW c C d f fW g gW gY h j
      k kW kY K KW KY l m mW n p pW q qW qY r s
@@ -104,6 +100,43 @@ feats:
                cs (causative) = False | True
 
   as (aspect) = None | it (freq) | rc (recip)
+
+  *tns = None | prs | pst
+  {tns} (prs): = +prs
+  {tns} (pst): = +pst
+
+  *cnj = None | m | x | K | a
+  {cnj} (m): conj = m
+  {cnj} (x): conj = sh
+  {cnj} (K): conj = x
+  {cnj} (a): conj = a
+
+  prep = None | ye | be | te
+
+  *goal = False | True
+  *sim = False | True
+  *dir = False | True
+  {goal} (True): = +goal
+  {sim} (True): = +sim
+  {dir} (True): = +dir
+
+## Names
+
+  pos: nm name
+
+  *cp = 0 | 1 | 2 | 3
+  *cn = 1 | 2
+  *cg = m | f
+  {cp, cn} (1, 1): cop = 1 pers sing
+  {cp, cn} (1, 2): cop = 1 pers plur
+  {cp, cn, cg} (2, 1, m): cop = 2 pers sing mas
+  {cp, cn, cg} (2, 1, f): cop = 2 pers sing fem
+  {cp, cn, cg} (2, 2, m): cop = 2 pers plur mas
+  {cp, cn, cg} (2, 2, f): cop = 2 pers plur fem
+  {cp, cn, cg} (3, 1, m): cop = 3 pers sing mas
+  {cp, cn, cg} (3, 1, f): cop = 3 pers sing fem
+  {cp, cn, cg} (3, 2, m): cop = 3 pers plur mas
+  {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
 
   *tns = None | prs | pst
   {tns} (prs): = +prs

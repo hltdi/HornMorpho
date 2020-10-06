@@ -1,8 +1,7 @@
 name: ክስታንኘ
 code: ks
 
-preproc: geez_gem
-postproc: geez_gem
+gemination: True
 
 seg: a e i o u I E
      b c C d f g gW h hW j
@@ -84,7 +83,7 @@ feats:
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
-# no default for object gender?  
+# no default for object gender?
 #  *og = m | f
   # accusative | benefactive | malefactive objects
   *ot = a | b | m

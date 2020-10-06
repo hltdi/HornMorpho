@@ -167,7 +167,11 @@ def is_geez(form):
     form must be UTF8 decoded.
     '''
     for char in form:
-        if 4608 <= ord(char) <= 4988:
+        c = ord(char)
+        if 4608 <= c <= 4988:
+            return True
+        # new characters for Feqede Gurage orthography
+        if 57412 <= c <= 57415:
             return True
     return False
 
@@ -416,7 +420,7 @@ def root2geez(table, root, lang='am'):
         res += trans
         if sep:
             res += ROOT_SEP
-        n += 1        
+        n += 1
     return res + ROOT_RIGHT
 
 def geez2sera(table, form, lang='am', simp=False, delete='',
@@ -662,5 +666,3 @@ def geez_alpha(s1, s2, pos1 = 0, pos2 = 0):
         else:
             # Both are non-Ethiopic characters
             return cmp(s1[pos1:], s2[pos2:])
-
-    

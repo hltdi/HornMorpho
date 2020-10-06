@@ -1,17 +1,3 @@
-$ prag
-  K       [cnj=K]
-  a       [cnj=a]
-  --      [cnj=None|m|x]
-
-$ obl2
-  eyn     [+dir]
-  --      [-dir]
-
-$ obl1
-  E       [+goal]
-  ameK    [+sim]
-  --      [-goal,-sim]
-
 $ cop
   KWn  [cp=1,cn=1,tns=prs]
   eKn  [cp=2,cn=1,cg=m,tns=prs]
@@ -25,6 +11,20 @@ $ cop
   amer [cp=3,cn=2,cg=f,tns=prs]
   ab   [cp=1|2|3,tns=pst]
   --   [cp=0,tns=None]
+
+$ prag
+  K       [cnj=K]
+  a       [cnj=a]
+  --      [cnj=None|m|x]
+
+$ obl2
+  eyn     [+dir]
+  --      [-dir]
+
+$ obl1
+  E       [+goal]
+  ameK    [+sim]
+  --      [-goal,-sim]
 
 $ defposs
   ane     [pp=1,pn=1]

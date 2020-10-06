@@ -67,7 +67,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     elif lang_id == 'tir':
         from . import ti_lang
         language = ti_lang.TI
-    elif lang_id == 'om':
+    elif lang_id == 'orm':
         from . import om_lang
         language = om_lang.OM
 #    elif lang_id == 'stv':
@@ -87,18 +87,21 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         if lang_id in CODES:
             lang_id = CODES[lang_id]
         # Create the language from scratch
+        ees = False
+        if lang_id in ['sgw', 'gru', 'stv', 'tig']:
+            ees = True
+#            from . import ees
+#            EES = ees.EES()
         language = Language.make('', lang_id, load_morph=load_morph,
                                  segment=segment, phon=phon, guess=guess,
                                  simplified=simplified,
-                                 poss=poss, verbose=verbose)
+                                 poss=poss, ees=ees,
+                                 verbose=verbose)
         if not language:
             # Impossible to make language with desired FST
             return False
     if cache != False:
         language.read_cache(segment=segment)
-    if lang_id in ['sgw', 'gru', 'stv', 'tig']:
-        from . import ees
-        EES = ees.EES(language)
     LANGUAGES[lang_id] = language
     for code in language.codes:
         LANGUAGES[code] = language

@@ -1,3 +1,7 @@
+$ cop
+  u    [cp=3]
+  --   [cp=0]
+
 $ prag_conv
   x       [cnj=x]
   K       [cnj=K]
@@ -12,10 +16,6 @@ $ obl1
   E       [+goal]
   ameK    [+sim]
   --      [-goal,-sim]
-
-$ cop
-  u    [cp=3]
-  --   [cp=0]
 
 $ defposs
   ane     [pp=1,pn=1]

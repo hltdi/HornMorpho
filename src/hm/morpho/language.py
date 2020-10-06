@@ -54,6 +54,7 @@ from .anal import *
 from .utils import some, segment
 from .rule import *
 from .um import *
+from .ees import *
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -114,6 +115,7 @@ PREPROC_RE = re.compile(r'\s*preproc.*?:\s*(.*)')
 POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
 PROCROOT_RE = re.compile(r'\s*procroot.*?:\s*(.*)')
 POSTPOSTPROC_RE = re.compile(r'\s*postpostproc.*?:\s*(.*)')
+GEMINATION_RE = re.compile(r'\s*gem.*?:\s*.*')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -140,6 +142,8 @@ class Language:
                  # list of lists of grammatical features for statistics, e.g.,
                  # [poss, expl] for Amharic (whether is explicitly possessive)
                  stat_feats=None,
+                 # Whether gemination is indicated in EES language
+                 output_gemination=False,
                  rules=None,
                  citation_separate=True):
 #                 msgs=None, trans=None):
@@ -167,6 +171,7 @@ class Language:
         self.procroot = procroot
         self.postproc = postproc
         self.postpostproc = postpostproc
+        self.output_gemination = output_gemination
         self.seg2string = seg2string
         self.seg_units = seg_units or []
         self.stat_root_feats = stat_root_feats or []
@@ -308,9 +313,14 @@ class Language:
     @staticmethod
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False,
-             guess=True, poss=None, verbose=False):
+             guess=True, poss=None,
+             ees=False,
+             verbose=False):
         """Create a language using data in the language data file."""
-        lang = Language(abbrev=abbrev)
+        if ees:
+            lang = EESLanguage(abbrev=abbrev)
+        else:
+            lang = Language(abbrev=abbrev)
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph,
                                 segment=segment, phon=phon, simplified=simplified,
@@ -466,10 +476,11 @@ class Language:
             m = PREPROC_RE.match(line)
             if m:
                 preproc = m.group(1)
-                if preproc.startswith('geez'):
-                    from .geez import geez2sera
-                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev,
-                                                          gemination='gem' in preproc)
+#                if preproc.startswith('geez'):
+#                    from .geez import geez2sera
+#                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev,
+#                                                          gemination='gem' in preproc)
+                self.preproc = eval(preproc)
                 continue
 
             m = PROCROOT_RE.match(line)
@@ -477,21 +488,29 @@ class Language:
                 procroot = m.group(1)
                 if procroot.startswith('def'):
                     self.procroot = Language.dflt_procroot
+                else:
+                    self.procroot = eval(procroot)
                 continue
 
             m = POSTPROC_RE.match(line)
             if m:
                 postproc = m.group(1)
-                if postproc.startswith('geez'):
-                    from .geez import sera2geez
-                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev,
-                                                           gemination='gem' in postproc)
+#                if postproc.startswith('geez'):
+#                    from .geez import sera2geez
+#                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev,
+#                                                           gemination='gem' in postproc)
+                self.postproc = eval(postproc)
                 continue
 
             m = POSTPOSTPROC_RE.match(line)
             if m:
                 postpostproc = m.group(1)
                 self.postpostproc = eval(postpostproc)
+                continue
+
+            m = GEMINATION_RE.match(line)
+            if m:
+                self.output_gemination = True
                 continue
 
             m = CLEAN_RE.match(line)
@@ -1174,7 +1193,8 @@ class Language:
         self.morpho_loaded = True
         return True
 
-    def get_fsts(self, generate=False, phon=False, segment=False):
+    def get_fsts(self, generate=False, phon=False,
+                 simplified=False, segment=False):
         '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
         fsts = []
         for pos in self.morphology.pos:
@@ -1187,10 +1207,10 @@ class Language:
         return fsts
 
     def has_cas(self, generate=False, guess=False,
-                phon=False, segment=False):
+                simplified=False, phon=False, segment=False):
         """Is there at least one cascade file for the given FST features?"""
         for pos in self.morphology.pos:
-            if self.morphology[pos].has_cas(generate=generate,
+            if self.morphology[pos].has_cas(generate=generate, simplified=simplified,
                                             guess=guess, phon=phon, segment=segment):
                 return True
         return False
@@ -2050,3 +2070,13 @@ class Language:
         else:
             print("No rules available for {}".format(POS))
             return segstring
+
+class EESLanguage(EES, Language):
+    '''
+    Ethio-Eritrean Semitic languages, which share many properties,
+    especially related to orthography.
+    '''
+
+    def __init__(self, abbrev):
+        Language.__init__(self, abbrev)
+        EES.__init__(self)

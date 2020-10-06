@@ -516,7 +516,7 @@ class POSMorphology:
     gen_i = 1
     # Indices within sublists
     guess_i = 1
-    # Used for Amharic translation
+    # Used for Amharic noun translation
     simp_i = 2
     phon_i = 3
     guessphon_i = 4
@@ -647,6 +647,7 @@ class POSMorphology:
             index2 = self.seg_i
         self.fsts[self.gen_i if generate else self.anal_i][index2] = fst
         # Also assign the defaultFS if the FST has one
+        # NOTE: DIFFERENT FSTs FOR THE SAME POS SHOULD AGREE ON THI
         if fst._defaultFS:
             self.defaultFS = fst._defaultFS.__repr__()
 #            print(self, 'assigned default FS', self.defaultFS)
@@ -1151,6 +1152,8 @@ class POSMorphology:
             features = fss
         else:
             features = FSSet.cast(features)
+#        print("GENERATING {}, features {}, fst {}".format(root, features.__repr__(),
+#                                                          fst.__repr__()))
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form

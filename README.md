@@ -37,7 +37,7 @@ Morphological analysis takes a word and returns zero or more analyses, each cons
      possessor: 1 plur
      other: definite, genitive
      
->To return the 'raw' internal analysis of the word, use the option `raw=True`. A Python `dict` is returned (this is new in versions 4.0), with keys for lemma, gloss, and grammatical features ('gram').
+>To return the 'raw' internal analysis of the word, use the option `raw=True`. A  `list` ofPython `dicts` is returned, one for each analysis (this is new in versions 4.0), with keys for lemma, gloss, and grammatical features ('gram').
 
 >The grammatical features returned are in the form of a **feature structure**, a kind of `dict` with grammatical feature names as keys and their values as values. Among the features you may find useful are `sb` (subject), `tm` (tense-aspect-modality), `ob` (object). (A complete description of these features will appear soon.) 
 
