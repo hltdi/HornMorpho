@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+### NOTE: THIS CURRENTLY FAILS TO EXCLUDE OTHER LANGUAGES!
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoA',
@@ -25,15 +26,15 @@ setup(name='HornMorphoA',
                      'languages/gru/cache/*',
                      'docs/horn3_quick.pdf',
                      'morpho/geez/*']
-                     }
-#      exclude_package_data= {'hm':
-#                             ['languages/am/*',
-#                              'languages/en/*',
-#                              'languages/sgw/*',
-#                              'languages/om/*',
-#                              'languages/som/*',
-#                              'languages/stv/*'
-#                              'languages/ti/*',
-#                              'languages/tig/fst/*']
-#                              }
+                     },
+      exclude_package_data={'hm':
+                             ['languages/am/*',
+                              'languages/en/*',
+                              'languages/sgw/*',
+                              'languages/om/*',
+                              'languages/som/*',
+                              'languages/stv/*'
+                              'languages/ti/*',
+                              'languages/tig/fst/*']
+                              }
                              )
