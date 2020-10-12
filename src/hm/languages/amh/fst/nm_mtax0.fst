@@ -6,7 +6,7 @@ start -> stem_bound     >>n_prep<<
 start -> stem_bound     <ye:>    [+gen,prep=None]
 
 ## BOUNDARY BETWEEN PREFIXES AND STEM
-stem_bound -> stem     [$:]
+stem_bound -> stem     [$:]      [pos=nm]
 
 ## STEM
 stem -> stemC1       [XX]

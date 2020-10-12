@@ -426,7 +426,8 @@ class Morphology(dict):
         path = os.path.join(self.get_cas_dir(), label + '.cas')
 #        path = os.path.join(self.directory, label + '.cas')
         casc = fst = None
-        if verbose: print('Looking for cascade at', path)
+#        if verbose:
+        print('Looking for cascade at', path)
         if os.path.exists(path):
             # Load each of the FSTs in the cascade and compose them
             if verbose: print('Loading cascade ...')
@@ -840,11 +841,12 @@ class POSMorphology:
         name = self.fst_name(generate, guess, simplified, phon=phon, segment=segment)
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
         if verbose:
-            s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}'
+            s1 = 'Attempting to load {0} FST for {1} {2}{3}{4} (recreate {5})'
             print(s1.format(('GENERATION' if generate else 'ANALYSIS'),
                             self.language.label, self.pos,
                             (' (GUESSER)' if guess else ''),
-                            (' (SEGMENTED)' if segment else '')))
+                            (' (SEGMENTED)' if segment else ''),
+                            recreate))
         if not compose and not recreate:
             # Load a composed FST encompassing everything in the cascade
             fst = FST.restore(self.pos, cas_directory=self.morphology.get_cas_dir(),
@@ -870,40 +872,48 @@ class POSMorphology:
         if not self.get_fst(generate, guess, simplified, phon=phon, segment=segment) or recreate:
             # Either there was no composed FST or we're supposed to recreate it anyway, so get
             # the cascade and compose it (well, unless create_fst is False)
-            if verbose: print('Looking for cascade at', path, 'subcasc', subcasc)
+            if verbose:
+                print('Looking for cascade at', path, 'subcasc', subcasc)
             if os.path.exists(path):
-                # Load each of the FSTs in the cascade and compose them
-                if verbose: print('Recreating...')
-                self.casc = FSTCascade.load(path,
-                                            seg_units=self.morphology.seg_units,
-                                            create_networks=True, subcasc=subcasc,
-                                            language=self.language,
-                                            gen=generate,
-                                            verbose=verbose)
-                self.casc_inv = self.casc.inverted()
-                # create_fst is False in case we just want to load the individuals fsts.
-                if create_fst:
+                if recreate:
+                    # Load each of the FSTs in the cascade and compose them
                     if verbose:
-                        print("Composing analysis FST, reverse={}, split_index={}".format(self.casc.r2l, split_index))
-                    if split_index:
-                        fst = self.casc.rev_compose(split_index, trace=verbose)
-                    else:
-                        fst = self.casc.compose(backwards=compose_backwards, trace=verbose, subcasc=subcasc,
-#                                                end=split_index if split_index else None,
-                                                relabel=relabel)
-                    if invert:
-                        fst = fst.inverted()
-                    self.set_fst(fst, generate, guess, simplified, phon=phon, segment=segment)
-                    self.casc.append(fst)
+                        print('Recreating...')
+                    self.casc = FSTCascade.load(path,
+                                                seg_units=self.morphology.seg_units,
+                                                create_networks=True, subcasc=subcasc,
+                                                language=self.language,
+                                                gen=generate,
+                                                verbose=verbose)
+                    self.casc_inv = self.casc.inverted()
+                    # create_fst is False in case we just want to load the individuals fsts.
+                    if create_fst:
+                        if verbose:
+                            print("Composing analysis FST, reverse={}, split_index={}".format(self.casc.r2l, split_index))
+                        if split_index:
+                            fst = self.casc.rev_compose(split_index, trace=verbose)
+                        else:
+                            fst = self.casc.compose(backwards=compose_backwards, trace=verbose, subcasc=subcasc,
+    #                                                end=split_index if split_index else None,
+                                                    relabel=relabel)
+                        if invert:
+                            fst = fst.inverted()
+                        self.set_fst(fst, generate, guess, simplified, phon=phon, segment=segment)
+                        self.casc.append(fst)
+                elif verbose:
+                    print("No recreating FST")
             elif verbose:
                 print('  No cascade exists at', path, end=' ')
                 if gen: print()
         if gen:
-            if not self.load_fst(compose=False, generate=True, gen=False, create_casc=create_casc,
-                                 guess=guess, simplified=simplified, phon=phon, segment=segment,
+            if not self.load_fst(compose=False, generate=True, gen=False,
+                                 create_casc=create_casc,
+                                 guess=guess, simplified=simplified,
+                                 phon=phon, segment=segment,
                                  invert=True, verbose=verbose):
                 # Explicit generation FST not found, so invert the analysis FST
-                if verbose: print("... inverting analysis FST")
+                if verbose:
+                    print("... inverting analysis FST")
                 fst = fst or self.get_fst(False, guess, simplified, phon=phon, segment=segment)
                 if fst:
                     self.set_fst(fst.inverted(), True, guess, simplified,

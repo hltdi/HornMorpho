@@ -1177,7 +1177,8 @@ class Language:
             # Load guesser anal and gen FSTs
             if not segment and guess:
                 if ortho:
-                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False, segment=segment,
+                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
+                                                  segment=segment,
                                                   create_casc=False,
                                                   simplified=simplified,
                                                   recreate=recreate, verbose=verbose)

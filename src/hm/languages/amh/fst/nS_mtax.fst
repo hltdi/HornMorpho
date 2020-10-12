@@ -19,10 +19,10 @@ stem -> poss      +ppronS+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 # Non-deverbal common nouns
 stem -> plr_oc   +nS_stem+      [v=None,-prp]
 # Place names; not necessarily -prp
-stem ->  place   +n_place+     [v=None]
-place -> acc      [:]          [+def,+prp,-itu,poss=[-expl]]
+#stem ->  place   +n_place+     [v=None]
+#place -> acc      [:]          [+def,+prp,-itu,poss=[-expl]]
 # Proper nouns (possessive is possible); always 3rd person singular
-stem -> poss     +n_name+      [v=None,-p1,-p2,+def,+prp,-plr,-itu]
+#stem -> poss     +n_name+      [v=None,-p1,-p2,+def,+prp,-plr,-itu]
 stem -> plr_an   +n_stem_an+   [v=None,-prp]
 
 # Deverbal nouns: v=agt | ins | man | inf
