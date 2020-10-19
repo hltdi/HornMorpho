@@ -84,8 +84,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             # Impossible to load data somehow
             pass
     else:
-        if lang_id in CODES:
-            lang_id = CODES[lang_id]
+#        if lang_id in CODES:
+#            lang_id = CODES[lang_id]
         # Create the language from scratch
         ees = False
         if lang_id in ['sgw', 'gru', 'stv', 'tig']:

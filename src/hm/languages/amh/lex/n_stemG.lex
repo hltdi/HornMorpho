@@ -4039,7 +4039,7 @@ wneta
 wn
 wndb_i
 wjmbr
-'alq_t_
+'alqt
 'amelam
 'ameleNa
 'amelebis

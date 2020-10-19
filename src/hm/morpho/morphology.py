@@ -901,7 +901,7 @@ class POSMorphology:
                         self.set_fst(fst, generate, guess, simplified, phon=phon, segment=segment)
                         self.casc.append(fst)
                 elif verbose:
-                    print("No recreating FST")
+                    print("Not recreating FST")
             elif verbose:
                 print('  No cascade exists at', path, end=' ')
                 if gen: print()

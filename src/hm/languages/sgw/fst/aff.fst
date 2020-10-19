@@ -28,7 +28,7 @@ e= -> stem        [X;V-a,e]
 del_e -> del_e=  [:=]
 del_e= -> stem    [a;e]
 # benemam; seTemam; SKIP FOR GENERATION
-e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
+#e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
 
 e -> eb          [b:]      [sn=2,sp=3,sg=f]
 eb -> eb=        [:=]

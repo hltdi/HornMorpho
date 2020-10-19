@@ -92,7 +92,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment,simplified=simplified,
                         load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-                             simplified=simplified,
+                             simplified=simplified, recreate=True,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
