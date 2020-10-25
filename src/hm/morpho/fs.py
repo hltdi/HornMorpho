@@ -294,7 +294,8 @@ class FeatStruct(FS):
             try:
                 del fs[feat_or_path]
             except KeyError:
-                print("Warning: {} not in {}".format(feat_or_path, fs.__repr__()))
+                pass
+#                print("Warning: {} not in {}".format(feat_or_path, fs.__repr__()))
         if freeze:
             fs.freeze()
         return fs

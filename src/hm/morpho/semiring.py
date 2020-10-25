@@ -164,6 +164,29 @@ class FSSet(set, FS):
                 return value
         return default
 
+    def get_all(self, feature, default=None):
+        """
+        Get the value of the feature in all FeatStructs that have one.
+        """
+        values = []
+        for fs in self:
+            value = fs.get(feature)
+            if value != None:
+                values.append(value)
+        return values or default
+
+    # def get_all_mult(self, features, default=None):
+    #     values = []
+    #     for fs in self:
+    #         values1 = []
+    #         for feature in features:
+    #             value = fs.get(feature)
+    #             if value != None:
+    #                 values1.append(value)
+    #         if values1:
+    #             values.append(values1)
+    #     return values or default
+
     def inherit(self):
         """Inherit feature values for all members of set, returning new set."""
         items = [item.inherit() for item in self]

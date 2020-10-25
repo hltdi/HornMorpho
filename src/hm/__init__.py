@@ -237,32 +237,31 @@ def anal_file(language, infile, outfile=None,
                            lower_all=lower_all,
                            start=start, nlines=nlines)
 
-def gen(language, root, features=[], pos=None, guess=False, phon=False,
-        ortho=True, um='', all_words=True,
-        roman=False, interact=False, return_word=False):
-    '''Generate a word, given stem/root and features (replacing those in default).
-    If pos is specified, check only that POS; otherwise, try all in order until one succeeeds.
+def gen(language, root, features=[], pos=None, guess=False,
+        phon=False, ortho=True, ortho_only=False,
+        um='', all_words=True, del_feats=None, report_um=True,
+        roman=False, interact=False, return_words=True):
+    '''
+    Generate a word, given stem/root and features (replacing those in default).
+    If pos is specified, check only that POS; otherwise, try all in order until
+    one succeeeds.
 
-    @param root:     root or stem of a word
-    @type  root:     string (roman)
-    @param features: grammatical features to be added to default
-    @type  features: string containing bracketed expression, e.g., '[sb=[+p1,+plr]]'
-    @param pos:      part-of-speech: use only the generator for this POS
-    @type  pos:      string
-    @param guess:    whether to use guess generator if lexical generator fails
-    @type  guess:    boolean
-    @param phon:     whether to use the 'phonetic' generation FST
-    @type phon:      boolean
-    @param ortho:    whether to first convert the root from orthographic form
-    @type ortho:     boolean
-    @param roman:    whether the languages uses a roman script
-    @type roman:      boolean
-    @param return_word: whether to return the word, rather than printing it out
-    @type return_word: boolean
-    @param um:       UniMorph features
-    @type um:        string
-    @param all_words: whether to return all words
-    @type all_words: boolean
+    @param root <str (roman)>:     root or stem of a wor
+    @param features <str: [sb=[+p1,+plr]>: grammatical features to be added
+       to default
+    @param pos <str>:    part-of-speech: use only the generator for this POS
+    @param guess <bool>:    whether to use guess generator if lexical generator fails
+    @param phon <bool>:     whether to use the 'phonetic' generation FST
+    @param ortho <bool>:    whether to first convert the root from orthographic form
+    @param ortho_only <bool>: whether to not return/print romanized/phonetic form
+    @param roman <bool>:    whether the languages uses a roman script
+    @param return_words <bool>: whether to return the words, rather than printing
+      them out
+    @param um <str>:       UniMorph features
+    @param all_words <bool>: whether to return all words
+    @param del_feats <list of strings>: features to be deleted from default so that all
+      values can be generated
+    @param report_um <bool>: whether to report UM features if del_feats is True
     '''
     language = morpho.get_language(language, segment=False, phon=phon)
     if language:
@@ -282,8 +281,11 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
                     um_converted = True
             if features or not um:
                 output = posmorph.gen(root, update_feats=features,
-                                    interact=interact, ortho=ortho, phon=phon,
-                                    postproc=is_not_roman, guess=guess)
+                                      interact=interact,
+                                      del_feats=del_feats,
+                                      ortho=ortho, phon=phon,
+                                      ortho_only=ortho_only,
+                                      postproc=is_not_roman, guess=guess)
                 if output:
                     outputs.extend(output)
         if not outputs:
@@ -297,8 +299,11 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
                 if features or not um:
 #                    print("Generating (POS={})".format(posmorph.pos))
                     output = posmorph.gen(root, update_feats=features,
-                                        interact=interact, ortho=ortho, phon=phon,
-                                        postproc=is_not_roman, guess=guess)
+                                          interact=interact,
+                                          del_feats=del_feats,
+                                          ortho=ortho, phon=phon,
+                                          ortho_only=ortho_only,
+                                          postproc=is_not_roman, guess=guess)
 #                    print("Output for {}: {}".format(posmorph.pos, output))
                     if output:
                         outputs.extend(output)
@@ -309,11 +314,19 @@ def gen(language, root, features=[], pos=None, guess=False, phon=False,
             return
 
         if outputs:
-            if all_words:
+            if del_feats:
+                # For del_feats, we need to print out relevant
+                # values of del_feats for each output word
+                o = morpho.POSMorphology.separate_gens(outputs)
+                if report_um:
+                    o = language.gen_um_outputs(o)
+                else:
+                    o = morpho.POSMorphology.gen_output_feats(o, del_feats)
+            elif all_words:
                 o = [out[0] for out in outputs]
             else:
                 o = outputs[0][0]
-            if return_word:
+            if return_words:
                 return o
             else:
                 print(o)

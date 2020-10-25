@@ -138,7 +138,7 @@ class UniMorph:
         feature could be a tuple of features.
         """
         if verbosity:
-            print(" converb_bool; checking {}".format(featmap))
+            print(" convert_bool; checking {}".format(featmap))
         for feats, um in featmap:
             found = True
             if isinstance(feats, tuple):
@@ -191,9 +191,9 @@ class UniMorph:
         if posh2u:
             for f, v in posh2u:
                 if verbosity:
-                    print("CHECKING {} : {}".format(f, v))
+                    print("CHECKING {} : {} (v type {})".format(f, v, type(v)))
                     print(" FS: {}".format(fs.__repr__()))
-                    print(" MATCHED FEATS: {}".format(feats))
+#                    print(" MATCHED FEATS: {}".format(feats))
                 if isinstance(f, tuple):
                     # we're checking multiple features
                     multmatch = UniMorph.convert_mult(fs, f, v,
@@ -204,7 +204,6 @@ class UniMorph:
                     continue
                 if isinstance(v, list):
                     # Subfeats are specified
-#                    print("ffss for {}: {}".format(f, ffss.__repr__()))
                     if f not in fs:
                         continue
                     ffss = fs[f]

@@ -29,7 +29,7 @@ Morphology objects defined in morphology.py).
    Languages now created from data in language file:
    Language.make(abbrev)
 -- 2013-02
-   Multiling, TraState, TraArc created: for phrase translation FSTs.
+   Multilin†g, TraState, TraArc created: for phrase translation FSTs.
 -- 2014-06
    - Suffix stripping before transduction in analysis.
    - Accent and deaccent dictionaries for use in affix stripping to
@@ -868,12 +868,14 @@ class Language:
 #        print("Updated phones {}".format(phones))
         return phones
 
-    def convert_phones(self, phones, gemination=True, epenthesis=True,
+    def convert_phones(self, phones, gemination=True,
+                       epenthesis=True,
                        ipa=False):
         """
         Convert a sequence of phones (an unsegmented string)
         to an alternate phone representation.
         """
+#        print("Convert phones {}, epenthesis {}".format(phones, epenthesis))
         phones = segment(phones, self.seg_units)
         if epenthesis:
             self.epenthesis(phones)
@@ -1055,10 +1057,11 @@ class Language:
             return self.preproc(form)
         return form
 
-    def postprocess(self, form):
+    def postprocess(self, form, phon=False, ipa=False, ortho_only=False):
         '''Postprocess a form.'''
         if self.postproc:
-            return self.postproc(form)
+            return self.postproc(form, phon=phon, ipa=ipa,
+                                 ortho_only=ortho_only)
         return form
 
     def postpostprocess(self, form):
@@ -1767,7 +1770,8 @@ class Language:
                   postproc=False, gram=True, string=False,
                   freq=True):
         '''
-        Process analyses according to various options, returning a list of analysis tuples.
+        Process analyses according to various options, returning a list of
+        analysis tuples.
         If freq, include measure of root and morpheme frequency.
         '''
         results = set()
@@ -2056,6 +2060,25 @@ class Language:
                 out.close()
         except IOError:
             print('No such file or path; try another one.')
+
+    def gen_um_outputs(self, outputs, verbosity=0):
+        """
+        Given a list of outputs from POSMorphology.gen(),
+        word, FeatStruct pairs, return a list of word, UM
+        feature string pairs.
+        """
+        result = []
+        for output in outputs:
+            word = output[0]
+            fs = output[1]
+            pos = fs.get('pos')
+            if not pos:
+                print("NO POS FOR {}:{}".format(word, fs.__repr__()))
+            if verbosity:
+                print("{}: converting {}".format(pos, fs.__repr__()))
+            um = self.um.convert(fs, pos, verbosity=verbosity)
+            result.append((word, um))
+        return result
 
     ## Using RE rules for joining morphological segments
 

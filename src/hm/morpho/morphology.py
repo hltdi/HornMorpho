@@ -483,7 +483,10 @@ class Morphology(dict):
                 return fst
 
     def ortho2phon(self, word):
-        '''Attempt to convert a word to its phonetic form. (Assumes word is already romanized.)'''
+        '''
+        Attempt to convert a word to its phonetic form. (Assumes word is
+        already romanized.)
+        '''
         if word.isdigit():
             # word consists only of numbers
             return [word]
@@ -500,7 +503,9 @@ class Morphology(dict):
             return [form]
 
     def phonetic(self, form):
-        '''Make a form phonetic, calling the phon FST on it.'''
+        '''
+        Make a form phonetic, calling the phon FST on it.
+        '''
         fst = self.phon_fst
         if fst:
             phoneticized = fst.transduce(form, seg_units=self.seg_units)
@@ -1040,11 +1045,28 @@ class POSMorphology:
             print('No analysis FST loaded for', self.pos)
 
     def separate_anals(self, analyses):
-        """Separate list of root and FSSets into a list of roots and FeatStructs."""
+        """
+        Separate list of root and FSSets into a list of roots and FeatStructs.
+        """
         result = []
         for root, anals in analyses:
             for anal in anals:
                 result.append((root, anal))
+        return result
+
+    @staticmethod
+    def separate_gens(gens):
+        """
+        Separate list of output wordforms and associated analyses
+        into wordform, FeatStruct tuples.
+        """
+        result = []
+        for gen in gens:
+            # car and cadr are wordform and FSSet; there could also be score
+            word = gen[0]
+            fss = gen[1]
+            for fs in fss:
+                result.append((word, fs))
         return result
 
     def gen_from_pregen(self, root, features=None, only_one=True):
@@ -1117,7 +1139,7 @@ class POSMorphology:
             postproc=False, update_feats=None,
             del_feats=None,
             guess=False, phon=False, segment=False, ortho=False,
-            fst=None, sort=True,
+            ortho_only=False, fst=None, sort=False,
             print_word=False, print_prefixes=None,
             interact=False,
             timeit=False, timeout=100, limit=10,
@@ -1128,6 +1150,11 @@ class POSMorphology:
           to delete from the features specified
         """
         fss = None
+        if del_feats:
+            # Transduction needs to run for a longer time when
+            # there are fewer features
+            timeout = 100 * len(del_feats)
+            limit = 50 * len(del_feats)
         if interact and self.feat_list:
             # Get user input from menu
             features = self.fv_menu()
@@ -1186,27 +1213,53 @@ class POSMorphology:
                 # For languages with non-roman orthographies
                 for gen in gens:
                     # Replace the wordforms with postprocessed versions
-                    gen[0] = self.finalize_output(gen[0])
+                    gen[0] = self.finalize_output(gen[0], phon=phon,
+                                                  ortho_only=ortho_only)
             return gens
         elif trace:
             print('No generation FST loaded')
 
-    def finalize_output(self, word, ipa=False):
+    @staticmethod
+    def gen_output_feats(outputs, features):
         """
-        Finalize output: orthographic|phonetic.
+        Given a list of outputs (word, FeatStruct), return a list
+        of words and the values of the features in the FeatStructs.
         """
-        orthophon = self.language.postprocess(word)
+        result = []
+        for output in outputs:
+            word = output[0]
+            fs = output[1]
+            values = []
+            for feature in features:
+                value = fs.get(feature)
+                if value:
+                    values.append(value)
+            if values:
+                result.append((word, values))
+        return result
+
+    def finalize_output(self, word, phon=False, ipa=False,
+                        ortho_only=False):
+        """
+        Finalize output: orthographic(|phonetic).
+        """
+        orthophon = self.language.postprocess(word,
+                                              phon=phon, ipa=ipa,
+                                              ortho_only=ortho_only)
         # word is presumably in phonetic representation; convert
         # it to conventional representation
-        if '|' in orthophon:
-            ortho, phon = orthophon.split('|')
-            phon = self.language.convert_phones(word, ipa=ipa)
-            return ortho + "|" + phon
+#        if '|' in orthophon:
+#            ortho, phon = orthophon.split('|')
+#            phon = self.language.convert_phones(word, epenthesis=phon,
+#                                                ipa=ipa)
+#            return ortho + "|" + phon
         return orthophon
 
     def segment(self, word, seg, feature, value, new_value=None):
-        """If feature has value in word, segment the word into seg
-        and the word with feature changed to new_value."""
+        """
+        If feature has value in word, segment the word into seg
+        and the word with feature changed to new_value.
+        """
         anals = self.anal(word)
         segmentations = []
         for root, anal in anals:

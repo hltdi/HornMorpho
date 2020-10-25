@@ -700,13 +700,19 @@ def postproc_nroot(root, fs):
     else:
         return "{}|{}".format(geezify(root), AMH.convert_phones(root))
 
-def postproc_word(word, ipa=False):
+def postproc_word(word, ipa=False, phon=False, ortho_only=False):
     """
     Convert output word to ortho|phon representation, also
     changing internal HM representation to an alternate
     conventional representation.
     """
-    return "{}|{}".format(geezify(word), AMH.convert_phones(word))
+#    print("Postprocessing {}, phon={}".format(word, phon))
+    ortho = geezify(word)
+    if ortho_only:
+        return ortho
+    return "{}|{}".format(ortho,
+                          AMH.convert_phones(word, epenthesis=phon,
+                                             ipa=ipa))
 
 ## Create Language object for Amharic, including preprocessing, postprocessing,
 ## and segmentation units (phones).
