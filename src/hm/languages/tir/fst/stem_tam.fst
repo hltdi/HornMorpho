@@ -164,6 +164,8 @@ i/ -> -3B           [:]       [tm=j_i]
 -4.4V -> -3.4       [e:]      [tm=prf];[tm=ger];[tm=imf,vc=tr];[tm=j_i]
 # a also possible before laryngeal
 -4.4V -> -3L.4      [a:]      [tm=prf];[tm=ger];[tm=imf,vc=tr]
+# a also possible for class F (next vowel a): tem<a>baS`e
+-4.4V -> -3.4       [a:]      [cls=F,tm=prf];[cls=F,tm=ger];[cls=F,tm=imf,vc=tr];[cls=F,tm=j_i]
 # I otherwise
 -4.4V -> -3.4       [I:]      [tm=imf,vc=smp];[tm=imf,vc=ps]
 
@@ -205,7 +207,7 @@ i/ -> -5.4          [:]
 -4aL -> -4aV        [L]
 -5aV -> -4a         [e:]
 -5aV -> -4aL        [e:]
--5a -> -5aV         [X] 
+-5a -> -5aV         [X]
 
 # denegageSe (must be CCCC +it)
 start -> -5a        [!:]       [as=it]

@@ -116,45 +116,30 @@ def seg_file(language, infile, outfile=None,
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
-              dont_guess=True, cache='',
+              dont_guess=True, cache='', init_weight=None,
               rank=True, freq=False, nbest=5, um=False,
-              raw=False):
+              phonetic=True, raw=False):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.
 
-    @param language: abbreviation for a language
-    @type  language: string
-    @param word:     word to be analyzed
-    @type  word:     string or unicode
-    @param root:     whether a root is to be included in the analyses
-    @type  root:     boolean
-    @param citation: whether a citation form is to be included in the analyses
-    @type  citation: boolean
-    @param gram:     whether a grammatical analysis is to be included
-    @type  gram:     boolean
-    @param roman:    whether the language is written in roman script
-    @type  roman:    boolean
-    @param segment:  whether to return the segmented input string rather than
+    @param language (str): abbreviation for a language
+    @param word (str):     word to be analyzed
+    @param root (bool):     whether a root is to be included in the analyses
+    @param citation (bool): whether a citation form is to be included in the analyses
+    @param gram (bool):     whether a grammatical analysis is to be included
+    @param roman (bool):    whether the language is written in roman script
+    @param segment (bool):  whether to return the segmented input string rather than
                      the root/stem
-    @type  segment:  boolean
-    @param guess:    try only guesser analyzer
-    @type guess:     boolean
-    @param dont_guess:    try only lexical analyzer
-    @type dont_guess:     boolean
-    @param rank:     whether to rank the analyses by the frequency of their roots
-    @type  rank:     boolean
-    @param freq:     whether to report frequencies of roots
-    @type  freq:     boolean
-    @param nbest:    maximum number of analyses to return or print out
-    @type  nbest:    int
-    @param um:       whether to output UniMorph features
-    @type um:        boolean
-    @param raw:      whether the analyses should be returned in "raw" form
-    @type  raw:      boolean
-    @param gloss:    language to return gloss for, or ''
-    @type gloss:     string
+    @param guess (bool):    try only guesser analyzer
+    @param dont_guess (bool):    try only lexical analyzer
+    @param phonetic (bool): whether to convert root to phonetic form (from SERA)
+    @param rank (bool):     whether to rank the analyses by the frequency of their roots
+    @param freq (bool):     whether to report frequencies of roots
+    @param nbest (int):    maximum number of analyses to return or print out
+    @param um (bool):       whether to output UniMorph features
+    @param raw (bool):      whether the analyses should be returned in "raw" form
+    @param gloss (str):    language to return gloss for, or ''
     @return:         a list of analyses (only if raw is True)
-    @rtype:          list of (root, feature structure) pairs
     '''
     language = morpho.get_language(language, cache=cache,
                                    phon=False, segment=segment)
@@ -163,10 +148,11 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                                       postproc=not roman,
                                       root=root, citation=citation,
                                       gram=gram, gloss=gloss,
+                                      phonetic=phonetic,
                                       segment=segment, only_guess=guess,
                                       guess=not dont_guess, cache=False,
                                       nbest=nbest, report_freq=freq,
-                                      um=um,
+                                      um=um, init_weight=init_weight,
                                       string=not raw and not um,
                                       print_out=not raw and not um)
         if raw or um:
@@ -271,6 +257,8 @@ def gen(language, root, features=[], pos=None, guess=False,
             root, features = language.procroot(root, features, pos)
         outputs = []
         um_converted = False
+        # list of POS strings for each output
+        poss = []
         if pos:
             posmorph = morf[pos]
             if um:
@@ -288,8 +276,10 @@ def gen(language, root, features=[], pos=None, guess=False,
                                       postproc=is_not_roman, guess=guess)
                 if output:
                     outputs.extend(output)
+                    poss.extend([pos] * len(output))
         if not outputs:
             for posmorph in list(morf.values()):
+                pos1 = posmorph.pos
                 if um:
                     lang_um = language.um
                     if lang_um:
@@ -297,7 +287,8 @@ def gen(language, root, features=[], pos=None, guess=False,
                     if features:
                         um_converted = True
                 if features or not um:
-#                    print("Generating (POS={})".format(posmorph.pos))
+#                    print("Generating {}, {} (POS={})".format(root, features.__repr__(),
+#                                                              posmorph.pos))
                     output = posmorph.gen(root, update_feats=features,
                                           interact=interact,
                                           del_feats=del_feats,
@@ -307,6 +298,7 @@ def gen(language, root, features=[], pos=None, guess=False,
 #                    print("Output for {}: {}".format(posmorph.pos, output))
                     if output:
                         outputs.extend(output)
+                        poss.extend([pos1] * len(output))
 #                    if output:
 #                        break
         if um and not um_converted:
@@ -317,9 +309,10 @@ def gen(language, root, features=[], pos=None, guess=False,
             if del_feats:
                 # For del_feats, we need to print out relevant
                 # values of del_feats for each output word
-                o = morpho.POSMorphology.separate_gens(outputs)
+#                print("O {}".format(outputs))
+                o, poss = morpho.POSMorphology.separate_gens(outputs, poss)
                 if report_um:
-                    o = language.gen_um_outputs(o)
+                    o = language.gen_um_outputs(o, poss)
                 else:
                     o = morpho.POSMorphology.gen_output_feats(o, del_feats)
             elif all_words:

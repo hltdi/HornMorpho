@@ -25,15 +25,111 @@ Author: Michael Gasser <gasser@indiana.edu>
 """ 
 import hm
 
-## test items for UM
-words = ["ቤታችንን", "የቤቴ", "ከቤቱስ",
-         "ሰበራት", "የሰበርናቸው", "ትስበርልን", "ተሰበሩ", "ሰባብሮበት", "አሰባበራቸው",
-         "መስበሬም", "የመስበሪያ", "ስላሰባበሩ", "መሰበራቸው", "መሰባበር"
-         ]
-def hmtest():
-    for word in words:
-        print(word, hm.anal('amh', word))
+def proc_ti_verbs():
+    with open("hm/languages/tir/lex/v_root.lex", encoding='utf8') as infile:
+        with open("v_root.lex", 'w', encoding='utf8') as outfile:
+            for line in infile:
+                line = line.strip()
+                if len(line.split()) > 1:
+                    print(line, file=outfile)
+                else:
+                    print("{}  ''  [cls=A]".format(line), file=outfile)                    
 
+def sort_nouns(items):
+    order = ['3P', '2P', '1P', '3SF', '3SM', '2SF', '2SM', '1S', 'DEF']
+    def order_func(item):
+        feat = item[3]
+        for i, o in enumerate(order):
+            if o in feat:
+                return i
+        return len(order)
+    # items is list of (lemma, gloss, word, feat) tuples
+    items.sort(key=order_func, reverse=True)
+
+def sort_verbs(items, ax=True):
+    if ax:
+        tm = ['V.CVB', 'IPFV;NFIN', 'IMP', 'PRF', 'IPFV', 'PFV']
+    else:
+        tm = ['V.CVB', 'IMP', 'IPFV', 'PFV']
+    sb = ['1;SG', '2;SG;MASC', '2;SG;FEM', '3;SG;MASC', '3;SG;FEM', '1;PL', '2;PL', '3;PL']
+    sb.reverse()
+    def order_func(item):
+        feat = item[3]
+        score = 0
+        for i, o in enumerate(tm):
+            if o in feat:
+                score += i * len(sb)
+                break
+        for i, o in enumerate(sb):
+            if o in feat:
+                score += i
+                break
+        return score
+    items.sort(key=order_func, reverse=True)
+
+## Generating word lists for UM
+def n_poss(stem, fem=False, plr=False, printit=True):
+    # All possessive and definite forms of the noun stem
+    anal = hm.anal('amh', stem, init_weight="[poss=[-expl],-def]",
+                     raw=True)[0]
+    gloss = anal['gloss']
+    features = None
+    if fem:
+        features="[+fem]"
+    elif plr:
+        features="[+plr]"
+    words_feats = hm.gen('amh', stem, del_feats=["def", "poss"], ortho_only=True,
+                    features=features)
+    result = [(stem, gloss, word, feat) for word, feat in words_feats]
+    sort_nouns(result)
+    if printit:
+        for stem, gloss, word, feat in result:
+            print("{}\t{}\t{}\t{}".format(stem, gloss, word, feat))
+    else:
+        return result
+
+def v_sb_tm(lemma, ax=True, ps=False, printit=True):
+    # All subject and simple TAM forms forms of the verb root associated with the lemma
+    anal = hm.anal('amh', lemma, init_weight="[tm=prf,sb=[-p1,-p2,-plr]]",
+                   raw=True, phonetic=False)[0]
+    gloss, root = anal['gloss'], anal['root']
+    features = None
+    if ps:
+        features="[vc=ps]"
+    words_feats = hm.gen('amh', root, del_feats=["sb", "tm"],
+                            ortho_only=True, features=features)
+    result = [(lemma, gloss, word, feat) for word, feat in words_feats if feat]
+    if ax:
+        if ps:
+            features = "[ax=al,vc=ps]"
+        else:
+            features = "[ax=al]"
+        words_feats = hm.gen('amh', root, del_feats=["sb", "tm"],
+                                  ortho_only=True, features=features)
+        result.extend([(lemma, gloss, word, feat) for word, feat in words_feats if feat])
+    sort_verbs(result)
+    if printit:
+        for lemma, gloss, word, feat in result:
+            print("{}\t{}\t{}\t{}".format(lemma, gloss, word, feat))
+    else:
+        return result
+
+##def v_sb_tm_ax(lemma):
+##    # All main clause impf and ger forms of the verb root
+##    anal = hm.anal('amh', lemma, raw=True)[0]
+##    gloss, root = anal['gloss'], anal['root']
+##    words_feats = hm.gen('amh', root, del_feats=["sb", "tm"], ortho_only=True, features="[ax=al]")
+##    return [(lemma, gloss, word, feat) for word, feat in words_feats]
+
+## test items for UM
+##words = ["ቤታችንን", "የቤቴ", "ከቤቱስ",
+##         "ሰበራት", "የሰበርናቸው", "ትስበርልን", "ተሰበሩ", "ሰባብሮበት", "አሰባበራቸው",
+##         "መስበሬም", "የመስበሪያ", "ስላሰባበሩ", "መሰበራቸው", "መሰባበር"
+##         ]
+##def hmtest():
+##    for word in words:
+##        print(word, hm.anal('amh', word))
+##
 ## 2019.12.23
 ## Am->Ks translation
 # AK = T = None

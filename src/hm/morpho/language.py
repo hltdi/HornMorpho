@@ -806,7 +806,9 @@ class Language:
         cons_seqs = []
         cons = []
         for index, phone in enumerate(phones):
-            if phone not in vowels:
+            if phone == ' ':
+                cons = []
+            elif phone not in vowels:
                 if not cons:
                     cons.append(index)
                 cons.append(phone)
@@ -904,7 +906,8 @@ class Language:
         Convert an HM root representation to an alternate
         conventional representation.
         """
-        return self.convert_phones(root, gemination=False, epenthesis=False,
+        return self.convert_phones(root, gemination=False,
+                                   epenthesis=False,
                                    ipa=ipa)
 
     @staticmethod
@@ -1224,7 +1227,7 @@ class Language:
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None,
                   root=True, stem=True, citation=True, gram=True,
-                  um=True, gloss=True,
+                  um=True, gloss=True, phonetic=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
@@ -1232,11 +1235,9 @@ class Language:
         '''
         Analyze a single word, trying all existing POSs, both
         lexical and guesser FSTs.
-
-        [ [POS, {root|citation}, FSSet] ... ]
         '''
-        # Before anything else, check to see if the word is in the list of words that
-        # have failed to be analyzed
+        # Before anything else, check to see if the word is in the list of
+        # words that have failed to be analyzed
         if no_anal != None and word in no_anal:
             return None
         # Whether the analyses are found in the cache
@@ -1270,8 +1271,11 @@ class Language:
                 if not init_weight:
                     found = True
                     analyses = self.proc_anal(word, cached, None,
-                                              show_root=root, citation=citation, stem=stem,
-                                              segment=segment, guess=False, postproc=postproc, gram=gram, freq=rank or report_freq)
+                                              show_root=root, citation=citation,
+                                              stem=stem,
+                                              segment=segment, guess=False,
+                                              postproc=postproc, gram=gram,
+                                              freq=rank or report_freq)
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)
         if not analyses and form in self.morphology.analyzed:
             if only_anal:
@@ -1361,7 +1365,8 @@ class Language:
                     analyses[i] = (analysis[1],)
                 else:
                     a = self.finalize_anal(analysis, citation=citation, um=um,
-                                           gloss=gloss, report_freq=report_freq)
+                                           gloss=gloss, report_freq=report_freq,
+                                           phonetic=phonetic)
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
@@ -1668,7 +1673,7 @@ class Language:
             dct[form] = [(root, fs)]
 
     def finalize_anal(self, anal, citation=True, um=True, gloss=True,
-                      report_freq=False):
+                      report_freq=False, phonetic=True):
         """
         Create dict with analysis.
         """
@@ -1676,7 +1681,7 @@ class Language:
         pos, root, cit, gram1, gram2, count = anal
         # Postprocess root if appropriate
         root = self.postproc_root(self.morphology.get(pos),
-                                  root, gram2)
+                                  root, gram2, phonetic=phonetic)
         if not gram2 and not cit:
             # Unanalyzed word
             a['lemma'] = root
@@ -1736,14 +1741,14 @@ class Language:
         '''Process analyses with no roots/stems.'''
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
 
-    def postproc_root(self, posmorph, root, fs):
+    def postproc_root(self, posmorph, root, fs, phonetic=True):
         """
         If posmorph has a root_proc function, use it to produce
         a root.
         """
         if posmorph and posmorph.root_proc:
             func = posmorph.root_proc
-            return func(root, fs)
+            return func(root, fs, phonetic=phonetic)
         return root
 
     def get_gloss(self, fs, lg='eng'):
@@ -1768,7 +1773,7 @@ class Language:
     def proc_anal(self, form, analyses, pos, show_root=True, citation=True,
                   segment=False, stem=True, guess=False,
                   postproc=False, gram=True, string=False,
-                  freq=True):
+                  freq=True, phonetic=True):
         '''
         Process analyses according to various options, returning a list of
         analysis tuples.
@@ -1821,8 +1826,10 @@ class Language:
                 feat_freq = self.morphology.get_feat_freq(grammar)
                 root_freq *= feat_freq
             # Find the citation form of the root if required
-            if citation and p and p in self.morphology and self.morphology[p].citation:
-                cite = self.morphology[p].citation(root, grammar, guess, stem)
+            if citation and p and p in self.morphology \
+               and self.morphology[p].citation:
+                cite = self.morphology[p].citation(root, grammar, guess, stem,
+                                                   phonetic=phonetic)
                 if not cite:
                     cite = root
                 if postproc:
@@ -2061,17 +2068,18 @@ class Language:
         except IOError:
             print('No such file or path; try another one.')
 
-    def gen_um_outputs(self, outputs, verbosity=0):
+    def gen_um_outputs(self, outputs, ptags, verbosity=0):
         """
         Given a list of outputs from POSMorphology.gen(),
         word, FeatStruct pairs, return a list of word, UM
         feature string pairs.
+        ptags is a list of POS tags, one for each output.
         """
         result = []
-        for output in outputs:
+        for output, pos in zip(outputs, ptags):
             word = output[0]
             fs = output[1]
-            pos = fs.get('pos')
+#            pos = fs.get('pos')
             if not pos:
                 print("NO POS FOR {}:{}".format(word, fs.__repr__()))
             if verbosity:

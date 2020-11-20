@@ -2,11 +2,12 @@ POS n
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
 prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
-plr:: PL
+plr:: True:PL;; False:SG
 acc:: ACC
 gen:: GEN
 poss::
   expl,p1,plr: PSS1P
+  expl,p2,frm: PSS2S;FORM
   expl,p2,fem: PSS2SF
   expl,p2,plr: PSS2P
   expl,p1: PSS1S
@@ -49,6 +50,7 @@ sb::
   fem: 3;SG;FEM
   None: 3;SG;MASC
 ob::
+  ## doesn't handle "formal" 2p: -ዎ, etc.
   # l-applicative
   expl,p1,plr,prp,l: ARGDA1P
   expl,p2,plr,prp,l: ARGDA2P

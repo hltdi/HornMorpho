@@ -91,7 +91,6 @@ start -> mW  [mW]
 mW -> mWa    [a:D]
 mWa -> start [mW:]
 
-
 start -> n   [n]
 n -> na      [a:D]
 na -> start  [n:]
@@ -99,7 +98,6 @@ na -> start  [n:]
 start -> nW  [nW]
 nW -> nWa    [a:D]
 nWa -> start [nW:]
-
 
 start -> N   [N]
 N -> Na      [a:D]
@@ -109,6 +107,13 @@ start -> NW  [NW]
 NW -> NWa    [a:D]
 NWa -> start [NW:]
 
+start -> p   [p]
+p -> pa      [a:D]
+pa -> start  [p:]
+
+start -> P   [P]
+P -> Pa      [a:D]
+Pa -> start  [P:]
 
 start -> q   [q]
 q -> qa      [a:D]
@@ -117,7 +122,6 @@ qa -> start  [q:]
 start -> qW  [qW]
 qW -> qWa    [a:D]
 qWa -> start [qW:]
-
 
 start -> r   [r]
 r -> ra      [a:D]

@@ -1055,19 +1055,24 @@ class POSMorphology:
         return result
 
     @staticmethod
-    def separate_gens(gens):
+    def separate_gens(gens, poss):
         """
         Separate list of output wordforms and associated analyses
         into wordform, FeatStruct tuples.
+        poss is a list of POS tags for each gen
         """
         result = []
-        for gen in gens:
+        pos_tags = []
+        for gen, p in zip(gens, poss):
             # car and cadr are wordform and FSSet; there could also be score
             word = gen[0]
             fss = gen[1]
+#            if len(fss) > 1:
+#                print("MULT FS: {}".format(fss.__repr__()))
             for fs in fss:
                 result.append((word, fs))
-        return result
+                pos_tags.append(p)
+        return result, pos_tags
 
     def gen_from_pregen(self, root, features=None, only_one=True):
         """Generate word from saved generated dict."""
@@ -1202,7 +1207,7 @@ class POSMorphology:
 #            print('Transducing with features {}'.format(features.__repr__()))
             gens = \
               fst.transduce(root, features, seg_units=self.morphology.seg_units,
-                            gen=True,
+                            gen=not del_feats,
                             print_word=print_word, print_prefixes=print_prefixes,
                             trace=trace,
                             timeit=timeit, timeout=timeout, result_limit=limit)
@@ -1225,6 +1230,7 @@ class POSMorphology:
         Given a list of outputs (word, FeatStruct), return a list
         of words and the values of the features in the FeatStructs.
         """
+#        print("GEN OUTPUT FEATS {}".format(outputs))
         result = []
         for output in outputs:
             word = output[0]

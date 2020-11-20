@@ -22,6 +22,8 @@ l ->
 m ->
 n ->
 N ->
+p ->
+P ->
 q ->
 r ->
 s ->
@@ -93,6 +95,16 @@ mid -> N    [N]
 N -> nogem  [N]
 N -> gem    [_:N]
 N -> mid    [X-N;V;_]
+
+mid -> p    [p]
+p -> nogem  [p]
+p -> gem    [_:p]
+p -> mid    [X-p;V;_]
+
+mid -> P    [P]
+P -> nogem  [P]
+P -> gem    [_:P]
+P -> mid    [X-P;V;_]
 
 mid -> q    [q]
 q -> nogem  [q]

@@ -1,6 +1,5 @@
 ### Root consonants and basic stem-internal template patterns:
 ###   reciprocal-a-, iterative -aC-
-## Exclude some rare root types for guesser: X|..., XXaXX
 
 -> start
 

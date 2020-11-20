@@ -1,0 +1,94 @@
+#POS n
+#v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
+#pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
+#prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
+#plr:: True:PL;; False:SG
+#acc:: ACC
+#gen:: GEN
+#poss::
+#  expl,p1,plr: PSS1P
+#  expl,p2,frm: PSS2S;FORM
+#  expl,p2,fem: PSS2SF
+#  expl,p2,plr: PSS2P
+#  expl,p1: PSS1S
+#  expl,p2: PSS2SM
+#  expl,plr: PSS3P
+#  expl,fem: PSS3SF
+#  expl: PSS3SM
+#def!poss:: DEF
+#cnf:: m:LGSPEC1;; s:LGSPEC2
+## only relevant for deverbal nouns
+#as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
+
+POS v
+#tm:: ger:V.CVB
+pos:: v:V
+neg:: NEG
+rel:: *RELC;NFIN
+tm:: j_i:IMP;; imf:IPFV;; ger:PFV;; prf:PFV
+#tm,neg:: prf,False:PFV,NFIN; prf,True:PFV
+## different ac,vc and lexicalization combinations
+# CAUS of base form
+as,vc,lexav:: smp,cs,None:CAUS
+as,vc,lextr:: smp,tr,True:CAUS
+# as=rc
+as,vc,lexrp,lexav:: rc,tr,True,None:TR;; rc,ps,None,None:*CON;; rc,tr,None,None:*CON;TR
+# as=it; two lines to make it more readable
+as,vc,lexip,lexav:: it,tr,True,None:TR;; it,cs,True,None:CAUS;; it,smp,None,None:ITER
+as,vc,lexip,lexav::  it,ps,None,None:RECP;; it,tr,None,None:RECP;CAUS;; it,cs,None,None:RECP;CAUS
+# for B verbs, vc=tr is CAUS because base is already TR
+as,vc,cls:: smp,tr,B:CAUS
+# PASS and TR: verbs with base and no derived lexical entries
+as,vc,smp!as:: smp,ps,None:PASS;; smp,tr,None:TR;; smp,tr,False:TR
+sb::
+  p1,plr: 1;PL
+  p2,plr,fem: 2;PL;FEM
+  p2,plr: 2;PL;MASC
+  plr,fem: 3;PL;FEM
+  plr: 3;PL;MASC
+  p1: 1;SG
+  p2,fem: 2;SG;FEM
+  p2: 2;SG;MASC
+  fem: 3;SG;FEM
+  None: 3;SG;MASC
+ob::
+  ## doesn't handle "formal" 2p: -ዎ, etc.
+  # applicative
+  xpl,p1,plr,prp: ARGDA1P
+  xpl,p2,plr,fem,prp: ARGDA2PF
+  xpl,p2,plr,prp: ARGDA2PM
+  xpl,p3,plr,fem,prp: ARGDA3PF
+  xpl,plr,prp: ARGDA3PM
+  xpl,p1,prp: ARGDA1S
+  xpl,p2,fem,prp: ARGDA2SF
+  xpl,p2,prp: ARGDA2SM
+  xpl,fem,prp: ARGDA3SF
+  xpl,prp: ARGDA3SM
+  # accusative
+  xpl,p1,plr: ARGAC1P
+  xpl,p2,plr,fem: ARGAC2PF
+  xpl,p2,plr: ARGAC2PM
+  xpl,p3,plr,fem: ARGAC3PF
+  xpl,plr: ARGAC3PM
+  xpl,p1: ARGAC1S
+  xpl,p2,fem: ARGAC2SF
+  xpl,p2: ARGAC2SM
+  xpl,fem: ARGAC3SF
+  xpl: ARGAC3SM
+pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
+cj2:: m:LGSPEC1;; s:LGSPEC2
+cj1:: sI:*TEMP;; bI:COND;; IndI:PURP;; lI:PURP;; IskI:TERM
+
+#POS cop
+#pos:: cop:V
+#tm:: prs:PRS;; pst:PST
+#neg:: NEG
+#sb::
+#  p1,plr: 1;PL
+#  p2,plr: 2;PL
+#  plr: 3;PL
+#  p1: 1;SG
+#  p2,fem: 2;SG;FEM
+#  p2: 2;SG;MASC
+#  fem: 3;SG;FEM
+#  None: 3;SG;MASC

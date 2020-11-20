@@ -122,9 +122,12 @@ class UniMorph:
                     print(" Rejecting because of previous match: {}".format(unless))
                 return False
         fsvalue = fs.get(feature, 'None')
-        if fsvalue == True:
-            fsvalue = ''
+#        if fsvalue == True:
+#            fsvalue = ''
         um = valuemap.get(fsvalue, False)
+        if not um and fsvalue == True:
+            # Try '' in place of True (does this ever happen?)
+            um = valuemap.get('', False)
         if verbosity:
             print("  {}".format(um))
         return um
@@ -393,6 +396,10 @@ class UniMorph:
                                         elif mm == 'True':
                                             mapv[ii] = True
                                     value[i] = (tuple(mapv), uv)
+                                elif mapv == 'False':
+                                    value[i] = (False, uv)
+                                elif mapv == 'True':
+                                    value[i] = (True, uv)
                             value = dict(value)
                         if '!' in feat:
                             feat, unless = feat.split('!')

@@ -42,10 +42,10 @@ y>i -> C        [X]
 y>i -> y>iI     [:I]
 y>iI -> C       [X]
 ## delete y
-C  -> y-        [:y]
-# ... before e
-y- -> y-e       [e]
-y-e -> C        [X]
+#C  -> y-        [:y]
+## ... before e
+#y- -> y-e       [e]
+#y-e -> C        [X]
 ## keep y
 C  -> Cy         [y]
 # ... when it's followed by a vowel

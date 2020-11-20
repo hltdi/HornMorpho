@@ -21,7 +21,7 @@ stem ->  place   +n_place+    [v=None]
 # place -> plr_an   <awi:>       [der=[+ass],-prp]
 place -> acc      [:]          [+def,+prp,-itu,poss=[-expl]]
 # Non-deverbal common nouns: v=None
-stem -> plr_oc    +n_stem+     [v=None,-prp]
+stem -> plr_oc    +n_stemG+     [v=None,-prp]
 stem -> plr_an    +n_stem_an+  [v=None,-prp]
 # Deverbal nouns: v=agt | ins | man | inf
 stem -> plr_oc    >>vnounG<<   [-p1,-p2,-prp]

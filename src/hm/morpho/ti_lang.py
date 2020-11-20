@@ -37,7 +37,7 @@ def webfv(webdict, feature, value):
     if webdict != None:
         webdict[feature] = value
 
-def vb_get_citation(root, fs, guess=False, vc_as=False):
+def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''Return the canonical (prf, 3sm) form for the root and language.FeatStructs
     in language.FeatStruct set fss.
 
@@ -538,12 +538,72 @@ def dict_to_anal_old(root, dct, freeze=True):
 
     return [root, FSSet(fs)]
 
+def preproc_root(root, fs, pos):
+    """
+    Preprocess root for generation.
+    """
+    if is_geez(root):
+        anal = TI.morphology['v'].anal(root, preproc=True)
+        if anal:
+            root, ffss = anal[0]
+            cls = ffss.get('cls')
+            root, fs = language.Language.dflt_procroot("{}:{}".format(root, cls), fs)
+        else:
+#            print("Couldn't analyze {}".format(root))
+            return root, fs
+    else:
+        root, fs = language.Language.dflt_procroot(root, fs)
+    return root, fs
+
+def postpostproc_root(root, fs, phonetic=True):
+    """
+    Convert root to root:class format, also changing internal
+    HM root representation to an alternate conventional
+    representation.
+    """
+    if phonetic:
+        root = TI.convert_root(root)
+    return "<{}:{}>".format(root, fs['cls'])
+
+def postproc_nroot(root, fs):
+    """
+    Convert citation (lemma) to conventional phonetic representation.
+    """
+#    if fs.get('pos') == 'n_dv':
+#        return "<{}:{}>".format(AMH.convert_root(root), fs['cls'])
+#    else:
+    return "{}|{}".format(geezify(root, lang='ti'), TI.convert_phones(root))
+
+def postproc_word(word, ipa=False, phon=False, ortho_only=False,
+                  phonetic=True):
+    """
+    Convert output word to ortho|phon representation, also
+    changing internal HM representation to an alternate
+    conventional representation.
+    """
+#    print("Postprocessing {}, phon={}".format(word, phon))
+    ortho = geezify(word, lang='ti', deepenthesize=phon)
+    if ortho_only:
+        return ortho
+    if phonetic:
+        word = TI.convert_phones(word, epenthesis=phon, ipa=ipa)
+    return "{}|{}".format(ortho, word)
+
+def postproc_root(root):
+    """Final adjustments to romanized root."""
+    # Replace __ with space.
+    if '//' in root:
+        root = root.replace('//', ' ')
+    return root
+
 ## Create Language object for Tigrinya, including preprocessing, postprocessing,
 ## and segmentation units (phones).
 TI = language.Language("ትግርኛ", 'tir',
-                       postproc=lambda form: sera2geez(None, form, lang='ti'),
-                       preproc=lambda form: geez2sera(None, form, lang='ti'),
-                       seg_units=[["a", "e", "E", "i", "I", "o", "u", "@", "A", "w", "y", "'", "`", "|", "_"],
+                        postproc=postproc_word,
+                        preproc=lambda form: geez2sera(None, form, lang='ti', simp=True),
+                        procroot=preproc_root,
+                        postpostproc=lambda form: postproc_root(form),
+                        seg_units=[["a", "e", "E", "i", "I", "o", "u", "@", "A", "w", "y", "'", "`", "|", "_"],
                                   {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
                                    "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
                                    "h": ["h", "hW"], "H": ["H", "HW"], "j": ["j", "jW"], "k": ["k", "kW"], "K": ["K", "KW"],
@@ -590,7 +650,7 @@ TI.morphology['v'].citationFS = \
 #    language.FeatStruct("[cj2=None,-neg,ob=[-xpl],-rel,sb=[-fem,-p1,-p2,-plr,-frm],-sub,-yn,tm=prs]")
 
 ## Functions that return the citation forms for words
-TI.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
+TI.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: vb_get_citation(root, fss, guess, vc_as)
 TI.morphology['v'].explicit_feats = ["sb", "ob", "tm", "neg", "rel", "def", "cj1", "cj2", "pp"]
 TI.morphology['v'].feat_list = \
   [('pp', ('sIle', 'kem', 'nI', 'ab', 'Inte', 'nab', 'kab', 'bI')),
@@ -633,6 +693,7 @@ TI.morphology['v'].web_feats = \
 ## Functions that convert analyses to strings
 TI.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
 TI.morphology['v'].name = 'verb'
+TI.morphology['v'].root_proc = postpostproc_root
 
 ## Copula combined with verb (2018.1
 #TI.morphology['cop'].anal2string = lambda fss, webdict: cop_anal2string(fss, webdict=webdict)

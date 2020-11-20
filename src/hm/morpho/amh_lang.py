@@ -40,7 +40,7 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
 ### Various functions that will be values of attributes of Amharic Morphology
 ### and POSMorphology objects.
 
-def vb_get_citation(root, fs, guess=False, vc_as=False):
+def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct fs.
 
     If vc_as is True, preserve the voice and aspect of the original word.
@@ -83,7 +83,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False):
     else:
 #        print("Generating citation from {}".format(fs.__repr__()))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
-                                           phon=True, postproc=False, guess=guess)
+                                           phon=True, postproc=False,
+                                           guess=guess)
         if citation:
             result = citation[0][0]
     if not citation:
@@ -683,13 +684,15 @@ def preproc_root(root, fs, pos):
         root, fs = language.Language.dflt_procroot(root, fs)
     return root, fs
 
-def postpostproc_root(root, fs):
+def postpostproc_root(root, fs, phonetic=True):
     """
     Convert root to root:class format, also changing internal
     HM root representation to an alternate conventional
     representation.
     """
-    return "<{}:{}>".format(AMH.convert_root(root), fs['cls'])
+    if phonetic:
+        root = AMH.convert_root(root)
+    return "<{}:{}>".format(root, fs['cls'])
 
 def postproc_nroot(root, fs):
     """
@@ -700,19 +703,27 @@ def postproc_nroot(root, fs):
     else:
         return "{}|{}".format(geezify(root), AMH.convert_phones(root))
 
-def postproc_word(word, ipa=False, phon=False, ortho_only=False):
+def postproc_word(word, ipa=False, phon=False, ortho_only=False,
+                  phonetic=True):
     """
     Convert output word to ortho|phon representation, also
     changing internal HM representation to an alternate
     conventional representation.
     """
 #    print("Postprocessing {}, phon={}".format(word, phon))
-    ortho = geezify(word)
+    ortho = geezify(word, deepenthesize=phon)
     if ortho_only:
         return ortho
-    return "{}|{}".format(ortho,
-                          AMH.convert_phones(word, epenthesis=phon,
-                                             ipa=ipa))
+    if phonetic:
+        word = AMH.convert_phones(word, epenthesis=phon, ipa=ipa)
+    return "{}|{}".format(ortho, word)
+
+def postproc_root(root):
+    """Final adjustments to romanized root."""
+    # Replace __ with space.
+    if '//' in root:
+        root = root.replace('//', ' ')
+    return root
 
 ## Create Language object for Amharic, including preprocessing, postprocessing,
 ## and segmentation units (phones).
@@ -857,7 +868,7 @@ AMH.morphology['cop'].fv_abbrevs = \
    )
 
 ## Functions that return the citation forms for words
-AMH.morphology['v'].citation = lambda root, fss, guess, vc_as: vb_get_citation(root, fss, guess, vc_as)
+AMH.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: vb_get_citation(root, fss, guess, vc_as, phonetic)
 AMH.morphology['n'].citation = lambda root, fss, guess, vc_as: n_get_citation(root, fss, guess, vc_as)
 AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'new'
 
@@ -885,13 +896,6 @@ def load_gen(pos='v', lex=True, guess=False):
         AMH.morphology[pos].load_fst(True, generate=True, invert=True, verbose=True)
     if guess:
         AMH.morphology[pos].load_fst(True, generate=True, invert=True, guess=True, verbose=True)
-
-def postproc_root(root):
-    """Final adjustments to romanized root."""
-    # Replace __ with space.
-    if '//' in root:
-        root = root.replace('//', ' ')
-    return root
 
 def roman2geez(value):
     """Convert a value (prep or conj) to geez."""

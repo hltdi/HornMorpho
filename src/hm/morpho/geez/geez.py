@@ -336,8 +336,10 @@ def sera2geez(table, form, lang='am', gemination=False,
         n += 1
     return res
 
-def geezify(form, lang='am', gemination=False):
-    return sera2geez(get_table(lang, False), form, lang=lang, gemination=gemination)
+def geezify(form, lang='am', gemination=False, deepenthesize=False):
+    return \
+      sera2geez(get_table(lang, False), form, lang=lang,
+                gemination=gemination, deepenthesize=deepenthesize)
 
 def romanize(form, lang='am', gemination=False):
     return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination)
