@@ -210,7 +210,7 @@ i/ -> -5.4          [:]
 -5a -> -5aV         [X]
 
 # denegageSe (must be CCCC +it)
-start -> -5a        [!:]       [as=it]
+start -> -5a        [!:]       [as=it,vc=smp]
 
 # imperfect passive iterative
 i/ -> -3a           [:]

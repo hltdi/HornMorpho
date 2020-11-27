@@ -2,7 +2,7 @@
 ### (These rules are very elaborate, and this is certainly not the best way to
 ### handle them. Also there is only one possibility in each case; Leslau gives several
 ### alternatives for most cases.)
-### 
+###
 ### Exceptions to all rules when C3=y (gWeyeye, deweye)
 ## simplex cases
 # perfective:   ewe -> o,     eye -> e
@@ -23,6 +23,11 @@ start -> bound    [:!]
 
 # C1 (possibly followed by |)
 bound -> C1       [X]
+# C1 palatal
+#bound -> P1       [PP]
+# C1 non-palatal
+#bound -> ~P1      [X-PP]
+
 # C1 -> C1          [|]
 # as long as there's no w, y, or e, go to the end state
 C1 -> end         [X-w,y;V-e]
@@ -73,7 +78,8 @@ eV=Ce -> end     [X-y]
 C1 -> w         [w]
 C1 -> y         [y]
 # preserve if geminated or followed by y
-w -> end        [_;y;e]
+#w -> end        [_;y;e]
+w -> end        [_;y]
 y -> end        [_;y]
 # ye also survives if C3=y (trans perf)
 y -> yV         [e]

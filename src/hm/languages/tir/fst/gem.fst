@@ -3,10 +3,10 @@
 # Anything can go at the beginning
 start -> mid    [X;V;_]
 
-# kk -> Kk
-mid -> mid      [L;B;k;V;_]
+# kk -> Kk (besides k_)
+mid -> mid      [L;B!;k;V;_]
 # the X here prevents two geminations in succession
-gem -> mid      [X;L;B;k;V]
+gem -> mid      [X;L;B!;k;V]
 nogem -> mid    [_]
 
 mid ->
@@ -17,7 +17,7 @@ d ->
 f ->
 g ->
 j ->
-#k ->
+k ->
 l ->
 m ->
 n ->
@@ -35,6 +35,14 @@ x ->
 y ->
 z ->
 Z ->
+bW ->
+fW ->
+gW ->
+hW ->
+HW ->
+kW ->
+mW ->
+qW ->
 
 mid -> b    [b]
 b -> nogem  [b]
@@ -71,10 +79,10 @@ j -> nogem  [j]
 j -> gem    [_:j]
 j -> mid    [X-j;V;_]
 
-#mid -> k    [k]
-#k -> nogem  [k]
-#k -> gem    [_:k]
-#k -> mid    [X-k;V;_]
+mid -> k    [k]
+k -> nogem  [k]
+k -> gem    [_:k]
+k -> mid    [X-k;V;_]
 
 mid -> l    [l]
 l -> nogem  [l]
@@ -160,3 +168,43 @@ mid -> Z    [Z]
 Z -> nogem  [Z]
 Z -> gem    [_:Z]
 Z -> mid    [X-Z;V;_]
+
+mid -> bW   [bW]
+bW -> nogem [bW]
+bW -> gem   [_:bW]
+bW -> mid   [X-bW;V;_]
+
+mid -> fW   [fW]
+fW -> nogem [fW]
+fW -> gem   [_:fW]
+fW -> mid   [X-fW;V;_]
+
+mid -> gW   [gW]
+gW -> nogem [gW]
+gW -> gem   [_:gW]
+gW -> mid   [X-gW;V;_]
+
+mid -> hW   [hW]
+hW -> nogem [hW]
+hW -> gem   [_:hW]
+hW -> mid   [X-hW;V;_]
+
+mid -> HW   [HW]
+HW -> nogem [HW]
+HW -> gem   [_:HW]
+HW -> mid   [X-HW;V;_]
+
+mid -> kW   [kW]
+kW -> nogem [kW]
+kW -> gem   [_:kW]
+kW -> mid   [X-kW;V;_]
+
+mid -> mW   [mW]
+mW -> nogem [mW]
+mW -> gem   [_:mW]
+mW -> mid   [X-mW;V;_]
+
+mid -> qW   [qW]
+qW -> nogem [qW]
+qW -> gem   [_:qW]
+qW -> mid   [X-qW;V;_]

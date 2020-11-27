@@ -21,6 +21,13 @@
 #as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v
+# valence categories
+# lexall (smp,ps,tr): ps->PASS, tr->CAUS
+# lexps (ps, tr*): tr->TR
+# lextr (tr)
+# lexri (rc and/or it but no as=smp)
+#   True,rc,ps->RECP, True,rc,tr->RECP,CAUS
+#   True,it,ps->RECP, True,it,tr->RECP,CAUS
 #tm:: ger:V.CVB
 pos:: v:V
 neg:: NEG

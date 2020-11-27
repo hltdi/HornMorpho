@@ -25,7 +25,10 @@ start -> bound    [:!]
 bound -> C1       [X]
 # C1 -> C1          [|]
 # as long as there's no w, y, or e, go to the end state
-C1 -> end         [X-w,y;V-e]
+#C1 -> end         [X-w,y;V-e]
+# but there could be a sequence of consonants at the beginning (te-KWzeyzey-e)
+C1 -> C1          [X-w,y]
+C1 -> end         [V-e]
 # once we're past C1, e, w, y, finish with anything
 end -> end        [X;V;_;/]
 
@@ -64,9 +67,15 @@ C1   -> e.       [:e]
 e. -> eo=w       [o:w]
 # ey->e
 e. -> ee=y       [e:y]
+# xeTe
+P1 -> Pe.        [:e]
+Pe. -> Pey.      [e:y]
+Pey. -> end      [:e]
 # after ew->o, i->y in gerundive (moyt); C follows in imperfective (mot)
 eo=w -> end      [y:i;/]
 eo=w -> eo=wC    [X]
+# for E verbs in prf with C2=2, ew-o is possible: `oSeSe
+eo=wC -> end     [e]
 # after ey->e, OK if there's a following C in imperfective (xeT)
 ee=y -> end      [X-y;/]
 # ew->o, if there's another e (perfective), we have to check C3
@@ -74,6 +83,14 @@ ee=y -> end      [X-y;/]
 eo=w -> eV=Ce    [:e]
 # finished if C3!=y
 eV=Ce -> end     [X-y]
+# alternative for ~PyX in prf: zym, Tys: eye -> E; TEse, tezEme
+~P1 -> ~Pe.      [:e]
+~Pe. -> ~Pey.    [E:y]
+~Pey. -> end     [:e]
+# a-zEm-e
+~P1 -> ~Py.      [E:y]
+~Py. -> ~Pye.    [:e]
+~Pye. -> end     [X]
 
 ## paths with no changes
 # w, y following no V2 (jussive/imperative, transitive; C|wCCC all forms)
@@ -83,7 +100,7 @@ C1 -> y         [y]
 # preserve if geminated or followed by y
 # ye also survives for prf;tr following non-pal: asyeme, but not for j_i: sim
 #w -> end        [_;y;e]
-w -> end        [_;y]
+w -> end        [_;y;e]
 y -> end         [_;y]
 ~Py -> end        [e]     [tm=prf]
 # ye also survives if C3=y (trans perf)
@@ -100,13 +117,10 @@ e -> ey         [y]
 # qey_er, qey_r, qey_ir, dew_el, dew_l, dew_il
 # seyem
 # preserve ey, ew if followed by y (dewy, gWeyy)
-# preserve ey, ew if followed by a (in as=it: -mewawet-, xeyayeT-
-ew -> end       [_;y;a]
+# preserve ey, ew if followed by a (in as=it: -mewawet-, xeyayeT-)
+# alternately also if followed by e or laryngeal (newHE)
+ew -> end       [_;y;a;e]
 ey -> end       [_;y;a;e]
-#ew -> end       [y]
-#ey -> end       [y]
-#ew -> end       [a]
-#ey -> end       [a]
 # eyiC -> eyC for gerundive (keyd); ew handled above (ewi -> oy)
 ey -> eyi       [:i]
 eyi -> end      [X]
@@ -118,11 +132,18 @@ ew -> eYe.y     [e]
 # ewCeC for CwCC verbs
 ew -> ewC.C     [X]
 ewC.C -> ewC.C  [V]
+#ewC.c -> e      [e]
 ewC.C -> end    [X]
 # eyCeC for CyCC verbs
 ey -> ewC.C     [X]
-# eyL (terey`e); only for following L??
+# eyL (te-rey`-e); only for following L??
+# ewL (newH-e)
 ey -> end       [L]
+ew -> end       [L]
 
 end ->
 eo=wC ->
+# te-KWzeyzey-e
+ey ->
+ew ->
+C1 ->
