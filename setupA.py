@@ -34,7 +34,7 @@ setup(name='HornMorphoA',
                               'languages/om/*',
                               'languages/som/*',
                               'languages/stv/*'
-                              'languages/ti/*',
+                              'languages/tir/fst/*',
                               'languages/tig/fst/*']
                               }
                              )
