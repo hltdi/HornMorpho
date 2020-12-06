@@ -1,0 +1,32 @@
+$ prep
+  b [prep=b]
+  n [prep=n]
+  -- [prep=None]
+
+## Boundary separating stem from suffixes
+#$ bound1
+#  =
+
+$ stem
+  +n_stem+  [pos=n]
+
+## Boundary separating prefixes from stem
+$ bound2
+  =
+
+$ poss
+  ey        [pp=1,pn=1]
+  na        [pp=1,pn=2]
+  ka        [pp=2,pn=1,pg=m]
+  ki        [pp=2,pn=1,pg=f]
+  kum       [pp=2,pn=2,pg=m]
+  kn        [pp=2,pn=2,pg=f]
+  'u        [pp=3,pg=m,pn=1]
+  'a        [pp=3,pg=f,pn=1]
+  'om       [pp=3,pg=m,pn=2]
+  'en       [pp=3,pg=f,pn=2]
+  --        [pp=0]
+
+$ conj
+  n       [cnj=n]
+  --      [cnj=None]

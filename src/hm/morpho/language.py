@@ -1696,10 +1696,10 @@ class Language:
             g = self.get_gloss(gram2)
             if g:
                 a['gloss'] = g
-            elif um:
-                # If there's no gloss and UM is True,
-                # ignore this analysis
-                return None
+#            elif um:
+#                # If there's no gloss and UM is True,
+#                # ignore this analysis
+#                return None
         if um and pos in self.um.hm2um:
             ufeats = self.um.convert(gram2, pos=pos)
             if ufeats:

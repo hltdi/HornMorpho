@@ -25,15 +25,15 @@ Author: Michael Gasser <gasser@indiana.edu>
 """ 
 import hm
 
-def proc_ti_verbs():
-    with open("hm/languages/tir/lex/v_root.lex", encoding='utf8') as infile:
-        with open("v_root.lex", 'w', encoding='utf8') as outfile:
-            for line in infile:
-                line = line.strip()
-                if len(line.split()) > 1:
-                    print(line, file=outfile)
-                else:
-                    print("{}  ''  [cls=A]".format(line), file=outfile)                    
+##def proc_ti_verbs():
+##    with open("hm/languages/tir/lex/v_root.lex", encoding='utf8') as infile:
+##        with open("v_root.lex", 'w', encoding='utf8') as outfile:
+##            for line in infile:
+##                line = line.strip()
+##                if len(line.split()) > 1:
+##                    print(line, file=outfile)
+##                else:
+##                    print("{}  ''  [cls=A]".format(line), file=outfile)                    
 
 def sort_nouns(items):
     order = ['3P', '2P', '1P', '3SF', '3SM', '2SF', '2SM', '1S', 'DEF']
@@ -45,6 +45,54 @@ def sort_nouns(items):
         return len(order)
     # items is list of (lemma, gloss, word, feat) tuples
     items.sort(key=order_func, reverse=True)
+
+def ti_sort_verbs(items):
+#    if ax:
+#        tm = ['V.CVB', 'IPFV;NFIN', 'IMP', 'PRF', 'IPFV', 'PFV']
+#    else:
+#        tm = ['V.CVB', 'IMP', 'IPFV', 'PFV']
+    tm = ['IMP', 'IPFV', 'PFV', 'PFV;NFIN;*RELC']
+    sb = ['1;SG', '2;SG;MASC', '2;SG;FEM', '3;SG;MASC', '3;SG;FEM',
+          '1;PL', '2;PL;MASC', '2;PL;FEM', '3;PL;MASC', '3;PL;FEM']
+    sb.reverse()
+    i = []
+#    tmsets = [set(t.split(';')) for t in tm]
+    items = [item for item in items if any([t in item[3] for t in tm])]
+    def order_func(item):
+        feat = item[3]
+        score = 0
+        for i, o in enumerate(tm):
+            if o in feat:
+                score += i * len(sb)
+                break
+        for i, o in enumerate(sb):
+            if o in feat:
+                score += i
+                break
+        return score
+    items.sort(key=order_func, reverse=True)
+    return items
+
+def ti_v_sb_tm(lemma, ps=False, printit=True, gloss=''):
+    # All subject and simple TAM forms forms of the verb root associated with the lemma
+    anal = hm.anal('tir', lemma, init_weight="[tm=prf,sb=[-p1,-p2,-plr,-fem]]",
+                   raw=True, phonetic=False)[0]
+    g, root = anal.get('gloss'), anal['root']
+    gloss = g or gloss
+    features = None
+    if ps:
+        features="[vc=ps]"
+    words_feats = hm.gen('tir', root, del_feats=["sb", "tm", "rel", "sub"],
+                         ortho_only=True, features=features)
+    result = [(lemma, gloss, word, feat) for word, feat in words_feats if feat]
+    result = [r for r in result if "NFIN" not in r[3] or "*RELC" in r[3]]
+    result = ti_sort_verbs(result)
+    result = [(l, g, w, f.replace(';*RELC', '')) for l, g, w, f in result]
+    if printit:
+        for lemma, gloss, word, feat in result:
+            print("{}\t{}\t{}\t{}".format(lemma, gloss, word, feat))
+    else:
+        return result
 
 def sort_verbs(items, ax=True):
     if ax:
@@ -89,6 +137,7 @@ def n_poss(stem, fem=False, plr=False, printit=True):
         return result
 
 def v_sb_tm(lemma, ax=True, ps=False, printit=True):
+    # AMH:
     # All subject and simple TAM forms forms of the verb root associated with the lemma
     anal = hm.anal('amh', lemma, init_weight="[tm=prf,sb=[-p1,-p2,-plr]]",
                    raw=True, phonetic=False)[0]

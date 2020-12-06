@@ -28,7 +28,8 @@ var/
 # Misc stuff
 Proc/
 Users/
-Docs/
+#Docs/
+docs/OldDocs
 Notes/
 hm/languages/*/data/
 

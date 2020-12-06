@@ -16,7 +16,7 @@ poss::
   expl,fem: PSS3SF
   expl: PSS3SM
 def!poss:: DEF
-cnf:: m:LGSPEC1;; s:LGSPEC2
+cnj:: m:LGSPEC1;; s:LGSPEC2
 # only relevant for deverbal nouns
 as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 

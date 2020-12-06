@@ -1,52 +1,31 @@
-#POS n
+POS n
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
+pos:: n:N
 #prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
-#plr:: True:PL;; False:SG
-#acc:: ACC
-#gen:: GEN
-#poss::
-#  expl,p1,plr: PSS1P
-#  expl,p2,frm: PSS2S;FORM
-#  expl,p2,fem: PSS2SF
-#  expl,p2,plr: PSS2P
-#  expl,p1: PSS1S
-#  expl,p2: PSS2SM
-#  expl,plr: PSS3P
-#  expl,fem: PSS3SF
-#  expl: PSS3SM
-#def!poss:: DEF
+pl:: True:PL;; False:SG
+pp,pg,pn:: 1,m,1:PSS1S;; 1,m,2:PSS1P;; 2,m,1:PSS2SM;; 2,f,1:PSS2SF
+pp,pg,pn:: 2,m,2:PSS2PM;; 2,f,2:PSS2PF;; 3,m,1:PSS3SM;; 3,f,1:PSS3SF
+pp,pg,pn:: 3,m,2:PSS3PM;; 3,f,2:PSS3PF
 #cnf:: m:LGSPEC1;; s:LGSPEC2
 ## only relevant for deverbal nouns
 #as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v
-# valence categories
-# lexall (smp,ps,tr): ps->PASS, tr->CAUS
-# lexps (ps, tr*): tr->TR
-# lextr (tr)
-# lexri (rc and/or it but no as=smp)
-#   True,rc,ps->RECP, True,rc,tr->RECP,CAUS
-#   True,it,ps->RECP, True,it,tr->RECP,CAUS
-#tm:: ger:V.CVB
 pos:: v:V
-neg:: NEG
-rel:: *RELC;NFIN
-tm:: j_i:IMP;; imf:IPFV;; ger:PFV;; prf:PFV
-#tm,neg:: prf,False:PFV,NFIN; prf,True:PFV
-## different ac,vc and lexicalization combinations
-# CAUS of base form
-as,vc,lexav:: smp,cs,None:CAUS
-as,vc,lextr:: smp,tr,True:CAUS
-# as=rc
-as,vc,lexrp,lexav:: rc,tr,True,None:TR;; rc,ps,None,None:*CON;; rc,tr,None,None:*CON;TR
-# as=it; two lines to make it more readable
-as,vc,lexip,lexav:: it,tr,True,None:TR;; it,cs,True,None:CAUS;; it,smp,None,None:ITER
-as,vc,lexip,lexav::  it,ps,None,None:RECP;; it,tr,None,None:RECP;CAUS;; it,cs,None,None:RECP;CAUS
-# for B verbs, vc=tr is CAUS because base is already TR
-as,vc,cls:: smp,tr,B:CAUS
-# PASS and TR: verbs with base and no derived lexical entries
-as,vc,smp!as:: smp,ps,None:PASS;; smp,tr,None:TR;; smp,tr,False:TR
+# valence categories
+# lex=[±smp,±ps,±tr,±rc,±it]
+as,vc,lex:smp:: rc,ps,True:RECP;; rc,tr,True:RECP;CAUS
+vc,lex:smp,lex:ps:: tr,False,True:TR
+vc,lex:smp:: ps,True:PS
+vc,lex:smp:: tr,True:CAUS
+as,vc:: it,ps:RECP;; it,tr:RECP;CAUS
+tm,neg,rel,sub:: prf,True,True,True:PFV;NFIN;NEG;*RELC;; prf,False,True,True:PFV;NFIN;*RELC
+tm,neg,rel:: prf,False,False:PFV;NFIN;; prf,True,False:PFV;NEG
+tm,neg,rel:: imf,True,True:IPFV;NFIN;NEG;; imf,False,True:IPFV;NFIN
+tm,neg,rel:: imf,True,False:IPFV;NEG;; imf,False,False:IPFV
+tm,neg:: j_i,False:IMP;; j_i,True:IMP;NEG
+tm,rel:: ger,False:PFV
 sb::
   p1,plr: 1;PL
   p2,plr,fem: 2;PL;FEM
@@ -59,8 +38,7 @@ sb::
   fem: 3;SG;FEM
   None: 3;SG;MASC
 ob::
-  ## doesn't handle "formal" 2p: -ዎ, etc.
-  # applicative
+  # applicative (DA is not really right)
   xpl,p1,plr,prp: ARGDA1P
   xpl,p2,plr,fem,prp: ARGDA2PF
   xpl,p2,plr,prp: ARGDA2PM
@@ -82,9 +60,9 @@ ob::
   xpl,p2: ARGAC2SM
   xpl,fem: ARGAC3SF
   xpl: ARGAC3SM
-pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
-cj2:: m:LGSPEC1;; s:LGSPEC2
-cj1:: sI:*TEMP;; bI:COND;; IndI:PURP;; lI:PURP;; IskI:TERM
+#pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
+#cj2:: m:LGSPEC1;; s:LGSPEC2
+#cj1:: sI:*TEMP;; bI:COND;; IndI:PURP;; lI:PURP;; IskI:TERM
 
 #POS cop
 #pos:: cop:V

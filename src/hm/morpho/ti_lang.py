@@ -37,6 +37,9 @@ def webfv(webdict, feature, value):
     if webdict != None:
         webdict[feature] = value
 
+def n_get_citation(stem, fs, guess=False, vc_as=False, phonetic=True):
+    pass
+
 def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''Return the canonical (prf, 3sm) form for the root and language.FeatStructs
     in language.FeatStruct set fss.
@@ -618,13 +621,15 @@ TI = language.Language("ትግርኛ", 'tir',
 ## including punctuation and ASCII characters that are part of the romanization.
 TI.set_morphology(language.Morphology(
 #                                      pos_morphs=[('cop', [], [], []), ('v', [], [], [])],
-                                      pos_morphs=[('v', [], [], [])],
+                                      pos_morphs=[('v',), ('n',)],
                                       # Exclude ^ and - (because it can be used in compounds)
                                       punctuation=r'[“‘”’–—:;/,<>?.!%$()[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                                       # Include digits?
                                       characters=r'[a-zA-Zሀ-ፚ\'`^]'))
 
 ### Assign various attributes to Morphology and POSMorphology objects
+
+TI.morphology['n'].defaultFS = language.FeatStruct("[pos=n,-pl,prep=None,pp=0,pg=m,pn=1,cnj=None]")
 
 # Functions that simplifies Tigrinya orthography
 TI.morphology.simplify = lambda word: simplify(word)

@@ -172,7 +172,17 @@ class UniMorph:
                 if verbosity:
                     print(" Rejecting because of previous match: {}".format(unless))
                 return False
-        fsvalues = tuple([fs.get(f, None) for f in features])
+        fsvalues = []
+        for f in features:
+            if ':' in f:
+                # superfeat: subfeat
+                super, sub = f.split(':')
+                ff = fs.get((super, sub), None)
+            else:
+                ff = fs.get(f, None)
+            fsvalues.append(ff)
+#        fsvalues = tuple([fs.get(f, None) for f in features])
+        fsvalues = tuple(fsvalues)
         if verbosity:
             print(" FS values: {}".format(fsvalues))
         ufeat = valuemap.get(fsvalues, False)
@@ -259,7 +269,7 @@ class UniMorph:
             posdict = {}
             for feat, item in maps:
                 if verbosity:
-                    print(" feat {}, item {}".format(feat, item))
+                    print("feat {}, item {}".format(feat, item))
                 if isinstance(item, str):
                     # item is a UM feature which applies
                     # if feat is True
@@ -283,7 +293,7 @@ class UniMorph:
                     # item is a dict of feat value(s), UM feats
                     for values, umfeat in item.items():
                         if verbosity:
-                            print("  values {}, umfeat {}".format(values, umfeat))
+                            print("values {}, umfeat {}".format(values, umfeat))
                         if values == '!':
                             # Ignore unless constraint?
                             continue
@@ -292,16 +302,29 @@ class UniMorph:
                         if isinstance(feat, tuple):
                             fvs = list(zip(feat, values))
                             fvlist = []
+                            supfvlist = {}
                             for f, v in fvs:
+                                super = None
+                                if ':' in f:
+                                    super, f = f.split(':')
                                 if v == True:
-                                    fvlist.append("+{}".format(f))
+                                    ff = "+{}".format(f)
                                 elif v == False:
-                                    fvlist.append("-{}".format(f))
+                                    ff = "-{}".format(f)
                                 elif v == None:
-                                    fvlist.append("{}=None".format(f))
+                                    ff = "{}=None".format(f)
                                 else:
-                                    fvlist.append("{}={}".format(f, v))
-#                            fvs = ["{}={}".format(f, v) for f, v in fvs]
+                                    ff = "{}={}".format(f, v)
+                                if super:
+                                    if super in supfvlist:
+                                        supfvlist[super].append(ff)
+                                    else:
+                                        supfvlist[super] = [ff]
+                                else:
+                                    fvlist.append(ff)
+                            # if there are superfeats, add them to fvslist
+                            for sup, sublist in supfvlist.items():
+                                fvlist.append("{}=[{}]".format(sup, ','.join(sublist)))
                             fvstring = ','.join(fvlist)
                             if verbosity:
                                 print("  fvstring {}".format(fvstring))
@@ -395,6 +418,8 @@ class UniMorph:
                                             mapv[ii] = False
                                         elif mm == 'True':
                                             mapv[ii] = True
+                                        elif mm.isdigit():
+                                            mapv[ii] = int(mm)
                                     value[i] = (tuple(mapv), uv)
                                 elif mapv == 'False':
                                     value[i] = (False, uv)
