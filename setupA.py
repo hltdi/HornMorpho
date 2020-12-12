@@ -28,13 +28,12 @@ setup(name='HornMorphoA',
                      'morpho/geez/*']
                      },
       exclude_package_data={'hm':
-                             ['languages/am/*',
-                              'languages/en/*',
+                             ['languages/eng/*',
                               'languages/sgw/*',
                               'languages/om/*',
                               'languages/som/*',
                               'languages/stv/*'
-                              'languages/tir/fst/*',
-                              'languages/tig/fst/*']
+                              'languages/tir/*',
+                              'languages/tig/*']
                               }
                              )

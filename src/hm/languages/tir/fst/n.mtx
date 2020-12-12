@@ -4,8 +4,8 @@ $ prep
   -- [prep=None]
 
 ## Boundary separating stem from suffixes
-#$ bound1
-#  =
+$ bound1
+  =
 
 $ stem
   +n_stem+  [pos=n]

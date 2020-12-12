@@ -10,7 +10,7 @@ V = {a, e, E, i, I, o, u, @, A}
 # all consonants
 XX = {b, c, C, d, f, g, h, ^h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, ^s, S, ^S, t, T, v, w, x, y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, ^hW, HW, jW, kW, KW, lW, mW, nW, NW, pW, PW, qW, QW, rW, sW, ^sW, SW, ^SW, tW, TW, xW, zW, ZW}
 # possible root consonants
-X = {b, c, C, d, f, g, G, h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, S, t, T, v, w, x, y, Y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, lW, mW, nW, NW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+X = {b, c, C, d, f, g, G, h, H, j, k, K, l, m, n, N, p, P, q, Q, r, s, S, t, T, v, w, x, y, Y, z, Z, ', `, bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, KW, lW, mW, nW, NW, qW, QW, rW, sW, SW, tW, TW, xW, zW, ZW}
 Y = {K, Q, KW, QW}
 # laryngeal consonants
 L = {', `, h, H, hW, HW}

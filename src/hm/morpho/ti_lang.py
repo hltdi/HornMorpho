@@ -38,7 +38,16 @@ def webfv(webdict, feature, value):
         webdict[feature] = value
 
 def n_get_citation(stem, fs, guess=False, vc_as=False, phonetic=True):
-    pass
+    result = None
+#    fs.update(TI.morphology['n'].citationFS)
+    fs = TI.morphology['n'].defaultFS
+    citation = TI.morphology['n'].gen(stem, fs,
+                                      from_dict=False,
+                                      phon=False, postproc=False, guess=guess)
+#    print("generating {}:{}:{}".format(stem, fs.__repr__(), citation[0][0]))
+    if citation:
+        result = citation[0][0]
+    return result
 
 def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''Return the canonical (prf, 3sm) form for the root and language.FeatStructs
@@ -630,6 +639,7 @@ TI.set_morphology(language.Morphology(
 ### Assign various attributes to Morphology and POSMorphology objects
 
 TI.morphology['n'].defaultFS = language.FeatStruct("[pos=n,-pl,prep=None,pp=0,pg=m,pn=1,cnj=None]")
+TI.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: n_get_citation(root, fss, guess, vc_as)
 
 # Functions that simplifies Tigrinya orthography
 TI.morphology.simplify = lambda word: simplify(word)

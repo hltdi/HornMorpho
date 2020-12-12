@@ -694,7 +694,7 @@ def postpostproc_root(root, fs, phonetic=True):
         root = AMH.convert_root(root)
     return "<{}:{}>".format(root, fs['cls'])
 
-def postproc_nroot(root, fs):
+def postproc_nroot(root, fs, phonetic=True):
     """
     Convert citation (lemma) to conventional phonetic representation.
     """
@@ -703,7 +703,7 @@ def postproc_nroot(root, fs):
     else:
         return "{}|{}".format(geezify(root), AMH.convert_phones(root))
 
-def postproc_word(word, ipa=False, phon=False, ortho_only=False,
+def postproc_word(word, ipa=False, phon=True, ortho_only=False,
                   phonetic=True):
     """
     Convert output word to ortho|phon representation, also
@@ -869,7 +869,7 @@ AMH.morphology['cop'].fv_abbrevs = \
 
 ## Functions that return the citation forms for words
 AMH.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: vb_get_citation(root, fss, guess, vc_as, phonetic)
-AMH.morphology['n'].citation = lambda root, fss, guess, vc_as: n_get_citation(root, fss, guess, vc_as)
+AMH.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: n_get_citation(root, fss, guess, vc_as)
 AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'new'
 
 ## Functions that convert analyses to strings

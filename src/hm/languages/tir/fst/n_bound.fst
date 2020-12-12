@@ -2,9 +2,18 @@
 
 -> start
 
+# up to pre-stem boundary
+start -> prep  [X]  # currently only b and n
+prep -> prep=  [:=]
+# spirantize velars
+prep= -> C     [X-k,q,kW,qW;K:k;Q:q;KW:kW;QW:qW]
+#prep= -> V     [V]  # not actually possible
+
+start -> bound [:=]
+
 # wait for the boundary character
-start -> C     [X]
-start -> V     [V]
+bound -> C     [X]
+#start -> V     [V]  # not possible
 C -> V         [V]
 C -> CC        [X;_]
 CC -> CC       [X;_]

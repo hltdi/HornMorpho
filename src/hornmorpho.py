@@ -73,6 +73,25 @@ def ti_sort_verbs(items):
     items.sort(key=order_func, reverse=True)
     return items
 
+def ti_n_poss(stem, fem=False, plr=False, printit=True):
+    # All possessive and definite forms of the noun stem
+    anal = hm.anal('tir', stem, init_weight="[pp=0]", raw=True)[0]
+    gloss = anal['gloss']
+    features = None
+    if fem:
+        features="[+fem]"
+    elif plr:
+        features="[+plr]"
+    words_feats = hm.gen('amh', stem, del_feats=["def", "poss"], ortho_only=True,
+                    features=features)
+    result = [(stem, gloss, word, feat) for word, feat in words_feats]
+    sort_nouns(result)
+    if printit:
+        for stem, gloss, word, feat in result:
+            print("{}\t{}\t{}\t{}".format(stem, gloss, word, feat))
+    else:
+        return result
+
 def ti_v_sb_tm(lemma, ps=False, printit=True, gloss=''):
     # All subject and simple TAM forms forms of the verb root associated with the lemma
     anal = hm.anal('tir', lemma, init_weight="[tm=prf,sb=[-p1,-p2,-plr,-fem]]",

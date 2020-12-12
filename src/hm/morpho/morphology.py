@@ -1165,13 +1165,6 @@ class POSMorphology:
             features = self.fv_menu()
         else:
             features = features or self.defaultFS
-#         if um:
-#             lang_um = self.language.um
-#             if lang_um:
-#                 update_feats = lang_um.convert_um(self.pos, um)
-#             if not update_feats:
-# #                print("Couldn't convert UM features {}".format(um))
-#                 return []
         if del_feats:
             features = self.delete_from_FS(del_feats, fs=features)
         if update_feats:
@@ -1180,6 +1173,7 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
+        print("features {}".format(features.__repr__()))
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
@@ -1206,11 +1200,14 @@ class POSMorphology:
         if fst:
 #            print('Transducing with features {}'.format(features.__repr__()))
             gens = \
-              fst.transduce(root, features, seg_units=self.morphology.seg_units,
+              fst.transduce(root, features,
+                            seg_units=self.morphology.seg_units,
                             gen=not del_feats,
-                            print_word=print_word, print_prefixes=print_prefixes,
-                            trace=trace,
-                            timeit=timeit, timeout=timeout, result_limit=limit)
+                            print_word=print_word,
+                            print_prefixes=print_prefixes,
+                            trace=trace, dup_output=del_feats,
+                            timeit=timeit, timeout=timeout,
+                            result_limit=limit)
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)

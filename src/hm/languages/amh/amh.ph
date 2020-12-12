@@ -34,7 +34,7 @@ PW ṗw p'w
 qW qᵂ k'ᵂ
 rW rw
 sW sw
-SW ṣ s'w
+SW ṣw s'w
 tW tw
 TW ṭw t'w
 vW vw

@@ -2585,9 +2585,12 @@ class FST:
                   # related to generation
                   gen=False, print_word=False, print_prefixes=None,
                   seg_units=[], reject_same=False,
-                  trace=0, tracefeat='',
+                  trace=0, tracefeat='', dup_output=False,
                   result_limit=5, timeit=False, timeout=TIMEOUT):
-        """Return the output for all paths through the FST for the input and initial weight. (MG)"""
+        """
+        Return the output for all paths through the FST for the input and
+        initial weight. (MG)
+        """
         if timeit:
             time1 = time.time()
         words = []
@@ -2616,7 +2619,7 @@ class FST:
 #                print("Exceeded {}".format(result_limit))
 #                print("Result {}".format(result))
                 break
-            if output[1] and (output not in result):
+            if output[1] and dup_output or (output not in result):
                 if self.r2l():
                     # FST operates right-to-left, so reverse the output list of segments before joining
 #                    output[1].reverse()
@@ -2630,7 +2633,7 @@ class FST:
 #                print('Found word {}: {}'.format(word_count, word))
                 word_count += 1
                 output[1] = word
-                if word not in words:
+                if dup_output or word not in words:
                     if print_word:
                         self.print_output(word, prefixes=print_prefixes)
                     words.append(word)

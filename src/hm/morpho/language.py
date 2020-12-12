@@ -1699,7 +1699,7 @@ class Language:
 #            elif um:
 #                # If there's no gloss and UM is True,
 #                # ignore this analysis
-#                return None
+#get                return None
         if um and pos in self.um.hm2um:
             ufeats = self.um.convert(gram2, pos=pos)
             if ufeats:

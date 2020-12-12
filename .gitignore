@@ -28,6 +28,7 @@ var/
 # Misc stuff
 Proc/
 Users/
+Old/
 #Docs/
 docs/OldDocs
 Notes/

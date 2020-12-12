@@ -1,0 +1,19 @@
+weighting = UNIFICATION
+
+### Stringsets
+## Vowels
+@V = {a, e, i, o, u}
+# Consonants
+@C = {b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z, %}
+# "Sibilants"
+@S = {s, h, x, z}
+# Everything
+. = {a, e, i, o, u, b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z, %}
+
+### FSTs
+# Delete inter-morpheme character +
+# >delbound<
+>y.ar<
+# Morphotactics
+>n.mtx<
+

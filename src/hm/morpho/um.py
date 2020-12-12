@@ -34,7 +34,7 @@ class UniMorph:
     """
 
     pos_re = re.compile(r'\s*POS\s*(.*)$')
-    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._\w\d]+)$')
+    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
 
@@ -307,10 +307,11 @@ class UniMorph:
                                 super = None
                                 if ':' in f:
                                     super, f = f.split(':')
-                                if v == True:
-                                    ff = "+{}".format(f)
-                                elif v == False:
-                                    ff = "-{}".format(f)
+                                if isinstance(v, bool):
+                                    if v == True:
+                                        ff = "+{}".format(f)
+                                    else:
+                                        ff = "-{}".format(f)
                                 elif v == None:
                                     ff = "{}=None".format(f)
                                 else:
@@ -425,6 +426,8 @@ class UniMorph:
                                     value[i] = (False, uv)
                                 elif mapv == 'True':
                                     value[i] = (True, uv)
+                                elif mapv.isdigit():
+                                    value[i] = (int(mapv), uv)
                             value = dict(value)
                         if '!' in feat:
                             feat, unless = feat.split('!')
