@@ -1173,7 +1173,7 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
-        print("features {}".format(features.__repr__()))
+#        print("features {}".format(features.__repr__()))
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,

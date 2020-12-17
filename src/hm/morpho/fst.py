@@ -2619,7 +2619,7 @@ class FST:
 #                print("Exceeded {}".format(result_limit))
 #                print("Result {}".format(result))
                 break
-            if output[1] and dup_output or (output not in result):
+            if output[1] and (output not in result):
                 if self.r2l():
                     # FST operates right-to-left, so reverse the output list of segments before joining
 #                    output[1].reverse()

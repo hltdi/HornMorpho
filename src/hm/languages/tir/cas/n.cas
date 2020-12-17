@@ -25,6 +25,8 @@ B = {bW, cW, CW, dW, fW, gW, hW, HW, jW, kW, KW, lW, mW, nW, NW, qW, QW, rW, sW,
 ## Non-phonetic/orthographic characters
 % = {_, =}
 
+# Delete I and _
+>del_epgem_n<
 >n_bound<
 # Morphotactics
 >n.mtx<

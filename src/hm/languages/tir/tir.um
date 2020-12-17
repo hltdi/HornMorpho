@@ -4,7 +4,8 @@ POS n
 pos:: n:N
 prep:: n:ACC;; b:INS
 pl:: True:PL;; False:SG
-pp,pg,pn:: 1,m,1:PSS1S;; 1,m,2:PSS1P;; 2,m,1:PSS2SM;; 2,f,1:PSS2SF
+pp,pn:: 1,1:PSS1S;; 1,2:PSS1P
+pp,pg,pn:: 2,m,1:PSS2SM;; 2,f,1:PSS2SF
 pp,pg,pn:: 2,m,2:PSS2PM;; 2,f,2:PSS2PF;; 3,m,1:PSS3SM;; 3,f,1:PSS3SF
 pp,pg,pn:: 3,m,2:PSS3PM;; 3,f,2:PSS3PF
 #cnf:: m:LGSPEC1;; s:LGSPEC2
