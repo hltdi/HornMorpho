@@ -6,7 +6,7 @@ start -> light   [:]     [pos=v]
 ## Light verbs
 light -> light_gap  +v_light+  [+lt]
 light_gap -> pos         <//: >
-light -> pos  [:]
+light -> pos  [:]     [-lt]
 
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,-ye]
@@ -36,7 +36,7 @@ neg_a -> sbjp     [:]     [tm=imf];[tm=j_i]
 neg_a -> sbjp     [l:]    [tm=prf]
 # Affirmative
 neg ->  sbjp      [:]     [-neg]
-# alle affirmative and negative, present
+# alle <hlw:B> affirmative and negative, present
 neg -> obj     +alle+
 
 ## SUBJECT PREFIX

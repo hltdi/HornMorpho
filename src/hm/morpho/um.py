@@ -33,7 +33,7 @@ class UniMorph:
     Functions for converting between HornMorpho and UniMorph features.
     """
 
-    pos_re = re.compile(r'\s*POS\s*(.*)$')
+    pos_re = re.compile(r'\s*POS\s*(.*)\s+(.*)$')
     feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
@@ -200,7 +200,14 @@ class UniMorph:
         um = []
         feats = []
         posh2u = self.hm2um.get(pos)
-#        print("Using psh2u for {}".format(pos))
+        if not fs and pos:
+            # No feature structure, but there is a POS;
+            # find the UM feat in posh2u
+            for f, v in posh2u:
+                if f == '':
+                    return v
+            # No UM feat specified for case of no FS
+            return None
         if posh2u:
             for f, v in posh2u:
                 if verbosity:
@@ -372,10 +379,10 @@ class UniMorph:
 
                     m = UniMorph.pos_re.match(line)
                     if m:
-                        pos = m.group(1)
-#                        print("Matched POS {}".format(pos))
+                        pos, POS = m.groups()
                         if verbosity:
                             print(" Matched POS {}".format(pos))
+
                         if current_pos:
                             if current_supfeat:
                                 current_pos_list.append((current_supfeat, current_feats))
@@ -383,6 +390,8 @@ class UniMorph:
                                 current_feats = []
                             self.hm2um[current_pos] = current_pos_list
                         current_pos_list = []
+                        if POS:
+                            current_pos_list.append(("", POS))
                         current_pos = pos
                         continue
                     m = UniMorph.superfeat_re.match(line)

@@ -55,8 +55,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
-    if root == 'al_e':
-        return "'alo"
+    if root == 'hlw':
+        return "'al_o"
     # Return root if no citation is found
     result = root
     # Unfreeze the feature structure

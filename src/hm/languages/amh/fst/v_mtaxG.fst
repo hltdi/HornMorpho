@@ -11,7 +11,7 @@ pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub]
 ## CONJUNCTIONS (+sub is redundant)
 pos   -> neg    >>cnj1<<
 # salle, etc.
-pos   -> obj  +irr_conjG+
+pos   -> obj  +irr_conj+
 
 ## PREPOSITIONS (+sub is redundant)
 # Needed because rel prefix is different in Am imperf following prep
@@ -33,8 +33,8 @@ neg_a -> sbjp     [:]     [tm=imf];[tm=j_i]
 neg_a -> sbjp     [l:]    [tm=prf]
 # Affirmative
 neg ->  sbjp      [:]     [-neg]
-# alle affirmative and negative, present
-neg -> obj     +alleG+
+# alle <hlw:B> affirmative and negative, present
+neg -> obj     +alle+
 
 ## SUBJECT PREFIX
 # Prefix only for imperfective and jussive

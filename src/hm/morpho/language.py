@@ -1060,11 +1060,13 @@ class Language:
             return self.preproc(form)
         return form
 
-    def postprocess(self, form, phon=False, ipa=False, ortho_only=False):
+    def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
+                    phonetic=True):
         '''Postprocess a form.'''
         if self.postproc:
             return self.postproc(form, phon=phon, ipa=ipa,
-                                 ortho_only=ortho_only)
+                                 ortho_only=ortho_only,
+                                 phonetic=phonetic)
         return form
 
     def postpostprocess(self, form):
@@ -1272,10 +1274,11 @@ class Language:
                     found = True
                     analyses = self.proc_anal(word, cached, None,
                                               show_root=root, citation=citation,
-                                              stem=stem,
+                                              stem=stem, phonetic=phonetic,
                                               segment=segment, guess=False,
                                               postproc=postproc, gram=gram,
                                               freq=rank or report_freq)
+
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)
         if not analyses and form in self.morphology.analyzed:
             if only_anal:
@@ -1304,7 +1307,8 @@ class Language:
                         if cache:
                             to_cache.extend(preanal)
                         analyses.extend(self.proc_anal(form, preanal, pos,
-                                                       show_root=root, citation=citation, stem=stem,
+                                                       show_root=root, citation=citation,
+                                                       stem=stem, phonetic=phonetic,
                                                        segment=segment, guess=False,
                                                        postproc=postproc, gram=gram,
                                                        freq=rank or report_freq))
@@ -1320,7 +1324,7 @@ class Language:
                             analyses.extend(self.proc_anal(form, analysis, pos,
                                                            show_root=root, citation=citation and not segment,
                                                            segment=segment,
-                                                           stem=stem,
+                                                           stem=stem, phonetic=phonetic,
                                                            guess=False, postproc=postproc, gram=gram,
                                                            freq=rank or report_freq))
         # If nothing has been found, try guesser FSTs for each POS
@@ -1336,7 +1340,7 @@ class Language:
                     analyses.extend(self.proc_anal(form, analysis, pos,
                                                    show_root=root,
                                                    citation=citation and not segment,
-                                                   segment=segment,
+                                                   segment=segment, phonetic=phonetic,
                                                    guess=True, gram=gram,
                                                    postproc=postproc,
                                                    freq=rank or report_freq))
@@ -1682,11 +1686,13 @@ class Language:
         # Postprocess root if appropriate
         root = self.postproc_root(self.morphology.get(pos),
                                   root, gram2, phonetic=phonetic)
+        if pos:
+            a['POS'] = pos
         if not gram2 and not cit:
             # Unanalyzed word
             a['lemma'] = root
-            if pos:
-                a['POS'] = pos
+#            if pos:
+#                a['POS'] = pos
         elif citation and cit:
             a['lemma'] = cit
 #            self.finalize_citation(cit)
@@ -1701,6 +1707,8 @@ class Language:
 #                # ignore this analysis
 #get                return None
         if um and pos in self.um.hm2um:
+#            ufeats = None
+#            if gram2:
             ufeats = self.um.convert(gram2, pos=pos)
             if ufeats:
                 gram2 = ufeats
@@ -1728,9 +1736,9 @@ class Language:
         '''Process analysis for unanalyzed cases.'''
         if segment:
             return analysis[0], analysis[1], 100000
-        elif postproc:
-            # Convert the word to Geez.
-            analysis = (analysis[0], self.postproc(analysis[1]))
+#        elif postproc:
+#            # Convert the word to Geez.
+#            analysis = (analysis[0], self.postproc(analysis[1]))
 #        if segment:
 #            return analysis
         pos, form = analysis
@@ -1770,7 +1778,8 @@ class Language:
             return r.group(1).split("+")[0]
         return ''
 
-    def proc_anal(self, form, analyses, pos, show_root=True, citation=True,
+    def proc_anal(self, form, analyses, pos, show_root=True,
+                  citation=True,
                   segment=False, stem=True, guess=False,
                   postproc=False, gram=True, string=False,
                   freq=True, phonetic=True):
@@ -1780,7 +1789,6 @@ class Language:
         If freq, include measure of root and morpheme frequency.
         '''
         results = set()
-#        print("proc_anal {}".format(analysis[0]))
         if segment:
             res = []
             for analysis in analyses:
@@ -1833,7 +1841,7 @@ class Language:
                 if not cite:
                     cite = root
                 if postproc:
-                    cite = self.postprocess(cite)
+                    cite = self.postprocess(cite, phonetic=phonetic)
             else:
                 cite = None
                 # Prevent analyses with same citation form and FS (results is a set)
@@ -2084,7 +2092,10 @@ class Language:
                 print("NO POS FOR {}:{}".format(word, fs.__repr__()))
             if verbosity:
                 print("{}: converting {}".format(pos, fs.__repr__()))
-            um = self.um.convert(fs, pos, verbosity=verbosity)
+            if fs:
+                um = self.um.convert(fs, pos, verbosity=verbosity)
+            else:
+                um = ''
             result.append((word, um))
         return result
 

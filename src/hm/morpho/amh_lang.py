@@ -47,7 +47,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''
     citation = ''
     if root == 'hlw':
-        return "አለ"
+        return "'al_e"
     # Return root if no citation is found
     result = root
     # Unfreeze the feature structure
@@ -98,7 +98,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
                 result = citation[0][0]
     return result
 
-def n_get_citation(root, fs, guess=False, vc_as=False):
+def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct set fss.
 
     If vc_as is True, preserve the voice and aspect of the original word.
@@ -692,16 +692,21 @@ def postpostproc_root(root, fs, phonetic=True):
     """
     if phonetic:
         root = AMH.convert_root(root)
+    if 'cls' not in fs:
+        print("No cls for {} {}".format(root, fs.__repr__()))
     return "<{}:{}>".format(root, fs['cls'])
 
 def postproc_nroot(root, fs, phonetic=True):
     """
     Convert citation (lemma) to conventional phonetic representation.
     """
-    if fs.get('pos') == 'n_dv':
-        return "<{}:{}>".format(AMH.convert_root(root), fs['cls'])
+    root_conv = root
+    if phonetic:
+        root_conv = AMH.convert_root(root)
+    if fs and fs.get('pos') == 'n_dv':
+        return "<{}:{}>".format(root_conv, fs['cls'])
     else:
-        return "{}|{}".format(geezify(root), AMH.convert_phones(root))
+        return "{}|{}".format(geezify(root), root_conv)
 
 def postproc_word(word, ipa=False, phon=True, ortho_only=False,
                   phonetic=True):
@@ -828,7 +833,7 @@ AMH.morphology['v'].web_feats = \
 AMH.morphology['v'].root_proc = postpostproc_root
 AMH.morphology['n'].root_proc = postproc_nroot
 AMH.morphology['nm'].root_proc = postproc_nroot
-AMH.morphology['cop'].root_proc = lambda root, fs: "ነው"
+AMH.morphology['cop'].root_proc = lambda root, fs, phonetic=True: "ነው"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
@@ -869,8 +874,8 @@ AMH.morphology['cop'].fv_abbrevs = \
 
 ## Functions that return the citation forms for words
 AMH.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: vb_get_citation(root, fss, guess, vc_as, phonetic)
-AMH.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: n_get_citation(root, fss, guess, vc_as)
-AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as: 'new'
+AMH.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: n_get_citation(root, fss, guess, vc_as, phonetic)
+AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as, phonetic: 'new'
 
 ## Functions that convert analyses to strings
 AMH.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
