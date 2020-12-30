@@ -1,14 +1,21 @@
-This is version 4.0 of ***HornMorpho***, a Python program that performs morphological analysis, generation, segmentation, and grapheme-to-phoneme conversion in various languages of the Horn of Africa. **Note that there are significant changes between versions 3.\* and this version of the program, and the features in version 4.0 are only available for Amharic. If you are using HornMorpho with another language, use an earlier version (see the Versions folder for distributions and `docs/horn3_quick.pdf` for documentation).**
+This is version 4.0 of ***HornMorpho***, a Python program that performs morphological analysis, generation, segmentation, and grapheme-to-phoneme conversion in various languages of the Horn of Africa.
 
 <!--For information about using the program, see the manual that came with the distribution: *horn3.5_quick.pdf*.
 -->
 
 ## Installation
-To install HornMorpho, extract the files from the distribution file, `HornMorpho-4.0.tar.gz`, which you can find in the `Versions` folder. Then go to the top-level directory in the extracted files, and do
+To install HornMorpho, you can use either the distribution file, `HornMorpho-4.0.tar.gz`, or the wheel file, `HornMorpho-4.0-py3-none-any.whl`, both of which can be found in the `dist/` folder and the `Versions` folder.
+To install from the distribution file, first extract the files from it. Then go to the top-level folder, `HornMorpho-4.0`, and do the following in a Python shell:
 
 	python setup.py install
 
 making sure that you are using some version of Python 3.
+To install from the wheel file, do the following in a Python shell.
+
+	pip install HornMorpho-4.0-py3-none-any.whl
+	
+(This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
+
 Then to use the program, in a Python shell, do
 
 	import hm
@@ -44,7 +51,7 @@ Morphological analysis takes a word and returns zero or more analyses, each cons
     >>> hm.anal('amh', "የቤታችን", raw=True)
     [{'lemma': 'ቤት|bet', 'root': 'ቤት|bEt', 'gloss': 'house', 'gram': [-acc,cnj=None,+def,-dis,+gen,-itu,-plr,pos=n,poss=[+expl,+p1,-p2,+plr],pp=None,-prp,t=[eng=house],v=None]}]
     
->To output features from the [UniMorph project](http://www.unimorph.org/), use the option `um=True`. The UniMorph features are returned as a string of feature names separated by semicolons. (A description of the relevant UniMorph features will appear soon.)
+>To output features from the [UniMorph project](http://www.unimorph.org/), use the option `um=True`. The UniMorph features are returned as a string of feature names separated by semicolons. (A description of the relevant UniMorph features will appear soon.) **The UniMorph option currently only works for Amharic and Tigrinya.**
 
     >>> hm.anal('amh', "የቤታችን", um=True)
     [{'lemma': 'ቤት|bet', 'root': 'ቤት|bEt', 'gloss': 'house', 'gram': 'N;GEN;PSS1P'}]
@@ -70,7 +77,7 @@ Morphological generation takes a lemma and a set of grammatical features and ret
     >>> hm.gen('amh', "ፈቀደ")
     ['ፈቀደ|fǝqqǝdǝ']
 
->Features are specified using the options `features`, with a string representation of a feature structure of the type returned by `hm.anal`, or `um`, with a string representation of a set of UniMorph features.
+>Features are specified using the options `features`, with a string representation of a feature structure of the type returned by `hm.anal`, or `um`, with a string representation of a set of UniMorph features. **The UniMorph option currently only works for Amharic and Tigrinya.**
 
     >>> hm.gen('amh', "ፈቀደ", features="[sb=[+p1,+plr],tm=imf,+neg]")
 	["አንፈቅድም|'anfǝqdɨm"]

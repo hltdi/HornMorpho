@@ -32,7 +32,8 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'ch': 'sgw', 'chh': 'sgw',
+CODES = {'am': 'amh',
+         'ch': 'sgw', 'chh': 'sgw',
          'sl': 'stv', 'slt': 'stv',
          'ks': 'gru', 'kst': 'gru',
          'so': 'som',
@@ -44,7 +45,10 @@ def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
     of the language.'''
     lang = string if len(string) <= 3 else string.replace("'", "")[:2]
-    return lang.lower()
+    lang = lang.lower()
+    if lang in CODES:
+        lang = CODES[lang]
+    return lang
 
 def get_lang_dir(abbrev):
     return os.path.join(LANGUAGE_DIR, abbrev)
@@ -54,8 +58,6 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               cache=True, guess=True, simplified=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     lang_id = get_lang_id(lang)
-    if lang_id in CODES:
-        lang_id = CODES[lang_id]
     language = None
     if lang_id == 'am':
         from . import am_lang
