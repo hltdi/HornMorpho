@@ -20,7 +20,7 @@ Create Language, Morphology, and POSMorphology objects for Oromo.
 """
 from . import language
 
-OM = language.Language("Oromo", 'orm',
+OM = language.Language("Afaan Oromoo", 'orm',
                        seg_units=[['b', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'q', 'r', 't', 'w', 'x', 'y', "'", '-',
                                    # Only in foreign words
                                    'v', 'z',
@@ -265,8 +265,8 @@ def v_get_citation(root, fs, guess=False):
 ## Function that converts analyses to strings
 OM.morphology['v'].anal2string = lambda fss, webdict: v_anal2string(fss, webdict=webdict)
 ## Functions that return the citation forms for words
-OM.morphology['v'].citation = lambda root, fss, simplified, guess: v_get_citation(root, fss, guess)
+OM.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: v_get_citation(root, fss, guess)
 ## Function that converts analyses to strings
 OM.morphology['n'].anal2string = lambda fss, webdict: n_anal2string(fss, webdict=webdict)
 ## Functions that return the citation forms for words
-OM.morphology['n'].citation = lambda root, fss, simplified, guess: root
+OM.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: root
