@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorpho',
-      version='4.0',
+      version='4.0.2',
       description='Morphological analyzer/generator for languages of the Horn of Africa',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',

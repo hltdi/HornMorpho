@@ -18,7 +18,7 @@ poss::
 def!poss:: DEF
 cnj:: m:LGSPEC1;; s:LGSPEC2
 # only relevant for deverbal nouns
-as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
+as,vc:: it,cs:RECP;CAUS;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v V
 tm,ax:: ger,None:V.CVB
@@ -52,32 +52,32 @@ sb::
 ob::
   ## doesn't handle "formal" 2p: -ዎ, etc.
   # l-applicative
-  expl,p1,plr,prp,l: ARGDA1P
-  expl,p2,plr,prp,l: ARGDA2P
-  expl,plr,prp,l: ARGDA3P
-  expl,p1,prp,l: ARGDA1S
-  expl,p2,fem,prp,l: ARGDA2SF
-  expl,p2,prp,l: ARGDA2SM
-  expl,fem,prp,l: ARGDA3SF
-  expl,prp,l: ARGDA3SM
+  expl,p1,plr,prp,l: DA1P
+  expl,p2,plr,prp,l: DA2P
+  expl,plr,prp,l: DA3P
+  expl,p1,prp,l: DA1S
+  expl,p2,fem,prp,l: DA2SF
+  expl,p2,prp,l: DA2SM
+  expl,fem,prp,l: DA3SF
+  expl,prp,l: DA3SM
   # b-applicative; using adhoc OB (oblique) feature
-  expl,p1,plr,prp,b: *ARGOB1P
-  expl,p2,plr,prp,b: *ARGOB2P
-  expl,plr,prp,b: *ARGOB3P
-  expl,p1,prp,b: *ARGOB1S
-  expl,p2,fem,prp,b: *ARGOB2SF
-  expl,p2,prp,b: *ARGOB2SM
-  expl,fem,prp,b: *ARGOB3SF
-  expl,prp,b: *ARGOB3SM
+  expl,p1,plr,prp,b: *OB1P
+  expl,p2,plr,prp,b: *OB2P
+  expl,plr,prp,b: *OB3P
+  expl,p1,prp,b: *OB1S
+  expl,p2,fem,prp,b: *OB2SF
+  expl,p2,prp,b: *OB2SM
+  expl,fem,prp,b: *OB3SF
+  expl,prp,b: *OB3SM
   # accusative
-  expl,p1,plr: ARGAC1P
-  expl,p2,plr: ARGAC2P
-  expl,plr: ARGAC3P
-  expl,p1: ARGAC1S
-  expl,p2,fem: ARGAC2SF
-  expl,p2: ARGAC2SM
-  expl,fem: ARGAC3SF
-  expl: ARGAC3SM
+  expl,p1,plr: AC1P
+  expl,p2,plr: AC2P
+  expl,plr: AC3P
+  expl,p1: AC1S
+  expl,p2,fem: AC2SF
+  expl,p2: AC2SM
+  expl,fem: AC3SF
+  expl: AC3SM
 def!ob:: DEF
 pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 cj2:: m:LGSPEC1;; s:LGSPEC2

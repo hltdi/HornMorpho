@@ -1,4 +1,4 @@
-POS n
+POS n N
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
 pos:: n:N
@@ -12,7 +12,7 @@ pp,pg,pn:: 3,m,2:PSS3PM;; 3,f,2:PSS3PF
 ## only relevant for deverbal nouns
 #as,vc:: it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
-POS v
+POS v V
 pos:: v:V
 # valence categories
 # lex=[±smp,±ps,±tr,±rc,±it]
@@ -40,27 +40,27 @@ sb::
   None: 3;SG;MASC
 ob::
   # applicative (DA is not really right)
-  xpl,p1,plr,prp: ARGDA1P
-  xpl,p2,plr,fem,prp: ARGDA2PF
-  xpl,p2,plr,prp: ARGDA2PM
-  xpl,p3,plr,fem,prp: ARGDA3PF
-  xpl,plr,prp: ARGDA3PM
-  xpl,p1,prp: ARGDA1S
-  xpl,p2,fem,prp: ARGDA2SF
-  xpl,p2,prp: ARGDA2SM
-  xpl,fem,prp: ARGDA3SF
-  xpl,prp: ARGDA3SM
+  xpl,p1,plr,prp: DA1P
+  xpl,p2,plr,fem,prp: DA2PF
+  xpl,p2,plr,prp: DA2PM
+  xpl,p3,plr,fem,prp: DA3PF
+  xpl,plr,prp: DA3PM
+  xpl,p1,prp: DA1S
+  xpl,p2,fem,prp: DA2SF
+  xpl,p2,prp: DA2SM
+  xpl,fem,prp: DA3SF
+  xpl,prp: DA3SM
   # accusative
-  xpl,p1,plr: ARGAC1P
-  xpl,p2,plr,fem: ARGAC2PF
-  xpl,p2,plr: ARGAC2PM
-  xpl,p3,plr,fem: ARGAC3PF
-  xpl,plr: ARGAC3PM
-  xpl,p1: ARGAC1S
-  xpl,p2,fem: ARGAC2SF
-  xpl,p2: ARGAC2SM
-  xpl,fem: ARGAC3SF
-  xpl: ARGAC3SM
+  xpl,p1,plr: AC1P
+  xpl,p2,plr,fem: AC2PF
+  xpl,p2,plr: AC2PM
+  xpl,p3,plr,fem: AC3PF
+  xpl,plr: AC3PM
+  xpl,p1: AC1S
+  xpl,p2,fem: AC2SF
+  xpl,p2: AC2SM
+  xpl,fem: AC3SF
+  xpl: AC3SM
 #pp:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 #cj2:: m:LGSPEC1;; s:LGSPEC2
 #cj1:: sI:*TEMP;; bI:COND;; IndI:PURP;; lI:PURP;; IskI:TERM

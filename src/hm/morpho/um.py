@@ -275,6 +275,9 @@ class UniMorph:
         for pos, maps in self.hm2um.items():
             posdict = {}
             for feat, item in maps:
+                if not feat:
+                    # feat could be empty string
+                    continue
                 if verbosity:
                     print("feat {}, item {}".format(feat, item))
                 if isinstance(item, str):
@@ -388,6 +391,8 @@ class UniMorph:
                                 current_pos_list.append((current_supfeat, current_feats))
                                 current_supfeat = ''
                                 current_feats = []
+                            if verbosity:
+                                print("Setting hm2um for {}".format(current_pos))
                             self.hm2um[current_pos] = current_pos_list
                         current_pos_list = []
                         if POS:
@@ -467,6 +472,8 @@ class UniMorph:
                         continue
                     print("Failed to match line {}".format(line))
             if current_pos:
+                if verbosity:
+                    print("Setting hm2um for {}".format(current_pos))
                 if current_supfeat:
                     current_pos_list.append((current_supfeat, current_feats))
                 self.hm2um[current_pos] = current_pos_list
