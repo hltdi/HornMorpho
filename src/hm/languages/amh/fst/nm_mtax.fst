@@ -10,9 +10,9 @@ stem_bound -> stem     [$:]
 
 ## STEM
 # Place names; not necessarily -prp
-stem -> acc     +nm_place+     [pos=nm,tp=pl]
+stem -> acc     +nm_place+     [pos=nm_pl,tp=pl]
 # Proper nouns (possessive is possible); always 3rd person singular
-stem -> acc     +nm_name+     [pos=nm,tp=prs]
+stem -> acc     +nm_name+     [pos=nm_prs,tp=prs]
 
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc]

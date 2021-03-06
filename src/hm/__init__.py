@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020
+Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-__version__ = '4.0.2'
+__version__ = '4.0.4'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -118,7 +118,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
               dont_guess=True, cache='', init_weight=None,
               rank=True, freq=False, nbest=5, um=False,
-              phonetic=True, raw=False):
+              phonetic=True, raw=False,
+              pos=[], verbosity=0):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.
 
@@ -154,7 +155,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                                       nbest=nbest, report_freq=freq,
                                       um=um, init_weight=init_weight,
                                       string=not raw and not um,
-                                      print_out=not raw and not um)
+                                      print_out=not raw and not um,
+                                      fsts=pos, verbosity=verbosity)
         if raw or um:
             return analysis
 
@@ -226,7 +228,8 @@ def anal_file(language, infile, outfile=None,
 def gen(language, root, features=[], pos=None, guess=False,
         phon=False, ortho=True, ortho_only=False,
         um='', all_words=True, del_feats=None, report_um=True,
-        roman=False, interact=False, return_words=True):
+        roman=False, interact=False, return_words=True,
+        verbosity=0):
     '''
     Generate a word, given stem/root and features (replacing those in default).
     If pos is specified, check only that POS; otherwise, try all in order until
@@ -273,7 +276,8 @@ def gen(language, root, features=[], pos=None, guess=False,
                                       del_feats=del_feats,
                                       ortho=ortho, phon=phon,
                                       ortho_only=ortho_only,
-                                      postproc=is_not_roman, guess=guess)
+                                      postproc=is_not_roman, guess=guess,
+                                      verbosity=verbosity)
                 if output:
                     outputs.extend(output)
                     poss.extend([pos] * len(output))
@@ -285,6 +289,7 @@ def gen(language, root, features=[], pos=None, guess=False,
                     if lang_um:
                         features = lang_um.convert_um(posmorph.pos, um)
                     if features:
+#                        print("UM features for {}: {}".format(pos1, features))
                         um_converted = True
                 if features or not um:
 #                    print("Generating {}, {} (POS={})".format(root, features.__repr__(),
@@ -294,7 +299,8 @@ def gen(language, root, features=[], pos=None, guess=False,
                                           del_feats=del_feats,
                                           ortho=ortho, phon=phon,
                                           ortho_only=ortho_only,
-                                          postproc=is_not_roman, guess=guess)
+                                          postproc=is_not_roman, guess=guess,
+                                          verbosity=verbosity)
 #                    print("Output for {}: {}".format(posmorph.pos, output))
                     if output:
                         outputs.extend(output)
@@ -319,13 +325,15 @@ def gen(language, root, features=[], pos=None, guess=False,
                 o = [out[0] for out in outputs]
             else:
                 o = outputs[0][0]
+            # Eliminate copies
+            o = list(set(o))
             if return_words:
                 return o
             else:
                 print(o)
                 return
-
-        print("This word can't be generated!")
+        f = um if um else features
+        print("{}:{} can't be generated!".format(root, f))
 
 def phon_word(lang_abbrev, word, gram=False, raw=False,
               postproc=False, rank=True, nbest=100, freq=False,
@@ -450,19 +458,12 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
             verbose=False):
     '''Returns a cascade for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
-    @type  language: string
     @param pos:    part-of-speech for the cascade, for example, 'v'
-    @type  pos:    string
     @param phon:   whether the cascade is for phonology
-    @type  phon:   boolean
     @param segment: whether the cascade is for segmentation
-    @type  segment: boolean
     @param invert: whether to return the inverted cascade (for generation).
-    @type  invert: boolean
     @param verbose: whether to print out various messages
-    @type  verbose: boolean
     @return:       cascade for the the language and POS: a list of FSTs
-    @rtype:        instance of the FSTCascade class (subclass of list)
     '''
     pos = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
     if not gen and pos.casc:
@@ -484,24 +485,15 @@ def recompile(language, pos, phon=False, segment=False, gen=False, backwards=Fal
               save=True, verbose=True):
     '''Recompiles the cascade FST for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
-    @type  language: string
     @param pos:    part-of-speech for the cascade, for example, 'v'
-    @type  pos:    string
     @param phon:   whether the cascade is for phonology
-    @type  phon:   boolean
     @param segment: whether the cascade is for segmentation
-    @type  segment: boolean
     @param gen:    whether to compile the cascade for generation (rather than analysis)
-    @type  gen:    boolean
     @param backwards: whether to compile the FST from top (lexical) to bottom (surface)
                       for efficiency's sakd
-    @type  backwards: boolean
     @param save:   whether to save the compiled cascade as an FST file
-    @type  save:   boolean
     @param verbose: whether to print out various messages
-    @type  verbose: boolean
     @return:       the POS morphology object
-    @rtype:        instance of the POSMorphology class
     '''
     pos_morph = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen,
@@ -521,19 +513,12 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
     """Test a individual FST within a cascade, identified by its label or its index,
     on the transduction of a string.
     @param language: abbreviation for a language, for example, 'gn'
-    @type  language: string
     @param pos:    part-of-speech for the cascade, for example, 'v'
-    @type  pos:    string
     @param phon:   whether the cascade is for phonology
-    @type  phon:   boolean
     @param segment: whether the cascade is for segmentation
-    @type  segment: boolean
     @param gen:     whether to use the inverted cascade (for generation).
-    @type  gen:     boolean
     @param verbose: whether to print out various messages
-    @type  verbose: boolean
     @return:       a list of analyses, each a list consisting of a root and a feature-structure set
-    @rtype:        list of lists, each of the form [str, FSSet]
     """
     casc = cascade(language, pos, gen=gen, phon=phon, segment=segment)
     if not casc:
@@ -546,18 +531,11 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
     @param abbrev: abbreviation for a language, for example, 'am'
-    @type  abbrev: string
     @param pos:    part-of-speech for the FST, for example, 'v'
-    @type  pos:    string
     @param phon:   whether the FST is for phonology
-    @type  phon:   boolean
     @param segment: whether the FST is for segmentation
-    @type  segment: boolean
     @param verbose: whether to print out various messages
-    @type  verbose: boolean
     @return:       POS object for the the language and POS
-    @rtype:        instance of the POSMorphology class
-
     """
     load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
               guess=guess, verbose=verbose)

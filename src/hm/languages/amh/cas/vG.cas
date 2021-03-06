@@ -87,7 +87,8 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 ### Optionally assimilate g, q to following k; T to following t
 >CC_ass<
 # 10 -ku/-k
->khG<
+#>khG<
+>kh<
 # 11 3sm object
 >3sm<
 # 12 gemination of t- and n-

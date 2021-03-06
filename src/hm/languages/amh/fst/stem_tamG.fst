@@ -1,23 +1,22 @@
 ###
-### This file is part of AmMorpho.
+### This file is part of HornMorpho.
 ###
-###    AmMorpho is free software: you can redistribute it and/or modify
+###    HornMorpho is free software: you can redistribute it and/or modify
 ###    it under the terms of the GNU General Public License as published by
 ###    the Free Software Foundation, either version 3 of the License, or
 ###    (at your option) any later version.
 ###
-###    AmMorpho is distributed in the hope that it will be useful,
+###    HornMorpho is distributed in the hope that it will be useful,
 ###    but WITHOUT ANY WARRANTY; without even the implied warranty of
 ###    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ###    GNU General Public License for more details.
 ###
 ###    You should have received a copy of the GNU General Public License
-###    along with AmMorpho.  If not, see <http://www.gnu.org/licenses/>.
+###    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 ###
 ###  Author: Michael Gasser <gasser@indiana.edu>
 ### -----------------------------------------------------------------------------------
-### FST which covers details of the Amharic verb stem for GENERATION (omitting some
-###    of the optionality that is needed for ANALYSIS).
+### FST which covers details of the Amharic verb stem.
 ### The prefixes a-, as-, te-, as well as the gemination of the stem initial consonsant
 ### that indicates passive voice for imperfective and jussive, are treated with separate
 ### states.
@@ -38,10 +37,8 @@
 ###
 ### All occurrences of "o" and "u" in stems are treated as originating from labialized
 ### consonants in the root. For example,
-### qureT <- qWIreT <- qWrT [tm=j_i,sb=[+p2,-fem,-plr]]
-###    (an ordinary 3-consonant root, in 2p masc sing imperative)
-### doleddome <- dWeledW_eme <- dWldWl [tm=prf,sb=[-p1,-p2,-fem,-plr]]
-###    (an ordinary 4-consonant root, in 3p masc sing perfective)
+### qureT <- qWIreT <- qWrT (an ordinary 3-consonant root)
+### doleddome <- dWeledW_eme <- dWldWl (an ordinary 4-consonant root)
 ###
 
 -> start
@@ -56,14 +53,13 @@ start -> te         <te:>     [vc=ps,tm=prf];[vc=ps,tm=ger];[tm=j_i,vc=ps,sb=[+p
 start -> as         <as:>
 # for C1=L verbs, +iterative
 as -> ast           [t:]      [vc=tr]
+#te -> test          <st:>    [as=it]
 ## Passive in imperfective, jussive is special because te- is replaced by ...
-# ... tt for verbs with C1=L: yIttawweqal, yIttewawweqal
-start -> tt         <t_:>     [vc=ps,tm=imf];[vc=ps,tm=j_i,sb=[-p2]];[vc=ps,tm=j_i,sb=[+p2],+neg]
-start -> ij_ps      [:]       [tm=imf,vc=ps];[tm=j_i,vc=ps,sb=[-p2]];[tm=j_i,vc=ps,sb=[+p2],+neg]
+start -> prefpass   [:]       [vc=ps,tm=imf];[vc=ps,tm=j_i,sb=[-p2]];[vc=ps,tm=j_i,sb=[+p2],+neg]
 # ... gemination of the following consonant (C1!=L): yImmerreTal, yImmerarreTal
-ij_ps -> i/         [/:]
+prefpass -> i/         [/:]
 # ... 0 when the root begins with C|: yInsaffefal, yICberebberal
-ij_ps -> i|         [:]
+prefpass -> |      [X]
 
 ## Combine causative, passive, and transitive prefixes, along with
 ## no prefix in one state (simp) because they are common to most roots
@@ -77,11 +73,11 @@ a -> simp           [:]       [as=smp]
 start -> simp       [:]       [vc=smp]
 
 # Transitive and passive before C| verbs is special
-a -> a_te           [:]       
+a -> a_te           [:]
 te -> a_te          [:]
 
 # Transitive iterative, reciprocal: geminate C1 after the prefix
-a -> a/             [/:]      
+a -> a/             [/:]
 
 #### END
 ### State names with "-" represent positions starting from the right:
@@ -96,42 +92,30 @@ a -> a/             [/:]
 #    (also for jussive/imperative simplex with CCC verbs but that's handled separately below)
 -2V -> -1           [e:]      [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf]
 # no vowel in other cases
--2V -> -1           [:]       [tm=imf,vc=smp];[tm=imf,vc=cs];[tm=imf,vc=tr]; [tm=j_i,vc=cs];[tm=j_i,vc=tr];[tm=j_i,vc=smp]; [tm=ger]
-# same for B verbs
--2VB -> -1          [e:]      [tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=prf]
--2VB -> -1          [:]       [tm=imf,vc=smp];[tm=imf,vc=cs];[tm=imf,vc=tr]; [tm=j_i,vc=cs];[tm=j_i,vc=tr];[tm=j_i,vc=smp]; [tm=ger]
+-2V -> -1           [:]       [tm=imf,vc=smp];[tm=imf,vc=cs];[tm=imf,vc=tr];[tm=ger,vc=smp,cls=A|C];[tm=ger,vc=ps,cls=A|C]
+# but add I to prevent gemination when C-2 = C-1 for ger and j_i
+-2V -> -1           [I:]      [tm=j_i,vc=smp|tr|cs];[tm=ger,cls=B|E|F|G|H|I|J|K];[tm=ger,vc=tr];[tm=ger,vc=cs]
 
 ## Final vowel and consonant for final L, *
 # a for final L except in gerundive
-# for A verbs ending in L('), in iterative passive and transitive, there is a special path (below) for tesmam_a.
-# Prevent this path for generation so we don't get tesemam_a / as_emam_a (but do get semam_a).
-# XX'
-# a for final L in perfective, imperfective, jussive/imperative; for generation prevent for as=it,vc=ps and as=it,vc=tr
--2V -> end [a:'] [tm=prf,as=smp];[tm=imf,as=smp];[tm=j_i,as=smp];[tm=prf,as=rc];[tm=imf,as=rc];[tm=j_i,as=rc];[tm=prf,as=it,vc=smp];[tm=imf,as=it,vc=smp];[tm=j_i,as=it,vc=smp]
-# t for final L in gerundive; for generation prevent for as=it,vc=ps and as=it,vc=tr
--2V -> end          [t:']     [tm=ger,as=smp];[tm=ger,as=rc];[tm=ger,as=it,vc=smp]
-# For B verbs this is the only iterative path: qemam_a, teqemam_a, aq_emam_a.
--2VB -> end         [a:']     [tm=prf];[tm=imf];[tm=j_i]
--2VB -> end         [t:']     [tm=ger]
-# XX*
-# t for final * in gerundive
--2V -> end          [t:*] [tm=ger]
+-2V -> -2VL         [:]       [as=smp];[as=rc];[as=it,vc=smp]
+-2VL -> end          [a:']     [tm=prf];[tm=imf];[tm=j_i]
+# t for final L in gerundive
+-2VL -> end          <It:'>    [tm=ger]
+# t final * in gerundive
+-2V -> end          <It:*>     [tm=ger]
 # e for final * in perfective
 -2V -> end          [e:*]     [tm=prf]
 # no vowel for final * in imperfective and jussive/imperative
 -2V -> end          [:*]      [tm=imf];[tm=j_i]
-# same for B verbs
--2VB -> end         [t:*] [tm=ger]
--2VB -> end          [e:*]     [tm=prf]
--2VB -> end          [:*]      [tm=imf];[tm=j_i]
 
-#### "A" verbs (CCC, C2 cannot be L, w, or y; these cases are handled below)
+#### "A" verbs (CCC, C2 cannot be L, w, or y (except when C1 is L); these cases are handled below)
 
 ## Following C2
 # geminate C2 in perfective, causative, imperfective passive
 -2A_ -> -2V         [_:]      [tm=prf];[vc=cs];[tm=imf,vc=ps]
 # no gemination in other cases
--2A_ -> -2V         [:]       [tm=imf,vc=smp];[tm=imf,vc=tr]; [tm=j_i,vc=tr]; [tm=ger,vc=smp];[tm=ger,vc=tr];[tm=ger,vc=ps]
+-2A_ -> -2V         [:]       [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=ger]
 # Final vowel: e for passive and simplex in jussive/imperative (simplex only for CCC)
 -2A_ -> -1          [e:]      [tm=j_i,vc=ps];[tm=j_i,vc=smp]
 # Final ', * for passive and simplex in jussive/imperative (a or 0, skipping to end)
@@ -160,7 +144,7 @@ simp -> -3L         [:]
 ## Initial geminated consonant for imperfective and jussive passive
 i/ -> -3            [:]
 
-## C1=L in CCCC (e.g., aneTTese) apparently behaves like CCC in passive and causative (it has no transitive)
+## C1=L in CCCC (e.g., aneTTese) apparently behaves like CCC in passive and causative (it has not transitive)
 ## ... the initial ' is dropped
 as -> -3            [:']      [vc=cs]
 te -> -3            [:']
@@ -177,22 +161,20 @@ i/ -> -3            [:']
 -3V.2 -> -1          [a:']    [tm=prf];[tm=imf,vc=ps];[tm=j_i,vc=ps];[tm=j_i,vc=smp,as=smp]
 # C2=' surfaces as 0 in other cases: imperfective except passive, gerundive, jussive/imperative except simple (simplex aspect)
 # ... yIsImal, yIsasIm, assasIm
--3V.2 -> -1          [:']     [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=imf,vc=cs];[tm=ger]
--3V.2 -> -1          [:']     [tm=j_i,as=it,vc=smp];[tm=j_i,as=rc,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
+-3V.2 -> -1          [:']     [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=imf,vc=cs];[tm=ger];[tm=j_i,as=it,vc=smp];[tm=j_i,as=rc,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
 
 # C2=w surfaces as o for perfective, imperfective and gerundive simplex (optionally); jussive/imperative passive
 # ... mote, moto
--3V.2 -> -1          [o:w]    [tm=prf,as=smp];[tm=imf,as=smp];[tm=ger,as=smp];[tm=j_i,vc=ps]
+-3V.2 -> -1          [o:w]    [tm=prf,as=smp];[tm=imf,as=smp];[tm=ger,as=smp];[tm=j_i,as=smp,vc=ps]
 # C2=w surfaces as u for jussive/imperative simplex aspect except passive, gerundive simplex aspect (optionally)
-# ... yImut (but yImmot), [muto also possible but excluded for generation]
+# ... yImut (but yImmot); but not muto for generation
 -3V.2 -> -1          [u:w]    [tm=j_i,as=smp,vc=smp];[tm=j_i,as=smp,vc=tr];[tm=j_i,as=smp,vc=cs]
 # C2=w surfaces as a for iterative aspect in perfective and imperfective+jussive/imperative passive
 # ... mWamWate, yImWmWamWat
 -3V.2 -> -1          [a:w]    [tm=prf,as=it];[tm=imf,vc=ps,as=it];[tm=j_i,vc=ps,as=it]
 # C2=w surfaces as 0 for iterative aspect in other cases
 # ... yImWamWIt (-> yImWamut)
--3V.2 -> -1          [:w]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
--3V.2 -> -1          [:w]     [tm=j_i,as=it,vc=smp];[tm=j_i,as=it,vc=tr];[tm=j_i,as=it,vc=cs];[tm=ger,as=it]
+-3V.2 -> -1          [:w]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs];[tm=j_i,as=it,vc=smp];[tm=j_i,as=it,vc=tr];[tm=j_i,as=it,vc=cs];[tm=ger,as=it]
 # C1 before special C2: any root consonant other than L (')
 -3.2 -> -3V.2        [X/L]
 
@@ -203,30 +185,29 @@ i/ -> -3            [:']
 -3.2 -> -3~PV.2      [~J]
 
 # following palatal C1, y surfaces as e in simplex aspect (passive for jussive/imperative)
-# optionally for gerundive (but excluded for generation)
+# optionally for gerundive (CHANGE FOR GENERATION)
 # ... xeTe
 -3PV.2 -> -1         [e:y]    [tm=prf,as=smp];[tm=imf,as=smp];[tm=j_i,vc=ps,as=smp]
 # following palatal C1, y surfaces as a in iterative aspect: perfective, imperfective+jussive/imperative passive
 # ... xaxaTe
 -3PV.2 -> -1         [a:y]    [tm=prf,as=it];[tm=imf,vc=ps,as=it];[tm=j_i,vc=ps,as=it]
-# following palatal C1, y surfaces as 0 in gerundive (obligatorily for simplex IN GENERATION),
+# following palatal C1, y surfaces as 0 in gerundive (optionally for simplex),
 # imperfective+jussive/imperative except passive
-# ... yIxIT, xITo
--3PV.2 -> -1         [:y]     [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger]
-# ... xaxITo, yIxaxIT
--3PV.2 -> -1         [:y]     [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
+# ... yIxIT, xITo; # ... xaxITo, yIxaxIT
+-3PV.2 -> -1         [:y]     [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger];[tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
 
 # following non-palatal C1, y surfaces as E in perfective, imperfective simplex and passive iterative,
-# gerundive simplex, and jussive/imperative passive
+# gerundive simplex (optionally) and jussive/imperative passive (except in the case of 'ayye, and other verbs
+# that have final */')
 # ... hEde, hEdo, fafEze, yIffafEz, fEzo
--3~PV.2 -> -1        [E:y]    [tm=prf];[tm=imf,as=smp];[tm=j_i,vc=ps];[tm=ger,as=smp];[tm=imf,vc=ps,as=it]
+-3~PV.2 -> -1        [E:y]    [tm=prf];[tm=imf,as=smp];[tm=ger,as=smp];[tm=j_i,vc=ps];[tm=imf,vc=ps,as=it]
 # following non-palatal C1, in other cases y surfaces as i
-# ... yIhid, [hido; NOT FOR GENERATION: hedo preferred]
--3~PV.2 -> -1        [i:y]    [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=ger,as=it];[tm=ger,as=rc]
+# ... yIhid, hido
+-3~PV.2 -> -1        [i:y]    [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
 # ... yIfafiz, yafafiz
 -3~PV.2 -> -1        [i:y]    [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
-# exceptional case ('y*; another others?)
--3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
+## exceptional case ('y*; another others?)
+#-3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
 
 ## reduplicated (iterative) cases of CXC: precede by Ca
 -4.2 -> -4V.2        [X]
@@ -245,15 +226,17 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 #### "B" verbs: CC_C, C2 cannot be ', since it can't be geminated
 #### State names contain B
 
-# Geminate C2 in all cases except jussive passive (optionally in imperative passive, but exclude for generation)
--2B_ -> -2VB        [_]        [tm=prf];[tm=imf];[tm=ger];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
+# Geminate C2 in all cases except jussive passive
+# (optionally in imperative passive) (CHANGE FOR GENERATION)
+-2B_ -> -2V         [_]        [tm=prf];[tm=imf];[tm=ger];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=j_i,vc=ps,sb=[+p2],-neg]
 # No C2 gemination in jussive passive, optionally in the imperative
--2B_ -> -2VB        [:_]       [tm=j_i,vc=ps]
+-2B_ -> -2V         [:_]       [tm=j_i,vc=ps]
 # C2 can be y or w: qeyyere, lewweTe
 -2B -> -2B_         [X/L]
--3V -> -2B          [e:]
+-3V -> -2B          [e:]      [cls=B]
 # C1=L: realize as a; no transitive voice possible (as with CCC)
--3L -> -2B          [a:']  [vc=smp];[vc=ps];[vc=cs]
+-3L -> -3LVB        [:']     [vc=smp];[vc=ps];[vc=cs]
+-3LVB -> -2B        [a:]
 
 #### 4-consonant and 5-consonant verbs without a before C-2 (CCCC, CCCCC, C|CCCC)
 #### State names contain .4
@@ -264,9 +247,9 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 # gemination of C3 in other cases: perfective, imperative
 -2.4_ -> -2V        [_:]    [tm=prf];[tm=imf]
 # lexical gemination in the case of CC_C verb: ger; prf; imf; j_i smp, cs, tr smp
--2.4_ -> -2VB        [_]     [tm=ger];[tm=prf];[tm=imf];[tm=j_i,vc=smp];[tm=j_i,vc=cs];[tm=j_i,vc=tr,as=smp]
+-2.4_ -> -2V        [_]     [tm=ger];[tm=prf];[tm=imf];[tm=j_i,vc=smp];[tm=j_i,vc=cs];[tm=j_i,vc=tr,as=smp]
 # delete lexical gemination in jussive rc, it, and ps
--2.4_ -> -2VB        [:_]    [tm=j_i,vc=ps];[tm=j_i,as=rc];[tm=j_i,as=it]
+-2.4_ -> -2V        [:_]    [tm=j_i,vc=ps];[tm=j_i,as=rc];[tm=j_i,as=it]
 
 # C-2: any root consonant
 -2.4 -> -2.4_       [X]
@@ -287,23 +270,30 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 # C-4=' (aneTTese, etc.): realized as a
 -4.4L -> -3.4       [a:']
 # vowel following first consonant of 5-consonant verbs (wexeneggere, etc.)
--5.4V -> -4.4       [e:]
+-5.5V -> -4.5       [e:]
 # C1 for 5-consonant verbs: any root consonant
--5.4 -> -5.4V       [X]
+-5.5 -> -5.5V       [X]
+-4.5 -> -4.5V       [X/L]
+-4.5V -> -3.5       [e:]
+-3.5 -> -3.5V       [X/L]
+-3.5V -> -2.4       [e:]     [tm=prf];[tm=imf]
+-3.5V -> -2.4       [:]      [tm=ger];[tm=j_i]
 
 ## 4- and 5-consonant roots can be preceded by passive, transitive, causative
 ## prefixes and by no prefix
 simp -> -4.4        [:]
-simp -> -5.4        [:]
+simp -> -5.5        [:]
 ## also by initial gemination in passive imperfective and jussive
 i/ -> -4.4          [:]
-i/ -> -5.4          [:]
+i/ -> -5.5          [:]
 
 ## causative and passive of CCC verbs with C1=L connect here
 # ... astawweqe
 ast -> -2.4         [a:']
-# ... yIttewawweqe
-tt -> -2.4          [a:']
+# ... yIttawweq
+prefpass -> tL      </t:>
+#tL -> t_L           [_:]
+tL -> -2.4         [a:']
 
 ## 4-consonant roots with C1=': no voice prefixes possible
 ## other cases are handled under CCC above (because they
@@ -318,7 +308,7 @@ start -> -4.4L      [:]       [vc=smp]
 -4a -> -4aV         [X/L]
 # vowel after C-4: se.babbere
 -4aV -> -3a         [e:]
-# be. in belexaxxe; CCaCC iterative verbs
+# be. in belexaxxe; CaCC, CCaCC iterative verbs
 -4aV -> -3a         [e:a]     [as=it]
 # C-3: seb.abbere
 -3a -> -3aV         [X]
@@ -330,10 +320,17 @@ start -> -4.4L      [:]       [vc=smp]
 # vowel after C-5: ge.nefaffele
 -5aV -> -4a         [e:]
 
+# C-6: wexenegaggere
+-6a -> -6aV         [X/L]
+# vowel after C-5: ge.nefaffele
+-6aV -> -5a         [e:]
+
 ## C1=L of CCC verbs in iterative aspect: causative, passive, simplex
 ## (Note that astewawweqe is considered transitive iterative and handled elsewhere)
 # causative and simplex voice: asawawweqe, awawweqe
--4aL -> -3a         [a:']   [vc=cs];[vc=smp]
+-4aL -> -4aLV       [:']     [vc=smp]
+-4aL -> -4aLV       [:']     [vc=cs]
+-4aLV -> -3a        [a:]
 # passive: tewawweqe
 -4aL -> -3a         [:']     [vc=ps]
 
@@ -377,7 +374,7 @@ i/ -> -5a           [:]
 i/ -> -4a.L         [:]
 
 ## Consonant preceding | and following a- or te-
-i| -> |             [X]
+#i| -> |             [X]
 a_te -> |           [X]
 # |: before CaCC (tensaffefe)
 | -> -3a            [:|]
@@ -387,6 +384,9 @@ a_te -> |           [X]
 | -> -4.4           [:|]
 # |: before CCCaCC (teCberebabbere)
 | -> -5a            [:|]
+# |: before CCCaCC (teCberebabbere)
+| -> -6a|           [:|]
+-6a| -> -5aV        [X/L]
 
 ## Transitive, causative, passive prefixes and no prefix before
 ## CaCC, CCaCC, CCCaCC
@@ -396,13 +396,19 @@ simp -> -5a         [:]
 # Passive prefix before special CC' passive (tegfaffa)
 te -> -4a.L         [:]
 
+## Iterative of CCCCC verbs (maybe never happens?)
+simp -> -6a         [:]       [as=it]
+i/ -> -6a           [:]       [as=it]
+# CCCCaCC: awwexenebabbere
+a/ -> -6a           [:]       [as=it]
+
 ## CCC with C1=L: iterative
 # causative: asawawweqe
-as -> -4aL          [:]       [vc=cs]
+# as -> -4aL          [:]       [vc=cs]
 # passive: tewawweqe
 te -> -4aL          [:]
 # simplex voice: awawweqe
-start -> -4aL       [:]       [vc=smp]
+# start -> -4aL       [:]       [vc=smp]
 
 ## CCCC with C1=': iterative
 # aneTaTTese
@@ -419,6 +425,8 @@ te -> -4a           [:']
 # Iterative transitive CCC with C1=L: astewawweqe
 ast -> -3a          [e:']
 # Iterative passive imperfective, jussive CCC with C1=L: yIttewawweqal
-tt -> -3a           [e:']
+tL -> -3a           [e:']   [as=it]
+# Iterative passive perfective, gerundive CCC with C1=L: testewawweqe
+#test -> -3a         [e:']
 
 end ->

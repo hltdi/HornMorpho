@@ -1233,7 +1233,7 @@ class Language:
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
-                  only_anal=False):
+                  only_anal=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both
         lexical and guesser FSTs.
@@ -1316,7 +1316,8 @@ class Language:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment,
-                                                             to_dict=to_dict, sep_anals=True)
+                                                             to_dict=to_dict, sep_anals=True,
+                                                             verbosity=verbosity)
                         if analysis:
                             if cache:
                                 to_cache.extend(analysis)
@@ -1333,7 +1334,8 @@ class Language:
             for pos in fsts:
                 analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
                                                      phon=phon, segment=segment,
-                                                     to_dict=to_dict, sep_anals=True)
+                                                     to_dict=to_dict, sep_anals=True,
+                                                     verbosity=verbosity)
                 if analysis:
                     if cache:
                         to_cache.extend(analysis)

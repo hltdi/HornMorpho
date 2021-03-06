@@ -49,9 +49,12 @@ a/ -> simp          [:]
 -2V -> -1           [a:]      [v=agt]
 
 # Final L
--2V -> -1C          [:']      [v=agt];[v=man];[v=ins]
--2V -> -2V.t        [a:']     [v=inf]
+# separate path for as=it (tesmamma)
+-2V -> -2VL         [:]       [as=smp];[as=rc];[as=it,vc=smp]
+-2VL -> -1C          [:']      [v=agt];[v=man];[v=ins]
+-2VL -> -2V.t        [a:']     [v=inf]
 -2V.t -> end        [t:]
+
 # Final *
 -2V -> -1C          [:*]      [v=agt];[v=man];[v=ins]
 # infinitive and alternate for -* manner noun
@@ -84,7 +87,7 @@ as -> -3            [:']      [vc=cs]
 te -> -3            [:']
 /C -> -3            [:']
 stem -> smp4L       [a:']     [v=inf,vc=smp,as=smp];[v=agt,vc=smp,as=smp];[v=ins,vc=smp,as=smp]
-smp4L -> -2A        [X/L]     
+smp4L -> -2A        [X/L]
 
 ### A (C*C, imperfective with w, y, L as C2; reduplicated: CaC*C)
 ### the same pattern of vowels works with all reduplicated forms
@@ -161,8 +164,8 @@ man -> -4.2          [:]
 -5.4V -> -4.4       [e:]
 -5.4 -> -5.4V       [X]
 
-simp -> -4.4        [:]       
-simp -> -5.4        [:]       
+simp -> -4.4        [:]
+simp -> -5.4        [:]
 
 ast -> -2.4         [a:']
 tt -> -2.4          [a:']
@@ -172,7 +175,7 @@ start -> -4.4L      [:]       [vc=smp]
 
 ### 5-consonant roots
 simp -> -5.5        [:]
--5.5 -> -5.5V       [X]      
+-5.5 -> -5.5V       [X]
 # vowel following first consonant of 5-consonant verbs (wexeneggere, etc.)
 -5.5V -> -4.5       [e:]
 -4.5 -> -4.5V       [X/L]
@@ -211,7 +214,7 @@ simp -> -5.5        [:]
 # 'abe<l>exaxet; menke<r>etatet
 -4a -> -4aV         [X/L]
 # 'abe<>bab
--4a -> -3a          [:']      [as=smp];[as=it]
+-4a -> -3a          [:']      [as=smp] #;[as=it]
 # most verbs; megel<e>babeT
 -4aV -> -3a         [e:]
 # mebel<e>xaxet; menker<e>tatet
@@ -260,7 +263,7 @@ simp -> -5a         [:]       [as=it]
 # CCCCC iterative
 simp -> -6a         [:]       [as=it]
 
-# To get +it and +cs,+it for C1=L, CCC
+# To get +it and +tr,+it for C1=L, CCC
 te -> -4aL          [:]
 
 ast -> -3a          [e:']

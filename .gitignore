@@ -25,6 +25,9 @@ var/
 .installed.cfg
 *.egg
 
+# Universal Morphology
+UM/
+
 # Misc stuff
 Proc/
 Users/
@@ -66,3 +69,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Jupyter
+.ipynb*/
+*.ipynb

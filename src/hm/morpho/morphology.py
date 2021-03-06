@@ -1008,7 +1008,7 @@ class POSMorphology:
              guess=False, simplified=False, phon=False, segment=False,
              init_weight=None,
              to_dict=False, sep_anals=False,
-             timeit=False, trace=False, tracefeat=''):
+             timeit=False, trace=False, tracefeat='', verbosity=0):
         """Analyze form."""
         fst = self.get_fst(generate=False, guess=guess, phon=phon, segment=segment)
         if guess:
@@ -1035,7 +1035,8 @@ class POSMorphology:
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
                                   init_weight=init_weight, result_limit=40 if guess else 30,
-                                  trace=trace, tracefeat=tracefeat, timeit=timeit)
+                                  trace=trace, tracefeat=tracefeat, timeit=timeit,
+                                  verbosity=verbosity)
             if sep_anals:
                 anals = self.separate_anals(anals)
             if to_dict:
@@ -1148,7 +1149,7 @@ class POSMorphology:
             print_word=False, print_prefixes=None,
             interact=False,
             timeit=False, timeout=100, limit=10,
-            trace=False):
+            trace=False, verbosity=0):
         """
         Generate word from root and features.
         2020.9.22: Added del_feats, a list of features or feature paths
@@ -1158,8 +1159,8 @@ class POSMorphology:
         if del_feats:
             # Transduction needs to run for a longer time when
             # there are fewer features
-            timeout = 100 * len(del_feats)
-            limit = 50 * len(del_feats)
+            timeout = 4000 * len(del_feats)
+            limit = 4000 * len(del_feats)
         if interact and self.feat_list:
             # Get user input from menu
             features = self.fv_menu()
@@ -1207,7 +1208,7 @@ class POSMorphology:
                             print_prefixes=print_prefixes,
                             trace=trace, dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
-                            result_limit=limit)
+                            result_limit=limit, verbosity=verbosity)
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)

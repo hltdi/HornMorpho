@@ -29,11 +29,13 @@ P0i -> start   [V]
 P0E -> start   [V]
 
 ## consonant already palatalized; do the same things as after a palatalized C (before 8)
-#start -> P     [J]
+start -> P     [J]
 ## palatalized consonant not before 8
-#start -> !P    [J]
-#!P -> !P       [_]
-#!P -> start    [X;V;/]
+start -> !P    [J]
+!P -> !P       [_]
+!P -> P        [c:t;j:d;C:T;x:s;C:S;Z:z;y:l;N:n]
+!P -> PP       [JJ]
+!P -> start    [!J;J;V;_;/]
 
 start ->
 PP ->

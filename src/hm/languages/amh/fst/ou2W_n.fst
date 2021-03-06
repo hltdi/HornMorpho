@@ -2,18 +2,19 @@
 
 -> start
 
-start -> start   [V-u,o;X;_;/]
+#start -> start   [V-u,o;X;_;/]
+start -> start  [V;X;_;/]
 
 start ->
-ou ->
+#ou ->
 
 # Insert gs between o/u and a
-start -> ou      [u;o]
-ou -> ou'        [':]
-ou' -> start     [a]
-ou -> start      [X;/]
-# The change can also follow these consonants
-ou -> start      [:]
+#start -> ou      [u;o]
+#ou -> ou'        [':]
+#ou' -> start     [a]
+#ou -> start      [X;/]
+## The change can also follow these consonants
+#ou -> start      [:]
 
 # common to all labialized consonants
 C2CW -> C2CW     [_]

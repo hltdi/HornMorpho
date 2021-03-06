@@ -21,9 +21,10 @@ XV -> Y           [y;w]
 
 # Accept o|u after y|w, but insert '
 start -> Y       [y;w]
-Y -> Y           [/;_]
+Y -> Y           [/;_;y;w]
 Y -> YU          [o;u]
-Y -> start       [X;V-o,u]
+Y -> start       [V-o,u]
+Y -> X           [X]
 YU -> YU'        [':]
 YU' -> start     [a]
 YU -> start      [X;V-a;/;_]

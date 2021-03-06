@@ -21,7 +21,7 @@ start -> 1L.3 [L]     [as=it];[as=smp]
 1a.3 -> 1Dw.3 <wD:>    [as=it]
 1Dw.3 -> 2c.3 [w]
 1a.3 -> 1D.3  [D:]     [as=it]
-1D.3 -> 2c.3  [L;y]
+1D.3 -> 2c.3  [L;y]    [cls=A]
 # not redup
 1a.3 -> 2c.3  [L;w;y]  [as=smp]
 

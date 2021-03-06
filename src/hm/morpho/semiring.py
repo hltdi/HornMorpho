@@ -195,6 +195,7 @@ class FSSet(set, FS):
     @staticmethod
     def parse(string):
         """string could be a single FS or several separated by ';'."""
+#        print("Parsing {}".format(string))
         if string == '[]':
             return TOPFSS
         strings = [s.strip() for s in string.split(';')]

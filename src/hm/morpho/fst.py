@@ -2586,11 +2586,14 @@ class FST:
                   gen=False, print_word=False, print_prefixes=None,
                   seg_units=[], reject_same=False,
                   trace=0, tracefeat='', dup_output=False,
-                  result_limit=5, timeit=False, timeout=TIMEOUT):
+                  result_limit=5, timeit=False, timeout=TIMEOUT,
+                  verbosity=0):
         """
         Return the output for all paths through the FST for the input and
         initial weight. (MG)
         """
+#        print("Transducing {} -- {}".format(input, init_weight.__repr__()))
+#        print(" Result limit {}".format(result_limit))
         if timeit:
             time1 = time.time()
         words = []
@@ -2616,6 +2619,8 @@ class FST:
             # output[2] is accumulated weight (if success)
             # There can be failures and duplicate successes
             if len(result) >= result_limit:
+                if verbosity:
+                    print("Exceeded result limit {}: {}".format(result_limit, input))
 #                print("Exceeded {}".format(result_limit))
 #                print("Result {}".format(result))
                 break
@@ -2643,7 +2648,8 @@ class FST:
                 if timeout:
                     # Only count outputs if they succeed
                     if n_outputs >= timeout:
-                        print(' {} exceeded {}'.format(input, timeout))
+                        if verbosity:
+                            print('Timed out at {}: {}'.format(timeout, input))
                         break
                     n_outputs += 1
 #        print('transduce result: {}'.format(result))

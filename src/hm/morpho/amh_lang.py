@@ -757,7 +757,7 @@ AMH = language.Language("አማርኛ", 'amh',
 ## Create Morphology object and noun, verb, and copula POSMorphology objects for Amharic,
 ## including punctuation and ASCII characters that are part of the romanization.
 AMH.set_morphology(language.Morphology(
-                             pos_morphs=[('cop',), ('n',), ('nm',), ('v',)],
+                             pos_morphs=[('cop',), ('n',), ('v',)],
                              # Exclude ^ and - (because it can be used in compounds)
                              punctuation=r'[“‘”’–—:;/,<>?.!%$()[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                              # Include digits?
@@ -832,27 +832,27 @@ AMH.morphology['v'].web_feats = \
   [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1)]
 AMH.morphology['v'].root_proc = postpostproc_root
 AMH.morphology['n'].root_proc = postproc_nroot
-AMH.morphology['nm'].root_proc = postproc_nroot
+# AMH.morphology['nm'].root_proc = postproc_nroot
 AMH.morphology['cop'].root_proc = lambda root, fs, phonetic=True: "ነው"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
-    language.FeatStruct("[-acc,-def,-neg,-fem,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],prep=None,v=None,vc=smp]")
+    language.FeatStruct("[-acc,-det,-neg,-itu,as=smp,cnj=None,-dis,-gen,-plr,poss=[-expl,-p1,-p2,-plr,-fem,-frm],prep=None,v=None,vc=smp]")
 AMH.morphology['n'].FS_implic = {'poss': [['expl'], 'def']}
 # defaultFS with voice and aspect unspecified
-AMH.morphology['n'].citationFS = language.FeatStruct("[-def,-acc,-neg,-fem,cnj=None,-dis,-gen,-plr,poss=[-expl],prep=None,v=inf]")
-AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "acc", "gen", "pp", "dis"]
+AMH.morphology['n'].citationFS = language.FeatStruct("[-det,-acc,-neg,cnj=None,-dis,-gen,-plr,poss=[-expl],prep=None,v=inf]")
+AMH.morphology['n'].explicit_feats = ["plr", "poss", "def", "det", "acc", "gen", "pp", "dis"]
 AMH.morphology['n'].feat_abbrevs = \
   {'plr': "plural", 'poss': "possessor", "def": "definite", "acc": "accusative", "dis": "distributive", "gen": "genitive",
    'prep': 'preposition'}
 
-AMH.morphology['nm'].name = 'name'
-AMH.morphology['nm'].defaultFS = language.FeatStruct("[-acc,cnj=None,-gen,prep=None]")
-# defaultFS with voice and aspect unspecified
-AMH.morphology['nm'].citationFS = language.FeatStruct("[-acc,cnj=None,-gen,prep=None]")
-AMH.morphology['nm'].explicit_feats = ["acc", "gen", "prep"]
-AMH.morphology['nm'].feat_abbrevs = \
-  {"acc": "accusative", "gen": "genitive", 'prep': 'preposition'}
+# AMH.morphology['nm'].name = 'name'
+# AMH.morphology['nm'].defaultFS = language.FeatStruct("[-acc,cnj=None,-gen,prep=None]")
+# # defaultFS with voice and aspect unspecified
+# AMH.morphology['nm'].citationFS = language.FeatStruct("[-acc,cnj=None,-gen,prep=None]")
+# AMH.morphology['nm'].explicit_feats = ["acc", "gen", "prep"]
+# AMH.morphology['nm'].feat_abbrevs = \
+#   {"acc": "accusative", "gen": "genitive", 'prep': 'preposition'}
 
 AMH.morphology['cop'].name = 'copula'
 AMH.morphology['cop'].defaultFS = language.FeatStruct("[cj2=None,-neg,sb=[-fem,-p1,-p2,-plr,-frm],tm=prs]")

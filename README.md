@@ -1,18 +1,18 @@
-This is version 4.0 of ***HornMorpho***, a Python program that performs morphological analysis, generation, segmentation, and grapheme-to-phoneme conversion in various languages of the Horn of Africa.
+This is version 4 of ***HornMorpho***, a Python program that performs morphological analysis, generation, segmentation, and grapheme-to-phoneme conversion in various languages of the Horn of Africa.
 
 <!--For information about using the program, see the manual that came with the distribution: *horn3.5_quick.pdf*.
 -->
 
 ## Installation
-To install HornMorpho, you can use either the distribution file, `HornMorpho-4.0.tar.gz`, or the wheel file, `HornMorpho-4.0-py3-none-any.whl`, both of which can be found in the `dist/` folder and the `Versions` folder.
-To install from the distribution file, first extract the files from it. Then go to the top-level folder, `HornMorpho-4.0`, and do the following in a Python shell:
+To install HornMorpho, you can use either the distribution file, `HornMorpho-4.*.tar.gz`, or the wheel file, `HornMorpho-4.*-py3-none-any.whl`, both of which can be found in the `dist/` folder and the `Versions` folder.
+To install from the distribution file, first extract the files from it. Then go to the top-level folder, `HornMorpho-4.*`, and do the following in a Python shell:
 
 	python setup.py install
 
 making sure that you are using some version of Python 3.
 To install from the wheel file, do the following in a Python shell.
 
-	pip install HornMorpho-4.0-py3-none-any.whl
+	pip install HornMorpho-4.*-py3-none-any.whl
 	
 (This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
 

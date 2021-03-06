@@ -98,9 +98,14 @@ a -> a/             [/:]
 
 ## Final vowel and consonant for final L, *
 # a for final L except in gerundive
+-2V -> -2VL         [:]       [as=smp];[as=rc];[as=it,vc=smp]
 -2V -> end          [a:']     [tm=prf];[tm=imf];[tm=j_i]
-# t for final L and * in gerundive
--2V -> end          [t:';t:*] [tm=ger]
+# t for final L in gerundive
+-2VL -> end          <It:'>    [tm=ger]
+# t final * in gerundive
+-2V -> end          <It:*>     [tm=ger]
+# e for final * in perfective
+-2V -> end          [e:*]     [tm=prf]
 # e for final * in perfective
 -2V -> end          [e:*]     [tm=prf]
 # no vowel for final * in imperfective and jussive/imperative
@@ -204,7 +209,7 @@ i/ -> -3            [:']
 # ... yIfafiz, yafafiz
 -3~PV.2 -> -1        [i:y]    [tm=imf,as=it,vc=smp];[tm=imf,as=it,vc=tr];[tm=imf,as=it,vc=cs]
 # exceptional case ('y*; another others?)
--3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
+#-3~PV.2 -> -2V       [y]      [tm=j_i,as=smp,vc=smp]
 
 ## reduplicated (iterative) cases of CXC: precede by Ca
 -4.2 -> -4V.2        [X]

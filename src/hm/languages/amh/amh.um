@@ -2,7 +2,7 @@ POS n N
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
 prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
-plr:: True:PL;; False:SG
+#plr:: True:PL;; False:SG
 acc:: ACC
 gen:: GEN
 poss::
@@ -15,17 +15,20 @@ poss::
   expl,plr: PSS3P
   expl,fem: PSS3SF
   expl: PSS3SM
-def!poss:: DEF
+#def!poss:: DEF
+det,plr:: True,True:DEF;PL;; False,True:PL
+det,fem:: True,True:DEF;FEM;; True,False:DEF;MASC;; False,False:-DEF;; False,True:-DEF
+det:: True:DEF;; False:-DEF
 cnj:: m:LGSPEC1;; s:LGSPEC2
 # only relevant for deverbal nouns
 as,vc:: it,cs:RECP;CAUS;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v V
 tm,ax:: ger,None:V.CVB
-pos!tm:: v:V
+pos!tm:: v:V;; 0:ADJ;; 0:N
 neg:: NEG
-rel:: *RELC;NFIN
-tm:: j_i:IMP;; imf:IPFV;; prf:PFV
+rel,sub:: True,True:*RELC;NFIN
+tm:: j_i:IMP;; imf:IPFV;; prf:PFV;; prs:PRS
 tm,ax:: imf,None:NFIN;; ger,al:PRF
 ## different ac,vc and lexicalization combinations
 # CAUS of base form

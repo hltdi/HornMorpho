@@ -13,7 +13,7 @@ start -> bW  [bW]
 bW -> bWa    [a:D]
 bWa -> start [bW:]
 
-start -> b.w [bW:b]
+start -> b.w [bW:b]  [cls=A]
 b.w -> bW    [:w]
 
 
@@ -25,7 +25,7 @@ start -> cW  [cW]
 cW -> cWa    [a:D]
 cWa -> start [cW:]
 
-start -> c.w [cW:c]
+start -> c.w [cW:c]  [cls=A]
 c.w -> cW    [:w]
 
 
@@ -37,7 +37,7 @@ start -> CW  [CW]
 CW -> CWa    [a:D]
 CWa -> start [CW:]
 
-start -> C.w [CW:C]
+start -> C.w [CW:C]  [cls=A]
 C.w -> CW    [:w]
 
 
@@ -49,7 +49,7 @@ start -> dW  [dW]
 dW -> dWa    [a:D]
 dWa -> start [dW:]
 
-start -> d.w [dW:d]
+start -> d.w [dW:d]  [cls=A]
 d.w -> dW    [:w]
 
 
@@ -61,7 +61,7 @@ start -> fW  [fW]
 fW -> fWa    [a:D]
 fWa -> start [fW:]
 
-start -> f.w [fW:f]
+start -> f.w [fW:f]  [cls=A]
 f.w -> fW    [:w]
 
 
@@ -73,7 +73,7 @@ start -> gW  [gW]
 gW -> gWa    [a:D]
 gWa -> start [gW:]
 
-start -> g.w [gW:g]
+start -> g.w [gW:g]  [cls=A]
 g.w -> gW    [:w]
 
 
@@ -85,7 +85,7 @@ start -> jW  [jW]
 jW -> jWa    [a:D]
 jWa -> start [jW:]
 
-start -> j.w [jW:j]
+start -> j.w [jW:j]  [cls=A]
 j.w -> jW    [:w]
 
 
@@ -97,7 +97,7 @@ start -> kW  [kW]
 kW -> kWa    [a:D]
 kWa -> start [kW:]
 
-start -> k.w [kW:k]
+start -> k.w [kW:k]  [cls=A]
 k.w -> kW    [:w]
 
 
@@ -109,7 +109,7 @@ start -> lW  [lW]
 lW -> lWa    [a:D]
 lWa -> start [lW:]
 
-start -> l.w [lW:l]
+start -> l.w [lW:l]  [cls=A]
 l.w -> lW    [:w]
 
 
@@ -121,7 +121,7 @@ start -> mW  [mW]
 mW -> mWa    [a:D]
 mWa -> start [mW:]
 
-start -> m.w [mW:m]
+start -> m.w [mW:m]  [cls=A]
 m.w -> mW    [:w]
 
 
@@ -133,7 +133,7 @@ start -> nW  [nW]
 nW -> nWa    [a:D]
 nWa -> start [nW:]
 
-start -> n.w [nW:n]
+start -> n.w [nW:n]  [cls=A]
 n.w -> nW    [:w]
 
 
@@ -150,7 +150,7 @@ start -> qW  [qW]
 qW -> qWa    [a:D]
 qWa -> start [qW:]
 
-start -> q.w [qW:q]
+start -> q.w [qW:q]  [cls=A]
 q.w -> qW    [:w]
 
 
@@ -162,7 +162,7 @@ start -> rW  [rW]
 rW -> rWa    [a:D]
 rWa -> start [rW:]
 
-start -> r.w [rW:r]
+start -> r.w [rW:r]  [cls=A]
 r.w -> rW    [:w]
 
 
@@ -174,7 +174,7 @@ start -> sW  [sW]
 sW -> sWa    [a:D]
 sWa -> start [sW:]
 
-start -> s.w [sW:s]
+start -> s.w [sW:s]  [cls=A]
 s.w -> sW    [:w]
 
 
@@ -186,7 +186,7 @@ start -> SW  [SW]
 SW -> SWa    [a:D]
 SWa -> start [SW:]
 
-start -> S.w [SW:S]
+start -> S.w [SW:S]  [cls=A]
 S.w -> SW    [:w]
 
 
@@ -198,7 +198,7 @@ start -> tW  [tW]
 tW -> tWa    [a:D]
 tWa -> start [tW:]
 
-start -> t.w [tW:t]
+start -> t.w [tW:t]  [cls=A]
 t.w -> tW    [:w]
 
 
@@ -210,7 +210,7 @@ start -> TW  [TW]
 TW -> TWa    [a:D]
 TWa -> start [TW:]
 
-start -> T.w [TW:T]
+start -> T.w [TW:T]  [cls=A]
 T.w -> TW    [:w]
 
 
@@ -227,7 +227,7 @@ start -> xW  [xW]
 xW -> xWa    [a:D]
 xWa -> start [xW:]
 
-start -> x.w [xW:x]
+start -> x.w [xW:x]  [cls=A]
 x.w -> xW    [:w]
 
 
@@ -244,7 +244,7 @@ start -> zW  [zW]
 zW -> zWa    [a:D]
 zWa -> start [zW:]
 
-start -> z.w [zW:z]
+start -> z.w [zW:z]  [cls=A]
 z.w -> zW    [:w]
 
 
@@ -256,7 +256,7 @@ start -> ZW  [ZW]
 ZW -> ZWa    [a:D]
 ZWa -> start [ZW:]
 
-start -> Z.w [ZW:Z]
+start -> Z.w [ZW:Z]  [cls=A]
 Z.w -> ZW    [:w]
 
 

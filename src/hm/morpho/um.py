@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-    Copyleft 2020. Michael Gasser.
+    Copyleft 2020, 2021. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ class UniMorph:
     """
 
     pos_re = re.compile(r'\s*POS\s*(.*)\s+(.*)$')
-    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\w\d]+)$')
+    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\-\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
 
@@ -56,8 +56,6 @@ class UniMorph:
         """
         umfeats = set(um.split(';'))
         posmap = self.um2hm.get(pos)
-        if verbosity:
-            print("Converting {} to HM feats for {}".format(umfeats, pos))
         fs = []
         # UM features already matched; needed to prevent subsets
         # of matched features from matching
@@ -65,7 +63,11 @@ class UniMorph:
         if not posmap:
 #            print("Warning: no UM2HM map for {}".format(pos))
             return
+        if verbosity:
+            print("Converting {} to HM feats for {}".format(umfeats, pos))
         for u, map in posmap:
+            if verbosity:
+                print(" Checking {}:{}".format(u, map))
             if matched_um:
                 tupu = (u,) if isinstance(u, str) else u
                 if any([(mu.issuperset(tupu)) for mu in matched_um]):
@@ -77,6 +79,18 @@ class UniMorph:
                 if umfeats.issuperset(u):
                     if verbosity:
                         print("  {} within {}".format(u, umfeats))
+                    matched = True
+            elif map[0].endswith("0") and umfeats.issuperset(u):
+                # Fail for this POS
+                if verbosity:
+                    print("  Fail for POS {}".format(pos))
+                return
+            elif u[0] == '-':
+                # Negative UM feature
+                u = u[1:]
+                if u not in umfeats:
+                    if verbosity:
+                        print("  {} not in {}".format(u, umfeats))
                     matched = True
             elif u in umfeats:
                 if verbosity:
@@ -95,9 +109,21 @@ class UniMorph:
                 if fs:
                     newfs = []
                     for map1 in map:
-                        for ffss in fs:
-                            newfs.append(ffss + ',' + map1)
-                    fs = newfs
+                        map2 = map1.split(',')
+                        if verbosity:
+                            print("  Checking {}".format(map2))
+                        if any([mm in ffss for mm in map2 for ffss in fs]):
+                            if verbosity:
+                                print("  {} already in {}; abandoning".format(map1, ffss))
+                            # In this case don't add any of the features
+                            break
+                        else:
+                            for ffss in fs:
+                                if verbosity:
+                                    print("  Adding features {} to map {}".format(ffss, map1))
+                                newfs.append(ffss + ',' + map1)
+                    if newfs:
+                        fs = newfs
                 else:
                     fs = map
         fs = ["[{}]".format(f) for f in fs]
@@ -128,6 +154,10 @@ class UniMorph:
         if not um and fsvalue == True:
             # Try '' in place of True (does this ever happen?)
             um = valuemap.get('', False)
+        if um and um[0] == '-':
+            if verbosity:
+                print(" {} is negative; not adding".format(um))
+            return False
         if verbosity:
             print("  {}".format(um))
         return um
@@ -186,6 +216,11 @@ class UniMorph:
         if verbosity:
             print(" FS values: {}".format(fsvalues))
         ufeat = valuemap.get(fsvalues, False)
+        if ufeat and ufeat[0] == '-':
+            # negative feature; don't add it
+            if verbosity:
+                print(" {} is negative; not adding".format(ufeat))
+            return False
         if verbosity:
             if not ufeat:
                 print(" No UM feat found")
@@ -211,7 +246,7 @@ class UniMorph:
         if posh2u:
             for f, v in posh2u:
                 if verbosity:
-                    print("CHECKING {} : {} (v type {})".format(f, v, type(v)))
+                    print("CHECKING {} : {}".format(f, v))
                     print(" FS: {}".format(fs.__repr__()))
 #                    print(" MATCHED FEATS: {}".format(feats))
                 if isinstance(f, tuple):
@@ -234,8 +269,7 @@ class UniMorph:
                     continue
                 if isinstance(v, dict):
                     # Dict gives specific values for f
-                    uv = UniMorph.convert1(fs, f, v, feats,
-                    verbosity=verbosity)
+                    uv = UniMorph.convert1(fs, f, v, feats, verbosity=verbosity)
                     if uv:
                         if verbosity:
                             print(" Adding {} to UM".format(uv))

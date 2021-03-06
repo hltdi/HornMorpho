@@ -11,6 +11,9 @@ light -> pos  [:]     [-lt]
 # No conjunction or preposition
 pos   -> neg   [:]     [cj1=None,pp=None,-rel,-sub,-def,-ye]
 
+# j_i for ayye must be handled separately
+pos   -> obj   +ayye+
+
 ## CONJUNCTIONS (+sub is redundant)
 pos   -> neg    >>cnj1<<
 # salle, etc.
@@ -105,8 +108,10 @@ sbjs_pk -> obj        [:]    [sb=[-p1,+p2,-fem,-frm],ob=[-expl]];[sb=[-p1,+p2,-f
 sbjs_p -> obj         [x:]   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
 # 3sf, no infix
 sbjs_p -> obj        <ec_:>  [tm=prf,sb=[-p1,-p2,-plr,+fem]]
+# 1p -n; I prevents geminated n following stem final -n: wes_enIn
+sbjs_p -> sbjs_pn     <In:>   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
 # 1p, infix for 3sm obj and 2s frm, and +def
-sbjs_p -> sbjs_pn     [n:]   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
+#sbjs_p -> sbjs_pn     [n:]   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
 sbjs_pn -> obj        [e:]   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]];[ob=[-expl],+def,+rel,+sub]
 sbjs_pn -> obj        [:]    [ob=[-expl],-def];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
 # 2p: prf or ger

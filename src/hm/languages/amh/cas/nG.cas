@@ -51,14 +51,18 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >gs0<
 # Insert glottal stop between adjacent vowels
 >n_VgsV<
+# oa, ua -> Wa
+>ou2W_n<
 # wa -> Wa (3sf poss)
->w2WG<
+>w2W<
 # combinations of vowels
->n_VVG<
+#>n_VVG<
+>n_VV<
 # Vu -> Vw (3sm poss)
 >u2w<
 # y and w epenthesis
->n_C_epenG<
-# aoc -> oc, aa -> a
->aoG<
+#>n_C_epenG<
+>n_C_epen<
+#>aoG<
+>ao<
 >n_mtaxG<
