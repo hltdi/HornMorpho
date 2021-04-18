@@ -19,7 +19,7 @@ Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-__version__ = '4.0.4'
+__version__ = '4.0.5'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -117,6 +117,7 @@ def seg_file(language, infile, outfile=None,
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
               dont_guess=True, cache='', init_weight=None,
+              lemma_only=False, ortho_only=False,
               rank=True, freq=False, nbest=5, um=False,
               phonetic=True, raw=False,
               pos=[], verbosity=0):
@@ -134,6 +135,9 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @param guess (bool):    try only guesser analyzer
     @param dont_guess (bool):    try only lexical analyzer
     @param phonetic (bool): whether to convert root to phonetic form (from SERA)
+    # added 2021.4.15
+    @param lemma_only: whether to print out only the lemma
+    @paran ortho_only: whether to include phonetic forms of lemmas and roots
     @param rank (bool):     whether to rank the analyses by the frequency of their roots
     @param freq (bool):     whether to report frequencies of roots
     @param nbest (int):    maximum number of analyses to return or print out
@@ -151,6 +155,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                                       gram=gram, gloss=gloss,
                                       phonetic=phonetic,
                                       segment=segment, only_guess=guess,
+                                      lemma_only=lemma_only,
+                                      ortho_only=ortho_only,
                                       guess=not dont_guess, cache=False,
                                       nbest=nbest, report_freq=freq,
                                       um=um, init_weight=init_weight,
@@ -164,6 +170,7 @@ anal = anal_word
 
 def anal_files(language, infiles, outsuff='.out',
                root=True, citation=True, gram=True,
+               lemma_only=False, ortho_only=False,
                preproc=True, postproc=True, guess=False, raw=False,
                dont_guess=False, rank=True, freq=True, nbest=5):
     """Analyze the words in a set of files, writing the analyses to
@@ -175,14 +182,17 @@ def anal_files(language, infiles, outsuff='.out',
         saved = {}
         for infile in infiles:
             outfile = infile + outsuff
-            language.anal_file(infile, outfile, root=root, citation=citation, gram=gram,
+            language.anal_file(infile, outfile, root=root, citation=citation,
+                               gram=gram,
                                pos=None, preproc=preproc, postproc=postproc,
                                nbest=nbest,
                                only_guess=guess, guess=not dont_guess,
+                               ortho_only=ortho_only, lemma_only=lemma_only,
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
               root=True, citation=True, gram=True, um=False,
+              lemma_only=False, ortho_only=False,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
               feats=None, simpfeats=None,
@@ -200,6 +210,8 @@ def anal_file(language, infile, outfile=None,
     @param postproc: whether to postprocess outputs
     @param guess:    try only guesser analyzer
     @param dont_guess: try only lexical analyzer
+    # added 2021.4.15
+    @param lemma_only: whether to print out only the lemma
     @param feats:    list of grammatical features to be printed out for each analysis
     @param simpfeats: dict of simplifications (FS->string) for recording FSs
     @param word_sep: character to separate words (unless minim is True)
@@ -219,6 +231,7 @@ def anal_file(language, infile, outfile=None,
                            gram=gram, um=um,
                            pos=None, preproc=preproc, postproc=postproc,
                            only_guess=guess, guess=not dont_guess, raw=raw,
+                           lemma_only=lemma_only, ortho_only=ortho_only,
                            nbest=nbest,
                            sep_punc=sep_punc, feats=feats, simpfeats=simpfeats,
                            word_sep=word_sep, sep_ident=sep_ident, minim=minim,

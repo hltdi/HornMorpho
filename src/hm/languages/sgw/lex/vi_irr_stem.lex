@@ -24,4 +24,6 @@ xe    sy     [sp=1,root=[cls=B],dup=None,as=None,am=ፈለገ];[sn=1,root=[cls=B
 se    sy     [sp=2,sn=2,root=[cls=B],dup=None,as=None,am=ፈለገ];[sp=3,sn=2,root=[cls=B],dup=None,as=None,am=ፈለገ];[sp=None,root=[cls=B],dup=None,as=None,am=ፈለገ]
 c     ty     [root=[cls=B],dup=None,as=None,am=ተወ,vc=[-ps]]
 KWe   Ky     [root=[cls=A,-tr],dup=None,as=None,am=ፈሰሰ,vc=[-ps]]
+# not sure of this ኤፐም
+ip    ypy    [vc=[-ps,-cs],root=[cls=B],dup=None,as=None]
 

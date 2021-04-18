@@ -1209,6 +1209,7 @@ class POSMorphology:
                             trace=trace, dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
                             result_limit=limit, verbosity=verbosity)
+#            print("gens {}".format(gens))
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)
@@ -1559,8 +1560,10 @@ class POSMorphology:
     def pretty_anal(self, anal, webdict=None, root=None, fs=None):
         root = root or anal[1]
         fs = fs or anal[3]
+#        print("pretty anal {}, {}".format(root, fs.__repr__()))
         # Leave out the part of speech for now
-        s = self.language.T.tformat('{} = {}\n{} = <{}>\n',
+        root = self.language.postproc_root(self, root, fs, phonetic=False)
+        s = self.language.T.tformat('{} = {}, {} = {}\n',
                                     ['POS', self.name, 'root', root],
                                     self.language.tlanguages)
         if webdict != None:
@@ -1714,7 +1717,7 @@ class POSMorphology:
         """Exclude the feature value pair from the printed output."""
         if feat in feats_used:
             return True
-        if val is None or val is 0:
+        if val == None or val == 0:
             return True
         if feat in self.excl_feats:
             return True

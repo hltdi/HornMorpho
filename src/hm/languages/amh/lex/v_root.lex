@@ -733,7 +733,7 @@ ktt '' [cls=A,t=[eng='put in,insert'],-lt];[cls=A,+lexrp,as=rc,t=[eng='be includ
 kxf '' [cls=A,t=[eng='misfire,become abortive'],-lt]
 kxn '' [cls=B,t=[eng='elope,make excellent,run way'],-lt]
 l'T '' [cls=A,t=[eng='peel,unsheathe'],-lt]
-l'f '' [cls=A,t=[eng='singe,burn off'],-lt]
+l'f '' [cls=A,t=[eng='singe,burn off'],vc=smp,-lt];[cls=A,t=[eng='be singed,be burned off'],vc=ps,-lt]
 l'g '' [cls=A,t=[eng='plane'],-lt]
 l'k '' [cls=A,t=[eng='send'],-lt];[cls=A,+lexip,as=it,t=[eng='correspond'],-lt]
 l'l' '' [cls=E,t=[eng='relax,be loose,be supple'],-lt]

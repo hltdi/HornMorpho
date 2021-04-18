@@ -1,8 +1,9 @@
 # convert sequences of vowels and consonants across stem-suffix boundaries
-# and within suffixes
+# and within suffixes, for perfective verbs; remember: this is reversed!
 
 -> start
 
+# N, L, R at stem-suffix boundary (but for prf, only -n can start suffix)
 start -> Csuf       [X-n]
 # delete the boundary
 Csuf -> C=          [:=]
@@ -10,14 +11,22 @@ C= -> stem          [X;V]
 # not at boundary yet
 Csuf -> start       [:]
 
+# R=N -> N_; R=R -> L_; L=N -> N_; L=R -> L_
 start -> nsuf     [n]
 nsuf -> start     [:]
-start -> ndel     [:n]
+start -> ndel     [_:n]
 ndel -> n=.r      [:=]
-# l=r|n -> ll ?
 n=.r -> stem      [n;l;n:r]
 nsuf -> n=        [:=]
 n= -> stem        [X-r,n,l;V]
+
+#start -> rsuf     [r]
+#rsuf -> start     [:]
+#start -> rdel     [:r]
+#rdel -> r=.r      [:=]
+#r=.r -> stem      [n;l;n:r]
+#rsuf -> r=        [:=]
+#r= -> stem        [X-r,n,l;V]
 
 # only perfective (-e, -ec)
 start -> del_e   [:e]      [sn=1]

@@ -13,7 +13,7 @@ feats:
 
   pos: n noun
 
-  am (Amh stem) =
+  am (Amharic stem) =
 
   *def = False | True
   {def} (True): = +def
@@ -21,16 +21,16 @@ feats:
   *pp = 0 | 1 | 2 | 3
   *pn = 1 | 2
   *pg = m | f
-  {pp, pn} (1, 1): poses = 1 pers sing
-  {pp, pn} (1, 2): poses = 1 pers plur
-  {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
-  {pp, pn, pg} (2, 1, f): poses = 2 pers sing fem
-  {pp, pn, pg} (2, 2, m): poses = 2 pers plur mas
-  {pp, pn, pg} (2, 2, f): poses = 2 pers plur fem
-  {pp, pn, pg} (3, 1, m): poses = 3 pers sing mas
-  {pp, pn, pg} (3, 1, f): poses = 3 pers sing fem
-  {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
-  {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
+  {pp, pn} (1, 1): possessor = 1 pers sing
+  {pp, pn} (1, 2): possessor = 1 pers plur
+  {pp, pn, pg} (2, 1, m): possessor = 2 pers sing mas
+  {pp, pn, pg} (2, 1, f): possessor = 2 pers sing fem
+  {pp, pn, pg} (2, 2, m): possessor = 2 pers plur mas
+  {pp, pn, pg} (2, 2, f): possessor = 2 pers plur fem
+  {pp, pn, pg} (3, 1, m): possessor = 3 pers sing mas
+  {pp, pn, pg} (3, 1, f): possessor = 3 pers sing fem
+  {pp, pn, pg} (3, 2, m): possessor = 3 pers plur mas
+  {pp, pn, pg} (3, 2, f): possessor = 3 pers plur fem
 
   *cp = 0 | 1 | 2 | 3
   *cn = 1 | 2
@@ -56,7 +56,7 @@ feats:
   {cnj} (K): conj = x
   {cnj} (a): conj = a
 
-  prep = None | ye | be | te
+  prep (preposition) = None | ye | be | te
 
   *plr = False | True
 
@@ -73,7 +73,7 @@ feats:
 
   pos: inf infinitive
 
-  am (Amh root) =
+  am (Amharic lemma) =
 
   *def = False | True
   {def} (True): = +def
@@ -82,16 +82,16 @@ feats:
   *pn = 1 | 2
   *pg = m | f
 
-  {pp, pn} (1, 1): poses = 1 pers sing
-  {pp, pn} (1, 2): poses = 1 pers plur
-  {pp, pn, pg} (2, 1, m): poses = 2 pers sing mas
-  {pp, pn, pg} (2, 1, f): poses = 2 pers sing fem
-  {pp, pn, pg} (2, 2, m): poses = 2 pers plur mas
-  {pp, pn, pg} (2, 2, f): poses = 2 pers plur fem
-  {pp, pn, pg} (3, 1, m): poses = 3 pers sing mas
-  {pp, pn, pg} (3, 1, f): poses = 3 pers sing fem
-  {pp, pn, pg} (3, 2, m): poses = 3 pers plur mas
-  {pp, pn, pg} (3, 2, f): poses = 3 pers plur fem
+  {pp, pn} (1, 1): possessor = 1 pers sing
+  {pp, pn} (1, 2): possessor = 1 pers plur
+  {pp, pn, pg} (2, 1, m): possessor = 2 pers sing mas
+  {pp, pn, pg} (2, 1, f): possessor = 2 pers sing fem
+  {pp, pn, pg} (2, 2, m): possessor = 2 pers plur mas
+  {pp, pn, pg} (2, 2, f): possessor = 2 pers plur fem
+  {pp, pn, pg} (3, 1, m): possessor = 3 pers sing mas
+  {pp, pn, pg} (3, 1, f): possessor = 3 pers sing fem
+  {pp, pn, pg} (3, 2, m): possessor = 3 pers plur mas
+  {pp, pn, pg} (3, 2, f): possessor = 3 pers plur fem
 
   *cp = 0 | 3
   {cp} (3): = cop
@@ -111,7 +111,7 @@ feats:
   {cnj} (K): conj = x
   {cnj} (a): conj = a
 
-  prep = None | ye | be | te
+  preposition = None | ye | be | te
 
   *goal = False | True
   *sim = False | True
@@ -148,7 +148,7 @@ feats:
   {cnj} (K): conj = x
   {cnj} (a): conj = a
 
-  prep = None | ye | be | te
+  prep (preposition) = None | ye | be | te
 
   *goal = False | True
   *sim = False | True
@@ -159,29 +159,31 @@ feats:
 
 ## perfective verbs, including prohibitive
 
-  pos: vp verb_perfective
+  pos: vp verb
 
 #  root = cls (class) = A | Ap | B | C | D | E | F
 
-  tm (TAM) = prf (perfective)
+  *%root = tr = False | True
 
-  am (Amh root) =
+  tm (tense/aspect) = prf (perfective)
+
+  am (Amharic lemma) =
 
   *sp = 3 | 2 | 1 | None
   *sn = 1 | 2
   *sg = m | f
 
-  {sp, sn} (1, 1): subj = 1 pers sing
-  {sp, sn} (1, 2): subj = 1 pers plur
-  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
-  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
-  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
-  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
-  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
-  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
-  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
-  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): subj = impersonal
+  {sp, sn} (1, 1): subject =  1 pers sing
+  {sp, sn} (1, 2): subject =  1 pers plur
+  {sp, sn, sg} (2, 1, m): subject =  2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subject =  2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subject =  2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subject =  2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subject =  3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subject =  3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subject =  3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subject =  3 pers plur fem
+  {sp} (None): subject =  impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -189,45 +191,45 @@ feats:
   # accusative | benefactive | malefactive objects
   *ot = a | b | m
 
-  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
-  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
-  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+  {op, on, ot} (1, 1, a): object = 1 pers sing acc
+  {op, on, ot} (1, 1, b): object = 1 pers sing ben
+  {op, on, ot} (1, 1, m): object = 1 pers sing mal
 
-  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
-  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
-  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+  {op, on, ot} (1, 2, a): object = 1 pers plur acc
+  {op, on, ot} (1, 2, b): object = 1 pers plur ben
+  {op, on, ot} (1, 2, m): object = 1 pers plur mal
 
-  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
-  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
-  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+  {op, on, og, ot} (2, 1, m, a): object = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): object = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): object = 2 pers sing mas mal
 
-  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
-  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
-  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+  {op, on, og, ot} (2, 1, f, a): object = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): object = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): object = 2 pers sing fem mal
 
-  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
-  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
-  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+  {op, on, og, ot} (2, 2, m, a): object = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): object = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): object = 2 pers plur mas mal
 
-  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
-  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
-  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+  {op, on, og, ot} (2, 2, f, a): object = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): object = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): object = 2 pers plur fem mal
 
-  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
-  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
-  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+  {op, on, og, ot} (3, 1, m, a): object = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): object = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): object = 3 pers sing mas mal
 
-  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
-  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
-  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+  {op, on, og, ot} (3, 1, f, a): object = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): object = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): object = 3 pers sing fem mal
 
-  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
-  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
-  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+  {op, on, og, ot} (3, 2, m, a): object = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): object = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): object = 3 pers plur mas mal
 
-  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
-  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
-  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+  {op, on, og, ot} (3, 2, f, a): object = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): object = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): object = 3 pers plur fem mal
 
   vc (voice) = ps (passive) = False | True;
                cs (causative) = False | True
@@ -238,11 +240,11 @@ feats:
   {neg} (True): pol = neg
 
   *sub = None | t | b | y
-  {sub} (t): clause type = subord te+
-  {sub} (b): clause type = subord be+
-  {sub} (y): clause type = subord ye+
+  {sub} (t): clause type = subordinate te+
+  {sub} (b): clause type = subordinate be+
+  {sub} (y): clause type = subordinate ye+
   {sub, mconv} (None, False): clause type = main
-  {sub, mconv} (None, True): clause type = subord, m-converb
+  {sub, mconv} (None, True): clause type = subordinate, m-converb
 
   *caus = False | True
   *cmpd = False | True
@@ -265,29 +267,31 @@ feats:
 
 ## imperfective verbs, including both -tE future form
 
-  pos: vi verb_imperfective
+  pos: vi verb
 
-#  root = cls (class) = A | Ap | B | C | D | E | F
+  root = cls (class) = A | Ap | B | C | D | E | F
 
-  tm (TAM) = imf (imperfective)
+  *%root = tr = False | True
 
-  am (Amh root) =
+  tm (tense/aspect) = imf (imperfective)
+
+  am (Amharic lemma) =
 
   *sp = 3 | 2 | 1 | None
   *sn = 1 | 2
   *sg = m | f
 
-  {sp, sn} (1, 1): subj = 1 pers sing
-  {sp, sn} (1, 2): subj = 1 pers plur
-  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
-  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
-  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
-  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
-  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
-  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
-  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
-  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): subj = impersonal
+  {sp, sn} (1, 1): subject =  1 pers sing
+  {sp, sn} (1, 2): subject =  1 pers plur
+  {sp, sn, sg} (2, 1, m): subject =  2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subject =  2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subject =  2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subject =  2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subject =  3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subject =  3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subject =  3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subject =  3 pers plur fem
+  {sp} (None): subject =  impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -295,45 +299,45 @@ feats:
   # accusative | benefactive | malefactive
   *ot = a | b | m
 
-  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
-  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
-  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+  {op, on, ot} (1, 1, a): object = 1 pers sing acc
+  {op, on, ot} (1, 1, b): object = 1 pers sing ben
+  {op, on, ot} (1, 1, m): object = 1 pers sing mal
 
-  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
-  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
-  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+  {op, on, ot} (1, 2, a): object = 1 pers plur acc
+  {op, on, ot} (1, 2, b): object = 1 pers plur ben
+  {op, on, ot} (1, 2, m): object = 1 pers plur mal
 
-  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
-  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
-  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+  {op, on, og, ot} (2, 1, m, a): object = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): object = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): object = 2 pers sing mas mal
 
-  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
-  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
-  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+  {op, on, og, ot} (2, 1, f, a): object = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): object = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): object = 2 pers sing fem mal
 
-  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
-  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
-  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+  {op, on, og, ot} (2, 2, m, a): object = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): object = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): object = 2 pers plur mas mal
 
-  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
-  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
-  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+  {op, on, og, ot} (2, 2, f, a): object = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): object = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): object = 2 pers plur fem mal
 
-  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
-  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
-  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+  {op, on, og, ot} (3, 1, m, a): object = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): object = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): object = 3 pers sing mas mal
 
-  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
-  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
-  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+  {op, on, og, ot} (3, 1, f, a): object = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): object = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): object = 3 pers sing fem mal
 
-  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
-  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
-  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+  {op, on, og, ot} (3, 2, m, a): object = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): object = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): object = 3 pers plur mas mal
 
-  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
-  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
-  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+  {op, on, og, ot} (3, 2, f, a): object = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): object = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): object = 3 pers plur fem mal
 
   vc (voice) = ps (passive) = False | True;
               cs (causative) = False | True
@@ -344,8 +348,8 @@ feats:
   {neg} (True): = negative
 
   *sub = None | t | b
-  {sub} (t): subord = t
-  {sub} (b): subord = b
+  {sub} (t): subordinate = t
+  {sub} (b): subordinate = b
 
   *fut = None | def
   {fut} (def): = def fut
@@ -363,7 +367,7 @@ feats:
   *comp = False | True
   {x} (True): = conj -sh
   {m} (True): = conj -m
-  {mconv} (True): clause type = subordinate, m-converb
+  {mconv} (True): clause type = subordinateinate, m-converb
   {cmpd} (True): = compound impf
   {purp} (True): = purposive
   {clft} (True): = cleft
@@ -372,29 +376,34 @@ feats:
 
 ## jussive-imperative verbs, including -xe future forms and t- converb
 
-  pos: vj verb_jussive_imperative
+  pos: vj verb
 
 #  root = cls (class) = A | Ap | B | C | D | E | F
 
-  tm (TAM) = j_i (jussive imperative)
+  *%root = tr = False | True
+#  tm (tense/aspect) = j_i (jussive imperative)
 
-  am (Amh root) =
+  *fut = None | indef
+  {tm, fut} (j_i, indef): tense/aspect = indefinite future
+  {tm, fut} (j_i, None):  tense/apsect = jussive imperative
+
+  am (Amharic lemma) =
 
   *sp = 3 | 2 | 1 | None
   *sn = 1 | 2
   *sg = m | f
 
-  {sp, sn} (1, 1): subj = 1 pers sing
-  {sp, sn} (1, 2): subj = 1 pers plur
-  {sp, sn, sg} (2, 1, m): subj = 2 pers sing mas
-  {sp, sn, sg} (2, 1, f): subj = 2 pers sing fem
-  {sp, sn, sg} (2, 2, m): subj = 2 pers plur mas
-  {sp, sn, sg} (2, 2, f): subj = 2 pers plur fem
-  {sp, sn, sg} (3, 1, m): subj = 3 pers sing mas
-  {sp, sn, sg} (3, 1, f): subj = 3 pers sing fem
-  {sp, sn, sg} (3, 2, m): subj = 3 pers plur mas
-  {sp, sn, sg} (3, 2, f): subj = 3 pers plur fem
-  {sp} (None): subj = impersonal
+  {sp, sn} (1, 1): subject =  1 pers sing
+  {sp, sn} (1, 2): subject =  1 pers plur
+  {sp, sn, sg} (2, 1, m): subject =  2 pers sing mas
+  {sp, sn, sg} (2, 1, f): subject =  2 pers sing fem
+  {sp, sn, sg} (2, 2, m): subject =  2 pers plur mas
+  {sp, sn, sg} (2, 2, f): subject =  2 pers plur fem
+  {sp, sn, sg} (3, 1, m): subject =  3 pers sing mas
+  {sp, sn, sg} (3, 1, f): subject =  3 pers sing fem
+  {sp, sn, sg} (3, 2, m): subject =  3 pers plur mas
+  {sp, sn, sg} (3, 2, f): subject =  3 pers plur fem
+  {sp} (None): subject =  impersonal
 
   *op = None | 3 | 2 | 1
   *on = 1 | 2
@@ -402,45 +411,45 @@ feats:
   # accusative | benefactive | malefactive
   *ot = a | b | m
 
-  {op, on, ot} (1, 1, a): obj = 1 pers sing acc
-  {op, on, ot} (1, 1, b): obj = 1 pers sing ben
-  {op, on, ot} (1, 1, m): obj = 1 pers sing mal
+  {op, on, ot} (1, 1, a): object = 1 pers sing acc
+  {op, on, ot} (1, 1, b): object = 1 pers sing ben
+  {op, on, ot} (1, 1, m): object = 1 pers sing mal
 
-  {op, on, ot} (1, 2, a): obj = 1 pers plur acc
-  {op, on, ot} (1, 2, b): obj = 1 pers plur ben
-  {op, on, ot} (1, 2, m): obj = 1 pers plur mal
+  {op, on, ot} (1, 2, a): object = 1 pers plur acc
+  {op, on, ot} (1, 2, b): object = 1 pers plur ben
+  {op, on, ot} (1, 2, m): object = 1 pers plur mal
 
-  {op, on, og, ot} (2, 1, m, a): obj = 2 pers sing mas acc
-  {op, on, og, ot} (2, 1, m, b): obj = 2 pers sing mas ben
-  {op, on, og, ot} (2, 1, m, m): obj = 2 pers sing mas mal
+  {op, on, og, ot} (2, 1, m, a): object = 2 pers sing mas acc
+  {op, on, og, ot} (2, 1, m, b): object = 2 pers sing mas ben
+  {op, on, og, ot} (2, 1, m, m): object = 2 pers sing mas mal
 
-  {op, on, og, ot} (2, 1, f, a): obj = 2 pers sing fem acc
-  {op, on, og, ot} (2, 1, f, b): obj = 2 pers sing fem ben
-  {op, on, og, ot} (2, 1, f, m): obj = 2 pers sing fem mal
+  {op, on, og, ot} (2, 1, f, a): object = 2 pers sing fem acc
+  {op, on, og, ot} (2, 1, f, b): object = 2 pers sing fem ben
+  {op, on, og, ot} (2, 1, f, m): object = 2 pers sing fem mal
 
-  {op, on, og, ot} (2, 2, m, a): obj = 2 pers plur mas acc
-  {op, on, og, ot} (2, 2, m, b): obj = 2 pers plur mas ben
-  {op, on, og, ot} (2, 2, m, m): obj = 2 pers plur mas mal
+  {op, on, og, ot} (2, 2, m, a): object = 2 pers plur mas acc
+  {op, on, og, ot} (2, 2, m, b): object = 2 pers plur mas ben
+  {op, on, og, ot} (2, 2, m, m): object = 2 pers plur mas mal
 
-  {op, on, og, ot} (2, 2, f, a): obj = 2 pers plur fem acc
-  {op, on, og, ot} (2, 2, f, b): obj = 2 pers plur fem ben
-  {op, on, og, ot} (2, 2, f, m): obj = 2 pers plur fem mal
+  {op, on, og, ot} (2, 2, f, a): object = 2 pers plur fem acc
+  {op, on, og, ot} (2, 2, f, b): object = 2 pers plur fem ben
+  {op, on, og, ot} (2, 2, f, m): object = 2 pers plur fem mal
 
-  {op, on, og, ot} (3, 1, m, a): obj = 3 pers sing mas acc
-  {op, on, og, ot} (3, 1, m, b): obj = 3 pers sing mas ben
-  {op, on, og, ot} (3, 1, m, m): obj = 3 pers sing mas mal
+  {op, on, og, ot} (3, 1, m, a): object = 3 pers sing mas acc
+  {op, on, og, ot} (3, 1, m, b): object = 3 pers sing mas ben
+  {op, on, og, ot} (3, 1, m, m): object = 3 pers sing mas mal
 
-  {op, on, og, ot} (3, 1, f, a): obj = 3 pers sing fem acc
-  {op, on, og, ot} (3, 1, f, b): obj = 3 pers sing fem ben
-  {op, on, og, ot} (3, 1, f, m): obj = 3 pers sing fem mal
+  {op, on, og, ot} (3, 1, f, a): object = 3 pers sing fem acc
+  {op, on, og, ot} (3, 1, f, b): object = 3 pers sing fem ben
+  {op, on, og, ot} (3, 1, f, m): object = 3 pers sing fem mal
 
-  {op, on, og, ot} (3, 2, m, a): obj = 3 pers plur mas acc
-  {op, on, og, ot} (3, 2, m, b): obj = 3 pers plur mas ben
-  {op, on, og, ot} (3, 2, m, m): obj = 3 pers plur mas mal
+  {op, on, og, ot} (3, 2, m, a): object = 3 pers plur mas acc
+  {op, on, og, ot} (3, 2, m, b): object = 3 pers plur mas ben
+  {op, on, og, ot} (3, 2, m, m): object = 3 pers plur mas mal
 
-  {op, on, og, ot} (3, 2, f, a): obj = 3 pers plur fem acc
-  {op, on, og, ot} (3, 2, f, b): obj = 3 pers plur fem ben
-  {op, on, og, ot} (3, 2, f, m): obj = 3 pers plur fem mal
+  {op, on, og, ot} (3, 2, f, a): object = 3 pers plur fem acc
+  {op, on, og, ot} (3, 2, f, b): object = 3 pers plur fem ben
+  {op, on, og, ot} (3, 2, f, m): object = 3 pers plur fem mal
 
   vc (voice) = ps (passive) = False | True;
               cs (causative) = False | True
@@ -449,9 +458,6 @@ feats:
 
   *neg = False | True
   {neg} (True): = negative
-
-  *fut = None | indef
-  {fut} (indef): = indef fut
 
   *tconv = False | True
   *mconv = False | True

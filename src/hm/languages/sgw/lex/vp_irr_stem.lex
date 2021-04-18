@@ -29,3 +29,5 @@ ce    ty     [root=[cls=B],dup=None,as=None,am=ተወ,vc=[-ps],sp=1];[root=[cls=
 ta    ty     [root=[cls=B],dup=None,as=None,am=ተወ,vc=[-ps],sp=3,sn=2]
 t*ce  ty     [root=[cls=B],dup=None,as=None,am=ተወ,vc=[+ps,-cs]]
 KWe   Ky     [root=[cls=A,-tr],dup=None,as=None,am=ፈሰሰ]
+## not sure of root
+Epe   ypy    [vc=[-ps,-cs],root=[cls=B],dup=None,as=None]

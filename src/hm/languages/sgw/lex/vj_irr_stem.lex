@@ -32,4 +32,6 @@ name   hb    [root=[cls=B],am=ሰጠ,dup=None,sp=2,sn=1,sg=m]
 nEm    hb    [root=[cls=B],am=ሰጠ,dup=None,sp=2,sn=1,sg=f]
 namo   hb    [root=[cls=B],am=ሰጠ,dup=None,sp=2,sn=2,sg=m]
 namema hb    [root=[cls=B],am=ሰጠ,dup=None,sp=2,sn=2,sg=f]
+# not sure of this ኤፐም
+Ep    ypy    [vc=[-ps,-cs],root=[cls=B],dup=None,as=None]
 

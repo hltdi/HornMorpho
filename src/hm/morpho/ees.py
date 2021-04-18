@@ -41,8 +41,10 @@ class EES:
          }
     }
 
+    VERB_POS = {'v', 'vp', 'vi', 'vj'}
+
     def __init__(self):
-        print("Creating EES language, {}".format(self))
+        print("Creating EES language {}".format(self))
         # EES pre-and post-processing: geezification, romanization,
         # handling of multi-word lexemes
         if not self.procroot:
@@ -54,10 +56,33 @@ class EES:
                                      gemination=self.output_gemination)
         if not self.postproc:
             self.postproc = \
-              lambda form: sera2geez(None, form, lang=self.abbrev,
-                                     gemination=self.output_gemination)
+              lambda form, phon=False, ipa='', ortho_only=False, phonetic=False:\
+               sera2geez(None, form, lang=self.abbrev,
+                         gemination=self.output_gemination)
         if not self.postpostproc:
             self.postpostproc = lambda form: form.replace('//', ' ')
+
+    def geezify(self, form, gemination=False, deepenthesize=False):
+        """
+        Convert a romanized to a geez form.
+        """
+        return geezify(lang=self.abbrev, gemination=gemination,
+                       deepenthesize=deepenthesize)
+
+    def postproc_root(self, posmorph, root, fs, phonetic=True):
+        """
+        Create the <root:class> representation if this is possible.
+        """
+        cls = None
+        if 'cls' in fs:
+            cls = fs['cls']
+        elif 'root' in fs and 'cls' in fs['root']:
+            cls = fs['root']['cls']
+        if cls:
+            return "<{}:{}>".format(root, cls)
+        else:
+            root = "<{}>".format(geezify(root, self.abbrev))
+            return root
 
     def preproc_root(self, root, fs, pos):
         """
@@ -82,6 +107,66 @@ class EES:
         else:
             root, fs = self.dflt_procroot(root, fs)
         return root, fs
+
+    def verb_citation(self, root, fs, guess=False, vc_as=True, phonetic=True):
+        '''
+        Return the canonical (prf, 3sm) form for the root and featstructs
+        in featstruct fs.
+
+        If vc_as is True, preserve the voice and aspect of the original word.
+        '''
+        citation = ''
+        if root == 'hlw':
+            return "'al_e"
+        # Return root if no citation is found
+        result = root
+        # Unfreeze the feature structure
+        fs = fs.unfreeze()
+        fsa, fsv = fs.get('as'), fs.get('vc')
+        # Update the feature structure to incorporate default (with or without vc
+        # and as)
+        fs.update(AMH.morphology['v'].defaultFS)
+        # For non-passive te- verbs, te- is citation form
+        if fs.get('lexav') == True:
+            # Lexical entry with explicit as, vc features
+            fs.update({'as': fsa, "vc": fsv})
+        elif fs.get('lexip') == True:
+            # Lexical entry for as=it,vc=ps and as=it,vc=tr
+            fs.update({'as': 'it', 'vc': 'ps'})
+        elif fs.get('lexrp') == True:
+            # Lexical entry for as=rc, vc=ps and as=rc,vc=tr
+            fs.update({'as': 'rc', 'vc': 'ps'})
+        elif fs.get('smp') == False:
+            # No vc=smp form, vc=ps is base/citation form
+            fs.update({'vc': 'ps'})
+        # Refreeze the feature structure
+        fs.freeze()
+    #    print("fs {}".format(fs.__repr__()))
+        # Find the first citation form compatible with the updated feature structure
+        if ' ' in root:
+            # This is a light verb, just generate the actual verb
+            root_split = root.split()
+            citation = AMH.morphology['v'].gen(root_split[-1], fs, from_dict=False,
+                                               phon=True, postproc=False, guess=guess)
+            if citation:
+                result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
+        else:
+    #        print("Generating citation from {}".format(fs.__repr__()))
+            citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
+                                               phon=True, postproc=False,
+                                               guess=guess)
+            if citation:
+                result = citation[0][0]
+        if not citation:
+            if not vc_as:
+                # Verb may not occur in simplex form; try passive
+                fs = fs.unfreeze()
+                fs.update({'vc': 'ps'})
+                fs.freeze()
+                citation = AMH.morphology['v'].gen(root, fs, from_dict=False, guess=guess)
+                if citation:
+                    result = citation[0][0]
+        return result
 
     # def vb_get_citation(self, root, fs,
     #                     guess=False, vc_as=False):

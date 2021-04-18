@@ -44,7 +44,9 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, 0, =}
 
-# Vowel combinations 
+# Delete gemination character
+>del_epgem<
+# Vowel combinations
 >aff<
 >Vpre<
 #{ Palatalization and labialization

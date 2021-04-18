@@ -3,7 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020.
+    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018,
+       2019, 2020.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify

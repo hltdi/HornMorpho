@@ -81,7 +81,6 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
-#        print("Generating citation from {}".format(fs.__repr__()))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
                                            phon=True, postproc=False,
                                            guess=guess)
@@ -99,9 +98,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     return result
 
 def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
-    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct set fss.
-
-    If vc_as is True, preserve the voice and aspect of the original word.
+    '''
+    Only return citation for deverbal nouns.
     '''
     if fs.get('v'):
         # It's a deverbal noun
@@ -123,25 +121,29 @@ def webfv(webdict, feature, value):
     if webdict != None:
         webdict[feature] = value
 
-def cop_anal2string(anal, webdict=None):
+def cop_anal2string(anal, webdict=None, **kwargs):
     '''Convert a copula analysis to a string.
     '''
-    s = 'POS: copula'
+    s = ' POS = copula'
     root = anal[1]
     citation = anal[2]
+    if 'lemma_only' in kwargs:
+        return "{}".format(citation)
     fs = anal[3]
+    if kwargs.get('lemma_only'):
+        return "ነው"
     webfv(webdict, 'POS', 'copula')
     webfv(webdict, 'pos', 'cop')
     webfv(webdict, 'root', "ነ-")
 #    root = anal.get('root')
 #    if root:
 #        s += ', root: ' + root
-    s += ', lemma: ነው/nǝw, gloss: be'
+    s += ', lemma = ነው/nǝw, gloss = be'
     s += '\n'
 #    fs = anal.get('gram')
     if fs:
         sb = fs['sb']
-        s += ' subj:'
+        s += ' subject ='
         s += arg2string(sb)
         webfv(webdict, 'subject', arg2string(sb, web=True))
         if fs.get('neg'):
@@ -150,10 +152,10 @@ def cop_anal2string(anal, webdict=None):
         cj = fs.get('cj2')
         if cj:
             webfv(webdict, 'conj suffix', roman2geez(cj))
-            s += ' conj suffix: ' + cj + '\n'
+            s += ' conj suffix = ' + cj + '\n'
     return s
 
-def n_anal2string(anal, webdict=None):
+def n_anal2string(anal, webdict=None, **kwargs):
     '''Convert a noun analysis to a string.
 
     anal is ("(*)n", root, citation, gramFS)
@@ -161,12 +163,14 @@ def n_anal2string(anal, webdict=None):
     pos = anal[0]
     root = anal[1]
     citation = anal[2]
+    if kwargs.get('lemma_only'):
+        return "{}".format(citation)
     fs = anal[3]
-    root = AMH.postproc_root(AMH.morphology.get('n'), root, fs)
     deverbal = fs and fs.get('v')
-    POS = "POS: "
+    POS = " POS = "
 #    POS = '?POS: ' if '?' in anal[0] else 'POS: '
     s = POS
+    root = AMH.postproc_root(AMH.morphology.get('n'), root, fs)
     webfv(webdict, 'POS', 'noun')
     webfv(webdict, 'pos', 'n')
     if deverbal:
@@ -183,16 +187,16 @@ def n_anal2string(anal, webdict=None):
             webfv(webdict, 'deverbal', 'instrumental')
             s += 'instrumental noun'
         if root:
-            s += ', root: ' + root
+            s += ', root = ' + root
             if citation:
                 root = "{}({})".format(root, citation)
             webfv(webdict, 'root', root)
         if citation:
-            s += ', lemma: ' + citation
+            s += ', lemma = ' + citation
         if 't' in fs:
             if 'eng' in fs['t']:
                 gloss = fs['t']['eng']
-                s += ', gloss: ' + gloss
+                s += ', gloss = ' + gloss
 #            webfv(webdict, 'citation', citation)
     else:
         s += 'noun'
@@ -202,13 +206,13 @@ def n_anal2string(anal, webdict=None):
             rc = "{}({})".format(root, citation)
         webfv(webdict, 'root', rc)
         if citation:
-            s += ', lemma: ' + citation
+            s += ', lemma = ' + citation
         elif root:
-            s += ', lemma: ' + root
+            s += ', lemma = ' + root
         if 't' in fs:
             if 'eng' in fs['t']:
                 gloss = fs['t']['eng']
-                s += ', gloss: ' + gloss
+                s += ', gloss = ' + gloss
     s += '\n'
     if fs:
         poss = fs.get('poss')
@@ -282,38 +286,49 @@ def n_anal2string(anal, webdict=None):
         cnj = fs.get('cnj')
         if pp or cnj:
             if pp:
-                s += ' preposition: ' + pp
+                s += ' preposition = ' + pp
                 webfv(webdict, 'preposition', roman2geez(pp))
             if cnj:
                 if pp: s += ','
-                s += ' conj suffix: ' + cnj
+                s += ' conj suffix = ' + cnj
                 webfv(webdict, 'conj suffix', roman2geez(cnj))
             s += '\n'
     return s
 
-def vb_anal2string(anal, webdict=None):
+def vb_anal2string(anal, webdict=None, **kwargs):
     '''Convert a verb analysis to a string.
 
     anal is ("(*)v", root, citation, gramFS)
     '''
 #    print("verb anal {}".format(anal))
     pos = 'verb'
-    root = anal[1]
-    citation = anal[2]
-    fs = anal[3]
+    if 'noroot' in kwargs:
+        root = None
+    else:
+        root = anal[1]
+    if 'nolemma' in kwargs:
+        citation = None
+    else:
+        citation = anal[2]
+    if 'nogram' in kwargs:
+        fs = ''
+    else:
+        fs = anal[3]
 #    POS = '?POS: ' if '?' in anal[0] else 'POS: '
-    POS = 'POS: '
+    POS = ' POS = '
     s = POS + pos
+    if kwargs.get('lemma_only'):
+        return "{}".format(citation)
     webfv(webdict, 'POS', 'verb')
     webfv(webdict, 'pos', 'v')
     if root:
 #        print("root: {}".format(root))
         if '{' in root:
             # Segmented form; not root
-            s += ', segmentation: ' + root
+            s += ', segmentation = ' + root
         else:
             root = AMH.postproc_root(AMH.morphology['v'], root, fs)
-            s += ', root: ' + root
+            s += ', root = ' + root
 #        else:
 #            s += ', root: <' + root + '>'
 #        rc = '<' + root + '>'
@@ -322,23 +337,23 @@ def vb_anal2string(anal, webdict=None):
         webfv(webdict, 'root', root)
     if citation:
 #        citation = AMH.finalize_citation(citation)
-        s += ', lemma: ' + citation
+        s += ', lemma = ' + citation
     if 't' in fs:
         if 'eng' in fs['t']:
             gloss = fs['t']['eng']
-            s += ', gloss: ' + gloss
+            s += ', gloss = ' + gloss
     s += '\n'
     if fs:
         sb = fs['sb']
-        s += ' subject:'
+        s += ' subject ='
         s += arg2string(sb)
         webfv(webdict, 'subject', arg2string(sb, web=True))
         ob = fs.get('ob')
         if ob and ob.get('expl'):
-            s += ' object:'
+            s += ' object ='
             s += arg2string(ob, True)
             webfv(webdict, 'object', arg2string(ob, True, web=True))
-        s += ' aspect/voice/tense:'
+        s += ' aspect/voice/tense ='
         rl = fs.get('rl')
         tm = fs.get('tm')
         if tm == 'prf':
@@ -397,15 +412,15 @@ def vb_anal2string(anal, webdict=None):
             any_affix = False
             if prep:
                 any_affix = True
-                s += ' preposition: ' + prep
+                s += ' preposition = ' + prep
                 webfv(webdict, 'preposition', roman2geez(prep))
             if cj1:
                 if any_affix: s += ','
-                s += ' conj prefix: ' + cj1
+                s += ' conj prefix = ' + cj1
                 webfv(webdict, 'conj prefix', roman2geez(cj1))
             if cj2:
                 if any_affix: s += ','
-                s += ' conj suffix: ' + cj2
+                s += ' conj suffix = ' + cj2
                 webfv(webdict, 'conj suffix', roman2geez(cj2))
             s += '\n'
     return s
@@ -878,9 +893,9 @@ AMH.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: n_get_c
 AMH.morphology['cop'].citation = lambda root, fss, guess, vc_as, phonetic: 'new'
 
 ## Functions that convert analyses to strings
-AMH.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
-AMH.morphology['n'].anal2string = lambda fss, webdict: n_anal2string(fss, webdict=webdict)
-AMH.morphology['cop'].anal2string = lambda fss, webdict: cop_anal2string(fss, webdict=webdict)
+AMH.morphology['v'].anal2string = lambda fss, webdict, **kwargs: vb_anal2string(fss, webdict=webdict, **kwargs)
+AMH.morphology['n'].anal2string = lambda fss, webdict, **kwargs: n_anal2string(fss, webdict=webdict, **kwargs)
+AMH.morphology['cop'].anal2string = lambda fss, webdict, **kwargs: cop_anal2string(fss, webdict=webdict, **kwargs)
 
 ## Postprocessing function for nouns (treats roots differently)
 # AMH.morphology['v'].postproc = lambda analysis: vb_postproc(analysis)

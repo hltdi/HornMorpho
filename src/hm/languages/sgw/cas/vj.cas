@@ -44,6 +44,8 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, 0, =}
 
+# Delete gemination character
+>del_epgem<
 # rnl
 >rn<
 # Vowel and consonant combinations
