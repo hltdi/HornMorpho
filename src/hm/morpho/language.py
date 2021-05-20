@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020.
+    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -313,7 +313,7 @@ class Language:
     @staticmethod
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False,
-             guess=True, poss=None,
+             guess=True, poss=None, pickle=True,
              ees=False,
              verbose=False):
         """Create a language using data in the language data file."""
@@ -322,7 +322,7 @@ class Language:
         else:
             lang = Language(abbrev=abbrev)
         # Load data from language file
-        loaded = lang.load_data(load_morph=load_morph,
+        loaded = lang.load_data(load_morph=load_morph, pickle=pickle,
                                 segment=segment, phon=phon, simplified=simplified,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
@@ -331,6 +331,7 @@ class Language:
         return lang
 
     def load_data(self, load_morph=False,
+                  pickle=True,
                   segment=False, phon=False, guess=True, simplified=False,
                   poss=None, verbose=False):
         if self.load_attempted:
@@ -349,6 +350,7 @@ class Language:
         if load_morph:
             if not self.load_morpho(segment=segment, ortho=True, phon=phon,
                                     guess=guess, simplified=simplified,
+                                    pickle=pickle,
                                     verbose=verbose):
                 # There is no FST of the desired type
                 return False
@@ -1133,9 +1135,10 @@ class Language:
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
     def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
+                    pickle=True,
                     segment=False, recreate=False, guess=True, verbose=False):
         """Load words and FSTs for morphological analysis and generation."""
-        fsts = fsts or self.morphology.pos
+        fsts = fsts or (self.morphology and self.morphology.pos)
         opt_string = ''
         if segment:
             opt_string = 'segmentation'
@@ -1162,6 +1165,8 @@ class Language:
             # Load unanalyzed words
             self.morphology.set_words(ortho=False)
             self.morphology.set_suffixes(verbose=verbose)
+        if not fsts:
+            return False
         for pos in fsts:
             # Load pre-analyzed words if any
             if ortho:
@@ -1173,12 +1178,14 @@ class Language:
             if ortho:
                 self.morphology[pos].load_fst(gen=not segment,
                                               create_casc=False,
+                                              pickle=pickle,
                                               simplified=simplified,
                                               phon=False, segment=segment,
                                               recreate=recreate, verbose=verbose)
             if phon or (ortho and not segment):
                 self.morphology[pos].load_fst(gen=True,
                                               create_casc=False,
+                                              pickle=pickle,
                                               simplified=simplified,
                                               phon=True, segment=segment,
                                               recreate=recreate, verbose=verbose)
@@ -1187,12 +1194,14 @@ class Language:
                 if ortho:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
                                                   segment=segment,
+                                                  pickle=pickle,
                                                   create_casc=False,
                                                   simplified=simplified,
                                                   recreate=recreate, verbose=verbose)
                 if phon:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False,
+                                                  pickle=pickle,
                                                   simplified=simplified,
                                                   recreate=recreate, verbose=verbose)
             # Load statistics for generation
@@ -1218,6 +1227,8 @@ class Language:
     def has_cas(self, generate=False, guess=False,
                 simplified=False, phon=False, segment=False):
         """Is there at least one cascade file for the given FST features?"""
+        if not self.morphology:
+            return False
         for pos in self.morphology.pos:
             if self.morphology[pos].has_cas(generate=generate, simplified=simplified,
                                             guess=guess, phon=phon, segment=segment):

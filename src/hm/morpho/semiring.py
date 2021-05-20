@@ -409,12 +409,14 @@ class Semiring:
     def is_in_set(self, x):
         return self.in_set(x)
 
-    def parse(self, s):
+    def parse_weight(self, s):
         """Parse a string into a weight."""
         if not s:
             # Default weight for this SR
             return self.one
-        elif self == UNIFICATION_SR:
+        elif self.in_set == uni_inset:
+            # UNIFICATION_SR (which may have been instantiated multiple times
+            # on different runs of the program)
             return FSSet.parse(s)
         else:
             # Number

@@ -1,7 +1,8 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021
+Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021.
+    Michael Gasser
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,7 +42,7 @@ def exit(save=True, cache=''):
         language.write_cache(segment=SEGMENT)
     morpho.languages.LANGUAGES.clear()
 
-def load_lang(language, phon=False, segment=False,
+def load_lang(language, phon=False, segment=False, pickle=True,
               load_morph=True, cache='', simplified=False,
               guess=True, verbose=False):
     """Load a language's morphology.
@@ -49,7 +50,7 @@ def load_lang(language, phon=False, segment=False,
     @param language: a language label
     @type  language: string
     """
-    morpho.load_lang(language,
+    morpho.load_lang(language, pickle=pickle,
                      phon=phon, segment=segment, simplified=simplified,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)

@@ -39,10 +39,12 @@ import hm
 #    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
 #    T = hm.morpho.TransTask(AK)
 
-def get_lang(abbrev, segment=False, guess=True, phon=False, cache='', verbose=False):
+def get_lang(abbrev, segment=False, guess=True, phon=False, cache='',
+             pickle=True, verbose=False):
     """Return the language with abbreviation abbrev, loading it
     if it's not already loaded."""
     return hm.morpho.get_language(abbrev, cache=cache, phon=phon, guess=guess,
+                                  pickle=pickle,
                                   segment=segment, load=True, verbose=verbose)
 
 def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,

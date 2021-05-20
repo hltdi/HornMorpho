@@ -3,7 +3,7 @@ This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020.
+    Copyleft 2018, 2019, 2020, 2021.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ written by some unidentified author.
 Version 1.0
 """
 
-import re, os, copy, time, functools, glob
+import re, os, copy, time, functools, glob, pickle
 from collections import deque
 # Required for weights.
 from .semiring import *
@@ -903,7 +903,7 @@ class FST:
 #        print('Weight to parse', weight)
         # Convert the string to a real weight and replace the string with the weight in _weight
         if isinstance(weight, str):
-            weight = self._weighting.parse(weight)
+            weight = self._weighting.parse_weight(weight)
             self._weight[arc] = weight
         return weight
 
@@ -924,7 +924,6 @@ class FST:
     #////////////////////////////////////////////////////////////
     #{ FST Information
     #////////////////////////////////////////////////////////////
-
 
     def r2l(self):
         return self._reverse
@@ -1578,6 +1577,39 @@ class FST:
                         feats[feat].append(value)
 
     @staticmethod
+    def get_dir(language):
+        """
+        The directory where FSTs, compiled and uncompiled, are stored.
+        """
+        return os.path.join(language.directory, 'fst')
+
+    @staticmethod
+    def pickle(fst, language=None, directory='', replace=False):
+        """
+        Dump the FST to a pickle.
+        """
+        directory = directory or FST.get_dir(language)
+        path = os.path.join(directory, fst.label + ".pkl")
+        if not replace and os.path.exists(path):
+            print("Pickle {} exists, not replacing".format(path))
+            return
+        file = open(path, 'wb')
+        pickle.dump(fst, file)
+
+    @staticmethod
+    def unpickle(label, language=None, directory=''):
+        """
+        Load the FST from a .pkl file.
+        """
+        directory = directory or FST.get_dir(language)
+        path = os.path.join(directory, label + ".pkl")
+        if not os.path.exists(path):
+#            print("Pickle {} not found!".format(path))
+            return
+        file = open(path, "rb")
+        return pickle.load(file)
+
+    @staticmethod
     def stringify_weights(fst):
         '''Convert each weight to a string (MG).'''
         print('Stringifying weights')
@@ -1652,7 +1684,8 @@ class FST:
 
     @staticmethod
     def get_fst_files(fst_name, fst_directory, parts=True):
-        """Get FST files for fst_name in fst_directory, searching either for parts
+        """
+        Get FST files for fst_name in fst_directory, searching either for parts
         or for complete file.
         """
         if parts:
@@ -1667,13 +1700,16 @@ class FST:
     @staticmethod
     def restore(fst_name, cas_directory='', fst_directory='',
                 cascade=None, weighting=UNIFICATION_SR, seg_units=[],
+                # if True, look for .pkl file to load
+                pickle=True,
                 # Features determining which FST
                 empty=True, phon=False, segment=False, generate=False, simplified=False,
                 create_weights=True, verbose=False):
         '''Restore an FST from a file, in some cases creating the cascade first.
 
-        If empty is true, look for the empty (guesser) FST only.  Otherwise, look first for the
-        lexical one, then the empty one.'''
+        If empty is true, look for the empty (guesser) FST only.
+        Otherwise, look first for the lexical one, then the empty one.
+        '''
         empty_name = fst_name + '0'
         if empty:
             name = empty_name
@@ -1690,6 +1726,10 @@ class FST:
         if generate:
             name += 'G'
             empty_name += 'G'
+        if pickle:
+            fst = FST.unpickle(name, directory=fst_directory)
+            if fst:
+                return fst
         # Look for the full, explicit FST
         explicit = FST.get_fst_files(name, fst_directory)
 #        filename = name + '.fst'
@@ -1757,8 +1797,7 @@ class FST:
 
     @staticmethod
     def restore_parse(directory, fst_file=None, path=None, weighting=None,
-                      label='',
-                      cascade=None, fst=None,
+                      label='', cascade=None, fst=None,
                       seg_units=[], create_weights=True, verbose=False):
         """Restore an FST from a .fst file."""
 #        label, suffix = fst_file.split('.')
@@ -1837,7 +1876,7 @@ class FST:
                 if src is None: raise ValueError("bad line: %r" % line)
                 prev_src = src
                 if weighting and create_weights:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                 if not fst.has_state(src):
                     fst.add_state(src)
                     nstates += 1
@@ -2126,7 +2165,7 @@ class FST:
                 src, dst, strings, weight = m.groups()
                 if src is None: raise ValueError("bad line: %r" % line)
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                     if weight_constraint:
                         constrained_weight = weighting.multiply(weight, weight_constraint)
                         if not constrained_weight:
@@ -2165,7 +2204,7 @@ class FST:
                     out_string = None
                 weight = groups[5]
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                     if weight_constraint:
                         constrained_weight = weighting.multiply(weight, weight_constraint)
                         if not constrained_weight:
@@ -2188,7 +2227,7 @@ class FST:
                 if src is None: raise ValueError("bad line: %r" % line)
                 prev_src = src
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                 fstfile = label + '.fst'
                 fstpath = os.path.join(cascade.get_fst_dir(), fstfile)
 #                fstpath = os.path.join(directory, fstfile)
@@ -2223,7 +2262,7 @@ class FST:
                 if src is None: raise ValueError("bad line: %r" % line)
                 prev_src = src
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                 filename = label + '.fst'
                 fst1 = cascade.get(label) if cascade else None
                 if not fst1:
@@ -2245,7 +2284,7 @@ class FST:
                 if src is None: raise ValueError("bad line: %r" % line)
                 prev_src = src
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                 # handle specs
                 filename = label + '.lex'
                 fst1 = cascade.get(label) if cascade else None
@@ -2266,7 +2305,7 @@ class FST:
                 if src is None: raise ValueError("bad line: %r" % line)
                 prev_src = src
                 if weighting:
-                    weight = weighting.parse(weight)
+                    weight = weighting.parse_weight(weight)
                 # handle specs
                 filename = label + '.lex'
                 fst1 = cascade.get(label) if cascade else None
@@ -2478,7 +2517,7 @@ class FST:
                                 weight_spec = rest0[1]
                             else:
                                 weight_spec = rest0
-                            weight = weighting.parse(weight_spec)
+                            weight = weighting.parse_weight(weight_spec)
                             if weight and weight_constraint:
                                 constrained_weight = weighting.multiply(weight, weight_constraint)
                                 if not constrained_weight:
@@ -2497,7 +2536,7 @@ class FST:
                             weight_spec = rest[1]
                         else:
                             weight_spec = rest
-                        weight = weighting.parse(';'.join(weight_spec))
+                        weight = weighting.parse_weight(';'.join(weight_spec))
                         if weight and weight_constraint:
                             constrained_weight = weighting.multiply(weight, weight_constraint)
                             if not constrained_weight:
@@ -2562,7 +2601,7 @@ class FST:
         if lex_features and features:
             # Add features to the arcs INTO the final state
             weight_spec = features[1] if dest else features
-            weight = weighting.parse(weight_spec)
+            weight = weighting.parse_weight(weight_spec)
             if weight and weight_constraint:
                 constrained_weight = weighting.multiply(weight, weight_constraint)
                 if not constrained_weight:

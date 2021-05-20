@@ -422,7 +422,9 @@ class Morphology(dict):
 
     def load_fst(self, label, generate=False, create_fst=True,
                  save=False, verbose=False):
-        """Load an FST that is not associated with a particular POS."""
+        """
+        Load an FST that is not associated with a particular POS.
+        """
         path = os.path.join(self.get_cas_dir(), label + '.cas')
 #        path = os.path.join(self.directory, label + '.cas')
         casc = fst = None
@@ -836,6 +838,7 @@ class POSMorphology:
     def load_fst(self, compose=False, subcasc=None, generate=False, gen=False,
                  recreate=False, create_fst=True, create_casc=False,
                  create_weights=False, guess=False,
+                 pickle=True,
                  simplified=False, phon=False, segment=False,
                  invert=False, compose_backwards=True, split_index=0,
                  relabel=True, verbose=False):
@@ -857,6 +860,7 @@ class POSMorphology:
             fst = FST.restore(self.pos, cas_directory=self.morphology.get_cas_dir(),
                               fst_directory=self.morphology.get_fst_dir(),
                               seg_units=self.morphology.seg_units,
+                              pickle=pickle,
                               create_weights=create_weights, generate=generate,
                               empty=guess, phon=phon, segment=segment, simplified=simplified,
                               verbose=verbose)
@@ -913,6 +917,7 @@ class POSMorphology:
         if gen:
             if not self.load_fst(compose=False, generate=True, gen=False,
                                  create_casc=create_casc,
+                                 pickle=pickle,
                                  guess=guess, simplified=simplified,
                                  phon=phon, segment=segment,
                                  invert=True, verbose=verbose):
@@ -952,14 +957,17 @@ class POSMorphology:
             # FST found one way or another
             return True
 
-    def load_gen_fst(self, guess=False, simplified=False, phon=False, segment=False, verbose=False):
-        '''Create gen_fst(0) by inverting an existing anal_fst(0) or loading and inverting a generation FST.'''
+    def load_gen_fst(self, pickle=True,
+                     guess=False, simplified=False, phon=False, segment=False, verbose=False):
+        '''
+        Create gen_fst(0) by inverting an existing anal_fst(0) or loading and inverting a generation FST.
+        '''
         if not self.get_fst(True, guess, simplified, phon=phon, segment=segment):
             print('LOADING GEN FST FOR', self.language.label, self.pos, ('(guess)' if guess else ''))
             name = self.fst_name(True, guess, simplified, phon=phon, segment=segment)
             # First try to load the explicit generation FST
             gen = self.load_fst(generate=True, guess=guess, simplified=simplified,
-                                phon=phon, segment=segment,
+                                phon=phon, segment=segment, pickle=pickle,
                                 invert=True)
             if gen:
                 self.set_fst(gen, True, guess, simplified, phon=phon, segment=segment)
@@ -971,6 +979,22 @@ class POSMorphology:
             if self.casc:
                 self.casc_inv = self.casc.inverted()
                 self.casc_inv.reverse()
+
+    def pickle_all(self, replace=True, empty=True):
+        """
+        Pickle the FSTs for this POS. If replace is False, don't
+        replace existing pickles.
+        """
+        directory = self.morphology.get_fst_dir()
+        explicit = self.fsts[0]
+        empty_fsts = self.fsts[1]
+        for fst in explicit:
+            if fst:
+                FST.pickle(fst, directory=directory, replace=replace)
+        if empty:
+            for fst in empty_fsts:
+                if fst:
+                    FST.pickle(fst, directory=directory, replace=replace)
 
     def save_fst(self, generate=False, guess=False, simplified=False,
                  phon=False, segment=False,
