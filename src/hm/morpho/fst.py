@@ -1584,11 +1584,18 @@ class FST:
         return os.path.join(language.directory, 'fst')
 
     @staticmethod
+    def get_pickle_dir(language):
+        """
+        The directory where FSTs, compiled and uncompiled, are stored.
+        """
+        return os.path.join(language.directory, 'pkl')
+
+    @staticmethod
     def pickle(fst, language=None, directory='', replace=False):
         """
         Dump the FST to a pickle.
         """
-        directory = directory or FST.get_dir(language)
+        directory = directory or FST.get_pickle_dir(language)
         path = os.path.join(directory, fst.label + ".pkl")
         if not replace and os.path.exists(path):
             print("Pickle {} exists, not replacing".format(path))
@@ -1601,7 +1608,7 @@ class FST:
         """
         Load the FST from a .pkl file.
         """
-        directory = directory or FST.get_dir(language)
+        directory = directory or FST.get_pickle_dir(language)
         path = os.path.join(directory, label + ".pkl")
         if not os.path.exists(path):
 #            print("Pickle {} not found!".format(path))
@@ -1698,7 +1705,8 @@ class FST:
         return []
 
     @staticmethod
-    def restore(fst_name, cas_directory='', fst_directory='',
+    def restore(fst_name,
+                cas_directory='', fst_directory='', pkl_directory='',
                 cascade=None, weighting=UNIFICATION_SR, seg_units=[],
                 # if True, look for .pkl file to load
                 pickle=True,
@@ -1727,11 +1735,11 @@ class FST:
             name += 'G'
             empty_name += 'G'
         if pickle:
-            fst = FST.unpickle(name, directory=fst_directory)
+            fst = FST.unpickle(name, directory=pkl_directory)
             if fst:
                 return fst
         # Look for the full, explicit FST
-        explicit = FST.get_fst_files(name, fst_directory)
+        explicit = FST.get_fst_files(name, pkl_directory)
 #        filename = name + '.fst'
 #        if os.path.exists(os.path.join(fst_directory, filename)):
         if explicit:
@@ -1744,7 +1752,7 @@ class FST:
                                                 verbose=verbose)
         # Look for the empty FST (except for segmentation) if there is no lexical one
         if not empty and not segment:
-            empty_paths = FST.get_fst_files(empty_name, fst_directory)
+            empty_paths = FST.get_fst_files(empty_name, pkl_directory)
 #            filename = empty_name + '.fst'
 #            if os.path.exists(os.path.join(fst_directory, filename)):
             if empty_paths:

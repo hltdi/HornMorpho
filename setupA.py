@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoA',
-      version='4.0.5',
+      version='4.1',
       description='Morphological analyzer/generator for Amharic and Kistane',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',
@@ -19,11 +19,13 @@ setup(name='HornMorphoA',
                      'languages/amh/cas/*',
                      'languages/amh/data/*',
                      'languages/amh/cache/*',
+                     'languages/amh/pkl/*.pkl',
                      'languages/gru/*',
                      'languages/gru/fst/*',
                      'languages/gru/lex/*',
                      'languages/gru/cas/*',
                      'languages/gru/cache/*',
+                     'language/gru/pkl/*.pkl',
                      'docs/horn3_quick.pdf',
                      'morpho/geez/*']
                      },

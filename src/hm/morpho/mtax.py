@@ -121,7 +121,7 @@ class MTax:
                 if not current_state:
                     # This must be the first state, so make it initial
                     self.fst._set_initial_state(label)
-                # Use this for all paths and lex files until the next state                
+                # Use this for all paths and lex files until the next state
                 current_state = [label, {'paths': [], 'shortcuts': []}]
                 current_fs = None
                 current_indent = 0
@@ -134,7 +134,7 @@ class MTax:
             m = LEX_RE.match(line)
             if m:
                 indentation, label, fss = m.groups()
-                weight = self.weighting.parse(fss)
+                weight = self.weighting.parse_weight(fss)
                 filename = label + '.lex'
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
@@ -157,7 +157,7 @@ class MTax:
             if m:
                 indentation, label, fss = m.groups()
 #                print('Lex', label)
-                weight = self.weighting.parse(fss)
+                weight = self.weighting.parse_weight(fss)
                 filename = label + '.fst'
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
@@ -195,7 +195,7 @@ class MTax:
             m = SHORTCUT_FS_RE.match(line)
             if m:
                 next_state, fss = m.groups()
-                fss = self.weighting.parse(fss)
+                fss = self.weighting.parse_weight(fss)
                 current_state[1]['shortcuts'].append((next_state, None, fss))
 #                print("Shortcut {}, {}".format(next_state, fss))
                 continue
@@ -212,7 +212,7 @@ class MTax:
             m = SHORTCUT_LEX_FS_RE.match(line)
             if m:
                 next_state, label, fss = m.groups()
-                fss = self.weighting.parse(fss)
+                fss = self.weighting.parse_weight(fss)
                 filename = label + '.lex'
                 current_state[1]['shortcuts'].append((next_state, filename, fss))
                 continue
@@ -226,7 +226,7 @@ class MTax:
                     weight = FSSet(current_fs)
                 current_state[1]['paths'].append((in_string, weight))
                 continue
-            
+
             raise ValueError("bad line: %r" % line)
 
 ##    def compile(self, gen=False, verbose=False):
@@ -316,4 +316,3 @@ class MTax:
 ##                    self.fst.insert(fst1, src, dest, weight=wt, mult_dsts=False)
 ##                else:
 ##                    self.fst.add_arc(src, dest, '', '', weight=fss)
-

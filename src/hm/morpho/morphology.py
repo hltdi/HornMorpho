@@ -123,6 +123,9 @@ class Morphology(dict):
     def get_fst_dir(self):
         return os.path.join(self.directory, 'fst')
 
+    def get_pickle_dir(self):
+        return os.path.join(self.directory, 'pkl')
+
     def get_stat_dir(self):
         return os.path.join(self.directory, 'stat')
 
@@ -444,7 +447,7 @@ class Morphology(dict):
                 if generate:
                     fst = fst.inverted()
                 if save:
-                    FST.write(fst, filename=os.path.join(self.get_fst_dir(), label + '.fst'))
+                    FST.write(fst, filename=os.path.join(self.get_pickle_dir(), label + '.fst'))
                 return fst
             return casc
 
@@ -462,9 +465,9 @@ class Morphology(dict):
 #            print('Restoring FST', label)
             # Look for the full, explicit FST
             fst_file = label + '.fst'
-            fst_path = os.path.join(self.get_fst_dir(), fst_file)
+            fst_path = os.path.join(self.get_pickle_dir(), fst_file)
             if os.path.exists(fst_path):
-                return FST.restore_parse(self.get_fst_dir(), fst_file, cascade=cascade,
+                return FST.restore_parse(self.get_pickle_dir(), fst_file, cascade=cascade,
                                          weighting=UNIFICATION_SR,
                                          seg_units=self.seg_units,
                                          create_weights=True)
@@ -480,7 +483,7 @@ class Morphology(dict):
             if fst:
                 fst = fst.inverted()
                 if save:
-                    FST.write(fst, filename=os.path.join(self.get_fst_dir(), 'phon.fst'))
+                    FST.write(fst, filename=os.path.join(self.get_pickle_dir(), 'phon.fst'))
                     self.phon_fst = fst
                 return fst
 
@@ -857,8 +860,10 @@ class POSMorphology:
                             recreate))
         if not compose and not recreate:
             # Load a composed FST encompassing everything in the cascade
-            fst = FST.restore(self.pos, cas_directory=self.morphology.get_cas_dir(),
+            fst = FST.restore(self.pos,
+                              cas_directory=self.morphology.get_cas_dir(),
                               fst_directory=self.morphology.get_fst_dir(),
+                              pkl_directory=self.morphology.get_pickle_dir(),
                               seg_units=self.morphology.seg_units,
                               pickle=pickle,
                               create_weights=create_weights, generate=generate,
@@ -985,7 +990,7 @@ class POSMorphology:
         Pickle the FSTs for this POS. If replace is False, don't
         replace existing pickles.
         """
-        directory = self.morphology.get_fst_dir()
+        directory = self.morphology.get_pickle_dir()
         explicit = self.fsts[0]
         empty_fsts = self.fsts[1]
         for fst in explicit:
@@ -1010,14 +1015,14 @@ class POSMorphology:
             df = self.defaultFS.__repr__()
         else:
             df = ''
-        FST.write(fst, filename=os.path.join(self.morphology.get_fst_dir(), fname + extension),
+        FST.write(fst, filename=os.path.join(self.morphology.get_pickle_dir(), fname + extension),
                   defaultFS=df, stringsets=stringsets,
                   features=features, exclude_features=['t', 'm'])
 
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
         if fst_file:
-            os.remove(os.path.join(self.morphology.get_fst_dir(), self.pos + '.fst'))
+            os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.fst'))
 
     def analyze(self, form, init_weight=None, guess=False):
         """Try analyzed list first; then run anal() if that fails."""

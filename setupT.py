@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoT',
-      version='4.0.4',
+      version='4.1',
       description='Morphological analyzer/generator for Tigrinya and Tigre',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',
@@ -19,11 +19,13 @@ setup(name='HornMorphoT',
                      'languages/tir/cas/*',
                      'languages/tir/data/*',
                      'languages/tir/cache/*',
+                     'languages/tir/pkl/*.pkl',
                      'languages/tig/*',
                      'languages/tig/fst/*',
                      'languages/tig/lex/*',
                      'languages/tig/cas/*',
                      'languages/tig/cache/*',
+                     'languages/tig/pkl/*.pkl',
                      'docs/horn3_quick.pdf',
                      'morpho/geez/*']
                      },
