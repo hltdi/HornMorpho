@@ -688,6 +688,8 @@ class POSMorphology:
             pos += '+'
         if generate:
             pos += 'G'
+        elif not segment:
+            pos += 'A'
         return pos
 
     def get_analyzed(self, word, init_weight=None, simple=False, sep_anals=False):
@@ -841,7 +843,7 @@ class POSMorphology:
     def load_fst(self, compose=False, subcasc=None, generate=False, gen=False,
                  recreate=False, create_fst=True, create_casc=False,
                  create_weights=False, guess=False,
-                 pickle=True,
+                 pickle=True, create_pickle=True,
                  simplified=False, phon=False, segment=False,
                  invert=False, compose_backwards=True, split_index=0,
                  relabel=True, verbose=False):
@@ -870,6 +872,13 @@ class POSMorphology:
                               empty=guess, phon=phon, segment=segment, simplified=simplified,
                               verbose=verbose)
             if fst:
+                fst, found_pickle = fst
+                if found_pickle and verbose:
+                    print("Finished unpickling {}".format(fst.label))
+                if pickle and not found_pickle and create_pickle:
+                    print("No pickle found for {}, creating one".format(name))
+                    FST.pickle(fst, directory=self.morphology.get_pickle_dir(),
+                               label=name)
                 self.set_fst(fst, generate, guess, simplified, phon=phon, segment=segment)
                 if create_casc:
                     if not self.casc:
@@ -1007,6 +1016,7 @@ class POSMorphology:
         '''Save FST in a file.'''
         fname = self.fst_name(generate=generate, guess=guess, simplified=simplified,
                               phon=phon, segment=segment)
+#        print("FNAME {}".format(fname))
         extension = '.fst'
         fst = self.get_fst(generate=generate, guess=guess, simplified=simplified,
                            phon=phon, segment=segment)
@@ -1015,7 +1025,8 @@ class POSMorphology:
             df = self.defaultFS.__repr__()
         else:
             df = ''
-        FST.write(fst, filename=os.path.join(self.morphology.get_pickle_dir(), fname + extension),
+        directory = FST.get_pickle_dir(self.morphology.language)
+        FST.write(fst, filename=os.path.join(directory, fname + extension),
                   defaultFS=df, stringsets=stringsets,
                   features=features, exclude_features=['t', 'm'])
 

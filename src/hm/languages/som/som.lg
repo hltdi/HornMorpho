@@ -1,4 +1,4 @@
-name: af soomaali
+name: Af Soomaali
 code: so
 
 seg: a e i o u aa ee ii oo uu
@@ -27,4 +27,3 @@ feats:
   p = 3 | 2 | 1
   n = 1 | 2
   g = m | f
-

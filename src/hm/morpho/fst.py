@@ -1591,12 +1591,14 @@ class FST:
         return os.path.join(language.directory, 'pkl')
 
     @staticmethod
-    def pickle(fst, language=None, directory='', replace=False):
+    def pickle(fst, language=None, directory='', replace=False,
+               label='', verbose=False):
         """
         Dump the FST to a pickle.
         """
         directory = directory or FST.get_pickle_dir(language)
-        path = os.path.join(directory, fst.label + ".pkl")
+        label = label or fst.label
+        path = os.path.join(directory, label + ".pkl")
         if not replace and os.path.exists(path):
             print("Pickle {} exists, not replacing".format(path))
             return
@@ -1604,7 +1606,7 @@ class FST:
         pickle.dump(fst, file)
 
     @staticmethod
-    def unpickle(label, language=None, directory=''):
+    def unpickle(label, language=None, directory='', verbose=False):
         """
         Load the FST from a .pkl file.
         """
@@ -1614,6 +1616,8 @@ class FST:
 #            print("Pickle {} not found!".format(path))
             return
         file = open(path, "rb")
+        if verbose:
+            print('Unpickling {}'.format(path))
         return pickle.load(file)
 
     @staticmethod
@@ -1632,7 +1636,7 @@ class FST:
             extension = '.fst'
             filename = os.path.join(directory, fst + extension)
 
-        print('Writing FST to {}'.format(filename))
+        print('Writing FST {} to {}'.format(fst.label, filename))
         out = open(filename, 'w', encoding='utf-8')
         # Write the features and values, defaultFS, and stringsets; whether FST is reversed (right-to-left)
         if fst.r2l():
@@ -1717,6 +1721,8 @@ class FST:
 
         If empty is true, look for the empty (guesser) FST only.
         Otherwise, look first for the lexical one, then the empty one.
+        2021.5: returns pair with second element a boolean indicating
+        whether the FST was found in a pickle.
         '''
         empty_name = fst_name + '0'
         if empty:
@@ -1734,10 +1740,13 @@ class FST:
         if generate:
             name += 'G'
             empty_name += 'G'
+        elif not segment:
+            name += 'A'
+            empty_name += 'A'
         if pickle:
             fst = FST.unpickle(name, directory=pkl_directory)
             if fst:
-                return fst
+                return fst, True
         # Look for the full, explicit FST
         explicit = FST.get_fst_files(name, pkl_directory)
 #        filename = name + '.fst'
@@ -1749,7 +1758,8 @@ class FST:
                                                 cascade=cascade, weighting=weighting,
                                                 seg_units=seg_units,
                                                 create_weights=create_weights,
-                                                verbose=verbose)
+                                                verbose=verbose), \
+                   False
         # Look for the empty FST (except for segmentation) if there is no lexical one
         if not empty and not segment:
             empty_paths = FST.get_fst_files(empty_name, pkl_directory)
@@ -1762,7 +1772,8 @@ class FST:
                                                     cascade=cascade, weighting=weighting,
                                                     seg_units=seg_units,
                                                     create_weights=create_weights,
-                                                    verbose=verbose)
+                                                    verbose=verbose), \
+                       False
 
     @staticmethod
     def split(directory, fst_file, limit=50000):

@@ -130,7 +130,7 @@ def orthographize(word):
 #            webfv(webdict, 'conj suffix', roman2geez(cj, 'ti'))
 #    return s
 
-def vb_anal2string(anal, webdict=None):
+def vb_anal2string(anal, webdict=None, **kwargs):
     '''Convert a verb analysis to a string.
 
     anal is ("(*)v", root, citation, gramFS)
@@ -706,7 +706,7 @@ TI.morphology['v'].web_feats = \
   [('sb', 1), ('ob', 1), ('tm', 1), ('neg', 1), ('rel', 1), ('pp', 1), ('cj1', 1), ('cj2', 1), ('def', 1), ('yn', 1)]
 
 ## Functions that convert analyses to strings
-TI.morphology['v'].anal2string = lambda fss, webdict: vb_anal2string(fss, webdict=webdict)
+TI.morphology['v'].anal2string = lambda fss, webdict, **kwargs: vb_anal2string(fss, webdict=webdict, **kwargs)
 TI.morphology['v'].name = 'verb'
 TI.morphology['v'].root_proc = postpostproc_root
 

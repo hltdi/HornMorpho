@@ -1,0 +1,71 @@
+weighting = UNIFICATION
+
+# 2020.8.14: converted vowels to "Cushitic" representation
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# *: allophone/allomorph prefix
+# !: allophone/allomorph prefix
+# =: allophone/allomorph prefix
+# 2: 2p perfect suffix kumu- mmu-
+# 7: 1s, 2sm perfective suffix (->k|h)
+# 8: 2sf imprf/juss suffix (causes palatalization of previous C)
+# 0: delete following vowel (only -u?) under certain circumstances
+
+## Vowel stringsets
+V = {a, e, i, o, u, aa, ee, ii, oo, uu}
+# Long vowels
+VV = {aa, ee, ii, oo, uu}
+# Short vowels
+~V = {a, e, i, o, u}
+## All consonants
+XX = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW, ZW}
+# possible root consonants
+# X = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, P, q, r, s, t, T, w, x, y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, qW, rW, sW, tW, TW, xW, zW, ZW}
+# laryngeal consonants
+L = {', h, hW}
+# non-laryngeal consonants
+X/L = {b, c, C, d, f, g, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW, ZW}
+# palatal consonants
+J = {c, C, j, N, x, y, Z}
+# palatalizable consonants
+JJ = {d, l, n, s, t, T, z}
+# palatalizable consonants + k, g
+JX = {d, g, k, l, n, s, t, T, z}
+# Non-palatal consonants
+~J = {b, d, f, g, h, k, l, m, n, p, P, q, r, s, t, T, w, z, '}
+# Consonants that are not palatal, palatalizable, or labialized (includes k and g)
+J! = {b, f, g, h, k, m, p, P, q, r, w, '}
+# labialized consonants (including some which probably can't be root consonants)
+B = {bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, tW, TW, xW, zW, ZW}
+# non-labialized consonants
+X = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, t, T, w, x, y, z, Z, '}
+## Non-phonetic/orthographic characters
+% = {_, /, *, 0, 2, 8, 7, +}
+
+# For written Silt'e, the next 2, then start from ou2W
+#>del_epgem<
+# Insert glottal stop before initial vowel
+>gs0<
+# Convert vowels in single-character scheme to single/double scheme
+#>Vconv<
+# Add epenthetic I
+# >epen1<
+# Convert /C to C_
+>pre_gem<
+# Palatalize palatalizable C before i and E
+# >pal_iiee<
+# CC -> C_
+>gem<
+# V combinations with a first or second a
+>aVa<
+# delete stem boundary character +
+>bound<
+# *t -> t or ta
+>*<
+# -ku/-k
+>kh<
+# Morphotactics
+>v_mtax<

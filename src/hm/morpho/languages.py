@@ -58,6 +58,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               # False, '', or the name of a cache file
               cache=True, guess=True, simplified=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
+    if verbose:
+        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
     if lang_id == 'am':
@@ -110,7 +112,11 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
     LANGUAGES[lang_id] = language
     for code in language.codes:
         LANGUAGES[code] = language
+#    if verbose:
+#        print("Finished loading")
     if language.backup:
+        if verbose:
+            print("Loading backup language {}".format(language.backup))
         # If there's a backup language, load its data file so the translations
         # can be used.
         load_lang(language.backup, load_morph=False,
