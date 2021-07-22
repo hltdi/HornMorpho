@@ -16,12 +16,15 @@ start -> .c        [t;d;T] [root=[cls=Ap|B|C|D|E|F]]
 start -> .T        [t;d;T] [root=[cls=A]]
 start -> .h        [:h]
 # for -o, -ema, and impersonal, don't palatalize these verbs (Kry, etc.)
+# y is replaced with e below
 start -> .c        [:y]    [sp=3,sn=2];[sp=None]
 start -> .y        [:y]    [sp=1];[sn=1];[sp=2,sn=2]
 
 .T -> A.T          [:]
 .T -> A.Te         [e:]
+# replace final h with a
 .h -> .cv          [a:]
+# replace final y with e
 .c -> .cv          [e:]
 
 ## get the class
@@ -224,10 +227,11 @@ E.y -> E.yV         [e:]
 
 # C3
 
-E.CV -> E.CV/       [:.]
-E.CV -> E.CV/       [/:]
-E.CV/ -> E.CVC       [AA]
-# *rhy (without palatalization)
+# delete . indicating no gemination or introduce gemination character
+E.CV -> E.CV/       [:.;/:]
+E.CV/ -> E.CVC      [AA]
+# *rhy (without palatalization);
+# srhy (3p, imp) -> sra; qrhy (3p, imp) -> qra
 E.CV -> E.CVh       [a:h]
 # C2 is always r
 E.CVh -> E.CVCVC     [r]
@@ -235,9 +239,11 @@ E.CVh -> E.CVCVC     [r]
 # ***y
 E.yV -> E.yv^       [^:]
 E.yv^ -> E.yv/      [/:]
-# assumes all have a velar or coronal as C3
+# assumes all have a velar or coronal or h as C3;
+# zrgy -> zrg/^e
 E.yv/ -> E.CVC      [KK;DD]
-# *rhy (the e was already inserted)
+# *rhy (the e was already inserted);
+# srhy -> sye; qrhy -> qye
 E.yV -> E.yVh       [:h]
 # palatalized r
 E.yVh -> E.CVCVC    [y:r]

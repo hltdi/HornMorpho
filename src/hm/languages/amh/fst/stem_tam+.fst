@@ -46,7 +46,7 @@
 ### Example templates
 ###  teCberebber-e:    te12e3e4_e5,   [tmp=[n=5,c1=12,c2=3,   c3=None,c4=None, c_1=c,   c_2=c, +c_2gem, -c1gem, v_1=e, v1=e, v2=e,   v3=None,v4=None,pre=te  ]]
 ###  gelebabbeT-e:     1e2e3a3_e4,    [tmp=[n=4,c1=1, c2=2,   c3=3,   c4=None, c_1=c,   c_2=3, +c_2gem, -c1gem, v_1=e, v1=e, v2=e,   v3=a,   v4=None,pre=None]]
-###  y-nkWakW_-al:     12a2_a,        [tmp=[n=5,c1=12,c2=None,c3=None,c4=None, c_1=None,c_2=2, +c_2gem, -c1gem, v_1=a, v1=a, v2=None,v3=None,v4=None,pre=None]] 
+###  y-nkWakW_-al:     12a2_a,        [tmp=[n=5,c1=12,c2=None,c3=None,c4=None, c_1=None,c_2=2, +c_2gem, -c1gem, v_1=a, v1=a, v2=None,v3=None,v4=None,pre=None]]
 ###  awwexenegagger-e: a1_e2e3e4a4_e5 [tmp=[n=5,c1=1, c2=2,   c3=3,   c4=4,    c_1=c,   c_2=4, +c_2gem, +c1gem, v_1=e, v1=e, v2=e,   v3=e,   v4=a,  ,pre=a   ]]
 ###  babba:            1a2_a          [tmp=[n=4,c1=1, c2=None,c3=None,c4=None, c_1=None,c_2=2, +c_2gem, -c1gem, v_1=a, v1=a, v2=None,v3=None,v4=None,pre=None]]
 ###  sebabber-e:       1e2a2_e3       [tmp=[n=3,c1=1, c2=2,   c3=None,c4=None, c_1=c,   c_2=2, +c_2gem, -c1gem, v_1=e, v1=e, v2=a,   v3=None,v4=None,pre=None]]
@@ -155,7 +155,8 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 -3V -> -2A0         [e:]      [tm=prf];[tm=ger,vc=smp];[tm=ger,vc=ps];[tm=ger,vc=cs];[tm=imf];[tm=j_i,vc=ps];[tm=j_i,vc=cs]
 -2A0 -> -2A         [:]       [tmp=[v1=e]]
 # no first stem vowel in other cases: gerundive transitive, jussive/imperative simplex or transitive
--3V -> -2Aig         [:]      [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
+# (I prevents gemination when C1=C2)
+-3V -> -2Aig        [I:]      [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
 -2Aig -> -2A         [:]      [tmp=[v1=None,-c_2gem]]
 # C1: all root consonants except L (treated separately below)
 -3 -> -3V           [X/L]     [tmp=[c1=1]]
@@ -167,7 +168,7 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 -3LV -> -2AL        [I:]      [tm=j_i,vc=smp,tmp=[v1=I,-c_2gem]]
 
 ## Transitive, passive, and causative prefixes (as well as no prefix) can precede CCC
-simp -> -3t         [:]       
+simp -> -3t         [:]
 simp -> -3L         [:]       [tmp=[n=3,c2=None,c3=None,c4=None,v2=None,v3=None,v4=None]]
 ## Initial geminated consonant for imperfective and jussive passive
 i/ -> -3t           [:]
@@ -250,8 +251,8 @@ i/ -> -3t           [:]
 -3~PV.2 -> -2V       [y]      [tmp=[v1=None,c_2=2],tm=j_i,as=smp,vc=smp]
 
 ## Special CXC cases can be preceded by normal voice prefixes and passive gemination of C1
-i/ -> -3.2t          [:]      
-simp -> -3.2t        [:]      
+i/ -> -3.2t          [:]
+simp -> -3.2t        [:]
 -3.2t -> -3.2        [:]      [tmp=[n=3,c2=None,c3=None,c4=None,v2=None,v3=None,v4=None,-c_2gem]]
 
 # reduplicated cases for exceptional CCC
@@ -260,7 +261,7 @@ te -> -4.2           [:]       [as=it]    # prf, ger, impv passive iterative
 a/ -> -4.2           [:]       [as=it]    # transitive iterative
 simp -> -4.2         [:]       [as=it]    # simple iterative
 -4.2 -> -4V.2        [X]       [tmp=[n=3,c1=1,c2=None,c3=None,c4=None,v2=None,v3=None,v4=None,-c_2gem]]
--4V.2 -> -3.2        [a]       
+-4V.2 -> -3.2        [a]
 
 #### "B" verbs: CC_C, C2 cannot be ', since it can't be geminated
 #### State names contain B

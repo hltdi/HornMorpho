@@ -34,8 +34,8 @@ $ tense_m
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
   --       [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1];[sp=1,sn=2,op=3,on=1,og=m,ot=a]
-  # 3s light object; 1s heavy object
-  n        [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=f,op=1,on=1,ot=a];[sn=2,op=1,on=1,ot=a];[sp=None,sn=None,op=1,on=1,ot=a]
+  # 3s light object
+  n4       [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a]
   ## 3
   # accusative
   [op=3,on=1,og=m,ot=a]
@@ -65,7 +65,7 @@ $ obj_suff
     ameb   [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
     amep   [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # benefactive
-  er       [op=3,on=1,og=m,ot=b]
+  er4      [op=3,on=1,og=m,ot=b]
   ar       [op=3,on=1,og=f,ot=b]
   or       [op=3,on=2,og=m,ot=b]
   amer     [op=3,on=2,og=f,ot=b]
@@ -113,7 +113,7 @@ $ obj_suff
   # accusative
   [op=1,on=1,ot=a]
     E      [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
-#    n      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
+    n      [sp=2,sn=1,sg=f];[sn=2];[sp=None,sn=None]
   # malfactive
   [op=1,on=1,ot=m]
     ib     [sp=1|3,sn=1];[sp=2,sn=1,sg=m]
@@ -130,9 +130,11 @@ $ obj_suff
 $ sbj_suff
   en    [sp=1,sn=2,op=None];[sp=1,sn=2,op=3,on=2,ot=a];[sp=1,sn=2,op=3,on=1,og=f,ot=a]
   En    [sp=1,sn=2,op=2];[sp=1,sn=2,op=3]
-  ame   [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f]
-  o     [sp=3,sn=2,sg=m];[sp=None,sn=None,sg=None];[sp=2,sn=2,sg=m]
-  --    [sn=1];[sp=None,sn=None,sg=None]
+  ame3  [sp=3,sn=2,sg=f];[sp=2,sn=2,sg=f]
+  o3    [sp=3,sn=2,sg=m];[sp=2,sn=2,sg=m]
+  2     [sp=2,sn=1,sg=f]
+  314   [sp=None,sn=None,sg=None]
+  --    [sn=1,sp=1|3];[sn=1,sp=2,sg=m]
 
 ## Boundary separating stem from suffixes
 $ bound2

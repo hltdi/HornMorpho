@@ -24,18 +24,18 @@ start -> pal0       [:]    [sp=2,sn=1,sg=f];[tm=j_i,+tconv]
 start -> imp        [:]    [sp=None]
 
 # impersonal
-imp -> imp          [X;V-i]
-imp -> imp_i        [i]
-# -pi, -ni
-imp_i -> imp        [p;n]
-imp_i -> imp_wi     [w:]
-imp_wi -> imp=wi    [=]
-imp=wi -> imp.e=wi  [e]
-imp.e=wi -> fin     [X]
-imp_wi -> impa.e=wi [:e]
-impa.e=wi -> fin    [a]
+imp -> imp          [X;V]
+#imp -> imp_i        [i]
+## -pi, -ni
+#imp_i -> imp        [p;n]
+#imp_i -> imp_wi     [w:]
+#imp_wi -> imp=wi    [=]
+#imp=wi -> imp.e=wi  [e]
+#imp.e=wi -> fin     [X]
+#imp_wi -> impa.e=wi [:e]
+#impa.e=wi -> fin    [a]
 
-imp_i -> pal        [=]
+#imp_i -> pal        [=]
 imp -> pal          [=]
 
 # find the end of the stem

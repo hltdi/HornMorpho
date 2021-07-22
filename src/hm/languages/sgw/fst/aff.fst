@@ -5,74 +5,96 @@
 
 # N, L, R at stem-suffix boundary (but for prf, only -n can start suffix)
 start -> Csuf       [X-n]
+# R=N -> N_; R=R -> L_; L=N -> N_; L=R -> L_
+start -> nsuf     [n]
+start -> ndel     [_:n]
+# only perfective (-e, -ec)
+start -> del_e   [:e]      [sn=1]
+start -> e       [e]
+start -> o       [o]
+start -> aE.     [A:E]
+start -> E       [E]
+start -> Vsuf     [V-e,o,i,E]
+# ai -> A within suffix ema+i (only possibility?
+start -> a.i     [A:i]
+# other i
+start -> i       [i]
+start -> ai.     [E:i]
+
 # delete the boundary
 Csuf -> C=          [:=]
 C= -> stem          [X;V]
 # not at boundary yet
-Csuf -> start       [:]
-
+Csuf -> Csuf       [X-n]
 # R=N -> N_; R=R -> L_; L=N -> N_; L=R -> L_
-start -> nsuf     [n]
-nsuf -> start     [:]
-start -> ndel     [_:n]
+Csuf -> nsuf     [n]
+Csuf -> ndel     [_:n]
+# only perfective (-e, -ec)
+Csuf -> del_e   [:e]      [sn=1]
+Csuf -> e       [e]
+Csuf -> o       [o]
+Csuf -> aE.     [A:E]
+Csuf -> E       [E]
+Csuf -> Vsuf     [V-e,o,i,E]
+# ai -> A within suffix ema+i (only possibility?
+Csuf -> a.i     [A:i]
+# other i
+Csuf -> i       [i]
+Csuf -> ai.     [E:i]
+
 ndel -> n=.r      [:=]
 n=.r -> stem      [n;l;n:r]
 nsuf -> n=        [:=]
 n= -> stem        [X-r,n,l;V]
 
-#start -> rsuf     [r]
-#rsuf -> start     [:]
-#start -> rdel     [:r]
-#rdel -> r=.r      [:=]
-#r=.r -> stem      [n;l;n:r]
-#rsuf -> r=        [:=]
-#r= -> stem        [X-r,n,l;V]
+# nsuf back to start
+nsuf -> Csuf       [X-n]
+nsuf -> del_e   [:e]      [sn=1]
+nsuf -> e       [e]
+nsuf -> o       [o]
+nsuf -> aE.     [A:E]
+nsuf -> E       [E]
+nsuf -> Vsuf     [V-e,o,i,E]
+nsuf -> a.i     [A:i]
+# other i
+nsuf -> i       [i]
+nsuf -> ai.     [E:i]
 
-# only perfective (-e, -ec)
-start -> del_e   [:e]      [sn=1]
-start -> e       [e]
-e -> start       [:]
 e -> e=          [:=]
 e= -> stem        [X;V-a,e]
 del_e -> del_e=  [:=]
 del_e= -> stem    [a;e]
+
+# e back to start
+e -> Csuf       [X-n]
+e -> nsuf     [n]
+e -> ndel     [_:n]
+
 # benemam; seTemam; SKIP FOR GENERATION
-#e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
+e= -> stem        [:a;:e]  [sn=2,sp=3,sg=f]
 
-e -> eb          [b:]      [sn=2,sp=3,sg=f]
-eb -> eb=        [:=]
-# seTebemam; weTebemam
-eb= -> stem      [e;e:a]
-eb= -> eb=e      [:e]
-# srabemam
-eb=e -> stem     [a]
+# o back to start
+o -> Csuf       [X-n]
+o -> nsuf     [n]
+o -> ndel     [_:n]
 
-start -> o       [o]
-o -> start       [:]
-o -> ob          [b:]      [sn=2,sp=3,sg=m]
-ob -> ob=        [:=]
-# seTebom; weTebom
-ob= -> stem      [e;e:a]
-ob= -> ob=e      [:e]
-# srabom
-ob=e -> stem      [a]
 o -> o=          [:=]
 o= -> stem        [X;V-a,e]
 # benom; seTom
 o= -> stem        [:a;:e]
 
-start -> aE.     [A:E]
-start -> E       [E]
-E -> start       [:]
+# E back to start
+E -> Csuf       [X-n]
+E -> nsuf     [n]
+E -> ndel     [_:n]
+
 E -> E=          [:=]
-#
 E= -> stem        [X;:e]
 aE. -> a.E        [:=]
 a.E -> stem       [:a]
 
 E -> Csuf         [:e]
 E -> yE           [y:]
-# yE -> start     [a;o;E]
 yE -> a           [a]
 yE -> o           [o]
 yE -> E           [E]
@@ -83,23 +105,25 @@ iyE -> start      [X]
 E -> iE           [y:i]
 iE -> o           [o]
 
-start -> Vsuf     [V-e,o,i,E]
 Vsuf -> V=        [:=]
 V= -> stem        [X;V]
-Vsuf -> start     [:]
 
-# ai -> A within suffix ema+i (only possibility?
-start -> a.i     [A:i]
+# Vsuf back to start
+Vsuf -> Csuf       [X-n]
+Vsuf -> nsuf     [n]
+Vsuf -> ndel     [_:n]
+
 a.i -> start     [:a]
-# other i
-start -> i       [i]
 # vowel other than a possible?
-i -> start       [:]
+
+# i back to start
+i -> Csuf       [X-n]
+i -> nsuf     [n]
+i -> ndel     [_:n]
+
 i -> i=          [:=]
 i= -> stem        [X;V-e]
-start -> ai.     [E:i]
 ai. -> a.i       [:=]
-# ei -> E (semWE)
 a.i -> stem       [:e]
 
 ## stem and prefix
@@ -124,6 +148,11 @@ r2n -> =r2n     [:=]
 =r2n -> pre     [:n]
 r -> =r         [:=]
 =r -> pre       [X-n;V]
+
+# n=w -> mbW (optional); ኣምᎄጣ / ኣንወጣ
+V -> wbW       [bW:w]
+wbW -> wbW:     [:=]
+wbW: -> pre     [m:n]
 
 stem -> V       [V]
 V -> C          [X-r]

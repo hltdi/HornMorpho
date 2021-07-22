@@ -1,7 +1,7 @@
 ## A
-#Kdr   [root=[+tr,cls=A],vc=[+ps],am=ለበሰ,dup=None];[root=[+tr,cls=A],vc=[+cs],am=ለበሰ,dup=None]
 Kdr   [root=[+tr,cls=A],am=ለበሰ,dup=None]
-rmd   [root=[+tr,cls=A],am=ወደደ,dup=None]
+# Vollmin has jussive የርመድ, so -tr?
+rmd   [root=[-tr,cls=A],am=ወደደ,dup=None]
 kbd   [root=[+tr,cls=A],am=ከበደ,dup=None]
 rKb   [root=[+tr,cls=A],am=አገኘ,dup=None]
 sbr   [root=[+tr,cls=A],am=ሰበረ,dup=None]
@@ -30,6 +30,7 @@ Tb.T  [root=[+tr,cls=A],dup=None,am=ያዘ]
 # reduplicated
 qff   [root=[+tr,cls=A],dup=1]
 brr   [root=[-tr,cls=A],dup=1,am=brr]
+fz.z   [root=[-tr,cls=A],dup=1,am=ተሻለ]
 ## weak
 # final
 smh   [root=[+tr,cls=A],am=ሰማ,dup=None]
@@ -46,7 +47,8 @@ sfy   [root=[+tr,cls=A],dup=None]
 sKy   [root=[+tr,cls=A],dup=None]
 bKy   [root=[+tr,cls=A],am=አለቀሰ,dup=None]
 qmy   [root=[-tr,cls=A],dup=None,am=አመመ,vc=[+ps]]
-rgy   [root=[-tr,cls=A],dup=None,am=ወረወረ,tm=imf];[root=[-tr,cls=A],dup=None,am=ወረወረ,tm=j_i]
+rgy   [root=[+tr,cls=A],dup=None,am=ወረወረ,tm=imf];[root=[+tr,cls=A],dup=None,am=ወረወረ,tm=j_i]
+rTy   [root=[+tr,cls=A],dup=None,am=ነጨ]
 # *ry
 # (these are not all really transitive, but it seems needed to get right: is qr^ -> qy)
 qry   [root=[+tr,cls=A],am=ጠፋ,dup=None]
@@ -159,16 +161,17 @@ qrhy   [root=[cls=E],am=ቆየ,dup=None]
 wrhy   [root=[cls=E],am=ወረደ,dup=None]
 # reduplicated
 qmTT   [root=[cls=E],dup=1]
-drzz   [root=[cls=E],dup=1]
+drz.z   [root=[cls=E],dup=1]
 frqq   [root=[cls=E],dup=1]
 nkbrr  [root=[cls=F],dup=1,am=ተንከባለለ]
+# nznz   [root=[cls=E],dup=2]
 fqfq   [root=[cls=E],dup=2]
 rsrs   [root=[cls=E],dup=2]
-zrzr   [root=[cls=E],dup=2]
+zrz.r   [root=[cls=E],dup=2]
 srsr   [root=[cls=E],dup=2]
 ktkt   [root=[cls=E],dup=2]
 gmgm   [root=[cls=E],dup=2]
-ngbgb  [root=[cls=E],dup=2]
+ngbg.b  [root=[cls=E],dup=2]
 nqrqr  [root=[cls=E],dup=2,am=ተንቀሳቀሰ]
 dgd.g  [root=[cls=E],dup=2]
 shsh   [root=[cls=E],dup=2]

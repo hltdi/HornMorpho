@@ -1,11 +1,14 @@
+## Actually palatalize consonants and vowels followed by ^
+## and labialize consonants followed by @
+
 -> start
 
-start -> start     [X;e;E;a;I;o;A;i;u;*;=]
+start -> start     [X;V;*;=]
 
 start -> pal       [:^]
 
 # also palatalize labialized consonsants
-pal -> start       [c:t;C:T;j:d;x:s;Z:z;kY:k;gY:g;KY:K;qY:q;y:r;kY:kW;gY:gW;KY:KW;qY:qW]
+pal -> start       [c:t;C:T;j:d;x:s;Z:z;kY:k;gY:g;KY:K;qY:q;y:r;y:l;kY:kW;gY:gW;KY:KW;qY:qW]
 
 pal -> start       [i:I;E:e;A:a]
 # n stays the same
@@ -19,6 +22,7 @@ lab -> start       [pW:p;mW:m;fW:f;kW:k;gW:g;KW:K;qW:q]
 # b -> w except when word-initial
 lab -> b_w         [w:b]
 b_w -> start       [XX]
+b_w -> pal         [:^]
 b_w -> b_w=        [=]
 b_w= -> start      [XX]
 # b -> bW when it's word initial

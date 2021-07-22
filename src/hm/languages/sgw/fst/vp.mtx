@@ -1,37 +1,37 @@
 ## Final suffixes
 $ prag
   --      [-x,-m]
-  m       [+m,-mconv,-x]
-  x       [+x,-mconv,-m]
+  m       [+m,-M,-x]
+  x       [+x,-M,-m]
 
 $ compound_link
   # alternative to separate word bane
   --      [-cmpd,-link]
-  ab      [+cmpd,-mconv]
-  at      [+link,+mconv,-cmpd]
-  enat    [+link,+mconv,-cmpd]
+  ab      [+cmpd,-M]
+  at      [+link,+M,-cmpd]
+  enat    [+link,+M,-cmpd]
 
 $ rel_def
   # 3 pers pronouns as definite suffixes; not sure where this goes??
   --    [-def,sub=y];[sub=b|t|None]
-  tKW   [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-mconv]
-  atKW  [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-mconv]
-  atKY  [sub=y,+def,sp=3,sn=1,sg=f,-cmpd,-mconv]
-  onK   [sub=y,+def,sp=3,sn=2,sg=m,-cmpd,-mconv]
-  amenK [sub=y,+def,sp=3,sn=2,sg=f,-cmpd,-mconv]
+  tKW   [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-M]
+  atKW  [sub=y,+def,sp=3,sn=1,sg=m,-cmpd,-M]
+  atKY  [sub=y,+def,sp=3,sn=1,sg=f,-cmpd,-M]
+  onK   [sub=y,+def,sp=3,sn=2,sg=m,-cmpd,-M]
+  amenK [sub=y,+def,sp=3,sn=2,sg=f,-cmpd,-M]
 
 $ prep_conj
-  --    [tm=prf,pos=vp,sub=t|b|y,-caus,-mconv,-comp];[tm=prf,pos=vp,+neg,-caus,-mconv,-comp];[tm=prf,pos=vp,+copex,-comp]
-  E     [tm=prf,pos=vp,sub=y,+caus,-comp,-mconv]
-  ameK  [tm=prf,pos=vp,sub=y,-caus,-mconv,+comp]
-  # m is main verb or converb marker
-  m     [tm=prf,pos=vp,sub=None,-neg,-caus,-comp,-mconv,-copex];[tm=prf,pos=vp,sub=None,+mconv,-comp]
+  --    [tm=prf,pos=vp,sub=t|b|y,-caus,-M,-comp];[tm=prf,pos=vp,+neg,-caus,-M,-comp];[tm=prf,pos=vp,+copex,-comp]
+  E     [tm=prf,pos=vp,sub=y,+caus,-comp,-M]
+  ameK  [tm=prf,pos=vp,sub=y,-caus,-M,+comp]
+  # m is main verb or converb marker (+M)
+  m     [tm=prf,pos=vp,sub=None,+M,-comp] #;[tm=prf,pos=vp,sub=None,-neg,-caus,-comp,-M,-copex]
 
 $ obj_suff
   # 1p sbj + 1sm acc obj = nE (ne + i)
   --    [sp=1,op=None,on=1];[sp=2,op=None,on=1];[sp=3,op=None,on=1];[sp=1,sn=2,op=3,on=1,og=m,ot=a]
   # 3sm light object; 1s heavy object
-  n     [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=f,op=1,on=1,ot=a];[sn=2,op=1,on=1,ot=a];[sp=None,sn=None,op=1,on=1,ot=a]
+  n4    [sp=1|3,sn=1,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=m,op=3,on=1,og=m,ot=a];[sp=2,sn=1,sg=f,op=1,on=1,ot=a];[sn=2,op=1,on=1,ot=a];[sp=None,sn=None,op=1,on=1,ot=a]
   ## 3
   # accusative
   [op=3,on=1,og=m,ot=a]
@@ -145,9 +145,12 @@ $ sbj_suff
   uK    [sp=2,sn=2,sg=m]
   amK   [sp=2,sn=2,sg=f]
   # 3p
-  ame   [sp=3,sn=2,sg=f]
-  o     [sp=3,sn=2,sg=m]
-  --    [sp=None,sn=None,sg=None];[sp=1,sn=1,sg=m,op=2];[sp=3,sn=1,sg=m,op=1,on=1,ot=a]
+  ame3  [sp=3,sn=2,sg=f]
+  o3    [sp=3,sn=2,sg=m]
+  # impersonal
+  314   [sp=None,sn=None,sg=None]
+  # no subject suffix: impersonal malefactive, 1s with 2 ob, 3sm with 1s acc object
+  --    [sp=1,sn=1,sg=m,op=2];[sp=3,sn=1,sg=m,op=1,on=1,ot=a]
 
 ## Boundary separating stem from suffixes
 $ bound2
@@ -155,7 +158,7 @@ $ bound2
 
 $ stem
   +vp_irr_stem+    [-copex]
-  +copex+          [vc=[-ps,-cs],root=[-tr,cls=A],dup=None,as=None,-mconv,-caus,-cmpd,+copex]
+  +copex+          [vc=[-ps,-cs],root=[-tr,cls=A],dup=None,as=None,-M,-caus,-cmpd,+copex]
   >>vp_stem<<
 
 ## Boundary separating prefixes from stem
@@ -163,8 +166,8 @@ $ bound1
   =
 
 $ negative
-  na [+neg,-proh,-copex]
-  nI [+neg,+proh,-copex]
+  na [+neg,-proh,-copex,-M]
+  nI [+neg,+proh,-copex,-M]
   -- [-neg,-proh];[+neg,-proh,+copex]
 
 $ subord

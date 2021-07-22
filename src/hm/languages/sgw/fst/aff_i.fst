@@ -9,11 +9,13 @@ start -> nosuf   [:=]
 # stem ending in y
 nosuf -> C.y=    [i:y]
 nosuf -> V.y=    [:y]
+# stem ending in vowel or consonant other than y
 nosuf -> stem    [X-y;V]
 # go to stem consonant (this could be the only remaining segment in the stem,
 # as in ye=Ki)
 C.y= -> C         [X]
-V.y= -> stem     [A:a;E:e]
+# stem ending in Vy; change vowel
+V.y= -> V         [A:a;E:e]
 
 # C in suffix
 start -> Csuf     [X]
@@ -31,45 +33,30 @@ Csuf -> i         [i]
 Csuf -> E         [E]
 Csuf -> o         [o]
 Csuf -> u         [u]
+# a (or I?) or in suffix
 Csuf -> Vsuf      [V-u,e,o,i,E]
 
 # V in suffix
 start -> e        [e]
-suf -> e          [e]
 e -> Csuf         [X]
 e -> e=           [:=]
 e= -> stem        [X;V-a,e,E,i]
 # y=berema, ye=sTE=ema -> ye=STema??
 e= -> stem        [:a;:E;:i]   [sn=2,sg=f]
 
-# ye=sTebema
-e -> eb           [b:]         [sn=2,sp=3,sg=f]
-eb -> eb=         [:=]
-# y=seTe=bema, y=cone=bema
-eb= -> stem       [e;e:a]
-
 start -> o        [o]
-suf -> o          [o]
 o -> Csuf         [X]
-o -> ob           [b:]
-ob -> ob=         [:=]
-# y=seTebo, y=conebo
-ob= -> stem       [e;e:a]
 o -> o=           [:=]
-o= -> stem        [X;V-a,e,E,i]
-# y=beno
-o= -> stem        [:a]
+o= -> stem        [X;V-a,e,E,i;:a]
 o -> oy           [y:]
 oy -> oy=         [:=]
 # ye=sTe=o -> ye=sTeyo?? ; ye=qi -> ye=qyo
 oy= -> stem       [e;e:E;:i]
 
 start -> aE.      [A:E]
-suf -> aE.        [A:E]
 start -> E        [E]
-suf -> E          [E]
 # delete e before final E
-E -> suf          [V-e;:e]
+E -> Vsuf         [V-e;:e]
 E -> Csuf         [X]
 E -> E=           [:=]
 E= -> stem        [X;:e]
@@ -85,24 +72,21 @@ CyE -> Csuf       [X]
 CyE -> CyE=       [:=]
 CyE= -> C         [X]
 # WHAT ABOUT u IN SUFFIXES?
-yE -> suf         [u]
+yE -> u           [u]
 E -> iE           [y:i]
 # ybroyE
 iE -> o           [o]
 
-start -> Vsuf     [V-u,e,o,i,E]
-suf -> Vsuf       [V-u,e,o,i,E]
+start -> Vsuf     [a;A]
 Vsuf -> V=        [:=]
 V= -> stem        [X;V]
-Vsuf -> suf       [:]
+Vsuf -> Csuf      [X]
 
 start -> u        [u]
-suf -> u          [u]
 u -> Csuf         [X]
 u -> u=           [:=]
 u= -> C           [X]
 start -> uw       [w:u]
-suf -> uw         [w:u]
 uw -> E           [E]
 uw -> o           [o]
 uw ->  i          [i]
@@ -111,22 +95,22 @@ uw -> u           [u]
 uw -> uw=         [:=]
 uw= -> V          [V]
 
+# i in suffix
 # ai -> A within suffix ema+i (only possibility?
 start -> a.i     [A:i]
-suf -> a.i       [A:i]
-a.i -> suf       [:a]
-# other i
+a.i -> Vsuf      [:a]
 start -> i       [i]
-suf -> i         [i]
-# vowel other than a possible?
-i -> suf         [:]
+i -> Csuf        [X]
+# i following stem boundary
 i -> i=          [:=]
-i= -> stem       [X;V-e]
+i= -> stem       [X;o;u;a;A]
+# tsebi=i -> tsebiyi; qeyE=i -> qeyEyi (qeyeyi?)
+i= -> iy=i       [y:]
+iy=i -> stem     [i;E;e]
 start -> ei.     [E:i]
-suf -> ei.       [E:i]
 ei. -> e.i       [:=]
 # ei -> E (ysemWE)
-e.i -> V        [:e]
+e.i -> V         [:e]
 
 ## stem and prefix
 
@@ -167,9 +151,8 @@ V -> =V         [:=]
 =V -> a.y=      [:y]
 =V -> end       [y]
 
-suf -> stem     [:=]
-
 pre -> pre      [X;V]
+
 =r2n ->
 =C ->
 =V ->

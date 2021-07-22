@@ -211,8 +211,8 @@ D.CVCo -> pre_n    [CC-LL]
 E.y -> E.yV         [:]
 
 # C3
-E.CV -> E.CV/       [:.]
-E.CV -> E.CV/       [/:]
+# delete . indicating no gemination or introduce gemination character
+E.CV -> E.CV/       [:.;/:]
 E.CV/ -> E.CVC       [AA]
 # *rhy (without palatalization)
 # this eventually gets deleted (before plural or impersonal suffixes), but seems to be needed anyway

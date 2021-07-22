@@ -17,8 +17,9 @@ start -> .c        [:y]    [sp=2|3,sn=2];[sp=None]
 start -> .y        [:y]    [sp=1];[sn=1]
 
 .h -> .cv          [a:]
-.c -> .cv          [e:]   [vc=[+ps,-cs]];[vc=[-cs],root=[-tr]]
-.c -> .cv          [:]    [vc=[-ps],root=[+tr]];[vc=[+cs]]
+.c -> .cv          [e:]   [vc=[+ps,-cs]];[vc=[-cs],root=[-tr,cls=A]]
+# cls A "transitive" (yesbr) and causative (yasbr); other classes (non-passive)
+.c -> .cv          [:]    [vc=[-ps],root=[cls=A,+tr]];[vc=[+cs]];[vc=[-ps],root=[cls=B|C|D|E|F]]
 
 ## get the class
 .cv -> A.cv        [:]    [root=[cls=A]];[root=[cls=Ap],vc=[-ps]];[root=[cls=Ap],vc=[-cs]]
@@ -247,23 +248,22 @@ E.CVjB -> E.CVCVCV  [a:h]
 }# end of special rules for j_i, dup=2
 
 # C3
-E.CVn -> E.CV/       [:.]
-E.CVn -> E.CV/       [:]
+# no gemination here for j_i, just drop the .
+E.CVn -> E.CV/       [:.;:]
 E.CV/ -> E.CVC       [AA]
-# *rhy (without palatalization)
-E.CVn -> E.CVh       [:h]
+# *rhy (without palatalization): yeqer<e>
+E.CVn -> E.CVh       [e:h]
 # this eventually gets deleted (before plural or impersonal suffixes), but seems to be needed anyway
-# C2 is always r
+# C2 is always r: yeqe<r>e
 E.CVh -> E.CVCVC     [r]
 
 # ***y
 E.yV -> E.yv^       [^:]
 # assumes all have a velar or coronal as C3
-E.yv/ -> E.CVC      [KK;DD]
 E.yv^ -> E.CVC      [KK;DD]
-# *rhy (the e was already inserted)
+# *rhy: yeqey<e>
 E.yV -> E.yVh       [e:h]
-# palatalized r
+# *rhy: palatalized r, yeqe<y>e
 E.yVh -> E.CVCVC    [y:r]
 
 # V2: always a for class F, e or 0 for class E

@@ -11,6 +11,9 @@ r2l
 # 0: prefix for character that may be deleted
 # *: e deleted when preceded by a prefix
 # =: stem boundary
+# 3: -eb +o/+ma (3p, imp)
+# 1: palatalization (imp)
+# 4: labialization (imp and 3smo)
 
 ## Stringsets
 # All vowels
@@ -42,7 +45,7 @@ KK = {g, k, K, q}
 # labialized consonants
 UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
-% = {@, ^, 0, =}
+% = {@, ^, 0, =, 3, *, 1, 4}
 
 # Delete gemination character
 >del_epgem<
@@ -52,7 +55,10 @@ UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 #{ Palatalization and labialization
 >labpal2<
 >dupfeat<
->labpal1p<
+>lab<
+>pal<
 #}
+# -ebo, -ebema (3p and impersonal following vowels)
+>eb3<
 # Morphotactics
 >vp.mtx<

@@ -128,7 +128,8 @@ a -> a/             [/:]
 # first stem vowel: e for perfective, imperfective, gerundive except transitive, jussive/imperative passive or causative
 -3V -> -2A          [e:]      [tm=prf];[tm=ger,vc=smp];[tm=ger,vc=ps];[tm=ger,vc=cs];[tm=imf];[tm=j_i,vc=ps];[tm=j_i,vc=cs]
 # no first stem vowel in other cases: gerundive transitive, jussive/imperative simplex or transitive
--3V -> -2A          [:]       [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
+# (use I here to prevent gemination when C1=C2, as in እንሽሽ)
+-3V -> -2A          [I:]       [tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=ger,vc=tr]
 # C1: all root consonants except L (treated separately below)
 -3 -> -3V           [X/L]
 # C1=L ('); no transitive voice possible

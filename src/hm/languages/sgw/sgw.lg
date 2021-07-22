@@ -243,12 +243,11 @@ feats:
   {sub} (t): clause type = subordinate te+
   {sub} (b): clause type = subordinate be+
   {sub} (y): clause type = subordinate ye+
-  {sub, mconv} (None, False): clause type = main
-  {sub, mconv} (None, True): clause type = subordinate, m-converb
+  {M} (True): clause type = main or m-converb
 
   *caus = False | True
   *cmpd = False | True
-  *mconv = False | True
+  *M = True | False
   *link = False | True
   *m = False | True
   *x = False | True
@@ -259,7 +258,7 @@ feats:
   *def = False | True
   {caus} (True): = +causative
   {cmpd} (True): = +compound_perf
-#  {mconv} (True): converb = m
+#  {M} (True): converb = m
   {link} (True): link = True
   {m} (True): conj = +m
   {x} (True): conj = +sh
@@ -359,15 +358,17 @@ feats:
 
   *x = False | True
   *m = False | True
-  *mconv = False | True
+#  *M = False | True
   *cmpd = False | True
   *purp = False | True
   *clft = False | True
   *link = False | True
   *comp = False | True
+  *mconv = False | True
   {x} (True): = conj -sh
   {m} (True): = conj -m
-  {mconv} (True): clause type = subordinateinate, m-converb
+  {mconv} (True): converb = +m
+#  {M} (True): clause type = subordinate, m-converb
   {cmpd} (True): = compound impf
   {purp} (True): = purposive
   {clft} (True): = cleft
@@ -461,11 +462,13 @@ feats:
 
   *tconv = False | True
   *mconv = False | True
+#  *M = False | True
   *m = False | True
   *x = False | True
   *link = False | True
-  {tconv} (True): converb = -t
-  {mconv} (True): converb = -m
+  {mconv} (True): converb = +m
+  {tconv} (True): converb = +t
+#  {M} (True): converb = +m
   {m} (True): conj = -m
   {x} (True): conf = -sh
   {link} (True): = +link

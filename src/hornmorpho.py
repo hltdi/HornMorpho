@@ -195,6 +195,10 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
             print(index, s, f)
     else:
         return casc[start_i].inverted().transduce(s, f, seg_units=seg_units, timeout=10)
+    
+def time(code, times=1):
+    import timeit
+    return timeit.timeit(code, number=times)
 
 ## shortcuts
 FS = hm.morpho.FeatStruct
