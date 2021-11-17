@@ -5,7 +5,7 @@ seg: a e i o u E I A
      b bW c C d f fW g gW gY h j
      k kW kY K KW KY l m mW n p pW q qW qY r s
      S t T w x xW xY y z Z
-     B D F | % . * ^ /
+     B D F | % . * ^ / _
 
 feats:
 
@@ -56,7 +56,7 @@ feats:
   {cnj} (K): conj = x
   {cnj} (a): conj = a
 
-  prep (preposition) = None | ye | be | te
+  prep (preposition) = *None | ye | be | te
 
   *plr = False | True
 
@@ -93,8 +93,23 @@ feats:
   {pp, pn, pg} (3, 2, m): possessor = 3 pers plur mas
   {pp, pn, pg} (3, 2, f): possessor = 3 pers plur fem
 
-  *cp = 0 | 3
-  {cp} (3): = cop
+  *cp = 0 | 1 | 2 | 3
+  *cn = 1 | 2
+  *cg = m | f
+  {cp, cn} (1, 1): cop = 1 pers sing
+  {cp, cn} (1, 2): cop = 1 pers plur
+  {cp, cn, cg} (2, 1, m): cop = 2 pers sing mas
+  {cp, cn, cg} (2, 1, f): cop = 2 pers sing fem
+  {cp, cn, cg} (2, 2, m): cop = 2 pers plur mas
+  {cp, cn, cg} (2, 2, f): cop = 2 pers plur fem
+  {cp, cn, cg} (3, 1, m): cop = 3 pers sing mas
+  {cp, cn, cg} (3, 1, f): cop = 3 pers sing fem
+  {cp, cn, cg} (3, 2, m): cop = 3 pers plur mas
+  {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
+
+  *tns = None | prs | pst
+  {tns} (prs): = +prs
+  {tns} (pst): = +pst
 
   vc (voice) = ps (passive) = False | True;
                cs (causative) = False | True
@@ -111,7 +126,7 @@ feats:
   {cnj} (K): conj = x
   {cnj} (a): conj = a
 
-  preposition = None | ye | be | te
+  prep (preposition) = *None | ye | be | te
 
   *goal = False | True
   *sim = False | True

@@ -1,6 +1,15 @@
 $ cop
-  u    [cp=3]
-  --   [cp=0]
+  eKn  [cp=2,cn=1,cg=m,tns=prs]
+  KYn  [cp=2,cn=1,cg=f,tns=prs]
+  u    [cp=3,cn=1,cg=m,tns=prs]
+  ayn  [cp=3,cn=1,cg=f,tns=prs]
+  edn  [cp=1,cn=2,tns=prs]
+  uKn  [cp=2,cn=2,cg=m,tns=prs]
+  amKn [cp=2,cn=2,cg=f,tns=prs]
+  or   [cp=3,cn=2,cg=m,tns=prs]
+  amer [cp=3,cn=2,cg=f,tns=prs]
+  ab   [cp=1|2|3,tns=pst]
+  --   [cp=0,tns=None]
 
 $ prag_conv
   x       [cnj=x]
@@ -54,8 +63,8 @@ $ bound1
   =
 
 $ we
-  ew [tp=we,pos=inf]
-  -- [tp=ot,pos=inf]
+  ew [tp=we,pos=inf,tm=inf]
+  -- [tp=ot,pos=inf,tm=inf]
 
 $ prep
   ey [prep=ye]

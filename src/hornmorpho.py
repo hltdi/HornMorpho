@@ -26,6 +26,13 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 import hm
 
+def conv_amh_words():
+    with open("hm/languages/amh/lex/words.lex") as infile:
+        with open("hm/languages/amh/lex/words1.lex", 'w') as outfile:
+            for line in infile:
+                word, pos, root = line.strip().split()
+                print("{} {} {}".format(word, root, pos), file=outfile)
+
 ##def hmtest():
 ##    for word in words:
 ##        print(word, hm.anal('amh', word))

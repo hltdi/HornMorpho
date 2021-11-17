@@ -54,8 +54,8 @@ $ bound1
   =
 
 $ we
-  ew [tp=we,pos=inf]
-  -- [tp=ot,pos=inf]
+  ew [tp=we,pos=inf,tm=inf]
+  -- [tp=ot,pos=inf,tm=inf]
 
 $ prep
   ey [prep=ye]

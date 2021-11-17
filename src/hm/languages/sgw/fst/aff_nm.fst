@@ -71,8 +71,8 @@ A.suf -> VsufV.    [w:u;:a]
 A.suf -> Asuf.E    [y:]
 Asuf.E -> VsufV.   [E]
 XE.suf -> VsufV.   [o:u;a;E]
-# actually a GEMINATED n
-XR.suf -> suf      [n]
+# actually a GEMINATED n or l
+XR.suf -> suf      [n;l:r]
 C.suf -> suf       [X]
 R.suf -> suf       [X-n]
 V.suf -> suf       [X]

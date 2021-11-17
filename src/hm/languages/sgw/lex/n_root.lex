@@ -1,3 +1,26 @@
+# some adjectives
+# really In_m
+In_m   [am=ሁሉ,-plr,-fem]
+bWcr   [am=ልዩ,-plr,-fem]
+zEga   [am=ድሃ,-plr,-fem]
+dengene [am=ሃብታም,-plr,-fem]
+kene   [am=ቀኝ,-plr,-fem]
+gWra   [am=ግራ,-plr,-fem]
+merkama [am=ቆንጆ,-plr,-fem]
+qsr    [am=ትንሽ,-plr,-fem]
+rq     [am=ትልቅ,-plr,-fem]
+rqye   [am=ትልቅ,-plr,-fem]
+Irs    [am=ትንሽ,-plr,-fem]
+Irsye  [am=ትንሽ,-plr,-fem]
+Tereq  [am=ደረቅ,-plr,-fem]
+geder  [am=አዲስ,-plr,-fem]
+bett   [am=ሰፊ,-plr,-fem]
+gEf    [am=ረጅም,-plr,-fem]
+mWeq   [am=ሙቅ,-plr,-fem]
+ziza   [am=ቀዝቃዛ,-plr,-fem]
+# postpositional nouns
+# nouns proper
+qar    [am=ነገር,-fem,-plr]
 bEt    [am=ቤት,-fem,-plr]
 dewe   [am=ዘመድ,-fem,-plr]
 erc    [-fem,am=ወንድልጅ,-plr]

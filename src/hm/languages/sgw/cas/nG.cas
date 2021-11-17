@@ -16,9 +16,9 @@ r2l
 # All vowels
 V = {a, e, E, i, I, o, u, *, A, O}
 # All segments possible in verbs
-XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+XX = {a, e, E, i, I, o, u, *, A, O, b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, _}
 # All consonants possible in verbs (even if not realized, like h)
-X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, _}
 # labial consonants
 BB = {b, f, m, p, w, bW, fW, mW, pW}
 # non-labialized labial root consonants
@@ -36,8 +36,10 @@ KK = {g, k, K, q}
 # labialized consonants
 UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
 ## Non-phonetic/orthographic characters
-% = {@, ^, 0, =}
+% = {@, ^, 0, =, _}
 
+>del_epgem<
+>rn<
 # Vowel combinations
 >aff_n<
 #{ Palatalization and labialization
