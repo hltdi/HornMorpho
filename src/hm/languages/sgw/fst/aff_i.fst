@@ -150,6 +150,9 @@ V -> =V         [:=]
 =V -> pre       [V-e;X-y]
 =V -> a.y=      [:y]
 =V -> end       [y]
+=V -> .y=V      [y]
+.y=V -> .iy=V   [i:]
+.iy=V -> end    [t;b]
 
 pre -> pre      [X;V]
 

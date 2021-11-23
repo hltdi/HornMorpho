@@ -20,7 +20,7 @@ Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021.
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-__version__ = '4.1'
+__version__ = '4.2'
 __author__ = 'Michael Gasser'
 
 from . import morpho
