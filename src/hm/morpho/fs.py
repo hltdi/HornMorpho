@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2018, 2020.
+    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2018, 2020, 2021.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -320,6 +320,61 @@ class FeatStruct(FS):
         if not isinstance(path[-1], str):
             raise TypeError('Expected str or tuple of str.  Got %r.' % path)
         return val, path[-1]
+
+    # Added 2021.11
+    # Feature conversion.
+    # Converting from one feature representation to another.
+    # Given an unfrozen FeatStruct self, and old sub-FeatStruct and a new FeatStruct,
+    # change the old to the new in fs.
+
+    def featconv1(self, oldsub, newsub, replace=False, verbose=False):
+        '''
+        Convert one FS to another in self.
+        '''
+#        if self._frozen: raise ValueError(self._FROZEN_ERROR)
+        if verbose:
+            print("featconv1: converting {}: old {}, new {}".format(
+                  self.__repr__(), oldsub.__repr__(), newsub.__repr__())
+                  )
+        if simple_unify(self, oldsub) != 'fail':
+            self.update(newsub)
+            if replace:
+                for oldf in oldsub:
+                    # delete features in old that are not in new
+                    if oldf not in newsub and oldf in self:
+                        del self[oldf]
+
+    def featconv(self, subFSs, replace=True, unfreeze=True,
+                 refreeze=True, skipcheck=True, verbose=False):
+        '''
+        Convert a list of old subFS - new subFS pairs in self.
+        If replace is True, get rid of the features in the old subFSs
+        that are not also in the new subFSs.
+        '''
+        if self._frozen:
+            if unfreeze:
+                fs = self.unfreeze()
+            else:
+                raise ValueError(self._FROZEN_ERROR)
+        else:
+            fs = self
+        for oldsub, newsub in subFSs:
+            if verbose:
+                print("featconv: oldsub {}, newsub {}".format(
+                      oldsub.__repr__(), newsub.__repr__())
+                      )
+            if skipcheck and all([(f not in oldsub and f in fs) for f in newsub]):
+                # New feature already set, skip this pair
+                continue
+            fs.featconv1(oldsub, newsub, False)
+        if replace:
+            for oldsub, newsub in subFSs:
+                for oldf in oldsub:
+                    if oldf not in newsub and oldf in fs:
+                        del fs[oldf]
+        if refreeze:
+            fs.freeze()
+        return fs
 
     ##////////////////////////////////////////////////////////////
     #{ Equality & Hashing

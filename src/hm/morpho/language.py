@@ -116,6 +116,9 @@ POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
 PROCROOT_RE = re.compile(r'\s*procroot.*?:\s*(.*)')
 POSTPOSTPROC_RE = re.compile(r'\s*postpostproc.*?:\s*(.*)')
 GEMINATION_RE = re.compile(r'\s*gem.*?:\s*.*')
+# Added 2021.11.24
+FEATNORM_RE = re.compile(r'\s*feat.*?norm.*?:\s*(.*)')
+#FEATCONV1_RE = re.compile(r'\s*(.*)\s*->\s*(.*)')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -203,6 +206,8 @@ class Language:
         self.um = UniMorph(self)
         # Mapping from internal phone repr to standard repr
         self.phone_map = {}
+#        # Feature normalization
+#        self.featnorm = {}
         self.read_phon_file()
 
     def __str__(self):
@@ -333,7 +338,7 @@ class Language:
     def load_data(self, load_morph=False,
                   pickle=True,
                   segment=False, phon=False, guess=True, simplified=False,
-                  poss=None, verbose=False):
+                  poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
@@ -376,6 +381,7 @@ class Language:
 
         seg = []
         punc = []
+        featnorm = []
         abbrev = {}
         fv_abbrev = {}
         trans = {}
@@ -419,6 +425,13 @@ class Language:
 
             # Ignore empty lines
             if not line: continue
+
+            m = FEATNORM_RE.match(line)
+            if m:
+                current = 'featnorm'
+                fcpos = m.group(1).strip()
+                featnorm.append([fcpos])
+                continue
 
             # Beginning of segmentation units
             m = SEG_RE.match(line)
@@ -719,7 +732,19 @@ class Language:
                 wd, gls = line.strip().split('=')
                 # Add to the global TDict
                 Language.T.add(wd.strip(), gls.strip(), self.abbrev)
-#                self.trans[wd] = gls.strip()
+
+            elif current == 'featnorm':
+                oldf, newf = line.strip().split('->')
+                oldf = oldf.strip()
+                newf = newf.strip()
+                if oldf[0] != '[':
+                    oldf = '[' + oldf + ']'
+                if newf[0] != '[':
+                    newf = '[' + newf + ']'
+                oldf = FeatStruct(oldf)
+                newf = FeatStruct(newf)
+                featnorm[-1].append((oldf, newf))
+#                print("** oldf {}, newf {}".format(oldf.__repr__(), newf.__repr__()))
 
             else:
                 raise ValueError("bad line: {}".format(line))
@@ -754,6 +779,21 @@ class Language:
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars)
             self.set_morphology(morph)
+
+        if featnorm:
+            # Convert featnorm list to dict
+            # This needs to happen after morphology and POSMorphology
+            # objects are created.
+            if not self.morphology:
+                print("No morphology!")
+            for fn in featnorm:
+                # first element is POS, rest is old-new feature pairs
+                fnpos = fn[0]
+                fnfeats = fn[1:]
+                posmorph = self.morphology.get(fnpos)
+                if not posmorph:
+                    print("No {} posmorph".format(fnpos))
+                posmorph.featnorm = fnfeats
 
     ### Phone representation conversion
     def read_phon_file(self, verbosity=0):
@@ -1240,7 +1280,7 @@ class Language:
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None,
                   root=True, stem=True, citation=True, gram=True,
-                  um=True, gloss=True, phonetic=True,
+                  um=True, gloss=True, phonetic=True, normalize=False,
                   ortho_only=False, lemma_only=False,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
@@ -1259,6 +1299,7 @@ class Language:
         preproc = preproc and self.preproc
         postproc = postproc and self.postproc
         citation = citation and self.citation_separate
+        normalize = normalize and not um
         analyses = []
         to_cache = [] if cache else None
         fsts = fsts or self.morphology.pos
@@ -1288,6 +1329,7 @@ class Language:
                                               show_root=root, citation=citation,
                                               stem=stem, phonetic=phonetic,
                                               ortho_only=ortho_only,
+                                              normalize=normalize,
                                               segment=segment, guess=False,
                                               postproc=postproc, gram=gram,
                                               freq=rank or report_freq)
@@ -1323,6 +1365,7 @@ class Language:
                                                        show_root=root, citation=citation,
                                                        stem=stem, phonetic=phonetic,
                                                        ortho_only=ortho_only,
+                                                       normalize=normalize,
                                                        segment=segment, guess=False,
                                                        postproc=postproc, gram=gram,
                                                        freq=rank or report_freq))
@@ -1330,6 +1373,7 @@ class Language:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment,
+                                                             normalize=False,
                                                              to_dict=to_dict, sep_anals=True,
                                                              verbosity=verbosity)
                         if analysis:
@@ -1340,6 +1384,7 @@ class Language:
                                                            show_root=root, citation=citation and not segment,
                                                            ortho_only=ortho_only,
                                                            segment=segment,
+                                                           normalize=normalize,
                                                            stem=stem, phonetic=phonetic,
                                                            guess=False, postproc=postproc, gram=gram,
                                                            freq=rank or report_freq))
@@ -1358,6 +1403,7 @@ class Language:
                                                    show_root=root,
                                                    citation=citation and not segment,
                                                    ortho_only=ortho_only,
+                                                   normalize=normalize,
                                                    segment=segment, phonetic=phonetic,
                                                    guess=True, gram=gram,
                                                    postproc=postproc,
@@ -1404,6 +1450,7 @@ class Language:
                   phon=False, only_guess=False, guess=True, raw=False,
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False,
                   feats=None, simpfeats=None, um=False,
+                  normalize=False,
                   # Ambiguity
                   rank=True, report_freq=False, nbest=100,
                   report_n=50000,
@@ -1417,6 +1464,7 @@ class Language:
         postproc = postproc and self.postproc
         citation = citation and self.citation_separate
         storedict = True if knowndict != None else False
+        normalize = normalize and not um
         try:
             filein = open(pathin, 'r', encoding='utf-8')
             # If there's no output file and no outdict, write analyses to terminal
@@ -1504,6 +1552,7 @@ class Language:
                                            segment=segment,
                                            root=root, stem=True,
                                            citation=citation and not raw,
+                                           normalize=normalize,
                                            gram=gram, ortho_only=ortho_only,
                                            preproc=False, postproc=postproc and not raw,
                                            cache=cache, no_anal=no_anal, um=um,
@@ -1631,7 +1680,9 @@ class Language:
                         lemma_only=False, ortho_only=False,
                         word_sep='\n',
                         short=False, webdicts=None):
-        '''Convert a list of analyses to a string, and if webdicts, add analyses to dict.'''
+        '''
+        Convert a list of analyses to a string, and if webdicts, add analyses to dict.
+        '''
         if seg:
             if analyses:
                 analyses = [':'.join((a[0], a[1])) for a in analyses]
@@ -1839,6 +1890,7 @@ class Language:
 
     def proc_anal(self, form, analyses, pos, show_root=True,
                   citation=True, ortho_only=False,
+                  normalize=False,
                   segment=False, stem=True, guess=False,
                   postproc=False, gram=True, string=False,
                   freq=True, phonetic=True):
@@ -1883,8 +1935,9 @@ class Language:
             # grammar is a single FS
 #            if not show_root and not segment:
 #                analysis[0] = None
-            if postproc and p in self.morphology and self.morphology[p].postproc:
-                self.morphology[p].postproc(analysis)
+            posmorph = p and p in self.morphology and self.morphology[p]
+            if postproc and posmorph and posmorph.postproc:
+                posmorph.postproc(analysis)
             root_freq = 0
             if freq:
                 # The freq score is the count for the root-feature combination
@@ -1897,9 +1950,8 @@ class Language:
                 else:
                     root_freq = 0.0
             # Find the citation form of the root if required
-            if citation and p and p in self.morphology \
-               and self.morphology[p].citation:
-                cite = self.morphology[p].citation(root, grammar, guess, stem,
+            if citation and posmorph and posmorph.citation:
+                cite = posmorph.citation(root, grammar, guess, stem,
                                                    phonetic=phonetic)
                 if not cite:
                     cite = root
@@ -1912,6 +1964,9 @@ class Language:
                 # Include the grammatical information at the end in case it's needed
             if not show_root:
                 root = None
+            # Normalize features
+            if gram and normalize and posmorph:
+                grammar = posmorph.featconv(grammar)
             results.add((cat, root, cite, grammar if gram else None, grammar, root_freq))
 #        print("results {}".format(results))
         return list(results)
@@ -2168,5 +2223,6 @@ class EESLanguage(EES, Language):
     '''
 
     def __init__(self, abbrev):
+        print("Creating EES language...")
         Language.__init__(self, abbrev)
         EES.__init__(self)

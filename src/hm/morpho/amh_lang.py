@@ -33,6 +33,8 @@ from .utils import segment, allcombs
 from .rule import *
 from .ees import *
 
+print("Loading Amharic data from amh_lang")
+
 ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': "እንድ",
             'm': "ም", 'Inji': "እንጂ", 'na': "ና", 'sa': "ሳ", 's': "ስ", 'ma': "ማ",
             'sIle': "ስለ", 'le': "ለ", 'Iyye': "እየ", 'Iske': "እስከ", 'Inde': "እንደ", 'ke': "ከ", 'be': "በ", 'wede': "ወደ"}

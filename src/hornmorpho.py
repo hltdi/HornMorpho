@@ -26,6 +26,27 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 import hm
 
+# FS conversion
+#FS = hm.morpho.FeatStruct
+#u = hm.morpho.simple_unify
+#f1 = FS("[s=[+p1,-p2,+pl],a=None,v=ps]")
+# convert s=[+p1,+pl] to sp=1, sn=2
+#sf1 = FS("[s=[+p1,+pl]]")
+#sf2 = FS("[sp=1,sn=2]")
+#vf1 = FS("[v=ps]")
+#vf2 = FS("[vc=[+ps,-cs]]")
+#del f1['s']
+#f1.update(FS("[sp=1,sn=2]"))
+
+def convfeat(fs, oldfs, newfs, replace=False):
+    if u(fs, oldfs):
+        # fs unifies with oldf
+        fs.update(newfs)
+        if replace:
+            for oldf in oldfs.keys():
+                del fs[oldf]
+#    return fs
+
 #def conv_amh_words():
 #    with open("hm/languages/amh/lex/words.lex") as infile:
 #        with open("hm/languages/amh/lex/words1.lex", 'w') as outfile:

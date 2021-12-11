@@ -613,6 +613,8 @@ class POSMorphology:
         self.root_proc = None
         # A dictionary from orthographic roots to phonetic roots
         self.ortho2phon = None
+        # Dict specifying feature normalization
+        self.featnorm = []
 
     def __str__(self):
         '''Print name.'''
@@ -1047,7 +1049,7 @@ class POSMorphology:
     def anal(self, form, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
              init_weight=None,
-             to_dict=False, sep_anals=False,
+             to_dict=False, sep_anals=False, normalize=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
         """Analyze form."""
         fst = self.get_fst(generate=False, guess=guess, phon=phon, segment=segment)
@@ -1077,21 +1079,26 @@ class POSMorphology:
                                   init_weight=init_weight, result_limit=40 if guess else 30,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit,
                                   verbosity=verbosity)
-            if sep_anals:
-                anals = self.separate_anals(anals)
+            if sep_anals or normalize:
+                # Normalization requires FeatStructs so separate
+                # anals if it's True
+                anals = self.separate_anals(anals, normalize=normalize)
             if to_dict:
                 anals = self.anals_to_dicts(anals)
             return anals
         elif trace:
             print('No analysis FST loaded for', self.pos)
 
-    def separate_anals(self, analyses):
+    def separate_anals(self, analyses, normalize=False):
         """
         Separate list of root and FSSets into a list of roots and FeatStructs.
+        If normalize is True, also normalize features in each FeatStruct.
         """
         result = []
         for root, anals in analyses:
             for anal in anals:
+                if normalize:
+                    anal = self.featconv(anal)
                 result.append((root, anal))
         return result
 
@@ -1299,6 +1306,20 @@ class POSMorphology:
 #                                                ipa=ipa)
 #            return ortho + "|" + phon
         return orthophon
+
+    # Feature conversion/normalization
+    def featconv(self, fs):
+        '''
+        Convert the FeatStruct fs to a normalized form based on
+        the old subFS, new subFS pairs in subFSs.
+        Unfreeze fs if its frozen, and return the new or updated
+        FeatStruct.
+        '''
+        subFSs = self.featnorm
+        if subFSs:
+            return fs.featconv(subFSs, replace=True, unfreeze=True,
+                               refreeze=True)
+        return fs
 
     def segment(self, word, seg, feature, value, new_value=None):
         """
