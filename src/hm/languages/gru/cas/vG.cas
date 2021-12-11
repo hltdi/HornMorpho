@@ -39,8 +39,8 @@ UU = {gW, kW, KW, qW, mW, bW, fW}
 ## Non-phonetic/orthographic characters
 % = {@, ^, =, /, _}
 
-## Delete epenthetic character
->del_ep<
+## Delete epenthetic and gemination characters
+>del_epgem<
 ## Optionally: nb -> mb
 >mb<
 #### 1 Insert glottal stop before initial vowel

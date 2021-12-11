@@ -40,8 +40,8 @@ UU = {gW, kW, KW, qW, mW, bW, fW}
 % = {@, ^, =, /, _}
 
 # Delete epenthetic and gemination characters
-#>del_epgem<
->del_ep<
+>del_epgem<
+# >del_ep<
 # Optionally: nb -> mb
 >mb<
 ### 1 Insert glottal stop before initial vowel
