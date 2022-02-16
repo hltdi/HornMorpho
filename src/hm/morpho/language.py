@@ -1281,7 +1281,7 @@ class Language:
                   phon=False, segment=False, init_weight=None,
                   root=True, stem=True, citation=True, gram=True,
                   um=True, gloss=True, phonetic=True, normalize=False,
-                  ortho_only=False, lemma_only=False,
+                  ortho_only=False, lemma_only=False, sep_anals=True,
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
@@ -1374,7 +1374,8 @@ class Language:
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment,
                                                              normalize=False,
-                                                             to_dict=to_dict, sep_anals=True,
+                                                             to_dict=to_dict,
+                                                             sep_anals=sep_anals,
                                                              verbosity=verbosity)
                         if analysis:
                             if cache:
@@ -1899,7 +1900,7 @@ class Language:
         analysis tuples.
         If freq, include measure of root and morpheme frequency.
         '''
-        results = set()
+        results = []
         if segment:
             res = []
             for analysis in analyses:
@@ -1950,7 +1951,9 @@ class Language:
                 else:
                     root_freq = 0.0
             # Find the citation form of the root if required
-            if citation and posmorph and posmorph.citation:
+            # This only works if FSSets have been separated into FeatStructs
+            if citation and posmorph and posmorph.citation \
+               and isinstance(grammar, FeatStruct):
                 cite = posmorph.citation(root, grammar, guess, stem,
                                                    phonetic=phonetic)
                 if not cite:
@@ -1967,9 +1970,13 @@ class Language:
             # Normalize features
             if gram and normalize and posmorph:
                 grammar = posmorph.featconv(grammar)
-            results.add((cat, root, cite, grammar if gram else None, grammar, root_freq))
+            newitem = (cat, root, cite, grammar if gram else None, grammar, root_freq)
+            if newitem not in results:
+                results.append(newitem)
+#            results.add((cat, root, cite, grammar if gram else None, grammar, root_freq))
 #        print("results {}".format(results))
-        return list(results)
+#        return list(results)
+        return results
 
     def ortho2phon(self, word, gram=False, raw=False, return_string=False,
                    gram_pre='-- ', postpostproc=False,

@@ -224,7 +224,10 @@ class Morphology(dict):
 #            print('No file frequency file {} found'.format(path))
 
     def set_words(self, filename='words.lex', ortho=True, simplify=False):
-        '''Set the list/dict of unanalyzed words, reading them in from a file, one per line.'''
+        '''
+        Set the list/dict of unanalyzed words, reading them in from a file,
+        one per line.
+        '''
         if not ortho:
             filename = 'words_phon.lex'
         path = os.path.join(self.get_lex_dir(), filename)
@@ -250,7 +253,10 @@ class Morphology(dict):
         return self.analyzed.get(word)
 
     def set_analyzed(self, filename='analyzed.lex', ortho=True, verbose=False):
-        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
+        '''
+        Set the dict of analyzed words, reading them in from a file, one per
+        line.
+        '''
         if not ortho:
             filename = 'analyzed_phon.lex'
         path = os.path.join(self.get_lex_dir(), filename)
@@ -1310,15 +1316,14 @@ class POSMorphology:
     # Feature conversion/normalization
     def featconv(self, fs):
         '''
-        Convert the FeatStruct fs to a normalized form based on
+        Convert the FeatStruct or FSSet fs to a normalized form based on
         the old subFS, new subFS pairs in subFSs.
         Unfreeze fs if its frozen, and return the new or updated
         FeatStruct.
         '''
         subFSs = self.featnorm
         if subFSs:
-            return fs.featconv(subFSs, replace=True, unfreeze=True,
-                               refreeze=True)
+            return fs.featconv(subFSs)
         return fs
 
     def segment(self, word, seg, feature, value, new_value=None):

@@ -27,9 +27,6 @@ featnorm: v
   vc=tr -> vc=[-ps,+cs]
   vc=cs -> vc=[+ps,+cs]
   as=smp -> as=None
-#  +rel,tm=prf -> sub=y
-#  +rel,tm=prs -> sub=y
-#  +rel,tm=pst -> sub=y
 
 featnorm: n
   poss=[-expl] -> pp=0,pn=1,pg=m,-pf

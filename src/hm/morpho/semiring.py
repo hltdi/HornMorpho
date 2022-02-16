@@ -66,6 +66,7 @@ class FSSet(set, FS):
         '''
         Create a feature structure set from items, normally a list of
         feature structures or strings.
+        By default it's frozen.
         '''
         # This may sill be needed for unpickling, when items is a tuple of a list of FeatStructs
         if len(items) > 0 and isinstance(items[0], (list, set)):
@@ -309,9 +310,26 @@ class FSSet(set, FS):
 #        u = [simple_unify(f, FS) for f in l]
 #        return FSSet(*filter(lambda x: x!='fail', u))
 
+    def featconv(self, subFSs, verbose=False):
+        '''
+        Convert a list of old subFS - new subFS pairs in self.
+        If replace is True, get rid of the features in the old subFSs
+        that are not also in the new subFSs.
+        '''
+        fslist = self.unfreeze()
+        result = []
+        for fs in fslist:
+            fs = fs.featconv(subFSs, replace=True, unfreeze=False,
+                             refreeze=True, skipcheck=True,
+                             verbose=verbose)
+            result.append(fs)
+        return FSSet(result)
+
     @staticmethod
     def setfeats(fsset, condition, feature, value):
-        """A new FSSet with feature set to value if condition is satisfied."""
+        """
+        A new FSSet with feature set to value if condition is satisfied.
+        """
         fslist = []
         for fs in fsset:
             if not condition or unify(fs, condition):

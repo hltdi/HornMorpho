@@ -119,9 +119,9 @@ def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
               dont_guess=True, cache='', init_weight=None,
               lemma_only=False, ortho_only=False,
-              normalize=False,
+              normalize=True,
               rank=True, freq=False, nbest=5, um=False,
-              phonetic=True, raw=False,
+              phonetic=True, raw=True,
               pos=[], verbosity=0):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.

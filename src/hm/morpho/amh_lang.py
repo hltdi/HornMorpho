@@ -43,7 +43,8 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
 ### and POSMorphology objects.
 
 def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
-    '''Return the canonical (prf, 3sm) form for the root and featstructs in featstruct fs.
+    '''
+    Return the canonical (prf, 3sm) form for the root and featstructs in featstruct fs.
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
@@ -709,9 +710,9 @@ def postpostproc_root(root, fs, phonetic=True):
     """
     if phonetic:
         root = AMH.convert_root(root)
-    if 'cls' not in fs:
-        print("No cls for {} {}".format(root, fs.__repr__()))
-    return "<{}:{}>".format(root, fs['cls'])
+#    if 'cls' not in fs:
+#        print("No cls for {} {}".format(root, fs.__repr__()))
+    return "<{}:{}>".format(root, fs.get('cls', ''))
 
 def postproc_nroot(root, fs, phonetic=True):
     """

@@ -50,7 +50,7 @@ feats:
   {cp, cn, cg} (3, 2, f): cop = 3 pers plur fem
 
   *cnj = None | m
-  {cnj} (m): conj m
+  {cnj} (m): conj = m
 
   prep = None | ye | be | te
 
