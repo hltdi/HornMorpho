@@ -539,7 +539,8 @@ class POSMorphology:
     guessphon_i = 4
     seg_i = 5
 
-    def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None, feat_abbrevs=None,
+    def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
+                 feat_abbrevs=None,
                  fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
                  feature_groups=None, name=None,
                  explicit=None, true_explicit=None):
@@ -736,7 +737,10 @@ class POSMorphology:
             print("No ortho file for {}:{}".format(self.language, self.pos))
 
     def set_analyzed(self, filename='analyzed.lex', ortho=True, simplify=True, verbose=False):
-        '''Set the dict of analyzed words, reading them in from a file, one per line.'''
+        '''
+        Set the dict of analyzed words, reading them in from a file, one per
+        line.
+        '''
         if not ortho:
             filename = 'analyzed_phon.lex'
         path = os.path.join(self.morphology.get_lex_dir(), self.pos + '_' + filename)
@@ -1089,6 +1093,7 @@ class POSMorphology:
                 # Normalization requires FeatStructs so separate
                 # anals if it's True
                 anals = self.separate_anals(anals, normalize=normalize)
+#            print("** anals {}".format(anals))
             if to_dict:
                 anals = self.anals_to_dicts(anals)
             return anals

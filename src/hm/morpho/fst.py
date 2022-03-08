@@ -3,7 +3,7 @@ This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020, 2021.
+    Copyleft 2018, 2019, 2020, 2021, 2022
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -1973,7 +1973,7 @@ class FST:
                 print('Loading sublexicon from {}, reverse={}'.format(filename, reverse))
             treeified = treeify_file(filename, seg_units=seg_units, reverse=reverse,
                                      dest=dest_lex, verbose=False)
-#            print('Treeified')
+#            print('Treeified {}'.format(treeified))
             return FST.tree_to_fst(treeified,
                                    label, cascade=cascade, weighting=weighting,
                                    lex_features=lex_features, weight_constraint=weight_constraint,
@@ -2009,7 +2009,7 @@ class FST:
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=weight, mult_dsts=False)
-                if '.cas' in in_string:
+                elif '.cas' in in_string:
                     # in_string is a cascade filename
                     label = in_string.split('.')[0]
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
@@ -2370,7 +2370,10 @@ class FST:
 
     def _make_mult_arcs(self, in_string, out_string, src, dst, weight, seg_units,
                         gen=False):
-        """Create states and arcs to join src with dst, given multiple chars in in_string."""
+        """
+        Create states and arcs to join src with dst, given multiple chars in in_string.
+        """
+#        print("** make_mult_arcs {} {} {} {} {}".format(in_string, out_string, src, dst, weight.__repr__()))
         ## Intermediate state labels
         # In case there are spaces in in_string, remove these for state names
         in_string_label = in_string.replace(' ', '')
@@ -2501,9 +2504,11 @@ class FST:
     def tree_to_fst(tree, label, cascade=None, weighting=None, lex_features=False,
                     dest=False, weight_constraint=None,
                     verbose=False):
-        """Turn a letter tree into an FST (MG).
+        """
+        Turn a letter tree into an FST (MG).
 
-        dest=True means that destination FSTs appear before weights in a pair."""
+        dest=True means that destination FSTs appear before weights in a pair.
+        """
         fst = FST(label, cascade=cascade, weighting=weighting)
 
         weighting = fst.weighting()
@@ -2512,11 +2517,15 @@ class FST:
         fst._set_initial_state('start')
         fst._subtree_to_states('start', tree, '', weighting=weighting, lex_features=lex_features, dest=dest,
                                weight_constraint=weight_constraint, verbose=verbose)
+#        print("** fst {}".format(fst))
         return fst
 
     def _subtree_to_states(self, state, subtree, label, weighting=None, lex_features=False, dest=False,
                            weight_constraint=None, verbose=False):
-        """subtree a dict with characters as keys, values either subtrees, (chars, feats), or [feats] (MG). """
+        """
+        subtree a dict with characters as keys, values either subtrees,
+        (chars, feats), or [feats] (MG).
+        """
         for char, rest in subtree.items():
             if verbose:
                 print('char {} rest {}'.format(char, rest))
@@ -3338,7 +3347,7 @@ class FST:
             self._inserted[ins_label] += 1
         else:
             self._inserted[ins_label] = 1
-#        print("Insertion with weight {}, single final? {}".format(weight, single_final))
+#        print("** Insertion {} with weight {}, single final? {}".format(insertion, weight.__repr__(), single_final))
         # Copy the stringsets of insertion into those in self
         for key, value in insertion._stringsets.items():
             if key not in self._stringsets:
@@ -3361,7 +3370,7 @@ class FST:
                 # There's more than one final state, so connect each to dst
                 ins_final_weight = insertion.final_weight(ins_state)
                 final_weight = self.weighting().multiply(weight, ins_final_weight if ins_final_weight else self.default_weight())
-##                print(' Final arc from {0} to {1}'.format(state, dst))
+#                print('** Final arc from {0} to {1}'.format(state, dst))
                 self.add_arc(state, dst, '', '', weight=final_weight)
             for arc in insertion.outgoing(ins_state):
                 arc_dst = insertion.dst(arc)
@@ -3383,8 +3392,8 @@ class FST:
                     if not self.has_state(new_arc_dst):
                         self.add_state(new_arc_dst)
                         state_pairs.append((new_arc_dst, arc_dst))
-##                print(' Arc from {0} to {1}; in: {2}, out: {3}'.format(state, new_arc_dst, insertion.in_string(arc),
-##                                                                       insertion.out_string(arc)))
+#                print('** Arc from {0} to {1}; in: {2}, out: {3}'.format(state, new_arc_dst, insertion.in_string(arc),
+#                                                                       insertion.out_string(arc)))
                 self.add_arc(state, new_arc_dst, insertion.in_string(arc), insertion.out_string(arc),
                              weight=arc_weight)
 

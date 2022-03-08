@@ -1,0 +1,16 @@
+weighting = UNIFICATION
+
+## Special characters
+
+## Stringsets
+*ሰ = {ሰ, ሱ, ሲ, ሳ, ሴ, ስ, ሶ, ሷ}
+# All vowels
+# V = {a, e, E, i, I, o, u, A}
+# All segments possible in verbs
+# XX = {a, e, E, i, I, o, u, A, b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, @, Y}
+## Non-phonetic/orthographic characters
+# % = {=, /, _}
+
+## FSTs
+# Morphotactics
+>gen.mtx<

@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021.
+Copyleft 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019, 2020, 2021, 2022.
     Michael Gasser
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -565,7 +565,9 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
         return lang.morphology[pos]
 
 def join(language, POS, segstring):
-    """Join the sequence of morphemes in segstring, using rules (instances of Rule)
+    """
+    Join the sequence of morphemes in segstring, using rules
+    (instances of Rule)
     implementing alternation rules at the morpheme boundaries.
     For Amharic, POS is 'v', 'n', or 'n_dv'.
     """

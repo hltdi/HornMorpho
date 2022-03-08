@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-setup(name='HornMorphoGem',
+setup(name='HornMorphoGen',
       version='4.1',
       description='Morphological generator for languages of the Horn of Africa',
       author='Michael Gasser',

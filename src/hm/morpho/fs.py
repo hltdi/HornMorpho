@@ -69,18 +69,18 @@ class FS:
     def delete(self, features):
         print("delete() not defined")
 
-#    def unify_FS(self, fs, strict=False, verbose=False):
-#        print("Not defined")
+    def unify_FS(self, fs, strict=False, verbose=False):
+        print("Not defined")
 
-#    def agree(self, target, agrs, force=False):
-#        print("Not defined")
+    def agree(self, target, agrs, force=False):
+        print("Not defined")
 
-#    def upd(self, fs):
-#        """
-#        Return an FS/FSSet with features updated to agree with
-#        fs.
-#        """
-#        print("Not defined")
+    def upd(self, fs):
+        """
+        Return an FS/FSSet with features updated to agree with
+        fs.
+        """
+        print("Not defined")
 
 ######################################################################
 # Feature Structure
@@ -501,6 +501,30 @@ class FeatStruct(FS):
         # Convert to a 32 bit int.
         return int(hashval & 0x7fffffff)
 
+    def agree(self, target, agrs, force=False):
+        """
+        Make target agree with self on features specified in agrs dict or list
+        of pairs. If force is True, override incompatible value in target.
+        """
+        agr_pairs = agrs.items() if isinstance(agrs, dict) else agrs
+        for src_feat, targ_feat in agr_pairs:
+#            print("Agreeing on {}:{}".format(src_feat, targ_feat))
+            if src_feat in self:
+                src_value = self[src_feat]
+                if targ_feat not in target:
+                    target[targ_feat] = src_value
+                else:
+                    targ_value = target[targ_feat]
+                    u = simple_unify(src_value, targ_value)
+                    if u == 'fail':
+                        if force:
+                            target[targ_feat] = src_value
+                        else:
+                            return 'fail'
+                    else:
+                        target[targ_feat] = u
+        return target
+
     ##////////////////////////////////////////////////////////////
     #{ Freezing
     ##////////////////////////////////////////////////////////////
@@ -798,6 +822,12 @@ class FeatStruct(FS):
                 s = '_'
             strings.append(s)
         return strings
+
+    def unify_FS(self, fs, strict=False, verbose=False):
+        """
+        Implement unify_FS for compatibility with FSSet.unify_FS.
+        """
+        return simple_unify(self, fs, strict=strict, verbose=verbose)
 
 ######################################################################
 # Specialized Features
@@ -1326,7 +1356,7 @@ class FeatureValueConcat(SubstituteBindingsSequence, tuple):
 #{ Simple unification (no variables)
 ######################################################################
 
-def simple_unify(x, y):
+def simple_unify(x, y, strict=False, verbose=False):
     """Unify the expressions x and y, returning the result or 'fail'."""
     # If either expression doesn't exist, return the other, unless this is the top-level
     # If they're the same, return one.
@@ -1335,23 +1365,27 @@ def simple_unify(x, y):
         return x
     # If both are dicts, call unify_dict
     elif isinstance(x, FeatStruct) and isinstance(y, FeatStruct):
-        return unify_dicts(x, y)
+        return unify_dicts(x, y, strict=strict, verbose=verbose)
     # Otherwise fail
     else:
         return 'fail'
 
-def unify_dicts(x, y):
+def unify_dicts(x, y, strict=False, verbose=False):
     '''Try to unify two dicts in the context of bindings, returning the merged result.'''
     # Make an empty dict of the type of x
-#    print('Unifying dicts {} {}'.format(x.__repr__(), y.__repr__()))
+    if verbose:
+        print('Unifying dicts {} {}'.format(x.__repr__(), y.__repr__()))
     result = FeatStruct()
     for k in set(x.keys()) | set(y.keys()):
         # Check all of the keys of x and y
         x_val, y_val = x.get(k, 'nil'), y.get(k, 'nil')
-        if x_val != 'nil':
+        if strict and x_val == 'nil' and y_val is not False:
+            # (x_val == 'nil' or y_val == 'nil'):
+            return 'fail'
+        elif x_val != 'nil':
             if y_val != 'nil':
                 # If x and y both have a value for k, try to unify the values
-                u = simple_unify(x_val, y_val)
+                u = simple_unify(x_val, y_val, strict=strict)
                 if u == 'fail':
 #                    print('Failed')
                     return 'fail'

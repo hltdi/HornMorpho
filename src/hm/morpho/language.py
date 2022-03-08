@@ -1209,6 +1209,7 @@ class Language:
             return False
         for pos in fsts:
             # Load pre-analyzed words if any
+            self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
             if ortho:
                 self.morphology[pos].make_generated()
             # Load phonetic->orthographic dictionary if file exists
@@ -1395,7 +1396,7 @@ class Language:
             for pos in fsts:
                 analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
                                                      phon=phon, segment=segment,
-                                                     to_dict=to_dict, sep_anals=True,
+                                                     to_dict=to_dict, sep_anals=sep_anals,
                                                      verbosity=verbosity)
                 if analysis:
                     if cache:
@@ -1974,7 +1975,7 @@ class Language:
             if newitem not in results:
                 results.append(newitem)
 #            results.add((cat, root, cite, grammar if gram else None, grammar, root_freq))
-#        print("results {}".format(results))
+#        print("** results {}".format(results))
 #        return list(results)
         return results
 

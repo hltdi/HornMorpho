@@ -126,6 +126,13 @@ class FSSet(set, FS):
             fslist[index] = fs.delete(features)
         return FSSet(fslist)
 
+    def u(self, f, strict=False, verbose=False):
+        """Unify this FSSet with either another FSSet or a FeatStruct."""
+        if isinstance(f, FSSet):
+            return self.unify(f, verbose=verbose)
+        else:
+            return self.unify_FS(f, strict=strict, verbose=verbose)
+
     def unify(self, fs2, verbose=False):
         fs2_list = list(fs2)
         fs1_list = list(self)
@@ -286,6 +293,12 @@ class FSSet(set, FS):
         else:
             return TOPFSS
 
+    def upd(self, features=None):
+        """
+        Return an updated FSSet agreeing with features in features.
+        """
+        return FSSet.update(self, features)
+
     @staticmethod
     def update(fsset, feats):
         """Return a new fsset with feats updated to match each fs in fsset."""
@@ -402,6 +415,55 @@ class FSSet(set, FS):
             else:
                 diffs[f] = values
         return shared, diffs
+
+    def agree(self, target, agrs, force=False):
+        """
+        Similar to FeatStruct.agree(). Change values of agrs features in
+        target to agree with some member(s) of FSSet.
+        Ignore features that don't agree (rather than failing) unless
+        force is True.
+        """
+        agr_pairs = agrs.items() if isinstance(agrs, dict) else agrs
+        for fs in list(self):
+            vals = []
+            for src_feat, targ_feat in agr_pairs:
+                if src_feat in fs:
+                    src_value = fs[src_feat]
+                    if targ_feat not in target:
+                        vals.append((targ_feat, src_value))
+                    else:
+                        targ_value = target[targ_feat]
+                        u = simple_unify(src_value, targ_value)
+                        if u == 'fail':
+                            if force:
+                                vals.append((targ_feat, src_value))
+                            else:
+                                # Ignore this feature
+                                continue
+                        else:
+                            vals.append((targ_feat, u))
+#            print(" AGREE: vals {}".format(vals))
+#            print(" AGREE: target {}, type {}".format(target.__repr__(), type(target)))
+            for f, v in vals:
+                if isinstance(target, FeatStruct):
+                    target[f] = v
+                else:
+                    # target is an FSSet
+                    new_target = set()
+                    for i, fs in enumerate(target):
+#                        print("  AGREE: target FS {}".format(fs.__repr__()))
+#                        print("         f {} v {}".format(f, v))
+                        if f in fs and not force:
+                            new_target.add(fs)
+                            continue
+                        fs = fs.unfreeze()
+                        fs[f] = v
+                        fs.freeze()
+                        new_target.add(fs)
+#                    print(" added {}".format(v))
+                    target = FSSet(new_target)
+#                    print(" AGREE: new target {}".format(target.__repr__()))
+        return target
 
 ## Feature structure that unifies with anything.
 TOP = FeatStruct('[]')

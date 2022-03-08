@@ -995,6 +995,7 @@ def root2string(root):
 
 VOWELS = '[aeEiIou@AOU]'
 CONS = "[hlHmrsxqbtcnN'kw`zZydjgTCPSfp]|^S|^s|^h"
+LABIALIZE = "[lHmrsxqbtcnNkzZdjgTCPSfp]|^S|^s|^h"
 
 ### verb RE rules
 RULES = Rules(language = AMH)
@@ -1029,7 +1030,10 @@ RULES.add(Insert(pre="[iE]-?{?}?-?", post=VOWELS, insertion="y"))
 RULES.add(Del(delpart="i", pre="[aeEiou]y}?-?"))
 
 ## labialization
-RULES.add(Repl(CONS, r"_?}?-?", "[ou]", "-", "[aeEIi]", "W"))
+RULES.add(Repl(LABIALIZE, r"_?}?-?", "[ou]", "-", "[aeEIi]", "W"))
+
+## VV again oa->o'a; ua->u'a
+RULES.add(Insert(pre="[uo]-", post="a", insertion="'"))
 
 ## cleanup
 RULES.add(Del(delpart="[-_{}I]"))
