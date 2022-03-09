@@ -4,16 +4,18 @@ This is version 4 of ***HornMorpho***, a Python program that performs morphologi
 -->
 
 ## Installation
-To install HornMorpho, you can use either the distribution file, `HornMorpho-4.*.tar.gz`, or the wheel file, `HornMorpho-4.*-py3-none-any.whl`, both of which can be found in the `dist/` folder and the `Versions` folder.
-To install from the distribution file, first extract the files from it. Then go to the top-level folder, `HornMorpho-4.*`, and do the following in a Python shell:
+To install HornMorpho, use the wheel file, `HornMorpho-4.*-py3-none-any.whl`, which can be found in the `dist/` folder.
+<!-- To install from the distribution file, first extract the files from it. Then
+go to the top-level folder, `HornMorpho-4.*`, and do the following in a Python shell:
 
 	python setup.py install
 
 making sure that you are using some version of Python 3.
+-->
 To install from the wheel file, do the following in a Python shell.
 
 	pip install HornMorpho-4.*-py3-none-any.whl
-	
+
 (This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
 
 Then to use the program, in a Python shell, do
@@ -43,24 +45,24 @@ Morphological analysis takes a word and returns zero or more analyses, each cons
     POS: noun, lemma: ቤት|bet, gloss: house
      possessor: 1 plur
      other: definite, genitive
-     
+
 >To return the 'raw' internal analysis of the word, use the option `raw=True`. A  `list` of Python `dicts` is returned, one for each analysis (this is new in versions 4.0), with keys for lemma, gloss, and grammatical features ('gram').
 
->The grammatical features returned are in the form of a **feature structure**, a kind of `dict` with grammatical feature names as keys and their values as values. Among the features you may find useful are `sb` (subject), `tm` (tense-aspect-modality), `ob` (object). (A complete description of these features will appear soon.) 
+>The grammatical features returned are in the form of a **feature structure**, a kind of `dict` with grammatical feature names as keys and their values as values. Among the features you may find useful are `sb` (subject), `tm` (tense-aspect-modality), `ob` (object). (A complete description of these features will appear soon.)
 
     >>> hm.anal('amh', "የቤታችን", raw=True)
     [{'lemma': 'ቤት|bet', 'root': 'ቤት|bEt', 'gloss': 'house', 'gram': [-acc,cnj=None,+def,-dis,+gen,-itu,-plr,pos=n,poss=[+expl,+p1,-p2,+plr],pp=None,-prp,t=[eng=house],v=None]}]
-    
+
 >To output features from the [UniMorph project](http://www.unimorph.org/), use the option `um=True`. The UniMorph features are returned as a string of feature names separated by semicolons. (A description of the relevant UniMorph features will appear soon.) **The UniMorph option currently only works for Amharic and Tigrinya.**
 
     >>> hm.anal('amh', "የቤታችን", um=True)
     [{'lemma': 'ቤት|bet', 'root': 'ቤት|bEt', 'gloss': 'house', 'gram': 'N;GEN;PSS1P'}]
-    
+
 >For verbs and nouns derived from verbs, `hm.anal` also returns a representation of the root of the word.
 
     >>> hm.anal('amh', "ተፈቀደላት", um=True)
     [{'lemma': 'ፈቀደ|fǝqqǝdǝ', 'root': '<fqd:A>', 'gloss': 'permit,allow', 'gram': 'V;PFV;PASS;3;SG;MASC;ARGDA3SF'}]
-    
+
 >The function `hm.anal_file` analyzes the words in a file, printing out the analyses for each word. If *output_file* is specified, the results are written to that file. The options for `hm.anal`, `raw` and `um`, also apply.
 
 ## Morphological generation
@@ -102,16 +104,16 @@ Morphological segmentation takes a word and returns a representation of the sequ
 
 	>>> hm.seg('amh', "አንፈቅድም")
 	አንፈቅድም -- v:'an(neg1,sb=1p)-{fqd+1e23}(imprf)-m(neg2)
-	
+
 >With the option `realize=True`, the morphemes appear in Ge`ez orthography.
 
 	>>> hm.seg('amh', "አንፈቅድም", realize=True)
 	[['አን(neg1,sb=1p)-{ፈቅድ}(imprf)-ም(neg2)']]
-	
+
 >The function `hm.seg_file` behaves like `hm.anal_file` except that it prints out a segmentation of the words in the file instead of a morphological analysis.
 
 ## Grapheme-to-phoneme conversion
-The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithfully represents almost all aspects of the phonology of the languages. However, it fails to represent consonant gemination and vowel epenthesis. 
+The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithfully represents almost all aspects of the phonology of the languages. However, it fails to represent consonant gemination and vowel epenthesis.
 
 *Gemination* refers to the lengthening of consonants. In most Ethio-Eritrean Semitic languages, it is both a property of particular lexical items (ልብ *lɨbb*) and a feature of verb morphology. In rare cases, this can result in ambiguity (ይመታል *yɨmǝtal* 'he hits', *yɨmmǝttal* 'he is hit'). Gemination is also crucial for speech synthesis.
 
@@ -130,8 +132,8 @@ The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithful
 >The function `hm.phon` takes a string abbreviation of a language and an orthographic representation of a word and prints out a romanized representation of the pronunciation of the word, including gemination and epenthesis, where appropriate. Note that there may be multiple possible pronunciations.
 
 	>>> hm.phon('amh', "ይመታል")
-	yɨmǝtal yɨmmǝttal 
-	
+	yɨmǝtal yɨmmǝttal
+
 >With the option `gram=True`,  `hm.phon` prints out grammatical information for each pronunciation.
 
 	>>> hm.phon('amh', "ይመታል", gram=True)
@@ -147,7 +149,3 @@ The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithful
 > With the option `raw=True`, a `dict` is returned for each pronunciation, including the internal feature structure resulting from morphological analysis.
 
 >The function `hm.phon_file` behaves like `hm.anal_file` and `hm.seg_file`.
-
-
-
-

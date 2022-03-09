@@ -1,9 +1,42 @@
 $ conj_prep_pre
-  የ   [cpp=የ]
+  የ   [cpp=የ,tm=prf]
+  የም= [cpp=የ,tm=imf]
+  ብ=  [cpp=ብ,tm=imf]
   --  [cpp=None]
+
+$ neg
+  =ኣ   [+neg]
+  --   [-neg]
+
+$ sb_pre
+  ይ   [tm=imf|j_i,sp=3,sn=2];[tm=imf,sp=3,sn=1,sg=m];[tm=imf,sp=0]
+  ት   [tm=imf,sp=2];[tm=imf|j_i,sp=3,sn=1,sg=f]
+  እ   [tm=imf,sp=1,sn=1]
+  ል   [tm=j_i,sp=1,sn=1]
+  እን  [tm=imf|j_i,sp=1,sn=2]
+  --  [tm=prf];[tm=ger]
+
+$ voice
+  ተ   [tm=prf|ger,vc=[+ps]];[tm=j_i,sp=2,vc=[+ps]]
+  --  [tm=prf|ger,vc=[-ps]];[tm=imf];[tm=j_i,sp=1|3]
+
+#$ pre_bound
+#  =
 
 $ stem
   +v_root+    []
+
+#$ post_bound
+#  =
+
+$ sb_suf
+  =ኡ   [sp=3,sn=2];[sp=2,sn=2,tm=imf|j_i]
+  =ኣችሁ [l=amh,sp=2,sn=2,tm=prf]
+  =አ    [l=amh,sp=3,sn=1,sg=m,tm=prf]
+  =አች   [l=amh,sp=3,sn=1,sg=f,tm=prf]
+  ን    [l=amh,sp=1,sn=2,tm=prf]
+  =ኢ   [l=amh,sp=2,sn=1,sg=f,tm=imf|j_i]
+  --   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=imf|j_i,sp=3,sn=1]
 
 $ end
   --     [l=amh]

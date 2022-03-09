@@ -1024,7 +1024,8 @@ class POSMorphology:
 
     def save_fst(self, generate=False, guess=False, simplified=False,
                  phon=False, segment=False,
-                 features=True, defaultFS=True, stringsets=True):
+                 features=True, defaultFS=True, stringsets=True,
+                 pickle=False):
         '''Save FST in a file.'''
         fname = self.fst_name(generate=generate, guess=guess, simplified=simplified,
                               phon=phon, segment=segment)
@@ -1041,6 +1042,8 @@ class POSMorphology:
         FST.write(fst, filename=os.path.join(directory, fname + extension),
                   defaultFS=df, stringsets=stringsets,
                   features=features, exclude_features=['t', 'm'])
+        if pickle:
+            FST.pickle(fst, directory=self.morphology.get_pickle_dir(), replace=True)
 
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
