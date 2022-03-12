@@ -1,9 +1,10 @@
 $ conj_prep_pre
-  የ   [cpp=የ,tm=prf]
-  --  [cpp=None,tm=prf];[tm=imf];[tm=ger];[tm=j_i]
+  የ   [cpp=የ,tm=prf,+sub,-cvb,-neg]
+  --  [cpp=None,tm=prf,-sub];[cpp=None,tm=prf,+neg];[tm=imf];[tm=ger];[tm=j_i]
 
 $ neg
-  =ኣ   [+neg]
+  =ኣን   [+neg,tm=prf]
+  =ኣ   [+neg,tm=imf|j_i]
   --   [-neg]
 
 $ sb_pre
@@ -32,9 +33,13 @@ $ sb_suf
   =ሕᎃ  [tm=prf,sp=2,sn=2,sg=m]
   =ሕማ  [tm=prf,sp=2,sn=2,sg=f]
   =ᎃ   [sp=3,sn=2,sg=m];[tm=imf|j_i,sp=2,sn=2,sg=m]
-  =ማ    ,sp=3,sn=2,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=f]
+  =ማ    [sp=3,sn=2,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=f]
   =ኢ   [sp=2,sn=1,sg=f,tm=imf|j_i]
   --   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=imf|j_i,sp=3,sn=1]
 
 $ end
-  --     [pos=v]
+  ም    [tm=prf,-sub,-neg,-cvb];[tm=prf,+sub,-neg,+cvb]
+  =ኡ   [tm=imf,-sub,-neg,sp=1];[tm=imf,-sub,-neg,sp=2|3,sn=1,sg=m]
+  =ኢ   [tm=imf,-sub,-neg,sp=3,sn=1,sg=f]
+  /ት   [tm=imf,-sub,-neg,sp=2,sn=1,sg=f];[tm=imf,-sub,-neg,sp=2|3,sn=2]
+  --   [tm=j_i];[tm=prf,+neg];[tm=prf,+sub,-cvb];[tm=imf,-sub];[tm=imf,+neg]
