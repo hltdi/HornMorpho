@@ -20,23 +20,17 @@ $ voice
   ተ   [tm=prf|ger,vc=[+ps]];[tm=j_i,sp=2,vc=[+ps]]
   --  [tm=prf|ger,vc=[-ps]];[tm=imf];[tm=j_i,sp=1|3]
 
-#$ pre_bound
-#  =
-
 $ stem
   +v_root+    []
 
-#$ post_bound
-#  =
-
 $ sb_suf
   =ኡ   [sp=3,sn=2];[sp=2,sn=2,tm=imf|j_i]
-  =ኣችሁ [l=amh,sp=2,sn=2,tm=prf]
-  =አ    [l=amh,sp=3,sn=1,sg=m,tm=prf]
-  =አች   [l=amh,sp=3,sn=1,sg=f,tm=prf]
-  ን    [l=amh,sp=1,sn=2,tm=prf]
-  =ኢ   [l=amh,sp=2,sn=1,sg=f,tm=imf|j_i]
+  =ኣችሁ [sp=2,sn=2,tm=prf]
+  =አ    [sp=3,sn=1,sg=m,tm=prf]
+  =አች   [sp=3,sn=1,sg=f,tm=prf]
+  ን    [sp=1,sn=2,tm=prf]
+  =ኢ   [sp=2,sn=1,sg=f,tm=imf|j_i]
   --   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=2,sn=1,sg=m];[tm=imf|j_i,sp=3,sn=1]
 
 $ end
-  --     [l=amh]
+  --     [pos=v]
