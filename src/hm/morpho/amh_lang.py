@@ -1076,7 +1076,8 @@ NRULES.add(Insert(pre="[ou]}?-", post="a", insertion="w"))
 
 # -u, -wa
 NRULES.add(Repl(VOWELS, "}-", "u", "", "", "w"))
-NRULES.add(Repl(CONS, "}?-", "w", "", "", "W"))
+# modified 2022.3.15 to exclude yW, 'W, 1W, wW'
+NRULES.add(Repl(LABIALIZE, "}?-", "w", "", "", "W"))
 
 # prefix VV
 NRULES.add(Del(delpart="e", post="-{?'?a"))
