@@ -60,7 +60,7 @@ stemdef -> acc    <:}-u(def)>
 plr_an -> poss    <an:-an(plr)>    [+plr]
 #% Infinitives can't be plural
 plr_oc -> poss    <oc_:-oc(plr)>   [+plr,v=None];[+plr,v=ins];[+plr,v=agt];[+plr,v=man]
-plr_irr0 -> poss    <:}-(plr)>  []
+plr_irr0 -> poss    <:}-*(plr)>  []
 #plr_irr -> poss    <:-X(plr)>    []
 plr_at -> poss      <:-at(plr)>   []
 plr_oc1 -> poss     <:-oc(plr)>   []

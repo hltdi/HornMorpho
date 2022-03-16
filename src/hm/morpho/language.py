@@ -920,7 +920,7 @@ class Language:
         to an alternate phone representation.
         """
 #        print("Convert phones {}, epenthesis {}".format(phones, epenthesis))
-        phones = segment(phones, self.seg_units)
+        phones = segment(phones, self.seg_units, correct=False)
         if epenthesis:
             self.epenthesis(phones)
         result = []
