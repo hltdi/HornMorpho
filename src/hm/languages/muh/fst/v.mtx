@@ -1,10 +1,10 @@
 $ conj_prep_pre
   የ   [cpp=የ,tm=prf,+sub,-cvb,-neg]
-  --  [cpp=None,tm=prf,-sub];[cpp=None,tm=prf,+neg];[tm=imf];[tm=j_i]
+  --  [cpp=None,tm=prf,+neg];[cpp=None,tm=prf,+sub,-neg];[tm=imf];[tm=j_i]
 
 $ neg
-  =ኣን   [+neg,tm=prf]
-  =ኣ   [+neg,tm=imf|j_i]
+  ኣን   [+neg,tm=prf]
+  ኣ    [+neg,tm=imf|j_i]
   --   [-neg]
 
 $ sb_pre
@@ -22,13 +22,13 @@ $ voice
   --  [vc=[-ps]]
 
 $ stem
-  +v_root+    []
+  +v_stem+    []
 
 $ sb_tm
   --   [lx=P0,tm=prf,sp=1|2|3,-neg];[lx=Pi,tm=prf,sp=0,-neg];
        [lx=P0n,tm=prf,sp=1|2|3,+neg];[lx=Pin,tm=prf,sp=0,+neg];
-       [lx=I0,tm=imf,sp=1|3];[lx=I0,tm=imf,sn=2];[lx=I0,tm=imf,sp=2,sn=1,sg=m];
-       [lx=Ii,tm=imf,sp=0];[lx=If,tm=imf,sp=2,sn=1,sg=f]
+       [lx=I0,tm=imf,sp=1|3,vc=[-ps]];[lx=I0,tm=imf,sn=2,vc=[-ps]];[lx=I0,tm=imf,sp=2,sn=1,sg=m,vc=[-ps]];
+       [lx=Ii,tm=imf,sp=0,vc=[-ps]];[lx=If,tm=imf,sp=2,sn=1,sg=f,vc=[-ps]]
 
 $ sb_suf
      [tm=prf,sp=1,sn=1]
@@ -42,7 +42,7 @@ $ sb_suf
   ᎃ   [sp=3,sn=2,sg=m];[tm=imf|j_i,sp=2,sn=2,sg=m]
   ማ    [sp=3,sn=2,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=f]
 #  =ኢ   [sp=2,sn=1,sg=f,tm=imf|j_i]
-  --   [tm=imf|j_i,sp=1];[tm=imf|j_i,sp=2,sn=1];[tm=imf|j_i,sp=3,sn=1];
+  --   [tm=imf|j_i,sp=1,sn=1];[tm=imf|j_i,sp=2,sn=1];[tm=imf|j_i,sp=3,sn=1];
        [sp=0]
 
 $ ob_suf
@@ -56,6 +56,6 @@ $ ob_suf
 $ end
   ም    [tm=prf,-sub,-neg,-cvb];[tm=prf,+sub,-neg,+cvb]
   =ኡ   [tm=imf,-sub,-neg,sp=1];[tm=imf,-sub,-neg,sp=2|3,sn=1,sg=m]
-  =ኢ   [tm=imf,-sub,-neg,sp=3,sn=1,sg=f]
+  F    [tm=imf,-sub,-neg,sp=3,sn=1,sg=f,op=None]
   /ት   [tm=imf,-sub,-neg,sp=2,sn=1,sg=f];[tm=imf,-sub,-neg,sp=2|3,sn=2]
   --   [tm=j_i];[tm=prf,+neg];[tm=prf,+sub,-cvb];[tm=imf,+sub];[tm=imf,+neg,-sub]

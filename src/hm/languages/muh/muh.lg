@@ -1,4 +1,4 @@
-name: ሙሐር
+name: ሙሕር
 code: muh
 
 gemination: True
@@ -28,3 +28,5 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሐ ሑ ሒ ሓ �
 feats:
 
   pos: v verb
+
+  pos: v_stem v_stem

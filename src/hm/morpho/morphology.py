@@ -1061,7 +1061,7 @@ class POSMorphology:
 
     def anal(self, form, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
-             init_weight=None,
+             init_weight=None, result_limit=0,
              to_dict=False, sep_anals=False, normalize=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
         """Analyze form."""
@@ -1087,9 +1087,10 @@ class POSMorphology:
                 form = self.language.preprocess(form)
             if init_weight and not isinstance(init_weight, FSSet):
                 init_weight = FSSet(init_weight)
+            result_limit = result_limit if result_limit else (40 if guess else 30)
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
-                                  init_weight=init_weight, result_limit=40 if guess else 30,
+                                  init_weight=init_weight, result_limit=result_limit,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit,
                                   verbosity=verbosity)
             if sep_anals or normalize:
