@@ -15,8 +15,9 @@ lab2 -> lab2_  [X;C]
 
 pal -> pal   [X;C]
 # vowel change following dental or labial (or r, n, l)
+# (add palatalized consonants, and e->E)
 # palatalization of velar
-pal -> pal2  [ቲ:ት;ሲ:ስ;ዲ:ድ;ዚ:ዝ;ጢ:ጥ;ኸ:ከ;ኽ:ክ]   [y=2,-W]
+pal -> pal2  [ሊ:ል;ሌ:ለ;ሚ:ም;ሜ:መ;ሪ:ር;ሬ:ረ;ሲ:ስ;ሴ:ሰ;ሺ:ሽ;ሼ:ሸ;ቢ:ብ;ቤ:በ;ቲ:ት;ቴ:ተ;ቺ:ች;ቼ:ቸ;ኒ:ን;ኔ:ነ;ዚ:ዝ;ዜ:ዘ;ዢ:ዥ;ዤ:ዠ;ዲ:ድ;ዴ:ደ;ጂ:ጅ;ጄ:ጀ;ጢ:ጥ;ጤ:ጠ;ጪ:ጭ;ጬ:ጨ;ፊ:ፍ;ፌ:ፈ;ፒ:ፕ;ፔ:ፐ;ቐ:ቀ;ⷐ:ሐ;ኸ:ከ;ጘ:ገ;ⷕ:ሕ;ቕ:ቅ;ኽ:ክ;ጝ:ግ]   [y=2,-W]
 # class A C1C2C2 verbs: duplicate final palatalization
 pal -> pal2d  [ሸ:ሰ;ቸ:ተ;ጀ:ደ;ዠ:ዘ;ጨ:ጠ;ሽ:ስ;ቕ:ቅ;ች:ት;ጅ:ድ;ዥ:ዝ;ጭ:ጥ]   [y=1,+d,c=A]
 pal -> pal2d  [ቐ:ቀ;ጘ:ገ;ኸ:ከ;ⷐ:ሐ;ቕ:ቅ;ጝ:ግ;ኽ:ክ;ⷕ:ሕ]  [y=1,c=A,+d,-W]

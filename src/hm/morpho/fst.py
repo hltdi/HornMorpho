@@ -1745,7 +1745,7 @@ class FST:
             name += 'A'
             empty_name += 'A'
         if pickle:
-            print("Unpickling {} in {}".format(name, pkl_directory))
+#            print("Unpickling {} in {}".format(name, pkl_directory))
             fst = FST.unpickle(name, directory=pkl_directory)
             if fst:
                 return fst, True

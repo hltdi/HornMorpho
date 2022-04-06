@@ -14,9 +14,12 @@
 ቀጢ        [a=I,c=A,-d]
 # በናም  በላ
 በና       [a=P,-neg,c=A,-d]
-ቤየ       [a=P,+neg,c=A,-d]
+ቤየ       [a=P,+neg,c=A,-d,l=M]
 በራ       [a=I,c=A,-d]
 ብራ       [a=J,c=A,-d]
+#  በሳም መጣ
+በሳ      [a=P,c=A,-d,l=M];[a=P,c=A,-d,l=M]
+ብሳ      [a=P,c=A,-d,l=M]
 # ሰማም
 ሰማ      [a=P,c=A,-d];[a=I,c=A,-d]
 # ቸከመም ጎረሰ
@@ -60,6 +63,12 @@
 # ገደደም
 ገደድ     [a=P,c=A,+d]
 ገድድ     [a=I,c=A,+d]
+# ቀረበ (msq)
+ቀረብ     [a=P,c=A,-d,l=m]
+ቀርብ     [a=P,c=A,-d,l=m]
+# ኣገኘም
+ገኘ       [a=P,c=B,-neg,l=M,vc=[+cs,-ps]]
+ግየ       [a=P,c=B,+neg,l=M,vc=[+cs,-ps]]
 # fake ቀበበም
 ቀበብ     [a=P,c=A,+d]
 ቀብብ     [a=I,c=A,+d]
