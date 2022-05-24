@@ -25,8 +25,10 @@ $ stem
   +v_stem+    []
 
 $ sb_tm
-  --   [lx=P0,tm=prf,-neg];[lx=Pi,tm=prf,as=it];
-       [lx=I0,tm=imf,vc=[-ps]];[lx=I0,tm=imf,sn=2,vc=[-ps]]
+  --   [lx=P0,tm=prf,sp=1|2|3,-neg];[lx=Pi,tm=prf,sp=0,-neg];
+       [lx=P0n,tm=prf,sp=1|2|3,+neg];[lx=Pin,tm=prf,sp=0,+neg];
+       [lx=I0,tm=imf,sp=1|3,vc=[-ps]];[lx=I0,tm=imf,sn=2,vc=[-ps]];[lx=I0,tm=imf,sp=2,sn=1,sg=m,vc=[-ps]];
+       [lx=Ii,tm=imf,sp=0,vc=[-ps]];[lx=If,tm=imf,sp=2,sn=1,sg=f,vc=[-ps]]
 
 $ sb_suf
      [tm=prf,sp=1,sn=1]

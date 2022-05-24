@@ -12,13 +12,13 @@ start -> start  [X;C]
 #start -> n2     [N]
 
 # reduplicated non-palatalized
-start -> pal2    [Y]     [+d,+Y]
+start -> pal2    [Y]     [+d2,+Y]
 pal2 -> pal2_    [Y]
 
 # last segment; unpalatalized velar or dental, unlabialized bilabial
 # provide some information
 start -> lab   [W]
-start -> pal   [Y]   [-Y];[+Y,-d]
+start -> pal   [Y]   [-Y];[+Y,-d2]
 start -> den   [T]   [-Y]
 start -> vel   [K]   [-Y,-W]
 start -> bil   [B]   [-W]

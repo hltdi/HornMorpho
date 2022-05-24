@@ -117,7 +117,7 @@ def n_anal2string(anal, webdict=None):
             s += '\n'
     return s
 
-def v_anal2string(anal, webdict=None):
+def v_anal2string(anal, webdict=None, **kwargs):
     '''Convert a verb analysis to a string.
 
     anal is ("(*)v", root, citation, gramFS)
@@ -263,10 +263,10 @@ def v_get_citation(root, fs, guess=False):
     return result
 
 ## Function that converts analyses to strings
-OM.morphology['v'].anal2string = lambda fss, webdict: v_anal2string(fss, webdict=webdict)
+OM.morphology['v'].anal2string = lambda fss, webdict, **kwargs: v_anal2string(fss, webdict=webdict, **kwargs)
+## Function that converts analyses to strings
+OM.morphology['n'].anal2string = lambda fss, webdict, *kwargs: n_anal2string(fss, webdict=webdict, **kwargs)
 ## Functions that return the citation forms for words
 OM.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: v_get_citation(root, fss, guess)
-## Function that converts analyses to strings
-OM.morphology['n'].anal2string = lambda fss, webdict: n_anal2string(fss, webdict=webdict)
 ## Functions that return the citation forms for words
 OM.morphology['n'].citation = lambda root, fss, guess, vc_as, phonetic: root

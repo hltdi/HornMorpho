@@ -5,7 +5,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018, 2019, 2020, 2021.
+    Copyleft 2011, 2012, 2013, 2016, 2018, 2019, 2020, 2021, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -75,7 +75,7 @@ def get_lang(abbrev, segment=False, guess=True, phon=False, cache='',
                                   pickle=pickle,
                                   segment=segment, load=True, verbose=verbose)
 
-def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
+def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=False,
             guess=True, simplified=False, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -94,20 +94,24 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
 
     """
     hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
-                 guess=guess, simplified=simplified, verbose=verbose)
+                 translate=translate, guess=guess, simplified=simplified, verbose=verbose)
     lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment, simplified=simplified,
-                                  load=load_morph, load_morph=load_morph,
+                                  translate=translate, load=load_morph, load_morph=load_morph,
                                   verbose=verbose)
     if lang:
         return lang.morphology[pos]
 
-def get_cascade(abbrev, pos, guess=False, gen=False, phon=False, segment=False, verbose=False):
-    pos = get_pos(abbrev, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
+def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
+                translate=False, segment=False, verbose=False):
+    pos = get_pos(abbrev, pos, phon=phon, segment=segment,
+                  translate=translate, load_morph=False, verbose=verbose)
     pos.load_fst(True, guess=guess, create_fst=False,
-                 phon=phon, generate=gen, invert=gen, segment=segment, verbose=verbose)
+                 phon=phon, generate=gen, translate=translate,
+                 invert=gen, segment=segment, verbose=verbose)
     return pos.casc
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
+              translate=False,
               simplified=False, backwards=False, split_index=0, verbose=True):
     """Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
@@ -115,10 +119,10 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     Note 2: the resulting FST is not saved (written to a file). To do this, use the method
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment,simplified=simplified,
-                        load_morph=False, verbose=verbose)
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+                        simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-                             simplified=simplified, recreate=True,
+                             translate=translate, simplified=simplified, recreate=True,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -189,7 +193,8 @@ def casc_anal(casc, string, start_i, end_i=0, limit=20, timeout=200,trace=0):
                     return
                 i = int(x)
             s = res[i][0]
-            print(s)
+#            print(s)
+            print(res)
     else:
         return casc[start_i].transduce(s, seg_units=seg_units, timeout=10)
 

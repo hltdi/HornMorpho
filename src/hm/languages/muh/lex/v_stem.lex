@@ -2,10 +2,12 @@
 ሰበር     [a=P,c=A,-d]
 ሰብር     [a=I,c=A,-d]
 ስብር      [a=J,c=A,-d]
+ስባበር     [a=P,as=it,c=A,-d]
 # ለገደም ነካ
 ለገድ      [a=P,c=A,-d]
 ለግድ      [a=I,c=A,-d]
 ልግድ      [a=J,c=A,-d]
+ልጋገድ     [a=I,as=it,c=A,-d]
 # ፈካ  ሄደ
 ፈካ        [a=P,c=A,-d];[a=I,c=A,-d]
 ፍካ        [a=J,c=A,-d]
@@ -25,6 +27,7 @@
 # ቸከመም ጎረሰ
 ቸከም    [a=P,c=B]
 ቸክም    [a=I,c=B]
+ችካከም   [a=P,as=it,c=B]
 # ገደረም
 ገደር     [a=P,c=A,-d]
 ገድር     [a=I,c=A,-d]
@@ -69,6 +72,8 @@
 # ኣገኘም
 ገኘ       [a=P,c=B,-neg,l=M,vc=[+cs,-ps]]
 ግየ       [a=P,c=B,+neg,l=M,vc=[+cs,-ps]]
-# fake ቀበበም
-ቀበብ     [a=P,c=A,+d]
-ቀብብ     [a=I,c=A,+d]
+#
+ሜዘን     [a=P,c=B,-neg,l=M,-d]
+#
+ረከብ     [a=P,c=A,-neg,-d]
+ርሓክብ    [a=I,as=it,c=A,-neg,-d]
