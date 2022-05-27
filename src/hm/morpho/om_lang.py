@@ -56,7 +56,7 @@ OM.morphology['n'].FS_implic = {}
 OM.morphology['n'].citationFS = \
     language.FeatStruct("[pos=n,cnj=None,case=bs,-gen,-fem,-pl,-def,-1s_sb]")
 
-def n_anal2string(anal, webdict=None):
+def n_anal2string(anal, webdict=None, **kwargs):
     '''Convert a noun/adj analysis to a string.
 
     anal is ("(*)n", stem, citation, gramFS)
@@ -265,7 +265,7 @@ def v_get_citation(root, fs, guess=False):
 ## Function that converts analyses to strings
 OM.morphology['v'].anal2string = lambda fss, webdict, **kwargs: v_anal2string(fss, webdict=webdict, **kwargs)
 ## Function that converts analyses to strings
-OM.morphology['n'].anal2string = lambda fss, webdict, *kwargs: n_anal2string(fss, webdict=webdict, **kwargs)
+OM.morphology['n'].anal2string = lambda fss, webdict, **kwargs: n_anal2string(fss, webdict=webdict, **kwargs)
 ## Functions that return the citation forms for words
 OM.morphology['v'].citation = lambda root, fss, guess, vc_as, phonetic: v_get_citation(root, fss, guess)
 ## Functions that return the citation forms for words
