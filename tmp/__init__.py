@@ -41,17 +41,16 @@ def exit(save=True, cache=''):
         language.write_cache(segment=SEGMENT)
     morpho.languages.LANGUAGES.clear()
 
-def load_lang(language, phon=False, segment=False, pickle=True, recreate=False,
-              load_morph=True, cache='', simplified=False, translate=False,
+def load_lang(language, phon=False, segment=False, pickle=True,
+              load_morph=True, cache='', simplified=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
     @param language: a language label
     @type  language: string
     """
-    morpho.load_lang(language, pickle=pickle, recreate=recreate,
+    morpho.load_lang(language, pickle=pickle,
                      phon=phon, segment=segment, simplified=simplified,
-                     translate=translate,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
@@ -475,7 +474,7 @@ def seg2string(segmentation, language='am', sep='-', transortho=True, features=F
 ### Functions for debugging and creating FSTs
 
 def cascade(language, pos, gen=False, phon=False, segment=False,
-            translate=False, verbose=False):
+            verbose=False):
     '''Returns a cascade for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
     @param pos:    part-of-speech for the cascade, for example, 'v'
@@ -485,8 +484,7 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
     @param verbose: whether to print out various messages
     @return:       cascade for the the language and POS: a list of FSTs
     '''
-    pos = get_pos(language, pos, phon=phon, segment=segment, translate=translate,
-    load_morph=False, verbose=verbose)
+    pos = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
     if not gen and pos.casc:
         return pos.casc
     if gen:
@@ -497,13 +495,12 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
             pos.casc_inv = casc_inv
             return casc_inv
     pos.load_fst(True, create_fst=False, generate=gen, invert=gen, gen=gen,
-                 translate=translate, segment=segment, verbose=verbose)
+                 segment=segment, verbose=verbose)
     if gen:
         return pos.casc_inv
     return pos.casc
 
-def recompile(language, pos, phon=False, segment=False, gen=False,
-              translate=False, backwards=False,
+def recompile(language, pos, phon=False, segment=False, gen=False, backwards=False,
               save=True, verbose=True):
     '''Recompiles the cascade FST for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
@@ -511,7 +508,6 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
     @param phon:   whether the cascade is for phonology
     @param segment: whether the cascade is for segmentation
     @param gen:    whether to compile the cascade for generation (rather than analysis)
-    @param translate: whether the cascade is for translation
     @param backwards: whether to compile the FST from top (lexical) to bottom (surface)
                       for efficiency's sakd
     @param save:   whether to save the compiled cascade as an FST file
@@ -520,7 +516,6 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
     '''
     pos_morph = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen,
-                             translate=translate,
                              compose_backwards=backwards,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -529,7 +524,7 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, verbose=verbose)
     if save:
-        pos_morph.save_fst(generate=gen, segment=segment, phon=phon, translate=translate)
+        pos_morph.save_fst(generate=gen, segment=segment, phon=phon)
     return pos_morph
 
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
@@ -551,19 +546,18 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
     return casc.transduce1(string, fst_label=fst_label, fst_index=fst_index)
 
 def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
-            translate=False, guess=True, verbose=False):
+            guess=True, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
     @param abbrev: abbreviation for a language, for example, 'am'
     @param pos:    part-of-speech for the FST, for example, 'v'
     @param phon:   whether the FST is for phonology
     @param segment: whether the FST is for segmentation
-    @param translate: whether the FST is for translation
     @param verbose: whether to print out various messages
     @return:       POS object for the the language and POS
     """
     load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
-              translate=translate, guess=guess, verbose=verbose)
+              guess=guess, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, load=load_morph,
                                verbose=verbose)
     if lang:

@@ -39,7 +39,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 based on the NLTK fst module (URL: <http://www.nltk.org/>)
 written by some unidentified author.
 
-Version 1.0
+Version 2.0
 """
 
 import re, os, copy, time, functools, glob, pickle
@@ -81,7 +81,7 @@ UNKNOWN = '?'
 ## Transducing times out after this many time steps
 TIMEOUT = 2000
 
-## Regexs for parsing FSTs
+## Regexs for parsing FSTs and cascades
 # string_set_label={chars1, chars1, chars2, ...}
 SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
 # weighting = UNIFICATION
@@ -94,6 +94,8 @@ CASC_FST_RE = re.compile(r'>(.*?)<')
 CASC_AR_RE = re.compile(r'>(.+?\.ar)<')
 # >xxx.mtx<
 CASC_MTAX_RE = re.compile(r'>(.+?\.mtx)<')
+# IO abbreviations
+CASC_IO_ABBREV_RE = re.compile(r'{(.+)}\s*=\s*(.+)')
 # -> state
 INIT_RE = re.compile(r'->\s*(\S+)$')
 # state ->
@@ -104,6 +106,8 @@ R2L_RE = re.compile(r'\s*r2l\s*$')
 ARC_RE = re.compile(r'(\S+)?\s*->\s*(\S+)\s*\[(.*?)\]\s*(.*?)$')
 # src -> dest <arc> [weight]
 MULT_ARC_RE = re.compile(r'(\S+)?\s*->\s*(\S+)\s*<([^:]*?)(:?)([^:]*?)>\s*(.*?)$')
+# IO pair abbreviation; replace with value in _IOabbrevs dict.
+IO_ABBREV_RE= re.compile(r'{(.+?)}')
 # src -> dest >>casc<<
 CASC_RE = re.compile(r'(\S+)?\s*->\s*(\S+)\s*>>(.*?)<<\s*(.*?)$')
 # src -> dest >FST<
@@ -165,6 +169,9 @@ class FSTCascade(list):
 
         # String sets, abbreviated in cascade file
         self._stringsets = {}
+
+        # IO pair abbreviations
+        self._IOabbrevs = {}
 
         # Semiring weighting for all FSTs; defaults to FSS with unification
         self._weighting = UNIFICATION_SR
@@ -430,6 +437,12 @@ class FSTCascade(list):
 #        print("Adding stringset {}: {}".format(label, seq))
         self._stringsets[label] = frozenset(seq)
 
+    def get_IOpairs(self, abbrev):
+        """
+        The string containing IO character pairs for the given abbreviation.
+        """
+        return self._IOabbrevs.get(abbrev)
+
     def weighting(self):
         """The weighting semiring for the cascade."""
         return self._weighting
@@ -526,6 +539,13 @@ class FSTCascade(list):
                 cascade.add_stringset(label, [s.strip() for s in strings.split(',')])
                 continue
 
+            m = CASC_IO_ABBREV_RE.match(line)
+            if m:
+                abbrev, pairs = m.groups()
+                cascade._IOabbrevs[abbrev] = pairs
+#                print("Found IO abbrev: {} = {}".format(abbrev, pairs))
+                continue
+
             # Alternation rule
             m = CASC_AR_RE.match(line)
             if m:
@@ -567,8 +587,10 @@ class FSTCascade(list):
                     label = m.group(1)
                     filename = label + '.fst'
                     if not subcasc_indices or len(cascade) in subcasc_indices:
+                        abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
+                                       abbrevs=abbrevs,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -1926,7 +1948,7 @@ class FST:
 
     @staticmethod
     def load(filename, cascade=None, weighting=None, reverse=False,
-             seg_units=[], verbose=False,
+             seg_units=[], verbose=False, abbrevs=None,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
         """
@@ -1944,7 +1966,7 @@ class FST:
             return FST.parse(label, open(filename, encoding='utf-8').read(),
                              weighting=weighting,
                              cascade=cascade, directory=directory,
-                             seg_units=seg_units,
+                             seg_units=seg_units, abbrevs=abbrevs,
                              weight_constraint=weight_constraint,
                              gen=gen,
                              verbose=verbose)
@@ -2100,7 +2122,8 @@ class FST:
 
     @staticmethod
     def parse(label, s, weighting=None, cascade=None, fst=None,
-              directory='', seg_units=[], gen=False, verbose=False,
+              directory='', seg_units=[], gen=False,
+              abbrevs=None, verbose=False,
               weight_constraint=None):
         """
         Parse an FST from a string consisting of multiple lines from a file.
@@ -2115,6 +2138,8 @@ class FST:
             line = lines.pop().split('#')[0].strip() # strip comments
 
             if not line: continue
+
+            line = FST.sub_IOabbrevs(line, abbrevs)
 
             #{ String set (a list; added by MG)
             m = SS_RE.match(line)
@@ -2345,6 +2370,22 @@ class FST:
 #            print("Reversed\n{}".format(fst))
 
         return fst
+
+    @staticmethod
+    def sub_IOabbrevs(string, abbrevs):
+        """
+        Replace IOabbrevs in string with IO pairs, using IOabbrevs dict
+        for cascade.
+        """
+        def subfunc(matchobj):
+            key = matchobj.group(1)
+            string = abbrevs.get(key)
+            if not string:
+                print("WARNING: {} NOT IN DICT".format(key))
+                return ''
+            else:
+                return string
+        return IO_ABBREV_RE.sub(subfunc, string)
 
     def _parse_arc(self, string):
         """Parse input and output strings for one arc (MG).

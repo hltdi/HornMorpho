@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021.
+    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -318,8 +318,8 @@ class Language:
     @staticmethod
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False,
-             guess=True, poss=None, pickle=True,
-             ees=False,
+             guess=True, poss=None, pickle=True, translate=False,
+             ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
         if ees:
@@ -328,7 +328,8 @@ class Language:
             lang = Language(abbrev=abbrev)
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph, pickle=pickle,
-                                segment=segment, phon=phon, simplified=simplified,
+                                segment=segment, phon=phon, recreate=recreate,
+                                translate=translate, simplified=simplified,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
             # Loading data failed somewhere; abort
@@ -336,8 +337,9 @@ class Language:
         return lang
 
     def load_data(self, load_morph=False,
-                  pickle=True,
-                  segment=False, phon=False, guess=True, simplified=False,
+                  pickle=True, recreate=False,
+                  segment=False, phon=False, guess=True,
+                  simplified=False, translate=False,
                   poss=None, verbose=True):
         if self.load_attempted:
             return
@@ -354,8 +356,8 @@ class Language:
                 self.parse(data, poss=poss, verbose=verbose)
         if load_morph:
             if not self.load_morpho(segment=segment, ortho=True, phon=phon,
-                                    guess=guess, simplified=simplified,
-                                    pickle=pickle,
+                                    guess=guess, simplified=simplified, translate=translate,
+                                    pickle=pickle, recreate=recreate,
                                     verbose=verbose):
                 # There is no FST of the desired type
                 return False
@@ -921,8 +923,8 @@ class Language:
         """
 #        print("Convert phones {}, epenthesis {}".format(phones, epenthesis))
         phones = segment(phones, self.seg_units, correct=False)
-        if epenthesis:
-            self.epenthesis(phones)
+#        if epenthesis:
+#            self.epenthesis(phones)
         result = []
         for phone in phones:
             if phone in self.phone_map:
@@ -1176,7 +1178,8 @@ class Language:
 
     def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
                     pickle=True,
-                    segment=False, recreate=False, guess=True, verbose=False):
+                    segment=False, translate=False,
+                    recreate=False, guess=True, verbose=False):
         """Load words and FSTs for morphological analysis and generation."""
         fsts = fsts or (self.morphology and self.morphology.pos)
         opt_string = ''
@@ -1221,20 +1224,20 @@ class Language:
                                               create_casc=False,
                                               pickle=pickle,
                                               simplified=simplified,
-                                              phon=False, segment=segment,
+                                              phon=False, segment=segment, translate=translate,
                                               recreate=recreate, verbose=verbose)
             if phon or (ortho and not segment):
                 self.morphology[pos].load_fst(gen=True,
                                               create_casc=False,
                                               pickle=pickle,
                                               simplified=simplified,
-                                              phon=True, segment=segment,
+                                              phon=True, segment=segment, translate=translate,
                                               recreate=recreate, verbose=verbose)
             # Load guesser anal and gen FSTs
             if not segment and guess:
                 if ortho:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
-                                                  segment=segment,
+                                                  segment=segment, translate=translate,
                                                   pickle=pickle,
                                                   create_casc=False,
                                                   simplified=simplified,
@@ -1243,7 +1246,7 @@ class Language:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False,
                                                   pickle=pickle,
-                                                  simplified=simplified,
+                                                  simplified=simplified, translate=translate,
                                                   recreate=recreate, verbose=verbose)
             # Load statistics for generation
             self.morphology[pos].set_root_freqs()
@@ -1253,7 +1256,7 @@ class Language:
         return True
 
     def get_fsts(self, generate=False, phon=False,
-                 simplified=False, segment=False):
+                 simplified=False, segment=False, translate=False):
         '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
         fsts = []
         for pos in self.morphology.pos:

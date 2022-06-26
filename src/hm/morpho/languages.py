@@ -32,16 +32,16 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'am': 'amh',
-         'ch': 'sgw', 'chh': 'sgw',
-         'sl': 'stv', 'slt': 'stv',
-         'ks': 'gru', 'kst': 'gru',
-         'mh': 'muh',
-         'ms': 'mvz', 'msq': 'mvz',
-         'so': 'som',
-         'ti': 'tir', 'tg': 'tir',
-         'te': 'tig',
-         'om': 'orm'}
+CODES = {'am': 'amh', 'a': 'amh',
+         'ch': 'sgw', 'chh': 'sgw', 'c': 'sgw',
+         'sl': 'stv', 'slt': 'stv', 'S': 'stv',
+         'ks': 'gru', 'kst': 'gru', 'k': 'gru',
+         'mh': 'muh', 'M': 'muh',
+         'ms': 'mvz', 'msq': 'mvz', 'm': 'mvz',
+         'so': 'som', 's': 'som',
+         'ti': 'tir', 'tg': 'tir', 't': 'tir',
+         'te': 'tig', 'T': 'tig',
+         'om': 'orm', 'o': 'orm'}
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
@@ -56,7 +56,7 @@ def get_lang_dir(abbrev):
     return os.path.join(LANGUAGE_DIR, abbrev)
 
 def load_lang(lang, phon=False, segment=False, load_morph=True,
-              pickle=True,
+              translate=False, pickle=True, recreate=False,
               # False, '', or the name of a cache file
               cache=True, guess=True, simplified=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
@@ -84,7 +84,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment,
-                                    pickle=pickle,
+                                    pickle=pickle, translate=translate, recreate=recreate,
                                     phon=phon, guess=guess, simplified=simplified,
                                     poss=poss, verbose=verbose)
         if not loaded:
@@ -101,9 +101,9 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 #            from . import ees
 #            EES = ees.EES()
         language = Language.make('', lang_id, load_morph=load_morph,
-                                 pickle=pickle,
+                                 pickle=pickle, translate=translate,
                                  segment=segment, phon=phon, guess=guess,
-                                 simplified=simplified,
+                                 simplified=simplified, recreate=recreate,
                                  poss=poss, ees=ees,
                                  verbose=verbose)
         if not language:
@@ -121,12 +121,13 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             print("Loading backup language {}".format(language.backup))
         # If there's a backup language, load its data file so the translations
         # can be used.
-        load_lang(language.backup, load_morph=False,
-                  pickle=pickle, guess=guess, verbose=verbose)
+        load_lang(language.backup, load_morph=False, recreate=recreate,
+                  pickle=pickle, translate=translate,
+                  guess=guess, verbose=verbose)
     return True
 
 def get_language(language, load=True,
-                 pickle=True,
+                 pickle=True, translate=False,
                  phon=False, segment=False, guess=True, simplified=False,
                  load_morph=True, cache='', verbose=False):
     """Get the language with lang_id, attempting to load it if it's not found
@@ -139,14 +140,14 @@ def get_language(language, load=True,
         if load:
             if not load_lang(lang_id, phon=phon, pickle=pickle,
                              segment=segment, guess=guess,
-                             simplified=simplified,
+                             simplified=simplified, translate=translate,
                              load_morph=load_morph, cache=cache,
                              verbose=verbose):
                 return False
         return LANGUAGES.get(lang_id, None)
     if load_morph and not lang.morpho_loaded:
         lang.load_morpho(phon=phon, segment=segment, guess=guess,
-                         pickle=pickle,
+                         pickle=pickle, translate=translate,
                          simplified=simplified)
         return lang
     if not load_morph:
@@ -164,14 +165,14 @@ def load_pos(language, pos, scratch=False):
     """
     language.morphology[pos].load_fst(scratch, recreate=True, verbose=True)
 
-def load_langs(abbrev, l1, poss1, l2, poss2, pickle=True,
+def load_langs(abbrev, l1, poss1, l2, poss2, pickle=True, recreate=False,
                load_lexicons=True, verbose=True):
     """Load two languages for translation between them."""
     load_lang(l1, phon=False, segment=False, load_morph=True,
-              pickle=pickle,
+              pickle=pickle, recreate=recreate,
               guess=False, poss=poss1, verbose=verbose)
     load_lang(l2, phon=False, segment=False, load_morph=True,
-              pickle=pickle,
+              pickle=pickle, recreate=recreate,
               guess=False, poss=poss2, verbose=verbose)
     lang1 = get_language(l1, verbose=verbose)
     lang2 = get_language(l2, verbose=verbose)
