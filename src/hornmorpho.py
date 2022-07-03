@@ -67,6 +67,13 @@ def convfeat(fs, oldfs, newfs, replace=False):
 #    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
 #    T = hm.morpho.TransTask(AK)
 
+## 2022.6
+## Mesqan stems
+def mvz_stem():
+    hm.load_lang('mvz', recreate=True)
+    m = hm.get_language('mvz')
+    return m.morphology['v_stem']
+
 def get_lang(abbrev, segment=False, guess=True, phon=False, cache='',
              pickle=True, verbose=False):
     """Return the language with abbreviation abbrev, loading it

@@ -1,0 +1,38 @@
+Verb root classes and subclasses
+
+A
+0,j=t	seb:er
+0,j=i	neg:es
+0,+d,j=t	kes:es
+a1
+a2
+a3
+o2
+e2
+e3
+
+B
+0
+a1
+a3
+e3
+
+C
+0
+a3
+
+D
+
+E
+0
+a3
+e3
+
+F
+0
+?a3
+?e3
+
+X (or E e1e3)
+0	sye
+

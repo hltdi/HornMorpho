@@ -1,5 +1,0 @@
-ሰበር   ሰፐር    [tm=prf,tl=c,r=ስብር]
-ሰበር   ሰፐር    [tm=prf,tl=M,r=ስብር]
-ሰብር  ሰብር     [tm=imf,tl=c|M,r=ስብር]
-ሰላ    ሰና     [tm=prf,tl=c,r=ስልእ]
-ሰላ    ሰራ     [tm=imf,tl=c,r=ስልእ]

@@ -5,16 +5,16 @@ nolab -> nolab  [X;C]
 
 ### classes A, B, C, E, s=0
 
-# 3 is labializable
-start -> lab3   []    [3=B|K,s=0,+W]
-# deal with 1 and 2
-start -> lab12  []    [3=T|R|N,s=0,+W]
+## 3 is labializable
+start -> lab3   []    [3=B,s=0,+W]
+# but not if it's velar and Y is true
+start -> lab12  []    [3=T|R|N,s=0,+W];[3=K,s=0,+Y,+W]
 # labialize 2 only in case of redup
 lab12 -> lab2   []    [2=B|K]
 # labialize 1 only in case of redup
 lab12 -> lab1   []    [1=B|K,2=T|R|N]
 # 1 and 2 are not labializable
-lab12 -> nolab   []    [1=T|R|N|a,2=T|R|N]
+lab12 -> nolab   []    [1=T|R|N|a|w,2=T|R|N]
 
 ## labialization of final segment
 # skip 0 for E and redup ABC
@@ -50,7 +50,7 @@ lab1 -> lab1.1    [{labB.Ie};{labG.Ie};{labB.E}]
 lab1.1 -> lab1.2  [X;C]
 lab1.2 -> end     [X;C]
 
-## class A,B a3
+### class A,B a3
 
 start -> lab2a3   []   [s=a3,2=B|K,+W]
 start -> lab01a3  []    [s=a3,2=T|R|N,+W]
@@ -70,9 +70,9 @@ lab2a3 -> lab2a3.1  [X;C]
 lab2a3.1 -> end     [{labB.a};{labG.a}]         [-Y]
 lab2a3.1 -> end     [{labB.a2e};{labG.a2e}]     [+Y]
 
-## class A,B,E e3
+### class A,B,E e3
 
-# ዝነጘ
+## ዝነጘ
 start -> lab2e3  []   [s=e3,2=C,+W]
 # ጨ<ኘ>; any other possibilities for c2? (what about 3p prf?)
 start -> lab01e3 []   [s=e3,2=J,+W]
@@ -80,17 +80,27 @@ lab01e3 -> lab1e3 []  [s=e3,1=B|K]
 # <ጨ>ኘ
 lab01e3 -> nolab  []  [s=e3,1=J|N]
 
-# labialization of first segment (second in class E)
+## labialization of first segment (second in class E)
+# C0 in E
 lab1e3 -> lab1e3.0    [X;C]   [c=E]
+# Labialize C1 in E
 lab1e3.0 -> lab1e3.1  [{labB.e};{labG.e}]
+# Labialize C1 in A,B
 lab1e3 -> lab1e3.1    [{labB.e};{labG.e}]   [c=A|B]
+# C2
 lab1e3.1 -> end       [X;C]
 
-# labiabization of last segment
+## labiabization of last segment
+# C0 in E
 lab2e3 -> lab2e3.0   [X;C]   [c=E]
+# C1 in E
 lab2e3.0 -> lab2e3.1 [X;C]
+# C1 in A,B
 lab2e3 -> lab2e3.1   [X;C]    [c=A|B]
+# Labialize C2
 lab2e3.1 -> end      [{labC.Ie}]
+
+### still to do: class D (ቅየ), anomalous (ወረ, ባረ)
 
 nolab ->
 end ->
