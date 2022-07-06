@@ -13,6 +13,8 @@ e3
 
 B
 0
+P2   beqY:el
+P12 gYegY:et
 a1
 a3
 e3

@@ -69,8 +69,8 @@ def convfeat(fs, oldfs, newfs, replace=False):
 
 ## 2022.6
 ## Mesqan stems
-def mvz_stem():
-    hm.load_lang('mvz', recreate=True)
+def mvz_stem(verbose=False):
+    hm.load_lang('mvz', recreate=True, verbose=verbose)
     m = hm.get_language('mvz')
     return m.morphology['v_stem']
 

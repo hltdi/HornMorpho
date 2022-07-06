@@ -35,6 +35,8 @@
 ጘጘት      [c=B,s=0,1=K,2=K,3=T]
 ሸከት      [c=B,s=0,1=T,2=K,3=T]
 ዠበር      [c=B,s=0,1=T,2=B,3=R]
+በቐል      [c=B,s=P2,1=B,2=K,3=R]
+ጘጘት      [c=B,s=P12,1=K,2=K,3=T]
 # 2=Y?
 ቸኘ       [c=B,s=e3,1=J,2=J,-d]
 ጨኘ      [c=B,s=e3,1=J,2=J,-d]
@@ -44,14 +46,17 @@
 ማረሕ     [c=C,1=B,2=R,3=K]
 # D
 ሶመን     [c=D,1=T,2=B,3=N]
-# K(?) class for this anomalous group?; c2 needed?
-ስየ       [c=K,1=T]
 # c2 and c3 needed? (+d covers it)
 ምረመር    [c=E,s=0,0=B,1=R,2=B,3=R,+d]
 ስበሰብ     [c=E,s=0,0=T,1=B,2=T,3=B,+d]
 ምሰከር     [c=E,s=0,0=B,1=T,2=K,3=R,-d]
 # E, 2=C
 ዝነጘ      [c=E,s=e3,0=T,1=N,2=C]
+# F
+ግላገል     [c=F,s=0,0=K,1=R,2=K,3=R,+d]
+ቅላመጥ   [c=F,s=0,0=K,1=R,2=B,3=T,-d]
+# K(?) class for this anomalous group?; c2 needed?
+ስየ       [c=K,1=T]
 # anomalous; not clear on any of this
 #ወር       [c=?,s=?,1=B,2=R]
 #ባር       [c=?,s=?,1=B,2=R]
