@@ -8,33 +8,93 @@ a1
 a2
 a3
 o2
-e2
+e2		xEm
 e3
+a1e3	aZ:e
 
 B
++-pal: palatalized velar or dental C1 and/or C2
 0
-P2   beqY:el
-P12 gYegY:et
 a1
+a1n		Enqef	ኤንቀፈ
 a3
 e3
 
 C
 0
 a3
+n		nsaf:ef
 
 D
+0
+e3		rox:e, Tof:e
 
 E
 0
 a3
 e3
+a1a3	lal:a
+n		nkret:et
+na1a3	nkak:a
+na1e3	nbWac:e	ንቧቸ
 
 F
 0
 ?a3
 ?e3
+n		nqlaq:el
+ne3?	nqWCaC:e	ን𞟲ጫጨ
 
-X (or E e1e3)
+G?
+H?
+
+K (or E e1e3)
 0	sye
+
+anomalous
+smate
+were
+xene
+xare
+xe
+
+derivational categories
+ሰበረ
+ተሰበረ	te-
+ኣሰበረ	a-
+ኣትሰበረ	at-
+ተሳበረ	te-, -a-
+ኣትሳበረ	at-, -a-
+ሰባበረ	dup
+ተሰባበረ	te-, dup
+ኣትሰባበረ	at-, dup
+
+te-, a-, at-
++- -a-
++- dup
+
+	0	-a-	dup
+0	+	0	+
+a-	+	0	0		A jussive, neg prf
+te-	+	+	+		imperf/jussive V2=e
+at-	+	+	+		"B"-like: imperf, neg perf
+
+vc = 0/a/te/at
+as = 0/a/dup
+cs = {a, t}
+a- = {+a, -t}
+at- = {+a, +t}
+0 = {-a, -t}
++a: prefix but no common
+
+not passive vc=0|a|at
++-a
++-at
+
+vc = 0|ps|cs
+
+
+
+
+
 

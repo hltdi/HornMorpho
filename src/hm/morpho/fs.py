@@ -839,7 +839,7 @@ class Feature:
     constraints, default values, etc.
     """
     def __init__(self, name, default=None, display=None):
-        assert display in (None, 'prefix', 'slash')
+        assert display in (None, 'prefix', 'slash', 'range')
 
         self._name = name # [xx] rename to .identifier?
         """The name of this feature."""
@@ -886,27 +886,27 @@ class Feature:
 # Add ourselves to the list of permissible types for feature names.
 FeatStruct._feature_name_types += (Feature,)
 
-
 class SlashFeature(Feature):
     def parse_value(self, s, position, reentrances, parser):
         return parser.partial_parse(s, position, reentrances)
 
-##class RangeFeature(Feature):
-##    RANGE_RE = re.compile('(-?\d+):(-?\d+)')
-##    def parse_value(self, s, position, reentrances, parser):
-##        m = self.RANGE_RE.match(s, position)
-##        if not m: raise ValueError('range', position)
-##        return (int(m.group(1)), int(m.group(2))), m.end()
-##
-##    def unify_base_values(self, fval1, fval2, bindings):
-##        if fval1 is None: return fval2
-##        if fval2 is None: return fval1
-##        rng = max(fval1[0], fval2[0]), min(fval1[1], fval2[1])
-##        if rng[1] < rng[0]: return UnificationFailure
-##        return rng
+#class RangeFeature(Feature):
+#    RANGE_RE = re.compile('(-?\d+):(-?\d+)')
+#    def parse_value(self, s, position, reentrances, parser):
+#        m = self.RANGE_RE.match(s, position)
+#        if not m: raise ValueError('range', position)
+#        return (int(m.group(1)), int(m.group(2))), m.end()
+#
+#    def unify_base_values(self, fval1, fval2, bindings):
+#        if fval1 is None: return fval2
+#        if fval2 is None: return fval1
+#        rng = max(fval1[0], fval2[0]), min(fval1[1], fval2[1])
+#        if rng[1] < rng[0]: return UnificationFailure
+#        return rng
 
 SLASH = SlashFeature('slash', default=False, display='slash')
 TYPE = Feature('type', display='prefix')
+#RANGE = RangeFeature('range', default=False, display='range')
 
 ######################################################################
 # Feature Structure Parser
@@ -918,6 +918,7 @@ class FeatStructParser:
         self._class = cls
         self._prefix_feature = None
         self._slash_feature = None
+#        self._range_feature = None
         self._fsh = fsh
         for feature in features:
             if feature.display == 'slash':
@@ -928,6 +929,9 @@ class FeatStructParser:
                 if self._prefix_feature:
                     raise ValueError('Multiple features w/ display=prefix')
                 self._prefix_feature = feature
+#            if feature.display == 'range':
+#                if self._range_feature:
+#                    raise ValueError('Multiple features w/ display=range')
         self._features_with_defaults = [feature for feature in features
                                         if feature.default is not None]
 
@@ -991,6 +995,7 @@ class FeatStructParser:
 
     def _partial_parse(self, s, position, reentrances, fstruct=None):
         # Create the new feature structure
+#        print("s: {}, position: {}, reentrances: {}, fstruct: {}".format(s, position, reentrances, fstruct))
         if fstruct is None:
             fstruct = self._class()
         else:
@@ -1066,6 +1071,7 @@ class FeatStructParser:
 
             # Check if it's a special feature.
             if name[0] == '*' and name[-1] == '*':
+                print("  special!")
                 name = self._features.get(name[1:-1])
                 if name is None:
                     raise ValueError('known special feature', match.start(2))

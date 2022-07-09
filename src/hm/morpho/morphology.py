@@ -1090,9 +1090,9 @@ class POSMorphology:
         else:
             return self.anal(form, init_weight=init_weight, guess=guess)
 
-    def anal(self, form, preproc=False,
+    def anal(self, form, init_weight=None, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
-             init_weight=None, result_limit=0,
+             result_limit=0,
              to_dict=False, sep_anals=False, normalize=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
         """Analyze form."""

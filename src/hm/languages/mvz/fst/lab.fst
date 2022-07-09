@@ -18,31 +18,31 @@ lab12 -> nolab   []    [1=T|R|N|a|w,2=T|R|N]
 
 ## labialization of final segment
 # skip 0 for E and redup ABC
-lab3 -> lab3.0    [X;C]    [c=E];[c=A|B|C,s=0,as=it]
+lab3 -> lab3.0    [X;C]    [c=E|F];[c=A|B|C,s=0,as=it]
 # skip 1, unless E is +d
-lab3.0 -> lab3.1  [X;C]    [c=E,-d];[as=it]
+lab3.0 -> lab3.1  [X;C]    [c=E|F,-d];[as=it]
 # labialize 1 B or G, vowel I or e
 lab3.0 -> lab3.1  [{labB.Ie};{labG.Ie}]
 # skip 1 for ABC -it
 lab3 -> lab3.1    [X;C]
 # skip 2 for ABC -d and 1 for E
-lab3.1 -> lab3.2  [X;C]    [-d];[c=E]
+lab3.1 -> lab3.2  [X;C]    [-d];[c=E|F]
 # labialize 2
 lab3.1 -> lab3.2  [{labB.Ie};{labG.Ie}]
 # labialize 3
 lab3.2 -> end     [{labB.I}]
 
 ## labialization of 2nd to last segment
-lab2 -> lab2.0    [X;C]    [c=E,-d];[c=A|B|C,s=0,as=it]
-lab2 -> lab2.0    [{labB.Ie};{labG.Ie}]    [c=E,+d]
-lab2.0 -> lab2.1  [X;C]    [c=E]
+lab2 -> lab2.0    [X;C]    [c=E|F,-d];[c=A|B|C,s=0,as=it]
+lab2 -> lab2.0    [{labB.Ie};{labG.Ie}]    [c=E|F,+d]
+lab2.0 -> lab2.1  [X;C]    [c=E|F]
 lab2.0 -> lab2.1  [{labB.a};{labG.a}]      [as=it]
 lab2 -> lab2.1    [X;C]
 lab2.1 -> lab2.2  [{labB.Ie};{labG.Ie}]
 lab2.2 -> end     [X;C]
 
 ## labialization of 3rd to last segment
-lab1 -> lab1.0    [X;C]    [c=E]
+lab1 -> lab1.0    [X;C]    [c=E|F]
 lab1 -> lab1.0    [{labB.I};{labG.I}]       [c=A|B|C,s=0,as=it]
 lab1.0 -> lab1.1  [X;C]
 # also labG.E (or would this always be palatalized in class B?)
@@ -82,9 +82,9 @@ lab01e3 -> nolab  []  [s=e3,1=J|N]
 
 ## labialization of first segment (second in class E)
 # C0 in E
-lab1e3 -> lab1e3.0    [X;C]   [c=E]
-# Labialize C1 in E
-lab1e3.0 -> lab1e3.1  [{labB.e};{labG.e}]
+lab1e3 -> lab1e3.0    [X;C]   [c=E|F]
+# Labialize C1 in E and F
+lab1e3.0 -> lab1e3.1  [{labB.e};{labG.e};{labB.a};{labG.a}]
 # Labialize C1 in A,B
 lab1e3 -> lab1e3.1    [{labB.e};{labG.e}]   [c=A|B]
 # C2
@@ -92,13 +92,13 @@ lab1e3.1 -> end       [X;C]
 
 ## labiabization of last segment
 # C0 in E
-lab2e3 -> lab2e3.0   [X;C]   [c=E]
+lab2e3 -> lab2e3.0   [X;C]   [c=E|F]
 # C1 in E
 lab2e3.0 -> lab2e3.1 [X;C]
 # C1 in A,B
 lab2e3 -> lab2e3.1   [X;C]    [c=A|B]
 # Labialize C2
-lab2e3.1 -> end      [{labC.Ie}]
+lab2e3.1 -> end      [{lab.Ie}]
 
 ### still to do: class D (ቅየ), anomalous (ወረ, ባረ)
 

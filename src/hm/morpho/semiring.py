@@ -4,7 +4,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
     Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018,
-       2019, 2020, 2021.
+       2019, 2020, 2021, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -68,7 +68,7 @@ class FSSet(set, FS):
         feature structures or strings.
         By default it's frozen.
         '''
-        # This may sill be needed for unpickling, when items is a tuple of a list of FeatStructs
+        # This may still be needed for unpickling, when items is a tuple of a list of FeatStructs
         if len(items) > 0 and isinstance(items[0], (list, set)):
             items = items[0]
         if not isinstance(items, set):
