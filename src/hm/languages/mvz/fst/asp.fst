@@ -17,6 +17,6 @@ it2b -> end       [በ;ብ]
 it1 -> it2m       [ማ:]
 it2m -> end       [መ;ም]
 
-end -> end       [X;C]
+end -> end       [%X]
 end ->
 
