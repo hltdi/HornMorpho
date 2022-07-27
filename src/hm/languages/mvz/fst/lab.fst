@@ -54,10 +54,10 @@ lab1.0.3 -> end      [{lab.Ie};{labB.E}]
 
 ### class A,B a3
 
-start -> lab2a3   []   [s=a3,2=B|K,+W]
-start -> lab01a3  []    [s=a3,2=T|R|N,+W]
-lab01a3 -> lab1a3 []    [s=a3,1=B|K]
-lab01a3 -> nolab  []    [s=a3,1=T|R|N]
+start -> lab2a3   []   [3=a,2=B|K,+W]
+start -> lab01a3  []    [3=a,2=T|R|N,+W]
+lab01a3 -> lab1a3 []    [3=a,1=B|K]
+lab01a3 -> nolab  []    [3=a,1=T|R|N]
 
 # labialization of first segment
 lab1a3 -> lab1a3.0   [{lab.I}]    [as=it]
@@ -73,14 +73,13 @@ lab2a3.1 -> end     [{lab.a}]         [-Y]
 lab2a3.1 -> end     [{lab.a2e}]     [+Y]
 
 ### class A,B,E e3
-
 ## ዝነጘ
-start -> lab2e3  []   [s=e3,2=C,+W]
+start -> lab2e3  []   [3=e,2=GY,+W]
 # ጨ<ኘ>; any other possibilities for c2? (what about 3p prf?)
-start -> lab01e3 []   [s=e3,2=J,+W]
-lab01e3 -> lab1e3 []  [s=e3,1=B|K]
+start -> lab01e3 []   [3=e,2=J,+W]
+lab01e3 -> lab1e3 []  [3=e,1=B|K]
 # <ጨ>ኘ
-lab01e3 -> nolab  []  [s=e3,1=J|N]
+lab01e3 -> nolab  []  [3=e,1=J|N]
 
 ## labialization of first segment (second in class E)
 # C0 in E
@@ -100,7 +99,7 @@ lab2e3.0 -> lab2e3.1 [%X]
 # C1 in A,B
 lab2e3 -> lab2e3.1   [%X]    [c=A|B]
 # Labialize C2
-lab2e3.1 -> end      [{lab.Ie}]
+lab2e3.1 -> end      [{labGY.Ie}]
 
 ### still to do: class D (ቅየ), anomalous (ወረ, ባረ)
 

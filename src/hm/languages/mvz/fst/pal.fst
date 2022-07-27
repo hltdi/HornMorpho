@@ -1,9 +1,9 @@
 -> start
 
-start -> nopal  []    [-Y]
+start -> nopal  []    [-Y];[3=J|GY,+Y];[3=e,2=J|GY,+Y]
 
-### palatalize C3
-## #3 is palatalizable
+### palatalize C3?
+## 3 is palatalizable
 start -> pal3   []    [3=T|K|N,s=0,+Y];[3=R,s=0,+Y,-W]
 # palatalize C3
 pal3 -> pal3.0   [C]         [c=E|F]
