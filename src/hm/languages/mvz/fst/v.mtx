@@ -3,59 +3,86 @@ $ conj_prep_pre
   --  [cpp=None,tm=p,+neg];[cpp=None,tm=p,+sub,-neg];[tm=i];[tm=j]
 
 $ neg
-  ኣን   [+neg,tm=p]
-  ኣ    [+neg,tm=i|j]
+# These could be preceded by conjunctions
+  =ኣን   [+neg,tm=p]
+  =ኣ    [+neg,tm=i|j,sp=1|2]
+  ኤ    [+neg,tm=i|j,sp=3,sn=2];[+neg,tm=i|j,sp=3,sn=1,sg=m];[+neg,tm=i|j,sp=0]
   --   [-neg]
 
 $ sb_pre
-  ይ   [tm=i,sp=3,sn=2];[tm=i,sp=3,sn=1,sg=m];[tm=i,sp=0]
+  ይ   [tm=i,sp=3,sn=2,-neg];[tm=i,sp=3,sn=1,sg=m,-neg];[tm=i,sp=0,-neg]
   የ   [tm=j,sp=3,sn=2,-neg];[tm=j,sp=3,sn=1,sg=m,-neg];[tm=j,sp=0,-neg]
   ት   [tm=i,sp=2];[tm=i|j,sp=3,sn=1,sg=f];[tm=j,sp=2,+neg]
-  አ   [tm=i,sp=1,sn=1,-neg]
-  ል   [tm=j,sp=1,sn=1]
-  ን   [tm=i|j,sp=1,sn=2];[tm=i,sp=1,sn=1,+neg];[tm=j,sp=1,sn=1]
-  --  [tm=p];[tm=j,sp=2,-neg]
+  አ   [tm=i,sp=1,-neg]
+  ን   [tm=i,sp=1,+neg];[tm=j,sp=1]
+  --  [tm=p];[tm=j,sp=2,-neg];[tm=i|j,+neg,sp=3,sn=1,sg=m];[tm=i|j,+neg,sp=3,sn=2]
 
 $ voice
-  ተ   [tm=p,vc=ps];[tm=j,sp=2,vc=ps]
-  /   [tm=i,vc=ps];[tm=j,sp=1|3,vc=ps]
-  --  [vc=0|a|at]
+  ተ   [tm=p,vc=ps,cpp=None];[tm=j,sp=2,vc=ps]
+  ት    [tm=i,vc=ps];[tm=j,sp=1|3,vc=ps];[tm=p,vc=ps,cpp=የ]
+  =ኣ  [vc=a]
+  =ኣት [vc=at]
+  --  [vc=0]
 
 $ stem
-  +v_stem+    []
+  >>v_stemA<<
 
-$ sb_tm
-  --   [lx=P0,tm=p,sp=1|2|3,-neg];[lx=Pi,tm=p,sp=0,-neg];
-       [lx=P0n,tm=p,sp=1|2|3,+neg];[lx=Pin,tm=p,sp=0,+neg];
-       [lx=I0,tm=i,sp=1|3,vc=0|a|at];[lx=I0,tm=i,sn=2,vc=0|a|at];[lx=I0,tm=i,sp=2,sn=1,sg=m,vc=0|a|at];
-       [lx=Ii,tm=i,sp=0,vc=0|a|at];[lx=If,tm=i,sp=2,sn=1,sg=f,vc=0|a|at]
+#$ sb_tm
+#  --   [lx=P0,tm=p,sp=1|2|3,-neg];[lx=Pi,tm=p,sp=0,-neg];
+#       [lx=P0n,tm=p,sp=1|2|3,+neg];[lx=Pin,tm=p,sp=0,+neg];
+#       [lx=I0,tm=i,sp=1|3,vc=0|a|at];[lx=I0,tm=i,sn=2,vc=0|a|at];[lx=I0,tm=i,sp=2,sn=1,sg=m,vc=0|a|at];
+#       [lx=Ii,tm=i,sp=0,vc=0|a|at];[lx=If,tm=i,sp=2,sn=1,sg=f,vc=0|a|at]
 
 $ sb_suf
-  𞟫   [tm=p,sp=1,sn=1]
-  ሐ   [tm=p,sp=2,sn=1,sg=m]
-  𞟥   [tm=p,sp=2,sn=1,sg=f]
-  =አ    [sp=3,sn=1,sg=m,tm=p]
-  =አት   [sp=3,sn=1,sg=f,tm=p]
-  ነ     [sp=1,sn=2]
-  ሕᎃ  [tm=p,sp=2,sn=2,sg=m]
-  ሕማ  [tm=p,sp=2,sn=2,sg=f]
-  ᎃ   [sp=3,sn=2,sg=m];[tm=i|j,sp=2,sn=2,sg=m]
-  ማ    [sp=3,sn=2,sg=f];[tm=i|j,sp=2,sn=2,sg=f]
-#  =ኢ   [sp=2,sn=1,sg=f,tm=i|j]
-  --   [tm=i|j,sp=1,sn=1];[tm=i|j,sp=2,sn=1];[tm=i|j,sp=3,sn=1];
-       [sp=0]
+  ሑ   [tm=p,sp=1,sn=1,-Y]
+  ሐ   [tm=p,sp=2,sn=1,sg=m,-Y]
+  ሽ   [tm=p,sp=2,sn=1,sg=f,-Y]
+  =አ    [sp=3,sn=1,sg=m,tm=p,-Y]
+  =አ/ች   [sp=3,sn=1,sg=f,tm=p,op=None,-Y];[sp=3,sn=1,sg=f,tm=p,op=3,on=1,og=m,-Y]
+  # 3sf suffix differs for all objs other than 3sm (not sure about applicatives though)
+  =አ/ት   [sp=3,sn=1,sg=f,tm=p,-Y,op=1|2];[sp=3,sn=1,sg=f,tm=p,-Y,op=3,on=2];[sp=3,sn=1,sg=f,tm=p,-Y,op=3,on=1,og=f]
+  ነ     [sp=1,sn=2,-Y]
+  ሑ  [tm=p,sp=2,sn=2,sg=m,-Y]
+  ሕማ  [tm=p,sp=2,sn=2,sg=f,-Y]
+  =ኦ    [sp=3,sn=2,sg=m,-Y];[tm=i|j,sp=2,sn=2,sg=m,-Y]
+  =አማ    [sp=3,sn=2,sg=f,-Y];[tm=i|j,sp=2,sn=2,sg=f,-Y]
+  --   [tm=i|j,sp=2,sn=1,sg=f,+Y,-W];[tm=i|j,sp=1,sn=1,-Y];[tm=i|j,sp=2,sn=1,sg=m,-Y];[tm=i|j,sp=3,sn=1,-Y];[sp=0,+W,+Y]
+
+#$ ob_suf_cat
+#   --  [sn=2,oc=h];[sn=1,sp=1,oc=l];[sn=1,sp=2,sg=f,oc=h];[sn=1,sp=2,sg=m,oc=l];[sn=1,sp=3,oc=l];[sp=0,oc=h]
 
 $ ob_suf
+   # these only work for tm=p so far
+   ## 3 obj
   [op=3,on=1,og=m]
-    =ኢ   [sp=0]
-    =ኡ   [sp=2,sn=1,sg=f]
+   # heavy suffix (or =ይ?); subjects plural and 
+   =ኢ   [sp=0];[sn=2];[sp=2,sn=1,sg=f]
+   # light suffix
+   =ኡ   [sp=2,sn=1,sg=f,+W,-Y]
+  /ን    [sp=1,sn=1,+W,-Y];[sp=2,sn=1,sg=m,+W,-Y];[sp=3,sn=1,sg=m,+W,-Y]
+  ## 2 obj
   [op=2,on=1,og=m]
-    /ከ   [sp=2,sn=1,sg=f];[sp=0]
+  # heavy suffix
+  # perfective; ሰበርኔከ
+  =ኢ/ከ  [tm=p,sp=0];[tm=p,sn=2,-W,-Y]
+  # imperfective, jussive?; ይለቅሞከ
+  /ከ    [tm=i|j,sp=0];[tm=i|j,sn=2,-W,-Y]
+  # light suffix
+  # perfective; ሰበረናሓ
+  # ሓ not ሐ?
+  /ናሓ   [tm=p,sp=3,sn=1,sg=m,-W,-Y];[tm=p,sp=1,sn=1,-W,-Y]
+  # only for 3sf? ሰበረታሓ
+  =ኣሓ    [tm=p,sp=3,sn=1,sg=f,-W,-Y]
+  # imperfective, jussive?; ይለቅምሐ
+  ሐ     [tm=i|j,sp=1,sn=1,-W,-Y];[tm=i|j,sp=2,sn=1,sg=m,-W,-Y];[tm=i|j,sp=3,sn=1,sg=m,-W,-Y]
   --   [op=None,sp=1|2|3]
 
 $ end
-  ም    [tm=p,-sub,-neg,-cvb];[tm=p,+sub,-neg,+cvb]
-  =ኡ   [tm=i,-sub,-neg,sp=1];[tm=i,-sub,-neg,sp=2|3,sn=1,sg=m]
-  F    [tm=i,-sub,-neg,sp=3,sn=1,sg=f,op=None]
-  /ት   [tm=i,-sub,-neg,sp=2,sn=1,sg=f];[tm=i,-sub,-neg,sp=2|3,sn=2]
-  --   [tm=j];[tm=p,+neg];[tm=p,+sub,-cvb];[tm=i,+sub];[tm=i,+neg,-sub]
+# Either a real (subordinate) converb or (finite) present perfect
+  ም    [tm=p,-neg,+cvb]
+  =ኡ  [tm=i,-sub,-neg,+prog]
+#  =ኡ   [tm=i,-sub,-neg,sp=1];[tm=i,-sub,-neg,sp=2|3,sn=1,sg=m]
+# Muher  
+#  F    [tm=i,-sub,-neg,sp=3,sn=1,sg=f,op=None]
+#  /ት   [tm=i,-sub,-neg,sp=2,sn=1,sg=f];[tm=i,-sub,-neg,sp=2|3,sn=2]
+  --   [tm=j];[tm=i,-prog];[tm=p,-cvb]

@@ -1739,6 +1739,7 @@ class FST:
                 pickle=True,
                 # Features determining which FST
                 empty=True, phon=False, segment=False, generate=False, simplified=False,
+                experimental=False,
                 create_weights=True, verbose=False):
         '''Restore an FST from a file, in some cases creating the cascade first.
 
@@ -1748,7 +1749,10 @@ class FST:
         whether the FST was found in a pickle.
         '''
         empty_name = fst_name + '0'
-        if empty:
+        # experimental has priority over others
+        if experimental:
+            name = fst_name + 'X'
+        elif empty:
             name = empty_name
             if phon:
                 name = name + 'P'
@@ -2042,7 +2046,7 @@ class FST:
                                                language=mtax.cascade.language)
                         if verbose:
                             print('Composing {}'.format(casc))
-                        fst1 = casc.compose()
+                        fst1 = casc.compose(trace=verbose)
                         # Record the new composed FST in the higher cascade
                         if mtax.cascade:
                             mtax.cascade.add(fst1)
@@ -2376,7 +2380,10 @@ class FST:
         """
         Replace IOabbrevs in string with IO pairs, using IOabbrevs dict
         for cascade.
+        For examples, see mvz/cas/v_stemA.cas
         """
+        if not abbrevs:
+            return string
         def subfunc(matchobj):
             key = matchobj.group(1)
             string = abbrevs.get(key)

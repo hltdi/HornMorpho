@@ -41,7 +41,7 @@ def exit(save=True, cache=''):
         language.write_cache(segment=SEGMENT)
     morpho.languages.LANGUAGES.clear()
 
-def load_lang(language, phon=False, segment=False, pickle=True, recreate=False,
+def load_lang(language, phon=False, segment=False, experimental=False, pickle=True, recreate=False,
               load_morph=True, cache='', simplified=False, translate=False,
               guess=True, verbose=False):
     """Load a language's morphology.
@@ -51,35 +51,32 @@ def load_lang(language, phon=False, segment=False, pickle=True, recreate=False,
     """
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
-                     translate=translate,
+                     translate=translate, experimental=experimental,
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=100, raw=False, realize=False, features=True,
-             transortho=True):
+             transortho=True, experimental=False):
     '''Segment a single word and print out the results.
 
-    @param language: abbreviation for a language
-    @type  language: string
-    @param word:     word to be analyzed
-    @type  word:     string or unicode
-    @param realize:  whether to realize individual morphemes (in particular
+    @param language (string): abbreviation for a language
+    @param word (string):     word to be analyzed
+    @param experimental (boolean):  whether to use the "experimental" segmenter FST
+    @param realize (boolean):  whether to realize individual morphemes (in particular
                      the stem of an Amharic verb or deverbal noun)
-    @type realize:   boolean
-    @param features: whether to show the grammatical feature labels
-    @type features:  boolean
-    @param transortho: whether to convert output to non-roman orthography
-    @type transortho: boolean
-    @return:         analyses (only if raw is True)
-    @rtype:          list of (POS, segstring, count) triples or a list of strings
-                     (if realize is True)
+    @param features (boolean): whether to show the grammatical feature labels
+    @param transortho (boolean): whether to convert output to non-roman orthography
+    @return:         analyses (only if raw is True); 
+                     list of (POS, segstring, count) triples or
+                     a list of strings (if realize is True)
     '''
-    language = morpho.get_language(language, phon=False, segment=True)
+    language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
     if language:
         analysis = language.anal_word(word, preproc=True, postproc=True,
                                       gram=False, segment=True, only_guess=False,
+                                      experimental=experimental,
                                       print_out=(not raw and not realize),
                                       string=True, nbest=nbest)
         if realize:
@@ -89,24 +86,21 @@ def seg_word(language, word, nbest=100, raw=False, realize=False, features=True,
 
 seg = seg_word
 
-def seg_file(language, infile, outfile=None,
+def seg_file(language, infile, outfile=None, experimental=False,
+             realize=False,
              preproc=True, postproc=True, start=0, nlines=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
-    @type  infile:   string
     @param outfile:  path to a file where analyses are to be written
-    @type  outfile:  string
     @param preproc:  whether to preprocess inputs
-    @type  preproc:  boolean
     @param postproc: whether to postprocess outputs
-    @type  postproc: boolean
     @param start:    line to start analyzing from
-    @type  start:    int
+    @param experimental: whether to use the experimental FST instead of
+                      the default segmentation FST
     @param nlines:   number of lines to analyze (if not 0)
-    @type  nlines:   int
     '''
-    language = morpho.get_language(language, phon=False, segment=True)
+    language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
     if language:
@@ -117,6 +111,7 @@ def seg_file(language, infile, outfile=None,
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
+              experimental=False,
               dont_guess=True, cache='', init_weight=None,
               lemma_only=False, ortho_only=False,
               normalize=True,
@@ -134,6 +129,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @param roman (bool):    whether the language is written in roman script
     @param segment (bool):  whether to return the segmented input string rather than
                      the root/stem
+    @param experimental (bool): whether to use the experimental FST instead of the
+                     default analysis FST
     @param guess (bool):    try only guesser analyzer
     @param dont_guess (bool):    try only lexical analyzer
     @param phonetic (bool): whether to convert root to phonetic form (from SERA)
@@ -151,7 +148,7 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @return:         a list of analyses (only if raw is True)
     '''
     language = morpho.get_language(language, cache=cache,
-                                   phon=False, segment=segment)
+                                   phon=False, segment=segment, experimental=experimental)
     if language:
         analysis = \
           language.anal_word(word, preproc=not roman, postproc=not roman,
@@ -503,7 +500,7 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
     return pos.casc
 
 def recompile(language, pos, phon=False, segment=False, gen=False,
-              translate=False, backwards=False,
+              experimental=False, translate=False, backwards=False,
               save=True, verbose=True):
     '''Recompiles the cascade FST for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
@@ -518,19 +515,35 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
     @param verbose: whether to print out various messages
     @return:       the POS morphology object
     '''
-    pos_morph = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
-    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen,
-                             translate=translate,
-                             compose_backwards=backwards,
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+                        load_morph=False, verbose=verbose)
+    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
+                             translate=translate, recreate=True,
+                             experimental=experimental,
+                             compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
-        # Load analysis FST
+        print('Generation FST not found')
+        # Load analysis FST>
         pos_morph.load_fst(True, verbose=True)
         # ... and invert it for generation FST
-        pos_morph.load_fst(generate=True, invert=True, gen=True, verbose=verbose)
-    if save:
-        pos_morph.save_fst(generate=gen, segment=segment, phon=phon, translate=translate)
+        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
+                           guess=guess, verbose=verbose)
     return pos_morph
+
+#    pos_morph = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
+#    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen,
+#                             translate=translate,
+#                             compose_backwards=backwards,
+#                             phon=phon, verbose=verbose)
+#    if not fst and gen == True:
+#        # Load analysis FST
+#        pos_morph.load_fst(True, verbose=True)
+#        # ... and invert it for generation FST
+#        pos_morph.load_fst(generate=True, invert=True, gen=True, verbose=verbose)
+#    if save:
+#        pos_morph.save_fst(generate=gen, segment=segment, phon=phon, translate=translate)
+#    return pos_morph
 
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
              fst_label='', fst_index=0):
@@ -551,7 +564,7 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
     return casc.transduce1(string, fst_label=fst_label, fst_index=fst_index)
 
 def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
-            translate=False, guess=True, verbose=False):
+            translate=False, experimental=False, guess=True, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
     @param abbrev: abbreviation for a language, for example, 'am'
@@ -563,8 +576,9 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     @return:       POS object for the the language and POS
     """
     load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
-              translate=translate, guess=guess, verbose=verbose)
-    lang = morpho.get_language(abbrev, phon=phon, segment=segment, load=load_morph,
+              translate=translate, guess=guess, experimental=experimental, verbose=verbose)
+    lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
+                               load=load_morph,
                                verbose=verbose)
     if lang:
         return lang.morphology[pos]
@@ -591,10 +605,12 @@ def get_language(abbrev):
     return morpho.LANGUAGES.get(abbrev)
 
 ## Shortcuts for Amharic
-A = lambda w, raw=False: anal_word('am', w, raw=raw)
-S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('am', w, raw=raw, realize=realize, features=features, transortho=transortho)
-P = lambda w, raw=False: phon_word('am', w, raw=raw)
-G = lambda r, features=None: gen('am', r, features=features)
-AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('am', infile, outfile=outfile, raw=raw, gram=False)
-SF = lambda infile, outfile=None: seg_file('am', infile, outfile=outfile)
-PF = lambda infile, outfile=None: phon_file('am', infile, outfile=outfile)
+A = lambda w, raw=False: anal_word('amh', w, raw=raw)
+S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho)
+X = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
+                                                                                experimental=True)
+P = lambda w, raw=False: phon_word('amh', w, raw=raw)
+G = lambda r, features=None: gen('amh', r, features=features)
+AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('amh', infile, outfile=outfile, raw=raw, gram=False)
+SF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile)
+PF = lambda infile, outfile=None: phon_file('amh', infile, outfile=outfile)

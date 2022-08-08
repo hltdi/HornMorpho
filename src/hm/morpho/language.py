@@ -317,7 +317,7 @@ class Language:
 
     @staticmethod
     def make(name, abbrev, load_morph=False,
-             segment=False, phon=False, simplified=False,
+             segment=False, phon=False, simplified=False, experimental=False,
              guess=True, poss=None, pickle=True, translate=False,
              ees=False, recreate=True,
              verbose=False):
@@ -329,6 +329,7 @@ class Language:
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph, pickle=pickle,
                                 segment=segment, phon=phon, recreate=recreate,
+                                experimental=experimental,
                                 translate=translate, simplified=simplified,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
@@ -339,7 +340,7 @@ class Language:
     def load_data(self, load_morph=False,
                   pickle=True, recreate=False,
                   segment=False, phon=False, guess=True,
-                  simplified=False, translate=False,
+                  simplified=False, translate=False, experimental=False,
                   poss=None, verbose=True):
         if self.load_attempted:
             return
@@ -357,6 +358,7 @@ class Language:
         if load_morph:
             if not self.load_morpho(segment=segment, ortho=True, phon=phon,
                                     guess=guess, simplified=simplified, translate=translate,
+                                    experimental=experimental,
                                     pickle=pickle, recreate=recreate,
                                     verbose=verbose):
                 # There is no FST of the desired type
@@ -1177,19 +1179,22 @@ class Language:
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
     def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
-                    pickle=True,
+                    pickle=True, experimental=False,
                     segment=False, translate=False,
                     recreate=False, guess=True, verbose=False):
         """Load words and FSTs for morphological analysis and generation."""
         fsts = fsts or (self.morphology and self.morphology.pos)
         opt_string = ''
-        if segment:
+        if experimental:
+            opt_string = 'experimental'
+        elif segment:
             opt_string = 'segmentation'
         elif phon:
             opt_string = 'phonetic'
         else:
             opt_string = 'analysis/generation'
         if not self.has_cas(generate=phon, guess=False, phon=phon,
+                            experimental=experimental,
                             segment=segment, simplified=simplified):
             print('No {} FST available for {}!'.format(opt_string, self))
             return False
@@ -1223,14 +1228,14 @@ class Language:
                 self.morphology[pos].load_fst(gen=not segment,
                                               create_casc=False,
                                               pickle=pickle,
-                                              simplified=simplified,
+                                              simplified=simplified, experimental=experimental,
                                               phon=False, segment=segment, translate=translate,
                                               recreate=recreate, verbose=verbose)
             if phon or (ortho and not segment):
                 self.morphology[pos].load_fst(gen=True,
                                               create_casc=False,
                                               pickle=pickle,
-                                              simplified=simplified,
+                                              simplified=simplified, experimental=experimental,
                                               phon=True, segment=segment, translate=translate,
                                               recreate=recreate, verbose=verbose)
             # Load guesser anal and gen FSTs
@@ -1240,12 +1245,12 @@ class Language:
                                                   segment=segment, translate=translate,
                                                   pickle=pickle,
                                                   create_casc=False,
-                                                  simplified=simplified,
+                                                  simplified=simplified, experimental=experimental,
                                                   recreate=recreate, verbose=verbose)
                 if phon:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False,
-                                                  pickle=pickle,
+                                                  pickle=pickle, experimental=experimental,
                                                   simplified=simplified, translate=translate,
                                                   recreate=recreate, verbose=verbose)
             # Load statistics for generation
@@ -1255,26 +1260,27 @@ class Language:
         self.morpho_loaded = True
         return True
 
-    def get_fsts(self, generate=False, phon=False,
+    def get_fsts(self, generate=False, phon=False, experimental=False,
                  simplified=False, segment=False, translate=False):
         '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
         fsts = []
         for pos in self.morphology.pos:
             if phon:
-                fst = self.morphology[pos].get_fst(generate=True, phon=True)
+                fst = self.morphology[pos].get_fst(generate=True, phon=True, exeperimental=experimental)
             else:
-                fst = self.morphology[pos].get_fst(generate=generate, segment=segment)
+                fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental)
             if fst:
                 fsts.append(fst)
         return fsts
 
-    def has_cas(self, generate=False, guess=False,
+    def has_cas(self, generate=False, guess=False, experimental=False,
                 simplified=False, phon=False, segment=False):
         """Is there at least one cascade file for the given FST features?"""
         if not self.morphology:
             return False
         for pos in self.morphology.pos:
             if self.morphology[pos].has_cas(generate=generate, simplified=simplified,
+                                            experimental=experimental,
                                             guess=guess, phon=phon, segment=segment):
                 return True
         return False
@@ -1282,7 +1288,7 @@ class Language:
     ### Analyze words or sentences
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
-                  phon=False, segment=False, init_weight=None,
+                  phon=False, segment=False, init_weight=None, experimental=False,
                   root=True, stem=True, citation=True, gram=True,
                   um=True, gloss=True, phonetic=True, normalize=False,
                   ortho_only=False, lemma_only=False, sep_anals=True,
@@ -1293,6 +1299,11 @@ class Language:
         '''
         Analyze a single word, trying all existing POSs, both
         lexical and guesser FSTs.
+        If segment is True, this does morphological segmentation, with various
+        things happening differently.
+        If experimental is True, this uses the "experimental" (*X) FST, which
+        could be a segmenter, in which case segment is also True, or an analyzer,
+        in which case segment is False.
         '''
         # Before anything else, check to see if the word is in the list of
         # words that have failed to be analyzed
@@ -1377,6 +1388,7 @@ class Language:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment,
+                                                             experimental=experimental,
                                                              normalize=False,
                                                              to_dict=to_dict,
                                                              sep_anals=sep_anals,
@@ -1399,6 +1411,7 @@ class Language:
             for pos in fsts:
                 analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
                                                      phon=phon, segment=segment,
+                                                     experimental=experimental,
                                                      to_dict=to_dict, sep_anals=sep_anals,
                                                      verbosity=verbosity)
                 if analysis:
@@ -1453,6 +1466,7 @@ class Language:
                   lemma_only=False, ortho_only=False,
                   knowndict=None, guessdict=None, cache=True, no_anal=True,
                   phon=False, only_guess=False, guess=True, raw=False,
+                  experimental=False,
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False,
                   feats=None, simpfeats=None, um=False,
                   normalize=False,
@@ -1554,7 +1568,7 @@ class Language:
                             analyses = \
                             self.anal_word(form, fsts=fsts, guess=guess,
                                            phon=phon, only_guess=only_guess,
-                                           segment=segment,
+                                           segment=segment, experimental=experimental,
                                            root=root, stem=True,
                                            citation=citation and not raw,
                                            normalize=normalize,

@@ -129,8 +129,8 @@ sbjs_p -> obj         <u:-u(sb=3p)>   [tm=prf,sb=[-p1,-p2,+plr]]
 
 # GERUNDIVE
 # 1; geminate and palatalize previous consonant; don't show the palatalization character
-sbjs_p -> obj         <_8E:-_E(sb=1p)> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
-sbjs_p -> sbj_g1p     <en:-en(sb=2p)>  [tm=ger,sb=[+p1,-p2,+plr],ob=[-p1]]
+sbjs_p -> obj         <_8E:-_E(sb=1s)> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
+sbjs_p -> sbj_g1p     <en:-en(sb=1p)>  [tm=ger,sb=[+p1,-p2,+plr],ob=[-p1]]
 # 1p: infix for 2frm (handle later as prefix before -wo(t)?); 3sm
 sbj_g1p -> obj        <e:-e(inf)>   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
 sbj_g1p -> obj        [:]    [ob=[-expl],-def];[ob=[+expl,-p2,+fem,-plr,-prp]];[ob=[+plr,-prp,+expl]];[ob=[+expl,+p2,-frm,-prp]];[ob=[+expl,+prp]]

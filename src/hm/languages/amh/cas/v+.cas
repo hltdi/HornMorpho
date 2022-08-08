@@ -1,4 +1,4 @@
-# Cascade for lexical verb analysis
+# Cascade for lexical verb segmentation
 
 weighting = UNIFICATION
 # Subcascades for full analysis and analysis without morphotactics

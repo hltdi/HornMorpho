@@ -18,10 +18,28 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሐ ሑ ሒ ሓ �
 
      =አ =ኡ =ኢ =ኣ =ኤ =እ =ኦ
      A B C D E F G H I J K
-     /
+     / _
 
 feats:
 
-#  pos: v verb
+  pos: v verb
 
   pos: v_stem v_stem
+
+  as = 0 | a | it
+
+  vc = 0 | ps | a | at
+
+  %gem = True | False
+
+  neg = False | True
+
+  depal = False | True
+
+  hol = False | True
+
+  tm = p | i | j
+
+  W = False | True
+
+  Y = False | True

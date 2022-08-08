@@ -5,7 +5,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018, 2019, 2020, 2021, 2022.
+    Copyleft 2011-2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -69,10 +69,16 @@ def convfeat(fs, oldfs, newfs, replace=False):
 
 ## 2022.6
 ## Mesqan stems
-def mvz_stem(verbose=False):
-    hm.load_lang('mvz', recreate=True, verbose=verbose)
+#def mvz_stem():
+#    hm.load_lang('mvz', recreate=True, verbose=True)
+#    m = hm.get_language('mvz')
+#    return m.morphology['v_stem']
+
+def mvz():
+    hm.load_lang('mvz', recreate=True, verbose=True)
     m = hm.get_language('mvz')
-    return m.morphology['v_stem']
+    return m.morphology
+
 
 def get_lang(abbrev, segment=False, guess=True, phon=False, cache='',
              pickle=True, verbose=False):
@@ -118,8 +124,8 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
     return pos.casc
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-              translate=False,
-              simplified=False, backwards=False, split_index=0, verbose=True):
+                            translate=False, experimental=False,
+                            simplified=False, backwards=False, split_index=0, verbose=True):
     """Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
     Note 1: this can take a very long time for some languages.
@@ -127,9 +133,10 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-                        simplified=simplified, load_morph=False, verbose=verbose)
+                                            simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True,
+                             experimental=experimental,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -137,7 +144,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         # Load analysis FST>
         pos_morph.load_fst(True, verbose=True)
         # ... and invert it for generation FST
-        pos_morph.load_fst(generate=True, invert=True, gen=True,
+        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
                            guess=guess, verbose=verbose)
     return pos_morph
 

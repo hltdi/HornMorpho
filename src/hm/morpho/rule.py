@@ -3,21 +3,21 @@ This file is part of HornMorph (and morfo), which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2019.
+    Copyleft 2019, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
