@@ -85,8 +85,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
-                                           phon=True, postproc=False,
-                                           guess=guess)
+                                           phon=True, postproc=False, guess=guess)
         if citation:
             result = citation[0][0]
     if not citation:

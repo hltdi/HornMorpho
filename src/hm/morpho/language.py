@@ -1266,7 +1266,7 @@ class Language:
         fsts = []
         for pos in self.morphology.pos:
             if phon:
-                fst = self.morphology[pos].get_fst(generate=True, phon=True, exeperimental=experimental)
+                fst = self.morphology[pos].get_fst(generate=True, phon=True, experimental=experimental)
             else:
                 fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental)
             if fst:
@@ -1342,10 +1342,8 @@ class Language:
                     found = True
                     analyses = self.proc_anal(word, cached, None,
                                               show_root=root, citation=citation,
-                                              stem=stem, phonetic=phonetic,
-                                              ortho_only=ortho_only,
-                                              normalize=normalize,
-                                              segment=segment, guess=False,
+                                              stem=stem, phonetic=phonetic, ortho_only=ortho_only,
+                                              normalize=normalize, segment=segment, guess=False,
                                               postproc=postproc, gram=gram,
                                               freq=rank or report_freq)
 
@@ -1377,21 +1375,15 @@ class Language:
                         if cache:
                             to_cache.extend(preanal)
                         analyses.extend(self.proc_anal(form, preanal, pos,
-                                                       show_root=root, citation=citation,
-                                                       stem=stem, phonetic=phonetic,
-                                                       ortho_only=ortho_only,
-                                                       normalize=normalize,
-                                                       segment=segment, guess=False,
-                                                       postproc=postproc, gram=gram,
+                                                       show_root=root, citation=citation, stem=stem, phonetic=phonetic,
+                                                       ortho_only=ortho_only, normalize=normalize, segment=segment,
+                                                       guess=False, postproc=postproc, gram=gram,
                                                        freq=rank or report_freq))
                     else:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
-                                                             phon=phon, segment=segment,
-                                                             experimental=experimental,
-                                                             normalize=False,
-                                                             to_dict=to_dict,
-                                                             sep_anals=sep_anals,
+                                                             phon=phon, segment=segment, experimental=experimental,
+                                                             normalize=False, to_dict=to_dict, sep_anals=sep_anals,
                                                              verbosity=verbosity)
                         if analysis:
                             if cache:
@@ -1399,9 +1391,7 @@ class Language:
                             # Keep trying if an analysis is found
                             analyses.extend(self.proc_anal(form, analysis, pos,
                                                            show_root=root, citation=citation and not segment,
-                                                           ortho_only=ortho_only,
-                                                           segment=segment,
-                                                           normalize=normalize,
+                                                           ortho_only=ortho_only, segment=segment, normalize=normalize,
                                                            stem=stem, phonetic=phonetic,
                                                            guess=False, postproc=postproc, gram=gram,
                                                            freq=rank or report_freq))
@@ -1410,21 +1400,17 @@ class Language:
             # Accumulate results from all guessers
             for pos in fsts:
                 analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
-                                                     phon=phon, segment=segment,
-                                                     experimental=experimental,
+                                                     phon=phon, segment=segment, experimental=experimental,
                                                      to_dict=to_dict, sep_anals=sep_anals,
                                                      verbosity=verbosity)
                 if analysis:
                     if cache:
                         to_cache.extend(analysis)
                     analyses.extend(self.proc_anal(form, analysis, pos,
-                                                   show_root=root,
-                                                   citation=citation and not segment,
-                                                   ortho_only=ortho_only,
-                                                   normalize=normalize,
+                                                   show_root=root, citation=citation and not segment,
+                                                   ortho_only=ortho_only, normalize=normalize,
                                                    segment=segment, phonetic=phonetic,
-                                                   guess=True, gram=gram,
-                                                   postproc=postproc,
+                                                   guess=True, gram=gram, postproc=postproc,
                                                    freq=rank or report_freq))
         if cache and not found:
 #            print("Adding new anal {}, {}".format(word, to_cache))
@@ -1807,7 +1793,9 @@ class Language:
         """
         a = {}
         pos, root, cit, gram1, gram2, count = anal
-#        print("Finalizing {} {} {} {}".format(pos, root, cit, gram2.__repr__()))
+        # POS could be '?v', etcl
+        pos = pos.replace('?', '')
+#        print("** Finalizing {} {} {} {}".format(pos, root, cit, gram2.__repr__()))
         # Postprocess root if appropriate
         root1 = None
         if root:
@@ -1848,17 +1836,17 @@ class Language:
             a['freq'] = count
         return a
 
-    def finalize_citation(self, citation, ipa=False):
-        """
-        Do final processing of citation: convert romanization
-        to standard phonetic representation.
-        """
-#        print("Finalizing {}".format(citation))
-        if '|' in citation:
-            ortho, phon = citation.split('|')
-            phon = self.convert_phones(phon, ipa=ipa)
-            return ortho + '|' + phon
-        return self.convert_phones(citation, ipa=ipa)
+#    def finalize_citation(self, citation, ipa=False):
+#        """
+#        Do final processing of citation: convert romanization
+#        to standard phonetic representation.
+#        """
+##        print("Finalizing {}".format(citation))
+#        if '|' in citation:
+#            ortho, phon = citation.split('|')
+#            phon = self.convert_phones(phon, ipa=ipa)
+#            return ortho + '|' + phon
+#        return self.convert_phones(citation, ipa=ipa)
 
     def simp_anal(self, analysis, postproc=False, segment=False):
         '''Process analysis for unanalyzed cases.'''
