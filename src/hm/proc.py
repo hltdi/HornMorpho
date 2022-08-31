@@ -1,15 +1,221 @@
 """
--- Create Am<->Ks lexicon.
--- Recreate Ti lexicon, eliminating non-root characters.
--- Create reverse dictionary for noun roots.
+-- Miscellaneous functions to access and create lexicons, using
+   data from LingData, as well as in HornMorpho language files.
+---- Create Am<->Ks lexicon.
+---- Recreate Ti lexicon, eliminating non-root characters.
+---- Create reverse dictionary for noun roots.
 """
 
 from . import morpho
 
-A = morpho.get_language('amh')
+#A = morpho.get_language('amh')
 #KS = morpho.get_language('ks')
 FS = morpho.FeatStruct
+FSS = morpho.FSSet
 geezify = morpho.geez.geezify
+romanize = lambda x: morpho.geez.romanize(x, normalize=True)
+OS = morpho.os
+
+def AS_new(new_noun="nouns.txt", new_adj="adjs.txt"):
+    '''
+    Process the new roots from Abnet.
+    '''
+    # nouns and adjectives
+    n = get_roots('amh', 'n', ["n_stem.lex", "irr_n.lex"], check_pos=True, degeminate=True)
+    a = get_roots('amh', 'adj', ["n_stem.lex", "irr_n.lex"], check_pos=True, degeminate=True)
+    N, A, j = get_external_roots2("ከአብነት", "AllNouns.txt", "AllAdjectives.txt")
+    rn1, rn2, rj = filter_roots(N, n, external2=j, internal2=a)
+    ra1, ra2 = filter_roots(A, a, internal2=n)
+    addedwords=rewrite_lex('amh', "n_stem.lex", rn1, rn2, jointroots=rj, pos='n', writeto=new_noun)
+    rewrite_lex('amh', None, ra1, ra2, addedwords=addedwords, pos='adj', writeto=new_adj)
+#    return (rn1, rn2), (ra1, ra2)
+
+def rewrite_lex(lang, file, newroots, modroots, addedwords=None, jointroots=None, pos='n', modpos='nadj', writeto=None):
+    newfile = []
+    newwords = []
+    if file:
+        ld = lex_dir(lang)
+        with open(OS.path.join(ld, file)) as f:
+            for line in f:
+                line = line.strip()
+                contents, x, comment = line.partition('#')
+                contents = contents.strip()
+                if not contents and comment:
+                    newfile.append(line)
+                    continue
+                if line in newfile:
+                    continue
+                word, x, rest = contents.partition(' ')
+                newwords.append(word)
+                if word not in modroots:
+                    # No changes to this line
+                    newfile.append(line)
+                    continue
+                # word is in modroots; change POS to modpos
+                root, x, feats = rest.partition(' ')
+                feats = FSS.parse(feats)
+                feats = feats.set_all('pos', modpos)
+                newline = "{} {} {}".format(word, root, feats.__repr__())
+                newfile.append(newline)
+    for root in newroots:
+        if addedwords and root in addedwords:
+            continue
+        newline = "{} '' [pos={}]".format(root, pos)
+        newfile.append(newline)
+        newwords.append(root)
+    if jointroots:
+        for root in jointroots:
+            if addedwords and root in addedwords:
+                continue
+            newline = "{} '' [pos={}]".format(root, modpos)
+            newfile.append(newline)
+            newwords.append(root)
+    if writeto:
+        with open(writeto, 'w') as f:
+            for line in newfile:
+                print(line, file=f)
+    return newwords
+
+def lex_dir(lang):
+    return OS.path.join(OS.path.dirname(__file__), 'languages', lang, 'lex')
+
+def get_ext_data(folder, file):
+    return OS.path.join(OS.path.dirname(__file__), 'ext_data', folder, file)
+
+def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False):
+    """Get stems or roots from lex files for lang (a string)."""
+    roots = []
+    translations = []
+    ld = lex_dir(lang)
+    for file in files:
+        with open(OS.path.join(ld, file)) as f:
+            for line in f:
+                line = line.strip()
+                line = line.split('#')[0].strip()
+                if not line:
+                    continue
+                word, x, rest = line.partition(' ')
+                root, x, feats = rest.partition(' ')
+                # treat alterate forms as 'roots'
+#                if len(root) == 2 and root[0] == "'":
+                root = word
+                if degeminate:
+                    root = root.replace('_', '')
+                if root in roots:
+                    continue
+                feats = FSS.parse(feats)
+                if check_pos:
+                    pos1 = feats.get('pos')
+                    if pos not in pos1:
+                        continue
+#                print ("root {}, feats {}".format(root, feats.__repr__()))
+                roots.append(root)
+                if trans:
+                    trans1 = feats.get('t')
+                    translations.append(trans1)
+    if trans:
+        return zip(roots, translations)
+    return roots
+
+def get_external_roots(folder, file, rom=True, sep='\t', ncols=3, rootcol=1, encoding='utf16'):
+    roots = []
+    path = get_ext_data(folder, file)
+    with open(path, encoding=encoding) as f:
+        for line in f:
+            line = line.strip()
+            splitline = line.split(sep)
+            root = splitline[rootcol]
+            if not root:
+                print("Empty root {}".format(line))
+                continue
+            if rom:
+                root = romanize(root)
+            root = root.replace(' ', '//')
+            if root in roots:
+                continue
+#            print(root)
+            roots.append(root)
+    return roots
+
+def get_external_roots2(folder, file1, file2, rom=True, sep='\t', ncols=3, rootcol=1, encoding1='utf16', encoding2='utf8'):
+    roots1 = []
+    roots2 = []
+    joint = []
+    path1 = get_ext_data(folder, file1)
+    path2 = get_ext_data(folder, file2)
+    overlong = 0
+    with open(path1, encoding=encoding1) as f1:
+        for line in f1:
+            line = line.strip()
+            splitline = line.split(sep)
+            root = splitline[rootcol]
+            if not root:
+#                print("Empty root {}".format(line))
+                continue
+            if len(root.split()) > 2:
+                overlong += 1
+                continue
+            if rom:
+                root = romanize(root)
+            root = root.replace(' ', '//')
+            if root in roots1:
+                continue
+            roots1.append(root)
+    with open(path2, encoding=encoding2) as f2:
+        for line in f2:
+            line = line.strip()
+            splitline = line.split(sep)
+            root = splitline[rootcol]
+            if not root:
+#                print("Empty root {}".format(line))
+                continue
+            if len(root.split()) > 2:
+                overlong += 1
+                continue
+            if rom:
+                root = romanize(root)
+            root = root.replace(' ', '//')
+            if root in roots2:
+                continue
+            if root in roots1:
+#                print("{} is in nouns".format(root))
+                joint.append(root)
+                roots1.remove(root)
+                continue
+            roots2.append(root)
+    print("Found {} overlong phrases".format(overlong))
+    return roots1, roots2, joint
+
+def filter_roots(external1, internal1, external2=None, internal2=None):
+    '''
+    external1 and internal1 are lists of roots.
+    external2 is None or a list of roots for two POSs.
+    internal2 is None or a second list of roots for a different POS.
+    Returns external roots that are not in internal1 and a separate
+    list of those that are in internal2 but not internal1.
+    '''
+    roots = []
+    roots2 = []
+    roots3 = []
+    for root in external1:
+        if root in internal1:
+            continue
+        roots.append(root)
+        if internal2 and root in internal2:
+            roots2.append(root)
+    if external2:
+        for root in external2:
+            if root in internal1 and root in internal2:
+                # Already joint POS
+                continue
+            roots3.append(root)
+    if roots2:
+        if roots3:
+            return roots, roots2, roots3
+        else:
+            return roots, roots2
+    else:
+        return roots
 
 def reverse_stems(write=True):
     dct = {}

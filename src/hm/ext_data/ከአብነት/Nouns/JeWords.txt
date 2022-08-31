@@ -1,0 +1,186 @@
+6830	ጅንጀሮ	0	TYPE_1	TYPE_1		
+6832	ጅንጅብል	0		TYPE_1		
+6915	ጆተሬ	1		TYPE_1		
+7563	ጀላ	1		TYPE_1		
+7564	ጀሌ	1	TYPE_1	TYPE_1		
+7565	ጀልባ	1	TYPE_1	TYPE_1		
+7566	ጅመላ	0		TYPE_1		
+7571	ጅማሬ	1	TYPE_1	TYPE_1		
+7572	ጀማ	1	TYPE_1	TYPE_1		
+7573	ጀምበር	1		TYPE_1		
+7574	ጀንበር	1		TYPE_1		
+7575	ጀምበር	1		TYPE_1		
+7577	ጀምበር	1		TYPE_1		
+7579	ጀምብ	0		TYPE_1		
+7580	ጀሞ	1	TYPE_1	TYPE_1		
+7581	ጀርባ	1		TYPE_1		
+7583	ጀበና	1	TYPE_1	TYPE_1		
+7584	ጀባ	1		TYPE_1		
+7585	ጀብዱ	1	TYPE_1	TYPE_1		
+7586	ጀብድ	1	TYPE_1	TYPE_1		
+7587	ጀብዱ	1	TYPE_1	TYPE_1		
+7589	ጀብዱ	1	TYPE_1	TYPE_1		
+7591	ጀነቶ	0		TYPE_1		
+7592	ጀንዲ	1		TYPE_1		
+7594	ጀንፈል	1		TYPE_1		
+7595	ጀፈል	1		TYPE_1		
+7596	ጀዲ	0	TYPE_1	TYPE_1		
+7598	ጀግና	1	TYPE_1	TYPE_1		
+7599	ጀጎል	1		TYPE_1		
+7600	ጁሆ	0		TYPE_1		
+7601	ጂምናስቲክ	1		TYPE_1		
+7602	ጂምናዚየም	1	TYPE_1	TYPE_1		
+7603	ጂኒ	1	TYPE_1	TYPE_1		
+7604	ጅን	1	TYPE_1	TYPE_1		
+7605	ጂና	0		TYPE_1		
+7606	ጂኦሎጂ	1		TYPE_1		
+7607	ጂኦሜትሪ	1		TYPE_1		
+7608	ጂኦተርማል	1		TYPE_1		
+7609	ጂኦግራፊ	1		TYPE_1		
+7610	ጃሎ	0		TYPE_1		
+7611	ጃርት	1	TYPE_1	TYPE_1		
+7613	ጃንሆይ	1		TYPE_1		
+7614	ጃንደረባ	1	TYPE_1	TYPE_1		
+7616	ጃንጥላ	1	TYPE_1	TYPE_1		
+7618	ጃኖ	1		TYPE_1		
+7619	ጃኬት	1	TYPE_1	TYPE_1		
+7620	ጃዝ	1		TYPE_1		
+7622	ጃፖኒ	1	TYPE_1	TYPE_1		
+7623	ጄላቲ	1	TYPE_1	TYPE_1		
+7624	ጄት	1	TYPE_1	TYPE_1		
+7625	ጄኔራል	1	TYPE_1	TYPE_1		
+7626	ጅማት	1	TYPE_1	TYPE_1		
+7628	ጅረት	1	TYPE_1	TYPE_1		
+7630	ጅሪ	0		TYPE_1		
+7631	ጅር	0		TYPE_1		
+7632	ጅራት	1		TYPE_1		
+7635	ጅራፍ	1	TYPE_1	TYPE_1		
+7636	ጅስም	1		TYPE_1		
+7637	ጅብ	1	TYPE_1	TYPE_1		
+7642	ጅብሪል	1	TYPE_1	TYPE_1		
+7643	ጅብራ	1		TYPE_1		
+7645	ጅንግላ	0		TYPE_1		
+7646	ጅንፎ	0		TYPE_1		
+7648	ጅዋጅዌ	1	TYPE_1	TYPE_1		
+7650	ጅጊ	0		TYPE_1		
+7651	ጅጌ	0		TYPE_1		
+7652	ጅግራ	1	TYPE_1	TYPE_1		
+7654	ጆሮ	1		TYPE_1		
+7661	ጆሮጠቢ	1	TYPE_1	TYPE_1		
+7662	ጆተኒ	1	TYPE_1	TYPE_1		
+7663	ጆቶኒ	1	TYPE_1	TYPE_1		
+7664	ጆፌ	1	TYPE_1	TYPE_1		
+7666	ጆፍጆፌ	1		TYPE_1		
+7667	ጇ	1		TYPE_1		
+7668	ጅልነት	1		TYPE_1		
+7669	ጀምብ	1		TYPE_1		
+7670	ጀሶ	1		TYPE_1		
+7671	ጀርመን	1	TYPE_1	TYPE_1		
+7672	ጀበርቲ	0	TYPE_1	TYPE_1		
+7673	ጀግንነት	1	TYPE_1	TYPE_1		
+7674	ጁሀ	0		TYPE_1		
+7675	ጂኦሜትራ	1		TYPE_1		
+7676	ጂግ	0	TYPE_1	TYPE_1		
+7677	ጃዊ	0	TYPE_1	TYPE_1		
+7678	ጃውሳ	1		TYPE_1		
+7679	ጃዊሳ	1		TYPE_1		
+7680	ጃግሬ	1	TYPE_1	TYPE_1		
+7682	ጃፓን	1	TYPE_1	TYPE_1		
+7683	ጃፓናዊ	1		TYPE_1		
+7684	ጅምሩክ	1	TYPE_1	TYPE_1		
+7686	ጅምናስቲክ	1		TYPE_1		
+7687	ጂምናስቲክ	1		TYPE_1		
+7690	ጆንያ	1	TYPE_1	TYPE_1		
+6830	ጅንጀሮ	0	TYPE_1	TYPE_1		
+6832	ጅንጅብል	0		TYPE_1		
+6915	ጆተሬ	1		TYPE_1		
+7563	ጀላ	1		TYPE_1		
+7564	ጀሌ	1	TYPE_1	TYPE_1		
+7565	ጀልባ	1	TYPE_1	TYPE_1		
+7566	ጅመላ	0		TYPE_1		
+7571	ጅማሬ	1	TYPE_1	TYPE_1		
+7572	ጀማ	1	TYPE_1	TYPE_1		
+7573	ጀምበር	1		TYPE_1		
+7574	ጀንበር	1		TYPE_1		
+7575	ጀምበር	1		TYPE_1		
+7577	ጀምበር	1		TYPE_1		
+7579	ጀምብ	0		TYPE_1		
+7580	ጀሞ	1	TYPE_1	TYPE_1		
+7581	ጀርባ	1		TYPE_1		
+7583	ጀበና	1	TYPE_1	TYPE_1		
+7584	ጀባ	1		TYPE_1		
+7585	ጀብዱ	1	TYPE_1	TYPE_1		
+7586	ጀብድ	1	TYPE_1	TYPE_1		
+7587	ጀብዱ	1	TYPE_1	TYPE_1		
+7589	ጀብዱ	1	TYPE_1	TYPE_1		
+7591	ጀነቶ	0		TYPE_1		
+7592	ጀንዲ	1		TYPE_1		
+7594	ጀንፈል	1		TYPE_1		
+7595	ጀፈል	1		TYPE_1		
+7596	ጀዲ	0	TYPE_1	TYPE_1		
+7598	ጀግና	1	TYPE_1	TYPE_1		
+7599	ጀጎል	1		TYPE_1		
+7600	ጁሆ	0		TYPE_1		
+7601	ጂምናስቲክ	1		TYPE_1		
+7602	ጂምናዚየም	1	TYPE_1	TYPE_1		
+7603	ጂኒ	1	TYPE_1	TYPE_1		
+7604	ጅን	1	TYPE_1	TYPE_1		
+7605	ጂና	0		TYPE_1		
+7606	ጂኦሎጂ	1		TYPE_1		
+7607	ጂኦሜትሪ	1		TYPE_1		
+7608	ጂኦተርማል	1		TYPE_1		
+7609	ጂኦግራፊ	1		TYPE_1		
+7610	ጃሎ	0		TYPE_1		
+7611	ጃርት	1	TYPE_1	TYPE_1		
+7613	ጃንሆይ	1		TYPE_1		
+7614	ጃንደረባ	1	TYPE_1	TYPE_1		
+7616	ጃንጥላ	1	TYPE_1	TYPE_1		
+7618	ጃኖ	1		TYPE_1		
+7619	ጃኬት	1	TYPE_1	TYPE_1		
+7620	ጃዝ	1		TYPE_1		
+7622	ጃፖኒ	1	TYPE_1	TYPE_1		
+7623	ጄላቲ	1	TYPE_1	TYPE_1		
+7624	ጄት	1	TYPE_1	TYPE_1		
+7625	ጄኔራል	1	TYPE_1	TYPE_1		
+7626	ጅማት	1	TYPE_1	TYPE_1		
+7628	ጅረት	1	TYPE_1	TYPE_1		
+7630	ጅሪ	0		TYPE_1		
+7631	ጅር	0		TYPE_1		
+7632	ጅራት	1		TYPE_1		
+7635	ጅራፍ	1	TYPE_1	TYPE_1		
+7636	ጅስም	1		TYPE_1		
+7637	ጅብ	1	TYPE_1	TYPE_1		
+7642	ጅብሪል	1	TYPE_1	TYPE_1		
+7643	ጅብራ	1		TYPE_1		
+7645	ጅንግላ	0		TYPE_1		
+7646	ጅንፎ	0		TYPE_1		
+7648	ጅዋጅዌ	1	TYPE_1	TYPE_1		
+7650	ጅጊ	0		TYPE_1		
+7651	ጅጌ	0		TYPE_1		
+7652	ጅግራ	1	TYPE_1	TYPE_1		
+7654	ጆሮ	1		TYPE_1		
+7661	ጆሮጠቢ	1	TYPE_1	TYPE_1		
+7662	ጆተኒ	1	TYPE_1	TYPE_1		
+7663	ጆቶኒ	1	TYPE_1	TYPE_1		
+7664	ጆፌ	1	TYPE_1	TYPE_1		
+7666	ጆፍጆፌ	1		TYPE_1		
+7667	ጇ	1		TYPE_1		
+7668	ጅልነት	1		TYPE_1		
+7669	ጀምብ	1		TYPE_1		
+7670	ጀሶ	1		TYPE_1		
+7671	ጀርመን	1	TYPE_1	TYPE_1		
+7672	ጀበርቲ	0	TYPE_1	TYPE_1		
+7673	ጀግንነት	1	TYPE_1	TYPE_1		
+7674	ጁሀ	0		TYPE_1		
+7675	ጂኦሜትራ	1		TYPE_1		
+7676	ጂግ	0	TYPE_1	TYPE_1		
+7677	ጃዊ	0	TYPE_1	TYPE_1		
+7678	ጃውሳ	1		TYPE_1		
+7679	ጃዊሳ	1		TYPE_1		
+7680	ጃግሬ	1	TYPE_1	TYPE_1		
+7682	ጃፓን	1	TYPE_1	TYPE_1		
+7683	ጃፓናዊ	1		TYPE_1		
+7684	ጅምሩክ	1	TYPE_1	TYPE_1		
+7686	ጅምናስቲክ	1		TYPE_1		
+7687	ጂምናስቲክ	1		TYPE_1		
+7690	ጆንያ	1	TYPE_1	TYPE_1		

@@ -125,21 +125,21 @@ def geezify_alts(form, lang='am'):
     g = [geezify(f, lang=lang) for f in forms]
     return g
 
-def geezify_root(root, lang='am'):
-    """Convert a sequence of root consonants (and other characters
-    used in HornMorpho representations of roots) to Geez.
-    >>> geezify_root("sbr")
-    '<ስ_ብ_ር>'
-    >>> geezify_root("bakn")
-    '<ባክ_ን>'
-    >>> geezify_root("Ty_q")
-    '<ጥ_ይ:_ቅ>'
-    >>> geezify_root("x|qWTqWT")
-    '<ሽቍ_ጥ_ቍ_ጥ>'
-    """
-    table = GEEZ_SERA.get(lang, [[],[]])[1]
-    if table:
-        return root2geez(table, root, lang=lang)
+#def geezify_root(root, lang='am'):
+#    """Convert a sequence of root consonants (and other characters
+#    used in HornMorpho representations of roots) to Geez.
+#    >>> geezify_root("sbr")
+#    '<ስ_ብ_ር>'
+#    >>> geezify_root("bakn")
+#    '<ባክ_ን>'
+#    >>> geezify_root("Ty_q")
+#    '<ጥ_ይ:_ቅ>'
+#    >>> geezify_root("x|qWTqWT")
+#    '<ሽቍ_ጥ_ቍ_ጥ>'
+#    """
+#    table = GEEZ_SERA.get(lang, [[],[]])[1]
+#    if table:
+#        return root2geez(table, root, lang=lang)
 
 def geezify_morph(morph, lang='am', alt=True):
     """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
@@ -341,8 +341,8 @@ def geezify(form, lang='am', gemination=False, deepenthesize=False):
       sera2geez(get_table(lang, False), form, lang=lang,
                 gemination=gemination, deepenthesize=deepenthesize)
 
-def romanize(form, lang='am', gemination=False):
-    return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination)
+def romanize(form, lang='am', normalize=True, gemination=False):
+    return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination, simp=normalize)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters

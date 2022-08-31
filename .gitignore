@@ -39,6 +39,7 @@ Versions/
 docs/OldDocs
 Notes/
 hm/languages/*/data/
+hm/ext_data
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

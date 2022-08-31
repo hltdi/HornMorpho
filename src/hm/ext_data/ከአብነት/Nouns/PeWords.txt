@@ -1,0 +1,130 @@
+5143	ፖስታ	1	TYPE_1	TYPE_1		
+9642	ፐርሶኔል	1	TYPE_1	TYPE_1		
+9643	ፑሽኣፕ	1		TYPE_1		
+9644	ፒራሚድ	1	TYPE_1	TYPE_1		
+9645	ፒሳ	1	TYPE_1	TYPE_1		
+9646	ፒንሳ	1	TYPE_1	TYPE_1		
+9647	ፒያኖ	1	TYPE_3	TYPE_1		
+9648	ፒጃማ	1	TYPE_1	TYPE_1		
+9650	ፒፓ	1	TYPE_1	TYPE_1		
+9651	ፓራሹት	1	TYPE_1	TYPE_1		
+9652	ፓርላማ	1	TYPE_1	TYPE_1		
+9653	ፓርቲ	1	TYPE_1	TYPE_1		
+9654	ፓርክ	1	TYPE_1	TYPE_1		
+9655	ፓስቲ	1		TYPE_1		
+9656	ፓስቲኒ	1		TYPE_1		
+9657	ፓስታ	1		TYPE_1		
+9659	ፓስፖርት	1	TYPE_1	TYPE_1		
+9660	ፓትርያርክ	1	TYPE_1	TYPE_1		
+9661	ፓኬት	1	TYPE_1	TYPE_1		
+9662	ፓኮ	1	TYPE_1	TYPE_1		
+9663	ፓይለት	1	TYPE_1	TYPE_1		
+9664	ፓፓያ	1	TYPE_1	TYPE_1		
+9665	ፓፓዬ	1	TYPE_1	TYPE_1		
+9666	ፔሬድ	1		TYPE_1		
+9667	ፔርሙዝ	1	TYPE_1	TYPE_1		
+9668	ፔትካሽ	1		TYPE_1		
+9669	ፔኒሲሊን	1		TYPE_1		
+9670	ፔዳል	1		TYPE_1		
+9671	ፔዳጎጂ	1		TYPE_1		
+9672	ፕሉቶ	1		TYPE_1		
+9673	ፕላስተር	1	TYPE_1	TYPE_1		
+9674	ፕላስቲክ	1	TYPE_1	TYPE_1		
+9675	ፕላቲነም	1		TYPE_1		
+9676	ፕላኔት	1	TYPE_1	TYPE_1		
+9677	ፕላን	1	TYPE_1	TYPE_1		
+9678	ፕላዝማ	1		TYPE_1		
+9679	ፕሬስ	1	TYPE_1	TYPE_1		
+9683	ፕሬዚዲዬም	0		TYPE_1		
+9684	ፕሬዝዳንት	1	TYPE_1	TYPE_1		
+9685	ፕሮቲን	1	TYPE_1	TYPE_1		
+9686	ፕሮቴስታንት	1	TYPE_1	TYPE_1		
+9687	ፕሮቶኮል	1	TYPE_3	TYPE_1		
+9690	ፕሮጀክተር	1	TYPE_3	TYPE_1		
+9691	ፕሮጀክት	1	TYPE_1	TYPE_1		
+9692	ፕሮግራም	1	TYPE_1	TYPE_1		
+9694	ፕሮፌሰር	1	TYPE_1	TYPE_1		
+9695	ፕሮፌሽን	1	TYPE_1	TYPE_1		
+9696	ፕሮፓጋንዳ	1	TYPE_1	TYPE_1		
+9697	ፖለቲካ	1	TYPE_1	TYPE_1		
+9701	ፖለቲከኛ	1	TYPE_1	TYPE_1		
+9702	ፖሊስ	1	TYPE_1	TYPE_1		
+9703	ፖሊሲ	1	TYPE_1	TYPE_1		
+9705	ፖሊዮ	1		TYPE_1		
+9706	ፖምፕ	1		TYPE_1		
+9707	ፖርቶመጋሊያ	1		TYPE_1		
+9708	ፖስተር	1	TYPE_1	TYPE_1		
+9709	ፖስታ	1	TYPE_1	TYPE_1		
+9710	ፖስተኛ	1		TYPE_1		
+9715	ፖታሽ	1		TYPE_1		
+9716	ፖፖ	1	TYPE_1	TYPE_1		
+9717	ፕሬዚደንት	1	TYPE_1	TYPE_1		
+9718	ፕሮባ	1	TYPE_3	TYPE_1		
+9719	ፕሮብሌም	1	TYPE_1	TYPE_1		
+9720	ፕሮዤ	1	TYPE_1	TYPE_1		
+9724	ፖምፓ	1	TYPE_1	TYPE_1		
+5143	ፖስታ	1	TYPE_1	TYPE_1		
+9642	ፐርሶኔል	1	TYPE_1	TYPE_1		
+9643	ፑሽኣፕ	1		TYPE_1		
+9644	ፒራሚድ	1	TYPE_1	TYPE_1		
+9645	ፒሳ	1	TYPE_1	TYPE_1		
+9646	ፒንሳ	1	TYPE_1	TYPE_1		
+9647	ፒያኖ	1	TYPE_3	TYPE_1		
+9648	ፒጃማ	1	TYPE_1	TYPE_1		
+9650	ፒፓ	1	TYPE_1	TYPE_1		
+9651	ፓራሹት	1	TYPE_1	TYPE_1		
+9652	ፓርላማ	1	TYPE_1	TYPE_1		
+9653	ፓርቲ	1	TYPE_1	TYPE_1		
+9654	ፓርክ	1	TYPE_1	TYPE_1		
+9655	ፓስቲ	1		TYPE_1		
+9656	ፓስቲኒ	1		TYPE_1		
+9657	ፓስታ	1		TYPE_1		
+9659	ፓስፖርት	1	TYPE_1	TYPE_1		
+9660	ፓትርያርክ	1	TYPE_1	TYPE_1		
+9661	ፓኬት	1	TYPE_1	TYPE_1		
+9662	ፓኮ	1	TYPE_1	TYPE_1		
+9663	ፓይለት	1	TYPE_1	TYPE_1		
+9664	ፓፓያ	1	TYPE_1	TYPE_1		
+9665	ፓፓዬ	1	TYPE_1	TYPE_1		
+9666	ፔሬድ	1		TYPE_1		
+9667	ፔርሙዝ	1	TYPE_1	TYPE_1		
+9668	ፔትካሽ	1		TYPE_1		
+9669	ፔኒሲሊን	1		TYPE_1		
+9670	ፔዳል	1		TYPE_1		
+9671	ፔዳጎጂ	1		TYPE_1		
+9672	ፕሉቶ	1		TYPE_1		
+9673	ፕላስተር	1	TYPE_1	TYPE_1		
+9674	ፕላስቲክ	1	TYPE_1	TYPE_1		
+9675	ፕላቲነም	1		TYPE_1		
+9676	ፕላኔት	1	TYPE_1	TYPE_1		
+9677	ፕላን	1	TYPE_1	TYPE_1		
+9678	ፕላዝማ	1		TYPE_1		
+9679	ፕሬስ	1	TYPE_1	TYPE_1		
+9683	ፕሬዚዲዬም	0		TYPE_1		
+9684	ፕሬዝዳንት	1	TYPE_1	TYPE_1		
+9685	ፕሮቲን	1	TYPE_1	TYPE_1		
+9686	ፕሮቴስታንት	1	TYPE_1	TYPE_1		
+9687	ፕሮቶኮል	1	TYPE_3	TYPE_1		
+9690	ፕሮጀክተር	1	TYPE_3	TYPE_1		
+9691	ፕሮጀክት	1	TYPE_1	TYPE_1		
+9692	ፕሮግራም	1	TYPE_1	TYPE_1		
+9694	ፕሮፌሰር	1	TYPE_1	TYPE_1		
+9695	ፕሮፌሽን	1	TYPE_1	TYPE_1		
+9696	ፕሮፓጋንዳ	1	TYPE_1	TYPE_1		
+9697	ፖለቲካ	1	TYPE_1	TYPE_1		
+9701	ፖለቲከኛ	1	TYPE_1	TYPE_1		
+9702	ፖሊስ	1	TYPE_1	TYPE_1		
+9703	ፖሊሲ	1	TYPE_1	TYPE_1		
+9705	ፖሊዮ	1		TYPE_1		
+9706	ፖምፕ	1		TYPE_1		
+9707	ፖርቶመጋሊያ	1		TYPE_1		
+9708	ፖስተር	1	TYPE_1	TYPE_1		
+9709	ፖስታ	1	TYPE_1	TYPE_1		
+9710	ፖስተኛ	1		TYPE_1		
+9715	ፖታሽ	1		TYPE_1		
+9716	ፖፖ	1	TYPE_1	TYPE_1		
+9717	ፕሬዚደንት	1	TYPE_1	TYPE_1		
+9718	ፕሮባ	1	TYPE_3	TYPE_1		
+9719	ፕሮብሌም	1	TYPE_1	TYPE_1		
+9720	ፕሮዤ	1	TYPE_1	TYPE_1		
+9724	ፖምፓ	1	TYPE_1	TYPE_1		

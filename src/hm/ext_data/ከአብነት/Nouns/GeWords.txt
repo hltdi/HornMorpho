@@ -1,0 +1,992 @@
+3601	ጉርብርብ	1		TYPE_1		
+5049	ጋጋታ	1	TYPE_3	TYPE_1		
+5108	ጐዳና	1	TYPE_1	TYPE_1		
+5193	ግሳት	1		TYPE_1		
+5201	ገንዘብ	1	TYPE_1	TYPE_1		
+5202	ግንኙነት	1		TYPE_1		
+5216	ጌጥ	1	TYPE_1	TYPE_1		
+5227	ግቢ	1	TYPE_1	TYPE_1		
+5363	ገሞራ	1		TYPE_1		
+5497	ጐረምሳ	1	TYPE_1	TYPE_1		
+5522	ጎፈሬ	1		TYPE_1		
+6874	ጐመንዘር	1		TYPE_1		
+7681	ጋሻጃግሬ	1	TYPE_1	TYPE_1		
+7685	ጉምሩክ	1	TYPE_1	TYPE_1		
+7695	ገሃ	1		TYPE_1		
+7696	ገሃነም	1		TYPE_1		
+7698	ገሃድ	1		TYPE_1		
+7700	ግላሎ	0		TYPE_1		
+7701	ገላሎ	0		TYPE_1		
+7702	ግላሎ	0		TYPE_1		
+7703	ጋለሎ	0		TYPE_1		
+7704	ጋለሞታ	1	TYPE_1	TYPE_1		
+7705	ግለሙትና	1		TYPE_1		
+7707	ግልባጭ	1	TYPE_1	TYPE_1		
+7708	ገለባ	1		TYPE_1		
+7709	ገለታ	1	TYPE_1	TYPE_1		
+7710	ግልድም	1		TYPE_1		
+7711	ግልድሞሽ	1		TYPE_1		
+7712	ገለዶ	0	TYPE_1	TYPE_1		
+7713	ግልጋሎት	1		TYPE_1		
+7716	ገለፃ	1	TYPE_1	TYPE_1		
+7717	ገለጣ	1	TYPE_1	TYPE_1		
+7718	ገለፈት	1	TYPE_1	TYPE_1		
+7719	ግለፋፊ	1		TYPE_1		
+7720	ገላ	1	TYPE_1	TYPE_1		
+7722	ግልምጫ	1		TYPE_1		
+7723	ግልግል	1		TYPE_1		
+7724	ገል	1		TYPE_1		
+7725	ግምል	0		TYPE_1		
+7727	ገመሬ	1	TYPE_1	TYPE_1		
+7730	ግምት	1	TYPE_1	TYPE_1		
+7731	ገመና	1	TYPE_1	TYPE_1		
+7732	ገመድ	1	TYPE_1	TYPE_1		
+7736	ግምገማ	1	TYPE_1	TYPE_1		
+7737	ገመገም	0		TYPE_1		
+7738	ግማት	1		TYPE_1		
+7740	ገምባሌ	1	TYPE_1	TYPE_1		
+7741	ገንባሌ	1	TYPE_1	TYPE_1		
+7742	ግርሻ	1		TYPE_1		
+7743	ገረኑክ	0		TYPE_1		
+7744	ገረንገሬ	0		TYPE_1		
+7745	ግርዘት	1		TYPE_1		
+7746	ግዝረት	1		TYPE_1		
+7747	ገረድ	1	TYPE_1	TYPE_1		
+7748	ግርድና	1		TYPE_1		
+7749	ገረገራ	1		TYPE_1		
+7751	ገረጋነቲ	1		TYPE_1		
+7752	ግርፊያ	1		TYPE_1		
+7753	ግርፋት	1		TYPE_1		
+7754	ግርፍ	1		TYPE_1		
+7755	ገሬ	1		TYPE_1		
+7756	ገሬንጭ	0		TYPE_1		
+7757	ገርዳሳ	1	TYPE_1	TYPE_1		
+7759	ገርጌሶ	0	TYPE_1	TYPE_1		
+7760	ግስ	1	TYPE_1	TYPE_1		
+7761	ግሳፄ	1		TYPE_1		
+7763	ገሳ	0		TYPE_1		
+7764	ግሳት	1		TYPE_1		
+7765	ገሶ	0	TYPE_1	TYPE_1		
+7766	ግሽር	1		TYPE_1		
+7767	ገበሎ	1	TYPE_1	TYPE_1		
+7768	ገበረ	1		TYPE_1		
+7770	ገባር	1	TYPE_1	TYPE_1		
+7771	ግብር	1	TYPE_1	TYPE_1		
+7775	ገቢር	1	TYPE_1	TYPE_1		
+7778	ግብር	1	TYPE_1	TYPE_1		
+7779	ግብረሃዋርያ	1		TYPE_1		
+7780	ግብረሰዶም	1		TYPE_1		
+7781	ግብረስጋ	1		TYPE_1		
+7782	ግብረኣበር	1	TYPE_1	TYPE_1		
+7783	ግብረገብ	1	TYPE_1	TYPE_1		
+7790	ገበሬ	1	TYPE_1	TYPE_1		
+7792	ግብርና	1	TYPE_1	TYPE_1		
+7793	ገበር	1	TYPE_1	TYPE_1		
+7795	ገበርባሬ	1	TYPE_1	TYPE_1		
+7797	ገበርዲን	1	TYPE_1	TYPE_1		
+7798	ግብስብስ	1		TYPE_1		
+7799	ገበታ	1	TYPE_1	TYPE_1		
+7802	ገበቴ	1	TYPE_1	TYPE_1		
+7803	ገበዝ	1	TYPE_1	TYPE_1		
+7805	ግብዝና	1		TYPE_1		
+7806	ገበያ	1	TYPE_1	TYPE_1		
+7807	ገበያተኛ	1		TYPE_1		
+7808	ግብይት	1	TYPE_1	TYPE_1		
+7809	ገበጣ	1	TYPE_1	TYPE_1		
+7814	ገቢ	1	TYPE_1	TYPE_1		
+7816	ጋብቻ	1	TYPE_1	TYPE_1		
+7818	ግቢ	1	TYPE_1	TYPE_1		
+7821	ግብ	1	TYPE_1	TYPE_1		
+7825	ገብስ	1		TYPE_1		
+7826	ገቦ	1		TYPE_1		
+7828	ግትልትል	1		TYPE_1		
+7830	ግተት	1	TYPE_1	TYPE_1		
+7831	ግትት	1	TYPE_1	TYPE_1		
+7832	ግትቻ	1	TYPE_1	TYPE_1		
+7833	ግት	1		TYPE_1		
+7834	ገች	0		TYPE_1		
+7835	ግንብጥ	1		TYPE_1		
+7836	ግንብ	1	TYPE_3	TYPE_1		
+7837	ግምብ	1	TYPE_3	TYPE_1		
+7838	ግንበኛ	1	TYPE_1	TYPE_1		
+7839	ግምበኛ	1	TYPE_1	TYPE_1		
+7840	ግንባታ	1	TYPE_1	TYPE_1		
+7841	ግምባታ	1	TYPE_1	TYPE_1		
+7842	ገነት	1		TYPE_1		
+7844	ግነት	1	TYPE_1	TYPE_1		
+7845	ግንኙነት	1	TYPE_1	TYPE_1		
+7846	ግኝት	1	TYPE_1	TYPE_1		
+7850	ግንዘት	1		TYPE_1		
+7851	ግንዛቤ	1	TYPE_1	TYPE_1		
+7854	ግንገና	0		TYPE_1		
+7856	ገንፎ	1		TYPE_1		
+7857	ገና	1		TYPE_1		
+7862	ገንቦ	1	TYPE_1	TYPE_1		
+7863	ገምቦ	1	TYPE_1	TYPE_1		
+7864	ገንዘብ	1	TYPE_1	TYPE_1		
+7868	ገንዳ	1	TYPE_1	TYPE_1		
+7870	ገውዝ	1		TYPE_1		
+7872	ግዝት	1	TYPE_1	TYPE_1		
+7873	ግዝፈት	1	TYPE_1	TYPE_1		
+7875	ገዢ	1	TYPE_1	TYPE_1		
+7876	ግዛት	1	TYPE_1	TYPE_1		
+7877	ግዢ	1	TYPE_1	TYPE_1		
+7879	ጌጥ	1	TYPE_1	TYPE_1		
+7880	ጌጣጌጥ	1		TYPE_1		
+7881	ግዳይ	1	TYPE_1	TYPE_1		
+7882	ግድያ	1	TYPE_1	TYPE_1		
+7884	ገደል	1	TYPE_1	TYPE_1		
+7886	ገዳም	1	TYPE_1	TYPE_1		
+7888	ገደማ	1		TYPE_1		
+7889	ጋድም	1		TYPE_1		
+7890	ግድም	1		TYPE_1		
+7897	ገደብ	1	TYPE_1	TYPE_1		
+7898	ግድብ	1	TYPE_1	TYPE_1		
+7899	ግድጃ	1		TYPE_1		
+7900	ግዴታ	1	TYPE_1	TYPE_1		
+7901	ግድግዳ	1		TYPE_1		
+7904	ግድፈት	1	TYPE_1	TYPE_1		
+7905	ገዴ	0	TYPE_1	TYPE_1		
+7906	ገዲ	0	TYPE_1	TYPE_1		
+7907	ገድ	1		TYPE_1		
+7908	ገድል	1		TYPE_1		
+7909	ገጀራ	1	TYPE_1	TYPE_1		
+7911	ገጣሚ	1	TYPE_1	TYPE_1		
+7912	ገጠመኝ	1	TYPE_1	TYPE_1		
+7913	ግጥሚያ	1	TYPE_1	TYPE_1		
+7914	ግጥም	1	TYPE_1	TYPE_1		
+7916	ገጠር	1	TYPE_1	TYPE_1		
+7917	ገጠሬ	1	TYPE_1	TYPE_1		
+7918	ገጣባ	1	TYPE_1	TYPE_1		
+7919	ግጭት	1	TYPE_1	TYPE_1		
+7920	ገፅ	1	TYPE_1	TYPE_1		
+7921	ገጥ	1	TYPE_1	TYPE_1		
+7924	ግንፍልፍል	1		TYPE_1		
+7925	ግፍልፍል	0		TYPE_1		
+7926	ገፈራ	1		TYPE_1		
+7927	ገፈፋ	1	TYPE_1	TYPE_1		
+7929	ግፊያ	1	TYPE_1	TYPE_1		
+7930	ግፊት	1	TYPE_1	TYPE_1		
+7931	ግፍ	1	TYPE_1	TYPE_1		
+7932	ጉሊት	1		TYPE_1		
+7933	ጉልላት	1	TYPE_1	TYPE_1		
+7934	ጉልባን	1		TYPE_1		
+7935	ጉልት	1	TYPE_1	TYPE_1		
+7936	ጉልቻ	1		TYPE_1		
+7937	ጉልጥምት	1		TYPE_1		
+7938	ጉሎ	1		TYPE_1		
+7941	ጉመሮ	1		TYPE_1		
+7942	ገመሮ	0		TYPE_1		
+7943	ጉመደው	1		TYPE_1		
+7944	ጉማ	0		TYPE_1		
+7945	ጉማምላ	0		TYPE_1		
+7946	ጉማሬ	1	TYPE_1	TYPE_1		
+7948	ጉም	1		TYPE_1		
+7949	ጉምሩክ	1		TYPE_1		
+7950	ጉረኖ	1	TYPE_1	TYPE_1		
+7951	ጉራ	1		TYPE_1		
+7952	ጉራማይሌ	1		TYPE_1		
+7953	ጉራንጉር	1		TYPE_1		
+7954	ጉራጌ	1	TYPE_1	TYPE_1		
+7955	ጉሬዛ	1	TYPE_1	TYPE_1		
+7956	ጉር	0		TYPE_1		
+7957	ጉርና	0		TYPE_1		
+7958	ጉርዝኝ	0		TYPE_1		
+7959	ጉርዳ	0		TYPE_1		
+7961	ጉርጥ	1	TYPE_1	TYPE_1		
+7962	ጉረሮ	0		TYPE_1		
+7963	ጉሮሮ	1		TYPE_1		
+7964	ጉሽርጥ	0		TYPE_1		
+7965	ግሽርጥ	0		TYPE_1		
+7966	ጉሽጉሽ	0		TYPE_1		
+7967	ጉስጉሻ	0		TYPE_1		
+7968	ጉበት	1		TYPE_1		
+7969	ጉበን	1		TYPE_1		
+7970	ጉባ	1		TYPE_1		
+7971	ጉባኤ	1		TYPE_1		
+7972	ጉብታ	1		TYPE_1		
+7973	ጉቦ	1		TYPE_1		
+7974	ጉትቻ	1	TYPE_1	TYPE_1		
+7975	ጉትያ	1		TYPE_1		
+7976	ጉቶ	1		TYPE_1		
+7977	ጉኒና	0		TYPE_1		
+7978	ጉንዳን	1	TYPE_1	TYPE_1		
+7979	ጉንዶ	0		TYPE_1		
+7980	ጉንፋን	1		TYPE_1		
+7981	ጉያ	1		TYPE_1		
+7982	ጉዳይ	1	TYPE_1	TYPE_1		
+7983	ጉድኝ	1		TYPE_1		
+7984	ጉዶ	0	TYPE_1	TYPE_1		
+7985	ጉጉት	1	TYPE_1	TYPE_1		
+7986	ጉጉግ	0	TYPE_1	TYPE_1		
+7987	ጉግስ	1		TYPE_1		
+7988	ጉጠት	1	TYPE_1	TYPE_1		
+7989	ጉጭማ	1	TYPE_1	TYPE_1		
+7990	ጉፍታ	1		TYPE_1		
+7991	ጊታር	1	TYPE_1	TYPE_1		
+7992	ጊንጥ	1	TYPE_1	TYPE_1		
+7993	ጊዜ	1	TYPE_1	TYPE_1		
+7996	ጊደር	1	TYPE_1	TYPE_1		
+7997	ጊድራ	0		TYPE_1		
+7998	ጊጋር	0	TYPE_1	TYPE_1		
+7999	ጊጤ	0		TYPE_1		
+8000	ግለት	1		TYPE_1		
+8003	ግልቢያ	1		TYPE_1		
+8004	ግመት	1		TYPE_1		
+8005	ጋሙድ	0		TYPE_1		
+8006	ጋማ	1		TYPE_1		
+8008	ጋሜ	1		TYPE_1		
+8009	ጋምቤሎ	0		TYPE_1		
+8010	ገምቤሎ	0		TYPE_1		
+8012	ግርዶሽ	1		TYPE_1		
+8013	ግርጃ	1		TYPE_1		
+8014	ጋሬጣ	1		TYPE_1		
+8015	ጋሪ	1	TYPE_1	TYPE_1		
+8017	ጋሪያት	0		TYPE_1		
+8018	ጋራ	1		TYPE_1		
+8019	ጋራዥ	1	TYPE_1	TYPE_1		
+8020	ጋሬ	0		TYPE_1		
+8021	ጋሻ	1	TYPE_1	TYPE_1		
+8024	ጋሼ	1		TYPE_1		
+8025	ጋበን	0		TYPE_1		
+8026	ግብዣ	1	TYPE_1	TYPE_1		
+8028	ጋቢ	1	TYPE_1	TYPE_1		
+8029	ጋቤጣ	0	TYPE_1	TYPE_1		
+8030	ግት	1		TYPE_1		
+8031	ጋት	1		TYPE_1		
+8032	ጋኔን	1	TYPE_1	TYPE_1		
+8033	ጋኔል	1	TYPE_1	TYPE_1		
+8036	ጋን	1	TYPE_1	TYPE_1		
+8038	ጋንድያ	1	TYPE_1	TYPE_1		
+8039	ጋንጃ	1		TYPE_1		
+8040	ጋንጢጥ	0	TYPE_1	TYPE_1		
+8041	ጋንጩር	1	TYPE_1	TYPE_1		
+8042	ግዞት	1	TYPE_1	TYPE_1		
+8043	ጋዘና	0		TYPE_1		
+8044	ጋዜጣ	1	TYPE_1	TYPE_1		
+8045	ጋዜጠኛ	1	TYPE_1	TYPE_1		
+8046	ጋዝ	1		TYPE_1		
+8047	ጋዣ	0		TYPE_1		
+8048	ጋይ	1		TYPE_1		
+8049	ጋዱ	0	TYPE_1	TYPE_1		
+8050	ጋዲ	0		TYPE_1		
+8051	ጋዲ	0		TYPE_1		
+8053	ጋድ	1		TYPE_1		
+8054	ገሃድ	1		TYPE_1		
+8055	ጋጋሪ	1	TYPE_1	TYPE_1		
+8057	ጋጋታ	1		TYPE_1		
+8058	ጋጋኖ	1	TYPE_1	TYPE_1		
+8059	ጋግርት	1		TYPE_1		
+8060	ግጦሽ	1		TYPE_1		
+8061	ጋጥ	1	TYPE_1	TYPE_1		
+8062	ጋጣ	1	TYPE_1	TYPE_1		
+8064	ጋፊኝ	0		TYPE_1		
+8065	ጌሾ	1		TYPE_1		
+8066	ጌታ	1	TYPE_1	TYPE_1		
+8067	ጌቶች	1		TYPE_1		
+8068	ጌኛ	0	TYPE_1	TYPE_1		
+8069	ግሁስ	0	TYPE_1	TYPE_1		
+8070	ግላስ	0		TYPE_1		
+8071	ግለሂስ	1		TYPE_1		
+8072	ግለሰብ	1	TYPE_1	TYPE_1		
+8073	ግልየት	0		TYPE_1		
+8074	ግልገል	1	TYPE_1	TYPE_1		
+8082	ግልፍታ	1		TYPE_1		
+8083	ግመል	1	TYPE_1	TYPE_1		
+8084	ግምጃ	1	TYPE_1	TYPE_1		
+8086	ግረን	0		TYPE_1		
+8087	ግሪሳ	1	TYPE_1	TYPE_1		
+8088	ግራ	1		TYPE_1		
+8094	ግራማፎን	1		TYPE_1		
+8095	ግራም	1	TYPE_1	TYPE_1		
+8096	ግራምጣ	1		TYPE_1		
+8097	ግራር	1		TYPE_1		
+8098	ግራሶ	1		TYPE_1		
+8099	ግራዋ	1		TYPE_1		
+8100	ግራፍ	1	TYPE_1	TYPE_1		
+8101	ግሬራ	0		TYPE_1		
+8102	ግርማ	1		TYPE_1		
+8104	ግርምቡድ	0	TYPE_1	TYPE_1		
+8105	ግርንቡድ	0	TYPE_1	TYPE_1		
+8106	ግርንግሪት	1		TYPE_1		
+8107	ግርድ	1		TYPE_1		
+8108	ግርጌ	1		TYPE_1		
+8109	ግርግም	1		TYPE_1		
+8110	ግርግራ	1	TYPE_1	TYPE_1		
+8111	ጊርጊራ	1	TYPE_1	TYPE_1		
+8112	ግርግራት	0		TYPE_1		
+8113	ግሮሰሪ	1	TYPE_1	TYPE_1		
+8114	ግሳንግስ	1		TYPE_1		
+8115	ግስላ	1	TYPE_1	TYPE_1		
+8116	ግሽጣ	1	TYPE_3	TYPE_1		
+8118	ግብግብ	1		TYPE_1		
+8119	ግብጣ	0		TYPE_1		
+8120	ግብጦ	1		TYPE_1		
+8121	ግንባር	1		TYPE_1		
+8122	ግምባር	1		TYPE_1		
+8124	ግንቦት	1	TYPE_1	TYPE_1		
+8125	ግንቦቴ	0		TYPE_1		
+8126	ግንድ	1		TYPE_1		
+8128	ግንዲላ	1		TYPE_1		
+8129	ግንጭል	0		TYPE_1		
+8130	ግኡዝ	1		TYPE_1		
+8132	ግእዝ	1		TYPE_1		
+8133	ግዳጅ	1	TYPE_1	TYPE_1		
+8134	ግድንግዲ	0	TYPE_1	TYPE_1		
+8135	ግድግዲ	0	TYPE_1	TYPE_1		
+8136	ግግ	1		TYPE_1		
+8137	ጎህ	1		TYPE_1		
+8138	ጉልማ	1		TYPE_1		
+8139	ጉልምስና	1		TYPE_1		
+8140	ጎልማሳ	1	TYPE_1	TYPE_1		
+8141	ጉልበት	1	TYPE_1	TYPE_1		
+8142	ጉልት	1		TYPE_1		
+8143	ጉልቻ	1	TYPE_1	TYPE_1		
+8145	ጎለንታ	0		TYPE_1		
+8146	ጉለንታ	0		TYPE_1		
+8147	ጉልጓሎ	1		TYPE_1		
+8148	ጉልጎላ	1		TYPE_1		
+8149	ጎላ	1		TYPE_1		
+8150	ጎል	1	TYPE_1	TYPE_1		
+8152	ጎልፍ	1		TYPE_1		
+8153	ጎመን	1		TYPE_1		
+8156	ጎመድ	1	TYPE_1	TYPE_1		
+8157	ጉምጉምታ	1		TYPE_1		
+8158	ጎመጭ	0		TYPE_1		
+8159	ጎሚስታ	1	TYPE_1	TYPE_1		
+8160	ጎማ	1	TYPE_1	TYPE_1		
+8163	ጎምቱ	0	TYPE_1	TYPE_1		
+8164	ጎምበሬ	0		TYPE_1		
+8165	ገንቦሬ	0		TYPE_1		
+8166	ጉርምርምታ	1		TYPE_1		
+8167	ጉርምስና	1		TYPE_1		
+8168	ጎረምሳ	1	TYPE_1	TYPE_1		
+8169	ጉርብትና	1		TYPE_1		
+8170	ጉርናት	1		TYPE_1		
+8171	ጎረንጎሬ	0		TYPE_1		
+8172	ጉርድ	1	TYPE_1	TYPE_1		
+8176	ጉርዶሽ	1	TYPE_1	TYPE_1		
+8177	ጉርዶ	1	TYPE_1	TYPE_1		
+8179	ጎረደማን	0		TYPE_1		
+8180	ጎረዶማን	0		TYPE_1		
+8181	ጉርጉጭታ	1		TYPE_1		
+8182	ጎርፍ	1		TYPE_1		
+8183	ጎራ	1		TYPE_1		
+8184	ጎራዴ	1	TYPE_1	TYPE_1		
+8185	ጎሬ	1		TYPE_1		
+8186	ጎርምጥ	1		TYPE_1		
+8187	ጎሳ	1	TYPE_1	TYPE_1		
+8190	ጎሽ	1	TYPE_1	TYPE_1		
+8192	ጉብር	1		TYPE_1		
+8193	ጉብራት	1		TYPE_1		
+8194	ጉብኝት	1		TYPE_1		
+8195	ጎብኚ	1	TYPE_1	TYPE_1		
+8197	ጉብዝና	1	TYPE_1	TYPE_1		
+8198	ጉብጉባት	1		TYPE_1		
+8199	ጉብጉብ	1		TYPE_1		
+8200	ጎባን	1	TYPE_1	TYPE_1		
+8201	ጎተራ	1	TYPE_1	TYPE_1		
+8204	ጉተና	1		TYPE_1		
+8205	ጎታ	0	TYPE_1	TYPE_1		
+8206	ጉንተላ	1		TYPE_1		
+8207	ጉንጉን	1		TYPE_1		
+8209	ጉንጭ	1		TYPE_1		
+8212	ጉንፍ	1		TYPE_1		
+8213	ጎን	1	TYPE_1	TYPE_1		
+8216	ጎናም	1		TYPE_1		
+8217	ጉዝጓዝ	1		TYPE_1		
+8218	ጉድለት	1	TYPE_1	TYPE_1		
+8221	ጎደሬ	0		TYPE_1		
+8222	ጉድባ	1	TYPE_1	TYPE_1		
+8223	ጉድጓድ	1	TYPE_1	TYPE_1		
+8225	ጉድፍ	1		TYPE_1		
+8226	ጎዳ	0		TYPE_1		
+8227	ጉዳት	1	TYPE_1	TYPE_1		
+8229	ጎዳና	1	TYPE_1	TYPE_1		
+8230	ጎድን	1		TYPE_1		
+8232	ጎጆ	1	TYPE_1	TYPE_1		
+8236	ጉጥ	1		TYPE_1		
+8237	ጎጥ	1		TYPE_1		
+8238	ጎፈሬ	1		TYPE_1		
+8239	ጎፈር	1		TYPE_1		
+8240	ጎፍላ	0	TYPE_1	TYPE_1		
+8241	ጓጓታ	1		TYPE_1		
+8242	ጓሚያ	1		TYPE_1		
+8243	ጓሮ	1	TYPE_1	TYPE_1		
+8245	ጓሳ	0		TYPE_1		
+8246	ጓንት	1	TYPE_1	TYPE_1		
+8247	ጓንዴ	0	TYPE_1	TYPE_1		
+8248	ጉዞ	1	TYPE_1	TYPE_1		
+8250	ጓዝ	1	TYPE_1	TYPE_1		
+8252	ጓያ	1		TYPE_1		
+8253	ጓዳ	1	TYPE_1	TYPE_1		
+8254	ጓድ	1	TYPE_1	TYPE_1		
+8255	ጓደኛ	1	TYPE_1	TYPE_1		
+8256	ጓጉንቸር	1		TYPE_1		
+8257	ጓጓላ	1		TYPE_1		
+8258	ጉጉት	1		TYPE_1		
+8261	ገለልተኛነት	1		TYPE_1		
+8263	ግልብነት	1		TYPE_1		
+8265	ገላጭ	1	TYPE_1	TYPE_1		
+8266	ገልፋጭ	1	TYPE_1	TYPE_1		
+8267	ግልፋፊ	1		TYPE_1		
+8269	ገመሳ	1		TYPE_1		
+8270	ግማጭ	1		TYPE_1		
+8271	ግማጭ	1		TYPE_1		
+8272	ግማግም	1		TYPE_1		
+8274	ገሞራው	1		TYPE_1		
+8280	ገረኑግ	1		TYPE_1		
+8281	ግረኑክ	1		TYPE_1		
+8282	ግረዛ	1		TYPE_1		
+8283	ግርዛት	1	TYPE_1	TYPE_1		
+8287	ግርግር	1		TYPE_1		
+8288	ግርግድ	1		TYPE_1		
+8289	ገራፊ	1	TYPE_3	TYPE_1		
+8290	ገሪ	1	TYPE_1	TYPE_1		
+8291	ግስጋሴ	1	TYPE_1	TYPE_1		
+8299	ገብዪ	1	TYPE_1	TYPE_1		
+8306	ግባት	1		TYPE_1		
+8315	ገነን	1	TYPE_1	TYPE_1		
+8319	ገንዘብ	1	TYPE_1	TYPE_1		
+8325	ግዘፍ	1		TYPE_1		
+8333	ገድል	1	TYPE_1	TYPE_1		
+8336	ገጥታ	1	TYPE_1	TYPE_1		
+8337	ገጽታ	1	TYPE_1	TYPE_1		
+8340	ጉምጉምታ	1		TYPE_1		
+8341	ጉራች	1	TYPE_1	TYPE_1		
+8342	ጉራጌ	1	TYPE_1	TYPE_1		
+8343	ጉሬ	1	TYPE_1	TYPE_1		
+8344	ጎሬ	1	TYPE_1	TYPE_1		
+8351	ጉበኛ	1	TYPE_1	TYPE_1		
+8352	ጉግማንጉግ	1		TYPE_1		
+8356	ጋራጅ	1	TYPE_1	TYPE_1		
+8357	ጋራዥ	1	TYPE_1	TYPE_1		
+8359	ጋባዥ	1	TYPE_1	TYPE_1		
+8366	ጌታው	1		TYPE_1		
+8367	ጌጅ	1	TYPE_1	TYPE_1		
+8369	ግምሩክ	1		TYPE_1		
+8370	ጉምሩክ	1		TYPE_1		
+8373	ግርግር	1		TYPE_1		
+8374	ግብጥ	0	TYPE_1	TYPE_1		
+8375	ግብፅ	1	TYPE_1	TYPE_1		
+8376	ግብጣዊ	1		TYPE_1		
+8377	ግቻ	1		TYPE_1		
+8380	ጉራሽ	1		TYPE_1		
+8381	ጎረቤታም	1		TYPE_1		
+8384	ጎንደር	1	TYPE_1	TYPE_1		
+8385	ጎንደሬ	1	TYPE_1	TYPE_1		
+8386	ጎንደርኛ	1		TYPE_1		
+8388	ጎዳኒሳ	1		TYPE_1		
+8392	ጉልተኛ	1		TYPE_1		
+8396	ጉሰማ	1	TYPE_1	TYPE_1		
+8399	ጉብጠት	1		TYPE_1		
+8400	ጉትቻ	1	TYPE_1	TYPE_1		
+8401	ጉትጎታ	1	TYPE_1	TYPE_1		
+8402	ጎንጓኝ	1		TYPE_1		
+8403	ጉነጣ	1		TYPE_1		
+8404	ጎደሪ	1		TYPE_1		
+8409	ጓደኛሞች	1		TYPE_1		
+8410	ጓደኝነት	1		TYPE_1		
+8411	ጎጃም	1	TYPE_1	TYPE_1		
+8412	ጎጃሜ	1	TYPE_1	TYPE_1		
+8413	ጕላይ	1		TYPE_1		
+8415	ጕዞኛ	1		TYPE_1		
+11079	ጓጎት	1		TYPE_1		
+11216	ግጫ	1	TYPE_1	TYPE_1		
+11375	ጓጎት	0		TYPE_1		
+3601	ጉርብርብ	1		TYPE_1		
+5049	ጋጋታ	1	TYPE_3	TYPE_1		
+5108	ጐዳና	1	TYPE_1	TYPE_1		
+5193	ግሳት	1		TYPE_1		
+5201	ገንዘብ	1	TYPE_1	TYPE_1		
+5202	ግንኙነት	1		TYPE_1		
+5216	ጌጥ	1	TYPE_1	TYPE_1		
+5227	ግቢ	1	TYPE_1	TYPE_1		
+5363	ገሞራ	1		TYPE_1		
+5497	ጐረምሳ	1	TYPE_1	TYPE_1		
+5522	ጎፈሬ	1		TYPE_1		
+6874	ጐመንዘር	1		TYPE_1		
+7681	ጋሻጃግሬ	1	TYPE_1	TYPE_1		
+7685	ጉምሩክ	1	TYPE_1	TYPE_1		
+7695	ገሃ	1		TYPE_1		
+7696	ገሃነም	1		TYPE_1		
+7698	ገሃድ	1		TYPE_1		
+7700	ግላሎ	0		TYPE_1		
+7701	ገላሎ	0		TYPE_1		
+7702	ግላሎ	0		TYPE_1		
+7703	ጋለሎ	0		TYPE_1		
+7704	ጋለሞታ	1	TYPE_1	TYPE_1		
+7705	ግለሙትና	1		TYPE_1		
+7707	ግልባጭ	1	TYPE_1	TYPE_1		
+7708	ገለባ	1		TYPE_1		
+7709	ገለታ	1	TYPE_1	TYPE_1		
+7710	ግልድም	1		TYPE_1		
+7711	ግልድሞሽ	1		TYPE_1		
+7712	ገለዶ	0	TYPE_1	TYPE_1		
+7713	ግልጋሎት	1		TYPE_1		
+7716	ገለፃ	1	TYPE_1	TYPE_1		
+7717	ገለጣ	1	TYPE_1	TYPE_1		
+7718	ገለፈት	1	TYPE_1	TYPE_1		
+7719	ግለፋፊ	1		TYPE_1		
+7720	ገላ	1	TYPE_1	TYPE_1		
+7722	ግልምጫ	1		TYPE_1		
+7723	ግልግል	1		TYPE_1		
+7724	ገል	1		TYPE_1		
+7725	ግምል	0		TYPE_1		
+7727	ገመሬ	1	TYPE_1	TYPE_1		
+7730	ግምት	1	TYPE_1	TYPE_1		
+7731	ገመና	1	TYPE_1	TYPE_1		
+7732	ገመድ	1	TYPE_1	TYPE_1		
+7736	ግምገማ	1	TYPE_1	TYPE_1		
+7737	ገመገም	0		TYPE_1		
+7738	ግማት	1		TYPE_1		
+7740	ገምባሌ	1	TYPE_1	TYPE_1		
+7741	ገንባሌ	1	TYPE_1	TYPE_1		
+7742	ግርሻ	1		TYPE_1		
+7743	ገረኑክ	0		TYPE_1		
+7744	ገረንገሬ	0		TYPE_1		
+7745	ግርዘት	1		TYPE_1		
+7746	ግዝረት	1		TYPE_1		
+7747	ገረድ	1	TYPE_1	TYPE_1		
+7748	ግርድና	1		TYPE_1		
+7749	ገረገራ	1		TYPE_1		
+7751	ገረጋነቲ	1		TYPE_1		
+7752	ግርፊያ	1		TYPE_1		
+7753	ግርፋት	1		TYPE_1		
+7754	ግርፍ	1		TYPE_1		
+7755	ገሬ	1		TYPE_1		
+7756	ገሬንጭ	0		TYPE_1		
+7757	ገርዳሳ	1	TYPE_1	TYPE_1		
+7759	ገርጌሶ	0	TYPE_1	TYPE_1		
+7760	ግስ	1	TYPE_1	TYPE_1		
+7761	ግሳፄ	1		TYPE_1		
+7763	ገሳ	0		TYPE_1		
+7764	ግሳት	1		TYPE_1		
+7765	ገሶ	0	TYPE_1	TYPE_1		
+7766	ግሽር	1		TYPE_1		
+7767	ገበሎ	1	TYPE_1	TYPE_1		
+7768	ገበረ	1		TYPE_1		
+7770	ገባር	1	TYPE_1	TYPE_1		
+7771	ግብር	1	TYPE_1	TYPE_1		
+7775	ገቢር	1	TYPE_1	TYPE_1		
+7778	ግብር	1	TYPE_1	TYPE_1		
+7779	ግብረሃዋርያ	1		TYPE_1		
+7780	ግብረሰዶም	1		TYPE_1		
+7781	ግብረስጋ	1		TYPE_1		
+7782	ግብረኣበር	1	TYPE_1	TYPE_1		
+7783	ግብረገብ	1	TYPE_1	TYPE_1		
+7790	ገበሬ	1	TYPE_1	TYPE_1		
+7792	ግብርና	1	TYPE_1	TYPE_1		
+7793	ገበር	1	TYPE_1	TYPE_1		
+7795	ገበርባሬ	1	TYPE_1	TYPE_1		
+7797	ገበርዲን	1	TYPE_1	TYPE_1		
+7798	ግብስብስ	1		TYPE_1		
+7799	ገበታ	1	TYPE_1	TYPE_1		
+7802	ገበቴ	1	TYPE_1	TYPE_1		
+7803	ገበዝ	1	TYPE_1	TYPE_1		
+7805	ግብዝና	1		TYPE_1		
+7806	ገበያ	1	TYPE_1	TYPE_1		
+7807	ገበያተኛ	1		TYPE_1		
+7808	ግብይት	1	TYPE_1	TYPE_1		
+7809	ገበጣ	1	TYPE_1	TYPE_1		
+7814	ገቢ	1	TYPE_1	TYPE_1		
+7816	ጋብቻ	1	TYPE_1	TYPE_1		
+7818	ግቢ	1	TYPE_1	TYPE_1		
+7821	ግብ	1	TYPE_1	TYPE_1		
+7825	ገብስ	1		TYPE_1		
+7826	ገቦ	1		TYPE_1		
+7828	ግትልትል	1		TYPE_1		
+7830	ግተት	1	TYPE_1	TYPE_1		
+7831	ግትት	1	TYPE_1	TYPE_1		
+7832	ግትቻ	1	TYPE_1	TYPE_1		
+7833	ግት	1		TYPE_1		
+7834	ገች	0		TYPE_1		
+7835	ግንብጥ	1		TYPE_1		
+7836	ግንብ	1	TYPE_3	TYPE_1		
+7837	ግምብ	1	TYPE_3	TYPE_1		
+7838	ግንበኛ	1	TYPE_1	TYPE_1		
+7839	ግምበኛ	1	TYPE_1	TYPE_1		
+7840	ግንባታ	1	TYPE_1	TYPE_1		
+7841	ግምባታ	1	TYPE_1	TYPE_1		
+7842	ገነት	1		TYPE_1		
+7844	ግነት	1	TYPE_1	TYPE_1		
+7845	ግንኙነት	1	TYPE_1	TYPE_1		
+7846	ግኝት	1	TYPE_1	TYPE_1		
+7850	ግንዘት	1		TYPE_1		
+7851	ግንዛቤ	1	TYPE_1	TYPE_1		
+7854	ግንገና	0		TYPE_1		
+7856	ገንፎ	1		TYPE_1		
+7857	ገና	1		TYPE_1		
+7862	ገንቦ	1	TYPE_1	TYPE_1		
+7863	ገምቦ	1	TYPE_1	TYPE_1		
+7864	ገንዘብ	1	TYPE_1	TYPE_1		
+7868	ገንዳ	1	TYPE_1	TYPE_1		
+7870	ገውዝ	1		TYPE_1		
+7872	ግዝት	1	TYPE_1	TYPE_1		
+7873	ግዝፈት	1	TYPE_1	TYPE_1		
+7875	ገዢ	1	TYPE_1	TYPE_1		
+7876	ግዛት	1	TYPE_1	TYPE_1		
+7877	ግዢ	1	TYPE_1	TYPE_1		
+7879	ጌጥ	1	TYPE_1	TYPE_1		
+7880	ጌጣጌጥ	1		TYPE_1		
+7881	ግዳይ	1	TYPE_1	TYPE_1		
+7882	ግድያ	1	TYPE_1	TYPE_1		
+7884	ገደል	1	TYPE_1	TYPE_1		
+7886	ገዳም	1	TYPE_1	TYPE_1		
+7888	ገደማ	1		TYPE_1		
+7889	ጋድም	1		TYPE_1		
+7890	ግድም	1		TYPE_1		
+7897	ገደብ	1	TYPE_1	TYPE_1		
+7898	ግድብ	1	TYPE_1	TYPE_1		
+7899	ግድጃ	1		TYPE_1		
+7900	ግዴታ	1	TYPE_1	TYPE_1		
+7901	ግድግዳ	1		TYPE_1		
+7904	ግድፈት	1	TYPE_1	TYPE_1		
+7905	ገዴ	0	TYPE_1	TYPE_1		
+7906	ገዲ	0	TYPE_1	TYPE_1		
+7907	ገድ	1		TYPE_1		
+7908	ገድል	1		TYPE_1		
+7909	ገጀራ	1	TYPE_1	TYPE_1		
+7911	ገጣሚ	1	TYPE_1	TYPE_1		
+7912	ገጠመኝ	1	TYPE_1	TYPE_1		
+7913	ግጥሚያ	1	TYPE_1	TYPE_1		
+7914	ግጥም	1	TYPE_1	TYPE_1		
+7916	ገጠር	1	TYPE_1	TYPE_1		
+7917	ገጠሬ	1	TYPE_1	TYPE_1		
+7918	ገጣባ	1	TYPE_1	TYPE_1		
+7919	ግጭት	1	TYPE_1	TYPE_1		
+7920	ገፅ	1	TYPE_1	TYPE_1		
+7921	ገጥ	1	TYPE_1	TYPE_1		
+7924	ግንፍልፍል	1		TYPE_1		
+7925	ግፍልፍል	0		TYPE_1		
+7926	ገፈራ	1		TYPE_1		
+7927	ገፈፋ	1	TYPE_1	TYPE_1		
+7929	ግፊያ	1	TYPE_1	TYPE_1		
+7930	ግፊት	1	TYPE_1	TYPE_1		
+7931	ግፍ	1	TYPE_1	TYPE_1		
+7932	ጉሊት	1		TYPE_1		
+7933	ጉልላት	1	TYPE_1	TYPE_1		
+7934	ጉልባን	1		TYPE_1		
+7935	ጉልት	1	TYPE_1	TYPE_1		
+7936	ጉልቻ	1		TYPE_1		
+7937	ጉልጥምት	1		TYPE_1		
+7938	ጉሎ	1		TYPE_1		
+7941	ጉመሮ	1		TYPE_1		
+7942	ገመሮ	0		TYPE_1		
+7943	ጉመደው	1		TYPE_1		
+7944	ጉማ	0		TYPE_1		
+7945	ጉማምላ	0		TYPE_1		
+7946	ጉማሬ	1	TYPE_1	TYPE_1		
+7948	ጉም	1		TYPE_1		
+7949	ጉምሩክ	1		TYPE_1		
+7950	ጉረኖ	1	TYPE_1	TYPE_1		
+7951	ጉራ	1		TYPE_1		
+7952	ጉራማይሌ	1		TYPE_1		
+7953	ጉራንጉር	1		TYPE_1		
+7954	ጉራጌ	1	TYPE_1	TYPE_1		
+7955	ጉሬዛ	1	TYPE_1	TYPE_1		
+7956	ጉር	0		TYPE_1		
+7957	ጉርና	0		TYPE_1		
+7958	ጉርዝኝ	0		TYPE_1		
+7959	ጉርዳ	0		TYPE_1		
+7961	ጉርጥ	1	TYPE_1	TYPE_1		
+7962	ጉረሮ	0		TYPE_1		
+7963	ጉሮሮ	1		TYPE_1		
+7964	ጉሽርጥ	0		TYPE_1		
+7965	ግሽርጥ	0		TYPE_1		
+7966	ጉሽጉሽ	0		TYPE_1		
+7967	ጉስጉሻ	0		TYPE_1		
+7968	ጉበት	1		TYPE_1		
+7969	ጉበን	1		TYPE_1		
+7970	ጉባ	1		TYPE_1		
+7971	ጉባኤ	1		TYPE_1		
+7972	ጉብታ	1		TYPE_1		
+7973	ጉቦ	1		TYPE_1		
+7974	ጉትቻ	1	TYPE_1	TYPE_1		
+7975	ጉትያ	1		TYPE_1		
+7976	ጉቶ	1		TYPE_1		
+7977	ጉኒና	0		TYPE_1		
+7978	ጉንዳን	1	TYPE_1	TYPE_1		
+7979	ጉንዶ	0		TYPE_1		
+7980	ጉንፋን	1		TYPE_1		
+7981	ጉያ	1		TYPE_1		
+7982	ጉዳይ	1	TYPE_1	TYPE_1		
+7983	ጉድኝ	1		TYPE_1		
+7984	ጉዶ	0	TYPE_1	TYPE_1		
+7985	ጉጉት	1	TYPE_1	TYPE_1		
+7986	ጉጉግ	0	TYPE_1	TYPE_1		
+7987	ጉግስ	1		TYPE_1		
+7988	ጉጠት	1	TYPE_1	TYPE_1		
+7989	ጉጭማ	1	TYPE_1	TYPE_1		
+7990	ጉፍታ	1		TYPE_1		
+7991	ጊታር	1	TYPE_1	TYPE_1		
+7992	ጊንጥ	1	TYPE_1	TYPE_1		
+7993	ጊዜ	1	TYPE_1	TYPE_1		
+7996	ጊደር	1	TYPE_1	TYPE_1		
+7997	ጊድራ	0		TYPE_1		
+7998	ጊጋር	0	TYPE_1	TYPE_1		
+7999	ጊጤ	0		TYPE_1		
+8000	ግለት	1		TYPE_1		
+8003	ግልቢያ	1		TYPE_1		
+8004	ግመት	1		TYPE_1		
+8005	ጋሙድ	0		TYPE_1		
+8006	ጋማ	1		TYPE_1		
+8008	ጋሜ	1		TYPE_1		
+8009	ጋምቤሎ	0		TYPE_1		
+8010	ገምቤሎ	0		TYPE_1		
+8012	ግርዶሽ	1		TYPE_1		
+8013	ግርጃ	1		TYPE_1		
+8014	ጋሬጣ	1		TYPE_1		
+8015	ጋሪ	1	TYPE_1	TYPE_1		
+8017	ጋሪያት	0		TYPE_1		
+8018	ጋራ	1		TYPE_1		
+8019	ጋራዥ	1	TYPE_1	TYPE_1		
+8020	ጋሬ	0		TYPE_1		
+8021	ጋሻ	1	TYPE_1	TYPE_1		
+8024	ጋሼ	1		TYPE_1		
+8025	ጋበን	0		TYPE_1		
+8026	ግብዣ	1	TYPE_1	TYPE_1		
+8028	ጋቢ	1	TYPE_1	TYPE_1		
+8029	ጋቤጣ	0	TYPE_1	TYPE_1		
+8030	ግት	1		TYPE_1		
+8031	ጋት	1		TYPE_1		
+8032	ጋኔን	1	TYPE_1	TYPE_1		
+8033	ጋኔል	1	TYPE_1	TYPE_1		
+8036	ጋን	1	TYPE_1	TYPE_1		
+8038	ጋንድያ	1	TYPE_1	TYPE_1		
+8039	ጋንጃ	1		TYPE_1		
+8040	ጋንጢጥ	0	TYPE_1	TYPE_1		
+8041	ጋንጩር	1	TYPE_1	TYPE_1		
+8042	ግዞት	1	TYPE_1	TYPE_1		
+8043	ጋዘና	0		TYPE_1		
+8044	ጋዜጣ	1	TYPE_1	TYPE_1		
+8045	ጋዜጠኛ	1	TYPE_1	TYPE_1		
+8046	ጋዝ	1		TYPE_1		
+8047	ጋዣ	0		TYPE_1		
+8048	ጋይ	1		TYPE_1		
+8049	ጋዱ	0	TYPE_1	TYPE_1		
+8050	ጋዲ	0		TYPE_1		
+8051	ጋዲ	0		TYPE_1		
+8053	ጋድ	1		TYPE_1		
+8054	ገሃድ	1		TYPE_1		
+8055	ጋጋሪ	1	TYPE_1	TYPE_1		
+8057	ጋጋታ	1		TYPE_1		
+8058	ጋጋኖ	1	TYPE_1	TYPE_1		
+8059	ጋግርት	1		TYPE_1		
+8060	ግጦሽ	1		TYPE_1		
+8061	ጋጥ	1	TYPE_1	TYPE_1		
+8062	ጋጣ	1	TYPE_1	TYPE_1		
+8064	ጋፊኝ	0		TYPE_1		
+8065	ጌሾ	1		TYPE_1		
+8066	ጌታ	1	TYPE_1	TYPE_1		
+8067	ጌቶች	1		TYPE_1		
+8068	ጌኛ	0	TYPE_1	TYPE_1		
+8069	ግሁስ	0	TYPE_1	TYPE_1		
+8070	ግላስ	0		TYPE_1		
+8071	ግለሂስ	1		TYPE_1		
+8072	ግለሰብ	1	TYPE_1	TYPE_1		
+8073	ግልየት	0		TYPE_1		
+8074	ግልገል	1	TYPE_1	TYPE_1		
+8082	ግልፍታ	1		TYPE_1		
+8083	ግመል	1	TYPE_1	TYPE_1		
+8084	ግምጃ	1	TYPE_1	TYPE_1		
+8086	ግረን	0		TYPE_1		
+8087	ግሪሳ	1	TYPE_1	TYPE_1		
+8088	ግራ	1		TYPE_1		
+8094	ግራማፎን	1		TYPE_1		
+8095	ግራም	1	TYPE_1	TYPE_1		
+8096	ግራምጣ	1		TYPE_1		
+8097	ግራር	1		TYPE_1		
+8098	ግራሶ	1		TYPE_1		
+8099	ግራዋ	1		TYPE_1		
+8100	ግራፍ	1	TYPE_1	TYPE_1		
+8101	ግሬራ	0		TYPE_1		
+8102	ግርማ	1		TYPE_1		
+8104	ግርምቡድ	0	TYPE_1	TYPE_1		
+8105	ግርንቡድ	0	TYPE_1	TYPE_1		
+8106	ግርንግሪት	1		TYPE_1		
+8107	ግርድ	1		TYPE_1		
+8108	ግርጌ	1		TYPE_1		
+8109	ግርግም	1		TYPE_1		
+8110	ግርግራ	1	TYPE_1	TYPE_1		
+8111	ጊርጊራ	1	TYPE_1	TYPE_1		
+8112	ግርግራት	0		TYPE_1		
+8113	ግሮሰሪ	1	TYPE_1	TYPE_1		
+8114	ግሳንግስ	1		TYPE_1		
+8115	ግስላ	1	TYPE_1	TYPE_1		
+8116	ግሽጣ	1	TYPE_3	TYPE_1		
+8118	ግብግብ	1		TYPE_1		
+8119	ግብጣ	0		TYPE_1		
+8120	ግብጦ	1		TYPE_1		
+8121	ግንባር	1		TYPE_1		
+8122	ግምባር	1		TYPE_1		
+8124	ግንቦት	1	TYPE_1	TYPE_1		
+8125	ግንቦቴ	0		TYPE_1		
+8126	ግንድ	1		TYPE_1		
+8128	ግንዲላ	1		TYPE_1		
+8129	ግንጭል	0		TYPE_1		
+8130	ግኡዝ	1		TYPE_1		
+8132	ግእዝ	1		TYPE_1		
+8133	ግዳጅ	1	TYPE_1	TYPE_1		
+8134	ግድንግዲ	0	TYPE_1	TYPE_1		
+8135	ግድግዲ	0	TYPE_1	TYPE_1		
+8136	ግግ	1		TYPE_1		
+8137	ጎህ	1		TYPE_1		
+8138	ጉልማ	1		TYPE_1		
+8139	ጉልምስና	1		TYPE_1		
+8140	ጎልማሳ	1	TYPE_1	TYPE_1		
+8141	ጉልበት	1	TYPE_1	TYPE_1		
+8142	ጉልት	1		TYPE_1		
+8143	ጉልቻ	1	TYPE_1	TYPE_1		
+8145	ጎለንታ	0		TYPE_1		
+8146	ጉለንታ	0		TYPE_1		
+8147	ጉልጓሎ	1		TYPE_1		
+8148	ጉልጎላ	1		TYPE_1		
+8149	ጎላ	1		TYPE_1		
+8150	ጎል	1	TYPE_1	TYPE_1		
+8152	ጎልፍ	1		TYPE_1		
+8153	ጎመን	1		TYPE_1		
+8156	ጎመድ	1	TYPE_1	TYPE_1		
+8157	ጉምጉምታ	1		TYPE_1		
+8158	ጎመጭ	0		TYPE_1		
+8159	ጎሚስታ	1	TYPE_1	TYPE_1		
+8160	ጎማ	1	TYPE_1	TYPE_1		
+8163	ጎምቱ	0	TYPE_1	TYPE_1		
+8164	ጎምበሬ	0		TYPE_1		
+8165	ገንቦሬ	0		TYPE_1		
+8166	ጉርምርምታ	1		TYPE_1		
+8167	ጉርምስና	1		TYPE_1		
+8168	ጎረምሳ	1	TYPE_1	TYPE_1		
+8169	ጉርብትና	1		TYPE_1		
+8170	ጉርናት	1		TYPE_1		
+8171	ጎረንጎሬ	0		TYPE_1		
+8172	ጉርድ	1	TYPE_1	TYPE_1		
+8176	ጉርዶሽ	1	TYPE_1	TYPE_1		
+8177	ጉርዶ	1	TYPE_1	TYPE_1		
+8179	ጎረደማን	0		TYPE_1		
+8180	ጎረዶማን	0		TYPE_1		
+8181	ጉርጉጭታ	1		TYPE_1		
+8182	ጎርፍ	1		TYPE_1		
+8183	ጎራ	1		TYPE_1		
+8184	ጎራዴ	1	TYPE_1	TYPE_1		
+8185	ጎሬ	1		TYPE_1		
+8186	ጎርምጥ	1		TYPE_1		
+8187	ጎሳ	1	TYPE_1	TYPE_1		
+8190	ጎሽ	1	TYPE_1	TYPE_1		
+8192	ጉብር	1		TYPE_1		
+8193	ጉብራት	1		TYPE_1		
+8194	ጉብኝት	1		TYPE_1		
+8195	ጎብኚ	1	TYPE_1	TYPE_1		
+8197	ጉብዝና	1	TYPE_1	TYPE_1		
+8198	ጉብጉባት	1		TYPE_1		
+8199	ጉብጉብ	1		TYPE_1		
+8200	ጎባን	1	TYPE_1	TYPE_1		
+8201	ጎተራ	1	TYPE_1	TYPE_1		
+8204	ጉተና	1		TYPE_1		
+8205	ጎታ	0	TYPE_1	TYPE_1		
+8206	ጉንተላ	1		TYPE_1		
+8207	ጉንጉን	1		TYPE_1		
+8209	ጉንጭ	1		TYPE_1		
+8212	ጉንፍ	1		TYPE_1		
+8213	ጎን	1	TYPE_1	TYPE_1		
+8216	ጎናም	1		TYPE_1		
+8217	ጉዝጓዝ	1		TYPE_1		
+8218	ጉድለት	1	TYPE_1	TYPE_1		
+8221	ጎደሬ	0		TYPE_1		
+8222	ጉድባ	1	TYPE_1	TYPE_1		
+8223	ጉድጓድ	1	TYPE_1	TYPE_1		
+8225	ጉድፍ	1		TYPE_1		
+8226	ጎዳ	0		TYPE_1		
+8227	ጉዳት	1	TYPE_1	TYPE_1		
+8229	ጎዳና	1	TYPE_1	TYPE_1		
+8230	ጎድን	1		TYPE_1		
+8232	ጎጆ	1	TYPE_1	TYPE_1		
+8236	ጉጥ	1		TYPE_1		
+8237	ጎጥ	1		TYPE_1		
+8238	ጎፈሬ	1		TYPE_1		
+8239	ጎፈር	1		TYPE_1		
+8240	ጎፍላ	0	TYPE_1	TYPE_1		
+8241	ጓጓታ	1		TYPE_1		
+8242	ጓሚያ	1		TYPE_1		
+8243	ጓሮ	1	TYPE_1	TYPE_1		
+8245	ጓሳ	0		TYPE_1		
+8246	ጓንት	1	TYPE_1	TYPE_1		
+8247	ጓንዴ	0	TYPE_1	TYPE_1		
+8248	ጉዞ	1	TYPE_1	TYPE_1		
+8250	ጓዝ	1	TYPE_1	TYPE_1		
+8252	ጓያ	1		TYPE_1		
+8253	ጓዳ	1	TYPE_1	TYPE_1		
+8254	ጓድ	1	TYPE_1	TYPE_1		
+8255	ጓደኛ	1	TYPE_1	TYPE_1		
+8256	ጓጉንቸር	1		TYPE_1		
+8257	ጓጓላ	1		TYPE_1		
+8258	ጉጉት	1		TYPE_1		
+8261	ገለልተኛነት	1		TYPE_1		
+8263	ግልብነት	1		TYPE_1		
+8265	ገላጭ	1	TYPE_1	TYPE_1		
+8266	ገልፋጭ	1	TYPE_1	TYPE_1		
+8267	ግልፋፊ	1		TYPE_1		
+8269	ገመሳ	1		TYPE_1		
+8270	ግማጭ	1		TYPE_1		
+8271	ግማጭ	1		TYPE_1		
+8272	ግማግም	1		TYPE_1		
+8274	ገሞራው	1		TYPE_1		
+8280	ገረኑግ	1		TYPE_1		
+8281	ግረኑክ	1		TYPE_1		
+8282	ግረዛ	1		TYPE_1		
+8283	ግርዛት	1	TYPE_1	TYPE_1		
+8287	ግርግር	1		TYPE_1		
+8288	ግርግድ	1		TYPE_1		
+8289	ገራፊ	1	TYPE_3	TYPE_1		
+8290	ገሪ	1	TYPE_1	TYPE_1		
+8291	ግስጋሴ	1	TYPE_1	TYPE_1		
+8299	ገብዪ	1	TYPE_1	TYPE_1		
+8306	ግባት	1		TYPE_1		
+8315	ገነን	1	TYPE_1	TYPE_1		
+8319	ገንዘብ	1	TYPE_1	TYPE_1		
+8325	ግዘፍ	1		TYPE_1		
+8333	ገድል	1	TYPE_1	TYPE_1		
+8336	ገጥታ	1	TYPE_1	TYPE_1		
+8337	ገጽታ	1	TYPE_1	TYPE_1		
+8340	ጉምጉምታ	1		TYPE_1		
+8341	ጉራች	1	TYPE_1	TYPE_1		
+8342	ጉራጌ	1	TYPE_1	TYPE_1		
+8343	ጉሬ	1	TYPE_1	TYPE_1		
+8344	ጎሬ	1	TYPE_1	TYPE_1		
+8351	ጉበኛ	1	TYPE_1	TYPE_1		
+8352	ጉግማንጉግ	1		TYPE_1		
+8356	ጋራጅ	1	TYPE_1	TYPE_1		
+8357	ጋራዥ	1	TYPE_1	TYPE_1		
+8359	ጋባዥ	1	TYPE_1	TYPE_1		
+8366	ጌታው	1		TYPE_1		
+8367	ጌጅ	1	TYPE_1	TYPE_1		
+8369	ግምሩክ	1		TYPE_1		
+8370	ጉምሩክ	1		TYPE_1		
+8373	ግርግር	1		TYPE_1		
+8374	ግብጥ	0	TYPE_1	TYPE_1		
+8375	ግብፅ	1	TYPE_1	TYPE_1		
+8376	ግብጣዊ	1		TYPE_1		
+8377	ግቻ	1		TYPE_1		
+8380	ጉራሽ	1		TYPE_1		
+8381	ጎረቤታም	1		TYPE_1		
+8384	ጎንደር	1	TYPE_1	TYPE_1		
+8385	ጎንደሬ	1	TYPE_1	TYPE_1		
+8386	ጎንደርኛ	1		TYPE_1		
+8388	ጎዳኒሳ	1		TYPE_1		
+8392	ጉልተኛ	1		TYPE_1		
+8396	ጉሰማ	1	TYPE_1	TYPE_1		
+8399	ጉብጠት	1		TYPE_1		
+8400	ጉትቻ	1	TYPE_1	TYPE_1		
+8401	ጉትጎታ	1	TYPE_1	TYPE_1		
+8402	ጎንጓኝ	1		TYPE_1		
+8403	ጉነጣ	1		TYPE_1		
+8404	ጎደሪ	1		TYPE_1		
+8409	ጓደኛሞች	1		TYPE_1		
+8410	ጓደኝነት	1		TYPE_1		
+8411	ጎጃም	1	TYPE_1	TYPE_1		
+8412	ጎጃሜ	1	TYPE_1	TYPE_1		
+8413	ጕላይ	1		TYPE_1		
+8415	ጕዞኛ	1		TYPE_1		
+11079	ጓጎት	1		TYPE_1		
+11216	ግጫ	1	TYPE_1	TYPE_1		
+11375	ጓጎት	0		TYPE_1		

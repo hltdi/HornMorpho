@@ -1,0 +1,2738 @@
+3	ምጣኔ	1		TYPE_1		
+140	መለማመኛ	1	TYPE_1	TYPE_1		
+417	መሃለቅ	1	TYPE_1	TYPE_1		
+418	መምህር	1		TYPE_1		
+419	መመህራን	1	TYPE_4	TYPE_1		
+420	መምሬ	1	type3	TYPE_1		
+421	ምሁር	1	TYPE_1	TYPE_1		
+422	መሃረብ	1	TYPE_1	TYPE_1		
+423	መሃረም	1	TYPE_1	TYPE_1		
+424	መሃራ	1		TYPE_1		
+425	መሃንዲስ	1	TYPE_1	TYPE_1		
+426	መሃንዲስ	1	TYPE_1	TYPE_1		
+427	ምህነድስና	1		TYPE_1		
+428	መሃይም	1	TYPE_1	TYPE_1		
+429	ማይም	1	TYPE_1	TYPE_1		
+430	መሆዶ	0	TYPE_1	TYPE_1		
+431	ሞሆዶ	0	TYPE_1	TYPE_1		
+432	መለመላ	1		TYPE_1		
+433	ምልማይ	1		TYPE_1		
+434	መልማይ	1	TYPE_1	TYPE_1		
+435	ምልመላ	1	TYPE_1	TYPE_1		
+436	መልስ	1	TYPE_1	TYPE_1		
+437	ምልሰት	1		TYPE_1		
+438	ምላሽ	1	TYPE_1	TYPE_1		
+439	መለሰኛ	1		TYPE_1		
+440	መለሳ	1		TYPE_1		
+441	መለቀሻ	1		TYPE_1		
+442	መለበጃ	1	TYPE_1	TYPE_1		
+443	መለብለቢያ	1	TYPE_1	TYPE_1		
+444	መለንቀጫ	1	TYPE_1	TYPE_1		
+445	መለኮት	1		TYPE_1		
+446	ምልኪ	0		TYPE_1		
+447	ማምለኪያ	1	TYPE_1	TYPE_1		
+448	ምልክት	1	TYPE_1	TYPE_1		
+450	ማመልከቻ	1	TYPE_1	TYPE_1		
+451	መለከት	1	TYPE_1	TYPE_1		
+452	መለኮሻ	1	TYPE_1	TYPE_1		
+453	መላ	1	TYPE_1	TYPE_1		
+454	መላላጫ	1		TYPE_1		
+455	መላሾ	1		TYPE_1		
+456	መላቀቂያ	1		TYPE_1		
+457	መልህቅ	1	TYPE_1	TYPE_1		
+458	መላጃን	0		TYPE_1		
+459	መልቀሚያ	1	TYPE_1	TYPE_1		
+460	መልቀቂያ	1	TYPE_1	TYPE_1		
+461	መልኣክ	1		TYPE_1		
+462	መላእክት	1	TYPE_4	TYPE_1		
+463	መላከሞት	1		TYPE_1		
+464	መልእክተኛ	1	TYPE_1	TYPE_1		
+465	መልእክት	1	TYPE_1	TYPE_1		
+466	መልክት	1	TYPE_1	TYPE_1		
+467	መላክት	1	TYPE_4	TYPE_1		
+468	መላክተኛ	1		TYPE_1		
+469	መልከኛ	1	TYPE_1	TYPE_1		
+470	መልካ	1	TYPE_1	TYPE_1		
+471	መልክ	1	TYPE_1	TYPE_1		
+472	መልክኣምድር	1		TYPE_1		
+473	መሎጊያ	1	TYPE_1	TYPE_1		
+474	መረማሪ	1		TYPE_1		
+475	ምርመራ	1	TYPE_1	TYPE_1		
+476	ምርምር	1	TYPE_1	TYPE_1		
+477	መረመር	1		TYPE_1		
+478	መረማመጃ	1	TYPE_1	TYPE_1		
+479	መራመጃ	1	TYPE_1	TYPE_1		
+480	ምሬት	1		TYPE_1		
+481	ምር	1	TYPE_1	TYPE_1		
+482	መረሬ	1		TYPE_1		
+483	መረሸት	0	TYPE_1	TYPE_1		
+484	መረሻት	0		TYPE_1		
+485	ምረቃ	1		TYPE_1		
+486	ምራቂ	1	TYPE_1	TYPE_1		
+487	ምርቃት	1	TYPE_1	TYPE_1		
+488	ምርቃና	1		TYPE_1		
+489	መረቅ	1		TYPE_1		
+490	መረብ	1	TYPE_1	TYPE_1		
+491	መረባርብ	1		TYPE_1		
+492	ምርት	1	TYPE_1	TYPE_1		
+493	ምርታማ	1	TYPE_1	TYPE_1		
+494	ማምረቻ	1	TYPE_1	TYPE_1		
+495	ምርኩዝ	1	TYPE_1	TYPE_1		
+496	መረዋ	1	TYPE_3	TYPE_1		
+497	መርዝ	1	TYPE_1	TYPE_1		
+498	መረጃ	1	TYPE_1	TYPE_1		
+499	መርግ	1		TYPE_1		
+500	ምርጊት	1		TYPE_1		
+501	መረግድ	0		TYPE_1		
+502	መረጋገጫ	1	TYPE_1	TYPE_1		
+503	ምርጫ	1	TYPE_1	TYPE_1		
+504	መሪ	1	TYPE_1	TYPE_1		
+505	ምሪት	1	TYPE_1	TYPE_1		
+506	መመሪያ	1	TYPE_1	TYPE_1		
+507	መሬት	1	TYPE_1	TYPE_1		
+508	መርህ	1	TYPE_1	TYPE_1		
+509	መርበብተ	1		TYPE_1		
+510	መርከብ	1	TYPE_1	TYPE_1		
+511	መርከበኛ	1	TYPE_1	TYPE_1		
+512	መርዶ	1	TYPE_1	TYPE_1		
+513	መርዶፋ	1	TYPE_1	TYPE_1		
+514	መርዱፋ	1		TYPE_1		
+515	መርገጥ	0	TYPE_1	TYPE_1		
+516	መርገጫ	1	TYPE_1	TYPE_1		
+517	መርገም	1	TYPE_1	TYPE_1		
+518	መርጦ	0		TYPE_1		
+519	መርፌ	1	TYPE_1	TYPE_1		
+520	መሮ	1	TYPE_1	TYPE_1		
+521	ምሳሌ	1	TYPE_1	TYPE_1		
+522	ምስል	1	TYPE_1	TYPE_1		
+523	ማማሰያ	1	TYPE_1	TYPE_1		
+524	መሰለቂያ	1		TYPE_1		
+525	መሰላል	1	TYPE_1	TYPE_1		
+526	መሰረት	1	TYPE_1	TYPE_1		
+527	ምስረታ	1	TYPE_1	TYPE_1		
+528	ምስቅልቅል	1		TYPE_1		
+529	መስቃ	0		TYPE_1		
+530	መሲና	1	TYPE_1	TYPE_1		
+531	ምስክር	1	TYPE_1	TYPE_1		
+532	መስክ	1	TYPE_1	TYPE_1		
+533	ምሳግ	1		TYPE_1		
+534	ምስጋና	1	TYPE_1	TYPE_1		
+535	ምሰጢር	1	TYPE_1	TYPE_1		
+536	ሚስጥር	1	TYPE_1	TYPE_1		
+537	ምሰጢረኛ	1		TYPE_1		
+538	መሰጥ	0		TYPE_1		
+539	መሲህ	1	TYPE_1	TYPE_1		
+540	መሳድ	0		TYPE_1		
+541	መሰፍቻ	0		TYPE_1		
+542	መሳለሚያ	1	TYPE_1	TYPE_1		
+543	መሳል	1		TYPE_1		
+544	መሳሪያ	1	TYPE_1	TYPE_1		
+545	መሳቂያ	1	TYPE_1	TYPE_1		
+546	መሳቢያ	1	TYPE_1	TYPE_1		
+547	መሳፍንት	1	TYPE_1	TYPE_1		
+548	መስህብ	1	TYPE_1	TYPE_1		
+549	መስመር	1	TYPE_1	TYPE_1		
+550	መስቀለኛ	1		TYPE_1		
+551	መስቀል	1	TYPE_1	TYPE_1		
+552	መስቀያ	1	TYPE_1	TYPE_1		
+553	መስቆር	0	TYPE_1	TYPE_1		
+554	መስቀርት	0		TYPE_1		
+555	መስተሃድርት	0		TYPE_1		
+556	መስታድርት	0		TYPE_1		
+557	መስተንግዶ	1	TYPE_1	TYPE_1		
+558	መስተባርር	0	type 3	TYPE_1		
+559	መስተዋት	1	TYPE_1	TYPE_1		
+560	መስታወት	1	TYPE_1	TYPE_1		
+561	መስተዳድር	1	TYPE_1	TYPE_1		
+562	መስተፋቅር	1		TYPE_1		
+563	መስቲካ	1	TYPE_1	TYPE_1		
+564	ማስቲካ	1	TYPE_1	TYPE_1		
+565	መስኖ	1	TYPE_1	TYPE_1		
+566	መስእ	0		TYPE_1		
+567	መስከረም	1	TYPE_1	TYPE_1		
+568	መስክ	1	TYPE_1	TYPE_1		
+569	መስኮት	1	TYPE_1	TYPE_1		
+570	መስእዋት	1	TYPE_1	TYPE_1		
+571	መስጊድ	1	TYPE_1	TYPE_1		
+572	መስፈሪያ	1	TYPE_1	TYPE_1		
+573	መስፈርት	1	TYPE_1	TYPE_1		
+574	መስፍ	0	TYPE_1	TYPE_1		
+575	መስፍን	1	TYPE_1	TYPE_1		
+576	መሶብ	1	TYPE_1	TYPE_1		
+577	ምሸት	1		TYPE_1		
+578	ማምሻ	1		TYPE_1		
+579	መሸቢያ	1	TYPE_1	TYPE_1		
+580	መሸበቢያ	1	TYPE_1	TYPE_1		
+581	መሸታ	1	TYPE_1	TYPE_1		
+582	መሸተኛ	1	TYPE_1	TYPE_1		
+583	መሸንገያ	1		TYPE_1		
+584	መሸኛ	1	TYPE_1	TYPE_1		
+585	ምሽግ	1	TYPE_1	TYPE_1		
+586	መሸጋገሪያ	1	TYPE_1	TYPE_1		
+587	መሸጎሪያ	1	TYPE_1	TYPE_1		
+588	መሸፈኛ	1	TYPE_1	TYPE_1		
+589	መሹለኪያ	1	TYPE_1	TYPE_1		
+590	መሹለክለኪያ	1	TYPE_1	TYPE_1		
+591	መሽረብ	0	TYPE_1	TYPE_1		
+592	መትረብ	0	TYPE_1	TYPE_1		
+593	መሽቀቅ	0	TYPE_1	TYPE_1		
+594	መለኪያ	1	TYPE_1	TYPE_1		
+595	መቀመቅ	1		TYPE_1		
+596	መቅ	1		TYPE_1		
+597	መቀመጫ	1	TYPE_1	TYPE_1		
+598	መቀራቅር	0	type 3	TYPE_1		
+599	መቀራቅርት	0		TYPE_1		
+600	መቀርሰሚያ	0	TYPE_1	TYPE_1		
+601	መቀርቀቢያ	0	TYPE_3	TYPE_1		
+602	መቀርጠፊያ	1	TYPE_1	TYPE_1		
+603	መቀስ	1	TYPE_1	TYPE_1		
+604	መቀቀያ	1	TYPE_1	TYPE_1		
+605	መቀነስ	1		TYPE_1		
+606	መቀነሻ	1	TYPE_1	TYPE_1		
+607	መቀነት	1	TYPE_1	TYPE_1		
+608	መቀናጆ	1		TYPE_1		
+609	መቀንደቢያ	1	TYPE_1	TYPE_1		
+610	መቀንጠቢያ	1	TYPE_1	TYPE_1		
+611	ምቀኛ	1	TYPE_1	TYPE_1		
+612	መቀየሪያ	1	TYPE_1	TYPE_1		
+613	መቀየጃ	0	TYPE_1	TYPE_1		
+614	መቀጣጫ	1	TYPE_1	TYPE_1		
+615	መቀጮ	1	TYPE_3	TYPE_1		
+616	መቀፍቀፊያ	1	TYPE_3	TYPE_1		
+617	መቁሊያ	1		TYPE_1		
+618	መቁረርት	0	TYPE_1	TYPE_1		
+619	መቁረጪት	0	TYPE_3	TYPE_1		
+620	መቁረጫ	1	TYPE_1	TYPE_1		
+621	መቁነን	1		TYPE_1		
+622	መቁያ	1	TYPE_1	TYPE_1		
+623	መቁጠሪያ	1	TYPE_1	TYPE_1		
+624	መቂናጥ	1		TYPE_1		
+625	መቃ	1	TYPE_3	TYPE_1		
+626	መቃረቢያ	1		TYPE_1		
+627	መቃብር	1	TYPE_1	TYPE_1		
+628	መቃን	1	TYPE_1	TYPE_1		
+629	መቃኞ	0	TYPE_1	TYPE_1		
+630	መቃወሚያ	1	TYPE_3	TYPE_1		
+631	መቃድ	0	TYPE_3	TYPE_1		
+632	መቃጠሪያ	1	TYPE_1	TYPE_1		
+633	መቃጥን	0	TYPE_1	TYPE_1		
+634	መቄ	0	TYPE_1	TYPE_1		
+635	መቅለምት	1		TYPE_1		
+636	መቅመቆ	1		TYPE_1		
+637	መቅረዝ	1	TYPE_1	TYPE_1		
+638	መቅረጫ	1	TYPE_1	TYPE_1		
+639	መቅሰፍታም	1		TYPE_1		
+640	መቅሰፍት	1	TYPE_1	TYPE_1		
+641	መቅኒ	1		TYPE_1		
+642	መቅን	1		TYPE_1		
+643	መቅኖ	1	TYPE_1	TYPE_1		
+644	መቅዘፊያ	1	TYPE_1	TYPE_1		
+645	መቅደስ	1	TYPE_1	TYPE_1		
+646	መቅድም	1	TYPE_3	TYPE_1		
+647	መቅጃ	1	TYPE_1	TYPE_1		
+648	መቅጫ	1	TYPE_1	TYPE_1		
+649	መቆለፊያ	1	TYPE_1	TYPE_1		
+650	መቆሚያ	1	TYPE_1	TYPE_1		
+651	መቆርቆሪት	1		TYPE_1		
+652	መቆስቆሻ	1		TYPE_1		
+653	መቆናቁን	0	TYPE_1	TYPE_1		
+654	መቆናጠጫ	1	TYPE_3	TYPE_1		
+655	መቆንጠጫ	1	TYPE_1	TYPE_1		
+656	መቆያ	1	TYPE_1	TYPE_1		
+657	መቆጣጠርያ	1	TYPE_1	TYPE_1		
+658	መቆፈሪያ	1	TYPE_1	TYPE_1		
+659	መቋሚያ	1	TYPE_1	TYPE_1		
+660	መቋረፊያ	0		TYPE_1		
+661	መቋቋሚያ	1		TYPE_1		
+662	መቋደሻ	1		TYPE_1		
+663	መቋጠሪያ	1		TYPE_1		
+664	መበለት	1	TYPE_1	TYPE_1		
+665	መበለቻ	1	TYPE_1	TYPE_1		
+666	መበያ	1	TYPE_1	TYPE_1		
+667	መባ	1		TYPE_1		
+668	መብል	1		TYPE_1		
+669	መባቻ	1		TYPE_1		
+670	መብረቅ	1		TYPE_1		
+671	መብሩቅ	1		TYPE_1		
+672	መብራት	1	TYPE_1	TYPE_1		
+673	መብሻ	1	TYPE_1	TYPE_1		
+674	መብት	1	TYPE_1	TYPE_1		
+675	መባ	1		TYPE_1		
+676	መተላለፊያ	1	TYPE_1	TYPE_1		
+677	መተማመኛ	1	TYPE_1	TYPE_1		
+678	መተሮ	0		TYPE_1		
+679	ሜትር	1	TYPE_1	TYPE_1		
+680	መተረቻ	1	TYPE_1	TYPE_1		
+681	መተሬ	1		TYPE_1		
+682	መተሬ	1		TYPE_1		
+683	መተርኮሻ	1	TYPE_1	TYPE_1		
+684	መተት	1	TYPE_1	TYPE_1		
+685	መተተኛ	1	TYPE_1	TYPE_1		
+686	መተከዣ	1	TYPE_1	TYPE_1		
+687	መተኪያ	1	TYPE_1	TYPE_1		
+688	መተኮሻ	1	TYPE_1	TYPE_1		
+689	መተያያ	1		TYPE_1		
+690	መተዳደሪያ	1	TYPE_1	TYPE_1		
+691	መምቻ	1	TYPE_1	TYPE_1		
+692	መምች	1		TYPE_1		
+693	ምት	1	TYPE_1	TYPE_1		
+694	ምች	1		TYPE_1		
+695	መታረሪያ	0	TYPE_3	TYPE_1		
+696	መታሰቢያ	1	TYPE_3	TYPE_1		
+697	መታቀፊያ	1	TYPE_3	TYPE_1		
+698	መታወቂያ	1	TYPE_3	TYPE_1		
+699	መታያ	1	TYPE_1	TYPE_1		
+700	መታጠቂያ	1	TYPE_1	TYPE_1		
+701	መታጠቢያ	1	TYPE_1	TYPE_1		
+702	መት	0		TYPE_1		
+703	መትረብ	0	TYPE_1	TYPE_1		
+704	መትረየስ	1	TYPE_1	TYPE_1		
+705	መቶ	1	TYPE_1	TYPE_1		
+706	ምቾት	1		TYPE_1		
+707	መነሳንስ	1		TYPE_1		
+708	መንሽ	1	TYPE_1	TYPE_1		
+709	መነሻ	1	TYPE_1	TYPE_1		
+710	መነሾ	1	TYPE_1	TYPE_1		
+711	መንቃራ	1	TYPE_1	TYPE_1		
+712	መነባንብ	1	TYPE_1	TYPE_1		
+713	መናኝ	1	TYPE_3	TYPE_1		
+714	መነን	1		TYPE_1		
+715	መናኒ	1	TYPE_1	TYPE_1		
+716	ምናኔ	1		TYPE_1		
+717	መነና	1		TYPE_1		
+718	መነኩሴ	1	TYPE_1	TYPE_1		
+719	መለኩሴ	1	TYPE_1	TYPE_1		
+720	መነኮሳት	1	TYPE_4	TYPE_1		
+721	ምንኩስና	1		TYPE_1		
+722	ምንዛሪ	1	TYPE_1	TYPE_1		
+723	ምንዝር	1		TYPE_1		
+724	መጅሊስ	1		TYPE_1		
+725	መነገጃ	1	TYPE_1	TYPE_1		
+726	መንጋጋ	1		TYPE_1		
+727	መንጎል	1		TYPE_1		
+728	መንጎል	1		TYPE_1		
+729	መንጠቆ	1	TYPE_1	TYPE_1		
+730	መነጥር	1	TYPE_1	TYPE_1		
+731	መነፅር	1	TYPE_1	TYPE_1		
+732	ምንጭ	1	TYPE_1	TYPE_1		
+733	መና	1	TYPE_3	TYPE_1		
+734	መናሀሪያ	1		TYPE_1		
+735	መናኛ	1	TYPE_3	TYPE_1		
+736	መናሄ	0		TYPE_1		
+737	ምናሄ	0		TYPE_1		
+738	መናኝ	1		TYPE_1		
+739	መናጆ	1	.	TYPE_1		
+740	መናፈሻ	1	TYPE_1	TYPE_1		
+741	መናፍቅ	1	TYPE_1	TYPE_1		
+742	መን	0		TYPE_1		
+743	መንስኤ	1	TYPE_1	TYPE_1		
+744	መንሸላሊት	1		TYPE_1		
+745	መንቀል	0	TYPE_1	TYPE_1		
+746	መንቀሻ	1		TYPE_1		
+747	መንቆር	1		TYPE_1		
+748	መንበር	1		TYPE_1		
+749	መንታ	1	TYPE_4	TYPE_1		
+750	መንትያ	1	TYPE_4	TYPE_1		
+751	መንከላወሻ	1		TYPE_1		
+752	መንከት	0	TYPE_3	TYPE_1		
+753	መንኮራኩር	1	TYPE_1	TYPE_1		
+754	መንደልት	0		TYPE_1		
+755	መንደልቶ	0		TYPE_1		
+756	መንደሪን	1		TYPE_1		
+757	መንደር	1	TYPE_1	TYPE_1		
+758	መንደርተኛ	1		TYPE_1		
+759	መንደረተኛ	1		TYPE_1		
+760	መንደርቶ	0	TYPE_1	TYPE_1		
+761	መንደርደሪያ	1	TYPE_3	TYPE_1		
+762	መንዶ	0	TYPE_1	TYPE_1		
+763	ሜንዶ	0	TYPE_1	TYPE_1		
+764	መንገድ	1	TYPE_1	TYPE_1		
+765	መንገደኛ	1		TYPE_1		
+766	መንገጭላ	1		TYPE_1		
+767	መንጋጭላ	1		TYPE_1		
+768	መንጋ	1	TYPE_4	TYPE_1		
+769	መንጋጋ	1		TYPE_1		
+770	መንግስት	1	TYPE_1	TYPE_1		
+771	መንጮረር	1		TYPE_1		
+772	መንፈስ	1	TYPE_1	TYPE_1		
+773	መናፍስት	1	TYPE_4	TYPE_1		
+774	መንፈቅ	1		TYPE_1		
+775	መኖ	1		TYPE_1		
+776	መኖሪያ	1	TYPE_1	TYPE_1		
+777	ምኞት	1	TYPE_1	TYPE_1		
+778	መኝታ	1	TYPE_1	TYPE_1		
+779	መኣልት	1	TYPE_1	TYPE_1		
+780	መኣት	1	TYPE_1	TYPE_1		
+781	መኣዛ	1		TYPE_1		
+782	ማዛ	0		TYPE_1		
+783	መከለሻ	1		TYPE_1		
+784	መከላ	0		TYPE_1		
+785	መከሎ	0		TYPE_1		
+786	መከላከያ	1		TYPE_1		
+787	መማክርት	1	TYPE_1	TYPE_1		
+788	ምክር	1	TYPE_1	TYPE_1		
+789	ምክክር	1	TYPE_1	TYPE_1		
+790	መከራ	1	TYPE_1	TYPE_1		
+791	መከር	1	TYPE_1	TYPE_1		
+792	መሀር	1		TYPE_1		
+793	መከታ	1	TYPE_1	TYPE_1		
+794	ምክቶሽ	1		TYPE_1		
+795	ምክት	1		TYPE_1		
+796	መክተቻ	1	TYPE_1	TYPE_1		
+797	ምክንያት	1	TYPE_1	TYPE_1		
+798	መከዳ	1	TYPE_1	TYPE_1		
+799	መከፍከፊያ	1		TYPE_1		
+800	መኪና	1	TYPE_1	TYPE_1		
+801	መመኪያ	1	TYPE_1	TYPE_1		
+802	መካተቻ	1	TYPE_3	TYPE_1		
+803	መካኒክ	1	TYPE_1	TYPE_1		
+804	ሜካኒክ	1	TYPE_1	TYPE_1		
+805	መካያ	0		TYPE_1		
+806	መኬ	0		TYPE_1		
+807	መክሊት	1	TYPE_3	TYPE_1		
+808	መክሰስ	1		TYPE_1		
+809	መክተፊያ	1	TYPE_1	TYPE_1		
+810	መክደኛ	1	TYPE_1	TYPE_1		
+811	መክድ	0	TYPE_3	TYPE_1		
+812	መክፈልት	0		TYPE_1		
+813	መክፈቻ	1	TYPE_1	TYPE_1		
+814	መክፈያ	1	TYPE_1	TYPE_1		
+815	መኮሮኒ	1		TYPE_1		
+816	ማካሮኒ	1		TYPE_1		
+817	መኮስተሪያ	1	TYPE_1	TYPE_1		
+818	መኮትኮቻ	1	TYPE_1	TYPE_1		
+819	መኮንን	1	TYPE_1	TYPE_1		
+820	መኳንንት	1	TYPE_4	TYPE_1		
+821	መወለወያ	1		TYPE_1		
+822	መወርወሪያ	1		TYPE_1		
+823	መወድስ	1	TYPE_1	TYPE_1		
+824	መወጠሪያ	1	TYPE_1	TYPE_1		
+825	መወጣጫ	1	TYPE_1	TYPE_1		
+826	መዋስእት	1		TYPE_1		
+827	መዋቅር	1	TYPE_1	TYPE_1		
+828	መዋያ	1	TYPE_1	TYPE_1		
+829	መዋጆ	0		TYPE_1		
+830	መዋጥ	1	TYPE_1	TYPE_1		
+831	መዋጮ	1		TYPE_1		
+832	መውረጃ	1	TYPE_1	TYPE_1		
+833	መውቀጫ	1	TYPE_1	TYPE_1		
+834	መውቀጫ	1	TYPE_1	TYPE_1		
+835	መውዜር	0	TYPE_1	TYPE_1		
+836	መውደቂያ	1		TYPE_1		
+837	መውጅ	0		TYPE_1		
+838	መውጫ	1	TYPE_1	TYPE_1		
+839	መዘለሻ	1	TYPE_1	TYPE_1		
+840	መዘለፊያ	1		TYPE_1		
+841	መዘምር	1		TYPE_1		
+842	መዘራዝር	0		TYPE_1		
+843	መዘርዝር	0		TYPE_1		
+844	ምዝበራ	1		TYPE_1		
+845	መዘበቻ	1	TYPE_1	TYPE_1		
+846	መዘባበቻ	1	TYPE_1	TYPE_1		
+847	ሚዛን	1	TYPE_1	TYPE_1		
+848	መዘከሪያ	1	TYPE_1	TYPE_1		
+849	መዘክር	1	TYPE_1	TYPE_1		
+850	መዘወሪያ	1		TYPE_1		
+851	መዘውር	1	TYPE_1	TYPE_1		
+852	መዘዝ	1	TYPE_1	TYPE_1		
+853	መዘዞ	1		TYPE_1		
+854	መዝገብ	1	TYPE_1	TYPE_1		
+855	ምዝገባ	1	TYPE_1	TYPE_1		
+856	መዛለያ	1		TYPE_1		
+857	መዛቂያ	1	TYPE_1	TYPE_1		
+858	መዛዝኝ	0		TYPE_1		
+859	መዛዝይ	0		TYPE_1		
+860	መዝሙረኛ	1		TYPE_1		
+861	መዝናኛ	1	TYPE_1	TYPE_1		
+862	መዝጊያ	1	TYPE_1	TYPE_1		
+863	መዞሪያ	1	TYPE_1	TYPE_1		
+864	መዠረገ	1		TYPE_1		
+865	መዥገር	1	TYPE_1	TYPE_1		
+866	መደለያ	1	TYPE_1	TYPE_1		
+867	መደላድል	1		TYPE_1		
+868	መደመድ	0		TYPE_1		
+869	ምድማድ	0		TYPE_1		
+870	መደመር	1		TYPE_1		
+871	መደረቢያ	1	TYPE_1	TYPE_1		
+872	መደርደሪያ	1	TYPE_1	TYPE_1		
+873	መደቅደቂያ	1	TYPE_1	TYPE_1		
+874	መደቆሻ	1	TYPE_1	TYPE_1		
+875	መደብ	1	TYPE_1	TYPE_1		
+876	ምድብ	1	TYPE_1	TYPE_1		
+877	መደብር	1	TYPE_1	TYPE_1		
+878	መደንቀሪያ	1	TYPE_1	TYPE_1		
+879	መደንቆያ	1	TYPE_1	TYPE_1		
+880	መደንጎሪያ	1	TYPE_1	TYPE_1		
+881	መደወሪያ	1	TYPE_1	TYPE_1		
+882	መድብል	1	TYPE_4	TYPE_1		
+883	መደደቂያ	1	TYPE_3	TYPE_1		
+884	መደዳ	1	TYPE_1	TYPE_1		
+885	መደዴ	1	TYPE_1	TYPE_1		
+886	መደገሻ	1		TYPE_1		
+887	መደጎሻ	1		TYPE_1		
+888	መዲና	1		TYPE_1		
+889	መዳ	0	TYPE_1	TYPE_1		
+890	መዳመጫ	1	TYPE_1	TYPE_1		
+891	መዳረሻ	1	TYPE_1	TYPE_1		
+892	መዳሪያ	1	TYPE_1	TYPE_1		
+893	መዶሻ	1	TYPE_1	TYPE_1		
+894	መዳብ	1	TYPE_1	TYPE_1		
+895	መዳኛ	1		TYPE_1		
+896	መዳፍ	1	TYPE_1	TYPE_1		
+897	መድሃኒተኛ	1		TYPE_1		
+898	መድሃኒት	1	TYPE_1	TYPE_1		
+899	መድህን	1	TYPE_1	TYPE_1		
+900	መድሎ	1	TYPE_1	TYPE_1		
+901	መድረሻ	1	TYPE_1	TYPE_1		
+902	መድረክ	1	TYPE_1	TYPE_1		
+903	መድን	1	TYPE_1	TYPE_1		
+904	መድን	1	TYPE_1	TYPE_1		
+905	መድህን	1	TYPE_1	TYPE_1		
+906	መድፍ	1	TYPE_1	TYPE_1		
+907	መድፈኛ	1		TYPE_1		
+908	መዶሻ	1	TYPE_1	TYPE_1		
+909	መጀመሪያ	1	TYPE_1	TYPE_1		
+910	መጅ	1	TYPE_3	TYPE_1		
+911	መገለ	1		TYPE_1		
+912	መገለጢጥ	1		TYPE_1		
+913	መጋቢ	1	TYPE_1	TYPE_1		
+914	መጋቢት	1	TYPE_1	TYPE_1		
+915	ምግብ	1	TYPE_1	TYPE_1		
+916	መገበሪያ	1		TYPE_1		
+917	መገተሪያ	1	TYPE_1	TYPE_1		
+918	መገናኛ	1	TYPE_1	TYPE_1		
+919	መጋረጃ	1	TYPE_1	TYPE_1		
+920	መጋቢት	1	TYPE_1	TYPE_1		
+921	መጋኛ	1	TYPE_1	TYPE_1		
+922	መጋዘን	1	TYPE_1	TYPE_1		
+923	መጋዝ	1	TYPE_1	TYPE_1		
+924	መጋዣ	1	TYPE_1	TYPE_1		
+925	መጋፊያ	1		TYPE_1		
+926	መግለቦ	0	TYPE_1	TYPE_1		
+927	መግለጫ	1	TYPE_1	TYPE_1		
+928	መግላሊት	1		TYPE_1		
+929	መግቢያ	1	TYPE_1	TYPE_1		
+930	መግነዝ	1	TYPE_1	TYPE_1		
+931	መግዣ	1	TYPE_1	TYPE_1		
+932	መግፊያ	1	TYPE_1	TYPE_1		
+933	መግነጢስ	1	TYPE_1	TYPE_1		
+934	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+935	መጎዛ	0	TYPE_1	TYPE_1		
+936	መጎጥ	1		TYPE_1		
+937	መጓጓዣ	1	TYPE_1	TYPE_1		
+938	መጠለያ	1	TYPE_1	TYPE_1		
+939	ምጥቀት	1		TYPE_1		
+940	መጠቅለያ	1	TYPE_1	TYPE_1		
+941	መጠባበቂያ	1	TYPE_1	TYPE_1		
+942	ምጣኔ	1	TYPE_3	TYPE_1		
+943	መጠይቅ	1	TYPE_1	TYPE_1		
+944	መጠጊያ	1		TYPE_1		
+945	ምጣጭ	1		TYPE_1		
+946	መጠጥ	1	TYPE_1	TYPE_1		
+947	መጠጫ	1	TYPE_1	TYPE_1		
+948	መጡብሽ	1	TYPE_3	TYPE_1		
+949	መጢቃ	0		TYPE_1		
+950	መጣተኛ	1	TYPE_1	TYPE_1		
+951	መፃተኛ	1	TYPE_1	TYPE_1		
+952	መጫወቻ	1	TYPE_1	TYPE_1		
+953	መጭ	1		TYPE_1		
+954	መጣብር	0	TYPE_1	TYPE_1		
+955	መጣያ	1	TYPE_1	TYPE_1		
+956	መጣጣ	1		TYPE_1		
+957	መፃፃ	1		TYPE_1		
+958	መጣፍያ	1	TYPE_1	TYPE_1		
+959	መጣጥፍ	1	TYPE_1	TYPE_1		
+960	መጥለቂያ	1		TYPE_1		
+961	መጥረቢያ	1	TYPE_1	TYPE_1		
+962	መጥረጊያ	1	TYPE_1	TYPE_1		
+963	መጥሪያ	1	TYPE_1	TYPE_1		
+964	መጥበሻ	1	TYPE_1	TYPE_1		
+965	መጥኔ	1		TYPE_1		
+966	መጥፎ	1	TYPE_1	TYPE_1		
+967	መጨለፊያ	1	TYPE_1	TYPE_1		
+968	መጭለፊያ	1	TYPE_1	TYPE_1		
+969	መጨቃ	0		TYPE_1		
+970	መጨቅጨቂት	0		TYPE_1		
+971	መጨቅጨቂያ	1	TYPE_1	TYPE_1		
+972	መጨበጫ	1		TYPE_1		
+973	መጨኔ	0		TYPE_1		
+974	መጨጊያ	0		TYPE_1		
+975	መጫሚያ	1	TYPE_1	TYPE_1		
+976	መጫሪያ	1	TYPE_1	TYPE_1		
+977	መጫኛ	1		TYPE_1		
+978	መጭመቂያ	1	TYPE_1	TYPE_1		
+979	መፀዳጃ	1	TYPE_1	TYPE_1		
+980	መፀወተ	1		TYPE_1		
+981	ምፅዋት	1		TYPE_1		
+982	ምጥዋት	1		TYPE_1		
+983	መፀው	1		TYPE_1		
+984	መፃጉእ	1		TYPE_1		
+985	መፃሃፍ	1	TYPE_1	TYPE_1		
+986	መፈናፈኛ	1	TYPE_3	TYPE_1		
+987	መፈክር	1	TYPE_1	TYPE_1		
+988	መፋቂያ	1	TYPE_1	TYPE_1		
+989	መፍሉስ	1	TYPE_1	TYPE_1		
+990	መፍትሄ	1	TYPE_1	TYPE_1		
+991	ሙሃሂት	0		TYPE_1		
+992	ሙሃይት	0		TYPE_1		
+993	ሙሉ	1		TYPE_1		
+994	ሙልሙል	1		TYPE_1		
+995	ሙልጭልጭ	1		TYPE_1		
+996	ሙሬ	0		TYPE_1		
+997	ሙሪ	0		TYPE_1		
+998	ሙርጥ	1		TYPE_1		
+999	ሙሴ	1		TYPE_1		
+1000	ሙስሊም	1	TYPE_1	TYPE_1		
+1001	ሙስና	1	TYPE_1	TYPE_1		
+1002	ሙሽ	0		TYPE_1		
+1003	ሙሽሪት	1		TYPE_1		
+1004	ሙሽት	1	type 3	TYPE_1		
+1005	ሙሾ	1		TYPE_1		
+1006	ሙቀት	1		TYPE_1		
+1007	ሙቀጫ	1	TYPE_1	TYPE_1		
+1008	ሙታንታ	1	TYPE_1	TYPE_1		
+1009	ሙታንቲ	1	TYPE_1	TYPE_1		
+1010	ሙከራ	1	TYPE_1	TYPE_1		
+1011	ሞከረ	1		TYPE_1		
+1012	ሙክት	1	type 3	TYPE_1		
+1013	ሙዚቃ	1	TYPE_1	TYPE_1		
+1014	ሙዚየም	1	TYPE_1	TYPE_1		
+1015	ሙዜ	1	TYPE_1	TYPE_1		
+1016	ሙዝ	1		TYPE_1		
+1017	ሙያ	1	TYPE_1	TYPE_1		
+1018	ሞያ	1	TYPE_1	TYPE_1		
+1019	ሙዳ	1		TYPE_1		
+1020	ሙዳይ	1		TYPE_1		
+1021	ሙጃ	1		TYPE_1		
+1022	ሙጃሌ	1		TYPE_1		
+1023	ሙገሳ	1	TYPE_1	TYPE_1		
+1024	ሙጃሌ	1		TYPE_1		
+1025	ሞያሌ	1		TYPE_1		
+1026	ሙገጫ	1	type 3	TYPE_1		
+1027	ሙጋድ	0		TYPE_1		
+1028	ሙግት	1	TYPE_1	TYPE_1		
+1029	ሙግድ	0	TYPE_1	TYPE_1		
+1030	ሞክድ	0	TYPE_1	TYPE_1		
+1031	ሞግድ	0	TYPE_1	TYPE_1		
+1032	ሙጎጎ	0	type 3	TYPE_1		
+1033	ሙጥልቅ	1	TYPE_1	TYPE_1		
+1034	ሞጠለቀ	1	TYPE_1	TYPE_1		
+1035	ሙጥኝ	1		TYPE_1		
+1036	ሙጫሌ	0	TYPE_1	TYPE_1		
+1037	ሙጫ	1		TYPE_1		
+1038	ሚሊግራም	1		TYPE_1		
+1039	ሚሊዮነር	1	TYPE_1	TYPE_1		
+1040	ሚሊዮን	1	TYPE_1	TYPE_1		
+1041	ሚላኤል	0		TYPE_1		
+1042	ሚሲዮን	1		TYPE_1		
+1043	ሚሽን	1	TYPE_1	TYPE_1		
+1044	ሚሳይል	1	TYPE_1	TYPE_1		
+1045	ሚስማር	1	TYPE_1	TYPE_1		
+1046	ምስማር	1	TYPE_1	TYPE_1		
+1047	ሚስት	1	TYPE_1	TYPE_1		
+1048	ምሽት	1	TYPE_1	TYPE_1		
+1049	ሚስጥር	1	TYPE_1	TYPE_1		
+1050	ሚኒ	1	TYPE_1	TYPE_1		
+1051	ሚኒስቴር	1	TYPE_1	TYPE_1		
+1052	ሚኒስከርት	1	TYPE_1	TYPE_1		
+1053	ሚኒስትር	1	TYPE_1	TYPE_1		
+1054	ሚና	1	TYPE_1	TYPE_1		
+1055	ሚክሮብ	0	type 3	TYPE_1		
+1056	ሚዛን	1	TYPE_1	TYPE_1		
+1057	ሚዜ	1	TYPE_1	TYPE_1		
+1058	ሚያዝያ	1	TYPE_1	TYPE_1		
+1059	ሚዳቋ	1	TYPE_1	TYPE_1		
+1060	ሚዶ	1	type 3	TYPE_1		
+1061	ሚጥሚጣ	1		TYPE_1		
+1062	ማ	1		TYPE_1		
+1063	ማን	1		TYPE_1		
+1064	ማህሌት	1	TYPE_1	TYPE_1		
+1065	ማህበር	1	TYPE_1	TYPE_1		
+1066	ማህበረተኛ	1	TYPE_1	TYPE_1		
+1067	ማህደር	1	TYPE_1	TYPE_1		
+1068	ማህፀን	1	type 3	TYPE_1		
+1069	ማላ	1		TYPE_1		
+1070	መሃላ	1	TYPE_1	TYPE_1		
+1071	ማለዳ	1	TYPE_1	TYPE_1		
+1072	መማለጃ	1	TYPE_1	TYPE_1		
+1073	ምልጃ	1	TYPE_1	TYPE_1		
+1074	ማለፊያ	1		TYPE_1		
+1075	ማላሻ	1		TYPE_1		
+1076	ማላቀቂያ	1	type 3	TYPE_1		
+1077	ማላበሻ	1	TYPE_1	TYPE_1		
+1078	መልቀሚያ	1	TYPE_1	TYPE_1		
+1079	መለሰኛ	1	TYPE_1	TYPE_1		
+1080	ማላበሻ	1	TYPE_1	TYPE_1		
+1081	ማልቀሻ	1	type 3	TYPE_1		
+1082	ማልድያ	0		TYPE_1		
+1083	ማልደያ	0		TYPE_1		
+1084	ማመላለሻ	1	TYPE_1	TYPE_1		
+1085	ማመልከቻ	1	TYPE_1	TYPE_1		
+1086	ማማ	1	TYPE_1	TYPE_1		
+1087	ማማሰያ	1	TYPE_1	TYPE_1		
+1088	ማማት	1		TYPE_1		
+1089	ማምለኪያ	1	TYPE_1	TYPE_1		
+1090	ማምለጫ	1	TYPE_1	TYPE_1		
+1091	ማምሻ	1	type 3	TYPE_1		
+1092	ማሟጫ	0	type 3	TYPE_1		
+1093	መሟጫ	0	type 3	TYPE_1		
+1094	ምህረት	1	type 3	TYPE_1		
+1095	ምረት	1		TYPE_1		
+1096	ማረሚያ	1	TYPE_1	TYPE_1		
+1097	ማረሳሻ	1	TYPE_1	TYPE_1		
+1098	ማረሻ	1	TYPE_1	TYPE_1		
+1099	ማረበላ	1	TYPE_1	TYPE_1		
+1100	ምርኮ	1	TYPE_1	TYPE_1		
+1101	ምርኮኛ	1		TYPE_1		
+1102	ማረፈጅ	0		TYPE_1		
+1103	ማረፊያ	1		TYPE_1		
+1104	ማራምጣ	0		TYPE_1		
+1105	ማርኣምጣ	1		TYPE_1		
+1106	ማራቶን	1		TYPE_1		
+1107	ማራገቢያ	1	TYPE_1	TYPE_1		
+1108	ማር	1		TYPE_1		
+1109	ማርማሽላ	0		TYPE_1		
+1110	ማርማላታ	1	type 3	TYPE_1		
+1111	ማርመጃ	1	TYPE_1	TYPE_1		
+1112	ማርስ	1		TYPE_1		
+1113	ማርሻል	1		TYPE_1		
+1114	ማርስ	1		TYPE_1		
+1115	ማርትሬዛ	1		TYPE_1		
+1116	ማርከሻ	1	TYPE_1	TYPE_1		
+1117	ማርክ	1	TYPE_1	TYPE_1		
+1118	ማርክሲዝም	1		TYPE_1		
+1119	ማርያም	1	TYPE_1	TYPE_1		
+1120	ማርዬ	0		TYPE_1		
+1121	ማርዳ	0	TYPE_1	TYPE_1		
+1122	ማርገብገቢያ	1	type 3	TYPE_1		
+1123	ማርገጃ	1		TYPE_1		
+1124	ማርጋሪን	1		TYPE_1		
+1125	ማርጣ	0	TYPE_1	TYPE_1		
+1126	ማሳ	1	TYPE_1	TYPE_1		
+1127	ማሰሮ	1	TYPE_1	TYPE_1		
+1128	ማሰሻ	1	TYPE_1	TYPE_1		
+1129	ማሲንቆ	1	TYPE_1	TYPE_1		
+1130	መሰንቆ	1	TYPE_1	TYPE_1		
+1131	ማሳ	1	TYPE_1	TYPE_1		
+1132	ማሳሰቢያ	1	TYPE_1	TYPE_1		
+1133	ማስለቀሻ	1		TYPE_1		
+1134	ማስለቀቂያ	1		TYPE_1		
+1135	ማስመሪያ	1	TYPE_1	TYPE_1		
+1136	ማስረጃ	1	TYPE_1	TYPE_1		
+1137	ማስተንፈሻ	1		TYPE_1		
+1138	ማስተዛዘኛ	1		TYPE_1		
+1139	ማስታወሻ	1	TYPE_1	TYPE_1		
+1140	ማስታወቂያ	1	TYPE_1	TYPE_1		
+1141	ማስታገሻ	1	TYPE_1	TYPE_1		
+1142	ማስገንዘቢያ	1	TYPE_1	TYPE_1		
+1143	ማስጠንቀቂያ	1		TYPE_1		
+1144	ማስጫ	1	TYPE_1	TYPE_1		
+1145	ማሻሻያ	1	TYPE_1	TYPE_1		
+1146	ማሽላ	1		TYPE_1		
+1147	ማሽን	1	TYPE_1	TYPE_1		
+1148	ማሽንክ	0		TYPE_1		
+1149	ማሾ	1	TYPE_1	TYPE_1		
+1150	ማቀባበያ	1		TYPE_1		
+1151	ማቀናነሻ	1		TYPE_1		
+1152	ማቀዝቀዣ	1	TYPE_1	TYPE_1		
+1153	ማቀፊያ	1	TYPE_1	TYPE_1		
+1154	ማቁላሊያ	1		TYPE_1		
+1155	ማቁረጫ	1		TYPE_1		
+1156	ማቅ	1		TYPE_1		
+1157	ማቅረቢያ	1		TYPE_1		
+1158	ማቋቻ	0		TYPE_1		
+1159	ማበረታቻ	1	TYPE_1	TYPE_1		
+1160	ማበቻ	1		TYPE_1		
+1161	ማበጠሪያ	1	TYPE_1	TYPE_1		
+1162	ማቡኪያ	1	TYPE_1	TYPE_1		
+1163	ማባበያ	1		TYPE_1		
+1164	ማባዛት	1		TYPE_1		
+1165	ማብረጃ	1		TYPE_1		
+1166	ማብሪያና	1		TYPE_1		
+1167	ማብራራያ	1	TYPE_1	TYPE_1		
+1168	ማብሰያ	1		TYPE_1		
+1169	ማብዛት	1		TYPE_1		
+1170	ማተሚያ	1	TYPE_1	TYPE_1		
+1171	ማተብ	1	TYPE_1	TYPE_1		
+1172	ማቲ	1	TYPE_1	TYPE_1		
+1173	ማታለያ	1		TYPE_1		
+1174	ማትሪክ	1		TYPE_1		
+1175	ማቶት	1		TYPE_1		
+1176	ማነቆ	1	TYPE_1	TYPE_1		
+1177	ማንትስ	1	TYPE_1	TYPE_1		
+1178	ማንቀርቀቢያ	1		TYPE_1		
+1179	ማንቁርት	1		TYPE_1		
+1180	ማንቆርቆሪያ	1		TYPE_1		
+1181	ማንኪያ	1	TYPE_1	TYPE_1		
+1182	ማንደጃ	1	TYPE_1	TYPE_1		
+1183	ማንገቻ	1	TYPE_1	TYPE_1		
+1184	ማንጎ	1		TYPE_1		
+1185	ማንጓጠጥ	1		TYPE_1		
+1186	ማኛ	1		TYPE_1		
+1187	ማእረግ	1	TYPE_1	TYPE_1		
+1188	ማእበል	1		TYPE_1		
+1189	ማእከል	1		TYPE_1		
+1190	ማእዘን	1		TYPE_1		
+1191	ማእድ	1		TYPE_1		
+1192	ማድ	1		TYPE_1		
+1193	ማደኛ	0		TYPE_1		
+1194	ማእድን	1	TYPE_1	TYPE_1		
+1195	ማእዶት	1		TYPE_1		
+1196	ማእጠንት	1		TYPE_1		
+1197	ማከፋፈያ	1	TYPE_1	TYPE_1		
+1198	ማኩታ	0	TYPE_1	TYPE_1		
+1199	ማኪያቶ	1		TYPE_1		
+1200	ማካፈል	1		TYPE_1		
+1201	ማክሰኞ	1	TYPE_1	TYPE_1		
+1202	ማኮብኮቢያ	1		TYPE_1		
+1203	ማወራረጃ	1		TYPE_1		
+1204	ማዋለጃ	1		TYPE_1		
+1205	ማውጫ	1	TYPE_1	TYPE_1		
+1206	ማዘንት	0		TYPE_1		
+1207	ማዘያ	1	TYPE_1	TYPE_1		
+1208	ማዘዣ	1	TYPE_1	TYPE_1		
+1209	ማዘጋጃ	1	TYPE_1	TYPE_1		
+1210	ማዞሪያ	1	TYPE_1	TYPE_1		
+1211	ማዥራት	1	TYPE_1	TYPE_1		
+1212	ማይል	1	TYPE_1	TYPE_1		
+1213	ማይም	1	TYPE_1	TYPE_1		
+1214	ማይካ	1	TYPE_1	TYPE_1		
+1215	ማይክሮስኮፕ	1	type 3	TYPE_1		
+1216	ማደሪያ	1	TYPE_1	TYPE_1		
+1217	ማደንዘዣ	1	TYPE_1	TYPE_1		
+1218	ማደኛ	1	TYPE_1	TYPE_1		
+1219	ማደያ	1	TYPE_1	TYPE_1		
+1220	ማደጎ	1	TYPE_1	TYPE_1		
+1221	ማዳበሪያ	1	TYPE_1	TYPE_1		
+1222	ማዳወሪያ	1		TYPE_1		
+1223	ማድቤት	1	TYPE_1	TYPE_1		
+1224	ማድያት	1		TYPE_1		
+1225	ማድጋ	1	TYPE_1	TYPE_1		
+1226	ማዶ	1		TYPE_1		
+1227	ማጀት	1	TYPE_1	TYPE_1		
+1228	ማጅራት	1		TYPE_1		
+1229	ማገር	1	TYPE_1	TYPE_1		
+1230	ማገዶ	1	type 3	TYPE_1		
+1231	ማገገሚያ	1		TYPE_1		
+1232	ማገጥ	0		TYPE_1		
+1233	ማጉሊያ	1		TYPE_1		
+1234	ማግ	1		TYPE_1		
+1235	ማግስት	1		TYPE_1		
+1236	ማግኔት	1	TYPE_1	TYPE_1		
+1237	ምጥ	1		TYPE_1		
+1238	ማጠቃለያ	1	TYPE_1	TYPE_1		
+1239	ማጠናከሪያ	1	TYPE_1	TYPE_1		
+1240	ማጠንት	1		TYPE_1		
+1241	ማጠንፈፊያ	1	TYPE_1	TYPE_1		
+1242	ማጠፊያ	1	TYPE_1	TYPE_1		
+1243	ማጣሪያ	1	TYPE_1	TYPE_1		
+1244	ማጣበቂያ	1	TYPE_1	TYPE_1		
+1245	ማጣፈጫ	1	TYPE_1	TYPE_1		
+1246	ማጣፊያ	1		TYPE_1		
+1247	ማጥ	1		TYPE_1		
+1248	ማጥለያ	1	TYPE_1	TYPE_1		
+1249	ማጨሻ	1	TYPE_1	TYPE_1		
+1250	ማጩራ	0		TYPE_1		
+1251	ማጫ	1		TYPE_1		
+1252	ማጫወቻ	1	TYPE_1	TYPE_1		
+1253	ማጫጫሻ	1	TYPE_1	TYPE_1		
+1254	ማጭዴ	0		TYPE_1		
+1255	ማጭድ	1	TYPE_1	TYPE_1		
+1256	ማፅናኛ	1	TYPE_1	TYPE_1		
+1257	ማፈሪያ	1	TYPE_1	TYPE_1		
+1258	ማፈኛ	1	TYPE_1	TYPE_1		
+1259	ማፉዳ	0	TYPE_1	TYPE_1		
+1260	ሜል	0	TYPE_1	TYPE_1		
+1261	ሜርቆ	0		TYPE_1		
+1262	ሜርኩሪ	1		TYPE_1		
+1263	ሜሮን	1		TYPE_1		
+1264	ሜንጦ	1	TYPE_1	TYPE_1		
+1265	ሜዳ	1	TYPE_1	TYPE_1		
+1266	ሜዳይ	1	TYPE_1	TYPE_1		
+1267	ሜዳልያ	1	TYPE_1	TYPE_1		
+1268	ምሀላ	1	TYPE_1	TYPE_1		
+1269	ምህዋር	1	TYPE_1	TYPE_1		
+1270	ምላስ	1	TYPE_1	TYPE_1		
+1271	ምላት	1	type 3	TYPE_1		
+1272	ምልኣት	1	TYPE_1	TYPE_1		
+1273	ምላጭ	1	TYPE_1	TYPE_1		
+1274	ምራቅ	1		TYPE_1		
+1275	ምራት	1	TYPE_1	TYPE_1		
+1276	ምርቅ	1		TYPE_1		
+1277	ምርፋቅ	1	type 3	TYPE_1		
+1278	ምሰሶ	1	TYPE_1	TYPE_1		
+1279	ምሶሶ	1	TYPE_1	TYPE_1		
+1280	ምሳ	1		TYPE_1		
+1281	ምሳር	1	TYPE_1	TYPE_1		
+1282	ምሳና	1		TYPE_1		
+1283	ምስ	1		TYPE_1		
+1284	ምስለኔ	1	type 3	TYPE_1		
+1285	ምስማር	1	TYPE_1	TYPE_1		
+1286	ምሰማክ	1	TYPE_1	TYPE_1		
+1287	ምስራቅ	1		TYPE_1		
+1288	ምስራች	1	type 3	TYPE_1		
+1289	ምስር	1		TYPE_1		
+1290	ምስሬ	1		TYPE_1		
+1291	ምስርቃና	0	TYPE_1	TYPE_1		
+1292	ምስረቃና	0	TYPE_1	TYPE_1		
+1293	ምስርች	0		TYPE_1		
+1294	ምስጥ	1	TYPE_1	TYPE_1		
+1295	ምሸሾ	0	TYPE_1	TYPE_1		
+1296	ምሽሮ	0		TYPE_1		
+1297	ምትሃት	1	TYPE_1	TYPE_1		
+1298	ምታት	1	TYPE_1	TYPE_1		
+1299	ምትክ	1	TYPE_1	TYPE_1		
+1300	ምኔት	1	TYPE_1	TYPE_1		
+1301	ምን	1		TYPE_1		
+1302	ምንድን	1		TYPE_1		
+1303	ምንድር	1		TYPE_1		
+1304	ምንመጣብኝ	1		TYPE_1		
+1305	ምንሽር	1	TYPE_1	TYPE_1		
+1306	ምንሾ	0		TYPE_1		
+1307	ምንቃር	1		TYPE_1		
+1308	ምንባብ	1		TYPE_1		
+1309	ምንቸት	1		TYPE_1		
+1310	ምንዳ	1	type 3	TYPE_1		
+1311	ምንዝላት	1	TYPE_1	TYPE_1		
+1312	ምዝላያት	1	TYPE_1	TYPE_1		
+1313	ምንዥላት	1	TYPE_1	TYPE_1		
+1314	ምንጣፍ	1	TYPE_1	TYPE_1		
+1315	ምንጭር	1		TYPE_1		
+1316	ምንጭርር	0		TYPE_1		
+1317	ምእላድ	1		TYPE_1		
+1318	ምእመን	1		TYPE_1		
+1319	ምእራብ	1		TYPE_1		
+1320	ምእራፍ	1	TYPE_1	TYPE_1		
+1321	ምኩራብ	1		TYPE_1		
+1322	ምክትል	1	TYPE_1	TYPE_1		
+1323	ምዝራጥ	0	TYPE_1	TYPE_1		
+1324	ምዥራጥ	0	TYPE_1	TYPE_1		
+1325	ምድር	1		TYPE_1		
+1326	ምድጃ	1	TYPE_1	TYPE_1		
+1327	ምግባር	1		TYPE_1		
+1328	ምጥማቅ	1		TYPE_1		
+1329	ምጥማጥ	1		TYPE_1		
+1330	ምጥቀት	1		TYPE_1		
+1331	ምፀት	1	TYPE_1	TYPE_1		
+1332	ምፅኣት	1		TYPE_1		
+1333	ሙልሙል	1	TYPE_1	TYPE_1		
+1334	መሙያ	1	TYPE_1	TYPE_1		
+1335	መሙሊያ	1	type 3	TYPE_1		
+1336	ምላት	1	TYPE_1	TYPE_1		
+1337	ምልኣት	1	TYPE_1	TYPE_1		
+1338	ሞረሽ	0	TYPE_1	TYPE_1		
+1339	ሞረዳይ	0		TYPE_1		
+1340	ሞረድ	1	TYPE_1	TYPE_1		
+1341	ሞራ	1		TYPE_1		
+1342	ሞራል	1		TYPE_1		
+1343	ሙቀት	1		TYPE_1		
+1344	ሞቅታ	1		TYPE_1		
+1346	ሞተር	1	TYPE_1	TYPE_1		
+1347	ሞኖፖል	1		TYPE_1		
+1348	ሙከራ	1	TYPE_1	TYPE_1		
+1349	ሙክት	1	TYPE_1	TYPE_1		
+1350	ሙዚቃ	1	TYPE_1	TYPE_1		
+1351	ሞይደር	0		TYPE_1		
+1352	ሞዴል	1	TYPE_1	TYPE_1		
+1353	ሞዴስ	1	TYPE_1	TYPE_1		
+1354	ሞድ	1		TYPE_1		
+1355	ሞጃ	1	TYPE_1	TYPE_1		
+1356	ሞገስ	1		TYPE_1		
+1357	ሞገድ	1		TYPE_1		
+1358	ሞግዚት	1	TYPE_1	TYPE_1		
+1359	ሞጣህት	0	TYPE_1	TYPE_1		
+1360	ሙጫ	1		TYPE_1		
+1361	ሞፈር	1	TYPE_1	TYPE_1		
+1362	ሞፎ	0		TYPE_1		
+1363	ሟርት	1	TYPE_3	TYPE_1		
+1364	መሟጫ	1	TYPE_1	TYPE_1		
+1365	ማሟጫ	1	TYPE_1	TYPE_1		
+1366	ሟጨራ	0		TYPE_1		
+1367	መሀል	1		TYPE_1		
+1368	መሀንዲስ	1	TYPE_1	TYPE_1		
+1369	መሀንዲስነት	1		TYPE_1		
+1370	መሀከል	1		TYPE_1		
+1371	መሃይምን	1		TYPE_1		
+1372	መሃይምነት	1		TYPE_1		
+1373	መለኮትነት	1		TYPE_1		
+1374	መላጣነት	1		TYPE_1		
+1375	መልሕቅ	1	TYPE_1	TYPE_1		
+1376	መልቲነት	1		TYPE_1		
+1377	መልአክ	1	TYPE_1	TYPE_1		
+1378	መሐለቅ	1	TYPE_1	TYPE_1		
+1379	መሐላ	1	TYPE_1	TYPE_1		
+1380	መሐረም	1	TYPE_1	TYPE_1		
+1381	መሐረብ	1	TYPE_1	TYPE_1		
+1382	መምህርነት	1		TYPE_1		
+1383	መሠረት	1	TYPE_1	TYPE_1		
+1384	መሥራች	1	TYPE_1	TYPE_1		
+1385	መሠሪ	1	TYPE_1	TYPE_1		
+1386	መሠሪነት	1		TYPE_1		
+1387	መሥመር	1	TYPE_1	TYPE_1		
+1388	መራራነት	1		TYPE_1		
+1389	መራርነት	1		TYPE_1		
+1390	ምረት	1		TYPE_1		
+1391	ምርቃን	1		TYPE_1		
+1392	መምረጊያ	1	TYPE_1	TYPE_1		
+1393	መረጣ	1	TYPE_1	TYPE_1		
+1394	መራጭነት	1		TYPE_1		
+1395	መምረጫ	1	TYPE_1	TYPE_1		
+1396	መሪነት	1		TYPE_1		
+1397	መስካሪነት	1		TYPE_1		
+1398	ምስከራ	1	TYPE_1	TYPE_1		
+1399	ምስኪንነት	1		TYPE_1		
+1400	ምስግ	1	TYPE_1	TYPE_1		
+1401	መሲሕ	1	TYPE_1	TYPE_1		
+1402	መስተአምር	1	TYPE_1	TYPE_1		
+1403	መስተጋብር	1	TYPE_1	TYPE_1		
+1404	መስኮብ	1	TYPE_1	TYPE_1		
+1405	መስኮብኛ	1		TYPE_1		
+1406	መቅሠፍት	1	TYPE_1	TYPE_1		
+1407	መመነኛ	1		TYPE_1		
+1408	መንኳሽ	1	TYPE_1	TYPE_1		
+1409	መመንዘሪያ	1	TYPE_1	TYPE_1		
+1410	ምንጣሪ	1		TYPE_1		
+1411	ምንጠራ	1		TYPE_1		
+1412	መንካ	1	TYPE_1	TYPE_1		
+1414	መንጦ	1	TYPE_1	TYPE_1		
+1415	መንፈሳዊነት	1		TYPE_1		
+1416	መካንነት	1		TYPE_1		
+1417	መክረጅ	0		TYPE_1		
+1418	መዐልት	1		TYPE_1		
+1419	መዐት	1	TYPE_1	TYPE_1		
+1420	መመዘኛ	1	TYPE_1	TYPE_1		
+1421	መዝጋቢ	1	TYPE_1	TYPE_1		
+1422	ምደባ	1		TYPE_1		
+1423	ማምጠጫ	1		TYPE_1		
+1424	መጣጢስ	1		TYPE_1		
+1425	መጽሐፍ	1	TYPE_1	TYPE_1		
+1426	መፍትሔ	1	TYPE_1	TYPE_1		
+1427	ሙሀቻ	1		TYPE_1		
+1428	ሙዋርት	0		TYPE_1		
+1429	ሙጭራት	0	TYPE_1	TYPE_1		
+1430	ሙያሌ	0	TYPE_1	TYPE_1		
+1431	ማላጋነት	0		TYPE_1		
+1432	ማሕሌተኛ	1		TYPE_1		
+1433	ማሕሌታይ	1		TYPE_1		
+1434	ማኅበር	1	TYPE_1	TYPE_1		
+1435	ማኅበርተኛ	1		TYPE_1		
+1436	ማኅበረተኛ	1		TYPE_1		
+1437	ማኅተም	1	TYPE_1	TYPE_1		
+1438	ማዕረገኛ	1		TYPE_1		
+1439	ማዕቀብ	1	TYPE_1	TYPE_1		
+1440	ማዕበል	1	TYPE_1	TYPE_1		
+1441	ማዕድ	1		TYPE_1		
+1442	ማዕድቤት	1		TYPE_1		
+1443	ማእድቤት	1		TYPE_1		
+1445	ማድያታም	1		TYPE_1		
+1446	ማማጊያ	1		TYPE_1		
+1447	ማጋጣነት	1		TYPE_1		
+1448	ማጋጫነት	1		TYPE_1		
+1449	ማግሥት	1	TYPE_1	TYPE_1		
+1452	ማግሰኞ	1	TYPE_1	TYPE_1		
+1453	ሜዳማ	1		TYPE_1		
+1454	ሜጀር	1	TYPE_1	TYPE_1		
+1455	ምሥራቅ	1	TYPE_1	TYPE_1		
+1456	ምሥራቃዊ	1		TYPE_1		
+1457	ምስሪት	1		TYPE_1		
+1458	ምቀኝነት	1		TYPE_1		
+1459	ምንጅላት	1		TYPE_1		
+1460	ምዕራብ	1		TYPE_1		
+1461	ምዕራፍ	1	TYPE_1	TYPE_1		
+1462	ምጸት	1	TYPE_1	TYPE_1		
+1463	ምጽኣት	1		TYPE_1		
+1464	ሞላላነት	1		TYPE_1		
+1465	ሙላት	1	TYPE_1	TYPE_1		
+1466	መሙያ	1	TYPE_1	TYPE_1		
+1467	ሙረዳ	1		TYPE_1		
+1468	ማሞቂያ	1	TYPE_1	TYPE_1		
+1469	ሞካሪ	1		TYPE_1		
+1470	ሞዛዛነት	1		TYPE_1		
+1471	ሞያተኛ	1		TYPE_1		
+1472	ሞጋች	1		TYPE_1		
+1473	ሞጭላፊ	1	TYPE_1	TYPE_1		
+1474	ሙጭለፋ	1	TYPE_1	TYPE_1		
+1500	ማርከሻ	1	TYPE_1	TYPE_1		
+1519	መራቢያ	1	TYPE_1	TYPE_1		
+1520	ማራቢያ	1	TYPE_1	TYPE_1		
+1612	መርገፍ	1		TYPE_1		
+1613	መራገጫ	1	TYPE_1	TYPE_1		
+1617	መርቢያ	1	TYPE_1	TYPE_1		
+1627	ማርፈጃ	1	TYPE_1	TYPE_1		
+1650	መሮጫ	1	TYPE_1	TYPE_1		
+1651	ምትሐት	1	TYPE_1	TYPE_1		
+1666	መሠቅሠቂያ	1	TYPE_1	TYPE_1		
+1680	መሣያ	1	TYPE_1	TYPE_1		
+1709	መሰለቂት	1	TYPE_1	TYPE_1		
+2092	ምስፍና	1	TYPE_1	TYPE_1		
+2194	መሸኛ	1	TYPE_1	TYPE_1		
+2300	መሽሎክለኪያ	1		TYPE_1		
+2301	መሸለኪያ	1		TYPE_1		
+3256	መቧጠጫ	1	TYPE_1	TYPE_1		
+3854	ማኅበር	1	TYPE_1	TYPE_1		
+3855	ማኅበርተኛ	1		TYPE_1		
+3856	ማኅበረተኛነት	1		TYPE_1		
+4841	ማሥገሪያ	1	TYPE_1	TYPE_1		
+5124	ማዘያ	1	TYPE_1	TYPE_1		
+5161	ማደርያ	1	TYPE_1	TYPE_1		
+5510	መከለሻ	1		TYPE_1		
+5516	መከላከያ	1		TYPE_1		
+5517	መንከላወሻ	1		TYPE_1		
+5597	ምክትል	1	TYPE_1	TYPE_1		
+5605	መካተቻ	1		TYPE_1		
+5606	መክተፊያ	1	TYPE_1	TYPE_1		
+5623	መክደኛ	1		TYPE_1		
+5627	መክፈያ	1	TYPE_1	TYPE_1		
+5637	ማካፈል	1		TYPE_1		
+5638	ማከፋፈያ	1		TYPE_1		
+5639	መክፈልት	1		TYPE_1		
+5643	መክፈቻ	1	TYPE_1	TYPE_1		
+5647	መከፍከፊያ	1		TYPE_1		
+5812	መኮልኮያ	1		TYPE_1		
+5926	መኮስተሪያ	1		TYPE_1		
+5942	ማኮብኮቢያ	1		TYPE_1		
+5950	መኮትኮቻ	1	TYPE_1	TYPE_1		
+5995	መወልወያ	1	TYPE_1	TYPE_1		
+6002	መከለሻ	1	TYPE_3	TYPE_1		
+6005	መክረሚያ	1	TYPE_1	TYPE_1		
+6014	መከስከሻ	1		TYPE_1		
+6029	መከፈኛ	1	TYPE_1	TYPE_1		
+6056	መኳቻ	0	TYPE_1	TYPE_1		
+6075	መወርወርያ	1	TYPE_1	TYPE_1		
+6079	መውረጃ	1	TYPE_1	TYPE_1		
+6093	ማወራረጃ	1		TYPE_1		
+6141	መሳፍቻ	0		TYPE_1		
+6155	መዋቅር	1	TYPE_1	TYPE_1		
+6159	መውቀጫ	1	TYPE_1	TYPE_1		
+6160	ሙቀጫ	1	TYPE_1	TYPE_1		
+6161	ሙገጫ	0		TYPE_1		
+6170	መቅለምት	0	TYPE_1	TYPE_1		
+6244	መወድስ	1		TYPE_1		
+6247	መውደቂያ	1		TYPE_1		
+6281	መወጠሪያ	1		TYPE_1		
+6285	መውጫ	1	TYPE_1	TYPE_1		
+6291	መወጣጫ	1		TYPE_1		
+6292	መዋጮ	1	TYPE_1	TYPE_1		
+6294	ማውጫ	1	TYPE_1	TYPE_1		
+6325	መዋያ	1	TYPE_1	TYPE_1		
+6366	መዋኛ	1	TYPE_1	TYPE_1		
+6457	መወሰኛ	1	TYPE_1	TYPE_1		
+6460	መወስወሻ	1		TYPE_1		
+6465	መውቂያ	1		TYPE_1		
+6492	ሙያ	1	TYPE_1	TYPE_1		
+6493	ሙያተኛ	1		TYPE_1		
+6534	ምዕራፍ	1	TYPE_1	TYPE_1		
+6550	መታወቂያ	1	TYPE_1	TYPE_1		
+6552	ማስታወቂያ	1	TYPE_1	TYPE_1		
+6577	ማጫ	0		TYPE_1		
+6578	መታጫ	1	TYPE_1	TYPE_1		
+6613	መዛለያ	1		TYPE_1		
+6616	መዘለሻ	1		TYPE_1		
+6625	መዘለፊያ	1		TYPE_1		
+6630	መዘምር	1		TYPE_1		
+6631	መዘምራን	1		TYPE_1		
+6632	መዝሙር	1	TYPE_1	TYPE_1		
+6633	መዝሙረኛ	1		TYPE_1		
+6677	መዘራዝር	1		TYPE_1		
+6678	መዘርዝር	1		TYPE_1		
+6700	መዘበቻ	1		TYPE_1		
+6703	መዘባበቻ	1		TYPE_1		
+6726	መዝናኛ	1	TYPE_1	TYPE_1		
+6733	መዘከሪያ	1		TYPE_1		
+6739	መዘወሪያ	1	TYPE_1	TYPE_1		
+6740	መዘውር	1		TYPE_1		
+6765	መዝጊያ	1	TYPE_1	TYPE_1		
+6784	መዛቂያ	1	TYPE_1	TYPE_1		
+6842	መዞሪያ	1	TYPE_1	TYPE_1		
+6846	ማዞሪያ	1	TYPE_1	TYPE_1		
+6855	መዝለያ	1	TYPE_1	TYPE_1		
+6876	ማዝሪያ	1		TYPE_1		
+6888	መዘክር	1	TYPE_1	TYPE_1		
+6893	መዝገብ	1	TYPE_1	TYPE_1		
+6896	መዝጋቢ	1	TYPE_1	TYPE_1		
+6897	ምዝገባ	1	TYPE_1	TYPE_1		
+6898	መመዝገቢያ	1	TYPE_1	TYPE_1		
+6926	መያዣ	1	TYPE_1	TYPE_1		
+6966	መደለያ	1	TYPE_1	TYPE_1		
+6979	መደላድል	1		TYPE_1		
+6984	መድሎ	1	TYPE_1	TYPE_1		
+6986	መደምም	0		TYPE_1		
+6987	መደንን	0	TYPE_1	TYPE_1		
+6988	መደመር	1	TYPE_1	TYPE_1		
+7012	መድረሻ	1	TYPE_1	TYPE_1		
+7018	መዳረሻ	1	TYPE_1	TYPE_1		
+7061	መደርደሪያ	1	TYPE_1	TYPE_1		
+7064	መንደርደሪያ	1		TYPE_1		
+7086	መደቅደቂያ	1		TYPE_1		
+7088	መደቆሻ	1	TYPE_1	TYPE_1		
+7131	መደንቀሪያ	1		TYPE_1		
+7133	መደንቆያ	0		TYPE_1		
+7143	ማደንዘዣ	1	TYPE_1	TYPE_1		
+7148	መደንጎሪያ	0		TYPE_1		
+7176	መደወሪያ	1	TYPE_1	TYPE_1		
+7177	ማዳወሪያ	1	TYPE_1	TYPE_1		
+7186	መደደቂያ	1		TYPE_1		
+7211	መደገሻ	1	TYPE_1	TYPE_1		
+7227	መደጎሻ	1		TYPE_1		
+7294	መዳመጫ	1	TYPE_1	TYPE_1		
+7301	መዳሪያ	1	TYPE_1	TYPE_1		
+7306	መዳሻ	1	TYPE_1	TYPE_1		
+7312	ማዳበሪያ	1		TYPE_1		
+7323	መዳኛ	1	TYPE_1	TYPE_1		
+7324	መድሃኒት	1	TYPE_1	TYPE_1		
+7325	መዳኒት	1	TYPE_1	TYPE_1		
+7326	መድሃኒተኛ	1		TYPE_1		
+7327	መድን	1	TYPE_1	TYPE_1		
+7328	መድህን	1	TYPE_1	TYPE_1		
+7441	መንደላቀቅያ	1		TYPE_1		
+7455	መደምደሚያ	1		TYPE_1		
+7460	ማዳመጫ	1	TYPE_1	TYPE_1		
+7485	መደሰቻ	1	TYPE_1	TYPE_1		
+7506	መደገፊያ	1		TYPE_1		
+7509	መደጎሚያ	1	TYPE_1	TYPE_1		
+7531	መድሃኒታም	1		TYPE_1		
+7569	መጀመሪያ	1	TYPE_1	TYPE_1		
+7715	መግለጫ	1	TYPE_1	TYPE_1		
+7769	መገበሪያ	1		TYPE_1		
+7773	ምግባር	1	TYPE_1	TYPE_1		
+7810	መግቢያ	1	TYPE_1	TYPE_1		
+7829	መገተሪያ	1	TYPE_1	TYPE_1		
+7847	መገናኛ	1		TYPE_1		
+7849	መግነዝ	1	TYPE_1	TYPE_1		
+7853	ማስገንዘቢያ	1	TYPE_1	TYPE_1		
+7874	መግዣ	1	TYPE_1	TYPE_1		
+7910	ማገገሚያ	1		TYPE_1		
+7928	መግፊያ	1	TYPE_1	TYPE_1		
+8011	መጋረጃ	1	TYPE_1	TYPE_1		
+8063	መጋፊያ	1		TYPE_1		
+8210	መጎናፀፊያ	1	TYPE_1	TYPE_1		
+8211	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+8251	መጓጓዣ	1	TYPE_1	TYPE_1		
+8259	ማንጓጠጥ	1		TYPE_1		
+8268	መገላገያ	1	TYPE_1	TYPE_1		
+8331	መጋዞ	1	TYPE_1	TYPE_1		
+8335	መገጣጠሚያ	1		TYPE_1		
+8363	መጋዣ	1	TYPE_1	TYPE_1		
+8364	መጋገሪያ	1	TYPE_1	TYPE_1		
+8365	መጋጫ	1	TYPE_1	TYPE_1		
+8382	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+8383	መጎናጸፊያ	1	TYPE_1	TYPE_1		
+8418	ማጥለያ	1	TYPE_1	TYPE_1		
+8420	መጠለያ	1	TYPE_1	TYPE_1		
+8426	መጥለቂያ	1	TYPE_1	TYPE_1		
+8445	ምጥማቅ	1	TYPE_1	TYPE_1		
+8464	መጥረቢያ	1	TYPE_1	TYPE_1		
+8471	መጥረጊያ	1	TYPE_1	TYPE_1		
+8486	መጥሪያ	1	TYPE_1	TYPE_1		
+8492	ማጣሪያ	1	TYPE_1	TYPE_1		
+8499	መጠቅለያ	1	TYPE_1	TYPE_1		
+8508	ማጠቃለያ	1	TYPE_1	TYPE_1		
+8535	መጥበሻ	1	TYPE_1	TYPE_1		
+8540	መጠባበቂያ	1	TYPE_1	TYPE_1		
+8541	መጣብቅ	0		TYPE_1		
+8543	ማጣበቂያ	1		TYPE_1		
+8565	ማስጠንቀቂያ	1		TYPE_1		
+8574	ማጠንፈፊያ	1		TYPE_1		
+8578	ማፅናኛ	1	TYPE_1	TYPE_1		
+8579	ማጥናኛ	1	TYPE_1	TYPE_1		
+8592	መጠይቅ	1	TYPE_1	TYPE_1		
+8615	መጠጊያ	1	TYPE_1	TYPE_1		
+8618	መጠጥ	1	TYPE_1	TYPE_1		
+8619	መጠጫ	1	TYPE_1	TYPE_1		
+8647	መጣያ	1	TYPE_1	TYPE_1		
+8677	ምጣድ	1	TYPE_1	TYPE_1		
+8681	መጣፊያ	1		TYPE_1		
+8682	ማጣፈጫ	1	TYPE_1	TYPE_1		
+8755	ማጦያ	0	TYPE_1	TYPE_1		
+8800	ማንጠልጠያ	1	TYPE_1	TYPE_1		
+8803	መጥለፊያ	1	TYPE_1	TYPE_1		
+8806	መስተፃምር	1		TYPE_1		
+8807	ማጥመቂያ	1	TYPE_1	TYPE_1		
+8810	መጠምዘዣ	1	TYPE_1	TYPE_1		
+8812	ማጥመጃ	1	TYPE_1	TYPE_1		
+8814	ማጥሚያ	1		TYPE_1		
+8893	መጣፍ	1	TYPE_1	TYPE_1		
+8894	መጣፈጥ	1		TYPE_1		
+8930	መጨለፊያ	1		TYPE_1		
+8931	መጭለፊያ	1		TYPE_1		
+8937	መጭመቂያ	1	TYPE_1	TYPE_1		
+8959	ማጨሻ	1	TYPE_1	TYPE_1		
+8961	ማጫጫሻ	1		TYPE_1		
+8972	መጨቅጨቂት	1		TYPE_1		
+8973	መጨቅጨቂያ	1		TYPE_1		
+8980	መጨበጫ	1		TYPE_1		
+8998	መጫወቻ	1	TYPE_1	TYPE_1		
+8999	ማጫወቻ	1	TYPE_1	TYPE_1		
+9030	መጫሪያ	1	TYPE_1	TYPE_1		
+9034	መጫኛ	1		TYPE_1		
+9093	መንጮረር	1		TYPE_1		
+9105	መጨለም	1		TYPE_1		
+9123	መንጮረር	1		TYPE_1		
+9129	መጫሚያ	1	TYPE_1	TYPE_1		
+9134	መጫወቻ	1	TYPE_1	TYPE_1		
+9169	መጸዳጃ	1	TYPE_1	TYPE_1		
+9193	መጽሐፍ	1	TYPE_1	TYPE_1		
+9247	መፀዳጃ	1	TYPE_1	TYPE_1		
+9266	መጣጥፍ	1	TYPE_1	TYPE_1		
+9267	መፅሃፍ	1	TYPE_1	TYPE_1		
+9268	መፃህፍት	1	TYPE_4	TYPE_1		
+9346	መፈርቀቂያ	0		TYPE_1		
+9353	መፋረጃ	1		TYPE_1		
+9354	መፍረጃ	1	TYPE_1	TYPE_1		
+9397	መፍትሄ	1	TYPE_1	TYPE_1		
+9489	መፋቂያ	1	TYPE_1	TYPE_1		
+9569	መፈክር	1	TYPE_1	TYPE_1		
+9579	መፈልቀቂያ	1		TYPE_1		
+9584	መፈልፈያ	1	TYPE_1	TYPE_1		
+9605	መስተፋቅር	1		TYPE_1		
+9613	መፈቅፈቅያ	1		TYPE_1		
+9616	መፍቻ	1	TYPE_1	TYPE_1		
+9812	መልመጃ	1	TYPE_1	TYPE_1		
+9813	መለማመጃ	1	TYPE_1	TYPE_1		
+9825	መለቀሻ	1		TYPE_1		
+9827	ማልቀሻ	1	TYPE_1	TYPE_1		
+9829	ማስለቀሻ	1		TYPE_1		
+9833	መልቀቂያ	1	TYPE_1	TYPE_1		
+9834	ማላቀቂያ	1	TYPE_1	TYPE_1		
+9835	ማስለቀቂያ	1	TYPE_1	TYPE_1		
+9850	መለበጃ	1	TYPE_1	TYPE_1		
+9855	መለንቀጫ	1	TYPE_1	TYPE_1		
+9861	መለኪያ	1	TYPE_1	TYPE_1		
+9862	መለኮሻ	1	TYPE_1	TYPE_1		
+9864	መለወጫ	1	TYPE_1	TYPE_1		
+9865	መለዋወጫ	1	TYPE_1	TYPE_1		
+9868	ማለዋወጫ	1	TYPE_1	TYPE_1		
+9873	መለዮ	1	TYPE_1	TYPE_1		
+9875	መለያ	1	TYPE_1	TYPE_1		
+9877	መለያያ	1	TYPE_1	TYPE_1		
+9904	ምላስ	1	TYPE_1	TYPE_1		
+9914	መላላጫ	1		TYPE_1		
+9916	ምላጭ	1	TYPE_1	TYPE_1		
+9962	መርማሪ	1	TYPE_1	TYPE_1		
+10046	መድን	1	TYPE_1	TYPE_1		
+10047	መድህን	1	TYPE_1	TYPE_1		
+10086	ማኛ	1		TYPE_1		
+10141	ሙጫ	1		TYPE_1		
+10146	መረማመጃ	1	TYPE_1	TYPE_1		
+10147	መራመጃ	1	TYPE_1	TYPE_1		
+10152	ማረሳሻ	1	TYPE_1	TYPE_1		
+10164	ማስረጃ	1	TYPE_1	TYPE_1		
+10168	ማራገቢያ	1	TYPE_1	TYPE_1		
+10170	ማርገብገቢያ	1	TYPE_1	TYPE_1		
+10171	ማርገጃ	1		TYPE_1		
+10218	መሳለሚያ	1		TYPE_1		
+10222	ማሰልጠኛ	1	TYPE_1	TYPE_1		
+10227	ማስመሪያ	1	TYPE_1	TYPE_1		
+10268	መስቀል	1	TYPE_1	TYPE_1		
+10271	መሰብሰቢያ	1	TYPE_1	TYPE_1		
+10272	መስበቂያ	1	TYPE_1	TYPE_1		
+10282	መሰንበቻ	1	TYPE_1	TYPE_1		
+10283	መሰናክል	1	TYPE_1	TYPE_1		
+10285	መሰናዘሪያ	1	TYPE_1	TYPE_1		
+10300	መስዋእት	1	TYPE_1	TYPE_1		
+10313	ማስጫ	1	TYPE_1	TYPE_1		
+10398	መሸንገያ	1	TYPE_1	TYPE_1		
+10415	መሸጎሪያ	1	TYPE_1	TYPE_1		
+10418	ማሻሻያ	1	TYPE_1	TYPE_1		
+10426	መሸጋገሪያ	1	TYPE_1	TYPE_1		
+10435	መሹለኪያ	1	TYPE_1	TYPE_1		
+10461	መቀመጫ	1	TYPE_1	TYPE_1		
+10467	ማቅረቢያ	1	TYPE_1	TYPE_1		
+10715	መተርኮሻ	1	TYPE_1	TYPE_1		
+10744	ማታለያ	1	TYPE_1	TYPE_1		
+10746	ማስታገሻ	1	TYPE_1	TYPE_1		
+11025	መታያ	1	TYPE_1	TYPE_1		
+11026	መተያያ	1	TYPE_1	TYPE_1		
+11087	ማእጠንት	1		TYPE_1		
+11088	ማጠንት	1		TYPE_1		
+11133	መበለት	1	TYPE_1	TYPE_1		
+11168	መንሸላሊት	1	TYPE_1	TYPE_1		
+11263	መከለሻ	1		TYPE_1		
+11278	መተሬ	0		TYPE_1		
+11279	መነፍ	0	TYPE_1	TYPE_1		
+11281	መንካኮ	0	TYPE_1	TYPE_1		
+11282	መንጫራ	0	TYPE_1	TYPE_1		
+11284	መጣፍጥ	0		TYPE_1		
+11285	ሙላ	0		TYPE_1		
+11286	ሙሽሮ	0		TYPE_1		
+11287	ሙዝኝ	0		TYPE_1		
+11289	ሙጋድ	0		TYPE_1		
+11290	ሙጭ	0		TYPE_1		
+11291	ማረበላ	0	TYPE_1	TYPE_1		
+11292	መርቄ	0		TYPE_1		
+11295	ሟጫራ	0		TYPE_1		
+11320	መቀጠቢያ	0	TYPE_1	TYPE_1		
+11342	ማብረሻ	0		TYPE_1		
+11366	ምንዣህ	0		TYPE_1		
+11379	መሙዋጫ	0	TYPE_1	TYPE_1		
+11380	ማት	0		TYPE_1		
+11387	ሜርኩሪ	1				
+3	ምጣኔ	1		TYPE_1		
+140	መለማመኛ	1	TYPE_1	TYPE_1		
+417	መሃለቅ	1	TYPE_1	TYPE_1		
+418	መምህር	1		TYPE_1		
+419	መመህራን	1	TYPE_4	TYPE_1		
+420	መምሬ	1	type3	TYPE_1		
+421	ምሁር	1	TYPE_1	TYPE_1		
+422	መሃረብ	1	TYPE_1	TYPE_1		
+423	መሃረም	1	TYPE_1	TYPE_1		
+424	መሃራ	1		TYPE_1		
+425	መሃንዲስ	1	TYPE_1	TYPE_1		
+426	መሃንዲስ	1	TYPE_1	TYPE_1		
+427	ምህነድስና	1		TYPE_1		
+428	መሃይም	1	TYPE_1	TYPE_1		
+429	ማይም	1	TYPE_1	TYPE_1		
+430	መሆዶ	0	TYPE_1	TYPE_1		
+431	ሞሆዶ	0	TYPE_1	TYPE_1		
+432	መለመላ	1		TYPE_1		
+433	ምልማይ	1		TYPE_1		
+434	መልማይ	1	TYPE_1	TYPE_1		
+435	ምልመላ	1	TYPE_1	TYPE_1		
+436	መልስ	1	TYPE_1	TYPE_1		
+437	ምልሰት	1		TYPE_1		
+438	ምላሽ	1	TYPE_1	TYPE_1		
+439	መለሰኛ	1		TYPE_1		
+440	መለሳ	1		TYPE_1		
+441	መለቀሻ	1		TYPE_1		
+442	መለበጃ	1	TYPE_1	TYPE_1		
+443	መለብለቢያ	1	TYPE_1	TYPE_1		
+444	መለንቀጫ	1	TYPE_1	TYPE_1		
+445	መለኮት	1		TYPE_1		
+446	ምልኪ	0		TYPE_1		
+447	ማምለኪያ	1	TYPE_1	TYPE_1		
+448	ምልክት	1	TYPE_1	TYPE_1		
+450	ማመልከቻ	1	TYPE_1	TYPE_1		
+451	መለከት	1	TYPE_1	TYPE_1		
+452	መለኮሻ	1	TYPE_1	TYPE_1		
+453	መላ	1	TYPE_1	TYPE_1		
+454	መላላጫ	1		TYPE_1		
+455	መላሾ	1		TYPE_1		
+456	መላቀቂያ	1		TYPE_1		
+457	መልህቅ	1	TYPE_1	TYPE_1		
+458	መላጃን	0		TYPE_1		
+459	መልቀሚያ	1	TYPE_1	TYPE_1		
+460	መልቀቂያ	1	TYPE_1	TYPE_1		
+461	መልኣክ	1		TYPE_1		
+462	መላእክት	1	TYPE_4	TYPE_1		
+463	መላከሞት	1		TYPE_1		
+464	መልእክተኛ	1	TYPE_1	TYPE_1		
+465	መልእክት	1	TYPE_1	TYPE_1		
+466	መልክት	1	TYPE_1	TYPE_1		
+467	መላክት	1	TYPE_4	TYPE_1		
+468	መላክተኛ	1		TYPE_1		
+469	መልከኛ	1	TYPE_1	TYPE_1		
+470	መልካ	1	TYPE_1	TYPE_1		
+471	መልክ	1	TYPE_1	TYPE_1		
+472	መልክኣምድር	1		TYPE_1		
+473	መሎጊያ	1	TYPE_1	TYPE_1		
+474	መረማሪ	1		TYPE_1		
+475	ምርመራ	1	TYPE_1	TYPE_1		
+476	ምርምር	1	TYPE_1	TYPE_1		
+477	መረመር	1		TYPE_1		
+478	መረማመጃ	1	TYPE_1	TYPE_1		
+479	መራመጃ	1	TYPE_1	TYPE_1		
+480	ምሬት	1		TYPE_1		
+481	ምር	1	TYPE_1	TYPE_1		
+482	መረሬ	1		TYPE_1		
+483	መረሸት	0	TYPE_1	TYPE_1		
+484	መረሻት	0		TYPE_1		
+485	ምረቃ	1		TYPE_1		
+486	ምራቂ	1	TYPE_1	TYPE_1		
+487	ምርቃት	1	TYPE_1	TYPE_1		
+488	ምርቃና	1		TYPE_1		
+489	መረቅ	1		TYPE_1		
+490	መረብ	1	TYPE_1	TYPE_1		
+491	መረባርብ	1		TYPE_1		
+492	ምርት	1	TYPE_1	TYPE_1		
+493	ምርታማ	1	TYPE_1	TYPE_1		
+494	ማምረቻ	1	TYPE_1	TYPE_1		
+495	ምርኩዝ	1	TYPE_1	TYPE_1		
+496	መረዋ	1	TYPE_3	TYPE_1		
+497	መርዝ	1	TYPE_1	TYPE_1		
+498	መረጃ	1	TYPE_1	TYPE_1		
+499	መርግ	1		TYPE_1		
+500	ምርጊት	1		TYPE_1		
+501	መረግድ	0		TYPE_1		
+502	መረጋገጫ	1	TYPE_1	TYPE_1		
+503	ምርጫ	1	TYPE_1	TYPE_1		
+504	መሪ	1	TYPE_1	TYPE_1		
+505	ምሪት	1	TYPE_1	TYPE_1		
+506	መመሪያ	1	TYPE_1	TYPE_1		
+507	መሬት	1	TYPE_1	TYPE_1		
+508	መርህ	1	TYPE_1	TYPE_1		
+509	መርበብተ	1		TYPE_1		
+510	መርከብ	1	TYPE_1	TYPE_1		
+511	መርከበኛ	1	TYPE_1	TYPE_1		
+512	መርዶ	1	TYPE_1	TYPE_1		
+513	መርዶፋ	1	TYPE_1	TYPE_1		
+514	መርዱፋ	1		TYPE_1		
+515	መርገጥ	0	TYPE_1	TYPE_1		
+516	መርገጫ	1	TYPE_1	TYPE_1		
+517	መርገም	1	TYPE_1	TYPE_1		
+518	መርጦ	0		TYPE_1		
+519	መርፌ	1	TYPE_1	TYPE_1		
+520	መሮ	1	TYPE_1	TYPE_1		
+521	ምሳሌ	1	TYPE_1	TYPE_1		
+522	ምስል	1	TYPE_1	TYPE_1		
+523	ማማሰያ	1	TYPE_1	TYPE_1		
+524	መሰለቂያ	1		TYPE_1		
+525	መሰላል	1	TYPE_1	TYPE_1		
+526	መሰረት	1	TYPE_1	TYPE_1		
+527	ምስረታ	1	TYPE_1	TYPE_1		
+528	ምስቅልቅል	1		TYPE_1		
+529	መስቃ	0		TYPE_1		
+530	መሲና	1	TYPE_1	TYPE_1		
+531	ምስክር	1	TYPE_1	TYPE_1		
+532	መስክ	1	TYPE_1	TYPE_1		
+533	ምሳግ	1		TYPE_1		
+534	ምስጋና	1	TYPE_1	TYPE_1		
+535	ምሰጢር	1	TYPE_1	TYPE_1		
+536	ሚስጥር	1	TYPE_1	TYPE_1		
+537	ምሰጢረኛ	1		TYPE_1		
+538	መሰጥ	0		TYPE_1		
+539	መሲህ	1	TYPE_1	TYPE_1		
+540	መሳድ	0		TYPE_1		
+541	መሰፍቻ	0		TYPE_1		
+542	መሳለሚያ	1	TYPE_1	TYPE_1		
+543	መሳል	1		TYPE_1		
+544	መሳሪያ	1	TYPE_1	TYPE_1		
+545	መሳቂያ	1	TYPE_1	TYPE_1		
+546	መሳቢያ	1	TYPE_1	TYPE_1		
+547	መሳፍንት	1	TYPE_1	TYPE_1		
+548	መስህብ	1	TYPE_1	TYPE_1		
+549	መስመር	1	TYPE_1	TYPE_1		
+550	መስቀለኛ	1		TYPE_1		
+551	መስቀል	1	TYPE_1	TYPE_1		
+552	መስቀያ	1	TYPE_1	TYPE_1		
+553	መስቆር	0	TYPE_1	TYPE_1		
+554	መስቀርት	0		TYPE_1		
+555	መስተሃድርት	0		TYPE_1		
+556	መስታድርት	0		TYPE_1		
+557	መስተንግዶ	1	TYPE_1	TYPE_1		
+558	መስተባርር	0	type 3	TYPE_1		
+559	መስተዋት	1	TYPE_1	TYPE_1		
+560	መስታወት	1	TYPE_1	TYPE_1		
+561	መስተዳድር	1	TYPE_1	TYPE_1		
+562	መስተፋቅር	1		TYPE_1		
+563	መስቲካ	1	TYPE_1	TYPE_1		
+564	ማስቲካ	1	TYPE_1	TYPE_1		
+565	መስኖ	1	TYPE_1	TYPE_1		
+566	መስእ	0		TYPE_1		
+567	መስከረም	1	TYPE_1	TYPE_1		
+568	መስክ	1	TYPE_1	TYPE_1		
+569	መስኮት	1	TYPE_1	TYPE_1		
+570	መስእዋት	1	TYPE_1	TYPE_1		
+571	መስጊድ	1	TYPE_1	TYPE_1		
+572	መስፈሪያ	1	TYPE_1	TYPE_1		
+573	መስፈርት	1	TYPE_1	TYPE_1		
+574	መስፍ	0	TYPE_1	TYPE_1		
+575	መስፍን	1	TYPE_1	TYPE_1		
+576	መሶብ	1	TYPE_1	TYPE_1		
+577	ምሸት	1		TYPE_1		
+578	ማምሻ	1		TYPE_1		
+579	መሸቢያ	1	TYPE_1	TYPE_1		
+580	መሸበቢያ	1	TYPE_1	TYPE_1		
+581	መሸታ	1	TYPE_1	TYPE_1		
+582	መሸተኛ	1	TYPE_1	TYPE_1		
+583	መሸንገያ	1		TYPE_1		
+584	መሸኛ	1	TYPE_1	TYPE_1		
+585	ምሽግ	1	TYPE_1	TYPE_1		
+586	መሸጋገሪያ	1	TYPE_1	TYPE_1		
+587	መሸጎሪያ	1	TYPE_1	TYPE_1		
+588	መሸፈኛ	1	TYPE_1	TYPE_1		
+589	መሹለኪያ	1	TYPE_1	TYPE_1		
+590	መሹለክለኪያ	1	TYPE_1	TYPE_1		
+591	መሽረብ	0	TYPE_1	TYPE_1		
+592	መትረብ	0	TYPE_1	TYPE_1		
+593	መሽቀቅ	0	TYPE_1	TYPE_1		
+594	መለኪያ	1	TYPE_1	TYPE_1		
+595	መቀመቅ	1		TYPE_1		
+596	መቅ	1		TYPE_1		
+597	መቀመጫ	1	TYPE_1	TYPE_1		
+598	መቀራቅር	0	type 3	TYPE_1		
+599	መቀራቅርት	0		TYPE_1		
+600	መቀርሰሚያ	0	TYPE_1	TYPE_1		
+601	መቀርቀቢያ	0	TYPE_3	TYPE_1		
+602	መቀርጠፊያ	1	TYPE_1	TYPE_1		
+603	መቀስ	1	TYPE_1	TYPE_1		
+604	መቀቀያ	1	TYPE_1	TYPE_1		
+605	መቀነስ	1		TYPE_1		
+606	መቀነሻ	1	TYPE_1	TYPE_1		
+607	መቀነት	1	TYPE_1	TYPE_1		
+608	መቀናጆ	1		TYPE_1		
+609	መቀንደቢያ	1	TYPE_1	TYPE_1		
+610	መቀንጠቢያ	1	TYPE_1	TYPE_1		
+611	ምቀኛ	1	TYPE_1	TYPE_1		
+612	መቀየሪያ	1	TYPE_1	TYPE_1		
+613	መቀየጃ	0	TYPE_1	TYPE_1		
+614	መቀጣጫ	1	TYPE_1	TYPE_1		
+615	መቀጮ	1	TYPE_3	TYPE_1		
+616	መቀፍቀፊያ	1	TYPE_3	TYPE_1		
+617	መቁሊያ	1		TYPE_1		
+618	መቁረርት	0	TYPE_1	TYPE_1		
+619	መቁረጪት	0	TYPE_3	TYPE_1		
+620	መቁረጫ	1	TYPE_1	TYPE_1		
+621	መቁነን	1		TYPE_1		
+622	መቁያ	1	TYPE_1	TYPE_1		
+623	መቁጠሪያ	1	TYPE_1	TYPE_1		
+624	መቂናጥ	1		TYPE_1		
+625	መቃ	1	TYPE_3	TYPE_1		
+626	መቃረቢያ	1		TYPE_1		
+627	መቃብር	1	TYPE_1	TYPE_1		
+628	መቃን	1	TYPE_1	TYPE_1		
+629	መቃኞ	0	TYPE_1	TYPE_1		
+630	መቃወሚያ	1	TYPE_3	TYPE_1		
+631	መቃድ	0	TYPE_3	TYPE_1		
+632	መቃጠሪያ	1	TYPE_1	TYPE_1		
+633	መቃጥን	0	TYPE_1	TYPE_1		
+634	መቄ	0	TYPE_1	TYPE_1		
+635	መቅለምት	1		TYPE_1		
+636	መቅመቆ	1		TYPE_1		
+637	መቅረዝ	1	TYPE_1	TYPE_1		
+638	መቅረጫ	1	TYPE_1	TYPE_1		
+639	መቅሰፍታም	1		TYPE_1		
+640	መቅሰፍት	1	TYPE_1	TYPE_1		
+641	መቅኒ	1		TYPE_1		
+642	መቅን	1		TYPE_1		
+643	መቅኖ	1	TYPE_1	TYPE_1		
+644	መቅዘፊያ	1	TYPE_1	TYPE_1		
+645	መቅደስ	1	TYPE_1	TYPE_1		
+646	መቅድም	1	TYPE_3	TYPE_1		
+647	መቅጃ	1	TYPE_1	TYPE_1		
+648	መቅጫ	1	TYPE_1	TYPE_1		
+649	መቆለፊያ	1	TYPE_1	TYPE_1		
+650	መቆሚያ	1	TYPE_1	TYPE_1		
+651	መቆርቆሪት	1		TYPE_1		
+652	መቆስቆሻ	1		TYPE_1		
+653	መቆናቁን	0	TYPE_1	TYPE_1		
+654	መቆናጠጫ	1	TYPE_3	TYPE_1		
+655	መቆንጠጫ	1	TYPE_1	TYPE_1		
+656	መቆያ	1	TYPE_1	TYPE_1		
+657	መቆጣጠርያ	1	TYPE_1	TYPE_1		
+658	መቆፈሪያ	1	TYPE_1	TYPE_1		
+659	መቋሚያ	1	TYPE_1	TYPE_1		
+660	መቋረፊያ	0		TYPE_1		
+661	መቋቋሚያ	1		TYPE_1		
+662	መቋደሻ	1		TYPE_1		
+663	መቋጠሪያ	1		TYPE_1		
+664	መበለት	1	TYPE_1	TYPE_1		
+665	መበለቻ	1	TYPE_1	TYPE_1		
+666	መበያ	1	TYPE_1	TYPE_1		
+667	መባ	1		TYPE_1		
+668	መብል	1		TYPE_1		
+669	መባቻ	1		TYPE_1		
+670	መብረቅ	1		TYPE_1		
+671	መብሩቅ	1		TYPE_1		
+672	መብራት	1	TYPE_1	TYPE_1		
+673	መብሻ	1	TYPE_1	TYPE_1		
+674	መብት	1	TYPE_1	TYPE_1		
+675	መባ	1		TYPE_1		
+676	መተላለፊያ	1	TYPE_1	TYPE_1		
+677	መተማመኛ	1	TYPE_1	TYPE_1		
+678	መተሮ	0		TYPE_1		
+679	ሜትር	1	TYPE_1	TYPE_1		
+680	መተረቻ	1	TYPE_1	TYPE_1		
+681	መተሬ	1		TYPE_1		
+682	መተሬ	1		TYPE_1		
+683	መተርኮሻ	1	TYPE_1	TYPE_1		
+684	መተት	1	TYPE_1	TYPE_1		
+685	መተተኛ	1	TYPE_1	TYPE_1		
+686	መተከዣ	1	TYPE_1	TYPE_1		
+687	መተኪያ	1	TYPE_1	TYPE_1		
+688	መተኮሻ	1	TYPE_1	TYPE_1		
+689	መተያያ	1		TYPE_1		
+690	መተዳደሪያ	1	TYPE_1	TYPE_1		
+691	መምቻ	1	TYPE_1	TYPE_1		
+692	መምች	1		TYPE_1		
+693	ምት	1	TYPE_1	TYPE_1		
+694	ምች	1		TYPE_1		
+695	መታረሪያ	0	TYPE_3	TYPE_1		
+696	መታሰቢያ	1	TYPE_3	TYPE_1		
+697	መታቀፊያ	1	TYPE_3	TYPE_1		
+698	መታወቂያ	1	TYPE_3	TYPE_1		
+699	መታያ	1	TYPE_1	TYPE_1		
+700	መታጠቂያ	1	TYPE_1	TYPE_1		
+701	መታጠቢያ	1	TYPE_1	TYPE_1		
+702	መት	0		TYPE_1		
+703	መትረብ	0	TYPE_1	TYPE_1		
+704	መትረየስ	1	TYPE_1	TYPE_1		
+705	መቶ	1	TYPE_1	TYPE_1		
+706	ምቾት	1		TYPE_1		
+707	መነሳንስ	1		TYPE_1		
+708	መንሽ	1	TYPE_1	TYPE_1		
+709	መነሻ	1	TYPE_1	TYPE_1		
+710	መነሾ	1	TYPE_1	TYPE_1		
+711	መንቃራ	1	TYPE_1	TYPE_1		
+712	መነባንብ	1	TYPE_1	TYPE_1		
+713	መናኝ	1	TYPE_3	TYPE_1		
+714	መነን	1		TYPE_1		
+715	መናኒ	1	TYPE_1	TYPE_1		
+716	ምናኔ	1		TYPE_1		
+717	መነና	1		TYPE_1		
+718	መነኩሴ	1	TYPE_1	TYPE_1		
+719	መለኩሴ	1	TYPE_1	TYPE_1		
+720	መነኮሳት	1	TYPE_4	TYPE_1		
+721	ምንኩስና	1		TYPE_1		
+722	ምንዛሪ	1	TYPE_1	TYPE_1		
+723	ምንዝር	1		TYPE_1		
+724	መጅሊስ	1		TYPE_1		
+725	መነገጃ	1	TYPE_1	TYPE_1		
+726	መንጋጋ	1		TYPE_1		
+727	መንጎል	1		TYPE_1		
+728	መንጎል	1		TYPE_1		
+729	መንጠቆ	1	TYPE_1	TYPE_1		
+730	መነጥር	1	TYPE_1	TYPE_1		
+731	መነፅር	1	TYPE_1	TYPE_1		
+732	ምንጭ	1	TYPE_1	TYPE_1		
+733	መና	1	TYPE_3	TYPE_1		
+734	መናሀሪያ	1		TYPE_1		
+735	መናኛ	1	TYPE_3	TYPE_1		
+736	መናሄ	0		TYPE_1		
+737	ምናሄ	0		TYPE_1		
+738	መናኝ	1		TYPE_1		
+739	መናጆ	1	.	TYPE_1		
+740	መናፈሻ	1	TYPE_1	TYPE_1		
+741	መናፍቅ	1	TYPE_1	TYPE_1		
+742	መን	0		TYPE_1		
+743	መንስኤ	1	TYPE_1	TYPE_1		
+744	መንሸላሊት	1		TYPE_1		
+745	መንቀል	0	TYPE_1	TYPE_1		
+746	መንቀሻ	1		TYPE_1		
+747	መንቆር	1		TYPE_1		
+748	መንበር	1		TYPE_1		
+749	መንታ	1	TYPE_4	TYPE_1		
+750	መንትያ	1	TYPE_4	TYPE_1		
+751	መንከላወሻ	1		TYPE_1		
+752	መንከት	0	TYPE_3	TYPE_1		
+753	መንኮራኩር	1	TYPE_1	TYPE_1		
+754	መንደልት	0		TYPE_1		
+755	መንደልቶ	0		TYPE_1		
+756	መንደሪን	1		TYPE_1		
+757	መንደር	1	TYPE_1	TYPE_1		
+758	መንደርተኛ	1		TYPE_1		
+759	መንደረተኛ	1		TYPE_1		
+760	መንደርቶ	0	TYPE_1	TYPE_1		
+761	መንደርደሪያ	1	TYPE_3	TYPE_1		
+762	መንዶ	0	TYPE_1	TYPE_1		
+763	ሜንዶ	0	TYPE_1	TYPE_1		
+764	መንገድ	1	TYPE_1	TYPE_1		
+765	መንገደኛ	1		TYPE_1		
+766	መንገጭላ	1		TYPE_1		
+767	መንጋጭላ	1		TYPE_1		
+768	መንጋ	1	TYPE_4	TYPE_1		
+769	መንጋጋ	1		TYPE_1		
+770	መንግስት	1	TYPE_1	TYPE_1		
+771	መንጮረር	1		TYPE_1		
+772	መንፈስ	1	TYPE_1	TYPE_1		
+773	መናፍስት	1	TYPE_4	TYPE_1		
+774	መንፈቅ	1		TYPE_1		
+775	መኖ	1		TYPE_1		
+776	መኖሪያ	1	TYPE_1	TYPE_1		
+777	ምኞት	1	TYPE_1	TYPE_1		
+778	መኝታ	1	TYPE_1	TYPE_1		
+779	መኣልት	1	TYPE_1	TYPE_1		
+780	መኣት	1	TYPE_1	TYPE_1		
+781	መኣዛ	1		TYPE_1		
+782	ማዛ	0		TYPE_1		
+783	መከለሻ	1		TYPE_1		
+784	መከላ	0		TYPE_1		
+785	መከሎ	0		TYPE_1		
+786	መከላከያ	1		TYPE_1		
+787	መማክርት	1	TYPE_1	TYPE_1		
+788	ምክር	1	TYPE_1	TYPE_1		
+789	ምክክር	1	TYPE_1	TYPE_1		
+790	መከራ	1	TYPE_1	TYPE_1		
+791	መከር	1	TYPE_1	TYPE_1		
+792	መሀር	1		TYPE_1		
+793	መከታ	1	TYPE_1	TYPE_1		
+794	ምክቶሽ	1		TYPE_1		
+795	ምክት	1		TYPE_1		
+796	መክተቻ	1	TYPE_1	TYPE_1		
+797	ምክንያት	1	TYPE_1	TYPE_1		
+798	መከዳ	1	TYPE_1	TYPE_1		
+799	መከፍከፊያ	1		TYPE_1		
+800	መኪና	1	TYPE_1	TYPE_1		
+801	መመኪያ	1	TYPE_1	TYPE_1		
+802	መካተቻ	1	TYPE_3	TYPE_1		
+803	መካኒክ	1	TYPE_1	TYPE_1		
+804	ሜካኒክ	1	TYPE_1	TYPE_1		
+805	መካያ	0		TYPE_1		
+806	መኬ	0		TYPE_1		
+807	መክሊት	1	TYPE_3	TYPE_1		
+808	መክሰስ	1		TYPE_1		
+809	መክተፊያ	1	TYPE_1	TYPE_1		
+810	መክደኛ	1	TYPE_1	TYPE_1		
+811	መክድ	0	TYPE_3	TYPE_1		
+812	መክፈልት	0		TYPE_1		
+813	መክፈቻ	1	TYPE_1	TYPE_1		
+814	መክፈያ	1	TYPE_1	TYPE_1		
+815	መኮሮኒ	1		TYPE_1		
+816	ማካሮኒ	1		TYPE_1		
+817	መኮስተሪያ	1	TYPE_1	TYPE_1		
+818	መኮትኮቻ	1	TYPE_1	TYPE_1		
+819	መኮንን	1	TYPE_1	TYPE_1		
+820	መኳንንት	1	TYPE_4	TYPE_1		
+821	መወለወያ	1		TYPE_1		
+822	መወርወሪያ	1		TYPE_1		
+823	መወድስ	1	TYPE_1	TYPE_1		
+824	መወጠሪያ	1	TYPE_1	TYPE_1		
+825	መወጣጫ	1	TYPE_1	TYPE_1		
+826	መዋስእት	1		TYPE_1		
+827	መዋቅር	1	TYPE_1	TYPE_1		
+828	መዋያ	1	TYPE_1	TYPE_1		
+829	መዋጆ	0		TYPE_1		
+830	መዋጥ	1	TYPE_1	TYPE_1		
+831	መዋጮ	1		TYPE_1		
+832	መውረጃ	1	TYPE_1	TYPE_1		
+833	መውቀጫ	1	TYPE_1	TYPE_1		
+834	መውቀጫ	1	TYPE_1	TYPE_1		
+835	መውዜር	0	TYPE_1	TYPE_1		
+836	መውደቂያ	1		TYPE_1		
+837	መውጅ	0		TYPE_1		
+838	መውጫ	1	TYPE_1	TYPE_1		
+839	መዘለሻ	1	TYPE_1	TYPE_1		
+840	መዘለፊያ	1		TYPE_1		
+841	መዘምር	1		TYPE_1		
+842	መዘራዝር	0		TYPE_1		
+843	መዘርዝር	0		TYPE_1		
+844	ምዝበራ	1		TYPE_1		
+845	መዘበቻ	1	TYPE_1	TYPE_1		
+846	መዘባበቻ	1	TYPE_1	TYPE_1		
+847	ሚዛን	1	TYPE_1	TYPE_1		
+848	መዘከሪያ	1	TYPE_1	TYPE_1		
+849	መዘክር	1	TYPE_1	TYPE_1		
+850	መዘወሪያ	1		TYPE_1		
+851	መዘውር	1	TYPE_1	TYPE_1		
+852	መዘዝ	1	TYPE_1	TYPE_1		
+853	መዘዞ	1		TYPE_1		
+854	መዝገብ	1	TYPE_1	TYPE_1		
+855	ምዝገባ	1	TYPE_1	TYPE_1		
+856	መዛለያ	1		TYPE_1		
+857	መዛቂያ	1	TYPE_1	TYPE_1		
+858	መዛዝኝ	0		TYPE_1		
+859	መዛዝይ	0		TYPE_1		
+860	መዝሙረኛ	1		TYPE_1		
+861	መዝናኛ	1	TYPE_1	TYPE_1		
+862	መዝጊያ	1	TYPE_1	TYPE_1		
+863	መዞሪያ	1	TYPE_1	TYPE_1		
+864	መዠረገ	1		TYPE_1		
+865	መዥገር	1	TYPE_1	TYPE_1		
+866	መደለያ	1	TYPE_1	TYPE_1		
+867	መደላድል	1		TYPE_1		
+868	መደመድ	0		TYPE_1		
+869	ምድማድ	0		TYPE_1		
+870	መደመር	1		TYPE_1		
+871	መደረቢያ	1	TYPE_1	TYPE_1		
+872	መደርደሪያ	1	TYPE_1	TYPE_1		
+873	መደቅደቂያ	1	TYPE_1	TYPE_1		
+874	መደቆሻ	1	TYPE_1	TYPE_1		
+875	መደብ	1	TYPE_1	TYPE_1		
+876	ምድብ	1	TYPE_1	TYPE_1		
+877	መደብር	1	TYPE_1	TYPE_1		
+878	መደንቀሪያ	1	TYPE_1	TYPE_1		
+879	መደንቆያ	1	TYPE_1	TYPE_1		
+880	መደንጎሪያ	1	TYPE_1	TYPE_1		
+881	መደወሪያ	1	TYPE_1	TYPE_1		
+882	መድብል	1	TYPE_4	TYPE_1		
+883	መደደቂያ	1	TYPE_3	TYPE_1		
+884	መደዳ	1	TYPE_1	TYPE_1		
+885	መደዴ	1	TYPE_1	TYPE_1		
+886	መደገሻ	1		TYPE_1		
+887	መደጎሻ	1		TYPE_1		
+888	መዲና	1		TYPE_1		
+889	መዳ	0	TYPE_1	TYPE_1		
+890	መዳመጫ	1	TYPE_1	TYPE_1		
+891	መዳረሻ	1	TYPE_1	TYPE_1		
+892	መዳሪያ	1	TYPE_1	TYPE_1		
+893	መዶሻ	1	TYPE_1	TYPE_1		
+894	መዳብ	1	TYPE_1	TYPE_1		
+895	መዳኛ	1		TYPE_1		
+896	መዳፍ	1	TYPE_1	TYPE_1		
+897	መድሃኒተኛ	1		TYPE_1		
+898	መድሃኒት	1	TYPE_1	TYPE_1		
+899	መድህን	1	TYPE_1	TYPE_1		
+900	መድሎ	1	TYPE_1	TYPE_1		
+901	መድረሻ	1	TYPE_1	TYPE_1		
+902	መድረክ	1	TYPE_1	TYPE_1		
+903	መድን	1	TYPE_1	TYPE_1		
+904	መድን	1	TYPE_1	TYPE_1		
+905	መድህን	1	TYPE_1	TYPE_1		
+906	መድፍ	1	TYPE_1	TYPE_1		
+907	መድፈኛ	1		TYPE_1		
+908	መዶሻ	1	TYPE_1	TYPE_1		
+909	መጀመሪያ	1	TYPE_1	TYPE_1		
+910	መጅ	1	TYPE_3	TYPE_1		
+911	መገለ	1		TYPE_1		
+912	መገለጢጥ	1		TYPE_1		
+913	መጋቢ	1	TYPE_1	TYPE_1		
+914	መጋቢት	1	TYPE_1	TYPE_1		
+915	ምግብ	1	TYPE_1	TYPE_1		
+916	መገበሪያ	1		TYPE_1		
+917	መገተሪያ	1	TYPE_1	TYPE_1		
+918	መገናኛ	1	TYPE_1	TYPE_1		
+919	መጋረጃ	1	TYPE_1	TYPE_1		
+920	መጋቢት	1	TYPE_1	TYPE_1		
+921	መጋኛ	1	TYPE_1	TYPE_1		
+922	መጋዘን	1	TYPE_1	TYPE_1		
+923	መጋዝ	1	TYPE_1	TYPE_1		
+924	መጋዣ	1	TYPE_1	TYPE_1		
+925	መጋፊያ	1		TYPE_1		
+926	መግለቦ	0	TYPE_1	TYPE_1		
+927	መግለጫ	1	TYPE_1	TYPE_1		
+928	መግላሊት	1		TYPE_1		
+929	መግቢያ	1	TYPE_1	TYPE_1		
+930	መግነዝ	1	TYPE_1	TYPE_1		
+931	መግዣ	1	TYPE_1	TYPE_1		
+932	መግፊያ	1	TYPE_1	TYPE_1		
+933	መግነጢስ	1	TYPE_1	TYPE_1		
+934	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+935	መጎዛ	0	TYPE_1	TYPE_1		
+936	መጎጥ	1		TYPE_1		
+937	መጓጓዣ	1	TYPE_1	TYPE_1		
+938	መጠለያ	1	TYPE_1	TYPE_1		
+939	ምጥቀት	1		TYPE_1		
+940	መጠቅለያ	1	TYPE_1	TYPE_1		
+941	መጠባበቂያ	1	TYPE_1	TYPE_1		
+942	ምጣኔ	1	TYPE_3	TYPE_1		
+943	መጠይቅ	1	TYPE_1	TYPE_1		
+944	መጠጊያ	1		TYPE_1		
+945	ምጣጭ	1		TYPE_1		
+946	መጠጥ	1	TYPE_1	TYPE_1		
+947	መጠጫ	1	TYPE_1	TYPE_1		
+948	መጡብሽ	1	TYPE_3	TYPE_1		
+949	መጢቃ	0		TYPE_1		
+950	መጣተኛ	1	TYPE_1	TYPE_1		
+951	መፃተኛ	1	TYPE_1	TYPE_1		
+952	መጫወቻ	1	TYPE_1	TYPE_1		
+953	መጭ	1		TYPE_1		
+954	መጣብር	0	TYPE_1	TYPE_1		
+955	መጣያ	1	TYPE_1	TYPE_1		
+956	መጣጣ	1		TYPE_1		
+957	መፃፃ	1		TYPE_1		
+958	መጣፍያ	1	TYPE_1	TYPE_1		
+959	መጣጥፍ	1	TYPE_1	TYPE_1		
+960	መጥለቂያ	1		TYPE_1		
+961	መጥረቢያ	1	TYPE_1	TYPE_1		
+962	መጥረጊያ	1	TYPE_1	TYPE_1		
+963	መጥሪያ	1	TYPE_1	TYPE_1		
+964	መጥበሻ	1	TYPE_1	TYPE_1		
+965	መጥኔ	1		TYPE_1		
+966	መጥፎ	1	TYPE_1	TYPE_1		
+967	መጨለፊያ	1	TYPE_1	TYPE_1		
+968	መጭለፊያ	1	TYPE_1	TYPE_1		
+969	መጨቃ	0		TYPE_1		
+970	መጨቅጨቂት	0		TYPE_1		
+971	መጨቅጨቂያ	1	TYPE_1	TYPE_1		
+972	መጨበጫ	1		TYPE_1		
+973	መጨኔ	0		TYPE_1		
+974	መጨጊያ	0		TYPE_1		
+975	መጫሚያ	1	TYPE_1	TYPE_1		
+976	መጫሪያ	1	TYPE_1	TYPE_1		
+977	መጫኛ	1		TYPE_1		
+978	መጭመቂያ	1	TYPE_1	TYPE_1		
+979	መፀዳጃ	1	TYPE_1	TYPE_1		
+980	መፀወተ	1		TYPE_1		
+981	ምፅዋት	1		TYPE_1		
+982	ምጥዋት	1		TYPE_1		
+983	መፀው	1		TYPE_1		
+984	መፃጉእ	1		TYPE_1		
+985	መፃሃፍ	1	TYPE_1	TYPE_1		
+986	መፈናፈኛ	1	TYPE_3	TYPE_1		
+987	መፈክር	1	TYPE_1	TYPE_1		
+988	መፋቂያ	1	TYPE_1	TYPE_1		
+989	መፍሉስ	1	TYPE_1	TYPE_1		
+990	መፍትሄ	1	TYPE_1	TYPE_1		
+991	ሙሃሂት	0		TYPE_1		
+992	ሙሃይት	0		TYPE_1		
+993	ሙሉ	1		TYPE_1		
+994	ሙልሙል	1		TYPE_1		
+995	ሙልጭልጭ	1		TYPE_1		
+996	ሙሬ	0		TYPE_1		
+997	ሙሪ	0		TYPE_1		
+998	ሙርጥ	1		TYPE_1		
+999	ሙሴ	1		TYPE_1		
+1000	ሙስሊም	1	TYPE_1	TYPE_1		
+1001	ሙስና	1	TYPE_1	TYPE_1		
+1002	ሙሽ	0		TYPE_1		
+1003	ሙሽሪት	1		TYPE_1		
+1004	ሙሽት	1	type 3	TYPE_1		
+1005	ሙሾ	1		TYPE_1		
+1006	ሙቀት	1		TYPE_1		
+1007	ሙቀጫ	1	TYPE_1	TYPE_1		
+1008	ሙታንታ	1	TYPE_1	TYPE_1		
+1009	ሙታንቲ	1	TYPE_1	TYPE_1		
+1010	ሙከራ	1	TYPE_1	TYPE_1		
+1011	ሞከረ	1		TYPE_1		
+1012	ሙክት	1	type 3	TYPE_1		
+1013	ሙዚቃ	1	TYPE_1	TYPE_1		
+1014	ሙዚየም	1	TYPE_1	TYPE_1		
+1015	ሙዜ	1	TYPE_1	TYPE_1		
+1016	ሙዝ	1		TYPE_1		
+1017	ሙያ	1	TYPE_1	TYPE_1		
+1018	ሞያ	1	TYPE_1	TYPE_1		
+1019	ሙዳ	1		TYPE_1		
+1020	ሙዳይ	1		TYPE_1		
+1021	ሙጃ	1		TYPE_1		
+1022	ሙጃሌ	1		TYPE_1		
+1023	ሙገሳ	1	TYPE_1	TYPE_1		
+1024	ሙጃሌ	1		TYPE_1		
+1025	ሞያሌ	1		TYPE_1		
+1026	ሙገጫ	1	type 3	TYPE_1		
+1027	ሙጋድ	0		TYPE_1		
+1028	ሙግት	1	TYPE_1	TYPE_1		
+1029	ሙግድ	0	TYPE_1	TYPE_1		
+1030	ሞክድ	0	TYPE_1	TYPE_1		
+1031	ሞግድ	0	TYPE_1	TYPE_1		
+1032	ሙጎጎ	0	type 3	TYPE_1		
+1033	ሙጥልቅ	1	TYPE_1	TYPE_1		
+1034	ሞጠለቀ	1	TYPE_1	TYPE_1		
+1035	ሙጥኝ	1		TYPE_1		
+1036	ሙጫሌ	0	TYPE_1	TYPE_1		
+1037	ሙጫ	1		TYPE_1		
+1038	ሚሊግራም	1		TYPE_1		
+1039	ሚሊዮነር	1	TYPE_1	TYPE_1		
+1040	ሚሊዮን	1	TYPE_1	TYPE_1		
+1041	ሚላኤል	0		TYPE_1		
+1042	ሚሲዮን	1		TYPE_1		
+1043	ሚሽን	1	TYPE_1	TYPE_1		
+1044	ሚሳይል	1	TYPE_1	TYPE_1		
+1045	ሚስማር	1	TYPE_1	TYPE_1		
+1046	ምስማር	1	TYPE_1	TYPE_1		
+1047	ሚስት	1	TYPE_1	TYPE_1		
+1048	ምሽት	1	TYPE_1	TYPE_1		
+1049	ሚስጥር	1	TYPE_1	TYPE_1		
+1050	ሚኒ	1	TYPE_1	TYPE_1		
+1051	ሚኒስቴር	1	TYPE_1	TYPE_1		
+1052	ሚኒስከርት	1	TYPE_1	TYPE_1		
+1053	ሚኒስትር	1	TYPE_1	TYPE_1		
+1054	ሚና	1	TYPE_1	TYPE_1		
+1055	ሚክሮብ	0	type 3	TYPE_1		
+1056	ሚዛን	1	TYPE_1	TYPE_1		
+1057	ሚዜ	1	TYPE_1	TYPE_1		
+1058	ሚያዝያ	1	TYPE_1	TYPE_1		
+1059	ሚዳቋ	1	TYPE_1	TYPE_1		
+1060	ሚዶ	1	type 3	TYPE_1		
+1061	ሚጥሚጣ	1		TYPE_1		
+1062	ማ	1		TYPE_1		
+1063	ማን	1		TYPE_1		
+1064	ማህሌት	1	TYPE_1	TYPE_1		
+1065	ማህበር	1	TYPE_1	TYPE_1		
+1066	ማህበረተኛ	1	TYPE_1	TYPE_1		
+1067	ማህደር	1	TYPE_1	TYPE_1		
+1068	ማህፀን	1	type 3	TYPE_1		
+1069	ማላ	1		TYPE_1		
+1070	መሃላ	1	TYPE_1	TYPE_1		
+1071	ማለዳ	1	TYPE_1	TYPE_1		
+1072	መማለጃ	1	TYPE_1	TYPE_1		
+1073	ምልጃ	1	TYPE_1	TYPE_1		
+1074	ማለፊያ	1		TYPE_1		
+1075	ማላሻ	1		TYPE_1		
+1076	ማላቀቂያ	1	type 3	TYPE_1		
+1077	ማላበሻ	1	TYPE_1	TYPE_1		
+1078	መልቀሚያ	1	TYPE_1	TYPE_1		
+1079	መለሰኛ	1	TYPE_1	TYPE_1		
+1080	ማላበሻ	1	TYPE_1	TYPE_1		
+1081	ማልቀሻ	1	type 3	TYPE_1		
+1082	ማልድያ	0		TYPE_1		
+1083	ማልደያ	0		TYPE_1		
+1084	ማመላለሻ	1	TYPE_1	TYPE_1		
+1085	ማመልከቻ	1	TYPE_1	TYPE_1		
+1086	ማማ	1	TYPE_1	TYPE_1		
+1087	ማማሰያ	1	TYPE_1	TYPE_1		
+1088	ማማት	1		TYPE_1		
+1089	ማምለኪያ	1	TYPE_1	TYPE_1		
+1090	ማምለጫ	1	TYPE_1	TYPE_1		
+1091	ማምሻ	1	type 3	TYPE_1		
+1092	ማሟጫ	0	type 3	TYPE_1		
+1093	መሟጫ	0	type 3	TYPE_1		
+1094	ምህረት	1	type 3	TYPE_1		
+1095	ምረት	1		TYPE_1		
+1096	ማረሚያ	1	TYPE_1	TYPE_1		
+1097	ማረሳሻ	1	TYPE_1	TYPE_1		
+1098	ማረሻ	1	TYPE_1	TYPE_1		
+1099	ማረበላ	1	TYPE_1	TYPE_1		
+1100	ምርኮ	1	TYPE_1	TYPE_1		
+1101	ምርኮኛ	1		TYPE_1		
+1102	ማረፈጅ	0		TYPE_1		
+1103	ማረፊያ	1		TYPE_1		
+1104	ማራምጣ	0		TYPE_1		
+1105	ማርኣምጣ	1		TYPE_1		
+1106	ማራቶን	1		TYPE_1		
+1107	ማራገቢያ	1	TYPE_1	TYPE_1		
+1108	ማር	1		TYPE_1		
+1109	ማርማሽላ	0		TYPE_1		
+1110	ማርማላታ	1	type 3	TYPE_1		
+1111	ማርመጃ	1	TYPE_1	TYPE_1		
+1112	ማርስ	1		TYPE_1		
+1113	ማርሻል	1		TYPE_1		
+1114	ማርስ	1		TYPE_1		
+1115	ማርትሬዛ	1		TYPE_1		
+1116	ማርከሻ	1	TYPE_1	TYPE_1		
+1117	ማርክ	1	TYPE_1	TYPE_1		
+1118	ማርክሲዝም	1		TYPE_1		
+1119	ማርያም	1	TYPE_1	TYPE_1		
+1120	ማርዬ	0		TYPE_1		
+1121	ማርዳ	0	TYPE_1	TYPE_1		
+1122	ማርገብገቢያ	1	type 3	TYPE_1		
+1123	ማርገጃ	1		TYPE_1		
+1124	ማርጋሪን	1		TYPE_1		
+1125	ማርጣ	0	TYPE_1	TYPE_1		
+1126	ማሳ	1	TYPE_1	TYPE_1		
+1127	ማሰሮ	1	TYPE_1	TYPE_1		
+1128	ማሰሻ	1	TYPE_1	TYPE_1		
+1129	ማሲንቆ	1	TYPE_1	TYPE_1		
+1130	መሰንቆ	1	TYPE_1	TYPE_1		
+1131	ማሳ	1	TYPE_1	TYPE_1		
+1132	ማሳሰቢያ	1	TYPE_1	TYPE_1		
+1133	ማስለቀሻ	1		TYPE_1		
+1134	ማስለቀቂያ	1		TYPE_1		
+1135	ማስመሪያ	1	TYPE_1	TYPE_1		
+1136	ማስረጃ	1	TYPE_1	TYPE_1		
+1137	ማስተንፈሻ	1		TYPE_1		
+1138	ማስተዛዘኛ	1		TYPE_1		
+1139	ማስታወሻ	1	TYPE_1	TYPE_1		
+1140	ማስታወቂያ	1	TYPE_1	TYPE_1		
+1141	ማስታገሻ	1	TYPE_1	TYPE_1		
+1142	ማስገንዘቢያ	1	TYPE_1	TYPE_1		
+1143	ማስጠንቀቂያ	1		TYPE_1		
+1144	ማስጫ	1	TYPE_1	TYPE_1		
+1145	ማሻሻያ	1	TYPE_1	TYPE_1		
+1146	ማሽላ	1		TYPE_1		
+1147	ማሽን	1	TYPE_1	TYPE_1		
+1148	ማሽንክ	0		TYPE_1		
+1149	ማሾ	1	TYPE_1	TYPE_1		
+1150	ማቀባበያ	1		TYPE_1		
+1151	ማቀናነሻ	1		TYPE_1		
+1152	ማቀዝቀዣ	1	TYPE_1	TYPE_1		
+1153	ማቀፊያ	1	TYPE_1	TYPE_1		
+1154	ማቁላሊያ	1		TYPE_1		
+1155	ማቁረጫ	1		TYPE_1		
+1156	ማቅ	1		TYPE_1		
+1157	ማቅረቢያ	1		TYPE_1		
+1158	ማቋቻ	0		TYPE_1		
+1159	ማበረታቻ	1	TYPE_1	TYPE_1		
+1160	ማበቻ	1		TYPE_1		
+1161	ማበጠሪያ	1	TYPE_1	TYPE_1		
+1162	ማቡኪያ	1	TYPE_1	TYPE_1		
+1163	ማባበያ	1		TYPE_1		
+1164	ማባዛት	1		TYPE_1		
+1165	ማብረጃ	1		TYPE_1		
+1166	ማብሪያና	1		TYPE_1		
+1167	ማብራራያ	1	TYPE_1	TYPE_1		
+1168	ማብሰያ	1		TYPE_1		
+1169	ማብዛት	1		TYPE_1		
+1170	ማተሚያ	1	TYPE_1	TYPE_1		
+1171	ማተብ	1	TYPE_1	TYPE_1		
+1172	ማቲ	1	TYPE_1	TYPE_1		
+1173	ማታለያ	1		TYPE_1		
+1174	ማትሪክ	1		TYPE_1		
+1175	ማቶት	1		TYPE_1		
+1176	ማነቆ	1	TYPE_1	TYPE_1		
+1177	ማንትስ	1	TYPE_1	TYPE_1		
+1178	ማንቀርቀቢያ	1		TYPE_1		
+1179	ማንቁርት	1		TYPE_1		
+1180	ማንቆርቆሪያ	1		TYPE_1		
+1181	ማንኪያ	1	TYPE_1	TYPE_1		
+1182	ማንደጃ	1	TYPE_1	TYPE_1		
+1183	ማንገቻ	1	TYPE_1	TYPE_1		
+1184	ማንጎ	1		TYPE_1		
+1185	ማንጓጠጥ	1		TYPE_1		
+1186	ማኛ	1		TYPE_1		
+1187	ማእረግ	1	TYPE_1	TYPE_1		
+1188	ማእበል	1		TYPE_1		
+1189	ማእከል	1		TYPE_1		
+1190	ማእዘን	1		TYPE_1		
+1191	ማእድ	1		TYPE_1		
+1192	ማድ	1		TYPE_1		
+1193	ማደኛ	0		TYPE_1		
+1194	ማእድን	1	TYPE_1	TYPE_1		
+1195	ማእዶት	1		TYPE_1		
+1196	ማእጠንት	1		TYPE_1		
+1197	ማከፋፈያ	1	TYPE_1	TYPE_1		
+1198	ማኩታ	0	TYPE_1	TYPE_1		
+1199	ማኪያቶ	1		TYPE_1		
+1200	ማካፈል	1		TYPE_1		
+1201	ማክሰኞ	1	TYPE_1	TYPE_1		
+1202	ማኮብኮቢያ	1		TYPE_1		
+1203	ማወራረጃ	1		TYPE_1		
+1204	ማዋለጃ	1		TYPE_1		
+1205	ማውጫ	1	TYPE_1	TYPE_1		
+1206	ማዘንት	0		TYPE_1		
+1207	ማዘያ	1	TYPE_1	TYPE_1		
+1208	ማዘዣ	1	TYPE_1	TYPE_1		
+1209	ማዘጋጃ	1	TYPE_1	TYPE_1		
+1210	ማዞሪያ	1	TYPE_1	TYPE_1		
+1211	ማዥራት	1	TYPE_1	TYPE_1		
+1212	ማይል	1	TYPE_1	TYPE_1		
+1213	ማይም	1	TYPE_1	TYPE_1		
+1214	ማይካ	1	TYPE_1	TYPE_1		
+1215	ማይክሮስኮፕ	1	type 3	TYPE_1		
+1216	ማደሪያ	1	TYPE_1	TYPE_1		
+1217	ማደንዘዣ	1	TYPE_1	TYPE_1		
+1218	ማደኛ	1	TYPE_1	TYPE_1		
+1219	ማደያ	1	TYPE_1	TYPE_1		
+1220	ማደጎ	1	TYPE_1	TYPE_1		
+1221	ማዳበሪያ	1	TYPE_1	TYPE_1		
+1222	ማዳወሪያ	1		TYPE_1		
+1223	ማድቤት	1	TYPE_1	TYPE_1		
+1224	ማድያት	1		TYPE_1		
+1225	ማድጋ	1	TYPE_1	TYPE_1		
+1226	ማዶ	1		TYPE_1		
+1227	ማጀት	1	TYPE_1	TYPE_1		
+1228	ማጅራት	1		TYPE_1		
+1229	ማገር	1	TYPE_1	TYPE_1		
+1230	ማገዶ	1	type 3	TYPE_1		
+1231	ማገገሚያ	1		TYPE_1		
+1232	ማገጥ	0		TYPE_1		
+1233	ማጉሊያ	1		TYPE_1		
+1234	ማግ	1		TYPE_1		
+1235	ማግስት	1		TYPE_1		
+1236	ማግኔት	1	TYPE_1	TYPE_1		
+1237	ምጥ	1		TYPE_1		
+1238	ማጠቃለያ	1	TYPE_1	TYPE_1		
+1239	ማጠናከሪያ	1	TYPE_1	TYPE_1		
+1240	ማጠንት	1		TYPE_1		
+1241	ማጠንፈፊያ	1	TYPE_1	TYPE_1		
+1242	ማጠፊያ	1	TYPE_1	TYPE_1		
+1243	ማጣሪያ	1	TYPE_1	TYPE_1		
+1244	ማጣበቂያ	1	TYPE_1	TYPE_1		
+1245	ማጣፈጫ	1	TYPE_1	TYPE_1		
+1246	ማጣፊያ	1		TYPE_1		
+1247	ማጥ	1		TYPE_1		
+1248	ማጥለያ	1	TYPE_1	TYPE_1		
+1249	ማጨሻ	1	TYPE_1	TYPE_1		
+1250	ማጩራ	0		TYPE_1		
+1251	ማጫ	1		TYPE_1		
+1252	ማጫወቻ	1	TYPE_1	TYPE_1		
+1253	ማጫጫሻ	1	TYPE_1	TYPE_1		
+1254	ማጭዴ	0		TYPE_1		
+1255	ማጭድ	1	TYPE_1	TYPE_1		
+1256	ማፅናኛ	1	TYPE_1	TYPE_1		
+1257	ማፈሪያ	1	TYPE_1	TYPE_1		
+1258	ማፈኛ	1	TYPE_1	TYPE_1		
+1259	ማፉዳ	0	TYPE_1	TYPE_1		
+1260	ሜል	0	TYPE_1	TYPE_1		
+1261	ሜርቆ	0		TYPE_1		
+1262	ሜርኩሪ	1		TYPE_1		
+1263	ሜሮን	1		TYPE_1		
+1264	ሜንጦ	1	TYPE_1	TYPE_1		
+1265	ሜዳ	1	TYPE_1	TYPE_1		
+1266	ሜዳይ	1	TYPE_1	TYPE_1		
+1267	ሜዳልያ	1	TYPE_1	TYPE_1		
+1268	ምሀላ	1	TYPE_1	TYPE_1		
+1269	ምህዋር	1	TYPE_1	TYPE_1		
+1270	ምላስ	1	TYPE_1	TYPE_1		
+1271	ምላት	1	type 3	TYPE_1		
+1272	ምልኣት	1	TYPE_1	TYPE_1		
+1273	ምላጭ	1	TYPE_1	TYPE_1		
+1274	ምራቅ	1		TYPE_1		
+1275	ምራት	1	TYPE_1	TYPE_1		
+1276	ምርቅ	1		TYPE_1		
+1277	ምርፋቅ	1	type 3	TYPE_1		
+1278	ምሰሶ	1	TYPE_1	TYPE_1		
+1279	ምሶሶ	1	TYPE_1	TYPE_1		
+1280	ምሳ	1		TYPE_1		
+1281	ምሳር	1	TYPE_1	TYPE_1		
+1282	ምሳና	1		TYPE_1		
+1283	ምስ	1		TYPE_1		
+1284	ምስለኔ	1	type 3	TYPE_1		
+1285	ምስማር	1	TYPE_1	TYPE_1		
+1286	ምሰማክ	1	TYPE_1	TYPE_1		
+1287	ምስራቅ	1		TYPE_1		
+1288	ምስራች	1	type 3	TYPE_1		
+1289	ምስር	1		TYPE_1		
+1290	ምስሬ	1		TYPE_1		
+1291	ምስርቃና	0	TYPE_1	TYPE_1		
+1292	ምስረቃና	0	TYPE_1	TYPE_1		
+1293	ምስርች	0		TYPE_1		
+1294	ምስጥ	1	TYPE_1	TYPE_1		
+1295	ምሸሾ	0	TYPE_1	TYPE_1		
+1296	ምሽሮ	0		TYPE_1		
+1297	ምትሃት	1	TYPE_1	TYPE_1		
+1298	ምታት	1	TYPE_1	TYPE_1		
+1299	ምትክ	1	TYPE_1	TYPE_1		
+1300	ምኔት	1	TYPE_1	TYPE_1		
+1301	ምን	1		TYPE_1		
+1302	ምንድን	1		TYPE_1		
+1303	ምንድር	1		TYPE_1		
+1304	ምንመጣብኝ	1		TYPE_1		
+1305	ምንሽር	1	TYPE_1	TYPE_1		
+1306	ምንሾ	0		TYPE_1		
+1307	ምንቃር	1		TYPE_1		
+1308	ምንባብ	1		TYPE_1		
+1309	ምንቸት	1		TYPE_1		
+1310	ምንዳ	1	type 3	TYPE_1		
+1311	ምንዝላት	1	TYPE_1	TYPE_1		
+1312	ምዝላያት	1	TYPE_1	TYPE_1		
+1313	ምንዥላት	1	TYPE_1	TYPE_1		
+1314	ምንጣፍ	1	TYPE_1	TYPE_1		
+1315	ምንጭር	1		TYPE_1		
+1316	ምንጭርር	0		TYPE_1		
+1317	ምእላድ	1		TYPE_1		
+1318	ምእመን	1		TYPE_1		
+1319	ምእራብ	1		TYPE_1		
+1320	ምእራፍ	1	TYPE_1	TYPE_1		
+1321	ምኩራብ	1		TYPE_1		
+1322	ምክትል	1	TYPE_1	TYPE_1		
+1323	ምዝራጥ	0	TYPE_1	TYPE_1		
+1324	ምዥራጥ	0	TYPE_1	TYPE_1		
+1325	ምድር	1		TYPE_1		
+1326	ምድጃ	1	TYPE_1	TYPE_1		
+1327	ምግባር	1		TYPE_1		
+1328	ምጥማቅ	1		TYPE_1		
+1329	ምጥማጥ	1		TYPE_1		
+1330	ምጥቀት	1		TYPE_1		
+1331	ምፀት	1	TYPE_1	TYPE_1		
+1332	ምፅኣት	1		TYPE_1		
+1333	ሙልሙል	1	TYPE_1	TYPE_1		
+1334	መሙያ	1	TYPE_1	TYPE_1		
+1335	መሙሊያ	1	type 3	TYPE_1		
+1336	ምላት	1	TYPE_1	TYPE_1		
+1337	ምልኣት	1	TYPE_1	TYPE_1		
+1338	ሞረሽ	0	TYPE_1	TYPE_1		
+1339	ሞረዳይ	0		TYPE_1		
+1340	ሞረድ	1	TYPE_1	TYPE_1		
+1341	ሞራ	1		TYPE_1		
+1342	ሞራል	1		TYPE_1		
+1343	ሙቀት	1		TYPE_1		
+1344	ሞቅታ	1		TYPE_1		
+1346	ሞተር	1	TYPE_1	TYPE_1		
+1347	ሞኖፖል	1		TYPE_1		
+1348	ሙከራ	1	TYPE_1	TYPE_1		
+1349	ሙክት	1	TYPE_1	TYPE_1		
+1350	ሙዚቃ	1	TYPE_1	TYPE_1		
+1351	ሞይደር	0		TYPE_1		
+1352	ሞዴል	1	TYPE_1	TYPE_1		
+1353	ሞዴስ	1	TYPE_1	TYPE_1		
+1354	ሞድ	1		TYPE_1		
+1355	ሞጃ	1	TYPE_1	TYPE_1		
+1356	ሞገስ	1		TYPE_1		
+1357	ሞገድ	1		TYPE_1		
+1358	ሞግዚት	1	TYPE_1	TYPE_1		
+1359	ሞጣህት	0	TYPE_1	TYPE_1		
+1360	ሙጫ	1		TYPE_1		
+1361	ሞፈር	1	TYPE_1	TYPE_1		
+1362	ሞፎ	0		TYPE_1		
+1363	ሟርት	1	TYPE_3	TYPE_1		
+1364	መሟጫ	1	TYPE_1	TYPE_1		
+1365	ማሟጫ	1	TYPE_1	TYPE_1		
+1366	ሟጨራ	0		TYPE_1		
+1367	መሀል	1		TYPE_1		
+1368	መሀንዲስ	1	TYPE_1	TYPE_1		
+1369	መሀንዲስነት	1		TYPE_1		
+1370	መሀከል	1		TYPE_1		
+1371	መሃይምን	1		TYPE_1		
+1372	መሃይምነት	1		TYPE_1		
+1373	መለኮትነት	1		TYPE_1		
+1374	መላጣነት	1		TYPE_1		
+1375	መልሕቅ	1	TYPE_1	TYPE_1		
+1376	መልቲነት	1		TYPE_1		
+1377	መልአክ	1	TYPE_1	TYPE_1		
+1378	መሐለቅ	1	TYPE_1	TYPE_1		
+1379	መሐላ	1	TYPE_1	TYPE_1		
+1380	መሐረም	1	TYPE_1	TYPE_1		
+1381	መሐረብ	1	TYPE_1	TYPE_1		
+1382	መምህርነት	1		TYPE_1		
+1383	መሠረት	1	TYPE_1	TYPE_1		
+1384	መሥራች	1	TYPE_1	TYPE_1		
+1385	መሠሪ	1	TYPE_1	TYPE_1		
+1386	መሠሪነት	1		TYPE_1		
+1387	መሥመር	1	TYPE_1	TYPE_1		
+1388	መራራነት	1		TYPE_1		
+1389	መራርነት	1		TYPE_1		
+1390	ምረት	1		TYPE_1		
+1391	ምርቃን	1		TYPE_1		
+1392	መምረጊያ	1	TYPE_1	TYPE_1		
+1393	መረጣ	1	TYPE_1	TYPE_1		
+1394	መራጭነት	1		TYPE_1		
+1395	መምረጫ	1	TYPE_1	TYPE_1		
+1396	መሪነት	1		TYPE_1		
+1397	መስካሪነት	1		TYPE_1		
+1398	ምስከራ	1	TYPE_1	TYPE_1		
+1399	ምስኪንነት	1		TYPE_1		
+1400	ምስግ	1	TYPE_1	TYPE_1		
+1401	መሲሕ	1	TYPE_1	TYPE_1		
+1402	መስተአምር	1	TYPE_1	TYPE_1		
+1403	መስተጋብር	1	TYPE_1	TYPE_1		
+1404	መስኮብ	1	TYPE_1	TYPE_1		
+1405	መስኮብኛ	1		TYPE_1		
+1406	መቅሠፍት	1	TYPE_1	TYPE_1		
+1407	መመነኛ	1		TYPE_1		
+1408	መንኳሽ	1	TYPE_1	TYPE_1		
+1409	መመንዘሪያ	1	TYPE_1	TYPE_1		
+1410	ምንጣሪ	1		TYPE_1		
+1411	ምንጠራ	1		TYPE_1		
+1412	መንካ	1	TYPE_1	TYPE_1		
+1414	መንጦ	1	TYPE_1	TYPE_1		
+1415	መንፈሳዊነት	1		TYPE_1		
+1416	መካንነት	1		TYPE_1		
+1417	መክረጅ	0		TYPE_1		
+1418	መዐልት	1		TYPE_1		
+1419	መዐት	1	TYPE_1	TYPE_1		
+1420	መመዘኛ	1	TYPE_1	TYPE_1		
+1421	መዝጋቢ	1	TYPE_1	TYPE_1		
+1422	ምደባ	1		TYPE_1		
+1423	ማምጠጫ	1		TYPE_1		
+1424	መጣጢስ	1		TYPE_1		
+1425	መጽሐፍ	1	TYPE_1	TYPE_1		
+1426	መፍትሔ	1	TYPE_1	TYPE_1		
+1427	ሙሀቻ	1		TYPE_1		
+1428	ሙዋርት	0		TYPE_1		
+1429	ሙጭራት	0	TYPE_1	TYPE_1		
+1430	ሙያሌ	0	TYPE_1	TYPE_1		
+1431	ማላጋነት	0		TYPE_1		
+1432	ማሕሌተኛ	1		TYPE_1		
+1433	ማሕሌታይ	1		TYPE_1		
+1434	ማኅበር	1	TYPE_1	TYPE_1		
+1435	ማኅበርተኛ	1		TYPE_1		
+1436	ማኅበረተኛ	1		TYPE_1		
+1437	ማኅተም	1	TYPE_1	TYPE_1		
+1438	ማዕረገኛ	1		TYPE_1		
+1439	ማዕቀብ	1	TYPE_1	TYPE_1		
+1440	ማዕበል	1	TYPE_1	TYPE_1		
+1441	ማዕድ	1		TYPE_1		
+1442	ማዕድቤት	1		TYPE_1		
+1443	ማእድቤት	1		TYPE_1		
+1445	ማድያታም	1		TYPE_1		
+1446	ማማጊያ	1		TYPE_1		
+1447	ማጋጣነት	1		TYPE_1		
+1448	ማጋጫነት	1		TYPE_1		
+1449	ማግሥት	1	TYPE_1	TYPE_1		
+1452	ማግሰኞ	1	TYPE_1	TYPE_1		
+1453	ሜዳማ	1		TYPE_1		
+1454	ሜጀር	1	TYPE_1	TYPE_1		
+1455	ምሥራቅ	1	TYPE_1	TYPE_1		
+1456	ምሥራቃዊ	1		TYPE_1		
+1457	ምስሪት	1		TYPE_1		
+1458	ምቀኝነት	1		TYPE_1		
+1459	ምንጅላት	1		TYPE_1		
+1460	ምዕራብ	1		TYPE_1		
+1461	ምዕራፍ	1	TYPE_1	TYPE_1		
+1462	ምጸት	1	TYPE_1	TYPE_1		
+1463	ምጽኣት	1		TYPE_1		
+1464	ሞላላነት	1		TYPE_1		
+1465	ሙላት	1	TYPE_1	TYPE_1		
+1466	መሙያ	1	TYPE_1	TYPE_1		
+1467	ሙረዳ	1		TYPE_1		
+1468	ማሞቂያ	1	TYPE_1	TYPE_1		
+1469	ሞካሪ	1		TYPE_1		
+1470	ሞዛዛነት	1		TYPE_1		
+1471	ሞያተኛ	1		TYPE_1		
+1472	ሞጋች	1		TYPE_1		
+1473	ሞጭላፊ	1	TYPE_1	TYPE_1		
+1474	ሙጭለፋ	1	TYPE_1	TYPE_1		
+1500	ማርከሻ	1	TYPE_1	TYPE_1		
+1519	መራቢያ	1	TYPE_1	TYPE_1		
+1520	ማራቢያ	1	TYPE_1	TYPE_1		
+1612	መርገፍ	1		TYPE_1		
+1613	መራገጫ	1	TYPE_1	TYPE_1		
+1617	መርቢያ	1	TYPE_1	TYPE_1		
+1627	ማርፈጃ	1	TYPE_1	TYPE_1		
+1650	መሮጫ	1	TYPE_1	TYPE_1		
+1651	ምትሐት	1	TYPE_1	TYPE_1		
+1666	መሠቅሠቂያ	1	TYPE_1	TYPE_1		
+1680	መሣያ	1	TYPE_1	TYPE_1		
+1709	መሰለቂት	1	TYPE_1	TYPE_1		
+2092	ምስፍና	1	TYPE_1	TYPE_1		
+2194	መሸኛ	1	TYPE_1	TYPE_1		
+2300	መሽሎክለኪያ	1		TYPE_1		
+2301	መሸለኪያ	1		TYPE_1		
+3256	መቧጠጫ	1	TYPE_1	TYPE_1		
+3854	ማኅበር	1	TYPE_1	TYPE_1		
+3855	ማኅበርተኛ	1		TYPE_1		
+3856	ማኅበረተኛነት	1		TYPE_1		
+4841	ማሥገሪያ	1	TYPE_1	TYPE_1		
+5124	ማዘያ	1	TYPE_1	TYPE_1		
+5161	ማደርያ	1	TYPE_1	TYPE_1		
+5510	መከለሻ	1		TYPE_1		
+5516	መከላከያ	1		TYPE_1		
+5517	መንከላወሻ	1		TYPE_1		
+5597	ምክትል	1	TYPE_1	TYPE_1		
+5605	መካተቻ	1		TYPE_1		
+5606	መክተፊያ	1	TYPE_1	TYPE_1		
+5623	መክደኛ	1		TYPE_1		
+5627	መክፈያ	1	TYPE_1	TYPE_1		
+5637	ማካፈል	1		TYPE_1		
+5638	ማከፋፈያ	1		TYPE_1		
+5639	መክፈልት	1		TYPE_1		
+5643	መክፈቻ	1	TYPE_1	TYPE_1		
+5647	መከፍከፊያ	1		TYPE_1		
+5812	መኮልኮያ	1		TYPE_1		
+5926	መኮስተሪያ	1		TYPE_1		
+5942	ማኮብኮቢያ	1		TYPE_1		
+5950	መኮትኮቻ	1	TYPE_1	TYPE_1		
+5995	መወልወያ	1	TYPE_1	TYPE_1		
+6002	መከለሻ	1	TYPE_3	TYPE_1		
+6005	መክረሚያ	1	TYPE_1	TYPE_1		
+6014	መከስከሻ	1		TYPE_1		
+6029	መከፈኛ	1	TYPE_1	TYPE_1		
+6056	መኳቻ	0	TYPE_1	TYPE_1		
+6075	መወርወርያ	1	TYPE_1	TYPE_1		
+6079	መውረጃ	1	TYPE_1	TYPE_1		
+6093	ማወራረጃ	1		TYPE_1		
+6141	መሳፍቻ	0		TYPE_1		
+6155	መዋቅር	1	TYPE_1	TYPE_1		
+6159	መውቀጫ	1	TYPE_1	TYPE_1		
+6160	ሙቀጫ	1	TYPE_1	TYPE_1		
+6161	ሙገጫ	0		TYPE_1		
+6170	መቅለምት	0	TYPE_1	TYPE_1		
+6244	መወድስ	1		TYPE_1		
+6247	መውደቂያ	1		TYPE_1		
+6281	መወጠሪያ	1		TYPE_1		
+6285	መውጫ	1	TYPE_1	TYPE_1		
+6291	መወጣጫ	1		TYPE_1		
+6292	መዋጮ	1	TYPE_1	TYPE_1		
+6294	ማውጫ	1	TYPE_1	TYPE_1		
+6325	መዋያ	1	TYPE_1	TYPE_1		
+6366	መዋኛ	1	TYPE_1	TYPE_1		
+6457	መወሰኛ	1	TYPE_1	TYPE_1		
+6460	መወስወሻ	1		TYPE_1		
+6465	መውቂያ	1		TYPE_1		
+6492	ሙያ	1	TYPE_1	TYPE_1		
+6493	ሙያተኛ	1		TYPE_1		
+6534	ምዕራፍ	1	TYPE_1	TYPE_1		
+6550	መታወቂያ	1	TYPE_1	TYPE_1		
+6552	ማስታወቂያ	1	TYPE_1	TYPE_1		
+6577	ማጫ	0		TYPE_1		
+6578	መታጫ	1	TYPE_1	TYPE_1		
+6613	መዛለያ	1		TYPE_1		
+6616	መዘለሻ	1		TYPE_1		
+6625	መዘለፊያ	1		TYPE_1		
+6630	መዘምር	1		TYPE_1		
+6631	መዘምራን	1		TYPE_1		
+6632	መዝሙር	1	TYPE_1	TYPE_1		
+6633	መዝሙረኛ	1		TYPE_1		
+6677	መዘራዝር	1		TYPE_1		
+6678	መዘርዝር	1		TYPE_1		
+6700	መዘበቻ	1		TYPE_1		
+6703	መዘባበቻ	1		TYPE_1		
+6726	መዝናኛ	1	TYPE_1	TYPE_1		
+6733	መዘከሪያ	1		TYPE_1		
+6739	መዘወሪያ	1	TYPE_1	TYPE_1		
+6740	መዘውር	1		TYPE_1		
+6765	መዝጊያ	1	TYPE_1	TYPE_1		
+6784	መዛቂያ	1	TYPE_1	TYPE_1		
+6842	መዞሪያ	1	TYPE_1	TYPE_1		
+6846	ማዞሪያ	1	TYPE_1	TYPE_1		
+6855	መዝለያ	1	TYPE_1	TYPE_1		
+6876	ማዝሪያ	1		TYPE_1		
+6888	መዘክር	1	TYPE_1	TYPE_1		
+6893	መዝገብ	1	TYPE_1	TYPE_1		
+6896	መዝጋቢ	1	TYPE_1	TYPE_1		
+6897	ምዝገባ	1	TYPE_1	TYPE_1		
+6898	መመዝገቢያ	1	TYPE_1	TYPE_1		
+6926	መያዣ	1	TYPE_1	TYPE_1		
+6966	መደለያ	1	TYPE_1	TYPE_1		
+6979	መደላድል	1		TYPE_1		
+6984	መድሎ	1	TYPE_1	TYPE_1		
+6986	መደምም	0		TYPE_1		
+6987	መደንን	0	TYPE_1	TYPE_1		
+6988	መደመር	1	TYPE_1	TYPE_1		
+7012	መድረሻ	1	TYPE_1	TYPE_1		
+7018	መዳረሻ	1	TYPE_1	TYPE_1		
+7061	መደርደሪያ	1	TYPE_1	TYPE_1		
+7064	መንደርደሪያ	1		TYPE_1		
+7086	መደቅደቂያ	1		TYPE_1		
+7088	መደቆሻ	1	TYPE_1	TYPE_1		
+7131	መደንቀሪያ	1		TYPE_1		
+7133	መደንቆያ	0		TYPE_1		
+7143	ማደንዘዣ	1	TYPE_1	TYPE_1		
+7148	መደንጎሪያ	0		TYPE_1		
+7176	መደወሪያ	1	TYPE_1	TYPE_1		
+7177	ማዳወሪያ	1	TYPE_1	TYPE_1		
+7186	መደደቂያ	1		TYPE_1		
+7211	መደገሻ	1	TYPE_1	TYPE_1		
+7227	መደጎሻ	1		TYPE_1		
+7294	መዳመጫ	1	TYPE_1	TYPE_1		
+7301	መዳሪያ	1	TYPE_1	TYPE_1		
+7306	መዳሻ	1	TYPE_1	TYPE_1		
+7312	ማዳበሪያ	1		TYPE_1		
+7323	መዳኛ	1	TYPE_1	TYPE_1		
+7324	መድሃኒት	1	TYPE_1	TYPE_1		
+7325	መዳኒት	1	TYPE_1	TYPE_1		
+7326	መድሃኒተኛ	1		TYPE_1		
+7327	መድን	1	TYPE_1	TYPE_1		
+7328	መድህን	1	TYPE_1	TYPE_1		
+7441	መንደላቀቅያ	1		TYPE_1		
+7455	መደምደሚያ	1		TYPE_1		
+7460	ማዳመጫ	1	TYPE_1	TYPE_1		
+7485	መደሰቻ	1	TYPE_1	TYPE_1		
+7506	መደገፊያ	1		TYPE_1		
+7509	መደጎሚያ	1	TYPE_1	TYPE_1		
+7531	መድሃኒታም	1		TYPE_1		
+7569	መጀመሪያ	1	TYPE_1	TYPE_1		
+7715	መግለጫ	1	TYPE_1	TYPE_1		
+7769	መገበሪያ	1		TYPE_1		
+7773	ምግባር	1	TYPE_1	TYPE_1		
+7810	መግቢያ	1	TYPE_1	TYPE_1		
+7829	መገተሪያ	1	TYPE_1	TYPE_1		
+7847	መገናኛ	1		TYPE_1		
+7849	መግነዝ	1	TYPE_1	TYPE_1		
+7853	ማስገንዘቢያ	1	TYPE_1	TYPE_1		
+7874	መግዣ	1	TYPE_1	TYPE_1		
+7910	ማገገሚያ	1		TYPE_1		
+7928	መግፊያ	1	TYPE_1	TYPE_1		
+8011	መጋረጃ	1	TYPE_1	TYPE_1		
+8063	መጋፊያ	1		TYPE_1		
+8210	መጎናፀፊያ	1	TYPE_1	TYPE_1		
+8211	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+8251	መጓጓዣ	1	TYPE_1	TYPE_1		
+8259	ማንጓጠጥ	1		TYPE_1		
+8268	መገላገያ	1	TYPE_1	TYPE_1		
+8331	መጋዞ	1	TYPE_1	TYPE_1		
+8335	መገጣጠሚያ	1		TYPE_1		
+8363	መጋዣ	1	TYPE_1	TYPE_1		
+8364	መጋገሪያ	1	TYPE_1	TYPE_1		
+8365	መጋጫ	1	TYPE_1	TYPE_1		
+8382	መጎናጠፊያ	1	TYPE_1	TYPE_1		
+8383	መጎናጸፊያ	1	TYPE_1	TYPE_1		
+8418	ማጥለያ	1	TYPE_1	TYPE_1		
+8420	መጠለያ	1	TYPE_1	TYPE_1		
+8426	መጥለቂያ	1	TYPE_1	TYPE_1		
+8445	ምጥማቅ	1	TYPE_1	TYPE_1		
+8464	መጥረቢያ	1	TYPE_1	TYPE_1		
+8471	መጥረጊያ	1	TYPE_1	TYPE_1		
+8486	መጥሪያ	1	TYPE_1	TYPE_1		
+8492	ማጣሪያ	1	TYPE_1	TYPE_1		
+8499	መጠቅለያ	1	TYPE_1	TYPE_1		
+8508	ማጠቃለያ	1	TYPE_1	TYPE_1		
+8535	መጥበሻ	1	TYPE_1	TYPE_1		
+8540	መጠባበቂያ	1	TYPE_1	TYPE_1		
+8541	መጣብቅ	0		TYPE_1		
+8543	ማጣበቂያ	1		TYPE_1		
+8565	ማስጠንቀቂያ	1		TYPE_1		
+8574	ማጠንፈፊያ	1		TYPE_1		
+8578	ማፅናኛ	1	TYPE_1	TYPE_1		
+8579	ማጥናኛ	1	TYPE_1	TYPE_1		
+8592	መጠይቅ	1	TYPE_1	TYPE_1		
+8615	መጠጊያ	1	TYPE_1	TYPE_1		
+8618	መጠጥ	1	TYPE_1	TYPE_1		
+8619	መጠጫ	1	TYPE_1	TYPE_1		
+8647	መጣያ	1	TYPE_1	TYPE_1		
+8677	ምጣድ	1	TYPE_1	TYPE_1		
+8681	መጣፊያ	1		TYPE_1		
+8682	ማጣፈጫ	1	TYPE_1	TYPE_1		
+8755	ማጦያ	0	TYPE_1	TYPE_1		
+8800	ማንጠልጠያ	1	TYPE_1	TYPE_1		
+8803	መጥለፊያ	1	TYPE_1	TYPE_1		
+8806	መስተፃምር	1		TYPE_1		
+8807	ማጥመቂያ	1	TYPE_1	TYPE_1		
+8810	መጠምዘዣ	1	TYPE_1	TYPE_1		
+8812	ማጥመጃ	1	TYPE_1	TYPE_1		
+8814	ማጥሚያ	1		TYPE_1		
+8893	መጣፍ	1	TYPE_1	TYPE_1		
+8894	መጣፈጥ	1		TYPE_1		
+8930	መጨለፊያ	1		TYPE_1		
+8931	መጭለፊያ	1		TYPE_1		
+8937	መጭመቂያ	1	TYPE_1	TYPE_1		
+8959	ማጨሻ	1	TYPE_1	TYPE_1		
+8961	ማጫጫሻ	1		TYPE_1		
+8972	መጨቅጨቂት	1		TYPE_1		
+8973	መጨቅጨቂያ	1		TYPE_1		
+8980	መጨበጫ	1		TYPE_1		
+8998	መጫወቻ	1	TYPE_1	TYPE_1		
+8999	ማጫወቻ	1	TYPE_1	TYPE_1		
+9030	መጫሪያ	1	TYPE_1	TYPE_1		
+9034	መጫኛ	1		TYPE_1		
+9093	መንጮረር	1		TYPE_1		
+9105	መጨለም	1		TYPE_1		
+9123	መንጮረር	1		TYPE_1		
+9129	መጫሚያ	1	TYPE_1	TYPE_1		
+9134	መጫወቻ	1	TYPE_1	TYPE_1		
+9169	መጸዳጃ	1	TYPE_1	TYPE_1		
+9193	መጽሐፍ	1	TYPE_1	TYPE_1		
+9247	መፀዳጃ	1	TYPE_1	TYPE_1		
+9266	መጣጥፍ	1	TYPE_1	TYPE_1		
+9267	መፅሃፍ	1	TYPE_1	TYPE_1		
+9268	መፃህፍት	1	TYPE_4	TYPE_1		
+9346	መፈርቀቂያ	0		TYPE_1		
+9353	መፋረጃ	1		TYPE_1		
+9354	መፍረጃ	1	TYPE_1	TYPE_1		
+9397	መፍትሄ	1	TYPE_1	TYPE_1		
+9489	መፋቂያ	1	TYPE_1	TYPE_1		
+9569	መፈክር	1	TYPE_1	TYPE_1		
+9579	መፈልቀቂያ	1		TYPE_1		
+9584	መፈልፈያ	1	TYPE_1	TYPE_1		
+9605	መስተፋቅር	1		TYPE_1		
+9613	መፈቅፈቅያ	1		TYPE_1		
+9616	መፍቻ	1	TYPE_1	TYPE_1		
+9812	መልመጃ	1	TYPE_1	TYPE_1		
+9813	መለማመጃ	1	TYPE_1	TYPE_1		
+9825	መለቀሻ	1		TYPE_1		
+9827	ማልቀሻ	1	TYPE_1	TYPE_1		
+9829	ማስለቀሻ	1		TYPE_1		
+9833	መልቀቂያ	1	TYPE_1	TYPE_1		
+9834	ማላቀቂያ	1	TYPE_1	TYPE_1		
+9835	ማስለቀቂያ	1	TYPE_1	TYPE_1		
+9850	መለበጃ	1	TYPE_1	TYPE_1		
+9855	መለንቀጫ	1	TYPE_1	TYPE_1		
+9861	መለኪያ	1	TYPE_1	TYPE_1		
+9862	መለኮሻ	1	TYPE_1	TYPE_1		
+9864	መለወጫ	1	TYPE_1	TYPE_1		
+9865	መለዋወጫ	1	TYPE_1	TYPE_1		
+9868	ማለዋወጫ	1	TYPE_1	TYPE_1		
+9873	መለዮ	1	TYPE_1	TYPE_1		
+9875	መለያ	1	TYPE_1	TYPE_1		
+9877	መለያያ	1	TYPE_1	TYPE_1		
+9904	ምላስ	1	TYPE_1	TYPE_1		
+9914	መላላጫ	1		TYPE_1		
+9916	ምላጭ	1	TYPE_1	TYPE_1		
+9962	መርማሪ	1	TYPE_1	TYPE_1		
+10046	መድን	1	TYPE_1	TYPE_1		
+10047	መድህን	1	TYPE_1	TYPE_1		
+10086	ማኛ	1		TYPE_1		
+10141	ሙጫ	1		TYPE_1		
+10146	መረማመጃ	1	TYPE_1	TYPE_1		
+10147	መራመጃ	1	TYPE_1	TYPE_1		
+10152	ማረሳሻ	1	TYPE_1	TYPE_1		
+10164	ማስረጃ	1	TYPE_1	TYPE_1		
+10168	ማራገቢያ	1	TYPE_1	TYPE_1		
+10170	ማርገብገቢያ	1	TYPE_1	TYPE_1		
+10171	ማርገጃ	1		TYPE_1		
+10218	መሳለሚያ	1		TYPE_1		
+10222	ማሰልጠኛ	1	TYPE_1	TYPE_1		
+10227	ማስመሪያ	1	TYPE_1	TYPE_1		
+10268	መስቀል	1	TYPE_1	TYPE_1		
+10271	መሰብሰቢያ	1	TYPE_1	TYPE_1		
+10272	መስበቂያ	1	TYPE_1	TYPE_1		
+10282	መሰንበቻ	1	TYPE_1	TYPE_1		
+10283	መሰናክል	1	TYPE_1	TYPE_1		
+10285	መሰናዘሪያ	1	TYPE_1	TYPE_1		
+10300	መስዋእት	1	TYPE_1	TYPE_1		
+10313	ማስጫ	1	TYPE_1	TYPE_1		
+10398	መሸንገያ	1	TYPE_1	TYPE_1		
+10415	መሸጎሪያ	1	TYPE_1	TYPE_1		
+10418	ማሻሻያ	1	TYPE_1	TYPE_1		
+10426	መሸጋገሪያ	1	TYPE_1	TYPE_1		
+10435	መሹለኪያ	1	TYPE_1	TYPE_1		
+10461	መቀመጫ	1	TYPE_1	TYPE_1		
+10467	ማቅረቢያ	1	TYPE_1	TYPE_1		
+10715	መተርኮሻ	1	TYPE_1	TYPE_1		
+10744	ማታለያ	1	TYPE_1	TYPE_1		
+10746	ማስታገሻ	1	TYPE_1	TYPE_1		
+11025	መታያ	1	TYPE_1	TYPE_1		
+11026	መተያያ	1	TYPE_1	TYPE_1		
+11087	ማእጠንት	1		TYPE_1		
+11088	ማጠንት	1		TYPE_1		
+11133	መበለት	1	TYPE_1	TYPE_1		
+11168	መንሸላሊት	1	TYPE_1	TYPE_1		
+11263	መከለሻ	1		TYPE_1		
+11278	መተሬ	0		TYPE_1		
+11279	መነፍ	0	TYPE_1	TYPE_1		
+11281	መንካኮ	0	TYPE_1	TYPE_1		
+11282	መንጫራ	0	TYPE_1	TYPE_1		
+11284	መጣፍጥ	0		TYPE_1		
+11285	ሙላ	0		TYPE_1		
+11286	ሙሽሮ	0		TYPE_1		
+11287	ሙዝኝ	0		TYPE_1		
+11289	ሙጋድ	0		TYPE_1		
+11290	ሙጭ	0		TYPE_1		
+11291	ማረበላ	0	TYPE_1	TYPE_1		
+11292	መርቄ	0		TYPE_1		
+11295	ሟጫራ	0		TYPE_1		
+11320	መቀጠቢያ	0	TYPE_1	TYPE_1		
+11342	ማብረሻ	0		TYPE_1		
+11366	ምንዣህ	0		TYPE_1		
+11379	መሙዋጫ	0	TYPE_1	TYPE_1		
+11380	ማት	0		TYPE_1		
+11387	ሜርኩሪ	1				

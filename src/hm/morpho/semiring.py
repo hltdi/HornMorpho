@@ -196,6 +196,15 @@ class FSSet(set, FS):
     #             values.append(values1)
     #     return values or default
 
+    def set_all(self, feat, value):
+        """
+        Return a new FSSet with feat set to value in all component FeatStructs.
+        """
+        fss = self.unfreeze()
+        for f in fss:
+            f[feat] = value
+        return FSSet(fss)
+
     def inherit(self):
         """Inherit feature values for all members of set, returning new set."""
         items = [item.inherit() for item in self]

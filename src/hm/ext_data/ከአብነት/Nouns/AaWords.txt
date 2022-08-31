@@ -1,0 +1,3888 @@
+22	አኳሁዋን	1	TYPE_1	TYPE_1		
+1492	እርባታ	1	TYPE_1	TYPE_1		
+1494	እርባና	1	TYPE_1	TYPE_1		
+1496	እርባን	1	TYPE_1	TYPE_1		
+1503	እርክፍካፎ	1		TYPE_1		
+1505	እርካታ	1		TYPE_1		
+1517	እርዳታ	1	TYPE_1	TYPE_1		
+1523	እርግማን	1	TYPE_1	TYPE_1		
+1527	እርግብግቢት	1		TYPE_1		
+1529	እርግዝና	1	TYPE 3	TYPE_1		
+1535	እርግጫ	1	TYPE_1	TYPE_1		
+1536	እርጋታ	1	TYPE_1	TYPE_1		
+1538	እርጥበት	1	TYPE_3	TYPE_1		
+1546	እሩር	1	TYPE_1	TYPE_1		
+1571	እራት	1		TYPE_1		
+1589	እሬት	1		TYPE_1		
+1591	እሬንሳ	0	TYPE_1	TYPE_1		
+1605	እሮሮ	1		TYPE_1		
+1606	እሮሮ	1		TYPE_1		
+1641	እርሳስ	1	TYPE_1	TYPE_1		
+3641	እንቃሪ	0		TYPE_1		
+3651	እንቅፋት	1	TYPE_1	TYPE_1		
+3655	ኣንቂ	1	TYPE_1	TYPE_1		
+3658	ኣነባበሮ	1		TYPE_1		
+3661	ኣናባቢ	1	TYPE_1	TYPE_1		
+3662	ኣስነባቢ	1	TYPE_1	TYPE_1		
+3679	እንኩሮ	1		TYPE_1		
+3680	እንኩቶ	1		TYPE_1		
+3713	ኣንጋሽ	1		TYPE_1		
+3716	እንግዳ	1	TYPE_1	TYPE_1		
+3724	እንጎቻ	1	TYPE_1	TYPE_1		
+3729	እንጥስታ	1		TYPE_1		
+3740	ኣንፃር	1		TYPE_1		
+3801	ኣኗኗር	1	TYPE_1	TYPE_1		
+3809	አነቃናቂ	1		TYPE_1		
+3810	አነቃቂ	1	TYPE_1	TYPE_1		
+3813	እንባ	1	TYPE_1	TYPE_1		
+3816	እንኩቶ	1		TYPE_1		
+3817	አነዳድ	1		TYPE_1		
+3824	አነጋገር	1	TYPE_1	TYPE_1		
+3835	አናዛዥ	1		TYPE_1		
+3861	ኡኡታ	1		TYPE_1		
+3862	ኡደት	1	TYPE_1	TYPE_1		
+3863	ኢላማ	1	TYPE_1	TYPE_1		
+3864	ኢማማ	0		TYPE_1		
+3865	ኢማም	0	TYPE_1	TYPE_1		
+3866	ኢምንት	1	TYPE_3	TYPE_1		
+3867	ኢምፔርያሊዝም	1		TYPE_1		
+3868	ኢሰብአዊ	1		TYPE_1		
+3869	ኢሳይንሳዊ	1		TYPE_1		
+3870	ኢንሱሊን	1		TYPE_1		
+3871	ኢንሳይክሎፒዲያ	1		TYPE_1		
+3872	ኢንስቲትዩት	1		TYPE_1		
+3873	ኢንሹ	0	TYPE_3	TYPE_1		
+3874	ኢንሹራንስ	1	TYPE_1	TYPE_1		
+3875	ኢንቶ	0		TYPE_1		
+3876	እንቶ	0		TYPE_1		
+3877	ኢንዱስትሪ	1	TYPE_1	TYPE_1		
+3878	ኢንጂነር	1	TYPE_1	TYPE_1		
+3879	ኢኮኖሚ	1	TYPE_1	TYPE_1		
+3880	ኢኮኖሚስት	1	TYPE_1	TYPE_1		
+3881	ኢኮኖሚክስ	1		TYPE_1		
+3882	ኢኳቶር	1		TYPE_1		
+3883	ኢየሱስ	1		TYPE_1		
+3884	ኢዮቤልዩ	1		TYPE_1		
+3885	ኣሂዶ	1		TYPE_1		
+3886	ኣሃዝ	1	TYPE_1	TYPE_1		
+3887	ኣሃዱ	1		TYPE_1		
+3888	ኣህዛብ	1		TYPE_1		
+3889	አህያ	1	TYPE_1	TYPE_1		
+3890	አህጉር	1	TYPE_1	TYPE_1		
+3891	ኣሆ	0		TYPE_1		
+3892	ኣሆሌ	0		TYPE_1		
+3893	ኣኮሌ	0		TYPE_1		
+3894	ኣሆማ	0	TYPE_3	TYPE_1		
+3895	አለኝታ	1		TYPE_1		
+3896	ኣለሌ	1		TYPE_1		
+3897	አለሎ	1		TYPE_1		
+3898	እልም	1		TYPE_1		
+3899	ኣላማ	1	TYPE_1	TYPE_1		
+3900	ኣለም	1		TYPE_1		
+3901	እልቂት	1		TYPE_1		
+3902	እልቀት	1		TYPE_1		
+3903	አለቃ	1	TYPE_1	TYPE_1		
+3904	እልቅና	1		TYPE_1		
+3906	አለቅት	1		TYPE_1		
+3907	ኣልቅት	1		TYPE_1		
+3908	እልባት	1	TYPE_1	TYPE_1		
+3909	ኣለት	1	TYPE_1	TYPE_1		
+3910	ኣለንጋ	1	TYPE_1	TYPE_1		
+3911	አለፌታ	0	TYPE_1	TYPE_1		
+3912	እልፈት	1		TYPE_1		
+3913	ኣሳላፊ	1	TYPE_1	TYPE_1		
+3914	ኣሉባልታ	1	TYPE_1	TYPE_1		
+3915	ኣሉታ	1	TYPE_1	TYPE_1		
+3916	ኣላህ	1		TYPE_1		
+3917	ኣላል	0		TYPE_1		
+3918	ኣላባ	0	TYPE_3	TYPE_1		
+3919	ኣላድ	0		TYPE_1		
+3920	ኣልማዝ	1	TYPE_1	TYPE_1		
+3921	ኣልቃሾ	1		TYPE_1		
+3922	ኣልቢትር	1	TYPE_1	TYPE_1		
+3923	ኣርቢትር	1	TYPE_1	TYPE_1		
+3924	ኣልባብ	1		TYPE_1		
+3925	ኣልቤርጎ	1		TYPE_1		
+3926	ኣልቤን	1	TYPE_1	TYPE_1		
+3927	ኣልቴት	0		TYPE_1		
+3928	ኣልኮል	1		TYPE_1		
+3929	ኣልጀብራ	1		TYPE_1		
+3930	ኣልጋ	1	TYPE_1	TYPE_1		
+3931	ኣልጌ	1		TYPE_1		
+3932	ኣልጫ	1		TYPE_1		
+3933	ኣሎሎ	1	TYPE_1	TYPE_1		
+3934	ኣመልማሎ	0		TYPE_1		
+3935	ኣመል	1	TYPE_1	TYPE_1		
+3936	እመም	0		TYPE_1		
+3937	ኣመራሮ	0		TYPE_1		
+3938	እምስ	1		TYPE_1		
+3939	ኣመሰላሳ	0		TYPE_1		
+3940	ኣመት	1	TYPE_1	TYPE_1		
+3941	እማኝ	1	TYPE_1	TYPE_1		
+3942	ኣመክሮ	1	TYPE_1	TYPE_1		
+3943	ኣመድ	1		TYPE_1		
+3944	ኣመዳይ	1		TYPE_1		
+3945	ኣመፅ	1	TYPE_1	TYPE_1		
+3947	አሚና	1		TYPE_1		
+3948	ኣሜት	1		TYPE_1		
+3949	ኣሜታ	1		TYPE_1		
+3950	ኣምሮት	1	TYPE_1	TYPE_1		
+3951	ኣማሪት	0		TYPE_1		
+3952	ኣማት	1	TYPE_1	TYPE_1		
+3953	ኣማምቻ	0		TYPE_1		
+3954	ኣማች	1	TYPE_1	TYPE_1		
+3955	ኣምቻ	0		TYPE_1		
+3956	ኣማን	1		TYPE_1		
+3957	ኣማጋ	0		TYPE_1		
+3958	ኣማጋ	1		TYPE_1		
+3959	ኣሜራ	0		TYPE_1		
+3960	ኣሜባ	1		TYPE_1		
+3961	ኣሜት	1		TYPE_1		
+3962	ኣሜታ	1		TYPE_1		
+3963	ኣሜን	1		TYPE_1		
+3964	ኣሜከላ	1		TYPE_1		
+3965	ኣምላክ	1		TYPE_1		
+3966	ኣምልኮ	1	TYPE_1	TYPE_1		
+3967	ኣምሮት	1	TYPE_1	TYPE_1		
+3968	ኣምሳ	1	TYPE_1	TYPE_1		
+3969	አምስት	1	TYPE_1	TYPE_1		
+3970	አምበል	1	TYPE_1	TYPE_1		
+3971	አንበል	1	TYPE_1	TYPE_1		
+3972	አምበሳ	1	TYPE_1	TYPE_1		
+3973	ኣንበሳ	1	TYPE_1	TYPE_1		
+3974	ኣምቡላንስ	1	TYPE_1	TYPE_1		
+3975	ኣምባ	1		TYPE_1		
+3976	ኣምባላይ	0	TYPE_1	TYPE_1		
+3977	ኣምባራይሌ	0		TYPE_1		
+3978	ኣምባር	1	TYPE_1	TYPE_1		
+3979	ኣምባርሟይ	0		TYPE_1		
+3980	ኣምባሳደር	1	TYPE_1	TYPE_1		
+3981	ኣምባሻ	1		TYPE_1		
+3982	ኣምባዛ	0	TYPE_1	TYPE_1		
+3983	ኣምባገነን	1	TYPE_1	TYPE_1		
+3984	አምባጓሮ	1		TYPE_1		
+3985	ኣምቦ	1		TYPE_1		
+3986	ኣምቦልክ	1		TYPE_1		
+3987	አምታሮ	1		TYPE_1		
+3988	ኣምና	1		TYPE_1		
+3989	አምኜ	1		TYPE_1		
+3990	ኣምዛ	0		TYPE_1		
+3991	አምድ	1	TYPE_1	TYPE_1		
+3992	አእማድ	1	TYPE_1	TYPE_1		
+3993	ኣምጃ	0		TYPE_1		
+3994	አምፋሮ	1		TYPE_1		
+3995	ኣንፋሮ	1		TYPE_1		
+3996	ኣምፖል	1	TYPE_1	TYPE_1		
+3997	ኣንፖል	1	TYPE_1	TYPE_1		
+3998	ኣምፑል	1	TYPE_1	TYPE_1		
+3999	ኣሞራ	1	TYPE_1	TYPE_1		
+4000	ኣሞርቲዛተር	0	TYPE_1	TYPE_1		
+4001	ኣሞት	1		TYPE_1		
+4002	ኣሞጭ	0		TYPE_1		
+4003	ኣረህ	0		TYPE_1		
+4004	አረሆ	0	TYPE_1	TYPE_1		
+4005	አረም	1	TYPE_1	TYPE_1		
+4006	ኣራሙቻ	1		TYPE_1		
+4007	እርማት	1	TYPE_1	TYPE_1		
+4008	እርምት	1	TYPE_1	TYPE_1		
+4009	ኣርምሞ	1		TYPE_1		
+4010	ኣረማሞ	0		TYPE_1		
+4011	ኣረር	1	TYPE_1	TYPE_1		
+4012	ኣራሽ	1	TYPE_1	TYPE_1		
+4013	እራሽ	1		TYPE_1		
+4014	እርሻ	1	TYPE_1	TYPE_1		
+4015	ኣራስ	1	TYPE_1	TYPE_1		
+4016	እርቅ	1		TYPE_1		
+4018	ኣረቄ	1		TYPE_1		
+4019	ኣረቦን	0		TYPE_1		
+4020	ኣረንቋ	1		TYPE_1		
+4021	ኣረንዛ	0		TYPE_1		
+4022	እርዛት	1		TYPE_1		
+4023	ኣራጅ	1	TYPE_1	TYPE_1		
+4024	እርድ	1		TYPE_1		
+4025	ኣረዳ	1		TYPE_1		
+4026	እርጅና	1		TYPE_1		
+4027	እርገት	1		TYPE_1		
+4028	ኣረጭ	0		TYPE_1		
+4029	ኣረፍት	1		TYPE_1		
+4030	እረፍት	1	TYPE_1	TYPE_1		
+4031	እርፊት	1	TYPE_1	TYPE_1		
+4032	ኣረፋ	1		TYPE_1		
+4033	ኣሪማጥ	1	TYPE_3	TYPE_1		
+4034	ኣሪባራ	0	TYPE_1	TYPE_1		
+4035	ኣሪቲ	1		TYPE_1		
+4036	ኣር	1		TYPE_1		
+4037	ኣራራይ	1		TYPE_1		
+4038	ኣራባ	1	TYPE_1	TYPE_1		
+4039	ኣራት	1	TYPE_1	TYPE_1		
+4040	ኣራኝ	0	TYPE_3	TYPE_1		
+4041	ኣራዊት	1	TYPE_1	TYPE_1		
+4042	ኣርዌ	1	TYPE_1	TYPE_1		
+4043	ኣራዳ	1	TYPE_1	TYPE_1		
+4044	ኣራጅ	1	TYPE_1	TYPE_1		
+4045	ኣራጣ	1		TYPE_1		
+4046	ኣሬራ	1		TYPE_1		
+4047	ኣርመን	1		TYPE_1		
+4048	ኣርማ	1	TYPE_1	TYPE_1		
+4049	ኣርበኛ	1	TYPE_1	TYPE_1		
+4050	ኣርባ	1	TYPE_1	TYPE_1		
+4051	ኣርብ	1	TYPE_1	TYPE_1		
+4052	ኣርቲስት	1	TYPE_1	TYPE_1		
+4053	ኣርቲቡርቲ	1		TYPE_1		
+4054	ኣርታኢ	1	TYPE_4	TYPE_1		
+4055	ኣርታእያን	1	TYPE_4	TYPE_1		
+4056	ኣርትኦት	1		TYPE_1		
+4057	ኣርነት	1		TYPE_1		
+4058	ኣርኣያ	1	TYPE_1	TYPE_1		
+4059	ኣርእስት	1	TYPE_1	TYPE_1		
+4060	ኣርኬና	0	TYPE_1	TYPE_1		
+4061	ኣርያም	1		TYPE_1		
+4062	ኣርዮስ	1	TYPE_1	TYPE_1		
+4063	ኣርድእት	1	TYPE_4	TYPE_1		
+4064	ኣርጃኖ	1	TYPE_1	TYPE_1		
+4065	ኣርጩሜ	1	TYPE_1	TYPE_1		
+4066	ኣሮጊት	1	TYPE_1	TYPE_1		
+4067	እስር	1		TYPE_1		
+4068	እስረኛ	1	TYPE_1	TYPE_1		
+4069	እስራት	1	TYPE_3	TYPE_1		
+4070	ኣሰር	0		TYPE_1		
+4071	አሰሳ	1	TYPE_1	TYPE_1		
+4072	ኣሳብ	1	TYPE_1	TYPE_1		
+4073	እሳቤ	1	TYPE_1	TYPE_1		
+4075	ኣስተሳሰብ	1	TYPE_1	TYPE_1		
+4076	ኣሰንዳቦ	0		TYPE_1		
+4077	ኣሲድ	1	TYPE_1	TYPE_1		
+4078	ኣሳ	1	TYPE_1	TYPE_1		
+4079	ኣሳማ	1	TYPE_1	TYPE_1		
+4080	ኣሳር	1	TYPE_1	TYPE_1		
+4081	ኣስማት	1	TYPE_1	TYPE_1		
+4082	ኣስማተኛ	1		TYPE_1		
+4083	ኣስም	1		TYPE_1		
+4084	ኣስር	1	TYPE_1	TYPE_1		
+4085	ኣስቤስቶስ	1		TYPE_1		
+4086	ኣስቤዛ	1	TYPE_1	TYPE_1		
+4087	ኣስብ	0		TYPE_1		
+4088	ኣስተምህሮ	1		TYPE_1		
+4089	ኣስራት	1	TYPE_3	TYPE_1		
+4090	ኣስተናግር	0		TYPE_1		
+4091	እፀፋርስ	0		TYPE_1		
+4092	ኣስተያየት	1	TYPE_1	TYPE_1		
+4093	ኣስታ	0		TYPE_1		
+4094	ኣስቴ	0		TYPE_1		
+4095	ኣስትሮኖሚ	1		TYPE_1		
+4096	ኣስከሬን	1	TYPE_1	TYPE_1		
+4097	ኣስኳል	1	TYPE_1	TYPE_1		
+4098	ኣስፋልት	1	TYPE_1	TYPE_1		
+4099	ኣሻል	0		TYPE_1		
+4100	እሽም	1		TYPE_1		
+4101	ኣሸቦ	1		TYPE_1		
+4102	ኣሻቦ	1		TYPE_1		
+4103	ኣሸን	1	TYPE_1	TYPE_1		
+4104	ኣሸንክታብ	1		TYPE_1		
+4105	ኣሸንዳ	1	TYPE_1	TYPE_1		
+4106	ኣሽክት	0		TYPE_1		
+4107	ኣሸክት	0		TYPE_1		
+4108	ኣሸዋ	1		TYPE_1		
+4109	ኣሹራ	0	TYPE_1	TYPE_1		
+4110	ኣሹቅ	1		TYPE_1		
+4111	ኣሻል	0		TYPE_1		
+4112	ኣሻራ	1	TYPE_1	TYPE_1		
+4113	ኣሻሮ	1		TYPE_1		
+4114	ኣሻንጉሊት	1	TYPE_1	TYPE_1		
+4115	ኣሻጥር	1		TYPE_1		
+4116	ኣሽሙር	1	TYPE_1	TYPE_1		
+4117	ኣሽሟጣጭ	1	TYPE_1	TYPE_1		
+4118	ኣሽከር	1	TYPE_1	TYPE_1		
+4119	ኣሽኩቲ	0		TYPE_1		
+4120	ኣሽከላ	0		TYPE_1		
+4121	ኣቃቢ	1	TYPE_1	TYPE_1		
+4122	ኣቃቢት	0		TYPE_1		
+4124	ኣቀበት	1	TYPE_1	TYPE_1		
+4125	ኣቀብ	1	TYPE_1	TYPE_1		
+4126	ኣቅድ	1	TYPE_1	TYPE_1		
+4127	እቅድ	1	TYPE_1	TYPE_1		
+4128	እቅፎሽ	1		TYPE_1		
+4129	ኣቁላ	0	TYPE_1	TYPE_1		
+4130	ኣቁማዳ	1	TYPE_1	TYPE_1		
+4131	ኣቁጣሮ	1		TYPE_1		
+4132	ኣቃቂር	1	TYPE_1	TYPE_1		
+4133	ኣቃቅማ	0		TYPE_1		
+4134	ኣቅል	1		TYPE_1		
+4135	ኣቅም	1	TYPE_1	TYPE_1		
+4136	ኣቅርቦት	1	TYPE_1	TYPE_1		
+4137	ኣቅራቢያ	1	TYPE_1	TYPE_1		
+4138	ኣቅጣጫ	1	TYPE_1	TYPE_1		
+4139	አቆስጣ	0	TYPE_1	TYPE_1		
+4140	ኣቋም	1	TYPE_1	TYPE_1		
+4141	እብለት	1	TYPE_1	TYPE_1		
+4142	ኣበል	1	TYPE_1	TYPE_1		
+4143	ኣበልጅ	1		TYPE_1		
+4144	ኣበምኔት	1		TYPE_1		
+4145	ኣባሪ	1	TYPE_1	TYPE_1		
+4148	ኣበሱዳ	0		TYPE_1		
+4149	ኣበሳ	1	TYPE_1	TYPE_1		
+4150	ኣበሻ	1	TYPE_1	TYPE_1		
+4151	ኣበቅ	0		TYPE_1		
+4152	ኣበባ	1	TYPE_1	TYPE_1		
+4153	ኣበኑስ	0		TYPE_1		
+4154	ኣበክሮ	1	TYPE_1	TYPE_1		
+4155	ኣበው	1		TYPE_1		
+4156	ኣብ	1		TYPE_1		
+4157	እብደት	1	TYPE_1	TYPE_1		
+4158	ኣበደም	0	TYPE_1	TYPE_1		
+4159	ኣበገደ	1		TYPE_1		
+4160	ኣበጋዝ	1	TYPE_1	TYPE_1		
+4161	እበጥ	1		TYPE_1		
+4162	እባጭ	1	TYPE_1	TYPE_1		
+4163	እብጠት	1	TYPE_1	TYPE_1		
+4164	ኣቡን	1		TYPE_1		
+4165	ኣቡጀዲ	1		TYPE_1		
+4166	ኣቡጊዳ	1		TYPE_1		
+4167	ኣባ	1		TYPE_1		
+4168	ኣባሆይ	1		TYPE_1		
+4169	ኣባላዘር	1		TYPE_1		
+4170	ኣባል	1	TYPE_1	TYPE_1		
+4171	ኣባሎ	0		TYPE_1		
+4172	ኣባሰንጋ	1		TYPE_1		
+4173	ኣባት	1	TYPE_1	TYPE_1		
+4174	ኣባወራ	1	TYPE_1	TYPE_1		
+4175	ኣባዜ	1	TYPE_1	TYPE_1		
+4176	ኣባጀሀኝ	0		TYPE_1		
+4177	ኣባጎንዳ	1		TYPE_1		
+4178	ኣባጨጓሬ	1	TYPE_1	TYPE_1		
+4179	ኣቤቱታ	1	TYPE_1	TYPE_1		
+4180	ኣብላሊት	0	TYPE_1	TYPE_1		
+4181	ኣብሲት	1		TYPE_1		
+4182	ኣብሽ	1		TYPE_1		
+4183	ኣብሽሎ	0		TYPE_1		
+4184	ኣብሾ	1		TYPE_1		
+4185	ኣብነት	1	TYPE_1	TYPE_1		
+4186	ኣብዬ	1		TYPE_1		
+4187	ኣብዮት	1	TYPE_1	TYPE_1		
+4188	ኣቦል	1		TYPE_1		
+4189	ኣቦሬ	1		TYPE_1		
+4190	ኣቦሰጥ	1	TYPE_1	TYPE_1		
+4191	ኣቧራ	1		TYPE_1		
+4192	ኣዋራ	1		TYPE_1		
+4193	ኣተላ	1		TYPE_1		
+4194	እትም	1	TYPE_1	TYPE_1		
+4195	ኣተር	1		TYPE_1		
+4196	እትራት	0		TYPE_1		
+4197	እትብት	1		TYPE_1		
+4198	ኣተታ	1	TYPE_1	TYPE_1		
+4199	ኣተካሪስ	1		TYPE_1		
+4200	ኣተካራ	1	TYPE_1	TYPE_1		
+4201	ኣቱች	0		TYPE_1		
+4202	ኣታሞ	1	TYPE_1	TYPE_1		
+4203	ኣታክልት	1	TYPE_1	TYPE_1		
+4204	ኣቴቴ	1	TYPE_1	TYPE_1		
+4205	ኣቴና	1	TYPE_1	TYPE_1		
+4206	ኣትላስ	1		TYPE_1		
+4207	ኣትሌቲክስ	1		TYPE_1		
+4208	ኣትሌት	1	TYPE_1	TYPE_1		
+4209	ኣትሮንስ	1		TYPE_1		
+4210	ኣትኳር	1		TYPE_1		
+4211	ኣቶሚክ	1	TYPE_1	TYPE_1		
+4212	ኣውቶሚክ	1	TYPE_1	TYPE_1		
+4213	ኣቶም	1	TYPE_1	TYPE_1		
+4214	ኣቶሳል	0		TYPE_1		
+4215	ኣነር	1	TYPE_1	TYPE_1		
+4216	እንባ	1		TYPE_1		
+4217	እምባ	1		TYPE_1		
+4218	ኣንጋች	1		TYPE_1		
+4219	እንግት	0		TYPE_1		
+4220	ኣናፂ	1	TYPE_1	TYPE_1		
+4221	ኣናጢ	1	TYPE_1	TYPE_1		
+4222	ኣኒሳ	0		TYPE_1		
+4223	ኣናት	1	TYPE_1	TYPE_1		
+4224	ኣናናስ	1	TYPE_1	TYPE_1		
+4225	ኣንሶላ	1	TYPE_1	TYPE_1		
+4226	እንቅልፍ	1		TYPE_1		
+4227	ኣንቀልባ	1		TYPE_1		
+4228	ኣንቀርሻ	0	TYPE_1	TYPE_1		
+4229	ኣንቀፅ	1	TYPE_1	TYPE_1		
+4230	ኣንቃ	0		TYPE_1		
+4231	ኣንቋ	0		TYPE_1		
+4232	ኣንቃር	0		TYPE_1		
+4233	እንቁልጭልጮሽ	1		TYPE_1		
+4234	እንቁልልጮሽ	1		TYPE_1		
+4235	ኣንቋሊት	0		TYPE_1		
+4236	ኣንበጣ	1	TYPE_1	TYPE_1		
+4237	ኣንብር	0		TYPE_1		
+4238	ኣንቱታ	1		TYPE_1		
+4239	ኣንቴና	1	TYPE_1	TYPE_1		
+4240	ኣንክሊስ	1		TYPE_1		
+4241	ኣንከርት	0		TYPE_1		
+4242	እንክርት	0		TYPE_1		
+4243	ኣንካሴ	1	TYPE_1	TYPE_1		
+4244	ኣንካቦ	0	TYPE_1	TYPE_1		
+4245	ኣንኬል	0	TYPE_1	TYPE_1		
+4246	ኣንኮ	0	TYPE_1	TYPE_1		
+4247	ኣንኮላ	1		TYPE_1		
+4248	ኣንዠት	1		TYPE_1		
+4249	ኣንጀት	1		TYPE_1		
+4250	ኣንደርቢት	1		TYPE_1		
+4251	ኣንደርብ	1		TYPE_1		
+4252	ኣንደበት	1		TYPE_1		
+4253	ኣንድ	1	TYPE_1	TYPE_1		
+4254	ኣንድስ	1		TYPE_1		
+4255	ኣንድምታ	1	TYPE_1	TYPE_1		
+4256	ኣንድነት	1	TYPE_1	TYPE_1		
+4257	ኣንድዬ	1		TYPE_1		
+4258	ኣንጃ	1	TYPE_1	TYPE_1		
+4259	ኣንገት	1		TYPE_1		
+4260	ኣንጉዝ	0		TYPE_1		
+4261	ኣንጋሬ	0	TYPE_1	TYPE_1		
+4262	ኣንጎል	1		TYPE_1		
+4263	እንጉርጉሮ	1		TYPE_1		
+4264	ኣንጎርባ	0		TYPE_1		
+4265	ኣንጓ	1	TYPE_1	TYPE_1		
+4266	ኣንጣሪያ	0		TYPE_1		
+4267	ኣንጣቆ	1		TYPE_1		
+4268	ኣንፊላ	0		TYPE_1		
+4269	ኣንፋሮ	0		TYPE_1		
+4270	ኣእላፍ	1	TYPE_4	TYPE_1		
+4271	ኣእምሮ	1		TYPE_1		
+4272	እክር	0		TYPE_1		
+4273	ኣከርካሪ	1		TYPE_1		
+4274	እክት	0	TYPE_1	TYPE_1		
+4275	ኣከቴ	1		TYPE_1		
+4276	እከክ	1		TYPE_1		
+4277	ኣኩፋዳ	1	TYPE_3	TYPE_1		
+4278	ኣካል	1	TYPE_1	TYPE_1		
+4279	ኣካላት	1	TYPE_1	TYPE_1		
+4280	ኣካዳሚ	1	TYPE_1	TYPE_1		
+4281	ኣካፋ	1	TYPE_1	TYPE_1		
+4282	ኣክታ	1		TYPE_1		
+4283	ኣክሊል	1	TYPE_3	TYPE_1		
+4284	ኣክምበሎ	1	TYPE_1	TYPE_1		
+4285	ኣክንባሎ	1	TYPE_1	TYPE_1		
+4286	ኣክርማ	1		TYPE_1		
+4287	ኣክስት	1	TYPE_1	TYPE_1		
+4288	አክፋይ	1	TYPE_1	TYPE_1		
+4289	አክፍሎት	1	TYPE_4	TYPE_1		
+4290	ኣኮሌ	1		TYPE_1		
+4291	ኣሆሌ	1		TYPE_1		
+4292	ኣኮርባጅ	0	TYPE_1	TYPE_1		
+4293	ኣኮርዲዮን	1		TYPE_1		
+4294	ኣኮቴት	1		TYPE_1		
+4295	ኣኮኮ	1	TYPE_1	TYPE_1		
+4296	እንኮኮ	1	TYPE_1	TYPE_1		
+4297	ኣኮፋዳ	1	TYPE_1	TYPE_1		
+4298	ኣኩፋዳ	1	TYPE_1	TYPE_1		
+4299	ኣቁፋዳ	1	TYPE_1	TYPE_1		
+4301	ኣኳያ	1	TYPE_1	TYPE_1		
+4302	ኣዋቂ	1	TYPE_1	TYPE_1		
+4303	እውቀት	1	TYPE_1	TYPE_1		
+4304	እውቂያ	1		TYPE_1		
+4306	ኡደት	1	TYPE_1	TYPE_1		
+4307	ኣዋጅ	1	TYPE_1	TYPE_1		
+4308	ኣው	1		TYPE_1		
+4309	ኣውላ	0	TYPE_1	TYPE_1		
+4310	ኣዋልድ	1		TYPE_1		
+4311	ኣዋልድጌሳ	0	TYPE_1	TYPE_1		
+4312	ኣዋዜ	1		TYPE_1		
+4313	ኣውሊያ	1	TYPE_1	TYPE_1		
+4314	ኣውራ	1	TYPE_1	TYPE_1		
+4315	ኣውራሪስ	1	TYPE_1	TYPE_1		
+4316	ኣውሬ	1	TYPE_1	TYPE_1		
+4317	ኣውሮፕላን	1	TYPE_1	TYPE_1		
+4318	ኣውታር	1	TYPE_1	TYPE_1		
+4319	ኣውታንቲ	1	TYPE_1	TYPE_1		
+4320	ኣውቶማቲክ	1	TYPE_1	TYPE_1		
+4321	ኣውቶሞቢል	1	TYPE_1	TYPE_1		
+4322	ኣውቶቡስ	1	TYPE_1	TYPE_1		
+4323	ኣውዛ	1		TYPE_1		
+4324	ኣውድ	1	TYPE_1	TYPE_1		
+4325	ኣውድማ	1	TYPE_1	TYPE_1		
+4326	ኣውጥ	0		TYPE_1		
+4327	ኣወንታ	1	TYPE_3	TYPE_1		
+4328	እዝል	1	TYPE_1	TYPE_1		
+4329	ኣዝመራ	1		TYPE_1		
+4330	ኣዘቅት	1	TYPE_1	TYPE_1		
+4331	ኣዘቦት	1		TYPE_1		
+4332	ኣዘኔታ	1		TYPE_1		
+4333	ኣዘን	1		TYPE_1		
+4334	እዝን	1		TYPE_1		
+4336	እዝ	1		TYPE_1		
+4338	ኣዙሪት	1	TYPE_1	TYPE_1		
+4339	ኣዚም	1	TYPE_1	TYPE_1		
+4340	ኣዚፋ	0		TYPE_1		
+4341	ኣዛምር	0		TYPE_1		
+4342	ኣዛባ	1	TYPE_1	TYPE_1		
+4343	ኣዛውንት	1	TYPE_1	TYPE_1		
+4344	ኣዜብ	1		TYPE_1		
+4345	ኣዝመራ	1		TYPE_1		
+4346	ኣዝራር	1	TYPE_1	TYPE_1		
+4347	ኣዞ	1	TYPE_1	TYPE_1		
+4349	ኣስተያየት	1	TYPE_1	TYPE_1		
+4350	ኣየር	1		TYPE_1		
+4351	ኣያ	1		TYPE_1		
+4352	ኣይያ	1		TYPE_1		
+4353	ኣይዋ	1		TYPE_1		
+4354	ኣያት	1	TYPE_1	TYPE_1		
+4355	ኣይሁድ	1	TYPE_1	TYPE_1		
+4356	ኣይበሉባ	1		TYPE_1		
+4357	ኣይበሉብሽ	1		TYPE_1		
+4358	ኣይበት	0		TYPE_1		
+4359	ኣይብ	1		TYPE_1		
+4360	ኣይት	1	TYPE_1	TYPE_1		
+4361	ኣይነምድር	1		TYPE_1		
+4362	ኣይነት	1	TYPE_1	TYPE_1		
+4363	ኣይን	1	TYPE_1	TYPE_1		
+4364	ኣይጥ	1	TYPE_1	TYPE_1		
+4365	እደላ	1	TYPE_1	TYPE_1		
+4366	ኣደማ	1		TYPE_1		
+4367	እድምተኛ	1		TYPE_1		
+4368	እድመኛ	1		TYPE_1		
+4370	ኣዳር	1	TYPE_1	TYPE_1		
+4371	ኣሳዳሪ	1	TYPE_1	TYPE_1		
+4372	ኣስተዳደር	1	TYPE_1	TYPE_1		
+4373	ኣስተዳዳሪ	1	TYPE_1	TYPE_1		
+4374	እድሳት	1	TYPE_1	TYPE_1		
+4375	ኣደስ	1		TYPE_1		
+4376	ኣደብ	1		TYPE_1		
+4377	ኣደባባይ	1	TYPE_1	TYPE_1		
+4378	ኣደን	1	TYPE_1	TYPE_1		
+4379	ኣደንጓሬ	1		TYPE_1		
+4380	እድገት	1	TYPE_1	TYPE_1		
+4381	ኣስተዳደግ	1	TYPE_1	TYPE_1		
+4382	ኣደጋ	1	TYPE_1	TYPE_1		
+4383	እድፍ	1		TYPE_1		
+4384	ኣደፍ	1		TYPE_1		
+4385	ኣዱኛ	1		TYPE_1		
+4386	ኣዳራሽ	1	TYPE_1	TYPE_1		
+4387	ኣደሴቁኒ	0	TYPE_1	TYPE_1		
+4388	ኣድማስ	1		TYPE_1		
+4389	ኣድራሻ	1	TYPE_1	TYPE_1		
+4390	ኣድባር	1	TYPE_1	TYPE_1		
+4391	ኣዶ	0		TYPE_1		
+4392	ኣዶወሸባዬ	0		TYPE_1		
+4393	እጅላት	1		TYPE_1		
+4394	ኣጀብ	1		TYPE_1		
+4395	ኣጃቢ	1	TYPE_1	TYPE_1		
+4396	ኣጀንዳ	1	TYPE_1	TYPE_1		
+4397	ኣጃ	1		TYPE_1		
+4398	እግል	0		TYPE_1		
+4399	ኣገልግል	1	TYPE_1	TYPE_1		
+4400	ኣገልግሎት	1		TYPE_1		
+4401	ኣገር	1	TYPE_1	TYPE_1		
+4402	እግት	1		TYPE_1		
+4403	ኣገና	0		TYPE_1		
+4404	ኣጋና	0		TYPE_1		
+4405	እገዛ	1	TYPE_1	TYPE_1		
+4406	እገዳ	1	TYPE_1	TYPE_1		
+4407	ኣገዳ	1		TYPE_1		
+4408	ኣገጭ	1		TYPE_1		
+4409	ኣጋሚዶ	0	TYPE_1	TYPE_1		
+4410	ኣጋም	1		TYPE_1		
+4411	ኣጋራ	0		TYPE_1		
+4412	ኣጋር	1	TYPE_1	TYPE_1		
+4413	ኣጋሰስ	1	TYPE_1	TYPE_1		
+4414	ኣጋንንት	1	TYPE_1	TYPE_1		
+4415	ኣጋዘን	1	TYPE_1	TYPE_1		
+4416	ኣጋይ	1		TYPE_1		
+4417	ኣግራፍ	1	TYPE_1	TYPE_1		
+4418	ኣግቦ	1		TYPE_1		
+4419	ኣግድመት	1		TYPE_1		
+4420	ኣግድም	1	TYPE_1	TYPE_1		
+4421	ኣግድሞሽ	1		TYPE_1		
+4422	ኣጉራ	1	TYPE_1	TYPE_1		
+4423	ኣጎበር	1	TYPE_3	TYPE_1		
+4424	ኣጎዛ	1	TYPE_1	TYPE_1		
+4425	ኣጎዳ	0	TYPE_1	TYPE_1		
+4426	ኣጎዶ	0	TYPE_1	TYPE_1		
+4427	ኣጎት	1	TYPE_1	TYPE_1		
+4428	ኣጎጠጎጤ	1		TYPE_1		
+4429	ኣጓት	1		TYPE_1		
+4430	ኣጓጎት	0		TYPE_1		
+4431	ኣጭሬ	1	TYPE_1	TYPE_1		
+4432	ኣጥር	1	TYPE_1	TYPE_1		
+4433	እጣቢ	1		TYPE_1		
+4434	እጥብጣቢ	1		TYPE_1		
+4435	ኣጣኝ	1	TYPE_1	TYPE_1		
+4437	እጣን	1		TYPE_1		
+4438	ኣጠፌታ	1		TYPE_1		
+4439	እጥፋት	1	TYPE_4	TYPE_1		
+4440	እጦት	1		TYPE_1		
+4441	ኣጣና	1	TYPE_1	TYPE_1		
+4442	ኣጣጥ	0		TYPE_1		
+4443	ኣጣፊኝ	1		TYPE_1		
+4444	ኣጥሚት	1		TYPE_1		
+4445	ኣጥቢያ	1	TYPE_1	TYPE_1		
+4446	ኣጥናፍ	1		TYPE_1		
+4447	ኣጥንት	1	TYPE_1	TYPE_1		
+4448	ኣጥፍ	1		TYPE_1		
+4449	ኣፀፍ	1		TYPE_1		
+4450	ኣጭታ	0		TYPE_1		
+4451	እጮኛ	1	TYPE_1	TYPE_1		
+4452	ኣጨዳ	1	TYPE_1	TYPE_1		
+4453	ኣጫዳ	0		TYPE_1		
+4454	ኣፀድ	1		TYPE_1		
+4455	ኣጠድ	1		TYPE_1		
+4456	ኣፄ	1	TYPE_1	TYPE_1		
+4457	ኣፅም	1	TYPE_1	TYPE_1		
+4458	ኣፀቅ	1		TYPE_1		
+4459	ኣጥቅ	1		TYPE_1		
+4460	ኣፅናፍ	1		TYPE_1		
+4461	ኣፈላማ	0		TYPE_1		
+4462	ኣፈሙዝ	1		TYPE_1		
+4463	ኣፈሙዝ	1		TYPE_1		
+4464	እፍረት	1		TYPE_1		
+4465	ኣፈር	1	TYPE_3	TYPE_1		
+4466	ኣፈርሳታ	1		TYPE_1		
+4467	ኣፈሳ	1	TYPE_1	TYPE_1		
+4468	ኣፈቀላጤ	1	TYPE_1	TYPE_1		
+4469	ኣፈና	1	TYPE_1	TYPE_1		
+4470	ኣፋኝ	1	TYPE_1	TYPE_1		
+4471	እፍንፍን	1		TYPE_1		
+4472	እፍኝ	1		TYPE_1		
+4473	ኣፋ	0		TYPE_1		
+4474	ኣፋፍ	1		TYPE_1		
+4475	ኣፍ	1		TYPE_1		
+4476	ኣፍላል	1	TYPE_1	TYPE_1		
+4477	ኣፍርንጅ	1		TYPE_1		
+4478	ኣፍን	0	TYPE_1	TYPE_1		
+4479	ኣፍንጫ	1	TYPE_1	TYPE_1		
+4480	ኣፎቄ	0	TYPE_1	TYPE_1		
+4481	ኣፎት	1	TYPE_1	TYPE_1		
+4482	ኤሊ	1	TYPE_1	TYPE_1		
+4483	ኤሌክትሪክ	1	TYPE_1	TYPE_1		
+4484	ኤምባሲ	1	TYPE_1	TYPE_1		
+4485	ኤሮግራም	1	TYPE_1	TYPE_1		
+4486	ኤንቨሎፕ	1	TYPE_1	TYPE_1		
+4487	ኤክስሬይ	1		TYPE_1		
+4488	ኤክስፐርት	1	TYPE_1	TYPE_1		
+4489	ኤዲተር	1	TYPE_1	TYPE_1		
+4490	ኤድስ	1		TYPE_1		
+4491	ኤግዚቢሽን	1	TYPE_1	TYPE_1		
+4492	እሁድ	1	TYPE_1	TYPE_1		
+4493	እህል	1	TYPE_1	TYPE_1		
+4494	እህት	1	TYPE_1	TYPE_1		
+4495	እህትማማች	1		TYPE_1		
+4496	እትማማች	1		TYPE_1		
+4497	እለት	1	TYPE_1	TYPE_1		
+4498	እሌት	1		TYPE_1		
+4499	እልህ	1		TYPE_1		
+4500	እልክ	1		TYPE_1		
+4501	እልል	1		TYPE_1		
+4502	እልልታ	1	TYPE_1	TYPE_1		
+4503	እልቅት	0		TYPE_1		
+4504	እልበት	1		TYPE_1		
+4505	እልፍ	1		TYPE_1		
+4506	እልፍኝ	1		TYPE_1		
+4507	እመም	1	TYPE_1	TYPE_1		
+4508	እመምኔት	1		TYPE_1		
+4509	እመርታ	1		TYPE_1		
+4510	እመበለት	1		TYPE_1		
+4511	እመቤት	1	TYPE_1	TYPE_1		
+4512	እመብርሃን	1		TYPE_1		
+4513	እመት	1	TYPE_1	TYPE_1		
+4514	እምነት	1	TYPE_1	TYPE_1		
+4515	እመጫት	1		TYPE_1		
+4516	እማ	1		TYPE_1		
+4517	እማማ	1		TYPE_1		
+4518	እማዬ	1		TYPE_1		
+4519	እሜቴ	1		TYPE_1		
+4520	እማኝ	1		TYPE_1		
+4521	እሜቴ	1		TYPE_1		
+4522	እምስ	1		TYPE_1		
+4523	እምቡር	1		TYPE_1		
+4524	እምቡስ	0		TYPE_1		
+4525	እንቡስ	0		TYPE_1		
+4526	እምቡሽቡሽ	1		TYPE_1		
+4527	እንቡጣ	1		TYPE_1		
+4528	እምቡጣ	1		TYPE_1		
+4529	እምፍርፍር	1		TYPE_1		
+4530	እንቦሳ	1	TYPE_1	TYPE_1		
+4531	እምቦሳ	1	TYPE_1	TYPE_1		
+4532	እምቧይ	1	TYPE_1	TYPE_1		
+4533	እንቧይ	1	TYPE_1	TYPE_1		
+4534	እምቧ	1		TYPE_1		
+4535	እምቧጮ	1		TYPE_1		
+4536	እንቧጮ	1		TYPE_1		
+4537	እረኛ	1	TYPE_1	TYPE_1		
+4538	እሩምታ	1		TYPE_1		
+4539	እሩር	1		TYPE_1		
+4540	እሪታ	1	TYPE_1	TYPE_1		
+4541	እራት	1	TYPE_1	TYPE_1		
+4542	እራቻ	1		TYPE_1		
+4543	እራፊ	1	TYPE_1	TYPE_1		
+4544	እሬት	1		TYPE_1		
+4545	እሬንሳ	1		TYPE_1		
+4546	እርም	1		TYPE_1		
+4547	እርሙን	1		TYPE_1		
+4548	እርምጃ	1	TYPE_1	TYPE_1		
+4549	እርርት	0		TYPE_1		
+4550	እርሳስ	1	TYPE_1	TYPE_1		
+4551	እርሾ	1		TYPE_1		
+4552	እርቃን	1	TYPE_1	TYPE_1		
+4553	እርባታ	1	TYPE_1	TYPE_1		
+4554	እርባን	0		TYPE_1		
+4555	እርቦ	1	TYPE_3	TYPE_1		
+4556	እርከን	1	TYPE_1	TYPE_1		
+4557	እርኩም	0	TYPE_1	TYPE_1		
+4558	እርክፍክፎ	1		TYPE_1		
+4559	እርካታ	1	TYPE_3	TYPE_1		
+4560	እርኮት	0		TYPE_1		
+4561	እርዳታ	1	TYPE_1	TYPE_1		
+4562	እርድ	1		TYPE_1		
+4563	እርጋታ	1	TYPE_1	TYPE_1		
+4564	እርግማን	1	TYPE_1	TYPE_1		
+4565	እርግብ	1	TYPE_1	TYPE_1		
+4566	እርግብግቢት	1		TYPE_1		
+4567	እርግብግብ	1		TYPE_1		
+4568	እርግዝና	1		TYPE_1		
+4569	እርግጫ	1	TYPE_1	TYPE_1		
+4570	እርጎ	1		TYPE_1		
+4571	እርጓ	0		TYPE_1		
+4572	እርጥባን	1		TYPE_1		
+4573	እርፍ	1		TYPE_1		
+4574	እሳት	1		TYPE_1		
+4575	እስላም	1	TYPE_1	TYPE_1		
+4576	እስልምና	1	TYPE_3	TYPE_1		
+4577	እስስት	1	TYPE_1	TYPE_1		
+4578	እስቱኮ	1		TYPE_1		
+4579	እስቴንስል	1		TYPE_1		
+4580	እስቴፕለር	1		TYPE_1		
+4581	እስትንፋስ	1		TYPE_1		
+4582	እስኩታ	0		TYPE_1		
+4583	እስክሪፕቶ	1		TYPE_1		
+4584	እስክስታ	1	TYPE_1	TYPE_1		
+4585	እስክስ	1		TYPE_1		
+4586	እስኮላርሽፕ	1		TYPE_1		
+4587	እስኮችቴፕ	1		TYPE_1		
+4588	እስፒል	1	TYPE_1	TYPE_1		
+4589	እሸት	1		TYPE_1		
+4590	እሺታ	1	TYPE_1	TYPE_1		
+4591	እሽሩሩ	1		TYPE_1		
+4592	እሽኮለሌ	1		TYPE_1		
+4593	እሽኮኮ	1	TYPE_1	TYPE_1		
+4594	እንኮኮ	1	TYPE_1	TYPE_1		
+4595	እሾህ	1		TYPE_1		
+4596	እሾክ	1	TYPE_1	TYPE_1		
+4597	እቁባት	1	TYPE_1	TYPE_1		
+4598	እቁብ	1	TYPE_1	TYPE_1		
+4599	እቃ	1	TYPE_1	TYPE_1		
+4600	እበት	1	TYPE_1	TYPE_1		
+4601	እባብ	1	TYPE_1	TYPE_1		
+4602	እብሪት	1	TYPE_1	TYPE_1		
+4603	እብቅ	1		TYPE_1		
+4604	እብነበረድ	1		TYPE_1		
+4605	እቴቴ	1		TYPE_1		
+4606	እቴጌ	1	TYPE_1	TYPE_1		
+4607	እትዬ	1		TYPE_1		
+4608	እቶን	1		TYPE_1		
+4609	እናት	1	TYPE_1	TYPE_1		
+4610	እንሰሳ	1	TYPE_1	TYPE_1		
+4611	እንስሳ	1	TYPE_1	TYPE_1		
+4612	እንሰት	1		TYPE_1		
+4613	እንስላል	1		TYPE_1		
+4614	እንስራ	1	TYPE_1	TYPE_1		
+4615	እንስት	1	TYPE_1	TYPE_1		
+4616	እንሶስላ	1		TYPE_1		
+4617	እንሻፎ	1		TYPE_1		
+4618	እንሽላሊት	1	TYPE_1	TYPE_1		
+4619	እንሽርት	1		TYPE_1		
+4620	እንቀት	0		TYPE_1		
+4621	እንቁ	1	TYPE_1	TYPE_1		
+4622	እንቁላል	1	TYPE_1	TYPE_1		
+4624	እንቁልጭልጮሽ	1		TYPE_1		
+4625	እንቁልልጮሽ	1		TYPE_1		
+4626	እንቁራሪት	1	TYPE_1	TYPE_1		
+4627	እንቁር	0		TYPE_1		
+4628	እንቁርባ	0		TYPE_1		
+4629	እንቁጣጣሽ	1		TYPE_1		
+4630	እንቁጥቁጥ	1		TYPE_1		
+4631	እንቃቅላ	0	TYPE_1	TYPE_1		
+4632	እንቅርት	1		TYPE_1		
+4633	እንቅብ	1		TYPE_1		
+4634	እንቅጠቃጭ	1		TYPE_1		
+4635	እንቆቅልሽ	1	TYPE_1	TYPE_1		
+4636	እንቆቆ	1		TYPE_1		
+4637	እንቡጣጢያ	1		TYPE_1		
+4638	እምቡጣጢያ	1		TYPE_1		
+4639	እንቡጭቡጭ	1		TYPE_1		
+4640	እንቡፍና	1		TYPE_1		
+4641	እምቡፍና	1		TYPE_1		
+4642	እንቢታ	1		TYPE_1		
+4643	እምቢልታ	1		TYPE_1		
+4644	እንቢልተኛ	1		TYPE_1		
+4645	እንቢያጎስ	0		TYPE_1		
+4646	እንብርቢጣ	0		TYPE_1		
+4647	እንብርት	1		TYPE_1		
+4648	እምብርት	1		TYPE_1		
+4649	እንቦሳ	1	TYPE_1	TYPE_1		
+4650	እምቦሳ	1	TYPE_1	TYPE_1		
+4651	እንቦቀቅላ	1		TYPE_1		
+4652	እንቦቃቅላ	1		TYPE_1		
+4653	እንቧይ	1		TYPE_1		
+4654	እምቧይ	1		TYPE_1		
+4655	እንቧጭ	1		TYPE_1		
+4656	እምቧጭ	1		TYPE_1		
+4657	እንትፍታ	1		TYPE_1		
+4658	እንችፍ	1		TYPE_1		
+4659	እንከን	1	TYPE_1	TYPE_1		
+4660	እንክርት	1	TYPE_1	TYPE_1		
+4661	ኣንከርት	1	TYPE_1	TYPE_1		
+4662	እንክርዳድ	1		TYPE_1		
+4663	እንክብል	1	TYPE_1	TYPE_1		
+4664	እንክብካቤ	1	TYPE_1	TYPE_1		
+4665	እንኮይ	1		TYPE_1		
+4666	እንዘረዘይ	0		TYPE_1		
+4667	እንዚራ	1		TYPE_1		
+4668	እንዛዝላ	1		TYPE_1		
+4669	እንዝርት	1	TYPE_1	TYPE_1		
+4670	እንዝዝ	0		TYPE_1		
+4671	እንዡባን	0		TYPE_1		
+4672	እንጁባን	0		TYPE_1		
+4673	እንዥቦ	0		TYPE_1		
+4674	እንጅቦ	0		TYPE_1		
+4675	እንጅሞ	0		TYPE_1		
+4676	እንደሆህላ	1		TYPE_1		
+4677	እንዳሁላ	1		TYPE_1		
+4678	እንድርማሚት	0		TYPE_1		
+4679	እንዶድ	1		TYPE_1		
+4680	እንጀራ	1		TYPE_1		
+4681	እንጅላት	1	TYPE_1	TYPE_1		
+4682	እንጅልሽ	0		TYPE_1		
+4683	እንጆሪ	1		TYPE_1		
+4684	እንገር	1		TYPE_1		
+4685	እንጉዳይ	1		TYPE_1		
+4686	እንሊላ	1		TYPE_1		
+4687	እንግላል	1		TYPE_1		
+4688	እንግዲህስ	1		TYPE_1		
+4689	እንግዳ	1	TYPE_1	TYPE_1		
+4690	እንግጫ	1		TYPE_1		
+4691	እንጣቆ	0	TYPE_1	TYPE_1		
+4692	ኣንጣቆ	0	TYPE_1	TYPE_1		
+4693	እንጣጢት	0		TYPE_1		
+4694	እንጥል	1		TYPE_1		
+4695	እንጥስታ	1		TYPE_1		
+4696	እንጦ	0		TYPE_1		
+4697	እንጦርጦስ	1		TYPE_1		
+4698	እንጨት	1	TYPE_1	TYPE_1		
+4699	እንጭብር	1		TYPE_1		
+4700	እንፉጭ	0		TYPE_1		
+4701	እንፋሎት	1		TYPE_1		
+4702	እንፍሌ	0		TYPE_1		
+4703	እክል	1	TYPE_1	TYPE_1		
+4704	እውነታ	1	TYPE_1	TYPE_1		
+4705	እውነት	1	TYPE_1	TYPE_1		
+4706	እዝል	1		TYPE_1		
+4707	እይታ	1	TYPE_1	TYPE_1		
+4708	እዳ	1	TYPE_1	TYPE_1		
+4709	እዳሪ	1		TYPE_1		
+4710	እዳይት	0		TYPE_1		
+4711	እድያት	0		TYPE_1		
+4712	እድሜ	1	TYPE_1	TYPE_1		
+4713	እድሞ	0		TYPE_1		
+4714	እድር	1	TYPE_1	TYPE_1		
+4715	እድርተኛ	1		TYPE_1		
+4716	እጀታ	1	TYPE_1	TYPE_1		
+4717	እጅ	1	TYPE_1	TYPE_1		
+4718	እጅጌ	1	TYPE_1	TYPE_1		
+4719	እግር	1	TYPE_1	TYPE_1		
+4720	እግዚኣብሄር	1		TYPE_1		
+4721	እግዜር	1		TYPE_1		
+4722	እግዚኦታ	1		TYPE_1		
+4723	እጓለማውታ	1	TYPE_4	TYPE_1		
+4724	እጓለማውታን	1	TYPE_4	TYPE_1		
+4725	እጢ	1	TYPE_1	TYPE_1		
+4726	እጣ	1	TYPE_1	TYPE_1		
+4727	እጨጌ	1	TYPE_1	TYPE_1		
+4728	እጭ	1	TYPE_1	TYPE_1		
+4729	እፀብ	1		TYPE_1		
+4730	እፀ	1		TYPE_1		
+4731	እፅዋት	1	TYPE_1	TYPE_1		
+4732	እፀፋርስ	1		TYPE_1		
+4733	እጠፋሪስ	1		TYPE_1		
+4734	እፉኝት	1	TYPE_1	TYPE_1		
+4735	እፍያ	1		TYPE_1		
+4736	እፎይ	1		TYPE_1		
+4737	ኦሞ	1	TYPE_1	TYPE_1		
+4738	ኦሪት	1		TYPE_1		
+4739	ኦርቶዶክስ	1	TYPE_1	TYPE_1		
+4740	ኦርኬስትራ	1		TYPE_1		
+4741	ኦርጋን	1		TYPE_1		
+4742	ኦዞን	1		TYPE_1		
+4743	ኦፈ	1		TYPE_1		
+4744	ኦፔራ	1		TYPE_1		
+4745	አሉባልታ	1	TYPE_1	TYPE_1		
+4746	አባባል	1	TYPE_1	TYPE_1		
+4747	አለሎ	1	TYPE_1	TYPE_1		
+4748	አላሚ	1	TYPE_1	TYPE_1		
+4749	አልማጭ	1	TYPE_1	TYPE_1		
+4750	አልቃሽ	1	TYPE_1	TYPE_1		
+4751	አልቃሻ	1	TYPE_1	TYPE_1		
+4752	አላቃሽ	1	TYPE_1	TYPE_1		
+4753	አስለቃሽ	1	TYPE_1	TYPE_1		
+4754	አለቃ	1	TYPE_1	TYPE_1		
+4755	አለቅነት	1		TYPE_1		
+4756	እልቅና	1		TYPE_1		
+4757	አላቢ	1	TYPE_1	TYPE_1		
+4758	እልባት	1	TYPE_1	TYPE_1		
+4759	አለት	1	TYPE_1	TYPE_1		
+4760	አለንጋ	1	TYPE_1	TYPE_1		
+4761	አለኝታ	1	TYPE_1	TYPE_1		
+4762	አልጓሚ	0		TYPE_1		
+4763	አላፊ	1		TYPE_1		
+4764	አላፊነት	1		TYPE_1		
+4765	እልፊት	1		TYPE_1		
+4766	አሳላፊ	1	TYPE_1	TYPE_1		
+4767	አሉባልታ	1	TYPE_1	TYPE_1		
+4768	አሉማ	1		TYPE_1		
+4769	አሉታ	1	TYPE_1	TYPE_1		
+4770	አላባ	1		TYPE_1		
+4771	አላድ	1		TYPE_1		
+4772	አልማዝ	1		TYPE_1		
+4773	አልቦ	1		TYPE_1		
+4774	አልኮል	1		TYPE_1		
+4775	አልኮስኳሽ	1		TYPE_1		
+4776	አልጋ	1	TYPE_1	TYPE_1		
+4777	አልጎምጓሚ	1		TYPE_1		
+4778	አሎሎ	1	TYPE_1	TYPE_1		
+4779	አመልማሎ	1		TYPE_1		
+4780	አመልካች	1	TYPE_1	TYPE_1		
+4781	አምላኪ	1	TYPE_1	TYPE_1		
+4782	አምላክ	1		TYPE_1		
+4783	አምልኮ	1	TYPE_1	TYPE_1		
+4784	አመል	1		TYPE_1		
+4785	አማሽ	1		TYPE_1		
+4786	አመሰቃቃይ	1		TYPE_1		
+4787	አመት	1	TYPE_1	TYPE_1		
+4788	አማኝ	1	TYPE_1	TYPE_1		
+4789	አሳማኝ	1	TYPE_1	TYPE_1		
+4790	አመንዛሪ	1		TYPE_1		
+4791	አመንዝራ	1		TYPE_1		
+4792	አመድ	1		TYPE_1		
+4793	አመዳይ	1		TYPE_1		
+4794	አሙስ	1	TYPE_1	TYPE_1		
+4795	አሚና	1		TYPE_1		
+4796	አሜት	1		TYPE_1		
+4797	አሜታ	1		TYPE_1		
+4798	አሜተኛ	1		TYPE_1		
+4799	አምሮት	1	TYPE_1	TYPE_1		
+4800	አማራ	1	TYPE_1	TYPE_1		
+4801	አማርኛ	1		TYPE_1		
+4802	አማን	1		TYPE_1		
+4803	አማት	1	TYPE_1	TYPE_1		
+4804	አማካኝ	1		TYPE_1		
+4805	አማች	1	TYPE_1	TYPE_1		
+4806	አሜሪካ	1	TYPE_1	TYPE_1		
+4807	አሜን	1		TYPE_1		
+4808	አሜከላ	1		TYPE_1		
+4809	አምላክ	1		TYPE_1		
+4810	አምሳ	1	TYPE_1	TYPE_1		
+4811	አምሳል	1	TYPE_1	TYPE_1		
+4812	አምሳያ	1	TYPE_1	TYPE_1		
+4813	አምበል	1	TYPE_1	TYPE_1		
+4814	አምቡላ	1	TYPE_1	TYPE_1		
+4815	አምቡላንስ	1	TYPE_1	TYPE_1		
+4816	አምባ	1	TYPE_1	TYPE_1		
+4817	አምባጓሮ	1		TYPE_1		
+4818	አምባራይሌ	1		TYPE_1		
+4819	አምባር	1	TYPE_1	TYPE_1		
+4820	አንባር	1	TYPE_1	TYPE_1		
+4821	አምባሳደር	1	TYPE_1	TYPE_1		
+4822	አምባሻ	1		TYPE_1		
+4823	አምባዛ	1	TYPE_3	TYPE_1		
+4824	አምቦልክ	1	TYPE_1	TYPE_1		
+4825	አምቦፕል	1	TYPE_1	TYPE_1		
+4826	አንቦልክ	1	TYPE_1	TYPE_1		
+4827	አምና	1		TYPE_1		
+4828	አምፑል	1	TYPE_1	TYPE_1		
+4829	አሞሌ	1		TYPE_1		
+4830	አሞራ	1	TYPE_1	TYPE_1		
+4831	አሞት	1		TYPE_1		
+4832	አሞጭ	1		TYPE_1		
+4833	አሣማ	1	TYPE_1	TYPE_1		
+4834	አሣሪ	1	TYPE_1	TYPE_1		
+4835	አሣር	1		TYPE_1		
+4836	እሥረኛ	1	TYPE_1	TYPE_1		
+4837	እሥራት	1		TYPE_1		
+4838	እሥር	1		TYPE_1		
+4839	አሠር	1	TYPE_1	TYPE_1		
+4840	አሥጋሪ	1	TYPE_1	TYPE_1		
+4842	አረህ	1		TYPE_1		
+4843	አረሆ	1		TYPE_1		
+4844	አረሖ	1		TYPE_1		
+4845	አረም	1	TYPE_1	TYPE_1		
+4846	አራሙቻ	1		TYPE_1		
+4847	አራሚ	1		TYPE_1		
+4848	እርማት	1	TYPE_1	TYPE_1		
+4849	አረመኔነት	1		TYPE_1		
+4850	አረማዊ	1		TYPE_1		
+4851	አረር	1		TYPE_1		
+4852	አራስ	1	TYPE_1	TYPE_1		
+4853	አራሽ	1	TYPE_1	TYPE_1		
+4854	እራሽ	1		TYPE_1		
+4855	ኣሳራሽ	1		TYPE_1		
+4856	አራጅ	1	TYPE_1	TYPE_1		
+4857	አርጂ	1	TYPE_1	TYPE_1		
+4858	አሮጊት	1	TYPE_1	TYPE_1		
+4859	አርጋጅ	1		TYPE_1		
+4860	አረግራጊ	1	TYPE_1	TYPE_1		
+4861	አረጋዊ	1	TYPE_3	TYPE_1		
+4862	አረግ	1		TYPE_1		
+4863	አረጥራጭ	1		TYPE_1		
+4864	አረፋ	1		TYPE_1		
+4865	አሪትሜቲክ	1		TYPE_1		
+4866	አር	1		TYPE_1		
+4867	አራዊት	1	TYPE_1	TYPE_1		
+4868	አውሬ	1	TYPE_1	TYPE_1		
+4869	አራጣ	1		TYPE_1		
+4870	አሬራ	1		TYPE_1		
+4871	አርማ	1	TYPE_1	TYPE_1		
+4872	አርመን	1	TYPE_1	TYPE_1		
+4873	አርሲ	1	TYPE_1	TYPE_1		
+4874	አርሽብ	1	TYPE_1	TYPE_1		
+4875	አርሺብ	1	TYPE_1	TYPE_1		
+4876	አርበኛ	1	TYPE_1	TYPE_1		
+4877	አርበኝነት	1		TYPE_1		
+4878	አርቲቡርቲ	1		TYPE_1		
+4879	አርነት	1		TYPE_1		
+4880	አርአያ	1	TYPE_1	TYPE_1		
+4881	አርአያነት	1		TYPE_1		
+4882	አርእስት	1	TYPE_1	TYPE_1		
+4883	አርኪዮሎጂ	1		TYPE_1		
+4884	አርዘሊባኖስ	1		TYPE_1		
+4885	ኣርድእት	1	TYPE_1	TYPE_1		
+4886	አርጃኖ	1		TYPE_1		
+4887	አርጋኖን	1		TYPE_1		
+4888	አርጩሜ	1	TYPE_1	TYPE_1		
+4889	አሰሳ	1	TYPE_1	TYPE_1		
+4890	አሳብ	1	TYPE_1	TYPE_1		
+4891	አሳሳቢ	1		TYPE_1		
+4893	አሰት	1		TYPE_1		
+4894	አሰናጅ	1		TYPE_1		
+4895	አሲድ	1	TYPE_1	TYPE_1		
+4896	አሳማ	1	TYPE_1	TYPE_1		
+4897	አሳንሳር	1	TYPE_1	TYPE_1		
+4898	አሳጪ	1		TYPE_1		
+4899	አስማ	1		TYPE_1		
+4900	አስማት	1	TYPE_1	TYPE_1		
+4901	አስማተኛ	1	TYPE_1	TYPE_1		
+4902	አስረካቢ	1	TYPE_1	TYPE_1		
+4905	አስተማሪ	1	TYPE_1	TYPE_1		
+4906	አስተናጋጅ	1	TYPE_1	TYPE_1		
+4907	አስከሬን	1	TYPE_1	TYPE_1		
+4908	አስኳል	1	TYPE_1	TYPE_1		
+4909	አስደራጊ	1		TYPE_1		
+4910	አስገኚ	1		TYPE_1		
+4911	አስፋልት	1	TYPE_1	TYPE_1		
+4912	አሽታ	1		TYPE_1		
+4913	አሸባሪ	1	TYPE_1	TYPE_1		
+4914	እሸት	1		TYPE_1		
+4915	አሸናፊ	1	TYPE_1	TYPE_1		
+4916	አሸንክታብ	1	TYPE_1	TYPE_1		
+4917	አሸንዳ	1	TYPE_1	TYPE_1		
+4918	አሸዋ	1		TYPE_1		
+4919	አሸዋነት	1		TYPE_1		
+4920	አሹራ	1		TYPE_1		
+4921	አሻራ	1	TYPE_1	TYPE_1		
+4922	አሻንጉሊት	1	TYPE_1	TYPE_1		
+4923	አሽሙር	1		TYPE_1		
+4924	አሽሙረኛ	1	TYPE_1	TYPE_1		
+4925	አሽሟጣጭ	1	TYPE_1	TYPE_1		
+4926	አሽሟጣጭ	1	TYPE_1	TYPE_1		
+4927	አሽሟጣ	1		TYPE_1		
+4928	እሽክርክሪት	1		TYPE_1		
+4929	አሽከር	1	TYPE_1	TYPE_1		
+4930	አሽከርነት	1		TYPE_1		
+4931	አሹቅ	1		TYPE_1		
+4932	አቀባይ	1	TYPE_1	TYPE_1		
+4933	አቅኚ	1	TYPE_3	TYPE_1		
+4934	አቀናባሪ	1	TYPE_1	TYPE_1		
+4935	አቀነባባሪ	1		TYPE_1		
+4936	እቅፍ	1	TYPE_1	TYPE_1		
+4937	አቁማዳ	1	TYPE_1	TYPE_1		
+4938	አቅማዳ	1		TYPE_1		
+4939	አቃቂር	1		TYPE_1		
+4940	አቃጣሪ	1	TYPE_1	TYPE_1		
+4941	አቅጣጫ	1	TYPE_1	TYPE_1		
+4942	አግጣጫ	1		TYPE_1		
+4944	አቆላማጭ	1	TYPE_1	TYPE_1		
+4945	አቋቋም	1	TYPE_1	TYPE_1		
+4946	አባይ	1		TYPE_1		
+4947	አባይነት	1		TYPE_1		
+4948	አስተባባይ	1		TYPE_1		
+4949	አበል	1		TYPE_1		
+4950	አበር	1		TYPE_1		
+4951	አባሪ	1	TYPE_1	TYPE_1		
+4952	አስተባባሪ	1	TYPE_1	TYPE_1		
+4953	አበሳ	1		TYPE_1		
+4954	አበባ	1	TYPE_1	TYPE_1		
+4955	አበጋዝ	1	TYPE_1	TYPE_1		
+4956	እብጠት	1		TYPE_1		
+4957	አበጣሪ	1		TYPE_1		
+4958	አቡን	1		TYPE_1		
+4959	አቡጀዲ	1		TYPE_1		
+4960	አቡጊዳ	1		TYPE_1		
+4961	አባ	1		TYPE_1		
+4962	አባወራ	1	TYPE_1	TYPE_1		
+4963	አባጨጓሬ	1	TYPE_1	TYPE_1		
+4964	አባል	1	TYPE_1	TYPE_1		
+4965	አባላዘር	1		TYPE_1		
+4966	አባልነት	1		TYPE_1		
+4967	አባባ	1		TYPE_1		
+4968	አባት	1	TYPE_1	TYPE_1		
+4969	አቤቱታ	1	TYPE_1	TYPE_1		
+4970	አብሲት	1		TYPE_1		
+4971	አብሽ	1		TYPE_1		
+4972	አብነት	1		TYPE_1		
+4973	አቦሬ	1		TYPE_1		
+4974	አቧራ	1		TYPE_1		
+4975	አቦሸማኔ	1	TYPE_1	TYPE_1		
+4976	አተላ	1		TYPE_1		
+4977	አታሚ	1	TYPE_1	TYPE_1		
+4978	እትም	1	TYPE_1	TYPE_1		
+4979	አሳታሚ	1	TYPE_1	TYPE_1		
+4981	አተራማሽ	1	TYPE_1	TYPE_1		
+4982	አተር	1		TYPE_1		
+4983	አታቢ	1	TYPE_1	TYPE_1		
+4984	እትብት	1		TYPE_1		
+4985	አተታ	1	TYPE_1	TYPE_1		
+4986	አታሞ	1	TYPE_1	TYPE_1		
+4987	አቴና	1		TYPE_1		
+4988	አትሮንስ	1		TYPE_1		
+4989	አቶ	1		TYPE_1		
+4990	አቻምና	1		TYPE_1		
+4991	አነሣሽ	1	TYPE_1	TYPE_1		
+4992	አነር	1	TYPE_1	TYPE_1		
+4993	አንቃፊ	1		TYPE_1		
+4994	እንቅፋት	1		TYPE_1		
+4995	አነቃቂ	1		TYPE_1		
+4996	አናባቢ	1	TYPE_1	TYPE_1		
+4997	አነባበሮ	1		TYPE_1		
+4998	እንባ	1		TYPE_1		
+4999	እምባ	1		TYPE_1		
+5000	አድርቅ	1	TYPE_1	TYPE_1		
+5001	አንካሴ	1	TYPE_1	TYPE_1		
+5002	አነኰረ	1		TYPE_1		
+5003	እንኩሮ	1		TYPE_1		
+5004	እንኩቶ	1		TYPE_1		
+5005	አስነዋሪ	1		TYPE_1		
+5006	እንግብ	1		TYPE_1		
+5007	አንጋች	1		TYPE_1		
+5008	እንጐቻ	1	TYPE_1	TYPE_1		
+5009	አናጢ	1	TYPE_1	TYPE_1		
+5010	አናጢነት	1		TYPE_1		
+5012	አንጥረኛ	1	TYPE_1	TYPE_1		
+5013	አንጣፊ	1	TYPE_1	TYPE_1		
+5014	አነጣጣሪ	1		TYPE_1		
+5015	አናት	1		TYPE_1		
+5017	እንቅልፍ	1		TYPE_1		
+5018	አንቀልባ	1		TYPE_1		
+5019	አንቀጽ	1	TYPE_1	TYPE_1		
+5021	አንቃር	1		TYPE_1		
+5022	አንበሪ	1	TYPE_1	TYPE_1		
+5023	ዓሣ	1	TYPE_1	TYPE_1		
+5024	አንበሳ	1	TYPE_1	TYPE_1		
+5025	አንበጣ	1	TYPE_1	TYPE_1		
+5026	አንተ	1		TYPE_1		
+5027	አንቱ	1		TYPE_1		
+5028	አንቱታ	1		TYPE_1		
+5029	አንቴና	1	TYPE_1	TYPE_1		
+5030	አንቺ	1		TYPE_1		
+5031	አንቺዬ	1		TYPE_1		
+5032	እንክብካቤ	1		TYPE_1		
+5033	አንካሴ	1	TYPE_1	TYPE_1		
+5034	አንኮላ	1	TYPE_1	TYPE_1		
+5035	አንኳር	1		TYPE_1		
+5036	አንዠት	1		TYPE_1		
+5037	አንጀት	1		TYPE_1		
+5038	አንደበት	1		TYPE_1		
+5039	አንዳች	1		TYPE_1		
+5040	አንድላንድ	1		TYPE_1		
+5041	አንድም	1		TYPE_1		
+5042	እያንዳንዱ	1		TYPE_1		
+5044	አንጃ	1	TYPE_1	TYPE_1		
+5045	አንገት	1		TYPE_1		
+5046	አንገትጌ	1		TYPE_1		
+5047	አንገዋላይ	1		TYPE_1		
+5048	አንጋሬ	1		TYPE_1		
+5050	አንጋፋ	1	TYPE_1	TYPE_1		
+5051	አንጐል	1		TYPE_1		
+5052	አንጐለቢስ	1		TYPE_1		
+5053	እንጕርጕሮ	1		TYPE_1		
+5054	አንጓ	1		TYPE_1		
+5055	አንጓላይ	1		TYPE_1		
+5056	አንጦርጦስ	1		TYPE_1		
+5058	አንጻር	1	TYPE_1	TYPE_1		
+5059	አእምሮ	1		TYPE_1		
+5060	እኩል	1		TYPE_1		
+5063	አኪም	1	TYPE_1	TYPE_1		
+5064	አሳካሚ	1	TYPE_1	TYPE_1		
+5065	አከምባሎ	1	TYPE_1	TYPE_1		
+5066	አከርካሪ	1		TYPE_1		
+5069	እከክ	1		TYPE_1		
+5070	አክፋይ	1		TYPE_1		
+5071	አክፍሎት	1		TYPE_1		
+5072	አካል	1	TYPE_1	TYPE_1		
+5073	አካላት	1	TYPE_4	TYPE_1		
+5075	አካፋ	1	TYPE_1	TYPE_1		
+5077	አክሊል	1		TYPE_1		
+5078	አክምባሎ	1		TYPE_1		
+5079	አክታ	1		TYPE_1		
+5080	አክርማ	1		TYPE_1		
+5081	አክስት	1	TYPE_1	TYPE_1		
+5082	አክሲዮን	1	TYPE_1	TYPE_1		
+5085	አኮፋዳ	1		TYPE_1		
+5087	አኰቴት	1		TYPE_1		
+5089	አውሪ	1		TYPE_1		
+5090	አወንታ	1	TYPE_1	TYPE_1		
+5091	እውከት	1		TYPE_1		
+5098	አዋልደጌሻ	1		TYPE_1		
+5099	አዋራ	1		TYPE_1		
+5100	አቧራ	1		TYPE_1		
+5104	አዋዜ	1		TYPE_1		
+5105	አውላላ	1		TYPE_1		
+5107	አውራ	1	TYPE_1	TYPE_1		
+5112	አውራሪስ	1	TYPE_1	TYPE_1		
+5113	አውራጃ	1	TYPE_1	TYPE_1		
+5114	አውሬ	1	TYPE_1	TYPE_1		
+5115	አውሬነት	1		TYPE_1		
+5116	አውሮፕላን	1	TYPE_1	TYPE_1		
+5117	አውሮፓ	1	TYPE_1	TYPE_1		
+5118	አውሮጳ	1	TYPE_1	TYPE_1		
+5119	አውታር	1	TYPE_1	TYPE_1		
+5120	አውቶቡስ	1	TYPE_1	TYPE_1		
+5121	አውድማ	1	TYPE_1	TYPE_1		
+5122	አወንታ	1	TYPE_1	TYPE_1		
+5123	አዕማድ	1		TYPE_1		
+5125	አንቀልባ	1		TYPE_1		
+5126	አዘንተኛ	1		TYPE_1		
+5128	አዙሪት	1		TYPE_1		
+5129	አዘዋሪት	1		TYPE_1		
+5130	አዛባ	1		TYPE_1		
+5131	አዛውንት	1	TYPE_1	TYPE_1		
+5133	አዝሙድ	1		TYPE_1		
+5136	አዝራር	1	TYPE_1	TYPE_1		
+5138	አየር	1		TYPE_1		
+5144	አያ	1		TYPE_1		
+5145	አያት	1	TYPE_1	TYPE_1		
+5146	አያያ	1		TYPE_1		
+5147	አይሁድ	1	TYPE_1	TYPE_1		
+5148	አይብ	1		TYPE_1		
+5149	አይቦ	1		TYPE_1		
+5150	አይጥ	1	TYPE_1	TYPE_1		
+5151	እድል	1	TYPE_1	TYPE_1		
+5152	አድላዊ	1		TYPE_1		
+5153	አድመኛ	1		TYPE_1		
+5154	አድማ	1	TYPE_1	TYPE_1		
+5155	እድመኛ	1		TYPE_1		
+5157	እዳሪ	1		TYPE_1		
+5158	አዳር	1	TYPE_1	TYPE_1		
+5159	እድር	1	TYPE_1	TYPE_1		
+5160	እድርተኛ	1		TYPE_1		
+5162	አደራ	1	TYPE_1	TYPE_1		
+5164	አበባ	1	TYPE_1	TYPE_1		
+5166	እደሳ	1		TYPE_1		
+5167	አደበ	1		TYPE_1		
+5168	አደብ	1		TYPE_1		
+5169	አደባባይ	1	TYPE_1	TYPE_1		
+5170	አደን	1		TYPE_1		
+5171	አዳኝ	1	TYPE_1	TYPE_1		
+5172	አደንጓሬ	1		TYPE_1		
+5175	እድገት	1	TYPE_1	TYPE_1		
+5176	አሳዳጊ	1	TYPE_1	TYPE_1		
+5177	አስተዳደግ	1		TYPE_1		
+5178	አደፍ	1		TYPE_1		
+5179	እድፍ	1		TYPE_1		
+5180	አደጋ	1	TYPE_1	TYPE_1		
+5181	አደገኛ	1		TYPE_1		
+5183	አዱኛ	1		TYPE_1		
+5184	አዳም	1		TYPE_1		
+5185	አዳራሽ	1	TYPE_1	TYPE_1		
+5186	አድማስ	1		TYPE_1		
+5187	አድባር	1	TYPE_1	TYPE_1		
+5188	አዶ	1		TYPE_1		
+5189	አጀንዳ	1	TYPE_1	TYPE_1		
+5190	አጀብ	1		TYPE_1		
+5191	አጃቢ	1	TYPE_1	TYPE_1		
+5192	አጃ	1		TYPE_1		
+5194	አገር	1	TYPE_1	TYPE_1		
+5195	አገሬ	1		TYPE_1		
+5200	አገባብ	1		TYPE_1		
+5203	አገናኝ	1	TYPE_1	TYPE_1		
+5204	እገዛ	1		TYPE_1		
+5206	አጋጅ	1		TYPE_1		
+5207	አገዳ	1		TYPE_1		
+5208	አገጭ	1		TYPE_1		
+5209	አጋም	1		TYPE_1		
+5210	አጋር	1	TYPE_1	TYPE_1		
+5211	አጋሰስ	1	TYPE_1	TYPE_1		
+5212	አጋንዱራ	1	TYPE_1	TYPE_1		
+5213	አጋዘን	1	TYPE_1	TYPE_1		
+5215	አጋፋሪ	1	TYPE_1	TYPE_1		
+5217	አግባብ	1		TYPE_1		
+5218	አጎበር	1		TYPE_1		
+5219	አጎት	1	TYPE_1	TYPE_1		
+5221	አጎዛ	1		TYPE_1		
+5222	አጐበር	1		TYPE_1		
+5223	አጎበር	1		TYPE_1		
+5224	አጓት	1		TYPE_1		
+5225	እጥረት	1		TYPE_1		
+5226	አጥር	1	TYPE_1	TYPE_1		
+5228	አጠባ	1		TYPE_1		
+5229	አጣቢ	1	TYPE_1	TYPE_1		
+5230	እጣቢ	1		TYPE_1		
+5231	እጥበት	1		TYPE_1		
+5232	እጥቤ	1		TYPE_1		
+5233	እጣን	1		TYPE_1		
+5234	እጥነት	1		TYPE_1		
+5235	እጥፍ	1		TYPE_1		
+5236	እጥፋት	1	TYPE_1	TYPE_1		
+5238	እጦት	1		TYPE_1		
+5239	አጣሪ	1	TYPE_1	TYPE_1		
+5240	አጣና	1		TYPE_1		
+5241	አጣጥ	1		TYPE_1		
+5242	አጤ	1	TYPE_1	TYPE_1		
+5243	አጼ	1	TYPE_1	TYPE_1		
+5244	አጥሚት	1		TYPE_1		
+5245	አጥቅ	1		TYPE_1		
+5246	አጥቢያ	1		TYPE_1		
+5249	እጥናፍ	1		TYPE_1		
+5251	አጨዳ	1		TYPE_1		
+5252	አጸፋ	1		TYPE_1		
+5253	አጽቅ	1		TYPE_1		
+5254	አፈላማ	1		TYPE_1		
+5255	አፈሙዝ	1	TYPE_1	TYPE_1		
+5256	እፍረት	1		TYPE_1		
+5258	አፈር	1		TYPE_1		
+5259	አፈሳ	1		TYPE_1		
+5260	እፋሽ	1		TYPE_1		
+5261	አፈና	1	TYPE_1	TYPE_1		
+5262	አፋኝ	1	TYPE_1	TYPE_1		
+5263	እፍኝ	1		TYPE_1		
+5264	አፈንጋጭ	1	TYPE_1	TYPE_1		
+5265	እፋፊ	1		TYPE_1		
+5267	አፋፍ	1		TYPE_1		
+5268	አፍ	1		TYPE_1		
+5269	አፈማር	1		TYPE_1		
+5270	አፈታሪክ	1	TYPE_1	TYPE_1		
+5272	አፈንጉስ	1	TYPE_1	TYPE_1		
+5273	አፍለኛ	1		TYPE_1		
+5275	አፍላ	1	TYPE_1	TYPE_1		
+5276	አፍላል	1		TYPE_1		
+5277	አፍሪቃ	1	TYPE_1	TYPE_1		
+5278	አፍሪቃዊ	1		TYPE_1		
+5279	አፍርንጅ	1		TYPE_1		
+5280	አፍንጫ	1		TYPE_1		
+5281	አፍአ	1		TYPE_1		
+5282	አፎት	1		TYPE_1		
+5283	አፎቄ	1		TYPE_1		
+5284	አፍዮን	1		TYPE_1		
+5285	አፓርትማ	1	TYPE_1	TYPE_1		
+5286	ኡጋንዳ	1	TYPE_1	TYPE_1		
+5287	ኢሉባቦር	1	TYPE_1	TYPE_1		
+5288	ኢምንት	1		TYPE_1		
+5289	ኢትዮጵያ	1	TYPE_1	TYPE_1		
+5290	ኢትዮጵያዊ	1		TYPE_1		
+5291	ኢትዮጵያዊት	1		TYPE_1		
+5292	ኢንሹ	1		TYPE_1		
+5293	ኢየሩሳሌም	1	TYPE_1	TYPE_1		
+5294	ኢየሱስ	1		TYPE_1		
+5295	ኢየሱሳዊ	1		TYPE_1		
+5296	ኢዮቤልዩ	1		TYPE_1		
+5297	ኢጣልያ	1	TYPE_1	TYPE_1		
+5298	ኢጣልያንኛ	1		TYPE_1		
+5299	ኢጣልያዊ	1		TYPE_1		
+5300	ኤሊ	1	TYPE_1	TYPE_1		
+5301	ኤርትራ	1	TYPE_1	TYPE_1		
+5302	ኤርትራዊ	1		TYPE_1		
+5303	ኤክዌተር	1		TYPE_1		
+5305	ኤጲፋንያ	1		TYPE_1		
+5306	እህል	1	TYPE_1	TYPE_1		
+5307	እህት	1	TYPE_1	TYPE_1		
+5308	እህትማማች	1		TYPE_1		
+5309	እልቅት	1		TYPE_1		
+5310	እልቅና	1		TYPE_1		
+5311	እልባት	1		TYPE_1		
+5312	እልክ	1		TYPE_1		
+5313	እልፍኝ	1		TYPE_1		
+5314	አስከልካይ	1		TYPE_1		
+5315	አሽከር	1	TYPE_1	TYPE_1		
+5316	እሁድ	1	TYPE_1	TYPE_1		
+5317	እመቤት	1		TYPE_1		
+5318	እመቤታችን	1		TYPE_1		
+5319	እመጫት	1		TYPE_1		
+5321	እማሆይ	1		TYPE_1		
+5322	እምቡሽቡሽ	1		TYPE_1		
+5323	እምቡዋይ	1		TYPE_1		
+5324	እምቡጥ	1		TYPE_1		
+5325	እምቢልታ	1		TYPE_1		
+5326	እምቢልተኛ	1		TYPE_1		
+5327	እምቢታ	1		TYPE_1		
+5328	እምብርት	1		TYPE_1		
+5329	እምቦሳ	1	TYPE_1	TYPE_1		
+5330	እምፍርፍር	1		TYPE_1		
+5331	እንፍርፍር	1		TYPE_1		
+5332	እሤት	1	TYPE_1	TYPE_1		
+5333	እረኛ	1	TYPE_1	TYPE_1		
+5334	እረኝነት	1		TYPE_1		
+5335	እረኛነት	1		TYPE_1		
+5336	እሩር	1		TYPE_1		
+5337	እሩዝ	1		TYPE_1		
+5338	እሪዝ	1		TYPE_1		
+5339	እርያ	1	TYPE_1	TYPE_1		
+5340	እራስ	1	TYPE_1	TYPE_1		
+5341	እርስት	1	TYPE_1	TYPE_1		
+5342	እርሾ	1		TYPE_1		
+5343	እርቃን	1		TYPE_1		
+5344	እርቦ	1	TYPE_1	TYPE_1		
+5345	እርኩም	1		TYPE_1		
+5346	እርከን	1	TYPE_1	TYPE_1		
+5347	እርካብ	1		TYPE_1		
+5348	እርኮት	1		TYPE_1		
+5349	እርያ	1	TYPE_1	TYPE_1		
+5350	እሪያ	1	TYPE_1	TYPE_1		
+5351	እርግብ	1	TYPE_1	TYPE_1		
+5352	እርግብግቢት	1		TYPE_1		
+5358	እርባና	1		TYPE_1		
+5359	እርድ	1		TYPE_1		
+5361	እሮምታ	1		TYPE_1		
+5362	እሳት	1		TYPE_1		
+5364	እሳቸው	1		TYPE_1		
+5365	እስላም	1	TYPE_1	TYPE_1		
+5366	እስራኤል	1	TYPE_1	TYPE_1		
+5367	እስራኤላዊ	1		TYPE_1		
+5368	እስስት	1	TYPE_1	TYPE_1		
+5369	እስትንፋስ	1		TYPE_1		
+5370	እስክስታ	1		TYPE_1		
+5371	እስክንድርያ	1		TYPE_1		
+5372	እስያ	1	TYPE_1	TYPE_1		
+5373	እስፓንያ	1	TYPE_1	TYPE_1		
+5374	እስፓንኛ	1		TYPE_1		
+5375	እሸት	1		TYPE_1		
+5376	እሽሩሩ	1		TYPE_1		
+5377	እሽኮለሌ	1		TYPE_1		
+5378	እሾኽ	1		TYPE_1		
+5379	እሾህ	1		TYPE_1		
+5380	እቀጭታ	1		TYPE_1		
+5381	እበት	1		TYPE_1		
+5382	እባብ	1	TYPE_1	TYPE_1		
+5383	እብሪት	1		TYPE_1		
+5384	እብነበረድ	1		TYPE_1		
+5385	እቴቴ	1		TYPE_1		
+5386	እቴጌ	1	TYPE_1	TYPE_1		
+5387	እህት	1	TYPE_1	TYPE_1		
+5388	እትማማች	1		TYPE_1		
+5389	እትማማችነት	1		TYPE_1		
+5390	እትዬ	1		TYPE_1		
+5391	እቶን	1		TYPE_1		
+5392	እነኛ	1		TYPE_1		
+5393	እነዚያ	1		TYPE_1		
+5394	እነዚህ	1		TYPE_1		
+5395	እናት	1	TYPE_1	TYPE_1		
+5396	እናትነት	1		TYPE_1		
+5397	እንስላል	1		TYPE_1		
+5398	እንስት	1	TYPE_1	TYPE_1		
+5399	እንስራ	1	TYPE_1	TYPE_1		
+5400	እንስሳ	1	TYPE_1	TYPE_1		
+5401	እንስሳነት	1		TYPE_1		
+5402	እንስሳት	1	TYPE_4	TYPE_1		
+5403	እንስትነት	1		TYPE_1		
+5404	እንሽላሊት	1	TYPE_1	TYPE_1		
+5405	እንቃቅላ	1		TYPE_1		
+5406	እንቅርት	1		TYPE_1		
+5407	እንቅብ	1	TYPE_1	TYPE_1		
+5408	እንቆቅልሽ	1		TYPE_1		
+5409	እንቆቆ	1	TYPE_1	TYPE_1		
+5410	እንቁላል	1	TYPE_1	TYPE_1		
+5411	እንቁራሪት	1	TYPE_1	TYPE_1		
+5412	እንቁጣጣሽ	1		TYPE_1		
+5413	እንቡዋይ	1		TYPE_1		
+5414	እንቢልታ	1		TYPE_1		
+5415	እንባ	1		TYPE_1		
+5416	እምባ	1		TYPE_1		
+5417	እንትና	1		TYPE_1		
+5418	እንተን	1		TYPE_1		
+5419	እነሆ	1		TYPE_1		
+5424	እትፍታ	1		TYPE_1		
+5426	እንከን	1	TYPE_1	TYPE_1		
+5427	እንክርት	1		TYPE_1		
+5428	እንክርዳድ	1		TYPE_1		
+5429	እንክብል	1	TYPE_1	TYPE_1		
+5430	እንኮኮ	1	TYPE_1	TYPE_1		
+5431	እንኮይ	1		TYPE_1		
+5432	እንዚራ	1	TYPE_3	TYPE_1		
+5433	እንዝርት	1		TYPE_1		
+5434	እንዝዝ	1	TYPE_3	TYPE_1		
+5435	እንዶድ	1		TYPE_1		
+5436	እንጀራ	1	TYPE_3	TYPE_1		
+5437	እንጆሪ	1		TYPE_1		
+5438	እንገር	1		TYPE_1		
+5439	እንጉዳይ	1		TYPE_1		
+5440	እንግሊዝ	1	TYPE_1	TYPE_1		
+5441	እንግሊዛዊ	1		TYPE_1		
+5442	እንግሊዘኛ	1		TYPE_1		
+5443	እንግዳ	1	TYPE_1	TYPE_1		
+5444	እንጐቻ	1	TYPE_1	TYPE_1		
+5445	እንጥል	1		TYPE_1		
+5446	እንጨት	1	TYPE_1	TYPE_1		
+5447	እንጭጭ	1	TYPE_1	TYPE_1		
+5448	እንፋሎት	1		TYPE_1		
+5449	እንፍሌ	1		TYPE_1		
+5450	እኛ	1		TYPE_1		
+5451	እከሌ	1		TYPE_1		
+5452	እገሌ	1		TYPE_1		
+5453	እከክ	1		TYPE_1		
+5454	እክል	1		TYPE_1		
+5455	እውነት	1	TYPE_1	TYPE_1		
+5456	እውነታ	1	TYPE_1	TYPE_1		
+5457	እውነተኛነት	1		TYPE_1		
+5458	እውን	1		TYPE_1		
+5459	እዳ	1	TYPE_1	TYPE_1		
+5462	እድመኛ	1		TYPE_1		
+5463	እድሜ	1		TYPE_1		
+5464	እድሞ	1		TYPE_1		
+5465	እጅ	1	TYPE_1	TYPE_1		
+5467	እጀታ	1	TYPE_1	TYPE_1		
+5477	እጅጌ	1	TYPE_1	TYPE_1		
+5478	እገሊት	1		TYPE_1		
+5479	እግር	1	TYPE_1	TYPE_1		
+5483	እግረኛ	1		TYPE_1		
+5486	እግዚአብሔር	1		TYPE_1		
+5487	እግዚኦታ	1		TYPE_1		
+5488	እግዝእት	1		TYPE_1		
+5490	እጢ	1		TYPE_1		
+5491	እጣን	1		TYPE_1		
+5492	እጥቤ	1		TYPE_1		
+5493	እጭ	1	TYPE_1	TYPE_1		
+5494	እፉኝት	1	TYPE_1	TYPE_1		
+5495	እፊያ	0		TYPE_1		
+5496	አፍላ	1		TYPE_1		
+5498	እፎይታ	1		TYPE_1		
+5499	ኦሪት	1	TYPE_1	TYPE_1		
+5501	ኦርቶዶክስ	1	TYPE_1	TYPE_1		
+5502	ኦርቶዶክሳዊ	1		TYPE_1		
+5503	ኦርቶዶክሳዊት	1		TYPE_1		
+5504	ኦቶሞቢል	1	TYPE_1	TYPE_1		
+5505	ኦፔራሲዮን	1		TYPE_1		
+5527	ኣካርሚኝ	1		TYPE_1		
+5543	ኣከራይ	1	TYPE_1	TYPE_1		
+5568	እንክብል	1	TYPE_1	TYPE_1		
+5591	ኣካባቢ	1	TYPE_1	TYPE_1		
+5592	እንክብካቤ	1		TYPE_1		
+5640	ኣክፋይ	1		TYPE_1		
+5642	ኣክፍሎት	1		TYPE_1		
+5865	አኩኩሉ	1		TYPE_1		
+5886	ኣካካ	1		TYPE_1		
+6010	እንክርዳድ	1		TYPE_1		
+6017	አክብሮት	1	TYPE_1	TYPE_1		
+6091	ኣውራጅ	1	TYPE_1	TYPE_1		
+6092	ኣውራጃ	1	TYPE_1	TYPE_1		
+6178	ኣቦሸማኔ	1	TYPE_1	TYPE_1		
+6180	ኣውታር	1	TYPE_1	TYPE_1		
+6275	ኣዋጊ	1	TYPE_1	TYPE_1		
+6293	ኣውጭ	1	TYPE_1	TYPE_1		
+6295	ኣውጫጭኝ	1		TYPE_1		
+6307	ኣእዋፍ	1	TYPE_4	TYPE_1		
+6327	ኣዋይ	1		TYPE_1		
+6331	ኣዋዋይ	1	TYPE_1	TYPE_1		
+6377	ኣወያይ	1	TYPE_1	TYPE_1		
+6479	ኣውድማ	1	TYPE_1	TYPE_1		
+6488	ኣውጫጫኝ	1		TYPE_1		
+6489	ኣዋጪ	1	TYPE_1	TYPE_1		
+6490	ኣስተዋጽኦ	1	TYPE_1	TYPE_1		
+6505	ዐልቅት	1		TYPE_1		
+6506	ዐመል	1	TYPE_1	TYPE_1		
+6507	ዕምቅ	1		TYPE_1		
+6508	ዐመጽ	1	TYPE_1	TYPE_1		
+6509	ዐመጥ	0	TYPE_1	TYPE_1		
+6510	ዐመጸኛ	1	TYPE_1	TYPE_1		
+6511	ዐመጠኛ	0	TYPE_1	TYPE_1		
+6512	ዐምድ	1		TYPE_1		
+6514	ዐሞሌ	1		TYPE_1		
+6515	ዐሣ	1	TYPE_1	TYPE_1		
+6516	ዐሣነባሪ	1	TYPE_1	TYPE_1		
+6519	ዐራቢ	1		TYPE_1		
+6520	ዐረብ	1	TYPE_1	TYPE_1		
+6524	ዐረብኛ	1	TYPE_1	TYPE_1		
+6525	ዐረቢያ	1	TYPE_1	TYPE_1		
+6526	ዐረንቋ	1	TYPE_1	TYPE_1		
+6527	ዐሮንቃ	0	TYPE_1	TYPE_1		
+6528	ዕርገት	1		TYPE_1		
+6530	ዕረፍት	1	TYPE_1	TYPE_1		
+6531	ዕርፍ	1	TYPE_1	TYPE_1		
+6535	ዐረፋ	1		TYPE_1		
+6536	ዐርብ	1	TYPE_1	TYPE_1		
+6537	ዐቀበት	1	TYPE_1	TYPE_1		
+6538	ዐቃቢት	1	TYPE_1	TYPE_1		
+6540	ዐቅድ	1		TYPE_1		
+6541	ዕቀዳ	1		TYPE_1		
+6542	ዕቅድ	1	TYPE_1	TYPE_1		
+6543	ዐቅል	1	TYPE_1	TYPE_1		
+6544	ዐቅም	1	TYPE_1	TYPE_1		
+6545	ዕብደት	1	TYPE_1	TYPE_1		
+6548	ዕውቀት	1	TYPE_1	TYPE_1		
+6549	ዕውቅያ	1		TYPE_1		
+6554	ዐዘቅት	1	TYPE_1	TYPE_1		
+6555	ኣስተያየት	1	TYPE_1	TYPE_1		
+6564	ዐይናር	1		TYPE_1		
+6569	ዐይነት	1	TYPE_1	TYPE_1		
+6570	ዐጤ	1	TYPE_1	TYPE_1		
+6571	ዐፄ	1	TYPE_1	TYPE_1		
+6572	ዐጥንት	1	TYPE_1	TYPE_1		
+6573	ዕጩ	1	TYPE_1	TYPE_1		
+6576	ዕጮኛ	1	TYPE_1	TYPE_1		
+6579	ዐጽም	1	TYPE_1	TYPE_1		
+6581	ዒላማ	1		TYPE_1		
+6582	ዔሊ	1	TYPE_1	TYPE_1		
+6583	ዓለም	1	TYPE_3	TYPE_1		
+6584	ዓለማዊነት	1	TYPE_1	TYPE_1		
+6586	ዓላማ	1	TYPE_1	TYPE_1		
+6587	ዓመት	1	TYPE_1	TYPE_1		
+6591	ዕለት	1	TYPE_1	TYPE_1		
+6592	ዕልልታ	1		TYPE_1		
+6594	ዕቃ	1	TYPE_1	TYPE_1		
+6605	ዕንቁ	1	TYPE_1	TYPE_1		
+6606	ዕንቁጣጣሽ	1		TYPE_1		
+6608	ዕጣ	1	TYPE_1	TYPE_1		
+6609	ዕጨጌ	1	TYPE_1	TYPE_1		
+6610	ዕፅ	1	TYPE_1	TYPE_1		
+6611	ዕፀዋት	1	TYPE_1	TYPE_1		
+6628	ኣዝማሚያ	1		TYPE_1		
+6638	ኣዝማሪ	1	TYPE_1	TYPE_1		
+6642	ኣዝማች	1	TYPE_1	TYPE_1		
+6736	ኣዝካሪ	1	TYPE_1	TYPE_1		
+6764	ኣዘጋጅ	1	TYPE_1	TYPE_1		
+6847	ኣዙሪት	1	TYPE_1	TYPE_1		
+6848	ኣዟሪ	1	TYPE_1	TYPE_1		
+6877	አዘቅት	1	TYPE_1	TYPE_1		
+6930	ኣያያዝ	1	TYPE_1	TYPE_1		
+6941	ኢንሹ	1		TYPE_1		
+6948	ኢላማ	1	TYPE_1	TYPE_1		
+6950	ኢማም	1		TYPE_1		
+6983	ኣድልዎ	1		TYPE_1		
+6996	ኣድማጭ	1	TYPE_1	TYPE_1		
+7019	ኣድራሻ	1	TYPE_1	TYPE_1		
+7020	ኣዳራሽ	1	TYPE_1	TYPE_1		
+7025	ኣደራረስ	1		TYPE_1		
+7063	ኣደራዳሪ	1	TYPE_1	TYPE_1		
+7095	ኣድባራት	1	TYPE_4	TYPE_1		
+7096	ኣድባር	1	TYPE_1	TYPE_1		
+7130	ኣድናቆት	1		TYPE_1		
+7179	ኣዳዋሪ	1		TYPE_1		
+7430	እንዱሽዱሽ	1		TYPE_1		
+7442	ኣድላቢ	1	TYPE_1	TYPE_1		
+7449	ኣድማቂ	1	TYPE_1	TYPE_1		
+7450	ኣዳማቂ	1	TYPE_1	TYPE_1		
+7472	ኣደራጅ	1	TYPE_1	TYPE_1		
+7475	ኣደራጎት	1		TYPE_1		
+7486	ኣደስዳሽ	1		TYPE_1		
+7492	አድኃሪ	1		TYPE_1		
+7493	አድኅሮት	1		TYPE_1		
+7496	ኣደናባሪ	1	TYPE_1	TYPE_1		
+7516	ኣዳፍኔ	1		TYPE_1		
+7544	አፈድስት	1		TYPE_1		
+7714	ኣገልግሎት	1		TYPE_1		
+7750	እንግርግብ	1		TYPE_1		
+7823	ኣግባብ	1		TYPE_1		
+7869	እንግውላይ	1		TYPE_1		
+7878	ኣገዛዝ	1	TYPE_1	TYPE_1		
+7891	ኣግዳሚ	1	TYPE_1	TYPE_1		
+7893	ኣግድመት	1		TYPE_1		
+7894	ኣግድሞሽ	1		TYPE_1		
+8001	እንግሊላ	0		TYPE_1		
+8002	እንግላል	0		TYPE_1		
+8034	ኣጋንንት	1	TYPE_4	TYPE_1		
+8178	ኣጉራዶ	0		TYPE_1		
+8264	አገልግል	1	TYPE_1	TYPE_1		
+8312	ኣግቦ	1	TYPE_1	TYPE_1		
+8395	እንጉርጉሮ	1	TYPE_1	TYPE_1		
+8398	አጐብጓቢ	1	TYPE_1	TYPE_1		
+8448	ኣጥማቂ	1	TYPE_1	TYPE_1		
+8459	ኣጣማጅ	1		TYPE_1		
+8478	እንጥርጣሪ	1		TYPE_1		
+8491	ኣጣሪ	1	TYPE_1	TYPE_1		
+8516	ኣጥቂ	1	TYPE_1	TYPE_1		
+8544	ኣጣብቂኝ	1		TYPE_1		
+8553	ኣጥቢ	1	TYPE_1	TYPE_1		
+8556	ኣጥቢያ	1		TYPE_1		
+8570	ኣጠነባ	1		TYPE_1		
+8581	ኣጥኚ	1		TYPE_1		
+8589	ኣጥናፍ	1		TYPE_1		
+8590	ኣፅናፍ	1	TYPE_3	TYPE_1		
+8650	ኣጣጣል	1	TYPE_1	TYPE_1		
+8811	ኣጥማጅ	1	TYPE_1	TYPE_1		
+8813	ኣጣማጅ	1	TYPE_1	TYPE_1		
+8849	ኣስጠኚ	1	TYPE_1	TYPE_1		
+8870	ኣጣጭ	1		TYPE_1		
+8897	ኣጢያሽ	1		TYPE_1		
+8928	ኣጫላጭ	1		TYPE_1		
+8960	ኣጫሽ	1	TYPE_1	TYPE_1		
+8978	እንጭብሬ	1		TYPE_1		
+9000	ኣጫዋች	1	TYPE_1	TYPE_1		
+9018	እንጭፍጫፊ	1		TYPE_1		
+9135	ኣጫዋች	1	TYPE_1	TYPE_1		
+9332	እንፋሎት	1		TYPE_1		
+9407	ኣፈንጋጭ	1	TYPE_1	TYPE_1		
+9441	ኣፈፃፀም	1		TYPE_1		
+9562	እንፉቅቅ	1		TYPE_1		
+9586	አፍላል	1		TYPE_1		
+9806	ኣኳኋን	1	TYPE_3	TYPE_1		
+9828	ኣልቃሽ	1	TYPE_1	TYPE_1		
+9830	ኣስለቃሽ	1	TYPE_1	TYPE_1		
+9836	ኣለብላቢት	1		TYPE_1		
+9849	ኣልባሽ	1		TYPE_1		
+9953	ኣምላክ	1		TYPE_1		
+9954	ኣምልኮ	1	TYPE_1	TYPE_1		
+9955	ኣምልኮት	1	TYPE_1	TYPE_1		
+9959	ኣመለካከት	1	TYPE_1	TYPE_1		
+9968	ኣምራች	1	TYPE_1	TYPE_1		
+9977	አመራር	1	TYPE_1	TYPE_1		
+9991	አምሳል	1	TYPE_1	TYPE_1		
+10034	አመክሮ	1		TYPE_1		
+10043	አምዘግዛጊ	1	TYPE_1	TYPE_1		
+10057	ኣስመጭ	1	TYPE_1	TYPE_1		
+10071	ኣማላጅ	1	TYPE_1	TYPE_1		
+10103	ኣበምኔት	1	TYPE_1	TYPE_1		
+10104	እመምኔት	1	TYPE_1	TYPE_1		
+10145	እርምጃ	1	TYPE_1	TYPE_1		
+10148	ኣረማመድ	1	TYPE_1	TYPE_1		
+10151	እርሳስ	1	TYPE_1	TYPE_1		
+10157	ኣረካካቢ	1	TYPE_1	TYPE_1		
+10158	ኣስረካቢ	1	TYPE_1	TYPE_1		
+10165	ኣስረጅ	1	TYPE_1	TYPE_1		
+10167	እርግብግቢት	1		TYPE_1		
+10169	ኣራጋቢ	1	TYPE_1	TYPE_1		
+10172	ኣርጋጅ	1		TYPE_1		
+10184	እርጥበት	1		TYPE_1		
+10185	ኣርፋጃ	0		TYPE_1		
+10200	እሬት	1		TYPE_1		
+10212	እስላም	1	TYPE_1	TYPE_1		
+10213	እስልምና	1		TYPE_1		
+10224	ኣሰላፊ	1	TYPE_1	TYPE_1		
+10225	ኣሰላለፍ	1	TYPE_1	TYPE_1		
+10233	ኣስማሚ	1		TYPE_1		
+10265	ኣሰሪ	1	TYPE_1	TYPE_1		
+10266	ኣሰራር	1	TYPE_1	TYPE_1		
+10397	ኣሸንቋጦ	0		TYPE_1		
+10406	ኣሽከርካሪ	1	TYPE_1	TYPE_1		
+10417	ኣሻሻጭ	1	TYPE_1	TYPE_1		
+10428	ኣሻጋሪ	1	TYPE_1	TYPE_1		
+10429	ኣሻጥር	1	TYPE_1	TYPE_1		
+10439	ኣሹቅ	1	TYPE_3	TYPE_1		
+10449	ኣቅላሚ	1	TYPE_1	TYPE_1		
+10463	ኣቀማመጥ	1	TYPE_1	TYPE_1		
+10465	ኣቅራሪ	1	TYPE_1	TYPE_1		
+10466	እንቅርቃቢ	1		TYPE_1		
+10468	ኣቅራቢያ	1	TYPE_1	TYPE_1		
+10469	ኣቅርቦት	1		TYPE_1		
+10475	እንቅስቃሴ	1	TYPE_1	TYPE_1		
+10486	ኣቀንቃኝ	1	TYPE_1	TYPE_1		
+10517	ኣቃጣሪ	1	TYPE_1	TYPE_1		
+10555	ኣቆልቋይ	1		TYPE_1		
+10567	ኣቆራቋሽ	0		TYPE_1		
+10585	ኣቁጣሮ	1		TYPE_1		
+10586	ኣቆጣጠር	1	TYPE_1	TYPE_1		
+10598	ኣበል	1	TYPE_1	TYPE_1		
+10603	እንብርክክ	1		TYPE_1		
+10604	እንብርክ	1		TYPE_1		
+10618	ኣብሳይ	1	TYPE_1	TYPE_1		
+10628	ኣበዳሪ	1	TYPE_1	TYPE_1		
+10727	ኣስተንታኝ	1	TYPE_1	TYPE_1		
+10729	ኣትክልት	1	TYPE_1	TYPE_1		
+10730	ኣታክልት	1	TYPE_1	TYPE_1		
+10732	ኣትክልተኛ	1	TYPE_1	TYPE_1		
+10735	እንትክትክ	1		TYPE_1		
+10738	ኣተካሪስ	1		TYPE_1		
+10739	ኣትኩሮት	1		TYPE_1		
+10740	ኣስተኳሽ	1	TYPE_1	TYPE_1		
+10765	ኣንሺ	1		TYPE_1		
+10767	ኣንቂ	1	TYPE_1	TYPE_1		
+10824	ኢንቶ	1		TYPE_1		
+10825	እንቶ	1		TYPE_1		
+10827	ኢየሱስ	1		TYPE_1		
+10839	እልቂት	1	TYPE_1	TYPE_1		
+10840	እልቀት	1	TYPE_1	TYPE_1		
+10841	እልቅና	1		TYPE_1		
+10848	ኣላፊነት	1	TYPE_1	TYPE_1		
+10849	እልፈት	1	TYPE_1	TYPE_1		
+10854	ኣልቅት	1		TYPE_1		
+10855	ኣለቅት	1		TYPE_1		
+10856	ኣልቤርጎ	1	TYPE_1	TYPE_1		
+10863	ኣሎሎ	1	TYPE_1	TYPE_1		
+10864	ኣለሎ	1	TYPE_1	TYPE_1		
+10870	ኣሚና	1		TYPE_1		
+10873	ኣሜት	1	TYPE_1	TYPE_1		
+10875	ኣሜታ	1	TYPE_1	TYPE_1		
+10878	ኣምሳ	1	TYPE_1	TYPE_1		
+10884	ኣምበል	1	TYPE_1	TYPE_1		
+10885	ኣንበል	1	TYPE_1	TYPE_1		
+10889	ኣምፖል	1	TYPE_1	TYPE_1		
+10890	ኣምፑል	1	TYPE_1	TYPE_1		
+10892	ኣሞሌ	1		TYPE_1		
+10896	እርማት	1	TYPE_1	TYPE_1		
+10897	እርምት	1	TYPE_1	TYPE_1		
+10906	እረፍት	1	TYPE_1	TYPE_1		
+10907	እርፊት	1		TYPE_1		
+10911	ኣርቢትር	1	TYPE_1	TYPE_1		
+10912	ኣልቢትር	1	TYPE_1	TYPE_1		
+10918	ኣሰድ	1		TYPE_1		
+10934	ኣስታ	1		TYPE_1		
+10935	ኣስቴ	1		TYPE_1		
+10936	ኣሽቦ	1		TYPE_1		
+10937	ኣሻቦ	1		TYPE_1		
+10940	ኣሽክት	1		TYPE_1		
+10941	ኣሸክት	1		TYPE_1		
+10962	ኣቧራ	1		TYPE_1		
+10963	ኣዋራ	1		TYPE_1		
+10966	ኣተታ	1		TYPE_1		
+10967	ኣቶሚክ	1		TYPE_1		
+10968	ኣውቶሚክ	1		TYPE_1		
+10970	እንባ	1		TYPE_1		
+10971	እምባ	1		TYPE_1		
+10974	ኣናፂ	1	TYPE_1	TYPE_1		
+10975	ኣናጢ	1	TYPE_1	TYPE_1		
+10976	ኣንቃ	1		TYPE_1		
+10977	ኣንቋ	1		TYPE_1		
+10978	እንቁልጭልጭህ	1		TYPE_1		
+10979	እንቁልልጮሽ	1		TYPE_1		
+10980	ኣንበሳ	1	TYPE_1	TYPE_1		
+10981	ኣምበሳ	1	TYPE_1	TYPE_1		
+10985	ኣንጀት	1		TYPE_1		
+10986	ኣንዠት	1		TYPE_1		
+10997	ኣክንባሎ	1	TYPE_1	TYPE_1		
+10998	ኣክምባሎ	1	TYPE_1	TYPE_1		
+10999	ኣኮሌ	1	TYPE_1	TYPE_1		
+11000	ኣሆሌ	1	TYPE_1	TYPE_1		
+11001	ኣኮፋዳ	1	TYPE_1	TYPE_1		
+11002	ኣኩፋዳ	1	TYPE_1	TYPE_1		
+11003	ኣቁፋዳ	1	TYPE_1	TYPE_1		
+11006	እውከት	1		TYPE_1		
+11019	ኣውዛ	1		TYPE_1		
+11022	ኣውድማ	1	TYPE_1	TYPE_1		
+11035	ኣያ	1		TYPE_1		
+11036	ኣይያ	1	TYPE_1	TYPE_1		
+11037	ኣይዋ	1		TYPE_1		
+11038	ኣይሮፕላን	1	TYPE_1	TYPE_1		
+11039	ኣውሮፕላን	1	TYPE_1	TYPE_1		
+11041	ኣይበሉባ	1		TYPE_1		
+11042	ኣይበሉብሽ	1		TYPE_1		
+11078	ኣጓጎት	1		TYPE_1		
+11082	ኣጥር	1	TYPE_1	TYPE_1		
+11090	ኣፀድ	1	TYPE_1	TYPE_1		
+11091	ኣጠድ	1	TYPE_1	TYPE_1		
+11095	ኣፅቅ	1		TYPE_1		
+11096	ኣጥቅ	1		TYPE_1		
+11097	ኣፅፍ	0		TYPE_1		
+11098	ኣጥፍ	0		TYPE_1		
+11099	እፍረት	1		TYPE_1		
+11119	እህትማማች	1		TYPE_1		
+11120	እትማማች	1		TYPE_1		
+11123	እልህ	1		TYPE_1		
+11124	እልክ	1		TYPE_1		
+11125	እልል	1		TYPE_1		
+11126	እልልታ	1	TYPE_1	TYPE_1		
+11127	እልበት	1		TYPE_1		
+11132	እመበለት	1		TYPE_1		
+11134	እመት	1		TYPE_1		
+11135	እምነት	1	TYPE_1	TYPE_1		
+11138	እምቡስ	1		TYPE_1		
+11139	እንቡስ	1		TYPE_1		
+11151	እስክስታ	1	TYPE_1	TYPE_1		
+11152	እስክስ	1		TYPE_1		
+11153	እሾህ	1		TYPE_1		
+11154	እሾክ	1		TYPE_1		
+11161	እንስሳ	1	TYPE_1	TYPE_1		
+11162	እንሰሳ	1	TYPE_1	TYPE_1		
+11167	እንሽላሊት	1	TYPE_1	TYPE_1		
+11170	እንቁልጭልጮሽ	1		TYPE_1		
+11171	እንቁልልጮሽ	1		TYPE_1		
+11172	እንቡጣ	1		TYPE_1		
+11173	እምቡጣ	1		TYPE_1		
+11174	እንቡጣጢያ	1		TYPE_1		
+11175	እምቡጣጢያ	1		TYPE_1		
+11176	እንቡጥ	1		TYPE_1		
+11177	እምቡጥ	1		TYPE_1		
+11181	እንቢልታ	1	TYPE_1	TYPE_1		
+11182	እምቢልታ	1	TYPE_1	TYPE_1		
+11184	እንብርት	1		TYPE_1		
+11185	እምብርት	1		TYPE_1		
+11186	እንቦሳ	1	TYPE_1	TYPE_1		
+11187	እምቦሳ	1	TYPE_1	TYPE_1		
+11188	እንቦቀቅላ	1	TYPE_1	TYPE_1		
+11189	እንቦቃቅላ	1	TYPE_1	TYPE_1		
+11190	እንቧይ	1		TYPE_1		
+11191	እምቧይ	1		TYPE_1		
+11192	እንቧጮ	1		TYPE_1		
+11193	እምቧጮ	1		TYPE_1		
+11195	እንክርት	1		TYPE_1		
+11196	ኣንከርት	1		TYPE_1		
+11197	እንኮኮ	1	TYPE_1	TYPE_1		
+11198	እሽኮኮ	1	TYPE_1	TYPE_1		
+11199	እንዡባን	1		TYPE_1		
+11200	እንጁባን	1		TYPE_1		
+11201	እንዥቦ	1		TYPE_1		
+11202	እንጅቦ	1		TYPE_1		
+11203	እንጅሞ	1		TYPE_1		
+11204	እንደኋሁላ	1		TYPE_1		
+11205	እንድሆህላ	1		TYPE_1		
+11206	እንዳሁላ	1		TYPE_1		
+11215	እንግጫ	1	TYPE_1	TYPE_1		
+11217	እንጣቆ	1		TYPE_1		
+11218	ኣንጣቆ	1		TYPE_1		
+11219	እንጦ	1		TYPE_1		
+11223	እዳይት	0		TYPE_1		
+11224	እድያት	0		TYPE_1		
+11252	እግዚኣብሄር	1		TYPE_1		
+11253	እግዜር	1		TYPE_1		
+11259	እፀፋርስ	1		TYPE_1		
+11260	እጠፋሪስ	1		TYPE_1		
+11343	እንቡርቧይ	0		TYPE_1		
+11367	ኣተሬ	0		TYPE_1		
+11369	ኣንከሊስ	0	TYPE_1	TYPE_1		
+11370	ኣንጉጥ	0		TYPE_1		
+11371	ኣከቴ	0		TYPE_1		
+11372	ኣከት	0		TYPE_1		
+11373	ኣው	0		TYPE_1		
+11374	ኣጓጎት	0		TYPE_1		
+11376	እሚታ	0	TYPE_1	TYPE_1		
+22	አኳሁዋን	1	TYPE_1	TYPE_1		
+1492	እርባታ	1	TYPE_1	TYPE_1		
+1494	እርባና	1	TYPE_1	TYPE_1		
+1496	እርባን	1	TYPE_1	TYPE_1		
+1503	እርክፍካፎ	1		TYPE_1		
+1505	እርካታ	1		TYPE_1		
+1517	እርዳታ	1	TYPE_1	TYPE_1		
+1523	እርግማን	1	TYPE_1	TYPE_1		
+1527	እርግብግቢት	1		TYPE_1		
+1529	እርግዝና	1	TYPE 3	TYPE_1		
+1535	እርግጫ	1	TYPE_1	TYPE_1		
+1536	እርጋታ	1	TYPE_1	TYPE_1		
+1538	እርጥበት	1	TYPE_3	TYPE_1		
+1546	እሩር	1	TYPE_1	TYPE_1		
+1571	እራት	1		TYPE_1		
+1589	እሬት	1		TYPE_1		
+1591	እሬንሳ	0	TYPE_1	TYPE_1		
+1605	እሮሮ	1		TYPE_1		
+1606	እሮሮ	1		TYPE_1		
+1641	እርሳስ	1	TYPE_1	TYPE_1		
+3641	እንቃሪ	0		TYPE_1		
+3651	እንቅፋት	1	TYPE_1	TYPE_1		
+3655	ኣንቂ	1	TYPE_1	TYPE_1		
+3658	ኣነባበሮ	1		TYPE_1		
+3661	ኣናባቢ	1	TYPE_1	TYPE_1		
+3662	ኣስነባቢ	1	TYPE_1	TYPE_1		
+3679	እንኩሮ	1		TYPE_1		
+3680	እንኩቶ	1		TYPE_1		
+3713	ኣንጋሽ	1		TYPE_1		
+3716	እንግዳ	1	TYPE_1	TYPE_1		
+3724	እንጎቻ	1	TYPE_1	TYPE_1		
+3729	እንጥስታ	1		TYPE_1		
+3740	ኣንፃር	1		TYPE_1		
+3801	ኣኗኗር	1	TYPE_1	TYPE_1		
+3809	አነቃናቂ	1		TYPE_1		
+3810	አነቃቂ	1	TYPE_1	TYPE_1		
+3813	እንባ	1	TYPE_1	TYPE_1		
+3816	እንኩቶ	1		TYPE_1		
+3817	አነዳድ	1		TYPE_1		
+3824	አነጋገር	1	TYPE_1	TYPE_1		
+3835	አናዛዥ	1		TYPE_1		
+3861	ኡኡታ	1		TYPE_1		
+3862	ኡደት	1	TYPE_1	TYPE_1		
+3863	ኢላማ	1	TYPE_1	TYPE_1		
+3864	ኢማማ	0		TYPE_1		
+3865	ኢማም	0	TYPE_1	TYPE_1		
+3866	ኢምንት	1	TYPE_3	TYPE_1		
+3867	ኢምፔርያሊዝም	1		TYPE_1		
+3868	ኢሰብአዊ	1		TYPE_1		
+3869	ኢሳይንሳዊ	1		TYPE_1		
+3870	ኢንሱሊን	1		TYPE_1		
+3871	ኢንሳይክሎፒዲያ	1		TYPE_1		
+3872	ኢንስቲትዩት	1		TYPE_1		
+3873	ኢንሹ	0	TYPE_3	TYPE_1		
+3874	ኢንሹራንስ	1	TYPE_1	TYPE_1		
+3875	ኢንቶ	0		TYPE_1		
+3876	እንቶ	0		TYPE_1		
+3877	ኢንዱስትሪ	1	TYPE_1	TYPE_1		
+3878	ኢንጂነር	1	TYPE_1	TYPE_1		
+3879	ኢኮኖሚ	1	TYPE_1	TYPE_1		
+3880	ኢኮኖሚስት	1	TYPE_1	TYPE_1		
+3881	ኢኮኖሚክስ	1		TYPE_1		
+3882	ኢኳቶር	1		TYPE_1		
+3883	ኢየሱስ	1		TYPE_1		
+3884	ኢዮቤልዩ	1		TYPE_1		
+3885	ኣሂዶ	1		TYPE_1		
+3886	ኣሃዝ	1	TYPE_1	TYPE_1		
+3887	ኣሃዱ	1		TYPE_1		
+3888	ኣህዛብ	1		TYPE_1		
+3889	አህያ	1	TYPE_1	TYPE_1		
+3890	አህጉር	1	TYPE_1	TYPE_1		
+3891	ኣሆ	0		TYPE_1		
+3892	ኣሆሌ	0		TYPE_1		
+3893	ኣኮሌ	0		TYPE_1		
+3894	ኣሆማ	0	TYPE_3	TYPE_1		
+3895	አለኝታ	1		TYPE_1		
+3896	ኣለሌ	1		TYPE_1		
+3897	አለሎ	1		TYPE_1		
+3898	እልም	1		TYPE_1		
+3899	ኣላማ	1	TYPE_1	TYPE_1		
+3900	ኣለም	1		TYPE_1		
+3901	እልቂት	1		TYPE_1		
+3902	እልቀት	1		TYPE_1		
+3903	አለቃ	1	TYPE_1	TYPE_1		
+3904	እልቅና	1		TYPE_1		
+3906	አለቅት	1		TYPE_1		
+3907	ኣልቅት	1		TYPE_1		
+3908	እልባት	1	TYPE_1	TYPE_1		
+3909	ኣለት	1	TYPE_1	TYPE_1		
+3910	ኣለንጋ	1	TYPE_1	TYPE_1		
+3911	አለፌታ	0	TYPE_1	TYPE_1		
+3912	እልፈት	1		TYPE_1		
+3913	ኣሳላፊ	1	TYPE_1	TYPE_1		
+3914	ኣሉባልታ	1	TYPE_1	TYPE_1		
+3915	ኣሉታ	1	TYPE_1	TYPE_1		
+3916	ኣላህ	1		TYPE_1		
+3917	ኣላል	0		TYPE_1		
+3918	ኣላባ	0	TYPE_3	TYPE_1		
+3919	ኣላድ	0		TYPE_1		
+3920	ኣልማዝ	1	TYPE_1	TYPE_1		
+3921	ኣልቃሾ	1		TYPE_1		
+3922	ኣልቢትር	1	TYPE_1	TYPE_1		
+3923	ኣርቢትር	1	TYPE_1	TYPE_1		
+3924	ኣልባብ	1		TYPE_1		
+3925	ኣልቤርጎ	1		TYPE_1		
+3926	ኣልቤን	1	TYPE_1	TYPE_1		
+3927	ኣልቴት	0		TYPE_1		
+3928	ኣልኮል	1		TYPE_1		
+3929	ኣልጀብራ	1		TYPE_1		
+3930	ኣልጋ	1	TYPE_1	TYPE_1		
+3931	ኣልጌ	1		TYPE_1		
+3932	ኣልጫ	1		TYPE_1		
+3933	ኣሎሎ	1	TYPE_1	TYPE_1		
+3934	ኣመልማሎ	0		TYPE_1		
+3935	ኣመል	1	TYPE_1	TYPE_1		
+3936	እመም	0		TYPE_1		
+3937	ኣመራሮ	0		TYPE_1		
+3938	እምስ	1		TYPE_1		
+3939	ኣመሰላሳ	0		TYPE_1		
+3940	ኣመት	1	TYPE_1	TYPE_1		
+3941	እማኝ	1	TYPE_1	TYPE_1		
+3942	ኣመክሮ	1	TYPE_1	TYPE_1		
+3943	ኣመድ	1		TYPE_1		
+3944	ኣመዳይ	1		TYPE_1		
+3945	ኣመፅ	1	TYPE_1	TYPE_1		
+3947	አሚና	1		TYPE_1		
+3948	ኣሜት	1		TYPE_1		
+3949	ኣሜታ	1		TYPE_1		
+3950	ኣምሮት	1	TYPE_1	TYPE_1		
+3951	ኣማሪት	0		TYPE_1		
+3952	ኣማት	1	TYPE_1	TYPE_1		
+3953	ኣማምቻ	0		TYPE_1		
+3954	ኣማች	1	TYPE_1	TYPE_1		
+3955	ኣምቻ	0		TYPE_1		
+3956	ኣማን	1		TYPE_1		
+3957	ኣማጋ	0		TYPE_1		
+3958	ኣማጋ	1		TYPE_1		
+3959	ኣሜራ	0		TYPE_1		
+3960	ኣሜባ	1		TYPE_1		
+3961	ኣሜት	1		TYPE_1		
+3962	ኣሜታ	1		TYPE_1		
+3963	ኣሜን	1		TYPE_1		
+3964	ኣሜከላ	1		TYPE_1		
+3965	ኣምላክ	1		TYPE_1		
+3966	ኣምልኮ	1	TYPE_1	TYPE_1		
+3967	ኣምሮት	1	TYPE_1	TYPE_1		
+3968	ኣምሳ	1	TYPE_1	TYPE_1		
+3969	አምስት	1	TYPE_1	TYPE_1		
+3970	አምበል	1	TYPE_1	TYPE_1		
+3971	አንበል	1	TYPE_1	TYPE_1		
+3972	አምበሳ	1	TYPE_1	TYPE_1		
+3973	ኣንበሳ	1	TYPE_1	TYPE_1		
+3974	ኣምቡላንስ	1	TYPE_1	TYPE_1		
+3975	ኣምባ	1		TYPE_1		
+3976	ኣምባላይ	0	TYPE_1	TYPE_1		
+3977	ኣምባራይሌ	0		TYPE_1		
+3978	ኣምባር	1	TYPE_1	TYPE_1		
+3979	ኣምባርሟይ	0		TYPE_1		
+3980	ኣምባሳደር	1	TYPE_1	TYPE_1		
+3981	ኣምባሻ	1		TYPE_1		
+3982	ኣምባዛ	0	TYPE_1	TYPE_1		
+3983	ኣምባገነን	1	TYPE_1	TYPE_1		
+3984	አምባጓሮ	1		TYPE_1		
+3985	ኣምቦ	1		TYPE_1		
+3986	ኣምቦልክ	1		TYPE_1		
+3987	አምታሮ	1		TYPE_1		
+3988	ኣምና	1		TYPE_1		
+3989	አምኜ	1		TYPE_1		
+3990	ኣምዛ	0		TYPE_1		
+3991	አምድ	1	TYPE_1	TYPE_1		
+3992	አእማድ	1	TYPE_1	TYPE_1		
+3993	ኣምጃ	0		TYPE_1		
+3994	አምፋሮ	1		TYPE_1		
+3995	ኣንፋሮ	1		TYPE_1		
+3996	ኣምፖል	1	TYPE_1	TYPE_1		
+3997	ኣንፖል	1	TYPE_1	TYPE_1		
+3998	ኣምፑል	1	TYPE_1	TYPE_1		
+3999	ኣሞራ	1	TYPE_1	TYPE_1		
+4000	ኣሞርቲዛተር	0	TYPE_1	TYPE_1		
+4001	ኣሞት	1		TYPE_1		
+4002	ኣሞጭ	0		TYPE_1		
+4003	ኣረህ	0		TYPE_1		
+4004	አረሆ	0	TYPE_1	TYPE_1		
+4005	አረም	1	TYPE_1	TYPE_1		
+4006	ኣራሙቻ	1		TYPE_1		
+4007	እርማት	1	TYPE_1	TYPE_1		
+4008	እርምት	1	TYPE_1	TYPE_1		
+4009	ኣርምሞ	1		TYPE_1		
+4010	ኣረማሞ	0		TYPE_1		
+4011	ኣረር	1	TYPE_1	TYPE_1		
+4012	ኣራሽ	1	TYPE_1	TYPE_1		
+4013	እራሽ	1		TYPE_1		
+4014	እርሻ	1	TYPE_1	TYPE_1		
+4015	ኣራስ	1	TYPE_1	TYPE_1		
+4016	እርቅ	1		TYPE_1		
+4018	ኣረቄ	1		TYPE_1		
+4019	ኣረቦን	0		TYPE_1		
+4020	ኣረንቋ	1		TYPE_1		
+4021	ኣረንዛ	0		TYPE_1		
+4022	እርዛት	1		TYPE_1		
+4023	ኣራጅ	1	TYPE_1	TYPE_1		
+4024	እርድ	1		TYPE_1		
+4025	ኣረዳ	1		TYPE_1		
+4026	እርጅና	1		TYPE_1		
+4027	እርገት	1		TYPE_1		
+4028	ኣረጭ	0		TYPE_1		
+4029	ኣረፍት	1		TYPE_1		
+4030	እረፍት	1	TYPE_1	TYPE_1		
+4031	እርፊት	1	TYPE_1	TYPE_1		
+4032	ኣረፋ	1		TYPE_1		
+4033	ኣሪማጥ	1	TYPE_3	TYPE_1		
+4034	ኣሪባራ	0	TYPE_1	TYPE_1		
+4035	ኣሪቲ	1		TYPE_1		
+4036	ኣር	1		TYPE_1		
+4037	ኣራራይ	1		TYPE_1		
+4038	ኣራባ	1	TYPE_1	TYPE_1		
+4039	ኣራት	1	TYPE_1	TYPE_1		
+4040	ኣራኝ	0	TYPE_3	TYPE_1		
+4041	ኣራዊት	1	TYPE_1	TYPE_1		
+4042	ኣርዌ	1	TYPE_1	TYPE_1		
+4043	ኣራዳ	1	TYPE_1	TYPE_1		
+4044	ኣራጅ	1	TYPE_1	TYPE_1		
+4045	ኣራጣ	1		TYPE_1		
+4046	ኣሬራ	1		TYPE_1		
+4047	ኣርመን	1		TYPE_1		
+4048	ኣርማ	1	TYPE_1	TYPE_1		
+4049	ኣርበኛ	1	TYPE_1	TYPE_1		
+4050	ኣርባ	1	TYPE_1	TYPE_1		
+4051	ኣርብ	1	TYPE_1	TYPE_1		
+4052	ኣርቲስት	1	TYPE_1	TYPE_1		
+4053	ኣርቲቡርቲ	1		TYPE_1		
+4054	ኣርታኢ	1	TYPE_4	TYPE_1		
+4055	ኣርታእያን	1	TYPE_4	TYPE_1		
+4056	ኣርትኦት	1		TYPE_1		
+4057	ኣርነት	1		TYPE_1		
+4058	ኣርኣያ	1	TYPE_1	TYPE_1		
+4059	ኣርእስት	1	TYPE_1	TYPE_1		
+4060	ኣርኬና	0	TYPE_1	TYPE_1		
+4061	ኣርያም	1		TYPE_1		
+4062	ኣርዮስ	1	TYPE_1	TYPE_1		
+4063	ኣርድእት	1	TYPE_4	TYPE_1		
+4064	ኣርጃኖ	1	TYPE_1	TYPE_1		
+4065	ኣርጩሜ	1	TYPE_1	TYPE_1		
+4066	ኣሮጊት	1	TYPE_1	TYPE_1		
+4067	እስር	1		TYPE_1		
+4068	እስረኛ	1	TYPE_1	TYPE_1		
+4069	እስራት	1	TYPE_3	TYPE_1		
+4070	ኣሰር	0		TYPE_1		
+4071	አሰሳ	1	TYPE_1	TYPE_1		
+4072	ኣሳብ	1	TYPE_1	TYPE_1		
+4073	እሳቤ	1	TYPE_1	TYPE_1		
+4075	ኣስተሳሰብ	1	TYPE_1	TYPE_1		
+4076	ኣሰንዳቦ	0		TYPE_1		
+4077	ኣሲድ	1	TYPE_1	TYPE_1		
+4078	ኣሳ	1	TYPE_1	TYPE_1		
+4079	ኣሳማ	1	TYPE_1	TYPE_1		
+4080	ኣሳር	1	TYPE_1	TYPE_1		
+4081	ኣስማት	1	TYPE_1	TYPE_1		
+4082	ኣስማተኛ	1		TYPE_1		
+4083	ኣስም	1		TYPE_1		
+4084	ኣስር	1	TYPE_1	TYPE_1		
+4085	ኣስቤስቶስ	1		TYPE_1		
+4086	ኣስቤዛ	1	TYPE_1	TYPE_1		
+4087	ኣስብ	0		TYPE_1		
+4088	ኣስተምህሮ	1		TYPE_1		
+4089	ኣስራት	1	TYPE_3	TYPE_1		
+4090	ኣስተናግር	0		TYPE_1		
+4091	እፀፋርስ	0		TYPE_1		
+4092	ኣስተያየት	1	TYPE_1	TYPE_1		
+4093	ኣስታ	0		TYPE_1		
+4094	ኣስቴ	0		TYPE_1		
+4095	ኣስትሮኖሚ	1		TYPE_1		
+4096	ኣስከሬን	1	TYPE_1	TYPE_1		
+4097	ኣስኳል	1	TYPE_1	TYPE_1		
+4098	ኣስፋልት	1	TYPE_1	TYPE_1		
+4099	ኣሻል	0		TYPE_1		
+4100	እሽም	1		TYPE_1		
+4101	ኣሸቦ	1		TYPE_1		
+4102	ኣሻቦ	1		TYPE_1		
+4103	ኣሸን	1	TYPE_1	TYPE_1		
+4104	ኣሸንክታብ	1		TYPE_1		
+4105	ኣሸንዳ	1	TYPE_1	TYPE_1		
+4106	ኣሽክት	0		TYPE_1		
+4107	ኣሸክት	0		TYPE_1		
+4108	ኣሸዋ	1		TYPE_1		
+4109	ኣሹራ	0	TYPE_1	TYPE_1		
+4110	ኣሹቅ	1		TYPE_1		
+4111	ኣሻል	0		TYPE_1		
+4112	ኣሻራ	1	TYPE_1	TYPE_1		
+4113	ኣሻሮ	1		TYPE_1		
+4114	ኣሻንጉሊት	1	TYPE_1	TYPE_1		
+4115	ኣሻጥር	1		TYPE_1		
+4116	ኣሽሙር	1	TYPE_1	TYPE_1		
+4117	ኣሽሟጣጭ	1	TYPE_1	TYPE_1		
+4118	ኣሽከር	1	TYPE_1	TYPE_1		
+4119	ኣሽኩቲ	0		TYPE_1		
+4120	ኣሽከላ	0		TYPE_1		
+4121	ኣቃቢ	1	TYPE_1	TYPE_1		
+4122	ኣቃቢት	0		TYPE_1		
+4124	ኣቀበት	1	TYPE_1	TYPE_1		
+4125	ኣቀብ	1	TYPE_1	TYPE_1		
+4126	ኣቅድ	1	TYPE_1	TYPE_1		
+4127	እቅድ	1	TYPE_1	TYPE_1		
+4128	እቅፎሽ	1		TYPE_1		
+4129	ኣቁላ	0	TYPE_1	TYPE_1		
+4130	ኣቁማዳ	1	TYPE_1	TYPE_1		
+4131	ኣቁጣሮ	1		TYPE_1		
+4132	ኣቃቂር	1	TYPE_1	TYPE_1		
+4133	ኣቃቅማ	0		TYPE_1		
+4134	ኣቅል	1		TYPE_1		
+4135	ኣቅም	1	TYPE_1	TYPE_1		
+4136	ኣቅርቦት	1	TYPE_1	TYPE_1		
+4137	ኣቅራቢያ	1	TYPE_1	TYPE_1		
+4138	ኣቅጣጫ	1	TYPE_1	TYPE_1		
+4139	አቆስጣ	0	TYPE_1	TYPE_1		
+4140	ኣቋም	1	TYPE_1	TYPE_1		
+4141	እብለት	1	TYPE_1	TYPE_1		
+4142	ኣበል	1	TYPE_1	TYPE_1		
+4143	ኣበልጅ	1		TYPE_1		
+4144	ኣበምኔት	1		TYPE_1		
+4145	ኣባሪ	1	TYPE_1	TYPE_1		
+4148	ኣበሱዳ	0		TYPE_1		
+4149	ኣበሳ	1	TYPE_1	TYPE_1		
+4150	ኣበሻ	1	TYPE_1	TYPE_1		
+4151	ኣበቅ	0		TYPE_1		
+4152	ኣበባ	1	TYPE_1	TYPE_1		
+4153	ኣበኑስ	0		TYPE_1		
+4154	ኣበክሮ	1	TYPE_1	TYPE_1		
+4155	ኣበው	1		TYPE_1		
+4156	ኣብ	1		TYPE_1		
+4157	እብደት	1	TYPE_1	TYPE_1		
+4158	ኣበደም	0	TYPE_1	TYPE_1		
+4159	ኣበገደ	1		TYPE_1		
+4160	ኣበጋዝ	1	TYPE_1	TYPE_1		
+4161	እበጥ	1		TYPE_1		
+4162	እባጭ	1	TYPE_1	TYPE_1		
+4163	እብጠት	1	TYPE_1	TYPE_1		
+4164	ኣቡን	1		TYPE_1		
+4165	ኣቡጀዲ	1		TYPE_1		
+4166	ኣቡጊዳ	1		TYPE_1		
+4167	ኣባ	1		TYPE_1		
+4168	ኣባሆይ	1		TYPE_1		
+4169	ኣባላዘር	1		TYPE_1		
+4170	ኣባል	1	TYPE_1	TYPE_1		
+4171	ኣባሎ	0		TYPE_1		
+4172	ኣባሰንጋ	1		TYPE_1		
+4173	ኣባት	1	TYPE_1	TYPE_1		
+4174	ኣባወራ	1	TYPE_1	TYPE_1		
+4175	ኣባዜ	1	TYPE_1	TYPE_1		
+4176	ኣባጀሀኝ	0		TYPE_1		
+4177	ኣባጎንዳ	1		TYPE_1		
+4178	ኣባጨጓሬ	1	TYPE_1	TYPE_1		
+4179	ኣቤቱታ	1	TYPE_1	TYPE_1		
+4180	ኣብላሊት	0	TYPE_1	TYPE_1		
+4181	ኣብሲት	1		TYPE_1		
+4182	ኣብሽ	1		TYPE_1		
+4183	ኣብሽሎ	0		TYPE_1		
+4184	ኣብሾ	1		TYPE_1		
+4185	ኣብነት	1	TYPE_1	TYPE_1		
+4186	ኣብዬ	1		TYPE_1		
+4187	ኣብዮት	1	TYPE_1	TYPE_1		
+4188	ኣቦል	1		TYPE_1		
+4189	ኣቦሬ	1		TYPE_1		
+4190	ኣቦሰጥ	1	TYPE_1	TYPE_1		
+4191	ኣቧራ	1		TYPE_1		
+4192	ኣዋራ	1		TYPE_1		
+4193	ኣተላ	1		TYPE_1		
+4194	እትም	1	TYPE_1	TYPE_1		
+4195	ኣተር	1		TYPE_1		
+4196	እትራት	0		TYPE_1		
+4197	እትብት	1		TYPE_1		
+4198	ኣተታ	1	TYPE_1	TYPE_1		
+4199	ኣተካሪስ	1		TYPE_1		
+4200	ኣተካራ	1	TYPE_1	TYPE_1		
+4201	ኣቱች	0		TYPE_1		
+4202	ኣታሞ	1	TYPE_1	TYPE_1		
+4203	ኣታክልት	1	TYPE_1	TYPE_1		
+4204	ኣቴቴ	1	TYPE_1	TYPE_1		
+4205	ኣቴና	1	TYPE_1	TYPE_1		
+4206	ኣትላስ	1		TYPE_1		
+4207	ኣትሌቲክስ	1		TYPE_1		
+4208	ኣትሌት	1	TYPE_1	TYPE_1		
+4209	ኣትሮንስ	1		TYPE_1		
+4210	ኣትኳር	1		TYPE_1		
+4211	ኣቶሚክ	1	TYPE_1	TYPE_1		
+4212	ኣውቶሚክ	1	TYPE_1	TYPE_1		
+4213	ኣቶም	1	TYPE_1	TYPE_1		
+4214	ኣቶሳል	0		TYPE_1		
+4215	ኣነር	1	TYPE_1	TYPE_1		
+4216	እንባ	1		TYPE_1		
+4217	እምባ	1		TYPE_1		
+4218	ኣንጋች	1		TYPE_1		
+4219	እንግት	0		TYPE_1		
+4220	ኣናፂ	1	TYPE_1	TYPE_1		
+4221	ኣናጢ	1	TYPE_1	TYPE_1		
+4222	ኣኒሳ	0		TYPE_1		
+4223	ኣናት	1	TYPE_1	TYPE_1		
+4224	ኣናናስ	1	TYPE_1	TYPE_1		
+4225	ኣንሶላ	1	TYPE_1	TYPE_1		
+4226	እንቅልፍ	1		TYPE_1		
+4227	ኣንቀልባ	1		TYPE_1		
+4228	ኣንቀርሻ	0	TYPE_1	TYPE_1		
+4229	ኣንቀፅ	1	TYPE_1	TYPE_1		
+4230	ኣንቃ	0		TYPE_1		
+4231	ኣንቋ	0		TYPE_1		
+4232	ኣንቃር	0		TYPE_1		
+4233	እንቁልጭልጮሽ	1		TYPE_1		
+4234	እንቁልልጮሽ	1		TYPE_1		
+4235	ኣንቋሊት	0		TYPE_1		
+4236	ኣንበጣ	1	TYPE_1	TYPE_1		
+4237	ኣንብር	0		TYPE_1		
+4238	ኣንቱታ	1		TYPE_1		
+4239	ኣንቴና	1	TYPE_1	TYPE_1		
+4240	ኣንክሊስ	1		TYPE_1		
+4241	ኣንከርት	0		TYPE_1		
+4242	እንክርት	0		TYPE_1		
+4243	ኣንካሴ	1	TYPE_1	TYPE_1		
+4244	ኣንካቦ	0	TYPE_1	TYPE_1		
+4245	ኣንኬል	0	TYPE_1	TYPE_1		
+4246	ኣንኮ	0	TYPE_1	TYPE_1		
+4247	ኣንኮላ	1		TYPE_1		
+4248	ኣንዠት	1		TYPE_1		
+4249	ኣንጀት	1		TYPE_1		
+4250	ኣንደርቢት	1		TYPE_1		
+4251	ኣንደርብ	1		TYPE_1		
+4252	ኣንደበት	1		TYPE_1		
+4253	ኣንድ	1	TYPE_1	TYPE_1		
+4254	ኣንድስ	1		TYPE_1		
+4255	ኣንድምታ	1	TYPE_1	TYPE_1		
+4256	ኣንድነት	1	TYPE_1	TYPE_1		
+4257	ኣንድዬ	1		TYPE_1		
+4258	ኣንጃ	1	TYPE_1	TYPE_1		
+4259	ኣንገት	1		TYPE_1		
+4260	ኣንጉዝ	0		TYPE_1		
+4261	ኣንጋሬ	0	TYPE_1	TYPE_1		
+4262	ኣንጎል	1		TYPE_1		
+4263	እንጉርጉሮ	1		TYPE_1		
+4264	ኣንጎርባ	0		TYPE_1		
+4265	ኣንጓ	1	TYPE_1	TYPE_1		
+4266	ኣንጣሪያ	0		TYPE_1		
+4267	ኣንጣቆ	1		TYPE_1		
+4268	ኣንፊላ	0		TYPE_1		
+4269	ኣንፋሮ	0		TYPE_1		
+4270	ኣእላፍ	1	TYPE_4	TYPE_1		
+4271	ኣእምሮ	1		TYPE_1		
+4272	እክር	0		TYPE_1		
+4273	ኣከርካሪ	1		TYPE_1		
+4274	እክት	0	TYPE_1	TYPE_1		
+4275	ኣከቴ	1		TYPE_1		
+4276	እከክ	1		TYPE_1		
+4277	ኣኩፋዳ	1	TYPE_3	TYPE_1		
+4278	ኣካል	1	TYPE_1	TYPE_1		
+4279	ኣካላት	1	TYPE_1	TYPE_1		
+4280	ኣካዳሚ	1	TYPE_1	TYPE_1		
+4281	ኣካፋ	1	TYPE_1	TYPE_1		
+4282	ኣክታ	1		TYPE_1		
+4283	ኣክሊል	1	TYPE_3	TYPE_1		
+4284	ኣክምበሎ	1	TYPE_1	TYPE_1		
+4285	ኣክንባሎ	1	TYPE_1	TYPE_1		
+4286	ኣክርማ	1		TYPE_1		
+4287	ኣክስት	1	TYPE_1	TYPE_1		
+4288	አክፋይ	1	TYPE_1	TYPE_1		
+4289	አክፍሎት	1	TYPE_4	TYPE_1		
+4290	ኣኮሌ	1		TYPE_1		
+4291	ኣሆሌ	1		TYPE_1		
+4292	ኣኮርባጅ	0	TYPE_1	TYPE_1		
+4293	ኣኮርዲዮን	1		TYPE_1		
+4294	ኣኮቴት	1		TYPE_1		
+4295	ኣኮኮ	1	TYPE_1	TYPE_1		
+4296	እንኮኮ	1	TYPE_1	TYPE_1		
+4297	ኣኮፋዳ	1	TYPE_1	TYPE_1		
+4298	ኣኩፋዳ	1	TYPE_1	TYPE_1		
+4299	ኣቁፋዳ	1	TYPE_1	TYPE_1		
+4301	ኣኳያ	1	TYPE_1	TYPE_1		
+4302	ኣዋቂ	1	TYPE_1	TYPE_1		
+4303	እውቀት	1	TYPE_1	TYPE_1		
+4304	እውቂያ	1		TYPE_1		
+4306	ኡደት	1	TYPE_1	TYPE_1		
+4307	ኣዋጅ	1	TYPE_1	TYPE_1		
+4308	ኣው	1		TYPE_1		
+4309	ኣውላ	0	TYPE_1	TYPE_1		
+4310	ኣዋልድ	1		TYPE_1		
+4311	ኣዋልድጌሳ	0	TYPE_1	TYPE_1		
+4312	ኣዋዜ	1		TYPE_1		
+4313	ኣውሊያ	1	TYPE_1	TYPE_1		
+4314	ኣውራ	1	TYPE_1	TYPE_1		
+4315	ኣውራሪስ	1	TYPE_1	TYPE_1		
+4316	ኣውሬ	1	TYPE_1	TYPE_1		
+4317	ኣውሮፕላን	1	TYPE_1	TYPE_1		
+4318	ኣውታር	1	TYPE_1	TYPE_1		
+4319	ኣውታንቲ	1	TYPE_1	TYPE_1		
+4320	ኣውቶማቲክ	1	TYPE_1	TYPE_1		
+4321	ኣውቶሞቢል	1	TYPE_1	TYPE_1		
+4322	ኣውቶቡስ	1	TYPE_1	TYPE_1		
+4323	ኣውዛ	1		TYPE_1		
+4324	ኣውድ	1	TYPE_1	TYPE_1		
+4325	ኣውድማ	1	TYPE_1	TYPE_1		
+4326	ኣውጥ	0		TYPE_1		
+4327	ኣወንታ	1	TYPE_3	TYPE_1		
+4328	እዝል	1	TYPE_1	TYPE_1		
+4329	ኣዝመራ	1		TYPE_1		
+4330	ኣዘቅት	1	TYPE_1	TYPE_1		
+4331	ኣዘቦት	1		TYPE_1		
+4332	ኣዘኔታ	1		TYPE_1		
+4333	ኣዘን	1		TYPE_1		
+4334	እዝን	1		TYPE_1		
+4336	እዝ	1		TYPE_1		
+4338	ኣዙሪት	1	TYPE_1	TYPE_1		
+4339	ኣዚም	1	TYPE_1	TYPE_1		
+4340	ኣዚፋ	0		TYPE_1		
+4341	ኣዛምር	0		TYPE_1		
+4342	ኣዛባ	1	TYPE_1	TYPE_1		
+4343	ኣዛውንት	1	TYPE_1	TYPE_1		
+4344	ኣዜብ	1		TYPE_1		
+4345	ኣዝመራ	1		TYPE_1		
+4346	ኣዝራር	1	TYPE_1	TYPE_1		
+4347	ኣዞ	1	TYPE_1	TYPE_1		
+4349	ኣስተያየት	1	TYPE_1	TYPE_1		
+4350	ኣየር	1		TYPE_1		
+4351	ኣያ	1		TYPE_1		
+4352	ኣይያ	1		TYPE_1		
+4353	ኣይዋ	1		TYPE_1		
+4354	ኣያት	1	TYPE_1	TYPE_1		
+4355	ኣይሁድ	1	TYPE_1	TYPE_1		
+4356	ኣይበሉባ	1		TYPE_1		
+4357	ኣይበሉብሽ	1		TYPE_1		
+4358	ኣይበት	0		TYPE_1		
+4359	ኣይብ	1		TYPE_1		
+4360	ኣይት	1	TYPE_1	TYPE_1		
+4361	ኣይነምድር	1		TYPE_1		
+4362	ኣይነት	1	TYPE_1	TYPE_1		
+4363	ኣይን	1	TYPE_1	TYPE_1		
+4364	ኣይጥ	1	TYPE_1	TYPE_1		
+4365	እደላ	1	TYPE_1	TYPE_1		
+4366	ኣደማ	1		TYPE_1		
+4367	እድምተኛ	1		TYPE_1		
+4368	እድመኛ	1		TYPE_1		
+4370	ኣዳር	1	TYPE_1	TYPE_1		
+4371	ኣሳዳሪ	1	TYPE_1	TYPE_1		
+4372	ኣስተዳደር	1	TYPE_1	TYPE_1		
+4373	ኣስተዳዳሪ	1	TYPE_1	TYPE_1		
+4374	እድሳት	1	TYPE_1	TYPE_1		
+4375	ኣደስ	1		TYPE_1		
+4376	ኣደብ	1		TYPE_1		
+4377	ኣደባባይ	1	TYPE_1	TYPE_1		
+4378	ኣደን	1	TYPE_1	TYPE_1		
+4379	ኣደንጓሬ	1		TYPE_1		
+4380	እድገት	1	TYPE_1	TYPE_1		
+4381	ኣስተዳደግ	1	TYPE_1	TYPE_1		
+4382	ኣደጋ	1	TYPE_1	TYPE_1		
+4383	እድፍ	1		TYPE_1		
+4384	ኣደፍ	1		TYPE_1		
+4385	ኣዱኛ	1		TYPE_1		
+4386	ኣዳራሽ	1	TYPE_1	TYPE_1		
+4387	ኣደሴቁኒ	0	TYPE_1	TYPE_1		
+4388	ኣድማስ	1		TYPE_1		
+4389	ኣድራሻ	1	TYPE_1	TYPE_1		
+4390	ኣድባር	1	TYPE_1	TYPE_1		
+4391	ኣዶ	0		TYPE_1		
+4392	ኣዶወሸባዬ	0		TYPE_1		
+4393	እጅላት	1		TYPE_1		
+4394	ኣጀብ	1		TYPE_1		
+4395	ኣጃቢ	1	TYPE_1	TYPE_1		
+4396	ኣጀንዳ	1	TYPE_1	TYPE_1		
+4397	ኣጃ	1		TYPE_1		
+4398	እግል	0		TYPE_1		
+4399	ኣገልግል	1	TYPE_1	TYPE_1		
+4400	ኣገልግሎት	1		TYPE_1		
+4401	ኣገር	1	TYPE_1	TYPE_1		
+4402	እግት	1		TYPE_1		
+4403	ኣገና	0		TYPE_1		
+4404	ኣጋና	0		TYPE_1		
+4405	እገዛ	1	TYPE_1	TYPE_1		
+4406	እገዳ	1	TYPE_1	TYPE_1		
+4407	ኣገዳ	1		TYPE_1		
+4408	ኣገጭ	1		TYPE_1		
+4409	ኣጋሚዶ	0	TYPE_1	TYPE_1		
+4410	ኣጋም	1		TYPE_1		
+4411	ኣጋራ	0		TYPE_1		
+4412	ኣጋር	1	TYPE_1	TYPE_1		
+4413	ኣጋሰስ	1	TYPE_1	TYPE_1		
+4414	ኣጋንንት	1	TYPE_1	TYPE_1		
+4415	ኣጋዘን	1	TYPE_1	TYPE_1		
+4416	ኣጋይ	1		TYPE_1		
+4417	ኣግራፍ	1	TYPE_1	TYPE_1		
+4418	ኣግቦ	1		TYPE_1		
+4419	ኣግድመት	1		TYPE_1		
+4420	ኣግድም	1	TYPE_1	TYPE_1		
+4421	ኣግድሞሽ	1		TYPE_1		
+4422	ኣጉራ	1	TYPE_1	TYPE_1		
+4423	ኣጎበር	1	TYPE_3	TYPE_1		
+4424	ኣጎዛ	1	TYPE_1	TYPE_1		
+4425	ኣጎዳ	0	TYPE_1	TYPE_1		
+4426	ኣጎዶ	0	TYPE_1	TYPE_1		
+4427	ኣጎት	1	TYPE_1	TYPE_1		
+4428	ኣጎጠጎጤ	1		TYPE_1		
+4429	ኣጓት	1		TYPE_1		
+4430	ኣጓጎት	0		TYPE_1		
+4431	ኣጭሬ	1	TYPE_1	TYPE_1		
+4432	ኣጥር	1	TYPE_1	TYPE_1		
+4433	እጣቢ	1		TYPE_1		
+4434	እጥብጣቢ	1		TYPE_1		
+4435	ኣጣኝ	1	TYPE_1	TYPE_1		
+4437	እጣን	1		TYPE_1		
+4438	ኣጠፌታ	1		TYPE_1		
+4439	እጥፋት	1	TYPE_4	TYPE_1		
+4440	እጦት	1		TYPE_1		
+4441	ኣጣና	1	TYPE_1	TYPE_1		
+4442	ኣጣጥ	0		TYPE_1		
+4443	ኣጣፊኝ	1		TYPE_1		
+4444	ኣጥሚት	1		TYPE_1		
+4445	ኣጥቢያ	1	TYPE_1	TYPE_1		
+4446	ኣጥናፍ	1		TYPE_1		
+4447	ኣጥንት	1	TYPE_1	TYPE_1		
+4448	ኣጥፍ	1		TYPE_1		
+4449	ኣፀፍ	1		TYPE_1		
+4450	ኣጭታ	0		TYPE_1		
+4451	እጮኛ	1	TYPE_1	TYPE_1		
+4452	ኣጨዳ	1	TYPE_1	TYPE_1		
+4453	ኣጫዳ	0		TYPE_1		
+4454	ኣፀድ	1		TYPE_1		
+4455	ኣጠድ	1		TYPE_1		
+4456	ኣፄ	1	TYPE_1	TYPE_1		
+4457	ኣፅም	1	TYPE_1	TYPE_1		
+4458	ኣፀቅ	1		TYPE_1		
+4459	ኣጥቅ	1		TYPE_1		
+4460	ኣፅናፍ	1		TYPE_1		
+4461	ኣፈላማ	0		TYPE_1		
+4462	ኣፈሙዝ	1		TYPE_1		
+4463	ኣፈሙዝ	1		TYPE_1		
+4464	እፍረት	1		TYPE_1		
+4465	ኣፈር	1	TYPE_3	TYPE_1		
+4466	ኣፈርሳታ	1		TYPE_1		
+4467	ኣፈሳ	1	TYPE_1	TYPE_1		
+4468	ኣፈቀላጤ	1	TYPE_1	TYPE_1		
+4469	ኣፈና	1	TYPE_1	TYPE_1		
+4470	ኣፋኝ	1	TYPE_1	TYPE_1		
+4471	እፍንፍን	1		TYPE_1		
+4472	እፍኝ	1		TYPE_1		
+4473	ኣፋ	0		TYPE_1		
+4474	ኣፋፍ	1		TYPE_1		
+4475	ኣፍ	1		TYPE_1		
+4476	ኣፍላል	1	TYPE_1	TYPE_1		
+4477	ኣፍርንጅ	1		TYPE_1		
+4478	ኣፍን	0	TYPE_1	TYPE_1		
+4479	ኣፍንጫ	1	TYPE_1	TYPE_1		
+4480	ኣፎቄ	0	TYPE_1	TYPE_1		
+4481	ኣፎት	1	TYPE_1	TYPE_1		
+4482	ኤሊ	1	TYPE_1	TYPE_1		
+4483	ኤሌክትሪክ	1	TYPE_1	TYPE_1		
+4484	ኤምባሲ	1	TYPE_1	TYPE_1		
+4485	ኤሮግራም	1	TYPE_1	TYPE_1		
+4486	ኤንቨሎፕ	1	TYPE_1	TYPE_1		
+4487	ኤክስሬይ	1		TYPE_1		
+4488	ኤክስፐርት	1	TYPE_1	TYPE_1		
+4489	ኤዲተር	1	TYPE_1	TYPE_1		
+4490	ኤድስ	1		TYPE_1		
+4491	ኤግዚቢሽን	1	TYPE_1	TYPE_1		
+4492	እሁድ	1	TYPE_1	TYPE_1		
+4493	እህል	1	TYPE_1	TYPE_1		
+4494	እህት	1	TYPE_1	TYPE_1		
+4495	እህትማማች	1		TYPE_1		
+4496	እትማማች	1		TYPE_1		
+4497	እለት	1	TYPE_1	TYPE_1		
+4498	እሌት	1		TYPE_1		
+4499	እልህ	1		TYPE_1		
+4500	እልክ	1		TYPE_1		
+4501	እልል	1		TYPE_1		
+4502	እልልታ	1	TYPE_1	TYPE_1		
+4503	እልቅት	0		TYPE_1		
+4504	እልበት	1		TYPE_1		
+4505	እልፍ	1		TYPE_1		
+4506	እልፍኝ	1		TYPE_1		
+4507	እመም	1	TYPE_1	TYPE_1		
+4508	እመምኔት	1		TYPE_1		
+4509	እመርታ	1		TYPE_1		
+4510	እመበለት	1		TYPE_1		
+4511	እመቤት	1	TYPE_1	TYPE_1		
+4512	እመብርሃን	1		TYPE_1		
+4513	እመት	1	TYPE_1	TYPE_1		
+4514	እምነት	1	TYPE_1	TYPE_1		
+4515	እመጫት	1		TYPE_1		
+4516	እማ	1		TYPE_1		
+4517	እማማ	1		TYPE_1		
+4518	እማዬ	1		TYPE_1		
+4519	እሜቴ	1		TYPE_1		
+4520	እማኝ	1		TYPE_1		
+4521	እሜቴ	1		TYPE_1		
+4522	እምስ	1		TYPE_1		
+4523	እምቡር	1		TYPE_1		
+4524	እምቡስ	0		TYPE_1		
+4525	እንቡስ	0		TYPE_1		
+4526	እምቡሽቡሽ	1		TYPE_1		
+4527	እንቡጣ	1		TYPE_1		
+4528	እምቡጣ	1		TYPE_1		
+4529	እምፍርፍር	1		TYPE_1		
+4530	እንቦሳ	1	TYPE_1	TYPE_1		
+4531	እምቦሳ	1	TYPE_1	TYPE_1		
+4532	እምቧይ	1	TYPE_1	TYPE_1		
+4533	እንቧይ	1	TYPE_1	TYPE_1		
+4534	እምቧ	1		TYPE_1		
+4535	እምቧጮ	1		TYPE_1		
+4536	እንቧጮ	1		TYPE_1		
+4537	እረኛ	1	TYPE_1	TYPE_1		
+4538	እሩምታ	1		TYPE_1		
+4539	እሩር	1		TYPE_1		
+4540	እሪታ	1	TYPE_1	TYPE_1		
+4541	እራት	1	TYPE_1	TYPE_1		
+4542	እራቻ	1		TYPE_1		
+4543	እራፊ	1	TYPE_1	TYPE_1		
+4544	እሬት	1		TYPE_1		
+4545	እሬንሳ	1		TYPE_1		
+4546	እርም	1		TYPE_1		
+4547	እርሙን	1		TYPE_1		
+4548	እርምጃ	1	TYPE_1	TYPE_1		
+4549	እርርት	0		TYPE_1		
+4550	እርሳስ	1	TYPE_1	TYPE_1		
+4551	እርሾ	1		TYPE_1		
+4552	እርቃን	1	TYPE_1	TYPE_1		
+4553	እርባታ	1	TYPE_1	TYPE_1		
+4554	እርባን	0		TYPE_1		
+4555	እርቦ	1	TYPE_3	TYPE_1		
+4556	እርከን	1	TYPE_1	TYPE_1		
+4557	እርኩም	0	TYPE_1	TYPE_1		
+4558	እርክፍክፎ	1		TYPE_1		
+4559	እርካታ	1	TYPE_3	TYPE_1		
+4560	እርኮት	0		TYPE_1		
+4561	እርዳታ	1	TYPE_1	TYPE_1		
+4562	እርድ	1		TYPE_1		
+4563	እርጋታ	1	TYPE_1	TYPE_1		
+4564	እርግማን	1	TYPE_1	TYPE_1		
+4565	እርግብ	1	TYPE_1	TYPE_1		
+4566	እርግብግቢት	1		TYPE_1		
+4567	እርግብግብ	1		TYPE_1		
+4568	እርግዝና	1		TYPE_1		
+4569	እርግጫ	1	TYPE_1	TYPE_1		
+4570	እርጎ	1		TYPE_1		
+4571	እርጓ	0		TYPE_1		
+4572	እርጥባን	1		TYPE_1		
+4573	እርፍ	1		TYPE_1		
+4574	እሳት	1		TYPE_1		
+4575	እስላም	1	TYPE_1	TYPE_1		
+4576	እስልምና	1	TYPE_3	TYPE_1		
+4577	እስስት	1	TYPE_1	TYPE_1		
+4578	እስቱኮ	1		TYPE_1		
+4579	እስቴንስል	1		TYPE_1		
+4580	እስቴፕለር	1		TYPE_1		
+4581	እስትንፋስ	1		TYPE_1		
+4582	እስኩታ	0		TYPE_1		
+4583	እስክሪፕቶ	1		TYPE_1		
+4584	እስክስታ	1	TYPE_1	TYPE_1		
+4585	እስክስ	1		TYPE_1		
+4586	እስኮላርሽፕ	1		TYPE_1		
+4587	እስኮችቴፕ	1		TYPE_1		
+4588	እስፒል	1	TYPE_1	TYPE_1		
+4589	እሸት	1		TYPE_1		
+4590	እሺታ	1	TYPE_1	TYPE_1		
+4591	እሽሩሩ	1		TYPE_1		
+4592	እሽኮለሌ	1		TYPE_1		
+4593	እሽኮኮ	1	TYPE_1	TYPE_1		
+4594	እንኮኮ	1	TYPE_1	TYPE_1		
+4595	እሾህ	1		TYPE_1		
+4596	እሾክ	1	TYPE_1	TYPE_1		
+4597	እቁባት	1	TYPE_1	TYPE_1		
+4598	እቁብ	1	TYPE_1	TYPE_1		
+4599	እቃ	1	TYPE_1	TYPE_1		
+4600	እበት	1	TYPE_1	TYPE_1		
+4601	እባብ	1	TYPE_1	TYPE_1		
+4602	እብሪት	1	TYPE_1	TYPE_1		
+4603	እብቅ	1		TYPE_1		
+4604	እብነበረድ	1		TYPE_1		
+4605	እቴቴ	1		TYPE_1		
+4606	እቴጌ	1	TYPE_1	TYPE_1		
+4607	እትዬ	1		TYPE_1		
+4608	እቶን	1		TYPE_1		
+4609	እናት	1	TYPE_1	TYPE_1		
+4610	እንሰሳ	1	TYPE_1	TYPE_1		
+4611	እንስሳ	1	TYPE_1	TYPE_1		
+4612	እንሰት	1		TYPE_1		
+4613	እንስላል	1		TYPE_1		
+4614	እንስራ	1	TYPE_1	TYPE_1		
+4615	እንስት	1	TYPE_1	TYPE_1		
+4616	እንሶስላ	1		TYPE_1		
+4617	እንሻፎ	1		TYPE_1		
+4618	እንሽላሊት	1	TYPE_1	TYPE_1		
+4619	እንሽርት	1		TYPE_1		
+4620	እንቀት	0		TYPE_1		
+4621	እንቁ	1	TYPE_1	TYPE_1		
+4622	እንቁላል	1	TYPE_1	TYPE_1		
+4624	እንቁልጭልጮሽ	1		TYPE_1		
+4625	እንቁልልጮሽ	1		TYPE_1		
+4626	እንቁራሪት	1	TYPE_1	TYPE_1		
+4627	እንቁር	0		TYPE_1		
+4628	እንቁርባ	0		TYPE_1		
+4629	እንቁጣጣሽ	1		TYPE_1		
+4630	እንቁጥቁጥ	1		TYPE_1		
+4631	እንቃቅላ	0	TYPE_1	TYPE_1		
+4632	እንቅርት	1		TYPE_1		
+4633	እንቅብ	1		TYPE_1		
+4634	እንቅጠቃጭ	1		TYPE_1		
+4635	እንቆቅልሽ	1	TYPE_1	TYPE_1		
+4636	እንቆቆ	1		TYPE_1		
+4637	እንቡጣጢያ	1		TYPE_1		
+4638	እምቡጣጢያ	1		TYPE_1		
+4639	እንቡጭቡጭ	1		TYPE_1		
+4640	እንቡፍና	1		TYPE_1		
+4641	እምቡፍና	1		TYPE_1		
+4642	እንቢታ	1		TYPE_1		
+4643	እምቢልታ	1		TYPE_1		
+4644	እንቢልተኛ	1		TYPE_1		
+4645	እንቢያጎስ	0		TYPE_1		
+4646	እንብርቢጣ	0		TYPE_1		
+4647	እንብርት	1		TYPE_1		
+4648	እምብርት	1		TYPE_1		
+4649	እንቦሳ	1	TYPE_1	TYPE_1		
+4650	እምቦሳ	1	TYPE_1	TYPE_1		
+4651	እንቦቀቅላ	1		TYPE_1		
+4652	እንቦቃቅላ	1		TYPE_1		
+4653	እንቧይ	1		TYPE_1		
+4654	እምቧይ	1		TYPE_1		
+4655	እንቧጭ	1		TYPE_1		
+4656	እምቧጭ	1		TYPE_1		
+4657	እንትፍታ	1		TYPE_1		
+4658	እንችፍ	1		TYPE_1		
+4659	እንከን	1	TYPE_1	TYPE_1		
+4660	እንክርት	1	TYPE_1	TYPE_1		
+4661	ኣንከርት	1	TYPE_1	TYPE_1		
+4662	እንክርዳድ	1		TYPE_1		
+4663	እንክብል	1	TYPE_1	TYPE_1		
+4664	እንክብካቤ	1	TYPE_1	TYPE_1		
+4665	እንኮይ	1		TYPE_1		
+4666	እንዘረዘይ	0		TYPE_1		
+4667	እንዚራ	1		TYPE_1		
+4668	እንዛዝላ	1		TYPE_1		
+4669	እንዝርት	1	TYPE_1	TYPE_1		
+4670	እንዝዝ	0		TYPE_1		
+4671	እንዡባን	0		TYPE_1		
+4672	እንጁባን	0		TYPE_1		
+4673	እንዥቦ	0		TYPE_1		
+4674	እንጅቦ	0		TYPE_1		
+4675	እንጅሞ	0		TYPE_1		
+4676	እንደሆህላ	1		TYPE_1		
+4677	እንዳሁላ	1		TYPE_1		
+4678	እንድርማሚት	0		TYPE_1		
+4679	እንዶድ	1		TYPE_1		
+4680	እንጀራ	1		TYPE_1		
+4681	እንጅላት	1	TYPE_1	TYPE_1		
+4682	እንጅልሽ	0		TYPE_1		
+4683	እንጆሪ	1		TYPE_1		
+4684	እንገር	1		TYPE_1		
+4685	እንጉዳይ	1		TYPE_1		
+4686	እንሊላ	1		TYPE_1		
+4687	እንግላል	1		TYPE_1		
+4688	እንግዲህስ	1		TYPE_1		
+4689	እንግዳ	1	TYPE_1	TYPE_1		
+4690	እንግጫ	1		TYPE_1		
+4691	እንጣቆ	0	TYPE_1	TYPE_1		
+4692	ኣንጣቆ	0	TYPE_1	TYPE_1		
+4693	እንጣጢት	0		TYPE_1		
+4694	እንጥል	1		TYPE_1		
+4695	እንጥስታ	1		TYPE_1		
+4696	እንጦ	0		TYPE_1		
+4697	እንጦርጦስ	1		TYPE_1		
+4698	እንጨት	1	TYPE_1	TYPE_1		
+4699	እንጭብር	1		TYPE_1		
+4700	እንፉጭ	0		TYPE_1		
+4701	እንፋሎት	1		TYPE_1		
+4702	እንፍሌ	0		TYPE_1		
+4703	እክል	1	TYPE_1	TYPE_1		
+4704	እውነታ	1	TYPE_1	TYPE_1		
+4705	እውነት	1	TYPE_1	TYPE_1		
+4706	እዝል	1		TYPE_1		
+4707	እይታ	1	TYPE_1	TYPE_1		
+4708	እዳ	1	TYPE_1	TYPE_1		
+4709	እዳሪ	1		TYPE_1		
+4710	እዳይት	0		TYPE_1		
+4711	እድያት	0		TYPE_1		
+4712	እድሜ	1	TYPE_1	TYPE_1		
+4713	እድሞ	0		TYPE_1		
+4714	እድር	1	TYPE_1	TYPE_1		
+4715	እድርተኛ	1		TYPE_1		
+4716	እጀታ	1	TYPE_1	TYPE_1		
+4717	እጅ	1	TYPE_1	TYPE_1		
+4718	እጅጌ	1	TYPE_1	TYPE_1		
+4719	እግር	1	TYPE_1	TYPE_1		
+4720	እግዚኣብሄር	1		TYPE_1		
+4721	እግዜር	1		TYPE_1		
+4722	እግዚኦታ	1		TYPE_1		
+4723	እጓለማውታ	1	TYPE_4	TYPE_1		
+4724	እጓለማውታን	1	TYPE_4	TYPE_1		
+4725	እጢ	1	TYPE_1	TYPE_1		
+4726	እጣ	1	TYPE_1	TYPE_1		
+4727	እጨጌ	1	TYPE_1	TYPE_1		
+4728	እጭ	1	TYPE_1	TYPE_1		
+4729	እፀብ	1		TYPE_1		
+4730	እፀ	1		TYPE_1		
+4731	እፅዋት	1	TYPE_1	TYPE_1		
+4732	እፀፋርስ	1		TYPE_1		
+4733	እጠፋሪስ	1		TYPE_1		
+4734	እፉኝት	1	TYPE_1	TYPE_1		
+4735	እፍያ	1		TYPE_1		
+4736	እፎይ	1		TYPE_1		
+4737	ኦሞ	1	TYPE_1	TYPE_1		
+4738	ኦሪት	1		TYPE_1		
+4739	ኦርቶዶክስ	1	TYPE_1	TYPE_1		
+4740	ኦርኬስትራ	1		TYPE_1		
+4741	ኦርጋን	1		TYPE_1		
+4742	ኦዞን	1		TYPE_1		
+4743	ኦፈ	1		TYPE_1		
+4744	ኦፔራ	1		TYPE_1		
+4745	አሉባልታ	1	TYPE_1	TYPE_1		
+4746	አባባል	1	TYPE_1	TYPE_1		
+4747	አለሎ	1	TYPE_1	TYPE_1		
+4748	አላሚ	1	TYPE_1	TYPE_1		
+4749	አልማጭ	1	TYPE_1	TYPE_1		
+4750	አልቃሽ	1	TYPE_1	TYPE_1		
+4751	አልቃሻ	1	TYPE_1	TYPE_1		
+4752	አላቃሽ	1	TYPE_1	TYPE_1		
+4753	አስለቃሽ	1	TYPE_1	TYPE_1		
+4754	አለቃ	1	TYPE_1	TYPE_1		
+4755	አለቅነት	1		TYPE_1		
+4756	እልቅና	1		TYPE_1		
+4757	አላቢ	1	TYPE_1	TYPE_1		
+4758	እልባት	1	TYPE_1	TYPE_1		
+4759	አለት	1	TYPE_1	TYPE_1		
+4760	አለንጋ	1	TYPE_1	TYPE_1		
+4761	አለኝታ	1	TYPE_1	TYPE_1		
+4762	አልጓሚ	0		TYPE_1		
+4763	አላፊ	1		TYPE_1		
+4764	አላፊነት	1		TYPE_1		
+4765	እልፊት	1		TYPE_1		
+4766	አሳላፊ	1	TYPE_1	TYPE_1		
+4767	አሉባልታ	1	TYPE_1	TYPE_1		
+4768	አሉማ	1		TYPE_1		
+4769	አሉታ	1	TYPE_1	TYPE_1		
+4770	አላባ	1		TYPE_1		
+4771	አላድ	1		TYPE_1		
+4772	አልማዝ	1		TYPE_1		
+4773	አልቦ	1		TYPE_1		
+4774	አልኮል	1		TYPE_1		
+4775	አልኮስኳሽ	1		TYPE_1		
+4776	አልጋ	1	TYPE_1	TYPE_1		
+4777	አልጎምጓሚ	1		TYPE_1		
+4778	አሎሎ	1	TYPE_1	TYPE_1		
+4779	አመልማሎ	1		TYPE_1		
+4780	አመልካች	1	TYPE_1	TYPE_1		
+4781	አምላኪ	1	TYPE_1	TYPE_1		
+4782	አምላክ	1		TYPE_1		
+4783	አምልኮ	1	TYPE_1	TYPE_1		
+4784	አመል	1		TYPE_1		
+4785	አማሽ	1		TYPE_1		
+4786	አመሰቃቃይ	1		TYPE_1		
+4787	አመት	1	TYPE_1	TYPE_1		
+4788	አማኝ	1	TYPE_1	TYPE_1		
+4789	አሳማኝ	1	TYPE_1	TYPE_1		
+4790	አመንዛሪ	1		TYPE_1		
+4791	አመንዝራ	1		TYPE_1		
+4792	አመድ	1		TYPE_1		
+4793	አመዳይ	1		TYPE_1		
+4794	አሙስ	1	TYPE_1	TYPE_1		
+4795	አሚና	1		TYPE_1		
+4796	አሜት	1		TYPE_1		
+4797	አሜታ	1		TYPE_1		
+4798	አሜተኛ	1		TYPE_1		
+4799	አምሮት	1	TYPE_1	TYPE_1		
+4800	አማራ	1	TYPE_1	TYPE_1		
+4801	አማርኛ	1		TYPE_1		
+4802	አማን	1		TYPE_1		
+4803	አማት	1	TYPE_1	TYPE_1		
+4804	አማካኝ	1		TYPE_1		
+4805	አማች	1	TYPE_1	TYPE_1		
+4806	አሜሪካ	1	TYPE_1	TYPE_1		
+4807	አሜን	1		TYPE_1		
+4808	አሜከላ	1		TYPE_1		
+4809	አምላክ	1		TYPE_1		
+4810	አምሳ	1	TYPE_1	TYPE_1		
+4811	አምሳል	1	TYPE_1	TYPE_1		
+4812	አምሳያ	1	TYPE_1	TYPE_1		
+4813	አምበል	1	TYPE_1	TYPE_1		
+4814	አምቡላ	1	TYPE_1	TYPE_1		
+4815	አምቡላንስ	1	TYPE_1	TYPE_1		
+4816	አምባ	1	TYPE_1	TYPE_1		
+4817	አምባጓሮ	1		TYPE_1		
+4818	አምባራይሌ	1		TYPE_1		
+4819	አምባር	1	TYPE_1	TYPE_1		
+4820	አንባር	1	TYPE_1	TYPE_1		
+4821	አምባሳደር	1	TYPE_1	TYPE_1		
+4822	አምባሻ	1		TYPE_1		
+4823	አምባዛ	1	TYPE_3	TYPE_1		
+4824	አምቦልክ	1	TYPE_1	TYPE_1		
+4825	አምቦፕል	1	TYPE_1	TYPE_1		
+4826	አንቦልክ	1	TYPE_1	TYPE_1		
+4827	አምና	1		TYPE_1		
+4828	አምፑል	1	TYPE_1	TYPE_1		
+4829	አሞሌ	1		TYPE_1		
+4830	አሞራ	1	TYPE_1	TYPE_1		
+4831	አሞት	1		TYPE_1		
+4832	አሞጭ	1		TYPE_1		
+4833	አሣማ	1	TYPE_1	TYPE_1		
+4834	አሣሪ	1	TYPE_1	TYPE_1		
+4835	አሣር	1		TYPE_1		
+4836	እሥረኛ	1	TYPE_1	TYPE_1		
+4837	እሥራት	1		TYPE_1		
+4838	እሥር	1		TYPE_1		
+4839	አሠር	1	TYPE_1	TYPE_1		
+4840	አሥጋሪ	1	TYPE_1	TYPE_1		
+4842	አረህ	1		TYPE_1		
+4843	አረሆ	1		TYPE_1		
+4844	አረሖ	1		TYPE_1		
+4845	አረም	1	TYPE_1	TYPE_1		
+4846	አራሙቻ	1		TYPE_1		
+4847	አራሚ	1		TYPE_1		
+4848	እርማት	1	TYPE_1	TYPE_1		
+4849	አረመኔነት	1		TYPE_1		
+4850	አረማዊ	1		TYPE_1		
+4851	አረር	1		TYPE_1		
+4852	አራስ	1	TYPE_1	TYPE_1		
+4853	አራሽ	1	TYPE_1	TYPE_1		
+4854	እራሽ	1		TYPE_1		
+4855	ኣሳራሽ	1		TYPE_1		
+4856	አራጅ	1	TYPE_1	TYPE_1		
+4857	አርጂ	1	TYPE_1	TYPE_1		
+4858	አሮጊት	1	TYPE_1	TYPE_1		
+4859	አርጋጅ	1		TYPE_1		
+4860	አረግራጊ	1	TYPE_1	TYPE_1		
+4861	አረጋዊ	1	TYPE_3	TYPE_1		
+4862	አረግ	1		TYPE_1		
+4863	አረጥራጭ	1		TYPE_1		
+4864	አረፋ	1		TYPE_1		
+4865	አሪትሜቲክ	1		TYPE_1		
+4866	አር	1		TYPE_1		
+4867	አራዊት	1	TYPE_1	TYPE_1		
+4868	አውሬ	1	TYPE_1	TYPE_1		
+4869	አራጣ	1		TYPE_1		
+4870	አሬራ	1		TYPE_1		
+4871	አርማ	1	TYPE_1	TYPE_1		
+4872	አርመን	1	TYPE_1	TYPE_1		
+4873	አርሲ	1	TYPE_1	TYPE_1		
+4874	አርሽብ	1	TYPE_1	TYPE_1		
+4875	አርሺብ	1	TYPE_1	TYPE_1		
+4876	አርበኛ	1	TYPE_1	TYPE_1		
+4877	አርበኝነት	1		TYPE_1		
+4878	አርቲቡርቲ	1		TYPE_1		
+4879	አርነት	1		TYPE_1		
+4880	አርአያ	1	TYPE_1	TYPE_1		
+4881	አርአያነት	1		TYPE_1		
+4882	አርእስት	1	TYPE_1	TYPE_1		
+4883	አርኪዮሎጂ	1		TYPE_1		
+4884	አርዘሊባኖስ	1		TYPE_1		
+4885	ኣርድእት	1	TYPE_1	TYPE_1		
+4886	አርጃኖ	1		TYPE_1		
+4887	አርጋኖን	1		TYPE_1		
+4888	አርጩሜ	1	TYPE_1	TYPE_1		
+4889	አሰሳ	1	TYPE_1	TYPE_1		
+4890	አሳብ	1	TYPE_1	TYPE_1		
+4891	አሳሳቢ	1		TYPE_1		
+4893	አሰት	1		TYPE_1		
+4894	አሰናጅ	1		TYPE_1		
+4895	አሲድ	1	TYPE_1	TYPE_1		
+4896	አሳማ	1	TYPE_1	TYPE_1		
+4897	አሳንሳር	1	TYPE_1	TYPE_1		
+4898	አሳጪ	1		TYPE_1		
+4899	አስማ	1		TYPE_1		
+4900	አስማት	1	TYPE_1	TYPE_1		
+4901	አስማተኛ	1	TYPE_1	TYPE_1		
+4902	አስረካቢ	1	TYPE_1	TYPE_1		
+4905	አስተማሪ	1	TYPE_1	TYPE_1		
+4906	አስተናጋጅ	1	TYPE_1	TYPE_1		
+4907	አስከሬን	1	TYPE_1	TYPE_1		
+4908	አስኳል	1	TYPE_1	TYPE_1		
+4909	አስደራጊ	1		TYPE_1		
+4910	አስገኚ	1		TYPE_1		
+4911	አስፋልት	1	TYPE_1	TYPE_1		
+4912	አሽታ	1		TYPE_1		
+4913	አሸባሪ	1	TYPE_1	TYPE_1		
+4914	እሸት	1		TYPE_1		
+4915	አሸናፊ	1	TYPE_1	TYPE_1		
+4916	አሸንክታብ	1	TYPE_1	TYPE_1		
+4917	አሸንዳ	1	TYPE_1	TYPE_1		
+4918	አሸዋ	1		TYPE_1		
+4919	አሸዋነት	1		TYPE_1		
+4920	አሹራ	1		TYPE_1		
+4921	አሻራ	1	TYPE_1	TYPE_1		
+4922	አሻንጉሊት	1	TYPE_1	TYPE_1		
+4923	አሽሙር	1		TYPE_1		
+4924	አሽሙረኛ	1	TYPE_1	TYPE_1		
+4925	አሽሟጣጭ	1	TYPE_1	TYPE_1		
+4926	አሽሟጣጭ	1	TYPE_1	TYPE_1		
+4927	አሽሟጣ	1		TYPE_1		
+4928	እሽክርክሪት	1		TYPE_1		
+4929	አሽከር	1	TYPE_1	TYPE_1		
+4930	አሽከርነት	1		TYPE_1		
+4931	አሹቅ	1		TYPE_1		
+4932	አቀባይ	1	TYPE_1	TYPE_1		
+4933	አቅኚ	1	TYPE_3	TYPE_1		
+4934	አቀናባሪ	1	TYPE_1	TYPE_1		
+4935	አቀነባባሪ	1		TYPE_1		
+4936	እቅፍ	1	TYPE_1	TYPE_1		
+4937	አቁማዳ	1	TYPE_1	TYPE_1		
+4938	አቅማዳ	1		TYPE_1		
+4939	አቃቂር	1		TYPE_1		
+4940	አቃጣሪ	1	TYPE_1	TYPE_1		
+4941	አቅጣጫ	1	TYPE_1	TYPE_1		
+4942	አግጣጫ	1		TYPE_1		
+4944	አቆላማጭ	1	TYPE_1	TYPE_1		
+4945	አቋቋም	1	TYPE_1	TYPE_1		
+4946	አባይ	1		TYPE_1		
+4947	አባይነት	1		TYPE_1		
+4948	አስተባባይ	1		TYPE_1		
+4949	አበል	1		TYPE_1		
+4950	አበር	1		TYPE_1		
+4951	አባሪ	1	TYPE_1	TYPE_1		
+4952	አስተባባሪ	1	TYPE_1	TYPE_1		
+4953	አበሳ	1		TYPE_1		
+4954	አበባ	1	TYPE_1	TYPE_1		
+4955	አበጋዝ	1	TYPE_1	TYPE_1		
+4956	እብጠት	1		TYPE_1		
+4957	አበጣሪ	1		TYPE_1		
+4958	አቡን	1		TYPE_1		
+4959	አቡጀዲ	1		TYPE_1		
+4960	አቡጊዳ	1		TYPE_1		
+4961	አባ	1		TYPE_1		
+4962	አባወራ	1	TYPE_1	TYPE_1		
+4963	አባጨጓሬ	1	TYPE_1	TYPE_1		
+4964	አባል	1	TYPE_1	TYPE_1		
+4965	አባላዘር	1		TYPE_1		
+4966	አባልነት	1		TYPE_1		
+4967	አባባ	1		TYPE_1		
+4968	አባት	1	TYPE_1	TYPE_1		
+4969	አቤቱታ	1	TYPE_1	TYPE_1		
+4970	አብሲት	1		TYPE_1		
+4971	አብሽ	1		TYPE_1		
+4972	አብነት	1		TYPE_1		
+4973	አቦሬ	1		TYPE_1		
+4974	አቧራ	1		TYPE_1		
+4975	አቦሸማኔ	1	TYPE_1	TYPE_1		
+4976	አተላ	1		TYPE_1		
+4977	አታሚ	1	TYPE_1	TYPE_1		
+4978	እትም	1	TYPE_1	TYPE_1		
+4979	አሳታሚ	1	TYPE_1	TYPE_1		
+4981	አተራማሽ	1	TYPE_1	TYPE_1		
+4982	አተር	1		TYPE_1		
+4983	አታቢ	1	TYPE_1	TYPE_1		
+4984	እትብት	1		TYPE_1		
+4985	አተታ	1	TYPE_1	TYPE_1		
+4986	አታሞ	1	TYPE_1	TYPE_1		
+4987	አቴና	1		TYPE_1		
+4988	አትሮንስ	1		TYPE_1		
+4989	አቶ	1		TYPE_1		
+4990	አቻምና	1		TYPE_1		
+4991	አነሣሽ	1	TYPE_1	TYPE_1		
+4992	አነር	1	TYPE_1	TYPE_1		
+4993	አንቃፊ	1		TYPE_1		
+4994	እንቅፋት	1		TYPE_1		
+4995	አነቃቂ	1		TYPE_1		
+4996	አናባቢ	1	TYPE_1	TYPE_1		
+4997	አነባበሮ	1		TYPE_1		
+4998	እንባ	1		TYPE_1		
+4999	እምባ	1		TYPE_1		
+5000	አድርቅ	1	TYPE_1	TYPE_1		
+5001	አንካሴ	1	TYPE_1	TYPE_1		
+5002	አነኰረ	1		TYPE_1		
+5003	እንኩሮ	1		TYPE_1		
+5004	እንኩቶ	1		TYPE_1		
+5005	አስነዋሪ	1		TYPE_1		
+5006	እንግብ	1		TYPE_1		
+5007	አንጋች	1		TYPE_1		
+5008	እንጐቻ	1	TYPE_1	TYPE_1		
+5009	አናጢ	1	TYPE_1	TYPE_1		
+5010	አናጢነት	1		TYPE_1		
+5012	አንጥረኛ	1	TYPE_1	TYPE_1		
+5013	አንጣፊ	1	TYPE_1	TYPE_1		
+5014	አነጣጣሪ	1		TYPE_1		
+5015	አናት	1		TYPE_1		
+5017	እንቅልፍ	1		TYPE_1		
+5018	አንቀልባ	1		TYPE_1		
+5019	አንቀጽ	1	TYPE_1	TYPE_1		
+5021	አንቃር	1		TYPE_1		
+5022	አንበሪ	1	TYPE_1	TYPE_1		
+5023	ዓሣ	1	TYPE_1	TYPE_1		
+5024	አንበሳ	1	TYPE_1	TYPE_1		
+5025	አንበጣ	1	TYPE_1	TYPE_1		
+5026	አንተ	1		TYPE_1		
+5027	አንቱ	1		TYPE_1		
+5028	አንቱታ	1		TYPE_1		
+5029	አንቴና	1	TYPE_1	TYPE_1		
+5030	አንቺ	1		TYPE_1		
+5031	አንቺዬ	1		TYPE_1		
+5032	እንክብካቤ	1		TYPE_1		
+5033	አንካሴ	1	TYPE_1	TYPE_1		
+5034	አንኮላ	1	TYPE_1	TYPE_1		
+5035	አንኳር	1		TYPE_1		
+5036	አንዠት	1		TYPE_1		
+5037	አንጀት	1		TYPE_1		
+5038	አንደበት	1		TYPE_1		
+5039	አንዳች	1		TYPE_1		
+5040	አንድላንድ	1		TYPE_1		
+5041	አንድም	1		TYPE_1		
+5042	እያንዳንዱ	1		TYPE_1		
+5044	አንጃ	1	TYPE_1	TYPE_1		
+5045	አንገት	1		TYPE_1		
+5046	አንገትጌ	1		TYPE_1		
+5047	አንገዋላይ	1		TYPE_1		
+5048	አንጋሬ	1		TYPE_1		
+5050	አንጋፋ	1	TYPE_1	TYPE_1		
+5051	አንጐል	1		TYPE_1		
+5052	አንጐለቢስ	1		TYPE_1		
+5053	እንጕርጕሮ	1		TYPE_1		
+5054	አንጓ	1		TYPE_1		
+5055	አንጓላይ	1		TYPE_1		
+5056	አንጦርጦስ	1		TYPE_1		
+5058	አንጻር	1	TYPE_1	TYPE_1		
+5059	አእምሮ	1		TYPE_1		
+5060	እኩል	1		TYPE_1		
+5063	አኪም	1	TYPE_1	TYPE_1		
+5064	አሳካሚ	1	TYPE_1	TYPE_1		
+5065	አከምባሎ	1	TYPE_1	TYPE_1		
+5066	አከርካሪ	1		TYPE_1		
+5069	እከክ	1		TYPE_1		
+5070	አክፋይ	1		TYPE_1		
+5071	አክፍሎት	1		TYPE_1		
+5072	አካል	1	TYPE_1	TYPE_1		
+5073	አካላት	1	TYPE_4	TYPE_1		
+5075	አካፋ	1	TYPE_1	TYPE_1		
+5077	አክሊል	1		TYPE_1		
+5078	አክምባሎ	1		TYPE_1		
+5079	አክታ	1		TYPE_1		
+5080	አክርማ	1		TYPE_1		
+5081	አክስት	1	TYPE_1	TYPE_1		
+5082	አክሲዮን	1	TYPE_1	TYPE_1		
+5085	አኮፋዳ	1		TYPE_1		
+5087	አኰቴት	1		TYPE_1		
+5089	አውሪ	1		TYPE_1		
+5090	አወንታ	1	TYPE_1	TYPE_1		
+5091	እውከት	1		TYPE_1		
+5098	አዋልደጌሻ	1		TYPE_1		
+5099	አዋራ	1		TYPE_1		
+5100	አቧራ	1		TYPE_1		
+5104	አዋዜ	1		TYPE_1		
+5105	አውላላ	1		TYPE_1		
+5107	አውራ	1	TYPE_1	TYPE_1		
+5112	አውራሪስ	1	TYPE_1	TYPE_1		
+5113	አውራጃ	1	TYPE_1	TYPE_1		
+5114	አውሬ	1	TYPE_1	TYPE_1		
+5115	አውሬነት	1		TYPE_1		
+5116	አውሮፕላን	1	TYPE_1	TYPE_1		
+5117	አውሮፓ	1	TYPE_1	TYPE_1		
+5118	አውሮጳ	1	TYPE_1	TYPE_1		
+5119	አውታር	1	TYPE_1	TYPE_1		
+5120	አውቶቡስ	1	TYPE_1	TYPE_1		
+5121	አውድማ	1	TYPE_1	TYPE_1		
+5122	አወንታ	1	TYPE_1	TYPE_1		
+5123	አዕማድ	1		TYPE_1		
+5125	አንቀልባ	1		TYPE_1		
+5126	አዘንተኛ	1		TYPE_1		
+5128	አዙሪት	1		TYPE_1		
+5129	አዘዋሪት	1		TYPE_1		
+5130	አዛባ	1		TYPE_1		
+5131	አዛውንት	1	TYPE_1	TYPE_1		
+5133	አዝሙድ	1		TYPE_1		
+5136	አዝራር	1	TYPE_1	TYPE_1		
+5138	አየር	1		TYPE_1		
+5144	አያ	1		TYPE_1		
+5145	አያት	1	TYPE_1	TYPE_1		
+5146	አያያ	1		TYPE_1		
+5147	አይሁድ	1	TYPE_1	TYPE_1		
+5148	አይብ	1		TYPE_1		
+5149	አይቦ	1		TYPE_1		
+5150	አይጥ	1	TYPE_1	TYPE_1		
+5151	እድል	1	TYPE_1	TYPE_1		
+5152	አድላዊ	1		TYPE_1		
+5153	አድመኛ	1		TYPE_1		
+5154	አድማ	1	TYPE_1	TYPE_1		
+5155	እድመኛ	1		TYPE_1		
+5157	እዳሪ	1		TYPE_1		
+5158	አዳር	1	TYPE_1	TYPE_1		
+5159	እድር	1	TYPE_1	TYPE_1		
+5160	እድርተኛ	1		TYPE_1		
+5162	አደራ	1	TYPE_1	TYPE_1		
+5164	አበባ	1	TYPE_1	TYPE_1		
+5166	እደሳ	1		TYPE_1		
+5167	አደበ	1		TYPE_1		
+5168	አደብ	1		TYPE_1		
+5169	አደባባይ	1	TYPE_1	TYPE_1		
+5170	አደን	1		TYPE_1		
+5171	አዳኝ	1	TYPE_1	TYPE_1		
+5172	አደንጓሬ	1		TYPE_1		
+5175	እድገት	1	TYPE_1	TYPE_1		
+5176	አሳዳጊ	1	TYPE_1	TYPE_1		
+5177	አስተዳደግ	1		TYPE_1		
+5178	አደፍ	1		TYPE_1		
+5179	እድፍ	1		TYPE_1		
+5180	አደጋ	1	TYPE_1	TYPE_1		
+5181	አደገኛ	1		TYPE_1		
+5183	አዱኛ	1		TYPE_1		
+5184	አዳም	1		TYPE_1		
+5185	አዳራሽ	1	TYPE_1	TYPE_1		
+5186	አድማስ	1		TYPE_1		
+5187	አድባር	1	TYPE_1	TYPE_1		
+5188	አዶ	1		TYPE_1		
+5189	አጀንዳ	1	TYPE_1	TYPE_1		
+5190	አጀብ	1		TYPE_1		
+5191	አጃቢ	1	TYPE_1	TYPE_1		
+5192	አጃ	1		TYPE_1		
+5194	አገር	1	TYPE_1	TYPE_1		
+5195	አገሬ	1		TYPE_1		
+5200	አገባብ	1		TYPE_1		
+5203	አገናኝ	1	TYPE_1	TYPE_1		
+5204	እገዛ	1		TYPE_1		
+5206	አጋጅ	1		TYPE_1		
+5207	አገዳ	1		TYPE_1		
+5208	አገጭ	1		TYPE_1		
+5209	አጋም	1		TYPE_1		
+5210	አጋር	1	TYPE_1	TYPE_1		
+5211	አጋሰስ	1	TYPE_1	TYPE_1		
+5212	አጋንዱራ	1	TYPE_1	TYPE_1		
+5213	አጋዘን	1	TYPE_1	TYPE_1		
+5215	አጋፋሪ	1	TYPE_1	TYPE_1		
+5217	አግባብ	1		TYPE_1		
+5218	አጎበር	1		TYPE_1		
+5219	አጎት	1	TYPE_1	TYPE_1		
+5221	አጎዛ	1		TYPE_1		
+5222	አጐበር	1		TYPE_1		
+5223	አጎበር	1		TYPE_1		
+5224	አጓት	1		TYPE_1		
+5225	እጥረት	1		TYPE_1		
+5226	አጥር	1	TYPE_1	TYPE_1		
+5228	አጠባ	1		TYPE_1		
+5229	አጣቢ	1	TYPE_1	TYPE_1		
+5230	እጣቢ	1		TYPE_1		
+5231	እጥበት	1		TYPE_1		
+5232	እጥቤ	1		TYPE_1		
+5233	እጣን	1		TYPE_1		
+5234	እጥነት	1		TYPE_1		
+5235	እጥፍ	1		TYPE_1		
+5236	እጥፋት	1	TYPE_1	TYPE_1		
+5238	እጦት	1		TYPE_1		
+5239	አጣሪ	1	TYPE_1	TYPE_1		
+5240	አጣና	1		TYPE_1		
+5241	አጣጥ	1		TYPE_1		
+5242	አጤ	1	TYPE_1	TYPE_1		
+5243	አጼ	1	TYPE_1	TYPE_1		
+5244	አጥሚት	1		TYPE_1		
+5245	አጥቅ	1		TYPE_1		
+5246	አጥቢያ	1		TYPE_1		
+5249	እጥናፍ	1		TYPE_1		
+5251	አጨዳ	1		TYPE_1		
+5252	አጸፋ	1		TYPE_1		
+5253	አጽቅ	1		TYPE_1		
+5254	አፈላማ	1		TYPE_1		
+5255	አፈሙዝ	1	TYPE_1	TYPE_1		
+5256	እፍረት	1		TYPE_1		
+5258	አፈር	1		TYPE_1		
+5259	አፈሳ	1		TYPE_1		
+5260	እፋሽ	1		TYPE_1		
+5261	አፈና	1	TYPE_1	TYPE_1		
+5262	አፋኝ	1	TYPE_1	TYPE_1		
+5263	እፍኝ	1		TYPE_1		
+5264	አፈንጋጭ	1	TYPE_1	TYPE_1		
+5265	እፋፊ	1		TYPE_1		
+5267	አፋፍ	1		TYPE_1		
+5268	አፍ	1		TYPE_1		
+5269	አፈማር	1		TYPE_1		
+5270	አፈታሪክ	1	TYPE_1	TYPE_1		
+5272	አፈንጉስ	1	TYPE_1	TYPE_1		
+5273	አፍለኛ	1		TYPE_1		
+5275	አፍላ	1	TYPE_1	TYPE_1		
+5276	አፍላል	1		TYPE_1		
+5277	አፍሪቃ	1	TYPE_1	TYPE_1		
+5278	አፍሪቃዊ	1		TYPE_1		
+5279	አፍርንጅ	1		TYPE_1		
+5280	አፍንጫ	1		TYPE_1		
+5281	አፍአ	1		TYPE_1		
+5282	አፎት	1		TYPE_1		
+5283	አፎቄ	1		TYPE_1		
+5284	አፍዮን	1		TYPE_1		
+5285	አፓርትማ	1	TYPE_1	TYPE_1		
+5286	ኡጋንዳ	1	TYPE_1	TYPE_1		
+5287	ኢሉባቦር	1	TYPE_1	TYPE_1		
+5288	ኢምንት	1		TYPE_1		
+5289	ኢትዮጵያ	1	TYPE_1	TYPE_1		
+5290	ኢትዮጵያዊ	1		TYPE_1		
+5291	ኢትዮጵያዊት	1		TYPE_1		
+5292	ኢንሹ	1		TYPE_1		
+5293	ኢየሩሳሌም	1	TYPE_1	TYPE_1		
+5294	ኢየሱስ	1		TYPE_1		
+5295	ኢየሱሳዊ	1		TYPE_1		
+5296	ኢዮቤልዩ	1		TYPE_1		
+5297	ኢጣልያ	1	TYPE_1	TYPE_1		
+5298	ኢጣልያንኛ	1		TYPE_1		
+5299	ኢጣልያዊ	1		TYPE_1		
+5300	ኤሊ	1	TYPE_1	TYPE_1		
+5301	ኤርትራ	1	TYPE_1	TYPE_1		
+5302	ኤርትራዊ	1		TYPE_1		
+5303	ኤክዌተር	1		TYPE_1		
+5305	ኤጲፋንያ	1		TYPE_1		
+5306	እህል	1	TYPE_1	TYPE_1		
+5307	እህት	1	TYPE_1	TYPE_1		
+5308	እህትማማች	1		TYPE_1		
+5309	እልቅት	1		TYPE_1		
+5310	እልቅና	1		TYPE_1		
+5311	እልባት	1		TYPE_1		
+5312	እልክ	1		TYPE_1		
+5313	እልፍኝ	1		TYPE_1		
+5314	አስከልካይ	1		TYPE_1		
+5315	አሽከር	1	TYPE_1	TYPE_1		
+5316	እሁድ	1	TYPE_1	TYPE_1		
+5317	እመቤት	1		TYPE_1		
+5318	እመቤታችን	1		TYPE_1		
+5319	እመጫት	1		TYPE_1		
+5321	እማሆይ	1		TYPE_1		
+5322	እምቡሽቡሽ	1		TYPE_1		
+5323	እምቡዋይ	1		TYPE_1		
+5324	እምቡጥ	1		TYPE_1		
+5325	እምቢልታ	1		TYPE_1		
+5326	እምቢልተኛ	1		TYPE_1		
+5327	እምቢታ	1		TYPE_1		
+5328	እምብርት	1		TYPE_1		
+5329	እምቦሳ	1	TYPE_1	TYPE_1		
+5330	እምፍርፍር	1		TYPE_1		
+5331	እንፍርፍር	1		TYPE_1		
+5332	እሤት	1	TYPE_1	TYPE_1		
+5333	እረኛ	1	TYPE_1	TYPE_1		
+5334	እረኝነት	1		TYPE_1		
+5335	እረኛነት	1		TYPE_1		
+5336	እሩር	1		TYPE_1		
+5337	እሩዝ	1		TYPE_1		
+5338	እሪዝ	1		TYPE_1		
+5339	እርያ	1	TYPE_1	TYPE_1		
+5340	እራስ	1	TYPE_1	TYPE_1		
+5341	እርስት	1	TYPE_1	TYPE_1		
+5342	እርሾ	1		TYPE_1		
+5343	እርቃን	1		TYPE_1		
+5344	እርቦ	1	TYPE_1	TYPE_1		
+5345	እርኩም	1		TYPE_1		
+5346	እርከን	1	TYPE_1	TYPE_1		
+5347	እርካብ	1		TYPE_1		
+5348	እርኮት	1		TYPE_1		
+5349	እርያ	1	TYPE_1	TYPE_1		
+5350	እሪያ	1	TYPE_1	TYPE_1		
+5351	እርግብ	1	TYPE_1	TYPE_1		
+5352	እርግብግቢት	1		TYPE_1		
+5358	እርባና	1		TYPE_1		
+5359	እርድ	1		TYPE_1		
+5361	እሮምታ	1		TYPE_1		
+5362	እሳት	1		TYPE_1		
+5364	እሳቸው	1		TYPE_1		
+5365	እስላም	1	TYPE_1	TYPE_1		
+5366	እስራኤል	1	TYPE_1	TYPE_1		
+5367	እስራኤላዊ	1		TYPE_1		
+5368	እስስት	1	TYPE_1	TYPE_1		
+5369	እስትንፋስ	1		TYPE_1		
+5370	እስክስታ	1		TYPE_1		
+5371	እስክንድርያ	1		TYPE_1		
+5372	እስያ	1	TYPE_1	TYPE_1		
+5373	እስፓንያ	1	TYPE_1	TYPE_1		
+5374	እስፓንኛ	1		TYPE_1		
+5375	እሸት	1		TYPE_1		
+5376	እሽሩሩ	1		TYPE_1		
+5377	እሽኮለሌ	1		TYPE_1		
+5378	እሾኽ	1		TYPE_1		
+5379	እሾህ	1		TYPE_1		
+5380	እቀጭታ	1		TYPE_1		
+5381	እበት	1		TYPE_1		
+5382	እባብ	1	TYPE_1	TYPE_1		
+5383	እብሪት	1		TYPE_1		
+5384	እብነበረድ	1		TYPE_1		
+5385	እቴቴ	1		TYPE_1		
+5386	እቴጌ	1	TYPE_1	TYPE_1		
+5387	እህት	1	TYPE_1	TYPE_1		
+5388	እትማማች	1		TYPE_1		
+5389	እትማማችነት	1		TYPE_1		
+5390	እትዬ	1		TYPE_1		
+5391	እቶን	1		TYPE_1		
+5392	እነኛ	1		TYPE_1		
+5393	እነዚያ	1		TYPE_1		
+5394	እነዚህ	1		TYPE_1		
+5395	እናት	1	TYPE_1	TYPE_1		
+5396	እናትነት	1		TYPE_1		
+5397	እንስላል	1		TYPE_1		
+5398	እንስት	1	TYPE_1	TYPE_1		
+5399	እንስራ	1	TYPE_1	TYPE_1		
+5400	እንስሳ	1	TYPE_1	TYPE_1		
+5401	እንስሳነት	1		TYPE_1		
+5402	እንስሳት	1	TYPE_4	TYPE_1		
+5403	እንስትነት	1		TYPE_1		
+5404	እንሽላሊት	1	TYPE_1	TYPE_1		
+5405	እንቃቅላ	1		TYPE_1		
+5406	እንቅርት	1		TYPE_1		
+5407	እንቅብ	1	TYPE_1	TYPE_1		
+5408	እንቆቅልሽ	1		TYPE_1		
+5409	እንቆቆ	1	TYPE_1	TYPE_1		
+5410	እንቁላል	1	TYPE_1	TYPE_1		
+5411	እንቁራሪት	1	TYPE_1	TYPE_1		
+5412	እንቁጣጣሽ	1		TYPE_1		
+5413	እንቡዋይ	1		TYPE_1		
+5414	እንቢልታ	1		TYPE_1		
+5415	እንባ	1		TYPE_1		
+5416	እምባ	1		TYPE_1		
+5417	እንትና	1		TYPE_1		
+5418	እንተን	1		TYPE_1		
+5419	እነሆ	1		TYPE_1		
+5424	እትፍታ	1		TYPE_1		
+5426	እንከን	1	TYPE_1	TYPE_1		
+5427	እንክርት	1		TYPE_1		
+5428	እንክርዳድ	1		TYPE_1		
+5429	እንክብል	1	TYPE_1	TYPE_1		
+5430	እንኮኮ	1	TYPE_1	TYPE_1		
+5431	እንኮይ	1		TYPE_1		
+5432	እንዚራ	1	TYPE_3	TYPE_1		
+5433	እንዝርት	1		TYPE_1		
+5434	እንዝዝ	1	TYPE_3	TYPE_1		
+5435	እንዶድ	1		TYPE_1		
+5436	እንጀራ	1	TYPE_3	TYPE_1		
+5437	እንጆሪ	1		TYPE_1		
+5438	እንገር	1		TYPE_1		
+5439	እንጉዳይ	1		TYPE_1		
+5440	እንግሊዝ	1	TYPE_1	TYPE_1		
+5441	እንግሊዛዊ	1		TYPE_1		
+5442	እንግሊዘኛ	1		TYPE_1		
+5443	እንግዳ	1	TYPE_1	TYPE_1		
+5444	እንጐቻ	1	TYPE_1	TYPE_1		
+5445	እንጥል	1		TYPE_1		
+5446	እንጨት	1	TYPE_1	TYPE_1		
+5447	እንጭጭ	1	TYPE_1	TYPE_1		
+5448	እንፋሎት	1		TYPE_1		
+5449	እንፍሌ	1		TYPE_1		
+5450	እኛ	1		TYPE_1		
+5451	እከሌ	1		TYPE_1		
+5452	እገሌ	1		TYPE_1		
+5453	እከክ	1		TYPE_1		
+5454	እክል	1		TYPE_1		
+5455	እውነት	1	TYPE_1	TYPE_1		
+5456	እውነታ	1	TYPE_1	TYPE_1		
+5457	እውነተኛነት	1		TYPE_1		
+5458	እውን	1		TYPE_1		
+5459	እዳ	1	TYPE_1	TYPE_1		
+5462	እድመኛ	1		TYPE_1		
+5463	እድሜ	1		TYPE_1		
+5464	እድሞ	1		TYPE_1		
+5465	እጅ	1	TYPE_1	TYPE_1		
+5467	እጀታ	1	TYPE_1	TYPE_1		
+5477	እጅጌ	1	TYPE_1	TYPE_1		
+5478	እገሊት	1		TYPE_1		
+5479	እግር	1	TYPE_1	TYPE_1		
+5483	እግረኛ	1		TYPE_1		
+5486	እግዚአብሔር	1		TYPE_1		
+5487	እግዚኦታ	1		TYPE_1		
+5488	እግዝእት	1		TYPE_1		
+5490	እጢ	1		TYPE_1		
+5491	እጣን	1		TYPE_1		
+5492	እጥቤ	1		TYPE_1		
+5493	እጭ	1	TYPE_1	TYPE_1		
+5494	እፉኝት	1	TYPE_1	TYPE_1		
+5495	እፊያ	0		TYPE_1		
+5496	አፍላ	1		TYPE_1		
+5498	እፎይታ	1		TYPE_1		
+5499	ኦሪት	1	TYPE_1	TYPE_1		
+5501	ኦርቶዶክስ	1	TYPE_1	TYPE_1		
+5502	ኦርቶዶክሳዊ	1		TYPE_1		
+5503	ኦርቶዶክሳዊት	1		TYPE_1		
+5504	ኦቶሞቢል	1	TYPE_1	TYPE_1		
+5505	ኦፔራሲዮን	1		TYPE_1		
+5527	ኣካርሚኝ	1		TYPE_1		
+5543	ኣከራይ	1	TYPE_1	TYPE_1		
+5568	እንክብል	1	TYPE_1	TYPE_1		
+5591	ኣካባቢ	1	TYPE_1	TYPE_1		
+5592	እንክብካቤ	1		TYPE_1		
+5640	ኣክፋይ	1		TYPE_1		
+5642	ኣክፍሎት	1		TYPE_1		
+5865	አኩኩሉ	1		TYPE_1		
+5886	ኣካካ	1		TYPE_1		
+6010	እንክርዳድ	1		TYPE_1		
+6017	አክብሮት	1	TYPE_1	TYPE_1		
+6091	ኣውራጅ	1	TYPE_1	TYPE_1		
+6092	ኣውራጃ	1	TYPE_1	TYPE_1		
+6178	ኣቦሸማኔ	1	TYPE_1	TYPE_1		
+6180	ኣውታር	1	TYPE_1	TYPE_1		
+6275	ኣዋጊ	1	TYPE_1	TYPE_1		
+6293	ኣውጭ	1	TYPE_1	TYPE_1		
+6295	ኣውጫጭኝ	1		TYPE_1		
+6307	ኣእዋፍ	1	TYPE_4	TYPE_1		
+6327	ኣዋይ	1		TYPE_1		
+6331	ኣዋዋይ	1	TYPE_1	TYPE_1		
+6377	ኣወያይ	1	TYPE_1	TYPE_1		
+6479	ኣውድማ	1	TYPE_1	TYPE_1		
+6488	ኣውጫጫኝ	1		TYPE_1		
+6489	ኣዋጪ	1	TYPE_1	TYPE_1		
+6490	ኣስተዋጽኦ	1	TYPE_1	TYPE_1		
+6505	ዐልቅት	1		TYPE_1		
+6506	ዐመል	1	TYPE_1	TYPE_1		
+6507	ዕምቅ	1		TYPE_1		
+6508	ዐመጽ	1	TYPE_1	TYPE_1		
+6509	ዐመጥ	0	TYPE_1	TYPE_1		
+6510	ዐመጸኛ	1	TYPE_1	TYPE_1		
+6511	ዐመጠኛ	0	TYPE_1	TYPE_1		
+6512	ዐምድ	1		TYPE_1		
+6514	ዐሞሌ	1		TYPE_1		
+6515	ዐሣ	1	TYPE_1	TYPE_1		
+6516	ዐሣነባሪ	1	TYPE_1	TYPE_1		
+6519	ዐራቢ	1		TYPE_1		
+6520	ዐረብ	1	TYPE_1	TYPE_1		
+6524	ዐረብኛ	1	TYPE_1	TYPE_1		
+6525	ዐረቢያ	1	TYPE_1	TYPE_1		
+6526	ዐረንቋ	1	TYPE_1	TYPE_1		
+6527	ዐሮንቃ	0	TYPE_1	TYPE_1		
+6528	ዕርገት	1		TYPE_1		
+6530	ዕረፍት	1	TYPE_1	TYPE_1		
+6531	ዕርፍ	1	TYPE_1	TYPE_1		
+6535	ዐረፋ	1		TYPE_1		
+6536	ዐርብ	1	TYPE_1	TYPE_1		
+6537	ዐቀበት	1	TYPE_1	TYPE_1		
+6538	ዐቃቢት	1	TYPE_1	TYPE_1		
+6540	ዐቅድ	1		TYPE_1		
+6541	ዕቀዳ	1		TYPE_1		
+6542	ዕቅድ	1	TYPE_1	TYPE_1		
+6543	ዐቅል	1	TYPE_1	TYPE_1		
+6544	ዐቅም	1	TYPE_1	TYPE_1		
+6545	ዕብደት	1	TYPE_1	TYPE_1		
+6548	ዕውቀት	1	TYPE_1	TYPE_1		
+6549	ዕውቅያ	1		TYPE_1		
+6554	ዐዘቅት	1	TYPE_1	TYPE_1		
+6555	ኣስተያየት	1	TYPE_1	TYPE_1		
+6564	ዐይናር	1		TYPE_1		
+6569	ዐይነት	1	TYPE_1	TYPE_1		
+6570	ዐጤ	1	TYPE_1	TYPE_1		
+6571	ዐፄ	1	TYPE_1	TYPE_1		
+6572	ዐጥንት	1	TYPE_1	TYPE_1		
+6573	ዕጩ	1	TYPE_1	TYPE_1		
+6576	ዕጮኛ	1	TYPE_1	TYPE_1		
+6579	ዐጽም	1	TYPE_1	TYPE_1		
+6581	ዒላማ	1		TYPE_1		
+6582	ዔሊ	1	TYPE_1	TYPE_1		
+6583	ዓለም	1	TYPE_3	TYPE_1		
+6584	ዓለማዊነት	1	TYPE_1	TYPE_1		
+6586	ዓላማ	1	TYPE_1	TYPE_1		
+6587	ዓመት	1	TYPE_1	TYPE_1		
+6591	ዕለት	1	TYPE_1	TYPE_1		
+6592	ዕልልታ	1		TYPE_1		
+6594	ዕቃ	1	TYPE_1	TYPE_1		
+6605	ዕንቁ	1	TYPE_1	TYPE_1		
+6606	ዕንቁጣጣሽ	1		TYPE_1		
+6608	ዕጣ	1	TYPE_1	TYPE_1		
+6609	ዕጨጌ	1	TYPE_1	TYPE_1		
+6610	ዕፅ	1	TYPE_1	TYPE_1		
+6611	ዕፀዋት	1	TYPE_1	TYPE_1		
+6628	ኣዝማሚያ	1		TYPE_1		
+6638	ኣዝማሪ	1	TYPE_1	TYPE_1		
+6642	ኣዝማች	1	TYPE_1	TYPE_1		
+6736	ኣዝካሪ	1	TYPE_1	TYPE_1		
+6764	ኣዘጋጅ	1	TYPE_1	TYPE_1		
+6847	ኣዙሪት	1	TYPE_1	TYPE_1		
+6848	ኣዟሪ	1	TYPE_1	TYPE_1		
+6877	አዘቅት	1	TYPE_1	TYPE_1		
+6930	ኣያያዝ	1	TYPE_1	TYPE_1		
+6941	ኢንሹ	1		TYPE_1		
+6948	ኢላማ	1	TYPE_1	TYPE_1		
+6950	ኢማም	1		TYPE_1		
+6983	ኣድልዎ	1		TYPE_1		
+6996	ኣድማጭ	1	TYPE_1	TYPE_1		
+7019	ኣድራሻ	1	TYPE_1	TYPE_1		
+7020	ኣዳራሽ	1	TYPE_1	TYPE_1		
+7025	ኣደራረስ	1		TYPE_1		
+7063	ኣደራዳሪ	1	TYPE_1	TYPE_1		
+7095	ኣድባራት	1	TYPE_4	TYPE_1		
+7096	ኣድባር	1	TYPE_1	TYPE_1		
+7130	ኣድናቆት	1		TYPE_1		
+7179	ኣዳዋሪ	1		TYPE_1		
+7430	እንዱሽዱሽ	1		TYPE_1		
+7442	ኣድላቢ	1	TYPE_1	TYPE_1		
+7449	ኣድማቂ	1	TYPE_1	TYPE_1		
+7450	ኣዳማቂ	1	TYPE_1	TYPE_1		
+7472	ኣደራጅ	1	TYPE_1	TYPE_1		
+7475	ኣደራጎት	1		TYPE_1		
+7486	ኣደስዳሽ	1		TYPE_1		
+7492	አድኃሪ	1		TYPE_1		
+7493	አድኅሮት	1		TYPE_1		
+7496	ኣደናባሪ	1	TYPE_1	TYPE_1		
+7516	ኣዳፍኔ	1		TYPE_1		
+7544	አፈድስት	1		TYPE_1		
+7714	ኣገልግሎት	1		TYPE_1		
+7750	እንግርግብ	1		TYPE_1		
+7823	ኣግባብ	1		TYPE_1		
+7869	እንግውላይ	1		TYPE_1		
+7878	ኣገዛዝ	1	TYPE_1	TYPE_1		
+7891	ኣግዳሚ	1	TYPE_1	TYPE_1		
+7893	ኣግድመት	1		TYPE_1		
+7894	ኣግድሞሽ	1		TYPE_1		
+8001	እንግሊላ	0		TYPE_1		
+8002	እንግላል	0		TYPE_1		
+8034	ኣጋንንት	1	TYPE_4	TYPE_1		
+8178	ኣጉራዶ	0		TYPE_1		
+8264	አገልግል	1	TYPE_1	TYPE_1		
+8312	ኣግቦ	1	TYPE_1	TYPE_1		
+8395	እንጉርጉሮ	1	TYPE_1	TYPE_1		
+8398	አጐብጓቢ	1	TYPE_1	TYPE_1		
+8448	ኣጥማቂ	1	TYPE_1	TYPE_1		
+8459	ኣጣማጅ	1		TYPE_1		
+8478	እንጥርጣሪ	1		TYPE_1		
+8491	ኣጣሪ	1	TYPE_1	TYPE_1		
+8516	ኣጥቂ	1	TYPE_1	TYPE_1		
+8544	ኣጣብቂኝ	1		TYPE_1		
+8553	ኣጥቢ	1	TYPE_1	TYPE_1		
+8556	ኣጥቢያ	1		TYPE_1		
+8570	ኣጠነባ	1		TYPE_1		
+8581	ኣጥኚ	1		TYPE_1		
+8589	ኣጥናፍ	1		TYPE_1		
+8590	ኣፅናፍ	1	TYPE_3	TYPE_1		
+8650	ኣጣጣል	1	TYPE_1	TYPE_1		
+8811	ኣጥማጅ	1	TYPE_1	TYPE_1		
+8813	ኣጣማጅ	1	TYPE_1	TYPE_1		
+8849	ኣስጠኚ	1	TYPE_1	TYPE_1		
+8870	ኣጣጭ	1		TYPE_1		
+8897	ኣጢያሽ	1		TYPE_1		
+8928	ኣጫላጭ	1		TYPE_1		
+8960	ኣጫሽ	1	TYPE_1	TYPE_1		
+8978	እንጭብሬ	1		TYPE_1		
+9000	ኣጫዋች	1	TYPE_1	TYPE_1		
+9018	እንጭፍጫፊ	1		TYPE_1		
+9135	ኣጫዋች	1	TYPE_1	TYPE_1		
+9332	እንፋሎት	1		TYPE_1		
+9407	ኣፈንጋጭ	1	TYPE_1	TYPE_1		
+9441	ኣፈፃፀም	1		TYPE_1		
+9562	እንፉቅቅ	1		TYPE_1		
+9586	አፍላል	1		TYPE_1		
+9806	ኣኳኋን	1	TYPE_3	TYPE_1		
+9828	ኣልቃሽ	1	TYPE_1	TYPE_1		
+9830	ኣስለቃሽ	1	TYPE_1	TYPE_1		
+9836	ኣለብላቢት	1		TYPE_1		
+9849	ኣልባሽ	1		TYPE_1		
+9953	ኣምላክ	1		TYPE_1		
+9954	ኣምልኮ	1	TYPE_1	TYPE_1		
+9955	ኣምልኮት	1	TYPE_1	TYPE_1		
+9959	ኣመለካከት	1	TYPE_1	TYPE_1		
+9968	ኣምራች	1	TYPE_1	TYPE_1		
+9977	አመራር	1	TYPE_1	TYPE_1		
+9991	አምሳል	1	TYPE_1	TYPE_1		
+10034	አመክሮ	1		TYPE_1		
+10043	አምዘግዛጊ	1	TYPE_1	TYPE_1		
+10057	ኣስመጭ	1	TYPE_1	TYPE_1		
+10071	ኣማላጅ	1	TYPE_1	TYPE_1		
+10103	ኣበምኔት	1	TYPE_1	TYPE_1		
+10104	እመምኔት	1	TYPE_1	TYPE_1		
+10145	እርምጃ	1	TYPE_1	TYPE_1		
+10148	ኣረማመድ	1	TYPE_1	TYPE_1		
+10151	እርሳስ	1	TYPE_1	TYPE_1		
+10157	ኣረካካቢ	1	TYPE_1	TYPE_1		
+10158	ኣስረካቢ	1	TYPE_1	TYPE_1		
+10165	ኣስረጅ	1	TYPE_1	TYPE_1		
+10167	እርግብግቢት	1		TYPE_1		
+10169	ኣራጋቢ	1	TYPE_1	TYPE_1		
+10172	ኣርጋጅ	1		TYPE_1		
+10184	እርጥበት	1		TYPE_1		
+10185	ኣርፋጃ	0		TYPE_1		
+10200	እሬት	1		TYPE_1		
+10212	እስላም	1	TYPE_1	TYPE_1		
+10213	እስልምና	1		TYPE_1		
+10224	ኣሰላፊ	1	TYPE_1	TYPE_1		
+10225	ኣሰላለፍ	1	TYPE_1	TYPE_1		
+10233	ኣስማሚ	1		TYPE_1		
+10265	ኣሰሪ	1	TYPE_1	TYPE_1		
+10266	ኣሰራር	1	TYPE_1	TYPE_1		
+10397	ኣሸንቋጦ	0		TYPE_1		
+10406	ኣሽከርካሪ	1	TYPE_1	TYPE_1		
+10417	ኣሻሻጭ	1	TYPE_1	TYPE_1		
+10428	ኣሻጋሪ	1	TYPE_1	TYPE_1		
+10429	ኣሻጥር	1	TYPE_1	TYPE_1		
+10439	ኣሹቅ	1	TYPE_3	TYPE_1		
+10449	ኣቅላሚ	1	TYPE_1	TYPE_1		
+10463	ኣቀማመጥ	1	TYPE_1	TYPE_1		
+10465	ኣቅራሪ	1	TYPE_1	TYPE_1		
+10466	እንቅርቃቢ	1		TYPE_1		
+10468	ኣቅራቢያ	1	TYPE_1	TYPE_1		
+10469	ኣቅርቦት	1		TYPE_1		
+10475	እንቅስቃሴ	1	TYPE_1	TYPE_1		
+10486	ኣቀንቃኝ	1	TYPE_1	TYPE_1		
+10517	ኣቃጣሪ	1	TYPE_1	TYPE_1		
+10555	ኣቆልቋይ	1		TYPE_1		
+10567	ኣቆራቋሽ	0		TYPE_1		
+10585	ኣቁጣሮ	1		TYPE_1		
+10586	ኣቆጣጠር	1	TYPE_1	TYPE_1		
+10598	ኣበል	1	TYPE_1	TYPE_1		
+10603	እንብርክክ	1		TYPE_1		
+10604	እንብርክ	1		TYPE_1		
+10618	ኣብሳይ	1	TYPE_1	TYPE_1		
+10628	ኣበዳሪ	1	TYPE_1	TYPE_1		
+10727	ኣስተንታኝ	1	TYPE_1	TYPE_1		
+10729	ኣትክልት	1	TYPE_1	TYPE_1		
+10730	ኣታክልት	1	TYPE_1	TYPE_1		
+10732	ኣትክልተኛ	1	TYPE_1	TYPE_1		
+10735	እንትክትክ	1		TYPE_1		
+10738	ኣተካሪስ	1		TYPE_1		
+10739	ኣትኩሮት	1		TYPE_1		
+10740	ኣስተኳሽ	1	TYPE_1	TYPE_1		
+10765	ኣንሺ	1		TYPE_1		
+10767	ኣንቂ	1	TYPE_1	TYPE_1		
+10824	ኢንቶ	1		TYPE_1		
+10825	እንቶ	1		TYPE_1		
+10827	ኢየሱስ	1		TYPE_1		
+10839	እልቂት	1	TYPE_1	TYPE_1		
+10840	እልቀት	1	TYPE_1	TYPE_1		
+10841	እልቅና	1		TYPE_1		
+10848	ኣላፊነት	1	TYPE_1	TYPE_1		
+10849	እልፈት	1	TYPE_1	TYPE_1		
+10854	ኣልቅት	1		TYPE_1		
+10855	ኣለቅት	1		TYPE_1		
+10856	ኣልቤርጎ	1	TYPE_1	TYPE_1		
+10863	ኣሎሎ	1	TYPE_1	TYPE_1		
+10864	ኣለሎ	1	TYPE_1	TYPE_1		
+10870	ኣሚና	1		TYPE_1		
+10873	ኣሜት	1	TYPE_1	TYPE_1		
+10875	ኣሜታ	1	TYPE_1	TYPE_1		
+10878	ኣምሳ	1	TYPE_1	TYPE_1		
+10884	ኣምበል	1	TYPE_1	TYPE_1		
+10885	ኣንበል	1	TYPE_1	TYPE_1		
+10889	ኣምፖል	1	TYPE_1	TYPE_1		
+10890	ኣምፑል	1	TYPE_1	TYPE_1		
+10892	ኣሞሌ	1		TYPE_1		
+10896	እርማት	1	TYPE_1	TYPE_1		
+10897	እርምት	1	TYPE_1	TYPE_1		
+10906	እረፍት	1	TYPE_1	TYPE_1		
+10907	እርፊት	1		TYPE_1		
+10911	ኣርቢትር	1	TYPE_1	TYPE_1		
+10912	ኣልቢትር	1	TYPE_1	TYPE_1		
+10918	ኣሰድ	1		TYPE_1		
+10934	ኣስታ	1		TYPE_1		
+10935	ኣስቴ	1		TYPE_1		
+10936	ኣሽቦ	1		TYPE_1		
+10937	ኣሻቦ	1		TYPE_1		
+10940	ኣሽክት	1		TYPE_1		
+10941	ኣሸክት	1		TYPE_1		
+10962	ኣቧራ	1		TYPE_1		
+10963	ኣዋራ	1		TYPE_1		
+10966	ኣተታ	1		TYPE_1		
+10967	ኣቶሚክ	1		TYPE_1		
+10968	ኣውቶሚክ	1		TYPE_1		
+10970	እንባ	1		TYPE_1		
+10971	እምባ	1		TYPE_1		
+10974	ኣናፂ	1	TYPE_1	TYPE_1		
+10975	ኣናጢ	1	TYPE_1	TYPE_1		
+10976	ኣንቃ	1		TYPE_1		
+10977	ኣንቋ	1		TYPE_1		
+10978	እንቁልጭልጭህ	1		TYPE_1		
+10979	እንቁልልጮሽ	1		TYPE_1		
+10980	ኣንበሳ	1	TYPE_1	TYPE_1		
+10981	ኣምበሳ	1	TYPE_1	TYPE_1		
+10985	ኣንጀት	1		TYPE_1		
+10986	ኣንዠት	1		TYPE_1		
+10997	ኣክንባሎ	1	TYPE_1	TYPE_1		
+10998	ኣክምባሎ	1	TYPE_1	TYPE_1		
+10999	ኣኮሌ	1	TYPE_1	TYPE_1		
+11000	ኣሆሌ	1	TYPE_1	TYPE_1		
+11001	ኣኮፋዳ	1	TYPE_1	TYPE_1		
+11002	ኣኩፋዳ	1	TYPE_1	TYPE_1		
+11003	ኣቁፋዳ	1	TYPE_1	TYPE_1		
+11006	እውከት	1		TYPE_1		
+11019	ኣውዛ	1		TYPE_1		
+11022	ኣውድማ	1	TYPE_1	TYPE_1		
+11035	ኣያ	1		TYPE_1		
+11036	ኣይያ	1	TYPE_1	TYPE_1		
+11037	ኣይዋ	1		TYPE_1		
+11038	ኣይሮፕላን	1	TYPE_1	TYPE_1		
+11039	ኣውሮፕላን	1	TYPE_1	TYPE_1		
+11041	ኣይበሉባ	1		TYPE_1		
+11042	ኣይበሉብሽ	1		TYPE_1		
+11078	ኣጓጎት	1		TYPE_1		
+11082	ኣጥር	1	TYPE_1	TYPE_1		
+11090	ኣፀድ	1	TYPE_1	TYPE_1		
+11091	ኣጠድ	1	TYPE_1	TYPE_1		
+11095	ኣፅቅ	1		TYPE_1		
+11096	ኣጥቅ	1		TYPE_1		
+11097	ኣፅፍ	0		TYPE_1		
+11098	ኣጥፍ	0		TYPE_1		
+11099	እፍረት	1		TYPE_1		
+11119	እህትማማች	1		TYPE_1		
+11120	እትማማች	1		TYPE_1		
+11123	እልህ	1		TYPE_1		
+11124	እልክ	1		TYPE_1		
+11125	እልል	1		TYPE_1		
+11126	እልልታ	1	TYPE_1	TYPE_1		
+11127	እልበት	1		TYPE_1		
+11132	እመበለት	1		TYPE_1		
+11134	እመት	1		TYPE_1		
+11135	እምነት	1	TYPE_1	TYPE_1		
+11138	እምቡስ	1		TYPE_1		
+11139	እንቡስ	1		TYPE_1		
+11151	እስክስታ	1	TYPE_1	TYPE_1		
+11152	እስክስ	1		TYPE_1		
+11153	እሾህ	1		TYPE_1		
+11154	እሾክ	1		TYPE_1		
+11161	እንስሳ	1	TYPE_1	TYPE_1		
+11162	እንሰሳ	1	TYPE_1	TYPE_1		
+11167	እንሽላሊት	1	TYPE_1	TYPE_1		
+11170	እንቁልጭልጮሽ	1		TYPE_1		
+11171	እንቁልልጮሽ	1		TYPE_1		
+11172	እንቡጣ	1		TYPE_1		
+11173	እምቡጣ	1		TYPE_1		
+11174	እንቡጣጢያ	1		TYPE_1		
+11175	እምቡጣጢያ	1		TYPE_1		
+11176	እንቡጥ	1		TYPE_1		
+11177	እምቡጥ	1		TYPE_1		
+11181	እንቢልታ	1	TYPE_1	TYPE_1		
+11182	እምቢልታ	1	TYPE_1	TYPE_1		
+11184	እንብርት	1		TYPE_1		
+11185	እምብርት	1		TYPE_1		
+11186	እንቦሳ	1	TYPE_1	TYPE_1		
+11187	እምቦሳ	1	TYPE_1	TYPE_1		
+11188	እንቦቀቅላ	1	TYPE_1	TYPE_1		
+11189	እንቦቃቅላ	1	TYPE_1	TYPE_1		
+11190	እንቧይ	1		TYPE_1		
+11191	እምቧይ	1		TYPE_1		
+11192	እንቧጮ	1		TYPE_1		
+11193	እምቧጮ	1		TYPE_1		
+11195	እንክርት	1		TYPE_1		
+11196	ኣንከርት	1		TYPE_1		
+11197	እንኮኮ	1	TYPE_1	TYPE_1		
+11198	እሽኮኮ	1	TYPE_1	TYPE_1		
+11199	እንዡባን	1		TYPE_1		
+11200	እንጁባን	1		TYPE_1		
+11201	እንዥቦ	1		TYPE_1		
+11202	እንጅቦ	1		TYPE_1		
+11203	እንጅሞ	1		TYPE_1		
+11204	እንደኋሁላ	1		TYPE_1		
+11205	እንድሆህላ	1		TYPE_1		
+11206	እንዳሁላ	1		TYPE_1		
+11215	እንግጫ	1	TYPE_1	TYPE_1		
+11217	እንጣቆ	1		TYPE_1		
+11218	ኣንጣቆ	1		TYPE_1		
+11219	እንጦ	1		TYPE_1		
+11223	እዳይት	0		TYPE_1		
+11224	እድያት	0		TYPE_1		
+11252	እግዚኣብሄር	1		TYPE_1		
+11253	እግዜር	1		TYPE_1		
+11259	እፀፋርስ	1		TYPE_1		
+11260	እጠፋሪስ	1		TYPE_1		
+11343	እንቡርቧይ	0		TYPE_1		
+11367	ኣተሬ	0		TYPE_1		
+11369	ኣንከሊስ	0	TYPE_1	TYPE_1		
+11370	ኣንጉጥ	0		TYPE_1		
+11371	ኣከቴ	0		TYPE_1		
+11372	ኣከት	0		TYPE_1		
+11373	ኣው	0		TYPE_1		
+11374	ኣጓጎት	0		TYPE_1		
+11376	እሚታ	0	TYPE_1	TYPE_1		

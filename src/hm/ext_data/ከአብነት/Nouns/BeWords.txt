@@ -1,0 +1,928 @@
+1450	በማግሥት	1		TYPE_1		
+1451	በማግሥቱ	1		TYPE_1		
+1718	ባለስልጣን	1	TYPE_1	TYPE_1		
+2012	በስር	1		TYPE_1		
+2862	በሃ	0	TYPE_1	TYPE_1		
+2863	በለሴ	0	TYPE_1	TYPE_1		
+2864	በለስ	1		TYPE_1		
+2865	ብልሽት	1	TYPE_1	TYPE_1		
+2866	ብልት	1	TYPE_1	TYPE_1		
+2867	በልግ	1		TYPE_1		
+2868	ብላጊ	1		TYPE_1		
+2869	ብልጫ	1	TYPE_1	TYPE_1		
+2870	ብልጠት	1	TYPE_1	TYPE_1		
+2871	በለጭ	0		TYPE_1		
+2872	ብልጭታ	1	TYPE_1	TYPE_1		
+2873	ብልጭልጭታ	1		TYPE_1		
+2874	ባለፀጋ	1	TYPE_1	TYPE_1		
+2875	ባለጠጋ	1	TYPE_1	TYPE_1		
+2876	ብልፅግና	1		TYPE_1		
+2877	ብላቶ	0		TYPE_1		
+2878	ብሎት	0		TYPE_1		
+2879	ብልት	0	TYPE_1	TYPE_1		
+2880	በሎታ	0	TYPE_1	TYPE_1		
+2881	በረሃ	1	TYPE_1	TYPE_1		
+2882	በረራ	1	TYPE_1	TYPE_1		
+2883	በረር	0		TYPE_1		
+2884	በረሮ	1	TYPE_1	TYPE_1		
+2885	ብራሮ	0		TYPE_1		
+2886	ብር	1	TYPE_1	TYPE_1		
+2887	ብራቅ	1		TYPE_1		
+2888	በረቅ	0		TYPE_1		
+2889	ብርቅርቅታ	1		TYPE_1		
+2890	ብርባሮ	0		TYPE_1		
+2891	ብርታት	1		TYPE_1		
+2892	በረት	1	TYPE_1	TYPE_1		
+2893	በረንዳ	1	TYPE_1	TYPE_1		
+2894	በረኛ	1	TYPE_1	TYPE_1		
+2895	ብርክ	1	TYPE_1	TYPE_1		
+2896	በረከት	1	TYPE_1	TYPE_1		
+2897	ብርካቴ	1	TYPE_1	TYPE_1		
+2898	በረኪና	1	TYPE_1	TYPE_1		
+2899	በረካ	1		TYPE_1		
+2900	ብርኩታ	0	TYPE_3	TYPE_1		
+2901	ብርዝ	1		TYPE_1		
+2902	በረዶ	1	TYPE_3	TYPE_1		
+2903	ብርሃን	1		TYPE_1		
+2904	ብራ	1		TYPE_1		
+2905	በሬ	1	TYPE_1	TYPE_1		
+2906	በር	1	TYPE_1	TYPE_1		
+2907	በራፍ	1	TYPE_1	TYPE_1		
+2908	በረኛ	1	TYPE_1	TYPE_1		
+2909	በርሜል	1	TYPE_1	TYPE_1		
+2910	በርሚል	1	TYPE_1	TYPE_1		
+2911	በርሞሌ	1	TYPE_1	TYPE_1		
+2912	በርበሬ	1		TYPE_1		
+2913	በርባሮስ	0	TYPE_1	TYPE_1		
+2914	በርኖሴ	0		TYPE_1		
+2915	በርኖስ	1	TYPE_3	TYPE_1		
+2916	በርጩማ	1	TYPE_1	TYPE_1		
+2917	በሰላ	0		TYPE_1		
+2918	በሰሎ	0		TYPE_1		
+2919	ብስለት	1	TYPE_3	TYPE_1		
+2920	ብስራት	1	TYPE_3	TYPE_1		
+2921	ብስቁልና	0		TYPE_1		
+2922	ብስና	1		TYPE_1		
+2923	ብስጭት	1		TYPE_1		
+2924	በሶ	1		TYPE_1		
+2925	በሶብላ	1		TYPE_1		
+2926	በሽታ	1	TYPE_1	TYPE_1		
+2927	በቆልት	1		TYPE_1		
+2928	በቀልት	0		TYPE_1		
+2929	በቆልቲ	1		TYPE_1		
+2930	ቡቃያ	1		TYPE_1		
+2931	ብቋያ	1		TYPE_1		
+2932	ብቅል	1		TYPE_1		
+2933	በቀል	1	TYPE_1	TYPE_1		
+2934	በቀቀን	1	TYPE_1	TYPE_1		
+2935	በቀበቅ	0		TYPE_1		
+2936	በቀታ	0	TYPE_1	TYPE_1		
+2937	ብቀታ	0	TYPE_1	TYPE_1		
+2938	በቀት	0		TYPE_1		
+2939	ብቃት	1		TYPE_1		
+2940	በቅሎ	1	TYPE_1	TYPE_1		
+2941	በቆሎ	1		TYPE_1		
+2942	ቦቆሎ	1		TYPE_1		
+2943	በቋል	0	TYPE_3	TYPE_1		
+2944	በቋሊ	0	TYPE_3	TYPE_1		
+2945	በተሃ	0		TYPE_1		
+2946	ቡትቶ	1		TYPE_1		
+2947	ብቱቶ	1		TYPE_1		
+2948	ብትቶ	1		TYPE_1		
+2949	በትረሎሚ	0		TYPE_1		
+2950	በትር	1	TYPE_1	TYPE_1		
+2951	ብትር	1	TYPE_1	TYPE_1		
+2952	ብንታ	0		TYPE_1		
+2953	በኣል	1	TYPE_1	TYPE_1		
+2954	በኣላት	1		TYPE_1		
+2955	ብከላ	1		TYPE_1		
+2956	በኩረሎሚ	0		TYPE_1		
+2957	በኩራት	1		TYPE_1		
+2958	ብኩርና	1		TYPE_1		
+2959	በከራ	0	TYPE_1	TYPE_1		
+2960	ብወዛ	1		TYPE_1		
+2961	ብዝበዛ	1	TYPE_1	TYPE_1		
+2962	ብዙሃኑ	1		TYPE_1		
+2963	ብዛት	1		TYPE_1		
+2964	በዠድ	0		TYPE_1		
+2965	በጀድ	0		TYPE_1		
+2966	ብያኔ	1	TYPE_1	TYPE_1		
+2967	ብይን	1	TYPE_1	TYPE_1		
+2968	በያጅ	1	TYPE_1	TYPE_1		
+2969	በደል	1	TYPE_1	TYPE_1		
+2970	ብድር	1	TYPE_1	TYPE_1		
+2971	ብድራት	1		TYPE_1		
+2972	በድን	1	TYPE_3	TYPE_1		
+2973	ብድ	1		TYPE_1		
+2974	በጀት	1	TYPE_1	TYPE_1		
+2975	ባጀት	1	TYPE_1	TYPE_1		
+2976	በጅሮንድ	1		TYPE_1		
+2977	ቢጋር	0		TYPE_1		
+2978	ብገን	0		TYPE_1		
+2979	በገና	1	TYPE_1	TYPE_1		
+2980	በገነኛ	1		TYPE_1		
+2981	በገፈጅ	1		TYPE_1		
+2982	በጋ	1	TYPE_1	TYPE_1		
+2983	በግ	1	TYPE_1	TYPE_1		
+2984	በጋማች	0	TYPE_3	TYPE_1		
+2985	በግአማች	0	TYPE_3	TYPE_1		
+2986	ብጣሪ	1		TYPE_1		
+2987	በጠጥ	1		TYPE_1		
+2988	በፍታ	1		TYPE_1		
+2989	ቡሃ	0		TYPE_1		
+2990	ቦሃ	0		TYPE_1		
+2991	ቡሃቃ	1		TYPE_1		
+2992	ቡሄ	1		TYPE_1		
+2993	ቡሆ	1		TYPE_1		
+2994	ቡላድ	0	TYPE_1	TYPE_1		
+2995	ቡልኮ	1		TYPE_1		
+2996	ቡልዶዘር	1	TYPE_1	TYPE_1		
+2997	ቡሎን	1	TYPE_1	TYPE_1		
+2998	ብሎን	1	TYPE_1	TYPE_1		
+2999	ቡርሽ	1	TYPE_1	TYPE_1		
+3000	ቡሩክ	1	TYPE_1	TYPE_1		
+3001	ብሩክ	1	TYPE_1	TYPE_1		
+3002	ቡራቡሬ	1	TYPE_1	TYPE_1		
+3003	ቡርዲ	0		TYPE_1		
+3004	ቡሲ	0		TYPE_1		
+3005	ቡሴ	0		TYPE_1		
+3006	ቡሽ	1	TYPE_1	TYPE_1		
+3007	ቡቃ	1		TYPE_1		
+3008	ቡኣ	1		TYPE_1		
+3009	ቡቃያ	1		TYPE_1		
+3010	ቡቅሬ	0		TYPE_1		
+3011	ቡቅሪ	0		TYPE_1		
+3012	ቡቅር	0		TYPE_1		
+3013	ቡታ	0		TYPE_1		
+3014	ቡትሌ	1	TYPE_1	TYPE_1		
+3015	ቡችላ	1	TYPE_1	TYPE_1		
+3016	ቡና	1		TYPE_1		
+3017	ቡንኝ	0		TYPE_1		
+3018	ቡፍና	0		TYPE_1		
+3019	ቢላ	1	TYPE_1	TYPE_1		
+3020	ቢላዋ	1	TYPE_1	TYPE_1		
+3021	ቢላዎ	1		TYPE_1		
+3022	ቢልቃጥ	1	TYPE_1	TYPE_1		
+3023	ብልቃጥ	1	TYPE_1	TYPE_1		
+3024	ቢራ	1	TYPE_1	TYPE_1		
+3025	ቢራቢሮ	1	TYPE_1	TYPE_1		
+3026	ቢርካ	0		TYPE_1		
+3027	ቢሮ	1	TYPE_1	TYPE_1		
+3028	ቢስ	1		TYPE_1		
+3029	ቢስክሌት	1	TYPE_1	TYPE_1		
+3030	ብስክሌት	1	TYPE_1	TYPE_1		
+3031	ቢሽቃጥ	0	TYPE_1	TYPE_1		
+3032	ቢተዋ	0	TYPE_1	TYPE_1		
+3033	ቢትወደድ	1		TYPE_1		
+3034	ቢንጎ	1		TYPE_1		
+3035	ቢኖ	1		TYPE_1		
+3036	ቢያጆ	1		TYPE_1		
+3037	ቢጃማ	1	TYPE_1	TYPE_1		
+3038	ቢጎዲን	1	TYPE_1	TYPE_1		
+3039	ቢጤ	1	TYPE_1	TYPE_1		
+3040	ብጤ	1	TYPE_1	TYPE_1		
+3041	ባህል	1	TYPE_1	TYPE_1		
+3042	ባህረኛ	1		TYPE_1		
+3043	ባህር	1	TYPE_1	TYPE_1		
+3044	ባህረ	1		TYPE_1		
+3045	ባህርይ	1		TYPE_1		
+3046	ባህታዊ	1		TYPE_1		
+3047	ብህትውና	1		TYPE_1		
+3048	ባለሁለት	1		TYPE_1		
+3049	ባለህግ	1		TYPE_1		
+3050	ባለመለዮ	1		TYPE_1		
+3051	ባለመብት	1	TYPE_1	TYPE_1		
+3052	ባለሙያ	1	TYPE_1	TYPE_1		
+3053	ባለማደሪያ	1	TYPE_1	TYPE_1		
+3054	ባለሟል	1	TYPE_1	TYPE_1		
+3055	ባለርስት	1	TYPE_1	TYPE_1		
+3056	ባለመሬት	1	TYPE_1	TYPE_1		
+3057	ባለሰሞን	1		TYPE_1		
+3058	ባለሳምንት	1	TYPE_1	TYPE_1		
+3059	ባለስልጣን	1	TYPE_1	TYPE_1		
+3060	ባለስም	1	TYPE_1	TYPE_1		
+3061	ባለቀላድ	1		TYPE_1		
+3062	ባለቅኔ	1	TYPE_1	TYPE_1		
+3063	ባለቤት	1	TYPE_1	TYPE_1		
+3064	ባለተራ	1	TYPE_1	TYPE_1		
+3065	ባለታሪክ	1	TYPE_1	TYPE_1		
+3066	ባለነጋሪት	1		TYPE_1		
+3067	ባለኣልጋ	1		TYPE_1		
+3068	ባለኣጎዛ	1		TYPE_1		
+3069	ባለእኩል	1		TYPE_1		
+3070	ባለእጅ	1	TYPE_1	TYPE_1		
+3071	ባለጅ	1	TYPE_1	TYPE_1		
+3072	ባለወልድ	1		TYPE_1		
+3073	ባለወንበር	1		TYPE_1		
+3074	ባለወግ	1		TYPE_1		
+3075	ባለዝና	1	TYPE_1	TYPE_1		
+3076	ባለደም	1		TYPE_1		
+3077	ባለደም	1		TYPE_1		
+3078	ባለጊዜ	1		TYPE_1		
+3079	ብልግና	1	TYPE_1	TYPE_1		
+3080	ባላ	1	TYPE_1	TYPE_1		
+3081	ባላባልቾ	0	TYPE_1	TYPE_1		
+3082	ባላምባራስ	1	TYPE_1	TYPE_1		
+3083	ባላባት	1	TYPE_1	TYPE_1		
+3084	ባላምባራስ	1	TYPE_1	TYPE_1		
+3085	ባላባት	1	TYPE_1	TYPE_1		
+3086	ባላንጣ	1	TYPE_1	TYPE_1		
+3087	ባላገር	1	TYPE_1	TYPE_1		
+3088	ባላገር	1	TYPE_1	TYPE_1		
+3089	ባላጋራ	1	TYPE_1	TYPE_1		
+3090	ባሌስትራ	1	TYPE_1	TYPE_1		
+3091	ባሌት	1		TYPE_1		
+3092	ባል	1	TYPE_1	TYPE_1		
+3093	ባልቦላ	1	TYPE_1	TYPE_1		
+3094	ባልትና	1	TYPE_1	TYPE_1		
+3095	ባልንጀራ	1	TYPE_1	TYPE_1		
+3096	ባልደረባ	1	TYPE_1	TYPE_1		
+3097	ባልደራስ	1	TYPE_1	TYPE_1		
+3098	ባልዲ	1	TYPE_1	TYPE_1		
+3099	ባልጩት	1	TYPE_1	TYPE_1		
+3100	ባምባ	0	TYPE_1	TYPE_1		
+3101	ባንባ	0	TYPE_1	TYPE_1		
+3102	ብራቅ	1		TYPE_1		
+3103	ቡራኬ	1		TYPE_1		
+3104	ባሩድ	1		TYPE_1		
+3105	ባሪያ	1	TYPE_1	TYPE_1		
+3106	ባርያ	1	TYPE_1	TYPE_1		
+3107	ባሬታ	0	TYPE_1	TYPE_1		
+3108	ባርማሽላ	1		TYPE_1		
+3109	ባርኔጣ	1	TYPE_1	TYPE_1		
+3110	ባርካ	0	TYPE_1	TYPE_1		
+3111	ባርያ	1	TYPE_1	TYPE_1		
+3112	ብሶት	1	TYPE_1	TYPE_1		
+3113	ባሻገር	1		TYPE_1		
+3114	ባቄላ	1		TYPE_1		
+3115	ባቡር	1	TYPE_1	TYPE_1		
+3116	ባቡቲ	0	TYPE_1	TYPE_1		
+3117	ባተሎ	1	TYPE_1	TYPE_1		
+3118	ባት	1		TYPE_1		
+3119	ባትሪ	1	TYPE_1	TYPE_1		
+3120	ባና	0	TYPE_1	TYPE_1		
+3121	ባንክ	1	TYPE_1	TYPE_1		
+3122	ባንኮኒ	1	TYPE_1	TYPE_1		
+3123	ባንዲራ	1	TYPE_1	TYPE_1		
+3124	ባንድ	1	TYPE_1	TYPE_1		
+3125	ባኞ	1	TYPE_1	TYPE_1		
+3126	ባክቴሪያ	1	TYPE_1	TYPE_1		
+3127	ባውሌ	0	TYPE_1	TYPE_1		
+3128	ባዘቶ	1	TYPE_1	TYPE_1		
+3129	ብዝት	1		TYPE_1		
+3130	ባዙቃ	1	TYPE_1	TYPE_1		
+3131	ባዛር	1		TYPE_1		
+3132	ባዜቃ	0		TYPE_1		
+3133	ባዝራ	1	TYPE_1	TYPE_1		
+3134	ባድማ	1	TYPE_1	TYPE_1		
+3135	ባድሜንተን	1		TYPE_1		
+3136	ባጎታ	1	TYPE_3	TYPE_1		
+3137	ባጥ	0	TYPE_1	TYPE_1		
+3138	ቤርጎ	1	TYPE_1	TYPE_1		
+3139	ቤሳ	1	TYPE_1	TYPE_1		
+3140	ቤት	1	TYPE_1	TYPE_1		
+3141	ቤቴልሄም	1	TYPE_3	TYPE_1		
+3142	ቤተመቅደስ	1	TYPE_1	TYPE_1		
+3143	ቤተመንግስት	1	TYPE_1	TYPE_1		
+3144	ቤተመዘክር	1	TYPE_1	TYPE_1		
+3145	ቤተምርፋቅ	1	TYPE_3	TYPE_1		
+3146	ቤተመዛግብት	1	TYPE_1	TYPE_1		
+3147	ቤተመፃህፍት	1	TYPE_1	TYPE_1		
+3148	ቤተሞገስ	1	TYPE_3	TYPE_1		
+3149	ቤተሰብ	1	TYPE_1	TYPE_1		
+3150	ቤተሳልገኝ	0		TYPE_1		
+3151	ቤተንጉስ	1	TYPE_1	TYPE_1		
+3152	ቤተአምልኮ	1	TYPE_1	TYPE_1		
+3153	ቤተእግዚኣብሄር	1		TYPE_1		
+3154	ቤተክህነት	1		TYPE_1		
+3155	ቤተክርስቲያን	1	TYPE_4	TYPE_1		
+3156	ቤተዘመድ	1	TYPE_3	TYPE_1		
+3157	ቤተፀሎት	1		TYPE_1		
+3158	ቤንዚን	1		TYPE_1		
+3159	ቤዛ	1	TYPE_1	TYPE_1		
+3160	ብሄር	1	TYPE_1	TYPE_1		
+3161	ብሄረሰብ	1	TYPE_1	TYPE_1		
+3162	ብሆር	0	TYPE_1	TYPE_1		
+3163	ብሉይኪዳን	1		TYPE_1		
+3164	ብላቴና	1	TYPE_1	TYPE_1		
+3165	ብሌን	1		TYPE_1		
+3166	ብል	1	TYPE_3	TYPE_1		
+3167	ብልሃት	1	TYPE_1	TYPE_1		
+3168	ብረት	1	TYPE_1	TYPE_1		
+3169	ብረትቀለም	1	TYPE_1	TYPE_1		
+3170	ብራና	1	TYPE_1	TYPE_1		
+3171	ብራኳ	1		TYPE_1		
+3172	ብር	1	TYPE_1	TYPE_1		
+3173	ብርኣለንጋ	1		TYPE_1		
+3174	ብርኣምባር	1		TYPE_1		
+3175	ብርኣፍሳሽ	1		TYPE_1		
+3176	ብርሌ	1	TYPE_1	TYPE_1		
+3177	ብርበራ	1	TYPE_1	TYPE_1		
+3178	ብርቱካን	1	TYPE_1	TYPE_1		
+3179	ብርት	0		TYPE_1		
+3180	ብርእ	1	TYPE_1	TYPE_1		
+3181	ብእር	1	TYPE_1	TYPE_1		
+3182	ብርኩማ	1	TYPE_1	TYPE_1		
+3183	ብርኩማ	1	TYPE_1	TYPE_1		
+3184	ብርኮት	0	TYPE_1	TYPE_1		
+3185	ብርኳኔ	0	TYPE_1	TYPE_1		
+3186	ብርጉድ	1		TYPE_1		
+3187	ብርጌድ	1	TYPE_1	TYPE_1		
+3188	ብርጭቆ	1	TYPE_1	TYPE_1		
+3189	ብሳና	1		TYPE_1		
+3190	ብስኩት	1	TYPE_1	TYPE_1		
+3191	ብስክሌት	1	TYPE_1	TYPE_1		
+3192	ብሽሽት	1		TYPE_1		
+3193	ብብት	1	TYPE_1	TYPE_1		
+3194	ብብቻ	1	TYPE_1	TYPE_1		
+3195	ብዥታ	1	TYPE_1	TYPE_1		
+3196	ብይ	1	TYPE_1	TYPE_1		
+3197	ብጉር	1		TYPE_1		
+3198	ብጉንጅ	1		TYPE_1		
+3199	ብጥሌ	1	TYPE_1	TYPE_1		
+3200	ብጥ	1	TYPE_1	TYPE_1		
+3201	ብጣት	1		TYPE_1		
+3202	ብፅኣት	1	TYPE_1	TYPE_1		
+3203	ብፅእና	1		TYPE_1		
+3204	ብፌ	1	TYPE_1	TYPE_1		
+3205	ቦላሌሱሪ	1		TYPE_1		
+3206	ቦሊንግ	1		TYPE_1		
+3207	ቦምብ	1	TYPE_1	TYPE_1		
+3208	ቦረቦጭ	1		TYPE_1		
+3209	ቦረንትቻ	1		TYPE_1		
+3210	ቦርሳ	1	TYPE_1	TYPE_1		
+3211	ቦርቦርቲ	0		TYPE_1		
+3212	ቦርዴ	1		TYPE_1		
+3213	ቦርጭ	1		TYPE_1		
+3214	ቦክስ	1	TYPE_1	TYPE_1		
+3215	ቦቅስ	1		TYPE_1		
+3216	ቦቅ	0		TYPE_1		
+3217	ቦታ	1	TYPE_1	TYPE_1		
+3218	ቦት	1	TYPE_1	TYPE_1		
+3219	ቦና	0		TYPE_1		
+3220	ቦኖ	1	TYPE_1	TYPE_1		
+3221	ቦሃቃ	1		TYPE_1		
+3222	ቦኬ	0		TYPE_1		
+3223	ቦካ	0		TYPE_1		
+3224	ቦዘኔ	1	TYPE_1	TYPE_1		
+3225	ቦዘን	1	TYPE_1	TYPE_1		
+3226	ቦዘን	1	TYPE_1	TYPE_1		
+3227	ቦዬ	0	TYPE_1	TYPE_1		
+3228	ቦይ	1	TYPE_1	TYPE_1		
+3229	ቦይና	0		TYPE_1		
+3230	ቦግታ	1		TYPE_1		
+3231	ቧልት	1		TYPE_1		
+3232	ቧልታ	1		TYPE_1		
+3233	ቧምቧ	1	TYPE_1	TYPE_1		
+3234	ቧንቧ	1	TYPE_1	TYPE_1		
+3235	ቧጎታ	1	TYPE_1	TYPE_1		
+3236	ቧጋች	0	TYPE_1	TYPE_1		
+3257	ብልጠት	1	TYPE_1	TYPE_1		
+3258	በረሐ	1	TYPE_1	TYPE_1		
+3259	በረኸኛ	0		TYPE_1		
+3260	ብርቅ	1	TYPE_1	TYPE_1		
+3261	ብርቅስ	1		TYPE_1		
+3263	ብርበራ	1	TYPE_1	TYPE_1		
+3264	ብርካቴ	1		TYPE_1		
+3265	ብርገጋ	1		TYPE_1		
+3266	ብቁነት	1		TYPE_1		
+3267	በትረያርክ	0		TYPE_1		
+3268	በትረያርካ	0		TYPE_1		
+3269	በተኀ	0		TYPE_1		
+3270	በዐል	1	TYPE_1	TYPE_1		
+3271	በደው	0		TYPE_1		
+3272	በድረጃን	0		TYPE_1		
+3273	በጢኀ	0		TYPE_1		
+3274	በጣጢስ	1	TYPE_1	TYPE_1		
+3275	ቡሀቃ	1		TYPE_1		
+3276	ቡልቅታ	1	TYPE_1	TYPE_1		
+3277	ቡልቅታ	1	TYPE_1	TYPE_1		
+3278	ቡዳነት	1		TYPE_1		
+3279	ቢልቢላ	0	TYPE_1	TYPE_1		
+3280	ቢልቃት	1	TYPE_1	TYPE_1		
+3281	ባላልጋ	1		TYPE_1		
+3282	ባለኩል	0	TYPE_1	TYPE_1		
+3283	ባለዕዳ	1	TYPE_1	TYPE_1		
+3284	ባለጌነት	1		TYPE_1		
+3285	ባላበትነት	1		TYPE_1		
+3286	ባላንጣነት	1		TYPE_1		
+3287	ባልንጀርነት	1		TYPE_1		
+3288	ባሕር	1	TYPE_1	TYPE_1		
+3289	ባሕርይ	1		TYPE_1		
+3290	ባሕታዊ	1		TYPE_1		
+3291	ብሕትውና	1		TYPE_1		
+3292	ባራኪ	1	TYPE_1	TYPE_1		
+3293	ባር	1	TYPE_1	TYPE_1		
+3294	ባርነት	1		TYPE_1		
+3295	ባርዳ	0	TYPE_1	TYPE_1		
+3296	ባሻ	1	TYPE_1	TYPE_1		
+3297	በአታ	1		TYPE_1		
+3298	ብኩንነት	1		TYPE_1		
+3299	ባውዛ	1		TYPE_1		
+3300	ባጀት	1	TYPE_1	TYPE_1		
+3301	ቤተልሔም	1		TYPE_1		
+3302	ቤተመጻሕፍት	1	TYPE_1	TYPE_1		
+3303	ብልኮ	1	TYPE_1	TYPE_1		
+3304	ብሔር	1	TYPE_1	TYPE_1		
+3305	ብሔረሰብ	1	TYPE_1	TYPE_1		
+3306	ብሔራዊ	1		TYPE_1		
+3307	ብሔረተኝነት	1		TYPE_1		
+3308	ብቸኝነት	1		TYPE_1		
+3309	ቦሎቄ	1		TYPE_1		
+3310	ቦራቂ	1		TYPE_1		
+3311	ቦርቧሪ	1		TYPE_1		
+3312	ቦንዳ	1		TYPE_1		
+3345	ባለታሪክ	1	TYPE_1	TYPE_1		
+5460	ባለእዳ	1		TYPE_1		
+5461	ባለዳ	1		TYPE_1		
+5512	በርኖስ	1		TYPE_1		
+6330	ባለውለታ	1	TYPE_1	TYPE_1		
+6428	ባለውቃቢ	1		TYPE_1		
+6491	ባለውለታ	1	TYPE_1	TYPE_1		
+6494	ባለሙዋል	1	TYPE_1	TYPE_1		
+7453	ባለደመወዝ	1		TYPE_1		
+7529	ባለትዳር	1	TYPE_1	TYPE_1		
+8866	ባለጥግ	1		TYPE_1		
+8906	ባለጥሪት	1		TYPE_1		
+9649	ቢጃማ	1	TYPE_1	TYPE_1		
+10062	ባለሙያ	1	TYPE_1	TYPE_1		
+10107	በዳ	1		TYPE_1		
+10605	ብርዝ	1		TYPE_1		
+10643	ባህል	1	TYPE_1	TYPE_1		
+10857	ቤርጎ	1	TYPE_1	TYPE_1		
+11341	በህር	0	TYPE_1	TYPE_1		
+11346	ቡላድ	0		TYPE_1		
+11348	ቡይት	0	TYPE_1	TYPE_1		
+11349	ቡደን	0		TYPE_1		
+11350	ቡፌ	0	TYPE_1	TYPE_1		
+11352	ቡፌ	0	TYPE_1	TYPE_1		
+11355	ቡቅራት	0		TYPE_1		
+11357	ቡክቡካ	0		TYPE_1		
+11360	ቧገታ	0	TYPE_1	TYPE_1		
+11361	ባጎታ	0	TYPE_1	TYPE_1		
+11384	ብሉያት	0		TYPE_1		
+11385	በብላሽ	0		TYPE_1		
+1450	በማግሥት	1		TYPE_1		
+1451	በማግሥቱ	1		TYPE_1		
+1718	ባለስልጣን	1	TYPE_1	TYPE_1		
+2012	በስር	1		TYPE_1		
+2862	በሃ	0	TYPE_1	TYPE_1		
+2863	በለሴ	0	TYPE_1	TYPE_1		
+2864	በለስ	1		TYPE_1		
+2865	ብልሽት	1	TYPE_1	TYPE_1		
+2866	ብልት	1	TYPE_1	TYPE_1		
+2867	በልግ	1		TYPE_1		
+2868	ብላጊ	1		TYPE_1		
+2869	ብልጫ	1	TYPE_1	TYPE_1		
+2870	ብልጠት	1	TYPE_1	TYPE_1		
+2871	በለጭ	0		TYPE_1		
+2872	ብልጭታ	1	TYPE_1	TYPE_1		
+2873	ብልጭልጭታ	1		TYPE_1		
+2874	ባለፀጋ	1	TYPE_1	TYPE_1		
+2875	ባለጠጋ	1	TYPE_1	TYPE_1		
+2876	ብልፅግና	1		TYPE_1		
+2877	ብላቶ	0		TYPE_1		
+2878	ብሎት	0		TYPE_1		
+2879	ብልት	0	TYPE_1	TYPE_1		
+2880	በሎታ	0	TYPE_1	TYPE_1		
+2881	በረሃ	1	TYPE_1	TYPE_1		
+2882	በረራ	1	TYPE_1	TYPE_1		
+2883	በረር	0		TYPE_1		
+2884	በረሮ	1	TYPE_1	TYPE_1		
+2885	ብራሮ	0		TYPE_1		
+2886	ብር	1	TYPE_1	TYPE_1		
+2887	ብራቅ	1		TYPE_1		
+2888	በረቅ	0		TYPE_1		
+2889	ብርቅርቅታ	1		TYPE_1		
+2890	ብርባሮ	0		TYPE_1		
+2891	ብርታት	1		TYPE_1		
+2892	በረት	1	TYPE_1	TYPE_1		
+2893	በረንዳ	1	TYPE_1	TYPE_1		
+2894	በረኛ	1	TYPE_1	TYPE_1		
+2895	ብርክ	1	TYPE_1	TYPE_1		
+2896	በረከት	1	TYPE_1	TYPE_1		
+2897	ብርካቴ	1	TYPE_1	TYPE_1		
+2898	በረኪና	1	TYPE_1	TYPE_1		
+2899	በረካ	1		TYPE_1		
+2900	ብርኩታ	0	TYPE_3	TYPE_1		
+2901	ብርዝ	1		TYPE_1		
+2902	በረዶ	1	TYPE_3	TYPE_1		
+2903	ብርሃን	1		TYPE_1		
+2904	ብራ	1		TYPE_1		
+2905	በሬ	1	TYPE_1	TYPE_1		
+2906	በር	1	TYPE_1	TYPE_1		
+2907	በራፍ	1	TYPE_1	TYPE_1		
+2908	በረኛ	1	TYPE_1	TYPE_1		
+2909	በርሜል	1	TYPE_1	TYPE_1		
+2910	በርሚል	1	TYPE_1	TYPE_1		
+2911	በርሞሌ	1	TYPE_1	TYPE_1		
+2912	በርበሬ	1		TYPE_1		
+2913	በርባሮስ	0	TYPE_1	TYPE_1		
+2914	በርኖሴ	0		TYPE_1		
+2915	በርኖስ	1	TYPE_3	TYPE_1		
+2916	በርጩማ	1	TYPE_1	TYPE_1		
+2917	በሰላ	0		TYPE_1		
+2918	በሰሎ	0		TYPE_1		
+2919	ብስለት	1	TYPE_3	TYPE_1		
+2920	ብስራት	1	TYPE_3	TYPE_1		
+2921	ብስቁልና	0		TYPE_1		
+2922	ብስና	1		TYPE_1		
+2923	ብስጭት	1		TYPE_1		
+2924	በሶ	1		TYPE_1		
+2925	በሶብላ	1		TYPE_1		
+2926	በሽታ	1	TYPE_1	TYPE_1		
+2927	በቆልት	1		TYPE_1		
+2928	በቀልት	0		TYPE_1		
+2929	በቆልቲ	1		TYPE_1		
+2930	ቡቃያ	1		TYPE_1		
+2931	ብቋያ	1		TYPE_1		
+2932	ብቅል	1		TYPE_1		
+2933	በቀል	1	TYPE_1	TYPE_1		
+2934	በቀቀን	1	TYPE_1	TYPE_1		
+2935	በቀበቅ	0		TYPE_1		
+2936	በቀታ	0	TYPE_1	TYPE_1		
+2937	ብቀታ	0	TYPE_1	TYPE_1		
+2938	በቀት	0		TYPE_1		
+2939	ብቃት	1		TYPE_1		
+2940	በቅሎ	1	TYPE_1	TYPE_1		
+2941	በቆሎ	1		TYPE_1		
+2942	ቦቆሎ	1		TYPE_1		
+2943	በቋል	0	TYPE_3	TYPE_1		
+2944	በቋሊ	0	TYPE_3	TYPE_1		
+2945	በተሃ	0		TYPE_1		
+2946	ቡትቶ	1		TYPE_1		
+2947	ብቱቶ	1		TYPE_1		
+2948	ብትቶ	1		TYPE_1		
+2949	በትረሎሚ	0		TYPE_1		
+2950	በትር	1	TYPE_1	TYPE_1		
+2951	ብትር	1	TYPE_1	TYPE_1		
+2952	ብንታ	0		TYPE_1		
+2953	በኣል	1	TYPE_1	TYPE_1		
+2954	በኣላት	1		TYPE_1		
+2955	ብከላ	1		TYPE_1		
+2956	በኩረሎሚ	0		TYPE_1		
+2957	በኩራት	1		TYPE_1		
+2958	ብኩርና	1		TYPE_1		
+2959	በከራ	0	TYPE_1	TYPE_1		
+2960	ብወዛ	1		TYPE_1		
+2961	ብዝበዛ	1	TYPE_1	TYPE_1		
+2962	ብዙሃኑ	1		TYPE_1		
+2963	ብዛት	1		TYPE_1		
+2964	በዠድ	0		TYPE_1		
+2965	በጀድ	0		TYPE_1		
+2966	ብያኔ	1	TYPE_1	TYPE_1		
+2967	ብይን	1	TYPE_1	TYPE_1		
+2968	በያጅ	1	TYPE_1	TYPE_1		
+2969	በደል	1	TYPE_1	TYPE_1		
+2970	ብድር	1	TYPE_1	TYPE_1		
+2971	ብድራት	1		TYPE_1		
+2972	በድን	1	TYPE_3	TYPE_1		
+2973	ብድ	1		TYPE_1		
+2974	በጀት	1	TYPE_1	TYPE_1		
+2975	ባጀት	1	TYPE_1	TYPE_1		
+2976	በጅሮንድ	1		TYPE_1		
+2977	ቢጋር	0		TYPE_1		
+2978	ብገን	0		TYPE_1		
+2979	በገና	1	TYPE_1	TYPE_1		
+2980	በገነኛ	1		TYPE_1		
+2981	በገፈጅ	1		TYPE_1		
+2982	በጋ	1	TYPE_1	TYPE_1		
+2983	በግ	1	TYPE_1	TYPE_1		
+2984	በጋማች	0	TYPE_3	TYPE_1		
+2985	በግአማች	0	TYPE_3	TYPE_1		
+2986	ብጣሪ	1		TYPE_1		
+2987	በጠጥ	1		TYPE_1		
+2988	በፍታ	1		TYPE_1		
+2989	ቡሃ	0		TYPE_1		
+2990	ቦሃ	0		TYPE_1		
+2991	ቡሃቃ	1		TYPE_1		
+2992	ቡሄ	1		TYPE_1		
+2993	ቡሆ	1		TYPE_1		
+2994	ቡላድ	0	TYPE_1	TYPE_1		
+2995	ቡልኮ	1		TYPE_1		
+2996	ቡልዶዘር	1	TYPE_1	TYPE_1		
+2997	ቡሎን	1	TYPE_1	TYPE_1		
+2998	ብሎን	1	TYPE_1	TYPE_1		
+2999	ቡርሽ	1	TYPE_1	TYPE_1		
+3000	ቡሩክ	1	TYPE_1	TYPE_1		
+3001	ብሩክ	1	TYPE_1	TYPE_1		
+3002	ቡራቡሬ	1	TYPE_1	TYPE_1		
+3003	ቡርዲ	0		TYPE_1		
+3004	ቡሲ	0		TYPE_1		
+3005	ቡሴ	0		TYPE_1		
+3006	ቡሽ	1	TYPE_1	TYPE_1		
+3007	ቡቃ	1		TYPE_1		
+3008	ቡኣ	1		TYPE_1		
+3009	ቡቃያ	1		TYPE_1		
+3010	ቡቅሬ	0		TYPE_1		
+3011	ቡቅሪ	0		TYPE_1		
+3012	ቡቅር	0		TYPE_1		
+3013	ቡታ	0		TYPE_1		
+3014	ቡትሌ	1	TYPE_1	TYPE_1		
+3015	ቡችላ	1	TYPE_1	TYPE_1		
+3016	ቡና	1		TYPE_1		
+3017	ቡንኝ	0		TYPE_1		
+3018	ቡፍና	0		TYPE_1		
+3019	ቢላ	1	TYPE_1	TYPE_1		
+3020	ቢላዋ	1	TYPE_1	TYPE_1		
+3021	ቢላዎ	1		TYPE_1		
+3022	ቢልቃጥ	1	TYPE_1	TYPE_1		
+3023	ብልቃጥ	1	TYPE_1	TYPE_1		
+3024	ቢራ	1	TYPE_1	TYPE_1		
+3025	ቢራቢሮ	1	TYPE_1	TYPE_1		
+3026	ቢርካ	0		TYPE_1		
+3027	ቢሮ	1	TYPE_1	TYPE_1		
+3028	ቢስ	1		TYPE_1		
+3029	ቢስክሌት	1	TYPE_1	TYPE_1		
+3030	ብስክሌት	1	TYPE_1	TYPE_1		
+3031	ቢሽቃጥ	0	TYPE_1	TYPE_1		
+3032	ቢተዋ	0	TYPE_1	TYPE_1		
+3033	ቢትወደድ	1		TYPE_1		
+3034	ቢንጎ	1		TYPE_1		
+3035	ቢኖ	1		TYPE_1		
+3036	ቢያጆ	1		TYPE_1		
+3037	ቢጃማ	1	TYPE_1	TYPE_1		
+3038	ቢጎዲን	1	TYPE_1	TYPE_1		
+3039	ቢጤ	1	TYPE_1	TYPE_1		
+3040	ብጤ	1	TYPE_1	TYPE_1		
+3041	ባህል	1	TYPE_1	TYPE_1		
+3042	ባህረኛ	1		TYPE_1		
+3043	ባህር	1	TYPE_1	TYPE_1		
+3044	ባህረ	1		TYPE_1		
+3045	ባህርይ	1		TYPE_1		
+3046	ባህታዊ	1		TYPE_1		
+3047	ብህትውና	1		TYPE_1		
+3048	ባለሁለት	1		TYPE_1		
+3049	ባለህግ	1		TYPE_1		
+3050	ባለመለዮ	1		TYPE_1		
+3051	ባለመብት	1	TYPE_1	TYPE_1		
+3052	ባለሙያ	1	TYPE_1	TYPE_1		
+3053	ባለማደሪያ	1	TYPE_1	TYPE_1		
+3054	ባለሟል	1	TYPE_1	TYPE_1		
+3055	ባለርስት	1	TYPE_1	TYPE_1		
+3056	ባለመሬት	1	TYPE_1	TYPE_1		
+3057	ባለሰሞን	1		TYPE_1		
+3058	ባለሳምንት	1	TYPE_1	TYPE_1		
+3059	ባለስልጣን	1	TYPE_1	TYPE_1		
+3060	ባለስም	1	TYPE_1	TYPE_1		
+3061	ባለቀላድ	1		TYPE_1		
+3062	ባለቅኔ	1	TYPE_1	TYPE_1		
+3063	ባለቤት	1	TYPE_1	TYPE_1		
+3064	ባለተራ	1	TYPE_1	TYPE_1		
+3065	ባለታሪክ	1	TYPE_1	TYPE_1		
+3066	ባለነጋሪት	1		TYPE_1		
+3067	ባለኣልጋ	1		TYPE_1		
+3068	ባለኣጎዛ	1		TYPE_1		
+3069	ባለእኩል	1		TYPE_1		
+3070	ባለእጅ	1	TYPE_1	TYPE_1		
+3071	ባለጅ	1	TYPE_1	TYPE_1		
+3072	ባለወልድ	1		TYPE_1		
+3073	ባለወንበር	1		TYPE_1		
+3074	ባለወግ	1		TYPE_1		
+3075	ባለዝና	1	TYPE_1	TYPE_1		
+3076	ባለደም	1		TYPE_1		
+3077	ባለደም	1		TYPE_1		
+3078	ባለጊዜ	1		TYPE_1		
+3079	ብልግና	1	TYPE_1	TYPE_1		
+3080	ባላ	1	TYPE_1	TYPE_1		
+3081	ባላባልቾ	0	TYPE_1	TYPE_1		
+3082	ባላምባራስ	1	TYPE_1	TYPE_1		
+3083	ባላባት	1	TYPE_1	TYPE_1		
+3084	ባላምባራስ	1	TYPE_1	TYPE_1		
+3085	ባላባት	1	TYPE_1	TYPE_1		
+3086	ባላንጣ	1	TYPE_1	TYPE_1		
+3087	ባላገር	1	TYPE_1	TYPE_1		
+3088	ባላገር	1	TYPE_1	TYPE_1		
+3089	ባላጋራ	1	TYPE_1	TYPE_1		
+3090	ባሌስትራ	1	TYPE_1	TYPE_1		
+3091	ባሌት	1		TYPE_1		
+3092	ባል	1	TYPE_1	TYPE_1		
+3093	ባልቦላ	1	TYPE_1	TYPE_1		
+3094	ባልትና	1	TYPE_1	TYPE_1		
+3095	ባልንጀራ	1	TYPE_1	TYPE_1		
+3096	ባልደረባ	1	TYPE_1	TYPE_1		
+3097	ባልደራስ	1	TYPE_1	TYPE_1		
+3098	ባልዲ	1	TYPE_1	TYPE_1		
+3099	ባልጩት	1	TYPE_1	TYPE_1		
+3100	ባምባ	0	TYPE_1	TYPE_1		
+3101	ባንባ	0	TYPE_1	TYPE_1		
+3102	ብራቅ	1		TYPE_1		
+3103	ቡራኬ	1		TYPE_1		
+3104	ባሩድ	1		TYPE_1		
+3105	ባሪያ	1	TYPE_1	TYPE_1		
+3106	ባርያ	1	TYPE_1	TYPE_1		
+3107	ባሬታ	0	TYPE_1	TYPE_1		
+3108	ባርማሽላ	1		TYPE_1		
+3109	ባርኔጣ	1	TYPE_1	TYPE_1		
+3110	ባርካ	0	TYPE_1	TYPE_1		
+3111	ባርያ	1	TYPE_1	TYPE_1		
+3112	ብሶት	1	TYPE_1	TYPE_1		
+3113	ባሻገር	1		TYPE_1		
+3114	ባቄላ	1		TYPE_1		
+3115	ባቡር	1	TYPE_1	TYPE_1		
+3116	ባቡቲ	0	TYPE_1	TYPE_1		
+3117	ባተሎ	1	TYPE_1	TYPE_1		
+3118	ባት	1		TYPE_1		
+3119	ባትሪ	1	TYPE_1	TYPE_1		
+3120	ባና	0	TYPE_1	TYPE_1		
+3121	ባንክ	1	TYPE_1	TYPE_1		
+3122	ባንኮኒ	1	TYPE_1	TYPE_1		
+3123	ባንዲራ	1	TYPE_1	TYPE_1		
+3124	ባንድ	1	TYPE_1	TYPE_1		
+3125	ባኞ	1	TYPE_1	TYPE_1		
+3126	ባክቴሪያ	1	TYPE_1	TYPE_1		
+3127	ባውሌ	0	TYPE_1	TYPE_1		
+3128	ባዘቶ	1	TYPE_1	TYPE_1		
+3129	ብዝት	1		TYPE_1		
+3130	ባዙቃ	1	TYPE_1	TYPE_1		
+3131	ባዛር	1		TYPE_1		
+3132	ባዜቃ	0		TYPE_1		
+3133	ባዝራ	1	TYPE_1	TYPE_1		
+3134	ባድማ	1	TYPE_1	TYPE_1		
+3135	ባድሜንተን	1		TYPE_1		
+3136	ባጎታ	1	TYPE_3	TYPE_1		
+3137	ባጥ	0	TYPE_1	TYPE_1		
+3138	ቤርጎ	1	TYPE_1	TYPE_1		
+3139	ቤሳ	1	TYPE_1	TYPE_1		
+3140	ቤት	1	TYPE_1	TYPE_1		
+3141	ቤቴልሄም	1	TYPE_3	TYPE_1		
+3142	ቤተመቅደስ	1	TYPE_1	TYPE_1		
+3143	ቤተመንግስት	1	TYPE_1	TYPE_1		
+3144	ቤተመዘክር	1	TYPE_1	TYPE_1		
+3145	ቤተምርፋቅ	1	TYPE_3	TYPE_1		
+3146	ቤተመዛግብት	1	TYPE_1	TYPE_1		
+3147	ቤተመፃህፍት	1	TYPE_1	TYPE_1		
+3148	ቤተሞገስ	1	TYPE_3	TYPE_1		
+3149	ቤተሰብ	1	TYPE_1	TYPE_1		
+3150	ቤተሳልገኝ	0		TYPE_1		
+3151	ቤተንጉስ	1	TYPE_1	TYPE_1		
+3152	ቤተአምልኮ	1	TYPE_1	TYPE_1		
+3153	ቤተእግዚኣብሄር	1		TYPE_1		
+3154	ቤተክህነት	1		TYPE_1		
+3155	ቤተክርስቲያን	1	TYPE_4	TYPE_1		
+3156	ቤተዘመድ	1	TYPE_3	TYPE_1		
+3157	ቤተፀሎት	1		TYPE_1		
+3158	ቤንዚን	1		TYPE_1		
+3159	ቤዛ	1	TYPE_1	TYPE_1		
+3160	ብሄር	1	TYPE_1	TYPE_1		
+3161	ብሄረሰብ	1	TYPE_1	TYPE_1		
+3162	ብሆር	0	TYPE_1	TYPE_1		
+3163	ብሉይኪዳን	1		TYPE_1		
+3164	ብላቴና	1	TYPE_1	TYPE_1		
+3165	ብሌን	1		TYPE_1		
+3166	ብል	1	TYPE_3	TYPE_1		
+3167	ብልሃት	1	TYPE_1	TYPE_1		
+3168	ብረት	1	TYPE_1	TYPE_1		
+3169	ብረትቀለም	1	TYPE_1	TYPE_1		
+3170	ብራና	1	TYPE_1	TYPE_1		
+3171	ብራኳ	1		TYPE_1		
+3172	ብር	1	TYPE_1	TYPE_1		
+3173	ብርኣለንጋ	1		TYPE_1		
+3174	ብርኣምባር	1		TYPE_1		
+3175	ብርኣፍሳሽ	1		TYPE_1		
+3176	ብርሌ	1	TYPE_1	TYPE_1		
+3177	ብርበራ	1	TYPE_1	TYPE_1		
+3178	ብርቱካን	1	TYPE_1	TYPE_1		
+3179	ብርት	0		TYPE_1		
+3180	ብርእ	1	TYPE_1	TYPE_1		
+3181	ብእር	1	TYPE_1	TYPE_1		
+3182	ብርኩማ	1	TYPE_1	TYPE_1		
+3183	ብርኩማ	1	TYPE_1	TYPE_1		
+3184	ብርኮት	0	TYPE_1	TYPE_1		
+3185	ብርኳኔ	0	TYPE_1	TYPE_1		
+3186	ብርጉድ	1		TYPE_1		
+3187	ብርጌድ	1	TYPE_1	TYPE_1		
+3188	ብርጭቆ	1	TYPE_1	TYPE_1		
+3189	ብሳና	1		TYPE_1		
+3190	ብስኩት	1	TYPE_1	TYPE_1		
+3191	ብስክሌት	1	TYPE_1	TYPE_1		
+3192	ብሽሽት	1		TYPE_1		
+3193	ብብት	1	TYPE_1	TYPE_1		
+3194	ብብቻ	1	TYPE_1	TYPE_1		
+3195	ብዥታ	1	TYPE_1	TYPE_1		
+3196	ብይ	1	TYPE_1	TYPE_1		
+3197	ብጉር	1		TYPE_1		
+3198	ብጉንጅ	1		TYPE_1		
+3199	ብጥሌ	1	TYPE_1	TYPE_1		
+3200	ብጥ	1	TYPE_1	TYPE_1		
+3201	ብጣት	1		TYPE_1		
+3202	ብፅኣት	1	TYPE_1	TYPE_1		
+3203	ብፅእና	1		TYPE_1		
+3204	ብፌ	1	TYPE_1	TYPE_1		
+3205	ቦላሌሱሪ	1		TYPE_1		
+3206	ቦሊንግ	1		TYPE_1		
+3207	ቦምብ	1	TYPE_1	TYPE_1		
+3208	ቦረቦጭ	1		TYPE_1		
+3209	ቦረንትቻ	1		TYPE_1		
+3210	ቦርሳ	1	TYPE_1	TYPE_1		
+3211	ቦርቦርቲ	0		TYPE_1		
+3212	ቦርዴ	1		TYPE_1		
+3213	ቦርጭ	1		TYPE_1		
+3214	ቦክስ	1	TYPE_1	TYPE_1		
+3215	ቦቅስ	1		TYPE_1		
+3216	ቦቅ	0		TYPE_1		
+3217	ቦታ	1	TYPE_1	TYPE_1		
+3218	ቦት	1	TYPE_1	TYPE_1		
+3219	ቦና	0		TYPE_1		
+3220	ቦኖ	1	TYPE_1	TYPE_1		
+3221	ቦሃቃ	1		TYPE_1		
+3222	ቦኬ	0		TYPE_1		
+3223	ቦካ	0		TYPE_1		
+3224	ቦዘኔ	1	TYPE_1	TYPE_1		
+3225	ቦዘን	1	TYPE_1	TYPE_1		
+3226	ቦዘን	1	TYPE_1	TYPE_1		
+3227	ቦዬ	0	TYPE_1	TYPE_1		
+3228	ቦይ	1	TYPE_1	TYPE_1		
+3229	ቦይና	0		TYPE_1		
+3230	ቦግታ	1		TYPE_1		
+3231	ቧልት	1		TYPE_1		
+3232	ቧልታ	1		TYPE_1		
+3233	ቧምቧ	1	TYPE_1	TYPE_1		
+3234	ቧንቧ	1	TYPE_1	TYPE_1		
+3235	ቧጎታ	1	TYPE_1	TYPE_1		
+3236	ቧጋች	0	TYPE_1	TYPE_1		
+3257	ብልጠት	1	TYPE_1	TYPE_1		
+3258	በረሐ	1	TYPE_1	TYPE_1		
+3259	በረኸኛ	0		TYPE_1		
+3260	ብርቅ	1	TYPE_1	TYPE_1		
+3261	ብርቅስ	1		TYPE_1		
+3263	ብርበራ	1	TYPE_1	TYPE_1		
+3264	ብርካቴ	1		TYPE_1		
+3265	ብርገጋ	1		TYPE_1		
+3266	ብቁነት	1		TYPE_1		
+3267	በትረያርክ	0		TYPE_1		
+3268	በትረያርካ	0		TYPE_1		
+3269	በተኀ	0		TYPE_1		
+3270	በዐል	1	TYPE_1	TYPE_1		
+3271	በደው	0		TYPE_1		
+3272	በድረጃን	0		TYPE_1		
+3273	በጢኀ	0		TYPE_1		
+3274	በጣጢስ	1	TYPE_1	TYPE_1		
+3275	ቡሀቃ	1		TYPE_1		
+3276	ቡልቅታ	1	TYPE_1	TYPE_1		
+3277	ቡልቅታ	1	TYPE_1	TYPE_1		
+3278	ቡዳነት	1		TYPE_1		
+3279	ቢልቢላ	0	TYPE_1	TYPE_1		
+3280	ቢልቃት	1	TYPE_1	TYPE_1		
+3281	ባላልጋ	1		TYPE_1		
+3282	ባለኩል	0	TYPE_1	TYPE_1		
+3283	ባለዕዳ	1	TYPE_1	TYPE_1		
+3284	ባለጌነት	1		TYPE_1		
+3285	ባላበትነት	1		TYPE_1		
+3286	ባላንጣነት	1		TYPE_1		
+3287	ባልንጀርነት	1		TYPE_1		
+3288	ባሕር	1	TYPE_1	TYPE_1		
+3289	ባሕርይ	1		TYPE_1		
+3290	ባሕታዊ	1		TYPE_1		
+3291	ብሕትውና	1		TYPE_1		
+3292	ባራኪ	1	TYPE_1	TYPE_1		
+3293	ባር	1	TYPE_1	TYPE_1		
+3294	ባርነት	1		TYPE_1		
+3295	ባርዳ	0	TYPE_1	TYPE_1		
+3296	ባሻ	1	TYPE_1	TYPE_1		
+3297	በአታ	1		TYPE_1		
+3298	ብኩንነት	1		TYPE_1		
+3299	ባውዛ	1		TYPE_1		
+3300	ባጀት	1	TYPE_1	TYPE_1		
+3301	ቤተልሔም	1		TYPE_1		
+3302	ቤተመጻሕፍት	1	TYPE_1	TYPE_1		
+3303	ብልኮ	1	TYPE_1	TYPE_1		
+3304	ብሔር	1	TYPE_1	TYPE_1		
+3305	ብሔረሰብ	1	TYPE_1	TYPE_1		
+3306	ብሔራዊ	1		TYPE_1		
+3307	ብሔረተኝነት	1		TYPE_1		
+3308	ብቸኝነት	1		TYPE_1		
+3309	ቦሎቄ	1		TYPE_1		
+3310	ቦራቂ	1		TYPE_1		
+3311	ቦርቧሪ	1		TYPE_1		
+3312	ቦንዳ	1		TYPE_1		
+3345	ባለታሪክ	1	TYPE_1	TYPE_1		
+5460	ባለእዳ	1		TYPE_1		
+5461	ባለዳ	1		TYPE_1		
+5512	በርኖስ	1		TYPE_1		
+6330	ባለውለታ	1	TYPE_1	TYPE_1		
+6428	ባለውቃቢ	1		TYPE_1		
+6491	ባለውለታ	1	TYPE_1	TYPE_1		
+6494	ባለሙዋል	1	TYPE_1	TYPE_1		
+7453	ባለደመወዝ	1		TYPE_1		
+7529	ባለትዳር	1	TYPE_1	TYPE_1		
+8866	ባለጥግ	1		TYPE_1		
+8906	ባለጥሪት	1		TYPE_1		
+9649	ቢጃማ	1	TYPE_1	TYPE_1		
+10062	ባለሙያ	1	TYPE_1	TYPE_1		
+10107	በዳ	1		TYPE_1		
+10605	ብርዝ	1		TYPE_1		
+10643	ባህል	1	TYPE_1	TYPE_1		
+10857	ቤርጎ	1	TYPE_1	TYPE_1		
+11341	በህር	0	TYPE_1	TYPE_1		
+11346	ቡላድ	0		TYPE_1		
+11348	ቡይት	0	TYPE_1	TYPE_1		
+11349	ቡደን	0		TYPE_1		
+11350	ቡፌ	0	TYPE_1	TYPE_1		
+11352	ቡፌ	0	TYPE_1	TYPE_1		
+11355	ቡቅራት	0		TYPE_1		
+11357	ቡክቡካ	0		TYPE_1		
+11360	ቧገታ	0	TYPE_1	TYPE_1		
+11361	ባጎታ	0	TYPE_1	TYPE_1		
+11384	ብሉያት	0		TYPE_1		
+11385	በብላሽ	0		TYPE_1		

@@ -1,0 +1,522 @@
+5110	ጠላት	1	TYPE_1	TYPE_1		
+5111	ጣት	1	TYPE_1	TYPE_1		
+5134	ጥቁር	1	TYPE_1	TYPE_1		
+5142	ጠባይ	1	TYPE_1	TYPE_1		
+5466	ጠባብ	1		TYPE_1		
+5513	ጥይት	1	TYPE_1	TYPE_1		
+8417	ጠለላ	1		TYPE_1		
+8419	ጠለላ	1		TYPE_1		
+8421	ጠለስ	0	TYPE_1	TYPE_1		
+8422	ጠልሰም	0	TYPE_1	TYPE_1		
+8423	ጠላቂ	1	TYPE_1	TYPE_1		
+8425	ጥልቀት	1		TYPE_1		
+8427	ጠለንጅ	0		TYPE_1		
+8428	ጠሌንዥ	0		TYPE_1		
+8429	ጠለፋ	1	TYPE_1	TYPE_1		
+8431	ጠላ	1		TYPE_1		
+8434	ጠላት	1	TYPE_1	TYPE_1		
+8435	ጥል	1		TYPE_1		
+8436	ጥላቻ	1	TYPE_1	TYPE_1		
+8437	ጥልፍ	1	TYPE_1	TYPE_1		
+8438	ጥላ	1		TYPE_1		
+8439	ጥላወጊ	1		TYPE_1		
+8440	ጠል	1		TYPE_1		
+8441	ጥመት	1		TYPE_1		
+8446	ጥምቀት	1		TYPE_1		
+8449	ጠመኔ	1	TYPE_1	TYPE_1		
+8450	ጠመንጃ	1	TYPE_1	TYPE_1		
+8451	ጠበንጃ	1	TYPE_1	TYPE_1		
+8456	ጠምዛዛ	1	TYPE_1	TYPE_1		
+8457	ጠመዥ	1		TYPE_1		
+8458	ጠመጅ	1		TYPE_1		
+8461	ጥምጥም	1		TYPE_1		
+8462	ጥማት	1		TYPE_1		
+8463	ጥም	1		TYPE_1		
+8465	ጠርብ	1	TYPE_1	TYPE_1		
+8466	ጠረን	1	TYPE_3	TYPE_1		
+8467	ጠራዥ	1	TYPE_1	TYPE_1		
+8468	ጠርዝ	1	TYPE_1	TYPE_1		
+8469	ጥራዝ	1	TYPE_1	TYPE_1		
+8470	ጥርዝ	1		TYPE_1		
+8472	ጠራጊ	1	TYPE_1	TYPE_1		
+8473	ጥራጊ	1	TYPE_1	TYPE_1		
+8474	ጥርጊያ	1		TYPE_1		
+8475	ጥርጣሬ	1		TYPE_1		
+8476	ጥርጥር	1		TYPE_1		
+8477	ጥርጣሪ	1		TYPE_1		
+8479	ጠረጴዛ	1	TYPE_1	TYPE_1		
+8484	ጠረፍ	1	TYPE_1	TYPE_1		
+8487	ጥሪ	1	TYPE_1	TYPE_1		
+8490	ጥራት	1	TYPE_1	TYPE_1		
+8495	ጠርሙስ	1	TYPE_1	TYPE_1		
+8496	ጠርቡሽ	1		TYPE_1		
+8509	ጥቅም	1	TYPE_1	TYPE_1		
+8510	ጠቀሜታ	1	TYPE_1	TYPE_1		
+8511	ጠቀራ	0		TYPE_1		
+8512	ጠቀሮ	0		TYPE_1		
+8513	ጥቅስ	1	TYPE_1	TYPE_1		
+8514	ጥቅሻ	1	TYPE_1	TYPE_1		
+8515	ጥቃት	1	TYPE_1	TYPE_1		
+8517	ጠቋሚ	1	TYPE_1	TYPE_1		
+8518	ጥቆማ	1	TYPE_1	TYPE_1		
+8520	ጥቁራት	1	TYPE_1	TYPE_1		
+8537	ጠባቂ	1	TYPE_1	TYPE_1		
+8538	ጥበቃ	1		TYPE_1		
+8542	ጣብቂያ	0		TYPE_1		
+8545	ጠበቃ	1	TYPE_1	TYPE_1		
+8546	ጥብቅና	1	TYPE_3	TYPE_1		
+8548	ጥበት	1		TYPE_1		
+8549	ጥበብ	1	TYPE_1	TYPE_1		
+8550	ጥብጠባ	1		TYPE_1		
+8551	ጥብጥባት	1		TYPE_1		
+8554	ጥቢ	1		TYPE_1		
+8555	ጥባት	1		TYPE_1		
+8558	ጠባይ	1	TYPE_1	TYPE_1		
+8559	ጠብ	1	TYPE_1	TYPE_1		
+8560	ጠብታ	1	TYPE_1	TYPE_1		
+8561	ጠቦት	1	TYPE_1	TYPE_1		
+8562	ጥንስስ	1		TYPE_1		
+8563	ጥንቅር	1		TYPE_1		
+8564	ጥንቃቄ	1	TYPE_1	TYPE_1		
+8566	ጠንቋይ	1	TYPE_1	TYPE_1		
+8567	ጥንቆላ	1	TYPE_1	TYPE_1		
+8569	ጥንባት	1		TYPE_1		
+8571	ጥንካሬ	1	TYPE_1	TYPE_1		
+8572	ጥንግ	0		TYPE_1		
+8573	ጥንጣን	0		TYPE_1		
+8577	ጥናት	1	TYPE_1	TYPE_1		
+8580	ጥናት	1		TYPE_1		
+8582	ጠኔ	1		TYPE_1		
+8583	ጠንቅ	1	TYPE_1	TYPE_1		
+8584	ጠንበለል	1	TYPE_1	TYPE_1		
+8585	ጠምበለል	1	TYPE_1	TYPE_1		
+8586	ጠንፍ	1		TYPE_1		
+8587	ጥንፍ	1		TYPE_1		
+8591	ጥዝጣዜ	1		TYPE_1		
+8593	ጥያቄ	1	TYPE_1	TYPE_1		
+8595	ጠይብ	1	TYPE_1	TYPE_1		
+8596	ጥድፊያ	1		TYPE_1		
+8597	ጠዶ	0		TYPE_1		
+8598	ጠጅ	1		TYPE_1		
+8604	ጠገራ	1	TYPE_1	TYPE_1		
+8606	ጥጋብ	1		TYPE_1		
+8607	ጠጋኝ	1	TYPE_1	TYPE_1		
+8608	ጥገና	1	TYPE_1	TYPE_1		
+8610	ጠገግ	1	TYPE_1	TYPE_1		
+8611	ጥግ	1		TYPE_1		
+8612	ጥጋት	1		TYPE_1		
+8613	ጥጋጥግ	1		TYPE_1		
+8616	ጠጠር	1	TYPE_1	TYPE_1		
+8621	ጠፍር	1		TYPE_1		
+8622	ጠፈር	1	TYPE_1	TYPE_1		
+8623	ጠፈርተኛ	1		TYPE_1		
+8624	ጥፍጥፍ	1		TYPE_1		
+8625	ጠፈጠፍ	1		TYPE_1		
+8626	ጠፍታ	1		TYPE_1		
+8628	ጥፋት	1	TYPE_1	TYPE_1		
+8629	ጥፊ	1	TYPE_1	TYPE_1		
+8630	ጡሊ	1		TYPE_1		
+8631	ጡር	1		TYPE_1		
+8632	ጡብ	1	TYPE_1	TYPE_1		
+8633	ጡት	1	TYPE_1	TYPE_1		
+8639	ጡንቻ	1		TYPE_1		
+8640	ጡጦ	1	TYPE_1	TYPE_1		
+8641	ጡጫ	1		TYPE_1		
+8643	ጢሎሽ	1		TYPE_1		
+8644	ጢቅታ	1		TYPE_1		
+8645	ጢንጦ	0		TYPE_1		
+8648	ጥለት	1	TYPE_1	TYPE_1		
+8649	ጥሎሽ	1	TYPE_1	TYPE_1		
+8651	ጣእም	1	TYPE_1	TYPE_1		
+8653	ጣመን	1		TYPE_1		
+8655	ጥረት	1	TYPE_1	TYPE_1		
+8656	ጣር	1	TYPE_3	TYPE_1		
+8660	ጣራ	1	TYPE_1	TYPE_1		
+8661	ጣሪያ	1	TYPE_1	TYPE_1		
+8662	ጣሳ	1	TYPE_1	TYPE_1		
+8663	ጣቃ	1	TYPE_3	TYPE_1		
+8664	ጣቢያ	1	TYPE_1	TYPE_1		
+8665	ጣባ	1		TYPE_1		
+8666	ጣት	1	TYPE_1	TYPE_1		
+8671	ጣኦት	1	TYPE_1	TYPE_1		
+8672	ጣውላ	1	TYPE_1	TYPE_1		
+8673	ጣውንት	1	TYPE_1	TYPE_1		
+8674	ጣዎስ	0	TYPE_1	TYPE_1		
+8675	ጣዝማ	1	TYPE_1	TYPE_1		
+8679	ጣጣ	1		TYPE_1		
+8680	ጣጣቴ	1		TYPE_1		
+8683	ጣፊያ	1		TYPE_1		
+8684	ጣፋ	1		TYPE_1		
+8685	ጤቅ	0		TYPE_1		
+8686	ጤና	1	TYPE_1	TYPE_1		
+8692	ጤናዳም	1		TYPE_1		
+8693	ጤንነት	1	TYPE_1	TYPE_1		
+8694	ጤዛ	1		TYPE_1		
+8695	ጤፍ	1		TYPE_1		
+8696	ጥለት	1	TYPE_1	TYPE_1		
+8697	ጥላሸት	1		TYPE_1		
+8698	ጠለሸት	1		TYPE_1		
+8699	ጥላሸት	1		TYPE_1		
+8700	ጥላት	1		TYPE_1		
+8701	ጥልቆ	1	TYPE_1	TYPE_1		
+8702	ጥልጣል	1		TYPE_1		
+8703	ጥረሾ	0		TYPE_1		
+8704	ጥሩምባ	1	TYPE_1	TYPE_1		
+8706	ጥሩር	1		TYPE_1		
+8707	ጥሪት	1	TYPE_1	TYPE_1		
+8708	ጥራር	0		TYPE_1		
+8709	ጥሬ	1		TYPE_1		
+8710	ጥራጥሬ	1		TYPE_1		
+8717	ጥር	1	TYPE_1	TYPE_1		
+8718	ጥርስ	1	TYPE_1	TYPE_1		
+8722	ጥርኝ	1		TYPE_1		
+8724	ጥሻ	1		TYPE_1		
+8725	ጢሻ	1		TYPE_1		
+8726	ጥቀርሻ	1		TYPE_1		
+8727	ጥቅምት	1	TYPE_1	TYPE_1		
+8728	ጥቢኛ	1		TYPE_1		
+8729	ጢብኛ	1		TYPE_1		
+8730	ጥብቆ	1	TYPE_1	TYPE_1		
+8731	ጥብጣብ	1		TYPE_1		
+8732	ጥንቅሽ	1		TYPE_1		
+8734	ጥንቸል	1	TYPE_1	TYPE_1		
+8735	ጥንዚዛ	1	TYPE_1	TYPE_1		
+8736	ጥንጁት	0		TYPE_1		
+8737	ጥንዡት	0		TYPE_1		
+8738	ጥይት	1	TYPE_1	TYPE_1		
+8739	ጥድ	1	TYPE_1	TYPE_1		
+8741	ጥጃ	1	TYPE_1	TYPE_1		
+8742	ጥገት	1	TYPE_1	TYPE_1		
+8743	ጥጋት	1		TYPE_1		
+8744	ጥጥ	1		TYPE_1		
+8746	ጥፍጥሬ	1		TYPE_1		
+8748	ጥፌ	0		TYPE_1		
+8749	ጥፍር	1	TYPE_1	TYPE_1		
+8753	ጥፍርንዶ	0		TYPE_1		
+8754	ጥፍሪንዶ	0		TYPE_1		
+8756	ጦሊት	0		TYPE_1		
+8757	ጦሎታ	0		TYPE_1		
+8758	ጦማር	0	TYPE_1	TYPE_1		
+8759	ጡረታ	1	TYPE_1	TYPE_1		
+8761	ጡረተኛ	1	TYPE_1	TYPE_1		
+8762	ጦር	1	TYPE_1	TYPE_1		
+8785	ጦርነት	1	TYPE_1	TYPE_1		
+8786	ጦስ	1	TYPE_1	TYPE_1		
+8787	ጦስኝ	1		TYPE_1		
+8788	ጡዘት	1	TYPE_1	TYPE_1		
+8789	ጦጣ	1	TYPE_1	TYPE_1		
+8790	ጧፍ	1	TYPE_1	TYPE_1		
+8791	ጧት	1		TYPE_1		
+8792	ጠዋት	1		TYPE_1		
+8793	ጧት	1		TYPE_1		
+8794	ጥዋት	1		TYPE_1		
+8799	ጥልቆ	1	TYPE_1	TYPE_1		
+8801	ጠላፊ	1	TYPE_1	TYPE_1		
+8802	ጥልፊያ	1		TYPE_1		
+8805	ጠሎት	1		TYPE_1		
+8808	ጠመንዣ	1	TYPE_1	TYPE_1		
+8809	ጠመንጃ	1	TYPE_1	TYPE_1		
+8815	ጥርቃሚ	1		TYPE_1		
+8819	ጠርሙስ	1	TYPE_1	TYPE_1		
+8820	ጠርሙዝ	1	TYPE_1	TYPE_1		
+8828	ጥቁም	1		TYPE_1		
+8832	ጠበልተኛ	1	TYPE_1	TYPE_1		
+8833	ጠበለተኛ	1	TYPE_1	TYPE_1		
+8845	ጠቢ	1	TYPE_1	TYPE_1		
+8846	ጥቦት	1	TYPE_1	TYPE_1		
+8847	ጠቦት	1	TYPE_1	TYPE_1		
+8848	ጠኚ	1		TYPE_1		
+8850	ጥየቃ	1		TYPE_1		
+8855	ጠዲቅ	1	TYPE_1	TYPE_1		
+8858	ጠድከል	1		TYPE_1		
+8864	ጥገኝነት	1		TYPE_1		
+8867	ጠጠት	1	TYPE_1	TYPE_1		
+8868	ጠጭ	1	TYPE_1	TYPE_1		
+8874	ጡሌ	1		TYPE_1		
+8878	ጡዋት	1		TYPE_1		
+8880	ጣይ	1		TYPE_1		
+8882	ጥሻ	1		TYPE_1		
+8883	ጣቃ	1		TYPE_1		
+8892	ጥፈት	1	TYPE_1	TYPE_1		
+8905	ጥሩምበኛ	1		TYPE_1		
+8910	ጥራጥሬ	1		TYPE_1		
+8911	ጥቃቅን	1		TYPE_1		
+8912	ጥብኛ	1		TYPE_1		
+8913	ጢብኛ	1		TYPE_1		
+8914	ጥንታውያን	1		TYPE_1		
+8923	ጦጢት	1		TYPE_1		
+8953	ጢስ	1		TYPE_1		
+8958	ጢሰኛ	1	TYPE_1	TYPE_1		
+9171	ጠጉር	1		TYPE_1		
+9225	ጠር	1	TYPE_1	TYPE_1		
+9227	ጠበል	1	TYPE_1	TYPE_1		
+9231	ጠበለተኛ	1		TYPE_1		
+9236	ጥናት	1	TYPE_1	TYPE_1		
+9242	ጣዲቅ	1	TYPE_1	TYPE_1		
+9251	ጠጉር	1		TYPE_1		
+9263	ጢም	1		TYPE_1		
+9287	ጥልማሞት	1		TYPE_1		
+9289	ጥሞና	1		TYPE_1		
+9293	ጥና	1	TYPE_1	TYPE_1		
+9295	ጥዋ	1	TYPE_1	TYPE_1		
+5110	ጠላት	1	TYPE_1	TYPE_1		
+5111	ጣት	1	TYPE_1	TYPE_1		
+5134	ጥቁር	1	TYPE_1	TYPE_1		
+5142	ጠባይ	1	TYPE_1	TYPE_1		
+5466	ጠባብ	1		TYPE_1		
+5513	ጥይት	1	TYPE_1	TYPE_1		
+8417	ጠለላ	1		TYPE_1		
+8419	ጠለላ	1		TYPE_1		
+8421	ጠለስ	0	TYPE_1	TYPE_1		
+8422	ጠልሰም	0	TYPE_1	TYPE_1		
+8423	ጠላቂ	1	TYPE_1	TYPE_1		
+8425	ጥልቀት	1		TYPE_1		
+8427	ጠለንጅ	0		TYPE_1		
+8428	ጠሌንዥ	0		TYPE_1		
+8429	ጠለፋ	1	TYPE_1	TYPE_1		
+8431	ጠላ	1		TYPE_1		
+8434	ጠላት	1	TYPE_1	TYPE_1		
+8435	ጥል	1		TYPE_1		
+8436	ጥላቻ	1	TYPE_1	TYPE_1		
+8437	ጥልፍ	1	TYPE_1	TYPE_1		
+8438	ጥላ	1		TYPE_1		
+8439	ጥላወጊ	1		TYPE_1		
+8440	ጠል	1		TYPE_1		
+8441	ጥመት	1		TYPE_1		
+8446	ጥምቀት	1		TYPE_1		
+8449	ጠመኔ	1	TYPE_1	TYPE_1		
+8450	ጠመንጃ	1	TYPE_1	TYPE_1		
+8451	ጠበንጃ	1	TYPE_1	TYPE_1		
+8456	ጠምዛዛ	1	TYPE_1	TYPE_1		
+8457	ጠመዥ	1		TYPE_1		
+8458	ጠመጅ	1		TYPE_1		
+8461	ጥምጥም	1		TYPE_1		
+8462	ጥማት	1		TYPE_1		
+8463	ጥም	1		TYPE_1		
+8465	ጠርብ	1	TYPE_1	TYPE_1		
+8466	ጠረን	1	TYPE_3	TYPE_1		
+8467	ጠራዥ	1	TYPE_1	TYPE_1		
+8468	ጠርዝ	1	TYPE_1	TYPE_1		
+8469	ጥራዝ	1	TYPE_1	TYPE_1		
+8470	ጥርዝ	1		TYPE_1		
+8472	ጠራጊ	1	TYPE_1	TYPE_1		
+8473	ጥራጊ	1	TYPE_1	TYPE_1		
+8474	ጥርጊያ	1		TYPE_1		
+8475	ጥርጣሬ	1		TYPE_1		
+8476	ጥርጥር	1		TYPE_1		
+8477	ጥርጣሪ	1		TYPE_1		
+8479	ጠረጴዛ	1	TYPE_1	TYPE_1		
+8484	ጠረፍ	1	TYPE_1	TYPE_1		
+8487	ጥሪ	1	TYPE_1	TYPE_1		
+8490	ጥራት	1	TYPE_1	TYPE_1		
+8495	ጠርሙስ	1	TYPE_1	TYPE_1		
+8496	ጠርቡሽ	1		TYPE_1		
+8509	ጥቅም	1	TYPE_1	TYPE_1		
+8510	ጠቀሜታ	1	TYPE_1	TYPE_1		
+8511	ጠቀራ	0		TYPE_1		
+8512	ጠቀሮ	0		TYPE_1		
+8513	ጥቅስ	1	TYPE_1	TYPE_1		
+8514	ጥቅሻ	1	TYPE_1	TYPE_1		
+8515	ጥቃት	1	TYPE_1	TYPE_1		
+8517	ጠቋሚ	1	TYPE_1	TYPE_1		
+8518	ጥቆማ	1	TYPE_1	TYPE_1		
+8520	ጥቁራት	1	TYPE_1	TYPE_1		
+8537	ጠባቂ	1	TYPE_1	TYPE_1		
+8538	ጥበቃ	1		TYPE_1		
+8542	ጣብቂያ	0		TYPE_1		
+8545	ጠበቃ	1	TYPE_1	TYPE_1		
+8546	ጥብቅና	1	TYPE_3	TYPE_1		
+8548	ጥበት	1		TYPE_1		
+8549	ጥበብ	1	TYPE_1	TYPE_1		
+8550	ጥብጠባ	1		TYPE_1		
+8551	ጥብጥባት	1		TYPE_1		
+8554	ጥቢ	1		TYPE_1		
+8555	ጥባት	1		TYPE_1		
+8558	ጠባይ	1	TYPE_1	TYPE_1		
+8559	ጠብ	1	TYPE_1	TYPE_1		
+8560	ጠብታ	1	TYPE_1	TYPE_1		
+8561	ጠቦት	1	TYPE_1	TYPE_1		
+8562	ጥንስስ	1		TYPE_1		
+8563	ጥንቅር	1		TYPE_1		
+8564	ጥንቃቄ	1	TYPE_1	TYPE_1		
+8566	ጠንቋይ	1	TYPE_1	TYPE_1		
+8567	ጥንቆላ	1	TYPE_1	TYPE_1		
+8569	ጥንባት	1		TYPE_1		
+8571	ጥንካሬ	1	TYPE_1	TYPE_1		
+8572	ጥንግ	0		TYPE_1		
+8573	ጥንጣን	0		TYPE_1		
+8577	ጥናት	1	TYPE_1	TYPE_1		
+8580	ጥናት	1		TYPE_1		
+8582	ጠኔ	1		TYPE_1		
+8583	ጠንቅ	1	TYPE_1	TYPE_1		
+8584	ጠንበለል	1	TYPE_1	TYPE_1		
+8585	ጠምበለል	1	TYPE_1	TYPE_1		
+8586	ጠንፍ	1		TYPE_1		
+8587	ጥንፍ	1		TYPE_1		
+8591	ጥዝጣዜ	1		TYPE_1		
+8593	ጥያቄ	1	TYPE_1	TYPE_1		
+8595	ጠይብ	1	TYPE_1	TYPE_1		
+8596	ጥድፊያ	1		TYPE_1		
+8597	ጠዶ	0		TYPE_1		
+8598	ጠጅ	1		TYPE_1		
+8604	ጠገራ	1	TYPE_1	TYPE_1		
+8606	ጥጋብ	1		TYPE_1		
+8607	ጠጋኝ	1	TYPE_1	TYPE_1		
+8608	ጥገና	1	TYPE_1	TYPE_1		
+8610	ጠገግ	1	TYPE_1	TYPE_1		
+8611	ጥግ	1		TYPE_1		
+8612	ጥጋት	1		TYPE_1		
+8613	ጥጋጥግ	1		TYPE_1		
+8616	ጠጠር	1	TYPE_1	TYPE_1		
+8621	ጠፍር	1		TYPE_1		
+8622	ጠፈር	1	TYPE_1	TYPE_1		
+8623	ጠፈርተኛ	1		TYPE_1		
+8624	ጥፍጥፍ	1		TYPE_1		
+8625	ጠፈጠፍ	1		TYPE_1		
+8626	ጠፍታ	1		TYPE_1		
+8628	ጥፋት	1	TYPE_1	TYPE_1		
+8629	ጥፊ	1	TYPE_1	TYPE_1		
+8630	ጡሊ	1		TYPE_1		
+8631	ጡር	1		TYPE_1		
+8632	ጡብ	1	TYPE_1	TYPE_1		
+8633	ጡት	1	TYPE_1	TYPE_1		
+8639	ጡንቻ	1		TYPE_1		
+8640	ጡጦ	1	TYPE_1	TYPE_1		
+8641	ጡጫ	1		TYPE_1		
+8643	ጢሎሽ	1		TYPE_1		
+8644	ጢቅታ	1		TYPE_1		
+8645	ጢንጦ	0		TYPE_1		
+8648	ጥለት	1	TYPE_1	TYPE_1		
+8649	ጥሎሽ	1	TYPE_1	TYPE_1		
+8651	ጣእም	1	TYPE_1	TYPE_1		
+8653	ጣመን	1		TYPE_1		
+8655	ጥረት	1	TYPE_1	TYPE_1		
+8656	ጣር	1	TYPE_3	TYPE_1		
+8660	ጣራ	1	TYPE_1	TYPE_1		
+8661	ጣሪያ	1	TYPE_1	TYPE_1		
+8662	ጣሳ	1	TYPE_1	TYPE_1		
+8663	ጣቃ	1	TYPE_3	TYPE_1		
+8664	ጣቢያ	1	TYPE_1	TYPE_1		
+8665	ጣባ	1		TYPE_1		
+8666	ጣት	1	TYPE_1	TYPE_1		
+8671	ጣኦት	1	TYPE_1	TYPE_1		
+8672	ጣውላ	1	TYPE_1	TYPE_1		
+8673	ጣውንት	1	TYPE_1	TYPE_1		
+8674	ጣዎስ	0	TYPE_1	TYPE_1		
+8675	ጣዝማ	1	TYPE_1	TYPE_1		
+8679	ጣጣ	1		TYPE_1		
+8680	ጣጣቴ	1		TYPE_1		
+8683	ጣፊያ	1		TYPE_1		
+8684	ጣፋ	1		TYPE_1		
+8685	ጤቅ	0		TYPE_1		
+8686	ጤና	1	TYPE_1	TYPE_1		
+8692	ጤናዳም	1		TYPE_1		
+8693	ጤንነት	1	TYPE_1	TYPE_1		
+8694	ጤዛ	1		TYPE_1		
+8695	ጤፍ	1		TYPE_1		
+8696	ጥለት	1	TYPE_1	TYPE_1		
+8697	ጥላሸት	1		TYPE_1		
+8698	ጠለሸት	1		TYPE_1		
+8699	ጥላሸት	1		TYPE_1		
+8700	ጥላት	1		TYPE_1		
+8701	ጥልቆ	1	TYPE_1	TYPE_1		
+8702	ጥልጣል	1		TYPE_1		
+8703	ጥረሾ	0		TYPE_1		
+8704	ጥሩምባ	1	TYPE_1	TYPE_1		
+8706	ጥሩር	1		TYPE_1		
+8707	ጥሪት	1	TYPE_1	TYPE_1		
+8708	ጥራር	0		TYPE_1		
+8709	ጥሬ	1		TYPE_1		
+8710	ጥራጥሬ	1		TYPE_1		
+8717	ጥር	1	TYPE_1	TYPE_1		
+8718	ጥርስ	1	TYPE_1	TYPE_1		
+8722	ጥርኝ	1		TYPE_1		
+8724	ጥሻ	1		TYPE_1		
+8725	ጢሻ	1		TYPE_1		
+8726	ጥቀርሻ	1		TYPE_1		
+8727	ጥቅምት	1	TYPE_1	TYPE_1		
+8728	ጥቢኛ	1		TYPE_1		
+8729	ጢብኛ	1		TYPE_1		
+8730	ጥብቆ	1	TYPE_1	TYPE_1		
+8731	ጥብጣብ	1		TYPE_1		
+8732	ጥንቅሽ	1		TYPE_1		
+8734	ጥንቸል	1	TYPE_1	TYPE_1		
+8735	ጥንዚዛ	1	TYPE_1	TYPE_1		
+8736	ጥንጁት	0		TYPE_1		
+8737	ጥንዡት	0		TYPE_1		
+8738	ጥይት	1	TYPE_1	TYPE_1		
+8739	ጥድ	1	TYPE_1	TYPE_1		
+8741	ጥጃ	1	TYPE_1	TYPE_1		
+8742	ጥገት	1	TYPE_1	TYPE_1		
+8743	ጥጋት	1		TYPE_1		
+8744	ጥጥ	1		TYPE_1		
+8746	ጥፍጥሬ	1		TYPE_1		
+8748	ጥፌ	0		TYPE_1		
+8749	ጥፍር	1	TYPE_1	TYPE_1		
+8753	ጥፍርንዶ	0		TYPE_1		
+8754	ጥፍሪንዶ	0		TYPE_1		
+8756	ጦሊት	0		TYPE_1		
+8757	ጦሎታ	0		TYPE_1		
+8758	ጦማር	0	TYPE_1	TYPE_1		
+8759	ጡረታ	1	TYPE_1	TYPE_1		
+8761	ጡረተኛ	1	TYPE_1	TYPE_1		
+8762	ጦር	1	TYPE_1	TYPE_1		
+8785	ጦርነት	1	TYPE_1	TYPE_1		
+8786	ጦስ	1	TYPE_1	TYPE_1		
+8787	ጦስኝ	1		TYPE_1		
+8788	ጡዘት	1	TYPE_1	TYPE_1		
+8789	ጦጣ	1	TYPE_1	TYPE_1		
+8790	ጧፍ	1	TYPE_1	TYPE_1		
+8791	ጧት	1		TYPE_1		
+8792	ጠዋት	1		TYPE_1		
+8793	ጧት	1		TYPE_1		
+8794	ጥዋት	1		TYPE_1		
+8799	ጥልቆ	1	TYPE_1	TYPE_1		
+8801	ጠላፊ	1	TYPE_1	TYPE_1		
+8802	ጥልፊያ	1		TYPE_1		
+8805	ጠሎት	1		TYPE_1		
+8808	ጠመንዣ	1	TYPE_1	TYPE_1		
+8809	ጠመንጃ	1	TYPE_1	TYPE_1		
+8815	ጥርቃሚ	1		TYPE_1		
+8819	ጠርሙስ	1	TYPE_1	TYPE_1		
+8820	ጠርሙዝ	1	TYPE_1	TYPE_1		
+8828	ጥቁም	1		TYPE_1		
+8832	ጠበልተኛ	1	TYPE_1	TYPE_1		
+8833	ጠበለተኛ	1	TYPE_1	TYPE_1		
+8845	ጠቢ	1	TYPE_1	TYPE_1		
+8846	ጥቦት	1	TYPE_1	TYPE_1		
+8847	ጠቦት	1	TYPE_1	TYPE_1		
+8848	ጠኚ	1		TYPE_1		
+8850	ጥየቃ	1		TYPE_1		
+8855	ጠዲቅ	1	TYPE_1	TYPE_1		
+8858	ጠድከል	1		TYPE_1		
+8864	ጥገኝነት	1		TYPE_1		
+8867	ጠጠት	1	TYPE_1	TYPE_1		
+8868	ጠጭ	1	TYPE_1	TYPE_1		
+8874	ጡሌ	1		TYPE_1		
+8878	ጡዋት	1		TYPE_1		
+8880	ጣይ	1		TYPE_1		
+8882	ጥሻ	1		TYPE_1		
+8883	ጣቃ	1		TYPE_1		
+8892	ጥፈት	1	TYPE_1	TYPE_1		
+8905	ጥሩምበኛ	1		TYPE_1		
+8910	ጥራጥሬ	1		TYPE_1		
+8911	ጥቃቅን	1		TYPE_1		
+8912	ጥብኛ	1		TYPE_1		
+8913	ጢብኛ	1		TYPE_1		
+8914	ጥንታውያን	1		TYPE_1		
+8923	ጦጢት	1		TYPE_1		
+8953	ጢስ	1		TYPE_1		
+8958	ጢሰኛ	1	TYPE_1	TYPE_1		
+9171	ጠጉር	1		TYPE_1		
+9225	ጠር	1	TYPE_1	TYPE_1		
+9227	ጠበል	1	TYPE_1	TYPE_1		
+9231	ጠበለተኛ	1		TYPE_1		
+9236	ጥናት	1	TYPE_1	TYPE_1		
+9242	ጣዲቅ	1	TYPE_1	TYPE_1		
+9251	ጠጉር	1		TYPE_1		
+9263	ጢም	1		TYPE_1		
+9287	ጥልማሞት	1		TYPE_1		
+9289	ጥሞና	1		TYPE_1		
+9293	ጥና	1	TYPE_1	TYPE_1		
+9295	ጥዋ	1	TYPE_1	TYPE_1		

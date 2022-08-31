@@ -1,0 +1,140 @@
+5016	ጾታ	1	TYPE_1	TYPE_1		
+5320	ጽህፈት	1		TYPE_1		
+8576	ፅናት	1	TYPE_1	TYPE_1		
+8588	ፅንፍ	1		TYPE_1		
+8657	ፃእር	1	TYPE_3	TYPE_1		
+8740	ፅድ	1	TYPE_1	TYPE_1		
+9152	ጽልመት	1		TYPE_1		
+9153	ጸሎት	1	TYPE_1	TYPE_1		
+9161	ጸና	1		TYPE_1		
+9164	ጽኑነት	1		TYPE_1		
+9165	ጸናጽል	1		TYPE_1		
+9166	ጽድቅ	1		TYPE_1		
+9167	ጸደይ	1		TYPE_1		
+9168	ጽዳት	1	TYPE_1	TYPE_1		
+9170	ጸጉር	1		TYPE_1		
+9172	ጸጋ	1		TYPE_1		
+9174	ጸጥታ	1	TYPE_1	TYPE_1		
+9177	ጸጸት	1	TYPE_1	TYPE_1		
+9178	ጸሓፊ	1	TYPE_1	TYPE_1		
+9183	ጽሑፍ	1	TYPE_1	TYPE_1		
+9187	ጽሕፈት	1	TYPE_1	TYPE_1		
+9201	ጻሕል	1	TYPE_3	TYPE_1		
+9202	ጽላት	1	TYPE_1	TYPE_1		
+9204	ጽንፍ	1		TYPE_1		
+9205	ጽዋ	1		TYPE_1		
+9206	ጽዮን	1		TYPE_1		
+9208	ጽዋሚ	1	TYPE_1	TYPE_1		
+9209	ጿሚ	1	TYPE_1	TYPE_1		
+9210	ጾመኛ	1		TYPE_1		
+9211	ጾም	1		TYPE_1		
+9212	ጾታ	1	TYPE_3	TYPE_1		
+9217	ፀሃይ	1		TYPE_1		
+9220	ፀሎት	1		TYPE_1		
+9224	ፀር	1	TYPE_1	TYPE_1		
+9226	ፀበል	1	TYPE_1	TYPE_1		
+9230	ፀበለተኛ	1		TYPE_1		
+9233	ፅንስ	1		TYPE_1		
+9235	ፅናት	1	TYPE_3	TYPE_1		
+9237	ፀናፅል	1		TYPE_1		
+9238	ፀኣዳ	1		TYPE_1		
+9239	ፀዲቅ	1		TYPE_1		
+9240	ፃዲቅ	1	TYPE_1	TYPE_1		
+9241	ፀዲቅ	1		TYPE_1		
+9243	ፅድቅ	1		TYPE_1		
+9244	ፀደይ	1		TYPE_1		
+9245	ፅዳት	1	TYPE_1	TYPE_1		
+9249	ፀዳል	1	TYPE_1	TYPE_1		
+9250	ፀጉር	1		TYPE_1		
+9257	ፀጋ	1	TYPE_1	TYPE_1		
+9258	ፀጥታ	1		TYPE_1		
+9261	ፀፀት	1	TYPE_1	TYPE_1		
+9262	ፂም	1		TYPE_1		
+9265	ፃህል	1		TYPE_1		
+9271	ፀሃፊ	1	TYPE_1	TYPE_1		
+9273	ፅሁፍ	1	TYPE_1	TYPE_1		
+9275	ፅህፈት	1		TYPE_1		
+9280	ፅላት	1	TYPE_1	TYPE_1		
+9285	ፅልመት	1		TYPE_1		
+9286	ፅልማሞት	1		TYPE_1		
+9288	ፅሞና	1		TYPE_1		
+9290	ፅንሃህ	1	TYPE_1	TYPE_1		
+9291	ፅንሃ	1	TYPE_1	TYPE_1		
+9292	ፅና	1	TYPE_1	TYPE_1		
+9294	ፅዋ	1	TYPE_1	TYPE_1		
+9296	ፅጌ	1		TYPE_1		
+9297	ፅጌረዳ	1		TYPE_1		
+9298	ፆም	1	TYPE_1	TYPE_1		
+9303	ፆመኛ	1		TYPE_1		
+9304	ፇሚ	1	TYPE_1	TYPE_1		
+9305	ፆታ	1	TYPE_1	TYPE_1		
+5016	ጾታ	1	TYPE_1	TYPE_1		
+5320	ጽህፈት	1		TYPE_1		
+8576	ፅናት	1	TYPE_1	TYPE_1		
+8588	ፅንፍ	1		TYPE_1		
+8657	ፃእር	1	TYPE_3	TYPE_1		
+8740	ፅድ	1	TYPE_1	TYPE_1		
+9152	ጽልመት	1		TYPE_1		
+9153	ጸሎት	1	TYPE_1	TYPE_1		
+9161	ጸና	1		TYPE_1		
+9164	ጽኑነት	1		TYPE_1		
+9165	ጸናጽል	1		TYPE_1		
+9166	ጽድቅ	1		TYPE_1		
+9167	ጸደይ	1		TYPE_1		
+9168	ጽዳት	1	TYPE_1	TYPE_1		
+9170	ጸጉር	1		TYPE_1		
+9172	ጸጋ	1		TYPE_1		
+9174	ጸጥታ	1	TYPE_1	TYPE_1		
+9177	ጸጸት	1	TYPE_1	TYPE_1		
+9178	ጸሓፊ	1	TYPE_1	TYPE_1		
+9183	ጽሑፍ	1	TYPE_1	TYPE_1		
+9187	ጽሕፈት	1	TYPE_1	TYPE_1		
+9201	ጻሕል	1	TYPE_3	TYPE_1		
+9202	ጽላት	1	TYPE_1	TYPE_1		
+9204	ጽንፍ	1		TYPE_1		
+9205	ጽዋ	1		TYPE_1		
+9206	ጽዮን	1		TYPE_1		
+9208	ጽዋሚ	1	TYPE_1	TYPE_1		
+9209	ጿሚ	1	TYPE_1	TYPE_1		
+9210	ጾመኛ	1		TYPE_1		
+9211	ጾም	1		TYPE_1		
+9212	ጾታ	1	TYPE_3	TYPE_1		
+9217	ፀሃይ	1		TYPE_1		
+9220	ፀሎት	1		TYPE_1		
+9224	ፀር	1	TYPE_1	TYPE_1		
+9226	ፀበል	1	TYPE_1	TYPE_1		
+9230	ፀበለተኛ	1		TYPE_1		
+9233	ፅንስ	1		TYPE_1		
+9235	ፅናት	1	TYPE_3	TYPE_1		
+9237	ፀናፅል	1		TYPE_1		
+9238	ፀኣዳ	1		TYPE_1		
+9239	ፀዲቅ	1		TYPE_1		
+9240	ፃዲቅ	1	TYPE_1	TYPE_1		
+9241	ፀዲቅ	1		TYPE_1		
+9243	ፅድቅ	1		TYPE_1		
+9244	ፀደይ	1		TYPE_1		
+9245	ፅዳት	1	TYPE_1	TYPE_1		
+9249	ፀዳል	1	TYPE_1	TYPE_1		
+9250	ፀጉር	1		TYPE_1		
+9257	ፀጋ	1	TYPE_1	TYPE_1		
+9258	ፀጥታ	1		TYPE_1		
+9261	ፀፀት	1	TYPE_1	TYPE_1		
+9262	ፂም	1		TYPE_1		
+9265	ፃህል	1		TYPE_1		
+9271	ፀሃፊ	1	TYPE_1	TYPE_1		
+9273	ፅሁፍ	1	TYPE_1	TYPE_1		
+9275	ፅህፈት	1		TYPE_1		
+9280	ፅላት	1	TYPE_1	TYPE_1		
+9285	ፅልመት	1		TYPE_1		
+9286	ፅልማሞት	1		TYPE_1		
+9288	ፅሞና	1		TYPE_1		
+9290	ፅንሃህ	1	TYPE_1	TYPE_1		
+9291	ፅንሃ	1	TYPE_1	TYPE_1		
+9292	ፅና	1	TYPE_1	TYPE_1		
+9294	ፅዋ	1	TYPE_1	TYPE_1		
+9296	ፅጌ	1		TYPE_1		
+9297	ፅጌረዳ	1		TYPE_1		
+9298	ፆም	1	TYPE_1	TYPE_1		
+9303	ፆመኛ	1		TYPE_1		
+9304	ፇሚ	1	TYPE_1	TYPE_1		
+9305	ፆታ	1	TYPE_1	TYPE_1		

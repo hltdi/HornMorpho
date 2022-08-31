@@ -1,0 +1,1108 @@
+26	ቁርጠት	1		TYPE_1		
+2313	ቀለህ	1	TYPE_1	TYPE_1		
+2314	ቀለሃ	1	TYPE_1	TYPE_1		
+2315	ቅለት	1		TYPE_1		
+2316	ቅሌት	1	TYPE_1	TYPE_1		
+2317	ቀለም	1	TYPE_1	TYPE_1		
+2318	ቀለማት	1		TYPE_1		
+2319	ቀላሽ	1		TYPE_1		
+2320	ቀለብ	1		TYPE_1		
+2321	ቀለብተኛ	1		TYPE_1		
+2322	ቀላቢ	1	TYPE_1	TYPE_1		
+2323	ቅልቦሽ	1		TYPE_1		
+2324	ቅልሞሽ	1		TYPE_1		
+2325	ቅልልቦሽ	1		TYPE_1		
+2326	ቅልልሞሽ	1		TYPE_1		
+2327	ቅልበሳ	1	TYPE_1	TYPE_1		
+2328	ቅልብሳት	0		TYPE_1		
+2329	ቀለበት	1	TYPE_1	TYPE_1		
+2330	ቀለታ	0	TYPE_1	TYPE_1		
+2331	ቀለት	0	TYPE_1	TYPE_1		
+2332	ቀለንጅ	0	TYPE_1	TYPE_1		
+2333	ቀሌንጅ	0	TYPE_1	TYPE_1		
+2334	ቀለዋ	0		TYPE_1		
+2335	ቀላዎ	0		TYPE_1		
+2336	ቀልድ	1	TYPE_1	TYPE_1		
+2337	ቅልጣን	0	TYPE_1	TYPE_1		
+2338	ቅልጥም	1	TYPE_1	TYPE_1		
+2339	ቅልጥፍና	1		TYPE_1		
+2340	ቅላት	1		TYPE_1		
+2341	ቅሌ	1	TYPE_1	TYPE_1		
+2342	ቀላዋጭ	1	TYPE_1	TYPE_1		
+2343	ቅልውጥ	1		TYPE_1		
+2344	ቀላይ	1		TYPE_1		
+2345	ቀላያት	1		TYPE_1		
+2346	ቀላድ	1		TYPE_1		
+2347	ቀላጤ	1		TYPE_1		
+2348	ቃለኣጤ	0		TYPE_1		
+2349	ቀላጥም	0	TYPE_1	TYPE_1		
+2350	ቀልቀሎ	1	TYPE_1	TYPE_1		
+2351	ቀልቤ	0	TYPE_1	TYPE_1		
+2352	ቀልብ	1	TYPE_1	TYPE_1		
+2353	ቅማል	1	TYPE_1	TYPE_1		
+2354	ቅመማ	1	TYPE_1	TYPE_1		
+2355	ቀመር	1	TYPE_1	TYPE_1		
+2356	ቅምሻ	1	TYPE_1	TYPE_1		
+2357	ቅምቅማት	1		TYPE_1		
+2358	ቀምቀሞ	1		TYPE_1		
+2359	ቅማጭ	0		TYPE_1		
+2360	ቅምጦሽ	0		TYPE_1		
+2361	ቅምምጦሸ	0		TYPE_1		
+2362	ቀሚስ	1	TYPE_1	TYPE_1		
+2363	ቅሚያ	1	TYPE_1	TYPE_1		
+2365	ቅርምት	1		TYPE_1		
+2366	ቀረራ	0		TYPE_1		
+2367	ቅራሪ	1		TYPE_1		
+2368	ቀረርቶ	1	TYPE_1	TYPE_1		
+2369	ቀረርቱ	1	TYPE_1	TYPE_1		
+2370	ቀረሮ	1		TYPE_1		
+2371	ቀራሮ	1		TYPE_1		
+2372	ቅርሻት	1		TYPE_1		
+2373	ቀረሻሽንቦ	0		TYPE_1		
+2374	ቀረሻሽምቦ	0		TYPE_1		
+2375	ቅርቃር	1	TYPE_1	TYPE_1		
+2376	ቀርቀሬ	0	TYPE_1	TYPE_1		
+2377	ቀርቀር	0	TYPE_1	TYPE_1		
+2378	ቀርቃባ	1	TYPE_1	TYPE_1		
+2379	ቅርቃብ	1	TYPE_1	TYPE_1		
+2380	ቀርቀቦ	0	TYPE_1	TYPE_1		
+2381	ቀርበቦ	0	TYPE_1	TYPE_1		
+2382	ቀረቤታ	1	TYPE_1	TYPE_1		
+2383	ቅርበት	1		TYPE_1		
+2384	ቀረባ	0	TYPE_1	TYPE_1		
+2385	ቅራኔ	1	TYPE_1	TYPE_1		
+2386	ቅርናት	1		TYPE_1		
+2387	ቀረንጠሎ	0		TYPE_1		
+2388	ቀረጥ	1	TYPE_1	TYPE_1		
+2389	ቀራጭ	1	TYPE_1	TYPE_1		
+2390	ቅርጫ	1		TYPE_1		
+2391	ቀራጭ	1	TYPE_1	TYPE_1		
+2392	ቀራፂ	1	TYPE_1	TYPE_1		
+2393	ቅርፅ	1	TYPE_1	TYPE_1		
+2394	ቀራፎ	1	TYPE_1	TYPE_1		
+2395	ቅርፊት	1		TYPE_1		
+2396	ቀረፋ	1		TYPE_1		
+2397	ቀሪቦ	1		TYPE_1		
+2398	ቅራት	0	TYPE_1	TYPE_1		
+2399	ቀርም	1		TYPE_1		
+2400	ቀርቀም	0		TYPE_1		
+2401	ቀረቦ	0		TYPE_1		
+2402	ቀርቀቦ	0		TYPE_1		
+2403	ቀርበታ	0	TYPE_1	TYPE_1		
+2404	ቀርን	0	TYPE_1	TYPE_1		
+2405	ቀርከሃ	1	TYPE_1	TYPE_1		
+2406	ቀርቃሃ	1		TYPE_1		
+2407	ቀርጥ	0		TYPE_1		
+2408	ቀሰም	1	TYPE_1	TYPE_1		
+2409	ቀሲስ	1	TYPE_1	TYPE_1		
+2410	ቄስ	1	TYPE_1	TYPE_1		
+2411	ቀሳውስት	1		TYPE_1		
+2412	ቄስኣጤ	1		TYPE_1		
+2413	ቅስና	1		TYPE_1		
+2414	ቅስቀሳ	1	TYPE_1	TYPE_1		
+2415	ቅስቃሴ	1		TYPE_1		
+2416	ቀሰብ	0	TYPE_1	TYPE_1		
+2417	ቀስት	1	TYPE_1	TYPE_1		
+2418	ቀስተደመና	1		TYPE_1		
+2419	ቀስተኛ	1		TYPE_1		
+2420	ቅስት	1	TYPE_1	TYPE_1		
+2421	ቅስፈት	1		TYPE_1		
+2422	ቀሳ	1		TYPE_1		
+2423	ቀስታ	1		TYPE_1		
+2424	ቀስተኒቻ	0		TYPE_1		
+2425	ቀስተንቻ	0		TYPE_1		
+2426	ቀሽር	1		TYPE_1		
+2427	ቅሽር	1		TYPE_1		
+2428	ቀሽመሪ	0	TYPE_1	TYPE_1		
+2429	ቀሽመሬ	0	TYPE_1	TYPE_1		
+2430	ቀቃይ	1		TYPE_1		
+2431	ቅቅል	1		TYPE_1		
+2432	ቅቅት	0	TYPE_1	TYPE_1		
+2433	ቀቀት	0	TYPE_1	TYPE_1		
+2434	ቀቅ	0		TYPE_1		
+2435	ቀበሌ	1	TYPE_1	TYPE_1		
+2436	ቅበላ	1		TYPE_1		
+2437	ቅብብል	1		TYPE_1		
+2438	ቅብብሎሽ	1		TYPE_1		
+2439	ቀባሪ	1	TYPE_1	TYPE_1		
+2440	ቀብር	1	TYPE_1	TYPE_1		
+2441	ቀበርቾ	1		TYPE_1		
+2442	ቀበሮ	1	TYPE_1	TYPE_1		
+2443	ቅብቅብ	0	TYPE_1	TYPE_1		
+2444	ቅብቃብ	0	TYPE_1	TYPE_1		
+2445	ቀበቶ	1	TYPE_1	TYPE_1		
+2446	ቀበኛ	1	TYPE_1	TYPE_1		
+2447	ቀበጢና	1		TYPE_1		
+2449	ቅብጠት	1		TYPE_1		
+2450	ቅባት	1	TYPE_1	TYPE_1		
+2451	ቅቤ	1	TYPE_1	TYPE_1		
+2452	ቅባኑግ	1		TYPE_1		
+2453	ቅብኣክህነት	1		TYPE_1		
+2454	ቀባ	1		TYPE_1		
+2455	ቃባ	0	TYPE_1	TYPE_1		
+2456	ቀባቆራጭ	0		TYPE_1		
+2457	ቀብድ	1	TYPE_1	TYPE_1		
+2458	ቃብድ	1		TYPE_1		
+2459	ቅትርት	0		TYPE_1		
+2460	ቀትር	1	TYPE_1	TYPE_1		
+2461	ቅናሽ	1	TYPE_1	TYPE_1		
+2462	ቅንስናሽ	1		TYPE_1		
+2463	ቅንቅን	1	TYPE_1	TYPE_1		
+2464	ቅንቀና	0	TYPE_1	TYPE_1		
+2465	ቅናት	1		TYPE_1		
+2466	ቅንዝር	1	TYPE_1	TYPE_1		
+2467	ቅንዛፊ	0		TYPE_1		
+2468	ቅንድብ	1		TYPE_1		
+2469	ቅንጅት	1	TYPE_1	TYPE_1		
+2470	ቅንጣቢ	1		TYPE_1		
+2471	ቅንጦት	1		TYPE_1		
+2472	ቅንፍ	1	TYPE_1	TYPE_1		
+2473	ቅንፋት	1		TYPE_1		
+2474	ቅናት	1	TYPE_1	TYPE_1		
+2475	ቀን	1	TYPE_1	TYPE_1		
+2476	ቀነኛ	0		TYPE_1		
+2478	ቀንበር	1	TYPE_1	TYPE_1		
+2479	ቀምበር	1	TYPE_1	TYPE_1		
+2480	ቀንበጥ	1	TYPE_1	TYPE_1		
+2481	ቀምበጥ	1	TYPE_1	TYPE_1		
+2482	ቀንዝል	0		TYPE_1		
+2483	ቀንዲል	1		TYPE_1		
+2484	ቀንድ	1	TYPE_1	TYPE_1		
+2485	ቀንጠፋ	0		TYPE_1		
+2486	ቀኖት	0		TYPE_1		
+2487	ቀኖና	1		TYPE_1		
+2488	ቅኔ	1	TYPE_1	TYPE_1		
+2489	ቀኝ	1		TYPE_1		
+2490	ቀኞች	1		TYPE_1		
+2492	ቅዋሜ	1	TYPE_1	TYPE_1		
+2493	ቀውስ	1	TYPE_1	TYPE_1		
+2494	ቅዝምዝም	1		TYPE_1		
+2495	ቅዝቃዜ	1	TYPE_1	TYPE_1		
+2496	ቀዘባ	1	TYPE_1	TYPE_1		
+2497	ቅዘን	1		TYPE_1		
+2498	ቂም	1		TYPE_1		
+2499	ቅያሜ	1	TYPE_1	TYPE_1		
+2500	ቅያሬ	1	TYPE_1	TYPE_1		
+2501	ቀያሽ	1	TYPE_1	TYPE_1		
+2502	ቅየሳ	1		TYPE_1		
+2503	ቀዳማ	0		TYPE_1		
+2504	ቅድሚያ	1		TYPE_1		
+2505	ቅድም	1		TYPE_1		
+2506	ቀዳሽ	1	TYPE_1	TYPE_1		
+2507	ቅዳሴ	1		TYPE_1		
+2508	ቅድስና	1		TYPE_1		
+2509	ቅዳጅ	1		TYPE_1		
+2510	ቅድ	1	TYPE_1	TYPE_1		
+2511	ቀጂ	1	TYPE_1	TYPE_1		
+2512	ቀጋ	1		TYPE_1		
+2513	ቀጠላ	0	TYPE_1	TYPE_1		
+2514	ቅጥይ	1		TYPE_1		
+2515	ቅጥያ	1		TYPE_1		
+2516	ቀጣሪ	1	TYPE_1	TYPE_1		
+2517	ቅጥር	1	TYPE_1	TYPE_1		
+2518	ቅጥረኛ	1		TYPE_1		
+2519	ቀጠሮ	1	TYPE_1	TYPE_1		
+2520	ቅጥር	1	TYPE_1	TYPE_1		
+2521	ቅፅር	1	TYPE_1	TYPE_1		
+2522	ቀዳማይ	1		TYPE_1		
+2523	ቀጥቃጭ	1	TYPE_1	TYPE_1		
+2524	ቅጥቃጤ	1	TYPE_1	TYPE_1		
+2525	ቅጥቅጥ	1	TYPE_1	TYPE_1		
+2526	ቅጥቃጭ	1		TYPE_1		
+2527	ቅጥብ	0		TYPE_1		
+2528	ቅጥባት	0		TYPE_1		
+2529	ቅጥጥብ	1		TYPE_1		
+2530	ቀጠና	1	TYPE_1	TYPE_1		
+2531	ቀጠጥና	0		TYPE_1		
+2532	ቀጠጦ	0		TYPE_1		
+2533	ቅጥፈት	1	TYPE_1	TYPE_1		
+2534	ቅጣት	1	TYPE_1	TYPE_1		
+2535	ቀጣኒት	0		TYPE_1		
+2536	ቀጣና	1	TYPE_1	TYPE_1		
+2537	ቀጤማ	1	TYPE_1	TYPE_1		
+2538	ቄጤማ	1	TYPE_1	TYPE_1		
+2539	ቀጭ	1		TYPE_1		
+2540	ቅጫም	1		TYPE_1		
+2541	ቅማጭ	1		TYPE_1		
+2542	ቀጨማ	0	TYPE_1	TYPE_1		
+2544	ቀጨሞ	0		TYPE_1		
+2545	ቀጭኔ	1	TYPE_1	TYPE_1		
+2546	ቅፀላ	1	TYPE_1	TYPE_1		
+2547	ቀፀላ	1	TYPE_1	TYPE_1		
+2548	ቀፈት	0	TYPE_1	TYPE_1		
+2549	ቀፈድ	0	TYPE_1	TYPE_1		
+2550	ቅፍንድ	0	TYPE_1	TYPE_1		
+2551	ቀፈፋ	1	TYPE_1	TYPE_1		
+2552	ቅፈፍ	0		TYPE_1		
+2553	ቀፈፋ	0	TYPE_1	TYPE_1		
+2554	ቀፎ	1	TYPE_1	TYPE_1		
+2555	ቁላ	1		TYPE_1		
+2556	ቁሌት	1		TYPE_1		
+2557	ቁልልታ	1		TYPE_1		
+2558	ቁልቁለት	1		TYPE_1		
+2559	ቁልቋል	1		TYPE_1		
+2560	ቁልቢጥ	0		TYPE_1		
+2561	ቁልፍ	1	TYPE_1	TYPE_1		
+2562	ቁመና	1	TYPE_1	TYPE_1		
+2563	ቁማር	1	TYPE_1	TYPE_1		
+2564	ቁምጣ	1	TYPE_1	TYPE_1		
+2565	ቁምጤ	0		TYPE_1		
+2566	ቁምጥና	1		TYPE_1		
+2567	ቁምጭር	0	TYPE_1	TYPE_1		
+2568	ቁንጭር	0	TYPE_1	TYPE_1		
+2569	ቁረን	0		TYPE_1		
+2570	ቆረን	0		TYPE_1		
+2571	ቁረንጮ	0	TYPE_1	TYPE_1		
+2572	ቁርንጮ	0	TYPE_1	TYPE_1		
+2573	ቆረንጮ	0	TYPE_1	TYPE_1		
+2574	ቁራ	1	TYPE_1	TYPE_1		
+2575	ቁራን	1		TYPE_1		
+2576	ቁራኣን	1		TYPE_1		
+2577	ቁሬማ	1		TYPE_1		
+2578	ቁርዝ	0		TYPE_1		
+2579	ቁር	1		TYPE_1		
+2580	ቀርስ	1		TYPE_1		
+2581	ቁርምባጥ	1		TYPE_1		
+2582	ቁርንቢ	0	TYPE_1	TYPE_1		
+2583	ቁርምቢ	0	TYPE_1	TYPE_1		
+2584	ቁርሾ	1		TYPE_1		
+2585	ቅርሾ	1		TYPE_1		
+2586	ቁርምባ	1		TYPE_1		
+2587	ቁረቁራ	1		TYPE_1		
+2588	ቁርቆሳ	0		TYPE_1		
+2589	ቁርበት	1	TYPE_1	TYPE_1		
+2590	ቁርባ	0		TYPE_1		
+2591	ቁርምባ	0		TYPE_1		
+2592	ቁርባብቻ	0		TYPE_1		
+2593	ቁርብጫት	1		TYPE_1		
+2594	ቁራኛ	1	TYPE_1	TYPE_1		
+2595	ቁርንባጥ	1	TYPE_1	TYPE_1		
+2596	ቁርንጮ	1		TYPE_1		
+2597	ቁርዝ	1		TYPE_1		
+2598	ቁርዬ	0	TYPE_1	TYPE_1		
+2599	ቁርጠት	1		TYPE_1		
+2600	ቁርጣ	0	TYPE_1	TYPE_1		
+2601	ቁርጥ	1		TYPE_1		
+2602	ቁርጥማት	1		TYPE_1		
+2603	ቁርጭምጭሚት	1		TYPE_1		
+2604	ቁርጭኝ	0		TYPE_1		
+2605	ቁሳቁስ	1	TYPE_1	TYPE_1		
+2606	ቁስኣካላዊያን	1		TYPE_1		
+2607	ቁሳኣካላዊነት	1		TYPE_1		
+2608	ቁስለት	1		TYPE_1		
+2609	ቁስል	1	TYPE_1	TYPE_1		
+2610	ቁሻሻ	1		TYPE_1		
+2611	ቁቁታ	0	TYPE_1	TYPE_1		
+2612	ቁባት	1	TYPE_1	TYPE_1		
+2613	ቁቤላ	0	TYPE_1	TYPE_1		
+2614	ቁብ	1		TYPE_1		
+2615	ቁብላ	0	TYPE_1	TYPE_1		
+2616	ቁጢት	0		TYPE_1		
+2617	ቁቲት	0		TYPE_1		
+2618	ቁቻ	0	TYPE_1	TYPE_1		
+2619	ቁና	1	TYPE_1	TYPE_1		
+2620	ቁትቻ	0	TYPE_1	TYPE_1		
+2621	ቁናስ	1	TYPE_1	TYPE_1		
+2622	ቁንቁኔ	0		TYPE_1		
+2623	ቁንቁን	0		TYPE_1		
+2624	ቁንዶ	1		TYPE_1		
+2625	ቁንዲ	1		TYPE_1		
+2626	ቁንዳላ	1		TYPE_1		
+2627	ቁንድድ	1	TYPE_1	TYPE_1		
+2628	ቁንድዶ	1	TYPE_1	TYPE_1		
+2629	ቁንጅና	1		TYPE_1		
+2630	ቁንጢጥ	1	TYPE_1	TYPE_1		
+2631	ቁንጣሪ	1		TYPE_1		
+2632	ቁንጣራ	0	TYPE_1	TYPE_1		
+2633	ቁንጣን	1		TYPE_1		
+2634	ቁንጥጫ	1	TYPE_1	TYPE_1		
+2635	ቁንጫ	1	TYPE_1	TYPE_1		
+2636	ቁንጫጪት	0		TYPE_1		
+2637	ቁንጮ	1	TYPE_1	TYPE_1		
+2638	ቁዘማ	1	TYPE_1	TYPE_1		
+2639	ቁዳማ	0		TYPE_1		
+2640	ቁግ	0		TYPE_1		
+2641	ቁጢ	1		TYPE_1		
+2642	ቁጢላ	1		TYPE_1		
+2643	ቁጣ	1		TYPE_1		
+2644	ቁጣጥ	0		TYPE_1		
+2645	ቁጥር	1	TYPE_1	TYPE_1		
+2646	ቁጥርጥር	1		TYPE_1		
+2647	ቁጥቋጦ	1		TYPE_1		
+2648	ቁጥጥር	1	TYPE_1	TYPE_1		
+2649	ቁጭት	1		TYPE_1		
+2650	ቁጨት	1		TYPE_1		
+2651	ቁጫጭ	1	TYPE_1	TYPE_1		
+2652	ቁፋሮ	1	TYPE_1	TYPE_1		
+2653	ቂም	1		TYPE_1		
+2654	ቂንድ	0		TYPE_1		
+2655	ቂንጥር	1	TYPE_1	TYPE_1		
+2656	ቂጣ	1		TYPE_1		
+2657	ቂጥ	1	TYPE_1	TYPE_1		
+2658	ቂጡ	1		TYPE_1		
+2659	ቂጥኝ	1		TYPE_1		
+2660	ቃቃታ	1		TYPE_1		
+2661	ቃሊም	0	TYPE_1	TYPE_1		
+2662	ቃሊብ	0	TYPE_1	TYPE_1		
+2663	ቃል	1	TYPE_1	TYPE_1		
+2664	ቃላት	1	TYPE_1	TYPE_1		
+2665	ቃልኪዳን	1		TYPE_1		
+2666	ቃልቻ	1	TYPE_1	TYPE_1		
+2667	ቃሚያ	0		TYPE_1		
+2668	ቅሞ	0		TYPE_1		
+2669	ቃሞ	0		TYPE_1		
+2670	ቃር	1		TYPE_1		
+2671	ቃርሚያ	1		TYPE_1		
+2672	ቅራሚ	1	TYPE_1	TYPE_1		
+2673	ቃርሞሽ	1		TYPE_1		
+2674	ቃሪያ	1	TYPE_1	TYPE_1		
+2675	ቃሬ	0	TYPE_1	TYPE_1		
+2676	ቃሬዛ	1	TYPE_1	TYPE_1		
+2677	ቃቄዳ	0		TYPE_1		
+2678	ቃብድ	1		TYPE_1		
+2679	ቃታ	1		TYPE_1		
+2680	ቃተኛ	1		TYPE_1		
+2681	ቃታ	1		TYPE_1		
+2682	ቃና	1	TYPE_1	TYPE_1		
+2683	ቃንዛ	0	TYPE_1	TYPE_1		
+2684	ቅኝት	1		TYPE_1		
+2685	ቃዛ	0	TYPE_1	TYPE_1		
+2686	ቅዠት	1		TYPE_1		
+2687	ቃዲ	0	TYPE_1	TYPE_1		
+2688	ቃዳ	0	TYPE_1	TYPE_1		
+2689	ቃጠሎ	1		TYPE_1		
+2690	ቃጤ	0		TYPE_1		
+2691	ቃጭል	1	TYPE_1	TYPE_1		
+2692	ቅጭልጭል	1		TYPE_1		
+2693	ቃጫ	1	TYPE_1	TYPE_1		
+2694	ቃጭማ	1		TYPE_1		
+2695	ቃጭማ	1		TYPE_1		
+2696	ቃፊር	1	TYPE_1	TYPE_1		
+2697	ቄራ	1	TYPE_1	TYPE_1		
+2698	ቄንጥ	1	TYPE_1	TYPE_1		
+2699	ቄደር	0		TYPE_1		
+2700	ቄጦ	0	TYPE_1	TYPE_1		
+2701	ቅል	1	TYPE_1	TYPE_1		
+2702	ቅማንዥር	1		TYPE_1		
+2703	ቅማንጅር	1		TYPE_1		
+2704	ቅማት	1	TYPE_1	TYPE_1		
+2705	ቅማያት	1		TYPE_1		
+2706	ቅምሆ	0		TYPE_1		
+2707	ቅምጥ	1	TYPE_1	TYPE_1		
+2708	ቅሪላ	1		TYPE_1		
+2709	ቅራቅንቦ	1	TYPE_1	TYPE_1		
+2710	ቅራና	0		TYPE_1		
+2711	ቅሬ	0	TYPE_1	TYPE_1		
+2712	ቅሬታ	1	TYPE_1	TYPE_1		
+2713	ቅርታ	1	TYPE_1	TYPE_1		
+2714	ቅርስ	1	TYPE_1	TYPE_1		
+2715	ቅርቅፍት	1		TYPE_1		
+2716	ቅርንጥስ	0	TYPE_1	TYPE_1		
+2717	ቅርንጫፍ	1	TYPE_1	TYPE_1		
+2718	ቅርጫት	1	TYPE_1	TYPE_1		
+2719	ቅስም	1	TYPE_1	TYPE_1		
+2720	ቅብቅቦ	0		TYPE_1		
+2721	ቅንጣት	1		TYPE_1		
+2722	ቅንጥ	0		TYPE_1		
+2723	ቅንጬ	1		TYPE_1		
+2724	ቅንጭብ	1	TYPE_1	TYPE_1		
+2725	ቅዘዛ	1	TYPE_1	TYPE_1		
+2726	ቅዳሜ	1	TYPE_1	TYPE_1		
+2727	ቅድስት	1		TYPE_1		
+2728	ቅጠል	1	TYPE_1	TYPE_1		
+2729	ቅጥ	1	TYPE_1	TYPE_1		
+2730	ቅጥራን	0	TYPE_1	TYPE_1		
+2731	ቅፅ	1		TYPE_1		
+2732	ቅፅበት	1		TYPE_1		
+2733	ቅፍለት	0	TYPE_1	TYPE_1		
+2734	ቁልልታ	1		TYPE_1		
+2735	ቁልምጫ	1	TYPE_1	TYPE_1		
+2736	ቁልቁለት	1		TYPE_1		
+2737	ቆለቆል	0		TYPE_1		
+2738	ቆለጥ	1		TYPE_1		
+2739	ቆላ	1		TYPE_1		
+2740	ቁልፍ	1	TYPE_1	TYPE_1		
+2741	ቆለፈት	0		TYPE_1		
+2742	ቆሎ	1		TYPE_1		
+2743	ቆሌ	1		TYPE_1		
+2744	ቆልማሚት	0		TYPE_1		
+2745	ቆመጥ	1	TYPE_1	TYPE_1		
+2746	ቆመጥማጣ	1		TYPE_1		
+2747	ቆሞስ	0		TYPE_1		
+2748	ቆረቆር	1		TYPE_1		
+2749	ቆረቆዝ	1		TYPE_1		
+2750	ቆርባብቻ	0		TYPE_1		
+2751	ቆራ	1		TYPE_1		
+2752	ቆረቆንዳ	1	TYPE_1	TYPE_1		
+2753	ቆርቆሮ	1	TYPE_1	TYPE_1		
+2754	ቆሪ	0	TYPE_1	TYPE_1		
+2755	ቆሬ	0	TYPE_1	TYPE_1		
+2756	ቆርኬ	1	TYPE_1	TYPE_1		
+2757	ቆርኪ	1	TYPE_1	TYPE_1		
+2758	ቆሻሻ	1	TYPE_1	TYPE_1		
+2759	ቆሻሻ	1	TYPE_1	TYPE_1		
+2760	ቆሸንዳ	0	TYPE_1	TYPE_1		
+2761	ቆሽድ	1		TYPE_1		
+2762	ቆሽት	1		TYPE_1		
+2763	ቆቀር	1	TYPE_1	TYPE_1		
+2764	ቆቅ	1	TYPE_1	TYPE_1		
+2765	ቆበር	0		TYPE_1		
+2766	ቆባ	1	TYPE_1	TYPE_1		
+2767	ቆብ	1	TYPE_1	TYPE_1		
+2768	ቆቦ	1		TYPE_1		
+2769	ቆቻ	0		TYPE_1		
+2770	ቁትቻ	1	TYPE_1	TYPE_1		
+2771	ቆቻ	1		TYPE_1		
+2772	ቆናኝ	1	TYPE_1	TYPE_1		
+2773	ቆንዳላ	1		TYPE_1		
+2774	ቆንሲል	1	TYPE_1	TYPE_1		
+2775	ቆንጥር	1		TYPE_1		
+2776	ቆይታ	1	TYPE_1	TYPE_1		
+2777	ቆዳ	1		TYPE_1		
+2779	ቁግ	1	TYPE_1	TYPE_1		
+2780	ቆጠራ	1	TYPE_1	TYPE_1		
+2781	ቆጣሪ	1	TYPE_1	TYPE_1		
+2782	ቁጠባ	1	TYPE_1	TYPE_1		
+2783	ቆፈን	1		TYPE_1		
+2784	ቋሊማ	1		TYPE_1		
+2785	ቋሚ	1	TYPE_1	TYPE_1		
+2786	ቋር	0	TYPE_1	TYPE_1		
+2787	ቋርፍ	0		TYPE_1		
+2788	ቋሮ	0	TYPE_1	TYPE_1		
+2789	ቋቁቻ	1		TYPE_1		
+2790	ቋቋቴ	0		TYPE_1		
+2791	ቋንቁራ	0	TYPE_1	TYPE_1		
+2792	ቋንቋ	1	TYPE_1	TYPE_1		
+2793	ቋንዣ	1		TYPE_1		
+2794	ቋንጃ	1		TYPE_1		
+2795	ቋንጣ	1		TYPE_1		
+2796	ቋኛት	0	TYPE_1	TYPE_1		
+2797	ቋዝመን	0	TYPE_1	TYPE_1		
+2798	ቋያ	1		TYPE_1		
+2799	ቋድ	0		TYPE_1		
+2800	ቋጥኝ	1		TYPE_1		
+2801	ቋጨራ	0		TYPE_1		
+2802	ቋጫ	0	TYPE_1	TYPE_1		
+2803	ቋፍ	1		TYPE_1		
+2832	ቀላማጅነት	1		TYPE_1		
+2833	ቅምቀማ	1	TYPE_1	TYPE_1		
+2834	ቅሥፈት	1		TYPE_1		
+2835	ቅሬታ	1	TYPE_1	TYPE_1		
+2836	ቅርጽ	1	TYPE_1	TYPE_1		
+2837	ቀሰስተኛነት	1		TYPE_1		
+2838	ቀስቃሽ	1	TYPE_1	TYPE_1		
+2839	ቀበሌኛ	0		TYPE_1		
+2840	ቅንጠሳ	1	TYPE_1	TYPE_1		
+2841	ቅንጣሽ	1		TYPE_1		
+2842	ቅንጥብጣቢ	1	TYPE_1	TYPE_1		
+2843	ቅኝ	1		TYPE_1		
+2844	ቅንነት	1		TYPE_1		
+2845	ቀደምትነት	1		TYPE_1		
+2846	ቀዳሚነት	1		TYPE_1		
+2847	ቀዳሚት	1		TYPE_1		
+2848	ቅዱስነት	1		TYPE_1		
+2849	ቅጣይ	1	TYPE_1	TYPE_1		
+2850	ቅጥል	1		TYPE_1		
+2851	ቅጥነት	1		TYPE_1		
+2852	ቀጣፊነት	1		TYPE_1		
+2853	ቅጽበት	1		TYPE_1		
+2854	ቃሊብ	1	TYPE_3	TYPE_1		
+2855	ቃባዥ	1	TYPE_3	TYPE_1		
+2856	ቅንዲላ	1	TYPE_1	TYPE_1		
+2857	ቅጽ	1	TYPE_3	TYPE_1		
+2858	ቅጽበት	1		TYPE_1		
+2859	ቅጽል	1	TYPE_1	TYPE_1		
+2860	ቆሽታም	1		TYPE_1		
+2861	ቆንስላ	1	TYPE_1	TYPE_1		
+4943	ቁልምጫ	1	TYPE_3	TYPE_1		
+5511	ቅመም	1	TYPE_1	TYPE_1		
+7939	ቃጭማ	1		TYPE_1		
+10481	ቅባቅዱስ	1		TYPE_1		
+10483	ቅባኑግ	1		TYPE_1		
+10487	ቅኝ	1		TYPE_1		
+10499	ቀንዳውጣ	1	TYPE_1	TYPE_1		
+10540	ቃልኪዳን	1		TYPE_1		
+10590	ቆጣስር	0		TYPE_1		
+11309	ቅሌ	0		TYPE_1		
+11310	ቀላጥቤ	0		TYPE_1		
+11311	ቀሌንጅ	0		TYPE_1		
+11312	ቀረዋ	0	TYPE_1	TYPE_1		
+11313	ቅራተኛ	0	TYPE_1	TYPE_1		
+11314	ቀራዎ	0	TYPE_1	TYPE_1		
+11315	ቀርም	0		TYPE_1		
+11316	ቀሳ	0		TYPE_1		
+11317	ቀሳፋች	0	TYPE_1	TYPE_1		
+11318	ቀስፋታ	0		TYPE_1		
+11319	ቀባ	0		TYPE_1		
+11321	ቀጣጥይ	0		TYPE_1		
+11322	ቁር	0	TYPE_1	TYPE_1		
+11323	ቁርቁምባ	0	TYPE_1	TYPE_1		
+11324	ቁርብቻ	0	TYPE_1	TYPE_1		
+11325	ቁርብጭታ	0		TYPE_1		
+11326	ቄንጦ	0	TYPE_1	TYPE_1		
+11327	ቀንጦ	0	TYPE_1	TYPE_1		
+11328	ቅምብቻ	0		TYPE_1		
+11329	ቅምቦ	0		TYPE_1		
+11330	ቅምጫና	0	TYPE_1	TYPE_1		
+11331	ቅንቦ	0		TYPE_1		
+11332	ቅምቦ	0		TYPE_1		
+11333	ቅጣጥይ	0		TYPE_1		
+11334	ቀጣጥይ	0		TYPE_1		
+11335	ቆሮ	0	TYPE_1	TYPE_1		
+11336	ቆሸድ	0		TYPE_1		
+11337	ቋንዶ	0		TYPE_1		
+11383	ቈርቋሽ	0	TYPE_1	TYPE_1		
+26	ቁርጠት	1		TYPE_1		
+2313	ቀለህ	1	TYPE_1	TYPE_1		
+2314	ቀለሃ	1	TYPE_1	TYPE_1		
+2315	ቅለት	1		TYPE_1		
+2316	ቅሌት	1	TYPE_1	TYPE_1		
+2317	ቀለም	1	TYPE_1	TYPE_1		
+2318	ቀለማት	1		TYPE_1		
+2319	ቀላሽ	1		TYPE_1		
+2320	ቀለብ	1		TYPE_1		
+2321	ቀለብተኛ	1		TYPE_1		
+2322	ቀላቢ	1	TYPE_1	TYPE_1		
+2323	ቅልቦሽ	1		TYPE_1		
+2324	ቅልሞሽ	1		TYPE_1		
+2325	ቅልልቦሽ	1		TYPE_1		
+2326	ቅልልሞሽ	1		TYPE_1		
+2327	ቅልበሳ	1	TYPE_1	TYPE_1		
+2328	ቅልብሳት	0		TYPE_1		
+2329	ቀለበት	1	TYPE_1	TYPE_1		
+2330	ቀለታ	0	TYPE_1	TYPE_1		
+2331	ቀለት	0	TYPE_1	TYPE_1		
+2332	ቀለንጅ	0	TYPE_1	TYPE_1		
+2333	ቀሌንጅ	0	TYPE_1	TYPE_1		
+2334	ቀለዋ	0		TYPE_1		
+2335	ቀላዎ	0		TYPE_1		
+2336	ቀልድ	1	TYPE_1	TYPE_1		
+2337	ቅልጣን	0	TYPE_1	TYPE_1		
+2338	ቅልጥም	1	TYPE_1	TYPE_1		
+2339	ቅልጥፍና	1		TYPE_1		
+2340	ቅላት	1		TYPE_1		
+2341	ቅሌ	1	TYPE_1	TYPE_1		
+2342	ቀላዋጭ	1	TYPE_1	TYPE_1		
+2343	ቅልውጥ	1		TYPE_1		
+2344	ቀላይ	1		TYPE_1		
+2345	ቀላያት	1		TYPE_1		
+2346	ቀላድ	1		TYPE_1		
+2347	ቀላጤ	1		TYPE_1		
+2348	ቃለኣጤ	0		TYPE_1		
+2349	ቀላጥም	0	TYPE_1	TYPE_1		
+2350	ቀልቀሎ	1	TYPE_1	TYPE_1		
+2351	ቀልቤ	0	TYPE_1	TYPE_1		
+2352	ቀልብ	1	TYPE_1	TYPE_1		
+2353	ቅማል	1	TYPE_1	TYPE_1		
+2354	ቅመማ	1	TYPE_1	TYPE_1		
+2355	ቀመር	1	TYPE_1	TYPE_1		
+2356	ቅምሻ	1	TYPE_1	TYPE_1		
+2357	ቅምቅማት	1		TYPE_1		
+2358	ቀምቀሞ	1		TYPE_1		
+2359	ቅማጭ	0		TYPE_1		
+2360	ቅምጦሽ	0		TYPE_1		
+2361	ቅምምጦሸ	0		TYPE_1		
+2362	ቀሚስ	1	TYPE_1	TYPE_1		
+2363	ቅሚያ	1	TYPE_1	TYPE_1		
+2365	ቅርምት	1		TYPE_1		
+2366	ቀረራ	0		TYPE_1		
+2367	ቅራሪ	1		TYPE_1		
+2368	ቀረርቶ	1	TYPE_1	TYPE_1		
+2369	ቀረርቱ	1	TYPE_1	TYPE_1		
+2370	ቀረሮ	1		TYPE_1		
+2371	ቀራሮ	1		TYPE_1		
+2372	ቅርሻት	1		TYPE_1		
+2373	ቀረሻሽንቦ	0		TYPE_1		
+2374	ቀረሻሽምቦ	0		TYPE_1		
+2375	ቅርቃር	1	TYPE_1	TYPE_1		
+2376	ቀርቀሬ	0	TYPE_1	TYPE_1		
+2377	ቀርቀር	0	TYPE_1	TYPE_1		
+2378	ቀርቃባ	1	TYPE_1	TYPE_1		
+2379	ቅርቃብ	1	TYPE_1	TYPE_1		
+2380	ቀርቀቦ	0	TYPE_1	TYPE_1		
+2381	ቀርበቦ	0	TYPE_1	TYPE_1		
+2382	ቀረቤታ	1	TYPE_1	TYPE_1		
+2383	ቅርበት	1		TYPE_1		
+2384	ቀረባ	0	TYPE_1	TYPE_1		
+2385	ቅራኔ	1	TYPE_1	TYPE_1		
+2386	ቅርናት	1		TYPE_1		
+2387	ቀረንጠሎ	0		TYPE_1		
+2388	ቀረጥ	1	TYPE_1	TYPE_1		
+2389	ቀራጭ	1	TYPE_1	TYPE_1		
+2390	ቅርጫ	1		TYPE_1		
+2391	ቀራጭ	1	TYPE_1	TYPE_1		
+2392	ቀራፂ	1	TYPE_1	TYPE_1		
+2393	ቅርፅ	1	TYPE_1	TYPE_1		
+2394	ቀራፎ	1	TYPE_1	TYPE_1		
+2395	ቅርፊት	1		TYPE_1		
+2396	ቀረፋ	1		TYPE_1		
+2397	ቀሪቦ	1		TYPE_1		
+2398	ቅራት	0	TYPE_1	TYPE_1		
+2399	ቀርም	1		TYPE_1		
+2400	ቀርቀም	0		TYPE_1		
+2401	ቀረቦ	0		TYPE_1		
+2402	ቀርቀቦ	0		TYPE_1		
+2403	ቀርበታ	0	TYPE_1	TYPE_1		
+2404	ቀርን	0	TYPE_1	TYPE_1		
+2405	ቀርከሃ	1	TYPE_1	TYPE_1		
+2406	ቀርቃሃ	1		TYPE_1		
+2407	ቀርጥ	0		TYPE_1		
+2408	ቀሰም	1	TYPE_1	TYPE_1		
+2409	ቀሲስ	1	TYPE_1	TYPE_1		
+2410	ቄስ	1	TYPE_1	TYPE_1		
+2411	ቀሳውስት	1		TYPE_1		
+2412	ቄስኣጤ	1		TYPE_1		
+2413	ቅስና	1		TYPE_1		
+2414	ቅስቀሳ	1	TYPE_1	TYPE_1		
+2415	ቅስቃሴ	1		TYPE_1		
+2416	ቀሰብ	0	TYPE_1	TYPE_1		
+2417	ቀስት	1	TYPE_1	TYPE_1		
+2418	ቀስተደመና	1		TYPE_1		
+2419	ቀስተኛ	1		TYPE_1		
+2420	ቅስት	1	TYPE_1	TYPE_1		
+2421	ቅስፈት	1		TYPE_1		
+2422	ቀሳ	1		TYPE_1		
+2423	ቀስታ	1		TYPE_1		
+2424	ቀስተኒቻ	0		TYPE_1		
+2425	ቀስተንቻ	0		TYPE_1		
+2426	ቀሽር	1		TYPE_1		
+2427	ቅሽር	1		TYPE_1		
+2428	ቀሽመሪ	0	TYPE_1	TYPE_1		
+2429	ቀሽመሬ	0	TYPE_1	TYPE_1		
+2430	ቀቃይ	1		TYPE_1		
+2431	ቅቅል	1		TYPE_1		
+2432	ቅቅት	0	TYPE_1	TYPE_1		
+2433	ቀቀት	0	TYPE_1	TYPE_1		
+2434	ቀቅ	0		TYPE_1		
+2435	ቀበሌ	1	TYPE_1	TYPE_1		
+2436	ቅበላ	1		TYPE_1		
+2437	ቅብብል	1		TYPE_1		
+2438	ቅብብሎሽ	1		TYPE_1		
+2439	ቀባሪ	1	TYPE_1	TYPE_1		
+2440	ቀብር	1	TYPE_1	TYPE_1		
+2441	ቀበርቾ	1		TYPE_1		
+2442	ቀበሮ	1	TYPE_1	TYPE_1		
+2443	ቅብቅብ	0	TYPE_1	TYPE_1		
+2444	ቅብቃብ	0	TYPE_1	TYPE_1		
+2445	ቀበቶ	1	TYPE_1	TYPE_1		
+2446	ቀበኛ	1	TYPE_1	TYPE_1		
+2447	ቀበጢና	1		TYPE_1		
+2449	ቅብጠት	1		TYPE_1		
+2450	ቅባት	1	TYPE_1	TYPE_1		
+2451	ቅቤ	1	TYPE_1	TYPE_1		
+2452	ቅባኑግ	1		TYPE_1		
+2453	ቅብኣክህነት	1		TYPE_1		
+2454	ቀባ	1		TYPE_1		
+2455	ቃባ	0	TYPE_1	TYPE_1		
+2456	ቀባቆራጭ	0		TYPE_1		
+2457	ቀብድ	1	TYPE_1	TYPE_1		
+2458	ቃብድ	1		TYPE_1		
+2459	ቅትርት	0		TYPE_1		
+2460	ቀትር	1	TYPE_1	TYPE_1		
+2461	ቅናሽ	1	TYPE_1	TYPE_1		
+2462	ቅንስናሽ	1		TYPE_1		
+2463	ቅንቅን	1	TYPE_1	TYPE_1		
+2464	ቅንቀና	0	TYPE_1	TYPE_1		
+2465	ቅናት	1		TYPE_1		
+2466	ቅንዝር	1	TYPE_1	TYPE_1		
+2467	ቅንዛፊ	0		TYPE_1		
+2468	ቅንድብ	1		TYPE_1		
+2469	ቅንጅት	1	TYPE_1	TYPE_1		
+2470	ቅንጣቢ	1		TYPE_1		
+2471	ቅንጦት	1		TYPE_1		
+2472	ቅንፍ	1	TYPE_1	TYPE_1		
+2473	ቅንፋት	1		TYPE_1		
+2474	ቅናት	1	TYPE_1	TYPE_1		
+2475	ቀን	1	TYPE_1	TYPE_1		
+2476	ቀነኛ	0		TYPE_1		
+2478	ቀንበር	1	TYPE_1	TYPE_1		
+2479	ቀምበር	1	TYPE_1	TYPE_1		
+2480	ቀንበጥ	1	TYPE_1	TYPE_1		
+2481	ቀምበጥ	1	TYPE_1	TYPE_1		
+2482	ቀንዝል	0		TYPE_1		
+2483	ቀንዲል	1		TYPE_1		
+2484	ቀንድ	1	TYPE_1	TYPE_1		
+2485	ቀንጠፋ	0		TYPE_1		
+2486	ቀኖት	0		TYPE_1		
+2487	ቀኖና	1		TYPE_1		
+2488	ቅኔ	1	TYPE_1	TYPE_1		
+2489	ቀኝ	1		TYPE_1		
+2490	ቀኞች	1		TYPE_1		
+2492	ቅዋሜ	1	TYPE_1	TYPE_1		
+2493	ቀውስ	1	TYPE_1	TYPE_1		
+2494	ቅዝምዝም	1		TYPE_1		
+2495	ቅዝቃዜ	1	TYPE_1	TYPE_1		
+2496	ቀዘባ	1	TYPE_1	TYPE_1		
+2497	ቅዘን	1		TYPE_1		
+2498	ቂም	1		TYPE_1		
+2499	ቅያሜ	1	TYPE_1	TYPE_1		
+2500	ቅያሬ	1	TYPE_1	TYPE_1		
+2501	ቀያሽ	1	TYPE_1	TYPE_1		
+2502	ቅየሳ	1		TYPE_1		
+2503	ቀዳማ	0		TYPE_1		
+2504	ቅድሚያ	1		TYPE_1		
+2505	ቅድም	1		TYPE_1		
+2506	ቀዳሽ	1	TYPE_1	TYPE_1		
+2507	ቅዳሴ	1		TYPE_1		
+2508	ቅድስና	1		TYPE_1		
+2509	ቅዳጅ	1		TYPE_1		
+2510	ቅድ	1	TYPE_1	TYPE_1		
+2511	ቀጂ	1	TYPE_1	TYPE_1		
+2512	ቀጋ	1		TYPE_1		
+2513	ቀጠላ	0	TYPE_1	TYPE_1		
+2514	ቅጥይ	1		TYPE_1		
+2515	ቅጥያ	1		TYPE_1		
+2516	ቀጣሪ	1	TYPE_1	TYPE_1		
+2517	ቅጥር	1	TYPE_1	TYPE_1		
+2518	ቅጥረኛ	1		TYPE_1		
+2519	ቀጠሮ	1	TYPE_1	TYPE_1		
+2520	ቅጥር	1	TYPE_1	TYPE_1		
+2521	ቅፅር	1	TYPE_1	TYPE_1		
+2522	ቀዳማይ	1		TYPE_1		
+2523	ቀጥቃጭ	1	TYPE_1	TYPE_1		
+2524	ቅጥቃጤ	1	TYPE_1	TYPE_1		
+2525	ቅጥቅጥ	1	TYPE_1	TYPE_1		
+2526	ቅጥቃጭ	1		TYPE_1		
+2527	ቅጥብ	0		TYPE_1		
+2528	ቅጥባት	0		TYPE_1		
+2529	ቅጥጥብ	1		TYPE_1		
+2530	ቀጠና	1	TYPE_1	TYPE_1		
+2531	ቀጠጥና	0		TYPE_1		
+2532	ቀጠጦ	0		TYPE_1		
+2533	ቅጥፈት	1	TYPE_1	TYPE_1		
+2534	ቅጣት	1	TYPE_1	TYPE_1		
+2535	ቀጣኒት	0		TYPE_1		
+2536	ቀጣና	1	TYPE_1	TYPE_1		
+2537	ቀጤማ	1	TYPE_1	TYPE_1		
+2538	ቄጤማ	1	TYPE_1	TYPE_1		
+2539	ቀጭ	1		TYPE_1		
+2540	ቅጫም	1		TYPE_1		
+2541	ቅማጭ	1		TYPE_1		
+2542	ቀጨማ	0	TYPE_1	TYPE_1		
+2544	ቀጨሞ	0		TYPE_1		
+2545	ቀጭኔ	1	TYPE_1	TYPE_1		
+2546	ቅፀላ	1	TYPE_1	TYPE_1		
+2547	ቀፀላ	1	TYPE_1	TYPE_1		
+2548	ቀፈት	0	TYPE_1	TYPE_1		
+2549	ቀፈድ	0	TYPE_1	TYPE_1		
+2550	ቅፍንድ	0	TYPE_1	TYPE_1		
+2551	ቀፈፋ	1	TYPE_1	TYPE_1		
+2552	ቅፈፍ	0		TYPE_1		
+2553	ቀፈፋ	0	TYPE_1	TYPE_1		
+2554	ቀፎ	1	TYPE_1	TYPE_1		
+2555	ቁላ	1		TYPE_1		
+2556	ቁሌት	1		TYPE_1		
+2557	ቁልልታ	1		TYPE_1		
+2558	ቁልቁለት	1		TYPE_1		
+2559	ቁልቋል	1		TYPE_1		
+2560	ቁልቢጥ	0		TYPE_1		
+2561	ቁልፍ	1	TYPE_1	TYPE_1		
+2562	ቁመና	1	TYPE_1	TYPE_1		
+2563	ቁማር	1	TYPE_1	TYPE_1		
+2564	ቁምጣ	1	TYPE_1	TYPE_1		
+2565	ቁምጤ	0		TYPE_1		
+2566	ቁምጥና	1		TYPE_1		
+2567	ቁምጭር	0	TYPE_1	TYPE_1		
+2568	ቁንጭር	0	TYPE_1	TYPE_1		
+2569	ቁረን	0		TYPE_1		
+2570	ቆረን	0		TYPE_1		
+2571	ቁረንጮ	0	TYPE_1	TYPE_1		
+2572	ቁርንጮ	0	TYPE_1	TYPE_1		
+2573	ቆረንጮ	0	TYPE_1	TYPE_1		
+2574	ቁራ	1	TYPE_1	TYPE_1		
+2575	ቁራን	1		TYPE_1		
+2576	ቁራኣን	1		TYPE_1		
+2577	ቁሬማ	1		TYPE_1		
+2578	ቁርዝ	0		TYPE_1		
+2579	ቁር	1		TYPE_1		
+2580	ቀርስ	1		TYPE_1		
+2581	ቁርምባጥ	1		TYPE_1		
+2582	ቁርንቢ	0	TYPE_1	TYPE_1		
+2583	ቁርምቢ	0	TYPE_1	TYPE_1		
+2584	ቁርሾ	1		TYPE_1		
+2585	ቅርሾ	1		TYPE_1		
+2586	ቁርምባ	1		TYPE_1		
+2587	ቁረቁራ	1		TYPE_1		
+2588	ቁርቆሳ	0		TYPE_1		
+2589	ቁርበት	1	TYPE_1	TYPE_1		
+2590	ቁርባ	0		TYPE_1		
+2591	ቁርምባ	0		TYPE_1		
+2592	ቁርባብቻ	0		TYPE_1		
+2593	ቁርብጫት	1		TYPE_1		
+2594	ቁራኛ	1	TYPE_1	TYPE_1		
+2595	ቁርንባጥ	1	TYPE_1	TYPE_1		
+2596	ቁርንጮ	1		TYPE_1		
+2597	ቁርዝ	1		TYPE_1		
+2598	ቁርዬ	0	TYPE_1	TYPE_1		
+2599	ቁርጠት	1		TYPE_1		
+2600	ቁርጣ	0	TYPE_1	TYPE_1		
+2601	ቁርጥ	1		TYPE_1		
+2602	ቁርጥማት	1		TYPE_1		
+2603	ቁርጭምጭሚት	1		TYPE_1		
+2604	ቁርጭኝ	0		TYPE_1		
+2605	ቁሳቁስ	1	TYPE_1	TYPE_1		
+2606	ቁስኣካላዊያን	1		TYPE_1		
+2607	ቁሳኣካላዊነት	1		TYPE_1		
+2608	ቁስለት	1		TYPE_1		
+2609	ቁስል	1	TYPE_1	TYPE_1		
+2610	ቁሻሻ	1		TYPE_1		
+2611	ቁቁታ	0	TYPE_1	TYPE_1		
+2612	ቁባት	1	TYPE_1	TYPE_1		
+2613	ቁቤላ	0	TYPE_1	TYPE_1		
+2614	ቁብ	1		TYPE_1		
+2615	ቁብላ	0	TYPE_1	TYPE_1		
+2616	ቁጢት	0		TYPE_1		
+2617	ቁቲት	0		TYPE_1		
+2618	ቁቻ	0	TYPE_1	TYPE_1		
+2619	ቁና	1	TYPE_1	TYPE_1		
+2620	ቁትቻ	0	TYPE_1	TYPE_1		
+2621	ቁናስ	1	TYPE_1	TYPE_1		
+2622	ቁንቁኔ	0		TYPE_1		
+2623	ቁንቁን	0		TYPE_1		
+2624	ቁንዶ	1		TYPE_1		
+2625	ቁንዲ	1		TYPE_1		
+2626	ቁንዳላ	1		TYPE_1		
+2627	ቁንድድ	1	TYPE_1	TYPE_1		
+2628	ቁንድዶ	1	TYPE_1	TYPE_1		
+2629	ቁንጅና	1		TYPE_1		
+2630	ቁንጢጥ	1	TYPE_1	TYPE_1		
+2631	ቁንጣሪ	1		TYPE_1		
+2632	ቁንጣራ	0	TYPE_1	TYPE_1		
+2633	ቁንጣን	1		TYPE_1		
+2634	ቁንጥጫ	1	TYPE_1	TYPE_1		
+2635	ቁንጫ	1	TYPE_1	TYPE_1		
+2636	ቁንጫጪት	0		TYPE_1		
+2637	ቁንጮ	1	TYPE_1	TYPE_1		
+2638	ቁዘማ	1	TYPE_1	TYPE_1		
+2639	ቁዳማ	0		TYPE_1		
+2640	ቁግ	0		TYPE_1		
+2641	ቁጢ	1		TYPE_1		
+2642	ቁጢላ	1		TYPE_1		
+2643	ቁጣ	1		TYPE_1		
+2644	ቁጣጥ	0		TYPE_1		
+2645	ቁጥር	1	TYPE_1	TYPE_1		
+2646	ቁጥርጥር	1		TYPE_1		
+2647	ቁጥቋጦ	1		TYPE_1		
+2648	ቁጥጥር	1	TYPE_1	TYPE_1		
+2649	ቁጭት	1		TYPE_1		
+2650	ቁጨት	1		TYPE_1		
+2651	ቁጫጭ	1	TYPE_1	TYPE_1		
+2652	ቁፋሮ	1	TYPE_1	TYPE_1		
+2653	ቂም	1		TYPE_1		
+2654	ቂንድ	0		TYPE_1		
+2655	ቂንጥር	1	TYPE_1	TYPE_1		
+2656	ቂጣ	1		TYPE_1		
+2657	ቂጥ	1	TYPE_1	TYPE_1		
+2658	ቂጡ	1		TYPE_1		
+2659	ቂጥኝ	1		TYPE_1		
+2660	ቃቃታ	1		TYPE_1		
+2661	ቃሊም	0	TYPE_1	TYPE_1		
+2662	ቃሊብ	0	TYPE_1	TYPE_1		
+2663	ቃል	1	TYPE_1	TYPE_1		
+2664	ቃላት	1	TYPE_1	TYPE_1		
+2665	ቃልኪዳን	1		TYPE_1		
+2666	ቃልቻ	1	TYPE_1	TYPE_1		
+2667	ቃሚያ	0		TYPE_1		
+2668	ቅሞ	0		TYPE_1		
+2669	ቃሞ	0		TYPE_1		
+2670	ቃር	1		TYPE_1		
+2671	ቃርሚያ	1		TYPE_1		
+2672	ቅራሚ	1	TYPE_1	TYPE_1		
+2673	ቃርሞሽ	1		TYPE_1		
+2674	ቃሪያ	1	TYPE_1	TYPE_1		
+2675	ቃሬ	0	TYPE_1	TYPE_1		
+2676	ቃሬዛ	1	TYPE_1	TYPE_1		
+2677	ቃቄዳ	0		TYPE_1		
+2678	ቃብድ	1		TYPE_1		
+2679	ቃታ	1		TYPE_1		
+2680	ቃተኛ	1		TYPE_1		
+2681	ቃታ	1		TYPE_1		
+2682	ቃና	1	TYPE_1	TYPE_1		
+2683	ቃንዛ	0	TYPE_1	TYPE_1		
+2684	ቅኝት	1		TYPE_1		
+2685	ቃዛ	0	TYPE_1	TYPE_1		
+2686	ቅዠት	1		TYPE_1		
+2687	ቃዲ	0	TYPE_1	TYPE_1		
+2688	ቃዳ	0	TYPE_1	TYPE_1		
+2689	ቃጠሎ	1		TYPE_1		
+2690	ቃጤ	0		TYPE_1		
+2691	ቃጭል	1	TYPE_1	TYPE_1		
+2692	ቅጭልጭል	1		TYPE_1		
+2693	ቃጫ	1	TYPE_1	TYPE_1		
+2694	ቃጭማ	1		TYPE_1		
+2695	ቃጭማ	1		TYPE_1		
+2696	ቃፊር	1	TYPE_1	TYPE_1		
+2697	ቄራ	1	TYPE_1	TYPE_1		
+2698	ቄንጥ	1	TYPE_1	TYPE_1		
+2699	ቄደር	0		TYPE_1		
+2700	ቄጦ	0	TYPE_1	TYPE_1		
+2701	ቅል	1	TYPE_1	TYPE_1		
+2702	ቅማንዥር	1		TYPE_1		
+2703	ቅማንጅር	1		TYPE_1		
+2704	ቅማት	1	TYPE_1	TYPE_1		
+2705	ቅማያት	1		TYPE_1		
+2706	ቅምሆ	0		TYPE_1		
+2707	ቅምጥ	1	TYPE_1	TYPE_1		
+2708	ቅሪላ	1		TYPE_1		
+2709	ቅራቅንቦ	1	TYPE_1	TYPE_1		
+2710	ቅራና	0		TYPE_1		
+2711	ቅሬ	0	TYPE_1	TYPE_1		
+2712	ቅሬታ	1	TYPE_1	TYPE_1		
+2713	ቅርታ	1	TYPE_1	TYPE_1		
+2714	ቅርስ	1	TYPE_1	TYPE_1		
+2715	ቅርቅፍት	1		TYPE_1		
+2716	ቅርንጥስ	0	TYPE_1	TYPE_1		
+2717	ቅርንጫፍ	1	TYPE_1	TYPE_1		
+2718	ቅርጫት	1	TYPE_1	TYPE_1		
+2719	ቅስም	1	TYPE_1	TYPE_1		
+2720	ቅብቅቦ	0		TYPE_1		
+2721	ቅንጣት	1		TYPE_1		
+2722	ቅንጥ	0		TYPE_1		
+2723	ቅንጬ	1		TYPE_1		
+2724	ቅንጭብ	1	TYPE_1	TYPE_1		
+2725	ቅዘዛ	1	TYPE_1	TYPE_1		
+2726	ቅዳሜ	1	TYPE_1	TYPE_1		
+2727	ቅድስት	1		TYPE_1		
+2728	ቅጠል	1	TYPE_1	TYPE_1		
+2729	ቅጥ	1	TYPE_1	TYPE_1		
+2730	ቅጥራን	0	TYPE_1	TYPE_1		
+2731	ቅፅ	1		TYPE_1		
+2732	ቅፅበት	1		TYPE_1		
+2733	ቅፍለት	0	TYPE_1	TYPE_1		
+2734	ቁልልታ	1		TYPE_1		
+2735	ቁልምጫ	1	TYPE_1	TYPE_1		
+2736	ቁልቁለት	1		TYPE_1		
+2737	ቆለቆል	0		TYPE_1		
+2738	ቆለጥ	1		TYPE_1		
+2739	ቆላ	1		TYPE_1		
+2740	ቁልፍ	1	TYPE_1	TYPE_1		
+2741	ቆለፈት	0		TYPE_1		
+2742	ቆሎ	1		TYPE_1		
+2743	ቆሌ	1		TYPE_1		
+2744	ቆልማሚት	0		TYPE_1		
+2745	ቆመጥ	1	TYPE_1	TYPE_1		
+2746	ቆመጥማጣ	1		TYPE_1		
+2747	ቆሞስ	0		TYPE_1		
+2748	ቆረቆር	1		TYPE_1		
+2749	ቆረቆዝ	1		TYPE_1		
+2750	ቆርባብቻ	0		TYPE_1		
+2751	ቆራ	1		TYPE_1		
+2752	ቆረቆንዳ	1	TYPE_1	TYPE_1		
+2753	ቆርቆሮ	1	TYPE_1	TYPE_1		
+2754	ቆሪ	0	TYPE_1	TYPE_1		
+2755	ቆሬ	0	TYPE_1	TYPE_1		
+2756	ቆርኬ	1	TYPE_1	TYPE_1		
+2757	ቆርኪ	1	TYPE_1	TYPE_1		
+2758	ቆሻሻ	1	TYPE_1	TYPE_1		
+2759	ቆሻሻ	1	TYPE_1	TYPE_1		
+2760	ቆሸንዳ	0	TYPE_1	TYPE_1		
+2761	ቆሽድ	1		TYPE_1		
+2762	ቆሽት	1		TYPE_1		
+2763	ቆቀር	1	TYPE_1	TYPE_1		
+2764	ቆቅ	1	TYPE_1	TYPE_1		
+2765	ቆበር	0		TYPE_1		
+2766	ቆባ	1	TYPE_1	TYPE_1		
+2767	ቆብ	1	TYPE_1	TYPE_1		
+2768	ቆቦ	1		TYPE_1		
+2769	ቆቻ	0		TYPE_1		
+2770	ቁትቻ	1	TYPE_1	TYPE_1		
+2771	ቆቻ	1		TYPE_1		
+2772	ቆናኝ	1	TYPE_1	TYPE_1		
+2773	ቆንዳላ	1		TYPE_1		
+2774	ቆንሲል	1	TYPE_1	TYPE_1		
+2775	ቆንጥር	1		TYPE_1		
+2776	ቆይታ	1	TYPE_1	TYPE_1		
+2777	ቆዳ	1		TYPE_1		
+2779	ቁግ	1	TYPE_1	TYPE_1		
+2780	ቆጠራ	1	TYPE_1	TYPE_1		
+2781	ቆጣሪ	1	TYPE_1	TYPE_1		
+2782	ቁጠባ	1	TYPE_1	TYPE_1		
+2783	ቆፈን	1		TYPE_1		
+2784	ቋሊማ	1		TYPE_1		
+2785	ቋሚ	1	TYPE_1	TYPE_1		
+2786	ቋር	0	TYPE_1	TYPE_1		
+2787	ቋርፍ	0		TYPE_1		
+2788	ቋሮ	0	TYPE_1	TYPE_1		
+2789	ቋቁቻ	1		TYPE_1		
+2790	ቋቋቴ	0		TYPE_1		
+2791	ቋንቁራ	0	TYPE_1	TYPE_1		
+2792	ቋንቋ	1	TYPE_1	TYPE_1		
+2793	ቋንዣ	1		TYPE_1		
+2794	ቋንጃ	1		TYPE_1		
+2795	ቋንጣ	1		TYPE_1		
+2796	ቋኛት	0	TYPE_1	TYPE_1		
+2797	ቋዝመን	0	TYPE_1	TYPE_1		
+2798	ቋያ	1		TYPE_1		
+2799	ቋድ	0		TYPE_1		
+2800	ቋጥኝ	1		TYPE_1		
+2801	ቋጨራ	0		TYPE_1		
+2802	ቋጫ	0	TYPE_1	TYPE_1		
+2803	ቋፍ	1		TYPE_1		
+2832	ቀላማጅነት	1		TYPE_1		
+2833	ቅምቀማ	1	TYPE_1	TYPE_1		
+2834	ቅሥፈት	1		TYPE_1		
+2835	ቅሬታ	1	TYPE_1	TYPE_1		
+2836	ቅርጽ	1	TYPE_1	TYPE_1		
+2837	ቀሰስተኛነት	1		TYPE_1		
+2838	ቀስቃሽ	1	TYPE_1	TYPE_1		
+2839	ቀበሌኛ	0		TYPE_1		
+2840	ቅንጠሳ	1	TYPE_1	TYPE_1		
+2841	ቅንጣሽ	1		TYPE_1		
+2842	ቅንጥብጣቢ	1	TYPE_1	TYPE_1		
+2843	ቅኝ	1		TYPE_1		
+2844	ቅንነት	1		TYPE_1		
+2845	ቀደምትነት	1		TYPE_1		
+2846	ቀዳሚነት	1		TYPE_1		
+2847	ቀዳሚት	1		TYPE_1		
+2848	ቅዱስነት	1		TYPE_1		
+2849	ቅጣይ	1	TYPE_1	TYPE_1		
+2850	ቅጥል	1		TYPE_1		
+2851	ቅጥነት	1		TYPE_1		
+2852	ቀጣፊነት	1		TYPE_1		
+2853	ቅጽበት	1		TYPE_1		
+2854	ቃሊብ	1	TYPE_3	TYPE_1		
+2855	ቃባዥ	1	TYPE_3	TYPE_1		
+2856	ቅንዲላ	1	TYPE_1	TYPE_1		
+2857	ቅጽ	1	TYPE_3	TYPE_1		
+2858	ቅጽበት	1		TYPE_1		
+2859	ቅጽል	1	TYPE_1	TYPE_1		
+2860	ቆሽታም	1		TYPE_1		
+2861	ቆንስላ	1	TYPE_1	TYPE_1		
+4943	ቁልምጫ	1	TYPE_3	TYPE_1		
+5511	ቅመም	1	TYPE_1	TYPE_1		
+7939	ቃጭማ	1		TYPE_1		
+10481	ቅባቅዱስ	1		TYPE_1		
+10483	ቅባኑግ	1		TYPE_1		
+10487	ቅኝ	1		TYPE_1		
+10499	ቀንዳውጣ	1	TYPE_1	TYPE_1		
+10540	ቃልኪዳን	1		TYPE_1		
+10590	ቆጣስር	0		TYPE_1		
+11309	ቅሌ	0		TYPE_1		
+11310	ቀላጥቤ	0		TYPE_1		
+11311	ቀሌንጅ	0		TYPE_1		
+11312	ቀረዋ	0	TYPE_1	TYPE_1		
+11313	ቅራተኛ	0	TYPE_1	TYPE_1		
+11314	ቀራዎ	0	TYPE_1	TYPE_1		
+11315	ቀርም	0		TYPE_1		
+11316	ቀሳ	0		TYPE_1		
+11317	ቀሳፋች	0	TYPE_1	TYPE_1		
+11318	ቀስፋታ	0		TYPE_1		
+11319	ቀባ	0		TYPE_1		
+11321	ቀጣጥይ	0		TYPE_1		
+11322	ቁር	0	TYPE_1	TYPE_1		
+11323	ቁርቁምባ	0	TYPE_1	TYPE_1		
+11324	ቁርብቻ	0	TYPE_1	TYPE_1		
+11325	ቁርብጭታ	0		TYPE_1		
+11326	ቄንጦ	0	TYPE_1	TYPE_1		
+11327	ቀንጦ	0	TYPE_1	TYPE_1		
+11328	ቅምብቻ	0		TYPE_1		
+11329	ቅምቦ	0		TYPE_1		
+11330	ቅምጫና	0	TYPE_1	TYPE_1		
+11331	ቅንቦ	0		TYPE_1		
+11332	ቅምቦ	0		TYPE_1		
+11333	ቅጣጥይ	0		TYPE_1		
+11334	ቀጣጥይ	0		TYPE_1		
+11335	ቆሮ	0	TYPE_1	TYPE_1		
+11336	ቆሸድ	0		TYPE_1		
+11337	ቋንዶ	0		TYPE_1		
+11383	ቈርቋሽ	0	TYPE_1	TYPE_1		

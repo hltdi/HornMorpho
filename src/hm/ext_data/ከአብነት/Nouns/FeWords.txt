@@ -1,0 +1,460 @@
+3582	ፏፏቴ	1	TYPE_1	TYPE_1		
+5266	ፉጨት	1		TYPE_1		
+9318	ፍልሚያ	1	TYPE_1	TYPE_1		
+9319	ፍልም	1		TYPE_1		
+9320	ፈላሻ	1	TYPE_1	TYPE_1		
+9321	ፈላስፋ	1	TYPE_1	TYPE_1		
+9322	ፈላስማ	1	TYPE_1	TYPE_1		
+9323	ፍልስፍና	1		TYPE_1		
+9325	ፍለጋ	1	TYPE_1	TYPE_1		
+9326	ፍላጎት	1	TYPE_1	TYPE_1		
+9327	ፈለግ	1		TYPE_1		
+9328	ፍላጭ	1		TYPE_1		
+9329	ፍልጥ	1		TYPE_1		
+9330	ፈሊጥ	1	TYPE_1	TYPE_1		
+9333	ፍላሎት	1		TYPE_1		
+9335	ፍል	1		TYPE_1		
+9336	ፊርማ	1	TYPE_1	TYPE_1		
+9337	ፈረሰኛ	1	TYPE_1	TYPE_1		
+9338	ፈረሱላ	1		TYPE_1		
+9340	ፈረስ	1	TYPE_1	TYPE_1		
+9345	ፈረቃ	1	TYPE_1	TYPE_1		
+9347	ፈረንጅ	1	TYPE_1	TYPE_1		
+9348	ፈራጅ	1	TYPE_1	TYPE_1		
+9349	ፍርድ	1	TYPE_1	TYPE_1		
+9352	ፍርጃ	1	TYPE_1	TYPE_1		
+9355	ፈረድ	0		TYPE_1		
+9356	ፈርጅ	1		TYPE_1		
+9357	ፈረፈር	0		TYPE_1		
+9358	ፍርፋሪ	1		TYPE_1		
+9359	ፍርፍር	1		TYPE_1		
+9360	ፈረፋንጎ	1	TYPE_1	TYPE_1		
+9361	ፋራፋንጎ	1	TYPE_1	TYPE_1		
+9363	ፍርሃት	1	TYPE_1	TYPE_1		
+9364	ፍራት	1	TYPE_1	TYPE_1		
+9365	ፍርሃት	1	TYPE_1	TYPE_1		
+9366	ፍራቻ	1	TYPE_1	TYPE_1		
+9367	ፍሬ	1	TYPE_1	TYPE_1		
+9368	ፍራፍሬ	1		TYPE_1		
+9372	ፈር	1		TYPE_1		
+9373	ፈርስ	1		TYPE_1		
+9374	ፈርጥ	1		TYPE_1		
+9375	ፈሰስ	1		TYPE_1		
+9376	ፈሳሽ	1	TYPE_1	TYPE_1		
+9377	ፍሳሽ	1	TYPE_1	TYPE_1		
+9379	ፋሲካ	1	TYPE_3	TYPE_1		
+9380	ፋሲጋ	0	TYPE_3	TYPE_1		
+9381	ፍስክ	1		TYPE_1		
+9382	ፍስግ	1		TYPE_1		
+9383	ፈስ	1		TYPE_1		
+9384	ፍቅር	1	TYPE_1	TYPE_1		
+9387	ፍቅረኛ	1		TYPE_1		
+9388	ፈቃድ	1	TYPE_1	TYPE_1		
+9389	ፍቃድ	1	TYPE_1	TYPE_1		
+9391	ፈትል	1		TYPE_1		
+9392	ፈታሽ	1	TYPE_1	TYPE_1		
+9393	ፍተሻ	1	TYPE_1	TYPE_1		
+9394	ፈተና	1	TYPE_1	TYPE_1		
+9396	ፍትፍት	1		TYPE_1		
+9398	ፍታት	1	TYPE_1	TYPE_1		
+9399	ፍቺ	1	TYPE_1	TYPE_1		
+9400	ፈቸል	0		TYPE_1		
+9402	ፈንድሻ	1		TYPE_1		
+9403	ፈንጂ	1	TYPE_1	TYPE_1		
+9404	ፍንዳታ	1	TYPE_3	TYPE_1		
+9405	ፍንድ	1		TYPE_1		
+9406	ፈንግል	1		TYPE_1		
+9408	ፈንጠዝያ	1		TYPE_1		
+9409	ፈንዜ	0	TYPE_1	TYPE_1		
+9410	ፈንጣጣ	1		TYPE_1		
+9411	ፈውስ	1	TYPE_1	TYPE_1		
+9413	ፋይዳ	1	TYPE_1	TYPE_1		
+9414	ፍጅት	1	TYPE_1	TYPE_1		
+9415	ፍጆታ	1	TYPE_1	TYPE_1		
+9416	ፈገግታ	1	TYPE_1	TYPE_1		
+9417	ፈጋራ	0		TYPE_1		
+9418	ፍጠምጥም	1		TYPE_1		
+9419	ፍጥጥም	1		TYPE_1		
+9420	ፈጠራ	1	TYPE_1	TYPE_1		
+9421	ፈጣሪ	1		TYPE_1		
+9422	ፍጡር	1	TYPE_1	TYPE_1		
+9423	ፍጥረት	1	TYPE_1	TYPE_1		
+9427	ፍጥነት	1		TYPE_1		
+9428	ፈጠጤ	0		TYPE_1		
+9431	ፈጪ	1	TYPE_1	TYPE_1		
+9432	ፈጫይ	1	TYPE_1	TYPE_1		
+9433	ፈጪ	1	TYPE_1	TYPE_1		
+9434	ፈጭታ	1	TYPE_1	TYPE_1		
+9436	ፍጩ	1		TYPE_1		
+9437	ፈጭፋጫ	0		TYPE_1		
+9438	ፈጫ	0		TYPE_1		
+9440	ፍፃሜ	1	TYPE_1	TYPE_1		
+9442	ፈፋ	1		TYPE_1		
+9443	ፉርቲ	0	TYPE_1	TYPE_1		
+9444	ፉርፉር	0	TYPE_1	TYPE_1		
+9445	ፉርኖ	1		TYPE_1		
+9447	ፉርጎ	1		TYPE_1		
+9448	ፉሮ	0		TYPE_1		
+9449	ፉቅራ	0		TYPE_1		
+9450	ፉካ	1		TYPE_1		
+9451	ፊሊት	1	TYPE_1	TYPE_1		
+9452	ፊላ	0		TYPE_1		
+9453	ፊልም	1	TYPE_1	TYPE_1		
+9455	ፊልትሮ	1		TYPE_1		
+9456	ፊሽካ	1	TYPE_1	TYPE_1		
+9457	ፊቀን	0		TYPE_1		
+9458	ፊታውራሪ	1		TYPE_1		
+9459	ፊት	1		TYPE_1		
+9463	ፊና	1		TYPE_1		
+9464	ፊናንስ	1		TYPE_1		
+9466	ፊንጢጣ	1		TYPE_1		
+9467	ፊኖ	1		TYPE_1		
+9469	ፊኛ	1		TYPE_1		
+9470	ፊውዳሊዝም	1		TYPE_1		
+9471	ፊውዳል	1	TYPE_1	TYPE_1		
+9472	ፊደል	1	TYPE_1	TYPE_1		
+9476	ፊጥኝ	1		TYPE_1		
+9477	ፍም	1		TYPE_1		
+9478	ፋራ	1	TYPE_1	TYPE_1		
+9479	ፋሮ	0	TYPE_1	TYPE_1		
+9480	ፋራናይት	1		TYPE_1		
+9481	ፋርማሲ	1	TYPE_1	TYPE_1		
+9482	ፋስ	1	TYPE_1	TYPE_1		
+9483	ፍሸኪያ	1		TYPE_1		
+9484	ፍሽጊያ	1		TYPE_1		
+9485	ፋሻ	1	TYPE_1	TYPE_1		
+9486	ፋሽስት	1	TYPE_1	TYPE_1		
+9487	ፋሽን	1	TYPE_1	TYPE_1		
+9488	ፋሽኮ	1		TYPE_1		
+9490	ፋቂ	1	TYPE_1	TYPE_1		
+9491	ፋቅ	0		TYPE_1		
+9492	ፋብሪካ	1	TYPE_1	TYPE_1		
+9493	ፋታ	1		TYPE_1		
+9494	ፋኖ	1	TYPE_1	TYPE_1		
+9495	ፋና	1	TYPE_1	TYPE_1		
+9497	ፋንታ	1		TYPE_1		
+9498	ፈንታ	1		TYPE_1		
+9499	ፋንድያ	1		TYPE_1		
+9500	ፋኖስ	1	TYPE_1	TYPE_1		
+9501	ፋክቱር	1	TYPE_1	TYPE_1		
+9502	ፋይል	1	TYPE_1	TYPE_1		
+9503	ፋይናንስ	1	TYPE_1	TYPE_1		
+9504	ፋደት	0	TYPE_1	TYPE_1		
+9505	ፋጉሎ	1		TYPE_1		
+9506	ፋጋ	1		TYPE_1		
+9507	ፋፋ	1		TYPE_1		
+9508	ፌራ	0		TYPE_1		
+9509	ፌርማታ	1	TYPE_1	TYPE_1		
+9510	ፌቆ	0	TYPE_1	TYPE_1		
+9511	ፌንጣ	1	TYPE_1	TYPE_1		
+9512	ፌዝ	1	TYPE_1	TYPE_1		
+9513	ፌጦ	1		TYPE_1		
+9514	ፍላሽ	1		TYPE_1		
+9515	ፍላፃ	1	TYPE_1	TYPE_1		
+9516	ፍልሰታ	1		TYPE_1		
+9517	ፍልፈል	1	TYPE_1	TYPE_1		
+9518	ፍሎረሰንት	1	TYPE_3	TYPE_1		
+9519	ፍሩሽካ	1		TYPE_1		
+9520	ፉሩሽካ	1		TYPE_1		
+9521	ፍሪሲዎን	1		TYPE_1		
+9522	ፍሪዳ	1	TYPE_1	TYPE_1		
+9523	ፍሪጅ	1	TYPE_1	TYPE_1		
+9524	ፍራሽ	1	TYPE_1	TYPE_1		
+9525	ፍራንክ	1	TYPE_1	TYPE_1		
+9527	ፍራክሽን	1	TYPE_1	TYPE_1		
+9528	ፍሬን	1		TYPE_1		
+9529	ፍርምባ	1		TYPE_1		
+9530	ፍርንትት	1		TYPE_1		
+9531	ፍርኩታ	0		TYPE_1		
+9532	ፍርግርግ	1		TYPE_1		
+9533	ፍስሃ	1		TYPE_1		
+9534	ፍትህ	1	TYPE_1	TYPE_1		
+9535	ፍትሃብሄር	1		TYPE_1		
+9536	ፍትሃነገስት	1		TYPE_1		
+9537	ፍትወት	1		TYPE_1		
+9539	ፍናቅ	0		TYPE_1		
+9540	ፍናፍንት	1	TYPE_1	TYPE_1		
+9541	ፍንጃል	1	TYPE_1	TYPE_1		
+9543	ፍንጭ	1	TYPE_1	TYPE_1		
+9544	ፍንጭት	1	TYPE_1	TYPE_1		
+9547	ፍየል	1	TYPE_1	TYPE_1		
+9549	ፍዳ	1	TYPE_3	TYPE_1		
+9550	ፍግ	1		TYPE_1		
+9551	ፎሌ	1		TYPE_1		
+9552	ፎረፎር	1		TYPE_1		
+9553	ፎርማሊቲ	1		TYPE_1		
+9554	ፎርማጆ	1		TYPE_1		
+9555	ፎርም	1	TYPE_1	TYPE_1		
+9556	ፎርፌ	1		TYPE_1		
+9557	ፎረፎር	1		TYPE_1		
+9558	ፎርማሊቲ	1		TYPE_1		
+9559	ፎርማጆ	1		TYPE_1		
+9560	ፎርም	1	TYPE_1	TYPE_1		
+9561	ፎርፌ	1		TYPE_1		
+9563	ፎቅ	1	TYPE_1	TYPE_1		
+9564	ፎቴ	1	TYPE_1	TYPE_1		
+9565	ፎቶግራፍ	1	TYPE_1	TYPE_1		
+9566	ፎቶ	1	TYPE_1	TYPE_1		
+9570	ፉከራ	1	TYPE_1	TYPE_1		
+9571	ፉክክር	1	TYPE_1	TYPE_1		
+9572	ፎከት	1		TYPE_1		
+9573	ፉገራ	1	TYPE_1	TYPE_1		
+9574	ፎጠና	0	TYPE_1	TYPE_1		
+9575	ፎጣ	1	TYPE_1	TYPE_1		
+9576	ፉጨት	1		TYPE_1		
+9577	ፏፏቴ	1	TYPE_1	TYPE_1		
+9578	ፍልሰፋ	1		TYPE_1		
+9580	ፈለክ	1	TYPE_1	TYPE_1		
+9581	ፈላጊ	1	TYPE_1	TYPE_1		
+9582	ፈለጣ	1		TYPE_1		
+9585	ፍላት	1		TYPE_1		
+9591	ፈርቅ	1	TYPE_3	TYPE_1		
+9592	ፈረንሳይ	1	TYPE_1	TYPE_1		
+9597	ፍርጠጣ	1		TYPE_1		
+9598	ፈሪነት	1		TYPE_1		
+9599	ፍራቻ	1	TYPE_1	TYPE_1		
+9602	ፈሰሴ	1		TYPE_1		
+9609	ፈቃደኛነት	1		TYPE_1		
+9614	ፍቱንነት	1		TYPE_1		
+9615	ፍተጋ	1		TYPE_1		
+9619	ፍንደቃ	1	TYPE_1	TYPE_1		
+9620	ፍንገላ	1	TYPE_1	TYPE_1		
+9622	ፍካት	1		TYPE_1		
+9624	ፍግፋጊ	1		TYPE_1		
+9626	ፈጥርቅ	1		TYPE_1		
+9627	ፍጹምነት	1		TYPE_1		
+9630	ፉጋ	1	TYPE_1	TYPE_1		
+9633	ፊታውራሪ	1		TYPE_1		
+9634	ፋርስ	1	TYPE_1	TYPE_1		
+9636	ፋከልቲ	1	TYPE_1	TYPE_1		
+9637	ፍሩስካ	0		TYPE_1		
+3582	ፏፏቴ	1	TYPE_1	TYPE_1		
+5266	ፉጨት	1		TYPE_1		
+9318	ፍልሚያ	1	TYPE_1	TYPE_1		
+9319	ፍልም	1		TYPE_1		
+9320	ፈላሻ	1	TYPE_1	TYPE_1		
+9321	ፈላስፋ	1	TYPE_1	TYPE_1		
+9322	ፈላስማ	1	TYPE_1	TYPE_1		
+9323	ፍልስፍና	1		TYPE_1		
+9325	ፍለጋ	1	TYPE_1	TYPE_1		
+9326	ፍላጎት	1	TYPE_1	TYPE_1		
+9327	ፈለግ	1		TYPE_1		
+9328	ፍላጭ	1		TYPE_1		
+9329	ፍልጥ	1		TYPE_1		
+9330	ፈሊጥ	1	TYPE_1	TYPE_1		
+9333	ፍላሎት	1		TYPE_1		
+9335	ፍል	1		TYPE_1		
+9336	ፊርማ	1	TYPE_1	TYPE_1		
+9337	ፈረሰኛ	1	TYPE_1	TYPE_1		
+9338	ፈረሱላ	1		TYPE_1		
+9340	ፈረስ	1	TYPE_1	TYPE_1		
+9345	ፈረቃ	1	TYPE_1	TYPE_1		
+9347	ፈረንጅ	1	TYPE_1	TYPE_1		
+9348	ፈራጅ	1	TYPE_1	TYPE_1		
+9349	ፍርድ	1	TYPE_1	TYPE_1		
+9352	ፍርጃ	1	TYPE_1	TYPE_1		
+9355	ፈረድ	0		TYPE_1		
+9356	ፈርጅ	1		TYPE_1		
+9357	ፈረፈር	0		TYPE_1		
+9358	ፍርፋሪ	1		TYPE_1		
+9359	ፍርፍር	1		TYPE_1		
+9360	ፈረፋንጎ	1	TYPE_1	TYPE_1		
+9361	ፋራፋንጎ	1	TYPE_1	TYPE_1		
+9363	ፍርሃት	1	TYPE_1	TYPE_1		
+9364	ፍራት	1	TYPE_1	TYPE_1		
+9365	ፍርሃት	1	TYPE_1	TYPE_1		
+9366	ፍራቻ	1	TYPE_1	TYPE_1		
+9367	ፍሬ	1	TYPE_1	TYPE_1		
+9368	ፍራፍሬ	1		TYPE_1		
+9372	ፈር	1		TYPE_1		
+9373	ፈርስ	1		TYPE_1		
+9374	ፈርጥ	1		TYPE_1		
+9375	ፈሰስ	1		TYPE_1		
+9376	ፈሳሽ	1	TYPE_1	TYPE_1		
+9377	ፍሳሽ	1	TYPE_1	TYPE_1		
+9379	ፋሲካ	1	TYPE_3	TYPE_1		
+9380	ፋሲጋ	0	TYPE_3	TYPE_1		
+9381	ፍስክ	1		TYPE_1		
+9382	ፍስግ	1		TYPE_1		
+9383	ፈስ	1		TYPE_1		
+9384	ፍቅር	1	TYPE_1	TYPE_1		
+9387	ፍቅረኛ	1		TYPE_1		
+9388	ፈቃድ	1	TYPE_1	TYPE_1		
+9389	ፍቃድ	1	TYPE_1	TYPE_1		
+9391	ፈትል	1		TYPE_1		
+9392	ፈታሽ	1	TYPE_1	TYPE_1		
+9393	ፍተሻ	1	TYPE_1	TYPE_1		
+9394	ፈተና	1	TYPE_1	TYPE_1		
+9396	ፍትፍት	1		TYPE_1		
+9398	ፍታት	1	TYPE_1	TYPE_1		
+9399	ፍቺ	1	TYPE_1	TYPE_1		
+9400	ፈቸል	0		TYPE_1		
+9402	ፈንድሻ	1		TYPE_1		
+9403	ፈንጂ	1	TYPE_1	TYPE_1		
+9404	ፍንዳታ	1	TYPE_3	TYPE_1		
+9405	ፍንድ	1		TYPE_1		
+9406	ፈንግል	1		TYPE_1		
+9408	ፈንጠዝያ	1		TYPE_1		
+9409	ፈንዜ	0	TYPE_1	TYPE_1		
+9410	ፈንጣጣ	1		TYPE_1		
+9411	ፈውስ	1	TYPE_1	TYPE_1		
+9413	ፋይዳ	1	TYPE_1	TYPE_1		
+9414	ፍጅት	1	TYPE_1	TYPE_1		
+9415	ፍጆታ	1	TYPE_1	TYPE_1		
+9416	ፈገግታ	1	TYPE_1	TYPE_1		
+9417	ፈጋራ	0		TYPE_1		
+9418	ፍጠምጥም	1		TYPE_1		
+9419	ፍጥጥም	1		TYPE_1		
+9420	ፈጠራ	1	TYPE_1	TYPE_1		
+9421	ፈጣሪ	1		TYPE_1		
+9422	ፍጡር	1	TYPE_1	TYPE_1		
+9423	ፍጥረት	1	TYPE_1	TYPE_1		
+9427	ፍጥነት	1		TYPE_1		
+9428	ፈጠጤ	0		TYPE_1		
+9431	ፈጪ	1	TYPE_1	TYPE_1		
+9432	ፈጫይ	1	TYPE_1	TYPE_1		
+9433	ፈጪ	1	TYPE_1	TYPE_1		
+9434	ፈጭታ	1	TYPE_1	TYPE_1		
+9436	ፍጩ	1		TYPE_1		
+9437	ፈጭፋጫ	0		TYPE_1		
+9438	ፈጫ	0		TYPE_1		
+9440	ፍፃሜ	1	TYPE_1	TYPE_1		
+9442	ፈፋ	1		TYPE_1		
+9443	ፉርቲ	0	TYPE_1	TYPE_1		
+9444	ፉርፉር	0	TYPE_1	TYPE_1		
+9445	ፉርኖ	1		TYPE_1		
+9447	ፉርጎ	1		TYPE_1		
+9448	ፉሮ	0		TYPE_1		
+9449	ፉቅራ	0		TYPE_1		
+9450	ፉካ	1		TYPE_1		
+9451	ፊሊት	1	TYPE_1	TYPE_1		
+9452	ፊላ	0		TYPE_1		
+9453	ፊልም	1	TYPE_1	TYPE_1		
+9455	ፊልትሮ	1		TYPE_1		
+9456	ፊሽካ	1	TYPE_1	TYPE_1		
+9457	ፊቀን	0		TYPE_1		
+9458	ፊታውራሪ	1		TYPE_1		
+9459	ፊት	1		TYPE_1		
+9463	ፊና	1		TYPE_1		
+9464	ፊናንስ	1		TYPE_1		
+9466	ፊንጢጣ	1		TYPE_1		
+9467	ፊኖ	1		TYPE_1		
+9469	ፊኛ	1		TYPE_1		
+9470	ፊውዳሊዝም	1		TYPE_1		
+9471	ፊውዳል	1	TYPE_1	TYPE_1		
+9472	ፊደል	1	TYPE_1	TYPE_1		
+9476	ፊጥኝ	1		TYPE_1		
+9477	ፍም	1		TYPE_1		
+9478	ፋራ	1	TYPE_1	TYPE_1		
+9479	ፋሮ	0	TYPE_1	TYPE_1		
+9480	ፋራናይት	1		TYPE_1		
+9481	ፋርማሲ	1	TYPE_1	TYPE_1		
+9482	ፋስ	1	TYPE_1	TYPE_1		
+9483	ፍሸኪያ	1		TYPE_1		
+9484	ፍሽጊያ	1		TYPE_1		
+9485	ፋሻ	1	TYPE_1	TYPE_1		
+9486	ፋሽስት	1	TYPE_1	TYPE_1		
+9487	ፋሽን	1	TYPE_1	TYPE_1		
+9488	ፋሽኮ	1		TYPE_1		
+9490	ፋቂ	1	TYPE_1	TYPE_1		
+9491	ፋቅ	0		TYPE_1		
+9492	ፋብሪካ	1	TYPE_1	TYPE_1		
+9493	ፋታ	1		TYPE_1		
+9494	ፋኖ	1	TYPE_1	TYPE_1		
+9495	ፋና	1	TYPE_1	TYPE_1		
+9497	ፋንታ	1		TYPE_1		
+9498	ፈንታ	1		TYPE_1		
+9499	ፋንድያ	1		TYPE_1		
+9500	ፋኖስ	1	TYPE_1	TYPE_1		
+9501	ፋክቱር	1	TYPE_1	TYPE_1		
+9502	ፋይል	1	TYPE_1	TYPE_1		
+9503	ፋይናንስ	1	TYPE_1	TYPE_1		
+9504	ፋደት	0	TYPE_1	TYPE_1		
+9505	ፋጉሎ	1		TYPE_1		
+9506	ፋጋ	1		TYPE_1		
+9507	ፋፋ	1		TYPE_1		
+9508	ፌራ	0		TYPE_1		
+9509	ፌርማታ	1	TYPE_1	TYPE_1		
+9510	ፌቆ	0	TYPE_1	TYPE_1		
+9511	ፌንጣ	1	TYPE_1	TYPE_1		
+9512	ፌዝ	1	TYPE_1	TYPE_1		
+9513	ፌጦ	1		TYPE_1		
+9514	ፍላሽ	1		TYPE_1		
+9515	ፍላፃ	1	TYPE_1	TYPE_1		
+9516	ፍልሰታ	1		TYPE_1		
+9517	ፍልፈል	1	TYPE_1	TYPE_1		
+9518	ፍሎረሰንት	1	TYPE_3	TYPE_1		
+9519	ፍሩሽካ	1		TYPE_1		
+9520	ፉሩሽካ	1		TYPE_1		
+9521	ፍሪሲዎን	1		TYPE_1		
+9522	ፍሪዳ	1	TYPE_1	TYPE_1		
+9523	ፍሪጅ	1	TYPE_1	TYPE_1		
+9524	ፍራሽ	1	TYPE_1	TYPE_1		
+9525	ፍራንክ	1	TYPE_1	TYPE_1		
+9527	ፍራክሽን	1	TYPE_1	TYPE_1		
+9528	ፍሬን	1		TYPE_1		
+9529	ፍርምባ	1		TYPE_1		
+9530	ፍርንትት	1		TYPE_1		
+9531	ፍርኩታ	0		TYPE_1		
+9532	ፍርግርግ	1		TYPE_1		
+9533	ፍስሃ	1		TYPE_1		
+9534	ፍትህ	1	TYPE_1	TYPE_1		
+9535	ፍትሃብሄር	1		TYPE_1		
+9536	ፍትሃነገስት	1		TYPE_1		
+9537	ፍትወት	1		TYPE_1		
+9539	ፍናቅ	0		TYPE_1		
+9540	ፍናፍንት	1	TYPE_1	TYPE_1		
+9541	ፍንጃል	1	TYPE_1	TYPE_1		
+9543	ፍንጭ	1	TYPE_1	TYPE_1		
+9544	ፍንጭት	1	TYPE_1	TYPE_1		
+9547	ፍየል	1	TYPE_1	TYPE_1		
+9549	ፍዳ	1	TYPE_3	TYPE_1		
+9550	ፍግ	1		TYPE_1		
+9551	ፎሌ	1		TYPE_1		
+9552	ፎረፎር	1		TYPE_1		
+9553	ፎርማሊቲ	1		TYPE_1		
+9554	ፎርማጆ	1		TYPE_1		
+9555	ፎርም	1	TYPE_1	TYPE_1		
+9556	ፎርፌ	1		TYPE_1		
+9557	ፎረፎር	1		TYPE_1		
+9558	ፎርማሊቲ	1		TYPE_1		
+9559	ፎርማጆ	1		TYPE_1		
+9560	ፎርም	1	TYPE_1	TYPE_1		
+9561	ፎርፌ	1		TYPE_1		
+9563	ፎቅ	1	TYPE_1	TYPE_1		
+9564	ፎቴ	1	TYPE_1	TYPE_1		
+9565	ፎቶግራፍ	1	TYPE_1	TYPE_1		
+9566	ፎቶ	1	TYPE_1	TYPE_1		
+9570	ፉከራ	1	TYPE_1	TYPE_1		
+9571	ፉክክር	1	TYPE_1	TYPE_1		
+9572	ፎከት	1		TYPE_1		
+9573	ፉገራ	1	TYPE_1	TYPE_1		
+9574	ፎጠና	0	TYPE_1	TYPE_1		
+9575	ፎጣ	1	TYPE_1	TYPE_1		
+9576	ፉጨት	1		TYPE_1		
+9577	ፏፏቴ	1	TYPE_1	TYPE_1		
+9578	ፍልሰፋ	1		TYPE_1		
+9580	ፈለክ	1	TYPE_1	TYPE_1		
+9581	ፈላጊ	1	TYPE_1	TYPE_1		
+9582	ፈለጣ	1		TYPE_1		
+9585	ፍላት	1		TYPE_1		
+9591	ፈርቅ	1	TYPE_3	TYPE_1		
+9592	ፈረንሳይ	1	TYPE_1	TYPE_1		
+9597	ፍርጠጣ	1		TYPE_1		
+9598	ፈሪነት	1		TYPE_1		
+9599	ፍራቻ	1	TYPE_1	TYPE_1		
+9602	ፈሰሴ	1		TYPE_1		
+9609	ፈቃደኛነት	1		TYPE_1		
+9614	ፍቱንነት	1		TYPE_1		
+9615	ፍተጋ	1		TYPE_1		
+9619	ፍንደቃ	1	TYPE_1	TYPE_1		
+9620	ፍንገላ	1	TYPE_1	TYPE_1		
+9622	ፍካት	1		TYPE_1		
+9624	ፍግፋጊ	1		TYPE_1		
+9626	ፈጥርቅ	1		TYPE_1		
+9627	ፍጹምነት	1		TYPE_1		
+9630	ፉጋ	1	TYPE_1	TYPE_1		
+9633	ፊታውራሪ	1		TYPE_1		
+9634	ፋርስ	1	TYPE_1	TYPE_1		
+9636	ፋከልቲ	1	TYPE_1	TYPE_1		
+9637	ፍሩስካ	0		TYPE_1		

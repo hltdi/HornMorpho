@@ -1,0 +1,432 @@
+1	ሀሁ	1		TYPE_2		
+2	ሀብት	1		TYPE_1	wealth	
+4	ሀብታምነት	1		TYPE_1		
+5	ሀገር	1	TYPE_1	TYPE_1	country	
+6	ሀይ	1		TYPE_2		
+7	ሁከት	1	TYPE_1	TYPE_1		
+8	ሂስ	1		TYPE_1		
+10	ሃይማኖት	1	TYPE_1	TYPE_1		
+11	ሂያጅ	1	TYPE_1	TYPE_1		
+12	ሂደት	1	TYPE_1	TYPE_1		
+13	ህላዌ	1		TYPE_1		
+14	ህልውና	1		TYPE_1		
+15	ህንድ	1	TYPE_1	TYPE_1		
+16	ህዋእ	1		TYPE_2		
+17	ሆሳዕና	1		TYPE_2		
+18	ሆምጣጤ	1	TYPE_1	TYPE_1		
+20	ሁነኛ	1	TYPE_1	TYPE_1		
+21	ሁኔታ	1	TYPE_1	TYPE_1		
+23	ሆታ	1		TYPE_1		
+24	ሆቴል	1	TYPE_1	TYPE_1		
+25	ሆድ	1		TYPE_1		
+29	ሁለንተና	1		TYPE_1		
+30	ሁናቴ	1	TYPE_1	TYPE_1		
+31	ሁዳዴ	1		TYPE_1		
+32	ሁዳድ	0		TYPE_1		
+33	ሂሳብ	1	TYPE_1	TYPE_1		
+34	ሃያሲ	1	TYPE_1	TYPE_1		
+35	ሂና	1		TYPE_1		
+36	ሂደት	1	TYPE_1	TYPE_1		
+37	ሃላፊነት	1	TYPE_1	TYPE_1		
+38	ሃመል	0		TYPE_2		
+39	ሃመልማል	1		TYPE_1		
+40	ሃሙስ	1	TYPE_1	TYPE_1		
+41	ሃማል	1		TYPE_2		
+42	ሃሜታ	1		TYPE_1		
+43	ሃሜት	1		TYPE_1		
+44	ሃምሌ	1	TYPE_1	TYPE_1		
+45	ሃምሳ	1		TYPE_1		
+46	ሃምስ	1		TYPE_1		
+47	ሃምበርገር	1	TYPE_1	TYPE_1		
+48	ሃሞት	1		TYPE_1		
+49	ሃረግ	1	TYPE_1	TYPE_1		
+50	ሃሩር	1		TYPE_1		
+51	ሃራም	1		TYPE_1		
+52	ሃራራ	1		TYPE_1		
+53	ሃራጅ	1		TYPE_1		
+54	ሃር	1		TYPE_1		
+55	ሃርሞኒካ	1	TYPE_1	TYPE_1		
+56	ሃሰት	1	TYPE_1	TYPE_1		
+57	ሃሳብ	1	TYPE_1	TYPE_1		
+58	ሃሳባዊነት	1		TYPE_1		
+59	ሃሴት	1	TYPE_1	TYPE_1		
+60	ሃሺሽ	1		TYPE_1		
+61	ሃቅ	1	TYPE_1	TYPE_1		
+62	ሃበሻ	1	TYPE_1	TYPE_1		
+63	ሃብሃብ	1	TYPE_1	TYPE_1		
+64	ሃብል	1	TYPE_1	TYPE_1		
+67	ሃተታ	1	TYPE_1	TYPE_1		
+68	ሃኔ	1		TYPE_1		
+69	ሃኪም	1	TYPE_1	TYPE_1		
+70	ሃኬት	1	TYPE_1	TYPE_1		
+71	ሃዋላ	1		TYPE_1		
+72	ሃዋርያ	1	TYPE_2	TYPE_1		
+73	ሃውልት	1	TYPE_1	TYPE_1		
+74	ሃውዛ	1		TYPE_1		
+75	ሃዘን	1		TYPE_1		
+77	ሃዘኔታ	1		TYPE_1		
+78	ሃያ	1		TYPE_1		
+79	ሃያላን	1	TYPE_4	TYPE_1		
+80	ሃይል	1	TYPE_1	TYPE_1		
+81	ሃይድሮጅን	1		TYPE_1		
+82	ሃይጅን	1		TYPE_1		
+83	ሃዲድ	1	TYPE_1	TYPE_1		
+84	ሃጅ	1		TYPE_1		
+85	ሃገር	1	TYPE_1	TYPE_1		
+86	ሃጋይ	0		TYPE_1		
+87	ሃጢኣት	1	TYPE_1	TYPE_1		
+89	ሃጥእ	1	TYPE_2	TYPE_1		
+90	ሃፍረት	1		TYPE_1		
+91	ሄሊኮፕተር	1	TYPE_1	TYPE_1		
+92	ሂደት	1	TYPE_1	TYPE_1		
+93	ሂጃ	1		TYPE_1		
+94	ህሊና	1	TYPE_1	TYPE_1		
+95	ህልም	1	TYPE_1	TYPE_1		
+96	ህልፈት	1		TYPE_1		
+97	ህመም	1	TYPE_1	TYPE_1		
+98	ህሙማን	1	TYPE_4	TYPE_1		
+99	ህማማት	1		TYPE_1		
+100	ህቅታ	1		TYPE_1		
+101	ህብረት	1	TYPE_1	TYPE_1		
+102	ህብረተሰብ	1	TYPE_4	TYPE_1		
+103	ህብረተሰባዊነት	1		TYPE_1		
+104	ህብስት	1	TYPE_1	TYPE_1		
+105	ህትመት	1	TYPE_1	TYPE_1		
+106	ህንፃ	1	TYPE_1	TYPE_1		
+107	ህክምና	1	TYPE_1	TYPE_1		
+108	ህዋ	1	TYPE_1	TYPE_1		
+109	ህዋስ	1	TYPE_2	TYPE_1		
+110	ህውከት	1		TYPE_1		
+111	ህዝባር	1		TYPE_1		
+112	ህዝብ	1	TYPE_4	TYPE_1		
+113	ህይወት	1		TYPE_1		
+114	ህዳር	1	TYPE_1	TYPE_1		
+115	ህዳግ	1		TYPE_1		
+116	ህግ	1	TYPE_1	TYPE_1		
+117	ህጥር	0		TYPE_1		
+118	ህፀፅ	1	TYPE_1	TYPE_1		
+119	ህፃን	1	TYPE_2	TYPE_1		
+120	ህፈረት	1		TYPE_1		
+121	ሆታ	1		TYPE_1		
+122	ሆሆታ	1		TYPE_1		
+123	ሆሄ	1		TYPE_1		
+124	ሆማጣጣ	1		TYPE_1		
+125	ሆሳእና	1		TYPE_1		
+126	ሆስቴል	1	TYPE_1	TYPE_1		
+127	ሆስቴስ	1	TYPE_1	TYPE_1		
+128	ሆስፒታል	1	TYPE_1	TYPE_1		
+129	ሁዳደኛ	0		TYPE_1		
+130	ሆዳጅ	0		TYPE_1		
+131	ሆጃ	1		TYPE_1		
+132	ሃርሞኒካ	1	TYPE_1	TYPE_1		
+133	ሃሴት	1		TYPE_1		
+244	ሃላፊነት	1	TYPE_1	TYPE_1		
+360	ሐሙስ	1	TYPE_1	TYPE_1		
+361	ሐማል	1		TYPE_1		
+362	ሐማል	1		TYPE_1		
+363	ሐማልነት	1		TYPE_1		
+364	ሐሜት	1	TYPE_1	TYPE_1		
+365	ሐሜተኛ	1		TYPE_1		
+366	ሐምሌ	1	TYPE_1	TYPE_1		
+367	ሐምራዊ	1		TYPE_1		
+368	ሐረርጌ	1	TYPE_1	TYPE_1		
+369	ሐረር	1	TYPE_1	TYPE_1		
+370	ሐረግ	1		TYPE_1		
+371	ሐረገወይን	1		TYPE_1		
+372	ሐሩር	1		TYPE_1		
+373	ሐራጅ	1		TYPE_1		
+374	ሐር	1	TYPE_1	TYPE_1		
+376	ሐሰት	1	TYPE_1	TYPE_1		
+377	ሐሰተኛ	1		TYPE_1		
+379	ሐቀኛነት	1		TYPE_1		
+380	ሐበሻ	1	TYPE_1	TYPE_1		
+381	ሐብል	1	TYPE_1	TYPE_1		
+382	ሐብሐብ	1	TYPE_1	TYPE_1		
+383	ሐተታ	1	TYPE_1	TYPE_1		
+384	ሐኪም	1	TYPE_1	TYPE_1		
+385	ሕክምና	1	TYPE_1	TYPE_1		
+386	ሐኬት	1		TYPE_1		
+387	ሐኬተኝነት	1		TYPE_1		
+388	ሐዋላ	1	TYPE_1	TYPE_1		
+389	ሐዋርያ	1	TYPE_1	TYPE_1		
+390	ሐዋርያነት	1		TYPE_1		
+391	ሐውልት	1	TYPE_1	TYPE_1		
+392	ሐዘን	1		TYPE_1		
+393	ሐይቅ	1	TYPE_1	TYPE_1		
+395	ሐዲድ	1	TYPE_1	TYPE_1		
+396	ሐጂ	1	TYPE_1	TYPE_1		
+397	ሐፍረት	1		TYPE_1		
+398	ሑርነት	1		TYPE_1		
+399	ሑዳዴ	1		TYPE_1		
+400	ሒሳብ	1	TYPE_1	TYPE_1		
+401	ሔዋን	1	TYPE_1	TYPE_1		
+402	ሕልም	1	TYPE_1	TYPE_1		
+403	ሕመም	1	TYPE_1	TYPE_1		
+404	ሕመምተኛ	1		TYPE_1		
+405	ሕማም	1		TYPE_1		
+406	ሕማማት	1		TYPE_1		
+407	ሕቅታ	1	type 3	TYPE_1		
+408	ሕንፃ	1	TYPE_1	TYPE_1		
+409	ሕዋስ	1	TYPE_1	TYPE_1		
+410	ሕዝብ	1	TYPE_4	TYPE_1		
+411	ሕይወት	1		TYPE_1		
+412	ሕያውነት	1		TYPE_1		
+413	ሕግ	1	TYPE_1	TYPE_1		
+414	ሕጋዊነት	1		TYPE_1		
+415	ሕጻን	1		TYPE_1		
+416	ሕፃንነት	1		TYPE_1		
+3838	ኁለመና	1		TYPE_1		
+3839	ኃላፊ	1	TYPE_1	TYPE_1		
+3840	ኀሙስ	1	TYPE_1	TYPE_1		
+3841	ኀምሳ	1	TYPE_1	TYPE_1		
+3842	ኀምስ	1	TYPE_1	TYPE_1		
+3843	ኃይል	1	TYPE_1	TYPE_1		
+3844	ኀይለኝነት	1		TYPE_1		
+3845	ኃጋይ	1		TYPE_1		
+3846	ኃጢአት	1	TYPE_1	TYPE_1		
+3847	ኃጢአተኝነት	1		TYPE_1		
+3848	ኃጥእ	1	TYPE_1	TYPE_1		
+3849	ኃፍረት	1	TYPE_1	TYPE_1		
+3850	ኅብረት	1	TYPE_1	TYPE_1		
+3851	ኅብረተሰብ	1		TYPE_1		
+3852	ኅብር	1	TYPE_1	TYPE_1		
+3853	ኅብረትርኢት	1		TYPE_1		
+3857	ኅብስት	1		TYPE_1		
+3858	ኅዳር	1	TYPE_1	TYPE_1		
+3859	ኅዳግ	1		TYPE_1		
+3860	ኅፀፀ	1	TYPE_1	TYPE_1		
+5092	ህውከት	1		TYPE_1		
+5127	ሐዘንተኛ	1		TYPE_1		
+5137	ኀይል	1	TYPE_1	TYPE_1		
+5859	ሆምጣጤ	0		TYPE_1		
+10847	ሃላፊነት	1	TYPE_1	TYPE_1		
+10850	ህልፈት	1	TYPE_1	TYPE_1		
+10871	ሃሚና	1		TYPE_1		
+10872	ሃሜት	1	TYPE_1	TYPE_1		
+10874	ሃሜታ	1	TYPE_1	TYPE_1		
+10879	ሃምሳ	1	TYPE_1	TYPE_1		
+10965	ሃተታ	1		TYPE_1		
+11007	ሁከት	1	TYPE_1	TYPE_1		
+11008	ህውከት	1		TYPE_1		
+11020	ሃውዛ	1		TYPE_1		
+11100	ሃፍረት	1		TYPE_1		
+11101	ህፍረት	1		TYPE_1		
+11128	ህልበት	1		TYPE_1		
+11220	ህንጦ	0		TYPE_1		
+11365	ሆማ	0		TYPE_1		
+1	ሀሁ	1		TYPE_2		
+2	ሀብት	1		TYPE_1	wealth	
+4	ሀብታምነት	1		TYPE_1		
+5	ሀገር	1	TYPE_1	TYPE_1	country	
+6	ሀይ	1		TYPE_2		
+7	ሁከት	1	TYPE_1	TYPE_1		
+8	ሂስ	1		TYPE_1		
+10	ሃይማኖት	1	TYPE_1	TYPE_1		
+11	ሂያጅ	1	TYPE_1	TYPE_1		
+12	ሂደት	1	TYPE_1	TYPE_1		
+13	ህላዌ	1		TYPE_1		
+14	ህልውና	1		TYPE_1		
+15	ህንድ	1	TYPE_1	TYPE_1		
+16	ህዋእ	1		TYPE_2		
+17	ሆሳዕና	1		TYPE_2		
+18	ሆምጣጤ	1	TYPE_1	TYPE_1		
+20	ሁነኛ	1	TYPE_1	TYPE_1		
+21	ሁኔታ	1	TYPE_1	TYPE_1		
+23	ሆታ	1		TYPE_1		
+24	ሆቴል	1	TYPE_1	TYPE_1		
+25	ሆድ	1		TYPE_1		
+29	ሁለንተና	1		TYPE_1		
+30	ሁናቴ	1	TYPE_1	TYPE_1		
+31	ሁዳዴ	1		TYPE_1		
+32	ሁዳድ	0		TYPE_1		
+33	ሂሳብ	1	TYPE_1	TYPE_1		
+34	ሃያሲ	1	TYPE_1	TYPE_1		
+35	ሂና	1		TYPE_1		
+36	ሂደት	1	TYPE_1	TYPE_1		
+37	ሃላፊነት	1	TYPE_1	TYPE_1		
+38	ሃመል	0		TYPE_2		
+39	ሃመልማል	1		TYPE_1		
+40	ሃሙስ	1	TYPE_1	TYPE_1		
+41	ሃማል	1		TYPE_2		
+42	ሃሜታ	1		TYPE_1		
+43	ሃሜት	1		TYPE_1		
+44	ሃምሌ	1	TYPE_1	TYPE_1		
+45	ሃምሳ	1		TYPE_1		
+46	ሃምስ	1		TYPE_1		
+47	ሃምበርገር	1	TYPE_1	TYPE_1		
+48	ሃሞት	1		TYPE_1		
+49	ሃረግ	1	TYPE_1	TYPE_1		
+50	ሃሩር	1		TYPE_1		
+51	ሃራም	1		TYPE_1		
+52	ሃራራ	1		TYPE_1		
+53	ሃራጅ	1		TYPE_1		
+54	ሃር	1		TYPE_1		
+55	ሃርሞኒካ	1	TYPE_1	TYPE_1		
+56	ሃሰት	1	TYPE_1	TYPE_1		
+57	ሃሳብ	1	TYPE_1	TYPE_1		
+58	ሃሳባዊነት	1		TYPE_1		
+59	ሃሴት	1	TYPE_1	TYPE_1		
+60	ሃሺሽ	1		TYPE_1		
+61	ሃቅ	1	TYPE_1	TYPE_1		
+62	ሃበሻ	1	TYPE_1	TYPE_1		
+63	ሃብሃብ	1	TYPE_1	TYPE_1		
+64	ሃብል	1	TYPE_1	TYPE_1		
+67	ሃተታ	1	TYPE_1	TYPE_1		
+68	ሃኔ	1		TYPE_1		
+69	ሃኪም	1	TYPE_1	TYPE_1		
+70	ሃኬት	1	TYPE_1	TYPE_1		
+71	ሃዋላ	1		TYPE_1		
+72	ሃዋርያ	1	TYPE_2	TYPE_1		
+73	ሃውልት	1	TYPE_1	TYPE_1		
+74	ሃውዛ	1		TYPE_1		
+75	ሃዘን	1		TYPE_1		
+77	ሃዘኔታ	1		TYPE_1		
+78	ሃያ	1		TYPE_1		
+79	ሃያላን	1	TYPE_4	TYPE_1		
+80	ሃይል	1	TYPE_1	TYPE_1		
+81	ሃይድሮጅን	1		TYPE_1		
+82	ሃይጅን	1		TYPE_1		
+83	ሃዲድ	1	TYPE_1	TYPE_1		
+84	ሃጅ	1		TYPE_1		
+85	ሃገር	1	TYPE_1	TYPE_1		
+86	ሃጋይ	0		TYPE_1		
+87	ሃጢኣት	1	TYPE_1	TYPE_1		
+89	ሃጥእ	1	TYPE_2	TYPE_1		
+90	ሃፍረት	1		TYPE_1		
+91	ሄሊኮፕተር	1	TYPE_1	TYPE_1		
+92	ሂደት	1	TYPE_1	TYPE_1		
+93	ሂጃ	1		TYPE_1		
+94	ህሊና	1	TYPE_1	TYPE_1		
+95	ህልም	1	TYPE_1	TYPE_1		
+96	ህልፈት	1		TYPE_1		
+97	ህመም	1	TYPE_1	TYPE_1		
+98	ህሙማን	1	TYPE_4	TYPE_1		
+99	ህማማት	1		TYPE_1		
+100	ህቅታ	1		TYPE_1		
+101	ህብረት	1	TYPE_1	TYPE_1		
+102	ህብረተሰብ	1	TYPE_4	TYPE_1		
+103	ህብረተሰባዊነት	1		TYPE_1		
+104	ህብስት	1	TYPE_1	TYPE_1		
+105	ህትመት	1	TYPE_1	TYPE_1		
+106	ህንፃ	1	TYPE_1	TYPE_1		
+107	ህክምና	1	TYPE_1	TYPE_1		
+108	ህዋ	1	TYPE_1	TYPE_1		
+109	ህዋስ	1	TYPE_2	TYPE_1		
+110	ህውከት	1		TYPE_1		
+111	ህዝባር	1		TYPE_1		
+112	ህዝብ	1	TYPE_4	TYPE_1		
+113	ህይወት	1		TYPE_1		
+114	ህዳር	1	TYPE_1	TYPE_1		
+115	ህዳግ	1		TYPE_1		
+116	ህግ	1	TYPE_1	TYPE_1		
+117	ህጥር	0		TYPE_1		
+118	ህፀፅ	1	TYPE_1	TYPE_1		
+119	ህፃን	1	TYPE_2	TYPE_1		
+120	ህፈረት	1		TYPE_1		
+121	ሆታ	1		TYPE_1		
+122	ሆሆታ	1		TYPE_1		
+123	ሆሄ	1		TYPE_1		
+124	ሆማጣጣ	1		TYPE_1		
+125	ሆሳእና	1		TYPE_1		
+126	ሆስቴል	1	TYPE_1	TYPE_1		
+127	ሆስቴስ	1	TYPE_1	TYPE_1		
+128	ሆስፒታል	1	TYPE_1	TYPE_1		
+129	ሁዳደኛ	0		TYPE_1		
+130	ሆዳጅ	0		TYPE_1		
+131	ሆጃ	1		TYPE_1		
+132	ሃርሞኒካ	1	TYPE_1	TYPE_1		
+133	ሃሴት	1		TYPE_1		
+244	ሃላፊነት	1	TYPE_1	TYPE_1		
+360	ሐሙስ	1	TYPE_1	TYPE_1		
+361	ሐማል	1		TYPE_1		
+362	ሐማል	1		TYPE_1		
+363	ሐማልነት	1		TYPE_1		
+364	ሐሜት	1	TYPE_1	TYPE_1		
+365	ሐሜተኛ	1		TYPE_1		
+366	ሐምሌ	1	TYPE_1	TYPE_1		
+367	ሐምራዊ	1		TYPE_1		
+368	ሐረርጌ	1	TYPE_1	TYPE_1		
+369	ሐረር	1	TYPE_1	TYPE_1		
+370	ሐረግ	1		TYPE_1		
+371	ሐረገወይን	1		TYPE_1		
+372	ሐሩር	1		TYPE_1		
+373	ሐራጅ	1		TYPE_1		
+374	ሐር	1	TYPE_1	TYPE_1		
+376	ሐሰት	1	TYPE_1	TYPE_1		
+377	ሐሰተኛ	1		TYPE_1		
+379	ሐቀኛነት	1		TYPE_1		
+380	ሐበሻ	1	TYPE_1	TYPE_1		
+381	ሐብል	1	TYPE_1	TYPE_1		
+382	ሐብሐብ	1	TYPE_1	TYPE_1		
+383	ሐተታ	1	TYPE_1	TYPE_1		
+384	ሐኪም	1	TYPE_1	TYPE_1		
+385	ሕክምና	1	TYPE_1	TYPE_1		
+386	ሐኬት	1		TYPE_1		
+387	ሐኬተኝነት	1		TYPE_1		
+388	ሐዋላ	1	TYPE_1	TYPE_1		
+389	ሐዋርያ	1	TYPE_1	TYPE_1		
+390	ሐዋርያነት	1		TYPE_1		
+391	ሐውልት	1	TYPE_1	TYPE_1		
+392	ሐዘን	1		TYPE_1		
+393	ሐይቅ	1	TYPE_1	TYPE_1		
+395	ሐዲድ	1	TYPE_1	TYPE_1		
+396	ሐጂ	1	TYPE_1	TYPE_1		
+397	ሐፍረት	1		TYPE_1		
+398	ሑርነት	1		TYPE_1		
+399	ሑዳዴ	1		TYPE_1		
+400	ሒሳብ	1	TYPE_1	TYPE_1		
+401	ሔዋን	1	TYPE_1	TYPE_1		
+402	ሕልም	1	TYPE_1	TYPE_1		
+403	ሕመም	1	TYPE_1	TYPE_1		
+404	ሕመምተኛ	1		TYPE_1		
+405	ሕማም	1		TYPE_1		
+406	ሕማማት	1		TYPE_1		
+407	ሕቅታ	1	type 3	TYPE_1		
+408	ሕንፃ	1	TYPE_1	TYPE_1		
+409	ሕዋስ	1	TYPE_1	TYPE_1		
+410	ሕዝብ	1	TYPE_4	TYPE_1		
+411	ሕይወት	1		TYPE_1		
+412	ሕያውነት	1		TYPE_1		
+413	ሕግ	1	TYPE_1	TYPE_1		
+414	ሕጋዊነት	1		TYPE_1		
+415	ሕጻን	1		TYPE_1		
+416	ሕፃንነት	1		TYPE_1		
+3838	ኁለመና	1		TYPE_1		
+3839	ኃላፊ	1	TYPE_1	TYPE_1		
+3840	ኀሙስ	1	TYPE_1	TYPE_1		
+3841	ኀምሳ	1	TYPE_1	TYPE_1		
+3842	ኀምስ	1	TYPE_1	TYPE_1		
+3843	ኃይል	1	TYPE_1	TYPE_1		
+3844	ኀይለኝነት	1		TYPE_1		
+3845	ኃጋይ	1		TYPE_1		
+3846	ኃጢአት	1	TYPE_1	TYPE_1		
+3847	ኃጢአተኝነት	1		TYPE_1		
+3848	ኃጥእ	1	TYPE_1	TYPE_1		
+3849	ኃፍረት	1	TYPE_1	TYPE_1		
+3850	ኅብረት	1	TYPE_1	TYPE_1		
+3851	ኅብረተሰብ	1		TYPE_1		
+3852	ኅብር	1	TYPE_1	TYPE_1		
+3853	ኅብረትርኢት	1		TYPE_1		
+3857	ኅብስት	1		TYPE_1		
+3858	ኅዳር	1	TYPE_1	TYPE_1		
+3859	ኅዳግ	1		TYPE_1		
+3860	ኅፀፀ	1	TYPE_1	TYPE_1		
+5092	ህውከት	1		TYPE_1		
+5127	ሐዘንተኛ	1		TYPE_1		
+5137	ኀይል	1	TYPE_1	TYPE_1		
+5859	ሆምጣጤ	0		TYPE_1		
+10847	ሃላፊነት	1	TYPE_1	TYPE_1		
+10850	ህልፈት	1	TYPE_1	TYPE_1		
+10871	ሃሚና	1		TYPE_1		
+10872	ሃሜት	1	TYPE_1	TYPE_1		
+10874	ሃሜታ	1	TYPE_1	TYPE_1		
+10879	ሃምሳ	1	TYPE_1	TYPE_1		
+10965	ሃተታ	1		TYPE_1		
+11007	ሁከት	1	TYPE_1	TYPE_1		
+11008	ህውከት	1		TYPE_1		
+11020	ሃውዛ	1		TYPE_1		
+11100	ሃፍረት	1		TYPE_1		
+11101	ህፍረት	1		TYPE_1		
+11128	ህልበት	1		TYPE_1		
+11220	ህንጦ	0		TYPE_1		
+11365	ሆማ	0		TYPE_1		
