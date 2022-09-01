@@ -16,7 +16,7 @@ geezify = morpho.geez.geezify
 romanize = lambda x: morpho.geez.romanize(x, normalize=True)
 OS = morpho.os
 
-def AS_new(new_noun="nouns.txt", new_adj="adjs.txt"):
+def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
     '''
     Process the new roots from Abnet.
     '''
@@ -29,6 +29,9 @@ def AS_new(new_noun="nouns.txt", new_adj="adjs.txt"):
     addedwords=rewrite_lex('amh', "n_stem.lex", rn1, rn2, jointroots=rj, pos='n', writeto=new_noun)
     rewrite_lex('amh', None, ra1, ra2, addedwords=addedwords, pos='adj', writeto=new_adj)
 #    return (rn1, rn2), (ra1, ra2)
+
+def AS_verbs(new_roots="verbs.txt"):
+    v = get_roots('amh', 'v', ["v_root.lex"], degeminate=False, check_pos=False)
 
 def rewrite_lex(lang, file, newroots, modroots, addedwords=None, jointroots=None, pos='n', modpos='nadj', writeto=None):
     newfile = []
@@ -116,6 +119,19 @@ def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False):
     if trans:
         return zip(roots, translations)
     return roots
+
+def get_external_verbs(folder, file, rom=False, sep='\t', ncols=3, rootcol=1, encoding='utf8'):
+    verbs = []
+    path = get_ext_data(folder, file)
+    with open(path, encoding=encoding) as f:
+        for line in f:
+            line = line.strip()
+            splitline = line.split(sep)
+            verb = splitline[rootcol]
+            if not verb:
+                print("No verb in {}".format(line))
+                continue
+            
 
 def get_external_roots(folder, file, rom=True, sep='\t', ncols=3, rootcol=1, encoding='utf16'):
     roots = []
