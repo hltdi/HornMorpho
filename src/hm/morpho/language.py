@@ -1243,16 +1243,15 @@ class Language:
                 if ortho:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
                                                   segment=segment, translate=translate,
-                                                  pickle=pickle,
-                                                  create_casc=False,
+                                                  pickle=pickle, create_casc=False,
                                                   simplified=simplified, experimental=experimental,
                                                   recreate=recreate, verbose=verbose)
-                if phon:
-                    self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
-                                                  create_casc=False,
-                                                  pickle=pickle, experimental=experimental,
-                                                  simplified=simplified, translate=translate,
-                                                  recreate=recreate, verbose=verbose)
+                # Always load phonetic generation guesser
+#                if phon:
+                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
+                                              create_casc=False, pickle=pickle, experimental=experimental,
+                                              simplified=simplified, translate=translate,
+                                              recreate=recreate, verbose=verbose)
             # Load statistics for generation
             self.morphology[pos].set_root_freqs()
             self.morphology[pos].set_feat_freqs()

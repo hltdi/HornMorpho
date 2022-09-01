@@ -84,6 +84,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
+#        print("Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
                                            phon=True, postproc=False, guess=guess)
         if citation:
