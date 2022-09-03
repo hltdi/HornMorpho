@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-### NOTE: THIS CURRENTLY FAILS TO EXCLUDE OTHER LANGUAGES!
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoA',

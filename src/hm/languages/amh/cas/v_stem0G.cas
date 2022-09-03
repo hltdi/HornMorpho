@@ -9,14 +9,16 @@ weighting = UNIFICATION
 
 # Added 2009-04-02
 # possible CCC initial consonants
-X3 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, fW, gW, kW, mW, qW}
+X3 = {b, c, C, d, f, g, h, j, k, l, m, n, P, q, r, s, S, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, dW, tW, hW, xW, CW}
 # Added 2009-04-25; updated 2022-08-31
-# restricted list of final consonants (excluding labialized and laryngeal consonants)
-X31 = {b, d, f, g, k, l, m, n, q, r, s, S, t, T, z, c, C, j, x, Z}
-# possible CCCC initial consonants
-X4 = {b, c, C, d, f, g, h, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, ', bW, dW, fW, gW, hW, kW, mW, nW, qW, sW, tW, TW, xW}
+# restricted list of final consonants
+X31 = {b, d, f, g, k, l, m, n, q, r, s, S, t, T, z, *, ', C, x}
 # restricted list of possible CCCC initial consonants (added 2009-04-25)
-X44 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW}
+X41 = {b, c, C, d, f, g, h, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, lW}
+# restricted list of possible CCCC second consonants (added 2022-09-01, includes ')
+X42 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, '}
+# restricted list of possible CCCC final consonants (added 2022-09-01, includes ')
+X44 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, ', *}
 # possible C|CCCC initial consonants (possibly omit t and S as well)
 X5 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, gW, kW, qW}
 # possible consonants following | (also other labials?)

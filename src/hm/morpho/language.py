@@ -1793,12 +1793,12 @@ class Language:
         a = {}
         pos, root, cit, gram1, gram2, count = anal
         # POS could be '?v', etcl
-        pos = pos.replace('?', '')
+#        pos = pos.replace('?', '')
 #        print("** Finalizing {} {} {} {}".format(pos, root, cit, gram2.__repr__()))
         # Postprocess root if appropriate
         root1 = None
         if root:
-            root1 = self.postproc_root(self.morphology.get(pos),
+            root1 = self.postproc_root(self.morphology.get(pos.replace('?', '')),
                                        root, gram2, phonetic=phonetic)
 #        print("root {}".format(root1))
         if pos:

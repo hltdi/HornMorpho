@@ -49,18 +49,18 @@ start -> 1L.3 [L]     [as=it];[as=smp]
 2c.3 -> end   [X31]
 
 ## CCCC
-start -> 1.4  [X44]
-1.4 -> 2a.4   [X44]
+start -> 1.4  [X41]
+1.4 -> 2a.4   [X42]
 2a.4 -> 2b.4  [:]     [as=smp];[as=it]
 2a.4 -> 2b.4  [a:]    [vc=ps,as=rc];[vc=tr,as=rc]
 2a.4 -> 2b.4  [a]     [as=smp];[as=it]
-
-2b.4 -> 3a.4  [X44]
+# J necessary for selecce category
+2b.4 -> 3a.4  [X41;J]
 # C3 dup
 3a.4 -> 3b.4  [D:]    [as=it]
 3a.4 -> 3b.4  [:]     [as=rc];[as=smp]
 
-3b.4 -> end   [X31]
+3b.4 -> end   [X44]
 
 ## CCCCC, C|CCCC
 start -> 1.5  [X5]

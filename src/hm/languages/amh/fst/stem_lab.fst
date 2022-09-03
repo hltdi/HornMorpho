@@ -20,11 +20,8 @@ BW -> BW         [_]
 BW -> start      [a]       # fail if anything else comes next
 
 # delabialize
-start -> CW      [g:gW;h:hW;k:kW;q:qW]
-start -> CW      [b:bW;c:cW;C:CW;d:dW;f:fW]
-start -> CW      [j:jW;l:lW;m:mW;n:nW;N:NW]
-start -> CW      [r:rW;s:sW;S:SW]
-start -> CW      [t:tW;T:TW;x:xW;z:zW;Z:ZW]
+start -> CW      [g:gW;h:hW;k:kW;q:qW;b:bW;c:cW;C:CW;d:dW;f:fW]
+start -> CW      [j:jW;l:lW;m:mW;n:nW;N:NW;r:rW;s:sW;S:SW;t:tW;T:TW;x:xW;z:zW;Z:ZW]
 
 CW -> CW         [_]
 CW -> start      [o:e;u:]

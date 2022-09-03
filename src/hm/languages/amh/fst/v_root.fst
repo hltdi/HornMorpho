@@ -10,7 +10,7 @@
 ### H: 1|23a45
 ### I: 1|234
 ### J: 1|2a34
-### K: 12345
+### K: 12345  (eliminate this for now)
 
 -> start
 
@@ -23,17 +23,24 @@ B1 -> B2     [X]
 B2 -> B2_    [_:]
 B2_ -> end   [X]
 
-start -> C1  [X]     [cls=C]
+# C verbs can't start with '
+start -> C1  [X/L]     [cls=C]
 C1 -> C1a    [a:]
 C1a -> C2    [X]
-C2 -> end    [X]
+# C verbs can't end with ', y, or w, but they can end in * (ቃዠ)
+C2 -> end    [X!]
 
 start -> E1  [X]     [cls=E];[cls=F]
-E1 -> E2     [X]
+E1 -> E2L   [L]      [cls=E]
+E1 -> E2     [X/L]
 E2 -> Fa     [a:]    [cls=F]
 Fa -> E3     [X]
 E2 -> E3     [X]     [cls=E]
+E2 -> E3Y   [J]      [cls=E]
+E2L -> E3L [X]
 E3 -> end    [X]
+E3L -> end   [L]
+E3Y -> end   [*]
 
 start -> G0  [X]     [cls=G,-smp];[cls=H,-smp]
 G0 -> G|     [|:]
@@ -52,10 +59,10 @@ Ja -> I2     [X]
 I1 -> I2     [X]     [cls=I]
 I2 -> end    [X]
 
-start -> K1  [X]     [cls=K]
-K1 -> K2     [X]
-K2 -> K3     [X]
-K3 -> K4     [X]
-K4 -> end    [X]
+#start -> K1  [X]     [cls=K]
+#K1 -> K2     [X]
+#K2 -> K3     [X]
+#K3 -> K4     [X]
+#K4 -> end    [X]
 
 end ->

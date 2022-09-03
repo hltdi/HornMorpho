@@ -63,3 +63,4 @@ aw_ahahd   whd  [-smp,cls=A,tm=ger,vc=tr,as=it,t=[eng="unify"],-lt];[-smp,cls=A,
 tenteras  ntras [cls=J,-smp,tm=prf,vc=ps,as=smp,t=[eng="lay on pillow"],-lt];[cls=J,-smp,tm=j_i,vc=ps,as=smp,sb=[+p2],-neg,t=[eng="lay on pillow"],-lt];[cls=J,-smp,tm=ger,vc=ps,as=smp,t=[eng="lay on pillow"],-lt]
 nteras    ntras [cls=J,-smp,tm=imf,vc=ps,as=smp,t=[eng="lay on pillow"],-lt];[cls=J,-smp,tm=j_i,vc=ps,as=smp,sb=[-p2],t=[eng="lay on pillow"],-lt];[cls=J,-smp,tm=j_i,vc=ps,as=smp,+neg,t=[eng="lay on pillow"],-lt]
 anteras   ntras [cls=J,-smp,vc=tr,as=smp,t=[eng="lay on pillow"],-lt]
+sEs_en    ssn   [cls=B,tm=prf,vc=smp,as=smp,t=[eng="lust"],-lt]

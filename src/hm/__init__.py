@@ -19,7 +19,7 @@ Copyleft 2008-2014, 2017-2022. Michael Gasser
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-__version__ = '4.3'
+__version__ = '4.5'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -111,12 +111,9 @@ def seg_file(language, infile, outfile=None, experimental=False,
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
-              experimental=False,
-              dont_guess=True, cache='', init_weight=None,
-              lemma_only=False, ortho_only=False,
-              normalize=True,
-              rank=True, freq=False, nbest=5, um=False,
-              phonetic=True, raw=True,
+              experimental=False, dont_guess=True, cache='', init_weight=None,
+              lemma_only=False, ortho_only=False, normalize=True,
+              rank=True, freq=False, nbest=5, um=False, phonetic=True, raw=True,
               pos=[], verbosity=0):
     '''Analyze a single word, trying all available analyzers, and print out
     the analyses.

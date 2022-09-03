@@ -8,13 +8,14 @@
 
 from . import morpho
 
-#A = morpho.get_language('amh')
+A = morpho.get_language('amh')
 #KS = morpho.get_language('ks')
 FS = morpho.FeatStruct
 FSS = morpho.FSSet
 geezify = morpho.geez.geezify
 romanize = lambda x: morpho.geez.romanize(x, normalize=True)
 OS = morpho.os
+VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr]]")
 
 def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
     '''
@@ -31,7 +32,8 @@ def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
 #    return (rn1, rn2), (ra1, ra2)
 
 def AS_verbs(new_roots="verbs.txt"):
-    v = get_roots('amh', 'v', ["v_root.lex"], degeminate=False, check_pos=False)
+    v = get_external_verbs("ከአብነት", "AllVerbs.txt", encoding="utf16")
+    r = anal_verbs(v)
 
 def rewrite_lex(lang, file, newroots, modroots, addedwords=None, jointroots=None, pos='n', modpos='nadj', writeto=None):
     newfile = []
@@ -131,7 +133,42 @@ def get_external_verbs(folder, file, rom=False, sep='\t', ncols=3, rootcol=1, en
             if not verb:
                 print("No verb in {}".format(line))
                 continue
-            
+            if verb not in verbs:
+                verbs.append(verb)
+    return verbs
+
+def anal_novel_verb(verb):
+    """
+    Analyze a verb, returning a list of roots and classes if it's novel, otherwise None.
+    """
+    anals = A.anal_word(verb, guess=True, only_guess=False, preproc=True, phonetic=False, init_weight=VPOS)
+    roots = []
+    if not anals:
+        print("No analyses for {}".format(verb))
+        return None
+    for anal in anals:
+        if '?' not in anal['POS']:
+            return None
+        root = anal['root']
+        if ':' not in root:
+            print("No class for {} / {}".format(verb, root))
+            return None
+        root = root.replace('<', '').replace('>', '')
+        root, cls = root.split(':')
+        roots.append((root, cls))
+    return roots
+
+def anal_verbs(verbs):
+    roots = []
+    n = 1
+    for verb in verbs:
+        if n % 100 == 0:
+            print("Analyzed {} verbs".format(n))
+        anal = anal_novel_verb(verb)
+        if anal:
+            roots.append(anal)
+        n += 1
+    return roots
 
 def get_external_roots(folder, file, rom=True, sep='\t', ncols=3, rootcol=1, encoding='utf16'):
     roots = []
