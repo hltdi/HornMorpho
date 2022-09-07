@@ -7,6 +7,7 @@
 """
 
 from . import morpho
+from . import internet_search
 
 A = morpho.get_language('amh')
 #KS = morpho.get_language('ks')
@@ -15,7 +16,13 @@ FSS = morpho.FSSet
 geezify = morpho.geez.geezify
 romanize = lambda x: morpho.geez.romanize(x, normalize=True)
 OS = morpho.os
-VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr]]")
+VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None]")
+INF = [FS("[v=inf,cls=A,-def]"), FS("[v=inf,cls=B,-def]")]
+IMP = [FS("[pos=v,tm=j_i,cls=A]"), FS("[pos=v,tm=j_i,cls=B]")]
+IMPFEM = [FS("[pos=v,tm=j_i,cls=A,sb=[+fem]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+fem]]")]
+IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]]")]
+abyss = internet_search.abyssinica
+goog = internet_search.google
 
 def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
     '''
@@ -32,9 +39,213 @@ def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
 #    return (rn1, rn2), (ra1, ra2)
 
 def AS_verbs(new_roots="verbs.txt"):
+    ir = get_roots('amh', 'v', ['v_root.lex', 'irr_stem.lex'], get_cls=True)
     v = get_external_verbs("ከአብነት", "AllVerbs.txt", encoding="utf16")
-    r = anal_verbs(v)
+    xr = anal_verbs(v, ir)
+    with open(new_roots, 'w') as f:
+        for x in xr:
+            # x a list of root, class pairs
+            for r, c in x:
+                print("{} {}".format(r, c), file=f)
+            print('##', file=f)
+#    return xr
 
+def sep_verb_roots(file='verbs.txt', unam='v_unambig.txt', amb='v_ambig.txt'):
+    ambig2=[]
+    ambig3=[]
+    unambig=[]
+    with open(file) as f:
+        contents = f.read().split('##')
+        for word in contents:
+            word = word.strip()
+            word = word.split('\n')
+            word = set(word)
+            if len(word) == 1:
+                unambig.append(list(word)[0])
+            elif len(word) == 2:
+                ambig2.append(word)
+            else:
+                ambig3.append(word)
+    with open(unam, 'w') as out:
+        for word in unambig:
+            print(word, file=out)
+    with open(amb, 'w') as out:
+        for word in ambig2:
+            word = ' ; '.join(list(word))
+            print(word, file=out)
+        print("##", file=out)
+        for word in ambig3:
+            word = ' ; '.join(list(word))
+            print(word, file=out)
+#    return unambig, ambig2, ambig3
+
+#def filter_unambig():
+#    irc = get_roots('amh', 'v', ['v_root.lex', 'irr_stem.lex'], get_cls=True)
+#    unamb = []
+#    with open('v_unambig.txt') as file:
+#        for line in file:
+#            line = line.strip()
+#            if not line:
+#                continue
+#            root, x, feats = line.split()
+#            cls = feats.split('=')[1].split(',')[0]
+#            print("Checking {}".format((root, cls)))
+#            if (root, cls) in irc:
+#                print("{} {} in roots".format(root, cls))
+
+def choose_classes():
+    unamb = []
+    amb = []
+    with open('v_ambig.txt') as infile:
+        for line in infile:
+            line = line.split()
+            root = line[0]
+            cls = choose_class(root)
+            if cls:
+                unamb.append((root, cls))
+            else:
+                amb.append(root)
+    return unamb, amb
+
+def choose_class(root):
+    """
+    Check Abyssinica dictionary to see whether A or B infinitives are found,
+    selecting one or the other if only one is found.
+    """
+    print("Checking {}".format(root))
+    iA = check_inf(root, 'A')
+    iB = check_inf(root, 'B')
+    if iA and not iB:
+        return 'A'
+    elif iB and not iA:
+        return 'B'
+    return
+
+def gen_inf(root, cls):
+    if root[-1] == "'":
+        return gen_Linf(root, cls)
+    fs = INF[0] if cls=='A' else INF[1]
+    form = A.morphology['n'].gen(root, update_feats=fs, guess=True)
+    if form:
+        return geezify(form[0][0])
+
+def gen_imp(root, cls, fem=False, plur=False):
+    if fem:
+        fs = IMPFEM[0] if cls=='A' else IMPFEM[1]
+    elif plur:
+        fs = IMPPL[0] if cls=='A' else IMPPL[1]
+    else:
+        fs = IMP[0] if cls=='A' else IMP[1]
+    form = A.morphology['v'].gen(root, update_feats=fs, guess=True)
+    if form:
+        return geezify(form[0][0])
+
+def check_imp(root, cls):
+    imp = gen_inf(root, cls)
+    if not imp:
+        return
+    try:
+        ab = abyss(imp)
+        return ab
+    except TypeError:
+        print("Couldn't check {}".format((root, cls)))
+        return
+
+def check_inf(root, cls):
+    inf = gen_inf(root, cls)
+    if not inf:
+        return
+    try:
+        ab = abyss(inf)
+        return ab
+    except TypeError:
+        print("Couldn't check {}".format((root, cls)))
+        return
+
+def search_class(root):
+    """
+    Do a google search for infinitive or imperative forms
+    of root in class A and B, comparing the number of references
+    to the word in the results.
+    """
+    print("Checking {}".format(root))
+    if root[0] == "'" or not gen_inf(root, 'A'):
+        # root starts with ', so infinitive doesn't distinguish A from B; use imperative
+        Aword = search_root_imp(root)
+        Awordfem = search_root_imp(root, fem=True)
+        Awordplr = search_root_imp(root, plur=True)
+        Atotal = Aword + Awordfem + Awordplr
+        print("A counts for {}: {}, {}, {}".format(root, Aword, Awordfem, Awordplr))
+        Bword = search_root_imp(root, cls='B')
+        Bwordfem = search_root_imp(root, fem=True, cls='B')
+        Bwordplr = search_root_imp(root, plur=True, cls='B')
+        Btotal = Bword + Bwordfem + Bwordplr
+        print("B counts for {}: {}, {}, {}".format(root, Bword, Bwordfem, Bwordplr))
+        if Atotal > 10 and (Atotal > Btotal * 1.4):
+            return 'A'
+        elif Btotal > 10 and (Btotal > Atotal * 1.4):
+            return 'B'
+        else:
+            return ''
+    Aword = gen_inf(root, 'A')
+    Bword = gen_inf(root, 'B')
+    if not Bword:
+        return ''
+    searchA = goog(Aword)
+    searchB = goog(Bword)
+    if searchA and searchB:
+        searchA = searchA.prettify().count(Aword)
+        searchB = searchB.prettify().count(Bword)
+        print("A count {}, B count {}".format(searchA, searchB))
+        if searchA > 5 and (searchA > searchB):
+            return 'A'
+        elif searchB > 5 and (searchB > searchA * 1.8):
+            # B infinitive can also be passive A (መሰበር)
+            return 'B'
+        else:
+            return ''
+
+def search_classes():
+    unamb = []
+    amb = []
+    with open("v_amb2.txt") as file:
+        for line in file:
+            root = line.strip()
+            cls = search_class(root)
+            if cls:
+                unamb.append((root, cls))
+            else:
+                amb.append(root)
+    return unamb, amb
+
+def search_root(root, cls):
+    word = gen_inf(root, cls)
+    if not word:
+        return search_root_imp(root)
+    search = goog(word)
+    if search:
+        search = search.prettify()
+        return search.count(word)
+    return 0
+
+def search_root_imp(root, fem=False, plur=False, cls='A'):
+    word = gen_imp(root, cls, fem=fem, plur=plur)
+    if not word:
+        print("No word for {}:{}".format(root, cls))
+        return 0
+    search = goog(word)
+    if search:
+        search = search.prettify()
+        return search.count(word)
+    return 0
+
+def gen_Linf(root, cls):
+    if cls=='A':
+        rom = "me{}{}at".format(root[0], root[1])
+    else:
+        rom = "me{}e{}at".format(root[0], root[1])
+    return geezify(rom)
+        
 def rewrite_lex(lang, file, newroots, modroots, addedwords=None, jointroots=None, pos='n', modpos='nadj', writeto=None):
     newfile = []
     newwords = []
@@ -87,7 +298,7 @@ def lex_dir(lang):
 def get_ext_data(folder, file):
     return OS.path.join(OS.path.dirname(__file__), 'ext_data', folder, file)
 
-def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False):
+def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False, get_cls=False):
     """Get stems or roots from lex files for lang (a string)."""
     roots = []
     translations = []
@@ -101,9 +312,9 @@ def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False):
                     continue
                 word, x, rest = line.partition(' ')
                 root, x, feats = rest.partition(' ')
-                # treat alterate forms as 'roots'
-#                if len(root) == 2 and root[0] == "'":
-                root = word
+                # treat alternate forms as 'roots'
+                if len(root) == 2 and root[0] == "'":
+                    root = word
                 if degeminate:
                     root = root.replace('_', '')
                 if root in roots:
@@ -113,6 +324,9 @@ def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False):
                     pos1 = feats.get('pos')
                     if pos not in pos1:
                         continue
+                if get_cls:
+                    cls = feats.get('cls')
+                    root = root, cls
 #                print ("root {}, feats {}".format(root, feats.__repr__()))
                 roots.append(root)
                 if trans:
@@ -137,7 +351,7 @@ def get_external_verbs(folder, file, rom=False, sep='\t', ncols=3, rootcol=1, en
                 verbs.append(verb)
     return verbs
 
-def anal_novel_verb(verb):
+def anal_novel_verb(verb, ignore):
     """
     Analyze a verb, returning a list of roots and classes if it's novel, otherwise None.
     """
@@ -155,17 +369,20 @@ def anal_novel_verb(verb):
             return None
         root = root.replace('<', '').replace('>', '')
         root, cls = root.split(':')
+        if (root, cls) in ignore:
+            continue
         roots.append((root, cls))
     return roots
 
-def anal_verbs(verbs):
+def anal_verbs(verbs, ignore=None):
+    ignore = ignore or []
     roots = []
     n = 1
     for verb in verbs:
         if n % 100 == 0:
             print("Analyzed {} verbs".format(n))
-        anal = anal_novel_verb(verb)
-        if anal:
+        anal = anal_novel_verb(verb, ignore=ignore)
+        if anal and anal not in roots:
             roots.append(anal)
         n += 1
     return roots

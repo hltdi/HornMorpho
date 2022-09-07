@@ -12,7 +12,7 @@ weighting = UNIFICATION
 X3 = {b, c, C, d, f, g, h, j, k, l, m, n, P, q, r, s, S, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, dW, tW, hW, xW, CW}
 # Added 2009-04-25
 # restricted list of final consonants
-X31 = {b, d, f, g, k, l, m, n, q, r, s, S, t, T, z, *, ', C, x}
+X31 = {b, d, f, g, k, l, m, n, P, q, r, s, S, t, T, z, *, ', C, x}
 # restricted list of possible CCCC initial consonants (added 2009-04-25)
 X41 = {b, c, C, d, f, g, h, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, lW}
 # restricted list of possible CCCC second consonants (added 2022-09-01, includes ')
@@ -40,7 +40,7 @@ L = {'}
 # non-laryngeal consonants (include h for Amharic)
 X/L = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # possible final root consonants (no XW except gW, kW, qW)
-X/B = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, y, z, *, Z, ', gW, kW, qW}
+X/B = {b, c, C, d, f, g, j, k, l, m, n, P, q, r, s, S, t, T, w, x, y, z, *, Z, ', gW, kW, qW}
 # palatal consonants
 J = {c, C, j, N, x, y, Z}
 # Consonants that are not palatal or palatalizable
@@ -73,4 +73,3 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >root_dup_filt<
 >Yfilt<
 >v_root<
-# +vb_root+

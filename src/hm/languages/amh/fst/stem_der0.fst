@@ -25,7 +25,7 @@ start -> 1L.3 [L]     [as=it];[as=smp]
 
 # recip
 1a.3 -> 1c.3   [a:]     [vc=ps,as=rc];[vc=tr,as=rc]
-1a.3 -> 1wR.3  [a:]     [as=rc]
+1a.3 -> 1wR.3  [a:]     [as=rc,vc=ps];[as=rc,vc=tr]
 # not possible with C2=L
 1wR.3 -> 2c.3  [w;y]
 
@@ -35,12 +35,12 @@ start -> 1L.3 [L]     [as=it];[as=smp]
 1a_c.3 -> 2a.3 [X3]    # C verbs (w, y? possible)
 1c.3 -> 2a.3   [X!]
 # non-duplicated CC(_)C
-2a.3 -> 2b.3   [:]     [as=smp];[as=rc]
+2a.3 -> 2b.3   [:]     [as=smp];[as=rc,vc=ps];[as=rc,vc=tr]
 2b.3 -> 2c.3   [_;:]
 # these must be geminated
 1c.3 -> 2aw.3  [w;y]
 2aw.3 -> 2bw.3 [D:]   [as=it]
-2aw.3 -> 2bw.3 [:]    [as=smp];[as=rc]
+2aw.3 -> 2bw.3 [:]    [as=smp];[as=rc,vc=ps];[as=rc,vc=tr]
 2bw.3 -> 2c.3  [_]
 
 # C2 dup
@@ -58,7 +58,7 @@ start -> 1.4  [X41]
 2b.4 -> 3a.4  [X41;J]
 # C3 dup
 3a.4 -> 3b.4  [D:]    [as=it]
-3a.4 -> 3b.4  [:]     [as=rc];[as=smp]
+3a.4 -> 3b.4  [:]     [as=rc,vc=ps];[as=rc,vc=tr];[as=smp]
 
 3b.4 -> end   [X44]
 

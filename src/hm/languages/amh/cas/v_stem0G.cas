@@ -12,7 +12,7 @@ weighting = UNIFICATION
 X3 = {b, c, C, d, f, g, h, j, k, l, m, n, P, q, r, s, S, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, qW, dW, tW, hW, xW, CW}
 # Added 2009-04-25; updated 2022-08-31
 # restricted list of final consonants
-X31 = {b, d, f, g, k, l, m, n, q, r, s, S, t, T, z, *, ', C, x}
+X31 = {b, d, f, g, k, l, m, n, P, q, r, s, S, t, T, z, *, ', C, x}
 # restricted list of possible CCCC initial consonants (added 2009-04-25)
 X41 = {b, c, C, d, f, g, h, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, lW}
 # restricted list of possible CCCC second consonants (added 2022-09-01, includes ')
@@ -72,6 +72,6 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >stem_der0<
 >root_filt<
 >root_dup_filt<
->Yfilt<
+#>Yfilt<
 >v_root<
-# +vb_root+
+

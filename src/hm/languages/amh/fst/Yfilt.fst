@@ -7,7 +7,10 @@ start -> nonpal  [~J;B]
 start -> pal     [J]
 
 pal -> end       [*]
-pal -> start     [|;a;_]
+# B: bejje
+pal -> pal_     [_]
+pal_ -> end      [*]
+pal -> start     [|;a]
 pal -> nonpal    [~J;B]
 pal -> pal       [J]
 

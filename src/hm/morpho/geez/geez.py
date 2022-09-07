@@ -537,6 +537,10 @@ def simplify_sera(text, language='am'):
         text = text.replace('K', 'h')
         # Replace Ke
         text = text.replace('!!', 'Ke')
+        # ሙዋ ፉዋ ቡዋ -> ሟ ፏ ቧ
+        text = text.replace("muwa", "mWa")
+        text = text.replace('fuwa', 'fWa')
+        text = text.replace('buwa', 'bWa')
     return text
 
 def to_real_sera(text, phon=True):
