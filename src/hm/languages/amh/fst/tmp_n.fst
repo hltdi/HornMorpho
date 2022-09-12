@@ -1,4 +1,4 @@
-### Generate template
+### Generate template for segmentaton
 
 -> start
 

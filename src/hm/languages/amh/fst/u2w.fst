@@ -14,8 +14,12 @@ u -> uw          [w:]
 
 uw -> start      [u]
 
+# word final -uw (alternative to -uwu)
+uw -> uw+       [:u]
+
 V -> start     [w:u;X;V-u;/;$]
 
 start ->
 V ->
 u ->
+uw+ ->

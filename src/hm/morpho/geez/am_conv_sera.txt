@@ -1,5 +1,5 @@
 ለ=le ሉ=lu ሊ=li ላ=la ሌ=lE ል=l ሎ=lo
-ሑ=Hu=hu ሒ=Hi=hi ሓ=Ha=ha ሔ=HE=hE ሕ=H=h ሖ=Ho=ho
+ሑ=Hu=hu ሒ=Hi=hi ሓ=Ha=ha ሔ=HE=hE ሕ=H=h ሖ=Ho=ho ሓ=HA
 ሐ=Ha=ha
 መ=me ሙ=mu ሚ=mi ማ=ma ሜ=mE ም=m ሞ=mo
 ሠ=^se=se ሡ=^su=su ሢ=^si=si ሣ=^sa=sa ሤ=^sE=sE ሥ=^s=s ሦ=^so=so
@@ -12,15 +12,15 @@
 ተ=te ቱ=tu ቲ=ti ታ=ta ቴ=tE ት=t ቶ=to
 ቸ=ce ቹ=cu ቺ=ci ቻ=ca ቼ=cE ች=c ቾ=co
 ኸ=he ኹ=hu ኺ=hi ኻ=ha ኼ=hE ኽ=h ኾ=ho
-ኀ=^ha=ha ኁ=^hu=hu ኂ=^hi=hi ኃ=^ha=ha ኄ=^hE=hE ኅ=^h=h ኆ=^ho=ho
-ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho
+ኀ=^ha=ha ኁ=^hu=hu ኂ=^hi=hi ኃ=^ha=ha ኄ=^hE=hE ኅ=^h=h ኆ=^ho=ho ኃ=^hA
+ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho ሃ=hA
 ሀ=ha
 ነ=ne ኑ=nu ኒ=ni ና=na ኔ=nE ን=n ኖ=no
 ኘ=Ne ኙ=Nu ኚ=Ni ኛ=Na ኜ=NE ኝ=N ኞ=No
 ከ=ke ኩ=ku ኪ=ki ካ=ka ኬ=kE ክ=k ኮ=ko
 ወ=we ዉ=wu ዊ=wi ዋ=wa ዌ=wE ው=w ዎ=wo
-ዐ=`a='a ዑ=`u='u ዒ=`i='i ዓ=`a='a ዔ=`E='E ዕ=`=' ዖ=`o='o
-ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o
+ዐ=`a='a ዑ=`u='u ዒ=`i='i ዓ=`a='a ዔ=`E='E ዕ=`=' ዖ=`o='o ዓ=`A
+ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o ኣ='A
 አ='a
 ኧ='e
 ዘ=ze ዙ=zu ዚ=zi ዛ=za ዜ=zE ዝ=z ዞ=zo

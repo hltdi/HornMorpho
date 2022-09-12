@@ -3,10 +3,10 @@
 -> start
 
 # Imperfective, perfective, gerundive, jussive-imperative
-start -> tam    <:(aspect=imp>   [tm=imf]
-start -> tam    <:(aspect=perf>     [tm=prf]
-start -> tam    <:(verbform=conv>     [tm=ger]
-start -> tam    <:(mood=jus> [tm=j_i]
+start -> tam    <:($aspect=imp>   [tm=imf]
+start -> tam    <:($aspect=perf>     [tm=prf]
+start -> tam    <:($verbform=conv>     [tm=ger]
+start -> tam    <:($mood=jus> [tm=j_i]
 
 # Iterative, reciprocal
 tam -> asp      [:]         [as=smp]

@@ -129,6 +129,7 @@ class Language:
     T = TDict()
 
     morphsep = '-'
+    posmark = '@'
 
     def __init__(self, label='', abbrev='', backup='',
                  # Preprocessing for analysis
@@ -1123,7 +1124,7 @@ class Language:
 
     ## Methods related to segmentation
 
-    def seg2morphs(self, seg):
+    def seg2morphs(self, seg, pos=None):
         '''Returns the morphemes in a segmentation string, and index of the root.
         USE REGEX.'''
         # separate morphemes
@@ -1137,7 +1138,10 @@ class Language:
                 morph = [morph, '']
             form = morph[0]
             if '{' in form:
-                morph[0] = form[1:-1]
+                form = form[1:-1]
+#                if pos:
+#                    form += "({}pos={})".format(Language.posmark, pos)
+                morph[0] = form
                 rootindex = index
             morphs[index] = morph
         return morphs, rootindex

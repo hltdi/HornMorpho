@@ -59,6 +59,7 @@ SERA_I0_RE = re.compile(r'(\s)I')
 MINE_I0_SUB = r"\1'"
 MINE_IC_RE = re.compile(r"'([^aeEiou])")
 SERA_IC_SUB = r"I\1"
+SERA_LARYN_A = re.compile(r"['`hH]a.*")
 
 # Punctuation to preserve in Geez->SERA->Geez translation
 KEEP_PUNC = ",."
@@ -80,6 +81,9 @@ ROOT_RIGHT = '>'
 ROOT_SEP = '_'
 ROOT_GEM = ':'
 ROOT_Y = '።'
+
+## Explicit 'a' for laryngeal characters
+#LARYNGEAL_A = {"ha": "ሃ", "Ha": "ሓ", "^ha": "ኃ", "'a": "ኣ", "`a": "ዓ"}
 
 ### Segmentation units for different languages
 #SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w", "y", "'", "_", "|", "*"],
@@ -145,8 +149,11 @@ def geezify_morph(morph, lang='am', alt=True):
     """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
     if not morph:
         return '0'
+    # other possible prepended chars? use RE to separate prepended chars?
+    x, pre, morph = morph.rpartition('{')
     if morph[0] in VOWELS:
         morph = "'" + morph
+    morph = pre + morph
     if alt:
         return geezify_alts(morph, lang='am')
     else:
@@ -266,8 +273,10 @@ def read_conv(filename, simple=False):
                 seg2syl[seg] = syl
     return syl2seg, seg2syl
 
+#def larynA(form):
+
 def sera2geez(table, form, lang='am', gemination=False,
-              deepenthesize=False):
+              deepenthesize=False, laryngealA=False):
     '''Convert form in SERA to Geez, using translation table.'''
     if not table:
         table = get_table(lang, False)
@@ -277,10 +286,14 @@ def sera2geez(table, form, lang='am', gemination=False,
     # there may be epenthetic vowels
     if deepenthesize:
         form = form.replace(EPENTHETIC, '')
+    if laryngealA:
+        form = form.larynA(form)
     # Segment
     res = ''
     n = 0
     nochange = False
+    # punctuation before roman chars
+#    prepunc = True
     while n < len(form):
         char = form[n]
 #        print("char {}".format(char))
@@ -294,6 +307,7 @@ def sera2geez(table, form, lang='am', gemination=False,
                     n += 1
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
+#                prepunc = False
                 n += 1
             elif next_char == 'W' or next_char == 'Y' or char == '^':
                 # Consonant represented by 2 roman characters
@@ -317,6 +331,7 @@ def sera2geez(table, form, lang='am', gemination=False,
                         n += 1
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
+#                prepunc = False
                 n += 1
             elif next_char == GEMINATION_ROMAN:
                  if n < len(form) - 2 and form[n + 2] in VOWELS:
@@ -326,17 +341,23 @@ def sera2geez(table, form, lang='am', gemination=False,
                  else:
                     trans = table.get(char, char) + GEMINATION_GEEZ
                     n += 1
+#                prepunc = False
             else:
+#                if prepunc and char in table:
+#                    prepunc = False
                 trans = table.get(char, char)
         elif char == GEMINATION_ROMAN:
+#            prepunc = False
             trans = GEMINATION_GEEZ
         else:
+#            if prepunc and char in table:
+#                prepunc = False
             trans = table.get(char, char)
         res += trans
         n += 1
     return res
 
-def geezify(form, lang='am', gemination=False, deepenthesize=False):
+def geezify(form, lang='am', gemination=False, deepenthesize=False, laryngealA=False):
     return \
       sera2geez(get_table(lang, False), form, lang=lang,
                 gemination=gemination, deepenthesize=deepenthesize)

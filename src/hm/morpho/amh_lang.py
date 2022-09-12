@@ -931,9 +931,18 @@ def seg2string(segmentation, sep='-', geez=True, features=False,
     """
     # The segmentation string is second in the list
 #    print("Converting {} to string".format(segmentation))
-    morphs, rootindex = AMH.seg2morphs(segmentation[1])
+    pos = segmentation[0]
+    morphstring = segmentation[1]
+    morphs, rootindex = AMH.seg2morphs(morphstring, pos)
     # Root string and features
     root, rootfeats = morphs[rootindex]
+    if pos:
+        # Add POS to root features
+        posstring = "@{}".format(pos)
+        if not rootfeats:
+            rootfeats = "(" + posstring + ")"
+        else:
+            rootfeats = "({},{})".format(posstring, rootfeats[1:-1])
     # Separate the consonants and template, and realize the root
     root = root2string(root)
     # Replace the root in the morphemes list
@@ -947,7 +956,6 @@ def seg2string(segmentation, sep='-', geez=True, features=False,
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
     morphs = allcombs(morphs2)
-#    print(" Morphs {}".format(morphs))
     if not features:
         morphs = [[w[0] for w in word] for word in morphs]
     else:
