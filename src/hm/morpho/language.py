@@ -130,6 +130,10 @@ class Language:
 
     morphsep = '-'
     posmark = '@'
+    featsmark = '$'
+    joinposfeats = ';'
+    joinfeats = ','
+    joinpos = ','
 
     def __init__(self, label='', abbrev='', backup='',
                  # Preprocessing for analysis
@@ -1151,15 +1155,63 @@ class Language:
         morphs = self.seg2morphs(seg)
         return morphs[0][morphs[1]]
 
-    def segmentation2string(self, segmentation, sep='-', transortho=True, features=False):
+    def segmentation2string(self, segmentation, sep='-', transortho=True, features=False,
+                            udformat=False):
         '''Convert a segmentation (POS, segstring, count) to a form string,
         using a language-specific function if there is one, otherwise using a default function.'''
         if self.seg2string:
-            return self.seg2string(segmentation, sep=sep, transortho=transortho, features=features)
+            return self.seg2string(segmentation, sep=sep, transortho=transortho, features=features,
+                                   udformat=udformat)
         else:
             morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
             # This ignores whatever alternation rules might operate at boundaries
             return sep.join(morphs)
+
+    @staticmethod
+    def udformat_posfeats(string):
+        '''string is ([@pos,...,]$feat,...).
+        format string as in UD.'''
+        string = string[1:-1]
+        pos, x, feats = string.partition(Language.featsmark)
+        if feats:
+            feats = [Language.udformat_feats(feats)]
+        else:
+            feats = []
+        if pos:
+            if feats:
+                # delete the POS / feats separator
+                pos = pos[:-1]
+            pos = pos.partition(Language.posmark)[2]
+            pos = [Language.udformat_pos(pos)]
+        else:
+            pos = []
+        return "(" + Language.joinposfeats.join(pos + feats) + ")"
+
+    @staticmethod
+    def udformat_pos(pos):
+        '''Delete POS char (@) and uppercase pos name(s).'''
+#        pos = pos.remove(Language.posmark)
+        poss = pos.split(',')
+        poss = [p.strip().upper() for p in poss]
+        return Language.joinpos.join(poss)
+
+    @staticmethod
+    def udformat_feats(feats):
+        '''Delete feat char ($) and capitalize features and value.'''
+#        feats = feats.remove(Language.featsmark)
+        ffeats = [f.strip().split('=') for f in feats.split(',')]
+        ffeats = ['='.join([Language.udformat_feat(f[0]),f[1].capitalize()]) for f in ffeats]
+        return Language.joinfeats.join(ffeats)
+
+    @staticmethod
+    def udformat_feat(feat):
+        '''Capitalize feature name, also capitalizing "Type" or "Class" if those are in the name.'''
+        if 'type' in feat:
+            return feat.split('type')[0].capitalize() + 'Type'
+        elif 'class' in feat:
+            return feat.split('class')[0].capitalize() + 'Class'
+        else:
+            return feat.capitalize()
 
     def preprocess_file(self, filein, fileout):
         '''Preprocess forms in filein, writing them to fileout.'''

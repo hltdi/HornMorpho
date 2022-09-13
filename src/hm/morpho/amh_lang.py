@@ -3,7 +3,7 @@ This file is part of morfo, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2016, 2018, 2020.
+    Copyleft 2011, 2012, 2013, 2016, 2018, 2020, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -755,7 +755,7 @@ AMH = language.Language("አማርኛ", 'amh',
               preproc=lambda form: geez2sera(None, form, lang='am', simp=True),
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
-              seg2string=lambda string, sep='-', features=False, transortho=True: seg2string(string, sep=sep, geez=transortho, features=features),
+              seg2string=lambda string, sep='-', features=False, transortho=True, udformat=False: seg2string(string, sep=sep, geez=transortho, features=features, udformat=udformat),
               stat_root_feats=['vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
@@ -924,7 +924,7 @@ def roman2geez(value):
     """Convert a value (prep or conj) to geez."""
     return ROM2GEEZ.get(value, value)
 
-def seg2string(segmentation, sep='-', geez=True, features=False,
+def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
                arules=False):
     """
     Convert a segmentation to a string, including features if features is True.
@@ -947,6 +947,11 @@ def seg2string(segmentation, sep='-', geez=True, features=False,
     root = root2string(root)
     # Replace the root in the morphemes list
     morphs[rootindex] = root, rootfeats
+#    print("morphs {}".format(morphs))
+    if udformat:
+        morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
+#    for m, f in morphs:
+#        print("  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
     if geez:
         # First make sure separate morphemes are geez
         morphs2 = [[(g, f) for g in geezify_morph(m, alt=True)] for m, f in morphs]
