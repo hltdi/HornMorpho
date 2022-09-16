@@ -930,7 +930,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     Convert a segmentation to a string, including features if features is True.
     """
     # The segmentation string is second in the list
-#    print("Converting {} to string".format(segmentation))
+#    print("Converting {} to string, udformat {}".format(segmentation, udformat))
     pos = segmentation[0]
     morphstring = segmentation[1]
     morphs, rootindex = AMH.seg2morphs(morphstring, pos)

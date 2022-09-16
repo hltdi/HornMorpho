@@ -132,7 +132,7 @@ class Language:
     posmark = '@'
     featsmark = '$'
     joinposfeats = ';'
-    joinfeats = ','
+    joinfeats = '|'
     joinpos = ','
 
     def __init__(self, label='', abbrev='', backup='',

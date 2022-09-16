@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=100, raw=False, realize=False, features=True,
+def seg_word(language, word, nbest=100, raw=False, realize=True, features=True,
              transortho=True, experimental=False, udformat=True):
     '''Segment a single word and print out the results.
 
