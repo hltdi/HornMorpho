@@ -119,6 +119,9 @@ GEMINATION_RE = re.compile(r'\s*gem.*?:\s*.*')
 # Added 2021.11.24
 FEATNORM_RE = re.compile(r'\s*feat.*?norm.*?:\s*(.*)')
 #FEATCONV1_RE = re.compile(r'\s*(.*)\s*->\s*(.*)')
+# Added 2022.09.27
+# Get the root from a segmentation string
+SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
@@ -134,6 +137,7 @@ class Language:
     joinposfeats = ';'
     joinfeats = '|'
     joinpos = ','
+    roottempsep = '+'
 
     def __init__(self, label='', abbrev='', backup='',
                  # Preprocessing for analysis
@@ -342,8 +346,7 @@ class Language:
             return
         return lang
 
-    def load_data(self, load_morph=False,
-                  pickle=True, recreate=False,
+    def load_data(self, load_morph=False, pickle=True, recreate=False,
                   segment=False, phon=False, guess=True,
                   simplified=False, translate=False, experimental=False,
                   poss=None, verbose=True):
@@ -1168,9 +1171,24 @@ class Language:
             return sep.join(morphs)
 
     @staticmethod
+    def root_from_segstring(string, template=False):
+        '''
+        Get the root, minus the template if template is False,
+        from the segmentation string.
+        '''
+        m = SEG_ROOT_RE.search(string)
+        if m:
+            root = m.group(1)
+            if not template:
+                root = root.split(Language.roottempsep)[0]
+            return root
+        return ''
+
+    @staticmethod
     def udformat_posfeats(string):
         '''string is ([@pos,...,]$feat,...).
         format string as in UD.'''
+#        print("** udformat_posfeats {}".format(string))
         string = string[1:-1]
         pos, x, feats = string.partition(Language.featsmark)
         if feats:
@@ -1281,19 +1299,16 @@ class Language:
                 self.morphology[pos].set_ortho2phon()
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
-                self.morphology[pos].load_fst(gen=not segment,
-                                              create_casc=False,
-                                              pickle=pickle,
+                self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
                                               simplified=simplified, experimental=experimental,
                                               phon=False, segment=segment, translate=translate,
                                               recreate=recreate, verbose=verbose)
-            if phon or (ortho and not segment):
-                self.morphology[pos].load_fst(gen=True,
-                                              create_casc=False,
-                                              pickle=pickle,
-                                              simplified=simplified, experimental=experimental,
-                                              phon=True, segment=segment, translate=translate,
-                                              recreate=recreate, verbose=verbose)
+            # Load generator for both analysis and segmentation
+#            if phon or (ortho and not segment):
+            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+                                          simplified=simplified, experimental=False,
+                                          phon=True, segment=False, translate=translate,
+                                          recreate=recreate, verbose=verbose)
             # Load guesser anal and gen FSTs
             if not segment and guess:
                 if ortho:
@@ -1445,7 +1460,7 @@ class Language:
                                 to_cache.extend(analysis)
                             # Keep trying if an analysis is found
                             analyses.extend(self.proc_anal(form, analysis, pos,
-                                                           show_root=root, citation=citation and not segment,
+                                                           show_root=root, citation=citation,
                                                            ortho_only=ortho_only, segment=segment, normalize=normalize,
                                                            stem=stem, phonetic=phonetic,
                                                            guess=False, postproc=postproc, gram=gram,
@@ -1462,7 +1477,7 @@ class Language:
                     if cache:
                         to_cache.extend(analysis)
                     analyses.extend(self.proc_anal(form, analysis, pos,
-                                                   show_root=root, citation=citation and not segment,
+                                                   show_root=root, citation=citation,
                                                    ortho_only=ortho_only, normalize=normalize,
                                                    segment=segment, phonetic=phonetic,
                                                    guess=True, gram=gram, postproc=postproc,
@@ -1951,8 +1966,7 @@ class Language:
         return ''
 
     def proc_anal(self, form, analyses, pos, show_root=True,
-                  citation=True, ortho_only=False,
-                  normalize=False,
+                  citation=True, ortho_only=False, normalize=False,
                   segment=False, stem=True, guess=False,
                   postproc=False, gram=True, string=False,
                   freq=True, phonetic=True):
@@ -1961,6 +1975,7 @@ class Language:
         analysis tuples.
         If freq, include measure of root and morpheme frequency.
         '''
+#        print("** Processing {}, citation {}".format(analyses, citation))
         results = []
         if segment:
             res = []
@@ -1973,15 +1988,28 @@ class Language:
                     pos = feats
                 else:
                     pos = feats.get('pos')
-                root = self.postpostprocess(analysis[0])
+                segstring = analysis[0]
+                segstring = self.postpostprocess(segstring)
                 # Remove { } from root
-                real_root = Language.root_from_seg(root)
+                real_seg = Language.root_from_seg(segstring)
                 root_freq = 0
                 if freq:
-                    root_freq = self.morphology.get_root_freq(real_root, feats)
+                    root_freq = self.morphology.get_root_freq(real_seg, feats)
                     feat_freq = self.morphology.get_feat_freq(feats)
                     root_freq *= feat_freq
-                res.append((pos, root, root_freq))
+                if citation:
+#                    print("** Getting root from {}".format(segstring))
+                    root = Language.root_from_segstring(segstring)
+#                    print("** root {}".format(root))
+                    posmorph = pos and pos in self.morphology and self.morphology[pos]
+                    if posmorph and posmorph.citation and isinstance(feats, FeatStruct):
+                        cite = posmorph.citation(root, feats, guess, stem, phonetic=phonetic)
+#                        print("** Citation: {}".format(cite))
+                        if not cite:
+                            cite = root
+                        if postproc:
+                            cite = self.postprocess(cite, ortho_only=True, phonetic=phonetic)
+                res.append((pos, segstring, cite, root_freq))
             return res
         for analysis in analyses:
             root = self.postpostprocess(analysis[0])
@@ -2015,13 +2043,11 @@ class Language:
             # This only works if FSSets have been separated into FeatStructs
             if citation and posmorph and posmorph.citation \
                and isinstance(grammar, FeatStruct):
-                cite = posmorph.citation(root, grammar, guess, stem,
-                                                   phonetic=phonetic)
+                cite = posmorph.citation(root, grammar, guess, stem, phonetic=phonetic)
                 if not cite:
                     cite = root
                 if postproc:
-                    cite = self.postprocess(cite, ortho_only=ortho_only,
-                                            phonetic=phonetic)
+                    cite = self.postprocess(cite, ortho_only=ortho_only, phonetic=phonetic)
             else:
                 cite = None
                 # Prevent analyses with same citation form and FS (results is a set)

@@ -147,6 +147,7 @@ def geezify_alts(form, lang='am'):
 
 def geezify_morph(morph, lang='am', alt=True):
     """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
+#    print("** geezifying {}".format(morph))
     if not morph:
         return '0'
     # other possible prepended chars? use RE to separate prepended chars?

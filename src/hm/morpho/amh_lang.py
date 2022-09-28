@@ -48,6 +48,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
+#    print("** Getting V citation for {}:{}, vc_as: {}".format(root, fs.__repr__(), vc_as))
     citation = ''
     if root == 'hlw':
         return "'al_e"
@@ -60,7 +61,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     # and as)
     fs.update(AMH.morphology['v'].defaultFS)
     # For non-passive te- verbs, te- is citation form
-    if fs.get('lexav') == True:
+    if vc_as or fs.get('lexav') == True:
         # Lexical entry with explicit as, vc features
         fs.update({'as': fsa, "vc": fsv})
     elif fs.get('lexip') == True:
@@ -74,7 +75,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         fs.update({'vc': 'ps'})
     # Refreeze the feature structure
     fs.freeze()
-#    print("fs {}".format(fs.__repr__()))
+#    print("** fs {}".format(fs.__repr__()))
     # Find the first citation form compatible with the updated feature structure
     if ' ' in root:
         # This is a light verb, just generate the actual verb
@@ -84,7 +85,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
-#        print("Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
+#        print("** Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
                                            phon=True, postproc=False, guess=guess)
         if citation:
@@ -930,9 +931,10 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     Convert a segmentation to a string, including features if features is True.
     """
     # The segmentation string is second in the list
-#    print("Converting {} to string, udformat {}".format(segmentation, udformat))
+#    print("** Converting {} to string, udformat {}".format(segmentation, udformat))
     pos = segmentation[0]
     morphstring = segmentation[1]
+    citation = segmentation[2]
     morphs, rootindex = AMH.seg2morphs(morphstring, pos)
     # Root string and features
     root, rootfeats = morphs[rootindex]
@@ -947,11 +949,11 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     root = root2string(root)
     # Replace the root in the morphemes list
     morphs[rootindex] = root, rootfeats
-#    print("morphs {}".format(morphs))
+#    print("**morphs {}".format(morphs))
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
 #    for m, f in morphs:
-#        print("  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
+#        print("**  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
     if geez:
         # First make sure separate morphemes are geez
         morphs2 = [[(g, f) for g in geezify_morph(m, alt=True)] for m, f in morphs]
@@ -961,12 +963,16 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
     morphs = allcombs(morphs2)
+#    print("** morphs {}".format(morphs2))
     if not features:
         morphs = [[w[0] for w in word] for word in morphs]
     else:
         # Rejoin morpheme and features for each word
         morphs = [[''.join(m) for m in word] for word in morphs]
-    return [sep.join(m) for m in morphs]
+    result = {'morphemes': [sep.join(m) for m in morphs]}
+    if citation:
+        result['lemma'] = citation
+    return result
 
 def root2string(root):
     """

@@ -56,7 +56,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=100, raw=False, realize=True, features=True,
-             transortho=True, experimental=False, udformat=True):
+             citation=False, transortho=True, experimental=False, udformat=True):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
@@ -66,16 +66,20 @@ def seg_word(language, word, nbest=100, raw=False, realize=True, features=True,
                      the stem of an Amharic verb or deverbal noun)
     @param features (boolean): whether to show the grammatical feature labels
     @param transortho (boolean): whether to convert output to non-roman orthography
+    @param citation (boolean): whether to output a lemma for the word
     @param udformat (boolean): whether to convert POS and features to UD format
     @return:         analyses (only if raw is True); 
                      list of (POS, segstring, count) triples or
                      a list of strings (if realize is True)
     '''
+    # Use old format for old CACO segmenter
+    if not experimental:
+        udformat = False
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
     if language:
-        analysis = language.anal_word(word, preproc=True, postproc=True,
+        analysis = language.anal_word(word, preproc=True, postproc=True, citation=citation,
                                       gram=False, segment=True, only_guess=False,
                                       experimental=experimental,
                                       print_out=(not raw and not realize),
