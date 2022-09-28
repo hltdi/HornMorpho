@@ -1751,6 +1751,15 @@ class Language:
                     s += '  {} {} {}\n'.format(anal[0], anal[1].__repr__(), anal[2])
         return s
 
+    @staticmethod
+    def convertPOS(pos):
+        '''
+        Replace POS string by one used to index FSTs, for example, 'nadj' -> 'n'.
+        '''
+        if pos in ('nadj', 'n_dv', 'nm_pl', 'nm_prs'):
+            return 'n'
+        return pos
+
     def analyses2string(self, word, analyses, seg=False, form_only=False,
                         lemma_only=False, ortho_only=False,
                         word_sep='\n',
@@ -1783,9 +1792,7 @@ class Language:
                 root = analysis[0]
                 features = analysis[1]
                 if features:
-                    pos = features.get('pos')
-                    if pos == 'nadj' or pos == 'n_dv':
-                        pos = 'n'
+                    pos = Language.convertPOS(features.get('pos', ''))
                     if pos:
                         if pos in self.morphology:
                             s += self.morphology[pos].pretty_anal(analysis, root=root, fs=features)
@@ -1997,14 +2004,14 @@ class Language:
                     root_freq = self.morphology.get_root_freq(real_seg, feats)
                     feat_freq = self.morphology.get_feat_freq(feats)
                     root_freq *= feat_freq
+                cite = ''
                 if citation:
-#                    print("** Getting root from {}".format(segstring))
                     root = Language.root_from_segstring(segstring)
-#                    print("** root {}".format(root))
+                    # Convert nadj, n_dv to n
+                    pos = Language.convertPOS(pos)
                     posmorph = pos and pos in self.morphology and self.morphology[pos]
                     if posmorph and posmorph.citation and isinstance(feats, FeatStruct):
                         cite = posmorph.citation(root, feats, guess, stem, phonetic=phonetic)
-#                        print("** Citation: {}".format(cite))
                         if not cite:
                             cite = root
                         if postproc:

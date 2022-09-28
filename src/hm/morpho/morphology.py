@@ -1145,7 +1145,10 @@ class POSMorphology:
                 form = self.language.preprocess(form)
             if init_weight and not isinstance(init_weight, FSSet):
                 init_weight = FSSet(init_weight)
-            result_limit = result_limit if result_limit else (40 if guess else 30)
+            # default increased to 100 because analyzer and segmenter fail to find best analyses of እንዳላቸው; 2022-09-28
+            result_limit = result_limit if result_limit else 100
+#            (40 if guess else 30)
+#            print("** Analyzing {} with result limit {}".format(form, result_limit))
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.morphology.seg_units, reject_same=guess,
                                   init_weight=init_weight, result_limit=result_limit,

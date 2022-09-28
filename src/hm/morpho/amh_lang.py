@@ -50,7 +50,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''
 #    print("** Getting V citation for {}:{}, vc_as: {}".format(root, fs.__repr__(), vc_as))
     citation = ''
-    if root == 'hlw':
+    if root in ('hlw', 'hl_w', 'al_'):
         return "'al_e"
     # Return root if no citation is found
     result = root
@@ -948,6 +948,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     # Separate the consonants and template, and realize the root
     root = root2string(root)
     # Replace the root in the morphemes list
+#    print("** root {}".format(root))
     morphs[rootindex] = root, rootfeats
 #    print("**morphs {}".format(morphs))
     if udformat:

@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=100, raw=False, realize=True, features=True,
+def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
              citation=False, transortho=True, experimental=False, udformat=True):
     '''Segment a single word and print out the results.
 
@@ -85,6 +85,7 @@ def seg_word(language, word, nbest=100, raw=False, realize=True, features=True,
                                       print_out=(not raw and not realize),
                                       string=True, nbest=nbest)
         if realize:
+#            print("** analysis {}".format(analysis))
             return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat) for s in analysis]
         elif raw:
             return analysis
@@ -160,8 +161,7 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                              guess=not dont_guess, cache=False,
                              nbest=nbest, report_freq=freq,
                              um=um, normalize=normalize and raw,
-                             init_weight=init_weight,
-                             string=not raw and not um,
+                             init_weight=init_weight, string=not raw and not um,
                              print_out=not raw and not um,
                              fsts=pos, verbosity=verbosity)
         if raw or um:
