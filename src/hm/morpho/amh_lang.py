@@ -757,7 +757,7 @@ AMH = language.Language("አማርኛ", 'amh',
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
               seg2string=lambda string, sep='-', features=False, transortho=True, udformat=False: seg2string(string, sep=sep, geez=transortho, features=features, udformat=udformat),
-              stat_root_feats=['vc', 'as'],
+              stat_root_feats=['cls', 'vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
               seg_units=[["a", "e", "E", "i", "I", "o", "u", "H", "w", "y",
@@ -973,6 +973,8 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     result = {'morphemes': [sep.join(m) for m in morphs]}
     if citation:
         result['lemma'] = citation
+    if pos:
+        result['pos'] = pos.upper()
     return result
 
 def root2string(root):
@@ -980,7 +982,11 @@ def root2string(root):
     If root contains '+', it consists of a root and a template, which need to be
     integrated.
     """
-    if '+' in root:
+    if '++' in root:
+        # Root followed by explicit form rather than template
+        cons, form = root.split('++')
+        return '{' + form + '}'
+    elif '+' in root:
         cons, temp = root.split('+')
         cons = segment(cons, AMH.seg_units)
         cons = [c for c in cons if c not in ['a', '_']]

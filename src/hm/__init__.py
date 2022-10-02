@@ -56,7 +56,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
-             citation=False, transortho=True, experimental=False, udformat=True):
+             rank=True, citation=False, transortho=True, experimental=False, udformat=True):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
@@ -67,6 +67,7 @@ def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
     @param features (boolean): whether to show the grammatical feature labels
     @param transortho (boolean): whether to convert output to non-roman orthography
     @param citation (boolean): whether to output a lemma for the word
+    @param rank (boolean): whether to rank segmentations by frequency
     @param udformat (boolean): whether to convert POS and features to UD format
     @return:         analyses (only if raw is True); 
                      list of (POS, segstring, count) triples or
@@ -81,7 +82,7 @@ def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
     if language:
         analysis = language.anal_word(word, preproc=True, postproc=True, citation=citation,
                                       gram=False, segment=True, only_guess=False,
-                                      experimental=experimental,
+                                      experimental=experimental, rank=rank,
                                       print_out=(not raw and not realize),
                                       string=True, nbest=nbest)
         if realize:

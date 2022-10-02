@@ -1492,7 +1492,7 @@ class Language:
                 no_anal.append(word)
             return analyses
         if rank and len(analyses) > 1:
-#            print("Ranking analyses")
+            print("** Ranking results {}".format(analyses))
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
@@ -1927,8 +1927,11 @@ class Language:
 
     def simp_anal(self, analysis, postproc=False, segment=False):
         '''Process analysis for unanalyzed cases.'''
+        print("** simple anal {}".format(analysis))
         if segment:
-            return analysis[0], analysis[1], 100000
+            form, pos = analysis
+            return pos, form, form, 100000
+#        analysis[0], analysis[1], 100000
 #        elif postproc:
 #            # Convert the word to Geez.
 #            analysis = (analysis[0], self.postproc(analysis[1]))
@@ -1941,6 +1944,7 @@ class Language:
 
     def proc_anal_noroot(self, form, analyses, segment=False):
         '''Process analyses with no roots/stems.'''
+#        print("** proc_anal_noroot {}; {}".format(form, analyses))
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
 
     def postproc_root(self, posmorph, root, fs, phonetic=True):
@@ -1995,27 +1999,30 @@ class Language:
                     pos = feats
                 else:
                     pos = feats.get('pos')
+#                print("*** POS: {}".format(pos))
                 segstring = analysis[0]
                 segstring = self.postpostprocess(segstring)
                 # Remove { } from root
                 real_seg = Language.root_from_seg(segstring)
                 root_freq = 0
+                root = Language.root_from_segstring(segstring)
+#                print("*** root {}".format(root))
                 if freq:
-                    root_freq = self.morphology.get_root_freq(real_seg, feats)
+                    root_freq = self.morphology.get_root_freq(root, feats)
                     feat_freq = self.morphology.get_feat_freq(feats)
                     root_freq *= feat_freq
                 cite = ''
                 if citation:
-                    root = Language.root_from_segstring(segstring)
                     # Convert nadj, n_dv to n
-                    pos = Language.convertPOS(pos)
-                    posmorph = pos and pos in self.morphology and self.morphology[pos]
+                    POS = Language.convertPOS(pos)
+                    posmorph = POS and POS in self.morphology and self.morphology[POS]
                     if posmorph and posmorph.citation and isinstance(feats, FeatStruct):
                         cite = posmorph.citation(root, feats, guess, stem, phonetic=phonetic)
                         if not cite:
                             cite = root
                         if postproc:
                             cite = self.postprocess(cite, ortho_only=True, phonetic=phonetic)
+                # Use the 'raw' POS, e.g., 'nadj' rather than 'n'
                 res.append((pos, segstring, cite, root_freq))
             return res
         for analysis in analyses:
@@ -2126,7 +2133,7 @@ class Language:
                 # Then add it to the dict
                 results = {form: ''}
         # Now do something with the results
-        # Convert the result dict to a list (ranked if rank=True)
+        # Convert the result dict to a list (ranked by frequency if rank=True)
         result_list = []
         for f, anals in results.items():
             count = 0

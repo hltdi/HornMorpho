@@ -187,6 +187,7 @@ class Morphology(dict):
         return a
 
     def get_root_freq(self, root, anal):
+        print("** Getting root freq: {} {}".format(root, anal.__repr__()))
         rv = self.root_fv(root, anal)
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)

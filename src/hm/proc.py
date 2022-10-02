@@ -24,6 +24,65 @@ IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]
 abyss = internet_search.abyssinica
 goog = internet_search.google
 
+def get_old_am_root_stats():
+    statfile = OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'stat'), 'root_freqs.dct')
+    with open(statfile) as file:
+        return eval(file.read())
+
+def old2new_am_roots():
+    '''
+    Convert old Am verb root/feat strings in root_freqs.dct to new roots.
+    Tb_q+smp+smp => Tbq+B+smp+smp
+    '''
+    # Get the old dct of roots
+    oldrootfreq = list(get_old_am_root_stats().items())
+    for i, (item, count) in enumerate(oldrootfreq):
+        if '+' not in item:
+            # noun, adj or unknown
+            continue
+        # Verb root
+        root, vc, asp = item.split('+')
+        root, cls = old2new_am_root(root)
+        newrf = "{}+{}+{}+{}".format(root, cls, vc, asp)
+        oldrootfreq[i] = newrf, count
+    return dict(oldrootfreq)
+
+def old2new_am_root(root):
+    """Convert old root to (new root, class)."""
+    if '|' in root:
+        cls = 'G'
+        if 'a' in root:
+            rootW = root.replace('W', '')
+            # cls=H or cls=J
+            if len(root) >= 7:
+                cls = 'H'
+            else:
+                cls = 'J'
+        elif len(root) < 6:
+            cls = 'I'
+        root = root.replace('|', '').replace('a', '')
+#        feats = add_class_to_feats(feats, cls)
+#        result.append("{}  ''  {}".format(root, feats))
+    elif '_' in root:
+        cls = 'B'
+        root = root.replace('_', '')
+#        feats = add_class_to_feats(feats, cls)
+#        result.append("{}  ''  {}".format(root, feats))
+    elif 'a' in root:
+        cls = 'C'
+        rootW = root.replace('W', '')
+        if len(rootW) > 4:
+            cls = 'F'
+        root = root.replace('a', '')
+    else:
+        cls = 'A'
+        rootW = root.replace('W', '')
+        if len(rootW) > 4:
+            cls = 'K'
+        elif len(rootW) > 3:
+            cls = 'E'
+    return root, cls
+
 def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
     '''
     Process the new roots from Abnet.
@@ -572,7 +631,7 @@ def reverse_stems(write=True):
 ##            for root, cls in new_rc.items():
 ##                print("{} {}".format(root, ','.join(cls)), file=file)
 ##    return new_rc
-##
+
 ##def add_class_to_feats(feats, cls):
 ##    feats = feats.split(';')
 ##    feats = ["[cls={},{}".format(cls, f[1:]) for f in feats]
