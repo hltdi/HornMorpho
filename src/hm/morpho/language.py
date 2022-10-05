@@ -144,6 +144,8 @@ class Language:
                  preproc=None, procroot=None,
                  # Post-processing for generation
                  postproc=None, postpostproc=None,
+                 # Default root postprocessing for analysis
+                 dflt_postproc_root=None,
                  seg_units=None, read_cache=False,
                  # Function that converts segmented word back to a word string
                  seg2string=None,
@@ -183,6 +185,7 @@ class Language:
         self.procroot = procroot
         self.postproc = postproc
         self.postpostproc = postpostproc
+        self.dflt_postproc_root = dflt_postproc_root
         self.output_gemination = output_gemination
         self.seg2string = seg2string
         self.seg_units = seg_units or []
@@ -925,8 +928,7 @@ class Language:
         return phones
 
     def convert_phones(self, phones, gemination=True,
-                       epenthesis=True,
-                       ipa=False):
+                       epenthesis=True, ipa=False):
         """
         Convert a sequence of phones (an unsegmented string)
         to an alternate phone representation.
@@ -961,8 +963,7 @@ class Language:
         conventional representation.
         """
         return self.convert_phones(root, gemination=False,
-                                   epenthesis=False,
-                                   ipa=ipa)
+                                   epenthesis=False, ipa=ipa)
 
     @staticmethod
     def dflt_procroot(root, fs=None, pos=None):
@@ -1111,7 +1112,11 @@ class Language:
     def preprocess(self, form):
         '''Preprocess a form.'''
         if self.preproc:
-            return self.preproc(form)
+            res = self.preproc(form)
+            if type(res) == tuple:
+                # preproc() may also return number of simplifications
+                return res[0]
+            return res
         return form
 
     def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
@@ -1159,12 +1164,12 @@ class Language:
         return morphs[0][morphs[1]]
 
     def segmentation2string(self, segmentation, sep='-', transortho=True, features=False,
-                            udformat=False):
+                            udformat=False, simplifications=None):
         '''Convert a segmentation (POS, segstring, count) to a form string,
         using a language-specific function if there is one, otherwise using a default function.'''
         if self.seg2string:
             return self.seg2string(segmentation, sep=sep, transortho=transortho, features=features,
-                                   udformat=udformat)
+                                   udformat=udformat, simplifications=simplifications)
         else:
             morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
             # This ignores whatever alternation rules might operate at boundaries
@@ -1238,7 +1243,7 @@ class Language:
         fin = open(filein, 'r', encoding='utf-8')
         fout = open(fileout, 'w', encoding='utf-8')
         for line in fin:
-            fout.write(str(self.preproc(line), 'utf-8'))
+            fout.write(str(self.preprocess(line), 'utf-8'))
         fin.close()
         fout.close()
 
@@ -1388,11 +1393,14 @@ class Language:
         analyses = []
         to_cache = [] if cache else None
         fsts = fsts or self.morphology.pos
+        # number of normalization simplifications
+        simps = None
         if preproc:
             # Convert to roman, for example
-            form = self.preproc(word)
+            form, simps = self.preproc(word)
         else:
             form = word
+#        print("** form {}, word {}; simps {}".format(form, word, simps))
         # See if the word is unanalyzable ...
         unal_word = self.morphology.is_word(form)
         # unal_word is a form, POS pair
@@ -1401,7 +1409,7 @@ class Language:
             cache = False
             if only_anal:
                 return []
-            a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
+            a = self.simp_anal(unal_word, postproc=postproc, segment=segment, citation=citation)
             analyses.append(a)
 
         # See if the word is cached (but only if there is no init_weight)
@@ -1492,7 +1500,7 @@ class Language:
                 no_anal.append(word)
             return analyses
         if rank and len(analyses) > 1:
-            print("** Ranking results {}".format(analyses))
+#            print("** Ranking results {}".format(analyses))
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
@@ -1511,7 +1519,8 @@ class Language:
                 else:
                     a = self.finalize_anal(analysis, citation=citation, um=um,
                                            gloss=gloss, report_freq=report_freq,
-                                           show_gram=gram, phonetic=phonetic)
+                                           show_gram=gram, phonetic=phonetic,
+                                           simplifications=not phonetic and simps)
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
 
@@ -1619,8 +1628,9 @@ class Language:
                         else:
                             # Attempt to analyze the word
                             form = word
+                            simps = None
                             if preproc:
-                                form = self.preproc(form)
+                                form, simps = self.preproc(form)
                             analyses = \
                             self.anal_word(form, fsts=fsts, guess=guess,
                                            phon=phon, only_guess=only_guess,
@@ -1864,7 +1874,8 @@ class Language:
             dct[form] = [(root, fs)]
 
     def finalize_anal(self, anal, citation=True, um=True, gloss=True,
-                      show_gram=True, report_freq=False, phonetic=True):
+                      show_gram=True, report_freq=False, phonetic=True,
+                      simplifications=None):
         """
         Create dict with analysis.
         """
@@ -1872,13 +1883,12 @@ class Language:
         pos, root, cit, gram1, gram2, count = anal
         # POS could be '?v', etcl
 #        pos = pos.replace('?', '')
-#        print("** Finalizing {} {} {} {}".format(pos, root, cit, gram2.__repr__()))
+##        print("** Finalizing {} {} {} {} {} {}".format(pos, root, cit, gram2.__repr__(), phonetic, simplifications))
         # Postprocess root if appropriate
         root1 = None
         if root:
             root1 = self.postproc_root(self.morphology.get(pos.replace('?', '')),
-                                       root, gram2, phonetic=phonetic)
-#        print("root {}".format(root1))
+                                       root, gram2, phonetic=phonetic, simplifications=simplifications)
         if pos:
             a['POS'] = pos
         if not gram2 and not cit:
@@ -1925,36 +1935,47 @@ class Language:
 #            return ortho + '|' + phon
 #        return self.convert_phones(citation, ipa=ipa)
 
-    def simp_anal(self, analysis, postproc=False, segment=False):
+    def simp_anal(self, analysis, postproc=False, segment=False, citation=True):
         '''Process analysis for unanalyzed cases.'''
-        print("** simple anal {}".format(analysis))
+#        print("** simple anal {}".format(analysis))
         if segment:
             form, pos = analysis
-            return pos, form, form, 100000
+            if postproc:
+                cite = self.postprocess(form, ortho_only=True, phonetic=False)
+            else:
+                cite = form
+            return pos, form, cite, 100000
 #        analysis[0], analysis[1], 100000
 #        elif postproc:
 #            # Convert the word to Geez.
 #            analysis = (analysis[0], self.postproc(analysis[1]))
 #        if segment:
 #            return analysis
-        pos, form = analysis
+        form, pos = analysis
+        if citation:
+            if postproc:
+                cite = self.postprocess(form, ortho_only=True, phonetic=False)
+            else:
+                cite = form
+            return pos, form, cite, None, None, 100000
         # 100000 makes it likely these will appear first in ranked analyses
         # form is actually the root for a few cases
-        return form, pos, None, None, None, 100000
+        return pos, form, None, None, None, 100000
 
     def proc_anal_noroot(self, form, analyses, segment=False):
         '''Process analyses with no roots/stems.'''
 #        print("** proc_anal_noroot {}; {}".format(form, analyses))
         return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
 
-    def postproc_root(self, posmorph, root, fs, phonetic=True):
+    def postproc_root(self, posmorph, root, fs, phonetic=True, simplifications=None):
         """
-        If posmorph has a root_proc function, use it to produce
-        a root.
+        If posmorph has a root_proc function, use it to produce a root.
         """
         if posmorph and posmorph.root_proc:
             func = posmorph.root_proc
-            return func(root, fs, phonetic=phonetic)
+            return func(root, fs, phonetic=phonetic, simplifications=simplifications)
+        elif self.dflt_postproc_root:
+            return self.dflt_postproc_root(root, fs, phonetic=phonetic, simplifications=simplifications)
         return root
 
     def get_gloss(self, fs, lg='eng'):

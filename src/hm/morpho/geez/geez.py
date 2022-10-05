@@ -82,6 +82,9 @@ ROOT_SEP = '_'
 ROOT_GEM = ':'
 ROOT_Y = '።'
 
+## Amharic palatals
+AM_PAL = {'t': 'c', 'd': 'j', 'T': 'C', 's': 'x', 'z': 'Z', 'n': 'N', 'l': 'y'}
+
 ## Explicit 'a' for laryngeal characters
 #LARYNGEAL_A = {"ha": "ሃ", "Ha": "ሓ", "^ha": "ኃ", "'a": "ኣ", "`a": "ዓ"}
 
@@ -276,8 +279,7 @@ def read_conv(filename, simple=False):
 
 #def larynA(form):
 
-def sera2geez(table, form, lang='am', gemination=False,
-              deepenthesize=False, laryngealA=False):
+def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, laryngealA=False):
     '''Convert form in SERA to Geez, using translation table.'''
     if not table:
         table = get_table(lang, False)
@@ -448,13 +450,14 @@ def root2geez(table, root, lang='am'):
     return res + ROOT_RIGHT
 
 def geez2sera(table, form, lang='am', simp=False, delete='',
-              gemination=False):
+              gemination=False, report_simplification=False):
     '''Convert form in Geez to SERA, using translation table.'''
     if not table:
         table = get_table(lang, True)
     if form.isdigit():
         return form
     res = ''
+    simplifications = []
     geminated = []
     for char in form:
         if char == GEMINATION_GEEZ:
@@ -470,7 +473,12 @@ def geez2sera(table, form, lang='am', simp=False, delete='',
         else:
             res += char
     if simp:
-        res = simplify_sera(res, language=lang)
+        if report_simplification:
+            res_simp, simpn = simplify_sera(res, language=lang, record=True)
+            simplifications += simpn
+        else:
+            res_simp = simplify_sera(res, language=lang, record=False)
+        res = res_simp
     if delete:
         res = res.replace(delete, '')
     if gemination and geminated:
@@ -484,6 +492,8 @@ def geez2sera(table, form, lang='am', simp=False, delete='',
             else:
                 res1 += c
         res = res1
+    if report_simplification:
+        return res, simplifications
     return res
 
 def geez2sera_file(table, infile, outfile, first_out=True, simp=False):
@@ -538,12 +548,30 @@ def sera2geez_file(table, infile, outfile, has_encoding = False):
     inobj.close()
     outobj.close()
 
-def simplify_sera(text, language='am'):
+def simplify_sera(text, language='am', record=False):
     '''Convert alternate consonants to the default for Amharic or Tigrinya.
     '''
 #    # Protect ^hW (not needed because ኋ, etc. converted to hW)
 #    text = text.replace('^hW', '!!!')
     # ^h -> h, ^s -> s, ^S -> S
+    simps = []
+#    simplified = False
+    if record:
+        for i, char in enumerate(text):
+            if char == 'H':
+                simps.append(('h', 'H'))
+#                simplified = True
+            elif char == "`":
+                simps.append(("'", '`'))
+#                simplified = True
+            elif char == '^':
+                s = text[i+1]
+                simps.append((s, '^' + s))
+#                simplified = True
+#            elif char in ('s', 'S', "'", 'h');
+ #               simps.append((char, char))
+#        if not simplified:
+#            simps = []
     text = text.replace('^', '')
 #    # Replace ^hW
 #    text = text.replace('!!!', '^hW')
@@ -563,6 +591,8 @@ def simplify_sera(text, language='am'):
         text = text.replace("muwa", "mWa")
         text = text.replace('fuwa', 'fWa')
         text = text.replace('buwa', 'bWa')
+    if record:
+        return text, simps
     return text
 
 def to_real_sera(text, phon=True):

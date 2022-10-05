@@ -39,6 +39,9 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
             'm': "ም", 'Inji': "እንጂ", 'na': "ና", 'sa': "ሳ", 's': "ስ", 'ma': "ማ",
             'sIle': "ስለ", 'le': "ለ", 'Iyye': "እየ", 'Iske': "እስከ", 'Inde': "እንደ", 'ke': "ከ", 'be': "በ", 'wede': "ወደ"}
 
+ALT_PHONES = ['^s', '^S', 'H', '^h', "`", '^sW', '^SW', '^hW']
+SIMP_PHONES = ['s', 'S', 'h', "'", 'sW', 'SW', 'hW']
+
 ### Various functions that will be values of attributes of Amharic Morphology
 ### and POSMorphology objects.
 
@@ -703,29 +706,42 @@ def preproc_root(root, fs, pos):
         root, fs = language.Language.dflt_procroot(root, fs)
     return root, fs
 
-def postpostproc_root(root, fs, phonetic=True):
+def postpostproc_root(root, fs, phonetic=True, simplifications=None):
     """
     Convert root to root:class format, also changing internal
     HM root representation to an alternate conventional
     representation.
     """
+#    print("** postprocessing {}, simps {}".format(root, simplifications))
     if phonetic:
         root = AMH.convert_root(root)
+    elif simplifications:
+        root = complicate_stem(root, simplifications)
 #    if 'cls' not in fs:
 #        print("No cls for {} {}".format(root, fs.__repr__()))
     return "<{}:{}>".format(root, fs.get('cls', ''))
 
-def postproc_nroot(root, fs, phonetic=True):
+def postproc_nroot(root, fs, phonetic=True, simplifications=None):
     """
     Convert citation (lemma) to conventional phonetic representation.
     """
+#    print("** postprocessing {}, simps {}".format(root, simplifications))
     root_conv = root
     if phonetic:
         root_conv = AMH.convert_root(root)
+    elif simplifications:
+        root = complicate_stem(root, simplifications)
     if fs and fs.get('pos') == 'n_dv':
         return "<{}:{}>".format(root_conv, fs['cls'])
     else:
         return "{}|{}".format(geezify(root), root_conv)
+
+def dflt_postproc_root(root, fs, phonetic=True, simplifications=None):
+    if phonetic:
+        root = AMH.convert_root(root)
+    elif simplifications:
+        root = complicate_stem(root, simplifications)
+    return geezify(root)
 
 def postproc_word(word, ipa=False, phon=True, ortho_only=False,
                   phonetic=True):
@@ -753,10 +769,12 @@ def postproc_root(root):
 ## and segmentation units (phones).
 AMH = language.Language("አማርኛ", 'amh',
               postproc=postproc_word,
-              preproc=lambda form: geez2sera(None, form, lang='am', simp=True),
+              preproc=lambda form: geez2sera(None, form, lang='am', simp=True, report_simplification=True),
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
-              seg2string=lambda string, sep='-', features=False, transortho=True, udformat=False: seg2string(string, sep=sep, geez=transortho, features=features, udformat=udformat),
+              dflt_postproc_root=dflt_postproc_root,
+              seg2string=lambda string, sep='-', features=False, transortho=True, udformat=False, simplifications=None: \
+                            seg2string(string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications),
               stat_root_feats=['cls', 'vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
@@ -777,7 +795,7 @@ AMH = language.Language("አማርኛ", 'amh',
 ## including punctuation and ASCII characters that are part of the romanization.
 AMH.set_morphology(language.Morphology(
                              pos_morphs=[('cop',), ('n',), ('v',)],
-                             # Exclude ^ and - (because it can be used in compounds)
+                             # Exclude ^ and - (because they can be used in compounds)
                              punctuation=r'[“‘”’–—:;/,<>?.!%$()[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                              # Include digits?
                              characters=r'[a-zA-Zሀ-ፚ\'`^]'))
@@ -852,7 +870,7 @@ AMH.morphology['v'].web_feats = \
 AMH.morphology['v'].root_proc = postpostproc_root
 AMH.morphology['n'].root_proc = postproc_nroot
 # AMH.morphology['nm'].root_proc = postproc_nroot
-AMH.morphology['cop'].root_proc = lambda root, fs, phonetic=True: "ነው"
+AMH.morphology['cop'].root_proc = lambda root, fs, phonetic=True, simplifications=None: "ን"
 
 AMH.morphology['n'].name = 'noun'
 AMH.morphology['n'].defaultFS = \
@@ -926,7 +944,7 @@ def roman2geez(value):
     return ROM2GEEZ.get(value, value)
 
 def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
-               arules=False):
+               arules=False, simplifications=None):
     """
     Convert a segmentation to a string, including features if features is True.
     """
@@ -946,11 +964,9 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
         else:
             rootfeats = "({},{})".format(posstring, rootfeats[1:-1])
     # Separate the consonants and template, and realize the root
-    root = root2string(root)
+    root = root2string(root, simplifications=simplifications)
     # Replace the root in the morphemes list
-#    print("** root {}".format(root))
     morphs[rootindex] = root, rootfeats
-#    print("**morphs {}".format(morphs))
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
 #    for m, f in morphs:
@@ -977,15 +993,17 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
         result['pos'] = pos.upper()
     return result
 
-def root2string(root):
+def root2string(root, simplifications=None):
     """
     If root contains '+', it consists of a root and a template, which need to be
     integrated.
+    simplifications is a list of (normal, alternate) character pairs saved when
+    word was normalized, for example ('s', '^s').
     """
     if '++' in root:
         # Root followed by explicit form rather than template
         cons, form = root.split('++')
-        return '{' + form + '}'
+#        return '{' + form + '}'
     elif '+' in root:
         cons, temp = root.split('+')
         cons = segment(cons, AMH.seg_units)
@@ -1015,9 +1033,79 @@ def root2string(root):
                 form.append(t)
                 # A vowel or _ character was added so clear the last consonant
                 last_cons = ''
-        return '{' + ''.join(form) + '}'
+        # handle palatalization of agent and instrument forms (later check features for this?)
+        if form[-1] == 'i':
+            if form[-2] in AM_PAL:
+                form[-2:] = [AM_PAL[form[-2]]]
+        elif form[-3:] == ['i', 'y', 'a']:
+            if form[-4] in AM_PAL:
+                form[-4:] = [AM_PAL[form[-4]], 'a']
+        form = ''.join(form)
+#        return '{' + ''.join(form) + '}'
     else:
-        return '{' + root + '}'
+        form = root
+    if simplifications:
+        form = complicate_stem(form, simplifications)
+    return '{' + form + '}'
+
+def modify_geez(geez, romanized):
+    """
+    romanized is a romanized stem/root. geez is the Geez form of a word,
+    which may be an inflected form of the stem/root.
+    Based on the alternate characters (^s, H, etc.) in the stem/root,
+    an altered version of the word is returned.
+    """
+    global AMH
+    if not AMH:
+        AMH = hm.morpho.get_language('amh', load=True)
+    seg_units = AMH.seg_units
+    segrom = segment(romanized, seg_units)
+    geezrom = segment(romanize(geez), seg_units)
+    changes = []
+    for seg in segrom:
+        if seg in SIMP_PHONES:
+            changes.append((seg, seg))
+        elif seg in ALT_PHONES:
+            changes.append((simplify_roman(seg), seg))
+    altered = []
+    for char in geezrom:
+        if not changes or char != changes[0][0]:
+            altered.append(char)
+        else:
+            altered.append(changes[0][1])
+            changes.pop(0)
+    altered = ''.join(altered)
+    return geezify(altered)
+
+def simplify_roman(roman):
+    """
+    Simplify ^s, ^S, H, ^h, ` to s, h, '.
+    """
+    roman = roman.replace('^', '')
+    roman = roman.replace('H', 'h').replace('`', "'")
+    return roman
+
+def complicate_stem(stem, simplifications):
+    '''
+    stem is a romanized stem.
+    simplifications is a list of (simple, complex) pairs
+    of character normalizations made to the word based on the stem.
+    Returns the stem with original characters.
+    For example,
+    complicate_stem("SSt", [(S, ^S), (S, ^S)]) => ^S^St
+    '''
+    # We're going to mutate this list and might need it later
+    # for another analysis.
+    simplifications = simplifications.copy()
+    segrom = segment(stem, AMH.seg_units)
+    result = []
+    for char in segrom:
+        if simplifications and char == simplifications[0][0]:
+            result.append(simplifications[0][1])
+            simplifications.pop(0)
+        else:
+            result.append(char)
+    return ''.join(result)
 
 VOWELS = '[aeEiIou@AOU]'
 CONS = "[hlHmrsxqbtcnN'kw`zZydjgTCPSfp]|^S|^s|^h"

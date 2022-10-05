@@ -187,7 +187,7 @@ class Morphology(dict):
         return a
 
     def get_root_freq(self, root, anal):
-        print("** Getting root freq: {} {}".format(root, anal.__repr__()))
+#        print("** Getting root freq: {} {}".format(root, anal.__repr__()))
         rv = self.root_fv(root, anal)
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)
@@ -1088,6 +1088,7 @@ class POSMorphology:
         fst = self.get_fst(generate=generate, guess=guess, simplified=simplified,
                            experimental=experimental,
                            phon=phon, segment=segment, translate=translate)
+#        print("FST to save: {}".format(fst))
         directory = self.morphology.directory
         if defaultFS:
             df = self.defaultFS.__repr__()
@@ -1266,13 +1267,10 @@ class POSMorphology:
             return []
 
     def gen(self, root, features=None, from_dict=False,
-            postproc=False, update_feats=None,
-            del_feats=None,
+            postproc=False, update_feats=None, del_feats=None,
             guess=False, phon=False, segment=False, ortho=False,
-            ortho_only=False, fst=None, sort=False,
-            print_word=False, print_prefixes=None,
-            interact=False,
-            timeit=False, timeout=100, limit=10,
+            ortho_only=False, fst=None, sort=False, print_word=False, print_prefixes=None,
+            interact=False, timeit=False, timeout=100, limit=10,
             trace=False, verbosity=0):
         """
         Generate word from root and features.
@@ -1408,10 +1406,9 @@ class POSMorphology:
     def finalize_output(self, word, phon=False, ipa=False,
                         ortho_only=False):
         """
-        Finalize output: orthographic(|phonetic).
+        Finalize generation output: orthographic(|phonetic).
         """
-        orthophon = self.language.postprocess(word,
-                                              phon=phon, ipa=ipa,
+        orthophon = self.language.postprocess(word, phon=phon, ipa=ipa,
                                               ortho_only=ortho_only)
         # word is presumably in phonetic representation; convert
         # it to conventional representation

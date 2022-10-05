@@ -60,8 +60,10 @@ sbjp1 -> stem     <y:y(@part,$polarity=neg,person=3)->   [sb=[-p1,-p2,+plr],+neg
 # Unless at the beginning of the word or negative, there is no overt 1s prefix, except in jussive
 sbjp1 -> stem     <:'(@pron,$number=sing,person=1)->    [tm=imf,sb=[+p1,-plr],ob=[-p1],-neg]
 # t, n: 1p, 2, 3sf
-sbjp1 -> stem     <t:t(@pron,$person=2|$gender=fem,number=sing,person=3)->   [sb=[+p2,-p1],ob=[-p2],-neg];[sb=[-plr,-p1,-p2,+fem],-neg]
-sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=fem,person=2|$number=sing,person=3)->   [sb=[+p2,-p1],ob=[-p2],+neg];[sb=[-plr,-p1,-p2,+fem],+neg]
+sbjp1 -> stem     <t:t(@pron,$person=2)->   [sb=[+p2,-p1],ob=[-p2],-neg]
+sbjp1 -> stem     <t:t(@pron,$gender=fem,number=sing,person=3)->   [sb=[-plr,-p1,-p2,+fem],-neg]
+sbjp1 -> stem     <t:t(@part,$polarity=neg,person=2)->   [sb=[+p2,-p1],ob=[-p2],+neg]
+sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=fem,number=sing,person=3)->  [sb=[-plr,-p1,-p2,+fem],+neg]
 sbjp1 -> stem     <n:'n(@pron,$number=plur,person=1)->           [sb=[+plr,+p1,-p2],ob=[-p1],-neg]
 sbjp1 -> stem     <n:n(@part,$polarity=neg,number=plur,person=1)->      [sb=[+plr,+p1,-p2],ob=[-p1],+neg]
 
@@ -88,7 +90,7 @@ sbjs -> sbjs_p        [:]    [tm=prf];[tm=ger]
 
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural; go directly to obj
-sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2|3)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],+def];[sb=[-p1,+plr],ob=[-expl],ax=None]
+sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],+def];[sb=[-p1,+plr],ob=[-expl],ax=None]
 # 2sf; go directly to obj; palatalize previous consonant; don't show the palatalization character
 sbjs_i -> obj        <8i:-i(@pron,subj,$gender=fem,number=sing,person=2)>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
@@ -168,7 +170,7 @@ objs1  -> negs_aux    <at:-At(@pron,objc,$gender=fem,number=sing,person=3)>   [o
 objs1  -> negs_aux     <n:-n(@pron,objc,$number=plur,person=1)>    [ob=[+p1,-p2,+plr]]
 objs1  -> negs_aux   <ac_hu:-Ac_hu(@pron,objc,$number=plur,person=2)> [ob=[-p1,+p2,+plr,-frm]]
 objs1  -> negs_aux   <ac_ew:-Ac_ew(@pron,objc,$number=plur,person=3)> [ob=[-p1,-p2,+plr]]
-objs1  -> objs_2frm    <wo:-wo(@pron,objc,$person=2,Polite=Form)>  [ob=[-p1,+p2,-plr,+frm]]
+objs1  -> objs_2frm    <wo:-wo(@pron,objc,$person=2,polite=form)>  [ob=[-p1,+p2,-plr,+frm]]
 objs_2frm -> negs_aux  [:;t:]
 ## def, 3sm_obj
 # 3sm and 1s subjects

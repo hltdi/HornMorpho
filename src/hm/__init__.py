@@ -56,12 +56,12 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
-             rank=True, citation=False, transortho=True, experimental=False, udformat=True):
+             rank=True, citation=True, transortho=True, experimental=True, udformat=True):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
     @param word (string):     word to be analyzed
-    @param experimental (boolean):  whether to use the "experimental" segmenter FST
+    @param experimental (boolean):  whether to use the new "experimental" segmenter FST
     @param realize (boolean):  whether to realize individual morphemes (in particular
                      the stem of an Amharic verb or deverbal noun)
     @param features (boolean): whether to show the grammatical feature labels
@@ -77,17 +77,21 @@ def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
     if not experimental:
         udformat = False
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
-    global SEGMENT
-    SEGMENT = True
+#    global SEGMENT
+#    SEGMENT = True
+    simps = None
     if language:
-        analysis = language.anal_word(word, preproc=True, postproc=True, citation=citation,
+        # Do the preprocessing first in order to save any character normalizations
+        if language.preproc:
+            word, simps = language.preproc(word)
+        analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
                                       gram=False, segment=True, only_guess=False,
                                       experimental=experimental, rank=rank,
                                       print_out=(not raw and not realize),
                                       string=True, nbest=nbest)
         if realize:
 #            print("** analysis {}".format(analysis))
-            return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat) for s in analysis]
+            return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps) for s in analysis]
         elif raw:
             return analysis
 
@@ -453,7 +457,7 @@ def get_features(language, pos=None):
             return feats
 
 def seg2string(segmentation, language='am', sep='-', transortho=True, features=False,
-               udformat=False):
+               udformat=False, simplifications=None):
     """Convert a segmentation (triple with seg string as second item)
     to a series of spelled out morphemes, ignoring any alternation rules.
     @param language:     abbreviation for a language
@@ -466,7 +470,7 @@ def seg2string(segmentation, language='am', sep='-', transortho=True, features=F
     """
     language = morpho.get_language(language, segment=True)
     return language.segmentation2string(segmentation, sep=sep, transortho=transortho,
-                                        features=features, udformat=udformat)
+                                        features=features, udformat=udformat, simplifications=simplifications)
 
 ### Functions for debugging and creating FSTs
 
