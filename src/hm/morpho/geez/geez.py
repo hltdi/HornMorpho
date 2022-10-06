@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is a project of PLoGS.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020. PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2018, 2019, 2020, 2022. PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -164,7 +164,9 @@ def geezify_morph(morph, lang='am', alt=True):
         return geezify(morph, lang='am')
 
 def no_convert(form):
-    '''Skip conversion for simple cases: non-Geez, punctuation, numerals.'''
+    '''
+    Skip conversion for simple cases: non-Geez, punctuation, numerals.
+    '''
     if not is_geez(form) or form in GEEZ_PUNCTUATION or is_geez_num(form):
         return form
 
@@ -455,6 +457,8 @@ def geez2sera(table, form, lang='am', simp=False, delete='',
     if not table:
         table = get_table(lang, True)
     if form.isdigit():
+        if report_simplification:
+            return form, []
         return form
     res = ''
     simplifications = []

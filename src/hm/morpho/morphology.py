@@ -56,9 +56,7 @@ class Morphology(dict):
 #    stem = re.compile('\s*stem:')
 #    segs = re.compile('\s*segs:')
 
-    def __init__(self,
-                 pos_morphs=[],
-                 punctuation='', characters=''):
+    def __init__(self, pos_morphs=[], punctuation='', characters=''):
                  #                 fsh=None,
 #                 feat_abbrevs=None,
 #                 fv_abbrevs=None):
@@ -109,6 +107,7 @@ class Morphology(dict):
         self.characters = characters or CHARACTERS
         # Make punctuation regular expression objects and substitution string
         self.init_punc(self.characters, self.punctuation)
+        self.init_num(self.characters)
 #        # Dict of feature names expanded to more readable strings
 #        self.feat_abbrevs = feat_abbrevs or {}
         # List of feat-val pair list and abbreviations
@@ -138,15 +137,33 @@ class Morphology(dict):
         self.punc_before_re = re.compile(r'(' + punc + r'{1,3})(' + chars + r')', re.U)
         self.punc_sub = r'\1 \2'
 
+    def init_num(self, chars):
+        '''
+        Make numeral regular expression objects and substitution string.
+        '''
+#        self.num_after_re = re.compile(r'(' + chars + r')(\d+?)', re.U)
+        self.num_before_re = re.compile(r'(\d+?)(' + chars + r')', re.U)
+        self.num_sub = r'\1 \2'
+
     def sep_punc(self, text):
         """Separate punctuation from words."""
         text = self.punc_after_re.sub(self.punc_sub, text)
         text = self.punc_before_re.sub(self.punc_sub, text)
         return text
 
+    def sep_num(self, text):
+        """
+        Separate punctuation from words.
+        """
+#        text = self.num_after_re.sub(self.num_sub, text)
+        text = self.num_before_re.sub(self.num_sub, text)
+        return text
+
     def is_word(self, word, simple=False, ortho=True):
-        """Is word an unanalyzable word? If so, return the word preceded by its POS
-        if available."""
+        """
+        Is word an unanalyzable word? If so, return the word preceded by its POS
+        if available.
+        """
         if ortho and (word in self.punctuation or word in PUNC_TOKENS):
             return word
         if ortho and not self.words:

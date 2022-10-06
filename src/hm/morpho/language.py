@@ -1418,12 +1418,10 @@ class Language:
             if cached:
                 if not init_weight:
                     found = True
-                    analyses = self.proc_anal(word, cached, None,
-                                              show_root=root, citation=citation,
+                    analyses = self.proc_anal(word, cached, None, show_root=root, citation=citation,
                                               stem=stem, phonetic=phonetic, ortho_only=ortho_only,
                                               normalize=normalize, segment=segment, guess=False,
-                                              postproc=postproc, gram=gram,
-                                              freq=rank or report_freq)
+                                              postproc=postproc, gram=gram, freq=rank or report_freq)
 
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)
         if not analyses and form in self.morphology.analyzed:
@@ -1463,6 +1461,7 @@ class Language:
                                                              phon=phon, segment=segment, experimental=experimental,
                                                              normalize=False, to_dict=to_dict, sep_anals=sep_anals,
                                                              verbosity=verbosity)
+#                        print("*** analysis: {}".format(analysis))
                         if analysis:
                             if cache:
                                 to_cache.extend(analysis)
@@ -1479,16 +1478,13 @@ class Language:
             for pos in fsts:
                 analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
                                                      phon=phon, segment=segment, experimental=experimental,
-                                                     to_dict=to_dict, sep_anals=sep_anals,
-                                                     verbosity=verbosity)
+                                                     to_dict=to_dict, sep_anals=sep_anals, verbosity=verbosity)
                 if analysis:
                     if cache:
                         to_cache.extend(analysis)
-                    analyses.extend(self.proc_anal(form, analysis, pos,
-                                                   show_root=root, citation=citation,
+                    analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
                                                    ortho_only=ortho_only, normalize=normalize,
-                                                   segment=segment, phonetic=phonetic,
-                                                   guess=True, gram=gram, postproc=postproc,
+                                                   segment=segment, phonetic=phonetic, guess=True, gram=gram, postproc=postproc,
                                                    freq=rank or report_freq))
         if cache and not found:
 #            print("Adding new anal {}, {}".format(word, to_cache))
@@ -1507,10 +1503,8 @@ class Language:
 #        print("print_out {}, string {}, segment {}".format(print_out, string, segment))
         if print_out:
             # Print out stringified version
-            print(self.analyses2string(word, analyses, seg=segment,
-                                       lemma_only=lemma_only,
-                                       ortho_only=ortho_only,
-                                       form_only=not gram))
+            print(self.analyses2string(word, analyses, seg=segment, lemma_only=lemma_only,
+                                       ortho_only=ortho_only, form_only=not gram))
         elif not segment and not string:
             # Do final processing of analyses, given options
             for i, analysis in enumerate(analyses):
@@ -1528,18 +1522,17 @@ class Language:
 
     def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
                   root=True, citation=True, segment=False, gram=True,
-                  lemma_only=False, ortho_only=False,
+                  lemma_only=False, ortho_only=False, realize=False,
                   knowndict=None, guessdict=None, cache=True, no_anal=True,
-                  phon=False, only_guess=False, guess=True, raw=False,
-                  experimental=False,
+                  phon=False, only_guess=False, guess=True, raw=False, experimental=False,
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False,
-                  feats=None, simpfeats=None, um=False,
-                  normalize=False,
+                  feats=None, simpfeats=None, um=False, normalize=False,
                   # Ambiguity
-                  rank=True, report_freq=False, nbest=100,
-                  report_n=50000,
-                  lower=True, lower_all=False, nlines=0, start=0):
-        """Analyze words in file, either writing results to pathout, storing in
+                  rank=True, report_freq=False, nbest=100, report_n=50000,
+                  lower=True, lower_all=False, nlines=0, start=0,
+                  verbosity=0):
+        """
+        Analyze words in file, either writing results to pathout, storing in
         knowndict or guessdict, or printing out.
         saved is a dict of saved analyses, to save analysis time for words occurring
         more than once.
@@ -1549,6 +1542,7 @@ class Language:
         citation = citation and self.citation_separate
         storedict = True if knowndict != None else False
         normalize = normalize and not um
+        realizer = realize and self.segmentation2string
         try:
             filein = open(pathin, 'r', encoding='utf-8')
             # If there's no output file and no outdict, write analyses to terminal
@@ -1579,18 +1573,25 @@ class Language:
             for line in lines:
                 n += 1
                 if n % report_n == 0:
-                    print("Analyzed {} lines".format(n))
+                    print("ANALYZED {} LINES".format(n))
                 # Separate punctuation from words
                 if sep_punc:
                     line = self.morphology.sep_punc(line)
+                # Separate numerals joined to nouns
+                line = self.morphology.sep_num(line)
+#                print("** line {}".format(line))
                 identifier = ''
                 string = ''
                 if sep_ident:
                     # Separate identifier from line
                     identifier, line = line.split('\t')
                     string = "{}\t".format(identifier)
+                if verbosity:
+                    print("Analyzing line {}".format(line))
                 # Segment into words
                 for w_index, word in enumerate(line.split()):
+                    if verbosity > 1:
+                        print("  Analyzing {}".format(word))
                     # Ignore punctuation
 #                    if word in self.morphology.punctuation:
 #                        continue
@@ -1598,7 +1599,7 @@ class Language:
                     if lower_all or (lower and w_index == 0):
                         word = word.lower()
                     if word in local_cache:
-#                        print("{} already in cache: {}".format(word, local_cache[word]))
+#                        print("** {} already in cache: {}".format(word, local_cache[word]))
                         analysis = local_cache[word]
                         if storedict:
                             if analysis:
@@ -1608,7 +1609,10 @@ class Language:
                                 string += " "
                             string += analysis
                         elif raw or not minim:
-                            print(analysis, file=out)
+#                            print("** printing stored analysis {}".format(analysis))
+                            print(analysis, file=out, end='')
+                            if segment:
+                                print()
                     else:
                         # If there's no point in analyzing the word (because it contains
                         # the wrong kind of characters or whatever), don't bother.
@@ -1619,12 +1623,10 @@ class Language:
                                 analysis = word
                             elif raw or um:
                                 analysis = "{}  {}".format(word, analysis)
-                            elif segment:
-                                analysis = "{}: {}\n".format(word, analysis)
-#                            elif lemma_only:
-#                                analysis = "{}: {}".format(word, analysis)
                             else:
-                                analysis = "{}: {}\n".format(word, analysis)
+                                analysis = "{}: {}".format(word, analysis)
+                                if not segment and not raw:
+                                    analysis += "\n"
                         else:
                             # Attempt to analyze the word
                             form = word
@@ -1632,19 +1634,17 @@ class Language:
                             if preproc:
                                 form, simps = self.preproc(form)
                             analyses = \
-                            self.anal_word(form, fsts=fsts, guess=guess,
-                                           phon=phon, only_guess=only_guess,
+                            self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
                                            segment=segment, experimental=experimental,
-                                           root=root, stem=True,
-                                           citation=citation and not raw,
-                                           normalize=normalize,
-                                           gram=gram, ortho_only=ortho_only,
+                                           root=root, stem=True, citation=citation and not raw,
+                                           normalize=normalize, gram=gram, ortho_only=ortho_only,
                                            preproc=False, postproc=postproc and not raw,
                                            cache=cache, no_anal=no_anal, um=um,
-                                           rank=rank, report_freq=report_freq,
-                                           nbest=nbest,
-                                           string=not raw and not um,
-                                           print_out=False, only_anal=storedict)
+                                           rank=rank, report_freq=report_freq, nbest=nbest,
+                                           string=not raw and not um, print_out=False, only_anal=storedict)
+#                            print("** analyses {}".format(analyses))
+                            if segment and realize:
+                                analyses = [realizer(analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
                             if minim:
                                 analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
 #                            elif raw and analyses:
@@ -1655,19 +1655,19 @@ class Language:
                                 analysis = analyses
                             # Otherwise (for file or terminal), convert to a string
                             elif not minim:
+#                                print("*** realized analyses {}".format(analyses))
                                 if analyses:
                                     if raw or um:
                                         analysis = "{}  {}".format(form, analyses.__repr__())
-                                    else:
+                                    elif not realize:
                                         # Convert the analyses to a string
-                                        analysis = self.analyses2string(word, analyses,
-                                                                        seg=segment,
-                                                                        form_only=not gram,
-                                                                        lemma_only=lemma_only,
-                                                                        ortho_only=ortho_only,
-                                                                        short=False, word_sep=word_sep)
+                                        analysis = self.analyses2string(word, analyses, seg=segment,
+                                                                        form_only=not gram, lemma_only=lemma_only,
+                                                                        ortho_only=ortho_only, short=False, word_sep=word_sep)
+                                    else:
+                                        analysis = "{}: {}".format(word, analyses)
                                 elif segment:
-                                    analysis = "{}: {}".format(word, form)
+                                    analysis = "{}: {}".format(word, analyses)
                                 else:
                                     analysis = word
                         # Either store the analyses in the dict or write them to the terminal or the file
@@ -1682,9 +1682,13 @@ class Language:
 #                            analysis = self.pretty_analyses(analysis)
 #                            print(analysis, file=out)
                         else:
+#                            print("** printing analysis {}".format(analysis))
                             print(analysis, file=out, end='')
+                        if segment:
+                            # Add a newline for each segmented word
+                            print()
                         local_cache[word] = analysis
-                if minim:
+                if minim or segment:
                     # End of line
                     print(string, file=out)
             filein.close()
@@ -1772,8 +1776,7 @@ class Language:
 
     def analyses2string(self, word, analyses, seg=False, form_only=False,
                         lemma_only=False, ortho_only=False,
-                        word_sep='\n',
-                        short=False, webdicts=None):
+                        word_sep='\n', short=False, webdicts=None):
         '''
         Convert a list of analyses to a string, and if webdicts, add analyses to dict.
         '''
@@ -1807,8 +1810,7 @@ class Language:
                         if pos in self.morphology:
                             s += self.morphology[pos].pretty_anal(analysis, root=root, fs=features)
                         elif self.morphology.anal2string:
-                            s += self.morphology.anal2string(analysis, webdict=webdict,
-                                                             lemma_only=lemma_only)
+                            s += self.morphology.anal2string(analysis, webdict=webdict, lemma_only=lemma_only)
             else:
                 fs = analysis[3]
 #                print("fs {}".format(fs.__repr__()))
@@ -1824,8 +1826,7 @@ class Language:
                     if pos in self.morphology:
                         if self.morphology[pos].anal2string:
                             analstring = \
-                            self.morphology[pos].anal2string(analysis, webdict=webdict,
-                                                             lemma_only=lemma_only)
+                            self.morphology[pos].anal2string(analysis, webdict=webdict, lemma_only=lemma_only)
                             if lemma_only:
                                 if analstring not in lemmas:
                                     lemmas.append(analstring)

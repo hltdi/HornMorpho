@@ -29,7 +29,7 @@ from geez.py).
 
 from . import language
 #from .geez import *
-from .utils import segment, allcombs
+from .utils import segment, allcombs, isnumstring
 from .rule import *
 from .ees import *
 
@@ -41,6 +41,15 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
 
 ALT_PHONES = ['^s', '^S', 'H', '^h', "`", '^sW', '^SW', '^hW']
 SIMP_PHONES = ['s', 'S', 'h', "'", 'sW', 'SW', 'hW']
+
+### Analysis of numerals, etc.
+
+def trivial_anal(string):
+    if string.isdigit():
+        return int(string)
+    if isnumstring(string):
+        return float(string)
+    return no_convert(string)
 
 ### Various functions that will be values of attributes of Amharic Morphology
 ### and POSMorphology objects.
@@ -129,12 +138,13 @@ def webfv(webdict, feature, value):
         webdict[feature] = value
 
 def cop_anal2string(anal, webdict=None, **kwargs):
-    '''Convert a copula analysis to a string.
+    '''
+    Convert a copula analysis to a string.
     '''
     s = ' POS = copula'
     root = anal[1]
     citation = anal[2]
-    if 'lemma_only' in kwargs:
+    if kwargs.get('lemma_only'):
         return "{}".format(citation)
     fs = anal[3]
     if kwargs.get('lemma_only'):
@@ -807,7 +817,7 @@ AMH.morphology.simplify = lambda word: simplify(word)
 AMH.morphology.orthographize = lambda word: orthographize(word)
 
 # Function that performs trivial analysis on forms that don't require romanization
-AMH.morphology.triv_anal = lambda form: no_convert(form)
+AMH.morphology.triv_anal = trivial_anal
 
 ## Functions converting between feature structures and simple dicts
 AMH.morphology['v'].anal_to_dict = lambda root, anal: vb_anal_to_dict(root, anal)

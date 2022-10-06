@@ -74,6 +74,15 @@ def segment(word, units, correct=True):
                 pos += 1
     return res
 
+### String functions
+def isnumstring(string):
+    """
+    Is string a string representation of a numeral?
+    """
+    string = string.replace(".", '', 1)
+    string = string.replace("-", '', 1)
+    return string.isdigit()
+
 ### Sequence functions
 
 def isseq(item):

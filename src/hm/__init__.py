@@ -97,9 +97,9 @@ def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
 
 seg = seg_word
 
-def seg_file(language, infile, outfile=None, experimental=False,
-             realize=False,
-             preproc=True, postproc=True, start=0, nlines=0):
+def seg_file(language, infile, outfile=None, experimental=True, realize=True,
+             citation=True, preproc=True, postproc=True, start=0, nlines=0,
+             verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
@@ -115,10 +115,11 @@ def seg_file(language, infile, outfile=None, experimental=False,
     global SEGMENT
     SEGMENT = True
     if language:
-        language.anal_file(infile, outfile, gram=False,
+        language.anal_file(infile, outfile, gram=False, citation=citation,
                            pos=None, preproc=preproc, postproc=postproc,
-                           segment=True, only_guess=False, guess=False,
-                           start=start, nlines=nlines)
+                           segment=True, only_guess=False, guess=False, experimental=experimental,
+                           realize=realize, start=start, nlines=nlines,
+                           verbosity=verbosity)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
@@ -164,21 +165,17 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                              phonetic=phonetic, segment=segment, only_guess=guess,
                              lemma_only=lemma_only, ortho_only=ortho_only,
                              guess=not dont_guess, cache=False,
-                             nbest=nbest, report_freq=freq,
-                             um=um, normalize=normalize and raw,
+                             nbest=nbest, report_freq=freq, um=um, normalize=normalize and raw,
                              init_weight=init_weight, string=not raw and not um,
-                             print_out=not raw and not um,
-                             fsts=pos, verbosity=verbosity)
+                             print_out=not raw and not um, fsts=pos, verbosity=verbosity)
         if raw or um:
             return analysis
 
 anal = anal_word
 
 def anal_files(language, infiles, outsuff='.out',
-               root=True, citation=True, gram=True,
-               lemma_only=False, ortho_only=False,
-               normalize=False,
-               preproc=True, postproc=True, guess=False, raw=False,
+               root=True, citation=True, gram=True, lemma_only=False, ortho_only=False,
+               normalize=False, preproc=True, postproc=True, guess=False, raw=False,
                dont_guess=False, rank=True, freq=True, nbest=5):
     """Analyze the words in a set of files, writing the analyses to
     files whose names are the infile names with outpre prefixed to them.
@@ -190,24 +187,20 @@ def anal_files(language, infiles, outsuff='.out',
         for infile in infiles:
             outfile = infile + outsuff
             language.anal_file(infile, outfile, root=root, citation=citation,
-                               gram=gram,
-                               pos=None, preproc=preproc, postproc=postproc,
-                               nbest=nbest,
-                               normalize=normalize and raw,
+                               gram=gram, pos=None, preproc=preproc, postproc=postproc,
+                               nbest=nbest, normalize=normalize and raw,
                                only_guess=guess, guess=not dont_guess,
                                ortho_only=ortho_only, lemma_only=lemma_only,
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
               root=True, citation=True, gram=True, um=False,
-              lemma_only=False, ortho_only=False,
-              normalize=False,
+              lemma_only=False, ortho_only=False, normalize=False,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
-              feats=None, simpfeats=None,
-              word_sep='\n', sep_ident=False, minim=False,
-              rank=True, freq=True, nbest=100,
-              start=0, nlines=0):
+              feats=None, simpfeats=None, word_sep='\n', sep_ident=False, minim=False,
+              rank=True, freq=True, nbest=100, start=0, nlines=0,
+              verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
@@ -239,15 +232,14 @@ def anal_file(language, infile, outfile=None,
     language = morpho.get_language(language)
     if language:
         language.anal_file(infile, outfile, root=root, citation=citation,
-                           gram=gram, um=um,
-                           pos=None, preproc=preproc, postproc=postproc,
+                           gram=gram, um=um, pos=None, preproc=preproc, postproc=postproc,
                            only_guess=guess, guess=not dont_guess, raw=raw,
                            lemma_only=lemma_only, ortho_only=ortho_only,
                            nbest=nbest, normalize=normalize and raw,
                            sep_punc=sep_punc, feats=feats, simpfeats=simpfeats,
                            word_sep=word_sep, sep_ident=sep_ident, minim=minim,
-                           lower_all=lower_all,
-                           start=start, nlines=nlines)
+                           lower_all=lower_all, start=start, nlines=nlines,
+                           verbosity=verbosity)
 
 def gen(language, root, features=[], pos=None, guess=False,
         phon=False, ortho=True, ortho_only=False,
@@ -295,12 +287,9 @@ def gen(language, root, features=[], pos=None, guess=False,
                 if features:
                     um_converted = True
             if features or not um:
-                output = posmorph.gen(root, update_feats=features,
-                                      interact=interact,
-                                      del_feats=del_feats,
-                                      ortho=ortho, phon=phon,
-                                      ortho_only=ortho_only,
-                                      postproc=is_not_roman, guess=guess,
+                output = posmorph.gen(root, update_feats=features, interact=interact,
+                                      del_feats=del_feats, ortho=ortho, phon=phon,
+                                      ortho_only=ortho_only, postproc=is_not_roman, guess=guess,
                                       verbosity=verbosity)
                 if output:
                     outputs.extend(output)
@@ -319,10 +308,8 @@ def gen(language, root, features=[], pos=None, guess=False,
 #                    print("Generating {}, {} (POS={})".format(root, features.__repr__(),
 #                                                              posmorph.pos))
                     output = posmorph.gen(root, update_feats=features,
-                                          interact=interact,
-                                          del_feats=del_feats,
-                                          ortho=ortho, phon=phon,
-                                          ortho_only=ortho_only,
+                                          interact=interact, del_feats=del_feats,
+                                          ortho=ortho, phon=phon, ortho_only=ortho_only,
                                           postproc=is_not_roman, guess=guess,
                                           verbosity=verbosity)
 #                    print("Output for {}: {}".format(posmorph.pos, output))
