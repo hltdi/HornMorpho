@@ -1500,6 +1500,7 @@ class Language:
             analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
+        self.filter_analyses(analyses)
 #        print("print_out {}, string {}, segment {}".format(print_out, string, segment))
         if print_out:
             # Print out stringified version
@@ -1579,7 +1580,6 @@ class Language:
                     line = self.morphology.sep_punc(line)
                 # Separate numerals joined to nouns
                 line = self.morphology.sep_num(line)
-#                print("** line {}".format(line))
                 identifier = ''
                 string = ''
                 if sep_ident:
@@ -1592,7 +1592,7 @@ class Language:
                 for w_index, word in enumerate(line.split()):
                     if verbosity > 1:
                         print("  Analyzing {}".format(word))
-                    # Ignore punctuation
+#                    # Ignore punctuation
 #                    if word in self.morphology.punctuation:
 #                        continue
                     # Lowercase on the first word, assuming a line is a sentence
@@ -2168,6 +2168,7 @@ class Language:
         if rank:
             result_list.sort(key=lambda x: -x[1])
         result_list = result_list[:nbest]
+        self.filter_analyses(result_list)
 #        print("result list {}".format(result_list))
         if gram:
             # Include grammatical analyses
@@ -2225,6 +2226,23 @@ class Language:
                 else:
                     print('{}'.format(anal), end=' ')
             print()
+
+    def filter_analyses(self, analyses):
+        '''
+        analyses is a sorted list of analyses with estimated freq as the last item
+        in each analysis.
+        If there are multiple analyses, ones are eliminated if their freq is 0
+        or less than 0.02 of the previous freq.
+        '''
+#        print("** Filtering {}".format(analyses))
+        while len(analyses) > 1:
+            last_freq = analyses[-1][-1]
+            prev_freq = analyses[-2][-1]
+            if (not last_freq and prev_freq) or (last_freq and (prev_freq / last_freq > 50)):
+#                print("*** Dropping {}".format(analyses[-1]))
+                analyses.pop()
+            else:
+                return
 
     def ortho2phon_file(self, infile, outfile=None, gram=False,
                         word_sep='\n', anal_sep=' ', print_ortho=True,

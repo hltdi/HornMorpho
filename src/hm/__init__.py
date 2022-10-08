@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
+def seg_word(language, word, nbest=3, raw=False, realize=True, features=True,
              rank=True, citation=True, transortho=True, experimental=True, udformat=True):
     '''Segment a single word and print out the results.
 
@@ -98,7 +98,7 @@ def seg_word(language, word, nbest=5, raw=False, realize=True, features=True,
 seg = seg_word
 
 def seg_file(language, infile, outfile=None, experimental=True, realize=True,
-             citation=True, preproc=True, postproc=True, start=0, nlines=0,
+             citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=3,
              verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
@@ -118,7 +118,7 @@ def seg_file(language, infile, outfile=None, experimental=True, realize=True,
         language.anal_file(infile, outfile, gram=False, citation=citation,
                            pos=None, preproc=preproc, postproc=postproc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
-                           realize=realize, start=start, nlines=nlines,
+                           realize=realize, start=start, nlines=nlines, nbest=nbest,
                            verbosity=verbosity)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
@@ -176,7 +176,7 @@ anal = anal_word
 def anal_files(language, infiles, outsuff='.out',
                root=True, citation=True, gram=True, lemma_only=False, ortho_only=False,
                normalize=False, preproc=True, postproc=True, guess=False, raw=False,
-               dont_guess=False, rank=True, freq=True, nbest=5):
+               dont_guess=False, rank=True, freq=True, nbest=3):
     """Analyze the words in a set of files, writing the analyses to
     files whose names are the infile names with outpre prefixed to them.
     See anal_file for description of parameters."""
@@ -596,11 +596,13 @@ def get_language(abbrev):
 
 ## Shortcuts for Amharic
 A = lambda w, raw=False: anal_word('amh', w, raw=raw)
-S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho)
+S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
+                                                                                experimental=False)
 X = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
                                                                                 experimental=True)
 P = lambda w, raw=False: phon_word('amh', w, raw=raw)
 G = lambda r, features=None: gen('amh', r, features=features)
 AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('amh', infile, outfile=outfile, raw=raw, gram=False)
-SF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile)
+SF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=False)
+XF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=True)
 PF = lambda infile, outfile=None: phon_file('amh', infile, outfile=outfile)
