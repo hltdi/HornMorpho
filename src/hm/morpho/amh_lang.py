@@ -118,8 +118,21 @@ def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     Only return citation for deverbal nouns.
     '''
     if fs.get('v'):
-        # It's a deverbal noun
-        return vb_get_citation(root, fs, guess=guess, vc_as=vc_as)
+        deriv = fs['v']
+        print("** Getting citation for deverbal noun {}, type {}".format(root, deriv))
+        if deriv == 'man':
+            fss = language.FeatStruct("[pos=n,-def,v={}]".format(deriv))
+        else:
+            # For agt, inf, and ins we need the aspect and voice features
+            fsa, fsv = fs.get('as'), fs.get('vc')
+            fss = language.FeatStruct("[pos=n,-def,-plr,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(deriv, fsa, fsv))
+        citation = AMH.morphology['n'].gen(root, fss, from_dict=False, phon=True,
+                                           postproc=False, guess=guess)
+        if citation:
+            return citation[0][0]
+        else:
+            print("** Unable to generated deverbal noun")           
+            return None
     else:
         return None
 
@@ -559,7 +572,7 @@ def vb_anal_to_dict(root, fs):
 
 def vb_dict_to_anal(root, dct, freeze=True):
     '''Convert a verb analysis dict to a Feature Structure.'''
-    fs = FeatStruct()
+    fs = language.FeatStruct()
     root = root or dct['root']
 
     # Arguments
@@ -567,7 +580,7 @@ def vb_dict_to_anal(root, dct, freeze=True):
     if dct.get('obj'):
         obj = list_to_arg(dct, 'obj')
     else:
-        obj = FeatStruct()
+        obj = language.FeatStruct()
         obj['expl'] = False
     fs['sb'] = sbj
     fs['ob'] = obj
@@ -648,7 +661,7 @@ def agr_to_list(agr, cat, formal=False):
 
 def list_to_arg(dct, prefix):
     '''Convert a dict to an argument Feature Structure.'''
-    arg = FeatStruct()
+    arg = language.FeatStruct()
     person = dct.get(prefix + '_pers')
     number = dct.get(prefix + '_num')
     gender = dct.get(prefix + '_gen')

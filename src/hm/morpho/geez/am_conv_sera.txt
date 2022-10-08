@@ -20,6 +20,7 @@
 ከ=ke ኩ=ku ኪ=ki ካ=ka ኬ=kE ክ=k ኮ=ko
 ወ=we ዉ=wu ዊ=wi ዋ=wa ዌ=wE ው=w ዎ=wo
 ዐ=`a='a ዑ=`u='u ዒ=`i='i ዓ=`a='a ዔ=`E='E ዕ=`=' ዖ=`o='o ዓ=`A
+አ=a ኡ=u ኢ=i ኣ=A ኤ=E እ=I ኦ=o
 ኡ='u ኢ='i ኣ='a ኤ='E እ=' ኦ='o ኣ='A
 አ='a
 ኧ='e

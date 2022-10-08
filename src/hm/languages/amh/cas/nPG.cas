@@ -49,10 +49,10 @@ R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
 
 # 0
 # Delete initial GS if there is one
->delGS<
+#>delGS<
 # 1, 2 Epenthetic vowel2
->epen2<
->epen1<
+#>epen2<
+#>epen1<
 # 3 Convert pre-geminate / to geminate _
 >pre_gem<
 # 4 Simplify consonants: ^s -> s, etc.

@@ -14,7 +14,7 @@ V -> Vy         [y:]
 Vy -> start     [E]
 # Vwo
 V -> Vw         [w:]
-Vw -> start     [o]
+Vw -> V     [o]
 
 # iya
 start -> i      [i]
@@ -22,17 +22,17 @@ i -> iy         [y:]
 # or i->I
 start -> Ii     [I:i]
 Ii -> iy        [y:]
-iy -> start     [a]       # only a possible?
+iy -> V     [a]       # only a possible?
 
 # Eya
 start -> E      [E]
 E -> Ey         [y:]
-Ey -> start     [a]       # only a possible?
+Ey -> V     [a]       # only a possible?
 
 # owa, uwa
 start -> ou     [o;u]
 ou -> ouw       [w:]
-ouw -> start    [a]       # only a possible
+ouw -> V    [a]       # only a possible
 
 start -> e      [e]
 e -> V          [V-o]     # o also possible?
