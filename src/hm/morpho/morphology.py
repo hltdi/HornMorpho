@@ -164,6 +164,8 @@ class Morphology(dict):
         Is word an unanalyzable word? If so, return the word preceded by its POS
         if available.
         """
+        # Replaces spaces by //
+        word = word.replace(' ', '//')
         if ortho and (word in self.punctuation or word in PUNC_TOKENS):
             return word
         if ortho and not self.words:
@@ -595,7 +597,7 @@ class POSMorphology:
         ## Functions
         self.anal_to_dict = lambda root, fs: {'root': root}
         self.dict_to_anal = lambda root, dct: ['', FSSet('[]')]
-        # Generate citation form
+        # Generate citation form; a function taking 
         self.citation = None
         # Analysis to string
         self.anal2string = None

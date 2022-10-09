@@ -761,7 +761,7 @@ def postproc_nroot(root, fs, phonetic=True, simplifications=None):
 
 def dflt_postproc_root(root, fs, phonetic=True, simplifications=None):
     if phonetic:
-        root = AMH.convert_root(root)
+        return AMH.convert_root(root)
     elif simplifications:
         root = complicate_stem(root, simplifications)
     return geezify(root)
@@ -774,6 +774,8 @@ def postproc_word(word, ipa=False, phon=True, ortho_only=False,
     conventional representation.
     """
 #    print("Postprocessing {}, phon={}".format(word, phon))
+    if '//' in word:
+        word = word.replace('//', ' ')
     ortho = geezify(word, deepenthesize=phon)
     if ortho_only:
         return ortho

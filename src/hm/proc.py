@@ -83,6 +83,17 @@ def old2new_am_root(root):
             cls = 'E'
     return root, cls
 
+def update_adv():
+    '''
+    Add new adverbs from AS to Amh unanalyzed words.
+    '''
+    aa = get_external_roots("ከአብነት", "AllAdverbs.txt", encoding='utf8')
+    misc = get_words('amh')
+    for word in aa:
+        if word not in misc:
+            misc[word] = (word, 'adv')
+    return misc
+
 def AS_NA(new_noun="nouns.txt", new_adj="adjs.txt"):
     '''
     Process the new roots from Abnet.
@@ -356,6 +367,21 @@ def lex_dir(lang):
 
 def get_ext_data(folder, file):
     return OS.path.join(OS.path.dirname(__file__), 'ext_data', folder, file)
+
+def get_words(lang):
+    '''
+    Get unanalyzed words for language.
+    '''
+    words = {}
+    lexd = lex_dir(lang)
+    with open(OS.path.join(lexd, "words.lex")) as f:
+        for line in f:
+            word, wordP, pos = line.split()
+            if word in words:
+                print("{} already in words!".format(word))
+                continue
+            words[word] = (wordP, pos)
+    return words
 
 def get_roots(lang, pos, files, degeminate=False, check_pos=False, trans=False, get_cls=False):
     """Get stems or roots from lex files for lang (a string)."""

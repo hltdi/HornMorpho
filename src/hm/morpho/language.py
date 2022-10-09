@@ -1124,8 +1124,7 @@ class Language:
         '''Postprocess a form.'''
         if self.postproc:
             return self.postproc(form, phon=phon, ipa=ipa,
-                                 ortho_only=ortho_only,
-                                 phonetic=phonetic)
+                                 ortho_only=ortho_only, phonetic=phonetic)
         return form
 
     def postpostprocess(self, form):
@@ -1941,18 +1940,16 @@ class Language:
 #        print("** simple anal {}".format(analysis))
         if segment:
             form, pos = analysis
+            if '//' in form:
+                form = form.replace('//', ' ')
             if postproc:
                 cite = self.postprocess(form, ortho_only=True, phonetic=False)
             else:
                 cite = form
             return pos, form, cite, 100000
-#        analysis[0], analysis[1], 100000
-#        elif postproc:
-#            # Convert the word to Geez.
-#            analysis = (analysis[0], self.postproc(analysis[1]))
-#        if segment:
-#            return analysis
         form, pos = analysis
+        if '//' in form:
+            form = form.replace('//', ' ')
         if citation:
             if postproc:
                 cite = self.postprocess(form, ortho_only=True, phonetic=False)
