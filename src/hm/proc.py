@@ -24,6 +24,26 @@ IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]
 abyss = internet_search.abyssinica
 goog = internet_search.google
 
+def amh_vroot_file():
+    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_root.lex')
+
+def filter_amh_vroots():
+    roots = {}
+    with open(amh_vroot_file()) as file:
+        for line in file:
+            if "t=[e" in line and ("-smp" in line or "+lex" in line or "as=r" in line or "as=i" in line or "vc=p" in line or "vc=c" in line or "vc=t" in line):
+                linesplit = line.split()
+                root = linesplit[0]
+                feats = ' '. join(linesplit[2:])
+                feats = feats.split(';')
+                f = []
+                for feat in feats:
+                    if ("+lex" not in feat and "-smp" not in feat) or ("as=smp" in feat and "vc=smp" in feat):
+                        continue
+                    f.append(feat)
+                roots[root] = f
+    return roots
+
 def get_old_am_root_stats():
     statfile = OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'stat'), 'root_freqs.dct')
     with open(statfile) as file:

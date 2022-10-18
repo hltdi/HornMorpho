@@ -81,10 +81,17 @@ def seg_word(language, word, nbest=3, raw=False, realize=True, features=True,
 #    SEGMENT = True
     simps = None
     if language:
-        # Do the preprocessing first in order to save any character normalizations
-        if language.preproc:
-            word, simps = language.preproc(word)
-        analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
+        # Process special cases
+        numeral = language.morphology.match_numeral(word)
+        if numeral:
+            prenum, num, postnum = numeral
+#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+            analysis = [language.process_numeral(word, prenum, num, postnum, segment=True)]
+        else:
+            # Do the preprocessing first in order to save any character normalizations
+            if language.preproc:
+                word, simps = language.preproc(word)
+            analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
                                       gram=False, segment=True, only_guess=False,
                                       experimental=experimental, rank=rank,
                                       print_out=(not raw and not realize),
@@ -159,8 +166,15 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     language = morpho.get_language(language, cache=cache,
                                    phon=False, segment=segment, experimental=experimental)
     if language:
-        analysis = \
-          language.anal_word(word, preproc=not roman, postproc=not roman,
+        # Process special cases
+        numeral = language.morphology.match_numeral(word)
+        if numeral:
+            prenum, num, postnum = numeral
+#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+            analysis = language.process_numeral(word, prenum, num, postnum, segment=False)
+        else:
+            analysis = \
+              language.anal_word(word, preproc=not roman, postproc=not roman,
                              root=root, citation=citation, gram=gram, gloss=gloss,
                              phonetic=phonetic, segment=segment, only_guess=guess,
                              lemma_only=lemma_only, ortho_only=ortho_only,

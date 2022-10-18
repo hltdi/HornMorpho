@@ -992,6 +992,8 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     root = root2string(root, simplifications=simplifications)
     # Replace the root in the morphemes list
     morphs[rootindex] = root, rootfeats
+#    for m, f in morphs:
+#        print("***  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
 #    for m, f in morphs:
@@ -1011,7 +1013,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     else:
         # Rejoin morpheme and features for each word
         morphs = [[''.join(m) for m in word] for word in morphs]
-    result = {'morphemes': [sep.join(m) for m in morphs]}
+    result = {'morphemes': sep.join(m) for m in morphs}
     if citation:
         result['lemma'] = citation
     if pos:

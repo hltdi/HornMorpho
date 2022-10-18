@@ -118,6 +118,8 @@ POSTPOSTPROC_RE = re.compile(r'\s*postpostproc.*?:\s*(.*)')
 GEMINATION_RE = re.compile(r'\s*gem.*?:\s*.*')
 # Added 2021.11.24
 FEATNORM_RE = re.compile(r'\s*feat.*?norm.*?:\s*(.*)')
+# Added 2022.10.09
+ABBREVCHARS_RE = re.compile(r'\s*abb.*?ch.*?:\s*(.+)')
 #FEATCONV1_RE = re.compile(r'\s*(.*)\s*->\s*(.*)')
 # Added 2022.09.27
 # Get the root from a segmentation string
@@ -394,6 +396,8 @@ class Language:
         postproc = ''
         preproc = ''
 
+        abbrevchars = ''
+
         seg = []
         punc = []
         featnorm = []
@@ -446,6 +450,11 @@ class Language:
                 current = 'featnorm'
                 fcpos = m.group(1).strip()
                 featnorm.append([fcpos])
+                continue
+
+            m = ABBREVCHARS_RE.match(line)
+            if m:
+                abbrevchars = m.group(1)
                 continue
 
             # Beginning of segmentation units
@@ -792,8 +801,10 @@ class Language:
 #                                     abbrev[pos], fv_abbrev[pos], fv_dependencies[pos],
 #                                     fv_priorities[pos]))
             morph = Morphology(pos_morphs=pos_args,
-                               punctuation=punc, characters=chars)
+                               punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
+        elif self.morphology and abbrevchars:
+            self.morphology.abbrev_chars = abbrevchars
 
         if featnorm:
             # Convert featnorm list to dict
@@ -1140,6 +1151,7 @@ class Language:
         USE REGEX.'''
         # separate morphemes
         morphs = seg.split(Language.morphsep)
+#        print("*** morphs: {}".format(morphs))
         rootindex = -1
         for index, morph in enumerate(morphs):
             if '(' in morph:
@@ -1155,6 +1167,7 @@ class Language:
                 morph[0] = form
                 rootindex = index
             morphs[index] = morph
+#        print("**** morphs: {}".format(morphs))
         return morphs, rootindex
 
     def seg2root(self, seg):
@@ -1369,7 +1382,7 @@ class Language:
                   get_all=True, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
-                  only_anal=False, verbosity=0):
+                  only_anal=False, preseg=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both
         lexical and guesser FSTs.
@@ -1394,6 +1407,12 @@ class Language:
         fsts = fsts or self.morphology.pos
         # number of normalization simplifications
         simps = None
+        # Check if it's a word containing a numeral
+#        numeral = self.morphology.match_numeral(word)
+#        if numeral:
+#            prenum, num, postnum = numeral
+#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+#            return self.process_numeral(word, prenum, num, postnum, segment=segment, print_out=print_out)
         if preproc:
             # Convert to roman, for example
             form, simps = self.preproc(word)
@@ -1401,7 +1420,7 @@ class Language:
             form = word
 #        print("** form {}, word {}; simps {}".format(form, word, simps))
         # See if the word is unanalyzable ...
-        unal_word = self.morphology.is_word(form)
+        unal_word = self.morphology.is_unanalyzed(form)
         # unal_word is a form, POS pair
         if unal_word:
             # Don't cache these
@@ -1422,7 +1441,7 @@ class Language:
                                               normalize=normalize, segment=segment, guess=False,
                                               postproc=postproc, gram=gram, freq=rank or report_freq)
 
-        # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)
+        # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)?
         if not analyses and form in self.morphology.analyzed:
             if only_anal:
                 return []
@@ -1520,6 +1539,26 @@ class Language:
 
         return [a for a in analyses if a]
 
+    def anal_word_(self, form, analyses, pos, to_cache,
+                   guess=False, phon=False, segment=False, init_weight=None, experimental=False,
+                   root=True, stem=True, citation=True, gram=True,
+                   phonetic=True, normalize=False,  ortho_only=False, sep_anals=True,
+                   to_dict=False, postproc=False, cache=False, rank=True, report_freq=True,
+                   verbosity=0):
+        analysis = self.morphology[pos].anal(form, guess=guess, init_weight=init_weight,
+                                             phon=phon, segment=segment, experimental=experimental,
+                                             normalize=normalize, to_dict=to_dict, sep_anals=sep_anals,
+                                             verbosity=verbosity)
+##        print("*** analysis: {}".format(analysis))
+        if analysis:
+            if cache:
+                to_cache.extend(analysis)
+                # Keep trying if an analysis is found
+                analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
+                                               ortho_only=ortho_only, segment=segment, normalize=normalize,
+                                               stem=stem, phonetic=phonetic, guess=guess, postproc=postproc, gram=gram,
+                                               freq=rank or report_freq))
+
     def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
                   root=True, citation=True, segment=False, gram=True,
                   lemma_only=False, ortho_only=False, realize=False,
@@ -1577,8 +1616,8 @@ class Language:
                 # Separate punctuation from words
                 if sep_punc:
                     line = self.morphology.sep_punc(line)
-                # Separate numerals joined to nouns
-                line = self.morphology.sep_num(line)
+#                # Separate numerals joined to nouns
+#                line = self.morphology.sep_num(line)
                 identifier = ''
                 string = ''
                 if sep_ident:
@@ -1695,6 +1734,31 @@ class Language:
                 fileout.close()
         except IOError:
             print('No such file or path; try another one.')
+
+    def process_numeral(self, word, pre, num, post, segment=False, print_out=False):
+        '''
+        Return analysis or segmentation of word containing numeral.
+        %% TODO: finish analysis
+        '''
+        pos = 'n' if post else 'num'
+        lemma = post if post else num
+        if print_out:
+            string = "{} -- num: {}".format(word, num)
+            if post:
+                string += ", head: {}".format(post)
+            if pre:
+                string += ", prep: {}".format(pre)
+            print(string)
+        elif segment:
+            if post:
+                string = "{}(@num)-{{{}}}".format(num, post)
+            else:
+                string = "{{}}".format(num)
+            if pre:
+                string = "{}(@adp)-".format(pre) + string
+            return [pos, string, lemma]
+        else:
+            return [{'POS': pos, 'lemma': lemma, 'freq': 1000}]
 
     def minim_string(self, form, analyses=None, feats=None, simpfeats=None):
         """Create a minimal string representing the analysis of a word.
@@ -2231,15 +2295,30 @@ class Language:
         If there are multiple analyses, ones are eliminated if their freq is 0
         or less than 0.02 of the previous freq.
         '''
+        if len(analyses) == 1:
+            return
 #        print("** Filtering {}".format(analyses))
-        while len(analyses) > 1:
-            last_freq = analyses[-1][-1]
-            prev_freq = analyses[-2][-1]
-            if (not last_freq and prev_freq) or (last_freq and (prev_freq / last_freq > 50)):
+        drop_index = 1
+        last_freq = analyses[0][-1]
+        for analysis in analyses[1:]:
+            freq = analysis[-1]
+            if last_freq:
+                if not freq or last_freq / freq > 50:
+                    break
+            last_freq = freq
+            drop_index += 1
+        while len(analyses) > drop_index:
+#            print("*** Dropping {}".format(analyses[-1]))
+            analyses.pop()
+        
+#        while len(analyses) > 1:
+#            last_freq = analyses[-1][-1]
+#            prev_freq = analyses[-2][-1]
+#            if (not last_freq and prev_freq) or (last_freq and (prev_freq / last_freq > 50)):
 #                print("*** Dropping {}".format(analyses[-1]))
-                analyses.pop()
-            else:
-                return
+#                analyses.pop()
+#            else:
+#                return
 
     def ortho2phon_file(self, infile, outfile=None, gram=False,
                         word_sep='\n', anal_sep=' ', print_ortho=True,

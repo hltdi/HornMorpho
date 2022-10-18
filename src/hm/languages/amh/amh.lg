@@ -1,6 +1,8 @@
 name: አማርኛ
 code: amh
 
+abbrev_chars: /.
+
 featnorm: v
   sb=[-p1,-p2] -> sp=3
   sb=[+p1] -> sp=1

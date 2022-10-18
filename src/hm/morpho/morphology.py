@@ -53,10 +53,13 @@ class Morphology(dict):
     suffix = re.compile('\s*suf.*:\s+(\S+)(\s.+)?')   # a single space separates the suffix from the segmented form
     grammar = re.compile('\s*gram.*:\s+(\w+)\s+(.+)')
     POS = re.compile('\s*pos:\s+(\w+)')
-#    stem = re.compile('\s*stem:')
-#    segs = re.compile('\s*segs:')
 
-    def __init__(self, pos_morphs=[], punctuation='', characters=''):
+    # Regex for numerals or words containing numerals
+    # %% Does this work for all Horn languages?
+    numeral = re.compile('(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
+
+    def __init__(self, pos_morphs=[], punctuation='', characters='',
+                 abbrev_chars='.'):
                  #                 fsh=None,
 #                 feat_abbrevs=None,
 #                 fv_abbrevs=None):
@@ -88,6 +91,10 @@ class Morphology(dict):
         self.words = []
         self.words_phon = {}
         self.seg_units = []
+        # Characters signalling abbrevations
+        self.abbrev_chars = abbrev_chars
+        # Regex to identify abbreviations
+        self.abbrevRE = None
         self.language = None
         # Dictionary of preanalyzed words (varying POS)
         self.analyzed = {}
@@ -105,9 +112,11 @@ class Morphology(dict):
         self.directory = ''
         self.punctuation = punctuation or PUNCTUATION
         self.characters = characters or CHARACTERS
+        # Language-specific method for analyzing or segmenting words containing numerals
+        self.proc_num = None
         # Make punctuation regular expression objects and substitution string
         self.init_punc(self.characters, self.punctuation)
-        self.init_num(self.characters)
+#        self.init_num(self.characters)
 #        # Dict of feature names expanded to more readable strings
 #        self.feat_abbrevs = feat_abbrevs or {}
         # List of feat-val pair list and abbreviations
@@ -137,13 +146,12 @@ class Morphology(dict):
         self.punc_before_re = re.compile(r'(' + punc + r'{1,3})(' + chars + r')', re.U)
         self.punc_sub = r'\1 \2'
 
-    def init_num(self, chars):
-        '''
-        Make numeral regular expression objects and substitution string.
-        '''
-#        self.num_after_re = re.compile(r'(' + chars + r')(\d+?)', re.U)
-        self.num_before_re = re.compile(r'(\d+?)(' + chars + r')', re.U)
-        self.num_sub = r'\1 \2'
+#    def init_num(self, chars):
+#        '''
+#        Make numeral regular expression objects and substitution string.
+#        '''
+#        self.num_before_re = re.compile(r'(\d+?)(' + chars + r')', re.U)
+#        self.num_sub = r'\1 \2'
 
     def sep_punc(self, text):
         """Separate punctuation from words."""
@@ -151,15 +159,38 @@ class Morphology(dict):
         text = self.punc_before_re.sub(self.punc_sub, text)
         return text
 
-    def sep_num(self, text):
-        """
-        Separate punctuation from words.
-        """
-#        text = self.num_after_re.sub(self.num_sub, text)
-        text = self.num_before_re.sub(self.num_sub, text)
-        return text
+#    def sep_num(self, text):
+#        """
+#        Separate punctuation from words.
+#        """
+#        text = self.num_before_re.sub(self.num_sub, text)
+#        return text
 
-    def is_word(self, word, simple=False, ortho=True):
+    def match_numeral(self, string):
+        '''
+        Does the string contain a numeral? If it does,
+        return the characters before, the numeral as a string, and the characters after.
+        '''
+        match = Morphology.numeral.fullmatch(string)
+        if match:
+            return match.groups()
+        return False
+
+    def process_numeral(self, pre, num, post):
+        '''
+        Analyze or segment a numeral word with pre chars (normally a preposition),
+        the numeral itself, and post chars (normally a measure noun).
+        '''
+        if self.proc_num:
+            return self.proc_num(pre, num, post)
+        if post:
+            return 'n', "{} {} {}".format(pre, num, post)
+        elif pre:
+            return 'num', "{} {}".format(pre, num)
+        else:
+            return 'num', num
+
+    def is_unanalyzed(self, word, simple=False, ortho=True):
         """
         Is word an unanalyzable word? If so, return the word preceded by its POS
         if available.
@@ -178,6 +209,23 @@ class Morphology(dict):
         else:
             word_rec = self.words_phon
             return word_rec.get(word, False)
+
+    def is_abbrev(self, string):
+        '''
+        Is this an abbreviation?
+        '''
+        regex = self.get_abbrevRE()
+        return regex.fullmatch(string)
+
+    def get_abbrevRE(self):
+        '''
+        Return the regex for identifying abbreviations, creating it if it hasn't already
+        been set.
+        '''
+        if not self.abbrevRE:
+            string = "\w+[{}](?:\w+[{}]?)*".format(self.abbrev_chars, self.abbrev_chars)
+            self.abbrevRE = re.compile(string)
+        return self.abbrevRE
 
     def feat_name(self, values):
         if any(values):
