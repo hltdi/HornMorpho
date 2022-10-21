@@ -20,7 +20,7 @@ XX = {b, c, C, d, f, g, h, j, k, l, m, M, n, N, p, P, q, r, s, S, t, T, v, w, x,
 # possible root consonants
 X = {b, c, C, d, f, g, h, j, k, l, m, n, N, P, q, r, s, S, t, T, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # root consonants other than L, y, w
-X! = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, x, *, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+X! = {b, c, C, d, f, g, j, k, l, m, n, N, P, q, r, s, S, t, T, x, *, z, Z, bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # laryngeal consonants
 L = {'}
 # non-laryngeal consonants (include h for Amharic)

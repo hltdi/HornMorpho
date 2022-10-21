@@ -16,19 +16,217 @@ FSS = morpho.FSSet
 geezify = morpho.geez.geezify
 romanize = lambda x: morpho.geez.romanize(x, normalize=True)
 OS = morpho.os
-VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None]")
+VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")
 INF = [FS("[v=inf,cls=A,-def]"), FS("[v=inf,cls=B,-def]")]
 IMP = [FS("[pos=v,tm=j_i,cls=A]"), FS("[pos=v,tm=j_i,cls=B]")]
 IMPFEM = [FS("[pos=v,tm=j_i,cls=A,sb=[+fem]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+fem]]")]
 IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]]")]
 abyss = internet_search.abyssinica
 goog = internet_search.google
+VGEN = A.morphology['v'].gen
+VPOSP = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=ps,pp=None,cj2=None,-rel,-sub]")
+VPOST = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=tr,pp=None,cj2=None,-rel,-sub]")
+VPOSR = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],as=rc,vc=ps,pp=None,cj2=None,-rel,-sub]")
+VPOSRT = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],as=rc,vc=tr,pp=None,cj2=None,-rel,-sub]")
+
+CONS = "bcCdfghHkKlmnNpPqrsStTwxyzZ"
+
+def get_roots_patterns():
+    roots = {}
+    missing = []
+    with open('root_patterns.txt') as file:
+        for line in file:
+            root, pattern = line.strip().split('\t')
+            pattern = get_root_form_pattern(pattern)
+            if root in roots:
+                roots[root].append(pattern)
+            else:
+                roots[root] = [pattern]
+    with open(amh_vroot_file()) as file:
+        for line in file:
+            root = line.partition(' ')[0]
+            if root in roots:
+                continue
+            if root[0] == 'n':
+#                if root[1:] in roots:
+#                    print("{} in list with missing n-".format(root))
+#                else:
+                missing.append(line.strip())
+            else:
+                missing.append(line.strip())
+    missing = [lexline2rootFSS(line) for line in missing]
+    missing = [x for x in missing if x]
+    missing = [rootclass2Root(root, fss) for root, fss in missing]
+    with open("missing_vroots.txt", 'w', encoding='utf8') as file:
+        for root, lemma in missing:
+            print("{}".format(lemma), file=file)
+    with open("root_patterns2.txt", 'w') as file:
+        for root, patterns in roots.items():
+            print("{}\t{}".format(root, "\t".join(patterns)), file=file)
+    return roots, missing
+
+def lexline2rootFSS(line):
+    '''
+    Convert a line in v_root.lex to a root and FSSet
+    '''
+    if '#' in line:
+        return None
+    line = line.split(' ')
+    root = line[0]
+    feats = ' '.join(line[2:])
+    feats = feats.split(';')
+    fss = FSS(*feats)
+    return root, fss
+
+def rootclass2Root(root, fss):
+    '''
+    Generate a lemma-like verb root, e.g., በለጨለጨ, from an HM root and class.
+    '''
+    # generate real lemma
+    cls = fss.get('cls')
+    vc = fss.get('vc')
+    asp = fss.get('as')
+    
+    if vc == 'tr':
+        if asp == 'rc':
+            f = VPOSRT
+        else:
+            f = VPOST
+    elif cls in "GJ" or vc == 'ps' or fss.get('smp') is False:
+        if asp == 'rc':
+            f = VPOSR
+        else:
+            f = VPOSP
+    elif asp == 'rc':
+        f = VPOSR
+    else:
+        f = VPOS
+    l = VGEN(root, update_feats=f)
+    if l:
+        l = l[0][0]
+    else:
+        print("Couldn't generate {}:{}".format(root, cls))
+    # irregulars
+    if root == "b'l":
+        return "አለ"
+    if root == "tw":
+        return "ተወ"
+    # delete initial n in classes G and J
+    if root[0] == 'n' and cls in 'GHJ':
+        root = root[1:]
+    chars = ''
+    for i, char in enumerate(root):
+        if char == 'W':
+            if root[i+1] == "'":
+                chars += 'W'
+            else:
+                chars += 'o'
+        elif char == '*':
+            chars += "e"
+        elif char == "'":
+            chars += 'a'
+        else:
+            chars += char
+    root = chars
+#    root = root.replace("'", "a").replace("W", "o").replace("*", "e")
+    if root[1] == 'w' and cls == 'A':
+        root = root.replace("w", "o")
+    if root[1] == 'y' and cls == 'A':
+        if root[0] in "cCjxZ":
+            root = root.replace('y', 'e')
+        else:
+            root = root.replace('y', 'E')
+    result = ''
+    for i, char in enumerate(root):
+        result += char
+        if char in CONS:
+            # end of root, need -e
+            if i == len(root) - 1 or root[i+1] in CONS:
+                result += 'e'
+    result = geezify(result)
+    return result, geezify(l)
+
+def get_root_form_pattern(forms):
+    '''
+    forms is a list of 
+    returns: 
+    '''
+    s = ''
+    for pos in [(0,), (1,), (4,), (7,), (2,5), (3,6), (8,)]:
+        x = '0'
+        for p in pos:
+            if len(forms) > p:
+               if forms[p] == '1':
+                   x = '1'
+                   break
+        s += x
+    return s
+        
+    # 0 ደራጊ
+    # 1 ተደራጊ
+    # 2 አድራጊ
+    # 3 አስደራጊ
+    # 4 ተዳራጊ አዳራጊ
+    # 5 ተደራራጊ አደራራጊ
+    # 6 ደራራጊ
+
+def Root2root(Root):
+    """
+    Convert a 'Root', a lemma-like, Geez representation of a verb root, to an HM root.
+    """
+    cls = 'A'
+    if len(Root) > 4:
+        cls = 'G'
+    rom = romanize(Root)
+    if cls == 'G':
+        if rom[1] == 'o':
+            if rom[0] in 'mbf':
+                rom = rom[0] + 'u' + rom[2:]
+            else:
+                rom = rom[0] + 'W' + rom[2:]
+        else:
+            rom = rom[0] + rom[2:]
+        rom = 'te' + rom
+    anal = A.morphology['v'].anal(rom, guess=False, init_weight=VPOS)
+    if not anal:
+        anal = A.morphology['v'].anal(rom, guess=True, init_weight=VPOS)
+    if not anal:
+        print("Couldn't analyze {}".format(Root))
+        return
+    else:
+        return anal[0][0]
+
+def proc_wuld():
+    result = []
+    roots = {}
+    with open(wuld_file(), encoding='utf16') as file:
+        file.readline()
+        for line in file:
+            items = line.strip().split('\t')
+            Root = items[1]
+            root = Root2root(Root)
+            if not root:
+                continue
+#            if root in roots:
+#                print("{} already in roots".format(root))
+            pattern = items[3:]
+            if root in roots:
+                roots[root].append(pattern)
+            else:
+                roots[root] = [pattern]
+            result.append((root, pattern))
+#            roots.append(root)
+    return roots
+
+def wuld_file():
+    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'ext_data', "ከአብነት", "WuldVerbs"), 'WuldVerbs.txt')
 
 def amh_vroot_file():
     return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_root.lex')
 
 def filter_amh_vroots():
-    roots = {}
+    roots1 = {}
+    roots2 = {}
     with open(amh_vroot_file()) as file:
         for line in file:
             if "t=[e" in line and ("-smp" in line or "+lex" in line or "as=r" in line or "as=i" in line or "vc=p" in line or "vc=c" in line or "vc=t" in line):
@@ -37,12 +235,22 @@ def filter_amh_vroots():
                 feats = ' '. join(linesplit[2:])
                 feats = feats.split(';')
                 f = []
+                nfeats = len(feats)
                 for feat in feats:
                     if ("+lex" not in feat and "-smp" not in feat) or ("as=smp" in feat and "vc=smp" in feat):
                         continue
                     f.append(feat)
-                roots[root] = f
-    return roots
+                if len(f) != nfeats:
+                    roots2[root] = f
+                else:
+                    roots1[root] = f
+    with open("v_except_simp.txt", 'w') as file:
+        for root, feats in roots1.items():
+            print("{}\t{}".format(root, ';'.join(feats)), file=file)
+    with open("v_except_mult.txt", 'w') as file:
+        for root, feats in roots2.items():
+            print("{}\t{}".format(root, ';'.join(feats)), file=file)
+#    return roots1, roots2
 
 def get_old_am_root_stats():
     statfile = OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'stat'), 'root_freqs.dct')

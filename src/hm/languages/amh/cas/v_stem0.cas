@@ -20,7 +20,7 @@ X42 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW
 # restricted list of possible CCCC final consonants (added 2022-09-01, includes ')
 X44 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW, ', *}
 # possible C|CCCC, CCCCC initial consonants (possibly omit S as well)
-X5 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, gW, kW, qW}
+X5 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, gW, kW, qW, mW, fW, bW}
 # possible consonants following | (also other labials?)
 X52 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, fW, gW, kW, mW, qW}
 
