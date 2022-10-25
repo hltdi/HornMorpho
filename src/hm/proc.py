@@ -31,6 +31,39 @@ VPOSRT = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],as=rc,vc=tr,pp=None,cj2=None,-rel,-
 
 CONS = "bcCdfghHkKlmnNpPqrsStTwxyzZ"
 
+ASVC = \
+  {'[as=smp,vc=smp]': '0', '[as=smp,vc=ps]': 'te-', '[as=smp,vc=tr]': 'a-', '[as=smp,vc=cs]': 'as-',
+   '[as=rc,vc=ps]': 'te-a', '[as=rc,vc=tr]': 'a-a', '[as=rc,vc=cs]': 'as-a',
+   '[as=it,vc=smp]': 'R', '[as=it,vc=ps]': 'te-R', '[as=it,vc=tr]': 'a-R', '[as=it,vc=cs]': 'as=R'}
+
+def proc_v_senses():
+    result = []
+    with open(amh_vroot_senses()) as file:
+        for line in file:
+            root, sense, gloss, wld, pattern = line.split(";")
+            root, cls = root.strip().split(':')
+            fs = make_FS(cls)
+            print("Generating {} : {}".format(root, cls))
+            rootG = VGEN(root, update_feats=fs, guess=True)[0][0]
+            print(rootG)
+
+def make_FS(cls, asp='smp', vc='smp'):
+    return FS("[cls={},pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]".format(cls))
+
+def amsalu_vroots():
+    roots = {}
+    with open("v_amheng.txt") as file:
+        for line in file:
+            root, feats, gloss = line.split(" || ")
+            root = old2new_am_root(root)
+            feats = ASVC[feats]
+            if root in roots:
+                if feats not in roots[root]:
+                    roots[root].append(feats)
+            else:
+                roots[root] = [feats]
+    return roots
+
 def get_roots_patterns():
     roots = {}
     missing = []
@@ -48,18 +81,19 @@ def get_roots_patterns():
             if root in roots:
                 continue
             if root[0] == 'n':
-#                if root[1:] in roots:
+                if root[1:] in roots:
+                    pass
 #                    print("{} in list with missing n-".format(root))
-#                else:
-                missing.append(line.strip())
+                else:
+                    missing.append(line.strip())
             else:
                 missing.append(line.strip())
     missing = [lexline2rootFSS(line) for line in missing]
     missing = [x for x in missing if x]
-    missing = [rootclass2Root(root, fss) for root, fss in missing]
-    with open("missing_vroots.txt", 'w', encoding='utf8') as file:
-        for root, lemma in missing:
-            print("{}".format(lemma), file=file)
+    missing = [(root, rootclass2Root(root, fss)) for root, fss in missing]
+    with open("missing_vroots2.txt", 'w', encoding='utf8') as file:
+        for root, (r, lemma) in missing:
+            print("{}".format(root), file=file)
     with open("root_patterns2.txt", 'w') as file:
         for root, patterns in roots.items():
             print("{}\t{}".format(root, "\t".join(patterns)), file=file)
@@ -224,26 +258,35 @@ def wuld_file():
 def amh_vroot_file():
     return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_root.lex')
 
+def amh_vroot_senses():
+    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_senses.lex')
+
 def filter_amh_vroots():
     roots1 = {}
     roots2 = {}
     with open(amh_vroot_file()) as file:
         for line in file:
-            if "t=[e" in line and ("-smp" in line or "+lex" in line or "as=r" in line or "as=i" in line or "vc=p" in line or "vc=c" in line or "vc=t" in line):
-                linesplit = line.split()
-                root = linesplit[0]
-                feats = ' '. join(linesplit[2:])
-                feats = feats.split(';')
-                f = []
-                nfeats = len(feats)
-                for feat in feats:
-                    if ("+lex" not in feat and "-smp" not in feat) or ("as=smp" in feat and "vc=smp" in feat):
-                        continue
-                    f.append(feat)
-                if len(f) != nfeats:
-                    roots2[root] = f
-                else:
-                    roots1[root] = f
+            if "t=[e" in line and "=G" not in line and "=H" not in line and "=J" not in line:
+                # There has to be a gloss for idioms, and assume there aren't any for G,H,J classes
+                if ("-smp" in line or "+lex" in line or "as=r" in line or "as=i" in line or "vc=p" in line or "vc=c" in line or "vc=t" in line):
+                    linesplit = line.split()
+                    root = linesplit[0]
+                    feats = ' '. join(linesplit[2:])
+                    feats = feats.split(';')
+                    f = []
+                    nfeats = len(feats)
+                    for feat in feats:
+                        for ff in ("-smp", "+lex", "vc=p", "vc=t", "vc=c", "as=r", "as=i"):
+                            if ff in feat:
+                                f.append(feat)
+                                break
+#                        if "+lex" not in feat and "-smp" not in feat and "vc=p" not in feat and "vc=t" not in feat and "vc=c" not in feat and "as=r" not in feat):
+#                            continue
+#                        f.append(feat)
+                    if len(f) != nfeats:
+                        roots2[root] = f
+                    else:
+                        roots1[root] = f
     with open("v_except_simp.txt", 'w') as file:
         for root, feats in roots1.items():
             print("{}\t{}".format(root, ';'.join(feats)), file=file)

@@ -20,7 +20,7 @@ X31 = {b, d, f, g, k, l, m, n, q, r, s, S, t, T, z, c, C, j, x, Z}
 # possible CCCC initial consonants
 X4 = {b, c, C, d, f, g, h, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, ', bW, dW, fW, gW, hW, kW, mW, nW, qW, sW, tW, TW, xW}
 # restricted list of possible CCCC initial consonants (added 2009-04-25)
-X44 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW}
+X44 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, bW, dW, fW, gW, kW, mW, nW, qW, sW, tW, TW, xW}
 # possible C|CCCC initial consonants (possibly omit t and S as well)
 X5 = {b, c, C, d, f, g, j, k, l, m, n, q, r, s, S, t, T, w, x, z, Z, gW, kW, qW}
 # possible consonants following | (also other labials?)
