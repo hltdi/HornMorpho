@@ -97,7 +97,7 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
-#        print("** Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
+        print("** Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
                                            phon=True, postproc=False, guess=guess)
         if citation:
@@ -974,7 +974,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     Convert a segmentation to a string, including features if features is True.
     """
     # The segmentation string is second in the list
-#    print("** Converting {} to string, udformat {}".format(segmentation, udformat))
+    print("** Converting {} to string, udformat {}, features {}".format(segmentation, udformat, features.__repr__()))
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]

@@ -27,6 +27,8 @@ c1 -> v1        [:]       [tmp=[v1=None]]
 c1 -> v1        [:e]      [tmp=[v1=e]]
 c1 -> v1        [:a]      [tmp=[v1=a]]
 c1 -> v1        [:I]      [tmp=[v1=I]]
+c1 -> v1        [:E]      [tmp=[v1=E]]
+c1 -> v1        [:i]      [tmp=[v1=i]]
 c1 -> v1        <:Wa>     [tmp=[v1=Wa]]
 
 v1 -> c2        [:]       [tmp=[c2=None]]
@@ -34,6 +36,7 @@ v1 -> c2        [:2]      [tmp=[c2=2]]
 
 c2 -> v2        [:]       [tmp=[v2=None]]
 c2 -> v2        [:e]      [tmp=[v2=e]]
+c2 -> v2        [:E]      [tmp=[v2=E]]
 c2 -> v2        [:a]      [tmp=[v2=a]]
 
 v2 -> c3        [:]       [tmp=[c3=None]]

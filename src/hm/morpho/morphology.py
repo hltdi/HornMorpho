@@ -47,6 +47,8 @@ class Morphology(dict):
     complex = 0
     simple = 1
 
+    default_sense = 0
+
     # Regular expressions for affix files
     pattern = re.compile('\s*pat.*:\s+(\w+)\s+(.+)')
     function = re.compile('\s*func.*:\s+(\w+)\s+(.+)')
@@ -591,6 +593,18 @@ class Morphology(dict):
             if phoneticized:
                 return phoneticized[0][0]
         return form
+
+    ### Various feature-related static methods
+
+    @staticmethod
+    def get_sense(fs):
+        '''
+        fs should be a FeatStruct or a FSSet with only one member.
+        '''
+        if isinstance(fs, FSSet) and len(FSSet) == 1:
+            print("Warning: trying to get sense from FSSet {}".format(fs.__repr__()))
+            return Morphology.default_sense
+        return fs.get('sns', Morphology.default_sense)
 
 class POSMorphology:
     """Lists of MorphCats and GramCats, anal and gen FSTs for a particular POS class."""

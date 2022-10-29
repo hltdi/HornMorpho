@@ -36,19 +36,194 @@ ASVC = \
    '[as=rc,vc=ps]': 'te-a', '[as=rc,vc=tr]': 'a-a', '[as=rc,vc=cs]': 'as-a',
    '[as=it,vc=smp]': 'R', '[as=it,vc=ps]': 'te-R', '[as=it,vc=tr]': 'a-R', '[as=it,vc=cs]': 'as=R'}
 
+CODE2FS = \
+  {'0':    "[cls={},as=smp,vc=smp,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'te_':  "[cls={},as=smp,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'a_':   "[cls={},as=smp,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'as_':  "[cls={},as=smp,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'te_a': "[cls={},as=rc,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'a_a':  "[cls={},as=rc,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'as_a': "[cls={},as=rc,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'R':    "[cls={},as=it,vc=smp,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'te_R': "[cls={},as=it,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'a_R':  "[cls={},as=it,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]",
+   'as_R': "[cls={},as=it,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]"
+   }
+
+CODECLS2FS = \
+  {'0':    {'A': FS("[cls=A,as=smp,vc=smp,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'te_':  {'A': FS("[cls=A,as=smp,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'a_':   {'A': FS("[cls=A,as=smp,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'as_':  {'A': FS("[cls=A,as=smp,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'te_a': {'A': FS("[cls=A,as=rc,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'a_a':  {'A': FS("[cls=A,as=rc,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'as_a': {'A': FS("[cls=A,as=rc,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'R':    {'A': FS("[cls=A,as=it,vc=smp,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'te_R': {'A': FS("[cls=A,as=it,vc=ps,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'a_R':  {'A': FS("[cls=A,as=it,vc=tr,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")},
+   'as_R': {'A': FS("[cls=A,as=it,vc=cs,pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")}
+   }
+
+CODE2ASVC = \
+  {'0':    {'as': 'smp', 'vc': 'smp'},
+   'te_':  {'as': 'smp', 'vc': 'ps'},
+   'a_':   {'as': 'smp', 'vc': 'tr'},
+   'as_':  {'as': 'smp', 'vc': 'cs'},
+   'te_a': {'as': 'rc', 'vc': 'ps'},
+   'a_a':  {'as': 'rc', 'vc': 'tr'},
+   'as_a': {'as': 'rc', 'vc': 'cs'},
+   'R':    {'as': 'it', 'vc': 'smp'},
+   'te_R': {'as': 'it', 'vc': 'ps'},
+   'a_R':  {'as': 'it', 'vc': 'tr'},
+   'as_R': {'as': 'it', 'vc': 'cs'}}
+
+AS_WLD = ['', '', '', '0', 'te_', 'te_a', 'te_R', 'a_', 'a_a', 'a_R', 'as_', 'R', '', '']
+
+CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 10, 'R': 11}
+
+CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
+
+def proc2_vroots():
+    roots = get_vroots()
+    newroots = []
+    for root, features in roots:
+        cls = features.get('cls')
+        features = features.unfreeze()
+        for f in features:
+            bs = f['bs']
+            lemmaFS = make_FS(cls, bs)
+            lemma = VGEN(root, update_feats=lemmaFS)
+            if not lemma:
+                print("No lemma for {} : {}".format(root, bs))
+            else:
+                lemma = lemma[0][0]
+                f['lemma'] = geezify(lemma)
+        newfeats = FSS(*features)
+        newroots.append("{}\t''\t{}".format(root, newfeats.__repr__()))
+    with open("newvroot.txt", 'w') as file:
+        for newroot in newroots:
+            print(newroot, file=file)
+
+def proc_vroots():
+    roots = get_vroots()
+    senses = get_vsenses(True)
+    newroots = []
+    for root, features in roots:
+        rootclass = "{}:{}".format(root, features.get('cls'))
+        if rootclass in senses:
+            sensefeats = senses[rootclass]
+            senseFSS = FSS(*sensefeats)
+        else:
+            features = features.unfreeze()
+            for f in features:
+                voice = f.get('vc')
+                aspect = f.get('as')
+                if aspect == 'it':
+                    f['bs'] = 'te_R'
+                elif aspect == 'rc':
+                    f['bs'] = 'te_a'
+                elif voice == 'ps':
+                    f['bs'] = 'te_'
+                elif voice == 'tr':
+                    f['bs'] = 'a_'
+                elif voice == 'cs':
+                    f['bs'] = 'as_'
+                elif f.get('smp', True) == False:
+                    f['bs'] = 'te_'
+#                    print("Confused about {} : {}".format(root, features.__repr__()))
+                else:
+                    f['bs'] = '0'
+            senseFSS = FSS(*features)
+        newroots.append("{}\t''\t{}".format(root, senseFSS.__repr__()))
+    with open("newvroot.txt", 'w') as file:
+        for newroot in newroots:
+            print(newroot, file=file)
+#    return newroots
+
+def get_vroots():
+    roots = []
+    with open(amh_vroot_file()) as file:
+        for line in file:
+            if line[0] == '#' or not line.strip():
+                continue
+            root, X, feats = line.strip().split('\t')
+            feats = feats.split(';')
+            feats = FSS(*feats)
+            roots.append((root, feats))
+    return roots
+
+def get_vsenses(make_feats=True):
+    senses = {}
+    with open(amh_vroot_senses(), encoding='utf8') as file:
+        for line in file:
+            root, rootG, sense, wld, lemma, gloss = line.strip().split('\t')
+            if make_feats:
+                r, c = root.split(":")
+                sense = int(sense)
+                feats = FS("[sns={},cls={},bs={},t=[eng='{}'],-lt]".format(sense, c, wld, gloss))
+            else:
+                feats = (sense, wld, rootG, lemma, gloss)
+            if root in senses:
+                senses[root].append(feats)
+            else:
+                senses[root] = [feats]
+    return senses
+
+def ssline2code(line):
+    '''
+    Convert a line from Abnet's spreadsheet to a WP code.
+    '''
+    codes = []
+    for l, a in zip(line, AS_WLD):
+        if a:
+            # there is a form here.
+            if a == '0':
+                if l == 'm':
+                    codes.append('0')
+            elif l:
+                codes.append(a)
+    return morpho.EES.assign_WPattern(codes)
+
 def proc_v_senses():
     result = []
     with open(amh_vroot_senses()) as file:
         for line in file:
-            root, sense, gloss, wld, pattern = line.split(";")
-            root, cls = root.strip().split(':')
+            rootcls, sense, gloss, code, pattern = line.split(";")
+            root, cls = rootcls.split(':')
             fs = make_FS(cls)
-            print("Generating {} : {}".format(root, cls))
-            rootG = VGEN(root, update_feats=fs, guess=True)[0][0]
-            print(rootG)
+            rootG = VGEN(root, update_feats=fs, guess=True)
+            if not rootG:
+                rootG = VGEN(root, update_feats=fs, guess=False)
+            rootG = rootG[0][0]
+            rootG = geezify(rootG)
+#            print(rootG)
+            ውልድ = gen_ውልድ(root, code)
+            result.append("{}\t{}\t{}\t{}\t{}\t{}".format(rootcls, rootG, sense, code, ውልድ, gloss))
+    with open("v_senses.txt", 'w', encoding='utf8') as file:
+        for line in result:
+            print(line, file=file)
 
-def make_FS(cls, asp='smp', vc='smp'):
+def make_FS(cls, code='', asp='smp', vc='smp'):
+    if code and cls:
+        if cls in CODECLS2FS[code]:
+            return CODECLS2FS[code][cls]
+        else:
+            fs = FS(CODE2FS[code].format(cls))
+            CODECLS2FS[code][cls] = fs
+            return fs
+#        av = CODE2ASVC[code]
+#        asp = av['as']
+#        vc = av['vc']
+    if not cls:
+        return FS("[pos=v,as={},vc={},tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]".format(asp, vc))
     return FS("[cls={},pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]".format(cls))
+
+def gen_ውልድ(root, code):
+    fs = make_FS(None, code=code)
+    root = VGEN(root, update_feats=fs)
+    if not root:
+        return []
+    return geezify(root[0][0])
 
 def amsalu_vroots():
     roots = {}
@@ -255,11 +430,11 @@ def proc_wuld():
 def wuld_file():
     return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'ext_data', "ከአብነት", "WuldVerbs"), 'WuldVerbs.txt')
 
-def amh_vroot_file():
-    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_root.lex')
+def amh_vroot_file(experimental=True):
+    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), ('v_rootX.lex' if experimental else 'v_root.lex'))
 
 def amh_vroot_senses():
-    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_senses.lex')
+    return OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex'), 'v_senses.txt')
 
 def filter_amh_vroots():
     roots1 = {}

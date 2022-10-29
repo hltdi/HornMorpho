@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2020, 2021.
+    Copyleft 2020, 2021, 2022.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -43,6 +43,11 @@ class EES:
 
     VERB_POS = {'v', 'vp', 'vi', 'vj'}
 
+    # Positions on WPatterns corresponding to particular ውልድ forms. Some are
+    # treated as synonymous.
+    wcodes2patindex = {'0': 0, 'te_': 1, 'a_': 2, 'as_': 3, 'te_a': 4, 'a_a': 4, 'as_a': 4, 'te_R': 5, 'a_R': 5, 'R': 6}
+    wpatcodes = [('0',), ('te_',), ('a_',), ('as_',), ('te_a', 'a_a'), ('te_R', 'a_R'), ('R',)]
+
     def __init__(self):
         print("Creating EES language {}".format(self))
         # EES pre-and post-processing: geezification, romanization,
@@ -68,6 +73,55 @@ class EES:
         """
         return geezify(lang=self.abbrev, gemination=gemination,
                        deepenthesize=deepenthesize)
+
+    ### Verb ውልድ templates
+    ### A WPattern is a pattern of occurrences of particular verb ውልድ forms for
+    ### a particular root-sense combination, represented as a string of 0s and 1s
+    ### A WTemplate is a category of verb roots, consisting of a pattern of occurrences
+    ### of particular verb ውልድ forms, with one singled out as the basic ውልድ.
+
+    @staticmethod
+    def score_WPattern(WP, WT):
+        '''
+        Assigns a score to WPattern in terms of how well it matches WTemplate.
+        Non-occurrence of forms is penalized; scores are <= 0.
+        '''
+        score = 0
+        if len(WP) < len(WT):
+            # Make sure the pattern is as long as the template
+            WP = WP + '*' * (len(WT) - len(WP))
+        for p, t in zip(WP, WT):
+            if t == '2':
+                # The basic form for the template, must be present in WP
+                if p != '1':
+                    return -10
+            elif t == '1':
+                # A non-basic form found in the template; penalize non-occurrence
+                if p == '0':
+                    score -= 1
+                elif p == '*':
+                    score -= 0.5
+            elif t == '0':
+                # A form not found in the template; penalize occurrence
+                if p == '1':
+                    score -= 1
+                elif p == '*':
+                    score -= 0.5
+        return score
+
+    @staticmethod
+    def assign_WPattern(wcodes):
+        '''
+        wcodes: a list of ውልድ codes, e.g., '0', 'te_', 'a_a', etc., for 
+        forms occurring for a root/sense.
+        '''
+        code = []
+        for cs in EES.wpatcodes:
+            if any([(c in wcodes) for c in cs]):
+                code.append('1')
+            else:
+                code.append('0')
+        return ''.join(code)
 
     def postproc_root(self, posmorph, root, fs, phonetic=True):
         """

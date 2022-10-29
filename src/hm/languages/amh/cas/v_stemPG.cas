@@ -56,4 +56,4 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # Insert this for spoken Amh
 # >w2p<
 # Later create special lexicon for PG?
-+v_root+
++v_rootX+

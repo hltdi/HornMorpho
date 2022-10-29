@@ -71,10 +71,10 @@ sbjp1 -> stem     <n:n(@part,$polarity=neg,number=plur,person=1)->      [sb=[+pl
 
 # Irregular
 stem -> stem0     [:{]
-stem0 -> tmp      +irr_stemS+
+stem0 -> tmp_end      +irr_stemX+
 
 # Regular stem
-stem0 -> tmp    >>v_stem+<<
+stem0 -> tmp    >>v_stemX<<
 
 # Template
 tmp -> tmp_end     >>tmp<<
