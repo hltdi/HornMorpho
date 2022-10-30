@@ -25,15 +25,15 @@ te_ -> end            <:)>                               [bs=te_]
 te_ -> end            <:,voice=pass)>         [bs=0];[bs=a_]
 
 a_  -> end             <:)>                                [bs=a_]
-a_  -> end             <:,voice=trans)>      [bs=0]
+a_  -> end             <:,voice=trans)>      [bs=0];[bs=te_]
 
 as_ -> end           <:)>                                 [bs=as_]
 as_ -> end           <:,voice=cau)>          [bs=0];[bs=te_];[bs=a_]
 
-te_a -> end         <:)>                                 [bs=t_a]
+te_a -> end         <:)>                                 [bs=te_a]
 te_a -> end          <:,voice=rcp)>             [bs=0]
 
-a_a -> end            <:,voice=trans)>        [bs=t_a]
+a_a -> end            <:,voice=trans)>        [bs=te_a]
 a_a -> end            <:,voice=rcp,voice=trans)>   [bs=0]
 
 # Is this always iterative?
@@ -44,11 +44,11 @@ te_R -> end          <:)>                                 [bs=te_R]
 
 # What about causative iterative for this case?
 a_R -> end            <:,voice=rcp,voice=cau)>   [bs=0];[bs=te_];[bs=a_];[bs=te_a]
-a_R -> end            <:,voice=trans)>          [bs=t_R]
+a_R -> end            <:,voice=trans)>          [bs=te_R]
 
 # For now treat this as identical to a_R?
 as_R -> end         <:,voice=rcp,voice=cau)>    [bs=0];[bs=te_];[bs=a_];[bs=te_a]
-as_R -> end         <:,voice=caus)>             [bs=t_R]
+as_R -> end         <:,voice=caus)>             [bs=te_R]
 
 ## Iterative, reciprocal
 #voice -> asp      [:]         [as=smp]

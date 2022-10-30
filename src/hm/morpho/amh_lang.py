@@ -61,6 +61,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
 #    print("** Getting V citation for {}:{}, vc_as: {}".format(root, fs.__repr__(), vc_as))
+    if 'lemma' in fs:
+        return fs['lemma']
     citation = ''
     if root in ('hlw', 'hl_w', 'al_'):
         return "'al_e"
@@ -974,7 +976,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     Convert a segmentation to a string, including features if features is True.
     """
     # The segmentation string is second in the list
-    print("** Converting {} to string, udformat {}, features {}".format(segmentation, udformat, features.__repr__()))
+#    print("** Converting {} to string, udformat {}, features {}".format(segmentation, udformat, features.__repr__()))
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
