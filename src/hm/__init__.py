@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=3, raw=False, realize=True, features=True,
+def seg_word(language, word, nbest=8, raw=False, realize=True, features=True,
              rank=True, citation=True, transortho=True, experimental=True, udformat=True):
     '''Segment a single word and print out the results.
 
@@ -82,16 +82,20 @@ def seg_word(language, word, nbest=3, raw=False, realize=True, features=True,
     simps = None
     if language:
         # Process special cases
-        numeral = language.morphology.match_numeral(word)
-        if numeral:
-            prenum, num, postnum = numeral
-#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
-            analysis = [language.process_numeral(word, prenum, num, postnum, segment=True)]
+        abbrev = language.morphology.is_abbrev(word)
+        if abbrev:
+            analysis = [language.process_abbrev(word, segment=True)]
         else:
-            # Do the preprocessing first in order to save any character normalizations
-            if language.preproc:
-                word, simps = language.preproc(word)
-            analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
+            numeral = language.morphology.match_numeral(word)
+            if numeral:
+                prenum, num, postnum = numeral
+#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+                analysis = [language.process_numeral(word, prenum, num, postnum, segment=True)]
+            else:
+                # Do the preprocessing first in order to save any character normalizations
+                if language.preproc:
+                    word, simps = language.preproc(word)
+                analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
                                       gram=False, segment=True, only_guess=False,
                                       experimental=experimental, rank=rank,
                                       print_out=(not raw and not realize),

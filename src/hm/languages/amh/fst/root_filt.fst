@@ -55,6 +55,10 @@ start -> n   [n]
 n -> n|      [|]
 n| -> mid    [X-n]
 
+start -> N   [N]
+N -> N|      [|]
+N| -> mid    [X-N]
+
 start -> q   [q;qW]
 q -> q|      [|]
 q| -> mid    [X-q,qW,k,kW]

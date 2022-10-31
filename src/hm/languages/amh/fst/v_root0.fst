@@ -10,7 +10,8 @@
 ### H: 1|23a45
 ### I: 1|234
 ### J: 1|2a34
-### K: 12345  (eliminate this for now)
+### K: 12345
+### L: 12a345
 
 -> start
 
@@ -60,10 +61,12 @@ I1 -> I2     [X]     [cls=I]
 I2 -> end    [X]
 
 # include for guesser
-start -> K1  [X]     [cls=K]
+start -> K1  [X]     [cls=K];[cls=L]
 K1 -> K2     [X]
 K2 -> K3     [X]
-K3 -> K4     [X]
+K3 -> La     [a:]   [cls=L]
+La -> K4     [X]
+K3 -> K4      [X]     [cls=K]
 K4 -> end    [X]
 
 end ->

@@ -83,6 +83,33 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
+def proc3_vroots():
+    roots = get_vroots()
+    newroots = []
+    for root, features in roots:
+        cls = features.get('cls')
+        if cls == 'G':
+            cls = 'K'
+        elif cls == 'H':
+            cls = 'L'
+        elif cls == 'J':
+            cls = 'E'
+        rootFS = make_FS(cls)
+        rootG = VGEN(root, update_feats=rootFS, guess=True)
+        if not rootG:
+            print("No root for {} : {}".format(root, cls))
+            rootG = '?'
+        else:
+            rootG = geezify(rootG[0][0])
+        features = features.unfreeze()
+        for f in features:
+            f['root'] = rootG
+        newfeats = FSS(*features)
+        newroots.append("{}\t''\t{}".format(root, newfeats.__repr__()))
+    with open("newvroot.txt", 'w') as file:
+        for newroot in newroots:
+            print(newroot, file=file)
+
 def proc2_vroots():
     roots = get_vroots()
     newroots = []

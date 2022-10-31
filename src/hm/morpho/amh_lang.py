@@ -42,6 +42,9 @@ ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': 
 ALT_PHONES = ['^s', '^S', 'H', '^h', "`", '^sW', '^SW', '^hW']
 SIMP_PHONES = ['s', 'S', 'h', "'", 'sW', 'SW', 'hW']
 
+# Features to exclude from string resulting from seg2string
+SEG_DROP_FEATS = ['ውልድ']
+
 ### Analysis of numerals, etc.
 
 def trivial_anal(string):
@@ -990,16 +993,14 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
             rootfeats = "(" + posstring + ")"
         else:
             rootfeats = "({},{})".format(posstring, rootfeats[1:-1])
-    # Separate the consonants and template, and realize the root
+    # Separate the root consonants and template, and realize the root
     root = root2string(root, simplifications=simplifications)
     # Replace the root in the morphemes list
     morphs[rootindex] = root, rootfeats
-#    for m, f in morphs:
-#        print("***  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
 #    for m, f in morphs:
-#        print("**  morph {}, feats {}".format(m, language.Language.udformat_posfeats(f)))
+#        print("***  morph {}, feats {}".format(m, f))
     if geez:
         # First make sure separate morphemes are geez
         morphs2 = [[(g, f) for g in geezify_morph(m, alt=True)] for m, f in morphs]
@@ -1009,7 +1010,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
     morphs = allcombs(morphs2)
-#    print("** morphs {}".format(morphs2))
+#    print("**** morphs {}".format(morphs2))
     if not features:
         morphs = [[w[0] for w in word] for word in morphs]
     else:
@@ -1030,7 +1031,7 @@ def root2string(root, simplifications=None):
     word was normalized, for example ('s', '^s').
     """
     if '++' in root:
-        # Root followed by explicit form rather than template
+        # For irregular stems, the root is followed by explicit form rather than template
         cons, form = root.split('++')
 #        return '{' + form + '}'
     elif '+' in root:

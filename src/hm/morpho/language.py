@@ -1148,7 +1148,8 @@ class Language:
 
     def seg2morphs(self, seg, pos=None):
         '''Returns the morphemes in a segmentation string, and index of the root.
-        USE REGEX.'''
+        USE REGEX.
+        '''
         # separate morphemes
         morphs = seg.split(Language.morphsep)
 #        print("*** morphs: {}".format(morphs))
@@ -1202,14 +1203,14 @@ class Language:
         return ''
 
     @staticmethod
-    def udformat_posfeats(string):
+    def udformat_posfeats(string, dropfeats=['ውልድ']):
         '''string is ([@pos,...,]$feat,...).
         format string as in UD.'''
 #        print("** udformat_posfeats {}".format(string))
         string = string[1:-1]
         pos, x, feats = string.partition(Language.featsmark)
         if feats:
-            feats = [Language.udformat_feats(feats)]
+            feats = [Language.udformat_feats(feats, dropfeats=dropfeats)]
         else:
             feats = []
         if pos:
@@ -1231,11 +1232,13 @@ class Language:
         return Language.joinpos.join(poss)
 
     @staticmethod
-    def udformat_feats(feats):
+    def udformat_feats(feats, dropfeats=None):
         '''Delete feat char ($) and capitalize features and value.'''
-#        feats = feats.remove(Language.featsmark)
         ffeats = [f.strip().split('=') for f in feats.split(',')]
-        ffeats = ['='.join([Language.udformat_feat(f[0]),f[1].capitalize()]) for f in ffeats]
+        ffeats = ['='.join([Language.udformat_feat(f[0]), Language.udformat_value(f[1])]) for f in ffeats if f[0] not in dropfeats]
+#        print("*** ffeats {}".format(ffeats))
+        # Alphabetize by feature names
+        ffeats.sort()
         return Language.joinfeats.join(ffeats)
 
     @staticmethod
@@ -1247,6 +1250,16 @@ class Language:
             return feat.split('class')[0].capitalize() + 'Class'
         else:
             return feat.capitalize()
+
+    @staticmethod
+    def udformat_value(value):
+        '''
+        Normally capitalize values.
+        Make an except for values containing '_', like 'te_'.
+        '''
+        if '_' in value:
+            return value
+        return value.capitalize()
 
     def preprocess_file(self, filein, fileout):
         '''Preprocess forms in filein, writing them to fileout.'''
@@ -1407,6 +1420,10 @@ class Language:
         fsts = fsts or self.morphology.pos
         # number of normalization simplifications
         simps = None
+        # Check if the word is an abbreviation
+        if self.morphology.is_abbrev(word):
+#            print("{} is an abbreviation".format(word))
+            return self.process_abbrev(word, segment=segment, print_out=print_out)
         # Check if it's a word containing a numeral
 #        numeral = self.morphology.match_numeral(word)
 #        if numeral:
@@ -1734,6 +1751,22 @@ class Language:
                 fileout.close()
         except IOError:
             print('No such file or path; try another one.')
+
+    def process_abbrev(self, word, segment=False, print_out=False):
+        '''
+        Return analysis or segmentation of abbreviation.
+        Later expand abbreviation to full form for lemma if one word.
+        '''
+        # Assumes all abbreviations are nouns
+        pos = 'n'
+        if print_out:
+            string = "{} -- abbrev".format(word)
+            print(string)
+        elif segment:
+            string = "{" + word + "}}({}abbr=yes)".format(Language.featsmark)
+            return [pos, string, '']
+        else:
+            return [{'POS': pos, 'lemma': word, 'freq': 100}]
 
     def process_numeral(self, word, pre, num, post, segment=False, print_out=False):
         '''

@@ -63,6 +63,10 @@ mid   -> n   [n]
 n -> n_mid   [a;:]
 n_mid -> .C  [X-n]
 
+mid   -> N   [N]
+N -> N_mid   [a;:]
+N_mid -> .C  [X-N]
+
 mid   -> q   [q;qW]
 q -> q_mid   [a;:]
 q_mid -> .C  [X-q,qW]

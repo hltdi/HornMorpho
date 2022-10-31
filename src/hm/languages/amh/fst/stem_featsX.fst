@@ -19,7 +19,7 @@ voice -> te_R     <:,ውልድ=te_R>   [as=it,vc=ps]
 voice -> a_R       <:,ውልድ=a_R>   [as=it,vc=tr]
 voice -> as_R       <:,ውልድ=as_R>   [as=it,vc=cs]
 
-0 -> end                <:)>
+0 -> end                <:)>                                [bs=0]
 
 te_ -> end            <:)>                               [bs=te_]
 te_ -> end            <:,voice=pass)>         [bs=0];[bs=a_]
@@ -39,16 +39,16 @@ a_a -> end            <:,voice=rcp,voice=trans)>   [bs=0]
 # Is this always iterative?
 R -> end                <:,aspect=iter)>         [bs=0]
 
-te_R -> end          <:,voice=rcp)>             [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 te_R -> end          <:)>                                 [bs=te_R]
+te_R -> end          <:,voice=rcp)>             [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 
 # What about causative iterative for this case?
-a_R -> end            <:,voice=rcp,voice=cau)>   [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 a_R -> end            <:,voice=trans)>          [bs=te_R]
+a_R -> end            <:,voice=rcp,voice=cau)>   [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 
 # For now treat this as identical to a_R?
-as_R -> end         <:,voice=rcp,voice=cau)>    [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 as_R -> end         <:,voice=caus)>             [bs=te_R]
+as_R -> end         <:,voice=rcp,voice=cau)>    [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 
 ## Iterative, reciprocal
 #voice -> asp      [:]         [as=smp]
