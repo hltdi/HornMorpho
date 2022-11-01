@@ -7,7 +7,30 @@
 
 -> start0
 
-start0 -> start [:] [vc=ps,+ps];[vc=tr,+tr];[vc=cs,+cs];[vc=smp,+smp];[pos=n_dv,v=man]
+start0 -> 0           [:]   [as=smp,vc=smp]
+start0 -> te_       [:]   [as=smp,vc=ps]
+start0 -> a_         [:]   [as=smp,vc=tr]
+start0 -> as_       [:]    [as=smp,vc=cs]
+start0 -> te_a     [:]   [as=rc,vc=ps]
+start0 -> a_a       [:]   [as=rc,vc=tr]
+start0 -> R           [:]     [as=it,vc=smp]
+start0 -> te_R     [:]   [as=it,vc=ps]
+start0 -> a_R       [:]   [as=it,vc=tr]
+start0 -> as_R      [:]   [as=it,vc=cs]
+
+
+0 -> start                [:]         [bs=0]
+te_ -> start            [:]         [bs=te_];[bs=0];[bs=a_]
+a_  -> start             [:]         [bs=a_];[bs=0];[bs=te_]
+as_ -> start           [:]          [bs=as_];[bs=0];[bs=te_];[bs=a_]
+te_a -> start         [:]          [bs=te_a];bs=0]
+a_a -> start            [:]         [bs=te_a];[bs=0]
+R -> start                [:]         [bs=0]
+te_R -> start          [:]         [bs=te_R];[bs=0];[bs=te_];[bs=a_];[bs=te_a]
+a_R -> start            [:]         [bs=te_R];[bs=0];[bs=te_];[bs=a_];[bs=te_a]
+as_R -> start         [:]          [bs=te_R];[bs=0];[bs=te_];[bs=a_];[bs=te_a]
+
+#start0 -> start [:] [vc=ps,+ps];[vc=tr,+tr];[vc=cs,+cs];[vc=smp,+smp];[pos=n_dv,v=man]
 
 ## CCC
 start -> 1a.3 [X/L]
