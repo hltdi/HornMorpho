@@ -184,7 +184,9 @@ yahl yahl adv
 'asr 'as_r num
 'asra 'asra num
 hamsa hamsa num
+hAmsa hamsa num
 haya haya num
+hAya haya num
 hulet hulet_ num
 meto meto num
 miliyon miliyon num

@@ -33,13 +33,13 @@ UM/
 # Misc stuff
 Proc/
 Users/
-Old/
+old/
 Versions/
 #Docs/
-docs/OldDocs
-Notes/
-hm/languages/*/data/
-hm/ext_data
+docs/old
+notes/
+src/hm/languages/*/data/
+src/hm/ext_data
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

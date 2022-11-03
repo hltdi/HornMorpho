@@ -86,7 +86,9 @@ class Morphology(dict):
         # Function that converts phonological to orthographic representation
         self.orthographize = None
         # Function that returns trivially analyzable forms
-        self.triv_anal = None
+#        self.triv_anal = None
+        # Function that tests whether string is punctuation in this language.
+        self.is_punc = None
         # Function that converts (POS, root, citation, FS) to a string
         self.anal2string = None
         # Pair of lists of unanalyzable words: (complex, simple)
@@ -212,6 +214,14 @@ class Morphology(dict):
             word_rec = self.words_phon
             return word_rec.get(word, False)
 
+    def is_punctuation(self, string):
+        '''
+        Is this punctuation in this language?
+        '''
+        if self.is_punc:
+            return self.is_punc(string)
+        return string in self.punctuation
+
     def is_abbrev(self, string):
         '''
         Is this an abbreviation?
@@ -260,7 +270,7 @@ class Morphology(dict):
         rv = self.root_fv(root, anal)
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)
-        return 100
+        return 50
 
     def get_feat_freq(self, anal):
         freq = 1.0

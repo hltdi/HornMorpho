@@ -62,10 +62,12 @@ SERA_IC_SUB = r"I\1"
 SERA_LARYN_A = re.compile(r"['`hH]a.*")
 
 # Punctuation to preserve in Geez->SERA->Geez translation
-KEEP_PUNC = ",."
+KEEP_PUNC = ",./"
 
 # Special Geez characters
 GEEZ_PUNCTUATION = "፡።፣፤፥፦፧፨"
+# Non-Geez punctuation used in EES languages
+EES_PUNCTUATION = '"?!'
 GEEZ_NUMERALS = "፩፪፫፬፭፮፯፰፱፲፳፴፵፶፷፸፹፺፻፼"
 
 ## Geez consonants and vowels in traditional order
@@ -149,8 +151,14 @@ def geezify_alts(form, lang='am'):
 #        return root2geez(table, root, lang=lang)
 
 def geezify_morph(morph, lang='am', alt=True):
-    """Convert a morpheme to Geez. If it begins with a vowel, prepend '."""
-#    print("** geezifying {}".format(morph))
+    """
+    Convert a morpheme to Geez. If it begins with a vowel, prepend '.
+    If it's already Geez, don't change it.
+    """
+    if is_geez(morph):
+        if alt:
+            return [morph]
+        return morph
     if not morph:
         return '0'
     # other possible prepended chars? use RE to separate prepended chars?
@@ -162,6 +170,12 @@ def geezify_morph(morph, lang='am', alt=True):
         return geezify_alts(morph, lang='am')
     else:
         return geezify(morph, lang='am')
+
+def is_geez_punc(form):
+    '''
+    Is this Geez punctuation or ? or !?
+    '''
+    return form in GEEZ_PUNCTUATION or form in EES_PUNCTUATION
 
 def no_convert(form):
     '''

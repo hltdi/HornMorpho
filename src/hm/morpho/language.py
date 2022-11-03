@@ -55,6 +55,7 @@ from .utils import some, segment
 from .rule import *
 from .um import *
 from .ees import *
+from .caco import *
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -134,12 +135,15 @@ class Language:
     T = TDict()
 
     morphsep = '-'
+    infixsep = '--'
     posmark = '@'
     featsmark = '$'
     joinposfeats = ';'
     joinfeats = '|'
     joinpos = ','
     roottempsep = '+'
+
+    namefreq = 100
 
     def __init__(self, label='', abbrev='', backup='',
                  # Preprocessing for analysis
@@ -1133,6 +1137,7 @@ class Language:
     def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
                     phonetic=True):
         '''Postprocess a form.'''
+#        print("** Postprocessing {}".format(form))
         if self.postproc:
             return self.postproc(form, phon=phon, ipa=ipa,
                                  ortho_only=ortho_only, phonetic=phonetic)
@@ -1146,10 +1151,13 @@ class Language:
 
     ## Methods related to segmentation
 
-    def seg2morphs(self, seg, pos=None):
+    def seg2morphs(self, seg, pos=None, joininfixes=True):
         '''Returns the morphemes in a segmentation string, and index of the root.
         USE REGEX.
         '''
+        if joininfixes:
+            # Remove the string separating an infix from a following suffix
+            seg = seg.replace(Language.infixsep, '')
         # separate morphemes
         morphs = seg.split(Language.morphsep)
 #        print("*** morphs: {}".format(morphs))
@@ -1392,7 +1400,7 @@ class Language:
                   root=True, stem=True, citation=True, gram=True,
                   um=True, gloss=True, phonetic=True, normalize=False,
                   ortho_only=False, lemma_only=False, sep_anals=True,
-                  get_all=True, to_dict=False, preproc=False, postproc=False,
+                  get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
                   only_anal=False, preseg=False, verbosity=0):
@@ -1420,16 +1428,6 @@ class Language:
         fsts = fsts or self.morphology.pos
         # number of normalization simplifications
         simps = None
-        # Check if the word is an abbreviation
-        if self.morphology.is_abbrev(word):
-#            print("{} is an abbreviation".format(word))
-            return self.process_abbrev(word, segment=segment, print_out=print_out)
-        # Check if it's a word containing a numeral
-#        numeral = self.morphology.match_numeral(word)
-#        if numeral:
-#            prenum, num, postnum = numeral
-#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
-#            return self.process_numeral(word, prenum, num, postnum, segment=segment, print_out=print_out)
         if preproc:
             # Convert to roman, for example
             form, simps = self.preproc(word)
@@ -1586,6 +1584,8 @@ class Language:
                   # Ambiguity
                   rank=True, report_freq=False, nbest=100, report_n=50000,
                   lower=True, lower_all=False, nlines=0, start=0,
+                  local_cache=None,
+                  xml=None, multseg=True,
                   verbosity=0):
         """
         Analyze words in file, either writing results to pathout, storing in
@@ -1599,6 +1599,12 @@ class Language:
         storedict = True if knowndict != None else False
         normalize = normalize and not um
         realizer = realize and self.segmentation2string
+        if xml:
+            # This is either a CACO XML tree or True or False (or None)
+            if not isinstance(xml, ET.ElementTree):
+                # Create the CACO tree
+                xml = make_caco()
+            xmlroot = xml.getroot()
         try:
             filein = open(pathin, 'r', encoding='utf-8')
             # If there's no output file and no outdict, write analyses to terminal
@@ -1620,8 +1626,8 @@ class Language:
             else:
                 no_anal = None
             # Store final representations here; these depend not only on analyses but also
-            # on various options to this method, like minim
-            local_cache = {}
+            # on various options to this method, like minim and segment
+            local_cache = local_cache if isinstance(local_cache, dict) else {}
             # If nlines is not 0, keep track of lines read
             lines = filein.readlines()
             if start or nlines:
@@ -1633,8 +1639,6 @@ class Language:
                 # Separate punctuation from words
                 if sep_punc:
                     line = self.morphology.sep_punc(line)
-#                # Separate numerals joined to nouns
-#                line = self.morphology.sep_num(line)
                 identifier = ''
                 string = ''
                 if sep_ident:
@@ -1643,6 +1647,8 @@ class Language:
                     string = "{}\t".format(identifier)
                 if verbosity:
                     print("Analyzing line {}".format(line))
+                if xml:
+                    xsent = add_caco_sentence(xmlroot)
                 # Segment into words
                 for w_index, word in enumerate(line.split()):
                     if verbosity > 1:
@@ -1659,11 +1665,13 @@ class Language:
                         if storedict:
                             if analysis:
                                 add_anals_to_dict(self, analysis, knowndict, guessdict)
+                        elif xml:
+                            add_caco_word(xsent, word, analysis, multseg=multseg)
                         elif minim:
                             if w_index != 0:
                                 string += " "
                             string += analysis
-                        elif raw or not minim:
+                        else:
 #                            print("** printing stored analysis {}".format(analysis))
                             print(analysis, file=out, end='')
                             if segment:
@@ -1672,18 +1680,10 @@ class Language:
                         # If there's no point in analyzing the word (because it contains
                         # the wrong kind of characters or whatever), don't bother.
                         # (But only do this if preprocessing.)
-                        analysis = preproc and self.morphology.trivial_anal(word)
-                        if analysis:
-                            if minim:
-                                analysis = word
-                            elif raw or um:
-                                analysis = "{}  {}".format(word, analysis)
-                            else:
-                                analysis = "{}: {}".format(word, analysis)
-                                if not segment and not raw:
-                                    analysis += "\n"
-                        else:
-                            # Attempt to analyze the word
+                        # Simple analyses: punctuation, numerals, abbreviations
+                        analyses = self.preproc_special(word, segment=segment, print_out=False)
+                        if not analyses:
+                            ## Analyze
                             form = word
                             simps = None
                             if preproc:
@@ -1697,53 +1697,46 @@ class Language:
                                            cache=cache, no_anal=no_anal, um=um,
                                            rank=rank, report_freq=report_freq, nbest=nbest,
                                            string=not raw and not um, print_out=False, only_anal=storedict)
-#                            print("** analyses {}".format(analyses))
-                            if segment and realize:
-                                analyses = [realizer(analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
-                            if minim:
-                                analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
-#                            elif raw and analyses:
-#                                print("Raw analyses {}".format(analyses))
-#                                analyses = (form, [(anal[0], anal[1], anal[2]) if len(anal) > 2 else (anal[0],) for anal in analyses])
-                            # If we're storing the analyses in a dict, don't convert them to a string
-                            if storedict or raw:
-                                analysis = analyses
-                            # Otherwise (for file or terminal), convert to a string
-                            elif not minim:
-#                                print("*** realized analyses {}".format(analyses))
-                                if analyses:
-                                    if raw or um:
-                                        analysis = "{}  {}".format(form, analyses.__repr__())
-                                    elif not realize:
-                                        # Convert the analyses to a string
-                                        analysis = self.analyses2string(word, analyses, seg=segment,
+                        if segment and realize:
+                            analyses = [realizer(analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
+                        if minim:
+                            analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
+                        # If we're storing the analyses in a dict, don't convert them to a string
+                        if storedict or raw or xml:
+                            analysis = analyses
+                        # Otherwise (for file or terminal), convert to a string
+                        elif not minim:
+                            if analyses:
+                                if raw or um:
+                                    analysis = "{}  {}".format(form, analyses.__repr__())
+                                elif not realize:
+                                    # Convert the analyses to a string
+                                    analysis = self.analyses2string(word, analyses, seg=segment,
                                                                         form_only=not gram, lemma_only=lemma_only,
                                                                         ortho_only=ortho_only, short=False, word_sep=word_sep)
-                                    else:
-                                        analysis = "{}: {}".format(word, analyses)
-                                elif segment:
-                                    analysis = "{}: {}".format(word, analyses)
                                 else:
-                                    analysis = word
+                                    analysis = "{}: {}".format(word, analyses)
+                            elif segment:
+                                analysis = "{}: {}".format(word, analyses)
+                            else:
+                                analysis = word
                         # Either store the analyses in the dict or write them to the terminal or the file
                         if storedict:
-                            if analysis:
-                                add_anals_to_dict(self, analysis, knowndict, guessdict)
+                            add_anals_to_dict(self, analysis, knowndict, guessdict)
+                        elif xml:
+                            add_caco_word(xsent, word, analysis, multseg=multseg)
                         elif minim:
                             if w_index != 0:
                                 string += " "
                             string += analysis
-#                        elif um or raw:
-#                            analysis = self.pretty_analyses(analysis)
-#                            print(analysis, file=out)
                         else:
-#                            print("** printing analysis {}".format(analysis))
                             print(analysis, file=out, end='')
-                        if segment:
+
+                        if segment and not xml:
                             # Add a newline for each segmented word
                             print()
                         local_cache[word] = analysis
-                if minim or segment:
+                if minim or segment and not xml:
                     # End of line
                     print(string, file=out)
             filein.close()
@@ -1751,6 +1744,24 @@ class Language:
                 fileout.close()
         except IOError:
             print('No such file or path; try another one.')
+        if xml:
+            return xml
+
+    def preproc_special(self, word, segment=False, print_out=False):
+        '''
+        Handle special cases, currently abbreviations, numerals, and punctuation.
+        '''
+        if self.morphology.is_punctuation(word):
+            return [self.process_punc(word, segment=segment, print_out=print_out)]
+        if self.morphology.is_abbrev(word):
+#            print("{} is an abbreviation".format(word))
+            return [self.process_abbrev(word, segment=segment, print_out=print_out)]
+        numeral = self.morphology.match_numeral(word)
+        if numeral:
+            prenum, num, postnum = numeral
+#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+            return [self.process_numeral(word, prenum, num, postnum, segment=True, print_out=print_out)]
+        return None
 
     def process_abbrev(self, word, segment=False, print_out=False):
         '''
@@ -1764,9 +1775,23 @@ class Language:
             print(string)
         elif segment:
             string = "{" + word + "}}({}abbr=yes)".format(Language.featsmark)
-            return [pos, string, '']
+            return (pos, string, word)
         else:
             return [{'POS': pos, 'lemma': word, 'freq': 100}]
+
+    def process_punc(self, word, segment=False, print_out=False):
+        '''
+        Return analysis or segmentation of punctuation.
+        '''
+        pos = 'pun'
+        if print_out:
+            string = "{} -- punc".format(word)
+            print(string)
+        elif segment:
+            string = None # word
+            return (pos, string, '')
+        else:
+            return [{'POS': pos, 'freq': 10000}]
 
     def process_numeral(self, word, pre, num, post, segment=False, print_out=False):
         '''
@@ -1774,7 +1799,13 @@ class Language:
         %% TODO: finish analysis
         '''
         pos = 'n' if post else 'num'
-        lemma = post if post else num
+        if post:
+            lemma = post
+        elif pre:
+            lemma = num
+        else:
+            lemma = ''
+#        lemma = post if post else num
         if print_out:
             string = "{} -- num: {}".format(word, num)
             if post:
@@ -1784,14 +1815,20 @@ class Language:
             print(string)
         elif segment:
             if post:
-                string = "{}(@num)-{{{}}}".format(num, post)
+                if pre:
+                    string = "{}(@adp)-{}(@num)-{{{}}}".format(pre, num, post)
+                else:
+                    string = "{}(@num)-{{{}}}".format(num, post)
+            elif pre:
+                string = "{}(@adp)-{{{}}}".format(pre, num)
             else:
-                string = "{{}}".format(num)
-            if pre:
-                string = "{}(@adp)-".format(pre) + string
-            return [pos, string, lemma]
+                string = None #"{}".format(num)
+            return (pos, string, lemma)
         else:
-            return [{'POS': pos, 'lemma': lemma, 'freq': 1000}]
+            result = [{'POS': pos, 'freq': 1000}]
+            if lemma:
+                result['lemma'] = lemma
+            return result
 
     def minim_string(self, form, analyses=None, feats=None, simpfeats=None):
         """Create a minimal string representing the analysis of a word.
@@ -2020,18 +2057,6 @@ class Language:
             a['freq'] = count
         return a
 
-#    def finalize_citation(self, citation, ipa=False):
-#        """
-#        Do final processing of citation: convert romanization
-#        to standard phonetic representation.
-#        """
-##        print("Finalizing {}".format(citation))
-#        if '|' in citation:
-#            ortho, phon = citation.split('|')
-#            phon = self.convert_phones(phon, ipa=ipa)
-#            return ortho + '|' + phon
-#        return self.convert_phones(citation, ipa=ipa)
-
     def simp_anal(self, analysis, postproc=False, segment=False, citation=True):
         '''Process analysis for unanalyzed cases.'''
 #        print("** simple anal {}".format(analysis))
@@ -2094,8 +2119,7 @@ class Language:
 
     def proc_anal(self, form, analyses, pos, show_root=True,
                   citation=True, ortho_only=False, normalize=False,
-                  segment=False, stem=True, guess=False,
-                  postproc=False, gram=True, string=False,
+                  segment=False, stem=True, guess=False, postproc=False, gram=True, string=False,
                   freq=True, phonetic=True):
         '''
         Process analyses according to various options, returning a list of
@@ -2115,7 +2139,6 @@ class Language:
                     pos = feats
                 else:
                     pos = feats.get('pos')
-#                print("*** POS: {}".format(pos))
                 segstring = analysis[0]
                 segstring = self.postpostprocess(segstring)
                 # Remove { } from root
@@ -2124,9 +2147,14 @@ class Language:
                 root = Language.root_from_segstring(segstring)
 #                print("*** root {}".format(root))
                 if freq:
-                    root_freq = self.morphology.get_root_freq(root, feats)
-                    feat_freq = self.morphology.get_feat_freq(feats)
-                    root_freq *= feat_freq
+                    if pos.startswith('nm'):
+                        # Treat names specially
+                        root_freq = Language.namefreq
+                    else:
+                        root_freq = self.morphology.get_root_freq(root, feats)
+                        feat_freq = self.morphology.get_feat_freq(feats)
+                        root_freq *= feat_freq
+                        root_freq = round(root_freq)
                 cite = ''
                 if citation:
                     # Convert nadj, n_dv to n
@@ -2162,8 +2190,10 @@ class Language:
             if freq:
                 # The freq score is the count for the root-feature combination
                 # times the product of the relative frequencies of the grammatical features
-                feat_freq = self.morphology.get_feat_freq(grammar)
-                if show_root:
+                if p.startswith('nm'):
+                    root_freq = Language.namefreq
+                elif show_root:
+                    feat_freq = self.morphology.get_feat_freq(grammar)
                     root_freq = self.morphology.get_root_freq(root, grammar)
                     root_freq *= feat_freq
                     root_freq = round(root_freq)

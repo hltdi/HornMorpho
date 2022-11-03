@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=8, raw=False, realize=True, features=True,
+def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, phonetic=False,
              rank=True, citation=True, transortho=True, experimental=True, udformat=True):
     '''Segment a single word and print out the results.
 
@@ -67,6 +67,7 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True,
     @param features (boolean): whether to show the grammatical feature labels
     @param transortho (boolean): whether to convert output to non-roman orthography
     @param citation (boolean): whether to output a lemma for the word
+    @param phonetic (boolean): whether to output phonetic romanization (False by default for seg)
     @param rank (boolean): whether to rank segmentations by frequency
     @param udformat (boolean): whether to convert POS and features to UD format
     @return:         analyses (only if raw is True); 
@@ -82,35 +83,27 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True,
     simps = None
     if language:
         # Process special cases
-        abbrev = language.morphology.is_abbrev(word)
-        if abbrev:
-            analysis = [language.process_abbrev(word, segment=True)]
-        else:
-            numeral = language.morphology.match_numeral(word)
-            if numeral:
-                prenum, num, postnum = numeral
-#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
-                analysis = [language.process_numeral(word, prenum, num, postnum, segment=True)]
-            else:
-                # Do the preprocessing first in order to save any character normalizations
-                if language.preproc:
-                    word, simps = language.preproc(word)
-                analysis = language.anal_word(word, preproc=False, postproc=True, citation=citation,
-                                      gram=False, segment=True, only_guess=False,
-                                      experimental=experimental, rank=rank,
-                                      print_out=(not raw and not realize),
-                                      string=True, nbest=nbest)
+        analyses = language.preproc_special(word, segment=True)
+        if not analyses:
+           # Do the preprocessing first in order to save any character normalizations
+           if language.preproc:
+               word, simps = language.preproc(word)
+           analyses = language.anal_word(word, preproc=False, postproc=True, citation=citation,
+                                     gram=False, segment=True, only_guess=False, phonetic=phonetic,
+                                     experimental=experimental, rank=rank,
+                                     print_out=(not raw and not realize),
+                                     string=True, nbest=nbest)
         if realize:
 #            print("** analysis {}".format(analysis))
-            return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps) for s in analysis]
+            return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps) for s in analyses]
         elif raw:
-            return analysis
+            return analyses
 
 seg = seg_word
 
 def seg_file(language, infile, outfile=None, experimental=True, realize=True,
-             citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=3,
-             verbosity=0):
+             citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=4, report_n=10,
+             xml=None, local_cache=None, sep_punc=True, verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
@@ -120,16 +113,21 @@ def seg_file(language, infile, outfile=None, experimental=True, realize=True,
     @param start:    line to start analyzing from
     @param experimental: whether to use the experimental FST instead of
                       the default segmentation FST
+    @param xml:      either None/False or True or an XML tree
+    @param local_cache: None or a local cache used in editing another file
+    @param sep_punc: whether to separate punctuation from words
     @param nlines:   number of lines to analyze (if not 0)
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
     if language:
+        return \
         language.anal_file(infile, outfile, gram=False, citation=citation,
-                           pos=None, preproc=preproc, postproc=postproc,
+                           pos=None, preproc=preproc, postproc=postproc, sep_punc=sep_punc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
-                           realize=realize, start=start, nlines=nlines, nbest=nbest,
+                           realize=realize, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
+                           xml=xml, local_cache=local_cache,
                            verbosity=verbosity)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
@@ -170,14 +168,17 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     language = morpho.get_language(language, cache=cache,
                                    phon=False, segment=segment, experimental=experimental)
     if language:
+        print_out = not raw and not um
         # Process special cases
-        numeral = language.morphology.match_numeral(word)
-        if numeral:
-            prenum, num, postnum = numeral
-#            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
-            analysis = language.process_numeral(word, prenum, num, postnum, segment=False)
-        else:
-            analysis = \
+        analyses = language.preproc_special(word, segment=segment, print_out=print_out)
+        if not analyses:
+#        numeral = language.morphology.match_numeral(word)
+#        if numeral:
+#            prenum, num, postnum = numeral
+##            print("** Found numeral word: {} - {} - {}".format(prenum, num, postnum))
+#            analysis = language.process_numeral(word, prenum, num, postnum, segment=False)
+#        else:
+            analyses = \
               language.anal_word(word, preproc=not roman, postproc=not roman,
                              root=root, citation=citation, gram=gram, gloss=gloss,
                              phonetic=phonetic, segment=segment, only_guess=guess,
@@ -185,16 +186,16 @@ def anal_word(language, word, root=True, citation=True, gram=True,
                              guess=not dont_guess, cache=False,
                              nbest=nbest, report_freq=freq, um=um, normalize=normalize and raw,
                              init_weight=init_weight, string=not raw and not um,
-                             print_out=not raw and not um, fsts=pos, verbosity=verbosity)
+                             print_out=print_out, fsts=pos, verbosity=verbosity)
         if raw or um:
-            return analysis
+            return analyses
 
 anal = anal_word
 
 def anal_files(language, infiles, outsuff='.out',
                root=True, citation=True, gram=True, lemma_only=False, ortho_only=False,
                normalize=False, preproc=True, postproc=True, guess=False, raw=False,
-               dont_guess=False, rank=True, freq=True, nbest=3):
+               xml=None, dont_guess=False, rank=True, freq=True, nbest=3):
     """Analyze the words in a set of files, writing the analyses to
     files whose names are the infile names with outpre prefixed to them.
     See anal_file for description of parameters."""
@@ -209,6 +210,7 @@ def anal_files(language, infiles, outsuff='.out',
                                nbest=nbest, normalize=normalize and raw,
                                only_guess=guess, guess=not dont_guess,
                                ortho_only=ortho_only, lemma_only=lemma_only,
+                               xml=xml,
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
@@ -217,7 +219,8 @@ def anal_file(language, infile, outfile=None,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
               feats=None, simpfeats=None, word_sep='\n', sep_ident=False, minim=False,
-              rank=True, freq=True, nbest=100, start=0, nlines=0,
+              rank=True, freq=True, nbest=100, start=0, nlines=0, report_n=1000,
+              xml=None, local_cache=None,
               verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
@@ -246,9 +249,12 @@ def anal_file(language, infile, outfile=None,
     @param raw:      whether the analyses should be printed in "raw" form
     @param start:    line to start analyzing from
     @param nlines:   number of lines to analyze (if not 0)
+    @param local_cache: None or a local cache used in editing another file
+    @param xml:      either None/False or True or an XML tree
     '''
     language = morpho.get_language(language)
     if language:
+        return \
         language.anal_file(infile, outfile, root=root, citation=citation,
                            gram=gram, um=um, pos=None, preproc=preproc, postproc=postproc,
                            only_guess=guess, guess=not dont_guess, raw=raw,
@@ -256,7 +262,8 @@ def anal_file(language, infile, outfile=None,
                            nbest=nbest, normalize=normalize and raw,
                            sep_punc=sep_punc, feats=feats, simpfeats=simpfeats,
                            word_sep=word_sep, sep_ident=sep_ident, minim=minim,
-                           lower_all=lower_all, start=start, nlines=nlines,
+                           lower_all=lower_all, start=start, nlines=nlines, report_n=report_n,
+                           xml=xml, local_cache=local_cache,
                            verbosity=verbosity)
 
 def gen(language, root, features=[], pos=None, guess=False,

@@ -90,14 +90,17 @@ sbjs -> sbjs_p        [:]    [tm=prf];[tm=ger]
 
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural; go directly to obj
-sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],+def];[sb=[-p1,+plr],ob=[-expl],ax=None]
+sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None]
+#;[sb=[-p1,+plr],+def]
 # 2sf; go directly to obj; palatalize previous consonant; don't show the palatalization character
 sbjs_i -> obj        <8i:-i(@pron,subj,$gender=fem,number=sing,person=2)>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
 sbjs_i -> sbjs_i0     [:]    [sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[-p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def]
 # Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -0- for 2p, 3p, prp, 3sf, 2s frm, no obj; -I- for 2s
 # -e- for -n, -N, -w, optionally for -wo(t)
-sbjs_i0 -> obj        <e:-e(infix)>   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]];[+def,ob=[-expl]]
+#sbjs_i0 -> obj        <e:-e(infix)>   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]]
+sbjs_i0 -> obj        <e:-e->   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]]
+#;[+def,ob=[-expl]]
 # -I- for -h, -x, optionally for -wo(t)
 sbjs_i0 -> obj        [I:]   [ob=[+p2,+expl,-plr,-prp]]
 # No infix for -at, -ac_ew, -ac_hu
@@ -114,7 +117,9 @@ sbjs_pk -> sbjs_pk1   <u:u(@pron,subj,$number=sing,person=1)>   [sb=[+p1,-p2],ob
 sbjs_pk1 -> negs_aux  <N_>
 sbjs_pk1 -> obj       [:]
 # 2sm: infix for objects other than prep and for definite suffix
-sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2)-e(inf)>   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]];[sb=[-p1,+p2,-fem],ob=[-expl],+def,+rel,+sub]
+sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2)-e->   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
+#sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2)-e(inf)>   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
+#;[sb=[-p1,+p2,-fem],ob=[-expl],+def,+rel,+sub]
 sbjs_pk -> obj        <:(@pron,subj,$gender=masc,number=sing,person=2)>    [sb=[-p1,+p2,-fem,-frm],ob=[-expl]];[sb=[-p1,+p2,-fem,-frm],ob=[-p2,+prp,+expl]]
 # 2sf, no infix
 sbjs_p -> obj         <x:-x(@pron,subj,$gender=fem,number=sing,person=2)>   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
@@ -122,7 +127,9 @@ sbjs_p -> obj         <x:-x(@pron,subj,$gender=fem,number=sing,person=2)>   [tm=
 sbjs_p -> obj        <ec_:-ec_(@pron,subj,$gender=fem,number=sing,person=3)>  [tm=prf,sb=[-p1,-p2,-plr,+fem]]
 # 1p, infix for 3sm obj and 2s frm, and +def
 sbjs_p -> sbjs_pn     <n:-n(@pron,subj,$number=plur,person=1)>   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
-sbjs_pn -> obj        <e:-e(infix)>   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]];[ob=[-expl],+def,+rel,+sub]
+#sbjs_pn -> obj        <e:-e(infix)>   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
+sbjs_pn -> obj        <e:-e->   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
+#;[ob=[-expl],+def,+rel,+sub]
 sbjs_pn -> obj        [:]      [ob=[-expl],-def];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
 # 2p: prf or ger
 sbjs_p -> obj      <ac_hu:-Ac_hu(@pron,subj,$number=plur,person=2)>  [sb=[+p2,-p1,+plr],ob=[-p2]]
@@ -134,12 +141,14 @@ sbjs_p -> obj         <u:-u(@pron,subj,$number=plur,person=3)>   [tm=prf,sb=[-p1
 sbjs_p -> obj         <_8E:-_E(@pron,subj,$number=sing,person=1)> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
 sbjs_p -> sbj_g1p     <en:-en(@pron,subj,$number=plur,person=1)>  [tm=ger,sb=[+p1,-p2,+plr],ob=[-p1]]
 # 1p: infix for 2frm (handle later as prefix before -wo(t)?); 3sm
-sbj_g1p -> obj        <e:-e(infix)>   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
+#sbj_g1p -> obj        <e:-e(infix)>   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
+sbj_g1p -> obj        <e:-e->   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
 sbj_g1p -> obj        [:]    [ob=[-expl],-def];[ob=[+expl,-p2,+fem,-plr,-prp]];[ob=[+plr,-prp,+expl]];[ob=[+expl,+p2,-frm,-prp]];[ob=[+expl,+prp]]
 # 2s (plural same as perfective)
 sbjs_p -> sbj_g2m     <eh:-eh(@pron,subj,$gender=masc,number=sing,person=2)>  [tm=ger,sb=[+p2,-p1,-plr,-fem,-frm],ob=[-p2]]
 # 2sm: infix for 1 objects, non-prep
-sbj_g2m -> obj        <e:-e(infix)>   [ob=[-prp,+p1,+expl]]
+sbj_g2m -> obj        <e:-e->   [ob=[-prp,+p1,+expl]]
+#sbj_g2m -> obj        <e:-e(infix)>   [ob=[-prp,+p1,+expl]]
 sbj_g2m -> obj        [:]    [ob=[-expl]];[ob=[-p2,+prp,+expl]];[ob=[-prp,-p1,-p2,+expl]]
 sbjs_p -> obj         <ex:-ex(@pron,subj,$gender=fem,number=sing,person=2)>  [tm=ger,sb=[+p2,-p1,-plr,+fem,-frm],ob=[-p2]]
 # 3
@@ -149,11 +158,14 @@ sbjs_p -> obj        <ew:-ew(@pron,subj,$number=plur,person=3)>  [tm=ger,sb=[-p2
 
 ### OBJECT SUFFIXES
 # No object; not definite
-obj -> negs_aux          [:]    [ob=[-expl],-def]
+obj -> negs_aux          [:]    [ob=[-expl]]
+#obj -> negs_aux          [:]    [ob=[-expl],-def]
 # 3sm suffix doubles as definite marker for relative clauses
-obj -> def3sm0           [:]    [ob=[-expl],+def,+rel,+sub]
+#obj -> def3sm0           [:]    [ob=[-expl],+def,+rel,+sub]
 # Explicit objects, also definite if relative
-obj -> obj0            [:]    [ob=[+expl],+def,+rel];[ob=[+expl],-def,-rel]
+#obj -> obj0            [:]    [ob=[+expl],-def,-rel]
+obj -> obj0            [:]    [ob=[+expl]]
+# ;[ob=[+expl],+def,+rel]
 # Prepositional
 obj0 -> objs1       <b_:-b_($case=mal)>  [ob=[+prp,+b,-l]]
 obj0 -> objs1       <l_:-l_($case=ben)>  [ob=[+prp,+l,-b]]

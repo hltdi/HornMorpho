@@ -47,12 +47,12 @@ SEG_DROP_FEATS = ['ውልድ']
 
 ### Analysis of numerals, etc.
 
-def trivial_anal(string):
-    if string.isdigit():
-        return int(string)
-    if isnumstring(string):
-        return float(string)
-    return no_convert(string)
+#def trivial_anal(string):
+#    if string.isdigit():
+#        return int(string)
+#    if isnumstring(string):
+#        return float(string)
+#    return no_convert(string)
 
 ### Various functions that will be values of attributes of Amharic Morphology
 ### and POSMorphology objects.
@@ -63,8 +63,8 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
 
     If vc_as is True, preserve the voice and aspect of the original word.
     '''
-#    print("** Getting V citation for {}:{}, vc_as: {}".format(root, fs.__repr__(), vc_as))
-    if 'lemma' in fs:
+#    print("** Getting V citation for {}:{}, vc_as: {}, phonetic {}".format(root, fs.__repr__(), vc_as, phonetic))
+    if 'lemma' in fs and not phonetic:
         return fs['lemma']
     citation = ''
     if root in ('hlw', 'hl_w', 'al_'):
@@ -102,7 +102,6 @@ def vb_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
         if citation:
             result = ' '.join(root_split[:-1]) + ' ' + citation[0][0]
     else:
-        print("** Generating citation form for {}, {}, {}".format(root, fs.__repr__(), guess))
         citation = AMH.morphology['v'].gen(root, fs, from_dict=False,
                                            phon=True, postproc=False, guess=guess)
         if citation:
@@ -778,10 +777,14 @@ def postproc_word(word, ipa=False, phon=True, ortho_only=False,
     changing internal HM representation to an alternate
     conventional representation.
     """
-#    print("Postprocessing {}, phon={}".format(word, phon))
+#    print("** Amh postprocessing {}, phon={}".format(word, phon))
     if '//' in word:
         word = word.replace('//', ' ')
-    ortho = geezify(word, deepenthesize=phon)
+    if is_geez(word):
+        ortho = word
+        word = romanize(word)
+    else:
+        ortho = geezify(word, deepenthesize=phon)
     if ortho_only:
         return ortho
     if phonetic:
@@ -837,7 +840,7 @@ AMH.morphology.simplify = lambda word: simplify(word)
 AMH.morphology.orthographize = lambda word: orthographize(word)
 
 # Function that performs trivial analysis on forms that don't require romanization
-AMH.morphology.triv_anal = trivial_anal
+#AMH.morphology.triv_anal = trivial_anal
 
 ## Functions converting between feature structures and simple dicts
 AMH.morphology['v'].anal_to_dict = lambda root, anal: vb_anal_to_dict(root, anal)
@@ -979,10 +982,14 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     Convert a segmentation to a string, including features if features is True.
     """
     # The segmentation string is second in the list
-#    print("** Converting {} to string, udformat {}, features {}".format(segmentation, udformat, features.__repr__()))
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
+    if not morphstring:
+        result = {'pos': pos.upper()}
+        if citation:
+            result['lemma'] = citation
+        return result
     morphs, rootindex = AMH.seg2morphs(morphstring, pos)
     # Root string and features
     root, rootfeats = morphs[rootindex]
