@@ -52,8 +52,9 @@ def make_conllu_word(word, segmentations, morphid, multseg=False):
         if nmorphs == 1:
             # The word has only one morpheme
             props = segmentations[0].copy()
-            props.insert(0, ('id', morphid))
-            props.extend([('head', None), ('deprel', None), ('deps', None), ('misc', None)])
+            props[0][1] = morphid
+#            .insert(0, ('id', morphid))
+            props.extend([('deps', None), ('misc', None)])
 #            props['id'] = morphid
             return [Token(dict(props))]
         else:
@@ -65,10 +66,22 @@ def make_conllu_word(word, segmentations, morphid, multseg=False):
 #            props['id'] = ids
             tokens.append(Token(dict(props)))
             id = morphid
+            # Get the index of the head
+            headi = -1
+            for i, props in enumerate(segmentations):
+                # Check deprel
+                if props[-1][1] is None:
+                    if headi >= 0:
+                        print("** Two heads for {}!".format(segmentations))
+                    headi = i + morphid
             for props in segmentations:
                 props = props.copy()
-                props.insert(0, ('id', id))
-                props.extend([('head', None), ('deprel', None), ('deps', None), ('misc', None)])
+#                props.insert(0, ('id', id))
+                props[0][1] = id
+                # Set the head id for dependent morphemes
+                if id != headi:
+                    props[-2][1] = headi
+                props.extend([('deps', None), ('misc', None)])
                 tokens.append(Token(dict(props)))
                 id += 1
             return tokens

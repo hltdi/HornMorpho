@@ -109,7 +109,7 @@ seg = seg_word
 
 def seg_file(language, infile, outfile=None, experimental=True, realize=True,
              citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=4, report_n=10,
-             xml=None, multseg=True, csentences=True, sentid=0,
+             xml=None, multseg=True, csentences=True, sentid=0, batch_name='',
              local_cache=None, sep_punc=True, verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
@@ -137,7 +137,7 @@ def seg_file(language, infile, outfile=None, experimental=True, realize=True,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=realize, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
                            xml=xml, multseg=multseg, csentences=csentences, sentid=sentid,
-                           local_cache=local_cache,
+                           local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
 def anal_word(language, word, root=True, citation=True, gram=True,

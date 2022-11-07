@@ -157,7 +157,7 @@ sbj_g2m -> obj        [:]    [ob=[-expl]];[ob=[-p2,+prp,+expl]];[ob=[-prp,-p1,-p
 sbjs_p -> obj         <ex:-ex(@pron,subj,$gender=fem,number=sing,person=2,*ኧሽ,~nsubj)>  [tm=ger,sb=[+p2,-p1,-plr,+fem,-frm],ob=[-p2]]
 # 3
 sbjs_p -> obj         <o:-o(@pron,subj,$gender=masc,number=sing,person=3,*ኦ,~nsubj)>   [tm=ger,sb=[-p2,-p1,-plr,-fem]]
-sbjs_p -> obj         <a:-A(@pron,subj,$gender=fem,number=sing,person=3)*ኣ,~nsubj>   [tm=ger,sb=[-p2,-p1,-plr,+fem]]
+sbjs_p -> obj         <a:-A(@pron,subj,$gender=fem,number=sing,person=3,*ኣ,~nsubj)>   [tm=ger,sb=[-p2,-p1,-plr,+fem]]
 sbjs_p -> obj        <ew:-ew(@pron,subj,$number=plur,person=3,*ኧው,~nsubj)>  [tm=ger,sb=[-p2,-p1,+plr]]
 
 ### OBJECT SUFFIXES

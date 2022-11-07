@@ -982,7 +982,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     """
     Convert a segmentation to a string, including features if features is True.
     """
-#    print("* seg2string {} {}".format(segmentation, simplifications))
+#    print("** seg2string {} {}".format(segmentation, simplifications))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
@@ -990,7 +990,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     if not morphstring:
         if conllu:
             word = geezify(word)
-            return [[('form', word), ('lemma', word), ('upos', pos.upper()), ('xpos', pos.upper()), ('feats', None)]]
+            return [[ ['id', '*'], ['form', word], ['lemma', word], ['upos', pos.upper()], ['xpos', pos.upper()], ['feats', None], ['head', None], ['deprel', None ] ]]
         else:
             result = {'pos': pos.upper()}
             if citation:
@@ -1029,8 +1029,6 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
 #    print("*** morphs {}".format(morphs))
     if conllu:
         morphs = [conllu_morpheme(form, props, citation) for form, props in morphs]
-#            (m, f.replace('(', '').replace(')', '').split(';')) for m, f in morphs]
-#        result = {'morphemes': morphs}
         return morphs
     else:
         if not features:
@@ -1055,14 +1053,21 @@ def conllu_morpheme(form, props, citation):
     later use citation for the head's 'lemma'.)
     '''
     # The head is surrounded by {}
+#    print("** conllu_morpheme: form {} props {} citation {}".format(form, props, citation))
     form = form.replace('{', '').replace('}', '')
-    props = props.replace('(', '').replace(')', '').split(';')
-    pos = props[0]
-    feats = props[1] if len(props) == 2 else '_'
-    pos = pos.split(',')
+#    props = props.replace('(', '').replace(')', '').split(';')
+    pos = props.get('pos')
+#    pos = pos.split(',')
     upos = pos[0]
     xpos = pos[1] if len(pos) == 2 else upos
-    return [('form', form), ('lemma', form), ('upos', upos), ('xpos', xpos), ('feats', feats)]
+#    pos = props[0]
+    feats = props.get('feats')
+    deprel = props.get('deprel')
+    if (lemma := props.get('lemma')) is None:
+        if (lemma := citation) is None:
+            lemma = form
+#    feats = props[1] if len(props) == 2 else '_'
+    return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', None], ['deprel', deprel] ]
 #    return {'form': form, 'lemma': form, 'upos': upos, 'xpos': xpos, 'feats': feats}
 
 def root2string(root, simplifications=None):

@@ -1216,47 +1216,52 @@ class Language:
         return ''
 
     @staticmethod
-    def udformat_posfeats(string, dropfeats=['ውልድ']):
+    def udformat_posfeats(string, dropfeats=['ውልድ'], conllu=True):
         '''
         string is ([@pos,...,][$feat],[*lemma],[~deprel]).
         format string as in UD.
         '''
-        print("** udformat_posfeats {}".format(string))
+#        print("** udformat_posfeats {}".format(string))
         match = SEG_STRING_RE.match(string)
         if not match:
             print("** segstring {} doesn't match RE!".format(string))
         else:
             pos, feats, lemma, deprel = match.groups()
-            print("** pos {}, feats {}, lemma {}, deprel {}".format(pos, feats, lemma, deprel))
-        # Get rid of parentheses
-        string = string[1:-1]
-        pos, x, feats = string.partition(Language.featsmark)
+            if lemma:
+                lemma = lemma.replace(',', '')
+#        # Get rid of parentheses
+#        string = string[1:-1]
+#        pos, x, feats = string.partition(Language.featsmark)
         if feats:
-            feats = [Language.udformat_feats(feats, dropfeats=dropfeats)]
+            feats = Language.udformat_feats(feats, dropfeats=dropfeats)
         else:
-            feats = []
+            feats = None
         if pos:
-            if feats:
-                # delete the POS / feats separator
-                pos = pos[:-1]
-            pos = pos.partition(Language.posmark)[2]
-            pos = [Language.udformat_pos(pos)]
+#            if feats:
+#                # delete the POS / feats separator
+#                pos = pos[:-1]
+#            pos = pos.partition(Language.posmark)[2]
+            pos = Language.udformat_pos(pos)
         else:
-            pos = []
-        return "(" + Language.joinposfeats.join(pos + feats) + ")"
+            pos = None
+        if conllu:
+            return {'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel}
+        else:
+            return "(" + Language.joinposfeats.join(pos + feats) + ")"
 
     @staticmethod
     def udformat_pos(pos):
         '''Delete POS char (@) and uppercase pos name(s).'''
 #        pos = pos.remove(Language.posmark)
         poss = pos.split(',')
-        poss = [p.strip().upper() for p in poss]
-        return Language.joinpos.join(poss)
+        poss = [p.strip().upper() for p in poss if p]
+        return poss
+#        return Language.joinpos.join(poss)
 
     @staticmethod
     def udformat_feats(feats, dropfeats=None):
         '''Delete feat char ($) and capitalize features and value.'''
-        ffeats = [f.strip().split('=') for f in feats.split(',')]
+        ffeats = [f.strip().split('=') for f in feats.split(',') if f]
         ffeats = ['='.join([Language.udformat_feat(f[0]), Language.udformat_value(f[1])]) for f in ffeats if f[0] not in dropfeats]
 #        print("*** ffeats {}".format(ffeats))
         # Alphabetize by feature names
@@ -1278,9 +1283,11 @@ class Language:
         '''
         Normally capitalize values.
         Make an except for values containing '_', like 'te_'.
+        Replace / with , for ambiguous values.
         '''
         if '_' in value:
             return value
+        value = value.replace('/', ',')
         return value.capitalize()
 
     def preprocess_file(self, filein, fileout):
@@ -1599,7 +1606,7 @@ class Language:
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=False, normalize=False,
                   # Ambiguity
                   rank=True, report_freq=False, nbest=100, report_n=50000,
-                  lower=True, lower_all=False, nlines=0, start=0,
+                  lower=True, lower_all=False, nlines=0, start=0, batch_name='',
                   local_cache=None, xml=None, multseg=False, csentences=True, sentid=0,
                   verbosity=0):
         """
@@ -1614,6 +1621,7 @@ class Language:
         storedict = True if knowndict != None else False
         normalize = normalize and not um
         realizer = realize and self.segmentation2string
+        batch_name = batch_name or "Batch"
         if csentences != False:
             # Create a list of CoNNL-U sentences.
             if not isinstance(csentences, list):
@@ -1670,7 +1678,7 @@ class Language:
                     print("** Analyzing line {}".format(line.strip()))
                 if csentences != False:
                     csent = TokenList()
-                    csent.metadata = {'text': line.strip(), 'sent_id': "CACO1.1_{}".format(sentid)}
+                    csent.metadata = {'text': line.strip(), 'sent_id': "{}_s{}".format(batch_name, sentid)}
                     csentences.append(csent)
                 elif xml:
                     xsent = add_caco_sentence(xmlroot)
@@ -1856,11 +1864,11 @@ class Language:
         elif segment:
             if post:
                 if pre:
-                    string = "{}(@adp)-{}(@num)-{{{}}}".format(pre, num, post)
+                    string = "{}(@adp,*{},~case)-{}(@num,*{},~nummod)-{{{}}}".format(pre, pre, num, num, post)
                 else:
-                    string = "{}(@num)-{{{}}}".format(num, post)
+                    string = "{}(@num,*{},~nummod)-{{{}}}".format(num, num, post)
             elif pre:
-                string = "{}(@adp)-{{{}}}".format(pre, num)
+                string = "{}(@adp,*{},~case)-{{{}}}".format(pre, pre, num)
             else:
                 string = None #"{}".format(num)
             return (pos, string, lemma)

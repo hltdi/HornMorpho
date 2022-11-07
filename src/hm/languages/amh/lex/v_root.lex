@@ -84,7 +84,7 @@
 'x*	''	[bs=0,cls=A,lemma=አሸ,-lt,root=አሸ,t=[eng="rub,massage"]]
 'xg	''	[bs=0,cls=B,lemma=አሸገ,-lt,root=አሸገ,t=[eng="pack,seal"]]
 'xm	''	[bs=0,cls=B,lemma=አሸመ,-lt,root=አሸመ,t=[eng="trim perfectly"]]
-'y*	''	[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=prf];[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=ger];[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=imf];[bs=as_,cls=A,lemma=አሳየ,-lt,root=አየ,t=[eng=see],tm=j_i];[bs=te_,cls=A,lemma=ታየ,-lt,root=አየ,t=[eng=see],tm=j_i]
+'y*	''	[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=prf,v=None];[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=ger,v=None];[bs=0,cls=A,lemma=አየ,-lt,root=አየ,t=[eng=see],tm=imf,v=None];[bs=as_,cls=A,lemma=አሳየ,-lt,root=አየ,t=[eng=see],tm=j_i,v=None];[bs=te_,cls=A,lemma=ታየ,-lt,root=አየ,t=[eng=see],tm=j_i,v=None]
 'yl	''	[bs=0,cls=B,lemma=አየለ,-lt,root=አየለ,t=[eng="overpower,become strong,be predominant"]]
 'zb	''	[as=it,bs=te_R,cls=B,lemma=ተዛዘበ,-lt,root=አዘበ,-smp,t=[eng="be disappointed"]];[bs=0,cls=B,lemma=አዘበ,-lt,root=አዘበ,t=[eng=tie]]
 'zn	''	[bs=0,cls=A,lemma=አዘነ,-lt,root=አዘነ,t=[eng="mourn,deplore,be sad"]]

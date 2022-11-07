@@ -33,15 +33,25 @@ CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT.txt")
 
 CONLLU_sents = []
 
-def caco_seg(multseg=False, report_n=5, start=0, nlines= 50, sentid=0):
+def caco_seg(multseg=False, report_n=5, start=0, nlines= 50, sentid=0,
+                          version="2.1", batch='1.0'):
+    batch_name = caco_batch_name(version, batch)
     return hm.seg_file('amh', CACO_path, sep_punc=False, csentences=CONLLU_sents,
                                            local_cache=CACO_cache, start=start, nlines=nlines,
+                                           batch_name=batch_name,
                                            multseg=multseg, sentid=sentid, report_n=report_n)
 
-def write_caco(file, token_lists):
-    with open(hm.morpho.caco_path("2.0", file), 'w', encoding='utf8') as file:
+def write_caco(version, batch, token_lists):
+    n = len(token_lists)
+    batch_name = caco_batch_name()
+    file_name = "{}_{}.conllu".format(batch_name, n)
+    path = hm.morpho.caco_path(version, file_name)
+    with open(path, 'w', encoding='utf8') as file:
         for tl in token_lists:
             print(tl.serialize(), file=file, end='')
+
+def caco_batch_name(version, batch):
+    return "CACO{}_B{}".format(version, batch)
 
 #CACO_tree = hm.morpho.make_caco()
 
