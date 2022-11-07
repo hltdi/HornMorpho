@@ -83,6 +83,26 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
+def proc_irr_nplur():
+    stems = []
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'irr_plrX.lex'))) as file:
+        for line in file:
+            if line[0] == '#' or not line.strip():
+                continue
+            stem, root, feats = line.strip().split('\t')
+            feats = FS(feats)
+#            feats = feats.split(';')
+#            feats = FSS(*feats)
+            stems.append([stem, root, feats])
+    for srf in stems:
+        stem, root, feats = srf
+        srf[1] = stem
+        feats['lemma'] = geezify(root)
+    with open("irr_nplur.lex", 'w', encoding='utf8') as file:
+        for stem, root, feats in stems:
+            print("{}\t{}\t{}".format(stem, root, feats.__repr__()), file=file)
+#    return stems
+
 def proc3_vroots():
     roots = get_vroots()
     newroots = []

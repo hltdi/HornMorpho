@@ -126,6 +126,9 @@ ABBREVCHARS_RE = re.compile(r'\s*abb.*?ch.*?:\s*(.+)')
 # Get the root from a segmentation string
 SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 
+# Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL
+SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?\)")
+
 ## Regex for checking for non-ascii characters
 ASCII_RE = re.compile(r'[a-zA-Z]')
 
@@ -138,6 +141,7 @@ class Language:
     infixsep = '--'
     posmark = '@'
     featsmark = '$'
+    lemmamark = '&'
     joinposfeats = ';'
     joinfeats = '|'
     joinpos = ','
@@ -1152,8 +1156,8 @@ class Language:
     ## Methods related to segmentation
 
     def seg2morphs(self, seg, pos=None, joininfixes=True):
-        '''Returns the morphemes in a segmentation string, and index of the root.
-        USE REGEX.
+        '''
+        Returns the morphemes in a segmentation string, and index of the root.
         '''
         if joininfixes:
             # Remove the string separating an infix from a following suffix
@@ -1176,7 +1180,6 @@ class Language:
                 morph[0] = form
                 rootindex = index
             morphs[index] = morph
-#        print("**** morphs: {}".format(morphs))
         return morphs, rootindex
 
     def seg2root(self, seg):
@@ -1184,13 +1187,15 @@ class Language:
         morphs = self.seg2morphs(seg)
         return morphs[0][morphs[1]]
 
-    def segmentation2string(self, segmentation, sep='-', transortho=True, features=False,
-                            udformat=False, simplifications=None):
-        '''Convert a segmentation (POS, segstring, count) to a form string,
-        using a language-specific function if there is one, otherwise using a default function.'''
+    def segmentation2string(self, word, segmentation, sep='-', transortho=True, features=False,
+                            udformat=False, simplifications=None, conllu=True):
+        '''
+        Convert a segmentation (POS, segstring, count) to a form string,
+        using a language-specific function if there is one, otherwise using a default function.
+        '''
         if self.seg2string:
-            return self.seg2string(segmentation, sep=sep, transortho=transortho, features=features,
-                                   udformat=udformat, simplifications=simplifications)
+            return self.seg2string(word, segmentation, sep=sep, transortho=transortho, features=features,
+                                   udformat=udformat, simplifications=simplifications, conllu=conllu)
         else:
             morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
             # This ignores whatever alternation rules might operate at boundaries
@@ -1212,9 +1217,18 @@ class Language:
 
     @staticmethod
     def udformat_posfeats(string, dropfeats=['ውልድ']):
-        '''string is ([@pos,...,]$feat,...).
-        format string as in UD.'''
-#        print("** udformat_posfeats {}".format(string))
+        '''
+        string is ([@pos,...,][$feat],[*lemma],[~deprel]).
+        format string as in UD.
+        '''
+        print("** udformat_posfeats {}".format(string))
+        match = SEG_STRING_RE.match(string)
+        if not match:
+            print("** segstring {} doesn't match RE!".format(string))
+        else:
+            pos, feats, lemma, deprel = match.groups()
+            print("** pos {}, feats {}, lemma {}, deprel {}".format(pos, feats, lemma, deprel))
+        # Get rid of parentheses
         string = string[1:-1]
         pos, x, feats = string.partition(Language.featsmark)
         if feats:
@@ -1403,6 +1417,7 @@ class Language:
                   get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
+                  conllu=True,
                   only_anal=False, preseg=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both
@@ -1412,6 +1427,8 @@ class Language:
         If experimental is True, this uses the "experimental" (*X) FST, which
         could be a segmenter, in which case segment is also True, or an analyzer,
         in which case segment is False.
+        if conllu is True (and segment and experimental are True), return CoNLL-U-friendly
+        representations.
         '''
         # Before anything else, check to see if the word is in the list of
         # words that have failed to be analyzed
@@ -1433,8 +1450,7 @@ class Language:
             form, simps = self.preproc(word)
         else:
             form = word
-#        print("** form {}, word {}; simps {}".format(form, word, simps))
-        # See if the word is unanalyzable ...
+         # See if the word is unanalyzable ...
         unal_word = self.morphology.is_unanalyzed(form)
         # unal_word is a form, POS pair
         if unal_word:
@@ -1458,6 +1474,7 @@ class Language:
 
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)?
         if not analyses and form in self.morphology.analyzed:
+#            print("** form {}".format(form))
             if only_anal:
                 return []
             # Assume these are the *only* analyses
@@ -1494,7 +1511,6 @@ class Language:
                                                              phon=phon, segment=segment, experimental=experimental,
                                                              normalize=False, to_dict=to_dict, sep_anals=sep_anals,
                                                              verbosity=verbosity)
-#                        print("*** analysis: {}".format(analysis))
                         if analysis:
                             if cache:
                                 to_cache.extend(analysis)
@@ -1527,6 +1543,8 @@ class Language:
             # Impossible to analyze the word/form.
             if no_anal != None:
                 no_anal.append(word)
+            if segment and experimental:
+                analyses = [('UNK', None, None)]
             return analyses
         if rank and len(analyses) > 1:
 #            print("** Ranking results {}".format(analyses))
@@ -1575,17 +1593,14 @@ class Language:
                                                freq=rank or report_freq))
 
     def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
-                  root=True, citation=True, segment=False, gram=True,
-                  lemma_only=False, ortho_only=False, realize=False,
-                  knowndict=None, guessdict=None, cache=True, no_anal=True,
+                  root=True, citation=True, segment=False, gram=True, lemma_only=False, ortho_only=False, realize=False,
+                  knowndict=None, guessdict=None, cache=True, no_anal=None,
                   phon=False, only_guess=False, guess=True, raw=False, experimental=False,
-                  sep_punc=True, word_sep='\n', sep_ident=False, minim=False,
-                  feats=None, simpfeats=None, um=False, normalize=False,
+                  sep_punc=True, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=False, normalize=False,
                   # Ambiguity
                   rank=True, report_freq=False, nbest=100, report_n=50000,
                   lower=True, lower_all=False, nlines=0, start=0,
-                  local_cache=None,
-                  xml=None, multseg=True,
+                  local_cache=None, xml=None, multseg=False, csentences=True, sentid=0,
                   verbosity=0):
         """
         Analyze words in file, either writing results to pathout, storing in
@@ -1599,7 +1614,12 @@ class Language:
         storedict = True if knowndict != None else False
         normalize = normalize and not um
         realizer = realize and self.segmentation2string
-        if xml:
+        if csentences != False:
+            # Create a list of CoNNL-U sentences.
+            if not isinstance(csentences, list):
+                # Create the list of CoNLL-U sentences
+                csentences = []
+        elif xml:
             # This is either a CACO XML tree or True or False (or None)
             if not isinstance(xml, ET.ElementTree):
                 # Create the CACO tree
@@ -1633,6 +1653,7 @@ class Language:
             if start or nlines:
                 lines = lines[start:start+nlines]
             for line in lines:
+                sentid += 1
                 n += 1
                 if n % report_n == 0:
                     print("ANALYZED {} LINES".format(n))
@@ -1646,25 +1667,31 @@ class Language:
                     identifier, line = line.split('\t')
                     string = "{}\t".format(identifier)
                 if verbosity:
-                    print("Analyzing line {}".format(line))
-                if xml:
+                    print("** Analyzing line {}".format(line.strip()))
+                if csentences != False:
+                    csent = TokenList()
+                    csent.metadata = {'text': line.strip(), 'sent_id': "CACO1.1_{}".format(sentid)}
+                    csentences.append(csent)
+                elif xml:
                     xsent = add_caco_sentence(xmlroot)
                 # Segment into words
+                morphid = 1
                 for w_index, word in enumerate(line.split()):
+                    simps = None
                     if verbosity > 1:
                         print("  Analyzing {}".format(word))
-#                    # Ignore punctuation
-#                    if word in self.morphology.punctuation:
-#                        continue
                     # Lowercase on the first word, assuming a line is a sentence
                     if lower_all or (lower and w_index == 0):
                         word = word.lower()
                     if word in local_cache:
-#                        print("** {} already in cache: {}".format(word, local_cache[word]))
                         analysis = local_cache[word]
                         if storedict:
                             if analysis:
                                 add_anals_to_dict(self, analysis, knowndict, guessdict)
+                        elif csentences != False:
+                            add_conllu_word(csent, word, analysis, morphid, multseg=multseg)
+                            # Update the morpheme id, assuming the first analysis
+                            morphid += len(analysis[0])
                         elif xml:
                             add_caco_word(xsent, word, analysis, multseg=multseg)
                         elif minim:
@@ -1694,11 +1721,15 @@ class Language:
                                            root=root, stem=True, citation=citation and not raw,
                                            normalize=normalize, gram=gram, ortho_only=ortho_only,
                                            preproc=False, postproc=postproc and not raw,
-                                           cache=cache, no_anal=no_anal, um=um,
+                                           cache=cache, no_anal=no_anal, um=um, conllu=True,
                                            rank=rank, report_freq=report_freq, nbest=nbest,
-                                           string=not raw and not um, print_out=False, only_anal=storedict)
-                        if segment and realize:
-                            analyses = [realizer(analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
+                                           string=not raw and not um, print_out=False, only_anal=False)
+                        else:
+                            form = word
+                        if not analyses:
+                            print("** No analyses for {}".format(form))
+                        if analyses and segment and realize:
+                            analyses = [realizer(form, analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
                         if minim:
                             analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
                         # If we're storing the analyses in a dict, don't convert them to a string
@@ -1707,7 +1738,9 @@ class Language:
                         # Otherwise (for file or terminal), convert to a string
                         elif not minim:
                             if analyses:
-                                if raw or um:
+                                if csentences != False:
+                                    analysis = analyses
+                                elif raw or um:
                                     analysis = "{}  {}".format(form, analyses.__repr__())
                                 elif not realize:
                                     # Convert the analyses to a string
@@ -1723,6 +1756,11 @@ class Language:
                         # Either store the analyses in the dict or write them to the terminal or the file
                         if storedict:
                             add_anals_to_dict(self, analysis, knowndict, guessdict)
+                        elif csentences != False:
+#                            print("** Adding {} to {}: {}".format(word, csent, analysis))
+                            add_conllu_word(csent, word, analysis, morphid, multseg=multseg)
+                            # Update the morpheme id, assuming the first analysis
+                            morphid += len(analysis[0])
                         elif xml:
                             add_caco_word(xsent, word, analysis, multseg=multseg)
                         elif minim:
@@ -1732,11 +1770,11 @@ class Language:
                         else:
                             print(analysis, file=out, end='')
 
-                        if segment and not xml:
+                        if segment and not xml and csentences == False:
                             # Add a newline for each segmented word
                             print()
                         local_cache[word] = analysis
-                if minim or segment and not xml:
+                if minim or segment and not xml and csentences == False:
                     # End of line
                     print(string, file=out)
             filein.close()
@@ -1746,6 +1784,8 @@ class Language:
             print('No such file or path; try another one.')
         if xml:
             return xml
+        elif csentences:
+            return csentences
 
     def preproc_special(self, word, segment=False, print_out=False):
         '''
@@ -1783,7 +1823,7 @@ class Language:
         '''
         Return analysis or segmentation of punctuation.
         '''
-        pos = 'pun'
+        pos = 'punct'
         if print_out:
             string = "{} -- punc".format(word)
             print(string)

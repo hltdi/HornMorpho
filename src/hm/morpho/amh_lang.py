@@ -806,12 +806,13 @@ AMH = language.Language("አማርኛ", 'amh',
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
               dflt_postproc_root=dflt_postproc_root,
-              seg2string=lambda string, sep='-', features=False, transortho=True, udformat=False, simplifications=None: \
-                            seg2string(string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications),
+              seg2string=lambda word, string, sep='-', features=False, transortho=True, udformat=False, simplifications=None, conllu=True: \
+                            seg2string(word, string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications, conllu=conllu),
               stat_root_feats=['cls', 'vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
-              seg_units=[["a", "e", "E", "i", "I", "o", "u", "H", "w", "y",
+              seg_units=[["a", "e", "E", "i", "I", "o", "u", "O", "@",
+                          "H", "w", "y",
                           "'", "`", "_", "|", "*", "/", "+", "2", "3"],
                          {"1": ["1", "1W"], "b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
                           "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
@@ -976,20 +977,25 @@ def roman2geez(value):
     """Convert a value (prep or conj) to geez."""
     return ROM2GEEZ.get(value, value)
 
-def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
-               arules=False, simplifications=None):
+def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=False,
+               arules=False, simplifications=None, conllu=True):
     """
     Convert a segmentation to a string, including features if features is True.
     """
+#    print("* seg2string {} {}".format(segmentation, simplifications))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
     if not morphstring:
-        result = {'pos': pos.upper()}
-        if citation:
-            result['lemma'] = citation
-        return result
+        if conllu:
+            word = geezify(word)
+            return [[('form', word), ('lemma', word), ('upos', pos.upper()), ('xpos', pos.upper()), ('feats', None)]]
+        else:
+            result = {'pos': pos.upper()}
+            if citation:
+                result['lemma'] = citation
+            return result
     morphs, rootindex = AMH.seg2morphs(morphstring, pos)
     # Root string and features
     root, rootfeats = morphs[rootindex]
@@ -1006,6 +1012,7 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
     morphs[rootindex] = root, rootfeats
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
+#    print("** morphs {}".format(morphs))
 #    for m, f in morphs:
 #        print("***  morph {}, feats {}".format(m, f))
     if geez:
@@ -1017,18 +1024,46 @@ def seg2string(segmentation, sep='-', geez=True, features=False, udformat=False,
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
     morphs = allcombs(morphs2)
-#    print("**** morphs {}".format(morphs2))
-    if not features:
-        morphs = [[w[0] for w in word] for word in morphs]
+    # For now ignore multiple spellings for syllables like qWe; just use the first one
+    morphs = morphs[0]
+#    print("*** morphs {}".format(morphs))
+    if conllu:
+        morphs = [conllu_morpheme(form, props, citation) for form, props in morphs]
+#            (m, f.replace('(', '').replace(')', '').split(';')) for m, f in morphs]
+#        result = {'morphemes': morphs}
+        return morphs
     else:
-        # Rejoin morpheme and features for each word
-        morphs = [[''.join(m) for m in word] for word in morphs]
-    result = {'morphemes': sep.join(m) for m in morphs}
+        if not features:
+            morphs = [[w[0] for w in word] for word in morphs]
+        else:
+            # Rejoin morpheme and features for each word
+            morphs = [''.join(m) for m in morphs]
+#            morphs = [[''.join(m) for m in word] for word in morphs]
+#            print("**** morphs {}".format(morphs))
+        result = {'morphemes': sep.join(morphs)}
     if citation:
         result['lemma'] = citation
     if pos:
         result['pos'] = pos.upper()
     return result
+
+def conllu_morpheme(form, props, citation):
+    '''
+    Create a dict with CoNLL-U properties for a morpheme.
+    props is a POS;feats string surrounded by parentheses.
+    (For now, use the form as the 'lemma', as in the Amh TB;
+    later use citation for the head's 'lemma'.)
+    '''
+    # The head is surrounded by {}
+    form = form.replace('{', '').replace('}', '')
+    props = props.replace('(', '').replace(')', '').split(';')
+    pos = props[0]
+    feats = props[1] if len(props) == 2 else '_'
+    pos = pos.split(',')
+    upos = pos[0]
+    xpos = pos[1] if len(pos) == 2 else upos
+    return [('form', form), ('lemma', form), ('upos', upos), ('xpos', xpos), ('feats', feats)]
+#    return {'form': form, 'lemma': form, 'upos': upos, 'xpos': xpos, 'feats': feats}
 
 def root2string(root, simplifications=None):
     """

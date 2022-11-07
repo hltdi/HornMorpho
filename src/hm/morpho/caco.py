@@ -25,12 +25,53 @@ Integrating HornMorpho with the updated CACO corpus.
 """
 
 import xml.etree.ElementTree as ET
+from conllu import parse, TokenList, Token
 import os
 
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
+TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
+
+def tb_path(file="am_att-ud-test.conllu"):
+    return os.path.join(TB_DIR, file)
+
+def parse_tb(file="am_att-ud-test.conllu"):
+    with open(tb_path(), encoding='utf8') as file:
+        return file.read()
 
 def caco_path(version, file):
     return os.path.join(CACO_DIR, "CACO{}".format(version), file)
+
+def add_conllu_word(sentence, word, segmentations, morphid, multseg=False):
+    w = make_conllu_word(word, segmentations, morphid, multseg=multseg)
+    sentence.extend(w)
+
+def make_conllu_word(word, segmentations, morphid, multseg=False):
+    if not multseg:
+        segmentations = segmentations[0]
+        nmorphs = len(segmentations)
+        if nmorphs == 1:
+            # The word has only one morpheme
+            props = segmentations[0].copy()
+            props.insert(0, ('id', morphid))
+            props.extend([('head', None), ('deprel', None), ('deps', None), ('misc', None)])
+#            props['id'] = morphid
+            return [Token(dict(props))]
+        else:
+            tokens = []
+            endid = morphid + nmorphs
+            ids = (morphid, '-', endid-1)
+            props = [('id', ids), ('form', word), ('lemma', None), ('upos', None), ('xpos', None),
+                     ('feats', None), ('head', None), ('deprel', None), ('deps', None), ('misc', None)]
+#            props['id'] = ids
+            tokens.append(Token(dict(props)))
+            id = morphid
+            for props in segmentations:
+                props = props.copy()
+                props.insert(0, ('id', id))
+                props.extend([('head', None), ('deprel', None), ('deps', None), ('misc', None)])
+                tokens.append(Token(dict(props)))
+                id += 1
+            return tokens
 
 #def dict2element(tag, d):
 #    elem = ET.Element(tag, d)
@@ -53,8 +94,10 @@ def make_caco_word(word, segmentations, multseg=True):
     '''
     Create an XML Element for word with props dict.
     '''
-    if not multseg:
-        e = dict2element('w', segmentations[0])
+    if not segmentations:
+        e = ET.Element('w')
+    elif not multseg:
+        e = ET.Element('w', segmentations[0])
     else:
         e = ET.Element('w')
         for segmentation in segmentations:

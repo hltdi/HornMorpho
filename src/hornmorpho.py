@@ -26,6 +26,35 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 import hm
 
+## new CACO
+
+CACO_cache = {}
+CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT.txt")
+
+CONLLU_sents = []
+
+def caco_seg(multseg=False, report_n=5, start=0, nlines= 50, sentid=0):
+    return hm.seg_file('amh', CACO_path, sep_punc=False, csentences=CONLLU_sents,
+                                           local_cache=CACO_cache, start=start, nlines=nlines,
+                                           multseg=multseg, sentid=sentid, report_n=report_n)
+
+def write_caco(file, token_lists):
+    with open(hm.morpho.caco_path("2.0", file), 'w', encoding='utf8') as file:
+        for tl in token_lists:
+            print(tl.serialize(), file=file, end='')
+
+#CACO_tree = hm.morpho.make_caco()
+
+#def caco_seg(multseg=False, report_n=25, start=0, nlines=500):
+##    return \
+#    hm.seg_file('amh', CACO_path, sep_punc=False, xml=CACO_tree, multseg=multseg,
+#                              local_cache=CACO_cache, start=start, nlines=nlines,
+#                              report_n=report_n)
+
+#def caco_write(file):
+#    path = hm.morpho.caco_path("2.0", file)
+#    CACO_tree.write(path, 'utf8')
+
 # FS conversion
 #FS = hm.morpho.FeatStruct
 #u = hm.morpho.simple_unify

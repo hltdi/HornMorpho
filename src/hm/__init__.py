@@ -19,7 +19,9 @@ Copyleft 2008-2014, 2017-2022. Michael Gasser
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
-__version__ = '4.5'
+# Version 4.5 includes the new segmenter for Amharic, accessed with
+# seg_word and seg_file with experimental=True (the default setting)
+__version__ = '4.5.0'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -56,7 +58,8 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, phonetic=False,
-             rank=True, citation=True, transortho=True, experimental=True, udformat=True):
+             rank=True, citation=True, transortho=True, experimental=True, udformat=True,
+             conllu=True):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
@@ -70,6 +73,8 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
     @param phonetic (boolean): whether to output phonetic romanization (False by default for seg)
     @param rank (boolean): whether to rank segmentations by frequency
     @param udformat (boolean): whether to convert POS and features to UD format
+    @param conllu (boolean): whether to return a dict for each morpheme that can be converted to
+                     CoNLL-U format
     @return:         analyses (only if raw is True); 
                      list of (POS, segstring, count) triples or
                      a list of strings (if realize is True)
@@ -92,10 +97,11 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
                                      gram=False, segment=True, only_guess=False, phonetic=phonetic,
                                      experimental=experimental, rank=rank,
                                      print_out=(not raw and not realize),
+                                     conllu=conllu,
                                      string=True, nbest=nbest)
         if realize:
 #            print("** analysis {}".format(analysis))
-            return [seg2string(s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps) for s in analyses]
+            return [seg2string(word, s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps, conllu=conllu) for s in analyses]
         elif raw:
             return analyses
 
@@ -103,7 +109,8 @@ seg = seg_word
 
 def seg_file(language, infile, outfile=None, experimental=True, realize=True,
              citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=4, report_n=10,
-             xml=None, local_cache=None, sep_punc=True, verbosity=0):
+             xml=None, multseg=True, csentences=True, sentid=0,
+             local_cache=None, sep_punc=True, verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
@@ -114,6 +121,8 @@ def seg_file(language, infile, outfile=None, experimental=True, realize=True,
     @param experimental: whether to use the experimental FST instead of
                       the default segmentation FST
     @param xml:      either None/False or True or an XML tree
+    @param csentences: if True or a list, create and return CoNLL-U formatted sentences
+    @param sentid: CoNLL-U id for first sentence (+1)
     @param local_cache: None or a local cache used in editing another file
     @param sep_punc: whether to separate punctuation from words
     @param nlines:   number of lines to analyze (if not 0)
@@ -127,7 +136,8 @@ def seg_file(language, infile, outfile=None, experimental=True, realize=True,
                            pos=None, preproc=preproc, postproc=postproc, sep_punc=sep_punc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=realize, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
-                           xml=xml, local_cache=local_cache,
+                           xml=xml, multseg=multseg, csentences=csentences, sentid=sentid,
+                           local_cache=local_cache,
                            verbosity=verbosity)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
@@ -468,21 +478,23 @@ def get_features(language, pos=None):
                 feats.append((pos, posmorph.get_features()))
             return feats
 
-def seg2string(segmentation, language='am', sep='-', transortho=True, features=False,
-               udformat=False, simplifications=None):
+def seg2string(word, segmentation, language='am', sep='-', transortho=True, features=False,
+               udformat=False, simplifications=None, conllu=True):
     """Convert a segmentation (triple with seg string as second item)
     to a series of spelled out morphemes, ignoring any alternation rules.
+    @param word:        the word segmented
     @param language:     abbreviation for a language
     @param segmentation: triple with seg string as second item
     @param sep:          character to separate morphemes in return string
     @param transortho:   for languages written in Geez, whether to output this
     @param features:     whether to output feature labels
     @param udformat:   whether to format POS and features as UD
+    @param conllu:     whether to format as dicts for CoNLL-U format
     @return:             word form as string
     """
     language = morpho.get_language(language, segment=True)
-    return language.segmentation2string(segmentation, sep=sep, transortho=transortho,
-                                        features=features, udformat=udformat, simplifications=simplifications)
+    return language.segmentation2string(word, segmentation, sep=sep, transortho=transortho,
+                                        features=features, udformat=udformat, simplifications=simplifications, conllu=conllu)
 
 ### Functions for debugging and creating FSTs
 

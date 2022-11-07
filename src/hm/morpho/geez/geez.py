@@ -312,21 +312,34 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, lar
     n = 0
     nochange = False
     # punctuation before roman chars
-#    prepunc = True
     while n < len(form):
         char = form[n]
 #        print("char {}".format(char))
-        if n < len(form) - 1:
+        if char == 'O' and lang == 'am':
+            # Combining 'O' following vowel other than 'a'
+            trans = table.get('wo')
+        elif char == '@' and lang == 'am':
+            # 'ityoPyawi@n -> ኢትዮጵያዊያን
+            trans = table.get('ya')
+        elif n < len(form) - 1:
             next_char = form[n + 1]
 #            print(" next_char {}".format(next_char))
             if next_char in VOWELS:
-                if n < len(form) - 2 and lang == 'stv' and form[n + 2] in VOWELS:
+                if n < len(form) - 2 and lang == 'am' and form[n + 2] == 'O' and next_char == 'a':
+                    # Combining 'O' in Amharic; lElaOc -> ሌሎች
+                    trans = table.get(char + 'o')
+                    n += 1
+                elif n < len(form) - 2 and lang == 'stv' and form[n + 2] in VOWELS:
                     # long Silte vowel
                     trans = table.get(form[n : n + 3], char + next_char + form[n + 2])
                     n += 1
+                elif next_char == 'O' and lang == 'am':
+                    # bEtOc -> ቤቶች
+                    trans = table.get(char + 'o')
+                elif next_char == '@' and lang == 'am':
+                    trans = table.get(char + 'a')
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
-#                prepunc = False
                 n += 1
             elif next_char == 'W' or next_char == 'Y' or char == '^':
                 # Consonant represented by 2 roman characters
@@ -350,7 +363,6 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, lar
                         n += 1
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
-#                prepunc = False
                 n += 1
             elif next_char == GEMINATION_ROMAN:
                  if n < len(form) - 2 and form[n + 2] in VOWELS:
@@ -360,13 +372,9 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, lar
                  else:
                     trans = table.get(char, char) + GEMINATION_GEEZ
                     n += 1
-#                prepunc = False
             else:
-#                if prepunc and char in table:
-#                    prepunc = False
                 trans = table.get(char, char)
         elif char == GEMINATION_ROMAN:
-#            prepunc = False
             trans = GEMINATION_GEEZ
         else:
 #            if prepunc and char in table:
@@ -576,6 +584,7 @@ def simplify_sera(text, language='am', record=False):
 #    simplified = False
     if record:
         for i, char in enumerate(text):
+#            print("** {}: {}, {}".format(text, i, char))
             if char == 'H':
                 simps.append(('h', 'H'))
 #                simplified = True
@@ -585,11 +594,10 @@ def simplify_sera(text, language='am', record=False):
             elif char == '^':
                 s = text[i+1]
                 simps.append((s, '^' + s))
-#                simplified = True
-#            elif char in ('s', 'S', "'", 'h');
- #               simps.append((char, char))
-#        if not simplified:
-#            simps = []
+#            elif char == 'A' and i == 1 and text[0] in 'Hh':
+#                simps.append(('a', 'A'))
+#            elif char == 'A' and i == 2 and text[:2] == "^h":
+#                simps.append(('e', char))
     text = text.replace('^', '')
 #    # Replace ^hW
 #    text = text.replace('!!!', '^hW')
@@ -609,6 +617,13 @@ def simplify_sera(text, language='am', record=False):
         text = text.replace("muwa", "mWa")
         text = text.replace('fuwa', 'fWa')
         text = text.replace('buwa', 'bWa')
+        # Replace special character A with a, in any position
+        # This is not currently recorded as a simplification
+        text = text.replace('A', 'a')
+#        if text.startswith("hA"):
+#            text = "ha" + text[2:]
+#        if text.startswith("'A"):
+#            text = "'a" + text[2:]
     if record:
         return text, simps
     return text

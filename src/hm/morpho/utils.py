@@ -1,6 +1,6 @@
 """
 This file is part of HornMorpho.
-    Copyleft (Ɔ) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2018.
+    Copyleft (Ɔ) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2018, 2022.
     by HLTDI and PLoGS <gasser@indiana.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
