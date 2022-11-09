@@ -30,6 +30,22 @@ import os
 
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
 TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
+DATA_PATH = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO', 'CACO1.1', "CACO_TEXT.txt")
+
+def get_caco_data(sort=False, filter_sentences=True, min_length=3, max_length=7, write=False):
+    with open(DATA_PATH) as file:
+        data = [l.strip().split() for l in file.readlines()]
+        if sort:
+            data.sort(key=lambda x: len(x))
+        if filter_sentences:
+            data = [d for d in data if d[-1] in ('።?!') and min_length <= len(d) <= max_length]
+        data = [' '.join(d) for d in data]
+        if write:
+            with open(os.path.join(CACO_DIR, 'CACO1.1', "CACO_TEXT_{}.txt".format(write)), 'w', encoding='utf8') as file:
+                for sentence in data:
+                    print(sentence, file=file)
+            return
+        return data
 
 def tb_path(file="am_att-ud-test.conllu"):
     return os.path.join(TB_DIR, file)

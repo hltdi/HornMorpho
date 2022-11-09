@@ -1555,7 +1555,8 @@ class Language:
             return analyses
         if rank and len(analyses) > 1:
 #            print("** Ranking results {}".format(analyses))
-            analyses.sort(key=lambda x: -x[-1])
+            self.sort_analyses(analyses)
+#            analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
         self.filter_analyses(analyses)
@@ -2338,7 +2339,8 @@ class Language:
                     anal_list.append(a[1:])
             result_list.append((f, count, anal_list))
         if rank:
-            result_list.sort(key=lambda x: -x[1])
+            self.sort_analyses(result_list)
+#            result_list.sort(key=lambda x: -x[1])
         result_list = result_list[:nbest]
         self.filter_analyses(result_list)
 #        print("result list {}".format(result_list))
@@ -2398,6 +2400,15 @@ class Language:
                 else:
                     print('{}'.format(anal), end=' ')
             print()
+
+    def sort_analyses(self, analyses):
+        '''
+        Sort analyses (or segmentations) by estimated frequency and
+        whether the word is treated as a whole or is segmented.
+        '''
+        # Sort by frequency (the last item in each analysis)
+#        print("** Sorting analyses {}".format(analyses))
+        analyses.sort(key=lambda x: -x[-1])
 
     def filter_analyses(self, analyses):
         '''

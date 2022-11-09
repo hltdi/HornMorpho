@@ -18,10 +18,10 @@ start -> P     [c:t;j:d;C:T;x:s;C:S;Z:z;y:l;N:n]
 PP -> P        [c:t;j:d;C:T;x:s;C:S;Z:z;y:l;N:n]
 P -> P         [_]
 P -> P8        [:8]
-# keep the i or E before a consonant (or at the end)
-P8 -> Pi       [i;E]
+# keep the i or E before a consonant (or at the end); optionally delete the i
+P8 -> Pi       [i;E;:i]
 Pi -> start    [X]
-# delete the i or E before a vowel
+# delete the i or E before a vowel or optionally at the end of the word
 # (keep these separate because deleted i can end the word)
 P8 -> P0i      [:i]
 P8 -> P0E      [:E]

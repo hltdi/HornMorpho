@@ -9,7 +9,11 @@ start -> end  <s_a:-s_a(@cconj,*ሳ,~cc)>        [cj2=sa,-neg];[cj2=sa,+sub]
 
 # No constraints on appearance
 start -> end  <n_a:-n_a(@cconj,*ና,~cc)>        [cj2=na]
+# Or is this an interjection?
 start -> end  <nji:-nji(@cconj,*ንጂ,~cc)>        [cj2=Inji]   # only jussive/imperative?
+
+# Interjection suffixes (for now call it cj2 in features)
+start -> end <a:-A(@intj,*ኣ,~discourse)>    [cj2=a]
 
 # Interrogative suffixes
 # (this just causes problems, so leave it out for now)
