@@ -93,7 +93,11 @@ class Morphology(dict):
         self.anal2string = None
         # Pair of lists of unanalyzable words: (complex, simple)
         self.words = []
+        self.words1 = []
+        self.wordsM = []
         self.words_phon = {}
+        self.words_phone1 = {}
+        self.words_phoneM = {}
         self.seg_units = []
         # Characters signalling abbrevations
         self.abbrev_chars = abbrev_chars
@@ -194,25 +198,44 @@ class Morphology(dict):
         else:
             return 'num', num
 
-    def is_unanalyzed(self, word, simple=False, ortho=True):
+    def is_unanalyzed(self, word, simple=False, ortho=True, mwe=True):
         """
         Is word an unanalyzable word? If so, return the word preceded by its POS
         if available.
         """
-        # Replaces spaces by //
-        word = word.replace(' ', '//')
         if ortho and (word in self.punctuation or word in PUNC_TOKENS):
             return word
-        if ortho and not self.words:
-            return None
-        if not ortho and not self.words_phon:
-            return None
-        if ortho:
+        multi = False
+        word_rec = None
+        if ' ' in word:
+            multi = True
+            # Replaces spaces by //
+            word = word.replace(' ', '//')
+        if mwe:
+            if ortho:
+                if multi:
+                    word_rec = self.wordsM
+                else:
+                    word_rec = self.words1
+            elif multi:
+                word_rec = self.words_phonM
+            else:
+                word_rec = self.words_phon1
+        elif ortho:
             word_rec = self.words
-            return word_rec.get(word, False)
         else:
             word_rec = self.words_phon
-            return word_rec.get(word, False)
+        return word_rec and word_rec.get(word, False)
+#        if ortho and not self.words:
+#            return None
+#        if not ortho and not self.words_phon:
+#            return None
+#        if ortho:
+#            word_rec = self.words
+#            return word_rec.get(word, False)
+#        else:
+#            word_rec = self.words_phon
+#            return word_rec.get(word, False)
 
     def is_punctuation(self, string):
         '''
@@ -303,11 +326,42 @@ class Morphology(dict):
             pass
 #            print('No file frequency file {} found'.format(path))
 
-    def set_words(self, filename='words.lex', ortho=True, simplify=False):
+    def set_words(self, filename='words.lex', ortho=True, simplify=False, mwe=True):
         '''
         Set the list/dict of unanalyzed words, reading them in from a file,
         one per line.
+        If mwe is True, load separate files for single words and fixed MWEs.
         '''
+        if mwe:
+            file1 = 'words1.lex'
+            fileM = 'wordsM.lex'
+            path1 = os.path.join(self.get_lex_dir(), file1)
+            pathM = os.path.join(self.get_lex_dir(), fileM)
+            if os.path.exists(path1):
+                with open(path1, encoding='utf8') as file:
+                    if ortho:
+                        # Read in the words as a list
+                        pairs = [w.split() for w in file]
+                        self.words1 = dict([(w[0].strip(), w[1:]) for w in pairs])
+                    else:
+                        # Read in ortho:phon pairs as a dict
+                        self.words_phon1 = dict([w.strip().split() for w in file])
+            else:
+                self.words1 = []
+                self.words_phon1 = {}
+            if os.path.exists(pathM):
+                with open(pathM, encoding='utf8') as file:
+                    if ortho:
+                        # Read in the words as a list
+                        pairs = [w.split() for w in file]
+                        self.wordsM = dict([(w[0].strip(), w[1:]) for w in pairs])
+                    else:
+                        # Read in ortho:phon pairs as a dict
+                        self.words_phonM = dict([w.strip().split() for w in file])
+            else:
+                self.wordsM = []
+                self.words_phonM = {}
+            return
         if not ortho:
             filename = 'words_phon.lex'
         path = os.path.join(self.get_lex_dir(), filename)
@@ -326,7 +380,7 @@ class Morphology(dict):
                     self.words_phon = dict([w.strip().split() for w in file])
         else:
             self.words = []
-            self.words_phon = []
+            self.words_phon = {}
 
     def get_analyzed(self, word):
         '''Get the pre-analyzed FS for word.'''

@@ -16,8 +16,21 @@ bIl       b'l++bl    [bs=0,cls=A,tm=ger,vc=smp,as=smp]
 tebIl       b'l++tebl    [bs=0,cls=A,tm=ger,vc=ps,as=smp]
 tebabIl       b'l++tebl    [bs=0,cls=A,tm=ger,vc=ps,as=it]
 ## አደረገ
+# PRF
+ader_eg	drg++ader_eg	[bs=a_,cls=A,tm=prf,vc=tr,as=smp]
+teder_eg		drg++teder_eg	[bs=a_,cls=A,tm=prf,vc=ps,as=smp]
+tederar_eg		drg++tederar_eg	[bs=a_,cls=A,tm=prf,vc=ps,as=it]
 # IMF
 aderg	drg++aderg	[bs=a_,cls=A,tm=imf,vc=tr,as=smp]
 arg       drg++arg    [bs=a_,cls=A,tm=imf,vc=tr,as=smp]
-
-
+_dereg	  drg++_dereg [bs=a_,cls=A,tm=imf,vc=ps,as=smp]
+_derar_eg	  drg++_derar_eg [bs=a_,cls=A,tm=imf,vc=ps,as=it]
+# J_I
+adrg	drg++adrg	[bs=a_,cls=A,tm=j_i,vc=tr,as=smp]
+tedereg	drg++tedereg	[bs=a_,cls=A,tm=j_i,vc=ps,as=smp]
+tederareg	drg++tederareg	[bs=a_,cls=A,tm=imf,vc=ps,as=it]
+# GER
+adrg	drg++adrg	[bs=a_,cls=A,tm=ger,vc=tr,as=smp]
+tederg	drg++tederg	[bs=a_,cls=A,tm=ger,vc=ps,as=smp]
+tederarg	drg++tederarg	[bs=a_,cls=A,tm=ger,vc=ps,as=it]
+## ተሰኘ / አሰኘ

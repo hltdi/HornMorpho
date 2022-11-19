@@ -1224,6 +1224,7 @@ class Language:
         string is ([@pos,...,][$feat],[*lemma],[~deprel]).
         format string as in UD.
         '''
+        feats = None
         match = SEG_STRING_RE.match(string)
         if not match:
             print("** segstring {} doesn't match RE!".format(string))
@@ -1263,6 +1264,8 @@ class Language:
             return 'NOUN'
         elif p.startswith('NM'):
             return 'PROPN'
+        elif p.startswith('N_'):
+            return 'NOUN'
         else:
             return p
 
@@ -1656,6 +1659,7 @@ class Language:
         realizer = realize and self.segmentation2string
         batch_name = batch_name or "Batch"
         csent = None
+        xsent = None
 #        if csentences != False:
         if not isinstance(csentences, list):
             # Create the list of CoNLL-U sentences
@@ -1728,108 +1732,6 @@ class Language:
                                    lower=lower, lower_all=lower_all, batch_name=batch_name,
                                    local_cache=local_cache, xml=xml, multseg=multseg, sentid=sentid, morphid=morphid,
                                    verbosity=0)
-#                for w_index, word in enumerate(line.split()):
-#                    simps = None
-#                    if verbosity > 1:
-#                        print("  Analyzing {}".format(word))
-#                    # Lowercase on the first word, assuming a line is a sentence
-#                    if lower_all or (lower and w_index == 0):
-#                        word = word.lower()
-#                    if word in local_cache:
-#                        analysis = local_cache[word]
-#                        if storedict:
-#                            if analysis:
-#                                add_anals_to_dict(self, analysis, knowndict, guessdict)
-#                        elif csentences != False:
-#                            csent.add_word(word, analysis, morphid, conllu=True)
-#                            # Update the morpheme id, assuming the first analysis
-#                            morphid += len(analysis[0])
-#                        elif xml:
-#                            add_caco_word(xsent, word, analysis, multseg=multseg)
-#                        elif minim:
-#                            if w_index != 0:
-#                                string += " "
-#                            string += analysis
-#                        else:
-#                            print(analysis, file=out, end='')
-#                            if segment:
-#                                print()
-#                    else:
-#                        # If there's no point in analyzing the word (because it contains
-#                        # the wrong kind of characters or whatever), don't bother.
-#                        # (But only do this if preprocessing.)
-#                        # Simple analyses: punctuation, numerals, abbreviations
-#                        analyses = self.preproc_special(word, segment=segment, print_out=False)
-#                        if not analyses:
-#                            ## Analyze
-#                            form = word
-#                            simps = None
-#                            if preproc:
-#                                form, simps = self.preproc(form)
-#                            analyses = \
-#                            self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
-#                                           segment=segment, experimental=experimental, mwe=mwe,
-#                                           root=root, stem=True, citation=citation and not raw,
-#                                           normalize=normalize, gram=gram, ortho_only=ortho_only,
-#                                           preproc=False, postproc=postproc and not raw,
-#                                           cache=cache, no_anal=no_anal, um=um, conllu=True,
-#                                           rank=rank, report_freq=report_freq, nbest=nbest,
-#                                           string=not raw and not um, print_out=False, only_anal=False)
-#                        else:
-#                            form = word
-#                        if not analyses:
-#                            print("** No analyses for {}".format(form))
-#                        if analyses and segment and realize:
-#                            analyses = [realizer(form, analysis, features=True, udformat=True, simplifications=simps) for analysis in analyses]
-#                        if minim:
-#                            analysis = self.minim_string(form, analyses, feats=feats, simpfeats=simpfeats)
-#                        # If we're storing the analyses in a dict, don't convert them to a string
-#                        if storedict or raw or xml:
-#                            analysis = analyses
-#                        # Otherwise (for file or terminal), convert to a string
-#                        elif not minim:
-#                            if analyses:
-#                                if csentences != False:
-#                                    analysis = analyses
-#                                elif raw or um:
-#                                    analysis = "{}  {}".format(form, analyses.__repr__())
-#                                elif not realize:
-#                                    # Convert the analyses to a string
-#                                    analysis = self.analyses2string(word, analyses, seg=segment,
-#                                                                        form_only=not gram, lemma_only=lemma_only,
-#                                                                        ortho_only=ortho_only, short=False, word_sep=word_sep)
-#                                else:
-#                                    analysis = "{}: {}".format(word, analyses)
-#                            elif segment:
-#                                analysis = "{}: {}".format(word, analyses)
-#                            else:
-#                                analysis = word
-#                        # Either store the analyses in the dict or write them to the terminal or the file
-#                        if storedict:
-#                            add_anals_to_dict(self, analysis, knowndict, guessdict)
-#                        elif csentences != False:
-#                            csent.add_word(word, analysis, morphid, conllu=True)
-#                            # Update the morpheme id, assuming the first analysis
-#                            morphid += len(analysis[0])
-#                        elif xml:
-#                            add_caco_word(xsent, word, analysis, multseg=multseg)
-#                        elif minim:
-#                            if w_index != 0:
-#                                string += " "
-#                            string += analysis
-#                        else:
-#                            print(analysis, file=out, end='')
-#
-#                        if segment and not xml and csentences == False:
-#                            # Add a newline for each segmented word
-#                            print()
-#                        local_cache[word] = analysis
-#                # End of sentence
-#                if csent:
-#                    csent.finalize()
-#                if minim or segment and not xml and csentences == False:
-#                    # End of line
-#                    print(string, file=out)
             filein.close()
             if pathout:
                 fileout.close()
@@ -1837,7 +1739,6 @@ class Language:
             print('No such file or path; try another one.')
         if xml:
             return xml
-#        elif csentences:
         else:
             return csentences
 
@@ -1845,7 +1746,6 @@ class Language:
                       preproc=True, postproc=True, pos=None, fsts=None,
                       segment=True, realize=True, realizer=None,
                       conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
-#                      storedict=None, knowndict=None, guessdict=None,
                       phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
                       sep_punc=False, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=False, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
@@ -1871,7 +1771,6 @@ class Language:
         w_index = 0
         while w_index < ntokens:
             word = tokens[w_index]
-#            print("** w_index {}, word {}, morphid {}".format(w_index, word, morphid))
             simps = None
             words = None
             if w_index < len(tokens)-1:
@@ -1882,6 +1781,8 @@ class Language:
                 if self.get_from_local_cache(words, local_cache,
                                              dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent,
                                              multseg=multseg, morphid=morphid, file=file):
+                    # MWE analysis stored in cache
+                    w_index += len(words.split())
                     continue
                 simps = None
                 if preproc:
@@ -1894,16 +1795,15 @@ class Language:
                                    preproc=False, postproc=postproc and not raw,
                                    cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
                                    string=not raw and not um, print_out=False, only_anal=False)
-                print("*** MWE analyses {}".format(analyses))
                 newmorphid = \
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
                                              local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                              conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
                                              word_sep=word_sep, file=file)
                 if newmorphid:
+                    # MWE analysis succeeded
                     w_index += len(words.split())
                     morphid = newmorphid
-#                    print("** MWE succeeded; w_index now {}, morphid now {}".format(w_index, morphid))
                     continue
             if verbosity > 1:
                 print("  Analyzing {}".format(word))
@@ -1913,25 +1813,25 @@ class Language:
             if self.get_from_local_cache(word, local_cache,
                                  dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent,
                                  multseg=multseg, morphid=morphid, file=file):
+                w_index += 1
                 continue
-            else:
-                simps = None
-                analyses = self.preproc_special(word, segment=segment, print_out=False)
-                if not analyses:
-                    ## Analyze
-                    if preproc:
-                        form, simps = self.preproc(word)
-                    analyses = \
-                      self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
-                           segment=segment, experimental=experimental, mwe=False, root=True, stem=True, citation=True, gram=True,
-                           normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
-                           cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
-                           string=not raw and not um, print_out=False, only_anal=False)
-                morphid = \
-                    self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
-                                       local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
-                                       conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                       word_sep=word_sep, file=file)
+            simps = None
+            analyses = self.preproc_special(word, segment=segment, print_out=False)
+            if not analyses:
+                ## Analyze
+                if preproc:
+                    form, simps = self.preproc(word)
+                analyses = \
+                  self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
+                       segment=segment, experimental=experimental, mwe=False, root=True, stem=True, citation=True, gram=True,
+                       normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
+                       cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
+                       string=not raw and not um, print_out=False, only_anal=False)
+            morphid = \
+                self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
+                                   local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
+                                   conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+                                   word_sep=word_sep, file=file)
             # Go to next word
             w_index += 1
 #            print("** Single word analysis, w_index now {}, morphid now {}".format(w_index, morphid))
@@ -1947,7 +1847,7 @@ class Language:
             if dicts:
                 add_anals_to_dict(self, analysis, dicts[0], dicts[1])
             elif conllu:
-                csent.add_word(words, analysis, morphid, conllu=True)
+                csent.add_word(word, analysis, morphid, conllu=True)
             elif xml:
                 add_caco_word(xsent, word, analysis, multseg=multseg)
             else:
@@ -2389,22 +2289,24 @@ class Language:
                 headi = feats.get('headi')
                 segstring = self.postpostprocess(segstring)
                 if headi:
+                    # MWE expression with features specifying head index, POS for non-head words, deprel
                     modpos = feats.get('modpos', '')
                     dep = feats.get('dep', '')
-                    print("*** segstring {} headi {} dep {} modpos {}".format(segstring, headi, dep, modpos))
+#                    print("*** segstring {} headi {} dep {} modpos {}".format(segstring, headi, dep, modpos))
                     match = MWE_SEG_STRING_RE.match(segstring)
                     if match:
                         pre, rt, post = match.groups()
-                        print("*** pre {} root {} post {}".format(pre, rt, post))
+#                        print("*** pre {} root {} post {}".format(pre, rt, post))
                         rootwords = rt.split()
                         morphs = []
                         for i, x in enumerate(rootwords):
                             if i == headi:
                                 morphs.append('{' + x + '}')
                             else:
-                                morphs.append("{}(@{},~{})".format(x, modpos, dep))
+                                lemma1 = self.postproc(x, ortho_only=True)
+                                morphs.append("{}(@{},*{},~{})".format(x, modpos, lemma1, dep))
                         segstring = "{}{}{}".format(pre, "-".join(morphs), post)
-                        print("*** new segstring {}".format(segstring))
+#                        print("*** new segstring {}".format(segstring))
                 # Remove { } from root
                 real_seg = Language.root_from_seg(segstring)
                 root_freq = 0

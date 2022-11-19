@@ -33,7 +33,7 @@ from .utils import segment, allcombs, isnumstring
 from .rule import *
 from .ees import *
 
-print("Loading Amharic data from amh_lang")
+print("Loading data for አማርኛ from amh_lang")
 
 ROM2GEEZ = {'sI': "ስ", 'lI': "ል", 'bI': "ብ", 'IskI': "እስክ", 'IndI': "እንድ",
             'm': "ም", 'Inji': "እንጂ", 'na': "ና", 'sa': "ሳ", 's': "ስ", 'ma': "ማ",
@@ -982,7 +982,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     """
     Convert a segmentation to a string, including features if features is True.
     """
-    print("*** seg2string {} {} {}".format(segmentation, simplifications, features))
+#    print("*** seg2string {} {} {}".format(segmentation, simplifications, features))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
@@ -1023,10 +1023,10 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
         for m, f in morphs:
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
+#    print("*** morphs {}".format(morphs2))
     morphs = allcombs(morphs2)
     # For now ignore multiple spellings for syllables like qWe; just use the first one
     morphs = morphs[0]
-#    print("*** morphs {}".format(morphs))
     if conllu:
         morphs = [conllu_morpheme(form, props, citation) for form, props in morphs]
         return morphs
@@ -1049,12 +1049,14 @@ def conllu_morpheme(form, props, citation):
     '''
     Create a dict with CoNLL-U properties for a morpheme.
     props is a POS;feats string surrounded by parentheses.
-    (For now, use the form as the 'lemma', as in the Amh TB;
-    later use citation for the head's 'lemma'.)
     '''
     # The head is surrounded by {}
-#    print("** conllu_morpheme: form {} props {} citation {}".format(form, props, citation))
-    form = form.replace('{', '').replace('}', '')
+    ishead = False
+    if '{' in form:
+        ishead = True
+#    print("**** conllu_morpheme: form {} props {} citation {}".format(form, props, citation))
+    if ishead:
+        form = form.replace('{', '').replace('}', '')
 #    props = props.replace('(', '').replace(')', '').split(';')
     pos = props.get('pos')
 #    pos = pos.split(',')
@@ -1063,8 +1065,10 @@ def conllu_morpheme(form, props, citation):
 #    pos = props[0]
     feats = props.get('feats')
     deprel = props.get('deprel')
+    if deprel:
+        deprel = deprel.replace('.', ':')
     if (lemma := props.get('lemma')) is None:
-        if (lemma := citation) is None:
+        if not ishead or (lemma := citation) is None:
             lemma = form
 #    feats = props[1] if len(props) == 2 else '_'
     return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', None], ['deprel', deprel] ]

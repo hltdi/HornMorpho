@@ -44,7 +44,7 @@ def caco_seg(multseg=False, report_n=5, start=0, nlines= 200, sentid=0,
                                            batch_name=batch_name,
                                            multseg=multseg, sentid=sentid, report_n=report_n)
 
-def write_caco(version, batch, sentences):
+def write_caco(version, batch, sentences, ambig_thresh=1.0, unk_thresh=0.3):
     n = len(sentences)
     batch_name = caco_batch_name(version, batch)
     file_name = "{}_{}.conllu".format(batch_name, n)
@@ -52,7 +52,7 @@ def write_caco(version, batch, sentences):
     rejected = 0
     with open(path, 'w', encoding='utf8') as file:
         for sentence in sentences:
-            if sentence.reject():
+            if sentence.reject(unk_thresh=unk_thresh, ambig_thresh=ambig_thresh):
                 rejected += 1
                 continue
             conll = sentence.conllu
@@ -200,11 +200,11 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                            mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
-def segrecompile(pos):
+def segrecompile(pos, mwe=False):
     """
     Shortcut for recompiling Amh (experimental) segmenter FST.
     """
-    return recompile('amh', pos, segment=True, experimental=True)
+    return recompile('amh', pos, segment=True, experimental=True, mwe=mwe)
 
 ### Simple FSTs and cascades (in test directory)
 

@@ -91,13 +91,13 @@ class Sentence():
         # Expect one punctuation mark
         self.complexity['punct'] -= 1
 
-    def reject(self, max_unk=0.3, max_ambig=1.0):
+    def reject(self, unk_thresh=0.3, ambig_thresh=1.0):
         """
         Should we reject this sentence, based on its complexity?
         """
         complexity = self.complexity
         npunct = complexity['punct']
-        if npunct > 0 or complexity['ambig'] > max_ambig or complexity['unk'] > max_unk:
+        if npunct > 0 or complexity['ambig'] > ambig_thresh or complexity['unk'] > unk_thresh:
             return True
         return False
 

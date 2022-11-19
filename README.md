@@ -1,4 +1,8 @@
-This is version 4 of ***HornMorpho***, a Python program that performs morphological analysis, generation, segmentation, and grapheme-to-phoneme conversion in various languages of the Horn of Africa.
+This is version 4 of ***HornMorpho***, a Python program that performs
+morphological analysis, generation, segmentation, and
+grapheme-to-phoneme conversion in various languages of the Horn of
+Africa.
+For the new experimental HornMorpho segmenter for Amharic (version 5.0), see below.
 
 <!--For information about using the program, see the manual that came with the distribution: *horn3.5_quick.pdf*.
 -->
@@ -149,3 +153,54 @@ The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithful
 > With the option `raw=True`, a `dict` is returned for each pronunciation, including the internal feature structure resulting from morphological analysis.
 
 >The function `hm.phon_file` behaves like `hm.anal_file` and `hm.seg_file`.
+
+# Version 5.0
+
+This is a new version of HornMorpho (HornMorphoAX), only for Amharic and only for
+segmentation.
+It currently segments tokenized sentences from a file, converting the
+results to CoNLL-U format, which can then be written to a file.
+
+## Installation
+
+To install HornMorphoAX,  use the wheel file, `HornMorphoAX-5.*-py3-none-any.whl`, which can be found in the `dist/` folder.
+
+To install from the wheel file, do the following in a Python shell.
+
+	pip install HornMorphoAX-5.*-py3-none-any.whl
+
+(This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
+
+Then to use the program, in a Python shell, do
+
+	import hm
+	
+## Functions
+
+### Segmenting a sentence
+Morphological analysis takes a word and returns zero or more analyses, each consisting of the root, stem, or lemma of the word and a set of grammatical features.
+
+**`hm.seg_sentence`(*sentence*)  
+`Options: raw=False, um=False`
+
+>- *sentence* is a string representation of an Amharic. It is assumed
+>  that punctuation has already be separated by whitespace from other characters.
+- *word* is a string representation of the word in the standard orthography for the language.
+- *input_file* is a path to the file to be analyzed.
+
+>The function `hm.seg_sentence` attempts to segmen the word in the
+>sentence morphologically. Words may be ambiguous, in which case there
+>are multiple analyses. Since CoNNL-U format has no place for
+>ambiguity, only one segmentation is included; this could be the
+>*wrong* one.
+
+### Segmenting the sentences in a file
+
+**`hm.seg_file`(*path*)_
+`Options: `
+
+
+### Writing sentence segmentations to a file
+
+**`hm.write_conllu`(*sentences*, *path*)_
+`Options: `

@@ -1,12 +1,12 @@
 -> start
 
-## Set the part of speecn
+## Set the part of speech
 start -> light   [:]     [pos=v]
 
 ## Light verbs
-light -> light1         [:{]   [+lt]
+light -> light1         [:]   [+lt]
 light1 -> light_gap     +v_light+
-light_gap -> pos         <//:}->
+light_gap -> pos         <//:(@part,~compound.lvc)->
 light -> pos  [:]
 
 # No conjunction or preposition

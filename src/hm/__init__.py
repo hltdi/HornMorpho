@@ -49,7 +49,6 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
     """Load a language's morphology.
 
     @param language: a language label
-    @type  language: string
     """
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
@@ -107,38 +106,83 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
 
 seg = seg_word
 
-def seg_file(language, infile, outfile=None, experimental=True, realize=True,
-             citation=True, preproc=True, postproc=True, start=0, nlines=0, nbest=4, report_n=10,
+def seg_file(file='', language='amh', experimental=True,
+             start=0, nlines=0, nbest=4, report_n=10,
              xml=None, multseg=True, csentences=True, sentid=0, batch_name='',
+             version='2.2', batch='1.0',
              local_cache=None, sep_punc=True, verbosity=0):
-    '''Analyze the words in a file, writing the analyses to outfile.
+    '''
+    Analyze the words in a file, be default creating CoNLL-U format.
 
-    @param infile:   path to a file to read the words from
-    @param outfile:  path to a file where analyses are to be written
+    @param file:   path to a file to read the words from
+#    @param outfile:  path to a file where analyses are to be written
     @param preproc:  whether to preprocess inputs
     @param postproc: whether to postprocess outputs
     @param start:    line to start analyzing from
+    @param nbest:    max number of segmentations to return for a word
     @param experimental: whether to use the experimental FST instead of
                       the default segmentation FST
     @param xml:      either None/False or True or an XML tree
     @param csentences: if True or a list, create and return CoNLL-U formatted sentences
     @param sentid: CoNLL-U id for first sentence (+1)
     @param local_cache: None or a local cache used in editing another file
+                  provide this when segmenting a file in batches to use segmentations from
+                  previous batches.
     @param sep_punc: whether to separate punctuation from words
-    @param nlines:   number of lines to analyze (if not 0)
+    @param nlines:   number of lines to analyze (if it's not 0)
+    @param report_n: how often to report current line
+    @param batch_name: name of the input batch of data
+    @param version: version of input data (used to create batch_name if not provided)
+    @param batch:  number (string or float) of batch (used to create batch_name if not provided)
     '''
+    if not file:
+        print("No file path given!")
+        return
+    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
     if language:
         return \
-        language.anal_file(infile, outfile, gram=False, citation=citation,
-                           pos=None, preproc=preproc, postproc=postproc, sep_punc=sep_punc,
+        language.anal_file(file, '', gram=False, citation=True,
+                           pos=None, preproc=True, postproc=True, sep_punc=sep_punc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
-                           realize=realize, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
+                           realize=True, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
                            xml=xml, multseg=multseg, csentences=csentences, sentid=sentid,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
+
+def write_conllu(sentences, path,
+                 batch_name='', version='2.2', batch='1.0',
+                 unk_thresh=0.3, ambig_thresh=1.0):
+    '''
+    Write the CoNNL-U representations of a list of sentences to a file.
+
+    @param sentences: list of instances of Sentence
+    @param path:      path to file where the sentences will be written
+    @param batch_name: name of batch of data
+    @param version: version of input data (used to create batch_name if not provided)
+    @param batch:  number (string or float) of batch (used to create batch_name if not provided)
+    @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
+    @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
+    '''
+    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+    rejected = 0
+    with open(path, 'w', encoding='utf8') as file:
+        for sentence in sentences:
+            if sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
+                rejected += 1
+                continue
+            conll = sentence.conllu
+            print(conll.serialize(), file=file, end='')
+    print("Rejected {} sentences".format(rejected))
+
+def seg_sentence(sentence, language='amh'):
+    '''
+    Segment a sentence, returning an instance of Sentence.
+    '''
+    language = morpho.get_language(language, phon=False, segment=True, experimental=True)
+    return language.anal_sentence(sentence)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
@@ -162,10 +206,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @param guess (bool):    try only guesser analyzer
     @param dont_guess (bool):    try only lexical analyzer
     @param phonetic (bool): whether to convert root to phonetic form (from SERA)
-    # added 2021.4.15
     @param lemma_only: whether to print out only the lemma
     @paran ortho_only: whether to include phonetic forms of lemmas and roots
-    # added 2021.12.10
     @param normalize: whether to normalize features
     @param rank (bool):     whether to rank the analyses by the frequency of their roots
     @param freq (bool):     whether to report frequencies of roots
@@ -337,22 +379,16 @@ def gen(language, root, features=[], pos=None, guess=False,
                     if lang_um:
                         features = lang_um.convert_um(posmorph.pos, um)
                     if features:
-#                        print("UM features for {}: {}".format(pos1, features))
                         um_converted = True
                 if features or not um:
-#                    print("Generating {}, {} (POS={})".format(root, features.__repr__(),
-#                                                              posmorph.pos))
                     output = posmorph.gen(root, update_feats=features,
                                           interact=interact, del_feats=del_feats,
                                           ortho=ortho, phon=phon, ortho_only=ortho_only,
                                           postproc=is_not_roman, guess=guess,
                                           verbosity=verbosity)
-#                    print("Output for {}: {}".format(posmorph.pos, output))
                     if output:
                         outputs.extend(output)
                         poss.extend([pos1] * len(output))
-#                    if output:
-#                        break
         if um and not um_converted:
             print("Couldn't convert UM to HM features")
             return
@@ -361,7 +397,6 @@ def gen(language, root, features=[], pos=None, guess=False,
             if del_feats:
                 # For del_feats, we need to print out relevant
                 # values of del_feats for each output word
-#                print("O {}".format(outputs))
                 o, poss = morpho.POSMorphology.separate_gens(outputs, poss)
                 if report_um:
                     o = language.gen_um_outputs(o, poss)
@@ -417,31 +452,18 @@ def phon_file(lang_abbrev, infile, outfile=None, gram=False,
               start=0, nlines=0):
     '''Convert non-roman forms in file to roman, making explicit features that are missing in the orthography.
     @param lang_abbrev: abbreviation for a language
-    @type  lang_abbrev: string
     @param infile:   path to a file to read the words from
-    @type  infile:   string
     @param outfile:  path to a file where analyses are to be written
-    @type  outfile:  string
     @param gram:     whether a grammatical analysis is to be included
-    @type  gram:     boolean
     @param word_sep: separator between words (when gram=False)
-    @type  word_sep: string
     @param anal_sep: separator between analyses (when gram=False)
-    @type  anal_sep: string
     @param print_ortho: whether to print out orthographic form (when gram=False)
-    @type  print_ortho: boolean
     @param postproc: whether to run postpostprocess on the form
-    @type  postproc: boolean
     @param rank:     whether to rank the analyses by the frequency of their roots
-    @type  rank:     boolean
     @param freq:     whether to report frequencies of roots
-    @type  freq:     boolean
     @param nbest:    maximum number of analyses to return or print out for each word
-    @type  nbest:    int
     @param start:    line to start analyzing from
-    @type  start:    int
     @param nlines:   number of lines to analyze (if not 0)
-    @type  nlines:   int
     '''
     language = morpho.get_language(lang_abbrev, phon=True, segment=False)
     if language:
@@ -455,15 +477,11 @@ def get_features(language, pos=None):
     '''Return a dict of features and their possible values for each pos.
 
     @param language:  abbreviation for a language
-    @type  language:  string
     @param pos:       part-of-speech; if provided, return only
                       features for this POS
-    @type  pos:       string
     @return:          dictionary of features and possible values; if
                       there is more than one POS, list of such
                       dictionaries.
-    @rtype:           dictionary of feature (string): possible values (list)
-                      pairs or list of (pos, dictionary) pairs
     '''
     language = morpho.get_language(language)
     if language:

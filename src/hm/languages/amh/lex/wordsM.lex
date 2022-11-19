@@ -12,6 +12,7 @@ nega//Teba nega//Teba adv
 'andand//gizE 'andand//gizE adv
 'and//gizE 'and//gizE adv
 'ayn//le'ayn 'ayn//le'ayn adv
+'alfo//'alfo 'alfo//'alfo adv
 'nde//wetrow 'nde//wetrow adv
 'j//be'j 'j//be'j adv
 'j//kefnj 'j//kefnj adv
