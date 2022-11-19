@@ -6,7 +6,9 @@
 start -> distrib    [:]              [prep=None,-gen]
 start -> distrib   >>n_prepX<<
 # % the TB has features for የ
-start -> distrib    <ye:ye(@adp,$case=gen,*የ,~case)->    [+gen,prep=None]
+#start -> distrib    <ye:ye(@adp,$case=gen,*የ,~case)->    [+gen,prep=None]
+# special irregular form
+start -> cnj  <'ndih:'nd(@adp,$case=equ,*እንደ,~case) -{ih++yh}(*ይህ)> [prep=Inde,v=None,pos=n,-plr,-dis,-p1,-p2,poss=[-expl],-itu,-acc]
 
 ## DISTRIBUTIVE
 distrib -> prestem     [:]              [-dis]
@@ -29,12 +31,12 @@ stem0 -> poss0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 acc0 -> acc       [:}]
 poss0 -> poss     [:}]
 
-## Non-deverbal common nouns
-stem0 -> plr_oc0   +n_stemX+      [v=None,-prp]
+## Non-deverbal common nouns, single words
+stem0 -> plr_oc0   +n_stem1X+      [v=None,-prp]
 #plr_oc0 -> plr_oc       [:}]
 plr_oc0 -> plr_oc       [:]
 ## Place names; not necessarily -prp
-stem0 ->  place0   +n_place+     [v=None]
+stem0 ->  place0   +n_place1X+     [v=None]
 place0 -> acc       [:}]        [+def,+prp,-itu,poss=[-expl]]
 ## Proper nouns (possessive is possible); always 3rd person singular
 stem0 -> name0     +n_name+      [v=None,-p1,-p2,+def,+prp,-plr,-itu]

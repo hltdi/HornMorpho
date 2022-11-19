@@ -1739,8 +1739,7 @@ class FST:
                 pickle=True,
                 # Features determining which FST
                 empty=True, phon=False, segment=False, generate=False, simplified=False,
-                experimental=False,
-                create_weights=True, verbose=False):
+                experimental=False, mwe=False, create_weights=True, verbose=False):
         '''Restore an FST from a file, in some cases creating the cascade first.
 
         If empty is true, look for the empty (guesser) FST only.
@@ -1750,8 +1749,11 @@ class FST:
         '''
         empty_name = fst_name + '0'
         # experimental has priority over others
+        name = fst_name
+        if mwe:
+            name = name + 'M'
         if experimental:
-            name = fst_name + 'X'
+            name = name + 'X'
         elif empty:
             name = empty_name
             if phon:

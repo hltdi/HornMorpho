@@ -1,5 +1,5 @@
 """
-This file is part of HornMorpho, a project with PLoGS.
+This file is part of HornMorpho, a project in PLoGS.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

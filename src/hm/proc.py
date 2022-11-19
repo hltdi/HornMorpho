@@ -23,7 +23,7 @@ IMPFEM = [FS("[pos=v,tm=j_i,cls=A,sb=[+fem]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+fem
 IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]]")]
 abyss = internet_search.abyssinica
 goog = internet_search.google
-VGEN = A.morphology['v'].gen
+# VGEN = A.morphology['v'].gen
 VPOSP = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=ps,pp=None,cj2=None,-rel,-sub]")
 VPOST = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=tr,pp=None,cj2=None,-rel,-sub]")
 VPOSR = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],as=rc,vc=ps,pp=None,cj2=None,-rel,-sub]")
@@ -82,6 +82,76 @@ AS_WLD = ['', '', '', '0', 'te_', 'te_a', 'te_R', 'a_', 'a_a', 'a_R', 'as_', 'R'
 CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 10, 'R': 11}
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
+
+def mwe_2_3(n=True):
+    w2 = []
+    w3 = []
+    inp = 'n_stemMX.lex' if n else 'v_light.lex'
+    out2 = 'n_stem2X.lex' if n else 'v_light1.lex'
+    out3 = 'n_stem3x.lex' if n else 'v_light2.lex'
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', inp))) as file:
+        for line in file:
+            line = line.strip()
+            if '\t' not in line:
+                alt, x, rest = line.partition(' ')
+                root, x, rest = rest.partition(' ')
+                line = "{}\t{}\t{}".format(alt, root, rest)
+            nword = line.count('//') + 1
+            if not n:
+                nword += 1
+            if nword == 2:
+                w2.append(line)
+            else:
+                w3.append(line)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', out2)), 'w') as file:
+        for line in w2:
+            print(line, file=file)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', out3)), 'w') as file:
+        for line in w3:
+            print(line, file=file)
+
+def sep_mwe_name():
+    mwe = []
+    simple = []
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_place.lex'))) as file:
+        for line in file:
+            line = line.strip()
+            if '\t' not in line:
+                alt, x, rest = line.partition(' ')
+                root, x, rest = rest.partition(' ')
+                line = "{}\t{}\t{}".format(alt, root, rest)
+            if '//' in line:
+                mwe.append(line)
+            else:
+                simple.append(line)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_place1X.lex')), 'w') as file:
+        for line in simple:
+            print(line, file=file)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_placeMX.lex')), 'w') as file:
+        for line in mwe:
+            print(line, file=file)
+
+def sep_mwe_n():
+    mwe = []
+    simple = []
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stemX.lex'))) as file:
+        for line in file:
+            line = line.strip()
+            if '\t' not in line:
+                alt, x, rest = line.partition(' ')
+                root, x, rest = rest.partition(' ')
+                line = "{}\t{}\t{}".format(alt, root, rest)
+            if '//' in line:
+                mwe.append(line)
+            else:
+                simple.append(line)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stem1X.lex')), 'w') as file:
+        for line in simple:
+            print(line, file=file)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stem_mweX.lex')), 'w') as file:
+        for line in mwe:
+            print(line, file=file)
+#    return simple, mwe
 
 def proc_irr_nplur():
     stems = []

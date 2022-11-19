@@ -11,6 +11,7 @@ start -> end   <wede:wede(@adp,$case=loc,*ወደ,~case)->  [prep=wede,-acc]
 start -> end   <'nde:'nde(@adp,*እንደ,~case)->  [prep=Inde,-acc]
 start -> end   <sIle:sle(@adp,*ስለ,~case)->   [prep=sIle,-acc]
 start -> end   <'ske:'ske(@adp,*እስከ,~case)->  [prep=Iske,-acc]
+start -> end   <ye:ye(@adp,$case=gen,*የ,~case)->  [prep=ye,-acc,+gen]
 
 #start -> end   <I:'(@adp,$case=loc,*እ,~case)->        [prep=I,-acc]
 #start -> end   <le:le(@adp,$case=dat,*ለ,~case)->      [prep=le,-acc]

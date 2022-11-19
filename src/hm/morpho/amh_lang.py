@@ -982,14 +982,14 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     """
     Convert a segmentation to a string, including features if features is True.
     """
-#    print("** seg2string {} {}".format(segmentation, simplifications))
+    print("*** seg2string {} {} {}".format(segmentation, simplifications, features))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
     if not morphstring:
         if conllu:
-            word = geezify(word)
+#            word = geezify(word)
             return [[ ['id', '*'], ['form', word], ['lemma', word], ['upos', pos.upper()], ['xpos', pos.upper()], ['feats', None], ['head', None], ['deprel', None ] ]]
         else:
             result = {'pos': pos.upper()}

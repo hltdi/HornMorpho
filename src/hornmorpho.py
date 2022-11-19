@@ -33,6 +33,9 @@ CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT_3-7tok.txt")
 
 CONLLU_sents = []
 
+def caco_batch_name(version, batch):
+    return "CACO{}_B{}".format(version, batch)
+
 def caco_seg(multseg=False, report_n=5, start=0, nlines= 200, sentid=0,
                           version="2.1", batch='2.0'):
     batch_name = caco_batch_name(version, batch)
@@ -41,17 +44,20 @@ def caco_seg(multseg=False, report_n=5, start=0, nlines= 200, sentid=0,
                                            batch_name=batch_name,
                                            multseg=multseg, sentid=sentid, report_n=report_n)
 
-def write_caco(version, batch, token_lists):
-    n = len(token_lists)
+def write_caco(version, batch, sentences):
+    n = len(sentences)
     batch_name = caco_batch_name(version, batch)
     file_name = "{}_{}.conllu".format(batch_name, n)
     path = hm.morpho.caco_path(version, file_name)
+    rejected = 0
     with open(path, 'w', encoding='utf8') as file:
-        for tl in token_lists:
-            print(tl.serialize(), file=file, end='')
-
-def caco_batch_name(version, batch):
-    return "CACO{}_B{}".format(version, batch)
+        for sentence in sentences:
+            if sentence.reject():
+                rejected += 1
+                continue
+            conll = sentence.conllu
+            print(conll.serialize(), file=file, end='')
+    print("Rejected {} sentences".format(rejected))
 
 def caco_raw(start, n):
     with open(hm.morpho.caco_path("1.1", "CACO_TEXT.txt"), encoding='utf8') as file:
@@ -123,17 +129,20 @@ def mvz():
     return m.morphology
 
 
-def get_lang(abbrev, segment=False, guess=True, phon=False, cache='',
-             pickle=True, verbose=False):
-    """Return the language with abbreviation abbrev, loading it
-    if it's not already loaded."""
+def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
+                           experimental=True,  pickle=True, verbose=False):
+    """
+    Return the language with abbreviation abbrev, loading it
+    if it's not already loaded.
+    """
     return hm.morpho.get_language(abbrev, cache=cache, phon=phon, guess=guess,
-                                  pickle=pickle,
-                                  segment=segment, load=True, verbose=verbose)
+                                                                   pickle=pickle, segment=segment, experimental=experimental,
+                                                                   load=True, verbose=verbose)
 
 def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=False,
             guess=True, simplified=False, verbose=False):
-    """Just a handy function for working with the POS objects when re-compiling
+    """
+    Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
     @param abbrev: abbreviation for a language, for example, 'am'
     @type  abbrev: string
@@ -167,7 +176,7 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
     return pos.casc
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-                            translate=False, experimental=False,
+                            translate=False, experimental=False, mwe=False,
                             simplified=False, backwards=False, split_index=0, verbose=True):
     """Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
@@ -179,7 +188,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                                             simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True,
-                             experimental=experimental,
+                             experimental=experimental, mwe=mwe,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -188,8 +197,14 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         pos_morph.load_fst(True, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-                           guess=guess, verbose=verbose)
+                           mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
+
+def segrecompile(pos):
+    """
+    Shortcut for recompiling Amh (experimental) segmenter FST.
+    """
+    return recompile('amh', pos, segment=True, experimental=True)
 
 ### Simple FSTs and cascades (in test directory)
 
