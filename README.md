@@ -191,7 +191,7 @@ ambiguity, only one segmentation is included; this could be the
 *wrong* one.
 
 > This function returns an instance of the HornMorpho `Sentence` class.
-To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its `conllu` attribute. (The example below doesn't look nice because of how TAB characters are handled in Markdown.)
+To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its `conllu` attribute.
 
 	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
 	>>> print(s.conllu.serialize())
