@@ -1,8 +1,9 @@
-This is version 4 of ***HornMorpho***, a Python program that performs
+# Version 4.3
+This is version 4.3 of ***HornMorpho***, a Python program that performs
 morphological analysis, generation, segmentation, and
 grapheme-to-phoneme conversion in various languages of the Horn of
 Africa.
-For the new experimental HornMorpho segmenter for Amharic (version 5.0), see below.
+**For the new experimental HornMorpho segmenter for Amharic (version 4.5), see below.**
 
 <!--For information about using the program, see the manual that came with the distribution: *horn3.5_quick.pdf*.
 -->
@@ -154,20 +155,20 @@ The Ge`ez orthography that is used for Ethio-Eritrean Semitic languages faithful
 
 >The function `hm.phon_file` behaves like `hm.anal_file` and `hm.seg_file`.
 
-# Version 5.0
+# Version 4.5
 
-This is a new version of HornMorpho (HornMorphoAX), only for Amharic and only for
+This is a new version of **HornMorpho** (HornMorphoAX), only for Amharic and only for
 segmentation.
 It currently segments tokenized sentences from a file, converting the
-results to CoNLL-U format, which can then be written to a file.
+results to [CoNLL-U format](https://universaldependencies.org/format.html), which can then be written to a file.
 
 ## Installation
 
-To install HornMorphoAX,  use the wheel file, `HornMorphoAX-5.*-py3-none-any.whl`, which can be found in the `dist/` folder.
+To install HornMorphoAX,  use the wheel file, `HornMorphoAX-4.*-py3-none-any.whl`, which can be found in the `dist/` folder.
 
 To install from the wheel file, do the following in a Python shell.
 
-	pip install HornMorphoAX-5.*-py3-none-any.whl
+	pip install HornMorphoAX-4.*-py3-none-any.whl
 
 (This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
 
@@ -178,29 +179,70 @@ Then to use the program, in a Python shell, do
 ## Functions
 
 ### Segmenting a sentence
-Morphological analysis takes a word and returns zero or more analyses, each consisting of the root, stem, or lemma of the word and a set of grammatical features.
 
-**`hm.seg_sentence`(*sentence*)  
-`Options: raw=False, um=False`
+**`hm.seg_sentence`**(*sentence*)  
 
->- *sentence* is a string representation of an Amharic. It is assumed
->  that punctuation has already be separated by whitespace from other characters.
-- *word* is a string representation of the word in the standard orthography for the language.
-- *input_file* is a path to the file to be analyzed.
+>- *sentence* is a string representation of an Amharic sentence. It is assumed that punctuation has already be separated by whitespace from other characters.
 
->The function `hm.seg_sentence` attempts to segmen the word in the
->sentence morphologically. Words may be ambiguous, in which case there
->are multiple analyses. Since CoNNL-U format has no place for
->ambiguity, only one segmentation is included; this could be the
->*wrong* one.
+> The function `hm.seg_sentence` attempts to segment the word in the
+sentence morphologically. Words may be ambiguous, in which case there
+are multiple analyses. Since CoNNL-U format has no place for
+ambiguity, only one segmentation is included; this could be the
+*wrong* one.
+
+> This function returns an instance of the HornMorpho `Sentence` class.
+To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its `conllu` attribute. (The example below doesn't look nice because of how TAB characters are handled in Markdown.)
+
+	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
+	>>> print(s.conllu.serialize())
+	
+	# text = ልጁን ሥራውን አስጨርሰዋለሁ ።
+	# sent_id = _s0
+	1-3	ልጁን	_	_	_	_	_	_	_	_
+	1	ልጅ	ልጅ	NADJ	NADJ	_	_	_	_	_
+	2	ኡ	ኡ	DET	DET	_	1	det	_	_
+	3	ን	ን	PART	ACC	Case=Acc	1	case	_	_
+	4-6	ሥራውን	_	_	_	_	_	_	_	_
+	4	ሥራ	ስራ	NADJ	NADJ	_	_	_	_	_
+	5	ኡ	ኡ	DET	DET	_	4	det	_	_
+	6	ን	ን	PART	ACC	Case=Acc	4	case	_	_
+	7-11	አስጨርሰዋለሁ	_	_	_	_	_	_	_	_
+	7	እ	እ	PRON	PRON	Number=Sing|Person=1	8	nsubj	_	_
+	8	አስጨርስ	ጨረሰ	VERB	VERB	Aspect=Imp|Voice=Cau	_	_	_	_
+	9	ኧው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	8	obj	_	_
+	10	ኣል	ኣል	AUX	AUX	_	8	aux	_	_
+	11	ኧሁ	ሁ	PRON	SUBJC	Number=Sing|Person=1	8	nsubj	_	_
+	12	።	።	PUNCT	PUNCT	_	_	_	_	_
 
 ### Segmenting the sentences in a file
 
-**`hm.seg_file`(*path*)_
-`Options: `
+**`hm.seg_file`**(*path*)
+`Options: start=0, nlines=0, batch_name='', version='2.2', batch='1.0'`
 
+>- *path* is a path to a file containing Amharic sentences, one per line. It is assumed that punctuation has been separated by whitespace from other characters.
+
+> The function `hm.seg_file` returns a list of `Sentence` objects.
+
+> Options:
+
+>* `start` specifies the line in the file where you want to start segmenting; it defaults to 0, the first line.
+* `n_lines` specifies the number of lines to segment. It defaults to 0, meaning all of the lines.
+* `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
+* `version` is a string or float specifying the version of the data being analyzed. It defaults to '2.2'.
+* `batch` is a string or float specifying the batch number. It defaults to '1.0'.
 
 ### Writing sentence segmentations to a file
 
-**`hm.write_conllu`(*sentences*, *path*)_
-`Options: `
+**`hm.write_conllu`**(*sentences*, *path*)
+
+`Options:`
+`batch_name='', version='2.2', batch='1.0',`
+`unk_thresh=0.3, ambig_thresh=1.0`
+
+>- *sentences* is a list of `Sentence` objects, like those returned by `hm.seg_file`.
+>- *path* is a path to the file where the CoNLL-U representations of the sentences are to be written.
+
+>Options:
+
+>* `batch_name`, `version`, `batch`: see `hm.seg_file`
+* `unk_thresh` and `ambig_thresh` control whether and how sentences are excluded from the file. `unk_thresh` is a float representing the maximum proportion of tokens in the sentence that are unknown to HornMorpho. It defaults to 0.3. `ambig_thresh` is a float representing the maximum average number of segmentations for each word beyond one. It defaults to 1.0, that is, two segmentations per word. If either of these thresholds is crossed for a given `Sentence`, it is not written to the file.
