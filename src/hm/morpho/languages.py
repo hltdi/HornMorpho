@@ -132,8 +132,10 @@ def get_language(language, load=True,
                  pickle=True, translate=False, experimental=False,
                  phon=False, segment=False, guess=True, simplified=False,
                  load_morph=True, cache='', verbose=False):
-    """Get the language with lang_id, attempting to load it if it's not found
-    and load is True."""
+    """
+    Get the language with lang_id, attempting to load it if it's not found
+    and load is True.
+    """
     if isinstance(language, Language):
         return language
     lang_id = get_lang_id(language)

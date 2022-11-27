@@ -1162,7 +1162,6 @@ class Language:
         '''
         Returns the morphemes in a segmentation string, and index of the root.
         '''
-#        print("** seg2morphs {}".format(seg))
         if joininfixes:
             # Remove the string separating an infix from a following suffix
             seg = seg.replace(Language.infixsep, '')
@@ -1339,8 +1338,9 @@ class Language:
             opt_string += 'phonetic'
         else:
             opt_string += 'analysis/generation'
+        # Only look for MWE FSTs for segmentation
         if not self.has_cas(generate=phon, guess=False, phon=phon,
-                            experimental=experimental, mwe=mwe,
+                            experimental=experimental, mwe=mwe and segment,
                             segment=segment, simplified=simplified):
             print('No {} FST available for {}!'.format(opt_string, self))
             return False
@@ -1461,6 +1461,7 @@ class Language:
                   get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
+                  conllu=False,
                   only_anal=False, preseg=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
@@ -2292,11 +2293,9 @@ class Language:
                     # MWE expression with features specifying head index, POS for non-head words, deprel
                     modpos = feats.get('modpos', '')
                     dep = feats.get('dep', '')
-#                    print("*** segstring {} headi {} dep {} modpos {}".format(segstring, headi, dep, modpos))
                     match = MWE_SEG_STRING_RE.match(segstring)
                     if match:
                         pre, rt, post = match.groups()
-#                        print("*** pre {} root {} post {}".format(pre, rt, post))
                         rootwords = rt.split()
                         morphs = []
                         for i, x in enumerate(rootwords):
@@ -2306,7 +2305,6 @@ class Language:
                                 lemma1 = self.postproc(x, ortho_only=True)
                                 morphs.append("{}(@{},*{},~{})".format(x, modpos, lemma1, dep))
                         segstring = "{}{}{}".format(pre, "-".join(morphs), post)
-#                        print("*** new segstring {}".format(segstring))
                 # Remove { } from root
                 real_seg = Language.root_from_seg(segstring)
                 root_freq = 0
@@ -2322,7 +2320,6 @@ class Language:
                         root_freq = round(root_freq)
                 cite = ''
                 if citation:
-#                    print("*** Getting citation for {} {}".format(form, feats.__repr__()))
                     lemma = feats.get('lemma')
                     if lemma:
                         cite = lemma

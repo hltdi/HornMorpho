@@ -37,10 +37,10 @@ Composition of weighted FSTs is also supported.
 __all__ = ['altrule', 'amh_lang', 'fs', 'fst', 'internals', 'language',\
            'languages', 'letter_tree', 'logic', 'morphology', 'mtax',\
            'om_lang', 'rule', 'semiring', 'strip', 'stv_lang',\
-           'ti_lang', 'um', 'utils', 'anal']
+           'ti_lang', 'um', 'utils', 'anal', 'corpus', 'sentence']
 #           'menu', 'tdict', 'dev'
 
-from .languages import *
+from .corpus import *
 
 # 2020.08.14: eliminating trans classes for now
 # from .trans import *

@@ -26,6 +26,11 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 import hm
 
+## displaying segmentations in Tkinter
+
+def corp():
+    return  hm.morpho.Corpus(["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።"])
+
 ## new CACO
 
 CACO_cache = {}

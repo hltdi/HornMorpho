@@ -64,6 +64,8 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
+    colwidth = 20
+
     def __init__(self, text, tokens=[], batch_name='', sentid=0):
         self.tokens = tokens
         self.text = text
@@ -124,7 +126,7 @@ class Sentence():
 #        segmentation = segmentations[0]
             segments = []
             nmorphs = len(segmentation)
-#            print("*** Segmentation {}, length {}".format(segmentation, nmorphs))
+#            print("  *** Segmentation {}, length {}".format(segmentation, nmorphs))
             if nmorphs == 1:
                 # The word has only one morpheme
                 props = segmentation[0].copy()
@@ -158,6 +160,7 @@ class Sentence():
                         if headi >= 0:
                             print("** Two heads for {}!".format(segmentation))
                         headi = i + morphid
+                        pdict['misc'] = i
                 for props in segmentation:
                     props = props.copy()
                     props[0][1] = id
@@ -173,9 +176,160 @@ class Sentence():
             segment_list.append(segments)
 #                if conllu and index == 0:
 #                    return tokens
+#        print("*** segment_list")
+#        print(segment_list)
         self.words.append(segment_list)
         if conllu:
             return tokens
+
+    def words2conllu(self, set_ids=False):
+        '''
+        Convert the words list to a CoNNL-U sentence representation, setting or fixing
+        the IDs if necessary.
+        '''
+        conllu = TokenList([])
+        for word in self.words:
+            # Check for ambiguity
+            segmentation = word[0]
+            if len(word) > 1:
+                print("{} has {} segmentations".format(self.get_word(segmentation), len(word)))
+            tokens = [Token(pdict) for pdict in segmentation]
+            conllu.extend(tokens)
+        return conllu
+
+    ### Graphical representation of segmentations
+
+    def show_segmentation(self, segmentation):
+        '''
+        Returns a string representing the segmentation with a line for each dependency,
+        for forms, for POS tags, and for features.
+        '''
+        forms = Sentence.get_forms(segmentation)
+        nforms = len(forms)
+        # Hack to handle problem of fidel width
+#        forms = ["{{:_^{}}}".format(Sentence.pad_geez(form)).format(form) for form in forms]
+#        forms = ['_' + form + '_' for form in forms]
+        pos = Sentence.get_pos(segmentation)
+        features = Sentence.get_features(segmentation)
+        headindex = Sentence.get_headindex(segmentation)
+        centers = Sentence.get_centers(nforms)
+        string = len(forms) * "{{:^{}}}".format(Sentence.colwidth)
+        formstring = string.format(*forms)
+        posstring = string.format(*pos)
+        featstring = string.format(*features)
+        return "{}\n{}\n{}".format(formstring, posstring, featstring)
+
+    @staticmethod
+    def show_dep(label, start, end, left=True):
+        width = end-start
+        if left:
+            return start * ' ' + "<{{:-^{}}}*".format(width).format(label)
+        return start * ' ' + "*{{:-^{}}}>".format(width).format(label)
+
+    @staticmethod
+    def get_centers(nmorphs):
+        start = Sentence.colwidth // 2
+        return [(start + i * Sentence.colwidth) for i in range(nmorphs)]
+
+#    @staticmethod
+#    def pad_geez(string):
+#        nchars = len(string)
+#        width = Sentence.get_geez_width(string)
+#        print("** string {}, width {}".format(string, width))
+#        print("** padded {}".format(nchars + (nchars - width)))
+#        return nchars + (nchars - width)
+
+#    @staticmethod
+#    def get_geez_width(string):
+#        width = 0
+#        for char in string:
+#            if char in "ጨጩጪጫጬጭጮ":
+#                width += 1.0
+#            elif char in "መሙሚማሜምሞጠጡጢጣጤጥጦሐሑሒሓሔሖ":
+#                width += 1.0
+#            else:
+#                width += 0.5
+#        return round(width)
+
+    ### Access functions in pseudo-CoNLL-U
+
+    @staticmethod
+    def get_forms(segmentation):
+        if len(segmentation) == 1:
+            return [Sentence.get_word(segmentation)]
+        return [s.get('form') for s in segmentation[1:]]
+
+    @staticmethod
+    def get_lemmas(segmentation, forms):
+        if len(segmentation) == 1:
+            lemma = segmentation[0].get('lemma')
+            if lemma != forms[0]:
+                return [lemma]
+            else:
+                return []
+        else:
+            lemmas = [s.get('lemma') for s in segmentation[1:]]
+            lemmas = [('' if l == f else l) for l, f in zip(lemmas, forms)]
+            if not any(lemmas):
+                return []
+            else:
+                return lemmas
+
+    @staticmethod
+    def get_word(segmentation):
+        return segmentation[0].get('form')
+
+    @staticmethod
+    def get_headindex(segmentation):
+        return segmentation[0].get('misc')
+
+    @staticmethod
+    def get_arcs(segmentation):
+        '''
+        Return a list of leftward arcs and rightward arcs.
+        '''
+        headindex = Sentence.get_headindex(segmentation)
+        arcs = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
+        left = []
+        right = []
+        for arc in arcs:
+            if arc[1] < headindex:
+                left.append(arc)
+            else:
+                right.append(arc)
+        if left or right:
+            return left, right
+
+    @staticmethod
+    def get_pos(segmentation):
+        def get_pos1(morpheme):
+            u, x = morpheme.get('upos'), morpheme.get('xpos')
+            if u != x:
+                u = ','.join([u, x])
+            return u
+        if len(segmentation) == 1:
+            # Word with no segmentation
+            return [get_pos1(segmentation[0])]
+        return [get_pos1(s) for s in segmentation[1:]]
+
+    @staticmethod
+    def get_features(segmentation):
+        if len(segmentation) == 1:
+            feats = [Sentence.simplify_feats(segmentation[0].get('feats', ''))]
+        else:
+            feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
+            feats = [Sentence.simplify_feats(f) for f in feats]
+        return [f for f in feats if f]
+
+    @staticmethod
+    def simplify_feats(feats):
+        if not feats:
+            return ''
+        feats = feats.split("|")
+        feats = [f.split('=') for f in feats]
+        feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
+        feats = ','.join(feats)
+        return feats
 
 #def dict2element(tag, d):
 #    elem = ET.Element(tag, d)
