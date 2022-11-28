@@ -36,10 +36,29 @@ class Corpus():
 
     ID = 0
 
-    def __init__(self, data=None, file='', name=''):
-        self.data = data
-        self.segmentations = []
-        self.name = name or self.create_name()
+    def __init__(self, data=None, path='', start=0, nsents=0, name='', batch_name=''):
+        self.batch_name = batch_name
+        if not data and path:
+            self.data = []
+            try:
+                filein = open(path, 'r', encoding='utf-8')
+                lines = filein.readlines()
+                if start or nsents:
+                    lines = lines[start:start+nsents]
+                for line in lines:
+                    self.data.append(line.strip())
+            except IOError:
+                print('No such file or path; try another one.')
+        elif data:
+            # Raw sentences
+            self.data = data
+        else:
+            self.data = []
+        # Sentence objects, with pre-CoNLL-U word representations
+        self.sentences = []
+#        # CoNLL-U strings for data
+#        self.conllu = []
+        self.name = name or batch_name or self.create_name()
 
     def __repr__(self):
         return "C_{}".format(self.name)
@@ -54,9 +73,9 @@ class Corpus():
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
         '''
-        if not self.segmentations:
+        if not self.sentences:
             # Segment all sentences before creating GUI.
-            self.segment_all()
+            self.segment()
         root = Tk()
         root.grid_columnconfigure(0, weight=1)
         self.frame = SegFrame(root, self, title=self.__repr__())
@@ -64,47 +83,52 @@ class Corpus():
 #        print("families {}".format(fontfamilies[:100]))
         self.frame.mainloop()
 
-    def segment_all(self):
+    def segment(self):
         """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
         language = get_language('amh', phon=False, segment=True, experimental=True)
         print("Segmenting sentences in {}".format(self))
+        sentid = 0
         for sentence in self.data:
-            segmentations = language.anal_sentence(sentence)
-            self.segmentations.append(segmentations)
+            sentence_obj = language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid)
+            self.sentences.append(sentence_obj)
+            sentid += 1
 
-    def segment(self, sentence='', sentindex=0, language='amh'):
+    def conlluify(self):
         """
-        Segment one sentence. (This may not be needed.)
+        Convert all of the sentence pre-CoNNL-U representations to CoNNL-U.
         """
-        if sentindex in self.all_segmentations:
-            segmentations = self.all_segmentations[sentindex]
-        else:
-            sentence = sentence or self.data[sentindex] if sentindex < len(self.data) else None
+        for sentence in self.sentences:
+            conllu = sentence.words2conllu(update_indices=True)
+            conllu = TokenList(conllu)
+            sentence.conllu = conllu
+#            self.conllu.append(conllu)
+
+    def segment1(self, text='', sentindex=None):
+        """
+        Segment one sentence.
+        """
+        text = text or self.data[sentindex] if sentindex < len(self.data) else None
+        if text:
+            language = get_language('amh', phon=False, segment=True, experimental=True)
+            sentence = language.anal_sentence(text)
             if sentence:
-                language = get_language(language, phon=False, segment=True, experimental=True)
-                segmentations = language.anal_sentence(sentence)
-                if segmentations:
-                    self.all_segmentations[sentindex] = segmentations
-        if segmentations:
-            self.frame.segmentations = segmentations.words
-        return segmentations
+                self.all_sentences[sentindex] = sentence
+        if sentence:
+            self.frame.segmentations = sentence.words
+        return sentence
 
 class SegFrame(Frame):
     '''
     Frame for the disambiguation GUI.
     '''
 
-    # width of column for showing segmentation ID
-    segid_width = 40
-    # gap between column centers for tokens and their properties
-    token_gap = 100
-
     def __init__(self, parent, corpus=None, width=700, height=800, title=None):
         Frame.__init__(self, parent, width=width, height=height)
         parent.title(title if title else "Corpus")
+        self.parent = parent
         self.corpus = corpus
         self.all_word_positions = {}
         self.word_positions = []
@@ -120,35 +144,40 @@ class SegFrame(Frame):
         self.geez_normal = Font(family="Abyssinica SIL", size=18)
         self.roman_big = Font(family="Arial", size=20)
         self.init_sentence_text()
-        self.id_frame = Frame(self, width=200, height=100)
+#        self.id_frame = Frame(self, width=200, height=100)
         self.wordid_entry = self.init_wordid_entry()
         self.sentid_entry = self.init_sentid_entry()
-        self.id_frame.grid(row=0, column=0)
-#        self.segment_button = Button(self, text="Segment sentence", command=self.segment)
-#        self.segment_button.grid(row=0, column=2)
-        self.show_button = Button(self, text="Show segmentations", command=self.show_segmentations)
-        self.show_button.grid(row=0, column=2)
+#        self.id_frame.grid(row=0, column=0)
+#        self.show_button = Button(self, text="Show segmentations", command=self.show_segmentations)
+#        self.show_button.grid(row=0, column=2)
+        self.quit_button = Button(self, text="Quit", command=self.quit)
+        self.quit_button.grid(row=0, column=2)
         self.sent_text.grid(row=1, columnspan=3)
         self.canvas = SegCanvas(self, corpus, width=width-25, height=height-25)
         self.grid()
-#        self.show_segmenting()
-        self.segmentations = self.corpus.segmentations[sentindex].words
+        self.segmentations = self.corpus.sentences[sentindex].words
+        self.show_segmentations()
 
-#    def segment(self):
-#        print("{}".format(self.sentence))
-#        self.corpus.segment(self.sentence)
-
-#    def show_segmenting(self):
-#        self.segmenting = self.canvas.create_text((100, 300), text="Segmenting...", font=self.roman_big)
+    def quit(self):
+        '''
+        Quit the GUI, destroying all widgets.
+        '''
+        self.parent.destroy()
 
     def init_vars(self):
+        '''
+        Creating int variables for word and sentence indices.
+        '''
         self.sentvar = IntVar()
         self.sentvar.set(1)
         self.wordvar = IntVar()
         self.wordvar.set(1)
 
     def init_sentid_entry(self):
-        sentframe = Frame(self.id_frame, width=25, height=100)
+        '''
+        Create the sentence ID Entry and forward/backward Buttons.
+        '''
+        sentframe = Frame(self, width=25, height=100)
         slabel = Label(sentframe, text="Sentence ID")
         se = Entry(sentframe, width=4, textvariable=self.sentvar, justify=CENTER)
         down = Button(sentframe, text="<", command=self.decrease_sentid, width=2)
@@ -162,7 +191,10 @@ class SegFrame(Frame):
         return se
 
     def init_wordid_entry(self):
-        wordframe = Frame(self.id_frame, width=25, height=100)
+        '''
+        Create the word ID Entry and forward/backward Buttons.
+        '''
+        wordframe = Frame(self, width=25, height=100)
         wlabel = Label(wordframe, text="Word ID")
         we = Entry(wordframe, width=4, textvariable=self.wordvar, justify=CENTER)
         down = Button(wordframe, text="<", command=self.decrease_wordid, width=2)
@@ -177,26 +209,43 @@ class SegFrame(Frame):
         return we
 
     def get_sentid(self, event):
+        '''
+        Get the current sentence ID (1 greater than actual ID).
+        '''
         new_id = int(self.sentid_entry.get())
         self.set_sentid(new_id)
 
     def set_sentid(self, new_id):
+        '''
+        Set the sentence ID and the corresponding sentence.
+        '''
         if 1 <= new_id <= len(self.corpus.data):
             self.sentvar.set(new_id)
             self.sentence = self.corpus.data[new_id-1]
             self.set_sentence(new_id-1)
 
     def get_wordid(self, event):
+        '''
+        Get the current word ID (1 greater than actual ID).
+        '''
         new_id = int(self.wordid_entry.get())
         self.set_wordid(new_id)
 
     def set_wordid(self, new_id):
+        '''
+        Set the word ID and corresponding word, highlighting the word
+        in the sentence Text.
+        '''
         if 1 <= new_id <= len(self.segmentations):
             self.wordvar.set(new_id)
             self.word = self.segmentations[new_id-1]
             self.highlight_word(new_id-1)
+            self.show_segmentations()
 
     def init_sentence_text(self):
+        '''
+        Create the sentence Text and the word highligh tag.
+        '''
         self.sent_text = Text(self, font=self.geez_big, width=60, height=2, padx=20)
 #        sl.tag_configure("align", justify='center')
         self.sent_text.insert("1.0", self.sentence)
@@ -207,6 +256,10 @@ class SegFrame(Frame):
 #        sl.tag_configure("highlight", background="OliveDrab1", foreground="black")
 
     def highlight_word(self, windex):
+        '''
+        Highlight the word in windex position in the sentence by reassigning the position
+        of the highlight tag.
+        '''
         positions = self.word_positions[windex]
 #        tag = "highlight{}".format(windex)
         self.sent_text.tag_remove("highlight", "1.0", "end")
@@ -217,27 +270,22 @@ class SegFrame(Frame):
 #        self.sent_text.tag_configure("highlight", background="OliveDrab1", foreground="black")
 
     def set_sentence(self, sentindex):
-        self.segmentations = self.corpus.segmentations[sentindex].words
+        '''
+        Set the segmentations of the current sentence.
+        Delete the previous sentence and show the current one in the sentence Text.
+        Set the positions of words within the sentence Text.
+        Make the first word the current word.
+        '''
+        self.segmentations = self.corpus.sentences[sentindex].words
         self.sent_text.delete("1.0", "end")
         self.sent_text.insert("1.0", self.sentence)
         self.set_word_positions()
-#        self.word_positions = SegFrame.get_word_positions(self.sentence)
         self.set_wordid(1)
 
-#    @staticmethod
-#    def get_word_positions(sentence):
-#        words = sentence.split()
-#        positions = []
-#        position = 0
-#        for word in words:
-#            start = sentence.find(word, position)
-#            end = start + len(word)
-#            position = end
-#            positions.append((start, end))
-##        print("** word positions {}".format(positions))
-#        return positions
-
     def set_word_positions(self):
+        '''
+        Set the positions of the words within the current sentence.
+        '''
         sentid = self.sentvar.get()-1
         if sentid in self.all_word_positions:
             positions = self.all_word_positions[sentid]
@@ -251,35 +299,52 @@ class SegFrame(Frame):
                 position = end
                 positions.append((start, end))
             self.all_word_positions[sentid] = positions
-#        print("** word positions {}".format(positions))
         self.word_positions = positions
 
     def decrease_sentid(self):
+        '''
+        Decrease the current sentence ID.
+        '''
         sentid = self.sentvar.get()
         new_id = sentid - 1
         self.set_sentid(new_id)
 
     def increase_sentid(self):
+        '''
+        Increase the current sentence ID.
+        '''
         sentid = self.sentvar.get()
         new_id = sentid + 1
         self.set_sentid(new_id)
 
     def decrease_wordid(self):
+        '''
+        Decrease the current word ID.
+        '''
         wordid = self.wordvar.get()
         new_id = wordid - 1
         self.set_wordid(new_id)
 
     def increase_wordid(self):
+        '''
+        Increase the current word ID.
+        '''
         wordid = self.wordvar.get()
         new_id = wordid + 1
         self.set_wordid(new_id)
 
     def get_word_segmentations(self):
+        '''
+        Get the segmentations for the current word.
+        '''
         wordindex = self.wordvar.get()-1
         wordsegs = self.segmentations[wordindex]
         return wordsegs
 
     def show_segmentations(self):
+        '''
+        Show the segmentations for the current word in the Canvas.
+        '''
         if not self.segmentations:
             print("** No segmentations to show")
             return
@@ -287,6 +352,9 @@ class SegFrame(Frame):
         self.canvas.show_word(wordsegs)
 
     def set_word_segmentations(self, newsegs):
+        '''
+        Update the segmentations for the current word (based on selection by user).
+        '''
         wordindex = self.wordvar.get()-1
         print("** Setting word segmentations for word {}".format(wordindex))
         print("** Old:\n{}".format(self.segmentations[wordindex]))
@@ -296,16 +364,18 @@ class SegFrame(Frame):
 #    def highlight_word(self, 
 
 class SegCanvas(Canvas):
+    '''
+    Canvas within the disambiguation Frame where segmentations are shown and selected.
+    '''
 
-#    boundary = 25
     depYoffset = 10
     segIDwidth = 50
-    segcolwidth = 100
+    segcolwidth = 125
     segrowheight = 18
     Y0 = 25
     segYmargin = 10
     segwidth = 400
-    segarcheight = 20
+    segdependencyheight = 20
     seggap = 40
     segrightmargin = 20
     deplabelX = 15
@@ -318,11 +388,14 @@ class SegCanvas(Canvas):
         self._height = height
         self.columnX = []
 #        self.show_morphs(["ይ", "ሰማ", "ኣል"])
-#        self.show_arc(50, 200, 200, 200, "nsubj")
+#        self.show_dependency(50, 200, 200, 200, "nsubj")
         self.grid(row=2, columnspan=3)
 #        self.pack()
 
     def clear(self):
+        '''
+        Clear the Canvas of all widgets.
+        '''
         self.delete('all')
         
     def show_word(self, wordsegs):
@@ -347,7 +420,7 @@ class SegCanvas(Canvas):
             lemmas = Sentence.get_lemmas(wordseg, forms)
             pos = Sentence.get_pos(wordseg)
             features = Sentence.get_features(wordseg)
-            arcs = Sentence.get_arcs(wordseg)
+            dependencies = Sentence.get_dependencies(wordseg)
             n = len(forms)
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
@@ -357,8 +430,8 @@ class SegCanvas(Canvas):
                 segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.frame.roman_big))
 #            print(" *** {}:{}:{} {} {} {} {} {}".format(word, headindex, lemmas, forms, pos, features, arcs, Xs))
             # Put the dependencies at the top
-            if arcs:
-                y = self.show_arcs(arcs, Xs, headindex, y)
+            if dependencies:
+                y = self.show_dependencies(dependencies, Xs, headindex, y)
             self.show_forms(forms, Xs, y)
             if pos:
                 y += SegCanvas.segrowheight
@@ -379,31 +452,51 @@ class SegCanvas(Canvas):
         i = 0
         rightX = SegCanvas.segIDwidth + maxn * SegCanvas.segcolwidth
 #        print(" **** segboxtags {}".format(segboxtags))
-        if n > 1:
+#        print(" **** segidtags {}".format(segIDtags))
+        if nwordsegs > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
+#                print(" ***** Binding {} and {} for {}".format(idtag, boxtag, index))
                 self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordsegs[index]))
-                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, 'pink'))
+                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, 'LightPink'))
                 self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, 'white'))
         # Rectangle around each segmentation
         while i < len(segYs) - 1:
             self.create_rectangle(SegCanvas.segIDwidth, segYs[i]-SegCanvas.segrowheight // 4, rightX, segYs[i+1]-18)
             i += 1
 
-    def select_handler(self, segs):
-        return lambda event: self.select(segs)
+    def select_handler(self, seg):
+        '''
+        Returns the selection handler for the segmentation label.
+        seg: the segmentation to be selected
+        '''
+        return lambda event: self.select(seg)
 
-    def select(self, segs):
-        self.frame.set_word_segmentations([segs])
-        return segs
+    def select(self, seg):
+        '''
+        Select seg as the segmentation for the current word.
+        '''
+        self.frame.set_word_segmentations([seg])
+        self.frame.show_segmentations()
+        return seg
 
     def highlight_box_handler(self, boxid, color):
+        '''
+        Returns the highlight and dehighlight handler for the segmentation label.
+        '''
         return lambda event: self.highlight_box(boxid, color)
 
     def highlight_box(self, boxid, color):
+        '''
+        Highlight or dehighlight a segmentation label box.
+        '''
+#        print("** Highlighting {}".format(boxid))
         self.itemconfigure(boxid, fill=color)
 
     def get_columnX(self, n):
+        '''
+        The X coordinates for the columns in a segmentation display.
+        '''
 #        center = (self._width - SegCanvas.segIDwidth) // 2 + SegCanvas.segIDwidth
 #        start = center - SegCanvas.segcolwidth * (n-1) // 2
         start = SegCanvas.segIDwidth + SegCanvas.segcolwidth // 2
@@ -413,58 +506,59 @@ class SegCanvas(Canvas):
         return X
 
     def show_forms(self, forms, Xs, y):
+        '''
+        Show the forms for a segmentation.
+        '''
         for form, x in zip(forms, Xs):
             self.create_text((x, y), text=form, font=self.frame.geez_normal)
 
     def show_lemmas(self, lemmas, Xs, y):
+        '''
+        Show the lemmas for a segmentation (if different from forms).
+        '''
         for lemma, x in zip(lemmas, Xs):
             self.create_text((x, y), text=lemma, font=self.frame.geez_normal)
 
     def show_pos(self, pos, Xs, y):
+        '''
+        Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
+        '''
         for p, x in zip(pos, Xs):
             self.create_text((x, y), text=p)
 
     def show_features(self, feats, Xs, y):
+        '''
+        Show the morphological features for a segmentation if there are any.
+        '''
         for f, x in zip(feats, Xs):
             self.create_text((x, y), text=f)
     
-#    def show_form(self, form, x, y):
-#        self.create_text((x, y), text=form, font=self.frame.geez_normal)
-
-#    def show_morphs(self, morphs):
-#        for i, morph in enumerate(morphs):
-#            self.show_form(morph, i*100, 100)
-
-#    def calc_seg_X(self, nmorphs):
-#        xwidth = self._width - 2 * SegCanvas.boundary
-#        x0 = SegCanvas.boundary
-
-    def show_arcs(self, arcs, Xs, headindex, y):
+    def show_dependencies(self, dependencies, Xs, headindex, y):
         """
         Show left and right dependency arcs.
         """
         headX = Xs[headindex]
-        arcdiff = len(arcs[0]) - len(arcs[1])
-        left = arcs[0]
-        right = arcs[1]
-        if arcdiff > 0:
-            left = left[arcdiff:]
-            # more left than right arcs
-            for arc in arcs[0][:arcdiff]:
-                self.show_arc(headX, y, Xs[arc[1]], arc[0])
-                y += SegCanvas.segarcheight
-        elif arcdiff < 0:
-            right = right[arcdiff:]
-            for arc in arcs[1][:-arcdiff]:
-                self.show_arc(headX, y, Xs[arc[1]], arc[0])
-                y += SegCanvas.segarcheight
+        dependencydiff = len(dependencies[0]) - len(dependencies[1])
+        left = dependencies[0]
+        right = dependencies[1]
+        if dependencydiff > 0:
+            left = left[dependencydiff:]
+            # more left than right dependencies
+            for dependency in dependencies[0][:dependencydiff]:
+                self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
+                y += SegCanvas.segdependencyheight
+        elif dependencydiff < 0:
+            right = right[dependencydiff:]
+            for dependency in dependencies[1][:-dependencydiff]:
+                self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
+                y += SegCanvas.segdependencyheight
         for l, r in zip(left, right):
-            self.show_arc(headX, y, Xs[l[1]], l[0])
-            self.show_arc(headX, y, Xs[r[1]], r[0], startcircle=False)
-            y += SegCanvas.segarcheight
+            self.show_dependency(headX, y, Xs[l[1]], l[0])
+            self.show_dependency(headX, y, Xs[r[1]], r[0], startcircle=False)
+            y += SegCanvas.segdependencyheight
         return y
 
-    def show_arc(self, x1, y, x2, label, startcircle=True):
+    def show_dependency(self, x1, y, x2, label, startcircle=True):
         self.create_line(x1, y, x2, y, arrow=LAST)
         X = (x2 - x1) / 2 + x1
         if startcircle:

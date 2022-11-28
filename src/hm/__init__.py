@@ -21,7 +21,8 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
-__version__ = '4.5.0'
+# Version 4.5.1 includes the disambiguation GUI and the Corpus class
+__version__ = '4.5.1'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -176,6 +177,14 @@ def write_conllu(sentences, path,
             conll = sentence.conllu
             print(conll.serialize(), file=file, end='')
     print("Rejected {} sentences".format(rejected))
+
+def create_corpus(data=None, path='', start=0, nsents=0, batch_name=''):
+    '''
+    Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
+    disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
+    '''
+    corpus = morpho.Corpus(data=data, path=path, start=start, nsents=nsents, batch_name=batch_name)
+    return corpus
 
 def seg_sentence(sentence, language='amh'):
     '''

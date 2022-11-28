@@ -57,7 +57,7 @@ te_R -> end          <:,voice=rcp)>             [bs=0];[bs=te_];[bs=a_];[bs=te_a
 a_R -> end            <:,voice=trans)>          [bs=te_R]
 a_R -> end            <:,voice=rcp,voice=cau)>   [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 # For now treat this as identical to a_R?
-as_R -> end         <:,voice=caus)>             [bs=te_R]
+as_R -> end         <:,voice=cau)>             [bs=te_R]
 as_R -> end         <:,voice=rcp,voice=cau)>    [bs=0];[bs=te_];[bs=a_];[bs=te_a]
 
 end ->

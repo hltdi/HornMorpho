@@ -46,8 +46,13 @@ plr_an0 -> plr_an   [:]
 
 ## Deverbal nouns: v=agt | ins | man | inf
 stem0 -> vnoun    >>vnoun+<<      [pos=n_dv,-p1,-p2,-prp]
-stem0 -> plr_oc0   +irr_vnounX+   [pos=n_dv,-p1,-p2,-prp]
-vnoun -> plr_oc0  >>tmp_n<<
+stem0 -> vnoun_pos   +irr_vnounX+   [pos=n_dv,-p1,-p2,-prp]
+vnoun -> vnoun_pos  >>tmp_n<<
+# Ins, agt, and man don't need to have verbal XPOS
+vnoun_pos -> plr_oc0   [:]        [v=ins|agt|man]
+# Set XPOS for infinitives, which can't be plural
+vnoun_pos -> inf          [:}(inf]  [v=inf,-plr]
+inf -> poss  >>inf_featsX<<
 
 ## Irregular plurals
 stem0 -> plr_irr0  +irr_plrX+   [v=None,-prp]

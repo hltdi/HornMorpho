@@ -103,6 +103,37 @@ class Sentence():
             return True
         return False
 
+    def words2conllu(self, update_indices=True):
+        '''
+        Convert a pre-CoNLL-U list of lists of dicts to a list of Tokens.
+        '''
+        # Use only the first segmentation for each word
+        wordsegs = [w[0] for w in self.words]
+        # Update the indices in case the number of morphemes in a word has changed
+        index = 1
+        conllu = []
+        for wordseg in wordsegs:
+#            print("** Wordseg {}".format(wordseg))
+            if len(wordseg) == 1:
+                # No segments: use current index
+                wordseg[0]['id'] = index
+                conllu.append(wordseg[0])
+                index += 1
+            else:
+                wholeword = wordseg[0]
+                morphsegs = wordseg[1:]
+                nmorphs = len(morphsegs)
+                end = index + nmorphs
+                wholeword['id'] = (index, '-', end-1)
+                # Get rid of the index that's stored here
+                wholeword['misc'] = None
+                conllu.append(wholeword)
+                for morphseg in morphsegs:
+                    morphseg['id'] = index
+                    conllu.append(morphseg)
+                    index += 1
+        return conllu
+
     def add_word(self, word, segmentations, morphid, conllu=True):
         w = self.make_word(word, segmentations, morphid, conllu=conllu)
         if conllu:
@@ -182,20 +213,20 @@ class Sentence():
         if conllu:
             return tokens
 
-    def words2conllu(self, set_ids=False):
-        '''
-        Convert the words list to a CoNNL-U sentence representation, setting or fixing
-        the IDs if necessary.
-        '''
-        conllu = TokenList([])
-        for word in self.words:
-            # Check for ambiguity
-            segmentation = word[0]
-            if len(word) > 1:
-                print("{} has {} segmentations".format(self.get_word(segmentation), len(word)))
-            tokens = [Token(pdict) for pdict in segmentation]
-            conllu.extend(tokens)
-        return conllu
+#    def words2conllu(self, set_ids=False):
+#        '''
+#        Convert the words list to a CoNNL-U sentence representation, setting or fixing
+#        the IDs if necessary.
+#        '''
+#        conllu = TokenList([])
+#        for word in self.words:
+#            # Check for ambiguity
+#            segmentation = word[0]
+#            if len(word) > 1:
+#                print("{} has {} segmentations".format(self.get_word(segmentation), len(word)))
+#            tokens = [Token(pdict) for pdict in segmentation]
+#            conllu.extend(tokens)
+#        return conllu
 
     ### Graphical representation of segmentations
 
@@ -261,6 +292,9 @@ class Sentence():
 
     @staticmethod
     def get_lemmas(segmentation, forms):
+        '''
+        The lemmas in a segmentation in any is different from the form.
+        '''
         if len(segmentation) == 1:
             lemma = segmentation[0].get('lemma')
             if lemma != forms[0]:
@@ -277,26 +311,33 @@ class Sentence():
 
     @staticmethod
     def get_word(segmentation):
+        '''
+        The form for the whole word.
+        '''
         return segmentation[0].get('form')
 
     @staticmethod
     def get_headindex(segmentation):
+        '''
+        Index of the morpheme that's the head.
+        All dependencies start here.
+        '''
         return segmentation[0].get('misc')
 
     @staticmethod
-    def get_arcs(segmentation):
+    def get_dependencies(segmentation):
         '''
-        Return a list of leftward arcs and rightward arcs.
+        Return a list of lists of leftward and rightward dependencies.
         '''
         headindex = Sentence.get_headindex(segmentation)
-        arcs = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
+        dependencies = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
         left = []
         right = []
-        for arc in arcs:
-            if arc[1] < headindex:
-                left.append(arc)
+        for dependency in dependencies:
+            if dependency[1] < headindex:
+                left.append(dependency)
             else:
-                right.append(arc)
+                right.append(dependency)
         if left or right:
             return left, right
 

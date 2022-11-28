@@ -1256,7 +1256,8 @@ class Language:
 
     @staticmethod
     def udformat_pos_fromHM(pos):
-        p = pos.upper()
+        p = pos.replace('@', '')
+        p = p.upper()
         if p == 'V':
             return 'VERB'
         elif p == 'N':
@@ -1748,7 +1749,8 @@ class Language:
                       segment=True, realize=True, realizer=None,
                       conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
                       phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
-                      sep_punc=False, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=False, normalize=False,
+                      sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
+                      feats=None, simpfeats=None, um=False, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
                       lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
                       verbosity=0):

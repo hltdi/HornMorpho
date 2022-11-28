@@ -83,6 +83,17 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
+def fix_nadj():
+    '''
+    Chnange NADJ to N or ADJ for words in n_stemX.lex.
+    '''
+    lines = []
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stemX.lex'))) as file:
+        for line in file:
+            line = line.strip()
+            stem, x, feats = line.split('\t')
+            feats = FS(feats)
+
 def mwe_2_3(n=True):
     w2 = []
     w3 = []
