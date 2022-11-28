@@ -190,7 +190,7 @@ are multiple analyses. Since CoNNL-U format has no place for
 ambiguity, only one segmentation is included; this could be the
 *wrong* one.
 
-> This function returns an instance of the HornMorpho `Sentence` class.
+> This function returns an instance of the <a id="sentence">HornMorpho `Sentence` class</a>.
 To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its `conllu` attribute.
 
 	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
@@ -246,3 +246,55 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 
 >* `batch_name`, `version`, `batch`: see `hm.seg_file`
 * `unk_thresh` and `ambig_thresh` control whether and how sentences are excluded from the file. `unk_thresh` is a float representing the maximum proportion of tokens in the sentence that are unknown to HornMorpho. It defaults to 0.3. `ambig_thresh` is a float representing the maximum average number of segmentations for each word beyond one. It defaults to 1.0, that is, two segmentations per word. If either of these thresholds is crossed for a given `Sentence`, it is not written to the file.
+
+### Creating a corpus of disambiguated sentences
+
+**`hm.create_corpus`**(*data*, *path*)
+
+`Options:`
+`start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`
+
+>`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from a file found at the keyword argument *path*.
+
+>Options:
+
+>* `start` specifies the line in the file where you want to start segmenting; it defaults to 0, the first line.
+* `n_sents` specifies the number of sentences/lines to read in from the file. It defaults to 0, meaning all of the lines.
+* `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
+* `version` is a string or float specifying the version of the data being analyzed. It defaults to '2.2'.
+* `batch` is a string or float specifying the batch number. It defaults to '1.0'.
+
+#### `Corpus` attributes
+
+**`Corpus.data`**
+
+>A list of unsegmented Amharic sentence strings.
+
+**`Corpus.sentences`**
+
+>A list of `Sentence` objects. Initially empty, filled when `Corpus.segment()` is called.
+
+#### `Corpus` methods
+
+**`Corpus.segment`**()
+
+> The `Corpus` method `segment()` runs `hm.seg_sentence()` on the sentence strings in the `data` attribute, saving the resulting [`Sentence`](#sentence) objects in the `sentences` attribute. Each of these has a `conllu` field, which can be converted to a CoNLL-U string with `serialize()`. But for words that are ambiguous to HornMorpho, the CoNLL-U representations simply take the first of the segmentations that are output for words. To have control over this process, see the next method, `Corpus.disambiguate()`.
+
+> Example:
+
+    >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2)
+                            
+	>>> c.data
+	['አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።', 'ስለሚሉት ጉዳዮች ማወቅ አለባቸው ።']
+	>>>c.sentences
+	[]
+	>>> c.segment()
+	Segmenting sentences in C_CACO2.2_B1.0
+	>>> c.sentences
+	[S0::አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።, S1::ስለሚሉት ጉዳዮች ማወቅ አለባቸው ።]
+
+**`Corpus.disambiguate`**()
+
+> The `Corpus` method `disambiguate()` opens a GUI that displays the segmentations returned by HornMorpho for each word in each sentence in the `sentences` attribute. For ambiguous words, that is, words for which HornMorpho returns more than one segmentation, the GUI permits selecting one of the segmentations.
+
+    

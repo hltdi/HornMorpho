@@ -4,6 +4,7 @@
 ## PREPOSITIONS
 # no prepositions
 start -> stem    [:]              [prep=None,-gen]
+# prepositions
 start -> stem   >>n_prepX<<
 start -> stem    <ye:ye(@adp,$case=gen,*የ,~case)->    [+gen,prep=None]
 

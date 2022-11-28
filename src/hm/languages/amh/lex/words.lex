@@ -103,8 +103,21 @@ lamel lamel adv
 lehosas lehosas adv
 mado mado adv
 mec mec adv
+mece mece adv
 mecE mecE adv
+mecem mecem adv
+mecEm mecEm adv
 mecEwnm mecEwnm adv
+lemecEwm lemecEwm adv
+lemecewm lemecewm adv
+lemecE lemecE adv
+kemecewm kemecewm adv
+kemecEw kemecEw adv
+kemecew kemecew adv
+'skemecE 'skemecE adv
+'skemecewm 'skemecewm adv
+meces_ meces_ adv
+mecEs_ mecEs_ adv
 mnNa mnN_a adv
 mngizEm mngizEm adv
 noro noro adv
@@ -264,3 +277,14 @@ yan//gizE yan//gizE adv
 daru//gn daru//gn adv
 fit//lefit fit//lefit adv
 fitna//hWala fitn_a//hWala adv
+kemece//wedih kemece//wedih adv
+kemecE//wedih kemecE//wedih adv
+kemece//jem_ro kemece//jem_ro adv
+kemecE//jem_ro kemecE//jem_ro adv
+'ske//mece 'ske//mece adv
+'ske//mecE 'ske//mecE adv
+'ske//mecewm 'ske//mecewm adv
+'ske//mecEwm 'ske//mecEwm adv
+mece//mec mece//mec adv
+mec//mec mec//mec adv
+

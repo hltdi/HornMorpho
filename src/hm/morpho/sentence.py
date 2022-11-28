@@ -360,7 +360,9 @@ class Sentence():
         else:
             feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
             feats = [Sentence.simplify_feats(f) for f in feats]
-        return [f for f in feats if f]
+        if any(feats):
+            return feats
+        return []
 
     @staticmethod
     def simplify_feats(feats):

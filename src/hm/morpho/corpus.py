@@ -36,15 +36,15 @@ class Corpus():
 
     ID = 0
 
-    def __init__(self, data=None, path='', start=0, nsents=0, name='', batch_name=''):
+    def __init__(self, data=None, path='', start=0, n_sents=0, name='', batch_name=''):
         self.batch_name = batch_name
         if not data and path:
             self.data = []
             try:
                 filein = open(path, 'r', encoding='utf-8')
                 lines = filein.readlines()
-                if start or nsents:
-                    lines = lines[start:start+nsents]
+                if start or n_sents:
+                    lines = lines[start:start+n_sents]
                 for line in lines:
                     self.data.append(line.strip())
             except IOError:
@@ -56,6 +56,7 @@ class Corpus():
             self.data = []
         # Sentence objects, with pre-CoNLL-U word representations
         self.sentences = []
+        self.language = get_language('amh', phon=False, segment=True, experimental=True)
 #        # CoNLL-U strings for data
 #        self.conllu = []
         self.name = name or batch_name or self.create_name()
@@ -88,11 +89,10 @@ class Corpus():
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
-        language = get_language('amh', phon=False, segment=True, experimental=True)
         print("Segmenting sentences in {}".format(self))
         sentid = 0
         for sentence in self.data:
-            sentence_obj = language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid)
+            sentence_obj = self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid)
             self.sentences.append(sentence_obj)
             sentid += 1
 
@@ -125,7 +125,7 @@ class SegFrame(Frame):
     Frame for the disambiguation GUI.
     '''
 
-    def __init__(self, parent, corpus=None, width=700, height=800, title=None):
+    def __init__(self, parent, corpus=None, width=1000, height=700, title=None):
         Frame.__init__(self, parent, width=width, height=height)
         parent.title(title if title else "Corpus")
         self.parent = parent
@@ -356,9 +356,9 @@ class SegFrame(Frame):
         Update the segmentations for the current word (based on selection by user).
         '''
         wordindex = self.wordvar.get()-1
-        print("** Setting word segmentations for word {}".format(wordindex))
-        print("** Old:\n{}".format(self.segmentations[wordindex]))
-        print("** New:\n{}".format(newsegs))
+#        print("** Setting word segmentations for word {}".format(wordindex))
+#        print("** Old:\n{}".format(self.segmentations[wordindex]))
+#        print("** New:\n{}".format(newsegs))
         self.segmentations[wordindex] = newsegs
 
 #    def highlight_word(self, 

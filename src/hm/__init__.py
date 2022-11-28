@@ -155,7 +155,7 @@ def seg_file(file='', language='amh', experimental=True,
 
 def write_conllu(sentences, path,
                  batch_name='', version='2.2', batch='1.0',
-                 unk_thresh=0.3, ambig_thresh=1.0):
+                 filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0):
     '''
     Write the CoNNL-U representations of a list of sentences to a file.
 
@@ -164,6 +164,7 @@ def write_conllu(sentences, path,
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
     @param batch:  number (string or float) of batch (used to create batch_name if not provided)
+    @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
     '''
@@ -171,24 +172,35 @@ def write_conllu(sentences, path,
     rejected = 0
     with open(path, 'w', encoding='utf8') as file:
         for sentence in sentences:
-            if sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
+            if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
                 rejected += 1
                 continue
             conll = sentence.conllu
             print(conll.serialize(), file=file, end='')
     print("Rejected {} sentences".format(rejected))
 
-def create_corpus(data=None, path='', start=0, nsents=0, batch_name=''):
+def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0'):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
     disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
+    Only works for Amharic.
+
+    @param data: list of unsegmented, tokenized sentence strings or None
+    @param path: path to file of tokenized sentences, one per line.
+    @param start: index of first sentence/line in file to include in corpus, defaults to 0
+    @param n_sents: number of sentences to read in from file, defaults to 0 (= all)
+    @param batch_name: string name of the input batch of data
+    @param version: version of input data (used to create batch_name if not provided)
+    @param batch:  number (string or float) of batch (used to create batch_name if not provided)
     '''
-    corpus = morpho.Corpus(data=data, path=path, start=start, nsents=nsents, batch_name=batch_name)
+    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+    corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name)
     return corpus
 
 def seg_sentence(sentence, language='amh'):
     '''
     Segment a sentence, returning an instance of Sentence.
+    Only works for Amharic.
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
     return language.anal_sentence(sentence)
@@ -199,7 +211,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
               lemma_only=False, ortho_only=False, normalize=True,
               rank=True, freq=False, nbest=5, um=False, phonetic=True, raw=True,
               pos=[], verbosity=0):
-    '''Analyze a single word, trying all available analyzers, and print out
+    '''
+    Analyze a single word, trying all available analyzers, and print out
     the analyses.
 
     @param language (str): abbreviation for a language

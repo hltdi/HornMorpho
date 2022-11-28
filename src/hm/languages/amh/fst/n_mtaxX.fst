@@ -8,7 +8,7 @@ start -> distrib   >>n_prepX<<
 # % the TB has features for የ
 #start -> distrib    <ye:ye(@adp,$case=gen,*የ,~case)->    [+gen,prep=None]
 # special irregular form
-start -> cnj  <'ndih:'nd(@adp,$case=equ,*እንደ,~case) -{ih++yh}(*ይህ)> [prep=Inde,v=None,pos=n,-plr,-dis,-p1,-p2,poss=[-expl],-itu,-acc]
+#start -> cnj  <'ndih:'nd(@adp,$case=equ,*እንደ,~case) -{ih++yh}(*ይህ)> [prep=Inde,v=None,pos=n,-plr,-dis,-p1,-p2,poss=[-expl],-itu,-acc]
 
 ## DISTRIBUTIVE
 distrib -> prestem     [:]              [-dis]
