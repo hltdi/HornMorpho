@@ -9,7 +9,7 @@
 from . import morpho
 from . import internet_search
 
-A = morpho.get_language('amh')
+#A = morpho.get_language('amh')
 #KS = morpho.get_language('ks')
 FS = morpho.FeatStruct
 FSS = morpho.FSSet
@@ -88,11 +88,36 @@ def fix_nadj():
     Chnange NADJ to N or ADJ for words in n_stemX.lex.
     '''
     lines = []
-    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stemX.lex'))) as file:
+    adj = []
+    n = []
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stem_old.lex'))) as old:
+        for line in old:
+            root, x, rest = line.partition(' ')
+            x, y, feats = rest.partition(' ')
+            feats = FS(feats)
+            pos = feats.get('pos')
+            if pos == 'n':
+                n.append(root)
+            elif pos == 'adj':
+                adj.append(root)
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stem1X.lex'))) as file:
         for line in file:
             line = line.strip()
-            stem, x, feats = line.split('\t')
+            if line.count('\t') != 2:
+                stem, x, rest = line.partition(' ')
+                root, y, feats = rest.partition(' ')
+            else:
+                stem, root, feats = line.split('\t')
             feats = FS(feats)
+            if feats.get('pos') == 'nadj':
+                if stem in n or root in n:
+                    feats['pos'] = 'n'
+                elif stem in adj or root in adj:
+                    feats['pos'] = 'adj'
+            lines.append("{}\t{}\t{}".format(stem, root, feats.__repr__()))
+    with open(OS.path.join(OS.path.join(OS.path.dirname(__file__), 'languages', 'amh', 'lex', 'n_stem_newX.lex')), 'w') as file:
+        for line in lines:
+            print(line, file=file)
 
 def mwe_2_3(n=True):
     w2 = []
