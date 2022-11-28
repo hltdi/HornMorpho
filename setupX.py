@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoAX',
-      version='4.5.0',
+      version='4.5.1',
       description='Morphological segmenter/analyzer for Amharic',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',
@@ -27,6 +27,7 @@ setup(name='HornMorphoAX',
                      'languages/amh/cache/*',
                      'languages/amh/pkl/*X*.pkl',
 #                     'docs/horn3_quick.pdf',
+                     'figs/*',
                      'morpho/geez/*']
                      },
       exclude_package_data={'hm':

@@ -168,7 +168,7 @@ def write_conllu(sentences, path,
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
     '''
-    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+#    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
     rejected = 0
     with open(path, 'w', encoding='utf8') as file:
         for sentence in sentences:
