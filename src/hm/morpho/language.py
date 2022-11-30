@@ -1752,6 +1752,7 @@ class Language:
                       sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
                       feats=None, simpfeats=None, um=False, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
+                      remove_dups=True,
                       lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
                       verbosity=0):
         if preproc and not callable(preproc):
@@ -1802,6 +1803,7 @@ class Language:
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
                                              local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                              conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+                                             remove_dups=remove_dups,
                                              word_sep=word_sep, file=file)
                 if newmorphid:
                     # MWE analysis succeeded
@@ -1834,6 +1836,7 @@ class Language:
                 self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
                                    local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                    conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+                                   remove_dups=remove_dups,
                                    word_sep=word_sep, file=file)
             # Go to next word
             w_index += 1
@@ -1860,6 +1863,7 @@ class Language:
     def handle_word_analyses(self, word, analyses, mwe=False,
                              local_cache=None, segment=True, realize=True, realizer=None,
                              conllu=True, xml=False, dicts=None, multseg=True, simps=None, csent=None,
+                             remove_dups=True,
                              morphid=1, raw=False, um=False, word_sep=" ", file=''):
         """
         Do the post-processing of word (or MWE) analyses within sentences.
@@ -1887,6 +1891,13 @@ class Language:
             analyses = "{}: []".format(word)
         else:
             analyses = word
+        # Remove duplicate analyses
+        if remove_dups:
+            anals = []
+            [anals.append(a) for a in analyses if a not in anals]
+            if len(anals) != len(analyses):
+#                print("** Eliminated dups in {}".format(analyses))
+                analyses = anals
         # Either store the analyses in the dict or write them to the terminal or the file
         if dicts:
             add_anals_to_dict(self, analyses, dicts[0], dicts[1])

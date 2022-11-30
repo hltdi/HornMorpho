@@ -100,7 +100,5 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >tn_gem<
 # 14 e1a -> e'a / ea
 >e1a<
-# 15 delete ` unless it starts the word
-# >del_phar<
 # 15 Morphotactics: prefixes, suffixes, and stem (with its own cascade)
 >v_mtax<

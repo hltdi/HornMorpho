@@ -11,7 +11,7 @@ start -> distrib   <wede:wede(@adp,*ወደ,~mark)->   [pp=wede,+rel,+sub,-ye]
 # which is probably the only case
 distrib -> end     [:]              [-dis]
 # % Not handled consistently in the TB
-distrib -> end     <y_e1:'ye(@det,$numtype=dist,*እየ,~det)->     [+dis]
+distrib -> end     <y_e1:'y_e(@det,$numtype=dist,*እየ,~det)->     [+dis]
 
 # These are not really relative and not really prepositions.
 # 1 means possible e'a

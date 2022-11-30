@@ -197,13 +197,13 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name)
     return corpus
 
-def seg_sentence(sentence, language='amh'):
+def seg_sentence(sentence, language='amh', remove_dups=True):
     '''
     Segment a sentence, returning an instance of Sentence.
     Only works for Amharic.
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
-    return language.anal_sentence(sentence)
+    return language.anal_sentence(sentence, remove_dups=remove_dups)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,

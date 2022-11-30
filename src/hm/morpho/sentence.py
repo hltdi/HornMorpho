@@ -297,10 +297,11 @@ class Sentence():
         '''
         if len(segmentation) == 1:
             lemma = segmentation[0].get('lemma')
+            if not lemma:
+                return []
             if lemma != forms[0]:
                 return [lemma]
-            else:
-                return []
+            return []
         else:
             lemmas = [s.get('lemma') for s in segmentation[1:]]
             lemmas = [('' if l == f else l) for l, f in zip(lemmas, forms)]

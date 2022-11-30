@@ -245,7 +245,7 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 <!-- >* `batch_name`, `version`, `batch`: see `hm.seg_file` -->
 >* `unk_thresh` and `ambig_thresh` control whether and how sentences are excluded from the file. `unk_thresh` is a float representing the maximum proportion of tokens in the sentence that are unknown to HornMorpho. It defaults to 0.3. `ambig_thresh` is a float representing the maximum average number of segmentations for each word beyond one. It defaults to 1.0, that is, two segmentations per word. If either of these thresholds is crossed for a given `Sentence`, it is not written to the file.
 
-### Creating a corpus of disambiguated sentences (from 4.5.1)
+### Creating a corpus of disambiguated sentences (starting from 4.5.1)
 
 **`hm.create_corpus`**(*data*, *path*)
 
@@ -311,7 +311,7 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 > The `Corpus` method `conlluify()` creates a new CoNLL-U representation for each of the `Sentence` instances stored in the corpus's `sentences` attribute.
 > You would normally call this method after running `disambiguate()` on the sentences.
 > 
-> In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, and write these to a file
+> In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, and write these to a file.
 > 
     >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2)
 	>>> c.disambiguate()

@@ -80,8 +80,6 @@ class Corpus():
         root = Tk()
         root.grid_columnconfigure(0, weight=1)
         self.frame = SegFrame(root, self, title=self.__repr__())
-#        fontfamilies = families()
-#        print("families {}".format(fontfamilies[:100]))
         self.frame.mainloop()
 
     def segment(self):
@@ -128,6 +126,9 @@ class SegFrame(Frame):
     def __init__(self, parent, corpus=None, width=1000, height=700, title=None):
         Frame.__init__(self, parent, width=width, height=height)
         parent.title(title if title else "Corpus")
+        fontfamilies = families()
+        geezfamily = "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Ethiopia Jiret"
+#        print("families {}".format(fontfamilies[50:150]))
         self.parent = parent
         self.corpus = corpus
         self.all_word_positions = {}
@@ -140,8 +141,8 @@ class SegFrame(Frame):
         self.segmentations = []
         self.set_word_positions()
         self.always_paint = True
-        self.geez_big = Font(family="Abyssinica SIL", size=20)
-        self.geez_normal = Font(family="Abyssinica SIL", size=18)
+        self.geez_big = Font(family=geezfamily, size=20)
+        self.geez_normal = Font(family=geezfamily, size=18)
         self.roman_big = Font(family="Arial", size=20)
         self.init_sentence_text()
 #        self.id_frame = Frame(self, width=200, height=100)
@@ -154,6 +155,8 @@ class SegFrame(Frame):
         self.quit_button.grid(row=0, column=2)
         self.sent_text.grid(row=1, columnspan=3)
         self.canvas = SegCanvas(self, corpus, width=width-25, height=height-25)
+#        self.scrollbar = Scrollbar(self)
+#        self.scrollbar.grid(row=1, column=3, sticky='ns')
         self.grid()
         self.segmentations = self.corpus.sentences[sentindex].words
         self.show_segmentations()
@@ -259,6 +262,8 @@ class SegFrame(Frame):
         '''
         Highlight the word in windex position in the sentence by reassigning the position
         of the highlight tag.
+        (Alternately, have a separate tag for each word, allowing user to select word by
+        by clicking.)
         '''
         positions = self.word_positions[windex]
 #        tag = "highlight{}".format(windex)
@@ -381,16 +386,15 @@ class SegCanvas(Canvas):
     deplabelX = 15
     deplabelY = 8
 
+    selectpos = {'NADJ': ['NOUN', 'ADJ']}
+
     def __init__(self, parent, corpus=None, width=600, height=600):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
         self.frame = parent
         self._width = width
         self._height = height
         self.columnX = []
-#        self.show_morphs(["ይ", "ሰማ", "ኣል"])
-#        self.show_dependency(50, 200, 200, 200, "nsubj")
         self.grid(row=2, columnspan=3)
-#        self.pack()
 
     def clear(self):
         '''
@@ -410,6 +414,7 @@ class SegCanvas(Canvas):
         maxn = 0
         segIDtags = []
         segboxtags = []
+        posselecttags = []
         nwordsegs = len(wordsegs)
         for segi, wordseg in enumerate(wordsegs):
             segYs.append(y - SegCanvas.segYmargin)
@@ -435,7 +440,7 @@ class SegCanvas(Canvas):
             self.show_forms(forms, Xs, y)
             if pos:
                 y += SegCanvas.segrowheight
-                self.show_pos(pos, Xs, y)
+                self.show_pos(pos, Xs, y, wordseg, posselecttags)
             if features:
                 y += SegCanvas.segrowheight
                 self.show_features(features, Xs, y)
@@ -451,8 +456,15 @@ class SegCanvas(Canvas):
         segYs.append(y)
         i = 0
         rightX = SegCanvas.segIDwidth + maxn * SegCanvas.segcolwidth
-#        print(" **** segboxtags {}".format(segboxtags))
-#        print(" **** segidtags {}".format(segIDtags))
+        if posselecttags:
+#            print(" **** posselecttags {}".format(posselecttags))
+            for seg, tag1, tag2, pos1, pos2 in posselecttags:
+                self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, 'Red'))
+                self.tag_bind(tag1, "<Leave>", self.highlight_pos_handler(tag1, 'Black'))
+                self.tag_bind(tag2, "<Enter>", self.highlight_pos_handler(tag2, 'Red'))
+                self.tag_bind(tag2, "<Leave>", self.highlight_pos_handler(tag2, 'Black'))
+                self.tag_bind(tag1, "<ButtonRelease-1>", self.select_pos_handler(tag1, pos1, seg))
+                self.tag_bind(tag2, "<ButtonRelease-1>", self.select_pos_handler(tag2, pos2, seg))
         if nwordsegs > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
@@ -479,6 +491,21 @@ class SegCanvas(Canvas):
         self.frame.set_word_segmentations([seg])
         self.frame.show_segmentations()
         return seg
+
+    def select_pos_handler(self, tag, pos, seg):
+        return lambda event: self.select_pos(tag, pos, seg)
+
+    def select_pos(self, tag, pos, seg):
+#        print("** Setting tag {} POS {} for segment {}".format(tag, pos, seg))
+        seg['upos'] = pos
+        seg['xpos'] = pos
+        self.frame.show_segmentations()
+
+    def highlight_pos_handler(self, posid, color):
+        return lambda event: self.highlight_pos(posid, color)
+
+    def highlight_pos(self, posid, color):
+        self.itemconfigure(posid, fill=color)
 
     def highlight_box_handler(self, boxid, color):
         '''
@@ -519,12 +546,21 @@ class SegCanvas(Canvas):
         for lemma, x in zip(lemmas, Xs):
             self.create_text((x, y), text=lemma, font=self.frame.geez_normal)
 
-    def show_pos(self, pos, Xs, y):
+    def show_pos(self, pos, Xs, y, wordseg, posselecttags):
         '''
         Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
         '''
-        for p, x in zip(pos, Xs):
-            self.create_text((x, y), text=p)
+        for morphi, (p, x) in enumerate(zip(pos, Xs)):
+            if p in SegCanvas.selectpos:
+                selectpos = SegCanvas.selectpos[p]
+                pos1 = selectpos[0]
+                pos2 = selectpos[1]
+                id1 = self.create_text((x-20, y), text=pos1)
+                id2 = self.create_text((x+20, y), text=pos2)
+                posselecttags.append((wordseg[morphi], id1, id2, pos1, pos2))
+            else:
+                id = self.create_text((x, y), text=p)
+#            postags.append((segi, morphi, id))
 
     def show_features(self, feats, Xs, y):
         '''

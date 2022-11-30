@@ -95,7 +95,5 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, NW, rW, sW, SW, tW, TW, xW, zW, ZW}
 >tn_gemG<
 # 13 e1a -> e'a / ea
 >e1aG<
-# delete ` unless it starts the word
-# >del_phar<
 # 14 Morphotactics
 >v_mtaxG<

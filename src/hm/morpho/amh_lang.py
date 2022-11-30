@@ -121,15 +121,14 @@ def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''
     Only return citation for deverbal nouns.
     '''
-    if fs.get('v'):
-        deriv = fs['v']
-#        print("** Getting citation for deverbal noun {}, type {}".format(root, deriv))
-        if deriv == 'man':
-            fss = language.FeatStruct("[pos=n,-def,v={}]".format(deriv))
-        else:
-            # For agt, inf, and ins we need the aspect and voice features
-            fsa, fsv = fs.get('as'), fs.get('vc')
-            fss = language.FeatStruct("[pos=n,-def,-plr,-neg,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(deriv, fsa, fsv))
+    if fs.get('v') and fs['v'] == 'inf':
+#        deriv = fs['v']
+#        if deriv == 'man':
+#            fss = language.FeatStruct("[pos=n,-def,v={}]".format(deriv))
+#        else:
+        # For agt, inf, and ins we need the aspect and voice features
+        fsa, fsv = fs.get('as'), fs.get('vc')
+        fss = language.FeatStruct("[pos=n,-def,-plr,-neg,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(deriv, fsa, fsv))
         citation = AMH.morphology['n'].gen(root, fss, from_dict=False, phon=True,
                                            postproc=False, guess=guess)
         if citation:
