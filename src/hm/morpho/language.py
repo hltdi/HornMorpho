@@ -1223,6 +1223,7 @@ class Language:
         string is ([@pos,...,][$feat],[*lemma],[~deprel]).
         format string as in UD.
         '''
+#        print("** udformat {}".format(string))
         feats = None
         match = SEG_STRING_RE.match(string)
         if not match:
@@ -1240,6 +1241,7 @@ class Language:
         else:
             pos = None
         if conllu:
+#            print("** result {}".format({'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel}))
             return {'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel}
         else:
             return "(" + Language.joinposfeats.join(pos + feats) + ")"
@@ -1274,6 +1276,8 @@ class Language:
         '''Delete feat char ($) and capitalize features and value.'''
         ffeats = [f.strip().split('=') for f in feats.split(',') if f]
         ffeats = ['='.join([Language.udformat_feat(f[0]), Language.udformat_value(f[1])]) for f in ffeats if f[0] not in dropfeats]
+        if not ffeats:
+            return None
         # Alphabetize by feature names
         ffeats.sort()
         return Language.joinfeats.join(ffeats)

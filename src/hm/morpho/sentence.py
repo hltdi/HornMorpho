@@ -124,12 +124,14 @@ class Sentence():
                 morphsegs = wordseg[1:]
                 nmorphs = len(morphsegs)
                 end = index + nmorphs
+                headindex = index
                 wholeword['id'] = (index, '-', end-1)
                 # Get rid of the index that's stored here
                 wholeword['misc'] = None
                 conllu.append(wholeword)
                 for morphseg in morphsegs:
                     morphseg['id'] = index
+                    morphseg['head'] = headindex
                     conllu.append(morphseg)
                     index += 1
         return conllu
@@ -357,7 +359,7 @@ class Sentence():
     @staticmethod
     def get_features(segmentation):
         if len(segmentation) == 1:
-            feats = [Sentence.simplify_feats(segmentation[0].get('feats', ''))]
+            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None))]
         else:
             feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
             feats = [Sentence.simplify_feats(f) for f in feats]
@@ -368,7 +370,7 @@ class Sentence():
     @staticmethod
     def simplify_feats(feats):
         if not feats:
-            return ''
+            return None
         feats = feats.split("|")
         feats = [f.split('=') for f in feats]
         feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]

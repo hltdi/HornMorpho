@@ -1,9 +1,9 @@
 -> start
 
 ## Suppletive verbs
-start -> obj  <na:{mT'++na}($mood=jus,gender=masc,number=sing,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,-fem,-plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v]
-start -> obj  <ney:{mT'++ney}($mood=jus,gender=fem,number=sing,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,+fem,-plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v]
-start -> obj  <nu:{mT'++nu}($mood=jus,number=plur,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,+plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v]
+start -> obj  <na:{mT'++na}($mood=jus,gender=masc,number=sing,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,-fem,-plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v,ob=[+prp]]
+start -> obj  <ney:{mT'++ney}($mood=jus,gender=fem,number=sing,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,+fem,-plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v,ob=[+prp]]
+start -> obj  <nu:{mT'++nu}($mood=jus,number=plur,person=2)>  [cls=A,bs=0,tm=j_i,vc=smp,as=smp,-neg,sb=[-p1,+p2,+plr,-frm],cj1=None,cj2=None,pp=None,ax=None,-rel,-sub,-acc,root=መጣ,lemma=መጣ,pos=v,ob=[+prp]]
 
 ## Set the part of speecn
 start -> light   [:]     [pos=v]

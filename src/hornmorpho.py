@@ -28,10 +28,14 @@ import hm
 
 ## displaying segmentations in Tkinter
 
-def corp0():
-    return  hm.morpho.Corpus(["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።"])
+def corp1():
+    return  hm.morpho.Corpus(["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
+                              "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"])
 
-def corp1(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
+def corp0():
+    return  hm.morpho.Corpus(["እሱ ለመማር አይፈልግም ።"])
+
+def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
     return hm.morpho.Corpus(path=path, nsents=nsents)
 
 ## new CACO

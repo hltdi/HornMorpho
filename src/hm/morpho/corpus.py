@@ -383,7 +383,7 @@ class SegCanvas(Canvas):
     segdependencyheight = 20
     seggap = 40
     segrightmargin = 20
-    deplabelX = 15
+    deplabelX = 25
     deplabelY = 8
 
     selectpos = {'NADJ': ['NOUN', 'ADJ']}
