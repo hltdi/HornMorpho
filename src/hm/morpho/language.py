@@ -2071,7 +2071,7 @@ class Language:
         '''
         Replace POS string by one used to index FSTs, for example, 'nadj' -> 'n'.
         '''
-        if pos in ('nadj', 'n_dv', 'nm_pl', 'nm_prs', 'pron'):
+        if pos in ('nadj', 'n_dv', 'nm_pl', 'nm_prs', 'pron', 'adj'):
             return 'n'
         return pos
 
@@ -2332,9 +2332,7 @@ class Language:
                         root_freq = Language.namefreq
                     else:
                         root_freq = self.morphology.get_root_freq(root, feats)
-#                        print("** root {}, feats {}, freq {}".format(root, feats.__repr__(), root_freq))
                         feat_freq = self.morphology.get_feat_freq(feats)
-#                        print("***  feat_freq {}".format(feat_freq))
                         root_freq *= feat_freq
                         root_freq = round(root_freq)
                 cite = ''

@@ -79,11 +79,12 @@ class Corpus():
             self.segment()
         root = Tk()
         root.grid_columnconfigure(0, weight=1)
+        root.resizable(width=None, height=None)
         self.frame = SegFrame(root, self, title=self.__repr__())
         self.frame.mainloop()
 
     def segment(self):
-        """
+        """p
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
@@ -123,7 +124,7 @@ class SegFrame(Frame):
     Frame for the disambiguation GUI.
     '''
 
-    def __init__(self, parent, corpus=None, width=1000, height=700, title=None):
+    def __init__(self, parent, corpus=None, width=1000, height=300, title=None):
         Frame.__init__(self, parent, width=width, height=height)
         parent.title(title if title else "Corpus")
         fontfamilies = families()
@@ -145,18 +146,16 @@ class SegFrame(Frame):
         self.geez_normal = Font(family=geezfamily, size=18)
         self.roman_big = Font(family="Arial", size=20)
         self.init_sentence_text()
-#        self.id_frame = Frame(self, width=200, height=100)
         self.wordid_entry = self.init_wordid_entry()
         self.sentid_entry = self.init_sentid_entry()
-#        self.id_frame.grid(row=0, column=0)
-#        self.show_button = Button(self, text="Show segmentations", command=self.show_segmentations)
-#        self.show_button.grid(row=0, column=2)
         self.quit_button = Button(self, text="Quit", command=self.quit)
         self.quit_button.grid(row=0, column=2)
         self.sent_text.grid(row=1, columnspan=3)
         self.canvas = SegCanvas(self, corpus, width=width-25, height=height-25)
-#        self.scrollbar = Scrollbar(self)
-#        self.scrollbar.grid(row=1, column=3, sticky='ns')
+        self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
+        self.scrollbar.grid(row=2, column=3, sticky='ns')
+        self.canvas['yscrollcommand'] = self.scrollbar.set
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         self.grid()
         self.segmentations = self.corpus.sentences[sentindex].words
         self.show_segmentations()
@@ -550,17 +549,30 @@ class SegCanvas(Canvas):
         '''
         Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
         '''
-        for morphi, (p, x) in enumerate(zip(pos, Xs)):
+        if len(wordseg) == 1:
+            # Unsegmented word
+            p = pos[0]
+            x = Xs[0]
             if p in SegCanvas.selectpos:
-                selectpos = SegCanvas.selectpos[p]
-                pos1 = selectpos[0]
-                pos2 = selectpos[1]
-                id1 = self.create_text((x-20, y), text=pos1)
-                id2 = self.create_text((x+20, y), text=pos2)
-                posselecttags.append((wordseg[morphi], id1, id2, pos1, pos2))
+                self.create_selectPOS(p, x, y, wordseg[0], posselecttags)
             else:
                 id = self.create_text((x, y), text=p)
-#            postags.append((segi, morphi, id))
+        else:
+            for morphi, (p, x) in enumerate(zip(pos, Xs)):
+                w = wordseg[morphi+1]
+#                print("** Morph {}: {}".format(morphi, w))
+                if p in SegCanvas.selectpos:
+                    self.create_selectPOS(p, x, y, w, posselecttags)
+                else:
+                    id = self.create_text((x, y), text=p)
+
+    def create_selectPOS(self, pos, x, y, wordseg, posselecttags):
+        selectpos = SegCanvas.selectpos[pos]
+        pos1 = selectpos[0]
+        pos2 = selectpos[1]
+        id1 = self.create_text((x-20, y), text=pos1)
+        id2 = self.create_text((x+20, y), text=pos2)
+        posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
     def show_features(self, feats, Xs, y):
         '''

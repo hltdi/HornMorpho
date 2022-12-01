@@ -38,6 +38,12 @@ def corp0():
 def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
     return hm.morpho.Corpus(path=path, nsents=nsents)
 
+def corp3():
+    return hm.morpho.Corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
+
+def ecorp(path="hm/ext_data/ከአብነት/ezana.txt"):
+    return hm.morpho.Corpus(path=path)
+
 ## new CACO
 
 CACO_cache = {}
