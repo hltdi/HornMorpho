@@ -28,21 +28,30 @@ import hm
 
 ## displaying segmentations in Tkinter
 
-def corp1():
-    return  hm.morpho.Corpus(["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
-                              "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"])
+def corp1(disambiguate=True):
+    return  hm.create_corpus(
+        ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
+          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"],
+        disambiguate=disambiguate
+        )
 
 def corp0():
-    return  hm.morpho.Corpus(["እሱ ለመማር አይፈልግም ።"])
+    return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
 
 def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
-    return hm.morpho.Corpus(path=path, nsents=nsents)
+    return hm.create_corpus(path=path, nsents=nsents)
 
 def corp3():
-    return hm.morpho.Corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
+    return hm.create_corpus(["ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
 
 def ecorp(path="hm/ext_data/ከአብነት/ezana.txt"):
-    return hm.morpho.Corpus(path=path)
+    return hm.create_corpus(path=path)
+
+def corp4():
+    return hm.create_corpus(["የማይሰሙት ነው ?"])
+
+def corp5():
+    return hm.create_corpus(["አለ ?"])
 
 ## new CACO
 

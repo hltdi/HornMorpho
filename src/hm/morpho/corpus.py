@@ -69,7 +69,7 @@ class Corpus():
         Corpus.ID += 1
         return name
 
-    def disambiguate(self):
+    def disambiguate(self, skip_unambig=True):
         '''
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
@@ -77,11 +77,8 @@ class Corpus():
         if not self.sentences:
             # Segment all sentences before creating GUI.
             self.segment()
-        root = Tk()
-        root.grid_columnconfigure(0, weight=1)
-        root.resizable(width=None, height=None)
-        self.frame = SegFrame(root, self, title=self.__repr__())
-        self.frame.mainloop()
+        self.root = SegRoot(self, title=self.__repr__())
+        self.root.mainloop()
 
     def segment(self):
         """p
@@ -116,21 +113,24 @@ class Corpus():
             if sentence:
                 self.all_sentences[sentindex] = sentence
         if sentence:
-            self.frame.segmentations = sentence.words
+            self.root.segmentations = sentence.words
         return sentence
 
-class SegFrame(Frame):
+class SegRoot(Tk):
     '''
-    Frame for the disambiguation GUI.
+    Main window for the disambiguation GUI.
     '''
 
-    def __init__(self, parent, corpus=None, width=1000, height=300, title=None):
-        Frame.__init__(self, parent, width=width, height=height)
-        parent.title(title if title else "Corpus")
+    sentencewidth = 60
+
+    def __init__(self, corpus=None, title=None): # parent, corpus=None, width=1000, height=300, title=None):
+        Tk.__init__(self) #, parent) #, width=width, height=height)
+#        parent.title(title if title else "Corpus")
+        self.title(title if title else "Corpus")
         fontfamilies = families()
         geezfamily = "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Ethiopia Jiret"
 #        print("families {}".format(fontfamilies[50:150]))
-        self.parent = parent
+#        self.parent = parent
         self.corpus = corpus
         self.all_word_positions = {}
         self.word_positions = []
@@ -151,20 +151,23 @@ class SegFrame(Frame):
         self.quit_button = Button(self, text="Quit", command=self.quit)
         self.quit_button.grid(row=0, column=2)
         self.sent_text.grid(row=1, columnspan=3)
-        self.canvas = SegCanvas(self, corpus, width=width-25, height=height-25)
+        self.segmentations = self.corpus.sentences[sentindex].words
+        self.canvas = SegCanvas(self, corpus) # width=width-25, height=height-25)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
-        self.canvas['yscrollcommand'] = self.scrollbar.set
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        self.hscrollbar = Scrollbar(self, orient='horizontal', command=self.canvas.xview)
+        self.hscrollbar.grid(row=3, columnspan=3, sticky='ew')
+        self.canvas.configure(xscrollcommand=self.hscrollbar.set)
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        self.grid()
-        self.segmentations = self.corpus.sentences[sentindex].words
-        self.show_segmentations()
+#        self.show_segmentations()
 
     def quit(self):
         '''
         Quit the GUI, destroying all widgets.
         '''
-        self.parent.destroy()
+#        self.parent.destroy()
+        self.destroy()
 
     def init_vars(self):
         '''
@@ -242,13 +245,14 @@ class SegFrame(Frame):
             self.wordvar.set(new_id)
             self.word = self.segmentations[new_id-1]
             self.highlight_word(new_id-1)
-            self.show_segmentations()
+            self.canvas.update()
+#            self.show_segmentations()
 
     def init_sentence_text(self):
         '''
         Create the sentence Text and the word highligh tag.
         '''
-        self.sent_text = Text(self, font=self.geez_big, width=60, height=2, padx=20)
+        self.sent_text = Text(self, font=self.geez_big, width=SegRoot.sentencewidth, height=2, padx=20)
 #        sl.tag_configure("align", justify='center')
         self.sent_text.insert("1.0", self.sentence)
         self.sent_text.tag_configure("highlight", background="OliveDrab1", foreground="black")
@@ -345,31 +349,26 @@ class SegFrame(Frame):
         wordsegs = self.segmentations[wordindex]
         return wordsegs
 
-    def show_segmentations(self):
-        '''
-        Show the segmentations for the current word in the Canvas.
-        '''
-        if not self.segmentations:
-            print("** No segmentations to show")
-            return
-        wordsegs = self.get_word_segmentations()
-        self.canvas.show_word(wordsegs)
+#    def show_segmentations(self):
+#        '''
+#        Show the segmentations for the current word in the Canvas.
+#        '''
+#        print("** Showing segmentations")
+#        if not self.segmentations:
+#            print("** No segmentations to show")
+#            return
+#        self.canvas.update()
 
     def set_word_segmentations(self, newsegs):
         '''
         Update the segmentations for the current word (based on selection by user).
         '''
         wordindex = self.wordvar.get()-1
-#        print("** Setting word segmentations for word {}".format(wordindex))
-#        print("** Old:\n{}".format(self.segmentations[wordindex]))
-#        print("** New:\n{}".format(newsegs))
         self.segmentations[wordindex] = newsegs
-
-#    def highlight_word(self, 
 
 class SegCanvas(Canvas):
     '''
-    Canvas within the disambiguation Frame where segmentations are shown and selected.
+    Canvas within the disambiguation window where segmentations are shown and selected.
     '''
 
     depYoffset = 10
@@ -382,24 +381,28 @@ class SegCanvas(Canvas):
     segdependencyheight = 20
     seggap = 40
     segrightmargin = 20
-    deplabelX = 25
+    deplabelX = 28
     deplabelY = 8
 
-    selectpos = {'NADJ': ['NOUN', 'ADJ']}
-
-    def __init__(self, parent, corpus=None, width=600, height=600):
+    def __init__(self, parent, corpus=None, width=800, height=600):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
-        self.frame = parent
+        self.parent = parent
         self._width = width
         self._height = height
         self.columnX = []
-        self.grid(row=2, columnspan=3)
+        self.grid(row=2, columnspan=3, ipadx=15, ipady=15)
+        self.update()
+        self.grid()
 
     def clear(self):
         '''
         Clear the Canvas of all widgets.
         '''
         self.delete('all')
+
+    def update(self):
+        wordsegs = self.parent.get_word_segmentations()
+        self.show_word(wordsegs)
         
     def show_word(self, wordsegs):
         '''
@@ -417,7 +420,6 @@ class SegCanvas(Canvas):
         nwordsegs = len(wordsegs)
         for segi, wordseg in enumerate(wordsegs):
             segYs.append(y - SegCanvas.segYmargin)
-#            print(" ** Showing {}".format(wordseg))
             word = Sentence.get_word(wordseg)
             headindex = Sentence.get_headindex(wordseg)
             forms = Sentence.get_forms(wordseg)
@@ -428,11 +430,10 @@ class SegCanvas(Canvas):
             n = len(forms)
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
-            # labels for the different segmentations; respond to mouse enter/leave and clicks
+            # label for the segmentations; responds to mouse enter/leave and clicks
             if nwordsegs > 1:
                 segboxtags.append(self.create_rectangle(SegCanvas.segIDwidth // 2 - 10, y - 10, SegCanvas.segIDwidth // 2 + 10, y + 10, fill='white'))
-                segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.frame.roman_big))
-#            print(" *** {}:{}:{} {} {} {} {} {}".format(word, headindex, lemmas, forms, pos, features, arcs, Xs))
+                segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.parent.roman_big))
             # Put the dependencies at the top
             if dependencies:
                 y = self.show_dependencies(dependencies, Xs, headindex, y)
@@ -456,7 +457,6 @@ class SegCanvas(Canvas):
         i = 0
         rightX = SegCanvas.segIDwidth + maxn * SegCanvas.segcolwidth
         if posselecttags:
-#            print(" **** posselecttags {}".format(posselecttags))
             for seg, tag1, tag2, pos1, pos2 in posselecttags:
                 self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, 'Red'))
                 self.tag_bind(tag1, "<Leave>", self.highlight_pos_handler(tag1, 'Black'))
@@ -467,7 +467,6 @@ class SegCanvas(Canvas):
         if nwordsegs > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
-#                print(" ***** Binding {} and {} for {}".format(idtag, boxtag, index))
                 self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordsegs[index]))
                 self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, 'LightPink'))
                 self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, 'white'))
@@ -475,6 +474,8 @@ class SegCanvas(Canvas):
         while i < len(segYs) - 1:
             self.create_rectangle(SegCanvas.segIDwidth, segYs[i]-SegCanvas.segrowheight // 4, rightX, segYs[i+1]-18)
             i += 1
+        # Adjusting the scroll region for the scrollbars based on new widgets
+        self.configure(scrollregion=self.bbox("all"))
 
     def select_handler(self, seg):
         '''
@@ -487,8 +488,9 @@ class SegCanvas(Canvas):
         '''
         Select seg as the segmentation for the current word.
         '''
-        self.frame.set_word_segmentations([seg])
-        self.frame.show_segmentations()
+        self.parent.set_word_segmentations([seg])
+        self.update()
+#        self.parent.show_segmentations()
         return seg
 
     def select_pos_handler(self, tag, pos, seg):
@@ -498,7 +500,8 @@ class SegCanvas(Canvas):
 #        print("** Setting tag {} POS {} for segment {}".format(tag, pos, seg))
         seg['upos'] = pos
         seg['xpos'] = pos
-        self.frame.show_segmentations()
+        self.update()
+#        self.parent.show_segmentations()
 
     def highlight_pos_handler(self, posid, color):
         return lambda event: self.highlight_pos(posid, color)
@@ -523,8 +526,6 @@ class SegCanvas(Canvas):
         '''
         The X coordinates for the columns in a segmentation display.
         '''
-#        center = (self._width - SegCanvas.segIDwidth) // 2 + SegCanvas.segIDwidth
-#        start = center - SegCanvas.segcolwidth * (n-1) // 2
         start = SegCanvas.segIDwidth + SegCanvas.segcolwidth // 2
         X = []
         for i in range(n):
@@ -536,14 +537,14 @@ class SegCanvas(Canvas):
         Show the forms for a segmentation.
         '''
         for form, x in zip(forms, Xs):
-            self.create_text((x, y), text=form, font=self.frame.geez_normal)
+            self.create_text((x, y), text=form, font=self.parent.geez_normal)
 
     def show_lemmas(self, lemmas, Xs, y):
         '''
         Show the lemmas for a segmentation (if different from forms).
         '''
         for lemma, x in zip(lemmas, Xs):
-            self.create_text((x, y), text=lemma, font=self.frame.geez_normal)
+            self.create_text((x, y), text=lemma, font=self.parent.geez_normal)
 
     def show_pos(self, pos, Xs, y, wordseg, posselecttags):
         '''
@@ -553,7 +554,7 @@ class SegCanvas(Canvas):
             # Unsegmented word
             p = pos[0]
             x = Xs[0]
-            if p in SegCanvas.selectpos:
+            if p in Sentence.selectpos:
                 self.create_selectPOS(p, x, y, wordseg[0], posselecttags)
             else:
                 id = self.create_text((x, y), text=p)
@@ -561,13 +562,13 @@ class SegCanvas(Canvas):
             for morphi, (p, x) in enumerate(zip(pos, Xs)):
                 w = wordseg[morphi+1]
 #                print("** Morph {}: {}".format(morphi, w))
-                if p in SegCanvas.selectpos:
+                if p in Sentence.selectpos:
                     self.create_selectPOS(p, x, y, w, posselecttags)
                 else:
                     id = self.create_text((x, y), text=p)
 
     def create_selectPOS(self, pos, x, y, wordseg, posselecttags):
-        selectpos = SegCanvas.selectpos[pos]
+        selectpos = Sentence.selectpos[pos]
         pos1 = selectpos[0]
         pos2 = selectpos[1]
         id1 = self.create_text((x-20, y), text=pos1)
@@ -614,8 +615,4 @@ class SegCanvas(Canvas):
         self.create_rectangle(X - SegCanvas.deplabelX, y - SegCanvas.deplabelY,
                               X + SegCanvas.deplabelX, y + SegCanvas.deplabelY,
                               fill='yellow', outline='yellow')
-#        self.create_text(((x2 - x1) / 2 + x1, y - SegCanvas.depYoffset), text=label, fill='black')
         self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black')
-
-#    def geez(self, text, x, y):
-#        return self.create_text(x, y, text=text, fill="Black", font=self.geez_font)

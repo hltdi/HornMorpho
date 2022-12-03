@@ -179,7 +179,8 @@ def write_conllu(sentences, path,
             print(conll.serialize(), file=file, end='')
     print("Rejected {} sentences".format(rejected))
 
-def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0'):
+def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0',
+                  segment=True, disambiguate=True, conlluify=False):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
     disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
@@ -192,9 +193,19 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     @param batch_name: string name of the input batch of data
     @param version: version of input data (used to create batch_name if not provided)
     @param batch:  number (string or float) of batch (used to create batch_name if not provided)
+    @param segment: whether to segment the data with HM after it is loaded
+    @param segment: whether to disambiguate the data using the HM GUI after it is segmented
+    @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
     '''
     batch_name = batch_name or "CACO{}_B{}".format(version, batch)
     corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name)
+    if segment:
+        corpus.segment()
+    if disambiguate:
+        corpus.disambiguate()
+    # Normally disambiguation should happen before this
+    if conlluify:
+        corpus.conlluify()
     return corpus
 
 def seg_sentence(sentence, language='amh', remove_dups=True):

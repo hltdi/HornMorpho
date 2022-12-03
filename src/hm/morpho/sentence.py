@@ -64,6 +64,8 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
+    selectpos = {'NADJ': ['NOUN', 'ADJ']}
+
     colwidth = 20
 
     def __init__(self, text, tokens=[], batch_name='', sentid=0):
@@ -81,6 +83,12 @@ class Sentence():
 
     def __repr__(self):
         return "S{}::{}".format(self.sentid, self.text)
+
+    def is_ambiguous(self):
+        """
+        Are there multiple segmentations or ambiguous POSs for any word in the sentence?
+        """
+        return self.complexity['ambig'] > 0.0
 
     def finalize(self):
         '''
@@ -140,11 +148,6 @@ class Sentence():
         w = self.make_word(word, segmentations, morphid, conllu=conllu)
         if conllu:
             self.conllu.extend(w)
-#            self.add_conllu_word(word, segmentations, morphid)
-
-#    def add_conllu_word(self, word, segmentations, morphid):
-#        w = self.make_conllu_word(word, segmentations, morphid)
-#        self.conllu.extend(w)
 
     def make_word(self, word, segmentations, morphid, conllu=True):
         '''
@@ -169,6 +172,9 @@ class Sentence():
                     self.complexity['unk'] += 1
                 elif upos == 'PUNCT':
                     self.complexity['punct'] += 1
+                elif upos in Sentence.selectpos:
+                    # ambiguous POS
+                    self.complexity['ambig'] += 1
                 props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
                 segments.append(pdict)
@@ -196,6 +202,9 @@ class Sentence():
                         pdict['misc'] = i
                 for props in segmentation:
                     props = props.copy()
+                    upos = props[3][1]
+                    if upos in Sentence.selectpos:
+                        self.complexity['ambig'] += 1
                     props[0][1] = id
                     # Set the head id for dependent morphemes
                     if id != headi:
@@ -214,21 +223,6 @@ class Sentence():
         self.words.append(segment_list)
         if conllu:
             return tokens
-
-#    def words2conllu(self, set_ids=False):
-#        '''
-#        Convert the words list to a CoNNL-U sentence representation, setting or fixing
-#        the IDs if necessary.
-#        '''
-#        conllu = TokenList([])
-#        for word in self.words:
-#            # Check for ambiguity
-#            segmentation = word[0]
-#            if len(word) > 1:
-#                print("{} has {} segmentations".format(self.get_word(segmentation), len(word)))
-#            tokens = [Token(pdict) for pdict in segmentation]
-#            conllu.extend(tokens)
-#        return conllu
 
     ### Graphical representation of segmentations
 
@@ -263,26 +257,6 @@ class Sentence():
     def get_centers(nmorphs):
         start = Sentence.colwidth // 2
         return [(start + i * Sentence.colwidth) for i in range(nmorphs)]
-
-#    @staticmethod
-#    def pad_geez(string):
-#        nchars = len(string)
-#        width = Sentence.get_geez_width(string)
-#        print("** string {}, width {}".format(string, width))
-#        print("** padded {}".format(nchars + (nchars - width)))
-#        return nchars + (nchars - width)
-
-#    @staticmethod
-#    def get_geez_width(string):
-#        width = 0
-#        for char in string:
-#            if char in "ጨጩጪጫጬጭጮ":
-#                width += 1.0
-#            elif char in "መሙሚማሜምሞጠጡጢጣጤጥጦሐሑሒሓሔሖ":
-#                width += 1.0
-#            else:
-#                width += 0.5
-#        return round(width)
 
     ### Access functions in pseudo-CoNLL-U
 
@@ -376,13 +350,6 @@ class Sentence():
         feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
         feats = ','.join(feats)
         return feats
-
-#def dict2element(tag, d):
-#    elem = ET.Element(tag, d)
-##    for key, val in d.items():
-##        child = ET.SubElement(elem, key)
-##        child.text = str(val)
-#    return elem
 
 ### XML stuff; later incorporate this into the Sentence class
 
