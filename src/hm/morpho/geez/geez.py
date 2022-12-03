@@ -128,10 +128,10 @@ def get_table(lang='am', fromgeez=True):
     language = get_language(lang)
     return language[0 if fromgeez else 1]
 
-def geezify_alts(form, lang='am'):
+def geezify_alts(form, lang='am', gemination=True):
     """Return a list of possible geez outputs for roman form."""
     forms = convert_labial(form)
-    g = [geezify(f, lang=lang) for f in forms]
+    g = [geezify(f, lang=lang, gemination=gemination) for f in forms]
     return g
 
 #def geezify_root(root, lang='am'):
@@ -150,11 +150,12 @@ def geezify_alts(form, lang='am'):
 #    if table:
 #        return root2geez(table, root, lang=lang)
 
-def geezify_morph(morph, lang='am', alt=True):
+def geezify_morph(morph, lang='am', alt=True, gemination=True):
     """
     Convert a morpheme to Geez. If it begins with a vowel, prepend '.
     If it's already Geez, don't change it.
     """
+    print("** geezifying {}".format(morph))
     if is_geez(morph):
         if alt:
             return [morph]
@@ -167,9 +168,9 @@ def geezify_morph(morph, lang='am', alt=True):
         morph = "'" + morph
     morph = pre + morph
     if alt:
-        return geezify_alts(morph, lang='am')
+        return geezify_alts(morph, lang='am', gemination=gemination)
     else:
-        return geezify(morph, lang='am')
+        return geezify(morph, lang='am', gemination=gemination)
 
 def is_geez_punc(form):
     '''

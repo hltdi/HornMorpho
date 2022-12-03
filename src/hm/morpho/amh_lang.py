@@ -760,14 +760,14 @@ def postproc_nroot(root, fs, phonetic=True, simplifications=None):
     if fs and fs.get('pos') == 'n_dv':
         return "<{}:{}>".format(root_conv, fs['cls'])
     else:
-        return "{}|{}".format(geezify(root), root_conv)
+        return "{}|{}".format(geezify(root, gemination=True), root_conv)
 
 def dflt_postproc_root(root, fs, phonetic=True, simplifications=None):
     if phonetic:
         return AMH.convert_root(root)
     elif simplifications:
         root = complicate_stem(root, simplifications)
-    return geezify(root)
+    return geezify(root, gemination=True)
 
 def postproc_word(word, ipa=False, phon=True, ortho_only=False,
                   phonetic=True):
@@ -783,7 +783,7 @@ def postproc_word(word, ipa=False, phon=True, ortho_only=False,
         ortho = word
         word = romanize(word)
     else:
-        ortho = geezify(word, deepenthesize=phon)
+        ortho = geezify(word, gemination=True, deepenthesize=phon)
     if ortho_only:
         return ortho
     if phonetic:
@@ -986,10 +986,14 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
+    print("** pos {} morphstring {} citation {}".format(pos, morphstring, citation))
     if not morphstring:
         if conllu:
 #            word = geezify(word)
-            return [[ ['id', '*'], ['form', word], ['lemma', word], ['upos', pos.upper()], ['xpos', pos.upper()], ['feats', None], ['head', None], ['deprel', None ] ]]
+            return [[
+                ['id', '*'], ['form', word], ['lemma', word], ['upos', pos.upper()], ['xpos', pos.upper()],
+                ['feats', None], ['head', None], ['deprel', None ]
+                ]]
         else:
             result = {'pos': pos.upper()}
             if citation:
@@ -1016,7 +1020,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
 #        print("***  morph {}, feats {}".format(m, f))
     if geez:
         # First make sure separate morphemes are geez
-        morphs2 = [[(g, f) for g in geezify_morph(m, alt=True)] for m, f in morphs]
+        morphs2 = [[(g, f) for g in geezify_morph(m, alt=True, gemination=True)] for m, f in morphs]
     else:
         morphs2 = []
         for m, f in morphs:
@@ -1155,7 +1159,7 @@ def modify_geez(geez, romanized):
             altered.append(changes[0][1])
             changes.pop(0)
     altered = ''.join(altered)
-    return geezify(altered)
+    return geezify(altered, gemination=True)
 
 def simplify_roman(roman):
     """
