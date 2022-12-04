@@ -250,7 +250,8 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 **`hm.create_corpus`**(*data*, *path*)
 
 `Options:`
-`start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`
+`start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`,
+`segment=True`, `disambiguate=True`, `conlluify=False`
 
 >`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from a file found at the keyword argument *path*.
 
@@ -261,6 +262,9 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 * `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
 * `version` is a string or float specifying the version of the data being analyzed. It defaults to '2.2'.
 * `batch` is a string or float specifying the batch number. It defaults to '1.0'.
+* `segment` specifies whether to run `Corpus.segment()` on the sentences (see below).
+* `disambiguate` specifies whether to run `Corpus.disambiguate()` on the segmented sentences (see below).
+* `conlluify` specifies whether to run `Corpus.conlluify()` on the segmented (and possibly disambiguated) sentences.
 
 #### `Corpus` attributes
 

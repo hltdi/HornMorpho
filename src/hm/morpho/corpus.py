@@ -128,9 +128,8 @@ class SegRoot(Tk):
 #        parent.title(title if title else "Corpus")
         self.title(title if title else "Corpus")
         fontfamilies = families()
-        geezfamily = "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Ethiopia Jiret"
-#        print("families {}".format(fontfamilies[50:150]))
-#        self.parent = parent
+        geezfamily =  "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Noto Sans Ethiopic"
+#        print("families {}".format(fontfamilies[150:300]))
         self.corpus = corpus
         self.all_word_positions = {}
         self.word_positions = []
@@ -586,6 +585,7 @@ class SegCanvas(Canvas):
         """
         Show left and right dependency arcs.
         """
+#        print("** left {} and right {} dependencies".format(dependencies[0], dependencies[1]))
         headX = Xs[headindex]
         dependencydiff = len(dependencies[0]) - len(dependencies[1])
         left = dependencies[0]
@@ -597,7 +597,8 @@ class SegCanvas(Canvas):
                 self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
                 y += SegCanvas.segdependencyheight
         elif dependencydiff < 0:
-            right = right[dependencydiff:]
+            right = right[-dependencydiff:]
+            # more right than left dependencies
             for dependency in dependencies[1][:-dependencydiff]:
                 self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
                 y += SegCanvas.segdependencyheight

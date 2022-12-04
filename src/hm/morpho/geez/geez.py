@@ -155,7 +155,6 @@ def geezify_morph(morph, lang='am', alt=True, gemination=True):
     Convert a morpheme to Geez. If it begins with a vowel, prepend '.
     If it's already Geez, don't change it.
     """
-    print("** geezifying {}".format(morph))
     if is_geez(morph):
         if alt:
             return [morph]

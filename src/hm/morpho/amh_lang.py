@@ -986,7 +986,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
-    print("** pos {} morphstring {} citation {}".format(pos, morphstring, citation))
+#    print("** pos {} morphstring {} citation {}".format(pos, morphstring, citation))
     if not morphstring:
         if conllu:
 #            word = geezify(word)

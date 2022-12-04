@@ -35,6 +35,12 @@ def corp1(disambiguate=True):
         disambiguate=disambiguate
         )
 
+def corp6(disambiguate=True):
+    return hm.create_corpus(
+        ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"],
+        disambiguate=disambiguate
+        )
+
 def corp0():
     return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
 
