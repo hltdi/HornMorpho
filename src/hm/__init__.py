@@ -22,7 +22,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
-__version__ = '4.5.1.1'
+__version__ = '4.5.1.2'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -139,7 +139,7 @@ def seg_file(file='', language='amh', experimental=True,
     if not file:
         print("No file path given!")
         return
-    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
     global SEGMENT
     SEGMENT = True
@@ -153,14 +153,15 @@ def seg_file(file='', language='amh', experimental=True,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
-def write_conllu(sentences, path,
+def write_conllu(sentences=None, path='', corpus=None,
                  batch_name='', version='2.2', batch='1.0',
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0):
     '''
     Write the CoNNL-U representations of a list of sentences to a file.
 
     @param sentences: list of instances of Sentence
-    @param path:      path to file where the sentences will be written
+    @param path: path to file where the sentences will be written
+    @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
     @param batch:  number (string or float) of batch (used to create batch_name if not provided)
@@ -168,15 +169,20 @@ def write_conllu(sentences, path,
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
     '''
-#    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+#    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
+    sentences = sentences or corpus.sentences
+    if path:
+        file = open(path, 'w', encoding='utf8')
+    else:
+        file = morpho.sys.stdout
     rejected = 0
-    with open(path, 'w', encoding='utf8') as file:
-        for sentence in sentences:
-            if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
-                rejected += 1
-                continue
-            conll = sentence.conllu
-            print(conll.serialize(), file=file, end='')
+#    with open(path, 'w', encoding='utf8') as file:
+    for sentence in sentences:
+        if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
+            rejected += 1
+            continue
+        conll = sentence.conllu
+        print(conll.serialize(), file=file, end='')
     print("Rejected {} sentences".format(rejected))
 
 def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0',
@@ -197,7 +203,7 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     @param segment: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
     '''
-    batch_name = batch_name or "CACO{}_B{}".format(version, batch)
+    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
     corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name)
     if segment:
         corpus.segment()

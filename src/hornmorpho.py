@@ -41,6 +41,14 @@ def corp6(disambiguate=True):
         disambiguate=disambiguate
         )
 
+def corp7(disambiguate=True):
+    return hm.create_corpus(
+        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"],
+        )
+
+def corp8():
+    return hm.create_corpus(["ብዙ ሰዎች ሀብት ያፈራሉ ።"])
+
 def corp0():
     return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
 
@@ -50,7 +58,7 @@ def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
 def corp3():
     return hm.create_corpus(["ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
 
-def ecorp(path="hm/ext_data/ከአብነት/ezana.txt"):
+def ecorp(path="hm/ext_data/ከአብነት/mini1.txt"):
     return hm.create_corpus(path=path)
 
 def corp4():

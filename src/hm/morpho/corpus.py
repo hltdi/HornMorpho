@@ -92,15 +92,15 @@ class Corpus():
             self.sentences.append(sentence_obj)
             sentid += 1
 
-    def conlluify(self):
+    def conlluify(self, degeminate=False):
         """
         Convert all of the sentence pre-CoNNL-U representations to CoNNL-U.
         """
         for sentence in self.sentences:
-            conllu = sentence.words2conllu(update_indices=True)
-            conllu = TokenList(conllu)
-            sentence.conllu = conllu
-#            self.conllu.append(conllu)
+            sentence.words2conllu(update_indices=True, degeminate=degeminate)
+#            conllu = sentence.words2conllu(update_indices=True, degeminate=degeminate)
+#            conllu = TokenList(conllu)
+#            sentence.conllu = conllu
 
     def segment1(self, text='', sentindex=None):
         """
@@ -422,7 +422,7 @@ class SegCanvas(Canvas):
             word = Sentence.get_word(wordseg)
             headindex = Sentence.get_headindex(wordseg)
             forms = Sentence.get_forms(wordseg)
-            lemmas = Sentence.get_lemmas(wordseg, forms)
+            lemmas = Sentence.get_lemmas(wordseg, forms, headindex)
             pos = Sentence.get_pos(wordseg)
             features = Sentence.get_features(wordseg)
             dependencies = Sentence.get_dependencies(wordseg)

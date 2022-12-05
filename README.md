@@ -233,16 +233,18 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 
 ### Writing sentence segmentations to a file
 
-**`hm.write_conllu`**(*sentences*, *path*)
+**`hm.write_conllu`**(*sentences*, *path*, *corpus*)
 
 `Options: unk_thresh=0.3, ambig_thresh=1.0`
 
->- *sentences* is a list of `Sentence` objects, like those returned by `hm.seg_file`.
->- *path* is a path to the file where the CoNLL-U representations of the sentences are to be written.
+The function `hm.write_conllu` writes the CoNNL-U representations of a list of sentences (instances of `Sentence`) to a file or to standard output.
+
+>- *sentences* is a list of `Sentence` objects, like those returned by `hm.seg_file` or the `sentences` attribute of a `Corpus` object, like that returned by `hm.create_corpus`. If `sentences` is `None`, the sentences to be written are those in `corpus.sentences`.
+>- *path* is a path to the file where the CoNLL-U representations of the sentences are to be written. If `None`, the representations are written to the standard output.
+>- *corpus* is a `Corpus` object or `None`.
 
 >Options:
 
-<!-- >* `batch_name`, `version`, `batch`: see `hm.seg_file` -->
 >* `unk_thresh` and `ambig_thresh` control whether and how sentences are excluded from the file. `unk_thresh` is a float representing the maximum proportion of tokens in the sentence that are unknown to HornMorpho. It defaults to 0.3. `ambig_thresh` is a float representing the maximum average number of segmentations for each word beyond one. It defaults to 1.0, that is, two segmentations per word. If either of these thresholds is crossed for a given `Sentence`, it is not written to the file.
 
 ### Creating a corpus of disambiguated sentences (starting from 4.5.1)
@@ -308,20 +310,20 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 > 
 > If the word is ambiguous, that is, if there is more than one segmentation, a number appears to the left of each segmentation box. To select one segmentation, click on the number. You should then see only the segmentation you selected. Selection changes the representation of the word in the `Corpus` instance that created the GUI.
 > 
+> If a word's or segment's POS is ambiguous, two options may be shown. Clicking on one of these selects it as the POS.
+> 
 > To quit the GUI, click on the "Quit" button in the upper right.
 >
 **`Corpus.conlluify()`**
 
+`Option:` `degeminate=False`
+
 > The `Corpus` method `conlluify()` creates a new CoNLL-U representation for each of the `Sentence` instances stored in the corpus's `sentences` attribute.
 > You would normally call this method after running `disambiguate()` on the sentences.
+> If the option `degeminate` is `True`, the Geez gemination character is removed from all forms and lemmas.
 > 
 > In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, and write these to a file.
 > 
     >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2)
-	>>> c.disambiguate()
-	Segmenting sentences in C_CACO2.2_B1.
 	>>> c.conlluify()
 	>>> hm.write_conllu(c.sentences, "hm/ext_data/CACO/CACO2.2/CACO2.2_B1.0.conllu")
-
-
-    

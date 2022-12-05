@@ -150,6 +150,14 @@ def geezify_alts(form, lang='am', gemination=True):
 #    if table:
 #        return root2geez(table, root, lang=lang)
 
+def degeminate(form, geez=True):
+    """
+    Remove the gemination character, if any.
+    """
+    if geez:
+        return form.replace(GEMINATION_GEEZ, '')
+    return form.replace(GEMINATION_ROMAN, '')
+
 def geezify_morph(morph, lang='am', alt=True, gemination=True):
     """
     Convert a morpheme to Geez. If it begins with a vowel, prepend '.

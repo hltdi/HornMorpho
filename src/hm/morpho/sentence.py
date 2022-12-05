@@ -29,6 +29,7 @@ Includes CoNLL-U and XML output options
 import xml.etree.ElementTree as ET
 from conllu import parse, TokenList, Token
 import os
+from .geez import degeminate
 
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
 TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
@@ -111,7 +112,7 @@ class Sentence():
             return True
         return False
 
-    def words2conllu(self, update_indices=True):
+    def words2conllu(self, update_indices=True, degeminate=False):
         '''
         Convert a pre-CoNLL-U list of lists of dicts to a list of Tokens.
         '''
@@ -121,28 +122,49 @@ class Sentence():
         index = 1
         conllu = []
         for wordseg in wordsegs:
-#            print("** Wordseg {}".format(wordseg))
+#            print("** Wordseg {}, index {}".format(wordseg, index))
             if len(wordseg) == 1:
+                ws = wordseg[0]
                 # No segments: use current index
-                wordseg[0]['id'] = index
-                conllu.append(wordseg[0])
+                ws['id'] = index
+                if degeminate:
+                    Sentence.degeminate_seg(ws)
+                conllu.append(ws)
                 index += 1
             else:
                 wholeword = wordseg[0]
                 morphsegs = wordseg[1:]
                 nmorphs = len(morphsegs)
                 end = index + nmorphs
-                headindex = index
+                # headindex is current index (of the whole word) + index offset stored in misc
+                headindex = index + wholeword['misc']
                 wholeword['id'] = (index, '-', end-1)
-                # Get rid of the index that's stored here
+                # Get rid of the index offset that's stored here so that it doesn't appear in final CoNLL-U
                 wholeword['misc'] = None
+                if degeminate:
+                    Sentence.degeminate_seg(wholeword)
                 conllu.append(wholeword)
                 for morphseg in morphsegs:
+#                    print("  ** morphseg {}, index {}, headindex {}".format(morphseg, index, headindex))
                     morphseg['id'] = index
-                    morphseg['head'] = headindex
+                    if index == headindex:
+                        # We don't know what the head of the head of the word is, so make it None ('_')
+                        morphseg['head'] = None
+                    else:
+                        morphseg['head'] = headindex
+                    if degeminate:
+                        Sentence.degeminate_seg(morphseg)
                     conllu.append(morphseg)
                     index += 1
-        return conllu
+        conllu = TokenList(conllu)
+        conllu.metadata = self.conllu.metadata
+        self.conllu = conllu
+
+    @staticmethod
+    def degeminate_seg(seg):
+        seg['form'] = degeminate(seg['form'])
+        if seg.get('lemma'):
+            seg['lemma'] = degeminate(seg['lemma'])
 
     def add_word(self, word, segmentations, morphid, conllu=True):
         w = self.make_word(word, segmentations, morphid, conllu=conllu)
@@ -267,7 +289,7 @@ class Sentence():
         return [s.get('form') for s in segmentation[1:]]
 
     @staticmethod
-    def get_lemmas(segmentation, forms):
+    def get_lemmas(segmentation, forms, headindex):
         '''
         The lemmas in a segmentation in any is different from the form.
         '''
@@ -280,7 +302,15 @@ class Sentence():
             return []
         else:
             lemmas = [s.get('lemma') for s in segmentation[1:]]
-            lemmas = [('' if l == f else l) for l, f in zip(lemmas, forms)]
+            # Only show lemmas if they're different from form, but always show the head lemma
+            lm = []
+            for i, (l, f) in enumerate(zip(lemmas, forms)):
+                if i == headindex or l != f:
+                    lm.append(l)
+                else:
+                    lm.append('')
+            lemmas = lm
+#            lemmas = [('' if l == f else l) for l, f in zip(lemmas, forms)]
             if not any(lemmas):
                 return []
             else:
