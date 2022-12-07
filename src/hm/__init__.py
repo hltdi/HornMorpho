@@ -22,7 +22,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
-__version__ = '4.5.1.2'
+__version__ = '4.5.1.3'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -186,7 +186,7 @@ def write_conllu(sentences=None, path='', corpus=None,
     print("Rejected {} sentences".format(rejected))
 
 def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0',
-                  segment=True, disambiguate=True, conlluify=False):
+                  segment=True, disambiguate=True, conlluify=False, timeit=False, local_cache=None):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
     disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
@@ -202,13 +202,16 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     @param segment: whether to segment the data with HM after it is loaded
     @param segment: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
+    @param timeit: whether to time segmentation
+    @param local_cache: cache to store segmentations
     '''
     batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
-    corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name)
+    corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name,
+                           local_cache=local_cache)
     if segment:
-        corpus.segment()
+        corpus.segment(timeit=timeit)
     if disambiguate:
-        corpus.disambiguate()
+        corpus.disambiguate(timeit=timeit)
     # Normally disambiguation should happen before this
     if conlluify:
         corpus.conlluify()

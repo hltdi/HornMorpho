@@ -1822,6 +1822,7 @@ class Language:
             if self.get_from_local_cache(word, local_cache,
                                  dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent,
                                  multseg=multseg, morphid=morphid, file=file):
+#                print("** Got {} from local cache".format(word))
                 w_index += 1
                 continue
             simps = None

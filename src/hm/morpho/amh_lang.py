@@ -122,7 +122,7 @@ def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     Only return citation for deverbal nouns.
     '''
     if fs.get('v') and fs['v'] == 'inf':
-#        deriv = fs['v']
+        deriv = fs['v']
 #        if deriv == 'man':
 #            fss = language.FeatStruct("[pos=n,-def,v={}]".format(deriv))
 #        else:
@@ -829,7 +829,7 @@ AMH = language.Language("አማርኛ", 'amh',
 AMH.set_morphology(language.Morphology(
                              pos_morphs=[('cop',), ('n',), ('v',)],
                              # Exclude ^ and - (because they can be used in compounds)
-                             punctuation=r'[“‘”’–—:;/,<>?.!%$()[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
+                             punctuation=r'[“‘”’–—:;/,<>?.!%$()\[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                              # Include digits?
                              characters=r'[a-zA-Zሀ-ፚ\'`^]'))
 

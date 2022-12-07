@@ -27,7 +27,7 @@ from .languages import *
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.font import *
-# import tkinter.ttfont
+import time
 
 class Corpus():
     """
@@ -36,7 +36,8 @@ class Corpus():
 
     ID = 0
 
-    def __init__(self, data=None, path='', start=0, n_sents=0, name='', batch_name=''):
+    def __init__(self, data=None, path='', start=0, n_sents=0, name='', batch_name='',
+                 local_cache=None):
         self.batch_name = batch_name
         if not data and path:
             self.data = []
@@ -60,6 +61,8 @@ class Corpus():
 #        # CoNLL-U strings for data
 #        self.conllu = []
         self.name = name or batch_name or self.create_name()
+        # Cache for storing segmentations
+        self.local_cache = local_cache if isinstance(local_cache, dict) else {}
 
     def __repr__(self):
         return "C_{}".format(self.name)
@@ -69,28 +72,32 @@ class Corpus():
         Corpus.ID += 1
         return name
 
-    def disambiguate(self, skip_unambig=True):
+    def disambiguate(self, skip_unambig=True, timeit=False):
         '''
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
         '''
         if not self.sentences:
             # Segment all sentences before creating GUI.
-            self.segment()
+            self.segment(timeit=timeit)
         self.root = SegRoot(self, title=self.__repr__())
         self.root.mainloop()
 
-    def segment(self):
-        """p
+    def segment(self, timeit=False):
+        """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
         print("Segmenting sentences in {}".format(self))
         sentid = 0
+        time0 = time.time()
         for sentence in self.data:
-            sentence_obj = self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid)
+            sentence_obj = \
+              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache)
             self.sentences.append(sentence_obj)
             sentid += 1
+        if timeit:
+            return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 
     def conlluify(self, degeminate=False):
         """
@@ -98,9 +105,6 @@ class Corpus():
         """
         for sentence in self.sentences:
             sentence.words2conllu(update_indices=True, degeminate=degeminate)
-#            conllu = sentence.words2conllu(update_indices=True, degeminate=degeminate)
-#            conllu = TokenList(conllu)
-#            sentence.conllu = conllu
 
     def segment1(self, text='', sentindex=None):
         """
@@ -109,7 +113,7 @@ class Corpus():
         text = text or self.data[sentindex] if sentindex < len(self.data) else None
         if text:
             language = get_language('amh', phon=False, segment=True, experimental=True)
-            sentence = language.anal_sentence(text)
+            sentence = language.anal_sentence(text, local_cache=self.local_cache)
             if sentence:
                 self.all_sentences[sentindex] = sentence
         if sentence:

@@ -56,7 +56,7 @@ def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
     return hm.create_corpus(path=path, nsents=nsents)
 
 def corp3():
-    return hm.create_corpus(["ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
+    return hm.create_corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
 
 def ecorp(path="hm/ext_data/ከአብነት/mini1.txt"):
     return hm.create_corpus(path=path)
@@ -77,44 +77,9 @@ CONLLU_sents = []
 def caco_batch_name(version, batch):
     return "CACO{}_B{}".format(version, batch)
 
-def caco_seg(multseg=False, report_n=5, start=0, nlines= 200, sentid=0,
-                          version="2.1", batch='2.0'):
-    batch_name = caco_batch_name(version, batch)
-    return hm.seg_file('amh', CACO_path, sep_punc=False, csentences=CONLLU_sents,
-                                           local_cache=CACO_cache, start=start, nlines=nlines,
-                                           batch_name=batch_name,
-                                           multseg=multseg, sentid=sentid, report_n=report_n)
-
-def write_caco(version, batch, sentences, ambig_thresh=1.0, unk_thresh=0.3):
-    n = len(sentences)
-    batch_name = caco_batch_name(version, batch)
-    file_name = "{}_{}.conllu".format(batch_name, n)
-    path = hm.morpho.caco_path(version, file_name)
-    rejected = 0
-    with open(path, 'w', encoding='utf8') as file:
-        for sentence in sentences:
-            if sentence.reject(unk_thresh=unk_thresh, ambig_thresh=ambig_thresh):
-                rejected += 1
-                continue
-            conll = sentence.conllu
-            print(conll.serialize(), file=file, end='')
-    print("Rejected {} sentences".format(rejected))
-
 def caco_raw(start, n):
     with open(hm.morpho.caco_path("1.1", "CACO_TEXT.txt"), encoding='utf8') as file:
         return file.readlines()[start:start+n]
-
-#CACO_tree = hm.morpho.make_caco()
-
-#def caco_seg(multseg=False, report_n=25, start=0, nlines=500):
-##    return \
-#    hm.seg_file('amh', CACO_path, sep_punc=False, xml=CACO_tree, multseg=multseg,
-#                              local_cache=CACO_cache, start=start, nlines=nlines,
-#                              report_n=report_n)
-
-#def caco_write(file):
-#    path = hm.morpho.caco_path("2.0", file)
-#    CACO_tree.write(path, 'utf8')
 
 # FS conversion
 #FS = hm.morpho.FeatStruct
