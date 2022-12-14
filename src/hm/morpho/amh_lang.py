@@ -829,7 +829,7 @@ AMH = language.Language("አማርኛ", 'amh',
 ## Create Morphology object and noun, verb, and copula POSMorphology objects for Amharic,
 ## including punctuation and ASCII characters that are part of the romanization.
 AMH.set_morphology(language.Morphology(
-                             pos_morphs=[('cop',), ('n',), ('v',), ('vnoun')],
+                             pos_morphs=[('cop',), ('n',), ('v',), ('vnoun'), ('v_stem')],
                              # Exclude ^ and - (because they can be used in compounds)
                              punctuation=r'[“‘”’–—:;/,<>?.!%$()\[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                              # Include digits?

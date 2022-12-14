@@ -134,7 +134,7 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 # no vowel for final * in imperfective and jussive/imperative
 -2V -> end          [:*]      [tm=imf,tmp=[v_1=None,c_1=None]];[tm=j_i,tmp=[v_1=None,c_1=None]]
 
-#### "A" verbs (CCC, C2 cannot be L, w, or y; these cases are handled below)
+#### "A" verbs (CCC, C2 cannot be L, w, or y (unless C1='); these cases are handled below)
 
 ## Following C2
 # geminate C2 in perfective, causative, imperfective passive
@@ -394,7 +394,7 @@ i/ -> -3_4          [:']
 -4aL -> -4aLV       [:']    [vc=cs,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_1=c,c_2=2,v1=a,v2=a,v3=None,v4=None,pre=as]]
 -4aLV -> -3a        [a:]
 # passive: tewawweqe
--4aL -> -3a         [:']    [vc=ps,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_1=c,c_2=2,v1=None,v2=a,v3=None,v4=None,pre=te]]
+-4aL -> -3a         [:']    [vc=ps,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_2=2,v1=None,v2=a,v3=None,v4=None,pre=te]]
 
 ## "C" verbs: CaCC, CCaCC, CCCaCC
 simp -> -3a         [:]       [tmp=[n=3,c1=1,c2=None,c3=None,c4=None,c_2=2,v1=a,v2=None,v3=None,v4=None]]

@@ -68,4 +68,3 @@ sEs_n  ssn++sEs_n [bs=0,cls=B,tm=imf,vc=smp,as=smp,t=[eng="lust"],-lt];[bs=0,cls
 'mer       m'r++'mer     [bs=a_,cls=A,tm=j_i,sns=3,t=[eng='be attractive'],-lt]
 asam_r   m'r++asam_r [bs=a_,cls=A,vc=cs,tm=imf|j_i,sns=3,t=[eng='be attractive'],-lt]
 asam_er  m'r++asam_er [bs=a_,cls=A,vc=cs,tm=prf,sns=3,t=[eng='be attractive'],-lt]
-

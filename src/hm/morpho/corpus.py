@@ -574,8 +574,10 @@ class SegCanvas(Canvas):
         selectpos = Sentence.selectpos[pos]
         pos1 = selectpos[0]
         pos2 = selectpos[1]
-        id1 = self.create_text((x-20, y), text=pos1)
-        id2 = self.create_text((x+20, y), text=pos2)
+        self.create_rectangle(x - 55, y - 10, x - 5, y + 10, fill='pink')
+        id1 = self.create_text((x-30, y), text=pos1)
+        self.create_rectangle(x + 5, y - 10, x + 55, y + 10, fill='pink')
+        id2 = self.create_text((x+30, y), text=pos2)
         posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
     def show_features(self, feats, Xs, y):

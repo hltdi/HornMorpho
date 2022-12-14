@@ -10,7 +10,7 @@
 ### H: 1|23a45
 ### I: 1|234
 ### J: 1|2a34
-### K: 12345  (eliminate this for now)
+### K: 12345  (eliminate this for now, except for guesser)
 
 -> start
 

@@ -82,8 +82,10 @@ class Sentence():
         self.conllu.metadata = {'text': text, 'sent_id': self.label}
         # list of unknown tokens
         self.unk = []
-        # list of ambiguous words
-        self.ambig = []
+        # list of morphologically ambiguous words
+        self.morphambig = []
+        # list of POS ambiguous words
+        self.posambig = []
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
 
     def __repr__(self):
@@ -118,12 +120,15 @@ class Sentence():
             return True
         if complexity['ambig'] > ambig_thresh:
             if verbosity:
-                print("Rejecting {} because ambiguity {} > threshold {}".format(self, complexity['ambig'], ambig_thresh))
-                print("Ambiguous tokens: {}".format(self.ambig))
+                print("Rejecting {} because ambiguity {} > threshold {}".format(self, round(complexity['ambig'], 2), ambig_thresh))
+                if self.posambig:
+                    print("POS ambiguous tokens: {}".format(self.posambig))
+                if self.morphambig:
+                    print("Morphologically ambiguous tokens: {}".format(self.morphambig))
             return True
         if complexity['unk'] > unk_thresh:
             if verbosity:
-                print("Rejecting {} because percentage of unknown tokens {} > threshold {}".format(self, complexity['unk'], unk_thresh))
+                print("Rejecting {} because percentage of unknown tokens {} > threshold {}".format(self, round(complexity['unk'], 2), unk_thresh))
                 print("Unknown tokens: {}".format(self.unk))
             return True
         return False
@@ -195,6 +200,8 @@ class Sentence():
         segment_list = []
         tokens = []
         self.complexity['ambig'] += len(segmentations) - 1
+        if len(segmentations) > 1:
+            self.morphambig.append(word)
 #        print("*** word {}, segmentations {}".format(word, segmentations))
         for index, segmentation in enumerate(segmentations):
 #        segmentation = segmentations[0]
@@ -214,7 +221,7 @@ class Sentence():
                 elif upos in Sentence.selectpos:
                     # ambiguous POS
                     self.complexity['ambig'] += 1
-                    self.ambig.append(word)
+                    self.posambig.append(word)
                 props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
                 segments.append(pdict)
@@ -245,7 +252,7 @@ class Sentence():
                     upos = props[3][1]
                     if upos in Sentence.selectpos:
                         self.complexity['ambig'] += 1
-                        self.ambig.append(word)
+                        self.posambig.append(word)
                     props[0][1] = id
                     # Set the head id for dependent morphemes
                     if id != headi:

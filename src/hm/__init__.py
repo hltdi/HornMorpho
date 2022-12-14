@@ -22,7 +22,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
-__version__ = '4.5.1.3'
+__version__ = '4.5.1.4'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -155,7 +155,8 @@ def seg_file(file='', language='amh', experimental=True,
 
 def write_conllu(sentences=None, path='', corpus=None,
                  batch_name='', version='2.2', batch='1.0',
-                 filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0):
+                 filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
+                 verbosity=0):
     '''
     Write the CoNNL-U representations of a list of sentences to a file.
 
@@ -168,6 +169,7 @@ def write_conllu(sentences=None, path='', corpus=None,
     @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
+    @param verbosity: int indicating how verbose messages should be
     '''
 #    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
     sentences = sentences or corpus.sentences
@@ -179,9 +181,9 @@ def write_conllu(sentences=None, path='', corpus=None,
     rejected = []
 #    with open(path, 'w', encoding='utf8') as file:
     for index, sentence in enumerate(sentences):
-        if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
+        if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh, verbosity=verbosity):
             nrejected += 1
-            rejected.append(index + 1)
+            rejected.append(sentence.sentid)
             continue
         conll = sentence.conllu
         print(conll.serialize(), file=file, end='')
