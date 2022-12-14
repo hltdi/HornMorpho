@@ -1,0 +1,21 @@
+# text = ያገባችውን ሰውዬ ብታይው ይገርምሻል ።
+# sent_id = TAFS1.0_B1.0_s1
+1-5	ያገባችውን	_	_	_	_	_	_	_	_
+1	የ	የ	PART	RLP	_	2	mark	_	_
+2	አገባ፟	አገባ	VERB	VERB	Aspect=Perf	_	_	_	_
+3	ኧች፟	ኧች	PRON	SUBJ	Gender=Fem|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	2	obj	_	_
+5	ን	ን	PART	ACC	_	2	case	_	_
+6	ሰውዬ፟	ሰውዬ፟	NOUN	NOUN	_	_	_	_	_
+7-11	ብታይው	_	_	_	_	_	_	_	_
+7	ብ	ብ	SCONJ	SCONJ	_	9	mark	_	_
+8	ት	ት	PRON	PRON	Person=2	9	nsubj	_	_
+9	አይ	አየ	VERB	VERB	Aspect=Imp	_	_	_	_
+10	ኢ	ኢ	PRON	SUBJ	Gender=Fem|Number=Sing|Person=2	9	nsubj	_	_
+11	ው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	9	obj	_	_
+12-15	ይገርምሻል	_	_	_	_	_	_	_	_
+12	ይ	ይ	PRON	PRON	Person=3	13	nsubj	_	_
+13	ገርም	ገረመ	VERB	VERB	Aspect=Imp	_	_	_	_
+14	ሽ	ሽ	PRON	OBJC	Gender=Fem|Number=Sing|Person=2	13	obj	_	_
+15	ኣል	ኣል	AUX	AUX	_	13	aux	_	_
+16	።	።	PUNCT	PUNCT	_	_	_	_	_

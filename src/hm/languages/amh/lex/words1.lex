@@ -48,6 +48,7 @@ Teqlala Teqlala adv
 Tnt Tnt adv
 band band adv
 bandnet bandn_et adv
+bebenegaw bebenegaw adv
 bca bc_a adv
 be'agaTami be'agaTami adv
 bagaTami bagaTami
@@ -116,7 +117,9 @@ lehosas lehosas adv
 mado mado adv
 mec mec adv
 mece mece adv
+mecen_a mecena adv
 mecE mecE adv
+mecEn_a mecEna adv
 mecem mecem adv
 mecEm mecEm adv
 meces meces_ adv

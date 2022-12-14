@@ -43,6 +43,7 @@ a0 -> a            [a:]       [tmp=[-c1gem]]
 a0 -> a/           <a/:>      [as=rc,tmp=[+c1gem]];[as=it,tmp=[+c1gem]]
 stem -> te         <te:>      [vc=ps,v=agt,tmp=[pre=te,-c1gem]]
 stem -> /C         [/:]       [vc=ps,v=inf,tmp=[pre=me,+c1gem]];[vc=ps,v=ins,tmp=[pre=me,+c1gem]]
+#stem -> /C         [/:]       [vc=ps,v=inf];[vc=ps,v=ins]
 stem -> |          [X/L]      [vc=ps,v=inf,tmp=[pre=me,-c1gem]];[vc=ps,v=ins,tmp=[pre=me,-c1gem]]
 te -> |            [X/L]      
 a -> |             [X/L]      [tmp=[-c1gem]]
@@ -174,7 +175,7 @@ man -> -4.2          [:]       [tmp=[c1=1,n=3,c2=None,c3=None,c4=None]]
 
 -3V -> -2B          [e:]       [tmp=[v1=e]]
 # can be y or w: qeyyere, lewweTe
--2B -> -2B_         [X/L]      [tmp=[c_2=None]]
+-2B -> -2B_         [X/L]    [tmp=[c_2=None]]
 -2B_ -> -2V         [_]        [vc=ps,v=agt,tmp=[+c_2gem]];[vc=smp,tmp=[+c_2gem]];[vc=cs,tmp=[+c_2gem]];[vc=tr,tmp=[+c_2gem]]
 # Drop the gemination in passive infinitive and instrumental
 -2B_ -> -2V         [:_]       [vc=ps,v=inf,tmp=[-c_2gem]];[vc=ps,v=ins,tmp=[-c_2gem]]

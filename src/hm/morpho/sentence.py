@@ -80,6 +80,10 @@ class Sentence():
         self.xml = ''
         self.conllu = TokenList([])
         self.conllu.metadata = {'text': text, 'sent_id': self.label}
+        # list of unknown tokens
+        self.unk = []
+        # list of ambiguous words
+        self.ambig = []
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
 
     def __repr__(self):
@@ -102,13 +106,25 @@ class Sentence():
         # Expect one punctuation mark
         self.complexity['punct'] -= 1
 
-    def reject(self, unk_thresh=0.3, ambig_thresh=1.0):
+    def reject(self, unk_thresh=0.3, ambig_thresh=1.0, verbosity=0):
         """
         Should we reject this sentence, based on its complexity?
         """
         complexity = self.complexity
         npunct = complexity['punct']
-        if npunct > 0 or complexity['ambig'] > ambig_thresh or complexity['unk'] > unk_thresh:
+        if npunct > 0:
+            if verbosity:
+                print("Rejecting {} because there are {} punctuation marks".format(self, npunct))
+            return True
+        if complexity['ambig'] > ambig_thresh:
+            if verbosity:
+                print("Rejecting {} because ambiguity {} > threshold {}".format(self, complexity['ambig'], ambig_thresh))
+                print("Ambiguous tokens: {}".format(self.ambig))
+            return True
+        if complexity['unk'] > unk_thresh:
+            if verbosity:
+                print("Rejecting {} because percentage of unknown tokens {} > threshold {}".format(self, complexity['unk'], unk_thresh))
+                print("Unknown tokens: {}".format(self.unk))
             return True
         return False
 
@@ -192,11 +208,13 @@ class Sentence():
                 upos = props[3][1]
                 if upos == 'UNK':
                     self.complexity['unk'] += 1
+                    self.unk.append(word)
                 elif upos == 'PUNCT':
                     self.complexity['punct'] += 1
                 elif upos in Sentence.selectpos:
                     # ambiguous POS
                     self.complexity['ambig'] += 1
+                    self.ambig.append(word)
                 props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
                 segments.append(pdict)
@@ -227,6 +245,7 @@ class Sentence():
                     upos = props[3][1]
                     if upos in Sentence.selectpos:
                         self.complexity['ambig'] += 1
+                        self.ambig.append(word)
                     props[0][1] = id
                     # Set the head id for dependent morphemes
                     if id != headi:

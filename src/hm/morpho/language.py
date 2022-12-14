@@ -1289,6 +1289,10 @@ class Language:
             return feat.split('type')[0].capitalize() + 'Type'
         elif 'class' in feat:
             return feat.split('class')[0].capitalize() + 'Class'
+        elif feat == 'caurcp':
+            return "CauRcp"
+        elif feat == 'transrcp':
+            return "TransRcp"
         else:
             return feat.capitalize()
 

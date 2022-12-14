@@ -175,18 +175,21 @@ def write_conllu(sentences=None, path='', corpus=None,
         file = open(path, 'w', encoding='utf8')
     else:
         file = morpho.sys.stdout
-    rejected = 0
+    nrejected = 0
+    rejected = []
 #    with open(path, 'w', encoding='utf8') as file:
-    for sentence in sentences:
+    for index, sentence in enumerate(sentences):
         if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh):
-            rejected += 1
+            nrejected += 1
+            rejected.append(index + 1)
             continue
         conll = sentence.conllu
         print(conll.serialize(), file=file, end='')
-    print("Rejected {} sentences".format(rejected))
+    print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
 def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0',
-                  segment=True, disambiguate=True, conlluify=False, timeit=False, local_cache=None):
+                  segment=True, disambiguate=True, conlluify=False, timeit=False, local_cache=None,
+                  verbosity=0):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
     disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
@@ -204,17 +207,18 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
     @param timeit: whether to time segmentation
     @param local_cache: cache to store segmentations
+    @param verbosity: int controlling how verbose messages should be
     '''
     batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
     corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name,
                            local_cache=local_cache)
     if segment:
-        corpus.segment(timeit=timeit)
+        corpus.segment(timeit=timeit, verbosity=verbosity)
     if disambiguate:
-        corpus.disambiguate(timeit=timeit)
+        corpus.disambiguate(timeit=timeit, verbosity=verbosity)
     # Normally disambiguation should happen before this
     if conlluify:
-        corpus.conlluify()
+        corpus.conlluify(verbosity=verbosity)
     return corpus
 
 def seg_sentence(sentence, language='amh', remove_dups=True):

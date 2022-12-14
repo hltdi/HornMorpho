@@ -72,7 +72,7 @@ class Corpus():
         Corpus.ID += 1
         return name
 
-    def disambiguate(self, skip_unambig=True, timeit=False):
+    def disambiguate(self, skip_unambig=True, timeit=False, verbosity=0):
         '''
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
@@ -83,13 +83,13 @@ class Corpus():
         self.root = SegRoot(self, title=self.__repr__())
         self.root.mainloop()
 
-    def segment(self, timeit=False):
+    def segment(self, timeit=False, verbosity=0):
         """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
         print("Segmenting sentences in {}".format(self))
-        sentid = 0
+        sentid = 1
         time0 = time.time()
         for sentence in self.data:
             sentence_obj = \
@@ -99,7 +99,7 @@ class Corpus():
         if timeit:
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 
-    def conlluify(self, degeminate=False):
+    def conlluify(self, degeminate=False, verbosity=0):
         """
         Convert all of the sentence pre-CoNNL-U representations to CoNNL-U.
         """

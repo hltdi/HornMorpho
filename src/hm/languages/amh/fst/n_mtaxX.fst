@@ -106,7 +106,9 @@ poss -> acc     <wo:-wo(@pron,posm,$number=sing,person=2,polite=form,poss=yes,*�
 ## ACCUSATIVE
 acc -> cnj        [:]      [-acc]
 # % not sure why the TB allots a special XPOS to accusative; they also include no features
-acc -> cnj        <n:-n(@part,acc,$case=acc,*ን,~case)>     [+acc,prep=None]
+acc -> cnj        <n:-n(@part,acc,$case=acc,*ን,~case)>     [+acc]
+# % as in እኤኑ, ማታውኑ ;not sure what the constraints on this -ኑ are
+acc -> cnj        <nu:-nu(@part,acc,$case=acc,*n~case)>   [+acc]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]

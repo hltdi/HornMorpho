@@ -230,7 +230,7 @@ aux1  -> cj2      <_ex:-ex(@pron,subjc,$gender=fem,number=sing,person=2,*ሽ,~ns
 aux1  -> cj2      <_ec_:-ec(@pron,subjc,$gender=fem,number=sing,person=3,*ኧች,~nsubj)>     [sb=[-p2,-p1,-plr,+fem]]
 aux1  -> cj2      <_en:-en(@pron,subjc,$number=plur,person=1,*ን,~nsubj)>      [tm=imf,sb=[+p1,-p2,+plr]]
 aux1  -> cj2      <_ac_hu:-Achu(@pron,subjc,$number=plur,person=2,*ኣችሁ,~nsubj)>   [tm=imf,sb=[-p1,+p2,+plr]]
-aux1  -> cj2      <_u:-u(@pron,subjc,$number=plur,number=3,*ኡ,~nsubj)>       [tm=imf,sb=[-p1,-p2,+plr],ob=[-expl]]
+aux1  -> cj2      <_u:-u(@pron,subjc,$number=plur,person=3,*ኡ,~nsubj)>       [tm=imf,sb=[-p1,-p2,+plr],ob=[-expl]]
 negs_aux -> noaux  [:]       [ax=None]
 
 # NEGATIVE

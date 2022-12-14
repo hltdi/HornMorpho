@@ -128,7 +128,9 @@ def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
 #        else:
         # For agt, inf, and ins we need the aspect and voice features
         fsa, fsv = fs.get('as'), fs.get('vc')
-        fss = language.FeatStruct("[pos=n,-def,-plr,-neg,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(deriv, fsa, fsv))
+        cls = fs.get('cls', 'B')
+#        print("** fsa {}, fsv {}, cls {}".format(fsa, fsv, cls))
+        fss = language.FeatStruct("[cls={},pos=n,-def,-plr,-neg,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(cls,deriv, fsa, fsv))
         citation = AMH.morphology['n'].gen(root, fss, from_dict=False, phon=True,
                                            postproc=False, guess=guess)
         if citation:
@@ -827,7 +829,7 @@ AMH = language.Language("አማርኛ", 'amh',
 ## Create Morphology object and noun, verb, and copula POSMorphology objects for Amharic,
 ## including punctuation and ASCII characters that are part of the romanization.
 AMH.set_morphology(language.Morphology(
-                             pos_morphs=[('cop',), ('n',), ('v',)],
+                             pos_morphs=[('cop',), ('n',), ('v',), ('vnoun')],
                              # Exclude ^ and - (because they can be used in compounds)
                              punctuation=r'[“‘”’–—:;/,<>?.!%$()\[\]{}|#@&*\_+=\"፡።፣፤፥፦፧፨]',
                              # Include digits?
