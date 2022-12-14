@@ -154,7 +154,9 @@ class SegRoot(Tk):
         self.quit_button = Button(self, text="Quit", command=self.quit)
         self.quit_button.grid(row=0, column=2)
         self.sent_text.grid(row=1, columnspan=3)
-        self.segmentations = self.corpus.sentences[sentindex].words
+        self.sentenceobj = self.corpus.sentences[sentindex]
+        self.segmentations = self.sentenceobj.words
+#        self.corpus.sentences[sentindex].words
         self.canvas = SegCanvas(self, corpus) # width=width-25, height=height-25)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
@@ -287,7 +289,8 @@ class SegRoot(Tk):
         Set the positions of words within the sentence Text.
         Make the first word the current word.
         '''
-        self.segmentations = self.corpus.sentences[sentindex].words
+        self.sentenceobj = self.corpus.sentences[sentindex]
+        self.segmentations = self.sentenceobj.words
         self.sent_text.delete("1.0", "end")
         self.sent_text.insert("1.0", self.sentence)
         self.set_word_positions()
@@ -352,20 +355,11 @@ class SegRoot(Tk):
         wordsegs = self.segmentations[wordindex]
         return wordsegs
 
-#    def show_segmentations(self):
-#        '''
-#        Show the segmentations for the current word in the Canvas.
-#        '''
-#        print("** Showing segmentations")
-#        if not self.segmentations:
-#            print("** No segmentations to show")
-#            return
-#        self.canvas.update()
-
     def set_word_segmentations(self, newsegs):
         '''
         Update the segmentations for the current word (based on selection by user).
         '''
+        self.sentenceobj.disambiguated = True
         wordindex = self.wordvar.get()-1
         self.segmentations[wordindex] = newsegs
 
@@ -503,6 +497,8 @@ class SegCanvas(Canvas):
 #        print("** Setting tag {} POS {} for segment {}".format(tag, pos, seg))
         seg['upos'] = pos
         seg['xpos'] = pos
+#        print("** Sentence {} updated ...".format(self.parent.sentenceobj))
+        self.parent.sentenceobj.disambiguated = True
         self.update()
 #        self.parent.show_segmentations()
 

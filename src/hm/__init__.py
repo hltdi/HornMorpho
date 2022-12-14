@@ -22,7 +22,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
-__version__ = '4.5.1.4'
+__version__ = '4.5.1.5'
 __author__ = 'Michael Gasser'
 
 from . import morpho

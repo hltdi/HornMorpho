@@ -43,7 +43,7 @@ def corp6(disambiguate=True):
 
 def corp7(disambiguate=True):
     return hm.create_corpus(
-        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"],
+        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"], disambiguate=disambiguate,
         )
 
 def corp8():

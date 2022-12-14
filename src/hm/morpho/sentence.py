@@ -86,6 +86,8 @@ class Sentence():
         self.morphambig = []
         # list of POS ambiguous words
         self.posambig = []
+        # whether sentence has been disambiguated
+        self.disambiguated = False
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
 
     def __repr__(self):
@@ -137,7 +139,17 @@ class Sentence():
         '''
         Convert a pre-CoNLL-U list of lists of dicts to a list of Tokens.
         '''
-        # Use only the first segmentation for each word
+        if self.disambiguated:
+            # Some disambiguation took place; recalculate morphological ambiguity
+            self.posambig = []
+            self.morphambig = []
+            self.complexity['ambig'] = 0
+            for wordsegs in self.words:
+                if len(wordsegs) > 1:
+                    word = wordsegs[0][0]['form']
+                    self.morphambig.append(word)
+                    self.complexity['ambig'] += len(wordsegs) - 1
+        # To convert to CoNLL-U, use only the first segmentation for each word
         wordsegs = [w[0] for w in self.words]
         # Update the indices in case the number of morphemes in a word has changed
         index = 1
@@ -152,6 +164,12 @@ class Sentence():
                     Sentence.degeminate_seg(ws)
                 conllu.append(ws)
                 index += 1
+                if self.disambiguated:
+                    # Update POS ambiguity
+                    upos = ws['upos']
+                    if upos in Sentence.selectpos:
+                        self.complexity['ambig'] += 1
+                        self.posambig.append(ws['form'])
             else:
                 wholeword = wordseg[0]
                 morphsegs = wordseg[1:]
@@ -179,6 +197,9 @@ class Sentence():
                     index += 1
         conllu = TokenList(conllu)
         conllu.metadata = self.conllu.metadata
+        if self.disambiguated:
+            # Recalculate ambiguity score
+            self.complexity['ambig'] /= self.ntokens
         self.conllu = conllu
 
     @staticmethod

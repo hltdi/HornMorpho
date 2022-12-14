@@ -1393,6 +1393,7 @@ class POSMorphology:
                  interact=True, timeit=False, timeout=100,
                  only_one=False, trace=False):
         """Generate word from root and features, first trying stored forms."""
+        print("** Calling generate on {}".format(root))
         fss = None
         if not features:
             if interact and self.feat_list:
