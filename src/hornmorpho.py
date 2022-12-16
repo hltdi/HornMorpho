@@ -28,58 +28,55 @@ import hm
 
 ## displaying segmentations in Tkinter
 
-def corp1(disambiguate=True):
-    return  hm.create_corpus(
-        ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
-          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"],
-        disambiguate=disambiguate
-        )
+C1 =  ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
+          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"]
+C2 = ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"]
+C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
+C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
+C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
+CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
+AS1 = "hm/ext_data/ከአብነት/mini1.txt"
 
-def corp6(disambiguate=True):
-    return hm.create_corpus(
-        ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"],
-        disambiguate=disambiguate
-        )
-
-def corp7(disambiguate=True):
-    return hm.create_corpus(
-        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"], disambiguate=disambiguate,
-        )
-
-def corp8():
-    return hm.create_corpus(["ብዙ ሰዎች ሀብት ያፈራሉ ።"])
-
-def corp0():
-    return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
-
-def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
-    return hm.create_corpus(path=path, nsents=nsents)
-
-def corp3():
-    return hm.create_corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
-
-def ecorp(path="hm/ext_data/ከአብነት/mini1.txt"):
-    return hm.create_corpus(path=path)
-
-def corp4():
-    return hm.create_corpus(["የማይሰሙት ነው ?"])
-
-def corp5():
-    return hm.create_corpus(["አለ ?"])
+##def corp1(disambiguate=True):
+##    return  hm.create_corpus(C1,
+##        disambiguate=disambiguate
+##        )
+##def corp6(disambiguate=True):
+##    return hm.create_corpus(C2,
+##        disambiguate=disambiguate
+##        )
+##def corp7(disambiguate=True):
+##    return hm.create_corpus(
+##        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"], disambiguate=disambiguate,
+##        )
+##def corp8():
+##    return hm.create_corpus(["ብዙ ሰዎች ሀብት ያፈራሉ ።"])
+##def corp0():
+##    return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
+##def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
+##    return hm.create_corpus(path=path, nsents=nsents)
+##def corp3():
+##    return hm.create_corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
+##def ecorp(path="hm/ext_data/ከአብነት/mini1.txt"):
+##    return hm.create_corpus(path=path)
+##def corp4():
+##    return hm.create_corpus(["የማይሰሙት ነው ?"])
+##def corp5():
+##    return hm.create_corpus(["አለ ?"])
 
 ## new CACO
 
-CACO_cache = {}
-CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT_3-7tok.txt")
-
-CONLLU_sents = []
-
-def caco_batch_name(version, batch):
-    return "CACO{}_B{}".format(version, batch)
-
-def caco_raw(start, n):
-    with open(hm.morpho.caco_path("1.1", "CACO_TEXT.txt"), encoding='utf8') as file:
-        return file.readlines()[start:start+n]
+##CACO_cache = {}
+##CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT_3-7tok.txt")
+##
+##CONLLU_sents = []
+##
+##def caco_batch_name(version, batch):
+##    return "CACO{}_B{}".format(version, batch)
+##
+##def caco_raw(start, n):
+##    with open(hm.morpho.caco_path("1.1", "CACO_TEXT.txt"), encoding='utf8') as file:
+##        return file.readlines()[start:start+n]
 
 # FS conversion
 #FS = hm.morpho.FeatStruct
@@ -129,10 +126,10 @@ def convfeat(fs, oldfs, newfs, replace=False):
 #    m = hm.get_language('mvz')
 #    return m.morphology['v_stem']
 
-def mvz():
-    hm.load_lang('mvz', recreate=True, verbose=True)
-    m = hm.get_language('mvz')
-    return m.morphology
+##def mvz():
+##    hm.load_lang('mvz', recreate=True, verbose=True)
+##    m = hm.get_language('mvz')
+##    return m.morphology
 
 
 def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
@@ -315,23 +312,23 @@ def time(code, times=1):
 FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
 
-AMTEST1 = ["አውቄ", "እወቂ", "ተዋውቄ", "አስተዋውቄ", "እዪ", "ትይ", "ታይቼ",
-           "ተያይቷል", "ይተያይ", "ፈስሼ", "ደምስሳ", "ፈሶ", "ሰልችቼ"]
-
-def crawl_test_amh(limit=5000):
-    """
-    Test Amharic analyzer on words in Crawl list.
-    """
-    with open("../../LingData/Am/Crawl/all.txt", encoding='utf8') as file:
-        nwords = 0
-        for line in file:
-            nwords += 1
-            if nwords >= limit:
-                return
-            count, word = line.strip().split()
-            anal = hm.anal('amh', word, raw=True)
-            if not anal:
-                print("Failed on {}".format(word))
+##AMTEST1 = ["አውቄ", "እወቂ", "ተዋውቄ", "አስተዋውቄ", "እዪ", "ትይ", "ታይቼ",
+##           "ተያይቷል", "ይተያይ", "ፈስሼ", "ደምስሳ", "ፈሶ", "ሰልችቼ"]
+##
+##def crawl_test_amh(limit=5000):
+##    """
+##    Test Amharic analyzer on words in Crawl list.
+##    """
+##    with open("../../LingData/Am/Crawl/all.txt", encoding='utf8') as file:
+##        nwords = 0
+##        for line in file:
+##            nwords += 1
+##            if nwords >= limit:
+##                return
+##            count, word = line.strip().split()
+##            anal = hm.anal('amh', word, raw=True)
+##            if not anal:
+##                print("Failed on {}".format(word))
 
 ## shortcuts for Chaha ('sgw')
 #GA = lambda form: hm.anal('sgw', form, raw=True)

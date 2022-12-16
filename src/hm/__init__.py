@@ -22,7 +22,8 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
-__version__ = '4.5.1.5'
+
+__version__ = '4.5.1.6'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -175,11 +176,11 @@ def write_conllu(sentences=None, path='', corpus=None,
     sentences = sentences or corpus.sentences
     if path:
         file = open(path, 'w', encoding='utf8')
+        print("Writing CoNLL-U sentences {} to {}".format(("in" + corpus.__repr__() if corpus else ''), path))
     else:
         file = morpho.sys.stdout
     nrejected = 0
     rejected = []
-#    with open(path, 'w', encoding='utf8') as file:
     for index, sentence in enumerate(sentences):
         if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh, verbosity=verbosity):
             nrejected += 1
@@ -187,14 +188,19 @@ def write_conllu(sentences=None, path='', corpus=None,
             continue
         conll = sentence.conllu
         print(conll.serialize(), file=file, end='')
-    print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
+    if rejected:
+        print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
-def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version='2.2', batch='1.0',
-                  segment=True, disambiguate=True, conlluify=False, timeit=False, local_cache=None,
+def create_corpus(data=None, path='', start=0, n_sents=0,
+                  batch_name='', version='2.2', batch='1.0',
+                  segment=True, disambiguate=True, conlluify=True, degeminate=False,
+                  write=True, write_path='',
+                  timeit=False, local_cache=None,
                   verbosity=0):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
-    disambiguated in a GUI (with disambiguate()), and converted to CoNLL-U (with conlluify()).
+    disambiguated in a GUI (with disambiguate()), converted to CoNLL-U (with conlluify()), and
+    written to a file (with write_conllu()).
     Only works for Amharic.
 
     @param data: list of unsegmented, tokenized sentence strings or None
@@ -207,8 +213,11 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     @param segment: whether to segment the data with HM after it is loaded
     @param segment: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
+    @param degeminate: whether to geminate lemmas, as well as forms, when running conlluify()
     @param timeit: whether to time segmentation
     @param local_cache: cache to store segmentations
+    @param write: whether to write the CoNLL-U sentences to a file or standard output
+    @param write_path: path to use if writing CoNNL-U sentences
     @param verbosity: int controlling how verbose messages should be
     '''
     batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
@@ -217,10 +226,16 @@ def create_corpus(data=None, path='', start=0, n_sents=0, batch_name='', version
     if segment:
         corpus.segment(timeit=timeit, verbosity=verbosity)
     if disambiguate:
+        # Checks to see whether segment() has already been called
         corpus.disambiguate(timeit=timeit, verbosity=verbosity)
-    # Normally disambiguation should happen before this
+    # Normally disambiguation should happen before this, but it doesn't have to.
     if conlluify:
-        corpus.conlluify(verbosity=verbosity)
+        corpus.conlluify(degeminate=degeminate, verbosity=verbosity)
+        if write:
+            # conlluify() has to happen before write_conllu
+            write_conllu(corpus=corpus, path=write_path,
+                            batch_name=batch_name, version=version, batch=batch,
+                            verbosity=verbosity)
     return corpus
 
 def seg_sentence(sentence, language='amh', remove_dups=True):

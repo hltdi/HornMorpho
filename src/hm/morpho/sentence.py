@@ -28,8 +28,8 @@ Includes CoNLL-U and XML output options
 
 import xml.etree.ElementTree as ET
 from conllu import parse, TokenList, Token
-import os
 from .geez import degeminate
+import os
 
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
 TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
@@ -135,7 +135,30 @@ class Sentence():
             return True
         return False
 
-    def words2conllu(self, update_indices=True, degeminate=False):
+    def count_ambiguities(self):
+        '''
+        Return the number of ambiguities (POS, segmentation) in the sentence.
+        '''
+        count = 0
+        for word in self.words:
+            if len(word) > 1:
+#                print("** {} is ambiguous".format(word))
+                # multiple segmentations
+                count += 1
+            else:
+                # first segmentation
+                word = word[0]
+                if len(word) == 1:
+                    # unsegmented word; ignore segmented words for now
+                    word = word[0]
+                    pos = word['upos']
+                    if pos in Sentence.selectpos:
+#                        print("** {} POS is ambiguous".format(word))
+                        # an ambiguous POS
+                        count += 1
+        return count
+                
+    def words2conllu(self, update_indices=True, degem=False, verbosity=0):
         '''
         Convert a pre-CoNLL-U list of lists of dicts to a list of Tokens.
         '''
@@ -149,7 +172,9 @@ class Sentence():
                     word = wordsegs[0][0]['form']
                     self.morphambig.append(word)
                     self.complexity['ambig'] += len(wordsegs) - 1
-        # To convert to CoNLL-U, use only the first segmentation for each word
+        # To convert to CoNLL-U, use only the first segmentation for each word.
+        # Either disambiguation has taken place, and this is the only segmentation,
+        # or the first (hopefully best) segmentation will be selected.
         wordsegs = [w[0] for w in self.words]
         # Update the indices in case the number of morphemes in a word has changed
         index = 1
@@ -157,10 +182,13 @@ class Sentence():
         for wordseg in wordsegs:
 #            print("** Wordseg {}, index {}".format(wordseg, index))
             if len(wordseg) == 1:
-                ws = wordseg[0]
                 # No segments: use current index
+                ws = wordseg[0]
                 ws['id'] = index
-                if degeminate:
+                # Degeminate form always
+                ws['form'] = degeminate(ws['form'])
+                # Degem lemma too
+                if degem:
                     Sentence.degeminate_seg(ws)
                 conllu.append(ws)
                 index += 1
@@ -180,7 +208,9 @@ class Sentence():
                 wholeword['id'] = (index, '-', end-1)
                 # Get rid of the index offset that's stored here so that it doesn't appear in final CoNLL-U
                 wholeword['misc'] = None
-                if degeminate:
+                # Degeminate form always
+                wholeword['form'] = degeminate(wholeword['form'])
+                if degem:
                     Sentence.degeminate_seg(wholeword)
                 conllu.append(wholeword)
                 for morphseg in morphsegs:
@@ -191,7 +221,9 @@ class Sentence():
                         morphseg['head'] = None
                     else:
                         morphseg['head'] = headindex
-                    if degeminate:
+                    # Degeminate form always
+                    morphseg['form'] = degeminate(morphseg['form'])
+                    if degem:
                         Sentence.degeminate_seg(morphseg)
                     conllu.append(morphseg)
                     index += 1
@@ -204,7 +236,7 @@ class Sentence():
 
     @staticmethod
     def degeminate_seg(seg):
-        seg['form'] = degeminate(seg['form'])
+#        seg['form'] = degeminate(seg['form'])
         if seg.get('lemma'):
             seg['lemma'] = degeminate(seg['lemma'])
 

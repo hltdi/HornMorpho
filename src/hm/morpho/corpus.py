@@ -103,8 +103,9 @@ class Corpus():
         """
         Convert all of the sentence pre-CoNNL-U representations to CoNNL-U.
         """
+        print("Conlluifying sentences in {}".format(self))
         for sentence in self.sentences:
-            sentence.words2conllu(update_indices=True, degeminate=degeminate)
+            sentence.words2conllu(update_indices=True, degem=degeminate)
 
     def segment1(self, text='', sentindex=None):
         """
@@ -137,26 +138,26 @@ class SegRoot(Tk):
         self.corpus = corpus
         self.all_word_positions = {}
         self.word_positions = []
+        # memory of last segmentation or POS selection, for undo
+        self.memory = []
         # Create int variables for sentence and word index (1-based)
         self.init_vars()
         sentindex = self.sentvar.get()-1
         # Find the sentence in the corpus
         self.sentence = corpus.data[sentindex] if corpus.data else ''
+        self.sentenceobj = self.corpus.sentences[sentindex] if corpus.sentences else None
         self.segmentations = []
         self.set_word_positions()
         self.always_paint = True
         self.geez_big = Font(family=geezfamily, size=20)
-        self.geez_normal = Font(family=geezfamily, size=18)
+        self.geez_normal = Font(family=geezfamily, size=16)
         self.roman_big = Font(family="Arial", size=20)
+        self.roman_medium = Font(family="Arial", size=18)
         self.init_sentence_text()
         self.wordid_entry = self.init_wordid_entry()
         self.sentid_entry = self.init_sentid_entry()
-        self.quit_button = Button(self, text="Quit", command=self.quit)
-        self.quit_button.grid(row=0, column=2)
-        self.sent_text.grid(row=1, columnspan=3)
-        self.sentenceobj = self.corpus.sentences[sentindex]
+        self.init_buttons()
         self.segmentations = self.sentenceobj.words
-#        self.corpus.sentences[sentindex].words
         self.canvas = SegCanvas(self, corpus) # width=width-25, height=height-25)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
@@ -165,14 +166,18 @@ class SegRoot(Tk):
         self.hscrollbar.grid(row=3, columnspan=3, sticky='ew')
         self.canvas.configure(xscrollcommand=self.hscrollbar.set)
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-#        self.show_segmentations()
 
     def quit(self):
         '''
         Quit the GUI, destroying all widgets.
         '''
-#        self.parent.destroy()
         self.destroy()
+
+    def activate_undo(self):
+        self.undo_button.configure(style="Active.TButton")
+
+    def deactivate_undo(self):
+        self.undo_button.configure(style="Inactive.TButton")
 
     def init_vars(self):
         '''
@@ -218,6 +223,22 @@ class SegRoot(Tk):
         self.highlight_word(0)
         return we
 
+    def init_buttons(self):
+        '''
+        Create buttons for quitting and undoing.
+        '''
+        self.button_frame = Frame(self, width=25, height=100)
+        active_style = Style()
+        active_style.configure("Active.TButton", foreground='black')
+        inactive_style = Style()
+        inactive_style.configure('Inactive.TButton', foreground='LightGray')
+        self.undo_button = Button(self.button_frame, text="Undo", command=self.undo, style='Inactive.TButton')
+#        self.undo_button.configure(style="Inactive.TButton")
+        self.quit_button = Button(self.button_frame, text="Quit", command=self.quit)
+        self.undo_button.grid(row=0, column=0)
+        self.quit_button.grid(row=1, column=0)
+        self.button_frame.grid(row=0, column=2, padx=10)
+
     def get_sentid(self, event):
         '''
         Get the current sentence ID (1 greater than actual ID).
@@ -257,14 +278,28 @@ class SegRoot(Tk):
         '''
         Create the sentence Text and the word highligh tag.
         '''
-        self.sent_text = Text(self, font=self.geez_big, width=SegRoot.sentencewidth, height=2, padx=20)
-#        sl.tag_configure("align", justify='center')
+        self.sent_frame = Frame(self, padding=10)
+        self.sent_text = Text(self.sent_frame, font=self.geez_big, width=SegRoot.sentencewidth, height=2, padx=20)
         self.sent_text.insert("1.0", self.sentence)
         self.sent_text.tag_configure("highlight", background="OliveDrab1", foreground="black")
-#        self.highlight_word(0)
-#        sl.tag_add("align", "1.0", "end")
-#        sl.tag_add("highlight", "1.0","1.4")
-#        sl.tag_configure("highlight", background="OliveDrab1", foreground="black")
+        self.sent_label = Label(self.sent_frame, font=self.roman_medium, text=self.sentenceobj.label)
+        self.sent_label.grid(row=0, column=0)
+        self.sent_text.grid(row=1, column=0)
+        self.sent_frame.grid(row=1, columnspan=3)
+
+    def highlight_sentence(self):
+        '''
+        Highlight the sentence Text.
+        '''
+        self.sent_text.config(background='LightGray')
+        self.sent_label.config(foreground='Gray')
+
+    def unhighlight_sentence(self):
+        '''
+        Unhighlight the sentence Text.
+        '''
+        self.sent_text.config(background='white')
+        self.sent_label.config(foreground='black')
 
     def highlight_word(self, windex):
         '''
@@ -290,9 +325,19 @@ class SegRoot(Tk):
         Make the first word the current word.
         '''
         self.sentenceobj = self.corpus.sentences[sentindex]
+        self.sent_label.config(text=self.sentenceobj.label)
+        nambig = self.sentenceobj.count_ambiguities()
         self.segmentations = self.sentenceobj.words
+        # Clear undo memory and deactivate button
+        self.memory = []
+        self.deactivate_undo()
         self.sent_text.delete("1.0", "end")
         self.sent_text.insert("1.0", self.sentence)
+        # Show whether the sentence has any ambiguities.
+        if nambig:
+            self.unhighlight_sentence()
+        else:
+            self.highlight_sentence()
         self.set_word_positions()
         self.set_wordid(1)
 
@@ -355,13 +400,47 @@ class SegRoot(Tk):
         wordsegs = self.segmentations[wordindex]
         return wordsegs
 
+    def set_pos(self, pos, seg):
+        '''
+        Update the POS tags for a segmentation (dict) (based on selection by user).
+        '''
+        self.sentenceobj.disambiguated = True
+        old = ((seg['upos'], seg['xpos']), seg)
+        self.memory.append(old)
+        self.activate_undo()
+#        print("** Updating memory: {}".format(self.memory))
+        seg['upos'] = pos
+        seg['xpos'] = pos
+
     def set_word_segmentations(self, newsegs):
         '''
         Update the segmentations for the current word (based on selection by user).
         '''
         self.sentenceobj.disambiguated = True
         wordindex = self.wordvar.get()-1
+        old = (wordindex, self.segmentations[wordindex])
+        self.memory.append(old)
+        self.activate_undo()
+#        print("** Updating memory: {}".format(self.memory))
         self.segmentations[wordindex] = newsegs
+
+    def undo(self):
+        """
+        Undo the last segmentation or POS selection.
+        """
+        if self.memory:
+            x, y = self.memory.pop()
+            if isinstance(x, int):
+                # This is a segmentation selection; x is the index, y the oldsegmentations
+                self.segmentations[x] = y
+            else:
+                # This is a POS selection; x is the old UPOS and XPOS, y the word dict
+                upos, xpos = x
+                y['upos'] = upos
+                y['xpos'] = xpos
+            if not self.memory:
+                self.deactivate_undo()
+            self.canvas.update()
 
 class SegCanvas(Canvas):
     '''
@@ -494,11 +573,14 @@ class SegCanvas(Canvas):
         return lambda event: self.select_pos(tag, pos, seg)
 
     def select_pos(self, tag, pos, seg):
-#        print("** Setting tag {} POS {} for segment {}".format(tag, pos, seg))
-        seg['upos'] = pos
-        seg['xpos'] = pos
+        self.parent.set_pos(pos, seg)
+#        oldupos = seg['upos']
+#        oldxpos = seg['xpos']
+#        print("** Setting POS {} for segment {}, word {}, old {}".format(pos, seg, self.parent.word, (oldupos, oldxpos)))
+#        seg['upos'] = pos
+#        seg['xpos'] = pos
 #        print("** Sentence {} updated ...".format(self.parent.sentenceobj))
-        self.parent.sentenceobj.disambiguated = True
+#        self.parent.sentenceobj.disambiguated = True
         self.update()
 #        self.parent.show_segmentations()
 
@@ -617,5 +699,5 @@ class SegCanvas(Canvas):
             self.create_oval(x1 - 2, y - 2, x1 + 2, y + 2, fill='black')
         self.create_rectangle(X - SegCanvas.deplabelX, y - SegCanvas.deplabelY,
                               X + SegCanvas.deplabelX, y + SegCanvas.deplabelY,
-                              fill='yellow', outline='yellow')
+                              fill='white', outline='black')
         self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black')

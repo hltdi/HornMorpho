@@ -1,0 +1,722 @@
+# text = ጉልበቱ የት እንደሚገኝ እንደ መግለፅ ይመስለዋል ።
+# sent_id = TAFS2.2_B1.0_s1
+1-2	ጉልበቱ	_	_	_	_	_	_	_	_
+1	ጉልበት	ጉልበት	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	የት	የት	NOUN	NOUN	_	_	_	_	_
+4-7	እንደሚገኝ	_	_	_	_	_	_	_	_
+4	እንደ	እንደ	SCONJ	SCONJ	_	7	mark	_	_
+5	እም፟	እም	PART	IRLP	_	7	mark	_	_
+6	ይ	ይ	PRON	PRON	Person=3	7	nsubj	_	_
+7	ገ፟ኝ፟	አገኘ	VERB	VERB	Aspect=Imp|Voice=Pass	_	_	_	_
+8	እንደ	እንደ	ADP	ADP	_	_	_	_	_
+9	መግለፅ	ገለጸ	NOUN	INF	_	_	_	_	_
+10-13	ይመስለዋል	_	_	_	_	_	_	_	_
+10	ይ	ይ	PRON	PRON	Person=3	11	nsubj	_	_
+11	መስል	መሰለ	VERB	VERB	Aspect=Imp	_	_	_	_
+12	ኧው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	11	obj	_	_
+13	ኣል	ኣል	AUX	AUX	_	11	aux	_	_
+14	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ወንድንነቱ ጡንቻዎቹ እየወጣጠረው ከተቀመጠበት ተነሳ ።
+# sent_id = TAFS2.2_B1.0_s2
+1	ወንድንነቱ	ወንድንነቱ	UNK	UNK	_	_	_	_	_
+2-3	ጡንቻዎቹ	_	_	_	_	_	_	_	_
+2	ጡንቾች	ጡንቾች	NOUN	NOUN	Number=Plur	_	_	_	_
+3	ኡ	ኡ	PRON	POSM	Gender=Masc|Number=Sing|Person=3|Poss=Yes	2	nmod	_	_
+4-7	እየወጣጠረው	_	_	_	_	_	_	_	_
+4	እየ፟	እየ	SCONJ	SCONJ	_	5	mark	_	_
+5	ወጣጠ፟ር	ወጠረ	VERB	VERB	Aspect=Iter|Aspect=Perf	_	_	_	_
+6	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	5	obj	_	_
+8-12	ከተቀመጠበት	_	_	_	_	_	_	_	_
+8	ከ	ከ	ADP	ADP	_	9	mark	_	_
+9	ተቀመ፟ጥ	ተቀመጠ	VERB	VERB	Aspect=Perf	_	_	_	_
+10	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11	ብ፟	ብ	ADP	ADP	Case=Mal	9	case	_	_
+12	ኧት	ኧት	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	9	expl	_	_
+13-14	ተነሳ	_	_	_	_	_	_	_	_
+13	ተነሳ፟	ተነሳ	VERB	VERB	Mood=Jus	_	_	_	_
+14	ኣ	ኣ	INTJ	INTJ	_	13	discourse	_	_
+15	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = በጀርባው እንደተዘረረ ወደ አቅሉ ተመለሰ ።
+# sent_id = TAFS2.2_B1.0_s3
+1-3	በጀርባው	_	_	_	_	_	_	_	_
+1	በ	በ	ADP	ADP	_	2	case	_	_
+2	ጀርባ	ጀርባ	NOUN	NOUN	_	_	_	_	_
+3	ኡ	ኡ	DET	DET	_	2	det	_	_
+4-6	እንደተዘረረ	_	_	_	_	_	_	_	_
+4	እንደ	እንደ	SCONJ	SCONJ	_	5	mark	_	_
+5	ተዘረ፟ር	ዘረረ	VERB	VERB	Aspect=Perf|Voice=Pass	_	_	_	_
+6	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ወደ	ወደ	ADP	ADP	_	_	_	_	_
+8-9	አቅሉ	_	_	_	_	_	_	_	_
+8	አቅል፟	ቀለለ	VERB	VERB	Mood=Jus|Voice=Trans	_	_	_	_
+9	ኡ	ኡ	PRON	SUBJ	Number=Plur|Person=2,3	8	nsubj	_	_
+10-11	ተመለሰ	_	_	_	_	_	_	_	_
+10	ተመለ፟ስ	መለሰ	VERB	VERB	Aspect=Perf|Voice=Pass	_	_	_	_
+11	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ሀዘኔታዋ ነበር የሚያስለቅሳት ።
+# sent_id = TAFS2.2_B1.0_s4
+1-2	ሀዘኔታዋ	_	_	_	_	_	_	_	_
+1	ሀዘኔታ	ሀዘኔታ	NADJ	NADJ	_	_	_	_	_
+2	ዋ	ዋ	PRON	POSM	Gender=Fem|Number=Sing|Person=3|Poss=Yes	1	nmod	_	_
+3	ነበ፟ር	ነበ፟ር	AUX	AUX	_	_	_	_	_
+4-8	የሚያስለቅሳት	_	_	_	_	_	_	_	_
+4	የ	የ	PART	RLP	_	7	mark	_	_
+5	እም፟	እም	PART	IRLP	_	7	mark	_	_
+6	ይ	ይ	PRON	PRON	Person=3	7	nsubj	_	_
+7	አስለቅ፟ስ	አለቀሰ	VERB	VERB	Aspect=Imp|Voice=Cau	_	_	_	_
+8	ኣት	ኣት	PRON	OBJC	Gender=Fem|Number=Sing|Person=3	7	obj	_	_
+9	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ምን ያተርፋል ?
+# sent_id = TAFS2.2_B1.0_s5
+1	ምን	ምን	NOUN	NOUN	_	_	_	_	_
+2-4	ያተርፋል	_	_	_	_	_	_	_	_
+2	ይ	ይ	PRON	PRON	Person=3	3	nsubj	_	_
+3	አተርፍ	ተረፈ	VERB	VERB	Aspect=Imp|Voice=Trans	_	_	_	_
+4	ኣል	ኣል	AUX	AUX	_	3	aux	_	_
+5	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = የሚለውም አጠራጣሪ ሆኗል ።
+# sent_id = TAFS2.2_B1.0_s7
+1-6	የሚለውም	_	_	_	_	_	_	_	_
+1	የ	የ	PART	RLP	_	4	mark	_	_
+2	እም፟	እም	PART	IRLP	_	4	mark	_	_
+3	ይ	ይ	PRON	PRON	Person=3	4	nsubj	_	_
+4	ል	አለ	VERB	VERB	Aspect=Imp	_	_	_	_
+5	ኧው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	4	obj	_	_
+6	ም	ም	CCONJ	CCONJ	_	4	cc	_	_
+7	አጠ፟ራጣሪ	ተጠራጠረ	NOUN	NOUN	_	_	_	_	_
+8-10	ሆኗል	_	_	_	_	_	_	_	_
+8	ሆን	ሆነ	VERB	VERB	Verbform=Conv	_	_	_	_
+9	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	ኣል	ኣል	AUX	AUX	_	8	aux	_	_
+11	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = አገር ቤት ያለሽ ነው የሚመስልሽ ።
+# sent_id = TAFS2.2_B1.0_s8
+1-2	አገር ቤት	_	_	_	_	_	_	_	_
+1	አገር	አገር	NOUN	NOUN	_	2	compound	_	_
+2	ቤት	ቤት	NOUN	NOUN	_	_	_	_	_
+3-6	ያለሽ	_	_	_	_	_	_	_	_
+3	የ	የ	PART	RLP	_	4	mark	_	_
+4	አል	አለ	VERB	VERB	Aspect=Perf	_	_	_	_
+5	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ሽ	ሽ	PRON	OBJC	Gender=Fem|Number=Sing|Person=2	4	obj	_	_
+7-8	ነው	_	_	_	_	_	_	_	_
+7	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+8	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9-13	የሚመስልሽ	_	_	_	_	_	_	_	_
+9	የ	የ	PART	RLP	_	12	mark	_	_
+10	እም፟	እም	PART	IRLP	_	12	mark	_	_
+11	ይ	ይ	PRON	PRON	Person=3	12	nsubj	_	_
+12	መስል	መሰለ	VERB	VERB	Aspect=Imp	_	_	_	_
+13	ሽ	ሽ	PRON	OBJC	Gender=Fem|Number=Sing|Person=2	12	obj	_	_
+14	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ለጥቂት ደቂቃዎች ?
+# sent_id = TAFS2.2_B1.0_s9
+1-2	ለጥቂት	_	_	_	_	_	_	_	_
+1	ለ	ለ	ADP	ADP	_	2	case	_	_
+2	ጥቂት	ጥቂት	ADJ	ADJ	_	_	_	_	_
+3	ደቂቆች	ደቂቆች	NOUN	NOUN	Number=Plur	_	_	_	_
+4	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ያጡት ነፃነታቸውንም ምቾታቸውንም ነበርና ።
+# sent_id = TAFS2.2_B1.0_s10
+1-4	ያጡት	_	_	_	_	_	_	_	_
+1	ይ	ይ	PRON	PRON	Person=3	2	nsubj	_	_
+2	አጣ	አጣ	VERB	VERB	Aspect=Imp	_	_	_	_
+3	ኡ	ኡ	PRON	SUBJ	Number=Plur|Person=2,3	2	nsubj	_	_
+4	ት	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	2	obj	_	_
+5-8	ነፃነታቸውንም	_	_	_	_	_	_	_	_
+5	ነፃነ፟ት	ነጻነ፟ት	NOUN	NOUN	_	_	_	_	_
+6	ኣቸ፟ው	ኣቸው	PRON	POSM	Number=Plur|Person=3|Poss=Yes	5	nmod	_	_
+7	ን	ን	PART	ACC	Case=Acc	5	case	_	_
+8	ም	ም	CCONJ	CCONJ	_	5	cc	_	_
+9-12	ምቾታቸውንም	_	_	_	_	_	_	_	_
+9	ምቾ፟ት	ምቾ፟ት	NADJ	NADJ	_	_	_	_	_
+10	ኣቸ፟ው	ኣቸው	PRON	POSM	Number=Plur|Person=3|Poss=Yes	9	nmod	_	_
+11	ን	ን	PART	ACC	Case=Acc	9	case	_	_
+12	ም	ም	CCONJ	CCONJ	_	9	cc	_	_
+13-15	ነበርና	_	_	_	_	_	_	_	_
+13	ነበ፟ር	ነበረ	VERB	VERB	Aspect=Perf	_	_	_	_
+14	ን	ን	PRON	SUBJ	Number=Plur|Person=1	13	nsubj	_	_
+15	ኣ	ኣ	INTJ	INTJ	_	13	discourse	_	_
+16	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ዮፍታሔ ማን ነው ?
+# sent_id = TAFS2.2_B1.0_s11
+1	ዮፍታሔ	ዮፍታሄ	PROPN	PROPN	_	_	_	_	_
+2	ማን	ማን	NOUN	NOUN	_	_	_	_	_
+3-4	ነው	_	_	_	_	_	_	_	_
+3	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+4	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = በመሆኑም ሌላ መንገድ መቀየስ አስፈላጊ ነው ።
+# sent_id = TAFS2.2_B1.0_s12
+1-4	በመሆኑም	_	_	_	_	_	_	_	_
+1	በ	በ	ADP	ADP	_	2	case	_	_
+2	መሆን	ሆነ	NOUN	INF	_	_	_	_	_
+3	ኡ	ኡ	DET	DET	_	2	det	_	_
+4	ም	ም	CCONJ	CCONJ	_	2	cc	_	_
+5	ሌላ	ሌላ	ADJ	ADJ	_	_	_	_	_
+6	መንገድ	መንገድ	NOUN	NOUN	_	_	_	_	_
+7	መቀየ፟ስ	ቀየሰ	NOUN	INF	_	_	_	_	_
+8	አስፈላ፟ጊ	አስፈላ፟ጊ	ADJ	ADJ	_	_	_	_	_
+9-10	ነው	_	_	_	_	_	_	_	_
+9	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+10	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = አቶ ይርጋለም እኔም አመሰግናለሁ ።
+# sent_id = TAFS2.2_B1.0_s13
+1	አቶ	አቶ	NOUN	NOUN	_	_	_	_	_
+2	ይርጋለም	ይርጋለም	PROPN	PROPN	_	_	_	_	_
+3-4	እኔም	_	_	_	_	_	_	_	_
+3	እኔ	እኔ	PRON	PRON	_	_	_	_	_
+4	ም	ም	CCONJ	CCONJ	_	3	cc	_	_
+5-8	አመሰግናለሁ	_	_	_	_	_	_	_	_
+5	እ	እ	PRON	PRON	Number=Sing|Person=1	6	nsubj	_	_
+6	አመሰግ፟ን	ተመሰገነ	VERB	VERB	Aspect=Imp|Voice=Trans	_	_	_	_
+7	ኣል	ኣል	AUX	AUX	_	6	aux	_	_
+8	ኧሁ	ሁ	PRON	SUBJC	Number=Sing|Person=1	6	nsubj	_	_
+9	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ከተባለ ውጤታማ ነው ብዬ አላስብም ።
+# sent_id = TAFS2.2_B1.0_s14
+1-3	ከተባለ	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	_	2	mark	_	_
+2	ተባል	ተባለ	VERB	VERB	Aspect=Perf	_	_	_	_
+3	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ውጤታማ	ውጤታማ	ADJ	ADJ	_	_	_	_	_
+5-6	ነው	_	_	_	_	_	_	_	_
+5	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+6	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7-8	ብዬ	_	_	_	_	_	_	_	_
+7	ብል	አለ	VERB	VERB	Verbform=Conv	_	_	_	_
+8	_E	ኤ	PRON	SUBJ	Number=Sing|Person=1	7	nsubj	_	_
+9-11	አላስብም	_	_	_	_	_	_	_	_
+9	ኣል	ኣል	PART	PART	Number=Sing|Person=1|Polarity=Neg	10	advmod	_	_
+10	አስ፟ብ	አሰበ	VERB	VERB	Aspect=Imp	_	_	_	_
+11	ም	ም	PART	NCM	Polarity=Neg	10	discourse	_	_
+12	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ከሆነ ደስተኛ ያደረገህ ምንድን ነው ?
+# sent_id = TAFS2.2_B1.0_s16
+1-3	ከሆነ	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	_	2	mark	_	_
+2	ሆን	ሆነ	VERB	VERB	Aspect=Perf	_	_	_	_
+3	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ደስ፟ተኛ፟	ደስ፟ተኛ፟	ADJ	ADJ	_	_	_	_	_
+5-8	ያደረገህ	_	_	_	_	_	_	_	_
+5	የ	የ	PART	RLP	_	6	mark	_	_
+6	አደረ፟ግ	ተደረገ	VERB	VERB	Aspect=Perf|Voice=Trans	_	_	_	_
+7	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	ህ	ህ	PRON	OBJC	Gender=Masc|Number=Sing|Person=2	6	obj	_	_
+9	ምንድን	ምንድን	PRON	PRON	_	_	_	_	_
+10-11	ነው	_	_	_	_	_	_	_	_
+10	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+11	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ማንም ጆሮ ያለው ካለ ይስማ ።
+# sent_id = TAFS2.2_B1.0_s17
+1-2	ማንም	_	_	_	_	_	_	_	_
+1	ማን	ማን	NOUN	NOUN	_	_	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3	ጆሮ	ጆሮ	NOUN	NOUN	_	_	_	_	_
+4-7	ያለው	_	_	_	_	_	_	_	_
+4	የ	የ	PART	RLP	_	5	mark	_	_
+5	አል	አለ	VERB	VERB	Aspect=Perf	_	_	_	_
+6	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	5	obj	_	_
+8-10	ካለ	_	_	_	_	_	_	_	_
+8	ከ	ከ	ADP	ADP	_	9	mark	_	_
+9	አል	አለ	VERB	VERB	Aspect=Perf	_	_	_	_
+10	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11-13	ይስማ	_	_	_	_	_	_	_	_
+11	ይ	ይ	PRON	PRON	Person=3	12	nsubj	_	_
+12	ስማ	ሰማ	VERB	VERB	Mood=Jus	_	_	_	_
+13	ኣ	ኣ	INTJ	INTJ	_	12	discourse	_	_
+14	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ተጋጣሚያቸውን በሰፊ የግብ ልዩነት የማያሸንፉ ናቸው ።
+# sent_id = TAFS2.2_B1.0_s18
+1-3	ተጋጣሚያቸውን	_	_	_	_	_	_	_	_
+1	ተጋጣሚ	ተጋጣሚ	NOUN	NOUN	_	_	_	_	_
+2	ኣቸ፟ው	ኣቸው	PRON	POSM	Number=Plur|Person=3|Poss=Yes	1	nmod	_	_
+3	ን	ን	PART	ACC	Case=Acc	1	case	_	_
+4-5	በሰፊ	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	_	5	case	_	_
+5	ሰፊ	ሰፊ	PROPN	PROPN	_	_	_	_	_
+6-7	የግብ	_	_	_	_	_	_	_	_
+6	የ	የ	ADP	ADP	Case=Gen	7	case	_	_
+7	ግብ	ግብ	NOUN	NOUN	_	_	_	_	_
+8	ልዩ፟ነ፟ት	ልዩ፟ነ፟ት	NOUN	NOUN	_	_	_	_	_
+9-13	የማያሸንፉ	_	_	_	_	_	_	_	_
+9	የ	የ	PART	RLP	_	12	mark	_	_
+10	እም፟	እም	PART	IRLP	_	12	mark	_	_
+11	ኣይ	ኣል	PART	PART	Person=3|Polarity=Neg	12	advmod	_	_
+12	አስሸን፟ፍ	ተሸነፈ	VERB	VERB	Aspect=Imp|Voice=Cau	_	_	_	_
+13	ኡ	ኡ	PRON	SUBJ	Number=Plur|Person=2,3	12	nsubj	_	_
+14-15	ናቸው	_	_	_	_	_	_	_	_
+14	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+15	ኣቸ፟ው	ኣቸው	PRON	SUBC	Number=Plur|Person=3	14	nsubj	_	_
+16	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እኛ ተከታይ ነን ።
+# sent_id = TAFS2.2_B1.0_s19
+1	እኛ፟	እኛ፟	PRON	PRON	_	_	_	_	_
+2	ተከታ፟ይ	ተከተለ	NOUN	NOUN	_	_	_	_	_
+3-4	ነን	_	_	_	_	_	_	_	_
+3	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+4	ን	ን	PRON	SUBC	Number=Plur|Person=1	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ኃጢአት የሚፈጽምባቸው መሠዊያዎች ሆነውለታል ።
+# sent_id = TAFS2.2_B1.0_s20
+1	ኃጢአት	ሀጢአት	NOUN	NOUN	_	_	_	_	_
+2-7	የሚፈጽምባቸው	_	_	_	_	_	_	_	_
+2	የ	የ	PART	RLP	_	5	mark	_	_
+3	እም፟	እም	PART	IRLP	_	5	mark	_	_
+4	ይ	ይ	PRON	PRON	Person=3	5	nsubj	_	_
+5	ፈጽ፟ም	ፈጸመ	VERB	VERB	Aspect=Imp	_	_	_	_
+6	ብ፟	ብ	ADP	ADP	Case=Mal	5	case	_	_
+7	ኣቸ፟ው	ኣቸው	PRON	OBJC	Number=Plur|Person=3	5	expl	_	_
+8	መሠዊ፟ዮች	ሰዋ	NOUN	NOUN	Number=Plur	_	_	_	_
+9-13	ሆነውለታል	_	_	_	_	_	_	_	_
+9	ሆን	ሆነ	VERB	VERB	Verbform=Conv	_	_	_	_
+10	ኧው	ኧው	PRON	SUBJ	Number=Plur|Person=3	9	nsubj	_	_
+11	ል፟	ል	ADP	ADP	Case=Ben	9	case	_	_
+12	ኧት	ኧት	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	9	expl	_	_
+13	ኣል	ኣል	AUX	AUX	_	9	aux	_	_
+14	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ይህ ካልሆነስ ?
+# sent_id = TAFS2.2_B1.0_s21
+1	ይህ	ይህ	NADJ	NADJ	_	_	_	_	_
+2-6	ካልሆነስ	_	_	_	_	_	_	_	_
+2	ከ	ከ	ADP	ADP	_	4	mark	_	_
+3	ኣል	ኣል	PART	PART	Polarity=Neg	4	advmod	_	_
+4	ሆን	ሆነ	VERB	VERB	Aspect=Perf	_	_	_	_
+5	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ስ	ስ	CCONJ	CCONJ	_	4	cc	_	_
+7	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ታዲያ መጀመሪያ ባለሙያውን ጠላነው ።
+# sent_id = TAFS2.2_B1.0_s22
+1	ታዲያ	ታዲያ	ADV	ADV	_	_	_	_	_
+2	መጀመ፟ሪያ	ጀመረ	NOUN	NOUN	_	_	_	_	_
+3-5	ባለሙያውን	_	_	_	_	_	_	_	_
+3	ባለሙያ	ባለሙያ	NADJ	NADJ	_	_	_	_	_
+4	ኡ	ኡ	DET	DET	_	3	det	_	_
+5	ን	ን	PART	ACC	Case=Acc	3	case	_	_
+6-8	ጠላነው	_	_	_	_	_	_	_	_
+6	ጠላ፟	ጠላ	VERB	VERB	Aspect=Perf	_	_	_	_
+7	ን	ን	PRON	SUBJ	Number=Plur|Person=1	6	nsubj	_	_
+8	ኧው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	6	obj	_	_
+9	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ህዝቡም ለነፃነቱ ቀናኢ ነው ።
+# sent_id = TAFS2.2_B1.0_s23
+1-3	ህዝቡም	_	_	_	_	_	_	_	_
+1	ህዝብ	ህዝብ	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+4-6	ለነፃነቱ	_	_	_	_	_	_	_	_
+4	ለ	ለ	ADP	ADP	_	5	case	_	_
+5	ነፃነ፟ት	ነጻነ፟ት	NOUN	NOUN	_	_	_	_	_
+6	ኡ	ኡ	DET	DET	_	5	det	_	_
+7	ቀናኢ	ቀናኢ	ADJ	ADJ	_	_	_	_	_
+8-9	ነው	_	_	_	_	_	_	_	_
+8	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+9	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = መነሻ ምክንያታቸውስ ?
+# sent_id = TAFS2.2_B1.0_s24
+1	መነ፟ሻ	መነ፟ሻ	NOUN	NOUN	_	_	_	_	_
+2-4	ምክንያታቸውስ	_	_	_	_	_	_	_	_
+2	ምክንያት	ምክንያት	NOUN	NOUN	_	_	_	_	_
+3	ኣቸ፟ው	ኣቸው	PRON	POSM	Number=Plur|Person=3|Poss=Yes	2	nmod	_	_
+4	ስ	ስ	CCONJ	CCONJ	_	2	cc	_	_
+5	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ጨዋታው ቀላል አይደለም ።
+# sent_id = TAFS2.2_B1.0_s25
+1-2	ጨዋታው	_	_	_	_	_	_	_	_
+1	ጨዋታ	ጨዋታ	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	ቀላ፟ል	ቀላ፟ል	ADJ	ADJ	_	_	_	_	_
+4-6	አይደለም	_	_	_	_	_	_	_	_
+4	አይደለ፟	ኣይደል	AUX	AUX	Polarity=Neg|Tense=Pres	_	_	_	_
+5	ኧ	ኧ	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ም	ም	PART	NCM	Polarity=Neg	4	discourse	_	_
+7	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ሕዝብ ነው ተቆጣጣ ሪያቸው ።
+# sent_id = TAFS2.2_B1.0_s26
+1	ሕዝብ	ህዝብ	NOUN	NOUN	_	_	_	_	_
+2-3	ነው	_	_	_	_	_	_	_	_
+2	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+3	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4-5	ተቆጣጣ	_	_	_	_	_	_	_	_
+4	ተቈጣጣ	ተቆጣ	VERB	VERB	Mood=Jus|Voice=Rcp	_	_	_	_
+5	ኣ	ኣ	INTJ	INTJ	_	4	discourse	_	_
+6	ሪያቸው	ሪያቸው	UNK	UNK	_	_	_	_	_
+7	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = አጠቃላይ የኢህአዴግን አከላለል መቃወም ይቻላል ።
+# sent_id = TAFS2.2_B1.0_s27
+1	አጠ፟ቃላይ	አጠ፟ቃላይ	ADJ	ADJ	_	_	_	_	_
+2	የኢህአዴግን	የኢህአዴግን	UNK	UNK	_	_	_	_	_
+3	አከ፟ላለል	ከለለ	NOUN	NOUN	_	_	_	_	_
+4	መቃ፟ወም	ቈመ	NOUN	INF	Voice=Rcp	_	_	_	_
+5-7	ይቻላል	_	_	_	_	_	_	_	_
+5	ይ	ይ	PRON	PRON	Person=3	6	nsubj	_	_
+6	ቻ፟ል	ቻለ	VERB	VERB	Aspect=Imp|Voice=Pass	_	_	_	_
+7	ኣል	ኣል	AUX	AUX	_	6	aux	_	_
+8	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እንዲህ ቢደረግስ ?
+# sent_id = TAFS2.2_B1.0_s28
+1	እንዲህ	እንዲህ	ADV	ADV	_	_	_	_	_
+2-5	ቢደረግስ	_	_	_	_	_	_	_	_
+2	ብ	ብ	SCONJ	SCONJ	_	4	mark	_	_
+3	ይ	ይ	PRON	PRON	Person=3	4	nsubj	_	_
+4	ደ፟ረ፟ግ	አደረገ	VERB	VERB	Aspect=Imp|Voice=Pass	_	_	_	_
+5	ስ	ስ	CCONJ	CCONJ	_	4	cc	_	_
+6	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ችግሩ ግን በዚህ ብቻ የተወሰነ አይደለም ።
+# sent_id = TAFS2.2_B1.0_s29
+1-2	ችግሩ	_	_	_	_	_	_	_	_
+1	ችግ፟ር	ችግ፟ር	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	ግን	ግን	CCONJ	CCONJ	_	_	_	_	_
+4-5	በዚህ	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	_	5	case	_	_
+5	ይህ	ይህ	NOUN	NOUN	_	_	_	_	_
+6	ብቻ፟	ብቻ፟	ADV	ADV	_	_	_	_	_
+7-9	የተወሰነ	_	_	_	_	_	_	_	_
+7	የ	የ	PART	RLP	_	8	mark	_	_
+8	ተወሰ፟ን	ወሰነ	VERB	VERB	Aspect=Perf|Voice=Pass	_	_	_	_
+9	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10-12	አይደለም	_	_	_	_	_	_	_	_
+10	አይደለ፟	ኣይደል	AUX	AUX	Polarity=Neg|Tense=Pres	_	_	_	_
+11	ኧ	ኧ	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	ም	ም	PART	NCM	Polarity=Neg	10	discourse	_	_
+13	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ጉዳዩን መጀመር ስላልፈለገ አመንትቶ አቋረጠ ።
+# sent_id = TAFS2.2_B1.0_s30
+1-3	ጉዳዩን	_	_	_	_	_	_	_	_
+1	ጉዳ፟ይ	ጉዳ፟ይ	NADJ	NADJ	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	ን	ን	PART	ACC	Case=Acc	1	case	_	_
+4	መጀመ፟ር	ጀመረ	NOUN	INF	_	_	_	_	_
+5-8	ስላልፈለገ	_	_	_	_	_	_	_	_
+5	ስለ	ስለ	SCONJ	SCONJ	_	7	mark	_	_
+6	ኣል	ኣል	PART	PART	Polarity=Neg	7	advmod	_	_
+7	ፈለ፟ግ	ፈለገ	VERB	VERB	Aspect=Perf	_	_	_	_
+8	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9-10	አመንትቶ	_	_	_	_	_	_	_	_
+9	አመንትት	አመነታ	VERB	VERB	Verbform=Conv	_	_	_	_
+10	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11-12	አቋረጠ	_	_	_	_	_	_	_	_
+11	አቋ፟ረ፟ጥ	ቆረጠ	VERB	VERB	Aspect=Perf|Voice=Transrcp	_	_	_	_
+12	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	11	nsubj	_	_
+13	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ቸግሮን ነው ።
+# sent_id = TAFS2.2_B1.0_s31
+1-3	ቸግሮን	_	_	_	_	_	_	_	_
+1	ቸግ፟ር	ቸገረ	VERB	VERB	Verbform=Conv	_	_	_	_
+2	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	ን	ን	PRON	OBJC	Number=Plur|Person=1	1	obj	_	_
+4-5	ነው	_	_	_	_	_	_	_	_
+4	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+5	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ኢየሩሳሌም በደረስን ጊዜ ወንድሞች በደስታ ተቀበሉን ።
+# sent_id = TAFS2.2_B1.0_s32
+1	ኢየሩሳሌም	ኢየሩሳሌም	PROPN	PROPN	_	_	_	_	_
+2-4	በደረስን	_	_	_	_	_	_	_	_
+2	በ	በ	ADP	ADP	_	3	mark	_	_
+3	ደረ፟ስ	ደረሰ	VERB	VERB	Aspect=Perf	_	_	_	_
+4	ን	ን	PRON	SUBJ	Number=Plur|Person=1	3	nsubj	_	_
+5	ጊዜ	ጊዜ	NOUN	NOUN	_	_	_	_	_
+6	ወንድmO፟ች	ወንድmO፟ች	NOUN	NOUN	Number=Plur	_	_	_	_
+7-8	በደስታ	_	_	_	_	_	_	_	_
+7	በ	በ	ADP	ADP	_	8	case	_	_
+8	ደስ፟ታ	ደስ፟ታ	NOUN	NOUN	_	_	_	_	_
+9-11	ተቀበሉን	_	_	_	_	_	_	_	_
+9	ተቀበል	ተቀበለ	VERB	VERB	Mood=Jus	_	_	_	_
+10	ኡ	ኡ	PRON	SUBJ	Number=Plur|Person=2,3	9	nsubj	_	_
+11	ን	ን	PRON	OBJC	Number=Plur|Person=1	9	obj	_	_
+12	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እንዴ ዳኒ የኔ ስም ነው እንዴ ?
+# sent_id = TAFS2.2_B1.0_s33
+1	እንዴ	እንዴ	INTJ	INTJ	_	_	_	_	_
+2	ዳኒ	ዳኒ	UNK	UNK	_	_	_	_	_
+3-4	የኔ	_	_	_	_	_	_	_	_
+3	የ	የ	ADP	ADP	Case=Gen	4	case	_	_
+4	እኔ	እኔ	PRON	PRON	_	_	_	_	_
+5	ስም	ስም	NOUN	NOUN	_	_	_	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+7	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	እንዴ	እንዴ	INTJ	INTJ	_	_	_	_	_
+9	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ለነገሩ እንዴት ሊሆን ይችላል ።
+# sent_id = TAFS2.2_B1.0_s34
+1-3	ለነገሩ	_	_	_	_	_	_	_	_
+1	ለ	ለ	ADP	ADP	_	2	case	_	_
+2	ነገር	ነገር	NOUN	NOUN	_	_	_	_	_
+3	ኡ	ኡ	DET	DET	_	2	det	_	_
+4	እንዴት	እንዴት	ADV	ADV	_	_	_	_	_
+5-7	ሊሆን	_	_	_	_	_	_	_	_
+5	ል	ል	SCONJ	SCONJ	_	7	mark	_	_
+6	ይ	ይ	PRON	PRON	Person=3	7	nsubj	_	_
+7	ሆን	ሆነ	VERB	VERB	Aspect=Imp	_	_	_	_
+8-10	ይችላል	_	_	_	_	_	_	_	_
+8	ይ	ይ	PRON	PRON	Person=3	9	nsubj	_	_
+9	ችል	ቻለ	VERB	VERB	Aspect=Imp	_	_	_	_
+10	ኣል	ኣል	AUX	AUX	_	9	aux	_	_
+11	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = የእነሱ ድጋፍ ወደር የለሽ ነው ።
+# sent_id = TAFS2.2_B1.0_s35
+1-2	የእነሱ	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	እነ፟ሱ፟	እነ፟ሱ፟	PRON	PRON	_	_	_	_	_
+3	ድጋፍ	ድጋፍ	NOUN	NOUN	_	_	_	_	_
+4	ወደር	ወደር	NOUN	NOUN	_	_	_	_	_
+5	የለሽ	የለሽ	UNK	UNK	_	_	_	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+7	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = አላት በቁጣ ።
+# sent_id = TAFS2.2_B1.0_s36
+1-3	አላት	_	_	_	_	_	_	_	_
+1	አል	አለ	VERB	VERB	Aspect=Perf	_	_	_	_
+2	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	ኣት	ኣት	PRON	OBJC	Gender=Fem|Number=Sing|Person=3	1	obj	_	_
+4-5	በቁጣ	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	_	5	case	_	_
+5	ቁጣ፟	ቁጣ፟	NOUN	NOUN	_	_	_	_	_
+6	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ብርሃን የሚኖረው በየት አቅጣጫ ነው ?
+# sent_id = TAFS2.2_B1.0_s37
+1	ብርሀን	ብርሀን	NOUN	NOUN	_	_	_	_	_
+2-6	የሚኖረው	_	_	_	_	_	_	_	_
+2	የ	የ	PART	RLP	_	5	mark	_	_
+3	እም፟	እም	PART	IRLP	_	5	mark	_	_
+4	ይ	ይ	PRON	PRON	Person=3	5	nsubj	_	_
+5	ኖር	ኖረ	VERB	VERB	Aspect=Imp	_	_	_	_
+6	ኧው	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	5	obj	_	_
+7-8	በየት	_	_	_	_	_	_	_	_
+7	በ	በ	ADP	ADP	_	8	case	_	_
+8	የት	የት	NOUN	NOUN	_	_	_	_	_
+9	አቅጣጫ	አቅጣጫ	NOUN	NOUN	_	_	_	_	_
+10-11	ነው	_	_	_	_	_	_	_	_
+10	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+11	ው	ው	PRON	SUBC	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እሺ ከዚያስ ?
+# sent_id = TAFS2.2_B1.0_s38
+1	እሺ፟	እሺ፟	PART	PART	_	_	_	_	_
+2-4	ከዚያስ	_	_	_	_	_	_	_	_
+2	ከ	ከ	ADP	ADP	Case=Loc	3	case	_	_
+3	ያ	ያ	NOUN	NOUN	_	_	_	_	_
+4	ስ	ስ	CCONJ	CCONJ	_	3	cc	_	_
+5	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = መንግሥትም ልዩ ትኩረት ሰጥቶ እየሠራ ይገኛል ።
+# sent_id = TAFS2.2_B1.0_s40
+1-2	መንግሥትም	_	_	_	_	_	_	_	_
+1	መንግሥት	መንግስት	NOUN	NOUN	_	_	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3	ልዩ፟	ልዩ፟	ADJ	ADJ	_	_	_	_	_
+4	ትኩረት	ትኩረት	NADJ	NADJ	_	_	_	_	_
+5-6	ሰጥቶ	_	_	_	_	_	_	_	_
+5	ሰጥት	ሰጠ	VERB	VERB	Verbform=Conv	_	_	_	_
+6	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7-10	እየሠራ	_	_	_	_	_	_	_	_
+7	እየ፟	እየ	SCONJ	SCONJ	_	8	mark	_	_
+8	ሠራ፟	ሰራ	VERB	VERB	Aspect=Perf	_	_	_	_
+9	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	ኣ	ኣ	INTJ	INTJ	_	8	discourse	_	_
+11-13	ይገኛል	_	_	_	_	_	_	_	_
+11	ይ	ይ	PRON	PRON	Person=3	12	nsubj	_	_
+12	ገ፟ኝ፟	አገኘ	VERB	VERB	Aspect=Imp|Voice=Pass	_	_	_	_
+13	ኣል	ኣል	AUX	AUX	_	12	aux	_	_
+14	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እውነትም ውሸትም የሚባል ነገር የለም ።
+# sent_id = TAFS2.2_B1.0_s41
+1-2	እውነትም	_	_	_	_	_	_	_	_
+1	እውነት	እውነት	PROPN	PROPN	_	_	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3-4	ውሸትም	_	_	_	_	_	_	_	_
+3	ውሸት	ውሸት	NOUN	NOUN	_	_	_	_	_
+4	ም	ም	CCONJ	CCONJ	_	3	cc	_	_
+5-8	የሚባል	_	_	_	_	_	_	_	_
+5	የ	የ	PART	RLP	_	8	mark	_	_
+6	እም፟	እም	PART	IRLP	_	8	mark	_	_
+7	ይ	ይ	PRON	PRON	Person=3	8	nsubj	_	_
+8	ባ፟ል	ተባለ	VERB	VERB	Aspect=Imp	_	_	_	_
+9	ነገር	ነገር	NOUN	NOUN	_	_	_	_	_
+10-12	የለም	_	_	_	_	_	_	_	_
+10	የለ፟	አለ	VERB	VERB	Polarity=Neg|Tense=Pres	_	_	_	_
+11	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	ም	ም	PART	NCM	Polarity=Neg	10	discourse	_	_
+13	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ነፍስ ከሥጋ የተለየች ናት ?
+# sent_id = TAFS2.2_B1.0_s42
+1	ነፍስ	ነፍስ	NOUN	NOUN	_	_	_	_	_
+2-3	ከሥጋ	_	_	_	_	_	_	_	_
+2	ከ	ከ	ADP	ADP	Case=Loc	3	case	_	_
+3	ሥጋ	ስጋ	NOUN	NOUN	_	_	_	_	_
+4-6	የተለየች	_	_	_	_	_	_	_	_
+4	የ	የ	PART	RLP	_	5	mark	_	_
+5	ተለየ፟	ለየ	VERB	VERB	Aspect=Perf|Voice=Pass	_	_	_	_
+6	ኧች፟	ኧች	PRON	SUBJ	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7-8	ናት	_	_	_	_	_	_	_	_
+7	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+8	አት	ኧች	PRON	SUBC	Gender=Fem|Number=Sing|Person=3	7	nsubj	_	_
+9	?	?	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ፓርቲውም እስከአሁን አላመለከተም ።
+# sent_id = TAFS2.2_B1.0_s43
+1-3	ፓርቲውም	_	_	_	_	_	_	_	_
+1	ፓርቲ	ፓርቲ	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+4-5	እስከአሁን	_	_	_	_	_	_	_	_
+4	እስከ	እስከ	ADP	ADP	_	5	case	_	_
+5	አሁን	አሁን	NOUN	NOUN	_	_	_	_	_
+6-9	አላመለከተም	_	_	_	_	_	_	_	_
+6	ኣል	ኣል	PART	PART	Polarity=Neg	7	advmod	_	_
+7	አመለከ፟ት	ተመለከተ	VERB	VERB	Aspect=Perf|Voice=Trans	_	_	_	_
+8	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9	ም	ም	PART	NCM	Polarity=Neg	7	discourse	_	_
+10	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ይህም ጉዳዩን ይበልጥ አሳሳቢ እንዲሆን አድርጎታል ።
+# sent_id = TAFS2.2_B1.0_s44
+1-2	ይህም	_	_	_	_	_	_	_	_
+1	ይህ	ይህ	NADJ	NADJ	_	_	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3-5	ጉዳዩን	_	_	_	_	_	_	_	_
+3	ጉዳ፟ይ	ጉዳ፟ይ	NADJ	NADJ	_	_	_	_	_
+4	ኡ	ኡ	DET	DET	_	3	det	_	_
+5	ን	ን	PART	ACC	Case=Acc	3	case	_	_
+6-7	ይበልጥ	_	_	_	_	_	_	_	_
+6	ይ	ይ	PRON	PRON	Person=3	7	nsubj	_	_
+7	በልጥ	በለጠ	VERB	VERB	Aspect=Imp	_	_	_	_
+8	አሳሳ፟ቢ	አሳሳ፟ቢ	NADJ	NADJ	_	_	_	_	_
+9-11	እንዲሆን	_	_	_	_	_	_	_	_
+9	እንድ	እንድ	SCONJ	SCONJ	_	11	mark	_	_
+10	ይ	ይ	PRON	PRON	Person=3	11	nsubj	_	_
+11	ሆን	ሆነ	VERB	VERB	Aspect=Imp	_	_	_	_
+12-15	አድርጎታል	_	_	_	_	_	_	_	_
+12	አድርግ	ተደረገ	VERB	VERB	Verbform=Conv|Voice=Trans	_	_	_	_
+13	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	12	nsubj	_	_
+14	ት	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	12	obj	_	_
+15	ኣል	ኣል	AUX	AUX	_	12	aux	_	_
+16	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ኢትዮጵያም የዚህ አካል ነች ።
+# sent_id = TAFS2.2_B1.0_s46
+1-2	ኢትዮጵያም	_	_	_	_	_	_	_	_
+1	ኢትዮጵያ	ኢትዮጵያ	PROPN	PROPN	_	_	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3-4	የዚህ	_	_	_	_	_	_	_	_
+3	የ	የ	ADP	ADP	Case=Gen	4	case	_	_
+4	ይህ	ይህ	NOUN	NOUN	_	_	_	_	_
+5	አካል	አካል	NOUN	NOUN	_	_	_	_	_
+6-7	ነች	_	_	_	_	_	_	_	_
+6	ነ	ነ	AUX	AUX	Tense=Pres	_	_	_	_
+7	ኧች፟	ኧች	PRON	SUBC	Gender=Fem|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ምክንያቱም የእያንዳንዳችን ሁኔታና ችሎታ ይለያያል ።
+# sent_id = TAFS2.2_B1.0_s47
+1	ምክንያቱም	ምክንያቱም	CCONJ	CCONJ	_	_	_	_	_
+2-5	የእያንዳንዳችን	_	_	_	_	_	_	_	_
+2	የ	የ	ADP	ADP	Case=Gen	4	case	_	_
+3	እየ	እየ	DET	DET	NumType=Dist	4	det	_	_
+4	አንዳንድ	አንዳንድ	NADJ	NADJ	_	_	_	_	_
+5	ኣች፟ን	ኣችን	PRON	POSM	Number=Plur|Person=1|Poss=Yes	4	nmod	_	_
+6-7	ሁኔታና	_	_	_	_	_	_	_	_
+6	ሁኔታ	ሁኔታ	NOUN	NOUN	_	_	_	_	_
+7	ና፟	ና	CCONJ	CCONJ	_	6	cc	_	_
+8-11	ችሎታ	_	_	_	_	_	_	_	_
+8	ችል	ቻለ	VERB	VERB	Verbform=Conv	_	_	_	_
+9	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	ት	ው	PRON	OBJC	Gender=Masc|Number=Sing|Person=3	8	obj	_	_
+11	ኣ	ኣ	INTJ	INTJ	_	8	discourse	_	_
+12-14	ይለያያል	_	_	_	_	_	_	_	_
+12	ይ	ይ	PRON	PRON	Person=3	13	nsubj	_	_
+13	ለ፟ያይ፟	ለየ	VERB	VERB	Aspect=Imp|Voice=Rcp	_	_	_	_
+14	ኣል	ኣል	AUX	AUX	_	13	aux	_	_
+15	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = ጊዜው ለሁሉም ነገር አመቺ አይመስለኝም ።
+# sent_id = TAFS2.2_B1.0_s48
+1-2	ጊዜው	_	_	_	_	_	_	_	_
+1	ጊዜ	ጊዜ	NOUN	NOUN	_	_	_	_	_
+2	ኡ	ኡ	DET	DET	_	1	det	_	_
+3-5	ለሁሉም	_	_	_	_	_	_	_	_
+3	ለ	ለ	ADP	ADP	_	4	case	_	_
+4	ሁሉ፟	ሁሉ፟	ADJ	ADJ	_	_	_	_	_
+5	ም	ም	CCONJ	CCONJ	_	4	cc	_	_
+6	ነገር	ነገር	NOUN	NOUN	_	_	_	_	_
+7-8	አመቺ	_	_	_	_	_	_	_	_
+7	አመች፟	ተመቸ	VERB	VERB	Mood=Jus|Voice=Trans	_	_	_	_
+8	ኢ	ኢ	PRON	SUBJ	Gender=Fem|Number=Sing|Person=2	7	nsubj	_	_
+9-12	አይመስለኝም	_	_	_	_	_	_	_	_
+9	ኣይ	ኣል	PART	PART	Person=3|Polarity=Neg	10	advmod	_	_
+10	መስል	መሰለ	VERB	VERB	Aspect=Imp	_	_	_	_
+11	ኧኝ፟	ኝ	PRON	OBJC	Number=Sing|Person=1	10	obj	_	_
+12	ም	ም	PART	NCM	Polarity=Neg	10	discourse	_	_
+13	።	።	PUNCT	PUNCT	_	_	_	_	_
+
+# text = እንዲህ ያለ ነገር ታይቶም ተሰምቶም አያውቅም ።
+# sent_id = TAFS2.2_B1.0_s49
+1	እንዲህ	እንዲህ	ADV	ADV	_	_	_	_	_
+2-4	ያለ	_	_	_	_	_	_	_	_
+2	የ	የ	PART	RLP	_	3	mark	_	_
+3	አል	አለ	VERB	VERB	Aspect=Perf	_	_	_	_
+4	ኧ	ኧ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ነገር	ነገር	NOUN	NOUN	_	_	_	_	_
+6-8	ታይቶም	_	_	_	_	_	_	_	_
+6	ታይት	አየ	VERB	VERB	Verbform=Conv|Voice=Pass	_	_	_	_
+7	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	ም	ም	CCONJ	CCONJ	_	6	cc	_	_
+9-11	ተሰምቶም	_	_	_	_	_	_	_	_
+9	ተሰምት	ሰማ	VERB	VERB	Verbform=Conv|Voice=Pass	_	_	_	_
+10	ኦ	ኦ	PRON	SUBJ	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11	ም	ም	CCONJ	CCONJ	_	9	cc	_	_
+12-14	አያውቅም	_	_	_	_	_	_	_	_
+12	ኣይ	ኣል	PART	PART	Person=3|Polarity=Neg	13	advmod	_	_
+13	አውቅ	አወቀ	VERB	VERB	Aspect=Imp	_	_	_	_
+14	ም	ም	PART	NCM	Polarity=Neg	13	discourse	_	_
+15	።	።	PUNCT	PUNCT	_	_	_	_	_
+
