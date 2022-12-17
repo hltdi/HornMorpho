@@ -1,0 +1,23 @@
+# text = የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።
+# sent_id = TAFS2.2_B1.0_s1
+1-2	የሞት	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	ሞት	ሞት	NOUN	NOUN	_	_	_	_	_
+3	ቅጣት	ቅጣት	NOUN	NOUN	_	_	_	_	_
+4	ተግባራዊ	ተግባራዊ	ADJ	ADJ	_	_	_	_	_
+5-9	የሚያደርጉ	_	_	_	_	_	_	_	_
+5	የ	የ	PART	RLP	_	8	mark	_	_
+6	እም	እም	PART	IRLP	_	8	mark	_	_
+7	ይ	ይ	PRON	PRON	Person=3	8	nsubj	_	_
+8	አደርግ	አደረገ	VERB	VERB	Aspect=Imp	_	_	_	_
+9	ኡ	ኡ	PRON	SUBJ	Number=Plur|Person=2,3	8	nsubj	_	_
+10-11	አገሮችን	_	_	_	_	_	_	_	_
+10	አገሮች	ሃገር	NOUN	NOUN	Number=Plur	_	_	_	_
+11	ን	ን	PART	ACC	Case=Acc	10	case	_	_
+12-15	እንቃወማለን	_	_	_	_	_	_	_	_
+12	እን	እን	PRON	PRON	Number=Plur|Person=1	13	nsubj	_	_
+13	ቃወም	ተቃወመ	VERB	VERB	Aspect=Imp	_	_	_	_
+14	ኣል	ኣል	AUX	AUX	_	13	aux	_	_
+15	ኧን	ን	PRON	SUBJC	Number=Plur|Person=1	13	nsubj	_	_
+16	።	።	PUNCT	PUNCT	_	_	_	_	_
+

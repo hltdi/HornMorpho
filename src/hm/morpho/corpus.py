@@ -287,6 +287,8 @@ class SegRoot(Tk):
         self.sent_label.grid(row=0, column=0)
         self.sent_text.grid(row=1, column=0)
         self.sent_frame.grid(row=1, columnspan=3)
+        if not self.sentenceobj.count_ambiguities():
+            self.highlight_sentence()
 
     def highlight_sentence(self):
         '''
