@@ -58,9 +58,9 @@ class Corpus():
         # Sentence objects, with pre-CoNLL-U word representations
         self.sentences = []
         self.language = get_language('amh', phon=False, segment=True, experimental=True)
-#        # CoNLL-U strings for data
-#        self.conllu = []
         self.name = name or batch_name or self.create_name()
+        # Unknown tokens
+        self.unks = set()
         # Cache for storing segmentations
         self.local_cache = local_cache if isinstance(local_cache, dict) else {}
 
@@ -91,16 +91,14 @@ class Corpus():
         print("Segmenting sentences in {}".format(self))
         sentid = 1
         time0 = time.time()
-        unks = set()
         for sentence in self.data:
             sentence_obj = \
               self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache)
             self.sentences.append(sentence_obj)
-            unks.update(set(sentence_obj.unk))
+            self.unks.update(set(sentence_obj.unk))
             sentid += 1
         if timeit:
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
-        print("** Unknown tokens: {}".format(unks))
 
     def conlluify(self, degeminate=False, verbosity=0):
         """

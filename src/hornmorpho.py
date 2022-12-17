@@ -34,6 +34,7 @@ C2 = ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የ
 C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
 C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
 C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
+C6 = ["ሁላችንን ይወዳሉ ።"]
 CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
 CACO0 = "../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt"
 CACO1 = "../../TAFS/datasets/CACO/CACO_3-7tok_B1.txt"
