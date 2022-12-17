@@ -31,6 +31,9 @@ stem0 -> poss0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 acc0 -> acc       [:}]
 poss0 -> poss     [:}]
 
+# Irregular possessive ሁሉ
+stem0 -> acc     >>hulu_possX<<
+
 ## Non-deverbal common nouns, single words
 stem0 -> plr_oc0   +n_stem1X+      [v=None,-prp]
 #plr_oc0 -> plr_oc       [:}]

@@ -253,7 +253,7 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 `Options:`
 `start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`,
-`segment=True`, `disambiguate=True`, `conlluify=False`
+`segment=True`, `disambiguate=True`, `conlluify=True`, `write=False`, `write_path=''`
 
 >`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from a file found at the keyword argument *path*.
 
@@ -266,7 +266,10 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 * `batch` is a string or float specifying the batch number. It defaults to '1.0'.
 * `segment` specifies whether to run `Corpus.segment()` on the sentences (see below).
 * `disambiguate` specifies whether to run `Corpus.disambiguate()` on the segmented sentences (see below).
-* `conlluify` specifies whether to run `Corpus.conlluify()` on the segmented (and possibly disambiguated) sentences.
+* `conlluify` specifies whether to run `Corpus.conlluify()` on the  segmented (and possibly disambiguated) sentences.
+* `write` specifies whether to run `write_conllu()` on the CoNNL-U
+  sentence representations (only if `conlluify()` has been run),
+  writing the sentence to the value of the `write_path` option.
 
 #### `Corpus` attributes
 
@@ -304,13 +307,15 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 > Here is an image of the GUI.
 > ![disambiguation1](src/hm/figs/disambig1.png)
 > 
-> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word highlighted in green.
+> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word highlighted in green. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray.
 > Segmentations of the current word are shown in the space below.
 > Each segmentation appears in a box, with the segments (morphemes) arranged in columns. At the top of the segmentation, the dependencies between segments are shown. Below this each column gives the form, POS tags (if UPOS and XPOS are different, both are given), features if any, and lemmas, if any are different from the forms.
 > 
 > If the word is ambiguous, that is, if there is more than one segmentation, a number appears to the left of each segmentation box. To select one segmentation, click on the number. You should then see only the segmentation you selected. Selection changes the representation of the word in the `Corpus` instance that created the GUI.
 > 
-> If a word's or segment's POS is ambiguous, two options may be shown. Clicking on one of these selects it as the POS.
+> If a word's or segment's POS is ambiguous, two options may be shown highlighted in pink. Clicking on one of these selects it as the POS.
+> 
+> There is an "Undo" bottom at the top. To undo one or more actions made, either selections of segmentations or of POS tags, click this button. Once a new sentence is chosen, the undo history is cleared, and changes made to other sentences can no longer be undone.
 > 
 > To quit the GUI, click on the "Quit" button in the upper right.
 >
@@ -320,10 +325,9 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 > The `Corpus` method `conlluify()` creates a new CoNLL-U representation for each of the `Sentence` instances stored in the corpus's `sentences` attribute.
 > You would normally call this method after running `disambiguate()` on the sentences.
-> If the option `degeminate` is `True`, the Geez gemination character is removed from all forms and lemmas.
+> If the option `degeminate` is `True`, the Geez gemination character is removed from all lemmas. (Forms are already degeminated.)
 > 
 > In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, and write these to a file.
 > 
-    >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2)
-	>>> c.conlluify()
-	>>> hm.write_conllu(c.sentences, "hm/ext_data/CACO/CACO2.2/CACO2.2_B1.0.conllu")
+    >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2,
+            write=True, write_path=""hm/ext_data/CACO/CACO2.2/CACO2.2_B1.0.conllu")

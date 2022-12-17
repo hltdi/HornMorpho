@@ -194,7 +194,7 @@ def write_conllu(sentences=None, path='', corpus=None,
 def create_corpus(data=None, path='', start=0, n_sents=0,
                   batch_name='', version='2.2', batch='1.0',
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
-                  write=True, write_path='',
+                  write=False, write_path='',
                   timeit=False, local_cache=None,
                   verbosity=0):
     '''
@@ -231,7 +231,7 @@ def create_corpus(data=None, path='', start=0, n_sents=0,
     # Normally disambiguation should happen before this, but it doesn't have to.
     if conlluify:
         corpus.conlluify(degeminate=degeminate, verbosity=verbosity)
-        if write:
+        if write or write_path:
             # conlluify() has to happen before write_conllu
             write_conllu(corpus=corpus, path=write_path,
                             batch_name=batch_name, version=version, batch=batch,
