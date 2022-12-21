@@ -252,20 +252,18 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 **`hm.create_corpus`**()
 
 `Options:`
-`start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`,
-`segment=True`, `disambiguate=True`, `conlluify=True`, `write=False`, `write_path=''`
+`start=0`, `n_sents=0`, `read={}`, `write={}`, `batch={}`,
+`segment=True`, `disambiguate=True`, `conlluify=True`
 
 >`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data, either from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from the values in the *read* dict. Depending on values of options, it may also segment the sentences, open the disambiguation GUI, create CoNLL-U representations, and write the CoNNL-U representations to a file.
 
 >Options:
 
 >* `read` is a `dict` with possible keys `path`, `folder`, and `filename`. If `path` is not specified, a path is created from the values of `folder` and `filename`. `filename` should have no extension.
->* `write` is a `dict` with possible keys `path`, `folder`, and `filename`, speficying whether and where CoNLL-U representations of the sentences in the corpus are to be written. If neither `path` nor `filename` is specified, the representations are written to standard output. Otherwise either `path` is used, if one is given, or, if not, a path is created from `folder` and `filename`. `filename` should have no extension. If `degeminate` is `True` (see below), geminated and ungeminated representations are written to separate files.
->* `start` specifies the line in the file where you want to start segmenting; it defaults to 0, the first line.
+>* `write` is a `dict` with possible keys `stdout`, `path`, `folder`, `filename`, and `annotator`, specifying whether and where CoNLL-U representations of the sentences in the corpus are to be written. If `stdout` is `True`, the representations are written to standard output. Otherwise either `path` is used, if one is given, or, if not, a path is created from `folder` and `filename`. `filename` should have no extension. If `degeminate` is `True` (see below), geminated and ungeminated representations are written to separate files. If there is no `filename`, one is created from the batch name and the value of `annotator`.
+>* `batch` is a `dict` with possible keys `name`, `id`, `sent_length`, `version`, and `source`, specifying various properties of the batch being created. A batch name is created from these unless `name` is given.
+>* `start` specifies the number of the line (sentence) in the file where you want to start segmenting; it defaults to 0, the first line.
 * `n_sents` specifies the number of sentences/lines to read in from the file. It defaults to 0, meaning all of the lines.
-* `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
-* `version` is a string or float specifying the version of the data being analyzed. It defaults to '2.2'.
-* `batch` is a string or float specifying the batch number. It defaults to '1.0'.
 * `segment` specifies whether to run `Corpus.segment()` on the sentences (see below).
 * `disambiguate` specifies whether to run `Corpus.disambiguate()` on the segmented sentences (see below).
 * `conlluify` specifies whether to run `Corpus.conlluify()` on the  segmented (and possibly disambiguated) sentences.
@@ -289,7 +287,7 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 > Example:
 
-    >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2)
+    >>> c = hm.create_corpus(read={'path': "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"}, n_sents=2, segment=False)
                             
 	>>> c.data
 	['አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።', 'ስለሚሉት ጉዳዮች ማወቅ አለባቸው ።']
@@ -302,12 +300,12 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 **`Corpus.disambiguate()`**
 
-> The `Corpus` method `disambiguate()` opens a GUI that displays the segmentations returned by HornMorpho for each word in each sentence in the `sentences` attribute. For ambiguous words, that is, words for which HornMorpho returns more than one segmentation, the GUI permits selecting one of the segmentations. The selection is saved in the `conllu` attribute of the relevant `Sentence` object. If `Corpus.sentences` is empty, `Corpus.segment()` is run before the GUI is opened.
+> The `Corpus` method `disambiguate()` opens a GUI that displays the segmentations returned by HornMorpho for each word in each sentence in the `sentences` attribute. For ambiguous words, that is, words for which HornMorpho returns more than one segmentation, the GUI permits selecting one of the segmentations. The possible modified segmentations are saved in the `conllu` attribute of the relevant `Sentence` object when the GUI is exited. If `Corpus.sentences` is empty, `Corpus.segment()` is run before the GUI is opened.
 > 
 > Here is an image of the GUI.
 > ![disambiguation1](src/hm/figs/disambig1.png)
 > 
-> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word highlighted in green. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray.
+> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word underlined. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray. Otherwise words within a sentence that are unambiguous are displayed with gray backgrounds.
 > Segmentations of the current word are shown in the space below.
 > Each segmentation appears in a box, with the segments (morphemes) arranged in columns. At the top of the segmentation, the dependencies between segments are shown. Below this each column gives the form, POS tags (if UPOS and XPOS are different, both are given), features if any, and lemmas, if any are different from the forms.
 > 

@@ -13,7 +13,8 @@ start -> end  <n_a:-n_a(@cconj,*ና,~cc)>        [cj2=na]
 start -> end  <nji:-nji(@cconj,*ንጂ,~cc)>        [cj2=Inji]   # only jussive/imperative?
 
 # Interjection suffixes (for now call it cj2 in features)
-start -> end <a:-A(@intj,*ኣ,~discourse)>    [cj2=a]
+# How to prevent this from ending up on all verbs ending in -a?
+# start -> end <a:-A(@intj,*ኣ,~discourse)>    [cj2=a]
 
 # Interrogative suffixes
 # (this just causes problems, so leave it out for now)
