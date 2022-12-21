@@ -249,16 +249,18 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 ### Creating a corpus of disambiguated sentences (starting from 4.5.1)
 
-**`hm.create_corpus`**(*data*, *path*)
+**`hm.create_corpus`**()
 
 `Options:`
 `start=0`, `n_sents=0`, `batch_name=''`, `version=2.2`, `batch=1.0`,
 `segment=True`, `disambiguate=True`, `conlluify=True`, `write=False`, `write_path=''`
 
->`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from a file found at the keyword argument *path*.
+>`hm.create_corpus()` returns an instance of the `Corpus` class. It gets data, either from the keyword argument *data*, a list of sentences in the form of strings, or if *data* is `None`, from the values in the *read* dict. Depending on values of options, it may also segment the sentences, open the disambiguation GUI, create CoNLL-U representations, and write the CoNNL-U representations to a file.
 
 >Options:
 
+>* `read` is a `dict` with possible keys `path`, `folder`, and `filename`. If `path` is not specified, a path is created from the values of `folder` and `filename`. `filename` should have no extension.
+>* `write` is a `dict` with possible keys `path`, `folder`, and `filename`, speficying whether and where CoNLL-U representations of the sentences in the corpus are to be written. If neither `path` nor `filename` is specified, the representations are written to standard output. Otherwise either `path` is used, if one is given, or, if not, a path is created from `folder` and `filename`. `filename` should have no extension. If `degeminate` is `True` (see below), geminated and ungeminated representations are written to separate files.
 >* `start` specifies the line in the file where you want to start segmenting; it defaults to 0, the first line.
 * `n_sents` specifies the number of sentences/lines to read in from the file. It defaults to 0, meaning all of the lines.
 * `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
@@ -267,9 +269,7 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 * `segment` specifies whether to run `Corpus.segment()` on the sentences (see below).
 * `disambiguate` specifies whether to run `Corpus.disambiguate()` on the segmented sentences (see below).
 * `conlluify` specifies whether to run `Corpus.conlluify()` on the  segmented (and possibly disambiguated) sentences.
-* `write` specifies whether to run `write_conllu()` on the CoNNL-U
-  sentence representations (only if `conlluify()` has been run),
-  writing the sentence to the value of the `write_path` option.
+* `degeminate` specifies whether separate degeminated representations are created by `conlluify` and also written to files or standard output.
 
 #### `Corpus` attributes
 
@@ -325,9 +325,16 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 > The `Corpus` method `conlluify()` creates a new CoNLL-U representation for each of the `Sentence` instances stored in the corpus's `sentences` attribute.
 > You would normally call this method after running `disambiguate()` on the sentences.
-> If the option `degeminate` is `True`, the Geez gemination character is removed from all lemmas. (Forms are already degeminated.)
+> If the option `degeminate` is `True`, separate geminated and ungeminated representations are created. In the degeminated versions, the Geez gemination character is removed from all lemmas. (Forms are already degeminated.)
 > 
-> In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, and write these to a file.
+> In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, both geminated and ungeminated, and write these to two files.
 > 
-    >>> c = hm.create_corpus(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", n_sents=2,
-            write=True, write_path=""hm/ext_data/CACO/CACO2.2/CACO2.2_B1.0.conllu")
+    >>> c = hm.create_corpus(
+            read={"folder": "../../TAFS/datasets/CACO/", "filename": "CACO_3-7tok_B1"}, n_sents=2,
+            write={"folder": "../../TAFS/venv/conllu/", "filename": "CACO_B1"},
+            degeminate=True
+            )
+	Segmenting sentences in C_TAFS1.0_B1
+	Conlluifying sentences in C_TAFS1.0_B1
+	Writing CoNLL-U sentences C_TAFS1.0_B1 to ../../TAFS/venv/conllu/CACO_B1-G.conllu
+	Writing CoNLL-U sentences C_TAFS1.0_B1 to ../../TAFS/venv/conllu/CACO_B1-U.conllu

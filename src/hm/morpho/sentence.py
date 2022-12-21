@@ -31,34 +31,34 @@ from conllu import parse, TokenList, Token
 from .geez import degeminate
 import os
 
-CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
-TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
-DATA_PATH = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO', 'CACO1.1', "CACO_TEXT.txt")
+#CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
+#TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
+#DATA_PATH = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO', 'CACO1.1', "CACO_TEXT.txt")
 
-def get_caco_data(sort=False, filter_sentences=True, min_length=3, max_length=7, write=False):
-    with open(DATA_PATH) as file:
-        data = [l.strip().split() for l in file.readlines()]
-        if sort:
-            data.sort(key=lambda x: len(x))
-        if filter_sentences:
-            data = [d for d in data if d[-1] in ('።?!') and min_length <= len(d) <= max_length]
-        data = [' '.join(d) for d in data]
-        if write:
-            with open(os.path.join(CACO_DIR, 'CACO1.1', "CACO_TEXT_{}.txt".format(write)), 'w', encoding='utf8') as file:
-                for sentence in data:
-                    print(sentence, file=file)
-            return
-        return data
+#def get_caco_data(sort=False, filter_sentences=True, min_length=3, max_length=7, write=False):
+#    with open(DATA_PATH) as file:
+#        data = [l.strip().split() for l in file.readlines()]
+#        if sort:
+#            data.sort(key=lambda x: len(x))
+#        if filter_sentences:
+#            data = [d for d in data if d[-1] in ('።?!') and min_length <= len(d) <= max_length]
+#        data = [' '.join(d) for d in data]
+#        if write:
+#            with open(os.path.join(CACO_DIR, 'CACO1.1', "CACO_TEXT_{}.txt".format(write)), 'w', encoding='utf8') as file:
+#                for sentence in data:
+#                    print(sentence, file=file)
+#            return
+#        return data
 
-def tb_path(file="am_att-ud-test.conllu"):
-    return os.path.join(TB_DIR, file)
+#def tb_path(file="am_att-ud-test.conllu"):
+#    return os.path.join(TB_DIR, file)
 
-def parse_tb(file="am_att-ud-test.conllu"):
-    with open(tb_path(), encoding='utf8') as file:
-        return file.read()
+#def parse_tb(file="am_att-ud-test.conllu"):
+#    with open(tb_path(), encoding='utf8') as file:
+#        return file.read()
 
-def caco_path(version, file):
-    return os.path.join(CACO_DIR, "CACO{}".format(version), file)
+#def caco_path(version, file):
+#    return os.path.join(CACO_DIR, "CACO{}".format(version), file)
 
 class Sentence():
     """
@@ -80,6 +80,8 @@ class Sentence():
         self.xml = ''
         self.conllu = TokenList([])
         self.conllu.metadata = {'text': text, 'sent_id': self.label}
+        # For degeminated (or eventually other modified) CoNLL-U representations of sentence
+        self.alt_conllu = None
         # list of unknown tokens
         self.unk = []
         # list of morphologically ambiguous words
@@ -135,32 +137,37 @@ class Sentence():
             return True
         return False
 
-    def count_ambiguities(self):
+    def record_ambiguities(self):
         '''
         Return the number of ambiguities (POS, segmentation) in the sentence.
         '''
         count = 0
-        for word in self.words:
+        ambig = []
+        for index, word in enumerate(self.words):
             if len(word) > 1:
-#                print("** {} is ambiguous".format(word))
                 # multiple segmentations
+                ambig.append(index)
                 count += 1
             else:
                 # first segmentation
                 word = word[0]
-                if len(word) == 1:
-                    # unsegmented word; ignore segmented words for now
-                    word = word[0]
-                    pos = word['upos']
+                for morph in word:
+                    pos = morph.get('upos')
+#                if len(word) == 1:
+#                    # unsegmented word
+#                    word = word[0]
+#                    pos = word['upos']
                     if pos in Sentence.selectpos:
-#                        print("** {} POS is ambiguous".format(word))
                         # an ambiguous POS
+                        ambig.append(index)
                         count += 1
-        return count
+        return ambig
                 
-    def words2conllu(self, update_indices=True, degem=False, verbosity=0):
+    def words2conllu(self, update_indices=True, gem=True, degem=False, verbosity=0):
         '''
-        Convert a pre-CoNLL-U list of lists of dicts to a list of Tokens.
+        Convert a pre-CoNLL-U list of lists of Token dicts to a list of Tokens.
+        If gem is True (always?), create the unmodified geminated CoNNL-U. If degem is True,
+        create a degeminated version (stored in Sentence.alt_conllu).
         '''
         if self.disambiguated:
             # Some disambiguation took place; recalculate morphological ambiguity
@@ -179,17 +186,22 @@ class Sentence():
         # Update the indices in case the number of morphemes in a word has changed
         index = 1
         conllu = []
+        if degem and self.alt_conllu == None:
+            self.alt_conllu = TokenList([])
+            alt_conllu = []
         for wordseg in wordsegs:
 #            print("** Wordseg {}, index {}".format(wordseg, index))
             if len(wordseg) == 1:
                 # No segments: use current index
                 ws = wordseg[0]
                 ws['id'] = index
-                # Degeminate form always
-                ws['form'] = degeminate(ws['form'])
-                # Degem lemma too
+#                # Degeminate form always
+#                ws['form'] = degeminate(ws['form'])
+                # Degem lemma too if degem is True
                 if degem:
-                    Sentence.degeminate_seg(ws)
+                    altws = ws.copy()
+                    Sentence.degeminate_seg(altws)
+                    alt_conllu.append(altws)
                 conllu.append(ws)
                 index += 1
                 if self.disambiguated:
@@ -209,9 +221,11 @@ class Sentence():
                 # Get rid of the index offset that's stored here so that it doesn't appear in final CoNLL-U
                 wholeword['misc'] = None
                 # Degeminate form always
-                wholeword['form'] = degeminate(wholeword['form'])
+#                wholeword['form'] = degeminate(wholeword['form'])
                 if degem:
-                    Sentence.degeminate_seg(wholeword)
+                    altwholeword = wholeword.copy()
+                    Sentence.degeminate_seg(altwholeword)
+                    alt_conllu.append(altwholeword)
                 conllu.append(wholeword)
                 for morphseg in morphsegs:
 #                    print("  ** morphseg {}, index {}, headindex {}".format(morphseg, index, headindex))
@@ -224,15 +238,21 @@ class Sentence():
                     # Degeminate form always
                     morphseg['form'] = degeminate(morphseg['form'])
                     if degem:
-                        Sentence.degeminate_seg(morphseg)
+                        altmorphseg = morphseg.copy()
+                        Sentence.degeminate_seg(altmorphseg)
+                        alt_conllu.append(altmorphseg)
                     conllu.append(morphseg)
                     index += 1
         conllu = TokenList(conllu)
         conllu.metadata = self.conllu.metadata
+        self.conllu = conllu
+        if degem:
+            alt_conllu = TokenList(alt_conllu)
+            alt_conllu.metadata = self.conllu.metadata
+            self.alt_conllu = alt_conllu
         if self.disambiguated:
             # Recalculate ambiguity score
             self.complexity['ambig'] /= self.ntokens
-        self.conllu = conllu
 
     @staticmethod
     def degeminate_seg(seg):
@@ -277,6 +297,8 @@ class Sentence():
                     self.posambig.append(word)
                 props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
+                # Degeminate form
+                pdict['form'] = degeminate(pdict['form'])
                 segments.append(pdict)
                 if conllu and index == 0:
                     tokens.append(Token(pdict))
@@ -284,7 +306,7 @@ class Sentence():
 #                tokens = []
                 endid = morphid + nmorphs
                 ids = (morphid, '-', endid-1)
-                props = [('id', ids), ('form', word), ('lemma', None), ('upos', None), ('xpos', None),
+                props = [('id', ids), ('form', degeminate(word)), ('lemma', None), ('upos', None), ('xpos', None),
                          ('feats', None), ('head', None), ('deprel', None), ('deps', None), ('misc', None)]
                 pdict = dict(props)
                 segments.append(pdict)

@@ -375,6 +375,9 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, lar
             elif next_char == GEMINATION_ROMAN:
                  if n < len(form) - 2 and form[n + 2] in VOWELS:
                     v = form[n + 2]
+                    if v == 'O' and lang == 'am':
+                        # Combining 'O' in Amh following gemination; wendm_Oc
+                        v = 'o'
                     trans = table.get(char + v, char + v) + GEMINATION_GEEZ
                     n += 2
                  else:

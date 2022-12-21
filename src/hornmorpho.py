@@ -35,12 +35,15 @@ C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
 C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
 C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
 C6 = ["እኔ መጣሁ ።", "ሁላችንን ይወዳሉ ።"]
+C7 = ["እርስ በርሳቸውን ይዋደዳሉ ።"]
 CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
 CACO0 = "../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt"
 CACO1 = "../../TAFS/datasets/CACO/CACO_3-7tok_B1.txt"
 CACO2 = "../../TAFS/datasets/CACO/CACO_3-7tok_B2.txt"
 CACO3 = "../../TAFS/datasets/CACO/CACO_3-7tok_B3.txt"
 AS1 = "hm/ext_data/ከአብነት/mini1.txt"
+CACO = "../../TAFS/datasets/CACO"
+CONLLU = "../../TAFS/venv/conllu"
 
 ##def corp1(disambiguate=True):
 ##    return  hm.create_corpus(C1,

@@ -23,7 +23,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
 
-__version__ = '4.5.1.6'
+__version__ = '4.5.1.7'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -154,8 +154,8 @@ def seg_file(file='', language='amh', experimental=True,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
-def write_conllu(sentences=None, path='', corpus=None,
-                 batch_name='', version='2.2', batch='1.0',
+def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
+                 batch_name='',
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
                  verbosity=0):
     '''
@@ -164,19 +164,19 @@ def write_conllu(sentences=None, path='', corpus=None,
     @param sentences: list of instances of Sentence
     @param path: path to file where the sentences will be written
     @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
+    @param degeminated: whether to write the degeminated sentences
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
-    @param batch:  number (string or float) of batch (used to create batch_name if not provided)
+    @param batch_name: string name for batch (not sure this is needed)
     @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
     @param verbosity: int indicating how verbose messages should be
     '''
-#    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
     sentences = sentences or corpus.sentences
     if path:
         file = open(path, 'w', encoding='utf8')
-        print("Writing CoNLL-U sentences {} to {}".format(("in" + corpus.__repr__() if corpus else ''), path))
+        print("Writing CoNLL-U sentences {} to {}".format((corpus.__repr__() if corpus else ''), path))
     else:
         file = morpho.sys.stdout
     nrejected = 0
@@ -186,15 +186,14 @@ def write_conllu(sentences=None, path='', corpus=None,
             nrejected += 1
             rejected.append(sentence.sentid)
             continue
-        conll = sentence.conllu
+        conll = sentence.alt_conllu if degeminated else sentence.conllu
         print(conll.serialize(), file=file, end='')
     if rejected:
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
-def create_corpus(data=None, path='', start=0, n_sents=0,
-                  batch_name='', version='2.2', batch='1.0',
+def create_corpus(data=None, read={}, write={}, batch={},
+                  start=0,
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
-                  write=False, write_path='',
                   timeit=False, local_cache=None,
                   verbosity=0):
     '''
@@ -203,26 +202,42 @@ def create_corpus(data=None, path='', start=0, n_sents=0,
     written to a file (with write_conllu()).
     Only works for Amharic.
 
-    @param data: list of unsegmented, tokenized sentence strings or None
-    @param path: path to file of tokenized sentences, one per line.
+    @param data: list of unsegmented, tokenized sentence strings or None, in which case data
+       is read in from file
+    @param read: dict with keys 'path', 'folder', 'filename', as possible keys, ignored
+       in case data is not None
+    @param write: dict with keys 'stdout', 'path', 'folder', 'filename', 'annotator' as possible keys
+    @param batch: dict with keys 'name', 'id', 'n_sents', 'sent_length', 'source', 'version'
     @param start: index of first sentence/line in file to include in corpus, defaults to 0
-    @param n_sents: number of sentences to read in from file, defaults to 0 (= all)
-    @param batch_name: string name of the input batch of data
-    @param version: version of input data (used to create batch_name if not provided)
-    @param batch:  number (string or float) of batch (used to create batch_name if not provided)
     @param segment: whether to segment the data with HM after it is loaded
-    @param segment: whether to disambiguate the data using the HM GUI after it is segmented
+    @param disambiguate: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
     @param degeminate: whether to geminate lemmas, as well as forms, when running conlluify()
+       and to write both geminated and ungeminated files
     @param timeit: whether to time segmentation
     @param local_cache: cache to store segmentations
-    @param write: whether to write the CoNLL-U sentences to a file or standard output
-    @param write_path: path to use if writing CoNNL-U sentences
     @param verbosity: int controlling how verbose messages should be
     '''
-    batch_name = batch_name or "TAFS{}_B{}".format(version, batch)
-    corpus = morpho.Corpus(data=data, path=path, start=start, n_sents=n_sents, batch_name=batch_name,
+    n_sents = batch.get('n_sents', 100)
+    sent_length = batch.get('sent_length', '')
+    batch_name = batch.get('name') or \
+      "{}{}{}B{}_{}".format(batch.get('source', 'CACO'), batch.get('version', ''),
+                            "_{}_".format(sent_length) if sent_length else '',
+                            batch.get('id', 1), n_sents)
+    def make_path(path, folder, filename, extension):
+        if path:
+            return path
+        if not filename.endswith(extension):
+            filename += extension
+        return morpho.os.path.join(folder, filename)
+    path = ''
+    if not data:
+        readpath = make_path(read.get('path', ''), read.get('folder', ''), read.get('filename', ''), '.txt')
+    corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, batch_name=batch_name,
                            local_cache=local_cache)
+    if not corpus or not corpus.data:
+        print("No corpus found!")
+        return
     if segment:
         corpus.segment(timeit=timeit, verbosity=verbosity)
     if disambiguate:
@@ -231,11 +246,35 @@ def create_corpus(data=None, path='', start=0, n_sents=0,
     # Normally disambiguation should happen before this, but it doesn't have to.
     if conlluify:
         corpus.conlluify(degeminate=degeminate, verbosity=verbosity)
-        if write or write_path:
+        if write:
+            # 'write' dict must contain something for write to happen
+            if write.get('stdout'):
+                path = ''
+            elif write.get('path'):
+                # Explicit path
+                path = write['path']
+            else:
+                folder = write.get('folder', '')
+                filename = write.get('filename', '')
+                if not filename:
+                    # Make the filename from the batch_name
+                    filename = "{}_A{}".format(batch_name, write.get("annotator", 1))
+                path = morpho.os.path.join(folder, filename)
+            gempath = ungempath = ''
+            # geminated corpus
+            if path:
+                # write to file
+                gempath = path + '-G.conllu'
             # conlluify() has to happen before write_conllu
-            write_conllu(corpus=corpus, path=write_path,
-                            batch_name=batch_name, version=version, batch=batch,
-                            verbosity=verbosity)
+            write_conllu(corpus=corpus, path=gempath, degeminated=False,
+                         batch_name=batch_name, verbosity=verbosity)
+            if degeminate:
+                # ungeminated corpus
+                if path:
+                    # write to file
+                    ungempath = path + '-U.conllu'
+                write_conllu(corpus=corpus, path=ungempath, degeminated=True,
+                             batch_name=batch_name, verbosity=verbosity)
     return corpus
 
 def seg_sentence(sentence, language='amh', remove_dups=True):
