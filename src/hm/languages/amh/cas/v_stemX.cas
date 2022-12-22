@@ -53,7 +53,7 @@ B! = {bW, cW, CW, dW, fW, jW, lW, mW, nW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # Labiabization and delabialization of stem consonants
 >stem_lab<
 # Detailed stem structure
->stem_tam+<
+>stem_tamX<
 # Reduplication within stem
 >stem_dup<
 # Gross stem structure

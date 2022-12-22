@@ -83,7 +83,7 @@ te -> test          <st:>     [as=it]
 # ... tt for verbs with C1=L: yIttawweqal, yIttewawweqal
 start -> tt0         <t_:>    [vc=ps,tm=imf];[vc=ps,tm=j_i,sb=[-p2]];[vc=ps,tm=j_i,sb=[+p2],+neg]
 tt0 -> tt           [:]       [tmp=[pre=tt,-c1gem]]
-start -> ij_ps      [:]       [tm=imf,vc=ps];[tm=j_i,vc=ps,sb=[-p2]];[tm=j_i,vc=ps,sb=[+p2],+neg]
+start -> ij_ps      [:]       [tm=imf,vc=ps];[tm=j_i,vc=ps,sb=[-p2],tmp=[-c_2gem]];[tm=j_i,vc=ps,sb=[+p2],+neg,tmp=[-c_2gem]]
 # ... gemination of the following consonant (C1!=L): yImmerreTal, yImmerarreTal
 ij_ps -> i/         [/:]      [tmp=[pre=None,+c1gem]]
 # ... 0 when the root begins with C|: yInsaffefal, yICberebberal
@@ -140,13 +140,13 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 # geminate C2 in perfective, causative, imperfective passive
 -2A_ -> -2V         [_:]      [tm=prf,tmp=[+c_2gem]];[vc=cs,tmp=[+c_2gem]];[tm=imf,vc=ps,tmp=[+c_2gem]]
 # no gemination in other cases
--2A_ -> -2V1        [:]       [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=j_i,vc=tr];[tm=ger,vc=smp];[tm=ger,vc=tr];[tm=ger,vc=ps]
--2V1 -> -2V         [:]       [tmp=[-c_2gem]]
+-2A_ -> -2V        [:]       [tm=imf,vc=smp,tmp=[-c_2gem]];[tm=imf,vc=tr,tmp=[-c_2gem]];[tm=j_i,vc=smp,tmp=[-c_2gem]];[tm=j_i,vc=tr,tmp=[-c_2gem]];[tm=j_i,vc=ps,tmp=[-c_2gem]];[tm=ger,vc=smp,tmp=[-c_2gem]];[tm=ger,vc=tr,tmp=[-c_2gem]];[tm=ger,vc=ps,tmp=[-c_2gem]]
+#-2V1 -> -2V         [:]       [tmp=[-c_2gem]]
 # Final vowel: e for passive and simplex in jussive/imperative (simplex only for CCC)
--2A_ -> -1          [e:]      [tm=j_i,vc=ps,tmp=[v_1=e]];[tm=j_i,vc=smp,tmp=[v_1=e]]
+-2V -> -1          [e:]      [tm=j_i,vc=ps,tmp=[v_1=e]];[tm=j_i,vc=smp,tmp=[v_1=e]]
 # Final ', * for passive and simplex in jussive/imperative (a or 0, skipping to end)
--2A_ -> end         [a:']     [tm=j_i,vc=ps,tmp=[c_1=None,v_1=a]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=a]]
--2A_ -> end         [:*]      [tm=j_i,vc=ps,tmp=[c_1=None,v_1=None]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=None]]
+-2A_ -> end         [a:']     [tm=j_i,vc=ps,tmp=[c_1=None,v_1=a,-c_2gem]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=a,-c_2gem]]
+-2A_ -> end         [:*]      [tm=j_i,vc=ps,tmp=[c_1=None,v_1=None,-c_2gem]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=None,-c_2gem]]
 # C2 (except after L): all root consonants except ', w, y (treated separately below)
 -2A -> -2A_         [X!]      [tmp=[c_2=2]]
 # following C1=L, y and w are also possible for C2
@@ -266,12 +266,11 @@ simp -> -4.2         [:]       [as=it]    # simple iterative
 #### "B" verbs: CC_C, C2 cannot be ', since it can't be geminated
 #### State names contain B
 
-# Geminate C2 in all cases except jussive passive (optionally in imperative passive) (CHANGE FOR GENERATION)
--2B_ -> -2Va         [_]       [tm=prf];[tm=imf];[tm=ger];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs];[tm=j_i,vc=ps,sb=[+p2],-neg]
+# Geminate C2 in all cases except jussive passive (optionally in imperative passive)
+-2B_ -> -2Va         [_]       [tm=prf];[tm=imf];[tm=ger];[tm=j_i,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
 -2Va -> -2V          [:]       [tmp=[+c_2gem]]
 # No C2 gemination in jussive passive, optionally in the imperative
--2B_ -> -2Vb         [:_]      [tm=j_i,vc=ps]
--2Vb -> -2V          [:]       [tmp=[-c_2gem]]
+-2B_ -> -2V         [:_]      [tm=j_i,vc=ps,tmp=[-c_2gem]]
 # C2 can be y or w: qeyyere, lewweTe
 -2B -> -2B_         [X/L]      [tmp=[c_2=2]]
 -3V -> -2B          [e:]       [tmp=[v1=e]]

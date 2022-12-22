@@ -23,7 +23,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # seg_word and seg_file with experimental=True (the default setting)
 # Version 4.5.1 includes the disambiguation GUI and the Corpus class
 
-__version__ = '4.5.1.7'
+__version__ = '4.5.1.8'
 __author__ = 'Michael Gasser'
 
 from . import morpho
