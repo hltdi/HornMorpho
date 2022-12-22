@@ -300,20 +300,20 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 
 **`Corpus.disambiguate()`**
 
-> The `Corpus` method `disambiguate()` opens a GUI that displays the segmentations returned by HornMorpho for each word in each sentence in the `sentences` attribute. For ambiguous words, that is, words for which HornMorpho returns more than one segmentation, the GUI permits selecting one of the segmentations. The possible modified segmentations are saved in the `conllu` attribute of the relevant `Sentence` object when the GUI is exited. If `Corpus.sentences` is empty, `Corpus.segment()` is run before the GUI is opened.
+> The `Corpus` method `disambiguate()`, which is called by `create_corpus()` if `disambiguate` is `True`, opens a GUI that displays the segmentations returned by HornMorpho for each word in each sentence in the corpus's `sentences` attribute. For ambiguous words, that is, words for which HornMorpho returns more than one segmentation, the GUI permits selecting one of the segmentations. The possible modified segmentations are saved in the `conllu` attribute of the relevant `Sentence` object when the GUI is exited. If `Corpus.sentences` is empty, `Corpus.segment()` is run before the GUI is opened.
 > 
 > Here is an image of the GUI.
-> ![disambiguation1](src/hm/figs/disambig1.png)
+> ![disambiguation1](src/hm/figs/4.5.1.7_GUI.png)
 > 
-> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word underlined. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray. Otherwise words within a sentence that are unambiguous are displayed with gray backgrounds.
+> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word underlined. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray. Otherwise words within a sentence that are unambiguous are displayed with gray backgrounds, in the example in the figure all of the words, except the second and fifth.
 > Segmentations of the current word are shown in the space below.
 > Each segmentation appears in a box, with the segments (morphemes) arranged in columns. At the top of the segmentation, the dependencies between segments are shown. Below this each column gives the form, POS tags (if UPOS and XPOS are different, both are given), features if any, and lemmas, if any are different from the forms.
 > 
-> If the word is ambiguous, that is, if there is more than one segmentation, a number appears to the left of each segmentation box. To select one segmentation, click on the number. You should then see only the segmentation you selected. Selection changes the representation of the word in the `Corpus` instance that created the GUI.
+> If the word is ambiguous, that is, if there is more than one segmentation, a number appears to the left of each segmentation box. To select one segmentation, click on the number. You should then see only the segmentation you selected. Selection changes the representation of the word in the `Corpus` instance that created the GUI. The background color for word in the sentence text field is then changed to green, indicating that its segmentation has been edited by the user. In the figure, the user has selected one segmentation for the current word, ጡንቻዎቹ.
 > 
 > If a word's or segment's POS is ambiguous, two options may be shown highlighted in pink. Clicking on one of these selects it as the POS.
 > 
-> There is an "Undo" bottom at the top. To undo one or more actions made, either selections of segmentations or of POS tags, click this button. Once a new sentence is chosen, the undo history is cleared, and changes made to other sentences can no longer be undone.
+> There is an "Undo" bottom at the top. To undo one or more actions made, either selections of segmentations or of POS tags, go to the word whose segmentation or POS choice you want to undo, and click this button. The "Undo" button is disabled when the current word has not been edited.
 > 
 > To quit the GUI, click on the "Quit" button in the upper right.
 >
@@ -325,14 +325,16 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 > You would normally call this method after running `disambiguate()` on the sentences.
 > If the option `degeminate` is `True`, separate geminated and ungeminated representations are created. In the degeminated versions, the Geez gemination character is removed from all lemmas. (Forms are already degeminated.)
 > 
-> In summary, here's an example of how to create a corpus of sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, both geminated and ungeminated, and write these to two files.
+> In summary, here's an example of how to create a corpus of two sentences, segment and disambiguate the sentences, create CoNLL-U representations for the sentences, both geminated and ungeminated, and write these to two files.
 > 
-    >>> c = hm.create_corpus(
-            read={"folder": "../../TAFS/datasets/CACO/", "filename": "CACO_3-7tok_B1"}, n_sents=2,
-            write={"folder": "../../TAFS/venv/conllu/", "filename": "CACO_B1"},
-            degeminate=True
-            )
-	Segmenting sentences in C_TAFS1.0_B1
-	Conlluifying sentences in C_TAFS1.0_B1
-	Writing CoNLL-U sentences C_TAFS1.0_B1 to ../../TAFS/venv/conllu/CACO_B1-G.conllu
-	Writing CoNLL-U sentences C_TAFS1.0_B1 to ../../TAFS/venv/conllu/CACO_B1-U.conllu
+    >>> hm.create_corpus(
+        read={'folder': "../../TAFS/datasets/CACO", 'filename': "CACO_3-7tok_B2"},
+        batch={'n_sents': 2, 'sent_length': '3-7'},
+        degeminate=True,
+        write={'folder': CONLLU}
+        )
+	Segmenting sentences in C_CACO_3-7_B1_2
+	Conlluifying sentences in C_CACO_3-7_B1_2
+	Writing CoNLL-U sentences C_CACO_3-7_B1_2 to ../../TAFS/venv/conllu/CACO_3-7_B1_2_A1-G.conllu
+	Writing CoNLL-U sentences C_CACO_3-7_B1_2 to ../../TAFS/venv/conllu/CACO_3-7_B1_2_A1-U.conllu
+
