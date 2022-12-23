@@ -190,7 +190,6 @@ class Sentence():
             self.alt_conllu = TokenList([])
             alt_conllu = []
         for wordseg in wordsegs:
-#            print("** Wordseg {}, index {}".format(wordseg, index))
             if len(wordseg) == 1:
                 # No segments: use current index
                 ws = wordseg[0]
@@ -264,6 +263,39 @@ class Sentence():
         w = self.make_word(word, segmentations, morphid, conllu=conllu)
         if conllu:
             self.conllu.extend(w)
+
+    def merge_segmentations(self):
+        '''
+        Merge identical or similar segmentations.
+        '''
+        def merge(word):
+            print("** Merging segmentations for {}".format(word))
+            for index, segmentation in enumerate(word):
+                print(" ** Segmentation {}: {}".format(index, segmentation))
+        for windex, word in enumerate(self.words):
+            if len(word) > 1:
+                merge(word)
+
+    def compare_segs(self, seg1, seg2):
+        '''
+        Return differences between seg1 and seg2.
+        '''
+        # indexed dicts of differences
+        if len(seg1) != len(seg2):
+            print("*** Segmentations are different lengths")
+            return False
+        diffs = {}
+        for index, (morph1, morph2) in enumerate(zip(seg1, seg2)):
+            # skip id and head?
+            for key in ('form', 'lemma', 'upos', 'xpos', 'feats', 'deprel'):
+                v1 = morph1.get(key)
+                v2 = morph2.get(key)
+                if v1 != v2:
+                    if index not in diffs:
+                        diffs[index] = {key: (v1, v2)}
+                    else:
+                        diffs[index][key] = (v1, v2)
+        return diffs
 
     def make_word(self, word, segmentations, morphid, conllu=True):
         '''

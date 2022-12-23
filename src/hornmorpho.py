@@ -44,6 +44,13 @@ CACO3 = "../../TAFS/datasets/CACO/CACO_3-7tok_B3.txt"
 AS1 = "hm/ext_data/ከአብነት/mini1.txt"
 CACO = "../../TAFS/datasets/CACO"
 CONLLU = "../../TAFS/venv/conllu"
+SEGS = "../../TAFS/segmentations"
+
+def corp(filename=CACO0, id=0, n_sents=50, start=0):
+    hm.create_corpus(read={'filename': filename},
+                                        batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
+                                         write={"folder": SEGS},
+                                        degeminate=True)
 
 ##def corp1(disambiguate=True):
 ##    return  hm.create_corpus(C1,

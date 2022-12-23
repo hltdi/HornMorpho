@@ -192,7 +192,6 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
 def create_corpus(data=None, read={}, write={}, batch={},
-                  start=0,
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
                   timeit=False, local_cache=None,
                   verbosity=0):
@@ -207,8 +206,7 @@ def create_corpus(data=None, read={}, write={}, batch={},
     @param read: dict with keys 'path', 'folder', 'filename', as possible keys, ignored
        in case data is not None
     @param write: dict with keys 'stdout', 'path', 'folder', 'filename', 'annotator' as possible keys
-    @param batch: dict with keys 'name', 'id', 'n_sents', 'sent_length', 'source', 'version'
-    @param start: index of first sentence/line in file to include in corpus, defaults to 0
+    @param batch: dict with keys 'name', 'id', 'start', 'n_sents', 'sent_length', 'source', 'version'
     @param segment: whether to segment the data with HM after it is loaded
     @param disambiguate: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
@@ -218,12 +216,15 @@ def create_corpus(data=None, read={}, write={}, batch={},
     @param local_cache: cache to store segmentations
     @param verbosity: int controlling how verbose messages should be
     '''
-    n_sents = batch.get('n_sents', 100)
+    n_sents = batch.get('n_sents', 50)
+    start = batch.get('start', 0)
+    range = "{}-{}".format(start+1, start+n_sents) if start else "{}".format(n_sents)
     sent_length = batch.get('sent_length', '')
     batch_name = batch.get('name') or \
-      "{}{}{}B{}_{}".format(batch.get('source', 'CACO'), batch.get('version', ''),
-                            "_{}_".format(sent_length) if sent_length else '',
-                            batch.get('id', 1), n_sents)
+      "{}{}_B{}_{}s".format(batch.get('source', 'CACO'),
+                            "_{}w".format(sent_length) if sent_length else '',
+                            batch.get('id', 1),
+                            range)
     def make_path(path, folder, filename, extension):
         if path:
             return path
@@ -231,6 +232,7 @@ def create_corpus(data=None, read={}, write={}, batch={},
             filename += extension
         return morpho.os.path.join(folder, filename)
     path = ''
+    readpath = ''
     if not data:
         readpath = make_path(read.get('path', ''), read.get('folder', ''), read.get('filename', ''), '.txt')
     corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, batch_name=batch_name,
@@ -258,7 +260,7 @@ def create_corpus(data=None, read={}, write={}, batch={},
                 filename = write.get('filename', '')
                 if not filename:
                     # Make the filename from the batch_name
-                    filename = "{}_A{}".format(batch_name, write.get("annotator", 1))
+                    filename = "{}_MA{}".format(batch_name, write.get("annotator", 1))
                 path = morpho.os.path.join(folder, filename)
             gempath = ungempath = ''
             # geminated corpus
