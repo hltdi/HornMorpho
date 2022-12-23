@@ -606,6 +606,7 @@ class SentenceGUI():
         for word_string in self.word_strings:
             start = self.sentence.find(word_string, position)
             end = start + len(word_string)
+#            print("** positions for {}: {}->{}".format(word_string, start, end))
             position = end
             self.word_positions.append((start, end))
 

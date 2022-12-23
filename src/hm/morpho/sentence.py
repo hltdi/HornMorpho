@@ -270,7 +270,9 @@ class Sentence():
         '''
         def merge(word):
             print("** Merging segmentations for {}".format(word))
-            for index, segmentation in enumerate(word):
+            for index, segmentation1 in enumerate(word[:-1]):
+#                for 
+#                
                 print(" ** Segmentation {}: {}".format(index, segmentation))
         for windex, word in enumerate(self.words):
             if len(word) > 1:
@@ -281,9 +283,12 @@ class Sentence():
         Return differences between seg1 and seg2.
         '''
         # indexed dicts of differences
-        if len(seg1) != len(seg2):
-            print("*** Segmentations are different lengths")
+        if seg1 == seg2:
+            # Segmentations are identical
             return False
+        if len(seg1) != len(seg2):
+            # Segmentations are different lengths; no point in merging
+            return True
         diffs = {}
         for index, (morph1, morph2) in enumerate(zip(seg1, seg2)):
             # skip id and head?
@@ -330,7 +335,7 @@ class Sentence():
                 props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
                 # Degeminate form
-                pdict['form'] = degeminate(pdict['form'])
+                pdict['form'] = degeminate(word)
                 segments.append(pdict)
                 if conllu and index == 0:
                     tokens.append(Token(pdict))

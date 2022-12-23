@@ -147,7 +147,7 @@ sbjs_p -> obj         <u:-u(@pron,subj,$number=plur,person=3,*ኡ,~nsubj)>   [tm
 
 # GERUNDIVE
 # 1; geminate and palatalize previous consonant; don't show the palatalization character
-sbjs_p -> obj         <_8E:-_E(@pron,subj,$number=sing,person=1,*ኤ,~nsubj)> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
+sbjs_p -> obj         <_8E:-E(@pron,subj,$number=sing,person=1,*ኤ,~nsubj)> [tm=ger,sb=[+p1,-p2,-plr],ob=[-p1]]
 sbjs_p -> sbj_g1p     <en:-en(@pron,subj,$number=plur,person=1,*ኧን,~nsubj)>  [tm=ger,sb=[+p1,-p2,+plr],ob=[-p1]]
 # 1p: infix for 2frm (handle later as prefix before -wo(t)?); 3sm
 #sbj_g1p -> obj        <e:-e(infix)>   [ob=[-prp,-p1,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]

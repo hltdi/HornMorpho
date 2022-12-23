@@ -9,6 +9,9 @@ start -> G.k    [/:g;/:q]
 G.k -> start    [k]
 
 start -> T.t    [/:T]
-T.t -> start    [t]
+T.t -> Tt.         [t]
+# Another segment must follow, but not geminated character
+Tt. -> start    [X;V;/;3]
+#T.t -> start    [t]
 
 start ->

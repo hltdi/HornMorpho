@@ -1,5 +1,5 @@
 'ab_abal	b'l++'ab_abal	[as=smp,v=man,vc=smp]
-malet	b'l++malet	[as=smp,v=inf,vc=smp]
+malet	b'l++malet	[as=smp,v=inf,vc=smp,lemma=አለ]
 bay		b'l++bay	[as=smp,v=agt,vc=smp]
 maya		b'l++maya	[as=smp,v=ins,vc=smp]
 'ak_ahEd	hyd++'ak_ahEd	[v=man,vc=smp,as=smp]

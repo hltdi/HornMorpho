@@ -140,10 +140,10 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 # geminate C2 in perfective, causative, imperfective passive
 -2A_ -> -2V         [_:]      [tm=prf,tmp=[+c_2gem]];[vc=cs,tmp=[+c_2gem]];[tm=imf,vc=ps,tmp=[+c_2gem]]
 # no gemination in other cases
--2A_ -> -2V        [:]       [tm=imf,vc=smp,tmp=[-c_2gem]];[tm=imf,vc=tr,tmp=[-c_2gem]];[tm=j_i,vc=smp,tmp=[-c_2gem]];[tm=j_i,vc=tr,tmp=[-c_2gem]];[tm=j_i,vc=ps,tmp=[-c_2gem]];[tm=ger,vc=smp,tmp=[-c_2gem]];[tm=ger,vc=tr,tmp=[-c_2gem]];[tm=ger,vc=ps,tmp=[-c_2gem]]
+-2A_ -> -2V        [:]       [tm=imf,vc=smp,tmp=[-c_2gem]];[tm=imf,vc=tr,tmp=[-c_2gem]];[tm=j_i,vc=tr,tmp=[-c_2gem]];[tm=ger,vc=smp,tmp=[-c_2gem]];[tm=ger,vc=tr,tmp=[-c_2gem]];[tm=ger,vc=ps,tmp=[-c_2gem]]
 #-2V1 -> -2V         [:]       [tmp=[-c_2gem]]
-# Final vowel: e for passive and simplex in jussive/imperative (simplex only for CCC)
--2V -> -1          [e:]      [tm=j_i,vc=ps,tmp=[v_1=e]];[tm=j_i,vc=smp,tmp=[v_1=e]]
+# Final vowel: e for passive and simplex in jussive/imperative (simplex only for CCC); skip gemination
+-2A_ -> -1          [e:]      [tm=j_i,vc=ps,tmp=[v_1=e,-c_2gem]];[tm=j_i,vc=smp,tmp=[v_1=e,-c_2gem]]
 # Final ', * for passive and simplex in jussive/imperative (a or 0, skipping to end)
 -2A_ -> end         [a:']     [tm=j_i,vc=ps,tmp=[c_1=None,v_1=a,-c_2gem]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=a,-c_2gem]]
 -2A_ -> end         [:*]      [tm=j_i,vc=ps,tmp=[c_1=None,v_1=None,-c_2gem]];[tm=j_i,vc=smp,tmp=[c_1=None,v_1=None,-c_2gem]]

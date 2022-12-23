@@ -20,6 +20,7 @@
 'nbiyo 'nbiyo adv
 'ndEt 'ndEt adv
 'ndegena 'ndegena adv
+'ndegenam 'ndegenam adv
 'ndehu 'ndehu adv
 'ndih 'ndih adv
 'ndEh 'ndEh adv
@@ -189,6 +190,7 @@ mknyatum mknyatum cconj
 'ayE 'ayE intj
 'ayzoh 'ayzoh intj
 'h 'h intj
+'neho 'n_eho intj
 'ko 'k_o intj
 'mEtE 'm_EtE intj
 'met 'm_et intj

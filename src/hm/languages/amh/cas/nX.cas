@@ -16,6 +16,10 @@ XX = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y,
 # extra characters
 # possible root consonants
 X = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, *, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
+# consonants that can be geminated
+G = {b, c, C, d, f, g, j, k, l, m, M, n, N, p, P, q, r, s, S, t, T, v, w, x, y, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# consonants that can't be geminated
+~G = {h, ', hW}
 # root consonants other than L, y, w
 X! = {b, c, C, d, f, g, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, x, z, Z, bW, cW, CW, dW, fW, gW, jW, kW, lW, mW, nW, qW, rW, sW, SW, tW, TW, xW, zW, ZW}
 # laryngeal consonants

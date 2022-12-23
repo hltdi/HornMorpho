@@ -983,12 +983,11 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     """
     Convert a segmentation to a string, including features if features is True.
     """
-#    print("*** seg2string {} {} {}".format(segmentation, simplifications, features))
+#    print("*** seg2string {} {} {} {}".format(word, segmentation, simplifications, features))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
-#    print("** pos {} morphstring {} citation {}".format(pos, morphstring, citation))
     if not morphstring:
         if conllu:
 #            word = geezify(word)
@@ -1028,7 +1027,6 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
         for m, f in morphs:
             conv = convert_labial(m)
             morphs2.append([(c, f) for c in conv])
-#    print("*** morphs {}".format(morphs2))
     morphs = allcombs(morphs2)
     # For now ignore multiple spellings for syllables like qWe; just use the first one
     morphs = morphs[0]
@@ -1042,7 +1040,6 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
             # Rejoin morpheme and features for each word
             morphs = [''.join(m) for m in morphs]
 #            morphs = [[''.join(m) for m in word] for word in morphs]
-#            print("**** morphs {}".format(morphs))
         result = {'morphemes': sep.join(morphs)}
     if citation:
         result['lemma'] = citation
