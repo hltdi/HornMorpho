@@ -1,5 +1,5 @@
 al        b'l++al    [bs=0,cls=A,tm=prf,vc=smp,as=smp]
-l         b'l++l      [bs=0,cls=A,tm=imf,vc=smp,as=smp]
+Il        b'l++l      [bs=0,cls=A,tm=imf,vc=smp,as=smp]
 bel       b'l++bel    [bs=0,cls=A,tm=j_i,vc=smp,as=smp]
 bIl       b'l++bl    [bs=0,cls=A,tm=ger,vc=smp,as=smp]
 tew       tw++tew     [bs=0,cls=A,tm=prf,vc=smp,as=smp];[bs=0,cls=A,tm=imf,vc=smp,as=smp];[bs=0,cls=A,tm=j_i,vc=smp,as=smp]

@@ -276,13 +276,16 @@ class Sentence():
 #                    print("*** merges for {}: {}".format(windex, merges))
                     # Only make one change for each word
                     merge = merges[0]
-                    i1, i2, mindex, changes = merge
-                    morph = word[i1][mindex]
-#                    print("**** Changing {} in {}".format(changes, morph))
-                    for field, value in changes:
-                        morph[field] = value
-#                    print("**** New morph: {}".format(morph))
-#                    print("**** Deleting {}".format(word[i2]))
+                    if len(merge) == 2:
+                        # two segmentations are identical
+                        i1, i2 = merge
+                    elif len(merge) == 4:
+                        # combine features from the two segmentations in the first one
+                        i1, i2, mindex, changes = merge
+                        morph = word[i1][mindex]
+                        for field, value in changes:
+                            morph[field] = value
+                    # delete the second (redundant) segmentation
                     del word[i2:i2+1]
 
     def merge_word(self, word):
@@ -296,16 +299,15 @@ class Sentence():
                 i2 = index1+index2+1
 #                print("*** Comparing segmentations {} and {}".format(index1, i2))
                 c = self.compare_segs(segs1, segs2)
-                if 0 in c:
-                    c0 = c[0]
-                    if c0.get('upos') in POSs:
-#                        print("**** Found POS match at 0: {} -- {}".format(index1, i2))
-                        merges.append((index1, i2, 0, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
-                elif 1 in c:
-                    c1 = c[1]
-                    if c1.get('upos') in POSs:
-#                        print("**** Found POS match at 1: {} -- {}".format(index1, i2))
-                        merges.append((index1, i2, 1, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
+                if c is False:
+                    # seg1 and seg2 are identical
+                    merges.append((index1, i2))
+                elif c is True:
+                    # seg1 and seg2 are different lengths
+                    continue
+                for mindex, merged in c.items():
+                    if merged.get('upos') in POSs:
+                        merges.append((index1, i2, mindex, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
         return merges
 
     def compare_segs(self, seg1, seg2):

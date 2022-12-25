@@ -2,8 +2,6 @@ weighting = UNIFICATION
 
 ## Special characters
 # = morpheme boundaries
-# / pre-gemination
-# _ post-gemination
 
 ## Stringsets
 # "Vowel" characters at the beginning of morphemes

@@ -50,7 +50,7 @@ def corp(filename=CACO0, id=0, n_sents=50, start=0):
     hm.create_corpus(read={'filename': filename},
                                         batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
                                          write={"folder": SEGS},
-                                        degeminate=True)
+                                        degeminate=False)
 
 ##def corp1(disambiguate=True):
 ##    return  hm.create_corpus(C1,

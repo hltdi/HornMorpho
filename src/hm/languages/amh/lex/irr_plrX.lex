@@ -1,5 +1,5 @@
-'n_ez_ih	'n_ez_ih	[der=[-ass],lemma=ይህ,+plr,pos=pron,poss=[-expl]]
-'n_ez_iya	'n_ez_iya	[der=[-ass],lemma=ያ,+plr,pos=pron,poss=[-expl]]
+'n_ez_ih	'n_ez_ih	[der=[-ass],lemma=ይህ,+plr,pos=pron,poss=[-expl],+def]
+'n_ez_iya	'n_ez_iya	[der=[-ass],lemma=ያ,+plr,pos=pron,poss=[-expl],+def]
 'ahgur	'ahgur	[lemma=ሀገር,+plr,pos=n]
 'arawit	'arawit	[lemma=አውሬ,+plr,pos=n]
 kewakbt	kewakbt	[lemma=ኮከብ,+plr,pos=n]

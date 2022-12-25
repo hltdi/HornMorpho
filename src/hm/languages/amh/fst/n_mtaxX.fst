@@ -110,6 +110,8 @@ poss -> acc     <wo:-wo(@pron,posm,$number=sing,person=2,polite=form,poss=yes,*�
 acc -> cnj        [:]      [-acc]
 # % not sure why the TB allots a special XPOS to accusative; they also include no features
 acc -> cnj        <n:-n(@part,acc,$case=acc,*ን,~case)>     [+acc]
+# optional -en following 1p poss ኣችን (ሁላችነን)
+acc -> cnj        <en:-n(@part,acc,$case=acc,*ን,~case)>     [+acc,+def,poss=[+p1,-p2,+plr,+expl],-itu]
 # % as in እኤኑ, ማታውኑ ; not sure what the constraints on this -ኑ are
 acc -> cnj        <nu:-nu(@part,acc,$case=acc,*ን,~case)>   [+acc]
 
