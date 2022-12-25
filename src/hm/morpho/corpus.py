@@ -99,6 +99,7 @@ class Corpus():
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
               self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache)
+            sentence_obj.merge_segmentations()
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])

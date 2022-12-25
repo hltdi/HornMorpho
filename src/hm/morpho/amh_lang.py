@@ -1088,6 +1088,7 @@ def root2string(root, simplifications=None):
         cons, form = root.split('++')
 #        return '{' + form + '}'
     elif '+' in root:
+#        print("** root2string {}".format(root))
         cons, temp = root.split('+')
         cons = segment(cons, AMH.seg_units)
         cons = [c for c in cons if c not in ['a', '_']]
@@ -1117,18 +1118,32 @@ def root2string(root, simplifications=None):
                 # A vowel or _ character was added so clear the last consonant
                 last_cons = ''
         # handle palatalization of agent and instrument forms (later check features for this?)
+        # hack: treat plural Oc as special because it's not treated as a suffix
+        plur = []
+        if 'O' in form:
+            plurpos = form.index('O')
+            plur = form[plurpos:]
+            form = form[:plurpos]
+#            formsplit = form.split('O')
+#            form = formsplit[0]
+#            plur = 'O' + formsplit[-1]
         if form[-1] == 'i':
             if form[-2] in AM_PAL:
                 form[-2:] = [AM_PAL[form[-2]]]
         elif form[-3:] == ['i', 'y', 'a']:
             if form[-4] in AM_PAL:
                 form[-4:] = [AM_PAL[form[-4]], 'a']
+        if plur:
+            form.extend(plur)
         form = ''.join(form)
+#        if plur:
+#            form = ''.join(form, plur)
 #        return '{' + ''.join(form) + '}'
     else:
         form = root
     if simplifications:
         form = complicate_stem(form, simplifications)
+#    print("** form {}".format(form))
     return '{' + form + '}'
 
 def modify_geez(geez, romanized):

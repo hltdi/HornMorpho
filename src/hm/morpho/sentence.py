@@ -65,7 +65,7 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
-    selectpos = {'NADJ': ['NOUN', 'ADJ']}
+    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN']}
 
     colwidth = 20
 
@@ -268,15 +268,45 @@ class Sentence():
         '''
         Merge identical or similar segmentations.
         '''
-        def merge(word):
-            print("** Merging segmentations for {}".format(word))
-            for index, segmentation1 in enumerate(word[:-1]):
-#                for 
-#                
-                print(" ** Segmentation {}: {}".format(index, segmentation))
         for windex, word in enumerate(self.words):
             if len(word) > 1:
-                merge(word)
+#                print("** Attempting to merge word {} segmentations".format(windex))
+                merges = self.merge_word(word)
+                if merges:
+#                    print("*** merges for {}: {}".format(windex, merges))
+                    # Only make one change for each word
+                    merge = merges[0]
+                    i1, i2, mindex, changes = merge
+                    morph = word[i1][mindex]
+#                    print("**** Changing {} in {}".format(changes, morph))
+                    for field, value in changes:
+                        morph[field] = value
+#                    print("**** New morph: {}".format(morph))
+#                    print("**** Deleting {}".format(word[i2]))
+                    del word[i2:i2+1]
+
+    def merge_word(self, word):
+        '''
+        Possibly merge segmentations for word, if there are alternatives
+        '''
+        merges = []
+        POSs = [('NOUN', 'PROPN'), ('PROPN', 'NOUN')]
+        for index1, segs1 in enumerate(word[:-1]):
+            for index2, segs2 in enumerate(word[index1+1:]):
+                i2 = index1+index2+1
+#                print("*** Comparing segmentations {} and {}".format(index1, i2))
+                c = self.compare_segs(segs1, segs2)
+                if 0 in c:
+                    c0 = c[0]
+                    if c0.get('upos') in POSs:
+#                        print("**** Found POS match at 0: {} -- {}".format(index1, i2))
+                        merges.append((index1, i2, 0, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
+                elif 1 in c:
+                    c1 = c[1]
+                    if c1.get('upos') in POSs:
+#                        print("**** Found POS match at 1: {} -- {}".format(index1, i2))
+                        merges.append((index1, i2, 1, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
+        return merges
 
     def compare_segs(self, seg1, seg2):
         '''
