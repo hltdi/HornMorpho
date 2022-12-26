@@ -165,7 +165,7 @@ a -> a/             [/:]      [tmp=[+c1gem]]
 -3L -> -3LV         [:']    [vc=smp,tmp=[c1=None]];[vc=ps,tmp=[c1=None]];[vc=cs,tmp=[c1=None]]
 -3LV -> -2AL        [a:]      [tm=prf,tmp=[v1=a]];[tm=ger,tmp=[v1=a]];[tm=imf,tmp=[v1=a]];[tm=j_i,vc=ps,tmp=[v1=a]];[tm=j_i,vc=cs,tmp=[v1=a]]
 # C1 is 0 and V1 is I in other case: jussive/imperative simplex
--3LV -> -2AL        [I:]      [tm=j_i,vc=smp,tmp=[v1=I,-c_2gem]]
+-3LV -> -2AL        [I:]      [tm=j_i,vc=smp,tmp=[v1=None,-c_2gem]]
 
 ## Transitive, passive, and causative prefixes (as well as no prefix) can precede CCC
 simp -> -3t         [:]

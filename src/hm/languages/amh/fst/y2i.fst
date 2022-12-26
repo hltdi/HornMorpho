@@ -19,8 +19,13 @@ iI -> iIy       [y]
 iIy -> start    [V]
 
 start -> I      [I]
+# እይ 
+I -> Iy             [y]
+# እየው
+Iy -> start    [V-I]
 I -> start      [X-y;V;/]     # Ia possible in bIaymeTa
 
 start ->
 I ->
+Iy ->
 0Iy ->

@@ -303,7 +303,7 @@ def read_conv(filename, simple=False):
 
 #def larynA(form):
 
-def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, laryngealA=False):
+def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False):
     '''Convert form in SERA to Geez, using translation table.'''
     if not table:
         table = get_table(lang, False)
@@ -395,7 +395,7 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=False, lar
         n += 1
     return res
 
-def geezify(form, lang='am', gemination=False, deepenthesize=False, laryngealA=False):
+def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=False):
     return \
       sera2geez(get_table(lang, False), form, lang=lang,
                 gemination=gemination, deepenthesize=deepenthesize)

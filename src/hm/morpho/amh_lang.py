@@ -785,7 +785,7 @@ def postproc_word(word, ipa=False, phon=True, ortho_only=False,
         ortho = word
         word = romanize(word)
     else:
-        ortho = geezify(word, gemination=True, deepenthesize=phon)
+        ortho = geezify(word, gemination=True, deepenthesize=True)
     if ortho_only:
         return ortho
     if phonetic:
