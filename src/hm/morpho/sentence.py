@@ -65,7 +65,7 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
-    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN']}
+    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ']}
 
     colwidth = 20
 

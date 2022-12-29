@@ -389,11 +389,11 @@ i/ -> -3_4          [:']
 ## C1=L of CCC verbs in iterative aspect: causative, passive, simplex
 ## (Note that astewawweqe is considered transitive iterative and handled elsewhere)
 # causative and simplex voice: asawawweqe, awawweqe
--4aL -> -4aLV       [:']    [vc=smp,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_1=c,c_2=2,v1=a,v2=a,v3=None,v4=None,pre=None]]
--4aL -> -4aLV       [:']    [vc=cs,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_1=c,c_2=2,v1=a,v2=a,v3=None,v4=None,pre=as]]
+-4aL -> -4aLV       [:']    [vc=smp,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_2=2,v1=a,v2=a,v3=None,v4=None,pre=None]]
+-4aL -> -4aLV       [:']    [vc=cs,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_2=2,v1=a,v2=a,v3=None,v4=None,pre=as]]
 -4aLV -> -3a        [a:]
 # passive: tewawweqe
--4aL -> -3a         [:']    [vc=ps,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_1=c,c_2=2,v1=None,v2=a,v3=None,v4=None,pre=te]]
+-4aL -> -3a         [:']    [vc=ps,tmp=[n=3,c1=None,c2=2,c3=None,c4=None,c_2=2,v1=None,v2=a,v3=None,v4=None,pre=te]]
 
 ## "C" verbs: CaCC, CCaCC, CCCaCC
 simp -> -3a         [:]       [tmp=[n=3,c1=1,c2=None,c3=None,c4=None,c_2=2,v1=a,v2=None,v3=None,v4=None]]
