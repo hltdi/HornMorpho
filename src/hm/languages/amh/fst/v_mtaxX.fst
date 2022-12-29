@@ -189,7 +189,7 @@ objs1  -> negs_aux     <x:-x(@pron,objc,$gender=fem,number=sing,person=2,*ሽ,~o
 objs1  -> negs_aux     <N_:-N_(@pron,objc,$number=sing,person=1,*ኝ,~expl)>  [ob=[+p1,-p2,-plr,+prp]]
 objs1  -> negs_aux     <h:-h(@pron,objc,$gender=masc,number=sing,person=2,*ህ,~expl)>   [ob=[-p1,+p2,-plr,-fem,-frm,+prp]]
 objs1  -> negs_aux     <x:-x(@pron,objc,$gender=fem,number=sing,person=2,*ሽ,~expl)>   [ob=[-p1,+p2,-plr,+fem,-frm,+prp]]
-# lemma could also be ው (generic 3sm object)
+p# lemma could also be ው (generic 3sm object)
 objs1  -> negs_aux    <et:-et(@pron,objc,$gender=masc,number=sing,person=3,*ኧት,~expl)>     [ob=[-p1,-p2,-plr,-fem,+prp]]
 # 3sm allomorphs: w, ew, t
 objs1  ->  def3sm0    [:]        [ob=[-p1,-p2,-plr,-fem,-prp]]
@@ -208,10 +208,10 @@ objs_2frm -> negs_aux  [:;t:]
 # 3sm and 1s subjects
 def3sm0 -> def3sm_3sm    [:]     [sb=[-p1,-p2,-fem,-plr]]
 def3sm0 -> def3sm_1s     [:]     [sb=[+p1,-p2,-plr]]
-def3sm_3sm -> def3sm_w   [:]     [tm=prf];[tm=imf];[tm=j_i]
+def3sm_3sm -> def3sm_w   [:]     [tm=prf];[tm=imf];[tm=j_i];[tm=prs]
 def3sm_3sm -> def3sm_t   [:]     [tm=ger]
 def3sm_1s -> def3sm_w    [:]     [tm=imf];[tm=j_i];[tm=ger]
-def3sm_1s -> def3sm_t    [:]     [tm=prf]
+def3sm_1s -> def3sm_t    [:]     [tm=prf];[tm=prs]
 # other subjects
 def3sm0 -> def3sm_w      [:]     [sb=[+p2,-p1,-plr]];[sb=[-p1,-p2,+fem,-plr]];[sb=[+p1,-p2,+plr]]
 def3sm0 -> def3sm_t      [:]     [sb=[+p2,-p1,+plr]];[sb=[-p1,-p2,+plr]]
