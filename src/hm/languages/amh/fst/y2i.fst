@@ -8,7 +8,7 @@ start -> start  [V-I;X;_;/]
 
 start -> 0I     [:I]
 0I -> 0Iiy      [i:y]
-0Iiy -> start   [X;/]
+0Iiy -> start   [X;/;:I]
 # ySel_Iy -> ySel_y
 0I -> 0Iy       [y]
 # dew_Iy_E -> dew_y_E

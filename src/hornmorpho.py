@@ -46,10 +46,10 @@ CACO = "../../TAFS/datasets/CACO"
 CONLLU = "../../TAFS/venv/conllu"
 SEGS = "../../TAFS/segmentations"
 
-def corp(filename=CACO0, id=0, n_sents=50, start=0):
+def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True):
     hm.create_corpus(read={'filename': filename},
                                         batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
-                                         write={"folder": SEGS},
+                                         write={"folder": SEGS} if write else {},
                                         degeminate=False)
 
 ##def corp1(disambiguate=True):

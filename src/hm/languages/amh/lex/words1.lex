@@ -292,3 +292,4 @@ wede wede adp
 yetenesa yetenes_a adp
 mndn mndn pron
 neber neb_er aux
+neberna neb_ern_a aux

@@ -793,7 +793,7 @@ ly*	''	[bs=0,cls=B,lemma=ለየ,-lt,root=ለየ,t=[eng="recognize,separate,ident
 lzb	''	[bs=0,cls=B,lemma=ለዘበ,-lt,root=ለዘበ,t=[eng="be tender,be gentle"]]
 m'g	''	[bs=a_,cls=A,lemma=አማገ,-lt,root=ማገ,t=[eng="sip loudly,suck up"]];[bs=0,cls=A,lemma=ማገ,-lt,root=ማገ,t=[eng="drink,sip"]]
 m'l	''	[bs=0,cls=A,lemma=ማለ,-lt,root=ማለ,t=[eng=wear]]
-m'r	''	[bs=a_,cls=A,lemma=አማረ,-lt,root=ማረ,sns=3,t=[eng="be beautiful"]];[bs=0,cls=A,lemma=ማረ,-lt,root=ማረ,sns=1,t=[eng=forgive]];[bs=te_,cls=A,lemma=ተማረ,-lt,root=ማረ,sns=2,t=[eng=learn]]
+m'r	''	[bs=a_,cls=A,lemma=አማረ,-lt,root=ማረ,sns=3,t=[eng="be beautiful"],vc=smp];[bs=a_,cls=A,lemma=አማረ,-lt,root=ማረ,sns=3,t=[eng="be beautiful"],vc=cs];[bs=0,cls=A,lemma=ማረ,-lt,root=ማረ,sns=1,t=[eng=forgive]];[bs=te_,cls=A,lemma=ተማረ,-lt,root=ማረ,sns=2,t=[eng=learn]]
 mN*	''	[bs=te_,cls=A,lemma=ተመኘ,-lt,root=መኘ,-smp,t=[eng=wish]]
 mSdq	''	[bs=te_,cls=F,lemma=ተመጻደቀ,-lt,root=መጻደቀ,-smp,t=[eng="behave hypocritically"]]
 mT'	''	[bs=0,cls=A,lemma=መጣ,-lt,root=መጣ,t=[eng=come]]
