@@ -243,6 +243,7 @@
 'gzi'abhEr	''	[pos=nm_pl]
 'ibrahim	''	[pos=nm_pl]
 'idabo	''	[pos=nm_pl]
+'ikWator	''	[pos=nm_pl]
 'ijErE	''	[pos=nm_pl]
 'ilala	''	[pos=nm_pl]
 'ilinoy	''	[pos=nm_pl]

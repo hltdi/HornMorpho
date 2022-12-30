@@ -757,8 +757,6 @@ def get_language(abbrev):
 A = lambda w, raw=False: anal_word('amh', w, raw=raw)
 S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
                                                                                 experimental=False)
-X = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
-                                                                                experimental=True)
 P = lambda w, raw=False: phon_word('amh', w, raw=raw)
 G = lambda r, features=None: gen('amh', r, features=features)
 AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('amh', infile, outfile=outfile, raw=raw, gram=False)

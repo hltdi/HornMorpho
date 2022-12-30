@@ -12,6 +12,8 @@
 'andafta 'andafta adv
 'andga 'andga adv
 'asqedmo 'asqed_mo adv
+degmo degmo adv
+demo dem_o adv
 'fit 'fit adv
 'jg 'j_g adv
 'jgun 'jgun adv
@@ -158,7 +160,6 @@ yanE yan_E adv
 yanEw yan_Ew adv
 yanEwnu yan_Ewnu adv
 yehWalit yehWalit adv
-yemesaselut yemesas_elut adv
 yemr yemr adv
 ylq ylq adv
 ylqs ylqs adv

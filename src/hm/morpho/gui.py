@@ -83,6 +83,8 @@ class SegRoot(Tk):
         self.canvas.update()
         self.wordid_entry = self.init_wordid_entry()
         self.sentid_entry = self.init_sentid_entry()
+        self.bind('<Left>', self.decr_wordid_handler())
+        self.bind('<Right>', self.incr_wordid_handler())
 
     def quit(self):
         '''
@@ -241,6 +243,12 @@ class SegRoot(Tk):
         new_id = wordid + 1
         self.sentenceGUI.set_wordid(new_id)
 
+    def incr_wordid_handler(self):
+        return lambda event: self.increase_wordid()
+
+    def decr_wordid_handler(self):
+        return lambda event: self.decrease_wordid()
+
     def get_word_segmentations(self):
         '''
         Get the segmentations for the current word.
@@ -261,7 +269,7 @@ class SegCanvas(Canvas):
     '''
 
     depYoffset = 10
-    segIDwidth = 50
+    segIDwidth = 55
     segcolwidth = 125
     segrowheight = 18
     Y0 = 25

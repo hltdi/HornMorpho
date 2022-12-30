@@ -5,10 +5,6 @@
 # no prepositions
 start -> distrib    [:]              [prep=None,-gen]
 start -> distrib   >>n_prepX<<
-# % the TB has features for የ
-#start -> distrib    <ye:ye(@adp,$case=gen,*የ,~case)->    [+gen,prep=None]
-# special irregular form
-#start -> cnj  <'ndih:'nd(@adp,$case=equ,*እንደ,~case) -{ih++yh}(*ይህ)> [prep=Inde,v=None,pos=n,-plr,-dis,-p1,-p2,poss=[-expl],-itu,-acc]
 
 ## DISTRIBUTIVE
 distrib -> prestem     [:]              [-dis]
@@ -26,8 +22,8 @@ prestem -> stem      <yale:yale(@part,$polarity=neg,*ኣለ,~advmod)-> [+neg,pre
 stem -> stem0     [:{]
 # Irregular prepositional forms: Izzih, Izziya, etc.; can't be distributive
 stem0 -> acc0      +prep_n+      [-plr,v=None,-dis,-p1,-p2,poss=[-expl],+def,-itu,-prp]
-# Personal pronouns: plurality specified, no possessor, not distributive
-stem0 -> poss0      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
+# Personal pronouns: leave plurality unspecified (because all can take plural suffix), no possessor, not distributive
+stem0 -> plr_oc      +ppron+       [v=None,poss=[-expl],-dis,+def,-itu,-prp]
 acc0 -> acc       [:}]
 poss0 -> poss     [:}]
 
@@ -118,6 +114,7 @@ acc -> cnj        <nu:-nu(@part,acc,$case=acc,*ን,~case)>   [+acc]
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]
 cnj -> end        <m:-m(@cconj,*ም,~cc)>     [cnj=m]
+cnj -> end        <m_a:-m_a(@cconj,*ማ,~cc)>     [cnj=ma]
 cnj -> end        <s_:-s(@cconj,*ስ,~cc)>    [cnj=s]
 cnj -> end        <n_a:-n_a(@cconj,*ና,~cc)>   [cnj=na]
 
