@@ -278,7 +278,7 @@ class SegCanvas(Canvas):
     segdependencyheight = 20
     seggap = 40
     segrightmargin = 20
-    deplabelX = 32
+    deplabelX = 40
     deplabelY = 8
 
     def __init__(self, parent, corpus=None, width=800, height=600):

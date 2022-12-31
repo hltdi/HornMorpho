@@ -304,7 +304,10 @@ def read_conv(filename, simple=False):
 #def larynA(form):
 
 def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False):
-    '''Convert form in SERA to Geez, using translation table.'''
+    '''
+    Convert form in SERA to Geez, using translation table.
+    (This is increasingly ugly; it needs to be cleaned up at some point.)
+    '''
     if not table:
         table = get_table(lang, False)
     # First delete gemination characters
@@ -351,11 +354,21 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
                 n += 1
             elif next_char == 'W' or next_char == 'Y' or char == '^':
                 # Consonant represented by 2 roman characters
+                print("*** char {}, next char {}".format(char, next_char))
                 if n < len(form) - 2 and form[n + 2] in VOWELS:
                     # followed by vowel
-                    trans = table.get(form[n : n + 3], char + next_char + form[n + 2])
+                    chars3 = form[n:n+3]
+                    vowel2 = form[n+2]
+                    if vowel2 == 'O' and lang == 'am':
+                        print("**** Replacing O with o")
+                        vowel2 = 'o'
+                        chars3 = chars3[:-1] + 'o'
+                    elif vowel2 == '@' and lang == 'am':
+                        vowel2 = 'a'
+                        chars3 = chars3[:-1] + 'a'
+                    trans = table.get(chars3, char + next_char + vowel2)
                     n += 1
-                    # followed by consonant
+                # followed by consonant
                 elif n < len(form) - 2 and form[n + 2] == GEMINATION_ROMAN:
                     # followed by gemination character
                     if n < len(form) - 3 and form[n + 3] in VOWELS:

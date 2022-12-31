@@ -305,7 +305,9 @@ The function `hm.write_conllu` writes the CoNNL-U representations of a list of s
 > Here is an image of the GUI.
 > ![disambiguation1](src/hm/figs/4.5.1.7_GUI.png)
 > 
-> At the top of the window are buttons and text fields for selecting particular sentences or words. The current sentence is shown in the space below the buttons, with the current word underlined. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray. Otherwise words within a sentence that are unambiguous are displayed with gray backgrounds, in the example in the figure all of the words, except the second and fifth.
+> At the top of the window are buttons and text fields for selecting
+> particular sentences or words. (The arrow keys can also be used to
+> advance to the next word or return to the previous one.) The current sentence is shown in the space below the buttons, with the current word underlined. The sentence's label is shown above it. If the sentence contains no ambiguities, the label and the background behind the sentence are gray. Otherwise words within a sentence that are unambiguous are displayed with gray backgrounds, in the example in the figure all of the words, except the second and fifth.
 > Segmentations of the current word are shown in the space below.
 > Each segmentation appears in a box, with the segments (morphemes) arranged in columns. At the top of the segmentation, the dependencies between segments are shown. Below this each column gives the form, POS tags (if UPOS and XPOS are different, both are given), features if any, and lemmas, if any are different from the forms.
 > 

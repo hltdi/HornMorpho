@@ -1223,11 +1223,11 @@ class Language:
         string is ([@pos,...,][$feat],[*lemma],[~deprel]).
         format string as in UD.
         '''
-#        print("** udformat {}".format(string))
         feats = None
         match = SEG_STRING_RE.match(string)
         if not match:
             print("** segstring {} doesn't match RE!".format(string))
+            return {}
         else:
             pos, feats, lemma, deprel = match.groups()
             if lemma:

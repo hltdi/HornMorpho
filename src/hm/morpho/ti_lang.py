@@ -567,7 +567,7 @@ def preproc_root(root, fs, pos):
         root, fs = language.Language.dflt_procroot(root, fs)
     return root, fs
 
-def postpostproc_root(root, fs, phonetic=True):
+def postpostproc_root(root, fs, phonetic=True, simplifications=None):
     """
     Convert root to root:class format, also changing internal
     HM root representation to an alternate conventional
@@ -612,7 +612,7 @@ def postproc_root(root):
 ## and segmentation units (phones).
 TI = language.Language("ትግርኛ", 'tir',
                         postproc=postproc_word,
-                        preproc=lambda form: geez2sera(None, form, lang='ti', simp=True),
+                        preproc=lambda form: geez2sera(None, form, lang='ti', simp=True, report_simplification=True),
                         procroot=preproc_root,
                         postpostproc=lambda form: postproc_root(form),
                         seg_units=[["a", "e", "E", "i", "I", "o", "u", "@", "A", "w", "y", "'", "`", "|", "_"],

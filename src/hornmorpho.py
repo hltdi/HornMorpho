@@ -327,6 +327,8 @@ def time(code, times=1):
 FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
 
+R = lambda pos: recompile('amh', pos, segment=True, experimental=True)
+
 ##AMTEST1 = ["አውቄ", "እወቂ", "ተዋውቄ", "አስተዋውቄ", "እዪ", "ትይ", "ታይቼ",
 ##           "ተያይቷል", "ይተያይ", "ፈስሼ", "ደምስሳ", "ፈሶ", "ሰልችቼ"]
 ##

@@ -4,7 +4,7 @@ al	b'l++al	[bs=0,cls=A,tm=prf,vc=smp,as=smp]
 tebal	b'l++tebal	[bs=0,cls=A,tm=prf,vc=ps,as=smp]
 tebabal	b'l++tebabal	[bs=0,cls=A,tm=prf,vc=ps,as=it]
 # IMF
-l         b'l++l      [bs=0,cls=A,tm=imf,vc=smp,as=smp]
+Il         b'l++l      [bs=0,cls=A,tm=imf,vc=smp,as=smp]
 b_al	  b'l++b_al   [bs=0,cls=A,tm=imf,vc=ps,as=smp]
 b_abal	  b'l++b_abal   [bs=0,cls=A,tm=imf,vc=ps,as=it]
 # J_I
