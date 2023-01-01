@@ -2076,8 +2076,10 @@ class Language:
         '''
         Replace POS string by one used to index FSTs, for example, 'nadj' -> 'n'.
         '''
-        if pos in ('nadj', 'n_dv', 'nm_pl', 'nm_prs', 'pron', 'adj'):
+        if pos in ('nadj', 'n_dv', 'nm_pl', 'nm_prs', 'pron', 'adj', 'nadv', 'npropn'):
             return 'n'
+        elif pos in ('vintj',):
+            return 'v'
         return pos
 
     def analyses2string(self, word, analyses, seg=False, form_only=False,
