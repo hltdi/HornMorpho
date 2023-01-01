@@ -60,8 +60,7 @@ class Morphology(dict):
     # %% Does this work for all Horn languages?
     numeral = re.compile('(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
-    def __init__(self, pos_morphs=[], punctuation='', characters='',
-                 abbrev_chars='.'):
+    def __init__(self, pos_morphs=[], punctuation='', characters='', abbrev_chars='.'):
                  #                 fsh=None,
 #                 feat_abbrevs=None,
 #                 fv_abbrevs=None):
@@ -258,6 +257,7 @@ class Morphology(dict):
         been set.
         '''
         if not self.abbrevRE:
+            abbrev_chars = self.abbrev_chars or '.'
             string = "\w+[{}](?:\w+[{}]?)*".format(self.abbrev_chars, self.abbrev_chars)
             self.abbrevRE = re.compile(string)
         return self.abbrevRE

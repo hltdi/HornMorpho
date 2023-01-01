@@ -66,9 +66,6 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
-#    if lang_id == 'am':
-#        from . import am_lang
-#        language = am_lang.AM
     if lang_id == 'amh':
         # 2020.3.14: new Amharic
         from . import amh_lang
@@ -98,7 +95,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 #            lang_id = CODES[lang_id]
         # Create the language from scratch
         ees = False
-        if lang_id in ['sgw', 'gru', 'stv', 'tig']:
+        if lang_id in ['sgw', 'gru', 'stv', 'tig', 'mvz', 'muh']:
             ees = True
 #            from . import ees
 #            EES = ees.EES()

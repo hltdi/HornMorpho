@@ -58,7 +58,8 @@ class EES:
         if not self.preproc:
             self.preproc = \
               lambda form: geez2sera(None, form, lang=self.abbrev,
-                                     gemination=self.output_gemination)
+                                     gemination=self.output_gemination,
+                                     simp=True, report_simplification=True)
         if not self.postproc:
             self.postproc = \
               lambda form, phon=False, ipa='', ortho_only=False, phonetic=False:\
@@ -123,7 +124,7 @@ class EES:
                 code.append('0')
         return ''.join(code)
 
-    def postproc_root(self, posmorph, root, fs, phonetic=True):
+    def postproc_root(self, posmorph, root, fs, phonetic=True, simplifications=None):
         """
         Create the <root:class> representation if this is possible.
         """

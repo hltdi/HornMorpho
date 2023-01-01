@@ -1,6 +1,8 @@
 name: ትግረ
 code: te
 
+abbrev_chars: /.
+
 gemination: True
 
 seg: a e i o u I E
