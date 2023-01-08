@@ -1020,9 +1020,7 @@ class POSMorphology:
                              guess=guess, phon=phon, segment=segment,
                              experimental=experimental, mwe=mwe,
                              translate=translate)
-#        print("** has_cas: name {}".format(name))
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-#        print("** Looking for cas at {}".format(path))
         return os.path.exists(path)
 
     ## Web app stuff

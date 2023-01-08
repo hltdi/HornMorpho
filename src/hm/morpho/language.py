@@ -1352,7 +1352,8 @@ class Language:
                             experimental=experimental, mwe=mwe and segment,
                             segment=segment, simplified=simplified):
             print('No {} FST available for {}!'.format(opt_string, self))
-            return False
+            if experimental:
+                return False
         msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
                                         [self, ' (' + opt_string + ')' if opt_string else ''],
                                         self.tlanguages)

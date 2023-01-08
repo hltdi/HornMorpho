@@ -3,7 +3,7 @@ This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020, 2021, 2022
+    Copyleft 2018, 2019, 2020, 2021, 2022, 2023
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -52,6 +52,8 @@ from .letter_tree import *
 from .altrule import *
 # Parsing morphotactic rules
 from .mtax import *
+# Parsing lists of consonant roots
+from .roots import *
 
 from .language import LANGUAGE_DIR
 
@@ -90,6 +92,8 @@ WEIGHTING_RE = re.compile('weighting\s*=\s*(.*)')
 R2L_RE = re.compile('r2l')
 # >fst<
 CASC_FST_RE = re.compile(r'>(.*?)<')
+# >xxx.rl<
+CASC_ROOT_RE = re.compile(r'>(.+?\.rt)<')
 # >xxx.ar<
 CASC_AR_RE = re.compile(r'>(.+?\.ar)<')
 # >xxx.mtx<
@@ -571,6 +575,26 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
+                                       seg_units=seg_units, weight_constraint=weight_constraint,
+                                       gen=gen, verbose=verbose)
+                    else:
+                        fst = 'FST' + str(len(cascade))
+                        if verbose:
+                            print('Skipping FST {}'.format(label))
+                    cascade.append(fst)
+                continue
+
+            # Roots
+            m = CASC_ROOT_RE.match(line)
+            if m:
+                if create_networks:
+                    filename = m.group(1)
+                    print("** Looking for roots file {}".format(filename))
+                    if not subcasc_indices or len(cascade) in subcasc_indices:
+                        abbrevs = cascade._IOabbrevs
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
+                                       cascade=cascade, weighting=cascade.weighting(),
+                                       abbrevs=abbrevs,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -1849,6 +1873,7 @@ class FST:
                       label='', cascade=None, fst=None,
                       seg_units=[], create_weights=True, verbose=False):
         """Restore an FST from a .fst file."""
+#        print("** Restoring {} from file {}".format(label, fst_file))
 #        label, suffix = fst_file.split('.')
 
         path = path or os.path.join(directory, fst_file)
@@ -1965,6 +1990,8 @@ class FST:
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
 
+        print("** Loading FST from {}".format(filename))
+
         if suffix == 'fst':
             if verbose:
                 print('Loading FST from {}'.format(filename))
@@ -1974,8 +2001,17 @@ class FST:
                              cascade=cascade, directory=directory,
                              seg_units=seg_units, abbrevs=abbrevs,
                              weight_constraint=weight_constraint,
-                             gen=gen,
-                             verbose=verbose)
+                             gen=gen, verbose=verbose)
+
+        elif suffix == 'rt':
+            if verbose:
+                print("Loading roots from {}".format(filename))
+            return Roots.parse(label, open(filename, encoding='utf-8').read(),
+                               fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
+                               cascade=cascade, directory=directory,
+                               seg_units=seg_units, abbrevs=abbrevs,
+                               weight_constraint=weight_constraint,
+                               gen=gen, verbose=verbose)
 
         elif suffix == 'mtx':
             if verbose:
@@ -2128,13 +2164,13 @@ class FST:
 
     @staticmethod
     def parse(label, s, weighting=None, cascade=None, fst=None,
-              directory='', seg_units=[], gen=False,
-              abbrevs=None, verbose=False,
+              directory='', seg_units=[], gen=False, abbrevs=None, verbose=False,
               weight_constraint=None):
         """
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
+#        print("** Parsing {}".format(s))
         fst = fst or FST(label, cascade=cascade, weighting=weighting)
 
         weighting = fst.weighting()
