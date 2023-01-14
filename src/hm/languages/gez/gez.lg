@@ -41,8 +41,8 @@ feats:
 
   pos: v_stem v_stem
 
-    as = 0 | a | it
+    a = 0 | a
 
-    vc = 0 | ps | a | at
+    v = 0 | p | a | at
 
-    tm = p | i | j
+    t = p | i | j

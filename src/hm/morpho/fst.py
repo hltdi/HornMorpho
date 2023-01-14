@@ -589,7 +589,7 @@ class FSTCascade(list):
             if m:
                 if create_networks:
                     filename = m.group(1)
-                    print("** Looking for roots file {}".format(filename))
+#                    print("** Looking for roots file {}".format(filename))
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
@@ -1990,7 +1990,7 @@ class FST:
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
 
-        print("** Loading FST from {}".format(filename))
+#        print("** Loading FST from {}".format(filename))
 
         if suffix == 'fst':
             if verbose:

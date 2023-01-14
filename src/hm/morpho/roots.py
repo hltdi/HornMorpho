@@ -61,7 +61,7 @@ class Roots:
         cons = cons.split()
 #        c = [c.replace('*', '') for c in cons]
         state_name = ''.join(cons)
-        print("*** Make root states for {}, {}".format(cons, state_name))
+#        print("*** Make root states for {}, {}".format(cons, state_name))
         states = []
         for index, cs in enumerate(cons):
             i = index+1
@@ -79,14 +79,14 @@ class Roots:
         feats = '[' + feats + ']'
         weight = UNIFICATION_SR.parse_weight(feats)
         cls = weight.get('c')
-        print("*** states {}, weight {}".format(states, weight.__repr__()))
+#        print("*** states {}, weight {}".format(states, weight.__repr__()))
         charsets = Roots.make_charsets(cons, cls, rules)
 #        print("*** charsets {}".format(charsets))
         source = 'start'
         for index, dest in enumerate(states[:-1]):
             position = index + 1
             chars = charsets.get(position)
-            print("*** {} -> {} -> {}".format(source, chars, dest))
+#            print("*** {} -> {} -> {}".format(source, chars, dest))
             if not fst.has_state(dest):
                 fst.add_state(dest)
             for char in chars:
@@ -94,7 +94,7 @@ class Roots:
             source = dest
         state = states[-1]
         chars = charsets[len(charsets)]
-        print("*** {} -> {} -> end".format(source, chars))
+#        print("*** {} -> {} -> end".format(source, chars))
         for char in chars:
             fst.add_arc(source, 'end', char, char)
 
@@ -210,7 +210,7 @@ class Roots:
 
 #        print("** rules: {}".format(rules))
 
-        print(fst)
+#        print(fst)
 
         return fst
 

@@ -47,6 +47,7 @@ setup(name='HornMorphoAX',
                               'languages/a/*',
                               'languages/ior/*'
                               'languages/muh/*'
+                              'languages/mvz/*',
                               'languages/wle/*'
                               'languages/orm/*',
                               'languages/som/*',

@@ -1,5 +1,8 @@
 -> start
 
+start -> =         [አ:=አ;ኣ:=ኣ]
+= -> start          [I;X]
+
 start -> start    [X]
 
 start -> =e       [{I2e}]
@@ -10,9 +13,9 @@ start -> =u       [{I2u}]
 =u -> start       [:=ኡ]
 =a -> start       [:=ኣ]
 
-start -> I          [C]
-I -> start          [X]
-I -> I                   [C]
+start -> I          [I]
+I -> start          [X;-]
+I -> I                   [I]
 I -> =e                 [{I2e}]
 I -> =a                 [{I2a}]
 I -> =u                 [{I2u}]

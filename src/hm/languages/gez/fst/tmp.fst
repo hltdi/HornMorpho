@@ -10,9 +10,13 @@ start -> A0   []           [c=A,a=0]
 A0 -> A1         [e/w;y]    [t=p,-gem,v=0|p];[t=i,+gem];[t=c,v=0,-gem];[t=j,v=p,-gem]
 A0 -> A1          [I/w]    [t=j,v=0|a,-gem];[t=p,-gem,v=a];[t=c,v=a,-gem]
 # variation in t=p; e with "transitive" and "intransitive" 1,2p , I with "intransitive" 3p
-A1 -> x2          [e/w]    [t=p,p=t,v=0];[t=p,v=a|p];[t=p,p=i,sp=1|2];[t=j,j=i,v=0];[t=i|j,v=p]
-A1 -> x2          [I/w]    [t=p,v=p];[t=p,p=i,sp=3];[t=i,v=0|a];[t=j,j=t,v=0];[t=j,v=a]
+A1 -> x2          [e/w]    [t=p,p=t,v=0];[t=p,v=a|p];[t=p,p=i,-vsuf];[t=j,j=i,v=0];[t=i|j,v=p]
+A1 -> x2          [I/w]    [t=p,v=p];[t=p,p=i,+vsuf];[t=i,v=0|a];[t=j,j=t,v=0];[t=j,v=a]
 A1 -> x2           [i/w]    [t=c]
+# final laryngeal
+A1 -> L2           [I/w]    [t=i,v=a|0];[t=p|j,+vsuf];[t=i,v=p,+vsuf]
+A1 -> L2           [a/w]     [t=p|j,-vsuf];[t=i,v=p,-vsuf]
+A1 -> L2            [i/w]    [t=c]
 
 ## weak
 
@@ -69,13 +73,8 @@ E2 -> x2	[I/w]	[t=i|j,v=0|a]
 E2 -> x2	[i/w]	[t=c]
 
 ### strong stem final character
-x2 -> end        [I/w]
-
-### A, B, C iterative
-#AB0I ->  AB1I    [e/w]
-#
-#AB1I -> AB1ብ  [ባ]
-#AB1ብ -> x2	   [በ]         [t=p]
-#AB1ብ -> x2        [ብ]        [t=i|j]
+x2 -> end        [I/L]
+### stem final laryngeal
+L2 -> end         [LI]
        
 end ->
