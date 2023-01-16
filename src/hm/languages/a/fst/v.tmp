@@ -1,0 +1,26 @@
+[t=p]
+[t=i,v=p] 
+Xe	X:e	X
+
+[t=j|c,v=p]
+Xe	Xe	X
+
+[t=i|j|c,c=B,v=0|a|as]
+[t=i|j|c,c=A,v=as]
+Xe	X:	X
+
+[t=i,c=A,v=0|a]
+[t=c,c=A,v=0]
+Xe	X	X
+
+[t=j,c=A,v=0]
+X	Xe	X
+
+[t=j|c,c=A,v=a]
+X	X	X
+
+[t=p|i|c,2=ው]
+Xo	-	X
+
+[t=j,2=ው]
+Xu	-	X

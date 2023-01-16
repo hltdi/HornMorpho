@@ -28,14 +28,6 @@ from .semiring import FSSet, UNIFICATION_SR, TOPFSS
 from .fs import FeatStructParser
 from .geez import *
 
-# Default name for final state
-DFLT_FINAL = 'fin'
-# Signifies no input or output characters associated with an FSS
-NO_INPUT = '--'
-
-LINE_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
-RULE_RE = re.compile(r'\s*%(.+)$')
-
 def geezify_CV(c, v):
     if v in '0-_' or not v:
         return ''
@@ -44,6 +36,12 @@ def geezify_CV(c, v):
 class Roots:
 
     PARSER = FSSet.parse
+
+    # Signifies no input or output characters associated with an FSS
+    NO_INPUT = '--'
+
+    LINE_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
+    RULE_RE = re.compile(r'\s*%(.+)$')
 
 #    def __init__(self, fst, directory=''):
 #        self.fst = fst
@@ -162,7 +160,7 @@ class Roots:
 
             if not line: continue
 
-            m = RULE_RE.match(line)
+            m = Roots.RULE_RE.match(line)
             if m:
                 rule = m.groups()[0]
 #                print("*** rule {}".format(rule))
@@ -196,7 +194,7 @@ class Roots:
                         rules[maincat][''] = specs
                 continue
 
-            m = LINE_RE.match(line)
+            m = Roots.LINE_RE.match(line)
             if m:
                 cons, feats = m.groups()
 #                print("*** cons {}, feats {}".format(cons, feats))
@@ -210,7 +208,7 @@ class Roots:
 
 #        print("** rules: {}".format(rules))
 
-#        print(fst)
+#o        print(fst)
 
         return fst
 

@@ -27,8 +27,8 @@ A0 -> A1	   []      [t=j,v=0,-gem,j=i]
 
 # 2=w (3=L is special: ሞአ)
 # o for jussive only for certain roots, e.g., ሮጸ; I also possible in jussive for some verbs
-A0 -> x2	 [o]      [t=p,v=0|a,2=ው]   # ;[t=j,v=0|a,2=ው]
-A0 -> x2          [u]     [t=j,v=0|a,2=ው]
+A0 -> x2	 [Xo]      [t=p,v=0|a,2=ው]   # ;[t=j,v=0|a,2=ው]
+A0 -> x2          [Xu]     [t=j,v=0|a,2=ው]
 A0 -> A1w         [e/w]	  [t=i|c,2=ው];[t=p,v=p,2=ው];[t=j,v=p,2=ው]
 A1w -> x2         [ወ]       [t=i|j,v=p]
 A1w -> x2         [ው]      [t=i|j|p,v=0|a]
@@ -40,23 +40,23 @@ A1w -> x2         [ዊ]       [t=c]
 
 start -> B0   []          [c=B,+gem,a=0]
 
-B0 -> B1          [e]    [t=p|j|c]
-B0 -> B1           [E]    [t=i]
+B0 -> B1          [Xe]    [t=p|j|c]
+B0 -> B1           [XE]    [t=i]
 
-B1 -> x2          [I]	    [t=p|i|j,v=0|a]
-B1 -> x2          [e]        [t=p|i|j,v=p]
-B1 -> x2          [i]	    [t=c]
+B1 -> x2          [X]	    [t=p|i|j,v=0|a]
+B1 -> x2          [Xe]        [t=p|i|j,v=p]
+B1 -> x2          [Xi]	    [t=c]
 
 
 ### C
 
 start -> C0	[]	[c=C,a=0]
 
-C0 -> C1 	[a]
+C0 -> C1 	[Xa]
 
-C1 -> x2	[e]	[t=p,+gem];[t=i,v=p,+gem];[t=j,v=p,-gem]
-C1 -> x2	[I]	[t=i,v=0|a,+gem];[t=j,v=0|a,-gem]
-C1 -> x2	[i]	[t=c,-gem]
+C1 -> x2	[Xe]	[t=p,+gem];[t=i,v=p,+gem];[t=j,v=p,-gem]
+C1 -> x2	[X]	[t=i,v=0|a,+gem];[t=j,v=0|a,-gem]
+C1 -> x2	[Xi]	[t=c,-gem]
 
 
 ### E
@@ -73,8 +73,8 @@ E2 -> x2	[I/w]	[t=i|j,v=0|a]
 E2 -> x2	[i/w]	[t=c]
 
 ### strong stem final character
-x2 -> end        [I/L]
+x2 -> end        [X/L]
 ### stem final laryngeal
-L2 -> end         [LI]
+L2 -> end         [L]
        
 end ->
