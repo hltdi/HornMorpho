@@ -23,9 +23,10 @@ Creating an FST for a set of templates.
 """
 
 import re, os
-from .utils import segment
+from .utils import segment, allcombs
 from .semiring import FSSet, UNIFICATION_SR, TOPFSS
-from .fs import FeatStructParser
+from .fs import FeatStruct, simple_unify
+#from .fs import FeatStructParser
 from .geez import *
 
 # Default name for final state
@@ -36,7 +37,9 @@ class Template:
     PARSER = FSSet.parse
     TEMPLATE_RE = re.compile(r'\s*(.+)$')
     FEATURES_RE = re.compile(r'\s*(\[.+\])$')
+    MAIN_CONSTRAINT_RE = re.compile(r'\s*%%(.+)$')
     CONSTRAINT_RE = re.compile(r'\s*%(.+)$')
+    INVENTORY_RE = re.compile(r'\s*\$\s*(.+)$')
 
     EMPTY_CHAR = '-'
 
@@ -52,7 +55,7 @@ class Template:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
-    def make_template_states(fst, template, index, features, constraints, cascade):
+    def make_template_states(fst, template, index, features, constraints, strong_inventory, cascade):
 
 #        if constraints:
 #            constraint_feats = "[{}]".format(','.join(constraints))
@@ -60,9 +63,17 @@ class Template:
 #        else:
 #            constraint_weight = None
 
+        # Add constraints to all features
+        if constraints:
+            constraints = ','.join(constraints)
+            for i, feature in enumerate(features):
+                features[i] = "{},{}]".format(feature[:-1], constraints)
+
+        features = ';'.join(features)
+
         weight = UNIFICATION_SR.parse_weight(features)
-        
-        print("*** Making template states for template {}: {} : {}".format(index, template, weight.__repr__()))
+
+#        print("*** Making template states for template {}: {} : {}".format(index, template, weight.__repr__()))
 
         template_name = "tmp{}".format(index)
 
@@ -70,6 +81,15 @@ class Template:
 
         template = template.split()
 
+        strong_feats = [w for w in list(weight) if w.get('strong')]
+
+        if strong_feats:
+            print("** FSs for {}: {}".format(template, strong_feats))
+
+        for inv_feats in strong_inventory.keys():
+            if any([simple_unify(inv_feats, f) != 'fail' for f in strong_feats]):
+                strong_inventory[inv_feats].append(template)
+        
         tmp_length = len(template)
 
         # Position of possibly geminated consonant (all EES!)
@@ -95,6 +115,7 @@ class Template:
 
         source = 'start'
         for index, (dest, charset, gem_feat) in enumerate(states[:-1]):
+#            print("** Making states {} {} {} {}".format(index, dest, charset, gem_feat))
             if not fst.has_state(dest):
                 fst.add_state(dest)
             wt=None
@@ -108,7 +129,15 @@ class Template:
         last_state, charset, gem_feat = states[-1]
 #        if not fst.has_state(source):
 #            fst.add_state(source)
-        fst.add_arc(source, 'end', charset, charset)
+        fst.add_arc(source, 'end', charset, charset, weight=gem_feat)
+
+    @staticmethod
+    def expand_inventory(features):
+        inventory = allcombs(features)
+        inventory = ["[" + ','.join(f) + "]" for f in inventory]
+        inventory = dict([(FeatStruct(f, freeze=True), []) for f in inventory])
+#        print("** expanding {}".format(inventory))
+        return inventory
 
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, 
@@ -126,7 +155,11 @@ class Template:
 
         current_features = []
 
+        current_main_constraints = []
+
         current_constraints = []
+
+        inventory = []
 
         # Create start and end states
         if not fst.has_state(label): fst.add_state('start')
@@ -147,29 +180,51 @@ class Template:
                 current_features.append(features)
                 continue
 
+            m = Template.INVENTORY_RE.match(line)
+            if m:
+                inventory1 = m.groups()[0]
+                print("*** inventory item {}".format(inventory1))
+                f, values = inventory1.split('=')
+                values = values.split('|')
+                inv = ["{}={}".format(f, v) for v in values]
+                inventory.append(inv)
+                continue
+
+            m = Template.MAIN_CONSTRAINT_RE.match(line)
+            if m:
+                constraints = m.groups()[0]
+                # reset main constraints
+                current_main_constraints = [constraints]
+#                print("*** main constraints {}".format(constraints))
+#                current_main_constraints.append(constraints)
+                continue
+
             m = Template.CONSTRAINT_RE.match(line)
             if m:
                 constraints = m.groups()[0]
-                print("*** constraints {}".format(constraints))
+#                print("*** constraints {}".format(constraints))
                 current_constraints.append(constraints)
                 continue
 
             m = Template.TEMPLATE_RE.match(line)
             if m:
                 template = m.groups()[0]
-                print("*** template {}".format(template))
-                current_features = ';'.join(current_features)
-                templates.append((template, current_features, current_constraints))
+#                print("*** template {}".format(template))
+                templates.append((template, current_features, current_main_constraints + current_constraints))
                 current_features = []
                 current_constraints = []
                 continue
 
             print("*** Something wrong with {}".format(line))
 
-        for index, (template, features, constraints) in enumerate(templates):
-            Template.make_template_states(fst, template, index+1, features, constraints, cascade)
+        inventory = Template.expand_inventory(inventory)
 
-        print(fst)
+        for index, (template, features, constraints) in enumerate(templates):
+            Template.make_template_states(fst, template, index+1, features, constraints, inventory, cascade)
+
+        print("*** inventory {}".format(inventory))
+
+#        print(fst)
         return fst
 
 

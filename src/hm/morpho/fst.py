@@ -613,7 +613,7 @@ class FSTCascade(list):
             if m:
                 if create_networks:
                     filename = m.group(1)
-                    print("** Looking for template file {}".format(filename))
+#                    print("** Looking for template file {}".format(filename))
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),

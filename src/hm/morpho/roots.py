@@ -25,12 +25,21 @@ Creating an FST from a set of roots.
 import re, os
 from .utils import segment
 from .semiring import FSSet, UNIFICATION_SR, TOPFSS
-from .fs import FeatStructParser
+#from .fs import FeatStruct
+#from .fs import FeatStructParser
 from .geez import *
 
 def geezify_CV(c, v):
+    '''
+    Convert roman cons and vowel to a Geez character.
+    v may be '0' in which case the vowelless (ሳድስ) character is returned.
+    v may be '0x', where x is a Geez character. In this case this character
+    is returned, and c is ignored.
+    '''
     if v in '0-_' or not v:
         return ''
+    elif len(v) > 1 and v[0] == '0':
+        return v[1]
     return geezify(c+v, 'ees')
 
 class Roots:
@@ -56,45 +65,74 @@ class Roots:
 
     @staticmethod
     def make_root_states(fst, cons, feats, rules, cascade):
+        def mrs(fst, charsets, weight, states, iterative=False, main_charsets=None):
+#            if iterative:
+#                print("*** charsets {}, main csets {}".format(charsets, main_charsets))
+            source = 'start'
+            for index, dest in enumerate(states[:-1]):
+                position = index + 1
+                chars = charsets.get(position)
+                iter_chars = isinstance(chars, tuple)
+                if iterative and not iter_chars:
+                    # Check to see whether states and arcs already exist for these chars
+                    if fst.has_state(source) and fst.has_state(dest):
+                        found = True
+                        for char in chars:
+                            if not fst.state_has_inout(source, dest, char, char):
+                                found = False
+                                break
+                        if found:
+#                            print(" ** Already a state for {}".format(char))
+                            source = dest
+                            continue
+                if iterative:
+                    dest = dest + 'i'
+                if iter_chars:
+                    # iterated position, create two states
+                    dest0 = dest + '_a'
+                    dest = dest + '_b'
+                    if not fst.has_state(dest0):
+                        fst.add_state(dest0)
+                    for char in chars[0]:
+                        fst.add_arc(source, dest0, char, char, weight=weight if index==0 else None)
+                    if not fst.has_state(dest):
+                        fst.add_state(dest)
+                    for char in chars[1]:
+                        fst.add_arc(dest0, dest, char, char, weight=None)
+                else:
+                    if not fst.has_state(dest):
+                        fst.add_state(dest)
+                    for char in chars:
+                        fst.add_arc(source, dest, char, char, weight=weight if index==0 else None)
+                source = dest
+            state = states[-1]
+            chars = charsets[len(charsets)]
+            for char in chars:
+                fst.add_arc(source, 'end', char, char)
         cons = cons.split()
-#        c = [c.replace('*', '') for c in cons]
         state_name = ''.join(cons)
 #        print("*** Make root states for {}, {}".format(cons, state_name))
         states = []
         for index, cs in enumerate(cons):
             i = index+1
             state_name0 = "{}{}".format(state_name, i)
-#            weak = False
-#            if cs[0] == '*':
-#                weak = True
-#                cs = cs[1:]
-#            weight[i] = cs
             char = geezify_CV(cs, 'I')
             feats = "{},{}={}".format(feats, i, char)
-#            stringset = cascade.stringset(cs)
-#            print("**** State {}, feats {}, stringset {}".format(state_name0, feats, stringset))
             states.append(state_name0)
         feats = '[' + feats + ']'
         weight = UNIFICATION_SR.parse_weight(feats)
         cls = weight.get('c')
 #        print("*** states {}, weight {}".format(states, weight.__repr__()))
-        charsets = Roots.make_charsets(cons, cls, rules)
-#        print("*** charsets {}".format(charsets))
-        source = 'start'
-        for index, dest in enumerate(states[:-1]):
-            position = index + 1
-            chars = charsets.get(position)
-#            print("*** {} -> {} -> {}".format(source, chars, dest))
-            if not fst.has_state(dest):
-                fst.add_state(dest)
-            for char in chars:
-                fst.add_arc(source, dest, char, char, weight=weight if index==0 else None)
-            source = dest
-        state = states[-1]
-        chars = charsets[len(charsets)]
-#        print("*** {} -> {} -> end".format(source, chars))
-        for char in chars:
-            fst.add_arc(source, 'end', char, char)
+        # make the simplex states and arcs
+        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls))
+        # Based on rules, assign ±strong to the root
+        weight = weight.set_all('strong', strong)
+        mrs(fst, charsets, weight, states, iterative=False)
+        if (cls_it_rules := rules.get(cls + 'i')):
+#            print("*** there are iterative rules: {}".format(cls_it_rules))
+            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules)
+#            print("*** charsets {}, it_charsets {}".format(charsets, it_charsets))
+            mrs(fst, it_charsets, weight, states, iterative=True, main_charsets=charsets)
 
     @staticmethod
     def get_rule(consonants, cls, rules):
@@ -105,28 +143,43 @@ class Roots:
 
     @staticmethod
     def make_charsets(consonants, cls, rules):
-        rules = rules.get(cls)
+        '''
+        Given the root consonants and a set of rules for the class,
+        return a dict of list of Geez characters for each position
+        and whether the root is strong.
+        '''
+#        print("*** Rules: {}".format(rules))
         if not rules:
             print("Warning: no rules for class {}".format(cls))
             return
         charsets = {}
         defaults = rules.get('')
+        strong = True
         if not defaults:
             print("Warning: no default rules class {}".format(cls))
             return
         for position, vowels in defaults.items():
+#            print("** position {}, vowels {}".format(position, vowels))
+#            if isinstance(vowels, tuple):
             charsets[position] = vowels
         for index in range(len(defaults)):
             cons = consonants[index]
             position = index + 1
             posrules = rules.get(position)
             if posrules and cons in posrules:
+#                print("*** weak root: {}".format(consonants))
+                strong = False
                 posrules = posrules[cons]
                 for pos, vowels in posrules.items():
+#                    print("** pos {}, vowels {}".format(pos, vowels))
                     charsets[pos] = vowels
         for cons, (position, chars) in zip(consonants, charsets.items()):
-            charsets[position] = Roots.make_charset(cons, position, chars)
-        return charsets
+            if isinstance(chars, tuple):
+                # iterative position: make two charsets
+                charsets[position] = tuple([Roots.make_charset(cons, position, v) for v in chars])
+            else:
+                charsets[position] = Roots.make_charset(cons, position, chars)
+        return charsets, strong
         
     @staticmethod
     def make_charset(cons, position, vowels, default='eI'):
@@ -171,8 +224,9 @@ class Roots:
                     subcat = ''
                 else:
                     subcat = cat[-1]
-                    char, position = tuple(subcat)
-                    position = int(position)
+                    if len(subcat) > 1:
+                        char, position = tuple(subcat)
+                        position = int(position)
                 maincat = cat[0].strip()
                 specs = eval(specs)
 #                specs = [s.strip().split(':') for s in specs]
@@ -184,12 +238,16 @@ class Roots:
                             r[position][char] = specs
                         else:
                             r[position] = {char: specs}
+#                    elif subcat:
+#                        r[subcat] = specs
                     else:
                         r[''] = specs
                 else:
                     rules[maincat] = {}
                     if position:
                         rules[maincat][position] = {char: specs}
+#                    elif subcat:
+#                        rules[maincat][subcat] = specs
                     else:
                         rules[maincat][''] = specs
                 continue
@@ -208,7 +266,7 @@ class Roots:
 
 #        print("** rules: {}".format(rules))
 
-#o        print(fst)
+#        print(fst)
 
         return fst
 

@@ -354,7 +354,7 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
                 n += 1
             elif next_char == 'W' or next_char == 'Y' or char == '^':
                 # Consonant represented by 2 roman characters
-                print("*** char {}, next char {}".format(char, next_char))
+#                print("*** char {}, next char {}".format(char, next_char))
                 if n < len(form) - 2 and form[n + 2] in VOWELS:
                     # followed by vowel
                     chars3 = form[n:n+3]

@@ -1,8 +1,9 @@
+%%a=0,+strong
 [t=p]
 [t=i,v=p] 
 Xe	X:e	X
 
-[t=j|c,v=p]
+[t=j,v=p]
 Xe	Xe	X
 
 [t=i|j|c,c=B,v=0|a|as]
@@ -10,7 +11,7 @@ Xe	Xe	X
 Xe	X:	X
 
 [t=i,c=A,v=0|a]
-[t=c,c=A,v=0]
+[t=c,c=A,v=0|p]
 Xe	X	X
 
 [t=j,c=A,v=0]
@@ -19,8 +20,64 @@ X	Xe	X
 [t=j|c,c=A,v=a]
 X	X	X
 
-[t=p|i|c,2=ው]
+[t=p,c=E]
+[t=i,v=p,c=E]
+Xe	Xe	X:e	X
+
+[t=j,v=p,c=E]
+Xe	Xe	Xe	X
+
+[t=i,v=0|a,c=E]
+Xe	Xe	X:	X
+
+[t=j,v=0|a,c=E]
+[t=c,c=E]
+Xe	X	X	X
+
+%%a=0,-strong
+%2=ው
+[t=p|i|c]
 Xo	-	X
 
-[t=j,2=ው]
+[t=j]
 Xu	-	X
+
+%3=እ
+[t=p]
+Xe	X:a	-
+
+[t=i,v=0]
+Xe	Xa	-
+
+[t=j,v=0]
+X	Xa	-
+
+[t=c,v=0]
+Xe	X	ት
+
+%%a=i,+strong
+[c=A|B,t=p]
+Xe	Xa	X:e	X
+
+[c=A|B,t=i]
+Xe	Xa	X:	X
+
+[c=E,t=p]
+Xe	Xe	Xa	X:e	X
+
+[c=E,t=i]
+Xe	Xe	Xa	X:	X
+
+# not sure about t=i|j|c
+%%a=i,-strong
+%2= ው
+[c=A|B]
+XWa	XWa	-	X
+
+%3=እ
+[c=A|B,t=p|c]
+Xe	Xa	X:a	-
+
+[c=A|B,t=p,v=p]
+[c=A|B,t=i]
+X	Xa	X:a	-

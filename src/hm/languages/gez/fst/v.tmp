@@ -1,0 +1,91 @@
+$ a=0|a
+$ v=0|p|a|as
+$ t=p|i|j
+
+%%a=0,c=A,+strong
+[t=p,v=0,p=t]
+[t=p,v=0,p=i,-vsuf]
+[t=j,v=p]
+Xe	Xe	X
+
+[t=i,v=p]
+Xe	X:e	X
+
+[t=p,v=0,p=i,+vsuf]
+[t=p,v=p]
+Xe	X	X
+
+[t=i,v=0|a]
+Xe	X:	X
+
+[t=j,j=t,v=0]
+[t=p|j,v=a]
+X	X	X
+
+[t=j,j=i,v=0]
+X	Xe	X
+
+[t=c,v=0|p]
+Xe	Xi	X
+
+[t=c,v=a]
+X	Xi	X
+
+%%a=0,c=A,-strong
+%2=ው
+[t=p,v=0|a]
+Xo	-	X
+
+[t=j,v=0|a]
+Xu	-	X
+
+# everything below follows the strong patterns
+[t=p,v=p]
+Xe	ው	X
+
+[t=i,v=0|a]
+Xe	ው:	X
+
+[t=i,v=p]
+Xe	ወ:	X
+
+[t=j,v=p]
+Xe	ወ	X
+
+[t=c,v=0|p]
+Xe	ዊ	X
+
+[t=c,v=a]
+X	ዊ	X
+
+%3=እ
+# መጽእ- -አ
+[t=p,v=0,+vsuf]
+[t=p,v=p]
+Xe	X	X
+
+# መጻእ- -ከ
+[t=p,v=0,-vsuf]
+Xe	Xa	X
+
+# ይትፈትሑ
+[t=i,v=0|a]
+[t=i,v=p,+vsuf]
+Xe	X:	X
+
+# ይትፈታሕ
+[t=i,v=p,-vsuf]
+Xe	X:a	X
+
+[t=j,v=0,+vsuf]
+[t=p|j,v=a]
+X	X	X
+
+[t=j,v=0,-vsuf]
+X	Xa	X
+
+[t=c,v=0|p]
+Xe	Xi	X
+
+[t=c,v=a]
+X	Xi	X
