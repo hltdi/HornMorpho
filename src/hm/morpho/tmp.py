@@ -73,6 +73,8 @@ class Template:
 
         weight = UNIFICATION_SR.parse_weight(features)
 
+        cls = weight.get('c')
+
 #        print("*** Making template states for template {}: {} : {}".format(index, template, weight.__repr__()))
 
         template_name = "tmp{}".format(index)
@@ -86,9 +88,11 @@ class Template:
         if strong_feats:
             print("** FSs for {}: {}".format(template, strong_feats))
 
-        for inv_feats in strong_inventory.keys():
+        inventory = strong_inventory.get(cls)
+
+        for inv_feats in inventory.keys():
             if any([simple_unify(inv_feats, f) != 'fail' for f in strong_feats]):
-                strong_inventory[inv_feats].append(template)
+                inventory[inv_feats].append(template)
         
         tmp_length = len(template)
 
@@ -132,11 +136,12 @@ class Template:
         fst.add_arc(source, 'end', charset, charset, weight=gem_feat)
 
     @staticmethod
-    def expand_inventory(features):
-        inventory = allcombs(features)
-        inventory = ["[" + ','.join(f) + "]" for f in inventory]
-        inventory = dict([(FeatStruct(f, freeze=True), []) for f in inventory])
-#        print("** expanding {}".format(inventory))
+    def expand_inventory(classes, features):
+        inventory1 = allcombs(features)
+        inventory1 = ["[" + ','.join(f) + "]" for f in inventory1]
+        inventory1 = dict([(FeatStruct(f, freeze=True), []) for f in inventory1])
+        inventory = dict([(c, inventory1.copy()) for c in classes])
+        print("** inventory expanded {}".format(inventory))
         return inventory
 
     @staticmethod
@@ -158,6 +163,10 @@ class Template:
         current_main_constraints = []
 
         current_constraints = []
+
+        inventory_classes = []
+
+        weak_inventory_classes = []
 
         inventory = []
 
@@ -185,9 +194,13 @@ class Template:
                 inventory1 = m.groups()[0]
                 print("*** inventory item {}".format(inventory1))
                 f, values = inventory1.split('=')
-                values = values.split('|')
-                inv = ["{}={}".format(f, v) for v in values]
-                inventory.append(inv)
+                if f in ('c', 'cls', 'class'):
+                    # These are root classes; make a separate dict for each
+                    inventory_classes = values.split('|')
+                else:
+                    values = values.split('|')
+                    inv = ["{}={}".format(f, v) for v in values]
+                    inventory.append(inv)
                 continue
 
             m = Template.MAIN_CONSTRAINT_RE.match(line)
@@ -201,8 +214,9 @@ class Template:
 
             m = Template.CONSTRAINT_RE.match(line)
             if m:
+                # Each of these should represent a new weak subclass
                 constraints = m.groups()[0]
-#                print("*** constraints {}".format(constraints))
+                print("*** constraints {}".format(constraints))
                 current_constraints.append(constraints)
                 continue
 
@@ -217,12 +231,12 @@ class Template:
 
             print("*** Something wrong with {}".format(line))
 
-        inventory = Template.expand_inventory(inventory)
+        inventory = Template.expand_inventory(inventory_classes, inventory)
 
         for index, (template, features, constraints) in enumerate(templates):
             Template.make_template_states(fst, template, index+1, features, constraints, inventory, cascade)
 
-        print("*** inventory {}".format(inventory))
+        print("*** inventory {}".format(inventory.get('A')))
 
 #        print(fst)
         return fst

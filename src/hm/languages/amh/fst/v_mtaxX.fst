@@ -177,9 +177,9 @@ obj -> obj0            [:]    [ob=[+expl]]
 # ;[ob=[+expl],+def,+rel]
 # Prepositional
 # Ambiguous: usually ben in TB, but sometimes loc
-obj0 -> objs1       <b_:-b_(@adp,$case=mal,*ብ,~case)>  [ob=[+prp,+b,-l]]
+obj0 -> objs1       <b_:-b_(@adp,$case=mal,*ብ,~case,+1)>  [ob=[+prp,+b,-l]]
 # Ambiguous, but always ben in TB
-obj0 -> objs1       <l_:-l_(@adp,$case=ben,*ል,~case)>  [ob=[+prp,+l,-b]]
+obj0 -> objs1       <l_:-l_(@adp,$case=ben,*ል,~case,+1)>  [ob=[+prp,+l,-b]]
 # Non-prepositional
 obj0 -> objs1          [:]    [ob=[-prp]]
 # Pronouns
