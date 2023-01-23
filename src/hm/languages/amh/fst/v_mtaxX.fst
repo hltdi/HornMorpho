@@ -235,7 +235,8 @@ negs_aux -> noaux  [:]       [ax=None]
 
 # NEGATIVE
 # % @ncm and 'discourse' are from the TB; no features in TB (except in a few cases)
-noaux -> cj2  <Im:-m(@part,ncm,$polarity=neg,*ም,~discourse)>         [+neg,-sub,tm=prf];[+neg,-sub,tm=imf];[+neg,-sub,tm=prs]
+# 22.1.2023: changing this to ~advmod; nothing in the UD guidelines justifies ~discourse
+noaux -> cj2  <Im:-m(@part,ncm,$polarity=neg,*ም,~advmod)>         [+neg,-sub,tm=prf];[+neg,-sub,tm=imf];[+neg,-sub,tm=prs]
 # ACCUSATIVE
 # % no features in TB
 noaux -> cj2  <In:-n(@part,acc,*ን,~case)>        [+rel,+acc,pp=None]
