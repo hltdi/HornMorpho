@@ -1067,13 +1067,14 @@ def conllu_morpheme(form, props, citation):
 #    pos = props[0]
     feats = props.get('feats')
     deprel = props.get('deprel')
+    head = props.get('head')
     if deprel:
         deprel = deprel.replace('.', ':')
     if (lemma := props.get('lemma')) is None:
         if not ishead or (lemma := citation) is None:
             lemma = form
 #    feats = props[1] if len(props) == 2 else '_'
-    return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', None], ['deprel', deprel] ]
+    return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', head], ['deprel', deprel] ]
 #    return {'form': form, 'lemma': form, 'upos': upos, 'xpos': xpos, 'feats': feats}
 
 def root2string(root, simplifications=None):

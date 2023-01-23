@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021, 2022.
+    Copyleft 2011-2023.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -126,8 +126,8 @@ ABBREVCHARS_RE = re.compile(r'\s*abb.*?ch.*?:\s*(.+)')
 # Get the root from a segmentation string
 SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 
-# Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL
-SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?\)")
+# Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
+SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
 # Separate the parts of a MWE segmentation string
 MWE_SEG_STRING_RE = re.compile(r"(.*?)\{(.+?)\}(.*)")
 
@@ -1229,7 +1229,9 @@ class Language:
             print("** segstring {} doesn't match RE!".format(string))
             return {}
         else:
-            pos, feats, lemma, deprel = match.groups()
+            pos, feats, lemma, deprel, headi = match.groups()
+            if headi and headi.isdigit():
+                headi = int(headi)
             if lemma:
                 lemma = lemma.replace(',', '')
         if feats:
@@ -1241,8 +1243,8 @@ class Language:
         else:
             pos = None
         if conllu:
-#            print("** result {}".format({'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel}))
-            return {'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel}
+#            print("** result {}".format({'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel, 'head': headi}))
+            return {'lemma': lemma, 'pos': pos, 'feats': feats, 'deprel': deprel, 'head': headi}
         else:
             return "(" + Language.joinposfeats.join(pos + feats) + ")"
 

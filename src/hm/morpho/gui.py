@@ -499,21 +499,52 @@ class SegCanvas(Canvas):
         right = dependencies[1]
         if dependencydiff > 0:
             left = left[dependencydiff:]
+            left_deps = dependencies[0][:dependencydiff]
+            left_dgroups = SegCanvas.get_non_overlapping(left_deps)
             # more left than right dependencies
-            for dependency in dependencies[0][:dependencydiff]:
-                self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
+            for dgroup in left_dgroups:
+                for dependency in dgroup:
+                    label, dest, source = dependency
+                    self.show_dependency(Xs[source], y, Xs[dest], label)
                 y += SegCanvas.segdependencyheight
         elif dependencydiff < 0:
             right = right[-dependencydiff:]
             # more right than left dependencies
-            for dependency in dependencies[1][:-dependencydiff]:
-                self.show_dependency(headX, y, Xs[dependency[1]], dependency[0])
+            right_deps = dependencies[1][:-dependencydiff]
+            right_dgroups = SegCanvas.get_non_overlapping(right_deps)
+            for dgroup in right_dgroups:
+                for dependency in dgroup:
+                    label, dest, source = dependency
+#                    print("*** showing right dependency {}".format(dependency))
+                    self.show_dependency(Xs[source], y, Xs[dest], label)
                 y += SegCanvas.segdependencyheight
         for l, r in zip(left, right):
-            self.show_dependency(headX, y, Xs[l[1]], l[0])
-            self.show_dependency(headX, y, Xs[r[1]], r[0], startcircle=False)
+            ll, ld, ls = l
+            rl, rd, rs = r
+            self.show_dependency(Xs[ls], y, Xs[ld], ll)
+            self.show_dependency(Xs[rs], y, Xs[rd], rl, startcircle=False)
             y += SegCanvas.segdependencyheight
         return y
+
+    @staticmethod
+    def get_non_overlapping(dependencies):
+        '''
+        Group dependencies into non-overlapping subgroups.
+        '''
+        groups = []
+        covered = []
+        for i, d1 in enumerate(dependencies):
+            if d1 not in covered:
+                label, dest, source = d1
+                covered.append(d1)
+                group = [d1]
+                for d2 in dependencies[i:]:
+                    label2, dest2, source2 = d2
+                    if max([dest, source]) <= min([dest2, source2]) or min([dest, source]) >= max([dest2, source2]):
+                        covered.append(d2)
+                        group.append(d2)
+                groups.append(group)
+        return groups
 
     def show_dependency(self, x1, y, x2, label, startcircle=True):
         '''

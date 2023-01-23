@@ -336,7 +336,7 @@ class Sentence():
 
     def make_word(self, word, segmentations, morphid, conllu=True):
         '''
-        Creates a new word.
+        Creates a new word from a list of (lists of) segmentations.
         If conllu is True, returns a list of morpheme Tokens.
         '''
         segment_list = []
@@ -385,22 +385,27 @@ class Sentence():
                 # Get the index of the head
                 headi = -1
                 for i, props in enumerate(segmentation):
+#                    print("    **** i {}, all props {}".format(i, props))
                     # Check deprel
                     if props[-1][1] is None:
                         if headi >= 0:
                             print("** Two heads for {}!".format(segmentation))
                         headi = i + morphid
                         pdict['misc'] = i
-                for props in segmentation:
+                for i, props in enumerate(segmentation):
                     props = props.copy()
+#                    print("     **** props {}".format(props))
                     upos = props[3][1]
                     if upos in Sentence.selectpos:
                         self.complexity['ambig'] += 1
                         self.posambig.append(word)
                     props[0][1] = id
                     # Set the head id for dependent morphemes
-                    if id != headi:
+                    if (headincr := props[-2][1]):
+                        props[-2][1] = i + headincr + morphid
+                    elif id != headi:
                         props[-2][1] = headi
+#                    print("      ***** head {}".format(props[6]))
                     props.extend([('deps', None), ('misc', None)])
                     pdict = dict(props)
                     segments.append(pdict)
@@ -507,16 +512,23 @@ class Sentence():
         Return a list of lists of leftward and rightward dependencies.
         '''
         headindex = Sentence.get_headindex(segmentation)
-        dependencies = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
-        left = []
-        right = []
-        for dependency in dependencies:
-            if dependency[1] < headindex:
-                left.append(dependency)
-            else:
-                right.append(dependency)
-        if left or right:
-            return left, right
+        if headindex is not None:
+            headid = segmentation[1:][headindex].get('id')
+#            print("** get dependencies: headindex {}, headid {}".format(headindex, headid))
+            idiff = headid - headindex
+            dependencies = [(s.get('deprel', ''), i, s.get('head', '') - idiff) for i, s in enumerate(segmentation[1:]) if i != headindex]
+#            print("** segmentation {}".format(segmentation))
+#        stem_dependencies = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
+            left = []
+            right = []
+            for dependency in dependencies:
+                source, dest = dependency[2], dependency[1]
+                if source >= headindex and dest >= headindex:
+                    right.append(dependency)
+                elif source <= headindex and dest <= headindex:
+                    left.append(dependency)
+            if left or right:
+                return left, right
 
     @staticmethod
     def get_pos(segmentation):
