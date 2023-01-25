@@ -220,11 +220,11 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                            mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
-def segrecompile(pos, mwe=False):
+def segrecompile(lang, pos, mwe=False):
     """
     Shortcut for recompiling Amh (experimental) segmenter FST.
     """
-    return recompile('amh', pos, segment=True, experimental=True, mwe=mwe)
+    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe)
 
 ### Simple FSTs and cascades (in test directory)
 

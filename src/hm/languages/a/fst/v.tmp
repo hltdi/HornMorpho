@@ -1,4 +1,9 @@
-%%a=0,+strong
+$ c=A|B|C|E|F
+$ a=0|a|i
+$ v=0|p|a|as
+$ t=p|i|j|c
+
+%%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
 Xe	X:e	X
@@ -6,35 +11,48 @@ Xe	X:e	X
 [t=j,v=p]
 Xe	Xe	X
 
-[t=i|j|c,c=B,v=0|a|as]
-[t=i|j|c,c=A,v=as]
+[t=i|j|c,v=as]
 Xe	X:	X
 
-[t=i,c=A,v=0|a]
-[t=c,c=A,v=0|p]
+[t=i,v=0|a]
+[t=c,v=0|p]
 Xe	X	X
 
-[t=j,c=A,v=0]
+[t=j,v=0]
 X	Xe	X
 
-[t=j|c,c=A,v=a]
+[t=j|c,v=a]
 X	X	X
 
-[t=p,c=E]
-[t=i,v=p,c=E]
+%%a=0,c=B,+strong
+[t=p]
+[t=i,v=p] 
+Xe	X:e	X
+
+[t=i|j|c,v=0|a|as];[t=c,v=p]
+Xe	X:	X
+
+[t=j,v=p]
+Xe	Xe	X
+
+%%a=0,c=E,+strong
+[t=p]
+[t=i,v=p]
 Xe	Xe	X:e	X
 
-[t=j,v=p,c=E]
-Xe	Xe	Xe	X
-
-[t=i,v=0|a,c=E]
+[t=i,v=0|a|as]
+[t=j,v=as]
 Xe	Xe	X:	X
 
-[t=j,v=0|a,c=E]
-[t=c,c=E]
+[t=j,v=0|a]
+[t=c]
 Xe	X	X	X
 
-%%a=0,-strong
+[t=j,v=p]
+Xe	X	Xe	X
+
+%%a=0,c=A,-strong
+
 %2=ው
 [t=p|i|c]
 Xo	-	X
@@ -42,42 +60,143 @@ Xo	-	X
 [t=j]
 Xu	-	X
 
+%2=እ
+[t=p|j]
+[t=i,v=p]
+Xa	-	X
+
+[t=i,v=0|a|as]
+[t=c]
+X	-	X
+
 %3=እ
 [t=p]
+[t=i,v=p|as]
+[t=j,v=as]
 Xe	X:a	-
 
-[t=i,v=0]
+[t=i,v=0|a]
+[t=j,v=p]
 Xe	Xa	-
 
-[t=j,v=0]
+[t=j,v=0|a]
 X	Xa	-
 
-[t=c,v=0]
+[t=c,v=0|p|as]
 Xe	X	ት
 
-%%a=i,+strong
-[c=A|B,t=p]
+[t=c,v=a]
+X	X	ት
+
+%3=ይ
+[t=p]
+[t=i,v=p|as]
+[t=j,v=as]
+Xe	X:e	-
+
+[t=i,v=0|a]
+[t=j,v=p]
+Xe	X	-
+
+[t=j,v=0|a]
+X	X	-
+
+[t=c,v=0|p|as]
+Xe	X	ት
+
+[t=c,v=a]
+X	X	ት
+
+%%a=i,c=A,+strong
+[t=p]
+[t=i,v=p]
 Xe	Xa	X:e	X
 
-[c=A|B,t=i]
+[t=i,v=0|a]
 Xe	Xa	X:	X
 
-[c=E,t=p]
+[t=j,v=p]
+Xe	Xa	Xe	X
+
+[t=j,v=0|a]
+[t=c]
+Xe	Xa	X	X
+
+%%a=i,c=B,+strong
+[t=p]
+[t=i,v=p]
+Xe	Xa	X:e	X
+
+[t=i,v=0|a]
+Xe	Xa	X:	X
+
+[t=j,v=p]
+Xe	Xa	Xe	X
+
+[t=j,v=0|a]
+[t=c]
+Xe	Xa	X	X
+
+%%a=i,c=C,+strong
+[t=p]
+[t=i,v=p]
+Xe	Xa	X:e	X
+
+[t=i,v=0|a]
+Xe	Xa	X:	X
+
+[t=j,v=p]
+Xe	Xa	Xe	X
+
+[t=j,v=0|a]
+[t=c]
+Xe	Xa	X	X
+
+%%a=i,c=E,+strong
+[t=p]
+[t=i,v=p]
 Xe	Xe	Xa	X:e	X
 
-[c=E,t=i]
+[t=i,v=0|a]
 Xe	Xe	Xa	X:	X
 
-# not sure about t=i|j|c
-%%a=i,-strong
-%2= ው
-[c=A|B]
+[t=j,v=p]
+Xe	Xe	Xa	Xe	X
+
+[t=j,v=0|a]
+[t=c]
+Xe	Xe	Xa	X	X
+
+%%a=i,c=A,-strong
+
+%2=ው
+[t=p|i|j|c]
 XWa	XWa	-	X
 
 %3=እ
-[c=A|B,t=p|c]
+[t=p]
+[t=i,v=p]
 Xe	Xa	X:a	-
 
-[c=A|B,t=p,v=p]
-[c=A|B,t=i]
+# alternative for some roots: ተስማማ ይስማማሉ
+[t=p,v=p]
+[t=i]
 X	Xa	X:a	-
+
+[t=j]
+# is {Xe Xa Xa -} possible? (ይሰማማ)
+X	Xa	Xa	-
+
+[t=c]
+X	Xa	X	ት
+
+%3=ይ
+[t=p]
+Xe	Xa	X:e	-
+
+[t=i|j]
+# is {X Xa X: -} possible? (ይቅራራሉ)
+Xe	Xa	X:	-
+
+[t=c]
+Xe	Xa	X	ት

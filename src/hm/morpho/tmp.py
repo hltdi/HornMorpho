@@ -55,14 +55,58 @@ class Template:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
-    def make_template_states(fst, template, index, features, constraints, strong_inventory, cascade):
+    def make_all_template_states(fst, tmp_dict):
+        '''
+        Add states and arcs for all templates in the template dict.
+        '''
+        for index, (template, weight) in enumerate(tmp_dict.items()):
+            template_name = "tmp{}".format(index)
+            states = []
+            tmp_length = len(template)
+            # Position of possibly geminated consonant (all EES!)
+            gem_pos = {tmp_length - 1, tmp_length - 2}
 
-#        if constraints:
-#            constraint_feats = "[{}]".format(','.join(constraints))
-#            constraint_weight = UNIFICATION_SR.parse_weight(features)
-#        else:
-#            constraint_weight = None
+            for elemindex, charset in enumerate(template):
+                position = elemindex + 1
+                if charset == Template.EMPTY_CHAR:
+                    # No character in this position; skip to next position
+                    continue
+                gem_feat = None
+                if position in gem_pos:
+                    # this is where the geminated character might be
+                    gem_feat = "gem{}".format(position)
+                    gem = ':' in charset
+                    if gem:
+                        gem_feat = UNIFICATION_SR.parse_weight("[+{}]".format(gem_feat))
+                        charset = charset.replace(':', '')
+                    else:
+                        gem_feat = UNIFICATION_SR.parse_weight("[-{}]".format(gem_feat))
+                state_name = "{}_{}".format(template_name, position)
+                states.append((state_name, charset, gem_feat))
 
+            source = 'start'
+            for index, (dest, charset, gem_feat) in enumerate(states[:-1]):
+                if not fst.has_state(dest):
+                    fst.add_state(dest)
+                wt=None
+                if index==0:
+                    wt = weight
+                elif gem_feat:
+                    wt = gem_feat
+                fst.add_arc(source, dest, charset, charset, weight=wt)
+                source = dest
+
+            last_state, charset, gem_feat = states[-1]
+
+            fst.add_arc(source, 'end', charset, charset, weight=gem_feat)
+
+    @staticmethod
+    def add_template(fst, template, index, features, constraints, tmp_dict=None,
+                     strong_inventory=None, weak_inventory=None, subclass='', cascade=None):
+        """
+        Update strong or weak inventory and template dict.
+        """
+            
         # Add constraints to all features
         if constraints:
             constraints = ','.join(constraints)
@@ -70,70 +114,34 @@ class Template:
                 features[i] = "{},{}]".format(feature[:-1], constraints)
 
         features = ';'.join(features)
-
         weight = UNIFICATION_SR.parse_weight(features)
-
         cls = weight.get('c')
+        strong = weight.get('strong')
 
-#        print("*** Making template states for template {}: {} : {}".format(index, template, weight.__repr__()))
-
-        template_name = "tmp{}".format(index)
-
-        states = []
-
-        template = template.split()
-
-        strong_feats = [w for w in list(weight) if w.get('strong')]
-
-        if strong_feats:
-            print("** FSs for {}: {}".format(template, strong_feats))
+#        print("*** Making states for {} template {} : {}".format(('strong' if strong else 'weak'), template, weight.__repr__()))
 
         inventory = strong_inventory.get(cls)
 
-        for inv_feats in inventory.keys():
-            if any([simple_unify(inv_feats, f) != 'fail' for f in strong_feats]):
-                inventory[inv_feats].append(template)
-        
-        tmp_length = len(template)
+        if strong:
+            strong_feats = [w for w in list(weight) if w.get('strong')]
+#            if strong_feats:
+#                print("  ** FSs for {}: {}".format(template, strong_feats))
+            for inv_feats in inventory.keys():
+                if any([simple_unify(inv_feats, f) != 'fail' for f in strong_feats]):
+                    inventory[inv_feats].append(template)
+        else:
+            weak_feats = [w for w in list(weight) if not w.get('strong')]
+            weak_subinventory = weak_inventory[cls][subclass]
+            for inv_feats in inventory.keys():
+                if any([simple_unify(inv_feats, f) != 'fail' for f in weak_feats]):
+                    if inv_feats not in weak_subinventory:
+                        weak_subinventory[inv_feats] = []
+                    weak_subinventory[inv_feats].append(template)
 
-        # Position of possibly geminated consonant (all EES!)
-        gem_pos = tmp_length - 1
-
-        for elemindex, charset in enumerate(template):
-            position = elemindex + 1
-            if charset == Template.EMPTY_CHAR:
-                # No character in this position; skip to next position
-                continue
-            gem_feat = None
-            if position == gem_pos:
-                # this is where the geminated character might be
-                gem_feat = "gem{}".format(gem_pos)
-                gem = ':' in charset
-                if gem:
-                    gem_feat = UNIFICATION_SR.parse_weight("[+{}]".format(gem_feat))
-                    charset = charset.replace(':', '')
-                else:
-                    gem_feat = UNIFICATION_SR.parse_weight("[-{}]".format(gem_feat))
-            state_name = "{}_{}".format(template_name, position)
-            states.append((state_name, charset, gem_feat))
-
-        source = 'start'
-        for index, (dest, charset, gem_feat) in enumerate(states[:-1]):
-#            print("** Making states {} {} {} {}".format(index, dest, charset, gem_feat))
-            if not fst.has_state(dest):
-                fst.add_state(dest)
-            wt=None
-            if index==0:
-                wt = weight
-            elif gem_feat:
-                wt = gem_feat
-            fst.add_arc(source, dest, charset, charset, weight=wt)
-            source = dest
-
-        last_state, charset, gem_feat = states[-1]
-#        if not fst.has_state(source):
-#            fst.add_state(source)
-        fst.add_arc(source, 'end', charset, charset, weight=gem_feat)
+        if template in tmp_dict:
+            tmp_dict[template] = tmp_dict[template].union(weight)
+        else:
+            tmp_dict[template] = weight
 
     @staticmethod
     def expand_inventory(classes, features):
@@ -141,8 +149,68 @@ class Template:
         inventory1 = ["[" + ','.join(f) + "]" for f in inventory1]
         inventory1 = dict([(FeatStruct(f, freeze=True), []) for f in inventory1])
         inventory = dict([(c, inventory1.copy()) for c in classes])
-        print("** inventory expanded {}".format(inventory))
+#        print("** inventory expanded {}".format(inventory))
         return inventory
+
+    @staticmethod
+    def make_weak_inventory(weak_classes, inventory):
+#        print("** Making weak inventory {}".format(weak_classes))
+        inv = {}
+        for cls, subclass in weak_classes:
+            if cls not in inv:
+                inv[cls] = {}
+            inv[cls][subclass] = {}
+        return inv
+
+    @staticmethod
+    def complete_weak_inventory(weak_inventory, strong_inventory, tmp_dict):
+        '''
+        Go through each weak subclass and see which feature sets in the strong inventory
+        don't have templates yet. Assign the strong templates for these features sets
+        to the weak subclasses.
+        '''
+#        print("** Completing weak inventory")
+        for cls, features in strong_inventory.items():
+            weak_class_inventory = weak_inventory.get(cls)
+            if weak_class_inventory:
+                for feature, templates in features.items():
+                    if not templates:
+                        # No templates for this feature set in the strong inventory
+                        continue
+                    for subclass, weak_features in weak_class_inventory.items():
+                        subclass_feats = subclass.split('=')
+                        # Look for templates with feature
+                        found = False
+                        for weak_feature, weak_templates in weak_features.items():
+                            if simple_unify(weak_feature, feature) != 'fail':
+                                found = True
+                                break
+                        if not found:
+#                            print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
+                            # Create the weak feature set (add -strong, the class, e.g., c=A, and the subclass, e.g., 2=ው)
+                            new_weak_feats = feature.copy()
+                            new_weak_feats['strong'] = False
+                            new_weak_feats[subclass_feats[0]] = subclass_feats[1]
+                            new_weak_feats['c'] = cls
+                            new_weak_feats = FSSet(new_weak_feats)
+#                            print("  **** Creating weak feature: {}".format(new_weak_feats.__repr__()))
+                            # Pick first template for this feature set for the weak subclass
+                            template = templates[0]
+                            tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
+
+    @staticmethod
+    def get_class(features):
+        '''
+        Get the class from an expression like "[c=A,a=0]", not an actual FeatStruct.
+        '''
+        features = features.replace("[", '').replace("]", '')
+        features = features.split('c=')
+        for x in features[1:]:
+            c = x.split(',')[0]
+            if c:
+                # Assume there is one class
+                return c
+        return ''
 
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, 
@@ -157,18 +225,16 @@ class Template:
 #        weighting = fst.weighting()
 
         templates = []
-
+        tmp_dict = {}
         current_features = []
-
         current_main_constraints = []
-
-        current_constraints = []
-
+        current_constraints = ''
         inventory_classes = []
-
         weak_inventory_classes = []
-
+        current_class = ''
+        current_subclass = ''
         inventory = []
+        template_dict = {}
 
         # Create start and end states
         if not fst.has_state(label): fst.add_state('start')
@@ -192,7 +258,7 @@ class Template:
             m = Template.INVENTORY_RE.match(line)
             if m:
                 inventory1 = m.groups()[0]
-                print("*** inventory item {}".format(inventory1))
+#                print("*** inventory item {}".format(inventory1))
                 f, values = inventory1.split('=')
                 if f in ('c', 'cls', 'class'):
                     # These are root classes; make a separate dict for each
@@ -207,8 +273,11 @@ class Template:
             if m:
                 constraints = m.groups()[0]
                 # reset main constraints
+                current_constraints = ''
+                current_subclass = ''
                 current_main_constraints = [constraints]
 #                print("*** main constraints {}".format(constraints))
+                current_class = Template.get_class(constraints)
 #                current_main_constraints.append(constraints)
                 continue
 
@@ -216,27 +285,43 @@ class Template:
             if m:
                 # Each of these should represent a new weak subclass
                 constraints = m.groups()[0]
-                print("*** constraints {}".format(constraints))
-                current_constraints.append(constraints)
+#                print("*** constraints {}".format(constraints))
+                weak_inventory_classes.append((current_class, constraints))
+                current_constraints = constraints
+                current_subclass = constraints
                 continue
 
             m = Template.TEMPLATE_RE.match(line)
             if m:
                 template = m.groups()[0]
 #                print("*** template {}".format(template))
-                templates.append((template, current_features, current_main_constraints + current_constraints))
+                template = tuple(template.split())
+                templates.append((template, current_features, current_main_constraints + [current_constraints], current_subclass))
                 current_features = []
-                current_constraints = []
+#                current_constraints = []
                 continue
 
             print("*** Something wrong with {}".format(line))
 
         inventory = Template.expand_inventory(inventory_classes, inventory)
 
-        for index, (template, features, constraints) in enumerate(templates):
-            Template.make_template_states(fst, template, index+1, features, constraints, inventory, cascade)
+        weak_inventory = Template.make_weak_inventory(weak_inventory_classes, inventory)
 
-        print("*** inventory {}".format(inventory.get('A')))
+#        print("*** weak inventory {}".format(weak_inventory))
+
+        for index, (template, features, constraints, subclass) in enumerate(templates):
+            Template.add_template(fst, template, index+1, features, constraints, tmp_dict=tmp_dict,
+                                  strong_inventory=inventory, weak_inventory=weak_inventory, subclass=subclass, cascade=cascade)
+
+#        print("*** inventory {}".format(inventory.get('A')))
+#        print("*** weak inventory {}".format(weak_inventory))
+
+        Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict)
+
+        Template.make_all_template_states(fst, tmp_dict)
+
+        print("*** tmp_dict")
+        print(tmp_dict)
 
 #        print(fst)
         return fst
