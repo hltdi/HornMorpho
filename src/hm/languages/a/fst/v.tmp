@@ -1,4 +1,4 @@
-$ c=A|B|C|E|F
+$ c=A|B|C|E|F|G|H|J
 $ a=0|a|i
 $ v=0|p|a|as
 $ t=p|i|j|c
@@ -29,11 +29,28 @@ X	X	X
 [t=i,v=p] 
 Xe	X:e	X
 
-[t=i|j|c,v=0|a|as];[t=c,v=p]
+[t=i|j|c,v=0|a|as]
+[t=c,v=p]
 Xe	X:	X
 
 [t=j,v=p]
 Xe	Xe	X
+
+%%a=0,c=C,+strong
+[t=p]
+[t=i,v=p] 
+Xa	X:e	X
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+Xa	X:	X
+
+[t=j|c,v=0|a]
+[t=c,v=p|as]
+Xa	X	X
+
+[t=j,v=p]
+Xa	Xe	X
 
 %%a=0,c=E,+strong
 [t=p]
@@ -51,7 +68,83 @@ Xe	X	X	X
 [t=j,v=p]
 Xe	X	Xe	X
 
+%%a=0,c=F,+strong
+[t=p]
+[t=i,v=p]
+Xe	Xa	X:e	X
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+Xe	Xa	X:	X
+
+[t=j,v=0|a]
+[t=c]
+Xe	Xa	X	X
+
+[t=j,v=p]
+Xe	Xa	Xe	X
+
+%%a=0,c=G,+strong
+[t=p]
+[t=i,v=p]
+X	Xe	Xe	X:e	X
+
+[t=i,v=a]
+X	Xe	Xe	X:	X
+
+[t=j,v=p]
+X	Xe	X	Xe	X
+
+[t=c]
+[t=j,v=a]
+X	Xe	X	X	X
+
+%%a=0,c=H,+strong
+[t=p]
+[t=i,v=p]
+X	Xe	Xa	X:e	X
+
+[t=i,v=a]
+X	Xe	Xa	X:	X
+
+[t=j,v=p]
+X	Xe	Xa	Xe	X
+
+[t=c]
+[t=j,v=a]
+X	Xe	Xa	X	X
+
+%%a=0,c=J,+strong
+[t=p]
+[t=i,v=p]
+X	Xa	X:e	X
+
+[t=i,v=a]
+X	Xa	X:	X
+
+[t=j,v=p]
+X	Xa	Xe	X
+
+[t=c]
+[t=j,v=a]
+X	Xa	X	X
+
 %%a=0,c=A,-strong
+
+%1=እ
+[t=p]
+[t=i,v=p] 
+ኣ	X:e	X
+
+[t=j,v=p]
+ኣ	Xe	X
+
+[t=i|j|c,v=as]
+ኣ	X:	X
+
+[t=i,v=0]
+[t=c,v=0|p]
+ኣ	X	X
 
 %2=ው
 [t=p|i|c]
@@ -107,6 +200,83 @@ Xe	X	ት
 [t=c,v=a]
 X	X	ት
 
+%%a=a,c=A,+strong
+[t=p]
+[t=i,v=p] 
+Xa	X:e	X
+
+[t=j,v=p]
+Xa	Xe	X
+
+[t=i|j|c,v=a]
+Xa	X:	X
+
+[t=c,v=p]
+Xa	X	X
+
+[t=j,v=p]
+Xa	Xe	X
+
+[t=j|c,v=a]
+Xa	X	X
+
+%%a=a,c=B,+strong
+[t=p]
+[t=i,v=p] 
+Xa	X:e	X
+
+[t=i|j|c,v=a]
+[t=c]   # ?
+Xa	X:	X
+
+# ?
+[t=j,v=p]
+Xa	Xe	X
+
+%%a=a,c=E,+strong
+[t=p]
+[t=i,v=p]
+Xe	Xa	X:e	X
+
+[t=i,v=a]
+Xe	Xa	X:	X
+
+[t=j,v=a]
+[t=c]
+Xe	Xa	X	X
+
+[t=j,v=p]
+Xe	Xa	Xe	X
+
+%%a=a,c=A,-strong
+%3=እ
+[t=p|i]
+Xa	X:a	-
+
+[t=j]
+Xa	Xa	-
+
+[t=c]
+Xa	X	ት
+
+%3=ይ
+
+[t=p]
+Xa	X:e	-
+
+[t=i]
+Xa	X:	-
+
+[t=j]
+Xa	X	-
+
+[t=c]
+Xa	X	ት
+
+%1=እ !
+%2=ው !
+%2=እ !
+
 %%a=i,c=A,+strong
 [t=p]
 [t=i,v=p]
@@ -122,35 +292,9 @@ Xe	Xa	Xe	X
 [t=c]
 Xe	Xa	X	X
 
-%%a=i,c=B,+strong
-[t=p]
-[t=i,v=p]
-Xe	Xa	X:e	X
+%%a=i,c=B,+strong == A
 
-[t=i,v=0|a]
-Xe	Xa	X:	X
-
-[t=j,v=p]
-Xe	Xa	Xe	X
-
-[t=j,v=0|a]
-[t=c]
-Xe	Xa	X	X
-
-%%a=i,c=C,+strong
-[t=p]
-[t=i,v=p]
-Xe	Xa	X:e	X
-
-[t=i,v=0|a]
-Xe	Xa	X:	X
-
-[t=j,v=p]
-Xe	Xa	Xe	X
-
-[t=j,v=0|a]
-[t=c]
-Xe	Xa	X	X
+%%a=i,c=C,+strong == A
 
 %%a=i,c=E,+strong
 [t=p]
@@ -167,11 +311,20 @@ Xe	Xe	Xa	Xe	X
 [t=c]
 Xe	Xe	Xa	X	X
 
+%%a=i,c=F,+strong == E
+
 %%a=i,c=A,-strong
 
 %2=ው
 [t=p|i|j|c]
 XWa	XWa	-	X
+
+%2=እ
+[t=p|i|j]
+Xa	Xa	-	X
+
+[t=c]
+Xa	X	-	X
 
 %3=እ
 [t=p]
@@ -200,3 +353,16 @@ Xe	Xa	X:	-
 
 [t=c]
 Xe	Xa	X	ት
+
+#%1=እ
+#[t=p]
+#-	Xa	X:e	X
+#
+#[t=i,v=p]
+#ተ	Xa	X:e	X
+#
+#[t=j,v=p]
+#ተ	Xa	Xe	X
+#
+#[t=c,v=p]
+#ተ	Xa	X	X

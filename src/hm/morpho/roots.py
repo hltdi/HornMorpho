@@ -66,8 +66,7 @@ class Roots:
     @staticmethod
     def make_root_states(fst, cons, feats, rules, cascade):
         def mrs(fst, charsets, weight, states, iterative=False, main_charsets=None):
-#            if iterative:
-#                print("*** charsets {}, main csets {}".format(charsets, main_charsets))
+#            print("**** mrs {} weight {} states {} iterative {}".format(charsets, weight.__repr__(), states, iterative))
             source = 'start'
             for index, dest in enumerate(states[:-1]):
                 position = index + 1
@@ -148,6 +147,7 @@ class Roots:
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
+#        print("**** Making character sets for {}, {}, {}".format(consonants, cls, rules))
 #        print("*** Rules: {}".format(rules))
         if not rules:
             print("Warning: no rules for class {}".format(cls))
@@ -166,8 +166,9 @@ class Roots:
             cons = consonants[index]
             position = index + 1
             posrules = rules.get(position)
-            if posrules and cons in posrules:
-#                print("*** weak root: {}".format(consonants))
+            if posrules and cons in posrules and strong:
+                # Give priority to weak classes found earlier, e.g., 1=' over 2=w
+#                print("*** weak root {} for position {}".format(consonants, position))
                 strong = False
                 posrules = posrules[cons]
                 for pos, vowels in posrules.items():
@@ -217,7 +218,8 @@ class Roots:
             if m:
                 rule = m.groups()[0]
 #                print("*** rule {}".format(rule))
-                cat, specs = rule.split('::')
+
+                cat, specs = rule.strip().split('::')
                 cat = cat.strip().split(',')
                 position = 0
                 if len(cat) == 1:
@@ -228,6 +230,9 @@ class Roots:
                         char, position = tuple(subcat)
                         position = int(position)
                 maincat = cat[0].strip()
+                if specs.strip() == '!':
+                    print("*** Constraint on maincat {}, subcat {}".format(maincat, subcat))
+                    continue
                 specs = eval(specs)
 #                specs = [s.strip().split(':') for s in specs]
 #                print("maincat {}, subcat {}, specs {}".format(maincat, subcat, specs))
