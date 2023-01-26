@@ -132,6 +132,7 @@ X	Xa	X	X
 %%a=0,c=A,-strong
 
 %1=እ
+# no v=a for this subclass
 [t=p]
 [t=i,v=p] 
 ኣ	X:e	X
@@ -146,12 +147,57 @@ X	Xa	X	X
 [t=c,v=0|p]
 ኣ	X	X
 
+%1=እ,3=ይ
+[t=p]
+ኣ	X:e	-
+
+[t=i,v=0|p]
+[t=j,v=p|as]
+ኣ	X	-
+
+[t=i,v=as]
+ኣ	X:	-
+
+[t=j,v=0]
+እ	X	-
+
+[t=c]
+ኣ	X	ት
+
+%1=እ,3=እ
+[t=p]
+[t=i,v=as]
+ኣ	X:a	-
+
+[t=i,v=0|p]
+[t=j,v=p|as]
+ኣ	Xa	-
+
+[t=j,v=0]
+እ	Xa	-
+
+[t=c]
+ኣ	X	ት
+
 %2=ው
 [t=p|i|c]
 Xo	-	X
 
 [t=j]
 Xu	-	X
+
+%2=ይ
+[t=p|i]
+Ye	-	X
+
+[t=p|i]
+~YE	-	X
+
+[t=j|c]
+Y	-	X
+
+[t=j|c]
+~Yi	-	X
 
 %2=እ
 [t=p|j]
@@ -183,9 +229,11 @@ X	X	ት
 
 %3=ይ
 [t=p]
+Xe	X:e	-
+
 [t=i,v=p|as]
 [t=j,v=as]
-Xe	X:e	-
+Xe	X:	-
 
 [t=i,v=0|a]
 [t=j,v=p]
@@ -200,81 +248,109 @@ Xe	X	ት
 [t=c,v=a]
 X	X	ት
 
+%%a=0,c=B,-strong
+
+%3=እ
+[t=p|i]
+[t=j,v=0|a|as]
+Xe	X:a	-
+
+# ?
+[t=j,v=p]
+Xe	Xa	-
+
+[t=c]
+Xe	X:	ት
+
+%3=ይ
+[t=p]
+Xe	X:e	-
+
+[t=i|j]
+Xe	X:	-
+
+[t=c]
+Xe	X:	ት
+
 %%a=a,c=A,+strong
+# initial consonant for a=a cannot be '/እ, hence xa,xe instead of Xa,Xe
 [t=p]
 [t=i,v=p] 
-Xa	X:e	X
+xa	X:e	X
 
 [t=j,v=p]
-Xa	Xe	X
+xa	Xe	X
 
 [t=i|j|c,v=a]
-Xa	X:	X
+xa	X:	X
 
 [t=c,v=p]
-Xa	X	X
+xa	X	X
 
 [t=j,v=p]
-Xa	Xe	X
+xa	Xe	X
 
 [t=j|c,v=a]
-Xa	X	X
+xa	X	X
 
 %%a=a,c=B,+strong
 [t=p]
 [t=i,v=p] 
-Xa	X:e	X
+xa	X:e	X
 
 [t=i|j|c,v=a]
 [t=c]   # ?
-Xa	X:	X
+xa	X:	X
 
 # ?
 [t=j,v=p]
-Xa	Xe	X
+xa	Xe	X
 
 %%a=a,c=E,+strong
 [t=p]
 [t=i,v=p]
-Xe	Xa	X:e	X
+xe	Xa	X:e	X
 
 [t=i,v=a]
-Xe	Xa	X:	X
+xe	Xa	X:	X
 
 [t=j,v=a]
 [t=c]
-Xe	Xa	X	X
+xe	Xa	X	X
 
 [t=j,v=p]
-Xe	Xa	Xe	X
+xe	Xa	Xe	X
 
 %%a=a,c=A,-strong
 %3=እ
 [t=p|i]
-Xa	X:a	-
+xa	X:a	-
 
 [t=j]
-Xa	Xa	-
+xa	Xa	-
 
 [t=c]
-Xa	X	ት
+xa	X	ት
 
 %3=ይ
 
 [t=p]
-Xa	X:e	-
+xa	X:e	-
 
 [t=i]
-Xa	X:	-
+xa	X:	-
 
 [t=j]
-Xa	X	-
+xa	X	-
 
 [t=c]
-Xa	X	ት
+xa	X	ት
 
-%1=እ !
+#%1=እ !
+#%1=እ,3=እ !
+#%1=እ,3=ይ !
 %2=ው !
+%2=ይ !
 %2=እ !
 
 %%a=i,c=A,+strong

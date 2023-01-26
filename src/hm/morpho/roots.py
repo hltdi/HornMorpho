@@ -162,18 +162,24 @@ class Roots:
 #            print("** position {}, vowels {}".format(position, vowels))
 #            if isinstance(vowels, tuple):
             charsets[position] = vowels
+        # Keep track of positions where vowels are changed based on weak subclass rules, so
+        # earlier rules have priority (otherwise <' w q> is treated as a 2=ው root)
+        positions_reset = []
         for index in range(len(defaults)):
             cons = consonants[index]
             position = index + 1
+            if position in positions_reset:
+                continue
             posrules = rules.get(position)
-            if posrules and cons in posrules and strong:
+            if posrules and cons in posrules:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
 #                print("*** weak root {} for position {}".format(consonants, position))
                 strong = False
                 posrules = posrules[cons]
+#                print("*** {} -- found weak rules for {}:{} : {}".format(consonants, position, cons, posrules))
                 for pos, vowels in posrules.items():
-#                    print("** pos {}, vowels {}".format(pos, vowels))
                     charsets[pos] = vowels
+                    positions_reset.append(pos)
         for cons, (position, chars) in zip(consonants, charsets.items()):
             if isinstance(chars, tuple):
                 # iterative position: make two charsets
@@ -226,7 +232,11 @@ class Roots:
                     subcat = ''
                 else:
                     subcat = cat[-1]
-                    if len(subcat) > 1:
+                    if '=' in subcat:
+                        # subcat is like 2=ው
+                        position, char = subcat.split('=')
+                        position = int(position)
+                    elif len(subcat) > 1:
                         char, position = tuple(subcat)
                         position = int(position)
                 maincat = cat[0].strip()

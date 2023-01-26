@@ -120,7 +120,7 @@ class Template:
         cls = weight.get('c')
         strong = weight.get('strong')
 
-#        print(" *** weights {}".format(weight.__repr__()))
+#        print(" *** template {}, weights {}".format(template, weight.__repr__()))
 
         inventory = strong_inventory.get(cls)
 
@@ -178,7 +178,6 @@ class Template:
                         # No templates for this feature set in the strong inventory
                         continue
                     for subclass, weak_features in weak_class_inventory.items():
-                        subclass_feats = subclass.split('=')
                         # Look for templates with feature
                         found = False
                         for weak_feature, weak_templates in weak_features.items():
@@ -187,8 +186,9 @@ class Template:
                                 break
                         if not found:
                             weak_subclass_constraints = weak_class_constraints.get(subclass) if weak_class_constraints else None
-#                            print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
-#                            print("*** weak constraints {}".format(weak_subclass_constraints))
+#                            if weak_subclass_constraints:
+#                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
+#                                print("*** weak constraints {}".format(weak_subclass_constraints))
                             prevented = False
                             if weak_subclass_constraints:
                                 for weak_constraint in weak_subclass_constraints:
@@ -198,17 +198,19 @@ class Template:
                                         break
                             if prevented:
                                 continue
+                            # There may be more than one positional constraint
                             # Create the weak feature set (add -strong, the class, e.g., c=A, and the subclass, e.g., 2=ው)
                             new_weak_feats = feature.copy()
                             new_weak_feats['strong'] = False
-                            new_weak_feats[subclass_feats[0]] = subclass_feats[1]
+                            subclass_feats = [sc.split('=') for sc in subclass.split(',')]
+                            for feat, value in subclass_feats:
+                                new_weak_feats[feat] = value
                             new_weak_feats['c'] = cls
                             new_weak_feats = FSSet(new_weak_feats)
 #                            print("  **** Creating weak feature: {}".format(new_weak_feats.__repr__()))
                             # Pick first template for this feature set for the weak subclass
                             template = templates[0]
                             tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
-
 
     @staticmethod
     def copy_templates(features, sourceclass, strong_inventory, tmp_dict):
@@ -253,7 +255,7 @@ class Template:
         features = FeatStruct("[" + features + "]", freeze=False)
         cls = features.get('c')
         features = features.delete(['c', 'strong'])
-        print("*** Adding constraint for class {}, subclass {}, features {}".format(cls, subclass, features.__repr__()))
+#        print("*** Adding constraint for class {}, subclass {}, features {}".format(cls, subclass, features.__repr__()))
         if cls not in constraint_dict:
             constraint_dict[cls] = {}
         if subclass not in constraint_dict[cls]:
@@ -373,11 +375,9 @@ class Template:
         for features, sourceclass in copy_templates:
             Template.copy_templates(features, sourceclass, inventory, tmp_dict)
 
-#        print("*** inventory {}".format(inventory.get('A')))
-
         Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints)
 
-#        print("*** weak inventory {}".format(weak_inventory))
+#        print("*** weak inventory {}".format(weak_inventory.get('A').get('3=እ')))
 
         Template.make_all_template_states(fst, tmp_dict)
 
