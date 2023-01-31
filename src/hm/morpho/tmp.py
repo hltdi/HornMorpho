@@ -29,6 +29,8 @@ from .fs import FeatStruct, simple_unify
 #from .fs import FeatStructParser
 from .geez import *
 
+REG_FS = FSSet("[+reg]")
+
 # Default name for final state
 DFLT_FINAL = 'fin'
 
@@ -65,6 +67,9 @@ class Template:
             tmp_length = len(template)
             # Position of possibly geminated consonant (all EES!)
             gem_pos = {tmp_length - 1, tmp_length - 2}
+
+#            if weight.get('a') == 'a':
+#                print("** template {}, weight {}".format(template, weight))
 
             for elemindex, charset in enumerate(template):
                 position = elemindex + 1
@@ -118,6 +123,7 @@ class Template:
         features = ';'.join(features)
         weight = UNIFICATION_SR.parse_weight(features)
         cls = weight.get('c')
+        weight = FSSet.update(weight, REG_FS)
         strong = weight.get('strong')
 
 #        print(" *** template {}, weights {}".format(template, weight.__repr__()))
@@ -382,7 +388,7 @@ class Template:
         Template.make_all_template_states(fst, tmp_dict)
 
 #        print("*** tmp_dict")
-#        print(tmp_dict.get(('Xa', 'Xe', 'X')))
+#        print(tmp_dict.get(('^a', '*e', '*')))
 
 #        print(fst)
         return fst

@@ -1131,6 +1131,13 @@ class POSMorphology:
                             fst = self.casc.compose(backwards=compose_backwards, trace=verbose, subcasc=subcasc,
     #                                                end=split_index if split_index else None,
                                                     relabel=relabel)
+                        if self.casc.insertions:
+                            # Insert insertion FSTs into composed FST
+#                            print("*** {} has FST insertions {}".format(self.casc, self.casc.insertions))
+                            start = fst._get_initial_state()
+                            end = fst._get_final_states()[0]
+                            for insertion in self.casc.insertions:
+                                fst.insert(insertion, start, end)
                         if invert:
                             fst = fst.inverted()
                         self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,

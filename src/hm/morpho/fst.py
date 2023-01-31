@@ -94,8 +94,10 @@ WEIGHTING_RE = re.compile('weighting\s*=\s*(.*)')
 R2L_RE = re.compile('r2l')
 # >fst<
 CASC_FST_RE = re.compile(r'>(.*?)<')
-# >xxx.rt<
+# >xxx.root<
 CASC_ROOT_RE = re.compile(r'>(.+?\.root)<')
+# +xxx.root+
+CASC_ROOT_INSERT_RE = re.compile(r'\+(.+?\.root)\+')
 # >xxx.tmp<
 CASC_TMP_RE = re.compile(r'>(.+?\.tmp)<')
 # >xxx.ar<
@@ -199,6 +201,9 @@ class FSTCascade(list):
         # Dictionary of lists of FST indices, for particular purposes
         self._cascades = {}
 
+        # List of FSTs to be inserted between start and end states
+        self.insertions = []
+
         # Segmentation units
         self.seg_units = []
 
@@ -263,6 +268,9 @@ class FSTCascade(list):
                 if last:
                     fsts.append(last)
             return FST.compose(fsts, self.label + '@', relabel=relabel, reverse=self.r2l, trace=trace)
+
+#    def insert(self, fst, source, dest, weight=None):
+#        pass
 
     def mult_compose(self, ends):
         begin = 0
@@ -586,6 +594,24 @@ class FSTCascade(list):
                         if verbose:
                             print('Skipping FST {}'.format(label))
                     cascade.append(fst)
+                continue
+
+            m = CASC_ROOT_INSERT_RE.match(line)
+            if m:
+                if create_networks:
+                    filename = m.group(1)
+                    if not subcasc_indices or len(cascade) in subcasc_indices:
+                        abbrevs = cascade._IOabbrevs
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
+                                       cascade=cascade, weighting=cascade.weighting(),
+                                       abbrevs=abbrevs,
+                                       seg_units=seg_units, weight_constraint=weight_constraint,
+                                       gen=gen, verbose=verbose)
+                    else:
+                        fst = 'FST' + str(len(cascade))
+                        if verbose:
+                            print('Skipping FST {}'.format(label))
+                    cascade.insertions.append(fst)
                 continue
 
             # Roots

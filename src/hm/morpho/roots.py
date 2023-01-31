@@ -29,6 +29,8 @@ from .semiring import FSSet, UNIFICATION_SR, TOPFSS
 #from .fs import FeatStructParser
 from .geez import *
 
+IRR_FS = FSSet("[-reg]")
+
 def geezify_CV(c, v):
     '''
     Convert roman cons and vowel to a Geez character.
@@ -40,6 +42,8 @@ def geezify_CV(c, v):
         return ''
     elif len(v) > 1 and v[0] == '0':
         return v[1]
+    elif is_geez(c):
+        c = romanize(c, 'ees')
     return geezify(c+v, 'ees')
 
 class Roots:
@@ -49,8 +53,11 @@ class Roots:
     # Signifies no input or output characters associated with an FSS
     NO_INPUT = '--'
 
-    LINE_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
+    ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
+    IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
+    PATTERN_RE = re.compile(r'\s*(.+)$')
+    FEATURES_RE = re.compile(r'\s*(\[.+\])$')
 
 #    def __init__(self, fst, directory=''):
 #        self.fst = fst
@@ -65,7 +72,7 @@ class Roots:
 
     @staticmethod
     def make_root_states(fst, cons, feats, rules, cascade):
-        def mrs(fst, charsets, weight, states, iterative=False, main_charsets=None):
+        def mrs(fst, charsets, weight, states, iterative=False, aisa=False, main_charsets=None):
 #            print("**** mrs {} weight {} states {} iterative {}".format(charsets, weight.__repr__(), states, iterative))
             source = 'start'
             for index, dest in enumerate(states[:-1]):
@@ -86,6 +93,8 @@ class Roots:
                             continue
                 if iterative:
                     dest = dest + 'i'
+                elif aisa:
+                    dest = dest + 'a'
                 if iter_chars:
                     # iterated position, create two states
                     dest0 = dest + '_a'
@@ -126,12 +135,16 @@ class Roots:
         charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls))
         # Based on rules, assign ±strong to the root
         weight = weight.set_all('strong', strong)
-        mrs(fst, charsets, weight, states, iterative=False)
+        mrs(fst, charsets, weight, states, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
 #            print("*** there are iterative rules: {}".format(cls_it_rules))
             it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules)
 #            print("*** charsets {}, it_charsets {}".format(charsets, it_charsets))
-            mrs(fst, it_charsets, weight, states, iterative=True, main_charsets=charsets)
+            mrs(fst, it_charsets, weight, states, iterative=True, aisa=False, main_charsets=charsets)
+        if (cls_a_rules := rules.get(cls + 'a')):
+#            print("*** there are _a_ rules: {}".format(cls_a_rules))
+            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules)
+            mrs(fst, a_charsets, weight, states, iterative=False, aisa=True, main_charsets=charsets)
 
     @staticmethod
     def get_rule(consonants, cls, rules):
@@ -167,6 +180,9 @@ class Roots:
         positions_reset = []
         for index in range(len(defaults)):
             cons = consonants[index]
+            # assume that root classes have romanized keys
+            if is_geez(cons):
+                cons = romanize(cons, 'ees')
             position = index + 1
             if position in positions_reset:
                 continue
@@ -193,6 +209,41 @@ class Roots:
         return [geezify_CV(cons, vowel) for vowel in vowels]
 
     @staticmethod
+    def make_irr_root(fst, cons, feats, patterns):
+#        print("** Making irr root {}, {}, {}".format(cons, feats, patterns))
+        cons = cons.split()
+        state_name = ''.join(cons)
+        states = []
+        for index, cs in enumerate(cons):
+            i = index+1
+#            state_name0 = "{}{}".format(state_name, i)
+            char = geezify_CV(cs, 'I')
+            feats = "{},{}={}".format(feats, i, char)
+#            states.append(state_name0)
+        feats = '[' + feats + ']'
+        weight = UNIFICATION_SR.parse_weight(feats)
+        cls = weight.get('c')
+        weight = FSSet.update(weight, IRR_FS)
+#        print("*** cons {}, weight {}".format(cons, weight.__repr__()))
+        for pindex, (pattern, pfeatures) in enumerate(patterns):
+            pposition = pindex + 1
+            pfeatures = UNIFICATION_SR.parse_weight(pfeatures)
+            pfeatures = FSSet.update(pfeatures, weight)
+#            print("**** Creating states for root {} and pattern {} and features {}".format(cons, pattern, pfeatures.__repr__()))
+            source = 'start'
+            for cindex, char in enumerate(pattern[:-1]):
+                cposition = cindex + 1
+                dest = "{}_{}_{}".format(state_name, pposition, cposition)
+                if not fst.has_state(dest):
+                    fst.add_state(dest)
+#                print(" **** Adding arc {}->{}: {}".format(source, dest, char))
+                fst.add_arc(source, dest, char, char, weight=pfeatures if cindex==0 else None)
+                source = dest
+            final_char = pattern[-1]
+#            print(" **** Adding arc {}->end: {}".format(source, final_char))
+            fst.add_arc(source, 'end', final_char, final_char)
+
+    @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, 
               directory='', seg_units=[], abbrevs=None,
               weight_constraint=None, verbose=False):
@@ -205,7 +256,13 @@ class Roots:
 #        weighting = fst.weighting()
 
         rules = {}
+
         roots = []
+
+        irr_roots = {}
+
+        current_root = ''
+        current_feats = ''
 
         # Create start and end states
         if not fst.has_state(label): fst.add_state('start')
@@ -267,11 +324,33 @@ class Roots:
                         rules[maincat][''] = specs
                 continue
 
-            m = Roots.LINE_RE.match(line)
+            m = Roots.ROOT_RE.match(line)
             if m:
                 cons, feats = m.groups()
 #                print("*** cons {}, feats {}".format(cons, feats))
                 roots.append((cons, feats))
+                continue
+
+            m = Roots.IRR_ROOT_RE.match(line)
+            if m:
+                current_root = m.groups()
+                irr_roots[current_root] = []
+                continue
+
+            m = Roots.FEATURES_RE.match(line)
+            if m:
+                features = m.groups()[0]
+                current_feats = features
+#                print("*** features {}".format(features))
+#                irr_roots[current_root].append(features)
+                continue
+
+            m = Roots.PATTERN_RE.match(line)
+            if m:
+                pattern = m.groups()[0].split()
+#                print("*** pattern {}".format(pattern))
+                irr_roots[current_root].append((pattern, current_feats))
+#                print("*** irr_roots {}".format(irr_roots))
                 continue
 
             print("*** Something wrong with {}".format(line))
@@ -279,11 +358,15 @@ class Roots:
         for cons, feats in roots:
             Roots.make_root_states(fst, cons, feats, rules, cascade)
 
-#        print("** rules: {}".format(rules))
+        if irr_roots:
+            for (cons, feats), patterns in irr_roots.items():
+                Roots.make_irr_root(fst, cons, feats, patterns)
 
-#        print(fst)
+#        print("** rules: {}".format(rules))
+#        print("** irr roots: {}".format(irr_roots))
+
+#        if irr_roots:
+#            print(fst)
 
         return fst
-
-
 

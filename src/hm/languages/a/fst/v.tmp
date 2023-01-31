@@ -6,128 +6,131 @@ $ t=p|i|j|c
 %%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
-Xe	X:e	X
+*e	*:e	*
 
 [t=j,v=p]
-Xe	Xe	X
+*e	*e	*
+
+[t=i,v=p] 
+*e	*:e	*
 
 [t=i|j|c,v=as]
-Xe	X:	X
+*e	*:	*
 
 [t=i,v=0|a]
 [t=c,v=0|p]
-Xe	X	X
+*e	*	*
 
 [t=j,v=0]
-X	Xe	X
+*	*e	*
 
 [t=j|c,v=a]
-X	X	X
+*	*	*
 
 %%a=0,c=B,+strong
 [t=p]
 [t=i,v=p] 
-Xe	X:e	X
+*e	*:e	*
 
 [t=i|j|c,v=0|a|as]
 [t=c,v=p]
-Xe	X:	X
+*e	*:	*
 
 [t=j,v=p]
-Xe	Xe	X
+*e	*e	*
 
 %%a=0,c=C,+strong
 [t=p]
 [t=i,v=p] 
-Xa	X:e	X
+*a	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-Xa	X:	X
+*a	*:	*
 
 [t=j|c,v=0|a]
 [t=c,v=p|as]
-Xa	X	X
+*a	*	*
 
 [t=j,v=p]
-Xa	Xe	X
+*a	*e	*
 
 %%a=0,c=E,+strong
 [t=p]
 [t=i,v=p]
-Xe	Xe	X:e	X
+*e	*e	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-Xe	Xe	X:	X
+*e	*e	*:	*
 
 [t=j,v=0|a]
 [t=c]
-Xe	X	X	X
+*e	*	*	*
 
 [t=j,v=p]
-Xe	X	Xe	X
+*e	*	*e	*
 
 %%a=0,c=F,+strong
 [t=p]
 [t=i,v=p]
-Xe	Xa	X:e	X
+*e	*a	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-Xe	Xa	X:	X
+*e	*a	*:	*
 
 [t=j,v=0|a]
 [t=c]
-Xe	Xa	X	X
+*e	*a	*	*
 
 [t=j,v=p]
-Xe	Xa	Xe	X
+*e	*a	*e	*
 
 %%a=0,c=G,+strong
 [t=p]
 [t=i,v=p]
-X	Xe	Xe	X:e	X
+*	*e	*e	*:e	*
 
 [t=i,v=a]
-X	Xe	Xe	X:	X
+*	*e	*e	*:	*
 
 [t=j,v=p]
-X	Xe	X	Xe	X
+*	*e	*	*e	*
 
 [t=c]
 [t=j,v=a]
-X	Xe	X	X	X
+*	*e	*	*	*
 
 %%a=0,c=H,+strong
 [t=p]
 [t=i,v=p]
-X	Xe	Xa	X:e	X
+*	*e	*a	*:e	*
 
 [t=i,v=a]
-X	Xe	Xa	X:	X
+*	*e	*a	*:	*
 
 [t=j,v=p]
-X	Xe	Xa	Xe	X
+*	*e	*a	*e	*
 
 [t=c]
 [t=j,v=a]
-X	Xe	Xa	X	X
+*	*e	*a	*	*
 
 %%a=0,c=J,+strong
 [t=p]
 [t=i,v=p]
-X	Xa	X:e	X
+*	*a	*:e	*
 
 [t=i,v=a]
-X	Xa	X:	X
+*	*a	*:	*
 
 [t=j,v=p]
-X	Xa	Xe	X
+*	*a	*e	*
 
 [t=c]
 [t=j,v=a]
-X	Xa	X	X
+*	*a	*	*
 
 %%a=0,c=A,-strong
 
@@ -135,216 +138,337 @@ X	Xa	X	X
 # no v=a for this subclass
 [t=p]
 [t=i,v=p] 
-ኣ	X:e	X
+ኣ	*:e	*
 
 [t=j,v=p]
-ኣ	Xe	X
+ኣ	*e	*
 
 [t=i|j|c,v=as]
-ኣ	X:	X
+ኣ	*:	*
 
 [t=i,v=0]
 [t=c,v=0|p]
-ኣ	X	X
+ኣ	*	*
 
 %1=እ,3=ይ
 [t=p]
-ኣ	X:e	-
+ኣ	*:e	-
 
 [t=i,v=0|p]
 [t=j,v=p|as]
-ኣ	X	-
+ኣ	*	-
 
 [t=i,v=as]
-ኣ	X:	-
+ኣ	*:	-
 
 [t=j,v=0]
-እ	X	-
+እ	*	-
 
 [t=c]
-ኣ	X	ት
+ኣ	*	ት
 
 %1=እ,3=እ
 [t=p]
 [t=i,v=as]
-ኣ	X:a	-
+ኣ	*:a	-
 
 [t=i,v=0|p]
 [t=j,v=p|as]
-ኣ	Xa	-
+ኣ	*a	-
 
 [t=j,v=0]
-እ	Xa	-
+እ	*a	-
 
 [t=c]
-ኣ	X	ት
+ኣ	*	ት
 
 %2=ው
 [t=p|i|c]
-Xo	-	X
+*o	-	*
 
 [t=j]
-Xu	-	X
+*u	-	*
 
 %2=ይ
 [t=p|i]
-Ye	-	X
+Ye	-	*
 
 [t=p|i]
-~YE	-	X
+~YE	-	*
 
 [t=j|c]
-Y	-	X
+Y	-	*
 
 [t=j|c]
-~Yi	-	X
+~Yi	-	*
 
 %2=እ
 [t=p|j]
 [t=i,v=p]
-Xa	-	X
+*a	-	*
 
 [t=i,v=0|a|as]
 [t=c]
-X	-	X
+*	-	*
 
 %3=እ
 [t=p]
 [t=i,v=p|as]
 [t=j,v=as]
-Xe	X:a	-
+*e	*:a	-
 
 [t=i,v=0|a]
 [t=j,v=p]
-Xe	Xa	-
+*e	*a	-
 
 [t=j,v=0|a]
-X	Xa	-
+*	*a	-
 
 [t=c,v=0|p|as]
-Xe	X	ት
+*e	*	ት
 
 [t=c,v=a]
-X	X	ት
+*	*	ት
 
 %3=ይ
 [t=p]
-Xe	X:e	-
+*e	*:e	-
 
 [t=i,v=p|as]
 [t=j,v=as]
-Xe	X:	-
+*e	*:	-
 
 [t=i,v=0|a]
 [t=j,v=p]
-Xe	X	-
+*e	*	-
 
 [t=j,v=0|a]
-X	X	-
+*	*	-
 
 [t=c,v=0|p|as]
-Xe	X	ት
+*e	*	ት
 
 [t=c,v=a]
-X	X	ት
+*	*	ት
 
 %%a=0,c=B,-strong
+
+%1=እ
+[t=p]
+[t=i,v=p] 
+ኣ	*:e	*
+
+[t=i|j|c,v=0|a|as]
+[t=c,v=p]
+ኣ	*:	*
+
+[t=j,v=p]
+ኣ	*e	*
 
 %3=እ
 [t=p|i]
 [t=j,v=0|a|as]
-Xe	X:a	-
+*e	*:a	-
 
 # ?
 [t=j,v=p]
-Xe	Xa	-
+*e	*a	-
 
 [t=c]
-Xe	X:	ት
+*e	*:	ት
 
 %3=ይ
 [t=p]
-Xe	X:e	-
+*e	*:e	-
 
 [t=i|j]
-Xe	X:	-
+*e	*:	-
 
 [t=c]
-Xe	X:	ት
+*e	*:	ት
+
+%%a=0,c=C,-strong
+%3=እ
+[t=p|i]
+[t=j,v=0|a|as]
+*a	*:a	-
+
+# ?
+[t=j,v=p]
+*a	*a	-
+
+[t=c]
+*a	*:	ት
+
+%3=ይ
+# are there any roots like this?
+[t=p]
+*a	*:e	-
+
+[t=i|j]
+*a	*:	-
+
+[t=c]
+*a	*:	ት
+
+%%a=0,c=E,-strong
+%1=እ
+[t=p]
+[t=i,v=p]
+ኣ	*e	*:e	*
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+ኣ	*e	*:	*
+
+[t=j,v=0|a]
+[t=c]
+ኣ	*	*	*
+
+[t=j,v=p]
+ኣ	*	*e	*
+
+%4=እ
+# ገነባ
+[t=p|i]
+[t=j,v=as]
+*e	*e	*:a	-
+
+[t=j,v=p]
+*e	*e	*a	-
+
+[t=j,v=0|a]
+*e	*	*a	-
+
+[t=c]
+*e	*	*	ት
+
+%4=ይ
+# ሰለቸ
+[t=p|i]
+[t=j,v=as]
+*e	*e	*:e	-
+
+[t=j,v=p]
+*e	*e	*	-
+
+[t=j,v=0|a]
+*e	*	*	-
+
+[t=c]
+*e	*	*	ት
+
+%2=እ,4=እ
+# ባባ
+[t=p|i|j]
+*a	-	*a	-
+
+[t=c]
+*a	-	*	ት
+
+%%a=0,c=F,-strong
+%4=እ
+# ሰማራ
+[t=p|i]
+[t=j,v=as]
+*e	*a	*:a	-
+
+[t=j,v=p]
+*e	*a	*a	-
+
+[t=j,v=0|a]
+*e	*a	*a	-
+
+[t=c]
+*e	*a	*	ት
+
+%4=ይ
+# ተዘጋጀ
+[t=p|i]
+[t=j,v=as]
+*e	*a	*:e	-
+
+[t=j,v=p]
+*e	*a	*	-
+
+[t=j,v=0|a]
+*e	*a	*	-
+
+[t=c]
+*e	*a	*	ት
 
 %%a=a,c=A,+strong
-# initial consonant for a=a cannot be '/እ, hence xa,xe instead of Xa,Xe
+# initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
 [t=p]
 [t=i,v=p] 
-xa	X:e	X
+^a	*:e	*
 
 [t=j,v=p]
-xa	Xe	X
+^a	*e	*
 
 [t=i|j|c,v=a]
-xa	X:	X
+^a	*:	*
 
 [t=c,v=p]
-xa	X	X
+^a	*	*
 
 [t=j,v=p]
-xa	Xe	X
+^a	*e	*
 
 [t=j|c,v=a]
-xa	X	X
+^a	*	*
 
 %%a=a,c=B,+strong
 [t=p]
 [t=i,v=p] 
-xa	X:e	X
+^a	*:e	*
 
 [t=i|j|c,v=a]
 [t=c]   # ?
-xa	X:	X
+^a	*:	*
 
 # ?
 [t=j,v=p]
-xa	Xe	X
+^a	*e	*
 
 %%a=a,c=E,+strong
 [t=p]
 [t=i,v=p]
-xe	Xa	X:e	X
+^e	*a	*:e	*
 
 [t=i,v=a]
-xe	Xa	X:	X
+^e	*a	*:	*
 
 [t=j,v=a]
 [t=c]
-xe	Xa	X	X
+^e	*a	*	*
 
 [t=j,v=p]
-xe	Xa	Xe	X
+^e	*a	*e	*
 
 %%a=a,c=A,-strong
 %3=እ
 [t=p|i]
-xa	X:a	-
+^a	*:a	-
 
 [t=j]
-xa	Xa	-
+^a	*a	-
 
 [t=c]
-xa	X	ት
+^a	*	ት
 
 %3=ይ
-
 [t=p]
-xa	X:e	-
+^a	*:e	-
 
 [t=i]
-xa	X:	-
+^a	*:	-
 
 [t=j]
-xa	X	-
+^a	*	-
 
 [t=c]
-xa	X	ት
+^a	*	ት
 
 #%1=እ !
 #%1=እ,3=እ !
@@ -353,20 +477,73 @@ xa	X	ት
 %2=ይ !
 %2=እ !
 
+%%a=a,c=B,-strong
+%3=እ
+[t=p|i]
+[t=j,v=0|a|as]
+*a	*:a	-
+
+# ?
+[t=j,v=p]
+*a	*a	-
+
+[t=c]
+*a	*:	ት
+
+%3=ይ
+[t=p]
+*a	*:e	-
+
+[t=i|j]
+*a	*:	-
+
+[t=c]
+*a	*:	ት
+
+%%a=a,c=E,-strong
+
+%4=እ
+# ገነባ
+[t=p|i]
+*e	*a	*:a	-
+
+[t=j,v=p]
+*e	*a	*a	-
+
+[t=j,v=a]
+*e	*a	*a	-
+
+[t=c]
+*e	*a	*	ት
+
+%4=ይ
+# ሰለቸ
+[t=p|i]
+*e	*a	*:e	-
+
+[t=j,v=p]
+*e	*a	*	-
+
+[t=j,v=a]
+*e	*a	*	-
+
+[t=c]
+*e	*a	*	ት
+
 %%a=i,c=A,+strong
 [t=p]
 [t=i,v=p]
-Xe	Xa	X:e	X
+*e	*a	*:e	*
 
 [t=i,v=0|a]
-Xe	Xa	X:	X
+*e	*a	*:	*
 
 [t=j,v=p]
-Xe	Xa	Xe	X
+*e	*a	*e	*
 
 [t=j,v=0|a]
 [t=c]
-Xe	Xa	X	X
+*e	*a	*	*
 
 %%a=i,c=B,+strong == A
 
@@ -375,17 +552,17 @@ Xe	Xa	X	X
 %%a=i,c=E,+strong
 [t=p]
 [t=i,v=p]
-Xe	Xe	Xa	X:e	X
+*e	*e	*a	*:e	*
 
 [t=i,v=0|a]
-Xe	Xe	Xa	X:	X
+*e	*e	*a	*:	*
 
 [t=j,v=p]
-Xe	Xe	Xa	Xe	X
+*e	*e	*a	*e	*
 
 [t=j,v=0|a]
 [t=c]
-Xe	Xe	Xa	X	X
+*e	*e	*a	*	*
 
 %%a=i,c=F,+strong == E
 
@@ -393,52 +570,62 @@ Xe	Xe	Xa	X	X
 
 %2=ው
 [t=p|i|j|c]
-XWa	XWa	-	X
+*Wa	*Wa	-	*
 
 %2=እ
 [t=p|i|j]
-Xa	Xa	-	X
+*a	*a	-	*
 
 [t=c]
-Xa	X	-	X
+*a	*	-	*
 
 %3=እ
 [t=p]
 [t=i,v=p]
-Xe	Xa	X:a	-
+*e	*a	*:a	-
 
 # alternative for some roots: ተስማማ ይስማማሉ
 [t=p,v=p]
 [t=i]
-X	Xa	X:a	-
+*	*a	*:a	-
 
 [t=j]
-# is {Xe Xa Xa -} possible? (ይሰማማ)
-X	Xa	Xa	-
+# is {*e *a *a -} possible? (ይሰማማ)
+*	*a	*a	-
 
 [t=c]
-X	Xa	X	ት
+*	*a	*	ት
 
 %3=ይ
 [t=p]
-Xe	Xa	X:e	-
+*e	*a	*:e	-
 
 [t=i|j]
-# is {X Xa X: -} possible? (ይቅራራሉ)
-Xe	Xa	X:	-
+# is {* *a *: -} possible? (ይቅራራሉ)
+*e	*a	*:	-
 
 [t=c]
-Xe	Xa	X	ት
+*e	*a	*	ት
 
-#%1=እ
-#[t=p]
-#-	Xa	X:e	X
-#
-#[t=i,v=p]
-#ተ	Xa	X:e	X
-#
-#[t=j,v=p]
-#ተ	Xa	Xe	X
-#
-#[t=c,v=p]
-#ተ	Xa	X	X
+%%a=i,c=B,-strong
+
+%3=እ
+[t=p]
+[t=i,v=p]
+*e	*a	*:a	-
+
+[t=j]
+*e	*a	*a	-
+
+[t=c]
+*	*a	*	ት
+
+%3=ይ
+[t=p]
+*e	*a	*:e	-
+
+[t=i|j]
+*e	*a	*:	-
+
+[t=c]
+*e	*a	*	ት
