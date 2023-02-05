@@ -29,7 +29,7 @@ from .fs import FeatStruct, simple_unify
 #from .fs import FeatStructParser
 from .geez import *
 
-REG_FS = FSSet("[+reg]")
+#REG_FS = FSSet("[+reg]")
 
 # Default name for final state
 DFLT_FINAL = 'fin'
@@ -57,10 +57,15 @@ class Template:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
-    def make_all_template_states(fst, tmp_dict):
+    def make_all_template_states(fst, tmp_dict, default_final):
         '''
         Add states and arcs for all templates in the template dict.
         '''
+        # Create final default state and arc to end state
+        if not fst.has_state('final'): fst.add_state('final')
+        fst.add_arc('final', 'end', default_final, default_final)
+#        print("*** Created state from final to end with chars {}".format(default_final))
+            
         for index, (template, weight) in enumerate(tmp_dict.items()):
             template_name = "tmp{}".format(index)
             states = []
@@ -90,7 +95,18 @@ class Template:
                 states.append((state_name, charset, gem_feat))
 
             source = 'start'
-            for index, (dest, charset, gem_feat) in enumerate(states[:-1]):
+            if states[-1][1] == default_final:
+                # template ends in default final, so use existing final arc
+                states_to_create = states[:-2]
+                last_state = states[-2]
+                end = 'final'
+            else:
+                # template ends in some other character set, so create the final arc to 'end'
+                states_to_create = states[:-1]
+                last_state = states[-1]
+                end = 'end'
+
+            for index, (dest, charset, gem_feat) in enumerate(states_to_create):
                 if not fst.has_state(dest):
                     fst.add_state(dest)
                 wt=None
@@ -101,9 +117,9 @@ class Template:
                 fst.add_arc(source, dest, charset, charset, weight=wt)
                 source = dest
 
-            last_state, charset, gem_feat = states[-1]
-
-            fst.add_arc(source, 'end', charset, charset, weight=gem_feat)
+            state, charset, gem_feat = last_state
+            fst.add_arc(source, end, charset, charset, weight=gem_feat)
+#            print("** Created arc from {} to {} with {}".format(source, end, charset))
 
     @staticmethod
     def add_template(fst, template, index, features, constraints, tmp_dict=None,
@@ -123,7 +139,7 @@ class Template:
         features = ';'.join(features)
         weight = UNIFICATION_SR.parse_weight(features)
         cls = weight.get('c')
-        weight = FSSet.update(weight, REG_FS)
+#        weight = FSSet.update(weight, REG_FS)
         strong = weight.get('strong')
 
 #        print(" *** template {}, weights {}".format(template, weight.__repr__()))
@@ -372,7 +388,21 @@ class Template:
             print("*** Something wrong with {}".format(line))
 
         inventory = Template.expand_inventory(inventory_classes, inventory)
+
         weak_inventory = Template.make_weak_inventory(weak_inventory_classes, inventory)
+
+        # Find most common final character set.
+        finals = {}
+        for template, x, y, z in templates:
+            final = template[-1]
+            if final in finals:
+                finals[final] += 1
+            else:
+                finals[final] = 1
+        finals = list(finals.items())
+        finals.sort(key=lambda x: x[1], reverse=True)
+#        print("*** finals {}".format(finals))
+        default_final = finals[0][0]
 
         for index, (template, features, constraints, subclass) in enumerate(templates):
             Template.add_template(fst, template, index+1, features, constraints, tmp_dict=tmp_dict,
@@ -385,7 +415,7 @@ class Template:
 
 #        print("*** weak inventory {}".format(weak_inventory.get('A').get('3=እ')))
 
-        Template.make_all_template_states(fst, tmp_dict)
+        Template.make_all_template_states(fst, tmp_dict, default_final)
 
 #        print("*** tmp_dict")
 #        print(tmp_dict.get(('^a', '*e', '*')))

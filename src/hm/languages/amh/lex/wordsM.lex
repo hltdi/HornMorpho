@@ -36,9 +36,9 @@ kemece//wedih kemece//wedih adv
 kemecE//wedih kemecE//wedih adv
 kemece//jem_ro kemece//jem_ro adv
 kemecE//jem_ro kemecE//jem_ro adv
-'ske//mece 'ske//mece adv
-'ske//mecE 'ske//mecE adv
-'ske//mecewm 'ske//mecewm adv
-'ske//mecEwm 'ske//mecEwm adv
+#'ske//mece 'ske//mece adv
+#'ske//mecE 'ske//mecE adv
+#'ske//mecewm 'ske//mecewm adv
+#'ske//mecEwm 'ske//mecEwm adv
 mece//mec mece//mec adv
 mec//mec mec//mec adv

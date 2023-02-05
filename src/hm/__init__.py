@@ -60,7 +60,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, phonetic=False,
              rank=True, citation=True, transortho=True, experimental=True, udformat=True,
-             conllu=True):
+             mwe=False, conllu=True):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
@@ -74,6 +74,7 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
     @param phonetic (boolean): whether to output phonetic romanization (False by default for seg)
     @param rank (boolean): whether to rank segmentations by frequency
     @param udformat (boolean): whether to convert POS and features to UD format
+    @param mwe (boolean): whether to run the FSTs for MWEs; if there is a space in word, set to True
     @param conllu (boolean): whether to return a dict for each morpheme that can be converted to
                      CoNLL-U format
     @return:         analyses (only if raw is True); 
@@ -88,6 +89,7 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
 #    SEGMENT = True
     simps = None
     if language:
+        mwe = mwe or ' ' in word
         # Process special cases
         analyses = language.preproc_special(word, segment=True)
         if not analyses:
@@ -96,10 +98,9 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
                word, simps = language.preproc(word)
            analyses = language.anal_word(word, preproc=False, postproc=True, citation=citation,
                                      gram=False, segment=True, only_guess=False, phonetic=phonetic,
-                                     experimental=experimental, rank=rank,
+                                     experimental=experimental, rank=rank, mwe=mwe,
                                      print_out=(not raw and not realize),
-                                     conllu=conllu,
-                                     string=True, nbest=nbest)
+                                     conllu=conllu, string=True, nbest=nbest)
         if realize:
 #            print("** analysis {}".format(analysis))
             return [seg2string(word, s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps, conllu=conllu) for s in analyses]

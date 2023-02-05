@@ -29,7 +29,7 @@ from .semiring import FSSet, UNIFICATION_SR, TOPFSS
 #from .fs import FeatStructParser
 from .geez import *
 
-IRR_FS = FSSet("[-reg]")
+#IRR_FS = FSSet("[-reg]")
 
 def geezify_CV(c, v):
     '''
@@ -223,7 +223,7 @@ class Roots:
         feats = '[' + feats + ']'
         weight = UNIFICATION_SR.parse_weight(feats)
         cls = weight.get('c')
-        weight = FSSet.update(weight, IRR_FS)
+#        weight = FSSet.update(weight, IRR_FS)
 #        print("*** cons {}, weight {}".format(cons, weight.__repr__()))
         for pindex, (pattern, pfeatures) in enumerate(patterns):
             pposition = pindex + 1

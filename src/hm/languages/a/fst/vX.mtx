@@ -1,0 +1,110 @@
+$ conj_prep_pre
+  የ		<የ(PART,RLP;;mark)->				[t=p,+rel,-mc]
+  ብ  		<ብ(SCONJ;;mark)->					[cnj1=ብ,t=i,-rel,-mc]
+  ከ		<ከ(ADP;;case)->					[adp=ከ,t=p,+rel,-mc]
+  --  	[-rel,cnj1=None,adp=None];[v=j|c]
+
+$ rel_impf
+  # geminated
+  ም		<ም(PART,RLP;;mark)->				[t=i,+rel]
+  --		[t=i,-rel];[t=p|j|c]
+
+$ neg
+  =ኣ		<ኣ(PART;Polarity=Neg;advmod)->	[+neg,t=i|j]
+  =ኣል	<ኣ(PART;Polarity=Neg;advmod)->	[+neg,t=p]
+  --   	[-neg];[t=c]
+
+$ sb_pre
+  ይ		<ይ(PRON;Person=3;nsubj)->						[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
+  ት   		<ት(PRON;Person=2;nsubj)->						[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  እ   		<እ(PRON;Person=1,Number=Sing;nsubj)->		[t=i,sp=1,sn=1,-neg]
+  ል   		[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
+  እን  	[t=i|j,sp=1,sn=2,-neg]
+  --  	[t=p];[t=c];[t=j,sp=2,-neg]
+
+$ voice_pre
+  =ኣ		<ኣ(PART;Voice=Trans;advmod)->		[v=a]
+  =ኣስ  	<ኣስ(PART,Voice=Cau;advmod)->			[v=as]
+  ተ		<ተ(PART,Voice=Pass;advmod)->			[t=p|c,v=p];[t=j,sp=2,v=p]
+  /   	<_(PART,Voice=Pass;advmod)->			[t=i,v=p];[t=j,sp=1|3,v=p]
+  --  	[v=0]
+
+$ stem
+   >>v_stemX<<
+
+$ አንቀፅ
+  --		<(VERB;Aspect=Perf>		[t=p]
+  --		<(VERB;Aspect=Imp>		[t=i]
+  --		<(VERB;Mood=Jus>			[t=j]
+  --		<(VERB;VerbForm=Conv>		[t=c]
+
+$ voice_feat
+  --		<)>						[v=0]
+  --		<,Voice=Pass)>			[v=p]
+  --		<,Voice=Trans)>		[v=a]
+  --		<,Voice=Cau)>			[v=as]
+
+$ sb_suf
+  =አ		<-አ(PRON,SUBJ;Gender=Masc,Number=Sing,Person=3;nsubj)>		[sp=3,sn=1,sg=m,t=p]
+  =ኦ    	<-ኦ(PRON,SUBJ;Gender=Masc,Number=Sing,Person=3;nsubj)>		[sp=3,sn=1,sg=m,t=c]
+  =አች   	<-አች(PRON,SUBJ;Gender=Fem,Number=Sing,Person=3;nsubj)>		[sp=3,sn=1,sg=f,t=p]
+  =ኣ    	<-ኣ(PRON,SUBJ;Gender=Fem,Number=Sing,Person=3;nsubj)>		[sp=3,sn=1,sg=f,t=c]
+  =ኡ		<-ኡ(PRON,SUBJ;Person=2|3,Number=Plur;nsubj)>				[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,op=1|2|3]
+  =ኡ		<-ኡ(PRON,SUBJ;Person=3,Number=Plur;nsubj)>					[t=p,sp=3,sn=2]
+  =አው  	<-አው(PRON,SUBJ;Person=3,Number=Plur;nsubj)>					[sp=3,sn=2,t=c]
+  =ኣችሁ 	<-ኣችሁ(PRON,SUBJ;Person=2,Number=Plur;nsubj)>				[sp=2,sn=2,t=p|c]
+  ሽ		<-ሽ(PRON,SUBJ;Gender=Fem,Number=Sing,Person=2;nsubj)>		[sp=2,sn=1,sg=f,t=p]
+  =አሽ    	<-አሽ(PRON,SUBJ;Gender=Fem,Number=Sing,Person=2;nsubj)>		[sp=2,sn=1,sg=f,t=c]
+  =ኢ   	<-ኢ(PRON,SUBJ;Gender=Fem,Number=Sing,Person=2;nsubj)>		[sp=2,sn=1,sg=f,t=i|j]
+  =ክ		<-ክ(PRON,SUBJ;Gender=Masc,Number=Sing,Person=2;nsubj)>		[sp=2,sn=1,sg=m,t=p]
+  =አህ	<-አህ(PRON,SUBJ;Gender=Masc,Number=Sing,Person=2;nsubj)>	[sp=2,sn=1,sg=m,t=c]
+  =ኩ		<-ክ(PRON,SUBJ;Number=Sing,Person=1;nsubj)>					[sp=1,sn=1,t=p]
+  =ኤ		<-ክ(PRON,SUBJ;Number=Sing,Person=1;nsubj)>					[sp=1,sn=1,t=c]
+  ን    	<-ን(PRON,SUBJ;Person=1,Number=Plur;nsubj)>					[sp=1,sn=2,t=p]
+  =አን    	<-አን(PRON,SUBJ;Person=1,Number=Plur;nsubj)>					[sp=1,sn=2,t=c]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0];[t=i,sp=2|3,sn=2,op=0,+mc]
+
+$ ob_case
+  ^አ	        <>	[oc=a,op=1];[oc=a,op=3,on=1,og=m]
+  ል		<-ል(ADP;Case=Ben;case;+1)>		[oc=b,op=1|2|3]
+  ብ		<-ብ(ADP;Case=Mal;case;+1)>		[oc=m,op=1|2|3]
+  --		[op=0];[oc=a,op=2];[oc=a,op=3,on=2];[oc=a,op=3,on=1,og=f]
+
+$ ob_suf
+  [op=3,on=1,og=m]
+  # 3sm objects
+    ት		<-ው(PRON,OBJC;Gender=Masc,Number=Sing,Person=3>	[t=p,sp=1,sn=1,oc=a];[sp=2|3,sn=2,oc=a];[t=c,sp=3,sn=1,sg=m,oc=a]
+    =አት	<-ው(PRON,OBJC;Gender=Masc,Number=Sing,Person=3>	[oc=m|b]
+    ው		<-ው(PRON,OBJC;Gender=Masc,Number=Sing,Person=3>	[sp=1,sn=2,oc=a];[t=p,sp=2|3,sn=1,oc=a];[t=i|j,sn=1,oc=a];[t=c,sp=1|2,sn=1,oc=a];[t=c,sp=3,sn=1,sg=f,oc=a]
+  [op=3,on=1,og=f]
+    =ኣት	<-ኣት(PRON,OBJC;Gender=Fem,Number=Sing,Person=3>
+  [op=3,on=2]
+    =ኣቸው	<-ኣቸው(PRON,OBJC;Number=Plur,Person=3>
+  [op=1,sp=2|3]
+    ን		<-ን(PRON,OBJC;Number=Plur,Person=1>				[on=2]
+    ኝ		<-ኝ(PRON,OBJC;Number=Sing,Person=1>				[on=1]
+  [op=2,sp=1|3]
+    ሽ		<-ሽ(PRON,OBJC;Gender=Fem,Number=Sing,Person=2>	[on=1,og=f,of=i]
+    ህ		<-ህ(PRON,OBJC;Gender=Masc,Number=Sing,Person=2>	[on=1,og=m,of=i]
+    =ኣችሁ	<-ኣቸው(PRON,OBJC;Number=Plur,Person=2>			[on=2]
+    ዎት	<-ዎት(PRON,OBJC;Person=2,Polite=Form>			[on=1,of=f]
+  --   	[op=0]
+
+$ ob_dep
+  --		<;obj)>	[op=1|2|3,oc=a]
+  --		<;obl)>	[op=1|2|3,oc=m|b]
+  --		[op=0]
+
+$ aux
+  =ኣል	[t=i,sp=3,sn=1,sg=m,+mc];[t=i,sp=3,sn=2,op=1|2|3,+mc];[t=c,sp=1,sn=2,+mc];[t=c,sp=2,+mc];[t=c,sp=3,sn=1,sg=m,+mc];[t=c,sp=3,sn=2,+mc]
+  =ኣለሁ	[t=i|c,sp=1,sn=1,+mc]
+  =ኣለች	[t=i|c,sp=3,sn=1,sg=f,+mc]
+  =ኣለህ	[t=i,sp=2,sn=1,sg=m,+mc]
+  =ኣለሽ	[t=i,sp=2,sn=1,sg=f,+mc]
+  =ኣለን	[t=i,sp=1,sn=2,+mc]
+  =ኣላችሁ	[t=i,sp=2,sn=2,+mc]
+  =ኣሉ	[t=i,sp=3,sn=2,op=0,+mc]
+  --	        [t=p|j];[t=i|c,-mc]
+
+$ end
+  --		[pos=v]

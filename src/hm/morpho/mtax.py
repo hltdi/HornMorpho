@@ -1,7 +1,7 @@
 """
 This file is part of the HornMorpho package.
 
-Copyright (C) 2011, 2012, 2013, 2014, 2017, 2018, 2022
+Copyright (C) 2011, 2012, 2013, 2014, 2017, 2018, 2022, 2023
 Michael Gasser <gasser@indiana.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -40,8 +40,8 @@ STATE_RE = re.compile(r'\s*\$\s+(\S+)$')
 # and indentation
 FS_RE = re.compile(r'(\s*)(\[.+?\])$')
 # Path: input string to match ... Feature Structure Set; capture
-# indentation, input string and FSSet
-PATH_RE = re.compile(r'(\s*?)(\S+)\s+(\[.*?\])$')
+# indentation, input string, optional output string and FSSet
+PATH_RE = re.compile(r'(\s*?)(\S+)\s*(?:<(.*?)>)?\s*(\[.*?\])?$')
 # Path with no FSS
 PATH_NO_FS_RE = re.compile(r'(\s*?)(\S+)$')
 # A lex file and a Feature Structure Set; capture indentation,
@@ -140,7 +140,7 @@ class MTax:
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
                     weight = weight.update(weight, current_fs)
-                current_state[1]['paths'].append((filename, weight))
+                current_state[1]['paths'].append((filename, None, weight))
                 continue
 
             # Cascade file to be compiled and inserted.
@@ -149,7 +149,7 @@ class MTax:
             if m:
                 indentation, label = m.groups()
                 filename = label + '.cas'
-                current_state[1]['paths'].append((filename, TOPFSS))
+                current_state[1]['paths'].append((filename, None, TOPFSS))
                 continue
 
             # FST file to be compiled and concatenated in.
@@ -163,7 +163,7 @@ class MTax:
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
                     weight = weight.update(weight, current_fs)
-                current_state[1]['paths'].append((filename, weight))
+                current_state[1]['paths'].append((filename, None, weight))
                 continue
 
             # Feature structure for subsequent paths
@@ -181,16 +181,19 @@ class MTax:
             # Path: input string and FSSet
             m = PATH_RE.match(line)
             if m:
-                indentation, in_string, fss = m.groups()
-#                print("** PATH {} {} {}".format(indentation, in_string, fss))
-                weight = MTax.PARSER(fss)
+                indentation, in_string, out_string, fss = m.groups()
+#                print("** PATH {} {} {} {}".format(indentation, in_string, out_string, fss))
+                weight = MTax.PARSER(fss) if fss else None
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
 #                    print("  String {}, FS {}, current FS {}".format(in_string, weight, current_fs.__repr__()))
-                    weight = weight.unify(current_fs)
+                    if weight:
+                        weight = weight.unify(current_fs)
+                    else:
+                        weight = current_fs
 #                    weight.update(weight, current_fs)
 #                    print("  New weight {}".format(weight))
-                current_state[1]['paths'].append((in_string, weight))
+                current_state[1]['paths'].append((in_string, out_string, weight))
                 continue
 
             # Shortcut to another state with the associated FSS
@@ -223,10 +226,16 @@ class MTax:
             m = PATH_NO_FS_RE.match(line)
             if m:
                 indentation, in_string = m.groups()
+                if ':' in in_string:
+                    in_string, out_string = in_string.split(':')
+                    in_string = in_string.strip()
+                    out_string = out_string.strip()
+                else:
+                    out_string = in_string
                 weight = ''
                 if len(indentation) > current_indent and current_fs:
                     weight = FSSet(current_fs)
-                current_state[1]['paths'].append((in_string, weight))
+                current_state[1]['paths'].append((in_string, out_string, weight))
                 continue
 
             raise ValueError("bad line: %r" % line)

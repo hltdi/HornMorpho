@@ -3,7 +3,7 @@ This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020, 2021, 2022, 2023
+    Copyleft 2018-2023.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -248,7 +248,9 @@ class FSTCascade(list):
 
     def compose(self, begin=0, end=None, first=None, last=None, subcasc=None, backwards=False,
                 relabel=True, trace=0):
-        """Compose the FSTs that make up the cascade list or a sublist, including possible first and last FSTs."""
+        """
+        Compose the FSTs that make up the cascade list or a sublist, including possible first and last FSTs.
+        """
         if len(self) == 1:
             if self.r2l:
                 self[0]._reverse = True
@@ -2107,7 +2109,7 @@ class FST:
 
     @staticmethod
     def compile_mtax(mtax, gen=False, cascade=None, verbose=False):
-        print("Compiling {} with {}".format(mtax, cascade))
+#        print("** Compiling {} with {}".format(mtax, cascade))
         # Create a final state
         final_label = DFLT_FINAL
         mtax.states.append([final_label, {'paths': [], 'shortcuts': []}])
@@ -2116,11 +2118,13 @@ class FST:
 
         # Now make the paths between the successive states
         for index, state in enumerate(mtax.states[:-1]):
+#            print(" ** state {}".format(state))
             src = state[0]
             paths = state[1].get('paths')
             dest = mtax.states[index+1][0]
             # Do the normal paths
-            for in_string, weight in paths:
+            for in_string, out_string, weight in paths:
+#                print("** Compiling MTAX state: {} {} {}".format(in_string, out_string, weight.__repr__()))
                 if '.lex' in in_string:
                     # in_string is a lex filename
                     label = in_string.split('.')[0]
@@ -2168,10 +2172,13 @@ class FST:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=weight, mult_dsts=False)
                 elif in_string == NO_INPUT:
-                    mtax.fst.add_arc(src, dest, '', '', weight=weight)
+                    if out_string:
+                        mtax.fst._make_mult_arcs('', out_string, src, dest, weight, mtax.seg_units, gen=gen)
+                    else:
+                        mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
 #                    print("Making multiple arcs for {} from {} to {}, weight: {}".format(in_string, src, dest, weight))
-                    mtax.fst._make_mult_arcs(in_string, '', src, dest, weight, mtax.seg_units, gen=gen)
+                    mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
@@ -2521,7 +2528,7 @@ class FST:
         """
         Create states and arcs to join src with dst, given multiple chars in in_string.
         """
-#        print("** make_mult_arcs {} {} {} {} {}".format(in_string, out_string, src, dst, weight.__repr__()))
+#        print("** make_mult_arcs: in {} out {} src {} dst {} wt {}".format(in_string, out_string, src, dst, weight.__repr__()))
         ## Intermediate state labels
         # In case there are spaces in in_string, remove these for state names
         in_string_label = in_string.replace(' ', '')
@@ -2589,7 +2596,9 @@ class FST:
         if not in_string and out_string:
             in_strings, out_strings = FST.make_in_out_strings(in_string, out_string, seg_units)
             last_in, last_out = in_strings[-1], out_strings[-1]
-            dst1 = self._make_mult_arcs1(in_strings[:-1], out_strings[:-1], dst1, label_pre, label_suf, 0)
+#            print("** Creating arcs {} {}".format(in_strings[:-1], out_strings[:-1]))
+            dst1 = self._make_mult_arcs1(in_strings[:-1], out_strings[:-1], dst1, label_pre, label_suf, 0,
+                                         weight=weight if (gen and not in_paren) else None)
 
         # Last characters in in_strings and out_strings; put weight here unless we put it at the beginning
         # of a string of input characters for generation.
@@ -2615,6 +2624,7 @@ class FST:
             # Add the new intermediate state
             self.add_state(dst1)
             # Connect the last two intermediate states
+#            print("  *** src {} dst {} in {} out {} wt {}".format(src1, dst1, s_in, s_out, weight.__repr__() if index==0 else None))
             self.add_arc(src1, dst1, s_in, s_out, weight=weight if (weight and index==0) else None)
             src1 = dst1
         return dst1
@@ -3208,7 +3218,7 @@ class FST:
     @staticmethod
     def compose2(fst1, fst2, label='', relabel=False, reverse=False, trace=0):
         """Compose fst1 and fst2, inserting an epsilon if necessary."""
-#        print("  Composing2 fsts, reverse={}".format(reverse))
+#        print("  ** Composing2 fsts, reverse={}, relabel={}".format(reverse, relabel))
         ep_modifications = fst1._composition_ep_preprocess(fst2)
         fst = None
         if ep_modifications:

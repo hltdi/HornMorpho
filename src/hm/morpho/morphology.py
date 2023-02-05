@@ -1114,12 +1114,9 @@ class POSMorphology:
                     # Load each of the FSTs in the cascade and compose them
                     if verbose:
                         print('Recreating...')
-                    self.casc = FSTCascade.load(path,
-                                                seg_units=self.morphology.seg_units,
+                    self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
                                                 create_networks=True, subcasc=subcasc,
-                                                language=self.language,
-                                                gen=generate,
-                                                verbose=verbose)
+                                                language=self.language, gen=generate, verbose=verbose)
                     self.casc_inv = self.casc.inverted()
                     # create_fst is False in case we just want to load the individuals fsts.
                     if create_fst:
@@ -1128,6 +1125,7 @@ class POSMorphology:
                         if split_index:
                             fst = self.casc.rev_compose(split_index, trace=verbose)
                         else:
+#                            print("*** Composing {}, relabel {}".format(self.casc, relabel))
                             fst = self.casc.compose(backwards=compose_backwards, trace=verbose, subcasc=subcasc,
     #                                                end=split_index if split_index else None,
                                                     relabel=relabel)
