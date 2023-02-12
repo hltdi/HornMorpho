@@ -11,9 +11,6 @@ $ t=p|i|j|c
 [t=j,v=p]
 *e	*e	*
 
-[t=i,v=p] 
-*e	*:e	*
-
 [t=i|j|c,v=as]
 *e	*:	*
 

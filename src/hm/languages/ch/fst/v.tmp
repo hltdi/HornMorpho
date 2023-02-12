@@ -1,0 +1,35 @@
+$ c=A|B|C|E|F|G|H|J
+$ a=0|a|i
+$ v=0|p|a|at
+$ t=p|i|j|c
+
+%%c=A,a=0,+strong
+[t=p,+mut]
+[t=i,v=p,+mut]
+*e	*^e	*
+
+[t=p,-mut]
+[t=i,v=p,-mut]
+*e	*e	*
+
+[t=i,v=0]
+*e	*	*
+
+[t=j,v=0,+tr]
+*	*	*
+
+[t=j,v=0,-tr]
+*	*e	*
+
+%%c=B,a=0,+strong
+[t=p,+mut]
+^E	*^e	*
+
+[t=p,+mut]
+^Be	^Qe	*
+
+[t=j,+mut]
+*e	*^	*
+
+
+

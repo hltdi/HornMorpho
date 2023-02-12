@@ -32,11 +32,11 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'am': 'amh', # 'a': 'amh',
-         'ch': 'sgw', 'chh': 'sgw', 'c': 'sgw',
+CODES = {'am': 'amh',
+         'chh': 'sgw',
          'gz': 'gez', 'g': 'gez',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
-         'ks': 'gru', 'kst': 'gru', 'k': 'gru',
+         'kst': 'gru',
          'mh': 'muh', 'M': 'muh',
          'ms': 'mvz', 'msq': 'mvz', 'm': 'mvz',
          'so': 'som', 's': 'som',

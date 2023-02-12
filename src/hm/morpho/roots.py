@@ -53,6 +53,7 @@ class Roots:
     # Signifies no input or output characters associated with an FSS
     NO_INPUT = '--'
 
+    CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s+(.+)$')
     ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
     IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
@@ -71,7 +72,7 @@ class Roots:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, cascade):
+    def make_root_states(fst, cons, feats, rules, char_maps, cascade):
         def mrs(fst, charsets, weight, states, iterative=False, aisa=False, main_charsets=None):
 #            print("**** mrs {} weight {} states {} iterative {}".format(charsets, weight.__repr__(), states, iterative))
             source = 'start'
@@ -132,18 +133,18 @@ class Roots:
         cls = weight.get('c')
 #        print("*** states {}, weight {}".format(states, weight.__repr__()))
         # make the simplex states and arcs
-        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls))
+        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps)
         # Based on rules, assign ±strong to the root
         weight = weight.set_all('strong', strong)
         mrs(fst, charsets, weight, states, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
 #            print("*** there are iterative rules: {}".format(cls_it_rules))
-            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules)
+            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, char_maps)
 #            print("*** charsets {}, it_charsets {}".format(charsets, it_charsets))
             mrs(fst, it_charsets, weight, states, iterative=True, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + 'a')):
 #            print("*** there are _a_ rules: {}".format(cls_a_rules))
-            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules)
+            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, char_maps)
             mrs(fst, a_charsets, weight, states, iterative=False, aisa=True, main_charsets=charsets)
 
     @staticmethod
@@ -154,13 +155,13 @@ class Roots:
             return
 
     @staticmethod
-    def make_charsets(consonants, cls, rules):
+    def make_charsets(consonants, cls, rules, char_maps):
         '''
         Given the root consonants and a set of rules for the class,
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
-#        print("**** Making character sets for {}, {}, {}".format(consonants, cls, rules))
+#        print("**** Making character sets for {}, {}, {}, {}".format(consonants, cls, rules, char_maps))
 #        print("*** Rules: {}".format(rules))
         if not rules:
             print("Warning: no rules for class {}".format(cls))
@@ -187,6 +188,7 @@ class Roots:
             if position in positions_reset:
                 continue
             posrules = rules.get(position)
+#            print("*** making charset for elem {}, cons {}, posrules {}".format(index, cons, posrules))
             if posrules and cons in posrules:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
 #                print("*** weak root {} for position {}".format(consonants, position))
@@ -201,12 +203,20 @@ class Roots:
                 # iterative position: make two charsets
                 charsets[position] = tuple([Roots.make_charset(cons, position, v) for v in chars])
             else:
-                charsets[position] = Roots.make_charset(cons, position, chars)
+                charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps)
         return charsets, strong
         
     @staticmethod
-    def make_charset(cons, position, vowels, default='eI'):
-        return [geezify_CV(cons, vowel) for vowel in vowels]
+    def make_charset(cons, position, vowels, default='eI', char_maps=None):
+#        print("*** Making charset for {} in {} with {}".format(cons, position, vowels))
+        result = []
+        for vowel in vowels:
+            if (vmap := char_maps.get(vowel)) and (vchar := vmap.get(cons)):
+                result.append(vchar)
+            else:
+                result.append(geezify_CV(cons, vowel))
+        return result
+#        return [geezify_CV(cons, vowel) for vowel in vowels]
 
     @staticmethod
     def make_irr_root(fst, cons, feats, patterns):
@@ -261,6 +271,8 @@ class Roots:
 
         irr_roots = {}
 
+        char_maps = {}
+
         current_root = ''
         current_feats = ''
 
@@ -300,9 +312,14 @@ class Roots:
                 if specs.strip() == '!':
                     print("*** Constraint on maincat {}, subcat {}".format(maincat, subcat))
                     continue
-                specs = eval(specs)
+                elif '{' in specs:
+                    specs = eval(specs)
+                else:
+                    specs = specs.split(';')
+                    specs = [s.strip().split(':') for s in specs]
+                    specs = dict([(int(p), s.split(',')) for p, s in specs])
 #                specs = [s.strip().split(':') for s in specs]
-#                print("maincat {}, subcat {}, specs {}".format(maincat, subcat, specs))
+#                print("*** maincat {}, subcat {}, specs {}".format(maincat, subcat, specs))
                 if maincat in rules:
                     r = rules[maincat]
                     if position:
@@ -322,6 +339,14 @@ class Roots:
 #                        rules[maincat][subcat] = specs
                     else:
                         rules[maincat][''] = specs
+                continue
+
+            m = Roots.CHAR_MAP_RE.match(line)
+            if m:
+                maplabel, chars = m.groups()
+                chars = dict([list(c.strip()) for c in chars.split(';')])
+                char_maps[maplabel] = chars
+#                print("*** char map {}: {}".format(maplabel, chars))
                 continue
 
             m = Roots.ROOT_RE.match(line)
@@ -356,7 +381,7 @@ class Roots:
             print("*** Something wrong with {}".format(line))
 
         for cons, feats in roots:
-            Roots.make_root_states(fst, cons, feats, rules, cascade)
+            Roots.make_root_states(fst, cons, feats, rules, char_maps, cascade)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():

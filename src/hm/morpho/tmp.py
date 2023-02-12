@@ -417,8 +417,7 @@ class Template:
 
         Template.make_all_template_states(fst, tmp_dict, default_final)
 
-#        print("*** tmp_dict")
-#        print(tmp_dict.get(('^a', '*e', '*')))
+#        print("*** tmp_dict {}".format(tmp_dict))
 
 #        print(fst)
         return fst

@@ -99,7 +99,7 @@ class Morphology(dict):
         self.words_phoneM = {}
         self.seg_units = []
         # Characters signalling abbrevations
-        self.abbrev_chars = abbrev_chars
+        self.abbrev_chars = abbrev_chars or '.'
         # Regex to identify abbreviations
         self.abbrevRE = None
         self.language = None
@@ -258,7 +258,8 @@ class Morphology(dict):
         '''
         if not self.abbrevRE:
             abbrev_chars = self.abbrev_chars or '.'
-            string = "\w+[{}](?:\w+[{}]?)*".format(self.abbrev_chars, self.abbrev_chars)
+            string = "\w+[{}](?:\w+[{}]?)*".format(abbrev_chars, abbrev_chars)
+#            string = "\w+[.](?:\w+[.]?)*"
             self.abbrevRE = re.compile(string)
         return self.abbrevRE
 

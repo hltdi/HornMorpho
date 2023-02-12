@@ -2,7 +2,7 @@ $ conj_prep_pre
   የ		<የ(PART,RLP;;mark)->				[t=p,+rel,-mc]
   ብ  		<ብ(SCONJ;;mark)->					[cnj1=ብ,t=i,-rel,-mc]
   ከ		<ከ(ADP;;case)->					[adp=ከ,t=p,+rel,-mc]
-  --  	[-rel,cnj1=None,adp=None];[v=j|c]
+  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc]
 
 $ rel_impf
   # geminated
@@ -95,16 +95,20 @@ $ ob_dep
   --		<;obl)>	[op=1|2|3,oc=m|b]
   --		[op=0]
 
+$ neg2
+  ም		<-ም(PART;Polarity=Neg;advmod)->		[t=i|p,+neg,+mc]
+  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
+
 $ aux
-  =ኣል	[t=i,sp=3,sn=1,sg=m,+mc];[t=i,sp=3,sn=2,op=1|2|3,+mc];[t=c,sp=1,sn=2,+mc];[t=c,sp=2,+mc];[t=c,sp=3,sn=1,sg=m,+mc];[t=c,sp=3,sn=2,+mc]
-  =ኣለሁ	[t=i|c,sp=1,sn=1,+mc]
-  =ኣለች	[t=i|c,sp=3,sn=1,sg=f,+mc]
-  =ኣለህ	[t=i,sp=2,sn=1,sg=m,+mc]
-  =ኣለሽ	[t=i,sp=2,sn=1,sg=f,+mc]
-  =ኣለን	[t=i,sp=1,sn=2,+mc]
-  =ኣላችሁ	[t=i,sp=2,sn=2,+mc]
-  =ኣሉ	[t=i,sp=3,sn=2,op=0,+mc]
-  --	        [t=p|j];[t=i|c,-mc]
+  =ኣል	[t=i,sp=3,sn=1,sg=m,-neg,+mc];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc];[t=c,sp=1,sn=2,-neg,+mc];[t=c,sp=2,-neg,+mc];[t=c,sp=3,sn=1,sg=m,-neg,+mc];[t=c,sp=3,sn=2,-neg,+mc]
+  =ኣለሁ	[t=i|c,sp=1,sn=1,-neg,+mc]
+  =ኣለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc]
+  =ኣለህ	[t=i,sp=2,sn=1,sg=m,-neg,+mc]
+  =ኣለሽ	[t=i,sp=2,sn=1,sg=f,-neg,+mc]
+  =ኣለን	[t=i,sp=1,sn=2,-neg,+mc]
+  =ኣላችሁ	[t=i,sp=2,sn=2,-neg,+mc]
+  =ኣሉ	[t=i,sp=3,sn=2,op=0,-neg,+mc]
+  --	        [t=p|j];[t=i|c,-mc];[t=i,+neg]
 
 $ end
   --		[pos=v]
