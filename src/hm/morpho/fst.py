@@ -56,6 +56,8 @@ from .mtax import *
 from .roots import *
 # Parsing templates
 from .tmp import *
+# Parsing mutation
+from .mut import *
 
 from .language import LANGUAGE_DIR
 
@@ -100,6 +102,8 @@ CASC_ROOT_RE = re.compile(r'>(.+?\.root)<')
 CASC_ROOT_INSERT_RE = re.compile(r'\+(.+?\.root)\+')
 # >xxx.tmp<
 CASC_TMP_RE = re.compile(r'>(.+?\.tmp)<')
+# >xxx.mut<
+CASC_MUTATION_RE = re.compile(r'>(.+?\.mut)<')
 # >xxx.ar<
 CASC_AR_RE = re.compile(r'>(.+?\.ar)<')
 # >xxx.mtx<
@@ -636,8 +640,27 @@ class FSTCascade(list):
                     cascade.append(fst)
                 continue
 
-            # Roots
+            # Templates
             m = CASC_TMP_RE.match(line)
+            if m:
+                if create_networks:
+                    filename = m.group(1)
+#                    print("** Looking for template file {}".format(filename))
+                    if not subcasc_indices or len(cascade) in subcasc_indices:
+                        abbrevs = cascade._IOabbrevs
+                        fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
+                                       cascade=cascade, weighting=cascade.weighting(),
+                                       abbrevs=abbrevs,
+                                       seg_units=seg_units, weight_constraint=weight_constraint,
+                                       gen=gen, verbose=verbose)
+                    else:
+                        fst = 'FST' + str(len(cascade))
+                        if verbose:
+                            print('Skipping FST {}'.format(label))
+                    cascade.append(fst)
+                continue
+
+            m = CASC_MUTATION_RE.match(line)
             if m:
                 if create_networks:
                     filename = m.group(1)
@@ -2065,15 +2088,25 @@ class FST:
                                weight_constraint=weight_constraint,
                                gen=gen, verbose=verbose)
 
+        elif suffix == 'mut':
+            if verbose:
+                print("Loading mutations from {}".format(filename))
+            return Mutation.parse(label, open(filename, encoding='utf-8').read(),
+                                  fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
+                                  cascade=cascade, directory=directory,
+                                  seg_units=seg_units, abbrevs=abbrevs,
+                                  weight_constraint=weight_constraint,
+                                  gen=gen, verbose=verbose)
+
         elif suffix == 'tmp':
             if verbose:
                 print("Loading templates from {}".format(filename))
             return Template.parse(label, open(filename, encoding='utf-8').read(),
-                               fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
-                               cascade=cascade, directory=directory,
-                               seg_units=seg_units, abbrevs=abbrevs,
-                               weight_constraint=weight_constraint,
-                               gen=gen, verbose=verbose)
+                                  fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
+                                  cascade=cascade, directory=directory,
+                                  seg_units=seg_units, abbrevs=abbrevs,
+                                  weight_constraint=weight_constraint,
+                                  gen=gen, verbose=verbose)
 
         elif suffix == 'mtx':
             if verbose:

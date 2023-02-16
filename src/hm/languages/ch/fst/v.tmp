@@ -6,7 +6,7 @@ $ t=p|i|j|c
 %%c=A,a=0,+strong
 [t=p,+mut]
 [t=i,v=p,+mut]
-*e	*^e	*
+*e	~De	*
 
 [t=p,-mut]
 [t=i,v=p,-mut]
@@ -23,13 +23,19 @@ $ t=p|i|j|c
 
 %%c=B,a=0,+strong
 [t=p,+mut]
-^E	*^e	*
+*Ye		~Y~De	*
 
 [t=p,+mut]
-^Be	^Qe	*
+*be		*Qe		*
+
+[t=i,+mut]
+*Ye		~Y~D	*
+
+[t=i,+mut]
+*be		*Q		*
 
 [t=j,+mut]
-*e	*^	*
+*e		~Y~D	*
 
 
 
