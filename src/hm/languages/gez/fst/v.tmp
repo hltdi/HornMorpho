@@ -8,90 +8,90 @@ $ t=p|i|j|c
 [t=p,v=0,p=t]
 [t=p,v=0,p=i,-vsuf]
 [t=j,v=p]
-Xe	Xe	X
+*e	*e	*
 
 [t=p,v=0,p=i,+vsuf]
 [t=p,v=p]
-Xe	X	X
+*e	*	*
 
 [t=i,v=p]
-Xe	X:e	X
+*e	*:e	*
 
 [t=i,v=0|a]
 [t=i,v=as]
-Xe	X:	X
+*e	*:	*
 
 [t=j,j=t,v=0]
 [t=p|j,v=a]
 [t=j,v=as]
-X	X	X
+*	*	*
 
 [t=j,j=i,v=0]
 [t=p,v=as]
-X	Xe	X
+*	*e	*
 
 [t=c,v=0|p]
-Xe	Xi	X
+*e	*i	*
 
 [t=c,v=a]
 [t=c,v=as]
-X	Xi	X
+*	*i	*
 
 %%a=a,c=A,+strong
 # Assume there is no [a=a,v=0]
 
 [t=p,v=p|as]
-Xa	Xe	X
+*a	*e	*
 
 [t=i,v=as]
-Xa	X:	X
+*a	*:	*
 [t=i,v=p]
-Xa	X:e	X
+*a	*:e	*
 
 [t=j,v=as]
-Xa	X	X
+*a	*	*
 [t=j,v=p]
-Xa	Xe	X
+*a	*e	*
 
 [t=c,v=p|as]
-Xa	Xi	X
+*a	*i	*
 
 %%a=0,c=A,-strong
 
 %2=ው
 # ሞት-
 [t=p,v=0|a]
-Xo	-	X
+*o	-	*
 
 # ሙት-
 [t=j,v=0|a]
-Xu	-	X
+*u	-	*
 
 %3=እ
 # መጽእ- -አ
 [t=p,v=0,+vsuf]
 [t=p,v=p]
-Xe	X	X
+*e	*	*
 
 # መጻእ- -ከ
 [t=p,v=0,-vsuf]
-Xe	Xa	X
+*e	*a	*
 
 # ይትፈትሑ
 [t=i,v=0|a]
 [t=i,v=p,+vsuf]
-Xe	X:	X
+*e	*:	*
 
 # ይትፈታሕ
 [t=i,v=p,-vsuf]
-Xe	X:a	X
+*e	*:a	*
 
 [t=j,v=0,+vsuf]
 [t=p|j,v=a]
-X	X	X
+*	*	*
 
 [t=j,v=0,-vsuf]
-X	Xa	X
+*	*a	*
 
 %%a=a,c=A,-strong
 
@@ -100,54 +100,54 @@ X	Xa	X
 %3=እ
 # 2 vowel is either I or a, unlike strong e
 [t=p,v=p]
-Xa	X	X
+*a	*	*
 
 [t=i,v=p]
-Xa	X:a	X
+*a	*:a	*
 
 [t=j,v=p]
-Xa	Xa	X
+*a	*a	*
 
 %%a=0,c=B,+strong
 
 [t=p,v=0]
-Xe	X:e	X
+*e	*:e	*
 
 [t=i,v=0]
-XE	X:	X
+*E	*:	*
 
 [t=j,v=0]
-Xe	X:	X
+*e	*:	*
 
 [t=c,v=0]
-Xe	X:i	X
+*e	*:i	*
 
 %%a=0,c=C,+strong
 
 [t=p,v=0]
-Xa	Xe	X
+*a	*e	*
 
 [t=i,v=0]
-Xa	X:	X
+*a	*:	*
 
 [t=j,v=0]
-Xa	X	X
+*a	*	*
 
 [t=c,v=0]
-Xa	Xi	X
+*a	*i	*
 
 %%a=0,c=E,+strong
 
 [t=p,v=0]
-Xe	X	Xe	X
+*e	*	*e	*
 
 [t=i,v=0]
-Xe	Xe	X:	X
+*e	*e	*:	*
 
 [t=j,v=0]
-Xe	X	X	X
+*e	*	*	*
 
 [t=c,v=0]
-Xe	X	Xi	X
+*e	*	*i	*
 
 

@@ -59,6 +59,7 @@ class Roots:
     RULE_RE = re.compile(r'\s*%(.+)$')
     PATTERN_RE = re.compile(r'\s*(.+)$')
     FEATURES_RE = re.compile(r'\s*(\[.+\])$')
+    VOWEL_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
 
 #    def __init__(self, fst, directory=''):
 #        self.fst = fst
@@ -74,11 +75,13 @@ class Roots:
     @staticmethod
     def make_root_states(fst, cons, feats, rules, char_maps, cascade):
         def mrs(fst, charsets, weight, states, iterative=False, aisa=False, main_charsets=None):
-#            print("**** mrs {} weight {} states {} iterative {}".format(charsets, weight.__repr__(), states, iterative))
+#            if iterative:
+#            print("**** mrs {} weight {} states {}".format(charsets, weight.__repr__(), states))
             source = 'start'
             for index, dest in enumerate(states[:-1]):
                 position = index + 1
                 chars = charsets.get(position)
+#                print("  **** position {}, chars {}".format(position, chars))
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
@@ -97,6 +100,7 @@ class Roots:
                 elif aisa:
                     dest = dest + 'a'
                 if iter_chars:
+                    print("** iter_chars: {}".format(chars))
                     # iterated position, create two states
                     dest0 = dest + '_a'
                     dest = dest + '_b'
@@ -112,7 +116,13 @@ class Roots:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
-                        fst.add_arc(source, dest, char, char, weight=weight if index==0 else None)
+                        if isinstance(char, tuple):
+                            # this char depends on a weight
+#                            print("   **** char {}, feature {}".format(char[0], char[1]))
+                            char, wt = char
+                            fst.add_arc(source, dest, char, char, weight=weight if index==0 else wt)
+                        else:
+                            fst.add_arc(source, dest, char, char, weight=weight if index==0 else None)
                 source = dest
             state = states[-1]
             chars = charsets[len(charsets)]
@@ -199,11 +209,13 @@ class Roots:
                     charsets[pos] = vowels
                     positions_reset.append(pos)
         for cons, (position, chars) in zip(consonants, charsets.items()):
+#            print("  **** cons {} chars {}".format(cons, chars))
             if isinstance(chars, tuple):
                 # iterative position: make two charsets
                 charsets[position] = tuple([Roots.make_charset(cons, position, v) for v in chars])
             else:
                 charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps)
+#                print("** charsets in {}: {}".format(position, charsets[position]))
         return charsets, strong
         
     @staticmethod
@@ -211,10 +223,25 @@ class Roots:
 #        print("*** Making charset for {} in {} with {}".format(cons, position, vowels))
         result = []
         for vowel in vowels:
-            if (vmap := char_maps.get(vowel)) and (vchar := vmap.get(cons)):
-                result.append(vchar)
+            feature = None
+            if (match := Roots.VOWEL_FEAT_RE.match(vowel)):
+                vowel, feature = match.groups()
+                feature = UNIFICATION_SR.parse_weight(feature)
+#                print("*** vowel {}, feature {}".format(vowel, feature))
+            if char_maps and (vmap := char_maps.get(vowel)):
+#                print("** vmap: {}".format(vmap))
+                if (vchar := vmap.get(cons)):
+#                    print("*** vchar: {}".format(vchar))
+                    # if the consonant is not in the map, ignore it
+                    if feature:
+                        vchar = [(v, feature) for v in vchar]
+                    result.extend(vchar)
             else:
-                result.append(geezify_CV(cons, vowel))
+                cv = geezify_CV(cons, vowel)
+                if feature:
+                    result.append((cv, feature))
+                else:
+                    result.append(cv)
         return result
 #        return [geezify_CV(cons, vowel) for vowel in vowels]
 
@@ -317,9 +344,16 @@ class Roots:
                 else:
                     specs = specs.split(';')
                     specs = [s.strip().split(':') for s in specs]
-                    specs = dict([(int(p), s.split(',')) for p, s in specs])
-#                specs = [s.strip().split(':') for s in specs]
-#                print("*** maincat {}, subcat {}, specs {}".format(maincat, subcat, specs))
+#                    print("*** specs0 {}".format(specs))
+                    proc_specs = []
+                    for sindex, (p, spec) in enumerate(specs):
+                        p = int(p)
+                        if '|' in spec:
+                            spec = spec.split('|')
+                            proc_specs.append([p, (spec[0].split(','), spec[1].split(','))])
+                        else:
+                            proc_specs.append([p, spec.split(',')])
+                    specs = dict(proc_specs)
                 if maincat in rules:
                     r = rules[maincat]
                     if position:
@@ -344,9 +378,13 @@ class Roots:
             m = Roots.CHAR_MAP_RE.match(line)
             if m:
                 maplabel, chars = m.groups()
-                chars = dict([list(c.strip()) for c in chars.split(';')])
-                char_maps[maplabel] = chars
 #                print("*** char map {}: {}".format(maplabel, chars))
+                chars = [c.strip() for c in chars.split(';')]
+                chars = [[c[0], list(c[1:])] for c in chars]
+#                print("** -> ", chars)
+                chars = dict(chars)
+#                print("** -> ", chars)
+                char_maps[maplabel] = chars
                 continue
 
             m = Roots.ROOT_RE.match(line)
@@ -380,6 +418,8 @@ class Roots:
 
             print("*** Something wrong with {}".format(line))
 
+        print("** rules: {}".format(rules))
+
         for cons, feats in roots:
             Roots.make_root_states(fst, cons, feats, rules, char_maps, cascade)
 
@@ -387,7 +427,8 @@ class Roots:
             for (cons, feats), patterns in irr_roots.items():
                 Roots.make_irr_root(fst, cons, feats, patterns)
 
-#        print("** rules: {}".format(rules))
+#        print("** char maps {}".format(char_maps))
+
 #        print("** irr roots: {}".format(irr_roots))
 
 #        if irr_roots:

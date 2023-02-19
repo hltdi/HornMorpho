@@ -4,38 +4,63 @@ $ v=0|p|a|at
 $ t=p|i|j|c
 
 %%c=A,a=0,+strong
-[t=p,+mut]
-[t=i,v=p,+mut]
-*e	~De	*
+[t=p,+m,+mut]
+[t=i,v=p,+m,+mut]
+*e		*me		*
 
-[t=p,-mut]
-[t=i,v=p,-mut]
-*e	*e	*
+[t=p,-m,-mut]
+[t=i,v=p,-m,-mut]
+*e		*e		*
 
-[t=i,v=0]
-*e	*	*
+[t=i,v=0,-mut]
+*e		*		*
 
-[t=j,v=0,+tr]
-*	*	*
+[t=j,v=0,-mut,+tr]
+*		*		*
 
-[t=j,v=0,-tr]
-*	*e	*
+[t=j,v=0,-mut,-tr]
+*		*e		*
 
 %%c=B,a=0,+strong
+[t=p,+m,+mut]
+*Ye		~yme	*
+
+[t=p,-m,-mut]
+*Ye		~ye	*
+
+[t=p,+m,+mut]
+*be		*qme	*
+
+[t=p,-m,-mut]
+*be		*qe		*
+
+[t=i,+m,+mut]
+*Ye		~ym		*
+
+[t=i,-m,-mut]
+*Ye		~y		*
+
+[t=i,+m,+mut]
+*be		*qm		*
+
+[t=i,-m,-mut]
+*be		*q		*
+
+[t=j,+m,+mut]
+~ye		~ym		*
+
+[t=j,-m,-mut]
+~ye		~y		*
+
+%%a=0,c=A,-strong
+
+%3=እ
 [t=p,+mut]
-*Ye		~Y~De	*
+[t=i,v=p,+mut]
+*e		*ma		-
 
-[t=p,+mut]
-*be		*Qe		*
+[t=i,v=0,-mut]
+*e		*a		-
 
-[t=i,+mut]
-*Ye		~Y~D	*
-
-[t=i,+mut]
-*be		*Q		*
-
-[t=j,+mut]
-*e		~Y~D	*
-
-
-
+[t=j,v=0|a]
+*		*a		-

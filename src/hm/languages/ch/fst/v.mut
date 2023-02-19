@@ -1,19 +1,16 @@
-# g includes labialized velars
-# b, d, g, r, n, l, R
-# Y: palatalize consonant; y: palatalize vowel
 # still need to handle reduplication
 $ [-Y,-W]
 
-#[+Y,-W]
-#
-#**		**							{pal.dglr};*Y
-#
-#**	      	{pal.g*};{palV.~g*};*Y	*bn
-#
-## alternate for initial g
-#{pal.g*}    		*r*					*bn
-#
-#*brn*			*brn*				*bn
+[+Y,-W]
+
+**				**							{^dgr};*y
+
+**	      			{^g*};{^V~g*};*y			*b;ን
+
+{^g*}			*R*							*b;ን
+
+#*b*;*r*		*b*;*r*					*b;ን
+
 #
 #**						{pal.dglra2e}
 #
@@ -21,10 +18,10 @@ $ [-Y,-W]
 
 [+W,-Y]
 
-**			**			{lab.bg}
+**				**				{@bg};*w
 
-**			{lab.bg*}	*d;*r
+**				{@bg*};*w*		*d;*r
 
-{lab.bg*}	*d*;*r*	*d;*r
+{@bg*};*w*		*d*;*r*;*yV	*d;*r
 
-
+*yV				*d*;*r*		*d;*r

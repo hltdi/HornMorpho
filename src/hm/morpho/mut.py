@@ -308,7 +308,7 @@ class Mutation:
             m = Mutation.RULE_RE.match(line)
             if m:
                 rule = m.groups()[0]
-                print("*** rule {}".format(rule))
+#                print("*** rule {}".format(rule))
                 if rule[0] == '[':
                     unmutated_weight = rule
                 else:
@@ -319,7 +319,7 @@ class Mutation:
             if m:
                 current_feats = m.groups()[0]
                 mutations[current_feats] = []
-                print("*** features {}".format(current_feats))
+#                print("*** features {}".format(current_feats))
                 continue
 
             m = Mutation.PATTERN_RE.match(line)
