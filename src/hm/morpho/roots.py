@@ -25,7 +25,7 @@ Creating an FST from a set of roots.
 import re, os
 from .utils import segment
 from .semiring import FSSet, UNIFICATION_SR, TOPFSS
-#from .fs import FeatStruct
+from .fs import FeatStruct, simple_unify
 #from .fs import FeatStructParser
 from .geez import *
 
@@ -53,13 +53,17 @@ class Roots:
     # Signifies no input or output characters associated with an FSS
     NO_INPUT = '--'
 
-    CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s+(.+)$')
+    CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s*(\[.+\])?\s+(.+)$')
     ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
     IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
     PATTERN_RE = re.compile(r'\s*(.+)$')
     FEATURES_RE = re.compile(r'\s*(\[.+\])$')
-    VOWEL_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
+    CHAR_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
+
+    possep = ';'
+    charmapsep = ';'
+    vspecsep = ','
 
 #    def __init__(self, fst, directory=''):
 #        self.fst = fst
@@ -73,15 +77,32 @@ class Roots:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, char_maps, cascade):
+    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade):
+
+        def charfeat_arc(char, wt, source, dest, fst):
+            # Create the arc from source dest
+            # char is either a character or a (character, weight) tuple
+            if isinstance(char, tuple):
+                # this char depends on a weight
+                char, charfeats = char
+                if wt:
+                    wt0 = wt.unify(charfeats)
+                else:
+                    wt0 = charfeats
+                    fst.add_arc(source, dest, char, char, weight=wt0)
+            else:
+                fst.add_arc(source, dest, char, char, weight=wt)
+                
         def mrs(fst, charsets, weight, states, iterative=False, aisa=False, main_charsets=None):
 #            if iterative:
-#            print("**** mrs {} weight {} states {}".format(charsets, weight.__repr__(), states))
+#                print("**** mrs {} weight {} states {}".format(charsets, weight.__repr__(), states))
             source = 'start'
             for index, dest in enumerate(states[:-1]):
                 position = index + 1
                 chars = charsets.get(position)
-#                print("  **** position {}, chars {}".format(position, chars))
+                wt = weight if index == 0 else None
+#                if iterative:
+#                    print("  **** position {}, chars {}, weight {}".format(position, chars, wt.__repr__()))
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
@@ -100,40 +121,38 @@ class Roots:
                 elif aisa:
                     dest = dest + 'a'
                 if iter_chars:
-                    print("** iter_chars: {}".format(chars))
                     # iterated position, create two states
                     dest0 = dest + '_a'
                     dest = dest + '_b'
                     if not fst.has_state(dest0):
                         fst.add_state(dest0)
                     for char in chars[0]:
-                        fst.add_arc(source, dest0, char, char, weight=weight if index==0 else None)
+                        charfeat_arc(char, wt, source, dest0, fst)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars[1]:
-                        fst.add_arc(dest0, dest, char, char, weight=None)
+                        charfeat_arc(char, wt, dest0, dest, fst)
                 else:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
-                        if isinstance(char, tuple):
-                            # this char depends on a weight
-#                            print("   **** char {}, feature {}".format(char[0], char[1]))
-                            char, wt = char
-                            fst.add_arc(source, dest, char, char, weight=weight if index==0 else wt)
-                        else:
-                            fst.add_arc(source, dest, char, char, weight=weight if index==0 else None)
+                        charfeat_arc(char, wt, source, dest, fst)
                 source = dest
             state = states[-1]
             chars = charsets[len(charsets)]
             for char in chars:
                 fst.add_arc(source, 'end', char, char)
-        cons = cons.split()
-        state_name = ''.join(cons)
+#        cons = cons.split()
+        # one of cons could be a char, feature tuple
+        cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
+        state_name = ''.join(cons_chars)
 #        print("*** Make root states for {}, {}".format(cons, state_name))
         states = []
         for index, cs in enumerate(cons):
             i = index+1
+            if isinstance(cs, tuple):
+                # cs may have a feature constraint
+                cs = cs[0]
             state_name0 = "{}{}".format(state_name, i)
             char = geezify_CV(cs, 'I')
             feats = "{},{}={}".format(feats, i, char)
@@ -143,18 +162,18 @@ class Roots:
         cls = weight.get('c')
 #        print("*** states {}, weight {}".format(states, weight.__repr__()))
         # make the simplex states and arcs
-        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps)
+        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps, charmap_weights)
         # Based on rules, assign ±strong to the root
         weight = weight.set_all('strong', strong)
         mrs(fst, charsets, weight, states, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
 #            print("*** there are iterative rules: {}".format(cls_it_rules))
-            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, char_maps)
+            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, char_maps, charmap_weights)
 #            print("*** charsets {}, it_charsets {}".format(charsets, it_charsets))
             mrs(fst, it_charsets, weight, states, iterative=True, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + 'a')):
 #            print("*** there are _a_ rules: {}".format(cls_a_rules))
-            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, char_maps)
+            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, char_maps, charmap_weights)
             mrs(fst, a_charsets, weight, states, iterative=False, aisa=True, main_charsets=charsets)
 
     @staticmethod
@@ -165,14 +184,13 @@ class Roots:
             return
 
     @staticmethod
-    def make_charsets(consonants, cls, rules, char_maps):
+    def make_charsets(consonants, cls, rules, char_maps, charmap_weights):
         '''
         Given the root consonants and a set of rules for the class,
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
-#        print("**** Making character sets for {}, {}, {}, {}".format(consonants, cls, rules, char_maps))
-#        print("*** Rules: {}".format(rules))
+#        print("**** Making character sets for {}, {}".format(consonants, cls))
         if not rules:
             print("Warning: no rules for class {}".format(cls))
             return
@@ -191,6 +209,9 @@ class Roots:
         positions_reset = []
         for index in range(len(defaults)):
             cons = consonants[index]
+            if isinstance(cons, tuple):
+                # cons has an associated feature
+                cons, cons_feat = cons
             # assume that root classes have romanized keys
             if is_geez(cons):
                 cons = romanize(cons, 'ees')
@@ -209,41 +230,62 @@ class Roots:
                     charsets[pos] = vowels
                     positions_reset.append(pos)
         for cons, (position, chars) in zip(consonants, charsets.items()):
+            cons_feat = None
+            if isinstance(cons, tuple):
+                # cons has an associated feature constraint
+                cons, cons_feat = cons
 #            print("  **** cons {} chars {}".format(cons, chars))
             if isinstance(chars, tuple):
                 # iterative position: make two charsets
-                charsets[position] = tuple([Roots.make_charset(cons, position, v) for v in chars])
+                charsets[position] = \
+                  tuple([Roots.make_charset(cons, position, v, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat) for v in chars])
             else:
-                charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps)
+                charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat)
 #                print("** charsets in {}: {}".format(position, charsets[position]))
         return charsets, strong
         
     @staticmethod
-    def make_charset(cons, position, vowels, default='eI', char_maps=None):
-#        print("*** Making charset for {} in {} with {}".format(cons, position, vowels))
+    def make_charset(cons, position, vowels, default='eI', char_maps=None, charmap_weights=None, cons_feat=None):
+#        print(" *** Making charset for {} in {} with {}, cons feat {}".format(cons, position, vowels, cons_feat.__repr__()))
         result = []
-        for vowel in vowels:
-            feature = None
-            if (match := Roots.VOWEL_FEAT_RE.match(vowel)):
-                vowel, feature = match.groups()
-                feature = UNIFICATION_SR.parse_weight(feature)
-#                print("*** vowel {}, feature {}".format(vowel, feature))
-            if char_maps and (vmap := char_maps.get(vowel)):
-#                print("** vmap: {}".format(vmap))
-                if (vchar := vmap.get(cons)):
-#                    print("*** vchar: {}".format(vchar))
-                    # if the consonant is not in the map, ignore it
-                    if feature:
-                        vchar = [(v, feature) for v in vchar]
-                    result.extend(vchar)
+        for vowel_spec in vowels:
+            vowel_feat = None
+            if isinstance(vowel_spec, tuple):
+                # This character or character map has an associated feature
+                v, vowel_feat = vowel_spec
             else:
-                cv = geezify_CV(cons, vowel)
-                if feature:
-                    result.append((cv, feature))
+                v = vowel_spec
+#            print("  *** vowel {}, vowel_feat {}, cm_weight {}".format(v, vowel_feat.__repr__(), charmap_weights.get(v).__repr__()))
+            # If there's a cons feat and a vowel feature, check to see whether they agree
+            if cons_feat and vowel_feat:
+                if vowel_feat.unify_FS(cons_feat) == 'fail':
+#                    print("** cons {} with feat {} fails to match vowel {} with feat {}".format(cons, cons_feat, v, vowel_feat))
+                    continue
+            if char_maps and (vmap := char_maps.get(v)):
+                if (cm_weight := charmap_weights.get(v)):
+                    if cons_feat and cm_weight.unify_FS(cons_feat) == 'fail':
+#                        print("  ** cons {} with feat {} fails to match charmap {} with feat {}".format(cons, cons_feat.__repr__(), v, cm_weight.__repr__()))
+                        continue
+                if (vchar := vmap.get(cons)):
+                    # if the consonant is not in the map, ignore it
+                    if cm_weight:
+                        vchar = [(char, cm_weight) for char in vchar]
+#                    if vowel_feat:
+#                        vchar = [(char, vowel_feat) for char in vchar]
+                    for vc in vchar:
+                        if vc not in result:
+                            result.append(vc)
+#                    result.extend(vchar)
+            else:
+                cv = geezify_CV(cons, v)
+                if vowel_feat:
+                    if (cv, vowel_feat) not in result:
+                        result.append((cv, vowel_feat))
                 else:
-                    result.append(cv)
+                    if cv not in result:
+                        result.append(cv)
+#        print("  *** result {}".format(result))
         return result
-#        return [geezify_CV(cons, vowel) for vowel in vowels]
 
     @staticmethod
     def make_irr_root(fst, cons, feats, patterns):
@@ -300,6 +342,8 @@ class Roots:
 
         char_maps = {}
 
+        charmap_weights = {}
+
         current_root = ''
         current_feats = ''
 
@@ -310,6 +354,20 @@ class Roots:
         fst.set_final('end')
 
         lines = s.split('\n')[::-1]
+
+        def proc_vspec(vspec):
+            # vspec is something like a,_a[+mut]
+            # if there is a feature for an item, convert the char and feature to a tuple
+            vspec = vspec.split(Roots.vspecsep)
+            for vindex, v in enumerate(vspec):
+                v = v.strip()
+                if (match := Roots.CHAR_FEAT_RE.match(v)):
+                    vs, feature = match.groups()
+                    # Create an FSS for this vowel spec
+                    feature = UNIFICATION_SR.parse_weight(feature)
+                    vspec[vindex] = (vs, feature)
+#                    print("   **** vs {} feature {}".format(vs, feature.__repr__()))
+            return vspec
 
         while lines:
             line = lines.pop().split('#')[0].strip() # strip comments
@@ -342,17 +400,18 @@ class Roots:
                 elif '{' in specs:
                     specs = eval(specs)
                 else:
-                    specs = specs.split(';')
+                    specs = specs.split(Roots.possep)
                     specs = [s.strip().split(':') for s in specs]
-#                    print("*** specs0 {}".format(specs))
                     proc_specs = []
                     for sindex, (p, spec) in enumerate(specs):
                         p = int(p)
                         if '|' in spec:
-                            spec = spec.split('|')
-                            proc_specs.append([p, (spec[0].split(','), spec[1].split(','))])
+                            spec1, spec2 = spec.split('|')
+                            spec1 = proc_vspec(spec1)
+                            spec2 = proc_vspec(spec2)
+                            proc_specs.append([p, (spec1, spec2)])
                         else:
-                            proc_specs.append([p, spec.split(',')])
+                            proc_specs.append([p, proc_vspec(spec)])
                     specs = dict(proc_specs)
                 if maincat in rules:
                     r = rules[maincat]
@@ -361,36 +420,45 @@ class Roots:
                             r[position][char] = specs
                         else:
                             r[position] = {char: specs}
-#                    elif subcat:
-#                        r[subcat] = specs
                     else:
                         r[''] = specs
                 else:
                     rules[maincat] = {}
                     if position:
                         rules[maincat][position] = {char: specs}
-#                    elif subcat:
-#                        rules[maincat][subcat] = specs
                     else:
                         rules[maincat][''] = specs
                 continue
 
             m = Roots.CHAR_MAP_RE.match(line)
             if m:
-                maplabel, chars = m.groups()
-#                print("*** char map {}: {}".format(maplabel, chars))
-                chars = [c.strip() for c in chars.split(';')]
+                maplabel, feature, chars = m.groups()
+                if feature:
+                    feature = UNIFICATION_SR.parse_weight(feature)
+#                print("*** char map {}: {}, {}".format(maplabel, chars, feature.__repr__()))
+                chars = [c.strip() for c in chars.split(Roots.charmapsep)]
                 chars = [[c[0], list(c[1:])] for c in chars]
 #                print("** -> ", chars)
                 chars = dict(chars)
 #                print("** -> ", chars)
                 char_maps[maplabel] = chars
+                if feature:
+                    charmap_weights[maplabel] = feature
                 continue
 
             m = Roots.ROOT_RE.match(line)
             if m:
                 cons, feats = m.groups()
+                cons = cons.split()
+                # A consonant may have an associated feature constraint
+                for cindex, c in enumerate(cons):
+#                    print("*** {} {}".format(cindex, c))
+                    if (match := Roots.CHAR_FEAT_RE.match(c)):
+                        c, feature = match.groups()
+                        feature = FeatStruct(feature)
+                        cons[cindex] = (c, feature)
 #                print("*** cons {}, feats {}".format(cons, feats))
+
                 roots.append((cons, feats))
                 continue
 
@@ -418,16 +486,16 @@ class Roots:
 
             print("*** Something wrong with {}".format(line))
 
-        print("** rules: {}".format(rules))
+#        print("** rules: {}".format(rules))
 
         for cons, feats in roots:
-            Roots.make_root_states(fst, cons, feats, rules, char_maps, cascade)
+            Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():
                 Roots.make_irr_root(fst, cons, feats, patterns)
 
-#        print("** char maps {}".format(char_maps))
+#        print("** char maps weights {}".format(charmap_weights))
 
 #        print("** irr roots: {}".format(irr_roots))
 

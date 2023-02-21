@@ -4,12 +4,8 @@ $ v=0|p|a|at
 $ t=p|i|j|c
 
 %%c=A,a=0,+strong
-[t=p,+m,+mut]
-[t=i,v=p,+m,+mut]
-*e		*me		*
-
-[t=p,-m,-mut]
-[t=i,v=p,-m,-mut]
+[t=p,+mut]
+[t=i,v=p,+mut]
 *e		*e		*
 
 [t=i,v=0,-mut]
@@ -22,34 +18,35 @@ $ t=p|i|j|c
 *		*e		*
 
 %%c=B,a=0,+strong
-[t=p,+m,+mut]
-*Ye		~yme	*
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ሸከተ
+*Ye		~ye		*
 
-[t=p,-m,-mut]
-*Ye		~ye	*
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ፈቐረ
+*bre	*qe		*
 
-[t=p,+m,+mut]
-*be		*qme	*
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ጘኸተ
+*qe		*qe		*
 
-[t=p,-m,-mut]
-*be		*qe		*
-
-[t=i,+m,+mut]
-*Ye		~ym		*
-
-[t=i,-m,-mut]
+[t=i,+mut]
+# ይሸክት
 *Ye		~y		*
 
-[t=i,+m,+mut]
-*be		*qm		*
+[t=i,+mut]
+# ይፈቕር
+*bre	*q		*
 
-[t=i,-m,-mut]
-*be		*q		*
+[t=i,+mut]
+# ይጘኽት
+*qe		*q		*
 
-[t=j,+m,+mut]
-~ye		~ym		*
-
-[t=j,-m,-mut]
+[t=j,+mut]
+# የሰክት የፈቅር የገክት
 ~ye		~y		*
 
 %%a=0,c=A,-strong
@@ -64,3 +61,14 @@ $ t=p|i|j|c
 
 [t=j,v=0|a]
 *		*a		-
+
+%%a=i,c=A,+strong
+[t=p]
+[t=i,v=p]
+# ስባፐረ
+*	*a	*e	*
+
+[t=i|j,v=0]
+# ይስባፕር የስባፕር
+*	*a	*	*
+

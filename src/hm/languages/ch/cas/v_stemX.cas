@@ -45,6 +45,8 @@ weighting = UNIFICATION
 *qme = {ኸ, ጘ}
 # Bilabial characters with /e/
 *be = {መ, በ, ፈ, ፐ}
+# Bilabial characters + /r/ with /e/
+*bre = {መ, በ, ፈ, ፐ, ረ}
 
 # Consonants with /a/
 *a = {ላ, ሓ, ማ, ራ, ሳ, ሻ, ቃ, ባ, ታ, ቻ, ና, ኛ, ካ, ኻ, ዋ, ዛ, ዣ, ያ, ዳ, ጃ, ጋ, ጣ, ጫ, ፋ, ፓ, ሗ, ኳ, ቋ, ጓ, ሏ, ሟ, ሯ, ሷ, ሿ, ቧ, ቷ, ቿ, ኗ, ኟ, ዟ, ዧ, ዷ, ጇ, ጧ, ጯ, ፏ, ፗ, 𞟣, ቓ, ጛ, ኣ}
@@ -92,8 +94,8 @@ weighting = UNIFICATION
 *R = {ር, ል}
 
 # Vowelless palatalized velars
-*qm = {ኽ, ጝ, ቕ}
-*q = {ኽ, ቕ}
+*qm = {ኽ, ጝ, ቕ, 𞟥}
+*q = {ኽ, ቕ, 𞟥}
 
 # Labialized vowelless characters
 *w = {𞟷, 𞟲, 𞟺, 𞟫, ᎃ, ᎇ, ᎋ, ᎏ, ው}
@@ -154,8 +156,11 @@ weighting = UNIFICATION
 # palatalize <d> <g> (including labialized) (<r>), no vowel
 {^dgr} = ች:ት;ጅ:ድ;ጭ:ጥ;ሽ:ስ;ዥ:ዝ;ኽ:ክ;ጝ:ግ;ቕ:ቅ;ይ:ር;ይ:ል;ኽ:𞟷;ጝ:𞟺;ቕ:𞟲
 {^dg}  =  ች:ት;ጅ:ድ;ጭ:ጥ;ሽ:ስ;ዥ:ዝ;ኽ:ክ;ጝ:ግ;ቕ:ቅ;ኽ:𞟷;ጝ:𞟺;ቕ:𞟲
+{^dgr.a2e} = ቸ:ታ;ጀ:ዳ;ጨ:ጣ;ሸ:ሳ;ዠ:ዛ;ኸ:ካ;ጘ:ፋ;ቐ:ቃ;የ:ራ;የ:ላ;ኸ:ኳ;ጘ:ጓ;ቐ:ቋ
+# Not sure ወ belongs here
+{bn.a2e} = በ:ባ;ፐ:ፓ;መ:ማ;ፈ:ፋ;ነ:ና;ወ:ዋ
 # palatalize <g> (including labialized), any vowel
-{^g*} = ኸ:ከ;ኹ:ኩ;ኺ:ኪ;ኻ:ካ;ኼ:ኬ;ኽ:ክ;ኾ:ኮ;ጘ:ገ;ጙ:ጉ;ጚ:ጊ;ጛ:ጋ;ጜ:ጌ;ጝ:ግ;ጞ:ጎ;ቐ:ቀ;ቑ:ቁ;ቒ:ቂ;ቓ:ቃ;ቔ:ቄ;ቕ:ቅ;ቖ:ቆ;ኸ:ኰ;ኺ:𞟵;ኻ:ኳ;ኼ:𞟶;ቐ:ቈ;ቒ:𞟰;ቓ:ቋ;ቔ:𞟱;ጘ:ጐ;ጚ:𞟸;ጛ:ጓ;ጜ:𞟹;ኽ:𞟷;ጝ:𞟺;ቕ:𞟲
+{^g*} = ኸ:ከ;ኹ:ኩ;ኺ:ኪ;ኻ:ካ;ኼ:ኬ;ኽ:ክ;ኾ:ኮ;ጘ:ገ;ጙ:ጉ;ጚ:ጊ;ጛ:ጋ;ጜ:ጌ;ጝ:ግ;ጞ:ጎ;ቐ:ቀ;ቑ:ቁ;ቒ:ቂ;ቓ:ቃ;ቔ:ቄ;ቕ:ቅ;ቖ:ቆ;ኸ:ኰ;ኺ:𞟵;ኻ:ኳ;ኼ:𞟶;ቐ:ቈ;ቒ:𞟰;ቓ:ቋ;ቔ:𞟱;ጘ:ጐ;ጚ:𞟸;ጛ:ጓ;ጜ:𞟹;ኽ:𞟷;ጝ:𞟺;ቕ:𞟲;𞟥:ሕ
 # palatalize non-palatalized vowel following consonant other than <g>: b,f,p,m;t,d,T,s,z;r,n,l;w?; e->E; I->i; a-> E
 {^V~g*} = ቢ:ብ;ቤ:በ;ቤ:ባ;ፊ:ፍ;ፌ:ፈ;ፌ:ፋ;ፒ:ፕ;ፔ:ፐ;ፔ:ፓ;ሚ:ም;ሜ:መ;ሜ:ማ;ቲ:ት;ቴ:ተ;ቴ:ታ;ዲ:ድ;ዴ:ደ;ዴ:ዳ;ጢ:ጥ;ጤ:ጠ;ጤ:ጣ;ሲ:ስ;ሴ:ሰ;ሴ:ሳ;ዚ:ዝ;ዜ:ዘ;ዜ:ዛ;ሪ:ር;ሬ:ረ;ሬ:ራ;ኒ:ን;ኔ:ነ;ኔ:ና;ሊ;ሊ:ል;ሌ:ለ;ሌ:ላ;ዊ:ው;ዌ:ወ;ዌ:ዋ
 # depalatalize velars and dentals; convert velar, bilabial and sonorant +E to +e
