@@ -53,13 +53,14 @@ class Roots:
     # Signifies no input or output characters associated with an FSS
     NO_INPUT = '--'
 
-    CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s*(\[.+\])?\s+(.+)$')
+    CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s*(\[.+\])?(\s+.+)?$')
     ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
     IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
     PATTERN_RE = re.compile(r'\s*(.+)$')
     FEATURES_RE = re.compile(r'\s*(\[.+\])$')
     CHAR_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
+    CHAR_MAP_LABEL_RE = re.compile(r'([^(^)]+)(?:\((.+)\))?')
 
     possep = ';'
     charmapsep = ';'
@@ -77,19 +78,41 @@ class Roots:
 #        return "Roots {}".format(self.fst.label)
 
     @staticmethod
+    def make_charmap(name, charsets, spec=None):
+        '''
+        Make a character map from charsets, possibly with a
+        specification, including palatalize, depalatalize, voice, devoice.
+        '''
+#        print("** Making charmap for {}".format(name))
+        map = {}
+        charset = charsets.get(name)
+        if not charset:
+            print("NO charset called {}!".format(name))
+            return
+        for char in charset:
+            char6 = to_sads(char, spec=spec)
+            if char6 not in map:
+                map[char6] = [char]
+            else:
+                map[char6].append(char)
+        return map
+
+    @staticmethod
     def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade):
 
         def charfeat_arc(char, wt, source, dest, fst):
             # Create the arc from source dest
             # char is either a character or a (character, weight) tuple
+#            print(" *** charfeat_arc {}, {}, {}, {}".format(char, wt.__repr__(), source, dest))
             if isinstance(char, tuple):
                 # this char depends on a weight
                 char, charfeats = char
+#                print("  **** char {}, charfeats {}".format(char, charfeats.__repr__()))
                 if wt:
                     wt0 = wt.unify(charfeats)
                 else:
                     wt0 = charfeats
-                    fst.add_arc(source, dest, char, char, weight=wt0)
+                fst.add_arc(source, dest, char, char, weight=wt0)
             else:
                 fst.add_arc(source, dest, char, char, weight=wt)
                 
@@ -143,6 +166,7 @@ class Roots:
             for char in chars:
                 fst.add_arc(source, 'end', char, char)
 #        cons = cons.split()
+
         # one of cons could be a char, feature tuple
         cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
         state_name = ''.join(cons_chars)
@@ -241,7 +265,7 @@ class Roots:
                   tuple([Roots.make_charset(cons, position, v, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat) for v in chars])
             else:
                 charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat)
-#                print("** charsets in {}: {}".format(position, charsets[position]))
+#        print("  *** charsets {}".format(charsets))
         return charsets, strong
         
     @staticmethod
@@ -333,6 +357,12 @@ class Roots:
 #        print("** Parsing roots file {}, fst {}".format(s, fst))
 
 #        weighting = fst.weighting()
+
+        language = cascade.language
+
+        stringsets = language.stringsets or cascade._stringsets
+
+#        print("*** stringset ~ye {}".format(stringsets.get('~ye')))
 
         rules = {}
 
@@ -435,7 +465,22 @@ class Roots:
                 maplabel, feature, chars = m.groups()
                 if feature:
                     feature = UNIFICATION_SR.parse_weight(feature)
+                if chars:
+                    chars = chars.strip()
 #                print("*** char map {}: {}, {}".format(maplabel, chars, feature.__repr__()))
+                if not chars:
+#                    print("** Creating char map for {}".format(maplabel))
+                    mm = Roots.CHAR_MAP_LABEL_RE.match(maplabel)
+                    spec = None
+                    if mm:
+                        maplabel, spec = mm.groups()
+#                        print("** maplabel: {} -- {}".format(maplabel, spec))
+                    charmap = Roots.make_charmap(maplabel, stringsets, spec=spec)
+#                    print("** charmap {}".format(charmap))
+                    char_maps[maplabel] = charmap
+                    if feature:
+                        charmap_weights[maplabel] = feature
+                    continue
                 chars = [c.strip() for c in chars.split(Roots.charmapsep)]
                 chars = [[c[0], list(c[1:])] for c in chars]
 #                print("** -> ", chars)
@@ -495,12 +540,13 @@ class Roots:
             for (cons, feats), patterns in irr_roots.items():
                 Roots.make_irr_root(fst, cons, feats, patterns)
 
+#        print("** char maps {}".format(char_maps))
 #        print("** char maps weights {}".format(charmap_weights))
 
 #        print("** irr roots: {}".format(irr_roots))
 
 #        if irr_roots:
-#            print(fst)
+#                print(fst)
 
         return fst
 

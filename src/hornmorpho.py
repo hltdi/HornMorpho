@@ -208,7 +208,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                                             simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True,
-                             experimental=experimental, mwe=mwe,
+                             experimental=experimental, mwe=mwe, pos=pos,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:

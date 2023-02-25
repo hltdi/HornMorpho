@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022.
+    Copyleft 2022, 2023.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -259,8 +259,8 @@ class Sentence():
         if seg.get('lemma'):
             seg['lemma'] = degeminate(seg['lemma'])
 
-    def add_word(self, word, segmentations, morphid, conllu=True):
-        w = self.make_word(word, segmentations, morphid, conllu=conllu)
+    def add_word(self, word, segmentations, morphid, conllu=True, um=False):
+        w = self.make_word(word, segmentations, morphid, conllu=conllu, um=um)
         if conllu:
             self.conllu.extend(w)
 
@@ -334,7 +334,7 @@ class Sentence():
                         diffs[index][key] = (v1, v2)
         return diffs
 
-    def make_word(self, word, segmentations, morphid, conllu=True):
+    def make_word(self, word, segmentations, morphid, conllu=True, um=False):
         '''
         Creates a new word from a list of (lists of) segmentations.
         If conllu is True, returns a list of morpheme Tokens.
@@ -344,7 +344,7 @@ class Sentence():
         self.complexity['ambig'] += len(segmentations) - 1
         if len(segmentations) > 1:
             self.morphambig.append(word)
-#        print("*** word {}, segmentations {}".format(word, segmentations))
+        print("*** word {}, segmentations {}".format(word, segmentations))
         for index, segmentation in enumerate(segmentations):
 #        segmentation = segmentations[0]
             segments = []

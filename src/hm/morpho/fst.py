@@ -199,6 +199,9 @@ class FSTCascade(list):
         # Language this cascade belongs to
         self.language = None
 
+        # POS for this cascade
+        self.pos = ''
+
         # Initial weight to use during transduction
         self.init_weight = None
 
@@ -238,6 +241,16 @@ class FSTCascade(list):
     def add(self, fst):
         """Add an FST to the dictionary with its label as key."""
         self._fsts[fst.label] = fst
+
+    def add_stringsets(self):
+        '''
+        Stringsets may be in .cas or .lg files
+        '''
+        if (ss := self.language.stringsets):
+            self._stringsets = ss
+#        print("*** casc stringsets {}".format(self._stringsets))
+#        for chars in self._stringsets.values():
+#            self._sigma = self._sigma.union(chars)
 
     def inverted(self):
         """Return a list of inverted FSTs in the cascade."""
@@ -488,7 +501,7 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None,
-             language=None,
+             language=None, pos='',
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
@@ -496,19 +509,19 @@ class FSTCascade(list):
         If not create_networks, only create the weighting and string sets.
         """
         if verbose:
-            print('Loading FST cascade from {} for {}'.format(filename, language))
+            print('Loading FST cascade from {} for {}, POS {}'.format(filename, language, pos))
         directory, fil = os.path.split(filename)
         label = del_suffix(fil, '.')
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
-                                dirname=dirname,
+                                dirname=dirname, pos=pos,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
 
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
-              subcasc=None, language=None, dirname='',
+              subcasc=None, language=None, dirname='', pos='',
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -518,6 +531,11 @@ class FSTCascade(list):
         cascade = FSTCascade(label)
         cascade.language = language
         cascade.seg_units = seg_units
+        cascade.pos = pos
+#        print("*** parsing cascade {}, {}".format(language, pos))
+
+        # Add specs from language
+        cascade.add_stringsets()
 
         lines = s.split('\n')[::-1]
         subcasc_indices = []
@@ -557,7 +575,6 @@ class FSTCascade(list):
             if m:
                 label, strings = m.groups()
                 # Characters may contain unicode
-#                strings = strings.decode('utf8')
                 cascade.add_stringset(label, [s.strip() for s in strings.split(',')])
                 continue
 
@@ -783,6 +800,7 @@ class FST:
             self.seg_units = []
         if cascade != None:
             self._stringsets = self.cascade._stringsets
+#            print(" *** FST stringset: {}".format(self._stringsets))
         #}
 
         #{ (MG)
@@ -804,8 +822,7 @@ class FST:
 
         #{ Alphabets (Added by MG).
         self._sigma = set()
-        """Symbols 'known' to the network (initially those appearing
-        on arcs."""
+        """Symbols 'known' to the network (initially those appearing on arcs)."""
         #}
 
         #{ Inserted FSTs, value is the number; needed for names
@@ -2065,7 +2082,7 @@ class FST:
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
 
-#        print("** Loading FST from {}".format(filename))
+#        print("** Loading FST from {}; cascade {}, language {}, POS {}".format(filename, cascade, cascade.language, 
 
         if suffix == 'fst':
             if verbose:

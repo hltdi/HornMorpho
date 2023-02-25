@@ -88,14 +88,11 @@ poss -> acc       <E:-E(@pron,posm,$number=sing,person=1,poss=yes,*ኤ,~nmod)>  
 poss -> acc       <h:-h(@pron,posm,$gender=masc,number=sing,person=2,poss=yes,*ህ,~nmod)>     [+def,poss=[-p1,+p2,-plr,-fem,+expl],-itu]
 poss -> acc       <x:-x(@pron,posm,$gender=fem,number=sing,person=2,poss=yes,*ሽ,~nmod)>     [+def,poss=[-p1,+p2,-plr,+fem,+expl],-itu]
 # Combine the two interpretations of -u and -wa??
-#poss -> acc       <u:-u(@det,$definite=def)>          [+def,poss=[-expl],-itu,-fem]
-poss -> acc       <u:-u(@det,*ኡ,~det)>          [+def,poss=[-expl],-itu,-fem]
+poss -> acc       <u:-u(@det,*ኡ,~det)>          [+def,+det,poss=[-expl],-itu,-fem]
 poss -> acc       <u:-u(@pron,posm,$gender=masc,number=sing,person=3,poss=yes,*ኡ,~nmod)>     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu]
-#poss -> acc      <itu:-itu(@det,$definite=def,gender=fem)>    [+def,poss=[-expl],+fem,-plr,+itu,-prp]
-poss -> acc      <itu:-itu(@det,$gender=fem,*ኢቱ,~det)>    [+def,poss=[-expl],+fem,-plr,+itu,-prp]
+poss -> acc      <itu:-itu(@det,$gender=fem,*ኢቱ,~det)>    [+def,+det,poss=[-expl],+fem,-plr,+itu,-prp]
 # the only deverbal nouns that can be feminine are agents
-#poss -> acc      <wa:-wa(@det,$definite=def,gender=fem)>    [+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+def,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
-poss -> acc      <wa:-wa(@det,$gender=fem,*ዋ,~det)>    [+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+def,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
+poss -> acc      <wa:-wa(@det,$gender=fem,*ዋ,~det)>    [+def,+det,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+def,+det,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
 poss -> acc      <wa:-wa(@pron,posm,$gender=fem,number=sing,person=3,poss=yes,*ዋ,~nmod)>   [+def,-prp,poss=[-p1,-p2,-plr,+fem,+expl],-itu]
 poss -> acc     <ac_n:-Ac_n(@pron,posm,$number=plur,person=1,poss=yes,*ኣችን,~nmod)>    [+def,poss=[+p1,-p2,+plr,+expl],-itu]
 poss -> acc     <ac_hu:-Ac_hu(@pron,posm,$number=plur,person=2,poss=yes,*ኣችሁ,~nmod)>   [+def,poss=[-p1,+p2,+plr,+expl],-itu]

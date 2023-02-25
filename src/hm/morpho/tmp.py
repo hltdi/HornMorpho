@@ -292,9 +292,12 @@ class Template:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-#        print("** Parsing template file {}, fst {}".format(s, fst))
 
-#        weighting = fst.weighting()
+        language = cascade.language
+        pos = cascade.pos
+        posmorph = language.morphology.get(pos)
+
+#        print("** Parsing template file; fst {}; cascade {}, POS {}".format(fst, cascade, cascade.pos))
 
         templates = []
         tmp_dict = {}
@@ -414,6 +417,9 @@ class Template:
         Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints)
 
 #        print("*** weak inventory {}".format(weak_inventory.get('A').get('3=እ')))
+
+#        print("*** inventory {}".format(inventory))
+#        print("*** weak inventory {}".format(weak_inventory))
 
         Template.make_all_template_states(fst, tmp_dict, default_final)
 

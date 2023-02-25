@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-    Copyleft 2020, 2021. Michael Gasser.
+    Copyleft 2020, 2021, 2023. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,12 +37,14 @@ class UniMorph:
     feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\-\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
+    toUD_re = re.compile(r'\s*->UD\s+(.*)\s+(.*)$')
 
     def __init__(self, language, read=True):
         # A Language instance
         self.language = language
         self.hm2um = {}
         self.um2hm = {}
+        self.um2ud = {}
         if read:
             self.read()
             self.reverse()
@@ -251,11 +253,13 @@ class UniMorph:
 #                    print(" MATCHED FEATS: {}".format(feats))
                 if isinstance(f, tuple):
                     # we're checking multiple features
-                    multmatch = UniMorph.convert_mult(fs, f, v,
-                    feats, verbosity=verbosity)
+                    multmatch = UniMorph.convert_mult(fs, f, v, feats, verbosity=verbosity)
                     if multmatch:
                         feats.extend(f)
-                        um.append(multmatch)
+                        if multmatch not in um:
+                            for umm in multmatch.split(';'):
+                                if umm not in um:
+                                    um.append(umm)
                     continue
                 if isinstance(v, list):
                     # Subfeats are specified
@@ -264,7 +268,8 @@ class UniMorph:
                     ffss = fs[f]
                     uv = UniMorph.convert_bool(ffss, v, verbosity=verbosity)
                     if uv:
-                        um.append(uv)
+                        if uv not in um:
+                            um.append(uv)
                         feats.append(f)
                     continue
                 if isinstance(v, dict):
@@ -274,12 +279,14 @@ class UniMorph:
                         if verbosity:
                             print(" Adding {} to UM".format(uv))
                         feats.append(f)
-                        um.append(uv)
+                        if uv not in um:
+                            um.append(uv)
                     continue
                 if fs.get(f):
                     # Simple boolean featmap with one feature
                     feats.append(f)
-                    um.append(v)
+                    if v not in um:
+                        um.append(v)
         if verbosity:
             print("UM: {}".format(um))
         if um:
@@ -393,6 +400,27 @@ class UniMorph:
         d = self.language.get_dir()
         return os.path.join(d, self.language.abbrev + ".um")
 
+    def convert2ud(self, um, pos):
+        """
+        Convert a string consisting of UM features to a string consisting of UD features.
+        """
+        udfeats = set()
+        um2ud = self.um2ud.get(pos)
+        if not um2ud:
+            return ''
+        for umfeat in um.split(';'):
+            if udfeat := um2ud.get(umfeat):
+                if isinstance(udfeat, tuple):
+                    # multiple features
+                    ummult, udfeat = udfeat
+                    if all([(umm in um) for umm in ummult]):
+                        udfeats.add(udfeat)
+                else:
+                    udfeats.add(udfeat)
+        udfeats = list(udfeats)
+        udfeats.sort()
+        return ','.join(udfeats)
+
     def read(self, verbosity=0):
         """
         Read in the UM converstion data.
@@ -432,7 +460,21 @@ class UniMorph:
                         if POS:
                             current_pos_list.append(("", POS))
                         current_pos = pos
+                        self.um2ud[current_pos] = {}
                         continue
+
+                    m = UniMorph.toUD_re.match(line)
+                    if m:
+                        umfeat, udfeat = m.groups()
+                        umfeat = umfeat.strip(); udfeat = udfeat.strip()
+#                        print("** Matched 2UD rule {}->{}".format(umfeat, udfeat))
+                        if ';' in umfeat:
+                            for umfeat1 in umfeat.split(';'):
+                                self.um2ud[current_pos][umfeat1] = (umfeat, udfeat)
+
+                        self.um2ud[current_pos][umfeat.strip()] = udfeat.strip()
+                        continue
+
                     m = UniMorph.superfeat_re.match(line)
                     if m:
                         supfeat = m.group(1)
@@ -445,6 +487,7 @@ class UniMorph:
                             current_feats = []
                         current_supfeat = supfeat
                         continue
+
                     m = UniMorph.feat_re.match(line)
                     if m:
                         feat, value = m.groups()

@@ -87,31 +87,11 @@ ROOT_Y = '።'
 ## Amharic palatals
 AM_PAL = {'t': 'c', 'd': 'j', 'T': 'C', 's': 'x', 'z': 'Z', 'n': 'N', 'l': 'y'}
 
-## Explicit 'a' for laryngeal characters
-#LARYNGEAL_A = {"ha": "ሃ", "Ha": "ሓ", "^ha": "ኃ", "'a": "ኣ", "`a": "ዓ"}
-
-### Segmentation units for different languages
-#SEG_UNITS = {'stv': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "M", "w", "y", "'", "_", "|", "*"],
-#                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
-#                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
-#                      "h": ["h", "hW"], "j": ["j", "jW"], "k": ["k", "kW"],
-#                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
-#                      "p": ["p", "pW"], "P": ["P", "PW"],
-#                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
-#                      "s": ["s", "sW"], "t": ["t", "tW"], "T": ["T", "TW"],
-#                      "x": ["x", "xW"], "z": ["z", "zW"], "Z": ["Z", "ZW"]}],
-#             'sem': [["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "H", "M", "w", "y", "'", "`", "_", "|", "*"],
-#                     {"b": ["b", "bW"], "c": ["c", "cW"], "C": ["C", "CW"],
-#                      "d": ["d", "dW"], "f": ["f", "fW"], "g": ["g", "gW"],
-#                      "h": ["h", "hW"], "H": ["H", "HW"], "j": ["j", "jW"], "k": ["k", "kW"],
-#                      "l": ["l", "lW"], "m": ["m", "mW"], "n": ["n", "nW"],
-#                      "p": ["p", "pW"], "P": ["P", "PW"],
-#                      "N": ["N", "NW"], "q": ["q", "qW"], "r": ["r", "rW"],
-#                      "s": ["s", "sW"], "S": ["S", "SW"], "t": ["t", "tW"],
-#                      "T": ["T", "TW"], "v": ["v", "vW"], "x": ["x", "xW"],
-#                      "z": ["z", "zW"], "Z": ["Z", "ZW"],
-#                      "^": ["^s", "^S", "^h", "^hW", "^sW", "^SW"]}],
-#             }
+CONVERT_GEEZ = {
+    # palatalize
+    '^': {'ት': 'ች', 'ድ': 'ጅ',  'ስ': 'ሽ',  'ዝ': 'ዥ',  'ን': 'ኝ',  'ጥ': 'ጭ',  'ል': 'ይ',  'ቅ': 'ቕ',  'ክ': 'ኽ',  'ግ': 'ጝ',  'ሕ': '𞟥'},
+    '-^': {'ች': 'ት', 'ጅ': 'ድ', 'ሽ': 'ስ', 'ዥ': 'ዝ',  'ኝ': 'ን',  'ጭ': 'ጥ',  'ይ': 'ል',  'ቕ': 'ቅ',  'ኽ': 'ክ',  'ጝ': 'ግ',  '𞟥': 'ሕ'}
+    }
 
 ### TOP-LEVEL FUNCTIONS
 
@@ -157,6 +137,32 @@ def degeminate(form, geez=True):
     if geez:
         return form.replace(GEMINATION_GEEZ, '')
     return form.replace(GEMINATION_ROMAN, '')
+
+def to_sads(char, lang='ees', spec=None):
+    '''
+    Convert a Geez char to its ሳድስ version.
+    '''
+#    print("** to sads {}".format(char))
+    rom = romanize(char, lang=lang, normalize=False)
+    if rom[0] == '^':
+        rom0 = rom[:2]
+    else:
+        rom0 = rom[0]
+    g = geezify(rom0, lang=lang)
+    if spec:
+        g = convert_char(g, spec)
+    return g
+
+def convert_char(char, spec):
+    '''
+    Convert Geez char, given a spec such as ^ (palatalize), -^ (depalatalize).
+    '''
+#    print("** convert char {}, spec {}".format(char, spec))
+    if spec in CONVERT_GEEZ:
+        return CONVERT_GEEZ[spec].get(char)
+    else:
+        print("Conversion spec {} is not in CONVERT_GEEZ dict!".format(spec))
+        return char
 
 def geezify_morph(morph, lang='am', alt=True, gemination=True):
     """
