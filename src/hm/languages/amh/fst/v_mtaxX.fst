@@ -99,17 +99,15 @@ sbjs -> sbjs_p        [:]    [tm=prf];[tm=ger]
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
 # 2/3 plural; go directly to obj
 # % 2/3 should be converted to 2,3
-sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3,*ኡ,~nsubj)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None]
-#;[sb=[-p1,+plr],+def]
+sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3,*ኡ,~nsubj)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None];[sb=[-p1,+plr],+det]
 # 2sf; go directly to obj; palatalize previous consonant; don't show the palatalization character
 sbjs_i -> obj        <8i:-i(@pron,subj,$gender=fem,number=sing,person=2,*ኢ,~nsubj)>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
-sbjs_i -> sbjs_i0     [:]    [sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[-p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def]
+sbjs_i -> sbjs_i0     [:]    [sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[-p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def,-det]
 # Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -0- for 2p, 3p, prp, 3sf, 2s frm, no obj; -I- for 2s
 # -e- for -n, -N, -w, optionally for -wo(t)
 #sbjs_i0 -> obj        <e:-e(infix)>   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]]
-sbjs_i0 -> obj        <e:-e->   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]]
-#;[+def,ob=[-expl]]
+sbjs_i0 -> obj        <e:-e->   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]];[+det,ob=[-expl]]
 # -I- for -h, -x, optionally for -wo(t)
 sbjs_i0 -> obj        [I:]   [ob=[+p2,+expl,-plr,-prp]]
 # No infix for -at, -ac_ew, -ac_hu
@@ -127,8 +125,7 @@ sbjs_pk1 -> negs_aux  <N_>
 sbjs_pk1 -> obj       [:]
 # 2sm: infix for objects other than prep and for definite suffix
 sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2,*ክ,~nsubj)-e->   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
-#sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2)-e(inf)>   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]]
-#;[sb=[-p1,+p2,-fem],ob=[-expl],+def,+rel,+sub]
+#sbjs_pk -> obj        <e:(@pron,subj,$gender=masc,number=sing,person=2)-e(inf)>   [sb=[-p1,+p2,-fem],ob=[-prp,-p2,+expl]];[sb=[-p1,+p2,-fem],ob=[-expl],+def,+rel,+sub,+det]
 sbjs_pk -> obj        <:(@pron,subj,$gender=masc,number=sing,person=2,*ክ,~nsubj)>    [sb=[-p1,+p2,-fem,-frm],ob=[-expl]];[sb=[-p1,+p2,-fem,-frm],ob=[-p2,+prp,+expl]]
 # 2sf, no infix
 sbjs_p -> obj         <x:-x(@pron,subj,$gender=fem,number=sing,person=2,*ሽ,~nsubj)>   [tm=prf,sb=[-p1,+p2,-plr,+fem,-frm],ob=[-p2]]
@@ -137,8 +134,7 @@ sbjs_p -> obj        <ec_:-ec_(@pron,subj,$gender=fem,number=sing,person=3,*ኧ�
 # 1p, infix for 3sm obj and 2s frm, and +def
 sbjs_p -> sbjs_pn     <n:-n(@pron,subj,$number=plur,person=1,*ን,~nsubj)>   [tm=prf,sb=[+p1,+plr],ob=[-p1]]
 #sbjs_pn -> obj        <e:-e(infix)>   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
-sbjs_pn -> obj        <e:-e->   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]]
-#;[ob=[-expl],+def,+rel,+sub]
+sbjs_pn -> obj        <e:-e->   [ob=[-prp,-p1,-p2,-plr,+expl]];[ob=[-p1,+p2,-plr,+frm,-prp,+expl]];[ob=[-expl],+def,+rel,+sub,+det]
 sbjs_pn -> obj        [:]      [ob=[-expl],-def];[ob=[+prp,+expl]];[ob=[+plr,-prp,+expl]];[ob=[+p2,-plr,-prp,-frm,+expl]];[ob=[-p2,-plr,-prp,+fem,+expl]]
 # 2p: prf or ger
 sbjs_p -> obj      <ac_hu:-Ac_hu(@pron,subj,$number=plur,person=2,*ኣችሁ,~nsubj)>  [sb=[+p2,-p1,+plr],ob=[-p2]]
@@ -166,14 +162,12 @@ sbjs_p -> obj         <a:-A(@pron,subj,$gender=fem,number=sing,person=3,*ኣ,~ns
 sbjs_p -> obj        <ew:-ew(@pron,subj,$number=plur,person=3,*ኧው,~nsubj)>  [tm=ger,sb=[-p2,-p1,+plr]]
 
 ### OBJECT SUFFIXES
-# No object; not definite
-obj -> negs_aux          [:]    [ob=[-expl]]
-#obj -> negs_aux          [:]    [ob=[-expl],-def]
+# No object; no determiner
+obj -> negs_aux          [:]    [ob=[-expl]];[-det]
 # 3sm suffix doubles as definite marker for relative clauses
-#obj -> def3sm0           [:]    [ob=[-expl],+def,+rel,+sub]
+obj -> def3sm0           [:]    [ob=[-expl],+def,+rel,+sub,+det]
 # Explicit objects, also definite if relative
-#obj -> obj0            [:]    [ob=[+expl],-def,-rel]
-obj -> obj0            [:]    [ob=[+expl]]
+obj -> obj0            [:]    [ob=[+expl],-det]
 # ;[ob=[+expl],+def,+rel]
 # Prepositional
 # Ambiguous: usually ben in TB, but sometimes loc
@@ -215,8 +209,10 @@ def3sm_1s -> def3sm_t    [:]     [tm=prf];[tm=prs]
 # other subjects
 def3sm0 -> def3sm_w      [:]     [sb=[+p2,-p1,-plr]];[sb=[-p1,-p2,+fem,-plr]];[sb=[+p1,-p2,+plr]]
 def3sm0 -> def3sm_t      [:]     [sb=[+p2,-p1,+plr]];[sb=[-p1,-p2,+plr]]
-def3sm_w -> negs_aux    <3:-w(@pron,objc,$gender=masc,number=sing,person=3,*ው,~obj)>
-def3sm_t -> negs_aux    <3:-t(@pron,objc,$gender=masc,number=sing,person=3,*ው,~obj)>
+def3sm_w -> negs_aux    <3:-w(@pron,objc,$gender=masc,number=sing,person=3,*ው,~obj)> [ob=[+expl]]
+def3sm_t -> negs_aux    <3:-t(@pron,objc,$gender=masc,number=sing,person=3,*ው,~obj)> [ob=[+expl]]
+def3sm_w -> negs_aux    <3:-w(@det,*ው,~det)>  [ob=[-expl],+det]
+def3sm_t -> negs_aux    <3:-t(@det,*ው,~det)>  [ob=[-expl],+det]
 
 # AUX; can't cooccur with +neg or +sub
 # % maybe the lemma should really be ኣለ

@@ -1388,7 +1388,7 @@ class Language:
         if not fsts:
             return False
         for pos in fsts:
-            print("*** load_morpho {}".format(pos))
+#            print("*** load_morpho {}".format(pos))
             # Load pre-analyzed words if any
             self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
             if ortho:
@@ -1632,8 +1632,11 @@ class Language:
                 pos, segmentation, lemma, features, freq = analysis
                 print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
                 if pos in self.um.hm2um:
-                    ufeats = self.um.convert(features, pos=pos)
-                    print("  ** ufeats {}".format(ufeats))
+                    umfeats = self.um.convert(features, pos=pos)
+                    print("  ** umfeats {}".format(umfeats))
+                    udfeats = self.um.convert2ud(ufeats, pos)
+                    print("  ** udfeats {}".format(udfeats))
+                    analysis.append(udfeats)
 #            if um and pos in self.um.hm2um:
 #                ufeats = self.um.convert(gram2, pos=pos)
 #                if ufeats:
