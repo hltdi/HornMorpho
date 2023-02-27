@@ -60,18 +60,36 @@ sbjp0 -> sbjp1    [:]    [tm=j_i,sb=[-p1]];[tm=j_i,sb=[+p1,-plr]];[tm=imf,sb=[-p
 sbjp* -> sbjp1    [:]    [+sub];[+neg]
 # 1s l: jussive and imperf neg
 # % Should the lemma be "I"?
+# 1s
 sbjp1 -> stem     <l:l(@pron,$number=sing,person=1,*ል,~nsubj)->   [tm=j_i,sb=[+p1,-plr],ob=[-p1],-neg]
 sbjp1 -> stem     <l:l(@part,$polarity=neg,number=sing,person=1,*ኣል,~advmod)->   [tm=imf,sb=[+p1,-plr],ob=[-p1],+neg]
-# y: 3sm and 3p
-sbjp1 -> stem     <y:y(@pron,$person=3,*ይ,~nsubj)->   [sb=[-p1,-p2,+plr],-neg]; [sb=[-p1,-p2,-plr,-fem],-neg]
-sbjp1 -> stem     <y:y(@part,$polarity=neg,person=3,*ኣል,~advmod)->   [sb=[-p1,-p2,+plr],+neg]; [sb=[-p1,-p2,-plr,-fem],+neg]
+# y: 3sm and 3p; include number=sing for ይ here even if it's the absence of a suffix that conveys this
+# 3sm
+sbjp1 -> stem     <y:y(@pron,$gender=masc,number=sing,person=3,*ይ,~nsubj)->  [sb=[-p1,-p2,-plr,-fem],-neg]
+# 3p (number indicated in suffix)
+sbjp1 -> stem     <y:y(@pron,$person=3,*ይ,~nsubj)->   [sb=[-p1,-p2,+plr],-neg]
+# 3sm
+sbjp1 -> stem     <y:y(@part,$polarity=neg,gender=masc,number=sing,person=3,*ኣል,~advmod)->   [sb=[-p1,-p2,-plr,-fem],+neg]
+# 3p (number indicated in suffix)
+sbjp1 -> stem     <y:y(@part,$polarity=neg,person=3,*ኣል,~advmod)->   [sb=[-p1,-p2,+plr],+neg]
 # Unless at the beginning of the word or negative, there is no overt 1s prefix, except in jussive
 sbjp1 -> stem     <:'(@pron,$number=sing,person=1,*እ,~nsubj)->    [tm=imf,sb=[+p1,-plr],ob=[-p1],-neg]
-# t, n: 1p, 2, 3sf
-sbjp1 -> stem     <t:t(@pron,$person=2,*ት,~nsubj)->   [sb=[+p2,-p1],ob=[-p2],-neg]
+## t, n: 1p, 2, 3sf
+# affirmative
+# 2sm
+sbjp1 -> stem     <t:t(@pron,$gender=masc,number=sing,person=2,*ት,~nsubj)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],-neg]
+# 2sf, 2p
+sbjp1 -> stem     <t:t(@pron,$person=2,*ት,~nsubj)->   [sb=[+p2,-p1,+plr],ob=[-p2],-neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],-neg]
+# 3sf
 sbjp1 -> stem     <t:t(@pron,$gender=fem,number=sing,person=3,*ት,~nsubj)->   [sb=[-plr,-p1,-p2,+fem],-neg]
-sbjp1 -> stem     <t:t(@part,$polarity=neg,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1],ob=[-p2],+neg]
+# negative
+# 2sm
+sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=masc,number=sing,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],+neg]
+# 2sf, 2p
+sbjp1 -> stem     <t:t(@part,$polarity=neg,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,+plr],ob=[-p2],+neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],+neg]
+# 3sf
 sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=fem,number=sing,person=3,*ኣል,~advmod)->  [sb=[-plr,-p1,-p2,+fem],+neg]
+# 1p
 sbjp1 -> stem     <n:'n(@pron,$number=plur,person=1,*እን,~nsubj)->           [sb=[+plr,+p1,-p2],ob=[-p1],-neg]
 sbjp1 -> stem     <n:n(@part,$polarity=neg,number=plur,person=1,*ኣል,~nsubj)->      [sb=[+plr,+p1,-p2],ob=[-p1],+neg]
 
@@ -97,16 +115,17 @@ sbjs -> sbjs_i        [:]    [tm=imf];[tm=j_i]
 sbjs -> sbjs_p        [:]    [tm=prf];[tm=ger]
 
 ## IMPERFECTIVE, JUSSIVE/IMPERATIVE
-# 2/3 plural; go directly to obj
-# % 2/3 should be converted to 2,3
-sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3,*ኡ,~nsubj)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None];[sb=[-p1,+plr],+det]
+# 2/3 plural; go directly to obj; disambiguate person here, based on prefixes
+#sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3,*ኡ,~nsubj)>   [sb=[-p1,+plr],ob=[+expl]];[sb=[-p1,+plr],ob=[-expl],ax=None];[sb=[-p1,+plr],+det]
+sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2,*ኡ,~nsubj)>   [sb=[+p2,-p1,+plr],ob=[+expl]];[sb=[+p2,-p1,+plr],ob=[-expl],ax=None];[sb=[+p2,-p1,+plr],+det]
+sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=3,*ኡ,~nsubj)>   [sb=[-p1,-p2,+plr],ob=[+expl]];[sb=[-p1,-p2,+plr],ob=[-expl],ax=None];[sb=[-p1,-p2,+plr],+det]
 # 2sf; go directly to obj; palatalize previous consonant; don't show the palatalization character
 sbjs_i -> obj        <8i:-i(@pron,subj,$gender=fem,number=sing,person=2,*ኢ,~nsubj)>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
-# 0 suffix for 2sm and 3sm; otherwise number=sing doesn't have a morpheme
-sbjs_i -> sbjs_i0     <:-0(@pron,subj,$number=sing,~nsubj)>    [sb=[-p1,-p2,-fem,-plr]];[sb=[+p2,-p1,-plr,-fem,-frm]]
-sbjs_i -> sbjs_i0     [:]    [sb=[-p1,-p2,+fem,-plr]];[sb=[+p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def,-det]
-# Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -0- for 2p, 3p, prp, 3sf, 2s frm, no obj; -I- for 2s
+## 0 suffix for 2sm and 3sm; otherwise number=sing doesn't have a morpheme
+##sbjs_i -> sbjs_i0     <:-0(@pron,subj,$number=sing,~nsubj)>    [sb=[-p1,-p2,-fem,-plr]];[sb=[+p2,-p1,-plr,-fem,-frm]]
+sbjs_i -> sbjs_i0     [:]    [sb=[-p1,-p2,-plr]];[sb=[+p2,-p1,-plr,-fem,-frm]];[sb=[+p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def,-det]
+# Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -I- for 2s
 # -e- for -n, -N, -w, optionally for -wo(t)
 sbjs_i0 -> obj        <e:-e->   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]];[+det,ob=[-expl]]
 # -I- for -h, -x, optionally for -wo(t)

@@ -93,7 +93,7 @@ feats:
 # Consonants with /E/
 *E = {ሌ, ሔ, ሜ, ሬ, ሴ, ሼ, ቄ, ቤ, ቴ, ቼ, ኔ, ኜ, ኤ, ኬ, ዌ, ዜ, ዤ, ዬ, ዴ, ጄ, ጌ, ጤ, ጬ, ፌ, ፔ, 𞟤, ቔ, ኼ, ጜ, 𞟱, 𞟹, 𞟪, 𞟶, 𞟮, 𞟴, 𞟼, 𞟾}
 # Non-palatal consonants with /E/
-~YE = {ሌ, ሜ, ሬ, ቤ, ዌ, ፌ, ፔ, 𞟱, 𞟹, 𞟪, 𞟶, 𞟮, 𞟴, 𞟼, 𞟾}
+~yE = {ሌ, ሜ, ሬ, ቤ, ዌ, ፌ, ፔ, 𞟱, 𞟹, 𞟪, 𞟶, 𞟮, 𞟴, 𞟼, 𞟾}
 
 # Palatal consonants with /e/, non-palatal consonants with /E/
 *Ye =  {ሌ, ሜ, ሬ, ቤ, ዌ, ፌ, ፔ, 𞟱, 𞟹, 𞟪, 𞟶, 𞟮, 𞟴, 𞟼, 𞟾, ሸ, ቸ, ኘ, ዠ, የ, ጀ, ጨ, 𞟠, ኸ, ቐ, ጘ}

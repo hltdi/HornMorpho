@@ -180,7 +180,9 @@ Then to use the program, in a Python shell, do
 
 ### Segmenting a sentence
 
-**`hm.seg_sentence`**(*sentence*)  
+**`hm.seg_sentence`**(*sentence*)
+
+`Options: um=1, seglevel=2`
 
 >- *sentence* is a string representation of an Amharic sentence. It is assumed that punctuation has already be separated by whitespace from other characters.
 
@@ -192,6 +194,11 @@ ambiguity, only one segmentation is included; this could be the
 
 > This function returns an instance of the <a id="sentence">HornMorpho `Sentence` class</a>.
 To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its `conllu` attribute.
+
+> Options:
+
+>* `um` (Universal Morphology) specifies the category of morphological features to provide for words and/or word segments. 1 (the default value): features are from the set included in the Universal Dependency guidelines. 2: features are from an extended set, possibly including those not in the basic UM set. 0: currently ignored.
+* `seglevel` specifies how much segmentation to perform. 0: no segmentation; features are assigned to the whole word. 2: maximum segmentation; features are assigned to individual segments (morphemes) within a word. 1: currently ignored.
 
 	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
 	>>> print(s.conllu.serialize())
