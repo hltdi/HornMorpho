@@ -194,6 +194,7 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
 
 def create_corpus(data=None, read={}, write={}, batch={},
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
+                  um=1, seglevel=2,
                   timeit=False, local_cache=None,
                   verbosity=0):
     '''
@@ -215,6 +216,9 @@ def create_corpus(data=None, read={}, write={}, batch={},
        and to write both geminated and ungeminated files
     @param timeit: whether to time segmentation
     @param local_cache: cache to store segmentations
+    @param um: int indicating whether (1|2 vs. 0) to use UM features converted to UD features and if so,
+       how many features (2 indicates features not in UD and possibly in UM guidelines)
+    @param seglevel: int indicating whether to segment words and if so, how much; 2 is maximum
     @param verbosity: int controlling how verbose messages should be
     '''
     n_sents = batch.get('n_sents', 50)
@@ -242,10 +246,10 @@ def create_corpus(data=None, read={}, write={}, batch={},
         print("No corpus found!")
         return
     if segment:
-        corpus.segment(timeit=timeit, verbosity=verbosity)
+        corpus.segment(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
     if disambiguate:
         # Checks to see whether segment() has already been called
-        corpus.disambiguate(timeit=timeit, verbosity=verbosity)
+        corpus.disambiguate(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
     # Normally disambiguation should happen before this, but it doesn't have to.
     if conlluify:
         corpus.conlluify(degeminate=degeminate, verbosity=verbosity)
@@ -280,19 +284,21 @@ def create_corpus(data=None, read={}, write={}, batch={},
                              batch_name=batch_name, verbosity=verbosity)
     return corpus
 
-def seg_sentence(sentence, language='amh', remove_dups=True, um=False):
+def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2):
     '''
     Segment a sentence, returning an instance of Sentence.
     Only works for Amharic.
+    um controls whether to created UD features from UM features (and which ones).
+    seglevel controls whether to segment the word (and how much).
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
-    return language.anal_sentence(sentence, remove_dups=remove_dups, um=um)
+    return language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,
               experimental=False, dont_guess=True, cache='', init_weight=None,
               lemma_only=False, ortho_only=False, normalize=True,
-              rank=True, freq=False, nbest=5, um=False, phonetic=True, raw=True,
+              rank=True, freq=False, nbest=5, um=0, phonetic=True, raw=True,
               pos=[], verbosity=0):
     '''
     Analyze a single word, trying all available analyzers, and print out
@@ -317,7 +323,8 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @param rank (bool):     whether to rank the analyses by the frequency of their roots
     @param freq (bool):     whether to report frequencies of roots
     @param nbest (int):    maximum number of analyses to return or print out
-    @param um (bool):       whether to output UniMorph features
+    @param um (int):       whether to output UniMorph features; 1 and 2 represent different
+                           levels of features
     @param raw (bool):      whether the analyses should be returned in "raw" form
     @param gloss (str):    language to return gloss for, or ''
     @return:         a list of analyses (only if raw is True)
@@ -371,7 +378,7 @@ def anal_files(language, infiles, outsuff='.out',
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
-              root=True, citation=True, gram=True, um=False,
+              root=True, citation=True, gram=True, um=0,
               lemma_only=False, ortho_only=False, normalize=False,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,

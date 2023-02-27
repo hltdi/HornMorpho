@@ -35,8 +35,8 @@ class SegRoot(Tk):
 
     sentencewidth = 60
 
-    def __init__(self, corpus=None, title=None): # parent, corpus=None, width=1000, height=300, title=None):
-        Tk.__init__(self) #, parent) #, width=width, height=height)
+    def __init__(self, corpus=None, title=None, um=1, seglevel=2):
+        Tk.__init__(self)
         self.title(title if title else "Corpus")
         fontfamilies = families()
         geezfamily =  "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Noto Sans Ethiopic"
@@ -66,7 +66,7 @@ class SegRoot(Tk):
         # Undo and Quit buttons
         self.init_buttons()
         # Canvas and scrollbars
-        self.canvas = SegCanvas(self, corpus) # width=width-25, height=height-25)
+        self.canvas = SegCanvas(self, corpus, um=um, seglevel=seglevel)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
@@ -270,22 +270,26 @@ class SegCanvas(Canvas):
 
     depYoffset = 10
     segIDwidth = 55
-    segcolwidth = 125
+    segcolwidth = 150
+    wordcolwidth = 600
     segrowheight = 18
     Y0 = 25
     segYmargin = 10
-    segwidth = 400
+#    segwidth = 400
     segdependencyheight = 20
     seggap = 40
     segrightmargin = 20
     deplabelX = 40
     deplabelY = 8
 
-    def __init__(self, parent, corpus=None, width=800, height=600):
+    def __init__(self, parent, corpus=None, um=1, seglevel=2, width=800, height=600):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
         self.parent = parent
         self._width = width
         self._height = height
+        self.um = um
+        self.seglevel = seglevel
+        self.colwidth = SegCanvas.wordcolwidth if seglevel == 0 else SegCanvas.segcolwidth
         self.columnX = []
         self.grid(row=2, columnspan=3, ipadx=15, ipady=15)
         self.grid()
@@ -313,6 +317,7 @@ class SegCanvas(Canvas):
         segIDtags = []
         segboxtags = []
         posselecttags = []
+        dependencies = None
         nwordsegs = len(wordsegs)
         for segi, wordseg in enumerate(wordsegs):
             segYs.append(y - SegCanvas.segYmargin)
@@ -321,8 +326,10 @@ class SegCanvas(Canvas):
             forms = Sentence.get_forms(wordseg)
             lemmas = Sentence.get_lemmas(wordseg, forms, headindex)
             pos = Sentence.get_pos(wordseg)
-            features = Sentence.get_features(wordseg)
-            dependencies = Sentence.get_dependencies(wordseg)
+            features = Sentence.get_features(wordseg, featlevel=self.um)
+            # Don't need to do this if there is no segmentation
+            if self.seglevel > 0:
+                dependencies = Sentence.get_dependencies(wordseg)
             n = len(forms)
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
@@ -351,7 +358,7 @@ class SegCanvas(Canvas):
                 y += 31
         segYs.append(y)
         i = 0
-        rightX = SegCanvas.segIDwidth + maxn * SegCanvas.segcolwidth
+        rightX = SegCanvas.segIDwidth + maxn * self.colwidth
         if posselecttags:
             for seg, tag1, tag2, pos1, pos2 in posselecttags:
                 self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, 'Red'))
@@ -429,10 +436,10 @@ class SegCanvas(Canvas):
         '''
         The X coordinates for the columns in a segmentation display.
         '''
-        start = SegCanvas.segIDwidth + SegCanvas.segcolwidth // 2
+        start = SegCanvas.segIDwidth + self.colwidth // 2
         X = []
         for i in range(n):
-            X.append(start + i * SegCanvas.segcolwidth)
+            X.append(start + i * self.colwidth)
         return X
 
     def show_forms(self, forms, Xs, y):

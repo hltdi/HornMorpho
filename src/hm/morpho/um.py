@@ -400,7 +400,7 @@ class UniMorph:
         d = self.language.get_dir()
         return os.path.join(d, self.language.abbrev + ".um")
 
-    def convert2ud(self, um, pos):
+    def convert2ud(self, um, pos, extended=False):
         """
         Convert a string consisting of UM features to a string consisting of UD features.
         """
@@ -413,13 +413,27 @@ class UniMorph:
                 if isinstance(udfeat, tuple):
                     # multiple features
                     ummult, udfeat = udfeat
+#                    print("** ummult {}, udfeat {}".format(ummult, udfeat))
                     if all([(umm in um) for umm in ummult]):
-                        udfeats.add(udfeat)
+                        if udfeat[0] == '*':
+                            if extended:
+                                udfeat = udfeat[1:]
+                                for udd in udfeat.split(','):
+                                    udfeats.add(udd)
+                        else:
+                            for udd in udfeat.split(','):
+                                udfeats.add(udd)
+                elif udfeat[0] == '*':
+                    if extended:
+                        udfeat = udfeat[1:]
+                        for udd in udfeat.split(','):
+                            udfeats.add(udd)
                 else:
-                    udfeats.add(udfeat)
+                    for udd in udfeat.split(','):
+                        udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
-        return ','.join(udfeats)
+        return '|'.join(udfeats)
 
     def read(self, verbosity=0):
         """

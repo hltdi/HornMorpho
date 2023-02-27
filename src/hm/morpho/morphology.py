@@ -1150,8 +1150,7 @@ class POSMorphology:
                 if gen: print()
         if gen:
             if not self.load_fst(compose=False, generate=True, gen=False,
-                                 create_casc=create_casc,
-                                 pickle=pickle, pos=pos,
+                                 create_casc=create_casc, pickle=pickle, pos=pos,
                                  guess=guess, simplified=simplified, experimental=experimental,
                                  phon=phon, segment=segment, translate=translate, mwe=mwe,
                                  invert=True, verbose=verbose):
@@ -1166,8 +1165,7 @@ class POSMorphology:
                                  phon=phon, segment=segment, experimental=experimental)
                     if create_casc:
                         if not self.casc:
-                            casc = FSTCascade.load(path,
-                                                   seg_units=self.morphology.seg_units,
+                            casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
                                                    create_networks=True, subcasc=subcasc,
                                                    language=self.language, gen=generate, pos=pos,
                                                    verbose=verbose)
@@ -1180,8 +1178,7 @@ class POSMorphology:
                     path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
                     # OK, as a last resort, try again to load the analysis cascade
                     if os.path.exists(path):
-                        casc = FSTCascade.load(path,
-                                               seg_units=self.morphology.seg_units,
+                        casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
                                                create_networks=True, subcasc=subcasc,
                                                language=self.language, pos=pos, gen=generate,
                                                verbose=verbose)

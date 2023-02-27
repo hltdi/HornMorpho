@@ -75,7 +75,7 @@ class Corpus():
         Corpus.ID += 1
         return name
 
-    def disambiguate(self, skip_unambig=True, timeit=False, verbosity=0):
+    def disambiguate(self, skip_unambig=True, um=1, seglevel=2, timeit=False, verbosity=0):
         '''
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
@@ -83,10 +83,10 @@ class Corpus():
         if not self.sentences:
             # Segment all sentences before creating GUI.
             self.segment(timeit=timeit)
-        self.root = SegRoot(self, title=self.__repr__())
+        self.root = SegRoot(self, title=self.__repr__(), um=um, seglevel=seglevel)
         self.root.mainloop()
 
-    def segment(self, timeit=False, verbosity=0):
+    def segment(self, timeit=False, um=1, seglevel=2, verbosity=0):
         """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
@@ -98,7 +98,8 @@ class Corpus():
             if verbosity:
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
-              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache)
+              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache,
+                                          um=um, seglevel=seglevel)
             sentence_obj.merge_segmentations()
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))
@@ -115,14 +116,14 @@ class Corpus():
         for sentence in self.sentences:
             sentence.words2conllu(update_indices=True, degem=degeminate, gem=geminate)
 
-    def segment1(self, text='', sentindex=None):
+    def segment1(self, text='', sentindex=None, um=1, seglevel=2):
         """
         Segment one sentence.
         """
         text = text or self.data[sentindex] if sentindex < len(self.data) else None
         if text:
             language = get_language('amh', phon=False, segment=True, experimental=True)
-            sentence = language.anal_sentence(text, local_cache=self.local_cache)
+            sentence = language.anal_sentence(text, local_cache=self.local_cache, um=um, seglevel=seglevel)
             if sentence:
                 self.all_sentences[sentindex] = sentence
         if sentence:

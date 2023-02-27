@@ -98,34 +98,37 @@ class Roots:
         return map
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade):
+    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, gen=False):
 
-        def charfeat_arc(char, wt, source, dest, fst):
+        def charfeat_arc(inchar, outchar, wt, source, dest, fst, gen=False):
             # Create the arc from source dest
             # char is either a character or a (character, weight) tuple
-#            print(" *** charfeat_arc {}, {}, {}, {}".format(char, wt.__repr__(), source, dest))
-            if isinstance(char, tuple):
+#            print(" *** charfeat_arc {} {} ; {}, {}, {}".format(inchar, outchar, wt.__repr__(), source, dest))
+            if isinstance(inchar, tuple):
                 # this char depends on a weight
-                char, charfeats = char
+                inchar, charfeats = inchar
+                # happens for seg but not gen
+                if not gen:
+                    outchar = inchar
 #                print("  **** char {}, charfeats {}".format(char, charfeats.__repr__()))
                 if wt:
                     wt0 = wt.unify(charfeats)
                 else:
                     wt0 = charfeats
-                fst.add_arc(source, dest, char, char, weight=wt0)
+                fst.add_arc(source, dest, inchar, outchar, weight=wt0)
             else:
-                fst.add_arc(source, dest, char, char, weight=wt)
+                fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
-        def mrs(fst, charsets, weight, states, iterative=False, aisa=False, main_charsets=None):
+        def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
 #            if iterative:
-#                print("**** mrs {} weight {} states {}".format(charsets, weight.__repr__(), states))
+#                print("**** mrs {} rootchars {} weight {} states {}".format(charsets, root_chars, weight.__repr__(), states))
             source = 'start'
-            for index, dest in enumerate(states[:-1]):
+            for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
                 wt = weight if index == 0 else None
 #                if iterative:
-#                    print("  **** position {}, chars {}, weight {}".format(position, chars, wt.__repr__()))
+#                    print("  **** iterative {}, position {}, chars {}, rchar {}, weight {}".format(iterative, position, chars, rchar, wt.__repr__()))
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
@@ -136,7 +139,7 @@ class Roots:
                                 found = False
                                 break
                         if found:
-#                            print(" ** Already a state for {}".format(char))
+                            print("   ** Already a state for {}".format(char))
                             source = dest
                             continue
                 if iterative:
@@ -150,21 +153,29 @@ class Roots:
                     if not fst.has_state(dest0):
                         fst.add_state(dest0)
                     for char in chars[0]:
-                        charfeat_arc(char, wt, source, dest0, fst)
+                        outchar = rchar if gen else char
+                        charfeat_arc(char, outchar, wt, source, dest0, fst, gen=gen)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars[1]:
-                        charfeat_arc(char, wt, dest0, dest, fst)
+                        outchar = '' if gen else char
+                        charfeat_arc(char, outchar, wt, dest0, dest, fst, gen=gen)
                 else:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
-                        charfeat_arc(char, wt, source, dest, fst)
+                        outchar = rchar if gen else char
+                        charfeat_arc(char, outchar, wt, source, dest, fst, gen=gen)
                 source = dest
             state = states[-1]
+            # chars for last position
             chars = charsets[len(charsets)]
+            rchar = root_chars[-1]
             for char in chars:
-                fst.add_arc(source, 'end', char, char)
+                outchar = rchar if gen else char
+                inchar = char
+                charfeat_arc(inchar, outchar, None, source, 'end', fst, gen=gen)
+#                fst.add_arc(source, 'end', char, char)
 #        cons = cons.split()
 
         # one of cons could be a char, feature tuple
@@ -189,16 +200,16 @@ class Roots:
         charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps, charmap_weights)
         # Based on rules, assign ±strong to the root
         weight = weight.set_all('strong', strong)
-        mrs(fst, charsets, weight, states, iterative=False, aisa=False)
+        mrs(fst, charsets, weight, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
 #            print("*** there are iterative rules: {}".format(cls_it_rules))
             it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, char_maps, charmap_weights)
 #            print("*** charsets {}, it_charsets {}".format(charsets, it_charsets))
-            mrs(fst, it_charsets, weight, states, iterative=True, aisa=False, main_charsets=charsets)
+            mrs(fst, it_charsets, weight, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + 'a')):
 #            print("*** there are _a_ rules: {}".format(cls_a_rules))
             a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, char_maps, charmap_weights)
-            mrs(fst, a_charsets, weight, states, iterative=False, aisa=True, main_charsets=charsets)
+            mrs(fst, a_charsets, weight, states, cons_chars, iterative=False, aisa=True, main_charsets=charsets)
 
     @staticmethod
     def get_rule(consonants, cls, rules):
@@ -312,7 +323,7 @@ class Roots:
         return result
 
     @staticmethod
-    def make_irr_root(fst, cons, feats, patterns):
+    def make_irr_root(fst, cons, feats, patterns, gen=False):
 #        print("** Making irr root {}, {}, {}".format(cons, feats, patterns))
         cons = cons.split()
         state_name = ''.join(cons)
@@ -534,19 +545,20 @@ class Roots:
 #        print("** rules: {}".format(rules))
 
         for cons, feats in roots:
-            Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade)
+            Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade,
+                                   gen=gen)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():
-                Roots.make_irr_root(fst, cons, feats, patterns)
+                Roots.make_irr_root(fst, cons, feats, patterns, gen=gen)
 
 #        print("** char maps {}".format(char_maps))
 #        print("** char maps weights {}".format(charmap_weights))
 
 #        print("** irr roots: {}".format(irr_roots))
 
-#        if irr_roots:
-#                print(fst)
+        if gen:
+            print(fst)
 
         return fst
 

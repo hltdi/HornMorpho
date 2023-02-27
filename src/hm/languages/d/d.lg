@@ -27,10 +27,10 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሐ ሑ ሒ ሓ �
 feats:
 
   pos: v verb
-  $ c=A|B|C|E|F|G|H|J
+#  $ c=A|B|C|E|F|G|H|J
 
   pos: v_stem v_stem
-  $ c=A|B|C|E|F|G|H|J
+#  $ c=A|B|C|E|F|G|H|J
 
   a = 0 | a | it
 

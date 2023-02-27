@@ -69,6 +69,8 @@ class Sentence():
 
     colwidth = 20
 
+    conllu_list = ['id', 'form', 'lemma', 'upos', 'xpos', 'feats', 'head', 'deprel', 'deps', 'misc']
+
     def __init__(self, text, tokens=[], batch_name='', sentid=0):
         self.tokens = tokens
         self.text = text
@@ -151,17 +153,39 @@ class Sentence():
             else:
                 # first segmentation
                 word = word[0]
+#                print("** word {}".format(word))
                 for morph in word:
+#                    print("** morph {}".format(morph))
                     pos = morph.get('upos')
-#                if len(word) == 1:
-#                    # unsegmented word
-#                    word = word[0]
-#                    pos = word['upos']
                     if pos in Sentence.selectpos:
                         # an ambiguous POS
                         ambig.append(index)
                         count += 1
         return ambig
+
+    @staticmethod
+    def get_clist_field(clist, attrib):
+        '''
+        From a pre-CoNNL-U list, get the attrib
+        '''
+        cindex = Sentence.conllu_list.index(attrib)
+        return clist[cindex][1]
+
+    @staticmethod
+    def set_clist_field(clist, attrib, value):
+        '''
+        Set the value for attrib in a pre-CoNLL-U list to value.
+        '''
+        cindex = Sentence.conllu_list.index(attrib)
+        clist[cindex][1] = value
+                
+    @staticmethod
+    def copy_clist_field(clist_src, clist_targ, attrib):
+        '''
+        Set the value for attrib in a pre-CoNLL-U list to value.
+        '''
+        value = Sentence.get_clist_field(clist_src, attrib)
+        Sentence.set_clist_field(clist_targ, attrib, value)
                 
     def words2conllu(self, update_indices=True, gem=True, degem=False, verbosity=0):
         '''
@@ -259,8 +283,8 @@ class Sentence():
         if seg.get('lemma'):
             seg['lemma'] = degeminate(seg['lemma'])
 
-    def add_word(self, word, segmentations, morphid, conllu=True, um=False):
-        w = self.make_word(word, segmentations, morphid, conllu=conllu, um=um)
+    def add_word(self, word, segmentations, morphid, conllu=True, seglevel=0, um=0):
+        w = self.make_word(word, segmentations, morphid, conllu=conllu, seglevel=seglevel, um=um)
         if conllu:
             self.conllu.extend(w)
 
@@ -334,17 +358,44 @@ class Sentence():
                         diffs[index][key] = (v1, v2)
         return diffs
 
-    def make_word(self, word, segmentations, morphid, conllu=True, um=False):
+    def make_unsegmented_word(self, word, segmentation, morphid, conllu=True, um=0):
+        '''
+        Use pre-CoNLL-U lists to produce an unsegmented CoNLL-U representation for a word.
+        '''
+#        print("**** Creating unsegmented word for {}".format(segmentation))
+        upos = lemma = headfeats = wordfeats = ''
+        clist = [['id', morphid], ['form', word], ['lemma', None],  ['upos', None], ['xpos', None],
+                 ['feats', None], ['head', None], ['deprel', None], ['deps', None], ['misc', None]]
+        for morph in segmentation:
+            deprel = Sentence.get_clist_field(morph, 'deprel')
+            if not deprel:
+                # This is the head of the word
+                Sentence.copy_clist_field(morph, clist, 'upos')
+                Sentence.copy_clist_field(morph, clist, 'xpos')
+                Sentence.copy_clist_field(morph, clist, 'lemma')
+                wordfeats = Sentence.get_clist_field(morph, 'misc')
+                if um:
+                    Sentence.set_clist_field(clist, 'feats', wordfeats)
+                else:
+                    Sentence.copy_clist_field(morph, clist, 'feats')
+        cdict = dict(clist)
+        self.words.append([[cdict]])
+        return [Token(cdict)]
+
+    def make_word(self, word, segmentations, morphid, conllu=True, um=0, seglevel=2):
         '''
         Creates a new word from a list of (lists of) segmentations.
         If conllu is True, returns a list of morpheme Tokens.
+        um and seg control the features and the level of segmentation.
         '''
+        if seglevel == 0:
+            return self.make_unsegmented_word(word, segmentations[0], morphid, conllu=conllu, um=um)
         segment_list = []
         tokens = []
         self.complexity['ambig'] += len(segmentations) - 1
         if len(segmentations) > 1:
             self.morphambig.append(word)
-        print("*** word {}, segmentations {}".format(word, segmentations))
+#        print("*** word {}, segmentations {}".format(word, segmentations))
         for index, segmentation in enumerate(segmentations):
 #        segmentation = segmentations[0]
             segments = []
@@ -353,8 +404,10 @@ class Sentence():
             if nmorphs == 1:
                 # The word has only one morpheme
                 props = segmentation[0].copy()
-                props[0][1] = morphid
-                upos = props[3][1]
+                Sentence.set_clist_field(props, 'id', morphid)
+#                props[0][1] = morphid
+#                upos = props[3][1]
+                upos = Sentence.get_clist_field(props, 'upos')
                 if upos == 'UNK':
                     self.complexity['unk'] += 1
                     self.unk.append(word)
@@ -364,10 +417,12 @@ class Sentence():
                     # ambiguous POS
                     self.complexity['ambig'] += 1
                     self.posambig.append(word)
-                props.extend([('deps', None), ('misc', None)])
+#                props.extend([('deps', None), ('misc', None)])
                 pdict = dict(props)
                 # Degeminate form
                 pdict['form'] = degeminate(word)
+                # Removed features from 'misc'
+                pdict['misc'] = None
                 segments.append(pdict)
                 if conllu and index == 0:
                     tokens.append(Token(pdict))
@@ -387,7 +442,8 @@ class Sentence():
                 for i, props in enumerate(segmentation):
 #                    print("    **** i {}, all props {}".format(i, props))
                     # Check deprel
-                    if props[-1][1] is None:
+                    if Sentence.get_clist_field(props, 'deprel') is None:
+#                    if props[7][1] is None:
                         if headi >= 0:
                             print("** Two heads for {}!".format(segmentation))
                         headi = i + morphid
@@ -399,14 +455,19 @@ class Sentence():
                     if upos in Sentence.selectpos:
                         self.complexity['ambig'] += 1
                         self.posambig.append(word)
-                    props[0][1] = id
+                    Sentence.set_clist_field(props, 'id', id)
+#                    props[0][1] = id
                     # Set the head id for dependent morphemes
-                    if (headincr := props[-2][1]):
-                        props[-2][1] = i + headincr + morphid
+                    if (headincr := Sentence.get_clist_field(props, 'head')): #props[-2][1]):
+                        Sentence.set_clist_field(props, 'head', i + headincr + morphid)
+#                        props[6][1] = i + headincr + morphid
                     elif id != headi:
-                        props[-2][1] = headi
+                        Sentence.set_clist_field(props, 'head', headi)
+#                        props[6][1] = headi
 #                    print("      ***** head {}".format(props[6]))
-                    props.extend([('deps', None), ('misc', None)])
+#                    props.extend([('deps', None), ('misc', None)])
+                    # get rid of the word features
+                    Sentence.set_clist_field(props, 'misc', None)
                     pdict = dict(props)
                     segments.append(pdict)
                     if conllu and index == 0:
@@ -423,7 +484,7 @@ class Sentence():
 
     ### Graphical representation of segmentations
 
-    def show_segmentation(self, segmentation):
+    def show_segmentation(self, segmentation, featlevel=1):
         '''
         Returns a string representing the segmentation with a line for each dependency,
         for forms, for POS tags, and for features.
@@ -434,7 +495,7 @@ class Sentence():
 #        forms = ["{{:_^{}}}".format(Sentence.pad_geez(form)).format(form) for form in forms]
 #        forms = ['_' + form + '_' for form in forms]
         pos = Sentence.get_pos(segmentation)
-        features = Sentence.get_features(segmentation)
+        features = Sentence.get_features(segmentation, featlevel=featlevel)
         headindex = Sentence.get_headindex(segmentation)
         centers = Sentence.get_centers(nforms)
         string = len(forms) * "{{:^{}}}".format(Sentence.colwidth)
@@ -543,25 +604,43 @@ class Sentence():
         return [get_pos1(s) for s in segmentation[1:]]
 
     @staticmethod
-    def get_features(segmentation):
+    def get_features(segmentation, featlevel=1):
         if len(segmentation) == 1:
-            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None))]
+            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None), featlevel=featlevel)]
         else:
             feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
-            feats = [Sentence.simplify_feats(f) for f in feats]
+            feats = [Sentence.simplify_feats(f, featlevel=featlevel) for f in feats]
         if any(feats):
             return feats
         return []
 
     @staticmethod
-    def simplify_feats(feats):
+    def simplify_feats(feats, featlevel=1):
         if not feats:
             return None
         feats = feats.split("|")
         feats = [f.split('=') for f in feats]
-        feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
-        feats = ','.join(feats)
-        return feats
+        if featlevel == 2:
+            feats = ['='.join([Sentence.simplify_feat_name(f), v]) for f, v in feats]
+            return ', '.join(feats)
+        else:
+            feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
+            return  ','.join(feats)
+
+    @staticmethod
+    def simplify_feat_name(name):
+        '''
+        If name has two capitalized parts, use the string up to that point and the capitalized letter.
+        '''
+        ncap = len([c for c in name if c.isupper()])
+        if ncap == 2:
+            string = name[0]
+            for c in name[1:]:
+                if c.isupper():
+                    return string + c
+                string += c
+        else:
+            return name[:3]
 
 ### XML stuff; later incorporate this into the Sentence class
 

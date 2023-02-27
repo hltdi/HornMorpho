@@ -807,8 +807,8 @@ AMH = language.Language("አማርኛ", 'amh',
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
               dflt_postproc_root=dflt_postproc_root,
-              seg2string=lambda word, string, sep='-', features=False, transortho=True, udformat=False, simplifications=None, conllu=True: \
-                            seg2string(word, string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications, conllu=conllu),
+              seg2string=lambda word, string, sep='-', features=False, transortho=True, udformat=False, simplifications=None, conllu=True, um=0: \
+                            seg2string(word, string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications, conllu=conllu, um=um),
               stat_root_feats=['cls', 'vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
@@ -979,7 +979,7 @@ def roman2geez(value):
     return ROM2GEEZ.get(value, value)
 
 def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=False,
-               arules=False, simplifications=None, conllu=True):
+               um=0, arules=False, simplifications=None, conllu=True):
     """
     Convert a segmentation to a string, including features if features is True.
     """
@@ -988,12 +988,16 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
+    udfeats = None
+    if um:
+        udfeats = segmentation[-1]
+#        print("  *** udfeats {}".format(udfeats))
     if not morphstring:
         if conllu:
 #            word = geezify(word)
             return [[
                 ['id', '*'], ['form', word], ['lemma', word], ['upos', pos.upper()], ['xpos', pos.upper()],
-                ['feats', None], ['head', None], ['deprel', None ]
+                ['feats', None], ['head', None], ['deprel', None ], ['deps', None], ['misc', udfeats]
                 ]]
         else:
             result = {'pos': pos.upper()}
@@ -1031,7 +1035,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     # For now ignore multiple spellings for syllables like qWe; just use the first one
     morphs = morphs[0]
     if conllu:
-        morphs = [conllu_morpheme(form, props, citation) for form, props in morphs]
+        morphs = [conllu_morpheme(form, props, citation, udfeats=udfeats) for form, props in morphs]
         return morphs
     else:
         if not features:
@@ -1047,7 +1051,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
         result['pos'] = pos.upper()
     return result
 
-def conllu_morpheme(form, props, citation):
+def conllu_morpheme(form, props, citation, udfeats=None):
     '''
     Create a dict with CoNLL-U properties for a morpheme.
     props is a POS;feats string surrounded by parentheses.
@@ -1059,12 +1063,9 @@ def conllu_morpheme(form, props, citation):
 #    print("**** conllu_morpheme: form {} props {} citation {}".format(form, props, citation))
     if ishead:
         form = form.replace('{', '').replace('}', '')
-#    props = props.replace('(', '').replace(')', '').split(';')
     pos = props.get('pos')
-#    pos = pos.split(',')
     upos = pos[0]
     xpos = pos[1] if len(pos) == 2 else upos
-#    pos = props[0]
     feats = props.get('feats')
     deprel = props.get('deprel')
     head = props.get('head')
@@ -1073,9 +1074,7 @@ def conllu_morpheme(form, props, citation):
     if (lemma := props.get('lemma')) is None:
         if not ishead or (lemma := citation) is None:
             lemma = form
-#    feats = props[1] if len(props) == 2 else '_'
-    return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', head], ['deprel', deprel] ]
-#    return {'form': form, 'lemma': form, 'upos': upos, 'xpos': xpos, 'feats': feats}
+    return [ ['id', '*'], ['form', form], ['lemma', lemma], ['upos', upos], ['xpos', xpos], ['feats', feats], ['head', head], ['deprel', deprel], ['deps', None], ['misc', udfeats] ]
 
 def root2string(root, simplifications=None):
     """

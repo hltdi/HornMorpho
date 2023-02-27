@@ -48,38 +48,11 @@ CACO = "../../TAFS/datasets/CACO"
 CONLLU = "../../TAFS/venv/conllu"
 SEGS = "../../TAFS/segmentations"
 
-def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True):
+def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2):
     hm.create_corpus(read={'filename': filename},
                                         batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
-                                         write={"folder": SEGS} if write else {},
-                                        degeminate=False)
-
-##def corp1(disambiguate=True):
-##    return  hm.create_corpus(C1,
-##        disambiguate=disambiguate
-##        )
-##def corp6(disambiguate=True):
-##    return hm.create_corpus(C2,
-##        disambiguate=disambiguate
-##        )
-##def corp7(disambiguate=True):
-##    return hm.create_corpus(
-##        ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"], disambiguate=disambiguate,
-##        )
-##def corp8():
-##    return hm.create_corpus(["ብዙ ሰዎች ሀብት ያፈራሉ ።"])
-##def corp0():
-##    return  hm.create_corpus(["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?"])
-##def corp2(path="hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt", nsents=10):
-##    return hm.create_corpus(path=path, nsents=nsents)
-##def corp3():
-##    return hm.create_corpus(["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"])
-##def ecorp(path="hm/ext_data/ከአብነት/mini1.txt"):
-##    return hm.create_corpus(path=path)
-##def corp4():
-##    return hm.create_corpus(["የማይሰሙት ነው ?"])
-##def corp5():
-##    return hm.create_corpus(["አለ ?"])
+                                        write={"folder": SEGS} if write else {},
+                                        um=um, seglevel=seglevel, degeminate=False)
 
 ## new CACO
 

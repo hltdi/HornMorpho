@@ -11,11 +11,10 @@ POS n N
 ->UD AT		Case=Loc
 ->UD PL		Number=Plur
 ->UD DEF	Definite=Def
-#??
+->UD V.MSDR	VerbForm=Inf
 ->UD FEM	Gender=Fem
-# V.MSDR??; N_INS; N_MAN
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
-pos!v:: n:N;; adj:ADJ;; nadj:N;; nm_pl:PROPN;; nm_prs:PROPN
+pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 #plr:: True:PL;; False:SG
 acc:: ACC
@@ -44,8 +43,7 @@ POS v V
 ->UD IPFV	Aspect=Imp
 ->UD PFV	Aspect=Perf
 ->UD V.CVB	VerbForm=Conv
-#->UD PRS	Tense=Pres
-#->UD PRF	Aspect=
+#->UD PRF	Aspect=Prf
 #->UD NFIN
 ->UD CAUS	Voice=Cau
 ->UD TR		Voice=Trans
@@ -53,9 +51,8 @@ POS v V
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
 ->UD RECP;CAUS	Voice=RcpCau
-# ->UD RECP;CAUS
 # ->UD *CON
-# ->UD *RELC
+->UD *RELC	*VerbForm=Rel
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
@@ -64,7 +61,14 @@ POS v V
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-
+->UD AC1S	*AccPers=1,AccNum=Sing
+->UD AC1P	*AccPers=1,AccNum=Plur
+->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
+->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
+->UD AC2P	*AccPers=2,AccNum=Plur
+->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
+->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
+->UD AC3P	*AccPers=3,AccNum=Plur
 tm,ax:: ger,None:V.CVB
 pos!tm:: v:V;; 0:ADJ;; 0:N
 neg:: NEG
@@ -139,8 +143,6 @@ POS cop V
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-
-pos:: cop:V
 tm:: prs:PRS;; pst:PST
 neg:: NEG
 sb::
