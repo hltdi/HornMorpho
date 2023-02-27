@@ -103,8 +103,9 @@ sbjs_i -> obj        <u:-u(@pron,subj,$number=plur,person=2/3,*ኡ,~nsubj)>   [s
 # 2sf; go directly to obj; palatalize previous consonant; don't show the palatalization character
 sbjs_i -> obj        <8i:-i(@pron,subj,$gender=fem,number=sing,person=2,*ኢ,~nsubj)>   [sb=[+p2,-p1,+fem,-plr,-frm]]
 # No suffix: 1s, 2sm, 3s, 1p; 23p when there is no obj and aux
-sbjs_i -> sbjs_i0     <:-0(@pron,subj,$number=sing,~nsubj)>    [sb=[-p1,-p2,-plr]];[sb=[+p2,-p1,-plr,-fem,-frm]]
-sbjs_i -> sbjs_i0     [:]    [sb=[+p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def,-det]
+# 0 suffix for 2sm and 3sm; otherwise number=sing doesn't have a morpheme
+sbjs_i -> sbjs_i0     <:-0(@pron,subj,$number=sing,~nsubj)>    [sb=[-p1,-p2,-fem,-plr]];[sb=[+p2,-p1,-plr,-fem,-frm]]
+sbjs_i -> sbjs_i0     [:]    [sb=[-p1,-p2,+fem,-plr]];[sb=[+p1,-p2,-plr]];[sb=[+p1,-p2,+plr]];[sb=[-p1,+plr],tm=imf,ax=al,ob=[-expl],-def,-det]
 # Infixes for objects when there is no sbj suffix; -e- for 1s/p, 3sm, 2s frm; -0- for 2p, 3p, prp, 3sf, 2s frm, no obj; -I- for 2s
 # -e- for -n, -N, -w, optionally for -wo(t)
 sbjs_i0 -> obj        <e:-e->   [ob=[+p1,-p2,-prp,+expl]];[ob=[-p1,-p2,-plr,-fem,-prp,+expl]];[ob=[-p1,+p2,-plr,+frm,+expl]];[+det,ob=[-expl]]
