@@ -23,7 +23,7 @@ Creating an FST from a set of roots.
 """
 
 import re, os
-from .utils import segment
+from .utils import segment, pad2eqlen
 from .semiring import FSSet, UNIFICATION_SR, TOPFSS
 from .fs import FeatStruct, simple_unify
 #from .fs import FeatStructParser
@@ -98,9 +98,9 @@ class Roots:
         return map
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, gen=False):
+    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, labbrev, gen=False, seglevel=2):
 
-        def charfeat_arc(inchar, outchar, wt, source, dest, fst, gen=False):
+        def charfeat_arc(inchar, outchar, wt, source, dest, fst):
             # Create the arc from source dest
             # char is either a character or a (character, weight) tuple
 #            print(" *** charfeat_arc {} {} ; {}, {}, {}".format(inchar, outchar, wt.__repr__(), source, dest))
@@ -139,7 +139,7 @@ class Roots:
                                 found = False
                                 break
                         if found:
-                            print("   ** Already a state for {}".format(char))
+#                            print("   ** Already a state for {}".format(char))
                             source = dest
                             continue
                 if iterative:
@@ -154,18 +154,18 @@ class Roots:
                         fst.add_state(dest0)
                     for char in chars[0]:
                         outchar = rchar if gen else char
-                        charfeat_arc(char, outchar, wt, source, dest0, fst, gen=gen)
+                        charfeat_arc(char, outchar, wt, source, dest0, fst)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars[1]:
                         outchar = '' if gen else char
-                        charfeat_arc(char, outchar, wt, dest0, dest, fst, gen=gen)
+                        charfeat_arc(char, outchar, wt, dest0, dest, fst)
                 else:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
                         outchar = rchar if gen else char
-                        charfeat_arc(char, outchar, wt, source, dest, fst, gen=gen)
+                        charfeat_arc(char, outchar, wt, source, dest, fst)
                 source = dest
             state = states[-1]
             # chars for last position
@@ -174,7 +174,7 @@ class Roots:
             for char in chars:
                 outchar = rchar if gen else char
                 inchar = char
-                charfeat_arc(inchar, outchar, None, source, 'end', fst, gen=gen)
+                charfeat_arc(inchar, outchar, None, source, 'end', fst)
 #                fst.add_arc(source, 'end', char, char)
 #        cons = cons.split()
 
@@ -192,6 +192,11 @@ class Roots:
             char = geezify_CV(cs, 'I')
             feats = "{},{}={}".format(feats, i, char)
             states.append(state_name0)
+        if seglevel == 0:
+            # Add source language feature
+            feats = "{},sl={}".format(feats, labbrev)
+        elif gen:
+            feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
         weight = UNIFICATION_SR.parse_weight(feats)
         cls = weight.get('c')
@@ -323,43 +328,59 @@ class Roots:
         return result
 
     @staticmethod
-    def make_irr_root(fst, cons, feats, patterns, gen=False):
-#        print("** Making irr root {}, {}, {}".format(cons, feats, patterns))
+    def make_irr_root(fst, cons, feats, patterns, labbrev, gen=False, seglevel=2):
+#        print("** Making irr root {}, {}, {}, {}".format(cons, feats, patterns, seglevel))
         cons = cons.split()
         state_name = ''.join(cons)
         states = []
         for index, cs in enumerate(cons):
             i = index+1
-#            state_name0 = "{}{}".format(state_name, i)
             char = geezify_CV(cs, 'I')
             feats = "{},{}={}".format(feats, i, char)
-#            states.append(state_name0)
+        if seglevel == 0:
+            # Add source language feature
+            feats = "{},sl={}".format(feats, labbrev)
+        elif gen:
+            feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
         weight = UNIFICATION_SR.parse_weight(feats)
         cls = weight.get('c')
-#        weight = FSSet.update(weight, IRR_FS)
-#        print("*** cons {}, weight {}".format(cons, weight.__repr__()))
+#        print("*** cons {}, weight {}, patterns {}".format(cons, weight.__repr__(), patterns))
         for pindex, (pattern, pfeatures) in enumerate(patterns):
             pposition = pindex + 1
             pfeatures = UNIFICATION_SR.parse_weight(pfeatures)
             pfeatures = FSSet.update(pfeatures, weight)
-#            print("**** Creating states for root {} and pattern {} and features {}".format(cons, pattern, pfeatures.__repr__()))
             source = 'start'
-            for cindex, char in enumerate(pattern[:-1]):
+            if gen or seglevel == 0:
+                pad2eqlen(cons, pattern)
+            for cindex, (char, c) in enumerate(zip(pattern[:-1], cons[:-1])):
+#                print("**** Creating states for pattern {}, char {} and cons {}".format(pattern, char, c))
                 cposition = cindex + 1
                 dest = "{}_{}_{}".format(state_name, pposition, cposition)
                 if not fst.has_state(dest):
-                    fst.add_state(dest)
-#                print(" **** Adding arc {}->{}: {}".format(source, dest, char))
-                fst.add_arc(source, dest, char, char, weight=pfeatures if cindex==0 else None)
+                     fst.add_state(dest)
+                inchar = char
+                if gen or seglevel == 0:
+                    outchar = c
+                else:
+                    outchar = char
+#                print(" **** Adding arc {}->{}: {} {}".format(source, dest, inchar, outchar))
+                fst.add_arc(source, dest, inchar, outchar, weight=pfeatures if cindex==0 else None)
                 source = dest
-            final_char = pattern[-1]
-#            print(" **** Adding arc {}->end: {}".format(source, final_char))
-            fst.add_arc(source, 'end', final_char, final_char)
+            dest = 'end'
+            rchar = cons[-1]
+            pchar = pattern[-1]
+            final_in = pchar
+            if gen or seglevel == 0:
+                final_out = rchar
+            else:
+                final_out = pchar
+#            print(" **** Adding arc {}->end: in {}, out {}".format(source, final_in, final_out))
+            fst.add_arc(source, dest, final_in, final_out)
 
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, 
-              directory='', seg_units=[], abbrevs=None,
+              directory='', seg_units=[], abbrevs=None, seglevel=2,
               weight_constraint=None, verbose=False):
         """
         Parse an FST from a string consisting of multiple lines from a file.
@@ -370,6 +391,8 @@ class Roots:
 #        weighting = fst.weighting()
 
         language = cascade.language
+
+        labbrev = language.abbrev
 
         stringsets = language.stringsets or cascade._stringsets
 
@@ -478,25 +501,19 @@ class Roots:
                     feature = UNIFICATION_SR.parse_weight(feature)
                 if chars:
                     chars = chars.strip()
-#                print("*** char map {}: {}, {}".format(maplabel, chars, feature.__repr__()))
                 if not chars:
-#                    print("** Creating char map for {}".format(maplabel))
                     mm = Roots.CHAR_MAP_LABEL_RE.match(maplabel)
                     spec = None
                     if mm:
                         maplabel, spec = mm.groups()
-#                        print("** maplabel: {} -- {}".format(maplabel, spec))
                     charmap = Roots.make_charmap(maplabel, stringsets, spec=spec)
-#                    print("** charmap {}".format(charmap))
                     char_maps[maplabel] = charmap
                     if feature:
                         charmap_weights[maplabel] = feature
                     continue
                 chars = [c.strip() for c in chars.split(Roots.charmapsep)]
                 chars = [[c[0], list(c[1:])] for c in chars]
-#                print("** -> ", chars)
                 chars = dict(chars)
-#                print("** -> ", chars)
                 char_maps[maplabel] = chars
                 if feature:
                     charmap_weights[maplabel] = feature
@@ -546,19 +563,19 @@ class Roots:
 
         for cons, feats in roots:
             Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade,
-                                   gen=gen)
+                                   labbrev, gen=gen, seglevel=seglevel)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():
-                Roots.make_irr_root(fst, cons, feats, patterns, gen=gen)
+                Roots.make_irr_root(fst, cons, feats, patterns, labbrev, gen=gen, seglevel=seglevel)
 
 #        print("** char maps {}".format(char_maps))
 #        print("** char maps weights {}".format(charmap_weights))
 
 #        print("** irr roots: {}".format(irr_roots))
 
-        if gen:
-            print(fst)
+#        if gen:
+#            print(fst)
 
         return fst
 

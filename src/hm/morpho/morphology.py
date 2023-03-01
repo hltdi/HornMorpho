@@ -1049,7 +1049,7 @@ class POSMorphology:
 
     def load_fst(self, compose=False, subcasc=None, generate=False, gen=False,
                  recreate=False, create_fst=True, create_casc=False,
-                 create_weights=False, guess=False,
+                 create_weights=False, guess=False, seglevel=2,
                  pickle=True, create_pickle=True,
                  simplified=False, phon=False, segment=False, translate=False,
                  experimental=False, mwe=False, pos='',
@@ -1059,6 +1059,7 @@ class POSMorphology:
         Load FST; if compose is False, search for saved FST in file and use that if it exists.
 
         If guess is true, create the lexiconless guesser FST.
+        2023.2.28: Added seglevel.
         '''
 #        print("*** load_fst {}".format(pos))
         fst = None
@@ -1099,6 +1100,7 @@ class POSMorphology:
                     if not self.casc:
                         casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
                                                create_networks=True, subcasc=subcasc,
+                                               seglevel=seglevel,
                                                language=self.language, gen=generate, pos=pos,
                                                verbose=verbose)
                         if casc:
@@ -1117,7 +1119,7 @@ class POSMorphology:
                     if verbose:
                         print('Recreating...')
                     self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
-                                                create_networks=True, subcasc=subcasc, pos=pos,
+                                                create_networks=True, subcasc=subcasc, pos=pos, seglevel=seglevel,
                                                 language=self.language, gen=generate, verbose=verbose)
                     self.casc_inv = self.casc.inverted()
                     # create_fst is False in case we just want to load the individuals fsts.
@@ -1516,6 +1518,12 @@ class POSMorphology:
             return gens
         elif trace:
             print('No generation FST loaded')
+
+    def genfeats(self, root, feats=None):
+        '''
+        Shortcut for generating word with update features.
+        '''
+        return self.gen(root, update_feats=feats)
 
     @staticmethod
     def gen_output_feats(outputs, features):

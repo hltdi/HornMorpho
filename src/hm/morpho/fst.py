@@ -501,12 +501,13 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None,
-             language=None, pos='',
+             language=None, pos='', seglevel=2,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
 
         If not create_networks, only create the weighting and string sets.
+        2023.2.28: Added seglevel.
         """
         if verbose:
             print('Loading FST cascade from {} for {}, POS {}'.format(filename, language, pos))
@@ -515,13 +516,13 @@ class FSTCascade(list):
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
-                                dirname=dirname, pos=pos,
+                                dirname=dirname, pos=pos, seglevel=seglevel,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
 
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
-              subcasc=None, language=None, dirname='', pos='',
+              subcasc=None, language=None, dirname='', pos='', seglevel=2,
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -592,7 +593,7 @@ class FSTCascade(list):
                     filename = m.group(1)
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
-                                       cascade=cascade, weighting=cascade.weighting(),
+                                       cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -609,7 +610,7 @@ class FSTCascade(list):
                     filename = m.group(1)
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
-                                       cascade=cascade, weighting=cascade.weighting(),
+                                       cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -627,7 +628,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs,
+                                       abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -647,7 +648,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs,
+                                       abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -667,7 +668,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs,
+                                       abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -686,7 +687,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs,
+                                       abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -706,7 +707,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs,
+                                       abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -729,7 +730,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_lex_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        seg_units=seg_units, weight_constraint=weight_constraint,
-                                       gen=gen, reverse=cascade.r2l,
+                                       gen=gen, reverse=cascade.r2l, seglevel=seglevel,
                                        verbose=verbose, lex_features=True)
                     else:
                         fst = 'FST' + str(len(cascade))
@@ -2071,13 +2072,14 @@ class FST:
 
     @staticmethod
     def load(filename, cascade=None, weighting=None, reverse=False,
-             seg_units=[], verbose=False, abbrevs=None,
+             seg_units=[], verbose=False, abbrevs=None, seglevel=2,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
         """
         Load an FST from a file.
 
         dest_lex=True means that the destination FST is specified for each entry in a .lex file.
+        2023.2.28: Added seglevel.
         """
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
@@ -2100,7 +2102,7 @@ class FST:
                 print("Loading roots from {}".format(filename))
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
-                               cascade=cascade, directory=directory,
+                               cascade=cascade, directory=directory, seglevel=seglevel,
                                seg_units=seg_units, abbrevs=abbrevs,
                                weight_constraint=weight_constraint,
                                gen=gen, verbose=verbose)

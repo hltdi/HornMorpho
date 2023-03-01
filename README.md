@@ -197,7 +197,7 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 
 > Options:
 
->* `um` (Universal Morphology) specifies the category of morphological features to provide for words and/or word segments. 1 (the default value): features are from the set included in the Universal Dependency guidelines. 2: features are from an extended set, possibly including those not in the basic UM set. 0: currently ignored.
+>* `um` ([Universal Morphology](https://unimorph.github.io/)) specifies the category of morphological features to provide for words and/or word segments. 1 (the default value): features are from the set included in the [Universal Dependency](https://universaldependencies.org/u/feat/all.html) guidelines. 2: features are from an extended set, possibly including those not in the basic UM set. 0: currently ignored.
 * `seglevel` specifies how much segmentation to perform. 0: no segmentation; features are assigned to the whole word. 2: maximum segmentation; features are assigned to individual segments (morphemes) within a word. 1: currently ignored.
 
 	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
@@ -220,11 +220,22 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 	10	ኣል	ኣል	AUX	AUX	_	8	aux	_	_
 	11	ኧሁ	ሁ	PRON	SUBJC	Number=Sing|Person=1	8	nsubj	_	_
 	12	።	።	PUNCT	PUNCT	_	_	_	_	_
+	
+	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።", um=2, seglevel=0)
+	>>> print(s.conllu.serialize())
+   	
+	# text = ልጁን ሥራውን አስጨርሰዋለሁ ።
+	# sent_id = _s0
+	1	ልጁን	ልጅ	NOUN	NOUN	Case=Acc	_	_	_	_
+	2	ሥራውን	ስራ	NOUN	NOUN	Case=Acc	_	_	_	_
+	3	አስጨርሰዋለሁ	ጨረሰ	VERB	VERB	AccGen=Masc|AccNum=Sing|AccPers=3|Aspect=Imp|Number=Sing|Person=1|Voice=Cau	_	_	_	_
+	4	።	።	PUNCT	PUNCT		_	_	_	_
 
 ### Segmenting the sentences in a file
 
 **`hm.seg_file`**(*path*)
-`Options: start=0, nlines=0, batch_name='', version='2.2', batch='1.0'`
+`Options: start=0, nlines=0, batch_name='', version='2.2', batch='1.0',`
+`um=1, seglevel=2`
 
 >- *path* is a path to a file containing Amharic sentences, one per line. It is assumed that punctuation has been separated by whitespace from other characters.
 
@@ -237,6 +248,8 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 * `batch_name` is a string representing the name of the batch being segmented. This is used in created the id for each sentence. If not specified, a name is created from the values of `version` and `batch`.
 * `version` is a string or float specifying the version of the data being analyzed. It defaults to '2.2'.
 * `batch` is a string or float specifying the batch number. It defaults to '1.0'.
+* `um`: See `seg_sentence`.
+* `seglevel`: See `seg_sentence`.
 
 ### Writing sentence segmentations to a file
 

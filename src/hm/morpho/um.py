@@ -481,11 +481,11 @@ class UniMorph:
                     if m:
                         umfeat, udfeat = m.groups()
                         umfeat = umfeat.strip(); udfeat = udfeat.strip()
+                        ## %% Combination UM features, like CAUS;RECP don't work yet!
 #                        print("** Matched 2UD rule {}->{}".format(umfeat, udfeat))
-                        if ';' in umfeat:
-                            for umfeat1 in umfeat.split(';'):
-                                self.um2ud[current_pos][umfeat1] = (umfeat, udfeat)
-
+#                        if ';' in umfeat:
+#                            for umfeat1 in umfeat.split(';'):
+#                                self.um2ud[current_pos][umfeat1] = (umfeat, udfeat)
                         self.um2ud[current_pos][umfeat.strip()] = udfeat.strip()
                         continue
 

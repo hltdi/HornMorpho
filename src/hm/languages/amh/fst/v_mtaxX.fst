@@ -77,21 +77,21 @@ sbjp1 -> stem     <:'(@pron,$number=sing,person=1,*እ,~nsubj)->    [tm=imf,sb=[
 ## t, n: 1p, 2, 3sf
 # affirmative
 # 2sm
-sbjp1 -> stem     <t:t(@pron,$gender=masc,number=sing,person=2,*ት,~nsubj)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],-neg]
+sbjp1 -> stem     <t(_):t(@pron,$gender=masc,number=sing,person=2,*ት,~nsubj)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],-neg]
 # 2sf, 2p
-sbjp1 -> stem     <t:t(@pron,$person=2,*ት,~nsubj)->   [sb=[+p2,-p1,+plr],ob=[-p2],-neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],-neg]
+sbjp1 -> stem     <t(_):t(@pron,$person=2,*ት,~nsubj)->   [sb=[+p2,-p1,+plr],ob=[-p2],-neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],-neg]
 # 3sf
-sbjp1 -> stem     <t:t(@pron,$gender=fem,number=sing,person=3,*ት,~nsubj)->   [sb=[-plr,-p1,-p2,+fem],-neg]
+sbjp1 -> stem     <t(_):t(@pron,$gender=fem,number=sing,person=3,*ት,~nsubj)->   [sb=[-plr,-p1,-p2,+fem],-neg]
 # negative
 # 2sm
-sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=masc,number=sing,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],+neg]
+sbjp1 -> stem     <t(_):t(@part,$polarity=neg,gender=masc,number=sing,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,-fem,-plr],ob=[-p2],+neg]
 # 2sf, 2p
-sbjp1 -> stem     <t:t(@part,$polarity=neg,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,+plr],ob=[-p2],+neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],+neg]
+sbjp1 -> stem     <t(_):t(@part,$polarity=neg,person=2,*ኣል,~advmod)->   [sb=[+p2,-p1,+plr],ob=[-p2],+neg];[sb=[+p2,-p1,+fem,-plr],ob=[-p2],+neg]
 # 3sf
-sbjp1 -> stem     <t:t(@part,$polarity=neg,gender=fem,number=sing,person=3,*ኣል,~advmod)->  [sb=[-plr,-p1,-p2,+fem],+neg]
+sbjp1 -> stem     <t(_):t(@part,$polarity=neg,gender=fem,number=sing,person=3,*ኣል,~advmod)->  [sb=[-plr,-p1,-p2,+fem],+neg]
 # 1p
-sbjp1 -> stem     <n:'n(@pron,$number=plur,person=1,*እን,~nsubj)->           [sb=[+plr,+p1,-p2],ob=[-p1],-neg]
-sbjp1 -> stem     <n:n(@part,$polarity=neg,number=plur,person=1,*ኣል,~nsubj)->      [sb=[+plr,+p1,-p2],ob=[-p1],+neg]
+sbjp1 -> stem     <n(_):'n(@pron,$number=plur,person=1,*እን,~nsubj)->           [sb=[+plr,+p1,-p2],ob=[-p1],-neg]
+sbjp1 -> stem     <n(_):n(@part,$polarity=neg,number=plur,person=1,*ኣል,~nsubj)->      [sb=[+plr,+p1,-p2],ob=[-p1],+neg]
 
 ## STEM
 

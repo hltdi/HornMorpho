@@ -112,6 +112,7 @@ seg = seg_word
 def seg_file(file='', language='amh', experimental=True,
              start=0, nlines=0, nbest=4, report_n=10,
              xml=None, multseg=True, csentences=True, sentid=0, batch_name='',
+             um=1, seglevel=2,
              version='2.2', batch='1.0',
              local_cache=None, sep_punc=True, verbosity=0):
     '''
@@ -152,6 +153,7 @@ def seg_file(file='', language='amh', experimental=True,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=True, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
                            xml=xml, multseg=multseg, csentences=csentences, sentid=sentid,
+                           um=um, seglevel=seglevel,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
@@ -629,7 +631,7 @@ def seg2string(word, segmentation, language='am', sep='-', transortho=True, feat
 ### Functions for debugging and creating FSTs
 
 def cascade(language, pos, gen=False, phon=False, segment=False,
-            translate=False, verbose=False):
+            seglevel=2, translate=False, verbose=False):
     '''Returns a cascade for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
     @param pos:    part-of-speech for the cascade, for example, 'v'
@@ -650,14 +652,14 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
             casc_inv = pos.casc.inverted()
             pos.casc_inv = casc_inv
             return casc_inv
-    pos.load_fst(True, create_fst=False, generate=gen, invert=gen, gen=gen,
+    pos.load_fst(True, create_fst=False, generate=gen, invert=gen, gen=gen, seglevel=seglevel,
                  translate=translate, segment=segment, verbose=verbose)
     if gen:
         return pos.casc_inv
     return pos.casc
 
 def recompile(language, pos, phon=False, segment=False, gen=False,
-              experimental=False, translate=False, backwards=False,
+              experimental=False, translate=False, backwards=False, seglevel=2,
               save=True, verbose=True):
     '''Recompiles the cascade FST for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
@@ -676,7 +678,7 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
                         load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, recreate=True,
-                             experimental=experimental,
+                             experimental=experimental, seglevel=seglevel,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:

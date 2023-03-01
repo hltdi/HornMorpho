@@ -85,6 +85,17 @@ def isnumstring(string):
 
 ### Sequence functions
 
+def pad2eqlen(l1, l2, paditem=''):
+    '''
+    Make l1 and l2 the same length, using paditem to pad the shorter one at the end.
+    '''
+    len1 = len(l1)
+    len2 = len(l2)
+    if len1 > len2:
+        l2.extend([paditem] * (len1 - len2))
+    elif len2 > len1:
+        l1.extend([paditem] * (len2 - len1))
+
 def isseq(item):
     return isinstance(item, collections.Sequence)
 

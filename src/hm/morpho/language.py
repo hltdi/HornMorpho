@@ -1636,6 +1636,7 @@ class Language:
                 if POS in self.um.hm2um:
 #                    print("*** hm2um {}".format(self.um.hm2um[POS]))
                     umfeats = self.um.convert(features, pos=POS)
+#                    print("*** umfeats {}".format(umfeats))
                     if not umfeats:
                         print('*** POS {}, features {}, umfeats {}'.format(POS, features.__repr__(), umfeats))
                     udfeats = self.um.convert2ud(umfeats, POS, extended=um==2)

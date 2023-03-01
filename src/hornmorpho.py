@@ -169,9 +169,10 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
     return pos.casc
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-                            translate=False, experimental=False, mwe=False,
+                            translate=False, experimental=False, mwe=False, seglevel=2,
                             simplified=False, backwards=False, split_index=0, verbose=True):
-    """Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
+    """
+    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
     Note 1: this can take a very long time for some languages.
     Note 2: the resulting FST is not saved (written to a file). To do this, use the method
@@ -181,23 +182,24 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                                             simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True,
-                             experimental=experimental, mwe=mwe, pos=pos,
+                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
         print('Generation FST not found')
         # Load analysis FST>
-        pos_morph.load_fst(True, verbose=True)
+        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
                            mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
-def segrecompile(lang, pos, mwe=False, verbose=True):
+def segrecompile(lang, pos, mwe=False, seglevel=2, verbose=True):
     """
     Shortcut for recompiling Amh (experimental) segmenter FST.
     """
-    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, verbose=verbose)
+    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe,
+                                       seglevel=seglevel, verbose=verbose)
 
 ### Simple FSTs and cascades (in test directory)
 
