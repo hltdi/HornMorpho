@@ -321,7 +321,7 @@ class Sentence():
         for index1, segs1 in enumerate(word[:-1]):
             for index2, segs2 in enumerate(word[index1+1:]):
                 i2 = index1+index2+1
-#                print("*** Comparing segmentations {} and {}".format(index1, i2))
+#                print("*** Comparing segmentations {} and {}".format(segs1, segs2))
                 c = self.compare_segs(segs1, segs2)
                 if c is False:
                     # seg1 and seg2 are identical
@@ -329,9 +329,10 @@ class Sentence():
                 elif c is True:
                     # seg1 and seg2 are different lengths
                     continue
-                for mindex, merged in c.items():
-                    if merged.get('upos') in POSs:
-                        merges.append((index1, i2, mindex, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
+                else:
+                    for mindex, merged in c.items():
+                        if merged.get('upos') in POSs:
+                            merges.append((index1, i2, mindex, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
         return merges
 
     def compare_segs(self, seg1, seg2):
@@ -358,29 +359,39 @@ class Sentence():
                         diffs[index][key] = (v1, v2)
         return diffs
 
-    def make_unsegmented_word(self, word, segmentation, morphid, conllu=True, um=0):
+    def make_unsegmented_word(self, word, segmentations, morphid, conllu=True, um=0):
         '''
         Use pre-CoNLL-U lists to produce an unsegmented CoNLL-U representation for a word.
         '''
-#        print("**** Creating unsegmented word for {}".format(segmentation))
-        upos = lemma = headfeats = wordfeats = ''
-        clist = [['id', morphid], ['form', word], ['lemma', None],  ['upos', None], ['xpos', None],
-                 ['feats', None], ['head', None], ['deprel', None], ['deps', None], ['misc', None]]
-        for morph in segmentation:
-            deprel = Sentence.get_clist_field(morph, 'deprel')
-            if not deprel:
-                # This is the head of the word
-                Sentence.copy_clist_field(morph, clist, 'upos')
-                Sentence.copy_clist_field(morph, clist, 'xpos')
-                Sentence.copy_clist_field(morph, clist, 'lemma')
-                wordfeats = Sentence.get_clist_field(morph, 'misc')
-                if um:
-                    Sentence.set_clist_field(clist, 'feats', wordfeats)
-                else:
-                    Sentence.copy_clist_field(morph, clist, 'feats')
-        cdict = dict(clist)
-        self.words.append([[cdict]])
-        return [Token(cdict)]
+#        print("**** Creating unsegmented word for {}".format(segmentations))
+        tokens = []
+        cdicts = []
+        for segmentation in segmentations:
+            dicts = []
+            upos = lemma = headfeats = wordfeats = ''
+            clist = [['id', morphid], ['form', word], ['lemma', None],  ['upos', None], ['xpos', None],
+                     ['feats', None], ['head', None], ['deprel', None], ['deps', None], ['misc', None]]
+            for morph in segmentation:
+#                print("***  morph {}".format(morph))
+                deprel = Sentence.get_clist_field(morph, 'deprel')
+                if not deprel:
+                    # This is the head of the word
+                    Sentence.copy_clist_field(morph, clist, 'upos')
+                    Sentence.copy_clist_field(morph, clist, 'xpos')
+                    Sentence.copy_clist_field(morph, clist, 'lemma')
+                    wordfeats = Sentence.get_clist_field(morph, 'misc')
+#                    print("**** feats {}".format(wordfeats))
+                    if um:
+                        Sentence.set_clist_field(clist, 'feats', wordfeats)
+                    else:
+                        Sentence.copy_clist_field(morph, clist, 'feats')
+            cdict = dict(clist)
+            cdicts.append([cdict])
+            tokens.append(Token(cdict))
+        self.words.append(cdicts)
+#                self.words.append([[cdict]])
+#        return [Token(cdict)]
+        return tokens
 
     def make_word(self, word, segmentations, morphid, conllu=True, um=0, seglevel=2):
         '''
@@ -389,7 +400,7 @@ class Sentence():
         um and seg control the features and the level of segmentation.
         '''
         if seglevel == 0:
-            return self.make_unsegmented_word(word, segmentations[0], morphid, conllu=conllu, um=um)
+            return self.make_unsegmented_word(word, segmentations, morphid, conllu=conllu, um=um)
         segment_list = []
         tokens = []
         self.complexity['ambig'] += len(segmentations) - 1
@@ -397,7 +408,6 @@ class Sentence():
             self.morphambig.append(word)
 #        print("*** word {}, segmentations {}".format(word, segmentations))
         for index, segmentation in enumerate(segmentations):
-#        segmentation = segmentations[0]
             segments = []
             nmorphs = len(segmentation)
 #            print("  *** Segmentation {}, length {}".format(segmentation, nmorphs))
@@ -639,8 +649,10 @@ class Sentence():
                 if c.isupper():
                     return string + c
                 string += c
-        else:
+        elif len(name) > 4:
             return name[:3]
+        else:
+            return name
 
 ### XML stuff; later incorporate this into the Sentence class
 

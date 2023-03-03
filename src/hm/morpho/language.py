@@ -1650,15 +1650,16 @@ class Language:
             for aindex, analysis in enumerate(analyses):
 #                print("** aindex {}, analysis {}".format(aindex, analysis))
                 pos, segmentation, lemma, features, freq = analysis
-                print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
+#                print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
                 POS = Language.convertPOS(pos)
                 if POS in self.um.hm2um:
-                    print("*** hm2um {}".format(self.um.hm2um[POS]))
+#                    print("*** hm2um {}".format(self.um.hm2um[POS]))
                     umfeats = self.um.convert(features, pos=POS)
-                    print("*** umfeats {}".format(umfeats))
+#                    print("*** umfeats {}".format(umfeats))
                     if not umfeats:
                         print('*** POS {}, features {}, umfeats {}'.format(POS, features.__repr__(), umfeats))
                     udfeats = self.um.convert2ud(umfeats, POS, extended=um==2)
+#                    print("*** udfeats {}".format(udfeats))
                     analyses[aindex] = analysis + (udfeats,)
                 else:
                     analyses[aindex] = analysis + ('',)
