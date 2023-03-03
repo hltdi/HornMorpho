@@ -100,6 +100,7 @@ class Corpus():
             sentence_obj = \
               self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache,
                                           um=um, seglevel=seglevel)
+#            if seglevel > 0:
             sentence_obj.merge_segmentations()
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))

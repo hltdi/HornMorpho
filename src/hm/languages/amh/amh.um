@@ -22,6 +22,11 @@ POS n N
 ->UD PSS3P	*PossPers=3,PossNum=Plur
 ->UD PSS3SF	*PossPers=3,PossNum=Sing,PossGen=Fem
 ->UD PSS3SM	*PossPers=3,PossNum=Sing,PossGen=Masc
+->UD PASS	Voice=Pass
+->UD CAUS	Voice=Cau
+->UD RECP	Voice=Rcp
+->UD ITER	Aspect=Iter
+->UD CAUSRECP	*Voice=CauRcp
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
@@ -60,8 +65,7 @@ POS v V
 ->UD RECP	Voice=Rcp
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
-->UD *CAUSRECP	Voice=CauRcp
-# ->UD *CON
+->UD *CAUSRECP	*Voice=CauRcp
 ->UD *RELC	*VerbForm=Rel
 ->UD 1		Person=1
 ->UD 2		Person=2
