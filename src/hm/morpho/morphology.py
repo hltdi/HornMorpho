@@ -1050,7 +1050,7 @@ class POSMorphology:
     def load_fst(self, compose=False, subcasc=None, generate=False, gen=False,
                  recreate=False, create_fst=True, create_casc=False,
                  create_weights=False, guess=False, seglevel=2,
-                 pickle=True, create_pickle=True,
+                 pickle=True, create_pickle=True, fidel=False,
                  simplified=False, phon=False, segment=False, translate=False,
                  experimental=False, mwe=False, pos='',
                  invert=False, compose_backwards=True, split_index=0,
@@ -1066,6 +1066,7 @@ class POSMorphology:
         name = self.fst_name(generate, guess, simplified, phon=phon, mwe=mwe,
                              segment=segment, translate=translate, experimental=experimental)
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
+#        print("*** Path {}".format(path))
         if verbose:
             s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}{5} (recreate {6})'
             print(s1.format(('TRANSLATION' if translate else ('GENERATION' if generate else 'ANALYSIS')),
@@ -1498,11 +1499,9 @@ class POSMorphology:
 #            print('Transducing with features {}'.format(features.__repr__()))
             gens = \
               fst.transduce(root, features,
-                            seg_units=self.morphology.seg_units,
-                            gen=not del_feats,
-                            print_word=print_word,
-                            print_prefixes=print_prefixes,
-                            trace=trace, dup_output=del_feats,
+                            seg_units=self.morphology.seg_units, gen=not del_feats,
+                            print_word=print_word, print_prefixes=print_prefixes, trace=trace,
+                            dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
                             result_limit=limit, verbosity=verbosity)
 #            print("gens {}".format(gens))
@@ -1513,8 +1512,7 @@ class POSMorphology:
                 # For languages with non-roman orthographies
                 for gen in gens:
                     # Replace the wordforms with postprocessed versions
-                    gen[0] = self.finalize_output(gen[0], phon=phon,
-                                                  ortho_only=ortho_only)
+                    gen[0] = self.finalize_output(gen[0], phon=phon, ortho_only=ortho_only)
             return gens
         elif trace:
             print('No generation FST loaded')

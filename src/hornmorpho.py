@@ -133,7 +133,7 @@ def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
                                                                    load=True, verbose=verbose)
 
 def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=False,
-            guess=True, simplified=False, verbose=False):
+                        fidel=False, guess=True, simplified=False, verbose=False):
     """
     Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -151,11 +151,11 @@ def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=
     @rtype:        instance of the POSMorphology class
 
     """
-    hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
+    hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, fidel=fidel,
                  translate=translate, guess=guess, simplified=simplified, verbose=verbose)
     lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment, simplified=simplified,
                                   translate=translate, load=load_morph, load_morph=load_morph,
-                                  verbose=verbose)
+                                  fidel=fidel, verbose=verbose)
     if lang:
         return lang.morphology[pos]
 
@@ -170,6 +170,7 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                             translate=False, experimental=False, mwe=False, seglevel=2,
+                            fidel=False, create_fst=True,
                             simplified=False, backwards=False, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
@@ -179,10 +180,12 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+                                            fidel=fidel,
                                             simplified=simplified, load_morph=False, verbose=verbose)
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-                             translate=translate, simplified=simplified, recreate=True,
+                             translate=translate, simplified=simplified, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
+                             create_fst=create_fst,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -191,15 +194,18 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-                           mwe=mwe, guess=guess, verbose=verbose)
+                                                 fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
-def segrecompile(lang, pos, mwe=False, seglevel=2, verbose=True):
+def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True, verbose=True):
     """
     Shortcut for recompiling Amh (experimental) segmenter FST.
     """
-    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe,
-                                       seglevel=seglevel, verbose=verbose)
+    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, fidel=fidel,
+                                       create_fst=create_fst, seglevel=seglevel, verbose=verbose)
+
+def transrecompile(lang, pos):
+    return recompile(lang, pos, fidel=True, translate=True)
 
 ### Simple FSTs and cascades (in test directory)
 

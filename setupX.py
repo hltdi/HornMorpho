@@ -40,16 +40,11 @@ setup(name='HornMorphoAX',
                               'proc.py',
                               'test.py',
                               'internet_search.py',
+                              'languages/fidel/*',
                               'languages/eng/*',
-                              'languages/gez/*',
                               'languages/gru/*'
                               'languages/sgw/*',
-                              'languages/a/*',
-                              'languages/d/*',
-                              'languages/k/*',
                               'languages/ior/*'
-                              'languages/muh/*'
-                              'languages/mvz/*',
                               'languages/wle/*'
                               'languages/orm/*',
                               'languages/som/*',

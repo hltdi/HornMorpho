@@ -1,0 +1,7 @@
+ሰበር      [c=A,-hol,s=0,1=T,2=B,3=R,+tr,-d,rc=3]
+ቀጠር      [c=A,-hol,s=0,1=K,2=T,3=R,+tr,-d,rc=3]
+ረከብ      [c=A,-hol,s=0,1=R,2=K,3=B,+tr,-d,rc=3]
+ቀበር      [c=A,-hol,s=0,1=K,2=B,3=R,+tr,-d,rc=3]
+ፈረድ      [c=A,-hol,s=0,1=B,2=R,3=T,+tr,-d,rc=3]
+ከፈት      [c=A,-hol,s=0,1=K,2=B,3=T,+tr,-d,rc=3]
+ከተፍ      [c=A,-hol,s=0,1=K,2=T,3=B,+tr,-d,rc=3]

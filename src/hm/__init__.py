@@ -46,7 +46,7 @@ def exit(save=True, cache=''):
     morpho.languages.LANGUAGES.clear()
 
 def load_lang(language, phon=False, segment=False, experimental=False, pickle=True, recreate=False,
-              load_morph=True, cache='', simplified=False, translate=False,
+              load_morph=True, cache='', simplified=False, translate=False, fidel=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
@@ -55,7 +55,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
                      translate=translate, experimental=experimental,
-                     load_morph=load_morph, cache=cache,
+                     load_morph=load_morph, cache=cache, fidel=fidel,
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, phonetic=False,

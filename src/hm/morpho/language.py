@@ -63,6 +63,8 @@ SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
 ## Regexes for parsing language data
 # Language name
 LG_NAME_RE = re.compile(r'\s*n.*?:\s*(.*)')
+# Target language name and abbrev (for translation)
+TL_NAME_RE = re.compile(r'\s*tln.*?:\s*(.*)\s+(.*)')
 # Backup language abbreviation
 # l...:
 BACKUP_RE = re.compile(r'\s*l.*?:\s*(.*)')
@@ -156,6 +158,9 @@ class Language:
     namefreq = 100
 
     def __init__(self, label='', abbrev='', backup='',
+                 # Target language, for translation
+                 tlang='',
+                 tlabbrev = '',
                  # Preprocessing for analysis
                  preproc=None, procroot=None,
                  # Post-processing for generation
@@ -175,6 +180,8 @@ class Language:
                  # Whether gemination is indicated in EES language
                  output_gemination=False,
                  rules=None,
+                 # Whether this is one of the fidel-only languages
+                 fidel=False,
                  citation_separate=True):
 #                 msgs=None, trans=None):
         """
@@ -191,6 +198,8 @@ class Language:
 #       @param trans              Translations of terms from english to this language
         """
         self.label = label
+        self.tlang = tlang
+        self.tlabbrev = tlabbrev
         self.abbrev = abbrev or label[:3]
         # additional abbreviations for language
         self.codes = []
@@ -214,7 +223,7 @@ class Language:
         self.citation_separate = citation_separate
 #        self.msgs = msgs or {}
 #        self.trans = trans or {}
-        self.directory = self.get_dir()
+        self.directory = self.get_dir(fidel=fidel)
         self.tlanguages = [abbrev]
         if self.backup:
             self.tlanguages.append(self.backup)
@@ -248,28 +257,31 @@ class Language:
     def __repr__(self):
         return self.label or self.abbrev
 
-    def get_dir(self):
+    def get_dir(self, fidel=False):
         """Where data for this language is kept."""
-        return os.path.join(LANGUAGE_DIR, self.abbrev)
+        if fidel:
+            return os.path.join(os.path.join(LANGUAGE_DIR, 'fidel'), self.abbrev)
+        else:
+            return os.path.join(LANGUAGE_DIR, self.abbrev)
 
-    def get_data_file(self):
+    def get_data_file(self, fidel=False):
         """Data file for language."""
-        return os.path.join(self.get_dir(), self.abbrev + '.lg')
+        return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.lg')
 
     # Directory for translation data
 
-    def get_trans_dir(self):
+    def get_trans_dir(self, fidel=False):
         """File with cached analyses."""
-        return os.path.join(self.get_dir(), 'trans')
+        return os.path.join(self.get_dir(fidel=fidel), 'trans')
 
-    def get_lex_dir(self):
-        return os.path.join(self.get_dir(), 'lex')
+    def get_lex_dir(self, fidel=False):
+        return os.path.join(self.get_dir(fidel=fidel), 'lex')
 
-    def get_valency_file(self, pos='v'):
-        return os.path.join(self.get_lex_dir(), pos + '.val')
+    def get_valency_file(self, pos='v', fidel=False):
+        return os.path.join(self.get_lex_dir(fidel=fidel), pos + '.val')
 
-    def get_phon_file(self):
-        return os.path.join(self.get_dir(), self.abbrev + '.ph')
+    def get_phon_file(self, fidel=False):
+        return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.ph')
 
 #    def get_stat_dir(self):
 #        """Statistics directory: root and feature frequencies
@@ -278,12 +290,12 @@ class Language:
 
     ## CACHING
 
-    def get_cache_dir(self):
+    def get_cache_dir(self, fidel=False):
         """File with cached analyses."""
-        return os.path.join(self.get_dir(), 'cache')
+        return os.path.join(self.get_dir(fidel=fidel), 'cache')
 
-    def get_cache_file(self, segment=False):
-        d = self.get_cache_dir()
+    def get_cache_file(self, segment=False, fidel=False):
+        d = self.get_cache_dir(fidel=fidel)
         if segment:
             name = 'seg'
         else:
@@ -348,20 +360,20 @@ class Language:
         return False
 
     @staticmethod
-    def make(name, abbrev, load_morph=False,
+    def make(name, abbrev, load_morph=False, fidel=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False,
              ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
         if ees:
-            lang = EESLanguage(abbrev=abbrev)
+            lang = EESLanguage(abbrev=abbrev, fidel=fidel)
         else:
-            lang = Language(abbrev=abbrev)
+            lang = Language(abbrev=abbrev, fidel=fidel)
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph, pickle=pickle,
                                 segment=segment, phon=phon, recreate=recreate,
-                                experimental=experimental, mwe=mwe,
+                                experimental=experimental, mwe=mwe, fidel=fidel,
                                 translate=translate, simplified=simplified,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
@@ -370,13 +382,14 @@ class Language:
         return lang
 
     def load_data(self, load_morph=False, pickle=True, recreate=False,
-                  segment=False, phon=False, guess=True,
+                  segment=False, phon=False, guess=True, fidel=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
                   poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
-        filename = self.get_data_file()
+        filename = self.get_data_file(fidel=fidel)
+#        print("*** Looking for data file {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))
@@ -404,8 +417,9 @@ class Language:
         return True
 
     def parse(self, data, poss=None, verbose=False):
-
-        """Read in language data from a file."""
+        """
+        Read in language data from a file.
+        """
         if verbose:
             print('Parsing data for', self)
 
@@ -512,6 +526,11 @@ class Language:
             if m:
                 label = m.group(1).strip()
                 self.label = label
+                continue
+
+            m = TL_NAME_RE.match(line)
+            if m:
+                self.tlang, self.tlabbrev = m.groups()
                 continue
 
             m = BACKUP_RE.match(line)
@@ -1631,12 +1650,12 @@ class Language:
             for aindex, analysis in enumerate(analyses):
 #                print("** aindex {}, analysis {}".format(aindex, analysis))
                 pos, segmentation, lemma, features, freq = analysis
-#                print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
+                print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
                 POS = Language.convertPOS(pos)
                 if POS in self.um.hm2um:
-#                    print("*** hm2um {}".format(self.um.hm2um[POS]))
+                    print("*** hm2um {}".format(self.um.hm2um[POS]))
                     umfeats = self.um.convert(features, pos=POS)
-#                    print("*** umfeats {}".format(umfeats))
+                    print("*** umfeats {}".format(umfeats))
                     if not umfeats:
                         print('*** POS {}, features {}, umfeats {}'.format(POS, features.__repr__(), umfeats))
                     udfeats = self.um.convert2ud(umfeats, POS, extended=um==2)
@@ -2757,7 +2776,7 @@ class EESLanguage(EES, Language):
     especially related to orthography.
     '''
 
-    def __init__(self, abbrev):
+    def __init__(self, abbrev, fidel=False):
         print("Creating EES language...")
-        Language.__init__(self, abbrev)
-        EES.__init__(self)
+        Language.__init__(self, abbrev, fidel=fidel)
+        EES.__init__(self, fidel=fidel)

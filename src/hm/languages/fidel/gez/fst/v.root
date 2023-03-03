@@ -1,0 +1,26 @@
+%A::		1:e,I,a;	2:e,I,i;	3:I
+%A,w1:: 	1:e,0
+%A,w2:: 	1:o,u,e;	2:e,I,i,0
+%A,y2:: 	1:E,e;		2:e,I,i,0
+%A,'3::				2:e,I,i,a
+%B::		1:e,E,a;	2:e,I,i;	3:I
+%C:: 		1:a;		2:e,I,i;	3:I
+%E:: 		1:e,I;		2:e,I;		3:e,I,i;	4:I
+
+<s b r>	      c=A,j=t,p=t
+
+<m w t>	      c=A
+
+<l b s>	      c=A,j=i,p=i
+
+<q r b>	      c=A,j=i
+
+<m S '>	      c=A
+
+<f t H>	      c=A
+
+<q d s>	      c=B
+
+<b r k>	      c=C
+
+<f d f d>     c=E

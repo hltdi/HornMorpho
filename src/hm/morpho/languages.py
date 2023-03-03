@@ -57,7 +57,7 @@ def get_lang_dir(abbrev):
     return os.path.join(LANGUAGE_DIR, abbrev)
 
 def load_lang(lang, phon=False, segment=False, load_morph=True,
-              translate=False, pickle=True, recreate=False,
+              translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
               cache=True, guess=True, simplified=False, mwe=True,
               experimental=False, poss=None, verbose=True):
@@ -84,7 +84,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
                                     pickle=pickle, translate=translate, recreate=recreate,
-                                    phon=phon, guess=guess, simplified=simplified, mwe=mwe,
+                                    phon=phon, guess=guess, simplified=simplified, mwe=mwe, fidel=fidel,
                                     poss=poss, verbose=verbose)
         if not loaded:
 #            print("No additional data")
@@ -104,7 +104,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
                                  experimental=experimental, mwe=mwe,
                                  segment=segment, phon=phon, guess=guess,
                                  simplified=simplified, recreate=recreate,
-                                 poss=poss, ees=ees,
+                                 poss=poss, ees=ees, fidel=fidel,
                                  verbose=verbose)
         if not language:
             # Impossible to make language with desired FST
@@ -122,12 +122,12 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # If there's a backup language, load its data file so the translations
         # can be used.
         load_lang(language.backup, load_morph=False, recreate=recreate, mwe=mwe,
-                  pickle=pickle, translate=translate, experimental=experimental,
+                  pickle=pickle, translate=translate, experimental=experimental, fidel=fidel,
                   guess=guess, verbose=verbose)
     return True
 
 def get_language(language, load=True,
-                 pickle=True, translate=False, experimental=False,
+                 pickle=True, translate=False, experimental=False, fidel=False,
                  phon=False, segment=False, guess=True, simplified=False,
                  load_morph=True, cache='', verbose=False):
     """
@@ -142,7 +142,7 @@ def get_language(language, load=True,
         if load:
             if not load_lang(lang_id, phon=phon, pickle=pickle,
                              segment=segment, guess=guess, experimental=experimental,
-                             simplified=simplified, translate=translate,
+                             simplified=simplified, translate=translate, fidel=fidel,
                              load_morph=load_morph, cache=cache,
                              verbose=verbose):
                 return False

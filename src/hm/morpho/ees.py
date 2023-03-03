@@ -48,8 +48,9 @@ class EES:
     wcodes2patindex = {'0': 0, 'te_': 1, 'a_': 2, 'as_': 3, 'te_a': 4, 'a_a': 4, 'as_a': 4, 'te_R': 5, 'a_R': 5, 'R': 6}
     wpatcodes = [('0',), ('te_',), ('a_',), ('as_',), ('te_a', 'a_a'), ('te_R', 'a_R'), ('R',)]
 
-    def __init__(self):
+    def __init__(self, fidel=False):
         print("Creating EES language {}".format(self))
+        self.fidel = fidel
         # EES pre-and post-processing: geezification, romanization,
         # handling of multi-word lexemes
         if not self.procroot:
