@@ -3,7 +3,7 @@ This file is part of HornMorpho and morfo, which are part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2020, 2022.
+    Copyleft 2018, 2020, 2022, 2023
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -564,33 +564,33 @@ class Morphology(dict):
         return self[pos].gen(form, features, from_dict=from_dict, postproc=postproc,
                              guess=guess, phon=phon, segment=segment, trace=trace)
 
-    def load_fst(self, label, generate=False, create_fst=True, pos='',
-                 save=False, verbose=False):
-        """
-        Load an FST that is not associated with a particular POS.
-        """
-        path = os.path.join(self.get_cas_dir(), label + '.cas')
-#        path = os.path.join(self.directory, label + '.cas')
-        casc = fst = None
+#    def load_fst(self, label, generate=False, create_fst=True, pos='',
+#                 save=False, verbose=False):
+#        """
+#        Load an FST that is not associated with a particular POS.
+#        Currently not used.
+#        """
+#        path = os.path.join(self.get_cas_dir(), label + '.cas')
+#        casc = fst = None
 #        if verbose:
-        print('Looking for cascade at', path)
-        if os.path.exists(path):
-            # Load each of the FSTs in the cascade and compose them
-            if verbose: print('Loading cascade ...')
-            casc = FSTCascade.load(path, seg_units=self.seg_units,
-                                   language=self.language, pos=pos,
-                                   create_networks=True)
-            # create_fst is False in case we just want to load the individuals fsts.
-            if create_fst:
-                if verbose:
-                    print("Composing FST")
-                fst = casc.compose(backwards=False, trace=verbose, relabel=True)
-                if generate:
-                    fst = fst.inverted()
-                if save:
-                    FST.write(fst, filename=os.path.join(self.get_pickle_dir(), label + '.fst'))
-                return fst
-            return casc
+#            print('Looking for cascade at', path)
+#        if os.path.exists(path):
+#            # Load each of the FSTs in the cascade and compose them
+#            if verbose: print('Loading cascade ...')
+#            casc = FSTCascade.load(path, seg_units=self.seg_units,
+#                                   language=self.language, pos=pos,
+#                                   create_networks=True)
+#            # create_fst is False in case we just want to load the individuals fsts.
+#            if create_fst:
+#                if verbose:
+#                    print("Composing FST")
+#                fst = casc.compose(backwards=False, trace=verbose, relabel=True)
+#                if generate:
+#                    fst = fst.inverted()
+#                if save:
+#                    FST.write(fst, filename=os.path.join(self.get_pickle_dir(), label + '.fst'))
+#                return fst
+#            return casc
 
     def restore_fst(self, label, create_networks=False, pos=''):
         '''Return the FST with label.'''
@@ -796,10 +796,13 @@ class POSMorphology:
         analgen = None
         fsts = self.mwefsts if mwe else self.fsts
         if generate:
+            # 2nd sublist of FSTs; by default select the lexical FST within this list.
             analgen = fsts[self.gen_i]
         elif translate:
+            # 3rd sublist of FSTs; by default select the lexical FST within this list.
             analgen = fsts[self.trans_i]
         else:
+            # 1st sublist of FSTs, analysis of one sort or another
             analgen = fsts[self.anal_i]
 #        analgen = self.fsts[self.gen_i if generate else self.anal_i]
         # Experimental FSTs have priority over others
@@ -815,8 +818,10 @@ class POSMorphology:
         elif phon:
             fst = analgen[self.phon_i]
         elif segment:
+            # only relevant for anal (1st) sublist
             fst = analgen[self.seg_i]
         else:
+            # By default, look for lexical anal, then guesser, then simplified
             fst = analgen[0] or analgen[self.guess_i] or analgen[self.simp_i]
         return fst
 
@@ -1062,6 +1067,11 @@ class POSMorphology:
         2023.2.28: Added seglevel.
         '''
 #        print("*** load_fst {}".format(pos))
+
+        # seglevel should be 0 if segment is 0
+        if not segment:
+            seglevel = 0
+        
         fst = None
         name = self.fst_name(generate, guess, simplified, phon=phon, mwe=mwe,
                              segment=segment, translate=translate, experimental=experimental)
@@ -1081,8 +1091,7 @@ class POSMorphology:
                               cas_directory=self.morphology.get_cas_dir(),
                               fst_directory=self.morphology.get_fst_dir(),
                               pkl_directory=self.morphology.get_pickle_dir(),
-                              seg_units=self.morphology.seg_units,
-                              pickle=pickle,
+                              seg_units=self.morphology.seg_units, pickle=pickle,
                               create_weights=create_weights, generate=generate,
                               empty=guess, phon=phon, segment=segment, simplified=simplified,
                               experimental=experimental, mwe=mwe,
@@ -1097,23 +1106,19 @@ class POSMorphology:
                                label=name)
                 self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
                              segment=segment, translate=translate, experimental=experimental)
-                if create_casc:
-                    if not self.casc:
-                        casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
-                                               create_networks=True, subcasc=subcasc,
-                                               seglevel=seglevel,
-                                               language=self.language, gen=generate, pos=pos,
-                                               verbose=verbose)
-                        if casc:
-                            self.casc = casc
-                            self.casc_inv = self.casc.inverted()
-#                if verbose: print('... loaded')
+                if create_casc and not self.casc:
+                    casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
+                                           create_networks=True, subcasc=subcasc, seglevel=seglevel,
+                                           language=self.language, gen=generate, pos=pos,
+                                           verbose=verbose)
+                    if casc:
+                        self.casc = casc
+                        self.casc_inv = self.casc.inverted()
         if not self.get_fst(generate, guess, simplified, phon=phon, translate=translate, segment=segment) or recreate:
             # Either there was no composed FST or we're supposed to recreate it anyway, so get
             # the cascade and compose it (well, unless create_fst is False)
             if verbose:
                 print('Looking for cascade at', path, 'subcasc', subcasc)
-#            print("NO COMPILED FST, RECREATE? {}".format(recreate))
             if os.path.exists(path):
                 if recreate:
                     # Load each of the FSTs in the cascade and compose them
@@ -1132,7 +1137,6 @@ class POSMorphology:
                         else:
 #                            print("*** Composing {}, relabel {}".format(self.casc, relabel))
                             fst = self.casc.compose(backwards=compose_backwards, trace=verbose, subcasc=subcasc,
-    #                                                end=split_index if split_index else None,
                                                     relabel=relabel)
                         if self.casc.insertions:
                             # Insert insertion FSTs into composed FST
@@ -1152,6 +1156,7 @@ class POSMorphology:
                 print('  No cascade exists at', path, end=' ')
                 if gen: print()
         if gen:
+            # Look for or load generation FST
             if not self.load_fst(compose=False, generate=True, gen=False,
                                  create_casc=create_casc, pickle=pickle, pos=pos,
                                  guess=guess, simplified=simplified, experimental=experimental,
@@ -1195,35 +1200,35 @@ class POSMorphology:
 #        else:
 #            print("** No FST found")
 
-    def load_gen_fst(self, pickle=True, pos='',
-                     guess=False, simplified=False, phon=False, experimental=False, mwe=False,
-                     segment=False, translate=False, verbose=False):
-        '''
-        Create gen_fst(0) by inverting an existing anal_fst(0) or loading and inverting a generation FST.
-        '''
-        if not self.get_fst(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-                            segment=segment, translate=translate):
-            print('LOADING GEN FST FOR', self.language.label, self.pos, ('(guess)' if guess else ''))
-            name = self.fst_name(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-                                 segment=segment, translate=translate)
-            # First try to load the explicit generation FST
-            gen = self.load_fst(generate=True, guess=guess, simplified=simplified, mwe=mwe,
-                                phon=phon, segment=segment, translate=translate, experimental=experimental,
-                                pickle=pickle, pos=pos,
-                                invert=True)
-            if gen:
-                self.set_fst(gen, True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-                             segment=segment, translate=translate)
-            else:
-                # The corresponding analysis FST
-                anal = self.get_fst(False, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-                                    segment=segment, translate=translate)
-                if anal:
-                    self.set_fst(anal.inverted(), True, guess, simplified, phon=phon, experimental=experimental,
-                                 mwe=mwe, segment=segment, translate=translate)
-            if self.casc:
-                self.casc_inv = self.casc.inverted()
-                self.casc_inv.reverse()
+#    def load_gen_fst(self, pickle=True, pos='',
+#                     guess=False, simplified=False, phon=False, experimental=False, mwe=False,
+#                     segment=False, translate=False, verbose=False):
+#        '''
+#        Create gen_fst(0) by inverting an existing anal_fst(0) or loading and inverting a generation FST.
+#        '''
+#        if not self.get_fst(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
+#                            segment=segment, translate=translate):
+#            print('LOADING GEN FST FOR', self.language.label, self.pos, ('(guess)' if guess else ''))
+#            name = self.fst_name(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
+#                                 segment=segment, translate=translate)
+#            # First try to load the explicit generation FST
+#            gen = self.load_fst(generate=True, guess=guess, simplified=simplified, mwe=mwe,
+#                                phon=phon, segment=segment, translate=translate, experimental=experimental,
+#                                pickle=pickle, pos=pos,
+#                                invert=True)
+#            if gen:
+#                self.set_fst(gen, True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
+#                             segment=segment, translate=translate)
+#            else:
+#                # The corresponding analysis FST
+#                anal = self.get_fst(False, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
+#                                    segment=segment, translate=translate)
+#                if anal:
+#                    self.set_fst(anal.inverted(), True, guess, simplified, phon=phon, experimental=experimental,
+#                                 mwe=mwe, segment=segment, translate=translate)
+#            if self.casc:
+#                self.casc_inv = self.casc.inverted()
+#                self.casc_inv.reverse()
 
     def pickle_all(self, replace=True, empty=True):
         """

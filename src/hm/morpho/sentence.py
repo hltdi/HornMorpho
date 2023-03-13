@@ -31,35 +31,6 @@ from conllu import parse, TokenList, Token
 from .geez import degeminate
 import os
 
-#CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO')
-#TB_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'AmhTreebank')
-#DATA_PATH = os.path.join(os.path.dirname(__file__), os.path.pardir, 'ext_data', 'CACO', 'CACO1.1', "CACO_TEXT.txt")
-
-#def get_caco_data(sort=False, filter_sentences=True, min_length=3, max_length=7, write=False):
-#    with open(DATA_PATH) as file:
-#        data = [l.strip().split() for l in file.readlines()]
-#        if sort:
-#            data.sort(key=lambda x: len(x))
-#        if filter_sentences:
-#            data = [d for d in data if d[-1] in ('።?!') and min_length <= len(d) <= max_length]
-#        data = [' '.join(d) for d in data]
-#        if write:
-#            with open(os.path.join(CACO_DIR, 'CACO1.1', "CACO_TEXT_{}.txt".format(write)), 'w', encoding='utf8') as file:
-#                for sentence in data:
-#                    print(sentence, file=file)
-#            return
-#        return data
-
-#def tb_path(file="am_att-ud-test.conllu"):
-#    return os.path.join(TB_DIR, file)
-
-#def parse_tb(file="am_att-ud-test.conllu"):
-#    with open(tb_path(), encoding='utf8') as file:
-#        return file.read()
-
-#def caco_path(version, file):
-#    return os.path.join(CACO_DIR, "CACO{}".format(version), file)
-
 class Sentence():
     """
     Representation of HM output for a sentence in a corpus.
@@ -113,6 +84,12 @@ class Sentence():
         self.complexity['unk'] /= self.ntokens
         # Expect one punctuation mark
         self.complexity['punct'] -= 1
+
+    def filter(self, filterconds):
+        '''
+        Filter out the sentence if it satisfies any of filterconds.
+        Each filtercond has the form a list of lists of word filterconds
+        '''
 
     def reject(self, unk_thresh=0.3, ambig_thresh=1.0, verbosity=0):
         """
@@ -399,6 +376,10 @@ class Sentence():
         If conllu is True, returns a list of morpheme Tokens.
         um and seg control the features and the level of segmentation.
         '''
+#        print("*** make_word segmentations {}".format(segmentations))
+        if not conllu:
+            self.words.append(segmentations)
+            return segmentations
         if seglevel == 0:
             return self.make_unsegmented_word(word, segmentations, morphid, conllu=conllu, um=um)
         segment_list = []

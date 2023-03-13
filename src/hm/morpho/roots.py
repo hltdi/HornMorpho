@@ -24,12 +24,12 @@ Creating an FST from a set of roots.
 
 import re, os
 from .utils import segment, pad2eqlen
-from .semiring import FSSet, UNIFICATION_SR, TOPFSS
+from .semiring import FSSet # , UNIFICATION_SR
 from .fs import FeatStruct, simple_unify
-#from .fs import FeatStructParser
 from .geez import *
+from .ees import EES
 
-#IRR_FS = FSSet("[-reg]")
+make_weight = EES.make_weight
 
 def geezify_CV(c, v):
     '''
@@ -48,7 +48,7 @@ def geezify_CV(c, v):
 
 class Roots:
 
-    PARSER = FSSet.parse
+#    PARSER = FSSet.parse
 
     # Signifies no input or output characters associated with an FSS
     NO_INPUT = '--'
@@ -61,6 +61,8 @@ class Roots:
     FEATURES_RE = re.compile(r'\s*(\[.+\])$')
     CHAR_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
     CHAR_MAP_LABEL_RE = re.compile(r'([^(^)]+)(?:\((.+)\))?')
+
+#    WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("a=", "sa="), ("v=", "sv="), ("strong", "sstrong")]
 
     possep = ';'
     charmapsep = ';'
@@ -99,6 +101,7 @@ class Roots:
 
     @staticmethod
     def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, labbrev, gen=False, seglevel=2):
+#        print("*** Creating root states for {}, seglevel={}".format(cons, seglevel))
 
         def charfeat_arc(inchar, outchar, wt, source, dest, fst):
             # Create the arc from source dest
@@ -108,7 +111,7 @@ class Roots:
                 # this char depends on a weight
                 inchar, charfeats = inchar
                 # happens for seg but not gen
-                if not gen:
+                if not gen and seglevel:
                     outchar = inchar
 #                print("  **** char {}, charfeats {}".format(char, charfeats.__repr__()))
                 if wt:
@@ -153,18 +156,18 @@ class Roots:
                     if not fst.has_state(dest0):
                         fst.add_state(dest0)
                     for char in chars[0]:
-                        outchar = rchar if gen else char
+                        outchar = rchar if (gen or seglevel==0) else char
                         charfeat_arc(char, outchar, wt, source, dest0, fst)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars[1]:
-                        outchar = '' if gen else char
+                        outchar = '' if (gen or seglevel==0) else char
                         charfeat_arc(char, outchar, wt, dest0, dest, fst)
                 else:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
-                        outchar = rchar if gen else char
+                        outchar = rchar if (gen or seglevel==0) else char
                         charfeat_arc(char, outchar, wt, source, dest, fst)
                 source = dest
             state = states[-1]
@@ -172,7 +175,7 @@ class Roots:
             chars = charsets[len(charsets)]
             rchar = root_chars[-1]
             for char in chars:
-                outchar = rchar if gen else char
+                outchar = rchar if (gen or seglevel==0) else char
                 inchar = char
                 charfeat_arc(inchar, outchar, None, source, 'end', fst)
 #                fst.add_arc(source, 'end', char, char)
@@ -190,7 +193,9 @@ class Roots:
                 cs = cs[0]
             state_name0 = "{}{}".format(state_name, i)
             char = geezify_CV(cs, 'I')
-            feats = "{},{}={}".format(feats, i, char)
+            sourceroot = '' if gen else 's'
+            feats = "{},{}{}={}".format(feats, sourceroot, i, char)
+#            print("*** feats {}".format(feats))
             states.append(state_name0)
         if seglevel == 0:
             # Add source language feature
@@ -198,13 +203,15 @@ class Roots:
         elif gen:
             feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
-        weight = UNIFICATION_SR.parse_weight(feats)
-        cls = weight.get('c')
+        weight = make_weight(feats, not gen)
+#        UNIFICATION_SR.parse_weight(feats)
+        cls = weight.get('c') if gen else weight.get('sc')
 #        print("*** states {}, weight {}".format(states, weight.__repr__()))
         # make the simplex states and arcs
         charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps, charmap_weights)
         # Based on rules, assign ±strong to the root
-        weight = weight.set_all('strong', strong)
+        strength_feat = 'strong' if gen else 'sstrong'
+        weight = weight.set_all(strength_feat, strong)
         mrs(fst, charsets, weight, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
 #            print("*** there are iterative rules: {}".format(cls_it_rules))
@@ -218,9 +225,10 @@ class Roots:
 
     @staticmethod
     def get_rule(consonants, cls, rules):
+#        print("*** Getting rules for {}, {}".format(consonants, cls))
         cls_rules = rules.get(cls)
         if not cls_rules:
-            print("Warning: no rules for class {}!".format(cls))
+            print("Warning: no rules for consonants {} in class {}!".format(consonants, cls))
             return
 
     @staticmethod
@@ -232,7 +240,7 @@ class Roots:
         '''
 #        print("**** Making character sets for {}, {}".format(consonants, cls))
         if not rules:
-            print("Warning: no rules for class {}".format(cls))
+            print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
         charsets = {}
         defaults = rules.get('')
@@ -336,19 +344,23 @@ class Roots:
         for index, cs in enumerate(cons):
             i = index+1
             char = geezify_CV(cs, 'I')
-            feats = "{},{}={}".format(feats, i, char)
+            sourceroot = '' if gen else 's'
+            feats = "{},{}{}={}".format(feats, sourceroot, i, char)
         if seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
         elif gen:
             feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
-        weight = UNIFICATION_SR.parse_weight(feats)
-        cls = weight.get('c')
+        weight = make_weight(feats, not gen)
+#        weight = UNIFICATION_SR.parse_weight(feats)
+        cls_feat = 'c' if gen else 'sc'
+        cls = weight.get(cls_feat)
 #        print("*** cons {}, weight {}, patterns {}".format(cons, weight.__repr__(), patterns))
         for pindex, (pattern, pfeatures) in enumerate(patterns):
             pposition = pindex + 1
-            pfeatures = UNIFICATION_SR.parse_weight(pfeatures)
+            pfeatures = make_weight(pfeatures, not gen)
+#            pfeatures = UNIFICATION_SR.parse_weight(pfeatures)
             pfeatures = FSSet.update(pfeatures, weight)
             source = 'start'
             if gen or seglevel == 0:
@@ -428,7 +440,8 @@ class Roots:
                 if (match := Roots.CHAR_FEAT_RE.match(v)):
                     vs, feature = match.groups()
                     # Create an FSS for this vowel spec
-                    feature = UNIFICATION_SR.parse_weight(feature)
+                    feature = make_weight(feature, not gen)
+#                    feature = UNIFICATION_SR.parse_weight(feature)
                     vspec[vindex] = (vs, feature)
 #                    print("   **** vs {} feature {}".format(vs, feature.__repr__()))
             return vspec
@@ -498,7 +511,8 @@ class Roots:
             if m:
                 maplabel, feature, chars = m.groups()
                 if feature:
-                    feature = UNIFICATION_SR.parse_weight(feature)
+                    feature = make_weight(feature, not gen)
+#                    feature = UNIFICATION_SR.parse_weight(feature)
                 if chars:
                     chars = chars.strip()
                 if not chars:

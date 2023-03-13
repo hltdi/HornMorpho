@@ -197,6 +197,8 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                                                  fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
+## Various shortcuts for working with new cascades
+
 def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True, verbose=True):
     """
     Shortcut for recompiling Amh (experimental) segmenter FST.
@@ -204,8 +206,23 @@ def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True,
     return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, fidel=fidel,
                                        create_fst=create_fst, seglevel=seglevel, verbose=verbose)
 
-def transrecompile(lang, pos):
-    return recompile(lang, pos, fidel=True, translate=True)
+def genrecompile(lang, pos, create_fst=True):
+    '''
+    Recompile the generation FST for a language in the fidel folder.
+    '''
+    return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst)
+
+def analrecompile(lang, pos, create_fst=True):
+    '''
+    Recompile  the analysis FST for a language in the fidel folder.
+    '''
+    return recompile(lang, pos, fidel=True, create_fst=create_fst)
+
+#def transrecompile(lang, pos):
+#    return recompile(lang, pos, fidel=True, translate=True)
+
+FST = hm.morpho.FST
+FF = hm.morpho.FSSet
 
 ### Simple FSTs and cascades (in test directory)
 

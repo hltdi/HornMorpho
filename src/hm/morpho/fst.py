@@ -2091,10 +2091,8 @@ class FST:
                 print('Loading FST from {}'.format(filename))
             # It's a file in the standard FST format; parse() it
             return FST.parse(label, open(filename, encoding='utf-8').read(),
-                             weighting=weighting,
-                             cascade=cascade, directory=directory,
-                             seg_units=seg_units, abbrevs=abbrevs,
-                             weight_constraint=weight_constraint,
+                             weighting=weighting, cascade=cascade, directory=directory,
+                             seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                              gen=gen, verbose=verbose)
 
         elif suffix == 'root':
@@ -2103,8 +2101,7 @@ class FST:
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                cascade=cascade, directory=directory, seglevel=seglevel,
-                               seg_units=seg_units, abbrevs=abbrevs,
-                               weight_constraint=weight_constraint,
+                               seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                                gen=gen, verbose=verbose)
 
         elif suffix == 'mut':
@@ -2112,9 +2109,8 @@ class FST:
                 print("Loading mutations from {}".format(filename))
             return Mutation.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
-                                  cascade=cascade, directory=directory,
-                                  seg_units=seg_units, abbrevs=abbrevs,
-                                  weight_constraint=weight_constraint,
+                                  cascade=cascade, directory=directory, seglevel=seglevel,
+                                  seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                                   gen=gen, verbose=verbose)
 
         elif suffix == 'tmp':
@@ -2122,9 +2118,8 @@ class FST:
                 print("Loading templates from {}".format(filename))
             return Template.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
-                                  cascade=cascade, directory=directory,
-                                  seg_units=seg_units, abbrevs=abbrevs,
-                                  weight_constraint=weight_constraint,
+                                  cascade=cascade, directory=directory, seglevel=seglevel,
+                                  seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                                   gen=gen, verbose=verbose)
 
         elif suffix == 'mtx':

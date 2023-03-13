@@ -1517,6 +1517,7 @@ class Language:
         could be a segmenter, in which case segment is also True, or an analyzer,
         in which case segment is False.
         '''
+#        print("*** Analyzing {}, mwe {}".format(word, mwe))
         # Before anything else, check to see if the word is in the list of
         # words that have failed to be analyzed
         if no_anal != None and word in no_anal:
@@ -1641,6 +1642,7 @@ class Language:
         analyses = analyses[:nbest]
         self.filter_analyses(analyses)
 #        print("print_out {}, string {}, segment {}".format(print_out, string, segment))
+#        print("*** analyses {}".format(analyses))
         if print_out:
             # Print out stringified version
             print(self.analyses2string(word, analyses, seg=segment, lemma_only=lemma_only,
@@ -1821,8 +1823,15 @@ class Language:
                       feats=None, simpfeats=None, um=0, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
                       remove_dups=True, seglevel=2,
+                      filterconds=None,
                       lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
                       verbosity=0):
+        # Keep track of words that are filtered out because they match filter conditions
+        if filterconds and isinstance(filterconds, str):
+            filterconds = EES.get_filter(filterconds)
+#        print("*** Analyzing sentence {} with filter {}".format(sentence, filterconds))
+        # lists of words that filter fails on and words it succeeds on
+        filtered = [[], []]
         if preproc and not callable(preproc):
             preproc = self.preproc
         if postproc and not callable(postproc):
@@ -1842,6 +1851,10 @@ class Language:
         ntokens = len(tokens)
         w_index = 0
         while w_index < ntokens:
+            if filtered[0]:
+                # There is a failed word
+#                print("*** filtered {}, rejecting sentence".format(filtered))
+                return
             word = tokens[w_index]
             simps = None
             words = None
@@ -1870,6 +1883,7 @@ class Language:
                                    string=not raw and not um, print_out=False, only_anal=False)
                 newmorphid = \
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
+                                             filterconds=filterconds, filtered=filtered,
                                              local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                              conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
                                              remove_dups=remove_dups, seglevel=seglevel,
@@ -1905,13 +1919,17 @@ class Language:
                        string=not raw and not um, print_out=False, only_anal=False)
             morphid = \
                 self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
-                                   local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
-                                   conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                   remove_dups=remove_dups, seglevel=seglevel,
-                                   word_sep=word_sep, file=file)
+                                          filterconds=filterconds, filtered=filtered,
+                                          local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
+                                          conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+                                          remove_dups=remove_dups, seglevel=seglevel,
+                                          word_sep=word_sep, file=file)
             # Go to next word
             w_index += 1
 #            print("** Single word analysis, w_index now {}, morphid now {}".format(w_index, morphid))
+        if filterconds and not filtered[1]:
+#            print("*** no words passed filter cond, reject")
+            return
         # End of sentence
         csent.finalize()
         return csent
@@ -1932,6 +1950,7 @@ class Language:
             return True
 
     def handle_word_analyses(self, word, analyses, mwe=False,
+                             filterconds=None, filtered=None,
                              local_cache=None, segment=True, realize=True, realizer=None,
                              conllu=True, xml=False, dicts=None, multseg=True, simps=None, csent=None,
                              remove_dups=True, seglevel=2,
@@ -1941,27 +1960,24 @@ class Language:
         if mwe is True, check whether the analysis is empty ('UNK').
         """
         if not analyses:
-            print("** No analyses for {}".format(word))
+#            print("** No analyses for {}".format(word))
             return 0
         if mwe and analyses[0][0] == 'UNK':
 #            print("** Analysis for {} is empty".format(word))
             return 0
+
+#        print("*** analyses: {}".format(analyses))
+        if filterconds and analyses:
+            # failed, succeeded lists
+            filter_result = Language.filter_word(analyses, filterconds, filtered)
+
+        string_analyses = ''
+
         if segment and realize:
             analyses = [realizer(word, analysis, features=True, udformat=True, um=um, simplifications=simps) for analysis in analyses]
-        # Otherwise (for file or terminal), convert to a string
-        if analyses:
-            if raw or um and not segment:
-                analyses = "{}  {}".format(word, analyses.__repr__())
-            elif not realize:
-                # Convert the analyses to a string
-                analyses = self.analyses2string(word, analyses, seg=segment, form_only=False, lemma_only=False,
-                                                ortho_only=False, short=False, word_sep=word_sep)
-            elif not conllu and not xml:
-                analyses = "{}: {}".format(word, analyses)
-        elif segment and not conllu and not xml:
-            analyses = "{}: []".format(word)
-        else:
-            analyses = word
+
+#        print("*** analyses: {}".format(analyses))
+        
         # Remove duplicate analyses
         if remove_dups:
             anals = []
@@ -1970,6 +1986,20 @@ class Language:
                     anals.append(a)
             if len(anals) != len(analyses):
                 analyses = anals
+        # Otherwise (for file or terminal), convert to a string
+        if analyses:
+            if raw or um and not segment:
+                analyses = "{}  {}".format(word, analyses.__repr__())
+            elif not realize:
+                # Convert the analyses to a string
+                string_analyses = self.analyses2string(word, analyses, seg=segment, form_only=False, lemma_only=False,
+                                                ortho_only=False, short=False, word_sep=word_sep)
+            elif not conllu and not xml:
+                string_analyses = "{}: {}".format(word, analyses)
+        elif segment and not conllu and not xml:
+            analyses = "{}: []".format(word)
+        else:
+            analyses = word
 #        print("** analyses {}".format(analyses))
         # Either store the analyses in the dict or write them to the terminal or the file
         if dicts:
@@ -1986,12 +2016,70 @@ class Language:
         elif xml:
             add_caco_word(xsent, word, analyses, multseg=multseg)
         else:
-            print(analyses, file=file)
+            csent.add_word(word, analyses, morphid, conllu=False, seglevel=seglevel, um=um)
+            print(string_analyses, file=file)
 
         local_cache[word] = analyses
 
         return morphid
-        
+
+    @staticmethod
+    def filter_word(analyses, filterconds, filtered):
+        '''
+        Does the word satisfy the filter conditions?
+        filterconds is a dict with keys 'in' and/or 'out' and values tuples of filterconds
+        Each filter condition is a tuple of of pairs with possible first elements
+        'pos', 'feats, 'featfail', 'lemma', 'ummatch', or 'umfail'.
+        If filterconds is a string, we need to get the conditions from EES.filter.
+        '''
+        succeeded = []
+        failed = []
+        for analysis in analyses:
+            if len(analysis) < 5:
+#                print("*** short anal {}".format(analysis))
+                return True
+            pos = analysis[0]; features = analysis[3]; lemma = analysis[2]
+#            print("*** Filtering: pos {}, feats {}, filterconds {}".format(pos, features.__repr__(), filterconds))
+            for filtertype, filterconds1 in filterconds.items():
+#                print(" *** type {}, conds {}".format(filtertype, filterconds1))
+                for filtercond in filterconds1:
+#                    print("  *** filtercond {}".format(filtercond))
+                    matched = True
+                    for key, value in filtercond:
+#                        print("   *** key {} value {} lemma {}".format(key, value, lemma))
+                        if key == 'pos':
+                            # value could be a single POS or a tuple of POSs
+                            if isinstance(pos, str) and pos == value:
+                                continue
+                            elif pos in value:
+                                continue
+                        elif key == 'featfail':
+                            if simple_unify(features, value) == 'fail':
+                                continue
+                        elif key.startswith('feat'):
+                            if simple_unify(features, value) != 'fail':
+                                continue
+                        elif key == 'lemma':
+                            if lemma == value:
+                                continue
+                        matched = False
+                        break
+                    # Pos and feature conditions match; word is *in* or *out* depending on filtertype
+                    if matched:
+                        if filtertype == 'out':
+                            # Matched the properties, so exclude this one
+                            failed.append(analysis)
+                            break
+                        else:
+                            succeeded.append(analysis)
+            # Conditions failed to match
+            if filtertype == 'out' and not failed:
+                succeeded.append(analysis)
+        filtered[0].extend(failed)
+        filtered[1].extend(succeeded)
+#        print("*** post filter: {}".format(filtered))
+#        return failed, succeeded
+
     def preproc_special(self, word, segment=False, print_out=False):
         '''
         Handle special cases, currently abbreviations, numerals, and punctuation.

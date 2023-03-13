@@ -86,26 +86,41 @@ class Corpus():
         self.root = SegRoot(self, title=self.__repr__(), um=um, seglevel=seglevel)
         self.root.mainloop()
 
-    def segment(self, timeit=False, um=1, seglevel=2, verbosity=0):
+    def segment(self, timeit=False, filter=None, um=1, seglevel=2, verbosity=0):
         """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
-        print("Segmenting sentences in {}".format(self))
+        print("Segmenting sentences in {}".format(self), end='')
+        if filter:
+            print(" with filter {}".format(self, filter))
+        else:
+            print()
+        if filter and isinstance(filter, str):
+            filter = EES.get_filter(filter)
         sentid = 1
         time0 = time.time()
-        for sentence in self.data:
+        todelete = []
+        for sindex, sentence in enumerate(self.data):
             if verbosity:
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
-              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid, local_cache=self.local_cache,
+              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid,
+                                          local_cache=self.local_cache, filterconds=filter,
                                           um=um, seglevel=seglevel)
-#            if seglevel > 0:
-            sentence_obj.merge_segmentations()
-            self.sentences.append(sentence_obj)
-            self.unks.update(set(sentence_obj.unk))
-            self.max_words = max([self.max_words, len(sentence_obj.words)])
-            sentid += 1
+            if not sentence_obj:
+                # sentence may have been filtered out; delete from data
+                print("  Filtered out {}".format(sentence))
+                todelete.append(sindex)
+            else:
+                sentence_obj.merge_segmentations()
+                self.sentences.append(sentence_obj)
+                self.unks.update(set(sentence_obj.unk))
+                self.max_words = max([self.max_words, len(sentence_obj.words)])
+                sentid += 1
+        # Delete sentences that didn't pass the filter
+        for delindex in todelete[::-1]:
+            del self.data[delindex]
         if timeit:
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 

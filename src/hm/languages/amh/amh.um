@@ -1,4 +1,5 @@
 POS n N
+->UD  ACC+GEN	*Case=AccGen
 ->UD  ACC	Case=Acc
 ->UD  GEN	Case=Gen
 ->UD  TERM	Case=Ter
@@ -26,13 +27,14 @@ POS n N
 ->UD CAUS	Voice=Cau
 ->UD RECP	Voice=Rcp
 ->UD ITER	Aspect=Iter
-->UD CAUSRECP	*Voice=CauRcp
+->UD CAUS+RECP	*Voice=CauRcp
 v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 prep:: Iske:TERM;; sIle:PRP;; Inde:EQTV;; wede:ALL;; ke:ABL;; be:INS;; le:DAT;; I:AT
 #plr:: True:PL;; False:SG
-acc:: ACC
-gen:: GEN
+acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
+#acc:: ACC
+#gen:: GEN
 poss::
   expl,p1,plr: PSS1P
   expl,p2,frm: *PSS2FORM
@@ -50,7 +52,7 @@ det:: True:DEF;; False:-DEF
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
 # only relevant for deverbal nouns
-as,vc:: it,cs:CAUSRECP;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
+as,vc:: it,cs:CAUS+RECP;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 
 POS v V
 ->UD NEG	Polarity=Neg
@@ -65,7 +67,7 @@ POS v V
 ->UD RECP	Voice=Rcp
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
-->UD *CAUSRECP	*Voice=CauRcp
+->UD CAUS+RECP	*Voice=CauRcp
 ->UD *RELC	*VerbForm=Rel
 ->UD 1		Person=1
 ->UD 2		Person=2
@@ -131,8 +133,8 @@ tm:: j_i:IMP;; imf:IPFV;; prf:PFV;; prs:PRS
 tm,ax:: imf,None:NFIN;; ger,al:PRF
 ## different ac,vc and lexicalization combinations, combined with bs categories
 as,vc,bs:: smp,ps,0:PASS;; smp,ps,a_:PASS;; smp,tr,0:TR;; smp,tr,te_:TR;; smp,cs,0:CAUS;; smp,cs,te_:CAUS;; smp,cs,a_:CAUS
-as,vc,bs:: rc,ps,0:RCP;; rc,tr,0:CAUSRCP;; rc,tr,te_a:TR;; it,smp,0:ITER;; it,ps,0:RCP;; it,ps,te_:RCP;; it,ps,a_:RCP;; it,ps,te_a:RCP
-as,vc,bs:: it,tr,te_R:TR;; it,tr,0:CAUSRCP;; it,tr,te_:CAUSRCP;; it,tr,a_:CAUSRCP;; it,tr,te_a:CAUSRCP
+as,vc,bs:: rc,ps,0:RCP;; rc,tr,0:CAUS+RCP;; rc,tr,te_a:TR;; it,smp,0:ITER;; it,ps,0:RCP;; it,ps,te_:RCP;; it,ps,a_:RCP;; it,ps,te_a:RCP
+as,vc,bs:: it,tr,te_R:TR;; it,tr,0:CAUS+RCP;; it,tr,te_:CAUS+RCP;; it,tr,a_:CAUS+RCP;; it,tr,te_a:CAUS+RCP
 # voice based on old lexical features
 # CAUS of base form
 #as,vc,lexav:: smp,cs,None:CAUS

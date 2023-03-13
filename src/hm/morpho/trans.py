@@ -524,8 +524,7 @@ class TransTask:
 ##        return fs1.unify(fs2)
 
 class TraFST:
-    """FST for phrase translation.
-    """
+    """FST for phrase translation."""
 
     stateID = 0
 

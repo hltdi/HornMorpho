@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008-2014, 2017-2022. Michael Gasser
+Copyleft 2008-2023. Michael Gasser
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,10 +20,14 @@ Author: Michael Gasser <gasser@indiana.edu>
 """
 
 # Version 4.5 includes the new segmenter for Amharic, accessed with
-# seg_word and seg_file with experimental=True (the default setting)
-# Version 4.5.1 includes the disambiguation GUI and the Corpus class
+# seg_word and seg_file with experimental=True (the default setting).
+# With conllu=True, the default, the segmentation functions return CoNLL-U
+# style representations of sentences, including segmented words.
+# Version 4.5.1 includes the disambiguation GUI and the Corpus class.
+# Version 4.5.2 allows the segmenter to suppress segmentation but use
+# the features of the segments for the whole word.
 
-__version__ = '4.5.1.10'
+__version__ = '4.5.2.0'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -196,8 +200,8 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
 
 def create_corpus(data=None, read={}, write={}, batch={},
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
-                  um=1, seglevel=2,
-                  timeit=False, local_cache=None,
+                  um=1, seglevel=2, timeit=False, local_cache=None,
+                  filter=None, 
                   verbosity=0):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
@@ -221,6 +225,8 @@ def create_corpus(data=None, read={}, write={}, batch={},
     @param um: int indicating whether (1|2 vs. 0) to use UM features converted to UD features and if so,
        how many features (2 indicates features not in UD and possibly in UM guidelines)
     @param seglevel: int indicating whether to segment words and if so, how much; 2 is maximum
+    @param filter: if not None, either a string label for a filter or a filter dict; filters exclude
+       sentences from the corpus that don't satisfy the filter conditions. See conditions in EES.filters.
     @param verbosity: int controlling how verbose messages should be
     '''
     n_sents = batch.get('n_sents', 50)
@@ -240,6 +246,9 @@ def create_corpus(data=None, read={}, write={}, batch={},
         return morpho.os.path.join(folder, filename)
     path = ''
     readpath = ''
+    if data:
+        # We may be deleting sentences, so better make a copy.
+        data = data.copy()
     if not data:
         readpath = make_path(read.get('path', ''), read.get('folder', ''), read.get('filename', ''), '.txt')
     corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, batch_name=batch_name,
@@ -248,7 +257,7 @@ def create_corpus(data=None, read={}, write={}, batch={},
         print("No corpus found!")
         return
     if segment:
-        corpus.segment(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
+        corpus.segment(timeit=timeit, filter=filter, um=um, seglevel=seglevel, verbosity=verbosity)
     if disambiguate:
         # Checks to see whether segment() has already been called
         corpus.disambiguate(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
@@ -286,7 +295,7 @@ def create_corpus(data=None, read={}, write={}, batch={},
                              batch_name=batch_name, verbosity=verbosity)
     return corpus
 
-def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2):
+def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2, filterconds=None):
     '''
     Segment a sentence, returning an instance of Sentence.
     Only works for Amharic.
@@ -294,7 +303,8 @@ def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2):
     seglevel controls whether to segment the word (and how much).
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
-    return language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel)
+    return \
+      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel, filterconds=filterconds)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,

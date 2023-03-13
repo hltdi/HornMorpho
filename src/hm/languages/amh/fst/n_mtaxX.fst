@@ -99,14 +99,21 @@ poss -> acc     <ac_hu:-Ac_hu(@pron,posm,$number=plur,person=2,poss=yes,*ኣች�
 poss -> acc     <ac_ew:-Ac_ew(@pron,posm,$number=plur,person=3,poss=yes,*ኣቸው,~nmod)>   [+def,poss=[-p1,-p2,+plr,+expl],-itu]
 poss -> acc     <wo:-wo(@pron,posm,$number=sing,person=2,polite=form,poss=yes,*ዎ,~nmod)>    [+def,poss=[-p1,+p2,-plr,+frm,+expl],-itu]
 
-## ACCUSATIVE
+## ACCUSATto IVE
 acc -> cnj        [:]      [-acc]
 # % not sure why the TB allots a special XPOS to accusative; they also include no features
+# For genitive nouns, this means two case dependents
+# (possible according to https://universaldependencies.org/u/dep/case.html, though for different reasons)
 acc -> cnj        <n:-n(@part,acc,$case=acc,*ን,~case)>     [+acc]
 # optional -en following 1p poss ኣችን (ሁላችነን)
 acc -> cnj        <en:-n(@part,acc,$case=acc,*ን,~case)>     [+acc,+def,poss=[+p1,-p2,+plr,+expl],-itu]
 # % as in እኤኑ, ማታውኑ ; not sure what the constraints on this -ኑ are
 acc -> cnj        <nu:-nu(@part,acc,$case=acc,*ን,~case)>   [+acc]
+## alternatives to prevent multiple case markers for genitive nouns with accusative suffix
+## የ-ሁል-ኣችን-ን
+#acc -> cnj        <en:-n(@part,acc,$case=acc,*ን,~case)>     [+acc,+def,+gen,poss=[+p1,-p2,+plr,+expl],-itu]
+## የ-ዮሃንስ-ን: acc suffix dependent of head noun (but what if it's omitted?)
+#acc -> cnj        <n:-n(@part,acc,$case=acc,*ን,~case)>     [+acc,+gen]
 
 ## CONJUNCTIVE SUFFIXES
 cnj -> end        [:]      [cnj=None]

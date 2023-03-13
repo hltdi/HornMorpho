@@ -56,62 +56,68 @@
 # ተንጸባረቀ
 %H::		1:I;	2:e;	3:a;	4:e,I;	5:I
 
-<s b r>	      c=A
+<ስ ብ ር>		c=A
 
-<m w t>	      c=A
+<ል ብ ስ>		c=A
 
-<x y T>	      c=A
+<ቅ ር ብ>		c=A
 
-<h y d>	      c=A
+<ግ ድ ል>		c=A
 
-<l b s>	      c=A
+<ም ው ት>		c=A
 
-<q r b>	      c=A
+<ሽ ይ ጥ>		c=A
 
-<' d r>	      c=A
+<ህ ይ ድ>		c=A
 
-<' l f>	     c=A
+<እ ድ ር>		c=A
 
-<' w q>	     c=A
+<እ ል ፍ>		c=A
 
-<m T '>         c=A
+<እ ው ቅ>		c=A
 
-<q r y>	     c=A
+<ም ጥ እ>		c=A
 
-<s ' m>	     c=A
+<ስ ም እ>	 	c=A
 
-<' y y>	     c=A
+<ቅ ር ይ>		c=A
 
-<' T '>	     c=A
+<ስ እ ም>	     c=A
 
-<y ' z>	     c=A
+<እ ይ ይ>	     c=A
 
-<f l g>	      c=B
+<ይ ጥ ይ>	     c=A
 
-<T T '>	      c=B
+<ይ እ ዝ>	     c=A
 
-<l y '>	      c=B
+<ፍ ል ግ>	      c=B
 
-<' s b>	      c=B
+<ጭ ር ስ>	      c=B
 
-<q m T>	      c=B,v=p|as
+<ጥ ጥ እ>	      c=B
 
-<b r k>	      c=C
+<ል ይ እ>	      c=B
 
-<C f C f>     c=E
+<እ ስ ብ>	      c=B
 
-<' n k s>     c=E
+<ቅ ም ጥ>	      c=B,v=p|as
 
-<g n b '>     c=E
+<ብ ር ክ>	      c=C
 
-<s l c y>     c=E
+<ጭ ፍ ጭ ፍ>     c=E
 
-<b ' b '>     c=E
+<እ ን ክ ስ>     c=E
 
-<q b T r>     c=F
+<ግ ን ብ እ>     c=E
 
-<C b r b r>   c=G
+<ስ ል ች ይ>     c=E
 
-<n S b r q>   c=H
+<ብ እ ብ እ>     c=E
 
-<n s f f>     c=J
+<ቅ ብ ጥ ር>     c=F
+
+<ጭ ብ ር ብ ር>   c=G
+
+<ን ጽ ብ ር ቅ>   c=H
+
+<ን ስ ፍ ፍ>     c=J

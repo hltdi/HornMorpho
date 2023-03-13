@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2020, 2021, 2022.
+    Copyleft 2020, 2021, 2022, 2023.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -24,10 +24,12 @@ Author: Michael Gasser <gasser@indiana.edu>
 Functions common to some or all Ethio-Eritrean Semitic languages.
 """
 
-#from . import language
 from .geez import *
 from .utils import segment, allcombs
-#from .rule import *
+from .semiring import UNIFICATION_SR
+from .fs import FeatStruct
+
+WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("strong", "sstrong")]
 
 class EES:
 
@@ -47,6 +49,37 @@ class EES:
     # treated as synonymous.
     wcodes2patindex = {'0': 0, 'te_': 1, 'a_': 2, 'as_': 3, 'te_a': 4, 'a_a': 4, 'as_a': 4, 'te_R': 5, 'a_R': 5, 'R': 6}
     wpatcodes = [('0',), ('te_',), ('a_',), ('as_',), ('te_a', 'a_a'), ('te_R', 'a_R'), ('R',)]
+
+    # Filters to use with anal_sentence to restrict syntax/morphology.
+    filters = \
+    {
+      'core':
+         # Only core arguments: nsubj, obj, iobj, expl?, csubj, xcomp, ccomp; no obl
+         {'out': ( (('pos', 'n'), ('featfail', FeatStruct("[prep=None]"))),
+                           ) },
+
+      'simple':
+         # Only simple clauses with verb heads; no relative verbs, converbs, infinitives, or other subordinate verbs; no copulas
+         # Problem: ነበረ is excluded, but it could be the past of አለ (favoring precision, not recall)
+         {'out': ( (('pos', 'v'), ('feats', FeatStruct("[+sub]"))),
+                   (('pos', 'v'), ('feats', FeatStruct("[tm=ger]"))),
+                   (('pos', ('n', 'n_dv')), ('feats', FeatStruct("[v=inf]"))),
+                   (('pos', ('cop', 'aux')),),
+                   (('pos', 'v'), ('lemma', 'ነበረ'))
+                   ) },
+
+      'complex':
+         # Only complex clauses
+         {'in': ( (('pos', 'v'), ('feats', FeatStruct("[+sub]"))),
+                  (('pos', 'v'), ('feats', FeatStruct("[tm=ger]"))),
+                  (('pos', ('n', 'n_dv')), ('feats', FeatStruct("[v=inf]"))) 
+                  ) },
+
+       'nonverbal':
+         # Only non-verbal clauses: copula. ነበረ is not included because this could be the past of እለ (favoring precision, not recall)
+         {'in': ( (('pos', ('cop', 'aux')), ('feats', FeatStruct("[tm=prs]"))),
+                  ) }
+         }
 
     def __init__(self, fidel=False):
         print("Creating EES language {}".format(self))
@@ -68,6 +101,30 @@ class EES:
                          gemination=self.output_gemination)
         if not self.postpostproc:
             self.postpostproc = lambda form: form.replace('//', ' ')
+
+    @staticmethod
+    def make_weight(string, source=False, conversions=WT_CONV):
+        '''
+        Make a weight, possibly for the source language in a translation FST.
+        '''
+        if source:
+            string = EES.conv_string(string, conversions)
+        return UNIFICATION_SR.parse_weight(string)
+
+    @staticmethod
+    def get_filter(label):
+        '''
+        Get the filter conditions for given label, for example, 'simple'.
+        '''
+        return EES.filters.get(label)
+
+    @staticmethod
+    def conv_string(string, conversions=WT_CONV):
+        if conversions:
+            for src, trg in conversions:
+                if src in string:
+                    string = string.replace(src, trg)
+        return string
 
     def geezify(self, form, gemination=False, deepenthesize=False):
         """

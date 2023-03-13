@@ -17,54 +17,30 @@ Michael Gasser <gasser@indiana.edu>
     You should have received a copy of the GNU General Public License
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------
-Creating an FST from a set of stem mutations.
-2023.02.14
+FST for root translation.
+2023.03.07
 
 """
 
 import re, os
 from .utils import segment
-from .semiring import FSSet, UNIFICATION_SR, TOPFSS
-#from .fs import FeatStruct
-#from .fs import FeatStructParser
+from .semiring import FSSet
 from .geez import *
+from .ees import EES
 
-def geezify_CV(c, v):
-    '''
-    Convert roman cons and vowel to a Geez character.
-    v may be '0' in which case the vowelless (ሳድስ) character is returned.
-    v may be '0x', where x is a Geez character. In this case this character
-    is returned, and c is ignored.
-    '''
-    if v in '0-_' or not v:
-        return ''
-    elif len(v) > 1 and v[0] == '0':
-        return v[1]
-    elif is_geez(c):
-        c = romanize(c, 'ees')
-    return geezify(c+v, 'ees')
+make_weight = EES.make_weight
 
-class Mutation:
-
-#    PARSER = FSSet.parse
+class LexTrans:
 
     # Signifies no change in a stem character.
-    NO_CHANGE = '-'
+    lexsep = '%'
 
-    RULE_RE = re.compile(r'\s*\$\s+(.+)$')
-    FEATURES_RE = re.compile(r'\s*(\[.+\])$')
-    PATTERN_RE = re.compile(r'\s*(.+)$')
+    ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
 
     @staticmethod
-    def make_unmutated_arc(fst, unmutated_weight):
-        unmutated_weight = UNIFICATION_SR.parse_weight(unmutated_weight)
-        fst.add_arc('start', 'start', '**', '**', weight=unmutated_weight)
-
-    @staticmethod
-    def make_mutation_states(fst, features, patterns, abbrevs, index):
+    def make_lextrans_states(fst, features, patterns, abbrevs, index):
         weight = UNIFICATION_SR.parse_weight(features)
         feat_state_name = "mut{}".format(index)
-        print("** mutations for {}: {}".format(weight.__repr__(), patterns))
         for pindex, pattern in enumerate(patterns):
             pat_state_name = "{}_{}".format(feat_state_name, pindex)
             source = 'start'
@@ -99,17 +75,13 @@ class Mutation:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-#        print("** Parsing mutation file {}, fst {}".format(s, fst))
-
-#        weighting = fst.weighting()
+        print("** Parsing lextrans file {}, fst {}".format(s, fst))
 
         language = cascade.language
 
-        rules = []
-        mutations = {}
+        entry_lists = []
 
-        current_feats = ''
-        unmutated_weight = None
+#        rules = []
 
         # Create start and end states
         if not fst.has_state(label): fst.add_state('start')
@@ -118,48 +90,33 @@ class Mutation:
         if not fst.has_state('end'): fst.add_state('end')
         fst.set_final('end')
 
-        lines = s.split('\n')[::-1]
+        entries = s.split(LexTrans.lexsep)[::-1]
 
-        while lines:
-            line = lines.pop().split('#')[0].strip() # strip comments
+        while entries:
 
-            if not line: continue
+            entry = entries.pop()
 
-            m = Mutation.RULE_RE.match(line)
-            if m:
-                rule = m.groups()[0]
-#                print("*** rule {}".format(rule))
-                if rule[0] == '[':
-                    unmutated_weight = rule
-                else:
-                    rules.append(rule)
-                continue
+            entry_list = []
 
-            m = Mutation.FEATURES_RE.match(line)
-            if m:
-                current_feats = m.groups()[0]
-                mutations[current_feats] = []
-#                print("*** features {}".format(current_feats))
-                continue
+            for line in entry.split("\n"):
+                line = line.split('#')[0].strip()
 
-            m = Mutation.PATTERN_RE.match(line)
-            if m:
-                pattern = m.groups()[0].split()
-#                print("*** stem pattern {}".format(pattern))
-                mutations[current_feats].append(pattern)
-                continue
+                if not line: continue
 
-            print("*** Something wrong with {}".format(line))
+                m = LexTrans.ROOT_RE.match(line)
+
+                if m:
+                    root, feat = m.groups()
+                    print("** Found root {} feat {}".format(entry, feat))
+                    entry_list.append((entry, feat))
+                    continue
+
+            entry_lists.append(entry_list)
+
+                print("*** Something wrong with {}".format(line))
 
 #        print("** rules: {}".format(rules))
 #        print("** mutations: {}".format(mutations))
-
-
-        if unmutated_weight:
-            Mutation.make_unmutated_arc(fst, unmutated_weight)
-
-        for index, (features, patterns) in enumerate(mutations.items()):
-            Mutation.make_mutation_states(fst, features, patterns, abbrevs, index)
 
 #        print(fst)
 
