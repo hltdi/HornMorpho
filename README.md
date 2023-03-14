@@ -199,6 +199,11 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 
 >* `um` ([Universal Morphology](https://unimorph.github.io/)) specifies the category of morphological features to provide for words and/or word segments. 1 (the default value): features are from the set included in the [Universal Dependency](https://universaldependencies.org/u/feat/all.html) guidelines. 2: features are from an extended set, possibly including those not in the basic UM set. 0: currently ignored.
 * `seglevel` specifies how much segmentation to perform. 0: no segmentation; features are assigned to the whole word. 2: maximum segmentation; features are assigned to individual segments (morphemes) within a word. 1: currently ignored.
+* `gramfilter` gives the name of a filter `dict`, which causes the function to exclude or include sentences with certain grammatical properties. An example is 'core', which excludes noun arguments that have case markers other than accusasative:
+
+	{'out': ( (('pos', 'n'), ('featfail', FeatStruct("[prep=None]")), )}
+   
+This excludes sentences (returning `None`) containing a token which has POS `n` and anyting other than `None` for its `prep` feature.
 
 	>>> s = hm.seg_sentence("ልጁን ሥራውን አስጨርሰዋለሁ ።")
 	>>> print(s.conllu.serialize())
@@ -250,6 +255,7 @@ To see the CoNLL-U representation of a `Sentence`, call `serialize()` on the its
 * `batch` is a string or float specifying the batch number. It defaults to '1.0'.
 * `um`: See `seg_sentence`.
 * `seglevel`: See `seg_sentence`.
+* `gramfilter`: See `seg_sentence`.
 
 ### Writing sentence segmentations to a file
 

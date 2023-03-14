@@ -27,7 +27,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5.2 allows the segmenter to suppress segmentation but use
 # the features of the segments for the whole word.
 
-__version__ = '4.5.2.0'
+__version__ = '4.5.2.2'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -116,7 +116,7 @@ seg = seg_word
 def seg_file(file='', language='amh', experimental=True,
              start=0, nlines=0, nbest=4, report_n=10,
              xml=None, multseg=True, csentences=True, sentid=0, batch_name='',
-             um=1, seglevel=2,
+             um=1, seglevel=2, gramfilter=None,
              version='2.2', batch='1.0',
              local_cache=None, sep_punc=True, verbosity=0):
     '''
@@ -157,7 +157,7 @@ def seg_file(file='', language='amh', experimental=True,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=True, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
                            xml=xml, multseg=multseg, csentences=csentences, sentid=sentid,
-                           um=um, seglevel=seglevel,
+                           um=um, seglevel=seglevel, gramfilter=gramfilter,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
@@ -198,10 +198,9 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
     if rejected:
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
-def create_corpus(data=None, read={}, write={}, batch={},
+def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
                   um=1, seglevel=2, timeit=False, local_cache=None,
-                  filter=None, 
                   verbosity=0):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
@@ -214,7 +213,10 @@ def create_corpus(data=None, read={}, write={}, batch={},
     @param read: dict with keys 'path', 'folder', 'filename', as possible keys, ignored
        in case data is not None
     @param write: dict with keys 'stdout', 'path', 'folder', 'filename', 'annotator' as possible keys
-    @param batch: dict with keys 'name', 'id', 'start', 'n_sents', 'sent_length', 'source', 'version'
+    @param batch: dict with keys 'name', 'id', 'start', 'n_sents', 'sent_length', 'source', 'version', 'max_sents'
+    @param constraints: dict with keys 'grammar', 'min_len', 'max_len', 'max_punc', 'max_num'
+       grammar value is a string label for a grammar filter dict; filters exclude or include sentences
+       that satisfy or don't satisfy the filter conditions. See conditions in EES.filters.
     @param segment: whether to segment the data with HM after it is loaded
     @param disambiguate: whether to disambiguate the data using the HM GUI after it is segmented
     @param conlluify: whether to run Corpus.conlluify() on the disambiguated pre-CoNLL-U lists
@@ -229,15 +231,18 @@ def create_corpus(data=None, read={}, write={}, batch={},
        sentences from the corpus that don't satisfy the filter conditions. See conditions in EES.filters.
     @param verbosity: int controlling how verbose messages should be
     '''
-    n_sents = batch.get('n_sents', 50)
+    n_sents = batch.get('n_sents', 100)
+    max_sents = batch.get('max_sents', 1000)
     start = batch.get('start', 0)
     range = "{}-{}".format(start+1, start+n_sents) if start else "{}".format(n_sents)
     sent_length = batch.get('sent_length', '')
+    gramfilt = constraints.get('grammar')
     batch_name = batch.get('name') or \
-      "{}{}_B{}_{}s".format(batch.get('source', 'CACO'),
-                            "_{}w".format(sent_length) if sent_length else '',
-                            batch.get('id', 1),
-                            range)
+      "{}{}{}_B{}_{}s".format(batch.get('source', 'CACO'),
+                              "_{}".format(gramfilt) if gramfilt else '',
+                              "_{}w".format(sent_length) if sent_length else '',
+                              batch.get('id', 1),
+                              range)
     def make_path(path, folder, filename, extension):
         if path:
             return path
@@ -250,14 +255,18 @@ def create_corpus(data=None, read={}, write={}, batch={},
         # We may be deleting sentences, so better make a copy.
         data = data.copy()
     if not data:
-        readpath = make_path(read.get('path', ''), read.get('folder', ''), read.get('filename', ''), '.txt')
-    corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, batch_name=batch_name,
-                           local_cache=local_cache)
+        readpath = make_path(read.get('path', ''), read.get('folder', morpho.CACO_DIR), read.get('filename', ''), '.txt')
+    corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, max_sents=max_sents,
+                           batch_name=batch_name,
+                           constraints=constraints, local_cache=local_cache, timeit=timeit,
+                           segment=segment,
+#                           disambiguate=disambiguate, conlluify=conlluify, degeminate=degeminate,
+                           verbosity=verbosity)
     if not corpus or not corpus.data:
         print("No corpus found!")
         return
-    if segment:
-        corpus.segment(timeit=timeit, filter=filter, um=um, seglevel=seglevel, verbosity=verbosity)
+#    if segment:
+#        corpus.segment(timeit=timeit, filter=gramfilt, um=um, seglevel=seglevel, verbosity=verbosity)
     if disambiguate:
         # Checks to see whether segment() has already been called
         corpus.disambiguate(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
@@ -295,16 +304,18 @@ def create_corpus(data=None, read={}, write={}, batch={},
                              batch_name=batch_name, verbosity=verbosity)
     return corpus
 
-def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2, filterconds=None):
+def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2, gramfilter=None):
     '''
     Segment a sentence, returning an instance of Sentence.
     Only works for Amharic.
     um controls whether to created UD features from UM features (and which ones).
     seglevel controls whether to segment the word (and how much).
+    gramfilter is a string label for a filter dict for excluding or including sentences with
+    particular morphological properties. See EES.filters.
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
     return \
-      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel, filterconds=filterconds)
+      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel, gramfilter=gramfilter)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,

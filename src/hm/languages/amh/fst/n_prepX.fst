@@ -9,7 +9,7 @@ start -> end   <be:be(@adp,case=ins,*በ,~case)->      [prep=be,-acc]
 start -> end   <ke:ke(@adp,$case=abl,*ከ,~case)->      [prep=ke,-acc]
 start -> end   <wede:wede(@adp,$case=all,*ወደ,~case)->  [prep=wede,-acc]
 start -> end   <'nde:'nde(@adp,$case=equ,*እንደ,~case)->  [prep=Inde,-acc]
-start -> end   <sIle:sle(@adp,%case=cau,*ስለ,~case)->   [prep=sIle,-acc]
+start -> end   <sIle:sle(@adp,$case=cau,*ስለ,~case)->   [prep=sIle,-acc]
 start -> end   <'ske:'ske(@adp,$case=ter,*እስከ,~case)->  [prep=Iske,-acc]
 start -> end   <ye:ye(@adp,$case=gen,*የ,~case)->  [prep=ye,+gen]
 

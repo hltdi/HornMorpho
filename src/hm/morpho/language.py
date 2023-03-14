@@ -1712,6 +1712,8 @@ class Language:
                   sep_punc=True, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=0, normalize=False,
                   # Kind of output
                   conllu=True, seglevel=2,
+                  # Filter for morphological properites
+                  gramfilter=None,
                   # Ambiguity
                   rank=True, report_freq=False, nbest=100, report_n=50000,
                   lower=True, lower_all=False, nlines=0, start=0, batch_name='',
@@ -1797,7 +1799,7 @@ class Language:
                 self.anal_sentence(line, csent=csent, csentences=csentences, file=out,
                                    preproc=preproc, postproc=postproc, pos=pos, fsts=fsts, segment=segment, 
                                    realize=realize, realizer=realizer, dicts=[knowndict, guessdict] if storedict else None,
-                                   conllu=conllu, xsent=xsent, seglevel=seglevel,
+                                   conllu=conllu, xsent=xsent, seglevel=seglevel, gramfilter=gramfilter,
                                    phon=phon, only_guess=only_guess, guess=guess, raw=raw, experimental=experimental, mwe=mwe,
                                    sep_punc=sep_punc, word_sep=word_sep, sep_ident=sep_ident, minim=minim, feats=feats, simpfeats=simpfeats,
                                    um=um, normalize=normalize, report_freq=report_freq, nbest=nbest, report_n=report_n,
@@ -1823,13 +1825,13 @@ class Language:
                       feats=None, simpfeats=None, um=0, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
                       remove_dups=True, seglevel=2,
-                      filterconds=None,
+                      gramfilter=None,
                       lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
                       verbosity=0):
         # Keep track of words that are filtered out because they match filter conditions
-        if filterconds and isinstance(filterconds, str):
-            filterconds = EES.get_filter(filterconds)
-#        print("*** Analyzing sentence {} with filter {}".format(sentence, filterconds))
+        if gramfilter and isinstance(gramfilter, str):
+            gramfilter = EES.get_filter(gramfilter)
+#        print("*** Analyzing sentence {} with filter {}".format(sentence, gramfilter))
         # lists of words that filter fails on and words it succeeds on
         filtered = [[], []]
         if preproc and not callable(preproc):
@@ -1883,7 +1885,7 @@ class Language:
                                    string=not raw and not um, print_out=False, only_anal=False)
                 newmorphid = \
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
-                                             filterconds=filterconds, filtered=filtered,
+                                             gramfilter=gramfilter, filtered=filtered,
                                              local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                              conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
                                              remove_dups=remove_dups, seglevel=seglevel,
@@ -1919,7 +1921,7 @@ class Language:
                        string=not raw and not um, print_out=False, only_anal=False)
             morphid = \
                 self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
-                                          filterconds=filterconds, filtered=filtered,
+                                          gramfilter=gramfilter, filtered=filtered,
                                           local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                           conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
                                           remove_dups=remove_dups, seglevel=seglevel,
@@ -1927,7 +1929,7 @@ class Language:
             # Go to next word
             w_index += 1
 #            print("** Single word analysis, w_index now {}, morphid now {}".format(w_index, morphid))
-        if filterconds and not filtered[1]:
+        if gramfilter and not filtered[1]:
 #            print("*** no words passed filter cond, reject")
             return
         # End of sentence
@@ -1950,7 +1952,7 @@ class Language:
             return True
 
     def handle_word_analyses(self, word, analyses, mwe=False,
-                             filterconds=None, filtered=None,
+                             gramfilter=None, filtered=None,
                              local_cache=None, segment=True, realize=True, realizer=None,
                              conllu=True, xml=False, dicts=None, multseg=True, simps=None, csent=None,
                              remove_dups=True, seglevel=2,
@@ -1967,9 +1969,9 @@ class Language:
             return 0
 
 #        print("*** analyses: {}".format(analyses))
-        if filterconds and analyses:
+        if gramfilter and analyses:
             # failed, succeeded lists
-            filter_result = Language.filter_word(analyses, filterconds, filtered)
+            filter_result = Language.filter_word(analyses, gramfilter, filtered)
 
         string_analyses = ''
 
@@ -2024,14 +2026,15 @@ class Language:
         return morphid
 
     @staticmethod
-    def filter_word(analyses, filterconds, filtered):
+    def filter_word(analyses, gramfilter, filtered, verbosity=0):
         '''
         Does the word satisfy the filter conditions?
-        filterconds is a dict with keys 'in' and/or 'out' and values tuples of filterconds
+        gramfilter is a dict with keys 'in' and/or 'out' and values tuples of gramfilter
         Each filter condition is a tuple of of pairs with possible first elements
         'pos', 'feats, 'featfail', 'lemma', 'ummatch', or 'umfail'.
-        If filterconds is a string, we need to get the conditions from EES.filter.
+        If gramfilter is a string, we need to get the conditions from EES.filter.
         '''
+#        print("Filter word {}".format(gramfilter))
         succeeded = []
         failed = []
         for analysis in analyses:
@@ -2039,29 +2042,36 @@ class Language:
 #                print("*** short anal {}".format(analysis))
                 return True
             pos = analysis[0]; features = analysis[3]; lemma = analysis[2]
-#            print("*** Filtering: pos {}, feats {}, filterconds {}".format(pos, features.__repr__(), filterconds))
-            for filtertype, filterconds1 in filterconds.items():
-#                print(" *** type {}, conds {}".format(filtertype, filterconds1))
-                for filtercond in filterconds1:
+#            print("*** Filtering: pos {}, feats {}, gramfilter {}".format(pos, features.__repr__(), gramfilter))
+            for filtertype, filterconds in gramfilter.items():
+#                print(" *** type {}, conds {}".format(filtertype, gramfilter1))
+                for filtercond in filterconds:
 #                    print("  *** filtercond {}".format(filtercond))
                     matched = True
                     for key, value in filtercond:
-#                        print("   *** key {} value {} lemma {}".format(key, value, lemma))
+                        if verbosity:
+                            print("   *** key {} value {} lemma {} features {}".format(key, value, lemma, features.__repr__()))
                         if key == 'pos':
                             # value could be a single POS or a tuple of POSs
-                            if isinstance(pos, str) and pos == value:
+                            if isinstance(value, str) and pos == value:
                                 continue
                             elif pos in value:
                                 continue
                         elif key == 'featfail':
-                            if simple_unify(features, value) == 'fail':
+                            if features and simple_unify(features, value) == 'fail':
                                 continue
                         elif key.startswith('feat'):
-                            if simple_unify(features, value) != 'fail':
+                            if features and simple_unify(features, value) != 'fail':
+                                if verbosity:
+                                    print("    *** passed!")
                                 continue
                         elif key == 'lemma':
-                            if lemma == value:
+                            if isinstance(value, str) and lemma == value:
                                 continue
+                            elif lemma in value:
+                                continue
+                        if verbosity:
+                            print("   *** Failed to match")
                         matched = False
                         break
                     # Pos and feature conditions match; word is *in* or *out* depending on filtertype
@@ -2077,7 +2087,8 @@ class Language:
                 succeeded.append(analysis)
         filtered[0].extend(failed)
         filtered[1].extend(succeeded)
-#        print("*** post filter: {}".format(filtered))
+        if verbosity:
+            print("*** post filter: {}".format(filtered))
 #        return failed, succeeded
 
     def preproc_special(self, word, segment=False, print_out=False):

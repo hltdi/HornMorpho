@@ -62,7 +62,7 @@ class EES:
          # Only simple clauses with verb heads; no relative verbs, converbs, infinitives, or other subordinate verbs; no copulas
          # Problem: ነበረ is excluded, but it could be the past of አለ (favoring precision, not recall)
          {'out': ( (('pos', 'v'), ('feats', FeatStruct("[+sub]"))),
-                   (('pos', 'v'), ('feats', FeatStruct("[tm=ger]"))),
+                   (('pos', 'v'), ('feats', FeatStruct("[tm=ger,ax=None]"))),
                    (('pos', ('n', 'n_dv')), ('feats', FeatStruct("[v=inf]"))),
                    (('pos', ('cop', 'aux')),),
                    (('pos', 'v'), ('lemma', 'ነበረ'))
@@ -71,14 +71,22 @@ class EES:
       'complex':
          # Only complex clauses
          {'in': ( (('pos', 'v'), ('feats', FeatStruct("[+sub]"))),
-                  (('pos', 'v'), ('feats', FeatStruct("[tm=ger]"))),
+                  # but these can also be part of compound tense: ገብቶ ነበር; need to check following word
+                  # could leave this, missing all instances of subordinate converb
+                  (('pos', 'v'), ('feats', FeatStruct("[tm=ger,ax=None]"))),
                   (('pos', ('n', 'n_dv')), ('feats', FeatStruct("[v=inf]"))) 
                   ) },
 
        'nonverbal':
          # Only non-verbal clauses: copula. ነበረ is not included because this could be the past of እለ (favoring precision, not recall)
          {'in': ( (('pos', ('cop', 'aux')), ('feats', FeatStruct("[tm=prs]"))),
+                  ) },
+
+       'ነበር':
+         # Only clauses with some form of ነበር, either as aux or main verb.
+         {'in': ( (('pos', ('cop', 'aux', 'v')), ('lemma', ('ነበር', 'ነበረ', 'ነበ፟ር'))),
                   ) }
+       
          }
 
     def __init__(self, fidel=False):
