@@ -7,9 +7,10 @@ start -> start   [V-u,o;X;_;/]
 start ->
 ou ->
 
-# Insert gs between o/u and a
+# Insert gs or w between o/u and a
 start -> ou      [u;o]
-ou -> ou'        [':]
+# አሉአቸው አሉዋቸው
+ou -> ou'        [':;w:]
 ou' -> start     [a]
 ou -> start      [X;/]
 # The change can also follow these consonants

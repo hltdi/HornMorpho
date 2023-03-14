@@ -90,6 +90,8 @@ class Corpus():
                     line = lines[linepos]
                     line = line.strip()
                     linepos += 1
+                    if linepos % 50 == 0:
+                        print("Checked {} sentences".format(linepos))
                     if constraints and maxnum != None or maxpunc != None:
                         tokens = line.split()
                         # todo: implement number, length, punctuation constraints
