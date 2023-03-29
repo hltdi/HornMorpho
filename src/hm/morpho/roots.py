@@ -197,11 +197,12 @@ class Roots:
             feats = "{},{}{}={}".format(feats, sourceroot, i, char)
 #            print("*** feats {}".format(feats))
             states.append(state_name0)
-        if seglevel == 0:
+#        print("** seglevel {}, gen {}".format(seglevel, gen))
+        if gen:
+            feats = "{},tl={}".format(feats, labbrev)
+        elif seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
-        elif gen:
-            feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
         weight = make_weight(feats, not gen)
 #        UNIFICATION_SR.parse_weight(feats)
@@ -391,7 +392,7 @@ class Roots:
             fst.add_arc(source, dest, final_in, final_out)
 
     @staticmethod
-    def parse(label, s, cascade=None, fst=None, gen=False, 
+    def parse(label, s, cascade=None, fst=None, gen=False, posmorph=None,
               directory='', seg_units=[], abbrevs=None, seglevel=2,
               weight_constraint=None, verbose=False):
         """

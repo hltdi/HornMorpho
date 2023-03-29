@@ -563,10 +563,10 @@ class Sentence():
         '''
         Return a list of lists of leftward and rightward dependencies.
         '''
+#        print("** get dependencies; segmentation: {}".format(segmentation))
         headindex = Sentence.get_headindex(segmentation)
         if headindex is not None:
             headid = segmentation[1:][headindex].get('id')
-#            print("** get dependencies: headindex {}, headid {}".format(headindex, headid))
             idiff = headid - headindex
             dependencies = [(s.get('deprel', ''), i, s.get('head', '') - idiff) for i, s in enumerate(segmentation[1:]) if i != headindex]
 #            print("** segmentation {}".format(segmentation))
@@ -575,6 +575,7 @@ class Sentence():
             right = []
             for dependency in dependencies:
                 source, dest = dependency[2], dependency[1]
+#                print("*** dependency src {}, dest {}".format(source, dest))
                 if source >= headindex and dest >= headindex:
                     right.append(dependency)
                 elif source <= headindex and dest <= headindex:

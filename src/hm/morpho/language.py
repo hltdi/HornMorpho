@@ -45,7 +45,7 @@ Morphology objects defined in morphology.py).
      for phonological cases?).
 """
 
-import os, sys, re, copy, itertools
+import os, sys, re, copy, itertools, copy
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'languages')
 
@@ -1507,7 +1507,7 @@ class Language:
                   get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, rank=True, report_freq=True, nbest=100,
-                  conllu=False,
+                  conllu=False, skip_other_pos=False,
                   only_anal=False, preseg=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
@@ -1541,7 +1541,7 @@ class Language:
          # See if the word is unanalyzable ...
         unal_word = self.morphology.is_unanalyzed(form)
         # unal_word is a form, POS pair
-        if unal_word:
+        if unal_word and not skip_other_pos:
             # Don't cache these
             cache = False
             if only_anal:
@@ -1558,10 +1558,11 @@ class Language:
                     analyses = self.proc_anal(word, cached, None, show_root=root, citation=citation,
                                               stem=stem, phonetic=phonetic, ortho_only=ortho_only,
                                               normalize=normalize, segment=segment, guess=False,
-                                              postproc=postproc, gram=gram, freq=rank or report_freq)
+                                              postproc=postproc, gram=gram, freq=rank or report_freq,
+                                              verbosity=verbosity)
 
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)?
-        if not analyses and form in self.morphology.analyzed:
+        if not analyses and form in self.morphology.analyzed and not skip_other_pos:
             if only_anal:
                 return []
             # Assume these are the *only* analyses
@@ -1573,12 +1574,12 @@ class Language:
         else:
             # Try stripping off suffixes
             suff_anal = self.morphology.strip_suffixes(form)
-            if suff_anal:
+            if suff_anal and not skip_other_pos:
                 if cache:
                     to_cache.extend(suff_anal)
                 for stem, fs in suff_anal:
                     cat = fs.get('pos', '')
-                    analyses.append((cat, stem, stem, fs, 100))
+                    analyses.append((cat, stem, stem, fs, None, 100))
         if not analyses or (not found and get_all):
             if not only_guess:
                 for pos in fsts:
@@ -1592,9 +1593,11 @@ class Language:
                                                        show_root=root, citation=citation, stem=stem, phonetic=phonetic,
                                                        ortho_only=ortho_only, normalize=normalize, segment=segment,
                                                        guess=False, postproc=postproc, gram=gram,
-                                                       freq=rank or report_freq))
+                                                       freq=rank or report_freq, verbosity=verbosity))
                     else:
                         # We have to really analyze it; first try lexical FSTs for each POS
+                        if verbosity:
+                            print("** analyzing {} with {} FST".format(form, pos))
                         analysis = self.morphology[pos].anal(form, init_weight=init_weight,
                                                              phon=phon, segment=segment, experimental=experimental, mwe=mwe,
                                                              normalize=False, to_dict=to_dict, sep_anals=sep_anals,
@@ -1608,7 +1611,7 @@ class Language:
                                                            ortho_only=ortho_only, segment=segment, normalize=normalize,
                                                            stem=stem, phonetic=phonetic,
                                                            guess=False, postproc=postproc, gram=gram,
-                                                           freq=rank or report_freq))
+                                                           freq=rank or report_freq, verbosity=verbosity))
         # If nothing has been found, try guesser FSTs for each POS
         if not analyses and guess:
             # Accumulate results from all guessers
@@ -1622,7 +1625,7 @@ class Language:
                     analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
                                                    ortho_only=ortho_only, normalize=normalize,
                                                    segment=segment, phonetic=phonetic, guess=True, gram=gram, postproc=postproc,
-                                                   freq=rank or report_freq))
+                                                   freq=rank or report_freq, verbosity=verbosity))
         if cache and not found:
 #            print("Adding new anal {}, {}".format(word, to_cache))
             # Or use form instead of word
@@ -1702,7 +1705,7 @@ class Language:
                 analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
                                                ortho_only=ortho_only, segment=segment, normalize=normalize,
                                                stem=stem, phonetic=phonetic, guess=guess, postproc=postproc, gram=gram,
-                                               freq=rank or report_freq))
+                                               freq=rank or report_freq, verbosity=verbosity))
 
     def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
                   root=True, citation=True, segment=False, gram=True,
@@ -1825,12 +1828,20 @@ class Language:
                       feats=None, simpfeats=None, um=0, normalize=False,
                       nbest=100, report_freq=False, report_n=50000,
                       remove_dups=True, seglevel=2,
-                      gramfilter=None,
+                      gramfilter=None, filter_cache=None,
                       lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
                       verbosity=0):
         # Keep track of words that are filtered out because they match filter conditions
+        countgrams = None
         if gramfilter and isinstance(gramfilter, str):
             gramfilter = EES.get_filter(gramfilter)
+            # Check whether this filter counts instances of "in" words; assume this is the only condition
+#            print("*** gramfilter {}".format(gramfilter))
+            for key, value in gramfilter.items():
+                if isinstance(key, tuple):
+                    # the key is (min, max); are these the only possibilities?
+                    countgrams = key
+                    print("** Counting gramfilter matches")
 #        print("*** Analyzing sentence {} with filter {}".format(sentence, gramfilter))
         # lists of words that filter fails on and words it succeeds on
         filtered = [[], []]
@@ -1844,6 +1855,9 @@ class Language:
             file = open(pathout, 'w', encoding='utf-8')
         if not fsts:
             fsts = pos or self.morphology.pos
+            skip_other_pos = False
+        else:
+            skip_other_pos = True
         if realize and not realizer:
             realizer = self.segmentation2string
         # Create a list of CoNNL-U sentences.
@@ -1865,8 +1879,8 @@ class Language:
                 if not self.morphology.is_punctuation(word) and not self.morphology.is_punctuation(next_word):
                     words = word + " " + next_word
             if words:
-                if self.get_from_local_cache(words, local_cache, um=um, seglevel=seglevel,
-                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent,
+                if self.get_from_local_cache(words, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
+                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
                                              multseg=multseg, morphid=morphid, file=file):
                     # MWE analysis stored in cache
                     w_index += len(words.split())
@@ -1881,14 +1895,15 @@ class Language:
                                    root=True, stem=True, citation=True, gram=True,
                                    normalize=normalize, ortho_only=False,
                                    preproc=False, postproc=postproc and not raw,
+                                   skip_other_pos=skip_other_pos,
                                    cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
-                                   string=not raw and not um, print_out=False, only_anal=False)
+                                   string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
                 newmorphid = \
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
-                                             gramfilter=gramfilter, filtered=filtered,
+                                             gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
                                              local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                              conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                             remove_dups=remove_dups, seglevel=seglevel,
+                                             remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
                                              word_sep=word_sep, file=file)
                 if newmorphid:
                     # MWE analysis succeeded
@@ -1896,19 +1911,22 @@ class Language:
                     morphid = newmorphid
                     continue
             # Analyze single word
-            if verbosity > 1:
-                print("  Analyzing {}".format(word))
+            if verbosity:
+                print("**  Analyzing word {}".format(word))
             # Lowercase on the first word, assuming a line is a sentence
             if lower_all or (lower and w_index == 0):
                 word = word.lower()
-            if self.get_from_local_cache(word, local_cache, um=um, seglevel=seglevel,
-                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent,
+            if self.get_from_local_cache(word, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
+                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
                                          multseg=multseg, morphid=morphid, file=file):
 #                print("** Got {} from local cache".format(word))
                 w_index += 1
                 continue
             simps = None
-            analyses = self.preproc_special(word, segment=segment, print_out=False)
+            if not skip_other_pos:
+                analyses = self.preproc_special(word, segment=segment, print_out=False)
+            else:
+                analyses = None
             if not analyses:
                 ## Analyze
                 if preproc:
@@ -1917,46 +1935,72 @@ class Language:
                   self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
                        segment=segment, experimental=experimental, mwe=False, root=True, stem=True, citation=True, gram=True,
                        normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
+                       skip_other_pos=skip_other_pos,
                        cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
-                       string=not raw and not um, print_out=False, only_anal=False)
+                       string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
             morphid = \
                 self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
-                                          gramfilter=gramfilter, filtered=filtered,
+                                          gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
                                           local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
                                           conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                          remove_dups=remove_dups, seglevel=seglevel,
+                                          remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
                                           word_sep=word_sep, file=file)
             # Go to next word
             w_index += 1
 #            print("** Single word analysis, w_index now {}, morphid now {}".format(w_index, morphid))
-        if gramfilter and not filtered[1]:
-#            print("*** no words passed filter cond, reject")
+        if filtered[0]:
+                # There is a failed word
+#                print("*** filtered {}, rejecting sentence".format(filtered))
             return
+        if gramfilter:
+            if not filtered[1]:
+#            print("*** no words passed filter cond, reject")
+                return
+            elif countgrams:
+                print("*** accepted by filter: {}".format(filtered[1]))
+                nfiltered = len(filtered[1])
+                if countgrams[0] > nfiltered or countgrams[1] < nfiltered:
+                    print("*** failed count constraints")
+                    return
         # End of sentence
         csent.finalize()
         return csent
 
-    def get_from_local_cache(self, word, local_cache, um=0, seglevel=2,
+    def get_from_local_cache(self, word, local_cache, um=0, seglevel=2, gramfilter=None, filtered=None, filter_cache=None,
                              dicts=None, conllu=True, xml=False, csent=None, xsent=None, multseg=False,
-                             morphid=1, file=''):
+                             morphid=1, file='', printout=False, verbosity=0):
         if word in local_cache:
             analysis = local_cache[word]
+#            analysis = copy.deepcopy(analysis)
+#            print("** Found in local cache {}".format(analysis))
+            if gramfilter and filter_cache:
+                if word in filter_cache[0]:
+                    if verbosity:
+                        print("** {} in failed filter cache".format(word))
+                    filtered[0].append(word)
+                if word in filter_cache[1]:
+                    if verbosity:
+                        print("** {} in succeeded filter cache".format(word))
+                    filtered[1].append(word)
+#            if gramfilter and analysis:
+#                Language.filter_word(analysis, gramfilter, filtered, filter_cache)
             if dicts:
                 add_anals_to_dict(self, analysis, dicts[0], dicts[1])
-            elif conllu:
-                csent.add_word(word, analysis, morphid, conllu=True, um=um, seglevel=seglevel)
             elif xml:
                 add_caco_word(xsent, word, analysis, multseg=multseg)
             else:
-                print(analysis, file=file)
+                if printout:
+                    print(analysis, file=file)
+                csent.add_word(word, analysis, morphid, conllu=True, um=um, seglevel=seglevel)
+#            else:
             return True
 
     def handle_word_analyses(self, word, analyses, mwe=False,
-                             gramfilter=None, filtered=None,
+                             gramfilter=None, filtered=None, filter_cache=None,
                              local_cache=None, segment=True, realize=True, realizer=None,
                              conllu=True, xml=False, dicts=None, multseg=True, simps=None, csent=None,
-                             remove_dups=True, seglevel=2,
-                             morphid=1, raw=False, um=0, word_sep=" ", file=''):
+                             remove_dups=True, seglevel=2, printout=False, extract_features=None,
+                             morphid=1, raw=False, um=0, word_sep=" ", file='', verbosity=0):
         """
         Do the post-processing of word (or MWE) analyses within sentences.
         if mwe is True, check whether the analysis is empty ('UNK').
@@ -1970,15 +2014,16 @@ class Language:
 
 #        print("*** analyses: {}".format(analyses))
         if gramfilter and analyses:
-            # failed, succeeded lists
-            filter_result = Language.filter_word(analyses, gramfilter, filtered)
+            # Check gramfilter to see if word passes
+            Language.filter_word(word, analyses, gramfilter, filtered, filter_cache)
 
         string_analyses = ''
 
         if segment and realize:
             analyses = [realizer(word, analysis, features=True, udformat=True, um=um, simplifications=simps) for analysis in analyses]
 
-#        print("*** analyses: {}".format(analyses))
+        if verbosity:
+            print("*** handling analyses for {}: {}".format(word, analyses))
         
         # Remove duplicate analyses
         if remove_dups:
@@ -2002,7 +2047,14 @@ class Language:
             analyses = "{}: []".format(word)
         else:
             analyses = word
-#        print("** analyses {}".format(analyses))
+        # Cache before adjusting head indices because these are going to be done after retrieving
+        # cachec analyses anyway.
+#        print("** Caching {}".format(analyses))
+        local_cache[word] = analyses
+
+        # Use a copy of analyses for further processing
+        analyses = copy.deepcopy(analyses)
+
         # Either store the analyses in the dict or write them to the terminal or the file
         if dicts:
             add_anals_to_dict(self, analyses, dicts[0], dicts[1])
@@ -2019,34 +2071,42 @@ class Language:
             add_caco_word(xsent, word, analyses, multseg=multseg)
         else:
             csent.add_word(word, analyses, morphid, conllu=False, seglevel=seglevel, um=um)
-            print(string_analyses, file=file)
-
-        local_cache[word] = analyses
+            if printout:
+                print(string_analyses, file=file)
 
         return morphid
 
     @staticmethod
-    def filter_word(analyses, gramfilter, filtered, verbosity=0):
+    def filter_word(word, analyses, gramfilter, filtered, filter_cache, nanals=2, verbosity=0):
         '''
         Does the word satisfy the filter conditions?
         gramfilter is a dict with keys 'in' and/or 'out' and values tuples of gramfilter
         Each filter condition is a tuple of of pairs with possible first elements
-        'pos', 'feats, 'featfail', 'lemma', 'ummatch', or 'umfail'.
-        If gramfilter is a string, we need to get the conditions from EES.filter.
+        'pos', 'feats, 'featfail', 'lemma', 'lemmafail', (minmatches, maxmatches)
         '''
-#        print("Filter word {}".format(gramfilter))
         succeeded = []
         failed = []
-        for analysis in analyses:
+        if verbosity:
+            print("**Filter word {} with {}".format(word, gramfilter))
+        for aindex, analysis in enumerate(analyses[:nanals]):
             if len(analysis) < 5:
 #                print("*** short anal {}".format(analysis))
                 return True
+            if verbosity:
+                print(" *** Checking analysis {}".format(aindex))
             pos = analysis[0]; features = analysis[3]; lemma = analysis[2]
-#            print("*** Filtering: pos {}, feats {}, gramfilter {}".format(pos, features.__repr__(), gramfilter))
+            if not isinstance(pos, str):
+                print("***! POS {} in analysis {} is not string".format(pos, analysis.__repr__()))
+                return True
             for filtertype, filterconds in gramfilter.items():
-#                print(" *** type {}, conds {}".format(filtertype, gramfilter1))
+                if verbosity:
+                    print(" *** filtertype {}")
+                if isinstance(filtertype, tuple):
+                    # this is a "count in" condition with min and max
+                    filtertype = 'in'
                 for filtercond in filterconds:
-#                    print("  *** filtercond {}".format(filtercond))
+                    if verbosity:
+                        print("  *** filtercond {}".format(filtercond))
                     matched = True
                     for key, value in filtercond:
                         if verbosity:
@@ -2054,21 +2114,40 @@ class Language:
                         if key == 'pos':
                             # value could be a single POS or a tuple of POSs
                             if isinstance(value, str) and pos == value:
+                                if verbosity:
+                                    print("    *** passed pos condition {}!".format(value))
                                 continue
                             elif pos in value:
+                                if verbosity:
+                                    print("    *** passed pos condition {}!".format(value))
                                 continue
                         elif key == 'featfail':
                             if features and simple_unify(features, value) == 'fail':
+                                if verbosity:
+                                    print("    *** passed featfail condition {}!".format(value))
                                 continue
                         elif key.startswith('feat'):
                             if features and simple_unify(features, value) != 'fail':
                                 if verbosity:
-                                    print("    *** passed!")
+                                    print("    *** passed feat condition {}!".format(value))
+                                continue
+                        elif key == 'lemmafail':
+                            if isinstance(value, str) and lemma != value:
+                                if verbosity:
+                                    print("    *** passed lemmafail condition {}!".format(value))
+                                continue
+                            elif lemma not in value:
+                                if verbosity:
+                                    print("    *** passed lemmafail condition {}!".format(value))
                                 continue
                         elif key == 'lemma':
                             if isinstance(value, str) and lemma == value:
+                                if verbosity:
+                                    print("    *** passed lemma condition {}!".format(value))
                                 continue
                             elif lemma in value:
+                                if verbosity:
+                                    print("    *** passed lemma condition {}!".format(value))
                                 continue
                         if verbosity:
                             print("   *** Failed to match")
@@ -2078,15 +2157,43 @@ class Language:
                     if matched:
                         if filtertype == 'out':
                             # Matched the properties, so exclude this one
-                            failed.append(analysis)
+                            if verbosity:
+                                print("    *** match for out; FAIL")
+                            failed.append((word, aindex))
                             break
-                        else:
-                            succeeded.append(analysis)
-            # Conditions failed to match
-            if filtertype == 'out' and not failed:
-                succeeded.append(analysis)
-        filtered[0].extend(failed)
-        filtered[1].extend(succeeded)
+                    elif filtertype == 'in':
+                        # one mismatch is enough to exclude the word
+                        if verbosity:
+                            print("    *** mismatch for in; FAIL")
+                            failed.append((word, aindex))
+                            break
+                # We made it through all of the conditions, matching for 'in', failing to match for 'out'
+                # Don't check more conditions
+                if failed:
+                    break
+            # Tried all conditions; succeed if nothing failed
+            if not failed:
+                succeeded.append((word, aindex))
+                if verbosity:
+                    print("***   word succeeded for analysis {}".format(aindex))
+#            if filtertype == 'out' and not failed:
+#                succeeded.append(word)
+        if verbosity:
+            print("*** failed {}, succeeded {}".format(failed, succeeded))
+        if len(failed) > len(succeeded):
+            filtered[0].append(word)
+            if filter_cache:
+                if verbosity:
+                    print("    *** adding word to fail cache {}!".format(word))
+                filter_cache[0].append(word)
+        elif len(succeeded) > len(failed):
+            filtered[1].append(word)
+            if filter_cache:
+                if verbosity:
+                    print("    *** adding word to succeed cache {}!".format(word))
+                filter_cache[1].append(word)
+#        filtered[0].extend(failed)
+#        filtered[1].extend(succeeded)
         if verbosity:
             print("*** post filter: {}".format(filtered))
 #        return failed, succeeded
@@ -2120,7 +2227,8 @@ class Language:
             string = "{" + word + "}}({}abbr=yes)".format(Language.featsmark)
             return (pos, string, word)
         else:
-            return [{'POS': pos, 'lemma': word, 'freq': 100}]
+            return (pos, word, word, None, None, 100)
+#            return [{'POS': pos, 'lemma': word, 'freq': 100}]
 
     def process_punc(self, word, segment=False, print_out=False):
         '''
@@ -2134,7 +2242,8 @@ class Language:
             string = None # word
             return (pos, string, '')
         else:
-            return [{'POS': pos, 'freq': 10000}]
+            return (pos, word, word, None, None, 10000)
+#            return [{'POS': pos, 'freq': 10000}]
 
     def process_numeral(self, word, pre, num, post, segment=False, print_out=False):
         '''
@@ -2166,12 +2275,14 @@ class Language:
                 string = "{}(@adp,*{},~case)-{{{}}}".format(pre, pre, num)
             else:
                 string = None #"{}".format(num)
-            return (pos, string, lemma)
+            return (pos, word, word, lemma, None, 1000)
+#            return (pos, string, lemma)
         else:
             result = [{'POS': pos, 'freq': 1000}]
             if lemma:
                 result['lemma'] = lemma
-            return result
+            return (pos, word, word, lemma, None, 1000)
+#            return result
 
     def minim_string(self, form, analyses=None, feats=None, simpfeats=None):
         """
@@ -2461,7 +2572,7 @@ class Language:
     def proc_anal(self, form, analyses, pos, show_root=True,
                   citation=True, ortho_only=False, normalize=False,
                   segment=False, stem=True, guess=False, postproc=False, gram=True, string=False,
-                  freq=True, phonetic=True):
+                  freq=True, phonetic=True, verbosity=0):
         '''
         Process analyses according to various options, returning a list of
         analysis tuples.
@@ -2532,6 +2643,8 @@ class Language:
 #            print("** result {}".format(res))
             return res
         for analysis in analyses:
+            if verbosity:
+                print("** proc anal {}".format(analysis))
             root = self.postpostprocess(analysis[0])
             grammar = analysis[1]
             if not grammar:
@@ -2563,9 +2676,9 @@ class Language:
                     root_freq = 0.0
             # Find the citation form of the root if required
             # This only works if FSSets have been separated into FeatStructs
-            if citation and posmorph and posmorph.citation \
-               and isinstance(grammar, FeatStruct):
-                cite = posmorph.citation(root, grammar, guess, stem, phonetic=phonetic)
+            if citation and posmorph and posmorph.citation and isinstance(grammar, FeatStruct):
+                if not (cite := grammar.get('lemma')):
+                    cite = posmorph.citation(root, grammar, guess, stem, phonetic=phonetic)
                 if not cite:
                     cite = root
                 if postproc:

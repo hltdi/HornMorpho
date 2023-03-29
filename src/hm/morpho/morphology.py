@@ -1107,7 +1107,7 @@ class POSMorphology:
                 self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
                              segment=segment, translate=translate, experimental=experimental)
                 if create_casc and not self.casc:
-                    casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
+                    casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                            create_networks=True, subcasc=subcasc, seglevel=seglevel,
                                            language=self.language, gen=generate, pos=pos,
                                            verbose=verbose)
@@ -1124,7 +1124,7 @@ class POSMorphology:
                     # Load each of the FSTs in the cascade and compose them
                     if verbose:
                         print('Recreating...')
-                    self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
+                    self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                 create_networks=True, subcasc=subcasc, pos=pos, seglevel=seglevel,
                                                 language=self.language, gen=generate, verbose=verbose)
                     self.casc_inv = self.casc.inverted()
@@ -1173,7 +1173,7 @@ class POSMorphology:
                                  phon=phon, segment=segment, experimental=experimental)
                     if create_casc:
                         if not self.casc:
-                            casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
+                            casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                    create_networks=True, subcasc=subcasc,
                                                    language=self.language, gen=generate, pos=pos,
                                                    verbose=verbose)
@@ -1186,7 +1186,7 @@ class POSMorphology:
                     path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
                     # OK, as a last resort, try again to load the analysis cascade
                     if os.path.exists(path):
-                        casc = FSTCascade.load(path, seg_units=self.morphology.seg_units,
+                        casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                create_networks=True, subcasc=subcasc,
                                                language=self.language, pos=pos, gen=generate,
                                                verbose=verbose)
@@ -1197,38 +1197,51 @@ class POSMorphology:
                         segment=segment, translate=translate, experimental=experimental):
             # FST found one way or another
             return True
-#        else:
-#            print("** No FST found")
 
-#    def load_gen_fst(self, pickle=True, pos='',
-#                     guess=False, simplified=False, phon=False, experimental=False, mwe=False,
-#                     segment=False, translate=False, verbose=False):
-#        '''
-#        Create gen_fst(0) by inverting an existing anal_fst(0) or loading and inverting a generation FST.
-#        '''
-#        if not self.get_fst(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-#                            segment=segment, translate=translate):
-#            print('LOADING GEN FST FOR', self.language.label, self.pos, ('(guess)' if guess else ''))
-#            name = self.fst_name(True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-#                                 segment=segment, translate=translate)
-#            # First try to load the explicit generation FST
-#            gen = self.load_fst(generate=True, guess=guess, simplified=simplified, mwe=mwe,
-#                                phon=phon, segment=segment, translate=translate, experimental=experimental,
-#                                pickle=pickle, pos=pos,
-#                                invert=True)
-#            if gen:
-#                self.set_fst(gen, True, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-#                             segment=segment, translate=translate)
-#            else:
-#                # The corresponding analysis FST
-#                anal = self.get_fst(False, guess, simplified, phon=phon, experimental=experimental, mwe=mwe,
-#                                    segment=segment, translate=translate)
-#                if anal:
-#                    self.set_fst(anal.inverted(), True, guess, simplified, phon=phon, experimental=experimental,
-#                                 mwe=mwe, segment=segment, translate=translate)
-#            if self.casc:
-#                self.casc_inv = self.casc.inverted()
-#                self.casc_inv.reverse()
+    def load_trans_fst(self, trg_pos_morph, pos):
+        """
+        Create a translation FST by composing the source analysis FST with the target generation FST.
+        """
+        print("*** Creating {} translation FST for {} -> {}".format(pos, self, trg_pos_morph))
+        src_name = self.fst_name(False, False)
+        trg_name = trg_pos_morph.fst_name(True, False)
+        src_path = os.path.join(self.morphology.get_cas_dir(), src_name + '.cas')
+        trg_path = os.path.join(trg_pos_morph.morphology.get_cas_dir(), trg_name + '.cas')
+        trg_language = trg_pos_morph.language
+
+        # Source FST
+        src_casc = FSTCascade.load(src_path, seg_units=self.morphology.seg_units, seglevel=0, posmorph=self,
+                                   create_networks=True, language=self.language, gen=False, pos=pos)
+        self.casc = src_casc
+        self.casc_inv = self.casc.inverted()
+        src_fst = self.casc.compose(backwards=False, relabel=True)
+        if self.casc.insertions:
+            start = src_fst._get_initial_state()
+            end = src_fst._get_final_states()[0]
+            for insertion in self.casc.insertions:
+                src_fst.insert(insertion, start, end)
+        self.set_fst(src_fst, False, False, False, segment=False)
+        self.casc.append(src_fst)
+
+        # Target FST
+        trg_casc = FSTCascade.load(trg_path, seg_units=self.morphology.seg_units, seglevel=0, posmorph=trg_pos_morph,
+                                   create_networks=True, language=trg_language, gen=True, pos=pos)
+        trg_pos_morph.casc = trg_casc
+        trg_pos_morph.casc_inv = trg_pos_morph.casc.inverted()
+        trg_fst = trg_pos_morph.casc.compose(backwards=False, relabel=True)
+        trg_fst = trg_fst.inverted()
+        # Do this after inversion or before?
+        if trg_pos_morph.casc.insertions:
+            start = trg_fst._get_initial_state()
+            end = trg_fst._get_final_states()[0]
+            for insertion in trg_pos_morph.casc.insertions:
+                trg_fst.insert(insertion, start, end)
+        trg_pos_morph.set_fst(trg_fst, True, False, False, segment=False)
+        trg_pos_morph.casc.append(trg_fst)
+
+        # Translation FST
+        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_language.abbrev), reverse=False)
+        self.set_fst(trans_fst, translate=True)
 
     def pickle_all(self, replace=True, empty=True):
         """
@@ -1813,79 +1826,6 @@ class POSMorphology:
                         word = self.language.convert_phones(word)
                         output[word] = output.get(word, []) + [(round(root_count), self.pos, root, None, anal)]
         return output
-
-#     def anal1(self, input, label='', casc_label='', index=0, load=False):
-#         """Analyze input in a single sub-FST, given its label or index in the cascade."""
-#         return self._proc1(input, label=label, casc_label=casc_label, index=index, load=load,
-#                            anal=True)
-#
-#     def gen1(self, input, feats=None, fss=None, label='', casc_label='', index=0, load=False):
-#         """Generate a form for an input and update features or FSS in a single sub-FST,
-#         given its label or index in the cascade."""
-#         return self._proc1(input, feats=feats, fss=fss, label=label, casc_label=casc_label,
-#                            index=index, load=load, anal=False)
-#
-#     def _proc1(self, input, feats=None, fss='', label='', casc_label='', index=0,
-#                load=False, anal=True):
-#         """Process a form and input features or FSS in a single sub-FST, given its label
-#         or index in the cascade.
-#         @param  input: input to FST (wordform or root)
-#         @type   input: string
-#         @param  feats: features to add to default for generation
-#         @type   feats: string of bracketed feature-value pairs
-#         @param  fss:   feature structure set (alternative to feats)
-#         @type   fss:   FSSet
-#         @param  label: name of FST
-#         @type   label: string
-#         @param  casc_label: name of alternative cascade (without .cas)
-#         @type   casc_label: string
-#         @param  index: index of FST in FSTCascade
-#         @type   index: int
-#         @param  load:  whether to (re)load the default cascade
-#         @type   load:  boolean
-#         @param  anal:  whether to do analysis as opposed to generation
-#         @type   anal:  boolean
-#         @return  analyses or wordforms
-#         @rtype   list: [[string, FSSet]...]
-#         """
-#         if casc_label:
-#             casc = FSTCascade.load(os.path.join(self.morphology.get_cas_dir(), casc_label + '.cas'),
-#                                    seg_units = self.morphology.seg_units,
-#                                    language = self.language,
-#                                    create_networks=True,
-# #                                   weight_constraint=self.wc,
-#                                    verbose=True)
-#         else:
-#             if load:
-#                 name = self.fst_name(not anal, False, False)
-#                 self.casc = FSTCascade.load(os.path.join(self.morphology.get_cas_dir(), name + '.cas'),
-#                                             language = self.language,
-#                                             seg_units = self.morphology.seg_units,
-#                                             create_networks=True,
-# #                                            weight_constraint=self.wc,
-#                                             verbose=True)
-#             casc = self.casc
-#         if label:
-#             # Find the FST with the particular label
-#             fst = None
-#             i = 0
-#             while not fst and i < len(self.casc):
-#                 f = casc[i]
-#                 if f.label == label:
-#                     fst = f
-#                 i += 1
-#         else:
-#             fst = casc[index]
-#         if not anal and not fss:
-#             features = FeatStruct(self.defaultFS)
-#             if feats:
-#                 features = self.update_FS(features, feats)
-#             fss = FSSet.cast(features)
-#         print(('Analyzing' if anal else 'Generating'), input, 'with FST', fst.label)
-#         if not anal:
-#             fst = fst.inverted()
-#         return fst.transduce(input, fss, seg_units=self.morphology.seg_units,
-#                              timeout=20)
 
     ## Generating default FS from feature-value pairs in Morphology
 

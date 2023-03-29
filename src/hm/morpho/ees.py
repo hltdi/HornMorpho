@@ -56,7 +56,15 @@ class EES:
       'core':
          # Only core arguments: nsubj, obj, iobj, expl?, csubj, xcomp, ccomp; no obl
          {'out': ( (('pos', 'n'), ('featfail', FeatStruct("[prep=None]"))),
-                           ) },
+                 ) },
+
+      'verbs':
+         {(1, 3): ( (('pos', ('v', 'cop', 'aux')),),
+                  )},
+
+      'verbs5':
+         {(1, 5): ( (('pos', 'v'),),
+                  )},
 
       'simple':
          # Only simple clauses with verb heads; no relative verbs, converbs, infinitives, or other subordinate verbs; no copulas
@@ -66,7 +74,9 @@ class EES:
                    (('pos', ('n', 'n_dv')), ('feats', FeatStruct("[v=inf]"))),
                    (('pos', ('cop', 'aux')),),
                    (('pos', 'v'), ('lemma', 'ነበረ'))
-                   ) },
+                   ),
+          'in': ( (('pos', 'v'), ('feats', FeatStruct("[-sub]")), ('featfail', FeatStruct("[tm=ger,ax=None]"))),
+                ) },
 
       'complex':
          # Only complex clauses
@@ -78,8 +88,12 @@ class EES:
                   ) },
 
        'nonverbal':
-         # Only non-verbal clauses: copula. ነበረ is not included because this could be the past of እለ (favoring precision, not recall)
-         {'in': ( (('pos', ('cop', 'aux')), ('feats', FeatStruct("[tm=prs]"))),
+         # Only non-verbal clauses: copula. ነበረ is included though this could be the past of እለ (favoring recall, not precision).
+         # Cleft sentences are excluded
+         {'in': ( (('pos', ('cop', 'aux')),),  # , ('feats', FeatStruct("[tm=prs]"))),
+                  ),
+          # Exclude all verbs except ነበር , but allow infinitives
+          'out': ( (('pos', 'v'), ('lemmafail', 'ነበረ')),
                   ) },
 
        'ነበር':

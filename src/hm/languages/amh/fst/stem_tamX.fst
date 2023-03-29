@@ -189,11 +189,9 @@ i/ -> -3t           [:]
 # C2=' surfaces as 0 in other cases: imperfective except passive, gerundive, jussive/imperative except simple (simplex aspect)
 # ... yIsImal, yIsasIm, assasIm
 -3V.2 -> -3V.2b      [:']     [tm=imf,vc=smp];[tm=imf,vc=tr];[tm=imf,vc=cs];[tm=ger]
--3V.2b -> -1         [:]      [as=smp,tmp=[v_1=None,c_2=None,v1=None]];[as=rc,tmp=[v_1=None,c_2=None,v1=None]]
--3V.2b -> -1         [:]      [as=it,tmp=[v_1=None,c_2=1,v1=a]]
--3V.2 -> -3V.2c      [:']     [tm=j_i,as=it,vc=smp];[tm=j_i,as=rc,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
--3V.2c -> -1         [:]      [as=smp,tmp=[v_1=None,c_2=None,v1=None]];[as=rc,tmp=[v_1=None,c_2=None,v1=None]]
--3V.2c -> -1         [:]      [as=it,tmp=[v_1=None,c_2=1,v1=a]]
+-3V.2b -> -1         [:]      [as=smp,tmp=[v_1=None,c_2=None,v1=None]];[as=it,tmp=[v_1=None,c_2=1,v1=a]]
+-3V.2 -> -3V.2c      [:']     [tm=j_i,as=it,vc=smp];[tm=j_i,vc=tr];[tm=j_i,vc=cs]
+-3V.2c -> -1         [:]      [as=smp,tmp=[v_1=None,c_2=None,v1=None]];[as=it,tmp=[v_1=None,c_2=1,v1=a]]
 
 # C2=w surfaces as o for perfective, imperfective and gerundive simplex (optionally); jussive/imperative passive
 # ... mote, moto (also muto) (CHANGE FOR GENERATION)

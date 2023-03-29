@@ -1018,6 +1018,7 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
     root = root2string(root, simplifications=simplifications)
     # Replace the root in the morphemes list
     morphs[rootindex] = root, rootfeats
+#    print("*** morphs {}".format(morphs))
     if udformat:
         morphs = [(m, language.Language.udformat_posfeats(f)) for m, f in morphs]
 #    print("** morphs {}".format(morphs))

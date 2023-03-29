@@ -36,7 +36,7 @@ from .gui import *
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'datasets', 'CACO')
 CONLLU_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'segmentations')
 
-PUNCTUATION = "“‘”’–—:;/,<>?.!%$()[]{}|#@&*_+=\"፡።፣፤፥፦፧፨"
+PUNCTUATION = "“‘”’'…–—:;/,<>?.!%$()[]{}|#@&*_+=\"፡።፣፤፥፦፧፨"
 NUMERAL_RE = re.compile('(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
 class Corpus():
@@ -47,21 +47,20 @@ class Corpus():
     ID = 0
 
     def __init__(self, data=None, path='', start=0, n_sents=0, max_sents=1000,
-                 name='', batch_name='',
-                 um=1, seglevel=2, 
-                 segment=True,
+                 name='', batch_name='', sentid=0, analyze=False,
+                 um=1, seglevel=2, segment=True, fsts=None,
 #                 disambiguate=True, conlluify=True, degeminate=False,
                  constraints=None, local_cache=None, timeit=False,
                  verbosity=0):
         self.batch_name = batch_name
-        gramfilt = None
-        if constraints:
-            # If not None, this is a dict with keys like 'maxlen'.
-            minlen = constraints.get('minlen', 0)
-            maxlen = constraints.get('maxlen', None)
-            maxnum = constraints.get('maxnum', None)
-            maxpunc = constraints.get('maxpunc', None)
-            gramfilt = constraints.get('grammar', None)
+        minlen = constraints and constraints.get('minlen', 0)
+        maxlen = constraints and constraints.get('maxlen', None)
+        maxnum = constraints and constraints.get('maxnum', None)
+        maxpunc = constraints and constraints.get('maxpunc', None)
+        endpunc = constraints and constraints.get('endpunc', False)
+        maxunk = constraints and constraints.get('maxunk', 10)
+        maxtoks = constraints and constraints.get('maxtoks', 30)
+        gramfilt = constraints and constraints.get('grammar', None)
         # Sentence objects, with pre-CoNLL-U word representations
         self.sentences = []
         self.language = get_language('amh', phon=False, segment=True, experimental=True)
@@ -70,42 +69,60 @@ class Corpus():
         self.unks = set()
         # Cache for storing segmentations
         self.local_cache = local_cache if isinstance(local_cache, dict) else {}
+        # Cache for storing grammatical filtered words
         # Max number of words in sentence objects
         self.max_words = 1
         # Index of last line in file
         self.last_line = 0
+        filter_cache = [[],[]]
         if not data and path:
             self.data = []
             try:
                 filein = open(path, 'r', encoding='utf-8')
                 lines = filein.readlines()[start:start+max_sents]
-                sentid = 1
+                nlines = len(lines)
+                sentcount = 0
+                sentid = sentid + 1
                 linepos = 0
                 if segment:
                     if gramfilt:
                         print("Filtering sentences with grammar filter {}".format(gramfilt))
                         gramfilt = EES.get_filter(gramfilt)
                 time0 = time.time()
-                while sentid < n_sents and linepos < max_sents:
+                while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
+                    if linepos and linepos % 25 == 0:
+                        print("Checked {} sentences, included {}".format(linepos, len(self.data)))
                     linepos += 1
-                    if linepos % 50 == 0:
-                        print("Checked {} sentences".format(linepos))
-                    if constraints and maxnum != None or maxpunc != None:
+                    if constraints: # and maxnum != None or maxpunc != None:
                         tokens = line.split()
                         # todo: implement number, length, punctuation constraints
+                        if len(tokens) > maxtoks:
+                            print("  Too many tokens: {}".format(line[:100]))
+                            continue
                         if maxpunc != None:
                             if Corpus.count_punc(tokens) > maxpunc:
-                                print("  Too many punctuation marks: {}".format(line))
+                                print("  Too many punctuation marks: {}".format(line[:100]))
+                                continue
+                        if endpunc:
+                            if tokens[-1] not in PUNCTUATION:
+                                print("  No end punctuation: {}".format(line[:100]))
                                 continue
                         if maxnum != None:
                             if Corpus.count_num(tokens) > maxnum:
-                                print("  Too many numerals: {}".format(line))
+                                print("  Too many numerals: {}".format(line[:100]))
                                 continue
                     if segment:
-                        if (sentence_obj := self._segment(line, sentid, gramfilt=gramfilt, um=um, seglevel=seglevel, verbosity=verbosity)):
+                        if (sentence_obj := \
+                                self._segment(line, sentid, gramfilt=gramfilt, maxunk=maxunk,
+                                              analyze=analyze,
+                                              um=um, seglevel=seglevel, filter_cache=filter_cache,
+                                              fsts=fsts, verbosity=verbosity)):
+                            if gramfilt:
+                                print("  ACCEPTED SENTENCE {}: {}".format(sentid, line))
                             self.data.append(line)
+                            sentcount += 1
                             sentid += 1
                     else:
                         self.data.append(line)
@@ -162,12 +179,12 @@ class Corpus():
         % Later have the option of segmenting only some??
         """
         print("Segmenting sentences in {}".format(self), end='')
-        if filter:
-            print(" with filter {}".format(filter))
+        if gramfilter:
+            print(" with filter {}".format(gramfilter))
         else:
             print()
-        if filter and isinstance(filter, str):
-            filter = EES.get_filter(filter)
+        if gramfilter and isinstance(gramfilter, str):
+            gramfilter = EES.get_filter(gramfilter)
         sentid = 1
         time0 = time.time()
         todelete = []
@@ -194,20 +211,33 @@ class Corpus():
         if timeit:
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 
-    def _segment(self, sentence, sentid, gramfilt=None, um=1, seglevel=2, verbosity=0):
+    def _segment(self, sentence, sentid, analyze=False,
+                 gramfilt=None, um=1, seglevel=2, maxunk=5, filter_cache=None, fsts=None, verbosity=0):
         '''
-        Segment one sentence, applying gramfilter if any.
+        Segment one sentence, applying gramfilter if any and checking if max unk words is exceeded.
         '''
+        conllu = False if analyze else True
+        segment = False if analyze else True
+        experimental = False if analyze else True
+        seglevel = 0 if analyze else seglevel
+        um = 2 if analyze else um
+
         sentence_obj = \
           self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid,
-                                      local_cache=self.local_cache, gramfilter=gramfilt,
-                                      um=um, seglevel=seglevel)
+                                      local_cache=self.local_cache, gramfilter=gramfilt, fsts=fsts,
+                                      filter_cache=filter_cache,
+                                      um=um, seglevel=seglevel, conllu=conllu, segment=segment, experimental=experimental,
+                                      verbosity=verbosity)
         if not sentence_obj:
             # sentence may have been filtered out; delete from data
-            print("  Grammatical filter rejected: {}".format(sentence))
+            print("  Grammatical filter rejected: {}".format(sentence[:100]))
             return
         else:
-            sentence_obj.merge_segmentations()
+            if maxunk and len(sentence_obj.unk) > maxunk:
+                print("  Too many unknown tokens: {}".format(sentence[:100]))
+                return
+            if not analyze:
+                sentence_obj.merge_segmentations()
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])
@@ -235,13 +265,17 @@ class Corpus():
             self.root.segmentations = sentence.words
         return sentence
 
-    def write(self, conllu=False, data_folder=CACO_DIR, conllu_folder=CONLLU_DIR):
+    def write(self, conllu=False, filename='', data_folder=CACO_DIR, conllu_folder=CONLLU_DIR, append=False):
         '''
-        Write the data in the corpus to a file, by default in the TAFS/datasets/CACO folder.
+        Write the data in the corpus to a file, by default in the TAFS/datasets/CACO folder,
+        appending it to an existing file if append is True.
         If conllu is True, also write the sentence CoNLL-U representations to a file, by default
         in the TAFS/connlu folder.
         '''
-        filename = os.join(data_folder, self.name)
-        with open(filename, 'w', encoding='utf8') as file:
+        if filename:
+            path = os.path.join(data_folder, filename)
+        else:
+            path = os.path.join(data_folder, self.name + '.txt')
+        with open(path, 'a' if append else 'w', encoding='utf8') as file:
             for sentence in self.data:
                 print(sentence, file=file)

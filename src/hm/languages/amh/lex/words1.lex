@@ -286,6 +286,7 @@ tac tac_ adp
 wC wC_ adp
 wsT wsT adp
 zend zend adp
+dres dres adp
 'nde 'nde adp
 'ske 'ske adp
 sle sle adp

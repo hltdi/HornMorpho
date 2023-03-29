@@ -161,8 +161,30 @@ def seg_file(file='', language='amh', experimental=True,
                            local_cache=local_cache, batch_name=batch_name,
                            verbosity=verbosity)
 
+def extract_corpus_features(corpus, pos=None, searchfeats=None):
+    '''
+    For each sentence in the corpus, return a list of words that have features and whose POS is in the pos list.
+    searchfeats is a list of feature, default pairs which limits the features that are returned.
+    '''
+    def extract_features(featstring, searchfeats):
+        featstring = dict([fv.split('=') for fv in featstring.split('|')])
+        return [featstring.get(feat, dflt) for feat, dflt in searchfeats]
+    sentences = []
+    for sentence in corpus.sentences:
+        words = [sentence.text]
+        for index, word in enumerate(sentence.words):
+            word = word[0][0]
+            if pos and word.get('upos') not in pos:
+                continue
+            if feats := word.get('feats'):
+                if searchfeats:
+                    feats = extract_features(feats, searchfeats)
+                words.append((index+1, word.get('form'), feats))
+        sentences.append(words)
+    return sentences
+
 def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
-                 batch_name='',
+                 batch_name='', append=False,
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
                  verbosity=0):
     '''
@@ -175,6 +197,7 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
     @param batch_name: string name for batch (not sure this is needed)
+    @param append: whether to append sentences to file
     @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
     @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
     @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
@@ -182,7 +205,7 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
     '''
     sentences = sentences or corpus.sentences
     if path:
-        file = open(path, 'w', encoding='utf8')
+        file = open(path, 'a' if append else 'w', encoding='utf8')
         print("Writing CoNLL-U sentences {} to {}".format((corpus.__repr__() if corpus else ''), path))
     else:
         file = morpho.sys.stdout
@@ -199,8 +222,9 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
 def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
+                  analyze=False,
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
-                  um=1, seglevel=2, timeit=False, local_cache=None,
+                  um=1, seglevel=2, timeit=False, local_cache=None, fsts=None,
                   verbosity=0):
     '''
     Create a corpus (instance of Corpus) of raw sentences, to be segmented (with segment_all()),
@@ -212,9 +236,9 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
        is read in from file
     @param read: dict with keys 'path', 'folder', 'filename', as possible keys, ignored
        in case data is not None
-    @param write: dict with keys 'stdout', 'path', 'folder', 'filename', 'annotator' as possible keys
-    @param batch: dict with keys 'name', 'id', 'start', 'n_sents', 'sent_length', 'source', 'version', 'max_sents'
-    @param constraints: dict with keys 'grammar', 'min_len', 'max_len', 'max_punc', 'max_num'
+    @param write: dict with keys 'stdout', 'path', 'folder', 'filename', 'annotator', 'append' as possible keys
+    @param batch: dict with keys 'name', 'id', 'start', 'n_sents', 'sent_length', 'source', 'version', 'max_sents', 'sentid'
+    @param constraints: dict with keys 'grammar', 'minlen', 'maxlen', 'maxpunc', 'maxnum', 'maxunk', 'maxtoks'
        grammar value is a string label for a grammar filter dict; filters exclude or include sentences
        that satisfy or don't satisfy the filter conditions. See conditions in EES.filters.
     @param segment: whether to segment the data with HM after it is loaded
@@ -231,10 +255,13 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
        sentences from the corpus that don't satisfy the filter conditions. See conditions in EES.filters.
     @param verbosity: int controlling how verbose messages should be
     '''
+    disambiguate = False if analyze else disambiguate
+    conlluify = False if analyze else conlluify
+
     n_sents = batch.get('n_sents', 100)
     max_sents = batch.get('max_sents', 1000)
     start = batch.get('start', 0)
-    range = "{}-{}".format(start+1, start+n_sents) if start else "{}".format(n_sents)
+    sentnum = "{}".format(n_sents) #"{}-{}".format(start+1, start+n_sents) if start else "{}".format(n_sents)
     sent_length = batch.get('sent_length', '')
     gramfilt = constraints.get('grammar')
     batch_name = batch.get('name') or \
@@ -242,7 +269,7 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
                               "_{}".format(gramfilt) if gramfilt else '',
                               "_{}w".format(sent_length) if sent_length else '',
                               batch.get('id', 1),
-                              range)
+                              sentnum)
     def make_path(path, folder, filename, extension):
         if path:
             return path
@@ -257,7 +284,8 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
     if not data:
         readpath = make_path(read.get('path', ''), read.get('folder', morpho.CACO_DIR), read.get('filename', ''), '.txt')
     corpus = morpho.Corpus(data=data, path=readpath, start=start, n_sents=n_sents, max_sents=max_sents,
-                           batch_name=batch_name,
+                           batch_name=batch_name, sentid=batch.get('sentid', 0), fsts=fsts, seglevel=seglevel, um=um,
+                           analyze=analyze,
                            constraints=constraints, local_cache=local_cache, timeit=timeit,
                            segment=segment,
 #                           disambiguate=disambiguate, conlluify=conlluify, degeminate=degeminate,
@@ -288,23 +316,25 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
                     filename = "{}_MA{}".format(batch_name, write.get("annotator", 1))
                 path = morpho.os.path.join(folder, filename)
             gempath = ungempath = ''
+            append = write.get('append', False)
             # geminated corpus
             if path:
                 # write to file
                 gempath = path + '-G.conllu'
             # conlluify() has to happen before write_conllu
-            write_conllu(corpus=corpus, path=gempath, degeminated=False,
+            write_conllu(corpus=corpus, path=gempath, degeminated=False, append=append,
                          batch_name=batch_name, verbosity=verbosity)
             if degeminate:
                 # ungeminated corpus
                 if path:
                     # write to file
                     ungempath = path + '-U.conllu'
-                write_conllu(corpus=corpus, path=ungempath, degeminated=True,
+                write_conllu(corpus=corpus, path=ungempath, degeminated=True, append=append,
                              batch_name=batch_name, verbosity=verbosity)
     return corpus
 
-def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2, gramfilter=None):
+def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2,
+                 gramfilter=None, fsts=None, verbosity=0):
     '''
     Segment a sentence, returning an instance of Sentence.
     Only works for Amharic.
@@ -315,7 +345,18 @@ def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2, g
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
     return \
-      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel, gramfilter=gramfilter)
+      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel,
+                             gramfilter=gramfilter, fsts=fsts, verbosity=verbosity)
+
+def anal_sentence(sentence, language='amh', remove_dups=True, fsts=None, verbosity=0):
+    '''
+    Analyze a sentence, returning an instance of Sentence.
+    Only works for Amharic.
+    '''
+    language = morpho.get_language(language, phon=False, segment=False, experimental=False)
+    return \
+      language.anal_sentence(sentence, remove_dups=remove_dups, verbosity=verbosity,
+                             segment=False, experimental=False, conllu=False, fsts=fsts)
 
 def anal_word(language, word, root=True, citation=True, gram=True,
               roman=False, segment=False, guess=False, gloss=True,

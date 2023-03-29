@@ -504,6 +504,7 @@ class SegCanvas(Canvas):
         dependencydiff = len(dependencies[0]) - len(dependencies[1])
         left = dependencies[0]
         right = dependencies[1]
+#        print("** left {}, right {}".format(left, right))
         if dependencydiff > 0:
             left = left[dependencydiff:]
             left_deps = dependencies[0][:dependencydiff]

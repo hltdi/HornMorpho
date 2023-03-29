@@ -58,6 +58,8 @@ from .roots import *
 from .tmp import *
 # Parsing mutation
 from .mut import *
+# Parsing lexical translation files
+from .lextr import *
 
 from .language import LANGUAGE_DIR
 
@@ -500,7 +502,7 @@ class FSTCascade(list):
         self.init_weight = FSSet(fs)
 
     @staticmethod
-    def load(filename, seg_units=[], create_networks=True, subcasc=None,
+    def load(filename, seg_units=[], create_networks=True, subcasc=None, posmorph=None,
              language=None, pos='', seglevel=2,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
@@ -516,13 +518,14 @@ class FSTCascade(list):
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
+                                posmorph=posmorph,
                                 dirname=dirname, pos=pos, seglevel=seglevel,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
 
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
-              subcasc=None, language=None, dirname='', pos='', seglevel=2,
+              posmorph=None, subcasc=None, language=None, dirname='', pos='', seglevel=2,
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -627,6 +630,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
+                                       posmorph=posmorph,
                                        cascade=cascade, weighting=cascade.weighting(),
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
@@ -2071,7 +2075,7 @@ class FST:
         return fst
 
     @staticmethod
-    def load(filename, cascade=None, weighting=None, reverse=False,
+    def load(filename, cascade=None, weighting=None, reverse=False, posmorph=None,
              seg_units=[], verbose=False, abbrevs=None, seglevel=2,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
@@ -2097,8 +2101,9 @@ class FST:
 
         elif suffix == 'root':
             if verbose:
-                print("Loading roots from {}".format(filename))
+                print("Loading roots from {}, seglevel={}".format(filename, seglevel))
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
+                               posmorph=posmorph,
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                cascade=cascade, directory=directory, seglevel=seglevel,
                                seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,

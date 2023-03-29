@@ -45,8 +45,41 @@ CACO4 = "../../TAFS/datasets/CACO/CACO_3-7tok_B4.txt"
 CACO5 = "../../TAFS/datasets/CACO/CACO_3-7tok_B5.txt"
 AS1 = "hm/ext_data/ከአብነት/mini1.txt"
 CACO = "../../TAFS/datasets/CACO"
+CACO_FILTERED = "CACO_verbs_B8.txt"
 CONLLU = "../../TAFS/venv/conllu"
 SEGS = "../../TAFS/segmentations"
+LAST_CACO_LINE = 9061
+
+def ASAI(start=600, id=2, n_sents=200):
+    return \
+           hm.create_corpus(
+               read={'name': "ASAI.{}".format(id), 'id': id, 'filename': CACO_FILTERED},
+               batch= {'n_sents': n_sents, 'start': start},
+               disambiguate=False, seglevel=0, um=2
+               )
+
+def proc_ASAI(corpus, filename=False, append=False):
+    sentences =  hm.extract_corpus_features(corpus, ['VERB'], [('Number', None), ('VerbForm', 'Main')])
+    if filename:
+        write_ASAI(sentences, filename, append=append)
+    return sentences
+
+def write_ASAI(sentences, filename, append=False):
+    with open(filename, 'a' if append else 'w', encoding='utf8') as file:
+        for sentence in sentences:
+            print(sentence[0], file=file)
+            for index, word, feats in sentence[1:]:
+                print("{}\t{}\t{}".format(index, word, ','.join(feats)), file=file)
+            print(file=file)
+
+def AW(id, n_sents=100, start=0, write=True, append=True):
+    return \
+    hm.create_corpus(
+        read={'filename': CACO_FILTERED},
+        batch={'name': 'AW23.{}'.format(id), 'n_sents': n_sents, 'start': start, 'id': id, 'sentid': start},
+        disambiguate=True,
+        write={'folder': CONLLU, 'append': append}
+        )   
 
 def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2):
     hm.create_corpus(read={'filename': filename},
@@ -54,31 +87,17 @@ def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2
                                         write={"folder": SEGS} if write else {},
                                         um=um, seglevel=seglevel, degeminate=False)
 
-## new CACO
-
-##CACO_cache = {}
-##CACO_path = hm.morpho.caco_path("1.1", "CACO_TEXT_3-7tok.txt")
-##
-##CONLLU_sents = []
-##
-##def caco_batch_name(version, batch):
-##    return "CACO{}_B{}".format(version, batch)
-##
-##def caco_raw(start, n):
-##    with open(hm.morpho.caco_path("1.1", "CACO_TEXT.txt"), encoding='utf8') as file:
-##        return file.readlines()[start:start+n]
-
-# FS conversion
-#FS = hm.morpho.FeatStruct
-#u = hm.morpho.simple_unify
-#f1 = FS("[s=[+p1,-p2,+pl],a=None,v=ps]")
-# convert s=[+p1,+pl] to sp=1, sn=2
-#sf1 = FS("[s=[+p1,+pl]]")
-#sf2 = FS("[sp=1,sn=2]")
-#vf1 = FS("[v=ps]")
-#vf2 = FS("[vc=[+ps,-cs]]")
-#del f1['s']
-#f1.update(FS("[sp=1,sn=2]"))
+def filtercorp(filename='CACO.txt', n_sents=50, start=0, id=1, gramfilt='verbs'):
+    return \
+    hm.create_corpus(
+                       read={'filename': filename},
+                       batch={'n_sents': n_sents, 'start': start, 'id': id},
+                       disambiguate=False,
+                       constraints={
+                                                  'grammar': gramfilt, 'maxpunc': 1, 'maxnum': 0,
+                                                  'maxunk': 3, 'maxtoks': 11, 'endpunc': True
+                                                  }
+                     )
 
 def convfeat(fs, oldfs, newfs, replace=False):
     if u(fs, oldfs):
@@ -89,37 +108,10 @@ def convfeat(fs, oldfs, newfs, replace=False):
                 del fs[oldf]
 #    return fs
 
-#def conv_amh_words():
-#    with open("hm/languages/amh/lex/words.lex") as infile:
-#        with open("hm/languages/amh/lex/words1.lex", 'w') as outfile:
-#            for line in infile:
-#                word, pos, root = line.strip().split()
-#                print("{} {} {}".format(word, root, pos), file=outfile)
-
-##def hmtest():
-##    for word in words:
-##        print(word, hm.anal('amh', word))
-##
-## 2019.12.23
-## Am->Ks translation
-# AK = T = None
-
 #def biling():
 #    global AK, T
 #    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
 #    T = hm.morpho.TransTask(AK)
-
-## 2022.6
-## Mesqan stems
-#def mvz_stem():
-#    hm.load_lang('mvz', recreate=True, verbose=True)
-#    m = hm.get_language('mvz')
-#    return m.morphology['v_stem']
-
-##def mvz():
-##    hm.load_lang('mvz', recreate=True, verbose=True)
-##    m = hm.get_language('mvz')
-##    return m.morphology
 
 
 def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
@@ -218,8 +210,28 @@ def analrecompile(lang, pos, create_fst=True):
     '''
     return recompile(lang, pos, fidel=True, create_fst=create_fst)
 
-#def transrecompile(lang, pos):
-#    return recompile(lang, pos, fidel=True, translate=True)
+def transrecompile(src, trg, pos):
+    '''
+    Recompile analysis and generation FSTs for source and target language, and create
+    translation FST.
+    '''
+    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
+    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
+    fst = \
+        src_pos_morph.load_trans_fst(trg_pos_morph, pos)
+    return src_pos_morph, trg_pos_morph
+
+def parse_lextr_file(src_pos, pos):
+    import os
+    src_pos
+    src = src_pos.language.abbrev
+    path = os.path.join("hm/languages/fidel", src, "fst", pos + '.lextr')
+    print("** lextr path {}".format(path))
+    s = open(path, encoding='utf8').read()
+    hm.morpho.LexTrans.parse("lextr", s,
+                             cascade=src_pos.casc,
+                             fst=FST('lextr', cascade=src_pos.casc, weighting=hm.morpho.UNIFICATION_SR)
+                             )
 
 FST = hm.morpho.FST
 FF = hm.morpho.FSSet

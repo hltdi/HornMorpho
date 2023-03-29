@@ -366,7 +366,7 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
                     chars3 = form[n:n+3]
                     vowel2 = form[n+2]
                     if vowel2 == 'O' and lang == 'am':
-                        print("**** Replacing O with o")
+#                        print("**** Replacing O with o")
                         vowel2 = 'o'
                         chars3 = chars3[:-1] + 'o'
                     elif vowel2 == '@' and lang == 'am':
@@ -650,6 +650,9 @@ def simplify_sera(text, language='am', record=False):
         # Replace special character A with a, in any position
         # This is not currently recorded as a simplification
         text = text.replace('A', 'a')
+        if text.endswith('We'):
+            text = text[:-2] + 'o'
+        # Do the same thing for "...W"?
 #        if text.startswith("hA"):
 #            text = "ha" + text[2:]
 #        if text.startswith("'A"):

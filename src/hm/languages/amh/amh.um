@@ -108,12 +108,12 @@ POS v V
 #->UD LGSPEC2
 # conjunctions
 # Mood
-->UD COND	Mood=Cond
-->UD PURP	Mood=Prp
+->UD COND	Mood=Cond,VerbForm=Sub
+->UD PURP	Mood=Prp,VerbForm=Sub
 # ስ-
 # Time
-->UD *TEMP	*Cnj=Temp
-->UD TERM	*Cnj=Term
+->UD *TEMP	*Cnj=Temp,VerbForm=Sub
+->UD TERM	*Cnj=Term,VerbForm=Sub
 # prepositions/conjunctions
 # እንደ-
 ->UD EQTV	Case=Equ
