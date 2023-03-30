@@ -30,6 +30,15 @@ var/
 # Universal Morphology
 UM/
 
+# Experimental languages
+src/hm/languages/eng
+src/hm/languages/som
+src/hm/languages/stv
+
+# Old dists
+dist/HornMorpho*4.3*
+dist/HornMorpho*4.5.1*
+
 # Misc stuff
 Proc/
 Users/
@@ -39,6 +48,11 @@ Versions/
 docs/old
 notes/
 src/hm/languages/*/data/
+src/hm/languages/*/fst/
+src/hm/languages/*/lex/
+src/hm/languages/*/cas/
+src/hm/languages/*/stat/
+src/hm/languages/*/trans/
 src/hm/ext_data
 
 # PyInstaller

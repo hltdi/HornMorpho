@@ -1,2 +1,0 @@
-Abnet's spell checker data.
-Nouns and adjectives: 7281 added to HM noun stems (93% increase)
