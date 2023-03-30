@@ -1,0 +1,27 @@
+# Cascade for epenthesis, consonant simplification, final velar labialization, initial GS deletion
+weighting = UNIFICATION
+
+### Character class abbreviations ("stringsets")
+
+## Vowels
+V = {a, e, E, i, I, o, u}
+
+## Consonants
+# all consonants and digits
+X = {b, c, C, d, f, g, h, j, k, l, m, n, N, p, P, q, r, s, S, t, T, v, w, x, y, z, Z, ', bW, cW, CW, dW, fW, gW, hW, jW, kW, lW, mW, nW, NW, pW, PW, qW, rW, sW, SW, tW, TW, vW, xW, zW, ZW}
+# digits and word-internal punctuation
+D = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -, _, @, *, %, ., &, +, =, /}
+# sonorants; can't end words following a consonant other than w,y
+R = {l, m, n, N, r, lW, mW, nW, NW, rW, y, w}
+
+## Non-phonetic/orthographic characters
+# % = {_, /}
+
+### FSTs in cascade
+# 0 Delete initial GS if there is one
+>delGSphon<
+# 1, 2 Epenthetic vowel2
+>epen2phon<
+>epen1phon<
+# 3 Simplify consonants: ^s -> s, etc.
+>simpCphon<

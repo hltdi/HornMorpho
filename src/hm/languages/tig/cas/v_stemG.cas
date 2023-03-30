@@ -1,0 +1,38 @@
+# Cascade for verb stems
+
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication (in v_stem.cas)
+# =: stem boundary
+# A: zero or e, agreeing with vowel after laryngeal
+# !: zero, i, or u in imperf/juss, depending on subj and obj
+# *: e, E, or o in imperf/juss, depending on subj and obj
+# Y: placeholder for root-final -y
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u, A, !, *}
+# All segments possible in verbs
+XX = {a, e, E, i, I, o, u, A, b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, Y}
+# All consonants possible in verbs
+X = {b, c, C, d, f, g, h, H, ', j, k, K, l, m, n, N, p, P, q, r, s, S, t, T, w, x, y, z, Z, `, Y}
+# All consonants possible in verbs other than laryngeals and semivowels
+RR = {b, c, C, d, f, g, j, k, K, l, m, n, N, p, q, r, s, S, t, T, x, z, Z}
+# laryngeals
+LL = {h, H, ', `}
+# semivowels
+YY = {y, w, Y}
+## Non-phonetic/orthographic characters
+% = {=, /, _}
+
+# final vowel in imperf-jussive
+>v3o<
+# Frequentative reduplication realized
+>v_stem_it<
+# Gross stem structure
+>v_stem_der<
+# Verb roots
++v_root+

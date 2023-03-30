@@ -1,0 +1,44 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# D: reduplication
+# @: labialization
+# ^: palatalization
+# 0: prefix for character that may be deleted
+# *: e deleted when preceded by a prefix
+# =: stem boundary
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u}
+# All segments
+XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, j, k, K, l, m, n, p, P, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY, _}
+# All consonants possible in verbs (even if not realized, like h)
+X = {b, c, C, d, f, g, h, j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, bW, fW, gW, kW, mW, pW, qW, KW, gY, kY, qY, KY}
+# labial consonants
+BB = {b, f, m, p, w, bW, fW, mW, pW}
+# non-labialized labial root consonants
+MM = {b, f, m, p}
+# coronal consonants
+DD = {d, t, T, s, z, r}
+# coronal obstruent root consonants
+TT = {d, t, T, s, z}
+# palatalized consonsants
+PP = {c, C, j, x, y, Z, gY, kY, qY, KY}
+# velar consonants
+GG = {g, k, K, q, gW, kW, KW, qW}
+# non-labial velar root consonants
+KK = {g, k, K, q}
+# labialized consonants
+UU = {w, bW, fW, mW, pW, gW, kW, KW, qW}
+## Non-phonetic/orthographic characters
+% = {@, ^, 0, =, _}
+
+#>del_epgem<
+#>rn<
+# Vowel combinations
+>aff_nm<
+# Morphotactics
+>nm.mtx<

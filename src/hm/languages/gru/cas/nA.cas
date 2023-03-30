@@ -1,0 +1,25 @@
+weighting = UNIFICATION
+
+## Special characters
+# _: gemination
+# /: pre-gemination
+# =: stem boundary
+
+## Stringsets
+# All vowels
+V = {a, e, E, i, I, o, u}
+# All segments possible in verbs
+XX = {a, e, E, i, I, o, u, b, c, C, d, f, g, h, ', j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, gW, kW, qW, KW, mW, bW, fW}
+# All consonants possible in nouns
+X = {b, c, C, d, f, g, h, ', j, k, K, l, m, n, p, q, r, s, t, T, w, x, y, z, Z, gW, kW, qW, KW, mW, bW, fW}
+# Root consonants
+RG = {p, b, d, f, g, h, ', k, K, m, n, q, r, s, t, T, w, y, z, l, gW, kW, qW, KW, mW, bW, fW}
+% = {=, /, _}
+
+## FSTs
+# Delete gemination and epenthetic characters
+>del_epgem<
+# k->h in possessive suffixes; delete boundary characters
+>bound_n<
+# Morphotactics
+>n.mtx<

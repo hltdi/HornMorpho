@@ -1,0 +1,119 @@
+'Tr:A	አጠረ	1	0	አጠረ	be short
+'Tr:A	አጠረ	2	0	አጠረ	fence
+'br:A	አበረ	1	0	አበረ	collaborate
+'br:A	አበረ	2	te_R	ተባበረ	cooperate
+'dr:A	አደረ	1	0	አደረ	spend the night
+'dr:A	አደረ	2	te_R	ተዳደረ	administer
+'kk:A	አከከ	1	0	አከከ	scratch
+'kk:A	አከከ	2	te_	ታከከ	lean
+'kl:B	አከለ	1	0	አከለ	be equal
+'kl:B	አከለ	2	te_R	ተስተካከለ	adjust
+'lf:A	አለፈ	1	0	አለፈ	pass
+'lf:A	አለፈ	2	te_R	ተላለፈ	intersect
+Tn':A	ጠና	1	0	ጠና	be firm
+Tn':A	ጠና	2	a_	አጠና	study
+Tnkr:E	ጠነከረ	1	0	ጠነከረ	be strong
+Tnkr:E	ጠነከረ	2	te_a	ተጠናከረ	reinforce
+Tqll:E	ጠቀለለ	1	0	ጠቀለለ	wrap
+Tqll:E	ጠቀለለ	2	te_a	ተጠቃለለ	conclude
+Tr':A	ጠራ	1	0	ጠራ	call
+Tr':A	ጠራ	2	0	ጠራ	be pure
+brr:A	በረረ	1	0	በረረ	fly
+brr:A	በረረ	2	te_a	ተባረረ	be driven away
+drdr:E	ደረደረ	1	0	ደረደረ	arrange
+drdr:E	ደረደረ	2	te_a	ተደራደረ	negotiate
+drj*:E	ደረጀ	1	0	ደረጀ	develop
+drj*:E	ደረጀ	2	te_a	ተደራጀ	be organized
+drs:A	ደረሰ	1	0	ደረሰ	arrive
+drs:A	ደረሰ	2	0	ደረሰ	write
+fr':A	ፈራ	1	0	ፈራ	fear
+fr':A	ፈራ	2	a_	አፈራ	bear fruit
+gTm:A	ገጠመ	1	0	ገጠመ	join
+gTm:A	ገጠመ	2	a_a	አጋጠመ	happen
+gb':A	ገባ	1	0	ገባ	enter
+gb':A	ገባ	2	a_	አገባ	marry
+gb':A	ገባ	3	te_R	ተግባባ	agree
+kfl:A	ከፈለ	1	0	ከፈለ	pay
+kfl:A	ከፈለ	2	te_a	ተካፈለ	participate, share
+kfl:A	ከፈለ	3	a_	አከፈለ	fast
+klkl:E	ከለከለ	1	0	ከለከለ	prevent
+klkl:E	ከለከለ	2	te_a	ተከላከለ	defend
+krkr:E	ከረከረ	1	0	ከረከረ	saw, be acrid
+krkr:E	ከረከረ	2	te_a	ተከራከረ	debate
+ktm:B	ከተመ	1	0	ከተመ	found city
+ktm:B	ከተመ	2	a_	አከተመ	end
+ktt:A	ከተተ	1	0	ከተተ	insert
+ktt:A	ከተተ	2	te_a	ተካተተ	be included
+lmT:A	ለመጠ	1	0	ላመጠ	bend, stroke
+lmT:A	ለመጠ	2	a_	አላመጠ	mock, cajole
+m'r:A	ማረ	1	0	ማረ	forgive
+m'r:A	ማረ	2	te_	ተማረ	learn
+m'r:A	ማረ	3	a_	አማረ	be beautiful
+mWl':A	ሞላ	1	0	ሞላ	fill
+mWl':A	ሞላ	2	te_a	ተሟላ	be complete
+mls:B	መለሰ	1	0	መለሰ	return, answer
+mls:B	መለሰ	2	as_	አስመለሰ	vomit
+mt':A	መታ	1	0	መታ	hit
+mt':A	መታ	2	te_a	ተማታ	be confused
+nTb:A	ነጠበ	1	0	ነጠበ	drop, fall
+nTb:A	ነጠበ	2	0	ነጠበ	insult
+nTr:A	ነጠረ	1	0	ነጠረ	be refined, be clear
+nTr:A	ነጠረ	2	a_R	አነጣጠረ	aim
+ndd:A	ነደደ	1	0	ነደደ	burn
+ndd:A	ነደደ	2	te_a	ተናደደ	be angry
+nfnf:E	ነፈነፈ	1	0	ነፈነፈ	eat a lot
+nfnf:E	ነፈነፈ	2	a_	አነፈነፈ	sniff
+ng':A	ነጋ	1	0	ነጋ	dawn
+ng':A	ነጋ	2	te_a	ተናጋ	come loose
+ngr:A	ነገረ	1	0	ነገረ	tell
+ngr:A	ነገረ	2	te_a	ተናገረ	speak
+ns':A	ነሳ	1	te_	ተነሳ	rise
+ns':A	ነሳ	2	te_R	ተንሳሳ	be inpspired
+qm':A	ቀማ	1	0	ቀማ	rob
+qm':A	ቀማ	2	a_R	[]	hesitate
+qTl:A	ቀጠለ	1	0	ቃጠለ	continue
+qTl:A	ቀጠለ	2	te_a	ተቃጠለ	burn
+qWTr:A	ቆጠረ	1	0	ቋጠረ	count
+qWTr:A	ቆጠረ	2	te_R	ተቆጣጠረ	supervise
+qWrT:A	ቆረጠ	1	0	ቆረጠ	cut
+qWrT:A	ቆረጠ	2	te_a	ተቋረጠ	stop
+ql':A	ቀላ	1	0	ቀላ	be red
+ql':A	ቀላ	2	0	ቀላ	hit, decapitate
+qwm:A	ቆመ	1	0	ቈመ	stand
+qwm:A	ቆመ	2	te_a	ተቃወመ	oppose
+qwm:A	ቆመ	3	te_R	ተቋቋመ	be established
+rbrb:E	ረበረበ	1	0	ረበረበ	stack
+rbrb:E	ረበረበ	2	0	ረበረበ	sprinkle
+rbrb:E	ረበረበ	3	0	ረበረበ	do quickly
+rg':A	ረጋ	1	0	ረጋ	be calm
+rg':A	ረጋ	2	a_	አረጋ	curdle
+rmd:B	ረመደ	1	0	ረመደ	press down
+rmd:B	ረመደ	2	te_a	ተራመደ	walk
+s't:A	ሳተ	1	0	ሳተ	miss
+s't:A	ሳተ	2	te_R	ተሳሳተ	make a mistake
+sdd:A	ሰደደ	1	0	ሰደደ	send
+sdd:A	ሰደደ	2	te_a	ተሳደደ	be persecuted
+sk':A	ሰካ	1	0	ሰካ	impale
+sk':A	ሰካ	2	te_a	ተሳካ	succeed
+slq:B	ሰለቀ	1	0	ሰለቀ	grind
+slq:B	ሰለቀ	2	te_a	ተሳለቀ	ridicule
+sm':A	ሰማ	1	0	ሰማ	hear
+sm':A	ሰማ	2	te_	ተሰማ	feel
+sm':A	ሰማ	3	te_R	ተስማማ	agree
+snbt:E	ሰነበተ	1	0	ሰነበተ	spend time
+snbt:E	ሰነበተ	2	te_a	ተሰናበተ	resign,bid farewell
+wT':A	ወጣ	1	0	ወጣ	go out
+wT':A	ወጣ	2	te_	ተወጣ	overcome obstacles
+wT':A	ወጣ	3	te_a	ተዋጣ	be collected
+wqr:A	ወቀረ	1	0	ወቀረ	carve,tattoo
+wqr:A	ወቀረ	2	te_a	ተዋቀረ	be erected
+wrd:A	ወረደ	1	0	ወረደ	go down
+wrd:A	ወረደ	2	te_a	ተዋረደ	be humiliated
+y'z:A	ያዘ	1	0	ያዘ	catch
+y'z:A	ያዘ	2	te_R	ተያያዘ	be connected
+zmt:A	ዘመተ	1	0	ዘመተ	campaign
+zmt:A	ዘመተ	2	te_a	ተዛመተ	be rampant
+zng':E	ዘነጋ	1	0	ዘነጋ	forget
+zng':E	ዘነጋ	2	te_a	ተዘናጋ	feel confident,be lulled
+zwr:A	ዞረ	1	0	ዞረ	turn
+zwr:A	ዞረ	2	te_a	ተዛወረ	be transferred

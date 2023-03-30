@@ -1,0 +1,73 @@
+$ cop
+  eKn  [cp=2,cn=1,cg=m,tns=prs]
+  KYn  [cp=2,cn=1,cg=f,tns=prs]
+  u    [cp=3,cn=1,cg=m,tns=prs]
+  ayn  [cp=3,cn=1,cg=f,tns=prs]
+  edn  [cp=1,cn=2,tns=prs]
+  uKn  [cp=2,cn=2,cg=m,tns=prs]
+  amKn [cp=2,cn=2,cg=f,tns=prs]
+  or   [cp=3,cn=2,cg=m,tns=prs]
+  amer [cp=3,cn=2,cg=f,tns=prs]
+  ab   [cp=1|2|3,tns=pst]
+  --   [cp=0,tns=None]
+
+$ prag_conv
+  x       [cnj=x]
+  K       [cnj=K]
+  a       [cnj=a]
+  --      [cnj=None|m]
+
+$ obl2
+  eyn     [+dir]
+  --      [-dir]
+
+$ obl1
+  E       [+goal]
+  ameK    [+sim]
+  --      [-goal,-sim]
+
+$ defposs
+  ane     [pp=1,pn=1]
+  adne    [pp=1,pn=2]
+  eKa     [pp=2,pn=1,pg=m]
+  KYa     [pp=2,pn=1,pg=f]
+  uKa     [pp=2,pn=2,pg=m]
+  amKa    [pp=2,pn=2,pg=f]
+  ate     [+def];[pp=3,pg=m,pn=1]
+  atKYe   [pp=3,pg=f,pn=1]
+  anKWe   [pp=3,pg=m,pn=2]
+  onKe    [pp=3,pg=m,pn=2]
+  amenKWe [pp=3,pg=f,pn=2]
+  # pronoun as definite markers
+  atKW    [+def]
+  --      [-def,pp=0]
+
+$ conj
+  m       [cnj=m]
+  --      [cnj=None|x|K|a]
+
+$ ot
+  to  [tp=ot]
+  --  [tp=we]
+
+## Boundary separating stem from suffixes
+$ bound2
+  =
+
+$ stem
+  +inf_irr_stem+    []
+  >>inf_stem<<
+
+## Boundary separating prefixes from stem
+$ bound1
+  =
+
+$ we
+  ew [tp=we,pos=inf,tm=inf]
+  -- [tp=ot,pos=inf,tm=inf]
+
+$ prep
+  ey [prep=ye]
+  eb [prep=be]
+  et [prep=te]
+  -- [prep=None]
