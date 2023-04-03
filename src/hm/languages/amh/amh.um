@@ -102,6 +102,8 @@ POS v V
 ->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
 ->UD *MAL3P	*MalPers=3,MalNum=Plur
 ->UD TOP	*Inf=Topic
+->UD DEF	*Definite=Def
+
 # -ም
 #->UD LGSPEC1
 # -ስ

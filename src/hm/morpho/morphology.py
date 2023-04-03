@@ -1305,27 +1305,31 @@ class POSMorphology:
              to_dict=False, sep_anals=False, normalize=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
         """Analyze form."""
-#        fst = self.get_fst(generate=False, guess=guess, phon=phon, segment=segment)
+        fst = self.get_fst(generate=False, guess=guess, phon=phon, segment=segment,
+                           experimental=experimental, mwe=mwe, translate=False)
+
+        # Get the right FST.
         # Experimental FSTs have priority over others, but note that segment will
-        # also be true if experimental FST is a segmenter
-        fsts = self.mwefsts if mwe else self.fsts
-        if experimental:
-            fst = fsts[self.anal_i][self.exp_i]
-        elif guess:
-            if phon:
-                fst = fsts[self.anal_i][self.guessphon_i]
-            elif segment:
-                fst = None
-            else:
-                fst = fsts[self.anal_i][self.guess_i]
-        elif simplified:
-            fst = fsts[self.anal_i][self.simp_i]
-        elif phon:
-            fst = fsts[self.anal_i][self.phon_i]
-        elif segment:
-            fst = fsts[self.anal_i][self.seg_i]
-        else:
-            fst = fsts[self.anal_i][0] or fsts[self.anal_i][self.guess_i] or fsts[self.anal_i][self.simp_i]
+        # also be true if experimental FST is a segmenter.
+        # MWE or single word
+#        fsts = self.mwefsts if mwe else self.fsts
+#        if experimental:
+#            fst = fsts[self.anal_i][self.exp_i]
+#        elif guess:
+#            if phon:
+#                fst = fsts[self.anal_i][self.guessphon_i]
+#            elif segment:
+#                fst = None
+#            else:
+#                fst = fsts[self.anal_i][self.guess_i]
+#        elif simplified:
+#            fst = fsts[self.anal_i][self.simp_i]
+#        elif phon:
+#            fst = fsts[self.anal_i][self.phon_i]
+#        elif segment:
+#            fst = fsts[self.anal_i][self.seg_i]
+#        else:
+#            fst = fsts[self.anal_i][0] or fsts[self.anal_i][self.guess_i] or fsts[self.anal_i][self.simp_i]
 #        print("*** anal fst {}, form {}".format(fst.__repr__(), form))
         if fst:
             if preproc:
@@ -1346,9 +1350,10 @@ class POSMorphology:
                 # Normalization requires FeatStructs so separate
                 # anals if it's True
                 anals = self.separate_anals(anals, normalize=normalize)
-#            print("** anals {}".format(anals))
             if to_dict:
                 anals = self.anals_to_dicts(anals)
+            if verbosity:
+                print("** anal: {}".format(anals))
             return anals
         elif trace:
             print('No analysis FST loaded for', self.pos)
@@ -1795,7 +1800,7 @@ class POSMorphology:
             fs = FeatStruct(fs)
         return fs.delete(featpaths, freeze=freeze)
 
-    def o2p(self, form, guess=False, rank=False):
+    def o2p(self, form, guess=False):
         """Convert orthographic input to phonetic form.
         If rank is True, rank the analyses by the frequency of their roots."""
         output = {}
@@ -1814,12 +1819,11 @@ class POSMorphology:
 #            print("Analyses: {}".format(analyses))
             for root, anals in analyses:
                 for anal in anals:
-                    if rank:
-                        # The freq score is the count for the root-feature combination
-                        # times the product of the relative frequencies of the grammatical features
-                        root_count = self.morphology.get_root_freq(root, anal)
-                        freq_count = self.morphology.get_feat_freq(anal)
-                        root_count *= freq_count
+                    # The freq score is the count for the root-feature combination
+                    # times the product of the relative frequencies of the grammatical features
+                    root_count = self.morphology.get_root_freq(root, anal)
+                    freq_count = self.morphology.get_feat_freq(anal)
+                    root_count *= freq_count
                     out = self.gen(root, features=anal, phon=True, fst=gen_fst)
                     for o in out:
                         word = o[0]

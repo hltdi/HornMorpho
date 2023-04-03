@@ -217,8 +217,7 @@ def transrecompile(src, trg, pos):
     '''
     src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
     trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
-    fst = \
-        src_pos_morph.load_trans_fst(trg_pos_morph, pos)
+    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
     return src_pos_morph, trg_pos_morph
 
 def parse_lextr_file(src_pos, pos):

@@ -1501,14 +1501,13 @@ class Language:
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None, experimental=False, mwe=False,
-                  root=True, stem=True, citation=True, gram=True,
                   um=1, gloss=True, phonetic=True, normalize=False,
                   ortho_only=False, lemma_only=False, sep_anals=True,
                   get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
-                  display_feats=None, rank=True, report_freq=True, nbest=100,
+                  display_feats=None, report_freq=True, nbest=100,
                   conllu=False, skip_other_pos=False,
-                  only_anal=False, preseg=False, verbosity=0):
+                  only_anal=False, preseg=False, verbosity=1):
         '''
         Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
         If segment is True, this does morphological segmentation, with various
@@ -1526,7 +1525,6 @@ class Language:
         found = False
         preproc = preproc and self.preproc
         postproc = postproc and self.postproc
-        citation = citation and self.citation_separate
         normalize = normalize and not um
         analyses = []
         to_cache = [] if cache else None
@@ -1546,7 +1544,7 @@ class Language:
             cache = False
             if only_anal:
                 return []
-            a = self.simp_anal(unal_word, postproc=postproc, segment=segment, citation=citation)
+            a = self.simp_anal(unal_word, postproc=postproc, segment=segment)
             analyses.append(a)
 
         # See if the word is cached (but only if there is no init_weight)
@@ -1555,10 +1553,10 @@ class Language:
             if cached:
                 if not init_weight:
                     found = True
-                    analyses = self.proc_anal(word, cached, None, show_root=root, citation=citation,
-                                              stem=stem, phonetic=phonetic, ortho_only=ortho_only,
+                    analyses = self.proc_anal(word, cached, None, 
+                                              phonetic=phonetic, 
                                               normalize=normalize, segment=segment, guess=False,
-                                              postproc=postproc, gram=gram, freq=rank or report_freq,
+                                              postproc=postproc, freq=report_freq,
                                               verbosity=verbosity)
 
         # Is word already analyzed, without any root/stem (for example, there is a POS and/or a translation)?
@@ -1590,45 +1588,27 @@ class Language:
                         if cache:
                             to_cache.extend(preanal)
                         analyses.extend(self.proc_anal(form, preanal, pos,
-                                                       show_root=root, citation=citation, stem=stem, phonetic=phonetic,
-                                                       ortho_only=ortho_only, normalize=normalize, segment=segment,
-                                                       guess=False, postproc=postproc, gram=gram,
-                                                       freq=rank or report_freq, verbosity=verbosity))
+                                                       phonetic=phonetic,
+                                                       normalize=normalize, segment=segment,
+                                                       guess=False, postproc=postproc,
+                                                       freq=report_freq, verbosity=verbosity))
                     else:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         if verbosity:
                             print("** analyzing {} with {} FST".format(form, pos))
-                        analysis = self.morphology[pos].anal(form, init_weight=init_weight,
-                                                             phon=phon, segment=segment, experimental=experimental, mwe=mwe,
-                                                             normalize=False, to_dict=to_dict, sep_anals=sep_anals,
-                                                             verbosity=verbosity)
-                        if analysis:
-                            if cache:
-                                to_cache.extend(analysis)
-                            # Keep trying if an analysis is found
-                            analyses.extend(self.proc_anal(form, analysis, pos,
-                                                           show_root=root, citation=citation,
-                                                           ortho_only=ortho_only, segment=segment, normalize=normalize,
-                                                           stem=stem, phonetic=phonetic,
-                                                           guess=False, postproc=postproc, gram=gram,
-                                                           freq=rank or report_freq, verbosity=verbosity))
+                        self.anal_word_(form, analyses, pos, to_cache,
+                                        guess=False, phon=phon, segment=segment, init_weight=init_weight,
+                                        experimental=experimental, mwe=mwe, normalize=False, to_dict=to_dict,
+                                        sep_anals=sep_anals, verbosity=verbosity)
         # If nothing has been found, try guesser FSTs for each POS
         if not analyses and guess:
             # Accumulate results from all guessers
             for pos in fsts:
-                analysis = self.morphology[pos].anal(form, guess=True, init_weight=init_weight,
-                                                     phon=phon, segment=segment, experimental=experimental, mwe=False,
-                                                     to_dict=to_dict, sep_anals=sep_anals, verbosity=verbosity)
-                if analysis:
-                    if cache:
-                        to_cache.extend(analysis)
-                    analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
-                                                   ortho_only=ortho_only, normalize=normalize,
-                                                   segment=segment, phonetic=phonetic, guess=True, gram=gram, postproc=postproc,
-                                                   freq=rank or report_freq, verbosity=verbosity))
+                self.anal_word_(form, analyses, pos, to_cache,
+                                guess=True, phon=phon, segment=segment, init_weight=init_weight,
+                                experimental=experimental, mwe=False, normalize=False, to_dict=to_dict,
+                                sep_anals=sep_anals, verbosity=verbosity)
         if cache and not found:
-#            print("Adding new anal {}, {}".format(word, to_cache))
-            # Or use form instead of word
             self.add_new_anal(word, to_cache)
         if not analyses:
             # Impossible to analyze the word/form.
@@ -1637,15 +1617,12 @@ class Language:
             if segment and experimental:
                 analyses = [('UNK', None, None)]
             return analyses
-        if rank and len(analyses) > 1:
+        if len(analyses) > 1:
 #            print("** Ranking results {}".format(analyses))
             self.sort_analyses(analyses)
-#            analyses.sort(key=lambda x: -x[-1])
         # Select the n best analyses
         analyses = analyses[:nbest]
         self.filter_analyses(analyses)
-#        print("print_out {}, string {}, segment {}".format(print_out, string, segment))
-#        print("*** analyses {}".format(analyses))
         if print_out:
             # Print out stringified version
             print(self.analyses2string(word, analyses, seg=segment, lemma_only=lemma_only,
@@ -1653,35 +1630,23 @@ class Language:
         elif segment and um:
             # Getting UM and UD features for segmented analyis
             for aindex, analysis in enumerate(analyses):
-#                print("** aindex {}, analysis {}".format(aindex, analysis))
                 pos, segmentation, lemma, features, freq = analysis
-#                print("** Getting um for segmentation {}, pos {}, features {}".format(segmentation, pos, features.__repr__()))
                 POS = Language.convertPOS(pos)
                 if POS in self.um.hm2um:
-#                    print("*** hm2um {}".format(self.um.hm2um[POS]))
                     umfeats = self.um.convert(features, pos=POS)
-#                    print("*** umfeats {}".format(umfeats))
-                    if not umfeats:
-                        print('*** POS {}, features {}, umfeats {}'.format(POS, features.__repr__(), umfeats))
                     udfeats = self.um.convert2ud(umfeats, POS, extended=um==2)
-#                    print("*** udfeats {}".format(udfeats))
                     analyses[aindex] = analysis + (udfeats,)
                 else:
                     analyses[aindex] = analysis + ('',)
-#            if um and pos in self.um.hm2um:
-#                ufeats = self.um.convert(gram2, pos=pos)
-#                if ufeats:
-#                    gram2 = ufeats
-#                    a['gram'] = gram2
         elif not segment and not string:
             # Do final processing of analyses, given options
             for i, analysis in enumerate(analyses):
                 if len(analysis) <= 2:
                     analyses[i] = (analysis[1],)
                 else:
-                    a = self.finalize_anal(analysis, citation=citation, um=um,
+                    a = self.finalize_anal(analysis, um=um,
                                            gloss=gloss, report_freq=report_freq,
-                                           show_gram=gram, phonetic=phonetic,
+                                           phonetic=phonetic,
                                            simplifications=not phonetic and simps)
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
@@ -1690,9 +1655,8 @@ class Language:
 
     def anal_word_(self, form, analyses, pos, to_cache,
                    guess=False, phon=False, segment=False, init_weight=None, experimental=False, mwe=False,
-                   root=True, stem=True, citation=True, gram=True,
-                   phonetic=True, normalize=False,  ortho_only=False, sep_anals=True,
-                   to_dict=False, postproc=False, cache=False, rank=True, report_freq=True,
+                   phonetic=True, normalize=False, sep_anals=True,
+                   to_dict=False, postproc=False, cache=False, report_freq=True,
                    verbosity=0):
         analysis = self.morphology[pos].anal(form, guess=guess, init_weight=init_weight,
                                              phon=phon, segment=segment, experimental=experimental, mwe=mwe,
@@ -1702,13 +1666,13 @@ class Language:
             if cache:
                 to_cache.extend(analysis)
                 # Keep trying if an analysis is found
-                analyses.extend(self.proc_anal(form, analysis, pos, show_root=root, citation=citation,
-                                               ortho_only=ortho_only, segment=segment, normalize=normalize,
-                                               stem=stem, phonetic=phonetic, guess=guess, postproc=postproc, gram=gram,
-                                               freq=rank or report_freq, verbosity=verbosity))
+            analyses.extend(self.proc_anal(form, analysis, pos, 
+                                           segment=segment, normalize=normalize,
+                                           phonetic=phonetic, guess=guess, postproc=postproc,
+                                           freq=report_freq, verbosity=verbosity))
 
     def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
-                  root=True, citation=True, segment=False, gram=True,
+                  segment=False,
                   lemma_only=False, ortho_only=False, realize=False,
                   knowndict=None, guessdict=None, cache=False, no_anal=None,
                   phon=False, only_guess=False, guess=True, raw=False, experimental=False, mwe=False,
@@ -1718,7 +1682,7 @@ class Language:
                   # Filter for morphological properites
                   gramfilter=None,
                   # Ambiguity
-                  rank=True, report_freq=False, nbest=100, report_n=50000,
+                  report_freq=False, nbest=100, report_n=50000,
                   lower=True, lower_all=False, nlines=0, start=0, batch_name='',
                   local_cache=None, xml=None, multseg=False, csentences=None, sentid=0,
                   verbosity=0):
@@ -1730,7 +1694,6 @@ class Language:
         """
         preproc = preproc and self.preproc
         postproc = postproc and self.postproc
-        citation = citation and self.citation_separate
         storedict = True if knowndict != None else False
         normalize = normalize and not um
         realizer = realize and self.segmentation2string
@@ -1892,11 +1855,10 @@ class Language:
                 analyses = \
                     self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
                                    segment=segment, experimental=experimental, mwe=True,
-                                   root=True, stem=True, citation=True, gram=True,
                                    normalize=normalize, ortho_only=False,
                                    preproc=False, postproc=postproc and not raw,
                                    skip_other_pos=skip_other_pos,
-                                   cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
+                                   cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
                                    string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
                 newmorphid = \
                    self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
@@ -1933,10 +1895,10 @@ class Language:
                     form, simps = self.preproc(word)
                 analyses = \
                   self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
-                       segment=segment, experimental=experimental, mwe=False, root=True, stem=True, citation=True, gram=True,
+                       segment=segment, experimental=experimental, mwe=False, 
                        normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
                        skip_other_pos=skip_other_pos,
-                       cache=False, no_anal=None, um=um, rank=True, report_freq=report_freq, nbest=nbest,
+                       cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
                        string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
             morphid = \
                 self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
@@ -2040,7 +2002,7 @@ class Language:
             elif not realize:
                 # Convert the analyses to a string
                 string_analyses = self.analyses2string(word, analyses, seg=segment, form_only=False, lemma_only=False,
-                                                ortho_only=False, short=False, word_sep=word_sep)
+                                                ortho_only=False, word_sep=word_sep)
             elif not conllu and not xml:
                 string_analyses = "{}: {}".format(word, analyses)
         elif segment and not conllu and not xml:
@@ -2075,6 +2037,42 @@ class Language:
                 print(string_analyses, file=file)
 
         return morphid
+
+    def format_analysis(self, criterion='conllu', form=None, features=None, lemma=None, freq=None):
+        '''
+        Format the analysis according to different criteria:
+        'conllu', 'dict', 'string', 'list', 'xml'.
+        '''
+
+    def get_root_freq(self, pos, feats, root=''):
+        # The freq score is the count for the root-feature combination
+        # times the product of the relative frequencies of the grammatical features
+        if pos.startswith('nm'):
+            # Treat names specially
+            root_freq = Language.namefreq
+        else:
+            root_freq = self.morphology.get_root_freq(root, feats)
+            feat_freq = self.morphology.get_feat_freq(feats)
+            root_freq *= feat_freq
+            root_freq = round(root_freq)
+        return root_freq
+
+    def get_lemma(self, pos, feats=None, root='', guess=False, postprocess=True, phonetic=False):
+        lemma = None
+        l = feats.get('lemma') if feats else ''
+        if l:
+            lemma = l
+        else:
+            # Convert nadj, n_dv to n
+            POS = Language.convertPOS(pos)
+            posmorph = POS and POS in self.morphology and self.morphology[POS]
+            if posmorph and posmorph.citation and isinstance(feats, FeatStruct):
+                lemma = posmorph.citation(root, feats, guess, True, phonetic=phonetic)
+                if not lemma:
+                    lemma = root
+                if postprocess:
+                    lemma = self.postprocess(lemma, ortho_only=True, phonetic=phonetic)
+        return lemma
 
     @staticmethod
     def filter_word(word, analyses, gramfilter, filtered, filter_cache, nanals=2, verbosity=0):
@@ -2227,7 +2225,7 @@ class Language:
             string = "{" + word + "}}({}abbr=yes)".format(Language.featsmark)
             return (pos, string, word)
         else:
-            return (pos, word, word, None, None, 100)
+            return (pos, word, word, None, 100)
 #            return [{'POS': pos, 'lemma': word, 'freq': 100}]
 
     def process_punc(self, word, segment=False, print_out=False):
@@ -2240,9 +2238,9 @@ class Language:
             print(string)
         elif segment:
             string = None # word
-            return (pos, string, '')
+            return (pos, string, '', None, 10000)
         else:
-            return (pos, word, word, None, None, 10000)
+            return (pos, word, word, None, 10000)
 #            return [{'POS': pos, 'freq': 10000}]
 
     def process_numeral(self, word, pre, num, post, segment=False, print_out=False):
@@ -2275,13 +2273,13 @@ class Language:
                 string = "{}(@adp,*{},~case)-{{{}}}".format(pre, pre, num)
             else:
                 string = None #"{}".format(num)
-            return (pos, word, word, lemma, None, 1000)
+            return (pos, string, lemma, None, 1000)
 #            return (pos, string, lemma)
         else:
             result = [{'POS': pos, 'freq': 1000}]
             if lemma:
                 result['lemma'] = lemma
-            return (pos, word, word, lemma, None, 1000)
+            return (pos, word, lemma, None, 1000)
 #            return result
 
     def minim_string(self, form, analyses=None, feats=None, simpfeats=None):
@@ -2362,9 +2360,9 @@ class Language:
             return 'cop'
         return pos
 
-    def analyses2string(self, word, analyses, seg=False, form_only=False,
-                        lemma_only=False, ortho_only=False,
-                        word_sep='\n', short=False, webdicts=None):
+    def analyses2string(self, word, analyses, seg=False,
+                        lemma_only=False, ortho_only=False, form_only=False,
+                        word_sep='\n', webdicts=None):
         '''
         Convert a list of analyses to a string, and if webdicts, add analyses to dict.
         '''
@@ -2380,60 +2378,44 @@ class Language:
             else:
                 return word + word_sep
         s = ''
-#        if not analyses:
-#            s += '?'
         if lemma_only:
             s = Language.T.tformat('{}: ', [word], self.tlanguages)
         else:
             s += Language.T.tformat('{}: {}\n', ['word', word], self.tlanguages)
         lemmas = []
         for analysis in analyses:
-            if short:
-                # What happens with file analysis
-                root = analysis[0]
-                features = analysis[1]
-                if features:
-                    pos = Language.convertPOS(features.get('pos', ''))
-                    if pos:
-                        if pos in self.morphology:
-                            s += self.morphology[pos].pretty_anal(analysis, root=root, fs=features)
-                        elif self.morphology.anal2string:
-                            s += self.morphology.anal2string(analysis, webdict=webdict, lemma_only=lemma_only)
-            else:
-                fs = analysis[3]
-#                print("fs {}".format(fs.__repr__()))
-                pos = fs.get('pos') if fs else None
-                if pos == 'nadj' or pos == 'n_dv':
-                    pos = 'n'
-                if pos:
-                    webdict = None
-#                    pos = pos.replace('?', '')
-                    if webdicts != None:
-                        webdict = {}
-                        webdicts.append(webdict)
-                    if pos in self.morphology:
-                        if self.morphology[pos].anal2string:
-                            analstring = \
-                            self.morphology[pos].anal2string(analysis, webdict=webdict, lemma_only=lemma_only)
-                            if lemma_only:
-                                if analstring not in lemmas:
-                                    lemmas.append(analstring)
-                            else:
-                                s += analstring
+            fs = analysis[3]
+            pos = fs.get('pos') if fs else None
+            if pos == 'nadj' or pos == 'n_dv':
+                pos = 'n'
+            if pos:
+                webdict = None
+                if webdicts != None:
+                    webdict = {}
+                    webdicts.append(webdict)
+                if pos in self.morphology:
+                    if self.morphology[pos].anal2string:
+                        analstring = \
+                        self.morphology[pos].anal2string(analysis, webdict=webdict, lemma_only=lemma_only)
+                        if lemma_only:
+                            if analstring not in lemmas:
+                                lemmas.append(analstring)
                         else:
-                            s += self.morphology[pos].pretty_anal(analysis, webdict=webdict)
-                    elif self.morphology.anal2string:
-                        s += self.morphology.anal2string(analysis, webdict=webdict)
-                elif analysis[1] and analysis[0]:
-                    # this is the POS for unanalyzable words
-                    pos = analysis[1]
-                    root = analysis[0]
-                    if self.postproc:
-                        root = self.postproc(root, ortho_only=ortho_only)
-                    if lemma_only:
-                        lemmas.append(root)
+                            s += analstring
                     else:
-                        s += " POS = {}, lemma = {}\n".format(pos, root)
+                        s += self.morphology[pos].pretty_anal(analysis, webdict=webdict)
+                elif self.morphology.anal2string:
+                    s += self.morphology.anal2string(analysis, webdict=webdict)
+            elif analysis[1] and analysis[0]:
+                # this is the POS for unanalyzable words
+                pos = analysis[1]
+                root = analysis[0]
+                if self.postproc:
+                    root = self.postproc(root, ortho_only=ortho_only)
+                if lemma_only:
+                    lemmas.append(root)
+                else:
+                    s += " POS = {}, lemma = {}\n".format(pos, root)
         if lemma_only:
             s += ' '.join(lemmas) + "\n"
         return s
@@ -2462,82 +2444,63 @@ class Language:
         else:
             dct[form] = [(root, fs)]
 
-    def finalize_anal(self, anal, citation=True, um=1, gloss=True,
-                      show_gram=True, report_freq=False, phonetic=True,
+    def finalize_anal(self, anal, um=1, gloss=True,
+                      report_freq=False, phonetic=True,
                       simplifications=None):
         """
         Create dict with analysis.
         """
         a = {}
-        pos, root, cit, gram1, gram2, count = anal
-        # POS could be '?v', etcl
+        pos, root, cit, gram, count = anal
+        # POS could be '?v', etc.
 #        pos = pos.replace('?', '')
         # Postprocess root if appropriate
         root1 = None
         if root:
             root1 = self.postproc_root(self.morphology.get(pos.replace('?', '')),
-                                       root, gram2, phonetic=phonetic, simplifications=simplifications)
+                                       root, gram, phonetic=phonetic, simplifications=simplifications)
         if pos:
             a['POS'] = pos
-        if not gram2 and not cit:
+        if not gram and not cit:
             # Unanalyzed word
             a['lemma'] = root1
-#            if pos:
-#                a['POS'] = pos
-        elif citation and cit:
+        elif cit:
             a['lemma'] = cit
-#            self.finalize_citation(cit)
-        if root and (not citation or (cit and root != cit) or (root1 != root)):
+        if root and ((cit and root != cit) or (root1 != root)):
             a['root'] = root1
         if gloss:
-            g = self.get_gloss(gram2)
+            g = self.get_gloss(gram)
             if g:
                 a['gloss'] = g
-#            elif um:
-#                # If there's no gloss and UM is True,
-#                # ignore this analysis
-#get                return None
         if um and pos in self.um.hm2um:
-#            ufeats = None
-#            if gram2:
-            ufeats = self.um.convert(gram2, pos=pos)
+            ufeats = self.um.convert(gram, pos=pos)
             if ufeats:
-                gram2 = ufeats
-                a['gram'] = gram2
+                gram = ufeats
+                a['gram'] = gram
         if not um:
-            if gram2 and show_gram:
-                a['gram'] = gram2
+            if gram:
+                a['gram'] = gram
         if report_freq:
             a['freq'] = count
         return a
 
-    def simp_anal(self, analysis, postproc=False, segment=False, citation=True):
+    def simp_anal(self, analysis, postproc=False, segment=False):
         '''Process analysis for unanalyzed cases.'''
-        if segment:
-            form, pos = analysis
-            if '//' in form:
-                form = form.replace('//', ' ')
-            if postproc:
-                cite = self.postprocess(form, ortho_only=True, phonetic=False)
-            else:
-                cite = form
-            return pos, form, cite, None, 100000
+        cite = None
         form, pos = analysis
         if '//' in form:
             form = form.replace('//', ' ')
-        if citation:
-            if postproc:
-                cite = self.postprocess(form, ortho_only=True, phonetic=False)
-            else:
-                cite = form
-            return pos, form, cite, None, None, 100000
+        if segment:
+            cite = self.get_lemma(pos, root=form, postprocess=postproc, phonetic=False)
+            return pos, form, cite, None, 100000
+        cite = self.get_lemma(pos, root=form, postprocess=postproc, phonetic=False)
         # 100000 makes it likely these will appear first in ranked analyses
         # form is actually the root for a few cases
-        return pos, form, None, None, None, 100000
+        return pos, form, cite, None, 100000
 
     def proc_anal_noroot(self, form, analyses, segment=False):
         '''Process analyses with no roots/stems.'''
-        return [(analysis.get('pos'), None, None, analysis, None, 0) for analysis in analyses]
+        return [(analysis.get('pos'), None, None, analysis, 0) for analysis in analyses]
 
     def postproc_root(self, posmorph, root, fs, phonetic=True, simplifications=None):
         """
@@ -2569,146 +2532,90 @@ class Language:
             return r.group(1).split("+")[0]
         return ''
 
-    def proc_anal(self, form, analyses, pos, show_root=True,
-                  citation=True, ortho_only=False, normalize=False,
-                  segment=False, stem=True, guess=False, postproc=False, gram=True, string=False,
-                  freq=True, phonetic=True, verbosity=0):
+    def proc_anal1(self, analysis, pos, segment=True, guess=False,
+                   freq=True, 
+                   postproc=True, phonetic=True, normalize=False):
+        feats = analysis[1]
+        if not (feats := analysis[1]):
+            return
+        analstring = self.postpostprocess(analysis[0])
+        if not pos:
+            pos = feats.get('pos', '')
+        cat = '?' + pos if guess else pos
+        headi = feats.get('headi')
+        if headi and segment:
+            # MWE expression with features specifying head index, POS for non-head words, deprel
+            modpos = feats.get('modpos', '')
+            dep = feats.get('dep', '')
+            match = MWE_SEG_STRING_RE.match(analstring)
+            if match:
+                pre, rt, post = match.groups()
+                rootwords = rt.split()
+                morphs = []
+                for i, x in enumerate(rootwords):
+                    if i == headi:
+                        morphs.append('{' + x + '}')
+                    else:
+                        lemma1 = self.postproc(x, ortho_only=True)
+                        morphs.append("{}(@{},*{},~{})".format(x, modpos, lemma1, dep))
+                analstring = "{}{}{}".format(pre, "-".join(morphs), post)
+        if segment:
+            real_seg = Language.root_from_seg(analstring)
+            root = Language.root_from_segstring(analstring)
+        else:
+            root = analstring
+        root_freq = 0
+        if freq:
+            root_freq = self.get_root_freq(pos, feats, root)
+        posmorph = pos and pos in self.morphology and self.morphology[pos]
+        if postproc and posmorph and posmorph.postproc:
+            posmorph.postproc(analysis)
+        # Find the citation form of the root if required
+        # This only works if FSSets have been separated into FeatStructs
+        cite = ''
+        cite = self.get_lemma(pos, feats=feats, root=analstring, guess=guess, postprocess=postproc, phonetic=phonetic)
+        # Normalize features
+        if not segment:
+            if normalize and posmorph:
+                feats = posmorph.featconv(feats)
+        newitem = (cat, analstring, cite, feats, root_freq)
+#        if newitem not in results:
+#            results.append(newitem)
+
+        # Use the 'raw' POS, e.g., 'nadj' rather than 'n'
+        return pos, analstring, cite, feats, root_freq
+#        res.append((pos, analstring, cite, feats, root_freq))
+
+    def proc_anal(self, form, analyses, pos,
+                  freq=True, 
+                  normalize=False,
+                  segment=False, guess=False, postproc=False, string=False,
+                  phonetic=True, verbosity=0):
         '''
         Process analyses according to various options, returning a list of
         analysis tuples.
         If freq, include measure of root and morpheme frequency.
         '''
         results = []
-        if segment:
-            res = []
-            for analysis in analyses:
-                feats = analysis[1]
-#                print("** proc_anal: feats {}".format(feats.__repr__()))
-                if not feats:
-                    # No analysis
-                    continue
-                if isinstance(feats, str):
-                    pos = feats
-                else:
-                    pos = feats.get('pos')
-                segstring = analysis[0]
-                headi = feats.get('headi')
-                segstring = self.postpostprocess(segstring)
-                if headi:
-                    # MWE expression with features specifying head index, POS for non-head words, deprel
-                    modpos = feats.get('modpos', '')
-                    dep = feats.get('dep', '')
-                    match = MWE_SEG_STRING_RE.match(segstring)
-                    if match:
-                        pre, rt, post = match.groups()
-                        rootwords = rt.split()
-                        morphs = []
-                        for i, x in enumerate(rootwords):
-                            if i == headi:
-                                morphs.append('{' + x + '}')
-                            else:
-                                lemma1 = self.postproc(x, ortho_only=True)
-                                morphs.append("{}(@{},*{},~{})".format(x, modpos, lemma1, dep))
-                        segstring = "{}{}{}".format(pre, "-".join(morphs), post)
-                # Remove { } from root
-                real_seg = Language.root_from_seg(segstring)
-                root_freq = 0
-                root = Language.root_from_segstring(segstring)
-                if freq:
-                    if pos.startswith('nm'):
-                        # Treat names specially
-                        root_freq = Language.namefreq
-                    else:
-                        root_freq = self.morphology.get_root_freq(root, feats)
-                        feat_freq = self.morphology.get_feat_freq(feats)
-                        root_freq *= feat_freq
-                        root_freq = round(root_freq)
-                cite = ''
-                if citation:
-                    lemma = feats.get('lemma')
-                    if lemma:
-                        cite = lemma
-                    else:
-                        # Convert nadj, n_dv to n
-                        POS = Language.convertPOS(pos)
-                        posmorph = POS and POS in self.morphology and self.morphology[POS]
-                        if posmorph and posmorph.citation and isinstance(feats, FeatStruct):
-                            cite = posmorph.citation(root, feats, guess, stem, phonetic=phonetic)
-                            if not cite:
-                                cite = root
-                            if postproc:
-                                cite = self.postprocess(cite, ortho_only=True, phonetic=phonetic)
-                # Use the 'raw' POS, e.g., 'nadj' rather than 'n'
-                res.append((pos, segstring, cite, feats, root_freq))
-#            print("** result {}".format(res))
-            return res
         for analysis in analyses:
-            if verbosity:
-                print("** proc anal {}".format(analysis))
-            root = self.postpostprocess(analysis[0])
-            grammar = analysis[1]
-            if not grammar:
-                # No analysis; skip this one
-                continue
-            elif not pos:
-                p = grammar.get('pos', '')
-            else:
-                p = pos
-            cat = '?' + p if guess else p
-            # grammar is a single FS
-#            if not show_root and not segment:
-#                analysis[0] = None
-            posmorph = p and p in self.morphology and self.morphology[p]
-            if postproc and posmorph and posmorph.postproc:
-                posmorph.postproc(analysis)
-            root_freq = 0
-            if freq:
-                # The freq score is the count for the root-feature combination
-                # times the product of the relative frequencies of the grammatical features
-                if p.startswith('nm'):
-                    root_freq = Language.namefreq
-                elif show_root:
-                    feat_freq = self.morphology.get_feat_freq(grammar)
-                    root_freq = self.morphology.get_root_freq(root, grammar)
-                    root_freq *= feat_freq
-                    root_freq = round(root_freq)
-                else:
-                    root_freq = 0.0
-            # Find the citation form of the root if required
-            # This only works if FSSets have been separated into FeatStructs
-            if citation and posmorph and posmorph.citation and isinstance(grammar, FeatStruct):
-                if not (cite := grammar.get('lemma')):
-                    cite = posmorph.citation(root, grammar, guess, stem, phonetic=phonetic)
-                if not cite:
-                    cite = root
-                if postproc:
-                    cite = self.postprocess(cite, ortho_only=ortho_only, phonetic=phonetic)
-            else:
-                cite = None
-                # Prevent analyses with same citation form and FS (results is a set)
-                # Include the grammatical information at the end in case it's needed
-            if not show_root:
-                root = None
-            # Normalize features
-            if gram and normalize and posmorph:
-                grammar = posmorph.featconv(grammar)
-            newitem = (cat, root, cite, grammar if gram else None, grammar, root_freq)
-            if newitem not in results:
-                results.append(newitem)
-#            results.add((cat, root, cite, grammar if gram else None, grammar, root_freq))
-#        return list(results)
+            if (newanal := \
+                    self.proc_anal1(analysis, pos, segment=segment, guess=guess,
+                                    freq=freq, 
+                                    postproc=postproc,
+                                    phonetic=phonetic, normalize=normalize)):
+                if newanal not in results:
+                    results.append(newanal)
         return results
 
     def ortho2phon(self, word, gram=False, raw=False, return_string=False,
                    gram_pre='-- ', postpostproc=False,
-                   rank=True, nbest=100, report_freq=False):
+                   nbest=100, report_freq=False):
         '''Convert a form in non-roman to roman, making explicit features that are missing in orthography.
         @param word:     word to be analyzed
         @param gram:     whether a grammatical analysis is to be included
         @param return_string: whether to return string analyses (needed for phon_file)
         @param gram_pre: prefix to put before form when grammatical analyses are included
         @param postpostproc: whether to call postpostprocess on output form
-        @param rank: whether to rank the analyses by the frequency of their roots
         @param nbest: return or report only this many analyses
         @param report_freq: whether to report the frequency of the root
         @return:         a list of analyses
@@ -2727,7 +2634,7 @@ class Language:
         else:
             # Try to analyze it with FSTs
             for posmorph in self.morphology.values():
-                output = posmorph.o2p(preproc, rank=rank)
+                output = posmorph.o2p(preproc)
                 if output:
                     # Analyses found for posmorph; add each to the dict
                     for form, anal in output.items():
@@ -2753,7 +2660,7 @@ class Language:
                 # Then add it to the dict
                 results = {form: ''}
         # Now do something with the results
-        # Convert the result dict to a list (ranked by frequency if rank=True)
+        # Convert the result dict to a list (ranked by frequency)
         result_list = []
         for f, anals in results.items():
             count = 0
@@ -2763,8 +2670,7 @@ class Language:
                     count += a[0]
                     anal_list.append(a[1:])
             result_list.append((f, count, anal_list))
-        if rank:
-            self.sort_analyses(result_list)
+        self.sort_analyses(result_list)
 #            result_list.sort(key=lambda x: -x[1])
         result_list = result_list[:nbest]
         self.filter_analyses(result_list)
@@ -2813,14 +2719,14 @@ class Language:
                 return result
         elif raw or return_string:
             # Return only the forms and frequencies
-            if rank and report_freq:
+            if report_freq:
                 return [(r[0], r[1]) for r in result_list]
             else:
                 return [r[0] for r in result_list]
         else:
             # Print out only the forms
             for anal, count in [(r[0], r[1]) for r in result_list]:
-                if rank and report_freq:
+                if report_freq:
                     print('{} ({})'.format(anal, count), end=' ')
                 else:
                     print('{}'.format(anal), end=' ')
@@ -2855,18 +2761,10 @@ class Language:
         while len(analyses) > drop_index:
             analyses.pop()
         
-#        while len(analyses) > 1:
-#            last_freq = analyses[-1][-1]
-#            prev_freq = analyses[-2][-1]
-#            if (not last_freq and prev_freq) or (last_freq and (prev_freq / last_freq > 50)):
-#                analyses.pop()
-#            else:
-#                return
-
     def ortho2phon_file(self, infile, outfile=None, gram=False,
                         word_sep='\n', anal_sep=' ', print_ortho=True,
                         postpostproc=False,
-                        rank=True, report_freq=False, nbest=100,
+                        report_freq=False, nbest=100,
                         start=0, nlines=0):
         '''Convert non-roman forms in file to roman, making explicit features that are missing in the orthography.
         @param infile:   path to a file to read the words from
@@ -2876,7 +2774,6 @@ class Language:
         @param anal_sep:  analysis separator (only when gram=False)
         @param print_ortho: whether to print the orthographic form first
         @param postpostproc: whether to call postpostprocess on output form
-        @param rank: whether to rank the analyses by the frequency of their roots
         @param report_freq: whether to report the frequency of the root
         @param start:    line to start analyzing from
         @param nlines:   number of lines to analyze (if not 0)
@@ -2910,7 +2807,7 @@ class Language:
                         analysis = self.ortho2phon(word, gram=gram,
                                                    postpostproc=postpostproc,
                                                    raw=False, return_string=True,
-                                                   rank=rank, report_freq=report_freq, nbest=nbest)
+                                                   report_freq=report_freq, nbest=nbest)
                         saved_dct[word] = analysis
 #                    print("Analysis {}".format(analysis))
                     # Write the analysis to file or stdout

@@ -27,7 +27,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5.2 allows the segmenter to suppress segmentation but use
 # the features of the segments for the whole word.
 
-__version__ = '4.5.2.2'
+__version__ = '4.5.2.3'
 __author__ = 'Michael Gasser'
 
 from . import morpho
@@ -62,8 +62,9 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache, fidel=fidel,
                      guess=guess, verbose=verbose)
 
-def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, phonetic=False,
-             rank=True, citation=True, transortho=True, experimental=True, udformat=True,
+def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
+             features=True, 
+             transortho=True, experimental=True, udformat=True,
              mwe=False, conllu=True):
     '''Segment a single word and print out the results.
 
@@ -74,9 +75,7 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
                      the stem of an Amharic verb or deverbal noun)
     @param features (boolean): whether to show the grammatical feature labels
     @param transortho (boolean): whether to convert output to non-roman orthography
-    @param citation (boolean): whether to output a lemma for the word
     @param phonetic (boolean): whether to output phonetic romanization (False by default for seg)
-    @param rank (boolean): whether to rank segmentations by frequency
     @param udformat (boolean): whether to convert POS and features to UD format
     @param mwe (boolean): whether to run the FSTs for MWEs; if there is a space in word, set to True
     @param conllu (boolean): whether to return a dict for each morpheme that can be converted to
@@ -100,11 +99,11 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, features=True, ph
            # Do the preprocessing first in order to save any character normalizations
            if language.preproc:
                word, simps = language.preproc(word)
-           analyses = language.anal_word(word, preproc=False, postproc=True, citation=citation,
-                                     gram=False, segment=True, only_guess=False, phonetic=phonetic,
-                                     experimental=experimental, rank=rank, mwe=mwe,
-                                     print_out=(not raw and not realize),
-                                     conllu=conllu, string=True, nbest=nbest)
+           analyses = language.anal_word(word, preproc=False, postproc=True,
+                                         segment=True, only_guess=False, phonetic=phonetic,
+                                         experimental=experimental, mwe=mwe,
+                                         print_out=(not raw and not realize),
+                                         conllu=conllu, string=True, nbest=nbest)
         if realize:
 #            print("** analysis {}".format(analysis))
             return [seg2string(word, s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps, conllu=conllu) for s in analyses]
@@ -152,7 +151,7 @@ def seg_file(file='', language='amh', experimental=True,
     SEGMENT = True
     if language:
         return \
-        language.anal_file(file, '', gram=False, citation=True,
+        language.anal_file(file, '', 
                            pos=None, preproc=True, postproc=True, sep_punc=sep_punc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=True, start=start, nlines=nlines, nbest=nbest, report_n=report_n,
@@ -358,11 +357,12 @@ def anal_sentence(sentence, language='amh', remove_dups=True, fsts=None, verbosi
       language.anal_sentence(sentence, remove_dups=remove_dups, verbosity=verbosity,
                              segment=False, experimental=False, conllu=False, fsts=fsts)
 
-def anal_word(language, word, root=True, citation=True, gram=True,
-              roman=False, segment=False, guess=False, gloss=True,
+def anal_word(language, word, 
+              gloss=True, 
+              roman=False, segment=False, guess=False, freq=False, 
               experimental=False, dont_guess=True, cache='', init_weight=None,
               lemma_only=False, ortho_only=False, normalize=True,
-              rank=True, freq=False, nbest=5, um=0, phonetic=True, raw=True,
+              nbest=5, um=0, phonetic=True, raw=True,
               pos=[], verbosity=0):
     '''
     Analyze a single word, trying all available analyzers, and print out
@@ -370,9 +370,7 @@ def anal_word(language, word, root=True, citation=True, gram=True,
 
     @param language (str): abbreviation for a language
     @param word (str):     word to be analyzed
-    @param root (bool):     whether a root is to be included in the analyses
-    @param citation (bool): whether a citation form is to be included in the analyses
-    @param gram (bool):     whether a grammatical analysis is to be included
+    @param gloss (bool):   whether to include an English gloss if available
     @param roman (bool):    whether the language is written in roman script
     @param segment (bool):  whether to return the segmented input string rather than
                      the root/stem
@@ -384,7 +382,6 @@ def anal_word(language, word, root=True, citation=True, gram=True,
     @param lemma_only: whether to print out only the lemma
     @paran ortho_only: whether to include phonetic forms of lemmas and roots
     @param normalize: whether to normalize features
-    @param rank (bool):     whether to rank the analyses by the frequency of their roots
     @param freq (bool):     whether to report frequencies of roots
     @param nbest (int):    maximum number of analyses to return or print out
     @param um (int):       whether to output UniMorph features; 1 and 2 represent different
@@ -408,7 +405,7 @@ def anal_word(language, word, root=True, citation=True, gram=True,
 #        else:
             analyses = \
               language.anal_word(word, preproc=not roman, postproc=not roman,
-                             root=root, citation=citation, gram=gram, gloss=gloss,
+                             gloss=gloss,
                              phonetic=phonetic, segment=segment, only_guess=guess,
                              lemma_only=lemma_only, ortho_only=ortho_only,
                              guess=not dont_guess, cache=False,
@@ -421,9 +418,9 @@ def anal_word(language, word, root=True, citation=True, gram=True,
 anal = anal_word
 
 def anal_files(language, infiles, outsuff='.out',
-               root=True, citation=True, gram=True, lemma_only=False, ortho_only=False,
+               lemma_only=False, ortho_only=False,
                normalize=False, preproc=True, postproc=True, guess=False, raw=False,
-               xml=None, dont_guess=False, rank=True, freq=True, nbest=3):
+               xml=None, dont_guess=False, freq=True, nbest=3):
     """Analyze the words in a set of files, writing the analyses to
     files whose names are the infile names with outpre prefixed to them.
     See anal_file for description of parameters."""
@@ -433,8 +430,8 @@ def anal_files(language, infiles, outsuff='.out',
         saved = {}
         for infile in infiles:
             outfile = infile + outsuff
-            language.anal_file(infile, outfile, root=root, citation=citation,
-                               gram=gram, pos=None, preproc=preproc, postproc=postproc,
+            language.anal_file(infile, outfile, 
+                               pos=None, preproc=preproc, postproc=postproc,
                                nbest=nbest, normalize=normalize and raw,
                                only_guess=guess, guess=not dont_guess,
                                ortho_only=ortho_only, lemma_only=lemma_only,
@@ -442,21 +439,18 @@ def anal_files(language, infiles, outsuff='.out',
                                raw=raw, saved=saved)
 
 def anal_file(language, infile, outfile=None,
-              root=True, citation=True, gram=True, um=0,
+              um=0,
               lemma_only=False, ortho_only=False, normalize=False,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
               feats=None, simpfeats=None, word_sep='\n', sep_ident=False, minim=False,
-              rank=True, freq=True, nbest=100, start=0, nlines=0, report_n=1000,
+              freq=True, nbest=100, start=0, nlines=0, report_n=1000,
               xml=None, local_cache=None,
               verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
 
     @param infile:   path to a file to read the words from
     @param outfile:  path to a file where analyses are to be written
-    @param root:     whether a root is to be included in the analyses
-    @param citation: whether a citation form is to be included in the analyses
-    @param gram:     whether a grammatical analysis is to be included
     @param preproc:  whether to preprocess inputs
     @param postproc: whether to postprocess outputs
     @param guess:    try only guesser analyzer
@@ -472,7 +466,6 @@ def anal_file(language, infile, outfile=None,
                      by spaces
     @param sep_ident: whether there are tab-separated identifiers in the source file
                      that should be maintained in the output
-    @param rank:     whether to rank the analyses by the frequency of their roots
     @param freq:     whether to report frequencies of roots
     @param raw:      whether the analyses should be printed in "raw" form
     @param start:    line to start analyzing from
@@ -483,8 +476,8 @@ def anal_file(language, infile, outfile=None,
     language = morpho.get_language(language)
     if language:
         return \
-        language.anal_file(infile, outfile, root=root, citation=citation,
-                           gram=gram, um=um, pos=None, preproc=preproc, postproc=postproc,
+        language.anal_file(infile, outfile, 
+                           um=um, pos=None, preproc=preproc, postproc=postproc,
                            only_guess=guess, guess=not dont_guess, raw=raw,
                            lemma_only=lemma_only, ortho_only=ortho_only,
                            nbest=nbest, normalize=normalize and raw,
@@ -592,50 +585,37 @@ def gen(language, root, features=[], pos=None, guess=False,
         f = um if um else features
         print("{}:{} can't be generated!".format(root, f))
 
-def phon_word(lang_abbrev, word, gram=False, raw=False,
-              postproc=False, rank=True, nbest=100, freq=False,
+def phon_word(lang_abbrev, word, raw=False,
+              postproc=False, nbest=100, freq=False,
               return_string=False):
     '''Convert a form in non-roman to roman, making explicit features that are missing in the orthography.
     @param lang_abbrev: abbreviation for a language
-    @type  lang_abbrev: string
     @param word:     word to be analyzed
-    @type  word:     string or unicode
-    @param gram:     whether a grammatical analysis is to be included
-    @type  gram:     boolean
     @param postproc: whether to run postpostprocess on the form
-    @type  postproc: boolean
-    @param rank:     whether to rank the analyses by the frequency of their roots
-    @type  rank:     boolean
     @param nbest:    maximum number of analyses to return or print out
-    @type  nbest:    int
     @param freq:     whether to report frequencies of roots
-    @type  freq:     boolean
     @return:         a list of analyses
-    @rtype:          list of (root, feature structure) pairs
     '''
     language = morpho.get_language(lang_abbrev, phon=True, segment=False)
     if language:
-        return language.ortho2phon(word, gram=gram,
-                                   report_freq=freq, nbest=nbest,
-                                   postpostproc=postproc, rank=rank,
+        return language.ortho2phon(word, report_freq=freq, nbest=nbest,
+                                   postpostproc=postproc, 
                                    raw=raw, return_string=return_string)
 
 phon = phon_word
 
-def phon_file(lang_abbrev, infile, outfile=None, gram=False,
+def phon_file(lang_abbrev, infile, outfile=None, 
               word_sep='\n', anal_sep=' ', print_ortho=True,
-              postproc=False, rank=True, freq=True, nbest=100,
+              postproc=False, freq=True, nbest=100,
               start=0, nlines=0):
     '''Convert non-roman forms in file to roman, making explicit features that are missing in the orthography.
     @param lang_abbrev: abbreviation for a language
     @param infile:   path to a file to read the words from
     @param outfile:  path to a file where analyses are to be written
-    @param gram:     whether a grammatical analysis is to be included
-    @param word_sep: separator between words (when gram=False)
-    @param anal_sep: separator between analyses (when gram=False)
-    @param print_ortho: whether to print out orthographic form (when gram=False)
+    @param word_sep: separator between words
+    @param anal_sep: separator between analyses
+    @param print_ortho: whether to print out orthographic form
     @param postproc: whether to run postpostprocess on the form
-    @param rank:     whether to rank the analyses by the frequency of their roots
     @param freq:     whether to report frequencies of roots
     @param nbest:    maximum number of analyses to return or print out for each word
     @param start:    line to start analyzing from
@@ -643,9 +623,9 @@ def phon_file(lang_abbrev, infile, outfile=None, gram=False,
     '''
     language = morpho.get_language(lang_abbrev, phon=True, segment=False)
     if language:
-        language.ortho2phon_file(infile, outfile=outfile, gram=gram,
+        language.ortho2phon_file(infile, outfile=outfile,
                                  word_sep=word_sep, anal_sep=anal_sep, print_ortho=print_ortho,
-                                 postpostproc=postproc, rank=rank, nbest=nbest,
+                                 postpostproc=postproc, nbest=nbest,
                                  report_freq=freq,
                                  start=start, nlines=nlines)
 
@@ -831,7 +811,7 @@ S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word(
                                                                                 experimental=False)
 P = lambda w, raw=False: phon_word('amh', w, raw=raw)
 G = lambda r, features=None: gen('amh', r, features=features)
-AF = lambda infile, outfile=None, raw=False, gram=True: anal_file('amh', infile, outfile=outfile, raw=raw, gram=False)
+AF = lambda infile, outfile=None, raw=False: anal_file('amh', infile, outfile=outfile, raw=raw)
 SF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=False)
 XF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=True)
 PF = lambda infile, outfile=None: phon_file('amh', infile, outfile=outfile)
