@@ -1,0 +1,153 @@
+$ conj_prep_pre
+  የ		[t=i|p,+rel,-mc]
+  ብ  		[cnj1=ብ,t=i,-rel,-mc]
+  ስ  		[cnj1=ስ,t=i,-rel,-mc]
+  እንድ	[cnj1=እንድ,t=i,-rel,-mc]
+  ል  		[cnj1=ል,t=i,-rel,-mc]
+  ከ		[adp=ከ,t=i|p,+rel,-mc]
+  በ		[adp=በ,t=i|p,+rel,-mc]
+  ለ		[adp=ለ,t=i|p,+rel,-mc]
+  እንደ	[adp=እንደ,t=i|p,+rel,-mc]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc]
+  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc]
+
+$ rel_impf
+  # geminated
+  ም		[t=i,+rel]
+  --		[t=i,-rel];[t=p|j|c]
+
+$ sub_bound
+  -
+
+$ neg
+  ኣ			[+neg,t=i|j]
+  ኣል			[+neg,t=p]
+  --   		[-neg];[t=c,-neg]
+
+$ neg_bound
+  -
+
+$ sb_pre
+  ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
+  ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  እ		[t=i,sp=1,sn=1,-neg]
+  ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
+  እን  	[t=i|j,sp=1,sn=2]
+  --  	[t=p];[t=c];[t=j,sp=2,-neg]
+
+$ sp_bound
+  -
+
+$ voice_pre
+  ኣ		[v=a]
+  ኣስ  	[v=as]
+  ተ		[t=p|c,v=p];[t=j,sp=2,v=p]
+  /   	[t=i,v=p];[t=j,sp=1|3,v=p]
+  --  	[v=0]
+
+$ prestem
+  +
+
+$ stem
+   >>v_stemA<<
+
+$ poststem
+  +
+
+#$ አንቀፅ
+#  --		<(VERB;Aspect=Perf>		[t=p]
+#  --		<(VERB;Aspect=Imp>		[t=i]
+#  --		<(VERB;Mood=Jus>			[t=j]
+#  --		<(VERB;VerbForm=Conv>		[t=c]
+#
+#$ voice_feat
+#  --		<)>						[v=0]
+#  --		<,Voice=Pass)>			[v=p]
+#  --		<,Voice=Trans)>		[v=a]
+#  --		<,Voice=Cau)>			[v=as]
+
+$ sb_suf
+  አ		[sp=3,sn=1,sg=m,t=p]
+  ኦ    	[sp=3,sn=1,sg=m,t=c]
+  አች   	[sp=3,sn=1,sg=f,t=p]
+  ኣ    	[sp=3,sn=1,sg=f,t=c]
+  ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,op=1|2|3];[t=p,sp=3,sn=2]
+  አው  	[sp=3,sn=2,t=c]
+  ኣችሁ 	[sp=2,sn=2,t=p|c]
+  ሽ		[sp=2,sn=1,sg=f,t=p]
+  አሽ    	[sp=2,sn=1,sg=f,t=c]
+  ኢ   	[sp=2,sn=1,sg=f,t=i|j]
+  ክ		[sp=2,sn=1,sg=m,t=p]
+  አህ		[sp=2,sn=1,sg=m,t=c]
+  ኩ		[sp=1,sn=1,t=p]
+  ኤ		[sp=1,sn=1,t=c]
+  ን    	[sp=1,sn=2,t=p]
+  አን    	[sp=1,sn=2,t=c]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0];[t=i,sp=2|3,sn=2,op=0,+mc]
+
+$ ss_bound
+  -
+
+$ ob_suf
+  [op=3,on=1,og=m]
+     # 3sm objects
+      ለት	[oc=b]
+      በት	[oc=m]
+      ት	[t=p,sp=1,sn=1,oc=a];[sp=2|3,sn=2,oc=a];[t=c,sp=3,sn=1,sg=m,oc=a]
+      ው       [sp=2,sn=1,sg=f,oc=a];[t=p,sp=3,sn=1,oc=a];[t=c,sp=1,sn=1,oc=a];[t=c,sp=3,sn=1,sg=f,oc=a]
+      አው	[sp=2,sn=1,sg=m,oc=a];[sp=1,sn=2,oc=a];[t=i|j,sp=1,sn=1,oc=a];[t=i|j,sp=3,sn=1,oc=a]
+  [op=3,on=1,og=f]
+      ኣት	[oc=a]
+      ላት	[oc=b]
+      ባት	[oc=m]
+  [op=3,on=2]
+      ኣቸው	[oc=a]
+      ላቸው	[oc=b]
+      ባቸው	[oc=m]
+  [op=1,sp=2|3]
+      አን	[oc=a,on=2,sp=2,sn=1,sg=m]
+      ን	[oc=a,on=2,sp=2,sn=1,sg=f];[oc=a,sn=2]
+      አኝ	[oc=a,on=1,sp=2,sn=1,sg=m]
+      ኝ 	[oc=a,on=1,sp=2,sn=1,sg=f];[oc=a,sn=2]
+      ልን	[oc=b,on=2]
+      ልኝ	[oc=b,on=1]
+      ብን	[oc=m,on=2]
+      ብኝ	[oc=m,on=1]
+  [op=2,sp=1|3]
+      ሽ	[oc=a,on=1,og=f,of=i]
+      ህ	[oc=a,on=1,og=m,of=i]
+      ኣችሁ	[oc=a,on=2]
+      ዎት	[oc=a,on=1,of=f]
+      ልሽ	[oc=b,on=1,og=f,of=i]
+      ልህ	[oc=b,on=1,og=m,of=i]
+      ላችሁ	[oc=b,on=2]
+      ልዎት	[oc=b,on=1,of=f]
+      ብሽ	[oc=m,on=1,og=f,of=i]
+      ብህ	[oc=m,on=1,og=m,of=i]
+      ባችሁ	[oc=m,on=2]
+      ብዎት	[oc=m,on=1,of=f]
+  --   	[op=0]
+
+$ ob_bound
+  -
+
+$ neg2
+  ም		[t=i|p,+neg,+mc]
+  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
+
+$ neg2_bound
+  -
+
+$ aux
+  ኣል		[t=i,sp=3,sn=1,sg=m,-neg,+mc];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc];[t=c,sp=1,sn=2,-neg,+mc];[t=c,sp=2,-neg,+mc];[t=c,sp=3,sn=1,sg=m,-neg,+mc];[t=c,sp=3,sn=2,-neg,+mc]
+  ኣለሁ	[t=i|c,sp=1,sn=1,-neg,+mc]
+  ኣለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc]
+  ኣለህ	[t=i,sp=2,sn=1,sg=m,-neg,+mc]
+  ኣለሽ	[t=i,sp=2,sn=1,sg=f,-neg,+mc]
+  ኣለን	[t=i,sp=1,sn=2,-neg,+mc]
+  ኣላችሁ	[t=i,sp=2,sn=2,-neg,+mc]
+  ኣሉ		[t=i,sp=3,sn=2,op=0,-neg,+mc]
+  --	        [t=p|j];[t=i|c,-mc];[t=i,+neg]
+
+$ end
+  --		[pos=v]

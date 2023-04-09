@@ -62,8 +62,6 @@ class Roots:
     CHAR_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
     CHAR_MAP_LABEL_RE = re.compile(r'([^(^)]+)(?:\((.+)\))?')
 
-#    WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("a=", "sa="), ("v=", "sv="), ("strong", "sstrong")]
-
     possep = ';'
     charmapsep = ';'
     vspecsep = ','
@@ -100,8 +98,8 @@ class Roots:
         return map
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, labbrev, gen=False, seglevel=2):
-#        print("*** Creating root states for {}, seglevel={}".format(cons, seglevel))
+    def make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, posmorph, labbrev, gen=False, seglevel=2):
+#        print("*** Creating root states for {}, seglevel={}, feats={}".format(cons, seglevel, feats.__repr__()))
 
         def charfeat_arc(inchar, outchar, wt, source, dest, fst):
             # Create the arc from source dest
@@ -184,8 +182,13 @@ class Roots:
         # one of cons could be a char, feature tuple
         cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
         state_name = ''.join(cons_chars)
-#        print("*** Make root states for {}, {}".format(cons, state_name))
         states = []
+        # Add this root to the POSMorphology instance's rootfeats dict
+        if posmorph:
+            if state_name in posmorph.rootfeats:
+                posmorph.rootfeats[state_name].append(feats)
+            else:
+                posmorph.rootfeats[state_name] = [feats]
         for index, cs in enumerate(cons):
             i = index+1
             if isinstance(cs, tuple):
@@ -193,25 +196,26 @@ class Roots:
                 cs = cs[0]
             state_name0 = "{}{}".format(state_name, i)
             char = geezify_CV(cs, 'I')
-            sourceroot = '' if gen else 's'
+            sourceroot = 't' if gen else ''
             feats = "{},{}{}={}".format(feats, sourceroot, i, char)
 #            print("*** feats {}".format(feats))
             states.append(state_name0)
 #        print("** seglevel {}, gen {}".format(seglevel, gen))
+#        print("*** Make root states for {}, {}, {}".format(cons, state_name, feats))
         if gen:
             feats = "{},tl={}".format(feats, labbrev)
         elif seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
-        weight = make_weight(feats, not gen)
+        weight = make_weight(feats, target=gen)
 #        UNIFICATION_SR.parse_weight(feats)
-        cls = weight.get('c') if gen else weight.get('sc')
+        cls = weight.get('tc') if gen else weight.get('c')
 #        print("*** states {}, weight {}".format(states, weight.__repr__()))
         # make the simplex states and arcs
         charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), char_maps, charmap_weights)
         # Based on rules, assign ±strong to the root
-        strength_feat = 'strong' if gen else 'sstrong'
+        strength_feat = 'tstrong' if gen else 'strong'
         weight = weight.set_all(strength_feat, strong)
         mrs(fst, charsets, weight, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
@@ -337,30 +341,37 @@ class Roots:
         return result
 
     @staticmethod
-    def make_irr_root(fst, cons, feats, patterns, labbrev, gen=False, seglevel=2):
+    def make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=False, seglevel=2):
 #        print("** Making irr root {}, {}, {}, {}".format(cons, feats, patterns, seglevel))
         cons = cons.split()
         state_name = ''.join(cons)
+        # Add this root to the POSMorphology instance's rootfeats dict
+        if posmorph:
+            if state_name in posmorph.rootfeats:
+                posmorph.rootfeats[state_name].append(feats)
+            else:
+                posmorph.rootfeats[state_name] = [feats]
         states = []
         for index, cs in enumerate(cons):
             i = index+1
             char = geezify_CV(cs, 'I')
-            sourceroot = '' if gen else 's'
+            sourceroot = 't' if gen else ''
             feats = "{},{}{}={}".format(feats, sourceroot, i, char)
+            print("*** cons {}, feats {}")
         if seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
         elif gen:
             feats = "{},tl={}".format(feats, labbrev)
         feats = '[' + feats + ']'
-        weight = make_weight(feats, not gen)
+        weight = make_weight(feats, target=gen)
 #        weight = UNIFICATION_SR.parse_weight(feats)
-        cls_feat = 'c' if gen else 'sc'
+        cls_feat = 'tc' if gen else 'c'
         cls = weight.get(cls_feat)
 #        print("*** cons {}, weight {}, patterns {}".format(cons, weight.__repr__(), patterns))
         for pindex, (pattern, pfeatures) in enumerate(patterns):
             pposition = pindex + 1
-            pfeatures = make_weight(pfeatures, not gen)
+            pfeatures = make_weight(pfeatures, target=gen)
 #            pfeatures = UNIFICATION_SR.parse_weight(pfeatures)
             pfeatures = FSSet.update(pfeatures, weight)
             source = 'start'
@@ -399,7 +410,7 @@ class Roots:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-#        print("** Parsing roots file {}, fst {}".format(s, fst))
+        print("** Parsing roots file, fst {}, posmorph {}, gen {}, seglevel {}".format(fst, posmorph, gen, seglevel))
 
 #        weighting = fst.weighting()
 
@@ -441,7 +452,7 @@ class Roots:
                 if (match := Roots.CHAR_FEAT_RE.match(v)):
                     vs, feature = match.groups()
                     # Create an FSS for this vowel spec
-                    feature = make_weight(feature, not gen)
+                    feature = make_weight(feature, target=gen)
 #                    feature = UNIFICATION_SR.parse_weight(feature)
                     vspec[vindex] = (vs, feature)
 #                    print("   **** vs {} feature {}".format(vs, feature.__repr__()))
@@ -512,7 +523,7 @@ class Roots:
             if m:
                 maplabel, feature, chars = m.groups()
                 if feature:
-                    feature = make_weight(feature, not gen)
+                    feature = make_weight(feature, target=gen)
 #                    feature = UNIFICATION_SR.parse_weight(feature)
                 if chars:
                     chars = chars.strip()
@@ -577,12 +588,12 @@ class Roots:
 #        print("** rules: {}".format(rules))
 
         for cons, feats in roots:
-            Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade,
+            Roots.make_root_states(fst, cons, feats, rules, char_maps, charmap_weights, cascade, posmorph,
                                    labbrev, gen=gen, seglevel=seglevel)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():
-                Roots.make_irr_root(fst, cons, feats, patterns, labbrev, gen=gen, seglevel=seglevel)
+                Roots.make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=gen, seglevel=seglevel)
 
 #        print("** char maps {}".format(char_maps))
 #        print("** char maps weights {}".format(charmap_weights))

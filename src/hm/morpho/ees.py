@@ -29,7 +29,8 @@ from .utils import segment, allcombs
 from .semiring import UNIFICATION_SR
 from .fs import FeatStruct
 
-WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("strong", "sstrong")]
+SOURCE_WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("strong", "sstrong")]
+TARGET_WT_CONV = [("gem", "tgem"), ("c=", "tc="), ("v=", "tv="), ("strong", "tstrong")]
 
 class EES:
 
@@ -44,6 +45,8 @@ class EES:
     }
 
     VERB_POS = {'v', 'vp', 'vi', 'vj'}
+
+    src_feats = ['c', 'v']
 
     # Positions on WPatterns corresponding to particular ውልድ forms. Some are
     # treated as synonymous.
@@ -125,13 +128,65 @@ class EES:
             self.postpostproc = lambda form: form.replace('//', ' ')
 
     @staticmethod
-    def make_weight(string, source=False, conversions=WT_CONV):
+    def make_weight(string, source=False, target=False):
         '''
         Make a weight, possibly for the source language in a translation FST.
         '''
         if source:
-            string = EES.conv_string(string, conversions)
+            string = EES.conv_string(string, SOURCE_WT_CONV)
+        elif target:
+            string = EES.conv_string(string, TARGET_WT_CONV)
         return UNIFICATION_SR.parse_weight(string)
+
+    @staticmethod
+    def sourcify_feats(feat_string):
+        '''
+        Modify features for source language, changing those in EES.src_feats.
+        '''
+        if not feat_string:
+            return None
+        feat_string = feat_string.split(',')
+        strings = []
+        for fv in feat_string:
+            if '=' in fv:
+                f, v = fv.split('=')
+                if f in EES.src_feats:
+                    strings.append("s{}={}".format(f, v))
+                else:
+                    strings.append(fv)
+            else:
+                strings.append(fv)
+        return ','.join(strings)
+
+    @staticmethod
+    def targetify_feats(feat_string):
+        '''
+        Modify features for target language, changing those in EES.src_feats.
+        '''
+        if not feat_string:
+            return None
+        feat_string = feat_string.split(',')
+        strings = []
+        for fv in feat_string:
+            if '=' in fv:
+                f, v = fv.split('=')
+                if f in EES.src_feats:
+                    strings.append("t{}={}".format(f, v))
+                else:
+                    strings.append(fv)
+            else:
+                strings.append(fv)
+        return ','.join(strings)
+
+    @staticmethod
+    def combine_src_targ_feats(src_feats, targ_feats):
+        if src_feats:
+            if targ_feats:
+                return "[{},{}]".format(src_feats,targ_feats)
+            else:
+                return "[" + src_feats + "]"
+        else:
+            return "[" + targ_feats + "]"
 
     @staticmethod
     def get_filter(label):
@@ -141,7 +196,7 @@ class EES:
         return EES.filters.get(label)
 
     @staticmethod
-    def conv_string(string, conversions=WT_CONV):
+    def conv_string(string, conversions):
         if conversions:
             for src, trg in conversions:
                 if src in string:

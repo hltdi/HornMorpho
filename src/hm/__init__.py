@@ -63,9 +63,8 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
-             features=True, 
              transortho=True, experimental=True, udformat=True,
-             mwe=False, conllu=True):
+             mwe=False, conllu=True, verbosity=0):
     '''Segment a single word and print out the results.
 
     @param language (string): abbreviation for a language
@@ -73,7 +72,6 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
     @param experimental (boolean):  whether to use the new "experimental" segmenter FST
     @param realize (boolean):  whether to realize individual morphemes (in particular
                      the stem of an Amharic verb or deverbal noun)
-    @param features (boolean): whether to show the grammatical feature labels
     @param transortho (boolean): whether to convert output to non-roman orthography
     @param phonetic (boolean): whether to output phonetic romanization (False by default for seg)
     @param udformat (boolean): whether to convert POS and features to UD format
@@ -87,6 +85,7 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
     # Use old format for old CACO segmenter
     if not experimental:
         udformat = False
+        conllu = False
     language = morpho.get_language(language, phon=False, segment=True, experimental=experimental)
 #    global SEGMENT
 #    SEGMENT = True
@@ -103,10 +102,10 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
                                          segment=True, only_guess=False, phonetic=phonetic,
                                          experimental=experimental, mwe=mwe,
                                          print_out=(not raw and not realize),
-                                         conllu=conllu, string=True, nbest=nbest)
+                                         conllu=conllu, string=True, nbest=nbest, verbosity=verbosity)
         if realize:
 #            print("** analysis {}".format(analysis))
-            return [seg2string(word, s, language=language, features=features, transortho=transortho, udformat=udformat, simplifications=simps, conllu=conllu) for s in analyses]
+            return [seg2string(word, s, language=language, transortho=transortho, udformat=udformat, simplifications=simps, conllu=conllu) for s in analyses]
         elif raw:
             return analyses
 
@@ -444,7 +443,7 @@ def anal_file(language, infile, outfile=None,
               preproc=True, postproc=True, guess=False, raw=False,
               dont_guess=False, sep_punc=True, lower_all=False,
               feats=None, simpfeats=None, word_sep='\n', sep_ident=False, minim=False,
-              freq=True, nbest=100, start=0, nlines=0, report_n=1000,
+              nbest=100, start=0, nlines=0, report_n=1000,
               xml=None, local_cache=None,
               verbosity=0):
     '''Analyze the words in a file, writing the analyses to outfile.
@@ -466,7 +465,6 @@ def anal_file(language, infile, outfile=None,
                      by spaces
     @param sep_ident: whether there are tab-separated identifiers in the source file
                      that should be maintained in the output
-    @param freq:     whether to report frequencies of roots
     @param raw:      whether the analyses should be printed in "raw" form
     @param start:    line to start analyzing from
     @param nlines:   number of lines to analyze (if not 0)
@@ -585,8 +583,7 @@ def gen(language, root, features=[], pos=None, guess=False,
         f = um if um else features
         print("{}:{} can't be generated!".format(root, f))
 
-def phon_word(lang_abbrev, word, raw=False,
-              postproc=False, nbest=100, freq=False,
+def phon_word(lang_abbrev, word, raw=False, postproc=False, nbest=100, freq=False,
               return_string=False):
     '''Convert a form in non-roman to roman, making explicit features that are missing in the orthography.
     @param lang_abbrev: abbreviation for a language
@@ -604,10 +601,8 @@ def phon_word(lang_abbrev, word, raw=False,
 
 phon = phon_word
 
-def phon_file(lang_abbrev, infile, outfile=None, 
-              word_sep='\n', anal_sep=' ', print_ortho=True,
-              postproc=False, freq=True, nbest=100,
-              start=0, nlines=0):
+def phon_file(lang_abbrev, infile, outfile=None, word_sep='\n', anal_sep=' ', print_ortho=True,
+              postproc=False, freq=True, nbest=100, start=0, nlines=0):
     '''Convert non-roman forms in file to roman, making explicit features that are missing in the orthography.
     @param lang_abbrev: abbreviation for a language
     @param infile:   path to a file to read the words from
@@ -652,7 +647,7 @@ def get_features(language, pos=None):
                 feats.append((pos, posmorph.get_features()))
             return feats
 
-def seg2string(word, segmentation, language='am', sep='-', transortho=True, features=False,
+def seg2string(word, segmentation, language='am', sep='-', transortho=True,
                udformat=False, simplifications=None, conllu=True):
     """Convert a segmentation (triple with seg string as second item)
     to a series of spelled out morphemes, ignoring any alternation rules.
@@ -661,14 +656,13 @@ def seg2string(word, segmentation, language='am', sep='-', transortho=True, feat
     @param segmentation: triple with seg string as second item
     @param sep:          character to separate morphemes in return string
     @param transortho:   for languages written in Geez, whether to output this
-    @param features:     whether to output feature labels
     @param udformat:   whether to format POS and features as UD
     @param conllu:     whether to format as dicts for CoNLL-U format
     @return:             word form as string
     """
     language = morpho.get_language(language, segment=True)
     return language.segmentation2string(word, segmentation, sep=sep, transortho=transortho,
-                                        features=features, udformat=udformat, simplifications=simplifications, conllu=conllu)
+                                        udformat=udformat, simplifications=simplifications, conllu=conllu)
 
 ### Functions for debugging and creating FSTs
 
@@ -732,20 +726,6 @@ def recompile(language, pos, phon=False, segment=False, gen=False,
                            guess=guess, verbose=verbose)
     return pos_morph
 
-#    pos_morph = get_pos(language, pos, phon=phon, segment=segment, load_morph=False, verbose=verbose)
-#    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen,
-#                             translate=translate,
-#                             compose_backwards=backwards,
-#                             phon=phon, verbose=verbose)
-#    if not fst and gen == True:
-#        # Load analysis FST
-#        pos_morph.load_fst(True, verbose=True)
-#        # ... and invert it for generation FST
-#        pos_morph.load_fst(generate=True, invert=True, gen=True, verbose=verbose)
-#    if save:
-#        pos_morph.save_fst(generate=gen, segment=segment, phon=phon, translate=translate)
-#    return pos_morph
-
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
              fst_label='', fst_index=0):
     """Test a individual FST within a cascade, identified by its label or its index,
@@ -779,8 +759,7 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
               translate=translate, guess=guess, experimental=experimental, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
-                               load=load_morph,
-                               verbose=verbose)
+                               load=load_morph, verbose=verbose)
     if lang:
         return lang.morphology[pos]
 
@@ -807,8 +786,7 @@ def get_language(abbrev):
 
 ## Shortcuts for Amharic
 A = lambda w, raw=False: anal_word('amh', w, raw=raw)
-S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho,
-                                                                                experimental=False)
+S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho, experimental=False)
 P = lambda w, raw=False: phon_word('amh', w, raw=raw)
 G = lambda r, features=None: gen('amh', r, features=features)
 AF = lambda infile, outfile=None, raw=False: anal_file('amh', infile, outfile=outfile, raw=raw)

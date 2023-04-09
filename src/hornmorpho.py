@@ -79,7 +79,25 @@ def AW(id, n_sents=100, start=0, write=True, append=True):
         batch={'name': 'AW23.{}'.format(id), 'n_sents': n_sents, 'start': start, 'id': id, 'sentid': start},
         disambiguate=True,
         write={'folder': CONLLU, 'append': append}
-        )   
+        )
+
+## translation
+def load_trans(src, targ, pos):
+    src_posmorph = get_pos(src, pos, fidel=True)
+    trg_posmorph = get_pos(targ, pos, fidel=True)
+    src_posmorph.load_trans_fst(trg_posmorph, pos)
+    return src_posmorph
+
+def parse_lextr_file(src_pos, pos):
+    import os
+    src = src_pos.language.abbrev
+    path = os.path.join("hm/languages/fidel", src, "fst", pos + '.lextr')
+    print("** lextr path {}".format(path))
+    s = open(path, encoding='utf8').read()
+    hm.morpho.LexTrans.parse("lextr", s,
+                             cascade=src_pos.casc,
+                             fst=FST('lextr', cascade=src_pos.casc, weighting=hm.morpho.UNIFICATION_SR)
+                             )
 
 def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2):
     hm.create_corpus(read={'filename': filename},
@@ -162,7 +180,7 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                             translate=False, experimental=False, mwe=False, seglevel=2,
-                            fidel=False, create_fst=True,
+                            fidel=False, create_fst=True, relabel=True,
                             simplified=False, backwards=False, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
@@ -177,7 +195,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
-                             create_fst=create_fst,
+                             create_fst=create_fst, relabel=relabel,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
@@ -186,6 +204,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
+                                                 relabel=relabel,
                                                  fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
@@ -210,15 +229,15 @@ def analrecompile(lang, pos, create_fst=True):
     '''
     return recompile(lang, pos, fidel=True, create_fst=create_fst)
 
-def transrecompile(src, trg, pos):
-    '''
-    Recompile analysis and generation FSTs for source and target language, and create
-    translation FST.
-    '''
-    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
-    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
-    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
-    return src_pos_morph, trg_pos_morph
+#def transrecompile(src, trg, pos):
+#    '''
+#    Recompile analysis and generation FSTs for source and target language, and create
+#    translation FST.
+#    '''
+#    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
+#    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
+#    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
+#    return src_pos_morph, trg_pos_morph
 
 def parse_lextr_file(src_pos, pos):
     import os

@@ -780,6 +780,9 @@ class POSMorphology:
         self.ortho2phon = None
         # Dict specifying feature normalization
         self.featnorm = []
+        # Dict of roots and feature constraints
+        # {'ጥብቅ': [c=A];[c=B], 'ቅምጥ': [c=B,v=p|as], ...}
+        self.rootfeats = {}
 
     def __str__(self):
         '''Print name.'''
@@ -1198,49 +1201,48 @@ class POSMorphology:
             # FST found one way or another
             return True
 
-    def load_trans_fst(self, trg_pos_morph, pos):
+    def load_trans_fst(self, trg_pos_morph, pos, lextrpos=None):
         """
         Create a translation FST by composing the source analysis FST with the target generation FST.
         """
         print("*** Creating {} translation FST for {} -> {}".format(pos, self, trg_pos_morph))
-        src_name = self.fst_name(False, False)
-        trg_name = trg_pos_morph.fst_name(True, False)
-        src_path = os.path.join(self.morphology.get_cas_dir(), src_name + '.cas')
-        trg_path = os.path.join(trg_pos_morph.morphology.get_cas_dir(), trg_name + '.cas')
-        trg_language = trg_pos_morph.language
+
+        def load_trans1(posmorph, gen=False):
+            name = posmorph.fst_name(gen, False)
+            path = os.path.join(posmorph.morphology.get_cas_dir(), name + '.cas')
+            casc = FSTCascade.load(path, seg_units=posmorph.morphology.seg_units, seglevel=0, posmorph=posmorph,
+                                   create_networks=True, language=posmorph.language, gen=gen, pos=pos)
+            posmorph.casc = casc
+            posmorph.casc_inv = posmorph.casc.inverted()
+            fst = posmorph.casc.compose(backwards=False, relabel=True)
+            if gen:
+                fst = fst.inverted()
+            # Do this after inversion or before?
+            if posmorph.casc.insertions:
+                start = fst._get_initial_state()
+                end = fst._get_final_states()[0]
+                for insertion in posmorph.casc.insertions:
+                    fst.insert(insertion, start, end)
+            posmorph.set_fst(fst, gen, False, False, segment=False)
+            posmorph.casc.append(fst)
+            return fst
 
         # Source FST
-        src_casc = FSTCascade.load(src_path, seg_units=self.morphology.seg_units, seglevel=0, posmorph=self,
-                                   create_networks=True, language=self.language, gen=False, pos=pos)
-        self.casc = src_casc
-        self.casc_inv = self.casc.inverted()
-        src_fst = self.casc.compose(backwards=False, relabel=True)
-        if self.casc.insertions:
-            start = src_fst._get_initial_state()
-            end = src_fst._get_final_states()[0]
-            for insertion in self.casc.insertions:
-                src_fst.insert(insertion, start, end)
-        self.set_fst(src_fst, False, False, False, segment=False)
-        self.casc.append(src_fst)
-
+        src_fst = load_trans1(self, gen=False)
         # Target FST
-        trg_casc = FSTCascade.load(trg_path, seg_units=self.morphology.seg_units, seglevel=0, posmorph=trg_pos_morph,
-                                   create_networks=True, language=trg_language, gen=True, pos=pos)
-        trg_pos_morph.casc = trg_casc
-        trg_pos_morph.casc_inv = trg_pos_morph.casc.inverted()
-        trg_fst = trg_pos_morph.casc.compose(backwards=False, relabel=True)
-        trg_fst = trg_fst.inverted()
-        # Do this after inversion or before?
-        if trg_pos_morph.casc.insertions:
-            start = trg_fst._get_initial_state()
-            end = trg_fst._get_final_states()[0]
-            for insertion in trg_pos_morph.casc.insertions:
-                trg_fst.insert(insertion, start, end)
-        trg_pos_morph.set_fst(trg_fst, True, False, False, segment=False)
-        trg_pos_morph.casc.append(trg_fst)
+        trg_fst = load_trans1(trg_pos_morph, gen=True)
+        # Lextr FST
+        lextrpos = lextrpos or pos
+        lextrpath = os.path.join(self.morphology.get_fst_dir(), lextrpos + '.lextr')
+        s = open(lextrpath, encoding='utf8').read()
+        lextr_fst = LexTrans.parse("lextr", s, cascade=self.casc,
+                                   fst=FST('lextr', cascade=self.casc, weighting=UNIFICATION_SR)
+                                   )
 
+        trans_fst = FST.compose([src_fst, lextr_fst, trg_fst], label='{}2{}'.format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
+#        trans_fst = FST.compose2(src_fst, lextr_fst, label="{}2lextr".format(self.language.abbrev), reverse=False)
         # Translation FST
-        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_language.abbrev), reverse=False)
+#        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
         self.set_fst(trans_fst, translate=True)
 
     def pickle_all(self, replace=True, empty=True):

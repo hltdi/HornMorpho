@@ -1228,7 +1228,7 @@ class Language:
         using a language-specific function if there is one, otherwise using a default function.
         '''
         if self.seg2string:
-            return self.seg2string(word, segmentation, sep=sep, transortho=transortho, features=features,
+            return self.seg2string(word, segmentation, sep=sep, transortho=transortho,
                                    udformat=udformat, simplifications=simplifications, um=um, conllu=conllu)
         else:
             morphs = [m[0] for m in self.seg2morphs(segmentation[1])]
@@ -1507,7 +1507,7 @@ class Language:
                   cache=False, no_anal=None, string=False, print_out=False,
                   display_feats=None, report_freq=True, nbest=100,
                   conllu=False, skip_other_pos=False,
-                  only_anal=False, preseg=False, verbosity=1):
+                  only_anal=False, preseg=False, verbosity=0):
         '''
         Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.
         If segment is True, this does morphological segmentation, with various

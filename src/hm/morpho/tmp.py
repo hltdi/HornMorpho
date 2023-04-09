@@ -27,7 +27,7 @@ from .utils import segment, allcombs
 from .semiring import FSSet
 from .fs import FeatStruct, simple_unify
 from .geez import *
-from .ees import EES
+from .ees import EES, TARGET_WT_CONV
 
 #REG_FS = FSSet("[+reg]")
 
@@ -47,19 +47,6 @@ class Template:
     INVENTORY_RE = re.compile(r'\s*\$\s*(.+)$')
 
     EMPTY_CHAR = '-'
-
-#    WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("a=", "sa="), ("v=", "sv="), ("strong", "sstrong")]
-
-#    def __init__(self, fst, directory=''):
-#        self.fst = fst
-#        self.cascade = fst.cascade
-#        self.seg_units = self.cascade.seg_units
-#        self.directory = directory
-#        self.weighting = UNIFICATION_SR
-#        self.states = []
-
-#    def __repr__(self):
-#        return "Roots {}".format(self.fst.label)
 
     @staticmethod
     def make_all_template_states(fst, tmp_dict, default_final, gen=False):
@@ -93,11 +80,11 @@ class Template:
                     gem_feat = "gem{}".format(position)
                     gem = ':' in charset
                     if gem:
-                        gem_feat = make_weight("[+{}]".format(gem_feat), not gen)
+                        gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
 #                        gem_feat = UNIFICATION_SR.parse_weight("[+{}]".format(gem_feat))
                         charset = charset.replace(':', '')
                     else:
-                        gem_feat = make_weight("[-{}]".format(gem_feat), not gen)
+                        gem_feat = make_weight("[-{}]".format(gem_feat), target=gen)
 #                        gem_feat = UNIFICATION_SR.parse_weight("[-{}]".format(gem_feat))
                 state_name = "{}_{}".format(template_name, position)
                 states.append((state_name, charset, gem_feat))
@@ -145,18 +132,17 @@ class Template:
                 features[i] = "{},{}]".format(feature[:-1], constraints)
 
         features = ';'.join(features)
-        weight = make_weight(features, not gen)
+        weight = make_weight(features, target=gen)
 #        weight = UNIFICATION_SR.parse_weight(features)
-        cls = weight.get('c') if gen else weight.get('sc')
+        cls = weight.get('tc') if gen else weight.get('c')
 #        weight = FSSet.update(weight, REG_FS)
-        strong_feat = 'strong' if gen else 'sstrong'
+        strong_feat = 'tstrong' if gen else 'strong'
         strong = weight.get(strong_feat)
 
 #        print(" *** template {}, weights {}".format(template, weight.__repr__()))
 
         inventory = strong_inventory.get(cls)
 
-        strong_feat = 'strong' if gen else 'sstrong'
         if strong:
             strong_feats = [w for w in list(weight) if w.get(strong_feat)]
             for inv_feats in inventory.keys():
@@ -179,8 +165,8 @@ class Template:
     @staticmethod
     def expand_inventory(classes, features, gen=False):
         inventory1 = ["[" + ','.join(f) + "]" for f in allcombs(features)]
-        if not gen:
-            inventory1 = [conv_string(i) for i in inventory1]
+        if gen:
+            inventory1 = [conv_string(i, TARGET_WT_CONV) for i in inventory1]
 #        print("** inventory1 {}".format(inventory1))
         inventory = dict([(c, dict([(FeatStruct(f, freeze=True), []) for f in inventory1])) for c in classes])
 #        print("** inventory expanded {}".format(inventory.get('A')))
@@ -235,8 +221,8 @@ class Template:
                                 continue
                             # There may be more than one positional constraint
                             # Create the weak feature set (add -strong, the class, e.g., c=A, and the subclass, e.g., 2=ው)
-                            strength_feat = 'strong' if gen else 'sstrong'
-                            cls_feat = 'c' if gen else 'sc'
+                            strength_feat = 'tstrong' if gen else 'strong'
+                            cls_feat = 'tc' if gen else 'c'
                             new_weak_feats = feature.copy()
                             new_weak_feats[strength_feat] = False
                             subclass_feats = [sc.split('=') for sc in subclass.split(',')]
@@ -253,8 +239,8 @@ class Template:
     def copy_templates(features, sourceclass, strong_inventory, tmp_dict, gen=False):
 #        print("** class inventory")
 #        print("{}".format(strong_inventory.get(sourceclass)))
-        clsfeat = 'c' if gen else 'sc'
-        strengthfeat = 'strong' if gen else 'sstrong'
+        clsfeat = 'tc' if gen else 'c'
+        strengthfeat = 'tstrong' if gen else 'strong'
         destfeatures = FeatStruct("[" + features + "]")
         destclass = destfeatures.get('c')
         matchfeats = destfeatures.delete(['c', 'strong'])
@@ -292,8 +278,8 @@ class Template:
         Add a constraint for the subclass to not have any templates for features.
         '''
         features = FeatStruct("[" + features + "]", freeze=False)
-        cls_feat = 'c' if gen else 'sc'
-        strength_feat = 'strong' if gen else 'sstrong'
+        cls_feat = 'tc' if gen else 'c'
+        strength_feat = 'tstrong' if gen else 'strong'
         cls = features.get(cls_feat)
         features = features.delete([cls_feat, strength_feat])
 #        print("*** Adding constraint for class {}, subclass {}, features {}".format(cls, subclass, features.__repr__()))
@@ -391,10 +377,10 @@ class Template:
                     subclass = constraints.replace('!', '').strip()
                     Template.add_weak_constraint(subclass, current_main_constraints[0], weak_constraints, gen=gen)
                     continue
-                if not gen:
-                    # precede position ints with 's'
+                if gen:
+                    # precede position ints with 't'
                     constraints = constraints.split(',')
-                    constraints = ['s' + c for c in constraints]
+                    constraints = ['t' + c for c in constraints]
                     constraints = ','.join(constraints)
 #                print("*** constraints {}".format(constraints))
                 weak_inventory_classes.append((current_class, constraints))
@@ -443,12 +429,12 @@ class Template:
 
 #        print("*** weak inventory {}".format(weak_inventory.get('A')))
 
-#        print("*** inventory {}".format(inventory))
+#        print("*** inventory {}".format(inventory.get('A')))
 #        print("*** weak inventory {}".format(weak_inventory))
 
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen)
 
-#        print("*** tmp_dict {}".format(tmp_dict))
+#        print("*** tmp_dict {}".format(list(tmp_dict.items())[:10]))
 
 #        print(fst)
         return fst

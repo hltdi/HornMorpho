@@ -1,24 +1,20 @@
 -> start
 
-start -> V		[*V]
-start -> C		[*]
+start -> start 	[*;*v;-]
+start -> stem	[+]
 
-V -> end	 	 [ህ:=ክ;ሁ:=ኩ]
-C -> end		 [ክ:=ክ;ኩ:=ኩ]
+stem -> V		[*v]
+stem -> C		[*]
+V -> C			[*]
+C -> V			[*v]
+C -> C			[*]
+V -> V			[*v]
 
-V -> C			 [*]
-C -> V			 [*V]
-C -> C			 [*]
-V -> V			 [*V]
+V -> V+			[+]
+V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]
+C -> end		[+]
 
-start -> start 	 [^v;^V]
-C -> start		 [^v;^V]
-V -> start		 [^v;^V]
+end -> end		[*v;*;-]
 
-end -> end		 [^X;^v;^V]
-
-start ->
-C ->
-V ->
 end ->
 

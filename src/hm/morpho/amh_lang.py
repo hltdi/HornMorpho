@@ -807,8 +807,8 @@ AMH = language.Language("አማርኛ", 'amh',
               procroot=preproc_root,
               postpostproc=lambda form: postproc_root(form),
               dflt_postproc_root=dflt_postproc_root,
-              seg2string=lambda word, string, sep='-', features=False, transortho=True, udformat=False, simplifications=None, conllu=True, um=0: \
-                            seg2string(word, string, sep=sep, geez=transortho, features=features, udformat=udformat, simplifications=simplifications, conllu=conllu, um=um),
+              seg2string=lambda word, string, sep='-', transortho=True, udformat=False, simplifications=None, conllu=True, um=0: \
+                            seg2string(word, string, sep=sep, geez=transortho, udformat=udformat, simplifications=simplifications, conllu=conllu, um=um),
               stat_root_feats=['cls', 'vc', 'as'],
               stat_feats=[['poss', 'expl'], ['cnj'], ['cj1'], ['cj2'], ['pp'], ['rel']],
               # We need + and numerals for segmentation of irregular verbal nouns
@@ -978,7 +978,7 @@ def roman2geez(value):
     """Convert a value (prep or conj) to geez."""
     return ROM2GEEZ.get(value, value)
 
-def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=False,
+def seg2string(word, segmentation, sep='-', geez=True, udformat=False,
                um=0, arules=False, simplifications=None, conllu=True):
     """
     Convert a segmentation to a string, including features if features is True.
@@ -1039,11 +1039,11 @@ def seg2string(word, segmentation, sep='-', geez=True, features=False, udformat=
         morphs = [conllu_morpheme(form, props, citation, udfeats=udfeats) for form, props in morphs]
         return morphs
     else:
-        if not features:
-            morphs = [[w[0] for w in word] for word in morphs]
-        else:
-            # Rejoin morpheme and features for each word
-            morphs = [''.join(m) for m in morphs]
+#        if not features:
+#            morphs = [[w[0] for w in word] for word in morphs]
+#        else:
+        # Rejoin morpheme and features for each word
+        morphs = [''.join(m) for m in morphs]
 #            morphs = [[''.join(m) for m in word] for word in morphs]
         result = {'morphemes': sep.join(morphs)}
     if citation:

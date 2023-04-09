@@ -29,6 +29,9 @@ from .geez import *
 from .ees import EES
 
 make_weight = EES.make_weight
+#sourcify_feats = EES.sourcify_feats
+targetify_feats = EES.targetify_feats
+combine_src_targ_feats = EES.combine_src_targ_feats
 
 class LexTrans:
 
@@ -40,18 +43,35 @@ class LexTrans:
     # Default feature mapping
     DEFAULT_RE = re.compile(r'\s*\$\s*(.+)$')
 
-    @staticmethod
-    def make_gram_features(feateq_defaults, scls='A', tcls='A', feat_constraints=None):
-        if not feat_constraints:
-            classes = "c={},sc={}".format(scls, tcls)
-            valence = ["sv=0,v=0", "v=p,v=p", "sv=a,v=a", "sv=as,v=at"]
-            return ';'.join(["[{},{}]".format(classes, v) for v in valence])
+#    @staticmethod
+#    def make_class_FSSet(classes=['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J']):
+#        feats = []
+#        for c in classes:
+#            if isinstance(c, str):
+#                sc = tc = c
+#            else:
+#                sc = c[0]; tc = c[1]
+#            feats.append("[sc={},c={}]".format(sc, tc))
+#        feats = ';'.join(feats)
+#        return make_weight(feats)
 
     @staticmethod
-    def make_lextrans_states(fst, entry_pairs, feateq_defaults, scls='A', tcls='A', feat_constraints=None):
-        gram_feats = LexTrans.make_gram_features(feateq_defaults, scls=scls, tcls=tcls, feat_constraints=feat_constraints)
-        print("*** gram feats {}".format(gram_feats))
-#        weight = make_weight(feats, not gen)
+    def make_gram_FSSet(feateq_defaults):
+        if not feateq_defaults:
+            gram = "[sv=0,v=0];[sv=p,v=p];[sv=a,v=a];[sv=as,v=at]"
+        else:
+            gram = []
+            for feat, values in feateq_defaults.items():
+                for svalue, tvalue in values:
+                    gram.append("[s{}={},{}={}]".format(feat, svalue, feat, tvalue))
+            gram = ';'.join(gram)
+        return make_weight(gram)
+
+    @staticmethod
+    def make_lextrans_states(fst, entry_pairs, gram_feats):
+#        cls_feats = LexTrans.make_class_FSSet()
+#        print("*** gram feats {}".format(gram_feats.__repr__()))
+#        print("*** class feats {}".format(cls_feats.__repr__()))
         for pair in entry_pairs:
             src = pair[0]
             targ = pair[-1]
@@ -60,40 +80,39 @@ class LexTrans:
             targ_root, targ_feats = targ
             src_root = src_root.split()
             targ_root = targ_root.split()
+#            src_feats = sourcify_feats(src_feats)
+            targ_feats = targetify_feats(targ_feats)
+            root_gram_feats = combine_src_targ_feats(src_feats, targ_feats)
+            root_gram_feats = make_weight(root_gram_feats)
             state_name = "{}>{}".format(''.join(src_root), ''.join(targ_root))
-            root_feats = []
-            states = []
+            root_char_feats = []
+            states_chars = []
             for index, (schar, tchar) in enumerate(zip(src_root, targ_root)):
                 position = index + 1
-                states.append("{}{}".format(state_name, position))
-                root_feats.append("s{}={},{}={}".format(position, schar, position, tchar))
-            root_feats = ','.join(root_feats)
-            print("*** states {}".format(states))
-            print("*** root_feats {}".format(root_feats))
+                states_chars.append(("{}{}".format(state_name, position), schar, tchar))
+                root_char_feats.append("s{}={},{}={}".format(position, schar, position, tchar))
+            root_char_feats = '[' + ','.join(root_char_feats) + ']'
+            root_char_feats = make_weight(root_char_feats)
+            weight = root_char_feats.u(gram_feats)
+            weight = weight.u(root_gram_feats)
+            print("*** states {}".format(states_chars))
+            print("*** weight {}".format(weight.__repr__()))
+            src = 'start'
+            nstates = len(states_chars)
+            for sindex, (state, schar, tchar) in enumerate(states_chars):
+                print("  *** state {}, schar {}, tchar {}".format(state, schar, tchar))
+                wt = None
+                if sindex == 0:
+                    wt = weight
+                if sindex == nstates - 1:
+                    dest = 'end'
+                else:
+                    dest = state
+                    fst.add_state(state)
+                print("  *** Creating arc {}->{}; {}:{}".format(src, dest, schar, tchar))
+                fst.add_arc(src, dest, schar, tchar, weight=wt)
+                src = dest
                 
-#            for cindex, chars in enumerate(pattern):
-#                if cindex == 0:
-#                    wt = weight
-#                else:
-#                    wt = None
-#                if cindex == len(pattern) - 1:
-#                    dest = 'end'
-#                else:
-#                    dest = "{}_{}".format(pat_state_name, cindex)
-#                    fst.add_state(dest)
-#                print("  ** creating arc from {} to {} with {}".format(source, dest, chars))
-#                strings = fst.sub_IOabbrevs(chars, abbrevs)
-#                strings = [s for s in strings.split(';')]
-#                for arc_spec in strings:
-#                    arc = fst._parse_arc(arc_spec)
-#                    if isinstance(arc, list):
-#                        # out_string is a stringset label
-#                        for instring, outstring in arc:
-#                            fst.add_arc(source, dest, instring, outstring, weight=wt)
-#                    else:
-#                        fst.add_arc(source, dest, arc[0], arc[1], weight=wt)
-#                source = dest
-
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, seglevel=2,
               directory='', seg_units=[], abbrevs=None,
@@ -102,7 +121,7 @@ class LexTrans:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-        print("** Parsing lextrans file {}, fst {}".format(s, fst))
+#        print("** Parsing lextrans file {}, fst {}".format(s, fst))
 
         language = cascade.language
 
@@ -164,11 +183,14 @@ class LexTrans:
             if entry_pair:
                 entry_pairs.append(entry_pair)
 
-        print("** entry lists: {}".format(entry_pairs))
-        print("** feateq defaults: {}".format(feateq_defaults))
 
-        LexTrans.make_lextrans_states(fst, entry_pairs, feateq_defaults)
+#        print("** entry lists: {}".format(entry_pairs))
+#        print("** feateq defaults: {}".format(feateq_defaults))
 
-#        print(fst)
+        gram_feats = LexTrans.make_gram_FSSet(feateq_defaults)
+
+        LexTrans.make_lextrans_states(fst, entry_pairs, gram_feats)
+
+        print(fst)
 
         return fst
