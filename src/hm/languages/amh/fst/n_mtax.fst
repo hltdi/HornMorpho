@@ -47,7 +47,7 @@ poss -> acc       [:]      [poss=[-expl],-def,-prp,-itu];[poss=[-expl],+def,+prp
 poss -> acc       [E:]     [+def,poss=[+p1,-p2,-plr,+expl],-itu]
 poss -> acc       [h:]     [+def,poss=[-p1,+p2,-plr,-fem,+expl],-itu]
 poss -> acc       [x:]     [+def,poss=[-p1,+p2,-plr,+fem,+expl],-itu]
-poss -> acc       [u:]     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu];[+det,+def,-fem,-prp,poss=[-expl],-itu];[+plr,+det,+def,-prp,poss=[-expl],-itu]
+poss -> acc       [u:]     [+def,poss=[-p1,-p2,-plr,-fem,+expl],-itu];[-plr,+det,+def,-fem,-prp,poss=[-expl],-itu];[+plr,+det,+def,-prp,poss=[-expl],-itu]
 poss -> acc      <itu:>    [-plr,+det,+def,poss=[-expl],+fem,+itu,-prp]
 #% the only deverbal nouns that can be feminine are agents
 poss -> acc      <wa:>     [+def,poss=[-p1,-p2,-plr,+fem,+expl],-itu];[+det,+def,-prp,poss=[-expl],+fem,-plr,-itu,v=None];[+det,+def,-prp,poss=[-expl],+fem,-plr,-itu,v=agt]
