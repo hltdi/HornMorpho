@@ -414,6 +414,7 @@ class Language:
                     posmorph.defaultFS = FeatStruct(posmorph.defaultFS)
             else:
                 posmorph.defaultFS = posmorph.make_default_fs()
+#            print("** posmorph {}, dFS {}".format(posmorph, posmorph.defaultFS.__repr__()))
         return True
 
     def parse(self, data, poss=None, verbose=False):

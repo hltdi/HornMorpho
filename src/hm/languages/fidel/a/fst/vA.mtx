@@ -12,7 +12,7 @@ $ conj_prep_pre
   --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc]
 
 $ rel_impf
-  # geminated
+# % gemination
   ም		[t=i,+rel]
   --		[t=i,-rel];[t=p|j|c]
 
@@ -29,9 +29,11 @@ $ neg_bound
 
 $ sb_pre
   ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
+# % optional gemination  
   ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
   እ		[t=i,sp=1,sn=1,-neg]
   ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
+# % optional gemination
   እን  	[t=i|j,sp=1,sn=2]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
@@ -42,8 +44,9 @@ $ voice_pre
   ኣ		[v=a]
   ኣስ  	[v=as]
   ተ		[t=p|c,v=p];[t=j,sp=2,v=p]
-  /   	[t=i,v=p];[t=j,sp=1|3,v=p]
-  --  	[v=0]
+# % gemination
+#  /   	[t=i,v=p];[t=j,sp=1|3,v=p]
+  --  	[v=0];[t=i,v=p];[t=j,sp=1|3,v=p]
 
 $ prestem
   +
@@ -53,18 +56,6 @@ $ stem
 
 $ poststem
   +
-
-#$ አንቀፅ
-#  --		<(VERB;Aspect=Perf>		[t=p]
-#  --		<(VERB;Aspect=Imp>		[t=i]
-#  --		<(VERB;Mood=Jus>			[t=j]
-#  --		<(VERB;VerbForm=Conv>		[t=c]
-#
-#$ voice_feat
-#  --		<)>						[v=0]
-#  --		<,Voice=Pass)>			[v=p]
-#  --		<,Voice=Trans)>		[v=a]
-#  --		<,Voice=Cau)>			[v=as]
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p]
@@ -105,10 +96,10 @@ $ ob_suf
       ላቸው	[oc=b]
       ባቸው	[oc=m]
   [op=1,sp=2|3]
-      አን	[oc=a,on=2,sp=2,sn=1,sg=m]
-      ን	[oc=a,on=2,sp=2,sn=1,sg=f];[oc=a,sn=2]
-      አኝ	[oc=a,on=1,sp=2,sn=1,sg=m]
-      ኝ 	[oc=a,on=1,sp=2,sn=1,sg=f];[oc=a,sn=2]
+      አን	[oc=a,on=2,sp=2,sn=1,sg=m];[oc=a,on=2,sp=3,sn=1,t=i|j]
+      ን	[oc=a,on=2,sp=2,sn=1,sg=f];[oc=a,on=2,t=p,sp=3,sn=1];[oc=a,on=2,sn=2]
+      አኝ	[oc=a,on=1,sp=2,sn=1,sg=m];[oc=a,on=1,sp=3,sn=1,t=i|j]
+      ኝ 	[oc=a,on=1,sp=2,sn=1,sg=f];[oc=a,on=1,t=p,sp=3,sn=1];[oc=a,on=1,sn=2]
       ልን	[oc=b,on=2]
       ልኝ	[oc=b,on=1]
       ብን	[oc=m,on=2]
@@ -134,9 +125,6 @@ $ ob_bound
 $ neg2
   ም		[t=i|p,+neg,+mc]
   --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
-
-$ neg2_bound
-  -
 
 $ aux
   ኣል		[t=i,sp=3,sn=1,sg=m,-neg,+mc];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc];[t=c,sp=1,sn=2,-neg,+mc];[t=c,sp=2,-neg,+mc];[t=c,sp=3,sn=1,sg=m,-neg,+mc];[t=c,sp=3,sn=2,-neg,+mc]

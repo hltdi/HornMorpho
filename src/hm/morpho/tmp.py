@@ -64,6 +64,7 @@ class Template:
             tmp_length = len(template)
             # Position of possibly geminated consonant (all EES!)
             gem_pos = {tmp_length - 1, tmp_length - 2}
+#            print("*** Making template for {}, {}".format(template, weight.__repr__()))
 
 #            if weight.get('a') == 'a':
 #                print("** template {}, weight {}".format(template, weight))
@@ -111,10 +112,15 @@ class Template:
                     wt = gem_feat
                 fst.add_arc(source, dest, charset, charset, weight=wt)
                 source = dest
-
+                
             state, charset, gem_feat = last_state
-            fst.add_arc(source, end, charset, charset, weight=gem_feat)
-#            print("** Created arc from {} to {} with {}".format(source, end, charset))
+            if not states_to_create:
+                # This is the only arc for this template, so it needs the full weight
+#                print("*** Creating last arc for empty states {}, weight {}".format(states_to_create, weight.__repr__()))
+                wt = weight
+            else:
+                wt = gem_feat
+            fst.add_arc(source, end, charset, charset, weight=wt)
 
     @staticmethod
     def add_template(fst, template, index, features, constraints, tmp_dict=None,
@@ -427,7 +433,10 @@ class Template:
 
         Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints, gen=gen)
 
-#        print("*** weak inventory {}".format(weak_inventory.get('A')))
+#        for x, y in weak_inventory.get('A').get('3=እ').items():
+#            print("***** {}, {}".format(x.__repr__(), y))
+
+#        print("*** weak inventory {}".format(weak_inventory.get('A').get('3=እ')))
 
 #        print("*** inventory {}".format(inventory.get('A')))
 #        print("*** weak inventory {}".format(weak_inventory))

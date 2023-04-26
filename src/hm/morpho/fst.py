@@ -2210,6 +2210,13 @@ class FST:
                         if verbose:
                             print('Composing {}'.format(casc))
                         fst1 = casc.compose(trace=verbose)
+                        if casc.insertions:
+                            # Insert insertion FSTs into composed FST
+#                            print("***** {} has FST insertions {}".format(casc, casc.insertions))
+                            start = fst1._get_initial_state()
+                            end = fst1._get_final_states()[0]
+                            for insertion in casc.insertions:
+                                fst1.insert(insertion, start, end)
                         # Record the new composed FST in the higher cascade
                         if mtax.cascade:
                             mtax.cascade.add(fst1)

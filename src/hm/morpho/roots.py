@@ -54,7 +54,7 @@ class Roots:
     NO_INPUT = '--'
 
     CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s*(\[.+\])?(\s+.+)?$')
-    ROOT_RE = re.compile(r'\s*<(.+?)>\s+(\S+?)$')
+    ROOT_RE =     re.compile(r'\s*<(.+?)>\s+(\S+?)$')
     IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
     PATTERN_RE = re.compile(r'\s*(.+)$')
@@ -357,7 +357,7 @@ class Roots:
             char = geezify_CV(cs, 'I')
             sourceroot = 't' if gen else ''
             feats = "{},{}{}={}".format(feats, sourceroot, i, char)
-            print("*** cons {}, feats {}")
+#            print("*** cons {}, feats {}".format(cons, feats))
         if seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
@@ -410,7 +410,7 @@ class Roots:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-        print("** Parsing roots file, fst {}, posmorph {}, gen {}, seglevel {}".format(fst, posmorph, gen, seglevel))
+#        print("** Parsing roots file, fst {}, posmorph {}, gen {}, seglevel {}".format(fst, posmorph, gen, seglevel))
 
 #        weighting = fst.weighting()
 

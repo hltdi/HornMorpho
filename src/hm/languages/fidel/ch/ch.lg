@@ -24,6 +24,18 @@ feats:
 
   pos: v verb
 
+  a = 0 | a | it
+
+  v = 0 | p | a | at
+  
+  neg = False | True
+
+  t = p | i | j | c
+
+  W = False | True
+
+  Y = False | True
+
   pos: v_stem v_stem
 
   a = 0 | a | it

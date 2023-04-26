@@ -796,6 +796,7 @@ class POSMorphology:
                 phon=False, segment=False, translate=False, experimental=False,
                 mwe=False):
         """The FST satisfying the parameters."""
+#        print("*** Getting FST {} {} {} {} {} {} {} {}".format(generate, guess, simplified, phon, segment, translate, experimental, mwe))
         analgen = None
         fsts = self.mwefsts if mwe else self.fsts
         if generate:
@@ -1496,11 +1497,12 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
-#        print("features {}".format(features.__repr__()))
+#        print("*** features {}".format(features.__repr__()))
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
                                   phon=phon, segment=segment)
+#        print("*** fst {}".format(fst))
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
             anal = self.dict_to_anal(root, features)
@@ -1521,7 +1523,8 @@ class POSMorphology:
             if oroot:
                 root = oroot
         if fst:
-#            print('Transducing with features {}'.format(features.__repr__()))
+
+#            print('** Transducing with features {}'.format(features.__repr__()))
             gens = \
               fst.transduce(root, features,
                             seg_units=self.morphology.seg_units, gen=not del_feats,
