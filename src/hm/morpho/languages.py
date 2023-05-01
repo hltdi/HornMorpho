@@ -61,7 +61,7 @@ def get_lang_dir(abbrev):
 def load_lang(lang, phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
-              cache=True, guess=True, simplified=False, mwe=True,
+              cache=True, guess=True, simplified=False, mwe=True, gen=False,
               experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     if verbose:
@@ -85,7 +85,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
-                                    pickle=pickle, translate=translate, recreate=recreate,
+                                    pickle=pickle, translate=translate, recreate=recreate, gen=gen,
                                     phon=phon, guess=guess, simplified=simplified, mwe=mwe, fidel=fidel,
                                     poss=poss, verbose=verbose)
         if not loaded:
@@ -102,7 +102,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 #            from . import ees
 #            EES = ees.EES()
         language = Language.make('', lang_id, load_morph=load_morph,
-                                 pickle=pickle, translate=translate,
+                                 pickle=pickle, translate=translate, gen=gen,
                                  experimental=experimental, mwe=mwe,
                                  segment=segment, phon=phon, guess=guess,
                                  simplified=simplified, recreate=recreate,
@@ -123,7 +123,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             print("Loading backup language {}".format(language.backup))
         # If there's a backup language, load its data file so the translations
         # can be used.
-        load_lang(language.backup, load_morph=False, recreate=recreate, mwe=mwe,
+        load_lang(language.backup, load_morph=False, recreate=recreate, mwe=mwe, gen=gen,
                   pickle=pickle, translate=translate, experimental=experimental, fidel=fidel,
                   guess=guess, verbose=verbose)
     return True

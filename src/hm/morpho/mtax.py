@@ -27,7 +27,11 @@ import re, os
 from .utils import segment
 from .semiring import FSSet, UNIFICATION_SR, TOPFSS
 from .fs import FeatStructParser
+from .ees import EES, TARGET_WT_CONV
 #from .fst import FSTCascade
+
+# Convert weight string to one suitable for translation target
+conv_string = lambda string: EES.conv_string(string, TARGET_WT_CONV)
 
 # Default name for final state
 DFLT_FINAL = 'fin'
@@ -76,7 +80,7 @@ class MTax:
     def __repr__(self):
         return "MTax {}".format(self.fst.label)
 
-    def parse(self, label, s, verbose=False):
+    def parse(self, label, s, gen=False, verbose=False):
         """
         Parse a morphotactic FST from a string consisting of multiple lines from a file.
         """
@@ -135,6 +139,9 @@ class MTax:
             m = LEX_RE.match(line)
             if m:
                 indentation, label, fss = m.groups()
+                if gen and fss:
+                    fss = conv_string(fss)
+#                print("*** mtax fss {}".format(fss))
                 weight = self.weighting.parse_weight(fss)
                 filename = label + '.lex'
                 if len(indentation) > current_indent and current_fs:
@@ -158,6 +165,9 @@ class MTax:
             if m:
                 indentation, label, fss = m.groups()
 #                print('Lex', label)
+                if gen and fss:
+                    fss = conv_string(fss)
+#                print("*** mtax fss 2 {}".format(fss))
                 weight = self.weighting.parse_weight(fss)
                 filename = label + '.fst'
                 if len(indentation) > current_indent and current_fs:
@@ -170,6 +180,9 @@ class MTax:
             m = FS_RE.match(line)
             if m:
                 indentation, fs = m.groups()
+                if gen and fs:
+                    fss = conv_string(fss)
+#                print("*** mtax fss 3 {}".format(fs))
                 # a FeatStruct, not a FSSet
                 weight = MTax.PARSER(fs)
 #                FeatStructParser().parse(fs)
@@ -183,6 +196,9 @@ class MTax:
             if m:
                 indentation, in_string, out_string, fss = m.groups()
 #                print("** PATH {} {} {} {}".format(indentation, in_string, out_string, fss))
+                if gen and fss:
+                    fss = conv_string(fss)
+#                print("*** mtax fss 4 {}".format(fss))
                 weight = MTax.PARSER(fss) if fss else None
                 if len(indentation) > current_indent and current_fs:
                     # Update FSS with current FS
@@ -200,6 +216,9 @@ class MTax:
             m = SHORTCUT_FS_RE.match(line)
             if m:
                 next_state, fss = m.groups()
+#                print("*** mtax fss 5 {}".format(fss))
+                if gen and fss:
+                    fss = conv_string(fss)
                 fss = self.weighting.parse_weight(fss)
                 current_state[1]['shortcuts'].append((next_state, None, fss))
 #                print("Shortcut {}, {}".format(next_state, fss))
@@ -217,6 +236,9 @@ class MTax:
             m = SHORTCUT_LEX_FS_RE.match(line)
             if m:
                 next_state, label, fss = m.groups()
+                if gen and fss:
+                    fss = conv_string(fss)
+#                print("*** mtax fss 6 {}".format(fss))
                 fss = self.weighting.parse_weight(fss)
                 filename = label + '.lex'
                 current_state[1]['shortcuts'].append((next_state, filename, fss))

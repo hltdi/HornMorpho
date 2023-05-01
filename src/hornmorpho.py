@@ -82,10 +82,10 @@ def AW(id, n_sents=100, start=0, write=True, append=True):
         )
 
 ## translation
-def load_trans(src, targ, pos):
+def load_trans(src, targ, pos, gen=True):
     src_posmorph = get_pos(src, pos, fidel=True)
     trg_posmorph = get_pos(targ, pos, fidel=True)
-    src_posmorph.load_trans_fst(trg_posmorph, pos)
+    src_posmorph.load_trans_fst(trg_posmorph, pos, gen=gen)
     return src_posmorph
 
 def parse_lextr_file(src_pos, pos):

@@ -29,8 +29,8 @@ from .utils import segment, allcombs
 from .semiring import UNIFICATION_SR
 from .fs import FeatStruct
 
-SOURCE_WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("strong", "sstrong")]
-TARGET_WT_CONV = [("gem", "tgem"), ("c=", "tc="), ("v=", "tv="), ("strong", "tstrong")]
+SOURCE_WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("t=", "st="), ("strong", "sstrong")]
+TARGET_WT_CONV = [("gem", "tgem"), ("c=", "tc="), ("v=", "tv="), ("t=", "tt="), ("strong", "tstrong")]
 
 class EES:
 
@@ -200,7 +200,8 @@ class EES:
         if conversions:
             for src, trg in conversions:
                 if src in string:
-                    string = string.replace(src, trg)
+                    string = re.sub(r"(\W){}".format(src), r"\1{}".format(trg), string)
+#                                        .replace(src, trg)
         return string
 
     def geezify(self, form, gemination=False, deepenthesize=False):

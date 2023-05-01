@@ -43,29 +43,22 @@ class LexTrans:
     # Default feature mapping
     DEFAULT_RE = re.compile(r'\s*\$\s*(.+)$')
 
-#    @staticmethod
-#    def make_class_FSSet(classes=['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J']):
-#        feats = []
-#        for c in classes:
-#            if isinstance(c, str):
-#                sc = tc = c
-#            else:
-#                sc = c[0]; tc = c[1]
-#            feats.append("[sc={},c={}]".format(sc, tc))
-#        feats = ';'.join(feats)
-#        return make_weight(feats)
-
     @staticmethod
     def make_gram_FSSet(feateq_defaults):
         if not feateq_defaults:
-            gram = "[sv=0,v=0];[sv=p,v=p];[sv=a,v=a];[sv=as,v=at]"
+            gram = "[v=0,tv=0];[v=p,tv=p];[v=a,tv=a];[v=as,tv=at]"
         else:
             gram = []
             for feat, values in feateq_defaults.items():
+#                print("*** feat {}, values {}".format(feat, values))
+                gram1 = []
                 for svalue, tvalue in values:
-                    gram.append("[s{}={},{}={}]".format(feat, svalue, feat, tvalue))
-            gram = ';'.join(gram)
-        return make_weight(gram)
+                    gram1.append("[{}={},t{}={}]".format(feat, svalue, feat, tvalue))
+                gram1 = ';'.join(gram1)
+#                print("*** gram1 {}".format(gram1))
+                gram.append(gram1)
+        print("*** default gram {}".format(gram))
+        return [make_weight(g) for g in gram]
 
     @staticmethod
     def make_lextrans_states(fst, entry_pairs, gram_feats):
@@ -75,7 +68,7 @@ class LexTrans:
         for pair in entry_pairs:
             src = pair[0]
             targ = pair[-1]
-            print("** src {}, targ {}".format(src, targ))
+#            print("** src {}, targ {}".format(src, targ))
             src_root, src_feats = src
             targ_root, targ_feats = targ
             src_root = src_root.split()
@@ -83,6 +76,7 @@ class LexTrans:
 #            src_feats = sourcify_feats(src_feats)
             targ_feats = targetify_feats(targ_feats)
             root_gram_feats = combine_src_targ_feats(src_feats, targ_feats)
+#            print("** root_gram_feats {}".format(root_gram_feats))
             root_gram_feats = make_weight(root_gram_feats)
             state_name = "{}>{}".format(''.join(src_root), ''.join(targ_root))
             root_char_feats = []
@@ -90,28 +84,64 @@ class LexTrans:
             for index, (schar, tchar) in enumerate(zip(src_root, targ_root)):
                 position = index + 1
                 states_chars.append(("{}{}".format(state_name, position), schar, tchar))
-                root_char_feats.append("s{}={},{}={}".format(position, schar, position, tchar))
+                root_char_feats.append("{}={},t{}={}".format(position, schar, position, tchar))
             root_char_feats = '[' + ','.join(root_char_feats) + ']'
+#            print("** root_char_feats {}".format(root_char_feats))
             root_char_feats = make_weight(root_char_feats)
-            weight = root_char_feats.u(gram_feats)
-            weight = weight.u(root_gram_feats)
-            print("*** states {}".format(states_chars))
-            print("*** weight {}".format(weight.__repr__()))
+            weights = [root_char_feats.u(gram_feats[0])]
+            weights = [weights[0].u(root_gram_feats)]
+            for w in gram_feats[1:]:
+                weights.insert(0, w)
+#            weights = [root_char_feats.u(gf) for gf in gram_feats]
+#            weights = [weight.u(root_gram_feats) for weight in weights]
+#            print("*** states {}".format(states_chars))
+#            print("*** weights {}".format([weight.__repr__() for weight in weights]))
             src = 'start'
             nstates = len(states_chars)
+            # initial states (before stem) and arcs
+#            fst.add_state('prefixes')
+#            dest = 'prefixes'
+            dest = 'start'
+            # later simplify the character set to only affix characters
+            fst.add_arc(src, dest, '-', '-', weight=None)
+            fst.add_arc(src, dest, '**', '**', weight=None)
+#            print("  *** Creating arc {}->{}; {}:{}".format(src, dest, '-;**', '-;**'))
+            if not fst.has_state('stembound1'):
+                fst.add_state('stembound1')
+            dest = 'stembound1'
+            fst.add_arc(src, dest, '+', '+', weight=None)
+#            print("  *** Creating arc {}->{}; {}:{}".format(src, dest, '+', '+'))
+            src = 'stembound1'
+            if not fst.has_state('stembound2'):
+                fst.add_state('stembound2')
             for sindex, (state, schar, tchar) in enumerate(states_chars):
-                print("  *** state {}, schar {}, tchar {}".format(state, schar, tchar))
+#                print("  *** state {}, schar {}, tchar {}".format(state, schar, tchar))
                 wt = None
-                if sindex == 0:
-                    wt = weight
+                if weights:
+                    wt = weights.pop()
+#                if sindex == 0:
+#                    wt = weights.pop()
+#                    wt = weights[0]
+#                elif sindex == 1:
+#                    wt = weights[1]
                 if sindex == nstates - 1:
-                    dest = 'end'
+                    dest = 'stembound2'
                 else:
                     dest = state
                     fst.add_state(state)
-                print("  *** Creating arc {}->{}; {}:{}".format(src, dest, schar, tchar))
+#                print("  *** Creating arc {}->{}; {}:{}".format(src, dest, schar, tchar))
                 fst.add_arc(src, dest, schar, tchar, weight=wt)
                 src = dest
+            if weights:
+                print("*** Warning: some weights not included!")
+            # post-stem states and arcs
+            dest = 'end'
+            fst.add_arc(src, dest, '+', '+', weight=None)
+#            print("  *** Creating arc {}->{}; {}:{}".format(src, dest, '+', '+'))
+            src = 'end'
+            fst.add_arc(src, dest, '-', '-', weight=None)
+            fst.add_arc(src, dest, '**', '**', weight=None)
+#            print("  *** Creating arc {}->{}; {}:{}".format(src, dest, '-;**', '-;**'))
                 
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, seglevel=2,
@@ -134,7 +164,7 @@ class LexTrans:
 #        rules = []
 
         # Create start and end states
-        if not fst.has_state(label): fst.add_state('start')
+        if not fst.has_state('start'): fst.add_state('start')
         fst._set_initial_state('start')
         fst.set_final('start')
         if not fst.has_state('end'): fst.add_state('end')

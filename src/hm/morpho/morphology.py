@@ -707,13 +707,19 @@ class POSMorphology:
         #        [trans, trans0, None, trans_P, trans0_P, (trans+), transX]]
         self.fsts = [[None, None, None, None, None, None, None],
                      [None, None, None, None, None, None, None],
-                     [None, None, None, None, None, None, None]]
+                     # Translation FSTs
+                     {},
+#                     [None, None, None, None, None, None, None]
+                     ]
         # FSTs for MWEs: [[anal, None, None, None, None, None, analX],
         #                 [None, None, None, None, None, None, None],
         #                 [None, None, None, None, None, None, None]]
         self.mwefsts = [[None, None, None, None, None, None, None],
                         [None, None, None, None, None, None, None],
-                        [None, None, None, None, None, None, None]]
+                        # Translation FSTs
+                        {}
+#                        [None, None, None, None, None, None, None]
+                            ]
         # FST cascade
         self.casc = None
         self.mwecasc = None
@@ -794,22 +800,17 @@ class POSMorphology:
 
     def get_fst(self, generate=False, guess=False, simplified=False,
                 phon=False, segment=False, translate=False, experimental=False,
-                mwe=False):
+                mwe=False, tl=''):
         """The FST satisfying the parameters."""
 #        print("*** Getting FST {} {} {} {} {} {} {} {}".format(generate, guess, simplified, phon, segment, translate, experimental, mwe))
+        if translate:
+            return self.fsts[self.trans_i].get(tl)
         analgen = None
         fsts = self.mwefsts if mwe else self.fsts
         if generate:
-            # 2nd sublist of FSTs; by default select the lexical FST within this list.
             analgen = fsts[self.gen_i]
-        elif translate:
-            # 3rd sublist of FSTs; by default select the lexical FST within this list.
-            analgen = fsts[self.trans_i]
         else:
-            # 1st sublist of FSTs, analysis of one sort or another
             analgen = fsts[self.anal_i]
-#        analgen = self.fsts[self.gen_i if generate else self.anal_i]
-        # Experimental FSTs have priority over others
         if experimental:
             fst = analgen[self.exp_i]
         elif guess:
@@ -822,39 +823,39 @@ class POSMorphology:
         elif phon:
             fst = analgen[self.phon_i]
         elif segment:
-            # only relevant for anal (1st) sublist
             fst = analgen[self.seg_i]
         else:
-            # By default, look for lexical anal, then guesser, then simplified
             fst = analgen[0] or analgen[self.guess_i] or analgen[self.simp_i]
         return fst
 
     def set_fst(self, fst, generate=False, guess=False, simplified=False,
                 phon=False, segment=False, translate=False, experimental=False,
-                mwe=False):
+                mwe=False, tl=''):
         """Assign the FST satisfying the parameters."""
-        index2 = 0
-        # Experimental FSTs have priority
-        if experimental:
-            index2 = self.exp_i
-        elif simplified:
-            index2 = self.simp_i
-        elif guess:
-            if phon:
-                index2 = self.guessphon_i
-            else:
-                index2 = self.guess_i
-        elif phon:
-            index2 = self.phon_i
-        elif segment:
-            index2 = self.seg_i
-        index1 = self.anal_i
-        if generate:
-            index1 = self.gen_i
-        elif translate:
-            index1 = self.trans_i
-        fsts = self.mwefsts if mwe else self.fsts
-        fsts[index1][index2] = fst
+        # Translation is special because there's a dict with language abbrevs as keys
+        if translate:
+            self.fsts[self.trans_i][tl] = fst
+        else:
+            index2 = 0
+            # Experimental FSTs have priority
+            if experimental:
+                index2 = self.exp_i
+            elif simplified:
+                index2 = self.simp_i
+            elif guess:
+                if phon:
+                    index2 = self.guessphon_i
+                else:
+                    index2 = self.guess_i
+            elif phon:
+                index2 = self.phon_i
+            elif segment:
+                index2 = self.seg_i
+            index1 = self.anal_i
+            if generate:
+                index1 = self.gen_i
+            fsts = self.mwefsts if mwe else self.fsts
+            fsts[index1][index2] = fst
         # Also assign the defaultFS if the FST has one
         # NOTE: DIFFERENT FSTs FOR THE SAME POS SHOULD AGREE ON THIS
         if fst._defaultFS:
@@ -1202,11 +1203,15 @@ class POSMorphology:
             # FST found one way or another
             return True
 
-    def load_trans_fst(self, trg_pos_morph, pos, lextrpos=None):
+    def load_trans_fst(self, trg_pos_morph, pos, lextrpos=None, gen=True):
         """
         Create a translation FST by composing the source analysis FST with the target generation FST.
+        If gen is False, only create an FST for source analysis and lexical translation.
         """
         print("*** Creating {} translation FST for {} -> {}".format(pos, self, trg_pos_morph))
+        src_language = self.language
+        trg_language = trg_pos_morph.language
+        trg_abbrev = trg_language.abbrev
 
         def load_trans1(posmorph, gen=False):
             name = posmorph.fst_name(gen, False)
@@ -1231,7 +1236,8 @@ class POSMorphology:
         # Source FST
         src_fst = load_trans1(self, gen=False)
         # Target FST
-        trg_fst = load_trans1(trg_pos_morph, gen=True)
+        if gen:
+            trg_fst = load_trans1(trg_pos_morph, gen=True)
         # Lextr FST
         lextrpos = lextrpos or pos
         lextrpath = os.path.join(self.morphology.get_fst_dir(), lextrpos + '.lextr')
@@ -1239,12 +1245,13 @@ class POSMorphology:
         lextr_fst = LexTrans.parse("lextr", s, cascade=self.casc,
                                    fst=FST('lextr', cascade=self.casc, weighting=UNIFICATION_SR)
                                    )
-
-        trans_fst = FST.compose([src_fst, lextr_fst, trg_fst], label='{}2{}'.format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
-#        trans_fst = FST.compose2(src_fst, lextr_fst, label="{}2lextr".format(self.language.abbrev), reverse=False)
+        if gen:
+            trans_fst = FST.compose([src_fst, lextr_fst, trg_fst], label='{}2{}'.format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
+        else:
+            trans_fst = FST.compose2(src_fst, lextr_fst, label="{}2lextr".format(self.language.abbrev), reverse=False)
         # Translation FST
 #        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
-        self.set_fst(trans_fst, translate=True)
+        self.set_fst(trans_fst, translate=True, tl=trg_abbrev)
 
     def pickle_all(self, replace=True, empty=True):
         """
@@ -1578,16 +1585,17 @@ class POSMorphology:
         to word in target language.
         """
         fst = self.get_fst(generate=False, guess=guess, phon=phon,
-                           translate=True, segment=False)
-        if guess:
-            if phon:
-                fst = self.fsts[self.trans_i][self.guessphon_i]
-            else:
-                fst = self.fsts[self.trans_i][self.guess_i]
-        elif phon:
-            fst = self.fsts[self.trans_i][self.phon_i]
-        else:
-            fst = self.fsts[self.trans_i][0] or self.fsts[self.trans_i][self.guess_i] or self.fsts[self.trans_i][self.simp_i]
+                           translate=True, segment=False, tl=tl)
+#        print("*** trans fst: {}".format(fst))
+#        if guess:
+#            if phon:
+#                fst = self.fsts[self.trans_i][self.guessphon_i]
+#            else:
+#                fst = self.fsts[self.trans_i][self.guess_i]
+#        elif phon:
+#            fst = self.fsts[self.trans_i][self.phon_i]
+#        else:
+#            fst = self.fsts[self.trans_i][0] or self.fsts[self.trans_i][self.guess_i] or self.fsts[self.trans_i][self.simp_i]
         if fst:
 #            if preproc:
 #                # For languages with non-roman orthographies
@@ -1599,12 +1607,6 @@ class POSMorphology:
             anals = fst.transduce(word, seg_units=self.morphology.seg_units, reject_same=guess,
                                   init_weight=init_weight, result_limit=result_limit,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit)
-#            if sep_anals or normalize:
-#                # Normalization requires FeatStructs so separate
-#                # anals if it's True
-#                anals = self.separate_anals(anals, normalize=normalize)
-#            if to_dict:
-#                anals = self.anals_to_dicts(anals)
             return anals
         elif trace:
             print('No translation FST loaded for', self.pos)

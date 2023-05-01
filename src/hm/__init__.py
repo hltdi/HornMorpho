@@ -50,7 +50,7 @@ def exit(save=True, cache=''):
     morpho.languages.LANGUAGES.clear()
 
 def load_lang(language, phon=False, segment=False, experimental=False, pickle=True, recreate=False,
-              load_morph=True, cache='', simplified=False, translate=False, fidel=False,
+              load_morph=True, cache='', simplified=False, translate=False, fidel=False, gen=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
@@ -58,7 +58,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
     """
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
-                     translate=translate, experimental=experimental,
+                     translate=translate, experimental=experimental, gen=gen,
                      load_morph=load_morph, cache=cache, fidel=fidel,
                      guess=guess, verbose=verbose)
 
@@ -744,7 +744,7 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
         return
     return casc.transduce1(string, fst_label=fst_label, fst_index=fst_index)
 
-def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
+def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
             translate=False, experimental=False, guess=True, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -756,7 +756,7 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False,
     @param verbose: whether to print out various messages
     @return:       POS object for the the language and POS
     """
-    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph,
+    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen,
               translate=translate, guess=guess, experimental=experimental, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
                                load=load_morph, verbose=verbose)

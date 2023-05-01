@@ -22,11 +22,12 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሐ ሑ ሒ ሓ �
 
 feats:
 
+# Full verbs
   pos: v verb
 
-  as = 0 | a | it
+  a = 0 | a | it
 
-  vc = 0 | ps | a | at
+  tv = 0 | ps | a | at
 
   %gem = True | False
 
@@ -36,17 +37,18 @@ feats:
 
   hol = False | True
 
-  t = p | i | j
+  tt = p | i | j
 
   W = False | True
 
   Y = False | True
 
+# Verb stems
   pos: v_stem v_stem
 
-  as = 0 | a | it
+  a = 0 | a | it
 
-  vc = 0 | ps | a | at
+  tv = 0 | ps | a | at
 
   %gem = True | False
 
@@ -56,7 +58,7 @@ feats:
 
   hol = False | True
 
-  t = p | i | j
+  tt = p | i | j
 
   W = False | True
 

@@ -1,0 +1,46 @@
+$ c=A|B|C|E|F|G|H|J
+$ a=0|a|i
+$ v=0|p|a|at
+$ t=p|i|j
+
+%%c=A,a=0,+strong
+[t=p,-neg]
+[t=i,v=p]
+# ሰብ፟ሮ
+*e		*:e		*
+
+[t=p,+neg]
+# ኣንሰበረ
+*e		*e		*
+
+[t=i,v=0]
+# ይሰብሩ
+*e		*		*
+
+[t=j,v=0,+tr]
+# የስብር
+*		*		*
+
+# this seems to exist, but no examples so far
+[t=j,v=0,-tr]
+*		*e		*
+
+%%c=B,a=0,+strong
+[t=p,-neg]
+[t=i,v=p]
+# ሸከቶ
+*Ye		~y:e	*
+
+[t=p,+neg]
+# ኣንሰከተ
+~ye		~y:e	*
+
+[t=i,v=0]
+# ይሽክቱ
+*Ye		~y:		*
+
+[t=j,v=0]
+# የሰክት
+~ye		~y:		*
+
+

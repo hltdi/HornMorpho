@@ -362,7 +362,7 @@ class Language:
     @staticmethod
     def make(name, abbrev, load_morph=False, fidel=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
-             guess=True, poss=None, pickle=True, translate=False,
+             guess=True, poss=None, pickle=True, translate=False, gen=False,
              ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
@@ -371,7 +371,7 @@ class Language:
         else:
             lang = Language(abbrev=abbrev, fidel=fidel)
         # Load data from language file
-        loaded = lang.load_data(load_morph=load_morph, pickle=pickle,
+        loaded = lang.load_data(load_morph=load_morph, pickle=pickle, gen=gen,
                                 segment=segment, phon=phon, recreate=recreate,
                                 experimental=experimental, mwe=mwe, fidel=fidel,
                                 translate=translate, simplified=simplified,
@@ -382,7 +382,7 @@ class Language:
         return lang
 
     def load_data(self, load_morph=False, pickle=True, recreate=False,
-                  segment=False, phon=False, guess=True, fidel=False,
+                  segment=False, phon=False, guess=True, fidel=False, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
                   poss=None, verbose=True):
         if self.load_attempted:

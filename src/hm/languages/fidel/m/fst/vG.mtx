@@ -19,7 +19,8 @@ $ neg_bound
   -
 
 $ sb_pre
-  ይ		[t=i|j,sp=3,sn=2,-imp];[t=i|j,sp=3,sn=1,sg=m,-imp];[t=i|j,+imp,+W,+Y]
+  ይ		[t=i,sp=3,sn=2,-imp];[t=i,sp=3,sn=1,sg=m,-imp];[t=i,+imp,sp=3,sn=1,sg=m]
+  የ		[t=j,sp=3,sn=2,-imp];[t=j,sp=3,sn=1,sg=m,-imp];[t=j,+imp,sp=3,sn=1,sg=m]
   ት		[t=i,sp=2,-imp];[t=i|j,sp=3,sn=1,sg=f,-imp];[t=j,sp=2,+neg,-imp]
   አ		[t=i,sp=1,sn=1,-neg,cnj1=None,-imp]
   ን 	      	[t=i|j,sp=1,sn=2,-imp];[t=i,sp=1,sn=2,cnj1=ብ|ስ,-imp];[t=i,sp=1,sn=1,+neg,-imp];[t=j,sp=1,sn=1,-imp]
@@ -30,7 +31,7 @@ $ sp_bound
 
 $ voice_pre
   ኣ		[v=a]
-  # % need to handle gemination
+  # need to handle gemination
   ኣት  	[v=at]
   # ተ when word initial; ት or gemination otherwise
   ተ		[t=p,v=p];[t=j,sp=2,v=p]
@@ -40,7 +41,7 @@ $ prestem
   +
 
 $ stem
-   >>v_stemA<<
+   >>v_stemG<<
 
 $ poststem
   +
@@ -56,7 +57,7 @@ $ sb_suf
   ኽማ 	[sp=2,sn=2,sg=f,t=p,-imp]
   𞟷		[sp=1,sn=1,t=p,-imp]
   ነ    	[sp=1,sn=2,-imp]
-  --		[t=i|j,sp=1,sn=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[+imp]
+  --		[t=i|j,sp=1,sn=1,-imp];[t=i|j,sp=2,sn=1,sg=m,-imp];[t=i|j,sp=3,sn=1,-imp];[+imp,sp=3,sn=1,sg=m]
 
 #$ ss_bound
 #  -

@@ -95,5 +95,10 @@ weighting = UNIFICATION
 {palR.a2e} = የ:ራ;የ:ላ
 
 ## FSTs
->v.tmp<
->v.root<
+>pal<
+>lab<
+>asp<
+>depal<
+>tam<
+>cats<
++vr+

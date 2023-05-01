@@ -106,6 +106,8 @@ CASC_ROOT_INSERT_RE = re.compile(r'\+(.+?\.root)\+')
 CASC_TMP_RE = re.compile(r'>(.+?\.tmp)<')
 # >xxx.mut<
 CASC_MUTATION_RE = re.compile(r'>(.+?\.mut)<')
+# >xxx.lextr<
+CASC_LEXTR_RE = re.compile(r'>(.+?\.lextr)<')
 # >xxx.ar<
 CASC_AR_RE = re.compile(r'>(.+?\.ar)<')
 # >xxx.mtx<
@@ -704,6 +706,10 @@ class FSTCascade(list):
                         if verbose:
                             print('Skipping FST {}'.format(label))
                     cascade.append(fst)
+                continue
+
+            m = CASC_LEXTR_RE.match(line)
+            if m:
                 continue
 
             # FST
@@ -2108,7 +2114,7 @@ class FST:
 
         elif suffix == 'root':
             if verbose:
-                print("Loading roots from {}, seglevel={}, posmorph {}".format(filename, seglevel, posmorph))
+                print("Loading roots from {}, seglevel={}, posmorph {}, gen {}".format(filename, seglevel, posmorph, gen))
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                posmorph=posmorph,
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
@@ -2127,7 +2133,7 @@ class FST:
 
         elif suffix == 'tmp':
             if verbose:
-                print("Loading templates from {}".format(filename))
+                print("Loading templates from {}, gen {}".format(filename, gen))
             return Template.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                   cascade=cascade, directory=directory, seglevel=seglevel,
@@ -2140,8 +2146,7 @@ class FST:
             # It's a file in MTAX format; parse_mtax() it
             fst = FST(label, cascade=cascade)
             mtax = MTax(fst, directory=directory)
-            mtax.parse(label, open(filename, encoding='utf-8').read(),
-                       verbose=verbose)
+            mtax.parse(label, open(filename, encoding='utf-8').read(), gen=gen, verbose=verbose)
             FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, verbose=verbose)
             return fst
 
@@ -2193,7 +2198,7 @@ class FST:
                             print('Creating FST from lex file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), in_string),
                                              weighting=mtax.weighting, cascade=cascade,
-                                             seglevel=seglevel,
+                                             seglevel=seglevel, gen=gen,
                                              seg_units=mtax.seg_units, reverse=cascade.r2l,
                                              lex_features=True, dest_lex=False)
                     if verbose:
@@ -2205,7 +2210,7 @@ class FST:
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
                     if not fst1:
                         casc = FSTCascade.load(os.path.join(mtax.cascade.get_cas_dir(), in_string), seg_units=mtax.seg_units,
-                                               seglevel=seglevel,
+                                               seglevel=seglevel, gen=gen,
                                                language=mtax.cascade.language)
                         if verbose:
                             print('Composing {}'.format(casc))
@@ -2235,7 +2240,7 @@ class FST:
                             print('Compiling FST from file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_fst_dir(), in_string),
                                              weighting=mtax.weighting, cascade=mtax.cascade,
-                                             seglevel=seglevel,
+                                             seglevel=seglevel, gen=gen,
                                              seg_units=mtax.seg_units)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
@@ -2263,7 +2268,7 @@ class FST:
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
                     if not fst1:
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), file),
-                                             seglevel=seglevel,
+                                             seglevel=seglevel, gen=gen,
                                              weighting=mtax.weighting, cascade=mtax.cascade,
                                              seg_units=mtax.seg_units,
                                              lex_features=True, dest_lex=False)
