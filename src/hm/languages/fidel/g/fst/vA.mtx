@@ -1,0 +1,45 @@
+#$ conj_prep_pre
+#  ዘ   [cpp=z]
+#  -- [cpp=None]
+
+#$ neg
+## These could be preceded by conjunctions
+# ኢ       [+neg]
+#  --   [-neg]
+
+$ sb_pre
+  ይ   [t=i|j,sp=3,sn=2,-neg];[t=i|j,sp=3,sn=1,sg=m,-neg]
+  ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  እ   [t=i|j,sp=1,sn=1]
+  ን   [t=i|j,sp=1,sn=2]
+  --  [t=p|g];[t=j,sp=2,-neg]
+
+#$ voice
+#  ተ   [t=p,vc=ps,cpp=None];[t=j,sp=2,vc=ps]
+#  ት    [t=i,vc=ps];[t=j,sp=1|3,vc=ps];[t=p,vc=ps,cpp=የ]
+#  =ኣ  [vc=a]
+#  =ኣት [vc=at]
+#  --  [vc=0]
+
+$ stem
+  >>v_stemA<<
+
+$ sb_suf
+  ኩ   [t=p,sp=1,sn=1]
+  ከ    [t=p,sp=2,sn=1,sg=m]
+  ኪ    [t=p,sp=2,sn=1,sg=f]
+  =ኢ  [t=i|j,sp=2,sn=1,sg=f]
+  =አ   [t=p,sp=3,sn=1,sg=m]
+  =አት   [t=p,sp=3,sn=1,sg=f]
+  ነ     [t=p,sp=1,sn=2]
+  ክሙ  [t=p,sp=2,sn=2,sg=m]
+  ክን   [t=p,sp=2,sn=2,sg=f]
+  =ኡ    [sp=3,sn=2,sg=m];[t=j|i,sp=2,sn=2,sg=m]
+  =ኣ   [sp=3,sn=2,sg=f];[t=j|i,sp=2,sn=2,sg=f]
+  --   [t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=1];[t=i|j,sp=3,sn=1]
+
+$ ob_suf
+  --   [op=0]
+
+#$ end
+#  --   [t=j];[t=i,-prog];[t=p,-cvb]

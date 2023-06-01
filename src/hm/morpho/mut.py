@@ -64,7 +64,7 @@ class Mutation:
     def make_mutation_states(fst, features, patterns, abbrevs, index):
         weight = UNIFICATION_SR.parse_weight(features)
         feat_state_name = "mut{}".format(index)
-        print("** mutations for {}: {}".format(weight.__repr__(), patterns))
+#        print("** mutations for {}: {}".format(weight.__repr__(), patterns))
         for pindex, pattern in enumerate(patterns):
             pat_state_name = "{}_{}".format(feat_state_name, pindex)
             source = 'start'

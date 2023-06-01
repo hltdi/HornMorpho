@@ -1,0 +1,192 @@
+$ c=A|B|C|E|F|G|H|I|J
+$ a=0|a|i
+$ v=0|p|a
+$ t=p|i|j|c
+
+%%a=0,c=A,+strong
+[t=p,v=0|p]
+[t=j,v=p]
+*e	*e	*
+
+# optionally drop final vowel
+# ተሰብረ
+[t=p,v=p,sp=3]
+[t=i,v=0,+suf]
+*e	*	*
+
+[t=i,v=0,-suf]
+*e	*:	*
+
+[t=i,v=p]
+*	*:e		*
+
+[t=j,v=0]
+*	*e	*
+
+[t=c,v=0]
+*e	*i	*
+
+%%a=0,c=B,+strong
+[t=p]
+[t=i,v=p] 
+*e	*:e	*
+
+%%a=0,c=C,+strong
+[t=p]
+*a	*e	*
+
+%%a=0,c=E,+strong
+[t=p]
+*e	*	*e	*
+
+%%a=0,c=F,+strong
+[t=p]
+[t=i,v=p]
+*e	*a	*e	*
+
+%%a=0,c=G,+strong
+[t=p]
+[t=i,v=p]
+*	*e	*	*e	*
+
+%%a=0,c=H,+strong
+[t=p]
+[t=i,v=p]
+*	*e	*a	*e	*
+
+%%a=0,c=I,+strong
+[t=p]
+[t=i,v=p]
+*	*	*e	*
+
+%%a=0,c=J,+strong
+[t=p]
+[t=i,v=p]
+*	*a	*e	*
+
+%%a=0,c=A,-strong
+
+%1=እ|ዕ|ሕ
+[t=p,v=0|p]
+[t=j,v=p]
+*a	*e	*
+
+[t=p,v=p,sp=3]
+[t=i,v=0,+suf]
+*a	*	*
+
+[t=i,v=0,-suf]
+*a	*:	*
+
+%2=እ|ዕ|ሕ
+[t=p,v=0]
+*e	*a	*
+
+[t=i,v=0]
+*	*	*
+
+[t=j,v=0]
+*	*a	*
+
+%3=እ|ዕ|ሕ
+# መጽእ- -አ
+[t=p,v=0,sp=3]
+[t=i,v=0,+suf]
+*e	*	*
+
+[t=i,v=0,-suf]
+*e	*:	*
+
+# መጻእ- -ካ
+[t=p,v=0,sp=1|2]
+*e	*a	*
+
+# ይስራ፟ሕ
+[t=i,v=p]
+*	*:a	*
+
+[t=j,v=0]
+*	*a	*
+
+%2=ው
+# ሞት-
+[t=p,v=0|a]
+[t=i,v=0,+suf]
+*o	-	*
+
+[t=i,v=0,-suf]
+*e	*:	*
+
+# ሙት-
+[t=j,v=0|a]
+*u	-	*
+
+# ሞይት-
+[t=c,v=0,sp=3]
+*o	ይ	*
+
+[t=c,v=0,sp=1|2]
+^E	-	*
+
+%2=ይ
+[t=p,v=0]
+[t=i,v=0,+suf]
+*e	-	*
+
+[t=i,v=0,-suf]
+*e	*:	*
+
+[t=j,v=0]
+# sometimes * - *: ሕሽ
+*i	-	*
+
+[t=c,v=0,sp=3]
+*e	*	*
+
+[t=c,v=0,sp=1|2]
+*E	-	*
+
+%3=ው
+# or have this happen in a phonological rule
+[t=p,v=0,sp=1|2]
+*e	*o	-
+
+[t=p,v=0,sp=3]
+# also *e *e ፈተ
+*e	*e	*
+
+[t=i,v=0,+suf]
+*e	*	*
+
+[t=i,v=0,-suf]
+*e	*:u	-
+
+# varies with suffix? ፍቶ ፍተዉ
+[t=j,v=0,-suf]
+*	*o	-
+[t=j,v=0,+suf]
+*	*e	*
+
+# [t=c] ??
+
+%3=ይ
+# or have this happen in a phonological rule
+[t=p,v=0,sp=1|2]
+*e	*e	-
+
+[t=p,v=0,sp=3]
+*e	*e	*
+
+[t=i,v=0,+suf]
+*e	*	*
+
+[t=i,v=0,-suf]
+*e	*:i	-
+
+# varies with suffix? ድለ ድለዩ?
+[t=j,v=0,-suf]
+*	*e
+[t=j,v=0,+suf]
+*	*e	*
+
+# [t=c] ??

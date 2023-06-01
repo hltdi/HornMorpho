@@ -229,27 +229,27 @@ def analrecompile(lang, pos, create_fst=True):
     '''
     return recompile(lang, pos, fidel=True, create_fst=create_fst)
 
-#def transrecompile(src, trg, pos):
-#    '''
-#    Recompile analysis and generation FSTs for source and target language, and create
-#    translation FST.
-#    '''
-#    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
-#    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
-#    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
-#    return src_pos_morph, trg_pos_morph
+def transrecompile(src, trg, pos):
+    '''
+    Recompile analysis and generation FSTs for source and target language, and create
+    translation FST.
+    '''
+    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
+    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
+    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
+    return src_pos_morph, trg_pos_morph
 
-def parse_lextr_file(src_pos, pos):
-    import os
-    src_pos
-    src = src_pos.language.abbrev
-    path = os.path.join("hm/languages/fidel", src, "fst", pos + '.lextr')
-    print("** lextr path {}".format(path))
-    s = open(path, encoding='utf8').read()
-    hm.morpho.LexTrans.parse("lextr", s,
-                             cascade=src_pos.casc,
-                             fst=FST('lextr', cascade=src_pos.casc, weighting=hm.morpho.UNIFICATION_SR)
-                             )
+##def parse_lextr_file(src_pos, pos):
+##    import os
+##    src_pos
+##    src = src_pos.language.abbrev
+##    path = os.path.join("hm/languages/fidel", src, "fst", pos + '.lextr')
+##    print("** lextr path {}".format(path))
+##    s = open(path, encoding='utf8').read()
+##    hm.morpho.LexTrans.parse("lextr", s,
+##                             cascade=src_pos.casc,
+##                             fst=FST('lextr', cascade=src_pos.casc, weighting=hm.morpho.UNIFICATION_SR)
+##                             )
 
 FST = hm.morpho.FST
 FF = hm.morpho.FSSet
@@ -352,6 +352,112 @@ def casc_gen(casc, string, fs, start_i, end_i=0, trace=0):
 def time(code, times=1):
     import timeit
     return timeit.timeit(code, number=times)
+
+## Analyzing a word type corpus.
+## Each line is count, word
+WORD_CORPUS = "../../../../Projects/LingData/Am/Crawl/all.txt"
+##def word_corpus(report_freq=100, start=0, n=10000, corpus=None):
+##    corpus = corpus or []
+##    with open(WORD_CORPUS, encoding='utf8') as file:
+##        linen = start
+##        lines = file.readlines()[start:start+n]
+##        for line in lines:
+##            count, word = line.split()
+##            count = int(count)
+##            if count == 1:
+##                break
+##            analyses = hm.anal_word('amh', word, um=2, phonetic=False)
+##            if analyses:
+##                anals = []
+##                for analysis in analyses:
+##                    pos = analysis.get('POS', '')
+##                    root = analysis.get('root', '')
+##                    if '|' in root:
+##                        root = root.split('|')[0]
+##                    gram = analysis.get('gram', '')
+##                    anals.append("{}.{}.{}".format(pos, root, gram))
+##                analyses = "|".join(anals)
+##                corpus.append((count, word, analyses))
+##            linen += 1
+##            if linen % report_freq == 0:
+##                print("Analyzed {} words".format(linen))
+##    return corpus
+
+##def verb_corpus(report_freq=1000, start=0, n=10000, corpus=[]):
+##    amh = get_lang('amh', guess=False, experimental=False, segment=False)
+##    with open(WORD_CORPUS, encoding='utf8') as file:
+##        linen = start
+##        lines = file.readlines()[start:start+n]
+##        for line in lines:
+##            count, word = line.split()
+##            count = int(count)
+##            if count == 1:
+##                break
+##            analyses = hm.anal_word('amh', word, um=0, phonetic=False, simplify=False)
+##            anals = []
+##            if analyses:
+##                for analysis in analyses:
+##                    pos = analysis.get('POS', '')
+##                    if pos != 'v':
+##                        continue
+##                    root = analysis.get('root')
+##                    if not root:
+##                        continue
+##                    gram = analysis.get('gram')
+##                    if not gram:
+##                        continue
+##                    asp = gram.get('as', 'smp')
+##                    if asp == 'smp':
+##                        asp = 0
+##                    vc = gram.get('vc', 'smp')
+##                    if vc == 'smp':
+##                        vc = 0
+##                    sbj = gram.get('sb')
+##                    sbj = simplify_sbj(sbj)
+##                    obj = gram.get('ob')
+##                    obj = simplify_obj(obj)
+##                    anals.append("{}::{}:{}:{}:{}".format(root, asp, vc, sbj, obj))
+##            if anals:
+##                anals = ';;'.join(anals)
+##                corpus.append("{} {} {}".format(count, word, anals))
+##            linen += 1
+##            if linen % report_freq == 0:
+##                print("Analyzed {} words".format(linen))
+##
+##def simplify_sbj(feats):
+##    if not feats:
+##        return ''
+##    person = feats.get('p1', False), feats.get('p2', False)
+##    person = 1 if person[0] else (2 if person[1] else 3)
+##    number = feats.get('plr', False)
+##    number= 'p' if number else 's'
+##    gender = ''
+##    if number == 's' and person != 1:
+##        gender = feats.get('fem', False)
+##        gender = 'f' if gender else 'm'
+##    return "{}{}{}".format(person, number, gender)
+##
+##def simplify_obj(feats):
+##    if not feats:
+##        return ''
+##    expl = feats.get('expl')
+##    if not expl:
+##        return ''
+##    person = feats.get('p1', False), feats.get('p2', False)
+##    person = 1 if person[0] else (2 if person[1] else 3)
+##    number = feats.get('plr', False)
+##    number= 'p' if number else 's'
+##    gender = ''
+##    if number == 's' and person != 1:
+##        gender = feats.get('fem', False)
+##        gender = 'f' if gender else 'm'
+##    prep = 'A'
+##    if feats.get('prp'):
+##        if feats.get('l'):
+##            prep = 'B'
+##        else:
+##            prep = 'M'
+##    return "{}{}{}{}".format(person, number, gender,prep)
 
 ## shortcuts
 FS = hm.morpho.FeatStruct

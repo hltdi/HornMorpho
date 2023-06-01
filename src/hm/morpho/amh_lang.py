@@ -741,6 +741,8 @@ def postpostproc_root(root, fs, phonetic=True, simplifications=None):
     representation.
     """
 #    print("** postprocessing {}, simps {}".format(root, simplifications))
+    if not fs:
+        return root
     if phonetic:
         root = AMH.convert_root(root)
     elif simplifications:

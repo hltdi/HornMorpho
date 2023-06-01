@@ -588,7 +588,7 @@ class FSTCascade(list):
             if m:
                 abbrev, pairs = m.groups()
                 cascade._IOabbrevs[abbrev] = pairs
-#                print("Found IO abbrev: {} = {}".format(abbrev, pairs))
+#                print("** Found IO abbrev: {} = {}".format(abbrev, pairs))
                 continue
 
             # Alternation rule

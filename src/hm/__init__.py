@@ -358,7 +358,7 @@ def anal_sentence(sentence, language='amh', remove_dups=True, fsts=None, verbosi
 
 def anal_word(language, word, 
               gloss=True, 
-              roman=False, segment=False, guess=False, freq=False, 
+              roman=False, segment=False, guess=False, freq=False, simplify=True,
               experimental=False, dont_guess=True, cache='', init_weight=None,
               lemma_only=False, ortho_only=False, normalize=True,
               nbest=5, um=0, phonetic=True, raw=True,
@@ -407,7 +407,7 @@ def anal_word(language, word,
                              gloss=gloss,
                              phonetic=phonetic, segment=segment, only_guess=guess,
                              lemma_only=lemma_only, ortho_only=ortho_only,
-                             guess=not dont_guess, cache=False,
+                             guess=not dont_guess, cache=False, simplify=simplify,
                              nbest=nbest, report_freq=freq, um=um, normalize=normalize and raw,
                              init_weight=init_weight, string=not raw and not um,
                              print_out=print_out, fsts=pos, verbosity=verbosity)

@@ -1,3 +1,4 @@
+jemer jem_er v
 'aTegeb 'aTegeb adv
 'abekro 'abekro adv
 'adro 'adro adv

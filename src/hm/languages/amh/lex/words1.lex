@@ -1,3 +1,4 @@
+jemer jem_er v
 'aTegeb 'aTegeb adv
 'abekro 'abekro adv
 'adro 'adro adv
@@ -54,7 +55,7 @@ bandnet bandn_et adv
 bebenegaw bebenegaw adv
 bca bc_a adv
 be'agaTami be'agaTami adv
-bagaTami bagaTami
+bagaTami bagaTami adv
 be'amezaNu be'amezaNu adv
 beSeTta beSeTta adv
 beTam beTam adv

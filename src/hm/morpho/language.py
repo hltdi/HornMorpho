@@ -617,6 +617,7 @@ class Language:
             if current == 'feats':
                 m = POS_RE.match(line)
                 if m:
+#                    print("** {}".format(line))
                     pos, fullp = m.groups()
                     pos = pos.strip()
                     fullp = fullp.strip().replace('_', ' ')
@@ -1502,7 +1503,7 @@ class Language:
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None, experimental=False, mwe=False,
-                  um=1, gloss=True, phonetic=True, normalize=False,
+                  um=1, gloss=True, phonetic=True, normalize=False, simplify=True,
                   ortho_only=False, lemma_only=False, sep_anals=True,
                   get_all=False, to_dict=False, preproc=False, postproc=False,
                   cache=False, no_anal=None, string=False, print_out=False,
@@ -1517,7 +1518,6 @@ class Language:
         could be a segmenter, in which case segment is also True, or an analyzer,
         in which case segment is False.
         '''
-#        print("*** Analyzing {}, mwe {}".format(word, mwe))
         # Before anything else, check to see if the word is in the list of
         # words that have failed to be analyzed
         if no_anal != None and word in no_anal:
@@ -1647,7 +1647,7 @@ class Language:
                 else:
                     a = self.finalize_anal(analysis, um=um,
                                            gloss=gloss, report_freq=report_freq,
-                                           phonetic=phonetic,
+                                           phonetic=phonetic, simplify=simplify,
                                            simplifications=not phonetic and simps)
                     analyses[i] = a
 #            analyses =  [(anal[1], anal[-2], anal[-1]) if len(anal) > 2 else (anal[1],) for anal in analyses]
@@ -2447,7 +2447,7 @@ class Language:
 
     def finalize_anal(self, anal, um=1, gloss=True,
                       report_freq=False, phonetic=True,
-                      simplifications=None):
+                      simplify=True, simplifications=None):
         """
         Create dict with analysis.
         """
@@ -2457,6 +2457,7 @@ class Language:
 #        pos = pos.replace('?', '')
         # Postprocess root if appropriate
         root1 = None
+        simplifications = simplifications if simplify else None
         if root:
             root1 = self.postproc_root(self.morphology.get(pos.replace('?', '')),
                                        root, gram, phonetic=phonetic, simplifications=simplifications)
@@ -2488,6 +2489,8 @@ class Language:
     def simp_anal(self, analysis, postproc=False, segment=False):
         '''Process analysis for unanalyzed cases.'''
         cite = None
+        if len(analysis) == 1:
+            print("*** analysis only {}".format(analysis))
         form, pos = analysis
         if '//' in form:
             form = form.replace('//', ' ')

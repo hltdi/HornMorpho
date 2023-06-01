@@ -156,6 +156,7 @@ class Template:
                     inventory[inv_feats].append(template)
         else:
             weak_feats = [w for w in list(weight) if not w.get(strong_feat)]
+#            print("** weak feats {}, cls {}, subclass {}".format(weak_feats, cls, subclass))
             weak_subinventory = weak_inventory[cls][subclass]
             for inv_feats in inventory.keys():
                 if any([simple_unify(inv_feats, f) != 'fail' for f in weak_feats]):
@@ -167,6 +168,7 @@ class Template:
             tmp_dict[template] = tmp_dict[template].union(weight)
         else:
             tmp_dict[template] = weight
+#        print("*** TEMP DICT for {}: {}".format(template, weight.__repr__()))
 
     @staticmethod
     def expand_inventory(classes, features, gen=False):
@@ -204,18 +206,22 @@ class Template:
                     if not templates:
                         # No templates for this feature set in the strong inventory
                         continue
+#                    print("** STRONG TEMPLATES {}, feature {}".format(templates, features.__repr__()))
                     for subclass, weak_features in weak_class_inventory.items():
+#                        print("  ** strong template {}; subclass {}, weakfeats {}, feature {}".format(templates, subclass, weak_features, feature.__repr__()))
                         # Look for templates with feature
                         found = False
                         for weak_feature, weak_templates in weak_features.items():
                             if simple_unify(weak_feature, feature) != 'fail':
+#                                print ("   *** unified weakfeat {} with feat {}; continuing".format(weak_feature.__repr__(), feature.__repr__()))
                                 found = True
                                 break
                         if not found:
+#                            print("   *** failed to unify with {}".format(feature.__repr__()))
                             weak_subclass_constraints = weak_class_constraints.get(subclass) if weak_class_constraints else None
-#                            if weak_subclass_constraints:
-#                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
-#                                print("*** weak constraints {}".format(weak_subclass_constraints))
+                            if weak_subclass_constraints:
+                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
+                                print("*** weak constraints {}".format(weak_subclass_constraints))
                             prevented = False
                             if weak_subclass_constraints:
                                 for weak_constraint in weak_subclass_constraints:
@@ -231,15 +237,25 @@ class Template:
                             cls_feat = 'tc' if gen else 'c'
                             new_weak_feats = feature.copy()
                             new_weak_feats[strength_feat] = False
+                            new_weak_feats[cls_feat] = cls
                             subclass_feats = [sc.split('=') for sc in subclass.split(',')]
                             for feat, value in subclass_feats:
-                                new_weak_feats[feat] = value
-                            new_weak_feats[cls_feat] = cls
+                                if '|' in value:
+                                    nwf = []
+                                    for v in value.split('|'):
+                                        n = new_weak_feats.copy()
+                                        n[feat] = v
+                                        nwf.append(n)
+                                    new_weak_feats = nwf
+                                else:
+                                    new_weak_feats[feat] = value
                             new_weak_feats = FSSet(new_weak_feats)
 #                            print("  **** Creating weak feature: {}".format(new_weak_feats.__repr__()))
                             # Pick first template for this feature set for the weak subclass
-                            template = templates[0]
-                            tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
+                            for template in templates:
+#                            template = templates[0]
+                                tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
+#                            print("  **** new tmp dict for template {}: {}".format(template, tmp_dict[template]))
 
     @staticmethod
     def copy_templates(features, sourceclass, strong_inventory, tmp_dict, gen=False):
@@ -379,6 +395,7 @@ class Template:
             if m:
                 # Each of these should represent a new weak subclass within the current feature set (normally values for a and c)
                 constraints = m.groups()[0]
+#                print("** weak constraints {}".format(constraints))
                 if '!' in constraints:
                     subclass = constraints.replace('!', '').strip()
                     Template.add_weak_constraint(subclass, current_main_constraints[0], weak_constraints, gen=gen)
@@ -397,7 +414,6 @@ class Template:
             m = Template.TEMPLATE_RE.match(line)
             if m:
                 template = m.groups()[0]
-#                print("*** template {}".format(template))
                 template = tuple(template.split())
 #                print("*** Adding template {}, current_features {}, constraints {}, subclass {}".format(template, current_features, current_main_constraints + [current_constraints], current_subclass))
                 templates.append((template, current_features, current_main_constraints + [current_constraints], current_subclass))
@@ -443,7 +459,7 @@ class Template:
 
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen)
 
-#        print("*** tmp_dict {}".format(list(tmp_dict.items())[:10]))
+#        print("*** tmp_dict <*e *: *> {}".format(tmp_dict.get(('*e', '*:', '*'))))
 
 #        print(fst)
         return fst

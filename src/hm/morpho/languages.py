@@ -34,15 +34,15 @@ LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
 CODES = {'am': 'amh',
          'chh': 'sgw',
-         'gz': 'gez', 'g': 'gez',
+         'gz': 'gez',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
          'kst': 'gru',
-         'mh': 'muh',
+#         'mh': 'muh',
 #         'M': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
 #         'm': 'mvz',
          'so': 'som', 's': 'som',
-         'ti': 'tir', 'tg': 'tir', 't': 'tir',
+         'ti': 'tir', 'tg': 'tir',
          'te': 'tig', 'T': 'tig',
          'om': 'orm', 'o': 'orm'}
 

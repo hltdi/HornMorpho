@@ -50,15 +50,17 @@ $ t=p|i|j|c
 ~ye		~y		*
 
 %%a=0,c=A,-strong
-
+# በና
 %3=እ
 [t=p,+mut]
 [t=i,v=p,+mut]
 *e		*ma		-
 
+# በራ
 [t=i,v=0,-mut]
 *e		*a		-
 
+# ብራ
 [t=j,v=0|a]
 *		*a		-
 

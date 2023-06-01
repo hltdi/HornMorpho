@@ -197,6 +197,7 @@ class EES:
 
     @staticmethod
     def conv_string(string, conversions):
+#        print("** Converting {}".format(string))
         if conversions:
             for src, trg in conversions:
                 if src in string:

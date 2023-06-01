@@ -35,6 +35,14 @@ feats:
 
   tt = p | i | j
 
+  mv = True | False
+
+  cv = False | True
+
+  perf = False | True
+
+  op = 0
+
   pos: v_stem v_stem
 
   a = 0 | a | it

@@ -54,6 +54,7 @@ class Roots:
     NO_INPUT = '--'
 
     CHAR_MAP_RE = re.compile(r'\s*\$\s*(.+?)\s*(\[.+\])?(\s+.+)?$')
+    CHAR_SET_RE = re.compile(r'\s*\$\$\s*(.+?)\s+(.+?)$')
     ROOT_RE =     re.compile(r'\s*<(.+?)>\s+(\S+?)$')
     IRR_ROOT_RE = re.compile(r'\s*\*<(.+?)>\s+(\S+?)$')
     RULE_RE = re.compile(r'\s*%(.+)$')
@@ -121,15 +122,15 @@ class Roots:
                 fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
         def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
-#            if iterative:
-#                print("**** mrs {} rootchars {} weight {} states {}".format(charsets, root_chars, weight.__repr__(), states))
+            if iterative:
+                print("**** mrs {} rootchars {} weight {} states {}".format(charsets, root_chars, weight.__repr__(), states))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
                 wt = weight if index == 0 else None
-#                if iterative:
-#                    print("  **** iterative {}, position {}, chars {}, rchar {}, weight {}".format(iterative, position, chars, rchar, wt.__repr__()))
+                if iterative:
+                    print("  **** iterative {}, position {}, chars {}, rchar {}, weight {}".format(iterative, position, chars, rchar, wt.__repr__()))
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
@@ -166,6 +167,7 @@ class Roots:
                         fst.add_state(dest)
                     for char in chars:
                         outchar = rchar if (gen or seglevel==0) else char
+#                        print("**   inchar {}, outchar {}".format(char, outchar))
                         charfeat_arc(char, outchar, wt, source, dest, fst)
                 source = dest
             state = states[-1]
@@ -175,6 +177,7 @@ class Roots:
             for char in chars:
                 outchar = rchar if (gen or seglevel==0) else char
                 inchar = char
+#                print("**   inchar {} outchar {}".format(inchar, outchar))
                 charfeat_arc(inchar, outchar, None, source, 'end', fst)
 #                fst.add_arc(source, 'end', char, char)
 #        cons = cons.split()
@@ -272,16 +275,17 @@ class Roots:
             if position in positions_reset:
                 continue
             posrules = rules.get(position)
-#            print("*** making charset for elem {}, cons {}, posrules {}".format(index, cons, posrules))
+#            print(" *** making charset for elem {}, cons {}, posrules {}".format(index, cons, posrules))
             if posrules and cons in posrules:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
-#                print("*** weak root {} for position {}".format(consonants, position))
+#                print("  *** weak root {} for position {}".format(consonants, position))
                 strong = False
                 posrules = posrules[cons]
-#                print("*** {} -- found weak rules for {}:{} : {}".format(consonants, position, cons, posrules))
+#                print("  *** {} -- found weak rules for {}:{} : {}".format(consonants, position, cons, posrules))
                 for pos, vowels in posrules.items():
                     charsets[pos] = vowels
                     positions_reset.append(pos)
+#            print(" *** charsets {}".format(charsets))
         for cons, (position, chars) in zip(consonants, charsets.items()):
             cons_feat = None
             if isinstance(cons, tuple):
@@ -331,6 +335,8 @@ class Roots:
 #                    result.extend(vchar)
             else:
                 cv = geezify_CV(cons, v)
+#                if not is_geez(cv):
+#                    continue
                 if vowel_feat:
                     if (cv, vowel_feat) not in result:
                         result.append((cv, vowel_feat))
@@ -430,6 +436,8 @@ class Roots:
 
         char_maps = {}
 
+        char_sets = {}
+
         charmap_weights = {}
 
         current_root = ''
@@ -471,6 +479,8 @@ class Roots:
                 cat, specs = rule.strip().split('::')
                 cat = cat.strip().split(',')
                 position = 0
+                chars = ''
+                char = ''
                 if len(cat) == 1:
                     subcat = ''
                 else:
@@ -478,6 +488,9 @@ class Roots:
                     if '=' in subcat:
                         # subcat is like 2=ው
                         position, char = subcat.split('=')
+                        if char in char_sets:
+#                            print("*** {} is in charsets: {}".format(char, char_sets[char]))
+                            chars = char_sets[char]
                         position = int(position)
                     elif len(subcat) > 1:
                         char, position = tuple(subcat)
@@ -502,21 +515,31 @@ class Roots:
                         else:
                             proc_specs.append([p, proc_vspec(spec)])
                     specs = dict(proc_specs)
+                chars = chars or [char]
                 if maincat in rules:
                     r = rules[maincat]
                     if position:
-                        if position in r:
-                            r[position][char] = specs
-                        else:
-                            r[position] = {char: specs}
+                        for c in chars:
+                            if position in r:
+                                r[position][c] = specs
+                            else:
+                                r[position] = {c: specs}
                     else:
                         r[''] = specs
                 else:
                     rules[maincat] = {}
                     if position:
-                        rules[maincat][position] = {char: specs}
+                        for c in chars:
+                            rules[maincat][position] = {c: specs}
                     else:
                         rules[maincat][''] = specs
+                continue
+
+            m = Roots.CHAR_SET_RE.match(line)
+            if m:
+                charset, chars = m.groups()
+#                print("*** charset {}: {}".format(charset, chars))
+                char_sets[charset] = chars
                 continue
 
             m = Roots.CHAR_MAP_RE.match(line)

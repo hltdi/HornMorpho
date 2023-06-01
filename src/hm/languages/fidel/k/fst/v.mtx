@@ -1,10 +1,10 @@
 #$ conj_prep_pre
-#  የ		[t=p,+rel,-mc]
-#  ብ  		[cnj1=ብ,t=i,-rel,-mc]
-#  ት  		[cnj1=ስ,t=i,-rel,-mc]
-#  ተ		[adp=ከ,t=i|p,+rel,-mc]
-#  በ		[adp=በ,t=i|p,+rel,-mc]
-#  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc];[v=i,-mc,+rel]
+#  የ		[t=p,+rel,-mv]
+#  ብ  		[cnj1=ብ,t=i,-rel,-mv]
+#  ት  		[cnj1=ስ,t=i,-rel,-mv]
+#  ተ		[adp=ከ,t=i|p,+rel,-mv]
+#  በ		[adp=በ,t=i|p,+rel,-mv]
+#  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mv];[v=i,-mv,+rel]
 
 #$ sub_bound
 #  -
@@ -41,26 +41,26 @@ $ prestem
   +
 
 $ stem
-   >>v_stemG<<
+   >>v_stem<<
 
 $ poststem
   +
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p,-imp]
-  አች   	[sp=3,sn=1,sg=f,t=p,-imp]
-  ኦ		[sp=3,sn=2,sg=m,t=p,-imp];[sn=2,sg=m,t=i|j,-imp]
-  አማ		[sp=3,sn=2,sg=f,t=p,-imp];[sn=2,sg=f,t=i|j,-imp]
-  ኽ		[sp=2,sn=1,sg=f,t=p,-imp]
+  አት   	[sp=3,sn=1,sg=f,t=p,-imp]
+  ሙ		[sp=3,sn=2,sg=m,t=p,-imp];[sn=2,sg=m,t=i|j,-imp]
+  ማ		[sp=3,sn=2,sg=f,t=p,-imp];[sn=2,sg=f,t=i|j,-imp]
+  ሽ		[sp=2,sn=1,sg=f,t=p,-imp]
   ከ		[sp=2,sn=1,sg=m,t=p,-imp]
-  ኹ		[sp=2,sn=2,sg=m,t=p,-imp]
-  ኽማ 	[sp=2,sn=2,sg=f,t=p,-imp]
-  𞟷		[sp=1,sn=1,t=p,-imp]
-  ነ    	[sp=1,sn=2,-imp]
+  ክሙ 	[sp=2,sn=2,sg=m,t=p,-imp]
+  ክማ 	[sp=2,sn=2,sg=f,t=p,-imp]
+  ኩ		[sp=1,sn=1,t=p,-imp]
+  ነ     	[sp=1,sn=2,t=p,-imp]
   --		[t=i|j,sp=1,sn=1,-imp];[t=i|j,sp=2,sn=1,sg=m,-imp];[t=i|j,sp=3,sn=1,-imp];[+imp,sp=3,sn=1,sg=m]
 
-#$ ss_bound
-#  -
+$ ss_bound
+  -
 
 #$ ob_suf
 #  [op=3,on=1,og=m]
@@ -73,9 +73,17 @@ $ sb_suf
 #$ ob_bound
 #  -
 
-#$ final
-#  ም		[+m]
-#  --		[-m]
+$ final
+  [+mv,t=p|i,-neg,-perf,-cv]
+     ው	<>	[sp=3,sn=1,sg=m,op=0];[t=i|j,sp=1,sn=1,op=0];[sp=2,sn=1,sg=m];[sp=1,sn=2]
+     ን		<>	[sp=2,sn=1,sg=f,op=0];[sp=2,sn=2|3,op=0]
+     ኢ	<>	[t=p,sp=3,sn=1,sg=f,op=0];[t=p,sp=1,sn=1,op=0]
+     ት		<>	[sp=3,sn=1,op=1|2|3]
+  [+mv,+perf,t=p,-neg]
+     ም	<>	
+  [-mv];[+neg];[t=j]
+     ም	<>	[+cv]
+     --	<>	[-cv]
 
 $ end
   --		[pos=v]

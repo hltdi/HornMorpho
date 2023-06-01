@@ -1341,6 +1341,7 @@ class POSMorphology:
 #        else:
 #            fst = fsts[self.anal_i][0] or fsts[self.anal_i][self.guess_i] or fsts[self.anal_i][self.simp_i]
 #        print("*** anal fst {}, form {}".format(fst.__repr__(), form))
+#        print("*** anal {}, normalize {}".format(form, normalize))
         if fst:
             if preproc:
                 # For languages with non-roman orthographies
