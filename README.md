@@ -9,7 +9,12 @@ Africa.
 -->
 
 ## Installation
-To install HornMorpho, use the wheel file, `HornMorpho-4.*-py3-none-any.whl`, which can be found in the `dist/` folder.
+First download one of the wheel files from the `dist/` folder:
+
+* If you're working with Amharic only, download [HornMorphoA-4.3-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorphoA-4.3-py3-none-any.whl).
+* If you're working with Afaan Oromoo only, download [HornMorphoO-4.5-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorphoO-4.5-py3-none-any.whl).
+* Otherwise use the (very large) all-inclusive version: [HornMorpho-4.3-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-4.3-py3-none-any.whl).
+
 <!-- To install from the distribution file, first extract the files from it. Then
 go to the top-level folder, `HornMorpho-4.*`, and do the following in a Python shell:
 
@@ -17,7 +22,7 @@ go to the top-level folder, `HornMorpho-4.*`, and do the following in a Python s
 
 making sure that you are using some version of Python 3.
 -->
-To install from the wheel file, do the following in a Python shell.
+Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is.
 
 	pip install HornMorpho-4.*-py3-none-any.whl
 
@@ -161,10 +166,11 @@ This is a new version of **HornMorpho** (HornMorphoAX), only for Amharic and onl
 segmentation.
 It currently segments tokenized sentences from a file, converting the
 results to [CoNLL-U format](https://universaldependencies.org/format.html), which can then be written to a file.
+There is also a GUI that displays the outputs and allows the user to select a segmentation for ambiguous words.
 
 ## Installation
 
-To install HornMorphoAX,  use the wheel file, `HornMorphoAX-4.*-py3-none-any.whl`, which can be found in the `dist/` folder.
+To install HornMorphoAX,  use the latest wheel file, `HornMorphoAX-4.5.*-py3-none-any.whl`, which can be found in the `dist/` folder.
 
 To install from the wheel file, do the following in a Python shell.
 
