@@ -122,15 +122,15 @@ class Roots:
                 fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
         def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
-            if iterative:
-                print("**** mrs {} rootchars {} weight {} states {}".format(charsets, root_chars, weight.__repr__(), states))
+#            if iterative:
+#                print("**** mrs {} rootchars {} weight {} states {}".format(charsets, root_chars, weight.__repr__(), states))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
                 wt = weight if index == 0 else None
-                if iterative:
-                    print("  **** iterative {}, position {}, chars {}, rchar {}, weight {}".format(iterative, position, chars, rchar, wt.__repr__()))
+#                if iterative:
+#                    print("  **** iterative {}, position {}, chars {}, rchar {}, weight {}".format(iterative, position, chars, rchar, wt.__repr__()))
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
