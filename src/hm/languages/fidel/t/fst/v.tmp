@@ -8,8 +8,7 @@ $ t=p|i|j|c
 [t=j,v=p]
 *e	*e	*
 
-# optionally drop final vowel
-# ተሰብረ
+# optionally drop final vowel in perf pass: ተሰብረ
 [t=p,v=p,sp=3]
 [t=i,v=0,+suf]
 *e	*	*
@@ -25,6 +24,15 @@ $ t=p|i|j|c
 
 [t=c,v=0]
 *e	*i	*
+
+[t=p,v=a]
+*	*e	*
+
+[t=i|j,v=a]
+*	*	*
+
+[t=c,v=a]
+*	*i	*
 
 %%a=i,c=A,+strong
 [t=p]
@@ -48,7 +56,7 @@ $ t=p|i|j|c
 [t=i,v=p]
 *	*:e	*
 
-[t=j,v=0]
+[t=i|j,v=0|a]
 *e	*:	*
 
 [t=c]
@@ -56,24 +64,52 @@ $ t=p|i|j|c
 
 %%a=0,c=C,+strong
 [t=p]
+[t=i|j,v=p]
 *a	*e	*
+
+[t=i|j,v=0|a]
+*a	*	*
+
+[t=c]
+*a	*i	*
 
 %%a=0,c=E,+strong
 [t=p]
 *e	*	*e	*
 
-[t=0,v=0]
+[t=i,v=0]
 *	*	*	*
+
+[t=i,v=p]
+*	*	*e	*
+
+[t=j,v=0]
+*e	*	*	*
+
+[t=c]
+*e	*	*i	*
 
 %%a=0,c=F,+strong
 [t=p]
 [t=i,v=p]
 *e	*a	*e	*
 
+[t=i,v=0]
+*e	*a	*	*
+
 %%a=0,c=G,+strong
 [t=p]
-[t=i,v=p]
 *	*e	*	*e	*
+
+[t=i,v=p]
+*	*	*	*e	*
+
+[t=j]
+[t=i,v=a]
+*	*e	*	*	*
+
+[t=c]
+*	*e	*	*i	*
 
 %%a=0,c=H,+strong
 [t=p]
@@ -238,9 +274,6 @@ $ t=p|i|j|c
 [t=j,v=p]
 *a	*:e	*
 
-#[t=i,v=0]
-#*	:*	*
-
 [t=c]
 *a	*:i	*
 
@@ -255,5 +288,3 @@ $ t=p|i|j|c
 
 [t=i,v=p]
 *	*:a	*
-
-
