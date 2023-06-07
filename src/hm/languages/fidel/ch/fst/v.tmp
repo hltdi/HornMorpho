@@ -49,7 +49,17 @@ $ t=p|i|j|c
 # የሰክት የፈቅር የገክት
 ~ye		~y		*
 
-%%a=0,c=A,-strong
+%%c=C,a=0,+strong
+[t=p,v=0,+mut]
+*a	*e	*
+
+[t=i,v=0,+mut]
+*a	*	*
+
+[t=j,v=0,-mut]
+*a	*	*
+
+%%c=A,a=0,-strong
 # በና
 %3=እ
 [t=p,+mut]

@@ -43,6 +43,19 @@ $ t=p|i|j
 # የሰክት
 ~ye		~y:		*
 
+%%c=C,a=0,+strong
+[t=p,v=0,-neg]
+*a		*:e		*
+
+[t=p,v=0,+neg]
+*a		*e		*
+
+[t=i,v=0]
+*a		*:		*
+
+[t=j,v=0]
+*a		*		*
+
 %%c=A,a=0,-strong
 %1=እ
 [t=p,-neg]

@@ -79,6 +79,7 @@ class Mutation:
                     dest = "{}_{}".format(pat_state_name, cindex)
                     fst.add_state(dest)
 #                print("  ** creating arc from {} to {} with {}".format(source, dest, chars))
+#                print("  *** abbrevs {}".format(list(abbrevs.keys())))
                 strings = fst.sub_IOabbrevs(chars, abbrevs)
                 strings = [s for s in strings.split(';')]
                 for arc_spec in strings:
@@ -99,7 +100,7 @@ class Mutation:
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-#        print("** Parsing mutation file {}, fst {}".format(s, fst))
+#        print("** Parsing mutation file {}, fst {}, abbrevs {}".format(s, fst, list(abbrevs.keys())))
 
 #        weighting = fst.weighting()
 

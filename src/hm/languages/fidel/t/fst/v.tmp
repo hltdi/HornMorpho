@@ -75,6 +75,7 @@ $ t=p|i|j|c
 
 %%a=0,c=E,+strong
 [t=p]
+[t=j,v=p]
 *e	*	*e	*
 
 [t=i,v=0]
@@ -84,6 +85,7 @@ $ t=p|i|j|c
 *	*	*e	*
 
 [t=j,v=0]
+[t=i|j,v=a]
 *e	*	*	*
 
 [t=c]
@@ -91,11 +93,14 @@ $ t=p|i|j|c
 
 %%a=0,c=F,+strong
 [t=p]
-[t=i,v=p]
+[t=i|j,v=p]
 *e	*a	*e	*
 
-[t=i,v=0]
+[t=i|j,v=0|a]
 *e	*a	*	*
+
+[t=c]
+*e	*a	*i	*
 
 %%a=0,c=G,+strong
 [t=p]
@@ -113,18 +118,36 @@ $ t=p|i|j|c
 
 %%a=0,c=H,+strong
 [t=p]
-[t=i,v=p]
+[t=i|j,v=p]
 *	*e	*a	*e	*
+
+[t=i|j,v=a]
+*	*e	*a	*	*
+
+[t=c]
+*	*e	*a	*i	*
 
 %%a=0,c=I,+strong
 [t=p]
-[t=i,v=p]
-*	*	*e	*
+[t=i|j,v=p]
+*	*e	*e	*
+
+[t=i|j,v=a]
+*	*e	*	*
+
+[t=c]
+*	*e	*i	*
 
 %%a=0,c=J,+strong
 [t=p]
-[t=i,v=p]
+[t=i|j,v=p]
 *	*a	*e	*
+
+[t=i|j,v=a]
+*	*a	*	*
+
+[t=c]
+*	*a	*i	*
 
 %%a=0,c=A,-strong
 

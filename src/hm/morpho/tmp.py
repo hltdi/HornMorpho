@@ -219,9 +219,9 @@ class Template:
                         if not found:
 #                            print("   *** failed to unify with {}".format(feature.__repr__()))
                             weak_subclass_constraints = weak_class_constraints.get(subclass) if weak_class_constraints else None
-                            if weak_subclass_constraints:
-                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
-                                print("*** weak constraints {}".format(weak_subclass_constraints))
+#                            if weak_subclass_constraints:
+#                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
+#                                print("*** weak constraints {}".format(weak_subclass_constraints))
                             prevented = False
                             if weak_subclass_constraints:
                                 for weak_constraint in weak_subclass_constraints:

@@ -10,17 +10,18 @@
 #  -
 
 $ neg
-  ኣ			[+neg,t=i|j]
-  ኣን			[+neg,t=p,-proh]
-  እን			[+neg,t=p,+proh]
-  --   		[-neg];[t=c,-neg]
+  ኣ			[+neg,t=j];[+neg,t=i,-mv]
+  ኣል			[+neg,t=p]
+  ት			[+neg,t=i,+mv]
+#  እል			[+neg,t=p,+proh]
+  --   		[-neg]
 
 $ neg_bound
   -
 
 $ sb_pre
-  ይ		[t=i,sp=3,sn=2,-imp];[t=i,sp=3,sn=1,sg=m,-imp];[t=i,+imp,sp=3,sn=1,sg=m]
-  የ		[t=j,sp=3,sn=2,-imp];[t=j,sp=3,sn=1,sg=m,-imp];[t=j,+imp,sp=3,sn=1,sg=m]
+  ይ		[t=i,sp=3,sn=2,-imp];[t=i,sp=3,sn=1,sg=m,-imp];[t=i,+imp,sp=3,sn=1,sg=m];[t=j,+neg,sp=3,sn=1,sg=m,-imp];[t=j,+neg,sp=3,sn=2,-imp];[t=j,sp=3,sn=1,sg=m,+imp]
+  የ		[t=j,sp=3,sn=2,-imp,-neg];[t=j,sp=3,sn=1,sg=m,-imp,-neg];[t=j,+imp,sp=3,sn=1,sg=m,-neg]
   ት		[t=i,sp=2,-imp];[t=i|j,sp=3,sn=1,sg=f,-imp];[t=j,sp=2,+neg,-imp]
   አ		[t=i,sp=1,sn=1,-neg,cnj1=None,-imp]
   ን 	      	[t=i|j,sp=1,sn=2,-imp];[t=i,sp=1,sn=2,cnj1=ብ|ስ,-imp];[t=i,sp=1,sn=1,+neg,-imp];[t=j,sp=1,sn=1,-imp]
