@@ -64,10 +64,6 @@ class Template:
             tmp_length = len(template)
             # Position of possibly geminated consonant (all EES!)
             gem_pos = {tmp_length - 1, tmp_length - 2}
-#            print("*** Making template for {}, {}".format(template, weight.__repr__()))
-
-#            if weight.get('a') == 'a':
-#                print("** template {}, weight {}".format(template, weight))
 
             for elemindex, charset in enumerate(template):
                 position = elemindex + 1
@@ -217,7 +213,8 @@ class Template:
                                 found = True
                                 break
                         if not found:
-#                            print("   *** failed to unify with {}".format(feature.__repr__()))
+#                            print("   *** {} failed to unify with {}".format(feature.__repr__(), weak_features.__repr__()))
+#                            print("   *** subclass {}".format(subclass))
                             weak_subclass_constraints = weak_class_constraints.get(subclass) if weak_class_constraints else None
 #                            if weak_subclass_constraints:
 #                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))

@@ -14,9 +14,13 @@ $ t=p|i|j|c
 [t=i|j|c,v=as]
 *e	*:	*
 
-[t=i,v=0|a]
-[t=c,v=0|p]
+[t=i|c,v=0,-dup23]
+[t=i,v=a]
+[t=c,v=p]
 *e	*	*
+
+[t=i|c,v=0,+dup23]
+*e	*:	-
 
 [t=j,v=0]
 *	*e	*
@@ -85,7 +89,7 @@ $ t=p|i|j|c
 *e	*a	*e	*
 
 %%a=0,c=G,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p]
 *	*e	*e	*:e	*
 
@@ -95,12 +99,12 @@ $ t=p|i|j|c
 [t=j,v=p]
 *	*e	*	*e	*
 
-[t=c]
+[t=c,v=p|a]
 [t=j,v=a]
 *	*e	*	*	*
 
 %%a=0,c=H,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p]
 *	*e	*a	*:e	*
 
@@ -110,12 +114,12 @@ $ t=p|i|j|c
 [t=j,v=p]
 *	*e	*a	*e	*
 
-[t=c]
+[t=c,v=p|a]
 [t=j,v=a]
 *	*e	*a	*	*
 
 %%a=0,c=J,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p]
 *	*a	*:e	*
 
@@ -125,15 +129,15 @@ $ t=p|i|j|c
 [t=j,v=p]
 *	*a	*e	*
 
-[t=c]
+[t=c,v=p|a]
 [t=j,v=a]
 *	*a	*	*
 
 %%a=0,c=A,-strong
 
 %1=እ
-# no v=a for this subclass
-[t=p]
+# no normal v=a for this subclass, but need to account for አስታወቀ
+[t=p,v=0|p|as]
 [t=i,v=p] 
 ኣ	*:e	*
 
@@ -143,12 +147,18 @@ $ t=p|i|j|c
 [t=i|j|c,v=as]
 ኣ	*:	*
 
-[t=i,v=0]
-[t=c,v=0|p]
+[t=i,v=0,-dup23]
+[t=c,v=0,-dup23]
+[t=c,v=p]
 ኣ	*	*
 
+[t=i,v=0,+dup23]
+[t=c,v=0,+dup23]
+ኣ	*:	-
+
 %1=እ,3=ይ
-[t=p]
+# still need to account for አስተያየ
+[t=p,v=0|p|as]
 ኣ	*:e	-
 
 [t=i,v=0|p]
@@ -161,11 +171,12 @@ $ t=p|i|j|c
 [t=j,v=0]
 እ	*	-
 
-[t=c]
+[t=c,v=0|p|as]
 ኣ	*	ት
 
 %1=እ,3=እ
-[t=p]
+# አስታመመ still needed
+[t=p,v=0|p|as]
 [t=i,v=as]
 ኣ	*:a	-
 
@@ -176,7 +187,7 @@ $ t=p|i|j|c
 [t=j,v=0]
 እ	*a	-
 
-[t=c]
+[t=c,v=0|p|as]
 ኣ	*	ት
 
 %2=ው
@@ -396,7 +407,7 @@ $ t=p|i|j|c
 
 %%a=a,c=A,+strong
 # initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p] 
 ^a	*:e	*
 
@@ -416,12 +427,12 @@ $ t=p|i|j|c
 ^a	*	*
 
 %%a=a,c=B,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p] 
 ^a	*:e	*
 
 [t=i|j|c,v=a]
-[t=c]   # ?
+[t=c,v=p|a]   # ?
 ^a	*:	*
 
 # ?
@@ -429,7 +440,7 @@ $ t=p|i|j|c
 ^a	*e	*
 
 %%a=a,c=E,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i,v=p]
 ^e	*a	*:e	*
 
@@ -437,7 +448,7 @@ $ t=p|i|j|c
 ^e	*a	*:	*
 
 [t=j,v=a]
-[t=c]
+[t=c,v=p|a]
 ^e	*a	*	*
 
 [t=j,v=p]
@@ -445,29 +456,29 @@ $ t=p|i|j|c
 
 %%a=a,c=A,-strong
 %3=እ
-[t=p|i]
+[t=p|i,v=p|a]
 ^a	*:a	-
 
-[t=j]
+[t=j,v=p|a]
 ^a	*a	-
 
-[t=c]
+[t=c,v=p|a]
 ^a	*	ት
 
 %3=ይ
-[t=p]
+[t=p,v=p|a]
 ^a	*:e	-
 
-[t=i]
+[t=i,v=p|a]
 ^a	*:	-
 
-[t=j]
+[t=j,v=p|a]
 ^a	*	-
 
-[t=c]
+[t=c,v=p|a]
 ^a	*	ት
 
-#%1=እ !
+%1=እ !
 #%1=እ,3=እ !
 #%1=እ,3=ይ !
 %2=ው !
@@ -476,32 +487,32 @@ $ t=p|i|j|c
 
 %%a=a,c=B,-strong
 %3=እ
-[t=p|i]
-[t=j,v=0|a|as]
+[t=p|i,v=p|a]
+[t=j,v=a]
 *a	*:a	-
 
 # ?
 [t=j,v=p]
 *a	*a	-
 
-[t=c]
+[t=c,v=p|a]
 *a	*:	ት
 
 %3=ይ
-[t=p]
+[t=p,v=p|a]
 *a	*:e	-
 
-[t=i|j]
+[t=i|j,v=p|a]
 *a	*:	-
 
-[t=c]
+[t=c,v=p|a]
 *a	*:	ት
 
 %%a=a,c=E,-strong
 
 %4=እ
 # ገነባ
-[t=p|i]
+[t=p|i,v=p|a]
 *e	*a	*:a	-
 
 [t=j,v=p]
@@ -510,12 +521,12 @@ $ t=p|i|j|c
 [t=j,v=a]
 *e	*a	*a	-
 
-[t=c]
+[t=c,v=p|a]
 *e	*a	*	ት
 
 %4=ይ
 # ሰለቸ
-[t=p|i]
+[t=p|i,v=p|a]
 *e	*a	*:e	-
 
 [t=j,v=p]
@@ -524,7 +535,7 @@ $ t=p|i|j|c
 [t=j,v=a]
 *e	*a	*	-
 
-[t=c]
+[t=c,v=p|a]
 *e	*a	*	ት
 
 %%a=i,c=A,+strong

@@ -9,6 +9,7 @@ $ conj_prep_pre
   ለ		[adp=ለ,t=i|p,+rel,-mc]
   እንደ	[adp=እንደ,t=i|p,+rel,-mc]
   እስከ	[adp=እስከ,t=i|p,+rel,-mc]
+  እየ		[cnj1=እየ,t=p,-rel,-mc]
   --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc]
 
 $ rel_impf
@@ -49,13 +50,21 @@ $ voice_pre
   --  	[v=0];[t=i,v=p];[t=j,sp=1|3,v=p]
 
 $ prestem
-  +
+  <
+#  +
 
 $ stem
    >>v_stemA<<
 
+#$ tam
+#  +prf	[t=p]
+#  +ipf	[t=i]
+#  +imp	[t=j]
+#  +cvb	[t=c]
+
 $ poststem
-  +
+  >
+#  +
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p]
@@ -74,7 +83,7 @@ $ sb_suf
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]
-  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0];[t=i,sp=2|3,sn=2,op=0,+mc]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0,+mc]
 
 $ ss_bound
   -

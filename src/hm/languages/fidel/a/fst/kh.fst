@@ -1,7 +1,7 @@
 -> start
 
 start -> start 	[*;*v;-]
-start -> stem	[+]
+start -> stem	[<;>]
 
 stem -> V		[*v]
 stem -> C		[*]
@@ -10,9 +10,9 @@ C -> V			[*v]
 C -> C			[*]
 V -> V			[*v]
 
-V -> V+			[+]
+V -> V+			[<;>]
 V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]
-C -> end		[+]
+C -> end		[<;>]
 
 end -> end		[*v;*;-]
 
