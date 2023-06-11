@@ -63,6 +63,12 @@ class Roots:
     CHAR_FEAT_RE = re.compile(r"(.+?)(\[.+\])")
     CHAR_MAP_LABEL_RE = re.compile(r'([^(^)]+)(?:\((.+)\))?')
 
+    # Root in particular combination of v and a
+    SUBROOT_RE = re.compile(r'\s+(\S+?)$')
+
+    # Abbreviation (lemma) for root type
+    ROOT_TYPE_RE = re.compile(r'\s*\{(.+?)\}\s*:\s*(.+?)$')
+
     possep = ';'
     charmapsep = ';'
     vspecsep = ','
@@ -99,7 +105,7 @@ class Roots:
         return map
 
     @staticmethod
-    def make_root_states(fst, cons, feats, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev, gen=False, seglevel=2):
+    def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev, gen=False, seglevel=2):
 #        print("*** Creating root states for {}, seglevel={}, feats={}".format(cons, seglevel, feats.__repr__()))
 
         def dup_weight(drules, weight):
@@ -130,7 +136,8 @@ class Roots:
                 fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
         def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
-#            print("*** Making root states for {} with weight {}, it? {} aisa? {}".format(root_chars, weight.__repr__(), iterative, aisa))
+#            if not iterative and not aisa:
+#            print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), "a=i" if iterative else ("a=a" if aisa else "a=0")))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
@@ -209,7 +216,15 @@ class Roots:
         elif seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
-        feats = '[' + feats + ']'
+        if subroots:
+            # Make an FSSet from feats and subroots
+            expanded_feats = []
+            for subroot in subroots:
+                expanded_feats.append("{},{}".format(feats, subroot))
+            feats = ';'.join(['[' + x + ']' for x in expanded_feats])
+#            print("** expanded feats {}".format(feats))
+        else:
+            feats = '[' + feats + ']'
         weight = make_weight(feats, target=gen)
         cls = weight.get('tc') if gen else weight.get('c')
         # make the simplex states and arcs
@@ -219,19 +234,30 @@ class Roots:
         strength_feat = 'tstrong' if gen else 'strong'
         weight = weight.set_all(strength_feat, strong)
         weight1 = dup_weight(drules, weight)
+#        print(" ** duprules {}".format(drules))
         mrs(fst, charsets, weight1, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
             drules = duprules.get(cls + 'i')
             it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, drules, char_maps, charmap_weights)
-            weighti = dup_weight(drules, weight)
-            mrs(fst, it_charsets, weighti, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
+            # Add a=i if it's compatible with other features
+            weighti = weight.set_all('a', 'i', force=False)
+            if weighti:
+                weighti = dup_weight(drules, weighti)
+                mrs(fst, it_charsets, weighti, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
 #            print("   *** i weight for {} : {}".format(cons, weighti.__repr__()))
+#            else:
+#                print("** no IT for {}".format(cons))
         if (cls_a_rules := rules.get(cls + 'a')):
             drules = duprules.get(cls + 'a')
             a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, drules,  char_maps, charmap_weights)
-            weighta = dup_weight(drules, weight)
+            # Add a=a if it's compatible with other features
+            weighta = weight.set_all('a', 'a', force=False)
+            if weighta:
+                weighta = dup_weight(drules, weighta)
 #            print("   *** a weight for {} : {}".format(cons, weighta.__repr__()))
-            mrs(fst, a_charsets, weighta, states, cons_chars, iterative=False, aisa=True, main_charsets=charsets)
+                mrs(fst, a_charsets, weighta, states, cons_chars, iterative=False, aisa=True, main_charsets=charsets)
+#            else:
+#                print("** no AISA for {}".format(cons))
 
     @staticmethod
     def get_rule(consonants, cls, rules):
@@ -262,6 +288,7 @@ class Roots:
 #            print("** position {}, vowels {}".format(position, vowels))
 #            if isinstance(vowels, tuple):
             charsets[position] = vowels
+#        print("  **** Defaults: {}".format(charsets))
         # Keep track of positions where vowels are changed based on weak subclass rules, so
         # earlier rules have priority (otherwise <' w q> is treated as a 2=ው root)
         positions_reset = []
@@ -455,6 +482,7 @@ class Roots:
         charmap_weights = {}
 
         current_root = ''
+        current_irr_root = ''
         current_feats = ''
 
         # Create start and end states
@@ -481,9 +509,11 @@ class Roots:
             return vspec
 
         while lines:
-            line = lines.pop().split('#')[0].strip() # strip comments
+            line = lines.pop().split('#')[0].rstrip() # strip comments
 
-            if not line: continue
+            if not line.lstrip(): continue
+
+#            print("*** line: {}".format(line))
 
             m = Roots.RULE_RE.match(line)
             if m:
@@ -603,6 +633,7 @@ class Roots:
                 cons, feats = m.groups()
                 cons = cons.split()
                 # A consonant may have an associated feature constraint
+                current_root = cons
                 for cindex, c in enumerate(cons):
 #                    print("*** {} {}".format(cindex, c))
                     if (match := Roots.CHAR_FEAT_RE.match(c)):
@@ -611,13 +642,27 @@ class Roots:
                         cons[cindex] = (c, feature)
 #                print("*** cons {}, feats {}".format(cons, feats))
 
-                roots.append((cons, feats))
+                roots.append([cons, feats, []])
+                continue
+
+            m = Roots.SUBROOT_RE.match(line)
+            if m:
+                subrootfeats = m.groups()[0]
+#                print("*** Found subroot with features {}, current root {}".format(subrootfeats, roots[-1]))
+                # Add subrootfeatures to most recent root
+                roots[-1][2].append(subrootfeats)
                 continue
 
             m = Roots.IRR_ROOT_RE.match(line)
             if m:
-                current_root = m.groups()
-                irr_roots[current_root] = []
+                current_irr_root = m.groups()
+                irr_roots[current_irr_root] = []
+                continue
+
+            m = Roots.ROOT_TYPE_RE.match(line)
+            if m:
+                rtype, rtypefeats = m.groups()
+                print("*** Root type {}, features {}".format(rtype, rtypefeats))
                 continue
 
             m = Roots.FEATURES_RE.match(line)
@@ -625,14 +670,14 @@ class Roots:
                 features = m.groups()[0]
                 current_feats = features
 #                print("*** features {}".format(features))
-#                irr_roots[current_root].append(features)
+#                irr_roots[current_irr_root].append(features)
                 continue
 
             m = Roots.PATTERN_RE.match(line)
             if m:
                 pattern = m.groups()[0].split()
 #                print("*** pattern {}".format(pattern))
-                irr_roots[current_root].append((pattern, current_feats))
+                irr_roots[current_irr_root].append((pattern, current_feats))
 #                print("*** irr_roots {}".format(irr_roots))
                 continue
 
@@ -640,8 +685,8 @@ class Roots:
 
 #        print("** rules: {}".format(rules))
 
-        for cons, feats in roots:
-            Roots.make_root_states(fst, cons, feats, rules, duprules, char_maps, charmap_weights, cascade, posmorph,
+        for cons, feats, subroots in roots:
+            Roots.make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph,
                                    labbrev, gen=gen, seglevel=seglevel)
 
         if irr_roots:

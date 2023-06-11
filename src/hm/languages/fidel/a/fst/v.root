@@ -58,17 +58,36 @@
 # ተንጸባረቀ
 %H::		1:I;	2:e;	3:a;	4:e,I;	5:I
 
+## Abbreviations
+{ሰበረ}: a=0,v=0,S=1,O=o; a=0,v=p,S=1,O=0; a=0,v=as,S=1,O=oi; a=i,v=0,S=1,O=0; a=i,v=p,S=1,O=0; a=i,v=a,S=1,O=o
+
 <ስ ብ ር>		c=A
+   a=0,v=0,S=1,O=o
+   a=0,v=p,S=1,O=0
+   a=0,v=as,S=1,O=oi
+   a=i,v=0,S=1,O=0
+   a=i,v=p,S=1,O=0
+   a=i,v=a,S=1,O=o
 
 <ል ብ ስ>		c=A
+   a=0,v=0,S=1,O=o
+   a=0,v=p,S=1,O=0
 
 <ቅ ር ብ>		c=A
+
+<ዝ ን ብ>		c=A,v=0|as
 
 <ግ ድ ል>		c=A
 
 <ብ ር ር>		c=A
 
 <ም ው ት>		c=A
+   a=0,v=0,S=1,O=0
+   a=0,v=p,S=0,O=0
+   a=0,v=a,S=1,O=1
+   a=i,v=0,S=1,O=0
+   a=i,v=p,S=1,O=0
+   a=i,v=a,S=1,O=o
 
 <ሽ ይ ጥ>		c=A
 
@@ -90,11 +109,21 @@
 
 <ቅ ር ይ>		c=A
 
+<ስ ጥ ይ>		c=A
+   a=0,v=0,S=1,O=lo
+   a=0,v=p,S=1,O=l
+   a=0,v=as,S=1,O=oi
+   a=a,v=p,S=1,O=0
+   a=a,v=a,S=1,O=0
+   a=i,v=0,S=1,O=0
+   a=i,v=p,S=1,O=0
+   a=i,v=a,S=1,O=o
+
 <ስ እ ም>	     c=A
 
 <እ ይ ይ>	     c=A
 
-<ይ ጥ ይ>	     c=A
+<እ ጥ እ>	     c=A
 
 <ይ እ ዝ>	     c=A
 

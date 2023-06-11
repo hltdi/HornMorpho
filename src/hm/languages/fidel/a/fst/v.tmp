@@ -6,71 +6,71 @@ $ t=p|i|j|c
 %%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
-*e	*:e	*
+^e	*:e	*
 
 [t=j,v=p]
-*e	*e	*
+^e	*e	*
 
 [t=i|j|c,v=as]
-*e	*:	*
+^e	*:	*
 
 [t=i|c,v=0,-dup23]
 [t=i,v=a]
 [t=c,v=p]
-*e	*	*
+^e	*	*
 
 [t=i|c,v=0,+dup23]
-*e	*:	-
+^e	*:	-
 
 [t=j,v=0]
-*	*e	*
+^*	*e	*
 
 [t=j|c,v=a]
-*	*	*
+^*	*	*
 
 %%a=0,c=B,+strong
 [t=p]
 [t=i,v=p] 
-*e	*:e	*
+^e	*:e	*
 
 [t=i|j|c,v=0|a|as]
 [t=c,v=p]
-*e	*:	*
+^e	*:	*
 
 [t=j,v=p]
-*e	*e	*
+^e	*e	*
 
 %%a=0,c=C,+strong
 [t=p]
 [t=i,v=p] 
-*a	*:e	*
+^a	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-*a	*:	*
+^a	*:	*
 
 [t=j|c,v=0|a]
 [t=c,v=p|as]
-*a	*	*
+^a	*	*
 
 [t=j,v=p]
-*a	*e	*
+^a	*e	*
 
 %%a=0,c=E,+strong
 [t=p]
 [t=i,v=p]
-*e	*e	*:e	*
+^e	*e	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-*e	*e	*:	*
+^e	*e	*:	*
 
 [t=j,v=0|a]
 [t=c]
-*e	*	*	*
+^e	*	*	*
 
 [t=j,v=p]
-*e	*	*e	*
+^e	*	*e	*
 
 %%a=0,c=F,+strong
 [t=p]
@@ -156,6 +156,9 @@ $ t=p|i|j|c
 [t=c,v=0,+dup23]
 ኣ	*:	-
 
+[t=j,v=0]
+እ	*e	*
+
 %1=እ,3=ይ
 # still need to account for አስተያየ
 [t=p,v=0|p|as]
@@ -175,7 +178,6 @@ $ t=p|i|j|c
 ኣ	*	ት
 
 %1=እ,3=እ
-# አስታመመ still needed
 [t=p,v=0|p|as]
 [t=i,v=as]
 ኣ	*:a	-
@@ -321,16 +323,17 @@ $ t=p|i|j|c
 
 %%a=0,c=E,-strong
 %1=እ
-[t=p]
+# no v=0
+[t=p,v=0|p|as]
 [t=i,v=p]
 ኣ	*e	*:e	*
 
-[t=i,v=0|a|as]
+[t=i,v=0|as]
 [t=j,v=as]
 ኣ	*e	*:	*
 
-[t=j,v=0|a]
-[t=c]
+[t=j,v=0]
+[t=c,v=0|p|as]
 ኣ	*	*	*
 
 [t=j,v=p]
@@ -479,8 +482,8 @@ $ t=p|i|j|c
 ^a	*	ት
 
 %1=እ !
-#%1=እ,3=እ !
-#%1=እ,3=ይ !
+%1=እ,3=እ !
+%1=እ,3=ይ !
 %2=ው !
 %2=ይ !
 %2=እ !
@@ -539,7 +542,8 @@ $ t=p|i|j|c
 *e	*a	*	ት
 
 %%a=i,c=A,+strong
-[t=p]
+# No as
+[t=p,v=0|p|a]
 [t=i,v=p]
 *e	*a	*:e	*
 
@@ -550,7 +554,7 @@ $ t=p|i|j|c
 *e	*a	*e	*
 
 [t=j,v=0|a]
-[t=c]
+[t=c,v=0|p|a]
 *e	*a	*	*
 
 %%a=i,c=B,+strong == A
@@ -588,31 +592,31 @@ $ t=p|i|j|c
 *a	*	-	*
 
 %3=እ
-[t=p]
+[t=p,v=0|a|p]
 [t=i,v=p]
 *e	*a	*:a	-
 
 # alternative for some roots: ተስማማ ይስማማሉ
 [t=p,v=p]
-[t=i]
+[t=i,v=0|a|p]
 *	*a	*:a	-
 
-[t=j]
+[t=j,v=0|a|p]
 # is {*e *a *a -} possible? (ይሰማማ)
 *	*a	*a	-
 
-[t=c]
+[t=c,v=0|a|p]
 *	*a	*	ት
 
 %3=ይ
-[t=p]
+[t=p,v=0|p|a]
 *e	*a	*:e	-
 
-[t=i|j]
+[t=i|j,v=0|p|a]
 # is {* *a *: -} possible? (ይቅራራሉ)
 *e	*a	*:	-
 
-[t=c]
+[t=c,v=0|p|a]
 *e	*a	*	ት
 
 %%a=i,c=B,-strong

@@ -195,14 +195,17 @@ class FSSet(set, FS):
     #             values.append(values1)
     #     return values or default
 
-    def set_all(self, feat, value):
+    def set_all(self, feat, value, force=True):
         """
         Return a new FSSet with feat set to value in all component FeatStructs.
+        If force is True, do this even it conflicts with the features in self.
         """
-        fss = self.unfreeze()
-        for f in fss:
-            f[feat] = value
-        return FSSet(fss)
+        if force or self.unify_FS(FeatStruct("[{}={}]".format(feat, value))) != 'fail':
+            fss = self.unfreeze()
+            for f in fss:
+                f[feat] = value
+            return FSSet(fss)
+        return None
 
     def inherit(self):
         """Inherit feature values for all members of set, returning new set."""
