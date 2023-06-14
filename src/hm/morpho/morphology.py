@@ -564,34 +564,6 @@ class Morphology(dict):
         return self[pos].gen(form, features, from_dict=from_dict, postproc=postproc,
                              guess=guess, phon=phon, segment=segment, trace=trace)
 
-#    def load_fst(self, label, generate=False, create_fst=True, pos='',
-#                 save=False, verbose=False):
-#        """
-#        Load an FST that is not associated with a particular POS.
-#        Currently not used.
-#        """
-#        path = os.path.join(self.get_cas_dir(), label + '.cas')
-#        casc = fst = None
-#        if verbose:
-#            print('Looking for cascade at', path)
-#        if os.path.exists(path):
-#            # Load each of the FSTs in the cascade and compose them
-#            if verbose: print('Loading cascade ...')
-#            casc = FSTCascade.load(path, seg_units=self.seg_units,
-#                                   language=self.language, pos=pos,
-#                                   create_networks=True)
-#            # create_fst is False in case we just want to load the individuals fsts.
-#            if create_fst:
-#                if verbose:
-#                    print("Composing FST")
-#                fst = casc.compose(backwards=False, trace=verbose, relabel=True)
-#                if generate:
-#                    fst = fst.inverted()
-#                if save:
-#                    FST.write(fst, filename=os.path.join(self.get_pickle_dir(), label + '.fst'))
-#                return fst
-#            return casc
-
     def restore_fst(self, label, create_networks=False, pos=''):
         '''Return the FST with label.'''
         cas_path = os.path.join(self.get_cas_dir(), label + '.cas')
@@ -1062,7 +1034,7 @@ class POSMorphology:
                  create_weights=False, guess=False, seglevel=2,
                  pickle=True, create_pickle=True, fidel=False,
                  simplified=False, phon=False, segment=False, translate=False,
-                 experimental=False, mwe=False, pos='',
+                 experimental=False, mwe=False, pos='', gemination=True,
                  invert=False, compose_backwards=True, split_index=0,
                  relabel=True, verbose=False):
         '''
@@ -1114,7 +1086,7 @@ class POSMorphology:
                 if create_casc and not self.casc:
                     casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                            create_networks=True, subcasc=subcasc, seglevel=seglevel,
-                                           language=self.language, gen=generate, pos=pos,
+                                           language=self.language, gen=generate, pos=pos, gemination=gemination,
                                            verbose=verbose)
                     if casc:
                         self.casc = casc
@@ -1131,6 +1103,7 @@ class POSMorphology:
                         print('Recreating...')
                     self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                 create_networks=True, subcasc=subcasc, pos=pos, seglevel=seglevel,
+                                                gemination=gemination,
                                                 language=self.language, gen=generate, verbose=verbose)
                     self.casc_inv = self.casc.inverted()
                     # create_fst is False in case we just want to load the individuals fsts.
@@ -1180,6 +1153,7 @@ class POSMorphology:
                         if not self.casc:
                             casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                    create_networks=True, subcasc=subcasc,
+                                                   gemination=gemination,
                                                    language=self.language, gen=generate, pos=pos,
                                                    verbose=verbose)
                             if casc:
@@ -1192,7 +1166,7 @@ class POSMorphology:
                     # OK, as a last resort, try again to load the analysis cascade
                     if os.path.exists(path):
                         casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
-                                               create_networks=True, subcasc=subcasc,
+                                               create_networks=True, subcasc=subcasc, gemination=gemination,
                                                language=self.language, pos=pos, gen=generate,
                                                verbose=verbose)
                         if casc:
@@ -1217,6 +1191,7 @@ class POSMorphology:
             name = posmorph.fst_name(gen, False)
             path = os.path.join(posmorph.morphology.get_cas_dir(), name + '.cas')
             casc = FSTCascade.load(path, seg_units=posmorph.morphology.seg_units, seglevel=0, posmorph=posmorph,
+                                   gemination=src_language.output_gemination,
                                    create_networks=True, language=posmorph.language, gen=gen, pos=pos)
             posmorph.casc = casc
             posmorph.casc_inv = posmorph.casc.inverted()

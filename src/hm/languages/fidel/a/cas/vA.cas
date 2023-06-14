@@ -39,5 +39,6 @@ weighting = UNIFICATION
 # C + V characters at stem-suffix boundary
 >aff_bound<
 >kh<
+>aste<
 # Morphotactics
 >vA.mtx<

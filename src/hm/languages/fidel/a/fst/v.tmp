@@ -591,6 +591,23 @@ $ t=p|i|j|c
 [t=c]
 *a	*	-	*
 
+%1=እ
+[t=p,v=p|as]
+[t=i,v=p]
+አ	*a	*:e	*
+
+[t=i,v=as]
+አ	*a	*:	*
+
+[t=j,v=p]
+አ	*a	*e	*
+
+[t=j,v=as]
+አ	*a	*	*
+
+[t=c,v=p|as]
+አ	*a	*i	*
+
 %3=እ
 [t=p,v=0|a|p]
 [t=i,v=p]

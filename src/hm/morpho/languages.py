@@ -168,7 +168,7 @@ def load_pos(language, pos, scratch=False):
     """
     Load FSTs for a single POS, overriding compiled FST if scratch is True.
     """
-    language.morphology[pos].load_fst(scratch, recreate=True, pos=pos, verbose=True)
+    language.morphology[pos].load_fst(scratch, recreate=True, pos=pos, gemination=language.output_gemination, verbose=True)
 
 def load_langs(abbrev, l1, poss1, l2, poss2, pickle=True, recreate=False,
                load_lexicons=True, verbose=True):

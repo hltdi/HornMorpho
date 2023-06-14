@@ -3,6 +3,8 @@ $ a=0|a|i
 $ v=0|p|a
 $ t=p|i|j|c
 
+$$ L እ|ሕ|ዕ
+
 %%a=0,c=A,+strong
 [t=p,v=0|p]
 [t=j,v=p]
@@ -103,55 +105,55 @@ $ t=p|i|j|c
 *e	*a	*i	*
 
 %%a=0,c=G,+strong
-[t=p]
+[t=p,v=p|a]
 *	*e	*	*e	*
 
-[t=i,v=p]
+[t=i,v=p|a]
 *	*	*	*e	*
 
-[t=j]
+[t=j,v=p|a]
 [t=i,v=a]
 *	*e	*	*	*
 
-[t=c]
+[t=c,v=p|a]
 *	*e	*	*i	*
 
 %%a=0,c=H,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i|j,v=p]
 *	*e	*a	*e	*
 
 [t=i|j,v=a]
 *	*e	*a	*	*
 
-[t=c]
+[t=c,v=p|a]
 *	*e	*a	*i	*
 
 %%a=0,c=I,+strong
-[t=p]
+[t=p,v=a|p]
 [t=i|j,v=p]
 *	*e	*e	*
 
 [t=i|j,v=a]
 *	*e	*	*
 
-[t=c]
+[t=c,v=p|a]
 *	*e	*i	*
 
 %%a=0,c=J,+strong
-[t=p]
+[t=p,v=p|a]
 [t=i|j,v=p]
 *	*a	*e	*
 
 [t=i|j,v=a]
 *	*a	*	*
 
-[t=c]
+[t=c,v=p|a]
 *	*a	*i	*
 
 %%a=0,c=A,-strong
 
-%1=እ|ዕ|ሕ
+%1=L
 [t=p,v=0|p]
 [t=j,v=p]
 *a	*e	*
@@ -163,7 +165,7 @@ $ t=p|i|j|c
 [t=i,v=0,-suf]
 *a	*:	*
 
-%2=እ|ዕ|ሕ
+%2=L
 [t=p,v=0]
 *e	*a	*
 
@@ -177,7 +179,7 @@ $ t=p|i|j|c
 [t=j,v=0]
 *	*a	*
 
-%3=እ|ዕ|ሕ
+%3=L
 # መጽእ- -አ
 [t=p,v=0,sp=3]
 [t=i,v=0,+suf]
@@ -294,9 +296,14 @@ $ t=p|i|j|c
 [t=c,v=0,sp=1,sn=1]
 *e	*	*
 
-%3=ይ,2=እ|ዕ|ሕ
-#[t=p,v=0]
-#*e	*a	*
+%3=ይ,2=L
+# ረኣየ
+[t=p,v=0]
+*e	*a	*
+
+# ረኤ
+[t=p,v=0]
+*e	*E	-
 
 [t=i,v=0]
 [t=c,v=0,sp=1|2]
@@ -310,7 +317,7 @@ $ t=p|i|j|c
 
 %%a=0,c=B,-strong
 
-%1=እ|ዕ|ሕ
+%1=L
 [t=p,v=0|p]
 [t=j,v=p]
 *a	*:e	*
@@ -318,7 +325,7 @@ $ t=p|i|j|c
 [t=c]
 *a	*:i	*
 
-%3=እ|ዕ|ሕ
+%3=L
 # መጽእ- -አ
 [t=p,v=0,sp=3]
 *e	*:	*

@@ -53,6 +53,9 @@ class EES:
     wcodes2patindex = {'0': 0, 'te_': 1, 'a_': 2, 'as_': 3, 'te_a': 4, 'a_a': 4, 'as_a': 4, 'te_R': 5, 'a_R': 5, 'R': 6}
     wpatcodes = [('0',), ('te_',), ('a_',), ('as_',), ('te_a', 'a_a'), ('te_R', 'a_R'), ('R',)]
 
+    pre_gem_char = '/'
+    post_gem_char = '፟'
+
     # Filters to use with anal_sentence to restrict syntax/morphology.
     filters = \
     {

@@ -505,7 +505,7 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None, posmorph=None,
-             language=None, pos='', seglevel=2,
+             language=None, pos='', seglevel=2, gemination=True,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
@@ -520,7 +520,7 @@ class FSTCascade(list):
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
-                                posmorph=posmorph,
+                                posmorph=posmorph, gemination=gemination,
                                 dirname=dirname, pos=pos, seglevel=seglevel,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
@@ -528,6 +528,7 @@ class FSTCascade(list):
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
               posmorph=None, subcasc=None, language=None, dirname='', pos='', seglevel=2,
+              gemination=True,
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -599,7 +600,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -617,7 +618,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -634,7 +635,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        cascade=cascade, weighting=cascade.weighting(),
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
@@ -656,7 +657,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
@@ -677,7 +678,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
@@ -697,7 +698,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
@@ -722,7 +723,7 @@ class FSTCascade(list):
                         abbrevs = cascade._IOabbrevs
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        abbrevs=abbrevs, seglevel=seglevel,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
@@ -745,7 +746,7 @@ class FSTCascade(list):
                             print('Adding lex FST {} to cascade, reversed? {}'.format(label, cascade.r2l))
                         fst = FST.load(os.path.join(cascade.get_lex_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph,
+                                       posmorph=posmorph, gemination=gemination,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, reverse=cascade.r2l, seglevel=seglevel,
                                        verbose=verbose, lex_features=True)
@@ -2089,7 +2090,7 @@ class FST:
 
     @staticmethod
     def load(filename, cascade=None, weighting=None, reverse=False, posmorph=None,
-             seg_units=[], verbose=False, abbrevs=None, seglevel=2,
+             seg_units=[], verbose=False, abbrevs=None, seglevel=2, gemination=True,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
         """
@@ -2118,7 +2119,7 @@ class FST:
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                posmorph=posmorph,
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
-                               cascade=cascade, directory=directory, seglevel=seglevel,
+                               cascade=cascade, directory=directory, seglevel=seglevel, gemination=gemination,
                                seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                                gen=gen, verbose=verbose)
 

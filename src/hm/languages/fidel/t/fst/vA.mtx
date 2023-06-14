@@ -28,13 +28,13 @@ $ sb_pre
 #  --  [vc=0]
 
 $ prestem
-  +
+  <
 
 $ stem
   >>v_stemA<<
 
 $ poststem
-  +
+  >
 
 $ sb_suf
   ኩ   [t=p,sp=1,sn=1]

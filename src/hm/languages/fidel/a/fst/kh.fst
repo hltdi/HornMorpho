@@ -1,16 +1,16 @@
 -> start
 
-start -> start 	[*-ስ;*v;-]
+start -> start 	[*;*v;-]
 start -> stem	[<]
 
-start -> s.		[:ስ]
-s. -> s.+		[<]
-s.+ -> stem		[ሰ;ሳ;ሶ;ሱ;ዘ;ዛ;ዞ;ዝ;ዙ;ሸ;ሻ;ሾ;ሽ;ሹ;ዠ;ዣ;ዦ;ዡ;ዥ]
+#start -> s.		[:ስ]
+#s. -> s.+		[<]
+#s.+ -> stem		[ሰ;ሳ;ሶ;ሱ;ዘ;ዛ;ዞ;ዝ;ዙ;ሸ;ሻ;ሾ;ሽ;ሹ;ዠ;ዣ;ዦ;ዡ;ዥ]
 
-start -> s		[ስ]
-s -> start		[*-ስ;*v;-]
-s -> s+			[<]
-s+ -> stem		[^S]
+#start -> s		[ስ]
+#s -> start		[*-ስ;*v;-]
+#s -> s+			[<]
+#s+ -> stem		[^S]
 
 stem -> V		[*v]
 stem -> C		[*]
