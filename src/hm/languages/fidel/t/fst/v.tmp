@@ -3,6 +3,7 @@ $ a=0|a|i
 $ v=0|p|a
 $ t=p|i|j|c
 
+# abbreviation for "laryngeals"
 $$ L እ|ሕ|ዕ
 
 %%a=0,c=A,+strong
@@ -47,6 +48,17 @@ $$ L እ|ሕ|ዕ
 [t=c]
 *e	*a	*i	*
 
+%%a=a,c=A,+strong
+[t=p|i|j,v=ps]
+[t=p,v=a]
+*a	*e	*
+
+[t=i|j,v=a]
+*a	*	*
+
+[t=c,v=ps|a]
+*a	*i	*
+
 %%a=0,c=B,+strong
 [t=p]
 [t=j,v=p]
@@ -64,6 +76,10 @@ $$ L እ|ሕ|ዕ
 [t=c]
 *e	*:i	*
 
+%%a=i,c=B,+strong == A
+
+%%a=a,c=B,+strong == A
+
 %%a=0,c=C,+strong
 [t=p]
 [t=i|j,v=p]
@@ -74,6 +90,8 @@ $$ L እ|ሕ|ዕ
 
 [t=c]
 *a	*i	*
+
+%%a=i,c=C,+strong == A
 
 %%a=0,c=E,+strong
 [t=p]
@@ -93,6 +111,28 @@ $$ L እ|ሕ|ዕ
 [t=c]
 *e	*	*i	*
 
+%%a=i,c=E,+strong
+[t=p]
+[t=i|j,v=p]
+*e	*e	*a	*e	*
+
+[t=i|j,v=0|a]
+*e	*e	*a	*	*
+
+[t=c]
+*e	*e	*a	*i	*
+
+%%a=a,c=E,+strong
+[t=p,v=p|a]
+[t=i|j,v=p]
+*e	*a	*e	*
+
+[t=i|j,v=a]
+*e	*a	*	*
+
+[t=c,v=p|a]
+*e	*a	*i	*
+
 %%a=0,c=F,+strong
 [t=p]
 [t=i|j,v=p]
@@ -104,16 +144,18 @@ $$ L እ|ሕ|ዕ
 [t=c]
 *e	*a	*i	*
 
+%%a=i,c=F,+strong == E
+
 %%a=0,c=G,+strong
 [t=p,v=p|a]
+[t=j,v=p]
 *	*e	*	*e	*
 
-[t=i,v=p|a]
-*	*	*	*e	*
-
-[t=j,v=p|a]
-[t=i,v=a]
+[t=i|j,v=a]
 *	*e	*	*	*
+
+[t=i,v=p]
+*	*	*	*e	*
 
 [t=c,v=p|a]
 *	*e	*	*i	*

@@ -126,21 +126,24 @@ class Roots:
                     return weight.set_all(feat, False)
             return weight
 
-        def gem_char_arc(source, dest, inchar, outchar, weight, gem_weight):
+        def gem_char_arc(source, dest, inchar, outchar, weight, gem_weight, verbosity=0):
             outchar = outchar if (gen or seglevel==0) else inchar
             gem = EES.pre_gem_char
             dest_gem = dest + '_gem'
             if not fst.has_state(dest_gem):
                 fst.add_state(dest_gem)
-#            print("** outchar '', inchar {}, {}, {}".format('/', source, dest_gem))
-            charfeat_arc(gem, '', gem_weight, source, dest_gem, fst)
-#            print("** outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))
+                if verbosity:
+                    print("  ** outchar '', inchar {}, {}, {}".format('/', source, dest_gem))
+                charfeat_arc(gem, '', gem_weight, source, dest_gem, fst)
+            if verbosity:
+                print("  ** outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))
             charfeat_arc(inchar, outchar, weight, dest_gem, dest, fst)
 
-        def charfeat_arc(inchar, outchar, wt, source, dest, fst):
+        def charfeat_arc(inchar, outchar, wt, source, dest, fst, verbosity=0):
             # Create the arc from source dest
             # char is either a character or a (character, weight) tuple
-#            print("*** in {} out {} src {} dest {}".format(inchar, outchar, source, dest))
+            if verbosity:
+                print("  ** out {} in {} src {} dest {}".format(outchar, inchar, source, dest))
             if isinstance(inchar, tuple):
                 # this char depends on a weight
                 inchar, charfeats = inchar
@@ -157,11 +160,13 @@ class Roots:
                 
         def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
 #            if not iterative and not aisa:
-#            print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), "a=i" if iterative else ("a=a" if aisa else "a=0")))
+#                print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), "a=i" if iterative else ("a=a" if aisa else "a=0")))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
+#                if root_chars == ['ብ', 'ር', 'ር']:
+#                    print("** Root state {} rchar {} chars {}".format(position, rchar, chars))
                 wt = weight if index == 0 else None
                 iter_chars = isinstance(chars, tuple)
                 if iterative and not iter_chars:
@@ -202,30 +207,26 @@ class Roots:
                 else:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
-                    print("*** root state: rootchars {}, char {}, rchar {}".format(root_chars, chars, rchar))
                     for char in chars:
                         if len(char) == 2:
                             inchar = Roots.remove_gem(char)
-#                            outchar = rchar if (gen or seglevel==0) else chare.replace(EES.pre_gem_char).repla
-                            gem_char_arc(source, dest, inchar, rchar, wt, wt)
-#                            dest_gem = dest + '_gem'
-#                            if not fst.has_state(dest_gem):
-#                                fst.add_state(dest_gem)
-#                            charfeat_arc(char[0], '', wt, source, dest_gem, fst)
-#                            charfeat_arc(char[1], outchar, wt, dest_gem, dest, fst)
+                            gem_char_arc(source, dest, inchar, rchar, wt, wt, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
                         else:
                             outchar = rchar if (gen or seglevel==0) else char
-                            charfeat_arc(char, outchar, wt, source, dest, fst)
+                            charfeat_arc(char, outchar, wt, source, dest, fst, verbosity=0) # root_chars == ['ብ', 'ር', 'ር'])
                 source = dest
             state = states[-1]
             # chars for last position
             chars = charsets[len(charsets)]
             rchar = root_chars[-1]
-            print("*** last root state: rootchars {}, chars {}, rchar {}".format(root_chars, chars, rchar))
             for char in chars:
-                outchar = rchar if (gen or seglevel==0) else char
-                inchar = char
-                charfeat_arc(inchar, outchar, None, source, 'end', fst)
+                if len(char) == 2:
+                    inchar = Roots.remove_gem(char)
+                    gem_char_arc(source, 'end', inchar, rchar, wt, wt, verbosity=0)
+                else:
+                    outchar = rchar if (gen or seglevel==0) else char
+                    inchar = char
+                    charfeat_arc(inchar, outchar, None, source, 'end', fst, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
 
         # one of cons could be a char, feature tuple
         cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
@@ -473,7 +474,7 @@ class Roots:
                     gem_feat = "gem{}".format(cposition)
                     gem = ":" in char or EES.pre_gem_char in char
                     if gem:
-                        print(" **** Creating states for pattern {}, cposition {}, char {} and cons {}".format(pattern, cposition, char, c))
+#                        print(" **** Creating states for pattern {}, cposition {}, char {} and cons {}".format(pattern, cposition, char, c))
                         gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
                         char = Roots.remove_gem(char)
 #                        char.replace(":", '').replace(EES.pre_gem_char, '')

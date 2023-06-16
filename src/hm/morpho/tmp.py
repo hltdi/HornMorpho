@@ -116,8 +116,10 @@ class Template:
                 state_name = "{}_{}".format(template_name, position)
                 states.append((state_name, charset, gem_feat, gem))
 
+#            print("** final default {}".format(default_final))
             source = 'start'
-            if states[-1][1] == default_final:
+            if states[-1][1] == default_final and template[-1] != '-':
+#                print(" *** template {} has final default; states {}".format(template, states))
                 # template ends in default final, so use existing final arc
                 states_to_create = states[:-2]
                 last_state = states[-2]

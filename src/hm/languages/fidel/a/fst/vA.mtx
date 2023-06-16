@@ -1,20 +1,19 @@
 $ conj_prep_pre
-  የ		[t=i|p,+rel,-mc]
-  ብ  		[cnj1=ብ,t=i,-rel,-mc]
-  ስ  		[cnj1=ስ,t=i,-rel,-mc]
-  እንድ	[cnj1=እንድ,t=i,-rel,-mc]
-  ል  		[cnj1=ል,t=i,-rel,-mc]
-  ከ		[adp=ከ,t=i|p,+rel,-mc]
-  በ		[adp=በ,t=i|p,+rel,-mc]
-  ለ		[adp=ለ,t=i|p,+rel,-mc]
-  እንደ	[adp=እንደ,t=i|p,+rel,-mc]
-  እስከ	[adp=እስከ,t=i|p,+rel,-mc]
-  እየ		[cnj1=እየ,t=p,-rel,-mc]
-  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mc]
+  የ		[t=i|p,+rel,-mc,+sub]
+  ብ  		[cnj1=ብ,t=i,-rel,-mc,+sub]
+  ስ  		[cnj1=ስ,t=i,-rel,-mc,+sub]
+  እንድ	[cnj1=እንድ,t=i,-rel,-mc,+sub]
+  ል  		[cnj1=ል,t=i,-rel,-mc,+sub]
+  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub]
+  በ		[adp=በ,t=i|p,+rel,-mc,+sub]
+  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub]
+  እንደ	[adp=እንደ,t=i|p,+rel,-mc,+sub]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub]
+  እ/የ	[cnj1=እየ,t=p,-rel,-mc,+sub]
+  --  	[-rel,cnj1=None,adp=None,-sub];[v=j|c,-mc,-sub]
 
 $ rel_impf
-# % gemination
-  ም		[t=i,+rel]
+  /ም	<ም>	[t=i,+rel]
   --		[t=i,-rel];[t=p|j|c]
 
 $ sub_bound
@@ -32,50 +31,41 @@ $ sb_pre
   ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
 # % optional gemination  
   ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  /ት	<ት>	[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
   እ		[t=i,sp=1,sn=1,-neg]
   ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
 # % optional gemination
   እን  	[t=i|j,sp=1,sn=2]
+  /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
 $ sp_bound
   -
 
 $ voice_pre
-  ኣ					[v=a]
+  ኣ					[v=a,a=0]
+  ኣ/			<ኣ>		[v=a,a=a|i]
   ኣ=			<ኣስ>	[v=as]
-#  ተ					[t=p|c,v=p];[t=j,sp=2,v=p]
   ተ=			<ተ>		[v=p]
-# % gemination
-#  /					[t=i,v=p];[t=j,sp=1|3,v=p]
   --  				[v=0]
-#  [t=i,v=p];[t=j,sp=1|3,v=p]
 
 $ prestem
   <
-#  +
 
 $ stem
    >>v_stemA<<
 
-#$ tam
-#  +prf	[t=p]
-#  +ipf	[t=i]
-#  +imp	[t=j]
-#  +cvb	[t=c]
-
 $ poststem
   >
-#  +
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p]
   ኦ    	[sp=3,sn=1,sg=m,t=c]
-  አች   	[sp=3,sn=1,sg=f,t=p]
+  አ/ች   	<አች>	[sp=3,sn=1,sg=f,t=p]
   ኣ    	[sp=3,sn=1,sg=f,t=c]
   ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,op=1|2|3];[t=p,sp=3,sn=2]
   አው  	[sp=3,sn=2,t=c]
-  ኣችሁ 	[sp=2,sn=2,t=p|c]
+  ኣ/ችሁ 	<ኣችሁ>	[sp=2,sn=2,t=p|c]
   ሽ		[sp=2,sn=1,sg=f,t=p]
   አሽ    	[sp=2,sn=1,sg=f,t=c]
   ኢ   	[sp=2,sn=1,sg=f,t=i|j]
@@ -93,60 +83,76 @@ $ ss_bound
 $ ob_suf
   [op=3,on=1,og=m]
      # 3sm objects
-      ለት	[oc=b]
-      በት	[oc=m]
+      /ለት	<ለት>	[oc=b]
+      /በት	<በት>	[oc=m]
       ት	[t=p,sp=1,sn=1,oc=a];[sp=2|3,sn=2,oc=a];[t=c,sp=3,sn=1,sg=m,oc=a]
       ው       [sp=2,sn=1,sg=f,oc=a];[t=p,sp=3,sn=1,oc=a];[t=c,sp=1,sn=1,oc=a];[t=c,sp=3,sn=1,sg=f,oc=a]
       አው	[sp=2,sn=1,sg=m,oc=a];[sp=1,sn=2,oc=a];[t=i|j,sp=1,sn=1,oc=a];[t=i|j,sp=3,sn=1,oc=a]
   [op=3,on=1,og=f]
       ኣት	[oc=a]
-      ላት	[oc=b]
-      ባት	[oc=m]
+      /ላት	<ላት>	[oc=b]
+      /ባት	<ባት>	[oc=m]
   [op=3,on=2]
-      ኣቸው	[oc=a]
-      ላቸው	[oc=b]
-      ባቸው	[oc=m]
+      ኣ/ቸው		<ኣቸው>	[oc=a]
+      /ላ/ቸው	<ላቸው>	[oc=b]
+      /ባ/ቸው	<ባቸው>	[oc=m]
   [op=1,sp=2|3]
       አን	[oc=a,on=2,sp=2,sn=1,sg=m];[oc=a,on=2,sp=3,sn=1,t=i|j]
       ን	[oc=a,on=2,sp=2,sn=1,sg=f];[oc=a,on=2,t=p,sp=3,sn=1];[oc=a,on=2,sn=2]
-      አኝ	[oc=a,on=1,sp=2,sn=1,sg=m];[oc=a,on=1,sp=3,sn=1,t=i|j]
-      ኝ 	[oc=a,on=1,sp=2,sn=1,sg=f];[oc=a,on=1,t=p,sp=3,sn=1];[oc=a,on=1,sn=2]
-      ልን	[oc=b,on=2]
-      ልኝ	[oc=b,on=1]
-      ብን	[oc=m,on=2]
-      ብኝ	[oc=m,on=1]
+      አ/ኝ	<አኝ>	[oc=a,on=1,sp=2,sn=1,sg=m];[oc=a,on=1,sp=3,sn=1,t=i|j]
+      /ኝ 	<ኝ>		[oc=a,on=1,sp=2,sn=1,sg=f];[oc=a,on=1,t=p,sp=3,sn=1];[oc=a,on=1,sn=2]
+      /ልን	<ልን>	[oc=b,on=2]
+      /ልኝ	<ልኝ>	[oc=b,on=1]
+      /ብን	<ብን>	[oc=m,on=2]
+      /ብ/ኝ	<ብኝ>	[oc=m,on=1]
   [op=2,sp=1|3]
       ሽ	[oc=a,on=1,og=f,of=i]
       ህ	[oc=a,on=1,og=m,of=i]
-      ኣችሁ	[oc=a,on=2]
+      ኣ/ችሁ	<ኣችሁ>	[oc=a,on=2]
       ዎት	[oc=a,on=1,of=f]
-      ልሽ	[oc=b,on=1,og=f,of=i]
-      ልህ	[oc=b,on=1,og=m,of=i]
-      ላችሁ	[oc=b,on=2]
-      ልዎት	[oc=b,on=1,of=f]
-      ብሽ	[oc=m,on=1,og=f,of=i]
-      ብህ	[oc=m,on=1,og=m,of=i]
-      ባችሁ	[oc=m,on=2]
-      ብዎት	[oc=m,on=1,of=f]
+      /ልሽ	<ልሽ>	[oc=b,on=1,og=f,of=i]
+      /ልህ	<ልህ>	[oc=b,on=1,og=m,of=i]
+      /ላ/ችሁ	<ላችሁ>	[oc=b,on=2]
+      /ልዎት		<ልዎት>	[oc=b,on=1,of=f]
+      /ብሽ		<ብሽ>	[oc=m,on=1,og=f,of=i]
+      /ብህ		<ብህ>	[oc=m,on=1,og=m,of=i]
+      /ባ/ችሁ	<ባችሁ>	[oc=m,on=2]
+      /ብዎት		<ብዎት>	[oc=m,on=1,of=f]
   --   	[op=0]
 
 $ ob_bound
   -
 
 $ neg2
-  ም		[t=i|p,+neg,+mc]
-  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
+  (/)ም	<ም>	[t=i|p,+neg,+mc]
+  --			[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
 
 $ aux
-  ኣል		[t=i,sp=3,sn=1,sg=m,-neg,+mc];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc];[t=c,sp=1,sn=2,-neg,+mc];[t=c,sp=2,-neg,+mc];[t=c,sp=3,sn=1,sg=m,-neg,+mc];[t=c,sp=3,sn=2,-neg,+mc]
-  ኣለሁ	[t=i|c,sp=1,sn=1,-neg,+mc]
-  ኣለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc]
-  ኣለህ	[t=i,sp=2,sn=1,sg=m,-neg,+mc]
-  ኣለሽ	[t=i,sp=2,sn=1,sg=f,-neg,+mc]
-  ኣለን	[t=i,sp=1,sn=2,-neg,+mc]
-  ኣላችሁ	[t=i,sp=2,sn=2,-neg,+mc]
-  ኣሉ		[t=i,sp=3,sn=2,op=0,-neg,+mc]
-  --	        [t=p|j];[t=i|c,-mc];[t=i,+neg]
+  ኣ(/)ል	<ኣል> [t=i,sp=3,sn=1,sg=m,-neg,+mc];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc];[t=c,sp=1,sn=2,-neg,+mc];[t=c,sp=2,-neg,+mc];[t=c,sp=3,sn=1,sg=m,-neg,+mc];[t=c,sp=3,sn=2,-neg,+mc]
+  ኣ/ለሁ	<ኣለሁ>	[t=i|c,sp=1,sn=1,-neg,+mc]
+  ኣ/ለች	<ኣለች> 	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc]
+  ኣ/ለህ	<ኣለህ> 	[t=i,sp=2,sn=1,sg=m,-neg,+mc]
+  ኣ/ለሽ	<ኣለሽ> 	[t=i,sp=2,sn=1,sg=f,-neg,+mc]
+  ኣ/ለን	<ኣለን> 	[t=i,sp=1,sn=2,-neg,+mc]
+  ኣ/ላ/ችሁ	<ኣላችሁ>	[t=i,sp=2,sn=2,-neg,+mc]
+  ኣ/ሉ	<ኣሉ>	[t=i,sp=3,sn=2,op=0,-neg,+mc]
+  --				[t=p|j];[t=i|c,-mc];[t=i,+neg]
+
+$ aux_bound
+  -
+
+$ accus
+  ን		[+acc,+rel]
+  --		[-acc]
+
+$ postclitic
+  /ና		<ና>		[pcl=ና]
+  /ም		<ም>		[pcl=ም,-neg];[pcl=ም,+neg,+mc]
+  /ማ		<ማ>		[pcl=ማ]
+  /ስ		<ስ>		[pcl=ስ]
+  /ሳ		<ሳ>		[pcl=ሳ]
+  ኣ		<ኣ>		[pcl=ኣ]
+  --				[pcl=None]
 
 $ end
   --		[pos=v]

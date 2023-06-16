@@ -1,9 +1,9 @@
 -> start
 
 start -> start	[*v]
-start -> C		[*]
+start -> C		[*;/]
 C -> start		[*v]
-C -> C			[*-ይ]
+C -> C			[*-ይ;/]
 C -> y			[ይ]
 
 # only certain consonants are actually possible (ስ ብ ል ድ ክ ም), so this is too general.

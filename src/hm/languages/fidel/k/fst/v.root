@@ -1,12 +1,12 @@
 # all velars palatalizable? what about /n/?
 $ ~yE[-neg];[t=i]
 $ *ye(-^)[-neg];[t=i]
-%A::		1:e,I;			2:e,I;			3:I
+%A::		1:e,I;			2:e,I,/e;		3:I
 %A,1='::	1:a,I
 %A,2='::	1:a,e;			2:0
-%A,3='::					2:a;			3:0
-%B::		1:e,*ye,~yE;	2:e,I;			3:I
-%C::		1:a;			2:e,I;			3:I
+%A,3='::					2:a,/a;		3:0
+%B::		1:e,*ye,~yE;	2:/I,/e;		3:I
+%C::		1:a;			2:e,I,/e,/I;	3:I
 
 <ስ ብ ር>	      		c=A,+tr
 

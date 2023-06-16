@@ -1,6 +1,6 @@
 -> start
 
-start -> start 	[*;*v;-;<;>]
+start -> start 	[*;*v;-;<;>;/]
 
 start -> a1		[ኣ:ኣ=]
 
@@ -9,7 +9,7 @@ start -> te.	[ተ:ተ=]		[t=p|c];[t=j,sp=2];[t=i,1=እ]
 te. -> start	[<]
 
 # gemination
-start -> t.		[:ተ=]		[t=i,tmp=[1=X]];[t=j,sp=1|3]
+start -> t.		[/:ተ=]		[t=i,tmp=[1=X]];[t=j,sp=1|3]
 
 t. -> start		[<]
 
@@ -20,7 +20,9 @@ as. -> as+.		[<]			[tmp=[1=X]]
 as+. -> start	[^S]		
 
 # gemination
-a1 -> start		[<]			[1=ስ];[1=ዝ];[1=ሽ];[1=ዥ]
+a1 -> a1gem		[/:]
+
+a1gem -> start	[<]			[1=ስ];[1=ዝ];[1=ሽ];[1=ዥ]
 
 as. -> ast.		[ተ:]		[1=እ,a=i]
 

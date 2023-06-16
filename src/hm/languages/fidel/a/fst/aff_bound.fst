@@ -5,16 +5,8 @@ first -> start	[*v;*]
 first -> first	[:-;:<]
 first -> CV		[]
 
-start -> start   [*v;*]
+start -> start   [*v;*;/]
 start -> CV		[]
-
-#start -> V.+k	[*v]
-#V.+k -> V+.k	[:>]
-#V+.k -> start	[ህ:ክ;ሁ:ኩ]
-
-#start -> s.s	[:ስ]
-#s.s -> ss.		[:<]
-#ss. -> start	[ሰ;ሳ;ሶ;ሱ;ዘ;ዛ;ዞ;ዝ;ዙ;ሸ;ሻ;ሾ;ሽ;ሹ;ዠ;ዣ;ዦ;ዡ;ዥ]
 
 CV -> .-a        	[{I2a};{e2a};*a]
 .-a -> -.a		[:-;:<;:>]
@@ -46,7 +38,7 @@ oua-. -> start	[:ኣ]
 
 # 2sf t=i|j suffix
 # * - ኢ -> *i
-CV -> .-i		[{^I2i}]
+CV -> .-i		[{^I2i};{^a2i}]
 .-i -> -.i		[:<;:>]
 -.i -> start	[:ኢ]
 -.i -> i		[:ኢ]
@@ -60,11 +52,11 @@ ya.- -> ya-.	[:-]
 ya-.-> ya-.		[:-]
 ya-. -> start	[:ኣ]
 
-# delete - and + when followed by a consonant
+# delete -, <, and > when followed by a consonant
 start -> -.X	[:-;:<;:>]
 -.X -> -.X		[:-;:<;:>]
 # delete እ following other segments
--.X -> start	[**;**v;:እ]
+-.X -> start	[**;**v;/;:እ]
 -.X -> CV		[]
 
 start ->
