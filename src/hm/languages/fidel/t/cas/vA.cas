@@ -32,6 +32,6 @@ weighting = UNIFICATION
 
 ## FSTs
 #>aff_bound<
->ijsuf<
+>suf<
 # Morphotactics
 >vA.mtx<

@@ -160,6 +160,28 @@ $$ L እ|ሕ|ዕ
 [t=c,v=p|a]
 *	*e	*	*i	*
 
+%%a=a,c=G,+strong
+[t=p,v=p|a]
+[t=i|j,v=p]
+*	*e	*a	*e	*
+
+[t=i|j,v=a]
+*	*e	*a	*	*
+
+[t=c,v=p|a]
+*	*e	*a	*i	*
+
+%%a=i,c=G,+strong
+[t=p,v=p|a]
+[t=i|j,v=p]
+*	*e	*e	*a	*e	*
+
+[t=i|j,v=a]
+*	*e	*e	*a	*	*
+
+[t=c,v=p|a]
+*	*e	*e	*a	*i	*
+
 %%a=0,c=H,+strong
 [t=p,v=p|a]
 [t=i|j,v=p]
@@ -170,6 +192,8 @@ $$ L እ|ሕ|ዕ
 
 [t=c,v=p|a]
 *	*e	*a	*i	*
+
+%%a=i,c=H,+strong == G
 
 %%a=0,c=I,+strong
 [t=p,v=a|p]
@@ -182,6 +206,28 @@ $$ L እ|ሕ|ዕ
 [t=c,v=p|a]
 *	*e	*i	*
 
+%%a=a,c=I,+strong
+[t=p,v=p|a]
+[t=i|j,v=p]
+*	*a	*e	*
+
+[t=i|j,v=a]
+*	*a	*	*
+
+[t=c,v=p|a]
+*	*a	*i	*
+
+%%a=i,c=I,+strong
+[t=p,v=p|a]
+[t=i|j,v=p]
+*	*e	*a	*e	*
+
+[t=i|j,v=a]
+*	*e	*a	*	*
+
+[t=c,v=p|a]
+*	*e	*a	*i	*
+
 %%a=0,c=J,+strong
 [t=p,v=p|a]
 [t=i|j,v=p]
@@ -193,19 +239,21 @@ $$ L እ|ሕ|ዕ
 [t=c,v=p|a]
 *	*a	*i	*
 
+%%a=i,c=J,+strong == I
+
 %%a=0,c=A,-strong
 
-%1=L
-[t=p,v=0|p]
-[t=j,v=p]
-*a	*e	*
+#%1=L
+#[t=p,v=0|p]
+#[t=j,v=p]
+#*a	*e	*
 
-[t=p,v=p,sp=3]
-[t=i,v=0,+suf]
-*a	*	*
+#[t=p,v=p,sp=3]
+#[t=i,v=0,+suf]
+#*a	*	*
 
-[t=i,v=0,-suf]
-*a	*:	*
+#[t=i,v=0,-suf]
+#*a	*:	*
 
 %2=L
 [t=p,v=0]
@@ -281,62 +329,60 @@ $$ L እ|ሕ|ዕ
 [t=c,v=0,sp=1|2]
 *E	-	*
 
-%3=ው
-# or have this happen in a phonological rule
-[t=p,v=0,sp=1|2]
-*e	*o	-
-
-[t=p,v=0,sp=3]
-# also *e *e ፈተ
-*e	*e	*
-
-[t=i,v=0,+suf]
-*e	*	*
-
-[t=i,v=0,-suf]
-*e	*:u	-
-
-# varies with suffix? ፍቶ ፍተዉ
-[t=j,v=0,-suf]
-*	*o	-
-[t=j,v=0,+suf]
-*	*e	*
-
-[t=c,v=0,sp=2]
-[t=c,v=0,sp=1,sn=2]
-*e	*i	-
-
-[t=c,v=0,sp=3]
-[t=c,v=0,sp=1,sn=1]
-*e	*	ይ
-
-%3=ይ
-# or have this happen in a phonological rule
-[t=p,v=0,sp=1|2]
-*e	*e	-
-
-[t=p,v=0,sp=3]
-*e	*e	*
-
-[t=i,v=0,+suf]
-*e	*	*
-
-[t=i,v=0,-suf]
-*e	*:i	-
-
-# varies with suffix? ድለ ድለዩ?
-[t=j,v=0,-suf]
-*	*e
-[t=j,v=0,+suf]
-*	*e	*
-
-[t=c,v=0,sp=2]
-[t=c,v=0,sp=1,sn=2]
-*e	*i	-
-
-[t=c,v=0,sp=3]
-[t=c,v=0,sp=1,sn=1]
-*e	*	*
+##%3=ው
+##
+##[t=p,v=0,sp=1|2]
+##*e	*o	-
+##
+##[t=p,v=0,sp=3]
+### also *e *e ፈተ
+##*e	*e	*
+##
+##[t=i,v=0,+suf]
+##*e	*	*
+##
+##[t=i,v=0,-suf]
+##*e	*:u	-
+##
+##[t=j,v=0,-suf]
+##*	*o	-
+##[t=j,v=0,+suf]
+##*	*e	*
+##
+##[t=c,v=0,sp=2]
+##[t=c,v=0,sp=1,sn=2]
+##*e	*i	-
+##
+##[t=c,v=0,sp=3]
+##[t=c,v=0,sp=1,sn=1]
+##*e	*	ይ
+##
+##%3=ይ
+##
+##[t=p,v=0,sp=1|2]
+##*e	*e	-
+##
+##[t=p,v=0,sp=3]
+##*e	*e	*
+##
+##[t=i,v=0,+suf]
+##*e	*	*
+##
+##[t=i,v=0,-suf]
+##*e	*:i	-
+##
+##[t=j,v=0,-suf]
+##*	*e
+##[t=j,v=0,+suf]
+##*	*e	*
+##
+##[t=c,v=0,sp=2]
+##[t=c,v=0,sp=1,sn=2]
+##*e	*i	-
+##
+##[t=c,v=0,sp=3]
+##[t=c,v=0,sp=1,sn=1]
+##*e	*	*
 
 %3=ይ,2=L
 # ረኣየ
@@ -357,24 +403,158 @@ $$ L እ|ሕ|ዕ
 [t=c,v=0,sp=3]
 *	*	*
 
-%%a=0,c=B,-strong
-
-%1=L
-[t=p,v=0|p]
-[t=j,v=p]
-*a	*:e	*
-
-[t=c]
-*a	*:i	*
+%%a=a,c=A,-strong
 
 %3=L
-# መጽእ- -አ
-[t=p,v=0,sp=3]
+[t=p,v=p|a,sp=3]
+[t=i|j,v=a]
+*a	*	*
+
+[t=p,v=p|a,sp=1|2]
+[t=i|j,v=p]
+*a	*a	*
+
+[t=c,v=p|a]
+# same as for +strong
+*a	*i	*
+
+##%3=ይ
+##[t=p,v=p|a,sp=3]
+##[t=i|j,v=p,+suf]
+##*a	*e	*
+##
+##[t=p,v=p|a,sp=1|2]
+##[t=i|j,v=p,-suf]
+##*a	*e	-
+##
+##[t=i|j,v=a,-suf]
+##*a	*i	-
+##
+##[t=i|j,v=a,+suf]
+##[t=c,v=p|a]
+##*a	*	*
+##
+##%3=ው
+##[t=p,v=p|a,sp=3]
+##[t=i|j,v=p,+suf]
+##*a	*e	*
+##
+##[t=p,v=p|a,sp=1|2]
+##[t=i|j,v=p,-suf]
+##*a	*o	-
+##
+##[t=i|j,v=a,-suf]
+##*a	*u	-
+##
+##[t=i|j,v=a,+suf]
+### not in the word DB
+##*a	*	*
+##
+### as with a=0, two possibilities for t=c, depending on whether vowel or consonant follows
+##[t=c,v=p|a,sp=3]
+##[t=c,v=p|a,sp=1,sn=1]
+##*a	*	ይ
+##
+##[t=c,v=p|a,sp=2]
+##[t=c,v=p|a,sp=1,sn=2]
+##*a	*i	-
+
+%%a=i,c=A,-strong
+
+%3=L
+# for some verbs, like ሰምዔ, the first vowel may be I
+# should this be in irregular file?
+
+[t=p,sp=3]
+[t=i|j,v=0|a]
+*e	*a	*	*
+
+[t=p,sp=1|2]
+[t=i|j,v=p]
+*e	*a	*a	*
+
+[t=c]
+*e	*a	*i	*
+
+##%3=ይ
+##[t=p,sp=3]
+##[t=i|j,v=p,+suf]
+##*e	*a	*e	*
+##
+##[t=p,sp=1|2]
+##[t=i|j,v=p,-suf]
+##*e	*a	*e	-
+##
+##[t=i|j,v=0|a,-suf]
+##*e	*a	*i	-
+##
+##[t=c]
+##[t=i|j,v=0|a,+suf]
+##*e	*a	*	*
+##
+##%3=ው
+##[t=p,sp=3]
+##[t=i|j,v=p,+suf]
+##*e	*a	*e	*
+##
+##[t=p,sp=1|2]
+##[t=i|j,v=p,-suf]
+##*e	*a	*o	-
+##
+##[t=i|j,v=0|a,-suf]
+##*e	*a	*u	-
+##
+##[t=i|j,v=0|a,+suf]
+### not in the word DB
+##*e    *a	*	*
+##
+### as with a=0, two possibilities for t=c, depending on whether vowel or consonant follows
+##[t=c,sp=3]
+##[t=c,sp=1,sn=1]
+##*e	*a	*	ይ
+##
+##[t=c,sp=2]
+##[t=c,sp=1,sn=2]
+##*e	*a	*i	-
+
+%%a=0,c=B,-strong
+
+##%1=L
+##[t=p]
+##[t=j,v=p]
+##*a	*:e	*
+##
+##[t=i,v=0]
+##*	*:	*
+##
+##[t=i,v=p]
+##*	*:e	*
+##
+##[t=i|j,v=a]
+##[t=j,v=0]
+##*a	*:	*
+##
+##[t=j,v=0]
+##*a	*:e	*
+##
+##[t=c]
+##*a	*:i	*
+
+%3=L
+[t=p,sp=3]
+[t=j,v=0|a]
+[t=i,v=a]
 *e	*:	*
 
-[t=p,v=0,sp=1|2]
+[t=p,sp=1|2]
 [t=j,v=p]
 *e	*:a	*
 
+[t=i,v=0]
+*	*:	*
+
 [t=i,v=p]
 *	*:a	*
+
+[t=c]
+*e	*:i	*

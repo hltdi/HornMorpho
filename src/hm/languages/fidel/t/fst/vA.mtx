@@ -54,9 +54,9 @@ $ sb_suf
   አን   [t=c,sp=3,sn=2,sg=f]
   --   [t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=1];[t=i|j,sp=3,sn=1]
 
-$ ss_bound
-  -
-
+#$ ss_bound
+#  -
+#
 $ ob_suf
   --   [op=0]
 
