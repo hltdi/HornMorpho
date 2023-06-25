@@ -20,12 +20,17 @@ $ sb_pre
   ን   [t=i|j,sp=1,sn=2]
   --  [t=p|c];[t=j,sp=2,-neg]
 
-#$ voice
-#  ተ   [t=p,vc=ps,cpp=None];[t=j,sp=2,vc=ps]
-#  ት    [t=i,vc=ps];[t=j,sp=1|3,vc=ps];[t=p,vc=ps,cpp=የ]
-#  =ኣ  [vc=a]
-#  =ኣት [vc=at]
-#  --  [vc=0]
+$ sp_bound
+  -
+
+$ voice_pre
+  [v=p]
+    ተ			[t=p|c];[t=j,sp=2,-neg]
+    /			[t=j,sp=1|3];[t=j,sp=2,+neg];[t=i,a=a|i]
+  [v=a]
+    ኣ			[a=0]
+    ኣ=		[a=a|i]
+  --			[v=0];[v=p,t=i]
 
 $ prestem
   <
@@ -54,11 +59,32 @@ $ sb_suf
   አን   [t=c,sp=3,sn=2,sg=f]
   --   [t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=1];[t=i|j,sp=3,sn=1]
 
-#$ ss_bound
-#  -
-#
+$ ss_bound
+  -
+
 $ ob_suf
-  --   [op=0]
+  [op=1]
+    /ኒ	[on=1,sn=1]
+    ኒ		[on=1,sn=2]
+    /ና	[on=2,sn=1]
+    ና		[on=2,sn=2]
+  [op=2]
+    /ካ	[on=1,og=m,sn=1]
+    ኻ		[on=1,og=m,sn=2]
+    /ኪ	[on=1,og=f,sn=1]
+    ኺ		[on=1,og=f,sn=2]
+    /ኩም	[on=2,og=m,sn=1]
+    ኹም	[on=2,og=m,sn=2]
+    /ክን	[on=2,og=f,sn=1]
+    ኽን	[on=2,og=f,sn=2]
+  [op=3,on=1,og=m]
+    ኦ		[t=i,sp=1];[t=i,sp=2,sn=1,sg=m];[t=i,sp=3,sn=1];[t=p,sp=3,sn=1,sg=m];[sp=2|3,sn=2,sg=f]
+    ዎ		[t=i|c|j,sp=2|3,sn=2,sg=m];[t=c,sp=3,sn=1,sg=m]
+    /ዎ	[t=p,sp=1,sn=1]
+    /ዮ	[t=p|c,sp=2,sn=1];[t=c,sp=1];[t=p,sp=1,sn=2];[t=i|j,sp=2,sn=1,sg=f]
+    /ቶ	[t=p|c,sp=3,sn=1,sg=f]
+    _ኦ	[t=j,sp=1];[t=j,sp=2,sn=1,sg=m];[t=j,sp=3,sn=1]
+  --		[op=0]
 
 #$ end
 #  --   [t=j];[t=i,-prog];[t=p,-cvb]

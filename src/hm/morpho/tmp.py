@@ -51,10 +51,11 @@ class Template:
     EMPTY_CHAR = '-'
 
     @staticmethod
-    def make_template_feats(constraints, templength):
+    def make_template_feats(constraints, templength, char_sets):
         '''
         constraints is something like 1=እ or 1=እ,3=ይ.
         '''
+#        print("*** Making template feats {} {} {}".format(constraints, templength, char_sets))
         feats = []
         if constraints:
             constraints = [c.split('=') for c in constraints.split(',')]
@@ -171,7 +172,7 @@ class Template:
         # Add constraints to all features
         if constraints:
             mainconstraint, weakconstraint = constraints
-            template_feats = Template.make_template_feats(weakconstraint, len(template))
+            template_feats = Template.make_template_feats(weakconstraint, len(template), char_sets)
             weakconstraint = Template.expand_weak_constraint(weakconstraint, char_sets)
             constraints = "{},{},tmp=[{}]".format(mainconstraint, weakconstraint, template_feats)
             for i, feature in enumerate(features):
