@@ -31,8 +31,12 @@ $$ L እ|ሕ|ዕ
 [t=p,v=a]
 *	*e	*
 
-[t=i|j,v=a]
+[t=j,v=a]
+[t=i,v=a,+suf]
 *	*	*
+
+[t=i,v=a,-suf]
+*	*:	*
 
 [t=c,v=a]
 *	*i	*

@@ -1,17 +1,18 @@
-#$ conj_prep_pre
-#  ዝ   [cpp=z]
-#  -- [cpp=None]
+$ conj1
+  ዝ   [cnj=ዝ,+rel]
+  ክ   [cnj=ክ,-rel]
+  -- [cnj=0,-rel]
 
-#$ sub_bound
-#  -
+$ conj1_bound
+  -
 
-#$ neg
-## These could be preceded by conjunctions
-# ኣይ     [+neg]
-#  --   [-neg]
+$ neg
+# These could be preceded by conjunctions
+ ኣይ     [+neg]
+  --   [-neg]
 
-#$ neg_bound
-#  -
+$ neg_bound
+  -
 
 $ sb_pre
   ይ   [t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
