@@ -644,7 +644,9 @@ class Morphology(dict):
         return fs.get('sns', Morphology.default_sense)
 
 class POSMorphology:
-    """Lists of MorphCats and GramCats, anal and gen FSTs for a particular POS class."""
+    """
+    Lists of MorphCats and GramCats, anal and gen FSTs for a particular POS class.
+    """
 
     # Indices for different FSTs in self.fsts
     # Top level
@@ -1289,7 +1291,9 @@ class POSMorphology:
              result_limit=0, experimental=False, mwe=False,
              to_dict=False, sep_anals=False, normalize=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
-        """Analyze form."""
+        """
+        Analyze form.
+        """
         fst = self.get_fst(generate=False, guess=guess, phon=phon, segment=segment,
                            experimental=experimental, mwe=mwe, translate=False)
 
@@ -2100,6 +2104,9 @@ class POSMorphology:
 #        print("scores {}".format(scores))
         # return the outputs with scores appended
         return [o + [s] for o, s in zip(output, scores)]
+
+    ### New methods to process output of anal(), hopefully replacing the methods in Language.
+
 
 class MorphCat(list):
     """A list of morphs, default first."""

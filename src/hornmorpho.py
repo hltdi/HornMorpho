@@ -223,11 +223,11 @@ def genrecompile(lang, pos, create_fst=True):
     '''
     return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst)
 
-def analrecompile(lang, pos, create_fst=True):
+def analrecompile(lang, pos, create_fst=True, seglevel=2):
     '''
     Recompile  the analysis FST for a language in the fidel folder.
     '''
-    return recompile(lang, pos, fidel=True, create_fst=create_fst)
+    return recompile(lang, pos, fidel=True, create_fst=create_fst, seglevel=seglevel)
 
 def transrecompile(src, trg, pos):
     '''

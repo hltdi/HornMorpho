@@ -1,6 +1,6 @@
 -> start
 
-start -> start 	[^N;-;<;>;/;_]
+start -> start 	[^N;-;<;>;/;_;']
 
 start -> a1		[ኣ:ኣ=]
 

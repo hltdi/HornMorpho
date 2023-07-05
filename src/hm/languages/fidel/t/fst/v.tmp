@@ -13,8 +13,11 @@ $$ L እ|ሕ|ዕ
 
 # optionally drop final vowel in perf pass: ተሰብረ
 [t=p,v=p,sp=3]
-[t=i,v=0,+suf]
+[t=i,v=0,+suf,-dup23]
 *e	*	*
+
+[t=i,v=0,+suf,+dup23]
+*e	*:	-
 
 [t=i,v=0,-suf]
 *e	*:	*
@@ -32,8 +35,11 @@ $$ L እ|ሕ|ዕ
 *	*e	*
 
 [t=j,v=a]
-[t=i,v=a,+suf]
+[t=i,v=a,+suf,-dup23]
 *	*	*
+
+[t=i,v=a,+suf,+dup23]
+*	*:	-
 
 [t=i,v=a,-suf]
 *	*:	*
