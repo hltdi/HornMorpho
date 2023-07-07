@@ -7,7 +7,7 @@
 """
 
 from . import morpho
-from . import internet_search
+#from . import internet_search
 
 #A = morpho.get_language('amh')
 #KS = morpho.get_language('ks')
@@ -21,8 +21,8 @@ INF = [FS("[v=inf,cls=A,-def]"), FS("[v=inf,cls=B,-def]")]
 IMP = [FS("[pos=v,tm=j_i,cls=A]"), FS("[pos=v,tm=j_i,cls=B]")]
 IMPFEM = [FS("[pos=v,tm=j_i,cls=A,sb=[+fem]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+fem]]")]
 IMPPL = [FS("[pos=v,tm=j_i,cls=A,sb=[+plr]]"), FS("[pos=v,tm=j_i,cls=B,sb=[+plr]]")]
-abyss = internet_search.abyssinica
-goog = internet_search.google
+#abyss = internet_search.abyssinica
+#goog = internet_search.google
 # VGEN = A.morphology['v'].gen
 VPOSP = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=ps,pp=None,cj2=None,-rel,-sub]")
 VPOST = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],vc=tr,pp=None,cj2=None,-rel,-sub]")
@@ -82,6 +82,31 @@ AS_WLD = ['', '', '', '0', 'te_', 'te_a', 'te_R', 'a_', 'a_a', 'a_R', 'as_', 'R'
 CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 10, 'R': 11}
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
+
+def geezify_lex(filename="n_stemX.lex", write=True, word_only=True):
+    lines = []
+    with open("hm/languages/amh/lex/" + filename, encoding='utf8') as file:
+        for line in file:
+            if line[0] == '#' or not line.strip():
+                continue
+            line = line.split()
+            if len(line) < 3:
+                print("** Something wrong with {}".format(line))
+            word = line[0]
+            word = geezify(word, gemination=True, gem_geez="_")
+            root = line[1]
+            if root != "''" and not word_only:
+                root = geezify(root, gemination=True, gem_geez="_")
+            if word_only:
+                lines.append(word)
+            else:
+                lines.append("{} {} {}".format(word, root, ' '.join(line[2:])))
+    if write:
+        with open("hm/languages/fidel/a/lex/" + filename, 'w', encoding='utf8') as file:
+            for line in lines:
+                print(line, file=file)
+    else:
+        return lines
 
 def fix_nadj():
     '''

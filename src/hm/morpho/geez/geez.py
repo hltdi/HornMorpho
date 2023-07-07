@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is a project of PLoGS.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020, 2022. PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2018, 2019, 2020, 2022, 2023. PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -309,7 +309,7 @@ def read_conv(filename, simple=False):
 
 #def larynA(form):
 
-def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False):
+def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False, gem_geez=GEMINATION_GEEZ):
     '''
     Convert form in SERA to Geez, using translation table.
     (This is increasingly ugly; it needs to be cleaned up at some point.)
@@ -381,12 +381,12 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
                         # and then a vowel
                         char = form[n:n+2] + form[n+3]
                         trans = table.get(char, char)
-                        trans += GEMINATION_GEEZ
+                        trans += gem_geez
                         n += 2
                     else:
                         char = form[n:n+2]
                         trans = table.get(char, char)
-                        trans += GEMINATION_GEEZ
+                        trans += gem_geez
                         n += 1
                 else:
                     trans = table.get(form[n : n + 2], char + next_char)
@@ -397,15 +397,15 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
                     if v == 'O' and lang == 'am':
                         # Combining 'O' in Amh following gemination; wendm_Oc
                         v = 'o'
-                    trans = table.get(char + v, char + v) + GEMINATION_GEEZ
+                    trans = table.get(char + v, char + v) + gem_geez
                     n += 2
                  else:
-                    trans = table.get(char, char) + GEMINATION_GEEZ
+                    trans = table.get(char, char) + gem_geez
                     n += 1
             else:
                 trans = table.get(char, char)
         elif char == GEMINATION_ROMAN:
-            trans = GEMINATION_GEEZ
+            trans = gem_geez
         else:
 #            if prepunc and char in table:
 #                prepunc = False
@@ -414,10 +414,10 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
         n += 1
     return res
 
-def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=False):
+def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=False, gem_geez=GEMINATION_GEEZ):
     return \
       sera2geez(get_table(lang, False), form, lang=lang,
-                gemination=gemination, deepenthesize=deepenthesize)
+                gemination=gemination, deepenthesize=deepenthesize, gem_geez=gem_geez)
 
 def romanize(form, lang='am', normalize=True, gemination=False):
     return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination, simp=normalize)
