@@ -55,11 +55,12 @@ class Template:
         '''
         constraints is something like 1=እ or 1=እ,3=ይ.
         '''
-#        print("*** Making template feats {} {} {}".format(constraints, templength, char_sets))
+#        print("*** Making template feats constraints={} templength={} charsets={}".format(constraints, templength, char_sets))
         feats = []
         if constraints:
             constraints = [c.split('=') for c in constraints.split(',')]
-            constraints = dict([(int(f), v) for f, v in constraints])
+#            constraints = dict([(int(f), v) for f, v in constraints])
+            constraints = dict([(f, v) for f, v in constraints])
         else:
             constraints = {}
         for i in range(templength):
@@ -132,7 +133,8 @@ class Template:
                 end = 'end'
 
             for index, (dest, charset, gem_feat, gem) in enumerate(states_to_create):
-#                print("** state {} gfeat {} gem {}".format(dest, gem_feat.__repr__(), gem))
+#                if gem:
+#                    print("** state {} gfeat {} charset {}".format(dest, gem_feat.__repr__(), charset))
                 if not fst.has_state(dest):
                     fst.add_state(dest)
                 wt=None

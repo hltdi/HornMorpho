@@ -38,7 +38,7 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 	  ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
 	  ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
 	  ኣ= ተ=
-	  / _ ፟ < >
+	  / _ ፟ < > -
 #     =አ =ኡ =ኢ =ኣ =ኤ =እ =ኦ ^አ
 #     =ክ =ኩ
      A B C D E F G H I J K
@@ -63,7 +63,7 @@ feats:
     mc = True | False
     adp = None | ለ | በ | ከ | እንደ | እስከ |ስለ | ወደ
     cnj1 = None | ብ | ስ | ል | እንድ | እየ
-    cnj2 = None | ም | ስ | ማ | ሳ | ና | ኣ
+    cnj2 = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
   pos: v_stem v_stem
     a = 0 | a | i
@@ -82,7 +82,19 @@ feats:
     col = False | True
     dis = False | True
     adp = None | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ | ሽለ
-    cnj = None | ም | ስ | ማ | ሳ | ና
+    cnj = None | ም | ስ | ማ | ሳ | ና | ኮ
+
+  pos: cop copula
+    pos = cop
+    p = 1 | 2 | 3
+    n = 1 | 2
+    g = m | f
+    neg = False | True
+    frm = False | True
+    rel = False | True
+    sub = False | True
+    cnj1 = None | ስለ | እንደ
+    cnj2 = None | ኣ | ኮ | ና
 
 ## Stringsets
 

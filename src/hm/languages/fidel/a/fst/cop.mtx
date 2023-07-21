@@ -1,0 +1,56 @@
+$ conj_prep1
+  የ		[+rel,+sub,+neg]
+  እንደ	[-rel,+sub,+neg,cnj1=እንደ]
+  ስለ		[-rel,+sub,+neg,cnj1=ስለ]
+  --  	[-neg,cnj1=None];[-rel,-sub,+neg,cnj1=None]
+
+$ cp_bound
+  -
+
+$ neg_pre
+  ኣይ		[+neg]
+  --		[-neg]
+
+$ stem_pre
+  <
+
+$ stem1
+  ደ/ለ	[+neg]
+  ነ		[-neg]
+
+$ stem_post
+  >
+
+$ subj
+  /ኝ		[p=1,n=1,-neg]
+  ሁ		[p=1,n=1,+neg]
+  ህ		[p=2,n=1,g=m,-frm]
+  ሽ		[p=2,n=1,g=f,-frm]
+  ዎት		[p=2,+frm]
+  ው		[p=3,n=1,g=m,-neg]
+  /ች		[p=3,n=1,g=f]
+  ኣት		[p=3,n=1,g=f,-neg]
+  ን		[p=1,n=2]
+  ኣ/ችሁ	[p=2,n=2]
+  ኣ/ቸው	[p=3,n=2,-neg]
+  ኡ		[p=3,n=2,+neg]
+  --		[p=3,n=1,g=m,+neg]
+
+$ subj_bound
+  -
+
+$ neg_suf
+  ም		[+neg,-sub]
+  --
+
+$ neg_suf_bound
+  -
+
+$ conj2
+  /ና		[cnj2=ና]
+  ኣ		[cnj2=ኣ]
+  /ኮ		[cnj2=ኮ]
+  --		[cnj2=None]
+
+$ end
+  --		[pos=cop]

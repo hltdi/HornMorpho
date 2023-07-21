@@ -73,6 +73,9 @@ class Roots:
     # Abbreviation (lemma) for root type
     ROOT_TYPE_RE = re.compile(r'\s*\{(.+?)\}\s*:\s*(.+?)$')
 
+    # File with specific roots and their constraints
+    ROOT_FILE_RE = re.compile(r'\s*\+(.+)\+$')
+
     possep = ';'
     charmapsep = ';'
     vspecsep = ','
@@ -113,8 +116,9 @@ class Roots:
         return char.replace(EES.pre_gem_char, '').replace(':', '')
 
     @staticmethod
-    def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev, gen=False, seglevel=2):
-#        print("*** Creating root states for {}, seglevel={}, feats={}".format(cons, seglevel, feats.__repr__()))
+    def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev,
+                         gen=False, seglevel=2, gemination=True):
+#        print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
 
         def dup_weight(drules, weight):
             if drules:
@@ -127,14 +131,16 @@ class Roots:
             return weight
 
         def gem_char_arc(source, dest, inchar, outchar, weight, gem_weight, verbosity=0):
+#            print("** gem_char_arc {}->{}".format(inchar, outchar))
             outchar = outchar if (gen or seglevel==0) else inchar
             gem = EES.pre_gem_char
             dest_gem = dest + '_gem'
             if not fst.has_state(dest_gem):
                 fst.add_state(dest_gem)
+                outgem = gem if gemination and seglevel else ''
                 if verbosity:
-                    print("  ** outchar '', inchar {}, {}, {}".format('/', source, dest_gem))
-                charfeat_arc(gem, '', gem_weight, source, dest_gem, fst)
+                    print("  ** outchar {}, inchar {}, {}, {}".format(outgem, '/', source, dest_gem))
+                charfeat_arc(gem, outgem, gem_weight, source, dest_gem, fst)
             if verbosity:
                 print("  ** outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))
             charfeat_arc(inchar, outchar, weight, dest_gem, dest, fst)
@@ -430,7 +436,7 @@ class Roots:
         return result
 
     @staticmethod
-    def make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=False, seglevel=2):
+    def make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=False, seglevel=2, gemination=True):
         cons = cons.split()
         state_name = ''.join(cons)
         # Add this root to the POSMorphology instance's rootfeats dict
@@ -515,15 +521,63 @@ class Roots:
             fst.add_arc(source, dest, final_in, final_out)
 
     @staticmethod
+    def parse_root_file(filename, lexdir, roots, root_types):
+        file = os.path.join(lexdir, filename + ".lex")
+        s = open(file, encoding='utf8').read()
+#        print("** Opening root file {}".format(file))
+
+        lines = s.split('\n')[::-1]
+
+        while lines:
+            line = lines.pop().split('#')[0].rstrip() # strip comments
+
+            if not line.lstrip(): continue
+
+#            print("*** line: {}".format(line))
+
+            m = Roots.ROOT_RE.match(line)
+            if m:
+                cons, feats = m.groups()
+                cons = cons.split()
+                # A consonant may have an associated feature constraint
+                current_root = cons
+                for cindex, c in enumerate(cons):
+#                    print("*** {} {}".format(cindex, c))
+                    if (match := Roots.CHAR_FEAT_RE.match(c)):
+                        c, feature = match.groups()
+                        feature = FeatStruct(feature)
+                        cons[cindex] = (c, feature)
+#                print("*** cons {}, feats {}".format(cons, feats))
+
+                roots.append([cons, feats, []])
+                continue
+
+            m = Roots.SUBROOT_RE.match(line)
+            if m:
+                subrootfeats = m.groups()[0]
+#                print("*** Found subroot with features {}, current root {}".format(subrootfeats, roots[-1]))
+                # Add subrootfeatures to most recent root
+                roots[-1][2].append(subrootfeats)
+                continue
+
+            m = Roots.ROOT_TYPE_RE.match(line)
+            if m:
+                rtype, rtypefeats = m.groups()
+                root_types.append((rtype, rtypefeats))
+#                print("*** Root type {}, features {}".format(rtype, rtypefeats))
+                continue
+
+            print("*** Something wrong with {}".format(line))
+
+    @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, posmorph=None,
               directory='', seg_units=[], abbrevs=None, seglevel=2,
-              gemination=True,
-              weight_constraint=None, verbose=False):
+              lexdir='', gemination=True, weight_constraint=None, verbose=False):
         """
         Parse an FST from a string consisting of multiple lines from a file.
         Create a new FST if fst is None.
         """
-#        print("** Parsing roots file, fst {}, posmorph {}, gen {}, seglevel {}".format(fst, posmorph, gen, seglevel))
+#        print("** Parsing roots file, fst {}, posmorph {}, gen {}, seglevel {}, gemination {}".format(fst, posmorph, gen, seglevel, gemination))
 
 #        weighting = fst.weighting()
 
@@ -542,6 +596,8 @@ class Roots:
         roots = []
 
         irr_roots = {}
+
+        root_types = []
 
         char_maps = {}
 
@@ -686,6 +742,13 @@ class Roots:
                     charmap_weights[maplabel] = feature
                 continue
 
+            m = Roots.ROOT_FILE_RE.match(line)
+            if m:
+                filename = m.groups()[0]
+#                print("** Root file {}, lexdir {}".format(filename, lexdir))
+                Roots.parse_root_file(filename, lexdir, roots, root_types)
+                continue
+
             m = Roots.ROOT_RE.match(line)
             if m:
                 cons, feats = m.groups()
@@ -720,7 +783,8 @@ class Roots:
             m = Roots.ROOT_TYPE_RE.match(line)
             if m:
                 rtype, rtypefeats = m.groups()
-                print("*** Root type {}, features {}".format(rtype, rtypefeats))
+                root_types.append((rtype, rtypefeats))
+#                print("*** Root type {}, features {}".format(rtype, rtypefeats))
                 continue
 
             m = Roots.FEATURES_RE.match(line)
@@ -741,11 +805,11 @@ class Roots:
 
         for cons, feats, subroots in roots:
             Roots.make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph,
-                                   labbrev, gen=gen, seglevel=seglevel)
+                                   labbrev, gen=gen, seglevel=seglevel, gemination=gemination)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():
-                Roots.make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=gen, seglevel=seglevel)
+                Roots.make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=gen, seglevel=seglevel, gemination=gemination)
 
 #        print("** char maps {}".format(char_maps))
 #        print("** char maps weights {}".format(charmap_weights))

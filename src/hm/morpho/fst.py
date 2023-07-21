@@ -514,7 +514,7 @@ class FSTCascade(list):
         2023.2.28: Added seglevel.
         """
         if verbose:
-            print('Loading FST cascade from {} for {}, POS {}, posmorph {}'.format(filename, language, pos, posmorph))
+            print('Loading FST cascade from {} for {}, POS {}, posmorph {}, seglevel {}'.format(filename, language, pos, posmorph, seglevel))
         directory, fil = os.path.split(filename)
         label = del_suffix(fil, '.')
 
@@ -1870,6 +1870,7 @@ class FST:
     def restore(fst_name,
                 cas_directory='', fst_directory='', pkl_directory='',
                 cascade=None, weighting=UNIFICATION_SR, seg_units=[],
+                seglevel=0,
                 # if True, look for .pkl file to load
                 pickle=True,
                 # Features determining which FST
@@ -1922,6 +1923,7 @@ class FST:
             return FST.restore_parse_from_files(explicit, name,
                                                 cascade=cascade, weighting=weighting,
                                                 seg_units=seg_units,
+#                                                seglevel=seglevel,
                                                 create_weights=create_weights,
                                                 verbose=verbose), \
                    False
@@ -1936,6 +1938,7 @@ class FST:
                 return FST.restore_parse_from_files(empty_paths, empty_name,
                                                     cascade=cascade, weighting=weighting,
                                                     seg_units=seg_units,
+#                                                    seglevel=seglevel,
                                                     create_weights=create_weights,
                                                     verbose=verbose), \
                        False
@@ -2102,6 +2105,9 @@ class FST:
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
 
+        # Whether to output segments in mtax FST, when doing segmentation (seglevel > 0).
+        output_segs = not gen and seglevel
+
 #        print("** Loading FST from {}; cascade {}, language {}, POS {}".format(filename, cascade, cascade.language, 
 
         if suffix == 'fst':
@@ -2118,6 +2124,7 @@ class FST:
                 print("Loading roots from {}, seglevel={}, posmorph {}, gen {}".format(filename, seglevel, posmorph, gen))
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                posmorph=posmorph,
+                               lexdir = cascade.get_lex_dir(),
                                fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                cascade=cascade, directory=directory, seglevel=seglevel, gemination=gemination,
                                seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
@@ -2147,7 +2154,7 @@ class FST:
             # It's a file in MTAX format; parse_mtax() it
             fst = FST(label, cascade=cascade)
             mtax = MTax(fst, directory=directory)
-            mtax.parse(label, open(filename, encoding='utf-8').read(), gen=gen, verbose=verbose)
+            mtax.parse(label, open(filename, encoding='utf-8').read(), gen=gen, gemination=gemination, output_segs=output_segs, verbose=verbose)
             FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, verbose=verbose)
             return fst
 
@@ -2189,7 +2196,7 @@ class FST:
             dest = mtax.states[index+1][0]
             # Do the normal paths
             for in_string, out_string, weight in paths:
-#                print("** Compiling MTAX state: {} {} {}".format(in_string, out_string, weight.__repr__()))
+#                print("** Compiling MTAX state: in {}, out {}, wt {}".format(in_string, out_string, weight.__repr__()))
                 if '.lex' in in_string:
                     # in_string is a lex filename
                     label = in_string.split('.')[0]
@@ -2252,7 +2259,7 @@ class FST:
                     else:
                         mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
-#                    print("Making multiple arcs for {} from {} to {}, weight: {}".format(in_string, src, dest, weight))
+#                    print("  ** Compile MTAX: Making multiple arcs for {}->{} from {} to {}, weight: {}".format(in_string, out_string, src, dest, weight))
                     mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
@@ -2598,12 +2605,11 @@ class FST:
         else:
             raise ValueError("bad arc representation: %r" % string)
 
-    def _make_mult_arcs(self, in_string, out_string, src, dst, weight, seg_units,
-                        gen=False):
+    def _make_mult_arcs(self, in_string, out_string, src, dst, weight, seg_units, gen=False):
         """
         Create states and arcs to join src with dst, given multiple chars in in_string.
         """
-#        print("** make_mult_arcs: in {} out {} src {} dst {} wt {}".format(in_string, out_string, src, dst, weight.__repr__()))
+#        print("    ** make_mult_arcs: in {} out {} src {} dst {} wt {}".format(in_string, out_string, src, dst, weight.__repr__()))
         ## Intermediate state labels
         # In case there are spaces in in_string, remove these for state names
         in_string_label = in_string.replace(' ', '')
@@ -2684,8 +2690,11 @@ class FST:
 
     def _make_mult_arcs1(self, in_strings, out_strings, src, label_pre, label_suf, start_index,
                          weight=None):
-        '''Starting with src, create states for corresponding chars in in_strings and out_strings,
-        returning the last intermediate state.'''
+        '''
+        Starting with src, create states for corresponding chars in in_strings and out_strings,
+        returning the last intermediate state.
+        '''
+#        print("        ** _make_mult_arcs1: in {}, out {}".format(in_strings, out_strings))
         src1 = src
         dst1 = src
 #        if weight:

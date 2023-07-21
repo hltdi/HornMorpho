@@ -694,10 +694,56 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
         return pos.casc_inv
     return pos.casc
 
+def compile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
+            translate=False, experimental=False, mwe=False, seglevel=2,
+            gemination=True, split_index=0, verbose=True):
+    """
+    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
+    returning the morphology POS object for that POS.
+    If gen is True, create both the analyzer and generator.
+    Note: the resulting FSTs are not saved (written to a file). To do this, use the method
+    save_fst(), with the right options, for example, gen=True, segment=True.
+    """
+    # Look in the fidel directory for languages with these abbreviations
+    fidel = abbrev in morpho.FIDEL
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+                        fidel=fidel, load_morph=False, verbose=verbose)
+    fst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
+                             translate=translate, recreate=True, fidel=fidel,
+                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
+                             create_fst=True, relabel=True, gemination=gemination,
+                             compose_backwards=False, split_index=split_index,
+                             phon=phon, verbose=verbose)
+    if gen == True:
+        # Also create the generation FST
+        if seglevel == 0:
+            # Just invert the analyzer
+            genfst = fst.inverted()
+        else:
+            analfst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
+                                         translate=translate, recreate=True, fidel=fidel,
+                                         experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
+                                         create_fst=True, relabel=True, gemination=gemination,
+                                         compose_backwards=False, split_index=split_index,
+                                         setit=False,
+                                         phon=phon, verbose=verbose)
+            genfst = analfst.inverted()
+        pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
+                          experimental=experimental, mwe=mwe)
+#    if not fst and gen == True:
+#        print('Generation FST not found')
+#        # Load analysis FST
+#        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
+#        # ... and invert it for generation FST
+#        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
+#                           relabel=relabel, fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
+    return pos_morph
+
 def recompile(language, pos, phon=False, segment=False, gen=False,
               experimental=False, translate=False, backwards=False, seglevel=2,
               save=True, verbose=True):
-    '''Recompiles the cascade FST for the language and part-of-speech.
+    '''
+    Recompiles the cascade FST for the language and part-of-speech.
     @param language: abbreviation for a language, for example, 'gn'
     @param pos:    part-of-speech for the cascade, for example, 'v'
     @param phon:   whether the cascade is for phonology
@@ -744,7 +790,7 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
         return
     return casc.transduce1(string, fst_label=fst_label, fst_index=fst_index)
 
-def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
+def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False, fidel=False,
             translate=False, experimental=False, guess=True, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -756,10 +802,10 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
     @param verbose: whether to print out various messages
     @return:       POS object for the the language and POS
     """
-    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen,
+    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen, fidel=fidel,
               translate=translate, guess=guess, experimental=experimental, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
-                               load=load_morph, verbose=verbose)
+                               fidel=fidel, load=load_morph, verbose=verbose)
     if lang:
         return lang.morphology[pos]
 

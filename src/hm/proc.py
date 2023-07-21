@@ -83,6 +83,28 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
+def check_awi(file1="n_stem_an.lex", file2="n_stem1X.lex"):
+    words1 = []
+    words2 = []
+    with open("hm/languages/amh/lex/" + file1) as f1:
+        for line in f1:
+            if line[0] == '#' or not line.strip():
+                continue
+            word = line.split()[0]
+            if word.endswith("awi"):
+                word = word.replace('_', '')
+                words1.append(word)
+    with open("hm/languages/amh/lex/" + file2) as f2:
+        for line in f2:
+            if line[0] == '#' or not line.strip():
+                continue
+            word = line.split()[0]
+            word = word.replace('_', '')
+            if word.endswith("awi") and word not in words1:
+                word = geezify(word)
+                words2.append(word)
+    return words2
+
 def geezify_lex(filename="n_stemX.lex", write=True, word_only=True):
     lines = []
     with open("hm/languages/amh/lex/" + filename, encoding='utf8') as file:

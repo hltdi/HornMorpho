@@ -1038,6 +1038,7 @@ class POSMorphology:
                  simplified=False, phon=False, segment=False, translate=False,
                  experimental=False, mwe=False, pos='', gemination=True,
                  invert=False, compose_backwards=True, split_index=0,
+                 setit=True,
                  relabel=True, verbose=False):
         '''
         Load FST; if compose is False, search for saved FST in file and use that if it exists.
@@ -1045,11 +1046,11 @@ class POSMorphology:
         If guess is true, create the lexiconless guesser FST.
         2023.2.28: Added seglevel.
         '''
-#        print("*** load_fst {}".format(pos))
+#        print("*** load_fst {}, seglevel {}".format(pos, seglevel))
 
         # seglevel should be 0 if segment is 0
-        if not segment:
-            seglevel = 0
+#        if not segment:
+#            seglevel = 0
         
         fst = None
         name = self.fst_name(generate, guess, simplified, phon=phon, mwe=mwe,
@@ -1083,8 +1084,9 @@ class POSMorphology:
                     print("No pickle found for {}, creating one".format(name))
                     FST.pickle(fst, directory=self.morphology.get_pickle_dir(),
                                label=name)
-                self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
-                             segment=segment, translate=translate, experimental=experimental)
+                if setit:
+                    self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
+                                 segment=segment, translate=translate, experimental=experimental)
                 if create_casc and not self.casc:
                     casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                            create_networks=True, subcasc=subcasc, seglevel=seglevel,
@@ -1127,8 +1129,9 @@ class POSMorphology:
                                 fst.insert(insertion, start, end)
                         if invert:
                             fst = fst.inverted()
-                        self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
-                                     segment=segment, translate=translate, experimental=experimental)
+                        if setit:
+                            self.set_fst(fst, generate, guess, simplified, phon=phon, mwe=mwe,
+                                         segment=segment, translate=translate, experimental=experimental)
                         self.casc.append(fst)
                 elif verbose:
                     print("Not recreating FST")
@@ -1149,8 +1152,9 @@ class POSMorphology:
                   self.get_fst(False, guess, simplified, phon=phon, mwe=mwe,
                                segment=segment, translate=translate, experimental=experimental)
                 if fst:
-                    self.set_fst(fst.inverted(), True, guess, simplified, mwe=mwe,
-                                 phon=phon, segment=segment, experimental=experimental)
+                    if setit:
+                        self.set_fst(fst.inverted(), True, guess, simplified, mwe=mwe,
+                                     phon=phon, segment=segment, experimental=experimental)
                     if create_casc:
                         if not self.casc:
                             casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
@@ -1174,10 +1178,10 @@ class POSMorphology:
                         if casc:
                             self.casc = casc
                             self.casc_inv = self.casc.inverted()
-        if self.get_fst(generate, guess, simplified, phon=phon, mwe=mwe,
-                        segment=segment, translate=translate, experimental=experimental):
-            # FST found one way or another
-            return True
+        return self.get_fst(generate, guess, simplified, phon=phon, mwe=mwe,
+                            segment=segment, translate=translate, experimental=experimental)
+#            # FST found one way or another
+#            return True
 
     def load_trans_fst(self, trg_pos_morph, pos, lextrpos=None, gen=True):
         """
@@ -1229,6 +1233,9 @@ class POSMorphology:
         # Translation FST
 #        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
         self.set_fst(trans_fst, translate=True, tl=trg_abbrev)
+
+    def load_lemma_gen(self):
+        pass
 
     def pickle_all(self, replace=True, empty=True):
         """

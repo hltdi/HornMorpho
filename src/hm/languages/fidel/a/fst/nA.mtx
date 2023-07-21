@@ -34,7 +34,7 @@ $ poststem
   >
 
 $ plural
-  ኦች		[+pl,pos=n|adj,-col,-irr,ps=oc]
+  ኦ/ች	[+pl,pos=n|adj,-col,-irr,ps=oc]
   ኣን		[+pl,pos=n|adj,-col,-irr,ps=an]
   --		[-pl];[+pl,+col];[+pl,+irr]
 
@@ -69,6 +69,7 @@ $ conj
   /ማ		[cnj=ማ]
   /ሳ		[cnj=ሳ]
   /ና		[cnj=ና]
+  /ኮ		[cnj=ኮ]
   --		[cnj=None]
 
 ## STEM

@@ -180,7 +180,7 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
 
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                             translate=False, experimental=False, mwe=False, seglevel=2,
-                            fidel=False, create_fst=True, relabel=True,
+                            fidel=False, create_fst=True, relabel=True, gemination=True,
                             simplified=False, backwards=False, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
@@ -195,12 +195,12 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
                              translate=translate, simplified=simplified, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
-                             create_fst=create_fst, relabel=relabel,
+                             create_fst=create_fst, relabel=relabel, gemination=gemination,
                              compose_backwards=backwards, split_index=split_index,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
         print('Generation FST not found')
-        # Load analysis FST>
+        # Load analysis FST
         pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
@@ -223,11 +223,12 @@ def genrecompile(lang, pos, create_fst=True):
     '''
     return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst)
 
-def analrecompile(lang, pos, create_fst=True, seglevel=2):
+def analrecompile(lang, pos, create_fst=True, seglevel=2, gemination=True):
     '''
     Recompile  the analysis FST for a language in the fidel folder.
     '''
-    return recompile(lang, pos, fidel=True, create_fst=create_fst, seglevel=seglevel)
+    return recompile(lang, pos, fidel=True, create_fst=create_fst, seglevel=seglevel,
+                                       gemination=gemination)
 
 def transrecompile(src, trg, pos):
     '''

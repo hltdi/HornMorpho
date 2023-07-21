@@ -46,6 +46,8 @@ CODES = {'am': 'amh',
          'te': 'tig', 'T': 'tig',
          'om': 'orm', 'o': 'orm'}
 
+FIDEL = ['a', 't', 'ch', 'g', 'k', 'm']
+
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
     of the language.'''

@@ -80,10 +80,11 @@ class MTax:
     def __repr__(self):
         return "MTax {}".format(self.fst.label)
 
-    def parse(self, label, s, gen=False, verbose=False):
+    def parse(self, label, s, gen=False, gemination=True, output_segs=True, verbose=False):
         """
         Parse a morphotactic FST from a string consisting of multiple lines from a file.
         """
+#        print("** MTAX parse, output segs = {}".format(output_segs))
         # Feature structures
         FSs = []
 
@@ -192,7 +193,10 @@ class MTax:
             m = PATH_RE.match(line)
             if m:
                 indentation, in_string, out_string, fss = m.groups()
-#                print("** PATH {} {} {} {}".format(indentation, in_string, out_string, fss))
+                if not output_segs:
+                    # This prevents in_string from being copied to out_string
+                    out_string = ''
+#                print("  ** PATH in {} out {} fss {}".format(in_string, out_string, fss))
                 if gen and fss:
                     fss = conv_string(fss)
                 weight = MTax.PARSER(fss) if fss else None
