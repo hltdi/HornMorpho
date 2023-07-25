@@ -55,7 +55,7 @@ $ prestem
   <
 
 $ stem
-   >>v_stemA<<
+   >>v_stem<<
 
 $ poststem
   >
@@ -146,6 +146,9 @@ $ aux_bound
 $ accus
   ን		[+acc,+rel]
   --		[-acc]
+
+$ accus_bound
+  -
 
 $ conj2
   /ና		[cnj2=ና]

@@ -54,7 +54,7 @@ class EES:
     wpatcodes = [('0',), ('te_',), ('a_',), ('as_',), ('te_a', 'a_a'), ('te_R', 'a_R'), ('R',)]
 
     pre_gem_char = '/'
-    post_gem_char = '፟'
+    post_gem_chars = '፟_:'
 
     # Filters to use with anal_sentence to restrict syntax/morphology.
     filters = \

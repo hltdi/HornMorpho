@@ -260,6 +260,10 @@ class Roots:
         elif seglevel == 0:
             # Add source language feature
             feats = "{},sl={}".format(feats, labbrev)
+
+        # Add root feature to feats
+        feats = "root={},{}".format(''.join(cons_chars), feats)
+
         if subroots:
             # Make an FSSet from feats and subroots
             expanded_feats = []

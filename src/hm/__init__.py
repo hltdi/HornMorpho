@@ -694,13 +694,14 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
         return pos.casc_inv
     return pos.casc
 
-def compile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
+def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             translate=False, experimental=False, mwe=False, seglevel=2,
             gemination=True, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
-    If gen is True, create both the analyzer and generator.
+    If gen is True, create both the analyzer and generator, using the non-segmenter version
+    of the analyzer for the generator.
     Note: the resulting FSTs are not saved (written to a file). To do this, use the method
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
@@ -708,6 +709,8 @@ def compile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     fidel = abbrev in morpho.FIDEL
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
                         fidel=fidel, load_morph=False, verbose=verbose)
+    if verbose:
+        print(">>> CREATING ANALYZER <<<")
     fst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
                              translate=translate, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
@@ -718,8 +721,12 @@ def compile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         # Also create the generation FST
         if seglevel == 0:
             # Just invert the analyzer
+            if verbose:
+                print(">>> INVERTING ANALYZER FOR GENERATOR <<<")
             genfst = fst.inverted()
         else:
+            if verbose:
+                print(">>> CREATING GENERATOR <<<")
             analfst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
                                          translate=translate, recreate=True, fidel=fidel,
                                          experimental=experimental, mwe=mwe, pos=pos, seglevel=0,

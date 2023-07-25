@@ -46,6 +46,8 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 feats:
 
   pos: v verb
+    morphotax: c1p[adp,cnj1], neg1[neg], sb1[sp,sn,sg], voice[v,a], STEM, sb2[sp,sn,sg], ob[op,on,og,oa], neg2[neg], aux[mc], acc[acc], c2[cnj2]
+    lemmafeats = a,v
     neg = False | True
     a = 0 | a  | i
     v = 0 | p | a | as
@@ -71,6 +73,7 @@ feats:
     t = p | i | j | c
 
   pos: n noun_adjective
+#    morphotax
     pos = n | adj | nadj
     n = 1 | 2
     pp = 0 | 1 | 2 | 3

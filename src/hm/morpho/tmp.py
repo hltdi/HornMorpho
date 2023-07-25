@@ -60,7 +60,7 @@ class Template:
         if constraints:
             constraints = [c.split('=') for c in constraints.split(',')]
 #            constraints = dict([(int(f), v) for f, v in constraints])
-            constraints = dict([(f, v) for f, v in constraints])
+            constraints = dict([(int(f) if f.isdigit() else f, v) for f, v in constraints])
         else:
             constraints = {}
         for i in range(templength):

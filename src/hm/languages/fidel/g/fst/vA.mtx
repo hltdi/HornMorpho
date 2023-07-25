@@ -22,7 +22,7 @@ $ sb_pre
 #  --  [vc=0]
 
 $ stem
-  >>v_stemA<<
+  >>v_stem<<
 
 $ sb_suf
   ኩ   [t=p,sp=1,sn=1]

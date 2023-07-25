@@ -31,6 +31,7 @@ Loading, composing, saving FSTs.
 import sys, re
 from .fst import *
 from . import strip
+from .ees import EES
 
 ## Default punctuation characters; exclude single quote since it's
 ## often (usually) more like an alphanumeric character
@@ -648,6 +649,12 @@ class POSMorphology:
     Lists of MorphCats and GramCats, anal and gen FSTs for a particular POS class.
     """
 
+    segsep = '-'
+    stemstart = '<'
+    stemend = '>'
+
+    segment_re = re.compile("(.+)<(.+)>(.+)")
+
     # Indices for different FSTs in self.fsts
     # Top level
     anal_i = 0
@@ -665,7 +672,8 @@ class POSMorphology:
 
     def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
                  feat_abbrevs=None, fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
-                 feature_groups=None, name=None, explicit=None, true_explicit=None):
+                 feature_groups=None, name=None, explicit=None, true_explicit=None,
+                 lemma_feats=None):
         # A string representing part of speech
         self.pos = pos
         # A string representing the full name of the POS
@@ -683,16 +691,11 @@ class POSMorphology:
                      [None, None, None, None, None, None, None],
                      # Translation FSTs
                      {},
-#                     [None, None, None, None, None, None, None]
                      ]
-        # FSTs for MWEs: [[anal, None, None, None, None, None, analX],
-        #                 [None, None, None, None, None, None, None],
-        #                 [None, None, None, None, None, None, None]]
         self.mwefsts = [[None, None, None, None, None, None, None],
                         [None, None, None, None, None, None, None],
                         # Translation FSTs
                         {}
-#                        [None, None, None, None, None, None, None]
                             ]
         # FST cascade
         self.casc = None
@@ -751,6 +754,8 @@ class POSMorphology:
         self.web_features = []
         # List of feature groups [([features], group_name),...]
         self.feature_groups = feature_groups or None
+        # Features for generating lemma
+        self.lemma_feats = lemma_feats
         # Frequency statistics for generation
         self.root_freqs = None
         self.feat_freqs = None
@@ -873,8 +878,8 @@ class POSMorphology:
             pos += 'G'
         elif translate:
             pos += 'T'
-        elif not segment:
-            pos += 'A'
+#        elif not segment:
+#            pos += 'A'
         return pos
 
     def get_analyzed(self, word, init_weight=None, simple=False, sep_anals=False, segment=False):
@@ -1098,8 +1103,8 @@ class POSMorphology:
         if not self.get_fst(generate, guess, simplified, phon=phon, translate=translate, segment=segment) or recreate:
             # Either there was no composed FST or we're supposed to recreate it anyway, so get
             # the cascade and compose it (well, unless create_fst is False)
-            if verbose:
-                print('Looking for cascade at', path, 'subcasc', subcasc)
+#            if verbose:
+#                print('Looking for cascade at', path, 'subcasc', subcasc)
             if os.path.exists(path):
                 if recreate:
                     # Load each of the FSTs in the cascade and compose them
@@ -1178,6 +1183,8 @@ class POSMorphology:
                         if casc:
                             self.casc = casc
                             self.casc_inv = self.casc.inverted()
+        if not setit:
+            return fst
         return self.get_fst(generate, guess, simplified, phon=phon, mwe=mwe,
                             segment=segment, translate=translate, experimental=experimental)
 #            # FST found one way or another
@@ -1233,9 +1240,6 @@ class POSMorphology:
         # Translation FST
 #        trans_fst = FST.compose2(src_fst, trg_fst, label="{}2{}".format(self.language.abbrev, trg_pos_morph.language.abbrev), reverse=False)
         self.set_fst(trans_fst, translate=True, tl=trg_abbrev)
-
-    def load_lemma_gen(self):
-        pass
 
     def pickle_all(self, replace=True, empty=True):
         """
@@ -1360,6 +1364,56 @@ class POSMorphology:
         Convenient for running anal for segmentation.
         '''
         return self.anal(word, segment=True, experimental=True)
+
+    ##
+    ## Processing output of anal or gen.
+    ##
+
+    def process_all(self, word, analyses, conllu=False, xml=False, gemination=False):
+        result = []
+        for string, FSS in analyses:
+            if not gemination:
+                for char in EES.pre_gem_char + EES.post_gem_chars:
+                    string = string.replace(char, '')
+            for features in FSS:
+                result.append(self.process(word, string, features, conllu=conllu, xml=xml))
+        return result
+
+    def process(self, word, string, features, conllu=False, xml=False):
+        """
+        string is a (probably segmented) analysis of a word or MWE.
+        features is a FeatStruct.
+        """
+#        string, FSS = analysis
+#        if not gemination:
+#            for char in [EES.pre_gem_char] + EES.post_gem_chars:
+#                string = string.replace(char, '')
+        prefixes, stem, suffixes = self.get_segments(string, features)
+        root = features.get('root', stem)
+        lemma = self.gen_lemma(stem, root, features)
+        return {'word': word, 'pre': prefixes, 'suf': suffixes, 'stem': stem, 'root': root, 'feats': features, 'lemma': lemma}
+
+    def get_segments(self, string, features):
+        '''
+        analysis is the output of a segmenting analyzer.
+        features is a FeatStruct.
+        '''
+        match = POSMorphology.segment_re.match(string)
+        pre, stem, suf = match.groups()
+        pre = pre.split(POSMorphology.segsep)
+        suf = suf.split(POSMorphology.segsep)
+        return pre, stem, suf
+
+    def gen_lemma(self, stem, root, features):
+        lemmafeats = self.lemma_feats
+        if not lemmafeats:
+            return stem
+        initfeat = []
+        for lf in lemmafeats:
+            value = features.get(lf)
+            initfeat.append("{}={}".format(lf, value))
+        initfeat = ','.join(initfeat)
+        return self.gen(root, update_feats=initfeat)
 
     def separate_anals(self, analyses, normalize=False):
         """

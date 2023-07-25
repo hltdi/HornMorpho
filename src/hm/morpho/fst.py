@@ -89,6 +89,9 @@ UNKNOWN = '?'
 ## Transducing times out after this many time steps
 TIMEOUT = 2000
 
+## Gemination characters for EES languages
+GEM_CHARS = EES.pre_gem_char + EES.post_gem_chars
+
 ## Regexs for parsing FSTs and cascades
 # string_set_label={chars1, chars1, chars2, ...}
 SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
@@ -223,7 +226,7 @@ class FSTCascade(list):
 
     def __str__(self):
         """Print name for cascade."""
-        return 'Cascade ' + self.label
+        return 'casc ' + self.label
 
     def get_cas_dir(self):
         return os.path.join(self.language.directory, 'cas')
@@ -514,7 +517,7 @@ class FSTCascade(list):
         2023.2.28: Added seglevel.
         """
         if verbose:
-            print('Loading FST cascade from {} for {}, POS {}, posmorph {}, seglevel {}'.format(filename, language, pos, posmorph, seglevel))
+            print('Loading FST cascade from {} for {}, POS {}, seglevel {}'.format(filename, language, pos, seglevel))
         directory, fil = os.path.split(filename)
         label = del_suffix(fil, '.')
 
@@ -1905,9 +1908,9 @@ class FST:
         if generate:
             name += 'G'
             empty_name += 'G'
-        elif not segment:
-            name += 'A'
-            empty_name += 'A'
+#        elif not segment:
+#            name += 'A'
+#            empty_name += 'A'
         if pickle:
 #            print("Unpickling {} in {}".format(name, pkl_directory))
             fst = FST.unpickle(name, directory=pkl_directory)
@@ -2155,7 +2158,7 @@ class FST:
             fst = FST(label, cascade=cascade)
             mtax = MTax(fst, directory=directory)
             mtax.parse(label, open(filename, encoding='utf-8').read(), gen=gen, gemination=gemination, output_segs=output_segs, verbose=verbose)
-            FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, verbose=verbose)
+            FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, gemination=gemination, verbose=verbose)
             return fst
 
         elif suffix == 'ar':
@@ -2180,7 +2183,7 @@ class FST:
                                    dest=dest_lex, verbose=False)
 
     @staticmethod
-    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, verbose=False):
+    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, gemination=True, verbose=False):
 #        print("** Compiling {} with {}".format(mtax, cascade))
         # Create a final state
         final_label = DFLT_FINAL
@@ -2260,7 +2263,7 @@ class FST:
                         mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
 #                    print("  ** Compile MTAX: Making multiple arcs for {}->{} from {} to {}, weight: {}".format(in_string, out_string, src, dest, weight))
-                    mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen)
+                    mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen, gemination=gemination)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
@@ -2605,7 +2608,7 @@ class FST:
         else:
             raise ValueError("bad arc representation: %r" % string)
 
-    def _make_mult_arcs(self, in_string, out_string, src, dst, weight, seg_units, gen=False):
+    def _make_mult_arcs(self, in_string, out_string, src, dst, weight, seg_units, gen=False, gemination=True):
         """
         Create states and arcs to join src with dst, given multiple chars in in_string.
         """
@@ -2650,7 +2653,7 @@ class FST:
         if in_paren:
             # Save the beginning of the skip arc
             src1 = dst1
-            in_paren_s, out_paren_s = FST.make_in_out_strings(in_paren, out_paren, seg_units)
+            in_paren_s, out_paren_s = FST.make_in_out_strings(in_paren, out_paren, seg_units, gemination=gemination)
             if not in_string2:
                 # This is the end of the in_string, so only go as far as the second-to-last char
                 last_in, last_out = in_paren_s[-1], out_paren_s[-1]
@@ -2667,7 +2670,7 @@ class FST:
 
         # Post-paren portion
         if in_string2:
-            in_strings2, out_strings2 = FST.make_in_out_strings(in_string2, out_string2, seg_units)
+            in_strings2, out_strings2 = FST.make_in_out_strings(in_string2, out_string2, seg_units, gemination=gemination)
             last_in, last_out = in_strings2[-1], out_strings2[-1]
             dst1 = self._make_mult_arcs1(in_strings2[:-1], out_strings2[:-1], dst1, label_pre, label_suf,
                                          len(in_strings1) + len(in_paren_s),
@@ -2675,7 +2678,7 @@ class FST:
 
         # What do to if there's no input string but there's an output string
         if not in_string and out_string:
-            in_strings, out_strings = FST.make_in_out_strings(in_string, out_string, seg_units)
+            in_strings, out_strings = FST.make_in_out_strings(in_string, out_string, seg_units, gemination=gemination)
             last_in, last_out = in_strings[-1], out_strings[-1]
 #            print("** Creating arcs {} {}".format(in_strings[:-1], out_strings[:-1]))
             dst1 = self._make_mult_arcs1(in_strings[:-1], out_strings[:-1], dst1, label_pre, label_suf, 0,
@@ -2688,8 +2691,7 @@ class FST:
             w = weight
         self.add_arc(dst1, dst, last_in, last_out, weight=w)
 
-    def _make_mult_arcs1(self, in_strings, out_strings, src, label_pre, label_suf, start_index,
-                         weight=None):
+    def _make_mult_arcs1(self, in_strings, out_strings, src, label_pre, label_suf, start_index, weight=None):
         '''
         Starting with src, create states for corresponding chars in in_strings and out_strings,
         returning the last intermediate state.
@@ -2721,11 +2723,22 @@ class FST:
         return [s1[0], s2[0], s2[-1]]
 
     @staticmethod
-    def make_in_out_strings(in_string, out_string, seg_units):
+    def remove_gemchars(string):
+        for c in GEM_CHARS:
+            string = string.replace(c, '')
+        return string
+
+    @staticmethod
+    def make_in_out_strings(in_string, out_string, seg_units, gemination=True):
         in_strings = segment(in_string, seg_units, correct=False) if seg_units else list(in_string)
         # If out_string is None, use in_strings
+        # If gemination is False, delete gemination characters
         if out_string == None:
-            out_strings = in_strings
+            if not gemination:
+                out_string = FST.remove_gemchars(in_string)
+                out_strings = segment(out_string, seg_units, correct=False) if seg_units else list(out_string)
+            else:
+                out_strings = in_strings
         elif out_string == '':
             # No output characters
             out_strings = [''] * len(in_strings)

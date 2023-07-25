@@ -130,6 +130,11 @@ SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 # Added 2023.02.24
 # string_set_label={chars1, chars1, chars2, ...}
 SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
+# Added 2023.07.24
+MTAX_RE = re.compile("\s*morphotax:\s+(.*)")
+#MSEG_RE = re.compile("")
+# Added 2023.07.24
+LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -424,7 +429,7 @@ class Language:
         if verbose:
             print('Parsing data for', self)
 
-        lines = data.split('\n')[::-1]
+        lines = data.splitlines()[::-1]
 
         postproc = ''
         preproc = ''
@@ -446,12 +451,16 @@ class Language:
         lex_feats = {}
         true_explicit = {}
         explicit = {}
+        lemmafeats = {}
 
         feature_groups = {}
 
         chars = ''
 
         current = None
+
+        in_mtax = False
+        current_msegs = []
 
 #        current_pos = ''
         current_feats = []
@@ -646,6 +655,22 @@ class Language:
                     true_explicit[pos] = current_true_explicit
                     fullpos[pos] = fullp
                     feature_groups[pos] = current_feature_groups
+                    lemmafeats[pos] = []
+                    continue
+
+                m = MTAX_RE.match(line)
+                if m:
+                    segments = m.groups()[0].strip()
+#                    print("** Morphotax segments {}".format(segments))
+                    in_mtax = True
+                    continue
+
+                m = LEMMAFEATS_RE.match(line)
+                if m:
+                    lemfeats = m.groups()[0].strip()
+                    lemfeats = [lf.strip() for lf in lemfeats.split(',')]
+#                    print("** lemmafeats {}".format(lemfeats))
+                    lemmafeats[pos] = lemfeats
                     continue
 
                 m = ABBREV_RE.match(line)
@@ -841,11 +866,8 @@ class Language:
                     fgroups.sort(key=lambda x: -len(x[0]))
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
-                                     fgroups, fullpos[pos],
-                                     explicit[pos], true_explicit[pos]))
-#                    pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos],
-#                                     abbrev[pos], fv_abbrev[pos], fv_dependencies[pos],
-#                                     fv_priorities[pos]))
+                                     fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
+                                     lemmafeats[pos]))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -1409,7 +1431,6 @@ class Language:
         if not fsts:
             return False
         for pos in fsts:
-#            print("*** load_morpho {}".format(pos))
             # Load pre-analyzed words if any
             self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
             if ortho:
