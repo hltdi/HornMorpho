@@ -1885,7 +1885,7 @@ class POSMorphology:
         dct = {}
         lex_feats = self.lex_feats
         for feat, values in self.feat_list:
-#            print('feat {}, values {}'.format(feat, values))
+#            print('*** feat {}, values {}'.format(feat, values))
             if feat in lex_feats:
                 continue
             if isinstance(values, list):
@@ -1899,6 +1899,7 @@ class POSMorphology:
                 dct[feat] = fs2
             else:
                 dct[feat] = values[0]
+#        print("** dct {}".format(dct))
         fs = FeatStruct(dct)
         return fs
 

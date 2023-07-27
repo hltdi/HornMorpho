@@ -469,7 +469,7 @@ class Roots:
         gem_pos = {tmp_length - 1}
 
         for pindex, (pattern, pfeatures) in enumerate(patterns):
-#            print("** Making irr root {}, {}, {}, {}".format(cons, feats, pattern, pfeatures.__repr__()))
+            print("** Making irr root {}, {}, {}, {}".format(cons, feats, pattern, pfeatures.__repr__()))
             pposition = pindex + 1
             pfeatures = make_weight(pfeatures, target=gen)
             pfeatures = FSSet.update(pfeatures, weight)
@@ -506,6 +506,7 @@ class Roots:
                     else:
                         outchar = char
                     fst.add_arc(dest_gem, dest, inchar, outchar, weight=pfeatures)
+#                    print(" ** adding gem arc {}->{}".format(inchar, outchar))
                 else:
                     inchar = char
                     if gen or seglevel == 0:
@@ -513,6 +514,7 @@ class Roots:
                     else:
                         outchar = char
                     fst.add_arc(source, dest, inchar, outchar, weight=pfeatures if cindex==0 else gem_feat)
+#                    print(" ** adding arc {}->{}".format(inchar, outchar))
                 source = dest
             dest = 'end'
             rchar = cons[-1]
@@ -522,7 +524,10 @@ class Roots:
                 final_out = rchar
             else:
                 final_out = pchar
-            fst.add_arc(source, dest, final_in, final_out)
+            if len(pattern) == 1:
+                print("** only one stem cons {}, using weight {}".format(final_in, pfeatures.__repr__()))
+            fst.add_arc(source, dest, final_in, final_out, weight=pfeatures if len(pattern) == 1 else None)
+#            print(" ** adding final arc {}->{}".format(final_in, final_out))
 
     @staticmethod
     def parse_root_file(filename, lexdir, roots, root_types):

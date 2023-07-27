@@ -131,7 +131,7 @@ SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 # string_set_label={chars1, chars1, chars2, ...}
 SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
 # Added 2023.07.24
-MTAX_RE = re.compile("\s*morphotax:\s+(.*)")
+MTAX_RE = re.compile("\s*morphotax::\s*(.*)")
 #MSEG_RE = re.compile("")
 # Added 2023.07.24
 LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
@@ -264,6 +264,7 @@ class Language:
 
     def get_dir(self, fidel=False):
         """Where data for this language is kept."""
+        fidel = fidel or self.abbrev in EES.FIDEL
         if fidel:
             return os.path.join(os.path.join(LANGUAGE_DIR, 'fidel'), self.abbrev)
         else:
@@ -487,6 +488,23 @@ class Language:
             # Ignore empty lines
             if not line: continue
 
+            if line.endswith('::'):
+                # This is the beginning of a multiline feature
+#                line = line[:-1]
+                # Join succeeding lines
+                done = False
+                while not done:
+                    next_line = lines.pop().split('#')[0].strip()
+#                    print("line {}, next line {}".format(line, next_line))
+                    if not line:
+                        continue
+                    if next_line[-1] != ';':
+                        done = True
+                    line += next_line
+                print("** joined: {}".format(line))
+
+#            print("** LINE: {}".format(line))
+
             m = SS_RE.match(line)
             if m:
                 label, ss = m.groups()
@@ -661,7 +679,7 @@ class Language:
                 m = MTAX_RE.match(line)
                 if m:
                     segments = m.groups()[0].strip()
-#                    print("** Morphotax segments {}".format(segments))
+                    print("** Morphotax segments {}".format(segments))
                     in_mtax = True
                     continue
 
@@ -669,7 +687,7 @@ class Language:
                 if m:
                     lemfeats = m.groups()[0].strip()
                     lemfeats = [lf.strip() for lf in lemfeats.split(',')]
-#                    print("** lemmafeats {}".format(lemfeats))
+                    print("** lemmafeats {}".format(lemfeats))
                     lemmafeats[pos] = lemfeats
                     continue
 
@@ -1440,6 +1458,7 @@ class Language:
                 self.morphology[pos].set_ortho2phon()
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
+                print("** LOAD_FST 1")
                 self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
                                               simplified=simplified, experimental=experimental, mwe=False,
                                               phon=False, segment=segment, translate=translate,
@@ -1453,6 +1472,7 @@ class Language:
                                               pos=pos, recreate=recreate, verbose=verbose)
             # Load generator for both analysis and segmentation
 #            if phon or (ortho and not segment):
+            print("** LOAD_FST 2")
             self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
                                           simplified=simplified, experimental=False, mwe=False,
                                           phon=True, segment=False, translate=translate,

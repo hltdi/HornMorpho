@@ -1,0 +1,164 @@
+POS n N
+->UD  ACC+GEN	*Case=AccGen
+->UD  ACC	Case=Acc
+->UD  GEN	Case=Gen
+->UD  TERM	Case=Ter
+->UD PRP	Case=Cau
+->UD EQTV	Case=Equ
+->UD ALL	Case=All
+->UD ABL	Case=Abl
+->UD INS	Case=Ins
+->UD DAT	Case=Dat
+->UD AT		Case=Loc
+->UD PL		Number=Plur
+->UD DEF	Definite=Def
+->UD V.MSDR	VerbForm=Inf
+->UD FEM	Gender=Fem
+->UD PSS1P	*PossPers=1,PossNum=Plur
+->UD *PSS2FORM	*PossPers=2,Polite=Form
+->UD PSS2SF	*PossPers=2,PossNum=Sing,PossGen=Fem
+->UD PSS2P	*PossPers=2,PossNum=Plur
+->UD PSS1S	*PossPers=1,PossNum=Sing
+->UD PSS2SM	*PossPers=2,PossNum=Sing,PossGen=Masc
+->UD PSS3P	*PossPers=3,PossNum=Plur
+->UD PSS3SF	*PossPers=3,PossNum=Sing,PossGen=Fem
+->UD PSS3SM	*PossPers=3,PossNum=Sing,PossGen=Masc
+->UD PASS	Voice=Pass
+->UD CAUS	Voice=Cau
+->UD RECP	Voice=Rcp
+->UD ITER	Aspect=Iter
+->UD CAUS+RECP	*Voice=CauRcp
+
+#v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
+#pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
+
+pos:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
+adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+pl:: True:PL;; False:SG
+acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
+pp,pn,pg:: 0,3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
+pp,pn:: 1,1:PSS1S;; 1,2:PSS1P;; 2,2:PSS2P;; 3,2:PSS3P
+
+#def!poss:: DEF
+det,plr:: True,True:DEF;PL;; False,True:PL
+det,fem:: True,True:DEF;FEM;; True,False:DEF;MASC;; False,False:-DEF;; False,True:-DEF
+det:: True:DEF;; False:-DEF
+# note that -ም and -ስ are not distinguished
+cnj:: m:TOP;; s:TOP
+# only relevant for deverbal nouns
+#a,v:: it,cs:CAUS+RECP;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
+
+POS v V
+->UD NEG	Polarity=Neg
+->UD IMP	Mood=Jus
+->UD IPFV	Aspect=Imp
+->UD PFV	Aspect=Perf
+->UD V.CVB	VerbForm=Conv
+#->UD PRF	Aspect=Prf
+#->UD NFIN
+->UD CAUS	Voice=Cau
+->UD TR		Voice=Trans
+->UD RECP	Voice=Rcp
+->UD PASS	Voice=Pass
+->UD ITER	Aspect=Iter
+->UD CAUS+RECP	*Voice=CauRcp
+->UD *RELC	*VerbForm=Rel
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
+->UD SG		Number=Sing
+->UD PL		Number=Plur
+->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
+->UD FORM	Polite=Form
+->UD AC1S	*AccPers=1,AccNum=Sing
+->UD AC1P	*AccPers=1,AccNum=Plur
+->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
+->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
+->UD AC2P	*AccPers=2,AccNum=Plur
+->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
+->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
+->UD AC3P	*AccPers=3,AccNum=Plur
+->UD DA1S	*DatPers=1,DatNum=Sing
+->UD DA1P	*DatPers=1,DatNum=Plur
+->UD DA2SF	*DatPers=2,DatNum=Sing,DatGen=Fem
+->UD DA2SM	*DatPers=2,DatNum=Sing,DatGen=Masc
+->UD DA2P	*DatPers=2,DatNum=Plur
+->UD DA3SF	*DatPers=3,DatNum=Sing,DatGen=Fem
+->UD DA3SM	*DatPers=3,DatNum=Sing,DatGen=Masc
+->UD DA3P	*DatPers=3,DatNum=Plur
+->UD *MAL1S	*MalPers=1,MalNum=Sing
+->UD *MAL1P	*MalPers=1,MalNum=Plur
+->UD *MAL2SF	*MalPers=2,MalNum=Sing,MalGen=Fem
+->UD *MAL2SM	*MalPers=2,MalNum=Sing,MalGen=Masc
+->UD *MAL2P	*MalPers=2,MalNum=Plur
+->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
+->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
+->UD *MAL3P	*MalPers=3,MalNum=Plur
+->UD TOP	*Inf=Topic
+->UD DEF	*Definite=Def
+->UD COND	Mood=Cond,VerbForm=Sub
+->UD PURP	Mood=Prp,VerbForm=Sub
+# Time
+# ስ-
+->UD *TEMP	*Cnj=Temp,VerbForm=Sub
+->UD TERM	*Cnj=Term,VerbForm=Sub
+# prepositions/conjunctions
+# እንደ-
+->UD EQTV	Case=Equ
+# ወደ-
+->UD ALL	Case=All
+# ከ-
+->UD ABL	Case=Abl
+# በ-
+->UD INS	Case=Ins
+# ለ-
+->UD DAT	Case=Dat
+
+t,ax:: c,0:V.CVB ;; i,0:NFIN;; c,al:PRF
+pos!t:: v:V;; 0:ADJ;; 0:N
+neg:: NEG
+rel,sub:: True,True:*RELC;NFIN
+
+## morphological valence/voice
+a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; a,p:RECP;; a,a:CAUS+RECP;; i,0:ITER;; i,p:RECP;; i,a:CAUS+RECP
+
+## subjects
+sp:: 1:1;; 2:2;; 3:3
+sn:: 1:SG;; 2:PL
+sg:: m:MASC;; f:FEM
+
+## objects
+# plain (accusative)
+oa,op,on,og:: 0,3,1,m:AC3SM;; 0,3,1,f:AC3SF;; 0,2,1,m:AC2SM;; 0,3,1,f:AC2SF
+oa,op,on:: 0,1,1:AC1S;; 0,1,2:AC1P;; 0,2,2:AC2P;; 0,3,2:AC3P
+# applicative
+oa,op,on,og:: l,3,1,m:DA3SM;; 1,3,1,f:DA3SF;; l,2,1,m:DA2SM;; 1,2,1,f:DA2SF
+oa,op,on:: l,1,1:DA1S;; l,1,2:DA1P;; l,2,2:DA2P;; 1,3,2:DA3P
+oa,op,on,og:: b,3,1,m:*MAL3SM;; b,3,1,f:*MAL3SF;; b,2,1,m:*MAL2SM;; b,3,1,f:*MAL2SF
+oa,op,on:: b,1,1:*MAL1S;; b,1,2:*MAL1P;; b,2,2:*MAL2P;; b,3,2:*MAL3P
+
+det:: DEF
+
+adp:: እስከ:TERM;; ስለ:PURP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM
+cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
+
+POS cop V
+#->UD PRS	Tense=Pres
+#->UD PST	Tense=Past
+->UD NEG	Polarity=Neg
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
+->UD SG		Number=Sing
+->UD PL		Number=Plur
+->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
+->UD FORM	Polite=Form
+#t:: prs:PRS;; pst:PST
+neg:: NEG
+sp:: 1:1;; 2:2;; 3:3
+sn:: 1:SG;; 2:PL
+sg:: m:MASC;; f:FEM
+

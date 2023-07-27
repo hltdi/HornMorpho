@@ -103,6 +103,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             ees = True
 #            from . import ees
 #            EES = ees.EES()
+        print("** MAKING language")
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
                                  experimental=experimental, mwe=mwe,

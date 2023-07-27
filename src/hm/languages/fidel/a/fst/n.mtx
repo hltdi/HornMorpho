@@ -14,8 +14,8 @@ $ prep_bound
   -
 
 $ distrib
-  እ/የ	[+dis,+def,-col]
-  እ/ነ	[-dis,+pl,+col,+def]
+  እ/የ	[+dis,-col]
+  እ/ነ	[-dis,+pl,+col]
   --		[-dis,-col]
 
 $ prestem
@@ -41,17 +41,20 @@ $ plural
 $ plur_bound
   -
 
-$ poss_def
+$ poss_det
   ኤ		[pp=1,pn=1]
   ኣ/ችን	[pp=1,pn=2]
   ህ		[pp=2,pn=1,pg=m,-pf]
   ሽ		[pp=2,pn=1,pg=f,-pf]
   ኣ/ችሁ	[pp=2,pn=2,-pf]
   ዎ		[pp=2,+pf]
-  ኡ		[pp=3,pn=1,pg=m,-pf]
-  ዋ		[pp=3,pn=1,pg=f,-pf]
+  # possessive or determiner
+  #{
+  ኡ		[pp=3,pn=1,pg=m,-pf,-det];[pp=0,+det,g=m]
+  ዋ		[pp=3,pn=1,pg=f,-pf,-det];[pp=0,+det,g=f]
+  #}
   ኣ/ቸው	[pp=3,pn=2,-pf];[pp=3,+pf]
-  --		[pp=0]
+  --		[pp=0,-det]
 
 $ poss_bound
   -
@@ -64,13 +67,13 @@ $ acc_bound
   -
 
 $ conj
-  /ም		[cnj=ም]
-  /ስ		[cnj=ስ]
-  /ማ		[cnj=ማ]
-  /ሳ		[cnj=ሳ]
-  /ና		[cnj=ና]
-  /ኮ		[cnj=ኮ]
-  --		[cnj=None]
+  /ም		[cconj=ም]
+  /ስ		[cconj=ስ]
+  /ማ		[cconj=ማ]
+  /ሳ		[cconj=ሳ]
+  /ና		[cconj=ና]
+  /ኮ		[cconj=ኮ]
+  --		[cconj=None]
 
 ## STEM
 # Irregular prepositional forms: Izzih, Izziya, etc.; can't be distributive

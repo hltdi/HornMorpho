@@ -445,6 +445,7 @@ class UniMorph:
         current_feats = []
         current_pos_list = []
         try:
+            print("Reading UM file")
             with open(path, encoding='utf8') as file:
                 lines = file.read().split('\n')[::-1]
                 while lines:

@@ -34,6 +34,8 @@ TARGET_WT_CONV = [("gem", "tgem"), ("c=", "tc="), ("v=", "tv="), ("t=", "tt="), 
 
 class EES:
 
+    FIDEL = ['a', 't', 'ch', 'g', 'k', 'm']
+
     # later extend to include preps and conjs from other languages
     ROM2GEEZ = \
     {'amh':

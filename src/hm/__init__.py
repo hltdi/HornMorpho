@@ -56,6 +56,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
 
     @param language: a language label
     """
+    print("** load_lang, load_morph = {}".format(load_morph))
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
                      translate=translate, experimental=experimental, gen=gen,
