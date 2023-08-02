@@ -164,9 +164,9 @@ class Roots:
             else:
                 fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
-        def mrs(fst, charsets, weight, states, root_chars, iterative=False, aisa=False, main_charsets=None):
+        def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
 #            if not iterative and not aisa:
-#                print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), "a=i" if iterative else ("a=a" if aisa else "a=0")))
+#            print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), manner))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
@@ -175,7 +175,7 @@ class Roots:
 #                    print("** Root state {} rchar {} chars {}".format(position, rchar, chars))
                 wt = weight if index == 0 else None
                 iter_chars = isinstance(chars, tuple)
-                if iterative and not iter_chars:
+                if (iterative or manner) and not iter_chars:
                     # Check to see whether states and arcs already exist for these chars
                     if fst.has_state(source) and fst.has_state(dest):
                         found = True
@@ -191,6 +191,8 @@ class Roots:
                     dest = dest + 'i'
                 elif aisa:
                     dest = dest + 'a'
+                elif manner:
+                    dest = dest + 'm'
                 if iter_chars:
                     # iterated position, create two states
                     dest0 = dest + '_a'
@@ -199,6 +201,7 @@ class Roots:
                         fst.add_state(dest0)
                     for char in chars[0]:
                         outchar = rchar if (gen or seglevel==0) else char
+#                        print("** Creating iter state 1, source {} dest {} char {} outchar {} {}".format(source, dest0, char, outchar, wt))
                         charfeat_arc(char, outchar, wt, source, dest0, fst)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
@@ -209,6 +212,7 @@ class Roots:
                             gem_char_arc(dest0, dest, inchar, '', wt, wt)
                         else:
                             outchar = '' if (gen or seglevel==0) else char
+#                            print("** Creating iter state 2, source {} dest {} char {} outchar {} {}".format(dest0, dest, char, outchar, wt))
                             charfeat_arc(char, outchar, wt, dest0, dest, fst)
                 else:
                     if not fst.has_state(dest):
@@ -219,6 +223,7 @@ class Roots:
                             gem_char_arc(source, dest, inchar, rchar, wt, wt, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
                         else:
                             outchar = rchar if (gen or seglevel==0) else char
+#                            print("** Creating regular states source {} dest {} char {} outchar {} {}".format(source, dest, char, outchar, wt))
                             charfeat_arc(char, outchar, wt, source, dest, fst, verbosity=0) # root_chars == ['ብ', 'ር', 'ር'])
                 source = dest
             state = states[-1]
@@ -232,6 +237,7 @@ class Roots:
                 else:
                     outchar = rchar if (gen or seglevel==0) else char
                     inchar = char
+#                    print("** Creating final state source {} end char {} outchar {} wt None".format(source, inchar, outchar))
                     charfeat_arc(inchar, outchar, None, source, 'end', fst, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
 
         # one of cons could be a char, feature tuple
@@ -292,9 +298,14 @@ class Roots:
             if weighti:
                 weighti = dup_weight(drules, weighti)
                 mrs(fst, it_charsets, weighti, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
-#            print("   *** i weight for {} : {}".format(cons, weighti.__repr__()))
-#            else:
-#                print("** no IT for {}".format(cons))
+        if (cls_m_rules := rules.get(cls + 'm')):
+            drules = duprules.get(cls + 'm')
+            m_charsets, strongi = Roots.make_charsets(cons, cls + 'm', cls_m_rules, drules, char_maps, charmap_weights)
+            # Add a=i if it's compatible with other features
+            weightm = weight.set_all('d', 'm', force=False)
+            if weightm:
+                weightm = dup_weight(drules, weightm)
+                mrs(fst, m_charsets, weightm, states, cons_chars, manner=True, iterative=False, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + 'a')):
             drules = duprules.get(cls + 'a')
             a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, drules,  char_maps, charmap_weights)
@@ -302,10 +313,7 @@ class Roots:
             weighta = weight.set_all('a', 'a', force=False)
             if weighta:
                 weighta = dup_weight(drules, weighta)
-#            print("   *** a weight for {} : {}".format(cons, weighta.__repr__()))
                 mrs(fst, a_charsets, weighta, states, cons_chars, iterative=False, aisa=True, main_charsets=charsets)
-#            else:
-#                print("** no AISA for {}".format(cons))
 
     @staticmethod
     def get_rule(consonants, cls, rules):
@@ -337,6 +345,7 @@ class Roots:
         # Keep track of positions where vowels are changed based on weak subclass rules, so
         # earlier rules have priority (otherwise <' w q> is treated as a 2=ው root)
         positions_reset = []
+        show = consonants == ['እ', 'ው', 'ቅ']
         for index in range(len(defaults)):
             cons = consonants[index]
             if isinstance(cons, tuple):
@@ -346,16 +355,19 @@ class Roots:
             if is_geez(cons):
                 cons = romanize(cons, 'ees')
             position = index + 1
+            if show:
+                print("** position {} cons {} reset {}".format(position, cons, positions_reset))
             if position in positions_reset:
+                if show:
+                    print("  ** continuing")
                 continue
             posrules = rules.get(position)
-#            print(" *** making charset for elem {}, cons {}, posrules {}".format(index, cons, posrules))
             if posrules and cons in posrules:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
-#                print("  *** weak root {} for position {}".format(consonants, position))
                 strong = False
                 posrules = posrules[cons]
-#                print("  *** {} -- found weak rules for {}:{} : {}".format(consonants, position, cons, posrules))
+                if show:
+                    print("  ** posrules {}".format(posrules))
                 for pos, vowels in posrules.items():
                     charsets[pos] = vowels
                     positions_reset.append(pos)
@@ -364,17 +376,13 @@ class Roots:
                 positions, cvs = duprule
                 c1, c2 = consonants[positions[0]-1], consonants[positions[1]-1]
                 if c1 == c2:
-#                    print("** {} matched duprule {}".format(consonants, duprule))
                     for position, vowels in cvs.items():
-#                        print("  ** {} : {}".format(position, vowels))
                         charsets[position] = vowels
-#        print(" *** consonants: {}; class: {}; charsets {}".format(consonants, cls, charsets))
         for cons, (position, chars) in zip(consonants, charsets.items()):
             cons_feat = None
             if isinstance(cons, tuple):
                 # cons has an associated feature constraint
                 cons, cons_feat = cons
-#            print("  **** cons {} chars {}".format(cons, chars))
             if isinstance(chars, tuple):
                 # iterative position: make two charsets
                 charsets[position] = \
@@ -397,11 +405,8 @@ class Roots:
             else:
                 v = vowel_spec
             if EES.pre_gem_char in v:
-#                print("  *** Geminated charset {} {} {}".format(cons, position, v))
                 geminated = True
                 v = Roots.remove_gem(v)
-#                v.replace(EES.pre_gem_char, '')
-#            print("  *** vowel {}, vowel_feat {}, cm_weight {}".format(v, vowel_feat.__repr__(), charmap_weights.get(v).__repr__()))
             # If there's a cons feat and a vowel feature, check to see whether they agree
             if cons_feat and vowel_feat:
                 if vowel_feat.unify_FS(cons_feat) == 'fail':
@@ -460,6 +465,8 @@ class Roots:
             feats = "{},sl={}".format(feats, labbrev)
         elif gen:
             feats = "{},tl={}".format(feats, labbrev)
+        # Add root feature to feats
+        feats = "root={},{}".format(''.join(cons), feats)
         feats = '[' + feats + ']'
         weight = make_weight(feats, target=gen)
         cls_feat = 'tc' if gen else 'c'
@@ -469,7 +476,7 @@ class Roots:
         gem_pos = {tmp_length - 1}
 
         for pindex, (pattern, pfeatures) in enumerate(patterns):
-            print("** Making irr root {}, {}, {}, {}".format(cons, feats, pattern, pfeatures.__repr__()))
+#            print("** Making irr root {}, {}, {}, {}".format(cons, feats, pattern, pfeatures.__repr__()))
             pposition = pindex + 1
             pfeatures = make_weight(pfeatures, target=gen)
             pfeatures = FSSet.update(pfeatures, weight)
@@ -484,10 +491,8 @@ class Roots:
                     gem_feat = "gem{}".format(cposition)
                     gem = ":" in char or EES.pre_gem_char in char
                     if gem:
-#                        print(" **** Creating states for pattern {}, cposition {}, char {} and cons {}".format(pattern, cposition, char, c))
                         gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
                         char = Roots.remove_gem(char)
-#                        char.replace(":", '').replace(EES.pre_gem_char, '')
                     else:
                         gem_feat = make_weight("[-{}]".format(gem_feat), target=gen)
                 dest = "{}_{}_{}".format(state_name, pposition, cposition)
@@ -524,8 +529,8 @@ class Roots:
                 final_out = rchar
             else:
                 final_out = pchar
-            if len(pattern) == 1:
-                print("** only one stem cons {}, using weight {}".format(final_in, pfeatures.__repr__()))
+#            if len(pattern) == 1:
+#                print("** only one stem cons {}, using weight {}".format(final_in, pfeatures.__repr__()))
             fst.add_arc(source, dest, final_in, final_out, weight=pfeatures if len(pattern) == 1 else None)
 #            print(" ** adding final arc {}->{}".format(final_in, final_out))
 
@@ -551,12 +556,10 @@ class Roots:
                 # A consonant may have an associated feature constraint
                 current_root = cons
                 for cindex, c in enumerate(cons):
-#                    print("*** {} {}".format(cindex, c))
                     if (match := Roots.CHAR_FEAT_RE.match(c)):
                         c, feature = match.groups()
                         feature = FeatStruct(feature)
                         cons[cindex] = (c, feature)
-#                print("*** cons {}, feats {}".format(cons, feats))
 
                 roots.append([cons, feats, []])
                 continue
@@ -564,7 +567,6 @@ class Roots:
             m = Roots.SUBROOT_RE.match(line)
             if m:
                 subrootfeats = m.groups()[0]
-#                print("*** Found subroot with features {}, current root {}".format(subrootfeats, roots[-1]))
                 # Add subrootfeatures to most recent root
                 roots[-1][2].append(subrootfeats)
                 continue
@@ -573,7 +575,6 @@ class Roots:
             if m:
                 rtype, rtypefeats = m.groups()
                 root_types.append((rtype, rtypefeats))
-#                print("*** Root type {}, features {}".format(rtype, rtypefeats))
                 continue
 
             print("*** Something wrong with {}".format(line))
@@ -596,7 +597,6 @@ class Roots:
 
         stringsets = language.stringsets or cascade._stringsets
 
-#        print("*** stringset ~ye {}".format(stringsets.get('~ye')))
 
         rules = {}
 
@@ -636,9 +636,7 @@ class Roots:
                     vs, feature = match.groups()
                     # Create an FSS for this vowel spec
                     feature = make_weight(feature, target=gen)
-#                    feature = UNIFICATION_SR.parse_weight(feature)
                     vspec[vindex] = (vs, feature)
-#                    print("   **** vs {} feature {}".format(vs, feature.__repr__()))
             return vspec
 
         while lines:
@@ -651,7 +649,6 @@ class Roots:
             m = Roots.RULE_RE.match(line)
             if m:
                 rule = m.groups()[0]
-#                print("*** rule {}".format(rule))
 
                 cat, specs = rule.strip().split('::')
                 cat = cat.strip().split(',')
@@ -666,12 +663,10 @@ class Roots:
                     if '==' in subcat:
                         # subcat is like 2==3; duplicate root consonants
                         dup_positions = [int(p) for p in subcat.split('==')]
-#                        print("*** DUPCHAR rule: {}".format(dup_positions))
                     elif '=' in subcat:
                         # subcat is like 2=ው
                         position, char = subcat.split('=')
                         if char in char_sets:
-#                            print("*** {} is in charsets: {}".format(char, char_sets[char]))
                             chars = char_sets[char]
                         position = int(position)
                     elif len(subcat) > 1:
@@ -679,7 +674,6 @@ class Roots:
                         position = int(position)
                 maincat = cat[0].strip()
                 if specs.strip() == '!':
-                    print("*** Constraint on maincat {}, subcat {}".format(maincat, subcat))
                     continue
                 elif '{' in specs:
                     specs = eval(specs)
@@ -703,7 +697,6 @@ class Roots:
                         duprules[maincat] = []
                     r = duprules[maincat]
                     r.append((dup_positions, specs))
-#                    print("*** CREATING DUP RULE for {} : {}".format(maincat, duprules))
                 else:
                     if maincat not in rules:
                         rules[maincat] = {}
@@ -714,7 +707,6 @@ class Roots:
                                 r[position][c] = specs
                             else:
                                 r[position] = {c: specs}
-#                        print("*** CREATED POSITION RULE {} : {} : {}".format(maincat, position, r[position]))
                     else:
                         r[''] = specs
                 continue
@@ -722,7 +714,6 @@ class Roots:
             m = Roots.CHAR_SET_RE.match(line)
             if m:
                 charset, chars = m.groups()
-#                print("*** charset {}: {}".format(charset, chars))
                 char_sets[charset] = chars
                 continue
 
@@ -754,7 +745,6 @@ class Roots:
             m = Roots.ROOT_FILE_RE.match(line)
             if m:
                 filename = m.groups()[0]
-#                print("** Root file {}, lexdir {}".format(filename, lexdir))
                 Roots.parse_root_file(filename, lexdir, roots, root_types)
                 continue
 
@@ -765,12 +755,10 @@ class Roots:
                 # A consonant may have an associated feature constraint
                 current_root = cons
                 for cindex, c in enumerate(cons):
-#                    print("*** {} {}".format(cindex, c))
                     if (match := Roots.CHAR_FEAT_RE.match(c)):
                         c, feature = match.groups()
                         feature = FeatStruct(feature)
                         cons[cindex] = (c, feature)
-#                print("*** cons {}, feats {}".format(cons, feats))
 
                 roots.append([cons, feats, []])
                 continue
@@ -778,7 +766,6 @@ class Roots:
             m = Roots.SUBROOT_RE.match(line)
             if m:
                 subrootfeats = m.groups()[0]
-#                print("*** Found subroot with features {}, current root {}".format(subrootfeats, roots[-1]))
                 # Add subrootfeatures to most recent root
                 roots[-1][2].append(subrootfeats)
                 continue
@@ -793,7 +780,6 @@ class Roots:
             if m:
                 rtype, rtypefeats = m.groups()
                 root_types.append((rtype, rtypefeats))
-#                print("*** Root type {}, features {}".format(rtype, rtypefeats))
                 continue
 
             m = Roots.FEATURES_RE.match(line)
@@ -824,9 +810,6 @@ class Roots:
 #        print("** char maps weights {}".format(charmap_weights))
 
 #        print("** irr roots: {}".format(irr_roots))
-
-#        if gen:
-#        print(fst)
 
         return fst
 

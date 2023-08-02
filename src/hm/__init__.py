@@ -56,7 +56,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
 
     @param language: a language label
     """
-    print("** load_lang, load_morph = {}".format(load_morph))
+#    print("** load_lang, load_morph = {}".format(load_morph))
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, simplified=simplified,
                      translate=translate, experimental=experimental, gen=gen,
@@ -813,7 +813,7 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
     load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen, fidel=fidel,
               translate=translate, guess=guess, experimental=experimental, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
-                               fidel=fidel, load=load_morph, verbose=verbose)
+                               load_morph=load_morph, fidel=fidel, load=load_morph, verbose=verbose)
     if lang:
         return lang.morphology[pos]
 

@@ -673,7 +673,7 @@ class POSMorphology:
     def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
                  feat_abbrevs=None, fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
                  feature_groups=None, name=None, explicit=None, true_explicit=None,
-                 lemma_feats=None):
+                 lemma_feats=None, segments=None):
         # A string representing part of speech
         self.pos = pos
         # A string representing the full name of the POS
@@ -756,6 +756,8 @@ class POSMorphology:
         self.feature_groups = feature_groups or None
         # Features for generating lemma
         self.lemma_feats = lemma_feats
+        # Segments and their properties
+        self.segments = segments
         # Frequency statistics for generation
         self.root_freqs = None
         self.feat_freqs = None
@@ -1257,6 +1259,16 @@ class POSMorphology:
                 if fst:
                     FST.pickle(fst, directory=directory, replace=replace)
 
+    def save(self, gen=True, pickle=False):
+        '''
+        Save analysis and generation FSTs to files.
+        '''
+        self.save_fst(generate=False, guess=False, phon=False, segment=False, translate=False, experimental=False,
+                      mwe=False, pickle=pickle)
+        if gen:
+            self.save_fst(generate=True, guess=False, phon=False, segment=False, translate=False, experimental=False,
+                          mwe=False, pickle=pickle)
+
     def save_fst(self, generate=False, guess=False, simplified=False,
                  phon=False, segment=False, translate=False, experimental=False, mwe=False,
                  features=True, defaultFS=True, stringsets=True,
@@ -1391,7 +1403,22 @@ class POSMorphology:
         prefixes, stem, suffixes = self.get_segments(string, features)
         root = features.get('root', stem)
         lemma = self.gen_lemma(stem, root, features)
-        return {'word': word, 'pre': prefixes, 'suf': suffixes, 'stem': stem, 'root': root, 'feats': features, 'lemma': lemma}
+        um = self.language.um.convert(features, pos=self.pos)
+        udfeats = self.language.um.convert2ud(um, self.pos, extended=True) if um else None
+        if self.segments:
+            preprops, stemprops, sufprops = self.segments
+            pre_dicts = []
+            for prefix, props in zip(prefixes, preprops):
+                if not prefix:
+                    pre_dicts.append('')
+                else:
+                    pre_dict = {'string': prefix}
+                    pre_pos = self.get_segment_pos(prefix, props)
+                    pre_dict['pos'] = pre_pos
+                    pre_dicts.append(pre_dict)
+            prefixes = pre_dicts
+                
+        return {'word': word, 'pre': prefixes, 'suf': suffixes, 'stem': stem, 'root': root, 'feats': features, 'lemma': lemma, 'um': um, 'udfeats': udfeats}
 
     def get_segments(self, string, features):
         '''
@@ -1404,6 +1431,26 @@ class POSMorphology:
         suf = suf.split(POSMorphology.segsep)
         return pre, stem, suf
 
+    def get_segment_props(self, string, segdict):
+        '''
+        string is a segment string.
+        segdict is the dict of properties for this segment position.
+        '''
+        pos = self.get_segment_pos(string, segdict)
+
+    def get_segment_pos(self, string, segdict):
+        posspec = segdict.get('pos')
+        if not posspec:
+            print("*** No POS in segdict {}".format(segdict))
+            return
+        if isinstance(posspec, dict):
+            pos = posspec.get(string)
+            if not pos:
+                print("*** No POS for {} in seg postdict {}".format(string, posspec))
+                return
+            return pos
+        return posspec
+ 
     def gen_lemma(self, stem, root, features):
         lemmafeats = self.lemma_feats
         if not lemmafeats:
@@ -1413,7 +1460,9 @@ class POSMorphology:
             value = features.get(lf)
             initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
-        return self.gen(root, update_feats=initfeat)
+        gen_out = self.gen(root, update_feats=initfeat)
+        if gen_out:
+            return gen_out[0][0]
 
     def separate_anals(self, analyses, normalize=False):
         """
@@ -1681,26 +1730,26 @@ class POSMorphology:
             return fs.featconv(subFSs)
         return fs
 
-    def segment(self, word, seg, feature, value, new_value=None):
-        """
-        If feature has value in word, segment the word into seg
-        and the word with feature changed to new_value.
-        """
-        anals = self.anal(word)
-        segmentations = []
-        for root, anal in anals:
-            # anal is a FSSet; check each FS
-            for a in anal:
-                if a.get(feature) != value:
-                    return
-            # only work with the first FS
-            a = list(anal)[0]
-            a = a.unfreeze()
-            a[feature] = new_value
-            new_word = self.gen(root, features=a)
-            if new_word:
-                segmentations.append((new_word[0][0], seg))
-        return segmentations
+#    def segment(self, word, seg, feature, value, new_value=None):
+#        """
+#        If feature has value in word, segment the word into seg
+#        and the word with feature changed to new_value.
+#        """
+#        anals = self.anal(word)
+#        segmentations = []
+#        for root, anal in anals:
+#            # anal is a FSSet; check each FS
+#            for a in anal:
+#                if a.get(feature) != value:
+#                    return
+#            # only work with the first FS
+#            a = list(anal)[0]
+#            a = a.unfreeze()
+#            a[feature] = new_value
+#            new_word = self.gen(root, features=a)
+#            if new_word:
+#                segmentations.append((new_word[0][0], seg))
+#        return segmentations
 
     def anals_to_dicts(self, analyses):
         '''Convert list of analyses to list of dicts.'''

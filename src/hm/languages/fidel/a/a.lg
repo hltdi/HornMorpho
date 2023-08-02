@@ -47,9 +47,18 @@ feats:
 
   pos: v verb
     morphotax::
-      sconj_adp;neg1;sb1;voice;
-      STEM;
-      sb2;ob;neg2;aux;acc;cconj
+      {'name': 'sconj_adp', 'pos':{'ለ':'ADP','በ':'ADP','ከ':'ADP','እንደ':'ADP','እስከ':'ADP',\
+         'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
+	  'dep': 'mod'};
+        {'name': 'neg1', 'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
+        {'name': 'sb1', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};;
+      {'name': 'STEM', 'pos': 'V'};;
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};
+        {'name': 'ob',  'pos': 'PRON', 'dep': 'comp', 'feats': ['op','on','og','oa']};
+        {'name': 'neg2',  'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
+        {'name': 'aux',  'pos': 'AUX', 'dep': 'mod', 'feats': 'ax'};
+        {'name': 'acc',  'pos': 'ADP', 'dep': 'mod', 'feats': 'acc'};
+        {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'mod', 'feats': 'cconj'}
     lemmafeats = a,v
     neg = False | True
     a = 0 | a  | i
@@ -74,6 +83,13 @@ feats:
     a = 0 | a | i
     v = 0 | p | a | as
     t = p | i | j | c
+
+  pos: vn v_noun
+    a = 0 | a | i
+    v = 0 | p | a | as
+    d = a | inf | ins | m
+    # only for infinitive
+    neg = False | True
 
   pos: n noun_adjective
 #    morphotax
@@ -140,15 +156,16 @@ feats:
 # Palatal consonants with /e/
 ^Ye = {ሸ, ቸ, ኘ, ዠ, ጀ, ጨ}
 
+# Palatal consonants with /a/
+^Ya = {ሻ, ቻ, ኛ, ዣ, ጃ, ጫ}
+
 # Consonants with /u/
 *u = {ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ኡ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ}
+# without ኡ
+^u = {ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ}
 
 # Consonants with /i/
 *i = {ሂ, ሊ, ሚ, ሪ, ሲ, ቂ, ቢ, ቲ, ኒ, ኪ, ዊ, ዚ, ዪ, ዲ, ጊ, ጢ, ጲ, ጺ, ፊ, ፒ, ኢ, ሺ, ቺ, ኚ, ዢ, ጂ, ጪ}
-
-# Consonants with /i/ other than palatal consonants and '
-#^i = {ሂ, ሊ, ሚ, ሪ, ሲ, ቂ, ቢ, ቲ, ኒ, ኪ, ዊ, ዚ, ዪ, ዲ, ጊ, ጢ, ጲ, ጺ, ፊ, ፒ}
-~Yi = {ሂ, ሊ, ሚ, ሪ, ሲ, ቂ, ቢ, ቲ, ኒ, ኪ, ዊ, ዚ, ዪ, ዲ, ጊ, ጢ, ጲ, ጺ, ፊ, ፒ}
 
 # Consonants with /a/
 *a = {ሃ, ላ, ማ, ራ, ሳ, ቃ, ባ, ታ, ና, ካ, ዋ, ዛ, ያ, ዳ, ጋ, ጣ, ጳ, ጻ, ፋ, ፓ, ኣ, ቋ, ኋ, ኳ, ጓ, ሻ, ቻ, ኛ, ዣ, ጃ, ጫ}
@@ -162,11 +179,18 @@ feats:
 # Consonants with /E/
 *E = {ሄ, ሌ, ሜ, ሬ, ሴ, ቄ, ቤ, ቴ, ኔ, ኬ, ዌ, ዜ, ዬ, ዴ, ጌ, ጤ, ጴ, ጼ, ፌ, ፔ, ኤ, ሼ, ቼ, ኜ, ዤ, ጄ, ጬ}
 
-# Consonants with /E/ other than palatal consonants and '
-~YE = {ሄ, ሌ, ሜ, ሬ, ሴ, ቄ, ቤ, ቴ, ኔ, ኬ, ዌ, ዜ, ዬ, ዴ, ጌ, ጤ, ጴ, ጼ, ፌ, ፔ}
+## 2=ይ verbs
+# Consonants with /E/ other than palatal and palatlizable consonants and '
+~YE = {ሄ, ሜ, ሬ, ቄ, ቤ, ኬ, ዌ, ጌ, ፌ}
+# Consonants with /a/ other than palatal or palatalizable consonants and '
+~Ya = {ሃ, ማ, ራ, ቃ, ባ, ካ, ዋ, ጋ, ፋ}
+# Consonants with /i/ other than palatal and palatalizable consonants and '
+~Yi = {ሂ, ሚ, ሪ, ቂ, ቢ, ኪ, ዊ, ጊ, ፊ}
 
 # Consonants with /o/
 *o = {ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ኦ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ}
+# excluding ኦ
+^o = {ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ}
 
 # Vowelless consonants
 * = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ, እ}

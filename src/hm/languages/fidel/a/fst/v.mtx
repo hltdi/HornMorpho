@@ -22,13 +22,13 @@ $ rel_impf
 $ sub_bound
   -
 
-$ neg
-  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p]
+$ neg1
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው]
   ኣ			[+neg,t=i|j]
   ኣል			[+neg,t=p]
   --   		[-neg];[t=c,-neg]
 
-$ neg_bound
+$ neg1_bound
   -
 
 $ sb_pre
@@ -43,18 +43,25 @@ $ sb_pre
   /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
-$ sp_bound
-  -
-
-$ voice_pre
-  ኣ					[v=a,a=0]
-  ኣ/			[v=a,a=a|i]
-  ኣ=			<ኣስ>	[v=as]
-  ተ=			<ተ>		[v=p]
-  --  				[v=0]
+#$ sp_bound
+#  -
 
 $ prestem
   <
+
+$ voice_pre
+  # transitive
+  ኣ			<ኣ->	[v=a,a=0]
+  ኣ/			<ኣ/->	[v=a,a=a];[v=a,a=i,tmp=[1=X]]
+  ኣ/ተ		<ኣ/ተ->	[v=a,a=i,tmp=[1=እ]]
+  # causative
+  ኣስ			<ኣስ->	[v=as,a=0]
+  ኣስተ		<ኣስተ->	[v=as,1=እ,a=i]
+  # passive-reflexive
+  ተ			<ተ->	[v=p,t=p|c];[v=p,t=j,sp=2]
+  /			</->	[v=p,t=i,tmp=[1=X]];[v=p,t=j,sp=1|3]
+  /ተ			</ተ->	[v=p,t=i,tmp=[1=እ]]
+  --  				[v=0]
 
 $ stem
    >>v_stem<<

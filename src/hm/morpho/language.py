@@ -446,13 +446,14 @@ class Language:
         fv_dependencies = {}
         fv_priorities = {}
         fullpos = {}
-
+        
         excl = {}
         feats = {}
         lex_feats = {}
         true_explicit = {}
         explicit = {}
         lemmafeats = {}
+        segments = {}
 
         feature_groups = {}
 
@@ -460,7 +461,6 @@ class Language:
 
         current = None
 
-        in_mtax = False
         current_msegs = []
 
 #        current_pos = ''
@@ -498,10 +498,12 @@ class Language:
 #                    print("line {}, next line {}".format(line, next_line))
                     if not line:
                         continue
-                    if next_line[-1] != ';':
+                    if next_line[-1] == '\\':
+                        next_line = next_line[:-1]
+                    elif next_line[-1] != ';':
                         done = True
                     line += next_line
-                print("** joined: {}".format(line))
+#                print("** joined: {}".format(line))
 
 #            print("** LINE: {}".format(line))
 
@@ -674,20 +676,27 @@ class Language:
                     fullpos[pos] = fullp
                     feature_groups[pos] = current_feature_groups
                     lemmafeats[pos] = []
+                    segments[pos] = []
                     continue
 
                 m = MTAX_RE.match(line)
                 if m:
-                    segments = m.groups()[0].strip()
-                    print("** Morphotax segments {}".format(segments))
-                    in_mtax = True
+                    segs = m.groups()[0].strip()
+#                    print("** segs {}".format(segs))
+                    # prefixes, stem, suffixes
+                    segs = segs.split(';;')
+                    segs = [segs[0].split(';'), segs[1], segs[2].split(';')]
+#                    print("** segs {}".format(segs))
+                    segs = [[eval(s) for s in segs[0]], eval(segs[1]), [eval(s) for s in segs[2]]]
+#                    print("** Morphotax segments {}".format(segs))
+                    segments[pos] = segs
                     continue
 
                 m = LEMMAFEATS_RE.match(line)
                 if m:
                     lemfeats = m.groups()[0].strip()
                     lemfeats = [lf.strip() for lf in lemfeats.split(',')]
-                    print("** lemmafeats {}".format(lemfeats))
+#                    print("** lemmafeats {}".format(lemfeats))
                     lemmafeats[pos] = lemfeats
                     continue
 
@@ -885,7 +894,7 @@ class Language:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
                                      fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
-                                     lemmafeats[pos]))
+                                     lemmafeats[pos], segments[pos]))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -1458,7 +1467,6 @@ class Language:
                 self.morphology[pos].set_ortho2phon()
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
-                print("** LOAD_FST 1")
                 self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
                                               simplified=simplified, experimental=experimental, mwe=False,
                                               phon=False, segment=segment, translate=translate,
@@ -1472,7 +1480,6 @@ class Language:
                                               pos=pos, recreate=recreate, verbose=verbose)
             # Load generator for both analysis and segmentation
 #            if phon or (ortho and not segment):
-            print("** LOAD_FST 2")
             self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
                                           simplified=simplified, experimental=False, mwe=False,
                                           phon=True, segment=False, translate=translate,
@@ -1546,6 +1553,14 @@ class Language:
 #        return mwes
 
     ### Analyze words or sentences
+
+    def analyze(self, item, pos='v', mwe=False, guess=False, nbest=10):
+        posM = self.morphology.get(pos)
+        if not posM:
+            print(">>> No POS {} for this language <<<".format(posM))
+            return
+        analyses = posM.anal(item)
+        return analyses
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None, experimental=False, mwe=False,

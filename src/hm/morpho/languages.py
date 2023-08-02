@@ -103,7 +103,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             ees = True
 #            from . import ees
 #            EES = ees.EES()
-        print("** MAKING language")
+#        print("** MAKING language")
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
                                  experimental=experimental, mwe=mwe,
@@ -139,6 +139,7 @@ def get_language(language, load=True,
     Get the language with lang_id, attempting to load it if it's not found
     and load is True.
     """
+#    print("** Getting language, load = {}, load_morpho = {}".format(load, load_morph))
     if isinstance(language, Language):
         return language
     lang_id = get_lang_id(language)

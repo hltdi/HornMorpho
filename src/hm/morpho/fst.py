@@ -2267,7 +2267,7 @@ class FST:
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
-                print("Shortcut: {}, {}, {}".format(dest, file, fss))
+#                print("** Shortcut: {}, {}, {}".format(dest, file, fss))
                 if file:
                     if fss:
                         wt = fss
@@ -2285,6 +2285,7 @@ class FST:
                                              lex_features=True, dest_lex=False)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
+#                        print(fst1)
                     mtax.fst.insert(fst1, src, dest, weight=wt, mult_dsts=False)
                 else:
 #                    print("FS shortcut from {} to {} with weight {}".format(src, dest, fss))
@@ -3625,7 +3626,7 @@ class FST:
                 # There's more than one final state, so connect each to dst
                 ins_final_weight = insertion.final_weight(ins_state)
                 final_weight = self.weighting().multiply(weight, ins_final_weight if ins_final_weight else self.default_weight())
-#                print('** Final arc from {0} to {1}'.format(state, dst))
+#                print('  ** Final arc from {0} to {1}'.format(state, dst))
                 self.add_arc(state, dst, '', '', weight=final_weight)
             for arc in insertion.outgoing(ins_state):
                 arc_dst = insertion.dst(arc)
@@ -3647,7 +3648,7 @@ class FST:
                     if not self.has_state(new_arc_dst):
                         self.add_state(new_arc_dst)
                         state_pairs.append((new_arc_dst, arc_dst))
-#                print('** Arc from {0} to {1}; in: {2}, out: {3}'.format(state, new_arc_dst, insertion.in_string(arc),
+#                print('  ** Arc from {0} to {1}; in: {2}, out: {3}'.format(state, new_arc_dst, insertion.in_string(arc),
 #                                                                       insertion.out_string(arc)))
                 self.add_arc(state, new_arc_dst, insertion.in_string(arc), insertion.out_string(arc),
                              weight=arc_weight)

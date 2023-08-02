@@ -115,9 +115,15 @@ POS v V
 # ለ-
 ->UD DAT	Case=Dat
 
+t:: i:IPFV;; p:PFV;; j:IMP
 t,ax:: c,0:V.CVB ;; i,0:NFIN;; c,al:PRF
-pos!t:: v:V;; 0:ADJ;; 0:N
+
+#pos!t:: v:V;; 0:ADJ;; 0:N
+
+pos:: v:V
+
 neg:: NEG
+
 rel,sub:: True,True:*RELC;NFIN
 
 ## morphological valence/voice

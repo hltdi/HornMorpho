@@ -3,6 +3,9 @@ $ a=0|a|i
 $ v=0|p|a|as
 $ t=p|i|j|c
 
+# abbreviation for "sibilants"
+$$ S ስ|ዝ|ሽ|ዥ
+
 %%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
@@ -23,10 +26,10 @@ $ t=p|i|j|c
 ^e	*:	-
 
 [t=j,v=0]
-^*	*e	*
+**	*e	*
 
 [t=j|c,v=a]
-^*	*	*
+**	*	*
 
 %%a=0,c=B,+strong
 [t=p]
@@ -136,7 +139,7 @@ $ t=p|i|j|c
 %%a=0,c=A,-strong
 
 %1=እ
-# no normal v=a for this subclass, but need to account for አስታወቀ
+# no simplex v=a for this subclass, but need to account for አስታወቀ
 [t=p,v=0|p|as]
 [t=i,v=p] 
 ኣ	*:e	*
@@ -194,10 +197,10 @@ $ t=p|i|j|c
 
 %2=ው
 [t=p|i|c]
-*o	-	*
+^o	-	*
 
 [t=j]
-*u	-	*
+^u	-	*
 
 %2=ይ
 [t=p|i]
@@ -592,21 +595,33 @@ $ t=p|i|j|c
 *a	*	-	*
 
 %1=እ
-[t=p,v=p|as]
+[t=p,v=p|a|as]
 [t=i,v=p]
 አ	*a	*:e	*
 
-[t=i,v=as]
+[t=p,v=0]
+ኣ	*a	*:e	*
+
+[t=i,v=0]
+ኣ	*a	*:	*
+
+[t=i,v=a|as]
 አ	*a	*:	*
 
 [t=j,v=p]
 አ	*a	*e	*
 
-[t=j,v=as]
+[t=j,v=a|as]
 አ	*a	*	*
 
-[t=c,v=p|as]
-አ	*a	*i	*
+[t=j,v=0]
+ኣ	*a	*	*
+
+[t=c,v=p|a|as]
+አ	*a	*	*
+
+[t=c,v=0]
+ኣ	*a	*	*
 
 %3=እ
 [t=p,v=0|a|p]
@@ -619,11 +634,14 @@ $ t=p|i|j|c
 *	*a	*:a	-
 
 [t=j,v=0|a|p]
-# is {*e *a *a -} possible? (ይሰማማ)
+*e	*a	*a	-
+
+# alternative for some roots: ተስማማ
+[t=j,v=0|a|p]
 *	*a	*a	-
 
 [t=c,v=0|a|p]
-*	*a	*	ት
+*e	*a	*	ት
 
 %3=ይ
 [t=p,v=0|p|a]
@@ -638,23 +656,8 @@ $ t=p|i|j|c
 
 %%a=i,c=B,-strong
 
-%3=እ
-[t=p]
-[t=i,v=p]
-*e	*a	*:a	-
+%3=እ == A
 
-[t=j]
-*e	*a	*a	-
+%3=ይ == A
 
-[t=c]
-*	*a	*	ት
-
-%3=ይ
-[t=p]
-*e	*a	*:e	-
-
-[t=i|j]
-*e	*a	*:	-
-
-[t=c]
-*e	*a	*	ት
+%1=እ == A

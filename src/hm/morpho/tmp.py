@@ -91,6 +91,7 @@ class Template:
 #        print("*** Created state from final to end with chars {}".format(default_final))
             
         for index, (template, weight) in enumerate(tmp_dict.items()):
+#            print("*** Creating tmp {} with weight {}".format(template, weight.__repr__()))
             template_name = "tmp{}".format(index)
             states = []
             tmp_length = len(template)
@@ -104,24 +105,21 @@ class Template:
                     # No character in this position; skip to next position
                     continue
                 gem_feat = None
-#                featname = "gem" if gen else "sgem"
                 if position in gem_pos:
                     # this is where the geminated character might be
                     gem_feat = "gem{}".format(position)
                     if gem:
                         gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
-#                        gem_feat = UNIFICATION_SR.parse_weight("[+{}]".format(gem_feat))
                         charset = charset.replace(':', '')
                     else:
                         gem_feat = make_weight("[-{}]".format(gem_feat), target=gen)
-#                        gem_feat = UNIFICATION_SR.parse_weight("[-{}]".format(gem_feat))
                 state_name = "{}_{}".format(template_name, position)
                 states.append((state_name, charset, gem_feat, gem))
 
-#            print("** final default {}".format(default_final))
+#            print("  *** states {}".format(states))
+
             source = 'start'
             if states[-1][1] == default_final and template[-1] != '-':
-#                print(" *** template {} has final default; states {}".format(template, states))
                 # template ends in default final, so use existing final arc
                 states_to_create = states[:-2]
                 last_state = states[-2]
@@ -132,9 +130,10 @@ class Template:
                 last_state = states[-1]
                 end = 'end'
 
+#            print("   *** last_state {}".format(last_state))
+                
             for index, (dest, charset, gem_feat, gem) in enumerate(states_to_create):
-#                if gem:
-#                    print("** state {} gfeat {} charset {}".format(dest, gem_feat.__repr__(), charset))
+#                print("   *** STATE {} dest {} cs {} gem_feat {} gem {}".format(index, dest, charset, gem_feat, gem))
                 if not fst.has_state(dest):
                     fst.add_state(dest)
                 wt=None
@@ -142,9 +141,20 @@ class Template:
                     wt = weight
                 elif gem_feat:
                     wt = gem_feat
-                fst.add_arc(source, dest, charset, charset, weight=wt)
+                if gem:
+                    # Make a separate arc for the pre-gem character
+                    dest0 = source + '_gem'
+                    fst.add_state(dest0)
+                    c = EES.pre_gem_char
+#                    print("    *** arc {}->{}; {}; {}".format(source, dest0, c, wt))
+                    fst.add_arc(source, dest0, c, c, weight=wt)
+#                    print("    *** arc {}->{}; {}; {}".format(dest0, dest, charset, wt))
+                    fst.add_arc(dest0, dest, charset, charset, weight=wt)
+                else:
+#                    print("    *** arc {}->{}; {}; {}".format(source, dest, charset, wt))
+                    fst.add_arc(source, dest, charset, charset, weight=wt)
                 source = dest
-                
+
             state, charset, gem_feat, gem = last_state
             if not states_to_create:
                 # This is the only arc for this template, so it needs the full weight
@@ -156,9 +166,12 @@ class Template:
                 dest0 = source + '_gem'
                 fst.add_state(dest0)
                 c = EES.pre_gem_char
+#                print("    *** arc {}->{}; {}; {}".format(source, dest0, c, wt))
                 fst.add_arc(source, dest0, c, c, weight=wt)
+#                print("    *** arc {}->{}; {}; {}".format(dest0, end, charset, wt))
                 fst.add_arc(dest0, end, charset, charset, weight=wt)
             else:
+#                print("    *** arc {}->{}; {}; {}".format(source, end, charset, wt))
                 fst.add_arc(source, end, charset, charset, weight=wt)
 
     @staticmethod
@@ -216,7 +229,7 @@ class Template:
         return inventory
 
     @staticmethod
-    def make_weak_inventory(weak_classes, inventory):
+    def make_weak_inventory(weak_classes):
         inv = {}
         for cls, subclass in weak_classes:
             if cls not in inv:
@@ -233,6 +246,7 @@ class Template:
         '''
 #        print("** Completing weak inventory")
         for cls, features in strong_inventory.items():
+#            print("  ** cls {}, features {}".format(cls, features))
             weak_class_inventory = weak_inventory.get(cls)
             weak_class_constraints = weak_constraints.get(cls)
             if weak_class_inventory:
@@ -242,26 +256,18 @@ class Template:
                         continue
 #                    print("** STRONG TEMPLATES {}, feature {}".format(templates, features.__repr__()))
                     for subclass, weak_features in weak_class_inventory.items():
-#                        print("  ** strong template {}; subclass {}, weakfeats {}, feature {}".format(templates, subclass, weak_features, feature.__repr__()))
                         # Look for templates with feature
                         found = False
                         for weak_feature, weak_templates in weak_features.items():
                             if simple_unify(weak_feature, feature) != 'fail':
-#                                print ("   *** unified weakfeat {} with feat {}; continuing".format(weak_feature.__repr__(), feature.__repr__()))
                                 found = True
                                 break
                         if not found:
-#                            print("   *** {} failed to unify with {}".format(feature.__repr__(), weak_features.__repr__()))
-#                            print("   *** subclass {}".format(subclass))
                             weak_subclass_constraints = weak_class_constraints.get(subclass) if weak_class_constraints else None
-#                            if weak_subclass_constraints:
-#                                print("*** No template for {} in subclass {}".format(feature.__repr__(), subclass))
-#                                print("*** weak constraints {}".format(weak_subclass_constraints))
                             prevented = False
                             if weak_subclass_constraints:
                                 for weak_constraint in weak_subclass_constraints:
                                     if simple_unify(feature, weak_constraint) != 'fail':
-#                                        print("  *** weak constraint matches; prevented!")
                                         prevented = True
                                         break
                             if prevented:
@@ -285,17 +291,13 @@ class Template:
                                 else:
                                     new_weak_feats[feat] = value
                             new_weak_feats = FSSet(new_weak_feats)
-#                            print("  **** Creating weak feature: {}".format(new_weak_feats.__repr__()))
                             # Pick first template for this feature set for the weak subclass
                             for template in templates:
-#                            template = templates[0]
                                 tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
-#                            print("  **** new tmp dict for template {}: {}".format(template, tmp_dict[template]))
 
     @staticmethod
     def copy_templates(features, sourceclass, strong_inventory, tmp_dict, gen=False):
-#        print("** class inventory")
-#        print("{}".format(strong_inventory.get(sourceclass)))
+#        print("** copy template {} {}".format(features, sourceclass))
         clsfeat = 'tc' if gen else 'c'
         strengthfeat = 'tstrong' if gen else 'strong'
         destfeatures = FeatStruct("[" + features + "]")
@@ -303,18 +305,53 @@ class Template:
         matchfeats = destfeatures.delete(['c', 'strong'])
         source_inventory = strong_inventory.get(sourceclass)
         dest_inventory = strong_inventory.get(destclass)
-#        print("** Copy templates for {} from {}, matchfeats {}".format(destfeatures.__repr__(), sourceclass, matchfeats.__repr__()))
-        for features, templates in source_inventory.items():
-            if templates and simple_unify(features, matchfeats) != 'fail':
-                dest_inventory[features] = templates
-                destfeats1 = features.copy()
+        for feats, templates in source_inventory.items():
+#            print(" ** checking templates {} and feats {}; matchfeats {}".format(templates, feats.__repr__(), matchfeats.__repr__()))
+            if templates and simple_unify(feats, matchfeats) != 'fail':
+#                print("  ** features {}, matchfeats {} and templates {} match".format(feats.__repr__(), matchfeats.__repr__(), templates))
+                dest_inventory[feats] = templates
+                destfeats1 = feats.copy()
                 destfeats1[strengthfeat] = True
                 destfeats1[clsfeat] = destclass
+                tmp_feat = tmp_dict[templates[0]].get('tmp')
+                destfeats1['tmp'] = tmp_feat
                 destfeats1 = FSSet(destfeats1)
-#                print("  *** Match: {} / {}, newfeats {}".format(features.__repr__(), templates, destfeats1.__repr__()))
                 for template in templates:
-                    tmp_dict[template] = tmp_dict[template].union(destfeats1)
+                    old_feats = tmp_dict[template]
+#                    tmp_feat = old_feats.get('tmp')
+#                    print("   ** type {}: {}".format(destfeats1.__repr__(), type(destfeats1)))
+#                    print("    ** template {}, tmp_feat {}, feats {}".format(template, tmp_feat.__repr__(), destfeats1.__repr__()))
+                    tmp_dict[template] = old_feats.union(destfeats1)
              
+    @staticmethod
+    def copy_weak_templates(features, subclass, sourceclass, weak_inventory, tmp_dict, gen=False):
+#        print("** copy weak template {} {} {}".format(features, subclass, sourceclass))
+        clsfeat = 'tc' if gen else 'c'
+        strengthfeat = 'tstrong' if gen else 'strong'
+        destfeatures = FeatStruct("[" + features + "]")
+        destclass = destfeatures.get('c')
+        matchfeats = destfeatures.delete(['c', 'strong'])
+        source_inventory = weak_inventory.get(sourceclass).get(subclass)
+        dest_cls_inventory = weak_inventory.get(destclass)
+        if subclass not in dest_cls_inventory:
+            dest_cls_inventory[subclass] = {}
+        dest_inventory = dest_cls_inventory.get(subclass)
+        for feats, templates in source_inventory.items():
+#            print(" ** checking templates {} and feats {}; matchfeats {}".format(templates, feats.__repr__(), matchfeats.__repr__()))
+            if templates and simple_unify(feats, matchfeats) != 'fail':
+#                print("  ** features {}, matchfeats {} and templates {} match".format(feats.__repr__(), matchfeats.__repr__(), templates))
+                dest_inventory[feats] = templates
+                destfeats1 = feats.copy()
+                destfeats1[strengthfeat] = False
+                destfeats1[clsfeat] = destclass
+                tmp_feat = tmp_dict[templates[0]].get('tmp')
+                destfeats1['tmp'] = tmp_feat
+                destfeats1 = FSSet(destfeats1)
+                for template in templates:
+                    old_feats = tmp_dict[template]
+#                    print("    ** template {}, feats {}".format(template, destfeats1.__repr__()))
+                    tmp_dict[template] = old_feats.union(destfeats1)
+
     @staticmethod
     def get_class(features):
         '''
@@ -373,6 +410,7 @@ class Template:
         inventory = []
         template_dict = {}
         copy_templates = []
+        weak_copy_templates = []
         weak_constraints = {}
 
         char_sets = {}
@@ -399,14 +437,12 @@ class Template:
             m = Template.CHAR_SET_RE.match(line)
             if m:
                 charset, chars = m.groups()
-#                print("*** charset {}: {}".format(charset, chars))
                 char_sets[charset] = chars
                 continue
 
             m = Template.INVENTORY_RE.match(line)
             if m:
                 inventory1 = m.groups()[0]
-#                print("*** inventory item {}".format(inventory1))
                 f, values = inventory1.split('=')
                 if f in ('c', 'cls', 'class'):
                     # These are root classes; make a separate dict for each
@@ -430,19 +466,23 @@ class Template:
                 current_constraints = ''
                 current_subclass = ''
                 current_main_constraints = [constraints]
-#                print("*** main constraints {}".format(constraints))
                 current_class = Template.get_class(constraints)
-#                current_main_constraints.append(constraints)
                 continue
 
             m = Template.CONSTRAINT_RE.match(line)
             if m:
                 # Each of these should represent a new weak subclass within the current feature set (normally values for a and c)
                 constraints = m.groups()[0]
-#                print("** weak constraints {}".format(constraints))
                 if '!' in constraints:
                     subclass = constraints.replace('!', '').strip()
                     Template.add_weak_constraint(subclass, current_main_constraints[0], weak_constraints, gen=gen)
+                    continue
+                elif '==' in constraints:
+                    subclass, sourceclass = constraints.split('==')
+                    subclass = subclass.strip()
+                    sourceclass = sourceclass.strip()
+                    main_constraint = current_main_constraints[0]
+                    weak_copy_templates.append((main_constraint, subclass, sourceclass))
                     continue
                 if gen:
                     # precede position ints with 't'
@@ -450,8 +490,6 @@ class Template:
                     constraints = ['t' + c for c in constraints]
                     constraints = ','.join(constraints)
 
-#                constraint_feat = Template.make_weakclass_feat(constraints)
-#                print("*** current class {} constraints {}".format(current_class, constraint_feat.__repr__()))
                 weak_inventory_classes.append((current_class, constraints))
                 current_constraints = constraints
                 current_subclass = constraints
@@ -461,7 +499,6 @@ class Template:
             if m:
                 template = m.groups()[0]
                 template = tuple(template.split())
-#                print("*** Adding template {}, current_features {}, constraints {}, subclass {}".format(template, current_features, current_main_constraints + [current_constraints], current_subclass))
                 templates.append((template, current_features, current_main_constraints + [current_constraints], current_subclass))
                 current_features = []
                 continue
@@ -470,7 +507,7 @@ class Template:
 
         inventory = Template.expand_inventory(inventory_classes, inventory, gen=gen)
 
-        weak_inventory = Template.make_weak_inventory(weak_inventory_classes, inventory)
+        weak_inventory = Template.make_weak_inventory(weak_inventory_classes)
 
         # Find most common final character set.
         finals = {}
@@ -482,30 +519,29 @@ class Template:
                 finals[final] = 1
         finals = list(finals.items())
         finals.sort(key=lambda x: x[1], reverse=True)
-#        print("*** finals {}".format(finals))
         default_final = finals[0][0]
 
         for index, (template, features, constraints, subclass) in enumerate(templates):
             Template.add_template(fst, template, index+1, features, constraints, tmp_dict=tmp_dict,
                                   strong_inventory=inventory, weak_inventory=weak_inventory,
                                   subclass=subclass, cascade=cascade, gen=gen, char_sets=char_sets)
+#        for x, y in weak_inventory.items():
+#            print(x, y)
 
         for features, sourceclass in copy_templates:
             Template.copy_templates(features, sourceclass, inventory, tmp_dict, gen=gen)
 
+        for features, subclass, sourceclass in weak_copy_templates:
+            Template.copy_weak_templates(features, subclass, sourceclass, weak_inventory, tmp_dict, gen=gen)
+
         Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints, gen=gen)
-
-#        for x, y in weak_inventory.get('A').get('3=እ').items():
-#            print("***** {}, {}".format(x.__repr__(), y))
-
-#        print("*** weak inventory {}".format(weak_inventory.get('A').get('3=እ')))
 
 #        print("*** inventory {}".format(inventory.get('A')))
 #        print("*** weak inventory {}".format(weak_inventory))
 
+#        for x, y in tmp_dict.items():
+#            print("*** {} -- {}".format(x, y))
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen)
-
-#        print("*** tmp_dict <*e *: *> {}".format(tmp_dict.get(('*e', '*:', '*'))))
 
 #        print(fst)
         return fst
