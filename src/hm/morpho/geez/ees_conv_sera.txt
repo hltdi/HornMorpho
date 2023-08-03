@@ -35,13 +35,15 @@
 ፐ=pe ፑ=pu ፒ=pi ፓ=pa ፔ=pE ፕ=p ፖ=po
 ሏ=lWa
 ሗ=HWa
-ሟ=mWa
+ሟ=mWa ᎀ=mWe ᎃ=mW 𞟭=mWi 𞟮=mWE
 ሧ=^sWa
 ሯ=rWa
 ሷ=sWa
 ሿ=xWa
 ቈ=qWe ቊ=qWi ቋ=qWa ቌ=qWE ቍ=qW
 ቘ=QWe ቚ=QWi ቛ=QWa ቜ=QWE ቝ=QW
+ቧ=bWa ᎄ=bWe ᎇ=bW 𞟳=bWi 𞟴=bWE
+ፏ=fWa ᎈ=fWe ᎋ=fW 𞟻=fWi 𞟼=fWE
 ቧ=bWa
 ቯ=vWa
 ቷ=tWa

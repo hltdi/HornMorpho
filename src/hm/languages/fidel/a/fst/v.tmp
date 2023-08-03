@@ -1,4 +1,4 @@
-$ c=A|B|C|E|F|G|H|J
+$ c=A|B|C|E|F|G|H|J|K
 $ a=0|a|i
 $ v=0|p|a|as
 $ t=p|i|j|c
@@ -135,6 +135,23 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=c,v=p|a]
 [t=j,v=a]
 *	*a	*	*
+
+%%a=0,c=K,+strong
+# ዶለዶመ
+[t=p]
+[t=i,v=p]
+^o	*e *:o	*
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+^o	*e	*u:	*
+
+[t=j,v=0|a]
+[t=c]
+^o	*	*u	*
+
+[t=j,v=p]
+^o	*	*o	*
 
 %%a=0,c=A,-strong
 
@@ -283,7 +300,6 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=j,v=0|a|as]
 *e	*:a	-
 
-# ?
 [t=j,v=p]
 *e	*a	-
 
@@ -314,15 +330,18 @@ $$ S ስ|ዝ|ሽ|ዥ
 *a	*:	ት
 
 %3=ይ
-# are there any roots like this?
+# ፏጨ, ቃዠ
 [t=p]
 *a	*:e	-
 
-[t=i|j]
+[t=i]
 *a	*:	-
 
+[t=j]
+*a	*	-
+
 [t=c]
-*a	*:	ት
+*a	*	ት
 
 %%a=0,c=E,-strong
 %1=እ

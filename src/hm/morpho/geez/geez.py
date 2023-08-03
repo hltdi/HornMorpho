@@ -209,11 +209,20 @@ def is_geez(form):
     '''
     for char in form:
         c = ord(char)
-        if 4608 <= c <= 4988:
+        if 4608 <= c <= 5017:
             return True
-        # new characters for Feqede Gurage orthography
-        if 57412 <= c <= 57415:
+        if 11648 <= c <= 11742:
+            # Ethiopic Extended
             return True
+        if 43776 <= c <= 43822:
+            # Ethiopic Extended-A
+            return True
+        if 124896 <= c <= 124926:
+            # Ethiopic Extended-B
+            return True
+#        # new characters for Feqede Gurage orthography
+#        if 57412 <= c <= 57415:
+#            return True
     return False
 
 def convert_labial(form):

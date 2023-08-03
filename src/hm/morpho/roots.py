@@ -38,16 +38,25 @@ def geezify_CV(c, v):
     v may be '0x', where x is a Geez character. In this case this character
     is returned, and c is ignored.
     '''
+#    print("** geezifying {} + {}".format(c, v))
     if v in '0-_' or not v:
         return ''
     elif len(v) > 1 and v[0] == '0':
         return v[1]
     elif is_geez(c):
         c = romanize(c, 'ees')
+#        print(" ** romanized {}".format(c))
+    if len(c) > 1:
+        if c[-1] == 'u':
+            c = c[0] + 'W'
+#        print("** Geezifying {} + {}".format(c, v))
     g = geezify(c+v, 'ees')
+#    if len(c) > 1:
+#        print("** Geezified: {}".format(g))
     if not is_geez(Roots.remove_gem(g)):
 #            g.replace(EES.pre_gem_char, '')):
         return ''
+#    print("** geezified {}".format(g))
     return g
 
 class Roots:
@@ -166,7 +175,7 @@ class Roots:
                 
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
 #            if not iterative and not aisa:
-#            print("*** Making root states for {} with weight {}; {}".format(root_chars, weight.__repr__(), manner))
+#            print("  *** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
@@ -281,18 +290,21 @@ class Roots:
             feats = '[' + feats + ']'
         weight = make_weight(feats, target=gen)
         cls = weight.get('tc') if gen else weight.get('c')
+
+        # Root may be explicitly 'strong', in which case weak rules are ignored (this prevents ጸለየ (ጽልይ) from being treated like ለየ (ልይይ).
+        expl_strength = weight.get('strong', False)
+
         # make the simplex states and arcs
         drules = duprules.get(cls)
-        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights)
+        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength)
         # Based on rules, assign ±strong to the root
         strength_feat = 'tstrong' if gen else 'strong'
         weight = weight.set_all(strength_feat, strong)
         weight1 = dup_weight(drules, weight)
-#        print(" ** duprules {}".format(drules))
         mrs(fst, charsets, weight1, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + 'i')):
             drules = duprules.get(cls + 'i')
-            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, drules, char_maps, charmap_weights)
+            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength)
             # Add a=i if it's compatible with other features
             weighti = weight.set_all('a', 'i', force=False)
             if weighti:
@@ -300,7 +312,7 @@ class Roots:
                 mrs(fst, it_charsets, weighti, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
         if (cls_m_rules := rules.get(cls + 'm')):
             drules = duprules.get(cls + 'm')
-            m_charsets, strongi = Roots.make_charsets(cons, cls + 'm', cls_m_rules, drules, char_maps, charmap_weights)
+            m_charsets, strongi = Roots.make_charsets(cons, cls + 'm', cls_m_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength)
             # Add a=i if it's compatible with other features
             weightm = weight.set_all('d', 'm', force=False)
             if weightm:
@@ -308,7 +320,7 @@ class Roots:
                 mrs(fst, m_charsets, weightm, states, cons_chars, manner=True, iterative=False, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + 'a')):
             drules = duprules.get(cls + 'a')
-            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, drules,  char_maps, charmap_weights)
+            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, drules,  char_maps, charmap_weights, expl_strength=expl_strength)
             # Add a=a if it's compatible with other features
             weighta = weight.set_all('a', 'a', force=False)
             if weighta:
@@ -324,13 +336,13 @@ class Roots:
             return
 
     @staticmethod
-    def make_charsets(consonants, cls, rules, duprules, char_maps, charmap_weights):
+    def make_charsets(consonants, cls, rules, duprules, char_maps, charmap_weights, expl_strength=False):
         '''
         Given the root consonants and a set of rules for the class,
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
-#        print("**** Making character sets for {}, {}".format(consonants, cls))
+#        print("  **** Making character sets for {}, {}; {}".format(consonants, cls, expl_strength))
         if not rules:
             print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
@@ -345,7 +357,6 @@ class Roots:
         # Keep track of positions where vowels are changed based on weak subclass rules, so
         # earlier rules have priority (otherwise <' w q> is treated as a 2=ው root)
         positions_reset = []
-        show = consonants == ['እ', 'ው', 'ቅ']
         for index in range(len(defaults)):
             cons = consonants[index]
             if isinstance(cons, tuple):
@@ -355,19 +366,15 @@ class Roots:
             if is_geez(cons):
                 cons = romanize(cons, 'ees')
             position = index + 1
-            if show:
-                print("** position {} cons {} reset {}".format(position, cons, positions_reset))
-            if position in positions_reset:
-                if show:
-                    print("  ** continuing")
+            # Skip the weak rules for this position if one has already been found
+            # or if the root is expicitly strong
+            if position in positions_reset or expl_strength:
                 continue
             posrules = rules.get(position)
             if posrules and cons in posrules:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
                 strong = False
                 posrules = posrules[cons]
-                if show:
-                    print("  ** posrules {}".format(posrules))
                 for pos, vowels in posrules.items():
                     charsets[pos] = vowels
                     positions_reset.append(pos)
@@ -431,8 +438,6 @@ class Roots:
                 cv = geezify_CV(cons, v)
                 if not cv and cv != '':
                     continue
-#                if not is_geez(cv):
-#                    continue
                 if geminated:
                     cv = '/' + cv
                 if vowel_feat:
