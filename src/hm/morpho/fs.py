@@ -283,6 +283,13 @@ class FeatStruct(FS):
                 raise TypeError('Feature names must be strings')
             self[key] = val
 
+#    def remove_dups(self):
+#        results = []
+#        for fs in self:
+#            if fs not in results:
+#                results.append(fs)
+#        return FSSet(results)
+
     def delete(self, features, freeze=False):
         """
         Return a copy of this FeatStruct with each feature in features

@@ -1,4 +1,4 @@
-$ c=A|B|C|E|F|G|H|J|K
+$ c=A|B|C|E|Eo|Eo1|Eo2|F|G|H|J
 $ a=0|a|i
 $ v=0|p|a|as
 $ t=p|i|j|c
@@ -136,7 +136,7 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=j,v=a]
 *	*a	*	*
 
-%%a=0,c=K,+strong
+%%a=0,c=Eo,+strong
 # ዶለዶመ
 [t=p]
 [t=i,v=p]
@@ -152,6 +152,40 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 [t=j,v=p]
 ^o	*	*o	*
+
+%%a=0,c=Eo1,+strong
+# ሞለፈፈ
+[t=p]
+[t=i,v=p]
+^o	*e *:e	*
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+^o	*e	*:	*
+
+[t=j,v=0|a]
+[t=c]
+^o	*	*	*
+
+[t=j,v=p]
+^o	*	*e	*
+
+%%a=0,c=Eo2,+strong
+# ሸረሞጠ
+[t=p]
+[t=i,v=p]
+^e	*e *:o	*
+
+[t=i,v=0|a|as]
+[t=j,v=as]
+^e	*e	*u:	*
+
+[t=j,v=0|a]
+[t=c]
+^e	*	*u	*
+
+[t=j,v=p]
+^e	*	*o	*
 
 %%a=0,c=A,-strong
 
@@ -180,7 +214,6 @@ $$ S ስ|ዝ|ሽ|ዥ
 እ	*e	*
 
 %1=እ,3=ይ
-# still need to account for አስተያየ
 [t=p,v=0|p|as]
 ኣ	*:e	-
 
@@ -345,21 +378,29 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 %%a=0,c=E,-strong
 %1=እ
-# no v=0
-[t=p,v=0|p|as]
-[t=i,v=p]
+# c1=0 for derived forms
+[t=p,v=0]
 ኣ	*e	*:e	*
 
-[t=i,v=0|as]
-[t=j,v=as]
+[t=i,v=0]
 ኣ	*e	*:	*
 
 [t=j,v=0]
-[t=c,v=0|p|as]
+[t=c,v=0]
 ኣ	*	*	*
 
+[t=p,v=p|as]
+[t=i,v=p]
+-	*e	*:e	*
+
+[t=i|j,v=as]
+-	*e	*:	*
+
+[t=c,v=p|as]
+-	*e	*	*
+
 [t=j,v=p]
-ኣ	*	*e	*
+-	*e	*e	*
 
 %4=እ
 # ገነባ
@@ -393,8 +434,11 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 %2=እ,4=እ
 # ባባ
-[t=p|i|j]
-*a	-	*a	-
+[t=i|p]
+^a	-	^:a	-
+
+[t=j]
+^a	-	^a	-
 
 [t=c]
 *a	-	*	ት
@@ -429,6 +473,19 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 [t=c]
 *e	*a	*	ት
+
+%%a=0,c=G,-strong
+
+%3=እ,5=እ
+# ተንጫጫ
+[t=i|p,v=p|a]
+**	^a	-	^:a	-
+
+[t=j,v=p|a]
+**	^a	-	^a	-
+
+[t=c,v=p|a]
+**	*a	-	*	ት
 
 %%a=a,c=A,+strong
 # initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
@@ -478,6 +535,51 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 [t=j,v=p]
 ^e	*a	*e	*
+
+%%a=a,c=Eo,+strong
+[t=p,v=p|a]
+[t=i,v=p]
+^o	*a	*:o	*
+
+[t=i,v=a]
+^o	*a	*:u	*
+
+[t=j,v=a]
+[t=c,v=p|a]
+^o	*a	*u	*
+
+[t=j,v=p]
+^o	*a	*o	*
+
+%%a=a,c=Eo1,+strong
+[t=p,v=p|a]
+[t=i,v=p]
+^o	*a	*:e	*
+
+[t=i,v=a]
+^o	*a	*:	*
+
+[t=j,v=a]
+[t=c,v=p|a]
+^o	*a	*	*
+
+[t=j,v=p]
+^o	*a	*e	*
+
+%%a=a,c=Eo2,+strong
+[t=p,v=p|a]
+[t=i,v=p]
+^e	*a	*:o	*
+
+[t=i,v=a]
+^e	*a	*:u	*
+
+[t=j,v=a]
+[t=c,v=p|a]
+^e	*a	*u	*
+
+[t=j,v=p]
+^e	*a	*o	*
 
 %%a=a,c=A,-strong
 %3=እ
@@ -537,30 +639,24 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 %4=እ
 # ገነባ
-[t=p|i,v=p|a]
+[t=p|i]
 *e	*a	*:a	-
 
-[t=j,v=p]
+[t=j]
 *e	*a	*a	-
 
-[t=j,v=a]
-*e	*a	*a	-
-
-[t=c,v=p|a]
+[t=c]
 *e	*a	*	ት
 
 %4=ይ
 # ሰለቸ
-[t=p|i,v=p|a]
+[t=p|i]
 *e	*a	*:e	-
 
-[t=j,v=p]
+[t=j]
 *e	*a	*	-
 
-[t=j,v=a]
-*e	*a	*	-
-
-[t=c,v=p|a]
+[t=c]
 *e	*a	*	ት
 
 %%a=i,c=A,+strong
@@ -598,6 +694,51 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=c]
 *e	*e	*a	*	*
 
+%%a=i,c=Eo,+strong
+[t=p]
+[t=i,v=p]
+*o	*e	*Wa	*:o	*
+
+[t=i,v=0|a]
+*o	*e	*Wa	*:u	*
+
+[t=j,v=p]
+*o	*e	*Wa	*o	*
+
+[t=j,v=0|a]
+[t=c]
+*o	*e	*Wa	*u	*
+
+%%a=i,c=Eo1,+strong
+[t=p]
+[t=i,v=p]
+*o	*e	*a	*:e	*
+
+[t=i,v=0|a]
+*o	*e	*a	*:	*
+
+[t=j,v=p]
+*o	*e	*a	*e	*
+
+[t=j,v=0|a]
+[t=c]
+*o	*e	*a	*	*
+
+%%a=i,c=Eo2,+strong
+[t=p]
+[t=i,v=p]
+*e	*e	*Wa	*:o	*
+
+[t=i,v=0|a]
+*e	*e	*Wa	*:u	*
+
+[t=j,v=p]
+*e	*e	*Wa	*o	*
+
+[t=j,v=0|a]
+[t=c]
+*e	*e	*Wa	*u	*
+
 %%a=i,c=F,+strong == E
 
 %%a=i,c=A,-strong
@@ -618,12 +759,6 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=i,v=p]
 አ	*a	*:e	*
 
-[t=p,v=0]
-ኣ	*a	*:e	*
-
-[t=i,v=0]
-ኣ	*a	*:	*
-
 [t=i,v=a|as]
 አ	*a	*:	*
 
@@ -631,13 +766,17 @@ $$ S ስ|ዝ|ሽ|ዥ
 አ	*a	*e	*
 
 [t=j,v=a|as]
+[t=c,v=p|a|as]
 አ	*a	*	*
+
+[t=p,v=0]
+ኣ	*a	*:e	*
+
+[t=i,v=0]
+ኣ	*a	*:	*
 
 [t=j,v=0]
 ኣ	*a	*	*
-
-[t=c,v=p|a|as]
-አ	*a	*	*
 
 [t=c,v=0]
 ኣ	*a	*	*
@@ -673,10 +812,109 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=c,v=0|p|a]
 *e	*a	*	ት
 
+%1=እ,3=እ
+[t=p,v=p|a|as]
+[t=i,v=p]
+አ	*a	*:a	-
+
+[t=i,v=a|as]
+አ	*a	*:a	-
+
+[t=j,v=p|a|as]
+አ	*a	*a	-
+
+[t=c,v=p|a|as]
+አ	*a	*	ት
+
+[t=p,v=0]
+ኣ	*a	*:a	-
+
+[t=i,v=0]
+ኣ	*a	*:a	-
+
+[t=j,v=0]
+ኣ	*a	*a	-
+
+[t=c,v=0]
+ኣ	*a	*	ት
+
 %%a=i,c=B,-strong
 
 %3=እ == A
+%3=ይ == A
+%1=እ == A
 
+%%a=i,c=C,-strong
+
+%3=እ == A
 %3=ይ == A
 
-%1=እ == A
+%%a=i,c=E,-strong
+
+%1=እ
+
+[t=p,v=0]
+ኣ	*e	^a	*:e	*
+
+[t=i,v=0]
+ኣ	*e	^a	*:	*
+
+[t=j|c,v=0]
+ኣ	*e	^a	*	*
+
+[t=p,v=p|a|as]
+[t=i,v=p]
+-	*e	^a	*:e	*
+
+[t=i,v=a|as]
+-	*e	^a	*:	*
+
+[t=c,v=p|a|as]
+[t=j,v=a|as]
+-	*e	^a	*	*
+
+[t=j,v=p]
+-	*e	^a	*e	*
+
+%4=እ
+# ገነባባ
+[t=p|i]
+^e	*e	*a	*:a	-
+
+[t=j]
+^e	*e	*a	*a	-
+
+[t=c]
+^e	*e	*a	*	ት
+
+%4=ይ
+# ሰለቻቸ
+[t=p]
+^e	*e	*a	*:e	-
+
+[t=i]
+^e	*e	*a	*:	-
+
+[t=j]
+^e	*e	*a	*	-
+
+[t=c]
+^e	*e	*a	*	ት
+
+%2=እ,4=እ
+# ባባ
+[t=i|p]
+^e	^a	-	^:a	-
+
+[t=j]
+^e	^a	-	^a	-
+
+[t=c]
+^e	^a	-	*	ት
+
+%%a=i,c=F,-strong
+
+%4=ይ == E
+%4=እ == E
+
+## No a=i for classes G, H, J

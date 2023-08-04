@@ -201,6 +201,8 @@ class Template:
 
         inventory = strong_inventory.get(cls)
 
+#        print("  *** inventory for class {}: {}".format(cls, inventory))
+
         if strong:
             strong_feats = [w for w in list(weight) if w.get(strong_feat)]
             for inv_feats in inventory.keys():
@@ -525,7 +527,9 @@ class Template:
             Template.add_template(fst, template, index+1, features, constraints, tmp_dict=tmp_dict,
                                   strong_inventory=inventory, weak_inventory=weak_inventory,
                                   subclass=subclass, cascade=cascade, gen=gen, char_sets=char_sets)
-#        for x, y in weak_inventory.items():
+#        print("*** weak inventory for A")
+#        for x, y in weak_inventory.get('A').items():
+#            print()
 #            print(x, y)
 
         for features, sourceclass in copy_templates:
@@ -541,6 +545,7 @@ class Template:
 
 #        for x, y in tmp_dict.items():
 #            print("*** {} -- {}".format(x, y))
+
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen)
 
 #        print(fst)

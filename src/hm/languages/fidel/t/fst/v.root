@@ -11,15 +11,15 @@ $$ L	'`H
 #%A,3=w::				2:e,i,o,u,I,/I;	3:0,I,0ይ
 #%A,3=y::									3:0,I
 # a=a
-%Aa::		1:a;		2:e,I,i;		3:I
-%Aa,3=L::				2:a,I,i;		3:I
-#%Aa,3=y::								3:0,I
-#%Aa,3=w::				2:e,o,u,i,I;	3:0,I,0ይ
+%A_a::		1:a;		2:e,I,i;		3:I
+%A_a,3=L::				2:a,I,i;		3:I
+#%A_a,3=y::								3:0,I
+#%A_a,3=w::				2:e,o,u,i,I;	3:0,I,0ይ
 # iterative, a=i
-%Ai::		1:e;		2:a|e,I,i;	3:I
-%Ai,3=L::				2:a|a,i,I;		3:I
-#%Ai,3=y::									3:0,I
-#%Ai,3=w::				2:a|e,o,u,i,I;		3:0,I,0ይ
+%A_i::		1:e;		2:a|e,I,i;	3:I
+%A_i,3=L::				2:a|a,i,I;		3:I
+#%A_i,3=y::									3:0,I
+#%A_i,3=w::				2:a|e,o,u,i,I;		3:0,I,0ይ
 
 ## B roots
 %B::		1:e,I;	2:/e,/i,/I;	3:I

@@ -17,7 +17,7 @@ $ *ye(-^)
 %A::		1:e,I;			2:VeI,veI,_veI;			3:I
 %A,3=':: 					2:Va,va,_va;				3:0
 %B::	 	1:e,~yE,*ye;	2:^~VeI,veI,^_veI;		3:I
-%Ai::		1:I;			2:a|VeI,veI,_veI;			3:I
+%A_i::		1:I;			2:a|VeI,veI,_veI;			3:I
 %C::		1:a;			2:VeI,veI,_veI;			3:I
 
 <ስ ብ ር>	      		c=A,+tr,+m

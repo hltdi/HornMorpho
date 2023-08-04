@@ -88,6 +88,7 @@ class Roots:
     possep = ';'
     charmapsep = ';'
     vspecsep = ','
+    catsep = '_'
 
 #    def __init__(self, fst, directory=''):
 #        self.fst = fst
@@ -127,14 +128,18 @@ class Roots:
     @staticmethod
     def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev,
                          gen=False, seglevel=2, gemination=True):
-#        print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
+        show = cons == ['እ', 'ይ', 'ይ']
+#        show = cons == ['እ', 'ጥ', 'እ']
+#        if show:
+#            print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
 
         def dup_weight(drules, weight):
             if drules:
                 for (pos1, pos2), vowels in drules:
                     feat = "dup{}{}".format(pos1, pos2)
-                    if cons[pos1-1] == cons[pos2-1]:
-#                        print("   *** {} matched drule".format(cons))
+                    # A root may explicitly avoid the dup rules, for example እ ይ ይ; አየ
+                    if cons[pos1-1] == cons[pos2-1] and weight.get(feat) != False:
+#                        print("   *** {} matched drule; {}".format(cons, weight.__repr__()))
                         return weight.set_all(feat, True)
                     return weight.set_all(feat, False)
             return weight
@@ -174,8 +179,8 @@ class Roots:
                 fst.add_arc(source, dest, inchar, outchar, weight=wt)
                 
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
-#            if not iterative and not aisa:
-#            print("  *** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
+#            if show:
+#                print("  *** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
             source = 'start'
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
@@ -229,10 +234,13 @@ class Roots:
                     for char in chars:
                         if len(char) == 2:
                             inchar = Roots.remove_gem(char)
+#                            if show:
+#                                print(" ** Creating gem arc source {} dest {} char {} outchar {} {}".format(source, dest, inchar, rchar, wt))
                             gem_char_arc(source, dest, inchar, rchar, wt, wt, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
                         else:
                             outchar = rchar if (gen or seglevel==0) else char
-#                            print("** Creating regular states source {} dest {} char {} outchar {} {}".format(source, dest, char, outchar, wt))
+#                            if show:
+#                                print(" ** Creating regular arc source {} dest {} char {} outchar {} {}".format(source, dest, char, outchar, wt))
                             charfeat_arc(char, outchar, wt, source, dest, fst, verbosity=0) # root_chars == ['ብ', 'ር', 'ር'])
                 source = dest
             state = states[-1]
@@ -246,7 +254,8 @@ class Roots:
                 else:
                     outchar = rchar if (gen or seglevel==0) else char
                     inchar = char
-#                    print("** Creating final state source {} end char {} outchar {} wt None".format(source, inchar, outchar))
+#                    if show:
+#                        print("  ** Creating final arc source {} end char {} outchar {} wt None".format(source, inchar, outchar))
                     charfeat_arc(inchar, outchar, None, source, 'end', fst, verbosity=0) #root_chars == ['ብ', 'ር', 'ር'])
 
         # one of cons could be a char, feature tuple
@@ -296,31 +305,36 @@ class Roots:
 
         # make the simplex states and arcs
         drules = duprules.get(cls)
-        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength)
+#        if show:
+#            print("*** weight {}".format(weight.__repr__()))
+        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
+#       if show:
+#            print("** charsets {}".format(charsets))
         # Based on rules, assign ±strong to the root
         strength_feat = 'tstrong' if gen else 'strong'
         weight = weight.set_all(strength_feat, strong)
         weight1 = dup_weight(drules, weight)
+        weight1.set_all('a', 0, force=False)
         mrs(fst, charsets, weight1, states, cons_chars, iterative=False, aisa=False)
-        if (cls_it_rules := rules.get(cls + 'i')):
-            drules = duprules.get(cls + 'i')
-            it_charsets, strongi = Roots.make_charsets(cons, cls + 'i', cls_it_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength)
+        if (cls_it_rules := rules.get(cls + '_i')):
+            drules = duprules.get(cls + '_i')
+            it_charsets, strongi = Roots.make_charsets(cons, cls + '_i', cls_it_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
             # Add a=i if it's compatible with other features
             weighti = weight.set_all('a', 'i', force=False)
             if weighti:
                 weighti = dup_weight(drules, weighti)
                 mrs(fst, it_charsets, weighti, states, cons_chars, iterative=True, aisa=False, main_charsets=charsets)
-        if (cls_m_rules := rules.get(cls + 'm')):
-            drules = duprules.get(cls + 'm')
-            m_charsets, strongi = Roots.make_charsets(cons, cls + 'm', cls_m_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength)
+        if (cls_m_rules := rules.get(cls + '_m')):
+            drules = duprules.get(cls + '_m')
+            m_charsets, strongi = Roots.make_charsets(cons, cls + '_m', cls_m_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
             # Add a=i if it's compatible with other features
             weightm = weight.set_all('d', 'm', force=False)
             if weightm:
                 weightm = dup_weight(drules, weightm)
                 mrs(fst, m_charsets, weightm, states, cons_chars, manner=True, iterative=False, aisa=False, main_charsets=charsets)
-        if (cls_a_rules := rules.get(cls + 'a')):
-            drules = duprules.get(cls + 'a')
-            a_charsets, strongi = Roots.make_charsets(cons, cls + 'a', cls_a_rules, drules,  char_maps, charmap_weights, expl_strength=expl_strength)
+        if (cls_a_rules := rules.get(cls + '_a')):
+            drules = duprules.get(cls + '_a')
+            a_charsets, strongi = Roots.make_charsets(cons, cls + '_a', cls_a_rules, drules,  char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
             # Add a=a if it's compatible with other features
             weighta = weight.set_all('a', 'a', force=False)
             if weighta:
@@ -336,13 +350,16 @@ class Roots:
             return
 
     @staticmethod
-    def make_charsets(consonants, cls, rules, duprules, char_maps, charmap_weights, expl_strength=False):
+    def make_charsets(consonants, cls, rules, duprules, char_maps, charmap_weights, expl_strength=False, weight=None):
         '''
         Given the root consonants and a set of rules for the class,
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
-#        print("  **** Making character sets for {}, {}; {}".format(consonants, cls, expl_strength))
+#        show = consonants == ['እ', 'ይ', 'ይ']
+#        show = consonants == ['እ', 'ጥ', 'እ']
+#        if show:
+#            print("  **** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
         if not rules:
             print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
@@ -375,6 +392,8 @@ class Roots:
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
                 strong = False
                 posrules = posrules[cons]
+#                if show:
+#                    print("   ** position {} posrules {}".format(position, posrules))
                 for pos, vowels in posrules.items():
                     charsets[pos] = vowels
                     positions_reset.append(pos)
@@ -383,8 +402,16 @@ class Roots:
                 positions, cvs = duprule
                 c1, c2 = consonants[positions[0]-1], consonants[positions[1]-1]
                 if c1 == c2:
+                    dupfeat = "dup{}{}".format(positions[0], positions[1])
+                    if weight.get(dupfeat) == False:
+                        # This root explicitly prevents duprule for these positions
+#                        if show:
+#                            print(" *** skipping dup rule for dupfeat")
+                        continue
                     for position, vowels in cvs.items():
                         charsets[position] = vowels
+#                    if show:
+#                        print(" *** duprules {} {}".format(position, vowels))
         for cons, (position, chars) in zip(consonants, charsets.items()):
             cons_feat = None
             if isinstance(cons, tuple):
@@ -396,7 +423,8 @@ class Roots:
                   tuple([Roots.make_charset(cons, position, v, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat) for v in chars])
             else:
                 charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat)
-#        print(" *** charsets {}".format(charsets))
+#        if show:
+#            print(" *** charsets {}".format(charsets))
         return charsets, strong
         
     @staticmethod
@@ -660,6 +688,7 @@ class Roots:
                 position = 0
                 chars = ''
                 char = ''
+#                print("** RULE: cat {}, specs {}".format(cat, specs))
                 dup_positions = ''
                 if len(cat) == 1:
                     subcat = ''
@@ -678,6 +707,7 @@ class Roots:
                         char, position = tuple(subcat)
                         position = int(position)
                 maincat = cat[0].strip()
+#                print("** maincat: {}, subcat: {}".format(maincat, subcat))
                 if specs.strip() == '!':
                     continue
                 elif '{' in specs:
