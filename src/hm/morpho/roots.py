@@ -505,8 +505,8 @@ class Roots:
         cls_feat = 'tc' if gen else 'c'
         cls = weight.get(cls_feat)
         tmp_length = len(cons)
-        # Position of possibly geminated consonant (all EES!)
-        gem_pos = {tmp_length - 1}
+#        # Position of possibly geminated consonant (all EES!)
+#        gem_pos = {tmp_length - 1}
 
         for pindex, (pattern, pfeatures) in enumerate(patterns):
 #            print("** Making irr root {}, {}, {}, {}".format(cons, feats, pattern, pfeatures.__repr__()))
@@ -516,18 +516,18 @@ class Roots:
             source = 'start'
             if gen or seglevel == 0:
                 pad2eqlen(cons, pattern)
-            gem_feat = None
+#            gem_feat = None
             for cindex, (char, c) in enumerate(zip(pattern[:-1], cons[:-1])):
                 gem = False
                 cposition = cindex + 1
-                if cposition in gem_pos:
-                    gem_feat = "gem{}".format(cposition)
-                    gem = ":" in char or EES.pre_gem_char in char
-                    if gem:
-                        gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
-                        char = Roots.remove_gem(char)
-                    else:
-                        gem_feat = make_weight("[-{}]".format(gem_feat), target=gen)
+#                if cposition in gem_pos:
+#                gem_feat = "gem{}".format(cposition)
+                gem = ":" in char or EES.pre_gem_char in char
+                if gem:
+#                    gem_feat = make_weight("[+{}]".format(gem_feat), target=gen)
+                    char = Roots.remove_gem(char)
+#                else:
+#                    gem_feat = make_weight("[-{}]".format(gem_feat), target=gen)
                 dest = "{}_{}_{}".format(state_name, pposition, cposition)
                 if not fst.has_state(dest):
                     fst.add_state(dest)
@@ -537,22 +537,23 @@ class Roots:
                     if not fst.has_state(dest_gem):
                         fst.add_state(dest_gem)
                     gemc = EES.pre_gem_char
-                    fst.add_arc(source, dest_gem, gemc, gemc, weight=gem_feat)
+#                    print(" ** adding gem arc {}->{} to {}".format(gemc, gemc, dest_gem))
+                    fst.add_arc(source, dest_gem, gemc, gemc, weight=pfeatures) #gem_feat)
                     inchar = char
                     if gen or seglevel == 0:
                         outchar = c
                     else:
                         outchar = char
                     fst.add_arc(dest_gem, dest, inchar, outchar, weight=pfeatures)
-#                    print(" ** adding gem arc {}->{}".format(inchar, outchar))
+#                    print(" ** adding post-gem arc {}->{} to {}".format(inchar, outchar, dest))
                 else:
                     inchar = char
                     if gen or seglevel == 0:
                         outchar = c
                     else:
                         outchar = char
-                    fst.add_arc(source, dest, inchar, outchar, weight=pfeatures if cindex==0 else gem_feat)
-#                    print(" ** adding arc {}->{}".format(inchar, outchar))
+                    fst.add_arc(source, dest, inchar, outchar, weight=pfeatures) # if cindex==0 else gem_feat)
+#                    print(" ** adding arc {}->{} to {}".format(inchar, outchar, dest))
                 source = dest
             dest = 'end'
             rchar = cons[-1]
@@ -562,10 +563,26 @@ class Roots:
                 final_out = rchar
             else:
                 final_out = pchar
-#            if len(pattern) == 1:
-#                print("** only one stem cons {}, using weight {}".format(final_in, pfeatures.__repr__()))
-            fst.add_arc(source, dest, final_in, final_out, weight=pfeatures if len(pattern) == 1 else None)
-#            print(" ** adding final arc {}->{}".format(final_in, final_out))
+            gem = ":" in pchar or EES.pre_gem_char in pchar
+#            print("** Pattern {}, final p {}, final r {}".format(pattern, pchar, rchar))
+            if gem:
+                final_in = Roots.remove_gem(final_in)
+                final_out = Roots.remove_gem(final_out)
+                dest_gem = source + '_gem'
+                if not fst.has_state(dest_gem):
+                    fst.add_state(dest_gem)
+                gemc = EES.pre_gem_char
+#                print(" ** adding gem arc {}->{} to {}".format(gemc, gemc, dest_gem))
+                fst.add_arc(source, dest_gem, gemc, gemc, weight=pfeatures) #gem_feat)
+                inchar = char
+                if gen or seglevel == 0:
+                    outchar = c
+                else:
+                    outchar = char
+                fst.add_arc(dest_gem, dest, final_in, final_out, weight=pfeatures)
+            else:
+                fst.add_arc(source, dest, final_in, final_out, weight=pfeatures if len(pattern) == 1 else None)
+#            print(" ** adding final arc {}->{} to {}".format(final_in, final_out, dest))
 
     @staticmethod
     def parse_root_file(filename, lexdir, roots, root_types):

@@ -1,20 +1,22 @@
--> first
+-> particle
 
 # a word can start with a series of border characters followed by any letter.
-first -> start	[*v;*]
-first -> first	[:-;:<]
-first -> CV		[]
+particle -> particle	 [^N]
+particle -> particle/  [/]
+particle/ -> particle  [^N]
+particle/ -> first		[/]
+first -> start			[*v;*]
+first -> first		  	[:-;:<]
+first -> CV			[]
 
 start -> start   [*v;*;/]
 start -> CV		[]
 
 CV -> .a        	[{I2a};{e2a};*a]
-#.-a -> -.a		[:-;:<;:>]
 .a -> .a		[:-;:<;:>]
 .a -> start		[:ኣ]
 
 CV -> .e		[{I2e};*a;*e]
-#.-e -> -.e		[:-;:<;:>]
 .e -> .e		[:-;:<;:>]
 .e -> start		[:አ]
 

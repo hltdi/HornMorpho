@@ -757,17 +757,17 @@ $$ S ስ|ዝ|ሽ|ዥ
 %1=እ
 [t=p,v=p|a|as]
 [t=i,v=p]
-አ	*a	*:e	*
+-	*a	*:e	*
 
 [t=i,v=a|as]
-አ	*a	*:	*
+-	*a	*:	*
 
 [t=j,v=p]
-አ	*a	*e	*
+-	*a	*e	*
 
 [t=j,v=a|as]
 [t=c,v=p|a|as]
-አ	*a	*	*
+-	*a	*	*
 
 [t=p,v=0]
 ኣ	*a	*:e	*
@@ -805,35 +805,58 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=p,v=0|p|a]
 *e	*a	*:e	-
 
-[t=i|j,v=0|p|a]
+[t=i,v=0|p|a]
 # is {* *a *: -} possible? (ይቅራራሉ)
 *e	*a	*:	-
+
+[t=j,v=0|p|a]
+*e	*a	*	-
 
 [t=c,v=0|p|a]
 *e	*a	*	ት
 
 %1=እ,3=እ
 [t=p,v=p|a|as]
-[t=i,v=p]
-አ	*a	*:a	-
-
-[t=i,v=a|as]
-አ	*a	*:a	-
+[t=i,v=p|a|as]
+-	*a	*:a	-
 
 [t=j,v=p|a|as]
-አ	*a	*a	-
+-	*a	*a	-
 
 [t=c,v=p|a|as]
-አ	*a	*	ት
+-	*a	*	ት
 
 [t=p,v=0]
-ኣ	*a	*:a	-
-
 [t=i,v=0]
 ኣ	*a	*:a	-
 
 [t=j,v=0]
 ኣ	*a	*a	-
+
+[t=c,v=0]
+ኣ	*a	*	ት
+
+%1=እ,3=ይ
+[t=p,v=p|a|as]
+-	*a	*:e	-
+
+[t=i,v=p|a|as]
+-	*a	*:	-
+
+[t=j,v=p|a|as]
+-	*a	*	-
+
+[t=c,v=p|a|as]
+-	*a	*	ት
+
+[t=p,v=0]
+ኣ	*a	*:e	-
+
+[t=i,v=0]
+ኣ	*a	*:	-
+
+[t=j,v=0]
+ኣ	*a	*	-
 
 [t=c,v=0]
 ኣ	*a	*	ት

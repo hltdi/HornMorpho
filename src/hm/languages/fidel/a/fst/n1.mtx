@@ -21,43 +21,15 @@ $ distrib
 $ prestem
   <
 
-$ vn_pre
-# prefixes for deverbal nouns
-  [d=ins|inf,-irr,pos=n_v]
-    መ-			[v=0]
-    መ/-			[v=p,a=0|a,tmp=[1=X]];[v=p,a=i,tmp=[1=X]]
-    መ/ተ-			[v=p,a=i,tmp=[1=እ]];[v=p,a=0,tmp=[1=እ]]
-    ማ-			[v=a,a=0]
-    ማ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
-    ማ/ተ-			[v=a,a=i,tmp=[1=እ]]
-    ማስ-			[v=as,a=0]
-    ማስተ-			[v=as,tmp=[1=እ],a=i]
-  [d=m,pos=n_v,-irr]
-    ኣ/-			[tmp=[1=X]]
-    ኣስተ-			[tmp=[1=እ]]
-  [d=a,v=p|a|as,-irr,pos=n_v]
-    ተ-			[v=p]
-    ኣ-			[v=a,a=0]
-    ኣ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
-    ኣስ-			[v=as,a=0]
-    ኣ/ተ-			[v=a,a=i,tmp=[1=እ]]
-    ኣስተ-			[v=as,a=i,tmp=[1=እ]]
-  --				[d=0];[d=a,v=0,-irr,pos=n_v]
-
 $ stem
   +n_stem+		[pos=n|adj,ps=oc,-irr]
   +n_stem_an+	[pos=n|adj,ps=an,-irr]
   +n_name+		[pos=nm_prs,-pl]
   +n_place+		[pos=nm_pl,-pl]
-  >>vn<<
+  >>vn_stem<<
   +ppron+		[pos=pron,-pl,-dis,-col,pp=0]
   +prep_n+		[pos=n|adj,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ]  
   +irr_plr+		[pos=n|adj,+pl,+irr]
-
-$ vn_suf
-  -ኢ		[d=a]
-  -ኢያ		[d=ins]
-  --		[d=0|inf|m]
 
 $ poststem
   >

@@ -5,22 +5,26 @@ start -> stem	[<]
 
 stem -> V		[*v-ኣ]
 stem -> C		[*;/]
-V -> C			[*;/]
+V -> C			[*;/;-]
 C -> V			[*v]
-C -> C			[*;/]
+C -> C			[*;/;-]
 V -> V			[*v]
 
 ## handle አስ+sibilant gemination
 # doesn't apply
 stem -> a		[ኣ]
-a -> C 			[*-ስ;/]
+a -> C 			[*-ስ;/;-]
 a -> V			[*v]
 a -> as			[ስ]
-as -> V			[^S]
+# አስተ-
+as -> V			[ተ]
+as -> as-		[-]
+as- -> V		[^S]
 # applies
 stem -> a.sS	[ኣ]
 a.sS -> as.S	[/:ስ]
-as.S -> V		[ሰ;ዘ;ሸ;ዠ;ሳ;ዛ;ሻ;ዣ]
+as.S -> as.S-	[-]
+as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ሳ;ዛ;ሻ;ዣ;ጻ]
 
 V -> V+			[>]
 V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]

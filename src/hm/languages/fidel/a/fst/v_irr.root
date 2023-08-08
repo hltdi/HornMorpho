@@ -1,8 +1,9 @@
-*<ብ እ ል>	c=A
+*<ብ እ ል>	c=A,tmp=[1=X]
+
 [a=0,t=p,v=0]
 ኣ	ል
 
-[a=0,t=p|i|c,v=p,tmp=[1=X]]
+[a=0,t=p|i|c,v=p]
 ባ	ል
 
 [a=0,t=i,v=0]
@@ -11,34 +12,69 @@
 [a=0,t=j,v=0]
 በ	ል
 
-[a=0,t=c,v=0|p,tmp=[1=X]]
+[a=0,t=c,v=0|p]
 ብ	ል
 
-[a=i,t=p|i|j,v=p,tmp=[1=X]]
+[a=i,t=p|i|j,v=p]
 ባ	ባ	ል
 
-[a=i,t=c,v=p,tmp=[1=X]]
+[a=i,t=c,v=p]
 ባ	ብ	ል
 
-*<ት ው>	c=A,a=0
-[t=p|i|j,v=0|p|as,tmp=[1=X]]
+*<ት ው>	c=A,a=0]
+[t=p|i|j,v=0|p|as]
 ተ	ው
 
-[t=c,v=0|p|as,tmp=[1=X]]
+[t=c,v=0|p|as]
 ት	ት
 
-*<ም እ ር> c=A
-[a=0,t=p|i|j,v=p,tmp=[1=X]]
+*<ም እ ር> c=A,tmp=[1=X],s=2
+# ተማረ: learn (sense 2)
+
+[a=0,t=p|i|j,v=p]
 ማ	ር
 
-[a=0,t=c,v=p,tmp=[1=X]]
+[a=0,t=c,v=p]
 ም	ር
 
-[a=0,t=p,v=as,tmp=[1=X]]
+[a=0,t=p,v=as]
 ተ	ማ	ር
 
-[a=0,t=i|j|c,v=as,tmp=[1=X]]
+[a=0,t=i|j|c,v=as]
 ተ	ም	ር
+
+*<ም እ ር> c=A,tmp=[1=እ],s=3
+# አማረ: be beautiful (sense 3)
+
+[a=0,t=p,v=0]
+ኣ	ማ	ር
+
+[a=0,t=p,v=as]
+ኣ	/መ	ር
+
+[a=0,t=i|j|c,v=0]
+ኣ	ም	ር
+
+[a=0,t=i|j|c,v=as]
+ኣ	/ም	ር
+
+*<ሽ ት>	c=A,tmp=[1=X]
+
+[a=0,t=p|i|j,v=0|p|as]
+ሻ
+
+[a=0,t=c,v=0|p|as]
+ሽ	ት
+
+[a=i,t=p]
+ሻ	/ሻ
+
+[a=i,t=i|j]
+ሻ	ሻ
+
+[a=i,t=c]
+ሻ	ሽ	ት
+
 
 
 

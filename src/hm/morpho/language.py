@@ -695,9 +695,17 @@ class Language:
                 m = LEMMAFEATS_RE.match(line)
                 if m:
                     lemfeats = m.groups()[0].strip()
-                    lemfeats = [lf.strip() for lf in lemfeats.split(',')]
+                    # if there is a semicolon, the feature before the semicolon determines whether
+                    # gen is called (e.g., d;a,v for Amh nouns)
+                    lemfeats = lemfeats.split(';')
+                    if len(lemfeats) == 2:
+                        lemfeats1, lemfeats2 = lemfeats
+                    else:
+                        lemfeats1 = ''
+                        lemfeats2 = lemfeats[0]
+                    lemfeats2 = [lf.strip() for lf in lemfeats2.split(',')]
 #                    print("** lemmafeats {}".format(lemfeats))
-                    lemmafeats[pos] = lemfeats
+                    lemmafeats[pos] = [lemfeats1, lemfeats2]
                     continue
 
                 m = ABBREV_RE.match(line)

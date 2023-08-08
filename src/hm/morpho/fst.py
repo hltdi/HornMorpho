@@ -517,7 +517,8 @@ class FSTCascade(list):
         2023.2.28: Added seglevel.
         """
         if verbose:
-            print('Loading FST cascade from {} for {}, POS {}, seglevel {}'.format(filename, language, pos, seglevel))
+            print('Loading FST cascade from {}'.format(filename))
+            #, POS {}, seglevel {}'.format(filename, language, pos, seglevel))
         directory, fil = os.path.split(filename)
         label = del_suffix(fil, '.')
 

@@ -36,7 +36,7 @@ pos:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
-pp,pn,pg:: 0,3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
+pp,pn,pg:: 3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
 pp,pn:: 1,1:PSS1S;; 1,2:PSS1P;; 2,2:PSS2P;; 3,2:PSS3P
 
 #def!poss:: DEF

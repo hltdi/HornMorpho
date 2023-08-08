@@ -1364,7 +1364,7 @@
 ሻንቆ '' []
 ሻንጣ '' [pos=n,t=[eng=suitcase]]
 ሻኛ_ '' [pos=n,t=[eng=hump]]
-ሻይ '' [pos=n,t=[eng=tea]]
+ሻይ '' [pos=n,t=[eng="tea,seeker"]]
 ሻጋታ '' []
 ሻግያ_ '' [t=[eng="extremely dark"]]
 ሻፋዳ '' [pos=adj,t=[eng="highly aroused"]]

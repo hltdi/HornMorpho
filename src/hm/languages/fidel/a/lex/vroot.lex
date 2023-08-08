@@ -75,6 +75,9 @@
 
 <ስ እ ም>	     c=A
 
+# ማረ: forgive, sense 1
+<ም እ ር>	     c=A,s=1
+
 <እ ይ ይ>	     c=A,-dup23
 
 <እ ጥ እ>	     c=A

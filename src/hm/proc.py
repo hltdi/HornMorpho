@@ -83,6 +83,29 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
+def geezify_light(file="hm/languages/amh/lex/v_light.lex"):
+    results = []
+    with open(file) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            word = geezify(line, gemination=True, gem_geez='_')
+            index = 0
+            w = ''
+            while index < len(word):
+                c = word[index]
+                if index < len(word) - 1 and word[index+1] == '_':
+                    w += "/" + c
+                    index += 2
+                else:
+                    w += c
+                    index += 1
+            results.append(w)
+    with open("light.lex", 'w', encoding='utf8') as f:
+        for word in results:
+            print(word, file=f)
+
 def check_awi(file1="n_stem_an.lex", file2="n_stem1X.lex"):
     words1 = []
     words2 = []

@@ -1,0 +1,34 @@
+$ neg
+   ኣለ-			[d=ins|inf,+neg]
+   --			[d=ins|inf,-neg];[d=a|m]
+
+$ pre
+  [d=ins|inf,-irr,pos=n_v]
+    መ-			[v=0]
+    መ/-			[v=p,a=0|a,tmp=[1=X]];[v=p,a=i,tmp=[1=X]]
+    መ/ተ-			[v=p,a=i,tmp=[1=እ]];[v=p,a=0,tmp=[1=እ]]
+    ማ-			[v=a,a=0]
+    ማ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
+    ማ/ተ-			[v=a,a=i,tmp=[1=እ]]
+    ማስ-			[v=as,a=0]
+    ማስተ-			[v=as,tmp=[1=እ],a=i]
+  [d=m,pos=n_v,-irr]
+    ኣ/-			[tmp=[1=X]]
+    ኣስተ-			[tmp=[1=እ]]
+  [d=a,v=p|a|as,-irr,pos=n_v]
+    ተ-			[v=p]
+    ኣ-			[v=a,a=0]
+    ኣ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
+    ኣስ-			[v=as,a=0]
+    ኣ/ተ-			[v=a,a=i,tmp=[1=እ]]
+    ኣስተ-			[v=as,a=i,tmp=[1=እ]]
+  --				[d=0];[d=a,v=0,-irr,pos=n_v]
+
+$ stem
+  >>vn<<
+
+$ suf
+  -ኢ		[d=a]
+  -ኢያ		[d=ins]
+  --		[d=0|inf|m]
+

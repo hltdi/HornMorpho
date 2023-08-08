@@ -473,6 +473,12 @@ $ d=a|inf|ins|m
 
 %%a=i,c=F,+strong == E
 
+%%a=i,c=G,+strong
+[d=m]
+**	*e	*a	*e	*
+
+%%a=i,c=H,+strong == G
+
 %%a=i,c=A,-strong
 
 %2=ው
@@ -494,18 +500,22 @@ $ d=a|inf|ins|m
 ^a	^a	-	*
 
 %1=እ
-[d=ins|inf,v=0|a]
+# ማዳደር
+[d=ins|inf,v=0]
 ኣ	*a	*e	*
 
-[d=ins|inf,v=p|as]
+# ማተዳደር, መተዳደር, ማስተዳደር, አስተዳደር
+[d=ins|inf,v=p|a|as]
 [d=m]
-አ	*a	*e	*
+-	*a	*e	*
 
-[d=a,v=0|a]
+# አዳዳሪ
+[d=a,v=0]
 ኣ	*a	*a	*
 
-[d=a,v=p|as]
-አ	*a	*a	*
+# ተዳዳሪ, አተዳዳሪ, አስተዳዳሪ
+[d=a,v=p|a|as]
+-	*a	*a	*
 
 %3=እ
 [d=ins|a|m]
@@ -534,25 +544,25 @@ $ d=a|inf|ins|m
 
 [d=ins|a,v=p|a|as]
 [d=m]
-አ	*a	*	-
+-	*a	*	-
 
 [d=inf,v=p|a|as]
-አ	*a	*a	ት
+-	*a	*a	ት
 
 %1=እ,3=ይ
 [d=ins|a,v=0]
 ኣ	*a	*	-
 
 [d=inf,v=0]
-ኣ	*a	*e	ት
+-	*a	*e	ት
 
 [d=ins|a,v=p|a|as]
 #[d=m]
-አ	*a	*	-
+-	*a	*	-
 
 [d=inf,v=p|a|as]
 [d=m]
-አ	*a	*e	ት
+-	*a	*e	ት
 
 %%a=i,c=B,-strong
 

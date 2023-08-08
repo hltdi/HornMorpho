@@ -1382,6 +1382,10 @@ class POSMorphology:
     ##
 
     def process_all(self, word, analyses, conllu=False, xml=False, gemination=False):
+        '''
+        analyses is the output of anal(), a list of string, FSS pairs.
+        If gemination is False, all gemination characters are removed.
+        '''
         result = []
         for string, FSS in analyses:
             if not gemination:
@@ -1455,8 +1459,22 @@ class POSMorphology:
         lemmafeats = self.lemma_feats
         if not lemmafeats:
             return stem
+        lemmafeat1, lemmafeats2 = lemmafeats
+        if lemmafeat1:
+            value1 = features.get(lemmafeat1, 0)
+            if not value1:
+                return stem
+            initfeat = ["{}={}".format(lemmafeat1, value1)]
+            for lf in lemmafeats2:
+                value = features.get(lf)
+                initfeat.append("{}={}".format(lf, value))
+            initfeat = ','.join(initfeat)
+            gen_out = self.gen(root, update_feats=initfeat)
+            if gen_out:
+                return gen_out[0][0]
+            return
         initfeat = []
-        for lf in lemmafeats:
+        for lf in lemmafeats2:
             value = features.get(lf)
             initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
