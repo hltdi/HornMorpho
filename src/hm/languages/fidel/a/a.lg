@@ -81,29 +81,29 @@ feats:
     sconj = None | ብ | ስ | ል | እንድ | እየ
     cconj = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
-  pos: v_stem v_stem
-    a = 0 | a | i
-    v = 0 | p | a | as
-    t = p | i | j | c
+#  pos: v_stem v_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    t = p | i | j | c
 
-  pos: v_light_stem v_light_stem
-    a = 0 | a | i
-    v = 0 | p | a | as
-    t = p | i | j | c
+#  pos: v_light_stem v_light_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    t = p | i | j | c
 
-  pos: vn v_noun
-    a = 0 | a | i
-    v = 0 | p | a | as
-    d = a | inf | ins | m
-    # only for infinitive
-    neg = False | True
+#  pos: vn v_noun
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    d = a | inf | ins | m
+#    # only for infinitive
+#    neg = False | True
 
-  pos: vn_stem v_noun_stem
-    a = 0 | a | i
-    v = 0 | p | a | as
-    d = a | inf | ins | m
-    # only for infinitive
-    neg = False | True
+#  pos: vn_stem v_noun_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    d = a | inf | ins | m
+#    # only for infinitive
+#    neg = False | True
 
   pos: n noun_adjective
 #    morphotax

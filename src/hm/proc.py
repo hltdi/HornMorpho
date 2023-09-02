@@ -7,6 +7,7 @@
 """
 
 from . import morpho
+import re
 #from . import internet_search
 
 #A = morpho.get_language('amh')
@@ -82,6 +83,252 @@ AS_WLD = ['', '', '', '0', 'te_', 'te_a', 'te_R', 'a_', 'a_a', 'a_R', 'as_', 'R'
 CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 10, 'R': 11}
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
+
+POS_RE = re.compile(r'.*pos=(\w+)[,\]].*')
+
+def get_pos(fs):
+    match = POS_RE.match(fs)
+    if match:
+        return match.groups()[0]
+    return ''
+
+def change_pos(fs, pos):
+    if "pos=" in fs:
+        return re.sub(r"(pos=\w+)([,\]])", r'pos={}\2'.format(pos), fs)
+    if "[]" in fs:
+        return fs[:-1] + "pos={}]".format(pos)
+    return fs[:-1] + ",pos={}]".format(pos)
+
+def add_feat(fs, feat):
+    if feat in fs:
+        return fs
+    if '[]' in fs:
+        return '[' + feat + ']'
+    return fs[:-1] + ",{}]".format(feat)
+
+def change_nlex_pos(stems, pos, roman=True):
+    lines = []
+    changed = []
+    with open("hm/languages/fidel/a/lex/n_stem.lex", encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            stem = line.split()[0]
+            if roman:
+                stem = romanize(stem)
+                stem = stem.replace("_", "")
+            if stem in stems:
+                changed.append(stem)
+                line = change_pos(line, pos)
+            lines.append(line)
+    print("Changed {}".format(changed))
+    with open("changed.lex", 'w', encoding='utf8') as file:
+        for line in lines:
+            print(line, file=file)
+
+def n_pos(pos, degem=True):
+    res = []
+    with open("hm/languages/amh/lex/n_stem1X.lex") as file:
+        for line in file:
+            p = get_pos(line)
+            if p == pos:
+                stem = line.split()[0]
+                if degem:
+                    stem = stem.replace("_", "")
+                res.append(stem)
+    return res
+
+def words2fidel(mwe=False):
+    lines = []
+    if mwe:
+        f = "hm/languages/amh/lex/wordsM.lex"
+    else:
+        f = "hm/languages/amh/lex/words1.lex"
+    with open(f) as file:
+        for line in file:
+            if line[0] == '#':
+                continue
+            line = line.strip()
+            form1, form2, pos = line.split()
+            form2 = post2pregem(form2)
+            # form2 could have post-gemination character '_'; convert to pre-gemination '/'
+            lines.append("{}  {}  {}".format(geezify(form1), geezify(form2), pos))
+    with open("new_words.lex", 'w', encoding='utf8') as file:
+        for line in lines:
+            print(line, file=file)
+    return lines
+
+def post2pregem(string):
+    '''
+    Move and convert post-gemination character _ to pre-gemination character /.
+    '''
+    chars = ''
+    for index, char in enumerate(string[:-1]):
+        if string[index+1] == '_':
+            chars += '/' + char
+        elif char != '_':
+            chars += char
+    if string[-1] != '_':
+        chars += string[-1]
+    return chars
+
+def degem_clean_nouns(fidel=True, f="new_n.lex"):
+    if not f:
+        f = "hm/languages/fidel/a/lex/n_stem.lex" if fidel else "hm/languages/amh/lex/n_stem1X.lex"
+    wf = "new_degem_n.lex"
+    lines = {}
+    lines0 = {}
+    dups = []
+    with open(f, encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            line_split = line.split()
+            stem = line_split[0]
+            stem0 = stem.replace("_", "")
+            if stem != stem0:
+                # stem has gemination character
+                if stem in lines or stem0 in lines:
+                    lines0[stem0] = line
+                    dups.append(stem)
+                else:
+                    lines[stem] = line
+            else:
+                lines[stem] = line
+    return dups
+    
+def clean_nouns(fidel=True):
+    f = "hm/languages/fidel/a/lex/n_stem.lex" if fidel else "hm/languages/amh/lex/n_stem1X.lex"
+    wf = "new_n.lex"
+    lines = {}
+    dups = []
+    with open(f, encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            line_split = line.split()
+            stem = line_split[0]
+            if stem in lines:
+                stemline = lines[stem]
+                if len(line) > len(stemline):
+                    lines[stem] = line
+                dups.append(stem)
+            else:
+                lines[stem] = line
+    with open(wf, 'w', encoding='utf8') as file:
+        for line in lines.values():
+            print(line, file=file)
+    return dups
+
+def sort_nouns(return_class=False, write=True):
+    res = {}
+    stems = []
+    lines = {}
+    with open(file="hm/languages/fidel/a/lex/n_stem.lex", encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            tokens = line.split()
+            stem = tokens[0]
+            rest = ' '.join(tokens[1:]).strip()
+            res = class_nstem(stem, res=res, return_class=return_class)
+            if return_class:
+                # POS, other features
+                if res in ("Na", "am"):
+                    rest = change_pos(rest, 'nadj')
+                elif res in ("ins", "net"):
+                    rest = change_pos(rest, 'n')
+                    rest = add_feat(rest, "-fem")
+                elif res == 'eaa':
+                    rest = change_pos(rest, 'adj')
+                # stem changes
+                if res == 'net':
+                    if not stem.endswith("ነ_ት"):
+                        stem = stem[:-2] + "ነ_ት"
+                elif res == 'eaa':
+                    if not stem.endswith("_"):
+                        stem = stem + '_'
+                elif res == 'Na':
+                    if not stem.endswith("_"):
+                        stem = stem + '_'
+                lines[stem] = rest
+            else:
+                stems.append(stem)
+    if write:
+        with open("new_nstem.lex", 'w', encoding='utf8') as file:
+            for stem, rest in lines.items():
+                print("{}\t{}".format(stem, rest), file=file)
+    if return_class:
+        return lines
+    return res
+
+def class_nstem(stem, res=None, return_class=False):
+    def dup(form, pos1):
+        return len(form) > pos1+2 and form[pos1] == form[pos1+2] and form[pos1+1] == 'a'
+    res = res or \
+      {'am': [],
+       'ma': [],
+       'Na': [],
+       'net': [],
+       'Iu': [],
+       'eaa': [],
+       'ins': [],
+       'agt': [],
+       'man': [],
+       'check': [],
+       'misc': []
+      }
+    stem0 = stem.replace("_", '')
+    rom = romanize(stem0)
+    if len(rom) >= 4 and rom[-1] == 'i' and rom[-3] == 'a':
+        if return_class:
+            return 'agt'
+        res['agt'].append(stem)
+    elif len(rom) >= 3 and rom[-1] in "cCjxZNy" and rom[-2] == 'a':
+        if return_class:
+            return 'agt'
+        res['agt'].append(stem)
+    elif len(rom) >= 4 and rom[-1] == 'i' and rom[-3] == 'e':
+        if return_class:
+            return 'check'
+        res['check'].append(stem)
+    elif len(rom) >= 3 and rom[-1] in "cCjxZNy" and rom[-2] == 'e':
+        if return_class:
+            return 'check'
+        res['check'].append(stem)
+    elif rom.startswith("'a") and (dup(rom, 2) or dup(rom, 3) or dup(rom, 4) or dup(rom, 5) or dup(rom, 6)):
+        if return_class:
+            return 'man'
+        res['man'].append(stem)
+    elif len(rom) == 7 and rom[1] == 'e' and rom[4] == 'a' and rom[6] == 'a':
+        if return_class:
+            return 'eaa'
+        res['eaa'].append(stem)
+    elif rom.endswith('am') and len(rom) >= 5:
+        if return_class:
+            return 'am'
+        res['am'].append(stem)
+    elif rom.endswith('ma') and len(rom) >= 5:
+        if return_class:
+            return 'ma'
+        res['ma'].append(stem)
+    elif rom.endswith('net') and len(rom) >= 6:
+        if return_class:
+            return 'net'
+        res['net'].append(stem)
+    elif rom.endswith('Na') and len(rom) >= 6:
+        if return_class:
+            return "Na"
+        res['Na'].append(stem)
+    elif (len(rom) == 3 or len(rom) == 4) and rom[1] in CONS and rom[2] == 'u':
+        if return_class:
+            return "Iu"
+        res['Iu'].append(stem)
+    elif stem[0] in 'መማ' and stem[-1] == 'ያ':
+        if return_class:
+            return 'ins'
+        res['ins'].append(stem)
+    else:
+        if return_class:
+            return 'misc'
+        res['misc'].append(stem)
+    return res
 
 def geezify_light(file="hm/languages/amh/lex/v_light.lex"):
     results = []

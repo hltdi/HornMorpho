@@ -335,6 +335,7 @@ class Morphology(dict):
         If mwe is True, load separate files for single words and fixed MWEs.
         '''
         if mwe:
+            print("** Loading unanalyzed words")
             file1 = 'words1.lex'
             fileM = 'wordsM.lex'
             path1 = os.path.join(self.get_lex_dir(), file1)
@@ -1045,8 +1046,7 @@ class POSMorphology:
                  simplified=False, phon=False, segment=False, translate=False,
                  experimental=False, mwe=False, pos='', gemination=True,
                  invert=False, compose_backwards=True, split_index=0,
-                 setit=True,
-                 relabel=True, verbose=False):
+                 setit=True, relabel=True, verbose=False):
         '''
         Load FST; if compose is False, search for saved FST in file and use that if it exists.
 
@@ -1294,11 +1294,23 @@ class POSMorphology:
                   features=features, exclude_features=['t', 'm'])
         if pickle:
             FST.pickle(fst, directory=self.morphology.get_pickle_dir(), replace=True)
+        else:
+            self.delete_pickle()
 
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
         if fst_file:
             os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.fst'))
+
+    def delete_pickle(self):
+        '''
+        Get rid of pickle for this POS (when saving new FST) if it exists.
+        '''
+        try:
+            os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.pkl'))
+            print("Removing pickle file for {}".format(self.pos))
+        except FileNotFoundError:
+            pass
 
     def analyze(self, form, init_weight=None, guess=False):
         """Try analyzed list first; then run anal() if that fails."""

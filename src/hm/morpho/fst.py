@@ -1752,8 +1752,7 @@ class FST:
         return os.path.join(language.directory, 'pkl')
 
     @staticmethod
-    def pickle(fst, language=None, directory='', replace=False,
-               label='', verbose=False):
+    def pickle(fst, language=None, directory='', replace=False, label='', verbose=False):
         """
         Dump the FST to a pickle.
         """

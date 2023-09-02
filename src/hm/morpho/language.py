@@ -365,6 +365,10 @@ class Language:
                 return entry
         return False
 
+    ###
+    ### CREATING LANGUAGE
+    ###
+
     @staticmethod
     def make(name, abbrev, load_morph=False, fidel=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
@@ -1220,8 +1224,177 @@ class Language:
         singletons.sort()
         return [singletons, dct]
 
+    def set_morphology(self, morphology, verbosity=0):
+        '''Assign the Morphology object for this Language.'''
+        self.morphology = morphology
+        morphology.language = self
+        for pos in morphology.values():
+            pos.language = self
+        morphology.directory = self.directory
+        morphology.seg_units = self.seg_units
+        morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
+
+    def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
+                    pickle=True, experimental=False, mwe=False,
+                    segment=False, translate=False,
+                    recreate=False, guess=True, verbose=False):
+        """
+        Load words and FSTs for morphological analysis and generation.
+        """
+#        print("**** load morpho")
+        fsts = fsts or (self.morphology and self.morphology.pos)
+#        opt_string = 'MWE_' if mwe else ''
+        opt_string = ''
+        if experimental:
+            opt_string += 'experimental'
+        elif segment:
+            opt_string += 'segmentation'
+        elif phon:
+            opt_string += 'phonetic'
+        else:
+            opt_string += 'analysis/generation'
+        # Only look for MWE FSTs for segmentation
+        if not self.has_cas(generate=phon, guess=False, phon=phon,
+                            experimental=experimental, mwe=mwe and segment,
+                            segment=segment, simplified=simplified):
+            print('No {} FST available for {}!'.format(opt_string, self))
+            if experimental:
+                return False
+        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
+                                        [self, ' (' + opt_string + ')' if opt_string else ''],
+                                        self.tlanguages)
+        print(msg_string)
+        # In any case, assume the root frequencies will be needed?
+        self.morphology.set_root_freqs()
+        self.morphology.set_feat_freqs()
+        if ortho:
+            # Load unanalyzed words
+            self.morphology.set_words(ortho=True)
+            self.morphology.set_suffixes(verbose=verbose)
+        if phon:
+            # Load unanalyzed words
+            self.morphology.set_words(ortho=False)
+            self.morphology.set_suffixes(verbose=verbose)
+        if not fsts:
+            return False
+        for pos in fsts:
+            # Load pre-analyzed words if any
+            self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
+            if ortho:
+                self.morphology[pos].make_generated()
+            # Load phonetic->orthographic dictionary if file exists
+            if ortho:
+                self.morphology[pos].set_ortho2phon()
+            # Load lexical anal and gen FSTs (no gen if segmenting)
+            if ortho:
+                self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
+                                              simplified=simplified, experimental=experimental, mwe=False,
+                                              phon=False, segment=segment, translate=translate,
+                                              gemination=self.output_gemination,
+                                              pos=pos, recreate=recreate, verbose=verbose)
+                if mwe:
+                    self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
+                                              simplified=simplified, experimental=experimental, mwe=True,
+                                              phon=False, segment=segment, translate=translate,
+                                              gemination=self.output_gemination,
+                                              pos=pos, recreate=recreate, verbose=verbose)
+            # Load generator for both analysis and segmentation
+#            if phon or (ortho and not segment):
+            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+                                          simplified=simplified, experimental=False, mwe=False,
+                                          phon=True, segment=False, translate=translate,
+                                          gemination=self.output_gemination,
+                                          pos=pos, recreate=recreate, verbose=verbose)
+#            if mwe:
+#                self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+#                                          simplified=simplified, experimental=False, mwe=True,
+#                                          phon=True, segment=False, translate=translate,
+#                                          recreate=recreate, verbose=verbose)
+                
+            # Load guesser anal and gen FSTs
+            if not segment and guess:
+                if ortho:
+                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
+                                                  segment=segment, translate=translate,
+                                                  pickle=pickle, create_casc=False,
+                                                  simplified=simplified, experimental=experimental, mwe=False,
+                                                  gemination=self.output_gemination,
+                                                  pos=pos, recreate=recreate, verbose=verbose)
+                # Always load phonetic generation guesser
+#                if phon:
+                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
+                                              create_casc=False, pickle=pickle, experimental=experimental, mwe=False,
+                                              simplified=simplified, translate=translate,
+                                              gemination=self.output_gemination,
+                                              pos=pos, recreate=recreate, verbose=verbose)
+            # Load statistics for generation
+            self.morphology[pos].set_root_freqs()
+            self.morphology[pos].set_feat_freqs()
+
+        self.morpho_loaded = True
+        return True
+
+    def get_fsts(self, generate=False, phon=False, experimental=False, mwe=False,
+                 simplified=False, segment=False, translate=False):
+        '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
+        fsts = []
+        for pos in self.morphology.pos:
+            if phon:
+                fst = self.morphology[pos].get_fst(generate=True, phon=True, experimental=experimental, mwe=mwe)
+            else:
+                fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental, mwe=mwe)
+            if fst:
+                fsts.append(fst)
+        return fsts
+
+    def has_cas(self, generate=False, guess=False, experimental=False, mwe=False,
+                simplified=False, phon=False, segment=False):
+        """Is there at least one cascade file for the given FST features?"""
+        if not self.morphology:
+            return False
+        for pos in self.morphology.pos:
+            if self.morphology[pos].has_cas(generate=generate, simplified=simplified,
+                                            experimental=experimental, mwe=mwe,
+                                            guess=guess, phon=phon, segment=segment):
+                return True
+        return False
+
 #    def get_trans(self, word):
 #        return self.trans.get(word, word)
+
+    ###
+    ### ANALYZING WORDS AND SENTENCES
+    ###
+
+    ## New functions (HM 5.0)
+
+    def analyze5(self, word, mwe=False):
+        '''
+        Analyze a word according to HM 5.0.
+        '''
+        analyses = []
+        # Try unanalyzed words
+        unanalyzed = self.anal_unanalyzed(word, mwe=mwe)
+        if unanalyzed:
+            analyses.append(unanalyzed)
+        # Try different POSs.
+        for pos, pmorph in self.morphology.items():
+            # Check for caching before running pos.anal()
+            analysis = pmorph.anal(word)
+            if analysis:
+                analyses.extend(analysis)
+        return analyses
+
+    def anal_unanalyzed(self, word, mwe=False):
+        '''
+        Look for the unanalyzed form of the word, returning the default
+        '''
+        words = self.morphology.wordsM if mwe else self.morphology.words1
+            
+        if word in words:
+            form, pos = self.morphology.words1[word]
+            # Later have the FSS already storied in words1
+            return [form, FSSet("[pos={}]".format(pos))]
 
     def preprocess(self, form):
         '''Preprocess a form.'''
@@ -1411,141 +1584,6 @@ class Language:
             fout.write(str(self.preprocess(line), 'utf-8'))
         fin.close()
         fout.close()
-
-    def set_morphology(self, morphology, verbosity=0):
-        '''Assign the Morphology object for this Language.'''
-        self.morphology = morphology
-        morphology.language = self
-        for pos in morphology.values():
-            pos.language = self
-        morphology.directory = self.directory
-        morphology.seg_units = self.seg_units
-        morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
-
-    def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
-                    pickle=True, experimental=False, mwe=False,
-                    segment=False, translate=False,
-                    recreate=False, guess=True, verbose=False):
-        """
-        Load words and FSTs for morphological analysis and generation.
-        """
-#        print("**** load morpho")
-        fsts = fsts or (self.morphology and self.morphology.pos)
-#        opt_string = 'MWE_' if mwe else ''
-        opt_string = ''
-        if experimental:
-            opt_string += 'experimental'
-        elif segment:
-            opt_string += 'segmentation'
-        elif phon:
-            opt_string += 'phonetic'
-        else:
-            opt_string += 'analysis/generation'
-        # Only look for MWE FSTs for segmentation
-        if not self.has_cas(generate=phon, guess=False, phon=phon,
-                            experimental=experimental, mwe=mwe and segment,
-                            segment=segment, simplified=simplified):
-            print('No {} FST available for {}!'.format(opt_string, self))
-            if experimental:
-                return False
-        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
-                                        [self, ' (' + opt_string + ')' if opt_string else ''],
-                                        self.tlanguages)
-        print(msg_string)
-        # In any case, assume the root frequencies will be needed?
-        self.morphology.set_root_freqs()
-        self.morphology.set_feat_freqs()
-        if ortho:
-            # Load unanalyzed words
-            self.morphology.set_words(ortho=True)
-            self.morphology.set_suffixes(verbose=verbose)
-        if phon:
-            # Load unanalyzed words
-            self.morphology.set_words(ortho=False)
-            self.morphology.set_suffixes(verbose=verbose)
-        if not fsts:
-            return False
-        for pos in fsts:
-            # Load pre-analyzed words if any
-            self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
-            if ortho:
-                self.morphology[pos].make_generated()
-            # Load phonetic->orthographic dictionary if file exists
-            if ortho:
-                self.morphology[pos].set_ortho2phon()
-            # Load lexical anal and gen FSTs (no gen if segmenting)
-            if ortho:
-                self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
-                                              simplified=simplified, experimental=experimental, mwe=False,
-                                              phon=False, segment=segment, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-                if mwe:
-                    self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
-                                              simplified=simplified, experimental=experimental, mwe=True,
-                                              phon=False, segment=segment, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-            # Load generator for both analysis and segmentation
-#            if phon or (ortho and not segment):
-            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-                                          simplified=simplified, experimental=False, mwe=False,
-                                          phon=True, segment=False, translate=translate,
-                                          gemination=self.output_gemination,
-                                          pos=pos, recreate=recreate, verbose=verbose)
-#            if mwe:
-#                self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-#                                          simplified=simplified, experimental=False, mwe=True,
-#                                          phon=True, segment=False, translate=translate,
-#                                          recreate=recreate, verbose=verbose)
-                
-            # Load guesser anal and gen FSTs
-            if not segment and guess:
-                if ortho:
-                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
-                                                  segment=segment, translate=translate,
-                                                  pickle=pickle, create_casc=False,
-                                                  simplified=simplified, experimental=experimental, mwe=False,
-                                                  gemination=self.output_gemination,
-                                                  pos=pos, recreate=recreate, verbose=verbose)
-                # Always load phonetic generation guesser
-#                if phon:
-                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
-                                              create_casc=False, pickle=pickle, experimental=experimental, mwe=False,
-                                              simplified=simplified, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-            # Load statistics for generation
-            self.morphology[pos].set_root_freqs()
-            self.morphology[pos].set_feat_freqs()
-
-        self.morpho_loaded = True
-        return True
-
-    def get_fsts(self, generate=False, phon=False, experimental=False, mwe=False,
-                 simplified=False, segment=False, translate=False):
-        '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
-        fsts = []
-        for pos in self.morphology.pos:
-            if phon:
-                fst = self.morphology[pos].get_fst(generate=True, phon=True, experimental=experimental, mwe=mwe)
-            else:
-                fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental, mwe=mwe)
-            if fst:
-                fsts.append(fst)
-        return fsts
-
-    def has_cas(self, generate=False, guess=False, experimental=False, mwe=False,
-                simplified=False, phon=False, segment=False):
-        """Is there at least one cascade file for the given FST features?"""
-        if not self.morphology:
-            return False
-        for pos in self.morphology.pos:
-            if self.morphology[pos].has_cas(generate=generate, simplified=simplified,
-                                            experimental=experimental, mwe=mwe,
-                                            guess=guess, phon=phon, segment=segment):
-                return True
-        return False
 
     ### MWEs
 

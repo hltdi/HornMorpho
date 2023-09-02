@@ -1,6 +1,6 @@
 -> start
 
-start -> start	[*;*v;/]
+start -> start	[*;*v;/;_]
 
 start -> i.ya	[{i2a}]
 i.ya -> start	[:ያ]

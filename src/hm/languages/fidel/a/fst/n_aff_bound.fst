@@ -1,6 +1,6 @@
 -> start
 
-start -> start	[^N;/]
+start -> start	[^N;/;_]
 
 start -> e2a	[{e2a};{I2a}]
 e2a -> e2a		[:<;:-;:>]
@@ -19,7 +19,7 @@ start -> Vwo	[*v]
 Vwo -> Vwo		[:<;:-;:>]
 Vwo -> start	[ዎ:ኦ]
 
-start -> I2E	[{I2o}]
+start -> I2E	[{I2E}]
 I2E -> I2E		[:<;:-;:>]
 I2E -> start	[:ኤ]
 
@@ -37,7 +37,7 @@ Vwu -> start	[ው:ኡ]
 
 start -> Csuf	[:<;:-;:>]
 Csuf -> Csuf	[:<;:-;:>]
-Csuf -> start	[**v;**;/]
+Csuf -> start	[**v;**;/;_]
 
 start ->
 Csuf ->

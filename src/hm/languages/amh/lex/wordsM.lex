@@ -17,7 +17,7 @@ nega//Teba nega//Teba adv
 'j//be'j 'j//be'j adv
 'j//kefnj 'j//kefnj adv
 'gr//begr 'gr//begr adv
-kemola//godel kemola//godel adv
+kemola//godel kemol_a//god_el adv
 ke'ahun//qedem ke'ahun//qedem adv
 ke'ahun//'ahun ke'ahun//'ahun adv
 ke'ahun//ke'ahun ke'ahun//ke'ahun adv
@@ -30,15 +30,11 @@ yan//gizE yan//gizE adv
 daru//gn daru//gn adv
 fit//lefit fit//lefit adv
 fitna//hWala fitn_a//hWala adv
-'j_eta//bej_ 'j_eta//bej_ adv
+'jeta//bej 'j_eta//bej_ adv
 kese'at//befit kese'at//befit adv
 kemece//wedih kemece//wedih adv
 kemecE//wedih kemecE//wedih adv
-kemece//jem_ro kemece//jem_ro adv
-kemecE//jem_ro kemecE//jem_ro adv
-#'ske//mece 'ske//mece adv
-#'ske//mecE 'ske//mecE adv
-#'ske//mecewm 'ske//mecewm adv
-#'ske//mecEwm 'ske//mecEwm adv
+kemece//jemro kemece//jem_ro adv
+kemecE//jemro kemecE//jem_ro adv
 mece//mec mece//mec adv
 mec//mec mec//mec adv

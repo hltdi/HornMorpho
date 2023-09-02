@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoA',
-      version='4.3',
+      version='4.3.1',
       description='Morphological analyzer/generator for Amharic',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',
@@ -30,13 +30,10 @@ setup(name='HornMorphoA',
                      'morpho/geez/*']
                      },
       exclude_package_data={'hm':
-                             ['languages/eng/*',
+                             ['languages/fidel/*',
+                              'languages/eng/*',
                               'languages/gru/*'
                               'languages/sgw/*',
-                              'languages/a/*',
-                              'languages/ior/*'
-                              'languages/muh/*'
-                              'languages/wle/*'
                               'languages/orm/*',
                               'languages/som/*',
                               'languages/stv/*'

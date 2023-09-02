@@ -36,6 +36,15 @@ print('\n@@@@ This is HornMorpho, version {} @@@@\n'.format(__version__))
 
 SEGMENT = False
 
+###
+### Version 5 analysis and generation.
+###
+
+def analyze5(language, word):
+    language = morpho.get_language(language)
+    if language:
+        return language.analyze5(word)
+
 def exit(save=True, cache=''):
     """Exit the program, caching any new analyses for each loaded language
     if save is True."""
