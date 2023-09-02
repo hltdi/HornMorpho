@@ -31,6 +31,7 @@ setup(name='HornMorphoA',
                      },
       exclude_package_data={'hm':
                              ['languages/fidel/*',
+                              'languages/amh/pkl/*X*.pkl',
                               'languages/eng/*',
                               'languages/gru/*'
                               'languages/sgw/*',

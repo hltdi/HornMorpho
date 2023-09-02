@@ -27,12 +27,20 @@ Author: Michael Gasser <gasser@indiana.edu>
 # Version 4.5.2 allows the segmenter to suppress segmentation but use
 # the features of the segments for the whole word.
 
-__version__ = '4.5.2.3'
+# experimental CoNLL-U segmenter for Amharic
+#__cat__ = 'X'
+#__version__ = '4.5.2.4'
+
+__cat__ = 'A'
+__version__ = '4.3.1'
+
 __author__ = 'Michael Gasser'
 
 from . import morpho
 
-print('\n@@@@ This is HornMorpho, version {} @@@@\n'.format(__version__))
+print('\n@@@@ This is HornMorpho{}, version {} @@@@\n'.format(__cat__, __version__))
+
+#print('\n@@@@ Welcome to HornMorpho! @@@@\n')
 
 SEGMENT = False
 
@@ -73,7 +81,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      guess=guess, verbose=verbose)
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
-             transortho=True, experimental=True, udformat=True,
+             transortho=True, experimental=False, udformat=True,
              mwe=False, conllu=True, verbosity=0):
     '''Segment a single word and print out the results.
 
@@ -121,17 +129,17 @@ def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
 
 seg = seg_word
 
-def seg_file(file='', language='amh', experimental=True,
-             start=0, nlines=0, nbest=4, report_n=10,
+def seg_file(file='', language='amh', experimental=False,
+             start=0, nlines=0, nbest=4, report_n=100, output_file=None,
              xml=None, multseg=True, csentences=True, sentid=0, batch_name='',
              um=1, seglevel=2, gramfilter=None,
              version='2.2', batch='1.0',
              local_cache=None, sep_punc=True, verbosity=0):
     '''
-    Analyze the words in a file, be default creating CoNLL-U format.
+    Analyze the words in a file, by default creating CoNLL-U format.
 
     @param file:   path to a file to read the words from
-#    @param outfile:  path to a file where analyses are to be written
+    @param output_file:  path to a file where analyses are to be written
     @param preproc:  whether to preprocess inputs
     @param postproc: whether to postprocess outputs
     @param start:    line to start analyzing from
@@ -160,7 +168,7 @@ def seg_file(file='', language='amh', experimental=True,
     SEGMENT = True
     if language:
         return \
-        language.anal_file(file, '', 
+        language.anal_file(file, output_file,
                            pos=None, preproc=True, postproc=True, sep_punc=sep_punc,
                            segment=True, only_guess=False, guess=False, experimental=experimental,
                            realize=True, start=start, nlines=nlines, nbest=nbest, report_n=report_n,

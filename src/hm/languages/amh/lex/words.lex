@@ -245,6 +245,7 @@ zend zend adp
 'ske 'ske adp
 sle sle adp
 wede wede adp
+yale yale adp
 yetenesa yetenes_a adp
 mndn mndn pron
 lEt//teqen lEt//teqen adv

@@ -30,9 +30,12 @@ var/
 # Universal Morphology
 UM/
 
+# applications
+applications/
+
 # Experimental languages
 src/hm/languages/eng
-src/hm/languages/som
+#src/hm/languages/som
 src/hm/languages/stv
 
 # Old dists

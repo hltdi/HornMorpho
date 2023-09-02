@@ -175,7 +175,7 @@ objs_2frm -> negs_aux  [:;t:]
 # 3sm and 1s subjects
 def3sm0 -> def3sm_3sm    [:]     [sb=[-p1,-p2,-fem,-plr]]
 def3sm0 -> def3sm_1s     [:]     [sb=[+p1,-p2,-plr]]
-def3sm_3sm -> def3sm_w   [:]     [tm=prf];[tm=imf];[tm=j_i]
+def3sm_3sm -> def3sm_w   [:]     [tm=prf];[tm=imf];[tm=j_i];[tm=prs]
 def3sm_3sm -> def3sm_t   [:]     [tm=ger]
 def3sm_1s -> def3sm_w    [:]     [tm=imf];[tm=j_i];[tm=ger]
 def3sm_1s -> def3sm_t    [:]     [tm=prf]

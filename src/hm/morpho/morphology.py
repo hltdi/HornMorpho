@@ -291,8 +291,8 @@ class Morphology(dict):
         return a
 
     def get_root_freq(self, root, anal):
-#        print("** Getting root freq: {} {}".format(root, anal.__repr__()))
         rv = self.root_fv(root, anal)
+#        print("** Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)
         return 50
@@ -335,7 +335,7 @@ class Morphology(dict):
         If mwe is True, load separate files for single words and fixed MWEs.
         '''
         if mwe:
-            print("** Loading unanalyzed words")
+#            print("** Loading unanalyzed words")
             file1 = 'words1.lex'
             fileM = 'wordsM.lex'
             path1 = os.path.join(self.get_lex_dir(), file1)
@@ -1295,20 +1295,20 @@ class POSMorphology:
         if pickle:
             FST.pickle(fst, directory=self.morphology.get_pickle_dir(), replace=True)
         else:
-            self.delete_pickle()
+            self.delete_pickle(fname)
 
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
         if fst_file:
             os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.fst'))
 
-    def delete_pickle(self):
+    def delete_pickle(self, fname):
         '''
         Get rid of pickle for this POS (when saving new FST) if it exists.
         '''
         try:
-            os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.pkl'))
-            print("Removing pickle file for {}".format(self.pos))
+            os.remove(os.path.join(self.morphology.get_pickle_dir(), fname + '.pkl'))
+            print("Removing pickle file for {}".format(fname))
         except FileNotFoundError:
             pass
 

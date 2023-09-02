@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(name='HornMorphoAX',
-      version='4.5.2.3',
+      version='4.5.2.4',
       description='Morphological segmenter/analyzer for Amharic',
       author='Michael Gasser',
       author_email='gasser@indiana.edu',
