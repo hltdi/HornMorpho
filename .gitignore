@@ -39,7 +39,7 @@ src/hm/languages/eng
 src/hm/languages/stv
 
 # Old dists
-dist/HornMorpho*4.3*
+dist/HornMorpho*4.3-*
 dist/HornMorpho*4.5.1*
 
 # Misc stuff
