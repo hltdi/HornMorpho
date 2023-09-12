@@ -123,20 +123,15 @@ def n_get_citation(root, fs, guess=False, vc_as=False, phonetic=True):
     '''
     if fs.get('v') and fs['v'] == 'inf':
         deriv = fs['v']
-#        if deriv == 'man':
-#            fss = language.FeatStruct("[pos=n,-def,v={}]".format(deriv))
-#        else:
         # For agt, inf, and ins we need the aspect and voice features
         fsa, fsv = fs.get('as'), fs.get('vc')
         cls = fs.get('cls', 'B')
-#        print("** fsa {}, fsv {}, cls {}".format(fsa, fsv, cls))
         fss = language.FeatStruct("[cls={},pos=n,-def,-plr,-neg,-acc,v={}, as={}, vc={},cnj=None,prep=None]".format(cls,deriv, fsa, fsv))
         citation = AMH.morphology['n'].gen(root, fss, from_dict=False, phon=True,
                                            postproc=False, guess=guess)
         if citation:
             return citation[0][0]
         else:
-#            print("** Unable to generated deverbal noun")           
             return None
     else:
         return None
@@ -780,9 +775,10 @@ def postproc_word(word, ipa=False, phon=True, ortho_only=False,
     changing internal HM representation to an alternate
     conventional representation.
     """
-#    print("** Amh postprocessing {}, phon={}".format(word, phon))
     if '//' in word:
         word = word.replace('//', ' ')
+    if '{' in word:
+        word = word.replace('{', '').replace('}', '')
     if is_geez(word):
         ortho = word
         word = romanize(word)
@@ -985,11 +981,11 @@ def seg2string(word, segmentation, sep='-', geez=True, udformat=False,
     """
     Convert a segmentation to a string, including features if features is True.
     """
-#    print("*** seg2string {} {} {} {}".format(word, segmentation, simplifications, features))
     # The segmentation string is second in the list
     pos = segmentation[0]
     morphstring = segmentation[1]
     citation = segmentation[2]
+#    print("*** seg2string {} {} {} {}".format(word, pos, morphstring, citation))
     udfeats = None
     if um:
         udfeats = segmentation[-1]

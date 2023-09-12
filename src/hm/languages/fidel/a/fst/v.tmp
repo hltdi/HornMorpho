@@ -1,47 +1,49 @@
-$ c=A|B|C|E|Eo|Eo1|Eo2|F|G|H|J
+$ c=A|B|C|E|F|G|H|J
 $ a=0|a|i
-$ v=0|p|a|as
+$ v=0|p|a|as|ast
 $ t=p|i|j|c
 
-# abbreviation for "sibilants"
+# abbreviation for "sibilants"; not currently used anywhere
 $$ S ስ|ዝ|ሽ|ዥ
+# labialized consonants
+$$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
-^e	*:e	*
+^eo	  *:e	*
 
 [t=j,v=p]
-^e	*e	*
+^eo	*e	*
 
 [t=i|j|c,v=as]
-^e	*:	*
+^eo	*:	*
 
 [t=i|c,v=0,-dup23]
 [t=i,v=a]
 [t=c,v=p]
-^e	*	*
+^eo	*	*
 
 [t=i|c,v=0,+dup23]
-^e	*:	-
+^eo	*:	-
 
 [t=j,v=0]
-**	*e	*
+**u	*e	*
 
 [t=j|c,v=a]
-**	*	*
+**u	*	*
 
 %%a=0,c=B,+strong
 [t=p]
 [t=i,v=p] 
-^e	*:e	*
+^eo	*:e	*
 
 [t=i|j|c,v=0|a|as]
 [t=c,v=p]
-^e	*:	*
+^eo	*:	*
 
 [t=j,v=p]
-^e	*e	*
+^eo	*e	*
 
 %%a=0,c=C,+strong
 [t=p]
@@ -62,18 +64,18 @@ $$ S ስ|ዝ|ሽ|ዥ
 %%a=0,c=E,+strong
 [t=p]
 [t=i,v=p]
-^e	*e	*:e	*
+^eo	*e	^eo:	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-^e	*e	*:	*
+^eo	*e	**u:	*
 
 [t=j,v=0|a]
 [t=c]
-^e	*	*	*
+^eo	*	**u	*
 
 [t=j,v=p]
-^e	*	*e	*
+^eo	*	^eo:	*
 
 %%a=0,c=F,+strong
 [t=p]
@@ -136,74 +138,26 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=j,v=a]
 *	*a	*	*
 
-%%a=0,c=Eo,+strong
-# ዶለዶመ
-[t=p]
-[t=i,v=p]
-^o	*e *:o	*
-
-[t=i,v=0|a|as]
-[t=j,v=as]
-^o	*e	*u:	*
-
-[t=j,v=0|a]
-[t=c]
-^o	*	*u	*
-
-[t=j,v=p]
-^o	*	*o	*
-
-%%a=0,c=Eo1,+strong
-# ሞለፈፈ
-[t=p]
-[t=i,v=p]
-^o	*e *:e	*
-
-[t=i,v=0|a|as]
-[t=j,v=as]
-^o	*e	*:	*
-
-[t=j,v=0|a]
-[t=c]
-^o	*	*	*
-
-[t=j,v=p]
-^o	*	*e	*
-
-%%a=0,c=Eo2,+strong
-# ሸረሞጠ
-[t=p]
-[t=i,v=p]
-^e	*e *:o	*
-
-[t=i,v=0|a|as]
-[t=j,v=as]
-^e	*e	*u:	*
-
-[t=j,v=0|a]
-[t=c]
-^e	*	*u	*
-
-[t=j,v=p]
-^e	*	*o	*
-
 %%a=0,c=A,-strong
 
 %1=እ
-# no simplex v=a for this subclass, but need to account for አስታወቀ
-[t=p,v=0|p|as]
-[t=i,v=p] 
+# no simplex v=a for this subclass
+# most instances of v=ast are in this class: አስታወቀ
+[t=p,v=0|p|as|ast]
+[t=i,v=p]
 ኣ	*:e	*
 
 [t=j,v=p]
 ኣ	*e	*
 
 [t=i|j|c,v=as]
+[t=i,v=ast]
 ኣ	*:	*
 
 [t=i,v=0,-dup23]
 [t=c,v=0,-dup23]
-[t=c,v=p]
+[t=c,v=p|ast]
+[t=j,v=ast]
 ኣ	*	*
 
 [t=i,v=0,+dup23]
@@ -214,6 +168,7 @@ $$ S ስ|ዝ|ሽ|ዥ
 እ	*e	*
 
 %1=እ,3=ይ
+# no instances of v=ast?
 [t=p,v=0|p|as]
 ኣ	*:e	-
 
@@ -231,6 +186,7 @@ $$ S ስ|ዝ|ሽ|ዥ
 ኣ	*	ት
 
 %1=እ,3=እ
+# no instances of v=ast?
 [t=p,v=0|p|as]
 [t=i,v=as]
 ኣ	*:a	-
@@ -321,7 +277,7 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=i,v=p] 
 ኣ	*:e	*
 
-[t=i|j|c,v=0|a|as]
+[t=i|j|c,v=0|a|as|ast]
 [t=c,v=p]
 ኣ	*:	*
 
@@ -443,6 +399,40 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=c]
 *a	-	*	ት
 
+#%1=W
+## ሞለፈፈ
+#[t=p]
+#[t=i,v=p]
+#^o	*e	*e:	*
+
+#[t=i,v=0|a|as]
+#[t=j,v=as]
+#^o	*e	*:	*
+
+#[t=j,v=0|a]
+#[t=c]
+#^o	*	*	*
+
+#[t=j,v=p]
+#^o	*	*e	*
+
+#%3=W
+## ሸረሞጠ
+#[t=p]
+#[t=i,v=p]
+#^e	*e	*o:	*
+
+#[t=i,v=0|a|as]
+#[t=j,v=as]
+#^e	*e	*u:	*
+
+#[t=j,v=0|a]
+#[t=c]
+#^e	*	*u	*
+
+#[t=j,v=p]
+#^e	*	*o	*
+
 %%a=0,c=F,-strong
 %4=እ
 # ሰማራ
@@ -489,14 +479,15 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 %%a=a,c=A,+strong
 # initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
-[t=p,v=p|a]
+# ast: አስተናበረ
+[t=p,v=p|a|ast]
 [t=i,v=p] 
 ^a	*:e	*
 
 [t=j,v=p]
 ^a	*e	*
 
-[t=i|j|c,v=a]
+[t=i|j|c,v=a|ast]
 ^a	*:	*
 
 [t=c,v=p]
@@ -505,7 +496,7 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=j,v=p]
 ^a	*e	*
 
-[t=j|c,v=a]
+[t=j|c,v=a|ast]
 ^a	*	*
 
 %%a=a,c=B,+strong
@@ -535,51 +526,6 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 [t=j,v=p]
 ^e	*a	*e	*
-
-%%a=a,c=Eo,+strong
-[t=p,v=p|a]
-[t=i,v=p]
-^o	*a	*:o	*
-
-[t=i,v=a]
-^o	*a	*:u	*
-
-[t=j,v=a]
-[t=c,v=p|a]
-^o	*a	*u	*
-
-[t=j,v=p]
-^o	*a	*o	*
-
-%%a=a,c=Eo1,+strong
-[t=p,v=p|a]
-[t=i,v=p]
-^o	*a	*:e	*
-
-[t=i,v=a]
-^o	*a	*:	*
-
-[t=j,v=a]
-[t=c,v=p|a]
-^o	*a	*	*
-
-[t=j,v=p]
-^o	*a	*e	*
-
-%%a=a,c=Eo2,+strong
-[t=p,v=p|a]
-[t=i,v=p]
-^e	*a	*:o	*
-
-[t=i,v=a]
-^e	*a	*:u	*
-
-[t=j,v=a]
-[t=c,v=p|a]
-^e	*a	*u	*
-
-[t=j,v=p]
-^e	*a	*o	*
 
 %%a=a,c=A,-strong
 %3=እ
@@ -637,6 +583,22 @@ $$ S ስ|ዝ|ሽ|ዥ
 
 %%a=a,c=E,-strong
 
+%1=እ
+# ተላቀሰ
+[t=p,v=p|a]
+[t=i,v=p]
+-	*a	*:e	*
+
+[t=i,v=a]
+-	*a	*:	*
+
+[t=j,v=p]
+-	*a	*e	*
+
+[t=j,v=a]
+[t=c]
+-	*a	*	*
+
 %4=እ
 # ገነባ
 [t=p|i]
@@ -660,19 +622,19 @@ $$ S ስ|ዝ|ሽ|ዥ
 *e	*a	*	ት
 
 %%a=i,c=A,+strong
-# No as
-[t=p,v=0|p|a]
+# Include v=as though it's rare
+[t=p]
 [t=i,v=p]
 *e	*a	*:e	*
 
-[t=i,v=0|a]
+[t=i,v=0|a|as]
 *e	*a	*:	*
 
 [t=j,v=p]
 *e	*a	*e	*
 
-[t=j,v=0|a]
-[t=c,v=0|p|a]
+[t=j,v=0|a|as]
+[t=c]
 *e	*a	*	*
 
 %%a=i,c=B,+strong == A
@@ -694,51 +656,6 @@ $$ S ስ|ዝ|ሽ|ዥ
 [t=c]
 *e	*e	*a	*	*
 
-%%a=i,c=Eo,+strong
-[t=p]
-[t=i,v=p]
-*o	*e	*Wa	*:o	*
-
-[t=i,v=0|a]
-*o	*e	*Wa	*:u	*
-
-[t=j,v=p]
-*o	*e	*Wa	*o	*
-
-[t=j,v=0|a]
-[t=c]
-*o	*e	*Wa	*u	*
-
-%%a=i,c=Eo1,+strong
-[t=p]
-[t=i,v=p]
-*o	*e	*a	*:e	*
-
-[t=i,v=0|a]
-*o	*e	*a	*:	*
-
-[t=j,v=p]
-*o	*e	*a	*e	*
-
-[t=j,v=0|a]
-[t=c]
-*o	*e	*a	*	*
-
-%%a=i,c=Eo2,+strong
-[t=p]
-[t=i,v=p]
-*e	*e	*Wa	*:o	*
-
-[t=i,v=0|a]
-*e	*e	*Wa	*:u	*
-
-[t=j,v=p]
-*e	*e	*Wa	*o	*
-
-[t=j,v=0|a]
-[t=c]
-*e	*e	*Wa	*u	*
-
 %%a=i,c=F,+strong == E
 
 %%a=i,c=A,-strong
@@ -755,18 +672,18 @@ $$ S ስ|ዝ|ሽ|ዥ
 *a	*	-	*
 
 %1=እ
-[t=p,v=p|a|as]
+[t=p,v=p|a|ast]
 [t=i,v=p]
 -	*a	*:e	*
 
-[t=i,v=a|as]
+[t=i,v=a|ast]
 -	*a	*:	*
 
 [t=j,v=p]
 -	*a	*e	*
 
-[t=j,v=a|as]
-[t=c,v=p|a|as]
+[t=j,v=a|ast]
+[t=c,v=p|a|ast]
 -	*a	*	*
 
 [t=p,v=0]

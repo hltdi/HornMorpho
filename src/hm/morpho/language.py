@@ -62,7 +62,7 @@ SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
 
 ## Regexes for parsing language data
 # Language name
-LG_NAME_RE = re.compile(r'\s*n.*?:\s*(.*)')
+LG_NAME_RE = re.compile(r'\s*name.*?:\s*(.*)')
 # Target language name and abbrev (for translation)
 TL_NAME_RE = re.compile(r'\s*tln.*?:\s*(.*)\s+(.*)')
 # Backup language abbreviation
@@ -135,6 +135,10 @@ MTAX_RE = re.compile("\s*morphotax::\s*(.*)")
 #MSEG_RE = re.compile("")
 # Added 2023.07.24
 LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
+# Added 2023.09.04
+MWE_RE = re.compile("\s*mwe::\s*(.*)")
+# Added 2023.09.06; character normalization
+NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -158,7 +162,7 @@ class Language:
     joinfeats = '|'
     joinpos = ','
     roottempsep = '+'
-    mwesep = '//'
+#    mwesep = '//'
 
     namefreq = 100
 
@@ -173,6 +177,8 @@ class Language:
                  # Default root postprocessing for analysis
                  dflt_postproc_root=None,
                  seg_units=None, read_cache=False,
+                 # string translation table for character normalization
+                 charnorm=None,
                  # Function that converts segmented word back to a word string
                  seg2string=None,
                  # list of grammatical features to be combined with roots for statistics,
@@ -373,6 +379,7 @@ class Language:
     def make(name, abbrev, load_morph=False, fidel=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
+             v5=False,
              ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
@@ -385,6 +392,7 @@ class Language:
                                 segment=segment, phon=phon, recreate=recreate,
                                 experimental=experimental, mwe=mwe, fidel=fidel,
                                 translate=translate, simplified=simplified,
+                                v5=v5,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
             # Loading data failed somewhere; abort
@@ -394,12 +402,11 @@ class Language:
     def load_data(self, load_morph=False, pickle=True, recreate=False,
                   segment=False, phon=False, guess=True, fidel=False, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
-                  poss=None, verbose=True):
+                  v5=False, poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
         filename = self.get_data_file(fidel=fidel)
-#        print("*** Looking for data file {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))
@@ -410,11 +417,17 @@ class Language:
                 data = stream.read()
                 self.parse(data, poss=poss, verbose=verbose)
         if load_morph:
-            if not self.load_morpho(segment=segment, ortho=True, phon=phon,
-                                    guess=guess, simplified=simplified, translate=translate,
-                                    experimental=experimental, mwe=mwe,
-                                    pickle=pickle, recreate=recreate,
-                                    verbose=verbose):
+            if v5:
+                if not self.load_morpho3(ortho=True, phon=phon,
+                                         guess=guess, translate=translate, mwe=mwe,
+                                         pickle=pickle, recreate=recreate,
+                                         verbose=verbose):
+                    return False
+            elif not self.load_morpho(segment=segment, ortho=True, phon=phon,
+                                      guess=guess, simplified=simplified, translate=translate,
+                                      experimental=experimental, mwe=mwe,
+                                      pickle=pickle, recreate=recreate,
+                                      verbose=verbose):
                 # There is no FST of the desired type
                 return False
         # Create a default FS for each POS
@@ -444,6 +457,7 @@ class Language:
         seg = []
         punc = []
         featnorm = []
+
         abbrev = {}
         fv_abbrev = {}
         trans = {}
@@ -458,6 +472,7 @@ class Language:
         explicit = {}
         lemmafeats = {}
         segments = {}
+        mwefeats = {}
 
         feature_groups = {}
 
@@ -580,6 +595,16 @@ class Language:
                 punc = m.group(1).split()
                 continue
 
+            m = NORM_RE.match(line)
+            if m:
+                norm = m.groups()[0].strip()
+                normin, normout = norm.split(';')
+                normin = normin.replace(' ', '').replace('\t', '')
+                normout = normout.replace(' ', '').replace('\t', '')
+                self.charnorm = str.maketrans(normin, normout)
+#                print("** charnorm {}".format(self.charnorm))
+                continue
+
             m = TRANS_RE.match(line)
             if m:
                 current = 'trans'
@@ -679,8 +704,10 @@ class Language:
                     true_explicit[pos] = current_true_explicit
                     fullpos[pos] = fullp
                     feature_groups[pos] = current_feature_groups
+                    # default values for these 3; overridden if there are specific features in data file
                     lemmafeats[pos] = []
                     segments[pos] = []
+                    mwefeats[pos] = []
                     continue
 
                 m = MTAX_RE.match(line)
@@ -694,6 +721,14 @@ class Language:
                     segs = [[eval(s) for s in segs[0]], eval(segs[1]), [eval(s) for s in segs[2]]]
 #                    print("** Morphotax segments {}".format(segs))
                     segments[pos] = segs
+                    continue
+
+                m = MWE_RE.match(line)
+                if m:
+                    mwefeats1 = m.groups()[0].strip()
+                    mwefeats1 = eval(mwefeats1)
+#                    print("** mwe_specs {}".format(mwefeats1))
+                    mwefeats[pos] = mwefeats1
                     continue
 
                 m = LEMMAFEATS_RE.match(line)
@@ -906,7 +941,7 @@ class Language:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
                                      fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
-                                     lemmafeats[pos], segments[pos]))
+                                     lemmafeats[pos], segments[pos], mwefeats[pos]))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -928,7 +963,19 @@ class Language:
                     print("No {} posmorph".format(fnpos))
                 posmorph.featnorm = fnfeats
 
-    ### Phone representation conversion
+    ###
+    ### Character conversion of various sorts.
+    ###
+
+    def normalize(self, string):
+        '''
+        Normalize the string using the language's charnorm translation table if there is one.
+        '''
+        charnorm = self.charnorm
+        if not charnorm:
+            return string
+        return string.translate(charnorm)
+
     def read_phon_file(self, verbosity=0):
         """
         Read the phone representation mapping file.
@@ -1234,6 +1281,97 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
+    def load_morpho3(self, fsts=None, ortho=True, phon=False,
+                     pickle=True, mwe=False, translate=False,
+                     recreate=False, guess=True, verbose=False):
+        """
+        Load words and FSTs for morphological analysis and generation.
+        """
+        fsts = fsts or (self.morphology and self.morphology.pos)
+#        opt_string = 'MWE_' if mwe else ''
+        opt_string = ''
+        if phon:
+            opt_string += 'phonetic'
+        else:
+            opt_string += 'analysis/generation'
+        # Only look for MWE FSTs for segmentation
+        if not self.has_cas(generate=phon, guess=False, phon=phon,
+                            experimental=False, mwe=mwe,
+                            segment=False, simplified=False):
+            print('No {} FST available for {}!'.format(opt_string, self))
+        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
+                                        [self, ' (' + opt_string + ')' if opt_string else ''],
+                                        self.tlanguages)
+        print(msg_string)
+        # In any case, assume the root frequencies will be needed?
+        self.morphology.set_root_freqs()
+        self.morphology.set_feat_freqs()
+        if ortho:
+            # Load unanalyzed words
+            self.morphology.set_words(ortho=True)
+            self.morphology.set_suffixes(verbose=verbose)
+        if phon:
+            # Load unanalyzed words
+            self.morphology.set_words(ortho=False)
+            self.morphology.set_suffixes(verbose=verbose)
+        if not fsts:
+            return False
+        for pos in fsts:
+            # Load pre-analyzed words if any
+            self.morphology[pos].set_analyzed(ortho=ortho, simplify=False)
+            if ortho:
+                self.morphology[pos].make_generated()
+            # Load phonetic->orthographic dictionary if file exists
+            if ortho:
+                self.morphology[pos].set_ortho2phon()
+            # Load lexical anal and gen FSTs (no gen if segmenting)
+            if ortho:
+                self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
+                                              simplified=False, experimental=False, mwe=False,
+                                              phon=False, segment=False, translate=translate,
+                                              gemination=self.output_gemination,
+                                              pos=pos, recreate=recreate, verbose=verbose)
+                if mwe:
+                    self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
+                                                  simplified=False, experimental=False, mwe=True,
+                                                  phon=False, segment=False, translate=translate,
+                                                  gemination=self.output_gemination,
+                                                  pos=pos, recreate=recreate, verbose=verbose)
+            # Load generator for both analysis and segmentation
+#            if phon or (ortho and not segment):
+            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+                                          simplified=False, experimental=False, mwe=False,
+                                          phon=phon, segment=False, translate=translate,
+                                          gemination=self.output_gemination,
+                                          pos=pos, recreate=recreate, verbose=verbose)
+            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+                                          simplified=False, experimental=False, mwe=True,
+                                          phon=phon, segment=False, translate=translate,
+                                          gemination=self.output_gemination,
+                                          pos=pos, recreate=recreate, verbose=verbose)
+            # Load guesser anal and gen FSTs
+            if guess:
+                if ortho:
+                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
+                                                  segment=False, translate=translate,
+                                                  pickle=pickle, create_casc=False,
+                                                  simplified=False, experimental=False, mwe=False,
+                                                  gemination=self.output_gemination,
+                                                  pos=pos, recreate=recreate, verbose=verbose)
+                # Always load phonetic generation guesser
+#                if phon:
+                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
+                                              create_casc=False, pickle=pickle, experimental=False, mwe=False,
+                                              simplified=False, translate=translate,
+                                              gemination=self.output_gemination,
+                                              pos=pos, recreate=recreate, verbose=verbose)
+            # Load statistics for generation
+            self.morphology[pos].set_root_freqs()
+            self.morphology[pos].set_feat_freqs()
+
+        self.morpho_loaded = True
+        return True
+
     def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
                     pickle=True, experimental=False, mwe=False,
                     segment=False, translate=False,
@@ -1241,7 +1379,7 @@ class Language:
         """
         Load words and FSTs for morphological analysis and generation.
         """
-#        print("**** load morpho")
+#        print("**** load morpho, mwe {}".format(mwe))
         fsts = fsts or (self.morphology and self.morphology.pos)
 #        opt_string = 'MWE_' if mwe else ''
         opt_string = ''
@@ -1255,7 +1393,7 @@ class Language:
             opt_string += 'analysis/generation'
         # Only look for MWE FSTs for segmentation
         if not self.has_cas(generate=phon, guess=False, phon=phon,
-                            experimental=experimental, mwe=mwe and segment,
+                            experimental=experimental, mwe=mwe, # and segment,
                             segment=segment, simplified=simplified):
             print('No {} FST available for {}!'.format(opt_string, self))
             if experimental:
@@ -1368,33 +1506,71 @@ class Language:
 
     ## New functions (HM 5.0)
 
-    def analyze5(self, word, mwe=False):
+    def analyze5(self, raw_token, mwe=False, conllu=False, gemination=False):
         '''
-        Analyze a word according to HM 5.0.
+        Analyze a token according to HM 5.0, returning the analyses in dict anal format.
         '''
-        analyses = []
+        all_analyses = []
+        
+        # Character normalization
+        normalized = False
+        token = self.normalize(raw_token)
+        if token != raw_token:
+            normalized = True
+            
         # Try unanalyzed words
-        unanalyzed = self.anal_unanalyzed(word, mwe=mwe)
+        unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe)
         if unanalyzed:
-            analyses.append(unanalyzed)
+            all_analyses.append(unanalyzed)
         # Try different POSs.
         for pos, pmorph in self.morphology.items():
             # Check for caching before running pos.anal()
-            analysis = pmorph.anal(word)
-            if analysis:
-                analyses.extend(analysis)
-        return analyses
+            analyses = pmorph.anal(token, mwe=mwe)
+            if analyses:
+                analyses = pmorph.process_all5(token, analyses, mwe=mwe, gemination=gemination, raw_token=raw_token if normalized else '')
+                all_analyses.extend(analyses)
+        return all_analyses
 
-    def anal_unanalyzed(self, word, mwe=False):
+    def analyze_unanalyzed5(self, word, mwe=False):
         '''
-        Look for the unanalyzed form of the word, returning the default
+        Look for the unanalyzed form of the word, returning the default in dict anal format.
         '''
         words = self.morphology.wordsM if mwe else self.morphology.words1
             
         if word in words:
             form, pos = self.morphology.words1[word]
             # Later have the FSS already storied in words1
-            return [form, FSSet("[pos={}]".format(pos))]
+            return {'token': form, 'pos': pos}
+#        [form, FSSet("[pos={}]".format(pos))]
+
+    def analyze_special5(self, token):
+        '''
+        Handle special cases, currently abbreviations, numerals, and punctuation.
+        '''
+        if self.morphology.is_punctuation(token):
+            return {'pos': 'punct', 'token': token}
+#            return [self.process_punc(token, segment=segment, print_out=print_out)]
+        if self.morphology.is_abbrev(token):
+#            print("{} is an abbreviation".format(token))
+            return {'pos': 'n', 'token': token}
+#            return [self.process_abbrev(token, segment=segment, print_out=print_out)]
+        numeral = self.morphology.match_numeral(token)
+        if numeral:
+            prenum, num, postnum = numeral
+            if postnum:
+                lemma = postnum
+                pos = 'n'
+            elif prenum:
+                lemma = num
+                pos = 'n'
+            else:
+                lemma = ''
+                pos = ''
+            return {'pos': pos, 'lemma': lemma, 'token': token}
+#            return [self.process_numeral(token, prenum, num, postnum, segment=True, print_out=print_out)]
+        return None
+
+    ### Old functions (HM 4)
 
     def preprocess(self, form):
         '''Preprocess a form.'''
@@ -1409,6 +1585,7 @@ class Language:
     def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
                     phonetic=True):
         '''Postprocess a form.'''
+#        print("** Postprocessing {}".format(form))
         if self.postproc:
             return self.postproc(form, phon=phon, ipa=ipa,
                                  ortho_only=ortho_only, phonetic=phonetic)
@@ -1706,7 +1883,7 @@ class Language:
                         # We have to really analyze it; first try lexical FSTs for each POS
                         if verbosity:
                             print("** analyzing {} with {} FST".format(form, pos))
-                        self.anal_word_(form, analyses, pos, to_cache,
+                        self.anal_word_(form, analyses, pos, to_cache, postproc=postproc,
                                         guess=False, phon=phon, segment=segment, init_weight=init_weight,
                                         experimental=experimental, mwe=mwe, normalize=False, to_dict=to_dict,
                                         sep_anals=sep_anals, verbosity=verbosity)
@@ -1715,7 +1892,7 @@ class Language:
         if not analyses and guess:
             # Accumulate results from all guessers
             for pos in fsts:
-                self.anal_word_(form, analyses, pos, to_cache,
+                self.anal_word_(form, analyses, pos, to_cache, postproc=postproc,
                                 guess=True, phon=phon, segment=segment, init_weight=init_weight,
                                 experimental=experimental, mwe=False, normalize=False, to_dict=to_dict,
                                 sep_anals=sep_anals, verbosity=verbosity)
@@ -2142,8 +2319,8 @@ class Language:
         # Use a copy of analyses for further processing
         analyses = copy.deepcopy(analyses)
 
-#        print("** printout {}, analyses {}".format(printout, string_analyses))
         # Either store the analyses in the dict or write them to the terminal or the file
+#        print("** analyses {}".format(analyses))
         if dicts:
             add_anals_to_dict(self, analyses, dicts[0], dicts[1])
         elif conllu and experimental:
@@ -2197,6 +2374,7 @@ class Language:
                 if not lemma:
                     lemma = root
                 if postprocess:
+#                    print("** Postprocessing {}".format(lemma))
                     lemma = self.postprocess(lemma, ortho_only=True, phonetic=phonetic)
         return lemma
 
@@ -2617,8 +2795,8 @@ class Language:
         if len(analysis) == 1:
             print("*** analysis only {}".format(analysis))
         form, pos = analysis
-        if '//' in form:
-            form = form.replace('//', ' ')
+        if Morphology.mwe_sep in form:
+            form = form.replace(Morphology.mwe_sep, ' ')
         if segment:
             cite = self.get_lemma(pos, root=form, postprocess=postproc, phonetic=False)
             return pos, form, cite, None, 10000
@@ -2662,8 +2840,7 @@ class Language:
         return ''
 
     def proc_anal1(self, analysis, pos, segment=True, guess=False,
-                   freq=True, 
-                   postproc=True, phonetic=True, normalize=False):
+                   freq=True, postproc=True, phonetic=True, normalize=False):
         feats = analysis[1]
         if not (feats := analysis[1]):
             return
@@ -2702,7 +2879,7 @@ class Language:
         # Find the citation form of the root if required
         # This only works if FSSets have been separated into FeatStructs
         cite = ''
-        cite = self.get_lemma(pos, feats=feats, root=analstring, guess=guess, postprocess=postproc, phonetic=phonetic)
+        cite = self.get_lemma(pos, feats=feats, root=root, guess=guess, postprocess=postproc, phonetic=phonetic)
         # Normalize features
         if not segment:
             if normalize and posmorph:
@@ -2712,14 +2889,13 @@ class Language:
 #            results.append(newitem)
 
         # Use the 'raw' POS, e.g., 'nadj' rather than 'n'
+#        print("** proc_anal {} {} {}".format(pos, analstring, cite))
         return pos, analstring, cite, feats, root_freq
 #        res.append((pos, analstring, cite, feats, root_freq))
 
     def proc_anal(self, form, analyses, pos,
-                  freq=True, 
-                  normalize=False,
-                  segment=False, guess=False, postproc=False, string=False,
-                  phonetic=True, verbosity=0):
+                  freq=True, normalize=False, segment=False, guess=False, postproc=False,
+                  string=False, phonetic=True, verbosity=0):
         '''
         Process analyses according to various options, returning a list of
         analysis tuples.

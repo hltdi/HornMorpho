@@ -75,6 +75,17 @@ def segment(word, units, correct=True):
     return res
 
 ### String functions
+def string_dif(str1, str2):
+    """
+    Assumes strings are same length. Returns the positions and characters that are
+    different.
+    """
+    res = []
+    for index, (c1, c2), in enumerate(zip(str1, str2)):
+        if c1 != c2:
+            res.append((index, c1, c2))
+    return res
+    
 def isnumstring(string):
     """
     Is string a string representation of a numeral?

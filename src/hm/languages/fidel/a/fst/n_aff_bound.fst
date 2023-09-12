@@ -4,7 +4,8 @@ start -> start	[^N;/;_]
 
 start -> e2a	[{e2a};{I2a}]
 e2a -> e2a		[:<;:-;:>]
-e2a -> start	[:ኣ]
+# noun stems normally begin with አ
+e2a -> start	[:ኣ;:አ]
 
 start -> eI		[*e]
 eI -> eI 		[:<;:-;:>]
@@ -37,7 +38,7 @@ Vwu -> start	[ው:ኡ]
 
 start -> Csuf	[:<;:-;:>]
 Csuf -> Csuf	[:<;:-;:>]
-Csuf -> start	[**v;**;/;_]
+Csuf -> start	[*v;*;/;_]
 
 start ->
 Csuf ->

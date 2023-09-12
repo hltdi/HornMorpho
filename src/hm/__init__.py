@@ -28,11 +28,14 @@ Author: Michael Gasser <gasser@indiana.edu>
 # the features of the segments for the whole word.
 
 # experimental CoNLL-U segmenter for Amharic
-#__cat__ = 'X'
-#__version__ = '4.5.2.4'
+__cat__ = 'X'
+__version__ = '4.5.2.4'
 
-__cat__ = 'A'
-__version__ = '4.3.1'
+#__cat__ = 'A'
+#__version__ = '4.3.1'
+
+#__cat__ = ''
+#__version__ = '5.0'
 
 __author__ = 'Michael Gasser'
 
@@ -48,10 +51,10 @@ SEGMENT = False
 ### Version 5 analysis and generation.
 ###
 
-def analyze5(language, word):
-    language = morpho.get_language(language)
+def analyze5(language, word, mwe=False):
+    language = morpho.get_language(language, v5=True)
     if language:
-        return language.analyze5(word)
+        return language.analyze5(word, mwe=mwe)
 
 def exit(save=True, cache=''):
     """Exit the program, caching any new analyses for each loaded language
@@ -735,8 +738,8 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                              create_fst=True, relabel=True, gemination=gemination,
                              compose_backwards=False, split_index=split_index,
                              phon=phon, verbose=verbose)
-    if gen == True:
-        # Also create the generation FST
+    if gen == True and mwe == False:
+        # Also create the generation FST, but not for MWEs
         if seglevel == 0:
             # Just invert the analyzer
             if verbose:

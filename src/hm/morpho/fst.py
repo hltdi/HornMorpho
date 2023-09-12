@@ -1889,8 +1889,6 @@ class FST:
         empty_name = fst_name + '0'
         # experimental has priority over others
         name = fst_name
-        if mwe:
-            name = name + 'M'
         if experimental:
             name = name + 'X'
         elif empty:
@@ -1908,9 +1906,11 @@ class FST:
         if generate:
             name += 'G'
             empty_name += 'G'
-#        elif not segment:
-#            name += 'A'
-#            empty_name += 'A'
+        if mwe:
+            name = name + 'M'
+#            print("** restore MWE name: {}".format(name))
+#        if mwe:
+#            print("  ** restore MWE name: {}".format(name))
         if pickle:
 #            print("Unpickling {} in {}".format(name, pkl_directory))
             fst = FST.unpickle(name, directory=pkl_directory)

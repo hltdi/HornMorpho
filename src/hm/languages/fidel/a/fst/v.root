@@ -1,4 +1,9 @@
 ## A roots
+## abbreviations
+$$ S s z x Z
+$$ W kW gW qW mW bW fW
+
+## A roots
 # simplex
 %A::		1:e,I;		2:e,/e,I,/I;		3:I
 # position 2 must be specified to override 2=w (for አወቀ) and 2=y (for አየ)
@@ -9,10 +14,12 @@
 %A,3='::				2:a,/a,I;		3:0,0ት
 %A,3=y::				2:/e,I,/I;		3:0,0ት
 %A,2==3::				2:e,/e,I,/I;	3:I,0
+
 # a=a
 %A_a::		1:a;		2:e,/e,I,/I;		3:I
 %A_a,3='::				2:a,/a,I;		3:0,0ት
 %A_a,3=y::							3:0,0ት
+
 # iterative, a=i
 %A_i::		1:e;			2:a|e,/e,/I,I;	3:I
 %A_i,1='::	1:0,0ኣ;		2:a|e,/e,/I,I,a,/a
@@ -47,7 +54,12 @@
 %E,2='::     1:a;	2:0
 %E,4='::					3:/a,a,I;	4:0,0ት
 %E,4=y::								4:0,0ት
+# ሞለፈፈ, ዶለዶመ
+%E,1=W::	1:o;	2:e,I
+# ሸረሞጠ, ዶለዶመ
+#%E,3=W::					3:o,/o,u,/u;	4:I
 %E_a::		1:e;	2:a;	3:e,/e,I;	4:I
+%E_a,1='::	1:0;	2:a;	3:e,/e,I,/I;	4:I
 %E_a,4='::					3:/a,a,I;	4:0,0ት
 %E_a,4=y::								4:0,0ት
 %E_i::		1:e;	2:e;	3:a|e,/e,I,/I;	4:I
@@ -55,19 +67,6 @@
 %E_i,2='::			2:0
 %E_i,4='::					3:a|a,/a,I;	4:0,0ት
 %E_i,4=y::										4:0,0ት
-
-# ዶለደመ
-%Eo::		1:o;	2:e,I;	3:o,/o,u,/u;	4:I
-# ሞለፈፈ
-%Eo1::		1:o;	2:e,I;	3:e,/e,I,/I;	4:I
-# ሸረሞጠ
-%Eo2::		1:e;	2:e,I;	3:o,/o,u,/u;	4:I
-%Eo_a::	1:o;	2:a;	3:o,/o,u,/u;	4:I
-%Eo1_a::	1:o;	2:a;	3:e,/e,I,/I;	4:I
-%Eo2_a::	1:e;	2:a;	3:o,/o,u,/u;	4:I
-%Eo_i::	1:o;	2:e;	3:Wa|o,/o,u,/u;	4:I
-%Eo1_i::	1:o;	2:e;	3:a|e,/e,I,/I;		4:I
-%Eo2_i::	1:e;	2:e;	3:Wa|o,/o,u,/u;	4:I
 
 %F::		1:e;	2:a;	3:e,I,/e,/I;			4:I
 %F,4='::					3:/a,a,I;	4:0,0ት

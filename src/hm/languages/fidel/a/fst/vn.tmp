@@ -1,36 +1,36 @@
-$ c=A|B|C|E|Eo|Eo1|Eo2|F|G|H|J
+$ c=A|B|C|E|F|G|H|J
 $ a=0|a|i
-$ v=0|p|a|as
+$ v=0|p|a|as|ast
 $ d=a|inf|ins|m
 
 %%a=0,c=A,+strong
 [d=inf|ins,v=0|a]
-*	*e	*
+**u	*e	*
 
 [d=inf|ins,v=p]
-^e	*e	*
+^eo	*e	*
 
 [d=inf|ins,v=as]
-^e	*:e	*
+^eo	*:e	*
 
 [d=a,v=0|p]
-^e	*a	*
+^eo	*a	*
 
 [d=a,v=a]
-*	*a	*
+**u	*a	*
 
 [d=a,v=as]
-^e	*:a	*
+^eo	*:a	*
 
 %%a=0,c=B,+strong
 [d=inf|ins,v=0|a|as]
-^e	*:e	*
+^eo	*:e	*
 
 [d=a]
-^e	*:a	*
+^eo	*:a	*
 
 [d=inf|ins,v=p]
-^e	*e	*
+^eo	*e	*
 
 %%a=0,c=C,+strong
 [d=inf|ins]
@@ -41,10 +41,10 @@ $ d=a|inf|ins|m
 
 %%a=0,c=E,+strong
 [d=inf|ins]
-^e	*	*e	*
+^eo	*	^eo	*
 
 [d=a]
-^e	*	*a	*
+^eo	*	*a	*
 
 %%a=0,c=F,+strong
 [d=inf|ins]
@@ -74,40 +74,19 @@ $ d=a|inf|ins|m
 [d=a,v=p|a]
 *	*a	*a	*
 
-%%a=0,c=Eo,+strong
-[d=inf|ins]
-^o	*	*o	*
-
-[d=a]
-^o	*	*Wa	*
-
-%%a=0,c=Eo1,+strong
-[d=inf|ins]
-^o	*	*e	*
-
-[d=a]
-^o	*	*a	*
-
-%%a=0,c=Eo2,+strong
-[d=inf|ins]
-^e	*	*o	*
-
-[d=a]
-^e	*	*Wa	*
-
 %%a=0,c=A,-strong
 
 %1=እ
 [d=inf|ins,v=0|p]
 ኣ	*e	*
 
-[d=inf|ins,v=as]
+[d=inf|ins,v=as|ast]
 ኣ	*:e	*
 
 [d=a,v=0|p]
 ኣ	*a	*
 
-[d=a,v=as]
+[d=a,v=as|ast]
 ኣ	*:a	*
 
 %1=እ,3=ይ
@@ -218,7 +197,7 @@ $ d=a|inf|ins|m
 [d=inf|ins,v=p]
 ኣ	*e	*
 
-[d=inf|ins,v=0|as]
+[d=inf|ins,v=0|as|ast]
 ኣ	*:e	*
 
 [d=a]
@@ -334,10 +313,10 @@ $ d=a|inf|ins|m
 **	^a	-	^a	ት
 
 %%a=a,c=A,+strong
-[d=inf|ins,v=p|a]
+[d=inf|ins,v=p|a|ast]
 ^a	*e	*
 
-[d=a,v=p|a]
+[d=a,v=p|a|ast]
 ^a	*a	*
 
 %%a=a,c=B,+strong
@@ -353,27 +332,6 @@ $ d=a|inf|ins|m
 
 [d=a]
 ^e	^a	^a	*
-
-%%a=a,c=Eo,+strong
-[d=inf|ins,v=p|a]
-^o	^a	^o	*
-
-[d=a]
-^o	^a	*Wa	*
-
-%%a=a,c=Eo1,+strong
-[d=inf|ins,v=p|a]
-^o	^a	^e	*
-
-[d=a]
-^o	^a	^a	*
-
-%%a=a,c=Eo2,+strong
-[d=inf|ins,v=p|a]
-^e	^a	^o	*
-
-[d=a]
-^e	^a	*Wa	*
 
 %%a=a,c=A,-strong
 %3=እ
@@ -430,10 +388,10 @@ $ d=a|inf|ins|m
 
 %%a=i,c=A,+strong
 [d=inf|ins|m]
-^e	*a	*e	*
+^e	^a	*e	*
 
 [d=a]
-^e	*a	*a	*
+^e	^a	*a	*
 
 %%a=i,c=B,+strong == A
 
@@ -446,30 +404,6 @@ $ d=a|inf|ins|m
 
 [d=a]
 ^e	^e	^a	^a	*
-
-%%a=i,c=Eo,+strong
-
-[d=inf|ins|m]
-^o	^e	*Wa	^o	*
-
-[d=a]
-^o	^e	*Wa	*Wa	*
-
-%%a=i,c=Eo1,+strong
-
-[d=inf|ins|m]
-^o	^e	^a	^e	*
-
-[d=a]
-^o	^e	^a	^a	*
-
-%%a=i,c=Eo2,+strong
-
-[d=inf|ins|m]
-^e	^e	*Wa	^o	*
-
-[d=a]
-^e	^e	*Wa	*Wa	*
 
 %%a=i,c=F,+strong == E
 
@@ -504,8 +438,8 @@ $ d=a|inf|ins|m
 [d=ins|inf,v=0]
 ኣ	*a	*e	*
 
-# ማተዳደር, መተዳደር, ማስተዳደር, አስተዳደር
-[d=ins|inf,v=p|a|as]
+# ማተዳደር, መተዳደር, ማስተዳደር, አስተዳደር, አተዳደር
+[d=ins|inf,v=p|a|ast]
 [d=m]
 -	*a	*e	*
 
@@ -514,7 +448,7 @@ $ d=a|inf|ins|m
 ኣ	*a	*a	*
 
 # ተዳዳሪ, አተዳዳሪ, አስተዳዳሪ
-[d=a,v=p|a|as]
+[d=a,v=p|a|ast]
 -	*a	*a	*
 
 %3=እ

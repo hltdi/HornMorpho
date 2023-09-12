@@ -26,6 +26,18 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 import hm
 
+## Functions specific to v. 5.
+
+def get5(abbrev, verbose=False):
+    """
+    Return the language with abbreviation abbrev, loading it
+    if it's not already loaded.
+    """
+    return hm.morpho.get_language(abbrev, cache='', phon=False, guess=True,
+                                                                   pickle=True, segment=False, experimental=False,
+                                                                   v3=True,
+                                                                   load=True, verbose=verbose)
+
 ## displaying segmentations in Tkinter
 
 C1 =  ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",

@@ -58,6 +58,8 @@ class EES:
     pre_gem_char = '/'
     post_gem_chars = '፟_:'
 
+    mwe_space = '//'
+
     # Filters to use with anal_sentence to restrict syntax/morphology.
     filters = \
     {
@@ -131,6 +133,30 @@ class EES:
                          gemination=self.output_gemination)
         if not self.postpostproc:
             self.postpostproc = lambda form: form.replace('//', ' ')
+
+    @staticmethod
+    def char2space(string):
+        return string.replace(EES.mwe_space, ' ')
+
+    @staticmethod
+    def postproc(string, degem=True, mwe=False):
+        '''
+        Post-process by replacing spaces for MWEs and degeminating.
+        '''
+        if mwe:
+            string = EES.char2space(string)
+        if degem:
+            string = EES.degeminate(string)
+        return string
+
+    @staticmethod
+    def degeminate(string):
+        '''
+        Remove gemination characters froms string (but do not replace MWE space chars //).
+        '''
+        for char in EES.pre_gem_char + EES.post_gem_chars:
+            string = string.replace(char, '')
+        return string
 
     @staticmethod
     def make_weight(string, source=False, target=False):

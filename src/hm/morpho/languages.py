@@ -64,7 +64,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
               cache=True, guess=True, simplified=False, mwe=True, gen=False,
-              experimental=False, poss=None, verbose=True):
+              v5=False, experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     if verbose:
         print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
@@ -89,6 +89,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
                                     pickle=pickle, translate=translate, recreate=recreate, gen=gen,
                                     phon=phon, guess=guess, simplified=simplified, mwe=mwe, fidel=fidel,
+                                    v5=v5,
                                     poss=poss, verbose=verbose)
         if not loaded:
 #            print("No additional data")
@@ -110,6 +111,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
                                  segment=segment, phon=phon, guess=guess,
                                  simplified=simplified, recreate=recreate,
                                  poss=poss, ees=ees, fidel=fidel,
+                                 v5=v5,
                                  verbose=verbose)
         if not language:
             # Impossible to make language with desired FST
@@ -134,6 +136,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 def get_language(language, load=True,
                  pickle=True, translate=False, experimental=False, fidel=False,
                  phon=False, segment=False, guess=True, simplified=False,
+                 v5=False,
                  load_morph=True, cache='', verbose=False):
     """
     Get the language with lang_id, attempting to load it if it's not found
@@ -150,6 +153,7 @@ def get_language(language, load=True,
                              segment=segment, guess=guess, experimental=experimental,
                              simplified=simplified, translate=translate, fidel=fidel,
                              load_morph=load_morph, cache=cache,
+                             v5=v5,
                              verbose=verbose):
                 return False
         return LANGUAGES.get(lang_id, None)
@@ -157,6 +161,7 @@ def get_language(language, load=True,
         lang.load_morpho(phon=phon, segment=segment, guess=guess,
                          experimental=experimental,
                          pickle=pickle, translate=translate,
+                         v5=v5,
                          simplified=simplified)
         return lang
     if not load_morph:

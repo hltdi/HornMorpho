@@ -1,0 +1,70 @@
+$ prep
+  በ		[adp=በ,-gen]
+  ለ		[adp=ለ,-gen]
+  ከ		[adp=ከ,-gen]
+  የ		[adp=የ,+gen]
+  እ		[adp=እ,-gen]
+  እንደ	[adp=እንደ,-gen]
+  ስለ		[adp=ስለ,-gen]
+  ወደ		[adp=ወደ,-gen]
+  እስከ	[adp=እስከ,-gen]
+  --		[adp=None,-gen]
+
+$ prep_bound
+  -
+
+$ distrib
+  እ/የ	[+dis,-col]
+  እ/ነ	[-dis,+pl,+col]
+  --		[-dis,-col]
+
+$ prestem
+  <
+
+$ stem
+  +n_stemM+		[-irr]
+
+$ poststem
+  >
+
+$ plural
+  ኦ/ች	[+pl,pos=n|adj,-col,-irr,ps=oc]
+  ኣን		[+pl,pos=n|adj,-col,-irr,ps=an]
+  --		[-pl];[+pl,+col];[+pl,+irr]
+
+$ plur_bound
+  -
+
+$ poss_det
+  ኤ		[pp=1,pn=1]
+  ኣ/ችን	[pp=1,pn=2]
+  ህ		[pp=2,pn=1,pg=m,-pf]
+  ሽ		[pp=2,pn=1,pg=f,-pf]
+  ኣ/ችሁ	[pp=2,pn=2,-pf]
+  ዎ		[pp=2,+pf]
+  # possessive or determiner
+  #{
+  ኡ		[pp=3,pn=1,pg=m,-pf,-det];[pp=0,+det,g=m]
+  ዋ		[pp=3,pn=1,pg=f,-pf,-det];[pp=0,+det,g=f]
+  #}
+  ኣ/ቸው	[pp=3,pn=2,-pf];[pp=3,+pf]
+  --		[pp=0,-det]
+
+$ poss_bound
+  -
+
+$ acc
+  ን		[+acc]
+  --		[-acc]
+
+$ acc_bound
+  -
+
+$ conj
+  /ም		[cconj=ም]
+  /ስ		[cconj=ስ]
+  /ማ		[cconj=ማ]
+  /ሳ		[cconj=ሳ]
+  /ና		[cconj=ና]
+  /ኮ		[cconj=ኮ]
+  --		[cconj=None]

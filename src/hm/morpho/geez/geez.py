@@ -93,6 +93,10 @@ CONVERT_GEEZ = {
     '-^': {'ች': 'ት', 'ጅ': 'ድ', 'ሽ': 'ስ', 'ዥ': 'ዝ',  'ኝ': 'ን',  'ጭ': 'ጥ',  'ይ': 'ል',  'ቕ': 'ቅ',  'ኽ': 'ክ',  'ጝ': 'ግ',  '𞟥': 'ሕ'}
     }
 
+AMH_NORM = \
+str.maketrans("ሐሑሒሓሔሕሖኅኁኂኃኄኅኆዐዑዒዓዔዕዖሠሡሢሣሤሥሦፀፁፂፃፄፅፆ",
+              "ሀሂሂሃሄህሆሀሂሂሃሄህሆአኡኢኣኤእኦሰሱሲሳሴስሶጸጹጺጻጼጽጾ")
+
 ### TOP-LEVEL FUNCTIONS
 
 def get_language(lang='am'):
@@ -129,6 +133,9 @@ def geezify_alts(form, lang='am', gemination=True):
 #    table = GEEZ_SERA.get(lang, [[],[]])[1]
 #    if table:
 #        return root2geez(table, root, lang=lang)
+
+def normalize(string):
+    return string.translate(AMH_NORM)
 
 def degeminate(form, geez=True):
     """

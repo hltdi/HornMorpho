@@ -1,9 +1,10 @@
 -> particle
 
-# a word can start with a series of border characters followed by any letter.
-particle -> particle	 [^N]
+particle -> particle    [^N]
 particle -> particle/  [/]
 particle/ -> particle  [^N]
+# There can be more than one particle
+particle/ -> particle   [/]
 particle/ -> first		[/]
 first -> start			[*v;*]
 first -> first		  	[:-;:<]

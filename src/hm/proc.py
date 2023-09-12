@@ -84,7 +84,7 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
-POS_RE = re.compile(r'.*pos=(\w+)[,\]].*')
+POS_RE = re.compile(r'.*[,\[]pos=(\w+?)[,\]].*')
 
 def get_pos(fs):
     match = POS_RE.match(fs)
@@ -105,6 +105,21 @@ def add_feat(fs, feat):
     if '[]' in fs:
         return '[' + feat + ']'
     return fs[:-1] + ",{}]".format(feat)
+
+def mwe_nouns2fidel():
+    lines = []
+    with open("hm/languages/amh/lex/n_stemMX.lex") as file:
+        for line in file:
+            form1, x, fs = line.split()
+            # form2 could have post-gemination character '_'; convert to pre-gemination '/'
+            form2 = post2pregem(form1)
+            pos = get_pos(fs) or 'n'
+            new_fs = "[mwe=[+hdfin,-hdaff,deppos=adj],pos={}]".format(pos)
+            lines.append("{}  ''  {}".format(geezify(form2), new_fs))
+    with open("hm/languages/fidel/a/lex/n_stemM.lex", 'w', encoding='utf8') as file:
+        for line in lines:
+            print(line, file=file)
+    return lines
 
 def change_nlex_pos(stems, pos, roman=True):
     lines = []

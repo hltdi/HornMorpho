@@ -45,6 +45,10 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 #     =ክ =ኩ
      A B C D E F G H I J K
 
+normalization::
+  ሐሑሒሓሔሕሖ	ኅኁኂኃኄኅኆ	ዐዑዒዓዔዕዖ		ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
+  ሀሁሂሃሄህሆ		ሀሁሂሃሄህሆ	አኡኢኣኤእኦ	ሰሱሲሳሴስሶ		ጸጹጺጻጼጽጾ
+
 feats:
 
   pos: v verb
@@ -52,15 +56,17 @@ feats:
       {'name': 'sconj_adp', 'pos':{'ለ':'ADP','በ':'ADP','ከ':'ADP','እንደ':'ADP','እስከ':'ADP',\
          'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
 	  'dep': 'mod'};
-        {'name': 'neg1', 'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
-        {'name': 'sb1', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};;
+      {'name': 'neg1', 'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};;
       {'name': 'STEM', 'pos': 'V'};;
       {'name': 'sb2', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};
-        {'name': 'ob',  'pos': 'PRON', 'dep': 'comp', 'feats': ['op','on','og','oa']};
-        {'name': 'neg2',  'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
-        {'name': 'aux',  'pos': 'AUX', 'dep': 'mod', 'feats': 'ax'};
-        {'name': 'acc',  'pos': 'ADP', 'dep': 'mod', 'feats': 'acc'};
-        {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'mod', 'feats': 'cconj'}
+      {'name': 'ob',  'pos': 'PRON', 'dep': 'comp', 'feats': ['op','on','og','oa']};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'mod', 'feats': 'ax'};
+      {'name': 'acc',  'pos': 'ADP', 'dep': 'mod', 'feats': 'acc'};
+      {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'mod', 'feats': 'cconj'}
+    mwe::
+      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
     lemmafeats = a,v
     neg = False | True
     a = 0 | a  | i
@@ -91,22 +97,29 @@ feats:
 #    v = 0 | p | a | as
 #    t = p | i | j | c
 
-#  pos: vn v_noun
-#    a = 0 | a | i
-#    v = 0 | p | a | as
-#    d = a | inf | ins | m
-#    # only for infinitive
-#    neg = False | True
+  pos: vn v_noun
+    a = 0 | a | i
+    v = 0 | p | a | as
+    d = a | inf | ins | m
+    # only for infinitive
+    neg = False | True
 
-#  pos: vn_stem v_noun_stem
-#    a = 0 | a | i
-#    v = 0 | p | a | as
-#    d = a | inf | ins | m
-#    # only for infinitive
-#    neg = False | True
+  pos: vn_stem v_noun_stem
+    a = 0 | a | i
+    v = 0 | p | a | as
+    d = a | inf | ins | m
+    # only for infinitive
+    neg = False | True
 
   pos: n noun_adjective
-#    morphotax
+    morphotax::
+      {'name': 'prep', 'pos': 'ADP'};
+      {'name': 'distrib', 'pos': 'ADP'};;
+      {'name': 'STEM', 'pos': 'N'};;
+      {'name': 'plur', 'pos': 'COMP'};
+      {'name': 'poss',  'pos': 'PRON'};
+      {'name': 'acc', 'pos': 'ADP'};
+      {'name': 'cconj', 'pos': 'CCONJ'}
     lemmafeats = d;a,v
     pos = n | adj | nadj
     n = 1 | 2
@@ -169,6 +182,9 @@ feats:
 # Consonants with /e/, except አ
 ^e = {ሀ, ለ,መ, ረ, ሰ, ቀ, በ, ተ, ነ, ከ, ወ, ዘ, የ, ደ, ገ, ጠ, ጰ, ጸ, ፈ, ፐ, ቈ, ኈ, ኰ, ጐ, ሸ, ቸ, ኘ, ዠ, ጀ, ጨ}
 
+# Consonants with /e/ and /o/, except አ and ኦ
+^eo = {ሀ, ለ,መ, ረ, ሰ, ቀ, በ, ተ, ነ, ከ, ወ, ዘ, የ, ደ, ገ, ጠ, ጰ, ጸ, ፈ, ፐ, ቈ, ኈ, ኰ, ጐ, ሸ, ቸ, ኘ, ዠ, ጀ, ጨ, ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ}
+
 # Palatal consonants with /e/
 ^Ye = {ሸ, ቸ, ኘ, ዠ, ጀ, ጨ}
 
@@ -212,6 +228,9 @@ feats:
 
 # Vowelless consonants, except እ
 ** = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ}
+
+# Vowelless consonants + *u, except እ, ኡ
+**u = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ, ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ}
 
 # Palatal vowelless consonants
 ^Y = {ሽ, ች, ኝ, ዥ, ጅ, ጭ}

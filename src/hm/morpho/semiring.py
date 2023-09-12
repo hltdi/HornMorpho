@@ -195,16 +195,28 @@ class FSSet(set, FS):
     #             values.append(values1)
     #     return values or default
 
-    def set_all(self, feat, value, force=True):
+    def set_all(self, feat, value, force=True, verbose=False):
         """
         Return a new FSSet with feat set to value in all component FeatStructs.
         If force is True, do this even it conflicts with the features in self.
         """
-        if force or self.unify_FS(FeatStruct("[{}={}]".format(feat, value))) != 'fail':
+        if force:
             fss = self.unfreeze()
             for f in fss:
+#                if verbose:
+#                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
                 f[feat] = value
             return FSSet(fss)
+        u = self.unify_FS(FeatStruct("[{}={}]".format(feat, value)))
+        if u != 'fail':
+            u = u.unfreeze()
+            for f in u:
+                if verbose:
+                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
+                f[feat] = value
+            if verbose:
+                print(" ** set_all {}".format(u.__repr__()))
+            return u
         return None
 
     def inherit(self):

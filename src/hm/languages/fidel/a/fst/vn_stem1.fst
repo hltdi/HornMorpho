@@ -50,6 +50,9 @@ M/T -> stemsuf	[:-]	[d=a|ins]
 # manner
 stem ->	man1	[ኣ]		[d=m]
 man1 -> man2	[/]
+# alternative for 1=እ: አተዳደር
+man2 -> man2t	[ተ]
+man2t -> end	[:-]
 man2 -> end		[:-]
 man1 -> man1S	[ስ]
 man1S -> man1ST	[ተ]

@@ -50,6 +50,8 @@ class Morphology(dict):
 
     default_sense = 0
 
+    mwe_sep = '//'
+
     # Regular expressions for affix files
     pattern = re.compile('\s*pat.*:\s+(\w+)\s+(.+)')
     function = re.compile('\s*func.*:\s+(\w+)\s+(.+)')
@@ -210,7 +212,7 @@ class Morphology(dict):
         if ' ' in word:
             multi = True
             # Replaces spaces by //
-            word = word.replace(' ', '//')
+            word = word.replace(' ', Morphology.mwe_sep)
         if mwe:
             if ortho:
                 if multi:
@@ -674,7 +676,7 @@ class POSMorphology:
     def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
                  feat_abbrevs=None, fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
                  feature_groups=None, name=None, explicit=None, true_explicit=None,
-                 lemma_feats=None, segments=None):
+                 lemma_feats=None, segments=None, mwe_feats=None):
         # A string representing part of speech
         self.pos = pos
         # A string representing the full name of the POS
@@ -759,6 +761,8 @@ class POSMorphology:
         self.lemma_feats = lemma_feats
         # Segments and their properties
         self.segments = segments
+        # MWE feats for this POS
+        self.mwe_feats = mwe_feats
         # Frequency statistics for generation
         self.root_freqs = None
         self.feat_freqs = None
@@ -1053,7 +1057,8 @@ class POSMorphology:
         If guess is true, create the lexiconless guesser FST.
         2023.2.28: Added seglevel.
         '''
-#        print("*** load_fst {}, seglevel {}".format(pos, seglevel))
+#        if mwe:
+#            print("*** load_fst MWE {}, seglevel {}".format(pos, seglevel))
 
         # seglevel should be 0 if segment is 0
 #        if not segment:
@@ -1063,7 +1068,6 @@ class POSMorphology:
         name = self.fst_name(generate, guess, simplified, phon=phon, mwe=mwe,
                              segment=segment, translate=translate, experimental=experimental)
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-#        print("*** Path {}".format(path))
         if verbose:
             s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}{5} (recreate {6})'
             print(s1.format(('TRANSLATION' if translate else ('GENERATION' if generate else 'ANALYSIS')),
@@ -1084,6 +1088,8 @@ class POSMorphology:
                               experimental=experimental, mwe=mwe,
                               verbose=verbose)
             if fst:
+#                if mwe:
+#                    print("*** Found MWE FST; path {}, fst {}".format(path, fst))
                 fst, found_pickle = fst
                 if found_pickle and verbose:
                     print("Finished unpickling {}".format(fst.label))
@@ -1336,27 +1342,9 @@ class POSMorphology:
         # Experimental FSTs have priority over others, but note that segment will
         # also be true if experimental FST is a segmenter.
         # MWE or single word
-#        fsts = self.mwefsts if mwe else self.fsts
-#        if experimental:
-#            fst = fsts[self.anal_i][self.exp_i]
-#        elif guess:
-#            if phon:
-#                fst = fsts[self.anal_i][self.guessphon_i]
-#            elif segment:
-#                fst = None
-#            else:
-#                fst = fsts[self.anal_i][self.guess_i]
-#        elif simplified:
-#            fst = fsts[self.anal_i][self.simp_i]
-#        elif phon:
-#            fst = fsts[self.anal_i][self.phon_i]
-#        elif segment:
-#            fst = fsts[self.anal_i][self.seg_i]
-#        else:
-#            fst = fsts[self.anal_i][0] or fsts[self.anal_i][self.guess_i] or fsts[self.anal_i][self.simp_i]
-#        print("*** anal fst {}, form {}".format(fst.__repr__(), form))
-#        print("*** anal {}, normalize {}".format(form, normalize))
         if fst:
+            if mwe:
+                form = form.replace(' ', Morphology.mwe_sep)
             if preproc:
                 # For languages with non-roman orthographies
                 form = self.language.preprocess(form)
@@ -1390,53 +1378,103 @@ class POSMorphology:
         return self.anal(word, segment=True, experimental=True)
 
     ##
-    ## Processing output of anal or gen.
+    ## Processing output of anal or gen, v.5.
     ##
 
-    def process_all(self, word, analyses, conllu=False, xml=False, gemination=False):
+    def process_all5(self, token, analyses,
+                     mwe=False, conllu=False, xml=False, gemination=False, raw_token=''):
         '''
         analyses is the output of anal(), a list of string, FSS pairs.
         If gemination is False, all gemination characters are removed.
         '''
+        analyses = self.separate_anals(analyses)
         result = []
-        for string, FSS in analyses:
-            if not gemination:
-                for char in EES.pre_gem_char + EES.post_gem_chars:
-                    string = string.replace(char, '')
-            for features in FSS:
-                result.append(self.process(word, string, features, conllu=conllu, xml=xml))
+        for string, FS in analyses:
+            # Replace spaces and degeminate
+            string = EES.postproc(string, degem=not gemination, mwe=mwe)
+            result.append(self.process5(token, string, FS, conllu=conllu, xml=xml, mwe=mwe, raw_token=raw_token))
         return result
 
-    def process(self, word, string, features, conllu=False, xml=False):
+    def process5(self, token, string, features, mwe=False, conllu=False, xml=False, raw_token=''):
         """
         string is a (probably segmented) analysis of a word or MWE.
         features is a FeatStruct.
         """
-#        string, FSS = analysis
-#        if not gemination:
-#            for char in [EES.pre_gem_char] + EES.post_gem_chars:
-#                string = string.replace(char, '')
+#        print("** process 5 {} {}".format(token, string))
+        procdict = {'token': token, 'feats': features}
+        if mwe:
+            # For properties, prefer specific lexical ones over generic lexical ones
+            props = features.get('mwe') or self.mwe_feats
+            token_dicts = self.get_mwe_tokens(token, self.mwe_feats)
+            procdict['tokens'] = token_dicts
+#            print("  ** token dicts {}".format(token_dicts))
+        procdict['string'] = string
+        if raw_token:
+            procdict['raw'] = raw_token
         prefixes, stem, suffixes = self.get_segments(string, features)
         root = features.get('root', stem)
+        procdict['root'] = root
         lemma = self.gen_lemma(stem, root, features)
+        procdict['lemma'] = lemma
         um = self.language.um.convert(features, pos=self.pos)
+        procdict['um'] = um
+        POS = features.get('pos', self.pos)
+        procdict['pos'] = POS
         udfeats = self.language.um.convert2ud(um, self.pos, extended=True) if um else None
+        procdict['udfeats'] = udfeats
         if self.segments:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []
+            post_dicts = []
             for prefix, props in zip(prefixes, preprops):
-                if not prefix:
-                    pre_dicts.append('')
-                else:
-                    pre_dict = {'string': prefix}
-                    pre_pos = self.get_segment_pos(prefix, props)
-                    pre_dict['pos'] = pre_pos
-                    pre_dicts.append(pre_dict)
+                pre_dicts.append(self.process_morpheme5(prefix, props))
             prefixes = pre_dicts
-                
-        return {'word': word, 'pre': prefixes, 'suf': suffixes, 'stem': stem, 'root': root, 'feats': features, 'lemma': lemma, 'um': um, 'udfeats': udfeats}
+            for suffix, props in zip(suffixes, sufprops):
+                post_dicts.append(self.process_morpheme5(suffix, props))
+            suffixes = post_dicts
+            if stemprops:
+                stem_dict = self.process_morpheme5(stem, stemprops)
+                stem = stem_dict
+        procdict['pre'] = prefixes
+        procdict['suf'] = suffixes
+        procdict['stem'] = stem
 
-    def get_segments(self, string, features):
+        return procdict
+    
+    def get_mwe_tokens(self, tokens, props):
+        '''
+        Return the tokens and their properties for a MWE output string.
+        '''
+#        print("** processing {} using feats {}".format(tokens, props))
+        tokens = tokens.split()
+        token_dicts = []
+        if props:
+            headfin = props.get('hdfin')
+            deppos = props.get('deppos')
+            headaff = props.get('hdaff')
+            if headfin:
+                for token in tokens[:-1]:
+                    token_dicts.append({'token': token, 'pos': deppos, 'head': False})
+                token_dicts.append({'token': tokens[-1], 'pos': self.pos, 'head': True})
+            else:
+                token_dicts.append({'token': tokens[0], 'pos': self.pos, 'head': True})
+                for token in tokens[1:]:
+                    token_dicts.append({'token': token, 'pos': deppos, 'head': False})
+        return token_dicts
+
+    def process_morpheme5(self, morpheme, props):
+        '''
+        Create a dict for the affix or stem with properties from props.
+        '''
+        if not morpheme:
+            # the morpheme could be the empty string
+            return ''
+        dict = {'string': morpheme}
+        pos = self.get_segment_pos(morpheme, props)
+        dict['pos'] = pos
+        return dict
+
+    def get_segments(self, string, features, mwe=False):
         '''
         analysis is the output of a segmenting analyzer.
         features is a FeatStruct.
@@ -1645,7 +1683,7 @@ class POSMorphology:
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form
-            oroot = root.replace(' ', '//')
+            oroot = root.replace(' ', Morphology.mwe_sep)
             oroot = self.ortho2phon.get(oroot)
             if oroot:
                 root = oroot
