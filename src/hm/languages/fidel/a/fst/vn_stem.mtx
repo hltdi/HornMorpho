@@ -11,7 +11,7 @@ $ pre
     ማ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
     ማ/ተ-			[v=a,a=i,tmp=[1=እ]]
     ማስ-			[v=as,a=0]
-    ማስተ-			[v=ast,tmp=[1=እ],a=0|i];[v=ast,a=a]
+    ማስተ-			[v=ast,tmp=[1=እ],a=0|i];[v=ast,a=a,tmp=[1=X]];[v=ast,a=0|i,tmp=[2=እ]]
   [d=m,pos=n_v,-irr]
     ኣ/-			[tmp=[1=X]]
     ኣ/ተ-			[tmp=[1=እ]]
@@ -22,7 +22,7 @@ $ pre
     ኣ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
     ኣስ-			[v=as,a=0]
     ኣ/ተ-			[v=a,a=i,tmp=[1=እ]]
-    ኣስተ-			[v=ast,a=i,tmp=[1=እ]]
+    ኣስተ-			[v=ast,a=i,tmp=[1=እ]];[v=ast,a=0|i,tmp=[2=እ]];[v=ast,a=a,tmp=[1=X]]
   --				[d=0];[d=a,v=0,-irr,pos=n_v]
 
 $ stem

@@ -39,15 +39,12 @@
 
 <ብ ር ር>		c=A			{ሮጠ}
 
-<ጥ ቍ ር>		c=A
+<ጥ ቁ ር>		c=A
 
 <ም ው ት>		c=A
    a=0,v=0,S=1,O=0 ;  a=0,v=p,S=0,O=0 ; a=0,v=a,S=1,O=1 ; a=i,v=0,S=1,O=0 ; a=i,v=p,S=1,O=0 ; a=i,v=a,S=1,O=o
 
 <ሽ ይ ጥ>		c=A			{ሰበረ}
-
-# has irregular forms
-<ህ ይ ድ>		c=A			{ሮጠ}
 
 <እ ድ ር>		c=A
 
@@ -72,11 +69,19 @@
 
 <ስ እ ም>	     c=A			{ሳመ}
 
+<ን እ ቅ>	     c=A
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=0 ; a=i,v=p ; a=i,v=a ; a=i,v=ast
+
 <ን ብ ር>	     c=A
   a=0,v=0 ; a=0,v=a ; a=a,v=ast ; a=i,v=a ; a=i,v=ast
 
 # ማረ: forgive, sense 1
 <ም እ ር>	     c=A,s=1
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=p ; a=i,v=a
+
+# ተማረ: learn, sense 2
+<ም እ ር>	     c=A,s=2
+  a=0,v=p ; a=0,v=ast
 
 <እ ይ ይ>	     c=A,-dup23	{አመመ}
 
@@ -90,6 +95,8 @@
 
 <ጽ ል ይ>	      c=B,+strong	{ሰበረ}
 
+<ጭ ቁ ን>	      c=B
+
 <ጥ ጥ እ>	      c=B			{ሰበረ}
 
 <ል ክ እ>	      c=B
@@ -102,7 +109,7 @@
 
 <ብ ር ክ>	      c=C
 
-<ቍ ጥ ር>	      c=C
+<ቁ ጥ ር>	      c=C
 
 <ቅ ጥ እ>	      c=C
 

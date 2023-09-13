@@ -10,20 +10,14 @@
 ባ	ባ	ል
 
 *<ት ው>	c=A
-# not sure about agt
-[d=inf|ins|a,a=0,v=0]
+[d=inf|ins,a=0,v=0|p]
 ተ	ው
+
+[d=a,a=0,v=0|p]
+ተ	ይ
 
 [d=m,a=i]
 ተ	ዋ	ው
-
-*<ም እ ር> c=A
-# ተማረ: 'learn'
-[d=inf|ins|a,a=0,v=p|as]
-ማ	ር
-
-[d=m,a=i]
-ማ	ማ	ር
 
 *<ም እ ር> c=A,tmp=[1=እ],s=3
 # አማረ: be beautiful (sense 3)
@@ -49,6 +43,24 @@
 
 [d=inf,a=i]
 ሻ	ሻ	ት
+
+*<ህ ይ ድ>		c=A,tmp=[2=ይ]
+
+[d=inf|ins,a=0,v=0]
+ሄ	ድ
+
+[d=a,a=0,v=0]
+ሂ	ያ	ድ
+
+[d=inf|ins,a=0,v=p|as]
+ኬ	ድ
+
+[d=a,a=0,v=p|as]
+ኪ	ያ	ድ
+
+[d=m,a=i]
+ካ	ሄ	ድ
+
 
 
 

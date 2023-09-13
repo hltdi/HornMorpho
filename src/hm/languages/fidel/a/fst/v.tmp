@@ -11,39 +11,39 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=0,c=A,+strong
 [t=p]
 [t=i,v=p] 
-^eo	  *:e	*
+^eo	  ^eo:	*
 
 [t=j,v=p]
-^eo	*e	*
+^eo	^eo	*
 
 [t=i|j|c,v=as]
-^eo	*:	*
+^eo	**u:	*
 
 [t=i|c,v=0,-dup23]
 [t=i,v=a]
 [t=c,v=p]
-^eo	*	*
+^eo	**u	*
 
 [t=i|c,v=0,+dup23]
 ^eo	*:	-
 
 [t=j,v=0]
-**u	*e	*
+**u	^eo	*
 
 [t=j|c,v=a]
-**u	*	*
+**u	**u	*
 
 %%a=0,c=B,+strong
 [t=p]
 [t=i,v=p] 
-^eo	*:e	*
+^eo	^eo:	*
 
 [t=i|j|c,v=0|a|as]
 [t=c,v=p]
-^eo	*:	*
+^eo	**u:	*
 
 [t=j,v=p]
-^eo	*e	*
+^eo	^eo	*
 
 %%a=0,c=C,+strong
 [t=p]
@@ -222,11 +222,12 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ~Yi	-	*
 
 %2=እ
+# ast: አስተዋለ አስተማረ
 [t=p|j]
 [t=i,v=p]
 *a	-	*
 
-[t=i,v=0|a|as]
+[t=i,v=0|a|as|ast]
 [t=c]
 *	-	*
 
@@ -500,15 +501,15 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	*	*
 
 %%a=a,c=B,+strong
-[t=p,v=p|a]
+# ast: አስተናገደ
+[t=p,v=p|a|ast]
 [t=i,v=p] 
 ^a	*:e	*
 
-[t=i|j|c,v=a]
-[t=c,v=p|a]   # ?
+[t=i|j|c,v=a|ast]
+[t=c,v=p|a|ast]
 ^a	*:	*
 
-# ?
 [t=j,v=p]
 ^a	*e	*
 
@@ -665,6 +666,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 *Wa	*Wa	-	*
 
 %2=እ
+# aste: አስተናናቀ
 [t=p|i|j]
 *a	*a	-	*
 

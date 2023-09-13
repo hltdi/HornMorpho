@@ -56,7 +56,8 @@ $ voice_pre
   ኣ/ተ-		[v=a,a=i,tmp=[1=እ]]
   # causative
   ኣስ-		[v=as,a=0]
-  ኣስተ-		[v=ast,tmp=[1=እ],a=i|0];[v=ast,a=a]
+  # አስታወቀ አስተዋወቀ አስተናበረ አስተማረ አስተናናቀ
+  ኣስተ-		[v=ast,tmp=[1=እ],a=i|0];[v=ast,a=a,tmp=[1=X]];[v=ast,a=0|i,tmp=[2=እ]]
   # passive-reflexive
   ተ-			[v=p,t=p|c];[v=p,t=j,sp=2]
   /-			[v=p,t=i,tmp=[1=X]];[v=p,t=j,sp=1|3]

@@ -34,6 +34,6 @@ weighting = UNIFICATION
 
 ## FSTs
 >vn.tmp<
-#+v_irr.root+
++vn_irr.root+
 >vn.root<
 

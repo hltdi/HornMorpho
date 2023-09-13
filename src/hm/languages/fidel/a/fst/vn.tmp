@@ -320,10 +320,10 @@ $ d=a|inf|ins|m
 ^a	*a	*
 
 %%a=a,c=B,+strong
-[d=inf|ins,v=p|a]
+[d=inf|ins,v=p|a|ast]
 ^a	*e	*
 
-[d=a,v=p|a]
+[d=a,v=p|a|ast]
 ^a	*a	*
 
 %%a=a,c=E,+strong

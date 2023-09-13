@@ -140,6 +140,14 @@ class Roots:
 #        show = cons == ['ግ', 'ድ', 'ል']
         if show:
             print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
+        def get_sense():
+            ffeats = feats.split(',')
+            for ff in ffeats:
+                if 's=' in ff:
+                    sense = ff.split('=')[1]
+#                    print("** {} sense {}".format(cons, sense))
+                    return sense
+            return ''
 
         def dup_weight(drules, weight):
             if drules:
@@ -198,25 +206,25 @@ class Roots:
                     print("** Root state {} rchar {} chars {}".format(position, rchar, chars))
                 wt = weight if index == 0 else None
                 iter_chars = isinstance(chars, tuple)
-#                if (iterative or manner) and not iter_chars:
-#                    # Check to see whether states and arcs already exist for these chars
-#                    if fst.has_state(source) and fst.has_state(dest):
-#                        found = True
-#                        for char in chars:
-#                            if not fst.state_has_inout(source, dest, char, char):
-#                                found = False
-#                                break
-#                        if found:
-#                            if show:
-#                                print("--** Not creating initial arc because it already exists")
-#                            source = dest
-#                            continue
                 if iterative:
                     dest = dest + 'i'
                 elif aisa:
                     dest = dest + 'a'
                 elif manner:
                     dest = dest + 'm'
+                if (iterative or manner) and not iter_chars:
+                    # Check to see whether states and arcs already exist for these chars
+                    if fst.has_state(source) and fst.has_state(dest):
+                        found = True
+                        for char in chars:
+                            if not fst.state_has_inout(source, dest, char, char):
+                                found = False
+                                break
+                        if found:
+                            if show:
+                                print("--** Not creating initial arc because it already exists")
+                            source = dest
+                            continue
                 if iter_chars:
                     # iterated position, create two states
                     dest0 = dest + '_a'
@@ -272,9 +280,11 @@ class Roots:
                         print(" ** Creating final arc source {} end char {} outchar {} wt None".format(source, inchar, outchar))
                     charfeat_arc(inchar, outchar, None, source, 'end', fst, verbosity=0)
 
+        sense = get_sense()
+
         # one of cons could be a char, feature tuple
         cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
-        state_name = ''.join(cons_chars)
+        state_name = "{}{}".format(''.join(cons_chars), 'S{}_'.format(sense) if sense else '')
         states = []
         # Add this root to the POSMorphology instance's rootfeats dict
         if posmorph:
