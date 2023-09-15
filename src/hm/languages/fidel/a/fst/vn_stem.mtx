@@ -3,33 +3,35 @@ $ neg
    --			[d=ins|inf,-neg];[d=a|m]
 
 $ pre
+  # ተስተ- stems, along with +pr
+  ->suf		+irr_vn_stem+	[+pr,-irr]
   [d=inf,-irr,pos=n_v];[d=ins,-irr,pos=n_v]
-    መ-			[v=0]
-    መ/-			[v=p,a=0|a,tmp=[1=X]];[v=p,a=i,tmp=[1=X]]
-    መ/ተ-			[v=p,a=i,tmp=[1=እ]];[v=p,a=0,tmp=[1=እ]]
-    ማ-			[v=a,a=0]
-    ማ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
-    ማ/ተ-			[v=a,a=i,tmp=[1=እ]]
-    ማስ-			[v=as,a=0]
-    ማስተ-			[v=ast,tmp=[1=እ],a=0|i];[v=ast,a=a,tmp=[1=X]];[v=ast,a=0|i,tmp=[2=እ]]
+    መ-			[v=0,-pr]
+    መ/-			[v=p,+pr,a=0|a,tmp=[1=X]];[v=p,+pr,a=i,tmp=[1=X]]
+    መ/ተ-			[v=p,+pr,a=i,tmp=[1=እ]];[v=p,+pr,a=0,tmp=[1=እ]]
+    ማ-			[v=a,a=0,-pr]
+    ማ/-			[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X,-pr]]
+    ማ/ተ-			[v=a,a=i,tmp=[1=እ],-pr]
+    ማስ-			[v=as,a=0,-pr]
+    ማስተ-			[v=ast,tmp=[1=እ],a=0|i,-pr];[v=ast,a=a,tmp=[1=X],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr]
   [d=m,pos=n_v,-irr]
     ኣ/-			[tmp=[1=X]]
     ኣ/ተ-			[tmp=[1=እ]]
     ኣስተ-			[tmp=[1=እ]]
   [d=a,-irr,pos=n_v]
-    ተ-			[v=p]
-    ኣ-			[v=a,a=0]
-    ኣ/-			[v=a,a=a];[v=a,a=i,tmp=[1=X]]
-    ኣስ-			[v=as,a=0]
-    ኣ/ተ-			[v=a,a=i,tmp=[1=እ]]
-    ኣስተ-			[v=ast,a=i,tmp=[1=እ]];[v=ast,a=0|i,tmp=[2=እ]];[v=ast,a=a,tmp=[1=X]]
-  --				[d=0];[d=a,v=0,-irr,pos=n_v]
+    ተ-			[v=p,+pr]
+    ኣ-			[v=a,a=0,-pr]
+    ኣ/-			[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
+    ኣስ-			[v=as,a=0,-pr]
+    ኣ/ተ-			[v=a,a=i,tmp=[1=እ],-pr]
+    ኣስተ-			[v=ast,a=i,tmp=[1=እ],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr];[v=ast,a=a,tmp=[1=X],-pr]
+  --				[d=0,-pr];[d=a,v=0,-irr,pos=n_v,-pr]
 
 $ stem
   >>vn<<
 
 $ suf
-  -ኢ		[d=a]
-  -ኢያ		[d=ins]
-  --		[d=0|inf|m]
+  -ኢ		[d=a,t=0]
+  -ኢያ	[d=ins,t=0]
+  --		[d=0|inf|m,t=0]
 

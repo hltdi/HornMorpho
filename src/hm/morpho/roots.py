@@ -194,8 +194,8 @@ class Roots:
                 
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
-#            show = False
-#            if root_chars == ['ቁ', 'ጥ', 'ር']:
+            show = False
+#            if root_chars == ['ት', 'ግ', 'ል']:
 #                show = True
             if show:
                 print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))

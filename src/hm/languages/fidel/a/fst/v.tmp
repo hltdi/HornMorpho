@@ -513,6 +513,14 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=p]
 ^a	*e	*
 
+%%a=a,c=C,+strong
+# only v=a: አ/ታገለ (other examples?)
+[t=p,v=a]
+^a	*:e	*
+
+[t=i|j|c,v=a]
+^a	*:	*
+
 %%a=a,c=E,+strong
 [t=p,v=p|a]
 [t=i,v=p]

@@ -6,6 +6,7 @@ stem -> end		[]			[d=0]
 # infinitive and instrument
 stem -> ME		[መ]		[d=ins|inf]
 ME -> ME-		[:-]
+ME -> AS		[ስ]
 ME- -> end		[^^N]		[d=inf]
 ME- -> stemsuf	[^^N]		[d=ins]
 stem -> ME2A	[ማ:መ]
@@ -61,9 +62,10 @@ man1ST -> end	[:-]
 # agent
 stem -> stemsuf	[^N]	[d=a,v=0]
 
-stem -> T		[ተ]		[d=a,v=p]
+stem -> T		[ተ]		[d=a,v=p];[d=a,v=ast,+pr]
 T -> T-	 		[:-]
 T- -> stemsuf	[^^N]
+T -> AS			[ስ]
 
 stem -> A		[ኣ]		[d=a,v=a|as]
 A -> stemsuf	[:-]

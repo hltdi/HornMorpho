@@ -42,7 +42,7 @@
 <ጥ ቁ ር>		c=A
 
 <ም ው ት>		c=A
-   a=0,v=0,S=1,O=0 ;  a=0,v=p,S=0,O=0 ; a=0,v=a,S=1,O=1 ; a=i,v=0,S=1,O=0 ; a=i,v=p,S=1,O=0 ; a=i,v=a,S=1,O=o
+  a=0,v=0,S=1,O=0 ;  a=0,v=p,S=0,O=0 ; a=0,v=a,S=1,O=1 ; a=i,v=0,S=1,O=0 ; a=i,v=p,S=1,O=0 ; a=i,v=a,S=1,O=o
 
 <ሽ ይ ጥ>		c=A			{ሰበረ}
 
@@ -55,7 +55,9 @@
 
 <እ ብ ብ>		c=A
 
-<ም ጥ እ>		c=A			{ሮጠ}
+<ም ጥ እ>		c=A
+  # restrict a=0,v=0 so that irregular ና/ነይ/ኑ is used for t=j,sp=2,-neg
+  a=0,v=0,t=p|c|i|0;a=0,v=0,t=j,sp=1|3;a=0,v=0,t=j,sp=2,+neg;a=0,v=p;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p;a=i,v=a
 
 <ስ ም እ>	 	c=A			{ሰበረ}
 
@@ -116,6 +118,9 @@
 <ል ጭ ይ>	      c=C
 
 <ፉ ጭ ይ>	      c=C
+
+<ት ግ ል>	      c=C
+  a=0,v=0 ; a=0,v=as ; a=a,v=a ; a=i,v=0
 
 <ጭ ፍ ጭ ፍ>     c=E
 
