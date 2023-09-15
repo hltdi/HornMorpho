@@ -1426,14 +1426,17 @@ class POSMorphology:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []
             post_dicts = []
-            for prefix, props in zip(prefixes, preprops):
-                pre_dicts.append(self.process_morpheme5(prefix, props))
+            aff_index = 0
+            stem_index = len(prefixes)
+            suff1_index = len(prefixes) + 1
+            for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
+                pre_dicts.append(self.process_morpheme5(prefix, props, pindex, stem_index, features))
             prefixes = pre_dicts
-            for suffix, props in zip(suffixes, sufprops):
-                post_dicts.append(self.process_morpheme5(suffix, props))
+            for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
+                post_dicts.append(self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features))
             suffixes = post_dicts
             if stemprops:
-                stem_dict = self.process_morpheme5(stem, stemprops)
+                stem_dict = self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, is_stem=True)
                 stem = stem_dict
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
@@ -1462,16 +1465,21 @@ class POSMorphology:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
         return token_dicts
 
-    def process_morpheme5(self, morpheme, props):
+    def process_morpheme5(self, morpheme, props, index, stem_index, features, is_stem=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
         if not morpheme:
             # the morpheme could be the empty string
             return ''
+#        print("** Processing morpheme {}: {} (stem i: {})".format(index, morpheme, stem_index))
         dict = {'string': morpheme}
         pos = self.get_segment_pos(morpheme, props)
         dict['pos'] = pos
+        dep, head = self.get_segment_dep_head(morpheme, props, index, stem_index, features, is_stem=is_stem)
+        if dep:
+            dict['dep'] = dep
+        dict['head'] = head
         return dict
 
     def get_segments(self, string, features, mwe=False):
@@ -1498,12 +1506,34 @@ class POSMorphology:
             print("*** No POS in segdict {}".format(segdict))
             return
         if isinstance(posspec, dict):
-            pos = posspec.get(string)
+            pos = posspec.get(EES.degeminate(string))
             if not pos:
                 print("*** No POS for {} in seg postdict {}".format(string, posspec))
                 return
             return pos
         return posspec
+
+    def get_segment_dep_head(self, string, segdict, index, stem_index, features, framework='UD', is_stem=False):
+        headspec = segdict.get('head')
+        if headspec:
+            # This is a relative index specifying the direction and distance of the head
+            head_index = index + headspec
+        else:
+            # By default the head index is the stem index
+            head_index = stem_index
+        depspec = segdict.get('dep', '')
+        dep = None
+        if depspec:
+            if isinstance(depspec, str):
+                # string specifying the dep for all affixes in this position
+                dep = depspec
+            elif isinstance(depspec, tuple):
+                # (feature, {...})
+                depfeat = depspec[0]
+                depvalue = features.get(depfeat)
+                dep = depspec[1].get(depvalue)
+#                print(" ** Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
+        return dep, head_index
  
     def gen_lemma(self, stem, root, features):
         lemmafeats = self.lemma_feats

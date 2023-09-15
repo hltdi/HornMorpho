@@ -54,17 +54,17 @@ feats:
   pos: v verb
     morphotax::
       {'name': 'sconj_adp', 'pos':{'ለ':'ADP','በ':'ADP','ከ':'ADP','እንደ':'ADP','እስከ':'ADP',\
-         'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
-	  'dep': 'mod'};
-      {'name': 'neg1', 'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};;
+         'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','የም': 'SCONJ', 'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
+	  'dep': 'mark'};
+      {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': 'neg'};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['sp','sn','sg']};;
       {'name': 'STEM', 'pos': 'V'};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'comp', 'feats': ['sp','sn','sg']};
-      {'name': 'ob',  'pos': 'PRON', 'dep': 'comp', 'feats': ['op','on','og','oa']};
-      {'name': 'neg2',  'pos': 'ADV', 'dep': 'mod', 'feats': 'neg'};
-      {'name': 'aux',  'pos': 'AUX', 'dep': 'mod', 'feats': 'ax'};
-      {'name': 'acc',  'pos': 'ADP', 'dep': 'mod', 'feats': 'acc'};
-      {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'mod', 'feats': 'cconj'}
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['sp','sn','sg']};
+      {'name': 'ob',  'pos': 'PRON', 'dep': ('oa', {0: 'obj', 'l': 'obl', 'b': 'obl'}), 'feats': ['op','on','og','oa']};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': 'neg'};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux', 'feats': 'ax'};
+      {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': 'acc'};
+      {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc', 'feats': 'cconj'}
     mwe::
       {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
     lemmafeats = a,v

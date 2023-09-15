@@ -65,6 +65,7 @@ stem -> stemsuf	[^N]	[d=a,v=0]
 stem -> T		[ተ]		[d=a,v=p];[d=a,v=ast,+pr]
 T -> T-	 		[:-]
 T- -> stemsuf	[^^N]
+# ተስተ+
 T -> AS			[ስ]
 
 stem -> A		[ኣ]		[d=a,v=a|as]
