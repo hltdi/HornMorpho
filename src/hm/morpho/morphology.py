@@ -1382,7 +1382,7 @@ class POSMorphology:
     ##
 
     def process_all5(self, token, analyses,
-                     mwe=False, conllu=False, xml=False, gemination=False, raw_token=''):
+                     mwe=False, conllu=False, xml=False, gemination=False, raw_token='', sepfeats=True):
         '''
         analyses is the output of anal(), a list of string, FSS pairs.
         If gemination is False, all gemination characters are removed.
@@ -1392,10 +1392,10 @@ class POSMorphology:
         for string, FS in analyses:
             # Replace spaces and degeminate
             string = EES.postproc(string, degem=not gemination, mwe=mwe)
-            result.append(self.process5(token, string, FS, conllu=conllu, xml=xml, mwe=mwe, raw_token=raw_token))
+            result.append(self.process5(token, string, FS, conllu=conllu, xml=xml, mwe=mwe, raw_token=raw_token, sepfeats=sepfeats))
         return result
 
-    def process5(self, token, string, features, mwe=False, conllu=False, xml=False, raw_token=''):
+    def process5(self, token, string, features, mwe=False, conllu=False, xml=False, raw_token='', sepfeats=True):
         """
         string is a (probably segmented) analysis of a word or MWE.
         features is a FeatStruct.
@@ -1412,6 +1412,7 @@ class POSMorphology:
         if raw_token:
             procdict['raw'] = raw_token
         prefixes, stem, suffixes = self.get_segments(string, features)
+        procdict['nsegs'] = len([p for p in prefixes if p]) + 1 + len([s for s in suffixes if s])
         root = features.get('root', stem)
         procdict['root'] = root
         lemma = self.gen_lemma(stem, root, features)
@@ -1420,8 +1421,9 @@ class POSMorphology:
         procdict['um'] = um
         POS = features.get('pos', self.pos)
         procdict['pos'] = POS
-        udfeats = self.language.um.convert2ud(um, self.pos, extended=True) if um else None
-        procdict['udfeats'] = udfeats
+        udfdict = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
+#        udfdict = dict([u.split("=") for u in udfeats.split("|")])
+#        procdict['udfeats'] = udfeats
         if self.segments:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []
@@ -1430,20 +1432,30 @@ class POSMorphology:
             stem_index = len(prefixes)
             suff1_index = len(prefixes) + 1
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
-                pre_dicts.append(self.process_morpheme5(prefix, props, pindex, stem_index, features))
+                pre_dicts.append(
+                    self.process_morpheme5(prefix, props, pindex, stem_index, features, is_stem=False, udfdict=udfdict, sepfeats=sepfeats)
+                    )
             prefixes = pre_dicts
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
-                post_dicts.append(self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features))
+                post_dicts.append(
+                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features, is_stem=False, udfdict=udfdict, sepfeats=sepfeats)
+                    )
             suffixes = post_dicts
             if stemprops:
-                stem_dict = self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, is_stem=True)
+                stem_dict = \
+                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, is_stem=True, udfdict=udfdict, sepfeats=sepfeats)
                 stem = stem_dict
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
         procdict['stem'] = stem
 
+#        if conllu:
+#            con = self.dict2conllu(token, procdict)
+#            if con:
+#                procdict['conllu'] = con
+
         return procdict
-    
+
     def get_mwe_tokens(self, tokens, props):
         '''
         Return the tokens and their properties for a MWE output string.
@@ -1465,14 +1477,14 @@ class POSMorphology:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
         return token_dicts
 
-    def process_morpheme5(self, morpheme, props, index, stem_index, features, is_stem=False):
+    def process_morpheme5(self, morpheme, props, index, stem_index, features, is_stem=False, udfdict=None, sepfeats=True):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
         if not morpheme:
             # the morpheme could be the empty string
             return ''
-#        print("** Processing morpheme {}: {} (stem i: {})".format(index, morpheme, stem_index))
+#        print("** Processing morpheme {}: {} (stem i: {}, udfdict: {})".format(index, morpheme, stem_index, udfdict))
         dict = {'string': morpheme}
         pos = self.get_segment_pos(morpheme, props)
         dict['pos'] = pos
@@ -1480,6 +1492,16 @@ class POSMorphology:
         if dep:
             dict['dep'] = dep
         dict['head'] = head
+        feats = None
+        if sepfeats:
+            feats = self.get_segment_feats(morpheme, props, udfdict)
+        elif is_stem:
+            # Include all feats with stem if we're not separating feats by segment
+            feats = list(udfdict.items())
+            feats.sort()
+            feats = '|'.join(['='.join([f, v]) for f, v in feats])
+        if feats:
+            dict['feats'] = feats
         return dict
 
     def get_segments(self, string, features, mwe=False):
@@ -1493,12 +1515,12 @@ class POSMorphology:
         suf = suf.split(POSMorphology.segsep)
         return pre, stem, suf
 
-    def get_segment_props(self, string, segdict):
-        '''
-        string is a segment string.
-        segdict is the dict of properties for this segment position.
-        '''
-        pos = self.get_segment_pos(string, segdict)
+#    def get_segment_props(self, string, segdict):
+#        '''
+#        string is a segment string.
+#        segdict is the dict of properties for this segment position.
+#        '''
+#        pos = self.get_segment_pos(string, segdict)
 
     def get_segment_pos(self, string, segdict):
         posspec = segdict.get('pos')
@@ -1512,6 +1534,23 @@ class POSMorphology:
                 return
             return pos
         return posspec
+
+    def get_segment_feats(self, string, segdict, udfdict):
+        '''
+        Get the UD features that are specific to this segment.
+        ufdict is a dict of UD features for the whole word.
+        '''
+        features = []
+        # UD features relevant for this segment
+        segfeats = segdict.get('feats')
+        if not segfeats:
+            return []
+        for segfeat in segfeats:
+            wordfeat = udfdict.get(segfeat)
+            if wordfeat:
+                features.append((segfeat, wordfeat))
+        features.sort()
+        return '|'.join(['='.join([f, v]) for f, v in features])
 
     def get_segment_dep_head(self, string, segdict, index, stem_index, features, framework='UD', is_stem=False):
         headspec = segdict.get('head')

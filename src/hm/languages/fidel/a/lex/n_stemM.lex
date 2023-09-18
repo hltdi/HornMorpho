@@ -28,6 +28,7 @@
 ቋሚ//ተጠሪ  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
 መ/ተዳደሪያ//ህ/ግ  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
 ስርጥ//መንገድ  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
+ቤተ//ክርስትያን ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
 ቤተ//መቅደስ  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
 ብረት//ሰሪ  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]
 ባለ//ዛር  ''  [mwe=[+hdfin,-hdaff,deppos=adj],pos=n]

@@ -56,15 +56,16 @@ feats:
       {'name': 'sconj_adp', 'pos':{'ለ':'ADP','በ':'ADP','ከ':'ADP','እንደ':'ADP','እስከ':'ADP',\
          'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','የም': 'SCONJ', 'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
 	  'dep': 'mark'};
-      {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': 'neg'};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['sp','sn','sg']};;
-      {'name': 'STEM', 'pos': 'V'};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['sp','sn','sg']};
-      {'name': 'ob',  'pos': 'PRON', 'dep': ('oa', {0: 'obj', 'l': 'obl', 'b': 'obl'}), 'feats': ['op','on','og','oa']};
-      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': 'neg'};
-      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux', 'feats': 'ax'};
-      {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': 'acc'};
-      {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc', 'feats': 'cconj'}
+      {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number']};;
+      {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm']};;
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'ob',  'pos': 'PRON', 'dep': ('oa', {0: 'obj', 'l': 'obl', 'b': 'obl'}),\
+      'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum']};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux'};
+      {'name': 'acc',  'pos': 'ADP', 'dep': 'case'};
+      {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     mwe::
       {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
     lemmafeats = a,v

@@ -400,7 +400,7 @@ class UniMorph:
         d = self.language.get_dir()
         return os.path.join(d, self.language.abbrev + ".um")
 
-    def convert2ud(self, um, pos, extended=False):
+    def convert2ud(self, um, pos, extended=False, return_dict=False):
         """
         Convert a string consisting of UM features to a string consisting of UD features.
         """
@@ -433,6 +433,8 @@ class UniMorph:
                         udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
+        if return_dict:
+            return dict([u.split('=') for u in udfeats])
         return '|'.join(udfeats)
 
     def read(self, verbosity=0):

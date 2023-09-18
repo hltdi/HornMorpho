@@ -28,6 +28,10 @@ start -> VyE	[*v]
 VyE -> VyE		[:<;:-;:>]
 VyE -> start	[ዬ:ኤ]
 
+start -> iya	[*i]
+iya -> iya		[:<;:-;:>]
+iya -> start	[ያ:ኣ]
+
 start -> I2u	[{I2u}]
 I2u -> I2u		[:<;:-;:>]
 I2u -> start	[:ኡ]

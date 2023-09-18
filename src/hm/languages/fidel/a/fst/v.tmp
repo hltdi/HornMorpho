@@ -363,31 +363,31 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 # ገነባ
 [t=p|i]
 [t=j,v=as]
-*e	*e	*:a	-
+^eo	*e	*:a	-
 
 [t=j,v=p]
-*e	*e	*a	-
+^eo	*e	*a	-
 
 [t=j,v=0|a]
-*e	*	*a	-
+^eo	*	*a	-
 
 [t=c]
-*e	*	*	ት
+^eo	*	*	ት
 
 %4=ይ
 # ሰለቸ
 [t=p|i]
 [t=j,v=as]
-*e	*e	*:e	-
+^eo	*e	*:e	-
 
 [t=j,v=p]
-*e	*e	*	-
+^eo	*e	*	-
 
 [t=j,v=0|a]
-*e	*	*	-
+^eo	*	*	-
 
 [t=c]
-*e	*	*	ት
+^eo	*	*	ት
 
 %2=እ,4=እ
 # ባባ
@@ -611,24 +611,24 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %4=እ
 # ገነባ
 [t=p|i]
-*e	*a	*:a	-
+^eo	*a	*:a	-
 
 [t=j]
-*e	*a	*a	-
+^eo	*a	*a	-
 
 [t=c]
-*e	*a	*	ት
+^eo	*a	*	ት
 
 %4=ይ
 # ሰለቸ
 [t=p|i]
-*e	*a	*:e	-
+^eo	*a	*:e	-
 
 [t=j]
-*e	*a	*	-
+^eo	*a	*	-
 
 [t=c]
-*e	*a	*	ት
+^eo	*a	*	ት
 
 %%a=i,c=A,+strong
 # Include v=as though it's rare
@@ -829,27 +829,27 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %4=እ
 # ገነባባ
 [t=p|i]
-^e	*e	*a	*:a	-
+^eo	*e	*a	*:a	-
 
 [t=j]
-^e	*e	*a	*a	-
+^eo	*e	*a	*a	-
 
 [t=c]
-^e	*e	*a	*	ት
+^eo	*e	*a	*	ት
 
 %4=ይ
 # ሰለቻቸ
 [t=p]
-^e	*e	*a	*:e	-
+^eo	*e	*a	*:e	-
 
 [t=i]
-^e	*e	*a	*:	-
+^eo	*e	*a	*:	-
 
 [t=j]
-^e	*e	*a	*	-
+^eo	*e	*a	*	-
 
 [t=c]
-^e	*e	*a	*	ት
+^eo	*e	*a	*	ት
 
 %2=እ,4=እ
 # ባባ

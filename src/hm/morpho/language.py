@@ -1506,7 +1506,7 @@ class Language:
 
     ## New functions (HM 5.0)
 
-    def analyze5(self, raw_token, mwe=False, conllu=False, gemination=False):
+    def analyze5(self, raw_token, mwe=False, conllu=False, gemination=False, sepfeats=True):
         '''
         Analyze a token according to HM 5.0, returning the analyses in dict anal format.
         '''
@@ -1527,7 +1527,9 @@ class Language:
             # Check for caching before running pos.anal()
             analyses = pmorph.anal(token, mwe=mwe)
             if analyses:
-                analyses = pmorph.process_all5(token, analyses, mwe=mwe, gemination=gemination, raw_token=raw_token if normalized else '')
+                analyses = pmorph.process_all5(token, analyses, mwe=mwe,
+                                               gemination=gemination, conllu=conllu, sepfeats=sepfeats,
+                                               raw_token=raw_token if normalized else '')
                 all_analyses.extend(analyses)
         return all_analyses
 
@@ -1540,7 +1542,7 @@ class Language:
         if word in words:
             form, pos = self.morphology.words1[word]
             # Later have the FSS already storied in words1
-            return {'token': form, 'pos': pos}
+            return {'token': form, 'pos': pos, 'nsegs': 1}
 #        [form, FSSet("[pos={}]".format(pos))]
 
     def analyze_special5(self, token):
@@ -1569,6 +1571,172 @@ class Language:
             return {'pos': pos, 'lemma': lemma, 'token': token}
 #            return [self.process_numeral(token, prenum, num, postnum, segment=True, print_out=print_out)]
         return None
+
+    def anal_sentence5(self, sentence,
+#                       csent=None, csentences=None, file=None, pathout="",
+#                       preproc=True, postproc=True, pos=None, fsts=None,
+#                       segment=True, realize=True, realizer=None,
+                       conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
+#                       phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
+                       sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
+                       feats=None, simpfeats=None, um=0, normalize=False,
+                       nbest=100, report_freq=False, report_n=50000,
+                       remove_dups=True, seglevel=2,
+#                      gramfilter=None, filter_cache=None,
+#                      lower=True, lower_all=False,
+                       batch_name='', local_cache=None, sentid=0, morphid=1,
+                       verbosity=0):
+#        # Keep track of words that are filtered out because they match filter conditions
+#        countgrams = None
+#        if gramfilter and isinstance(gramfilter, str):
+#            gramfilter = EES.get_filter(gramfilter)
+#            # Check whether this filter counts instances of "in" words; assume this is the only condition
+#            for key, value in gramfilter.items():
+#                if isinstance(key, tuple):
+#                    # the key is (min, max); are these the only possibilities?
+#                    countgrams = key
+#        # lists of words that filter fails on and words it succeeds on
+#        filtered = [[], []]
+#        if preproc and not callable(preproc):
+#            preproc = self.preproc
+#        if postproc and not callable(postproc):
+#            postproc = self.postproc
+#        csent = csent or Sentence(sentence, batch_name=batch_name, sentid=sentid)
+        sentlist = []
+        local_cache = local_cache if isinstance(local_cache, dict) else {}
+#        if not file and pathout:
+#            file = open(pathout, 'w', encoding='utf-8')
+#        if not fsts:
+#            fsts = pos or self.morphology.pos
+#            skip_other_pos = False
+#        else:
+#            skip_other_pos = True
+#        if realize and not realizer:
+#            realizer = self.segmentation2string
+        # Create a list of CoNNL-U sentences.
+#        if not isinstance(csentences, list):
+#            csentences = []
+        tokens = sentence.split()
+        ntokens = len(tokens)
+        w_index = 0
+        while w_index < ntokens:
+#            if filtered[0]:
+#                # There is a failed word
+#                return
+            word = tokens[w_index]
+            simps = None
+            words = None
+            if w_index < len(tokens)-1:
+                next_word = tokens[w_index+1]
+                if not self.morphology.is_punctuation(word) and not self.morphology.is_punctuation(next_word):
+                    words = word + " " + next_word
+            if words:
+                if self.get_from_cache5(words, local_cache, um=um, seglevel=seglevel, conllu=conllu, sentlist=sentlist, morphid=morphid,
+                                       verbosity=verbosity
+#                                             gramfilter=gramfilter, filtered=filtered,
+#                                             experimental=experimental, segment=segment,
+#                                             printout=file and not experimental,
+#                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
+#                                             multseg=multseg, morphid=morphid, file=file
+                                                 ):
+                    # MWE analysis stored in cache
+                    w_index += len(words.split())
+                    continue
+#                simps = None
+#                if preproc:
+#                    form, simps = self.preproc(words)
+                # Attempt to analyze MWE
+                analyses = self.analyze5(words, mwe=True, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
+                if analyses:
+                    if seglevel == 0:
+                        morphid += 1
+                    else:
+                        morphid += len(analyses[0])
+            # Analyze single word
+            if verbosity:
+                print("**  Analyzing word {}".format(word))
+            # Lowercase on the first word, assuming a line is a sentence
+#            if lower_all or (lower and w_index == 0):
+#                word = word.lower()
+            if self.get_from_cache5(word, local_cache, um=um, seglevel=seglevel, morphid=morphid, sentlist=sentlist, conllu=conllu,
+                                    verbose=verbose
+#                                        gramfilter=gramfilter, filtered=filtered,
+#                                         experimental=experimental, segment=segment,
+#                                         printout=file and not experimental,
+#                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
+#                                         multseg=multseg, morphid=morphid, file=file
+                                        ):
+#                print("** Got {} from local cache".format(word))
+                w_index += 1
+                continue
+#            simps = None
+#            if not skip_other_pos:
+#                analyses = self.preproc_special(word, segment=segment, print_out=False)
+#            else:
+#                analyses = None
+            if not analyses:
+                ## Analyze
+#                if preproc:
+#                    form, simps = self.preproc(word)
+                analyses = \
+                  self.analyze5(word, mwe=False, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
+                if analyses:
+                  if seglevel == 0:
+                      morphid += 1
+                  else:
+                      morphid += len(analyses[0])
+            # Go to next word
+            w_index += 1
+#        if filtered[0]:
+#                # There is a failed word
+#            return
+#        if gramfilter:
+#            if not filtered[1]:
+#                return
+#            elif countgrams:
+#                print("*** accepted by filter: {}".format(filtered[1]))
+#                nfiltered = len(filtered[1])
+#                if countgrams[0] > nfiltered or countgrams[1] < nfiltered:
+#                    print("*** failed count constraints")
+#                    return
+        # End of sentence
+#        csent.finalize()
+#        return csent
+        return sentlist
+
+    def get_from_cache5(self, word, local_cache, um=0, seglevel=2,
+                        sentlist=None,
+#                        gramfilter=None, filtered=None, filter_cache=None,
+#                             dicts=None, conllu=True, xml=False, csent=None, xsent=None, multseg=False,
+#                             experimental=True, segment=True, word_sep="\n",
+                        morphid=1,
+#                        file='', printout=False,
+                        verbosity=0):
+        if word in local_cache:
+            print("** Getting {} from local cache".format(word))
+            analysis = local_cache[word]
+            sentlist.append((word, analysis))
+#            if gramfilter and filter_cache:
+#                if word in filter_cache[0]:
+#                    if verbosity:
+#                        print("** {} in failed filter cache".format(word))
+#                    filtered[0].append(word)
+#                if word in filter_cache[1]:
+#                    if verbosity:
+#                        print("** {} in succeeded filter cache".format(word))
+#                    filtered[1].append(word)
+#            if dicts:
+#                add_anals_to_dict(self, analysis, dicts[0], dicts[1])
+#            elif xml:
+#                add_caco_word(xsent, word, analysis, multseg=multseg)
+#            elif experimental:
+#                csent.add_word(word, analysis, morphid, conllu=True, um=um, seglevel=seglevel)
+#            elif printout:
+#                anal_string = self.analyses2string(word, analysis, seg=segment, form_only=False, lemma_only=False,
+#                                                   ortho_only=False, word_sep=word_sep)
+#                print(anal_string, file=file, end='')
+#            else:
+            return True
 
     ### Old functions (HM 4)
 

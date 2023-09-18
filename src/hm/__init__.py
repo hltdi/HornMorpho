@@ -51,10 +51,13 @@ SEGMENT = False
 ### Version 5 analysis and generation.
 ###
 
-def analyze5(language, word, mwe=False, gemination=True):
+def analyze5(language, word, mwe=False, gemination=False, conllu=True, sepfeats=True):
+    '''
+    Analyze a word or MWE, returning a list of dicts.
+    '''
     language = morpho.get_language(language, v5=True)
     if language:
-        return language.analyze5(word, mwe=mwe, gemination=gemination)
+        return language.analyze5(word, mwe=mwe, gemination=gemination, conllu=True, sepfeats=sepfeats)
 
 def exit(save=True, cache=''):
     """Exit the program, caching any new analyses for each loaded language
