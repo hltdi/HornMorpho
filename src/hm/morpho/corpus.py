@@ -47,10 +47,10 @@ class Corpus():
     ID = 0
 
     def __init__(self, data=None, path='', start=0, n_sents=0, max_sents=1000,
-                 name='', batch_name='', sentid=0, analyze=False,
+                 name='', batch_name='', sentid=0, analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None,
-#                 disambiguate=True, conlluify=True, degeminate=False,
                  constraints=None, local_cache=None, timeit=False,
+                 v5=False,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -61,9 +61,10 @@ class Corpus():
         maxunk = constraints and constraints.get('maxunk', 10)
         maxtoks = constraints and constraints.get('maxtoks', 30)
         gramfilt = constraints and constraints.get('grammar', None)
+        self.v5 = v5
         # Sentence objects, with pre-CoNLL-U word representations
         self.sentences = []
-        self.language = get_language('amh', phon=False, segment=True, experimental=True)
+        self.language = language or get_language('amh', phon=False, segment=True, experimental=True)
         self.name = name or batch_name or self.create_name()
         # Unknown tokens
         self.unks = set()
@@ -143,6 +144,48 @@ class Corpus():
     def __repr__(self):
         return "C_{}".format(self.name)
 
+    ## Version 5 methods
+
+    def segment5(self, **kwargs):
+        """
+        Segment all the sentences in self.data.
+        % Later have the option of segmenting only some??
+        kwargs: timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0
+        """
+        print("** Segmenting sentences in {}".format(self), end='')
+#        if gramfilter:
+#            print(" with filter {}".format(gramfilter))
+#        else:
+#            print()
+#        if gramfilter and isinstance(gramfilter, str):
+#            gramfilter = EES.get_filter(gramfilter)
+        sent_id = 1
+        time0 = time.time()
+        todelete = []
+        for sindex, sentence in enumerate(self.data):
+            if kwargs.get('verbosity', 0):
+                print("Segmenting {}".format(sentence))
+            sentence_obj = \
+              self.language.anal_sentence5(sentence, sent_id=sent_id, **kwargs)
+#            batch_name=self.batch_name, sentid=sentid,
+#                                          local_cache=self.local_cache, gramfilter=gramfilter,
+#                                          um=um, seglevel=seglevel)
+            if not sentence_obj:
+                # sentence may have been filtered out; delete from data
+                print("  Failed grammar filter: {}".format(sentence))
+                todelete.append(sindex)
+            else:
+#                sentence_obj.merge_segmentations()
+                self.sentences.append(sentence_obj)
+                self.unks.update(set(sentence_obj.unk))
+                self.max_words = max([self.max_words, len(sentence_obj.words)])
+                sent_id += 1
+        # Delete sentences that didn't pass the filter
+        for delindex in todelete[::-1]:
+            del self.data[delindex]
+        if kwargs.get('timeit'):
+            return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
+
     def create_name(self):
         name = "{}".format(Corpus.ID)
         Corpus.ID += 1
@@ -170,7 +213,7 @@ class Corpus():
         if not self.sentences:
             # Segment all sentences before creating GUI.
             self.segment(timeit=timeit)
-        self.root = SegRoot(self, title=self.__repr__(), um=um, seglevel=seglevel)
+        self.root = SegRoot(self, title=self.__repr__(), um=um, seglevel=seglevel, v5=self.v5)
         self.root.mainloop()
 
     def segment(self, timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0):

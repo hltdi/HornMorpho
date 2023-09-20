@@ -17,6 +17,10 @@ e2u -> e2u+		[:-;:>]
 
 e2u+ -> start	[:ኡ]
 
+start -> e+e	[ለ]
+e+e -> e+e>		[:>]
+e+e> -> start	[:አ]
+
 # vowel characters not possible after first character.
 start -> start	[**v;**;/;:-;:>;:<]
 

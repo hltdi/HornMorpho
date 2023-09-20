@@ -139,6 +139,8 @@ LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
 MWE_RE = re.compile("\s*mwe::\s*(.*)")
 # Added 2023.09.06; character normalization
 NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
+# Added 2023.09.17; character combination (withing stems)
+CHARCOMB_RE = re.compile(r"\s*charcomb\w*::\s*(.*)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -153,7 +155,7 @@ class Language:
 
     T = TDict()
 
-    morphsep = '-'
+#    morphsep = '-'
     infixsep = '--'
     posmark = '@'
     featsmark = '$'
@@ -256,6 +258,10 @@ class Language:
         self.phone_map = {}
         # Stringsets for parsing FSTs
         self.stringsets = {}
+        # Character normalization
+        self.charnorm = None
+        # Character combination across morpheme boundaries
+        self.charcombs = None
 #        # A tree of multi-word expressions
 #        self.mwe = {}
 #        # Feature normalization
@@ -418,7 +424,7 @@ class Language:
                 self.parse(data, poss=poss, verbose=verbose)
         if load_morph:
             if v5:
-                if not self.load_morpho3(ortho=True, phon=phon,
+                if not self.load_morpho5(ortho=True, phon=phon,
                                          guess=guess, translate=translate, mwe=mwe,
                                          pickle=pickle, recreate=recreate,
                                          verbose=verbose):
@@ -603,6 +609,21 @@ class Language:
                 normout = normout.replace(' ', '').replace('\t', '')
                 self.charnorm = str.maketrans(normin, normout)
 #                print("** charnorm {}".format(self.charnorm))
+                continue
+
+            m = CHARCOMB_RE.match(line)
+            if m:
+                charcombs = m.group(1)
+                charcombs = [cc.strip().split(':') for cc in charcombs.split(";")]
+                self.charcombs = []
+                for suff, pre in charcombs:
+                    dct = {}
+                    pre = pre.split(',')
+                    for p in pre:
+                        p1in, p1out = p.split()
+                        dct[p1in] = p1out
+                    self.charcombs.append([suff, dct])
+#                print("** charcombs {}".format(self.charcombs))
                 continue
 
             m = TRANS_RE.match(line)
@@ -919,8 +940,10 @@ class Language:
                 raise ValueError("bad line: {}".format(line))
 
         if punc:
-            # Make punc list into a string
-            punc = ''.join(punc)
+            punc = r'[' + ''.join(punc) + ']'
+#        if punc and isinstance(punc, list):
+#            # Make punc list into a string
+#            punc = ''.join(punc)
 
         if seg:
             # Make a bracketed string of character ranges and other characters
@@ -1281,11 +1304,12 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
-    def load_morpho3(self, fsts=None, ortho=True, phon=False,
+    def load_morpho5(self, fsts=None, ortho=True, phon=False,
                      pickle=True, mwe=False, translate=False,
                      recreate=False, guess=True, verbose=False):
         """
         Load words and FSTs for morphological analysis and generation.
+        New method for version 5.
         """
         fsts = fsts or (self.morphology and self.morphology.pos)
 #        opt_string = 'MWE_' if mwe else ''
@@ -1506,18 +1530,22 @@ class Language:
 
     ## New functions (HM 5.0)
 
-    def analyze5(self, raw_token, mwe=False, conllu=False, gemination=False, sepfeats=True):
+    def analyze5(self, raw_token, **kwargs):
         '''
-        Analyze a token according to HM 5.0, returning the analyses in dict anal format.
+        Analyze a token according to HM 5.0, returning a Word object.
+        kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
         '''
         all_analyses = []
-        
+        mwe = kwargs.get('mwe', False)
         # Character normalization
         normalized = False
         token = self.normalize(raw_token)
         if token != raw_token:
             normalized = True
-            
+        special_anal = self.analyze_special5(token)
+        if special_anal:
+            # If this is numeral, punctuation, or abbreviation, don't bother going further.
+            return Word([special_anal], name=raw_token)
         # Try unanalyzed words
         unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe)
         if unanalyzed:
@@ -1525,13 +1553,13 @@ class Language:
         # Try different POSs.
         for pos, pmorph in self.morphology.items():
             # Check for caching before running pos.anal()
-            analyses = pmorph.anal(token, mwe=mwe)
+            analyses = pmorph.anal(token, mwe)
             if analyses:
-                analyses = pmorph.process_all5(token, analyses, mwe=mwe,
-                                               gemination=gemination, conllu=conllu, sepfeats=sepfeats,
-                                               raw_token=raw_token if normalized else '')
+                analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
+#                                               mwe=mwe, combine_segs=combine_segs,
+#                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
-        return all_analyses
+        return Word(all_analyses, name=raw_token)
 
     def analyze_unanalyzed5(self, word, mwe=False):
         '''
@@ -1542,48 +1570,63 @@ class Language:
         if word in words:
             form, pos = self.morphology.words1[word]
             # Later have the FSS already storied in words1
-            return {'token': form, 'pos': pos, 'nsegs': 1}
-#        [form, FSSet("[pos={}]".format(pos))]
+            return Word([{'token': form, 'pos': pos, 'nsegs': 1}], name=word)
 
     def analyze_special5(self, token):
         '''
         Handle special cases, currently abbreviations, numerals, and punctuation.
         '''
         if self.morphology.is_punctuation(token):
-            return {'pos': 'punct', 'token': token}
+            return {'pos': 'PUNCT', 'token': token, 'nsegs': 1}
 #            return [self.process_punc(token, segment=segment, print_out=print_out)]
         if self.morphology.is_abbrev(token):
 #            print("{} is an abbreviation".format(token))
-            return {'pos': 'n', 'token': token}
+            return {'pos': 'N', 'token': token, 'nsegs': 1}
 #            return [self.process_abbrev(token, segment=segment, print_out=print_out)]
         numeral = self.morphology.match_numeral(token)
         if numeral:
             prenum, num, postnum = numeral
             if postnum:
-                lemma = postnum
-                pos = 'n'
+                return {'token': token, 'pos': 'N', 'lemma': postnum, 'nsegs': 1}
             elif prenum:
-                lemma = num
-                pos = 'n'
+                return {'token': token, 'pos': 'N', 'lemma': num, 'nsegs': 1}
             else:
-                lemma = ''
-                pos = ''
-            return {'pos': pos, 'lemma': lemma, 'token': token}
-#            return [self.process_numeral(token, prenum, num, postnum, segment=True, print_out=print_out)]
+                return {'token': token, 'pos': 'NUM', 'nsegs': 1}
         return None
 
-    def anal_sentence5(self, sentence,
-#                       csent=None, csentences=None, file=None, pathout="",
-#                       preproc=True, postproc=True, pos=None, fsts=None,
-#                       segment=True, realize=True, realizer=None,
+    def combine_segments(self, stem_string):
+        '''
+        Return the string with stem segments combined.
+        '''
+        if self.charcombs:
+            for suf, prefixes in self.charcombs:
+                if suf in stem_string:
+                    previous = stem_string.split(suf)[0][-1]
+                    if previous in prefixes:
+                        replacement = prefixes[previous]
+                        stem_string = stem_string.replace(previous + suf, replacement)
+        return stem_string.replace(Morphology.morph_sep, '')
+
+    def anal_sentence5(self, sentence, sent_id=1, **kwargs):
+        '''
+        Version 5:
+        Analyze the tokens in a sentence (a string), returning a Sentence object.
+        kwargs: degem, sep_feats, combine_segs, verbosity
+        '''
+        tokens = sentence.split()
+        sentobj = Sentence(sentence)
+        # For now just try single-word tokens.
+        for token in tokens:
+            wordobj = self.analyze5(token, mwe=False, **kwargs)
+            sentobj.add_word5(wordobj)
+        return sentobj
+
+    def _anal_sentence5(self, sentence,
                        conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
-#                       phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
                        sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
                        feats=None, simpfeats=None, um=0, normalize=False,
                        nbest=100, report_freq=False, report_n=50000,
                        remove_dups=True, seglevel=2,
-#                      gramfilter=None, filter_cache=None,
-#                      lower=True, lower_all=False,
                        batch_name='', local_cache=None, sentid=0, morphid=1,
                        verbosity=0):
 #        # Keep track of words that are filtered out because they match filter conditions
@@ -1775,7 +1818,7 @@ class Language:
             # Remove the string separating an infix from a following suffix
             seg = seg.replace(Language.infixsep, '')
         # separate morphemes
-        morphs = seg.split(Language.morphsep)
+        morphs = seg.split(Morphology.morph_sep)
         rootindex = -1
         for index, morph in enumerate(morphs):
             if '(' in morph:

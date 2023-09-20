@@ -1,4 +1,4 @@
-$ conj_prep1
+$ prep
   የ		[+rel,+sub,+neg]
   እንደ	[-rel,+sub,+neg,cnj1=እንደ]
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
@@ -34,7 +34,8 @@ $ subj
   ኣ/ችሁ	[p=2,n=2]
   ኣ/ቸው	[p=3,n=2,-neg]
   ኡ		[p=3,n=2,+neg]
-  --		[p=3,n=1,g=m,+neg]
+  አ		[p=3,n=1,g=m,+neg]
+#  --		[p=3,n=1,g=m,+neg]
 
 $ subj_bound
   -
@@ -46,7 +47,7 @@ $ neg_suf
 $ neg_suf_bound
   -
 
-$ conj2
+$ conj
   /ና		[cnj2=ና]
   ኣ		[cnj2=ኣ]
   /ኮ		[cnj2=ኮ]

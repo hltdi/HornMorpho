@@ -51,13 +51,30 @@ SEGMENT = False
 ### Version 5 analysis and generation.
 ###
 
-def analyze5(language, word, mwe=False, gemination=False, conllu=True, sepfeats=True):
+def make_corpus5(language, data, **kwargs):
     '''
-    Analyze a word or MWE, returning a list of dicts.
+    Create a corpus of sentences, given a list of raw sentence strings.
     '''
     language = morpho.get_language(language, v5=True)
     if language:
-        return language.analyze5(word, mwe=mwe, gemination=gemination, conllu=True, sepfeats=sepfeats)
+        return morpho.Corpus(language=language, data=data, v5=True, **kwargs)
+
+def analyze5(language, word, **kwargs):
+    '''
+    Analyze a word or MWE, returning a list of dicts.
+    kwargs: mwe=False, degem=True, conllu=True, sep_feats=True, combine_segs=False, verbosity=0
+    '''
+    language = morpho.get_language(language, v5=True)
+    if language:
+        return language.analyze5(word, **kwargs)
+
+def anal_sentence5(language, sentence, **kwargs):
+    '''
+    Analyze the sentence using Language.anal_sentence5(), returning a Sentence object.
+    '''
+    language = morpho.get_language(language, v5=True)
+    if language:
+        return language.anal_sentence5(sentence, **kwargs)
 
 def exit(save=True, cache=''):
     """Exit the program, caching any new analyses for each loaded language

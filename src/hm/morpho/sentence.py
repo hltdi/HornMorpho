@@ -68,6 +68,126 @@ class Sentence():
     def __repr__(self):
         return "S{}::{}".format(self.sentid, self.text)
 
+    ### Version 5 methods
+
+    def add_word5(self, word):
+        '''
+        Version 5: given a Word object, convert it to ambiguous CoNLL-U format,
+        and add it to self.words.
+        '''
+        conllus = []
+#        if self.words:
+#            index = self.words[-1][0]['nsegs']+1
+#        else:
+#            index = 1
+        for analysis in word:
+            conllu = Sentence.anal2conllu(word.name, analysis)
+            conllus.append(conllu)
+#            index += len(word)
+        # Add the CoNLL-U representations to the Word
+        word.conllu = conllus
+        # Add the Word to self.words
+        self.words.append(word)
+
+    def conllu_string(self, update_ids=False):
+        '''
+        Return the string of CoNLL-U representations for the sentence,
+        using the first if there are still ambiguities.
+        If update_ids is True, update the id and head fields based
+        on each word's position in the sentence.
+        '''
+        string = ''
+        index = 0
+        for word in self.words:
+            conllu = word.conllu[0]
+            if update_ids:
+                index = self.update_conllu_ids(conllu, index=index)
+            string += conllu.serialize()
+        return string
+
+    def update_conllu_ids(self, conllu, index=0):
+        '''
+        Update the position fields (id and head) for a representation based on
+        the word's position within the sentence.
+        '''
+        new_index = index
+        # Don't update if the index is 0
+        length = len(conllu)
+        if length == 1:
+            if index:
+                conllu[0]['id'] += index
+            new_index += 1
+        else:
+            # Update all of the segments
+            # First the range in the whole-word line
+            whole = conllu[0]
+            if index:
+                current_range = whole.get('id')
+                start, end = current_range.split('-')
+                start = int(start) + index
+                end = int(end) + index
+                whole['id'] = "{}-{}".format(start, end)
+                # Then the id and head for each of the segments
+                for c in conllu[1:]:
+                    c['id'] += index
+                    c['head'] += index
+            new_index += len(conllu)-1
+#        print("** Updated index: {}".format(new_index))
+        return new_index
+
+    @staticmethod
+    def anal2conllu(token, analdict, index=1):
+        '''
+        Create a CoNLL-U representation from a token's analysis dict.
+        '''
+        if not analdict:
+            # Unanalyzed token
+            return TokenList([Token
+                                  ({'id': index, 'form': token, 'lemma': None, 'upos': 'UNK', 'xpos': 'UNK',
+                                    'feats': None, 'head': index, 'deprel': None, 'deps': None, 'misc': None}
+                                      )])
+        if analdict['nsegs'] == 1:
+            return TokenList([Token
+                                  ({'id': index, 'form': token,
+                                   'lemma': analdict.get('lemma', token),
+                                   'upos': analdict.get('pos'), 'xpos': analdict.get('pos'),
+                                   'feats': analdict.get('feats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None}
+                                   )])
+        else:
+            conllu = TokenList()
+        # Create the line for the whole token
+        conllu.append({'id': "{}-{}".format(index, index+analdict['nsegs']-1),
+                       'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None})
+                           
+        for p in analdict['pre']:
+            if not p:
+                continue
+            conllu.append(
+                Token(
+                    {'id': index, 'form': p['string'], 'lemma': analdict.get('lemma', token),
+                     'upos': p.get('pos', None), 'xpos': p.get('pos', None),
+                     'feats': p.get('feats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None}
+                    ))
+            index += 1
+        stemdict = analdict['stem']
+        conllu.append(
+            Token({'id': index, 'form': stemdict['string'], 'lemma': analdict.get('lemma', token),
+                   'upos': stemdict.get('pos', None), 'xpos': stemdict.get('pos', None),
+                   'feats': stemdict.get('feats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None}
+                      ))
+        index += 1
+        for s in analdict['suf']:
+            if not s:
+                continue
+            conllu.append(
+                Token({'id': index, 'form': s['string'], 'lemma': analdict.get('lemma', token),
+                       'upos': s.get('pos', None), 'xpos': s.get('pos', None),
+                       'feats': s.get('feats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None}
+                          ))
+            index += 1
+        
+        return conllu
+        
     def is_ambiguous(self):
         """
         Are there multiple segmentations or ambiguous POSs for any word in the sentence?
@@ -116,13 +236,15 @@ class Sentence():
             return True
         return False
 
-    def record_ambiguities(self):
+    def record_ambiguities(self, v5=False):
         '''
         Return the number of ambiguities (POS, segmentation) in the sentence.
         '''
         count = 0
         ambig = []
         for index, word in enumerate(self.words):
+            if v5:
+                word = word.conllu
             if len(word) > 1:
                 # multiple segmentations
                 ambig.append(index)
@@ -164,38 +286,6 @@ class Sentence():
         value = Sentence.get_clist_field(clist_src, attrib)
         Sentence.set_clist_field(clist_targ, attrib, value)
 
-    @staticmethod
-    def dict2conllu(token, analdict, index=1):
-        '''
-        Create a CoNLL-U representation from a token's analysis dict.
-        '''
-        conllu = TokenList()
-        # Create the line for the whole token
-        conllu.append({'id': "{}-{}".format(index, index+analdict['nsegs']),
-                       'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None})
-                           
-        for p in analdict['pre']:
-            if not p:
-                continue
-            conllu.append({'id': index, 'form': p['string'], 'lemma': analdict.get('lemma', token),
-                           'upos': p.get('pos', None), 'xpos': p.get('pos', None),
-                           'feats': p.get('feats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None})
-            index += 1
-        stemdict = analdict['stem']
-        conllu.append({'id': index, 'form': stemdict['string'], 'lemma': analdict.get('lemma', token),
-                       'upos': stemdict.get('pos', None), 'xpos': stemdict.get('pos', None),
-                       'feats': stemdict.get('feats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None})
-        index += 1
-        for s in analdict['suf']:
-            if not s:
-                continue
-            conllu.append({'id': index, 'form': s['string'], 'lemma': analdict.get('lemma', token),
-                           'upos': s.get('pos', None), 'xpos': s.get('pos', None),
-                           'feats': s.get('feats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None})
-            index += 1
-        
-        return conllu
-        
     def words2conllu(self, update_indices=True, gem=True, degem=False, verbosity=0):
         '''
         Convert a pre-CoNLL-U list of lists of Token dicts to a list of Tokens.

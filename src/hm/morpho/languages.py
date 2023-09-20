@@ -158,10 +158,13 @@ def get_language(language, load=True,
                 return False
         return LANGUAGES.get(lang_id, None)
     if load_morph and not lang.morpho_loaded:
-        lang.load_morpho(phon=phon, segment=segment, guess=guess,
+        if v5:
+            lang.load_morpho5(phon=phon, guess=guess,
+                              pickle=pickle, translate=translate)
+        else:
+            lang.load_morpho(phon=phon, segment=segment, guess=guess,
                          experimental=experimental,
                          pickle=pickle, translate=translate,
-                         v5=v5,
                          simplified=simplified)
         return lang
     if not load_morph:

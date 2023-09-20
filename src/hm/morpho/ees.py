@@ -58,7 +58,7 @@ class EES:
     pre_gem_char = '/'
     post_gem_chars = '፟_:'
 
-    mwe_space = '//'
+#    mwe_space = '//'
 
     # Filters to use with anal_sentence to restrict syntax/morphology.
     filters = \
@@ -134,20 +134,20 @@ class EES:
         if not self.postpostproc:
             self.postpostproc = lambda form: form.replace('//', ' ')
 
-    @staticmethod
-    def char2space(string):
-        return string.replace(EES.mwe_space, ' ')
+#    @staticmethod
+#    def char2space(string):
+#        return string.replace(EES.mwe_space, ' ')
 
-    @staticmethod
-    def postproc(string, degem=True, mwe=False):
-        '''
-        Post-process by replacing spaces for MWEs and degeminating.
-        '''
-        if mwe:
-            string = EES.char2space(string)
-        if degem:
-            string = EES.degeminate(string)
-        return string
+#    @staticmethod
+#    def postproc(string, degem=True, mwe=False):
+#        '''
+#        Post-process by replacing spaces for MWEs and degeminating.
+#        '''
+#        if mwe:
+#            string = EES.char2space(string)
+#        if degem:
+#            string = EES.degeminate(string)
+#        return string
 
     @staticmethod
     def degeminate(string):

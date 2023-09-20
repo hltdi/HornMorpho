@@ -35,12 +35,13 @@ class SegRoot(Tk):
 
     sentencewidth = 60
 
-    def __init__(self, corpus=None, title=None, um=1, seglevel=2):
+    def __init__(self, corpus=None, title=None, um=1, seglevel=2, v5=False):
         Tk.__init__(self)
         self.title(title if title else "Corpus")
         fontfamilies = families()
         geezfamily =  "Abyssinica SIL" if "Abyssinica SIL" in fontfamilies else "Noto Sans Ethiopic"
 #        print("families {}".format(fontfamilies[150:300]))
+        self.v5 = v5
         self.corpus = corpus
         # Create int variables for sentence and word index (1-based)
         self.init_vars()
@@ -66,7 +67,7 @@ class SegRoot(Tk):
         # Undo and Quit buttons
         self.init_buttons()
         # Canvas and scrollbars
-        self.canvas = SegCanvas(self, corpus, um=um, seglevel=seglevel)
+        self.canvas = SegCanvas(self, corpus, um=um, seglevel=seglevel, v5=v5)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
@@ -77,7 +78,7 @@ class SegRoot(Tk):
         # First sentenceGUI
         self.sentenceGUI = \
           SentenceGUI(frame=self, canvas=self.canvas, sentence=sentence,
-                      sentenceobj=sentenceobj, index=sentindex)
+                      sentenceobj=sentenceobj, index=sentindex, v5=v5)
         self.sentenceGUI.show_sentence(True)
         self.sentenceGUI.show_unambig()
         self.canvas.update()
@@ -255,6 +256,8 @@ class SegRoot(Tk):
         '''
         wordindex = self.wordvar.get()-1
         wordsegs = self.sentenceGUI.words[wordindex]
+        if self.v5:
+            wordsegs = wordsegs.conllu
         return wordsegs
 
     def undo(self):
@@ -282,8 +285,9 @@ class SegCanvas(Canvas):
     deplabelX = 40
     deplabelY = 8
 
-    def __init__(self, parent, corpus=None, um=1, seglevel=2, width=800, height=600):
+    def __init__(self, parent, corpus=None, um=1, seglevel=2, width=800, height=600, v5=False):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
+        self.v5 = v5
         self.parent = parent
         self._width = width
         self._height = height
@@ -320,6 +324,7 @@ class SegCanvas(Canvas):
         dependencies = None
         nwordsegs = len(wordsegs)
         for segi, wordseg in enumerate(wordsegs):
+#            print("** wordseg {}".format(wordseg))
             segYs.append(y - SegCanvas.segYmargin)
             word = Sentence.get_word(wordseg)
             headindex = Sentence.get_headindex(wordseg)
@@ -576,13 +581,14 @@ class SentenceGUI():
     disambig = "OliveDrab1"
     unambig = "LightGray"
 
-    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, index=0):
+    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, v5=False, index=0):
+        self.v5 = v5
         self.frame = frame
         self.canvas = canvas
         self.sentence = sentence
         self.sentenceobj = sentenceobj
         self.words = sentenceobj.words
-        self.ambig = self.sentenceobj.record_ambiguities()
+        self.ambig = self.sentenceobj.record_ambiguities(v5=self.v5)
         self.index = index
         self.memory = []
         self.wordid = 0
@@ -639,6 +645,8 @@ class SentenceGUI():
         '''
         self.word_strings = []
         for index, word in enumerate(self.words):
+            if self.v5:
+                word = word.conllu
             seg0 = word[0]
             whole_word = seg0[0]
             word_string = whole_word['form']

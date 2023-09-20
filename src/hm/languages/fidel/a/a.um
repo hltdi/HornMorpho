@@ -164,7 +164,7 @@ POS cop V
 ->UD FORM	Polite=Form
 #t:: prs:PRS;; pst:PST
 neg:: NEG
-sp:: 1:1;; 2:2;; 3:3
-sn:: 1:SG;; 2:PL
-sg:: m:MASC;; f:FEM
+p:: 1:1;; 2:2;; 3:3
+n:: 1:SG;; 2:PL
+g:: m:MASC;; f:FEM
 

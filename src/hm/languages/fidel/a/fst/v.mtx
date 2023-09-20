@@ -90,7 +90,7 @@ $ sb_suf
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]
-  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0,+mc]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0,+mc,ax=al]
 
 $ ss_bound
   -
