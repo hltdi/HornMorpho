@@ -14,7 +14,7 @@ $ conj_prep_pre
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub]
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub]
   እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub]
-  --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-mc,-sub,sconj=None,adp=None,-rel]
+  --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-sub,sconj=None,adp=None,-rel]
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -142,7 +142,7 @@ $ ob_bound
 
 $ neg2
   /ም		[t=i|p,+neg,+mc]
-  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
+  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c]
 
 $ aux
   ኣ/ል	[t=i,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc,ax=al];[t=c,sp=1,sn=2,-neg,+mc,ax=al];[t=c,sp=2,-neg,+mc,ax=al];[t=c,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=c,sp=3,sn=2,-neg,+mc,ax=al]
