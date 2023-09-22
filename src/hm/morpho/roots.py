@@ -195,10 +195,10 @@ class Roots:
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
             show = False
-#            if root_chars == ['ት', 'ግ', 'ል']:
+#            if root_chars == ['ግ', 'ይ', 'ጥ']:
 #                show = True
-            if show:
-                print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
+#            if show:
+#                print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
@@ -231,20 +231,49 @@ class Roots:
                     dest = dest + '_b'
                     if not fst.has_state(dest0):
                         fst.add_state(dest0)
-                    for char in chars[0]:
-                        outchar = rchar if (gen or seglevel==0) else char
-                        if show:
-                            print(" ** Creating iter arc 1, source {} dest {} char {} outchar {} {}".format(source, dest0, char, outchar, wt))
-                        charfeat_arc(char, outchar, wt, source, dest0, fst)
                     if not fst.has_state(dest):
                         fst.add_state(dest)
-                    for char in chars[1]:
+                    for char in chars[0]:
+                        outchar = rchar if (gen or seglevel==0) else char
+                        # outchar could actually be two characters, as in ተጊያጌጠ
                         if len(char) == 2:
+                            dest00 = dest0 + '0'
+                            if not fst.has_state(dest00):
+                                fst.add_state(dest00)
+                            if show:
+                                print(" ** Creating iter arc 1a, source {} dest {} char {} outchar {} {}".format(source, dest00, char[0], outchar[0], wt))
+                            charfeat_arc(char[0], outchar[0], wt, source, dest00, fst)
+                            outchar2 = outchar[1] if len(outchar) > 1 else ''
+                            if show:
+                                print(" ** Creating iter arc 1b, source {} dest {} char {} outchar {} {}".format(dest00, dest0, char[1], outchar2, wt))
+                            charfeat_arc(char[1], outchar2, wt, dest00, dest0, fst)
+                        else:
+                            if show:
+                                print(" ** Creating iter arc 1, source {} dest {} char {} outchar {} {}".format(source, dest0, char, outchar, wt))
+                            charfeat_arc(char, outchar, wt, source, dest0, fst)
+                    for char in chars[1]:
+                        if show:
+                            print(" ** char2 {}".format(char))
+                        if ':' in char or EES.pre_gem_char in char:
                             # second character is geminated
                             inchar = Roots.remove_gem(char)
                             if show:
                                 print(" ** Creating iter gem arc, source {} dest {} char {} outchar {} {}".format(dest0, dest, inchar, '', wt))
                             gem_char_arc(dest0, dest, inchar, '', wt, wt)
+                        elif len(char) == 2:
+                            outchar = '' if (gen or seglevel==0) else char
+                            # multi-character "character"
+                            dest01 = dest0 + '1'
+                            if not fst.has_state(dest01):
+                                fst.add_state(dest01)
+                            outchar1 = outchar[0] if len(outchar) > 1 else ''
+                            if show:
+                                print(" ** Creating iter arc 2a, source {} dest {} char {} outchar {} {}".format(dest0, dest01, char[0], outchar1, wt))
+                            charfeat_arc(char[0], outchar1, wt, dest0, dest01, fst)
+                            outchar2 = outchar[1] if len(outchar) > 1 else ''
+                            if show:
+                                print(" ** Creating iter arc 2b, source {} dest {} char {} outchar {} {}".format(dest01, dest, char[1], outchar2, wt))
+                            charfeat_arc(char[1], outchar2, wt, dest01, dest, fst)
                         else:
                             outchar = '' if (gen or seglevel==0) else char
                             if show:
@@ -382,10 +411,10 @@ class Roots:
         return a dict of list of Geez characters for each position
         and whether the root is strong.
         '''
-#        show = consonants == ['እ', 'ይ', 'ይ']
-#        show = consonants == ['እ', 'ጥ', 'እ']
-#        if show:
-#            print("  **** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
+        show = False
+#        show = consonants == ['ግ', 'ይ', 'ጥ']
+        if show:
+            print("**** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
         if not rules:
             print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
@@ -440,13 +469,17 @@ class Roots:
             if isinstance(chars, tuple):
                 # iterative position: make two charsets
                 charsets[position] = \
-                  tuple([Roots.make_charset(cons, position, v, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat) for v in chars])
+                  tuple([Roots.make_charset(cons, position, v, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat, show=show) for v in chars])
             else:
-                charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat)
+                charsets[position] = Roots.make_charset(cons, position, chars, char_maps=char_maps, charmap_weights=charmap_weights, cons_feat=cons_feat, show=show)
+#        if show:
+#            print(" ** charsets: {}".format(charsets))
         return charsets, strong
         
     @staticmethod
-    def make_charset(cons, position, vowels, default='eI', char_maps=None, charmap_weights=None, cons_feat=None):
+    def make_charset(cons, position, vowels, default='eI', char_maps=None, charmap_weights=None, cons_feat=None, show=False):
+#        if show:
+#            print(" ** cons {}, position {}, vowels {}".format(cons, position, vowels))
         result = []
         for vowel_spec in vowels:
             geminated = False
@@ -464,6 +497,8 @@ class Roots:
                 if vowel_feat.unify_FS(cons_feat) == 'fail':
                     continue
             if char_maps and (vmap := char_maps.get(v)):
+#                if show:
+#                    print("  ** {} in char map {}".format(v, vmap))
                 if (cm_weight := charmap_weights.get(v)):
                     if cons_feat and cm_weight.unify_FS(cons_feat) == 'fail':
                         continue
@@ -475,7 +510,11 @@ class Roots:
                         if vc not in result:
                             result.append(vc)
             else:
+#                if show:
+#                    print("   ** geezifying {} + {}".format(cons, v))
                 cv = geezify_CV(cons, v)
+#                if show:
+#                    print("   ** -> {}".format(cv))
                 if not cv and cv != '':
                     continue
                 if geminated:
@@ -486,6 +525,8 @@ class Roots:
                 else:
                     if cv not in result:
                         result.append(cv)
+#        if show:
+#            print("  ** result {}".format(result))
         return result
 
     @staticmethod

@@ -75,7 +75,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	*	**u	*
 
 [t=j,v=p]
-^eo	*	^eo:	*
+^eo	*	^eo	*
 
 %%a=0,c=F,+strong
 [t=p]
@@ -96,32 +96,32 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=0,c=G,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-*	*e	*e	*:e	*
+*	^eo	*e	^eo:	*
 
 [t=i,v=a]
-*	*e	*e	*:	*
+*	^eo	*e	**u:	*
 
 [t=j,v=p]
-*	*e	*	*e	*
+*	^eo	*	^eo		*
 
 [t=c,v=p|a]
 [t=j,v=a]
-*	*e	*	*	*
+*	^eo	*	**u		*
 
 %%a=0,c=H,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-*	*e	*a	*:e	*
+*	^eo	*a	^eo:	*
 
 [t=i,v=a]
-*	*e	*a	*:	*
+*	^eo	*a	**u:	*
 
 [t=j,v=p]
-*	*e	*a	*e	*
+*	^eo	*a	^eo		*
 
 [t=c,v=p|a]
 [t=j,v=a]
-*	*e	*a	*	*
+*	^eo	*a	**u		*
 
 %%a=0,c=J,+strong
 [t=p,v=p|a]
@@ -224,6 +224,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %2=እ
 # ast: አስተዋለ አስተማረ
 [t=p|j]
+
 [t=i,v=p]
 *a	-	*
 
@@ -524,17 +525,17 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=a,c=E,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-^e	*a	*:e	*
+^eo	*a	^eo:	*
 
 [t=i,v=a]
-^e	*a	*:	*
+^eo	*a	**u:	*
 
 [t=j,v=a]
 [t=c,v=p|a]
-^e	*a	*	*
+^eo	*a	**u	*
 
 [t=j,v=p]
-^e	*a	*e	*
+^eo	*a	^eo	*
 
 %%a=a,c=A,-strong
 %3=እ
@@ -673,6 +674,31 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=p|i|j|c]
 *Wa	*Wa	-	*
 
+%2=ይ
+# ሻሻጠ
+[t=p]
+[t=i|j,v=p]
+^Ya	^Ya	-	*
+
+# ጊያጌጠ
+[t=p]
+[t=i|j,v=p]
+~Yi	ያ 	~YE	*
+
+# ጊያጊያጠ
+[t=p]
+[t=i|j,v=p]
+~Yi	ያ	~Yi	ያ	*
+
+# ሻሽጦ
+[t=i|j|c,v=0|a]
+[t=c,v=p]
+^Ya	^Y	-	*
+
+[t=i|j|c,v=0|a]
+[t=c,v=p]
+~Yi	ያ	~Yi	*
+
 %2=እ
 # aste: አስተናናቀ
 [t=p|i|j]
@@ -682,6 +708,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 *a	*	-	*
 
 %1=እ
+# v=a only for a few verbs አነቀ አመነ
 [t=p,v=p|a|ast]
 [t=i,v=p]
 -	*a	*:e	*

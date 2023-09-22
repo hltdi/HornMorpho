@@ -51,7 +51,8 @@ $ prestem
   <
 
 $ voice_pre
-  # the only 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
+  # the 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
+  # also ተተካከለ, which isn't distinguished by a feature from ተካከለ
   ->poststem	+irr_vstem+	[+pr]
   # transitive
   ኣ-			[v=a,a=0,-pr]

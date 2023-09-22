@@ -21,6 +21,58 @@
 {ተመለከተ}: a=0,v=p;	a=0,v=a;	a=i,v=p;	a=i,v=a
 {ተዳደረ}:	a=i,v=p;	a=i,v=a;	a=i,v=as
 
+<እ ው ቅ>		c=A
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=0,v=ast ; a=i,v=0 ; a=i,v=p ; a=i,v=ast
+
+<ም ጥ እ>		c=A
+  # restrict a=0,v=0 so that irregular ና/ነይ/ኑ is used for t=j,sp=2,-neg
+  a=0,v=0,t=p|c|i|0;a=0,v=0,t=j,sp=1|3;a=0,v=0,t=j,sp=2,+neg;a=0,v=p;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p;a=i,v=a
+
+<ን እ ቅ>	     c=A
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=0 ; a=i,v=p ; a=i,v=a ; a=i,v=ast
+
+<ን ብ ር>	     c=A
+  a=0,v=0 ; a=0,v=a ; a=a,v=ast ; a=i,v=a ; a=i,v=ast
+
+# ማረ: forgive, sense 1
+<ም እ ር>	     c=A,s=1
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=p ; a=i,v=a
+
+# ተማረ: learn, sense 2
+<ም እ ር>	     c=A,s=2
+  a=0,v=p ; a=0,v=ast
+
+# አረጀ: be old, sense 1
+<ር ጅ ይ>	    c=A,s=1
+  a=0,v=a ; a=0,v=as ; a=i,v=p
+
+# አ/ራጀ: give a little, sense 2
+<ር ጅ ይ>	    c=A,s=2
+  a=a,v=a
+
+# ፈራ: fear, sense 1
+<ፍ ር እ>	    c=A,s=1
+  a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=i,v=0 ; a=i,v=a ; a=i,v=as ; a=i,v=p
+
+# ተፈራ: be produced, sense 2
+<ፍ ር እ>	  c=A,s=2
+  a=0,v=a ; a=0,v=as ; a=0,v=p
+
+<ት ግ ል>	      c=C
+  a=0,v=0 ; a=0,v=as ; a=a,v=a ; a=i,v=0
+
+<እ ይ ይ>	     c=A,-dup23	{አመመ}
+
+<እ ክ ል>	     c=A
+  a=0,v=0 ; a=0,v=p ; a=0,v=ast ; a=i,v=0 ; a=i,v=ast ; a=i,v=p
+
+<እ ክ ል>	  c=B
+  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=p
+
+<ጽ ል ይ>	      c=B,+strong	{ሰበረ}
+
+<ም ው ት>		c=A
+
 <ስ ብ ር>		c=A			{ሰበረ}
 
 <ል ብ ስ>		c=A			{ሰበረ}
@@ -41,23 +93,15 @@
 
 <ጥ ቁ ር>		c=A
 
-<ም ው ት>		c=A
-  a=0,v=0,S=1,O=0 ;  a=0,v=p,S=0,O=0 ; a=0,v=a,S=1,O=1 ; a=i,v=0,S=1,O=0 ; a=i,v=p,S=1,O=0 ; a=i,v=a,S=1,O=o
-
 <ሽ ይ ጥ>		c=A			{ሰበረ}
+
+<ግ ይ ጥ>		c=A
 
 <እ ድ ር>		c=A
 
 <እ ል ፍ>		c=A
 
-<እ ው ቅ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=0,v=ast ; a=i,v=0 ; a=i,v=p ; a=i,v=ast
-
 <እ ብ ብ>		c=A
-
-<ም ጥ እ>		c=A
-  # restrict a=0,v=0 so that irregular ና/ነይ/ኑ is used for t=j,sp=2,-neg
-  a=0,v=0,t=p|c|i|0;a=0,v=0,t=j,sp=1|3;a=0,v=0,t=j,sp=2,+neg;a=0,v=p;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p;a=i,v=a
 
 <ስ ም እ>	 	c=A			{ሰበረ}
 
@@ -71,22 +115,6 @@
 
 <ስ እ ም>	     c=A			{ሳመ}
 
-<ን እ ቅ>	     c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=0 ; a=i,v=p ; a=i,v=a ; a=i,v=ast
-
-<ን ብ ር>	     c=A
-  a=0,v=0 ; a=0,v=a ; a=a,v=ast ; a=i,v=a ; a=i,v=ast
-
-# ማረ: forgive, sense 1
-<ም እ ር>	     c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=p ; a=i,v=a
-
-# ተማረ: learn, sense 2
-<ም እ ር>	     c=A,s=2
-  a=0,v=p ; a=0,v=ast
-
-<እ ይ ይ>	     c=A,-dup23	{አመመ}
-
 <እ ጥ እ>	     c=A			{አመመ}
 
 <ይ እ ዝ>	     c=A			{ሳመ}
@@ -94,8 +122,6 @@
 <ፍ ል ግ>	      c=B			{ሰበረ}
 
 <ጭ ር ስ>	      c=B			{ሰበረ}
-
-<ጽ ል ይ>	      c=B,+strong	{ሰበረ}
 
 <ጭ ቁ ን>	      c=B
 
@@ -118,9 +144,6 @@
 <ል ጭ ይ>	      c=C
 
 <ፉ ጭ ይ>	      c=C
-
-<ት ግ ል>	      c=C
-  a=0,v=0 ; a=0,v=as ; a=a,v=a ; a=i,v=0
 
 <ጭ ፍ ጭ ፍ>     c=E
 
@@ -151,6 +174,8 @@
 <ን ኵ እ ኵ እ>   c=G
 
 <ን ጭ እ ጭ እ>   c=G
+
+<ሽ ሙ ን ሙ ን>   c=G
 
 <ን ጽ ብ ር ቅ>   c=H
 

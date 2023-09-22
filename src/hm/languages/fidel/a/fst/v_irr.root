@@ -1,3 +1,18 @@
+*<ህ ው ን>	c=A,tmp=[1=X]
+[a=0,v=0,t=p|i|c]
+[a=0,v=p,t=p|c];[a=0,v=p,t=j,sp=2,-neg]
+ሆ   ን
+
+[a=0,v=0,t=j]
+ሁ   ን
+
+[a=0,v=p,t=i];[a=0,v=p,t=j,sp=1|3];[a=0,v=p,t=j,sp=2,+neg]
+ኮ	ን
+
+# others also possible, according to Kane: ኋኋን ኳሆን ኳኳን
+[a=i,v=p]
+ኳ	ኋ	ን
+
 *<ብ እ ል>	c=A,tmp=[1=X]
 
 [a=0,t=p,v=0]
