@@ -64,79 +64,79 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=0,c=E,+strong
 [t=p]
 [t=i,v=p]
-^eo	*e	^eo:	*
+^eo	^e	^eo:	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-^eo	*e	**u:	*
+^eo	^e	**u:	*
 
 [t=j,v=0|a]
 [t=c]
-^eo	*	**u	*
+^eo	**	**u	*
 
 [t=j,v=p]
-^eo	*	^eo	*
+^eo	**	^eo	*
 
 %%a=0,c=F,+strong
 [t=p]
 [t=i,v=p]
-*e	*a	*:e	*
+*e	^a	*:e	*
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-*e	*a	*:	*
+*e	^a	*:	*
 
 [t=j,v=0|a]
 [t=c]
-*e	*a	*	*
+*e	^a	*	*
 
 [t=j,v=p]
-*e	*a	*e	*
+*e	^a	*e	*
 
 %%a=0,c=G,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-*	^eo	*e	^eo:	*
+*	^eo	^e	^eo:	*
 
 [t=i,v=a]
-*	^eo	*e	**u:	*
+*	^eo	^e	**u:	*
 
 [t=j,v=p]
-*	^eo	*	^eo		*
+*	^eo	**	^eo		*
 
 [t=c,v=p|a]
 [t=j,v=a]
-*	^eo	*	**u		*
+*	^eo	**	**u		*
 
 %%a=0,c=H,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-*	^eo	*a	^eo:	*
+*	^eo	^a	^eo:	*
 
 [t=i,v=a]
-*	^eo	*a	**u:	*
+*	^eo	^a	**u:	*
 
 [t=j,v=p]
-*	^eo	*a	^eo		*
+*	^eo	^a	^eo		*
 
 [t=c,v=p|a]
 [t=j,v=a]
-*	^eo	*a	**u		*
+*	^eo	^a	**u		*
 
 %%a=0,c=J,+strong
 [t=p,v=p|a]
 [t=i,v=p]
-*	*a	*:e	*
+*	^a	*:e	*
 
 [t=i,v=a]
-*	*a	*:	*
+*	^a	*:	*
 
 [t=j,v=p]
-*	*a	*e	*
+*	^a	*e	*
 
 [t=c,v=p|a]
 [t=j,v=a]
-*	*a	*	*
+*	^a	*	*
 
 %%a=0,c=A,-strong
 
@@ -193,10 +193,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i,v=0|p]
 [t=j,v=p|as]
-ኣ	*a	-
+ኣ	^a	-
 
 [t=j,v=0]
-እ	*a	-
+እ	^a	-
 
 [t=c,v=0|p|as]
 ኣ	*	ት
@@ -226,7 +226,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=p|j]
 
 [t=i,v=p]
-*a	-	*
+^a	-	*
 
 [t=i,v=0|a|as|ast]
 [t=c]
@@ -240,10 +240,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i,v=0|a]
 [t=j,v=p]
-*e	*a	-
+*e	^a	-
 
 [t=j,v=0|a]
-*	*a	-
+*	^a	-
 
 [t=c,v=0|p|as]
 *e	*	ት
@@ -292,7 +292,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 *e	*:a	-
 
 [t=j,v=p]
-*e	*a	-
+*e	^a	-
 
 [t=c]
 *e	*:	ት
@@ -311,28 +311,28 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %3=እ
 [t=p|i]
 [t=j,v=0|a|as]
-*a	*:a	-
+^a	*:a	-
 
 # ?
 [t=j,v=p]
-*a	*a	-
+^a	^a	-
 
 [t=c]
-*a	*:	ት
+^a	*:	ት
 
 %3=ይ
 # ፏጨ, ቃዠ
 [t=p]
-*a	*:e	-
+^a	*:e	-
 
 [t=i]
-*a	*:	-
+^a	*:	-
 
 [t=j]
-*a	*	-
+^a	*	-
 
 [t=c]
-*a	*	ት
+^a	*	ት
 
 %%a=0,c=E,-strong
 %1=እ
@@ -367,10 +367,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	*e	*:a	-
 
 [t=j,v=p]
-^eo	*e	*a	-
+^eo	*e	^a	-
 
 [t=j,v=0|a]
-^eo	*	*a	-
+^eo	*	^a	-
 
 [t=c]
 ^eo	*	*	ት
@@ -399,7 +399,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	-	^a	-
 
 [t=c]
-*a	-	*	ት
+^a	-	*	ት
 
 #%1=W
 ## ሞለፈፈ
@@ -440,31 +440,31 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 # ሰማራ
 [t=p|i]
 [t=j,v=as]
-*e	*a	*:a	-
+*e	^a	*:a	-
 
 [t=j,v=p]
-*e	*a	*a	-
+*e	^a	^a	-
 
 [t=j,v=0|a]
-*e	*a	*a	-
+*e	^a	^a	-
 
 [t=c]
-*e	*a	*	ት
+*e	^a	*	ት
 
 %4=ይ
 # ተዘጋጀ
 [t=p|i]
 [t=j,v=as]
-*e	*a	*:e	-
+*e	^a	*:e	-
 
 [t=j,v=p]
-*e	*a	*	-
+*e	^a	*	-
 
 [t=j,v=0|a]
-*e	*a	*	-
+*e	^a	*	-
 
 [t=c]
-*e	*a	*	ት
+*e	^a	*	ት
 
 %%a=0,c=G,-strong
 
@@ -477,7 +477,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 **	^a	-	^a	-
 
 [t=c,v=p|a]
-**	*a	-	*	ት
+**	^a	-	*	ት
 
 %%a=a,c=A,+strong
 # initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
