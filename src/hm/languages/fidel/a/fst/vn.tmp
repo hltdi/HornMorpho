@@ -464,7 +464,7 @@ $ d=a|inf|ins|m
 
 %3=ይ
 [d=ins|a|m]
-^a	*a	*	-
+^e	*a	*	-
 
 [d=inf]
 ^e	*a	*e	ት

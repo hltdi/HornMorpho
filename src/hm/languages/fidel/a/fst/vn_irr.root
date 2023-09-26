@@ -23,7 +23,7 @@
 [d=ins|inf|m|a,a=i]
 ባ	ባ	ል
 
-*<ት ው>	c=A
+*<ት ት ው>	c=A,tmp=[1=X]
 [d=inf|ins,a=0,v=0|p]
 ተ	ው
 
@@ -33,26 +33,32 @@
 [d=m,a=i]
 ተ	ዋ	ው
 
-*<ም እ ር> c=A,tmp=[1=እ],s=3
+*<ም እ ር>	c=A,tmp=[1=እ],s=3
 # አማረ: be beautiful (sense 3)
 
 [d=ins|inf|a,a=0,v=0]
 ኣ	ማ	ር
 
+[d=ins|inf|a,a=0,v=as]
+ኣ	/መ	ር
+
+[d=ins|inf|a,a=i,v=0]
+ኣ	ማ	ማ	ር
+
 [d=m,a=i]
-አ	ማ	መ	ር
+ማ	መ	ር
 
-*<ሽ ት>	c=A
-[d=inf,a=0,v=p|as]
-ሻ
+*<ሽ እ እ>	c=A,tmp=[1=X]
+[d=a,a=0,v=0|p|as]
+ሻ	ይ
 
-[d=ins,a=0,v=p|as]
+[d=ins,a=0,v=0|p|as]
 ሽ
 
-[d=inf,a=0,v=p|as]
+[d=inf,a=0,v=0|p|as]
 ሻ	ት
 
-[d=ins|m,a=i]
+[d=ins|m|a,a=i]
 ሻ	ሽ
 
 [d=inf,a=i]
@@ -74,8 +80,3 @@
 
 [d=m,a=i]
 ካ	ሄ	ድ
-
-
-
-
-

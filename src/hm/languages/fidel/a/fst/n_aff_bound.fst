@@ -11,6 +11,11 @@ start -> eI		[*e]
 eI -> eI 		[:<;:-;:>]
 eI -> start		[:እ]
 
+# ቤቷ
+start -> Wa		[{I2Wa}]
+Wa -> Wa 		[:<;:-;:>]
+Wa -> start		[:ዋ]
+
 # a2o covers some plurals, like ጌቶች
 start -> I2o	[{I2o};{a2o}]
 I2o -> I2o		[:<;:-;:>]

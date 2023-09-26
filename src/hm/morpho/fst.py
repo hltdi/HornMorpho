@@ -2193,13 +2193,13 @@ class FST:
 
         # Now make the paths between the successive states
         for index, state in enumerate(mtax.states[:-1]):
-#            print(" ** state {}".format(state))
+#            print(" ** state {}".format(state[0]))
             src = state[0]
             paths = state[1].get('paths')
             dest = mtax.states[index+1][0]
             # Do the normal paths
             for in_string, out_string, weight in paths:
-#                print("** Compiling MTAX state: in {}, out {}, wt {}".format(in_string, out_string, weight.__repr__()))
+#                print("  ** Compiling MTAX state: in {}, out {}, wt {}".format(in_string, out_string, weight.__repr__()))
                 if '.lex' in in_string:
                     # in_string is a lex filename
                     label = in_string.split('.')[0]
@@ -2262,7 +2262,7 @@ class FST:
                     else:
                         mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
-#                    print("  ** Compile MTAX: Making multiple arcs for {}->{} from {} to {}, weight: {}".format(in_string, out_string, src, dest, weight))
+#                    print("   ** Compile MTAX: Making multiple arcs for {}->{} from {} to {}, weight: {}".format(in_string, out_string, src, dest, weight))
                     mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen, gemination=gemination)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
