@@ -778,13 +778,6 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             genfst = analfst.inverted()
         pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
                           experimental=experimental, mwe=mwe)
-#    if not fst and gen == True:
-#        print('Generation FST not found')
-#        # Load analysis FST
-#        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
-#        # ... and invert it for generation FST
-#        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-#                           relabel=relabel, fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
 def recompile(language, pos, phon=False, segment=False, gen=False,

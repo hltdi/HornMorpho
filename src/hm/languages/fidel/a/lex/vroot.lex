@@ -65,7 +65,7 @@
 <ጽ ል ይ>	      c=B,+strong
   a=0,v=0 ; a=a,v=a ; a=a,v=a ; a=i,d=m
 
-<እ ይ ይ>	     c=A,-dup23
+<እ ይ ይ>	     c=A,-dup23,tmp=[2=X,3=ይ]
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=0,v=ast ; a=i,v=0 ; a=i,v=ast ; a=i,v=p
 
 <ት ግ ል>	      c=C
@@ -788,7 +788,7 @@
 <ጥ ል ፍ>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
 <ጥ ም ድ>	c=A
-  a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
+  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ጥ ር ጥ ር>	c=E
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ጥ ብ ጥ ብ>	c=E

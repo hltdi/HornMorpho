@@ -516,9 +516,8 @@ class FSTCascade(list):
         If not create_networks, only create the weighting and string sets.
         2023.2.28: Added seglevel.
         """
-        if verbose:
-            print('Loading FST cascade from {}'.format(filename))
-            #, POS {}, seglevel {}'.format(filename, language, pos, seglevel))
+#        if verbose:
+#            print('** Loading FST cascade from {}; seglevel {}'.format(filename, seglevel))
         directory, fil = os.path.split(filename)
         label = del_suffix(fil, '.')
 
@@ -543,7 +542,7 @@ class FSTCascade(list):
         cascade.language = language
         cascade.seg_units = seg_units
         cascade.pos = pos
-#        print("*** parsing cascade {}, {}".format(language, pos))
+#        print("*** parsing cascade {}, {}; {}".format(language, pos, seglevel))
 
         # Add specs from language
         cascade.add_stringsets()
@@ -1870,47 +1869,49 @@ class FST:
         return []
 
     @staticmethod
-    def restore(fst_name,
+    def restore(name, pos,
                 cas_directory='', fst_directory='', pkl_directory='',
                 cascade=None, weighting=UNIFICATION_SR, seg_units=[],
                 seglevel=0,
                 # if True, look for .pkl file to load
                 pickle=True,
                 # Features determining which FST
-                empty=True, phon=False, segment=False, generate=False, simplified=False,
-                experimental=False, mwe=False, create_weights=True, verbose=False):
+                guess=True, phon=False, segment=False, generate=False, simplified=False,
+                experimental=False, mwe=False, suffix='',
+                v5=False,
+                create_weights=True, verbose=False):
         '''Restore an FST from a file, in some cases creating the cascade first.
 
-        If empty is true, look for the empty (guesser) FST only.
-        Otherwise, look first for the lexical one, then the empty one.
+        If guess is true, look for the guess (guesser) FST only.
+        Otherwise, look first for the lexical one, then the guess one.
         2021.5: returns pair with second element a boolean indicating
         whether the FST was found in a pickle.
         '''
-        empty_name = fst_name + '0'
-        # experimental has priority over others
-        name = fst_name
-        if experimental:
-            name = name + 'X'
-        elif empty:
-            name = empty_name
-            if phon:
-                name = name + 'P'
-        elif simplified:
-            name = fst_name + '_S'
-        elif phon:
-            name = fst_name + 'P'
-        elif segment:
-            name = fst_name + '+'
-        else:
-            name = fst_name
-        if generate:
-            name += 'G'
-            empty_name += 'G'
-        if mwe:
-            name = name + 'M'
-#            print("** restore MWE name: {}".format(name))
+        guess_name = pos + '0'
+#        # experimental has priority over others
+#        name = fst_name
+#        if experimental:
+#            name = name + 'X'
+#        elif guess:
+#            name = guess_name
+#            if phon:
+#                name = name + 'P'
+#        elif simplified:
+#            name = fst_name + '_S'
+#        elif phon:
+#            name = fst_name + 'P'
+#        elif segment:
+#            name = fst_name + '+'
+#        else:
+#            name = fst_name
+#        if generate:
+#            name += 'G'
+#            guess_name += 'G'
 #        if mwe:
-#            print("  ** restore MWE name: {}".format(name))
+#            name = name + 'M'
+##            print("** restore MWE name: {}".format(name))
+##        if mwe:
+##            print("  ** restore MWE name: {}".format(name))
         if pickle:
 #            print("Unpickling {} in {}".format(name, pkl_directory))
             fst = FST.unpickle(name, directory=pkl_directory)
@@ -1930,15 +1931,15 @@ class FST:
                                                 create_weights=create_weights,
                                                 verbose=verbose), \
                    False
-        # Look for the empty FST (except for segmentation) if there is no lexical one
-        if not empty and not segment:
-            empty_paths = FST.get_fst_files(empty_name, pkl_directory)
-#            filename = empty_name + '.fst'
+        # Look for the guess FST (except for segmentation) if there is no lexical one
+        if not guess and not segment:
+            guess_paths = FST.get_fst_files(guess_name, pkl_directory)
+#            filename = guess_name + '.fst'
 #            if os.path.exists(os.path.join(fst_directory, filename)):
-            if empty_paths:
+            if guess_paths:
                 if verbose:
-                    print('  Restoring empty FST {} from FST file {}'.format(empty_name, empty_paths))
-                return FST.restore_parse_from_files(empty_paths, empty_name,
+                    print('  Restoring guess FST {} from FST file {}'.format(guess_name, guess_paths))
+                return FST.restore_parse_from_files(guess_paths, guess_name,
                                                     cascade=cascade, weighting=weighting,
                                                     seg_units=seg_units,
 #                                                    seglevel=seglevel,
@@ -2111,7 +2112,7 @@ class FST:
         # Whether to output segments in mtax FST, when doing segmentation (seglevel > 0).
         output_segs = not gen and seglevel
 
-#        print("** Loading FST from {}; cascade {}, language {}, POS {}".format(filename, cascade, cascade.language, 
+#        print("** Loading FST from {}; cascade {}, language {}, seglevel {}".format(filename, cascade, cascade.language, seglevel))
 
         if suffix == 'fst':
             if verbose:
@@ -2144,7 +2145,7 @@ class FST:
 
         elif suffix == 'tmp':
             if verbose:
-                print("Loading templates from {}, gen {}".format(filename, gen))
+                print("Loading templates from {}, gen {}, seglevel {}".format(filename, gen, seglevel))
             return Template.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                   cascade=cascade, directory=directory, seglevel=seglevel,
