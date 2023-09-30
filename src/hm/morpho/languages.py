@@ -63,7 +63,7 @@ def get_lang_dir(abbrev):
 def load_lang(lang, phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
-              cache=True, guess=True, simplified=False, mwe=True, gen=False,
+              cache=True, guess=False, simplified=False, mwe=True, gen=False,
               v5=False, experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     if verbose:
@@ -163,9 +163,9 @@ def get_language(language, load=True,
                               pickle=pickle, translate=translate)
         else:
             lang.load_morpho(phon=phon, segment=segment, guess=guess,
-                         experimental=experimental,
-                         pickle=pickle, translate=translate,
-                         simplified=simplified)
+                             experimental=experimental,
+                             pickle=pickle, translate=translate,
+                             simplified=simplified)
         return lang
     if not load_morph:
         return lang

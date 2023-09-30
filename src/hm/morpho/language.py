@@ -137,6 +137,8 @@ MTAX_RE = re.compile("\s*morphotax::\s*(.*)")
 LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
 # Added 2023.09.04
 MWE_RE = re.compile("\s*mwe::\s*(.*)")
+# Added 2023.09.29
+NO_MWE_RE = re.compile("\s*nomwe")
 # Added 2023.09.06; character normalization
 NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
 # Added 2023.09.17; character combination (withing stems)
@@ -422,6 +424,7 @@ class Language:
             with open(filename, encoding='utf-8') as stream:
                 data = stream.read()
                 self.parse(data, poss=poss, verbose=verbose)
+#        print("** Parsed data for {}; morphology {}".format(self, self.morphology))
         if load_morph:
             if v5:
                 if not self.load_morpho5(ortho=True, phon=phon,
@@ -479,6 +482,9 @@ class Language:
         lemmafeats = {}
         segments = {}
         mwefeats = {}
+
+        # Whether this is a MWE FST for different POS
+        mwe = {}
 
         feature_groups = {}
 
@@ -752,6 +758,11 @@ class Language:
                     mwefeats[pos] = mwefeats1
                     continue
 
+                m = NO_MWE_RE.match(line)
+                if m:
+                    mwe[pos] = False
+                    continue
+
                 m = LEMMAFEATS_RE.match(line)
                 if m:
                     lemfeats = m.groups()[0].strip()
@@ -964,7 +975,7 @@ class Language:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
                                      fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
-                                     lemmafeats[pos], segments[pos], mwefeats[pos]))
+                                     lemmafeats[pos], segments[pos], mwefeats[pos], mwe.get(pos, True)))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -1305,7 +1316,7 @@ class Language:
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
     def load_morpho5(self, fsts=None, ortho=True, phon=False,
-                     pickle=True, mwe=False, translate=False,
+                     pickle=True, mwe=False, translate=False, suffix='',
                      recreate=False, guess=True, verbose=False):
         """
         Load words and FSTs for morphological analysis and generation.
@@ -1341,7 +1352,7 @@ class Language:
         if not fsts:
             return False
         for pos in fsts:
-            # Load pre-analyzed words if any
+#            # Load pre-analyzed words if any
             self.morphology[pos].set_analyzed(ortho=ortho, simplify=False)
             if ortho:
                 self.morphology[pos].make_generated()
@@ -1353,26 +1364,27 @@ class Language:
                 self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
                                               simplified=False, experimental=False, mwe=False,
                                               phon=False, segment=False, translate=translate,
-                                              gemination=self.output_gemination,
+                                              gemination=self.output_gemination, v5=True, suffix=suffix,
                                               pos=pos, recreate=recreate, verbose=verbose)
-                if mwe:
+                if mwe and self.morphology[pos].mwe:
                     self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
                                                   simplified=False, experimental=False, mwe=True,
                                                   phon=False, segment=False, translate=translate,
-                                                  gemination=self.output_gemination,
+                                                  gemination=self.output_gemination, v5=True, suffix=suffix,
                                                   pos=pos, recreate=recreate, verbose=verbose)
             # Load generator for both analysis and segmentation
 #            if phon or (ortho and not segment):
             self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
                                           simplified=False, experimental=False, mwe=False,
                                           phon=phon, segment=False, translate=translate,
-                                          gemination=self.output_gemination,
+                                          gemination=self.output_gemination, v5=True, suffix=suffix,
                                           pos=pos, recreate=recreate, verbose=verbose)
-            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-                                          simplified=False, experimental=False, mwe=True,
-                                          phon=phon, segment=False, translate=translate,
-                                          gemination=self.output_gemination,
-                                          pos=pos, recreate=recreate, verbose=verbose)
+            if mwe and self.morphology[pos].mwe:
+                self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
+                                              simplified=False, experimental=False, mwe=True,
+                                              phon=phon, segment=False, translate=translate,
+                                              gemination=self.output_gemination, v5=True, suffix=suffix,
+                                              pos=pos, recreate=recreate, verbose=verbose)
             # Load guesser anal and gen FSTs
             if guess:
                 if ortho:
@@ -1380,15 +1392,15 @@ class Language:
                                                   segment=False, translate=translate,
                                                   pickle=pickle, create_casc=False,
                                                   simplified=False, experimental=False, mwe=False,
-                                                  gemination=self.output_gemination,
+                                                  gemination=self.output_gemination, v5=True, suffix=suffix,
                                                   pos=pos, recreate=recreate, verbose=verbose)
                 # Always load phonetic generation guesser
-#                if phon:
-                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
-                                              create_casc=False, pickle=pickle, experimental=False, mwe=False,
-                                              simplified=False, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
+                if phon:
+                    self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
+                                                  create_casc=False, pickle=pickle, experimental=False, mwe=False,
+                                                  simplified=False, translate=translate, v5=True,
+                                                  gemination=self.output_gemination, suffix=suffix,
+                                                  pos=pos, recreate=recreate, verbose=verbose)
             # Load statistics for generation
             self.morphology[pos].set_root_freqs()
             self.morphology[pos].set_feat_freqs()
@@ -1553,7 +1565,7 @@ class Language:
         # Try different POSs.
         for pos, pmorph in self.morphology.items():
             # Check for caching before running pos.anal()
-            analyses = pmorph.anal(token, mwe)
+            analyses = pmorph.anal(token, mwe, v5=True)
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
 #                                               mwe=mwe, combine_segs=combine_segs,
@@ -1620,6 +1632,11 @@ class Language:
             wordobj = self.analyze5(token, mwe=False, **kwargs)
             sentobj.add_word5(wordobj)
         return sentobj
+
+    def anal_sent_mwe(self, sentence, sent_id=1, **kwargs):
+        '''
+        Analyze the tokens using the MWE FSTs.
+        '''
 
     def _anal_sentence5(self, sentence,
                        conllu=True, xml=None, multseg=False, dicts=None, xsent=None,

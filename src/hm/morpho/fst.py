@@ -1758,6 +1758,7 @@ class FST:
         directory = directory or FST.get_pickle_dir(language)
         label = label or fst.label
         path = os.path.join(directory, label + ".pkl")
+#        print("*** Pickling {} to {}".format(fst.label, path))
         if not replace and os.path.exists(path):
             print("Pickle {} exists, not replacing".format(path))
             return
@@ -1777,7 +1778,6 @@ class FST:
         file = open(path, "rb")
         if verbose:
             print('Unpickling {}'.format(path))
-#            print("File {}".format(file))
         return pickle.load(file)
 
     @staticmethod
@@ -1880,38 +1880,15 @@ class FST:
                 experimental=False, mwe=False, suffix='',
                 v5=False,
                 create_weights=True, verbose=False):
-        '''Restore an FST from a file, in some cases creating the cascade first.
+        '''
+        Restore an FST from a file, in some cases creating the cascade first.
 
         If guess is true, look for the guess (guesser) FST only.
         Otherwise, look first for the lexical one, then the guess one.
         2021.5: returns pair with second element a boolean indicating
         whether the FST was found in a pickle.
         '''
-        guess_name = pos + '0'
-#        # experimental has priority over others
-#        name = fst_name
-#        if experimental:
-#            name = name + 'X'
-#        elif guess:
-#            name = guess_name
-#            if phon:
-#                name = name + 'P'
-#        elif simplified:
-#            name = fst_name + '_S'
-#        elif phon:
-#            name = fst_name + 'P'
-#        elif segment:
-#            name = fst_name + '+'
-#        else:
-#            name = fst_name
-#        if generate:
-#            name += 'G'
-#            guess_name += 'G'
-#        if mwe:
-#            name = name + 'M'
-##            print("** restore MWE name: {}".format(name))
-##        if mwe:
-##            print("  ** restore MWE name: {}".format(name))
+#        guess_name = pos + '0'
         if pickle:
 #            print("Unpickling {} in {}".format(name, pkl_directory))
             fst = FST.unpickle(name, directory=pkl_directory)
@@ -1931,21 +1908,19 @@ class FST:
                                                 create_weights=create_weights,
                                                 verbose=verbose), \
                    False
-        # Look for the guess FST (except for segmentation) if there is no lexical one
-        if not guess and not segment:
-            guess_paths = FST.get_fst_files(guess_name, pkl_directory)
-#            filename = guess_name + '.fst'
-#            if os.path.exists(os.path.join(fst_directory, filename)):
-            if guess_paths:
-                if verbose:
-                    print('  Restoring guess FST {} from FST file {}'.format(guess_name, guess_paths))
-                return FST.restore_parse_from_files(guess_paths, guess_name,
-                                                    cascade=cascade, weighting=weighting,
-                                                    seg_units=seg_units,
-#                                                    seglevel=seglevel,
-                                                    create_weights=create_weights,
-                                                    verbose=verbose), \
-                       False
+        return None
+#        # Look for the guess FST (except for segmentation) if there is no lexical one
+#        if not guess and not segment:
+#            guess_paths = FST.get_fst_files(guess_name, pkl_directory)
+#            if guess_paths:
+#                if verbose:
+#                    print('  Restoring guess FST {} from FST file {}'.format(guess_name, guess_paths))
+#                return FST.restore_parse_from_files(guess_paths, guess_name,
+#                                                    cascade=cascade, weighting=weighting,
+#                                                    seg_units=seg_units,
+#                                                    create_weights=create_weights,
+#                                                    verbose=verbose), \
+#                       False
 
     @staticmethod
     def split(directory, fst_file, limit=50000):

@@ -55,7 +55,8 @@ def make_corpus5(language, data, **kwargs):
     '''
     Create a corpus of sentences, given a list of raw sentence strings.
     '''
-    language = morpho.get_language(language, v5=True)
+    guess = kwargs.get('guess', False)
+    language = morpho.get_language(language, v5=True, guess=guess)
     if language:
         return morpho.Corpus(language=language, data=data, v5=True, **kwargs)
 
@@ -64,7 +65,8 @@ def analyze5(language, word, **kwargs):
     Analyze a word or MWE, returning a list of dicts.
     kwargs: mwe=False, degem=True, conllu=True, sep_feats=True, combine_segs=False, verbosity=0
     '''
-    language = morpho.get_language(language, v5=True)
+    guess = kwargs.get('guess', False)
+    language = morpho.get_language(language, v5=True, guess=guess)
     if language:
         return language.analyze5(word, **kwargs)
 
@@ -752,7 +754,7 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                         fidel=fidel, load_morph=False, verbose=verbose)
     if verbose:
         print(">>> CREATING ANALYZER <<<")
-    fst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
+    fst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
                              translate=translate, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              create_fst=True, relabel=True, gemination=gemination,
@@ -768,7 +770,7 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
         else:
             if verbose:
                 print(">>> CREATING GENERATOR <<<")
-            analfst = pos_morph.load_fst(True, segment=segment, generate=False, invert=False, guess=guess,
+            analfst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
                                          translate=translate, recreate=True, fidel=fidel,
                                          experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
                                          create_fst=True, relabel=True, gemination=gemination,
