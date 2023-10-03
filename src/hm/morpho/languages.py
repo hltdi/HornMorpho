@@ -63,7 +63,7 @@ def get_lang_dir(abbrev):
 def load_lang(lang, phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
-              cache=True, guess=False, simplified=False, mwe=True, gen=False,
+              cache=True, guess=False, mwe=True, gen=False,
               v5=False, experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
     if verbose:
@@ -88,7 +88,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
                                     pickle=pickle, translate=translate, recreate=recreate, gen=gen,
-                                    phon=phon, guess=guess, simplified=simplified, mwe=mwe, fidel=fidel,
+                                    phon=phon, guess=guess, mwe=mwe, fidel=fidel,
                                     v5=v5,
                                     poss=poss, verbose=verbose)
         if not loaded:
@@ -108,8 +108,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
                                  experimental=experimental, mwe=mwe,
-                                 segment=segment, phon=phon, guess=guess,
-                                 simplified=simplified, recreate=recreate,
+                                 segment=segment, phon=phon, guess=guess, recreate=recreate,
                                  poss=poss, ees=ees, fidel=fidel,
                                  v5=v5,
                                  verbose=verbose)
@@ -133,16 +132,29 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
                   guess=guess, verbose=verbose)
     return True
 
-def get_language(language, load=True,
-                 pickle=True, translate=False, experimental=False, fidel=False,
-                 phon=False, segment=False, guess=True, simplified=False,
-                 v5=False,
-                 load_morph=True, cache='', verbose=False):
+def get_language(language, **kwargs):
+#    load=True, pickle=True,
+#                 translate=False, experimental=False, fidel=False, phon=False, segment=False,
+#                 guess=True, 
+#                 v5=False,
+#                 load_morph=True, cache='', verbose=False):
     """
     Get the language with lang_id, attempting to load it if it's not found
     and load is True.
     """
-#    print("** Getting language, load = {}, load_morpho = {}".format(load, load_morph))
+    load = kwargs.get('load') if 'load' in kwargs else True
+    pickle = kwargs.get('pickle') if 'pickle' in kwargs else True
+    guess = kwargs.get('guess') if 'guess' in kwargs else True
+    load_morph = kwargs.get('load_morph') if 'load_morph' in kwargs else True
+    translate = kwargs.get('translate', False)
+    experimental = kwargs.get('experimental', False)
+    fidel = kwargs.get('fidel', False)
+    phon = kwargs.get('phon', False)
+    segment = kwargs.get('segment', False)
+    v5 = kwargs.get('v5', False)
+    verbose = kwargs.get('verbose', False)
+    cache = kwargs.get('cache', None)
+#    print("** Getting language, load = {}, load_morpho = {}, guess = {}".format(load, load_morph, guess))
     if isinstance(language, Language):
         return language
     lang_id = get_lang_id(language)
@@ -151,7 +163,7 @@ def get_language(language, load=True,
         if load:
             if not load_lang(lang_id, phon=phon, pickle=pickle,
                              segment=segment, guess=guess, experimental=experimental,
-                             simplified=simplified, translate=translate, fidel=fidel,
+                             translate=translate, fidel=fidel,
                              load_morph=load_morph, cache=cache,
                              v5=v5,
                              verbose=verbose):
@@ -164,12 +176,11 @@ def get_language(language, load=True,
         else:
             lang.load_morpho(phon=phon, segment=segment, guess=guess,
                              experimental=experimental,
-                             pickle=pickle, translate=translate,
-                             simplified=simplified)
+                             pickle=pickle, translate=translate)
         return lang
     if not load_morph:
         return lang
-    fst = lang.get_fsts(phon=phon, segment=segment, simplified=simplified, experimental=experimental)
+    fst = lang.get_fsts(phon=phon, segment=segment, experimental=experimental, v5=v5)
     if not fst and load:
         print("You cannot do different kinds of analysis or generation in the same session!")
         print("Please exit() and start a new session!")

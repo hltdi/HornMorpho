@@ -68,6 +68,13 @@ class Sentence():
     def __repr__(self):
         return "S{}::{}".format(self.sentid, self.text)
 
+    def show(self):
+        '''
+        Show each words processed analyses.
+        '''
+        for word in self.words:
+            word.show()
+
     ### Version 5 methods
 
     def add_word5(self, word):

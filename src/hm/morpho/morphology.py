@@ -801,6 +801,9 @@ class POSMorphology:
         The FST satisfying the parameters.
         """
         if v5:
+            if mwe and not self.mwe:
+                # This POS has no MWE FSTs
+                return
             name = self.fst_name(generate=generate, guess=guess, translate=translate, mwe=mwe, suffix=suffix)
             fst = self.fst_dict.get(name)
             if not fst:
@@ -1386,6 +1389,7 @@ class POSMorphology:
         # MWE or single word
         if fst:
             if mwe:
+                # Replace space with // for MWEs
                 form = form.replace(' ', Morphology.mwe_sep)
             if preproc:
                 # For languages with non-roman orthographies
@@ -1401,6 +1405,10 @@ class POSMorphology:
                                   init_weight=init_weight, result_limit=result_limit,
                                   trace=trace, tracefeat=tracefeat, timeit=timeit,
                                   verbosity=verbosity)
+            if mwe:
+                # Replace // with space for MWEs
+                for index, (string, feats) in enumerate(anals):
+                    anals[index][0] = string.replace(Morphology.mwe_sep, ' ')
             if sep_anals or normalize:
                 # Normalization requires FeatStructs so separate
                 # anals if it's True
@@ -1470,12 +1478,14 @@ class POSMorphology:
 #        prefixes = processed_string['pre']
 #        stem = processed_string['stem']
 #        suffixes = processed_string['suf']
-        procdict = {'token': token, 'feats': features, 'string': string}
-        sep_feats = kwargs.get('sep_feats', False)
+        mwe_props = None
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
-            props = features.get('mwe') or self.mwe_feats
-            token_dicts = self.get_mwe_tokens(token, self.mwe_feats)
+            mwe_props = features.get('mwe') or self.mwe_feats
+        procdict = {'token': token, 'feats': features, 'string': string}
+        sep_feats = kwargs.get('sep_feats', False)
+        if mwe_props:
+            token_dicts = self.get_mwe_tokens(token, mwe_props)
             procdict['tokens'] = token_dicts
 #            print("  ** token dicts {}".format(token_dicts))
         if raw_token:
@@ -1502,17 +1512,20 @@ class POSMorphology:
             suff1_index = len(prefixes) + 1
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
                 pre_dicts.append(
-                    self.process_morpheme5(prefix, props, pindex, stem_index, features, is_stem=False, udfdict=udfdict, sep_feats=sep_feats)
+                    self.process_morpheme5(prefix, props, pindex, stem_index, features,
+                                           is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                     )
             prefixes = pre_dicts
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
                 post_dicts.append(
-                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features, is_stem=False, udfdict=udfdict, sep_feats=sep_feats)
+                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features,
+                                           is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                     )
             suffixes = post_dicts
             if stemprops:
                 stem_dict = \
-                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, is_stem=True, udfdict=udfdict, sep_feats=sep_feats)
+                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features,
+                                         is_stem=True, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                 stem = stem_dict
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
@@ -1541,7 +1554,8 @@ class POSMorphology:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
         return token_dicts
 
-    def process_morpheme5(self, morpheme, props, index, stem_index, features, is_stem=False, udfdict=None, sep_feats=True):
+    def process_morpheme5(self, morpheme, props, index, stem_index, features,
+                          is_stem=False, udfdict=None, sep_feats=True, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
@@ -1550,7 +1564,7 @@ class POSMorphology:
             return ''
 #        print("** Processing morpheme {}: {} (stem i: {}, udfdict: {})".format(index, morpheme, stem_index, udfdict))
         dict = {'string': morpheme}
-        pos = self.get_segment_pos(morpheme, props)
+        pos = self.get_segment_pos(morpheme, props, mwe=mwe)
         dict['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, index, stem_index, features, is_stem=is_stem)
         if dep:
@@ -1575,7 +1589,10 @@ class POSMorphology:
 #        '''
 #        pos = self.get_segment_pos(string, segdict)
 
-    def get_segment_pos(self, string, segdict):
+    def get_segment_pos(self, string, segdict, mwe=False):
+        '''
+        mwe is False (for single-word items) or a dict of props for MWEs.
+        '''
         posspec = segdict.get('pos')
         if not posspec:
             print("*** No POS in segdict {}".format(segdict))
@@ -1583,8 +1600,12 @@ class POSMorphology:
         if isinstance(posspec, dict):
             pos = posspec.get(EES.degeminate(string))
             if not pos:
-                print("*** No POS for {} in seg postdict {}".format(string, posspec))
-                return
+                if mwe and 'deppos' in mwe and ' ' in string:
+                    # This is a dependent word within a MWE; use the 'deppos' feature
+                    return mwe['deppos']
+                else:
+                    print("*** No POS for {} in seg postdict {}".format(string, posspec))
+                    return
             return pos
         return posspec
 
@@ -1628,10 +1649,12 @@ class POSMorphology:
         return dep, head_index
  
     def gen_lemma(self, stem, root, features):
+#        print("** generating lemma for {}|{} ; {}".format(stem, root, features.__repr__()))
         lemmafeats = self.lemma_feats
         if not lemmafeats:
             return stem
         lemmafeat1, lemmafeats2 = lemmafeats
+#        print("  ** lfeats {} {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
             if not value1:
@@ -1641,7 +1664,8 @@ class POSMorphology:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
             initfeat = ','.join(initfeat)
-            gen_out = self.gen(root, update_feats=initfeat)
+#            print("    ** initfeat {}".format(initfeat))
+            gen_out = self.gen(root, update_feats=initfeat, v5=True)
             if gen_out:
                 return gen_out[0][0]
             return
@@ -1650,7 +1674,8 @@ class POSMorphology:
             value = features.get(lf)
             initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
-        gen_out = self.gen(root, update_feats=initfeat)
+#        print("    ** initfeat 2 {}".format(initfeat))
+        gen_out = self.gen(root, update_feats=initfeat, v5=True)
         if gen_out:
             return gen_out[0][0]
 
@@ -1759,6 +1784,7 @@ class POSMorphology:
             guess=False, phon=False, segment=False, ortho=False,
             ortho_only=False, fst=None, sort=False, print_word=False, print_prefixes=None,
             interact=False, timeit=False, timeout=100, limit=10,
+            v5=False,
             trace=False, verbosity=0):
         """
         Generate word from root and features.
@@ -1788,8 +1814,9 @@ class POSMorphology:
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
-                                  phon=phon, segment=segment)
-#        print("*** fst {}".format(fst))
+                                  phon=phon, segment=segment,
+                                  v5=v5)
+#        print("  *** fst {}".format(fst.label))
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
             anal = self.dict_to_anal(root, features)

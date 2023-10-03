@@ -28,14 +28,15 @@ Author: Michael Gasser <gasser@indiana.edu>
 # the features of the segments for the whole word.
 
 # experimental CoNLL-U segmenter for Amharic
-__cat__ = 'X'
-__version__ = '4.5.2.4'
+
+#__cat__ = 'X'
+#__version__ = '4.5.2.4'
 
 #__cat__ = 'A'
 #__version__ = '4.3.1'
 
-#__cat__ = ''
-#__version__ = '5.0'
+__cat__ = '+'
+__version__ = '5.0'
 
 __author__ = 'Michael Gasser'
 
@@ -74,7 +75,10 @@ def anal_sentence5(language, sentence, **kwargs):
     '''
     Analyze the sentence using Language.anal_sentence5(), returning a Sentence object.
     '''
-    language = morpho.get_language(language, v5=True)
+    kwargs['v5'] = True
+    if 'guess' not in kwargs:
+        kwargs['guess'] = False
+    language = morpho.get_language(language, **kwargs)
     if language:
         return language.anal_sentence5(sentence, **kwargs)
 

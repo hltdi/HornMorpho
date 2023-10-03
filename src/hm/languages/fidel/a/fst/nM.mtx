@@ -36,8 +36,8 @@ $ plur_bound
   -
 
 $ poss_det
-  ኤ		[pp=1,pn=1]
-  ኣ/ችን	[pp=1,pn=2]
+  ኤ		[pp=1,pn=1,-pf]
+  ኣ/ችን	[pp=1,pn=2,-pf]
   ህ		[pp=2,pn=1,pg=m,-pf]
   ሽ		[pp=2,pn=1,pg=f,-pf]
   ኣ/ችሁ	[pp=2,pn=2,-pf]

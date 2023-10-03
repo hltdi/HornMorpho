@@ -46,3 +46,9 @@ class Word(list):
 
     def __repr__(self):
         return "W{}:{}{}".format(self.id, '*' if self.unk else '', self.name)
+
+    def show(self):
+        if len(self) == 0:
+            print()
+        for item in self:
+            print(item)

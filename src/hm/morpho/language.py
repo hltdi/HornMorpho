@@ -1509,14 +1509,15 @@ class Language:
         return True
 
     def get_fsts(self, generate=False, phon=False, experimental=False, mwe=False,
+                 v5=False,
                  simplified=False, segment=False, translate=False):
         '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
         fsts = []
         for pos in self.morphology.pos:
             if phon:
-                fst = self.morphology[pos].get_fst(generate=True, phon=True, experimental=experimental, mwe=mwe)
+                fst = self.morphology[pos].get_fst(generate=True, phon=True, experimental=experimental, mwe=mwe, v5=v5)
             else:
-                fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental, mwe=mwe)
+                fst = self.morphology[pos].get_fst(generate=generate, segment=segment, experimental=experimental, mwe=mwe, v5=v5)
             if fst:
                 fsts.append(fst)
         return fsts
@@ -1547,17 +1548,29 @@ class Language:
         Analyze a token according to HM 5.0, returning a Word object.
         kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
         '''
+#        print("** analyze5 kwargs {}".format(kwargs))
         all_analyses = []
         mwe = kwargs.get('mwe', False)
+        # There may be a cache dict where the analyses can be found or stored.
+        cache = kwargs.get('cache')
         # Character normalization
         normalized = False
         token = self.normalize(raw_token)
         if token != raw_token:
             normalized = True
+        if isinstance(cache, dict):
+            # cache could be empty dict
+            cached = cache.get(token)
+            if cached:
+                # This assumes the cache stores "processed" analyses
+                return cached
         special_anal = self.analyze_special5(token)
         if special_anal:
             # If this is numeral, punctuation, or abbreviation, don't bother going further.
-            return Word([special_anal], name=raw_token)
+            wordobj = Word([special_anal], name=raw_token)
+            if isinstance(cache, dict):
+                cache[token] = wordobj
+            return wordobj
         # Try unanalyzed words
         unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe)
         if unanalyzed:
@@ -1565,13 +1578,16 @@ class Language:
         # Try different POSs.
         for pos, pmorph in self.morphology.items():
             # Check for caching before running pos.anal()
-            analyses = pmorph.anal(token, mwe, v5=True)
+            analyses = pmorph.anal(token, mwe=mwe, v5=True)
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
 #                                               mwe=mwe, combine_segs=combine_segs,
 #                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
-        return Word(all_analyses, name=raw_token)
+        wordobj = Word(all_analyses, name=raw_token)
+        if isinstance(cache, dict):
+            cache[token] = wordobj
+        return wordobj
 
     def analyze_unanalyzed5(self, word, mwe=False):
         '''
@@ -1619,12 +1635,14 @@ class Language:
                         stem_string = stem_string.replace(previous + suf, replacement)
         return stem_string.replace(Morphology.morph_sep, '')
 
-    def anal_sentence5(self, sentence, sent_id=1, **kwargs):
+    def anal_sentence5(self, sentence, **kwargs):
         '''
         Version 5:
         Analyze the tokens in a sentence (a string), returning a Sentence object.
         kwargs: degem, sep_feats, combine_segs, verbosity
         '''
+        if 'cache' not in kwargs:
+            kwargs['cache'] = dict()
         tokens = sentence.split()
         sentobj = Sentence(sentence)
         # For now just try single-word tokens.
@@ -1633,10 +1651,43 @@ class Language:
             sentobj.add_word5(wordobj)
         return sentobj
 
-    def anal_sent_mwe(self, sentence, sent_id=1, **kwargs):
+    def anal_sent_mwe(self, sentence, sent_obj, **kwargs):
         '''
         Analyze the tokens using the MWE FSTs.
         '''
+        tokens = sentence.split()
+        sent_obj = sent_obj or Sentence(sentence)
+        seglevel = kwargs.get('seglevel', 2)
+        ntokens = len(tokens)
+        w_index = 0
+        morphid = 0
+        while w_index < ntokens:
+            word = tokens[w_index]
+            simps = None
+            words = None
+            if w_index < len(tokens)-1:
+                next_word = tokens[w_index+1]
+                if not self.morphology.is_punctuation(word) and not self.morphology.is_punctuation(next_word):
+                    words = word + " " + next_word
+            if words:
+                print("** Attempting to analyze {}".format(words))
+                analyses = self.analyze5(words, mwe=True, **kwargs)
+                if analyses:
+                    sent_obj.add_word5(analyses)
+                    print("  ** Success: {}".format(analyses[0]))
+                    w_index += 2
+                    if seglevel == 0:
+                        morphid += 1
+                    else:
+                        # Just use the first analysis
+                        morphid += analyses[0]['nsegs']
+                else:
+                    w_index += 1
+                    morphid += 1
+            else:
+                print("** No MWE possibilities: {}".format(tokens[w_index:]))
+                w_index += 1
+                morphid += 1
 
     def _anal_sentence5(self, sentence,
                        conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
@@ -1764,17 +1815,23 @@ class Language:
 #        return csent
         return sentlist
 
-    def get_from_cache5(self, word, local_cache, um=0, seglevel=2,
-                        sentlist=None,
-#                        gramfilter=None, filtered=None, filter_cache=None,
-#                             dicts=None, conllu=True, xml=False, csent=None, xsent=None, multseg=False,
-#                             experimental=True, segment=True, word_sep="\n",
-                        morphid=1,
-#                        file='', printout=False,
+#    def add_to_cache(self, word, analyses, cache):
+#        '''
+#        cache is a dict of word keys and analyses values.
+#        analyses are what is returned by POSMorphology.anal(), a list of list pairs,
+#        each consisting of a segmentation string and and 
+#        '''
+#        cache[word] = analyses
+
+    def get_from_cache5(self, word, cache,
+#                        um=0, seglevel=2,
+                        sentlist=None, sentobj=None,
+                        filter_cache=None, filtered=None, gramfilter=None,
+#                        morphid=1,
                         verbosity=0):
-        if word in local_cache:
+        if word in cache:
             print("** Getting {} from local cache".format(word))
-            analysis = local_cache[word]
+            analysis = cache[word]
             sentlist.append((word, analysis))
 #            if gramfilter and filter_cache:
 #                if word in filter_cache[0]:
@@ -1785,18 +1842,8 @@ class Language:
 #                    if verbosity:
 #                        print("** {} in succeeded filter cache".format(word))
 #                    filtered[1].append(word)
-#            if dicts:
-#                add_anals_to_dict(self, analysis, dicts[0], dicts[1])
-#            elif xml:
-#                add_caco_word(xsent, word, analysis, multseg=multseg)
-#            elif experimental:
-#                csent.add_word(word, analysis, morphid, conllu=True, um=um, seglevel=seglevel)
-#            elif printout:
-#                anal_string = self.analyses2string(word, analysis, seg=segment, form_only=False, lemma_only=False,
-#                                                   ortho_only=False, word_sep=word_sep)
-#                print(anal_string, file=file, end='')
-#            else:
             return True
+        return False
 
     ### Old functions (HM 4)
 

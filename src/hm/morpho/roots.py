@@ -858,6 +858,7 @@ class Roots:
             m = Roots.ROOT_RE.match(line)
             if m:
                 cons, feats, typename = m.groups()
+                types = None
                 if typename:
                     typename = typename.strip()
                     # strip off { and }
