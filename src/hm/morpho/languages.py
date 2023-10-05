@@ -66,8 +66,8 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               cache=True, guess=False, mwe=True, gen=False,
               v5=False, experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
-    if verbose:
-        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
+#    if verbose:
+#        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
     if lang_id == 'amh':

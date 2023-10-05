@@ -807,7 +807,7 @@ class POSMorphology:
             name = self.fst_name(generate=generate, guess=guess, translate=translate, mwe=mwe, suffix=suffix)
             fst = self.fst_dict.get(name)
             if not fst:
-                print("*** No FST stored for {}".format(name))
+#                print("*** No FST stored for {}".format(name))
                 return
             return fst
 #        print("*** Getting FST {} {} {} {} {} {} {} {}".format(generate, guess, simplified, phon, segment, translate, experimental, mwe))
@@ -1128,7 +1128,7 @@ class POSMorphology:
             if fst:
 #                if mwe:
                 fst, found_pickle = fst
-#                print("   *** Found FST; path {}, label {}".format(path, fst.label))
+                print("   *** Found FST; path {}, label {}".format(path, fst.label))
                 if found_pickle and verbose:
                     print("Finished unpickling {}".format(fst.label))
                 if pickle and not found_pickle and create_pickle:
@@ -1781,7 +1781,7 @@ class POSMorphology:
 
     def gen(self, root, features=None, from_dict=False,
             postproc=False, update_feats=None, del_feats=None,
-            guess=False, phon=False, segment=False, ortho=False,
+            guess=False, phon=False, segment=False, ortho=False, mwe=False,
             ortho_only=False, fst=None, sort=False, print_word=False, print_prefixes=None,
             interact=False, timeit=False, timeout=100, limit=10,
             v5=False,
@@ -1814,7 +1814,7 @@ class POSMorphology:
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
-                                  phon=phon, segment=segment,
+                                  phon=phon, segment=segment, mwe=mwe,
                                   v5=v5)
 #        print("  *** fst {}".format(fst.label))
         if from_dict:

@@ -96,7 +96,7 @@ def exit(save=True, cache=''):
     morpho.languages.LANGUAGES.clear()
 
 def load_lang(language, phon=False, segment=False, experimental=False, pickle=True, recreate=False,
-              load_morph=True, cache='', simplified=False, translate=False, fidel=False, gen=False,
+              load_morph=True, cache='', translate=False, fidel=False, gen=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
@@ -104,7 +104,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
     """
 #    print("** load_lang, load_morph = {}".format(load_morph))
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
-                     phon=phon, segment=segment, simplified=simplified,
+                     phon=phon, segment=segment, 
                      translate=translate, experimental=experimental, gen=gen,
                      load_morph=load_morph, cache=cache, fidel=fidel,
                      guess=guess, verbose=verbose)
@@ -725,7 +725,7 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
     @return:       cascade for the the language and POS: a list of FSTs
     '''
     pos = get_pos(language, pos, phon=phon, segment=segment, translate=translate,
-    load_morph=False, verbose=verbose)
+                  load_morph=False, verbose=verbose)
     if not gen and pos.casc:
         return pos.casc
     if gen:
@@ -743,18 +743,19 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
 
 def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             translate=False, experimental=False, mwe=False, seglevel=2,
+            v5=True,
             gemination=True, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
-    If gen is True, create both the analyzer and generator, using the non-segmenter version
-    of the analyzer for the generator.
+    If gen is True, create both the analyzer and generator, inverting the analyzer to create
+    the generator.
     Note: the resulting FSTs are not saved (written to a file). To do this, use the method
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
     # Look in the fidel directory for languages with these abbreviations
     fidel = abbrev in morpho.FIDEL
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate, guess=guess,
                         fidel=fidel, load_morph=False, verbose=verbose)
     if verbose:
         print(">>> CREATING ANALYZER <<<")
@@ -762,10 +763,11 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                              translate=translate, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              create_fst=True, relabel=True, gemination=gemination,
+                             v5=v5,
                              compose_backwards=False, split_index=split_index,
                              phon=phon, verbose=verbose)
-    if gen == True and mwe == False:
-        # Also create the generation FST, but not for MWEs
+    if gen == True: # and mwe == False:
+        # Also create the generation FST ##, but not for MWEs
         if seglevel == 0:
             # Just invert the analyzer
             if verbose:
@@ -779,11 +781,12 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                                          experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
                                          create_fst=True, relabel=True, gemination=gemination,
                                          compose_backwards=False, split_index=split_index,
-                                         setit=False,
+                                         setit=False, v5=v5,
                                          phon=phon, verbose=verbose)
+            print("Inverting analysis FST for generation")
             genfst = analfst.inverted()
         pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
-                          experimental=experimental, mwe=mwe)
+                          experimental=experimental, mwe=mwe, v5=v5)
     return pos_morph
 
 def recompile(language, pos, phon=False, segment=False, gen=False,

@@ -165,10 +165,10 @@ class Roots:
             dest_gem = dest + '_gem'
             if not fst.has_state(dest_gem):
                 fst.add_state(dest_gem)
-                outgem = gem if gemination and seglevel else ''
+            outgem = gem if seglevel else ''
                 if verbosity:
-                    print("  ** outchar {}, inchar {}, {}, {}".format(outgem, '/', source, dest_gem))
-                charfeat_arc(gem, outgem, gem_weight, source, dest_gem, fst)
+                    print("  ** outchar {}, inchar {}, {}, {} ; {}".format(outgem, '/', source, dest_gem, gem_weight.__repr__()))
+            charfeat_arc(gem, outgem, gem_weight, source, dest_gem, fst)
             if verbosity:
                 print("  ** outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))
             charfeat_arc(inchar, outchar, weight, dest_gem, dest, fst)
@@ -566,6 +566,7 @@ class Roots:
             if gen or seglevel == 0:
                 pad2eqlen(cons, pattern)
             for cindex, (char, c) in enumerate(zip(pattern[:-1], cons[:-1])):
+#                print("** cindex {} char {} c {}".format(cindex, char, c))
                 gem = False
                 cposition = cindex + 1
                 gem = ":" in char or EES.pre_gem_char in char
@@ -575,17 +576,21 @@ class Roots:
                 if not fst.has_state(dest):
                     fst.add_state(dest)
                 if gem:
+#                    print(" ** gemination: pat char {}, root char {}".format(char, c))
                     # Make a separate arc for the pre-gem character
-                    dest_gem = source + '_gem'
+                    gemc = EES.pre_gem_char
+                    dest_gem = dest + '_gem'
                     if not fst.has_state(dest_gem):
                         fst.add_state(dest_gem)
-                    gemc = EES.pre_gem_char
-                    fst.add_arc(source, dest_gem, gemc, gemc, weight=pfeatures) #gem_feat)
+                    outgem = gemc if seglevel else ''
+#                    print("  **(mid) outchar {}, inchar {}, {}, {}".format(outgem, '/', source, dest_gem))
+                    fst.add_arc(source, dest_gem, gemc, outgem, weight=pfeatures) #gem_feat)
                     inchar = char
-                    if gen or seglevel == 0:
-                        outchar = c
+                    if not gen and seglevel:
+                        outchar = inchar
                     else:
-                        outchar = char
+                        outchar = c
+#                    print("  **(mid) outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))
                     fst.add_arc(dest_gem, dest, inchar, outchar, weight=pfeatures)
                 else:
                     inchar = char
@@ -611,7 +616,9 @@ class Roots:
                 if not fst.has_state(dest_gem):
                     fst.add_state(dest_gem)
                 gemc = EES.pre_gem_char
-                fst.add_arc(source, dest_gem, gemc, gemc, weight=pfeatures) #gem_feat)
+                outgem = gemc if seglevel else ''
+#                print("  **(end) outchar {}, inchar {}, {}, {}".format(outgem, '/', source, dest_gem))
+                fst.add_arc(source, dest_gem, gemc, outgem, weight=pfeatures) #gem_feat)
                 inchar = char
                 if gen or seglevel == 0:
                     outchar = c

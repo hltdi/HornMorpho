@@ -76,9 +76,8 @@ feats:
     mwe::
       {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
     lemmafeats = a,v
-    neg = False | True
     a = 0 | a  | i
-    v = 0 | p | a | as
+    v = 0 | p | a | as | ast
     t = p | i | j | c
     sp = 3 | 2 | 1
     sn = 1 | 2
@@ -90,24 +89,27 @@ feats:
     neg = False | True
     sub = False | True
     rel = False | True
+    acc = False | True
+    det = False | True
     mc = True | False
+#    ax = None | al
     adp = None | ለ | በ | ከ | እንደ | እስከ |ስለ | ወደ
     sconj = None | ብ | ስ | ል | እንድ | እየ
     cconj = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
 #  pos: v_stem v_stem
 #    a = 0 | a | i
-#    v = 0 | p | a | as
+#    v = 0 | p | a | as | ast
 #    t = p | i | j | c
 
-#  pos: v_light_stem v_light_stem
-#    a = 0 | a | i
-#    v = 0 | p | a | as
-#    t = p | i | j | c
+  pos: v_light_stem v_light_stem
+    a = 0 | a | i
+    v = 0 | p | a | as
+    t = p | i | j | c
 
 #  pos: vn v_noun
 #    a = 0 | a | i
-#    v = 0 | p | a | as
+#    v = 0 | p | a | as | ast
 #    d = a | inf | ins | m
 #    # only for infinitive
 #    neg = False | True
@@ -130,17 +132,21 @@ feats:
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     lemmafeats = d;a,v
     pos = n | adj | nadj
+    det = False | True
     n = 1 | 2
+    g = m | f
     pp = 0 | 1 | 2 | 3
     pn = 1 | 2
     pg = m | f
     pf = False | True
     acc = False | True
+    gen = False | True
     pl = False | True
     col = False | True
     dis = False | True
+    irr = False | True
     adp = None | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ
-    cnj = None | ም | ስ | ማ | ሳ | ና | ኮ
+    cconj = None | ም | ስ | ማ | ሳ | ና | ኮ
 
   pos: cop copula
     morphotax::

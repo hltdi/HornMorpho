@@ -81,7 +81,7 @@ class Template:
         return constraint
 
     @staticmethod
-    def make_all_template_states(fst, tmp_dict, default_final, gen=False):
+    def make_all_template_states(fst, tmp_dict, default_final, gen=False, seglevel=2):
         '''
         Add states and arcs for all templates in the template dict.
         '''
@@ -146,8 +146,9 @@ class Template:
                     dest0 = source + '_gem'
                     fst.add_state(dest0)
                     c = EES.pre_gem_char
-#                    print("    *** arc {}->{}; {}; {}".format(source, dest0, c, wt))
-                    fst.add_arc(source, dest0, c, c, weight=wt)
+                    outgem = c if seglevel else ''
+                    print("    *** arc {}->{}; {}<-{}; {}".format(source, dest0, outgem, c, wt))
+                    fst.add_arc(source, dest0, c, outgem, weight=wt)
 #                    print("    *** arc {}->{}; {}; {}".format(dest0, dest, charset, wt))
                     fst.add_arc(dest0, dest, charset, charset, weight=wt)
                 else:
@@ -166,8 +167,9 @@ class Template:
                 dest0 = source + '_gem'
                 fst.add_state(dest0)
                 c = EES.pre_gem_char
-#                print("    *** arc {}->{}; {}; {}".format(source, dest0, c, wt))
-                fst.add_arc(source, dest0, c, c, weight=wt)
+                outgem = c if seglevel else ''
+                print("    *** arc {}->{}; {}<-{}; {}; {}".format(source, dest0, outgem, c, wt, gen))
+                fst.add_arc(source, dest0, c, outgem, weight=wt)
 #                print("    *** arc {}->{}; {}; {}".format(dest0, end, charset, wt))
                 fst.add_arc(dest0, end, charset, charset, weight=wt)
             else:
@@ -546,7 +548,7 @@ class Template:
 #        for x, y in tmp_dict.items():
 #            print("*** {} -- {}".format(x, y))
 
-        Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen)
+        Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen, seglevel=seglevel)
 
 #        print(fst)
         return fst

@@ -1362,26 +1362,26 @@ class Language:
             # Load lexical anal and gen FSTs (no gen if segmenting)
             if ortho:
                 self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
-                                              simplified=False, experimental=False, mwe=False,
+                                              experimental=False, mwe=False,
                                               phon=False, segment=False, translate=translate,
                                               gemination=self.output_gemination, v5=True, suffix=suffix,
                                               pos=pos, recreate=recreate, verbose=verbose)
                 if mwe and self.morphology[pos].mwe:
                     self.morphology[pos].load_fst(gen=False, create_casc=False, pickle=pickle,
-                                                  simplified=False, experimental=False, mwe=True,
+                                                  experimental=False, mwe=True,
                                                   phon=False, segment=False, translate=translate,
                                                   gemination=self.output_gemination, v5=True, suffix=suffix,
                                                   pos=pos, recreate=recreate, verbose=verbose)
             # Load generator for both analysis and segmentation
 #            if phon or (ortho and not segment):
             self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-                                          simplified=False, experimental=False, mwe=False,
+                                          experimental=False, mwe=False,
                                           phon=phon, segment=False, translate=translate,
                                           gemination=self.output_gemination, v5=True, suffix=suffix,
                                           pos=pos, recreate=recreate, verbose=verbose)
             if mwe and self.morphology[pos].mwe:
                 self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-                                              simplified=False, experimental=False, mwe=True,
+                                              experimental=False, mwe=True,
                                               phon=phon, segment=False, translate=translate,
                                               gemination=self.output_gemination, v5=True, suffix=suffix,
                                               pos=pos, recreate=recreate, verbose=verbose)
@@ -1391,14 +1391,14 @@ class Language:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
                                                   segment=False, translate=translate,
                                                   pickle=pickle, create_casc=False,
-                                                  simplified=False, experimental=False, mwe=False,
+                                                  experimental=False, mwe=False,
                                                   gemination=self.output_gemination, v5=True, suffix=suffix,
                                                   pos=pos, recreate=recreate, verbose=verbose)
                 # Always load phonetic generation guesser
                 if phon:
                     self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
                                                   create_casc=False, pickle=pickle, experimental=False, mwe=False,
-                                                  simplified=False, translate=translate, v5=True,
+                                                  translate=translate, v5=True,
                                                   gemination=self.output_gemination, suffix=suffix,
                                                   pos=pos, recreate=recreate, verbose=verbose)
             # Load statistics for generation
