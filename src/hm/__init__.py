@@ -64,10 +64,11 @@ def make_corpus5(language, data, **kwargs):
 def analyze5(language, word, **kwargs):
     '''
     Analyze a word or MWE, returning a list of dicts.
-    kwargs: mwe=False, degem=True, conllu=True, sep_feats=True, combine_segs=False, verbosity=0
+    kwargs: mwe=False, degem=True, conllu=True, sep_feats=True, guess=False, combine_segs=False, verbosity=0
     '''
-    guess = kwargs.get('guess', False)
-    language = morpho.get_language(language, v5=True, guess=guess)
+    kwargs['guess'] = kwargs.get('guess', False)
+    kwargs['v5'] = True
+    language = morpho.get_language(language, **kwargs)
     if language:
         return language.analyze5(word, **kwargs)
 
@@ -75,9 +76,8 @@ def anal_sentence5(language, sentence, **kwargs):
     '''
     Analyze the sentence using Language.anal_sentence5(), returning a Sentence object.
     '''
+    kwargs['guess'] = kwargs.get('guess', False)
     kwargs['v5'] = True
-    if 'guess' not in kwargs:
-        kwargs['guess'] = False
     language = morpho.get_language(language, **kwargs)
     if language:
         return language.anal_sentence5(sentence, **kwargs)

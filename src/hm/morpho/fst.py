@@ -2084,7 +2084,7 @@ class FST:
         directory, fil = os.path.split(filename)
         label, suffix = fil.split('.')
 
-        # Whether to output segments in mtax FST, when doing segmentation (seglevel > 0).
+        # Whether to output segments in mtax FST, when doing segmentation (seglevel > 0 and not generation).
         output_segs = not gen and seglevel
 
 #        print("** Loading FST from {}; cascade {}, language {}, seglevel {}".format(filename, cascade, cascade.language, seglevel))
@@ -2238,7 +2238,6 @@ class FST:
                     else:
                         mtax.fst.add_arc(src, dest, '', '', weight=weight)
                 else:
-#                    print("   ** Compile MTAX: Making multiple arcs for {}->{} from {} to {}, weight: {}".format(in_string, out_string, src, dest, weight))
                     mtax.fst._make_mult_arcs(in_string, out_string, src, dest, weight, mtax.seg_units, gen=gen, gemination=gemination)
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
@@ -2589,7 +2588,7 @@ class FST:
         """
         Create states and arcs to join src with dst, given multiple chars in in_string.
         """
-#        print("    ** make_mult_arcs: in {} out {} src {} dst {} wt {}".format(in_string, out_string, src, dst, weight.__repr__()))
+#        print("    ** make_mult_arcs: in {} out {} src {} dst {} gen {} wt {}".format(in_string, out_string, src, dst, gen, weight.__repr__()))
         ## Intermediate state labels
         # In case there are spaces in in_string, remove these for state names
         in_string_label = in_string.replace(' ', '')

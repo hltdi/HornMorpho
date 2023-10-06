@@ -193,8 +193,9 @@ class MTax:
             m = PATH_RE.match(line)
             if m:
                 indentation, in_string, out_string, fss = m.groups()
-                if not output_segs:
-                    # This prevents in_string from being copied to out_string
+                if not output_segs and not out_string:
+                    # This prevents in_string from being copied to out_string for seglevel=0 or generation
+                    # unless there is an explicit out_string
                     out_string = ''
 #                print("  ** PATH in {} out {} fss {}".format(in_string, out_string, fss))
                 if gen and fss:

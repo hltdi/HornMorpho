@@ -166,8 +166,8 @@ class Roots:
             if not fst.has_state(dest_gem):
                 fst.add_state(dest_gem)
             outgem = gem if seglevel else ''
-                if verbosity:
-                    print("  ** outchar {}, inchar {}, {}, {} ; {}".format(outgem, '/', source, dest_gem, gem_weight.__repr__()))
+            if verbosity:
+                print("  ** outchar {}, inchar {}, {}, {} ; {}".format(outgem, '/', source, dest_gem, gem_weight.__repr__()))
             charfeat_arc(gem, outgem, gem_weight, source, dest_gem, fst)
             if verbosity:
                 print("  ** outchar {}, inchar {}, {}, {}".format(outchar, inchar, dest_gem, dest))

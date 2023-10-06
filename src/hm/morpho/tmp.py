@@ -147,7 +147,7 @@ class Template:
                     fst.add_state(dest0)
                     c = EES.pre_gem_char
                     outgem = c if seglevel else ''
-                    print("    *** arc {}->{}; {}<-{}; {}".format(source, dest0, outgem, c, wt))
+#                    print("    *** arc {}->{}; {}<-{}; {}".format(source, dest0, outgem, c, wt))
                     fst.add_arc(source, dest0, c, outgem, weight=wt)
 #                    print("    *** arc {}->{}; {}; {}".format(dest0, dest, charset, wt))
                     fst.add_arc(dest0, dest, charset, charset, weight=wt)
@@ -168,7 +168,7 @@ class Template:
                 fst.add_state(dest0)
                 c = EES.pre_gem_char
                 outgem = c if seglevel else ''
-                print("    *** arc {}->{}; {}<-{}; {}; {}".format(source, dest0, outgem, c, wt, gen))
+#                print("    *** arc {}->{}; {}<-{}; {}; {}".format(source, dest0, outgem, c, wt, gen))
                 fst.add_arc(source, dest0, c, outgem, weight=wt)
 #                print("    *** arc {}->{}; {}; {}".format(dest0, end, charset, wt))
                 fst.add_arc(dest0, end, charset, charset, weight=wt)
