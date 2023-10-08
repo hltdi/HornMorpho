@@ -26,6 +26,9 @@ import collections, functools
 from .tdict import *
 from .menu import *
 
+# Character that is allowed in all segment sets
+LEGAL_CHAR = '*'
+
 def allcombs(seqs):
     """Returns a list of all sequences consisting of one element from each of seqs.
     This could also be done with itertools.product."""
@@ -63,8 +66,8 @@ def segment(word, units, correct=True):
                 else:
                     res.append(ch)
                     pos += 1
-            elif ch == ' ':
-                res.append(' ')
+            elif ch == ' ' or ch == LEGAL_CHAR:
+                res.append(ch)
                 pos += 1
             elif correct:
                 print(ch, 'in', word, 'is not an acceptable character')

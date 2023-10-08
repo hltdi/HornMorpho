@@ -155,7 +155,7 @@ def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
                                                                    load=True, verbose=verbose)
 
 def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=False,
-                        fidel=False, guess=True, simplified=False, verbose=False):
+                        fidel=False, guess=True, verbose=False):
     """
     Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -174,8 +174,8 @@ def get_pos(abbrev, pos, phon=False, segment=False, translate=False, load_morph=
 
     """
     hm.load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, fidel=fidel,
-                 translate=translate, guess=guess, simplified=simplified, verbose=verbose)
-    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment, simplified=simplified,
+                 translate=translate, guess=guess, verbose=verbose)
+    lang = hm.morpho.get_language(abbrev, phon=phon, segment=segment,
                                   translate=translate, load=load_morph, load_morph=load_morph,
                                   fidel=fidel, verbose=verbose)
     if lang:
@@ -193,7 +193,7 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
 def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
                             translate=False, experimental=False, mwe=False, seglevel=2,
                             fidel=False, create_fst=True, relabel=True, gemination=True,
-                            simplified=False, backwards=False, split_index=0, verbose=True):
+                            backwards=False, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
@@ -202,13 +202,13 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-                                            fidel=fidel,
-                                            simplified=simplified, load_morph=False, verbose=verbose)
-    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-                             translate=translate, simplified=simplified, recreate=True, fidel=fidel,
+                                            fidel=fidel, load_morph=False, verbose=verbose)
+    fst = pos_morph.load_fst(True, segment=segment, gen=gen, invert=gen, guess=guess,
+                             translate=translate, recreate=True, fidel=fidel,
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              create_fst=create_fst, relabel=relabel, gemination=gemination,
                              compose_backwards=backwards, split_index=split_index,
+                             v5=True,
                              phon=phon, verbose=verbose)
     if not fst and gen == True:
         print('Generation FST not found')
@@ -216,7 +216,7 @@ def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
         pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
         # ... and invert it for generation FST
         pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-                                                 relabel=relabel,
+                                                 relabel=relabel, v5=True,
                                                  fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
     return pos_morph
 
@@ -229,11 +229,11 @@ def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True,
     return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, fidel=fidel,
                                        create_fst=create_fst, seglevel=seglevel, verbose=verbose)
 
-def genrecompile(lang, pos, create_fst=True):
+def genrecompile(lang, pos, create_fst=True, mwe=False):
     '''
     Recompile the generation FST for a language in the fidel folder.
     '''
-    return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst)
+    return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst, mwe=mwe)
 
 def analrecompile(lang, pos, create_fst=True, seglevel=2, gemination=True):
     '''

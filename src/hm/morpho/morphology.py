@@ -1140,7 +1140,7 @@ class POSMorphology:
                                  segment=segment, translate=translate, experimental=experimental)
                 if create_casc and not self.casc:
                     casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
-                                           create_networks=True, subcasc=subcasc, seglevel=seglevel,
+                                           create_networks=True, subcasc=subcasc, seglevel=seglevel, mwe=mwe,
                                            language=self.language, gen=gen, pos=pos, gemination=gemination,
                                            verbose=verbose)
                     if casc:
@@ -1158,7 +1158,7 @@ class POSMorphology:
                         print('Recreating...')
                     self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                 create_networks=True, subcasc=subcasc, pos=pos, seglevel=seglevel,
-                                                gemination=gemination,
+                                                gemination=gemination, mwe=mwe,
                                                 language=self.language, gen=gen, verbose=verbose)
                     self.casc_inv = self.casc.inverted()
                     # create_fst is False in case we just want to load the individuals fsts.
@@ -1478,7 +1478,7 @@ class POSMorphology:
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features.get('mwe') or self.mwe_feats
-            print("%% process5 mwe: {}".format(mwe_props))
+#            print("^^ process5 mwe: {}".format(mwe_props))
         procdict = {'token': token, 'feats': features, 'string': string}
         sep_feats = kwargs.get('sep_feats', False)
         if mwe_props:
@@ -1496,6 +1496,7 @@ class POSMorphology:
         udfdict = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
 #        udfdict = dict([u.split("=") for u in udfeats.split("|")])
 #        procdict['udfeats'] = udfeats
+        stemd = None
         if self.segments:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []
@@ -1504,26 +1505,29 @@ class POSMorphology:
             stem_index = len(prefixes)
             suff1_index = len(prefixes) + 1
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
+#                prefix = prefix.strip()
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, features,
                                            is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                     )
             prefixes = pre_dicts
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
+#                suffix = suffix.strip()
                 post_dicts.append(
                     self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features,
                                            is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                     )
             suffixes = post_dicts
             if stemprops:
+#                stem = stem.strip()
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, features,
                                          is_stem=True, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
-                stem = stem_dict
+                stemd = stem_dict
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
-        procdict['stem'] = stem
-        root = self.get_root(stem, features, mwe=mwe_props)
+        procdict['stem'] = stemd or stem
+        root = self.get_root(stem, procdict, mwe=mwe_props)
         procdict['root'] = root
         lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props)
         procdict['lemma'] = lemma
@@ -1578,14 +1582,39 @@ class POSMorphology:
             dict['feats'] = feats
         return dict
 
-    def get_root(self, stem, features, mwe=None):
+    def get_root(self, stem, procdict, mwe=None):
         '''
         For MWEs, mwe is a dict of properties.
         '''
+        features = procdict['feats']
         if not mwe:
             return features.get('root', stem)
+        # Get the appropriate root
         if 'root' in mwe:
-            mweroot = mwe['root']
+            rootfeats = mwe['root']
+            # rootfeats should be a list of elements to make up the root
+            # separated by whitespace
+            mweroot = []
+            for item in rootfeats:
+                # Each 'item' is a tuple: (part, position) or 'root'
+                if isinstance(item, tuple):
+                    # This specified a part of the word: 'pre', 'stem', or 'suf'
+                    # and a position within it (no position for 'stem', which has only 1)
+                    part, position = item
+#                    print("    ^^ MWE root: {}, {}".format(part, position))
+                    wordpart = procdict[part]
+                    if part != 'stem':
+                        wordpart = wordpart[position]
+                    partstring = wordpart.get('string', '')
+                    mweroot.append(partstring)
+                elif item == 'root':
+                    featroot = procdict.get('feats', {}).get('root', '')
+                    if not featroot:
+                        print("     ^^ No root in features {}".format(procdict))
+                        return ''
+                    mweroot.append("{" + featroot + "}")
+            return ''.join(mweroot)
+
         return features.get('root', stem)
 
 #    def get_segment_props(self, string, segdict):
@@ -1663,18 +1692,19 @@ class POSMorphology:
             return stem
         lemmafeat1, lemmafeats2 = lemmafeats
         features = procdict['feats']
-        print("%% generating lemma for {}|{} ; {}; mwe {}".format(stem, root, features.__repr__(), mwe))
-#        print("  ^^ lfeats {} {}".format(lemmafeat1, lemmafeats2))
+#        print("^^ generating lemma for {}|{} ; mwe {}".format(stem, root, mwe.__repr__()))
+#        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
             if not value1:
+#                print("    ^^ no value1, returning stem {}".format(stem))
                 return stem
             initfeat = ["{}={}".format(lemmafeat1, value1)]
             for lf in lemmafeats2:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
             initfeat = ','.join(initfeat)
-#            print("    ^^ initfeat {}".format(initfeat))
+#            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             gen_out = self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)
             if gen_out:
                 return gen_out[0][0]
@@ -1684,8 +1714,8 @@ class POSMorphology:
             value = features.get(lf)
             initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
-#        print("    ^^ initfeat 2 {}".format(initfeat))
-        gen_out = self.gen(root, update_feats=initfeat, v5=True)
+#        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
+        gen_out = self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)
         if gen_out:
             return gen_out[0][0]
 
@@ -1750,7 +1780,7 @@ class POSMorphology:
                  interact=True, timeit=False, timeout=100,
                  only_one=False, trace=False):
         """Generate word from root and features, first trying stored forms."""
-        print("^^ Calling generate on {}".format(root))
+#        print("^^ Calling generate on {}".format(root))
         fss = None
         if not features:
             if interact and self.feat_list:
@@ -1828,8 +1858,8 @@ class POSMorphology:
                                   phon=phon, segment=segment, mwe=mwe,
                                   v5=v5)
 #        print("  ^^ fst {}".format(fst.label))
-        if mwe and v5:
-            root = root.replace(" ", Morphology.mwe_sep)
+#        if mwe and v5:
+#            root = root.replace(" ", Morphology.mwe_sep)
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
             anal = self.dict_to_anal(root, features)
@@ -1840,8 +1870,7 @@ class POSMorphology:
             features = fss
         else:
             features = FSSet.cast(features)
-#        print("GENERATING {}, features {}, fst {}".format(root, features.__repr__(),
-#                                                          fst.__repr__()))
+#        print("^^ GENERATING {}, features {}, fst {}".format(root, features.__repr__(), fst.__repr__()))
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form
@@ -1850,7 +1879,6 @@ class POSMorphology:
             if oroot:
                 root = oroot
         if fst:
-
 #            print('^^ Transducing with features {}'.format(features.__repr__()))
             gens = \
               fst.transduce(root, features,
@@ -1859,7 +1887,6 @@ class POSMorphology:
                             dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
                             result_limit=limit, verbosity=verbosity)
-#            print("gens {}".format(gens))
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)
@@ -1868,6 +1895,10 @@ class POSMorphology:
                 for gen in gens:
                     # Replace the wordforms with postprocessed versions
                     gen[0] = self.finalize_output(gen[0], phon=phon, ortho_only=ortho_only)
+            if mwe:
+                # Replace // with space for MWEs
+                for index, (string, feats) in enumerate(gens):
+                    gens[index][0] = string.replace(Morphology.mwe_sep, ' ')
             return gens
         elif trace:
             print('No generation FST loaded')

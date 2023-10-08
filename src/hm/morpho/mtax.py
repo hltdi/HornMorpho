@@ -193,7 +193,14 @@ class MTax:
             m = PATH_RE.match(line)
             if m:
                 indentation, in_string, out_string, fss = m.groups()
-                if not output_segs and not out_string:
+                if out_string:
+                    if out_string[0] == '$':
+                        # This means the output string is only for generation and seglevel=0
+                        if not output_segs:
+                            out_string = out_string[1:]
+                        else:
+                            out_string = None
+                elif not output_segs:
                     # This prevents in_string from being copied to out_string for seglevel=0 or generation
                     # unless there is an explicit out_string
                     out_string = ''

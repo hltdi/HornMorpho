@@ -508,7 +508,7 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None, posmorph=None,
-             language=None, pos='', seglevel=2, gemination=True,
+             language=None, pos='', seglevel=2, gemination=True, mwe=False,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
@@ -523,7 +523,7 @@ class FSTCascade(list):
 
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
-                                posmorph=posmorph, gemination=gemination,
+                                posmorph=posmorph, gemination=gemination, mwe=mwe,
                                 dirname=dirname, pos=pos, seglevel=seglevel,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
@@ -531,7 +531,7 @@ class FSTCascade(list):
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
               posmorph=None, subcasc=None, language=None, dirname='', pos='', seglevel=2,
-              gemination=True,
+              gemination=True, mwe=False,
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -603,7 +603,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
-                                       posmorph=posmorph, gemination=gemination,
+                                       posmorph=posmorph, gemination=gemination, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -621,7 +621,7 @@ class FSTCascade(list):
                     if not subcasc_indices or len(cascade) in subcasc_indices:
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(), seglevel=seglevel,
-                                       posmorph=posmorph, gemination=gemination,
+                                       posmorph=posmorph, gemination=gemination, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -640,7 +640,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        posmorph=posmorph, gemination=gemination,
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       abbrevs=abbrevs, seglevel=seglevel,
+                                       abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -661,7 +661,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        posmorph=posmorph, gemination=gemination,
-                                       abbrevs=abbrevs, seglevel=seglevel,
+                                       abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -682,7 +682,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        posmorph=posmorph, gemination=gemination,
-                                       abbrevs=abbrevs, seglevel=seglevel,
+                                       abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -702,7 +702,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        posmorph=posmorph, gemination=gemination,
-                                       abbrevs=abbrevs, seglevel=seglevel,
+                                       abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -727,7 +727,7 @@ class FSTCascade(list):
                         fst = FST.load(os.path.join(cascade.get_fst_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
                                        posmorph=posmorph, gemination=gemination,
-                                       abbrevs=abbrevs, seglevel=seglevel,
+                                       abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -749,7 +749,7 @@ class FSTCascade(list):
                             print('Adding lex FST {} to cascade, reversed? {}'.format(label, cascade.r2l))
                         fst = FST.load(os.path.join(cascade.get_lex_dir(dirname=dirname), filename),
                                        cascade=cascade, weighting=cascade.weighting(),
-                                       posmorph=posmorph, gemination=gemination,
+                                       posmorph=posmorph, gemination=gemination, mwe=mwe,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, reverse=cascade.r2l, seglevel=seglevel,
                                        verbose=verbose, lex_features=True)
@@ -2073,6 +2073,7 @@ class FST:
     @staticmethod
     def load(filename, cascade=None, weighting=None, reverse=False, posmorph=None,
              seg_units=[], verbose=False, abbrevs=None, seglevel=2, gemination=True,
+             mwe=False,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
         """
@@ -2087,7 +2088,7 @@ class FST:
         # Whether to output segments in mtax FST, when doing segmentation (seglevel > 0 and not generation).
         output_segs = not gen and seglevel
 
-#        print("** Loading FST from {}; cascade {}, language {}, seglevel {}".format(filename, cascade, cascade.language, seglevel))
+#        print("!! Loading FST from {}; cascade {}, language {}, seglevel {}, mwe {}".format(filename, cascade, cascade.language, seglevel, mwe))
 
         if suffix == 'fst':
             if verbose:
@@ -2134,7 +2135,7 @@ class FST:
             fst = FST(label, cascade=cascade)
             mtax = MTax(fst, directory=directory)
             mtax.parse(label, open(filename, encoding='utf-8').read(), gen=gen, gemination=gemination, output_segs=output_segs, verbose=verbose)
-            FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, gemination=gemination, verbose=verbose)
+            FST.compile_mtax(mtax, gen=gen, cascade=cascade, posmorph=posmorph, seglevel=seglevel, gemination=gemination, mwe=mwe, verbose=verbose)
             return fst
 
         elif suffix == 'ar':
@@ -2149,17 +2150,18 @@ class FST:
         elif suffix == 'lex':
             # It's a file in lexicon format; treeify the file, then convert the tree to an FST
             if verbose:
-                print('Loading sublexicon from {}, reverse={}'.format(filename, reverse))
-            treeified = treeify_file(filename, seg_units=seg_units, reverse=reverse,
+                print('!! Loading sublexicon from {}, reverse={}, mwe={}'.format(filename, reverse, mwe))
+            treeified = treeify_file(filename, seg_units=seg_units, reverse=reverse, mwe=mwe,
                                      dest=dest_lex, verbose=False)
-#            print('Treeified {}'.format(treeified))
+#            print('!! Treeified {}'.format(len(treeified)))
+#            print("!! Tree start {}".format(list(treeified.items())[:10]))
             return FST.tree_to_fst(treeified,
                                    label, cascade=cascade, weighting=weighting,
                                    lex_features=lex_features, weight_constraint=weight_constraint,
                                    dest=dest_lex, verbose=False)
 
     @staticmethod
-    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, gemination=True, verbose=False):
+    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, gemination=True, mwe=False, verbose=False):
 #        print("** Compiling {} with {}".format(mtax, cascade))
         # Create a final state
         final_label = DFLT_FINAL
@@ -2185,7 +2187,7 @@ class FST:
                             print('Creating FST from lex file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), in_string),
                                              weighting=mtax.weighting, cascade=cascade,
-                                             seglevel=seglevel, gen=gen,
+                                             seglevel=seglevel, gen=gen, mwe=mwe,
                                              seg_units=mtax.seg_units, reverse=cascade.r2l,
                                              lex_features=True, dest_lex=False)
                     if verbose:
@@ -2197,7 +2199,7 @@ class FST:
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
                     if not fst1:
                         casc = FSTCascade.load(os.path.join(mtax.cascade.get_cas_dir(), in_string), seg_units=mtax.seg_units,
-                                               seglevel=seglevel, gen=gen,
+                                               seglevel=seglevel, gen=gen, mwe=mwe,
                                                language=mtax.cascade.language)
                         if verbose:
                             print('Composing {}'.format(casc))
@@ -2227,7 +2229,7 @@ class FST:
                             print('Compiling FST from file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_fst_dir(), in_string),
                                              weighting=mtax.weighting, cascade=mtax.cascade,
-                                             seglevel=seglevel, gen=gen,
+                                             seglevel=seglevel, gen=gen, mwe=mwe,
                                              seg_units=mtax.seg_units)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
@@ -2815,6 +2817,10 @@ class FST:
                 else:
                     inchar = char
                     outchar = char
+#                    if inchar == ' ':
+#                        new_state = label + '//'
+#                    else:
+#                        new_state = label + inchar
                     new_state = label + inchar
                 self.add_state(new_state)
                 # No weight specified
@@ -2848,10 +2854,15 @@ class FST:
             else:
                 inchar = char
                 outchar = char
+#                if inchar == ' ':
+#                    next_state = curr_state + '//'
+#                else:
                 next_state = curr_state + char
             self.add_state(next_state)
             inarc = inchar if inchar else ''         # (inchar,) if inchar else ()
             outarc = outchar if outchar else ''      # (outchar,) if outchar else ()
+#            if inarc == ' ':
+#                print("!! Arc {}->{} ; {}->{}".format(curr_state, next_state, inarc, outarc))
             self.add_arc(curr_state, next_state, inarc, outarc)
             curr_state = next_state
         self.set_final(curr_state)

@@ -16,7 +16,7 @@ This file is part of HornMorpho, a project in PLoGS.
 --------------------------------------------------------------------
 
 Create a letter tree from a list of words.
-Copyleft 2018, Michael Gasser <gasser@indiana.edu> and PLoGS.
+Copyleft 2011-2023, Michael Gasser <gasser@indiana.edu> and PLoGS.
 
 -- 2011-07-23
    Lexical entries can take up multiple lines to accommodate long
@@ -59,13 +59,15 @@ def fs_continuation_line(line):
     else:
         return match.groups()
 
-def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, verbose=False):
-    """Treeify words contained in a file, one word per line.
+def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, mwe=False, verbose=False):
+    """
+    Treeify words contained in a file, one word per line.
 
     input  (output)  (dest_state)  (features)
 
     dest=True means that the name of a destination FST state follows output (which
-    must precede it)."""
+    must precede it).
+    """
     infile = open(path, encoding='utf-8')
     words = []
     any_out = False
@@ -87,6 +89,8 @@ def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, verbos
             elements = split_line(line, dest=dest)
             if dest:
                 word, out, dst, feats, cont = elements
+#                if mwe:
+#                    word = word.replace("//", ' ')
                 if out:
                     out = out.strip()
                     any_out = True
@@ -96,6 +100,8 @@ def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, verbos
                     words.append([word, out, (dst, feats)])
             else:
                 word, out, feats, cont = elements
+#                if mwe:
+#                    word = word.replace("//", ' ')
                 if out:
                     out = out.strip()
                     if out == "''":
@@ -196,6 +202,7 @@ def treeify1(words, chars):
     # words that are finished
     ls = []
     for w in words:
+#        print("@@ word {}".format(w))
         if not w[0]:
             weight = w[1] if len(w) > 1 else ''
             if weight not in ls:

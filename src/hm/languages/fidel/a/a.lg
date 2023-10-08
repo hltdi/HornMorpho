@@ -74,8 +74,8 @@ feats:
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case'};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     mwe::
-      {'hdfin': True, 'deppos': 'PART', 'hdaff': True, 'root': (0, 0, None)}
-    lemmafeats = a,v
+      {'hdfin': True, 'deppos': 'PART', 'hdaff': True, 'root': [('pre', 0), 'root']}
+    lemmafeats = a,v,c
     a = 0 | a  | i
     v = 0 | p | a | as | ast
     t = p | i | j | c

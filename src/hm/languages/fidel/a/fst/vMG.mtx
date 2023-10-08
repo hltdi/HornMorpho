@@ -2,7 +2,7 @@ $ particle
   +v_light+	[pos=v]
 
 $ gap
-  //		<$ >
+  //		< >
   
 $ conj_prep_pre
   የ		[t=i|p,+rel,-mc,+sub]
@@ -49,7 +49,7 @@ $ sb_pre
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
 $ prestem
-  <		<${>
+  <		<{>
 
 $ voice_pre
   # transitive
@@ -66,7 +66,7 @@ $ stem
   >>v_light_stem<<
 
 $ poststem
-  >		<$}>
+  >		<}>
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p]
