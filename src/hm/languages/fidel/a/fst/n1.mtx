@@ -14,7 +14,7 @@ $ prep_bound
   -
 
 $ distrib
-  እ/የ	[+dis,-col]
+  እ/የ	[+dis,-col,pos=N]
   እ/ነ	[-dis,+pl,+col]
   --		[-dis,-col]
 
@@ -22,46 +22,63 @@ $ prestem
   <
 
 $ stem
-  +n_stem+		[pos=n|adj,ps=oc,-irr]
-  +n_stem_an+	[pos=n|adj,ps=an,-irr]
-  +n_name+		[pos=nm_prs,-pl]
-  +n_place+		[pos=nm_pl,-pl]
+  +n_stem+		[ps=oc,-irr]
+  +n_stem_an+	[ps=an,-irr]
+  +n_name+		[pos=PROPN,-pl,p=0]
+  +n_place+		[pos=PROPN,-pl,p=0]
   >>vn_stem<<
-  +ppron+		[pos=pron,-pl,-dis,-col,pp=0]
-  +prep_n+		[pos=n|adj,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ]  
-  +irr_plr+		[pos=n|adj,+pl,+irr]
+  +ppron+		[pos=PRON,-pl,-dis,-col,p=0]
+  +prep_n+		[pos=PRON|ADJ,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0]
+  +irr_plr+		[+pl,+irr]
 
 $ poststem
   >
 
 $ plural
-  ኦ/ች	[+pl,pos=n|adj|n_v,-col,-irr,ps=oc]
-  ኣን		[+pl,pos=n|adj,-col,-irr,ps=an]
+  ኦ/ች	[+pl,pos=N|ADJ|N_V,-col,-irr,ps=oc]
+  ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
   --		[-pl];[+pl,+col];[+pl,+irr]
 
 $ plur_bound
   -
 
 $ poss_det
-  ኤ		[pp=1,pn=1,-pf]
-  ኣ/ችን	[pp=1,pn=2,-pf]
-  ህ		[pp=2,pn=1,pg=m,-pf]
-  ሽ		[pp=2,pn=1,pg=f,-pf]
-  ኣ/ችሁ	[pp=2,pn=2,-pf]
-  ዎ		[pp=2,+pf]
+  ኤ		[p=s1]
+  ኣ/ችን	[p=p1]
+  ህ		[p=sm2]
+  ሽ		[p=sf2]
+  ኣ/ችሁ	[p=p2]
+  ዎ		[p=F2]
   # possessive or determiner
   #{
-  ኡ		[pp=3,pn=1,pg=m,-pf,-det];[pp=0,+det,g=m]
-  ዋ		[pp=3,pn=1,pg=f,-pf,-det];[pp=0,+det,g=f]
+  ኡ		[p=sm3]  #pd=m,-det];[pd=m,+det,p=0,g=m]
+  ዋ		[p=sf3]  #pd=f,-det];[pd=f,+det,p=0,g=f]
   #}
-  ኣ/ቸው	[pp=3,pn=2,-pf];[pp=3,+pf]
-  --		[pp=0,-det]
+  ኣ/ቸው	[p=p3]
+  --		[p=0]
+
+#  ኤ		[pp=1,pn=1,-pf]
+#  ኣ/ችን	[pp=1,pn=2,-pf]
+#  ህ		[pp=2,pn=1,pg=m,-pf]
+#  ሽ		[pp=2,pn=1,pg=f,-pf]
+#  ኣ/ችሁ	[pp=2,pn=2,-pf]
+#  ዎ		[pp=2,+pf]
+#  # possessive or determiner
+#  #{
+##  ኡ		[pp=3,pn=1,pg=m,-pf,-det];[pp=0,+det,g=m]
+##  ዋ		[pp=3,pn=1,pg=f,-pf,-det];[pp=0,+det,g=f]
+#  ኡ		[+det_,g=m]
+#  ዋ		[+det_,g=f]
+#  #}
+#  ኣ/ቸው	[pp=3,pn=2,-pf];[pp=3,+pf]
+#  --		[pp=0,-det_]
 
 $ poss_bound
   -
 
 $ acc
   ን		[+acc]
+  ኑ		[+acc]
   --		[-acc]
 
 $ acc_bound

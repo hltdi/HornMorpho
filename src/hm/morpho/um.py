@@ -34,7 +34,7 @@ class UniMorph:
     """
 
     pos_re = re.compile(r'\s*POS\s*(.*)\s+(.*)$')
-    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+\-\w\d]+)$')
+    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+/{}\-\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
     toUD_re = re.compile(r'\s*->UD\s+(.*)\s+(.*)$')
@@ -218,6 +218,11 @@ class UniMorph:
         if verbosity:
             print(" FS values: {}".format(fsvalues))
         ufeat = valuemap.get(fsvalues, False)
+        if not ufeat:
+            # * in valuemap is a wildcard; any value for this feature matches
+            ufeat = valuemap.get((fsvalues[0], '*'), False)
+        if verbosity:
+            print(" ufeat: {}".format(ufeat))
         if ufeat and ufeat[0] == '-':
             # negative feature; don't add it
             if verbosity:
@@ -433,6 +438,8 @@ class UniMorph:
                         udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
+#        if not udfeats:
+#            print("$$ No UD feats for {} ; {}".format(um, pos))
         if return_dict:
             return dict([u.split('=') for u in udfeats])
         return '|'.join(udfeats)

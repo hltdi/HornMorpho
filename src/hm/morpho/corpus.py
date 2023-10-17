@@ -136,6 +136,8 @@ class Corpus():
         elif data:
             # Raw sentences
             self.data = data
+            if v5 and segment:
+                self.segment5()
         else:
             self.data = []
 #        if segment:

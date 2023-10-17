@@ -1321,7 +1321,7 @@ class POSMorphology:
     def save_fst(self, generate=False, guess=False, simplified=False,
                  phon=False, segment=False, translate=False, experimental=False, mwe=False,
                  features=True, defaultFS=True, stringsets=True, suffix='',
-                 v5=False,
+                 v5=True,
                  pickle=False):
         '''Save FST in a file.'''
         fname = self.fst_name(generate=generate, guess=guess, simplified=simplified,
@@ -1472,28 +1472,26 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
-#        print("^^ process 5 {} {}".format(token, string))
+        sep_feats = kwargs.get('sep_feats', False)
         string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
+        procdict = {'token': token, 'feats': features, 'string': string}
+        if raw_token:
+            procdict['raw'] = raw_token
         mwe_props = None
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features.get('mwe') or self.mwe_feats
-#            print("^^ process5 mwe: {}".format(mwe_props))
-        procdict = {'token': token, 'feats': features, 'string': string}
-        sep_feats = kwargs.get('sep_feats', False)
-        if mwe_props:
-            token_dicts = self.get_mwe_tokens(token, mwe_props)
-            procdict['tokens'] = token_dicts
+            if mwe_props:
+                token_dicts = self.get_mwe_tokens(token, mwe_props)
+                procdict['tokens'] = token_dicts
 #            print("  ^^ token dicts {}".format(token_dicts))
-        if raw_token:
-            procdict['raw'] = raw_token
 #        prefixes, stem, suffixes = self.get_segments(string, features)
         procdict['nsegs'] = len([p for p in prefixes if p]) + 1 + len([s for s in suffixes if s])
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
-        POS = features.get('pos', self.pos)
-        procdict['pos'] = POS
+        procdict['pos'] = features.get('pos', self.pos)
         udfdict = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
+#        print("$$ udfdict {}".format(udfdict))
 #        udfdict = dict([u.split("=") for u in udfeats.split("|")])
 #        procdict['udfeats'] = udfeats
         stemd = None
@@ -1524,6 +1522,7 @@ class POSMorphology:
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, features,
                                          is_stem=True, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
                 stemd = stem_dict
+        procdict['udfeats'] = "|".join(["{}={}".format(feat, val) for feat, val in udfdict.items()])
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
         procdict['stem'] = stemd or stem
@@ -1531,6 +1530,8 @@ class POSMorphology:
         procdict['root'] = root
         lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props)
         procdict['lemma'] = lemma
+
+#        print("^^ process5: prodict {}".format(procdict))
 
         return procdict
 
@@ -1544,6 +1545,7 @@ class POSMorphology:
             headfin = props.get('hdfin')
             deppos = props.get('deppos')
             headaff = props.get('hdaff')
+            rel = props.get('rel')
             if headfin:
                 for token in tokens[:-1]:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
@@ -1570,6 +1572,7 @@ class POSMorphology:
         if dep:
             dict['dep'] = dep
         dict['head'] = head
+#        dict['lemma'] = morpheme
         feats = None
         if sep_feats:
             feats = self.get_segment_feats(morpheme, props, udfdict)

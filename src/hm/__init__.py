@@ -80,6 +80,8 @@ def anal_sentence5(language, sentence, **kwargs):
     kwargs['v5'] = True
     language = morpho.get_language(language, **kwargs)
     if language:
+        if kwargs.get('mwe'):
+            return language.anal_sent_mwe(sentence, None, **kwargs)
         return language.anal_sentence5(sentence, **kwargs)
 
 def exit(save=True, cache=''):

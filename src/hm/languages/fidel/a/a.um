@@ -14,15 +14,15 @@ POS n N
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
 ->UD FEM	Gender=Fem
-->UD PSS1P	*PossPers=1,PossNum=Plur
-->UD *PSS2FORM	*PossPers=2,Polite=Form
-->UD PSS2SF	*PossPers=2,PossNum=Sing,PossGen=Fem
-->UD PSS2P	*PossPers=2,PossNum=Plur
-->UD PSS1S	*PossPers=1,PossNum=Sing
-->UD PSS2SM	*PossPers=2,PossNum=Sing,PossGen=Masc
-->UD PSS3P	*PossPers=3,PossNum=Plur
-->UD PSS3SF	*PossPers=3,PossNum=Sing,PossGen=Fem
-->UD PSS3SM	*PossPers=3,PossNum=Sing,PossGen=Masc
+->UD PSS1P	Number[psor]=Plur,Person[psor]=1
+->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form
+->UD PSS2SF	Gender=Fem,Number[psor]=Sing,Person[psor]=2
+->UD PSS2P	Number[psor]=Plur,Person[psor]=2
+->UD PSS1S	Number[psor]=Sing,Person[psor]=1
+->UD PSS2SM	Gender=Masc,Number[psor]=Sing,Person[psor]=2
+->UD PSS3P	Number[psor]=Plur,Person[psor]=3
+->UD PSS3SF	Gender=Fem,Number[psor]=Sing,Person[psor]=3
+->UD PSS3SM	Gender=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD PASS	Voice=Pass
 ->UD CAUS	Voice=Cau
 ->UD RECP	Voice=Rcp
@@ -32,19 +32,26 @@ POS n N
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 
-pos:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
+pos:: NADJ:N;; NADV:N
 adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
-pp,pn,pg:: 3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
-pp,pn:: 1,1:PSS1S;; 1,2:PSS1P;; 2,2:PSS2P;; 3,2:PSS3P
+# unambiguous possessive suffixes
+p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
+# ambiguous possessive/determiner suffixes
+p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
+p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
+p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 
-#def!poss:: DEF
-det,plr:: True,True:DEF;PL;; False,True:PL
-det,fem:: True,True:DEF;FEM;; True,False:DEF;MASC;; False,False:-DEF;; False,True:-DEF
-det:: True:DEF;; False:-DEF
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
+
+#pp,pn,pg:: 3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
+#pp,pn:: 1,1:PSS1S;; 1,2:PSS1P;; 2,2:PSS2P;; 3,2:PSS3P
+#det,pl:: True,True:DEF;PL;; False,True:PL;; True,False:DEF
+#det,fem:: True,True:DEF;FEM;; True,False:DEF;MASC
+#;; False,False:-DEF;; False,True:-DEF
+#det:: True:DEF;; False:-DEF
 # only relevant for deverbal nouns
 #a,v:: it,cs:CAUS+RECP;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
 

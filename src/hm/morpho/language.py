@@ -1598,7 +1598,7 @@ class Language:
         if word in words:
             form, pos = self.morphology.words1[word]
             # Later have the FSS already storied in words1
-            return Word([{'token': form, 'pos': pos, 'nsegs': 1}], name=word)
+            return {'token': form, 'pos': pos, 'nsegs': 1}
 
     def analyze_special5(self, token):
         '''
@@ -1639,6 +1639,53 @@ class Language:
         '''
         Version 5:
         Analyze the tokens in a sentence (a string), returning a Sentence object.
+        Try MWEs before single tokens.
+        kwargs: degem, sep_feats, combine_segs, verbosity
+        '''
+        if 'cache' not in kwargs:
+            kwargs['cache'] = dict()
+        tokens = sentence.split()
+        ntokens = len(tokens)
+        sentobj = Sentence(sentence)
+        token_index = 0
+        while token_index < ntokens:
+            mwe_anal, new_index = self.anal_mwe1(tokens, token_index, sentobj, **kwargs)
+            if mwe_anal:
+                token_index = new_index
+            else:
+                kwargs['mwe'] = False
+                anal1 = self.analyze5(tokens[token_index], **kwargs)
+                if anal1:
+                    sentobj.add_word5(anal1)
+                token_index += 1
+        return sentobj
+
+    def anal_mwe1(self, tokens, token_index, sent_obj, **kwargs):
+        '''
+        Attempt to analyze a MWE within tokens starting from token_id.
+        '''
+        max_mwe = kwargs.get('max_mwe', 3)
+        words = tokens[token_index]
+        end_index = token_index + 1
+        while end_index < len(tokens):
+            next_word = tokens[end_index]
+            if self.morphology.is_punctuation(next_word) or self.morphology.is_punctuation(next_word):
+                return False, token_index
+            words = words + ' ' + next_word
+            print("^^ attempting to analyze {}".format(words))
+            kwargs['mwe'] = True
+            analyses = self.analyze5(words, **kwargs)
+            if analyses:
+                sent_obj.add_word5(analyses)
+                print("  ** Success: {}".format(analyses[0]))
+                return True, end_index + 1
+            end_index += 1
+        return False, token_index
+
+    def anal_sentence5_1(self, sentence, **kwargs):
+        '''
+        Version 5:
+        Analyze the tokens in a sentence (a string), returning a Sentence object.
         kwargs: degem, sep_feats, combine_segs, verbosity
         '''
         if 'cache' not in kwargs:
@@ -1647,7 +1694,7 @@ class Language:
         sentobj = Sentence(sentence)
         # For now just try single-word tokens.
         for token in tokens:
-            wordobj = self.analyze5(token, mwe=False, **kwargs)
+            wordobj = self.analyze5(token, **kwargs)
             sentobj.add_word5(wordobj)
         return sentobj
 
@@ -1671,7 +1718,8 @@ class Language:
                     words = word + " " + next_word
             if words:
                 print("** Attempting to analyze {}".format(words))
-                analyses = self.analyze5(words, mwe=True, **kwargs)
+                kwargs['mwe'] = True
+                analyses = self.analyze5(words, **kwargs)
                 if analyses:
                     sent_obj.add_word5(analyses)
                     print("  ** Success: {}".format(analyses[0]))
@@ -1688,6 +1736,7 @@ class Language:
                 print("** No MWE possibilities: {}".format(tokens[w_index:]))
                 w_index += 1
                 morphid += 1
+        return sent_obj
 
     def _anal_sentence5(self, sentence,
                        conllu=True, xml=None, multseg=False, dicts=None, xsent=None,

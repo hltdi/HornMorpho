@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2018, 2020, 2021.
+    Copyleft 2007-2023.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -798,37 +798,37 @@ class FeatStruct(FS):
 
         return lines
 
-    def string_list(self, lng=True):
-        """Return a list of abbreviated strings for the feature structure."""
-        strings = []
-        if lng:
-            for feat, value in self.items():
-                s = ''
-                if isinstance(value, FeatStruct):
-                    value = value.string_list(False)
-                    s = feat + ':' + '|'.join(value)
-                elif isinstance(value, bool):
-                    if value:
-                        s = feat
-                strings.append(s)
-        else:
-            s = self.__repr__()
-            s = s.replace("'", "").replace(" ", '').replace("[", "").replace("]", "")
-            s_list = s.split(',')
-            s_pos = []
-            for f in s_list:
-                if f[0] == '-':
-                    # False, omit
-                    pass
-                elif f[0] == '+':
-                    # True, drop the '+'
-                    s_pos.append(f[1:])
-            if s_pos:
-                s = ','.join(s_pos)
-            else:
-                s = '_'
-            strings.append(s)
-        return strings
+#    def string_list(self, lng=True):
+#        """Return a list of abbreviated strings for the feature structure."""
+#        strings = []
+#        if lng:
+#            for feat, value in self.items():
+#                s = ''
+#                if isinstance(value, FeatStruct):
+#                    value = value.string_list(False)
+#                    s = feat + ':' + '|'.join(value)
+#                elif isinstance(value, bool):
+#                    if value:
+#                        s = feat
+#                strings.append(s)
+#        else:
+#            s = self.__repr__()
+#            s = s.replace("'", "").replace(" ", '').replace("[", "").replace("]", "")
+#            s_list = s.split(',')
+#            s_pos = []
+#            for f in s_list:
+#                if f[0] == '-':
+#                    # False, omit
+#                    pass
+#                elif f[0] == '+':
+#                    # True, drop the '+'
+#                    s_pos.append(f[1:])
+#            if s_pos:
+#                s = ','.join(s_pos)
+#            else:
+#                s = '_'
+#            strings.append(s)
+#        return strings
 
     def unify_FS(self, fs, strict=False, verbose=False):
         """

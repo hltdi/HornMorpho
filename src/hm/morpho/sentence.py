@@ -36,7 +36,7 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
-    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV']}
+    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']}
 
     colwidth = 20
 
@@ -82,6 +82,8 @@ class Sentence():
         Version 5: given a Word object, convert it to ambiguous CoNLL-U format,
         and add it to self.words.
         '''
+#        print("$$ add_word {}".format(word))
+#        word.show()
         conllus = []
 #        if self.words:
 #            index = self.words[-1][0]['nsegs']+1
@@ -89,6 +91,7 @@ class Sentence():
 #            index = 1
         for analysis in word:
             conllu = Sentence.anal2conllu(word.name, analysis)
+#            print("&& conllu for {}: {}".format(word, conllu))
             conllus.append(conllu)
 #            index += len(word)
         # Add the CoNLL-U representations to the Word
@@ -158,7 +161,7 @@ class Sentence():
                                   ({'id': index, 'form': token,
                                    'lemma': analdict.get('lemma', token),
                                    'upos': analdict.get('pos'), 'xpos': analdict.get('pos'),
-                                   'feats': analdict.get('feats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None}
+                                   'feats': analdict.get('udfeats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None}
                                    )])
         else:
             conllu = TokenList()
@@ -171,14 +174,14 @@ class Sentence():
                 continue
             conllu.append(
                 Token(
-                    {'id': index, 'form': p['string'], 'lemma': analdict.get('lemma', token),
+                    {'id': index, 'form': p['string'], 'lemma': p.get('lemma', p['string']),
                      'upos': p.get('pos', None), 'xpos': p.get('pos', None),
                      'feats': p.get('feats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None}
                     ))
             index += 1
         stemdict = analdict['stem']
         conllu.append(
-            Token({'id': index, 'form': stemdict['string'], 'lemma': analdict.get('lemma', token),
+            Token({'id': index, 'form': stemdict['string'], 'lemma': stemdict.get('lemma', analdict['lemma']),
                    'upos': stemdict.get('pos', None), 'xpos': stemdict.get('pos', None),
                    'feats': stemdict.get('feats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None}
                       ))
@@ -187,7 +190,7 @@ class Sentence():
             if not s:
                 continue
             conllu.append(
-                Token({'id': index, 'form': s['string'], 'lemma': analdict.get('lemma', token),
+                Token({'id': index, 'form': s['string'], 'lemma': s.get('lemma', s['string']),
                        'upos': s.get('pos', None), 'xpos': s.get('pos', None),
                        'feats': s.get('feats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None}
                           ))
@@ -440,6 +443,19 @@ class Sentence():
                         if merged.get('upos') in POSs:
                             merges.append((index1, i2, mindex, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
         return merges
+
+    def compare_anals(self, anal1, anal2):
+        '''
+        V5: compare anals to merge if possible
+        '''
+        pos1 = anal1.get('pos')
+        pos2 = anal2.get('pos')
+
+    def compare_feats(self, anal1, anal2):
+        '''
+        Check whether two analyses are the same except for particular features.
+        So far: DEF vs. PSS3SM or PSS3SF for nouns and DEF vs. AC3SM for relative verbs
+        '''
 
     def compare_segs(self, seg1, seg2):
         '''

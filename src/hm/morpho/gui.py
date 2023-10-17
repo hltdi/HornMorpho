@@ -764,7 +764,10 @@ class SentenceGUI():
             self.memory[self.wordid] = [old]
         self.show_disambig_word(self.wordid)
         self.frame.enable_undo()
-        self.words[wordindex] = newsegs
+        if self.v5:
+            self.words[wordindex].conllu = newsegs
+        else:
+            self.words[wordindex] = newsegs
 
     def undo(self):
         '''

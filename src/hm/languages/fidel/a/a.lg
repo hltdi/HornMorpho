@@ -82,10 +82,11 @@ feats:
     sp = 3 | 2 | 1
     sn = 1 | 2
     sg = m | f
-    op = 0 | 3 | 2 | 2
+    op = 0 | 3 | 2 | 1
     on = 1 | 2
     og = m | f
     oa = 0 | b | l
+#    of = i | f
     neg = False | True
     sub = False | True
     rel = False | True
@@ -131,14 +132,15 @@ feats:
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     lemmafeats = d;a,v
-    pos = n | adj | nadj
-    det = False | True
-    n = 1 | 2
-    g = m | f
-    pp = 0 | 1 | 2 | 3
-    pn = 1 | 2
-    pg = m | f
-    pf = False | True
+    pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V
+#    det = False | True
+#    n = 1 | 2
+#    g = m | f
+    p = 0 | s1 | p1 | sm2 | sf2 | p2 | F2 | sm3 | sf3 | p3
+#    pp = 0 | 1 | 2 | 3
+#    pn = 1 | 2
+#    pg = m | f
+#    pf = False | True
     acc = False | True
     gen = False | True
     pl = False | True
@@ -158,7 +160,7 @@ feats:
 	{'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
     nomwe
     lemmafeats = neg
-    pos = cop
+    pos = COP
     p = 1 | 2 | 3
     n = 1 | 2
     g = m | f
