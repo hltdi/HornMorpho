@@ -1,3 +1,5 @@
+abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
+abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
 POS n N
 ->UD  ACC+GEN	*Case=AccGen
 ->UD  ACC	Case=Acc
@@ -11,18 +13,22 @@ POS n N
 ->UD DAT	Case=Dat
 ->UD AT		Case=Loc
 ->UD PL		Number=Plur
+->UD SG		Number=Sing
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
 ->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
 ->UD PSS1P	Number[psor]=Plur,Person[psor]=1
 ->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form
-->UD PSS2SF	Gender=Fem,Number[psor]=Sing,Person[psor]=2
+->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
 ->UD PSS2P	Number[psor]=Plur,Person[psor]=2
 ->UD PSS1S	Number[psor]=Sing,Person[psor]=1
-->UD PSS2SM	Gender=Masc,Number[psor]=Sing,Person[psor]=2
+->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
-->UD PSS3SF	Gender=Fem,Number[psor]=Sing,Person[psor]=3
-->UD PSS3SM	Gender=Masc,Number[psor]=Sing,Person[psor]=3
+->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
+->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
+->UD {PSS3SM/DEF} &Poss3Def=Masc
+# {Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def}
 ->UD PASS	Voice=Pass
 ->UD CAUS	Voice=Cau
 ->UD RECP	Voice=Rcp
@@ -42,6 +48,7 @@ p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p
 p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
+g:: m:MASC;; f:FEM
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP

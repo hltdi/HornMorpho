@@ -33,6 +33,7 @@ from .fst import *
 from . import strip
 from .ees import EES
 from .word import *
+from .um import UniMorph
 
 ## Default punctuation characters; exclude single quote since it's
 ## often (usually) more like an alphanumeric character
@@ -1246,7 +1247,7 @@ class POSMorphology:
         Create a translation FST by composing the source analysis FST with the target generation FST.
         If gen is False, only create an FST for source analysis and lexical translation.
         """
-        print("^^ Creating {} translation FST for {} -> {}".format(pos, self, trg_pos_morph))
+#        print("^^ Creating {} translation FST for {} -> {}".format(pos, self, trg_pos_morph))
         src_language = self.language
         trg_language = trg_pos_morph.language
         trg_abbrev = trg_language.abbrev
@@ -1472,7 +1473,7 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
-        sep_feats = kwargs.get('sep_feats', False)
+        sep_feats = kwargs.get('sep_feats', True)
         string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
         procdict = {'token': token, 'feats': features, 'string': string}
         if raw_token:
@@ -1485,15 +1486,14 @@ class POSMorphology:
                 token_dicts = self.get_mwe_tokens(token, mwe_props)
                 procdict['tokens'] = token_dicts
 #            print("  ^^ token dicts {}".format(token_dicts))
-#        prefixes, stem, suffixes = self.get_segments(string, features)
         procdict['nsegs'] = len([p for p in prefixes if p]) + 1 + len([s for s in suffixes if s])
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
         procdict['pos'] = features.get('pos', self.pos)
-        udfdict = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
+        udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
+        udfeats = UniMorph.create_UDfeats(udfdict, udfalts)
+        procdict['udfeats'] = udfeats
 #        print("$$ udfdict {}".format(udfdict))
-#        udfdict = dict([u.split("=") for u in udfeats.split("|")])
-#        procdict['udfeats'] = udfeats
         stemd = None
         if self.segments:
             preprops, stemprops, sufprops = self.segments
@@ -1502,27 +1502,30 @@ class POSMorphology:
             aff_index = 0
             stem_index = len(prefixes)
             suff1_index = len(prefixes) + 1
+            pos = procdict['pos']
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
-#                prefix = prefix.strip()
                 pre_dicts.append(
-                    self.process_morpheme5(prefix, props, pindex, stem_index, features,
-                                           is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
+                    self.process_morpheme5(prefix, props, pindex, stem_index, features, pos,
+                                           is_stem=False, udfdict=udfdict, udfalts=udfalts,
+                                           udfeats=udfeats,
+                                           sep_feats=sep_feats, mwe=mwe_props)
                     )
             prefixes = pre_dicts
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
-#                suffix = suffix.strip()
                 post_dicts.append(
-                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features,
-                                           is_stem=False, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
+                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features, pos,
+                                           is_stem=False, udfdict=udfdict, udfalts=udfalts,
+                                           udfeats=udfeats,
+                                           sep_feats=sep_feats, mwe=mwe_props)
                     )
             suffixes = post_dicts
             if stemprops:
-#                stem = stem.strip()
                 stem_dict = \
-                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features,
-                                         is_stem=True, udfdict=udfdict, sep_feats=sep_feats, mwe=mwe_props)
+                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, pos,
+                                         is_stem=True, udfdict=udfdict, udfalts=udfalts,
+                                         udfeats=udfeats,
+                                         sep_feats=sep_feats, mwe=mwe_props)
                 stemd = stem_dict
-        procdict['udfeats'] = "|".join(["{}={}".format(feat, val) for feat, val in udfdict.items()])
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
         procdict['stem'] = stemd or stem
@@ -1532,7 +1535,6 @@ class POSMorphology:
         procdict['lemma'] = lemma
 
 #        print("^^ process5: prodict {}".format(procdict))
-
         return procdict
 
     def get_mwe_tokens(self, tokens, props):
@@ -1556,17 +1558,18 @@ class POSMorphology:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
         return token_dicts
 
-    def process_morpheme5(self, morpheme, props, index, stem_index, features,
-                          is_stem=False, udfdict=None, sep_feats=True, mwe=False):
+    def process_morpheme5(self, morpheme, props, index, stem_index, features, pos,
+                          is_stem=False, udfdict=None, udfalts=None, udfeats=None,
+                          sep_feats=True, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
         if not morpheme:
             # the morpheme could be the empty string
             return ''
-#        print("^^ Processing morpheme {}: {} (stem i: {}, udfdict: {})".format(index, morpheme, stem_index, udfdict))
+#        print("^^ Processing morpheme {}: {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, morpheme, stem_index, udfdict, udfalts))
         dict = {'string': morpheme}
-        pos = self.get_segment_pos(morpheme, props, mwe=mwe)
+        pos = self.get_segment_pos(morpheme, props, pos, mwe=mwe, is_stem=is_stem)
         dict['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, index, stem_index, features, is_stem=is_stem)
         if dep:
@@ -1575,12 +1578,9 @@ class POSMorphology:
 #        dict['lemma'] = morpheme
         feats = None
         if sep_feats:
-            feats = self.get_segment_feats(morpheme, props, udfdict)
+            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts)
         elif is_stem and udfdict:
-            # Include all feats with stem if we're not separating feats by segment
-            feats = list(udfdict.items())
-            feats.sort()
-            feats = '|'.join(['='.join([f, v]) for f, v in feats])
+            feats = udfeats
         if feats:
             dict['feats'] = feats
         return dict
@@ -1620,20 +1620,16 @@ class POSMorphology:
 
         return features.get('root', stem)
 
-#    def get_segment_props(self, string, segdict):
-#        '''
-#        string is a segment string.
-#        segdict is the dict of properties for this segment position.
-#        '''
-#        pos = self.get_segment_pos(string, segdict)
-
-    def get_segment_pos(self, string, segdict, mwe=False):
+    def get_segment_pos(self, string, segdict, pos, mwe=False, is_stem=False):
         '''
         mwe is False (for single-word items) or a dict of props for MWEs.
         '''
         posspec = segdict.get('pos')
         if not posspec:
-            print("^^ No POS in segdict {}".format(segdict))
+#            print("^^ No POS in segdict {}".format(segdict))
+            # POS for stem is POS for word by default
+            if is_stem:
+                return pos
             return
         if isinstance(posspec, dict):
             pos = posspec.get(EES.degeminate(string))
@@ -1647,22 +1643,40 @@ class POSMorphology:
             return pos
         return posspec
 
-    def get_segment_feats(self, string, segdict, udfdict):
+    def get_segment_feats(self, string, segdict, udfdict, udfalts):
         '''
         Get the UD features that are specific to this segment.
         ufdict is a dict of UD features for the whole word.
         '''
+#        print(" ^^ get_segment_feats; string {}, udfdict {}, udfalts {}, segdict {}".format(string, udfdict, udfalts, segdict))
         features = []
         # UD features relevant for this segment
-        segfeats = segdict.get('feats')
-        if not segfeats:
+        if not segdict or 'feats' not in segdict:
             return []
+        segfeats = segdict['feats']
         for segfeat in segfeats:
             wordfeat = udfdict.get(segfeat)
             if wordfeat:
                 features.append((segfeat, wordfeat))
-        features.sort()
-        return '|'.join(['='.join([f, v]) for f, v in features])
+        if not features:
+            found2 = []
+            for udfa in udfalts:
+                found = []
+                # udfa is a list of alternatives, feature:value dicts
+                for udfa1 in udfa:
+                    found1 = []
+                    for segfeat in segfeats:
+                        # udfa1 is a feature:value dict
+                        altfeat = udfa1.get(segfeat)
+                        if altfeat:
+                            found1.append((segfeat, altfeat))
+                    found.append(found1)
+                found2.append(found)
+#                if found2:
+#                    print("  ^^ found altfeats {}".format(found2))
+        return UniMorph.udfdict2feats(features, join=True, ls=True)
+#        features.sort()
+#        return '|'.join(['='.join([f, v]) for f, v in features])
 
     def get_segment_dep_head(self, string, segdict, index, stem_index, features, framework='UD', is_stem=False):
         headspec = segdict.get('head')

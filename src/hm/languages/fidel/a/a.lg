@@ -119,16 +119,16 @@ feats:
 #    a = 0 | a | i
 #    v = 0 | p | a | as
 #    d = a | inf | ins | m
-#    # only for infinitive
+n#    # only for infinitive
 #    neg = False | True
 
   pos: n noun_adjective
     morphotax::
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'distrib', 'pos': 'ADP', 'dep': 'det'};;
-      {'name': 'STEM', 'pos': 'N'};;
+      {'name': 'STEM'};;
       {'name': 'plur', 'pos': 'COMP', 'dep': 'amod', 'feats': ['Number']};
-      {'name': 'poss',  'pos': 'PRON', 'dep': 'det', 'feats': ['PossPers', 'PossNum', 'PossGen']};
+      {'name': 'poss',  'pos': 'PRON', 'dep': 'det', 'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     lemmafeats = d;a,v

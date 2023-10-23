@@ -28,6 +28,8 @@ from tkinter.ttk import *
 from tkinter.font import *
 from .sentence import Sentence
 
+import math
+
 class SegRoot(Tk):
     '''
     Main window for the disambiguation GUI.
@@ -62,6 +64,7 @@ class SegRoot(Tk):
         self.geez_normal = Font(family=geezfamily, size=16)
         self.roman_big = Font(family="Arial", size=20)
         self.roman_medium = Font(family="Arial", size=18)
+        self.roman_small = Font(family="Courier", size=12)
         # Sentence Label and Text
         self.init_sentence_text()
         # Undo and Quit buttons
@@ -280,15 +283,27 @@ class SegCanvas(Canvas):
     segYmargin = 10
 #    segwidth = 400
     segdependencyheight = 20
+    # half the height of the ambiguous POS rectangle
+    ambigposheight = 8
+    # gap per line between ambiguous feature alternatives
+    ambigsegfeatsheight = 22
+    # half the height of a line within an ambiguous feature rectangle
+    ambigrectheight = 7
+    # gap between features
+    segfeatsheight = 14
     seggap = 40
     segrightmargin = 20
     deplabelX = 40
     deplabelY = 8
 
+    maxfeatchars = 15
+
     def __init__(self, parent, corpus=None, um=1, seglevel=2, width=800, height=600, v5=False):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
         self.v5 = v5
         self.parent = parent
+        self.corpus = corpus
+        self.UM = corpus.language.um
         self._width = width
         self._height = height
         self.um = um
@@ -321,6 +336,7 @@ class SegCanvas(Canvas):
         segIDtags = []
         segboxtags = []
         posselecttags = []
+        featselecttags = []
         dependencies = None
         nwordsegs = len(wordsegs)
         for segi, wordseg in enumerate(wordsegs):
@@ -331,7 +347,8 @@ class SegCanvas(Canvas):
             forms = Sentence.get_forms(wordseg)
             lemmas = Sentence.get_lemmas(wordseg, forms, headindex)
             pos = Sentence.get_pos(wordseg)
-            features = Sentence.get_features(wordseg, featlevel=self.um)
+            features = Sentence.get_features(wordseg, um=self.UM)
+#                                                 featlevel=self.um)
             # Don't need to do this if there is no segmentation
             if self.seglevel > 0:
                 dependencies = Sentence.get_dependencies(wordseg)
@@ -351,7 +368,7 @@ class SegCanvas(Canvas):
                 self.show_pos(pos, Xs, y, wordseg, posselecttags)
             if features:
                 y += SegCanvas.segrowheight
-                self.show_features(features, Xs, y)
+                y = self.show_features(features, Xs, y, wordseg, featselecttags)
             if lemmas:
                 y += SegCanvas.segrowheight
                 self.show_lemmas(lemmas, Xs, y)
@@ -364,6 +381,7 @@ class SegCanvas(Canvas):
         segYs.append(y)
         i = 0
         rightX = SegCanvas.segIDwidth + maxn * self.colwidth
+
         if posselecttags:
             for seg, tag1, tag2, pos1, pos2 in posselecttags:
                 self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, 'Red'))
@@ -372,6 +390,17 @@ class SegCanvas(Canvas):
                 self.tag_bind(tag2, "<Leave>", self.highlight_pos_handler(tag2, 'Black'))
                 self.tag_bind(tag1, "<ButtonRelease-1>", self.select_pos_handler(tag1, pos1, seg))
                 self.tag_bind(tag2, "<ButtonRelease-1>", self.select_pos_handler(tag2, pos2, seg))
+
+        if featselecttags:
+#            print("!! featselecttags: {}".format(featselecttags))
+            for seg, tag1, tag2, f1, f2 in featselecttags:
+                self.tag_bind(tag1, "<Enter>", self.highlight_feat_handler(tag1, 'Red'))
+                self.tag_bind(tag1, "<Leave>", self.highlight_feat_handler(tag1, 'Black'))
+                self.tag_bind(tag2, "<Enter>", self.highlight_feat_handler(tag2, 'Red'))
+                self.tag_bind(tag2, "<Leave>", self.highlight_feat_handler(tag2, 'Black'))
+                self.tag_bind(tag1, "<ButtonRelease-1>", self.select_feat_handler(tag1, f1, seg))
+                self.tag_bind(tag2, "<ButtonRelease-1>", self.select_feat_handler(tag2, f2, seg))
+                
         if nwordsegs > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
@@ -413,6 +442,19 @@ class SegCanvas(Canvas):
         self.parent.sentenceGUI.set_pos(pos, seg)
         self.update()
 
+    def select_feat_handler(self, tag, feat, seg):
+        '''
+        Returns the handler for selecting POS on the POS labels.
+        '''
+        return lambda event: self.select_feat(feat, seg)
+
+    def select_feat(self, feat, seg):
+        '''
+        Select pos as the POS for segmentation seg.
+        '''
+        self.parent.sentenceGUI.set_feat(feat, seg)
+        self.update()
+
     def highlight_pos_handler(self, posid, color):
         '''
         Returns the handler for highlighting/dehighlighting the POS label on mouse Enter.
@@ -436,6 +478,18 @@ class SegCanvas(Canvas):
         Highlight or dehighlight a segmentation label box.
         '''
         self.itemconfigure(boxid, fill=color)
+
+    def highlight_feat_handler(self, featid, color):
+        '''
+        Returns the highlight and dehighlight handler for the segmentation label.
+        '''
+        return lambda event: self.highlight_feat(featid, color)
+
+    def highlight_feat(self, featid, color):
+        '''
+        Highlight or dehighlight a segmentation label box.
+        '''
+        self.itemconfigure(featid, fill=color)
 
     def get_columnX(self, n):
         '''
@@ -488,18 +542,93 @@ class SegCanvas(Canvas):
         selectpos = Sentence.selectpos[pos]
         pos1 = selectpos[0]
         pos2 = selectpos[1]
-        self.create_rectangle(x - 55, y - 8, x - 5, y + 8, fill='pink')
+        self.create_rectangle(x - 55, y - SegCanvas.ambigposheight, x - 5, y + SegCanvas.ambigposheight, fill='pink')
         id1 = self.create_text((x-30, y), text=pos1)
-        self.create_rectangle(x + 5, y - 8, x + 55, y + 8, fill='pink')
+        self.create_rectangle(x + 5, y - SegCanvas.ambigposheight, x + 55, y + SegCanvas.ambigposheight, fill='pink')
         id2 = self.create_text((x+30, y), text=pos2)
         posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
-    def show_features(self, feats, Xs, y):
+    def show_features(self, feats, Xs, y, wordseg, featselecttags):
         '''
         Show the morphological features for a segmentation if there are any.
         '''
-        for f, x in zip(feats, Xs):
-            self.create_text((x, y), text=f)
+        max_y = y
+        if len(wordseg) == 1:
+            # Unsegmented word
+            f = feats[0]
+            x = Xs[0]
+            max_y = max([self.show_features1(f, x, y, wordseg[0], featselecttags), max_y])
+        else:
+            for morphi, (f, x) in enumerate(zip(feats, Xs)):
+                w = wordseg[morphi+1]
+                max_y = max([self.show_features1(f, x, y, w, featselecttags), max_y])
+        return max_y
+
+    def show_features1(self, feats, x, y, wordseg, featselecttags):
+#        print("!! show_features1 {}, {}".format(feats, wordseg))
+        def show(f, coords):
+            self.create_text(coords, text=f, font=self.parent.roman_small)
+        def show_ambig(f, x, y, nlines=1):
+            self.create_rectangle(x-65, y-(nlines * SegCanvas.ambigrectheight), x+65, y+(nlines * SegCanvas.ambigrectheight),
+                                  fill='pink')
+            id = self.create_text((x, y), text=f, font=self.parent.roman_small)
+            return id
+        unamb, ambig = feats
+        if unamb:
+#            print("!! unambig feats {}".format(unamb))
+            for feat in unamb[:-1]:
+                show(feat, (x, y))
+                y += SegCanvas.segfeatsheight
+            show(unamb[-1], (x, y))
+        if ambig:
+#            print("!! ambig feat {}".format(ambig))
+            # first alternative
+            nlines1 = ambig[0].count('\n') + 1
+            if unamb:
+                y += SegCanvas.ambigsegfeatsheight * (nlines1 / 2)
+            else:
+                y += SegCanvas.segfeatsheight
+            id1 = show_ambig(ambig[0], x, y, nlines=nlines1)
+            # second alternative
+            nlines2 = ambig[1].count('\n') + 1
+            y += SegCanvas.ambigsegfeatsheight * ((nlines1 / 2) + ((nlines2-1) / 2))
+            id2 = show_ambig(ambig[1], x, y, nlines=nlines2)
+            featselecttags.append((wordseg, id1, id2, ambig[0], ambig[1]))
+        return y
+
+    def create_selectfeat(self, alts1, alts2, x, y, wordseg, featselecttags):
+        '''
+        Create feature labels to select between when there is a choice.
+        '''
+#        self.create_rectangle(x, y, x + 60, y + 60, fill='pink')
+#        for feat in alts1:
+#            id1 = self.create_text(coords, text=f, font=self.parent.roman_small)
+#        self.create_rectangle(x + 5, y - 8, x + 55, y + 8, fill='pink')
+#                show(feat, (x, y), ambig=True)
+#                y += SegCanvas.segfeatsheight
+#            # second alternative
+#            for feat in ambig[1][:-1]:
+#                show(feat, (x, y), ambig=True)
+#                y += SegCanvas.segfeatsheight
+#            show(ambig[1][-1], (x, y), ambig=True)
+#        id1 = self.create_text((x-30, y), text=pos1)
+#        id2 = self.create_text((x+30, y), text=pos2)
+#        posselecttags.append((wordseg, id1, id2, pos1, pos2))
+#        return y
+
+#    def split_features(self, feats, n=2):
+#        '''
+#        Split feature string into substrings to shorten maximum.
+#        '''
+#        feats = feats.split('|')
+#        nfvs = len(feats)
+#        lengroup = math.ceil(nfvs / n)
+#        featgroups = []
+#        start = 0
+#        while start < nfvs:
+#            featgroups.append(feats[start:start+lengroup])
+#            start += lengroup
+#        return ['|'.join(featgroup) for featgroup in featgroups]
     
     def show_dependencies(self, dependencies, Xs, headindex, y):
         """
@@ -734,7 +863,9 @@ class SentenceGUI():
         Update the word's action memory, set the color for the word, enable the Undo button.
         '''
         self.sentenceobj.disambiguated = True
+        print("!! setting POS {} in {}; {}".format(pos, seg, type(seg)))
         old = ((seg['upos'], seg['xpos']), seg)
+        print("!! current POS {}".format(seg['upos']))
         if self.wordid in self.memory:
             self.memory[self.wordid].append(old)
         else:
@@ -743,6 +874,33 @@ class SentenceGUI():
         self.frame.enable_undo()
         seg['upos'] = pos
         seg['xpos'] = pos
+
+    def set_feat(self, feats, seg):
+        '''
+        Update the features for a segmentation for the current word, based on selection by user.
+        Update the word's action memory, set the color for the word, enable the Undo button
+        '''
+        self.sentenceobj.disambiguated = True
+        new_feat = feats.replace('\n', '|')
+        print("!! setting feat {} in {}; {}".format(new_feat, seg, type(seg)))
+        old_feats = seg['feats']
+        old_feats_split = old_feats.split("|")
+        print("!! current feat {}".format(old_feats_split))
+        # replace the ambiguous feature (starting with '&' with the new value)
+        for fi, feat in enumerate(old_feats_split):
+            if feat[0] == '&':
+                old_feats_split[fi] = new_feat
+        # alphabetize here?
+        new_feats = '|'.join(old_feats_split)
+#        print("!! new feats {}".format(new_feats))
+        old = (old_feats, seg)
+        if self.wordid in self.memory:
+            self.memory[self.wordid].append(old)
+        else:
+            self.memory[self.wordid] = [old]
+        self.show_disambig_word(self.wordid)
+        self.frame.enable_undo()
+        seg['feats'] = new_feats
 
     def show_disambig_word(self, index):
         '''
@@ -782,11 +940,14 @@ class SentenceGUI():
         if isinstance(x, int):
             # This is a segmentation selection; x is the index, y the oldsegmentations
             self.words[x] = y
-        else:
+        elif isinstance(x, tuple):
             # This is a POS selection; x is the old UPOS and XPOS, y the word dict
             upos, xpos = x
             y['upos'] = upos
             y['xpos'] = xpos
+        else:
+            # This is a feature selection; x is the old feature string
+            y['feats'] = x
         if not memory:
             self.text.tag_configure("word{}".format(self.wordid), background='White')
             self.frame.disable_undo()

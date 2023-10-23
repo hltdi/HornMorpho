@@ -50,7 +50,7 @@ class Corpus():
                  name='', batch_name='', sentid=0, analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False,
+                 v5=False, sep_feats=True,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -137,7 +137,7 @@ class Corpus():
             # Raw sentences
             self.data = data
             if v5 and segment:
-                self.segment5()
+                self.segment5(sep_feats=sep_feats)
         else:
             self.data = []
 #        if segment:

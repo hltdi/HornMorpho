@@ -37,7 +37,8 @@ class UniMorph:
     feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+/{}\-\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
-    toUD_re = re.compile(r'\s*->UD\s+(.*)\s+(.*)$')
+    toUD_re = re.compile(r'\s*->UD\s+(.+)\s+(.+)$')
+    abbrev_re = re.compile(r'\s*abbrev\s*(.+)\s+(.+)$')
 
     def __init__(self, language, read=True):
         # A Language instance
@@ -45,12 +46,43 @@ class UniMorph:
         self.hm2um = {}
         self.um2hm = {}
         self.um2ud = {}
+        self.abbrevs = {}
         if read:
             self.read()
             self.reverse()
 
     def __repr__(self):
         return "UM:{}".format(self.language.abbrev)
+
+    ## Static methods for processing UM and UD features
+    @staticmethod
+    def create_UDfeats(udfdict, udfalts):
+        '''
+        udfdict is a feature:value dict.
+        udfalts is a list of feature alternatives for ambiguous cases, each a feature:value dict.
+        [ [{"Gender[psor]": "Masc", "Number[psor]": "Sing", "Person[psor]": 3}, {"Definite": "Def"}] ]
+        '''
+        udfeats = UniMorph.udfdict2feats(udfdict, join=True, ls=False)
+        if udfalts:
+            udf_ambig = [[UniMorph.udfdict2feats(u, join=True, ls=False) for u in udfa] for udfa in udfalts]
+            udf_ambig = ["{" + '/'.join(udf) + "}" for udf in udf_ambig]
+            udfeats = ','.join([udfeats] + udf_ambig)
+        return udfeats
+
+    @staticmethod
+    def udfdict2feats(udfdict, join=True, ls=False):
+        if not ls:
+            feats = list(udfdict.items())
+        else:
+            feats = udfdict
+        feats.sort()
+        feats = ["{}={}".format(feat, val) for feat, val in feats]
+        if join:
+            return "|".join(feats)
+        return feats
+
+    def expand_feat(self, abbrev):
+        return self.abbrevs.get(abbrev, abbrev)
 
     def convert_um(self, pos, um, verbosity=0):
         """
@@ -410,6 +442,7 @@ class UniMorph:
         Convert a string consisting of UM features to a string consisting of UD features.
         """
         udfeats = set()
+        udalts = []
         um2ud = self.um2ud.get(pos)
         if not um2ud:
             return ''
@@ -418,7 +451,7 @@ class UniMorph:
                 if isinstance(udfeat, tuple):
                     # multiple features
                     ummult, udfeat = udfeat
-#                    print("** ummult {}, udfeat {}".format(ummult, udfeat))
+#                    print("%% ummult {}, udfeat {}".format(ummult, udfeat))
                     if all([(umm in um) for umm in ummult]):
                         if udfeat[0] == '*':
                             if extended:
@@ -433,15 +466,24 @@ class UniMorph:
                         udfeat = udfeat[1:]
                         for udd in udfeat.split(','):
                             udfeats.add(udd)
+#                elif '/' in udfeat: #udfeat[0] == '{' and udfeat[-1] == '}':
+#                    # ambiguous features; alternatives separated by '/'
+#                    if udfeat[0] == '{':
+#                        # delete surrounding braces
+#                        udfeat = udfeat[1:-1]
+#                    udfeat = udfeat.split('/')
+#                    udfeat = [ud.split(',') for ud in udfeat]
+#                    udfeat = [dict([u.split('=') for u in ud]) for ud in udfeat]
+#                    udalts.append(udfeat)
                 else:
                     for udd in udfeat.split(','):
+#                        print("  %% udd {}".format(udd))
                         udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
-#        if not udfeats:
-#            print("$$ No UD feats for {} ; {}".format(um, pos))
+#        print("%% udfeats {}".format(udfeats))
         if return_dict:
-            return dict([u.split('=') for u in udfeats])
+            return dict([u.split('=') for u in udfeats]), udalts
         return '|'.join(udfeats)
 
     def read(self, verbosity=0):
@@ -465,6 +507,12 @@ class UniMorph:
 
                     if verbosity:
                         print("Matching line {}".format(line))
+
+                    m = UniMorph.abbrev_re.match(line)
+                    if m:
+                        abbrev, value = m.groups()
+                        self.abbrevs[abbrev] = value
+                        continue
 
                     m = UniMorph.pos_re.match(line)
                     if m:
@@ -493,9 +541,6 @@ class UniMorph:
                         umfeat = umfeat.strip(); udfeat = udfeat.strip()
                         ## %% Combination UM features, like CAUS;RECP don't work yet!
 #                        print("** Matched 2UD rule {}->{}".format(umfeat, udfeat))
-#                        if ';' in umfeat:
-#                            for umfeat1 in umfeat.split(';'):
-#                                self.um2ud[current_pos][umfeat1] = (umfeat, udfeat)
                         self.um2ud[current_pos][umfeat.strip()] = udfeat.strip()
                         continue
 

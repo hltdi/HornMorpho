@@ -36,13 +36,17 @@ class Sentence():
     Representation of HM output for a sentence in a corpus.
     """
 
-    selectpos = {'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']}
+    selectpos = \
+      {
+       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']
+      }
 
     colwidth = 20
 
     conllu_list = ['id', 'form', 'lemma', 'upos', 'xpos', 'feats', 'head', 'deprel', 'deps', 'misc']
 
-    def __init__(self, text, tokens=[], batch_name='', sentid=0):
+    def __init__(self, text, tokens=[], batch_name='', sentid=0, language=None):
+        self.language = language
         self.tokens = tokens
         self.text = text
         self.ntokens = len(text.split())
@@ -91,7 +95,7 @@ class Sentence():
 #            index = 1
         for analysis in word:
             conllu = Sentence.anal2conllu(word.name, analysis)
-#            print("&& conllu for {}: {}".format(word, conllu))
+            print("&& conllu for {}: {}".format(word, conllu))
             conllus.append(conllu)
 #            index += len(word)
         # Add the CoNLL-U representations to the Word
@@ -631,7 +635,7 @@ class Sentence():
 #        forms = ["{{:_^{}}}".format(Sentence.pad_geez(form)).format(form) for form in forms]
 #        forms = ['_' + form + '_' for form in forms]
         pos = Sentence.get_pos(segmentation)
-        features = Sentence.get_features(segmentation, featlevel=featlevel)
+        features = Sentence.get_features(segmentation, None)
         headindex = Sentence.get_headindex(segmentation)
         centers = Sentence.get_centers(nforms)
         string = len(forms) * "{{:^{}}}".format(Sentence.colwidth)
@@ -741,45 +745,70 @@ class Sentence():
         return [get_pos1(s) for s in segmentation[1:]]
 
     @staticmethod
-    def get_features(segmentation, featlevel=1):
+    def get_features(segmentation, um, expand_ambig=True):
+        def get1(seg):
+            feats = seg.get('feats', None)
+            if feats:
+                feats = feats.split('|')
+                unamb = []
+                amb = None
+                for ff in feats:
+                    if ff[0] == '&':
+                        amb = ff
+                        if expand_ambig:
+                            amb = um.expand_feat(amb)
+                            amb = amb.split('/')
+                            amb = [a.replace(',', '\n') for a in amb]
+#                            amb = [a.split(',') for a in amb]
+                    else:
+                        unamb.append(ff)
+                return unamb, amb
+            return None, None
+            
         if len(segmentation) == 1:
-            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None), featlevel=featlevel)]
+            feats = [get1(segmentation[0])]
+#            feats = [segmentation[0].get('feats', None)]
+#            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None), featlevel=featlevel)]
         else:
-            feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
-            feats = [Sentence.simplify_feats(f, featlevel=featlevel) for f in feats]
+            feats = [get1(morpheme) for morpheme in segmentation[1:]]
+#            feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
+#            feats = [Sentence.simplify_feats(f, featlevel=featlevel) for f in feats]
         if any(feats):
+#            print("&& get_features {}".format(feats))
             return feats
         return []
 
-    @staticmethod
-    def simplify_feats(feats, featlevel=1):
-        if not feats:
-            return None
-        feats = feats.split("|")
-        feats = [f.split('=') for f in feats]
-        if featlevel == 2:
-            feats = ['='.join([Sentence.simplify_feat_name(f), v]) for f, v in feats]
-            return ', '.join(feats)
-        else:
-            feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
-            return  ','.join(feats)
+#    @staticmethod
+#    def simplify_feats(feats, featlevel=1, nochange=True):
+#        if not feats:
+#            return None
+#        if nochange:
+#            return feats
+#        feats = feats.split("|")
+#        feats = [f.split('=') for f in feats]
+#        if featlevel == 2:
+#            feats = ['='.join([Sentence.simplify_feat_name(f), v]) for f, v in feats]
+#            return ', '.join(feats)
+#        else:
+#            feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
+#            return  ','.join(feats)
 
-    @staticmethod
-    def simplify_feat_name(name):
-        '''
-        If name has two capitalized parts, use the string up to that point and the capitalized letter.
-        '''
-        ncap = len([c for c in name if c.isupper()])
-        if ncap == 2:
-            string = name[0]
-            for c in name[1:]:
-                if c.isupper():
-                    return string + c
-                string += c
-        elif len(name) > 4:
-            return name[:3]
-        else:
-            return name
+#    @staticmethod
+#    def simplify_feat_name(name):
+#        '''
+#        If name has two capitalized parts, use the string up to that point and the capitalized letter.
+#        '''
+#        ncap = len([c for c in name if c.isupper()])
+#        if ncap == 2:
+#            string = name[0]
+#            for c in name[1:]:
+#                if c.isupper():
+#                    return string + c
+#                string += c
+#        elif len(name) > 4:
+#            return name[:3]
+#        else:
+#            return name
 
 ### XML stuff; later incorporate this into the Sentence class
 

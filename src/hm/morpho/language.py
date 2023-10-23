@@ -1646,7 +1646,7 @@ class Language:
             kwargs['cache'] = dict()
         tokens = sentence.split()
         ntokens = len(tokens)
-        sentobj = Sentence(sentence)
+        sentobj = Sentence(sentence, language=self)
         token_index = 0
         while token_index < ntokens:
             mwe_anal, new_index = self.anal_mwe1(tokens, token_index, sentobj, **kwargs)
@@ -1672,7 +1672,7 @@ class Language:
             if self.morphology.is_punctuation(next_word) or self.morphology.is_punctuation(next_word):
                 return False, token_index
             words = words + ' ' + next_word
-            print("^^ attempting to analyze {}".format(words))
+#            print("^^ attempting to analyze {}".format(words))
             kwargs['mwe'] = True
             analyses = self.analyze5(words, **kwargs)
             if analyses:
@@ -1691,7 +1691,7 @@ class Language:
         if 'cache' not in kwargs:
             kwargs['cache'] = dict()
         tokens = sentence.split()
-        sentobj = Sentence(sentence)
+        sentobj = Sentence(sentence, language=self)
         # For now just try single-word tokens.
         for token in tokens:
             wordobj = self.analyze5(token, **kwargs)
@@ -1703,7 +1703,7 @@ class Language:
         Analyze the tokens using the MWE FSTs.
         '''
         tokens = sentence.split()
-        sent_obj = sent_obj or Sentence(sentence)
+        sent_obj = sent_obj or Sentence(sentence, language=self)
         seglevel = kwargs.get('seglevel', 2)
         ntokens = len(tokens)
         w_index = 0
@@ -2367,7 +2367,7 @@ class Language:
                 if verbosity:
                     print("** Analyzing line {}".format(line))
 #                if csentences != False:
-                csent = Sentence(line, batch_name=batch_name, sentid=sentid)
+                csent = Sentence(line, batch_name=batch_name, sentid=sentid, language=self)
                 csentences.append(csent)
                 if xml:
                     xsent = add_caco_sentence(xmlroot)
@@ -2424,7 +2424,7 @@ class Language:
             preproc = self.preproc
         if postproc and not callable(postproc):
             postproc = self.postproc
-        csent = csent or Sentence(sentence, batch_name=batch_name, sentid=sentid)
+        csent = csent or Sentence(sentence, batch_name=batch_name, sentid=sentid, language=self)
         local_cache = local_cache if isinstance(local_cache, dict) else {}
         if not file and pathout:
             file = open(pathout, 'w', encoding='utf-8')
