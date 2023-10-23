@@ -28,6 +28,7 @@ POS n N
 ->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD {PSS3SM/DEF} &Poss3Def=Masc
+->UD {PSS3SF/DEF} &Poss3Def=Fem
 # {Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def}
 ->UD PASS	Voice=Pass
 ->UD CAUS	Voice=Cau

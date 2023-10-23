@@ -344,7 +344,7 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
 #        corpus.segment(timeit=timeit, filter=gramfilt, um=um, seglevel=seglevel, verbosity=verbosity)
     if disambiguate:
         # Checks to see whether segment() has already been called
-        corpus.disambiguate(timeit=timeit, um=um, seglevel=seglevel, verbosity=verbosity)
+        corpus.disambiguate(timeit=timeit, seglevel=seglevel, verbosity=verbosity)
     # Normally disambiguation should happen before this, but it doesn't have to.
     if conlluify:
         corpus.conlluify(degeminate=degeminate, verbosity=verbosity)

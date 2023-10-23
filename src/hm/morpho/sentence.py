@@ -31,6 +31,12 @@ from conllu import parse, TokenList, Token
 from .geez import degeminate
 import os
 
+class HMToken(Token):
+
+    def __init__(self, dct, analysis=None):
+        self.analysis = analysis
+        Token.__init__(self, dct)
+
 class Sentence():
     """
     Representation of HM output for a sentence in a corpus.
@@ -40,6 +46,8 @@ class Sentence():
       {
        'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']
       }
+
+    um2udPOS = {'N': 'NOUN', 'V': 'VERB'}
 
     colwidth = 20
 
@@ -67,6 +75,7 @@ class Sentence():
         self.posambig = []
         # whether sentence has been disambiguated
         self.disambiguated = False
+        self.conllu_string = ''
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
 
     def __repr__(self):
@@ -89,27 +98,33 @@ class Sentence():
 #        print("$$ add_word {}".format(word))
 #        word.show()
         conllus = []
-#        if self.words:
-#            index = self.words[-1][0]['nsegs']+1
-#        else:
-#            index = 1
         for analysis in word:
             conllu = Sentence.anal2conllu(word.name, analysis)
-            print("&& conllu for {}: {}".format(word, conllu))
+#            print("&& conllu for {}: {}".format(word, conllu))
             conllus.append(conllu)
-#            index += len(word)
         # Add the CoNLL-U representations to the Word
         word.conllu = conllus
         # Add the Word to self.words
         self.words.append(word)
 
-    def conllu_string(self, update_ids=False):
+    def print_conllu(self, update_ids=False):
+        '''
+        Print the string of CoNLL-U representations for the sentence,
+        using the first if there are still ambiguities.
+        If update_ids is True, update the id and head fields based
+        on each word's position in the sentence.
+        '''
+        print(self.create_conllu_string(update_ids=update_ids))
+
+    def create_conllu_string(self, update_ids=False):
         '''
         Return the string of CoNLL-U representations for the sentence,
         using the first if there are still ambiguities.
         If update_ids is True, update the id and head fields based
         on each word's position in the sentence.
         '''
+        if not update_ids and self.conllu_string:
+            return self.conllu_string
         string = ''
         index = 0
         for word in self.words:
@@ -117,6 +132,7 @@ class Sentence():
             if update_ids:
                 index = self.update_conllu_ids(conllu, index=index)
             string += conllu.serialize()
+        self.conllu_string = string
         return string
 
     def update_conllu_ids(self, conllu, index=0):
@@ -150,57 +166,84 @@ class Sentence():
         return new_index
 
     @staticmethod
+    def convertPOS(analdict):
+        umPOS = analdict.get('pos')
+        if umPOS:
+            return Sentence.um2udPOS.get(umPOS, umPOS)
+        return None
+
+    @staticmethod
     def anal2conllu(token, analdict, index=1):
         '''
         Create a CoNLL-U representation from a token's analysis dict.
         '''
         if not analdict:
             # Unanalyzed token
-            return TokenList([Token
+            return TokenList([HMToken
                                   ({'id': index, 'form': token, 'lemma': None, 'upos': 'UNK', 'xpos': 'UNK',
-                                    'feats': None, 'head': index, 'deprel': None, 'deps': None, 'misc': None}
+                                    'feats': None, 'head': index, 'deprel': None, 'deps': None, 'misc': None},
+                                    analysis=analdict
                                       )])
         if analdict['nsegs'] == 1:
-            return TokenList([Token
-                                  ({'id': index, 'form': token,
-                                   'lemma': analdict.get('lemma', token),
-                                   'upos': analdict.get('pos'), 'xpos': analdict.get('pos'),
-                                   'feats': analdict.get('udfeats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None}
+            pos = Sentence.convertPOS(analdict)
+            return TokenList([HMToken
+                                  ({'id': index, 'form': token, 'lemma': analdict.get('lemma', token), 'upos': pos, 'xpos': pos,
+                                   'feats': analdict.get('udfeats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None},
+                                   analysis=analdict
                                    )])
-        else:
-            conllu = TokenList()
+        conllu = TokenList()
         # Create the line for the whole token
-        conllu.append({'id': "{}-{}".format(index, index+analdict['nsegs']-1),
-                       'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None})
+        conllu.append(
+            HMToken(
+                {'id': "{}-{}".format(index, index+analdict['nsegs']-1),
+                 'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None},
+                analysis=analdict
+                ))
                            
         for p in analdict['pre']:
             if not p:
                 continue
+            pos = Sentence.convertPOS(p)
             conllu.append(
-                Token(
-                    {'id': index, 'form': p['string'], 'lemma': p.get('lemma', p['string']),
-                     'upos': p.get('pos', None), 'xpos': p.get('pos', None),
-                     'feats': p.get('feats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None}
+                HMToken(
+                    {'id': index, 'form': p['string'], 'lemma': p.get('lemma', p['string']), 'upos': pos, 'xpos': pos,
+                     'feats': p.get('udfeats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None},
+                     analysis=p
                     ))
             index += 1
         stemdict = analdict['stem']
+        pos = Sentence.convertPOS(stemdict)
         conllu.append(
-            Token({'id': index, 'form': stemdict['string'], 'lemma': stemdict.get('lemma', analdict['lemma']),
-                   'upos': stemdict.get('pos', None), 'xpos': stemdict.get('pos', None),
-                   'feats': stemdict.get('feats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None}
-                      ))
+            HMToken({'id': index, 'form': stemdict['string'], 'lemma': stemdict.get('lemma', analdict['lemma']), 'upos': pos, 'xpos': pos,
+                   'feats': stemdict.get('udfeats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None},
+                   analysis=stemdict
+                        ))
         index += 1
         for s in analdict['suf']:
             if not s:
                 continue
+            pos = Sentence.convertPOS(s)
             conllu.append(
-                Token({'id': index, 'form': s['string'], 'lemma': s.get('lemma', s['string']),
-                       'upos': s.get('pos', None), 'xpos': s.get('pos', None),
-                       'feats': s.get('feats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None}
+                HMToken({'id': index, 'form': s['string'], 'lemma': s.get('lemma', s['string']), 'upos': pos, 'xpos': pos, 
+                       'feats': s.get('udfeats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None},
+                       analysis=s
                           ))
             index += 1
         
         return conllu
+
+    @staticmethod
+    def updatePOS(analdict, pos):
+#        print("&& Updating POS in {} to {}".format(analdict, pos))
+        analdict['pos'] = pos
+
+    @staticmethod
+    def update_feats(analdict, udfeats):
+#        print("&& Updating feats in {} to {}".format(analdict, udfeats))
+        if 'udfeats' in analdict:
+            analdict['udfeats'] = udfeats
+
+    #####
         
     def is_ambiguous(self):
         """

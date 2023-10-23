@@ -1474,6 +1474,7 @@ class POSMorphology:
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
         sep_feats = kwargs.get('sep_feats', True)
+        gemination = kwargs.get('gemination', True)
         string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
         procdict = {'token': token, 'feats': features, 'string': string}
         if raw_token:
@@ -1507,7 +1508,7 @@ class POSMorphology:
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
-                                           udfeats=udfeats,
+                                           udfeats=udfeats, gemination=gemination,
                                            sep_feats=sep_feats, mwe=mwe_props)
                     )
             prefixes = pre_dicts
@@ -1515,7 +1516,7 @@ class POSMorphology:
                 post_dicts.append(
                     self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
-                                           udfeats=udfeats,
+                                           udfeats=udfeats, gemination=gemination,
                                            sep_feats=sep_feats, mwe=mwe_props)
                     )
             suffixes = post_dicts
@@ -1523,7 +1524,7 @@ class POSMorphology:
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts,
-                                         udfeats=udfeats,
+                                         udfeats=udfeats, gemination=gemination,
                                          sep_feats=sep_feats, mwe=mwe_props)
                 stemd = stem_dict
         procdict['pre'] = prefixes
@@ -1560,7 +1561,7 @@ class POSMorphology:
 
     def process_morpheme5(self, morpheme, props, index, stem_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None,
-                          sep_feats=True, mwe=False):
+                          gemination=True, sep_feats=True, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
@@ -1568,7 +1569,7 @@ class POSMorphology:
             # the morpheme could be the empty string
             return ''
 #        print("^^ Processing morpheme {}: {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, morpheme, stem_index, udfdict, udfalts))
-        dict = {'string': morpheme}
+        dict = {'string': morpheme if gemination else EES.degeminate(morpheme)}
         pos = self.get_segment_pos(morpheme, props, pos, mwe=mwe, is_stem=is_stem)
         dict['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, index, stem_index, features, is_stem=is_stem)
@@ -1582,7 +1583,7 @@ class POSMorphology:
         elif is_stem and udfdict:
             feats = udfeats
         if feats:
-            dict['feats'] = feats
+            dict['udfeats'] = feats
         return dict
 
     def get_root(self, stem, procdict, mwe=None):

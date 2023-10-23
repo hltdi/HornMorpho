@@ -37,7 +37,7 @@ class SegRoot(Tk):
 
     sentencewidth = 60
 
-    def __init__(self, corpus=None, title=None, um=1, seglevel=2, v5=False):
+    def __init__(self, corpus=None, title=None, seglevel=2, v5=False):
         Tk.__init__(self)
         self.title(title if title else "Corpus")
         fontfamilies = families()
@@ -70,7 +70,7 @@ class SegRoot(Tk):
         # Undo and Quit buttons
         self.init_buttons()
         # Canvas and scrollbars
-        self.canvas = SegCanvas(self, corpus, um=um, seglevel=seglevel, v5=v5)
+        self.canvas = SegCanvas(self, corpus, seglevel=seglevel, v5=v5)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
@@ -298,7 +298,7 @@ class SegCanvas(Canvas):
 
     maxfeatchars = 15
 
-    def __init__(self, parent, corpus=None, um=1, seglevel=2, width=800, height=600, v5=False):
+    def __init__(self, parent, corpus=None, seglevel=2, width=800, height=600, v5=False):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
         self.v5 = v5
         self.parent = parent
@@ -306,7 +306,6 @@ class SegCanvas(Canvas):
         self.UM = corpus.language.um
         self._width = width
         self._height = height
-        self.um = um
         self.seglevel = seglevel
         self.colwidth = SegCanvas.wordcolwidth if seglevel == 0 else SegCanvas.segcolwidth
         self.columnX = []
@@ -551,6 +550,7 @@ class SegCanvas(Canvas):
     def show_features(self, feats, Xs, y, wordseg, featselecttags):
         '''
         Show the morphological features for a segmentation if there are any.
+        wordseg is a TokenList.
         '''
         max_y = y
         if len(wordseg) == 1:
@@ -863,9 +863,10 @@ class SentenceGUI():
         Update the word's action memory, set the color for the word, enable the Undo button.
         '''
         self.sentenceobj.disambiguated = True
-        print("!! setting POS {} in {}; {}".format(pos, seg, type(seg)))
+        analdict = seg.analysis
+#        print("!! setting POS {} in {}; seganal {}".format(pos, seg, analdict))
         old = ((seg['upos'], seg['xpos']), seg)
-        print("!! current POS {}".format(seg['upos']))
+#        print("!! current POS {}".format(seg['upos']))
         if self.wordid in self.memory:
             self.memory[self.wordid].append(old)
         else:
@@ -874,18 +875,21 @@ class SentenceGUI():
         self.frame.enable_undo()
         seg['upos'] = pos
         seg['xpos'] = pos
+        Sentence.updatePOS(analdict, pos)
 
     def set_feat(self, feats, seg):
         '''
         Update the features for a segmentation for the current word, based on selection by user.
-        Update the word's action memory, set the color for the word, enable the Undo button
+        Update the word's action memory, set the color for the word, enable the Undo button.
+        (seg is a Token instance, representing one token within a word, possibly the whole word.)
         '''
         self.sentenceobj.disambiguated = True
+        analdict = seg.analysis
         new_feat = feats.replace('\n', '|')
-        print("!! setting feat {} in {}; {}".format(new_feat, seg, type(seg)))
+#        print("!! setting feat {} in {}; seganal {}".format(new_feat, seg, seg.analysis))
         old_feats = seg['feats']
         old_feats_split = old_feats.split("|")
-        print("!! current feat {}".format(old_feats_split))
+#        print("!! current feat {}".format(old_feats_split))
         # replace the ambiguous feature (starting with '&' with the new value)
         for fi, feat in enumerate(old_feats_split):
             if feat[0] == '&':
@@ -901,6 +905,7 @@ class SentenceGUI():
         self.show_disambig_word(self.wordid)
         self.frame.enable_undo()
         seg['feats'] = new_feats
+        Sentence.update_feats(analdict, new_feats)
 
     def show_disambig_word(self, index):
         '''

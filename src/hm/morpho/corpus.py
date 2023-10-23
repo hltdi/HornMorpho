@@ -50,7 +50,7 @@ class Corpus():
                  name='', batch_name='', sentid=0, analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False, sep_feats=True,
+                 v5=False, sep_feats=True, gemination=True,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -137,7 +137,7 @@ class Corpus():
             # Raw sentences
             self.data = data
             if v5 and segment:
-                self.segment5(sep_feats=sep_feats)
+                self.segment5(sep_feats=sep_feats, gemination=gemination)
         else:
             self.data = []
 #        if segment:
@@ -207,7 +207,7 @@ class Corpus():
         """
         return len([w for w in sentence if NUMERAL_RE.fullmatch(w)])
 
-    def disambiguate(self, skip_unambig=True, um=1, seglevel=2, timeit=False, verbosity=0):
+    def disambiguate(self, skip_unambig=True, seglevel=2, timeit=False, verbosity=0):
         '''
         Show the segmentations in the GUI so words with multiple
         segmentations can be disambiguated.
@@ -215,7 +215,7 @@ class Corpus():
         if not self.sentences:
             # Segment all sentences before creating GUI.
             self.segment(timeit=timeit)
-        self.root = SegRoot(self, title=self.__repr__(), um=um, seglevel=seglevel, v5=self.v5)
+        self.root = SegRoot(self, title=self.__repr__(), seglevel=seglevel, v5=self.v5)
         self.root.mainloop()
 
     def segment(self, timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0):

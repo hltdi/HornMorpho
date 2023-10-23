@@ -1677,7 +1677,7 @@ class Language:
             analyses = self.analyze5(words, **kwargs)
             if analyses:
                 sent_obj.add_word5(analyses)
-                print("  ** Success: {}".format(analyses[0]))
+#                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1
             end_index += 1
         return False, token_index
