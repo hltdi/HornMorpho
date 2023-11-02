@@ -1,5 +1,7 @@
 abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
 abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
+abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
+
 POS n N
 ->UD  ACC+GEN	*Case=AccGen
 ->UD  ACC	Case=Acc
@@ -70,14 +72,12 @@ POS v V
 ->UD PFV	Aspect=Perf
 ->UD V.CVB	VerbForm=Conv
 #->UD PRF	Aspect=Prf
-#->UD NFIN
 ->UD CAUS	Voice=Cau
 ->UD TR		Voice=Trans
 ->UD RECP	Voice=Rcp
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
 ->UD CAUS+RECP	*Voice=CauRcp
-->UD *RELC	*VerbForm=Rel
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
@@ -110,28 +110,31 @@ POS v V
 ->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
 ->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
 ->UD *MAL3P	*MalPers=3,MalNum=Plur
+->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
-->UD COND	Mood=Cond,VerbForm=Sub
-->UD PURP	Mood=Prp,VerbForm=Sub
+->UD COND	*ClauseType=AdvCl
+->UD PURP	*ClauseType=AdvCl
+->UD *CCOMP	*ClauseType=CComp
+->UD *RELC	*ClauseType=ACl
 # Time
 # ስ-
-->UD *TEMP	*Cnj=Temp,VerbForm=Sub
-->UD TERM	*Cnj=Term,VerbForm=Sub
+->UD *TEMP	*ClauseType=AdvCl
+->UD TERM	*ClauseType=AdvCl
 # prepositions/conjunctions
-# እንደ-
-->UD EQTV	Case=Equ
+# እንደ- (almost always complementizer)
+#->UD EQTV	Case=Equ
 # ወደ-
 ->UD ALL	Case=All
 # ከ-
 ->UD ABL	Case=Abl
-# በ-
+# በ- (also Locative, others)
 ->UD INS	Case=Ins
-# ለ-
+# ለ- (also Benefactive)
 ->UD DAT	Case=Dat
 
 t:: i:IPFV;; p:PFV;; j:IMP
-t,ax:: c,0:V.CVB ;; i,0:NFIN;; c,al:PRF
+t,ax:: c,0:V.CVB ;; c,al:PRF
 
 #pos!t:: v:V;; 0:ADJ;; 0:N
 
@@ -139,7 +142,7 @@ pos:: v:V
 
 neg:: NEG
 
-rel,sub:: True,True:*RELC;NFIN
+rel:: True:*RELC
 
 ## morphological valence/voice
 a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; a,p:RECP;; a,a:CAUS+RECP;; i,0:ITER;; i,p:RECP;; i,a:CAUS+RECP
@@ -150,19 +153,22 @@ sn:: 1:SG;; 2:PL
 sg:: m:MASC;; f:FEM
 
 ## objects
-# plain (accusative)
-oa,op,on,og:: 0,3,1,m:AC3SM;; 0,3,1,f:AC3SF;; 0,2,1,m:AC2SM;; 0,3,1,f:AC2SF
-oa,op,on:: 0,1,1:AC1S;; 0,1,2:AC1P;; 0,2,2:AC2P;; 0,3,2:AC3P
-# applicative
-oa,op,on,og:: l,3,1,m:DA3SM;; l,3,1,f:DA3SF;; l,2,1,m:DA2SM;; l,2,1,f:DA2SF
-oa,op,on:: l,1,1:DA1S;; l,1,2:DA1P;; l,2,2:DA2P;; l,3,2:DA3P
-oa,op,on,og:: b,3,1,m:*MAL3SM;; b,3,1,f:*MAL3SF;; b,2,1,m:*MAL2SM;; b,3,1,f:*MAL2SF
-oa,op,on:: b,1,1:*MAL1S;; b,1,2:*MAL1P;; b,2,2:*MAL2P;; b,3,2:*MAL3P
+# accusative objects (and 3SM DEF)
+o,oc,rel,+tr:: sm3,0,True,True:{AC3SM/DEF};; sm3,0,False,*:AC3SM;; sm3,0,True,False:DEF
+o,oc:: sf3,0:AC3SF;; p3,0:AC3P
+o,oc:: s1,0:AC1S;; p1,0:AC1P;; sm2,0:AC2SM;; sf2,0:AC2SF;; F2,0:AC2S;FORM;; p2,0:AC2P
+# dative objects
+o,oc:: sm3,l:DA3SM;; sm3,l:DA3SM;; sf3,l:DA3SF;; p3,l:DA3P
+o,oc:: s1,l:DA1S;; p1,l:DA1P;; sm2,l:DA2SM;; sf2,l:DA2SF;; F2,l:DA2S;FORM;; p2,l:DA2P
+# malefactive+ objects
+o,oc:: sm3,b:MAL3SM;; sm3,b:MAL3SM;; sf3,b:MAL3SF;; p3,b:MAL3P
+o,oc:: s1,b:MAL1S;; p1,b:MAL1P;; sm2,b:MAL2SM;; sf2,b:MAL2SF;; F2,b:MAL2S;FORM;; p2,b:MAL2P
 
 det:: DEF
 
-adp:: እስከ:TERM;; ስለ:PURP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
-sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM
+adp:: እስከ:TERM;; ስለ:PURP;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
+sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND
 cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V

@@ -242,7 +242,16 @@ class UniMorph:
                 # superfeat: subfeat
                 super, sub = f.split(':')
                 ff = fs.get((super, sub), None)
+            elif f[0] == '+':
+                # '+' prefixed to feature means to treat True as default
+                f = f[1:]
+                ff = fs.get(f, True)
+            elif f[0] == '-':
+                # '-' prefixed to feature means to treat False as default
+                f = f[1:]
+                ff = fs.get(f, False)
             else:
+                # None is 'default' default value when the feature is not present in fs
                 ff = fs.get(f, None)
             fsvalues.append(ff)
 #        fsvalues = tuple([fs.get(f, None) for f in features])
@@ -626,3 +635,25 @@ class UniMorph:
 
         except IOError as e:
             print("No UM file for {}".format(self.language.abbrev))
+
+    @staticmethod
+    def compare_um(um1, um2):
+        um1 = set(um1.split(';'))
+        um2 = set(um2.split(';'))
+        inters = list(um1.intersection(um2))
+        diff1 = list(um1.difference(um2))
+        diff2 = list(um2.difference(um1))
+        diff1.sort()
+        diff2.sort()
+        return inters, diff1, diff2
+
+    @staticmethod
+    def compare_udf(udf1, udf2):
+        udf1 = set(udf1.split('|'))
+        udf2 = set(udf2.split('|'))
+        inters = list(udf1.intersection(udf2))
+        diff1 = list(udf1.difference(udf2))
+        diff2 = list(udf2.difference(udf1))
+        diff1.sort()
+        diff2.sort()
+        return inters, diff1, diff2

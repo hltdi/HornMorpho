@@ -59,7 +59,10 @@ def make_corpus5(language, data, **kwargs):
     guess = kwargs.get('guess', False)
     language = morpho.get_language(language, v5=True, guess=guess)
     if language:
-        return morpho.Corpus(language=language, data=data, v5=True, **kwargs)
+        corp = morpho.Corpus(language=language, data=data, v5=True, **kwargs)
+        if kwargs.get('disambiguate', False):
+            corp.disambiguate()
+        return corp
 
 def analyze5(language, word, **kwargs):
     '''

@@ -64,18 +64,18 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=0,c=E,+strong
 [t=p]
 [t=i,v=p]
-^eo	^e	^eo:	**
+^eo	^eo	^eo:	**
 
 [t=i,v=0|a|as]
 [t=j,v=as]
-^eo	^e	**u:	**
+^eo	^eo	**u:	**
 
 [t=j,v=0|a]
 [t=c]
-^eo	**	**u	**
+^eo	**u	**u	**
 
 [t=j,v=p]
-^eo	**	^eo	**
+^eo	**u	^eo	**
 
 %%a=0,c=F,+strong
 [t=p]

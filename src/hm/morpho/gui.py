@@ -293,8 +293,8 @@ class SegCanvas(Canvas):
     segfeatsheight = 14
     seggap = 40
     segrightmargin = 20
-    deplabelX = 40
-    deplabelY = 8
+    deplabelX = 5
+    deplabelY = 7
 
     maxfeatchars = 15
 
@@ -342,7 +342,7 @@ class SegCanvas(Canvas):
 #            print("** wordseg {}".format(wordseg))
             segYs.append(y - SegCanvas.segYmargin)
             word = Sentence.get_word(wordseg)
-            headindex = Sentence.get_headindex(wordseg)
+            headindex = Sentence.get_headindex(wordseg, v5=self.v5)
             forms = Sentence.get_forms(wordseg)
             lemmas = Sentence.get_lemmas(wordseg, forms, headindex)
             pos = Sentence.get_pos(wordseg)
@@ -350,7 +350,8 @@ class SegCanvas(Canvas):
 #                                                 featlevel=self.um)
             # Don't need to do this if there is no segmentation
             if self.seglevel > 0:
-                dependencies = Sentence.get_dependencies(wordseg)
+                dependencies = Sentence.get_dependencies(wordseg, v5=self.v5)
+#            print(" ^^ dependencies {}".format(dependencies))
             n = len(forms)
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
@@ -634,11 +635,11 @@ class SegCanvas(Canvas):
         """
         Show left and right dependency arcs.
         """
-        headX = Xs[headindex]
-        dependencydiff = len(dependencies[0]) - len(dependencies[1])
         left = dependencies[0]
         right = dependencies[1]
-#        print("** left {}, right {}".format(left, right))
+#        print(" ** show deps left {}, right {}, headindex {}".format(left, right, headindex))
+        headX = Xs[headindex]
+        dependencydiff = len(left) - len(right)
         if dependencydiff > 0:
             left = left[dependencydiff:]
             left_deps = dependencies[0][:dependencydiff]
@@ -693,13 +694,15 @@ class SegCanvas(Canvas):
         Show a single dependency arc.
         '''
         self.create_line(x1, y, x2, y, arrow=LAST)
+        nchars = len(label)
+        Xoffset = nchars * SegCanvas.deplabelX
         X = (x2 - x1) / 2 + x1
         if startcircle:
             self.create_oval(x1 - 2, y - 2, x1 + 2, y + 2, fill='black')
-        self.create_rectangle(X - SegCanvas.deplabelX, y - SegCanvas.deplabelY,
-                              X + SegCanvas.deplabelX, y + SegCanvas.deplabelY,
+        self.create_rectangle(X - Xoffset, y - SegCanvas.deplabelY,
+                              X + Xoffset, y + SegCanvas.deplabelY,
                               fill='white', outline='black')
-        self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black')
+        self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black', font=self.parent.roman_small)
 
 class SentenceGUI():
     '''
@@ -892,6 +895,7 @@ class SentenceGUI():
 #        print("!! current feat {}".format(old_feats_split))
         # replace the ambiguous feature (starting with '&' with the new value)
         for fi, feat in enumerate(old_feats_split):
+            print("!! Ambiguous feature {}, new {}".format(feat, new_feat))
             if feat[0] == '&':
                 old_feats_split[fi] = new_feat
         # alphabetize here?
@@ -920,7 +924,10 @@ class SentenceGUI():
         '''
         self.sentenceobj.disambiguated = True
         wordindex = self.frame.wordvar.get()-1
-        old = (wordindex, self.words[wordindex])
+        if self.v5:
+            old = (wordindex, self.words[wordindex].conllu)
+        else:
+            old = (wordindex, self.words[wordindex])
         if self.wordid in self.memory:
             self.memory[self.wordid].append(old)
         else:
@@ -931,6 +938,7 @@ class SentenceGUI():
             self.words[wordindex].conllu = newsegs
         else:
             self.words[wordindex] = newsegs
+#        print("!! memory {}".format(self.memory))
 
     def undo(self):
         '''
@@ -942,9 +950,13 @@ class SentenceGUI():
             print("Something wrong; nothing to undo!")
             return
         x, y = memory.pop()
+#        print("!! x {} y {}:{}".format(x, y, type(y)))
         if isinstance(x, int):
-            # This is a segmentation selection; x is the index, y the oldsegmentations
-            self.words[x] = y
+            # This is a segmentation selection; x is the index, y the old segmentations
+            if self.v5:
+                self.words[x].conllu = y
+            else:
+                self.words[x] = y
         elif isinstance(x, tuple):
             # This is a POS selection; x is the old UPOS and XPOS, y the word dict
             upos, xpos = x

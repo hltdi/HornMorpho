@@ -56,7 +56,7 @@
 
 <ም ጥ እ>		c=A
   # restrict a=0,v=0 so that irregular ና/ነይ/ኑ is used for t=j,sp=2,-neg
-  a=0,v=0,t=p|c|i|0;a=0,v=0,t=j,sp=1|3;a=0,v=0,t=j,sp=2,+neg;a=0,v=p;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p;a=i,v=a
+  a=0,v=0,t=p|c|i|0,-tr;a=0,v=0,t=j,sp=1|3,-tr;a=0,v=0,t=j,sp=2,+neg,-tr;a=0,v=p,-tr;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p,-tr;a=i,v=a
 
 <ግ ኝ ይ>		c=A
   # restrict regular forms to a=0|a so irregular ተገኛኘ can be handled specially

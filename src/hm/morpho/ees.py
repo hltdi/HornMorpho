@@ -58,7 +58,9 @@ class EES:
     pre_gem_char = '/'
     post_gem_chars = '፟_:'
 
-#    mwe_space = '//'
+    morph_sep = '-'
+
+    #    mwe_space = '//'
 
     # Filters to use with anal_sentence to restrict syntax/morphology.
     filters = \
@@ -150,13 +152,38 @@ class EES:
 #        return string
 
     @staticmethod
-    def degeminate(string):
+    def degeminate(string, elim_bounds=True):
         '''
         Remove gemination characters froms string (but do not replace MWE space chars //).
+        If elim_bounds is True, also drop trailing morpheme boundary characters.
         '''
         for char in EES.pre_gem_char + EES.post_gem_chars:
             string = string.replace(char, '')
+        if elim_bounds:
+            if string[0] == EES.morph_sep:
+                string = string[1:]
+            if string[-1] == EES.morph_sep:
+                string = string[:-1]
         return string
+
+    @staticmethod
+    def unicode_geminate(string):
+        '''
+        Use the Unicode gemination character for gemination.
+        '''
+        chars = []
+        gem_next = False
+        for char in string:
+            if char == EES.pre_gem_char:
+                gem_next = True
+            elif char == '_' or char == '፟':
+                chars.append("፟")
+            elif gem_next:
+                chars.append(char + '፟')
+                gem_next = False
+            else:
+                chars.append(char)
+        return ''.join(chars)
 
     @staticmethod
     def make_weight(string, source=False, target=False):

@@ -1476,6 +1476,11 @@ class POSMorphology:
         sep_feats = kwargs.get('sep_feats', True)
         gemination = kwargs.get('gemination', True)
         string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
+        real_prefixes = [p for p in prefixes if p]
+        real_suffixes = [s for s in suffixes if s]
+#        print("^^ prefixes {}".format(prefixes))
+#        print("^^ stem {}".format(stem))
+#        print("^^ suffixes {}".format(suffixes))
         procdict = {'token': token, 'feats': features, 'string': string}
         if raw_token:
             procdict['raw'] = raw_token
@@ -1487,7 +1492,7 @@ class POSMorphology:
                 token_dicts = self.get_mwe_tokens(token, mwe_props)
                 procdict['tokens'] = token_dicts
 #            print("  ^^ token dicts {}".format(token_dicts))
-        procdict['nsegs'] = len([p for p in prefixes if p]) + 1 + len([s for s in suffixes if s])
+        procdict['nsegs'] = len(real_prefixes) + 1 + len(real_suffixes)
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
         procdict['pos'] = features.get('pos', self.pos)
@@ -1496,33 +1501,41 @@ class POSMorphology:
         procdict['udfeats'] = udfeats
 #        print("$$ udfdict {}".format(udfdict))
         stemd = None
+        max_stem_index = len(prefixes)
+        stem_index = len(real_prefixes)
         if self.segments:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []
             post_dicts = []
             aff_index = 0
-            stem_index = len(prefixes)
+#            print(" ^^ stem_index {}, real_stem_index {}".format(stem_index, real_stem_index))
             suff1_index = len(prefixes) + 1
             pos = procdict['pos']
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
                 pre_dicts.append(
-                    self.process_morpheme5(prefix, props, pindex, stem_index, features, pos,
+                    self.process_morpheme5(prefix, props, pindex, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
                                            udfeats=udfeats, gemination=gemination,
                                            sep_feats=sep_feats, mwe=mwe_props)
                     )
+                if prefix:
+                    aff_index += 1
             prefixes = pre_dicts
+            real_stem_index = aff_index
+            aff_index += 1
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
                 post_dicts.append(
-                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, features, pos,
+                    self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
                                            udfeats=udfeats, gemination=gemination,
                                            sep_feats=sep_feats, mwe=mwe_props)
                     )
+                if suffix:
+                    aff_index += 1
             suffixes = post_dicts
             if stemprops:
                 stem_dict = \
-                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, features, pos,
+                  self.process_morpheme5(stem, stemprops, stem_index, stem_index, real_stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts,
                                          udfeats=udfeats, gemination=gemination,
                                          sep_feats=sep_feats, mwe=mwe_props)
@@ -1530,9 +1543,10 @@ class POSMorphology:
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
         procdict['stem'] = stemd or stem
+        procdict['head'] = stem_index
         root = self.get_root(stem, procdict, mwe=mwe_props)
         procdict['root'] = root
-        lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props)
+        lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props, gemination=gemination)
         procdict['lemma'] = lemma
 
 #        print("^^ process5: prodict {}".format(procdict))
@@ -1559,7 +1573,7 @@ class POSMorphology:
                     token_dicts.append({'token': token, 'pos': deppos, 'head': False})
         return token_dicts
 
-    def process_morpheme5(self, morpheme, props, index, stem_index, features, pos,
+    def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None,
                           gemination=True, sep_feats=True, mwe=False):
         '''
@@ -1568,11 +1582,12 @@ class POSMorphology:
         if not morpheme:
             # the morpheme could be the empty string
             return ''
-#        print("^^ Processing morpheme {}: {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, morpheme, stem_index, udfdict, udfalts))
+#        print("  ^^ Processing morpheme {} (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, aff_index, morpheme, stem_index, udfdict, udfalts))
         dict = {'string': morpheme if gemination else EES.degeminate(morpheme)}
-        pos = self.get_segment_pos(morpheme, props, pos, mwe=mwe, is_stem=is_stem)
+        pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem)
         dict['pos'] = pos
-        dep, head = self.get_segment_dep_head(morpheme, props, index, stem_index, features, is_stem=is_stem)
+        dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
+#        print("  ^^ dep {}, head {}".format(dep, head))
         if dep:
             dict['dep'] = dep
         dict['head'] = head
@@ -1621,7 +1636,7 @@ class POSMorphology:
 
         return features.get('root', stem)
 
-    def get_segment_pos(self, string, segdict, pos, mwe=False, is_stem=False):
+    def get_segment_pos(self, string, segdict, pos, features, mwe=False, is_stem=False):
         '''
         mwe is False (for single-word items) or a dict of props for MWEs.
         '''
@@ -1634,7 +1649,17 @@ class POSMorphology:
             return
         if isinstance(posspec, dict):
             pos = posspec.get(EES.degeminate(string))
-            if not pos:
+            if pos:
+                if isinstance(pos, str):
+                    # string specifying the dep for all affixes in this position
+                    return pos
+                elif isinstance(pos, tuple):
+                    # (feature, {...})
+                    posfeat = pos[0]
+                    posvalue = features.get(posfeat)
+                    pos = pos[1].get(posvalue)
+#                print(" ^^ Value for feat {}: {}; dep {}".format(posfeat, posvalue, pos))
+            else:
                 if mwe and 'deppos' in mwe and ' ' in string:
                     # This is a dependent word within a MWE; use the 'deppos' feature
                     return mwe['deppos']
@@ -1700,32 +1725,45 @@ class POSMorphology:
                 dep = depspec[1].get(depvalue)
 #                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
         return dep, head_index
+
+    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=True):
+        '''
+        Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
+        Currently restricted to gemination.
+        '''
+        if not gemination:
+            return EES.degeminate(form, elim_bounds=elim_bounds)
+        # Replace _ with /
+        form = form.replace('_', '/')
+        if unicode:
+            form = EES.unicode_geminate(form)
+        return form
  
-    def gen_lemma(self, stem, root, procdict, mwe=None):
+    def gen_lemma(self, stem, root, procdict, mwe=None, gemination=True):
         '''
         Generate the lemma for the given root and features.
         '''
+        features = procdict.get('feats')
+        if features and 'lemma' in features:
+            return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False)
         lemmafeats = self.lemma_feats
         if not lemmafeats:
-            return stem
+            return self.postproc5(stem, gemination=gemination, elim_bounds=False)
         lemmafeat1, lemmafeats2 = lemmafeats
-        features = procdict['feats']
 #        print("^^ generating lemma for {}|{} ; mwe {}".format(stem, root, mwe.__repr__()))
 #        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
             if not value1:
-#                print("    ^^ no value1, returning stem {}".format(stem))
-                return stem
+                return self.postproc5(stem, gemination=gemination, elim_bounds=False)
             initfeat = ["{}={}".format(lemmafeat1, value1)]
             for lf in lemmafeats2:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
             initfeat = ','.join(initfeat)
 #            print("    ^^ initfeat {}, root {}".format(initfeat, root))
-            gen_out = self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)
-            if gen_out:
-                return gen_out[0][0]
+            if (gen_out := self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)):
+                return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False)
             return
         initfeat = []
         for lf in lemmafeats2:
@@ -1733,9 +1771,8 @@ class POSMorphology:
             initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
 #        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
-        gen_out = self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)
-        if gen_out:
-            return gen_out[0][0]
+        if (gen_out := self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)):
+            return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False)
 
     def separate_anals(self, analyses, normalize=False):
         """

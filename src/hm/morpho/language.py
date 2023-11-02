@@ -1654,9 +1654,12 @@ class Language:
                 token_index = new_index
             else:
                 kwargs['mwe'] = False
-                anal1 = self.analyze5(tokens[token_index], **kwargs)
+                token = tokens[token_index]
+                anal1 = self.analyze5(token, **kwargs)
                 if anal1:
                     sentobj.add_word5(anal1)
+                else:
+                    sentobj.add_word5(Word.create_unk(token))
                 token_index += 1
         return sentobj
 

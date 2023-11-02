@@ -55,6 +55,7 @@ class Sentence():
 
     def __init__(self, text, tokens=[], batch_name='', sentid=0, language=None):
         self.language = language
+        self.um = language.um
         self.tokens = tokens
         self.text = text
         self.ntokens = len(text.split())
@@ -77,6 +78,7 @@ class Sentence():
         self.disambiguated = False
         self.conllu_string = ''
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
+        self.merges = []
 
     def __repr__(self):
         return "S{}::{}".format(self.sentid, self.text)
@@ -207,7 +209,7 @@ class Sentence():
             conllu.append(
                 HMToken(
                     {'id': index, 'form': p['string'], 'lemma': p.get('lemma', p['string']), 'upos': pos, 'xpos': pos,
-                     'feats': p.get('udfeats', None), 'head': p.get('head', 0), 'deprel': p.get('dep', None), 'deps': None, 'misc': None},
+                     'feats': p.get('udfeats', None), 'head': p.get('head', 0)+1, 'deprel': p.get('dep', None), 'deps': None, 'misc': None},
                      analysis=p
                     ))
             index += 1
@@ -215,7 +217,7 @@ class Sentence():
         pos = Sentence.convertPOS(stemdict)
         conllu.append(
             HMToken({'id': index, 'form': stemdict['string'], 'lemma': stemdict.get('lemma', analdict['lemma']), 'upos': pos, 'xpos': pos,
-                   'feats': stemdict.get('udfeats', None), 'head': stemdict.get('head', 0), 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None},
+                   'feats': stemdict.get('udfeats', None), 'head': stemdict.get('head', 0)+1, 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None},
                    analysis=stemdict
                         ))
         index += 1
@@ -225,7 +227,7 @@ class Sentence():
             pos = Sentence.convertPOS(s)
             conllu.append(
                 HMToken({'id': index, 'form': s['string'], 'lemma': s.get('lemma', s['string']), 'upos': pos, 'xpos': pos, 
-                       'feats': s.get('udfeats', None), 'head': s.get('head', 0), 'deprel': s.get('dep', None), 'deps': None, 'misc': None},
+                       'feats': s.get('udfeats', None), 'head': s.get('head', 0)+1, 'deprel': s.get('dep', None), 'deps': None, 'misc': None},
                        analysis=s
                           ))
             index += 1
@@ -242,6 +244,13 @@ class Sentence():
 #        print("&& Updating feats in {} to {}".format(analdict, udfeats))
         if 'udfeats' in analdict:
             analdict['udfeats'] = udfeats
+
+    def merge5(self):
+        '''
+        Attempt to merge segmentations of each word.
+        '''
+        self.merges = [(word, word.merge()) for word in self.words]
+        print("&& merges: {}".format(self.merges))
 
     #####
         
@@ -311,12 +320,17 @@ class Sentence():
                 word = word[0]
 #                print("** word {}".format(word))
                 for morph in word:
-#                    print("** morph {}".format(morph))
                     pos = morph.get('upos')
                     if pos in Sentence.selectpos:
                         # an ambiguous POS
                         ambig.append(index)
                         count += 1
+                    feats = morph.get('feats')
+                    if feats and '&' in feats:
+                        print("** ambiguous feats {}, appending to ambig {}".format(feats, ambig))
+                        ambig.append(index)
+                        count += 1
+#                    print("  ** feats {}".format(feats))
         return ambig
 
     @staticmethod
@@ -667,7 +681,7 @@ class Sentence():
 
     ### Graphical representation of segmentations
 
-    def show_segmentation(self, segmentation, featlevel=1):
+    def show_segmentation(self, segmentation, featlevel=1, v5=False):
         '''
         Returns a string representing the segmentation with a line for each dependency,
         for forms, for POS tags, and for features.
@@ -679,7 +693,7 @@ class Sentence():
 #        forms = ['_' + form + '_' for form in forms]
         pos = Sentence.get_pos(segmentation)
         features = Sentence.get_features(segmentation, None)
-        headindex = Sentence.get_headindex(segmentation)
+        headindex = Sentence.get_headindex(segmentation, v5=v5)
         centers = Sentence.get_centers(nforms)
         string = len(forms) * "{{:^{}}}".format(Sentence.colwidth)
         formstring = string.format(*forms)
@@ -743,31 +757,42 @@ class Sentence():
         return segmentation[0].get('form')
 
     @staticmethod
-    def get_headindex(segmentation):
+    def get_headindex(segmentation, v5=False):
         '''
         Index of the morpheme that's the head.
         All dependencies start here.
         '''
+        seg0 = segmentation[0]
+#        print("  ** get_headindex seg0 {}; {}; {}".format(seg0, type(seg0), seg0.analysis))
+        if v5:
+            return seg0.analysis.get('head')
         return segmentation[0].get('misc')
 
     @staticmethod
-    def get_dependencies(segmentation):
+    def get_dependencies(segmentation, v5=False):
         '''
         Return a list of lists of leftward and rightward dependencies.
         '''
-#        print("** get dependencies; segmentation: {}".format(segmentation))
-        headindex = Sentence.get_headindex(segmentation)
+        if len(segmentation) == 1:
+            return None
+#        print("** get dependencies; segmentation: {}, v5 {}".format(segmentation, v5))
+        headindex = Sentence.get_headindex(segmentation, v5=v5)
+#        print("  ** headindex {}".format(headindex))
         if headindex is not None:
             headid = segmentation[1:][headindex].get('id')
             idiff = headid - headindex
+#            print("    ** headid {}, headindex {}, idiff {}".format(headid, headindex, idiff))
+#            if v5:
+#                dependencies = [(s.get('deprel', ''), i, s.get('head', '')) for i, s in enumerate(segmentation[1:]) if i != headindex]
+#            else:
             dependencies = [(s.get('deprel', ''), i, s.get('head', '') - idiff) for i, s in enumerate(segmentation[1:]) if i != headindex]
-#            print("** segmentation {}".format(segmentation))
+#            print("  ** dependencies {}".format(dependencies))
 #        stem_dependencies = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
             left = []
             right = []
             for dependency in dependencies:
                 source, dest = dependency[2], dependency[1]
-#                print("*** dependency src {}, dest {}".format(source, dest))
+#                print("    *** dependency src {}, dest {}, headindex {}".format(source, dest, headindex))
                 if source >= headindex and dest >= headindex:
                     right.append(dependency)
                 elif source <= headindex and dest <= headindex:
@@ -797,6 +822,7 @@ class Sentence():
                 amb = None
                 for ff in feats:
                     if ff[0] == '&':
+                        print("** get features, ambig {}, ".format(ff))
                         amb = ff
                         if expand_ambig:
                             amb = um.expand_feat(amb)

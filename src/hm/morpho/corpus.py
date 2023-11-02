@@ -48,9 +48,9 @@ class Corpus():
 
     def __init__(self, data=None, path='', start=0, n_sents=0, max_sents=1000,
                  name='', batch_name='', sentid=0, analyze=False, language='', 
-                 um=1, seglevel=2, segment=True, fsts=None,
+                 um=1, seglevel=2, segment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False, sep_feats=True, gemination=True,
+                 v5=False, sep_feats=True, gemination=False,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -181,6 +181,7 @@ class Corpus():
                 self.sentences.append(sentence_obj)
                 self.unks.update(set(sentence_obj.unk))
                 self.max_words = max([self.max_words, len(sentence_obj.words)])
+                sentence_obj.merge5()
                 sent_id += 1
         # Delete sentences that didn't pass the filter
         for delindex in todelete[::-1]:

@@ -23,14 +23,14 @@ $ prestem
 
 $ stem
   +n_stemM+		[-irr]
-  +n_placeM+	[-irr,-pl]
+  +n_placeM+	[-irr,-pl,p=0]
 
 $ poststem
   >
 
 $ plural
-  ኦ/ች	[+pl,pos=n|adj,-col,-irr,ps=oc]
-  ኣን		[+pl,pos=n|adj,-col,-irr,ps=an]
+  ኦ/ች	[+pl,pos=N|ADJ,-col,-irr,ps=oc]
+  ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
   --		[-pl];[+pl,+col];[+pl,+irr]
 
 $ plur_bound
