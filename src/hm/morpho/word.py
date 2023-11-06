@@ -28,8 +28,9 @@ Representation of 'items': words, MWEs, punctuation, numerals.
 class Word(list):
 
     id = 0
+    POS = {frozenset(['N', 'PROPN']): "NPROPN"}
 
-    def __init__(self, init, name='', unk=False):
+    def __init__(self, init, name='', unk=False, merges={}):
         '''
         init is a list of analyses returned by Language.analyze5().
         '''
@@ -40,12 +41,19 @@ class Word(list):
         else:
             self.unk = False
         self.name = name
+        self.merges = merges
         self.conllu = []
         self.id = Word.id
         Word.id += 1
 
     def __repr__(self):
         return "W{}:{}{}".format(self.id, '*' if self.unk else '', self.name)
+
+    def show(self):
+        if len(self) == 0:
+            print()
+        for item in self:
+            print(item)
 
     @staticmethod
     def create_unk(name):
@@ -54,12 +62,6 @@ class Word(list):
         '''
         dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
         return Word([dct], name=name, unk=True)
-
-    def show(self):
-        if len(self) == 0:
-            print()
-        for item in self:
-            print(item)
 
     def remove(self, indices, index_map):
         '''
@@ -72,11 +74,12 @@ class Word(list):
         for index in indices:
             del self[index]
             del self.conllu[index]
-            for i, iold_new in enumerate(index_map):
-                if iold_new[0] == index:
-                    to_del.append(i)
-                elif iold_new[0] > index:
-                    iold_new[1] -= 1
+            if index_map:
+                for i, iold_new in enumerate(index_map):
+                    if iold_new[0] == index:
+                        to_del.append(i)
+                    elif iold_new[0] > index:
+                        iold_new[1] -= 1
         to_del.sort(reverse=True)
         for index in to_del:
             del index_map[index]
@@ -85,18 +88,17 @@ class Word(list):
         '''
         Possibly merge segmentations for word, if there are alternatives
         '''
-        print("\n***Merge word {}".format(self))
+#        print("\n***Merge word {}".format(self))
         merges = []
         to_del = []
         nsegs = len(self)
-        POSs = [('NOUN', 'PROPN'), ('PROPN', 'NOUN')]
-        for index1, segs1 in enumerate(self[:-1]):
-            for index2, segs2 in enumerate(self[index1+1:]):
+        for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
+            for index2, (segs2, csegs2) in enumerate(zip(self[index1+1:], self.conllu[index1+1:])):
                 i2 = index1+index2+1
                 if i2 in to_del:
                     continue
 #                print(" *** Comparing segmentations {} and {}".format(index1, i2))
-                c = self.compare_segs(segs1, segs2)
+                c = self.compare_segs(segs1, segs2, csegs1, csegs2)
                 if c is False:
                     # seg1 and seg2 are identical
 #                    merges.append(([index1, i2], {}))
@@ -107,12 +109,6 @@ class Word(list):
                     continue
                 else:
                     merges.append(([index1, i2], c))
-#                else:
-#                    print("  *** Diffs {}".format(c))
-#                else:
-#                    for mindex, merged in c.items():
-#                        if merged.get('upos') in POSs:
-#                            merges.append((index1, i2, mindex, [('upos', 'NPROPN'), ('xpos', 'NPROPN')]))
         index_map = [[i, i] for i in range(nsegs)]
         if to_del:
             self.remove(to_del, index_map)
@@ -121,27 +117,80 @@ class Word(list):
         for (i1, i2), diffs in merges:
             if i1 in index_map and i2 in index_map:
                 m.append([[index_map[i1], index_map[i2]], diffs])
-        print("  ** final merges {}".format(m))
+#        print("  ** final merges {}".format(m))
+        to_del = []
         # Implement merges where possible
         for (i1, i2), diffs in m:
             if len(diffs) == 1:
                 # only one difference
                 if 'pos' in diffs:
                     d = diffs['pos']
-                    self.merge_pos(self[i1], self[i2], d[0], d[1])
+                    POS = Word.merge_pos(d[0], d[1], self.merges.get('pos', {}))
+                    if POS:
+                        # merge the POSs only in the conllu lists
+#                        print("   ** merging POS in CoNLL-U {}: {}".format(self.conllu[i1], POS))
+                        # for now just change the first HMToken
+                        self.conllu[i1][0]['upos'] = POS
+                        self.conllu[i1][0]['xpos'] = POS
+                        # and delete the second CoNLL-U and analysis
+                        to_del.append(i2)
+                elif 'udfeats' in diffs:
+                    d = diffs['udfeats']
+                    umindex, ud1, ud2 = d
+                    lang_merges = self.merges.get('udfeats', {})
+                    if lang_merges:
+                        udfmerge = Word.get_merge_udfeats(umindex, ud1, ud2, lang_merges)
+                        if udfmerge:
+#                        print("  ** merging udfeats in CoNLL-U {}: {}".format(self.conllu[i1], udfmerge))
+                            Word.udfeats_merge(self.conllu[i1], umindex, udfmerge, ud1, ud2)
+                            to_del.append(i2)
+#                        print("  ** current udfeats: {}".format(self.conllu[i1][0]))
+        if to_del:
+            self.remove(to_del, None)
+#        print(" *** merges: {}".format(m))
         return m
 
-    def merge_pos(self, seg1, seg2, pos1, pos2):
-        '''
-        Attempt to merge the two segmentations on the basis of their POSs.
-        '''
-        print("  ** attempting to merge POS for {} and {}".format(seg1, seg2))
+    @staticmethod
+    def udfeats_merge(conllu, umindex, mergefeats, ud1, ud2):
+        if len(conllu) > 1:
+            # multi-morpheme token
+            morph = conllu[umindex]
+            morphfeats = morph.get('feats')
+            if morphfeats:
+                # this has to be true
+                udcomb = ud1 + ',' + ud2
+#                print("   *** udfeats_merge {} ; {} ; {} ; {}".format(morph, morphfeats, mergefeats, udcomb))
+                new_feats = Word.replace_udf(morphfeats, udcomb, mergefeats)
+#                print("   *** new_feats {}".format(new_feats))
+                morph['feats'] = new_feats
 
-    def compare_segs(self, segs1, segs2):
+    @staticmethod
+    def get_merge_udfeats(index, f1, f2, merges):
         '''
-        Compare the two segmentations (dicts) to see if they can be merged.
+        Attempt to merge the udfeats that differentiate two segmentations.
         '''
-#        print(" ** Comparing {} and {}".format(segs1, segs2))
+#        print("   ** merge udfeats {} ; {} {} ; {}".format(index, f1, f2, merges))
+        fset = frozenset([f1, f2])
+        if fset in merges:
+            merged = merges[fset]
+#            print("    ** merged udfeats: {}".format(merged))
+            return merged
+
+    @staticmethod
+    def merge_pos(pos1, pos2, merges):
+        '''
+        Attempt to merge the POSs that differentiate two segmentations.
+        '''
+        pset = frozenset([pos1, pos2])
+        if pset in merges:
+            merged = merges[pset]
+            return merged
+
+    def compare_segs(self, segs1, segs2, csegs1, csegs2):
+        '''
+        Compare the two segmentations (dicts) and CoNLL-U segmentations to see if they can be merged.
+        '''
+#        print(" ** Comparing {}\n and {} ; {}\n and {}".format(segs1, segs2, csegs1, csegs2))
         if segs1 == segs2:
 #            print(" ** segs are equal!")
             return False
@@ -149,6 +198,8 @@ class Word(list):
         umeq = False
         udfeq = False
         segseq = True
+        # Morpheme index where feat differences happen
+        mi = -1
         n1 = segs1['nsegs']
         n2 = segs2['nsegs']
         if n1 != n2:
@@ -166,7 +217,7 @@ class Word(list):
         um1 = segs1.get('um')
         um2 = segs2.get('um')
         i, d1, d2 = Word.compare_um(um1, um2)
-#        print("  ** UM inters {}, diff1 {}, diff2 {}".format(i, d1, d2))
+#        print("  ** UM diff1 {}, diff2 {}".format(d1, d2))
         if not d1 and not d2:
             umeq = True
         udf1 = segs1.get('udfeats')
@@ -174,7 +225,16 @@ class Word(list):
         i, d1, d2 = Word.compare_udf(udf1, udf2)
         if not d1 and not d2:
             udfeq = True
-#        print("  ** UDF inters {}, diff1 {}, diff2 {}".format(i, d1, d2))
+#        else:
+#            print("   ** UDF diff1 {}, diff2 {}".format(d1, d2))
+        if d1 and d2:
+            for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):
+#                print("    ** mindex {}".format(mindex))
+                f1 = m1['feats']
+                f2 = m2['feats']
+                if f1 and f2 and all([d in f1 for d in d1]) and all([d in f2 for d in d2]):
+#                    print("     ** diff udfeats at index {} in {} and {} ; {} and {}".format(mindex, m1, m2, f1, f2))
+                    mi = mindex
         if not poseq and not udfeq:
 #            print("  ** both POS and UDF mismatch")
             return True
@@ -190,8 +250,8 @@ class Word(list):
             diffs = {}
             if not leq:
                 diffs['lemma'] = [l1, l2]
-            if not udfeq:
-                diffs['udfeats'] = [d1, d2]
+            if not udfeq and mi >= 0:
+                diffs['udfeats'] = [mi, ','.join(d1), ','.join(d2)]
             if not poseq:
                 diffs['pos'] = [pos1, pos2]
             if not segseq:
@@ -234,4 +294,23 @@ class Word(list):
         diff2 = list(udf2.difference(udf1))
         diff1.sort()
         diff2.sort()
-        return inters, diff1, diff2
+#        diff1 = ','.join(diff1)
+#        diff2 = ','.join(diff2)
+        return tuple(inters), tuple(diff1), tuple(diff2)
+
+    @staticmethod
+    def replace_udf(udf, to_replace, replacement):
+        '''
+        udf is a standard UDFeats string, with | separating features.
+        to_replace is a string consisting of comma-separated features or a list of features.
+        replacement is a single feature-value pairs, starting with & or containing /.
+        '''
+        udf = udf.split('|')
+        if isinstance(to_replace, str):
+            to_replace = to_replace.split(',')
+        result = [replacement]
+        for u in udf:
+            if u not in to_replace:
+                result.append(u)
+#        result.sort()
+        return "|".join(result)        

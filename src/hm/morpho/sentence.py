@@ -250,7 +250,7 @@ class Sentence():
         Attempt to merge segmentations of each word.
         '''
         self.merges = [(word, word.merge()) for word in self.words]
-        print("&& merges: {}".format(self.merges))
+#        print("&& merges: {}".format(self.merges))
 
     #####
         
@@ -327,7 +327,7 @@ class Sentence():
                         count += 1
                     feats = morph.get('feats')
                     if feats and '&' in feats:
-                        print("** ambiguous feats {}, appending to ambig {}".format(feats, ambig))
+#                        print("** ambiguous feats {}, appending to ambig {}".format(feats, ambig))
                         ambig.append(index)
                         count += 1
 #                    print("  ** feats {}".format(feats))
@@ -819,15 +819,15 @@ class Sentence():
             if feats:
                 feats = feats.split('|')
                 unamb = []
-                amb = None
+                amb = []
                 for ff in feats:
                     if ff[0] == '&':
-                        print("** get features, ambig {}, ".format(ff))
-                        amb = ff
+#                        print("** get features, ambig {}, ".format(ff))
                         if expand_ambig:
-                            amb = um.expand_feat(amb)
-                            amb = amb.split('/')
-                            amb = [a.replace(',', '\n') for a in amb]
+                            ff = um.expand_feat(ff)
+                            ff = ff.split('/')
+                            ff = [a.replace(',', '\n') for a in ff]
+                        amb.append(ff)
 #                            amb = [a.split(',') for a in amb]
                     else:
                         unamb.append(ff)

@@ -56,6 +56,8 @@ charcomb::
   -ኢያ: ት ቻ, ድ ጃ, ጥ ጫ, ስ ሻ, ዝ ዣ, ን ኛ, ል ያ, ች ቻ, ጅ ጃ, ጭ ጫ, ሽ ሻ, ዥ ዣ, ኝ ኛ, ይ ያ ;\
   -ኢ: ብ ቢ, ም ሚ, ፍ ፊ, ት ች, ድ ጅ, ጥ ጭ, ስ ሽ, ዝ ዥ, ን ኝ, ል ይ, ች ች, ጅ ጅ, ጭ ጭ, ሽ ሽ, ዥ ዥ, ኝ ኝ, ይ ይ, ር ሪ, ክ ኪ, ግ ጊ, ቅ ቂ, ው ዊ
 
+merge:: pos:N;PROPN;NPROPN;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True
+
 feats:
 
   pos: v verb

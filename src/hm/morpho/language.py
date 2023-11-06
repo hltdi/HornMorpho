@@ -143,6 +143,8 @@ NO_MWE_RE = re.compile("\s*nomwe")
 NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
 # Added 2023.09.17; character combination (withing stems)
 CHARCOMB_RE = re.compile(r"\s*charcomb\w*::\s*(.*)")
+# Added 2023.11.03; POS, UD features, lemmas to merge
+MERGE_RE = re.compile(r"\s*merge::\s*(.*)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -264,6 +266,8 @@ class Language:
         self.charnorm = None
         # Character combination across morpheme boundaries
         self.charcombs = None
+        # Dict of type ('pos', 'udfeats', 'lemma') and merge possibilities
+        self.merges = None
 #        # A tree of multi-word expressions
 #        self.mwe = {}
 #        # Feature normalization
@@ -483,6 +487,8 @@ class Language:
         segments = {}
         mwefeats = {}
 
+        merges = {}
+
         # Whether this is a MWE FST for different POS
         mwe = {}
 
@@ -630,6 +636,20 @@ class Language:
                         dct[p1in] = p1out
                     self.charcombs.append([suff, dct])
 #                print("** charcombs {}".format(self.charcombs))
+                continue
+
+            m = MERGE_RE.match(line)
+            if m:
+                merge = m.group(1)
+                for mm in merge.split(';;'):
+                    typ, specs = mm.split(':')
+                    typ = typ.strip()
+                    s1, s2, s3 = specs.split(';')
+                    spec_key = frozenset([s1.strip(), s2.strip()])
+                    if typ in merges:
+                        merges[typ][spec_key] = s3.strip()
+                    else:
+                        merges[typ] = {spec_key: s3.strip()}
                 continue
 
             m = TRANS_RE.match(line)
@@ -964,6 +984,8 @@ class Language:
             # Make the seg_units list, [chars, char_dict], expected for transduction,
             # composition, etc.
             self.seg_units = self.make_seg_units(seg)
+
+        self.merges = merges
 
         if feats and not self.morphology:
             pos_args = []
@@ -1567,7 +1589,7 @@ class Language:
         special_anal = self.analyze_special5(token)
         if special_anal:
             # If this is numeral, punctuation, or abbreviation, don't bother going further.
-            wordobj = Word([special_anal], name=raw_token)
+            wordobj = Word([special_anal], name=raw_token, merges=self.merges)
             if isinstance(cache, dict):
                 cache[token] = wordobj
             return wordobj
@@ -1584,7 +1606,7 @@ class Language:
 #                                               mwe=mwe, combine_segs=combine_segs,
 #                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
-        wordobj = Word(all_analyses, name=raw_token)
+        wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
         if isinstance(cache, dict):
             cache[token] = wordobj
         return wordobj

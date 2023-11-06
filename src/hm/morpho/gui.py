@@ -289,6 +289,8 @@ class SegCanvas(Canvas):
     ambigsegfeatsheight = 22
     # half the height of a line within an ambiguous feature rectangle
     ambigrectheight = 7
+    # gap between sets of ambiguous features
+    ambiggap = 42
     # gap between features
     segfeatsheight = 14
     seggap = 40
@@ -567,34 +569,42 @@ class SegCanvas(Canvas):
 
     def show_features1(self, feats, x, y, wordseg, featselecttags):
 #        print("!! show_features1 {}, {}".format(feats, wordseg))
+        colors = ['pink', 'plum', 'hotpink']
         def show(f, coords):
             self.create_text(coords, text=f, font=self.parent.roman_small)
-        def show_ambig(f, x, y, nlines=1):
+        def show_ambig(f, x, y, nlines=1, color='pink'):
             self.create_rectangle(x-65, y-(nlines * SegCanvas.ambigrectheight), x+65, y+(nlines * SegCanvas.ambigrectheight),
-                                  fill='pink')
+                                  fill=color)
             id = self.create_text((x, y), text=f, font=self.parent.roman_small)
             return id
         unamb, ambig = feats
         if unamb:
-#            print("!! unambig feats {}".format(unamb))
             for feat in unamb[:-1]:
                 show(feat, (x, y))
                 y += SegCanvas.segfeatsheight
             show(unamb[-1], (x, y))
         if ambig:
-#            print("!! ambig feat {}".format(ambig))
-            # first alternative
-            nlines1 = ambig[0].count('\n') + 1
-            if unamb:
-                y += SegCanvas.ambigsegfeatsheight * (nlines1 / 2)
-            else:
-                y += SegCanvas.segfeatsheight
-            id1 = show_ambig(ambig[0], x, y, nlines=nlines1)
-            # second alternative
-            nlines2 = ambig[1].count('\n') + 1
-            y += SegCanvas.ambigsegfeatsheight * ((nlines1 / 2) + ((nlines2-1) / 2))
-            id2 = show_ambig(ambig[1], x, y, nlines=nlines2)
-            featselecttags.append((wordseg, id1, id2, ambig[0], ambig[1]))
+#            print("!! showing ambig feat {}".format(ambig))
+            for ai, (amb, color) in enumerate(zip(ambig, colors)):
+                # first alternative
+                nlines1 = amb[0].count('\n') + 1
+#                print(" !! showing ambig feat {}".format(amb))
+                if (unamb and ai==0):
+                    y += SegCanvas.ambigsegfeatsheight * (nlines1 / 2)
+                elif ai>0:
+                    y += SegCanvas.ambiggap
+                else:
+                    y += SegCanvas.segfeatsheight
+                id1 = show_ambig(amb[0], x, y, nlines=nlines1, color=color)
+                # second alternative
+                nlines2 = amb[1].count('\n') + 1
+                ymult = (nlines1 / 2) + ((nlines2-1) / 2)
+                y += SegCanvas.ambigsegfeatsheight * ymult
+                id2 = show_ambig(amb[1], x, y, nlines=nlines2, color=color)
+                featselecttags.append((wordseg, id1, id2, amb[0], amb[1]))
+                if ai == len(ambig) - 1:
+                    # Gap before lemmas
+                    y += SegCanvas.ambigsegfeatsheight * ((nlines2-1) / 2)
         return y
 
     def create_selectfeat(self, alts1, alts2, x, y, wordseg, featselecttags):
@@ -719,6 +729,7 @@ class SentenceGUI():
         self.canvas = canvas
         self.sentence = sentence
         self.sentenceobj = sentenceobj
+        self.UM = self.canvas.UM
         self.words = sentenceobj.words
         self.ambig = self.sentenceobj.record_ambiguities(v5=self.v5)
         self.index = index
@@ -889,15 +900,21 @@ class SentenceGUI():
         self.sentenceobj.disambiguated = True
         analdict = seg.analysis
         new_feat = feats.replace('\n', '|')
+        new_feat_sep = new_feat.split('|')
+        # expansions of ambiguous feature abbreviationsp
+        um_abbrevs = self.UM.abbrevs
 #        print("!! setting feat {} in {}; seganal {}".format(new_feat, seg, seg.analysis))
         old_feats = seg['feats']
         old_feats_split = old_feats.split("|")
 #        print("!! current feat {}".format(old_feats_split))
-        # replace the ambiguous feature (starting with '&' with the new value)
+        # replace the matching ambiguous feature (starting with '&') with the new value
         for fi, feat in enumerate(old_feats_split):
-            print("!! Ambiguous feature {}, new {}".format(feat, new_feat))
             if feat[0] == '&':
-                old_feats_split[fi] = new_feat
+                expansion = um_abbrevs.get(feat)
+                if expansion:
+#                    print("!! Ambiguous feature {}, new {}, expansion {}".format(feat, new_feat_sep, expansion))
+                    if all([nf in expansion for nf in new_feat_sep]):
+                        old_feats_split[fi] = new_feat
         # alphabetize here?
         new_feats = '|'.join(old_feats_split)
 #        print("!! new feats {}".format(new_feats))

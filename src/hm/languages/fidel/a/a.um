@@ -1,6 +1,7 @@
 abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
 abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
 abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
+abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
 
 POS n N
 ->UD  ACC+GEN	*Case=AccGen
