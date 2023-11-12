@@ -56,8 +56,7 @@ charcomb::
   -ኢያ: ት ቻ, ድ ጃ, ጥ ጫ, ስ ሻ, ዝ ዣ, ን ኛ, ል ያ, ች ቻ, ጅ ጃ, ጭ ጫ, ሽ ሻ, ዥ ዣ, ኝ ኛ, ይ ያ ;\
   -ኢ: ብ ቢ, ም ሚ, ፍ ፊ, ት ች, ድ ጅ, ጥ ጭ, ስ ሽ, ዝ ዥ, ን ኝ, ል ይ, ች ች, ጅ ጅ, ጭ ጭ, ሽ ሽ, ዥ ዥ, ኝ ኝ, ይ ይ, ር ሪ, ክ ኪ, ግ ጊ, ቅ ቂ, ው ዊ
 
-merge:: pos:N;PROPN;NPROPN;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True
-
+merge:: pos:N;PROPN;NPROPN;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True;; udfeats:Aspect=Imp;Mood=Jus;&ImpJus=True
 feats:
 
   pos: v verb
@@ -65,12 +64,12 @@ feats:
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':'ADP','ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
          'እንደ':'SCONJ','እንደም': 'SCONJ','እስከ':'ADP','ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','የም': 'SCONJ',\
-	 'እስከም': 'ADP','ወደም': 'ADP','ከም': 'ADP','ለም': 'ADP','በም ': 'ADP',\
+	 'እስከም': 'ADP','ወደም': 'ADP','ስለም': 'ADP','ከም': 'ADP','ለም': 'ADP','በም ': 'ADP',\
          'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
          'dep': 'mark', 'feats': ['Case']};
       {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
-      {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType']};;
+      {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
       {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
       {'name': 'ob',  'pos': 'PRON', 'dep': ('oc', {0: 'obj', 'l': 'obl', 'b': 'obl'}),\
       'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef']};

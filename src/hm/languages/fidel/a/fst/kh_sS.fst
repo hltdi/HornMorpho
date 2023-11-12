@@ -26,11 +26,16 @@ a.sS -> as.S	[/:ስ]
 as.S -> as.S-	[-]
 as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ሳ;ዛ;ሻ;ዣ;ጻ]
 
-V -> V+			[>]
-V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]
+V -> end		[>]
+#V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]
+#C -> end		[>]
+
+# optional h->k following consonant-final root
+C -> C+			[>]
+C+ -> end		[ክ:ህ;ኩ:ሁ]
 C -> end		[>]
 
-# ሰ/ረቅኩ -> ሰ/ረ/ኩ
+# optional ሰ/ረቅኩ -> ሰ/ረ/ኩ
 V -> kgq		[/:ክ;/:ቅ;/:ግ]
 C -> kgq		[/:ክ;/:ቅ;/:ግ]
 kgq -> kgq+		[>]

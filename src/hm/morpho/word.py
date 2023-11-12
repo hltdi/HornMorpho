@@ -68,6 +68,7 @@ class Word(list):
         Remove the analyses at indices. Update index_map (a list of pairs)
         to reflect the deletions.
         '''
+#        print(" *** removing {}".format(indices))
         # Reverse-sort indices to avoid changing items to delete.
         indices.sort(reverse=True)
         to_del = []
@@ -101,6 +102,7 @@ class Word(list):
                 c = self.compare_segs(segs1, segs2, csegs1, csegs2)
                 if c is False:
                     # seg1 and seg2 are identical
+                    print("  *** identical, deleting {}".format(i2))
 #                    merges.append(([index1, i2], {}))
                     to_del.append(i2)
                     continue
@@ -117,9 +119,10 @@ class Word(list):
         for (i1, i2), diffs in merges:
             if i1 in index_map and i2 in index_map:
                 m.append([[index_map[i1], index_map[i2]], diffs])
-#        print("  ** final merges {}".format(m))
+#        print(" *** final merges {}".format(m))
         to_del = []
         # Implement merges where possible
+        udf_merges = []
         for (i1, i2), diffs in m:
             if len(diffs) == 1:
                 # only one difference
@@ -141,10 +144,14 @@ class Word(list):
                     if lang_merges:
                         udfmerge = Word.get_merge_udfeats(umindex, ud1, ud2, lang_merges)
                         if udfmerge:
-#                        print("  ** merging udfeats in CoNLL-U {}: {}".format(self.conllu[i1], udfmerge))
-                            Word.udfeats_merge(self.conllu[i1], umindex, udfmerge, ud1, ud2)
-                            to_del.append(i2)
+#                            print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
+                            udf_merges.append((self.conllu[i1], umindex, udfmerge, ud1, ud2, i2))
 #                        print("  ** current udfeats: {}".format(self.conllu[i1][0]))
+        for c, ui, mf, u1, u2, deli in udf_merges:
+            Word.udfeats_merge(c, ui, mf, u1, u2)
+#            print("  ** deleting {}".format(deli))
+            if deli not in to_del:
+                to_del.append(deli)
         if to_del:
             self.remove(to_del, None)
 #        print(" *** merges: {}".format(m))
@@ -276,6 +283,8 @@ class Word(list):
             
     @staticmethod
     def compare_um(um1, um2):
+        if not um1 or not um2:
+            return None, None, None
         um1 = set(um1.split(';'))
         um2 = set(um2.split(';'))
         inters = list(um1.intersection(um2))
@@ -287,6 +296,8 @@ class Word(list):
 
     @staticmethod
     def compare_udf(udf1, udf2):
+        if not udf1 or not udf2:
+            return None, None, None
         udf1 = set(udf1.split('|'))
         udf2 = set(udf2.split('|'))
         inters = list(udf1.intersection(udf2))

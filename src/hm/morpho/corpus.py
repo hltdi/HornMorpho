@@ -93,6 +93,7 @@ class Corpus():
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
+#                    print("  $$ {}".format(line))
                     if linepos and linepos % 25 == 0:
                         print("Checked {} sentences, included {}".format(linepos, len(self.data)))
                     linepos += 1
@@ -115,7 +116,13 @@ class Corpus():
                                 print("  Too many numerals: {}".format(line[:100]))
                                 continue
                     if segment:
-                        if (sentence_obj := \
+                        if v5:
+                            sentence_obj = self.seg_sentence5(line, sentid=sentid, verbosity=verbosity)
+                            if sentence_obj:
+                                self.data.append(line)
+                                sentcount += 1
+                                sentid += 1
+                        elif (sentence_obj := \
                                 self._segment(line, sentid, gramfilt=gramfilt, maxunk=maxunk,
                                               analyze=analyze,
                                               um=um, seglevel=seglevel, filter_cache=filter_cache,
@@ -147,6 +154,20 @@ class Corpus():
         return "C_{}".format(self.name)
 
     ## Version 5 methods
+
+    def seg_sentence5(self, sentence, **kwargs):
+        """
+        Segment one sentence.
+        """
+        if kwargs.get('verbosity', 0):
+            print("Segmenting {}".format(sentence))
+        sentence_obj = self.language.anal_sentence5(sentence, **kwargs)
+        if sentence_obj:
+            self.sentences.append(sentence_obj)
+            self.unks.update(set(sentence_obj.unk))
+            self.max_words = max([self.max_words, len(sentence_obj.words)])
+            sentence_obj.merge5()
+        return sentence_obj
 
     def segment5(self, **kwargs):
         """

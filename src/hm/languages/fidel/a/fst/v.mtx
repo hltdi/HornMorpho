@@ -40,12 +40,12 @@ $ sb_pre
   ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
 # % optional gemination  
   ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
-  /ት		[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
+  /ት	<ት>	[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
   እ		[t=i,sp=1,sn=1,-neg]
   ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
 # % optional gemination
   እን  	[t=i|j,sp=1,sn=2]
-  /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
+  /ን  <ን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
 #$ sp_bound
@@ -68,7 +68,7 @@ $ voice_pre
   ኣስተ-		[v=ast,tmp=[1=እ],a=i|0,-pr];[v=ast,a=a,tmp=[1=X],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr]
   # passive-reflexive
   ተ-			[v=p,t=p|c,+pr];[v=p,t=j,sp=2,+pr]
-  /-			[v=p,t=i,tmp=[1=X],+pr];[v=p,t=j,sp=1|3,+pr]
+  /-			[v=p,t=i,tmp=[1=X],+pr];[v=p,t=j,sp=1|3,+pr];[v=p,t=j,sp=2,+neg,+pr]
   /ተ-		[v=p,t=i,tmp=[1=እ],+pr]
   --  		[v=0,-pr]
 
@@ -89,9 +89,9 @@ $ sb_suf
   ሽ		[sp=2,sn=1,sg=f,t=p]
   አሽ    	[sp=2,sn=1,sg=f,t=c]
   ኢ   	[sp=2,sn=1,sg=f,t=i|j]
-  ክ		[sp=2,sn=1,sg=m,t=p]
+  ህ		[sp=2,sn=1,sg=m,t=p]
   አህ		[sp=2,sn=1,sg=m,t=c]
-  ኩ		[sp=1,sn=1,t=p]
+  ሁ		[sp=1,sn=1,t=p]
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]

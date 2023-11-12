@@ -210,7 +210,7 @@ class SegRoot(Tk):
         else:
             self.sentenceGUI = \
               SentenceGUI(frame=self, canvas=self.canvas, sentence=sentence,
-                          sentenceobj=sentenceobj, index=sentindex)
+                          sentenceobj=sentenceobj, index=sentindex, v5=self.v5)
         self.sentenceGUI.show_sentence()
         self.sentenceGUI.show_unambig(True)
         self.sentenceGUI.set_wordid(1, False)
@@ -290,13 +290,17 @@ class SegCanvas(Canvas):
     # half the height of a line within an ambiguous feature rectangle
     ambigrectheight = 7
     # gap between sets of ambiguous features
-    ambiggap = 42
+    ambiggap = 2
     # gap between features
     segfeatsheight = 14
     seggap = 40
     segrightmargin = 20
     deplabelX = 5
     deplabelY = 7
+    featlabelX = 4
+
+    selectcolors = ['Yellow', 'Gold', 'Orange']
+    texthighlight = 'Red'
 
     maxfeatchars = 15
 
@@ -359,7 +363,7 @@ class SegCanvas(Canvas):
             Xs = self.get_columnX(n)
             # label for the segmentations; responds to mouse enter/leave and clicks
             if nwordsegs > 1:
-                segboxtags.append(self.create_rectangle(SegCanvas.segIDwidth // 2 - 10, y - 10, SegCanvas.segIDwidth // 2 + 10, y + 10, fill='white'))
+                segboxtags.append(self.create_rectangle(SegCanvas.segIDwidth // 2 - 10, y - 10, SegCanvas.segIDwidth // 2 + 10, y + 10, fill=SegCanvas.selectcolors[0]))
                 segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.parent.roman_big))
             # Put the dependencies at the top
             if dependencies:
@@ -368,7 +372,7 @@ class SegCanvas(Canvas):
             if pos:
                 y += SegCanvas.segrowheight
                 self.show_pos(pos, Xs, y, wordseg, posselecttags)
-            if features:
+            if any([(f[0] or f[1]) for f in features]):
                 y += SegCanvas.segrowheight
                 y = self.show_features(features, Xs, y, wordseg, featselecttags)
             if lemmas:
@@ -386,9 +390,9 @@ class SegCanvas(Canvas):
 
         if posselecttags:
             for seg, tag1, tag2, pos1, pos2 in posselecttags:
-                self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, 'Red'))
+                self.tag_bind(tag1, "<Enter>", self.highlight_pos_handler(tag1, SegCanvas.texthighlight))
                 self.tag_bind(tag1, "<Leave>", self.highlight_pos_handler(tag1, 'Black'))
-                self.tag_bind(tag2, "<Enter>", self.highlight_pos_handler(tag2, 'Red'))
+                self.tag_bind(tag2, "<Enter>", self.highlight_pos_handler(tag2, SegCanvas.texthighlight))
                 self.tag_bind(tag2, "<Leave>", self.highlight_pos_handler(tag2, 'Black'))
                 self.tag_bind(tag1, "<ButtonRelease-1>", self.select_pos_handler(tag1, pos1, seg))
                 self.tag_bind(tag2, "<ButtonRelease-1>", self.select_pos_handler(tag2, pos2, seg))
@@ -396,9 +400,9 @@ class SegCanvas(Canvas):
         if featselecttags:
 #            print("!! featselecttags: {}".format(featselecttags))
             for seg, tag1, tag2, f1, f2 in featselecttags:
-                self.tag_bind(tag1, "<Enter>", self.highlight_feat_handler(tag1, 'Red'))
+                self.tag_bind(tag1, "<Enter>", self.highlight_feat_handler(tag1, SegCanvas.texthighlight))
                 self.tag_bind(tag1, "<Leave>", self.highlight_feat_handler(tag1, 'Black'))
-                self.tag_bind(tag2, "<Enter>", self.highlight_feat_handler(tag2, 'Red'))
+                self.tag_bind(tag2, "<Enter>", self.highlight_feat_handler(tag2, SegCanvas.texthighlight))
                 self.tag_bind(tag2, "<Leave>", self.highlight_feat_handler(tag2, 'Black'))
                 self.tag_bind(tag1, "<ButtonRelease-1>", self.select_feat_handler(tag1, f1, seg))
                 self.tag_bind(tag2, "<ButtonRelease-1>", self.select_feat_handler(tag2, f2, seg))
@@ -407,8 +411,8 @@ class SegCanvas(Canvas):
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
                 self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordsegs[index]))
-                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, 'LightPink'))
-                self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, 'white'))
+                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, idtag, SegCanvas.texthighlight)) # SegCanvas.selectcolors[0]))
+                self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, idtag, 'Black')) #'white'))
         # Rectangle around each segmentation
         while i < len(segYs) - 1:
             self.create_rectangle(SegCanvas.segIDwidth, segYs[i]-SegCanvas.segrowheight // 4, rightX, segYs[i+1]-18)
@@ -469,17 +473,17 @@ class SegCanvas(Canvas):
         '''
         self.itemconfigure(posid, fill=color)
 
-    def highlight_box_handler(self, boxid, color):
+    def highlight_box_handler(self, boxid, textid, color):
         '''
         Returns the highlight and dehighlight handler for the segmentation label.
         '''
-        return lambda event: self.highlight_box(boxid, color)
+        return lambda event: self.highlight_box(boxid, textid, color)
 
-    def highlight_box(self, boxid, color):
+    def highlight_box(self, boxid, textid, color):
         '''
         Highlight or dehighlight a segmentation label box.
         '''
-        self.itemconfigure(boxid, fill=color)
+        self.itemconfigure(textid, fill=color)
 
     def highlight_feat_handler(self, featid, color):
         '''
@@ -544,9 +548,9 @@ class SegCanvas(Canvas):
         selectpos = Sentence.selectpos[pos]
         pos1 = selectpos[0]
         pos2 = selectpos[1]
-        self.create_rectangle(x - 55, y - SegCanvas.ambigposheight, x - 5, y + SegCanvas.ambigposheight, fill='pink')
+        self.create_rectangle(x - 55, y - SegCanvas.ambigposheight, x - 5, y + SegCanvas.ambigposheight, fill=SegCanvas.selectcolors[0])
         id1 = self.create_text((x-30, y), text=pos1)
-        self.create_rectangle(x + 5, y - SegCanvas.ambigposheight, x + 55, y + SegCanvas.ambigposheight, fill='pink')
+        self.create_rectangle(x + 5, y - SegCanvas.ambigposheight, x + 55, y + SegCanvas.ambigposheight, fill=SegCanvas.selectcolors[0])
         id2 = self.create_text((x+30, y), text=pos2)
         posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
@@ -569,13 +573,13 @@ class SegCanvas(Canvas):
 
     def show_features1(self, feats, x, y, wordseg, featselecttags):
 #        print("!! show_features1 {}, {}".format(feats, wordseg))
-        colors = ['pink', 'plum', 'hotpink']
+#        colors = ['pink', 'plum', 'hotpink']
         def show(f, coords):
             self.create_text(coords, text=f, font=self.parent.roman_small)
-        def show_ambig(f, x, y, nlines=1, color='pink'):
-            self.create_rectangle(x-65, y-(nlines * SegCanvas.ambigrectheight), x+65, y+(nlines * SegCanvas.ambigrectheight),
+        def show_ambig(f, x, y, xoff, nlines=1, color='yellow'):
+            self.create_rectangle(x-xoff, y-(nlines * SegCanvas.ambigrectheight), x+xoff, y+(nlines * SegCanvas.ambigrectheight),
                                   fill=color)
-            id = self.create_text((x, y), text=f, font=self.parent.roman_small)
+            id = self.create_text((x, y), text=f, font=self.parent.roman_small, justify=CENTER)
             return id
         unamb, ambig = feats
         if unamb:
@@ -584,33 +588,40 @@ class SegCanvas(Canvas):
                 y += SegCanvas.segfeatsheight
             show(unamb[-1], (x, y))
         if ambig:
-#            print("!! showing ambig feat {}".format(ambig))
-            for ai, (amb, color) in enumerate(zip(ambig, colors)):
+            for ai, (amb, color) in enumerate(zip(ambig, SegCanvas.selectcolors)):
+                maxchars = max([SegCanvas.get_max_chars(a) for a in amb])
+                xoff = maxchars * SegCanvas.featlabelX
                 # first alternative
                 nlines1 = amb[0].count('\n') + 1
-#                print(" !! showing ambig feat {}".format(amb))
+                ymult1 = (nlines1/2 + 0.4) # * 1.2 # if nlines1 > 1 else 0.8
                 if (unamb and ai==0):
-                    y += SegCanvas.ambigsegfeatsheight * (nlines1 / 2)
+                    y += SegCanvas.ambigsegfeatsheight * ymult1
                 elif ai>0:
-                    y += SegCanvas.ambiggap
+                    y += SegCanvas.ambiggap + SegCanvas.ambigsegfeatsheight * ymult1
                 else:
                     y += SegCanvas.segfeatsheight
-                id1 = show_ambig(amb[0], x, y, nlines=nlines1, color=color)
+                id1 = show_ambig(amb[0], x, y, xoff, nlines=nlines1, color=color)
                 # second alternative
                 nlines2 = amb[1].count('\n') + 1
-                ymult = (nlines1 / 2) + ((nlines2-1) / 2)
+                ymult2 = ((nlines2-1) / 2) if nlines2 > 1 else 0.4
+                ymult = (nlines1 / 2) + ymult2
                 y += SegCanvas.ambigsegfeatsheight * ymult
-                id2 = show_ambig(amb[1], x, y, nlines=nlines2, color=color)
+                id2 = show_ambig(amb[1], x, y, xoff, nlines=nlines2, color=color)
                 featselecttags.append((wordseg, id1, id2, amb[0], amb[1]))
                 if ai == len(ambig) - 1:
                     # Gap before lemmas
                     y += SegCanvas.ambigsegfeatsheight * ((nlines2-1) / 2)
         return y
 
-    def create_selectfeat(self, alts1, alts2, x, y, wordseg, featselecttags):
-        '''
-        Create feature labels to select between when there is a choice.
-        '''
+    @staticmethod
+    def get_max_chars(text):
+        text = text.split('\n')
+        return max([len(t) for t in text])
+
+#    def create_selectfeat(self, alts1, alts2, x, y, wordseg, featselecttags):
+#        '''
+#        Create feature labels to select between when there is a choice.
+#        '''
 #        self.create_rectangle(x, y, x + 60, y + 60, fill='pink')
 #        for feat in alts1:
 #            id1 = self.create_text(coords, text=f, font=self.parent.roman_small)
