@@ -28,6 +28,14 @@ import hm
 
 ## Functions specific to v. 5.
 
+def corp1(gemination=False):
+    c = hm.make_corpus5(
+        'a',
+        path="../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt",
+        gemination=gemination,
+        )
+    return c
+
 def get5(abbrev, verbose=False):
     """
     Return the language with abbreviation abbrev, loading it
@@ -35,8 +43,7 @@ def get5(abbrev, verbose=False):
     """
     return hm.morpho.get_language(abbrev, cache='', phon=False, guess=True,
                                                                    pickle=True, segment=False, experimental=False,
-                                                                   v3=True,
-                                                                   load=True, verbose=verbose)
+                                                                   v3=True, load=True, verbose=verbose)
 
 ## displaying segmentations in Tkinter
 

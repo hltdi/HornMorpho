@@ -13,23 +13,23 @@ $ prep
 $ prep_bound
   -
 
-$ distrib
+$ distrib_collect
   እ/የ	[+dis,-col,pos=N]
-  እ/ነ	[-dis,+pl,+col]
+  እ/ነ	[-dis,+pl,+col,pos=N|PROPN]
   --		[-dis,-col]
 
 $ prestem
   <
 
 $ stem
-  +n_stem+		[ps=oc,-irr]
-  +n_stem_an+	[ps=an,-irr]
-  +n_name+		[pos=PROPN,-pl,p=0]
-  +n_place+		[pos=PROPN,-pl,p=0]
+  +n_stem+		[ps=oc,-irr,d=0]
+  +n_stem_an+	[ps=an,-irr,d=0]
+  +n_name+		[pos=PROPN,-pl,p=0,d=0];[pos=PROPN,+pl,p=0,d=0,+col,-irr]
+  +n_place+		[pos=PROPN,-pl,p=0,d=0]
   >>vn_stem<<
-  +ppron+		[pos=PRON,-pl,-dis,-col,p=0]
-  +prep_n+		[pos=PRON|ADJ,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0]
-  +irr_plr+		[+pl,+irr]
+  +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0]
+  +prep_n+		[pos=PRON|ADJ,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0,d=0]
+  +irr_plr+		[+pl,+irr,d=0]
 
 $ poststem
   >

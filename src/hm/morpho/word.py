@@ -85,24 +85,19 @@ class Word(list):
         for index in to_del:
             del index_map[index]
 
-    def merge(self):
-        '''
-        Possibly merge segmentations for word, if there are alternatives
-        '''
-#        print("\n***Merge word {}".format(self))
-        merges = []
-        to_del = []
-        nsegs = len(self)
+    def merge1(self, merges, to_del, verbosity=0):
         for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
             for index2, (segs2, csegs2) in enumerate(zip(self[index1+1:], self.conllu[index1+1:])):
                 i2 = index1+index2+1
                 if i2 in to_del:
                     continue
-#                print(" *** Comparing segmentations {} and {}".format(index1, i2))
+                if verbosity:
+                    print(" *** Comparing segmentations {} and {}".format(index1, i2))
                 c = self.compare_segs(segs1, segs2, csegs1, csegs2)
                 if c is False:
                     # seg1 and seg2 are identical
-                    print("  *** identical, deleting {}".format(i2))
+                    if verbosity:
+                        print("  *** identical, deleting {}".format(i2))
 #                    merges.append(([index1, i2], {}))
                     to_del.append(i2)
                     continue
@@ -111,6 +106,19 @@ class Word(list):
                     continue
                 else:
                     merges.append(([index1, i2], c))
+
+    def merge(self, verbosity=0):
+        '''
+        Possibly merge segmentations for word, if there are alternatives
+        '''
+        if verbosity:
+            print("***Merge word {}".format(self))
+        merges = []
+        to_del = []
+        nsegs = len(self)
+
+        self.merge1(merges, to_del, verbosity=verbosity)
+
         index_map = [[i, i] for i in range(nsegs)]
         if to_del:
             self.remove(to_del, index_map)
@@ -128,15 +136,7 @@ class Word(list):
                 # only one difference
                 if 'pos' in diffs:
                     d = diffs['pos']
-                    POS = Word.merge_pos(d[0], d[1], self.merges.get('pos', {}))
-                    if POS:
-                        # merge the POSs only in the conllu lists
-#                        print("   ** merging POS in CoNLL-U {}: {}".format(self.conllu[i1], POS))
-                        # for now just change the first HMToken
-                        self.conllu[i1][0]['upos'] = POS
-                        self.conllu[i1][0]['xpos'] = POS
-                        # and delete the second CoNLL-U and analysis
-                        to_del.append(i2)
+                    self.mergePOS(i1, d[0], i2, d[1], to_del, verbosity=verbosity)
                 elif 'udfeats' in diffs:
                     d = diffs['udfeats']
                     umindex, ud1, ud2 = d
@@ -144,17 +144,20 @@ class Word(list):
                     if lang_merges:
                         udfmerge = Word.get_merge_udfeats(umindex, ud1, ud2, lang_merges)
                         if udfmerge:
-#                            print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
+                            if verbosity:
+                                print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
                             udf_merges.append((self.conllu[i1], umindex, udfmerge, ud1, ud2, i2))
 #                        print("  ** current udfeats: {}".format(self.conllu[i1][0]))
         for c, ui, mf, u1, u2, deli in udf_merges:
             Word.udfeats_merge(c, ui, mf, u1, u2)
-#            print("  ** deleting {}".format(deli))
+            if verbosity:
+                print("  ** deleting {}".format(deli))
             if deli not in to_del:
                 to_del.append(deli)
         if to_del:
             self.remove(to_del, None)
-#        print(" *** merges: {}".format(m))
+        if verbosity:
+            print(" *** merges: {}".format(m))
         return m
 
     @staticmethod
@@ -183,15 +186,18 @@ class Word(list):
 #            print("    ** merged udfeats: {}".format(merged))
             return merged
 
-    @staticmethod
-    def merge_pos(pos1, pos2, merges):
-        '''
-        Attempt to merge the POSs that differentiate two segmentations.
-        '''
+    def mergePOS(self, i1, pos1, i2, pos2, to_del, verbosity=0):
+        pos_merges = self.merges.get('pos', {})
         pset = frozenset([pos1, pos2])
-        if pset in merges:
-            merged = merges[pset]
-            return merged
+        if pset in pos_merges:
+            if POS := pos_merges[pset]:
+                if verbosity:
+                    print("   ** merging POS in CoNLL-U {}: {}".format(self.conllu[i1], POS))
+                # for now just change the first HMToken
+                self.conllu[i1][0]['upos'] = POS
+                self.conllu[i1][0]['xpos'] = POS
+                # and delete the second CoNLL-U and analysis
+                to_del.append(i2)
 
     def compare_segs(self, segs1, segs2, csegs1, csegs2):
         '''

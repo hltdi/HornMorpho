@@ -593,19 +593,20 @@ class SegCanvas(Canvas):
                 xoff = maxchars * SegCanvas.featlabelX
                 # first alternative
                 nlines1 = amb[0].count('\n') + 1
-                ymult1 = (nlines1/2 + 0.4) # * 1.2 # if nlines1 > 1 else 0.8
-                if (unamb and ai==0):
-                    y += SegCanvas.ambigsegfeatsheight * ymult1
-                elif ai>0:
-                    y += SegCanvas.ambiggap + SegCanvas.ambigsegfeatsheight * ymult1
-                else:
-                    y += SegCanvas.segfeatsheight
-                id1 = show_ambig(amb[0], x, y, xoff, nlines=nlines1, color=color)
+                height1 = nlines1 * SegCanvas.ambigrectheight #SegCanvas.ambigsegfeatsheight
                 # second alternative
                 nlines2 = amb[1].count('\n') + 1
-                ymult2 = ((nlines2-1) / 2) if nlines2 > 1 else 0.4
-                ymult = (nlines1 / 2) + ymult2
-                y += SegCanvas.ambigsegfeatsheight * ymult
+                height2 = nlines2 * SegCanvas.ambigrectheight #SegCanvas.ambigsegfeatsheight
+                # to middle of first alternative; pretty ad hoc, I know
+                if unamb:
+                    y += height1 + 10
+                else:
+                    y += height1/2 + 5
+#                print(" !! y1 {}".format(y))
+                id1 = show_ambig(amb[0], x, y, xoff, nlines=nlines1, color=color)
+                # to middle of second alternative
+                y += height1 + height2 + 5
+#                print(" !! y2 {}".format(y))
                 id2 = show_ambig(amb[1], x, y, xoff, nlines=nlines2, color=color)
                 featselecttags.append((wordseg, id1, id2, amb[0], amb[1]))
                 if ai == len(ambig) - 1:
@@ -618,40 +619,6 @@ class SegCanvas(Canvas):
         text = text.split('\n')
         return max([len(t) for t in text])
 
-#    def create_selectfeat(self, alts1, alts2, x, y, wordseg, featselecttags):
-#        '''
-#        Create feature labels to select between when there is a choice.
-#        '''
-#        self.create_rectangle(x, y, x + 60, y + 60, fill='pink')
-#        for feat in alts1:
-#            id1 = self.create_text(coords, text=f, font=self.parent.roman_small)
-#        self.create_rectangle(x + 5, y - 8, x + 55, y + 8, fill='pink')
-#                show(feat, (x, y), ambig=True)
-#                y += SegCanvas.segfeatsheight
-#            # second alternative
-#            for feat in ambig[1][:-1]:
-#                show(feat, (x, y), ambig=True)
-#                y += SegCanvas.segfeatsheight
-#            show(ambig[1][-1], (x, y), ambig=True)
-#        id1 = self.create_text((x-30, y), text=pos1)
-#        id2 = self.create_text((x+30, y), text=pos2)
-#        posselecttags.append((wordseg, id1, id2, pos1, pos2))
-#        return y
-
-#    def split_features(self, feats, n=2):
-#        '''
-#        Split feature string into substrings to shorten maximum.
-#        '''
-#        feats = feats.split('|')
-#        nfvs = len(feats)
-#        lengroup = math.ceil(nfvs / n)
-#        featgroups = []
-#        start = 0
-#        while start < nfvs:
-#            featgroups.append(feats[start:start+lengroup])
-#            start += lengroup
-#        return ['|'.join(featgroup) for featgroup in featgroups]
-    
     def show_dependencies(self, dependencies, Xs, headindex, y):
         """
         Show left and right dependency arcs.

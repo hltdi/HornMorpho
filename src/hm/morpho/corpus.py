@@ -46,7 +46,7 @@ class Corpus():
 
     ID = 0
 
-    def __init__(self, data=None, path='', start=0, n_sents=0, max_sents=1000,
+    def __init__(self, data=None, path='', start=0, n_sents=100, max_sents=1000,
                  name='', batch_name='', sentid=0, analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
@@ -82,6 +82,7 @@ class Corpus():
                 filein = open(path, 'r', encoding='utf-8')
                 lines = filein.readlines()[start:start+max_sents]
                 nlines = len(lines)
+#                print("$$ file {}, nlines {}".format(filein, nlines))
                 sentcount = 0
                 sentid = sentid + 1
                 linepos = 0
@@ -93,7 +94,7 @@ class Corpus():
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
-#                    print("  $$ {}".format(line))
+                    print("  $$ {}".format(line))
                     if linepos and linepos % 25 == 0:
                         print("Checked {} sentences, included {}".format(linepos, len(self.data)))
                     linepos += 1
@@ -117,7 +118,7 @@ class Corpus():
                                 continue
                     if segment:
                         if v5:
-                            sentence_obj = self.seg_sentence5(line, sentid=sentid, verbosity=verbosity)
+                            sentence_obj = self.seg_sentence5(line, sentid=sentid, gemination=gemination, verbosity=verbosity)
                             if sentence_obj:
                                 self.data.append(line)
                                 sentcount += 1

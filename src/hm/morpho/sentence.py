@@ -47,7 +47,7 @@ class Sentence():
        'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']
       }
 
-    um2udPOS = {'N': 'NOUN', 'V': 'VERB'}
+    um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
 
     colwidth = 20
 
@@ -245,11 +245,11 @@ class Sentence():
         if 'udfeats' in analdict:
             analdict['udfeats'] = udfeats
 
-    def merge5(self):
+    def merge5(self, verbosity=0):
         '''
         Attempt to merge segmentations of each word.
         '''
-        self.merges = [(word, word.merge()) for word in self.words]
+        self.merges = [(word, word.merge(verbosity=verbosity)) for word in self.words]
 #        print("&& merges: {}".format(self.merges))
 
     #####
@@ -724,7 +724,7 @@ class Sentence():
     @staticmethod
     def get_lemmas(segmentation, forms, headindex):
         '''
-        The lemmas in a segmentation in any is different from the form.
+        The lemmas in a segmentation if any is different from the form.
         '''
         if len(segmentation) == 1:
             lemma = segmentation[0].get('lemma')

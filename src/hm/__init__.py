@@ -52,14 +52,14 @@ SEGMENT = False
 ### Version 5 analysis and generation.
 ###
 
-def make_corpus5(language, data, **kwargs):
+def make_corpus5(language, **kwargs):
     '''
     Create a corpus of sentences, given a list of raw sentence strings.
     '''
     guess = kwargs.get('guess', False)
     language = morpho.get_language(language, v5=True, guess=guess)
     if language:
-        corp = morpho.Corpus(language=language, data=data, v5=True, **kwargs)
+        corp = morpho.Corpus(language=language, v5=True, **kwargs)
         if kwargs.get('disambiguate', False):
             corp.disambiguate()
         return corp

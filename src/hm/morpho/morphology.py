@@ -1913,8 +1913,6 @@ class POSMorphology:
                                   phon=phon, segment=segment, mwe=mwe,
                                   v5=v5)
 #        print("  ^^ fst {}".format(fst.label))
-#        if mwe and v5:
-#            root = root.replace(" ", Morphology.mwe_sep)
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
             anal = self.dict_to_anal(root, features)
