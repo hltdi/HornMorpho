@@ -1547,6 +1547,8 @@ class POSMorphology:
         root = self.get_root(stem, procdict, mwe=mwe_props)
         procdict['root'] = root
         lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props, gemination=gemination)
+        if 'gl' in features:
+            procdict['gloss'] = features['gl']
         procdict['lemma'] = lemma
 
 #        print("^^ process5: prodict {}".format(procdict))
@@ -1726,11 +1728,13 @@ class POSMorphology:
 #                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
         return dep, head_index
 
-    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=True):
+    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=True, gloss=''):
         '''
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.
         '''
+        if gloss:
+            form += gloss
         if not gemination:
             return EES.degeminate(form, elim_bounds=elim_bounds)
         # Replace _ with /
@@ -1744,18 +1748,21 @@ class POSMorphology:
         Generate the lemma for the given root and features.
         '''
         features = procdict.get('feats')
+        gloss = ''
+#        if 'gl' in features:
+#            gloss = "(={})".format(features['gl'])
         if features and 'lemma' in features:
-            return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False)
+            return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)
         lemmafeats = self.lemma_feats
         if not lemmafeats:
-            return self.postproc5(stem, gemination=gemination, elim_bounds=False)
+            return self.postproc5(stem, gemination=gemination, elim_bounds=False, gloss=gloss)
         lemmafeat1, lemmafeats2 = lemmafeats
 #        print("^^ generating lemma for {}|{} ; mwe {}".format(stem, root, mwe.__repr__()))
 #        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
             if not value1:
-                return self.postproc5(stem, gemination=gemination, elim_bounds=False)
+                return self.postproc5(stem, gemination=gemination, elim_bounds=False, gloss=gloss)
             initfeat = ["{}={}".format(lemmafeat1, value1)]
             for lf in lemmafeats2:
                 value = features.get(lf)
@@ -1763,7 +1770,7 @@ class POSMorphology:
             initfeat = ','.join(initfeat)
 #            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             if (gen_out := self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)):
-                return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False)
+                return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
             return
         initfeat = []
         for lf in lemmafeats2:
@@ -1772,7 +1779,7 @@ class POSMorphology:
         initfeat = ','.join(initfeat)
 #        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)):
-            return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False)
+            return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
 
     def separate_anals(self, analyses, normalize=False):
         """

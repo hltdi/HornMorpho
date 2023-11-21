@@ -3,6 +3,7 @@ abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=
 abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
 abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
 abbrev	&ImpJus=True	Aspect=Imp/Mood=Jus
+abbrev	&CCompAdvCl=True	ClauseType=CComp/ClauseType=AdvCl
 
 POS n N
 ->UD  ACC+GEN	*Case=AccGen

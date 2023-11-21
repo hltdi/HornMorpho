@@ -134,10 +134,29 @@ class Roots:
         return char.replace(EES.pre_gem_char, '').replace(':', '')
 
     @staticmethod
+    def make_state_name(root_chars, sense, duplicate=0):
+        '''
+        Create the base state name for root consonants root_chars,
+        distinguishing the name if there is a sense or it is otherwise
+        a duplicate.
+        '''
+        name = ''.join(root_chars)
+        if sense:
+            name += 'S{}_'.format(sense)
+        elif duplicate:
+            name += "_{}_".format(duplicate)
+#            print("** creating dup state name {}".format(name))
+        return name
+
+    @staticmethod
     def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev,
-                         gen=False, seglevel=2, gemination=True):
+                         gen=False, seglevel=2, gemination=True, duplicate=0):
+        '''
+        Create the states and arcs.
+        If duplicate is non-zero, there is already a set of states for this root, so make it unique with an extra character.
+        '''
         show = False
-#        show = cons == ['ግ', 'ድ', 'ል']
+#        show = cons == ['ጥ', 'ብ', 'ቅ']
         if show:
             print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
         def get_sense():
@@ -195,10 +214,10 @@ class Roots:
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
             show = False
-#            if root_chars == ['ግ', 'ይ', 'ጥ']:
+#            if root_chars == ['ጥ', 'ብ', 'ቅ']:
 #                show = True
-#            if show:
-#                print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
+            if show:
+                print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
@@ -313,7 +332,8 @@ class Roots:
 
         # one of cons could be a char, feature tuple
         cons_chars = [(c[0] if isinstance(c, tuple) else c) for c in cons]
-        state_name = "{}{}".format(''.join(cons_chars), 'S{}_'.format(sense) if sense else '')
+        state_name = Roots.make_state_name(cons_chars, sense, duplicate)
+#        state_name = "{}{}".format(''.join(cons_chars), 'S{}_'.format(sense) if sense else '')
         states = []
         # Add this root to the POSMorphology instance's rootfeats dict
         if posmorph:
@@ -665,6 +685,8 @@ class Roots:
 
                 subroots = types if types else []
 
+#                if any([(r[0] == cons) for r in roots]):
+#                    print("** duplicate root: {}; feats {}".format(cons, feats))
                 roots.append([cons, feats, subroots])
                 continue
 
@@ -925,9 +947,15 @@ class Roots:
 
 #        print("** root types: {}".format(root_types))
 
+        roots_done = []
         for cons, feats, subroots in roots:
+            duplicate = 0
+            if cons in roots_done:
+                duplicate = roots_done.count(cons)
+#                print("** {} / {} is a root duplicate".format(cons, feats))
             Roots.make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph,
-                                   labbrev, gen=gen, seglevel=seglevel, gemination=gemination)
+                                   labbrev, gen=gen, seglevel=seglevel, gemination=gemination, duplicate=duplicate)
+            roots_done.append(cons)
 
         if irr_roots:
             for (cons, feats), patterns in irr_roots.items():

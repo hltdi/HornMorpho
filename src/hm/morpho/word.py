@@ -24,6 +24,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 Representation of 'items': words, MWEs, punctuation, numerals.
 2023-09-18
 """
+from .ees import EES
 
 class Word(list):
 
@@ -85,7 +86,7 @@ class Word(list):
         for index in to_del:
             del index_map[index]
 
-    def merge1(self, merges, to_del, verbosity=0):
+    def merge1(self, merges, to_del, gemination=False, sep_senses=False, verbosity=0):
         for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
             for index2, (segs2, csegs2) in enumerate(zip(self[index1+1:], self.conllu[index1+1:])):
                 i2 = index1+index2+1
@@ -93,7 +94,8 @@ class Word(list):
                     continue
                 if verbosity:
                     print(" *** Comparing segmentations {} and {}".format(index1, i2))
-                c = self.compare_segs(segs1, segs2, csegs1, csegs2)
+                c = self.compare_segs(segs1, segs2, csegs1, csegs2, gemination=gemination,
+                                      sep_senses=sep_senses)
                 if c is False:
                     # seg1 and seg2 are identical
                     if verbosity:
@@ -107,7 +109,7 @@ class Word(list):
                 else:
                     merges.append(([index1, i2], c))
 
-    def merge(self, verbosity=0):
+    def merge(self, gemination=False, sep_senses=False, verbosity=0):
         '''
         Possibly merge segmentations for word, if there are alternatives
         '''
@@ -117,7 +119,7 @@ class Word(list):
         to_del = []
         nsegs = len(self)
 
-        self.merge1(merges, to_del, verbosity=verbosity)
+        self.merge1(merges, to_del, gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)
 
         index_map = [[i, i] for i in range(nsegs)]
         if to_del:
@@ -132,11 +134,12 @@ class Word(list):
         # Implement merges where possible
         udf_merges = []
         for (i1, i2), diffs in m:
+#            print("** i1 {}, i2 {}, diffs {}".format(i1, i2, diffs))
             if len(diffs) == 1:
                 # only one difference
                 if 'pos' in diffs:
                     d = diffs['pos']
-                    self.mergePOS(i1, d[0], i2, d[1], to_del, verbosity=verbosity)
+                    self.mergePOS(i1, d[0], i2, d[1], d[2], to_del, verbosity=verbosity)
                 elif 'udfeats' in diffs:
                     d = diffs['udfeats']
                     umindex, ud1, ud2 = d
@@ -144,10 +147,23 @@ class Word(list):
                     if lang_merges:
                         udfmerge = Word.get_merge_udfeats(umindex, ud1, ud2, lang_merges)
                         if udfmerge:
-                            if verbosity:
-                                print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
+#                            if verbosity:
+                            print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
                             udf_merges.append((self.conllu[i1], umindex, udfmerge, ud1, ud2, i2))
-#                        print("  ** current udfeats: {}".format(self.conllu[i1][0]))
+#                elif 'gloss' in diffs:
+#                    g = diffs['gloss']
+#                    g1, g2, gi = g
+#                    self.conllu[i1][gi]['misc'] = g1
+#                    self.conllu[i2][gi]['misc'] = g2
+            
+            # When there's more than one difference, glosses for identical lemmas are also relevant
+            if 'gloss' in diffs:
+                g = diffs['gloss']
+                g1, g2, gi = g
+                self.conllu[i1][gi]['misc'] = g1
+                self.conllu[i2][gi]['misc'] = g2
+#                print("  ** i1 {}, i2 {}, gloss {}".format(i1, i2, diffs['gloss']))
+
         for c, ui, mf, u1, u2, deli in udf_merges:
             Word.udfeats_merge(c, ui, mf, u1, u2)
             if verbosity:
@@ -156,6 +172,20 @@ class Word(list):
                 to_del.append(deli)
         if to_del:
             self.remove(to_del, None)
+
+        if len(self.conllu) > 1 and to_del:
+            # Some merging happened but it may be possible to merge POS within these
+            merges = []
+            to_del = []
+            self.merge1(merges, to_del, verbosity=verbosity)
+            if merges:
+                for (i1, i2), diffs in merges:
+                    # only check for POS differences this time?
+                    if 'pos' in diffs:
+                        d = diffs['pos']
+                        self.mergePOS(i1, d[0], i2, d[1], d[2], to_del, verbosity=verbosity)
+                if to_del:
+                    self.remove(to_del, None)
         if verbosity:
             print(" *** merges: {}".format(m))
         return m
@@ -186,24 +216,69 @@ class Word(list):
 #            print("    ** merged udfeats: {}".format(merged))
             return merged
 
-    def mergePOS(self, i1, pos1, i2, pos2, to_del, verbosity=0):
+    def mergePOS(self, i1, pos1, i2, pos2, pindex, to_del, verbosity=0):
         pos_merges = self.merges.get('pos', {})
         pset = frozenset([pos1, pos2])
+        if verbosity:
+            print("  ** mergePOS: {}, {}; {} ; {}".format(i1, i2, pset, pindex))
         if pset in pos_merges:
             if POS := pos_merges[pset]:
                 if verbosity:
                     print("   ** merging POS in CoNLL-U {}: {}".format(self.conllu[i1], POS))
                 # for now just change the first HMToken
-                self.conllu[i1][0]['upos'] = POS
-                self.conllu[i1][0]['xpos'] = POS
+                self.conllu[i1][pindex]['upos'] = POS
+                self.conllu[i1][pindex]['xpos'] = POS
                 # and delete the second CoNLL-U and analysis
                 to_del.append(i2)
 
-    def compare_segs(self, segs1, segs2, csegs1, csegs2):
+    def compare_lemmas(self, segs1, segs2, gemination=False):
+        '''
+        Compare lemmas and glosses.
+        '''
+        l1 = segs1.get('lemma')
+        l2 = segs2.get('lemma')
+        if not gemination:
+            l1 = EES.degeminate(l1)
+            l2 = EES.degeminate(l2)
+        leq = l1 == l2
+        return leq, l1, l2
+
+    def compare_glosses(self, segs1, segs2, csegs1, csegs2, leq):
+        geq = True
+        g1 = g2 = None
+        gi = -1
+        # see whether the roots/lexemes are different in spite of identical lemmas
+        if leq and (g1 := segs1.get('gloss')) and (g2 := segs2.get('gloss')):
+            if g1 != g2:
+                geq = False
+                if len(csegs1) == 1:
+                    gi = 0
+                else:
+                    for mindex, (m1, m2) in enumerate(zip(csegs1[1:], csegs2[1:])):
+                        if m1['head'] == mindex + 1:
+                            gi = mindex
+                            break
+        return geq, g1, g2, gi
+
+    def compare_pos(self, segs1, segs2, csegs1, csegs2):
+        pi = -1
+        pos1 = segs1.get('pos')
+        pos2 = segs2.get('pos')
+        if pos1 == pos2:
+            poseq = True
+        if not poseq:
+            # Get the index of the morpheme where the POS difference is
+            for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):
+                p1 = m1['upos']
+                p2 = m2['upos']
+                if p1 and p2 and p1 != p2:
+                    pi = mindex
+        return poseq, pos1, pos2, pi
+
+    def compare_segs(self, segs1, segs2, csegs1, csegs2, gemination=False, sep_senses=True):
         '''
         Compare the two segmentations (dicts) and CoNLL-U segmentations to see if they can be merged.
         '''
-#        print(" ** Comparing {}\n and {} ; {}\n and {}".format(segs1, segs2, csegs1, csegs2))
         if segs1 == segs2:
 #            print(" ** segs are equal!")
             return False
@@ -213,64 +288,59 @@ class Word(list):
         segseq = True
         # Morpheme index where feat differences happen
         mi = -1
+        # Morpheme index where POS differences happend
         n1 = segs1['nsegs']
         n2 = segs2['nsegs']
         if n1 != n2:
 #            print("  ** nsegs: {} ; {}".format(n1, n2))
             return True
-        pos1 = segs1.get('pos')
-        pos2 = segs2.get('pos')
-        if pos1 == pos2:
-            poseq = True
-#        print("  ** pos: {} ; {}".format(pos1, pos2))
-        l1 = segs1.get('lemma')
-        l2 = segs2.get('lemma')
-#        print("  ** lemmas: {} ; {}".format(l1, l2))
-        leq = l1 == l2
+
+        poseq, pos1, pos2, pi = self.compare_pos(segs1, segs2, csegs1, csegs2)
+
+        leq, l1, l2 = self.compare_lemmas(segs1, segs2, gemination=gemination)
+
+        geq, g1, g2, gi = self.compare_glosses(segs1, segs2, csegs1, csegs2, leq)
+
         um1 = segs1.get('um')
         um2 = segs2.get('um')
         i, d1, d2 = Word.compare_um(um1, um2)
-#        print("  ** UM diff1 {}, diff2 {}".format(d1, d2))
         if not d1 and not d2:
             umeq = True
+
         udf1 = segs1.get('udfeats')
         udf2 = segs2.get('udfeats')
         i, d1, d2 = Word.compare_udf(udf1, udf2)
         if not d1 and not d2:
             udfeq = True
-#        else:
-#            print("   ** UDF diff1 {}, diff2 {}".format(d1, d2))
         if d1 and d2:
+            # Get the index of the morpheme where the feat difference is
             for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):
-#                print("    ** mindex {}".format(mindex))
                 f1 = m1['feats']
                 f2 = m2['feats']
                 if f1 and f2 and all([d in f1 for d in d1]) and all([d in f2 for d in d2]):
-#                    print("     ** diff udfeats at index {} in {} and {} ; {} and {}".format(mindex, m1, m2, f1, f2))
                     mi = mindex
         if not poseq and not udfeq:
-#            print("  ** both POS and UDF mismatch")
             return True
         if n1 > 1:
             preeq = Word.parts_equal(segs1.get('pre'), segs2.get('pre'))
             sufeq = Word.parts_equal(segs1.get('suf'), segs2.get('suf'))
             stemeq = Word.parts_equal([segs1.get('stem')], [segs2.get('stem')])
             segseq = preeq and stemeq and sufeq
-        if poseq and udfeq and leq and segseq:
-#            print("  ** POS, UDF, lemmas, and segments match")
+        if poseq and udfeq and leq and segseq and (geq or not sep_senses):
             return False
         else:
             diffs = {}
             if not leq:
                 diffs['lemma'] = [l1, l2]
+            elif not geq:
+                diffs['gloss'] = [g1, g2, gi]
             if not udfeq and mi >= 0:
                 diffs['udfeats'] = [mi, ','.join(d1), ','.join(d2)]
             if not poseq:
-                diffs['pos'] = [pos1, pos2]
+                diffs['pos'] = [pos1, pos2, pi]
             if not segseq:
                 diffs['segs'] = [preeq, stemeq, sufeq]
             return diffs
-#        print(" ** poseq {}, udfeq {}".format(poseq, udfeq))
 
     @staticmethod
     def parts_equal(part1, part2):

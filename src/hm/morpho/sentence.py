@@ -245,11 +245,11 @@ class Sentence():
         if 'udfeats' in analdict:
             analdict['udfeats'] = udfeats
 
-    def merge5(self, verbosity=0):
+    def merge5(self, gemination=False, sep_senses=False, verbosity=0):
         '''
         Attempt to merge segmentations of each word.
         '''
-        self.merges = [(word, word.merge(verbosity=verbosity)) for word in self.words]
+        self.merges = [(word, word.merge(gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)) for word in self.words]
 #        print("&& merges: {}".format(self.merges))
 
     #####
@@ -748,6 +748,18 @@ class Sentence():
                 return []
             else:
                 return lemmas
+
+    @staticmethod
+    def get_glosses(segmentation):
+        '''
+        The glosses if any (possible only for the head).
+        '''
+        if len(segmentation) == 1:
+            return []
+        glosses = [s.get('misc') for s in segmentation]
+        if not any(glosses):
+            return []
+        return glosses
 
     @staticmethod
     def get_word(segmentation):

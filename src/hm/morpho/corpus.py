@@ -50,7 +50,7 @@ class Corpus():
                  name='', batch_name='', sentid=0, analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False, sep_feats=True, gemination=False,
+                 v5=False, sep_feats=True, gemination=False, sep_senses=False,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -118,7 +118,7 @@ class Corpus():
                                 continue
                     if segment:
                         if v5:
-                            sentence_obj = self.seg_sentence5(line, sentid=sentid, gemination=gemination, verbosity=verbosity)
+                            sentence_obj = self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)
                             if sentence_obj:
                                 self.data.append(line)
                                 sentcount += 1
@@ -145,7 +145,7 @@ class Corpus():
             # Raw sentences
             self.data = data
             if v5 and segment:
-                self.segment5(sep_feats=sep_feats, gemination=gemination)
+                self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses)
         else:
             self.data = []
 #        if segment:
@@ -160,6 +160,7 @@ class Corpus():
         """
         Segment one sentence.
         """
+        print("** seg sentence {}".format(kwargs))
         if kwargs.get('verbosity', 0):
             print("Segmenting {}".format(sentence))
         sentence_obj = self.language.anal_sentence5(sentence, **kwargs)
@@ -167,7 +168,7 @@ class Corpus():
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])
-            sentence_obj.merge5()
+            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
         return sentence_obj
 
     def segment5(self, **kwargs):
@@ -177,6 +178,8 @@ class Corpus():
         kwargs: timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0
         """
         print("** Segmenting sentences in {}".format(self), end='')
+        if kwargs.get('verbosity', 0) > 0:
+            print()
 #        if gramfilter:
 #            print(" with filter {}".format(gramfilter))
 #        else:
@@ -203,7 +206,7 @@ class Corpus():
                 self.sentences.append(sentence_obj)
                 self.unks.update(set(sentence_obj.unk))
                 self.max_words = max([self.max_words, len(sentence_obj.words)])
-                sentence_obj.merge5()
+                sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
                 sent_id += 1
         # Delete sentences that didn't pass the filter
         for delindex in todelete[::-1]:
@@ -246,7 +249,8 @@ class Corpus():
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
         """
-        print("Segmenting sentences in {}".format(self), end='')
+        print("Segmenting sentences in {}".format(self))
+#        , end='')
         if gramfilter:
             print(" with filter {}".format(gramfilter))
         else:

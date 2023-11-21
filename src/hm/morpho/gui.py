@@ -64,7 +64,8 @@ class SegRoot(Tk):
         self.geez_normal = Font(family=geezfamily, size=16)
         self.roman_big = Font(family="Arial", size=20)
         self.roman_medium = Font(family="Arial", size=18)
-        self.roman_small = Font(family="Courier", size=12)
+        self.roman_small = Font(family="Arial", size=14)
+        self.roman_mono = Font(family="Courier", size=12)
         # Sentence Label and Text
         self.init_sentence_text()
         # Undo and Quit buttons
@@ -353,6 +354,7 @@ class SegCanvas(Canvas):
             lemmas = Sentence.get_lemmas(wordseg, forms, headindex)
             pos = Sentence.get_pos(wordseg)
             features = Sentence.get_features(wordseg, um=self.UM)
+            glosses = Sentence.get_glosses(wordseg)
 #                                                 featlevel=self.um)
             # Don't need to do this if there is no segmentation
             if self.seglevel > 0:
@@ -376,8 +378,13 @@ class SegCanvas(Canvas):
                 y += SegCanvas.segrowheight
                 y = self.show_features(features, Xs, y, wordseg, featselecttags)
             if lemmas:
+                print("^^ showing lemmas {}".format(lemmas))
                 y += SegCanvas.segrowheight
                 self.show_lemmas(lemmas, Xs, y)
+            if glosses:
+                print("^^ showing glosses {}".format(glosses))
+                y += SegCanvas.segrowheight
+                self.show_glosses(glosses, Xs, y)
             # Gap between segmentations
             if segi < len(wordsegs) - 1:
                 y += SegCanvas.seggap
@@ -521,6 +528,14 @@ class SegCanvas(Canvas):
         for lemma, x in zip(lemmas, Xs):
             self.create_text((x, y), text=lemma, font=self.parent.geez_normal)
 
+    def show_glosses(self, glosses, Xs, y):
+        '''
+        Show the gloss for the stem if there is one.
+        '''
+        for gloss, x in zip(glosses, Xs):
+            if gloss:
+                self.create_text((x, y), text="'{}'".format(gloss.replace('_', ' ')), font=self.parent.roman_small)
+
     def show_pos(self, pos, Xs, y, wordseg, posselecttags):
         '''
         Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
@@ -575,11 +590,11 @@ class SegCanvas(Canvas):
 #        print("!! show_features1 {}, {}".format(feats, wordseg))
 #        colors = ['pink', 'plum', 'hotpink']
         def show(f, coords):
-            self.create_text(coords, text=f, font=self.parent.roman_small)
+            self.create_text(coords, text=f, font=self.parent.roman_mono)
         def show_ambig(f, x, y, xoff, nlines=1, color='yellow'):
             self.create_rectangle(x-xoff, y-(nlines * SegCanvas.ambigrectheight), x+xoff, y+(nlines * SegCanvas.ambigrectheight),
                                   fill=color)
-            id = self.create_text((x, y), text=f, font=self.parent.roman_small, justify=CENTER)
+            id = self.create_text((x, y), text=f, font=self.parent.roman_mono, justify=CENTER)
             return id
         unamb, ambig = feats
         if unamb:
@@ -609,9 +624,9 @@ class SegCanvas(Canvas):
 #                print(" !! y2 {}".format(y))
                 id2 = show_ambig(amb[1], x, y, xoff, nlines=nlines2, color=color)
                 featselecttags.append((wordseg, id1, id2, amb[0], amb[1]))
-                if ai == len(ambig) - 1:
-                    # Gap before lemmas
-                    y += SegCanvas.ambigsegfeatsheight * ((nlines2-1) / 2)
+#                if ai == len(ambig) - 1:
+#                    # Gap before lemmas
+                y += SegCanvas.ambigsegfeatsheight * ((nlines2-1) / 2)
         return y
 
     @staticmethod
@@ -690,7 +705,7 @@ class SegCanvas(Canvas):
         self.create_rectangle(X - Xoffset, y - SegCanvas.deplabelY,
                               X + Xoffset, y + SegCanvas.deplabelY,
                               fill='white', outline='black')
-        self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black', font=self.parent.roman_small)
+        self.create_text(((x2 - x1) / 2 + x1, y), text=label, fill='black', font=self.parent.roman_mono)
 
 class SentenceGUI():
     '''

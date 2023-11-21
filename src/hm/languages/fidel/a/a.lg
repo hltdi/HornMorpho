@@ -56,7 +56,8 @@ charcomb::
   -ኢያ: ት ቻ, ድ ጃ, ጥ ጫ, ስ ሻ, ዝ ዣ, ን ኛ, ል ያ, ች ቻ, ጅ ጃ, ጭ ጫ, ሽ ሻ, ዥ ዣ, ኝ ኛ, ይ ያ ;\
   -ኢ: ብ ቢ, ም ሚ, ፍ ፊ, ት ች, ድ ጅ, ጥ ጭ, ስ ሽ, ዝ ዥ, ን ኝ, ል ይ, ች ች, ጅ ጅ, ጭ ጭ, ሽ ሽ, ዥ ዥ, ኝ ኝ, ይ ይ, ር ሪ, ክ ኪ, ግ ጊ, ቅ ቂ, ው ዊ
 
-merge:: pos:N;PROPN;NPROPN;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True;; udfeats:Aspect=Imp;Mood=Jus;&ImpJus=True
+merge:: pos:N;PROPN;NPROPN;; pos:N;ADJ;NADJ;; pos:N;ADJ;NADJ;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True;; udfeats:Aspect=Imp;Mood=Jus;&ImpJus=True;; udfeats:ClauseType=CComp;ClauseType=AdvCl;&CCompAdvCl=True
+
 feats:
 
   pos: v verb
@@ -86,15 +87,11 @@ feats:
     sp = 3 | 2 | 1
     sn = 1 | 2
     sg = m | f
-#    op = 0 | 3 | 2 | 1
-#    on = 1 | 2
-#    og = m | f
     o = 0 | sm3 | sf3 | p3 | s1 | p1 | sm2 | sf2 | F2 | p2
     # object case
     oc = 0 | b | l
     # transitivity
 #  tr = True | False
-#    of = i | f
     # whether any kind of object is present
 #  O = False | True
     neg = False | True
@@ -104,6 +101,7 @@ feats:
     det = False | True
     # main clause
     mc = True | False
+    # auxiliary
 #    ax = None | al
     adp = None | ለ | በ | ከ | እስከ |ስለ | ወደ
     sconj = None | ብ | ስ | ል | እንድ | እየ | ከ | እንደ

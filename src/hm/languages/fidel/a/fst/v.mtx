@@ -28,7 +28,7 @@ $ sub_bound
   -
 
 $ neg1
-  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው,lemma=አ_ለ]
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው,lemma=አ_ለ,gl=exist]
   ኣ			[+neg,t=i|j]
   ኣል			[+neg,t=p]
   --   		[-neg];[t=c,-neg]
@@ -170,7 +170,7 @@ $ aux_bound
   -
 
 $ accus
-  ን		[+acc,+rel]
+  ን		[+acc,+rel,+O]
   --		[-acc]
 
 $ accus_bound

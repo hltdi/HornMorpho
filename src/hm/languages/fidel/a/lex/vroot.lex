@@ -32,11 +32,11 @@
 
 # ማረ: forgive, sense 1
 <ም እ ር>	     c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=p ; a=i,v=a ; a=i,d=m
+  a=0,v=0 ; a=0,v=p,gl=be_forgiven ; a=0,v=as ; a=i,v=p ; a=i,v=a ; a=i,d=m
 
 # ተማረ: learn, sense 2
 <ም እ ር>	     c=A,s=2
-  a=0,v=p ; a=0,v=ast ; a=i,d=m
+  a=0,v=p,gl=learn ; a=0,v=ast ; a=i,d=m
 
 # አረጀ: be old, sense 1
 <ር ጅ ይ>	    c=A,s=1
@@ -273,7 +273,7 @@
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ጥ ቅ ስ>	c=A
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
-<ጥ ብ ቅ>	c=B
+<ጥ ብ ቅ>	c=B,gl=wait
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ጥ ግ እ>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
@@ -1333,7 +1333,7 @@
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ጥ ቅ ም>	c=A
   a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
-<ጥ ብ ቅ>	c=A
+<ጥ ብ ቅ>	c=A,gl=be_tight
   a=0,v=0 ; a=0,v=a ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ጥ ብ እ>	c=A
   a=0,v=0 ; a=0,v=a ; a=a,v=a ; a=a,v=p ; a=i,v=0
@@ -1472,7 +1472,7 @@
 <ስ ር ዝ>	c=B
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
 <ስ ቅ ይ ይ>	c=F
-  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
+  a=0,v=as ; a=0,v=p ; a=i,d=m
 <ስ እ ል>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <ስ ይ ር>	c=A
@@ -1820,7 +1820,7 @@
 <ግ ል ብ>	c=C
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=i,d=m
 <ግ ል ግ ል>	c=E
-  a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m
+  a=0,v=p ; a=0,v=a ; a=i,d=m
 <ግ ል ግ ል>	c=F
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m
 <ግ ም ጥ>	c=A
@@ -2049,8 +2049,6 @@
   a=0,v=0 ; a=0,v=p ; a=i,d=m
 <ስ ቅ ስ ቅ>	c=E
   a=0,v=0 ; a=0,v=p ; a=i,d=m
-<ስ ቅ ይ ይ>	c=E
-  a=a,v=a ; a=a,v=p ; a=i,d=m
 <ስ ብ ክ>	c=A
   a=0,v=0 ; a=0,v=p ; a=i,d=m
 <ስ ት ፍ>	c=C
