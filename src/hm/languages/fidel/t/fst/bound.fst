@@ -8,12 +8,24 @@ start -> V		[*v]
 start -> firstC	[*]
 
 V -> V			[:-;*v]
-firstC -> firstC	[:-]
+firstC -> firstC	[:-;/]
 firstC -> C2	[*-እ;:እ]
 firstC -> V		[*v]
 C2 -> C2  		[:-]
 C -> C			[:-;*-እ;:እ]
-V -> C			[*]
+V -> C			[*-ይ;/]
+
+V -> y			[ይ]
+y -> C			[*-እ;:እ]
+y -> V			[*v]
+y -> y.			[:-]
+y. -> C			[*-ይ,እ]
+y. -> V			[*v]
+
+V -> y.y		[/:ይ]
+y.y -> yy.		[:-]
+yy. -> C		[ይ]
+
 C2 -> C			[*-እ;:እ]
 C2 -> V			[*v]
 C -> V			[*v]
@@ -30,6 +42,12 @@ firstC -> C2i	[{I2i}]
 
 V -> C2e	[{I2e}]
 V -> C2i	[{I2i}]
+
+C -> C2e	[{I2e}]
+C -> C2i	[{I2i}]
+
+#C2 -> C2e	[{I2e}]
+#C2 -> C2i	[{I2i}]
 
 ## stem changes
 
@@ -96,8 +114,12 @@ suff -> suff3pfA+		[:-]
 suff -> suff_mu			[ሙ:ም]
 suff_mu -> suff_mu+	[:-]
 suff_mu+ -> suff		[:ኡ]
+# 23pf subjects with infixed ኣ
+suff -> suff_na			[ና:ን]
+suff_na -> suff_na+	[:-]
+suff_na+ -> suff		[:ኣ]
 
-# 3sf subjects, perfective
+# 3sf subjects, perfective and converb
 suff -> suff_to			[ቶ:ት]
 suff_to -> suff_to+	[:-]
 suff_to+ -> suff_to+	[/;_]
@@ -113,16 +135,16 @@ suff_te+ -> suff		[:አ]
 
 # object suffixes without vowel infixes
 suff -> suff+			[:-]
-suff+ -> suff			[ኒ;ና;ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ዎ;ዋ;ወ;ዮ;ያ;የ]
+suff+ -> suff			[ኒ;ና;ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ]
 
 suff+ -> suff+/			[/]
-suff+/ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ]
+suff+/ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ለ;ሉ;ላ;ሎ]
 
 suff -> suff			[^N;/;']
 
 suff -> neg			[:-]
 suff+ -> neg		[:-]
-neg -> neg			[^N]
+neg -> neg			[^N;:-]
 
 suff+ ->
 suff ->

@@ -1,0 +1,38 @@
+$ prep
+  ብ [adp=ብ]
+  ን [adp=ን]
+  -- [adp=None]
+
+## Boundary separating stem from suffixes
+$ prep_bound
+  -
+
+$ prestem
+  <
+
+$ stem
+  +n_stem+  [pos=n]
+
+$ poststem
+  >
+
+## Boundary separating prefixes from stem
+$ bound2
+  -
+
+$ poss
+  አይ		[pp=1,pn=1]
+  ና		[pp=1,pn=2]
+  ካ		[pp=2,pn=1,pg=m]
+  ኪ		[pp=2,pn=1,pg=f]
+  ኩም 	[pp=2,pn=2,pg=m]
+  ክን 		[pp=2,pn=2,pg=f]
+  ኡ 		[pp=3,pg=m,pn=1]
+  ኣ 		[pp=3,pg=f,pn=1]
+  ኦም 	[pp=3,pg=m,pn=2]
+  አን		[pp=3,pg=f,pn=2]
+  --		[pp=0]
+
+$ conj
+  ን		[cnj=ን]
+  --      	[cnj=None]

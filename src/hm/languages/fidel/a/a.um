@@ -171,7 +171,7 @@ det:: DEF
 
 adp:: እስከ:TERM;; ስለ:PURP;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
 sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
-sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND
+sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND;; እየ:*TEMP
 cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V

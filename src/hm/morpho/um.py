@@ -62,6 +62,7 @@ class UniMorph:
         udfalts is a list of feature alternatives for ambiguous cases, each a feature:value dict.
         [ [{"Gender[psor]": "Masc", "Number[psor]": "Sing", "Person[psor]": 3}, {"Definite": "Def"}] ]
         '''
+#        print("&& udfdict {}".format(udfdict))
         udfeats = UniMorph.udfdict2feats(udfdict, join=True, ls=False)
         if udfalts:
             udf_ambig = [[UniMorph.udfdict2feats(u, join=True, ls=False) for u in udfa] for udfa in udfalts]
@@ -71,6 +72,8 @@ class UniMorph:
 
     @staticmethod
     def udfdict2feats(udfdict, join=True, ls=False):
+        if not udfdict:
+            return ''
         if not ls:
             feats = list(udfdict.items())
         else:
@@ -460,7 +463,7 @@ class UniMorph:
                 if isinstance(udfeat, tuple):
                     # multiple features
                     ummult, udfeat = udfeat
-#                    print("%% ummult {}, udfeat {}".format(ummult, udfeat))
+                    print("%% ummult {}, udfeat {}".format(ummult, udfeat))
                     if all([(umm in um) for umm in ummult]):
                         if udfeat[0] == '*':
                             if extended:
@@ -475,22 +478,12 @@ class UniMorph:
                         udfeat = udfeat[1:]
                         for udd in udfeat.split(','):
                             udfeats.add(udd)
-#                elif '/' in udfeat: #udfeat[0] == '{' and udfeat[-1] == '}':
-#                    # ambiguous features; alternatives separated by '/'
-#                    if udfeat[0] == '{':
-#                        # delete surrounding braces
-#                        udfeat = udfeat[1:-1]
-#                    udfeat = udfeat.split('/')
-#                    udfeat = [ud.split(',') for ud in udfeat]
-#                    udfeat = [dict([u.split('=') for u in ud]) for ud in udfeat]
-#                    udalts.append(udfeat)
                 else:
                     for udd in udfeat.split(','):
 #                        print("  %% udd {}".format(udd))
                         udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
-#        print("%% udfeats {}".format(udfeats))
         if return_dict:
             return dict([u.split('=') for u in udfeats]), udalts
         return '|'.join(udfeats)

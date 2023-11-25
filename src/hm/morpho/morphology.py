@@ -1478,9 +1478,6 @@ class POSMorphology:
         string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
         real_prefixes = [p for p in prefixes if p]
         real_suffixes = [s for s in suffixes if s]
-#        print("^^ prefixes {}".format(prefixes))
-#        print("^^ stem {}".format(stem))
-#        print("^^ suffixes {}".format(suffixes))
         procdict = {'token': token, 'feats': features, 'string': string}
         if raw_token:
             procdict['raw'] = raw_token
@@ -1496,10 +1493,13 @@ class POSMorphology:
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
         procdict['pos'] = features.get('pos', self.pos)
-        udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True) if um else None
+        if um:
+            udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True)
+        else:
+            udfdict = udfalts = None
+#        print("$$ udfdict {}, udfalts {}".format(udfdict, udfalts))
         udfeats = UniMorph.create_UDfeats(udfdict, udfalts)
         procdict['udfeats'] = udfeats
-#        print("$$ udfdict {}".format(udfdict))
         stemd = None
         max_stem_index = len(prefixes)
         stem_index = len(real_prefixes)

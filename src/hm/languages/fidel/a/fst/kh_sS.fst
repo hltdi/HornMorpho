@@ -3,6 +3,13 @@
 start -> start 	[*;*v;-;/]
 start -> stem	[<]
 
+# optionally ..lr.. -> /r (አ/ረሳም)
+start -> l.r	[/:ል]
+# could be a boundary here
+l.r -> l.r		[-]
+l.r -> lr.		[<]
+lr. -> V		[ረ;ራ;ሮ;ሯ]
+
 stem -> V		[*v-ኣ]
 stem -> C		[*;/]
 V -> C			[*;/;-]

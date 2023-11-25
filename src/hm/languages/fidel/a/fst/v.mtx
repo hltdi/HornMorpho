@@ -17,7 +17,7 @@ $ conj_prep_pre
   እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=None]
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=None]
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=None]
-  እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub,adp=None]
+  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=None]
   --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-sub,sconj=None,adp=None,-rel]
 
 $ rel_impf
@@ -47,9 +47,6 @@ $ sb_pre
   እን  	[t=i|j,sp=1,sn=2]
   /ን  <ን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
-
-#$ sp_bound
-#  -
 
 $ prestem
   <
