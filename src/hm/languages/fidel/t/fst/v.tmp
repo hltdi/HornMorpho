@@ -9,83 +9,83 @@ $$ L እ|ሕ|ዕ
 %%a=0,c=A,+strong
 [t=p,v=0|p]
 [t=j,v=p]
-*e	*e	*
+*eo	*eo	*
 
 # optionally drop final vowel in perf pass: ተሰብረ
 [t=p,v=p,sp=3]
 [t=i,v=0,+suf,-dup23]
-*e	*	*
+*eo	**u	*
 
 [t=p,v=p,sp=3,+dup23]
 [t=i,v=0,+suf,+dup23]
-*e	*:	-
+*eo	**u:	-
 
 [t=i,v=0,-suf]
-*e	*:	*
+*eo	**u:	*
 
 [t=i,v=p]
-*	*:e		*
+**u	*:eo		*
 
 [t=j,v=0]
-*	*e	*
+**u	*eo	*
 
 [t=c,v=0|p]
-*e	*i	*
+*eo	*i	*
 
 [t=p,v=a]
-*	*e	*
+**u	*eo	*
 
 [t=j,v=a]
 [t=i,v=a,+suf,-dup23]
-*	*	*
+**u	**u	*
 
 [t=i,v=a,+suf,+dup23]
-*	*:	-
+**u	**u:	-
 
 [t=i,v=a,-suf]
-*	*:	*
+**u	**u:	*
 
 [t=c,v=a]
-*	*i	*
+**u	*i	*
 
 %%a=i,c=A,+strong
 [t=p]
 [t=i|j,v=p]
-*e	*a	*e	*
+*eo	*a	*e	*
 
 [t=i|j,v=0|a]
-*e	*a	*	*
+*eo	*a	*	*
 
 [t=c]
-*e	*a	*i	*
+*eo	*a	*i	*
 
 %%a=a,c=A,+strong
-[t=p|i|j,v=ps]
+[t=p|i|j,v=p]
 [t=p,v=a]
 *a	*e	*
 
 [t=i|j,v=a]
 *a	*	*
 
-[t=c,v=ps|a]
+[t=c,v=p|a]
 *a	*i	*
 
 %%a=0,c=B,+strong
 [t=p]
 [t=j,v=p]
-*e	*:e	*
+*eo	*:eo	*
 
 [t=i,v=0]
-*	*:	*
+**u	**u:	*
 
 [t=i,v=p]
-*	*:e	*
+**u	*:eo	*
 
 [t=i|j,v=0|a]
-*e	*:	*
+*eo	**u:	*
 
 [t=c]
-*e	*:i	*
+*eo	*:i	*
 
 %%a=i,c=B,+strong == A
 
@@ -254,51 +254,53 @@ $$ L እ|ሕ|ዕ
 
 %%a=0,c=A,-strong
 
-#%1=L
-#[t=p,v=0|p]
-#[t=j,v=p]
-#*a	*e	*
-
-#[t=p,v=p,sp=3]
-#[t=i,v=0,+suf]
-#*a	*	*
-
-#[t=i,v=0,-suf]
-#*a	*:	*
-
 %2=L
-[t=p,v=0]
-*e	*a	*
+[t=p|j,v=0]
+*eo	*a	*
 
-# alternate prf V1: ስዓመ
-[t=p,v=0]
-*	*a	*
+[t=p,v=0|p]
+[t=i|j,v=p]
+[t=j,v=0]
+[t=p,v=a]
+**u	*a	*
 
-[t=i,v=0]
-*	*	*
+[t=p,v=p]
+*a	*	*
 
 [t=j,v=0]
-*	*a	*
+[t=i|j,v=p]
+[t=p,v=p]
+*a	*a	*
+
+[t=i,v=0|a]
+[t=j,v=a]
+**u	*	*
+
+[t=c]
+**u	*i	*
+
+[t=c,v=p]
+*a	*i	*
 
 %3=L
 # መጽእ- -አ
 [t=p,v=0,sp=3]
 [t=i,v=0,+suf]
-*e	*	*
+*eo	*	*
 
 [t=i,v=0,-suf]
-*e	*:	*
+*eo	*:	*
 
 # መጻእ- -ካ
 [t=p,v=0,sp=1|2]
-*e	*a	*
+*eo	*a	*
 
 # ይስራ፟ሕ
 [t=i,v=p]
-*	*:a	*
+**u	*:a	*
 
 [t=j,v=0]
-*	*a	*
+**u	*a	*
 
 %2=ው
 # ሞት-
@@ -395,26 +397,33 @@ $$ L እ|ሕ|ዕ
 ##[t=c,v=0,sp=1,sn=1]
 ##*e	*	*
 
-%3=ይ,2=L
-# ረኣየ
-[t=p,v=0]
-*e	*a	*
-
+#%3=ይ,2=L
+## ረኣየ
+#[t=p,v=0]
+#*e	*a	*
+#
 # ረኤ
-[t=p,v=0]
-*e	*E	-
-
-[t=i,v=0]
-[t=c,v=0,sp=1|2]
-*	*i	-
-
+#[t=p,v=0]
+#*e	*E	-
+#
+#[t=i,v=0]
+#[t=c,v=0,sp=1|2]
+#*	*i	-
+#
 #[t=j,v=0]
 #*	*a	*
-
-[t=c,v=0,sp=3]
-*	*	*
+#
+#[t=c,v=0,sp=3]
+#*	*	*
 
 %%a=a,c=A,-strong
+
+%2=L
+[t=p|i|j]
+*a	*a	*
+
+[t=c]
+*a	*i	*
 
 %3=L
 [t=p,v=p|a,sp=3]
@@ -471,6 +480,32 @@ $$ L እ|ሕ|ዕ
 ##*a	*i	-
 
 %%a=i,c=A,-strong
+
+%2=L
+
+[t=p]
+[t=i|j,v=p]
+*e	*a	*a	*
+
+[t=i|j,v=p]
+*	*a	*a	*
+
+[t=p,v=a]
+[t=i|j,v=p]
+*a	*a	*a	*
+
+[t=i|j,v=0|a]
+*e	*a	*	*
+
+[t=i|j,v=0|a]
+*a	*a	*	*
+
+[t=c]
+*a	*a	*i	*
+[t=c]
+*e	*a	*i	*
+[t=c]
+*	*a	*i	*
 
 %3=L
 # for some verbs, like ሰምዔ, the first vowel may be I

@@ -136,7 +136,7 @@ op,on,og,oc:: 2,1,m,o:OB2SM;; 2,1,f,o:OB2SF;; 2,2,m,o:OB2PM;; 2,2,f,o:OB2PF
 op,on,oc:: 1,1,a:AC1S;; 1,2,a:AC1P;; 1,1,o:OB1S;; 1,2,o:OB1P
 
 adp:: ብ:INS;; ን:ACC
-sconj:: ዝ:*RELC;; ክ:PURP;; እንክ:PURP;; ከምዝ:*CCOMP;; ምስ:*TEMP;; እና:*TEMP;; እንተ:COND;; እንተዝ:COND;; ም:COND
+sconj:: ዝ:*RELC;; ክ:PURP;; እንክ:PURP;; ከምዝ:*CCOMP;; ምስ:*TEMP;; እና:*TEMP;; እንተ:COND;; እንተዝ:COND;; ም:COND;; እንዳ:*LOC
 #cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V

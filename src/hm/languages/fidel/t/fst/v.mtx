@@ -7,19 +7,21 @@ $ adp_bound
   -
 
 $ conj1
-  ዝ   [conj1=ዝ,+rel,-mc,t=p|i]
+  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
   እ/	<ዝ>	[adp=0,conj1=ዝ,+rel,-mc,t=i,sp=2];[adp=0,conj1=ዝ,+rel,-mc,t=i,sp=1,sn=2];[adp=0,conj1=ዝ,+rel,-mc,t=p,v=p]
   # this could also be ከም + ዝ (in which case ከም would be an adp?)
-  ክ   [conj1=ክ,-rel,-mc,t=i]
-  እንክ [conj1=አንክ,-rel,-mc,t=i]
-  ምስ  [conj1=ምስ,-rel,-mc,t=p]
-  እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p]
-  ከምዝ [conj1=ከምዝ,+rel,-mc,t=i|p]
-  እንተ  [conj1=እንተ,-rel,-mc,-neg,t=p|c]
+  ንኽ	       <ንኽ>	 [conj1=ንኽ,-rel,-mc,t=i]
+  ክእ	 	 <ክ>   [conj1=ክ,-rel,-mc,t=i]
+  እንክ	<እንክ> [conj1=አንክ,-rel,-mc,t=i]
+  ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
+  እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0]
+  ከምዝእ <ከምዝ>	[conj1=ከምዝ,+rel,-mc,t=i|p,adp=0]
+  እንተ  [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0]
   # should this be +rel? should it be እንተ+ዝ?
-  እንተዝ [conj1=እንተ,+rel,-mc,t=p|c]
-  ም   [conj1=ም,-rel,-mc,t=p]
+  እንተዝእ <እንተዝ>	[conj1=እንተ,+rel,-mc,t=p|c,adp=0]
+  ም   [conj1=ም,-rel,-mc,t=p,adp=0]
+  እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0]
   # ደይትምለስ
   ድ   [conj1=ድ,+int,+neg,conj2=0,+mc]
   -- [-rel,+mc,conj1=0]
@@ -37,25 +39,30 @@ $ neg1_bound
 
 $ sb_pre
   ይ   [t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
-  ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
-  እ   [t=i|j,sp=1,sn=1]
-  ን   [t=i|j,sp=1,sn=2]
-  --  [t=p|c];[t=j,sp=2,-neg]# ;[t=i|j,sp=3,sn=2,+neg];[t=i|j,sp=3,sn=1,sg=m,+neg];[t=i,sp=1,sn=1,+neg]
+  # እ is to force this to have the epenthetic vowel (and spirantize following /k/ or /q/)
+  ትእ <ት>   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  # ክደሊ (1s or 3sm)
+  እ   [t=i|j,sp=1,sn=1,-neg]
+  # እ is to force the preceding ዝ or ክ to have the epenthetic vowel (and spirantize following /k/ or /q/)
+#  እ   <>	[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
+  ንእ <ን>   [t=i|j,sp=1,sn=2]
+  --  [t=p|c];[t=j,sp=2,-neg];[t=i|j,sp=1,sn=1,+neg];[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
 
-$ sp_bound
-  -
-
-$ voice_pre
-  [v=p]
-    ተ			[t=p|c];[t=j,sp=2,-neg]
-    /			[t=j,sp=1|3];[t=j,sp=2,+neg];[t=i,a=a|i]
-  [v=a]
-    ኣ			[a=0]
-    ኣ=		[a=a|i]
-  --			[v=0];[v=p,t=i]
+#$ sp_bound
+#  -
 
 $ prestem
   <
+
+$ voice
+  [v=p]
+    ተ-			[t=p|c];[t=j,sp=2,-neg]
+    /-			[t=j,sp=1|3];[t=j,sp=2,+neg];[t=i,a=a|i];[t=i,tmp=[2=L]]
+  [v=a]
+    ኣ-			[a=0]
+    ኣ=-	<ኣ->	[a=a|i]
+#    ይ/ስዓም
+  --				[v=0];[v=p,t=i,tmp=[2=X|w|y]]
 
 $ stem
   >>v_stem<<
@@ -66,9 +73,10 @@ $ poststem
 $ sb_suf
   ኩ   [t=p,sp=1,sn=1,oinf=0]
   ካ    [t=p|c,sp=2,sn=1,sg=m,oinf=0]
-  ኪ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,-O]
-  ክ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,+O]
-  ኢ  [t=i|j,sp=2,sn=1,sg=f,oinf=0,-O]
+  # ኪ -> ክ before anything else.
+  ኪ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,-O,-neg];[t=p,sp=2,sn=1,sg=f,oinf=0,-O,+neg,-mc]
+  ክ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,+O];[t=p,sp=2,sn=1,sg=f,oinf=0,-O,+neg,+mc]
+  ኢ  [t=i|j,sp=2,sn=1,sg=f,oinf=0]
   አ   [t=p,sp=3,sn=1,sg=m,oinf=0]
   አት   [t=p,sp=3,sn=1,sg=f,oinf=0]
   ና     [t=p|c,sp=1,sn=2,oinf=0]
@@ -78,19 +86,20 @@ $ sb_suf
   ክን   [t=p|c,sp=2,sn=2,sg=f,oinf=Ia]
   ኡ    [t=p|i|j,sp=3,sn=2,sg=m,oinf=0];[t=j|i,sp=2,sn=2,sg=m,oinf=0];[t=c,sp=3,sn=1,sg=m,oinf=0]
   ኣ   [t=p|i|j,sp=3,sn=2,sg=f,oinf=I];[t=j|i,sp=2,sn=2,sg=f,oinf=I];[t=c,sp=3,sn=1,sg=f,op=0|1|2,oinf=0];[t=c,sp=3,sn=1,sg=f,op=3,oc=o,oinf=0]
-  ኣት  [t=c,sp=3,sn=1,sg=f,op=3,oc=a,oinf=0]
+  ኣት  <ኣ>	[t=c,sp=3,sn=1,sg=f,op=3,oc=a,oinf=0]
   # gets realized as -e or -E
   ኤ   [t=c,sp=1,sn=1,oinf=0]
   ኦም  [t=c,sp=3,sn=2,sg=m,oinf=u]
   አን   [t=c,sp=3,sn=2,sg=f,oinf=Ia]
   # includes I for 2sf i|j suffix before objects and I for 3sm prf suffix before 3 objects
-  --   [t=i|j,sp=2,sn=1,sg=m,oinf=e];[t=i|j,sp=1,oinf=e];[t=i|j,sp=3,sn=1,oinf=e];[t=i|j,sp=2,sn=1,sg=f,+O,oinf=0];[t=p,sp=3,sn=2,sg=m,+O,op=3,oinf=0]
+  --   [t=i|j,sp=2,sn=1,sg=m,oinf=e];[t=i|j,sp=1,oinf=e];[t=i|j,sp=3,sn=1,oinf=e];[t=p,sp=3,sn=2,sg=m,+O,op=3,oinf=0]
 
 $ ss_bound
   -
 
 $ ob_inf
-  አ	<>	[+O,oinf=e]
+  አ	<>	[+O,oinf=e,t=i|p];[+O,oinf=e,t=j,op=1|2]
+  _	<>	[+O,oinf=e,t=j,op=3]
   ኡ	<>	[+O,oinf=u]
   እ	<>	[+O,oinf=I|Ia,op=3,oc=a]
   ኣ	<>	[+O,oinf=Ia,op=1|2];[+O,oinf=Ia,op=3,oc=o]

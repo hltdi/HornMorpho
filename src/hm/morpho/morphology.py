@@ -1373,6 +1373,9 @@ class POSMorphology:
         else:
             return self.anal(form, init_weight=init_weight, guess=guess)
 
+    def anal5(self, form, feats=None, mwe=False, trace=0):
+        return self.anal(form, v5=True, init_weight=feats, mwe=mwe, trace=trace)
+
     def anal(self, form, init_weight=None, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
              result_limit=0, experimental=False, mwe=False, suffix='',

@@ -67,6 +67,18 @@ stemC_i -> Iw2y		[{I2u}]
 Iy2i -> I2v			[:ይ]
 Iw2u -> I2v			[:ው]
 
+# iy -> Iy; converb for final -y; this maybe should be obligatory?
+#stemC -> iy.Iy		     [{^i2I}]
+stemC_e -> iy.Iy	     [{^i2I}]
+stemV -> iy.Iy	     	     [{^i2I}]
+iy.Iy -> iyIy.	     	     [ይ]
+
+# ረኤ, ርኤ (possibly only this verb)
+stemC_I -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
+stemC_e -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
+stemV -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
+a.y -> ay.			[:ይ]
+
 end -> end			[^N;/;-]
 
 stemV ->
@@ -77,3 +89,7 @@ stemC   ->
 e2v ->
 I2v ->
 w2y ->
+
+iyIy. ->
+
+ay. ->

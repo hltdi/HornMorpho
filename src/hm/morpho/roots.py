@@ -46,6 +46,7 @@ def geezify_CV(c, v):
         c = romanize(c, 'ees')
     cv = c+v
     if len(c) > 1:
+#        print("** Geezifying {} {}".format(c, v))
         if c[-1] == 'u':
             # we need this for roots of verbs like ዶለዶመ: <ዱ ል ዱ ም>
 #            print("** Creating labial char: {} + {}".format(c, v))
@@ -57,6 +58,13 @@ def geezify_CV(c, v):
                 cv = c[0] + 'o'
             elif v == 'a':
                 cv = c[0] + 'Wa'
+            elif v == 'i':
+                if c[0] in 'gkq':
+                    cv = c[0] + 'Wi'
+                else:
+                    cv = c[0] + 'wi'
+#        print(" ** cv {}".format(cv))
+#        print(" ** {}".format(geezify(cv, 'ees')))
     g = geezify(cv, 'ees')
     if not is_geez(Roots.remove_gem(g)):
         return ''

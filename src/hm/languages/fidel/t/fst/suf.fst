@@ -7,6 +7,9 @@ start -> ij		[]		[t=i|j]
 prf -> C 		[]		[sp=1|2]
 prf -> V		[]		[sp=3]
 
+#prf -> C		[]
+#prf -> V		[]
+
 cvb -> C		[]		[sp=2];[sp=1,sn=2]
 cvb -> V		[]		[sp=3];[sp=1,sn=1]
 
