@@ -275,6 +275,7 @@ class FSSet(set, FS):
                         pos = pos + simp.end()
                     else:
                         print('Something wrong at position', pos, char, 'in', rep)
+                        break
         return res
 
     @staticmethod

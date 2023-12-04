@@ -36,10 +36,10 @@ stemV -> stemC	[^Q-እ;{k2K}]
 stemC -> stemV	[*v]
 stemC -> stemC	[*]
 stemV -> stemgem  [/]
-stemgem -> stemV  [^N]
 stemC -> stemgem  [/]
-
-#stem -> stem	[^N;/]
+Vstem -> stemgem  [/]
+stem -> stemgem	  [/]
+stemgem -> stemV  [^N]
 
 stemC ->
 stemV ->

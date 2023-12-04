@@ -9,11 +9,11 @@ $ adp_bound
 $ conj1
   ዝ	  [conj1=ዝ,+rel,-mc,t=p|i]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
-  እ/	<ዝ>	[adp=0,conj1=ዝ,+rel,-mc,t=i,sp=2];[adp=0,conj1=ዝ,+rel,-mc,t=i,sp=1,sn=2];[adp=0,conj1=ዝ,+rel,-mc,t=p,v=p]
+  እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2];[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2];[adp=0,conj1=እ,+rel,-mc,t=p,v=p]
   # this could also be ከም + ዝ (in which case ከም would be an adp?)
-  ንኽ	       <ንኽ>	 [conj1=ንኽ,-rel,-mc,t=i]
-  ክእ	 	 <ክ>   [conj1=ክ,-rel,-mc,t=i]
-  እንክ	<እንክ> [conj1=አንክ,-rel,-mc,t=i]
+  ንኽ      [conj1=ንኽ,-rel,-mc,t=i]
+  ክ	 	 [conj1=ክ,-rel,-mc,t=i]
+  እንክ	 [conj1=አንክ,-rel,-mc,t=i]
   ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
   እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0]
   ከምዝእ <ከምዝ>	[conj1=ከምዝ,+rel,-mc,t=i|p,adp=0]
@@ -37,32 +37,36 @@ $ neg1
 $ neg1_bound
   -
 
+$ sb_rel
+  # optionally geminate ት- and ን- after ክ and insert vowel after ንክ to get ንክትከውን, etc.
+  እ 	 <>    [t=i,sp=2,conj1=ንኽ];[t=i,sp=1,sn=2,conj1=ንኽ];[t=i,sp=3,sn=1,sg=f,conj1=ንኽ]
+  /	[+rel,t=i,sp=1,sn=2];[+rel,t=i,sp=2];[+rel,t=i,sp=3,sn=2,sg=f];[t=i,sp=2,conj1=ክ];[t=i,sp=1,sn=2,conj1=ክ];[t=i,sp=3,sn=1,sg=f,conj1=ክ]
+  --	[-rel];[t=p|j|c];[t=i,sp=3,sn=2];[t=i,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
+
 $ sb_pre
   ይ   [t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
-  # እ is to force this to have the epenthetic vowel (and spirantize following /k/ or /q/)
-  ትእ <ት>   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
-  # ክደሊ (1s or 3sm)
-  እ   [t=i|j,sp=1,sn=1,-neg]
+  ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
   # እ is to force the preceding ዝ or ክ to have the epenthetic vowel (and spirantize following /k/ or /q/)
-#  እ   <>	[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
-  ንእ <ን>   [t=i|j,sp=1,sn=2]
-  --  [t=p|c];[t=j,sp=2,-neg];[t=i|j,sp=1,sn=1,+neg];[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
-
-#$ sp_bound
-#  -
+  እ   [t=i|j,sp=1,sn=1,-neg];[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
+  ን    [t=i|j,sp=1,sn=2]
+  --  [t=p|c];[t=j,sp=2,-neg];[t=i|j,sp=1,sn=1,+neg]
 
 $ prestem
   <
 
+$ pass_rel
+  /	[+rel,t=p,v=p,sconj=እ]
+  --	[-rel];[t=i|j|c];[t=p,+rel,sconj=ዝ]
+
 $ voice
-  [v=p]
-    ተ-			[t=p|c];[t=j,sp=2,-neg]
-    /-			[t=j,sp=1|3];[t=j,sp=2,+neg];[t=i,a=a|i];[t=i,tmp=[2=L]]
-  [v=a]
-    ኣ-			[a=0]
-    ኣ=-	<ኣ->	[a=a|i]
-#    ይ/ስዓም
-  --				[v=0];[v=p,t=i,tmp=[2=X|w|y]]
+  # v=p
+  ተ-		[v=p,t=p|c];[v=p,t=j,sp=2,-neg]
+  /-		[v=p,t=j,sp=1|3];[v=p,t=j,sp=2,+neg];[v=p,t=i,a=a|i];[v=p,t=i,a=0,c=A,tmp=[2=L]];[v=p,t=i,a=0,c=C|F]
+  # v=a
+  ኣ-		[v=a,a=0]
+  ኣ=-	<ኣ->	[v=a,a=a|i]
+  # v=0; v=p, except 
+  --		[v=0];[v=p,t=i,a=0,tmp=[2=X|w|y],c=A|B|E|G|H|I|J]
 
 $ stem
   >>v_stem<<

@@ -19,7 +19,7 @@ C3 -> gem		[/]
 
 # 2 successive Cs; vowel after C2 unless ተ-ሰብር- ይ-ሰብር-
 C1 -> C2		[^Q;{k2K}]	 [c=C|E|F|G|H|I];[c=A,a=a|i]
-C1 -> C2end		[*]			 [c=A,a=0,t=p,v=p];[c=A,a=0,t=i,v=0]
+C1 -> C2end		[*]			 [c=A,a=0,t=p,v=p];[c=A,a=0,t=i,v=0];[c=A,a=0,t=p,v=0,tmp=[3=L]]
 C2 -> V			[*v]
 C2 -> gem		[/]
 

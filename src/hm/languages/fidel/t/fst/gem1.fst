@@ -1,10 +1,10 @@
 -> start
 
-start -> start	[^N;/;';<]
+start -> start	[^N;/;<]
 
 start -> gem1	[/:]
 
-gem1 -> gem2	[^N]
+gem1 -> gem2	[^^K;{K2k}]
 
 gem2 -> start	[:_]
 

@@ -22,12 +22,11 @@ y. -> C			[*-ይ]
 y. -> V			[*v]
 y. -> stem		[<]
 
-# it seems that both ኣ/ይኸውን and ኣይከውን are possible with the latter more common
+# it seems that both ኣ/ይኸውን and ኣይከውን are possible, with the latter more common
 V -> y.y		[/:ይ;:ይ]
 y.y -> yy.		[:-]
 yy. -> C		[ይ]
 
-#C2 -> C			[*-እ;:እ]
 C2 -> C				[*]
 C2 -> V			[*v]
 C -> V			[*v]
@@ -66,12 +65,15 @@ start -> stem		[<]
 stem -> stem 		[^N;/;:-]
 
 stem -> stemC+		[:>]
+stemC+ -> suff		[^A;:-]
 # ኢ -> እ before other suffixes
-stemC+ -> suff		[^A;:-;:ኢ]
+stemC+ -> suff		[:ኢ]	[+O];[+neg,+mc]
 
 ## final stem consonants
 
-stem -> stem_e		[{I2e};ኤ]
+# stem-final laryngeals + /e/ have three possible realizations
+# stem can end in ኤ for verbs like ረአየ
+stem -> stem_e		[{I2e};{LI2a};{LI2E};ኤ]
 stem -> stem_a		[{I2a}]
 stem -> stem_o		[{I2o}]
 stem -> stem_u		[{I2u}]
