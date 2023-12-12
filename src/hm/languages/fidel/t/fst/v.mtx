@@ -1,72 +1,77 @@
 $ adp
-  ብ	[adp=ብ,+rel,-mc]
-  ን	[adp=ን,+rel,-mc]
-  --  [adp=0]
+  ብ [adp=ብ,+rel,-mc]
+  ን [adp=ን,+rel,-mc]
+  ከም [adp=ከም,+rel,t=p|i,-mc]
+  እንተ [adp=እንተ,conj1=ዝ,+rel,-mc,t=p];[adp=እንተ,-rel,-mc,-neg,t=p];[adp=እንተ,-rel,-neg,t=c]
+  -- [adp=0]
 
 $ adp_bound
   -
 
 $ conj1
-  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i]
+  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,-neg]
+  ዘይ	  [conj1=ዝ,+rel,-mc,t=p|i,+neg]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
-  እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2];[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2];[adp=0,conj1=እ,+rel,-mc,t=p,v=p]
+  እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg]
   # this could also be ከም + ዝ (in which case ከም would be an adp?)
-  ንኽ      [conj1=ንኽ,-rel,-mc,t=i]
-  ክ	 	 [conj1=ክ,-rel,-mc,t=i]
-  እንክ	 [conj1=አንክ,-rel,-mc,t=i]
+  ንኽ      [conj1=ንኽ,-rel,-mc,t=i,-neg]
+  ንኸይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
+  ክ	 	 [conj1=ክ,-rel,-mc,t=i,-neg]
+  ከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
+  እንክ	 [conj1=አንክ,-rel,-mc,t=i,-neg]
+  እንከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
   ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
-  እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0]
-  ከምዝእ <ከምዝ>	[conj1=ከምዝ,+rel,-mc,t=i|p,adp=0]
-  እንተ  [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0]
-  # should this be +rel? should it be እንተ+ዝ?
-  እንተዝእ <እንተዝ>	[conj1=እንተ,+rel,-mc,t=p|c,adp=0]
-  ም   [conj1=ም,-rel,-mc,t=p,adp=0]
-  እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0]
+  እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0,-neg]
+  ኣይም [conj1=ም,-rel,-mc,t=p,adp=0,+neg]
+  ም   [conj1=ም,-rel,-mc,t=p,adp=0,-neg]
+  እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
   # ደይትምለስ
-  ድ   [conj1=ድ,+int,+neg,conj2=0,+mc]
-  -- [-rel,+mc,conj1=0]
-
-$ conj1_bound
-  -
-
-$ neg1
-# These could be preceded by conjunctions
-  ኣይ     [+neg]
-  --   [-neg]
+  ደይ   [conj1=ድ,+int,conj2=0,+mc,+neg]
+  ኣይ   [conj1=0,+neg,-rel,+mc]
+  -- [-neg,-rel,+mc,conj1=0]
 
 $ neg1_bound
   -
 
 $ sb_rel
-  # optionally geminate ት- and ን- after ክ and insert vowel after ንክ to get ንክትከውን, etc.
-  እ 	 <>    [t=i,sp=2,conj1=ንኽ];[t=i,sp=1,sn=2,conj1=ንኽ];[t=i,sp=3,sn=1,sg=f,conj1=ንኽ]
-  /	[+rel,t=i,sp=1,sn=2];[+rel,t=i,sp=2];[+rel,t=i,sp=3,sn=2,sg=f];[t=i,sp=2,conj1=ክ];[t=i,sp=1,sn=2,conj1=ክ];[t=i,sp=3,sn=1,sg=f,conj1=ክ]
-  --	[-rel];[t=p|j|c];[t=i,sp=3,sn=2];[t=i,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
+  # geminate ት- and  ን- for +rel and optionally after ክ
+  /	<> [+rel,t=i,sp=1,sn=2,-neg];[+rel,t=i,sp=2,-neg];[+rel,t=i,sp=3,sn=2,sg=f,-neg];
+             [t=i,sp=2,conj1=ክ,-neg,+K1];[t=i,sp=1,sn=2,conj1=ክ,-neg,+K1];[t=i,sp=3,sn=1,sg=f,conj1=ክ,-neg,+K1]
+  --	[-rel];[t=p];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
 
 $ sb_pre
-  ይ   [t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m];[t=i,sp=1,sn=1]
-  ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
-  # እ is to force the preceding ዝ or ክ to have the epenthetic vowel (and spirantize following /k/ or /q/)
-  እ   [t=i|j,sp=1,sn=1,-neg];[t=i,sp=3,sn=1,sg=m,-mc];[t=i,sp=3,sn=2,-mc]
-  ን    [t=i|j,sp=1,sn=2]
-  --  [t=p|c];[t=j,sp=2,-neg];[t=i|j,sp=1,sn=1,+neg]
+  # counts as non-consonant for imperfective, but a consonant for jussive
+  ይ   [t=i,sp=3,sn=2,-Cpre];[t=i,sp=3,sn=1,sg=m,-Cpre];[t=i,sp=1,sn=1,-Cpre];[t=j,sp=3,sn=1,sg=m,+Cpre];[t=j,sp=3,sn=2,+Cpre]
+  ት   [t=i,sp=2,+Cpre];[t=i|j,sp=3,sn=1,sg=f,+Cpre];[t=j,sp=2,+neg,+Cpre]
+  እ   [t=j,sp=1,sn=1,-neg,+Cpre];[t=i,sp=1,sn=1,+mc,-Cpre]
+  ን    [t=i|j,sp=1,sn=2,+Cpre]
+  --  [t=p|c]];[t=j,sp=2,-neg,-Cpre];[t=i|j,sp=1,sn=1,+neg,-Cpre];[t=i,sp=3,sn=1,sg=m,-mc,-Cpre];
+        [t=i,sp=3,sn=2,-mc,-Cpre];[t=i,sp=1,sn=1,-mc,-Cpre]
 
 $ prestem
   <
 
 $ pass_rel
-  /	[+rel,t=p,v=p,sconj=እ]
-  --	[-rel];[t=i|j|c];[t=p,+rel,sconj=ዝ]
+  /	[+rel,t=p,v=p,conj1=እ]
+  --	[-rel];[t=i|j|c];[t=p,+rel,conj1=ዝ]
 
+# voice and first consonant spirantization
 $ voice
   # v=p
-  ተ-		[v=p,t=p|c];[v=p,t=j,sp=2,-neg]
-  /-		[v=p,t=j,sp=1|3];[v=p,t=j,sp=2,+neg];[v=p,t=i,a=a|i];[v=p,t=i,a=0,c=A,tmp=[2=L]];[v=p,t=i,a=0,c=C|F]
+  ተ-		[v=p,t=p|c,+K1];[v=p,t=j,sp=2,-neg,+K1]
+  /-		[v=p,t=j,sp=1|3,-K1];[v=p,t=j,sp=2,+neg,-K1];[v=p,t=i,a=a|i,-K1];[v=p,t=i,a=0,c=A,tmp=[2=L],-K1];[v=p,t=i,a=0,c=C|F,-K1]
   # v=a
-  ኣ-		[v=a,a=0]
-  ኣ=-	<ኣ->	[v=a,a=a|i]
-  # v=0; v=p, except 
-  --		[v=0];[v=p,t=i,a=0,tmp=[2=X|w|y],c=A|B|E|G|H|I|J]
+  ኣ-		[v=a,a=0,+K1]
+  ኣ/-	[v=a,a=a|i,R1=X,-K1]
+  ኣ/ተ-	[v=a,a=a|i,R1=L,-K1]
+  # v=0
+  -		[v=0,t=j,-Cpre,-K1];[v=0,t=j,+Cpre,+K1];
+  		[v=0,t=c,adp=0,-K1];[v=0,t=c,adp=እንተ,+K1];
+  		[v=0,t=p,+mc,-K1];[v=0,t=p,-mc,+K1];
+                [v=p,t=i,a=0,tmp=[2=X|w|y],c=A|B|E|G|H|I|J,+K1];
+		[v=0,t=i,+rel,-neg,+K1];[v=0,t=i,+mc,-neg,+K1];
+		[v=0,t=i,-rel,-mc,-neg,-Cpre,+K1];[v=0,t=i,-rel,-mc,-neg,+Cpre];
+		[v=0,t=i,+neg,+Cpre,+K1];[v=0,t=i,+neg,-Cpre]
 
 $ stem
   >>v_stem<<
@@ -90,12 +95,12 @@ $ sb_suf
   ክን   [t=p|c,sp=2,sn=2,sg=f,oinf=Ia]
   ኡ    [t=p|i|j,sp=3,sn=2,sg=m,oinf=0];[t=j|i,sp=2,sn=2,sg=m,oinf=0];[t=c,sp=3,sn=1,sg=m,oinf=0]
   ኣ   [t=p|i|j,sp=3,sn=2,sg=f,oinf=I];[t=j|i,sp=2,sn=2,sg=f,oinf=I];[t=c,sp=3,sn=1,sg=f,op=0|1|2,oinf=0];[t=c,sp=3,sn=1,sg=f,op=3,oc=o,oinf=0]
-  ኣት  <ኣ>	[t=c,sp=3,sn=1,sg=f,op=3,oc=a,oinf=0]
+  ኣት  <ኣ>	[t=c,sp=3,sn=1,sg=f,+O,oinf=0]
   # gets realized as -e or -E
   ኤ   [t=c,sp=1,sn=1,oinf=0]
   ኦም  [t=c,sp=3,sn=2,sg=m,oinf=u]
   አን   [t=c,sp=3,sn=2,sg=f,oinf=Ia]
-  # includes I for 2sf i|j suffix before objects and I for 3sm prf suffix before 3 objects
+  # includes I for 3sm prf suffix before 3 objects
   --   [t=i|j,sp=2,sn=1,sg=m,oinf=e];[t=i|j,sp=1,oinf=e];[t=i|j,sp=3,sn=1,oinf=e];[t=p,sp=3,sn=2,sg=m,+O,op=3,oinf=0]
 
 $ ss_bound
@@ -103,11 +108,12 @@ $ ss_bound
 
 $ ob_inf
   አ	<>	[+O,oinf=e,t=i|p];[+O,oinf=e,t=j,op=1|2]
-  _	<>	[+O,oinf=e,t=j,op=3]
+  _	<>	[+O,oinf=e,t=j,op=3] # ;[+O,oinf=_,t=p|c,op=3;oc=a]
   ኡ	<>	[+O,oinf=u]
   እ	<>	[+O,oinf=I|Ia,op=3,oc=a]
   ኣ	<>	[+O,oinf=Ia,op=1|2];[+O,oinf=Ia,op=3,oc=o]
   --		[-O];[+O,oinf=0];[+O,oinf=I,op=3,oc=o];[+O,oinf=I,op=1|2];[+O,oinf=u,op=3,oc=a]
+  # ;[+O,oinf=_,op=1|2];[+O,oinf=_,op=3,oc=o]
 
 $ ob_suf
   [op=1,oc=a,+O,sp=2|3]
@@ -120,13 +126,13 @@ $ ob_suf
     /ለይ	[on=1,sn=1]
     ልና	[on=2]
   [op=2,oc=a,+O,sp=1|3]
-    ካ		[on=1,og=m,sp=3,sn=2];[t=p,on=1,og=m,sp=1,sn=1]
+    ኻ		[on=1,og=m,sp=3,sn=2];[t=p,on=1,og=m,sp=1,sn=1]
     /ካ	[on=1,og=m,sp=1,sn=2];[on=1,og=m,sp=3,sn=1];[t=c|i|j,on=1,og=m,sp=1,sn=1]
-    ኪ		[on=1,og=f,sp=3,sn=2];[t=p,on=1,og=f,sp=1,sn=1]
+    ኺ		[on=1,og=f,sp=3,sn=2];[t=p,on=1,og=f,sp=1,sn=1]
     /ኪ	[on=1,og=f,sp=1,sn=2];[on=1,og=f,sp=3,sn=1];[t=c|i|j,on=2,og=m,sp=1,sn=1]
-    ኩም	[on=2,og=m,sp=3,sn=2];[t=p,on=2,og=m,sp=1,sn=1]
+    ኹም	[on=2,og=m,sp=3,sn=2];[t=p,on=2,og=m,sp=1,sn=1]
     /ኩም	[on=2,og=m,sp=1,sn=2];[on=2,og=m,sp=3,sn=1];[t=c|i|j,on=1,og=f,sp=1,sn=1]
-    ክን	[on=2,og=f,sp=3,sn=2];[t=p,on=2,og=f,sp=1,sn=1]
+    ኽን	[on=2,og=f,sp=3,sn=2];[t=p,on=2,og=f,sp=1,sn=1]
     /ክን	[on=2,og=f,sp=1,sn=2];[on=2,og=f,sp=3,sn=1];[t=c|i|j,on=2,og=f,sp=1,sn=1]
   [op=2,oc=o,+O,sp=1|3]
     ልካ	[on=1,og=m]

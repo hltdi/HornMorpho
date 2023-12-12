@@ -211,8 +211,8 @@ class FSSet(set, FS):
         if u != 'fail':
             u = u.unfreeze()
             for f in u:
-                if verbose:
-                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
+#                if verbose:
+#                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
                 f[feat] = value
             if verbose:
                 print(" ** set_all {}".format(u.__repr__()))

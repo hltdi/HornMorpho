@@ -1,6 +1,6 @@
 -> start
 
-start -> start	[^N;/;<]
+start -> start	[^N;/]
 
 start -> gem1	[/:]
 

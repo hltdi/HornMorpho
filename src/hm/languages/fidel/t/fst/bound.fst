@@ -1,82 +1,97 @@
 -> start
 
-start -> start	[:-]
+start -> start	[:-;**v;/]
+
+start -> C		[*]
+C ->  start		[**v;:-;/]
+C -> C			[*-ይ]
 
 ## prefix changes
 
-start -> V		[*v]
-start -> firstC	[*]
-
-V -> V			[:-;*v]
-firstC -> firstC	[:-;/]
-firstC -> C2	[*]
-firstC -> V		[*v]
-C2 -> C2  		[:-]
-C -> C			[:-;*]
-V -> C			[*-ይ;/]
-
-V -> y			[ይ]
-y -> V			[*v]
-y -> y.			[:-]
-y. -> C			[*-ይ]
-y. -> V			[*v]
-y. -> stem		[<]
-
-# it seems that both ኣ/ይኸውን and ኣይከውን are possible, with the latter more common
-V -> y.y		[/:ይ;:ይ]
-y.y -> yy.		[:-]
-yy. -> C		[ይ]
-
-C2 -> C				[*]
-C2 -> V			[*v]
-C -> V			[*v]
-
-start -> C2e	[{I2e}]
-C2e -> C2e		[:-]
-C2e -> V		[:ኣ]
-C2e -> C2e+		[<]
-C2e+ -> stem	[:ኣ]
+# ዚሰ/ብር
+C -> C2i		[{I2i}]
 start -> C2i	[{I2i}]
 C2i -> C2i		[:-]
-C2i -> V		[:ይ]
+C2i -> start	[:ይ]
 
-firstC -> C2e	[{I2e}]
-firstC -> C2i	[{I2i}]
+## stem-suffix boundary
 
-V -> C2e	[{I2e}]
-V -> C2i	[{I2i}]
+# ዘስበረ; ተስ/ብር
+C -> C2e		[{I2e}]
+start -> C2e	[{I2e}]
+C2e -> C2e		[:-]
+C2e -> C2e+		[:<]
+C2e+ -> stem0	[:ኣ]
 
-C -> C2e	[{I2e}]
-C -> C2i	[{I2i}]
+C -> .Ia		[:እ]
+start -> .Ia	[:እ]
+.Ia -> .Ia		[:-]
+.Ia -> I.a		[:<]
+I.a -> stem0	[ኣ]
 
-#C2 -> C2e	[{I2e}]
-#C2 -> C2i	[{I2i}]
+C -> stem+			[:<]
+start -> stem+		[:<]
+# stem starting with anything other than ኣ
+stem+ -> stem0 		[^N;/]
 
-## stem changes
+stem0 -> stem0		[^N;/]
 
-C -> stem [<]
-C2 -> stem [<]
-V -> stem [<]
-firstC -> stem [<]
+# First base stem consonant
+stem+ -> stem1		[:-]
+stem0 -> stem1		[:-]
 
-# no segments before stem
-start -> stem		[<]
+# k-K, q-Q when preceded by vowel
+stem1 -> stem		[^x]		
+stem1 -> stem		[{q2Q}]	[+K1]
+stem1 -> stem		[^k]		[-K1]
 
-stem -> stem 		[^N;/;:-]
+stem -> stem		[^N;/]
 
-stem -> stemC+		[:>]
+# stem ending in vowel
+stem -> stemV.+		[*v]
+stemV.+ -> stemV+	[:>]
+stemV+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;^^q;:-]
+
+# stem ending a consonant
+stem -> stemC.+		[*]
+stemC.+ -> stemC+	[:>]
+# no changes before suffixes beginning with vowels
 stemC+ -> suff		[^A;:-]
-# ኢ -> እ before other suffixes
-stemC+ -> suff		[:ኢ]	[+O];[+neg,+mc]
+# ኢ -> እ before other suffixes; object, negative (but not conjunctions like ዶ)
+stemC+ -> suff		[:ኢ]	[+O];[+neg,+mc,t=i]
 
-## final stem consonants
+## jussive 3 objects; geminate stem-final consonant (except laryngeals)
+stem -> j3		[/:]
+# add vowel suffix to stem-final consonant
+j3 -> j3o1		[{^I2o}]
+j3o1 -> j3o2	[:>]
+j3o2 -> j3o2	[:-]
+j3o2 -> j3o3	[:_]
+j3o3 -> suff	[:ኦ]
+
+j3 -> j3e1		[{I2e}]
+j3e1 -> j3e2	[:>]
+j3e2 -> j3e2	[:-]
+j3e2 -> j3e3	[:_]
+j3e3 -> suff	[:አ]
+
+j3 -> j3a1		[{I2a}]
+j3a1 -> j3a2	[:>]
+j3a2 -> j3a2	[:-]
+j3a2 -> j3a3	[:_]
+j3a3 -> suff	[:ኣ]
+
+# laryngeals are not geminated
+stem -> j3o1	[{LI2o}]
+stem -> j3e1	[{LI2e};{LI2a};{LI2E}]
+stem -> j3a1	[{LI2a}]
 
 # stem-final laryngeals + /e/ have three possible realizations
 # stem can end in ኤ for verbs like ረአየ
 stem -> stem_e		[{I2e};{LI2a};{LI2E};ኤ]
 stem -> stem_a		[{I2a}]
 stem -> stem_o		[{I2o}]
-stem -> stem_u		[{I2u}]
+stem -> stem_u		[{I2u};ቑ;ኹ;ጉ]
 stem -> stem_i		[{I2i}]
 stem -> stem_E		[{I2e}]
 
@@ -104,12 +119,6 @@ stem_i -> stem_i+	[:>]
 stem_i+ -> suffi	[:ኢ]
 suffi -> suffi		[:-]
 
-# -ኢ -> እ before other suffixes
-#stem_I -> stem_I+	[:>]
-#stem_I+ -> stem_Ii	[:ኢ]
-#stem_Ii -> stem_Ii.[:-]
-#stem_Ii. -> stem	[^N]
-
 stem_E -> stem_E+	[:>]
 stem_E+ -> suff		[:ኤ]
 
@@ -130,25 +139,25 @@ suff -> suff_na			[ና:ን]
 suff_na -> suff_na+	[:-]
 suff_na+ -> suff		[:ኣ]
 
-# 3sf subjects, perfective and converb
-suff -> suff_to			[ቶ:ት]
-suff_to -> suff_to+	[:-]
-suff_to+ -> suff_to+	[/;_]
-suff_to+ -> suff		[:ኦ]
-suff -> suff_ta			[ታ:ት]
-suff_ta -> suff_ta+	[:-]
-suff_ta+ -> suff_ta+	[/;_]
-suff_ta+ -> suff		[:ኣ]
-suff -> suff_te			[ተ:ት]
-suff_te -> suff_te+	[:-]
-suff_te+ -> suff_te+	[/;_]
-suff_te+ -> suff		[:አ]
+## 3sf subjects, 3 object; perfective and converb
+# geminate t
+suff -> a.t			[/:]
+a.t -> ato			[ቶ:ት]
+ato -> ato+			[:-]
+ato+ -> suff		[:ኦ]
+a.t -> ata			[ታ:ት]
+ata -> ata+			[:-]
+ata+ -> suff		[:ኣ]
+a.t -> ate			[ተ:ት]
+ate -> ate+			[:-]
+ate+ -> suff		[:አ]
 
 # object suffixes without vowel infixes
 suff -> suff+			[:-]
 #suff+ -> suff			[ኒ;ና;ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ]
 suff+ -> suff+			[/]
-suff+ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ]
+# are k,q possible?
+suff+ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ;ኻ;ኺ;ኹ;ኽ]
 
 #suff+ -> suff+/			[/]
 #suff+/ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ለ;ሉ;ላ;ሎ]

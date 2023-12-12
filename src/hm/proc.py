@@ -4,6 +4,7 @@
 ---- Create Am<->Ks lexicon.
 ---- Recreate Ti lexicon, eliminating non-root characters.
 ---- Create reverse dictionary for noun roots.
+---- Create Ti fidel lexicons.
 """
 
 from . import morpho
@@ -85,6 +86,253 @@ CODE2AS = {'te_': 4, 'te_a': 5, 'te_R': 6, 'a_': 7, 'a_a': 8, 'a_R': 9, 'as_': 1
 CODE2GCODE = {'te_': "ተ", 'te_a': "ተ_ኣ", 'te_R': "ተ_ደ", 'a_': "ኣ", 'a_a': "ኣ_ኣ", 'a_R': "ኣ_ደ", 'as_': "ኣስ", 'R': "ደ"}
 
 POS_RE = re.compile(r'.*[,\[]pos=(\w+?)[,\]].*')
+
+FINAL_PUNC_RE = re.compile(r'(\w)([።፡፣!])')
+
+def group_vroots(path="data/am_v_props.txt"):
+    ignore = [] # ["ITER", "RECP", "CAUS+RECP"]
+    def simplify_um(um):
+        # exclude all but information about subject agreement, object agreement, and voice
+        um = um.split(';')
+        um_ = []
+        for u in um:
+            if u in ["1", "2", "3", "MASC", "FEM", "SG", "PL",
+                     "TR", "CAUS", "PASS", # "ITER", "RECP", "CAUS+RECP",
+                     "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}"
+                    ]:
+                um_.append(u)
+        um_.sort()
+        return classify_um(um_)
+#        return ';'.join(um_)
+    def classify_um(um):
+        sb = ['1', '2', 'PL', 'FEM']
+        o = ["AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P"]
+        cls = []
+        if 'PASS' in um:
+            cls.append('pass')
+        elif 'CAUS' in um:
+            cls.append('caus2')
+        elif 'TR' in um:
+            cls.append('caus1')
+        else:
+            cls.append('base')
+        if isinstance(um, str):
+            um = um.split(';')
+        if any([(u in sb) for u in um]):
+            # sb not 3p
+            if any([(u in o) for u in um]):
+                # trans
+                cls.append('*+o')
+            else:
+                cls.append('*-o')
+        elif any([(u in o) for u in um]):
+            cls.append('3sm+o')
+        else:
+            cls.append('3sm-o')
+        return tuple(cls)
+        
+    def add_root_um(dct, root, um):
+        if root in dct:
+            if um in dct[root]:
+                dct[root][um] += 1
+            else:
+                dct[root][um] = 1
+        else:
+            dct[root] = {um: 1}
+    unamb_roots = {}
+    amb_roots = {}
+    light_roots = {}
+    with open(path, encoding='utf8') as file:
+        contents = file.read().split('\n##\n')
+        for item in contents:
+#            print("ITEM\n{}".format(item))
+            lines = item.split("\n")
+            if len(lines) == 1:
+                continue
+            sentence = lines[0]
+#            print(sentence)
+            for line in lines[1:]:
+                line = eval(line)
+                index, word, anals = line
+                if len(anals) > 1:
+                    # ambiguous
+                    unique_anals = set()
+                    for anal in anals:
+                        if 'root' not in anal:
+                            continue
+                        root = anal['root']
+                        um = simplify_um(anal['um'])
+                        unique_anals.add((root, um))
+                    if len(unique_anals) > 1:
+                        # still ambiguous
+#                        roots = set()
+#                        amb_um = []
+                        for root, um in unique_anals:
+#                            roots.add(root)
+#                            amb_um.append(um)
+                            if "{" in root:
+                                add_root_um(light_roots, root, um)
+                            else:
+                                add_root_um(amb_roots, root, um)
+#                        if len(roots) == 1:
+#                            amb1root.append((roots, amb_um))
+                    elif len(unique_anals) == 1:
+                        unique_anals = list(unique_anals)[0]
+                        root = unique_anals[0]
+                        um = unique_anals[1]
+                        if "{" in root:
+                            add_root_um(light_roots, root, um)
+#                        if not any([(i in um) for i in ignore]):
+                        else:
+                            add_root_um(unamb_roots, root, um)
+                else:
+                    anal = anals[0]
+                    if 'root' not in anal:
+                        continue
+                    root = anal['root']
+                    um = simplify_um(anal['um'])
+#                    if not any([(i in um) for i in ignore]):
+                    if '{' in root:
+                        add_root_um(light_roots, root, um)
+                    else:
+                        add_root_um(unamb_roots, root, um)
+    for root, features in unamb_roots.items():
+        new_features = {}
+        for (voice, trans), count in features.items():
+            if voice in new_features:
+                new_features[voice][trans] = count
+            else:
+                new_features[voice] = {trans: count}
+        unamb_roots[root] = new_features
+    for root, features in light_roots.items():
+        new_features = {}
+        for (voice, trans), count in features.items():
+            if voice in new_features:
+                new_features[voice][trans] = count
+            else:
+                new_features[voice] = {trans: count}
+        light_roots[root] = new_features
+                    
+    return unamb_roots, amb_roots, light_roots
+
+def proc_voice_class(dct):
+    eliminate = 0
+    def get_root_total(entry):
+        total = 0
+        for vc, trans in entry.items():
+            for tlabel, count in trans.items():
+                total += count
+        return total
+    def combine_
+    to_del = []
+    for root, entry in dct.items():
+        total = get_root_total(entry)
+        if total < 10:
+            eliminate += 1
+            to_del.append(root)
+    for d in to_del:
+        del dct[d]        
+
+def write_voice_class(dct, path="data/am_voice.txt"):
+    ls = list(dct.items())
+    ls.sort()
+    with open(path, 'w', encoding='utf8') as file:
+        for root, classes in ls:
+            print("{}".format(root), file=file)
+            classes = list(classes.items())
+            classes.sort()
+            for voice, trans in classes:
+                trans = list(trans.items())
+                trans.sort()
+                print("   {}:  {}".format(voice, trans), file=file)
+
+def fix_ti_corpus(train=True):
+    lines = []
+    path = "../../TT/data/tlmd_v1.0.0/train.txt" if train else "../../TT/data/tlmd_v1.0.0/valid.txt"
+    with open(path, encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            # add space before final punc
+            line = re.sub(r'(\w)([።፡፣፤!?\]\)])', r"\1 \2", line)
+            # add space after preceding punc
+            line = re.sub(r'(["\(\[])(\w)', r"\1 \2", line)
+            # change አ to ኣ
+            if line[0] == 'አ':
+                line = 'ኣ' + line[1:]
+            line = line.replace(" አ", " ኣ")
+            lines.append(line)
+    path = "../../TT/data/tlmd_v1.0.0/train1.txt" if train else "../../TT/data/tlmd_v1.0.0/valid1.txt"
+    with open(path, 'w', encoding='utf8') as file:
+        for line in lines:
+            print(line, file=file)
+    return lines
+
+def ti_kane_verbs():
+    roots = {}
+    senses = {}
+    def convert_feats(feats):
+        match feats:
+            case "[v=0]":
+                return "a=0,v=0"
+            case "[v=t]":
+                return "a=0,v=p"
+            case "[v=a]":
+                return "a=0,v=a"
+            case "[v=t_a]":
+                return "a=a,v=p"
+            case "[v=a_a]":
+                return "a=a,v=a"
+            case "[v=R]":
+                return "a=i,v=0"
+            case "[v=t_R]":
+                return "a=i,v=p"
+            case "[v=a_R]":
+                return "a=i,v=a"
+    with open("../../../../Projects/LingData/Ti/verbs.txt", encoding='utf8') as file:
+        contents = file.read().split('##\n')
+        for entry in contents:
+            entry = entry.strip()
+            lines = entry.split("\n")
+            main = lines[0]
+            if not main.strip():
+                continue
+            if len(main.split(';;')) != 3:
+                print("** {}".format(main))
+            lemma, rootfeats, gloss = main.split(';;')
+            root, cls, mainfeats = rootfeats.split(':')
+            root = geezify(root.replace('W', 'u'), 'ees')
+            mainfeats = convert_feats(mainfeats.strip())
+            feats = [mainfeats]
+            for line in lines[1:]:
+                if not line.strip():
+                    continue
+                if len(line.split(';;')) != 3:
+                    print("** {}".format(line))
+                lemma1, feats1, gloss1 = line.split(';;')
+                feats1 = convert_feats(feats1.strip())
+                feats.append(feats1)
+            feats = ' ; '.join(feats)
+            sense = 1
+            if (root, cls) in senses:
+                sense = senses[(root, cls)] + 1
+                senses[(root, cls)] += 1
+            else:
+                senses[(root, cls)] = 1
+#                print("** ({}, {}) already in roots".format(root, cls))
+#                oldfeats = roots[(root, cls)]
+#                if oldfeats == feats:
+#                    print("** ({} {}); feats are the same: {}".format(root, cls, feats))
+            roots[(root, cls, sense)] = feats
+    roots = list(roots.items())
+    roots.sort()
+    with open("data/t_verbs.txt", 'w', encoding='utf8') as file:
+        for (root, cls, sense), feats in roots:
+            s = ''
+            if senses[(root, cls)] > 1:
+                s = ",s={}".format(sense)
+            print("<{}>\t\tc={}{}".format(' '.join(list(root)), cls, s), file=file)
+            print("  {}".format(feats), file=file)
+    return roots, senses
 
 def get_pos(fs):
     match = POS_RE.match(fs)

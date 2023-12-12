@@ -1,40 +1,33 @@
 -> start
 
-start -> V		[*v]
-start -> C1		[*]
+start -> c1		[^N]
 
-V -> V	 		[^Qv;{kV2KV}]
-V -> C1	 		[^Q;{k2K}]
+# 2nd segment may be geminated
+c1 -> c1_		[/]
+c1_ -> c2		[^N]
 
-# 4 successive Cs; vowels after C1 and C3
-C1 -> C2.4     	[^Q;{k2K}]
-C2.4 -> C3.4	[*]
-C3.4 -> C4		[^Q;{k2K}]
+c1 -> c2		[^x]
+c1 -> c2		[{q2Q}]	[+K2]
+c1 -> c2		[^k]		[-K2]
 
-# 3 successive Cs; vowel after C2
-C1 -> C2.3		[*]
-C2.3 -> C3		[^Q;{k2K}]
-C3 -> V			[*v]
-C3 -> gem		[/]
+c2 -> c3		[^x]
+c2 -> c3		[{q2Q}]	[+K3]
+c2 -> c3		[^k]		[-K3]
 
-# 2 successive Cs; vowel after C2 unless ተ-ሰብር- ይ-ሰብር-
-C1 -> C2		[^Q;{k2K}]	 [c=C|E|F|G|H|I];[c=A,a=a|i]
-C1 -> C2end		[*]			 [c=A,a=0,t=p,v=p];[c=A,a=0,t=i,v=0];[c=A,a=0,t=p,v=0,tmp=[3=L]]
-C2 -> V			[*v]
-C2 -> gem		[/]
+c3 -> c4		[^x]
+c3 -> c4		[{q2Q}]	[+K4]
+c3 -> c4		[^k]		[-K4]
 
-# 1 consonant
-C1 -> V			[*v]
-C1 -> gem		[/]
+c4 -> c5		[^x]
+c4 -> c5		[{q2Q}]	[+K5]
+c4 -> c5		[^k]		[-K5]
 
-V -> gem		[/]
+c5 -> c6		[^x]
+c5 -> c6		[{q2Q}]	[+K6]
+c5 -> c6		[^k]		[-K6]
 
-gem -> V		[*;*v]
-
-V ->
-
-C1 ->
-C2 ->
-C2end ->
-C3 ->
-C4 ->
+c2 ->
+c3 ->
+c4 ->
+c5 ->
+c6 ->

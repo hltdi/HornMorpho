@@ -34,8 +34,6 @@ as.S -> as.S-	[-]
 as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ሳ;ዛ;ሻ;ዣ;ጻ]
 
 V -> end		[>]
-#V+ -> end		[ህ:ክ;ሁ:ኩ;-;አ;ኣ;ኦ;ኡ;ኤ;ኢ;ሽ;ን]
-#C -> end		[>]
 
 # optional h->k following consonant-final root
 C -> C+			[>]

@@ -169,7 +169,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %1=እ,3=ይ
 # no instances of v=ast?
-[t=p,v=0|p|as]
+[t=p,v=0|p|as|ast]
 ኣ	^e:	-
 
 [t=i,v=0|p]
@@ -740,8 +740,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=i,v=p]
 ^e	^a	^a:	-
 
-# alternative for some roots: ተስማማ ይስማማሉ
-[t=p,v=p]
+# alternative for some roots: ተስማማ ይስማማሉ አስማማ
+[t=p,v=p|a]
 [t=i,v=0|a|p]
 **	^a	^a:	-
 
@@ -754,6 +754,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=c,v=0|a|p]
 ^e	^a	**	ት
+
+# alternative for some roots: ተስማምቶ
+[t=c,v=0|a|p]
+**	^a	**	ት
 
 %3=ይ
 [t=p,v=0|p|a]
@@ -791,16 +795,16 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	ት
 
 %1=እ,3=ይ
-[t=p,v=p|a|as]
+[t=p,v=p|a|as|ast]
 -	^a	^e:	-
 
-[t=i,v=p|a|as]
+[t=i,v=p|a|as|ast]
 -	^a	**:	-
 
-[t=j,v=p|a|as]
+[t=j,v=p|a|as|ast]
 -	^a	**	-
 
-[t=c,v=p|a|as]
+[t=c,v=p|a|as|ast]
 -	^a	**	ት
 
 [t=p,v=0]
@@ -816,6 +820,19 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	ት
 
 %%a=i,c=B,-strong
+
+#%3=ይ
+#[t=p,v=0|p|a]
+#^e	^a	^e:	-
+#
+#[t=i,v=0|p|a]
+#^e	^a	**:	-
+#
+#[t=j,v=0|p|a]
+#^e	^a	**	-
+#
+#[t=c,v=0|p|a]
+#^e	^a	**	ት
 
 %3=እ == A
 %3=ይ == A

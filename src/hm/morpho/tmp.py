@@ -68,6 +68,7 @@ class Template:
                 feats.append("{}={}".format(i+1, constraints[i+1]))
             else:
                 feats.append("{}=X".format(i+1))
+#        print("  ** {}".format(feats))
         return ','.join(feats)
 
     @staticmethod
@@ -183,8 +184,9 @@ class Template:
         """
         Update strong or weak inventory and template dict.
         """
-            
-#        print("*** Making states for {} : {}; constraints {}".format(template, features, constraints))
+        
+#        if any([('a=i' in c) for c in constraints]):
+#            print("*** Making states for {} : {}; constraints {}".format(template, features, constraints))
 
         # Add constraints to all features
         if constraints:
@@ -196,6 +198,8 @@ class Template:
                 features[i] = "{},{}]".format(feature[:-1], constraints)
 
         features = ';'.join(features)
+#        if 'a=i' in constraints:
+#            print("  ** {}".format(features))
         weight = make_weight(features, target=gen)
         cls = weight.get('tc') if gen else weight.get('c')
         strong_feat = 'tstrong' if gen else 'strong'

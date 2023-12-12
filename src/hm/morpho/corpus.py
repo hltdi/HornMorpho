@@ -46,11 +46,14 @@ class Corpus():
 
     ID = 0
 
-    def __init__(self, data=None, path='', start=0, n_sents=100, max_sents=1000,
-                 name='', batch_name='', sentid=0, analyze=False, language='', 
+    def __init__(self, data=None, path='',
+                 start=0, n_sents=100, max_sents=1000,
+                 name='', batch_name='', sentid=0,
+                 analyze=False, language='', 
                  um=1, seglevel=2, segment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
                  v5=False, sep_feats=True, gemination=False, sep_senses=False,
+                 props=None, pos=None, skip_mwe=False, skip=None,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -94,7 +97,7 @@ class Corpus():
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
-                    print("  $$ {}".format(line))
+#                    print("  $$ {}".format(line))
                     if linepos and linepos % 25 == 0:
                         print("Checked {} sentences, included {}".format(linepos, len(self.data)))
                     linepos += 1
@@ -118,7 +121,10 @@ class Corpus():
                                 continue
                     if segment:
                         if v5:
-                            sentence_obj = self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)
+                            sentence_obj =\
+                              self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
+                                                 skip_mwe=skip_mwe, skip=skip,
+                                                 pos=pos, verbosity=verbosity)
                             if sentence_obj:
                                 self.data.append(line)
                                 sentcount += 1
@@ -145,7 +151,8 @@ class Corpus():
             # Raw sentences
             self.data = data
             if v5 and segment:
-                self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses)
+                self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
+                              props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []
 #        if segment:
@@ -160,7 +167,7 @@ class Corpus():
         """
         Segment one sentence.
         """
-        print("** seg sentence {}".format(kwargs))
+#        print("** seg sentence {}".format(kwargs))
         if kwargs.get('verbosity', 0):
             print("Segmenting {}".format(sentence))
         sentence_obj = self.language.anal_sentence5(sentence, **kwargs)
@@ -213,6 +220,16 @@ class Corpus():
             del self.data[delindex]
         if kwargs.get('timeit'):
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
+
+    def write_props(self, file):
+        '''
+        Write the props save in corpus sentences to a file.
+        '''
+        for sentence in self.sentences:
+            print(sentence.text, file=file)
+            for word in sentence.props:
+                print(word, file=file)
+            print("##", file=file)
 
     def create_name(self):
         name = "{}".format(Corpus.ID)

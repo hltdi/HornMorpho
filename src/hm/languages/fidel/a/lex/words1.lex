@@ -148,6 +148,7 @@
 ዘወትር  ዘወትር  ADV
 ዝንተ  ዝንተ  ADV
 እና  እ/ና  CCONJ
+እናም  እ/ናም  CCONJ
 ዳሩ  ዳሩ  CCONJ
 ዳሩግን  ዳሩግን  CCONJ
 ግን  ግን  CCONJ
@@ -267,6 +268,7 @@
 ስለ  ስለ  ADP
 ወደ  ወደ  ADP
 ያለ  ያለ  ADP
+ባለ     ባለ     ADP
 የተነሳ  የተነ/ሳ  ADP
 ነበር  ነ/በር  AUX
 ነበርና  ነ/በር/ና  AUX

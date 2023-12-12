@@ -1424,6 +1424,8 @@ class POSMorphology:
             return anals
         elif trace:
             print('No analysis FST loaded for', self.pos)
+#        else:
+#            print("NO FST AVAILABLE")
 
     def seganal(self, word):
         '''
@@ -1452,8 +1454,12 @@ class POSMorphology:
             stem = self.language.combine_segments(stem)
             string = "{}<{}>{}".format(pre, stem, suf)
         pre = pre.split(Morphology.morph_sep)
+        if kwargs.get('mwe', False):
+            for index, p in enumerate(pre):
+                if ' ' in p:
+                    p = p.split()[-1]
+                    pre[index] = p
         suf = suf.split(Morphology.morph_sep)
-#        print("^^ {} ; {} ; {}".format(pre, stem, suf))
         return string, pre, stem, suf
 #        return {'string': string, 'pre': pre, 'stem': stem, 'suf': suf}
 
@@ -1485,6 +1491,7 @@ class POSMorphology:
         if raw_token:
             procdict['raw'] = raw_token
         mwe_props = None
+        mwe_part = None
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features.get('mwe') or self.mwe_feats
@@ -1515,6 +1522,10 @@ class POSMorphology:
             suff1_index = len(prefixes) + 1
             pos = procdict['pos']
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
+                if mwe_props and mwe_props.get('hdfin') and pindex == 0:
+                    mwe_part = prefix
+                    aff_index += 1
+                    continue
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
@@ -1547,9 +1558,14 @@ class POSMorphology:
         procdict['suf'] = suffixes
         procdict['stem'] = stemd or stem
         procdict['head'] = stem_index
-        root = self.get_root(stem, procdict, mwe=mwe_props)
+        root = self.get_root(stem, procdict, mwe=mwe_props, mwe_part=mwe_part)
+        lemma = self.gen_lemma(stem, root, features, mwe=mwe_props, gemination=gemination)
+        if not lemma and kwargs.get('verbosity', 0) > 0:
+            print("&& no lemma for {} {}".format(stem, root))
+        if 'c' in features:
+            # The word's POS has classes; add this to the root
+            root += ":{}".format(features['c'])
         procdict['root'] = root
-        lemma = self.gen_lemma(stem, root, procdict, mwe=mwe_props, gemination=gemination)
         if 'gl' in features:
             procdict['gloss'] = features['gl']
         procdict['lemma'] = lemma
@@ -1588,25 +1604,25 @@ class POSMorphology:
             # the morpheme could be the empty string
             return ''
 #        print("  ^^ Processing morpheme {} (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, aff_index, morpheme, stem_index, udfdict, udfalts))
-        dict = {'string': morpheme if gemination else EES.degeminate(morpheme)}
+        dct = {'string': morpheme if gemination else EES.degeminate(morpheme)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem)
-        dict['pos'] = pos
+        dct['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
 #        print("  ^^ dep {}, head {}".format(dep, head))
         if dep:
-            dict['dep'] = dep
-        dict['head'] = head
-#        dict['lemma'] = morpheme
+            dct['dep'] = dep
+        dct['head'] = head
+#        dct['lemma'] = morpheme
         feats = None
         if sep_feats:
             feats = self.get_segment_feats(morpheme, props, udfdict, udfalts)
         elif is_stem and udfdict:
             feats = udfeats
         if feats:
-            dict['udfeats'] = feats
-        return dict
+            dct['udfeats'] = feats
+        return dct
 
-    def get_root(self, stem, procdict, mwe=None):
+    def get_root(self, stem, procdict, mwe=None, mwe_part=None):
         '''
         For MWEs, mwe is a dict of properties.
         '''
@@ -1616,27 +1632,36 @@ class POSMorphology:
         # Get the appropriate root
         if 'root' in mwe:
             rootfeats = mwe['root']
+#            print("^^ mwe rootsfeats: {}".format(rootfeats))
             # rootfeats should be a list of elements to make up the root
             # separated by whitespace
             mweroot = []
             for item in rootfeats:
                 # Each 'item' is a tuple: (part, position) or 'root'
                 if isinstance(item, tuple):
-                    # This specified a part of the word: 'pre', 'stem', or 'suf'
+                    # This specified a part of the word: 'pre', 'stem', or 'suf'; or 'tokens'
                     # and a position within it (no position for 'stem', which has only 1)
                     part, position = item
 #                    print("    ^^ MWE root: {}, {}".format(part, position))
                     wordpart = procdict[part]
+#                    print("    ^^ MWE part: {}".format(wordpart))
                     if part != 'stem':
                         wordpart = wordpart[position]
-                    partstring = wordpart.get('string', '')
+                    if part == 'tokens':
+                        partstring = wordpart.get('token')
+                    else:
+                        partstring = wordpart.get('string', '')
+#                    print("    ^^ partstring: {}".format(partstring))
                     mweroot.append(partstring)
+                elif item == 'part':
+                    mweroot.append(mwe_part + " ")
                 elif item == 'root':
                     featroot = procdict.get('feats', {}).get('root', '')
                     if not featroot:
-                        print("     ^^ No root in features {}".format(procdict))
+#                        print("     ^^ No root in features {}".format(procdict))
                         return ''
-                    mweroot.append("{" + featroot + "}")
+                    mweroot.append(featroot)
+#                    mweroot.append("{" + featroot + "}")
             return ''.join(mweroot)
 
         return features.get('root', stem)
@@ -1646,6 +1671,7 @@ class POSMorphology:
         mwe is False (for single-word items) or a dict of props for MWEs.
         '''
         posspec = segdict.get('pos')
+#        print("   ^^ Looking for posspec {} {}".format(string, posspec))
         if not posspec:
 #            print("^^ No POS in segdict {}".format(segdict))
             # POS for stem is POS for word by default
@@ -1746,14 +1772,11 @@ class POSMorphology:
             form = EES.unicode_geminate(form)
         return form
  
-    def gen_lemma(self, stem, root, procdict, mwe=None, gemination=True):
+    def gen_lemma(self, stem, root, features, mwe=None, gemination=True):
         '''
         Generate the lemma for the given root and features.
         '''
-        features = procdict.get('feats')
         gloss = ''
-#        if 'gl' in features:
-#            gloss = "(={})".format(features['gl'])
         if features and 'lemma' in features:
             return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)
         lemmafeats = self.lemma_feats

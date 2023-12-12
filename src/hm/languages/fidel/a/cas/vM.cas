@@ -20,6 +20,8 @@ weighting = UNIFICATION
 {^I2E}    =   ሄ:ህ;ዬ:ል;ሜ:ም;ሬ:ር;ሼ:ስ;ቄ:ቅ;ቤ:ብ;ቼ:ት;ኜ:ን;ኬ:ክ;ዌ:ው;ዤ:ዝ;ዬ:ይ;ጄ:ድ;ጌ:ግ;ጬ:ጥ;ፌ:ፍ;ጴ:ጵ;ጬ:ጽ;ፔ:ፕ;ኤ:እ;ሼ:ሽ;ቼ:ች;ኜ:ኝ;ዤ:ዥ;ጄ:ጅ;ጬ:ጭ
 # without palatalization
 {I2i}    =   ሂ:ህ;ሊ:ል;ሚ:ም;ሪ:ር;ሲ:ስ;ቂ:ቅ;ቢ:ብ;ቲ:ት;ኒ:ን;ኪ:ክ;ዊ:ው;ዚ:ዝ;ዪ:ይ;ዲ:ድ;ጊ:ግ;ጢ:ጥ;ፊ:ፍ;ጲ:ጵ;ጺ:ጽ;ፒ:ፕ;ኢ:እ;ሺ:ሽ;ቺ:ች;ኚ:ኝ;ዢ:ዥ;ጂ:ጅ;ጪ:ጭ
+# prefix consonants
+{*I2i}    = ሊ:ል;ሚ:ም;ሲ:ስ;ቢ:ብ;ኪ:ክ;ዲ:ድ
 # palatalized consonants only
 {i2a}    =   ሻ:ሺ;ቻ:ቺ;ኛ:ኚ;ዣ:ዢ;ጃ:ጂ;ጫ:ጪ;ያ:ዪ
 {E2a}    =   ሻ:ሼ;ቻ:ቼ;ኛ:ኜ;ዣ:ዤ;ጃ:ጄ;ጫ:ጬ;ያ:ዬ
@@ -34,7 +36,7 @@ weighting = UNIFICATION
 
 ## FSTs
 >miscM<
->y2i<
+>y2iM<
 >iya<
 # characters at morpheme boundaries
 >v_light_aff_bound<

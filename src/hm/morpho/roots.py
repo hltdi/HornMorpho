@@ -62,7 +62,7 @@ def geezify_CV(c, v):
                 if c[0] in 'gkq':
                     cv = c[0] + 'Wi'
                 else:
-                    cv = c[0] + 'wi'
+                    cv = c[0] + 'i'
 #        print(" ** cv {}".format(cv))
 #        print(" ** {}".format(geezify(cv, 'ees')))
     g = geezify(cv, 'ees')
@@ -158,15 +158,15 @@ class Roots:
 
     @staticmethod
     def make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph, labbrev,
-                         gen=False, seglevel=2, gemination=True, duplicate=0):
+                         gen=False, seglevel=2, gemination=True, duplicate=0, rev_char_sets=None):
         '''
         Create the states and arcs.
         If duplicate is non-zero, there is already a set of states for this root, so make it unique with an extra character.
         '''
         show = False
-#        show = cons == ['ጥ', 'ብ', 'ቅ']
+#        show = cons == ['ሕ', 'ድ', 'ር'] or cons == ['ክ', 'እ', 'ል']
         if show:
-            print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
+            print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}, char_sets={}".format(cons, seglevel, feats.__repr__(), gemination, rev_char_sets))
         def get_sense():
             ffeats = feats.split(',')
             for ff in ffeats:
@@ -184,6 +184,19 @@ class Roots:
                     if cons[pos1-1] == cons[pos2-1] and weight.get(feat) != False:
                         return weight.set_all(feat, True)
                     return weight.set_all(feat, False)
+            return weight
+
+        def rootchar_weight(weight, verbose=False):
+            if verbose:
+                print("  ** setting root char class for {}, {}".format(cons, weight))
+            for index, c in enumerate(cons):
+                if c in rev_char_sets:
+                    cls = rev_char_sets[c]
+                    if verbose:
+                        print("    ** class for {}: {}".format(c, cls))
+                else:
+                    cls = 'X'
+                weight += ",R{}={}".format(index+1, cls)
             return weight
 
         def gem_char_arc(source, dest, inchar, outchar, weight, gem_weight, verbosity=0):
@@ -222,7 +235,7 @@ class Roots:
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
             show = False
-#            if root_chars == ['ጥ', 'ብ', 'ቅ']:
+#            if root_chars == ['ሕ', 'ድ', 'ር']:
 #                show = True
             if show:
                 print("*** Making root states for {} with weight {}".format(root_chars, weight.__repr__()))
@@ -349,6 +362,8 @@ class Roots:
                 posmorph.rootfeats[state_name].append(feats)
             else:
                 posmorph.rootfeats[state_name] = [feats]
+#        if sense:
+#            print("** Creating root features for {}".format(cons))
         for index, cs in enumerate(cons):
             i = index+1
             if isinstance(cs, tuple):
@@ -369,6 +384,8 @@ class Roots:
         # Add root feature to feats
         feats = "root={},{}".format(''.join(cons_chars), feats)
 
+        feats = rootchar_weight(feats, verbose=show)
+
         if subroots:
             # Make an FSSet from feats and subroots
             expanded_feats = []
@@ -377,6 +394,9 @@ class Roots:
             feats = ';'.join(['[' + x + ']' for x in expanded_feats])
         else:
             feats = '[' + feats + ']'
+        if show:
+            print("  ** feats1 {}".format(feats))
+
         weight = make_weight(feats, target=gen)
         cls = weight.get('tc') if gen else weight.get('c')
 
@@ -389,7 +409,7 @@ class Roots:
             print("*** weight {}".format(weight.__repr__()))
         charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
         if show:
-            print("** charsets {}".format(charsets))
+            print("  ** charsets {}".format(charsets))
         # Based on rules, assign ±strong to the root
         strength_feat = 'tstrong' if gen else 'strong'
         weight = weight.set_all(strength_feat, strong)
@@ -440,9 +460,9 @@ class Roots:
         and whether the root is strong.
         '''
         show = False
-#        show = consonants == ['ግ', 'ይ', 'ጥ']
+#        show = consonants == ['ሕ', 'ድ', 'ር'] or consonants == ['ክ', 'እ', 'ል']
         if show:
-            print("**** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
+            print("  **** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
         if not rules:
             print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
@@ -465,6 +485,8 @@ class Roots:
             # assume that root classes have romanized keys
             if is_geez(cons):
                 cons = romanize(cons, 'ees')
+            if show:
+                print("    ** checking {}".format(cons))
             position = index + 1
             # Skip the weak rules for this position if one has already been found
             # or if the root is expicitly strong
@@ -472,6 +494,8 @@ class Roots:
                 continue
             posrules = rules.get(position)
             if posrules and cons in posrules:
+                if show:
+                    print("    found cons in posrules {}".format(posrules[cons]))
                 # Give priority to weak classes found earlier, e.g., 1=' over 2=w
                 strong = False
                 posrules = posrules[cons]
@@ -559,6 +583,7 @@ class Roots:
 
     @staticmethod
     def make_irr_root(fst, cons, feats, patterns, posmorph, labbrev, gen=False, seglevel=2, gemination=True):
+#        print("** Making irr root for {}".format(cons))
         cons = cons.split()
         state_name = ''.join(cons)
         # Add this root to the POSMorphology instance's rootfeats dict
@@ -753,6 +778,8 @@ class Roots:
 
         char_sets = {}
 
+        rev_char_sets = {}
+
         charmap_weights = {}
 
         current_root = ''
@@ -859,6 +886,9 @@ class Roots:
                 charset, chars = m.groups()
                 chars = chars.split()
                 char_sets[charset] = chars
+                for char in chars:
+                    char = geezify(char, 'ees')
+                    rev_char_sets[char] = charset
                 continue
 
             m = Roots.CHAR_MAP_RE.match(line)
@@ -962,7 +992,7 @@ class Roots:
                 duplicate = roots_done.count(cons)
 #                print("** {} / {} is a root duplicate".format(cons, feats))
             Roots.make_root_states(fst, cons, feats, subroots, rules, duprules, char_maps, charmap_weights, cascade, posmorph,
-                                   labbrev, gen=gen, seglevel=seglevel, gemination=gemination, duplicate=duplicate)
+                                   labbrev, gen=gen, seglevel=seglevel, gemination=gemination, duplicate=duplicate, rev_char_sets=rev_char_sets)
             roots_done.append(cons)
 
         if irr_roots:

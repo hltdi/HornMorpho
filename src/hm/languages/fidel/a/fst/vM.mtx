@@ -5,21 +5,25 @@ $ gap
   //		<$ >
   
 $ conj_prep_pre
-  የ		[t=i|p,+rel,-mc,+sub]
-  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub]
-  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub]
-  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub]
-  ል  		[sconj=ል,t=i,-rel,-mc,+sub]
-  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub]
-  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub]
-  በ		[adp=በ,t=i|p,+rel,-mc,+sub]
-  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub]
-  እንደ	[adp=እንደ,t=i|p,+rel,-mc,+sub]
-  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub]
-  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub]
-  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub]
-  እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub]
-  --  	[-rel,sconj=None,adp=None,-sub];[t=j|c,-mc,-sub,sconj=None,adp=None,-rel]
+  # In UM and UD, የ- የም- እም- are SCONJ
+  የ		[sconj=None,t=i|p,+rel,-mc,+sub,adp=None]
+  እ		[sconj=None,t=i,+rel,-mc,+sub,adp=None]
+  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=None]
+  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=None]
+  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=None]
+  ል  		[sconj=ል,t=i,-rel,-mc,+sub,adp=None]
+  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub,adp=None]
+  # adp ከ (=from): ከሚመጣው;   # sconj ከ (=if)
+  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=None];[sconj=ከ,t=p,-rel,-mc,+sub,adp=None]
+  # adp እንደ (=like): እንደሚመጣ;   # sconj እንደ (=if)
+  እንደ	[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=None];[sconj=እንደ,t=p,-rel,-mc,+sub,adp=None]
+  በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=None]
+  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub,sconj=None]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=None]
+  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=None]
+  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=None]
+  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=None]
+  --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-sub,sconj=None,adp=None,-rel]
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -40,16 +44,16 @@ $ sb_pre
   ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
 # % optional gemination  
   ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
-  /ት		[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
+  /ት	<ት>	[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
   እ		[t=i,sp=1,sn=1,-neg]
   ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
 # % optional gemination
   እን  	[t=i|j,sp=1,sn=2]
-  /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
+  /ን  <ን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
 $ prestem
-  <		<${>
+  <
 
 $ voice_pre
   # transitive
@@ -66,70 +70,74 @@ $ stem
   >>v_light_stem<<
 
 $ poststem
-  >		<$}>
+  >
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p]
   ኦ    	[sp=3,sn=1,sg=m,t=c]
   አ/ች   	[sp=3,sn=1,sg=f,t=p]
   ኣ    	[sp=3,sn=1,sg=f,t=c]
-  ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,op=1|2|3];[t=p,sp=3,sn=2]
+  ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,+O];[t=p,sp=3,sn=2]
   አው  	[sp=3,sn=2,t=c]
   ኣ/ችሁ 	[sp=2,sn=2,t=p|c]
   ሽ		[sp=2,sn=1,sg=f,t=p]
   አሽ    	[sp=2,sn=1,sg=f,t=c]
   ኢ   	[sp=2,sn=1,sg=f,t=i|j]
-  ክ		[sp=2,sn=1,sg=m,t=p]
+  ህ		[sp=2,sn=1,sg=m,t=p]
   አህ		[sp=2,sn=1,sg=m,t=c]
-  ኩ		[sp=1,sn=1,t=p]
+  ሁ		[sp=1,sn=1,t=p]
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]
-  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0,+mc]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al]
 
 $ ss_bound
   -
 
 $ ob_suf
-  [op=3,on=1,og=m,oa=l|b,-det]
-      /ለት	[oa=l]
-      /በት	[oa=b]
-  [op=3,on=1,og=m,oa=0,-det];[op=0,+det,+rel]
+  [o=sm3,oc=l|b,+O]
+      /ለት	[oc=l]
+      /በት	[oc=b]
+  [o=sm3,oc=0,+O,-rel,+tr];[o=sm3,oc=0,+rel,+O]
      # 3sm accusative suffix and relative definite suffix
       ት	[t=p,sp=1,sn=1];[sp=2|3,sn=2];[t=c,sp=3,sn=1,sg=m]
       ው       [sp=2,sn=1,sg=f];[t=p,sp=3,sn=1];[t=c,sp=1,sn=1];[t=c,sp=3,sn=1,sg=f]
       አው	[sp=2,sn=1,sg=m];[sp=1,sn=2];[t=i|j,sp=1,sn=1];[t=i|j,sp=3,sn=1]
-  [op=3,on=1,og=f,-det]
-      ኣት	[oa=0]
-      /ላት	[oa=l]
-      /ባት	[oa=b]
-  [op=3,on=2,-det]
-      ኣ/ቸው	[oa=0]
-      /ላ/ቸው	[oa=l]
-      /ባ/ቸው	[oa=b]
-  [op=1,sp=2|3,-det]
-      አን	[oa=0,on=2,sp=2,sn=1,sg=m];[oa=0,on=2,sp=3,sn=1,t=i|j]
-      ን	[oa=0,on=2,sp=2,sn=1,sg=f];[oa=0,on=2,t=p,sp=3,sn=1];[oa=0,on=2,sn=2]
-      አ/ኝ	[oa=0,on=1,sp=2,sn=1,sg=m];[oa=0,on=1,sp=3,sn=1,t=i|j]
-      /ኝ 	[oa=0,on=1,sp=2,sn=1,sg=f];[oa=0,on=1,t=p,sp=3,sn=1];[oa=0,on=1,sn=2]
-      /ልን	[oa=l,on=2]
-      /ልኝ	[oa=l,on=1]
-      /ብን	[oa=b,on=2]
-      /ብ/ኝ	[oa=b,on=1]
-  [op=2,sp=1|3,-det]
-      ሽ	[oa=0,on=1,og=f,of=i]
-      ህ	[oa=0,on=1,og=m,of=i]
-      ኣ/ችሁ	<ኣችሁ>	[oa=0,on=2]
-      ዎት	[oa=0,on=1,of=f]
-      /ልሽ	<ልሽ>	[oa=l,on=1,og=f,of=i]
-      /ልህ	<ልህ>	[oa=l,on=1,og=m,of=i]
-      /ላ/ችሁ	<ላችሁ>	[oa=l,on=2]
-      /ልዎት		<ልዎት>	[oa=l,on=1,of=f]
-      /ብሽ		<ብሽ>	[oa=b,on=1,og=f,of=i]
-      /ብህ		<ብህ>	[oa=b,on=1,og=m,of=i]
-      /ባ/ችሁ	<ባችሁ>	[oa=b,on=2]
-      /ብዎት		<ብዎት>	[oa=b,on=1,of=f]
-  --   	[op=0,-det]
+  [o=sf3,+O]
+      ኣት	[oc=0]
+      /ላት	[oc=l]
+      /ባት	[oc=b]
+  [o=p3,+O]
+      ኣ/ቸው	[oc=0]
+      /ላ/ቸው	[oc=l]
+      /ባ/ቸው	[oc=b]
+  [o=s1,sp=2|3,+O]
+      አ/ኝ	[oc=0,sp=2,sn=1,sg=m];[oc=0,sp=3,sn=1,t=i|j]
+      /ኝ 	[oc=0,sp=2,sn=1,sg=f];[oc=0,t=p,sp=3,sn=1];[oc=0,sn=2]
+      /ል/ኝ	[oc=l]
+      /ብ/ኝ	[oc=b]
+  [o=p1,sp=2|3,+O]
+      አን	[oc=0,sp=2,sn=1,sg=m];[oc=0,sp=3,sn=1,t=i|j]
+      ን	[oc=0,sp=2,sn=1,sg=f];[oc=0,t=p,sp=3,sn=1];[oc=0,sn=2]
+      /ልን	[oc=l]
+      /ብን	[oc=b]
+  [o=sf2,sp=1|3,+O]
+      ሽ	[oc=0,og=f]
+      /ልሽ	<ልሽ>	[oc=l,og=f]
+      /ብሽ		<ብሽ>	[oc=b,og=f]
+  [o=sm2,sp=1|3,+O]
+      ህ	[oc=0,og=m]
+      /ልህ	<ልህ>	[oc=l,og=m]
+      /ብህ		<ብህ>	[oc=b,og=m]
+  [o=p2,sp=1|3,+O]
+      ኣ/ችሁ	<ኣችሁ>	[oc=0]
+      /ላ/ችሁ	<ላችሁ>	[oc=l]
+      /ባ/ችሁ	<ባችሁ>	[oc=b]
+  [o=F2,sp=1|3,+O]
+      ዎት	[oc=0]
+      /ልዎት		<ልዎት>	[oc=l]
+      /ብዎት		<ብዎት>	[oc=b]
+  --   	[o=0,oc=0,-O]
 
 $ ob_bound
   -
@@ -137,6 +145,9 @@ $ ob_bound
 $ neg2
   /ም		[t=i|p,+neg,+mc]
   --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c,-mc]
+
+$ neg2_bound
+  -
 
 $ aux
   ኣ/ል	[t=i,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc,ax=al];[t=c,sp=1,sn=2,-neg,+mc,ax=al];[t=c,sp=2,-neg,+mc,ax=al];[t=c,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=c,sp=3,sn=2,-neg,+mc,ax=al]
@@ -169,5 +180,6 @@ $ conj2
   /ኮ		[cconj=ኮ]
   --		[cconj=None]
 
-$ end
-  --		[pos=VERB]
+#$ end
+#  --		[pos=V]
+

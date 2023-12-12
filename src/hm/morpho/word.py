@@ -30,6 +30,7 @@ class Word(list):
 
     id = 0
     POS = {frozenset(['N', 'PROPN']): "NPROPN"}
+    empty = {}
 
     def __init__(self, init, name='', unk=False, merges={}):
         '''
@@ -45,10 +46,11 @@ class Word(list):
         self.merges = merges
         self.conllu = []
         self.id = Word.id
+        self.is_empty = True if len(self) == 0 else False
         Word.id += 1
 
     def __repr__(self):
-        return "W{}:{}{}".format(self.id, '*' if self.unk else '', self.name)
+        return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', '*' if self.is_empty else '', self.name)
 
     def show(self):
         if len(self) == 0:
@@ -59,10 +61,16 @@ class Word(list):
     @staticmethod
     def create_unk(name):
         '''
-        Create a Word instances for an unanalyzed token.
+        Create a Word instance for an unanalyzed token.
         '''
         dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
         return Word([dct], name=name, unk=True)
+
+    def create_empty(name):
+        '''
+        Create an empty Word instance.
+        '''
+        return Word(Word.empty, name=name, unk=True)
 
     def remove(self, indices, index_map):
         '''
@@ -85,6 +93,17 @@ class Word(list):
         to_del.sort(reverse=True)
         for index in to_del:
             del index_map[index]
+
+    def to_dicts(self, props):
+        '''
+        Return a list of dicts, each containing values for props only.
+        '''
+        dicts = []
+        if not self.is_empty:
+            for analysis in self:
+                dct = dict([(k, analysis[k]) for k in props if k in analysis])
+                dicts.append(dct)
+        return dicts
 
     def merge1(self, merges, to_del, gemination=False, sep_senses=False, verbosity=0):
         for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
@@ -147,8 +166,8 @@ class Word(list):
                     if lang_merges:
                         udfmerge = Word.get_merge_udfeats(umindex, ud1, ud2, lang_merges)
                         if udfmerge:
-#                            if verbosity:
-                            print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
+                            if verbosity:
+                                print("  ** merging udfeats in CoNLL-U {}: {}; del {}".format(self.conllu[i1], udfmerge, i2))
                             udf_merges.append((self.conllu[i1], umindex, udfmerge, ud1, ud2, i2))
 #                elif 'gloss' in diffs:
 #                    g = diffs['gloss']
@@ -238,6 +257,9 @@ class Word(list):
         l1 = segs1.get('lemma')
         l2 = segs2.get('lemma')
         if not gemination:
+            if not l1 or not l2:
+#                print("** l1 {}, l2 {}".format(l1, l2))
+                return False, l1, l2
             l1 = EES.degeminate(l1)
             l2 = EES.degeminate(l2)
         leq = l1 == l2

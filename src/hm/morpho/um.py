@@ -286,6 +286,8 @@ class UniMorph:
         um = []
         feats = []
         posh2u = self.hm2um.get(pos)
+        if verbosity:
+            print("&& converting {}".format(fs.__repr__()))
         if not fs and pos:
             # No feature structure, but there is a POS;
             # find the UM feat in posh2u

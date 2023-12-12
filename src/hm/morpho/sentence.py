@@ -79,6 +79,8 @@ class Sentence():
         self.conllu_string = ''
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
         self.merges = []
+        # Given a set of properties, like 'root' and 'um', a list of lists of word property dicts.
+        self.props = []
 
     def __repr__(self):
         return "S{}::{}".format(self.sentid, self.text)
@@ -249,8 +251,19 @@ class Sentence():
         '''
         Attempt to merge segmentations of each word.
         '''
-        self.merges = [(word, word.merge(gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)) for word in self.words]
+        self.merges = [(word.name, word.merge(gemination=gemination, sep_senses=sep_senses, verbosity=verbosity)) for word in self.words]
 #        print("&& merges: {}".format(self.merges))
+
+    def set_props(self, props):
+        '''
+        Props is a list of properties (like 'root' and 'um').
+        Creates a list of (word, property_dicts) pairs.
+        '''
+        result = []
+        for windex, word in enumerate(self.words):
+            if not word.is_empty:
+                result.append((windex, word.name, word.to_dicts(props)))
+        self.props = result
 
     #####
         

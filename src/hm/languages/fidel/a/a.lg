@@ -64,9 +64,9 @@ feats:
     morphotax::
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':'ADP','ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-         'እንደ':'SCONJ','እንደም': 'SCONJ','እስከ':'ADP','ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','የም': 'SCONJ',\
-	 'እስከም': 'ADP','ወደም': 'ADP','ስለም': 'ADP','ከም': 'ADP','ለም': 'ADP','በም ': 'ADP',\
-         'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እየ':'SCONJ'},\
+         'እንደ':'SCONJ','እንደም': 'SCONJ','እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP','የ':'SCONJ','የም': 'SCONJ','እም': 'SCONJ',\
+	 'እስከም': 'ADP','ወደም': 'ADP','ስለም': 'ADP','ከም': 'ADP','ለም': 'ADP','በም': 'ADP',\
+         'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
          'dep': 'mark', 'feats': ['Case']};
       {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
@@ -79,8 +79,8 @@ feats:
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     mwe::
-      {'hdfin': True, 'deppos': 'PART', 'hdaff': True, 'root': [('pre', 0), 'root']}
-    lemmafeats = a,v,c
+      {'hdfin': True, 'deppos': 'PART', 'hdaff': True, 'root': ['part',  'root']}
+    lemmafeats = a,v,c,s
     a = 0 | a  | i
     v = 0 | p | a | as | ast
     t = p | i | j | c
@@ -107,10 +107,11 @@ feats:
     sconj = None | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
     cconj = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
-#  pos: v_stem v_stem
-#    a = 0 | a | i
-#    v = 0 | p | a | as | ast
-#    t = p | i | j | c
+  pos: v_stem v_stem
+    a = 0 | a | i
+    v = 0 | p | a | as | ast
+    t = p | i | j | c
+#    d = 0
 
   pos: v_light_stem v_light_stem
     a = 0 | a | i

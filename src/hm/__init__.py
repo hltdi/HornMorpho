@@ -52,7 +52,7 @@ SEGMENT = False
 ### Version 5 analysis and generation.
 ###
 
-def make_corpus5(language, **kwargs):
+def anal_corpus(language, **kwargs):
     '''
     Create a corpus of sentences, given a list of raw sentence strings.
     '''

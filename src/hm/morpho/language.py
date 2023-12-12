@@ -1575,43 +1575,74 @@ class Language:
         mwe = kwargs.get('mwe', False)
         # There may be a cache dict where the analyses can be found or stored.
         cache = kwargs.get('cache')
+        # Try different POSs, but restrict these if 'pos' is in kwargs
+        analpos = kwargs.get('pos')
         # Character normalization
         normalized = False
         token = self.normalize(raw_token)
         if token != raw_token:
             normalized = True
-        if isinstance(cache, dict):
-            # cache could be empty dict
-            cached = cache.get(token)
-            if cached:
-                # This assumes the cache stores "processed" analyses
-                return cached
+        if not isinstance(cache, dict):
+            cache = {}
+        cached = cache.get(token)
+        if cached is not None:
+            # This assumes the cache stores "processed" analyses
+            return cached
         special_anal = self.analyze_special5(token)
         if special_anal:
-            # If this is numeral, punctuation, or abbreviation, don't bother going further.
-            wordobj = Word([special_anal], name=raw_token, merges=self.merges)
+            special_anal = self.check_analpos(special_anal, analpos)
+            # If this is a numeral, punctuation, or abbreviation, don't bother going further.
+            wordobj = Word(special_anal, name=raw_token, merges=self.merges) if special_anal else Word.create_empty(raw_token)
             if isinstance(cache, dict):
                 cache[token] = wordobj
             return wordobj
         # Try unanalyzed words
-        unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe)
+        unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
         if unanalyzed:
-            all_analyses.append(unanalyzed)
-        # Try different POSs.
+            if analpos:
+                # unanalyzed words take priority in this case and we don't bother to analyze further.
+                wordobj = Word.create_empty(raw_token)
+                cache[token] = wordobj
+                return wordobj
+            else:
+                all_analyses.extend(unanalyzed)
+        # if there is an analpos, first try other POS and fail (because of ambiguity) if any succeeds
+        if analpos:
+            for pos, pmorph in self.morphology.items():
+                if pos in analpos:
+                    continue
+                analyses = pmorph.anal(token, mwe=mwe, v5=True)
+                if analyses:
+                    # token is ambiguous; reject
+                    wordobj = Word.create_empty(raw_token)
+                    cache[token] = wordobj
+                    return wordobj
         for pos, pmorph in self.morphology.items():
-            # Check for caching before running pos.anal()
+            if analpos and pos not in analpos:
+                continue
             analyses = pmorph.anal(token, mwe=mwe, v5=True)
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
 #                                               mwe=mwe, combine_segs=combine_segs,
 #                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
-        wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
-        if isinstance(cache, dict):
-            cache[token] = wordobj
+        if analpos and not all_analyses:
+            wordobj = Word.create_empty(raw_token)
+        else:
+            wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
+        cache[token] = wordobj
         return wordobj
 
-    def analyze_unanalyzed5(self, word, mwe=False):
+    def check_analpos(self, analysis, analpos):
+        if not analpos:
+            return [analysis]
+        else:
+            thispos = analysis['pos']
+            if thispos not in analpos and thispos.lower() not in analpos:
+                return []
+            return [analysis]
+
+    def analyze_unanalyzed5(self, word, mwe=False, analpos=[]):
         '''
         Look for the unanalyzed form of the word, returning the default in dict anal format.
         '''
@@ -1620,7 +1651,10 @@ class Language:
         if word in words:
             form, pos = self.morphology.words1[word]
             # Later have the FSS already storied in words1
-            return {'token': form, 'pos': pos, 'nsegs': 1}
+            anal = {'token': form, 'pos': pos, 'nsegs': 1}
+            if anal:
+                return [anal]
+#            return self.check_analpos(anal, analpos)
 
     def analyze_special5(self, token):
         '''
@@ -1662,8 +1696,9 @@ class Language:
         Version 5:
         Analyze the tokens in a sentence (a string), returning a Sentence object.
         Try MWEs before single tokens.
-        kwargs: degem, sep_feats, combine_segs, verbosity
+        kwargs: degem, sep_feats, combine_segs, verbosity, pos, props
         '''
+#        print("^^ sentence {}, kwargs {}".format(sentence, kwargs))
         if 'cache' not in kwargs:
             kwargs['cache'] = dict()
         tokens = sentence.split()
@@ -1671,18 +1706,23 @@ class Language:
         sentobj = Sentence(sentence, language=self)
         token_index = 0
         while token_index < ntokens:
-            mwe_anal, new_index = self.anal_mwe1(tokens, token_index, sentobj, **kwargs)
+            if kwargs.get("skip_mwe", False):
+                mwe_anal, new_index = None, token_index
+            else:
+                mwe_anal, new_index = self.anal_mwe1(tokens, token_index, sentobj, **kwargs)
             if mwe_anal:
                 token_index = new_index
             else:
                 kwargs['mwe'] = False
                 token = tokens[token_index]
-                anal1 = self.analyze5(token, **kwargs)
-                if anal1:
-                    sentobj.add_word5(anal1)
-                else:
-                    sentobj.add_word5(Word.create_unk(token))
                 token_index += 1
+                if skip := kwargs.get('skip'):
+                    if token in skip:
+                        continue
+                anal1 = self.analyze5(token, **kwargs)
+                sentobj.add_word5(anal1)
+        if 'props' in kwargs:
+            sentobj.set_props(kwargs['props'])
         return sentobj
 
     def anal_mwe1(self, tokens, token_index, sent_obj, **kwargs):
@@ -1721,6 +1761,8 @@ class Language:
         for token in tokens:
             wordobj = self.analyze5(token, **kwargs)
             sentobj.add_word5(wordobj)
+        if 'props' in kwargs:
+            sentobj.set_props(kwargs['props'])
         return sentobj
 
     def anal_sent_mwe(self, sentence, sent_obj, **kwargs):
