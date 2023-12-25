@@ -2,45 +2,155 @@
 
 -> start
 
-# up to pre-stem boundary
-start -> prep  [X]  # currently only b and n
-prep -> prep=  [:=]
-# spirantize velars
-prep= -> C     [X-k,q,kW,qW;K:k;Q:q;KW:kW;QW:qW]
-#prep= -> V     [V]  # not actually possible
+# adposition; no negation
+start -> advV	[*v]
+start -> advC	[*]
+advV -> advV	[*v]
+advC ->	advV	[*v]
+advC -> advC	[*]
+advV -> advC	[*]
+# ምስ ከም
+advV -> advCa	[{I2a};*e]
+advC -> advCa	[{I2a};*e]
+advC -> preC	[:-]
+advV -> preV	[:-]
+advC -> preV	[:-]
+# መእንትኡ
+advC -> advA	[{A2I}]
+advCa -> preCa	[:-]
+advA -> preA	[:-]
 
-start -> bound [:=]
+# no adposition
+start -> neg0	[:-]
+neg0 -> neg1	<ኣይ>
 
-# wait for the boundary character
-bound -> C     [X]
-#start -> V     [V]  # not possible
-C -> V         [V]
-C -> CC        [X;_]
-CC -> CC       [X;_]
-V -> C         [X]
-CC -> V        [V]
+# stem
+neg1 -> stem0	[:<]
+neg0 -> stem0	[:<]
 
-# boundary
-C -> C=        [:=]
-CC -> CC=      [:=]
-V -> V=        [:=]
+preV -> Vstem	[:<]
+preC -> Cstem	[:<]
+preV -> NAstem	[:<]	[pos=N|ADJ]
+preC -> NAstem	[:<]	[pos=N|ADJ]
+preCa -> Castem	[:<]
+preA -> Astem	[:<]
 
-# insert word-final i following CC or C_
-CC= -> CC=i    [i:]
+# k->K, q->Q for nouns and adjectives with prepositions
+NAstem -> stem0	[^^K;{q2Q}]
 
-# following CC, k->K
-CC= -> end     [X-k,';:';K:k;V]
+# what to do with prepositions before pronouns
+Vstem -> stemC	[*-እ;:እ]       [pos=PRON]
+Cstem -> stemC	[*-እ;:እ]	[pos=PRON,+dem]
+Cstem -> stemC	[*]			[pos=PRON,-dem]
+Cstem -> stemV	[*v]		[pos=PRON]
+Vstem -> stemV	[*v]		[pos=PRON]
+Castem -> stemV	[:ኣ]		[pos=PRON,-dem]
+# ምእንትኡ
+Astem -> stemV	[ኡ;ኣ;ኦ;ኤ]	[pos=PRON,-dem]
 
-# following vowel,
-#   delete e of ey
-#   k->K
-V= -> end      [:e;X-k;K:k]
+stem0 -> stemC	[*;/]
+stem0 -> stemV	[^i]
+stem0 -> stemi	[*i]
 
-C= -> end      [V;X-';:']
+stemC -> stemC	[*;/]
+stemC -> stemV	[*v]
 
-CC=i ->
-V= ->
-C= ->
+stemV -> stemC	[*;/]
+stemV -> stemV	[*v]
 
-end -> end     [X;V;_]
-end ->
+# C -> Cu
+stemV -> stemu	[{I2u}]
+stemC -> stemu 	[[I2u}]
+stemV -> stema	[{I2a}]
+stemC -> stema	[{I2a}]
+stemV -> stemo	[{I2o}]
+stemC -> stemo	[{I2o}]
+stemV -> steme	[{I2e}]
+stemC -> steme	[{I2e}]
+stemV -> stemE	[{I2e}]
+stemC -> stemE	[{I2e}]
+
+# Ci -> C* for epenthetic -i
+stemC -> stemi_		[{i2I}]
+stemC -> stemi2e	[{i2e}]
+stemC -> stemi2u	[{i2u}]
+stemC -> stemi2a	[{i2a}]
+stemC -> stemi2o	[{i2o}]
+stemC -> stemi2E	[{i2e}]
+
+# changes to other stem-final vowels; all optional
+# -i (not epenthetic)
+stemV -> stemi2I   	[{i2I}]
+# -a
+stemV -> stemV2I	[{a2I}]
+stemC -> stemV2I	[{a2I}]
+# -e; and other vowels?
+stemV -> stemV2I	[{e2I}]
+stemC -> stemV2I	[{e2I}]
+# -u
+stemV -> stemV2I	[{u2I}]
+stemC -> stemV2I	[{u2I}]
+# -o
+stemV -> stemV2I	[{o2u}]
+stemC -> stemV2I	[{o2u}]
+
+# unchanged stem final vowels and consonants
+stemV -> Vsuff	[:>]   [+sv]
+stemC -> Csuff	[:>]   [-sv]
+
+# possessive suffixes beginning with vowels following stem C
+stemu -> usuff	[:>]
+usuff -> poss	[:ኡ]
+stema -> asuff	[:>]
+asuff -> poss	[:ኣ]
+stemo -> osuff	[:>]
+osuff -> poss	[:ኦ]
+steme -> esuff	[:>]
+esuff -> poss	[:አ]
+stemE -> Esuff	[:>]
+Esuff -> poss	[:ኤ]
+
+# stem ending with epenthetic i
+# 2nd person; 1p
+stemi_ -> i_suff   [:>]
+i_suff -> poss	   [ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ና]
+# 1s
+stemi2e -> i2e_suff	[:>]
+i2e_suff -> poss	[:አ]
+# 3p; vowel possessive suffixes
+stemi2u -> i2u_suff    [:>]
+stemi2a -> i2a_suff    [:>]
+stemi2o -> i2o_suff    [:>]
+stemi2E -> i2E_suff    [:>]
+i2u_suff -> poss	[:ኡ]
+i2a_suff -> poss	[:ኣ]
+i2o_suff -> poss	[:ኦ]
+i2E_suff -> poss	[:ኤ]
+
+stemV2I -> V2i_suff	[:>]
+V2i_suff -> poss	[ኡ;ኦ;ኣ;ኤ]
+
+# possessive suffixes following stem-final vowels
+Vsuff -> poss	[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ና;:አ;ኡ;ኣ;ኦ;ኤ]
+Csuff -> poss	[ካ;ኪ;ኩ;ክ;ና]
+
+poss -> poss	[^N]
+
+# no possessive
+Vsuff -> neg2	[:-]
+Csuff -> neg2	[:-]
+poss -> neg2	[:-]
+stem_i -> i_neg2	[:-]
+
+neg2 -> neg2	[ን]
+i_neg2 -> neg2	[ን]
+neg2 -> cnj		[:-]
+
+cnj -> cnj		[^^Q]
+# keep the k in ke
+cnj -> cnj		[ከ]		[+neg];[-neg,p=s1];[-neg,p=pm2];[-neg,p=pf2];[-neg,p=pm3];[-neg,p=pf3];[-sv,-neg,p=0]
+# ከ -> ኸ
+cnj -> cnj		[ኸ:ከ]	[-neg,p=p1];[-neg,p=sm2];[-neg,p=sf2];[-neg,p=sm3];[-neg,p=sf3];[+sv,-neg,p=0]
+
+cnj ->
+

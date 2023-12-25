@@ -1,0 +1,433 @@
+" ኣብሩኽ" ዝብል ካብ እዝኒ ሓደ ሰብ ዘይሰግር ትእዛዝ ፡ ካብ ሓደ ናብ ሓደ ተመሓላለፈ ።
+(2, 'ዝብል', [{'root': 'ብህል:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ብህል:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(6, 'ዘይሰግር', [{'root': 'ስግር:A', 'um': 'IPFV;NEG;*RELC;1;SG'}, {'root': 'ስግር:A', 'um': 'IPFV;NEG;*RELC;3;SG;MASC'}])
+(13, 'ተመሓላለፈ', [{'root': 'ምሕልፍ:E', 'um': 'PFV1;RECP;3;SG;MASC'}])
+##
+እቲ ከቢድ ጸጥታን ዘይንቡር ስቕታን ኣብ ጥርጣረ ኣእቲዩዎም እዩ ።
+##
+ብዓቢኡ ፡ ምስ ወተሃደራት ኢትዮጵያ ከም ዝራኸቡሉ ርጉጽ ዝወሰዱዎ መሬት ብሰላም ምስ ተቐበሎም ፡
+(6, 'ዝራኸቡሉ', [{'root': 'ርክብ:A', 'um': 'IPFV;*RELC;RECP;3;PL;MASC;OB3SM'}])
+(8, 'ዝወሰዱዎ', [{'root': 'ውስድ:A', 'um': 'PFV1;*RELC;3;PL;MASC;AC3SM'}])
+(12, 'ተቐበሎም', [{'root': 'ቅብል:B', 'um': 'IMP;PASS;2;SG;MASC;AC3PM'}, {'root': 'ቅብል:B', 'um': 'PFV1;PASS;3;SG;MASC;AC3PM'}, {'root': 'ቅብብ:A', 'um': 'PFV1;PASS;3;SG;MASC;OB3PM'}, {'root': 'ቅብብ:A', 'um': 'PFV1;PASS;3;SG;MASC;OB3PM'}])
+##
+ሕንቅልሕንቅሊተይ እዩ ኰይኑዎም ።
+(2, 'ኰይኑዎም', [{'root': 'ክውን:A', 'um': 'PFV2;3;SG;MASC;AC3PM'}])
+##
+ከባቢኦም ጥርቅም - ንሳቶም እውን ጥርቅም ! ኣእዛን ኩላቶም ተጋደልቲ ኩር በላ ።
+(11, 'በላ', [{'root': 'ብህል:A', 'um': 'IMP;2;SG;MASC;AC3SF'}, {'root': 'ብህል:A', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ብህል:A', 'um': 'IMP;2;PL;FEM'}, {'root': 'ህልው:B', 'um': 'PFV1;NEG;*RELC;3;SG;MASC;INS'}, {'root': 'ብህል:A', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+##
+ኣዒንቲ ፡ ንጸላም ብሰምታን ቋሕታን ሰንጢቐን ደመኛአን ክረኽባ ዝከኣለን ኣህሰውሰዋ ።
+(5, 'ሰንጢቐን', [{'root': 'ስንጥቅ:E', 'um': 'PFV2;3;PL;FEM'}])
+(7, 'ክረኽባ', [{'root': 'ርክብ:A', 'um': 'IPFV;1;SG;AC3SF'}, {'root': 'ርክብ:A', 'um': 'IPFV;3;SG;MASC;AC3SF'}, {'root': 'ርክብ:A', 'um': 'IPFV;3;PL;FEM'}])
+##
+ብኣጻብዕ ዝቑጸራ
+(1, 'ዝቑጸራ', [{'root': 'ቁጽር:A', 'um': 'IPFV;*RELC;PASS;1;SG;AC3SF'}, {'root': 'ቁጽር:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC;AC3SF'}, {'root': 'ቁጽር:A', 'um': 'IPFV;*RELC;PASS;3;PL;FEM'}])
+##
+እቲ መደብ ብቐንዱ ኣብ ምውሓስ ጽሬትን ምልላይ ሕጽረታትን ዘተኰረ ምክትታል ምዃኑ ዝሓበሩ ክኢላታት ፡ ብልጫታት ንምዕቃብን ድኽመታተን ንምእራምን ምስ ዝምልከቶም ሓለፍትን ኣመሓደርትን ናይ 'ቲ ትካላት ርክባት ይካየድ ከምዘሎ ኣረዲኦም ።
+(8, 'ዘተኰረ', [{'root': 'ትኩር:B', 'um': 'PFV1;*RELC;CAUS;3;SG;MASC'}])
+(11, 'ዝሓበሩ', [{'root': 'ሕብር:B', 'um': 'PFV1;*RELC;3;PL;MASC'}, {'root': 'ሕብር:A', 'um': 'PFV1;*RELC;3;PL;MASC'}])
+(19, 'ዝምልከቶም', [{'root': 'ምልክት:E', 'um': 'IPFV;*RELC;PASS;1;SG;AC3PM'}, {'root': 'ምልክት:E', 'um': 'IPFV;*RELC;PASS;3;SG;MASC;AC3PM'}])
+(26, 'ይካየድ', [{'root': 'ክይድ:A', 'um': 'IPFV;RECP;3;SG;MASC'}, {'root': 'ክይድ:A', 'um': 'IMP;RECP;3;SG;MASC'}, {'root': 'ክይድ:A', 'um': 'IPFV;RECP;1;SG'}])
+(27, 'ከምዘሎ', [{'root': 'ህልው:B', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+##
+እዚ
+##
+ከም ተመኲሮ ናይ
+##
+መጀመርያ ዝኾነ መደብ ፡ ተመኲሮ ካብ ምልውዋጥ ሓሊፉ ፡ ትካላት ጥዕና ብሓፈሻ ሆስፒታላት ድማ ብፍላይ ኣብ መንጎአን ቅዱስ ናይ ምውድዳር መንፈስ ከሕድራ ከምዝሕግዘ ድማ ገሊጾም ።
+(1, 'ዝኾነ', [{'root': 'ክውን:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(7, 'ሓሊፉ', [{'root': 'ሕልፍ:B', 'um': 'PFV2;3;SG;MASC'}, {'root': 'ሕልፍ:A', 'um': 'PFV2;3;SG;MASC'}])
+(21, 'ከሕድራ', [{'root': 'ሕድር:A', 'um': 'IPFV;CAUS;1;SG;AC3SF'}, {'root': 'ሕድር:A', 'um': 'IPFV;CAUS;3;SG;MASC;AC3SF'}, {'root': 'ሕድር:A', 'um': 'IPFV;CAUS;3;PL;FEM'}])
+(24, 'ገሊጾም', [{'root': 'ግልጽ:A', 'um': 'PFV2;3;PL;MASC'}])
+##
+ኣብ ሚኒስትሪ ጥዕና ሓላፊ ጨንፈር ኣገልግሎት ክንክን ጥዕና ዶክተር ጎይትኦም መብራህቱ ኣብ ዝሃቦ ሓበሬታ ድማ ፡ እቲ ዕላማ ጥዕና ሕብረተ-ሰብ ንምሕላውን ጽፈትን ስሉጥነትን ኣገልግሎት ንምርግጋጽን ምዃኑ ጠቒሱ ፡ ብዝወጸ መምዘኒ ነጥብታት ንዕዉታት ሆስፒታላት መተባብዒ ከምዝወሃብ ሓቢሩ ።
+(12, 'ዝሃቦ', [{'root': 'ህብብ:A', 'um': 'IPFV;*RELC;1;SG;AC3SM'}, {'root': 'ህብብ:A', 'um': 'IPFV;*RELC;3;SG;MASC;AC3SM'}, {'root': 'ውህብ:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SM'}])
+(26, 'ጠቒሱ', [{'root': 'ጥቅስ:A', 'um': 'PFV2;3;SG;MASC'}])
+(28, 'ብዝወጸ', [{'root': 'ውጽእ:A', 'um': 'PFV1;*RELC;3;SG;MASC;INS'}])
+(34, 'ከምዝወሃብ', [{'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ውህብ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}])
+(35, 'ሓቢሩ', [{'root': 'ሕብር:B', 'um': 'PFV2;3;SG;MASC'}, {'root': 'ሕብር:A', 'um': 'PFV2;3;SG;MASC'}])
+##
+መበል 14 ምርኢት መጽሓፍቲ
+##
+ኤርትራ ፡ ካብ 20 ክሳብ 29
+##
+መጋቢት ክካየድ 'ዩ
+(1, 'ክካየድ', [{'root': 'ክይድ:A', 'um': 'IPFV;RECP;3;SG;MASC'}, {'root': 'ክይድ:A', 'um': 'IPFV;RECP;1;SG'}])
+##
+መበል 14 ምርኢት መጽሓፍቲ ኤርትራ ፡ " ክለባት መጽሓፍ ፡ ኣፍደገ ብሩህ መጻኢ" ኣብ ትሕቲ ዝብል ቴማ ካብ 20 ክሳብ 29 መጋቢት ኣብ ከተማ ኣስመራ - ቀጽሪ ኤክስፖ ክካየድ ምዃኑ ፡ ካብ ኣወሃሃዲት ኮሚተ ናይ 'ቲ ምርኢት ዝረኸብናዮ ሓበሬታ ኣረዲኡ ።
+(15, 'ዝብል', [{'root': 'ብህል:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ብህል:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(23, 'ከተማ', [{'root': 'ክትም:B', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ክትም:B', 'um': 'PFV1;3;SG;MASC;AC3SF'}, {'root': 'ክትም:A', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ክትም:A', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(24, 'ኣስመራ', [{'root': 'ስምር:A', 'um': 'PFV1;CAUS;3;PL;FEM'}, {'root': 'ስምር:A', 'um': 'PFV1;CAUS;3;SG;MASC;AC3SF'}])
+(28, 'ክካየድ', [{'root': 'ክይድ:A', 'um': 'IPFV;RECP;3;SG;MASC'}, {'root': 'ክይድ:A', 'um': 'IPFV;RECP;1;SG'}])
+(37, 'ዝረኸብናዮ', [{'root': 'ርክብ:A', 'um': 'PFV1;*RELC;1;PL;AC3SM'}])
+##
+ብመሰረት 'ቲ ሓበሬታ ፡ ኣብቲ ምርኢት ልዕሊ 140 ውልቀ-ሰባትን ትካላትን ፍርያቶም ከላልዩን ክሸጡን ምዃኖም ፡ ከምኡ 'ውን ናይ 30 ሚእታዊት ምጉዳል ዋጋ ከምዝግበር
+(22, 'ከምዝግበር', [{'root': 'ግብር:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ግብር:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}])
+##
+ተፈሊጡ ።
+(0, 'ተፈሊጡ', [{'root': 'ፍልጥ:A', 'um': 'PFV2;PASS;3;SG;MASC'}])
+##
+ምምራቕ መጽሓፍ ፡ ምርኢት ኤግዝቢሽን ፡ መሸጣ መጽሓፍቲ ፡ ከምኡ 'ውን ዕላል ምስ ዝተፈላለዩ ደረስቲ ሃገርናን ዝተፈላለየ ውድድራት ተመሃሮን ኣካል ናይቲ መደብ ምዃኑ ፡ እቲ ሓበሬታ ብተወሳኺ የመልክት ።
+(6, 'መሸጣ', [{'root': 'ምሽጥ:B', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ምሽጥ:B', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(13, 'ዝተፈላለዩ', [{'root': 'ፍልይ:A', 'um': 'PFV1;*RELC;RECP;3;PL;MASC'}])
+(16, 'ዝተፈላለየ', [{'root': 'ፍልይ:A', 'um': 'PFV1;*RELC;RECP;3;SG;MASC'}])
+(27, 'የመልክት', [{'root': 'ምልክት:E', 'um': 'IPFV;CAUS;1;SG'}, {'root': 'ምልክት:E', 'um': 'IMP;CAUS;3;SG;MASC'}, {'root': 'ምልክት:E', 'um': 'IPFV;CAUS;3;SG;MASC'}])
+##
+እዚ ከም 'ዚ 'ሉ እንከሎ ፡ ምርኢት መጽሓፍቲ ኣብ ከተማታት መንደፈራ ፡ ከረን ፡ ባረንቱ ፡ ባጽዕን ዓሰብን ካብ 3 ክሳብ 5 ሚያዝያ ክካየድ ምዃኑ ተፈሊጡ 'ሎ ።
+(23, 'ክካየድ', [{'root': 'ክይድ:A', 'um': 'IPFV;RECP;3;SG;MASC'}, {'root': 'ክይድ:A', 'um': 'IPFV;RECP;1;SG'}])
+(25, 'ተፈሊጡ', [{'root': 'ፍልጥ:A', 'um': 'PFV2;PASS;3;SG;MASC'}])
+##
+ሓዳስ ኤርትራ
+##
+14 መጋቢት 2015 - ገጽ 2
+##
+ከምኡ ዝበለ ሓቀኛ ታሪኽ ይምስጠኒ እዩ ።
+(1, 'ዝበለ', [{'root': 'ብህል:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+##
+ከም ርእይቶይ ከኣ ኣብ እቲ ናይ ውግእን ገድልን ጥራይ ዘይኰነ ዋዛታትን ፍሉይ ኣጋጣሚታትን እናሓወስኩም እንተ ተዘንትዉልና ዝያዳ ምጸበቐ ነይሩ ።
+(13, 'እናሓወስኩም', [{'root': 'ሕውስ:B', 'um': 'PFV1;2;PL;MASC'}])
+(15, 'ተዘንትዉልና', [{'root': 'ዝንትው:E', 'um': 'IPFV;CAUS;2;PL;MASC;OB1P'}])
+(17, 'ምጸበቐ', [{'root': 'ጽብቅ:B', 'um': 'PFV1;3;SG;MASC'}])
+##
+ኣብ ኩሉ መነባብሮና ዘሕዝኑ ይኹኑ ዘሐጉሱ ወይ ዘገርሙ ነገራት ከም ዘጋጥሙና ፍሉጥ እዩ ።
+(3, 'ዘሕዝኑ', [{'root': 'ሕዝን:A', 'um': 'IPFV;*RELC;CAUS;3;PL;MASC'}])
+(4, 'ይኹኑ', [{'root': 'ክውን:A', 'um': 'IMP;3;PL;MASC'}])
+(10, 'ዘጋጥሙና', [{'root': 'ግጥም:A', 'um': 'IPFV;*RELC;CAUS+RECP;3;PL;MASC;AC1P'}])
+##
+እዚኣቶም ኣብ እቲ ታሪኽ እንተ ኣትዮም ድማ መማቕርቲ እዮም ዝዀኑ ።
+(9, 'ዝዀኑ', [{'root': 'ክውን:A', 'um': 'IPFV;*RELC;3;PL;MASC'}, {'root': 'ክውን:A', 'um': 'PFV1;*RELC;3;PL;MASC'}])
+##
+ንኣብነት ኣብ ዝሓለፈ ክፋል " ቦዲ ካብ ራሻ ፡ ናብ ጣሻ" እንተ ርኢና ፡ ዋዛታትን ዘሕዝኑ ፍጻመታትን ስለ ዝነበሮ ዝያዳ ሰሓቢ ነይሩ ።
+(2, 'ዝሓለፈ', [{'root': 'ሕልፍ:B', 'um': 'PFV1;*RELC;3;SG;MASC'}, {'root': 'ሕልፍ:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(12, 'ርኢና', [{'root': 'ርእይ:A', 'um': 'PFV2;1;PL'}])
+(15, 'ዘሕዝኑ', [{'root': 'ሕዝን:A', 'um': 'IPFV;*RELC;CAUS;3;PL;MASC'}])
+(18, 'ዝነበሮ', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SM'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SM'}])
+(20, 'ሰሓቢ', [{'root': 'ስሕብ:A', 'um': 'IMP;2;SG;FEM'}])
+##
+ኣብ እዛ ናይ ዓሻ ዓሊኖር ግን ኩሉ ብዛዕባ ቁም ነገር ጥራይ እዩ ነይሩ ።
+(8, 'ቁም', [{'root': 'ቅውም:A', 'um': 'IMP;2;SG;MASC'}])
+##
+ስለ እዚ እቲ ታሪኹ ዝዝንቶ ዘሎ ሰብ ፡ ኣብ ውልቃዊ ሂወቱ ዘጋጠሙዎ ሕማቕ ይኹን ጽቡቕ ነገራት ብግልጺ እንተ ተጻሒፉ ሰብ ከንብቦ ከሎ ይሰሓብ እዩ ።
+(4, 'ዝዝንቶ', [{'root': 'ዝንትው:E', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ዝንትው:E', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}])
+(11, 'ዘጋጠሙዎ', [{'root': 'ግጥም:A', 'um': 'PFV1;*RELC;CAUS+RECP;3;PL;MASC;AC3SM'}])
+(13, 'ይኹን', [{'root': 'ክውን:A', 'um': 'IMP;3;SG;MASC'}])
+(18, 'ተጻሒፉ', [{'root': 'ጽሕፍ:A', 'um': 'PFV2;PASS;3;SG;MASC'}])
+(21, 'ከሎ', [{'root': 'ህልው:B', 'um': 'PFV1;3;SG;MASC'}])
+(22, 'ይሰሓብ', [{'root': 'ስሕብ:A', 'um': 'IMP;3;SG;MASC'}])
+##
+እምበኣር ዕላል ምስ ታሪኽ ኣዛናዪን ቁም ነገር ዘለዎን ኰይኑ ክቐርብ እላቦ ።
+(5, 'ቁም', [{'root': 'ቅውም:A', 'um': 'IMP;2;SG;MASC'}])
+(8, 'ኰይኑ', [{'root': 'ክውን:A', 'um': 'PFV2;3;SG;MASC'}])
+(9, 'ክቐርብ', [{'root': 'ቅርብ:A', 'um': 'IPFV;1;SG'}, {'root': 'ቅርብ:A', 'um': 'IPFV;3;SG;MASC'}])
+(10, 'እላቦ', [{'root': 'ልብው:A', 'um': 'IPFV;RECP;1;SG'}, {'root': 'ልብው:A', 'um': 'IMP;RECP;1;SG'}])
+##
+ብተወሳኺ ኣብ ጽሑፍ ውሑድ ዘይኰነ ናይ ፊደላት ጌጋ ተርእዩ ስለ ዘለኹም ፡ ኣብ ዝመጽእ ኣድህቦ ክትገብሩሉ ኣለኩም ።
+(8, 'ተርእዩ', [{'root': 'ርእይ:A', 'um': 'IPFV;CAUS;2;PL;MASC'}, {'root': 'ርእይ:A', 'um': 'PFV2;PASS;3;SG;MASC'}])
+(10, 'ዘለኹም', [{'root': 'ህልው:B', 'um': 'PFV1;*RELC;2;PL;MASC'}])
+(13, 'ዝመጽእ', [{'root': 'ምጽእ:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ምጽእ:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(14, 'ኣድህቦ', [{'root': 'ድህብ:A', 'um': 'IMP;CAUS;2;SG;MASC;AC3SM'}, {'root': 'ድህብ:A', 'um': 'IMP;CAUS;1;SG;AC3SM'}, {'root': 'ድህብ:A', 'um': 'IPFV;CAUS;1;SG;AC3SM'}])
+(15, 'ክትገብሩሉ', [{'root': 'ግብር:A', 'um': 'IPFV;2;PL;MASC;OB3SM'}, {'root': 'ግብር:A', 'um': 'IPFV;2;PL;MASC;OB3SM'}])
+##
+ኣለም ብርሃነ ኣስመራ ዓምዲ ዕላል ምስ ታሪኽ ኣዝያ መሳጢት እያ ።
+(2, 'ኣስመራ', [{'root': 'ስምር:A', 'um': 'PFV1;CAUS;3;PL;FEM'}, {'root': 'ስምር:A', 'um': 'PFV1;CAUS;3;SG;MASC;AC3SF'}])
+##
+እቲ ታሪኽ ልብ ወለድ ዘይኰነስ በቶም ሰብ ታሪኽ ዝንገር ሓቀኛ ዛንታ ብምዃኑ እቲ ኣብኡ ዝግለጽ ኩሉ ኣደናቒ ነገራት ሰብ ክኣምኖ ይኽእል ።
+(8, 'ዝንገር', [{'root': 'ንግር:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ንግር:A', 'um': 'IPFV;*RELC;PASS;1;SG'}])
+(14, 'ዝግለጽ', [{'root': 'ግልጽ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ግልጽ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}])
+(19, 'ክኣምኖ', [{'root': 'እምን:A', 'um': 'IPFV;3;SG;MASC;AC3SM'}, {'root': 'እምን:A', 'um': 'IPFV;1;SG;AC3SM'}])
+(20, 'ይኽእል', [{'root': 'ክእል:A', 'um': 'IPFV;3;SG;MASC'}, {'root': 'ክእል:A', 'um': 'IPFV;1;SG'}])
+##
+ዝሓለፈ ክፋል " ዓሻ ዓሊኖር ፡ ቅድሚ ገድሊ ኣብ ገድሊን ድሕሪ ገድልን" ደቂ ኣንስትዮ ኣብ ገድሊ ዝነበረን ትብዓትን ተወፋይነትን ዘርኢ እዩ ነይሩ ።
+(0, 'ዝሓለፈ', [{'root': 'ሕልፍ:B', 'um': 'PFV1;*RELC;3;SG;MASC'}, {'root': 'ሕልፍ:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(7, 'ገድሊ', [{'root': 'ግድል:B', 'um': 'IMP;2;SG;FEM'}])
+(15, 'ገድሊ', [{'root': 'ግድል:B', 'um': 'IMP;2;SG;FEM'}])
+(16, 'ዝነበረን', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;MASC;AC3PF'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3PF'}])
+(19, 'ዘርኢ', [{'root': 'ርእይ:A', 'um': 'IPFV;*RELC;CAUS;3;SG;MASC'}, {'root': 'ርእይ:A', 'um': 'IPFV;*RELC;CAUS;1;SG'}])
+##
+ዓሻ ኣብ ገድሊ ከመይ ከም ዝነበረት ብመጠኑ ፈሊጥና ።
+(2, 'ገድሊ', [{'root': 'ግድል:B', 'um': 'IMP;2;SG;FEM'}])
+(5, 'ዝነበረት', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;FEM'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;FEM'}])
+(7, 'ፈሊጥና', [{'root': 'ፍልጥ:A', 'um': 'PFV2;1;PL'}])
+##
+ኣብ ናታ ሂወት ግን ብሰፊሑ ኣይተገልጸን ።
+(5, 'ኣይተገልጸን', [{'root': 'ግልጽ:A', 'um': 'PFV1;NEG;PASS;3;SG;MASC'}])
+##
+ንኣብነት ኣደኣ መዓስ ከም ዝዓረፋ ፡ ኣሕዋታ መዓስ ከም ዝተሰውኡ ፡ ክሳብ ናጽነት ዝኸውን ምስ ካልእ ሰብ ፍቕሪ መስሪታ ከም ዝነበረትን ዘይነበረትን ዝብሉ ሕቶታት ኣይተመለሱን ።
+(2, 'መዓስ', [{'root': 'ምዕስ:A', 'um': 'IMP;2;SG;MASC'}])
+(4, 'ዝዓረፋ', [{'root': 'ዕርፍ:A', 'um': 'PFV1;*RELC;3;PL;FEM'}, {'root': 'ዕርፍ:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SF'}])
+(7, 'መዓስ', [{'root': 'ምዕስ:A', 'um': 'IMP;2;SG;MASC'}])
+(13, 'ዝኸውን', [{'root': 'ክውን:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ክውን:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(18, 'መስሪታ', [{'root': 'ምስርት:E', 'um': 'PFV2;3;SG;FEM'}])
+(22, 'ዝብሉ', [{'root': 'ብህል:A', 'um': 'IPFV;*RELC;3;PL;MASC'}])
+(24, 'ኣይተመለሱን', [{'root': 'ምልስ:B', 'um': 'PFV1;NEG;PASS;3;PL;MASC'}, {'root': 'ምልስ:A', 'um': 'PFV1;NEG;PASS;3;PL;MASC'}])
+##
+ክሳብ ደሃይ እትረክብ ፡ ብኣዝዩ ጥንቁቕ ኣካይዳ ናብ ዕምቈት ትሕዝቶ ሰራዊት ኢትዮጵያ ቀጺላ ።
+(2, 'እትረክብ', [{'root': 'ርክብ:A', 'um': 'IPFV;*RELC;2;SG;MASC'}])
+(6, 'ኣካይዳ', [{'root': 'ክይድ:A', 'um': 'IMP;CAUS+RECP;2;SG;MASC;AC3SF'}, {'root': 'ክይድ:A', 'um': 'IMP;CAUS+RECP;2;PL;FEM'}, {'root': 'ክይድ:A', 'um': 'IPFV;CAUS+RECP;1;SG;AC3SF'}, {'root': 'ክይድ:A', 'um': 'IMP;CAUS+RECP;1;SG;AC3SF'}])
+(12, 'ቀጺላ', [{'root': 'ቅጽል:B', 'um': 'PFV2;3;SG;FEM'}])
+##
+እቶም ኣብ ሓለዋ ተተኺሎም ዝጸንሑ ወተሃደራት ኣብ ዓይኒ ከም ዘእተዉዋ ብኣጋ ኣይተገንዘበትን - እታ ጋንታ ።
+(2, 'ሓለዋ', [{'root': 'ሕልው:B', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ሕልው:B', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(3, 'ተተኺሎም', [{'root': 'ትክል:A', 'um': 'PFV2;PASS;3;PL;MASC'}])
+(4, 'ዝጸንሑ', [{'root': 'ጽንሕ:A', 'um': 'IPFV;*RELC;3;PL;MASC'}, {'root': 'ጽንሕ:A', 'um': 'PFV1;*RELC;3;PL;MASC'}])
+(7, 'ዓይኒ', [{'root': 'ዕይን:B', 'um': 'IMP;2;SG;FEM'}])
+(9, 'ዘእተዉዋ', [{'root': 'እትው:A', 'um': 'PFV1;*RELC;CAUS;3;PL;MASC;AC3SF'}])
+(11, 'ኣይተገንዘበትን', [{'root': 'ግንዝብ:E', 'um': 'PFV1;NEG;PASS;3;SG;FEM'}])
+##
+ተኹሲ የለን - ምንቅስቓስ ሰብ ኣይረአን ።
+(1, 'የለን', [{'root': 'ህልው:B', 'um': 'PFV1;NEG;3;SG;MASC'}])
+##
+ነታጒ ሰራዊት ኢትዮጵያ እውን ኣይተዓዘቡን ፣ ወይ እውን ኣይሃረሞምን ።
+(4, 'ኣይተዓዘቡን', [{'root': 'ዕዝብ:B', 'um': 'PFV1;NEG;PASS;3;PL;MASC'}])
+(8, 'ኣይሃረሞምን', [{'root': 'ህርም:A', 'um': 'PFV1;NEG;3;SG;MASC;AC3PM'}])
+##
+ካልኢታት ምስ ሓለፋ ፡ ካብ ፊት ናይ 'ታ ጋንታ ንድሕሪት ገጹ ናይ ዝምለስ ድምጺን ትርኢትን ሰብ ዝመስል ኣመት
+(2, 'ሓለፋ', [{'root': 'ሕልፍ:B', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ሕልፍ:B', 'um': 'PFV1;3;SG;MASC;AC3SF'}, {'root': 'ሕልፍ:A', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ሕልፍ:A', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(12, 'ዝምለስ', [{'root': 'ምልስ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ምልስ:B', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ምልስ:B', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}, {'root': 'ምልስ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}])
+(16, 'ዝመስል', [{'root': 'ምስል:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ምስል:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(17, 'ኣመት', [{'root': 'እይም:A', 'um': 'PFV1;3;SG;FEM'}])
+##
+ተረኽበ ።
+(0, 'ተረኽበ', [{'root': 'ርክብ:A', 'um': 'PFV1;PASS;3;SG;MASC'}])
+##
+" እሽሽሽሽሽሽሽ. . ." ትንፋስ ከይተረፈ ተሓቢኡ ፡ ምጽንጻን ቀጸለ ።
+(6, 'ተሓቢኡ', [{'root': 'ሕብእ:A', 'um': 'PFV2;PASS;3;SG;MASC'}])
+(9, 'ቀጸለ', [{'root': 'ቅጽል:B', 'um': 'PFV1;3;SG;MASC'}])
+##
+ኣብ ሓደጋ ከም ዝኣተዉ እውን ተሰቈሮም ።
+(1, 'ሓደጋ', [{'root': 'ሕድግ:A', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ሕድግ:A', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(3, 'ዝኣተዉ', [{'root': 'እትው:A', 'um': 'PFV1;*RELC;3;PL;MASC'}])
+##
+የማነ- ጸጋሞም ዝሓለፉዎ ቦታታት እንታይ ከም ዝሓዘ ኣየረጋገጹን ።
+(2, 'ዝሓለፉዎ', [{'root': 'ሕልፍ:B', 'um': 'PFV1;*RELC;3;PL;MASC;AC3SM'}, {'root': 'ሕልፍ:A', 'um': 'PFV1;*RELC;3;PL;MASC;AC3SM'}])
+(6, 'ዝሓዘ', [{'root': 'ትሕዝ:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(7, 'ኣየረጋገጹን', [{'root': 'ርግጽ:B', 'um': 'PFV1;NEG;CAUS+RECP;3;PL;MASC'}])
+##
+ጥዑምዝጊ ተስፋይ
+##
+ታሽዓይ ክፋል
+##
+ካልኣይ ቦጦሎኒ ፡ ድሕሪ ምዝላቕ ካብ 5 ክሳብ 8 ሚያዝያ ፡ ኣብ ሩባ ዓንሰባ ኣብ ዝጸንሐትሉ እዋን ፡ ብርጌድ
+(15, 'ዝጸንሐትሉ', [{'root': 'ጽንሕ:A', 'um': 'PFV1;*RELC;3;SG;FEM;OB3SM'}])
+##
+26 እውን ኣብኡ ተጠርኒፉ ።
+(3, 'ተጠርኒፉ', [{'root': 'ጥርንፍ:E', 'um': 'PFV2;PASS;3;SG;MASC'}])
+##
+9 ሚያዝያ ፡ ዓብዱ መጠሪ ፡ ካልኣይ ቦጦሎኒ ፡ ኣብ መስሓሊት ክትጠማጠም ንዝቐነየት ብርጌድ 87 ናይ
+(11, 'ክትጠማጠም', [{'root': 'ጥምጥም:E', 'um': 'IPFV;RECP;2;SG;MASC'}, {'root': 'ጥምጥም:E', 'um': 'IPFV;RECP;3;SG;FEM'}])
+(12, 'ንዝቐነየት', [{'root': 'ቅንይ:B', 'um': 'PFV1;*RELC;3;SG;FEM;ACC'}])
+##
+ክ/ሰራዊት 61 ንኽትቅይር ክትብገስ ሓበረ ።
+(2, 'ንኽትቅይር', [{'root': 'ቅይር:B', 'um': 'IPFV;3;SG;FEM'}, {'root': 'ቅይር:B', 'um': 'IPFV;2;SG;MASC'}])
+(3, 'ክትብገስ', [{'root': 'ብግስ:B', 'um': 'IPFV;PASS;2;SG;MASC'}, {'root': 'ብግስ:B', 'um': 'IPFV;PASS;3;SG;FEM'}])
+(4, 'ሓበረ', [{'root': 'ሕብር:B', 'um': 'PFV1;3;SG;MASC'}, {'root': 'ሕብር:A', 'um': 'PFV1;3;SG;MASC'}])
+##
+እታ ብርጌድ ፡ ምስ 'ቲ ኣብ ቅድሚ ታባ መስሓሊት ብቸሜንቶ ኣብ ዝተሃደመ ድፋዕ ዓሪዱ ዝከላኸል ሓይሊ ክትፋለም
+(11, 'ዝተሃደመ', [{'root': 'ህድም:B', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}, {'root': 'ህድም:A', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}])
+(13, 'ዓሪዱ', [{'root': 'ዕርድ:A', 'um': 'PFV2;3;SG;MASC'}])
+(14, 'ዝከላኸል', [{'root': 'ክልክል:E', 'um': 'IPFV;*RELC;RECP;1;SG'}, {'root': 'ክልክል:E', 'um': 'IPFV;*RELC;RECP;3;SG;MASC'}])
+(15, 'ሓይሊ', [{'root': 'ሕይል:B', 'um': 'IMP;2;SG;FEM'}])
+##
+ስለ ዝቐነየት ፡ ብመውጋእቲን መስዋእቲን ተዳኺማ እያ ።
+(1, 'ዝቐነየት', [{'root': 'ቅንይ:B', 'um': 'PFV1;*RELC;3;SG;FEM'}])
+(5, 'ተዳኺማ', [{'root': 'ድክም:A', 'um': 'PFV2;RECP;3;SG;FEM'}])
+##
+ካልኣይ ቦጦሎኒ ፡ ናብ ተልእኾኣ ንኽትብገስ ተዳለወት ።
+(5, 'ንኽትብገስ', [{'root': 'ብግስ:B', 'um': 'IPFV;PASS;3;SG;FEM'}, {'root': 'ብግስ:B', 'um': 'IPFV;PASS;2;SG;MASC'}])
+##
+ሚያዝያ 9 ፡ ካልኣይ ቦጦሎኒ ንብርጌድ 87 ናይ ክፍለ ሰራዊት 61 ቀይራ ድፋዕ ተረከበት ።
+(8, 'ክፍለ', [{'root': 'ፍልይ:A', 'um': 'IPFV;PASS;1;SG'}, {'root': 'ፍልይ:A', 'um': 'IPFV;PASS;3;SG;MASC'}])
+(11, 'ቀይራ', [{'root': 'ቅይር:B', 'um': 'IMP;2;SG;MASC;AC3SF'}, {'root': 'ቅይር:B', 'um': 'IMP;2;PL;FEM'}])
+##
+መስመር ምክልኻል
+##
+ብርጌድ 87 ካብ ርሑቕ ብዝውርወሩ ሃውናት ይድሰቕ ነበረ ።
+(4, 'ብዝውርወሩ', [{'root': 'ውርውር:E', 'um': 'IPFV;*RELC;PASS;3;PL;MASC;INS'}])
+(6, 'ይድሰቕ', [{'root': 'ድስቅ:B', 'um': 'IPFV;PASS;1;SG'}, {'root': 'ድስቅ:B', 'um': 'IPFV;PASS;3;SG;MASC'}])
+(7, 'ነበረ', [{'root': 'ንብር:B', 'um': 'PFV1;3;SG;MASC'}, {'root': 'ንብር:A', 'um': 'PFV1;3;SG;MASC'}])
+##
+ለይትን መዓልቲን ዘየቋርጽ ደብዳብ ።
+(2, 'ዘየቋርጽ', [{'root': 'ቁርጽ:A', 'um': 'IPFV;NEG;*RELC;CAUS+RECP;1;SG'}, {'root': 'ቁርጽ:A', 'um': 'IPFV;NEG;*RELC;CAUS+RECP;3;SG;MASC'}])
+##
+መከላኸሊ ዕርድታት ስለ ዘይተሃንጸን ዕድል ስለ ዘይነበረን ፡ ኣብ ኳና ፡ ንእሽቶይ ከውሊ ፡ ኮታ ኣብ ንኣሽቱ
+(3, 'ዘይተሃንጸን', [{'root': 'ህንጽ:A', 'um': 'PFV1;NEG;*RELC;PASS;3;SG;MASC;AC3PF'}])
+(6, 'ዘይነበረን', [{'root': 'ንብር:B', 'um': 'PFV1;NEG;*RELC;3;SG;MASC;AC3PF'}, {'root': 'ንብር:A', 'um': 'PFV1;NEG;*RELC;3;SG;MASC;AC3PF'}])
+(12, 'ከውሊ', [{'root': 'ክውል:B', 'um': 'IMP;2;SG;FEM'}])
+##
+ኣእማንን ቃልዕን ዄንካ ኣይሂ ሃውናት ምቕባል እዩ ።
+##
+እንተ ናይ ክልቲኣቶም ሓይልታት ኣጋር ሰራዊት ግን ፡ ኣላሽ ከም ዝበሉ ኣብ በቦታኦም ይጠማመቱ ነበሩ ።
+(10, 'ዝበሉ', [{'root': 'ብህል:A', 'um': 'PFV1;*RELC;3;PL;MASC'}])
+(13, 'ይጠማመቱ', [{'root': 'ጥምት:B', 'um': 'IMP;RECP;3;PL;MASC'}, {'root': 'ጥምት:B', 'um': 'IPFV;RECP;3;PL;MASC'}])
+(14, 'ነበሩ', [{'root': 'ንብር:B', 'um': 'PFV1;3;PL;MASC'}, {'root': 'ንብር:A', 'um': 'PFV1;3;PL;MASC'}])
+##
+እቲ ዓቢ ስኽፍታ ፡ ክልተ መስርዕ ናይ 'ታ ኣሃዱ ዝዓረዳሉ ቦታ እዩ ነይሩ ።
+(9, 'ዝዓረዳሉ', [{'root': 'ዕርድ:A', 'um': 'PFV1;*RELC;3;PL;FEM;OB3SM'}])
+##
+ኣቐዲመን ኣብ 'ቲ ቦታ ዝነበራ ኣሃዱታት ፡ ብሰንኪ 'ታ ሓደገኛን ተኣፋፊትን ቦታ ብዙሕ ክሳራ እዩ ገጢሙወን ።
+(0, 'ኣቐዲመን', [{'root': 'ቅድም:B', 'um': 'PFV2;CAUS;3;PL;FEM'}])
+(4, 'ዝነበራ', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;PL;FEM'}, {'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SF'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;PL;FEM'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SF'}])
+(15, 'ገጢሙወን', [{'root': 'ግጥም:B', 'um': 'PFV2;3;SG;MASC;AC3PF'}, {'root': 'ግጥም:A', 'um': 'PFV2;3;SG;MASC;AC3PF'}])
+##
+እቲ መከላኸሊ መስመር ፡ ብብዙሕ ኣንፈት ዝህረምን ቃልዕን ብምንባሩ ፡ ብዙሕ ክሳራ ከጋጥም
+(12, 'ከጋጥም', [{'root': 'ግጥም:A', 'um': 'IPFV;CAUS+RECP;3;SG;MASC'}, {'root': 'ግጥም:A', 'um': 'IPFV;CAUS+RECP;1;SG'}])
+##
+ከም ዝዀነ ኣብ ትጽቢቶም ነይሩ ።
+(1, 'ዝዀነ', [{'root': 'ክውን:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+##
+እቲ ብጉብዝናኡን ድልዳለኡን ዝልለ ተጋዳላይ ፍስሃየ ርእሶም ( መጽዓኛ )
+(3, 'ዝልለ', [{'root': 'ልልይ:A', 'um': 'IPFV;*RELC;PASS;1;SG'}, {'root': 'ልልይ:A', 'um': 'IPFV;*RELC;PASS;3;SG;MASC'}])
+##
+ግን ፡ ደብዳብ ጸላኢ ኣብ ዝባኖም ከጽሕዩ ኣይተዋሕጠሉን ።
+(6, 'ከጽሕዩ', [{'root': 'ጽሕይ:A', 'um': 'IPFV;CAUS;3;PL;MASC'}])
+(7, 'ኣይተዋሕጠሉን', [{'root': 'ውሕጥ:A', 'um': 'PFV1;NEG;PASS;3;SG;MASC;OB3SM'}])
+##
+ፋስ የለን - ምሳር እውን ከምኡ ።ንሱ ነቲ ተሪር ቀላጽሙ ኣሚኑ ገለ ክገብር ተበጊሱ ።
+(1, 'የለን', [{'root': 'ህልው:B', 'um': 'PFV1;NEG;3;SG;MASC'}])
+(10, 'ኣሚኑ', [{'root': 'እምን:A', 'um': 'PFV2;3;SG;MASC'}])
+(12, 'ክገብር', [{'root': 'ግብር:A', 'um': 'IPFV;1;SG'}, {'root': 'ግብር:A', 'um': 'IPFV;3;SG;MASC'}])
+(13, 'ተበጊሱ', [{'root': 'ብግስ:B', 'um': 'PFV2;PASS;3;SG;MASC'}])
+##
+ምሉእ ምሸትን ለይቲን
+##
+፡ ብዘይ ፋስን ምሳርን - በቲ ተሪር ቀላጽሙ ፡ ገረብ ዓንቋ እናመልዓሰ ፡ ድፋዕ ከስርሖም ዝኽእል ገረብ
+(11, 'እናመልዓሰ', [{'root': 'ምልዕስ:E', 'um': 'PFV1;3;SG;MASC'}])
+(14, 'ከስርሖም', [{'root': 'ስርሕ:A', 'um': 'IPFV;CAUS;1;SG;AC3PM'}, {'root': 'ስርሕ:A', 'um': 'IPFV;CAUS;1;SG;AC3PM'}, {'root': 'ስርሕ:A', 'um': 'IPFV;CAUS;3;SG;MASC;AC3PM'}, {'root': 'ስርሕ:A', 'um': 'IPFV;CAUS;3;SG;MASC;AC3PM'}])
+(15, 'ዝኽእል', [{'root': 'ክእል:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ክእል:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+##
+ይበትኽ ።
+(0, 'ይበትኽ', [{'root': 'ብትክ:A', 'um': 'IPFV;1;SG'}, {'root': 'ብትክ:A', 'um': 'IPFV;3;SG;MASC'}])
+##
+ካልኦት ኣባላት ፡ ምሉእ ምሸትን ለይቲን ኣእማን እናፈንቀሉን እናጓረቱን ይዃንዩ ።
+(9, 'ይዃንዩ', [{'root': 'ኩንይ:C', 'um': 'IMP;3;PL;MASC'}, {'root': 'ኩንይ:C', 'um': 'IPFV;3;PL;MASC'}])
+##
+ኣብ መወዳእታ
+##
+ንነብሲ-ወከፍ መስርዕ ሰለስተ ዝተሃደመ መከላኸሊ ክሰርሑ በቒዖም ።
+(3, 'ዝተሃደመ', [{'root': 'ህድም:B', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}, {'root': 'ህድም:A', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}])
+(5, 'ክሰርሑ', [{'root': 'ስርሕ:A', 'um': 'IPFV;3;PL;MASC'}, {'root': 'ስርሕ:A', 'um': 'IPFV;3;PL;MASC'}])
+(6, 'በቒዖም', [{'root': 'ብቅዕ:A', 'um': 'PFV2;3;PL;MASC'}])
+##
+ብድኻም ለሽ ኢሎም ።
+(2, 'ኢሎም', [{'root': 'ብህል:A', 'um': 'PFV2;3;PL;MASC'}])
+##
+ካብ ንጣር ናይ 'ቲ ዘየቋርጽ ሃውናት ግን ሂወቶም ዓቂቦም ።
+(4, 'ዘየቋርጽ', [{'root': 'ቁርጽ:A', 'um': 'IPFV;NEG;*RELC;CAUS+RECP;1;SG'}, {'root': 'ቁርጽ:A', 'um': 'IPFV;NEG;*RELC;CAUS+RECP;3;SG;MASC'}])
+(8, 'ዓቂቦም', [{'root': 'ዕቅብ:B', 'um': 'PFV2;3;PL;MASC'}, {'root': 'ዕቅብ:B', 'um': 'PFV2;3;PL;MASC'}])
+##
+ሰራዊት ደርግ ፡ ነቲ መጠነ ሰፊሕን ቅልጡፍን መጥቃዕቲ ሰራዊት ህዝባዊ ግንባር ፡ ብናይ መወዳእታ ሓይሉ
+(4, 'መጠነ', [{'root': 'ምጥን:B', 'um': 'PFV1;3;SG;MASC'}])
+(14, 'ሓይሉ', [{'root': 'ሕይል:B', 'um': 'IMP;2;PL;MASC'}, {'root': 'ሕይስ:A', 'um': 'PFV1;3;PL;MASC;OB3SM'}, {'root': 'ሕይክ:A', 'um': 'PFV1;3;PL;MASC;OB3SM'}, {'root': 'ሕይሽ:A', 'um': 'PFV1;3;PL;MASC;OB3SM'}, {'root': 'ሕይው:A', 'um': 'PFV1;3;PL;MASC;OB3SM'}, {'root': 'ሕይቅ:A', 'um': 'PFV1;3;PL;MASC;OB3SM'}])
+##
+ንኽከላኸል ፡ ኣብ ምድራብ ተወሰኽቲ ኣሃዱታቱን ካብ ድፋዕ ናብ ድፋዕ ምንቅስቓስን ስለ ዝነበረ ፡ ሓለፍቲ
+(0, 'ንኽከላኸል', [{'root': 'ክልክል:E', 'um': 'IPFV;RECP;1;SG'}, {'root': 'ክልክል:E', 'um': 'IPFV;RECP;3;SG;MASC'}])
+(12, 'ዝነበረ', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;MASC'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+##
+ካልኣይ ቦጦሎኒ ፡ ሓይሊን ዓይነትን ናይ 'ቲ ኣብ ቅድመኦም ዝዓረደ ጸላኢኦም ክጭብጥዎ ኣይከኣሉን ።
+(9, 'ዝዓረደ', [{'root': 'ዕርድ:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(12, 'ኣይከኣሉን', [{'root': 'ክእል:A', 'um': 'PFV1;NEG;3;PL;MASC'}])
+##
+ኩነታት ጸላኢኦም ፈሊጦም ፡ ብኡ መጠን ናይ ምክልኻል ይኹን ምጥቃዕ ስልቲ ንምምራጽ እምበኣር ፡ ገለ ስጉምቲ
+(2, 'ፈሊጦም', [{'root': 'ፍልጥ:A', 'um': 'PFV2;3;PL;MASC'}])
+(5, 'መጠን', [{'root': 'ምይጥ:A', 'um': 'PFV1;3;SG;MASC;AC3PF'}])
+(8, 'ይኹን', [{'root': 'ክውን:A', 'um': 'IMP;3;SG;MASC'}])
+##
+ክወስዱ ነይሩዎም ።
+(0, 'ክወስዱ', [{'root': 'ውስድ:A', 'um': 'IPFV;3;PL;MASC'}])
+##
+ብዝተወሰነ ሓይሊ መጥቃዕቲ ብምክያድ ፡ ካብ ግብረ-መልሲ ወይ እውን ምሩኻት ሰራዊት ደርግ ሓበሬታ ንክረኽቡ ፡ ብሃይለማርያም ገሬሱስ ( ኣስታ ) እትምራሕ ካልኣይቲ ጋንታ ናይ ካልኣይቲ ሓይሊ ነቲ መደብ ተረቑሐት ።
+(0, 'ብዝተወሰነ', [{'root': 'ውስን:B', 'um': 'PFV1;*RELC;PASS;3;SG;MASC;INS'}])
+(1, 'ሓይሊ', [{'root': 'ሕይል:B', 'um': 'IMP;2;SG;FEM'}])
+(20, 'እትምራሕ', [{'root': 'ምርሕ:A', 'um': 'IPFV;*RELC;PASS;2;SG;MASC'}])
+(25, 'ሓይሊ', [{'root': 'ሕይል:B', 'um': 'IMP;2;SG;FEM'}])
+(28, 'ተረቑሐት', [{'root': 'ርቁሕ:A', 'um': 'PFV1;PASS;3;SG;FEM'}])
+##
+11 ሚያዝያ ሰዓት 9 ናይ ምሸት ፡ መከላኸሊ መስመር ወገን ሰጊራ ናብ
+(5, 'ምሸት', [{'root': 'ምሽት:A', 'um': 'IMP;2;SG;MASC'}, {'root': 'ምሽት:A', 'um': 'IMP;2;SG;MASC'}])
+(10, 'ሰጊራ', [{'root': 'ስግር:B', 'um': 'PFV2;3;SG;FEM'}, {'root': 'ስግር:B', 'um': 'PFV2;3;SG;FEM'}, {'root': 'ስግር:A', 'um': 'PFV2;3;SG;FEM'}])
+##
+ክፍልታት ቦጦሎኒ 2-26-16
+##
+ሓይሊ ጸላኢ ፡ ብስቕታ ኣድብዩ ክሳብ ናብ ዝምችኦ ቦታ ዝኣትዉ ይጽበዮም እዩ ዝነበረ ።
+(0, 'ሓይሊ', [{'root': 'ሕይል:B', 'um': 'IMP;2;SG;FEM'}])
+(4, 'ኣድብዩ', [{'root': 'ድብይ:A', 'um': 'IMP;CAUS;2;PL;MASC'}, {'root': 'ድብይ:A', 'um': 'PFV2;CAUS;3;SG;MASC'}])
+(7, 'ዝምችኦ', [{'root': 'ምችእ:B', 'um': 'IPFV;*RELC;PASS;3;SG;MASC;AC3SM'}, {'root': 'ምችእ:B', 'um': 'IPFV;*RELC;1;SG;AC3SM'}, {'root': 'ምችእ:B', 'um': 'IPFV;*RELC;3;SG;MASC;AC3SM'}, {'root': 'ምችእ:B', 'um': 'IPFV;*RELC;PASS;1;SG;AC3SM'}])
+(9, 'ዝኣትዉ', [{'root': 'እትው:A', 'um': 'IPFV;*RELC;3;PL;MASC'}])
+(10, 'ይጽበዮም', [{'root': 'ጽብይ:B', 'um': 'IPFV;PASS;1;SG;AC3PM'}, {'root': 'ጽብይ:B', 'um': 'IPFV;PASS;3;SG;MASC;AC3PM'}])
+(12, 'ዝነበረ', [{'root': 'ንብር:B', 'um': 'PFV1;*RELC;3;SG;MASC'}, {'root': 'ንብር:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+##
+ንሳቶም ከኣ ገለ ዘይቅዱው ነገር ከም ዝህሉ ገሚቶም ብዝያዳ ተዳልዮም ።
+(6, 'ዝህሉ', [{'root': 'ህልው:B', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ህልው:B', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(7, 'ገሚቶም', [{'root': 'ግምት:B', 'um': 'PFV2;3;PL;MASC'}])
+(9, 'ተዳልዮም', [{'root': 'ድልይ:A', 'um': 'IMP;CAUS+RECP;3;SG;FEM;AC3PM'}, {'root': 'ድልይ:A', 'um': 'IPFV;CAUS+RECP;2;SG;MASC;AC3PM'}, {'root': 'ድልይ:A', 'um': 'IPFV;CAUS+RECP;3;SG;FEM;AC3PM'}])
+##
+ብሃንደበት ካብ ቅድሚት ፡ የማንን ጸጋምን ቡምባታት ኢድ ዘነቦም ።
+(8, 'ዘነቦም', [{'root': 'ዝንብ:A', 'um': 'PFV1;3;SG;MASC;AC3PM'}, {'root': 'ዝንብ:A', 'um': 'PFV1;3;SG;MASC;AC3PM'}])
+##
+ከቢድ ህድኣት ናብ ከቢድ ነውጺ ተለዊጡ ።
+(4, 'ነውጺ', [{'root': 'ንውጽ:B', 'um': 'IMP;2;SG;FEM'}])
+(5, 'ተለዊጡ', [{'root': 'ልውጥ:B', 'um': 'PFV2;PASS;3;SG;MASC'}])
+##
+ኣባላት ጋንታ ፡ ብቕጽበት በብመንገዶም ከኸውሎም ናብ ዝኽእል መታኾሲ እናተጓየዩ ከለዉ ፡ ተጋደልቲ ሳባ ገብረሊባኖስ ከቢድ ፡ ስዕዲ ኣወልኬር ከኣ ቀሊል መውጋእቲ ኣጋጠመን ።
+(5, 'ከኸውሎም', [{'root': 'ክውል:B', 'um': 'IPFV;CAUS;1;SG;AC3PM'}, {'root': 'ክውል:B', 'um': 'IPFV;CAUS;3;SG;MASC;AC3PM'}])
+(7, 'ዝኽእል', [{'root': 'ክእል:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ክእል:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(9, 'እናተጓየዩ', [{'root': 'ጉይይ:A', 'um': 'PFV1;RECP;3;PL;MASC'}])
+(10, 'ከለዉ', [{'root': 'ህልው:B', 'um': 'PFV1;3;PL;MASC'}])
+(22, 'ኣጋጠመን', [{'root': 'ግጥም:A', 'um': 'PFV1;CAUS+RECP;3;SG;MASC;AC3PF'}])
+##
+ድሕሪ ውሱን ግዜ ፡ ግብረ- መልሲ ኣባላት ካልኣይቲ ጋንታ ምስ ተወሰኾ ፡ ግንባር ምሉእ ዘነቓነቐ ውግእ መሰለ
+(5, 'መልሲ', [{'root': 'ምልስ:B', 'um': 'IMP;2;SG;FEM'}])
+(10, 'ተወሰኾ', [{'root': 'ውስክ:B', 'um': 'IMP;PASS;2;SG;MASC;AC3SM'}, {'root': 'ውስክ:B', 'um': 'PFV1;PASS;3;SG;MASC;AC3SM'}])
+(14, 'ዘነቓነቐ', [{'root': 'ንቅንቅ:E', 'um': 'PFV1;*RELC;CAUS+RECP;3;SG;MASC'}])
+(16, 'መሰለ', [{'root': 'ምስል:B', 'um': 'PFV1;3;SG;MASC'}, {'root': 'ምስል:A', 'um': 'PFV1;3;SG;MASC'}])
+##
+።
+##
+" ሃለው. . .ሃለው. . . ሃለው. . ." ደሃይ ናይ 'ታ ጋንታ ክፈልጥ ዝተረበጸ ወዲ ሃይለ ደጋጊሙ ጸውዐ
+(13, 'ክፈልጥ', [{'root': 'ፍልጥ:A', 'um': 'IPFV;1;SG'}, {'root': 'ፍልጥ:A', 'um': 'IPFV;3;SG;MASC'}])
+(14, 'ዝተረበጸ', [{'root': 'ርብጽ:B', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}])
+(17, 'ደጋጊሙ', [{'root': 'ድግም:A', 'um': 'PFV2;ITER;3;SG;MASC'}])
+(18, 'ጸውዐ', [{'root': 'ጽውዕ:B', 'um': 'PFV1;3;SG;MASC'}])
+##
+።
+##
+መልሲ የለን - ራድዮ መራሒ ጋንታ ኣስታ ድምጺ የብላን ።
+(0, 'መልሲ', [{'root': 'ምልስ:B', 'um': 'IMP;2;SG;FEM'}])
+(1, 'የለን', [{'root': 'ህልው:B', 'um': 'PFV1;NEG;3;SG;MASC'}])
+(8, 'የብላን', [{'root': 'ህልው:B', 'um': 'PFV1;NEG;3;SG;MASC;AC3SF'}])
+##
+ወዲ ሃይለ ዓቕሉ ጸበቦ - ተሻቒሉ - እቲ ኣብ ስግሩ ፡ ኣብ ቀረባ ርሕቐት ዝተኣጉደ ሓዊ ፡ ነቲ ዝለኣኾ
+(3, 'ጸበቦ', [{'root': 'ጽብብ:A', 'um': 'PFV1;3;SG;MASC;AC3SM'}])
+(5, 'ተሻቒሉ', [{'root': 'ሽቅል:A', 'um': 'PFV2;RECP;3;SG;MASC'}])
+(12, 'ቀረባ', [{'root': 'ቅርብ:B', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ቅርብ:B', 'um': 'PFV1;3;SG;MASC;AC3SF'}, {'root': 'ቅርብ:A', 'um': 'PFV1;3;PL;FEM'}, {'root': 'ቅርብ:A', 'um': 'PFV1;3;SG;MASC;AC3SF'}])
+(14, 'ዝተኣጉደ', [{'root': 'እጉድ:A', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}])
+(18, 'ዝለኣኾ', [{'root': 'ልእክ:A', 'um': 'PFV1;*RELC;3;SG;MASC;AC3SM'}])
+##
+ሰራዊት ዝምሕር ኰይኑ ኣይተሰመዖን ።
+(1, 'ዝምሕር', [{'root': 'ምሕር:A', 'um': 'IPFV;*RELC;3;SG;MASC'}, {'root': 'ምሕር:A', 'um': 'IPFV;*RELC;1;SG'}])
+(2, 'ኰይኑ', [{'root': 'ክውን:A', 'um': 'PFV2;3;SG;MASC'}])
+##
+በታ ጋንታ እናተጨነቐ ፡ ደጋጊሙ ብራድዮ ክረኽቦም ክፍትን ከሎ ፡ እቲ ጋንታ ዝኣተወቶ ጸቢብ ቦታ ፡ ብበብዓይነቶም ኣጽዋር ይሕረስ ነይሩ ።
+(2, 'እናተጨነቐ', [{'root': 'ጭንቅ:A', 'um': 'PFV1;PASS;3;SG;MASC'}])
+(4, 'ደጋጊሙ', [{'root': 'ድግም:A', 'um': 'PFV2;ITER;3;SG;MASC'}])
+(6, 'ክረኽቦም', [{'root': 'ርክብ:A', 'um': 'IPFV;1;SG;AC3PM'}, {'root': 'ርክብ:A', 'um': 'IPFV;3;SG;MASC;AC3PM'}])
+(7, 'ክፍትን', [{'root': 'ፍትን:B', 'um': 'IPFV;3;SG;MASC'}, {'root': 'ፍትን:B', 'um': 'IPFV;1;SG'}])
+(8, 'ከሎ', [{'root': 'ህልው:B', 'um': 'PFV1;3;SG;MASC'}])
+(12, 'ዝኣተወቶ', [{'root': 'እትው:A', 'um': 'PFV1;*RELC;3;SG;FEM;AC3SM'}])
+(18, 'ይሕረስ', [{'root': 'ሕርስ:A', 'um': 'IMP;3;SG;MASC'}, {'root': 'ሕርስ:A', 'um': 'IMP;3;SG;MASC'}, {'root': 'ሕርስ:A', 'um': 'IPFV;PASS;1;SG'}, {'root': 'ሕርስ:A', 'um': 'IPFV;PASS;1;SG'}, {'root': 'ሕርስ:A', 'um': 'IPFV;PASS;3;SG;MASC'}, {'root': 'ሕርስ:A', 'um': 'IPFV;PASS;3;SG;MASC'}])
+##
+ካብቲ ንብር ባህርያቱ ዝተፈልየ ጥዕናዊ ጸገማት ክትርእዪ እንከለኺ ኣብ ሓደገኛ ጥርዚ ዘብጽሕ መስተ ወሲዱ ከይከውን ተዓዘቢ ።
+(3, 'ዝተፈልየ', [{'root': 'ፍልይ:A', 'um': 'PFV1;*RELC;PASS;3;SG;MASC'}])
+(6, 'ክትርእዪ', [{'root': 'ርእይ:A', 'um': 'IPFV;2;SG;FEM'}, {'root': 'ርእይ:A', 'um': 'IPFV;2;SG;FEM'}])
+(7, 'እንከለኺ', [{'root': 'ህልው:B', 'um': 'PFV1;2;SG;FEM'}])
+(11, 'ዘብጽሕ', [{'root': 'ብጽሕ:A', 'um': 'IPFV;*RELC;CAUS;1;SG'}, {'root': 'ብጽሕ:A', 'um': 'IPFV;*RELC;CAUS;3;SG;MASC'}])
+(13, 'ወሲዱ', [{'root': 'ውስድ:A', 'um': 'PFV2;3;SG;MASC'}])
+(14, 'ከይከውን', [{'root': 'ክውን:A', 'um': 'IPFV;NEG;1;SG'}, {'root': 'ክውን:A', 'um': 'IPFV;NEG;3;SG;MASC'}])
+(15, 'ተዓዘቢ', [{'root': 'ዕዝብ:B', 'um': 'IMP;PASS;2;SG;FEM'}])
+##
+ኣብ ሓጺር ግዜ ብዙሕ ኣስካሪ መስተ ዝሰተየ ሰብ ፡ ዓቐን ኣልኮል ደሙ ኣዝዩ ስለ ዝበዝሕ ምስማም የስዕበሉ ።
+(6, 'ዝሰተየ', [{'root': 'ስትይ:A', 'um': 'PFV1;*RELC;3;SG;MASC'}])
+(11, 'ደሙ', [{'root': 'ድምው:B', 'um': 'IMP;2;SG;MASC'}])
+(14, 'ዝበዝሕ', [{'root': 'ብዝሕ:A', 'um': 'IPFV;*RELC;1;SG'}, {'root': 'ብዝሕ:A', 'um': 'IPFV;*RELC;3;SG;MASC'}])
+(16, 'የስዕበሉ', [{'root': 'ስዕብ:A', 'um': 'IPFV;CAUS;1;SG;OB3SM'}, {'root': 'ስዕብ:A', 'um': 'IPFV;CAUS;3;SG;MASC;OB3SM'}])
+##

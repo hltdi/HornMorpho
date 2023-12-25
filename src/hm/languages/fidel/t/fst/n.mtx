@@ -1,38 +1,66 @@
 $ prep
-  ብ [adp=ብ]
-  ን [adp=ን]
-  -- [adp=None]
+  ብ [adp=ብ,-neg,+prep]
+  ን [adp=ን,-neg,+prep]
+  ኣብ	[adp=ኣብ,-neg,pos=PRON,+prep]
+  ናብ	[adp=ናብ,-neg,pos=PRON,+prep]
+  ካብ	[adp=ካብ,-neg,pos=PRON,+prep]
+  እንካብ	[adp=ካብ,-neg,pos=PRON,+prep]
+  ምስ	[adp=ምስ,-neg,pos=PRON,+prep]
+  ከም	[adp=ከም,-neg,pos=PRON,+prep]
+  ብዘይካ	[adp=ብዘይ,-neg,pos=PRON,+prep]
+  ክንዳ	[adp=ክንዲ,-neg,pos=PRON,+prep]
+  ምእንታ	[adp=ምእንቲ,-neg,pos=PRON,+prep]
+  ስለ	[adp=ስለ,-neg,pos=PRON,+prep]
+  -- [adp=None,-prep]
 
-## Boundary separating stem from suffixes
 $ prep_bound
   -
+
+$ neg1
+  ኣይ		[+neg,pos=ADJ|PRON]
+  --		[-neg];[pos=N]
 
 $ prestem
   <
 
 $ stem
-  +n_stem+  [pos=n]
+#  ->poss_bound	+irr_n+	[pos=ADJ|PRON]
+  +n_stem+  [pos=N|ADJ|PRON]
 
 $ poststem
   >
 
 ## Boundary separating prefixes from stem
-$ bound2
-  -
+#$ bound2
+#  -
 
 $ poss
-  አይ		[pp=1,pn=1]
-  ና		[pp=1,pn=2]
-  ካ		[pp=2,pn=1,pg=m]
-  ኪ		[pp=2,pn=1,pg=f]
-  ኩም 	[pp=2,pn=2,pg=m]
-  ክን 		[pp=2,pn=2,pg=f]
-  ኡ 		[pp=3,pg=m,pn=1]
-  ኣ 		[pp=3,pg=f,pn=1]
-  ኦም 	[pp=3,pg=m,pn=2]
-  አን		[pp=3,pg=f,pn=2]
-  --		[pp=0]
+  አይ		[p=s1]
+  ና		[p=p1]
+  ካ		[p=sm2]
+  ኪ		[p=sf2]
+  ኩም 	[p=pm2]
+  ክን 		[p=pf2]
+  ኡ 		[p=sm3]
+  ኣ 		[p=sf3]
+  ኦም 	[p=pm3]
+  ኤን		[p=pf3]
+  --		[p=0]
+
+$ poss_bound
+  -
+
+$ neg2
+  ን		[+neg]
+  --		[-neg]
+
+$ neg2_bound
+  -
 
 $ conj
   ን		[cnj=ን]
+  ስ		[cnj=ስ]
+  ሲ		[cnj=ስ]
+  ከ		[cnj=ከ]
+  ዶ		[cnj=ዶ]
   --      	[cnj=None]

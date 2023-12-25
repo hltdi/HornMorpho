@@ -51,11 +51,6 @@ Versions/
 docs/old
 notes/
 src/hm/languages/*/data/
-#src/hm/languages/*/fst/
-#src/hm/languages/*/lex/
-#src/hm/languages/*/cas/
-#src/hm/languages/*/stat/
-#src/hm/languages/*/trans/
 src/hm/ext_data
 
 # PyInstaller

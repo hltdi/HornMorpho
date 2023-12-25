@@ -107,6 +107,7 @@ POS v V
 ->UD INS	Case=Ins
 # ን- (also Dative, Benefactive)
 ->UD ACC	Case=Acc
+->UD INT	Mood=Int
 
 t:: i:IPFV;; p:PFV1;; j:IMP;; c:PFV2
 #t,ax:: c,0:V.CVB ;; c,al:PRF
@@ -118,6 +119,8 @@ pos:: v:V
 neg:: NEG
 
 rel:: True:*RELC
+
+int:: True:INT
 
 ## morphological valence/voice
 a,v:: 0,p:PASS;; 0,a:CAUS;; a,p:RECP;; a,a:CAUS+RECP;; i,0:ITER;; i,p:RECP;; i,a:CAUS+RECP
@@ -141,6 +144,7 @@ sconj:: ዝ:*RELC;; ክ:PURP;; እንክ:PURP;; ከምዝ:*CCOMP;; ምስ:*TEMP;
 
 POS cop V
 ->UD NEG	Polarity=Neg
+->UD INT	Mood=Int
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
@@ -148,8 +152,9 @@ POS cop V
 ->UD PL		Number=Plur
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
-#t:: prs:PRS;; pst:PST
+
 neg:: NEG
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL
 g:: m:MASC;; f:FEM
+int:: True:INT

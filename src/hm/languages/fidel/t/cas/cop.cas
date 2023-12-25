@@ -1,0 +1,7 @@
+weighting = UNIFICATION
+
+## FSTs
+# delete gemination character; comment out for phonetic FST
+>gem<
+# Morphotactics
+>cop.mtx<

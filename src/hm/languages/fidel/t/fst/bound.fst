@@ -14,7 +14,7 @@ start -> C2i	[{I2i}]
 C2i -> C2i		[:-]
 C2i -> start	[:ይ]
 
-## stem-suffix boundary
+## stem-prefix boundary
 
 # ዘስበረ; ተስ/ብር
 C -> C2e		[{I2e}]
@@ -22,6 +22,10 @@ start -> C2e	[{I2e}]
 C2e -> C2e		[:-]
 C2e -> C2e+		[:<]
 C2e+ -> stem0	[:ኣ]
+
+# ዘሎ ከሎ etc.
+C2e+  -> C2alle	[:-]	 [root=ህልው]
+C2alle -> stem	[:ኣ]
 
 C -> .Ia		[:እ]
 start -> .Ia	[:እ]
@@ -50,7 +54,7 @@ stem -> stem		[^N;/]
 # stem ending in vowel
 stem -> stemV.+		[*v]
 stemV.+ -> stemV+	[:>]
-stemV+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;^^q;:-]
+stemV+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;^^q;:አ;:-]
 
 # stem ending a consonant
 stem -> stemC.+		[*]
@@ -89,7 +93,7 @@ stem -> j3a1	[{LI2a}]
 # stem-final laryngeals + /e/ have three possible realizations
 # stem can end in ኤ for verbs like ረአየ
 stem -> stem_e		[{I2e};{LI2a};{LI2E};ኤ]
-stem -> stem_a		[{I2a}]
+stem -> stem_a		[{I2a};ላ:ለ]
 stem -> stem_o		[{I2o}]
 stem -> stem_u		[{I2u};ቑ;ኹ;ጉ]
 stem -> stem_i		[{I2i}]
@@ -99,15 +103,15 @@ stem -> stem_E		[{I2e}]
 # or delete the perf 3sm አ suffix before 3p objects
 
 stem_e -> stem_e+	[:>]
-stem_e+ -> stem_e+	[:-;_;:አ]
+stem_e+ -> stem_e+	[:-;:አ]
 stem_e+ -> suff		[:አ]
 
 stem_a -> stem_a+	[:>]
-stem_a+ -> stem_a+	[:-;_;:አ]
+stem_a+ -> stem_a+	[:-;:አ]
 stem_a+ -> suff		[:ኣ]
 
 stem_o -> stem_o+	[:>]
-stem_o+ -> stem_o+	[:-;_;:አ]
+stem_o+ -> stem_o+	[:-;:አ]
 stem_o+ -> suff		[:ኦ]
 
 # these can only be subject suffixes
@@ -154,13 +158,9 @@ ate+ -> suff		[:አ]
 
 # object suffixes without vowel infixes
 suff -> suff+			[:-]
-#suff+ -> suff			[ኒ;ና;ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ]
 suff+ -> suff+			[/]
 # are k,q possible?
-suff+ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ;ኻ;ኺ;ኹ;ኽ]
-
-#suff+ -> suff+/			[/]
-#suff+/ -> suff			[ኒ;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ለ;ሉ;ላ;ሎ]
+suff+ -> suff			[ኒ;ን;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ;ኻ;ኺ;ኹ;ኽ]
 
 suff -> suff			[^N;/]
 

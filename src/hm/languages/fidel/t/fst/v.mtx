@@ -2,6 +2,7 @@ $ adp
   ብ [adp=ብ,+rel,-mc]
   ን [adp=ን,+rel,-mc]
   ከም [adp=ከም,+rel,t=p|i,-mc]
+  ስለ	[adp=ስለ,+rel,t=p|i,-mc]
   እንተ [adp=እንተ,conj1=ዝ,+rel,-mc,t=p];[adp=እንተ,-rel,-mc,-neg,t=p];[adp=እንተ,-rel,-neg,t=c]
   -- [adp=0]
 
@@ -9,26 +10,28 @@ $ adp_bound
   -
 
 $ conj1
-  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,-neg]
+  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,-neg];[conj1=ዝ,+rel,-mc,t=p|i,+neg,root=ህልው,+O]
   ዘይ	  [conj1=ዝ,+rel,-mc,t=p|i,+neg]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
   እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg]
   # this could also be ከም + ዝ (in which case ከም would be an adp?)
   ንኽ      [conj1=ንኽ,-rel,-mc,t=i,-neg]
   ንኸይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
-  ክ	 	 [conj1=ክ,-rel,-mc,t=i,-neg]
+  ክ	 	 [conj1=ክ,-rel,-mc,t=i,-neg];[conj1=ክ,-rel,-mc,t=p,-neg,root=ህልው]
   ከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
-  እንክ	 [conj1=አንክ,-rel,-mc,t=i,-neg]
+  እንክ	 [conj1=አንክ,-rel,-mc,t=i,-neg];[conj1=እንክ,-rel,-mc,t=p,-neg,root=ህልው]
   እንከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg]
   ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
   እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0,-neg]
   ኣይም [conj1=ም,-rel,-mc,t=p,adp=0,+neg]
   ም   [conj1=ም,-rel,-mc,t=p,adp=0,-neg]
   እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
+  # ደሎ
+  ድ   [conj1=ድ,+int,conj2=0,+mc,-neg,-rel,root=ህልው]
   # ደይትምለስ
   ደይ   [conj1=ድ,+int,conj2=0,+mc,+neg]
-  ኣይ   [conj1=0,+neg,-rel,+mc]
-  -- [-neg,-rel,+mc,conj1=0]
+  ኣይ   [conj1=0,+neg,-rel,+mc,t=p|i|j]
+  -- [-neg,-rel,+mc,conj1=0];[+neg,root=ህልው]
 
 $ neg1_bound
   -
@@ -40,6 +43,8 @@ $ sb_rel
   --	[-rel];[t=p];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
 
 $ sb_pre
+  ->ob_inf	 +alle+		[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው,lemma=አ_ለ,gl=exist]
+  ->neg2	 +allewo+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው,lemma=አ_ለ,gl=exist,sp=3,sn=1,sg=m,+O]
   # counts as non-consonant for imperfective, but a consonant for jussive
   ይ   [t=i,sp=3,sn=2,-Cpre];[t=i,sp=3,sn=1,sg=m,-Cpre];[t=i,sp=1,sn=1,-Cpre];[t=j,sp=3,sn=1,sg=m,+Cpre];[t=j,sp=3,sn=2,+Cpre]
   ት   [t=i,sp=2,+Cpre];[t=i|j,sp=3,sn=1,sg=f,+Cpre];[t=j,sp=2,+neg,+Cpre]
@@ -59,7 +64,11 @@ $ pass_rel
 $ voice
   # v=p
   ተ-		[v=p,t=p|c,+K1];[v=p,t=j,sp=2,-neg,+K1]
-  /-		[v=p,t=j,sp=1|3,-K1];[v=p,t=j,sp=2,+neg,-K1];[v=p,t=i,a=a|i,-K1];[v=p,t=i,a=0,c=A,tmp=[2=L],-K1];[v=p,t=i,a=0,c=C|F,-K1]
+  /ተ-	[v=p,t=i,a=i,R1=L,+K1];
+                [v=p,t=j,a=i,R1=L,sp=1|3,+K1];[v=p,t=j,a=i,R1=L,sp=2,+neg,+K1]
+  /-		[v=p,t=j,sp=1|3,R1=X,-K1];[v=p,t=j,R1=X,sp=2,+neg,-K1];
+		[v=p,t=i,a=0,c=A,tmp=[2=L],-K1];[v=p,t=i,a=a|i,R1=X,-K1];
+		[v=p,t=i,a=0,c=C|F,-K1]
   # v=a
   ኣ-		[v=a,a=0,+K1]
   ኣ/-	[v=a,a=a|i,R1=X,-K1]
@@ -108,7 +117,7 @@ $ ss_bound
 
 $ ob_inf
   አ	<>	[+O,oinf=e,t=i|p];[+O,oinf=e,t=j,op=1|2]
-  _	<>	[+O,oinf=e,t=j,op=3] # ;[+O,oinf=_,t=p|c,op=3;oc=a]
+  _	<>	[+O,oinf=e,t=j,op=3]
   ኡ	<>	[+O,oinf=u]
   እ	<>	[+O,oinf=I|Ia,op=3,oc=a]
   ኣ	<>	[+O,oinf=Ia,op=1|2];[+O,oinf=Ia,op=3,oc=o]
@@ -117,8 +126,10 @@ $ ob_inf
 
 $ ob_suf
   [op=1,oc=a,+O,sp=2|3]
-    ኒ		[on=1,sn=2]
-   /ኒ		[on=1,sn=1]
+    ኒ		[on=1,sn=2,-neg];[on=1,sn=2,+neg,-mc]
+    ን		[on=1,sn=2,+neg,+mc]
+   /ኒ		[on=1,sn=1,-neg];[on=1,sn=1,+neg,-mc]
+   /ን		[on=1,sn=1,+neg,+mc]
     ና		[on=2,sn=2]
    /ና		[on=2,sn=1]
   [op=1,oc=o,+O,sp=2|3]
@@ -178,8 +189,8 @@ $ os_bound
   -
 
 $ neg2
-  ን		[+neg,+mc,t=i|p|c]
-  --		[-neg];[-mc];[t=j]
+  ን		[+neg,+mc,t=i|p]
+  --		[-neg];[-mc];[t=j|c]
 
 $ neg2_bound
   -

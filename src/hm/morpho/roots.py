@@ -164,9 +164,10 @@ class Roots:
         If duplicate is non-zero, there is already a set of states for this root, so make it unique with an extra character.
         '''
         show = False
-#        show = cons == ['ሕ', 'ድ', 'ር'] or cons == ['ክ', 'እ', 'ል']
+#        show = cons == ['ል', 'ህ', 'ም']
         if show:
-            print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}, char_sets={}".format(cons, seglevel, feats.__repr__(), gemination, rev_char_sets))
+            print("*** Creating root states for {}, seglevel={}, feats={}, gemination={}".format(cons, seglevel, feats.__repr__(), gemination))
+
         def get_sense():
             ffeats = feats.split(',')
             for ff in ffeats:
@@ -362,8 +363,8 @@ class Roots:
                 posmorph.rootfeats[state_name].append(feats)
             else:
                 posmorph.rootfeats[state_name] = [feats]
-#        if sense:
-#            print("** Creating root features for {}".format(cons))
+        if sense and show:
+            print("   ** Creating root features for {}".format(cons))
         for index, cs in enumerate(cons):
             i = index+1
             if isinstance(cs, tuple):
@@ -402,25 +403,37 @@ class Roots:
 
         # Root may be explicitly 'strong', in which case weak rules are ignored (this prevents ጸለየ (ጽልይ) from being treated like ለየ (ልይይ).
         expl_strength = weight.get('strong', False)
-
         # make the simplex states and arcs
         drules = duprules.get(cls)
-        if show:
-            print("*** weight {}".format(weight.__repr__()))
-        charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
-        if show:
-            print("  ** charsets {}".format(charsets))
-        # Based on rules, assign ±strong to the root
-        strength_feat = 'tstrong' if gen else 'strong'
-        weight = weight.set_all(strength_feat, strong)
-        weight1 = dup_weight(drules, weight)
-        weight1 = weight1.set_all('a', 0, force=False, verbose=show)
-        if show:
-            print(" ** SIMP cons_chars {}, it_charsets {}, weight {}".format(cons_chars, charsets, weight1.__repr__()))
-        mrs(fst, charsets, weight1, states, cons_chars, iterative=False, aisa=False)
+
+        if  (cls_rules := rules.get(cls)):
+            if show:
+                print(" Attempting to create simplex arcs")
+            # simplex rules
+#            if show:
+#                print("  *** weight {}".format(weight.__repr__()))
+            charsets, strong = Roots.make_charsets(cons, cls, rules.get(cls), drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
+#            if show:
+#                print("  ** charsets {}".format(charsets))
+            # Based on rules, assign ±strong to the root
+            strength_feat = 'tstrong' if gen else 'strong'
+            weight = weight.set_all(strength_feat, strong, verbose=show)
+#            if show:
+#                print("  ** ATTEMPTING TO SET a to 0 in {}".format(weight.__repr__()))
+            weight1 = weight.set_all('a', 0, force=False, verbose=show)
+            if weight1:
+                weight1 = dup_weight(drules, weight)
+                if show:
+                    print(" ** SIMP cons_chars {}, it_charsets {}, weight {}".format(cons_chars, charsets, weight1.__repr__()))
+                mrs(fst, charsets, weight1, states, cons_chars, iterative=False, aisa=False)
         if (cls_it_rules := rules.get(cls + '_i')):
+            if show:
+                print(" Attempting to create iterative arcs")
+            # iterative rules
             drules = duprules.get(cls + '_i')
             it_charsets, strongi = Roots.make_charsets(cons, cls + '_i', cls_it_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
+            strength_feat = 'tstrong' if gen else 'strong'
+            weight = weight.set_all(strength_feat, strong, verbose=False)
             # Add a=i if it's compatible with other features
             weighti = weight.set_all('a', 'i', force=False, verbose=show)
             if weighti:
@@ -431,18 +444,26 @@ class Roots:
         if (cls_m_rules := rules.get(cls + '_m')):
             drules = duprules.get(cls + '_m')
             m_charsets, strongi = Roots.make_charsets(cons, cls + '_m', cls_m_rules, drules, char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
-            # Add a=i if it's compatible with other features
+            strength_feat = 'tstrong' if gen else 'strong'
+            weight = weight.set_all(strength_feat, strong, verbose=show)
+            # Add a=m if it's compatible with other features
             weightm = weight.set_all('d', 'm', force=False)
             if weightm:
                 weightm = dup_weight(drules, weightm)
                 mrs(fst, m_charsets, weightm, states, cons_chars, manner=True, iterative=False, aisa=False, main_charsets=charsets)
         if (cls_a_rules := rules.get(cls + '_a')):
+            if show:
+                print(" Attempting to create A arcs")
             drules = duprules.get(cls + '_a')
             a_charsets, strongi = Roots.make_charsets(cons, cls + '_a', cls_a_rules, drules,  char_maps, charmap_weights, expl_strength=expl_strength, weight=weight)
+            strength_feat = 'tstrong' if gen else 'strong'
+            weight = weight.set_all(strength_feat, strong, verbose=show)
             # Add a=a if it's compatible with other features
             weighta = weight.set_all('a', 'a', force=False)
             if weighta:
                 weighta = dup_weight(drules, weighta)
+                if show:
+                    print(" ** A cons_chars {}, a_charsets {}, weight {}".format(cons_chars, a_charsets, weighta.__repr__()))
                 mrs(fst, a_charsets, weighta, states, cons_chars, iterative=False, aisa=True, main_charsets=charsets)
 
     @staticmethod
@@ -460,9 +481,9 @@ class Roots:
         and whether the root is strong.
         '''
         show = False
-#        show = consonants == ['ሕ', 'ድ', 'ር'] or consonants == ['ክ', 'እ', 'ል']
+#        show = consonants == ['ድ', 'ቅ', 'ስ']
         if show:
-            print("  **** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
+            print("**** Making character sets for {}, {}; {}; weights {}".format(consonants, cls, expl_strength, charmap_weights.__repr__()))
         if not rules:
             print("Warning: no rules for consonants {} in class {}".format(consonants, cls))
             return
@@ -485,8 +506,8 @@ class Roots:
             # assume that root classes have romanized keys
             if is_geez(cons):
                 cons = romanize(cons, 'ees')
-            if show:
-                print("    ** checking {}".format(cons))
+#            if show:
+#                print("    ** checking {}".format(cons))
             position = index + 1
             # Skip the weak rules for this position if one has already been found
             # or if the root is expicitly strong
@@ -530,9 +551,19 @@ class Roots:
         
     @staticmethod
     def make_charset(cons, position, vowels, default='eI', char_maps=None, charmap_weights=None, cons_feat=None, show=False):
-#        if show:
-#            print(" ** cons {}, position {}, vowels {}".format(cons, position, vowels))
+        if show:
+            print(" ** cons {}, position {}, vowels {}".format(cons, position, vowels))
         result = []
+        # add ungeminated versions of all geminated vowels if they're not already included
+        # %% not actually sure why this is necessary, but it only seems to matter for generation
+        add_degem = []
+        for v in vowels:
+            if isinstance(v, str) and v[0] == '/' and v[1] not in vowels:
+                add_degem.append(v[1])
+        for v in add_degem:
+            vowels.append(v)
+        if show:
+            print(" ** updated vowels {}".format(vowels))
         for vowel_spec in vowels:
             geminated = False
             vowel_feat = None
@@ -549,8 +580,8 @@ class Roots:
                 if vowel_feat.unify_FS(cons_feat) == 'fail':
                     continue
             if char_maps and (vmap := char_maps.get(v)):
-#                if show:
-#                    print("  ** {} in char map {}".format(v, vmap))
+                if show:
+                    print("  ** {} in char map {}".format(v, vmap))
                 if (cm_weight := charmap_weights.get(v)):
                     if cons_feat and cm_weight.unify_FS(cons_feat) == 'fail':
                         continue
@@ -577,8 +608,8 @@ class Roots:
                 else:
                     if cv not in result:
                         result.append(cv)
-#        if show:
-#            print("  ** result {}".format(result))
+        if show:
+            print("  ** result {}".format(result))
         return result
 
     @staticmethod

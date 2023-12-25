@@ -1787,9 +1787,9 @@
 <ር ይ ጥ>		c=B
   a=0,v=p ; a=0,v=a
 <ር ድ እ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p,-O ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
 <ር ድ እ>		c=B
-  a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
 <ር ድ ይ>		c=A
   a=0,v=0 ; a=0,v=a
 <ር ድ ድ>		c=A

@@ -223,7 +223,7 @@ def proc_voice_class(dct):
             for tlabel, count in trans.items():
                 total += count
         return total
-    def combine_
+#    def combine_
     to_del = []
     for root, entry in dct.items():
         total = get_root_total(entry)
@@ -354,6 +354,188 @@ def add_feat(fs, feat):
         return '[' + feat + ']'
     return fs[:-1] + ",{}]".format(feat)
 
+def kane_lv2lex():
+    done = []
+    with open("/Users/michael/Projects/LingData/Ti/Kane/cmpd_ted.txt", encoding='utf8') as file:
+        entries = file.read().split('###\n')
+        print("n entries {}".format(len(entries)))
+        for entry in entries[1:]:
+            entry = entry.split('\n')[0].strip()
+#            if len(entry) > 50:
+#                print(entry)
+            entry = entry.split(';;')
+            e1 = entry[0].strip()
+            if e1.count(' ') > 4:
+                if 'DB' in e1:
+                    e1 = e1.split('DB')[0]
+                    done.append(e1.split())
+                elif 'CS' in e1:
+                    e1 = e1.split('CS')[0]
+                    done.append(e1.split())
+                elif 'TA' in e1:
+                    e1 = e1.split('TA')[0]
+                    done.append(e1.split())
+                elif '<RE' in e1:
+                    e1 = e1.split('<RE')[0]
+                    done.append(e1.split())
+            else:
+                if not entry[-1]:
+                    entry = entry[:2]
+                if 'TA' in entry[1]:
+                    entry[1] = entry[1].split('TA')[0].strip()
+                done.append(entry)
+    with open("/Users/michael/Projects/LingData/Ti/Kane/cmpd_ted2.txt", 'w', encoding='utf8') as file:
+        for item in done:
+            if len(item) == 2:
+                x = item[0].split()
+                y = item[1].split()
+                if len(x) == 3:
+                    x = ' '.join(x[:2])
+                    y = ' '.join(y[:2])
+                else:
+                    x = x[0]
+                    y = y[0]
+#                print(x, y)
+                print("{} ; {}".format(x, y), file=file)
+            elif len(item) == 4:
+                print("{} ; {}".format(item[0], item[2]), file=file)
+            elif len(item) == 3:
+                print("{} ; {} ; {}".format(item[0].split()[0], item[1].split()[0], item[2]), file=file)
+            else:
+                print("{} {} ; {} {}".format(item[0], item[1], item[3], item[4]), file=file)
+#    return done
+
+def kane_lv2lex2():
+    results = []
+    with open("/Users/michael/Projects/LingData/Ti/Kane/cmpd_ted2.txt", encoding='utf8') as file:
+        for line in file:
+            line = line.split(' ; ')
+            g = line[0]
+            r = line[1]
+            s = line[2] if len(line) == 3 else 0
+            gr = geezify(r, 'ees')
+            gr = '//'.join(gr.split())
+            results.append((gr, s))
+    with open("hm/languages/fidel/t/lex/v_light.lex", 'w', encoding='utf8') as file:
+        for g, s in results:
+            if s == 0:
+                print(g, file=file)
+#    return results
+
+def kane_nouns2lex():
+    results = []
+    with open("/Users/michael/Projects/LingData/Ti/Kane/n_ted10.txt") as file:
+        entries = file.read().split('###\n')
+        count = 0
+        for entry in entries[1:]:
+            # ignore the English gloss
+            entry = entry.split('\n')[0]
+            singulars, plurals = entry.split(';;')
+            sgeez = []
+            pgeez = []
+            singulars = singulars.split(';')
+            for singular in singulars:
+                if len(singular.split(',')) != 2:
+                    print("** singular {}".format(singular))
+                sg, sr = singular.split(',')
+                sr = post2pregem(sr)
+                sgeez.append(geezify(sr, 'ees'))
+            if plurals:
+                plurals = plurals.split(';')
+                for plural in plurals:
+                    pg, proman = plural.split(',')
+                    proman = post2pregem(proman)
+                    pg = geezify(proman, 'ees')
+                    pgeez.append(geezify(proman, 'ees'))
+#            print("sing {}, plur {}".format(sgeez, pgeez))
+            for sing in sgeez:
+                results.append("{}\t''\t[-pl]".format(sing))
+            for plur in pgeez:
+                results.append("{}\t{}\t[+pl]".format(plur, sgeez[0]))
+
+    with open("hm/languages/fidel/t/lex/n_stem.lex", 'w', encoding='utf8') as file:
+        for result in results:
+            print(result, file=file)
+    return results
+
+def kane_adj2lex():
+    results = []
+    with open("/Users/michael/Projects/LingData/Ti/Kane/a_ted2.txt") as file:
+        entries = file.read().split('###\n')
+        count = 0
+        for entry in entries[1:]:
+            entry = entry.split('\n')[0]
+            forms = entry.split(';;')
+            masc = forms[0].strip()
+            zey = False
+            if not masc:
+                continue
+            masc = masc.split(';')
+            if len(masc) > 1:
+                alt = masc[0]
+                dflt = masc[1]
+                alt = alt.split(',')[-1]
+                dflt = dflt.split(',')[-1]
+                alt = geezify(post2pregem(alt), 'ees')
+                dflt = geezify(post2pregem(dflt), 'ees')
+                masc = [alt, dflt]
+                results.append("{}\t{}\t[-pl,pos=ADJ]".format(alt, dflt))
+            else:
+                masc = masc[0].split(',')[-1]
+                masc = geezify(post2pregem(masc), 'ees')
+                feats = "-pl,pos=ADJ"
+                if masc.startswith("ዘይ") or masc.startswith("ዘ/ይ"):
+                    zey = True
+                    feats += ",-neg"
+                results.append("{}\t''\t[{}]".format(masc, feats))
+            fem = ''
+            plur = ''
+            if len(forms) > 1:
+                plur = forms[1].strip()
+                if plur:
+                    plur = plur.split(';')
+#                if len(plur) > 1:
+#                    print("** multiple plur: {}".format(plur))
+                    p = []
+                    for pp in plur:
+                        if ',' in pp:
+                            p.append(pp.split(',')[-1].strip())
+                        elif ' ' in pp:
+                            p.append(pp.split()[-1].strip())
+                        else:
+                            p.append(pp.strip())
+                    plur = [geezify(post2pregem(pp), 'ees') for pp in p]
+                    feats = "+pl,pos=ADJ"
+                    if zey:
+                        feats += ",-neg"
+                    for p in plur:
+                        results.append("{}\t{}\t[{}]".format(p, masc, feats))
+            if len(forms) == 3:
+                # there's a feminine form
+                fem = forms[2].strip()
+                if ' ' in fem:
+                    fem = fem.split()[-1].strip()
+                fem = geezify(post2pregem(fem), 'ees')
+                results.append("{}\t''\t[+fem,-pl,pos=ADJ]".format(fem))
+    return results
+
+def ti_nouns2fidel():
+    lines = []
+    with open("hm/languages/tir/lex/n_stem.lex") as file:
+        for line in file:
+            form1, x, fs = line.split()
+            # form2 could have post-gemination character '_'; convert to pre-gemination '/'
+            form1 = post2pregem(form1)
+            form2 = geezify(form1, 'ees')
+#            pos = get_pos(fs) or 'n'
+            fs = fs.replace('plr', 'pl')
+#            new_fs = "[mwe=[+hdfin,-hdaff,deppos=adj],pos=N]".format(pos)
+            lines.append("{}  ''  {}".format(form2, fs))
+    with open("hm/languages/fidel/t/lex/n_stem.lex", 'w', encoding='utf8') as file:
+        for line in lines:
+            print(line, file=file)
+#    return lines
+
 def mwe_nouns2fidel():
     lines = []
     with open("hm/languages/amh/lex/n_stemMX.lex") as file:
@@ -425,6 +607,7 @@ def post2pregem(string):
     Move and convert post-gemination character _ to pre-gemination character /.
     '''
     chars = ''
+    string = string.replace("W_", "_W")
     for index, char in enumerate(string[:-1]):
         if string[index+1] == '_':
             chars += '/' + char

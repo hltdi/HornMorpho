@@ -1449,6 +1449,8 @@ class POSMorphology:
         if kwargs.get('mwe', False):
             string.replace(Morphology.mwe_sep, ' ')
         match = POSMorphology.segment_re.match(string)
+        if not match:
+            return '', [], '', []
         pre, stem, suf = match.groups()
         if kwargs.get('combine_segs', False):
             stem = self.language.combine_segments(stem)
@@ -1906,6 +1908,10 @@ class POSMorphology:
         elif trace:
             print('No generation FST loaded')
             return []
+
+    def gen5(self, root, upd=None, feats=None, trace=False):
+        return self.gen(root, features=feats, update_feats=upd, v5=True,
+                        trace=trace)
 
     def gen(self, root, features=None, from_dict=False,
             postproc=False, update_feats=None, del_feats=None,

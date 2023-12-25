@@ -43,10 +43,10 @@ CODES = {'am': 'amh',
 #         'm': 'mvz',
          'so': 'som', 's': 'som',
          'ti': 'tir', 'tg': 'tir',
-         'te': 'tig', 'T': 'tig',
+         'T': 'tig',
          'om': 'orm', 'o': 'orm'}
 
-FIDEL = ['a', 't', 'ch', 'g', 'k', 'm']
+FIDEL = ['a', 't', 'ch', 'g', 'k', 'm', 'te']
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name

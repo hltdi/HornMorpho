@@ -1,8 +1,5 @@
 weighting = UNIFICATION
 
-## Special characters
-# =, - morpheme boundaries
-
 ## IO Abbreviations
 # All basic root consonants
 #{e2I}    =   ል:ለ;ም:መ;ር:ረ;ስ:ሰ;ቅ:ቀ;ብ:በ;ት:ተ;ን:ነ;ክ:ከ;ዝ:ዘ;ድ:ደ;ግ:ገ;ጥ:ጠ;ፍ:ፈ;ኵ:ኰ;ቍ:ቈ;ጕ:ጐ;ኍ:ኈ;ጵ:ጰ;ጽ:ጸ;ፕ:ፐ;እ:አ;ሽ:ሸ;ች:ቸ;ኝ:ኘ;ዥ:ዠ;ጅ:ጀ;ጭ:ጨ

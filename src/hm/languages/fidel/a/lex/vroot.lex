@@ -40,11 +40,11 @@
 
 # አረጀ: be old; give a little
 <ር ጅ ይ>	    c=A
-  a=0,v=a ; a=0,v=as ; a=a,v=a ; a=i,v=p ; a=i,d=m
+  a=0,v=a ; a=0,v=as ; a=i,v=p ; a=i,d=m
 
 # አ/ራጀ: give a little, sense 2
-#<ር ጅ ይ>	    c=A,s=2
-#  a=a,v=a ; a=i,d=m
+<ር ጅ ይ>	    c=A,s=2
+  a=a,v=a ; a=i,d=m
 
 # ፈራ: fear, sense 1
 <ፍ ር እ>	    c=A,s=1

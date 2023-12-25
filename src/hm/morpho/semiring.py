@@ -203,16 +203,16 @@ class FSSet(set, FS):
         if force:
             fss = self.unfreeze()
             for f in fss:
-#                if verbose:
-#                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
+                if verbose:
+                    print("  ** set_all forceably setting {} {} to {}".format(f.__repr__(), feat, value))
                 f[feat] = value
             return FSSet(fss)
         u = self.unify_FS(FeatStruct("[{}={}]".format(feat, value)))
         if u != 'fail':
             u = u.unfreeze()
             for f in u:
-#                if verbose:
-#                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
+                if verbose:
+                    print("  ** set_all setting {} {} to {}".format(f.__repr__(), feat, value))
                 f[feat] = value
             if verbose:
                 print(" ** set_all {}".format(u.__repr__()))
