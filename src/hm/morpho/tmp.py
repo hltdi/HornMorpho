@@ -201,6 +201,7 @@ class Template:
 #        if 'a=i' in constraints:
 #            print("  ** {}".format(features))
         weight = make_weight(features, target=gen)
+#        print("&& Weight {}".format(weight.__repr__()))
         cls = weight.get('tc') if gen else weight.get('c')
         strong_feat = 'tstrong' if gen else 'strong'
         strong = weight.get(strong_feat)

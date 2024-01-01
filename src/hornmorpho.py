@@ -40,13 +40,18 @@ TI_SKIP = \
 
 ## Functions specific to v. 5.
 
-def am_morphsem1(n_sents=100, start=0, file=None, path="data/am_v_classes.txt"):
+def am_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
+                                   path="data/am_v_classes.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         'a',
         path="../../TAFS/datasets/CACO/CACO.txt",
         n_sents=n_sents, max_sents=n_sents, start=start,
         pos=['v'], props=['root', 'um'], skip_mwe=False,
-        skip=AM_SKIP, gemination=False
+        skip=AM_SKIP,
+        gemination=False,
+        local_cache=cache,
+        corpus=corpus,
+        verbosity=verbosity
         )
     if file:
         c.write_props(file)
@@ -55,19 +60,23 @@ def am_morphsem1(n_sents=100, start=0, file=None, path="data/am_v_classes.txt"):
             c.write_props(file)
     return c
 
-def ti_morphsem1(n_sents=50, start=0, file=None, path="data/ti_v_classes.txt"):
+def ti_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
+                                   path="data/ti_v_classes.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         't',
         path="../../TT/data/tlmd_v1.0.0/valid1.txt",
         n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v'], props=['root', 'um'], skip_mwe=True,
+        pos=['v'], props=['root', 'um'], skip_mwe=False,
         skip=TI_SKIP,   
-        gemination=False
+        gemination=False,
+        local_cache=cache,
+        corpus=corpus,
+        verbosity=verbosity
         )
     if file:
         c.write_props(file)
     elif path:
-        with open(path, 'w', encoding='utf8') as file:
+        with open(path, 'a', encoding='utf8') as file:
             c.write_props(file)
     return c
 

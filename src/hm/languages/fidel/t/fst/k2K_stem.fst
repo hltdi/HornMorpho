@@ -10,6 +10,10 @@ c1 -> c2		[^x]
 c1 -> c2		[{q2Q}]	[+K2]
 c1 -> c2		[^k]		[-K2]
 
+# 3rd segment may be geminated
+c2 -> c2_		[/]
+c2_ -> c3		[^N]
+
 c2 -> c3		[^x]
 c2 -> c3		[{q2Q}]	[+K3]
 c2 -> c3		[^k]		[-K3]

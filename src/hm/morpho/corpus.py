@@ -54,6 +54,8 @@ class Corpus():
                  constraints=None, local_cache=None, timeit=False,
                  v5=False, sep_feats=True, gemination=False, sep_senses=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
+                 # a previous corpus to start from (local_cache and last_line)
+                 corpus=None,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -72,8 +74,16 @@ class Corpus():
         # Unknown tokens
         self.unks = set()
         # Cache for storing segmentations
-        self.local_cache = local_cache if isinstance(local_cache, dict) else {}
-        # Cache for storing grammatical filtered words
+        if isinstance(local_cache, dict):
+            self.local_cache = local_cache
+        elif corpus:
+            self.local_cache = corpus.local_cache
+        else:
+            self.local_cache = {}
+        # Start from the end of the previous corpus if there is one
+        if corpus:
+            start = corpus.last_line
+            print("Starting from last line of previous corpus {}: {}".format(corpus, start))
         # Max number of words in sentence objects
         self.max_words = 1
         # Index of last line in file
@@ -97,9 +107,10 @@ class Corpus():
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
-#                    print("  $$ {}".format(line))
-                    if linepos and linepos % 25 == 0:
-                        print("Checked {} sentences, included {}".format(linepos, len(self.data)))
+#                    if verbosity:
+#                        print("  $$ {}".format(line))
+                    if linepos and linepos % 50 == 0:
+                        print("Analyzed {} sentences".format(linepos))
                     linepos += 1
                     if constraints: # and maxnum != None or maxpunc != None:
                         tokens = line.split()
@@ -123,7 +134,7 @@ class Corpus():
                         if v5:
                             sentence_obj =\
                               self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
-                                                 skip_mwe=skip_mwe, skip=skip,
+                                                 skip_mwe=skip_mwe, skip=skip, cache=self.local_cache,
                                                  pos=pos, verbosity=verbosity)
                             if sentence_obj:
                                 self.data.append(line)
@@ -152,6 +163,7 @@ class Corpus():
             self.data = data
             if v5 and segment:
                 self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
+                              cache=self.local_cache,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []

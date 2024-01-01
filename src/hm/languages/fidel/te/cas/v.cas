@@ -1,7 +1,6 @@
 weighting = UNIFICATION
 
 ## Special characters
-# = - morpheme boundaries
 
 ## IO Abbreviations
 # All basic root consonants
@@ -13,5 +12,5 @@ weighting = UNIFICATION
 {o2e}    =   ለ:ሎ;ሐ:ሖ;መ:ሞ;ረ:ሮ;ሰ:ሶ;ቀ:ቆ;በ:ቦ;ተ:ቶ;ነ:ኖ;ከ:ኮ;ዘ:ዞ;ደ:ዶ;ገ:ጎ;ጠ:ጦ;ፈ:ፎ;ሠ:ሦ;ኀ:ኆ;ዐ:ዖ;ጰ:ጶ;ጸ:ጾ;ፀ:ፆ;ፐ:ፖ;ኣ:ኣ
 {e2o}    =   ሎ:ለ;ሖ:ሐ;ሞ:መ;ሮ:ረ;ሶ:ሰ;ቆ:ቀ;ቦ:በ;ቶ:ተ;ኖ:ነ;ኮ:ከ;ዞ:ዘ;ዶ:ደ;ጎ:ገ;ጦ:ጠ;ፎ:ፈ;ሦ:ሠ;ኆ:ኀ;ዖ:ዐ;ጶ:ጰ;ጾ:ጸ;ፆ:ፀ;ፖ:ፐ;ኣ:አ
 
->stem_suf<
+#>stem_suf<
 >v.mtx<

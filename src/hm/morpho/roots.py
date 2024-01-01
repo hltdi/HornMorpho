@@ -45,6 +45,8 @@ def geezify_CV(c, v):
     elif is_geez(c):
         c = romanize(c, 'ees')
     cv = c+v
+#    if v == 'o':
+#        print("** creating root char {}".format(cv))
     if len(c) > 1:
 #        print("** Geezifying {} {}".format(c, v))
         if c[-1] == 'u':

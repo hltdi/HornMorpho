@@ -95,6 +95,17 @@ feats:
     v = 0 | p | a 
     t = p | i | j
 
+  pos: vn v_noun
+    a = 0 | a | i
+    v = 0 | p | a
+    d = inf | ins | a | m
+
+  pos: vn_stem v_noun_stem
+    a = 0 | a | i
+    v = 0 | p | a
+    d = inf | ins | a | m
+    neg = False | True
+
   pos: cop copula
     pos = COP
     p = 1 | 2 | 3

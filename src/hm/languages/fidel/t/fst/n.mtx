@@ -17,15 +17,15 @@ $ prep_bound
   -
 
 $ neg1
-  ኣይ		[+neg,pos=ADJ|PRON]
-  --		[-neg];[pos=N]
+  ኣይ		[+neg,pos=ADJ|PRON];[+neg,pos=N,d=inf]
+  --		[-neg];[pos=N,d=0]
 
 $ prestem
   <
 
 $ stem
-#  ->poss_bound	+irr_n+	[pos=ADJ|PRON]
-  +n_stem+  [pos=N|ADJ|PRON]
+  +n_stem+  [pos=N|ADJ|PRON,d=0]
+  >>vn_stem<<
 
 $ poststem
   >
