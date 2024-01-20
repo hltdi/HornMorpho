@@ -39,7 +39,7 @@
   a=0,v=p,gl=learn ; a=0,v=ast ; a=i,d=m
 
 # አረጀ: be old; give a little
-<ር ጅ ይ>	    c=A
+<ር ጅ ይ>	    c=A,s=1
   a=0,v=a ; a=0,v=as ; a=i,v=p ; a=i,d=m
 
 # አ/ራጀ: give a little, sense 2
@@ -59,8 +59,7 @@
   a=0,v=0,t=p|c|i|0,-tr;a=0,v=0,t=j,sp=1|3,-tr;a=0,v=0,t=j,sp=2,+neg,-tr;a=0,v=p,-tr;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p,-tr;a=i,v=a
 
 <ግ ኝ ይ>		c=A
-  # restrict regular forms to a=0|a so irregular ተገናኘ can be handled specially
-  a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p
+  a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=p ; a=i,v=a
 
 <ጽ ል ይ>	      c=B,+strong
   a=0,v=0 ; a=a,v=a ; a=a,v=a ; a=i,d=m
@@ -1039,8 +1038,6 @@
   a=0,v=0 ; a=0,v=a ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ብ ቅ ል>	c=A
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=i,d=m
-<ብ እ ል>	c=A
-  a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ብ እ ስ>	c=A
   a=0,v=0 ; a=0,v=a ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ብ ክ ል>	c=B

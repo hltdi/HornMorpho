@@ -21,11 +21,12 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i|c,v=0,-dup23]
 [t=i,v=a]
-[t=c,v=p]
+[t=c,v=p,-dup23]
 ^eo	**u	**
 
 [t=i|c,v=0,+dup23]
-^eo	**:	-
+[t=c,v=p,+dup23]
+^eo	**u:	-
 
 [t=j,v=0]
 **u	^eo	**
@@ -156,12 +157,11 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i,v=0,-dup23]
 [t=c,v=0,-dup23]
-[t=c,v=p|ast]
 [t=j,v=ast]
 ኣ	**	**
 
 [t=i,v=0,+dup23]
-[t=c,v=0,+dup23]
+[t=c,+dup23]
 ኣ	**:	-
 
 [t=j,v=0]
@@ -633,7 +633,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=i,c=A,+strong
 # Include v=as though it's rare
-[t=p]
+[t=p,v=0|p|a|as]
 [t=i,v=p]
 ^e	^a	^e:	**
 
@@ -644,7 +644,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^e	^a	^e	**
 
 [t=j,v=0|a|as]
-[t=c]
+[t=c,v=0|p|a|as]
 ^e	^a	**	**
 
 %%a=i,c=B,+strong == A

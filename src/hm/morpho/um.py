@@ -455,17 +455,20 @@ class UniMorph:
         """
         Convert a string consisting of UM features to a string consisting of UD features.
         """
+#        print("%% converting {} to UD".format(um))
         udfeats = set()
         udalts = []
         um2ud = self.um2ud.get(pos)
         if not um2ud:
             return ''
         for umfeat in um.split(';'):
+#            print("  %% umfeat {}".format(umfeat))
             if udfeat := um2ud.get(umfeat):
+#                print("    %% udfeat {}".format(udfeat))
                 if isinstance(udfeat, tuple):
                     # multiple features
                     ummult, udfeat = udfeat
-                    print("%% ummult {}, udfeat {}".format(ummult, udfeat))
+#                    print("%% ummult {}, udfeat {}".format(ummult, udfeat))
                     if all([(umm in um) for umm in ummult]):
                         if udfeat[0] == '*':
                             if extended:

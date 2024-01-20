@@ -79,7 +79,7 @@ feats:
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     mwe::
-      {'hdfin': True, 'deppos': 'PART', 'hdaff': True, 'root': ['part',  'root']}
+      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
     a = 0 | a  | i
     v = 0 | p | a | as | ast
@@ -107,16 +107,16 @@ feats:
     sconj = None | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
     cconj = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
-  pos: v_stem v_stem
-    a = 0 | a | i
-    v = 0 | p | a | as | ast
-    t = p | i | j | c
-#    d = 0
+#  pos: v_stem v_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as | ast
+#    t = p | i | j | c
+##    d = 0
 
-  pos: v_light_stem v_light_stem
-    a = 0 | a | i
-    v = 0 | p | a | as
-    t = p | i | j | c
+#  pos: v_light_stem v_light_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    t = p | i | j | c
 
 #  pos: vn v_noun
 #    a = 0 | a | i

@@ -889,7 +889,7 @@
 <ሕ ጉ ም>		c=A
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ሕ ጉ ስ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
 <ሕ ጉ ብ>		c=B
   a=0,v=0 ; a=0,v=a
 <ሕ ጉ ድ>		c=A

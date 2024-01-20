@@ -97,6 +97,8 @@ AMH_NORM = \
 str.maketrans("ሐሑሒሓሔሕሖኅኁኂኃኄኅኆዐዑዒዓዔዕዖሠሡሢሣሤሥሦፀፁፂፃፄፅፆ",
               "ሀሂሂሃሄህሆሀሂሂሃሄህሆአኡኢኣኤእኦሰሱሲሳሴስሶጸጹጺጻጼጽጾ")
 
+DEPAL = {"ሽ": "ስ", "ች": "ት", "ኝ": "ን", "ጅ": "ድ", "ጭ": "ጥ", "ዥ": "ዝ", "ይ": "ል"}
+
 ### TOP-LEVEL FUNCTIONS
 
 def get_language(lang='am'):
@@ -231,6 +233,12 @@ def is_geez(form):
 #        if 57412 <= c <= 57415:
 #            return True
     return False
+
+def depalatalize(c):
+    '''
+    c is a 6th order geez char.
+    '''
+    return DEPAL.get(c, c)
 
 def convert_labial(form):
     """For Amharic and Tigrinya, convert *We to *o, *WI to *u.

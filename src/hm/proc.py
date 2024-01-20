@@ -89,61 +89,100 @@ POS_RE = re.compile(r'.*[,\[]pos=(\w+?)[,\]].*')
 
 FINAL_PUNC_RE = re.compile(r'(\w)([።፡፣!])')
 
-def group_vroots(path="data/am_v_props.txt"):
-    ignore = [] # ["ITER", "RECP", "CAUS+RECP"]
-    def simplify_um(um):
-        # exclude all but information about subject agreement, object agreement, and voice
+def classify_subj(um):
+    if isinstance(um, str):
         um = um.split(';')
-        um_ = []
-        for u in um:
-            if u in ["1", "2", "3", "MASC", "FEM", "SG", "PL",
-                     "TR", "CAUS", "PASS", # "ITER", "RECP", "CAUS+RECP",
-                     "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}"
-                    ]:
-                um_.append(u)
-        um_.sort()
-        return classify_um(um_)
-#        return ';'.join(um_)
-    def classify_um(um):
-        sb = ['1', '2', 'PL', 'FEM']
-        o = ["AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P"]
-        cls = []
-        if 'PASS' in um:
-            cls.append('pass')
-        elif 'CAUS' in um:
-            cls.append('caus2')
-        elif 'TR' in um:
-            cls.append('caus1')
+    if '1' in um or '2' in um:
+        return '12'
+    elif 'FEM' in um and 'PL' not in um:
+        return '3sf'
+    elif 'PL' in um:
+        return '3p'
+    else:
+        return '3sm'
+
+def classify_obj(um, ignore_png=False):
+    if isinstance(um, str):
+        um = um.split(';')
+    if ignore_png:
+        if any([u.startswith("AC") for u in um]):
+            return 'o'
         else:
-            cls.append('base')
-        if isinstance(um, str):
-            um = um.split(';')
-        if any([(u in sb) for u in um]):
-            # sb not 3p
-            if any([(u in o) for u in um]):
-                # trans
-                cls.append('*+o')
-            else:
-                cls.append('*-o')
-        elif any([(u in o) for u in um]):
-            cls.append('3sm+o')
+            return ''
+    if any([(o in um) for o in ["AC1S", "AC1P", "AC2SM", "AC2SF", "AC2P", "AC2PM", "AC2PF"]]):
+        return '12'
+    elif 'AC3SF' in um:
+        return '3sf'
+    elif any ([(o in um) for o in ["AC3P", "AC3PM", "AC3PF"]]):
+        return '3p'
+    elif 'AC3SM' in um:
+        return '3sm'
+    else:
+        return ''
+
+def classify_png(um):
+    s = classify_subj(um)
+    o = classify_obj(um, s == '12')
+    return s, o
+
+def classify_um_vc(um, language='a'):
+    if 'PASS' in um:
+        return 'pass'
+    elif 'CAUS' in um:
+        if language == 'a':
+            return 'caus2'
         else:
-            cls.append('3sm-o')
-        return tuple(cls)
-        
-    def add_root_um(dct, root, um):
-        if root in dct:
-            if um in dct[root]:
-                dct[root][um] += 1
-            else:
-                dct[root][um] = 1
+            return 'caus'
+    elif 'TR' in um:
+        return 'caus1'
+    elif 'ITER' in um:
+        return 'iter'
+    elif 'RECP' in um:
+        return 'rcp'
+    elif 'CAUS+RECP' in um:
+        return 'csrcp'
+    elif 'RECP1' in um:
+        return 'rcp1'
+    elif 'RECP2' in um:
+        return 'rcp2'
+    elif 'CAUS+RECP1' in um:
+        return 'csrcp1'
+    elif 'CAUS+RECP2' in um:
+        return 'csrcp2'
+    else:
+        return 'base'
+
+def filter_um(um, language='a'):
+    if isinstance(um, str):
+        um = um.split(';')
+    um_ = []
+    for u in um:
+        if u in ["1", "2", "3", "MASC", "FEM", "SG", "PL",
+                 "TR", "CAUS", "PASS", "ITER", "RECP", "CAUS+RECP", "RECP1", "CAUS+RECP1", "RECP2", "CAUS+RECP2",
+                 "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}",
+                 # Tigrinya
+                 "AC2PM", "AC2PF", "AC3PM", "AC3PF"
+                ]:
+            um_.append(u)
+    cls = classify_um_vc(um_, language=language)
+    s, o = classify_png(um)
+    return cls, s, o
+
+def add_root_um(dct, root, um):
+    if root in dct:
+        if um in dct[root]:
+            dct[root][um] += 1
         else:
-            dct[root] = {um: 1}
-    unamb_roots = {}
-    amb_roots = {}
-    light_roots = {}
+            dct[root][um] = 1
+    else:
+        dct[root] = {um: 1}
+
+def get_vclass_data(path):
+    items = []
+    nverbs = 0
     with open(path, encoding='utf8') as file:
         contents = file.read().split('\n##\n')
+        # index, word, anals triples
         for item in contents:
 #            print("ITEM\n{}".format(item))
             lines = item.split("\n")
@@ -153,49 +192,260 @@ def group_vroots(path="data/am_v_props.txt"):
 #            print(sentence)
             for line in lines[1:]:
                 line = eval(line)
+                nverbs += 1
                 index, word, anals = line
-                if len(anals) > 1:
-                    # ambiguous
-                    unique_anals = set()
-                    for anal in anals:
-                        if 'root' not in anal:
-                            continue
-                        root = anal['root']
-                        um = simplify_um(anal['um'])
-                        unique_anals.add((root, um))
-                    if len(unique_anals) > 1:
-                        # still ambiguous
-#                        roots = set()
-#                        amb_um = []
-                        for root, um in unique_anals:
-#                            roots.add(root)
-#                            amb_um.append(um)
-                            if "{" in root:
-                                add_root_um(light_roots, root, um)
-                            else:
-                                add_root_um(amb_roots, root, um)
-#                        if len(roots) == 1:
-#                            amb1root.append((roots, amb_um))
-                    elif len(unique_anals) == 1:
-                        unique_anals = list(unique_anals)[0]
-                        root = unique_anals[0]
-                        um = unique_anals[1]
-                        if "{" in root:
-                            add_root_um(light_roots, root, um)
-#                        if not any([(i in um) for i in ignore]):
-                        else:
-                            add_root_um(unamb_roots, root, um)
-                else:
-                    anal = anals[0]
-                    if 'root' not in anal:
-                        continue
-                    root = anal['root']
-                    um = simplify_um(anal['um'])
-#                    if not any([(i in um) for i in ignore]):
-                    if '{' in root:
+                items.append((index, word, anals))
+    return items, nverbs
+
+def group_by_vc(vcpng):
+    '''
+    vcpng is a dict of vc, sb, ob triples with counts as values.
+    '''
+    result = {}
+    for (vc, s, o), count in vcpng.items():
+        so = '_'.join([s, o])
+        if vc not in result:
+            result[vc] = {}
+        result[vc][so] = count
+    return result
+
+def get_vroot_png(path="data/am_v_classes.txt", language='a'):
+    unamb_roots = {}
+    amb_roots = {}
+    light_roots = {}
+    items, nverbs = get_vclass_data(path)
+
+    # classify roots+vc by whether they have 1 or 2 person subjects
+    s12 = set()
+    reject_imp = []
+    for index, word, anals in items:
+        if len(anals) == 1:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = anal['um']
+            vc = get_vc(um)
+            pers = get_subpers(um)
+            if pers == '12':
+                s12.add((root, vc))
+
+    for index, word, anals in items:
+        if len(anals) > 1:
+            # ambiguous
+            unique_anals = set()
+            for anal in anals:
+                if 'root' not in anal:
+                    continue
+                root = anal['root']
+                um = anal['um']
+                vc = get_vc(um)
+                if (root, vc) in reject_imp:
+                    continue
+                elif is_imperative(um) and (root, vc) not in s12:
+                    reject_imp.append((root, vc))
+#                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
+                    continue
+                um = filter_um(um, language=language)
+                unique_anals.add((root, um))
+
+            if len(unique_anals) > 1:
+                # still ambiguous
+                tam = []
+                for root, um in unique_anals:
+                    if " " in word:
+                        if ' ' not in root:
+                            root = word.split()[0] + ' ' + root
                         add_root_um(light_roots, root, um)
                     else:
-                        add_root_um(unamb_roots, root, um)
+                        add_root_um(amb_roots, root, um)
+            elif len(unique_anals) == 1:
+                unique_anals = list(unique_anals)[0]
+                root = unique_anals[0]
+                um = unique_anals[1]
+                if " " in word:
+                    if ' ' not in root:
+                        root = word.split()[0] + ' ' + root
+                    add_root_um(light_roots, root, um)
+                else:
+                    add_root_um(unamb_roots, root, um)
+        else:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = filter_um(anal['um'], language=language)
+            if ' ' in word:
+                if ' ' not in root:
+                    root = word.split()[0] + ' ' + root
+                add_root_um(light_roots, root, um)
+            else:
+                add_root_um(unamb_roots, root, um)
+    for root, dct in unamb_roots.items():
+        dct = group_by_vc(dct)
+        unamb_roots[root] = dct
+    for root, dct in amb_roots.items():
+        dct = group_by_vc(dct)
+        amb_roots[root] = dct
+    for root, dct in light_roots.items():
+        dct = group_by_vc(dct)
+        light_roots[root] = dct
+    return unamb_roots, amb_roots, light_roots
+
+def group_vroots(path="data/am_v_classes.txt", language='a', prune=True, scale_vc=False, sep_png=True):
+    ignore = []
+
+    def simplify_um(um, verbose=False):
+        # exclude all but information about subject agreement, object agreement, and voice
+        um = um.split(';')
+        um_ = []
+        for u in um:
+            if u in ["1", "2", "3", "MASC", "FEM", "SG", "PL",
+                     "TR", "CAUS", "PASS", "ITER", "RECP", "CAUS+RECP", "RECP1", "CAUS+RECP1", "RECP2", "CAUS+RECP2",
+                     "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}",
+                     # Tigrinya
+                     "AC2PM", "AC2PF", "AC3PM", "AC3PF"
+                    ]:
+                um_.append(u)
+        um_.sort()
+        return classify_um(um_, verbose=verbose)
+#        return ';'.join(um_)
+
+    def classify_val_um(um, sep12=True, verbose=False):
+        sb12 = ['1', '2']
+        sb3fp = ['PL', 'FEM']
+        o = ["AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "AC2PM", "AC2PF", "AC3PM", "AC3PF"]
+        hasobj = any([(u in o) for u in um])
+        if sep12:
+            if any([(u in sb12) for u in um]):
+                if hasobj:
+                    return '12+o'
+                else:
+                    return '12-o'
+            elif any([(u in sb3fp) for u in um]):
+                if hasobj:
+                    return '3fp+o'
+                else:
+                    return '3fp-o'
+            elif hasobj:
+                return '3sm+o'
+            else:
+                return '3sm-o'
+        else:
+            if any([(u in sb12 or u in sb3fp) for u in um]):
+                # sb not 3sm
+                if hasobj:
+                    # trans
+                    return '*+o'
+                else:
+                    return '+-o'
+            elif hasobj:
+                return '3sm+o'
+            else:
+                return '3sm-o'
+
+    def classify_um(um, sep12=False, verbose=False):
+        cls = []
+        if 'PASS' in um:
+            cls.append('pass')
+        elif 'CAUS' in um:
+            if language == 'a':
+                cls.append('caus2')
+            else:
+                cls.append('caus')
+        elif 'TR' in um:
+            cls.append('caus1')
+        elif 'ITER' in um:
+            cls.append('iter')
+        elif 'RECP' in um:
+            cls.append('rcp')
+        elif 'CAUS+RECP' in um:
+            cls.append('csrcp')
+        elif 'RECP1' in um:
+            cls.append('rcp1')
+        elif 'RECP2' in um:
+            cls.append('rcp2')
+        elif 'CAUS+RECP1' in um:
+            cls.append('csrcp1')
+        elif 'CAUS+RECP2' in um:
+            cls.append('csrcp2')
+        else:
+            cls.append('base')
+        if isinstance(um, str):
+            um = um.split(';')
+        val = classify_val_um(um, sep12=sep12)
+        cls.append(val)
+        return tuple(cls)
+        
+    unamb_roots = {}
+    amb_roots = {}
+    light_roots = {}
+    items, nverbs = get_vclass_data(path)
+
+    # classify roots+vc by whether they have 1 or 2 person subjects
+    s12 = set()
+    reject_imp = []
+    for index, word, anals in items:
+        if len(anals) == 1:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = anal['um']
+            vc = get_vc(um)
+            pers = get_subpers(um)
+            if pers == '12':
+                s12.add((root, vc))
+    for index, word, anals in items:
+        if len(anals) > 1:
+            # ambiguous
+            unique_anals = set()
+            for anal in anals:
+                if 'root' not in anal:
+                    continue
+                root = anal['root']
+                um = anal['um']
+                vc = get_vc(um)
+                if (root, vc) in reject_imp:
+                    continue
+                elif is_imperative(um) and (root, vc) not in s12:
+                    reject_imp.append((root, vc))
+#                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
+                    continue
+                um = simplify_um(um)
+                unique_anals.add((root, um))
+            if len(unique_anals) > 1:
+                # still ambiguous
+                tam = []
+                for root, um in unique_anals:
+                    if " " in word:
+                        if ' ' not in root:
+                            root = word.split()[0] + ' ' + root
+                        add_root_um(light_roots, root, um)
+                    else:
+                        add_root_um(amb_roots, root, um)
+            elif len(unique_anals) == 1:
+                unique_anals = list(unique_anals)[0]
+                root = unique_anals[0]
+                um = unique_anals[1]
+                if " " in word:
+                    if ' ' not in root:
+                        root = word.split()[0] + ' ' + root
+                    add_root_um(light_roots, root, um)
+                else:
+                    add_root_um(unamb_roots, root, um)
+        else:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = simplify_um(anal['um'])
+            if ' ' in word:
+                if ' ' not in root:
+                    root = word.split()[0] + ' ' + root
+                add_root_um(light_roots, root, um)
+            else:
+                add_root_um(unamb_roots, root, um)
     for root, features in unamb_roots.items():
         new_features = {}
         for (voice, trans), count in features.items():
@@ -212,39 +462,194 @@ def group_vroots(path="data/am_v_props.txt"):
             else:
                 new_features[voice] = {trans: count}
         light_roots[root] = new_features
-                    
-    return unamb_roots, amb_roots, light_roots
+    print("Found {} verbs".format(nverbs))
+    counts = count_voice_class(unamb_roots, language=language, scale=scale_vc)
+    proc_voice_class(unamb_roots, prune=prune)
+#        proc_voice_class(amb_roots)
+    proc_voice_class(light_roots, prune=prune)
+    return unamb_roots, amb_roots, light_roots, counts, s12
 
-def proc_voice_class(dct):
+def is_imperative(um):
+    um = um.split(';')
+    return 'IMP' in um and '2' in um
+
+def get_vc(um):
+    um = um.split(';')
+    if 'PASS' in um:
+        return 'pass'
+    elif 'TR' in um:
+        return 'caus1'
+    elif 'CAUS' in um:
+        return 'caus2'
+    elif 'RECP' in um:
+        return 'rcp'
+    elif 'CAUS+RECP' in um:
+        return 'caurcp'
+    elif 'ITER' in um:
+        return 'iter'
+    else:
+        return 'base'
+
+def get_subpers(um):
+    um = um.split(';')
+    if '1' in um or '2' in um:
+        return '12'
+    else:
+        return '3'
+
+def proc_voice_class(dct, limit=10, prune=True, png_thresh=0.06):
     eliminate = 0
     def get_root_total(entry):
-        total = 0
+        root_total = 0
+        vc_del = []
         for vc, trans in entry.items():
+            tdel = []
+            for tt, ttcount in trans.items():
+                if ttcount <= 2:
+                    # Eliminate any trans type with fewer than 3 instances
+                    tdel.append(tt)
+            for tt in tdel:
+#                print("** deleting {} from {}".format(tt, trans))
+                del trans[tt]
+            vc_total = 0
             for tlabel, count in trans.items():
-                total += count
-        return total
-#    def combine_
+                vc_total += count
+            if vc_total < 3 and prune:
+                vc_del.append(vc)
+                continue
+#            else:
+#                root_total += vc_total
+            tv = [trans.get('3sm+o', 0), trans.get('*+o', 0)]
+            iv = [trans.get('3sm-o', 0), trans.get('*-o', 0)]
+            tvsum = tv[0] + tv[1]
+            if tvsum > 5:
+                tvprop = round(tv[1] / tvsum, 3)
+                if tvprop < png_thresh:
+                    vc_total -= tv[1]
+                    trans['t3'] = round(tv[0] / vc_total, 3)
+                else:
+                    trans['t'] = round(tvsum / vc_total, 3)
+#                    trans['t3'] = tvprop
+            ivsum = iv[0] + iv[1]
+            if ivsum > 5:
+                ivprop = round(iv[1] / ivsum, 3)
+                if ivprop < png_thresh:
+                    vc_total -= iv[1]
+                    trans['i3'] = round(iv[0] / vc_total, 3)
+                else:
+                    trans['i'] = round(ivsum / vc_total, 3)
+#                    trans['iv'] = ivprop
+            if prune and vc_total < 3:
+                vc_del.append(vc)
+                vc_total = 0
+            else:
+                trans['count'] = vc_total
+            root_total += vc_total
+        if prune:
+            for vc in vc_del:
+#                print("** pruning {} from {}".format(vc, entry))
+                del entry[vc]
+        return root_total
     to_del = []
     for root, entry in dct.items():
-        total = get_root_total(entry)
-        if total < 10:
+        root_total = get_root_total(entry)
+        if root_total < limit:
             eliminate += 1
             to_del.append(root)
-    for d in to_del:
-        del dct[d]        
+        else:
+            entry['count'] = root_total
+    if prune:
+        for d in to_del:
+            del dct[d]
 
-def write_voice_class(dct, path="data/am_voice.txt"):
+def count_voice_class(dct, language='a', scale=False):
+    counts = {}
+    for root, entry in dct.items():
+        result = []
+        result.extend(get_vc_counts(entry.get('base'), scale))
+        result.extend(get_vc_counts(entry.get('pass'), scale))
+        if language == 'a':
+            result.extend(get_vc_counts(entry.get('caus1'), scale))
+            result.extend(get_vc_counts(entry.get('caus2'), scale))
+        else:
+            result.extend(get_vc_counts(entry.get('caus'), scale))
+#        if scale:
+#            total = sum(result)
+#            if total > 0:
+#                result = [round(c/total, 3) for c in result]
+        counts[root] = result
+    return counts
+
+def get_vc_counts(vc_dct, scale=False):
+    '''
+    For a given voice class dictionary,
+    return a vector of counts for each of the transitivity categories.
+    '''
+    if not vc_dct:
+        return [0, 0, 0, 0]
+    result = []
+    for trans in ['3sm-o', '*-o', '3sm+o', '*+o']:
+        result.append(vc_dct.get(trans, 0))
+    if scale:
+        total = sum(result)
+        if total > 0:
+            result = [round(c/total, 3) for c in result]
+    return result
+
+def write_vc_counts(dct, language='a', light=False, thresh=10, filename=''):
+    directory = "../../SemVV/data/"
+    if not filename:
+        if language == 'a':
+            if light:
+                filename = "am_light_vc.txt"
+            else:
+                filename = "am_vc.txt"
+        elif light:
+            path = "ti_light_vc.txt"
+        else:
+            path = "ti_vc.txt"
+    path = directory + filename
     ls = list(dct.items())
     ls.sort()
     with open(path, 'w', encoding='utf8') as file:
         for root, classes in ls:
-            print("{}".format(root), file=file)
+            total = sum(classes)
+            if not thresh or total >= thresh:
+                print("{}\t{}".format(root, classes), file=file)
+
+def write_voice_class(dct, language='a', light=False):
+    if language == 'a':
+        if light:
+            path = "../../SemVV/data/am_light_voice.txt"
+        else:
+            path = "../../SemVV/data/am_voice.txt"
+    elif light:
+        path = "../../SemVV/data/ti_light_voice.txt"
+    else:
+        path = "../../SemVV/data/ti_voice.txt"
+    ls = list(dct.items())
+    ls.sort()
+    with open(path, 'w', encoding='utf8') as file:
+        for root, classes in ls:
+            if len(classes) == 1:
+                # only 'count', no transitivity classes
+                continue
+            count = classes['count']
+            print("{} ; {}".format(root, count), file=file)
             classes = list(classes.items())
             classes.sort()
             for voice, trans in classes:
+                if voice == 'count':
+                    continue
+                tcount = trans['count']
+                del trans['count']
                 trans = list(trans.items())
                 trans.sort()
-                print("   {}:  {}".format(voice, trans), file=file)
+                trans = [t for t in trans if t[0] in ['t', 'i', 't3', 'i3']]
+                trans = ["{} ({})".format(x, y) for x, y in trans]
+                trans = '\t'.join(trans)
+                if trans:
+                    print("   {}\t{}\t{}".format(voice, tcount, trans), file=file)
 
 def fix_ti_corpus(train=True):
     lines = []

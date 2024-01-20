@@ -71,6 +71,7 @@ class Corpus():
         self.sentences = []
         self.language = language or get_language('amh', phon=False, segment=True, experimental=True)
         self.name = name or batch_name or self.create_name()
+        self.start = start
         # Unknown tokens
         self.unks = set()
         # Cache for storing segmentations
@@ -83,6 +84,7 @@ class Corpus():
         # Start from the end of the previous corpus if there is one
         if corpus:
             start = corpus.last_line
+            self.start = start
             print("Starting from last line of previous corpus {}: {}".format(corpus, start))
         # Max number of words in sentence objects
         self.max_words = 1
@@ -233,12 +235,13 @@ class Corpus():
         if kwargs.get('timeit'):
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 
-    def write_props(self, file):
+    def write_props(self, file, start=0):
         '''
-        Write the props save in corpus sentences to a file.
+        Write the props saved in corpus sentences to a file.
         '''
-        for sentence in self.sentences:
-            print(sentence.text, file=file)
+        for sindex, sentence in enumerate(self.sentences):
+            count = start + sindex
+            print("{} && {}".format(count, sentence.text), file=file)
             for word in sentence.props:
                 print(word, file=file)
             print("##", file=file)

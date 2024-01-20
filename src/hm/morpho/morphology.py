@@ -663,6 +663,7 @@ class POSMorphology:
     stemstart = '<'
     stemend = '>'
 
+    segment_mwe_re = re.compile("(.+ )?(.+)<(.+)>(.+)( .+)?")
     segment_re = re.compile("(.+)<(.+)>(.+)")
 
     # Indices for different FSTs in self.fsts
@@ -1444,26 +1445,39 @@ class POSMorphology:
         Return the whole string, prefixes, stem, and suffixes
         kwargs: degem=False, mwe=False, combine_segs=False):
         '''
+        pre = stem = suf = mwe_part = ''
         if kwargs.get('degem', False):
             string = EES.degeminate(string)
         if kwargs.get('mwe', False):
             string.replace(Morphology.mwe_sep, ' ')
-        match = POSMorphology.segment_re.match(string)
-        if not match:
-            return '', [], '', []
-        pre, stem, suf = match.groups()
+            match = POSMorphology.segment_mwe_re.match(string)
+            if not match:
+                return '', [], '', [], ''
+            premwe, pre, stem, suf, postmwe = match.groups()
+            mwe_part = premwe or postmwe
+            mwe_part = mwe_part.strip()
+#            print("** INIT pre {} stem {} suf {}".format(pre, stem, suf, mwe_part))
+        else:
+            match = POSMorphology.segment_re.match(string)
+            if not match:
+                return '', [], '', [], ''
+            pre, stem, suf = match.groups()
+#            print("** INIT pre {} stem {} suf {}".format(pre, stem, suf))
         if kwargs.get('combine_segs', False):
             stem = self.language.combine_segments(stem)
             string = "{}<{}>{}".format(pre, stem, suf)
         pre = pre.split(Morphology.morph_sep)
-        if kwargs.get('mwe', False):
-            for index, p in enumerate(pre):
-                if ' ' in p:
-                    p = p.split()[-1]
-                    pre[index] = p
+#        print("  ** pre {}".format(pre))
+#        if kwargs.get('mwe', False):
+#            print("  ** splitting pre")
+#            for index, p in enumerate(pre):
+#                if ' ' in p:
+#                    p = p.split()[-1]
+##                    p = p.split()[0]
+#                    pre[index] = p
+#            print("  ** pre {}".format(pre))
         suf = suf.split(Morphology.morph_sep)
-        return string, pre, stem, suf
-#        return {'string': string, 'pre': pre, 'stem': stem, 'suf': suf}
+        return string, pre, stem, suf, mwe_part
 
     def process_all5(self, token, analyses, raw_token, **kwargs):
         '''
@@ -1486,14 +1500,13 @@ class POSMorphology:
         """
         sep_feats = kwargs.get('sep_feats', True)
         gemination = kwargs.get('gemination', True)
-        string, prefixes, stem, suffixes = self.process_segstring(string, **kwargs)
+        string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, **kwargs)
         real_prefixes = [p for p in prefixes if p]
         real_suffixes = [s for s in suffixes if s]
         procdict = {'token': token, 'feats': features, 'string': string}
         if raw_token:
             procdict['raw'] = raw_token
         mwe_props = None
-        mwe_part = None
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features.get('mwe') or self.mwe_feats
@@ -1524,10 +1537,21 @@ class POSMorphology:
             suff1_index = len(prefixes) + 1
             pos = procdict['pos']
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
-                if mwe_props and mwe_props.get('hdfin') and pindex == 0:
-                    mwe_part = prefix
-                    aff_index += 1
-                    continue
+#                print("  ** pindex {} prefix {} props {}".format(pindex, prefix, props))
+#                if mwe_props and mwe_props.get('hdfin') and pindex == 0:
+#                    prefix = prefix.strip()
+#                    if ' ' not in prefix:
+#                        mwe_part = prefix
+#                        print("  ** setting mwe_part to {}".format(mwe_part))
+#                        aff_index += 1
+#                        continue
+#                    else:
+#                        prefix_split = prefix.split()
+#                        # mwe_part can be multi-word
+#                        prefix = prefix_split[-1]
+#                        mwe_part = ' '.join(prefix_split[:-1])
+##                        mwe_part, prefix = prefix.split()
+#                        print("  ** setting mwe_part to {}".format(mwe_part))
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
@@ -1537,6 +1561,7 @@ class POSMorphology:
                 if prefix:
                     aff_index += 1
             prefixes = pre_dicts
+#            print("** prefixes {}".format(pre_dicts))
             real_stem_index = aff_index
             aff_index += 1
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
@@ -1561,7 +1586,7 @@ class POSMorphology:
         procdict['stem'] = stemd or stem
         procdict['head'] = stem_index
         root = self.get_root(stem, procdict, mwe=mwe_props, mwe_part=mwe_part)
-        lemma = self.gen_lemma(stem, root, features, mwe=mwe_props, gemination=gemination)
+        lemma = self.gen_lemma(stem, root, features, mwe=mwe_props, gemination=gemination, mwe_part=mwe_part)
         if not lemma and kwargs.get('verbosity', 0) > 0:
             print("&& no lemma for {} {}".format(stem, root))
         if 'c' in features:
@@ -1628,9 +1653,11 @@ class POSMorphology:
         '''
         For MWEs, mwe is a dict of properties.
         '''
+#        print("** Getting root {} {}".format(mwe, mwe_part))
         features = procdict['feats']
+        rootfromfeats = features.get('root', stem)
         if not mwe:
-            return features.get('root', stem)
+            return rootfromfeats
         # Get the appropriate root
         if 'root' in mwe:
             rootfeats = mwe['root']
@@ -1658,7 +1685,8 @@ class POSMorphology:
                 elif item == 'part':
                     mweroot.append(mwe_part + " ")
                 elif item == 'root':
-                    featroot = procdict.get('feats', {}).get('root', '')
+#                    print("** trying to find root in {}".format(rootfromfeats))
+                    featroot = rootfromfeats or procdict.get('feats', {}).get('root', '')
                     if not featroot:
 #                        print("     ^^ No root in features {}".format(procdict))
                         return ''
@@ -1774,7 +1802,7 @@ class POSMorphology:
             form = EES.unicode_geminate(form)
         return form
  
-    def gen_lemma(self, stem, root, features, mwe=None, gemination=True):
+    def gen_lemma(self, stem, root, features, mwe=None, gemination=True, mwe_part=None):
         '''
         Generate the lemma for the given root and features.
         '''
@@ -1785,7 +1813,9 @@ class POSMorphology:
         if not lemmafeats:
             return self.postproc5(stem, gemination=gemination, elim_bounds=False, gloss=gloss)
         lemmafeat1, lemmafeats2 = lemmafeats
-#        print("^^ generating lemma for {}|{} ; mwe {}".format(stem, root, mwe.__repr__()))
+        if mwe_part:
+            root = mwe_part + " " + root
+#        print("^^ generating lemma for {} | {} ; mwe {}".format(stem, root, mwe.__repr__()))
 #        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
@@ -1925,7 +1955,7 @@ class POSMorphology:
         2020.9.22: Added del_feats, a list of features or feature paths
           to delete from the features specified
         """
-#        print("^^ Generating {} ({}); {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__()))
+#        print("^^ Generating {} ({}); {}; v5 {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__(), v5))
         fss = None
         if del_feats:
             # Transduction needs to run for a longer time when
@@ -1945,7 +1975,7 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
-#        print("^^ features {}".format(features.__repr__()))
+#        print("  ^^ features {}".format(features.__repr__()))
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
@@ -1962,7 +1992,7 @@ class POSMorphology:
             features = fss
         else:
             features = FSSet.cast(features)
-#        print("^^ GENERATING {}, features {}, fst {}".format(root, features.__repr__(), fst.__repr__()))
+#        print("  ^^ GENERATING {}, features {}, fst {}".format(root, features.__repr__(), fst.__repr__()))
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form
@@ -1971,7 +2001,7 @@ class POSMorphology:
             if oroot:
                 root = oroot
         if fst:
-#            print('^^ Transducing with features {}'.format(features.__repr__()))
+#            print('   ^^ Transducing with root {} and features {}'.format(root, features.__repr__()))
             gens = \
               fst.transduce(root, features,
                             seg_units=self.morphology.seg_units, gen=not del_feats,
@@ -1979,6 +2009,7 @@ class POSMorphology:
                             dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
                             result_limit=limit, verbosity=verbosity)
+#            print("    ^^ gens {}".format(gens))
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)

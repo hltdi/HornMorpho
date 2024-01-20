@@ -28,9 +28,11 @@ POS n N
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
 ->UD PASS	Voice=Pass
 ->UD CAUS	Voice=Cau
-->UD RECP	Voice=Rcp
+->UD RECP1	*Voice=Rcp1
+->UD RECP2	*Voice=Rcp2
 ->UD ITER	Aspect=Iter
-->UD CAUS+RECP	*Voice=CauRcp
+->UD CAUS+RECP1	*Voice=CauRcp1
+->UD CAUS+RECP2	*Voice=CauRcp2
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -66,10 +68,12 @@ POS v V
 ->UD PFV1	Aspect=Perf
 ->UD PFV2	Aspect=Perf
 ->UD CAUS	Voice=Cau
-->UD RECP	Voice=Rcp
+->UD RECP1	*Voice=Rcp1
+->UD RECP2	*Voice=Rcp2
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
-->UD CAUS+RECP	*Voice=CauRcp
+->UD CAUS+RECP1	*Voice=CauRcp1
+->UD CAUS+RECP2	*Voice=CauRcp2
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
@@ -123,7 +127,7 @@ rel:: True:*RELC
 int:: True:INT
 
 ## morphological valence/voice
-a,v:: 0,p:PASS;; 0,a:CAUS;; a,p:RECP;; a,a:CAUS+RECP;; i,0:ITER;; i,p:RECP;; i,a:CAUS+RECP
+a,v:: 0,p:PASS;; 0,a:CAUS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2
 
 ## subjects
 sp:: 1:1;; 2:2;; 3:3

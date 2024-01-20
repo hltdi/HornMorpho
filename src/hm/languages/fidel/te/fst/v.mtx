@@ -1,32 +1,36 @@
-#$ conj_prep_pre
-#  ለ   [cpp=z]
-#  -- [cpp=None]
+$ rel
+  ለ   [+rel]
+  -- [-rel]
+
+$ rel_bound
+  -
 
 $ neg
 ## These could be preceded by conjunctions
- ኢ       [+neg]
+  ኢ       [+neg]
   --   [-neg]
 
 $ neg_bound
   -
 
 $ sb_pre
-  እ	[t=i|j,sp=1,sn=1]
+  እ	[t=i|j,sp=1,sn=1,R1=X]
   ል	[t=i|j,sp=3,sn=1,sg=m];[t=i|j,sp=3,sn=2]
   ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,-imp]
   ን   [t=j,sp=1,sn=2]
   እን  [t=i,sp=1,sn=2]
-  --  [t=p];[t=j,sn=2,+imp];[t=i]
+  --  [t=p];[t=j,sn=2,+imp];[t=i];[t=j,sp=1,sn=1,R1=L]
 
 $ prestem
   <
 
 $ voice
   ት-		[v=p]
-  አ-		[v=a]
-  አት-	[v=at,c=B|C|E|F|G|H];[v=at,a=a|i]
-  አ/ተ-	[v=at,c=A]
-  --		[v=0]
+  # not for c=A verbs with 1=L; feature to simplify this?
+  አ-		[v=a,c=A,R1=X];[v=a,c=B|C|E|F|G|H|K]
+  አት-	[v=at,c=B|C|E|F|G|H|K];[v=at,a=a|i];[v=at,c=A,R1=L]
+  አ/ተ-	[v=at,c=A,R1=X]
+  --		[v=0];[v=a,c=A,R1=L]
 
 $ stem
   >>v_stem<<
@@ -38,7 +42,7 @@ $ sb_suf
   ኮ   [t=p,sp=1,sn=1]
   ከ    [t=p,sp=2,sn=1,sg=m]
   ኪ    [t=p,sp=2,sn=1,sg=f]
-  አ   [t=p,sp=3,sn=1,sg=m];[t=j|i,sp=2,sg=f,+vsuf]
+  አ   [t=p,sp=3,sn=1,sg=m];[t=j|i,sn=2,sg=f,+vsuf]
   አት   [t=p,sp=3,sn=1,sg=f]
   ነ     [t=p,sp=1,sn=2]
   ኩም  [t=p,sp=2,sn=2,sg=m]
@@ -46,6 +50,7 @@ $ sb_suf
   አው   [t=p,sp=3,sn=2,sg=m]
   አየ   [t=p,sp=3,sn=2,sg=f]
   ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf]
+  # realized as ኡ after stem-final laryngeal: ልበ/ልዑ 
   ኦ    [t=j|i,sn=2,sg=m,+vsuf]
   --   [t=i|j,sp=2,sn=1,sg=m,-vsuf];[t=i|j,sp=1,-vsuf];[t=i|j,sp=3,sn=1,-vsuf]
 

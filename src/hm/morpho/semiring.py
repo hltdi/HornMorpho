@@ -98,6 +98,8 @@ class FSSet(set, FS):
         """Return a copy of the FSSet."""
         fss = set()
         for fs in self:
+#            if not fs.frozen():
+#                fs = fs.freeze()
             fss.add(fs.copy())
         return FSSet(fss)
 

@@ -69,6 +69,9 @@ feats:
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
 
+    mwe::
+      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
+
     neg = False | True
     a = 0 | a | i
     v = 0 | p | a 

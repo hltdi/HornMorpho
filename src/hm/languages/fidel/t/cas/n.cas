@@ -25,6 +25,7 @@ weighting = UNIFICATION
 
 # Delete I and _
 >gem<
+>labvel<
 >n_bound<
 # Morphotactics
 >n.mtx<

@@ -176,10 +176,8 @@ $ conj2
   /ማ		[cconj=ማ]
   /ስ		[cconj=ስ]
   /ሳ		[cconj=ሳ]
-  ኣ		[cconj=ኣ]
+#  ኣ		[cconj=ኣ]
   /ኮ		[cconj=ኮ]
   --		[cconj=None]
 
-#$ end
-#  --		[pos=V]
 

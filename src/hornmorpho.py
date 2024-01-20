@@ -54,10 +54,10 @@ def am_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
         verbosity=verbosity
         )
     if file:
-        c.write_props(file)
+        c.write_props(file, start=c.start)
     elif path:
         with open(path, 'a', encoding='utf8') as file:
-            c.write_props(file)
+            c.write_props(file, start=c.start)
     return c
 
 def ti_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
@@ -74,10 +74,10 @@ def ti_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
         verbosity=verbosity
         )
     if file:
-        c.write_props(file)
+        c.write_props(file, start=c.start)
     elif path:
         with open(path, 'a', encoding='utf8') as file:
-            c.write_props(file)
+            c.write_props(file, start=c.start)
     return c
 
 def corp1(gemination=False):
