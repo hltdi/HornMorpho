@@ -97,6 +97,10 @@ AMH_NORM = \
 str.maketrans("ሐሑሒሓሔሕሖኅኁኂኃኄኅኆዐዑዒዓዔዕዖሠሡሢሣሤሥሦፀፁፂፃፄፅፆ",
               "ሀሂሂሃሄህሆሀሂሂሃሄህሆአኡኢኣኤእኦሰሱሲሳሴስሶጸጹጺጻጼጽጾ")
 
+TIR_NORM = \
+str.maketrans("ኅኁኂኃኄኅኆሠሡሢሣሤሥሦፀፁፂፃፄፅፆቈቍኰኵጐጕ",
+              "ሀሂሂሃሄህሆሰሱሲሳሴስሶጸጹጺጻጼጽጾቆቅኮክጎግ")
+
 DEPAL = {"ሽ": "ስ", "ች": "ት", "ኝ": "ን", "ጅ": "ድ", "ጭ": "ጥ", "ዥ": "ዝ", "ይ": "ል"}
 
 ### TOP-LEVEL FUNCTIONS
@@ -136,8 +140,11 @@ def geezify_alts(form, lang='am', gemination=True):
 #    if table:
 #        return root2geez(table, root, lang=lang)
 
-def normalize(string):
-    return string.translate(AMH_NORM)
+def normalize(string, language='a'):
+    if language == 'a':
+        return string.translate(AMH_NORM)
+    elif language == 't':
+        return string.translate(TIR_NORM)
 
 def degeminate(form, geez=True):
     """

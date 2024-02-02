@@ -27,6 +27,7 @@ Conversion of HornMorpho features to UniMorph features and vice versa.
 
 from .semiring import *
 import os, re
+from .utils import match_wild
 
 class UniMorph:
     """
@@ -263,8 +264,18 @@ class UniMorph:
             print(" FS values: {}".format(fsvalues))
         ufeat = valuemap.get(fsvalues, False)
         if not ufeat:
-            # * in valuemap is a wildcard; any value for this feature matches
-            ufeat = valuemap.get((fsvalues[0], '*'), False)
+            if verbosity:
+                print(" Checking feat combs with wildcard")
+            for val, uf in valuemap.items():
+                if '*' in val:
+                    if verbosity:
+                        print("  Checking {}".format(val))
+                    if match_wild(fsvalues, val):
+                        if verbosity:
+                            print("   Matched!")
+                        ufeat = uf
+#            # * in valuemap is a wildcard; any value for this feature matches
+#            ufeat = valuemap.get((fsvalues[0], '*'), False)
         if verbosity:
             print(" ufeat: {}".format(ufeat))
         if ufeat and ufeat[0] == '-':

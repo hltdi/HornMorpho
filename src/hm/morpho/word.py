@@ -58,6 +58,9 @@ class Word(list):
         for item in self:
             print(item)
 
+#    def string(self):
+#        return list.__repr__(self)
+
     @staticmethod
     def create_unk(name):
         '''

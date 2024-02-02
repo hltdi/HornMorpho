@@ -14,6 +14,7 @@ $ neg_bound
   -
 
 $ sb_pre
+  ->ss_bound	+bEle+		[1=ብ,2=ህ,3=ል,c=A,v=0]
   እ	[t=i|j,sp=1,sn=1,R1=X]
   ል	[t=i|j,sp=3,sn=1,sg=m];[t=i|j,sp=3,sn=2]
   ት   [t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,-imp]
@@ -49,15 +50,32 @@ $ sb_suf
   ክን   [t=p,sp=2,sn=2,sg=f]
   አው   [t=p,sp=3,sn=2,sg=m]
   አየ   [t=p,sp=3,sn=2,sg=f]
-  ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf]
+  ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=0|1]
+  =ኢ   [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3]
   # realized as ኡ after stem-final laryngeal: ልበ/ልዑ 
-  ኦ    [t=j|i,sn=2,sg=m,+vsuf]
+  ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0]
+  ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2]
+  =ኡ   [t=j|i,sn=2,sg=m,+vsuf,op=3]
   --   [t=i|j,sp=2,sn=1,sg=m,-vsuf];[t=i|j,sp=1,-vsuf];[t=i|j,sp=3,sn=1,-vsuf]
 
 $ ss_bound
   -
 
 $ ob_suf
+  [op=3]
+    ዩ		[t=p,sp=3,sn=1,sg=m]
+    ዎ		[t=p,sp=1,sn=1]
+    # (1) አት of 3sm prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
+    ኦ 	    	[t=p,sp=2|3,sn=2,sg=m];[t=i|j,sp=2|3,sg=m];[t=i|j,sp=2,sn=1,sg=f]
+    _ኦ	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=p,sp=3,sn=1,sg=f]
+    ሁ		[t=p,sp=2,sn=1,sg=m];[t=p,sp=1,sn=2];[t=p,sp=2|3,sn=2,sg=f];[t=i|j,sp=2|3,sn=2,sg=f]
+    ዮ		[t=p,sp=2,sn=1,sg=f]
+  [op=2]
+    /ከ	[t=p,sp=3,sn=1];[t=i|j,sp=1];[t=i|j,sp=3,sn=1]
+    ከ		[sp=3,sn=2];[t=p,sp=1]
+  [op=1]
+    /ኒ	[sp=2,sn=1,sg=m];[sp=3,sn=1,sg=m]
+    ኒ		[sp=2,sn=1,sg=f];[sn=2];[sp=3,sn=1,sg=f]
   --   [op=0]
 
 #$ end

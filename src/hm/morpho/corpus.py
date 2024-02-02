@@ -276,6 +276,33 @@ class Corpus():
         self.root = SegRoot(self, title=self.__repr__(), seglevel=seglevel, v5=self.v5)
         self.root.mainloop()
 
+    def write_cache(self, path):
+        '''
+        Write the current local cache.
+        '''
+#        filename = "{}_{}".format(self.name, self.last_line)
+        with open(path, 'w', encoding='utf8') as file:
+            for word, anals in self.local_cache.items():
+                print("{}\t{}".format(word, anals.__repr__()), file=file)
+
+    def read_cache(self, path, update=False):
+        '''
+        Read in a cache from a previous run, possibly updating the
+        current cache.
+        '''
+        if not update:
+            self.local_cache = {}
+        with open(path, encoding='utf8') as file:
+            for line in file:
+                word, anals = line.split('\t')
+                if update:
+                    if word in self.local_cache:
+                        continue
+                anals = eval(anals)
+                self.local_cache[word] = anals
+            
+    ### Old methods
+
     def segment(self, timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0):
         """
         Segment all the sentences in self.data.

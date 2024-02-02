@@ -19,8 +19,10 @@ $$ L እ|ሕ|ዕ|ህ
 *e	*	*
 
 [v=0|a,t=i,-vsuf]
+#[v=0|a,t=i,+vsuf,op=3]
 *e	*:	*
 
+#[v=0|a,t=i,+vsuf,op=0|1|2]
 [v=0|a,t=i,+vsuf]
 *e	*	*
 

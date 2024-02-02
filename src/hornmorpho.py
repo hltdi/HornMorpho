@@ -30,7 +30,7 @@ AM_SKIP = \
   [
       'አንድ', 'አንድን', 'አንድም', 'መጠን', 'አቶ', 'ደግሞ', 'ደግሞስ',\
       'ስራ', 'ዘመን', 'ምላሽ', 'ንጉስ', 'ያም', 'አምና', 'እንዲያም', 'አለም', 'ጥሩ', 'ትዳር', 'ዳር',
-      'ትልቅ', 'ትንሽ'
+      'ትልቅ', 'ትንሽ', 'አመን', 'አምስ'
       ]
 
 TI_SKIP = \
@@ -40,7 +40,7 @@ TI_SKIP = \
 
 ## Functions specific to v. 5.
 
-def am_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
+def am_morphsem1(n_sents=1000, start=0, file=None, verbosity=0,
                                    path="data/am_v_classes.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         'a',
@@ -60,11 +60,11 @@ def am_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
             c.write_props(file, start=c.start)
     return c
 
-def ti_morphsem1(n_sents=100, start=0, file=None, verbosity=0,
+def ti_morphsem1(n_sents=1000, start=0, file=None, verbosity=0,
                                    path="data/ti_v_classes.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         't',
-        path="../../TT/data/tlmd_v1.0.0/valid1.txt",
+        path="../../TT/data/tlmd_v1.0.0/train1.txt",
         n_sents=n_sents, max_sents=n_sents, start=start,
         pos=['v'], props=['root', 'um'], skip_mwe=False,
         skip=TI_SKIP,   

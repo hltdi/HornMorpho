@@ -1,6 +1,6 @@
 """
 This file is part of HornMorpho.
-    Copyleft (Ɔ) 2007-2023.
+    Copyleft (Ɔ) 2007-2024.
     by HLTDI and PLoGS <gasser@indiana.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -98,6 +98,15 @@ def isnumstring(string):
     return string.isdigit()
 
 ### Sequence functions
+
+def match_wild(seq1, seq2, wild='*'):
+    '''
+    Do seq1 and seq2 match, where seq2 may contain wild characters?
+    '''
+    for c1, c2 in zip(seq1, seq2):
+        if c2 != wild and c1 != c2:
+            return False
+    return True
 
 def pad2eqlen(l1, l2, paditem=''):
     '''

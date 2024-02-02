@@ -151,8 +151,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=p]
 ኣ	^e	**
 
+# ታ/ምሞ alongside ታ/ሞ
 [t=i|j|c,v=as]
 [t=i,v=ast]
+[t=c,v=p]
 ኣ	**:	**
 
 [t=i,v=0,-dup23]
