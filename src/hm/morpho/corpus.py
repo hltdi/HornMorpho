@@ -37,7 +37,7 @@ CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardi
 CONLLU_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'segmentations')
 
 PUNCTUATION = "“‘”’'…–—:;/,<>?.!%$()[]{}|#@&*_+=\"፡።፣፤፥፦፧፨"
-NUMERAL_RE = re.compile('(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
+NUMERAL_RE = re.compile(r'(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
 class Corpus():
     """
@@ -111,7 +111,7 @@ class Corpus():
                     line = line.strip()
 #                    if verbosity:
 #                        print("  $$ {}".format(line))
-                    if linepos and linepos % 50 == 0:
+                    if linepos and linepos % 100 == 0:
                         print("Analyzed {} sentences".format(linepos))
                     linepos += 1
                     if constraints: # and maxnum != None or maxpunc != None:

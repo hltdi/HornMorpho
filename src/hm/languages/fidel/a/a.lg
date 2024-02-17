@@ -82,7 +82,7 @@ feats:
       {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
     a = 0 | a  | i
-    v = 0 | p | a | as | ast
+    v = 0 | p | a | as | ast | test
     t = p | i | j | c
     sp = 3 | 2 | 1
     sn = 1 | 2
@@ -102,10 +102,10 @@ feats:
     # main clause
     mc = True | False
     # auxiliary
-#    ax = None | al
-    adp = None | ለ | በ | ከ | እስከ |ስለ | ወደ
-    sconj = None | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
-    cconj = None | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
+#    ax = 0 | al
+    adp = 0 | ለ | በ | ከ | እስከ |ስለ | ወደ
+    sconj = 0 | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
+    cconj = 0 | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
 #  pos: v_stem v_stem
 #    a = 0 | a | i
@@ -129,7 +129,7 @@ feats:
 #    a = 0 | a | i
 #    v = 0 | p | a | as
 #    d = a | inf | ins | m
-n#    # only for infinitive
+#    # only for infinitive
 #    neg = False | True
 
   pos: n noun_adjective
@@ -157,8 +157,8 @@ n#    # only for infinitive
     col = False | True
     dis = False | True
     irr = False | True
-    adp = None | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ
-    cconj = None | ም | ስ | ማ | ሳ | ና | ኮ
+    adp = 0 | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ
+    cconj = 0 | ም | ስ | ማ | ሳ | ና | ኮ
 
   pos: cop copula
     morphotax::
@@ -178,8 +178,8 @@ n#    # only for infinitive
     frm = False | True
     rel = False | True
     sub = False | True
-    cnj1 = None | ስለ | እንደ
-    cnj2 = None | ኣ | ኮ | ና
+    cnj1 = 0 | ስለ | እንደ
+    cnj2 = 0 | ኣ | ኮ | ና
 
 ## Stringsets
 

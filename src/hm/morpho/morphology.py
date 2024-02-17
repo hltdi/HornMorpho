@@ -58,15 +58,15 @@ class Morphology(dict):
     seg_sep = '-'
 
     # Regular expressions for affix files
-    pattern = re.compile('\s*pat.*:\s+(\w+)\s+(.+)')
-    function = re.compile('\s*func.*:\s+(\w+)\s+(.+)')
-    suffix = re.compile('\s*suf.*:\s+(\S+)(\s.+)?')   # a single space separates the suffix from the segmented form
-    grammar = re.compile('\s*gram.*:\s+(\w+)\s+(.+)')
-    POS = re.compile('\s*pos:\s+(\w+)')
+    pattern = re.compile(r'\s*pat.*:\s+(\w+)\s+(.+)')
+    function = re.compile(r'\s*func.*:\s+(\w+)\s+(.+)')
+    suffix = re.compile(r'\s*suf.*:\s+(\S+)(\s.+)?')   # a single space separates the suffix from the segmented form
+    grammar = re.compile(r'\s*gram.*:\s+(\w+)\s+(.+)')
+    POS = re.compile(r'\s*pos:\s+(\w+)')
 
     # Regex for numerals or words containing numerals
     # %% Does this work for all Horn languages?
-    numeral = re.compile('(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
+    numeral = re.compile(r'(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
     def __init__(self, pos_morphs=[], punctuation='', characters='', abbrev_chars='.'):
                  #                 fsh=None,
@@ -268,7 +268,7 @@ class Morphology(dict):
         '''
         if not self.abbrevRE:
             abbrev_chars = self.abbrev_chars or '.'
-            string = "\w+[{}](?:\w+[{}]?)*".format(abbrev_chars, abbrev_chars)
+            string = r"\w+[{}](?:\w+[{}]?)*".format(abbrev_chars, abbrev_chars)
 #            string = "\w+[.](?:\w+[.]?)*"
             self.abbrevRE = re.compile(string)
         return self.abbrevRE
@@ -1131,6 +1131,7 @@ class POSMorphology:
 #                if mwe:
                 fst, found_pickle = fst
 #                print("   ^^ Found FST; path {}, label {}".format(path, fst.label))
+#                print("** About to pickle; defaultFS {}".format(self.defaultFS))
                 if found_pickle and verbose:
                     print("Finished unpickling {}".format(fst.label))
                 if pickle and not found_pickle and create_pickle:
@@ -1192,51 +1193,9 @@ class POSMorphology:
             elif verbose:
                 print('  No cascade exists at', path, end=' ')
                 if gen: print()
-#        if gen:
-#            # Look for or load generation FST
-#            if not self.load_fst(compose=False, gen=True,
-#                                 create_casc=create_casc, pickle=pickle, pos=pos,
-#                                 guess=guess, simplified=simplified, experimental=experimental,
-#                                 phon=phon, segment=segment, translate=translate, mwe=mwe,
-#                                 suffix=suffix, v5=v5,
-#                                 invert=True, verbose=verbose):
-#                # Explicit generation FST not found, so invert the analysis FST
-#                if verbose:
-#                    print("... inverting analysis FST")
-#                fst = fst or \
-#                  self.get_fst(False, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
-#                               v5=v5,
-#                               segment=segment, translate=translate, experimental=experimental)
-#                if fst:
-#                    if setit:
-#                        self.set_fst(fst.inverted(), True, guess, simplified, mwe=mwe,
-#                                     suffix=suffix, v5=v5,
-#                                     phon=phon, segment=segment, experimental=experimental)
-#                    if create_casc:
-#                        if not self.casc:
-#                            casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
-#                                                   create_networks=True, subcasc=subcasc,
-#                                                   gemination=gemination,
-#                                                   language=self.language, gen=gen, pos=pos,
-#                                                   verbose=verbose)
-#                            if casc:
-#                                self.casc = casc
-#                                self.casc_inv = self.casc.inverted()
-#                else:
-#                    name = self.fst_name(False, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
-#                                         segment=segment, translate=translate, experimental=experimental)
-#                    path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-#                    # OK, as a last resort, try again to load the analysis cascade
-#                    if os.path.exists(path):
-#                        casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
-#                                               create_networks=True, subcasc=subcasc, gemination=gemination,
-#                                               language=self.language, pos=pos, gen=gen,
-#                                               verbose=verbose)
-#                        if casc:
-#                            self.casc = casc
-#                            self.casc_inv = self.casc.inverted()
         if not setit:
             return fst
+#        print("** defFS: {}".format(fst._defaultFS.__repr__()))
         return self.get_fst(gen, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
                             v5=v5,
                             segment=segment, translate=translate, experimental=experimental)
@@ -1341,6 +1300,7 @@ class POSMorphology:
             df = self.defaultFS.__repr__()
         else:
             df = ''
+#        print("** defaultFS: {}".format(df))
         directory = FST.get_pickle_dir(self.morphology.language)
         FST.write(fst, filename=os.path.join(directory, fname + extension),
                   defaultFS=df, stringsets=stringsets,
@@ -1518,6 +1478,8 @@ class POSMorphology:
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
         procdict['pos'] = features.get('pos', self.pos)
+        if 's' in features:
+            procdict['sense'] = features['s']
         if um:
             udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True)
         else:
@@ -1956,6 +1918,7 @@ class POSMorphology:
           to delete from the features specified
         """
 #        print("^^ Generating {} ({}); {}; v5 {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__(), v5))
+#        print("  ^^ defaultFS {}".format(self.defaultFS.__repr__()))
         fss = None
         if del_feats:
             # Transduction needs to run for a longer time when
@@ -1975,7 +1938,6 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
-#        print("  ^^ features {}".format(features.__repr__()))
         if not features:
             return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
@@ -2315,10 +2277,11 @@ class POSMorphology:
     ## Generating default FS from feature-value pairs in Morphology
 
     def make_default_fs(self):
+#        print("** Making default FS for {}".format(self))
         dct = {}
         lex_feats = self.lex_feats
         for feat, values in self.feat_list:
-#            print('^^ feat {}, values {}'.format(feat, values))
+#            print('  ^^ feat {}, values {}'.format(feat, values))
             if feat in lex_feats:
                 continue
             if isinstance(values, list):

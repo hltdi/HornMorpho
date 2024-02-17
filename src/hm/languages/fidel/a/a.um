@@ -53,7 +53,7 @@ acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 # unambiguous possessive suffixes
 p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
 # ambiguous possessive/determiner suffixes
-p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
+p,g:: sm3,0:{PSS3SM/DEF};; sf3,0:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
@@ -152,7 +152,8 @@ neg:: NEG
 rel:: True:*RELC
 
 ## morphological valence/voice
-a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2
+# v=ast (አስታወቀ) -> TR
+a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
 
 ## subjects
 sp:: 1:1;; 2:2;; 3:3

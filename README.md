@@ -1,9 +1,55 @@
+# Version 5.0
+5.2.2024
+
+***HornMorpho*** is a Python program that performs morphological
+analysis, generation, and segmentation in various languages of the Horn of Africa.
+The only languages supported in Version 5.0 are Amharic and Tigrinya.
+Version 5.0 replaces Version 4.5 for Amharic.
+
+**For an earlier version of the program, see Version 4.3 below.**
+
+## Installation
+First, download the wheel file for the language you want to work with from the `dist/` folder:
+
+* for Amharic, [HornMorphoA-5.0-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorphoA-5.0-py3-none-any.whl)
+* for Tigrinya, [HornMorphoT-5.0-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorphoA-5.0-py3-none-any.whl)
+
+Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is
+
+	pip install HornMorpho*-5.0-py3-none-any.whl
+	
+replacing '*' with 'A' or 'T'.
+
+(This assumes that you have [wheel](https://pypi.org/project/wheel/) installed.)
+
+Then to use the program, in a Python shell, do
+
+	import hm
+
+If you have problems with installation, contact [gasser@indiana.edu](mailto:gasser@indiana.edu).
+
+## Functions
+
+### Analyzing a word or multi-word expression
+
+### Analyzing a sentence
+
+### Analyzing the sentences in a file
+
+### Writing sentence analyses to a file
+
+### Creating a corpus of morphologically disambiguated sentences
+
+### Generating a word
+
 # Version 4.3
 This is version 4.3 of ***HornMorpho***, a Python program that performs
 morphological analysis, generation, segmentation, and
 grapheme-to-phoneme conversion in various languages of the Horn of
 Africa.
+<!--
 **For the new experimental HornMorpho segmenter for Amharic (version 4.5), see below.**
+-->
 
 <!--For information about using the program, see the manual that came with the distribution: *horn3.5_quick.pdf*.
 -->

@@ -19,7 +19,7 @@ $ conj_prep_pre
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub]
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub]
   እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub]
-  --  	[-rel,sconj=None,adp=None,-sub];[t=j|c,-mc,-sub,sconj=None,adp=None,-rel]
+  --  	[-rel,sconj=0,adp=0,-sub];[t=j|c,-mc,-sub,sconj=0,adp=0,-rel]
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -167,7 +167,7 @@ $ conj2
   /ሳ		[cconj=ሳ]
   ኣ		[cconj=ኣ]
   /ኮ		[cconj=ኮ]
-  --		[cconj=None]
+  --		[cconj=0]
 
 $ end
   --		[pos=v]

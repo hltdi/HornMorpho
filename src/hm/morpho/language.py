@@ -129,16 +129,16 @@ ABBREVCHARS_RE = re.compile(r'\s*abb.*?ch.*?:\s*(.+)')
 SEG_ROOT_RE = re.compile(r'\{(.*)\}')
 # Added 2023.02.24
 # string_set_label={chars1, chars1, chars2, ...}
-SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
+SS_RE = re.compile(r'(\S+)\s*=\s*\{(.*)\}')
 # Added 2023.07.24
-MTAX_RE = re.compile("\s*morphotax::\s*(.*)")
+MTAX_RE = re.compile(r"\s*morphotax::\s*(.*)")
 #MSEG_RE = re.compile("")
 # Added 2023.07.24
 LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
 # Added 2023.09.04
-MWE_RE = re.compile("\s*mwe::\s*(.*)")
+MWE_RE = re.compile(r"\s*mwe::\s*(.*)")
 # Added 2023.09.29
-NO_MWE_RE = re.compile("\s*nomwe")
+NO_MWE_RE = re.compile(r"\s*nomwe")
 # Added 2023.09.06; character normalization
 NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
 # Added 2023.09.17; character combination (withing stems)

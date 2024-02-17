@@ -246,7 +246,7 @@ class Roots:
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
             show = False
-#            if root_chars == ['ግ', 'ኝ', 'ይ']:
+#            if root_chars == ['ም', 'እ', 'ር']:
 #                show = True
             if show:
                 print("*** Making root states for {} with weight ({}) {}".format(root_chars, type(weight), weight.__repr__()))
@@ -646,6 +646,8 @@ class Roots:
         show = False
 #        if cons == "ግ ኝ ይ":
 #        if cons == "ብ እ ል":
+#            show = True
+#        if cons == 'ም እ ር':
 #            show = True
         if show:
             print("** Making weakroot for {}, feats {}".format(cons, feats))

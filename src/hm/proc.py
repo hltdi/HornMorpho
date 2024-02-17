@@ -91,35 +91,93 @@ POS_RE = re.compile(r'.*[,\[]pos=(\w+?)[,\]].*')
 
 FINAL_PUNC_RE = re.compile(r'(\w)([።፡፣!])')
 
+IGN_ROOTS = {'a': ["ህልው:B"], 't': ["ህልው:B"]}
+
+UM_FEATS = \
+  ["1", "2", "3", "MASC", "FEM", "SG", "PL",
+   "TR", "CAUS", "PASS", "ITER", "RECP", "CAUS+RECP", "RECP1", "CAUS+RECP1", "RECP2", "CAUS+RECP2",
+   "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}",
+   # Tigrinya
+   "AC2PM", "AC2PF", "AC3PM", "AC3PF",
+   # Applicative suffixes, Am
+   "DA3SM", "DA3SF", "DA3P", "DA1S", "DA1P", "DA2SM", "DA2SF", "DA2P",
+   "MAL3SM", "MAL3SF", "MAL3P", "MAL1S", "MAL1P", "MAL2SM", "MAL2SF", "MAL2P",
+   # Applicative suffixes, Ti
+   "OB3SM", "OB3SF", "OB3PM", "OB3PF", "OB1S", "OB1P", "OB2SM", "OB2SF", "OB2PM", "OB2PF"
+    ]
+
+VC2FEATS = {
+    'base_ብ': '', 'pass_ብ': 'v=p', 'caus1_ድ': 'v=a', 'pass_ድ': 'v=p', 'caus2_ስ': 'v=as', 'pass_ስ': 'v=p',
+    'base': '', 'pass': 'v=p', 'caus1': 'v=a', 'caus2': 'v=as', 'caus': 'v=a',
+    'iter': 'a=i', 'rcp1': 'a=a,v=p', 'rcp2': 'a=i,v=p', 'csrcp1': 'a=a,v=a', 'csrcp2': 'a=i,v=a'
+    }
+
+VC2FEATS_L = {
+    'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=ast'
+    }
+    
 ### Amharic, Tigrinya voice-valency classification.
 
-def proc_am(light=False, constraints=None, thresh=[0, 0, 0]):
+def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     '''
     thresh is a triple with threshold totals for root, vc (voice class),
     and sbjobj (PNG, transitivity).
     '''
-    u, a, l = get_vroot_png()
+    AM = morpho.get_language('a', v5=True)
+    V = AM.morphology['v']
+    u, a, l = get_vroot_png(constraints=constraints)
     if light:
         l = combine_light(l)
+    if write_png:
+        write_vroot_png(u, language='a', light=light, constraints=constraints)
     trans = gen_trans_cats(constraints)
-    c = count_voice_class(l if light else u, scale=False, trans=trans,
-                          light=light, constraints=constraints, thresh=thresh)
-    write_vc_counts(c, light=light, constraints=constraints, comment=', '.join(trans))
+    c = count_voice_classes(l if light else u, scale=False, trans=trans,
+                          light=light, constraints=constraints, thresh=thresh, vmorph=V)
+    write_root_counts(c, light=light, constraints=constraints, comment=', '.join(trans))
     return u, a, l, c
 
 def proc_ti(light=False, constraints=None, thresh=[0, 0, 0]):
-    u, a, l = get_vroot_png(path='data/ti_v_classes.txt', language='t')
+    TI = morpho.get_language('t', v5=True)
+    V = TI.morphology['v']
+    u, a, l = get_vroot_png(path='data/ti_v_classes.txt', language='t', constraints=constraints)
     trans = gen_trans_cats(constraints)
-    c = count_voice_class(l if light else u, language='t', scale=False, trans=trans,
-                          light=light, constraints=constraints, thresh=thresh)
-    write_vc_counts(c, 't', light=light, constraints=constraints, comment=', '.join(trans))
+    c = count_voice_classes(l if light else u, language='t', scale=False, trans=trans,
+                          light=light, constraints=constraints, thresh=thresh, vmorph=V)
+    write_root_counts(c, 't', light=light, constraints=constraints, comment=', '.join(trans))
     return u, a, l, c
 
+def gen_lemma(vmorph, root, label):
+    if ':' not in root:
+        print("*** {}".format(root))
+        return ''
+    root, cls = root.split(':')
+    upd_feats = 'c={}'.format(cls)
+    label_feats = VC2FEATS[label]
+    if label_feats:
+        upd_feats += ",{}".format(label_feats)
+#    print("upd feats {}".format(upd_feats))
+    if forms := vmorph.gen5(root, upd=upd_feats):
+        return vmorph.postproc5(forms[0][0], gemination=False)
+    # Fix cases where original feature is v=ast or v=test
+    if root[0] == 'እ' or root[1] == 'እ':
+        label_feats = VC2FEATS_L.get(label)
+        if label_feats:
+            upd_feats = 'c={},{}'.format(cls, label_feats)
+            if forms := vmorph.gen5(root, upd=upd_feats):
+                return vmorph.postproc5(forms[0][0], gemination=False)
+    return ''
+
 def gen_trans_cats(constraints):
-    if constraints and 'reduce' in constraints:
-        return ['3m_', '~3m_', '3m_o', '~3m_o']
-    else:
-        return ['3sm_', '3sm_12', '3sm_3', '12_', '12_o', '3f|p_', '3f|p_o']
+    if constraints:
+        if 'reduce' in constraints:
+            return ['3m_', '~3m_', '3m_o', '~3m_o']
+        elif constraints.get('applic') == 1:
+            return ['3sm_', '3sm_12', '3sm_3', '3sm_L', '12_', '12_o', '12_L', '3f|p_', '3f|p_o', '3f|p_L']
+        elif constraints.get('applic') == 2:
+            return ['3sm_', '3sm_12', '3sm_3', '3sm_L', '3sm_B', '12_', '12_o', '12_L', '12_B', '3f|p_', '3f|p_o', '3f|p_L', '3f|p_B']
+        elif constraints.get('applic') == 3:
+            return ['3sm_', '3sm_12', '3sm_3', '3sm_L12', '3sm_B12', '3sm_L3', '3sm_B3', '12_', '12_o', '12_L3', '12_B3', '12_L12', '12_B12', '3f|p_', '3f|p_o', '3f|p_L3', '3f|p_B3', '3f|p_L12', '3f|p_B12']
+    return ['3sm_', '3sm_12', '3sm_3', '12_', '12_o', '3f|p_', '3f|p_o']
 
 def classify_subj(um):
     if isinstance(um, str):
@@ -135,29 +193,50 @@ def classify_subj(um):
     else:
         return '3sm'
 
-def classify_obj(um, ignore_png=False):
+def classify_obj(um, ignore_png=False, applic=False):
     if isinstance(um, str):
         um = um.split(';')
     if ignore_png:
         if any([u.startswith("AC") for u in um]):
             return 'o'
+        elif applic and any([(u.startswith('DA') or u.startswith('DA') or u.startswith("MAL")) for u in um]):
+            return 'A'
         else:
             return ''
     if any([(o in um) for o in ["AC1S", "AC1P", "AC2SM", "AC2SF", "AC2P", "AC2PM", "AC2PF"]]):
         return '12'
     elif any ([(o in um) for o in ["AC3P", "AC3PM", "AC3PF", "AC3SM", "AC3SF"]]):
         return '3'
-#        return '3f|p'
-#    elif any ([(o in um) for o in ["AC3P", "AC3PM", "AC3PF"]]):
-#        return '3p'
-#    elif 'AC3SM' in um:
-#        return '3sm'
+    elif applic and any ([(o in um) for o in ["DA1S", "DA1P", "DA2SM", "DA2SF", "DA2P", "OB1S", "OB1P", "OB2SM", "OB2SF", "OB2PM", "OB2PF"]]):
+        if applic == 3:
+            return 'L12'
+        else:
+            return 'L'
+    elif applic and any ([(o in um) for o in ["DA3SM", "DA3SF", "DA3P", "OB3SM", "OB3SF", "OB3PM", "OB3PF"]]):
+        if applic == 3:
+            return 'L3'
+        else:
+            return 'L'
+    elif applic and any ([(o in um) for o in ["MAL1S", "MAL1P", "MAL2SM", "MAL2SF", "MAL2P"]]):
+        if applic == 3:
+            return 'B12'
+        elif applic == 2:
+            return 'B'
+        else:
+            return 'L'
+    elif applic and any ([(o in um) for o in ["MAL3SM", "MAL3SF", "MAL3P"]]):
+        if applic == 3:
+            return 'B3'
+        elif applic == 2:
+            return 'B'
+        else:
+            return 'L'
     else:
         return ''
 
-def classify_png(um):
+def classify_png(um, applic=0):
     s = classify_subj(um)
-    o = classify_obj(um, s in ['12', '3f|p'])
+    o = classify_obj(um, s in ['12', '3f|p'], applic=applic)
     return s, o
 
 def get_sbj_count(png_dict, include=None, trans=0):
@@ -293,27 +372,30 @@ def combine_light(light_dict):
                 parts[part][v] = d
     return parts
 
-def filter_um(um, language='a'):
+def filter_um(um, language='a', applic=False):
     if isinstance(um, str):
         um = um.split(';')
     um_ = []
     for u in um:
-        if u in ["1", "2", "3", "MASC", "FEM", "SG", "PL",
-                 "TR", "CAUS", "PASS", "ITER", "RECP", "CAUS+RECP", "RECP1", "CAUS+RECP1", "RECP2", "CAUS+RECP2",
-                 "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}",
-                 # Tigrinya
-                 "AC2PM", "AC2PF", "AC3PM", "AC3PF"
-                ]:
+        if u in UM_FEATS:
+#            ["1", "2", "3", "MASC", "FEM", "SG", "PL",
+#                 "TR", "CAUS", "PASS", "ITER", "RECP", "CAUS+RECP", "RECP1", "CAUS+RECP1", "RECP2", "CAUS+RECP2",
+#                 "AC1S", "AC2SM", "AC2SF", "AC3SM", "AC3SF", "AC1P", "AC2P", "AC3P", "{AC3SM/DEF}",
+#                 # Tigrinya
+#                 "AC2PM", "AC2PF", "AC3PM", "AC3PF"
+#                ]:
             um_.append(u)
     cls = classify_um_vc(um_, language=language)
-    s, o = classify_png(um)
+    s, o = classify_png(um, applic=applic)
     return cls, s, o
 
 def classify_um_vc(um, language='a'):
+    if isinstance(um, str):
+        um = um.split(';')
     if 'PASS' in um:
         return 'pass'
-    elif 'CAUS+RECP' in um:
-        return 'csrcp'
+#    elif 'CAUS+RECP' in um:
+#        return 'csrcp'
     elif 'CAUS+RECP1' in um:
         return 'csrcp1'
     elif 'CAUS+RECP2' in um:
@@ -327,8 +409,9 @@ def classify_um_vc(um, language='a'):
         return 'caus1'
     elif 'ITER' in um:
         return 'iter'
-    elif 'RECP' in um:
-        return 'rcp'
+#    elif 'RECP' in um:
+#        # only possible for old Ti analyses
+#        return 'rcp'
     elif 'RECP1' in um:
         return 'rcp1'
     elif 'RECP2' in um:
@@ -362,6 +445,19 @@ def add_root_um(dct, root, um):
     else:
         dct[root] = {um: 1}
 
+def filter_anals_by_um(anals, exclude=['RECP', 'CAUS+RECP']):
+    res = []
+    for anal in anals:
+        um = anal.get('um')
+        if not um:
+            continue
+        um = um.split(';')
+        if any([x in um for x in exclude]):
+#            print("** Excluding {}".format(um))
+            continue
+        res.append(anal)
+    return res
+
 def get_vclass_data(path):
     items = []
     nverbs = 0
@@ -377,9 +473,11 @@ def get_vclass_data(path):
 #            print(sentence)
             for line in lines[1:]:
                 line = eval(line)
-                nverbs += 1
                 index, word, anals = line
-                items.append((index, word, anals))
+                anals = filter_anals_by_um(anals, exclude=['RECP', 'CAUS+RECP'])
+                if anals:
+                    nverbs += 1
+                    items.append((index, word, anals))
     return items, nverbs
     
 def group_by_vc(vcpng):
@@ -394,18 +492,55 @@ def group_by_vc(vcpng):
         result[vc][so] = count
     return result
 
-def write_vroot_png(dct, language='a', light=False, filename='', vthresh=4, rthresh=10):
-    if filename:
-        path = "../../SemVV/data/" + filename
-    elif language == 'a':
-        if light:
-            path = "../../SemVV/data/am_light_vroot_png.txt"
-        else:
-            path = "../../SemVV/data/am_vroot_png.txt"
-    elif light:
-        path = "../../SemVV/data/ti_light_vroot_png.txt"
+def make_rvpng_filename(language='a', light=False, constraints=None):
+    if language == 'a':
+        filename = 'am'
     else:
-        path = "../../SemVV/data/ti_vroot_png.txt"
+        filename = 'ti'
+    if light:
+        filename += '_light'
+    if constraints:
+        if 'rcp' in constraints:
+            filename += '_rcp'
+        if 'applic' in constraints:
+            filename += '_app'
+    return filename + '_rvpng.txt'
+
+def make_feat_filename(language='a', light=False, constraints=None):
+    sep_vc = constraints.get('sep_vc', 0) if constraints else 0
+    if language == 'a':
+        filename = 'am'
+    else:
+        filename = 'ti'
+    if light:
+        filename += '_light'
+    if constraints:
+        if 'reduce' in constraints:
+            filename += '_red'
+        if 'rcp' in constraints:
+            filename += '_rcp'
+        if 'applic' in constraints:
+            filename += '_app'
+        if 'binary' in constraints:
+            filename += '_bin'
+        if 'log' in constraints:
+            filename += '_log'
+    return filename + ('_rvf.txt' if sep_vc else '_rf.txt')
+
+def write_vroot_png(dct, language='a', light=False, filename='', vthresh=4, rthresh=10, constraints=None):
+    if not filename:
+        filename = make_rvpng_filename(language=language, light=light, constraints=constraints)
+#    elif language == 'a':
+#        if light:
+#            path = "../../SemVV/data/am_light_vroot_png.txt"
+#        else:
+#            path = "../../SemVV/data/am_vroot_png.txt"
+#    elif light:
+#        path = "../../SemVV/data/ti_light_vroot_png.txt"
+#    else:
+#        path = "../../SemVV/data/ti_vroot_png.txt"
+
+    path = "../../SemVV/data/" + filename
 
     ls = list(dct.items())
     ls.sort()
@@ -467,7 +602,7 @@ def get_subpers(um):
     else:
         return '3'
 
-def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
+def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constraints=None):
     '''
     Returns dicts for unambiguous roots, ambiguous roots, and
     multi-word (light verb) roots.
@@ -476,6 +611,11 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
     amb_roots = {}
     light_roots = {}
     items, nverbs = get_vclass_data(path)
+    ign_roots = IGN_ROOTS.get(language, [])
+    if constraints and 'applic' in constraints:
+        applic = constraints['applic']
+    else:
+        applic = 0
 
     # classify roots+vc by whether they have 1 or 2 person subjects
     s12 = set()
@@ -503,13 +643,15 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
                 root = anal['root']
                 um = anal['um']
                 vc = classify_um_vc(um, language=language)
+#                if vc == 'rcp'
+#                    continue
                 if (root, vc) in reject_imp:
                     continue
                 elif is_imperative(um) and (root, vc) not in s12:
                     reject_imp.append((root, vc))
 #                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
                     continue
-                um = filter_um(um, language=language)
+                um = filter_um(um, language=language, applic=applic)
                 unique_anals.add((root, um))
 
             if len(unique_anals) > 1:
@@ -519,8 +661,9 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
                     if " " in word:
                         if ' ' not in root:
                             root = word.split()[0] + ' ' + root
-                        add_root_um(light_roots, root, um)
-                    else:
+                        if root in ign_roots:
+                            add_root_um(light_roots, root, um)
+                    elif root not in ign_roots:
                         add_root_um(amb_roots, root, um)
             elif len(unique_anals) == 1:
                 unique_anals = list(unique_anals)[0]
@@ -529,8 +672,9 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
                 if " " in word:
                     if ' ' not in root:
                         root = word.split()[0] + ' ' + root
-                    add_root_um(light_roots, root, um)
-                else:
+                    if root not in ign_roots:
+                        add_root_um(light_roots, root, um)
+                elif root not in ign_roots:
                     if report and report == root:
                         print("** {}: {}".format(word, um))
                     add_root_um(unamb_roots, root, um)
@@ -539,12 +683,15 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
             if 'root' not in anal:
                 continue
             root = anal['root']
-            um = filter_um(anal['um'], language=language)
+            um = filter_um(anal['um'], language=language, applic=applic)
+#            if um[0] == 'rcp':
+#                continue
             if ' ' in word:
                 if ' ' not in root:
                     root = word.split()[0] + ' ' + root
-                add_root_um(light_roots, root, um)
-            else:
+                if root not in ign_roots:
+                    add_root_um(light_roots, root, um)
+            elif root not in ign_roots:
                 if report and report == root:
                     print("** {}: {}".format(word, um))
                 add_root_um(unamb_roots, root, um)
@@ -557,24 +704,30 @@ def get_vroot_png(path="data/am_v_classes.txt", language='a', report=''):
     for root, dct in light_roots.items():
         dct = group_by_vc(dct)
         light_roots[root] = dct
+    print("{} verbs analyzed".format(nverbs))
     return unamb_roots, amb_roots, light_roots
 
-def count_voice_class(dct, language='a', scale=True, trans=None, constraints=None, light=False,
-                      thresh=[0, 0, 0]):
+def count_voice_classes(dct, language='a', scale=True, trans=None, constraints=None, light=False,
+                        thresh=[0, 0, 0], vmorph=None):
     """
-    Constraints is a list of features constraints:
+    Constraints is a dict of features constraints:
     'reduce', 'rcp', 'binary'
     """
     classes = []
-    if light and language == 'a':
-        classes = ['base_ብ', 'pass_ብ', 'caus1_ድ', 'pass_ድ', 'caus2_ስ', 'pass_ስ']
+    if language == 'a':
+        if light:
+            classes = ['base_ብ', 'pass_ብ', 'caus1_ድ', 'pass_ድ', 'caus2_ስ', 'pass_ስ']
+        else:
+            classes = ['base', 'pass', 'caus1', 'caus2']
     else:
         classes = ['base', 'pass', 'caus']
-        if constraints and 'rcp' in constraints:
-            if language == 'a':
-                classes.extend(['rcp1', 'rcp2'])
-            else:
-                classes.append('rcp')
+    if constraints and 'rcp' in constraints:
+#            if language == 'a':
+        classes.extend(['iter', 'rcp1', 'rcp2', 'csrcp1', 'csrcp2'])
+#                classes.extend(['rcp1', 'rcp2', 'csrcp1', 'csrcp2'])
+#            else:
+#                class.append('rcp')
+#                classes.extend(['rcp', 'csrcp'])
     counts = {}
     roots_entries = []
     nelim = 0
@@ -599,15 +752,14 @@ def count_voice_class(dct, language='a', scale=True, trans=None, constraints=Non
                 new_root[vc] = new_vc
                 rtotal += vctotal
             if rtotal == 0 or (thresh[0] and rtotal < thresh[0]):
-                if root == "ቅምጥ:B":
-                    print("** Eliminating {} ({})".format(root, rtotal))
+#                if root == "ቅምጥ:B":
+#                    print("** Eliminating {} ({})".format(root, rtotal))
                 nelim += 1
                 continue
             new_entries[root] = new_root
         dct = new_entries
         print("** Eliminated {} roots".format(nelim))
     for root, entry in dct.items():
-        result = []
         if constraints:
             if 'reduce' in constraints:
                 entry = consol_trans(entry)
@@ -615,20 +767,29 @@ def count_voice_class(dct, language='a', scale=True, trans=None, constraints=Non
                 binarize(entry)
             elif 'log' in constraints:
                 logarithmize(entry)
-#        print("** entry {}".format(entry))
-        for cls in classes:
-            if cls == 'caus':
-                if language == 'a':
-                    # For Amharic prefer caus1 (ኣ-) over caus2 (ኣስ-)
-                    if 'caus1' in entry:
-                        result.extend(get_vc_counts(entry.get('caus1'), scale, trans=trans, constraints=constraints))
+        if constraints.get('sep_vc', False):
+            for cls in classes:
+                vc_count = get_vc_counts(entry.get(cls), scale, trans=trans, constraints=constraints)
+                if sum(vc_count):
+                    lemma = gen_lemma(vmorph, root, cls)
+                    label = "{}:{}".format(lemma, cls) if lemma else "{}_{}".format(root, cls)
+                    # Don't include empty VCs
+                    counts[label] = vc_count
+        else:
+            result = []
+            for cls in classes:
+                if cls == 'caus':
+                    if language == 'a':
+                        # For Amharic prefer caus1 (ኣ-) over caus2 (ኣስ-)
+                        if 'caus1' in entry:
+                            result.extend(get_vc_counts(entry.get('caus1'), scale, trans=trans, constraints=constraints))
+                        else:
+                            result.extend(get_vc_counts(entry.get('caus2'), scale, trans=trans, constraints=constraints))
                     else:
-                        result.extend(get_vc_counts(entry.get('caus2'), scale, trans=trans, constraints=constraints))
+                        result.extend(get_vc_counts(entry.get('caus'), scale, trans=trans, constraints=constraints))
                 else:
-                    result.extend(get_vc_counts(entry.get('caus'), scale, trans=trans, constraints=constraints))
-            else:
-                result.extend(get_vc_counts(entry.get(cls), scale, trans=trans, constraints=constraints))
-        counts[root] = result
+                    result.extend(get_vc_counts(entry.get(cls), scale, trans=trans, constraints=constraints))
+            counts[root] = result
     return counts
 
 def get_vc_counts(vc_dct, scale=False, trans=None, constraints=None):
@@ -640,13 +801,16 @@ def get_vc_counts(vc_dct, scale=False, trans=None, constraints=None):
     """
 #    print("** get vc counts {}".format(vc_dct))
     reduce = constraints and 'reduce' in constraints
-#    if reduce:
-#        trans = ['3m_', '~3m_', '3m_o', '~3m_o']
-#    else:
-#        trans = ['3sm_', '3sm_12', '3sm_3', '12_', '12_o', '3f|p_', '3f|p_o']
+    applic = constraints and constraints.get('applic')
     if not vc_dct:
         if reduce:
             return [0, 0, 0, 0]
+        elif applic == 1:
+            return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        elif applic == 2:
+            return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        elif applic == 3:
+            return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         else:
             return [0, 0, 0, 0, 0, 0, 0]
     if reduce:
@@ -660,34 +824,19 @@ def get_vc_counts(vc_dct, scale=False, trans=None, constraints=None):
             result = [round(c/total, 3) for c in result]
     return result
 
-def write_vc_counts(dct, language='a', light=False, filename='',
-                    constraints=None, comment=''):
+def write_root_counts(dct, language='a', light=False, filename='', constraints=None, comment=''):
     binary = False
     if constraints and 'binary' in constraints:
         binary = True
 #    if binary:
 #        thresh = 0
     directory = "../../SemVV/data/"
+#    sep_vc = constraints.get('sep_vc', 0)
     if not filename:
-        if language == 'a':
-            filename = 'am'
-        else:
-            filename = 'ti'
-        if light:
-            filename += '_light'
-        if constraints:
-            if 'reduce' in constraints:
-                filename += '_red'
-            if 'rcp' in constraints:
-                filename += '_rcp'
-            if 'binary' in constraints:
-                filename += '_bin'
-            if 'log' in constraints:
-                filename += '_log'
-        filename += '_vc.txt'
+        filename = make_feat_filename(language=language, light=light, constraints=constraints)
     path = directory + filename
     ls = list(dct.items())
-    ls.sort()
+#    ls.sort()
     with open(path, 'w', encoding='utf8') as file:
         if comment:
             print("##\t{}".format(comment), file=file)
@@ -769,10 +918,10 @@ def group_vroots(path="data/am_v_classes.txt", language='a', prune=True, scale_v
             cls.append('caus1')
         elif 'ITER' in um:
             cls.append('iter')
-        elif 'RECP' in um:
-            cls.append('rcp')
-        elif 'CAUS+RECP' in um:
-            cls.append('csrcp')
+#        elif 'RECP' in um:
+#            cls.append('rcp')
+#        elif 'CAUS+RECP' in um:
+#            cls.append('csrcp')
         elif 'RECP1' in um:
             cls.append('rcp1')
         elif 'RECP2' in um:
@@ -875,7 +1024,7 @@ def group_vroots(path="data/am_v_classes.txt", language='a', prune=True, scale_v
                 new_features[voice] = {trans: count}
         light_roots[root] = new_features
     print("Found {} verbs".format(nverbs))
-    counts = count_voice_class(unamb_roots, language=language, scale=scale_vc)
+    counts = count_voice_classes(unamb_roots, language=language, scale=scale_vc)
     proc_voice_class(unamb_roots, prune=prune)
 #        proc_voice_class(amb_roots)
     proc_voice_class(light_roots, prune=prune)

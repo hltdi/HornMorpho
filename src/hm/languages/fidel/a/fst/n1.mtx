@@ -8,7 +8,7 @@ $ prep
   ስለ		[adp=ስለ,-gen]
   ወደ		[adp=ወደ,-gen]
   እስከ	[adp=እስከ,-gen]
-  --		[adp=None,-gen]
+  --		[adp=0,-gen]
 
 $ prep_bound
   -
@@ -91,4 +91,4 @@ $ conj
   /ሳ		[cconj=ሳ]
   /ና		[cconj=ና]
   /ኮ		[cconj=ኮ]
-  --		[cconj=None]
+  --		[cconj=0]

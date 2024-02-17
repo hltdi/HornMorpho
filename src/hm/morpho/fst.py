@@ -94,11 +94,11 @@ GEM_CHARS = EES.pre_gem_char + EES.post_gem_chars
 
 ## Regexs for parsing FSTs and cascades
 # string_set_label={chars1, chars1, chars2, ...}
-SS_RE = re.compile('(\S+)\s*=\s*\{(.*)\}')
+SS_RE = re.compile(r'(\S+)\s*=\s*\{(.*)\}')
 # weighting = UNIFICATION
-WEIGHTING_RE = re.compile('weighting\s*=\s*(.*)')
+WEIGHTING_RE = re.compile(r'weighting\s*=\s*(.*)')
 # whether to reverse strings returned by the cascade FST
-R2L_RE = re.compile('r2l')
+R2L_RE = re.compile(r'r2l')
 # >fst<
 CASC_FST_RE = re.compile(r'>(.*?)<')
 # >xxx.root<
@@ -138,13 +138,13 @@ LEX_DEST_RE = re.compile(r'(\S+)?\s*->\s*(\S+)\s*\+(.*?)\+\s*(.*?)$')
 # src +lex+
 LEX_RE = re.compile(r'(\S+)?\s*\+(.*?)\+\s*(.*?)$')
 # cascade name = {0, 1, 3, ...}
-SUBCASC_RE = re.compile('cascade\s*(\S+)\s*=\s*\{(.*)\}')
+SUBCASC_RE = re.compile(r'cascade\s*(\S+)\s*=\s*\{(.*)\}')
 # +lex+
 CASC_LEX_RE = re.compile(r'\+(.*?)\+')
 # features = {}
-FEATS_RE = re.compile('features\s*=\s*(.+)')
+FEATS_RE = re.compile(r'features\s*=\s*(.+)')
 # defaultFS = []
-DEFAULT_FS_RE = re.compile('d\S*?\s*=\s*(.+)')
+DEFAULT_FS_RE = re.compile(r'd\S*?\s*=\s*(.+)')
 
 ## Filtering FSTs for composition
 
@@ -1966,7 +1966,7 @@ class FST:
                       label='', cascade=None, fst=None,
                       seg_units=[], create_weights=True, verbose=False):
         """Restore an FST from a .fst file."""
-#        print("** Restoring {} from file {}".format(label, fst_file))
+#        print("** Restoring {} from file {} or path {}".format(label, fst_file, path))
 #        label, suffix = fst_file.split('.')
 
         path = path or os.path.join(directory, fst_file)
@@ -2014,6 +2014,7 @@ class FST:
             if m:
                 df = m.group(1)
                 fst._defaultFS = FeatStruct(df)
+#                print("** Found df {}".format(fst._defaultFS.__repr__()))
                 continue
 
             # Final state
@@ -2358,7 +2359,7 @@ class FST:
                 continue
 
             # State
-            m = re.match('(\S+)$', line)
+            m = re.match(r'(\S+)$', line)
             if m:
                 label = m.group(1)
                 if not fst.has_state(label): fst.add_state(label)

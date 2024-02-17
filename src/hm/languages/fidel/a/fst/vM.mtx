@@ -6,24 +6,24 @@ $ gap
   
 $ conj_prep_pre
   # In UM and UD, የ- የም- እም- are SCONJ
-  የ		[sconj=None,t=i|p,+rel,-mc,+sub,adp=None]
-  እ		[sconj=None,t=i,+rel,-mc,+sub,adp=None]
-  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=None]
-  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=None]
-  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=None]
-  ል  		[sconj=ል,t=i,-rel,-mc,+sub,adp=None]
-  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub,adp=None]
+  የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0]
+  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0]
+  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0]
+  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=0]
+  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=0]
+  ል  		[sconj=ል,t=i,-rel,-mc,+sub,adp=0]
+  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub,adp=0]
   # adp ከ (=from): ከሚመጣው;   # sconj ከ (=if)
-  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=None];[sconj=ከ,t=p,-rel,-mc,+sub,adp=None]
+  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=0];[sconj=ከ,t=p,-rel,-mc,+sub,adp=0]
   # adp እንደ (=like): እንደሚመጣ;   # sconj እንደ (=if)
-  እንደ	[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=None];[sconj=እንደ,t=p,-rel,-mc,+sub,adp=None]
-  በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=None]
-  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub,sconj=None]
-  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=None]
-  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=None]
-  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=None]
-  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=None]
-  --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-sub,sconj=None,adp=None,-rel]
+  እንደ	[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0];[sconj=እንደ,t=p,-rel,-mc,+sub,adp=0]
+  በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=0]
+  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub,sconj=0]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=0]
+  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=0]
+  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0]
+  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=0]
+  --  	[t=i|p,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel]
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -178,6 +178,6 @@ $ conj2
   /ሳ		[cconj=ሳ]
 #  ኣ		[cconj=ኣ]
   /ኮ		[cconj=ኮ]
-  --		[cconj=None]
+  --		[cconj=0]
 
 

@@ -1,6 +1,6 @@
 $ c=A|B|C|E|F|G|H|J
 $ a=0|a|i
-$ v=0|p|a|as|ast
+$ v=0|p|a|as|ast|test
 $ t=p|i|j|c
 
 # abbreviation for "sibilants"; not currently used anywhere

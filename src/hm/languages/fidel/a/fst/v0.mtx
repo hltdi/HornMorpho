@@ -1,5 +1,5 @@
 $ conj_prep_pre
-  ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=None,-mc,-neg,-pr,root=ምጥእ,oa=0|l|b]
+  ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=0,-mc,-neg,-pr,root=ምጥእ,oa=0|l|b]
   የ		[t=i|p,+rel,-mc,+sub]
   ብ  		[sconj=ብ,t=i,-rel,-mc,+sub]
   ስ  		[sconj=ስ,t=i,-rel,-mc,+sub]
@@ -14,7 +14,7 @@ $ conj_prep_pre
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub]
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub]
   እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub]
-  --  	[t=i|p,-rel,sconj=None,adp=None,-sub];[t=j|c,-sub,sconj=None,adp=None,-rel]
+  --  	[t=i|p,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel]
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -174,7 +174,7 @@ $ conj2
 # Appearing too often; figure out how to include it later
 #  ኣ		[cconj=ኣ]
   /ኮ		[cconj=ኮ]
-  --		[cconj=None]
+  --		[cconj=0]
 
 $ end
   --		[pos=v]

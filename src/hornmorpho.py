@@ -40,13 +40,13 @@ TI_SKIP = \
 
 ## Functions specific to v. 5.
 
-def am_morphsem1(n_sents=1000, start=0, file=None, verbosity=0,
-                                   path="data/am_v_classes.txt", cache=None, corpus=None):
+def am_morphsem2(n_sents=1000, start=0, file=None, verbosity=0,
+                                   path="data/am_v_classes2.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         'a',
         path="../../TAFS/datasets/CACO/CACO.txt",
         n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v'], props=['root', 'um'], skip_mwe=False,
+        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
         skip=AM_SKIP,
         gemination=False,
         local_cache=cache,
@@ -66,7 +66,7 @@ def ti_morphsem1(n_sents=1000, start=0, file=None, verbosity=0,
         't',
         path="../../TT/data/tlmd_v1.0.0/train1.txt",
         n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v'], props=['root', 'um'], skip_mwe=False,
+        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
         skip=TI_SKIP,   
         gemination=False,
         local_cache=cache,

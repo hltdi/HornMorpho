@@ -2,7 +2,7 @@ $ prep
   የ		[+rel,+sub,+neg]
   እንደ	[-rel,+sub,+neg,cnj1=እንደ]
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
-  --  	[-neg,cnj1=None];[-rel,-sub,+neg,cnj1=None]
+  --  	[-neg,cnj1=0];[-rel,-sub,+neg,cnj1=0]
 
 $ cp_bound
   -
@@ -51,7 +51,7 @@ $ conj
   /ና		[cnj2=ና]
   ኣ		[cnj2=ኣ]
   /ኮ		[cnj2=ኮ]
-  --		[cnj2=None]
+  --		[cnj2=0]
 
 $ end
   --		[pos=COP]
