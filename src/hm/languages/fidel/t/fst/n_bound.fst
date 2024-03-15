@@ -3,26 +3,43 @@
 -> start
 
 # adposition; no negation
-start -> advV	[*v]
-start -> advC	[*]
-advV -> advV	[*v]
-advC ->	advV	[*v]
-advC -> advC	[*]
-advV -> advC	[*]
+start -> adpV	[*v]
+start -> adpC	[*]
+adpV -> adpV	[*v]
+adpC ->	adpV	[*v]
+adpC -> adpC	[*]
+adpV -> adpC	[*]
 # ምስ ከም
-advV -> advCa	[{I2a};*e]
-advC -> advCa	[{I2a};*e]
-advC -> preC	[:-]
-advV -> preV	[:-]
-advC -> preV	[:-]
+adpV -> adpCa	[{I2a};*e]
+adpC -> adpCa	[{I2a};*e]
+adpC -> preC	[:-]
+adpV -> preV	[:-]
+adpC -> preV	[:-]
+adpCa -> preCa	[:-]
+# ኣብ + ኣየናይ -> ኣበየናይ
+adpV -> adpCe	[{I2e}]
+adpC -> adpCe	[{I2e}]
+start -> adpCe	[{I2e}]
+adpCe -> preCe	[:-]
 # መእንትኡ
-advC -> advA	[{A2I}]
-advCa -> preCa	[:-]
-advA -> preA	[:-]
+adpC -> adpA	[{A2I}]
+adpA -> preA	[:-]
+# ምእንታኻ (ምእንታ + ኣኻ)
+adpC -> adpAA 	[*a]
+adpAA -> preAA	[:-]
+preAA -> aastem	[:<]
+aastem -> stemV	[:ኣ]	[pos=PRON,-dem,-neg]
+# ን-<እቲ> -> ነቲ
+start -> nbdet1		[ነ:ን;በ:ብ]	[adp=ን|ብ]
+nbdet1 -> nbdet2	[:-]
+nbdet2 -> nbdet3	[:<]
+nbdet3 -> stemV		[:እ]	[pos=PRON|DET,+dem,-neg]
 
 # no adposition
 start -> neg0	[:-]
+# negation
 neg0 -> neg1	<ኣይ>
+neg0 -> neg1	<ዘይ>
 
 # stem
 neg1 -> stem0	[:<]
@@ -30,27 +47,29 @@ neg0 -> stem0	[:<]
 
 preV -> Vstem	[:<]
 preC -> Cstem	[:<]
-preV -> NAstem	[:<]	[pos=N|ADJ]
-preC -> NAstem	[:<]	[pos=N|ADJ]
+preV -> NAstem	[:<]	[pos=N|ADJ|PROPN]
+preC -> NAstem	[:<]	[pos=N|ADJ|PROPN]
 preCa -> Castem	[:<]
+preCe -> Cestem	[:<]
 preA -> Astem	[:<]
 
 # k->K, q->Q for nouns and adjectives with prepositions
 NAstem -> stem0	[^^K;{q2Q}]
 
 # what to do with prepositions before pronouns
-Vstem -> stemC	[*-እ;:እ]       [pos=PRON]
-Cstem -> stemC	[*-እ;:እ]	[pos=PRON,+dem]
+Vstem -> stemC	[*-እ;:እ]       [pos=PRON|DET]
+Cstem -> stemC	[*-እ;:እ]	[pos=PRON|DET,+dem]
 Cstem -> stemC	[*]			[pos=PRON,-dem]
 Cstem -> stemV	[*v]		[pos=PRON]
 Vstem -> stemV	[*v]		[pos=PRON]
 Castem -> stemV	[:ኣ]		[pos=PRON,-dem]
+Cestem -> stemV	[:ኣ]		[pos=PRON|DET,-pers]
 # ምእንትኡ
 Astem -> stemV	[ኡ;ኣ;ኦ;ኤ]	[pos=PRON,-dem]
 
 stem0 -> stemC	[*;/]
-stem0 -> stemV	[^i]
-stem0 -> stemi	[*i]
+stem0 -> stemV	[*v]
+#stem0 -> stemi	[*i]
 
 stemC -> stemC	[*;/]
 stemC -> stemV	[*v]
@@ -69,6 +88,18 @@ stemV -> steme	[{I2e}]
 stemC -> steme	[{I2e}]
 stemV -> stemE	[{I2e}]
 stemC -> stemE	[{I2e}]
+# ምውድኡ alongside ምውዳኡ
+stemC -> stemAI	[{a2I}]	# [d=inf]
+stemAI -> stemAIu	[ኡ:እ;ዑ:ዕ;ሑ:ሕ;ሁ:ህ]
+stemAI -> stemAIa	[ኣ:እ;ዓ:ዕ;ሓ:ሕ;ሃ:ህ]
+stemAI -> stemAIE	[አ:እ;ዓ:ዕ;ሐ:ሕ;ሀ:ህ]
+stemAI -> stemAIe	[አ:እ;ዓ:ዕ;ሐ:ሕ;ሀ:ህ]
+stemAI -> stemAIo	[ኦ:እ;ዖ:ዕ;ሖ:ሕ;ሆ:ህ]
+stemAIu -> usuff	[:>]
+stemAIa -> asuff	[:>]
+stemAIe -> esuff	[:>]
+stemAIo -> osuff	[:>]
+stemAIE -> Esuff	[:>]
 
 # Ci -> C* for epenthetic -i
 stemC -> stemi_		[{i2I}]
@@ -84,6 +115,10 @@ stemV -> stemi2I   	[{i2I}]
 # -a
 stemV -> stemV2I	[{a2I}]
 stemC -> stemV2I	[{a2I}]
+# ለቕሓ + አይ -> ለቕሐይ
+stemC -> stemLa2e	[ሐ:ሓ;ሀ:ሃ;ዓ:ዐ;ኣ:አ]
+stemV -> stemLa2e	[ሐ:ሓ;ሀ:ሃ;ዓ:ዐ;ኣ:አ]
+stemLa2e -> Vsuff	[:>]	[+sv]
 # -e; and other vowels?
 stemV -> stemV2I	[{e2I}]
 stemC -> stemV2I	[{e2I}]

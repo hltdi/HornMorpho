@@ -53,7 +53,7 @@ acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 # unambiguous possessive suffixes
 p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
 # ambiguous possessive/determiner suffixes
-p,g:: sm3,0:{PSS3SM/DEF};; sf3,0:{PSS3SF/DEF}
+p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
@@ -117,7 +117,7 @@ POS v V
 ->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
 ->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
 ->UD *MAL3P	*MalPers=3,MalNum=Plur
-->UD {AC3SM/DEF} &Acc3SMDef=True
+#->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
 ->UD COND	*ClauseType=AdvCl
@@ -161,8 +161,9 @@ sn:: 1:SG;; 2:PL
 sg:: m:MASC;; f:FEM
 
 ## objects
-# accusative objects (and 3SM DEF)
-o,oc,rel,+tr:: sm3,0,True,True:{AC3SM/DEF};; sm3,0,False,*:AC3SM;; sm3,0,True,False:DEF
+# accusative objects and DEF
+#o,oc,rel,+tr:: sm3,0,True,True:{AC3SM/DEF};; sm3,0,False,*:AC3SM;; sm3,0,True,False:DEF
+o,oc,rel,det::sm3,0,*,False:AC3SM;;sm3,0,True,True:DEF
 o,oc:: sf3,0:AC3SF;; p3,0:AC3P
 o,oc:: s1,0:AC1S;; p1,0:AC1P;; sm2,0:AC2SM;; sf2,0:AC2SF;; F2,0:AC2S;FORM;; p2,0:AC2P
 # dative objects

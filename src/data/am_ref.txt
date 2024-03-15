@@ -1,0 +1,1437 @@
+# text = ተኛ ።
+# sent_id = am_ref_1
+1-2	ተኛ	_	_	_	_	_	_	_	_
+1	ተኛ	ተኛ	VERB	VERB	Aspect=Perf	1	_	_	_
+2	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	።	።	PUNCT	PUNCT	_	3	_	_	_
+
+# text = አልጋው ላይ ተኛች ።
+# sent_id = am_ref_2
+1-2	አልጋው	_	_	_	_	_	_	_	_
+1	አልጋ	አልጋ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3	ላይ	ላይ	ADP	ADP	_	3	_	_	_
+4-5	ተኛች	_	_	_	_	_	_	_	_
+4	ተኛ	ተኛ	VERB	VERB	Aspect=Perf	4	_	_	_
+5	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	4	nsubj	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = እንጀራ የለም ።
+# sent_id = am_ref_3
+1	እንጀራ	እንጀራ	NOUN	NOUN	Number=Sing	1	_	_	_
+2-4	የለም	_	_	_	_	_	_	_	_
+2	የለ	አለ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ም	ም	ADV	ADV	Polarity=Neg	2	advmod	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ውሻው ይጮሃል ።
+# sent_id = am_ref_4
+1-2	ውሻው	_	_	_	_	_	_	_	_
+1	ውሻ	ውሻ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3-5	ይጮሃል	_	_	_	_	_	_	_	_
+3	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+4	ጮህ	ጮኸ	VERB	VERB	Aspect=Imp	4	_	_	_
+5	ኣል	ኣል	AUX	AUX	_	4	aux	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = ሰውዬው ራበው ።
+# sent_id = am_ref_5
+1-2	ሰውዬው	_	_	_	_	_	_	_	_
+1	ሰውዬ	ሰውዬ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3-5	ራበው	_	_	_	_	_	_	_	_
+3	ራብ	ራበ	VERB	VERB	Aspect=Perf	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	3	obj	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = አስቴር ራባት ።
+# sent_id = am_ref_6
+1	አስቴር	አስቴር	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ራባት	_	_	_	_	_	_	_	_
+2	ራብ	ራበ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	2	obj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = አስቴር መኪና አላት ።
+# sent_id = am_ref_7
+1	አስቴር	አስቴር	PROPN	PROPN	Number=Sing	1	_	_	_
+2	መኪና	መኪና	NOUN	NOUN	Number=Sing	2	_	_	_
+3-5	አላት	_	_	_	_	_	_	_	exist
+3	ኣለ	አለ	VERB	VERB	Aspect=Perf	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	3	obj	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = ሰበረ ።
+# sent_id = am_ref_8
+1-2	ሰበረ	_	_	_	_	_	_	_	_
+1	ሰበር	ሰበረ	VERB	VERB	Aspect=Perf	1	_	_	_
+2	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	።	።	PUNCT	PUNCT	_	3	_	_	_
+
+# text = እሱ ሰበረ ።
+# sent_id = am_ref_9
+1	እሱ	እሱ	PRON	PRON	Number=Sing	1	_	_	_
+2-3	ሰበረ	_	_	_	_	_	_	_	_
+2	ሰበር	ሰበረ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = እሱ ሰበረው ።
+# sent_id = am_ref_10
+1	እሱ	እሱ	PRON	PRON	Number=Sing	1	_	_	_
+2-4	ሰበረው	_	_	_	_	_	_	_	_
+2	ሰበር	ሰበረ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	2	obj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ካሌብ ብርጭቆውን ሰበረው ።
+# sent_id = am_ref_11
+1	ካሌብ	ካሌብ	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ብርጭቆውን	_	_	_	_	_	_	_	_
+2	ብርጭቆ	ብርጭቆ	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	Definite=Def	2	det	_	_
+4	ን	ን	ADP	ADP	Case=Acc	2	case	_	_
+5-7	ሰበረው	_	_	_	_	_	_	_	_
+5	ሰበር	ሰበረ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	5	obj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = አበበ ብሩን ለአልማዝ ሰጣት ።
+# sent_id = am_ref_12
+1	አበበ	አበበ	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ብሩን	_	_	_	_	_	_	_	_
+2	ብር	ብር	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	Definite=Def	2	det	_	_
+4	ን	ን	ADP	ADP	Case=Acc	2	case	_	_
+5-6	ለአልማዝ	_	_	_	_	_	_	_	_
+5	ለ	ለ	ADP	ADP	Case=Dat	6	case	_	_
+6	አልማዝ	አልማዝ	PROPN	PROPN	_	6	_	_	_
+7-9	ሰጣት	_	_	_	_	_	_	_	_
+7	ሰጠ	ሰጠ	VERB	VERB	Aspect=Perf	7	_	_	_
+8	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	7	obj	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = አበበ ብሩን ሰጣት ።
+# sent_id = am_ref_13
+1	አበበ	አበበ	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ብሩን	_	_	_	_	_	_	_	_
+2	ብር	ብር	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	Definite=Def	2	det	_	_
+4	ን	ን	ADP	ADP	Case=Acc	2	case	_	_
+5-7	ሰጣት	_	_	_	_	_	_	_	_
+5	ሰጠ	ሰጠ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	5	obj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ራሴን አመመኝ ።
+# sent_id = am_ref_14
+1-3	ራሴን	_	_	_	_	_	_	_	_
+1	ራስ	ራስ	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	አመመኝ	_	_	_	_	_	_	_	_
+4	ኣመም	አመመ	VERB	VERB	Aspect=Perf	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ኝ	ኝ	PRON	PRON	AccNum=Sing|AccPers=1	4	obj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ብርጭቆው ተሰበረ ።
+# sent_id = am_ref_15
+1-2	ብርጭቆው	_	_	_	_	_	_	_	_
+1	ብርጭቆ	ብርጭቆ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3-4	ተሰበረ	_	_	_	_	_	_	_	_
+3	ተሰበር	ተሰበረ	VERB	VERB	Aspect=Perf|Voice=Pass	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = መንገዱ በውሃ ተቦረቦረ ።
+# sent_id = am_ref_16
+1-2	መንገዱ	_	_	_	_	_	_	_	_
+1	መንገድ	መንገድ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3-4	በውሃ	_	_	_	_	_	_	_	_
+3	በ	በ	ADP	ADP	Case=Ins	4	case	_	_
+4	ውሀ	ውሀ	NOUN	NOUN	_	4	_	_	_
+5-6	ተቦረቦረ	_	_	_	_	_	_	_	_
+5	ተቦረቦር	ተቦረቦረ	VERB	VERB	Aspect=Perf|Voice=Pass	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ልጁን ስራ አሰራሁት ።
+# sent_id = am_ref_17
+1-3	ልጁን	_	_	_	_	_	_	_	_
+1	ልጅ	ልጅ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4	ስራ	ስራ	NOUN	NOUN	Number=Sing	4	_	_	_
+5-7	አሰራሁት	_	_	_	_	_	_	_	_
+5	ኣስሰራ	አሰራ	VERB	VERB	Aspect=Perf|Voice=Cau	5	_	_	_
+6	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	5	nsubj	_	_
+7	ት	ት	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	5	obj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ልጁን አስሮጥኩት ።
+# sent_id = am_ref_18
+1-3	ልጁን	_	_	_	_	_	_	_	_
+1	ልጅ	ልጅ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	አስሮጥኩት	_	_	_	_	_	_	_	_
+4	ኣስሮጥ	አስሮጠ	VERB	VERB	Aspect=Perf|Voice=Cau	4	_	_	_
+5	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	4	nsubj	_	_
+6	ት	ት	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	4	obj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = አባቴ ነው ።
+# sent_id = am_ref_19
+1-2	አባቴ	_	_	_	_	_	_	_	_
+1	አባት	አባት	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3-4	ነው	_	_	_	_	_	_	_	_
+3	ነ	_	VERB	VERB	_	3	_	_	_
+4	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ካሳ አስተማሪ ነው ።
+# sent_id = am_ref_20
+1	ካሳ	ካሳ	PROPN	PROPN	Number=Sing	1	_	_	_
+2	አስተማሪ	አስተማሪ	NOUN	NOUN	Number=Sing	2	_	_	_
+3-4	ነው	_	_	_	_	_	_	_	_
+3	ነ	_	VERB	VERB	_	3	_	_	_
+4	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ጨዋታው ቀላል አይደለም  ።
+# sent_id = am_ref_21
+1-2	ጨዋታው	_	_	_	_	_	_	_	_
+1	ጨዋታ	ጨዋታ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3	ቀላል	ቀላል	ADJ	ADJ	Number=Sing	3	_	_	_
+4-7	አይደለም	_	_	_	_	_	_	_	_
+4	ኣይ	ኣይ	ADV	ADV	Polarity=Neg	5	advmod	_	_
+5	ደለ	_	VERB	VERB	_	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ም	ም	ADV	ADV	Polarity=Neg	5	advmod	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ምግቡ ጥሩ ነው ።
+# sent_id = am_ref_22
+1-2	ምግቡ	_	_	_	_	_	_	_	_
+1	ምግብ	ምግብ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+3	ጥሩ	ጥሩ	ADJ	ADJ	Number=Sing	3	_	_	_
+4-5	ነው	_	_	_	_	_	_	_	_
+4	ነ	_	VERB	VERB	_	4	_	_	_
+5	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = ፈተና ጥሩ ነበር ።
+# sent_id = am_ref_23
+1	ፈተና	ፈተና	NOUN	NOUN	Number=Sing	1	_	_	_
+2	ጥሩ	ጥሩ	ADJ	ADJ	Number=Sing	2	_	_	_
+3	ነበር	ነበር	AUX	AUX	_	3	_	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = ጎበዝ ናት ።
+# sent_id = am_ref_24
+1	ጎበዝ	ጎበዝ	ADJ	ADJ	Number=Sing	1	_	_	_
+2-3	ናት	_	_	_	_	_	_	_	_
+2	ነ	_	VERB	VERB	_	2	_	_	_
+3	ኣት	ኣት	PRON	PRON	Gender=Fem|Number=Sing|Person=3	2	nsubj	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = ተማሪዎቹ ሁለት ናቸው ።
+# sent_id = am_ref_25
+1-3	ተማሪዎቹ	_	_	_	_	_	_	_	_
+1	ተማሪ	ተማሪ	NOUN	NOUN	_	1	_	_	_
+2	ኦች	ኦች	COMP	COMP	Number=Plur	1	amod	_	_
+3	ኡ	ኡ	DET	DET	Definite=Def	1	det	_	_
+4	ሁለት	ሁለት	NUM	NUM	_	4	_	_	_
+5-6	ናቸው	_	_	_	_	_	_	_	_
+5	ነ	_	VERB	VERB	_	5	_	_	_
+6	ኣቸው	ኣቸው	PRON	PRON	Number=Plur|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = እነዚህ ድርጅቶች በዓለም ላይ ታዋቂ ናቸው  ።
+# sent_id = am_ref_26
+1	እነዚህ	ይህ	PRON	PRON	Number=Plur	1	_	_	_
+2-3	ድርጅቶች	_	_	_	_	_	_	_	_
+2	ድርጅት	ድርጅት	NOUN	NOUN	_	2	_	_	_
+3	ኦች	ኦች	COMP	COMP	Number=Plur	2	amod	_	_
+4-5	በዓለም	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	Case=Ins	5	case	_	_
+5	አለም	አለም	NOUN	NOUN	_	5	_	_	_
+6	ላይ	ላይ	ADP	ADP	_	6	_	_	_
+7	ታዋቂ	ታዋቂ	ADJ	ADJ	Number=Sing	7	_	_	_
+8-9	ናቸው	_	_	_	_	_	_	_	_
+8	ነ	_	VERB	VERB	_	8	_	_	_
+9	ኣቸው	ኣቸው	PRON	PRON	Number=Plur|Person=3	8	nsubj	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ( እሷ ) ማዕድቤት ውስጥ ናት ።
+# sent_id = am_ref_27
+1	(	(	PUNCT	PUNCT	_	1	_	_	_
+2	እሷ	እሷ	PRON	PRON	Number=Sing	2	_	_	_
+3	)	)	PUNCT	PUNCT	_	3	_	_	_
+4	ማዕድቤት	ማእድቤት	NOUN	NOUN	Number=Sing	4	_	_	_
+5	ውስጥ	ውስጥ	ADP	ADP	_	5	_	_	_
+6-7	ናት	_	_	_	_	_	_	_	_
+6	ና	መጣ	VERB	VERB	Mood=Jus	6	_	_	_
+7	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	6	obj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = መፅሃፉ ጠረጴዛው ላይ ነው ።
+# sent_id = am_ref_28
+1-2	መፅሃፉ	_	_	_	_	_	_	_	_
+1	መጽሀፍ	መጽሀፍ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3-4	ጠረጴዛው	_	_	_	_	_	_	_	_
+3	ጠረጴዛ	ጠረጴዛ	NOUN	NOUN	_	3	_	_	_
+4	ኡ	ኡ	DET	DET	&Poss3Def=Masc	3	det	_	_
+5	ላይ	ላይ	ADP	ADP	_	5	_	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	_	VERB	VERB	_	6	_	_	_
+7	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = የእሷ ነው ።
+# sent_id = am_ref_29
+1-2	የእሷ	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	እሷ	እሷ	PRON	PRON	_	2	_	_	_
+3-4	ነው	_	_	_	_	_	_	_	_
+3	ነ	_	VERB	VERB	_	3	_	_	_
+4	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ቤቱ የነሱ ነው ።
+# sent_id = am_ref_30
+1-2	ቤቱ	_	_	_	_	_	_	_	_
+1	ቤት	ቤት	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3-5	የነሱ	_	_	_	_	_	_	_	_
+3	የ	የ	SCONJ	SCONJ	_	4	mark	_	_
+4	ነሳ	ነሳ	VERB	VERB	Aspect=Perf|ClauseType=ACl	4	_	_	_
+5	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	4	nsubj	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	_	VERB	VERB	_	6	_	_	_
+7	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ለእሷ ነው ።
+# sent_id = am_ref_31
+1-2	ለእሷ	_	_	_	_	_	_	_	_
+1	ለ	ለ	ADP	ADP	Case=Dat	2	case	_	_
+2	እሷ	እሷ	PRON	PRON	_	2	_	_	_
+3-4	ነው	_	_	_	_	_	_	_	_
+3	ነ	_	VERB	VERB	_	3	_	_	_
+4	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ቤቱ ውስጥ ሰው አለ ።
+# sent_id = am_ref_32
+1-2	ቤቱ	_	_	_	_	_	_	_	_
+1	ቤት	ቤት	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3	ውስጥ	ውስጥ	ADP	ADP	_	3	_	_	_
+4	ሰው	ሰው	NOUN	NOUN	Gender=Masc|Number=Sing	4	_	_	_
+5-6	አለ	_	_	_	_	_	_	_	say
+5	ኣል	አለ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ሰሃኑ ውስጥ ምግብ አለ ።
+# sent_id = am_ref_33
+1-2	ሰሃኑ	_	_	_	_	_	_	_	_
+1	ሰሀ	ሰሀ	NOUN	NOUN	_	1	_	_	_
+2	ኑ	ኑ	ADP	ADP	Case=Acc	1	case	_	_
+3	ውስጥ	ውስጥ	ADP	ADP	_	3	_	_	_
+4	ምግብ	ምግብ	NOUN	NOUN	Number=Sing	4	_	_	_
+5-6	አለ	_	_	_	_	_	_	_	say
+5	ኣል	አለ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ድምፅ ከቤት ውስጥ ይሰማል ።
+# sent_id = am_ref_34
+1	ድምፅ	ድምጽ	NOUN	NOUN	Number=Sing	1	_	_	_
+2-3	ከቤት	_	_	_	_	_	_	_	_
+2	ከ	ከ	ADP	ADP	Case=Abl	3	case	_	_
+3	ቤት	ቤት	NOUN	NOUN	_	3	_	_	_
+4	ውስጥ	ውስጥ	ADP	ADP	_	4	_	_	_
+5-7	ይሰማል	_	_	_	_	_	_	_	_
+5	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+6	ሰማ	ሰማ	VERB	VERB	Aspect=Imp	6	_	_	_
+7	ኣል	ኣል	AUX	AUX	_	6	aux	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ከቤት ውስጥ ድንገት ድምፅ ተሰማ ።
+# sent_id = am_ref_35
+1-2	ከቤት	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	ቤት	ቤት	NOUN	NOUN	_	2	_	_	_
+3	ውስጥ	ውስጥ	ADP	ADP	_	3	_	_	_
+4	ድንገት	ድንገት	ADV	ADV	_	4	_	_	_
+5	ድምፅ	ድምጽ	NOUN	NOUN	Number=Sing	5	_	_	_
+6	ተሰማ	ተሰማ	VERB	VERB	Gender=Masc|Mood=Jus|Number=Sing|Person=2|Voice=Pass	6	_	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ከቤት በጠዋት ወጣች ።
+# sent_id = am_ref_36
+1-2	ከቤት	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	ቤት	ቤት	NOUN	NOUN	_	2	_	_	_
+3-4	በጠዋት	_	_	_	_	_	_	_	_
+3	በ	በ	ADP	ADP	Case=Ins	4	case	_	_
+4	ጠዋት	ጠዋት	NOUN	NOUN	_	4	_	_	_
+5-6	ወጣች	_	_	_	_	_	_	_	_
+5	ወጣ	ወጣ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = በታክሲ ወደ ትምህርት ቤት መጣች ።
+# sent_id = am_ref_37
+1-2	በታክሲ	_	_	_	_	_	_	_	_
+1	በ	በ	ADP	ADP	Case=Ins	2	case	_	_
+2	ታክሲ	ታክሲ	NOUN	NOUN	_	2	_	_	_
+3	ወደ	ወደ	ADP	ADP	_	3	_	_	_
+4	ትምህርት ቤት	ትምህርት ቤት	NOUN	NOUN	Number=Sing	4	_	_	_
+5-6	መጣች	_	_	_	_	_	_	_	_
+5	መጣ	መጣ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ማታ ቤት ደረሰ ።
+# sent_id = am_ref_38
+1	ማታ	ማታ	NOUN	NOUN	Number=Sing	1	_	_	_
+2	ቤት	ቤት	NOUN	NOUN	Number=Sing	2	_	_	_
+3-4	ደረሰ	_	_	_	_	_	_	_	_
+3	ደረስ	ደረሰ	VERB	VERB	Aspect=Perf	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ቤት የደረሰው ማታ ነበር ።
+# sent_id = am_ref_39
+1	ቤት	ቤት	NOUN	NOUN	Number=Sing	1	_	_	_
+2-5	የደረሰው	_	_	_	_	_	_	_	_
+2	የ	የ	SCONJ	SCONJ	_	3	mark	_	_
+3	ደረስ	ደረሰ	VERB	VERB	Aspect=Perf|ClauseType=ACl	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ው	ው	DET	DET	_	3	det	_	_
+6	ማታ	ማታ	NOUN	NOUN	Number=Sing	6	_	_	_
+7	ነበር	ነበር	AUX	AUX	_	7	_	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ማታ ነበር ቤት የደረሰው ።
+# sent_id = am_ref_40
+1	ማታ	ማታ	NOUN	NOUN	Number=Sing	1	_	_	_
+2	ነበር	ነበር	AUX	AUX	_	2	_	_	_
+3	ቤት	ቤት	NOUN	NOUN	Number=Sing	3	_	_	_
+4-7	የደረሰው	_	_	_	_	_	_	_	_
+4	የ	የ	SCONJ	SCONJ	_	5	mark	_	_
+5	ደረስ	ደረሰ	VERB	VERB	Aspect=Perf|ClauseType=ACl	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	ው	ው	DET	DET	_	5	det	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = በድንገት ወደቀ ።
+# sent_id = am_ref_41
+1	በድንገት	በድንገት	ADV	ADV	_	1	_	_	_
+2-3	ወደቀ	_	_	_	_	_	_	_	_
+2	ወደቅ	ወደቀ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = አስቴር ካሌብን በተደጋጋሚ ጠራችው ።
+# sent_id = am_ref_42
+1	አስቴር	አስቴር	PROPN	PROPN	Number=Sing	1	_	_	_
+2-3	ካሌብን	_	_	_	_	_	_	_	_
+2	ካሌብ	ካሌብ	PROPN	PROPN	_	2	_	_	_
+3	ን	ን	ADP	ADP	Case=Acc	2	case	_	_
+4-5	በተደጋጋሚ	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	Case=Ins	5	case	_	_
+5	ተደጋጋሚ	ተደጋጋሚ	NADJ	NADJ	_	5	_	_	_
+6-8	ጠራችው	_	_	_	_	_	_	_	_
+6	ጠራ	ጠራ	VERB	VERB	Aspect=Perf	6	_	_	_
+7	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	6	nsubj	_	_
+8	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	6	obj	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = ጅማ ወደሚባል ከተማ ሄድኩ ።
+# sent_id = am_ref_43
+1	ጅማ	ጂማ	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ወደሚባል	_	_	_	_	_	_	_	_
+2	ወደም	ወደም	ADP	ADP	Case=All	4	mark	_	_
+3	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+4	ባል	ተባለ	VERB	VERB	Aspect=Imp|ClauseType=ACl|Voice=Pass	4	_	_	_
+5	ከተማ	ከተማ	NPROPN	NPROPN	Number=Sing	5	_	_	_
+6-7	ሄድኩ	_	_	_	_	_	_	_	_
+6	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	6	_	_	_
+7	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ጅማ ሄድኩ ።
+# sent_id = am_ref_44
+1	ጅማ	ጂማ	PROPN	PROPN	Number=Sing	1	_	_	_
+2-3	ሄድኩ	_	_	_	_	_	_	_	_
+2	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	2	nsubj	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = ጅማ ከተማ ሄድኩ ።
+# sent_id = am_ref_45
+1	ጅማ	ጂማ	PROPN	PROPN	Number=Sing	1	_	_	_
+2	ከተማ	ከተማ	PROPN	PROPN	Number=Sing	2	_	_	_
+3-4	ሄድኩ	_	_	_	_	_	_	_	_
+3	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	3	_	_	_
+4	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	3	nsubj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = አስቴር ደከማት ።
+# sent_id = am_ref_46
+1	አስቴር	አስቴር	PROPN	PROPN	Number=Sing	1	_	_	_
+2-4	ደከማት	_	_	_	_	_	_	_	_
+2	ደከም	ደከመ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	2	obj	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = ይመጣ ነበር ።
+# sent_id = am_ref_47
+1-2	ይመጣ	_	_	_	_	_	_	_	_
+1	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+2	መጣ	መጣ	VERB	VERB	Aspect=Imp	2	_	_	_
+3	ነበር	ነበር	AUX	AUX	_	3	_	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = በሩን ከፈተ እና ውሻውን አስገባው ።
+# sent_id = am_ref_48
+1-3	በሩን	_	_	_	_	_	_	_	_
+1	በራ	በራ	VERB	VERB	Aspect=Perf	1	_	_	_
+2	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	1	nsubj	_	_
+3	ን	ን	PRON	PRON	AccNum=Plur|AccPers=1	1	obj	_	_
+4-5	ከፈተ	_	_	_	_	_	_	_	_
+4	ከፈት	ከፈተ	VERB	VERB	Aspect=Perf	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	እና	እና	CCONJ	CCONJ	_	6	_	_	_
+7-9	ውሻውን	_	_	_	_	_	_	_	_
+7	ውሻ	ውሻ	NOUN	NOUN	_	7	_	_	_
+8	ኡ	ኡ	DET	DET	&Poss3Def=Masc	7	det	_	_
+9	ን	ን	ADP	ADP	Case=Acc	7	case	_	_
+10-11	አስገባው	_	_	_	_	_	_	_	_
+10	ኣስገባ	አስገባ	VERB	VERB	Mood=Jus|Voice=Cau	10	_	_	_
+11	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	10	obj	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = ስልኩን ዘግታ ፣ ከወንበሩ ላይ ተነሳችና የሚንኳኳውን በር ለመክፈት ሄደች ።
+# sent_id = am_ref_49
+1-3	ስልኩን	_	_	_	_	_	_	_	_
+1	ስልክ	ስልክ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-5	ዘግታ	_	_	_	_	_	_	_	_
+4	ዘግት	ዘጋ	VERB	VERB	VerbForm=Conv	4	_	_	_
+5	ኣ	ኣ	PRON	PRON	Gender=Fem|Number=Sing|Person=3	4	nsubj	_	_
+6	፣	፣	PUNCT	PUNCT	_	6	_	_	_
+7-9	ከወንበሩ	_	_	_	_	_	_	_	_
+7	ከ	ከ	ADP	ADP	Case=Abl	8	case	_	_
+8	ወንበር	ወንበር	NOUN	NOUN	_	8	_	_	_
+9	ኡ	ኡ	DET	DET	&Poss3Def=Masc	8	det	_	_
+10	ላይ	ላይ	ADP	ADP	_	10	_	_	_
+11-13	ተነሳችና	_	_	_	_	_	_	_	_
+11	ተነሳ	ተነሳ	VERB	VERB	Aspect=Perf|Voice=Pass	11	_	_	_
+12	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	11	nsubj	_	_
+13	ና	ና	CCONJ	CCONJ	_	11	cc	_	_
+14-18	የሚንኳኳውን	_	_	_	_	_	_	_	_
+14	የም	የም	SCONJ	SCONJ	_	16	mark	_	_
+15	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	16	nsubj	_	_
+16	ንኳኳ	ተንኳኳ	VERB	VERB	Aspect=Imp|ClauseType=ACl|Voice=Pass	16	_	_	_
+17	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	16	obj	_	_
+18	ን	ን	ADP	ADP	_	16	case	_	_
+19	በር	በር	NOUN	NOUN	Number=Sing	19	_	_	_
+20-21	ለመክፈት	_	_	_	_	_	_	_	_
+20	ለ	ለ	ADP	ADP	Case=Dat	21	case	_	_
+21	መክፈት	መክፈት	NOUN	NOUN	_	21	_	_	_
+22-23	ሄደች	_	_	_	_	_	_	_	_
+22	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	22	_	_	_
+23	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	22	nsubj	_	_
+24	።	።	PUNCT	PUNCT	_	24	_	_	_
+
+# text = መምጣት ፈልጓል ፣ እሷም ።
+# sent_id = am_ref_50
+1	መምጣት	መምጣት	NOUN	NOUN	Number=Sing	1	_	_	_
+2-4	ፈልጓል	_	_	_	_	_	_	_	_
+2	ፈልግ	ፈለገ	VERB	VERB	_	2	_	_	_
+3	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ኣል	ኣል	AUX	AUX	_	2	aux	_	_
+5	፣	፣	PUNCT	PUNCT	_	5	_	_	_
+6-7	እሷም	_	_	_	_	_	_	_	_
+6	እሷ	እሷ	PRON	PRON	_	6	_	_	_
+7	ም	ም	CCONJ	CCONJ	_	6	cc	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = መምጣት ፈልጓል ፣ እሷም እንደዚያው ።
+# sent_id = am_ref_51
+1	መምጣት	መምጣት	NOUN	NOUN	Number=Sing	1	_	_	_
+2-4	ፈልጓል	_	_	_	_	_	_	_	_
+2	ፈልግ	ፈለገ	VERB	VERB	_	2	_	_	_
+3	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ኣል	ኣል	AUX	AUX	_	2	aux	_	_
+5	፣	፣	PUNCT	PUNCT	_	5	_	_	_
+6-7	እሷም	_	_	_	_	_	_	_	_
+6	እሷ	እሷ	PRON	PRON	_	6	_	_	_
+7	ም	ም	CCONJ	CCONJ	_	6	cc	_	_
+8-9	እንደዚያው	_	_	_	_	_	_	_	_
+8	እንደ	እንደ	ADP	ADP	Case=Equ	9	case	_	_
+9	ያ	ያ	PRON	PRON	_	9	_	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = እኔ ሻይ እወዳለሁ ፣ አንቺ ደግሞ ቡና ።
+# sent_id = am_ref_52
+1	እኔ	እኔ	PRON	PRON	Number=Sing	1	_	_	_
+2	ሻይ	ሻይ	NPROPN	NPROPN	Number=Sing	2	_	_	_
+3-5	እወዳለሁ	_	_	_	_	_	_	_	_
+3	እ	እ	PRON	PRON	Number=Sing|Person=1	4	nsubj	_	_
+4	ወድ	ወደደ	VERB	VERB	Aspect=Imp	4	_	_	_
+5	ኣለሁ	ኣለሁ	AUX	AUX	_	4	aux	_	_
+6	፣	፣	PUNCT	PUNCT	_	6	_	_	_
+7	አንቺ	አንቺ	NOUN	NOUN	Number=Sing	7	_	_	_
+8	ደግሞ	ደግሞ	ADV	ADV	_	8	_	_	_
+9	ቡና	ቡና	NOUN	NOUN	Number=Sing	9	_	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = እኔ ሻይ እወዳለሁ ፣ አንቺ ቡና ።
+# sent_id = am_ref_53
+1	እኔ	እኔ	PRON	PRON	Number=Sing	1	_	_	_
+2	ሻይ	ሻይ	NOUN	NOUN	Number=Sing	2	_	_	_
+3-5	እወዳለሁ	_	_	_	_	_	_	_	_
+3	እ	እ	PRON	PRON	Number=Sing|Person=1	4	nsubj	_	_
+4	ወድ	ወደደ	VERB	VERB	Aspect=Imp	4	_	_	_
+5	ኣለሁ	ኣለሁ	AUX	AUX	_	4	aux	_	_
+6	፣	፣	PUNCT	PUNCT	_	6	_	_	_
+7	አንቺ	አንቺ	NOUN	NOUN	Number=Sing	7	_	_	_
+8	ቡና	ቡና	NOUN	NOUN	Number=Sing	8	_	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = አዲስ አበባ መኖር ትፈልጋለች ፣ እህቷ ደግሞ ጅማ ።
+# sent_id = am_ref_54
+1	አዲስ አበባ	አዲስ አበባ	PROPN	PROPN	Number=Sing	1	_	_	_
+2	መኖር	መኖር	NOUN	NOUN	Number=Sing	2	_	_	_
+3-5	ትፈልጋለች	_	_	_	_	_	_	_	_
+3	ት	ት	PRON	PRON	Gender=Fem|Number=Sing|Person=3	4	nsubj	_	_
+4	ፈልግ	ፈለገ	VERB	VERB	Aspect=Imp	4	_	_	_
+5	ኣለች	ኣለች	AUX	AUX	_	4	aux	_	_
+6	፣	፣	PUNCT	PUNCT	_	6	_	_	_
+7-8	እህቷ	_	_	_	_	_	_	_	_
+7	እህት	እህት	NOUN	NOUN	_	7	_	_	_
+8	ዋ	ዋ	DET	DET	&Poss3Def=Fem	7	det	_	_
+9	ደግሞ	ደግሞ	ADV	ADV	_	9	_	_	_
+10	ጅማ	ጂማ	PROPN	PROPN	Number=Sing	10	_	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ያቀድነው ነገር አልተሳካልንም ።
+# sent_id = am_ref_55
+1-4	ያቀድነው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ኣቀድ	አቀደ	VERB	VERB	Aspect=Perf|ClauseType=ACl	2	_	_	_
+3	ን	ን	PRON	PRON	Number=Plur|Person=1	2	nsubj	_	_
+4	አው	አው	DET	DET	_	2	det	_	_
+5	ነገር	ነገር	NOUN	NOUN	Number=Sing	5	_	_	_
+6-10	አልተሳካልንም	_	_	_	_	_	_	_	_
+6	ኣል	ኣል	ADV	ADV	Polarity=Neg	7	advmod	_	_
+7	ተሳካ	ተሳካ	VERB	VERB	Aspect=Perf|Voice=Rcp1	7	_	_	_
+8	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9	ልን	ልን	PRON	PRON	DatNum=Plur|DatPers=1	7	obl	_	_
+10	ም	ም	ADV	ADV	Polarity=Neg	7	advmod	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ያቀድነው አልተሳካልንም ።
+# sent_id = am_ref_56
+1-4	ያቀድነው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ኣቀድ	አቀደ	VERB	VERB	Aspect=Perf|ClauseType=ACl	2	_	_	_
+3	ን	ን	PRON	PRON	Number=Plur|Person=1	2	nsubj	_	_
+4	አው	አው	DET	DET	_	2	det	_	_
+5-9	አልተሳካልንም	_	_	_	_	_	_	_	_
+5	ኣል	ኣል	ADV	ADV	Polarity=Neg	6	advmod	_	_
+6	ተሳካ	ተሳካ	VERB	VERB	Aspect=Perf|Voice=Rcp1	6	_	_	_
+7	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	ልን	ልን	PRON	PRON	DatNum=Plur|DatPers=1	6	obl	_	_
+9	ም	ም	ADV	ADV	Polarity=Neg	6	advmod	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = የተናገረችው አልገባኝም ።
+# sent_id = am_ref_57
+1-4	የተናገረችው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ተናገር	ተናገረ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Rcp1	2	_	_	_
+3	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	DET	DET	_	2	det	_	_
+5-9	አልገባኝም	_	_	_	_	_	_	_	_
+5	ኣል	ኣል	ADV	ADV	Polarity=Neg	6	advmod	_	_
+6	ገባ	ገባ	VERB	VERB	Aspect=Perf	6	_	_	_
+7	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	ኝ	ኝ	PRON	PRON	AccNum=Sing|AccPers=1	6	obj	_	_
+9	ም	ም	ADV	ADV	Polarity=Neg	6	advmod	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ጡረታ የወጣው አያስተምርም ።
+# sent_id = am_ref_58
+1	ጡረታ	ጡረታ	NOUN	NOUN	Number=Sing	1	_	_	_
+2-5	የወጣው	_	_	_	_	_	_	_	_
+2	የ	የ	SCONJ	SCONJ	_	3	mark	_	_
+3	ወጣ	ወጣ	VERB	VERB	Aspect=Perf|ClauseType=ACl	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	3	obj	_	_
+6-9	አያስተምርም	_	_	_	_	_	_	_	_
+6	ኣ	ኣ	ADV	ADV	Polarity=Neg	8	advmod	_	_
+7	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+8	ኣስተምር	አስተማረ	VERB	VERB	Aspect=Imp|Voice=Trans	8	_	_	_
+9	ም	ም	ADV	ADV	Polarity=Neg	8	advmod	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ከኋላ የተሰለፈውን ልጅ ጥራው ።
+# sent_id = am_ref_59
+1-2	ከኋላ	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	ኋላ	ኋላ	NOUN	NOUN	_	2	_	_	_
+3-7	የተሰለፈውን	_	_	_	_	_	_	_	_
+3	የ	የ	SCONJ	SCONJ	_	4	mark	_	_
+4	ተሰለፍ	ተሰለፈ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	4	obj	_	_
+7	ን	ን	ADP	ADP	_	4	case	_	_
+8	ልጅ	ልጅ	NOUN	NOUN	Number=Sing	8	_	_	_
+9-10	ጥራው	_	_	_	_	_	_	_	_
+9	ጥራ	ጠራ	VERB	VERB	Mood=Jus	9	_	_	_
+10	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	9	obj	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ከኋላ የተሰለፈውን ጥራው ።
+# sent_id = am_ref_60
+1-2	ከኋላ	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	ኋላ	ኋላ	NOUN	NOUN	_	2	_	_	_
+3-7	የተሰለፈውን	_	_	_	_	_	_	_	_
+3	የ	የ	SCONJ	SCONJ	_	4	mark	_	_
+4	ተሰለፍ	ተሰለፈ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	4	obj	_	_
+7	ን	ን	ADP	ADP	_	4	case	_	_
+8-9	ጥራው	_	_	_	_	_	_	_	_
+8	ጥራ	ጠራ	VERB	VERB	Mood=Jus	8	_	_	_
+9	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	8	obj	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ማዳመጥ አለብን ።
+# sent_id = am_ref_61
+1	ማዳመጥ	ማዳመጥ	NOUN	NOUN	Number=Sing	1	_	_	_
+2-4	አለብን	_	_	_	_	_	_	_	say
+2	ኣል	አለ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ብን	ብን	PRON	PRON	MalNum=Plur|MalPers=1	2	obl	_	_
+5	።	።	PUNCT	PUNCT	_	5	_	_	_
+
+# text = የትምህርቱ ማለቅ መልካም ነው ።
+# sent_id = am_ref_62
+1-3	የትምህርቱ	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	ትምህርት	ትምህርት	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	&Poss3Def=Masc	2	det	_	_
+4	ማለቅ	ማለቅ	NOUN	NOUN	Number=Sing	4	_	_	_
+5-7	መልካም	_	_	_	_	_	_	_	_
+5	መልክ	መለከ	VERB	VERB	VerbForm=Conv	5	_	_	_
+6	ኣ	ኣ	PRON	PRON	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7	ም	ም	CCONJ	CCONJ	_	5	cc	_	_
+8-9	ነው	_	_	_	_	_	_	_	_
+8	ነ	_	VERB	VERB	_	8	_	_	_
+9	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ሃብታም መሆናቸው አስገረመን ።
+# sent_id = am_ref_63
+1	ሃብታም	ሀብታም	NADJ	NADJ	Number=Sing	1	_	_	_
+2-3	መሆናቸው	_	_	_	_	_	_	_	_
+2	መሆን	መሆን	NOUN	NOUN	_	2	_	_	_
+3	ኣቸው	ኣቸው	DET	DET	Number[psor]=Plur|Person[psor]=3	2	det	_	_
+4-6	አስገረመን	_	_	_	_	_	_	_	_
+4	ኣስገረም	አስገረመ	VERB	VERB	Aspect=Perf|Voice=Cau	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	ን	ን	PRON	PRON	AccNum=Plur|AccPers=1	4	obj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ሃብታም መሆኗ ታወቀ ።
+# sent_id = am_ref_64
+1	ሃብታም	ሀብታም	NADJ	NADJ	Number=Sing	1	_	_	_
+2-3	መሆኗ	_	_	_	_	_	_	_	_
+2	መሆን	መሆን	NOUN	NOUN	_	2	_	_	_
+3	ዋ	ዋ	DET	DET	&Poss3Def=Fem	2	det	_	_
+4-5	ታወቀ	_	_	_	_	_	_	_	_
+4	ታወቅ	ታወቀ	VERB	VERB	Aspect=Perf|Voice=Pass	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6	።	።	PUNCT	PUNCT	_	6	_	_	_
+
+# text = ወደ ቤቷ እንደምትመለስ አውቅ ነበር ።
+# sent_id = am_ref_65
+1	ወደ	ወደ	ADP	ADP	_	1	_	_	_
+2-3	ቤቷ	_	_	_	_	_	_	_	_
+2	ቤት	ቤት	NOUN	NOUN	_	2	_	_	_
+3	ዋ	ዋ	DET	DET	&Poss3Def=Fem	2	det	_	_
+4-6	እንደምትመለስ	_	_	_	_	_	_	_	_
+4	እንደም	እንደም	SCONJ	SCONJ	_	6	mark	_	_
+5	ት	ት	PRON	PRON	&2SM3SF=True|Number=Sing	6	nsubj	_	_
+6	መለስ	ተመለሰ	VERB	VERB	Aspect=Imp|ClauseType=CComp|Voice=Pass	6	_	_	_
+7-8	አውቅ	_	_	_	_	_	_	_	_
+7	እ	እ	PRON	PRON	Number=Sing|Person=1	8	nsubj	_	_
+8	ኣውቅ	አወቀ	VERB	VERB	Aspect=Imp	8	_	_	_
+9	ነበር	ነበር	AUX	AUX	_	9	_	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ሰውን አለማክበር ያለመብሰል ምልክት ነው ።
+# sent_id = am_ref_66
+1-2	ሰውን	_	_	_	_	_	_	_	_
+1	ሰው	ሰው	NOUN	NOUN	_	1	_	_	_
+2	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+3	አለማክበር	አለማክበር	UNK	UNK	_	3	_	_	_
+4	ያለመብሰል	ያለመብሰል	UNK	UNK	_	4	_	_	_
+5	ምልክት	ምልክት	NOUN	NOUN	Number=Sing	5	_	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	_	VERB	VERB	_	6	_	_	_
+7	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = እሷ ባትመጣም መሄዳችን ግድ ነው ።
+# sent_id = am_ref_67
+1	እሷ	እሷ	PRON	PRON	Number=Sing	1	_	_	_
+2	ባትመጣም	ባትመጣም	UNK	UNK	_	2	_	_	_
+3-4	መሄዳችን	_	_	_	_	_	_	_	_
+3	መሄድ	መሄድ	NOUN	NOUN	_	3	_	_	_
+4	ኣችን	ኣችን	DET	DET	Number[psor]=Plur|Person[psor]=1	3	det	_	_
+5	ግድ	ግድ	NOUN	NOUN	Number=Sing	5	_	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	_	VERB	VERB	_	6	_	_	_
+7	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = ማንም ሰው ጉዳዬ ብሎ ለነገሩ አትኩሮት አለመስጠቱ አሳዝኗታል ።
+# sent_id = am_ref_68
+1-2	ማንም	_	_	_	_	_	_	_	_
+1	ማን	ማን	PRON	PRON	_	1	_	_	_
+2	ም	ም	CCONJ	CCONJ	_	1	cc	_	_
+3	ሰው	ሰው	NOUN	NOUN	Gender=Masc|Number=Sing	3	_	_	_
+4	ጉዳዬ	ጉዳዬ	PROPN	PROPN	Number=Sing	4	_	_	_
+5-6	ብሎ	_	_	_	_	_	_	_	_
+5	ብል	አለ	VERB	VERB	VerbForm=Conv	5	_	_	_
+6	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7-9	ለነገሩ	_	_	_	_	_	_	_	_
+7	ለ	ለ	ADP	ADP	Case=Dat	8	mark	_	_
+8	ነገር	ነገረ	VERB	VERB	Aspect=Perf|ClauseType=ACl	8	_	_	_
+9	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	8	nsubj	_	_
+10-12	አትኩሮት	_	_	_	_	_	_	_	_
+10	ኣትኩር	አተኰረ	VERB	VERB	VerbForm=Conv|Voice=Trans	10	_	_	_
+11	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	ት	ት	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	10	obj	_	_
+13	አለመስጠቱ	አለመስጠቱ	UNK	UNK	_	13	_	_	_
+14-17	አሳዝኗታል	_	_	_	_	_	_	_	_
+14	ኣሳዝን	አሳዘነ	VERB	VERB	Voice=Cau	14	_	_	_
+15	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	14	nsubj	_	_
+16	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	14	obj	_	_
+17	ኣል	ኣል	AUX	AUX	_	14	aux	_	_
+18	።	።	PUNCT	PUNCT	_	18	_	_	_
+
+# text = ይህንን ምግብ አልወደውም አለች ።
+# sent_id = am_ref_69
+1-2	ይህንን	_	_	_	_	_	_	_	_
+1	ይህ	ይህ	PRONADJ	PRONADJ	_	1	_	_	_
+2	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+3	ምግብ	ምግብ	NOUN	NOUN	Number=Sing	3	_	_	_
+4-8	አልወደውም	_	_	_	_	_	_	_	_
+4	ኣ	ኣ	ADV	ADV	Polarity=Neg	6	advmod	_	_
+5	ል	ል	PRON	PRON	Number=Sing|Person=1	6	nsubj	_	_
+6	ወድ	ወደደ	VERB	VERB	Aspect=Imp	6	_	_	_
+7	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	6	obj	_	_
+8	ም	ም	ADV	ADV	Polarity=Neg	6	advmod	_	_
+9-10	አለች	_	_	_	_	_	_	_	say
+9	ኣል	አለ	VERB	VERB	Aspect=Perf	9	_	_	_
+10	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	9	nsubj	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ሥራውን ልጨርሰው ብሎ አሰበ ።
+# sent_id = am_ref_70
+1-3	ሥራውን	_	_	_	_	_	_	_	_
+1	ስራ	ስራ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	ልጨርሰው	_	_	_	_	_	_	_	_
+4	ል	ል	PRON	PRON	Number=Sing|Person=1	5	nsubj	_	_
+5	ጨርስ	ጨረሰ	VERB	VERB	Mood=Jus	5	_	_	_
+6	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	5	obj	_	_
+7-8	ብሎ	_	_	_	_	_	_	_	_
+7	ብል	አለ	VERB	VERB	VerbForm=Conv	7	_	_	_
+8	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9-10	አሰበ	_	_	_	_	_	_	_	_
+9	ኣሰብ	አሰበ	VERB	VERB	Aspect=Perf	9	_	_	_
+10	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ልጇ ትምህርቱን ጠንክሮ እንዲማር መከረችው ።
+# sent_id = am_ref_71
+1-2	ልጇ	_	_	_	_	_	_	_	_
+1	ልጅ	ልጅ	NOUN	NOUN	_	1	_	_	_
+2	ዋ	ዋ	DET	DET	&Poss3Def=Fem	1	det	_	_
+3-5	ትምህርቱን	_	_	_	_	_	_	_	_
+3	ትምህርት	ትምህርት	NOUN	NOUN	_	3	_	_	_
+4	ኡ	ኡ	DET	DET	&Poss3Def=Masc	3	det	_	_
+5	ን	ን	ADP	ADP	Case=Acc	3	case	_	_
+6-7	ጠንክሮ	_	_	_	_	_	_	_	_
+6	ጠንክር	ጠነከረ	VERB	VERB	VerbForm=Conv	6	_	_	_
+7	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8-10	እንዲማር	_	_	_	_	_	_	_	_
+8	እንድ	እንድ	SCONJ	SCONJ	_	10	mark	_	_
+9	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+10	ማር	ተማረ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl|Voice=Pass	10	_	_	_
+11-13	መከረችው	_	_	_	_	_	_	_	_
+11	መከር	መከረ	VERB	VERB	Aspect=Perf	11	_	_	_
+12	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	11	nsubj	_	_
+13	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	11	obj	_	_
+14	።	።	PUNCT	PUNCT	_	14	_	_	_
+
+# text = ልጇ ትምህርቱን ጠንክሮ እንዲማር መምከር አላቆመችም ።
+# sent_id = am_ref_72
+1-2	ልጇ	_	_	_	_	_	_	_	_
+1	ልጅ	ልጅ	NOUN	NOUN	_	1	_	_	_
+2	ዋ	ዋ	DET	DET	&Poss3Def=Fem	1	det	_	_
+3-5	ትምህርቱን	_	_	_	_	_	_	_	_
+3	ትምህርት	ትምህርት	NOUN	NOUN	_	3	_	_	_
+4	ኡ	ኡ	DET	DET	&Poss3Def=Masc	3	det	_	_
+5	ን	ን	ADP	ADP	Case=Acc	3	case	_	_
+6-7	ጠንክሮ	_	_	_	_	_	_	_	_
+6	ጠንክር	ጠነከረ	VERB	VERB	VerbForm=Conv	6	_	_	_
+7	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8-10	እንዲማር	_	_	_	_	_	_	_	_
+8	እንድ	እንድ	SCONJ	SCONJ	_	10	mark	_	_
+9	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+10	ማር	ተማረ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl|Voice=Pass	10	_	_	_
+11	መምከር	መምከር	NOUN	NOUN	Number=Sing	11	_	_	_
+12-15	አላቆመችም	_	_	_	_	_	_	_	_
+12	ኣል	ኣል	ADV	ADV	Polarity=Neg	13	advmod	_	_
+13	ኣቆም	አቈመ	VERB	VERB	Aspect=Perf|Voice=Trans	13	_	_	_
+14	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	13	nsubj	_	_
+15	ም	ም	ADV	ADV	Polarity=Neg	13	advmod	_	_
+16	።	።	PUNCT	PUNCT	_	16	_	_	_
+
+# text = ማልቀስ ጀመረ ።
+# sent_id = am_ref_73
+1	ማልቀስ	ማልቀስ	NOUN	NOUN	Number=Sing	1	_	_	_
+2-3	ጀመረ	_	_	_	_	_	_	_	_
+2	ጀመር	ጀመረ	VERB	VERB	Aspect=Perf	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	።	።	PUNCT	PUNCT	_	4	_	_	_
+
+# text = ፀሃይዋ ቀስ እያለች ስትጠልቅ ከሰው ዕይታ የምትሸሽ አፋራም ልጃገረድ መሰለች ።
+# sent_id = am_ref_74
+1-2	ፀሃይዋ	_	_	_	_	_	_	_	_
+1	ጸሀይ	ጸሀይ	NOUN	NOUN	_	1	_	_	_
+2	ዋ	ዋ	DET	DET	&Poss3Def=Fem	1	det	_	_
+3-6	ቀስ እያለች	_	_	_	_	_	_	_	_
+3	ቀስ	ቀስ	PART	PART	_	5	compound	_	_
+4	እየ	እየ	SCONJ	SCONJ	_	5	mark	_	_
+5	ኣል	ቀስ አለ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl	5	_	_	_
+6	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7-9	ስትጠልቅ	_	_	_	_	_	_	_	_
+7	ስ	ስ	SCONJ	SCONJ	_	9	mark	_	_
+8	ት	ት	PRON	PRON	&2SM3SF=True|Number=Sing	9	nsubj	_	_
+9	ጠልቅ	ጠለቀ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl	9	_	_	_
+10-11	ከሰው	_	_	_	_	_	_	_	_
+10	ከስ	ከሰሰ	VERB	VERB	VerbForm=Conv	10	_	_	_
+11	አው	አው	PRON	PRON	Number=Plur|Person=3	10	nsubj	_	_
+12	ዕይታ	እይታ	NOUN	NOUN	Number=Sing	12	_	_	_
+13-16	የምትሸሽ	_	_	_	_	_	_	_	_
+13	የም	የም	SCONJ	SCONJ	_	15	mark	_	_
+14	ት	ት	PRON	PRON	Gender=Fem|Number=Sing|Person=2	15	nsubj	_	_
+15	ሸሽ	ሸሸ	VERB	VERB	Aspect=Imp|ClauseType=ACl	15	_	_	_
+16	ኢ	ኢ	PRON	PRON	Gender=Fem|Number=Sing|Person=2	15	nsubj	_	_
+17-18	አፋራም	_	_	_	_	_	_	_	_
+17	ኣፋራ	አፋራ	VERB	VERB	Mood=Jus|Voice=CauRcp1	17	_	_	_
+18	ም	ም	CCONJ	CCONJ	_	17	cc	_	_
+19	ልጃገረድ	ልጃገረድ	NOUN	NOUN	Gender=Fem|Number=Sing	19	_	_	_
+20-21	መሰለች	_	_	_	_	_	_	_	_
+20	መሰል	መሰለ	VERB	VERB	Aspect=Perf	20	_	_	_
+21	አች	አች	PRON	PRON	Gender=Fem|Number=Sing|Person=3	20	nsubj	_	_
+22	።	።	PUNCT	PUNCT	_	22	_	_	_
+
+# text = እየመሸ ስለነበር ቸኩለን ሄድን ።
+# sent_id = am_ref_75
+1-3	እየመሸ	_	_	_	_	_	_	_	_
+1	እየ	እየ	SCONJ	SCONJ	_	2	mark	_	_
+2	መሸ	መሸ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ስለነበር	ስለነበር	UNK	UNK	_	4	_	_	_
+5-6	ቸኩለን	_	_	_	_	_	_	_	_
+5	ቸኩል	ቸኰለ	VERB	VERB	Mood=Jus	5	_	_	_
+6	አን	አን	PRON	PRON	AccNum=Plur|AccPers=1	5	obj	_	_
+7-8	ሄድን	_	_	_	_	_	_	_	_
+7	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	7	_	_	_
+8	ን	ን	PRON	PRON	Number=Plur|Person=1	7	nsubj	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = ከትምህርት ቤት ልጄን ለማምጣት እሄዳለሁ ።
+# sent_id = am_ref_76
+1-2	ከትምህርት ቤት	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	ትምህርት ቤት	ትምህርት ቤት	NOUN	NOUN	_	2	_	_	_
+3-5	ልጄን	_	_	_	_	_	_	_	_
+3	ልጅ	ልጅ	NOUN	NOUN	_	3	_	_	_
+4	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	3	det	_	_
+5	ን	ን	ADP	ADP	Case=Acc	3	case	_	_
+6-7	ለማምጣት	_	_	_	_	_	_	_	_
+6	ለማምጥ	ለማመጠ	VERB	VERB	Aspect=Iter|Mood=Jus	6	_	_	_
+7	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	6	obj	_	_
+8-10	እሄዳለሁ	_	_	_	_	_	_	_	_
+8	እ	እ	PRON	PRON	Number=Sing|Person=1	9	nsubj	_	_
+9	ሄድ	ሄደ	VERB	VERB	Aspect=Imp	9	_	_	_
+10	ኣለሁ	ኣለሁ	AUX	AUX	_	9	aux	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = አስተማሪው ወደ ትምህርት ቤት እንዲመጡ አዘዛቸው ።
+# sent_id = am_ref_77
+1-3	አስተማሪው	_	_	_	_	_	_	_	_
+1	ኣስተማር	አስተማረ	VERB	VERB	Mood=Jus|Voice=Trans	1	_	_	_
+2	ኢ	ኢ	PRON	PRON	Gender=Fem|Number=Sing|Person=2	1	nsubj	_	_
+3	ው	ው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	1	obj	_	_
+4	ወደ	ወደ	ADP	ADP	_	4	_	_	_
+5	ትምህርት ቤት	ትምህርት ቤት	NOUN	NOUN	Number=Sing	5	_	_	_
+6-9	እንዲመጡ	_	_	_	_	_	_	_	_
+6	እንድ	እንድ	SCONJ	SCONJ	_	8	mark	_	_
+7	ይ	ይ	PRON	PRON	Number=Plur|Person=3	8	nsubj	_	_
+8	መጣ	መጣ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl	8	_	_	_
+9	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	8	nsubj	_	_
+10-12	አዘዛቸው	_	_	_	_	_	_	_	_
+10	ኣዘዝ	አዘዘ	VERB	VERB	Aspect=Perf	10	_	_	_
+11	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	ኣቸው	ኣቸው	PRON	PRON	AccNum=Plur|AccPers=3	10	obj	_	_
+13	።	።	PUNCT	PUNCT	_	13	_	_	_
+
+# text = ሲነጋ በጠዋት ወደ ክሊኒክ እወስዳታለሁ ።
+# sent_id = am_ref_78
+1-3	ሲነጋ	_	_	_	_	_	_	_	_
+1	ስ	ስ	SCONJ	SCONJ	_	3	mark	_	_
+2	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+3	ነጋ	ነጋ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl	3	_	_	_
+4-5	በጠዋት	_	_	_	_	_	_	_	_
+4	በ	በ	ADP	ADP	Case=Ins	5	case	_	_
+5	ጠዋት	ጠዋት	NOUN	NOUN	_	5	_	_	_
+6	ወደ	ወደ	ADP	ADP	_	6	_	_	_
+7	ክሊኒክ	ክሊኒክ	NOUN	NOUN	Number=Sing	7	_	_	_
+8-11	እወስዳታለሁ	_	_	_	_	_	_	_	_
+8	እ	እ	PRON	PRON	Number=Sing|Person=1	9	nsubj	_	_
+9	ወስድ	ወሰደ	VERB	VERB	Aspect=Imp	9	_	_	_
+10	ኣት	ኣት	PRON	PRON	AccGen=Fem|AccNum=Sing|AccPers=3	9	obj	_	_
+11	ኣለሁ	ኣለሁ	AUX	AUX	_	9	aux	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = የሚመጡ ከሆነ አሳውቀው ።
+# sent_id = am_ref_79
+1-4	የሚመጡ	_	_	_	_	_	_	_	_
+1	የም	የም	SCONJ	SCONJ	_	3	mark	_	_
+2	ይ	ይ	PRON	PRON	Number=Plur|Person=3	3	nsubj	_	_
+3	መጣ	መጣ	VERB	VERB	Aspect=Imp|ClauseType=ACl	3	_	_	_
+4	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	3	nsubj	_	_
+5-7	ከሆነ	_	_	_	_	_	_	_	_
+5	ከ	ከ	SCONJ	SCONJ	_	6	mark	_	_
+6	ሆን	ሆነ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl	6	_	_	_
+7	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8-9	አሳውቀው	_	_	_	_	_	_	_	_
+8	ኣሳውቅ	አሳወቀ	VERB	VERB	Mood=Jus|Voice=Cau	8	_	_	_
+9	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	8	obj	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ከየትኛው ሃገር እንደሚመጡ ካወቅን በኋላ የሚረዳን አስተርጓሚ እንፈልጋለን ።
+# sent_id = am_ref_80
+1-2	ከየትኛው	_	_	_	_	_	_	_	_
+1	ከ	ከ	ADP	ADP	Case=Abl	2	case	_	_
+2	የትኛው	የትኛው	PRONADJ	PRONADJ	_	2	_	_	_
+3	ሃገር	ሀገር	NOUN	NOUN	Number=Sing	3	_	_	_
+4-7	እንደሚመጡ	_	_	_	_	_	_	_	_
+4	እንደም	እንደም	SCONJ	SCONJ	_	6	mark	_	_
+5	ይ	ይ	PRON	PRON	Number=Plur|Person=3	6	nsubj	_	_
+6	መጣ	መጣ	VERB	VERB	Aspect=Imp|ClauseType=CComp	6	_	_	_
+7	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	6	nsubj	_	_
+8-10	ካወቅን	_	_	_	_	_	_	_	_
+8	ከ	ከ	SCONJ	SCONJ	_	9	mark	_	_
+9	ኣወቅ	አወቀ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl	9	_	_	_
+10	ን	ን	PRON	PRON	Number=Plur|Person=1	9	nsubj	_	_
+11	በኋላ	በኋላ	ADV	ADV	_	11	_	_	_
+12-15	የሚረዳን	_	_	_	_	_	_	_	_
+12	የም	የም	SCONJ	SCONJ	_	14	mark	_	_
+13	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	14	nsubj	_	_
+14	ረዳ	ረዳ	VERB	VERB	Aspect=Imp|ClauseType=ACl	14	_	_	_
+15	አን	አን	PRON	PRON	AccNum=Plur|AccPers=1	14	obj	_	_
+16	አስተርጓሚ	አስተርጓሚ	NOUN	NOUN	Number=Sing	16	_	_	_
+17-19	እንፈልጋለን	_	_	_	_	_	_	_	_
+17	እን	እን	PRON	PRON	Number=Plur|Person=1	18	nsubj	_	_
+18	ፈልግ	ፈለገ	VERB	VERB	Aspect=Imp	18	_	_	_
+19	ኣለን	ኣለን	AUX	AUX	_	18	aux	_	_
+20	።	።	PUNCT	PUNCT	_	20	_	_	_
+
+# text = የምበላው ሳጣ ልጄ ጥርስ አወጣ ።
+# sent_id = am_ref_81
+1-4	የምበላው	_	_	_	_	_	_	_	_
+1	የም	የም	SCONJ	SCONJ	_	3	mark	_	_
+2	እ	እ	PRON	PRON	Number=Sing|Person=1	3	nsubj	_	_
+3	በላ	በላ	VERB	VERB	Aspect=Imp|ClauseType=ACl	3	_	_	_
+4	አው	አው	PRON	PRON	AccGen=Masc|AccNum=Sing|AccPers=3	3	obj	_	_
+5	ሳጣ	ሳጣ	UNK	UNK	_	5	_	_	_
+6-7	ልጄ	_	_	_	_	_	_	_	_
+6	ልጅ	ልጅ	NOUN	NOUN	_	6	_	_	_
+7	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	6	det	_	_
+8-9	ጥርስ	_	_	_	_	_	_	_	_
+8	ጥር	ጥር	NOUN	NOUN	_	8	_	_	_
+9	ስ	ስ	CCONJ	CCONJ	_	8	cc	_	_
+10-11	አወጣ	_	_	_	_	_	_	_	_
+10	ኣወጣ	አወጣ	VERB	VERB	Aspect=Perf|Voice=Trans	10	_	_	_
+11	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = መጣ ብሎ ሄደ ።
+# sent_id = am_ref_82
+1-2	መጣ	_	_	_	_	_	_	_	_
+1	መጣ	መጣ	VERB	VERB	Aspect=Perf	1	_	_	_
+2	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3-4	ብሎ	_	_	_	_	_	_	_	_
+3	ብል	አለ	VERB	VERB	VerbForm=Conv	3	_	_	_
+4	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5-6	ሄደ	_	_	_	_	_	_	_	_
+5	ሄድ	ሄደ	VERB	VERB	Aspect=Perf	5	_	_	_
+6	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	።	።	PUNCT	PUNCT	_	7	_	_	_
+
+# text = ስራዬን እንደጨረስኩ እመጣለሁ ።
+# sent_id = am_ref_83
+1-3	ስራዬን	_	_	_	_	_	_	_	_
+1	ስራ	ስራ	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	እንደጨረስኩ	_	_	_	_	_	_	_	_
+4	እንደ	እንደ	SCONJ	SCONJ	_	5	mark	_	_
+5	ጨረስ	ጨረሰ	VERB	VERB	&CCompAdvCl=True|Aspect=Perf	5	_	_	_
+6	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	5	nsubj	_	_
+7-9	እመጣለሁ	_	_	_	_	_	_	_	_
+7	እ	እ	PRON	PRON	Number=Sing|Person=1	8	nsubj	_	_
+8	መጣ	መጣ	VERB	VERB	Aspect=Imp	8	_	_	_
+9	ኣለሁ	ኣለሁ	AUX	AUX	_	8	aux	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ስራዬን ጨርሼ እመጣለሁ ።
+# sent_id = am_ref_84
+1-3	ስራዬን	_	_	_	_	_	_	_	_
+1	ስራ	ስራ	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-5	ጨርሼ	_	_	_	_	_	_	_	_
+4	ጨርስ	ጨረሰ	VERB	VERB	VerbForm=Conv	4	_	_	_
+5	ኤ	ኤ	PRON	PRON	Number=Sing|Person=1	4	nsubj	_	_
+6-8	እመጣለሁ	_	_	_	_	_	_	_	_
+6	እ	እ	PRON	PRON	Number=Sing|Person=1	7	nsubj	_	_
+7	መጣ	መጣ	VERB	VERB	Aspect=Imp	7	_	_	_
+8	ኣለሁ	ኣለሁ	AUX	AUX	_	7	aux	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = ስራዬን ከጨረስኩ እመጣለሁ ።
+# sent_id = am_ref_85
+1-3	ስራዬን	_	_	_	_	_	_	_	_
+1	ስራ	ስራ	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	ከጨረስኩ	_	_	_	_	_	_	_	_
+4	ከ	ከ	SCONJ	SCONJ	_	5	mark	_	_
+5	ጨረስ	ጨረሰ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl	5	_	_	_
+6	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	5	nsubj	_	_
+7-9	እመጣለሁ	_	_	_	_	_	_	_	_
+7	እ	እ	PRON	PRON	Number=Sing|Person=1	8	nsubj	_	_
+8	መጣ	መጣ	VERB	VERB	Aspect=Imp	8	_	_	_
+9	ኣለሁ	ኣለሁ	AUX	AUX	_	8	aux	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = ስራዬን ጭርስ አድርጌ እመጣለሁ ።
+# sent_id = am_ref_86
+1-3	ስራዬን	_	_	_	_	_	_	_	_
+1	ስራ	ስራ	NOUN	NOUN	_	1	_	_	_
+2	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4	ጭርስ	ጭርስ	UNK	UNK	_	4	_	_	_
+5-6	አድርጌ	_	_	_	_	_	_	_	_
+5	ኣድርግ	አደረገ	VERB	VERB	VerbForm=Conv|Voice=Trans	5	_	_	_
+6	ኤ	ኤ	PRON	PRON	Number=Sing|Person=1	5	nsubj	_	_
+7-9	እመጣለሁ	_	_	_	_	_	_	_	_
+7	እ	እ	PRON	PRON	Number=Sing|Person=1	8	nsubj	_	_
+8	መጣ	መጣ	VERB	VERB	Aspect=Imp	8	_	_	_
+9	ኣለሁ	ኣለሁ	AUX	AUX	_	8	aux	_	_
+10	።	።	PUNCT	PUNCT	_	10	_	_	_
+
+# text = አባቱን በመንከባከብ ጊዜውን ያሳልፋል ።
+# sent_id = am_ref_87
+1-3	አባቱን	_	_	_	_	_	_	_	_
+1	ኣባት	አባተ	VERB	VERB	Mood=Jus|Voice=Trans	1	_	_	_
+2	ኡ	ኡ	PRON	PRON	Number=Plur|Person=2	1	nsubj	_	_
+3	ን	ን	PRON	PRON	AccNum=Plur|AccPers=1	1	obj	_	_
+4	በመንከባከብ	በመንከባከብ	UNK	UNK	_	4	_	_	_
+5-7	ጊዜውን	_	_	_	_	_	_	_	_
+5	ጊዜ	ጊዜ	NOUN	NOUN	_	5	_	_	_
+6	ኡ	ኡ	DET	DET	&Poss3Def=Masc	5	det	_	_
+7	ን	ን	ADP	ADP	Case=Acc	5	case	_	_
+8-10	ያሳልፋል	_	_	_	_	_	_	_	_
+8	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+9	ኣሳልፍ	አሳለፈ	VERB	VERB	Aspect=Imp|Voice=Cau	9	_	_	_
+10	ኣል	ኣል	AUX	AUX	_	9	aux	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = ደሞዝ እንደተከፈለኝ ብድሬን እመልሳለሁ ።
+# sent_id = am_ref_88
+1	ደሞዝ	ደሞዝ	NPROPN	NPROPN	Number=Sing	1	_	_	_
+2-5	እንደተከፈለኝ	_	_	_	_	_	_	_	_
+2	እንደ	እንደ	SCONJ	SCONJ	_	3	mark	_	_
+3	ተከፈል	ተከፈለ	VERB	VERB	&CCompAdvCl=True|Aspect=Perf|Voice=Pass	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5	ኝ	ኝ	PRON	PRON	AccNum=Sing|AccPers=1	3	obj	_	_
+6-8	ብድሬን	_	_	_	_	_	_	_	_
+6	ብድር	ብድር	NOUN	NOUN	_	6	_	_	_
+7	ኤ	ኤ	DET	DET	Number[psor]=Sing|Person[psor]=1	6	det	_	_
+8	ን	ን	ADP	ADP	Case=Acc	6	case	_	_
+9-11	እመልሳለሁ	_	_	_	_	_	_	_	_
+9	እ	እ	PRON	PRON	Number=Sing|Person=1	10	nsubj	_	_
+10	መልስ	መለሰ	VERB	VERB	Aspect=Imp	10	_	_	_
+11	ኣለሁ	ኣለሁ	AUX	AUX	_	10	aux	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = ስብሰባውን ብሳተፍ ደስ ይለኝ ነበር ።
+# sent_id = am_ref_89
+1-3	ስብሰባውን	_	_	_	_	_	_	_	_
+1	ስብሰባ	ስብሰባ	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3	ን	ን	ADP	ADP	Case=Acc	1	case	_	_
+4-6	ብሳተፍ	_	_	_	_	_	_	_	_
+4	ብ	ብ	SCONJ	SCONJ	_	6	mark	_	_
+5	እ	እ	PRON	PRON	Number=Sing|Person=1	6	nsubj	_	_
+6	ሳተፍ	ተሳተፈ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl|Voice=Pass	6	_	_	_
+7-10	ደስ ይለኝ	_	_	_	_	_	_	_	_
+7	ደስ	ደስ	PART	PART	_	9	compound	_	_
+8	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+9	ል	ደስ አለ	VERB	VERB	Aspect=Imp	9	_	_	_
+10	አኝ	አኝ	PRON	PRON	AccNum=Sing|AccPers=1	9	obj	_	_
+11	ነበር	ነበር	AUX	AUX	_	11	_	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = ብሳተፍ ደስ ይለኝ ነበር ።
+# sent_id = am_ref_90
+1-3	ብሳተፍ	_	_	_	_	_	_	_	_
+1	ብ	ብ	SCONJ	SCONJ	_	3	mark	_	_
+2	እ	እ	PRON	PRON	Number=Sing|Person=1	3	nsubj	_	_
+3	ሳተፍ	ተሳተፈ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl|Voice=Pass	3	_	_	_
+4-7	ደስ ይለኝ	_	_	_	_	_	_	_	_
+4	ደስ	ደስ	PART	PART	_	6	compound	_	_
+5	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+6	ል	ደስ አለ	VERB	VERB	Aspect=Imp	6	_	_	_
+7	አኝ	አኝ	PRON	PRON	AccNum=Sing|AccPers=1	6	obj	_	_
+8	ነበር	ነበር	AUX	AUX	_	8	_	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = ብልጣ ብልጥ በመሆን የሚገኝ ትርፍ ደስ አይለኝም ።
+# sent_id = am_ref_91
+1	ብልጣ	ብልጣ	UNK	UNK	_	1	_	_	_
+2-4	ብልጥ	_	_	_	_	_	_	_	_
+2	ብ	ብ	SCONJ	SCONJ	_	4	mark	_	_
+3	እ	እ	PRON	PRON	Number=Sing|Person=1	4	nsubj	_	_
+4	ልጥ	ላጠ	VERB	VERB	Aspect=Imp|ClauseType=AdvCl	4	_	_	_
+5-6	በመሆን	_	_	_	_	_	_	_	_
+5	በ	በ	ADP	ADP	Case=Ins	6	case	_	_
+6	መሆን	መሆን	NOUN	NOUN	_	6	_	_	_
+7-9	የሚገኝ	_	_	_	_	_	_	_	_
+7	የም	የም	SCONJ	SCONJ	_	9	mark	_	_
+8	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+9	ገኝ	ተገኘ	VERB	VERB	Aspect=Imp|ClauseType=ACl|Voice=Pass	9	_	_	_
+10	ትርፍ	ትርፍ	NPROPN	NPROPN	Number=Sing	10	_	_	_
+11-16	ደስ አይለኝም	_	_	_	_	_	_	_	_
+11	ደስ	ደስ	PART	PART	_	14	compound	_	_
+12	ኣ	ኣ	ADV	ADV	Polarity=Neg	14	advmod	_	_
+13	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	14	nsubj	_	_
+14	ል	ደስ አለ	VERB	VERB	Aspect=Imp	14	_	_	_
+15	አኝ	አኝ	PRON	PRON	AccNum=Sing|AccPers=1	14	obj	_	_
+16	ም	ም	ADV	ADV	Polarity=Neg	14	advmod	_	_
+17	።	።	PUNCT	PUNCT	_	17	_	_	_
+
+# text = ባገኘኋቸው መረጃዎች ተጠቅሜ የተሻለ ውጤት አመጣለሁ ።
+# sent_id = am_ref_92
+1-4	ባገኘኋቸው	_	_	_	_	_	_	_	_
+1	በ	በ	ADP	ADP	Case=Ins	2	mark	_	_
+2	ኣገኘ	አገኘ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Trans	2	_	_	_
+3	ሁ	ሁ	PRON	PRON	Number=Sing|Person=1	2	nsubj	_	_
+4	ኣቸው	ኣቸው	PRON	PRON	AccNum=Plur|AccPers=3	2	obj	_	_
+5-6	መረጃዎች	_	_	_	_	_	_	_	_
+5	መረጃ	መረጅያ	NOUN	NOUN	_	5	_	_	_
+6	ኦች	ኦች	COMP	COMP	Number=Plur	5	amod	_	_
+7-8	ተጠቅሜ	_	_	_	_	_	_	_	_
+7	ተጠቅም	ተጠቀመ	VERB	VERB	VerbForm=Conv|Voice=Pass	7	_	_	_
+8	ኤ	ኤ	PRON	PRON	Number=Sing|Person=1	7	nsubj	_	_
+9-11	የተሻለ	_	_	_	_	_	_	_	_
+9	የ	የ	SCONJ	SCONJ	_	10	mark	_	_
+10	ተሻል	ተሻለ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	10	_	_	_
+11	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	ውጤት	ውጤት	NOUN	NOUN	Number=Sing	12	_	_	_
+13-15	አመጣለሁ	_	_	_	_	_	_	_	_
+13	እ	እ	PRON	PRON	Number=Sing|Person=1	14	nsubj	_	_
+14	ኣመጣ	አመጣ	VERB	VERB	Aspect=Imp|Voice=Trans	14	_	_	_
+15	ኣለሁ	ኣለሁ	AUX	AUX	_	14	aux	_	_
+16	።	።	PUNCT	PUNCT	_	16	_	_	_
+
+# text = ችግሩ አበበ የሌላ ሰውን ሃሳብ በጭራሽ አለመስማቱ ነው ።
+# sent_id = am_ref_93
+1-2	ችግሩ	_	_	_	_	_	_	_	_
+1	ችግር	ችግር	NOUN	NOUN	_	1	_	_	_
+2	ኡ	ኡ	DET	DET	&Poss3Def=Masc	1	det	_	_
+3-4	አበበ	_	_	_	_	_	_	_	_
+3	ኣበብ	አበበ	VERB	VERB	Aspect=Perf	3	_	_	_
+4	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+5-6	የሌላ	_	_	_	_	_	_	_	_
+5	የ	የ	ADP	ADP	Case=Gen	6	case	_	_
+6	ሌላ	ሌላ	ADJ	ADJ	_	6	_	_	_
+7-8	ሰውን	_	_	_	_	_	_	_	_
+7	ሰው	ሰው	NOUN	NOUN	_	7	_	_	_
+8	ን	ን	ADP	ADP	Case=Acc	7	case	_	_
+9	ሃሳብ	ሀሳብ	NOUN	NOUN	Number=Sing	9	_	_	_
+10	በጭራሽ	በጭራሽ	ADJ	ADJ	Number=Sing	10	_	_	_
+11	አለመስማቱ	አለመስማቱ	UNK	UNK	_	11	_	_	_
+12-13	ነው	_	_	_	_	_	_	_	_
+12	ነ	_	VERB	VERB	_	12	_	_	_
+13	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	12	nsubj	_	_
+14	።	።	PUNCT	PUNCT	_	14	_	_	_
+
+# text = ዝም ማለት የተሻለ ነው ።
+# sent_id = am_ref_94
+1	ዝም	ዝም	PART	PART	_	1	_	_	_
+2	ማለት	ማለት	NOUN	NOUN	Number=Sing	2	_	_	_
+3-5	የተሻለ	_	_	_	_	_	_	_	_
+3	የ	የ	SCONJ	SCONJ	_	4	mark	_	_
+4	ተሻል	ተሻለ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	4	_	_	_
+5	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
+6-7	ነው	_	_	_	_	_	_	_	_
+6	ነ	_	VERB	VERB	_	6	_	_	_
+7	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8	።	።	PUNCT	PUNCT	_	8	_	_	_
+
+# text = የተሻለው ነገር እንዳላዩ ማለፍ ነው ።
+# sent_id = am_ref_95
+1-4	የተሻለው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ተሻል	ተሻለ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	DET	DET	_	2	det	_	_
+5	ነገር	ነገር	NOUN	NOUN	Number=Sing	5	_	_	_
+6-8	እንዳላዩ	_	_	_	_	_	_	_	_
+6	እንደ	እንደ	SCONJ	SCONJ	_	7	mark	_	_
+7	ኣላየ	አላየ	VERB	VERB	&CCompAdvCl=True|Aspect=Perf|Voice=CauRcp1	7	_	_	_
+8	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	7	nsubj	_	_
+9	ማለፍ	ማለፍ	NOUN	NOUN	Number=Sing	9	_	_	_
+10-11	ነው	_	_	_	_	_	_	_	_
+10	ነ	_	VERB	VERB	_	10	_	_	_
+11	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = የሚሻለው እንዳላዩ ማለፍ ነው ።
+# sent_id = am_ref_96
+1-4	የሚሻለው	_	_	_	_	_	_	_	_
+1	የም	የም	SCONJ	SCONJ	_	3	mark	_	_
+2	ይ	ይ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
+3	ሻል	ተሻለ	VERB	VERB	Aspect=Imp|ClauseType=ACl|Voice=Pass	3	_	_	_
+4	አው	አው	DET	DET	_	3	det	_	_
+5-7	እንዳላዩ	_	_	_	_	_	_	_	_
+5	እንደ	እንደ	SCONJ	SCONJ	_	6	mark	_	_
+6	ኣላየ	አላየ	VERB	VERB	Aspect=Perf|ClauseType=AdvCl|Voice=CauRcp1	6	_	_	_
+7	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	6	nsubj	_	_
+8	ማለፍ	ማለፍ	NOUN	NOUN	Number=Sing	8	_	_	_
+9-10	ነው	_	_	_	_	_	_	_	_
+9	ነ	_	VERB	VERB	_	9	_	_	_
+10	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
+11	።	።	PUNCT	PUNCT	_	11	_	_	_
+
+# text = የተሻለው ነገር ረጋ ብሎ መጠበቅ ነው ።
+# sent_id = am_ref_97
+1-4	የተሻለው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ተሻል	ተሻለ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	DET	DET	_	2	det	_	_
+5	ነገር	ነገር	NOUN	NOUN	Number=Sing	5	_	_	_
+6-7	ረጋ	_	_	_	_	_	_	_	_
+6	ረጋ	ረጋ	VERB	VERB	Aspect=Perf	6	_	_	_
+7	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
+8-9	ብሎ	_	_	_	_	_	_	_	_
+8	ብል	አለ	VERB	VERB	VerbForm=Conv	8	_	_	_
+9	ኦ	ኦ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	መጠበቅ	መጠበቅ	NOUN	NOUN	Number=Sing	10	_	_	_
+11-12	ነው	_	_	_	_	_	_	_	_
+11	ነ	_	VERB	VERB	_	11	_	_	_
+12	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	11	nsubj	_	_
+13	።	።	PUNCT	PUNCT	_	13	_	_	_
+
+# text = የተሻለው ነገር መረጋጋት ነው ።
+# sent_id = am_ref_98
+1-4	የተሻለው	_	_	_	_	_	_	_	_
+1	የ	የ	SCONJ	SCONJ	_	2	mark	_	_
+2	ተሻል	ተሻለ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	2	_	_	_
+3	አ	አ	PRON	PRON	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	ው	ው	DET	DET	_	2	det	_	_
+5	ነገር	ነገር	NOUN	NOUN	Number=Sing	5	_	_	_
+6	መረጋጋት	መረጋጋት	NOUN	NOUN	Number=Sing	6	_	_	_
+7-8	ነው	_	_	_	_	_	_	_	_
+7	ነ	_	VERB	VERB	_	7	_	_	_
+8	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9	።	።	PUNCT	PUNCT	_	9	_	_	_
+
+# text = የመፅሃፉ ርዕስ ፀሃይ መማር ትወዳለች ነው ።
+# sent_id = am_ref_99
+1-3	የመፅሃፉ	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	መጽሀፍ	መጽሀፍ	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	&Poss3Def=Masc	2	det	_	_
+4	ርዕስ	ርእስ	NOUN	NOUN	Number=Sing	4	_	_	_
+5	ፀሃይ	ጸሀይ	PROPN	PROPN	Number=Sing	5	_	_	_
+6	መማር	መማር	NOUN	NOUN	Number=Sing	6	_	_	_
+7-9	ትወዳለች	_	_	_	_	_	_	_	_
+7	ት	ት	PRON	PRON	Gender=Fem|Number=Sing|Person=3	8	nsubj	_	_
+8	ወድ	ወደደ	VERB	VERB	Aspect=Imp	8	_	_	_
+9	ኣለች	ኣለች	AUX	AUX	_	8	aux	_	_
+10-11	ነው	_	_	_	_	_	_	_	_
+10	ነ	_	VERB	VERB	_	10	_	_	_
+11	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+
+# text = የመፅሃፉ ርዕስ የተሰበሩ ልቦች ነው ።
+# sent_id = am_ref_100
+1-3	የመፅሃፉ	_	_	_	_	_	_	_	_
+1	የ	የ	ADP	ADP	Case=Gen	2	case	_	_
+2	መጽሀፍ	መጽሀፍ	NOUN	NOUN	_	2	_	_	_
+3	ኡ	ኡ	DET	DET	&Poss3Def=Masc	2	det	_	_
+4	ርዕስ	ርእስ	NOUN	NOUN	Number=Sing	4	_	_	_
+5-7	የተሰበሩ	_	_	_	_	_	_	_	_
+5	የ	የ	SCONJ	SCONJ	_	6	mark	_	_
+6	ተሰበር	ተሰበረ	VERB	VERB	Aspect=Perf|ClauseType=ACl|Voice=Pass	6	_	_	_
+7	ኡ	ኡ	PRON	PRON	Number=Plur|Person=3	6	nsubj	_	_
+8-9	ልቦች	_	_	_	_	_	_	_	_
+8	ልብ	ልብ	NOUN	NOUN	_	8	_	_	_
+9	ኦች	ኦች	COMP	COMP	Number=Plur	8	amod	_	_
+10-11	ነው	_	_	_	_	_	_	_	_
+10	ነ	_	VERB	VERB	_	10	_	_	_
+11	ው	ው	PRON	PRON	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
+12	።	።	PUNCT	PUNCT	_	12	_	_	_
+

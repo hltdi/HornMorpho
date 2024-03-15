@@ -21,7 +21,8 @@ stemC_e -> stemC_i	[*i]
 stemC_e -> stemC	[*a;*o;*E;*u]
 
 stemC -> stemC_I	[*]
-stemC_I -> stemC_I	[*-ይ,ው;/]
+#stemC_I -> stemC_I	[*-ይ,ው;/]
+stemC_I -> stemC_I	[*;/]
 stemC_I -> stemC_e	[*e]
 stemC_I -> stemC_i	[*i]
 stemC_I -> stemC	[*a;*o;*E;*u]
@@ -55,7 +56,7 @@ stemC_e -> ew2o		[{e2o}]
 stemC_i -> ew2o		[{e2o}]
 ew2o -> e2v			[:ው]
 
-# Iy -> i | Iw -> u  before >C or >#
+# Iy -> i | Iw -> u  before C or >#
 stemC -> Iy2i        	[{I2i}]
 stemC_I -> Iy2i		[{I2i}]
 stemC_e -> Iy2i		[{I2i}]
@@ -67,17 +68,19 @@ stemC_i -> Iw2y		[{I2u}]
 Iy2i -> I2v			[:ይ]
 Iw2u -> I2v			[:ው]
 
-# iy -> Iy; converb for final -y; this maybe should be obligatory?
+# iy -> Iy; converb for final -y and final -w; this maybe should be obligatory?
 #stemC -> iy.Iy		     [{^i2I}]
 stemC_e -> iy.Iy	     [{^i2I}]
 stemV -> iy.Iy	     	     [{^i2I}]
-iy.Iy -> iyIy.	     	     [ይ]
+iy.Iy -> iyIy.	     	     [ይ;ይ:ው]
 
-# ረኤ, ርኤ (possibly only this verb)
-stemC_I -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
-stemC_e -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
+# ረኤ, ርኤ (possibly only this verb); ረኣ, ርኣ
+stemC_I -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ;ኣ;ሓ;ዓ;ሃ]
+stemC_e -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ;ኣ;ሓ;ዓ;ሃ]
 stemV -> a.y		[ኤ:ኣ;ሔ:ሓ;ዔ:ዓ]
 a.y -> ay.			[:ይ]
+# ረኣ+ኻ (alternate to ረኤ+ኻ)
+#stemC_e -> a.y		[ኣ;ሓ;ዓ;ሃ]
 
 end -> end			[^N;/;-]
 

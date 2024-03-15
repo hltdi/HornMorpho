@@ -72,14 +72,16 @@ feats:
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
       {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
-      {'name': 'ob',  'pos': 'PRON', 'dep': ('oc', {0: 'obj', 'l': 'obl', 'b': 'obl'}),\
-      'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef']};
+      {'name': 'ob',\
+        'pos': ('O', {False: 'DET', True: 'PRON'}),\
+	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj', (True,'l'): 'obl', (True,'b'): 'obl'}),\
+        'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef', 'Definite']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'aux',  'pos': 'AUX', 'dep': 'aux'};
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
-    mwe::
-      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
+#    mwe::
+#      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
     a = 0 | a  | i
     v = 0 | p | a | as | ast | test
@@ -125,12 +127,12 @@ feats:
 #    # only for infinitive
 #    neg = False | True
 
-#  pos: vn_stem v_noun_stem
-#    a = 0 | a | i
-#    v = 0 | p | a | as
-#    d = a | inf | ins | m
-#    # only for infinitive
-#    neg = False | True
+  pos: vn_stem v_noun_stem
+    a = 0 | a | i
+    v = 0 | p | a | as
+    d = a | inf | ins | m
+    # only for infinitive
+    neg = False | True
 
   pos: n noun_adjective
     morphotax::
@@ -138,7 +140,8 @@ feats:
       {'name': 'distrib', 'pos': 'ADP', 'dep': 'det'};;
       {'name': 'STEM'};;
       {'name': 'plur', 'pos': 'COMP', 'dep': 'amod', 'feats': ['Number']};
-      {'name': 'poss',  'pos': 'PRON', 'dep': 'det', 'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def']};
+      {'name': 'poss',  'pos': 'DET', 'dep': 'det',\
+        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
     lemmafeats = d;a,v

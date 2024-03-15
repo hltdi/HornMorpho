@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008-2023. Michael Gasser
+Copyleft 2008-2024. Michael Gasser
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -234,7 +234,7 @@ def extract_corpus_features(corpus, pos=None, searchfeats=None):
     return sentences
 
 def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
-                 batch_name='', append=False,
+                 batch_name='', append=True, v5=True,
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
                  verbosity=0):
     '''
@@ -243,6 +243,7 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
     @param sentences: list of instances of Sentence
     @param path: path to file where the sentences will be written
     @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
+    @param v5: whether this is HM version 5.
     @param degeminated: whether to write the degeminated sentences
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
@@ -266,8 +267,11 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
             nrejected += 1
             rejected.append(sentence.sentid)
             continue
-        conll = sentence.alt_conllu if degeminated else sentence.conllu
-        print(conll.serialize(), file=file, end='')
+        if v5:
+            sentence.print_conllu(update_ids=True, file=file)
+        else:
+            conll = sentence.alt_conllu if degeminated else sentence.conllu
+            print(conll.serialize(), file=file, end='')
     if rejected:
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
@@ -794,38 +798,38 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                           experimental=experimental, mwe=mwe, v5=v5)
     return pos_morph
 
-def recompile(language, pos, phon=False, segment=False, gen=False,
-              experimental=False, translate=False, backwards=False, seglevel=2,
-              save=True, verbose=True):
-    '''
-    Recompiles the cascade FST for the language and part-of-speech.
-    @param language: abbreviation for a language, for example, 'gn'
-    @param pos:    part-of-speech for the cascade, for example, 'v'
-    @param phon:   whether the cascade is for phonology
-    @param segment: whether the cascade is for segmentation
-    @param gen:    whether to compile the cascade for generation (rather than analysis)
-    @param translate: whether the cascade is for translation
-    @param backwards: whether to compile the FST from top (lexical) to bottom (surface)
-                      for efficiency's sakd
-    @param save:   whether to save the compiled cascade as an FST file
-    @param verbose: whether to print out various messages
-    @return:       the POS morphology object
-    '''
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-                        load_morph=False, verbose=verbose)
-    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-                             translate=translate, recreate=True,
-                             experimental=experimental, seglevel=seglevel,
-                             compose_backwards=backwards, split_index=split_index,
-                             phon=phon, verbose=verbose)
-    if not fst and gen == True:
-        print('Generation FST not found')
-        # Load analysis FST>
-        pos_morph.load_fst(True, verbose=True)
-        # ... and invert it for generation FST
-        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-                           guess=guess, verbose=verbose)
-    return pos_morph
+#def recompile(language, pos, phon=False, segment=False, gen=False,
+#              experimental=False, translate=False, backwards=False, seglevel=2,
+#              save=True, verbose=True):
+#    '''
+#    Recompiles the cascade FST for the language and part-of-speech.
+#    @param language: abbreviation for a language, for example, 'gn'
+#    @param pos:    part-of-speech for the cascade, for example, 'v'
+#    @param phon:   whether the cascade is for phonology
+#    @param segment: whether the cascade is for segmentation
+#    @param gen:    whether to compile the cascade for generation (rather than analysis)
+#    @param translate: whether the cascade is for translation
+#    @param backwards: whether to compile the FST from top (lexical) to bottom (surface)
+#                      for efficiency's sakd
+#    @param save:   whether to save the compiled cascade as an FST file
+#    @param verbose: whether to print out various messages
+#    @return:       the POS morphology object
+#    '''
+#    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+#                        load_morph=False, verbose=verbose)
+#    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
+#                             translate=translate, recreate=True,
+#                             experimental=experimental, seglevel=seglevel,
+#                             compose_backwards=backwards, split_index=split_index,
+#                             phon=phon, verbose=verbose)
+#    if not fst and gen == True:
+#        print('Generation FST not found')
+#        # Load analysis FST>
+#        pos_morph.load_fst(True, verbose=True)
+#        # ... and invert it for generation FST
+#        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
+#                           guess=guess, verbose=verbose)
+#    return pos_morph
 
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
              fst_label='', fst_index=0):

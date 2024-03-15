@@ -5,7 +5,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2023.
+    Copyleft 2011-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -38,10 +38,26 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
-## Functions specific to v. 5.
+## Functions specific to version 5.
 
-def am_morphsem2(n_sents=1000, start=0, file=None, verbosity=0,
-                                   path="data/am_v_classes2.txt", cache=None, corpus=None):
+def am_refcorp(language='a', path='../../EES-Res/data/amh/am_ref.txt',
+            writepath='../../EES-Res/treebanks/amh/am_ref_M.txt', start=0,
+            start_sent=0, n_sents=500):
+    c = hm.anal_corpus(language, path=path, disambiguate=True, start=start,
+                       start_sent=start_sent, n_sents=n_sents)
+#    hm.write_conllu(corpus=c, path=writepath)
+    return c
+
+def ti_refcorp(language='t', path='../../EES-Res/data/tir/ti_ref.txt',
+            writepath='../../EES-Res/treebanks/tir/ti_ref_M.txt',
+            start=0, start_sent=0, n_sents=500):
+    c = hm.anal_corpus(language, path=path, disambiguate=True, start=start,
+                       start_sent=start_sent, n_sents=n_sents)
+#    hm.write_conllu(corpus=c, path=writepath)
+    return c
+
+def am_morphsem3(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+                                   path="data/am_v_classes3.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         'a',
         path="../../TAFS/datasets/CACO/CACO.txt",
@@ -60,8 +76,8 @@ def am_morphsem2(n_sents=1000, start=0, file=None, verbosity=0,
             c.write_props(file, start=c.start)
     return c
 
-def ti_morphsem1(n_sents=1000, start=0, file=None, verbosity=0,
-                                   path="data/ti_v_classes.txt", cache=None, corpus=None):
+def ti_morphsem2(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+                                   path="data/ti_v_classes2.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
         't',
         path="../../TT/data/tlmd_v1.0.0/train1.txt",

@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2023.
+    Copyleft 2011-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -760,13 +760,16 @@ class Language:
                 m = MTAX_RE.match(line)
                 if m:
                     segs = m.groups()[0].strip()
-#                    print("** segs {}".format(segs))
                     # prefixes, stem, suffixes
                     segs = segs.split(';;')
                     segs = [segs[0].split(';'), segs[1], segs[2].split(';')]
-#                    print("** segs {}".format(segs))
-                    segs = [[eval(s) for s in segs[0]], eval(segs[1]), [eval(s) for s in segs[2]]]
-#                    print("** Morphotax segments {}".format(segs))
+                    pre_segs = [eval(s) for s in segs[0]]
+#                    print("**  pre_segs {}".format(pre_segs))
+                    stem_segs = eval(segs[1])
+#                    print("**  stem_segs {}".format(stem_segs))
+                    suf_segs = [eval(s) for s in segs[2]]
+#                    print("**  suf_segs {}".format(suf_segs))
+                    segs = [pre_segs, stem_segs, suf_segs]
                     segments[pos] = segs
                     continue
 
@@ -1587,7 +1590,8 @@ class Language:
         cached = cache.get(token)
         if cached is not None:
             # This assumes the cache stores "processed" analyses
-            return cached
+#            print("&& found cached token {}".format(cached))
+            return cached.copy()
         special_anal = self.analyze_special5(token)
         if special_anal:
             special_anal = self.check_analpos(special_anal, analpos)
@@ -1626,8 +1630,10 @@ class Language:
 #                                               mwe=mwe, combine_segs=combine_segs,
 #                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
-        if analpos and not all_analyses:
+        if not all_analyses:
             wordobj = Word.create_empty(raw_token)
+#        if analpos and not all_analyses:
+#            wordobj = Word.create_empty(raw_token)
         else:
             wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
         cache[token] = wordobj
@@ -1683,6 +1689,7 @@ class Language:
         Return the string with stem segments combined.
         '''
         if self.charcombs:
+#            print("** combining segments in {}".format(stem_string))
             for suf, prefixes in self.charcombs:
                 if suf in stem_string:
                     previous = stem_string.split(suf)[0][-1]
@@ -1703,7 +1710,7 @@ class Language:
             kwargs['cache'] = dict()
         tokens = sentence.split()
         ntokens = len(tokens)
-        sentobj = Sentence(sentence, language=self)
+        sentobj = Sentence(sentence, language=self, batch_name=kwargs.get('batch_name', ''), sentid=kwargs.get('sentid', 1), label=kwargs.get('label'))
         token_index = 0
         while token_index < ntokens:
             if kwargs.get("skip_mwe", False):
@@ -1720,7 +1727,7 @@ class Language:
                     if token in skip:
                         continue
                 anal1 = self.analyze5(token, **kwargs)
-                sentobj.add_word5(anal1)
+                sentobj.add_word5(anal1, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
         return sentobj
@@ -1740,8 +1747,8 @@ class Language:
 #            print("^^ attempting to analyze {}".format(words))
             kwargs['mwe'] = True
             analyses = self.analyze5(words, **kwargs)
-            if analyses:
-                sent_obj.add_word5(analyses)
+            if analyses.is_known:
+                sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
 #                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1
             end_index += 1
@@ -1760,7 +1767,7 @@ class Language:
         # For now just try single-word tokens.
         for token in tokens:
             wordobj = self.analyze5(token, **kwargs)
-            sentobj.add_word5(wordobj)
+            sentobj.add_word5(wordobj, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
         return sentobj
@@ -1788,7 +1795,7 @@ class Language:
                 kwargs['mwe'] = True
                 analyses = self.analyze5(words, **kwargs)
                 if analyses:
-                    sent_obj.add_word5(analyses)
+                    sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
                     print("  ** Success: {}".format(analyses[0]))
                     w_index += 2
                     if seglevel == 0:
@@ -1939,25 +1946,13 @@ class Language:
 #        '''
 #        cache[word] = analyses
 
-    def get_from_cache5(self, word, cache,
-#                        um=0, seglevel=2,
-                        sentlist=None, sentobj=None,
+    def get_from_cache5(self, word, cache, sentlist=None, sentobj=None,
                         filter_cache=None, filtered=None, gramfilter=None,
-#                        morphid=1,
                         verbosity=0):
         if word in cache:
             print("** Getting {} from local cache".format(word))
             analysis = cache[word]
             sentlist.append((word, analysis))
-#            if gramfilter and filter_cache:
-#                if word in filter_cache[0]:
-#                    if verbosity:
-#                        print("** {} in failed filter cache".format(word))
-#                    filtered[0].append(word)
-#                if word in filter_cache[1]:
-#                    if verbosity:
-#                        print("** {} in succeeded filter cache".format(word))
-#                    filtered[1].append(word)
             return True
         return False
 

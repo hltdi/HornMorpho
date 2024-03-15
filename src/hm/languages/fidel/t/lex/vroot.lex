@@ -1199,7 +1199,7 @@
 <ም ስ ው>		c=C
   a=0,v=0 ; a=0,v=p
 <ም ስ ይ>		c=A
-  a=0,v=a ; a=a,v=a ; a=0,v=a
+  a=0,v=0 ; a=a,v=a ; a=0,v=a
 <ም ስ ይ>		c=C
   a=0,v=0
 <ም ስ ጉ>		c=C
@@ -4081,7 +4081,7 @@
 <ን ብ ሕ>		c=A
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ን ብ ር>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
+  a=0,v=0,t=p ; a=0,v=0,t=i ; a=0,v=0,t=j ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
 <ን ብ ር>		c=B
   a=0,v=0
 <ን ብ ብ>		c=A
@@ -4408,10 +4408,8 @@
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <እ ል ክ>		c=A
   a=0,v=0 ; a=a,v=a ; a=0,v=p ; a=0,v=a
-<እ ል ይ>		c=A,s=1
-  a=0,v=a
-<እ ል ይ>		c=A,s=2
-  a=0,v=a ; a=0,v=p ; a=0,v=a
+<እ ል ይ>		c=A
+  a=0,v=0 ; a=0,v=a ; a=0,v=p
 <እ ል ግ>		c=B
   a=0,v=p
 <እ ም ም>		c=B
@@ -4520,8 +4518,6 @@
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <እ ዝ ዝ>		c=B
   a=0,v=0 ; a=0,v=p
-<እ ይ ም>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
 <እ ይ ን>		c=B
   a=0,v=p
 <እ ይ ድ>		c=B
@@ -4751,7 +4747,9 @@
 <ክ ሕ ስ>		c=A
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
 <ክ ሕ ኩ ሕ>		c=E
-  a=0,v=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ሕ ኩ ሕ>		c=E
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ክ ሕ ድ>		c=A
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
 <ክ ም ህ>		c=A
@@ -6718,7 +6716,7 @@
   a=a,v=p
 <ጉ ይ ት ት>		c=E
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ይ ይ>		c=A
+<ጉ ይ ይ>		c=A,-dup23,+strong
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
 <ጉ ድ ል>		c=A
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
@@ -6891,10 +6889,8 @@
 <ግ ር ሕ>		c=A
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ግ ር ም>		c=A
-  a=0,v=0 ; a=0,v=p
-<ግ ር ም>		c=B,s=1
-  a=0,v=0
-<ግ ር ም>		c=B,s=2
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ግ ር ም>		c=B
   a=0,v=0
 <ግ ር ም ዕ>		c=E
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
@@ -6967,7 +6963,7 @@
 <ግ ብ ሕ>		c=A
   a=0,v=0 ; a=0,v=a
 <ግ ብ ር>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
+  a=0,v=0,t=p ; a=0,v=0,t=i ; a=0,v=0,t=j ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
 <ግ ብ ር>		c=B
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
 <ግ ብ ስ ስ>		c=E
@@ -7087,7 +7083,7 @@
 <ግ ዝ ት>		c=B
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ግ ዝ እ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
 <ግ ዝ ዕ>		c=A
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
 <ግ ዝ ዝ>		c=B

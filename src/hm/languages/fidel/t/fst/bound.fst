@@ -45,7 +45,7 @@ stem+ -> stem1		[:-]
 stem0 -> stem1		[:-]
 
 # k-K, q-Q when preceded by vowel
-stem1 -> stem		[^x]		
+stem1 -> stem		[^x;/]		
 stem1 -> stem		[{q2Q}]	[+K1]
 stem1 -> stem		[^k]		[-K1]
 
@@ -92,12 +92,12 @@ stem -> j3a1	[{LI2a}]
 
 # stem-final laryngeals + /e/ have three possible realizations
 # stem can end in ኤ for verbs like ረአየ
-stem -> stem_e		[{I2e};{LI2a};{LI2E};ኤ]
+stem -> stem_e		[{I2e};{LI2a};{LI2E};አ:እ;ኤ]
 stem -> stem_a		[{I2a};ላ:ለ]
 stem -> stem_o		[{I2o}]
 stem -> stem_u		[{I2u};ቑ;ኹ;ጉ]
 stem -> stem_i		[{I2i}]
-stem -> stem_E		[{I2e}]
+stem -> stem_E		[{I2e};አ:እ]
 
 # these may have no subject suffix and go straight to a 3p object suffix
 # or delete the perf 3sm አ suffix before 3p objects

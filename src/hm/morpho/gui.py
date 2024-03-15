@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022, 2023.
+    Copyleft 2022, 2023, 2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -378,11 +378,11 @@ class SegCanvas(Canvas):
                 y += SegCanvas.segrowheight
                 y = self.show_features(features, Xs, y, wordseg, featselecttags)
             if lemmas:
-                print("^^ showing lemmas {}".format(lemmas))
+#                print("^^ showing lemmas {}".format(lemmas))
                 y += SegCanvas.segrowheight
                 self.show_lemmas(lemmas, Xs, y)
             if glosses:
-                print("^^ showing glosses {}".format(glosses))
+#                print("^^ showing glosses {}".format(glosses))
                 y += SegCanvas.segrowheight
                 self.show_glosses(glosses, Xs, y)
             # Gap between segmentations
@@ -697,7 +697,12 @@ class SegCanvas(Canvas):
         Show a single dependency arc.
         '''
         self.create_line(x1, y, x2, y, arrow=LAST)
-        nchars = len(label)
+        if not label:
+            print("! Warning: no label for dependency")
+            label = ''
+            nchars = 5
+        else:
+            nchars = len(label)
         Xoffset = nchars * SegCanvas.deplabelX
         X = (x2 - x1) / 2 + x1
         if startcircle:
@@ -740,8 +745,7 @@ class SentenceGUI():
 
     def show_sentence(self, first=False):
         '''
-        Show the sentence in the sentence Text and sentence
-        label in the sentence Label.
+        Show the sentence in the sentence Text and sentence label in the sentence Label.
         If update is True, clear the sentence Text first,
         remove tags, recreate tags, and update the Undo button.
         '''

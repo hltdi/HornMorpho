@@ -6,7 +6,6 @@ $ rel_bound
   -
 
 $ neg
-## These could be preceded by conjunctions
   ኢ       [+neg]
   --   [-neg]
 
@@ -51,13 +50,13 @@ $ sb_suf
   አው   [t=p,sp=3,sn=2,sg=m]
   አየ   [t=p,sp=3,sn=2,sg=f]
   ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=0|1]
-  # trigger metathesis: ትቀ/ቲሎ
-  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3]
   # realized as ኡ after stem-final laryngeal: ልበ/ልዑ 
   ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0]
   ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2]
   # trigger metathesis: ትቀ/ቱሎ
   =ኡ   <ኡ>  [t=j|i,sn=2,sg=m,+vsuf,op=3]
+  # trigger metathesis: ትቀ/ቲሎ
+  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3]
   --   [t=i|j,sp=2,sn=1,sg=m,-vsuf];[t=i|j,sp=1,-vsuf];[t=i|j,sp=3,sn=1,-vsuf]
 
 $ ss_bound

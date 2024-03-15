@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022, 2023.
+    Copyleft 2022, 2023, 2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -29,13 +29,49 @@ Includes CoNLL-U and XML output options
 import xml.etree.ElementTree as ET
 from conllu import parse, TokenList, Token
 from .geez import degeminate
-import os
+import os, sys
 
 class HMToken(Token):
 
     def __init__(self, dct, analysis=None):
         self.analysis = analysis
         Token.__init__(self, dct)
+
+    @staticmethod
+    def create_unal(index, token):
+        return HMToken(
+            {'id': index, 'form': token, 'lemma': None, 'upos': 'UNK', 'xpos': 'UNK',
+             'feats': None, 'head': index, 'deprel': None, 'deps': None, 'misc': None},
+             analysis=[])
+
+    @staticmethod
+    def create1(index, token, lemma, pos, feats, analysis):
+        '''
+        Make an HMToken for an unsegmented token.
+        '''
+#        print(" ** creating HMT for {}, index {}".format(token, index))
+        return HMToken(
+            {'id': index, 'form': token, 'lemma': lemma, 'upos': pos, 'xpos': pos, 'feats': feats, 'head': index,
+             'deprel': None, 'deps': None, 'misc': None},
+             analysis=analysis
+             )
+
+    @staticmethod
+    def create_mult(start, end, token, analysis):
+        return HMToken(
+            {'id': "{}-{}".format(start, end),
+             'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None},
+             analysis=analysis
+             )
+
+    @staticmethod
+    def create_morph(index, string, lemma, pos, feats, head, deprel, analysis):
+        return HMToken(
+            {'id': index, 'form': string, 'lemma': lemma, 'upos': pos, 'xpos': pos,
+             'feats': feats, 'head': head, 'deprel': deprel, 'deps': None, 'misc': None
+                },
+                analysis=analysis
+                )
 
 class Sentence():
     """
@@ -44,7 +80,7 @@ class Sentence():
 
     selectpos = \
       {
-       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ']
+       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'], 'ADPCONJ': ['ADP', 'SCONJ']
       }
 
     um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
@@ -53,7 +89,7 @@ class Sentence():
 
     conllu_list = ['id', 'form', 'lemma', 'upos', 'xpos', 'feats', 'head', 'deprel', 'deps', 'misc']
 
-    def __init__(self, text, tokens=[], batch_name='', sentid=0, language=None):
+    def __init__(self, text, tokens=[], batch_name='', sentid=0, language=None, label=''):
         self.language = language
         self.um = language.um
         self.tokens = tokens
@@ -62,7 +98,7 @@ class Sentence():
         self.words = []
         self.batch_name = batch_name
         self.sentid = sentid
-        self.label = "{}_s{}".format(batch_name, sentid)
+        self.label = label or "{}s{}".format(batch_name + "_" if batch_name else '', sentid)
         self.xml = ''
         self.conllu = TokenList([])
         self.conllu.metadata = {'text': text, 'sent_id': self.label}
@@ -94,7 +130,7 @@ class Sentence():
 
     ### Version 5 methods
 
-    def add_word5(self, word):
+    def add_word5(self, word, unsegment=False):
         '''
         Version 5: given a Word object, convert it to ambiguous CoNLL-U format,
         and add it to self.words.
@@ -103,22 +139,23 @@ class Sentence():
 #        word.show()
         conllus = []
         for analysis in word:
-            conllu = Sentence.anal2conllu(word.name, analysis)
-#            print("&& conllu for {}: {}".format(word, conllu))
+            conllu = Sentence.anal2conllu(word.name, analysis, unsegment=unsegment)
+#            print("&& conllu for {}: {}".format(word, conllu.serialize()))
             conllus.append(conllu)
         # Add the CoNLL-U representations to the Word
         word.conllu = conllus
         # Add the Word to self.words
         self.words.append(word)
 
-    def print_conllu(self, update_ids=False):
+    def print_conllu(self, update_ids=False, file=None):
         '''
         Print the string of CoNLL-U representations for the sentence,
         using the first if there are still ambiguities.
         If update_ids is True, update the id and head fields based
         on each word's position in the sentence.
         '''
-        print(self.create_conllu_string(update_ids=update_ids))
+        file = file or sys.stdout
+        print(self.create_conllu_string(update_ids=update_ids), file=file, end='')
 
     def create_conllu_string(self, update_ids=False):
         '''
@@ -131,13 +168,18 @@ class Sentence():
             return self.conllu_string
         string = ''
         index = 0
+#        c = []
         for word in self.words:
             conllu = word.conllu[0]
             if update_ids:
                 index = self.update_conllu_ids(conllu, index=index)
-            string += conllu.serialize()
-        self.conllu_string = string
-        return string
+            self.conllu.extend(conllu)
+#            string += conllu.serialize()
+#        c = TokenList(c)
+        self.conllu_string = self.conllu.serialize()
+#        string
+#        return string
+        return self.conllu_string
 
     def update_conllu_ids(self, conllu, index=0):
         '''
@@ -150,6 +192,7 @@ class Sentence():
         if length == 1:
             if index:
                 conllu[0]['id'] += index
+                conllu[0]['head'] += index
             new_index += 1
         else:
             # Update all of the segments
@@ -177,61 +220,80 @@ class Sentence():
         return None
 
     @staticmethod
-    def anal2conllu(token, analdict, index=1):
+    def anal2conllu(token, analdict, index=1, unsegment=False):
         '''
         Create a CoNLL-U representation from a token's analysis dict.
         '''
         if not analdict:
             # Unanalyzed token
-            return TokenList([HMToken
-                                  ({'id': index, 'form': token, 'lemma': None, 'upos': 'UNK', 'xpos': 'UNK',
-                                    'feats': None, 'head': index, 'deprel': None, 'deps': None, 'misc': None},
-                                    analysis=analdict
-                                      )])
+            return TokenList([HMToken.create_unal(index, token)])
+
+        if unsegment:
+            pos = Sentence.convertPOS(analdict)
+            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict)])
+
         if analdict['nsegs'] == 1:
             pos = Sentence.convertPOS(analdict)
-            return TokenList([HMToken
-                                  ({'id': index, 'form': token, 'lemma': analdict.get('lemma', token), 'upos': pos, 'xpos': pos,
-                                   'feats': analdict.get('udfeats'), 'head': index, 'deprel': None, 'deps': None, 'misc': None},
-                                   analysis=analdict
-                                   )])
+            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict)])
+
         conllu = TokenList()
         # Create the line for the whole token
         conllu.append(
-            HMToken(
-                {'id': "{}-{}".format(index, index+analdict['nsegs']-1),
-                 'form': token, 'lemma': None, 'upos': None, 'xpos': None, 'feats': None, 'head': None, 'deprel': None, 'deps': None, 'misc': None},
-                analysis=analdict
-                ))
-                           
+            HMToken.create_mult(index, index+analdict['nsegs']-1, token, analdict)
+            )
+        stemdict = analdict['stem']
+
+        mwe_first = False
+        mwe = 'tokens' in analdict
+        if mwe:
+            mwe_feats = analdict['feats'].get('mwe')
+            if mwe_feats and mwe_feats.get('segpart', False):
+                if mwe_feats.get('hdfin', False):
+                    mwe_first = True
+                    token = analdict['tokens'][0]
+                    string = token['token']
+                    pos = mwe_feats.get('pos', None)
+                    head = stemdict.get('head', 0)+2
+                    conllu.append(
+                        HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict)
+                        )
+                    index += 1
+#                else:
+#                    print("**  Last position")
+
         for p in analdict['pre']:
             if not p:
                 continue
             pos = Sentence.convertPOS(p)
+            string = p['string']
+            head = p.get('head', 0)+1
+            if mwe_first:
+                head += 1
             conllu.append(
-                HMToken(
-                    {'id': index, 'form': p['string'], 'lemma': p.get('lemma', p['string']), 'upos': pos, 'xpos': pos,
-                     'feats': p.get('udfeats', None), 'head': p.get('head', 0)+1, 'deprel': p.get('dep', None), 'deps': None, 'misc': None},
-                     analysis=p
-                    ))
+                HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p)
+                )
             index += 1
-        stemdict = analdict['stem']
+
         pos = Sentence.convertPOS(stemdict)
+        head = stemdict.get('head', 0)+1
+        if mwe_first:
+            head += 1
         conllu.append(
-            HMToken({'id': index, 'form': stemdict['string'], 'lemma': stemdict.get('lemma', analdict['lemma']), 'upos': pos, 'xpos': pos,
-                   'feats': stemdict.get('udfeats', None), 'head': stemdict.get('head', 0)+1, 'deprel': stemdict.get('dep', None), 'deps': None, 'misc': None},
-                   analysis=stemdict
-                        ))
+            HMToken.create_morph(index, stemdict['string'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'),
+                                 head, stemdict.get('dep'), stemdict)
+                                 )
         index += 1
         for s in analdict['suf']:
             if not s:
                 continue
             pos = Sentence.convertPOS(s)
+            string = s['string']
+            head = s.get('head', 0)+1
+            if mwe_first:
+                head += 1
             conllu.append(
-                HMToken({'id': index, 'form': s['string'], 'lemma': s.get('lemma', s['string']), 'upos': pos, 'xpos': pos, 
-                       'feats': s.get('udfeats', None), 'head': s.get('head', 0)+1, 'deprel': s.get('dep', None), 'deps': None, 'misc': None},
-                       analysis=s
-                          ))
+                HMToken.create_morph(index, string, s.get('lemma', string), pos, s.get('udfeats'), head, s.get('dep'), s)
+                )
             index += 1
         
         return conllu
@@ -259,6 +321,8 @@ class Sentence():
         Props is a list of properties (like 'root' and 'um').
         Creates a list of (word, property_dicts) pairs.
         '''
+        if not props:
+            return
         result = []
         for windex, word in enumerate(self.words):
             if not word.is_empty:
@@ -324,7 +388,9 @@ class Sentence():
         for index, word in enumerate(self.words):
             if v5:
                 word = word.conllu
-            if len(word) > 1:
+            if len(word) == 0:
+                continue
+            elif len(word) > 1:
                 # multiple segmentations
                 ambig.append(index)
                 count += 1

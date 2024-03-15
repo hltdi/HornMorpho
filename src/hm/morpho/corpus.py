@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022, 2023.
+    Copyleft 2022-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -41,18 +41,21 @@ NUMERAL_RE = re.compile(r'(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
 class Corpus():
     """
-    List of tokenized sentences to be segmented and displayed.
+    A list of sentences, either from a list (data) or a file (path),
+    possibly segmented and disambiguated.
     """
 
     ID = 0
 
     def __init__(self, data=None, path='',
-                 start=0, n_sents=100, max_sents=1000,
+                 start=0, n_sents=500, max_sents=1000, start_sent=0,
                  name='', batch_name='', sentid=0,
                  analyze=False, language='', 
-                 um=1, seglevel=2, segment=True, fsts=None, disambiguate=False,
+                 um=1, seglevel=2, nsegment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False, sep_feats=True, gemination=False, sep_senses=False,
+                 v5=False,
+                 sep_feats=True, gemination=False, sep_senses=False,
+                 combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
@@ -99,6 +102,7 @@ class Corpus():
                 nlines = len(lines)
 #                print("$$ file {}, nlines {}".format(filein, nlines))
                 sentcount = 0
+                skipped = 0
                 sentid = sentid + 1
                 linepos = 0
                 if segment:
@@ -106,13 +110,27 @@ class Corpus():
                         print("Filtering sentences with grammar filter {}".format(gramfilt))
                         gramfilt = EES.get_filter(gramfilt)
                 time0 = time.time()
+                comment = ''
+                label = ''
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
+                    # Check if this is an empty line
+                    if not line:
+#                        print("Empty line")
+                        linepos += 1
+                        continue
+                    # Check if this is a comment line
+                    if line[0] == '#':
+#                        print("{} is a comment line".format(line))
+                        comment = line
+                        label = line[1:].strip()
+                        linepos += 1
+                        continue
 #                    if verbosity:
 #                        print("  $$ {}".format(line))
-                    if linepos and linepos % 100 == 0:
-                        print("Analyzed {} sentences".format(linepos))
+                    if sentcount and sentcount % 100 == 0:
+                        print("Analyzed {} sentences".format(sentcount))
                     linepos += 1
                     if constraints: # and maxnum != None or maxpunc != None:
                         tokens = line.split()
@@ -133,11 +151,20 @@ class Corpus():
                                 print("  Too many numerals: {}".format(line[:100]))
                                 continue
                     if segment:
+                        if start_sent and skipped < start_sent:
+                            # Just skip the sentence since it's before the start sentence.
+#                            print("Skipping sentence {}".format(skipped))
+                            skipped += 1
+                            continue
+                        if start_sent and skipped == start_sent:
+                            print("Skipped {} sentences".format(skipped))
+                            skipped += 1
                         if v5:
                             sentence_obj =\
                               self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache,
-                                                 pos=pos, verbosity=verbosity)
+                                                 unsegment=unsegment, combine_segs=combine_segs, label=label,
+                                                 batch_name=batch_name, pos=pos, verbosity=verbosity)
                             if sentence_obj:
                                 self.data.append(line)
                                 sentcount += 1
@@ -165,7 +192,7 @@ class Corpus():
             self.data = data
             if v5 and segment:
                 self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
-                              cache=self.local_cache,
+                              cache=self.local_cache, unsegment=unsegment,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []

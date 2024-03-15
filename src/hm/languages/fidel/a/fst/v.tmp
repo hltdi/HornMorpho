@@ -22,6 +22,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=i|c,v=0,-dup23]
 [t=i,v=a]
 [t=c,v=p,-dup23]
+[t=c,+dup23,sp=1,sn=1]
 ^eo	**u	**
 
 [t=i|c,v=0,+dup23]
@@ -160,6 +161,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=i,v=0,-dup23]
 [t=c,v=0,-dup23]
 [t=j,v=ast]
+[t=c,+dup23,sp=1,sn=1]
 ኣ	**	**
 
 [t=i,v=0,+dup23]

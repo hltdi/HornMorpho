@@ -3,21 +3,21 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2023.
+    Copyleft 2023, 2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
@@ -47,10 +47,14 @@ class Word(list):
         self.conllu = []
         self.id = Word.id
         self.is_empty = True if len(self) == 0 else False
+        self.is_known = not self.unk
         Word.id += 1
 
     def __repr__(self):
-        return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', '*' if self.is_empty else '', self.name)
+        return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', self.name, "[{}]".format(len(self)) if self.is_known else '')
+
+    def copy(self):
+        return Word(self, name=self.name, unk=self.unk, merges=self.merges)
 
     def show(self):
         if len(self) == 0:
@@ -73,7 +77,18 @@ class Word(list):
         '''
         Create an empty Word instance.
         '''
-        return Word(Word.empty, name=name, unk=True)
+        dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
+#        return Word(Word.empty, name=name, unk=True)
+        return Word([dct], name=name, unk=True)
+
+    def arrange(self):
+        '''
+        Be default, sort by length (nsegs). Called "arrange" to avoid confusion
+        with list.sort().
+        '''
+        if len(self) <= 1:
+            return
+        self.sort(key=lambda x: x.get('nsegs', 1))
 
     def remove(self, indices, index_map):
         '''
@@ -289,8 +304,7 @@ class Word(list):
         pi = -1
         pos1 = segs1.get('pos')
         pos2 = segs2.get('pos')
-        if pos1 == pos2:
-            poseq = True
+        poseq = pos1 == pos2
         if not poseq:
             # Get the index of the morpheme where the POS difference is
             for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):

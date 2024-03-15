@@ -5,11 +5,10 @@
 
 $ pre
 #  ->suf		+irr_vn_stem+	[+pr,-irr]
-  [d=inf,pos=N]
+  [d=inf,pos=N,-pl]
     ም-			[a=0,c=A|B|G|H|I|J];[a=0,v=0|a,c=C|E|F]
     ም/-			[a=i|a];[a=0,v=p,c=C|E|F]
 #  [d=inf,-irr,a=i]
-#    ም/-			[]
 #    መ/-			[v=p,+pr,a=0|a,tmp=[1=X]];[v=p,+pr,a=i,tmp=[1=X]]
 #    መ/ተ-			[v=p,+pr,a=i,tmp=[1=እ]];[v=p,+pr,a=0,tmp=[1=እ]]
 #    ማ-			[v=a,a=0,-pr];[v=a,a=i,-pr,tmp=[3=እ]]

@@ -1,30 +1,36 @@
 $ prep
   ብ [adp=ብ,-neg,+prep]
   ን [adp=ን,-neg,+prep]
-  ኣብ	[adp=ኣብ,-neg,pos=PRON,+prep]
-  ናብ	[adp=ናብ,-neg,pos=PRON,+prep]
-  ካብ	[adp=ካብ,-neg,pos=PRON,+prep]
-  እንካብ	[adp=ካብ,-neg,pos=PRON,+prep]
-  ምስ	[adp=ምስ,-neg,pos=PRON,+prep]
-  ከም	[adp=ከም,-neg,pos=PRON,+prep]
+  ናይ	[adp=ናይ,-neg,pos=PRON|ADJ,+prep];[adp=ናይ,-neg,pos=DET,+prep,+dem]
+  ኣብ	[adp=ኣብ,-neg,pos=PRON|ADJ,+prep];[adp=ኣብ,-neg,pos=DET,+prep,+dem]
+  ናብ	[adp=ናብ,-neg,pos=PRON|ADJ,+prep];[adp=ናብ,-neg,pos=DET,+prep,+dem]
+  ካብ	[adp=ካብ,-neg,pos=PRON|ADJ,+prep];[adp=ካብ,-neg,pos=DET,+prep,+dem]
+  እንካብ	[adp=ካብ,-neg,pos=PRON|ADJ,+prep];[adp=እንካብ,-neg,pos=DET,+prep,+dem]
+  ምስ	[adp=ምስ,-neg,pos=PRON,+prep];[adp=ምስ,-neg,pos=DET,+prep,+dem]
+  ከም	[adp=ከም,-neg,pos=PRON,+prep];[adp=ከም,-neg,pos=DET,+prep,+dem]
   ብዘይካ	[adp=ብዘይ,-neg,pos=PRON,+prep]
-  ክንዳ	[adp=ክንዲ,-neg,pos=PRON,+prep]
-  ምእንታ	[adp=ምእንቲ,-neg,pos=PRON,+prep]
-  ስለ	[adp=ስለ,-neg,pos=PRON,+prep]
+  ብዘይ	[adp=ብዘይ,-neg,pos=DET,+prep,+dem]
+  ክንዳ	<ክነዲ>	[adp=ክንዲ,-neg,pos=PRON,+prep]
+  ክንድ	<ከንዲ>	[adp=ክንዲ,-neg,pos=DET,+prep,+dem]
+  ምእንታ	<ምእንቲ>	[adp=ምእንቲ,-neg,pos=PRON,+prep]
+  ምእንት	<ምእንቲ>	[adp=ምእንቲ,-neg,pos=DET,+prep,+dem]
+  ስለ	[adp=ስለ,-neg,pos=PRON,+prep];[adp=ስለ,-neg,pos=DET,+prep,+dem]
   -- [adp=None,-prep]
 
 $ prep_bound
   -
 
 $ neg1
-  ኣይ		[+neg,pos=ADJ|PRON];[+neg,pos=N,d=inf]
+  ኣይ		[+neg,pos=ADJ|PRON,-z];[+neg,pos=N,d=inf,-z]
+  ዘይ		[+neg,pos=N,d=inf,+z]
   --		[-neg];[pos=N,d=0]
 
 $ prestem
   <
 
 $ stem
-  +n_stem+  [pos=N|ADJ|PRON,d=0]
+  +n_stem+  [pos=N|ADJ|DET|PRON,d=0,-z]
+  +n_name+  [pos=PROPN,-pl,d=0,-z]
   >>vn_stem<<
 
 $ poststem
@@ -51,8 +57,8 @@ $ poss_bound
   -
 
 $ neg2
-  ን		[+neg]
-  --		[-neg]
+  ን		[+neg,-z]
+  --		[-neg];[+neg,+z]
 
 $ neg2_bound
   -

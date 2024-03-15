@@ -1,5 +1,5 @@
 $ particle
-  +v_light+	[pos=v]
+  +v_light+	[pos=V,mwe=[+segpart,+hdfin,pos=PART,dep=compound]]
 
 $ gap
   //		<$ >

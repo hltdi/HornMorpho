@@ -187,12 +187,12 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p]
 *e	*e:	*
 
-[v=a,t=p]
-# ዓረገ with no a- voice prefix
-*a	*e	*
+#[v=a,t=p]
+## ዓረገ with no a- voice prefix
+#*a	*e	*
 
-[v=a,t=i|j]
-*a	*	*
+#[v=a,t=i|j]
+#*a	*	*
 
 %2=L
 
@@ -357,8 +357,14 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p,t=i,sn=2]
 *e	*e:	-
 
-#%%a=a,c=A,-strong
+%%a=a,c=A,-strong
+#%1=L
+#
+#[v=0,t=p]
+## ዓረገ with no a- voice prefix
+#*a	*e	*
+#
+#[v=0,t=i|j]
+#*a	*	*
 
 #%%a=i,c=A,-strong
-
-

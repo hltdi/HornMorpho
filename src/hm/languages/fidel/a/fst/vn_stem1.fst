@@ -3,13 +3,18 @@
 # no changes for stems that are not deverbal
 stem -> end		[]			[d=0]
 
+stem -> neg0	[ኣ]			[d=inf,+neg]
+neg0 -> neg1	[ለ]
+stem -> istem	[]			[d=inf,-neg];[d=ins]
+neg1 -> istem	[:-]		
+
 # infinitive and instrument
-stem -> ME		[መ]		[d=ins|inf]
+istem -> ME		[መ]		[d=ins|inf]
 ME -> ME-		[:-]
 ME -> AS		[ስ]
 ME- -> end		[]			[d=inf]
 ME- -> stemsuf	[]			[d=ins]
-stem -> ME2A	[ማ:መ]
+istem -> ME2A	[ማ:መ]
 ME2A -> ME2A-	[:-]
 ME2A- -> end	[:ኣ]		[d=inf]
 ME2A- -> stemsuf	[:ኣ]		[d=ins]
@@ -20,7 +25,7 @@ ME/ -> TA		[ታ:ተ]
 TA -> TA-		[:-]
 TA- -> end		[:ኣ]
 
-stem -> MA		[ማ]			[d=ins|inf]
+istem -> MA		[ማ]			[d=ins|inf]
 MA -> end		[:-]		[d=inf]
 MA -> stemsuf	[:-]		[d=ins]
 MA -> AS		[ስ]
@@ -34,7 +39,7 @@ AS- -> stemsuf	[^S]		[d=a|ins]
 MA -> MAS.A		[ሳ:ስ]
 MAS.A -> MASA-	[:-]
 MASA- -> end	[:ኣ]		[d=inf]
-MASA- -> stesuf	[:ኣ]		[d=ins]
+MASA- -> stemsuf	[:ኣ]		[d=ins]
 
 MA -> AS.S		[/:ስ]
 AS.S -> AS.-S	[:-]
@@ -82,10 +87,25 @@ stem -> TA		[ታ:ተ]	[d=a,v=p]
 stemsuf -> stemsuf	[^N;/]
 
 # agent and manner suffix
-stemsuf -> pal		[{^I2i}]
-pal ->  pal-			[:-]
-pal- -> end			[:ኢ]
+stemsuf -> agtsuf	[{^I2i}]	[d=a]
+agtsuf -> agtsuf-	[:-]
+agtsuf- -> fin		[:ኢ]
+
+stemsuf -> insnopal	[{~S2i}]	[d=ins]
+insnopal -> insnopal-	[:-]
+insnopal- -> insnopalya[:ኢ]
+insnopalya -> fin		[ያ]
+
+stemsuf -> inspal		[{^S2a}]	[d=ins]
+inspal -> inspal-		[:-]
+inspal- -> inspalya	[:ኢ]
+inspalya -> fin			[:ያ]
+
+#stemsuf -> pal		[{^I2i}]
+#pal ->  pal-			[:-]
+#pal- -> end			[:ኢ]
 
 end -> end		[^N;-;/]
 
 end ->
+fin ->

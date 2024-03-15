@@ -103,11 +103,14 @@ $ ob_suf
   [o=sm3,oc=l|b,+O]
       /ለት	[oc=l]
       /በት	[oc=b]
-  [o=sm3,oc=0,+O,-rel,+tr];[o=sm3,oc=0,+O,+rel]
+  [o=sm3,oc=0]
      # 3sm accusative suffix and relative definite suffix
-      ት	[t=p,sp=1,sn=1];[sp=2|3,sn=2];[t=c,sp=3,sn=1,sg=m]
-      ው       [sp=2,sn=1,sg=f];[t=p,sp=3,sn=1];[t=c,sp=1,sn=1];[t=c,sp=3,sn=1,sg=f]
-      አው	[sp=2,sn=1,sg=m];[sp=1,sn=2];[t=i|j,sp=1,sn=1];[t=i|j,sp=3,sn=1]
+      ት	[t=p,sp=1,sn=1,-det,+O,+tr];[sp=2|3,sn=2,-det,+O,+tr];[t=c,sp=3,sn=1,sg=m,-det,+O,+tr];
+                [t=p,sp=1,sn=1,+det,+rel,-O];[sp=2|3,sn=2,+det,+rel,-O];[t=c,sp=3,sn=1,sg=m,+det,+rel,-O]
+      ው       [sp=2,sn=1,sg=f,-det,+O,+tr];[t=p,sp=3,sn=1,-det,+O,+tr];[t=c,sp=1,sn=1,-det,+O,+tr];[t=c,sp=3,sn=1,sg=f,-det,+O,+tr];
+                [sp=2,sn=1,sg=f,+det,+rel,-O];[t=p,sp=3,sn=1,+det,+rel,-O];[t=c,sp=1,sn=1,+det,+rel,-O];[t=c,sp=3,sn=1,sg=f,+det,+rel,-O]
+      አው	[sp=2,sn=1,sg=m,-det,+O,+tr];[sp=1,sn=2,-det,+O,+tr];[t=i|j,sp=1,sn=1,-det,+O,+tr];[t=i|j,sp=3,sn=1,-det,+O,+tr];
+                [sp=2,sn=1,sg=m,+det,+rel,-O];[sp=1,sn=2,+det,+rel,-O];[t=i|j,sp=1,sn=1,+det,+rel,-O];[t=i|j,sp=3,sn=1,+det,+rel,-O]
   [o=sf3,+O]
       ኣት	[oc=0,+tr]
       /ላት	[oc=l]
@@ -142,7 +145,11 @@ $ ob_suf
       ኣ/ችሁ		<ኣችሁ>	[oc=0,+tr]
       /ላ/ችሁ	<ላችሁ>	[oc=l]
       /ባ/ችሁ	<ባችሁ>	[oc=b]
-  --   	[o=0,oc=0,-O]
+#  [o=0,oc=0,-O,+rel,+det]
+#      ት	[t=p,sp=1,sn=1];[sp=2|3,sn=2];[t=c,sp=3,sn=1,sg=m]
+#      ው       [sp=2,sn=1,sg=f];[t=p,sp=3,sn=1];[t=c,sp=1,sn=1];[t=c,sp=3,sn=1,sg=f]
+#      አው	[sp=2,sn=1,sg=m];[sp=1,sn=2];[t=i|j,sp=1,sn=1];[t=i|j,sp=3,sn=1]
+  --   	[o=0,oc=0,-O,-det]
 
 $ ob_bound
   -
@@ -169,7 +176,7 @@ $ aux_bound
   -
 
 $ accus
-  ን		[+acc,+rel,+O]
+  ን		[+acc,+rel,-det,+O];[+acc,+rel,+det,-O]
   --		[-acc]
 
 $ accus_bound

@@ -112,8 +112,13 @@ VC2FEATS = {
     'iter': 'a=i', 'rcp1': 'a=a,v=p', 'rcp2': 'a=i,v=p', 'csrcp1': 'a=a,v=a', 'csrcp2': 'a=i,v=a'
     }
 
+VC2FEATS_L1 = {
+    'base': '', 'pass': 'v=p', 'caus1': 'v=ast', 'caus2': 'v=as',
+    'iter': 'a=i', 'rcp2': 'a=i,v=p', 'csrcp2': 'a=i,v=ast'
+    }
+
 VC2FEATS_L = {
-    'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=ast'
+    'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=a'
     }
     
 ### Amharic, Tigrinya voice-valency classification.
@@ -136,30 +141,39 @@ def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     write_root_counts(c, light=light, constraints=constraints, comment=', '.join(trans))
     return u, a, l, c
 
-def proc_ti(light=False, constraints=None, thresh=[0, 0, 0]):
+def proc_ti(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     TI = morpho.get_language('t', v5=True)
     V = TI.morphology['v']
-    u, a, l = get_vroot_png(path='data/ti_v_classes.txt', language='t', constraints=constraints)
+    u, a, l = get_vroot_png(path='data/ti_v_classes2.txt', language='t', constraints=constraints)
+    if write_png:
+        write_vroot_png(u, language='t', light=light, constraints=constraints)
     trans = gen_trans_cats(constraints)
     c = count_voice_classes(l if light else u, language='t', scale=False, trans=trans,
                           light=light, constraints=constraints, thresh=thresh, vmorph=V)
     write_root_counts(c, 't', light=light, constraints=constraints, comment=', '.join(trans))
     return u, a, l, c
 
-def gen_lemma(vmorph, root, label):
-    if ':' not in root:
-        print("*** {}".format(root))
-        return ''
-    root, cls = root.split(':')
+def gen_lemma(language, vmorph, root, cls, label):
+#    if ':' not in root:
+#        print("*** {}".format(root))
+#        return ''
+    # root could have a sense element "ምእር:A:2"
+#    root_split = root.split(':')
+#    root = root_split[0]
+#    cls = root_split[1]
+#    root, cls = root.split(':')
     upd_feats = 'c={}'.format(cls)
-    label_feats = VC2FEATS[label]
+    if language == 'a' and root[0] == 'እ':
+        label_feats = VC2FEATS_L1[label]
+    else:
+        label_feats = VC2FEATS[label]
     if label_feats:
         upd_feats += ",{}".format(label_feats)
 #    print("upd feats {}".format(upd_feats))
     if forms := vmorph.gen5(root, upd=upd_feats):
         return vmorph.postproc5(forms[0][0], gemination=False)
     # Fix cases where original feature is v=ast or v=test
-    if root[0] == 'እ' or root[1] == 'እ':
+    if language == 'a' and (root[0] == 'እ' or root[1] == 'እ'):
         label_feats = VC2FEATS_L.get(label)
         if label_feats:
             upd_feats = 'c={},{}'.format(cls, label_feats)
@@ -394,8 +408,6 @@ def classify_um_vc(um, language='a'):
         um = um.split(';')
     if 'PASS' in um:
         return 'pass'
-#    elif 'CAUS+RECP' in um:
-#        return 'csrcp'
     elif 'CAUS+RECP1' in um:
         return 'csrcp1'
     elif 'CAUS+RECP2' in um:
@@ -409,9 +421,6 @@ def classify_um_vc(um, language='a'):
         return 'caus1'
     elif 'ITER' in um:
         return 'iter'
-#    elif 'RECP' in um:
-#        # only possible for old Ti analyses
-#        return 'rcp'
     elif 'RECP1' in um:
         return 'rcp1'
     elif 'RECP2' in um:
@@ -530,16 +539,6 @@ def make_feat_filename(language='a', light=False, constraints=None):
 def write_vroot_png(dct, language='a', light=False, filename='', vthresh=4, rthresh=10, constraints=None):
     if not filename:
         filename = make_rvpng_filename(language=language, light=light, constraints=constraints)
-#    elif language == 'a':
-#        if light:
-#            path = "../../SemVV/data/am_light_vroot_png.txt"
-#        else:
-#            path = "../../SemVV/data/am_vroot_png.txt"
-#    elif light:
-#        path = "../../SemVV/data/ti_light_vroot_png.txt"
-#    else:
-#        path = "../../SemVV/data/ti_vroot_png.txt"
-
     path = "../../SemVV/data/" + filename
 
     ls = list(dct.items())
@@ -602,7 +601,7 @@ def get_subpers(um):
     else:
         return '3'
 
-def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constraints=None):
+def get_vroot_png(path="data/am_v_classes3.txt", language='a', report='', constraints=None):
     '''
     Returns dicts for unambiguous roots, ambiguous roots, and
     multi-word (light verb) roots.
@@ -627,10 +626,11 @@ def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constr
                 continue
             root = anal['root']
             um = anal['um']
+            sense = anal.get('sense', 0)
             vc = classify_um_vc(um, language=language)
             pers = get_subpers(um)
             if pers == '12':
-                s12.add((root, vc))
+                s12.add((root, vc, sense))
 
     for index, word, anals in items:
         word = normalize(word, language=language)
@@ -642,33 +642,37 @@ def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constr
                     continue
                 root = anal['root']
                 um = anal['um']
+                sense = anal.get('sense', 0)
                 vc = classify_um_vc(um, language=language)
 #                if vc == 'rcp'
 #                    continue
-                if (root, vc) in reject_imp:
+                if (root, vc, sense) in reject_imp:
                     continue
-                elif is_imperative(um) and (root, vc) not in s12:
-                    reject_imp.append((root, vc))
+                elif is_imperative(um) and (root, vc, sense) not in s12:
+                    reject_imp.append((root, vc, sense))
 #                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
                     continue
                 um = filter_um(um, language=language, applic=applic)
-                unique_anals.add((root, um))
+                unique_anals.add((root, um, sense))
 
             if len(unique_anals) > 1:
                 # still ambiguous
                 tam = []
-                for root, um in unique_anals:
+                for root, um, sense in unique_anals:
                     if " " in word:
                         if ' ' not in root:
                             root = word.split()[0] + ' ' + root
                         if root in ign_roots:
                             add_root_um(light_roots, root, um)
                     elif root not in ign_roots:
+                        if sense:
+                            root += ":{}".format(sense)
                         add_root_um(amb_roots, root, um)
             elif len(unique_anals) == 1:
                 unique_anals = list(unique_anals)[0]
                 root = unique_anals[0]
                 um = unique_anals[1]
+                sense = unique_anals[2]
                 if " " in word:
                     if ' ' not in root:
                         root = word.split()[0] + ' ' + root
@@ -677,6 +681,8 @@ def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constr
                 elif root not in ign_roots:
                     if report and report == root:
                         print("** {}: {}".format(word, um))
+                    if sense:
+                        root += ":{}".format(sense)
                     add_root_um(unamb_roots, root, um)
         else:
             anal = anals[0]
@@ -684,6 +690,7 @@ def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constr
                 continue
             root = anal['root']
             um = filter_um(anal['um'], language=language, applic=applic)
+            sense = anal.get('sense', 0)
 #            if um[0] == 'rcp':
 #                continue
             if ' ' in word:
@@ -694,6 +701,8 @@ def get_vroot_png(path="data/am_v_classes2.txt", language='a', report='', constr
             elif root not in ign_roots:
                 if report and report == root:
                     print("** {}: {}".format(word, um))
+                if sense:
+                    root += ":{}".format(sense)
                 add_root_um(unamb_roots, root, um)
     for root, dct in unamb_roots.items():
         dct = group_by_vc(dct)
@@ -760,6 +769,10 @@ def count_voice_classes(dct, language='a', scale=True, trans=None, constraints=N
         dct = new_entries
         print("** Eliminated {} roots".format(nelim))
     for root, entry in dct.items():
+        root_split = root.split(':')
+        root = root_split[0]
+        root_cls = root_split[1]
+        sense = root_split[2] if len(root_split) == 3 else 0
         if constraints:
             if 'reduce' in constraints:
                 entry = consol_trans(entry)
@@ -768,11 +781,16 @@ def count_voice_classes(dct, language='a', scale=True, trans=None, constraints=N
             elif 'log' in constraints:
                 logarithmize(entry)
         if constraints.get('sep_vc', False):
-            for cls in classes:
-                vc_count = get_vc_counts(entry.get(cls), scale, trans=trans, constraints=constraints)
+            for vc_cls in classes:
+                vc_count = get_vc_counts(entry.get(vc_cls), scale, trans=trans, constraints=constraints)
                 if sum(vc_count):
-                    lemma = gen_lemma(vmorph, root, cls)
-                    label = "{}:{}".format(lemma, cls) if lemma else "{}_{}".format(root, cls)
+                    lemma_label = ''
+                    lemma = gen_lemma(language, vmorph, root, root_cls, vc_cls)
+                    if lemma:
+                        lemma_label = "{}:{}".format(lemma, root_cls)
+                        if sense:
+                            lemma_label += ":{}".format(sense)
+                    label = lemma_label if lemma else "{}_{}".format(root, vc_cls)
                     # Don't include empty VCs
                     counts[label] = vc_count
         else:
@@ -953,10 +971,11 @@ def group_vroots(path="data/am_v_classes.txt", language='a', prune=True, scale_v
                 continue
             root = anal['root']
             um = anal['um']
+            sense = anal.get('sense', 0)
             vc = get_vc(um)
             pers = get_subpers(um)
             if pers == '12':
-                s12.add((root, vc))
+                s12.add((root, vc, sense))
     for index, word, anals in items:
         if len(anals) > 1:
             # ambiguous
@@ -967,10 +986,11 @@ def group_vroots(path="data/am_v_classes.txt", language='a', prune=True, scale_v
                 root = anal['root']
                 um = anal['um']
                 vc = get_vc(um)
-                if (root, vc) in reject_imp:
+                sense = anal.get('sense', 0)
+                if (root, vc, sense) in reject_imp:
                     continue
-                elif is_imperative(um) and (root, vc) not in s12:
-                    reject_imp.append((root, vc))
+                elif is_imperative(um) and (root, vc, sense) not in s12:
+                    reject_imp.append((root, vc, sense))
 #                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
                     continue
                 um = simplify_um(um)

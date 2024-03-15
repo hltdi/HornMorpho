@@ -43,7 +43,7 @@ weighting = UNIFICATION
 ## FSTs
 
 >misc<
->n_iya<
+#>n_iya<
 >n_aff_bound<
 # Morphotactics
 >n1.mtx<

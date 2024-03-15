@@ -5,7 +5,7 @@ $$ Y	y
 ## A roots
 # simplex
 %A::		1:I;		2:a;		3:I
-%A,2=w::	1:I;		2:0,a;		3:0,a
+%A,2=w::	1:Wa,a;	2:0;		3:I
 %A_a::		1:I;		2:a;		3:I
 %A_i::		1:I;		2:I|a;		3:I
 

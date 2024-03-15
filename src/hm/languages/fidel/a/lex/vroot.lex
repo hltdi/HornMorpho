@@ -396,7 +396,7 @@
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=ast ; a=i,v=p
 <እ ስ ብ>	c=B
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=ast ; a=i,v=p
-<እ ሽ ይ>	c=A
+<እ ሽ ይ>	c=A,tmp=[3=ይ]
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=ast ; a=i,v=p
 <እ ቅ ፍ>	c=A
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
@@ -650,7 +650,7 @@
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=ast ; a=i,v=p
 <እ ል ፍ>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=ast ; a=i,v=p
-<እ ም እ>	c=A
+<እ ም እ>	c=A,tmp=[3=እ]
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <እ ር ቅ>	c=B
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
@@ -1144,9 +1144,9 @@
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m ; a=i,v=p
 <እ ጥ ብ>	c=A
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,v=0 ; a=i,v=p
-<እ ጥ እ>	c=A
+<እ ጥ እ>	c=A,tmp=[3=እ]
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=p
-<እ ጭ ይ>	c=A
+<እ ጭ ይ>	c=A,tmp=[3=ይ]
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=p
 <እ ፍ ር>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=p
@@ -1646,7 +1646,7 @@
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ብ ስ>	c=A
   a=0,v=0 ; a=0,v=as ; a=i,d=m ; a=i,v=p
-<እ ብ ይ>	c=A
+<እ ብ ይ>	c=A,tmp=[3=ይ]
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m
 <እ ብ ጥ>	c=A
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
@@ -3420,7 +3420,7 @@
   a=0,v=0 ; a=i,d=m
 <እ ት ብ>	c=A
   a=0,v=0 ; a=i,d=m
-<እ ዥ ይ>	c=A
+<እ ዥ ይ>	c=A,tmp=[3=ይ]
   a=0,v=0 ; a=i,d=m
 <እ ግ ም>	c=A
   a=0,v=0 ; a=i,d=m

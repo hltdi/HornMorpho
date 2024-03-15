@@ -88,11 +88,12 @@ $$ L እ|ሕ|ዕ|ህ
 
 %%a=i,c=J,+strong == I
 
-#%%a=0,c=A,-strong
-#
-#%2=ው
-#[d=inf,-K2,+K3]
-#*	ዋ	**
-#
-#[d=inf,-K2,+K3]
-#*	-	*Wa
+%%a=0,c=A,-strong
+
+%2=ው
+[d=inf,+K3]
+*Wa	-	*
+
+[d=inf,+Ke]
+*a	-	*
+

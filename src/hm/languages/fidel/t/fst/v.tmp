@@ -304,7 +304,7 @@ $$ L እ|ሕ|ዕ|ህ
 ^e	*a	*
 
 # ይምጻእ
-[t=j,v=0,+K2,+K3]
+[t=j,v=0,-suf,+K2,+K3]
 **	*a	*
 
 # ይስ/ራሕ
@@ -330,13 +330,17 @@ $$ L እ|ሕ|ዕ|ህ
 
 # ኣምጽኤ
 [t=p,v=a,-K2,+K3]
-[t=j,v=a,-K2,+K3]
 [t=i,v=a,+suf,-K2,+K3]
+[t=j,v=a,-O,-K2,+K3]
+[t=j,v=0|a,+ijsuf,-K2,+K3]
 **	**	*
 
 # ኣምጸኤ (alongside ኣምጽኤ)
 [t=p,v=a,-K2,+K3]
 **	^e	*
+
+[t=j,v=0|a,+O,-ijsuf,-K2,+K3]
+**	**	*a
 
 %2=ው
 # ሞት-
@@ -352,10 +356,11 @@ $$ L እ|ሕ|ዕ|ህ
 *u	-	*
 
 # ሞይት-
-[t=c,v=0,sp=3,+K2,-K3]
-[t=c,v=0,sp=1,sn=1,+K2,-K3]
+#[t=c,v=0,sp=1,sn=1,+K2,-K3]
+[t=c,v=0,+K2,-K3]
 *o	ይ	*
 
+# consonant suffixes
 [t=c,v=0,sp=2,+K2]
 [t=c,v=0,sp=1,sn=2,+K2]
 ^E	-	*
@@ -376,7 +381,8 @@ $$ L እ|ሕ|ዕ|ህ
 [t=j,v=0,+K2]
 *i	-	*
 
-[t=c,v=0,sp=3,+K2,-K3]
+# possible, but less common?, for sp=1|2: ከይድና
+[t=c,v=0,+K2,-K3]
 *e	*	*
 
 [t=c,v=0,sp=1|2,+K2]
@@ -463,23 +469,29 @@ $$ L እ|ሕ|ዕ|ህ
 
 %3=L
 [t=p,sp=3,+K2,+K3]
-[t=j,v=0|a,+K2,+K3]
+[t=j,v=0|a,-O,+K2,+K3]
+[t=j,v=0|a,+ijsuf,+O,+K2,+K3]
 [t=i,v=a,+K2,+K3]
 ^e	**:	*
 
+# ተረደኣኒ, alongside ተረድኣኒ
+[t=p,v=p,+K2,+K3]
+^e	^e:	*
+
 [t=p,sp=1|2,+K2,+K3]
-[t=j,v=p,+suf,+K2,+K3]
+[t=j,v=p,+K2,+K3]
 ^e	*:a	*
 
+# ይር/ድኣ/ኒ (along  ይር/ዳኣ/ኒ )
 [t=i,v=0,+K2,+K3]
-[t=i,v=p,+K2,+K3]
+[t=i,v=p,+suf,+K2,+K3]
 **	**:		*
 
-# ይር/ዳኣ/ኒ (alongside ይር/ድኣ/ኒ )
-[t=i,v=p,+suf,+K2,+K3,+O,op=1|2]
+# ይር/ዳኣእ
+[t=i,v=p,+K2,+K3]
 **	*:a		*
 
-# ይር/ደኦ (alongside ይር/ድኦ)
+# ይር/ደኦ (alongside ይር/ዳኦ)
 [t=i,v=p,+suf,+K2,+K3]
 **	 ^e:	*
 
@@ -488,6 +500,9 @@ $$ L እ|ሕ|ዕ|ህ
 
 [t=c,v=a,+K2,+K3]
 **	*:i	*
+
+[t=j,v=0|a,+O,-ijsuf,-K2,+K3]
+^e	**:	*a
 
 %%a=0,c=E,-strong
 

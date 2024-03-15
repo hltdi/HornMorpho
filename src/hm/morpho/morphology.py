@@ -3,7 +3,7 @@ This file is part of HornMorpho and morfo, which are part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2020, 2022, 2023
+    Copyleft 2018, 2020, 2022, 2023, 2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -1405,6 +1405,7 @@ class POSMorphology:
         Return the whole string, prefixes, stem, and suffixes
         kwargs: degem=False, mwe=False, combine_segs=False):
         '''
+#        print("&& process_segstring: kwargs {}".format(kwargs))
         pre = stem = suf = mwe_part = ''
         if kwargs.get('degem', False):
             string = EES.degeminate(string)
@@ -1415,7 +1416,8 @@ class POSMorphology:
                 return '', [], '', [], ''
             premwe, pre, stem, suf, postmwe = match.groups()
             mwe_part = premwe or postmwe
-            mwe_part = mwe_part.strip()
+            if mwe_part:
+                mwe_part = mwe_part.strip()
 #            print("** INIT pre {} stem {} suf {}".format(pre, stem, suf, mwe_part))
         else:
             match = POSMorphology.segment_re.match(string)
@@ -1458,6 +1460,7 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
+#        print("%% process5: kwargs {}".format(kwargs))
         sep_feats = kwargs.get('sep_feats', True)
         gemination = kwargs.get('gemination', True)
         string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, **kwargs)
@@ -1467,14 +1470,16 @@ class POSMorphology:
         if raw_token:
             procdict['raw'] = raw_token
         mwe_props = None
+        procdict['nsegs'] = len(real_prefixes) + 1 + len(real_suffixes)
         if kwargs.get('mwe', False):
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features.get('mwe') or self.mwe_feats
             if mwe_props:
                 token_dicts = self.get_mwe_tokens(token, mwe_props)
                 procdict['tokens'] = token_dicts
+                if mwe_props.get('segpart', False):
+                    procdict['nsegs'] += 1
 #            print("  ^^ token dicts {}".format(token_dicts))
-        procdict['nsegs'] = len(real_prefixes) + 1 + len(real_suffixes)
         um = self.language.um.convert(features, pos=self.pos)
         procdict['um'] = um
         procdict['pos'] = features.get('pos', self.pos)
@@ -1500,20 +1505,6 @@ class POSMorphology:
             pos = procdict['pos']
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
 #                print("  ** pindex {} prefix {} props {}".format(pindex, prefix, props))
-#                if mwe_props and mwe_props.get('hdfin') and pindex == 0:
-#                    prefix = prefix.strip()
-#                    if ' ' not in prefix:
-#                        mwe_part = prefix
-#                        print("  ** setting mwe_part to {}".format(mwe_part))
-#                        aff_index += 1
-#                        continue
-#                    else:
-#                        prefix_split = prefix.split()
-#                        # mwe_part can be multi-word
-#                        prefix = prefix_split[-1]
-#                        mwe_part = ' '.join(prefix_split[:-1])
-##                        mwe_part, prefix = prefix.split()
-#                        print("  ** setting mwe_part to {}".format(mwe_part))
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts,
@@ -1670,7 +1661,12 @@ class POSMorphology:
             if is_stem:
                 return pos
             return
-        if isinstance(posspec, dict):
+        if isinstance(posspec, tuple):
+            posfeat = posspec[0]
+            posvalue = features.get(posfeat)
+            pos = posspec[1].get(posvalue)
+            return pos
+        elif isinstance(posspec, dict):
             pos = posspec.get(EES.degeminate(string))
             if pos:
                 if isinstance(pos, str):
@@ -1742,10 +1738,16 @@ class POSMorphology:
                 # string specifying the dep for all affixes in this position
                 dep = depspec
             elif isinstance(depspec, tuple):
+#                print("  ^^ depspec is tuple: {}".format(depspec))
                 # (feature, {...})
                 depfeat = depspec[0]
-                depvalue = features.get(depfeat)
-                dep = depspec[1].get(depvalue)
+                if isinstance(depfeat, tuple):
+                    # dep depends on multiple features
+                    depvalues = tuple([features.get(df) for df in depfeat])
+                    dep = depspec[1].get(depvalues)
+                else:
+                    depvalue = features.get(depfeat)
+                    dep = depspec[1].get(depvalue)
 #                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
         return dep, head_index
 
@@ -1754,6 +1756,7 @@ class POSMorphology:
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.
         '''
+#        print("** postproc5 {}".format(form))
         if gloss:
             form += gloss
         if not gemination:
@@ -1777,7 +1780,7 @@ class POSMorphology:
         lemmafeat1, lemmafeats2 = lemmafeats
         if mwe_part:
             root = mwe_part + " " + root
-#        print("^^ generating lemma for {} | {} ; mwe {}".format(stem, root, mwe.__repr__()))
+#        print("^^ generating lemma for {} | {} ; mwe {} ; mwe type {}".format(stem, root, mwe.__repr__(), type(mwe)))
 #        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
@@ -1790,6 +1793,7 @@ class POSMorphology:
             initfeat = ','.join(initfeat)
 #            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             if (gen_out := self.gen(root, update_feats=initfeat, mwe=mwe, v5=True)):
+#                print("    ^^ gen_out {}".format(gen_out))
                 return self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
             return
         initfeat = []
@@ -1943,18 +1947,15 @@ class POSMorphology:
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
                                   phon=phon, segment=segment, mwe=mwe,
                                   v5=v5)
-#        print("  ^^ fst {}".format(fst.label))
         if from_dict:
             # Features is a dictionary; it may contain the root if it's not specified
             anal = self.dict_to_anal(root, features)
             root = anal[0]
             features = anal[1]
         elif fss:
-#            print("gen: FSS {}".format(fss.__repr__()))
             features = fss
         else:
             features = FSSet.cast(features)
-#        print("  ^^ GENERATING {}, features {}, fst {}".format(root, features.__repr__(), fst.__repr__()))
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form
@@ -1963,7 +1964,6 @@ class POSMorphology:
             if oroot:
                 root = oroot
         if fst:
-#            print('   ^^ Transducing with root {} and features {}'.format(root, features.__repr__()))
             gens = \
               fst.transduce(root, features,
                             seg_units=self.morphology.seg_units, gen=not del_feats,
@@ -1971,7 +1971,6 @@ class POSMorphology:
                             dup_output=del_feats,
                             timeit=timeit, timeout=timeout,
                             result_limit=limit, verbosity=verbosity)
-#            print("    ^^ gens {}".format(gens))
             if sort and len(gens) > 1:
                 gens = self.score_gen_output(root, gens)
                 gens.sort(key=lambda g: g[-1], reverse=True)
