@@ -18,12 +18,18 @@ $$ L እ|ሕ|ዕ|ህ
 [v=0,t=p,sp=3]
 *e	*	*
 
+# ልሰብ/ር
 [v=0|a,t=i,-vsuf]
-#[v=0|a,t=i,+vsuf,op=3]
+# ትሰ/ቢሮ
+[v=0|a,t=i,+vsuf,op=3,sn=1]
+# ልሰ/ቡሮ
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=m]
 *e	*:	*
 
-#[v=0|a,t=i,+vsuf,op=0|1|2]
-[v=0|a,t=i,+vsuf]
+# ትስብሪ ልሰብሩ ልሰብረ ልሰብሩከ
+[v=0|a,t=i,+vsuf,op=0|1|2]
+# ትሰብረዩ
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f]
 *e	*	*
 
 [v=0,t=j]
