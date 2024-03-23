@@ -12,11 +12,13 @@ $$ L እ|ሕ|ዕ|ህ
 %%a=0,c=A,+strong
 
 [v=0,t=p,sp=1|2]
-[v=a|at,t=p]
 *e	*e	*
 
 [v=0,t=p,sp=3]
 *e	*	*
+
+[v=a|at,t=p]
+*	*e	*
 
 # ልሰብ/ር
 [v=0|a,t=i,-vsuf]
@@ -176,14 +178,12 @@ $$ L እ|ሕ|ዕ|ህ
 *e	*e	*
 
 [v=0,t=p,sp=3]
+[v=0,t=i,+vsuf]
+[v=at,t=i|j]
 *e	*	*
 
 [v=0,t=i,-vsuf]
 *e	*:	*
-
-[v=0,t=i,+vsuf]
-[v=at,t=i|j]
-*e	*	*
 
 [v=0,t=j,sp=2|3]
 [v=0,t=j,sp=1,sn=2]

@@ -43,7 +43,25 @@ feats:
 
   pos: v verb
 
+    morphotax::
+      {'name': 'rel', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['ClauseType']};
+      {'name': 'neg', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'obj',  'pos': 'PRON', 'dep': 'obj', 'feats': ['AccNum', 'AccPers', 'AccGen']}
+
     neg = False | True
+    a = 0 | a | i
+    v = 0 | p | a | at
+    t = p | i | j
+    rel = False | True
+    sp = 3 | 2 | 1
+    sn = 1 | 2
+    sg = m | f
+    op = 0 | 3 | 2 | 1
+    on = 1 | 2
+    og = m | f
 
   pos: v_stem v_stem
 
@@ -113,6 +131,9 @@ e/w = {ሀ, ለ, ሐ, መ, ረ, ሰ, ቀ, በ, ተ, ነ, አ, ከ, ዐ, ዘ, ደ
 *L = {ህ, ሕ, እ, ዕ}
 *Le  = {ሀ, ሐ, አ, ዐ}
 *La = {ሃ, ሓ, ኣ, ዓ}
+
+# dental, alveolar, palato-alveolar + a, e, I
+^S = {ሰ, ስ, ሳ, ዘ, ዝ, ዛ, ተ, ት, ታ, ደ, ድ, ዳ, ጠ, ጥ, ጣ, ነ, ን, ና, ሸ, ሽ, ሻ, ዠ, ዥ, ዣ, ቸ, ች, ቻ, ጀ, ጅ, ጃ, ጨ, ጭ, ጫ, ኘ, ኝ, ኛ}
 
 # consonant sets
 l = {ለ, ሉ, ሊ, ላ, ሌ, ል, ሎ}

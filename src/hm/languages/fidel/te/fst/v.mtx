@@ -1,6 +1,6 @@
 $ rel
-  ለ   [+rel]
-  -- [-rel]
+  ለ   [+rel,pos=V]
+  -- [-rel,pos=V]
 
 $ rel_bound
   -
@@ -16,18 +16,14 @@ $ sb_pre
   ->ss_bound	+bEle+		[1=ብ,2=ህ,3=ል,c=A,v=0]
   እ	[t=i,sp=1,sn=1,R1=X];[t=j,sp=1,sn=1,tmp=[2=X|L]]
   ኢ	[t=j,sp=1,sn=1,tmp=[2=ው|ይ]]
-  ል	[t=i,sp=3,sn=1,sg=m];[t=i,sp=3,sn=2][t=j,sp=3,sn=1,sg=m,tmp=[2=X|L]];[t=j,sp=3,sn=2,tmp=[2=X|L]]
+  ል	[t=i,sp=3,sn=1,sg=m];[t=i,sp=3,sn=2];[t=j,sp=3,sn=1,sg=m,tmp=[2=X|L]];[t=j,sp=3,sn=2,tmp=[2=X|L]]
   ሊ	[t=j,sp=3,sn=1,sg=m,tmp=[2=ው|ይ]];[t=j,sp=3,sn=2,tmp=[2=ው|ይ]]
-  # ለሐጽብ
-#  ለ	[t=i,sp=3,sn=1,sg=m,R1=L];[t=i,sp=3,sn=2,R1=L]
-  ት   [t=i,sp=2];[t=i,sp=3,sn=1,sg=f];[t=j,sp=3,sn=1,sg=f,tmp=[2=X|L]];[t=j,sp=2,-imp,tmp=[2=X|L]]
-  ቲ   [t=j,sp=3,sn=1,sg=f,tmp=[2=ው|ይ]];[t=j,sp=2,tmp=[2=ው|ይ],-imp]
-  # ተሐጽብ
-#  ተ   [t=i,sp=2,R1=L];[t=i,sp=3,sn=1,sg=f,R1=L]
-  ን   [t=j,sp=1,sn=2,tmp=[2=X|L]]
+  ት   [t=i,sp=2];[t=i,sp=3,sn=1,sg=f];[t=j,sp=3,sn=1,sg=f,tmp=[2=X|L]];[t=j,sp=2,-imp,tmp=[2=X|L]];[t=j,sp=2,+imp,+neg,tmp=[2=X|L]]
+  ቲ   [t=j,sp=3,sn=1,sg=f,tmp=[2=ው|ይ]];[t=j,sp=2,tmp=[2=ው|ይ],-imp];[t=j,sp=2,tmp=[2=ው|ይ],+imp,+neg]
+  እን  [t=i,sp=1,sn=2,v=0]
+  ን   [t=j,sp=1,sn=2,tmp=[2=X|L]];[t=i,sp=1,sn=2,v=p|a|at]
   ኒ   [t=j,sp=1,sn=2,tmp=[2=ው|ይ]]
-  እን  [t=i,sp=1,sn=2]
-  --  [t=p];[t=j,sp=2,+imp];[t=i];[t=i|j,sp=1,sn=1,R1=L]
+  --  [t=p,-pre];[t=j,sp=2,+imp,-neg,-pre];[t=i,sp=2|3,-pre];[t=i|j,sp=1,sn=1,R1=L,-pre]
 
 $ prestem
   <
@@ -38,7 +34,7 @@ $ voice
   አ-		[v=a,c=A,R1=X];[v=a,c=B|C|E|F|G|H|K]
   አት-	[v=at,c=B|C|E|F|G|H|K];[v=at,a=a|i];[v=at,c=A,R1=L]
   አ/ተ-	[v=at,c=A,R1=X]
-  --		[v=0];[v=a,c=A,R1=L]
+  --		[v=0];[v=a,c=A,R1=L];[v=p]
 
 $ stem
   >>v_stem<<
@@ -50,7 +46,7 @@ $ sb_suf
   ኮ   [t=p,sp=1,sn=1]
   ከ    [t=p,sp=2,sn=1,sg=m]
   ኪ    [t=p,sp=2,sn=1,sg=f]
-  አ   [t=p,sp=3,sn=1,sg=m,op=0|3];[t=j|i,sn=2,sg=f,+vsuf,+f2suf]
+  አ   [t=p,sp=3,sn=1,sg=m,op=0|3];[t=j|i,sn=2,sg=f,+vsuf]
   ኤ   <አ>	[t=p,sp=3,sn=1,sg=m,op=1|2]
   አት   [t=p,sp=3,sn=1,sg=f,op=0]
   አ/ት  <አት>	[t=p,sp=3,sn=1,sg=f,op=1|2|3]
@@ -62,13 +58,13 @@ $ sb_suf
   አየ   [t=p,sp=3,sn=2,sg=f]
   ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=0|1]
   # realized as ኡ after stem-final laryngeal: ልበ/ልዑ 
-  ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0,-f2suf]
-  ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2,-f2suf]
+  ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0]
+  ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2]
   # trigger metathesis: ትቀ/ቱሎ
-  =ኡ   <ኡ>  [t=j|i,sn=2,sg=m,+vsuf,op=3,-f2suf]
+  =ኡ   <ኡ>  [t=j|i,sn=2,sg=m,+vsuf,op=3]
   # trigger metathesis: ትቀ/ቲሎ
-  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3,-f2suf]
-  --   [t=i|j,sp=2,sn=1,sg=m,-vsuf,-f2suf];[t=i|j,sp=1,-vsuf,-f2suf];[t=i|j,sp=3,sn=1,-vsuf,-f2suf]
+  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3]
+  --   [t=i|j,sp=2,sn=1,sg=m,-vsuf];[t=i|j,sp=1,-vsuf];[t=i|j,sp=3,sn=1,-vsuf]
 
 $ ss_bound
   -
