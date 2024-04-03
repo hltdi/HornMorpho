@@ -541,6 +541,21 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=p]
 ^eo	^a	^eo	**
 
+%%a=a,c=G,+strong
+[t=p,v=p|a]
+[t=i,v=p]
+**	^eo	^a	^eo:	**
+
+[t=i,v=a]
+**	^eo	^a	**u:	**
+
+[t=j,v=p]
+**	^eo	^a	^eo		**
+
+[t=c,v=p|a]
+[t=j,v=a]
+**	^eo	^a	**u		**
+
 %%a=a,c=A,-strong
 %3=እ
 [t=p|i,v=p|a]

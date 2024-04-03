@@ -1,6 +1,7 @@
 $ prep
-  ብ [adp=ብ,-neg,+prep]
-  ን [adp=ን,-neg,+prep]
+  # Don't prefix these to personal pronouns, which their own forms
+  ብ [adp=ብ,-neg,+prep,-pers]
+  ን [adp=ን,-neg,+prep,-pers]
   ናይ	[adp=ናይ,-neg,pos=PRON|ADJ,+prep];[adp=ናይ,-neg,pos=DET,+prep,+dem]
   ኣብ	[adp=ኣብ,-neg,pos=PRON|ADJ,+prep];[adp=ኣብ,-neg,pos=DET,+prep,+dem]
   ናብ	[adp=ናብ,-neg,pos=PRON|ADJ,+prep];[adp=ናብ,-neg,pos=DET,+prep,+dem]
@@ -15,7 +16,7 @@ $ prep
   ምእንታ	<ምእንቲ>	[adp=ምእንቲ,-neg,pos=PRON,+prep]
   ምእንት	<ምእንቲ>	[adp=ምእንቲ,-neg,pos=DET,+prep,+dem]
   ስለ	[adp=ስለ,-neg,pos=PRON,+prep];[adp=ስለ,-neg,pos=DET,+prep,+dem]
-  -- [adp=None,-prep]
+  -- [adp=None,-prep];[pos=PRON,+pers,adp=ብ|ን]
 
 $ prep_bound
   -

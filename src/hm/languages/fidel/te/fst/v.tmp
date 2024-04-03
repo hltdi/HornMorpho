@@ -14,10 +14,26 @@ $$ L እ|ሕ|ዕ|ህ
 [v=0,t=p,sp=1|2]
 *e	*e	*
 
-[v=0,t=p,sp=3]
+[v=0,t=p,sp=3,-dup23]
+# ትስብሪ ልሰብሩ ልሰብረ ልሰብሩከ
+[v=0|a,t=i,+vsuf,op=0|1|2,-dup23]
+# ትሰብረዩ
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,-dup23]
+# ልሰብረ/ኒ
+[v=0|a,t=i,-vsuf,op=1|2,-dup23]
 *e	*	*
 
+[v=0,t=p,sp=3,+dup23]
+# ትደ/ኒ ልደ/ኑ
+[v=0|a,t=i,+vsuf,op=0|1|2,+dup23]
+# ትደ/ነዩ
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+# ልደ/ነ/ኒ
+[v=0|a,t=i,-vsuf,op=1|2,+dup23]
+*e	*:	-
+
 [v=a|at,t=p]
+[v=0,t=j]
 *	*e	*
 
 # ልሰብ/ር
@@ -27,17 +43,6 @@ $$ L እ|ሕ|ዕ|ህ
 # ልሰ/ቡሮ
 [v=0|a,t=i,+vsuf,op=3,sn=2,sg=m]
 *e	*:	*
-
-# ትስብሪ ልሰብሩ ልሰብረ ልሰብሩከ
-[v=0|a,t=i,+vsuf,op=0|1|2]
-# ትሰብረዩ
-[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f]
-# ልሰብረ/ኒ
-[v=0|a,t=i,-vsuf,op=1|2]
-*e	*	*
-
-[v=0,t=j]
-*	*e	*
 
 [v=p]
 *e	*e:	*
@@ -79,8 +84,17 @@ $$ L እ|ሕ|ዕ|ህ
 [v=0|a|at,t=i|j,-vsuf]
 *e	*:	*
 
-[v=0|a|at,t=i|j,+vsuf]
+[v=0|a|at,t=i|j,+vsuf,-dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,-dup23]
+[v=0|a,t=i,-vsuf,op=1|2,-dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,-dup23]
 *e	*	*
+
+[v=0|a|at,t=i|j,+vsuf,+dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,+dup23]
+[v=0|a,t=i,-vsuf,op=1|2,+dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+*e	*:	-
 
 %%a=a,c=B,+strong
 
@@ -364,6 +378,20 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p,t=i,sp=2,sn=1,sg=f]
 [v=p,t=i,sn=2]
 *e	*e:	-
+
+%%a=0,c=B,-strong
+%1=L
+
+[v=0|p|at,t=p]
+[v=p,t=i|j]
+*e	*e:	*
+
+[v=at,t=i|j]
+[v=0,t=i|j,-vsuf]
+*e	*:	*
+
+[v=0,t=i|j,+vsuf]
+*e	*	*
 
 %%a=a,c=A,-strong
 #%1=L

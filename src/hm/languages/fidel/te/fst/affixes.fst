@@ -142,7 +142,7 @@ steme.Io -> sb2			[ይ:ኢ;ው:ኦ]
 stem -> stemL	[^N]
 stemL -> sbC	[:>]
 sbC -> sb2		[*V;**]
-sbC -> ob		[-]
+sbC -> ob		[:-]
 
 sb2 -> sb2		[^N;/]		
 sb2 -> ob		[:-]

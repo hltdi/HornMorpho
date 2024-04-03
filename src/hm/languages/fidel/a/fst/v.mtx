@@ -55,6 +55,7 @@ $ voice_pre
   # the 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
   # also ተተካከለ, which isn't distinguished by a feature from ተካከለ
   ->poststem	+irr_vstem+	[+pr]
+  ->conj2		+nebber+		[-pr,t=p,sp=3,sn=1,sg=m,op=0,1=ን,2=ብ,3=ር,root=ንብር,c=A,a=0,v=0,-acc,ax=0]
   # transitive
   ኣ-			[v=a,a=0,-pr]
   ኣ/-		[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
@@ -184,7 +185,7 @@ $ accus_bound
 
 $ conj2
   /ና		[cconj=ና]
-  /ም		[cconj=ም,-neg];[cconj=ም,+neg,+mc]
+  /ም		[cconj=ም]
   /ማ		[cconj=ማ]
   /ስ		[cconj=ስ]
   /ሳ		[cconj=ሳ]

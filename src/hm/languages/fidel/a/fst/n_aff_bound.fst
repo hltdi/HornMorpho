@@ -7,10 +7,10 @@ e2a -> e2a		[:<;:-;:>]
 # noun stems normally begin with አ
 e2a -> start	[:ኣ;:አ]
 
-# የእግር -> የግር; omit for now
-#start -> eI		[*e]
-#eI -> eI 		[:<;:-;:>]
-#eI -> start		[:እ]
+# ለየቤቱ ለነሱ
+start -> eI		[*e]
+eI -> eI 		[:-;:<]
+eI -> start		[:እ]
 
 # ቤቷ
 start -> Wa		[{I2Wa}]

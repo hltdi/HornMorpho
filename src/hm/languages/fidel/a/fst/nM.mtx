@@ -18,10 +18,11 @@ $ distrib
   እ/ነ	[-dis,+pl,+col]
   --		[-dis,-col]
 
-$ prestem
-  <
+$ distrib_bound
+  -
 
 $ stem
+  # dependent token comes before the stem boundary <
   +n_stemM+		[-irr]
   +n_placeM+	[-irr,-pl,p=0]
 #  +n_light+		[-irr,-pl,pos=N,mwe=[+hdfin,-hdaff,deppos=compound]]

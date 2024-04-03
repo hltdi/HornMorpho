@@ -137,7 +137,8 @@ feats:
   pos: n noun_adjective
     morphotax::
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
-      {'name': 'distrib', 'pos': 'ADP', 'dep': 'det'};;
+      {'name': 'distrib', 'pos': 'ADP', 'dep': 'det'};
+      {'name': 'mwemod', 'pos': 'N', 'dep': 'compound', 'mwe': True};;
       {'name': 'STEM'};;
       {'name': 'plur', 'pos': 'COMP', 'dep': 'amod', 'feats': ['Number']};
       {'name': 'poss',  'pos': 'DET', 'dep': 'det',\
