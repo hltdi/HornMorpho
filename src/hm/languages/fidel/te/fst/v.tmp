@@ -248,15 +248,15 @@ $$ L እ|ሕ|ዕ|ህ
 *e	*:	*
 
 # ልብለዕ
-[v=0,t=j,sp=1]
-[v=0,t=j,sp=2,sn=1,sg=m]
-[v=0,t=j,sp=3,sn=1]
+[v=0,t=j,sp=1,op=0]
+[v=0,t=j,sp=2,sn=1,sg=m,op=0]
+[v=0,t=j,sp=3,sn=1,op=0]
 *	*e	*
 
 # ልብልዑ (-> ልብሉዕ in v.cas)
 [v=0,t=j,sp=2,sn=1,sg=f]
 [v=0,t=j,sp=2|3,sn=2]
-
+[v=0,t=j,op=1|2|3]
 [v=a,t=p,sp=3]
 [v=a,t=j]
 *	*	*

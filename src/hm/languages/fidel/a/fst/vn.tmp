@@ -333,6 +333,13 @@ $ d=a|inf|ins|m
 [d=a]
 ^e	^a	^a	*
 
+%%a=a,c=G,+strong
+[d=inf|ins,v=p|a]
+*	*e	*a	*e	*
+
+[d=a,v=p|a]
+*	*e	*a	*a	*
+
 %%a=a,c=A,-strong
 %3=እ
 [d=inf|ins,v=p|a]

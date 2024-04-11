@@ -71,6 +71,7 @@
 ## 5-consonant roots
 # መጭበርበር
 %G::		1:I;	2:e;	3:I;	4:e,a;	5:I
+%G_a::		1:I;	2:e;	3:a;	4:e,a;	5:I
 %G,3='::			2:a;	3:0
 %G,5='::							4:a,I;	5:0,0ት
 # manner only: አጭበራበር

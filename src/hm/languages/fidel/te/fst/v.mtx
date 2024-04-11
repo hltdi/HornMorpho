@@ -57,14 +57,14 @@ $ sb_suf
   ክን   [t=p,sp=2,sn=2,sg=f,+fp2]
   አው   [t=p,sp=3,sn=2,sg=m]
   አየ   [t=p,sp=3,sn=2,sg=f]
-  ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=0|1]
+  ኢ    [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=0|1];[t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3,-finX]
   # realized as ኡ after stem-final laryngeal: ልበ/ልዑ 
-  ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0]
-  ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2]
+  ኦ    [t=j|i,sn=2,sg=m,+vsuf,op=0,+finX]
+  ኡ    [t=j|i,sn=2,sg=m,+vsuf,op=1|2];[t=j|i,sn=2,sg=m,+vsuf,op=0|3,-finX]
   # trigger metathesis: ትቀ/ቱሎ
-  =ኡ   <ኡ>  [t=j|i,sn=2,sg=m,+vsuf,op=3]
+  =ኡ   <ኡ>  [t=j|i,sn=2,sg=m,+vsuf,op=3,+finX]
   # trigger metathesis: ትቀ/ቲሎ
-  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3]
+  =ኢ   <ኢ>  [t=j|i,sp=2,sn=1,sg=f,+vsuf,op=3,+finX]
   --   [t=i|j,sp=2,sn=1,sg=m,-vsuf];[t=i|j,sp=1,-vsuf];[t=i|j,sp=3,sn=1,-vsuf]
 
 $ ss_bound
@@ -78,14 +78,14 @@ $ ob_inf
 $ ob_suf
   [op=3]
     ዩ		[t=p,sp=3,sn=1,sg=m,on=1,og=m]
-    ዎ		[t=p,sp=1,sn=1,on=1,og=m]
+    ዎ		[t=p,sp=1,sn=1,on=1,og=m];[t=i|j,sg=m,sn=2,on=1,og=m,-finX]
     # (1) አት of 3sm prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
     ኦ 	    	[t=p,sp=2|3,sn=2,sg=m,on=1,og=m];[t=i|j,sp=2|3,sg=m,sn=2,on=1,og=m];
                 [t=i|j,sp=2,sn=1,sg=f,on=1,og=m];[t=p,sp=3,sn=1,sg=f,on=1,og=m]
     _ኦ	<ኦ>	[t=i|j,-vsuf,on=1,og=m]
     ሁ		[t=p,sp=2,sn=1,sg=m,on=1,og=m];[t=p,sp=1,sn=2,on=1,og=m];
                 [t=p,sp=2|3,sn=2,sg=f,on=1,og=m];[t=i|j,sp=2|3,sn=2,sg=f,on=1,og=m]
-    ዮ		[t=p,sp=2,sn=1,sg=f,on=1,og=m]
+    ዮ		[t=p,sp=2,sn=1,sg=f,on=1,og=m];[t=i|j,sp=2,sg=f,sn=1,on=1,og=m,-finX]
   [op=2,sp=1|3]
     /ከ	<ከ>	[t=p,sp=3,sn=1,on=1,og=m];[t=i|j,-vsuf,on=1,og=m]
     ከ		[sp=3,sn=2];[t=p,sp=1,on=1,og=m]

@@ -269,6 +269,7 @@ class Sentence():
             head = p.get('head', 0)+1
             if mwe_first:
                 head += 1
+#            print(" *** lemma for prefix {}".format(string))
             conllu.append(
                 HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p)
                 )
