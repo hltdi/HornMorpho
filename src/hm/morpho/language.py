@@ -391,7 +391,7 @@ class Language:
     def make(name, abbrev, load_morph=False, fidel=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
-             v5=False,
+             v5=True,
              ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
@@ -414,7 +414,7 @@ class Language:
     def load_data(self, load_morph=False, pickle=True, recreate=False,
                   segment=False, phon=False, guess=True, fidel=False, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
-                  v5=False, poss=None, verbose=True):
+                  v5=True, poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
@@ -431,12 +431,12 @@ class Language:
 #        print("** Parsed data for {}; morphology {}".format(self, self.morphology))
         if load_morph:
             if v5:
-                if not self.load_morpho5(ortho=True, phon=phon,
+                if not self.load_morpho(ortho=True, phon=phon,
                                          guess=guess, translate=translate, mwe=mwe,
                                          pickle=pickle, recreate=recreate,
                                          verbose=verbose):
                     return False
-            elif not self.load_morpho(segment=segment, ortho=True, phon=phon,
+            elif not self.load_morpho4(segment=segment, ortho=True, phon=phon,
                                       guess=guess, simplified=simplified, translate=translate,
                                       experimental=experimental, mwe=mwe,
                                       pickle=pickle, recreate=recreate,
@@ -1340,7 +1340,7 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
-    def load_morpho5(self, fsts=None, ortho=True, phon=False,
+    def load_morpho(self, fsts=None, ortho=True, phon=False,
                      pickle=True, mwe=False, translate=False, suffix='',
                      recreate=False, guess=True, verbose=False):
         """
@@ -1433,7 +1433,7 @@ class Language:
         self.morpho_loaded = True
         return True
 
-    def load_morpho(self, fsts=None, ortho=True, phon=False, simplified=False,
+    def load_morpho4(self, fsts=None, ortho=True, phon=False, simplified=False,
                     pickle=True, experimental=False, mwe=False,
                     segment=False, translate=False,
                     recreate=False, guess=True, verbose=False):
@@ -1534,7 +1534,7 @@ class Language:
         return True
 
     def get_fsts(self, generate=False, phon=False, experimental=False, mwe=False,
-                 v5=False,
+                 v5=True,
                  simplified=False, segment=False, translate=False):
         '''Return all analysis FSTs (for different POSs) satisfying phon and segment contraints.'''
         fsts = []
@@ -1568,7 +1568,7 @@ class Language:
 
     ## New functions (HM 5.0)
 
-    def analyze5(self, raw_token, **kwargs):
+    def analyze(self, raw_token, **kwargs):
         '''
         Analyze a token according to HM 5.0, returning a Word object.
         kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
@@ -1698,7 +1698,7 @@ class Language:
                         stem_string = stem_string.replace(previous + suf, replacement)
         return stem_string.replace(Morphology.morph_sep, '')
 
-    def anal_sentence5(self, sentence, **kwargs):
+    def anal_sentence(self, sentence, **kwargs):
         '''
         Version 5:
         Analyze the tokens in a sentence (a string), returning a Sentence object.
@@ -1726,7 +1726,7 @@ class Language:
                 if skip := kwargs.get('skip'):
                     if token in skip:
                         continue
-                anal1 = self.analyze5(token, **kwargs)
+                anal1 = self.analyze(token, **kwargs)
                 sentobj.add_word5(anal1, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
@@ -1746,7 +1746,7 @@ class Language:
             words = words + ' ' + next_word
 #            print("^^ attempting to analyze {}".format(words))
             kwargs['mwe'] = True
-            analyses = self.analyze5(words, **kwargs)
+            analyses = self.analyze(words, **kwargs)
             if analyses.is_known:
                 sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
 #                print("  ** Success: {}".format(analyses[0]))
@@ -1766,7 +1766,7 @@ class Language:
         sentobj = Sentence(sentence, language=self)
         # For now just try single-word tokens.
         for token in tokens:
-            wordobj = self.analyze5(token, **kwargs)
+            wordobj = self.analyze(token, **kwargs)
             sentobj.add_word5(wordobj, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
@@ -1793,7 +1793,7 @@ class Language:
             if words:
                 print("** Attempting to analyze {}".format(words))
                 kwargs['mwe'] = True
-                analyses = self.analyze5(words, **kwargs)
+                analyses = self.analyze(words, **kwargs)
                 if analyses:
                     sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
                     print("  ** Success: {}".format(analyses[0]))
@@ -1880,7 +1880,7 @@ class Language:
 #                if preproc:
 #                    form, simps = self.preproc(words)
                 # Attempt to analyze MWE
-                analyses = self.analyze5(words, mwe=True, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
+                analyses = self.analyze(words, mwe=True, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
                 if analyses:
                     if seglevel == 0:
                         morphid += 1
@@ -1913,7 +1913,7 @@ class Language:
 #                if preproc:
 #                    form, simps = self.preproc(word)
                 analyses = \
-                  self.analyze5(word, mwe=False, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
+                  self.analyze(word, mwe=False, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
                 if analyses:
                   if seglevel == 0:
                       morphid += 1
@@ -2163,7 +2163,7 @@ class Language:
 
     ### Analyze words or sentences
 
-    def analyze(self, item, pos='v', mwe=False, guess=False, nbest=10):
+    def analyze4(self, item, pos='v', mwe=False, guess=False, nbest=10):
         posM = self.morphology.get(pos)
         if not posM:
             print(">>> No POS {} for this language <<<".format(posM))
@@ -2436,7 +2436,7 @@ class Language:
                 # Segment into words
                 morphid = 1
                 csent = \
-                self.anal_sentence(line, csent=csent, csentences=csentences, file=out,
+                self.anal_sentence4(line, csent=csent, csentences=csentences, file=out,
                                    preproc=preproc, postproc=postproc, pos=pos, fsts=fsts, segment=segment, 
                                    realize=realize, realizer=realizer, dicts=[knowndict, guessdict] if storedict else None,
                                    conllu=conllu, xsent=xsent, seglevel=seglevel, gramfilter=gramfilter,
@@ -2456,7 +2456,7 @@ class Language:
         elif experimental:
             return csentences
 
-    def anal_sentence(self, sentence, csent=None, csentences=None, file=None, pathout="",
+    def anal_sentence4(self, sentence, csent=None, csentences=None, file=None, pathout="",
                       preproc=True, postproc=True, pos=None, fsts=None,
                       segment=True, realize=True, realizer=None,
                       conllu=True, xml=None, multseg=False, dicts=None, xsent=None,

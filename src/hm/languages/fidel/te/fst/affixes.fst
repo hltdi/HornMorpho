@@ -157,6 +157,12 @@ stem_E -> _E	[:>]
 _E -> sb.ob_E	[:ኤ]
 sb.ob_E -> ob	[:-]
 
+# ልው/ድዮ
+stem -> stemE2I		[{E2I}]	[op=3]
+stemE2I -> stemE2I_	[:>]
+stemE2I_ -> stemE2I.3	[:-]
+stemE2I.3 -> ob			[ዮ:ኦ]
+
 # consonant-initial subj suffix or no subj suffix
 stem -> stemL	[^N]
 stemL -> sbC	[:>]

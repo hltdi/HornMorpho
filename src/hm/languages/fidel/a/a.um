@@ -42,6 +42,7 @@ POS n N
 ->UD ITER	Aspect=Iter
 ->UD CAUS+RECP1	*Voice=CauRcp1
 ->UD CAUS+RECP2	*Voice=CauRcp2
+->UD TOP	*Inf=Topic
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON

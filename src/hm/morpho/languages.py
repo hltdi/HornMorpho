@@ -64,7 +64,7 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False, fidel=False,
               # False, '', or the name of a cache file
               cache=True, guess=False, mwe=True, gen=False,
-              v5=False, experimental=False, poss=None, verbose=True):
+              v5=True, experimental=False, poss=None, verbose=True):
     """Load Morphology objects and FSTs for language with lang_id."""
 #    if verbose:
 #        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
@@ -171,10 +171,10 @@ def get_language(language, **kwargs):
         return LANGUAGES.get(lang_id, None)
     if load_morph and not lang.morpho_loaded:
         if v5:
-            lang.load_morpho5(phon=phon, guess=guess,
+            lang.load_morpho(phon=phon, guess=guess,
                               pickle=pickle, translate=translate)
         else:
-            lang.load_morpho(phon=phon, segment=segment, guess=guess,
+            lang.load_morpho4(phon=phon, segment=segment, guess=guess,
                              experimental=experimental,
                              pickle=pickle, translate=translate)
         return lang

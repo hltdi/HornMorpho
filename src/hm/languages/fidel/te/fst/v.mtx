@@ -81,8 +81,9 @@ $ ob_suf
     ዎ		[t=p,sp=1,sn=1,on=1,og=m];[t=i|j,sg=m,sn=2,on=1,og=m,-finX]
     # (1) አት of 3sm prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
     ኦ 	    	[t=p,sp=2|3,sn=2,sg=m,on=1,og=m];[t=i|j,sp=2|3,sg=m,sn=2,on=1,og=m];
-                [t=i|j,sp=2,sn=1,sg=f,on=1,og=m];[t=p,sp=3,sn=1,sg=f,on=1,og=m]
-    _ኦ	<ኦ>	[t=i|j,-vsuf,on=1,og=m]
+                [t=i|j,sp=2,sn=1,sg=f,on=1,og=m];[t=p,sp=3,sn=1,sg=f,on=1,og=m];
+		[t=i|j,-vsuf,on=1,og=m,-finX]
+    _ኦ	<ኦ>	[t=i|j,-vsuf,on=1,og=m,+finX]
     ሁ		[t=p,sp=2,sn=1,sg=m,on=1,og=m];[t=p,sp=1,sn=2,on=1,og=m];
                 [t=p,sp=2|3,sn=2,sg=f,on=1,og=m];[t=i|j,sp=2|3,sn=2,sg=f,on=1,og=m]
     ዮ		[t=p,sp=2,sn=1,sg=f,on=1,og=m];[t=i|j,sp=2,sg=f,sn=1,on=1,og=m,-finX]

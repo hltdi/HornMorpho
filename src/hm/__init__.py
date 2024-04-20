@@ -19,6 +19,8 @@ Copyleft 2008-2024. Michael Gasser
 Author: Michael Gasser <gasser@indiana.edu>
 """
 
+# Version 5.0 includes many new features, especially languages represented
+#   with fidel.  
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting).
 # With conllu=True, the default, the segmentation functions return CoNLL-U
@@ -64,7 +66,7 @@ def anal_corpus(language, **kwargs):
             corp.disambiguate()
         return corp
 
-def analyze5(language, word, **kwargs):
+def analyze(language, word, **kwargs):
     '''
     Analyze a word or MWE, returning a list of dicts.
     kwargs: mwe=False, degem=True, conllu=True, sep_feats=True, guess=False, combine_segs=False, verbosity=0
@@ -73,11 +75,13 @@ def analyze5(language, word, **kwargs):
     kwargs['v5'] = True
     language = morpho.get_language(language, **kwargs)
     if language:
-        return language.analyze5(word, **kwargs)
+        return language.analyze(word, **kwargs)
 
-def anal_sentence5(language, sentence, **kwargs):
+anal = analyze
+
+def anal_sentence(language, sentence, **kwargs):
     '''
-    Analyze the sentence using Language.anal_sentence5(), returning a Sentence object.
+    Analyze the sentence using Language.anal_sentence(), returning a Sentence object.
     '''
     kwargs['guess'] = kwargs.get('guess', False)
     kwargs['v5'] = True
@@ -85,7 +89,49 @@ def anal_sentence5(language, sentence, **kwargs):
     if language:
         if kwargs.get('mwe'):
             return language.anal_sent_mwe(sentence, None, **kwargs)
-        return language.anal_sentence5(sentence, **kwargs)
+        return language.anal_sentence(sentence, **kwargs)
+
+def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
+                 batch_name='', append=True, v5=True,
+                 filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
+                 verbosity=0):
+    '''
+    Write the CoNNL-U representations of a list of sentences to a file.
+
+    @param sentences: list of instances of Sentence
+    @param path: path to file where the sentences will be written
+    @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
+    @param v5: whether this is HM version 5.
+    @param degeminated: whether to write the degeminated sentences
+    @param batch_name: name of batch of data
+    @param version: version of input data (used to create batch_name if not provided)
+    @param batch_name: string name for batch (not sure this is needed)
+    @param append: whether to append sentences to file
+    @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
+    @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
+    @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
+    @param verbosity: int indicating how verbose messages should be
+    '''
+    sentences = sentences or corpus.sentences
+    if path:
+        file = open(path, 'a' if append else 'w', encoding='utf8')
+        print("Writing CoNLL-U sentences {} to {}".format((corpus.__repr__() if corpus else ''), path))
+    else:
+        file = morpho.sys.stdout
+    nrejected = 0
+    rejected = []
+    for index, sentence in enumerate(sentences):
+        if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh, verbosity=verbosity):
+            nrejected += 1
+            rejected.append(sentence.sentid)
+            continue
+        if v5:
+            sentence.print_conllu(update_ids=True, file=file)
+        else:
+            conll = sentence.alt_conllu if degeminated else sentence.conllu
+            print(conll.serialize(), file=file, end='')
+    if rejected:
+        print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
 def exit(save=True, cache=''):
     """Exit the program, caching any new analyses for each loaded language
@@ -113,6 +159,8 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      translate=translate, experimental=experimental, gen=gen,
                      load_morph=load_morph, cache=cache, fidel=fidel,
                      guess=guess, verbose=verbose)
+
+# Version 4 methods
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
              transortho=True, experimental=False, udformat=True,
@@ -233,48 +281,6 @@ def extract_corpus_features(corpus, pos=None, searchfeats=None):
         sentences.append(words)
     return sentences
 
-def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
-                 batch_name='', append=True, v5=True,
-                 filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
-                 verbosity=0):
-    '''
-    Write the CoNNL-U representations of a list of sentences to a file.
-
-    @param sentences: list of instances of Sentence
-    @param path: path to file where the sentences will be written
-    @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
-    @param v5: whether this is HM version 5.
-    @param degeminated: whether to write the degeminated sentences
-    @param batch_name: name of batch of data
-    @param version: version of input data (used to create batch_name if not provided)
-    @param batch_name: string name for batch (not sure this is needed)
-    @param append: whether to append sentences to file
-    @param filter_sents: whether to filter sentences based on UNK tokes and ambiguity.
-    @param unk_thresh: float representing maximum proportion of UNK tokens in sentence
-    @param ambig_thresh: float representing maximum average number of additional segmentations for tokens.
-    @param verbosity: int indicating how verbose messages should be
-    '''
-    sentences = sentences or corpus.sentences
-    if path:
-        file = open(path, 'a' if append else 'w', encoding='utf8')
-        print("Writing CoNLL-U sentences {} to {}".format((corpus.__repr__() if corpus else ''), path))
-    else:
-        file = morpho.sys.stdout
-    nrejected = 0
-    rejected = []
-    for index, sentence in enumerate(sentences):
-        if filter_sents and sentence.reject(ambig_thresh=ambig_thresh, unk_thresh=unk_thresh, verbosity=verbosity):
-            nrejected += 1
-            rejected.append(sentence.sentid)
-            continue
-        if v5:
-            sentence.print_conllu(update_ids=True, file=file)
-        else:
-            conll = sentence.alt_conllu if degeminated else sentence.conllu
-            print(conll.serialize(), file=file, end='')
-    if rejected:
-        print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
-
 def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
                   analyze=False,
                   segment=True, disambiguate=True, conlluify=True, degeminate=False,
@@ -387,7 +393,7 @@ def create_corpus(data=None, read={}, write={}, batch={}, constraints={},
                              batch_name=batch_name, verbosity=verbosity)
     return corpus
 
-def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2,
+def seg_sentence4(sentence, language='amh', remove_dups=True, um=0, seglevel=2,
                  gramfilter=None, fsts=None, verbosity=0):
     '''
     Segment a sentence, returning an instance of Sentence.
@@ -399,20 +405,20 @@ def seg_sentence(sentence, language='amh', remove_dups=True, um=0, seglevel=2,
     '''
     language = morpho.get_language(language, phon=False, segment=True, experimental=True)
     return \
-      language.anal_sentence(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel,
+      language.anal_sentence4(sentence, remove_dups=remove_dups, um=um, seglevel=seglevel,
                              gramfilter=gramfilter, fsts=fsts, verbosity=verbosity)
 
-def anal_sentence(sentence, language='amh', remove_dups=True, fsts=None, verbosity=0):
+def anal_sentence4(sentence, language='amh', remove_dups=True, fsts=None, verbosity=0):
     '''
     Analyze a sentence, returning an instance of Sentence.
     Only works for Amharic.
     '''
     language = morpho.get_language(language, phon=False, segment=False, experimental=False)
     return \
-      language.anal_sentence(sentence, remove_dups=remove_dups, verbosity=verbosity,
+      language.anal_sentence4(sentence, remove_dups=remove_dups, verbosity=verbosity,
                              segment=False, experimental=False, conllu=False, fsts=fsts)
 
-def anal_word(language, word, 
+def anal_word4(language, word, 
               gloss=True, 
               roman=False, segment=False, guess=False, freq=False, simplify=True,
               experimental=False, dont_guess=True, cache='', init_weight=None,
@@ -470,9 +476,9 @@ def anal_word(language, word,
         if raw or um:
             return analyses
 
-anal = anal_word
+anal4 = anal_word4
 
-def anal_files(language, infiles, outsuff='.out',
+def anal_files4(language, infiles, outsuff='.out',
                lemma_only=False, ortho_only=False,
                normalize=False, preproc=True, postproc=True, guess=False, raw=False,
                xml=None, dont_guess=False, freq=True, nbest=3):
@@ -493,7 +499,7 @@ def anal_files(language, infiles, outsuff='.out',
                                xml=xml,
                                raw=raw, saved=saved)
 
-def anal_file(language, infile, outfile=None,
+def anal_file4(language, infile, outfile=None,
               um=0,
               lemma_only=False, ortho_only=False, normalize=False,
               preproc=True, postproc=True, guess=False, raw=False,
@@ -541,7 +547,7 @@ def anal_file(language, infile, outfile=None,
                            xml=xml, local_cache=local_cache,
                            verbosity=verbosity)
 
-def gen(language, root, features=[], pos=None, guess=False,
+def gen4(language, root, features=[], pos=None, guess=False,
         phon=False, ortho=True, ortho_only=False,
         um='', all_words=True, del_feats=None, report_um=True,
         roman=False, interact=False, return_words=True,
@@ -797,39 +803,6 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
         pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
                           experimental=experimental, mwe=mwe, v5=v5)
     return pos_morph
-
-#def recompile(language, pos, phon=False, segment=False, gen=False,
-#              experimental=False, translate=False, backwards=False, seglevel=2,
-#              save=True, verbose=True):
-#    '''
-#    Recompiles the cascade FST for the language and part-of-speech.
-#    @param language: abbreviation for a language, for example, 'gn'
-#    @param pos:    part-of-speech for the cascade, for example, 'v'
-#    @param phon:   whether the cascade is for phonology
-#    @param segment: whether the cascade is for segmentation
-#    @param gen:    whether to compile the cascade for generation (rather than analysis)
-#    @param translate: whether the cascade is for translation
-#    @param backwards: whether to compile the FST from top (lexical) to bottom (surface)
-#                      for efficiency's sakd
-#    @param save:   whether to save the compiled cascade as an FST file
-#    @param verbose: whether to print out various messages
-#    @return:       the POS morphology object
-#    '''
-#    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-#                        load_morph=False, verbose=verbose)
-#    fst = pos_morph.load_fst(True, segment=segment, generate=gen, invert=gen, guess=guess,
-#                             translate=translate, recreate=True,
-#                             experimental=experimental, seglevel=seglevel,
-#                             compose_backwards=backwards, split_index=split_index,
-#                             phon=phon, verbose=verbose)
-#    if not fst and gen == True:
-#        print('Generation FST not found')
-#        # Load analysis FST>
-#        pos_morph.load_fst(True, verbose=True)
-#        # ... and invert it for generation FST
-#        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-#                           guess=guess, verbose=verbose)
-#    return pos_morph
 
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
              fst_label='', fst_index=0):
