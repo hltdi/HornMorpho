@@ -148,10 +148,10 @@ def get_language(language, **kwargs):
     load_morph = kwargs.get('load_morph') if 'load_morph' in kwargs else True
     translate = kwargs.get('translate', False)
     experimental = kwargs.get('experimental', False)
-    fidel = kwargs.get('fidel', False)
+    fidel = kwargs.get('fidel', True)
     phon = kwargs.get('phon', False)
     segment = kwargs.get('segment', False)
-    v5 = kwargs.get('v5', False)
+    v5 = kwargs.get('v5', True)
     verbose = kwargs.get('verbose', False)
     cache = kwargs.get('cache', None)
 #    print("** Getting language, load = {}, load_morpho = {}, guess = {}".format(load, load_morph, guess))

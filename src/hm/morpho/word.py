@@ -32,6 +32,8 @@ class Word(list):
     POS = {frozenset(['N', 'PROPN']): "NPROPN"}
     empty = {}
 
+    EMPTY = None
+
     def __init__(self, init, name='', unk=False, merges={}):
         '''
         init is a list of analyses returned by Language.analyze5().
@@ -46,8 +48,8 @@ class Word(list):
         self.merges = merges
         self.conllu = []
         self.id = Word.id
-        self.is_empty = True if len(self) == 0 else False
-        self.is_known = not self.unk
+#        self.is_empty = len(self) == 0
+#        self.is_known = not self.unk
         Word.id += 1
 
     def __repr__(self):
@@ -77,18 +79,30 @@ class Word(list):
         '''
         Create an empty Word instance.
         '''
+#        print("** Creating empty word {}".format(name))
+        if not name:
+            if not Word.EMPTY:
+                Word.EMPTY = Word([], name='EMPTY', unk=True)
+            return Word.EMPTY
         dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
-#        return Word(Word.empty, name=name, unk=True)
         return Word([dct], name=name, unk=True)
+
+    def is_empty(self):
+        return self.unk
+
+    def is_known(self):
+        return not self.unk
 
     def arrange(self):
         '''
-        Be default, sort by length (nsegs). Called "arrange" to avoid confusion
+        Be default, sort by freq. (nsegs). Called "arrange" to avoid confusion
         with list.sort().
         '''
-        if len(self) <= 1:
-            return
-        self.sort(key=lambda x: x.get('nsegs', 1))
+        if len(self) > 1:
+            self.sort(key=lambda x: x.get('freq'), reverse=True)
+#        if len(self) <= 1:
+#            return
+#        self.sort(key=lambda x: x.get('nsegs', 1))
 
     def remove(self, indices, index_map):
         '''
@@ -100,6 +114,9 @@ class Word(list):
         indices.sort(reverse=True)
         to_del = []
         for index in indices:
+            if index >= len(self):
+#                print("&& {} trying to delete {}".format(self, index))
+                continue
             del self[index]
             del self.conllu[index]
             if index_map:
@@ -117,7 +134,7 @@ class Word(list):
         Return a list of dicts, each containing values for props only.
         '''
         dicts = []
-        if not self.is_empty:
+        if not self.is_empty():
             for analysis in self:
                 dct = dict([(k, analysis[k]) for k in props if k in analysis])
                 dicts.append(dct)

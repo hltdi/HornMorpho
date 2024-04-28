@@ -6,6 +6,7 @@
 ---- Create reverse dictionary for noun roots.
 ---- Create Ti fidel lexicons.
 ---- Group analyzed corpora by voice-valency features.
+---- Compile frequencies of Am roots and verb root+voice categories.
 """
 
 from . import morpho
@@ -18,6 +19,7 @@ FS = morpho.FeatStruct
 FSS = morpho.FSSet
 geezify = morpho.geez.geezify
 normalize = morpho.geez.normalize
+is_geez = morpho.geez.is_geez
 romanize = lambda x: morpho.geez.romanize(x, normalize=True)
 OS = morpho.os
 VPOS = FS("[pos=v,tm=prf,sb=[-p1,-p2,-plr],pp=None,cj2=None,-rel,-sub]")
@@ -120,7 +122,172 @@ VC2FEATS_L1 = {
 VC2FEATS_L = {
     'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=a'
     }
-    
+
+### Amharic root/stem frequencies
+
+AM_V_FEATS = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
+
+MERGE_ROOTS = {'ንብብ:B': 'ንብብ:A'}
+
+#def root_freq(infile="data/am_classes.txt", outfile="data/am_freqs.txt"):
+#    with open(infile, encoding='utf8') as file:
+#    return
+
+def count_unal(path="../../TAFS/datasets/CACO/CACO.txt", n=80000):
+    unal = morpho.get_language('a', v5=True).morphology.words1
+    count = 0
+    counts = {}
+    with open(path, encoding='utf8') as file:
+        for line in file:
+            if count >= n:
+                break
+            if not line.strip():
+                continue
+            words = line.split()
+            for word in words:
+                if word in unal:
+                    if word not in counts:
+                        counts[word] = 0
+                    counts[word] += 1
+            count += 1
+    return counts
+
+def get_classes(path="data/am_classes.txt", include_ambig=False, write="data/am_freq.txt"):
+    amb = {}
+    unamb = {}
+    mwe = {}
+    with open(path, encoding='utf8') as file:
+        contents = file.read().split('\n##\n')
+        # index, word, anals triples
+        for item in contents:
+#            print("ITEM\n{}".format(item))
+            lines = item.split("\n")
+            if len(lines) == 1:
+                # Empty sentence
+                continue
+            sentence = lines[0]
+#            print(sentence)
+            for line in lines[1:]:
+                line = eval(line)
+                index, word, anals = line
+                if ' ' in word:
+                    # MWE
+                    word = normalize(word)
+                    if word not in mwe:
+                        mwe[word] = 0
+                    mwe[word] += 1
+                    continue
+                if not is_geez(word):
+                    continue
+                if anals:
+                    if len(anals) == 1:
+                        anal = simplify_anals(word, anals)[0]
+                        cls = anal2class(anal)
+                        if not cls:
+#                            print("No lemma for {}".format(word))
+                            # Abbreviations don't have lemmas; ignore them
+                            continue
+#                        print("&& word {} class {}".format(word, cls))
+                        if cls not in unamb:
+                            unamb[cls] = 0
+#                        if word not in unamb:
+#                            unamb[word] = []
+#                        unamb[word].append(anal)
+                        unamb[cls] += 1
+                    else:
+                        anals = simplify_anals(word, anals)
+                        if len(anals) == 1:
+                            anal = anals[0]
+                            cls = anal2class(anal)
+                            if not cls:
+                                continue
+                            if cls not in unamb:
+                                unamb[cls] = 0
+                            unamb[cls] += 1
+#                            if word not in unamb:
+#                                unamb[word] = []
+#                            unamb[word].append(anal)
+                        elif include_ambig:
+                            if word not in amb:
+                                amb[word] = []
+                            amb[word].append(anals)
+    if write:
+        unamb = list(unamb.items())
+        unamb.sort()
+        with open(write, 'w', encoding='utf8') as file:
+            for root, freq in unamb:
+                print("{}\t{}".format(root, freq), file=file)
+    return unamb, amb, mwe
+
+def anal2class(anal):
+    if anal['pos'] == 'V':
+        return "{}:{}".format(anal['root'], anal['um'])
+    else:
+        lemma = anal.get('lemma', '')
+        if lemma and not is_geez(lemma):
+            return ''
+        return lemma
+
+def simplify_anals(word, anals):
+    result = []
+    for anal in anals:
+        simplify_root(anal)
+        u = anal.get('um')
+        a = {}
+        u_ = u
+        if not u:
+            if anal not in result:
+                result.append(anal)
+        elif anal['pos'] == 'V':
+            u_ = simplify_v_um(u)
+            a['um'] = u_
+            a['root'] = anal['root']
+            a['pos'] = 'V'
+        else:
+            lemma = anal['lemma']
+            a['lemma'] = lemma
+            a['pos'] = 'N'
+        if a not in result:
+            result.append(a)
+    return result
+
+def simplify_root(anal):
+    if anal.get('pos') != 'V':
+        return
+    root = anal.get('root')
+    if root and root in MERGE_ROOTS:
+        anal['root'] = MERGE_ROOTS[root]
+
+def simplify_n_um(um):
+    return ''
+
+def simplify_v_um(um, incl=AM_V_FEATS, elim=['TOP', 'NEG', '3', '2', '1', 'SG', 'MASC', 'FEM', 'PL', 'DEF', 'AC3SM'], combine=True, verbose=False):
+    um = um.split(';')
+    if incl:
+        um_ = [u for u in um if u in incl]
+    else:
+        um_ = []
+        for u in um:
+            if u not in elim:
+                um_.append(u)
+        um_.sort()
+    if combine:
+        um_ = ';'.join(um_)
+    return um_
+
+def filter_anals_by_um(anals, exclude=['TOP', 'NEG']):
+    res = []
+    for anal in anals:
+        um = anal.get('um')
+        if not um:
+            continue
+        um = um.split(';')
+        if any([x in um for x in exclude]):
+#            print("** Excluding {}".format(um))
+            continue
+        res.append(anal)
+    return res
+
 ### Amharic, Tigrinya voice-valency classification.
 
 def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
@@ -453,19 +620,6 @@ def add_root_um(dct, root, um):
             dct[root][um] = 1
     else:
         dct[root] = {um: 1}
-
-def filter_anals_by_um(anals, exclude=['RECP', 'CAUS+RECP']):
-    res = []
-    for anal in anals:
-        um = anal.get('um')
-        if not um:
-            continue
-        um = um.split(';')
-        if any([x in um for x in exclude]):
-#            print("** Excluding {}".format(um))
-            continue
-        res.append(anal)
-    return res
 
 def get_vclass_data(path):
     items = []

@@ -326,7 +326,7 @@ class Sentence():
             return
         result = []
         for windex, word in enumerate(self.words):
-            if not word.is_empty:
+            if not word.is_empty():
                 result.append((windex, word.name, word.to_dicts(props)))
         self.props = result
 

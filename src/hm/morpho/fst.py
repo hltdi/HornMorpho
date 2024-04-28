@@ -1491,13 +1491,13 @@ class FST:
             if trace:
                 deleted += 1
                 t1 = time.process_time()
-                if t1 - t > 60:
+                if t1 - t > 120:
                     print('  Deleted {} states after {} minute(s)'.format(deleted,
                                                                           round((t1 - t0) / 60.0, 2)))
                     t = t1
             self.del_state(state)
 
-        if trace and deleted > 0:
+        if trace > 1 and deleted > 0:
             print('Deleted {} total states'.format(deleted))
 
     def relabeled(self, label=None, relabel_states=True, relabel_arcs=True, trace=0):
@@ -3351,7 +3351,7 @@ class FST:
             state_pairs += 1
             if trace:
                 t1 = time.process_time()
-                if t1 - t > 60:
+                if t1 - t > 120:
                     print('  Checked {} state pairs in {} minute(s)'.format(state_pairs,
                                                                             round((t1 - t0) / 60.0, 2)))
                     t = t1

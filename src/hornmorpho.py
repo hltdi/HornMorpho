@@ -56,6 +56,27 @@ def ti_refcorp(language='t', path='../../EES-Res/data/tir/ti_ref.txt',
 #    hm.write_conllu(corpus=c, path=writepath)
     return c
 
+def am_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+                          path="data/am_classes.txt", cache=None, corpus=None):
+    c = hm.anal_corpus(
+        'a',
+        path="../../TAFS/datasets/CACO/CACO.txt",
+        n_sents=n_sents, max_sents=n_sents, start=start,
+        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'], skip_mwe=False,
+        skip=AM_SKIP,
+        gemination=False,
+        local_cache=cache,
+        corpus=corpus,
+        timeit=timeit,
+        verbosity=verbosity
+        )
+    if file:
+        c.write_props(file, start=c.start)
+    elif path:
+        with open(path, 'a', encoding='utf8') as file:
+            c.write_props(file, start=c.start)
+    return c
+
 def am_morphsem3(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
                                    path="data/am_v_classes3.txt", cache=None, corpus=None):
     c = hm.anal_corpus(

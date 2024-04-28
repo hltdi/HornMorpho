@@ -57,6 +57,7 @@ class Corpus():
                  sep_feats=True, gemination=False, sep_senses=False,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
+                 report_freq=200,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
                  verbosity=0):
@@ -129,7 +130,7 @@ class Corpus():
                         continue
 #                    if verbosity:
 #                        print("  $$ {}".format(line))
-                    if sentcount and sentcount % 100 == 0:
+                    if sentcount and sentcount % report_freq == 0:
                         print("Analyzed {} sentences".format(sentcount))
                     linepos += 1
                     if constraints: # and maxnum != None or maxpunc != None:
@@ -160,6 +161,7 @@ class Corpus():
                             print("Skipped {} sentences".format(skipped))
                             skipped += 1
                         if v5:
+#                            print("&& {}".format(line))
                             sentence_obj =\
                               self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache,
@@ -182,7 +184,7 @@ class Corpus():
                     else:
                         self.data.append(line)
                 if timeit:
-                    return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.sentences)))
+                    print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.sentences)))
                 self.last_line = start + linepos
                 print("Last sentence line: {}".format(self.last_line))
             except IOError:
@@ -208,10 +210,9 @@ class Corpus():
         """
         Segment one sentence.
         """
-#        print("** seg sentence {}".format(kwargs))
         if kwargs.get('verbosity', 0):
             print("Segmenting {}".format(sentence))
-        sentence_obj = self.language.anal_sentence5(sentence, **kwargs)
+        sentence_obj = self.language.anal_sentence(sentence, **kwargs)
         if sentence_obj:
             self.sentences.append(sentence_obj)
             self.unks.update(set(sentence_obj.unk))
@@ -241,7 +242,7 @@ class Corpus():
             if kwargs.get('verbosity', 0):
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
-              self.language.anal_sentence5(sentence, sent_id=sent_id, **kwargs)
+              self.language.anal_sentence(sentence, sent_id=sent_id, **kwargs)
 #            batch_name=self.batch_name, sentid=sentid,
 #                                          local_cache=self.local_cache, gramfilter=gramfilter,
 #                                          um=um, seglevel=seglevel)
@@ -350,7 +351,7 @@ class Corpus():
             if verbosity:
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
-              self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid,
+              self.language.anal_sentence4(sentence, batch_name=self.batch_name, sentid=sentid,
                                           local_cache=self.local_cache, gramfilter=gramfilter,
                                           um=um, seglevel=seglevel)
             if not sentence_obj:
@@ -381,7 +382,7 @@ class Corpus():
         um = 2 if analyze else um
 
         sentence_obj = \
-          self.language.anal_sentence(sentence, batch_name=self.batch_name, sentid=sentid,
+          self.language.anal_sentence4(sentence, batch_name=self.batch_name, sentid=sentid,
                                       local_cache=self.local_cache, gramfilter=gramfilt, fsts=fsts,
                                       filter_cache=filter_cache,
                                       um=um, seglevel=seglevel, conllu=conllu, segment=segment, experimental=experimental,
@@ -416,7 +417,7 @@ class Corpus():
         text = text or self.data[sentindex] if sentindex < len(self.data) else None
         if text:
             language = get_language('amh', phon=False, segment=True, experimental=True)
-            sentence = language.anal_sentence(text, local_cache=self.local_cache, um=um, seglevel=seglevel)
+            sentence = language.anal_sentence4(text, local_cache=self.local_cache, um=um, seglevel=seglevel)
             if sentence:
                 self.all_sentences[sentindex] = sentence
         if sentence:

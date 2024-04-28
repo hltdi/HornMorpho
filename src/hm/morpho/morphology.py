@@ -299,9 +299,12 @@ class Morphology(dict):
                 return 'nothing'
         return a
 
+    def get_freq(self, root):
+        return self.root_freqs.get(root, 1)
+
     def get_root_freq(self, root, anal):
         rv = self.root_fv(root, anal)
-#        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
+        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)
         return 50
@@ -317,12 +320,19 @@ class Morphology(dict):
                     freq *= freq0
         return freq
 
-    def set_root_freqs(self):
-        filename = 'root_freqs.dct'
-        path = os.path.join(self.get_stat_dir(), filename)
+    def set_root_freqs(self, fidel=False):
+        path = self.language.get_root_freq_file(fidel=fidel)
+#        filename = 'root_freqs.dct'
+#        path = os.path.join(self.get_stat_dir(), filename)
+#        print("Root freq path {}".format(path))
         try:
+            self.root_freqs = {}
             with open(path, encoding='utf-8') as roots:
-                self.root_freqs = eval(roots.read())
+                for line in roots:
+                    root, freq = line.split()
+                    freq = int(freq)
+                    self.root_freqs[root] = freq
+#                self.root_freqs = eval(roots.read())
         except IOError:
             pass
 #            print('No root frequency file {} found'.format(path))
@@ -565,9 +575,9 @@ class Morphology(dict):
         """Attempt to trivially analyze form."""
         return self.triv_anal and self.triv_anal(form)
 
-    def anal(self, form, pos, to_dict=True, preproc=False, guess=False, phon=False, segment=False,
+    def anal4(self, form, pos, to_dict=True, preproc=False, guess=False, phon=False, segment=False,
              trace=False, tracefeat=''):
-        return self[pos].anal(form, to_dict=to_dict, preproc=preproc, guess=guess, phon=phon, segment=segment,
+        return self[pos].anal4(form, to_dict=to_dict, preproc=preproc, guess=guess, phon=phon, segment=segment,
                               trace=trace, tracefeat=tracefeat)
 
     def gen(self, form, features, pos, from_dict=True, postproc=False, guess=False, phon=False, segment=False,
@@ -685,7 +695,7 @@ class POSMorphology:
     def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
                  feat_abbrevs=None, fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
                  feature_groups=None, name=None, explicit=None, true_explicit=None,
-                 lemma_feats=None, segments=None, mwe_feats=None, mwe=True):
+                 lemma_feats=None, umcats=None, segments=None, mwe_feats=None, mwe=True):
         # A string representing part of speech
         self.pos = pos
         # A string representing the full name of the POS
@@ -770,6 +780,8 @@ class POSMorphology:
         self.feature_groups = feature_groups or None
         # Features for generating lemma
         self.lemma_feats = lemma_feats
+        # UM features for freq file
+        self.umcats = umcats
         # Segments and their properties
         self.segments = segments
         # MWE feats for this POS
@@ -777,8 +789,8 @@ class POSMorphology:
         # Whether there is a MWE FST for this POS
         self.mwe = mwe
         # Frequency statistics for generation
-        self.root_freqs = None
-        self.feat_freqs = None
+#        self.root_freqs = None
+#        self.feat_freqs = None
         # A function of root and FeatStruc for postprocessing of roots
         self.root_proc = None
         # A dictionary from orthographic roots to phonetic roots
@@ -1333,12 +1345,12 @@ class POSMorphology:
             # To make the comparable to anal(), a list of lists of analyses.
             return [preanal]
         else:
-            return self.anal(form, init_weight=init_weight, guess=guess)
+            return self.anal4(form, init_weight=init_weight, guess=guess)
 
-    def anal5(self, form, feats=None, mwe=False, trace=0):
-        return self.anal(form, v5=True, init_weight=feats, mwe=mwe, trace=trace)
+    def anal(self, form, feats=None, mwe=False, trace=0):
+        return self.anal4(form, v5=True, init_weight=feats, mwe=mwe, trace=trace)
 
-    def anal(self, form, init_weight=None, preproc=False,
+    def anal4(self, form, init_weight=None, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
              result_limit=0, experimental=False, mwe=False, suffix='',
              to_dict=False, sep_anals=False, normalize=False, v5=False,
@@ -1393,7 +1405,7 @@ class POSMorphology:
         '''
         Convenient for running anal for segmentation.
         '''
-        return self.anal(word, segment=True, experimental=True)
+        return self.anal4(word, segment=True, experimental=True)
 
     ##
     ## Processing output of anal or gen, v.5.
@@ -1556,9 +1568,24 @@ class POSMorphology:
         if 'gl' in features:
             procdict['gloss'] = features['gl']
         procdict['lemma'] = lemma
-
+        # Find the frequency
+        procdict['freq'] = self.get_root_freq(root, lemma, um)
 #        print("^^ process5: prodict {}".format(procdict))
         return procdict
+
+    def get_root_freq(self, root, lemma, um):
+        umcats = self.umcats
+#        print("** umcats {}".format(umcats))
+        key = None
+        umcats = self.umcats
+        if umcats:
+            um1 = UniMorph.um_intersect(um, umcats)
+            key = "{}:{}".format(root, um1)
+        else:
+            key = EES.degeminate(lemma)
+        freq = self.morphology.get_freq(key)
+#        print("  ** key {}, freq {}".format(key, freq))
+        return freq
 
     def get_mwe_tokens(self, tokens, props):
         '''
@@ -2275,7 +2302,7 @@ class POSMorphology:
         gen_fst = self.get_fst(generate=True, guess=guess, phon=True)
         if not gen_fst:
             return
-        analyses = self.anal(form, guess=guess)
+        analyses = self.anal4(form, guess=guess)
 #        print("Analyses {}".format(analyses))
         root_count = 0
         if analyses:

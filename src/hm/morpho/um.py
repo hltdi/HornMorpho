@@ -85,6 +85,16 @@ class UniMorph:
             return "|".join(feats)
         return feats
 
+    @staticmethod
+    def um_intersect(um, features):
+        '''
+        um is a UM string, features of set of feature strings.
+        returns the subset of UM consisting of features in features.
+        '''
+        um = um.split(';')
+        inters = features.intersection(um)
+        return ';'.join(inters)
+
     def expand_feat(self, abbrev):
         return self.abbrevs.get(abbrev, abbrev)
 

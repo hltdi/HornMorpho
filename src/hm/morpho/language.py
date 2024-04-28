@@ -135,6 +135,8 @@ MTAX_RE = re.compile(r"\s*morphotax::\s*(.*)")
 #MSEG_RE = re.compile("")
 # Added 2023.07.24
 LEMMAFEATS_RE = re.compile(r"\s*lemmafeats\s*[:=]\s*(.+)")
+# Added 2024.04.26
+UMCATS_RE = re.compile(r"\s*umcats\s*[:=]\s*(.+)")
 # Added 2023.09.04
 MWE_RE = re.compile(r"\s*mwe::\s*(.*)")
 # Added 2023.09.29
@@ -292,8 +294,6 @@ class Language:
         """Data file for language."""
         return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.lg')
 
-    # Directory for translation data
-
     def get_trans_dir(self, fidel=False):
         """File with cached analyses."""
         return os.path.join(self.get_dir(fidel=fidel), 'trans')
@@ -307,10 +307,15 @@ class Language:
     def get_phon_file(self, fidel=False):
         return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.ph')
 
-#    def get_stat_dir(self):
-#        """Statistics directory: root and feature frequencies
-#        for disambiguation."""
-#        return os.path.join(self.directory, 'stat')
+    def get_stat_dir(self, fidel=False):
+        """Statistics directory: root and feature frequencies
+        for disambiguation."""
+        return os.path.join(self.get_dir(fidel=fidel), 'stat')
+
+    def get_root_freq_file(self, fidel=False):
+        statdir = self.get_stat_dir(fidel=fidel)
+        if statdir:
+            return os.path.join(statdir, 'root.frq')
 
     ## CACHING
 
@@ -431,7 +436,7 @@ class Language:
 #        print("** Parsed data for {}; morphology {}".format(self, self.morphology))
         if load_morph:
             if v5:
-                if not self.load_morpho(ortho=True, phon=phon,
+                if not self.load_morpho(ortho=True, phon=phon, fidel=fidel,
                                          guess=guess, translate=translate, mwe=mwe,
                                          pickle=pickle, recreate=recreate,
                                          verbose=verbose):
@@ -484,6 +489,7 @@ class Language:
         true_explicit = {}
         explicit = {}
         lemmafeats = {}
+        umcats = {}
         segments = {}
         mwefeats = {}
 
@@ -753,6 +759,7 @@ class Language:
                     feature_groups[pos] = current_feature_groups
                     # default values for these 3; overridden if there are specific features in data file
                     lemmafeats[pos] = []
+                    umcats[pos] = {}
                     segments[pos] = []
                     mwefeats[pos] = []
                     continue
@@ -800,6 +807,16 @@ class Language:
                     lemfeats2 = [lf.strip() for lf in lemfeats2.split(',')]
 #                    print("** lemmafeats {}".format(lemfeats))
                     lemmafeats[pos] = [lemfeats1, lemfeats2]
+                    continue
+
+                m = UMCATS_RE.match(line)
+                if m:
+                    umc = m.groups()[0].strip()
+                    umc = eval(umc)
+                    if not isinstance(umc, set):
+                        umc = set(umc)
+#                    print("umc {}".format(umc))
+                    umcats[pos] = umc
                     continue
 
                 m = ABBREV_RE.match(line)
@@ -1000,7 +1017,7 @@ class Language:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
                                      fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
-                                     lemmafeats[pos], segments[pos], mwefeats[pos], mwe.get(pos, True)))
+                                     lemmafeats[pos], umcats[pos], segments[pos], mwefeats[pos], mwe.get(pos, True)))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -1340,7 +1357,7 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
-    def load_morpho(self, fsts=None, ortho=True, phon=False,
+    def load_morpho(self, fsts=None, ortho=True, phon=False, fidel=False,
                      pickle=True, mwe=False, translate=False, suffix='',
                      recreate=False, guess=True, verbose=False):
         """
@@ -1364,8 +1381,8 @@ class Language:
                                         self.tlanguages)
         print(msg_string)
         # In any case, assume the root frequencies will be needed?
-        self.morphology.set_root_freqs()
-        self.morphology.set_feat_freqs()
+        self.morphology.set_root_freqs(fidel=fidel)
+#        self.morphology.set_feat_freqs()
         if ortho:
             # Load unanalyzed words
             self.morphology.set_words(ortho=True)
@@ -1582,6 +1599,11 @@ class Language:
         analpos = kwargs.get('pos')
         # Character normalization
         normalized = False
+        def special_word():
+            wordobj = Word.create_empty(None if mwe else raw_token)
+            if isinstance(cache, dict) and not mwe:
+                cache[raw_token] = wordobj
+            return wordobj
         token = self.normalize(raw_token)
         if token != raw_token:
             normalized = True
@@ -1604,10 +1626,7 @@ class Language:
         unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
         if unanalyzed:
             if analpos:
-                # unanalyzed words take priority in this case and we don't bother to analyze further.
-                wordobj = Word.create_empty(raw_token)
-                cache[token] = wordobj
-                return wordobj
+                return special_word()
             else:
                 all_analyses.extend(unanalyzed)
         # if there is an analpos, first try other POS and fail (because of ambiguity) if any succeeds
@@ -1615,31 +1634,25 @@ class Language:
             for pos, pmorph in self.morphology.items():
                 if pos in analpos:
                     continue
-                analyses = pmorph.anal(token, mwe=mwe, v5=True)
+                analyses = pmorph.anal(token, mwe=mwe)
                 if analyses:
-                    # token is ambiguous; reject
-                    wordobj = Word.create_empty(raw_token)
-                    cache[token] = wordobj
-                    return wordobj
+                    return special_word()
         for pos, pmorph in self.morphology.items():
             if analpos and pos not in analpos:
                 continue
-            analyses = pmorph.anal(token, mwe=mwe, v5=True)
+            analyses = pmorph.anal(token, mwe=mwe)
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
-#                                               mwe=mwe, combine_segs=combine_segs,
-#                                               degem=degem, sep_feats=sep_feats)
                 all_analyses.extend(analyses)
         if not all_analyses:
-            wordobj = Word.create_empty(raw_token)
-#        if analpos and not all_analyses:
-#            wordobj = Word.create_empty(raw_token)
-        else:
-            wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
+            return special_word()
+        wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
         cache[token] = wordobj
+        wordobj.arrange()
         return wordobj
 
     def check_analpos(self, analysis, analpos):
+#        print("** Checking analpos {} for {}".format(analpos, analysis))
         if not analpos:
             return [analysis]
         else:
@@ -1656,11 +1669,12 @@ class Language:
             
         if word in words:
             form, pos = self.morphology.words1[word]
+            freq = self.morphology.get_freq(word)
             # Later have the FSS already storied in words1
-            anal = {'token': form, 'pos': pos, 'nsegs': 1}
+            anal = {'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq}
             if anal:
                 return [anal]
-#            return self.check_analpos(anal, analpos)
+#                return self.check_analpos(anal, analpos)
 
     def analyze_special5(self, token):
         '''
@@ -1747,7 +1761,7 @@ class Language:
 #            print("^^ attempting to analyze {}".format(words))
             kwargs['mwe'] = True
             analyses = self.analyze(words, **kwargs)
-            if analyses.is_known:
+            if analyses.is_known():
                 sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
 #                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1
@@ -2727,13 +2741,13 @@ class Language:
 
         return morphid
 
-    def format_analysis(self, criterion='conllu', form=None, features=None, lemma=None, freq=None):
-        '''
-        Format the analysis according to different criteria:
-        'conllu', 'dict', 'string', 'list', 'xml'.
-        '''
+#    def format_analysis(self, criterion='conllu', form=None, features=None, lemma=None, freq=None):
+#        '''
+#        Format the analysis according to different criteria:
+#        'conllu', 'dict', 'string', 'list', 'xml'.
+#        '''
 
-    def get_root_freq(self, pos, feats, root=''):
+    def get_root_freq4(self, pos, feats, root=''):
         # The freq score is the count for the root-feature combination
         # times the product of the relative frequencies of the grammatical features
         if pos.startswith('nm'):
@@ -3423,8 +3437,29 @@ class Language:
                     print('{}'.format(anal), end=' ')
             print()
 
+    # Version 5 sort analyses within word.
+#    def sort_word(self, word):
+#        word.sort(
+
+#        freqs = self.get_freqs(word)
+
+#    def get_freqs(self, word):
+#        '''
+#        Assign frequencies to each analysis of word.
+#        '''
+#        for analysis in word:
+#            freq = self.get_freq(analysis)
+
+#    def get_freq(self, analysis):
+#        pos = analysis.get('pos')
+#        if pos in ('v', 'V'):
+#            um = analysis.get('um')
+#            if not um:
+#                return 1
+
     def sort_analyses(self, analyses):
         '''
+        V 4.
         Sort analyses (or segmentations) by estimated frequency and
         whether the word is treated as a whole or is segmented.
         '''

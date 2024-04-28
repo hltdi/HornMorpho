@@ -92,6 +92,7 @@ $ sb_suf
   ህ		[sp=2,sn=1,sg=m,t=p]
   አህ		[sp=2,sn=1,sg=m,t=c]
   ሁ		[sp=1,sn=1,t=p]
+  ሁኝ		[sp=1,sn=1,t=p,-O]
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]
@@ -185,7 +186,8 @@ $ accus_bound
 
 $ conj2
   /ና		[cconj=ና]
-  /ም		[cconj=ም]
+  # አልሄድኩም can't be +neg and cconj=ም
+  /ም		[cconj=ም,-neg];[cconj=ም,+neg,+mc,t=i|p]
   /ማ		[cconj=ማ]
   /ስ		[cconj=ስ]
   /ሳ		[cconj=ሳ]

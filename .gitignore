@@ -52,8 +52,9 @@ docs/old
 notes/
 src/hm/languages/*/data/
 src/hm/ext_data
-#src/hm/languages/fidel/*/fst
-#src/hm/languages/*/fst
+src/data
+src/hm/languages/*/pkl
+src/hm/languages/fidel/*/pkl/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

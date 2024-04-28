@@ -37,12 +37,9 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 	  ፀ ፁ ፂ ፃ ፄ ፅ ፆ 
 	  ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
 	  ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
-	  # Guragina characters for roots
-	  ᎃ ᎇ ᎋ
-#	  ኣ= ተ=
 	  / _ ፟ < > -
-#     =አ =ኡ =ኢ =ኣ =ኤ =እ =ኦ ^አ
-#     =ክ =ኩ
+	  # 1s converb suffix
+	  =ኤ
      A B C D E F G H I J K
 
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
@@ -83,6 +80,7 @@ feats:
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
+    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
     a = 0 | a  | i
     v = 0 | p | a | as | ast | test
     t = p | i | j | c
