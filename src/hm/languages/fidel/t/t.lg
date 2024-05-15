@@ -131,7 +131,7 @@ feats:
     p = 0 | s1 | p1 | sm2 | sf2 | pm2 | pf2 | F2 | sm3 | sf3 | pm3 | pf3
     pl = False | True
     adp = None | ብ | ን
-    conj = None | ስ | ን | ከ
+    conj = None | ስ | ን | ከ | እውን
 
 ## Stringsets
 

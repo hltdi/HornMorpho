@@ -1416,16 +1416,17 @@ class POSMorphology:
         Postprocess the segment string returned by POSMorph.anal(), degeminating and
         combining stem segs if indicated.
         Return the whole string, prefixes, stem, and suffixes
-        kwargs: degem=False, mwe=False, combine_segs=False):
+        kwargs: degem=True, mwe=False, combine_segs=False):
         '''
+#        print(" %% string {}".format(string))
         pre = stem = suf = mwe_part = ''
         pos = features.get('pos')
-        if kwargs.get('degem', False):
-            string = EES.degeminate(string)
+        if kwargs.get('degem', True):
+            string = EES.degeminate(string, elim_bounds=False)
         if kwargs.get('mwe', False):
             premwe = postmwe = mwe_part = None
             string.replace(Morphology.mwe_sep, ' ')
-            if pos == 'N':
+            if pos in ('N', 'PROPN'):
                 match = POSMorphology.segment_n_mwe_re.match(string)
                 if match:
                     pre, mwe_part, stem, suf = match.groups()
@@ -1441,14 +1442,17 @@ class POSMorphology:
                 mwe_part = mwe_part.strip()
 #            print(" ** pre {}; suf {}".format(pre, suf))
         else:
+#            print(' **string {}'.format(string))
             match = POSMorphology.segment_re.match(string)
             if not match:
                 return '', [], '', [], ''
             pre, stem, suf = match.groups()
+#            print(" **pre {}".format(pre))
         if kwargs.get('combine_segs', False):
             stem = self.language.combine_segments(stem)
             string = "{}<{}>{}".format(pre, stem, suf)
         pre = pre.split(Morphology.morph_sep)
+#        print(" **pre {}".format(pre))
         suf = suf.split(Morphology.morph_sep)
         return string, pre, stem, suf, mwe_part
 
@@ -1471,7 +1475,7 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
-#        print("%% process5: kwargs {}".format(kwargs))
+#        print("%% process5: string {}".format(string))
         sep_feats = kwargs.get('sep_feats', True)
         gemination = kwargs.get('gemination', True)
         mwe = kwargs.get('mwe', False)
@@ -1501,6 +1505,7 @@ class POSMorphology:
         if um:
             udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True)
         else:
+#            print("!! No udfdict for {}: {}".format(token, string))
             udfdict = udfalts = None
 #        print("$$ udfdict {}, udfalts {}".format(udfdict, udfalts))
         udfeats = UniMorph.create_UDfeats(udfdict, udfalts)
@@ -1519,7 +1524,7 @@ class POSMorphology:
             # for non-MWE "words", remove the MWE-specific slots
             if not mwe:
                 preprops = [pp for pp in preprops if not pp.get('mwe')]
-#            print(" ** prefixes {}, preprops {}".format(prefixes, preprops))
+#            print("** prefixes {}, preprops {}".format(prefixes, preprops))
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
 #                print("  ** pindex {} prefix {} props {}".format(pindex, prefix, props))
                 pre_dicts.append(
@@ -1581,8 +1586,12 @@ class POSMorphology:
         if umcats:
             um1 = UniMorph.um_intersect(um, umcats)
             key = "{}:{}".format(root, um1)
-        else:
+        elif lemma:
             key = EES.degeminate(lemma)
+        elif root:
+            key = EES.degeminate(root)
+        else:
+            return 1
         freq = self.morphology.get_freq(key)
 #        print("  ** key {}, freq {}".format(key, freq))
         return freq
@@ -1628,7 +1637,7 @@ class POSMorphology:
         dct['head'] = head
 #        dct['lemma'] = morpheme
         feats = None
-        if sep_feats:
+        if sep_feats and udfdict:
             feats = self.get_segment_feats(morpheme, props, udfdict, udfalts)
         elif is_stem and udfdict:
             feats = udfeats
@@ -1717,7 +1726,7 @@ class POSMorphology:
                     # This is a dependent word within a MWE; use the 'deppos' feature
                     return mwe['deppos']
                 else:
-                    print("^^ No POS for {} in seg postdict {}".format(string, posspec))
+                    print("^^ No POS for {} in seg posdict {}".format(string, posspec))
                     return
             return pos
         return posspec

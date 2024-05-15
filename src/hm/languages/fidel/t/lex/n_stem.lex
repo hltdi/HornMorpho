@@ -727,7 +727,6 @@
 ጐሎ	''	[-pl,pos=N]
 ጕላ	''	[-pl,pos=N]
 ጕ/ልላት	''	[-pl,pos=N]
-ጉልሕምሕም ዝበለ	''	[-pl,pos=N]
 ጓለ/ሞ	''	[-pl,pos=N]
 ግሎብ	''	[-pl,pos=N]
 ጕሉብ	''	[-pl,pos=N]

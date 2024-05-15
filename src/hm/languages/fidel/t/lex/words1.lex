@@ -1,6 +1,7 @@
 ኣብ  ኣብ  ADP
 ናይ  ናይ  ADP
 ካብ  ካብ  ADP
+ኻብ  ካብ	ADP
 እንካብ  እንካብ  ADP
 ምስ  ምስ  ADPCONJ
 ናብ  ናብ  ADP
@@ -31,6 +32,7 @@
 እንተ  እንተ  SCONJ
 ግን  ግን  CCONJ
 ከኣ  ከኣ  CCONJ
+ኸኣ  ከኣ	CCONJ
 ሓደ  ሓደ  NUM
 ወይ  ወይ  INTJ
 ኩሉ  ኩ/ሉ  ADJ

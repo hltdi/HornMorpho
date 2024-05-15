@@ -57,7 +57,7 @@ class Corpus():
                  sep_feats=True, gemination=False, sep_senses=False,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
-                 report_freq=200,
+                 report_freq=100,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
                  verbosity=0):

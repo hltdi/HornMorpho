@@ -923,7 +923,7 @@
 <ስ ር ጭ ይ>	c=F
   a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ስ ብ ር>	c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=as, a=i,v=0 ; a=i,v=a ; a=i,v=p ; a=i,d=m
+   a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=0 ; a=i,v=a ; a=i,v=p ; a=i,d=m
 <ስ ብ ቅ>	c=A
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ስ ብ ብ>	c=B

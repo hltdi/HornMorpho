@@ -7,14 +7,14 @@ $ conj_bound
   -
 
 $ def
-  ለ	[+def]
-  --	[-def]
+  ለ	[+def,pos=N|ADJ]
+  --	[-def];[pos=PRON|NUM]
 
 $ prestem
   <
 
 $ stem
-  +n_stem+  [pos=N|ADJ|PRON,d=0]
+  +n_stem+  [pos=N|ADJ|PRON|NUM,d=0]
 #  >>vn_stem<<
 
 $ poststem
@@ -32,11 +32,3 @@ $ poss
   ኦም 	[p=pm3]
   አን		[p=pf3]
   --		[p=0]
-
-#$ poss_bound
-#  -
-#
-#$ conj
-#  ከ		[cnj=ከ]
-#  ዶ		[cnj=ዶ]
-#  --      	[cnj=None]
