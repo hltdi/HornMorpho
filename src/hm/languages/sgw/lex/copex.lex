@@ -1,6 +1,0 @@
-ner   nr   [-neg,sub=None,tns=prs,am=አለ]
-Ene   nr   [+neg,tns=prs,am=አለ]
-ane   nr   [-neg,sub=y|t,tns=prs,am=አለ]
-bane  nr   [-neg,sub=None,tns=pst,am=አለ]
-reper nr   [-neg,sub=y|t|b,tns=pst,am=አለ]
-aneper nr  [+neg,tns=pst,am=አለ]

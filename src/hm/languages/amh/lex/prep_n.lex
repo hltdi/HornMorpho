@@ -1,8 +1,0 @@
-z_ih        yh        [-plr,pos=n,-fem]
-z_ihu       yh        [-plr,pos=n,-fem]
-z_ic        yc_i      [-plr,pos=n,+fem]
-z_iya       ya        [-plr,pos=n,-fem]
-z_a         ya        [-plr,pos=n,-fem]
-z_ac        yac_i     [-plr,pos=n,+fem]
-z_iyaw      ya        [-plr,pos=n,-fem]
-z_iyac      yac_i     [-plr,pos=n,+fem]
