@@ -3364,10 +3364,10 @@
   a=0,v=0 ; a=0,v=a
 <ቡ ጅ ቡ ጅ>		c=E
   a=0,v=0 ; a=0,v=a
-<ብ ህ ል>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+#<ብ ህ ል>		c=A,s=1
+#  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
 <ብ ህ ል>		c=A,s=2
-  a=0,v=0
+    a=0,v=0 ; a=0,v=p
 <ብ ህ ል ል>		c=E
   a=0,v=0
 <ብ ህ ል ግ>		c=E
@@ -4984,10 +4984,6 @@
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ው ህ ል ል>		c=E
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ህ ብ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p
-<ው ህ ብ>		c=A,s=2
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
 <ው ህ ድ>		c=A
   a=0,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
 <ው ል ህ>		c=B

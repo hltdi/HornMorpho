@@ -24,7 +24,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 Corpora of sentences, raw and segmented.
 """
 
-import os, re
+import os, re, sys
 from .languages import *
 from tkinter import *
 from tkinter.ttk import *
@@ -53,7 +53,7 @@ class Corpus():
                  analyze=False, language='', 
                  um=1, seglevel=2, nsegment=True, fsts=None, disambiguate=False,
                  constraints=None, local_cache=None, timeit=False,
-                 v5=False,
+                 v5=True,
                  sep_feats=True, gemination=False, sep_senses=False,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
@@ -188,7 +188,7 @@ class Corpus():
                 self.last_line = start + linepos
                 print("Last sentence line: {}".format(self.last_line))
             except IOError:
-                print('No such file: {}; try another one.'.format(path))
+                print("There is no such file as {} (or it can't be opened); try another one!".format(path))
         elif data:
             # Raw sentences
             self.data = data
@@ -206,12 +206,19 @@ class Corpus():
 
     ## Version 5 methods
 
+    @staticmethod
+    def create_seg_corpus(sentences, disambiguate=True):
+        '''
+        Create a Corpus of already segmented sentences
+        '''
+        return Corpus(data=sentences, segment=False, disambiguate=disambiguate)
+
     def seg_sentence5(self, sentence, **kwargs):
         """
         Segment one sentence.
         """
         if kwargs.get('verbosity', 0):
-            print("Segmenting {}".format(sentence))
+            print("Analyzing {}".format(sentence))
         sentence_obj = self.language.anal_sentence(sentence, **kwargs)
         if sentence_obj:
             self.sentences.append(sentence_obj)
@@ -226,15 +233,9 @@ class Corpus():
         % Later have the option of segmenting only some??
         kwargs: timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0
         """
-        print("** Segmenting sentences in {}".format(self), end='')
+        print("Analyzing sentences in {}".format(self))
         if kwargs.get('verbosity', 0) > 0:
             print()
-#        if gramfilter:
-#            print(" with filter {}".format(gramfilter))
-#        else:
-#            print()
-#        if gramfilter and isinstance(gramfilter, str):
-#            gramfilter = EES.get_filter(gramfilter)
         sent_id = 1
         time0 = time.time()
         todelete = []
@@ -243,9 +244,6 @@ class Corpus():
                 print("Segmenting {}".format(sentence))
             sentence_obj = \
               self.language.anal_sentence(sentence, sent_id=sent_id, **kwargs)
-#            batch_name=self.batch_name, sentid=sentid,
-#                                          local_cache=self.local_cache, gramfilter=gramfilter,
-#                                          um=um, seglevel=seglevel)
             if not sentence_obj:
                 # sentence may have been filtered out; delete from data
                 print("  Failed grammar filter: {}".format(sentence))
@@ -263,6 +261,38 @@ class Corpus():
         if kwargs.get('timeit'):
             return print("Took {} seconds to segment {} sentences.".format(round(time.time() - time0), len(self.data)))
 
+    def write(self, **kwargs):
+        '''
+        Write the contents of the Corpus, either to a file at a specified path or to standard output.
+        Assumes analysis has already happened.
+        What and where to write is specified in kwargs:
+            attribs: list of strings: 'seg', 'lemma', 'pos', 'root'
+            conllu: boolean, if True write CoNLL-U representations, ignoring attribs
+            path: string or None
+        '''
+        path = kwargs.get('path')
+        if path:
+            try:
+                file = open(path, 'r', encoding='utf8')
+            except FileNotFoundError:
+                print("Something is wrong with path {}; the file can't be opened!".format(path))
+        else:
+            file = sys.stdout
+        attribs = kwargs.get('attribs', [])
+        all_anals = kwargs.get('all_anals', False)
+        # By default DON'T write CoNNLL-U representations
+        conllu = kwargs.get('conllu', False)
+        for index, sentence in enumerate(self.sentences):
+            string = ''
+            if conllu:
+                string = sentence.create_conllu_string(update_ids=True)
+#                sentence.print_conllu(update_ids=True, file=file)
+            else:
+                string = sentence.create_attrib_strings(attribs, all_anals=all_anals)
+            print(string, file=file)
+            if not conllu and index < len(self.sentences) - 1:
+                print(file=file)
+        
     def write_props(self, file, start=0):
         '''
         Write the props saved in corpus sentences to a file.
@@ -424,7 +454,7 @@ class Corpus():
             self.root.segmentations = sentence.words
         return sentence
 
-    def write(self, conllu=False, filename='', data_folder=CACO_DIR, conllu_folder=CONLLU_DIR, append=False):
+    def write4(self, conllu=False, filename='', data_folder=CACO_DIR, conllu_folder=CONLLU_DIR, append=False):
         '''
         Write the data in the corpus to a file, by default in the TAFS/datasets/CACO folder,
         appending it to an existing file if append is True.

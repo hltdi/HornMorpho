@@ -27,9 +27,13 @@ Includes CoNLL-U and XML output options
 """
 
 import xml.etree.ElementTree as ET
-from conllu import parse, TokenList, Token
+from conllu import TokenList, Token
 from .geez import degeminate
-import os, sys
+#from .gui import SegRoot
+import sys
+
+#class PseudoCorpus():
+#    pass
 
 class HMToken(Token):
 
@@ -147,7 +151,7 @@ class Sentence():
         # Add the Word to self.words
         self.words.append(word)
 
-    def print_conllu(self, update_ids=False, file=None):
+    def print_conllu(self, update_ids=True, file=None):
         '''
         Print the string of CoNLL-U representations for the sentence,
         using the first if there are still ambiguities.
@@ -265,7 +269,7 @@ class Sentence():
             if not p:
                 continue
             pos = Sentence.convertPOS(p)
-            string = p['string']
+            string = p['seg']
             head = p.get('head', 0)+1
             if mwe_first:
                 head += 1
@@ -280,7 +284,7 @@ class Sentence():
         if mwe_first:
             head += 1
         conllu.append(
-            HMToken.create_morph(index, stemdict['string'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'),
+            HMToken.create_morph(index, stemdict['seg'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'),
                                  head, stemdict.get('dep'), stemdict)
                                  )
         index += 1
@@ -288,7 +292,7 @@ class Sentence():
             if not s:
                 continue
             pos = Sentence.convertPOS(s)
-            string = s['string']
+            string = s['seg']
             head = s.get('head', 0)+1
             if mwe_first:
                 head += 1
@@ -298,6 +302,17 @@ class Sentence():
             index += 1
         
         return conllu
+
+#    def create_pseudo_corpus(self):
+#        corpus = PseudoCorpus()
+#        corpus.data = [self.text]
+#        corpus.sentences = [self]
+#        return corpus
+#
+#    def disambiguate(self):
+#        '''
+#        Run the disambiguator GUI and update the sentence accordingly.
+#        '''
 
     @staticmethod
     def updatePOS(analdict, pos):
@@ -329,6 +344,17 @@ class Sentence():
             if not word.is_empty():
                 result.append((windex, word.name, word.to_dicts(props)))
         self.props = result
+
+    def create_attrib_strings(self, attribs, all_anals=True):
+        '''
+        Create strings with the specified attributes (tab-separated) for word analyses,
+        only the first unless all_anals is True
+        '''
+        lines = [self.text]
+        for word in self.words:
+            word_string = word.create_attrib_string(attribs, all_anals=all_anals)
+            lines.append(word_string)
+        return '\n'.join(lines)
 
     #####
         
@@ -938,38 +964,6 @@ class Sentence():
 #            print("&& get_features {}".format(feats))
             return feats
         return []
-
-#    @staticmethod
-#    def simplify_feats(feats, featlevel=1, nochange=True):
-#        if not feats:
-#            return None
-#        if nochange:
-#            return feats
-#        feats = feats.split("|")
-#        feats = [f.split('=') for f in feats]
-#        if featlevel == 2:
-#            feats = ['='.join([Sentence.simplify_feat_name(f), v]) for f, v in feats]
-#            return ', '.join(feats)
-#        else:
-#            feats = [(f[0] if f[1] == 'Yes' else f[1]) for f in feats]
-#            return  ','.join(feats)
-
-#    @staticmethod
-#    def simplify_feat_name(name):
-#        '''
-#        If name has two capitalized parts, use the string up to that point and the capitalized letter.
-#        '''
-#        ncap = len([c for c in name if c.isupper()])
-#        if ncap == 2:
-#            string = name[0]
-#            for c in name[1:]:
-#                if c.isupper():
-#                    return string + c
-#                string += c
-#        elif len(name) > 4:
-#            return name[:3]
-#        else:
-#            return name
 
 ### XML stuff; later incorporate this into the Sentence class
 

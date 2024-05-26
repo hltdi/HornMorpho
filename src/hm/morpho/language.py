@@ -1376,10 +1376,11 @@ class Language:
                             experimental=False, mwe=mwe,
                             segment=False, simplified=False):
             print('No {} FST available for {}!'.format(opt_string, self))
-        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
-                                        [self, ' (' + opt_string + ')' if opt_string else ''],
-                                        self.tlanguages)
-        print(msg_string)
+#        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
+#                                        [self, ' (' + opt_string + ')' if opt_string else ''],
+#                                        self.tlanguages)
+#        print(msg_string)
+        print("Loading FSTs for {}".format(self))
         # In any case, assume the root frequencies will be needed?
         self.morphology.set_root_freqs(fidel=fidel)
 #        self.morphology.set_feat_freqs()
@@ -1588,7 +1589,7 @@ class Language:
     def analyze(self, raw_token, **kwargs):
         '''
         Analyze a token according to HM 5.0, returning a Word object.
-        kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
+        kwargs: mwe=False, conllu=False, degem=True, sep_feats=False, combine_segs=False, verbosity=0
         '''
 #        print("** analyze5 kwargs {}".format(kwargs))
         all_analyses = []
@@ -2744,7 +2745,7 @@ class Language:
 #    def format_analysis(self, criterion='conllu', form=None, features=None, lemma=None, freq=None):
 #        '''
 #        Format the analysis according to different criteria:
-#        'conllu', 'dict', 'string', 'list', 'xml'.
+#        'conllu', 'dict', 'seg', 'list', 'xml'.
 #        '''
 
     def get_root_freq4(self, pos, feats, root=''):

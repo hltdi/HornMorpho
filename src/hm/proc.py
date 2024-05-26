@@ -183,6 +183,8 @@ def get_classes(path="data/am_classes.txt", include_ambig=False, write="data/am_
                     if len(anals) == 1:
                         anal = simplify_anals(word, anals)[0]
                         cls = anal2class(anal)
+#                        if cls == "አበበ":
+#                            print("Found instance of አበበ")
                         if not cls:
 #                            print("No lemma for {}".format(word))
                             # Abbreviations don't have lemmas; ignore them

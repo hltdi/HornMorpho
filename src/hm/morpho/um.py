@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-    Copyleft 2020, 2021, 2023. Michael Gasser.
+    Copyleft 2020-4. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -362,6 +362,7 @@ class UniMorph:
         if verbosity:
             print("UM: {}".format(um))
         if um:
+            um.sort()
             return ';'.join(um)
 
     @staticmethod
@@ -524,7 +525,7 @@ class UniMorph:
         current_feats = []
         current_pos_list = []
         try:
-            print("Reading UM file")
+#            print("Reading UM file")
             with open(path, encoding='utf8') as file:
                 lines = file.read().split('\n')[::-1]
                 while lines:

@@ -52,7 +52,9 @@ feats:
 
   pos: v verb
 
-    lemmafeats = a,v,c
+    lemmafeats = a,v,c,s
+
+    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'CAUS']
 
     morphotax::
       {'name': 'adp', 'pos': 'ADP', 'dep': 'mark', 'feats': ['Case']};

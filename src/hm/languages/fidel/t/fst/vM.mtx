@@ -43,7 +43,7 @@ $ conj1
   # ደይትምለስ
   ደይ   [conj1=ድ,+int,conj2=0,+mc,+neg,-rel,adp=0]
   ኣይ   [conj1=0,+neg,-rel,+mc,t=p|i|j,adp=0]
-  -- [-neg,-rel,conj1=0,adp=0];[+neg,root=ህልው,adp=0]
+  -- [-neg,-rel,conj1=0,adp=0,+mc];[+neg,root=ህልው,adp=0]
 
 $ neg1_bound
   -

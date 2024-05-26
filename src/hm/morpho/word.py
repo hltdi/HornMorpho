@@ -72,7 +72,7 @@ class Word(list):
         '''
         Create a Word instance for an unanalyzed token.
         '''
-        dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
+        dct = {'seg': name, 'pos': 'UNK', 'nsegs': 1}
         return Word([dct], name=name, unk=True)
 
     def create_empty(name):
@@ -84,7 +84,7 @@ class Word(list):
             if not Word.EMPTY:
                 Word.EMPTY = Word([], name='EMPTY', unk=True)
             return Word.EMPTY
-        dct = {'string': name, 'pos': 'UNK', 'nsegs': 1}
+        dct = {'seg': name, 'pos': 'UNK', 'nsegs': 1}
         return Word([dct], name=name, unk=True)
 
     def is_empty(self):
@@ -407,8 +407,8 @@ class Word(list):
         if len(part1) != len(part2):
             return False
         for s1, s2 in zip(part1, part2):
-            str1 = s1 if isinstance(s1, str) else s1.get('string')
-            str2 = s2 if isinstance(s2, str) else s2.get('string')
+            str1 = s1 if isinstance(s1, str) else s1.get('seg')
+            str2 = s2 if isinstance(s2, str) else s2.get('seg')
             if str1 != str2:
                 return False
         return True
@@ -456,4 +456,18 @@ class Word(list):
             if u not in to_replace:
                 result.append(u)
 #        result.sort()
-        return "|".join(result)        
+        return "|".join(result)
+
+    def create_attrib_string(self, attribs, all_anals=True):
+        '''
+        Create a string with the specified attributes (tab-separated) for word analyses,
+        only the first unless all_anals is True
+        '''
+        analyses = self if all_anals else [self[0]]
+        lines = []
+        for index, analysis in enumerate(analyses):
+            attrib_list = [analysis.get(attrib, '') for attrib in attribs]
+            attrib_string = '\t'.join(attrib_list)
+            line = "{}\t{}".format(self.name if index == 0 else '', attrib_string)
+            lines.append(line)
+        return '\n'.join(lines)

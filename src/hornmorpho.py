@@ -38,6 +38,10 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
+## Testing anal_corpus
+def corptest():
+    return hm.anal_corpus('a', data=["አበበ በሶ በላ ።", "ጫላ ጩቤ ጨበጠ ።"], disambiguate=True)
+
 ## Functions specific to version 5.
 
 def am_refcorp(language='a', path='../../EES-Res/data/amh/am_ref.txt',

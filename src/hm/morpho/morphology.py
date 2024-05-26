@@ -1476,14 +1476,14 @@ class POSMorphology:
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
 #        print("%% process5: string {}".format(string))
-        sep_feats = kwargs.get('sep_feats', True)
+        sep_feats = kwargs.get('sep_feats', False)
         gemination = kwargs.get('gemination', True)
         mwe = kwargs.get('mwe', False)
         string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, features, **kwargs)
 #        print("** string {} prefixes {} stem {} suffixes {} mwe_part {}".format(string, prefixes, stem, suffixes, mwe_part))
         real_prefixes = [p for p in prefixes if p]
         real_suffixes = [s for s in suffixes if s]
-        procdict = {'token': token, 'feats': features, 'string': string}
+        procdict = {'token': token, 'feats': features, 'seg': string}
         if raw_token:
             procdict['raw'] = raw_token
         mwe_props = None
@@ -1579,6 +1579,11 @@ class POSMorphology:
         return procdict
 
     def get_root_freq(self, root, lemma, um):
+        '''
+        Get the root frequency, given root, lemma, and UM feats.
+        Language may have umcats, such as PASS and ITER, which
+        are appended to root when searching for frequency in freq dict.
+        '''
         umcats = self.umcats
 #        print("** umcats {}".format(umcats))
         key = None
@@ -1619,7 +1624,7 @@ class POSMorphology:
 
     def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None,
-                          gemination=True, sep_feats=True, mwe=False):
+                          gemination=True, sep_feats=False, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
@@ -1627,7 +1632,7 @@ class POSMorphology:
             # the morpheme could be the empty string
             return ''
 #        print("  ^^ Processing morpheme {} (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, aff_index, morpheme, stem_index, udfdict, udfalts))
-        dct = {'string': morpheme if gemination else EES.degeminate(morpheme)}
+        dct = {'seg': morpheme if gemination else EES.degeminate(morpheme)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem)
         dct['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
@@ -1675,7 +1680,7 @@ class POSMorphology:
                     if part == 'tokens':
                         partstring = wordpart.get('token')
                     else:
-                        partstring = wordpart.get('string', '')
+                        partstring = wordpart.get('seg', '')
 #                    print("    ^^ partstring: {}".format(partstring))
                     mweroot.append(partstring)
                 elif item == 'part':
@@ -1794,7 +1799,7 @@ class POSMorphology:
 #                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
         return dep, head_index
 
-    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=True, gloss=''):
+    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=False, gloss=''):
         '''
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.
