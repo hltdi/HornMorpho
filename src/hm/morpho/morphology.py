@@ -320,8 +320,8 @@ class Morphology(dict):
                     freq *= freq0
         return freq
 
-    def set_root_freqs(self, fidel=False):
-        path = self.language.get_root_freq_file(fidel=fidel)
+    def set_root_freqs(self):
+        path = self.language.get_root_freq_file()
 #        filename = 'root_freqs.dct'
 #        path = os.path.join(self.get_stat_dir(), filename)
 #        print("Root freq path {}".format(path))
@@ -1096,7 +1096,7 @@ class POSMorphology:
     def load_fst(self, compose=False, subcasc=None, gen=False,
                  recreate=False, create_fst=True, create_casc=False,
                  create_weights=False, guess=False, seglevel=2,
-                 pickle=True, create_pickle=True, fidel=False,
+                 pickle=True, create_pickle=True,
                  simplified=False, phon=False, segment=False, translate=False,
                  experimental=False, mwe=False, pos='', suffix='',
                  gemination=True,

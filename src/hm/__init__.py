@@ -37,8 +37,8 @@ Author: Michael Gasser <gasser@indiana.edu>
 #__cat__ = 'A'
 #__version__ = '4.3.1'
 
-__cat__ = '+'
-__version__ = '5.0'
+__cat__ = ''
+__version__ = '5.1'
 
 __author__ = 'Michael Gasser'
 
@@ -147,7 +147,7 @@ def exit(save=True, cache=''):
     morpho.languages.LANGUAGES.clear()
 
 def load_lang(language, phon=False, segment=False, experimental=False, pickle=True, recreate=False,
-              load_morph=True, cache='', translate=False, fidel=False, gen=False,
+              load_morph=True, cache='', translate=False, gen=False,
               guess=True, verbose=False):
     """Load a language's morphology.
 
@@ -157,7 +157,7 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
     morpho.load_lang(language, pickle=pickle, recreate=recreate,
                      phon=phon, segment=segment, 
                      translate=translate, experimental=experimental, gen=gen,
-                     load_morph=load_morph, cache=cache, fidel=fidel,
+                     load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
 # Version 4 methods
@@ -768,14 +768,12 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
     Note: the resulting FSTs are not saved (written to a file). To do this, use the method
     save_fst(), with the right options, for example, gen=True, segment=True.
     """
-    # Look in the fidel directory for languages with these abbreviations
-    fidel = abbrev in morpho.FIDEL
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate, guess=guess,
-                        fidel=fidel, load_morph=False, verbose=verbose)
+                        load_morph=False, verbose=verbose)
     if verbose:
         print(">>> CREATING ANALYZER <<<")
     fst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
-                             translate=translate, recreate=True, fidel=fidel,
+                             translate=translate, recreate=True, 
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              create_fst=True, relabel=True, gemination=gemination,
                              v5=v5,
@@ -792,7 +790,7 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             if verbose:
                 print(">>> CREATING GENERATOR <<<")
             analfst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
-                                         translate=translate, recreate=True, fidel=fidel,
+                                         translate=translate, recreate=True,
                                          experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
                                          create_fst=True, relabel=True, gemination=gemination,
                                          compose_backwards=False, split_index=split_index,
@@ -822,7 +820,7 @@ def test_fst(language, pos, string, gen=False, phon=False, segment=False,
         return
     return casc.transduce1(string, fst_label=fst_label, fst_index=fst_index)
 
-def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False, fidel=False,
+def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
             translate=False, experimental=False, guess=True, verbose=False):
     """Just a handy function for working with the POS objects when re-compiling
     and debugging FSTs.
@@ -834,10 +832,10 @@ def get_pos(abbrev, pos, phon=False, segment=False, load_morph=False, gen=False,
     @param verbose: whether to print out various messages
     @return:       POS object for the the language and POS
     """
-    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen, fidel=fidel,
+    load_lang(abbrev, segment=segment, phon=phon, load_morph=load_morph, gen=gen,
               translate=translate, guess=guess, experimental=experimental, verbose=verbose)
     lang = morpho.get_language(abbrev, phon=phon, segment=segment, experimental=experimental,
-                               load_morph=load_morph, fidel=fidel, load=load_morph, verbose=verbose)
+                               load_morph=load_morph, load=load_morph, verbose=verbose)
     if lang:
         return lang.morphology[pos]
 

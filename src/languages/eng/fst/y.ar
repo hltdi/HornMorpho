@@ -1,0 +1,6 @@
+%% change y to i after a single consonant and before a word boundary
+
+y -> i
+
+* | % *
+

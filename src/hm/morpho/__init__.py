@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS
 
-    Copyleft 2008, 2009, 2010, 2011, 2012, 2017, 2018, 2019, 2020, 2021. Michael Gasser.
+    Copyleft 2008-2021, 2024. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,11 +34,10 @@ Composition of weighted FSTs is also supported.
    New modules for translation dictionaries (tdict) and menus (menu).
 """
 
-__all__ = ['altrule', 'amh_lang', 'fs', 'fst', 'internals', 'language',\
+__all__ = ['altrule', 'fs', 'fst', 'internals', 'language',\
            'languages', 'letter_tree', 'logic', 'morphology', 'mtax',\
-           'om_lang', 'rule', 'semiring', 'strip', 'stv_lang',\
-           'ti_lang', 'um', 'utils', 'anal', 'corpus', 'sentence',\
-           'roots', 'tmp', 'mut', 'lextr']
+           'rule', 'semiring', 'strip', 'um', 'utils', 'anal', 'corpus', 'sentence',\
+           'roots', 'tmp', 'mut', 'lextr', 'gui', 'word']
 
 #            'menu', 'tdict', 'dev', 'trans'
 

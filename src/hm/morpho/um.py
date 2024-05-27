@@ -520,6 +520,8 @@ class UniMorph:
         Read in the UM converstion data.
         """
         path = self.get_path()
+#        print("** UM path {}".format(path))
+#        print("** exists? {}".format(os.path.exists(path)))
         current_pos = ''
         current_supfeat = ''
         current_feats = []
@@ -591,12 +593,12 @@ class UniMorph:
                         feat, value = m.groups()
                         if verbosity:
                             print(" Matched featmap {}:{}".format(feat, value))
-#                        print("Matched feat {}".format(feat))
+#                        print("  ** Matched feat {}; value {}".format(feat, value))
                         unless = ''
                         if ':' in value:
                             value = value.split(';;')
                             value = [fv.strip().split(':') for fv in value]
-#                            print("value3 {}".format(value))
+#                            print("   ** value3 {}".format(value))
                             # values could be a list corresponding to feat list
                             for i, (mapv, uv) in enumerate(value):
                                 if ',' in mapv:

@@ -32,21 +32,21 @@ from .language import *
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'am': 'amh',
-         'chh': 'sgw',
-         'gz': 'gez',
+CODES = {'am': 'a',
+         'chh': 'ch', 'sgw': 'ch',
+         'gz': 'g',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
-         'kst': 'gru',
+         'kst': 'k', 'gru': 'k', 'ks': 'k',
 #         'mh': 'muh',
 #         'M': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
 #         'm': 'mvz',
          'so': 'som', 's': 'som',
-         'ti': 'tir', 'tg': 'tir',
-         'T': 'tig',
+         'ti': 't',
+         'T': 'te',
          'om': 'orm', 'o': 'orm'}
 
-FIDEL = ['a', 't', 'ch', 'g', 'k', 'm', 'te']
+#FIDEL = ['ch', 'g', 'k', 'm']
 
 def get_lang_id(string):
     '''Get a language identifier from a string which may be the name
@@ -57,11 +57,11 @@ def get_lang_id(string):
         lang = CODES[lang]
     return lang
 
-def get_lang_dir(abbrev):
-    return os.path.join(LANGUAGE_DIR, abbrev)
+#def get_lang_dir(abbrev):
+#    return os.path.join(LANGUAGE_DIR, abbrev)
 
 def load_lang(lang, phon=False, segment=False, load_morph=True,
-              translate=False, pickle=True, recreate=False, fidel=False,
+              translate=False, pickle=True, recreate=False,
               # False, '', or the name of a cache file
               cache=True, guess=False, mwe=True, gen=False,
               v5=True, experimental=False, poss=None, verbose=True):
@@ -70,25 +70,25 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 #        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
-    if lang_id == 'amh':
-        # 2020.3.14: new Amharic
-        from . import amh_lang
-        language = amh_lang.AMH
-    elif lang_id == 'tir':
-        from . import ti_lang
-        language = ti_lang.TI
-    elif lang_id == 'orm':
-        from . import om_lang
-        language = om_lang.OM
-#    elif lang_id == 'stv':
-#        from . import stv_lang
-#        language = stv_lang.STV
+#    if lang_id == 'amh':
+#        # 2020.3.14: new Amharic
+#        from . import amh_lang
+#        language = amh_lang.AMH
+#    elif lang_id == 'tir':
+#        from . import ti_lang
+#        language = ti_lang.TI
+#    elif lang_id == 'orm':
+#        from . import om_lang
+#        language = om_lang.OM
+    if lang_id == 'stv':
+        from . import stv_lang
+        language = stv_lang.STV
     if language:
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
                                     pickle=pickle, translate=translate, recreate=recreate, gen=gen,
-                                    phon=phon, guess=guess, mwe=mwe, fidel=fidel,
+                                    phon=phon, guess=guess, mwe=mwe,
                                     v5=v5,
                                     poss=poss, verbose=verbose)
         if not loaded:
@@ -104,12 +104,13 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
             ees = True
 #            from . import ees
 #            EES = ees.EES()
-#        print("** MAKING language")
+        lang_dir = Language.get_lang_dir(lang_id)
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
+                                 ldir=lang_dir,
                                  experimental=experimental, mwe=mwe,
                                  segment=segment, phon=phon, guess=guess, recreate=recreate,
-                                 poss=poss, ees=ees, fidel=fidel,
+                                 poss=poss, ees=ees,
                                  v5=v5,
                                  verbose=verbose)
         if not language:
@@ -128,13 +129,13 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
         # If there's a backup language, load its data file so the translations
         # can be used.
         load_lang(language.backup, load_morph=False, recreate=recreate, mwe=mwe, gen=gen,
-                  pickle=pickle, translate=translate, experimental=experimental, fidel=fidel,
+                  pickle=pickle, translate=translate, experimental=experimental,
                   guess=guess, verbose=verbose)
     return True
 
 def get_language(language, **kwargs):
 #    load=True, pickle=True,
-#                 translate=False, experimental=False, fidel=False, phon=False, segment=False,
+#                 translate=False, experimental=False, phon=False, segment=False,
 #                 guess=True, 
 #                 v5=False,
 #                 load_morph=True, cache='', verbose=False):
@@ -148,7 +149,6 @@ def get_language(language, **kwargs):
     load_morph = kwargs.get('load_morph') if 'load_morph' in kwargs else True
     translate = kwargs.get('translate', False)
     experimental = kwargs.get('experimental', False)
-    fidel = kwargs.get('fidel', True)
     phon = kwargs.get('phon', False)
     segment = kwargs.get('segment', False)
     v5 = kwargs.get('v5', True)
@@ -163,7 +163,7 @@ def get_language(language, **kwargs):
         if load:
             if not load_lang(lang_id, phon=phon, pickle=pickle,
                              segment=segment, guess=guess, experimental=experimental,
-                             translate=translate, fidel=fidel,
+                             translate=translate, 
                              load_morph=load_morph, cache=cache,
                              v5=v5,
                              verbose=verbose):

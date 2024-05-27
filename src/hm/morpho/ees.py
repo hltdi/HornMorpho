@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2020, 2021, 2022, 2023.
+    Copyleft 2020, 2021, 2022, 2023, 2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -33,8 +33,6 @@ SOURCE_WT_CONV = [("gem", "sgem"), ("c=", "sc="), ("v=", "sv="), ("t=", "st="), 
 TARGET_WT_CONV = [("gem", "tgem"), ("c=", "tc="), ("v=", "tv="), ("t=", "tt="), ("strong", "tstrong")]
 
 class EES:
-
-    FIDEL = ['a', 't', 'ch', 'g', 'k', 'm']
 
     # later extend to include preps and conjs from other languages
     ROM2GEEZ = \
@@ -115,9 +113,8 @@ class EES:
        
          }
 
-    def __init__(self, fidel=False):
+    def __init__(self):
         print("Creating EES language {}".format(self))
-        self.fidel = fidel
         # EES pre-and post-processing: geezification, romanization,
         # handling of multi-word lexemes
         if not self.procroot:

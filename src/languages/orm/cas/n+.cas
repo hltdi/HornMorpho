@@ -1,0 +1,41 @@
+weighting = UNIFICATION
+
+## Special characters
+
+## Vowel stringsets
+$$ = {a, A, e, E, i, I, o, O, u, U, aa, Aa, ee, Ee, ii, Ii, oo, Oo, uu, Uu}
+$ = {a, e, i, o, u, aa, ee, ii, oo, uu}
+$1 = {a, e, i, o, u}
+$2 = {aa, ee, ii, oo, uu}
+## Consonant stringsets
+# all consonants
+!! = {b, c, ch, d, dh, f, g, h, j, k, l, m, n, ny, p, ph, q, r, s, sh, t, v, w, x, y, z, ', -, B, D, Ch, D, Dh, F, G, H, J, K, L, M, N, P, Ph, Q, R, S, Sh, T, V, W, X, Y, Z}
+! = {b, c, ch, d, dh, f, g, h, j, k, l, m, n, ny, p, ph, q, r, s, sh, t, v, w, x, y, z, ', -}
+!1 = {b, c, d, dh, f, g, h, j, k, l, m, n, p, ph, q, r, s, t, v, w, x, y, z, ', -}
+!2 = {ch, ny, sh}
+## Special characters
+# L: vowel lengthening (genitive), S: subject case suffix vowel, D: definite suffix vowel,
+# P: plural suffix initial character, H: -dhaa following long vowels, N: 1ps suffix
+% = {L, S, D, P, H, N}
+
+## tn -> nn (optionally), as in namoonni
+>T2n<
+## dht -> t, as in fuuti (fuudha + -ti)
+>dht<
+>lr_nN<
+### ?? jarmaaya -> jarmeenyi, etc.
+##>wy_N<
+## 1s_sbj -an/-n
+>NN<
+## subject suffix
+>S<
+## L: Lengthened vowel (-ii after consonant)
+>L<
+## D: vowel beginning definite suffix; replace stem-final vowel
+>D<
+## P: delete vowel before plural
+>P<
+## H: -dhaa after long vowel
+>H<
+## Morphotactics
+>n_mtax+<

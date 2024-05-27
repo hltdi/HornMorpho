@@ -34,13 +34,13 @@ UM/
 applications/
 
 # Experimental languages
-src/hm/languages/eng
+#src/hm/languages/eng
 #src/hm/languages/som
-src/hm/languages/stv
+#src/hm/languages/stv
 
 # Old dists
-dist/HornMorpho*4.3-*
-dist/HornMorpho*4.5.1*
+dist/HornMorpho*4.3*
+dist/HornMorpho*4.5*
 
 # Misc stuff
 Proc/
@@ -50,12 +50,10 @@ Versions/
 #Docs/
 docs/old
 notes/
-src/hm/languages/*/data/
+src/hm/languages/*
 src/hm/ext_data
 src/data
-src/hm/languages/*/pkl
-src/hm/languages/fidel/*/pkl/
-src/hm/languages/old/
+src/languages/*/pkl
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

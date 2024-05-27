@@ -47,7 +47,9 @@ Morphology objects defined in morphology.py).
 
 import os, sys, re, copy, itertools, copy
 
-LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, 'languages')
+#LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
+LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
+#LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'languages')
 
 from .morphology import *
 from .anal import *
@@ -178,6 +180,8 @@ class Language:
                  # Target language, for translation
                  tlang='',
                  tlabbrev = '',
+                 # Directory
+                 ldir='',
                  # Preprocessing for analysis
                  preproc=None, procroot=None,
                  # Post-processing for generation
@@ -199,8 +203,6 @@ class Language:
                  # Whether gemination is indicated in EES language
                  output_gemination=False,
                  rules=None,
-                 # Whether this is one of the fidel-only languages
-                 fidel=False,
                  citation_separate=True):
 #                 msgs=None, trans=None):
         """
@@ -242,7 +244,7 @@ class Language:
         self.citation_separate = citation_separate
 #        self.msgs = msgs or {}
 #        self.trans = trans or {}
-        self.directory = self.get_dir(fidel=fidel)
+        self.directory = ldir
         self.tlanguages = [abbrev]
         if self.backup:
             self.tlanguages.append(self.backup)
@@ -282,49 +284,54 @@ class Language:
     def __repr__(self):
         return self.label or self.abbrev
 
-    def get_dir(self, fidel=False):
+    @staticmethod
+    def get_lang_dir(abbrev):
+        path = os.path.join(LANGUAGE_DIR, abbrev)
+        if not os.path.exists(path):
+            print("!! Language {} not loaded !!")
+            return False
+        print("Directory for {}: {}".format(abbrev, path))
+        return path
+
+    def get_dir(self):
         """Where data for this language is kept."""
-        fidel = fidel or self.abbrev in EES.FIDEL
-        if fidel:
-            return os.path.join(os.path.join(LANGUAGE_DIR, 'fidel'), self.abbrev)
-        else:
-            return os.path.join(LANGUAGE_DIR, self.abbrev)
+        return os.path.join(LANGUAGE_DIR, self.abbrev)
 
-    def get_data_file(self, fidel=False):
+    def get_data_file(self):
         """Data file for language."""
-        return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.lg')
+        return os.path.join(self.directory, self.abbrev + '.lg')
 
-    def get_trans_dir(self, fidel=False):
+    def get_trans_dir(self):
         """File with cached analyses."""
-        return os.path.join(self.get_dir(fidel=fidel), 'trans')
+        return os.path.join(self.directory, 'trans')
 
-    def get_lex_dir(self, fidel=False):
-        return os.path.join(self.get_dir(fidel=fidel), 'lex')
+    def get_lex_dir(self):
+        return os.path.join(self.directory, 'lex')
 
-    def get_valency_file(self, pos='v', fidel=False):
-        return os.path.join(self.get_lex_dir(fidel=fidel), pos + '.val')
+    def get_valency_file(self, pos='v'):
+        return os.path.join(self.get_lex_dir(), pos + '.val')
 
-    def get_phon_file(self, fidel=False):
-        return os.path.join(self.get_dir(fidel=fidel), self.abbrev + '.ph')
+    def get_phon_file(self):
+        return os.path.join(self.directory, self.abbrev + '.ph')
 
-    def get_stat_dir(self, fidel=False):
+    def get_stat_dir(self):
         """Statistics directory: root and feature frequencies
         for disambiguation."""
-        return os.path.join(self.get_dir(fidel=fidel), 'stat')
+        return os.path.join(self.directory, 'stat')
 
-    def get_root_freq_file(self, fidel=False):
-        statdir = self.get_stat_dir(fidel=fidel)
+    def get_root_freq_file(self):
+        statdir = self.get_stat_dir()
         if statdir:
             return os.path.join(statdir, 'root.frq')
 
     ## CACHING
 
-    def get_cache_dir(self, fidel=False):
+    def get_cache_dir(self):
         """File with cached analyses."""
-        return os.path.join(self.get_dir(fidel=fidel), 'cache')
+        return os.path.join(self.directory, 'cache')
 
-    def get_cache_file(self, segment=False, fidel=False):
-        d = self.get_cache_dir(fidel=fidel)
+    def get_cache_file(self, segment=False):
+        d = self.get_cache_dir()
         if segment:
             name = 'seg'
         else:
@@ -393,21 +400,22 @@ class Language:
     ###
 
     @staticmethod
-    def make(name, abbrev, load_morph=False, fidel=False,
+    def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
+             ldir='',
              v5=True,
              ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
         if ees:
-            lang = EESLanguage(abbrev=abbrev, fidel=fidel)
+            lang = EESLanguage(abbrev=abbrev, ldir=ldir)
         else:
-            lang = Language(abbrev=abbrev, fidel=fidel)
+            lang = Language(abbrev=abbrev, ldir=ldir)
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph, pickle=pickle, gen=gen,
                                 segment=segment, phon=phon, recreate=recreate,
-                                experimental=experimental, mwe=mwe, fidel=fidel,
+                                experimental=experimental, mwe=mwe,
                                 translate=translate, simplified=simplified,
                                 v5=v5,
                                 guess=guess, poss=poss, verbose=verbose)
@@ -417,13 +425,13 @@ class Language:
         return lang
 
     def load_data(self, load_morph=False, pickle=True, recreate=False,
-                  segment=False, phon=False, guess=True, fidel=False, gen=False,
+                  segment=False, phon=False, guess=True, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
                   v5=True, poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
-        filename = self.get_data_file(fidel=fidel)
+        filename = self.get_data_file()
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))
@@ -436,7 +444,7 @@ class Language:
 #        print("** Parsed data for {}; morphology {}".format(self, self.morphology))
         if load_morph:
             if v5:
-                if not self.load_morpho(ortho=True, phon=phon, fidel=fidel,
+                if not self.load_morpho(ortho=True, phon=phon,
                                          guess=guess, translate=translate, mwe=mwe,
                                          pickle=pickle, recreate=recreate,
                                          verbose=verbose):
@@ -1357,7 +1365,7 @@ class Language:
         morphology.seg_units = self.seg_units
         morphology.phon_fst = morphology.restore_fst('phon', create_networks=False)
 
-    def load_morpho(self, fsts=None, ortho=True, phon=False, fidel=False,
+    def load_morpho(self, fsts=None, ortho=True, phon=False,
                      pickle=True, mwe=False, translate=False, suffix='',
                      recreate=False, guess=True, verbose=False):
         """
@@ -1382,7 +1390,7 @@ class Language:
 #        print(msg_string)
         print("Loading FSTs for {}".format(self))
         # In any case, assume the root frequencies will be needed?
-        self.morphology.set_root_freqs(fidel=fidel)
+        self.morphology.set_root_freqs()
 #        self.morphology.set_feat_freqs()
         if ortho:
             # Load unanalyzed words
@@ -3614,7 +3622,7 @@ class EESLanguage(EES, Language):
     especially related to orthography.
     '''
 
-    def __init__(self, abbrev, fidel=False):
+    def __init__(self, abbrev, ldir=''):
         print("Creating EES language...")
-        Language.__init__(self, abbrev, fidel=fidel)
-        EES.__init__(self, fidel=fidel)
+        Language.__init__(self, abbrev, ldir=ldir)
+        EES.__init__(self)
