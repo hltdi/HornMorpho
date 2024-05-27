@@ -182,8 +182,8 @@ sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:
 cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V
-#->UD PRS	Tense=Pres
-#->UD PST	Tense=Past
+->UD PRS	Tense=Pres
+->UD PST	Tense=Past
 ->UD NEG	Polarity=Neg
 ->UD 1		Person=1
 ->UD 2		Person=2
@@ -193,7 +193,7 @@ POS cop V
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-#t:: prs:PRS;; pst:PST
+t:: prs:PRS;; pst:PST
 neg:: NEG
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL

@@ -119,6 +119,7 @@ feats:
     g = m | f
     neg = False | True
     int = False | True
+    t= prs | pst
 
   pos: n noun
     pos = N | ADJ

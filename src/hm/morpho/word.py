@@ -467,6 +467,7 @@ class Word(list):
         lines = []
         for index, analysis in enumerate(analyses):
             attrib_list = [analysis.get(attrib, '') for attrib in attribs]
+#            print("{}: attrib list {}".format(self, attrib_list))
             attrib_string = '\t'.join(attrib_list)
             line = "{}\t{}".format(self.name if index == 0 else '', attrib_string)
             lines.append(line)

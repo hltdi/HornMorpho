@@ -176,6 +176,7 @@ feats:
     p = 1 | 2 | 3
     n = 1 | 2
     g = m | f
+    t = prs | pst
     neg = False | True
     frm = False | True
     rel = False | True

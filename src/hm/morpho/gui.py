@@ -432,7 +432,6 @@ class SegCanvas(Canvas):
         Returns the selection handler for the segmentation label.
         seg: the segmentation to be selected
         '''
-        print("Activating select handler")
         return lambda event: self.select(seg)
 
     def select(self, seg):
