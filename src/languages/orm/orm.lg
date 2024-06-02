@@ -16,18 +16,27 @@ seg: a e i o u aa ee ii oo uu
 feats:
 
   pos: n noun
+    case = bs | sb | dat | ins | abl | loc
+    fem = False | True
+    pl = False | True
+    def = False | True
+    gen = False | True
+    1s_sb = False | True
+    cnj = None | s | f | simmoo | oo | woo | llee | mmoo | moo | tu
 
   pos: v verb
-    t = prs | pst | inv | contemp | sub | prf
+    t = prs | pst | imv | contemp | sub | prf
     neg = False | True
     1s_sb = False | True
     cont = False | True
     dat = False | True
     ins = False | True
+    inter = False | True
     sb =
        p1 = False | True
        p2 = False | True
        pl = False | True
+       fem = False | True
     der =
     	ps = False | True
 	autoben = False | True

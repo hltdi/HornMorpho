@@ -288,7 +288,6 @@ class Language:
     def get_lang_dir(abbrev):
         path = os.path.join(LANGUAGE_DIR, abbrev)
         if not os.path.exists(path):
-            print("!! Language {} not loaded !!")
             return False
         print("Directory for {}: {}".format(abbrev, path))
         return path
@@ -403,9 +402,7 @@ class Language:
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
-             ldir='',
-             v5=True,
-             ees=False, recreate=True,
+             ldir='', v5=True, ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
         if ees:
@@ -1380,10 +1377,10 @@ class Language:
         else:
             opt_string += 'analysis/generation'
         # Only look for MWE FSTs for segmentation
-        if not self.has_cas(generate=phon, guess=False, phon=phon,
-                            experimental=False, mwe=mwe,
-                            segment=False, simplified=False):
-            print('No {} FST available for {}!'.format(opt_string, self))
+#        if not self.has_cas(generate=phon, guess=False, phon=phon,
+#                            experimental=False, mwe=mwe,
+#                            segment=False, simplified=False):
+#            print('No {} FST available for {}!'.format(opt_string, self))
 #        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
 #                                        [self, ' (' + opt_string + ')' if opt_string else ''],
 #                                        self.tlanguages)
@@ -1677,10 +1674,37 @@ class Language:
         words = self.morphology.wordsM if mwe else self.morphology.words1
             
         if word in words:
-            form, pos = self.morphology.words1[word]
+            pos = ''
+            feats = ''
+            form, cats = self.morphology.words1[word]
+            freq = self.morphology.get_freq(word)
+            if cats[0] == '[':
+                # These are HM features
+                feats = FeatStruct(cats)
+                pos = feats.get('pos', '')
+            elif cats.startswith('um='):
+                # These are UM features
+                feats = cats.split("|")
+                # There may be more than one
+                if len(feats) > 1:
+                    f = [feats[0].split('=')[1]]
+                    f.extend(feats[1:])
+                    anals = []
+                    for ff in f:
+                        pos = ff.split(';')[0]
+                        anals.append({'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq, 'um': ff})
+                    return anals
+                else:
+                    f = feats[0].split('=')[1]
+                    pos = f.split(';')[0]
+                    return [{'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq, 'um': f}]
+            else:
+                pos = cats
             freq = self.morphology.get_freq(word)
             # Later have the FSS already storied in words1
             anal = {'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq}
+            if feats:
+                anal['feats'] = feats
             if anal:
                 return [anal]
 #                return self.check_analpos(anal, analpos)
@@ -3623,6 +3647,6 @@ class EESLanguage(EES, Language):
     '''
 
     def __init__(self, abbrev, ldir=''):
-        print("Creating EES language...")
+#        print("Creating EES language...")
         Language.__init__(self, abbrev, ldir=ldir)
         EES.__init__(self)

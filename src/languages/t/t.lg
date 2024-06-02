@@ -64,10 +64,10 @@ feats:
 		       'እንተ': 'SCONJ', 'እንተዝ': 'SCONJ', 'እንተዘይ': 'SCONJ', 'ከምዝ': 'CCONJ', 'ከምዘይ': 'CCONJ', 'ስለዝ': 'SCONJ', 'ስለዘይ': 'SCONJ',\
 		       'ኣይ': 'SCONJ', 'ዘይ': 'SCONJ', 'ከይ': 'SCONJ', 'እንከይ': 'SCONJ', 'ኣይም': 'SCONJ', 'ንኸይ': 'SCONJ', 'ደይ': 'CCONJ'},\
         'dep': 'mark', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
-      {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj', 'o': 'obl'}),\
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'obj:m',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:m', 'o': 'obl:m'}),\
         'feats': ['AccNum', 'AccPers', 'AccGen', 'OblNum', 'OblPers', 'OblGen']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
@@ -127,7 +127,7 @@ feats:
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};;
       {'name': 'STEM', 'feats': ['Number', 'Gender']};;
-      {'name': 'poss',  'pos': 'PRON', 'dep': 'det', 'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]']};
+      {'name': 'poss',  'pos': 'PRON', 'dep': 'det:poss', 'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]']};
       {'name': 'neg2', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'conj', 'pos': 'CCONJ', 'dep': 'cc'}
     lemmafeats = d;a,v

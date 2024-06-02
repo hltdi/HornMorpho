@@ -364,6 +364,7 @@ class Morphology(dict):
                     if ortho:
                         # Read in the words as a list
                         pairs = [w.split() for w in file]
+#                        print("pairs {}".format(pairs))
                         self.words1 = dict([(w[0].strip(), w[1:]) for w in pairs])
                     else:
                         # Read in ortho:phon pairs as a dict
@@ -598,7 +599,7 @@ class Morphology(dict):
         if cascade != None:
 #            print('Restoring FST', label)
             # Look for the full, explicit FST
-            fst_file = label + '.fst'
+            fst_file = label + COMPILED_EXT #'.fst'
             fst_path = os.path.join(self.get_pickle_dir(), fst_file)
             if os.path.exists(fst_path):
                 return FST.restore_parse(self.get_pickle_dir(), fst_file, cascade=cascade,
@@ -1162,7 +1163,8 @@ class POSMorphology:
                     if casc:
                         self.casc = casc
                         self.casc_inv = self.casc.inverted()
-        if not self.get_fst(gen, guess, simplified, phon=phon, translate=translate, segment=segment, suffix=suffix, v5=v5) or recreate:
+        fst = self.get_fst(gen, guess, simplified, phon=phon, translate=translate, segment=segment, suffix=suffix, v5=v5)
+        if not fst or recreate:
             # Either there was no composed FST or we're supposed to recreate it anyway, so get
             # the cascade and compose it (well, unless create_fst is False)
 #            if verbose:
@@ -1209,9 +1211,10 @@ class POSMorphology:
         if not setit:
             return fst
 #        print("** defFS: {}".format(fst._defaultFS.__repr__()))
-        return self.get_fst(gen, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
-                            v5=v5,
-                            segment=segment, translate=translate, experimental=experimental)
+        return fst
+#        return self.get_fst(gen, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
+#                            v5=v5,
+#                            segment=segment, translate=translate, experimental=experimental)
 #            # FST found one way or another
 #            return True
 
@@ -1302,7 +1305,7 @@ class POSMorphology:
                               experimental=experimental, mwe=mwe, suffix=suffix,
                               phon=phon, segment=segment, translate=translate)
 #        print("FNAME {}".format(fname))
-        extension = '.fst'
+        extension = COMPILED_EXT #'.fst'
         fst = self.get_fst(generate=generate, guess=guess, simplified=simplified,
                            experimental=experimental, mwe=mwe, suffix=suffix,
                            v5=v5,
@@ -1326,7 +1329,7 @@ class POSMorphology:
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
         if fst_file:
-            os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + '.fst'))
+            os.remove(os.path.join(self.morphology.get_pickle_dir(), self.pos + COMPILED_EXT))  # '.fst'))
 
     def delete_pickle(self, fname):
         '''
@@ -1874,6 +1877,9 @@ class POSMorphology:
         """
         result = []
         for root, anals in analyses:
+#            if isinstance(anals, FeatStruct):
+#                result.append((root, anals))
+#            else:
             for anal in anals:
                 if normalize:
                     anal = self.featconv(anal)

@@ -66,12 +66,12 @@ feats:
          'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
          'dep': 'mark', 'feats': ['Case']};
       {'name': 'neg1', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};
       {'name': 'ob',\
         'pos': ('O', {False: 'DET', True: 'PRON'}),\
-	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj', (True,'l'): 'obl', (True,'b'): 'obl'}),\
+	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:m', (True,'l'): 'obl:m', (True,'b'): 'obl:m'}),\
         'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef', 'Definite']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
       {'name': 'aux',  'pos': 'AUX', 'dep': 'aux'};
@@ -125,12 +125,12 @@ feats:
 #    # only for infinitive
 #    neg = False | True
 
-  pos: vn_stem v_noun_stem
-    a = 0 | a | i
-    v = 0 | p | a | as
-    d = a | inf | ins | m
-    # only for infinitive
-    neg = False | True
+#  pos: vn_stem v_noun_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    d = a | inf | ins | m
+#    # only for infinitive
+#    neg = False | True
 
   pos: n noun_adjective
     morphotax::
@@ -138,8 +138,8 @@ feats:
       {'name': 'distrib', 'pos': 'ADP', 'dep': 'det'};
       {'name': 'mwemod', 'pos': 'N', 'dep': 'compound', 'mwe': True};;
       {'name': 'STEM'};;
-      {'name': 'plur', 'pos': 'COMP', 'dep': 'amod', 'feats': ['Number']};
-      {'name': 'poss',  'pos': 'DET', 'dep': 'det',\
+      {'name': 'plur', 'pos': 'COMP', 'dep': 'det:pl', 'feats': ['Number']};
+      {'name': 'poss',  'pos': 'DET', 'dep': 'det:poss',\
         'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'cconj', 'pos': 'CCONJ', 'dep': 'cc'}
@@ -167,7 +167,7 @@ feats:
 	{'name': 'conj_prep1', 'pos': 'ADP', 'dep': 'mark'};
 	{'name': 'neg', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};;
 	{'name': 'STEM', 'pos': 'V'};;
-	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod', 'feats': ['Polarity']};
 	{'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
     nomwe

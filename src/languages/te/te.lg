@@ -46,10 +46,10 @@ feats:
     morphotax::
       {'name': 'rel', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['ClauseType']};
       {'name': 'neg', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj', 'feats': ['Person', 'Number', 'Gender']};
-      {'name': 'obj',  'pos': 'PRON', 'dep': 'obj', 'feats': ['AccNum', 'AccPers', 'AccGen']}
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'obj',  'pos': 'PRON', 'dep': 'obj:m', 'feats': ['AccNum', 'AccPers', 'AccGen']}
 
     neg = False | True
     a = 0 | a | i

@@ -3,7 +3,7 @@ This file is part of HornMorpho.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018-2023.
+    Copyleft 2018-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -145,6 +145,9 @@ CASC_LEX_RE = re.compile(r'\+(.*?)\+')
 FEATS_RE = re.compile(r'features\s*=\s*(.+)')
 # defaultFS = []
 DEFAULT_FS_RE = re.compile(r'd\S*?\s*=\s*(.+)')
+
+# Compiled FST file extension
+COMPILED_EXT = ".cfst"
 
 ## Filtering FSTs for composition
 
@@ -1859,11 +1862,12 @@ class FST:
         Get FST files for fst_name in fst_directory, searching either for parts
         or for complete file.
         """
+#        print("** Getting FST files {}, {}, {}".format(fst_name, fst_directory, parts))
         if parts:
-            files = glob.glob(os.path.join(fst_directory, '*__' + fst_name + '.fst'))
+            files = glob.glob(os.path.join(fst_directory, '*__' + fst_name + COMPILED_EXT))
             if files:
                 return files
-        full = glob.glob(os.path.join(fst_directory, fst_name + '.fst'))
+        full = glob.glob(os.path.join(fst_directory, fst_name + COMPILED_EXT))
         if full:
             return full
         return []
@@ -1909,18 +1913,6 @@ class FST:
                                                 verbose=verbose), \
                    False
         return None
-#        # Look for the guess FST (except for segmentation) if there is no lexical one
-#        if not guess and not segment:
-#            guess_paths = FST.get_fst_files(guess_name, pkl_directory)
-#            if guess_paths:
-#                if verbose:
-#                    print('  Restoring guess FST {} from FST file {}'.format(guess_name, guess_paths))
-#                return FST.restore_parse_from_files(guess_paths, guess_name,
-#                                                    cascade=cascade, weighting=weighting,
-#                                                    seg_units=seg_units,
-#                                                    create_weights=create_weights,
-#                                                    verbose=verbose), \
-#                       False
 
     @staticmethod
     def split(directory, fst_file, limit=50000):
@@ -1947,7 +1939,7 @@ class FST:
                                  seg_units=[],
                                  create_weights=True, verbose=False):
         """Restore an FST from one or more files."""
-#        print('Restoring {}, cascade {}'.format(label, cascade))
+#        print('Restoring {}, cascade {}, paths {}'.format(label, cascade, paths))
         fst = FST.restore_parse(None, None, path=paths[0], label=label,
                                 cascade=cascade,
                                 weighting=weighting,
@@ -2269,29 +2261,29 @@ class FST:
 #                    print("FS shortcut from {} to {} with weight {}".format(src, dest, fss))
                     mtax.fst.add_arc(src, dest, '', '', weight=fss)
 
-    @staticmethod
-    def load_fst_from_files(names, directory,
-                            cascade=None, weighting=None, seg_units=[],
-                            verbose=False, lex_features=False,
-                            dest_lex=False, weight_constraint=None):
-        """
-        Load an FST from a list of filenames.
-        """
-        name0 = names[0]
-        filename0 =  name0 + '.fst'
-        fst = FST.parse(name0, open(filename0, encoding='utf-8').read(),
-                        weighting=weighting,
-                        cascade=cascade, directory=directory,
-                        seg_units=seg_units, weight_constraint=weight_constraint,
-                        verbose=verbose)
-        for name in names[1:]:
-            filename = name + '.fst'
-            FST.parse(name, open(filename, encoding='utf-8').read(),
-                      fst=fst, weighting=weighting,
-                      cascade=cascade, directory=directory,
-                      seg_units=seg_units, weight_constraint=weight_constraint,
-                      verbose=verbose)
-        return fst
+#    @staticmethod
+#    def load_fst_from_files(names, directory,
+#                            cascade=None, weighting=None, seg_units=[],
+#                            verbose=False, lex_features=False,
+#                            dest_lex=False, weight_constraint=None):
+#        """
+#        Load an FST from a list of filenames.
+#        """
+#        name0 = names[0]
+#        filename0 =  name0 + '.fst'
+#        fst = FST.parse(name0, open(filename0, encoding='utf-8').read(),
+#                        weighting=weighting,
+#                        cascade=cascade, directory=directory,
+#                        seg_units=seg_units, weight_constraint=weight_constraint,
+#                        verbose=verbose)
+#        for name in names[1:]:
+#            filename = name + '.fst'
+#            FST.parse(name, open(filename, encoding='utf-8').read(),
+#                      fst=fst, weighting=weighting,
+#                      cascade=cascade, directory=directory,
+#                      seg_units=seg_units, weight_constraint=weight_constraint,
+#                      verbose=verbose)
+#        return fst
 
     @staticmethod
     def parse(label, s, weighting=None, cascade=None, fst=None,

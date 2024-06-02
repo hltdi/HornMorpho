@@ -1,0 +1,74 @@
+POS n N
+##->UD  ACC	Case=Acc
+##->UD  GEN	Case=Gen
+##->UD  TERM	Case=Ter
+##->UD PRP	Case=Cau
+##->UD EQTV	Case=Equ
+##->UD ALL	Case=All
+>UD ABL	Case=Abl
+>UD INS	Case=Ins
+>UD DAT	Case=Dat
+>UD AT		Case=Loc
+>UD PL		Number=Plur
+>UD SG		Number=Sing
+>UD DEF	Definite=Def
+>UD FEM	Gender=Fem
+>UD MASC	Gender=Masc
+
+pl:: True:PL;; False:SG
+fem:: True:FEM;; False:MASC
+def:: True:DEF
+cnj:: tu:FOC;; s:*COORD;; f:*COORD
+case:: sb:NOM;; dat:DAT;; ins:INS;; abl:ABL;; loc:AT
+
+POS v V
+##->UD NEG	Polarity=Neg
+##->UD IMP	Mood=Jus
+##->UD IPFV	Aspect=Imp
+##->UD PFV	Aspect=Perf
+##->UD CAUS	Voice=Cau
+##->UD RECP	*Voice=Rcp
+##->UD PASS	Voice=Pass
+##->UD ITER	Aspect=Iter
+##->UD CAUS+RECP	*Voice=CauRcp
+##->UD 1		Person=1
+##->UD 2		Person=2
+##->UD 3		Person=3
+##->UD SG		Number=Sing
+##->UD PL		Number=Plur
+##->UD FEM	Gender=Fem
+##->UD MASC	Gender=Masc
+##->UD AC1S	*AccPers=1,AccNum=Sing
+##->UD AC1P	*AccPers=1,AccNum=Plur
+##->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
+##->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
+##->UD AC2PF	*AccPers=2,AccNum=Plur,AccGen=Fem
+##->UD AC2PM	*AccPers=2,AccNum=Plur,AccGen=Masc
+##->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
+##->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
+##->UD AC3PF	*AccPers=3,AccNum=Plur,AccGen=Fem
+##->UD AC3PM	*AccPers=3,AccNum=Plur,AccGen=Masc
+##->UD TOP	*Inf=Topic
+##->UD COND	*ClauseType=AdvCl
+##->UD PURP	*ClauseType=AdvCl
+##->UD *CCOMP	*ClauseType=CComp
+##->UD *RELC	*ClauseType=ACl
+##->UD *TEMP	*ClauseType=AdvCl
+# ብ- (also Locative, Malefactive)
+#->UD INS	Case=Ins
+# ን- (also Dative, Benefactive)
+#->UD ACC	Case=Acc
+#->UD INT	Mood=Int
+
+t:: prs:PRS;; pst:PST;; imv:IMP ;; contemp:PROG ;; sub:*SUBORD ;; prf:PFV
+
+inter:: True:INT
+
+neg:: NEG
+
+## subjects
+#sb:: 
+#sp:: 1:1;; 2:2;; 3:3
+#sn:: 1:SG;; 2:PL
+#sg:: m:MASC;; f:FEM
+

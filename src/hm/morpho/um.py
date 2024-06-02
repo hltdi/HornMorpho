@@ -482,6 +482,8 @@ class UniMorph:
         udalts = []
         um2ud = self.um2ud.get(pos)
         if not um2ud:
+            if return_dict:
+                return '', ''
             return ''
         for umfeat in um.split(';'):
 #            print("  %% umfeat {}".format(umfeat))

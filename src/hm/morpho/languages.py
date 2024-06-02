@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2023.
+    Copyleft 2011-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 """
 
 from .language import *
-# import anal_gui
+import requests, tarfile
 
 ###
 ### Loading languages
@@ -37,7 +37,7 @@ CODES = {'am': 'a',
          'gz': 'g',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
          'kst': 'k', 'gru': 'k', 'ks': 'k',
-#         'mh': 'muh',
+         'mh': 'muh',
 #         'M': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
 #         'm': 'mvz',
@@ -46,11 +46,73 @@ CODES = {'am': 'a',
          'T': 'te',
          'om': 'orm', 'o': 'orm'}
 
-#FIDEL = ['ch', 'g', 'k', 'm']
+ABBREV2LANG = {'a': 'አማርኛ', 't': 'ትግርኛ', 'o': 'Afaan Oromoo',
+               'te': 'ትግረ', 'g': 'ግዕዝ', 'ch': 'ቸሃ',
+               'eng': 'English',
+               'stv': 'የስልጤ ኣፍ', 'k': 'ክስታንኛ'}
+
+def lang_not_found_interactive(abbrev, language):
+    response = input ("Would you like to download the data for {}\n--> ".format(language))
+    if response and response[0] in ('y', 'Y'):
+        return True
+    return False
+
+def get_language_url(abbrev, format='tgz'):
+    '''
+    URL for the compressed language file in GitHub for the language with abbreviation abbrev.
+    '''
+    url = "https://github.com/hltdi/HornMorpho/tree/master/src/languages/"
+    lang = abbrev + "." + format
+    return url + lang
+
+def download_language(abbrev):
+    '''
+    Download the compressed language file for language with abbreviation abbrev.
+    '''
+    print("Downloading {}...".format(ABBREV2LANG.get(abbrev, abbrev)))
+    url = get_language_url(abbrev)
+    fileout = compressed_lang_filename(abbrev)
+    with requests.get(url, stream=True) as r:
+        with open(fileout, 'wb') as file:
+            for chunk in r.iter_content(chunk_size = 16*1024):
+                file.write(chunk)
+
+def compressed_lang_filename(abbrev):
+    '''
+    Where to put or find the compressed file for a language.
+    '''
+    return os.path.join(LANGUAGE_DIR, abbrev + ".tgz")
+
+def compress_lang(abbrev):
+    '''
+    Create a compressed tarball of all of the files in the language folder, except
+    compiled FST files, given language abbreviation.
+    '''
+    directory = Language.get_lang_dir(abbrev)
+    outfile = compressed_lang_filename(abbrev)
+    def exclude(tarinfo):
+        filename = tarinfo.name
+        if filename.endswith('.cfst') or filename.startswith('.DS'):
+            return None
+        else:
+            return tarinfo
+    with tarfile.open(outfile, "w:gz") as tar:
+        tar.add(directory, arcname=os.path.basename(directory), filter=exclude)
+
+def uncompress_lang(abbrev):
+    '''
+    Uncompress a compressed language tarball.
+    '''
+    filename = compressed_lang_filename(abbrev)
+    tar = tarfile.open(filename, "r:gz")
+    tar.extractall(path=LANGUAGE_DIR)
+    tar.close()
 
 def get_lang_id(string):
-    '''Get a language identifier from a string which may be the name
-    of the language.'''
+    '''
+    Get a language identifier from a string which may be the name
+    of the language.
+    '''
     lang = string if len(string) <= 3 else string.replace("'", "")[:2]
     lang = lang.lower()
     if lang in CODES:
@@ -60,7 +122,8 @@ def get_lang_id(string):
 #def get_lang_dir(abbrev):
 #    return os.path.join(LANGUAGE_DIR, abbrev)
 
-def load_lang(lang, phon=False, segment=False, load_morph=True,
+def load_lang(lang,
+              lang_name='', phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False,
               # False, '', or the name of a cache file
               cache=True, guess=False, mwe=True, gen=False,
@@ -70,16 +133,6 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
 #        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
-#    if lang_id == 'amh':
-#        # 2020.3.14: new Amharic
-#        from . import amh_lang
-#        language = amh_lang.AMH
-#    elif lang_id == 'tir':
-#        from . import ti_lang
-#        language = ti_lang.TI
-#    elif lang_id == 'orm':
-#        from . import om_lang
-#        language = om_lang.OM
     if lang_id == 'stv':
         from . import stv_lang
         language = stv_lang.STV
@@ -92,19 +145,21 @@ def load_lang(lang, phon=False, segment=False, load_morph=True,
                                     v5=v5,
                                     poss=poss, verbose=verbose)
         if not loaded:
-#            print("No additional data")
             # Impossible to load data somehow
             return False
     else:
-#        if lang_id in CODES:
-#            lang_id = CODES[lang_id]
         # Create the language from scratch
         ees = False
-        if lang_id in ['sgw', 'gru', 'stv', 'tig', 'mvz', 'muh']:
+        if lang_id in ['a', 't', 'g', 'ch', 'stv', 'te', 'mvz', 'muh']:
             ees = True
 #            from . import ees
 #            EES = ees.EES()
         lang_dir = Language.get_lang_dir(lang_id)
+        if not lang_dir:
+            print("Language {} not loaded !!".format(lang_name))
+            download = lang_not_found_interactive(lang_id, lang_name)
+            if not download:
+                return False
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
                                  ldir=lang_dir,
@@ -143,6 +198,10 @@ def get_language(language, **kwargs):
     Get the language with lang_id, attempting to load it if it's not found
     and load is True.
     """
+    if language not in ABBREV2LANG:
+        print("HornMorpho has no language with the abbreviation {}".format(language))
+        return False
+    lang_name = ABBREV2LANG.get(language)
     load = kwargs.get('load') if 'load' in kwargs else True
     pickle = kwargs.get('pickle') if 'pickle' in kwargs else True
     guess = kwargs.get('guess') if 'guess' in kwargs else True
@@ -161,7 +220,8 @@ def get_language(language, **kwargs):
     lang = LANGUAGES.get(lang_id, None)
     if not lang:
         if load:
-            if not load_lang(lang_id, phon=phon, pickle=pickle,
+            if not load_lang(lang_id, lang_name=lang_name,
+                             phon=phon, pickle=pickle,
                              segment=segment, guess=guess, experimental=experimental,
                              translate=translate, 
                              load_morph=load_morph, cache=cache,
@@ -181,10 +241,10 @@ def get_language(language, **kwargs):
     if not load_morph:
         return lang
     fst = lang.get_fsts(phon=phon, segment=segment, experimental=experimental, v5=v5)
-    if not fst and load:
-        print("You cannot do different kinds of analysis or generation in the same session!")
-        print("Please exit() and start a new session!")
-        return
+#    if not fst and load:
+#        print("You cannot do different kinds of analysis or generation in the same session!")
+#        print("Please exit() and start a new session!")
+#        return
     return lang
 
 def load_pos(language, pos, scratch=False):
