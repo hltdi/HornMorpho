@@ -166,10 +166,11 @@ def load_lang(lang,
 #            EES = ees.EES()
         lang_dir = Language.get_lang_dir(lang_id)
         if not lang_dir:
-            print("Language {} not loaded !!".format(lang_name))
+            print("Language {} not found !!".format(lang_name))
             download = lang_not_found_interactive(lang_id, lang_name)
-            if not download:
-                return False
+            if download:
+                download_language('a')
+            return False
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,
                                  ldir=lang_dir,
