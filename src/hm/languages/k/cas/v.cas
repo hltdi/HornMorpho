@@ -1,0 +1,9 @@
+weighting = UNIFICATION
+
+## Special characters
+# = morpheme boundaries
+# / gemination
+
+## FSTs
+# Morphotactics
+>v.mtx<

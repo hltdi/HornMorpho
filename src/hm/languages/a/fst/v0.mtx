@@ -1,0 +1,180 @@
+$ conj_prep_pre
+  ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=0,-mc,-neg,-pr,root=ምጥእ,oa=0|l|b]
+  የ		[t=i|p,+rel,-mc,+sub]
+  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub]
+  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub]
+  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub]
+  ል  		[sconj=ል,t=i,-rel,-mc,+sub]
+  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub]
+  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub]
+  በ		[adp=በ,t=i|p,+rel,-mc,+sub]
+  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub]
+  እንደ	[adp=እንደ,t=i|p,+rel,-mc,+sub]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub]
+  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub]
+  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub]
+  እ/የ	[sconj=እየ,t=p,-rel,-mc,+sub]
+  --  	[t=i|p,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel]
+
+$ rel_impf
+  /ም		[t=i,+rel]
+  --		[t=i,-rel];[t=p|j|c]
+
+$ sub_bound
+  -
+
+$ neg1
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው]
+  ኣ			[+neg,t=i|j]
+  ኣል			[+neg,t=p]
+  --   		[-neg];[t=c,-neg]
+
+$ neg1_bound
+  -
+
+$ sb_pre
+  ይ		[t=i|j,sp=3,sn=2];[t=i|j,sp=3,sn=1,sg=m]
+# % optional gemination  
+  ት		[t=i,sp=2];[t=i|j,sp=3,sn=1,sg=f];[t=j,sp=2,+neg]
+  /ት		[t=i|j,sp=2,+neg];[t=i|j,sp=3,sn=1,sg=f,+neg];[t=i,sp=2,+sub];[t=i,sp=3,sn=1,sg=f,+sub]
+  እ		[t=i,sp=1,sn=1,-neg]
+  ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
+# % optional gemination
+  እን  	[t=i|j,sp=1,sn=2]
+  /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
+  --  	[t=p];[t=c];[t=j,sp=2,-neg]
+
+#$ sp_bound
+#  -
+
+$ prestem
+  <
+
+$ voice_pre
+  # the 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
+  # also ተተካከለ, which isn't distinguished by a feature from ተካከለ
+  ->poststem	+irr_vstem+	[+pr]
+  # transitive
+  ኣ-			[v=a,a=0,-pr]
+  ኣ/-		[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
+  ኣ/ተ-		[v=a,a=i,tmp=[1=እ],-pr]
+  # causative
+  ኣስ-		[v=as,a=0,-pr]
+  # አስታወቀ አስተዋወቀ አስተናበረ አስተማረ አስተናናቀ
+  ኣስተ-		[v=ast,tmp=[1=እ],a=i|0,-pr];[v=ast,a=a,tmp=[1=X],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr]
+  # passive-reflexive
+  ተ-			[v=p,t=p|c,+pr];[v=p,t=j,sp=2,+pr]
+  /-			[v=p,t=i,tmp=[1=X],+pr];[v=p,t=j,sp=1|3,+pr]
+  /ተ-		[v=p,t=i,tmp=[1=እ],+pr]
+  --  		[v=0,-pr]
+
+$ stem
+   >>v_stem0<<
+
+$ poststem
+  >
+
+$ sb_suf
+  አ		[sp=3,sn=1,sg=m,t=p]
+  ኦ    	[sp=3,sn=1,sg=m,t=c]
+  አ/ች   	[sp=3,sn=1,sg=f,t=p]
+  ኣ    	[sp=3,sn=1,sg=f,t=c]
+  ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,op=1|2|3];[t=p,sp=3,sn=2]
+  አው  	[sp=3,sn=2,t=c]
+  ኣ/ችሁ 	[sp=2,sn=2,t=p|c]
+  ሽ		[sp=2,sn=1,sg=f,t=p]
+  አሽ    	[sp=2,sn=1,sg=f,t=c]
+  ኢ   	[sp=2,sn=1,sg=f,t=i|j]
+  ክ		[sp=2,sn=1,sg=m,t=p]
+  አህ		[sp=2,sn=1,sg=m,t=c]
+  ኩ		[sp=1,sn=1,t=p]
+  ኤ		[sp=1,sn=1,t=c]
+  ን    	[sp=1,sn=2,t=p]
+  አን    	[sp=1,sn=2,t=c]
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,op=0,+mc,ax=al]
+
+$ ss_bound
+  -
+
+$ ob_suf
+  [op=3,on=1,og=m,oa=l|b,-det]
+      /ለት	[oa=l]
+      /በት	[oa=b]
+  [op=3,on=1,og=m,oa=0,-det];[op=0,+det,+rel]
+     # 3sm accusative suffix and relative definite suffix
+      ት	[t=p,sp=1,sn=1];[sp=2|3,sn=2];[t=c,sp=3,sn=1,sg=m]
+      ው       [sp=2,sn=1,sg=f];[t=p,sp=3,sn=1];[t=c,sp=1,sn=1];[t=c,sp=3,sn=1,sg=f]
+      አው	[sp=2,sn=1,sg=m];[sp=1,sn=2];[t=i|j,sp=1,sn=1];[t=i|j,sp=3,sn=1]
+  [op=3,on=1,og=f,-det]
+      ኣት	[oa=0]
+      /ላት	[oa=l]
+      /ባት	[oa=b]
+  [op=3,on=2,-det]
+      ኣ/ቸው	[oa=0]
+      /ላ/ቸው	[oa=l]
+      /ባ/ቸው	[oa=b]
+  [op=1,sp=2|3,-det]
+      አን	[oa=0,on=2,sp=2,sn=1,sg=m];[oa=0,on=2,sp=3,sn=1,t=i|j]
+      ን	[oa=0,on=2,sp=2,sn=1,sg=f];[oa=0,on=2,t=p,sp=3,sn=1];[oa=0,on=2,sn=2]
+      አ/ኝ	[oa=0,on=1,sp=2,sn=1,sg=m];[oa=0,on=1,sp=3,sn=1,t=i|j]
+      /ኝ 	[oa=0,on=1,sp=2,sn=1,sg=f];[oa=0,on=1,t=p,sp=3,sn=1];[oa=0,on=1,sn=2]
+      /ልን	[oa=l,on=2]
+      /ልኝ	[oa=l,on=1]
+      /ብን	[oa=b,on=2]
+      /ብ/ኝ	[oa=b,on=1]
+  [op=2,sp=1|3,-det]
+      ሽ	[oa=0,on=1,og=f,of=i]
+      ህ	[oa=0,on=1,og=m,of=i]
+      ኣ/ችሁ	<ኣችሁ>	[oa=0,on=2]
+      ዎት	[oa=0,on=1,of=f]
+      /ልሽ	<ልሽ>	[oa=l,on=1,og=f,of=i]
+      /ልህ	<ልህ>	[oa=l,on=1,og=m,of=i]
+      /ላ/ችሁ	<ላችሁ>	[oa=l,on=2]
+      /ልዎት		<ልዎት>	[oa=l,on=1,of=f]
+      /ብሽ		<ብሽ>	[oa=b,on=1,og=f,of=i]
+      /ብህ		<ብህ>	[oa=b,on=1,og=m,of=i]
+      /ባ/ችሁ	<ባችሁ>	[oa=b,on=2]
+      /ብዎት		<ብዎት>	[oa=b,on=1,of=f]
+  --   	[op=0,oa=0,-det]
+
+$ ob_bound
+  -
+
+$ neg2
+  /ም		[t=i|p,+neg,+mc]
+  --		[-neg];[+neg,-mc];[+neg,t=j,-mc];[t=c]
+
+$ aux
+  ኣ/ል	[t=i,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=i,sp=3,sn=2,op=1|2|3,-neg,+mc,ax=al];[t=c,sp=1,sn=2,-neg,+mc,ax=al];[t=c,sp=2,-neg,+mc,ax=al];[t=c,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=c,sp=3,sn=2,-neg,+mc,ax=al]
+  ኣ/ለሁ	[t=i|c,sp=1,sn=1,-neg,+mc,ax=al]
+  ኣ/ለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc,ax=al]
+  ኣ/ለህ	[t=i,sp=2,sn=1,sg=m,-neg,+mc,ax=al]
+  ኣ/ለሽ	[t=i,sp=2,sn=1,sg=f,-neg,+mc,ax=al]
+  ኣ/ለን	[t=i,sp=1,sn=2,-neg,+mc,ax=al]
+  ኣ/ላ/ችሁ	[t=i,sp=2,sn=2,-neg,+mc,ax=al]
+  ኣ/ሉ	[t=i,sp=3,sn=2,op=0,-neg,+mc,ax=al]
+  --		[t=p|j,ax=0];[t=i|c,-mc,ax=0];[t=i,+neg,ax=0]
+
+$ aux_bound
+  -
+
+$ accus
+  ን		[+acc,+rel]
+  --		[-acc]
+
+$ accus_bound
+  -
+
+$ conj2
+  /ና		[cconj=ና]
+  /ም		[cconj=ም,-neg];[cconj=ም,+neg,+mc]
+  /ማ		[cconj=ማ]
+  /ስ		[cconj=ስ]
+  /ሳ		[cconj=ሳ]
+# Appearing too often; figure out how to include it later
+#  ኣ		[cconj=ኣ]
+  /ኮ		[cconj=ኮ]
+  --		[cconj=0]
+
+$ end
+  --		[pos=v]

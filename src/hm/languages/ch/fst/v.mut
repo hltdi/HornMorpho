@@ -1,0 +1,67 @@
+# still need to handle reduplication
+$ [-Y,-W]
+
+[+Y,-W]
+
+### strong
+# ትከፍች
+**				**						{^dgr};*y
+
+# ትከቲፍ ትረ𞟥ብ ትቀሪም
+**	      			{^g*};{^V~g*};*y		*b;ን
+
+# ትቐርም
+{^g*}			*R*						*b;ን
+
+### weak
+# ትበየ
+**						{^dgr.a2e}
+
+# ትጘበ
+{^g*}					{bn.a2e}
+
+# ትሴመ
+{^V~g*}				{bn.a2e}
+
+[+W,-Y]
+
+### strong
+**				**				{@bg};*w
+
+**				{@bg*};*w*		*d;*r
+
+{@bg*};*w*		*d*;*r*;*yV	*d;*r
+
+*d*;*r*;*yV	*d*;*r*;*yV	*d;*r
+
+### weak
+# ገፗንም
+**				{@bg*};*w*
+
+# ቧናንም
+{@bg*};*w*		*d*;*r*;*yV
+
+# ነሳንም
+*d*;*r*;*yV				*d*;*r*;*yV
+
+[+W,+Y]
+### strong
+
+## labialize final labial; keep final labialized consonants
+**				      	     **				{@b};*w
+
+## palatalize final <d> or <g>, keep final palatals and final <r>
+# labialize 2nd labial or velar, keep 2nd labialized
+**					    {@bg*};*w*		{^dg};*y;*r
+# labialize 1st velar, keep 1st labialized; before 2nd r or n
+{@g*};*w*;*b*;*d*	    *r*				{^dg};*y;*r
+# with 2nd dental leave 1 and 2 unchanged
+**					    *d*				{^dg};*y;*r
+
+### weak
+
+# ሰ𞟮ም ይሰᎀ
+**					{@bg.a2e}
+
+# ነሼም ᎄኔም ᎄጄም ይረሸ ይወረ ይᎄጀ
+{@bg*};*w*;*d*		{^dg.a2e};{ry.a2e}

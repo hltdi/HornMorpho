@@ -1,0 +1,86 @@
+$ c=A|B|C|E|F|G|H|J
+$ a=0|a|i
+$ v=0|p|a|at
+$ t=p|i|j|c
+
+%%c=A,a=0,+strong
+[t=p,+mut]
+[t=i,v=p,+mut]
+*e		*e		*
+
+[t=i,v=0,-mut]
+*e		*		*
+
+[t=j,v=0,-mut,+tr]
+*		*		*
+
+[t=j,v=0,-mut,-tr]
+*		*e		*
+
+%%c=B,a=0,+strong
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ሸከተ
+*Ye		~ye		*
+
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ፈቐረ
+*bre	*qe		*
+
+[t=p,+mut]
+[t=i,v=p,+mut]
+# ጘኸተ
+*qe		*qe		*
+
+[t=i,+mut]
+# ይሸክት
+*Ye		~y		*
+
+[t=i,+mut]
+# ይፈቕር
+*bre	*q		*
+
+[t=i,+mut]
+# ይጘኽት
+*qe		*q		*
+
+[t=j,+mut]
+# የሰክት የፈቅር የገክት
+~ye		~y		*
+
+%%c=C,a=0,+strong
+[t=p,v=0,+mut]
+*a	*e	*
+
+[t=i,v=0,+mut]
+*a	*	*
+
+[t=j,v=0,-mut]
+*a	*	*
+
+%%c=A,a=0,-strong
+# በና
+%3=እ
+[t=p,+mut]
+[t=i,v=p,+mut]
+*e		*ma		-
+
+# በራ
+[t=i,v=0,-mut]
+*e		*a		-
+
+# ብራ
+[t=j,v=0|a]
+*		*a		-
+
+%%a=i,c=A,+strong
+[t=p]
+[t=i,v=p]
+# ስባፐረ
+*	*a	*e	*
+
+[t=i|j,v=0]
+# ይስባፕር የስባፕር
+*	*a	*	*
+

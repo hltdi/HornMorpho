@@ -1,0 +1,104 @@
+abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
+
+POS n N
+->UD  ACC	Case=Acc
+#->UD  GEN	Case=Gen
+->UD PL		Number=Plur
+->UD SG		Number=Sing
+->UD DEF	Definite=Def
+->UD V.MSDR	VerbForm=Inf
+->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
+->UD PSS1S	Number[psor]=Sing,Person[psor]=1
+->UD PSS1P	Number[psor]=Plur,Person[psor]=1
+->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
+->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
+->UD PSS2P	Number[psor]=Plur,Person[psor]=2
+->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
+->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
+->UD PSS3P	Number[psor]=Plur,Person[psor]=3
+#->UD PASS	Voice=Pass
+#->UD CAUS	Voice=Cau
+#->UD RECP1	*Voice=Rcp1
+#->UD RECP2	*Voice=Rcp2
+#->UD ITER	Aspect=Iter
+#->UD CAUS+RECP1	*Voice=CauRcp1
+#->UD CAUS+RECP2	*Voice=CauRcp2
+
+pos:: N:N;; ADJ:ADJ;; PRON:PRON
+pl:: True:PL;; False:SG
+acc:: True:ACC
+p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; p3:PSS3P
+p:: sm3:PSS3SM;; sf3:PSS3SF
+g:: m:MASC;; f:FEM
+
+POS v V
+->UD NEG	Polarity=Neg
+->UD IMP	Mood=Jus
+->UD IPFV	Aspect=Imp
+->UD PFV	Aspect=Perf
+->UD CAUS	Voice=Cau
+->UD RECP1	*Voice=Rcp1
+->UD RECP2	*Voice=Rcp2
+->UD PASS	Voice=Pass
+->UD ITER	Aspect=Iter
+->UD CAUS+RECP1	*Voice=CauRcp1
+->UD CAUS+RECP2	*Voice=CauRcp2
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
+->UD SG		Number=Sing
+->UD PL		Number=Plur
+->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
+->UD AC1S	*AccPers=1,AccNum=Sing
+->UD AC1P	*AccPers=1,AccNum=Plur
+->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
+->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
+->UD AC2PF	*AccPers=2,AccNum=Plur,AccGen=Fem
+->UD AC2PM	*AccPers=2,AccNum=Plur,AccGen=Masc
+->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
+->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
+->UD AC3PF	*AccPers=3,AccNum=Plur,AccGen=Fem
+->UD AC3PM	*AccPers=3,AccNum=Plur,AccGen=Masc
+->UD *RELC	*ClauseType=ACl
+
+t:: i:IPFV;; p:PFV;; j:IMP
+
+pos:: V:V
+
+neg:: NEG
+
+rel:: True:*RELC
+
+## morphological valence/voice
+a,v:: 0,p:PASS;; 0,a:CAUS;; 0,at:CAUS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2
+
+## subjects
+sp:: 1:1;; 2:2;; 3:3
+sn:: 1:SG;; 2:PL
+sg:: m:MASC;; f:FEM
+
+## objects
+# accusative objects (and 3SM DEF)
+op,on,og:: 3,1,m:AC3SM;; 3,1,f:AC3SF;; 3,2,m:AC3PM;; 3,2,f:AC3PF
+op,on,og:: 2,1,m:AC2SM;; 2,1,f:AC2SF;; 2,2,m:AC2PM;; 2,2,f:AC2PF
+op,on:: 1,1:AC1S;; 1,2:AC1P
+
+sconj:: ለ:*RELC
+
+POS cop V
+->UD NEG	Polarity=Neg
+->UD INT	Mood=Int
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
+->UD SG		Number=Sing
+->UD PL		Number=Plur
+->UD FEM	Gender=Fem
+->UD MASC	Gender=Masc
+
+neg:: NEG
+p:: 1:1;; 2:2;; 3:3
+n:: 1:SG;; 2:PL
+g:: m:MASC;; f:FEM

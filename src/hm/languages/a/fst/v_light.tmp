@@ -1,0 +1,83 @@
+$ c=A
+$ a=0|i
+$ v=0|p|a|as
+$ t=p|i|j|c
+
+%%a=0,c=A,+strong
+[t=p]
+[t=i,v=p] 
+^e	*:e	*
+
+[t=j,v=p]
+^e	*e	*
+
+[t=i|j|c,v=as]
+^e	*:	*
+
+[t=i|c,v=0,-dup23]
+[t=i,v=a]
+[t=c,v=p]
+^e	*	*
+
+[t=i|c,v=0,+dup23]
+^e	*:	-
+
+[t=j,v=0]
+**	*e	*
+
+[t=j|c,v=a]
+**	*	*
+
+%%a=0,c=A,-strong
+%3=ይ
+[t=p]
+*e	*:e	-
+
+[t=i,v=p|as]
+[t=j,v=as]
+*e	*:	-
+
+[t=i,v=0|a]
+[t=j,v=p]
+*e	*	-
+
+[t=j,v=0|a]
+*	*	-
+
+[t=c,v=0|p|as]
+*e	*	ት
+
+[t=c,v=a]
+*	*	ት
+
+%%a=i,c=A,+strong
+# No as
+[t=p,v=0|p|a]
+[t=i,v=p]
+*e	*a	*:e	*
+
+[t=i,v=0|a]
+*e	*a	*:	*
+
+[t=j,v=p]
+*e	*a	*e	*
+
+[t=j,v=0|a]
+[t=c,v=0|p|a]
+*e	*a	*	*
+
+%%a=i,c=A,-strong
+
+%3=ይ
+[t=p,v=0|p|a]
+*e	*a	*:e	-
+
+[t=i,v=0|p|a]
+*e	*a	*:	-
+
+[t=j,v=0|p|a]
+*e	*a	*	-
+
+[t=c,v=0|p|a]
+*e	*a	*	ት
+

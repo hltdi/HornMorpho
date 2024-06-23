@@ -1,0 +1,7 @@
+$ pre
+  [d=inf,pos=N,-pl]
+    ም-			[a=0,c=A|B|G|H|I|J];[a=0,v=0|a,c=C|E|F]
+    ም/-			[a=i|a];[a=0,v=p,c=C|E|F]
+
+$ stem
+  >>vn<<

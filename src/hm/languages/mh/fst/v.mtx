@@ -1,0 +1,59 @@
+$ conj_prep_pre
+  የ   [cpp=የ,tm=prf,+sub,-cvb,-neg]
+  --  [cpp=None,tm=prf,+neg];[cpp=None,tm=prf,+sub,-neg];[tm=imf];[tm=j_i]
+
+$ neg
+  ኣን   [+neg,tm=prf]
+  ኣ    [+neg,tm=imf|j_i]
+  --   [-neg]
+
+$ sb_pre
+  ይ   [tm=imf,sp=3,sn=2];[tm=imf,sp=3,sn=1,sg=m];[tm=imf,sp=0]
+  የ   [tm=j_i,sp=3,sn=2,-neg];[tm=j_i,sp=3,sn=1,sg=m,-neg];[tm=j_i,sp=0,-neg]
+  ት   [tm=imf,sp=2];[tm=imf|j_i,sp=3,sn=1,sg=f];[tm=j_i,sp=2,+neg]
+  አ   [tm=imf,sp=1,sn=1,-neg]
+  ል   [tm=j_i,sp=1,sn=1]
+  ን   [tm=imf|j_i,sp=1,sn=2];[tm=imf,sp=1,sn=1,+neg];[tm=j_i,sp=1,sn=1]
+  --  [tm=prf];[tm=j_i,sp=2,-neg]
+
+$ voice
+  ተ   [tm=prf,vc=[+ps]];[tm=j_i,sp=2,vc=[+ps]]
+  /   [tm=imf,vc=[+ps]];[tm=j_i,sp=1|3,vc=[+ps]]
+  --  [vc=[-ps]]
+
+$ stem
+  +v_stem+    []
+
+$ sb_tm
+  --   [lx=P0,tm=prf,-neg];[lx=Pi,tm=prf,as=it];
+       [lx=I0,tm=imf,vc=[-ps]];[lx=I0,tm=imf,sn=2,vc=[-ps]]
+
+$ sb_suf
+     [tm=prf,sp=1,sn=1]
+  ሐ   [tm=prf,sp=2,sn=1,sg=m]
+  ⷕ   [tm=prf,sp=2,sn=1,sg=f]
+  =አ    [sp=3,sn=1,sg=m,tm=prf]
+  =አት   [sp=3,sn=1,sg=f,tm=prf]
+  ነ     [sp=1,sn=2]
+  ሕᎃ  [tm=prf,sp=2,sn=2,sg=m]
+  ሕማ  [tm=prf,sp=2,sn=2,sg=f]
+  ᎃ   [sp=3,sn=2,sg=m];[tm=imf|j_i,sp=2,sn=2,sg=m]
+  ማ    [sp=3,sn=2,sg=f];[tm=imf|j_i,sp=2,sn=2,sg=f]
+#  =ኢ   [sp=2,sn=1,sg=f,tm=imf|j_i]
+  --   [tm=imf|j_i,sp=1,sn=1];[tm=imf|j_i,sp=2,sn=1];[tm=imf|j_i,sp=3,sn=1];
+       [sp=0]
+
+$ ob_suf
+  [op=3,on=1,og=m]
+    =ኢ   [sp=0]
+    =ኡ   [sp=2,sn=1,sg=f]
+  [op=2,on=1,og=m]
+    /ከ   [sp=2,sn=1,sg=f];[sp=0]
+  --   [op=None,sp=1|2|3]
+
+$ end
+  ም    [tm=prf,-sub,-neg,-cvb];[tm=prf,+sub,-neg,+cvb]
+  =ኡ   [tm=imf,-sub,-neg,sp=1];[tm=imf,-sub,-neg,sp=2|3,sn=1,sg=m]
+  F    [tm=imf,-sub,-neg,sp=3,sn=1,sg=f,op=None]
+  /ት   [tm=imf,-sub,-neg,sp=2,sn=1,sg=f];[tm=imf,-sub,-neg,sp=2|3,sn=2]
+  --   [tm=j_i];[tm=prf,+neg];[tm=prf,+sub,-cvb];[tm=imf,+sub];[tm=imf,+neg,-sub]

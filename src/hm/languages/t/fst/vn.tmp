@@ -1,0 +1,99 @@
+$ c=A|B|C|E|F|G|H|I|J
+$ a=0|a|i
+#$ v=0|p|a
+$ t=a|inf|ins|m
+
+# abbreviation for "laryngeals"
+$$ L እ|ሕ|ዕ|ህ
+
+%%a=0,c=A,+strong
+[d=inf,-K2,+K3]
+**	*a	**
+
+%%a=i,c=A,+strong
+[d=inf,+K2,+K3,+K4]
+**	**	*a	**
+
+%%a=a,c=A,+strong
+[d=inf,+K2,+K3]
+**	*a	**
+
+%%a=0,c=B,+strong
+[d=inf,-K2,+K3]
+**	*a:	**
+
+%%a=i,c=B,+strong
+[d=inf,+K2,-K3,+K4]
+**	**	*:a	**
+
+%%a=a,c=B,+strong == A
+
+%%a=0,c=C,+strong
+[d=inf,+K2,+K3]
+**	**a	**
+
+%%a=i,c=C,+strong == A
+
+%%a=0,c=E,+strong
+[d=inf,+K2,-K3,+K4]
+**	**	*a	**
+
+%%a=i,c=E,+strong
+[d=inf,+K2,+K3,+K4,+K5]
+**	**	**	*a	**
+
+%%a=a,c=E,+strong
+[d=inf,+K2,+K3,+K4]
+**	**	*a	**
+
+%%a=0,c=F,+strong
+[d=inf,+K2,-K3,+K4]
+**	**	*a	**
+
+%%a=i,c=F,+strong == E
+
+%%a=0,c=G,+strong
+[d=inf,-K2,+K3,-K4,+K5]
+*	**	**	*a	**
+
+%%a=a,c=G,+strong
+[d=inf,-K2,+K3,-K4,+K5]
+*	**	**	*a	**
+
+%%a=i,c=G,+strong
+[d=inf,-K2,+K3,+K4,+K5,+K6]
+*	**	**	**	*a	**
+
+%%a=0,c=H,+strong
+[d=inf,-K2,+K3,-K4,+K5]
+*	**	**	*a	**
+
+%%a=i,c=H,+strong == G
+
+%%a=0,c=I,+strong
+[d=inf,-K2,+K3,+K4]
+*	**	*a	**
+
+%%a=a,c=I,+strong
+[d=inf,-K2,+K3,+K4]
+*	**	*a	**
+
+%%a=i,c=I,+strong
+[d=inf,-K2,+K3,+K4,+K5]
+*	**	**	*a	**
+
+%%a=0,c=J,+strong
+[d=inf,-K2,+K3,+K4]
+*	**	*a	**
+
+%%a=i,c=J,+strong == I
+
+%%a=0,c=A,-strong
+
+%2=ው
+[d=inf,+K3]
+*Wa	-	*
+
+[d=inf,+Ke]
+*a	-	*
+

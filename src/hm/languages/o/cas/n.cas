@@ -1,0 +1,44 @@
+weighting = UNIFICATION
+
+## Special characters
+
+## Vowel stringsets
+$$ = {a, A, e, E, i, I, o, O, u, U, aa, Aa, ee, Ee, ii, Ii, oo, Oo, uu, Uu}
+$ = {a, e, i, o, u, aa, ee, ii, oo, uu}
+$1 = {a, e, i, o, u}
+$2 = {aa, ee, ii, oo, uu}
+$$1 = {a, e, i, o, u, A, E, I, O, U}
+$$2 = {aa, ee, ii, oo, uu, Aa, Ee, Ii, Oo, Uu}
+## Consonant stringsets
+# all consonants, plus ~
+!! = {b, c, ch, d, dh, f, g, h, j, k, l, m, n, ny, p, ph, q, r, s, sh, t, v, w, x, y, z, ', -, B, Ch, D, Dh, F, G, H, J, K, L, M, N, Ny, P, Ph, Q, R, S, Sh, T, V, W, X, Y, Z, ~}
+! = {b, c, ch, d, dh, f, g, h, j, k, l, m, n, ny, p, ph, q, r, s, sh, t, v, w, x, y, z, ', ~}
+!1 = {b, c, d, dh, f, g, h, j, k, l, m, n, p, ph, q, r, s, t, v, w, x, y, z, ', ~}
+!2 = {ch, ny, sh}
+!!1 = {b, c, d, dh, f, g, h, j, k, l, m, n, p, ph, q, r, s, t, v, w, x, y, z, ', ~, B, D, Dh, F, G, H, J, K, L, M, N, P, Ph, Q, R, S, T, V, W, X, Y, Z}
+!!2 = {ch, ny, sh, Ch, Ny, Sh}
+## Special characters
+# L: vowel lengthening (genitive), D: definite suffix vowel, N: 1ps suffix
+# case: S, G, D, A, I, X (locative)
+% = {L, N, C, S, D, A, I, G, X}
+%% = {-, <, >}
+
+{v2i} = i:a;i:e;i:o;i:u;i:aa;i:ee;i:ii;i:oo;i:uu
+{V2VV} = aa:a;ee:e;ii:i;oo:o;uu:u
+
+#### ?? jarmaaya -> jarmeenyi, etc.
+###>wy_N<
+# various C+C assimilation
+>n_assim<
+# 1s_sbj -an/-n
+>NNn<
+# Conjunctions
+>conj<
+# Case
+>case<
+# Definiteness
+>def<
+# Infinitive
+>inf<
+## Morphotactics
+>n.mtx<

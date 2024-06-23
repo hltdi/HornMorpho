@@ -1,0 +1,87 @@
+#$ conj_prep_pre
+#  የ		[t=p,+rel,-mv]
+#  ብ  		[cnj1=ብ,t=i,-rel,-mv]
+#  ት  		[cnj1=ስ,t=i,-rel,-mv]
+#  ተ		[adp=ከ,t=i|p,+rel,-mv]
+#  በ		[adp=በ,t=i|p,+rel,-mv]
+#  --  	[-rel,cnj1=None,adp=None];[v=j|c,-mv];[v=i,-mv,+rel]
+
+#$ sub_bound
+#  -
+
+$ neg
+  ኣ			[+neg,t=i|j]
+  ኣን			[+neg,t=p,-proh]
+  እን			[+neg,t=p,+proh]
+  --   		[-neg]
+
+$ neg_bound
+  -
+
+$ sb_pre
+  ይ		[t=i,sp=3,sn=2,-imp];[t=i,sp=3,sn=1,sg=m,-imp];[t=i,+imp,+W,+Y];[t=j,sp=3,sn=2,-imp,+neg];[t=j,sp=3,sn=1,sg=m,-imp,+neg];[t=j,+imp,+W,+Y,+neg]
+  የ		[t=j,sp=3,sn=2,-imp,-neg];[t=j,sp=3,sn=1,sg=m,-imp,-neg];[t=j,+imp,+W,+Y,-neg]
+  ት		[t=i,sp=2,-imp];[t=i|j,sp=3,sn=1,sg=f,-imp];[t=j,sp=2,+neg,-imp]
+  አ		[t=i,sp=1,sn=1,-neg,cnj1=None,-imp]
+  ን 	      	[t=i|j,sp=1,sn=2,-imp];[t=i,sp=1,sn=2,cnj1=ብ|ስ,-imp];[t=i,sp=1,sn=1,+neg,-imp];[t=j,sp=1,sn=1,-imp]
+  --  	[t=p];[t=j,sp=2,-neg,-imp]
+
+$ sp_bound
+  -
+
+$ voice_pre
+  ኣ		[v=a]
+  # % need to handle gemination
+  ኣት  	[v=at]
+  # ተ when word initial; ት or gemination otherwise
+  ተ		[t=p,v=p];[t=j,sp=2,v=p]
+  --  	[v=0];[t=i,v=p];[t=j,sp=1|3,v=p]
+
+$ prestem
+  +
+
+$ stem
+   >>v_stem<<
+
+$ poststem
+  +
+
+$ sb_suf
+  አ		[sp=3,sn=1,sg=m,t=p,-imp,-Y];[t=p,sp=3,+imp,+W,+Y]
+  አች   	[sp=3,sn=1,sg=f,t=p,-imp,-Y]
+  ኦ		[sp=3,sn=2,sg=m,t=p,-imp,-W,-Y];[sn=2,sg=m,t=i|j,-imp,-Y,-W]
+  አማ		[sp=3,sn=2,sg=f,t=p,-imp,-W,-Y];[sn=2,sg=f,t=i|j,-imp,-Y,-W]
+  ኽ		[sp=2,sn=1,sg=f,t=p,-imp,-W,-Y]
+  ከ		[sp=2,sn=1,sg=m,t=p,-imp,-Y]
+  ኹ		[sp=2,sn=2,sg=m,t=p,-imp,-W,-Y]
+  ኽማ 	[sp=2,sn=2,sg=f,t=p,-imp,-W,-Y]
+  𞟷		[sp=1,sn=1,t=p,-imp,-Y]
+  ነ    	[sp=1,sn=2,-imp,-Y]
+  --		[t=i|j,sp=1,sn=1,-Y];[t=i|j,sp=2,sn=1,sg=m,-Y];[t=i|j,sp=3,sn=1,-Y];[+imp,+W,+Y];[t=i|j,sp=2,sn=1,sg=f,-W,+Y]
+
+$ ss_bound
+  -
+
+#$ ob_suf
+#  # light suffixes
+#  [sp=1,sn=1,op=1|2|3];[sp=2,sn=1,sg=m,op=1|2|3];[sp=3,sn=1,op=1|2|3,-imp]
+#    ን		[op=3,on=1,og=m,oc=a,+W]
+#    ና		[op=3,on=1,og=f,oc=a,-W]
+#  [sp=1,sn=2,op=1|2|3,-W];[sp=2,sn=1,sg=f,op=1|2|3,-W];[sp=2|3,sn=2,op=1|2|3,-W];[+imp]
+#    ኤ		[op=3,on=1,og=m,oc=a]
+#  [op=3,on=1,og=m]
+#  [op=3,on=1,og=f]
+#  [op=3,on=2]
+#  [op=1,sp=2|3]
+#  [op=2,sp=1|3]
+#   --   	[op=0]
+
+$ ob_bound
+  -
+
+$ final
+  ም		<>	[t=p,-neg,+mv];[t=i|j,-mv,+cv]
+  --		<>	[-mv,-cv];[t=i|j,+mv];[t=p,+neg,+mv]
+
+$ end
+  --		[pos=v]

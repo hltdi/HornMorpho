@@ -1,0 +1,34 @@
+$ conj
+  ወ [conj=ወ]
+  ከ [conj=ከ]
+  -- [conj=None]
+
+$ conj_bound
+  -
+
+$ def
+  ለ	[+def,pos=N|ADJ]
+  --	[-def];[pos=PRON|NUM]
+
+$ prestem
+  <
+
+$ stem
+  +n_stem+  [pos=N|ADJ|PRON|NUM,d=0]
+#  >>vn_stem<<
+
+$ poststem
+  >
+
+$ poss
+  ዬ		[p=s1,+pp]
+  ነ		[p=p1,+pp]
+  ከ		[p=sm2,+pp]
+  ኪ		[p=sf2,+pp]
+  ኩም 	[p=pm2,+pp]
+  ክን 		[p=pf2,+pp]
+  ኡ 		[p=sm3,+pp]
+  አ 		[p=sf3,+pp]
+  ኦም 	[p=pm3,+pp]
+  አን		[p=pf3,+pp]
+  --		[p=0,-pp]

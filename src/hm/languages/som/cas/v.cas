@@ -1,0 +1,16 @@
+weighting = UNIFICATION
+
+## Special characters
+# I: infinitive: -i, -n, -an
+# T: 2, 3sf agreement: -t, -s
+
+## Vowel stringsets
+$ = {a, e, i, o, u, aa, ee, ii, oo, uu}
+$1 = {a, e, i, o, u}
+$2 = {aa, ee, ii, oo, uu}
+## Consonant stringsets
+# all consonants
+! = {b, c, d, dh, f, g, h, j, k, kh, l, m, n, p, q, r, s, sh, t, v, w, x, y, z, ', -}
+
+>T<
+>v.mtx<

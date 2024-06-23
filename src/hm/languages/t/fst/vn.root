@@ -1,0 +1,45 @@
+$$ L	' ` H h
+$$ W	w
+$$ Y	y
+
+## A roots
+# simplex
+%A::		1:I;		2:a;		3:I
+%A,2=w::	1:Wa,a;	2:0;		3:I
+%A_a::		1:I;		2:a;		3:I
+%A_i::		1:I;		2:I|a;		3:I
+
+## B roots
+%B::		1:I;	2:/a;	3:I
+%B_a::		1:I;	2:/a;	3:I
+%B_i::		1:I;	2:I|/a;	3:I
+
+## C roots
+%C::		1:I;	2:a;	3:I
+%C_i::		1:I;	2:I|a;	3:I
+
+## 4-consonant roots
+%E::	       1:I;	2:I;	3:a;	4:I
+%E_a::	       1:I;	2:I;	3:a;	4:I
+%E_i::	       1:I;	2:I;	3:I|a;	4:I
+
+%F::	       1:I;	2:I;	3:a;	4:I
+%F_i::	       1:I;	2:I;	3:I|a;	4:I
+
+%I::		1:I;	2:I;	3:a;	4:I
+%I_a::		1:I;	2:I;	3:a;	4:I
+%I_i::		1:I;	2:I;	3:I|a;	4:I
+
+# ተንሳፈፈ
+%J::		1:I;	2:I;	3:a;	4:I
+%J_i::		1:I;	2:I;	3:I|a;	4:I
+
+## 5-consonant roots
+%G::		1:I;	2:I;	3:I;	4:a;	5:I
+%G_a::		1:I;	2:I;	3:I;	4:a;	5:I
+%G_i::		1:I;	2:I;	3:I;	4:I|a;	5:I
+
+%H::		1:I;	2:I;	3:I;	4:a;	5:I
+%H_i::		1:I;	2:I;	3:I;	4:I|a;	5:I
+
++vroot+

@@ -50,10 +50,10 @@ Versions/
 #Docs/
 docs/old
 notes/
-src/hm/languages/*
 src/hm/ext_data
 src/data
-src/languages/*/pkl
+src/hm/languages/*/pkl
+src/hm/languages/*/cfst
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
