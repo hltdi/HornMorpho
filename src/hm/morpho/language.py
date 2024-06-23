@@ -47,8 +47,8 @@ Morphology objects defined in morphology.py).
 
 import os, sys, re, copy, itertools, copy
 
-#LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
-LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
+LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
+#LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
 #LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'languages')
 
 from .morphology import *

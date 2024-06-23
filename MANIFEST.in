@@ -1,4 +1,4 @@
-include src/languages/eng/*/*.lex
+include src/languages/eng/lex/*.lex
 include src/languages/eng/eng.lg
 include src/languages/eng/eng.um
 include src/hm/morpho/geez/*.txt

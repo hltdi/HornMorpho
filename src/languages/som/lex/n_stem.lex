@@ -1,5 +1,0 @@
-macallin   [g=m,en=teacher]
-nin        [g=m,en=man]
-wiil       [g=m,en=boy]
-lacag      [g=f,en=money]
-gabar      [g=f,en=girl]

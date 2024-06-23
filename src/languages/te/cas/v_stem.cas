@@ -1,7 +1,0 @@
-weighting = UNIFICATION
-
-#>stem_vowels<
-+v_irr.root+
->v.tmp<
->v.root<
-
