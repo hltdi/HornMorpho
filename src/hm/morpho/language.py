@@ -774,12 +774,16 @@ class Language:
                     segs = m.groups()[0].strip()
                     # prefixes, stem, suffixes
                     segs = segs.split(';;')
-                    segs = [segs[0].split(';'), segs[1], segs[2].split(';')]
-                    pre_segs = [eval(s) for s in segs[0]]
+                    pre_segs, stem_segs, suf_segs = [segs[0].split(';'), segs[1], segs[2].split(';')]
 #                    print("**  pre_segs {}".format(pre_segs))
-                    stem_segs = eval(segs[1])
-#                    print("**  stem_segs {}".format(stem_segs))
-                    suf_segs = [eval(s) for s in segs[2]]
+                    # there may be no prefixes
+                    if any(pre_segs):
+                        pre_segs = [eval(s) for s in pre_segs]
+                    else:
+                        pre_segs = []
+                    stem_segs = eval(stem_segs)
+                    # there may be no suffixes
+                    suf_segs = [eval(s) for s in suf_segs]
 #                    print("**  suf_segs {}".format(suf_segs))
                     segs = [pre_segs, stem_segs, suf_segs]
                     segments[pos] = segs
@@ -1376,15 +1380,6 @@ class Language:
             opt_string += 'phonetic'
         else:
             opt_string += 'analysis/generation'
-        # Only look for MWE FSTs for segmentation
-#        if not self.has_cas(generate=phon, guess=False, phon=phon,
-#                            experimental=False, mwe=mwe,
-#                            segment=False, simplified=False):
-#            print('No {} FST available for {}!'.format(opt_string, self))
-#        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
-#                                        [self, ' (' + opt_string + ')' if opt_string else ''],
-#                                        self.tlanguages)
-#        print(msg_string)
         print("Loading FSTs for {}".format(self))
         # In any case, assume the root frequencies will be needed?
         self.morphology.set_root_freqs()
@@ -1393,6 +1388,7 @@ class Language:
             # Load unanalyzed words
             self.morphology.set_words(ortho=True)
             self.morphology.set_suffixes(verbose=verbose)
+            self.morphology.set_abbrevs()
         if phon:
             # Load unanalyzed words
             self.morphology.set_words(ortho=False)
@@ -1620,7 +1616,7 @@ class Language:
             # This assumes the cache stores "processed" analyses
 #            print("&& found cached token {}".format(cached))
             return cached.copy()
-        special_anal = self.analyze_special5(token)
+        special_anal = self.analyze_special(token)
         if special_anal:
             special_anal = self.check_analpos(special_anal, analpos)
             # If this is a numeral, punctuation, or abbreviation, don't bother going further.
@@ -1676,8 +1672,12 @@ class Language:
         if word in words:
             pos = ''
             feats = ''
-            form, cats = self.morphology.words1[word]
             freq = self.morphology.get_freq(word)
+            lex = self.morphology.words1[word]
+            if len(lex) == 1:
+                pos = lex[0]
+                return [{'token': word, 'pos': pos, 'nsegs': 1, 'freq': freq}]
+            form, cats = self.morphology.words1[word]
             if cats[0] == '[':
                 # These are HM features
                 feats = FeatStruct(cats)
@@ -1709,17 +1709,17 @@ class Language:
                 return [anal]
 #                return self.check_analpos(anal, analpos)
 
-    def analyze_special5(self, token):
+    def analyze_special(self, token):
         '''
         Handle special cases, currently abbreviations, numerals, and punctuation.
         '''
         if self.morphology.is_punctuation(token):
             return {'pos': 'PUNCT', 'token': token, 'nsegs': 1}
-#            return [self.process_punc(token, segment=segment, print_out=print_out)]
+        if abb := self.morphology.get_abbrev(token):
+            expansion, pos = abb
+            return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'tokens': expansion.split()}
         if self.morphology.is_abbrev(token):
-#            print("{} is an abbreviation".format(token))
-            return {'pos': 'N', 'token': token, 'nsegs': 1}
-#            return [self.process_abbrev(token, segment=segment, print_out=print_out)]
+            return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'nsegs': 1}
         numeral = self.morphology.match_numeral(token)
         if numeral:
             prenum, num, postnum = numeral

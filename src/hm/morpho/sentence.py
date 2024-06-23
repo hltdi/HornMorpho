@@ -49,13 +49,13 @@ class HMToken(Token):
              analysis=[])
 
     @staticmethod
-    def create1(index, token, lemma, pos, feats, analysis):
+    def create1(index, token, lemma, pos, feats, analysis, xpos=None):
         '''
         Make an HMToken for an unsegmented token.
         '''
 #        print(" ** creating HMT for {}, index {}".format(token, index))
         return HMToken(
-            {'id': index, 'form': token, 'lemma': lemma, 'upos': pos, 'xpos': pos, 'feats': feats, 'head': index,
+            {'id': index, 'form': token, 'lemma': lemma, 'upos': pos, 'xpos': xpos or pos, 'feats': feats, 'head': index,
              'deprel': None, 'deps': None, 'misc': None},
              analysis=analysis
              )
@@ -69,9 +69,9 @@ class HMToken(Token):
              )
 
     @staticmethod
-    def create_morph(index, string, lemma, pos, feats, head, deprel, analysis):
+    def create_morph(index, string, lemma, pos, feats, head, deprel, analysis, xpos=None):
         return HMToken(
-            {'id': index, 'form': string, 'lemma': lemma, 'upos': pos, 'xpos': pos,
+            {'id': index, 'form': string, 'lemma': lemma, 'upos': pos, 'xpos': xpos or pos,
              'feats': feats, 'head': head, 'deprel': deprel, 'deps': None, 'misc': None
                 },
                 analysis=analysis
@@ -234,11 +234,11 @@ class Sentence():
 
         if unsegment:
             pos = Sentence.convertPOS(analdict)
-            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict)])
+            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict, analdict.get('xpos'))])
 
         if analdict['nsegs'] == 1:
             pos = Sentence.convertPOS(analdict)
-            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict)])
+            return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict, analdict.get('xpos'))])
 
         conllu = TokenList()
         # Create the line for the whole token
@@ -257,9 +257,10 @@ class Sentence():
                     token = analdict['tokens'][0]
                     string = token['token']
                     pos = mwe_feats.get('pos', None)
+                    xpos = mwe_feats.get('xpos', None)
                     head = stemdict.get('head', 0)+2
                     conllu.append(
-                        HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict)
+                        HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict, xpos=xpos)
                         )
                     index += 1
 #                else:
@@ -275,7 +276,7 @@ class Sentence():
                 head += 1
 #            print(" *** lemma for prefix {}".format(string))
             conllu.append(
-                HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p)
+                HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'))
                 )
             index += 1
 
@@ -284,9 +285,10 @@ class Sentence():
         if mwe_first:
             head += 1
         conllu.append(
-            HMToken.create_morph(index, stemdict['seg'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'),
-                                 head, stemdict.get('dep'), stemdict)
-                                 )
+            HMToken.create_morph(
+                index, stemdict['seg'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'), head,
+                stemdict.get('dep'), stemdict, xpos=stemdict.get('xpos')
+                ))
         index += 1
         for s in analdict['suf']:
             if not s:
@@ -297,8 +299,8 @@ class Sentence():
             if mwe_first:
                 head += 1
             conllu.append(
-                HMToken.create_morph(index, string, s.get('lemma', string), pos, s.get('udfeats'), head, s.get('dep'), s)
-                )
+                HMToken.create_morph(index, string, s.get('lemma', string), pos, s.get('udfeats'), head, s.get('dep'), s, s.get('xpos')
+                ))
             index += 1
         
         return conllu

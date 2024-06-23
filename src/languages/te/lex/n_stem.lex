@@ -35,19 +35,59 @@
 ሽሕ	ሽሕ	[pos=NUM,-pl]
 አሽሓት	አሽሓት	[pos=NUM,+pl]
 ## some nouns
+# special possessives
+አፍ     ''		[-fem,-pl,pos=N,-pp];[-fem,-pl,pos=N,p=s1|p1|sm2|sf2|pm2|pf2]
+አፉ     አፍ		[-fem,-pl,+pp,pos=N]
+አፍህ     አፍ		[-fem,-pl,pos=N, p=sm3|sf3|pm3|pf3]
+አብ     ''		[-fem,-pl,pos=N,-pp];[-fem,-pl,pos=N,p=s1|p1|sm2|sf2|pm2|pf2]
+አቡ     አብ		[-fem,-pl,+pp,pos=N]
+አብህ     አብ	[-fem,-pl,pos=N, p=sm3|sf3|pm3|pf3]
+ሐም     ''		[-fem,-pl,pos=N,-pp];[-fem,-pl,pos=N,p=s1|p1|sm2|sf2|pm2|pf2]
+ሐሙ     ሐም	[-fem,-pl,+pp,pos=N]
+ሐምህ     ሐም	[-fem,-pl,pos=N, p=sm3|sf3|pm3|pf3]
+ወድ	''		[-fem,-pl,pos=N,-pp]
+ወል	ወድ		[-fem,-pl,pos=N,-pp];[-fem,-pl,pos=N,p=s1|p1|sm2|sf2|pm2|pf2]
+ወልድ	ወድ		[-fem,-pl,pos=N, p=sm3|sf3|pm3|pf3]
+ወ/ድ	ወድ		[-fem,-pl,pos=N, p=sm3|sf3|pm3|pf3]
+# ordinary masculine nouns
 ክታብ    ''		[-fem,-pl,pos=N]
 ወድ     ''		[-fem,-pl,pos=N]
-አፍ     ''		[-fem,-pl,pos=N]
 እናስ    ''		[-fem,-pl,pos=N]
 ረ/ቢ    ''		[-fem,-pl,pos=N]
-አብ     ''		[-fem,-pl,pos=N]
 ብዕራይ   ''	[-fem,-pl,pos=N]
+ወራት    ''		[-fem,-pl,pos=N]
 ንጉስ    ''		[-fem,-pl,pos=N]
-እም     ''		[+fem,-pl,pos=N]
+ብእስ    ''		[-fem,-pl,pos=N]
+# feminine nouns requiring -t before 1/3 possessives
+ክርን	   ''	 [+fem,-pl,pos=N,-pp];[+fem,-pl,pos=N,p=sm2|sf2|pm2|pf2]
+ክርንት   ክርን	 [+fem,-pl,pos=N,p=s1|n1|sm3|sf3|pm3|pf3]
+ዕን	   ''	 [+fem,-pl,pos=N,-pp];[+fem,-pl,pos=N,p=sm2|sf2|pm2|pf2]
+ዕንት	   ዕን	 	 [+fem,-pl,pos=N,p=s1|n1|sm3|sf3|pm3|pf3]
+ነዐል	   ''	 [+fem,-pl,pos=N,-pp];[+fem,-pl,pos=N,p=sm2|sf2|pm2|pf2]
+ነዐልት	   ነዐል	 [+fem,-pl,pos=N,p=s1|n1|sm3|sf3|pm3|pf3]
+ሐል	   ''	 [+fem,-pl,pos=N,-pp];[+fem,-pl,pos=N,p=sm2|sf2|pm2|pf2]
+ሐልት	   ሐል	 [+fem,-pl,pos=N,p=s1|n1|sm3|sf3|pm3|pf3]
+ወለት	   ''	 [+fem,-pl,pos=N,-pp];[+fem,-pl,pos=N,p=sm2|sf2|pm2|pf2]
+ወለ/ት   ወለት	 [+fem,-pl,pos=N,p=s1|n1|sm3|sf3|pm3|pf3]
+# one syllable, final C geminated before 3 poss suffix
+እም     ''		[+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+እ/ም    እም	[+pl,pos=N,p=sm3|sf3|pm3|pf3]
+# ordinary feminine nouns
 ዐድ     ''		[+fem,-pl,pos=N]
 ገበይ    ''		[+fem,-pl,pos=N]
 እዋን    ''		[+fem,-pl,pos=N]
 እ/ሲት   ''	[+fem,-pl,pos=N]
+# others, gender unclear
+# one syllable, final C geminated before 3 poss suffix
+ልብ    ''	      [+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+ል/ብ   ልብ	      [+pl,pos=N,p=sm3|sf3|pm3|pf3]
+ዐድ    ''	      [+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+ዐ/ድ   ዐድ	      [+pl,pos=N,p=sm3|sf3|pm3|pf3]
+ክስ    ''	      [+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+ክ/ስ   ክስ	      [+pl,pos=N,p=sm3|sf3|pm3|pf3]
+# regular
+ህገ     ''		[-pl,pos=N]
+እዴ     ''		[-pl,pos=N]
 ቤት     ''		[-pl,pos=N]
 ስእሊ    ''		[-pl,pos=N]
 አካን    ''		[-pl,pos=N]
@@ -63,8 +103,6 @@
 ዐርቀይ   ''		[-pl,pos=N]
 እንቆቅሖ  ''	[-pl,pos=N]
 ከትክ/ታይ ''	[-pl,pos=N]
-# plurals
-አብያት   ቤት	[+pl,pos=N]
 # collectives
 አ/ዳም   ''	[-fem,pos=N]
 ገቢል    ''		[-fem,pos=N]
@@ -77,6 +115,9 @@
 መንሰዓይ	''	[-fem,-pl,pos=N]
 መንሰዓይት	''	[+fem,-pl,pos=N]
 # plurals
+አዋልድ	ወለት	[+pl,+fem,pos=N]
+ውላድ		ወድ	[+pl,-fem,pos=N]
+አብያት   ቤት	[+pl,pos=N]
 ስእሊታት	ስእሊ	[+pl,pos=N]
 አካናት	አካን	[+pl,pos=N]
 ዓሞታት	ዓመት	[+pl,pos=N]
@@ -93,6 +134,11 @@
 ነ/ገስ	       ንጉስ	[+pl,pos=N]
 አብዕራት     ብዕራይ  [+pl,pos=N]
 ዐራ/ቂት	 ዐርቀይ	[+pl,pos=N]
+# plurals (አCCC) with -ት before 3 poss suffixes
+አጽፍር	 ጸፍር		[+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+አጽፍርት	 ጸፍር		[+pl,pos=N,p=sm3|sf3|pm3|pf3]
+አብእስ	ብእስ		[+pl,pos=N,-pp];[+pl,pos=N,p=s1|n1|sm2|sf2|pm2|pf2]
+አብእስት	ብእስ		[+pl,pos=N,p=sm3|sf3|pm3|pf3]
 # adverbial nouns (some included in words1.lex)
 በን	     ''	[pos=N]
 በይን	     በን	[pos=N]

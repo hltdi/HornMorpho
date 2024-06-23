@@ -340,7 +340,8 @@ def read_conv(filename, simple=False):
 
 #def larynA(form):
 
-def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False, gem_geez=GEMINATION_GEEZ):
+def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, laryngealA=False,
+              double2gem=False, gem_geez=GEMINATION_GEEZ):
     '''
     Convert form in SERA to Geez, using translation table.
     (This is increasingly ugly; it needs to be cleaned up at some point.)
@@ -359,6 +360,14 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
     res = ''
     n = 0
     nochange = False
+    if double2gem:
+        chars = []
+        for i, c in enumerate(form):
+            if i < len(form) - 1 and c == form[i+1]:
+                chars.append('/')
+            else:
+                chars.append(c)
+        form = ''.join(chars)
     # punctuation before roman chars
     while n < len(form):
         char = form[n]
@@ -445,9 +454,10 @@ def sera2geez(table, form, lang='am', gemination=False, deepenthesize=True, lary
         n += 1
     return res
 
-def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=False, gem_geez=GEMINATION_GEEZ):
+def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=False, gem_geez=GEMINATION_GEEZ,
+            double2gem=False):
     return \
-      sera2geez(get_table(lang, False), form, lang=lang,
+      sera2geez(get_table(lang, False), form, lang=lang, double2gem=double2gem,
                 gemination=gemination, deepenthesize=deepenthesize, gem_geez=gem_geez)
 
 def romanize(form, lang='am', normalize=True, gemination=False):

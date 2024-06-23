@@ -1,18 +1,10 @@
-# HornMorpho,version 5.1
-#### 2024.6.5
-
-## Changes since version 5.0
-
-- Starting in HornMorpho 5.1, the data for particular languages is not included in the distribution. Once you have installed HM, you will need to download the data from the language(s) you want to work with. See the [Installation](#install) section below.
-
-- Version 5.1 adds Afaan Oromoo and Tigre to the languages included.
-
-## Introduction
+# HornMorpho,version 5.0
+#### 2024.5.27
 
 ***HornMorpho*** (HM) is a Python program that performs morphological
 analysis and generation in various languages of the Horn of Africa.
-The languages supported in Version 5.1 are Amharic, Afaan Oromoo, Tigrinya, and Tigre.
-All examples within this document are Amharic; future versions will include examples from the other languages.
+The languages supported in Version 5.0 are Amharic and Tigrinya.
+All examples within this document are Amharic; future versions will include Tigrinya examples as well.
 
 If your application can benefit from explicit linguistic information about the structure and grammatical properties of words in these languages, then you may want to use HM.
 HM can tell you, for example, that the verb የማይደረገው is negative, that the noun አባቴን is the object of some verb, that the lemma (basic form) of the verb እንደሚመኟቸው is ተመኘ, that is, that this verb has something to do with 'longing'.
@@ -26,12 +18,12 @@ HM has a list of Amharic person and place names, but if you want *named entity r
 
 **Version 5.0 replaces Version 4.5 for Amharic. For other languages, see Version 4.3. Version 5.0 is not backward compatible with earlier versions. If you have used earlier versions of HM and would like to switch to Version 5.0, please contact [gasser@indiana.edu](mailto:gasser@indiana.edu) for help.**
 
-## <a id="install">Installation</a>
+## Installation
 
 It is recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
 If you are using a virtual environment, you will need to create the environment and activate it before running `pip install`.
 
-First download the wheel file from the `dist/` folder: [HornMorpho-5.1-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.1-py3-none-any.whl)
+First download the wheel file from the `dist/` folder: [HornMorpho-5.0-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.0-py3-none-any.whl)
 
 Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is
 
@@ -72,7 +64,7 @@ Some possible attributes are part-of-speech (`'pos'`), morphological features (`
 	ጫላ	PROPN	SG	ጫላ
 	ጩቤዬን	N	ACC;PSS1S;SG	ጩቤ
 	ጨብጧል	V	3;MASC;PRF;SG	ጨበጠ
-	።	PUNCT
+	።	PUNCT		
 
 ## Overview of the program
 

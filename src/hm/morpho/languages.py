@@ -38,18 +38,21 @@ CODES = {'am': 'a',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
          'kst': 'k', 'gru': 'k', 'ks': 'k',
          'mh': 'muh',
-#         'M': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
-#         'm': 'mvz',
          'so': 'som', 's': 'som',
          'ti': 't',
          'T': 'te',
-         'om': 'orm', 'o': 'orm'}
+         'om': 'o', 'orm': 'o'}
 
-ABBREV2LANG = {'a': 'አማርኛ', 't': 'ትግርኛ', 'o': 'Afaan Oromoo',
-               'te': 'ትግረ', 'g': 'ግዕዝ', 'ch': 'ቸሃ',
+ABBREV2LANG = {'a': 'አማርኛ',
+               't': 'ትግርኛ',
+               'o': 'Afaan Oromoo',
+               'te': 'ትግረ',
+               'g': 'ግዕዝ',
+               'ch': 'ቸሃ',
                'eng': 'English',
-               'stv': 'የስልጤ ኣፍ', 'k': 'ክስታንኛ'}
+               'stv': 'የስልጤ አፍ',
+               'k': 'ክስታንኛ'}
 
 def lang_not_found_interactive(abbrev, language):
     response = input ("Would you like to download the data for {}\n--> ".format(language))
@@ -121,6 +124,13 @@ def get_lang_id(string):
 
 #def get_lang_dir(abbrev):
 #    return os.path.join(LANGUAGE_DIR, abbrev)
+
+def get_downloaded_languages():
+    languages = [l for l in os.listdir(LANGUAGE_DIR) if not l.startswith('.') and l not in ['e', 'eng']]
+    if not languages:
+        print("No Horn languages downloaded!")
+        return False
+    return languages
 
 def load_lang(lang,
               lang_name='', phon=False, segment=False, load_morph=True,

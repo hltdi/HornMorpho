@@ -10,7 +10,7 @@
 """
 
 from . import morpho
-import re, math
+import re, math, os
 #from . import internet_search
 
 #A = morpho.get_language('amh')
@@ -128,6 +128,55 @@ VC2FEATS_L = {
 AM_V_FEATS = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
 
 MERGE_ROOTS = {'ንብብ:B': 'ንብብ:A'}
+
+def split_o_verbs():
+    simple = []
+    derived = []
+    with open("languages/o/lex/v_stems.lex", encoding='utf8') as file:
+        for stem in file:
+            stem = stem.strip()
+            if stem.endswith("am"):
+                # passive
+                derived.append(stem)
+            elif stem.endswith('adh') and len(stem) > 6:
+                # auto-benefactive
+                derived.append(stem)
+            elif stem.endswith("siis") or stem.endswith("sis") or stem.endswith('chis') or stem.endswith('chiis'):
+                # causative
+                derived.append(stem)
+            else:
+                simple.append(stem)
+    return simple, derived
+
+def get_as_nouns():
+    nouns = []
+    directory = "hm/ext_data/ከአብነት/Nouns"
+    files = os.listdir(directory)
+    for file in files:
+        if file.endswith('mpd.txt'):
+            with open("{}/{}".format(directory, file), encoding='utf8') as inf:
+                for line in inf:
+                    line = line.split('\t')
+                    token = line[1]
+                    if token not in nouns:
+                        nouns.append(token)
+    nouns.sort()
+    with open("hm/ext_data/ከአብነት/n_mwe.txt", 'w', encoding='utf8') as outf:
+        for noun in nouns:
+            print(noun, file=outf)
+    return nouns
+
+def kane_mwes():
+    with open("../../../../Projects/LingData/Ti/Kane/n_mwe.txt", encoding='utf8') as inf:
+        with open("../../../../Projects/LingData/Ti/Kane/n_mwe2.txt", 'w', encoding='utf8') as outf:
+            for line in inf:
+                line = line.strip()
+                if '#' not in line and ';' not in line:
+                    if line[0] in 'aeEiouI':
+                        line = "'" + line
+                    line = line.replace(" a", " 'a")
+                    line = morpho.geez.geezify(line, 'ti', double2gem=True)
+                print(line, file=outf)
 
 #def root_freq(infile="data/am_classes.txt", outfile="data/am_freqs.txt"):
 #    with open(infile, encoding='utf8') as file:

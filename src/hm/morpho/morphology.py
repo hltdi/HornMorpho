@@ -112,8 +112,10 @@ class Morphology(dict):
         self.abbrevRE = None
         self.language = None
         # Dictionary of preanalyzed words (varying POS)
-        self.analyzed = {}
-        self.analyzed_phon = {}
+#        self.analyzed = {}
+#        self.analyzed_phon = {}
+        # Dictionary of abbreviations
+        self.abbrevs = {}
         # Dictionary of suffixes and suffix sequences and what to do with them
         self.suffixes = {}
         # Dictionary of prefixes and prefix sequences and what to do with them
@@ -405,6 +407,34 @@ class Morphology(dict):
             self.words = []
             self.words_phon = {}
 
+    def set_abbrevs(self, filename='abbrev.lex'):
+        '''
+        Set the dict of abbreviations, reading them in from a file, one per line.
+        '''
+        path = os.path.join(self.get_lex_dir(), filename)
+        if os.path.exists(path):
+#            print("Loading abbreviations")
+            with open(path, encoding='utf8') as file:
+                for line in file:
+                    line = line.strip()
+                    if not line or line[0] == '#':
+                        continue
+                    props = line.split()
+                    # If there are three items, the third is POS
+                    pos = 'N'
+                    abbrev, expansion = props[0], props[1]
+                    if len(props) == 3:
+                        pos = props[2]
+                    self.abbrevs[abbrev] = [expansion.replace('//', ' '), pos]
+
+    def get_abbrev(self, abb):
+        '''
+        If the language has an abbreviation dictionary, get the expansion
+        and pos of this abbreviation.
+        Otherwise None.
+        '''
+        return self.abbrevs.get(abb)
+        
     def get_analyzed(self, word):
         '''Get the pre-analyzed FS for word.'''
         return self.analyzed.get(word)
@@ -676,7 +706,7 @@ class POSMorphology:
 
     segment_mwe_re = re.compile(r"(.+ )?(.+)<(.+)>(.+)( .+)?")
     segment_n_mwe_re = re.compile(r"(.*-)?(.+) <(.+)>(.+)")
-    segment_re = re.compile(r"(.+)<(.+)>(.+)")
+    segment_re = re.compile(r"(.*)<(.+)>(.+)")
 
     # Indices for different FSTs in self.fsts
     # Top level
@@ -1860,8 +1890,11 @@ class POSMorphology:
             return
         initfeat = []
         for lf in lemmafeats2:
-            value = features.get(lf)
-            initfeat.append("{}={}".format(lf, value))
+            if '=' in lf:
+                initfeat.append(lf)
+            else:
+                value = features.get(lf)
+                initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
 #        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
