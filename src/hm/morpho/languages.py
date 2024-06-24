@@ -64,20 +64,25 @@ def get_language_url(abbrev, format='tgz'):
     '''
     URL for the compressed language file in GitHub for the language with abbreviation abbrev.
     '''
-    url = "https://github.com/hltdi/HornMorpho/tree/master/src/languages/"
+    
+    url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/"
     lang = abbrev + "." + format
     return url + lang
 
-def download_language(abbrev):
+def download_language(abbrev, dest=''):
     '''
     Download the compressed language file for language with abbreviation abbrev.
     '''
     print("Downloading {}...".format(ABBREV2LANG.get(abbrev, abbrev)))
     url = get_language_url(abbrev)
-    fileout = compressed_lang_filename(abbrev)
+    print("URL {}".format(url))
+    fileout = dest or compressed_lang_filename(abbrev)
     with requests.get(url, stream=True) as r:
+        print("Request {}".format(r))
+        print(r.content)
         with open(fileout, 'wb') as file:
-            for chunk in r.iter_content(chunk_size = 16*1024):
+            for chunk in r.iter_content(chunk_size = 1024):
+#            file.write(r.content)
                 file.write(chunk)
 
 def compressed_lang_filename(abbrev):
@@ -95,20 +100,20 @@ def compress_lang(abbrev):
     outfile = compressed_lang_filename(abbrev)
     def exclude(tarinfo):
         filename = tarinfo.name
-        if filename.endswith('.cfst') or filename.startswith('.DS'):
-            return None
-        else:
-            return tarinfo
+        for suff in ('fst', '.DS', '.cas', '.txt', '.lex'):
+            if filename.endswith(suff):
+                return None
+        return tarinfo
     with tarfile.open(outfile, "w:gz") as tar:
         tar.add(directory, arcname=os.path.basename(directory), filter=exclude)
 
-def uncompress_lang(abbrev):
+def uncompress_lang(abbrev, dest=''):
     '''
     Uncompress a compressed language tarball.
     '''
     filename = compressed_lang_filename(abbrev)
     tar = tarfile.open(filename, "r:gz")
-    tar.extractall(path=LANGUAGE_DIR)
+    tar.extractall(path=dest or LANGUAGE_DIR)
     tar.close()
 
 def get_lang_id(string):

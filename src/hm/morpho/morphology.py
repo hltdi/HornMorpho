@@ -68,6 +68,11 @@ class Morphology(dict):
     # %% Does this work for all Horn languages?
     numeral = re.compile(r'(\w*?)(\d+(?:[\d,]*)(?:\.\d+)?)(\w*?)')
 
+    # Files where unanalyzed words and abbreviations (surface forms) are found.
+    WORDS1 = "words1.srf"
+    WORDSM = "wordsM.srf"
+    ABBREVS = "abbrev.srf"
+
     def __init__(self, pos_morphs=[], punctuation='', characters='', abbrev_chars='.'):
                  #                 fsh=None,
 #                 feat_abbrevs=None,
@@ -357,8 +362,8 @@ class Morphology(dict):
         '''
         if mwe:
 #            print("^^ Loading unanalyzed words")
-            file1 = 'words1.lex'
-            fileM = 'wordsM.lex'
+            file1 = Morphology.WORDS1
+            fileM = Morphology.WORDSM
             path1 = os.path.join(self.get_lex_dir(), file1)
             pathM = os.path.join(self.get_lex_dir(), fileM)
             if os.path.exists(path1):
@@ -407,10 +412,11 @@ class Morphology(dict):
             self.words = []
             self.words_phon = {}
 
-    def set_abbrevs(self, filename='abbrev.lex'):
+    def set_abbrevs(self, filename=''):
         '''
         Set the dict of abbreviations, reading them in from a file, one per line.
         '''
+        filename = filename or Morphology.ABBREVS
         path = os.path.join(self.get_lex_dir(), filename)
         if os.path.exists(path):
 #            print("Loading abbreviations")

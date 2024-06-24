@@ -38,6 +38,33 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
+## Testing downloading tgz file.
+#from urllib import request
+# import ssl
+
+def gzip(file=''):
+    import gzip
+    import shutil
+    with open(file, 'rb') as f_in:
+        with gzip.open('test.gz', 'wb') as f_out:
+            shutil.copyfileobj(f_in, f_out)
+
+def down():
+    url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/a_vpkl.gz"
+#    "https://drive.google.com/drive/folders/1NNTl8TWYPJEYWoEXznutZEd6JSjRaxIk"
+#    "https://drive.google.com/file/d/1LajxOKxDyHiNM2Vgex7u8QvLj0a_foUx/view?usp=sharing"
+#    "https://drive.google.com/file/d/1h36AHBY6xqzaR9zY83cySE_ZfbMJtFvF/view?usp=sharing"
+#    ssl._create_default_https_context = ssl._create_unverified_context
+    with hm.morpho.requests.get(url, stream=True) as response:
+#        content = response.raw.read()
+#        print(len(content))
+#        return response.headers
+#        return response.raw.read(100)
+#    request.urlopen(request.Request(url), timeout=100.0) as response:
+#    with hm.morpho.requests.get(, stream=True) as r:
+        with open("../../../../Downloads/avpkl.gz", 'wb') as file:
+            file.write(response.raw.read())
+
 ## Testing anal_corpus
 def corptest():
     return hm.anal_corpus('a', data=["አበበ በሶ በላ ።", "ጫላ ጩቤ ጨበጠ ።"], disambiguate=True)
