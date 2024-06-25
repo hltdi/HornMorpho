@@ -128,7 +128,7 @@ def uncompress_lang(abbrev, dest='', source=''):
     '''
     language = ABBREV2LANG.get(abbrev)
     filename = source or compressed_lang_filename(abbrev)
-    print("Uncompressing datat for {}\n in {}".format(language, filename))
+    print("Uncompressing data for {}\n in {}".format(language, filename))
     tar = tarfile.open(filename, "r:gz")
     tar.extractall(path=dest or LANGUAGE_DIR)
     tar.close()

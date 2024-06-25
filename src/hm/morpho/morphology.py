@@ -2012,8 +2012,8 @@ class POSMorphology:
             print('No generation FST loaded')
             return []
 
-    def gen5(self, root, upd=None, feats=None, trace=False):
-        return self.gen(root, features=feats, update_feats=upd, v5=True,
+    def gen5(self, root, upd=None, feats=None, ignore_default=False, trace=False):
+        return self.gen(root, features=feats, update_feats=upd, v5=True, ignore_default=ignore_default,
                         trace=trace)
 
     def gen(self, root, features=None, from_dict=False,
@@ -2021,7 +2021,7 @@ class POSMorphology:
             guess=False, phon=False, segment=False, ortho=False, mwe=False,
             ortho_only=False, fst=None, sort=False, print_word=False, print_prefixes=None,
             interact=False, timeit=False, timeout=100, limit=10,
-            v5=False,
+            v5=True, ignore_default=False,
             trace=False, verbosity=0):
         """
         Generate word from root and features.
@@ -2039,6 +2039,8 @@ class POSMorphology:
         if interact and self.feat_list:
             # Get user input from menu
             features = self.fv_menu()
+        elif ignore_default:
+            features = FeatStruct()
         else:
             features = features or self.defaultFS
         if del_feats:

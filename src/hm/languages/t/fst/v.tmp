@@ -165,95 +165,95 @@ $$ L እ|ሕ|ዕ|ህ
 %%a=0,c=G,+strong
 [t=p,v=p|a,-K2,+K3,-K4,+K5]
 [t=j,v=p]
-*	*e	**	*e	**
+**	^e	**	^e	**
 
 [t=i|j,v=a,-K2,+K3,-K4,+K5]
-*	*e	**	*	**
+**	^e	**	**	**
 
 [t=i,v=p,-K2,+K3,-K4,+K5]
-*	*	**	*e	**
+**	**	**	^e	**
 
 [t=c,v=p|a,-K2,+K3,-K4,+K5]
-*	*e	**	*i	**
+**	^e	**	*i	**
 
 %%a=a,c=G,+strong
 [t=p,v=p|a,-K2,+K3,+K4,+K5]
 [t=i|j,v=p,-K2,+K3,+K4,+K5]
-*	*e	*a	*e	**
+**	^e	*a	^e	**
 
 [t=i|j,v=a,-K2,+K3,+K4,+K5]
-*	*e	*a	*	**
+**	^e	*a	**	**
 
 [t=c,v=p|a,-K2,+K3,+K4,+K5]
-*	*e	*a	*i	**
+**	^e	*a	*i	**
 
 %%a=i,c=G,+strong
 [t=p,v=p|a,-K2,+K3,+K4,+K5,+K6]
 [t=i|j,v=p,-K2,+K3,+K4,+K5,+K6]
-*	*e	^e	*a	*e	**
+**	*e	^e	*a	^e	**
 
 [t=i|j,v=a,-K2,+K3,+K4,+K5,+K6]
-*	*e	^e	*a	*	**
+**	^e	^e	*a	**	**
 
 [t=c,v=p|a,-K2,+K3,+K4,+K5,+K6]
-*	*e	^e	*a	*i	**
+**	^e	^e	*a	*i	**
 
 %%a=0,c=H,+strong
 [t=p,v=p|a,-K2,+K3,+K4,+K5]
 [t=i|j,v=p,-K2,+K3,+K4,+K5]
-*	*e	*a	*e	*
+**	^e	*a	^e	*
 
 [t=i|j,v=a,-K2,+K3,+K4,+K5]
-*	*e	*a	*	*
+**	^e	*a	**	*
 
 [t=c,v=p|a,-K2,+K3,+K4,+K5]
-*	*e	*a	*i	*
+**	^e	*a	*i	*
 
 %%a=i,c=H,+strong == G
 
 %%a=0,c=I,+strong
 [t=p,v=a|p,-K2,+K3,+K4]
 [t=i|j,v=p,-K2,+K3,+K4]
-*	^e	*e	*
+**	^e	^e	*
 
 [t=i|j,v=a,-K2,+K3,+K4]
-*	^e	*	*
+**	^e	**	*
 
 [t=c,v=p|a,-K2,+K3,+K4]
-*	^e	*i	*
+**	^e	*i	*
 
 %%a=a,c=I,+strong
 [t=p,v=p|a,-K2,+K3,+K4]
 [t=i|j,v=p,-K2,+K3,+K4]
-*	*a	^e	*
+**	*a	^e	*
 
 [t=i|j,v=a,-K2,+K3,+K4]
-*	*a	**	*
+**	*a	**	*
 
 [t=c,v=p|a,-K2,+K3,+K4]
-*	*a	*i	*
+**	*a	*i	*
 
 %%a=i,c=I,+strong
 [t=p,v=p|a,-K2,+K3,+K4,+K5]
 [t=i|j,v=p,-K2,+K3,+K4,+K5]
-*	*e	*a	*e	*
+**	^e	*a	*e	*
 
 [t=i|j,v=a,-K2,+K3,+K4,+K5]
-*	*e	*a	*	*
+**	^e	*a	*	*
 
 [t=c,v=p|a,-K2,+K3,+K4,+K5]
-*	*e	*a	*i	*
+**	^e	*a	*i	*
 
 %%a=0,c=J,+strong
 [t=p,v=p|a,-K2,+K3,+K4]
 [t=i|j,v=p,-K2,+K3,+K4]
-*	*a	*e	**
+**	*a	^e	**
 
 [t=i|j,v=a,-K2,+K3,+K4]
-*	*a	*	**
+**	*a	**	**
 
 [t=c,v=p|a,-K2,+K3,+K4]
-*	*a	*i	**
+**	*a	*i	**
 
 %%a=i,c=J,+strong == I
 
