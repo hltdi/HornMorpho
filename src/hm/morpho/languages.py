@@ -25,6 +25,8 @@ Author: Michael Gasser <gasser@indiana.edu>
 
 from .language import *
 import requests, tarfile
+#import shutil
+#from tqdm.auto import tqdm
 
 ###
 ### Loading languages
@@ -73,17 +75,28 @@ def download_language(abbrev, dest=''):
     '''
     Download the compressed language file for language with abbreviation abbrev.
     '''
-    print("Downloading {}...".format(ABBREV2LANG.get(abbrev, abbrev)))
     url = get_language_url(abbrev)
-    print("URL {}".format(url))
+    language = ABBREV2LANG.get(abbrev)
+    print("Downloading data for {}\n  from {}".format(language, url))
     fileout = dest or compressed_lang_filename(abbrev)
     with requests.get(url, stream=True) as r:
-        print("Request {}".format(r))
-        print(r.content)
+        total_size = int(r.headers.get('Content-Length'))
+        print("File size {}".format(total_size))
+#        print(r.content)
+        chunk_size = 1024 * 1024
         with open(fileout, 'wb') as file:
-            for chunk in r.iter_content(chunk_size = 1024):
-#            file.write(r.content)
+            loaded = 0
+            for i, chunk in enumerate(r.iter_content(chunk_size = chunk_size)):
+                loaded += chunk_size
+                fraction = min(100, round(100 * loaded / total_size))
+                if fraction < 100:
+                    print("...{}%".format(fraction))
                 file.write(chunk)
+#                file.write(r.raw.read())
+#        with tqdm.wrapattr(r.raw, "read", total=total_size, desc="") as raw:
+#            # save the output to a file
+#            with open(fileout, 'wb') as output:
+#                shutil.copyfileobj(raw, output)
 
 def compressed_lang_filename(abbrev):
     '''
@@ -107,11 +120,11 @@ def compress_lang(abbrev):
     with tarfile.open(outfile, "w:gz") as tar:
         tar.add(directory, arcname=os.path.basename(directory), filter=exclude)
 
-def uncompress_lang(abbrev, dest=''):
+def uncompress_lang(abbrev, dest='', source=''):
     '''
     Uncompress a compressed language tarball.
     '''
-    filename = compressed_lang_filename(abbrev)
+    filename = source or compressed_lang_filename(abbrev)
     tar = tarfile.open(filename, "r:gz")
     tar.extractall(path=dest or LANGUAGE_DIR)
     tar.close()
