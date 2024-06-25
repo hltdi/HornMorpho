@@ -70,16 +70,16 @@ $ pass_rel
 # voice and first consonant spirantization
 $ voice
   # v=p
-  ተ-		[v=p,t=p|c,+K1];[v=p,t=j,sp=2,-neg,+K1]
-  /ተ-	[v=p,t=i,a=i,R1=L,+K1];
+  ተ		[v=p,t=p|c,+K1];[v=p,t=j,sp=2,-neg,+K1]
+  /ተ	[v=p,t=i,a=i,R1=L,+K1];
                 [v=p,t=j,a=i,R1=L,sp=1|3,+K1];[v=p,t=j,a=i,R1=L,sp=2,+neg,+K1]
-  /- </>	[v=p,t=j,sp=1|3,R1=X,-K1];[v=p,t=j,R1=X,sp=2,+neg,-K1];
+  / 	[v=p,t=j,sp=1|3,R1=X,-K1];[v=p,t=j,R1=X,sp=2,+neg,-K1];
 		[v=p,t=i,a=0,c=A,tmp=[2=L],-K1];[v=p,t=i,a=a|i,R1=X,-K1];
 		[v=p,t=i,a=0,c=C|F,-K1]
   # v=a
-  ኣ-		[v=a,a=0,+K1]
-  ኣ/-	[v=a,a=a|i,R1=X,-K1]
-  ኣ/ተ-	[v=a,a=a|i,R1=L,-K1]
+  ኣ		[v=a,a=0,+K1]
+  ኣ/	[v=a,a=a|i,R1=X,-K1]
+  ኣ/ተ	[v=a,a=a|i,R1=L,-K1]
   # v=0
   --		[v=0,t=j,-Cpre,-K1];[v=0,t=j,+Cpre,+K1];
   		[v=0,t=c,adp=0,-K1];[v=0,t=c,conj1=እንተ,+K1];
@@ -88,6 +88,9 @@ $ voice
 		[v=0,t=i,+rel,-neg,+K1];[v=0,t=i,+mc,-neg,+K1];
 		[v=0,t=i,-rel,-mc,-neg,-Cpre,+K1];[v=0,t=i,-rel,-mc,-neg,+Cpre];
 		[v=0,t=i,+neg,+Cpre,+K1];[v=0,t=i,+neg,-Cpre]
+
+$ voice_bound
+  -
 
 $ stem
   >>v_stem<<

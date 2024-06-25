@@ -71,7 +71,7 @@ def get_language_url(abbrev, format='tgz'):
     lang = abbrev + "." + format
     return url + lang
 
-def download_language(abbrev, dest=''):
+def download_language(abbrev, dest='', uncompress=True):
     '''
     Download the compressed language file for language with abbreviation abbrev.
     '''
@@ -83,7 +83,7 @@ def download_language(abbrev, dest=''):
         total_size = int(r.headers.get('Content-Length'))
         print("File size {}".format(total_size))
 #        print(r.content)
-        chunk_size = 1024 * 1024
+        chunk_size = 1024 * 2056
         with open(fileout, 'wb') as file:
             loaded = 0
             for i, chunk in enumerate(r.iter_content(chunk_size = chunk_size)):
@@ -92,6 +92,8 @@ def download_language(abbrev, dest=''):
                 if fraction < 100:
                     print("...{}%".format(fraction))
                 file.write(chunk)
+    if uncompress:
+        uncompress_lang(abbrev, source=dest)
 #                file.write(r.raw.read())
 #        with tqdm.wrapattr(r.raw, "read", total=total_size, desc="") as raw:
 #            # save the output to a file
@@ -124,7 +126,9 @@ def uncompress_lang(abbrev, dest='', source=''):
     '''
     Uncompress a compressed language tarball.
     '''
+    language = ABBREV2LANG.get(abbrev)
     filename = source or compressed_lang_filename(abbrev)
+    print("Uncompressing datat for {}\n in {}".format(language, filename))
     tar = tarfile.open(filename, "r:gz")
     tar.extractall(path=dest or LANGUAGE_DIR)
     tar.close()
