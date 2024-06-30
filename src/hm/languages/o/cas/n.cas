@@ -26,6 +26,8 @@ $$2 = {aa, ee, ii, oo, uu, Aa, Ee, Ii, Oo, Uu}
 {v2i} = i:a;i:e;i:o;i:u;i:aa;i:ee;i:ii;i:oo;i:uu
 {V2VV} = aa:a;ee:e;ii:i;oo:o;uu:u
 
+# replace ~ with -
+>comp<
 #### ?? jarmaaya -> jarmeenyi, etc.
 ###>wy_N<
 # various C+C assimilation

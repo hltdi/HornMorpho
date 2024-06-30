@@ -95,6 +95,7 @@ feats:
     a = 0 | a | i
     v = 0 | p | a 
     t = p | i | j
+    cons = False | True
 
   pos: v_light_stem v_light_stem
     a = 0 | a | i

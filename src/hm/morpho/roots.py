@@ -246,7 +246,7 @@ class Roots:
         def mrs(fst, charsets, weight, states, root_chars, manner=False, iterative=False, aisa=False, main_charsets=None):
             source = 'start'
             show = False
-#            if root_chars == ['ም', 'እ', 'ር']:
+#            if root_chars == ['ስ', 'ብ', 'ር']:
 #                show = True
             if show:
                 print("*** Making root states for {} with weight ({}) {}".format(root_chars, type(weight), weight.__repr__()))
@@ -647,7 +647,7 @@ class Roots:
 #        if cons == "ግ ኝ ይ":
 #        if cons == "ብ እ ል":
 #            show = True
-#        if cons == 'ም እ ር':
+#        if cons == 'ብ ህ ል':
 #            show = True
         if show:
             print("** Making weakroot for {}, feats {}".format(cons, feats))
@@ -700,6 +700,8 @@ class Roots:
             source = 'start'
             if gen or seglevel == 0 or len(pattern) > len(cons):
                 pad2eqlen(cons, pattern)
+            if show:
+                print("^^^ pattern {}, ^^^ root {}, pfeatures {}".format(pattern, cons, pfeatures))
             for cindex, (char, c) in enumerate(zip(pattern[:-1], cons[:-1])):
                 if show:
                     print("  ** cindex {}, pat char {}, root char {}".format(cindex, char, c))

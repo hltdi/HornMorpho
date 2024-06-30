@@ -81,6 +81,7 @@ feats:
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
     umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
+    pos = V
     a = 0 | a  | i
     v = 0 | p | a | as | ast | test
     t = p | i | j | c

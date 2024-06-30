@@ -117,19 +117,6 @@ class EES:
         print("Creating EES language {}".format(self))
         # EES pre-and post-processing: geezification, romanization,
         # handling of multi-word lexemes
-        if not self.procroot:
-            self.procroot = \
-              lambda root, fs, pos: self.preproc_root(root, fs, pos)
-        if not self.preproc:
-            self.preproc = \
-              lambda form: geez2sera(None, form, lang=self.abbrev,
-                                     gemination=self.output_gemination,
-                                     simp=True, report_simplification=True)
-        if not self.postproc:
-            self.postproc = \
-              lambda form, phon=False, ipa='', ortho_only=False, phonetic=False:\
-               sera2geez(None, form, lang=self.abbrev,
-                         gemination=self.output_gemination)
         if not self.postpostproc:
             self.postpostproc = lambda form: form.replace('//', ' ')
 

@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2007-2023.
+    Copyleft 2007-2024.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify

@@ -57,8 +57,8 @@ ABBREV2LANG = {'a': 'አማርኛ',
                'k': 'ክስታንኛ'}
 
 def lang_not_found_interactive(abbrev, language):
-    response = input ("Would you like to download the data for {}\n--> ".format(language))
-    if response and response[0] in ('y', 'Y'):
+    response = input("Would you like to download the data for {}? ([y]es/[n]o)\n--> ".format(language))
+    if not response or (response and response.lower() == 'y'):
         return True
     return False
 
@@ -70,6 +70,15 @@ def get_language_url(abbrev, format='tgz'):
     url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/"
     lang = abbrev + "." + format
     return url + lang
+
+def is_downloaded(abbrev):
+    '''
+    Is the language with abbrev downloaded?
+    '''
+    lang_dir = Language.get_lang_dir(abbrev)
+    if lang_dir:
+        return lang_dir
+    return False
 
 def download_language(abbrev, dest='', uncompress=True):
     '''
@@ -94,11 +103,6 @@ def download_language(abbrev, dest='', uncompress=True):
                 file.write(chunk)
     if uncompress:
         uncompress_lang(abbrev, source=dest)
-#                file.write(r.raw.read())
-#        with tqdm.wrapattr(r.raw, "read", total=total_size, desc="") as raw:
-#            # save the output to a file
-#            with open(fileout, 'wb') as output:
-#                shutil.copyfileobj(raw, output)
 
 def compressed_lang_filename(abbrev):
     '''
@@ -186,12 +190,12 @@ def load_lang(lang,
             ees = True
 #            from . import ees
 #            EES = ees.EES()
-        lang_dir = Language.get_lang_dir(lang_id)
+        lang_dir = is_downloaded(lang_id)
         if not lang_dir:
             print("Language {} not found !!".format(lang_name))
             download = lang_not_found_interactive(lang_id, lang_name)
             if download:
-                download_language('a')
+                download_language(lang_id)
             return False
         language = Language.make('', lang_id, load_morph=load_morph,
                                  pickle=pickle, translate=translate, gen=gen,

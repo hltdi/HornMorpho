@@ -51,7 +51,7 @@ print('\n@@@@ This is HornMorpho{}, version {} @@@@\n'.format(__cat__, __version
 SEGMENT = False
 
 ###
-### Version 5 analysis and generation.
+### Version 5 functions.
 ###
 
 def anal_corpus(language, **kwargs):
@@ -160,7 +160,165 @@ def load_lang(language, phon=False, segment=False, experimental=False, pickle=Tr
                      load_morph=load_morph, cache=cache,
                      guess=guess, verbose=verbose)
 
-# Version 4 methods
+def gen(language, root, features=[], replace_features=[],
+        pos=None, guess=False, phon=False, ortho=True, ortho_only=False,
+        um='', all_words=True, del_feats=None, report_um=True,
+        interact=False, verbosity=0):
+    '''
+    Generate a word, given stem/root and features (replacing those in default).
+    If pos is specified, check only that POS; otherwise, try all in order until
+    one succeeeds.
+
+    @param root <str (roman)>:     root or stem of a wor
+    @param features <str: [sb=[+p1,+plr]>: grammatical features to be added
+       to default
+    @param pos <str>:    part-of-speech: use only the generator for this POS
+    @param guess <bool>:    whether to use guess generator if lexical generator fails
+    @param phon <bool>:     whether to use the 'phonetic' generation FST
+    @param ortho <bool>:    whether to first convert the root from orthographic form
+    @param um <str>:       UniMorph features
+    @param all_words <bool>: whether to return all words
+    @param del_feats <list of strings>: features to be deleted from default so that all
+      values can be generated
+    @param report_um <bool>: whether to report UM features if del_feats is True
+    '''
+    language = morpho.get_language(language)
+    if language:
+        mwe = False
+        if ' ' in root:
+            mwe = True
+        morf = language.morphology
+        outputs = []
+        um_converted = False
+        # list of POS strings for each output
+        poss = []
+        if pos:
+            posmorph = morf[pos]
+            if um:
+                lang_um = language.um
+                if lang_um:
+                    features = lang_um.convert_um(pos, um)
+                if features:
+                    um_converted = True
+            if features or not um:
+                output = posmorph.gen(root, update_feats=features, interact=interact,
+                                      features=replace_features, mwe=mwe,
+                                      del_feats=del_feats, ortho=ortho, phon=phon, v5=True,
+                                      postproc=False, guess=guess,
+                                      verbosity=verbosity)
+                if output:
+                    outputs.extend(output)
+                    poss.extend([pos] * len(output))
+        if not outputs:
+            for posmorph in list(morf.values()):
+                pos1 = posmorph.pos
+                if um:
+                    lang_um = language.um
+                    if lang_um:
+                        features = lang_um.convert_um(posmorph.pos, um)
+                    if features:
+                        um_converted = True
+                if features or not um:
+                    output = posmorph.gen(root, update_feats=features,
+                                          features=replace_features,
+                                          mwe=mwe,
+                                          interact=interact, del_feats=del_feats, v5=True,
+                                          ortho=ortho, phon=phon,
+                                          postproc=False, guess=guess,
+                                          verbosity=verbosity)
+                    if output:
+                        outputs.extend(output)
+                        poss.extend([pos1] * len(output))
+        if um and not um_converted:
+            print("Couldn't convert UM to HM features")
+            return
+
+        if outputs:
+            if del_feats:
+                # For del_feats, we need to print out relevant
+                # values of del_feats for each output word
+                o, poss = morpho.POSMorphology.separate_gens(outputs, poss)
+                if report_um:
+                    o = language.gen_um_outputs(o, poss)
+                else:
+                    o = morpho.POSMorphology.gen_output_feats(o, del_feats)
+            elif all_words:
+                o = [out[0] for out in outputs]
+            else:
+                o = outputs[0][0]
+            # Eliminate copies
+            o = list(set(o))
+            return o
+        f = um if um else features
+        print("{}:{} can't be generated!".format(root, f))
+
+def download(lang_abbrev, uncompress=True):
+    '''
+    Download language abbreviated lang_abbrev, unless it's already downloaded.
+    '''
+    if lang_abbrev not in morpho.ABBREV2LANG:
+        print("HornMorpho doesn't know of any language abbreviated {}.".format(lang_abbrev))
+        return
+    if morpho.is_downloaded(lang_abbrev):
+        print("{} ({}) is already downloaded!".format(morpho.ABBREV2LANG[lang_abbrev], lang_abbrev))
+        return
+    download_language(lang_abbrev, uncompress=uncompress)
+
+# Internal use only.
+
+def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
+            translate=False, experimental=False, mwe=False, seglevel=2,
+            v5=True,
+            gemination=True, split_index=0, verbose=True):
+    """
+    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
+    returning the morphology POS object for that POS.
+    If gen is True, create both the analyzer and generator, inverting the analyzer to create
+    the generator.
+    Note: the resulting FSTs are not saved (written to a file). To do this, use the method
+    save_fst(), with the right options, for example, gen=True, segment=True.
+    """
+    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate, guess=guess,
+                        load_morph=False, verbose=verbose)
+    if verbose:
+        print(">>> CREATING ANALYZER <<<")
+    fst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
+                             translate=translate, recreate=True, 
+                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
+                             create_fst=True, relabel=True, gemination=gemination,
+                             v5=v5,
+                             compose_backwards=False, split_index=split_index,
+                             phon=phon, verbose=verbose)
+    if gen == True: # and mwe == False:
+        # Also create the generation FST ##, but not for MWEs
+        if seglevel == 0:
+            # Just invert the analyzer
+            if verbose:
+                print(">>> INVERTING ANALYZER FOR GENERATOR <<<")
+            genfst = fst.inverted()
+        else:
+            if verbose:
+                print(">>> CREATING GENERATOR <<<")
+            analfst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
+                                         translate=translate, recreate=True,
+                                         experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
+                                         create_fst=True, relabel=True, gemination=gemination,
+                                         compose_backwards=False, split_index=split_index,
+                                         setit=False, v5=v5,
+                                         phon=phon, verbose=verbose)
+            print("Inverting analysis FST for generation")
+            genfst = analfst.inverted()
+        pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
+                          experimental=experimental, mwe=mwe, v5=v5)
+    return pos_morph
+
+def compress(language):
+    '''
+    Compress language, given abbreviation, saving resulting .tgz file in languages directory.
+    '''
+    morpho.compress_lang(language)
+
+# Older functions. Most don't work in Version 5.
 
 def seg_word(language, word, nbest=8, raw=False, realize=True, phonetic=False,
              transortho=True, experimental=False, udformat=True,
@@ -756,52 +914,6 @@ def cascade(language, pos, gen=False, phon=False, segment=False,
         return pos.casc_inv
     return pos.casc
 
-def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
-            translate=False, experimental=False, mwe=False, seglevel=2,
-            v5=True,
-            gemination=True, split_index=0, verbose=True):
-    """
-    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
-    returning the morphology POS object for that POS.
-    If gen is True, create both the analyzer and generator, inverting the analyzer to create
-    the generator.
-    Note: the resulting FSTs are not saved (written to a file). To do this, use the method
-    save_fst(), with the right options, for example, gen=True, segment=True.
-    """
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate, guess=guess,
-                        load_morph=False, verbose=verbose)
-    if verbose:
-        print(">>> CREATING ANALYZER <<<")
-    fst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
-                             translate=translate, recreate=True, 
-                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
-                             create_fst=True, relabel=True, gemination=gemination,
-                             v5=v5,
-                             compose_backwards=False, split_index=split_index,
-                             phon=phon, verbose=verbose)
-    if gen == True: # and mwe == False:
-        # Also create the generation FST ##, but not for MWEs
-        if seglevel == 0:
-            # Just invert the analyzer
-            if verbose:
-                print(">>> INVERTING ANALYZER FOR GENERATOR <<<")
-            genfst = fst.inverted()
-        else:
-            if verbose:
-                print(">>> CREATING GENERATOR <<<")
-            analfst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
-                                         translate=translate, recreate=True,
-                                         experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
-                                         create_fst=True, relabel=True, gemination=gemination,
-                                         compose_backwards=False, split_index=split_index,
-                                         setit=False, v5=v5,
-                                         phon=phon, verbose=verbose)
-            print("Inverting analysis FST for generation")
-            genfst = analfst.inverted()
-        pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
-                          experimental=experimental, mwe=mwe, v5=v5)
-    return pos_morph
-
 def test_fst(language, pos, string, gen=False, phon=False, segment=False,
              fst_label='', fst_index=0):
     """Test a individual FST within a cascade, identified by its label or its index,
@@ -857,15 +969,11 @@ def show_segs(segmentation):
         print(seg)
 
 def get_language(abbrev):
-    """Get the language with the abbreviation if it's loaded."""
-    return morpho.LANGUAGES.get(abbrev)
+    """Get the language with the abbreviation if it's loaded.
+    Load it if it's not.
+    """
+    return morpho.get_language(abbrev)
 
 ## Shortcuts for Amharic
-A = lambda w, raw=False: anal_word('amh', w, raw=raw)
-S = lambda w, raw=False, realize=True, features=True, transortho=True: seg_word('amh', w, raw=raw, realize=realize, features=features, transortho=transortho, experimental=False)
-P = lambda w, raw=False: phon_word('amh', w, raw=raw)
-G = lambda r, features=None: gen('amh', r, features=features)
-AF = lambda infile, outfile=None, raw=False: anal_file('amh', infile, outfile=outfile, raw=raw)
-SF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=False)
-XF = lambda infile, outfile=None: seg_file('amh', infile, outfile=outfile, experimental=True)
-PF = lambda infile, outfile=None: phon_file('amh', infile, outfile=outfile)
+A = lambda w: anal('a', w)
+G = lambda r, features=None: gen('a', r, features=features)

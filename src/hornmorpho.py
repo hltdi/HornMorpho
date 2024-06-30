@@ -38,6 +38,76 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
+TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg']
+
+## Generating Ti verb stems
+
+def combine_outputs(vsmorph, root, feats):
+    vsmorph = vsmorph or get_t_vstem_morph()
+    result = []
+    for f in feats:
+        for ff in [",+cons,+suf", ",+cons,-suf", ",-cons,+suf"]:
+            fff = "[" + f + ff + "]"
+            output = vsmorph.gen_all(root, feats=fff, save_feats=TI_VFEATS)
+            result.extend(output)
+    grouped = {}
+    for form, fss in result:
+#        print("{}  {}".format(form, fss.__repr__()))
+        if form in grouped:
+            grouped[form] = grouped[form].union(fss)
+        else:
+            grouped[form] = fss
+    return grouped
+
+def simplify_feats(formfeats):
+    '''
+    For a single asp/voice combination, simplify the features.
+    '''
+    # Check t=c
+#    result = {}
+    allindict = {'i': [], 'p': [], 'j': [], 'c': []}
+    noneindict = {'i': [], 'p': [], 'j': [], 'c': []}
+    for form, feats in formfeats.items():
+#        print("{}".format(form))
+        for tense in ['i', 'p', 'j', 'c']:
+            allin = True
+            nonein = True
+            for feat in feats:
+                t = feat.get('t')
+#                print("  {}".format(feat.__repr__()))
+                if t != tense:
+                    allin = False
+                elif t == tense:
+                    nonein = False
+            if allin:
+                allindict[tense].append(form)
+            if nonein:
+                noneindict[tense].append(form)
+    # delete cons, suf, sp, sn, and sg
+    results = []
+    for tense in ['i', 'p', 'j', 'c']:
+        allin = allindict.get(tense)
+        if len(allin) == 1 and len(noneindict.get(tense)) == len(formfeats) - 1:
+            ff = formfeats[allin[0]]
+            feats = ff.delete(['cons', 'suf', 'sp', 'sn', 'sg'])
+            formfeats[allin[0]] = feats
+#            results.append((ff[0], feats))
+#        result[form] =  feats
+#    return result
+    return allindict, noneindict
+
+
+def get_t_vstem_morph():
+    return hm.morpho.get_language('t').morphology['v_stem']
+
+def get_t_vforms(root, featsets, vsmorph=None):
+    vsmorph = vsmorph or get_t_vstem_morph()
+    results = []
+    for featset in featsets:
+        output = vsmorph.gen_all(root, feats=featset, save_feats=TI_VFEATS)
+        results.extend(output)
+    return results
+
 ## Testing downloading tgz file.
 #from urllib import request
 # import ssl

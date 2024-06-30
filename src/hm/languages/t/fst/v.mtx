@@ -93,7 +93,14 @@ $ voice_bound
   -
 
 $ stem
-  >>v_stem<<
+   +v_stem+	[pos=V]
+#  >>v_stem<<
+#  ሰ/ምዕ	[v=0,a=0,t=i,sp=3,sn=1]
+#    ሰ/ምዕ  [a=0,c=A,+cons,-suf,t=i,v=0]
+#    ሰምዕ   [a=0,c=A,+cons,+suf,t=i,v=0]
+#     ሰባቢር		 [a=i,c=A,t=c,v=0]
+#     ሰባበር	 	 [a=i,c=A,t=p,v=0]
+#     ሰባብር		 [a=i,c=A,+cons,sp=1,-suf,t=j,v=0];[a=i,c=A,+cons,sp=1,-suf,t=i,v=0]
 
 $ poststem
   >

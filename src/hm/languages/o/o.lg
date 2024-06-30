@@ -1,22 +1,16 @@
 name: Afaan Oromoo
 code: o
 
-#featnorm: v
-#  sb=[-p1,-p2] -> sp=3
-#  sb=[+p1] -> sp=1
-#  sb=[+p2] -> sp=2
-#  sb=[-fem] -> sg=m
-#  sb=[+fem] -> sg=f
-#  sb=[-pl] -> sn=1
-#  sb=[+pl] -> sn=2
-
 seg: a e i o u aa ee ii oo uu
      b c ch d dh f g h j k l m n ny p ph q r s sh t v w x y z
      B C D F G H J K L M N P Q R S T W X Y V Z
      A E I O U
      Ch Dh Ny Ph Sh Aa Ee Ii Oo Uu
-     # ~ replaces - in hyphenated words
+     # ~ replaces - in hyphenated words (both nouns/adjectives and verbs)
      ' - > ~ | +
+
+postproc: lambda form: form.replace('~', '-')
+gen_preproc: lambda form: form.replace('-', '~')
 
 feats:
 
@@ -45,7 +39,7 @@ feats:
       {'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj'};
       {'name': 'conj', 'pos': 'CCONJ', 'dep': 'cc'};
       {'name': '1sb_interr', 'pos': {'n': 'PRON', 'Q': 'ADV'}}
-    lemmafeats = fin=inf,t=sub
+    lemmafeats = fin=inf,t=sub,cs,ps,autoben
     t = prs | pst | imv | contemp | sub | prf | jus
     neg = False | True
     1s_sb = False | True

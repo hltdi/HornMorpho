@@ -80,3 +80,4 @@
 ረዣ/ዥም	ረ/ጅም	[pos=ADJ,t=[eng="long,tall"]]
 ወራት	ወር	[pos=N,t=[eng="month"]]
 ብዙሀን	ብዙ	[pos=ADJ,t=[eng="many"]]
+ክቡራት	ክቡር	[pos=ADJ]

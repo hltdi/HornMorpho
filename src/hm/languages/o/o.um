@@ -74,6 +74,10 @@ neg:: NEG
 
 cnj:: tu:FOC;; s:*COORD;; f:*COORD;; simmoo:*COORD;; oo:*COORD;; woo:*COORD;; llee:*COORD;; mmoo:*COORD;; moo:*COORD
 
+cs:: True:CAUS
+ps:: True:PASS
+autoben:: True:MID
+
 ## subjects
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL

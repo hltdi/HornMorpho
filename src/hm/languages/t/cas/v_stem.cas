@@ -24,6 +24,7 @@ weighting = UNIFICATION
 >wy<
 # አ -> ኣ, etc.
 >larA<
+#>vstem_suff<
 +v_irr.root+
 >v.tmp<
 >v.root<

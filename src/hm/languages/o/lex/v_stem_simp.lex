@@ -1,2390 +1,2390 @@
-ameerikaaness
-a'adh
-a'
-aad
-aagom
-aagoms
-aancaw
-aan
-aangaw
-aangom
-aangoms
-aannan
-aannaness
-aannanaaw
-aans
-aar
-aars
-abaar
-abarar
-abarars
-abbal
-abboom
-abbooms
-abdadh
-abjoodh
-aboot
-abur
-adab
-adams
-addaan-ba'
-addaan-baa
-addaan-baat
-addaan-bawumm
-addaan-bayiin
-addaan-qood
-addaggaaw
-addaggeess
-addaggom
-addaggooms
-addeess
-adeem
-adoodaw
-adood
-adoodess
-adoodh
-afadh
-afanfajeess
-afars
-afchaalom
-af
-afeer
-affeel
-afuuf
-agabaaw
-agabeess
-agara'
-aggadh
-ajaaw
-ajaj
-ajeess
-ajjeer
-ajjees
-akaaf
-akaaw
-akeek
-akeeks
-akkeess
-alaak
-alagoom
-alangeess
-alba'
-albaadaw
-albaadess
-albaadhom
-albaas
-alerg
-aman
-ammadh
-ammar
-ammayyeess
-angaw
-anjaaw
-anqooq
-araad
-araar
-araars
-arbeess
-arca'
-areedaw
-areedess
-areer
-arfaaw
-arfeess
-argadh
-argamaatess
-argan
-arg
-ari'
-ariis
-arjaaw
-arjajjaaw
-arjeess
-arjoom
-arkis
-arraab
-arrabs
-arreed
-asaas
-asfaaltess
-asheet
-asoos
-asxeess
-atoom
-atooms
-awaal
-awaaraw
-awaaress
-awwaal
-awwaarom
-axeerar
-ayyaaness
-ba'
-baabs
-baac
-baadan
-baadh
-baafs
-baajaw
-baajess
-baalansoof
-baalaw
-baalch
-baaless
-baarag
-baareess
-baarrak
-baas
-baay'is
-babaldhis
-babalsar
-babarreess
-babbaas
-babbaq
-bacaw
-badach
-badadaaw
-badad
-badadeess
-baddiiqaw
-baddiiq
-baddiiqeess
-baddiiqs
-badduba'
-baddubaas
-bad
-badhaadhaw
-badhaadhess
-badhaas
-badiidaw
-badiid
-badiidess
-badubaas
-bajigaaw
-bajig
-bajigeess
-bajigs
-bajjess
-bajjiiw
-bakakkaaw
-bakakkeess
-bakka-bu'
-bakka-buus
-bakkaaf
-bal'aaw
-bal'eess
-bal'is
-balacaaw
-balaceess
-balali'
-balaliis
-balaqis
-balbalooms
-balf
-ballaaw
-balleess
-bamm
-banadh
-ban
-baqadh
-baqaqaaw
-baqaq
-baqaqs
-baq
-baqqal
-baqs
-baraar
-baraars
-baraax
-baradh
-barangaa'
-barar
-barars
-barbaad
-barbadeess
-bar
-bareech
-bareedaw
-barga'
-bargaas
-bargaaw
-bargeess
-bari'
-bariis
-barris
-barruyyooms
-basaas
-bashaad
-bashanan
-bassaaw
-basseess
-batteess
-baw
-bebbeek
-beek
-beelaw
-beeless
-been
-bibbiqilch
-biddiiq
-bifadh
-biif
-biifs
-biilch
-biil
-biill
-biim
-bilbil
-bilchees
-biliqs
-bilisooms
-biqilch
-biqil
-bir'is
-birmadooms
-bishaaness
-bitaachaw
-bitadh
-bit
-bitimmaaw
-bitimmeess
-bitims
-bitinnaaw
-bittims
-bixxil
-biyyooless
-bo'eess
-boba'
-bobba'
-bobbaas
-bobbossaaw
-bobbosseess
-bob
-bobeess
-boc
-bokkeess
-bokok
-bokoks
-bokoneess
-bololiy
-bomba'
-bombaas
-bonaaw
-boneess
-boo'ich
-boohar
-booji'
-bookkis
-boollaw
-boolless
-boombess
-boon
-boonkis
-boons
-booqaw
-booqess
-booraw
-booress
-booxaw
-booxess
-booy
-boqodh
-boraas
-borc
-boronqeess
-boroq
-boror
-borqaaw
-borq
-borqeess
-borxottaaw
-borxotteess
-bosoneess
-bosoqqaaw
-bosoqqeess
-bosos
-bu'adh
-bu'
-bu'uraatoms
-bu'ureess
-bubbis
-bubbul
-bubbuluq
-bubburraaq
-bubbut
-bubbuus
-budduk
-bukaaw
-bukeess
-bulbul
-bulch
-bul
-bulgooms
-bullaaw
-bulleess
-bululch
-bulul
-buluqaaw
-buluqs
-bumbun
-buqqa'
-buqqisdhaab
-buqqis
-buquqaaw
-buquq
-buquqeess
-burkutaaw
-burkut
-burkuteess
-burq
-burraaq
-burraaqs
-burraaw
-burreess
-buruks
-buruq
-buruqs
-busaaw
-buseess
-bushaaw
-busheess
-butadh
-but
-butuch
-bututaaw
-butut
-bututeess
-buub
-buuf
-buukums
-buus
-caaf
-caakaw
-caakess
-caakkess
-caal
-caams
-caaraggaaw
-caaraggeess
-caasoms
-cabaqaaw
-cabaq
-cabaqeess
-cabbeess
-cabs
-caccab
-caccabs
-cac
-cala'
-calaas
-calalaaw
-calal
-calaleess
-calaqqis
-calbeess
-callaaw
-callabbeess
-calleess
-camad
-caqas
-caraan
-carraaq
-cawoom
-cercer
-cew
-cibir
-cibreess
-cicciis
-cicciniin
-ciccit
-cich
-ciibs
-ciifs
-ciiga'
-ciimaw
-ciimess
-ciincaw
-ciincess
-ciis
-cilaaqaw
-cilaaqess
-cim
-cimmis
-cims
-cinaaw
-ciniin
-cinqis
-ciqildh
-ciradh
-cir
-cit
-cittaaw
-citteess
-coccoph
-collaaw
-colleess
-coomaw
-coom
-cooms
-coph
-cophs
-coror
-corqaaw
-corq
-corqeess
-cubbis
-cuccuf
-cufadh
-cuf
-culkeess
-cululuq
-cululuqeess
-cunf
-cunqaaw
-cunqeess
-cunqurs
-cuqaalan
-cuqaal
-cuqaas
-cuqqaal
-curd
-curruuq
-cururs
-cuub
-cuunf
-cuuph
-da'adh
-daa'im
-daabanaaw
-daabaneess
-daabaw
-daabess
-daabula'
-daafaw
-daaf
-daafess
-daaffis
-daak
-daalachaaw
-daalacheess
-daal
-daalifaaw
-daalifeess
-daandess
-daangess
-daaraw
-daar
-daaress
-daarim
-dababaas
-dabal-waamm
-dabal-weerar
-dabal-weerart
-dabalabboom
-dabalabboomm
-dabalaleerg
-dabalban
-dabalbarreess
-dabalbit
-dabalbitt
-dabaldabars
-dabaldhaab
-dabaldhiyeeffann
-dabaldubbis
-dabal
-dabaleerg
-dabalfilann
-dabalfil
-dabalgodh
-dabalgoh
-dabalgulaal
-dabalgulaall
-dabalgurgart
-dabalgurgur
-dabalgurmeess
-dabalguur
-dabalguurt
-dabalibs
-dabalijaar
-dabalir
-dabaliriin
-daballaal
-dabalmaxxan
-dabalmaxxans
-dabalqopheess
-dabalraabs
-dabalramadd
-dabalramad
-dabalsarb
-dabalseen
-dabalseent
-dabaltokkooms
-daban
-dabars
-dabbaaw
-dabbasaaw
-dabbeess
-dabol
-dabs
-dachaas
-dachc
-dadaya'
-dadayaas
-daddabars
-daddab
-daddabs
-dadhab
-daf
-dafqaan-bul
-dafq
-dagaag
-dagaags
-dagaaw
-dagabaas
-dagadh
-dag
-daggalaaw
-daggaleess
-daladdal
-dalag
-dalams
-dal
-dalgeess
-dallan
-damaaw
-damac
-damf
-damiyyooms
-dammaaw
-dammaq
-dammaqs
-dammeess
-danaaw
-danabs
-danday
-daneess
-danf
-danfis
-dannab
-dannabs
-danqar
-danqaredh
-danq
-danqeess
-daphaaw
-dapheess
-daraar
-darams
-darb
-dar
-dargagoom
-dawwar
-day
-dayeess
-dayya'
-dayyaas
-deddebis
-deddeebi'
-deddeem
-deebi'
-deebis
-deef
-deegaw
-deeg
-deeggar
-deegs
-deem
-deer
-degger
-dhaab
-dhaad
-dhaadhess
-dhaal
-dhaamodh
-dhaams
-dhaan
-dhab
-dhadhaldh
-dhadha'
-dhagay
-dhagdhag
-dhagnaqab
-dhagoog
-dhalch
-dhal
-dhama'
-dhamaas
-dhamdhamaaw
-dhamdhameess
-dhamdhams
-dhangaaw
-dhangaggaaw
-dhangaggeess
-dhangala'
-dhangalaas
-dhangeess
-dhanqaaw
-dhanqeess
-dhaq
-dharra'
-dhaw
-dhawwis
-dh
-dheebodh
-dheed
-dheedhess
-dheedhaw
-dheens
-dheeraw
-dheeress
-dheerumm
-dhi'aaw
-dhi'
-dhi'eess
-dhibaaw
-dhibbaaw
-dhib
-dhibeess
-dhidhiib
-dhidhiit
-dhiib
-dhiig
-dhiigs
-dhiis
-dhiit
-dhikkis
-dhil
-dhim'is
-dhimbiib
-dhimm
-dhin
-dhins
-dhippis
-dhiq
-dhiqq
-dhis
-dho'
-dhoffaaw
-dhoffeess
-dhogoneess
-dhoks
-dhommoq
-dhommoqs
-dhoob
-dhooqaw
-dhooq
-dhooqess
-dhoork
-dhoos
-dhooww
-dhoqonaaw
-dhor
-dhork
-dhow
-dhoww
-dhubb
-dhudha'
-dhudhaas
-dhuf
-dhugaawoms
-dhug
-dhugooms
-dhukaas
-dhukkub
-dhullaaw
-dhulleess
-dhum
-dhundhul
-dhung
-dhuub
-dhuuf
-dibaabaw
-dibaabess
-dibadh
-dib
-diddig
-diddiir
-did
-didich
-diig
-diilallaaw
-diilallaaww
-diilalleess
-diimaw
-diimess
-diinom
-diis
-dikeess
-dilbaaw
-dilbeess
-dimimmisaaw
-dimimmiseess
-dinagdaaw
-dinagdeess
-diraamess
-dir
-diriir
-diriirs
-dirmammaaw
-dirmammeess
-dirm
-dirraaw
-dirreess
-dogoggoraaw
-dogoggor
-dogoggoreess
-doofaw
-doofeess
-doolaw
-dooldh
-dooless
-doom
-dooms
-doonnachoom
-dooyyess
-doqnaaw
-doqneess
-dorgom
-dorgoms
-dorrob
-dot
-du'
-dubbis
-duddubba'dh
-duf
-duguug
-dukkanaaw
-dukkaneess
-dukkudhaw
-dukkudh
-dukkuudhess
-dulla'
-dulloom
-dullooms
-dummuc
-dunquqaaw
-dunquq
-dunquqeess
-duraandurs
-duraaw
-durataa'
-durkeess
-durs
-dut
-duuch
-duud
-duufaw
-duufess
-duug
-duulaw
-duulch
-duul
-duuless
-duumessaaw
-duwweess
-eebbis
-eeg
-eeladh
-eelaw
-eelch
-eel
-eeless
-eer
-eeyyess
-ejers
-ejj
-ejjedh
-ejjooms
-elmadh
-elm
-erbadh
-erb
-ergadh
-ergar
-erg
-erger
-ergis
-etch
-faal
-faalless
-faandaw
-faandess
-faanga'
-faangaas
-faangess
-faannom
-faaqis
-faaris
-faars
-faaw
-faayess
-facaas
-facca'
-faccaas
-faccis
-fad
-fafaaw
-fafeess
-fag
-fageess
-fajach
-fajajaaw
-fajaj
-fajajeess
-fajjaaw
-fakkan
-fakkeess
-falaccisjis
-falax
-fal
-falfal
-falm
-fandalal
-fannis
-fara'
-farachijs
-farad
-farris
-fasfasaaw
-fasfaseess
-fashaal
-fayid
-fayyaaw
-fayy
-fayyeess
-fayyis
-fe'adh
-fe'
-fedh
-fidadh
-fid
-figgims
-fiig
-fiil
-fiillaw
-fiill
-fiilless
-fiir
-filadh
-fil
-filid
-filmeess
-filqooms
-fincaaw
-finceess
-fincil
-findhar
-finiin
-finiins
-finnaaw
-firfirs
-firinxiix
-fiririq
-firmeess
-firoom
-firooms
-fittis
-fixadh
-fix
-fixeensaw
-fixeensess
-fixir
-fo'adh
-fo'
-fodoodaw
-fodoodess
-fokkis
-fol
-follogeess
-folloqaaw
-folloq
-folloqs
-folodaaw
-folodeess
-fonqolch
-foollaw
-foolless
-fooric
-fooyyess
-foraanfoxaaw
-foraanfoxeess
-fottoq
-fottoqs
-fow
-foyyaaw
-foyyeess
-fufadh
-fuf
-fuggis
-fuldh
-fulla'
-fullaas
-funaan
-funuun
-funuuns
-funyeess
-funy
-furadh
-furdaaw
-furdis
-fur
-furf
-furfur
-furga'
-furris
-futis
-futta'
-futtaas
-fuudh
-fuulaw
-fuuless
-fuur
-ga'is
-gaabb
-gaab
-gaabs
-gaachan
-gaaddiddeess
-gaad
-gaadi'
-gaadiddaw
-gaadiddeess
-gaadisaaw
-gaadiseess
-gaafaw
-gaafess
-gaallab
-gaallamaaw
-gaamaraaw
-gaamar
-gaamareess
-gaamars
-gaaraw
-gaaress
-gaarom
-gaaroms
-gaaw
-gaaxess
-gabaabs
-gabbar
-gabbars
-gabbis
-gabrooms
-gacacciis
-gaccabs
-gadhiis
-gadaantess
-gadab
-gadabs
-gadad
-gadadh
-gadadooms
-gadamoojaw
-gadamoojess
-gadbaas
-gadd
-gaddeebi'
-gadhaaw
-gadheess
-gadhoom
-gadhooms
-gadhum
-gadhums
-gadiiqs
-gadqab
-gaggab
-gaggabs
-gajedh
-galaalch
-galaas
-galagalch
-galagal
-galateess
-galch
-gal
-galgalaaw
-galgaleess
-gallakkis
-galmeess
-gam'uldh
-gam'ul
-gam'uleess
-gamlulaaw
-gammad
-gammoojaw
-gammoojess
-gamnoom
-gamnooms
-gamtaaw
-gamteess
-ganamaaw
-ganameess
-gan
-gangalch
-gannaba'
-gaqqab
-garaciis
-garaddaf
-garadh
-garaf
-garagaldh
-gardaf
-gargaar
-gargarbaas
-garlamaaw
-garmaams
-gartoom
-gassaaw
-gasseess
-gatadh
-gatantaraaw
-gatantar
-gatantareess
-gatantars
-gat
-gaxaamurs
-gay
-geeddar
-geengaw
-geengess
-geerar
-geerars
-geerrar
-geeshar
-geess
-gegeeddar
-geggeess
-gidiraaw
-gidireess
-giimaw
-giimess
-giingaw
-giixan
-giixaw
-giixess
-gimijaaw
-gimijeess
-gingilch
-gingildh
-giph
-girris
-gitaaw
-giteess
-gixaan
-go'
-gobbaaw
-gobbeess
-gobbis
-godaan
-godaaw
-godeess
-godh
-godinooms
-gof
-gog
-goggodh
-goggogs
-gogs
-gojjol
-golaaba'
-golaabaas
-golbaaw
-golbeess
-golbob
-golfofaaw
-golfof
-golfofeess
-golg
-golgolaaw
-golgoleess
-goll
-golom'is
-golxaaw
-golxeess
-gom'aaw
-gom'
-gom'oolaw
-gom'ooless
-gomaas
-gombis
-gom
-gomm
-gonf
-gonkis
-gonnofeess
-gonnonnaaw
-goo'
-goobaw
-goobess
-good
-gooftom
-goolab
-gool
-goophaw
-goophess
-gor
-gorm
-goror
-gorors
-gorra'
-gors
-gotadh
-gowwoom
-gowwooms
-gu'
-gubadh
-gubayyeess
-gub
-guceess
-gucuciis
-guddis
-gudunf
-guduunf
-gufadh
-guggub
-gugguuf
-gugguut
-gugs
-guguddis
-gujjaaw
-gulaal
-guluf
-gumaaw
-gumeess
-gundhaaw
-gun
-gunjaaw
-gur'aachaw
-gur'aacheess
-gur'aaw
-gureess
-gurgur
-gurmeess
-gursummaaw
-guruc
-gururi'
-guufaw
-guufess
-guungum
-guur
-guus
-guut
-ha'
-haad
-haadh
-haafaw
-haafess
-haal
-haaraw
-haar
-haaress
-haaroms
-haasaw
-habadan
-habaqaaldh
-habuuq
-hacceer
-hacuuc
-hadhaadhiyy
-hadhaaw
-hadheess
-hafalaaw
-hafars
-haf
-hafeer
-hag
-haguug
-haguugs
-halaaw
-halalaaw
-halaleess
-haleelch
-haleel
-haleess
-halkanaaw
-halkaneess
-hallag
-hallas
-hallayaaw
-hallayeess
-halleess
-halloms
-hamadh
-hambis
-hamileess
-hammaar
-hammeess
-hamphar
-handaqeess
-handhuur
-hanga'
-hanqaaq
-hanqooq
-hanxaxeess
-hanxaxiiw
-haphis
-haqaar
-haqadh
-haq
-haradh
-harca'
-harcaas
-har
-hareer
-hargan
-hari'
-hariir
-harkis
-harooraw
-harooress
-harq
-harraaw
-harreess
-hasaas
-hatadh
-hat
-hawaasess
-haww
-haxaaw
-haxxaaw
-haxxeess
-haxxoom
-hayyooms
-hedadh
-hed
-heerum
-hidd
-hidh
-hiid
-hiik
-hiiq
-hiiqs
-hiladh
-hil
-himadh
-him
-himeens
-hinaaff
-hir'
-hir'is
-hiraar
-hiradh
-hirb
-hir
-hirigg
-hiriir
-hiriyoom
-hirkis
-hirph
-hiyyoom
-hiyyooms
-hobobs
-hodh
-hofess
-hofkalch
-hofkal
-hojjedh
-hojjeess
-hokkeess
-hokkol
-holooless
-holq
-homtooms
-hoo'
-hoo'is
-hooggan
-hoomachaaw
-hoomacheeess
-hoomish
-hoonga'
-hooq
-hoos
-hoqqis
-horadh
-horco'eess
-hord
-hordof
-hor
-horf
-hori'
-hormaaw
-hosob
-hubadh
-hub
-hudh
-hudum
-huk
-hulluuq
-huluuq
-hummaaw
-hundeess
-huqqis
-huraaw
-huradh
-hur
-hureess
-hurguf
-hurkaaw
-hurk
-hurkeess
-hurraaw
-hurreess
-hurris
-hurruub
-huubaw
-huubess
-huurs
-ibran
-ibs
-icciteess
-ichim
-ida'
-idd
-ifadh
-if
-iitaw
-iitess
-ijaaj
-ijaar
-ijjadh
-ijjeer
-ilaal
-ilbiisaw
-ilbiisess
-ililch
-imims
-immimaanaw
-immimaaness
-industirooms
-ingucc
-injir
-irbaan
-irbadh
-irb
-irra-deebi'
-irra-jir
-irra-xinn
-irraa-baat
-irraa-fuudh
-irracew
-ispoortess
-itich
-itit
-ittakeek
-ittan
-ittis
-ittisuuq
-iyooness
-iyyadh
-iyy
-jaanjess
-jaaraw
-jaar
-jaaress
-jaarsaw
-jaarsess
-jaatanaaw
-jaataneess
-jabeess
-jagnoom
-jagnooms
-jajadh
-jaji'
-jajjabeess
-jal'aaw
-jal'eess
-jal'is
-jal'oom
-jal'ooms
-jalaa-baat
-jalbuus
-jallis
-jalqab
-jaraf
-jarjar
-jarjars
-jedh
-jeejaw
-jeejess
-jeekar
-jeekars
-jeeq
-jibb
-jiddu-seenumm
-jifaar
-jifadh
-jif
-jig
-jigs
-jiidh
-jiilch
-jiil
-jiis
-jijjiir
-jimlaaw
-jinaaw
-jineess
-jir
-joonjaw
-joonjess
-joor
-joors
-jorgaaw
-jorgeess
-ka'
-kaab
-kaadh
-kaakis
-kaametooms
-kaas
-kaawuyyeess
-kaay
-kabadh
-kabaj
-kabal
-kab
-kabeelaw
-kabeeleess
-kafaf
-kafan
-kafta'
-kajeel
-kakaas
-kakadh
-kakkaas
-kakkawwaaw
-kakkawweess
-kalaabs
-kallattaaw
-kallatteess
-kalsanaaw
-kantar
-kantars
-kaq
-karkars
-karoor
-kasaar
-kash
-katab
-katolikooms
-katteess
-keessummaaw
-keessummeess
-kenn
-kerker
-kerkers
-kettaaw
-kichoom
-kiil
-kiloob
-kiph
-kireess
-kitaab
-kittim
-kiyyeess
-ko'oom
-ko'ooms
-kokkof
-kolaas
-koladh
-kolb
-kolf
-kolla'
-kollaas
-kollas
-kolmaaw
-kolmeess
-kolmoom
-kolmooms
-koloms
-komadh
-kom
-kompuutareess
-konkon
-koob
-koofaw
-koofess
-koor
-koors
-koq
-koradh
-kor
-korkod
-korkors
-kosaaw
-koseess
-kottaaw
-kott
-kotteess
-kufadh
-kuf
-kufis
-kukkut
-kulkul
-kurkum
-kurkur
-kurkurs
-kurruuf
-kuruudh
-kutadh
-kut
-kuulch
-kuul
-kuus
-laab
-laadh
-laaf
-laaffis
-laafis
-laaless
-laaq
-lab
-labs
-lafafaaw
-lagadh
-lag
-lakkaaw
-lakkaaww
-lalis
-lallaaf
-lallab
-lammeess
-lammooms
-lamshaaww
-lamtaaw
-lamxaaw
-lamxeess
-lat
-lee'
-leejjis
-leelaw
-leeless
-leellis
-leexaw
-leexess
-leeyyess
-lefaffeess
-lemxeess
-liil
-liim
-lilim
-limmixaaw
-limmixeess
-lims
-liphaaliphs
-liqeess
-liqims
-lixadh
-lix
-lixis
-lo'
-lola'
-lolaas
-lol
-lolla'
-lolloqaaw
-lolloq
-lolloqeess
-lolloqs
-loloos
-loog
-loos
-luboom
-luggaaw
-luggeess
-lugnaaw
-lugneess
-lugnoom
-lugnooms
-luklukaaw
-lukluk
-luklukeess
-lulaaw
-luladh
-luleess
-lulluq
-luqqa'
-luqqis
-luquum
-luuchaw
-luuchess
-luug
-luulaw
-luuless
-luulless
-maagar
-maagaw
-maagess
-maagnetooms
-maallim
-maamaw
-maamess
-maans
-maar
-maasaw
-maasess
-machaaw
-macheess
-madaaw
-madan
-madaqaaw
-madaqeess
-madaqs
-madar
-maddis
-madeess
-magaalaw
-magaalch
-magaaless
-magaaloms
-magarooms
-magars
-makaanikeess
-makadh
-makar
-mak
-makkal
-mala'
-malaal
-malaas
-maladh
-malag
-mal
-mallataaw
-mallateess
-mamadh
-mammaak
-mammadaaw
-mams
-manca'
-mancaas
-mandi'
-mankaraar
-maqas
-maq
-maqs
-maradh
-marag
-marars
-mar
-marg
-marlaaless
-marmaar
-marmaars
-marmar
-marmars
-marm
-marq
-mars
-maseen
-maseeness
-massak
-masseess
-maxin
-maxxan
-maxxans
-meetir
-meex
-mi'aaw
-mi'eeffann
-mi'eess
-michoom
-miciir
-mid
-miicc
-miidhag
-miidhags
-miidh
-miig
-miijan
-miiltess
-miiress
-mijjeess
-milaamildh
-miliq
-milkaaw
-mindeess
-minyaaw
-mirg
-mirgis
-miriix
-mirkaneess
-mirmirs
-mirqaans
-mirs
-misooms
-mit
-mitis
-mixiix
-mo'adh
-mo'
-moggaas
-molaaw
-moladh
-moleess
-mommooq
-moofaw
-moofess
-mooq
-mootess
-mootom
-morgogaaw
-morgogeess
-mork
-morkisijs
-morm
-morod
-motorooms
-mow
-much
-mucucaaw
-mucuceess
-mudd
-mudhuq
-mug
-mujujaaw
-mujuj
-mukaaw
-mukeess
-mul'is
-mulluuq
-mulluuss
-mulq
-mululeess
-munyaaq
-munyaqs
-munyuuq
-muradh
-mur
-murmur
-murteess
-mushulugs
-mutaaw
-mut
-muuc
-muucess
-muusaw
-muusess
-muusiq
-muux
-muxadh
-mux
-muxeess
-na'
-naafaw
-naaf
-naafess
-naafis
-naaldh
-naannaw
-nadiy
-nafaaw
-nafess
-nagaaw
-nagad
-nam'
-nannaq
-nanness
-naqadh
-naq
-nool
-nuff
-nyaadh
-nyal
-nyenya'
-oo'
-oo'is
-obaas
-obarayyeess
-obobs
-obreess
-obsadh
-obs
-odeeffac
-odeess
-ofkal
-oftuul
-ogooms
-okkol
-olaan
-olaans
-olgaldh
-oliiqs
-olloom
-olol
-ololok
-onaaw
-on
-oneess
-onnoom
-ons
-oobr
-ood
-oofadh
-oof
-oolch
-ool
-ooll
-oommar
-oos
-ordof
-ori'
-otontoraaw
-otontor
-otontoreess
-otontors
-qaanaw
-qaaness
-qaangaw
-qaangess
-qaanqaw
-qaanqess
-qaaqaw
-qaaqess
-qaari'
-qaarutoom
-qaaw
-qabadh
-qabbanaaw
-qabbaneess
-qabben
-qab
-qabxeess
-qaca'
-qacac
-qacar
-qadaad
-qaggajeelch
-qajeelch
-qajeel
-qak
-qaladh
-qalameess
-qalbeess
-qal
-qal'is
-qamaacaw
-qamaacess
-qanani'
-qancar
-qanna'
-qanyis
-qaqadh
-qaq
-qaqqab
-qarax
-qarcacaaw
-qarcaceess
-qar
-qarims
-qarooms
-qasa'
-qasaas
-qassaaw
-qasseess
-qataar
-qawwis
-qaxaamur
-qaxxis
-qebel
-qeelaw
-qeeless
-qeens
-qex
-qiciicaw
-qiciicess
-qiinqanaaw
-qiinqaneess
-qiinqim
-qilleensaw
-qilleensess
-qimir
-qimmid
-qindeess
-qiqqirix
-qirca'
-qirceess
-qiriciis
-qirimbis
-qirix
-qirqid
-qirqir
-qixaabir
-qixxeess
-qoccol
-qocol
-qoladh
-qollajjaaw
-qollajjeess
-qolqol
-qome-dhayiin
-qome-dhooft
-qomma'
-qonfar
-qonfarsiss
-qonyaaw
-qonyeess
-qonyonyaaw
-qonyonyeess
-qood
-qoom
-qoonqaw
-qoonqess
-qoopha'
-qooqa'
-qooq
-qooqs
-qoorbess
-qoor
-qoors
-qoos
-qophaaw
-qopheess
-qoq
-qoqob
-qoqobs
-qoqoreess
-qoqqis
-qoqqob
-qoqqoc
-qoqqorcaas
-qora'
-qoraas
-qorac
-qoradh
-qorcaas
-qor
-qorq
-qorqor
-qorr
-qorreedom
-qoru
-qosoqqos
-qossa'
-qot
-qu'adh
-qu'
-qubadh
-qubaqab
-qubeess
-qucquc
-qucquciis
-qucucaaw
-qucuc
-qucuceess
-qudh
-qufa'
-quladh
-qullaaw
-qulleess
-qulqullaaw
-qulqulleess
-qumaad
-qummun
-qummuns
-quncis
-quncucaaw
-quncuc
-quncuceess
-quncuciis
-qunxur
-quqqumaad
-quqqummaaw
-quqqummeess
-quqquncis
-quqummaad
-qura'
-qurbeess
-qurcaaw
-qurceess
-qurx
-qusadh
-quubs
-quucar
-quuf
-quufs
-quuq
-quusaraaw
-quusareess
-raabs
-raag
-raaj
-raammess
-raams
-raanmw
-raas
-raataw
-raatess
-raf
-rafis
-ragad
-raggaas
-rakkis
-ramad
-raqaaw
-raq
-raqeess
-raradh
-rar
-rarra'
-rarraas
-ratta'
-reeb
-refadh
-ri'adh
-rifadh
-rifeensaw
-rigadh
-rig
-rimeess
-rimmaw
-rinchichaaw
-rinchicheess
-rincicaaw
-rinmmeess
-riph
-riq
-ririit
-robs
-rochaaw
-roch
-rocheess
-rogaaw
-rom'
-rom'is
-roob
-roorraw
-roorress
-roorris
-rukut
-rurrukut
-rurruuq
-ruug
-ruurraw
-ruurress
-saafa'
-saag
-saakarraaw
-saakarreess
-saaq
-saasaw
-saattess
-saaxil-baas
-saaxil
-sad
-safar
-saffax
-sagaagal
-sagad
-sagaggal
-sagaleess
-saganteess
-sakatta'
-saldaq
-sal
-sallaks
-salleess
-salphis
-salxaaw
-samadallaaw
-sammu-dhiq
-samph
-sams
-sangooms
-sarar
-sarb
-sard
-sarm
-sassaab
-se'
-secha'
-seeca'
-seelkaw
-seelkess
-seen
-seeness
-seeq
-seer
-seeroms
-sesseeq
-sesseq
-shaaf
-shaakal
-shaakarraaw
-shafaaw
-shafeess
-shaffax
-shafs
-shak
-shalashal
-shallag
-shalleess
-shaqax
-sharaf
-sharar
-sheekkoms
-shil
-shilmiitoms
-shimin
-shish
-shoog
-shool
-shubbis
-shuntuur
-si'aaw
-si'adh
-sifaaw
-sifeess
-siilaw
-siiless
-siimess
-siiq
-siiqs
-siiss
-sim
-singiggaaw
-sinsinnaaw
-siq
-sirbamis
-sirb
-sirneess
-sissisi'aaw
-sobadh
-sob
-socho'
-sochoos
-soddoom
-sokk
-sokoks
-sollag
-sollags
-solloq
-solloqs
-solola'
-sololaas
-sololi'
-sololiis
-sonaaw
-soneess
-soof
-sookka'
-soom
-soor
-soorom
-soqadh
-soq
-soqol
-sor
-sorroq
-sossob
-sossocho'
-sukkuum
-suksuk
-summeess
-summuug
-sumud
-sunkeess
-suntuur
-suntuurs
-supheens
-suph
-surgiis
-surraaw
-sussuk
-suuf
-suuka'
-suukaas
-suuq
-suusaw
-suusess
-suuttaw
-suuyoms
-ta'
-taajjab
-taay
-tajaajil
-takaal
-takkaatess
-talaal
-taliig
-taliilaw
-taliil
-taliiless
-tamsa'
-tamsaas
-tarar
-tarreess
-tarsaas
-tars
-tartar
-tartiib
-tasfutta'
-tiif
-tiinf
-tik
-tiks
-timjeess
-tiradh
-tirs
-to'adh
-to'
-tocho'
-tolch
-tol
-tooftess
-tootis
-tortoraaw
-tortor
-tortors
-tottocho'
-towadh
-tuf
-tugadh
-tugga'
-tumadh
-tum
-tuq
-tur
-tuttug
-tuul
-tuuraaw
-tuutaw
-tuutess
-udum
-uffadh
-uffis
-uggum
-ukaams
-ukkaams
-uladh
-ul
-ulfaaw
-ulfeess
-ulmaaw
-unadh
-ungulaal
-unkooms
-unkur
-urd
-ur
-urgaaw
-urgeess
-urguf
-ururs
-usher
-utaal
-utub
-uumadh
-uum
-uwwis
-waad
-waaltess
-waaqess
-wac
-wag
-wajag
-wajags
-wajiij
-wakkiil
-wal'aal
-wal'aan
-walmar
-walaaboms
-walakkeess
-walaleess
-walarg
-walballeess
-walcaal
-wald
-waldhaan
-waldid
-waleess
-walfakkeess
-walgaw
-walgeeddar
-walgit
-waliigal
-waliik
-walirraa-fuudh
-walitti-fuf
-walitti-qab
-wallaal
-wallaayyess
-walor
-walqixxeess
-walseen
-walta'
-waltajjeess
-walwaraan
-waqar
-waraab
-waraan
-warag
-wararaan
-wareeg
-warraaq
-warrooms
-warshaal
-warwareess
-waweess
-waxal
-wayyaaw
-wayy
-wayyeess
-we'eldh
-weeddis
-weedis
-weena'
-weenna'
-weerar
-wishaal
-wixin
-xaa'ess
-xaa'om
-xaa'oms
-xaataw
-xaaxess
-xacciis
-xafxaf
-xafxafeess
-xalaldh
-xambi'aaw
-xambi'
-xambi'eess
-xaxadh
-xax
-xeens
-xibiir
-xiinxal
-xiix
-xilis
-ximbir
-xiniq
-xinneess
-xiraaw
-xireess
-xixxiix
-xoolag
-xooxar
-xooxars
-xoxora'
-xumur
-xurbeess
-xureess
-xuux
-xuuxxuux
-yaab
-yaaddaw
-yaad
-yaadeess
-yaal
-yaas
-yaay
-yaayyess
-yabbaaw
-yabbeess
-yakk
-yayyab
-yeelalch
-yeelal
-yeella'
+ameerikaaness	[root=ameerikaaness]
+a'adh		[root="a'adh"]
+a'		[root="a'"]
+aad		[root=aad]
+aagom		[root=aagom]
+aagoms		[root=aagoms]
+aancaw		[root=aancaw]
+aan		[root=aan]
+aangaw		[root=aangaw]
+aangom		[root=aangom]
+aangoms		[root=aangoms]
+aannan		[root=aannan]
+aannaness	[root=aannaness]
+aannanaaw	[root=aannanaaw]
+aans		[root=aans]
+aar		[root=aar]
+aars		[root=aars]
+abaar		[root=abaar]
+abarar		[root=abarar]
+abarars		[root=abarars]
+abbal		[root=abbal]
+abboom		[root=abboom]
+abbooms		[root=abbooms]
+abdadh		[root=abdadh]
+abjoodh		[root=abjoodh]
+aboot		[root=aboot]
+abur		[root=abur]
+adab				[root=adab]
+adams				[root=adams]
+addaan~ba'			[root="addaan-ba'"]
+addaan~baa			[root="addaan-baa"]
+addaan~baat		[root="addaan-baat"]
+addaan~bawumm		[root="addaan-bawumm"]
+addaan~bayiin		[root="addaan-bayiin"]
+addaan~qood		[root="addaan-qood"]
+addaggaaw			[root=addaggaaw]
+addaggeess			[root=addaggeess]
+addaggom			[root=addaggom]
+addaggooms			[root=addaggooms]
+addeess				[root=addeess]
+adeem				[root=adeem]
+adoodaw				[root=adoodaw]
+adood				[root=adood]
+adoodess			[root=adoodess]
+adoodh				[root=adoodh]
+afadh				[root=afadh]
+afanfajeess			[root=afanfajeess]
+afars				[root=afars]
+afchaalom			[root=afchaalom]
+af				[root=af]
+afeer				[root=afeer]
+affeel				[root=affeel]
+afuuf				[root=afuuf]
+agabaaw				[root=agabaaw]
+agabeess			[root=agabeess]
+agara'				[root="agara'"]
+aggadh				[root=aggadh]
+ajaaw				[root=ajaaw]
+ajaj				[root=ajaj]
+ajeess				[root=ajeess]
+ajjeer				[root=ajjeer]
+ajjees				[root=ajjees]
+akaaf				[root=akaaf]
+akaaw				[root=akaaw]
+akeek				[root=akeek]
+akeeks				[root=akeeks]
+akkeess				[root=akkeess]
+alaak				[root=alaak]
+alagoom				[root=alagoom]
+alangeess			[root=alangeess]
+alba'				[root="alba'"]
+albaadaw			[root=albaadaw]
+albaadess			[root=albaadess]
+albaadhom			[root=albaadhom]
+albaas				[root=albaas]
+alerg				[root=alerg]
+aman				[root=aman]
+ammadh				[root=ammadh]
+ammar				[root=ammar]
+ammayyeess			[root=ammayyeess]
+angaw				[root=angaw]
+anjaaw				[root=anjaaw]
+anqooq				[root=anqooq]
+araad				[root=araad]
+araar				[root=araar]
+araars				[root=araars]
+arbeess				[root=arbeess]
+arca'				[root="arca'"]
+areedaw				[root=areedaw]
+areedess			[root=areedess]
+areer				[root=areer]
+arfaaw				[root=arfaaw]
+arfeess				[root=arfeess]
+argadh				[root=argadh]
+argamaatess			[root=argamaatess]
+argan				[root=argan]
+arg				[root=arg]
+ari'				[root="ari'"]
+ariis				[root=ariis]
+arjaaw				[root=arjaaw]
+arjajjaaw			[root=arjajjaaw]
+arjeess				[root=arjeess]
+arjoom				[root=arjoom]
+arkis				[root=arkis]
+arraab				[root=arraab]
+arrabs				[root=arrabs]
+arreed				[root=arreed]
+asaas				[root=asaas]
+asfaaltess			[root=asfaaltess]
+asheet				[root=asheet]
+asoos				[root=asoos]
+asxeess				[root=asxeess]
+atoom				[root=atoom]
+atooms				[root=atooms]
+awaal				[root=awaal]
+awaaraw				[root=awaaraw]
+awaaress			[root=awaaress]
+awwaal				[root=awwaal]
+awwaarom			[root=awwaarom]
+axeerar				[root=axeerar]
+ayyaaness			[root=ayyaaness]
+ba'				[root="ba'"]
+baabs				[root=baabs]
+baac				[root=baac]
+baadan				[root=baadan]
+baadh				[root=baadh]
+baafs				[root=baafs]
+baajaw				[root=baajaw]
+baajess				[root=baajess]
+baalansoof			[root=baalansoof]
+baalaw				[root=baalaw]
+baalch				[root=baalch]
+baaless				[root=baaless]
+baarag				[root=baarag]
+baareess			[root=baareess]
+baarrak				[root=baarrak]
+baas				[root=baas]
+baay'is				[root="baay'is"]
+babaldhis			[root=babaldhis]
+babalsar			[root=babalsar]
+babarreess			[root=babarreess]
+babbaas				[root=babbaas]
+babbaq				[root=babbaq]
+bacaw				[root=bacaw]
+badach				[root=badach]
+badadaaw			[root=badadaaw]
+badad				[root=badad]
+badadeess			[root=badadeess]
+baddiiqaw			[root=baddiiqaw]
+baddiiq				[root=baddiiq]
+baddiiqeess			[root=baddiiqeess]
+baddiiqs			[root=baddiiqs]
+badduba'			[root="badduba'"]
+baddubaas			[root=baddubaas]
+bad				[root=bad]
+badhaadhaw			[root=badhaadhaw]
+badhaadhess			[root=badhaadhess]
+badhaas				[root=badhaas]
+badiidaw			[root=badiidaw]
+badiid				[root=badiid]
+badiidess			[root=badiidess]
+badubaas			[root=badubaas]
+bajigaaw			[root=bajigaaw]
+bajig				[root=bajig]
+bajigeess			[root=bajigeess]
+bajigs				[root=bajigs]
+bajjess				[root=bajjess]
+bajjiiw				[root=bajjiiw]
+bakakkaaw			[root=bakakkaaw]
+bakakkeess			[root=bakakkeess]
+bakka~bu'			[root="bakka-bu'"]
+bakka~buus			[root="bakka-buus"]
+bakkaaf				[root=bakkaaf]
+bal'aaw				[root="bal'aaw"]
+bal'eess			[root="bal'eess"]
+bal'is				[root="bal'is"]
+balacaaw			[root=balacaaw]
+balaceess			[root=balaceess]
+balali'				[root="balali'"]
+balaliis			[root=balaliis]
+balaqis				[root=balaqis]
+balbalooms			[root=balbalooms]
+balf				[root=balf]
+ballaaw				[root=ballaaw]
+balleess			[root=balleess]
+bamm				[root=bamm]
+banadh				[root=banadh]
+ban				[root=ban]
+baqadh				[root=baqadh]
+baqaqaaw			[root=baqaqaaw]
+baqaq				[root=baqaq]
+baqaqs				[root=baqaqs]
+baq				[root=baq]
+baqqal				[root=baqqal]
+baqs				[root=baqs]
+baraar				[root=baraar]
+baraars				[root=baraars]
+baraax				[root=baraax]
+baradh				[root=baradh]
+barangaa'			[root="barangaa'"]
+barar				[root=barar]
+barars				[root=barars]
+barbaad				[root=barbaad]
+barbadeess			[root=barbadeess]
+bar				[root=bar]
+bareech				[root=bareech]
+bareedaw			[root=bareedaw]
+barga'				[root="barga'"]
+bargaas				[root=bargaas]
+bargaaw				[root=bargaaw]
+bargeess			[root=bargeess]
+bari'				[root="bari'"]
+bariis				[root=bariis]
+barris				[root=barris]
+barruyyooms			[root=barruyyooms]
+basaas				[root=basaas]
+bashaad				[root=bashaad]
+bashanan			[root=bashanan]
+bassaaw				[root=bassaaw]
+basseess			[root=basseess]
+batteess			[root=batteess]
+baw				[root=baw]
+bebbeek				[root=bebbeek]
+beek				[root=beek]
+beelaw				[root=beelaw]
+beeless				[root=beeless]
+been				[root=been]
+bibbiqilch			[root=bibbiqilch]
+biddiiq				[root=biddiiq]
+bifadh				[root=bifadh]
+biif				[root=biif]
+biifs				[root=biifs]
+biilch				[root=biilch]
+biil				[root=biil]
+biill				[root=biill]
+biim				[root=biim]
+bilbil				[root=bilbil]
+bilchees			[root=bilchees]
+biliqs				[root=biliqs]
+bilisooms			[root=bilisooms]
+biqilch				[root=biqilch]
+biqil				[root=biqil]
+bir'is				[root="bir'is"]
+birmadooms			[root=birmadooms]
+bishaaness			[root=bishaaness]
+bitaachaw			[root=bitaachaw]
+bitadh				[root=bitadh]
+bit				[root=bit]
+bitimmaaw			[root=bitimmaaw]
+bitimmeess			[root=bitimmeess]
+bitims				[root=bitims]
+bitinnaaw			[root=bitinnaaw]
+bittims				[root=bittims]
+bixxil				[root=bixxil]
+biyyooless			[root=biyyooless]
+bo'eess				[root="bo'eess"]
+boba'				[root="boba'"]
+bobba'				[root="bobba'"]
+bobbaas				[root=bobbaas]
+bobbossaaw			[root=bobbossaaw]
+bobbosseess			[root=bobbosseess]
+bob				[root=bob]
+bobeess				[root=bobeess]
+boc				[root=boc]
+bokkeess			[root=bokkeess]
+bokok				[root=bokok]
+bokoks				[root=bokoks]
+bokoneess			[root=bokoneess]
+bololiy				[root=bololiy]
+bomba'				[root="bomba'"]
+bombaas				[root=bombaas]
+bonaaw				[root=bonaaw]
+boneess				[root=boneess]
+boo'ich				[root="boo'ich"]
+boohar				[root=boohar]
+booji'				[root="booji'"]
+bookkis				[root=bookkis]
+boollaw				[root=boollaw]
+boolless			[root=boolless]
+boombess			[root=boombess]
+boon				[root=boon]
+boonkis				[root=boonkis]
+boons				[root=boons]
+booqaw				[root=booqaw]
+booqess				[root=booqess]
+booraw				[root=booraw]
+booress				[root=booress]
+booxaw				[root=booxaw]
+booxess				[root=booxess]
+booy				[root=booy]
+boqodh				[root=boqodh]
+boraas				[root=boraas]
+borc				[root=borc]
+boronqeess			[root=boronqeess]
+boroq				[root=boroq]
+boror				[root=boror]
+borqaaw				[root=borqaaw]
+borq				[root=borq]
+borqeess			[root=borqeess]
+borxottaaw			[root=borxottaaw]
+borxotteess			[root=borxotteess]
+bosoneess			[root=bosoneess]
+bosoqqaaw			[root=bosoqqaaw]
+bosoqqeess			[root=bosoqqeess]
+bosos				[root=bosos]
+bu'adh				[root="bu'adh"]
+bu'				[root="bu'"]
+bu'uraatoms			[root="bu'uraatoms"]
+bu'ureess			[root="bu'ureess"]
+bubbis				[root=bubbis]
+bubbul				[root=bubbul]
+bubbuluq			[root=bubbuluq]
+bubburraaq			[root=bubburraaq]
+bubbut				[root=bubbut]
+bubbuus				[root=bubbuus]
+budduk				[root=budduk]
+bukaaw				[root=bukaaw]
+bukeess				[root=bukeess]
+bulbul				[root=bulbul]
+bulch				[root=bulch]
+bul				[root=bul]
+bulgooms			[root=bulgooms]
+bullaaw				[root=bullaaw]
+bulleess			[root=bulleess]
+bululch				[root=bululch]
+bulul				[root=bulul]
+buluqaaw			[root=buluqaaw]
+buluqs				[root=buluqs]
+bumbun				[root=bumbun]
+buqqa'				[root="buqqa'"]
+buqqisdhaab			[root=buqqisdhaab]
+buqqis				[root=buqqis]
+buquqaaw			[root=buquqaaw]
+buquq				[root=buquq]
+buquqeess			[root=buquqeess]
+burkutaaw			[root=burkutaaw]
+burkut				[root=burkut]
+burkuteess			[root=burkuteess]
+burq				[root=burq]
+burraaq				[root=burraaq]
+burraaqs			[root=burraaqs]
+burraaw				[root=burraaw]
+burreess			[root=burreess]
+buruks				[root=buruks]
+buruq				[root=buruq]
+buruqs				[root=buruqs]
+busaaw				[root=busaaw]
+buseess				[root=buseess]
+bushaaw				[root=bushaaw]
+busheess			[root=busheess]
+butadh				[root=butadh]
+but				[root=but]
+butuch				[root=butuch]
+bututaaw			[root=bututaaw]
+butut				[root=butut]
+bututeess			[root=bututeess]
+buub				[root=buub]
+buuf				[root=buuf]
+buukums				[root=buukums]
+buus				[root=buus]
+caaf				[root=caaf]
+caakaw				[root=caakaw]
+caakess				[root=caakess]
+caakkess			[root=caakkess]
+caal				[root=caal]
+caams				[root=caams]
+caaraggaaw			[root=caaraggaaw]
+caaraggeess			[root=caaraggeess]
+caasoms				[root=caasoms]
+cabaqaaw			[root=cabaqaaw]
+cabaq				[root=cabaq]
+cabaqeess			[root=cabaqeess]
+cabbeess			[root=cabbeess]
+cabs				[root=cabs]
+caccab				[root=caccab]
+caccabs				[root=caccabs]
+cac				[root=cac]
+cala'				[root="cala'"]
+calaas				[root=calaas]
+calalaaw			[root=calalaaw]
+calal				[root=calal]
+calaleess			[root=calaleess]
+calaqqis			[root=calaqqis]
+calbeess			[root=calbeess]
+callaaw				[root=callaaw]
+callabbeess			[root=callabbeess]
+calleess			[root=calleess]
+camad				[root=camad]
+caqas				[root=caqas]
+caraan				[root=caraan]
+carraaq				[root=carraaq]
+cawoom				[root=cawoom]
+cercer				[root=cercer]
+cew				[root=cew]
+cibir				[root=cibir]
+cibreess			[root=cibreess]
+cicciis				[root=cicciis]
+cicciniin			[root=cicciniin]
+ciccit				[root=ciccit]
+cich				[root=cich]
+ciibs				[root=ciibs]
+ciifs				[root=ciifs]
+ciiga'				[root="ciiga'"]
+ciimaw				[root=ciimaw]
+ciimess				[root=ciimess]
+ciincaw				[root=ciincaw]
+ciincess			[root=ciincess]
+ciis				[root=ciis]
+cilaaqaw			[root=cilaaqaw]
+cilaaqess			[root=cilaaqess]
+cim				[root=cim]
+cimmis				[root=cimmis]
+cims				[root=cims]
+cinaaw				[root=cinaaw]
+ciniin				[root=ciniin]
+cinqis				[root=cinqis]
+ciqildh				[root=ciqildh]
+ciradh				[root=ciradh]
+cir				[root=cir]
+cit				[root=cit]
+cittaaw				[root=cittaaw]
+citteess			[root=citteess]
+coccoph				[root=coccoph]
+collaaw				[root=collaaw]
+colleess			[root=colleess]
+coomaw				[root=coomaw]
+coom				[root=coom]
+cooms				[root=cooms]
+coph				[root=coph]
+cophs				[root=cophs]
+coror				[root=coror]
+corqaaw				[root=corqaaw]
+corq				[root=corq]
+corqeess			[root=corqeess]
+cubbis				[root=cubbis]
+cuccuf				[root=cuccuf]
+cufadh				[root=cufadh]
+cuf				[root=cuf]
+culkeess			[root=culkeess]
+cululuq				[root=cululuq]
+cululuqeess			[root=cululuqeess]
+cunf				[root=cunf]
+cunqaaw				[root=cunqaaw]
+cunqeess			[root=cunqeess]
+cunqurs				[root=cunqurs]
+cuqaalan			[root=cuqaalan]
+cuqaal				[root=cuqaal]
+cuqaas				[root=cuqaas]
+cuqqaal				[root=cuqqaal]
+curd				[root=curd]
+curruuq				[root=curruuq]
+cururs				[root=cururs]
+cuub				[root=cuub]
+cuunf				[root=cuunf]
+cuuph				[root=cuuph]
+da'adh				[root="da'adh"]
+daa'im				[root="daa'im"]
+daabanaaw			[root=daabanaaw]
+daabaneess			[root=daabaneess]
+daabaw				[root=daabaw]
+daabess				[root=daabess]
+daabula'			[root="daabula'"]
+daafaw				[root=daafaw]
+daaf				[root=daaf]
+daafess				[root=daafess]
+daaffis				[root=daaffis]
+daak				[root=daak]
+daalachaaw			[root=daalachaaw]
+daalacheess			[root=daalacheess]
+daal				[root=daal]
+daalifaaw			[root=daalifaaw]
+daalifeess			[root=daalifeess]
+daandess			[root=daandess]
+daangess			[root=daangess]
+daaraw				[root=daaraw]
+daar				[root=daar]
+daaress				[root=daaress]
+daarim				[root=daarim]
+dababaas			[root=dababaas]
+dabal~waam			[root="dabal-waam"]
+dabal~weerar			[root="dabal-weerar"]
+dabal~weerart			[root="dabal-weerart"]
+dabalabboom			[root=dabalabboom]
+dabalabboomm			[root=dabalabboomm]
+dabalaleerg			[root=dabalaleerg]
+dabalban			[root=dabalban]
+dabalbarreess			[root=dabalbarreess]
+dabalbit			[root=dabalbit]
+dabalbitt			[root=dabalbitt]
+dabaldabars			[root=dabaldabars]
+dabaldhaab			[root=dabaldhaab]
+dabaldhiyeeffann		[root=dabaldhiyeeffann]
+dabaldubbis			[root=dabaldubbis]
+dabal				[root=dabal]
+dabaleerg			[root=dabaleerg]
+dabalfilann			[root=dabalfilann]
+dabalfil			[root=dabalfil]
+dabalgodh			[root=dabalgodh]
+dabalgoh			[root=dabalgoh]
+dabalgulaal			[root=dabalgulaal]
+dabalgulaall			[root=dabalgulaall]
+dabalgurgart			[root=dabalgurgart]
+dabalgurgur			[root=dabalgurgur]
+dabalgurmeess			[root=dabalgurmeess]
+dabalguur			[root=dabalguur]
+dabalguurt			[root=dabalguurt]
+dabalibs			[root=dabalibs]
+dabalijaar			[root=dabalijaar]
+dabalir				[root=dabalir]
+dabaliriin			[root=dabaliriin]
+daballaal			[root=daballaal]
+dabalmaxxan			[root=dabalmaxxan]
+dabalmaxxans			[root=dabalmaxxans]
+dabalqopheess			[root=dabalqopheess]
+dabalraabs			[root=dabalraabs]
+dabalramadd			[root=dabalramadd]
+dabalramad			[root=dabalramad]
+dabalsarb			[root=dabalsarb]
+dabalseen			[root=dabalseen]
+dabalseent			[root=dabalseent]
+dabaltokkooms			[root=dabaltokkooms]
+daban				[root=daban]
+dabars				[root=dabars]
+dabbaaw				[root=dabbaaw]
+dabbasaaw			[root=dabbasaaw]
+dabbeess			[root=dabbeess]
+dabol				[root=dabol]
+dabs				[root=dabs]
+dachaas				[root=dachaas]
+dachc				[root=dachc]
+dadaya'				[root="dadaya'"]
+dadayaas			[root=dadayaas]
+daddabars			[root=daddabars]
+daddab				[root=daddab]
+daddabs				[root=daddabs]
+dadhab				[root=dadhab]
+daf				[root=daf]
+dafqaan~bul			[root="dafqaan-bul"]
+dafq				[root=dafq]
+dagaag				[root=dagaag]
+dagaags				[root=dagaags]
+dagaaw				[root=dagaaw]
+dagabaas			[root=dagabaas]
+dagadh				[root=dagadh]
+dag				[root=dag]
+daggalaaw			[root=daggalaaw]
+daggaleess			[root=daggaleess]
+daladdal			[root=daladdal]
+dalag				[root=dalag]
+dalams				[root=dalams]
+dal				[root=dal]
+dalgeess			[root=dalgeess]
+dallan				[root=dallan]
+damaaw				[root=damaaw]
+damac				[root=damac]
+damf				[root=damf]
+damiyyooms			[root=damiyyooms]
+dammaaw				[root=dammaaw]
+dammaq				[root=dammaq]
+dammaqs				[root=dammaqs]
+dammeess			[root=dammeess]
+danaaw				[root=danaaw]
+danabs				[root=danabs]
+danday				[root=danday]
+daneess				[root=daneess]
+danf				[root=danf]
+danfis				[root=danfis]
+dannab				[root=dannab]
+dannabs				[root=dannabs]
+danqar				[root=danqar]
+danqaredh			[root=danqaredh]
+danq				[root=danq]
+danqeess			[root=danqeess]
+daphaaw				[root=daphaaw]
+dapheess			[root=dapheess]
+daraar				[root=daraar]
+darams				[root=darams]
+darb				[root=darb]
+dar				[root=dar]
+dargagoom			[root=dargagoom]
+dawwar				[root=dawwar]
+day				[root=day]
+dayeess				[root=dayeess]
+dayya'				[root="dayya'"]
+dayyaas				[root=dayyaas]
+deddebis			[root=deddebis]
+deddeebi'			[root="deddeebi'"]
+deddeem				[root=deddeem]
+deebi'				[root="deebi'"]
+deebis				[root=deebis]
+deef				[root=deef]
+deegaw				[root=deegaw]
+deeg				[root=deeg]
+deeggar				[root=deeggar]
+deegs				[root=deegs]
+deem				[root=deem]
+deer				[root=deer]
+degger				[root=degger]
+dhaab				[root=dhaab]
+dhaad				[root=dhaad]
+dhaadhess			[root=dhaadhess]
+dhaal				[root=dhaal]
+dhaamodh			[root=dhaamodh]
+dhaams				[root=dhaams]
+dhaan				[root=dhaan]
+dhab				[root=dhab]
+dhadhaldh			[root=dhadhaldh]
+dhadha'				[root="dhadha'"]
+dhagay				[root=dhagay]
+dhagdhag			[root=dhagdhag]
+dhagnaqab			[root=dhagnaqab]
+dhagoog				[root=dhagoog]
+dhalch				[root=dhalch]
+dhal				[root=dhal]
+dhama'				[root="dhama'"]
+dhamaas				[root=dhamaas]
+dhamdhamaaw			[root=dhamdhamaaw]
+dhamdhameess			[root=dhamdhameess]
+dhamdhams			[root=dhamdhams]
+dhangaaw			[root=dhangaaw]
+dhangaggaaw			[root=dhangaggaaw]
+dhangaggeess			[root=dhangaggeess]
+dhangala'			[root="dhangala'"]
+dhangalaas			[root=dhangalaas]
+dhangeess			[root=dhangeess]
+dhanqaaw			[root=dhanqaaw]
+dhanqeess			[root=dhanqeess]
+dhaq				[root=dhaq]
+dharra'				[root="dharra'"]
+dhaw				[root=dhaw]
+dhawwis				[root=dhawwis]
+dh				[root=dh]
+dheebodh			[root=dheebodh]
+dheed				[root=dheed]
+dheedhess			[root=dheedhess]
+dheedhaw			[root=dheedhaw]
+dheens				[root=dheens]
+dheeraw				[root=dheeraw]
+dheeress			[root=dheeress]
+dheerumm			[root=dheerumm]
+dhi'aaw				[root="dhi'aaw"]
+dhi'				[root="dhi'"]
+dhi'eess			[root="dhi'eess"]
+dhibaaw				[root=dhibaaw]
+dhibbaaw			[root=dhibbaaw]
+dhib				[root=dhib]
+dhibeess			[root=dhibeess]
+dhidhiib			[root=dhidhiib]
+dhidhiit			[root=dhidhiit]
+dhiib				[root=dhiib]
+dhiig				[root=dhiig]
+dhiigs				[root=dhiigs]
+dhiis				[root=dhiis]
+dhiit				[root=dhiit]
+dhikkis				[root=dhikkis]
+dhil				[root=dhil]
+dhim'is				[root="dhim'is"]
+dhimbiib			[root=dhimbiib]
+dhimm				[root=dhimm]
+dhin				[root=dhin]
+dhins				[root=dhins]
+dhippis				[root=dhippis]
+dhiq				[root=dhiq]
+dhiqq				[root=dhiqq]
+dhis				[root=dhis]
+dho'				[root="dho'"]
+dhoffaaw			[root=dhoffaaw]
+dhoffeess			[root=dhoffeess]
+dhogoneess			[root=dhogoneess]
+dhoks				[root=dhoks]
+dhommoq				[root=dhommoq]
+dhommoqs			[root=dhommoqs]
+dhoob				[root=dhoob]
+dhooqaw				[root=dhooqaw]
+dhooq				[root=dhooq]
+dhooqess			[root=dhooqess]
+dhoork				[root=dhoork]
+dhoos				[root=dhoos]
+dhooww				[root=dhooww]
+dhoqonaaw			[root=dhoqonaaw]
+dhor				[root=dhor]
+dhork				[root=dhork]
+dhow				[root=dhow]
+dhoww				[root=dhoww]
+dhubb				[root=dhubb]
+dhudha'				[root="dhudha'"]
+dhudhaas			[root=dhudhaas]
+dhuf				[root=dhuf]
+dhugaawoms			[root=dhugaawoms]
+dhug				[root=dhug]
+dhugooms			[root=dhugooms]
+dhukaas				[root=dhukaas]
+dhukkub				[root=dhukkub]
+dhullaaw			[root=dhullaaw]
+dhulleess			[root=dhulleess]
+dhum				[root=dhum]
+dhundhul			[root=dhundhul]
+dhung				[root=dhung]
+dhuub				[root=dhuub]
+dhuuf				[root=dhuuf]
+dibaabaw			[root=dibaabaw]
+dibaabess			[root=dibaabess]
+dibadh				[root=dibadh]
+dib				[root=dib]
+diddig				[root=diddig]
+diddiir				[root=diddiir]
+did				[root=did]
+didich				[root=didich]
+diig				[root=diig]
+diilallaaw			[root=diilallaaw]
+diilallaaww			[root=diilallaaww]
+diilalleess			[root=diilalleess]
+diimaw				[root=diimaw]
+diimess				[root=diimess]
+diinom				[root=diinom]
+diis				[root=diis]
+dikeess				[root=dikeess]
+dilbaaw				[root=dilbaaw]
+dilbeess			[root=dilbeess]
+dimimmisaaw			[root=dimimmisaaw]
+dimimmiseess			[root=dimimmiseess]
+dinagdaaw			[root=dinagdaaw]
+dinagdeess			[root=dinagdeess]
+diraamess			[root=diraamess]
+dir				[root=dir]
+diriir				[root=diriir]
+diriirs				[root=diriirs]
+dirmammaaw			[root=dirmammaaw]
+dirmammeess			[root=dirmammeess]
+dirm				[root=dirm]
+dirraaw				[root=dirraaw]
+dirreess			[root=dirreess]
+dogoggoraaw			[root=dogoggoraaw]
+dogoggor			[root=dogoggor]
+dogoggoreess			[root=dogoggoreess]
+doofaw				[root=doofaw]
+doofeess			[root=doofeess]
+doolaw				[root=doolaw]
+dooldh				[root=dooldh]
+dooless				[root=dooless]
+doom				[root=doom]
+dooms				[root=dooms]
+doonnachoom			[root=doonnachoom]
+dooyyess			[root=dooyyess]
+doqnaaw				[root=doqnaaw]
+doqneess			[root=doqneess]
+dorgom				[root=dorgom]
+dorgoms				[root=dorgoms]
+dorrob				[root=dorrob]
+dot				[root=dot]
+du'				[root="du'"]
+dubbis				[root=dubbis]
+duddubba'dh			[root="duddubba'dh"]
+duf				[root=duf]
+duguug				[root=duguug]
+dukkanaaw			[root=dukkanaaw]
+dukkaneess			[root=dukkaneess]
+dukkudhaw			[root=dukkudhaw]
+dukkudh				[root=dukkudh]
+dukkuudhess			[root=dukkuudhess]
+dulla'				[root="dulla'"]
+dulloom				[root=dulloom]
+dullooms			[root=dullooms]
+dummuc				[root=dummuc]
+dunquqaaw			[root=dunquqaaw]
+dunquq				[root=dunquq]
+dunquqeess			[root=dunquqeess]
+duraandurs			[root=duraandurs]
+duraaw				[root=duraaw]
+durataa'			[root="durataa'"]
+durkeess			[root=durkeess]
+durs				[root=durs]
+dut				[root=dut]
+duuch				[root=duuch]
+duud				[root=duud]
+duufaw				[root=duufaw]
+duufess				[root=duufess]
+duug				[root=duug]
+duulaw				[root=duulaw]
+duulch				[root=duulch]
+duul				[root=duul]
+duuless				[root=duuless]
+duumessaaw			[root=duumessaaw]
+duwweess			[root=duwweess]
+eebbis				[root=eebbis]
+eeg				[root=eeg]
+eeladh				[root=eeladh]
+eelaw				[root=eelaw]
+eelch				[root=eelch]
+eel				[root=eel]
+eeless				[root=eeless]
+eer				[root=eer]
+eeyyess				[root=eeyyess]
+ejers				[root=ejers]
+ejj				[root=ejj]
+ejjedh				[root=ejjedh]
+ejjooms				[root=ejjooms]
+elmadh				[root=elmadh]
+elm				[root=elm]
+erbadh				[root=erbadh]
+erb				[root=erb]
+ergadh				[root=ergadh]
+ergar				[root=ergar]
+erg				[root=erg]
+erger				[root=erger]
+ergis				[root=ergis]
+etch				[root=etch]
+faal				[root=faal]
+faalless			[root=faalless]
+faandaw				[root=faandaw]
+faandess			[root=faandess]
+faanga'				[root="faanga'"]
+faangaas			[root=faangaas]
+faangess			[root=faangess]
+faannom				[root=faannom]
+faaqis				[root=faaqis]
+faaris				[root=faaris]
+faars				[root=faars]
+faaw				[root=faaw]
+faayess				[root=faayess]
+facaas				[root=facaas]
+facca'				[root="facca'"]
+faccaas				[root=faccaas]
+faccis				[root=faccis]
+fad				[root=fad]
+fafaaw				[root=fafaaw]
+fafeess				[root=fafeess]
+fag				[root=fag]
+fageess				[root=fageess]
+fajach				[root=fajach]
+fajajaaw			[root=fajajaaw]
+fajaj				[root=fajaj]
+fajajeess			[root=fajajeess]
+fajjaaw				[root=fajjaaw]
+fakkan				[root=fakkan]
+fakkeess			[root=fakkeess]
+falaccisjis			[root=falaccisjis]
+falax				[root=falax]
+fal				[root=fal]
+falfal				[root=falfal]
+falm				[root=falm]
+fandalal			[root=fandalal]
+fannis				[root=fannis]
+fara'				[root="fara'"]
+farachijs			[root=farachijs]
+farad				[root=farad]
+farris				[root=farris]
+fasfasaaw			[root=fasfasaaw]
+fasfaseess			[root=fasfaseess]
+fashaal				[root=fashaal]
+fayid				[root=fayid]
+fayyaaw				[root=fayyaaw]
+fayy				[root=fayy]
+fayyeess			[root=fayyeess]
+fayyis				[root=fayyis]
+fe'adh				[root="fe'adh"]
+fe'				[root="fe'"]
+fedh				[root=fedh]
+fidadh				[root=fidadh]
+fid				[root=fid]
+figgims				[root=figgims]
+fiig				[root=fiig]
+fiil				[root=fiil]
+fiillaw				[root=fiillaw]
+fiill				[root=fiill]
+fiilless			[root=fiilless]
+fiir				[root=fiir]
+filadh				[root=filadh]
+fil				[root=fil]
+filid				[root=filid]
+filmeess			[root=filmeess]
+filqooms			[root=filqooms]
+fincaaw				[root=fincaaw]
+finceess			[root=finceess]
+fincil				[root=fincil]
+findhar				[root=findhar]
+finiin				[root=finiin]
+finiins				[root=finiins]
+finnaaw				[root=finnaaw]
+firfirs				[root=firfirs]
+firinxiix			[root=firinxiix]
+fiririq				[root=fiririq]
+firmeess			[root=firmeess]
+firoom				[root=firoom]
+firooms				[root=firooms]
+fittis				[root=fittis]
+fixadh				[root=fixadh]
+fix				[root=fix]
+fixeensaw			[root=fixeensaw]
+fixeensess			[root=fixeensess]
+fixir				[root=fixir]
+fo'adh				[root="fo'adh"]
+fo'				[root="fo'"]
+fodoodaw			[root=fodoodaw]
+fodoodess			[root=fodoodess]
+fokkis				[root=fokkis]
+fol				[root=fol]
+follogeess			[root=follogeess]
+folloqaaw			[root=folloqaaw]
+folloq				[root=folloq]
+folloqs				[root=folloqs]
+folodaaw			[root=folodaaw]
+folodeess			[root=folodeess]
+fonqolch			[root=fonqolch]
+foollaw				[root=foollaw]
+foolless			[root=foolless]
+fooric				[root=fooric]
+fooyyess			[root=fooyyess]
+foraanfoxaaw			[root=foraanfoxaaw]
+foraanfoxeess			[root=foraanfoxeess]
+fottoq				[root=fottoq]
+fottoqs				[root=fottoqs]
+fow				[root=fow]
+foyyaaw				[root=foyyaaw]
+foyyeess			[root=foyyeess]
+fufadh				[root=fufadh]
+fuf				[root=fuf]
+fuggis				[root=fuggis]
+fuldh				[root=fuldh]
+fulla'				[root="fulla'"]
+fullaas				[root=fullaas]
+funaan				[root=funaan]
+funuun				[root=funuun]
+funuuns				[root=funuuns]
+funyeess			[root=funyeess]
+funy				[root=funy]
+furadh				[root=furadh]
+furdaaw				[root=furdaaw]
+furdis				[root=furdis]
+fur				[root=fur]
+furf				[root=furf]
+furfur				[root=furfur]
+furga'				[root="furga'"]
+furris				[root=furris]
+futis				[root=futis]
+futta'				[root="futta'"]
+futtaas				[root=futtaas]
+fuudh				[root=fuudh]
+fuulaw				[root=fuulaw]
+fuuless				[root=fuuless]
+fuur				[root=fuur]
+ga'is				[root="ga'is"]
+gaabb				[root=gaabb]
+gaab				[root=gaab]
+gaabs				[root=gaabs]
+gaachan				[root=gaachan]
+gaaddiddeess			[root=gaaddiddeess]
+gaad				[root=gaad]
+gaadi'				[root="gaadi'"]
+gaadiddaw			[root=gaadiddaw]
+gaadiddeess			[root=gaadiddeess]
+gaadisaaw			[root=gaadisaaw]
+gaadiseess			[root=gaadiseess]
+gaafaw				[root=gaafaw]
+gaafess				[root=gaafess]
+gaallab				[root=gaallab]
+gaallamaaw			[root=gaallamaaw]
+gaamaraaw			[root=gaamaraaw]
+gaamar				[root=gaamar]
+gaamareess			[root=gaamareess]
+gaamars				[root=gaamars]
+gaaraw				[root=gaaraw]
+gaaress				[root=gaaress]
+gaarom				[root=gaarom]
+gaaroms				[root=gaaroms]
+gaaw				[root=gaaw]
+gaaxess				[root=gaaxess]
+gabaabs				[root=gabaabs]
+gabbar				[root=gabbar]
+gabbars				[root=gabbars]
+gabbis				[root=gabbis]
+gabrooms			[root=gabrooms]
+gacacciis			[root=gacacciis]
+gaccabs				[root=gaccabs]
+gadhiis				[root=gadhiis]
+gadaantess			[root=gadaantess]
+gadab				[root=gadab]
+gadabs				[root=gadabs]
+gadad				[root=gadad]
+gadadh				[root=gadadh]
+gadadooms			[root=gadadooms]
+gadamoojaw			[root=gadamoojaw]
+gadamoojess			[root=gadamoojess]
+gadbaas				[root=gadbaas]
+gadd				[root=gadd]
+gaddeebi'			[root="gaddeebi'"]
+gadhaaw				[root=gadhaaw]
+gadheess			[root=gadheess]
+gadhoom				[root=gadhoom]
+gadhooms			[root=gadhooms]
+gadhum				[root=gadhum]
+gadhums				[root=gadhums]
+gadiiqs				[root=gadiiqs]
+gadqab				[root=gadqab]
+gaggab				[root=gaggab]
+gaggabs				[root=gaggabs]
+gajedh				[root=gajedh]
+galaalch			[root=galaalch]
+galaas				[root=galaas]
+galagalch			[root=galagalch]
+galagal				[root=galagal]
+galateess			[root=galateess]
+galch				[root=galch]
+gal				[root=gal]
+galgalaaw			[root=galgalaaw]
+galgaleess			[root=galgaleess]
+gallakkis			[root=gallakkis]
+galmeess			[root=galmeess]
+gam'uldh			[root="gam'uldh"]
+gam'ul				[root="gam'ul"]
+gam'uleess			[root="gam'uleess"]
+gamlulaaw			[root=gamlulaaw]
+gammad				[root=gammad]
+gammoojaw			[root=gammoojaw]
+gammoojess			[root=gammoojess]
+gamnoom				[root=gamnoom]
+gamnooms			[root=gamnooms]
+gamtaaw				[root=gamtaaw]
+gamteess			[root=gamteess]
+ganamaaw			[root=ganamaaw]
+ganameess			[root=ganameess]
+gan				[root=gan]
+gangalch			[root=gangalch]
+gannaba'			[root="gannaba'"]
+gaqqab				[root=gaqqab]
+garaciis			[root=garaciis]
+garaddaf			[root=garaddaf]
+garadh				[root=garadh]
+garaf				[root=garaf]
+garagaldh			[root=garagaldh]
+gardaf				[root=gardaf]
+gargaar				[root=gargaar]
+gargarbaas			[root=gargarbaas]
+garlamaaw			[root=garlamaaw]
+garmaams			[root=garmaams]
+gartoom				[root=gartoom]
+gassaaw				[root=gassaaw]
+gasseess			[root=gasseess]
+gatadh				[root=gatadh]
+gatantaraaw			[root=gatantaraaw]
+gatantar			[root=gatantar]
+gatantareess			[root=gatantareess]
+gatantars			[root=gatantars]
+gat				[root=gat]
+gaxaamurs			[root=gaxaamurs]
+gay				[root=gay]
+geeddar				[root=geeddar]
+geengaw				[root=geengaw]
+geengess			[root=geengess]
+geerar				[root=geerar]
+geerars				[root=geerars]
+geerrar				[root=geerrar]
+geeshar				[root=geeshar]
+geess				[root=geess]
+gegeeddar			[root=gegeeddar]
+geggeess			[root=geggeess]
+gidiraaw			[root=gidiraaw]
+gidireess			[root=gidireess]
+giimaw				[root=giimaw]
+giimess				[root=giimess]
+giingaw				[root=giingaw]
+giixan				[root=giixan]
+giixaw				[root=giixaw]
+giixess				[root=giixess]
+gimijaaw			[root=gimijaaw]
+gimijeess			[root=gimijeess]
+gingilch			[root=gingilch]
+gingildh			[root=gingildh]
+giph				[root=giph]
+girris				[root=girris]
+gitaaw				[root=gitaaw]
+giteess				[root=giteess]
+gixaan				[root=gixaan]
+go'				[root="go'"]
+gobbaaw				[root=gobbaaw]
+gobbeess			[root=gobbeess]
+gobbis				[root=gobbis]
+godaan				[root=godaan]
+godaaw				[root=godaaw]
+godeess				[root=godeess]
+godh				[root=godh]
+godinooms			[root=godinooms]
+gof				[root=gof]
+gog				[root=gog]
+goggodh				[root=goggodh]
+goggogs				[root=goggogs]
+gogs				[root=gogs]
+gojjol				[root=gojjol]
+golaaba'			[root="golaaba'"]
+golaabaas			[root=golaabaas]
+golbaaw				[root=golbaaw]
+golbeess			[root=golbeess]
+golbob				[root=golbob]
+golfofaaw			[root=golfofaaw]
+golfof				[root=golfof]
+golfofeess			[root=golfofeess]
+golg				[root=golg]
+golgolaaw			[root=golgolaaw]
+golgoleess			[root=golgoleess]
+goll				[root=goll]
+golom'is			[root="golom'is"]
+golxaaw				[root=golxaaw]
+golxeess			[root=golxeess]
+gom'aaw				[root="gom'aaw"]
+gom'				[root="gom'"]
+gom'oolaw			[root="gom'oolaw"]
+gom'ooless			[root="gom'ooless"]
+gomaas				[root=gomaas]
+gombis				[root=gombis]
+gom				[root=gom]
+gomm				[root=gomm]
+gonf				[root=gonf]
+gonkis				[root=gonkis]
+gonnofeess			[root=gonnofeess]
+gonnonnaaw			[root=gonnonnaaw]
+goo'				[root="goo'"]
+goobaw				[root=goobaw]
+goobess				[root=goobess]
+good				[root=good]
+gooftom				[root=gooftom]
+goolab				[root=goolab]
+gool				[root=gool]
+goophaw				[root=goophaw]
+goophess			[root=goophess]
+gor				[root=gor]
+gorm				[root=gorm]
+goror				[root=goror]
+gorors				[root=gorors]
+gorra'				[root="gorra'"]
+gors				[root=gors]
+gotadh				[root=gotadh]
+gowwoom				[root=gowwoom]
+gowwooms			[root=gowwooms]
+gu'				[root="gu'"]
+gubadh				[root=gubadh]
+gubayyeess			[root=gubayyeess]
+gub				[root=gub]
+guceess				[root=guceess]
+gucuciis			[root=gucuciis]
+guddis				[root=guddis]
+gudunf				[root=gudunf]
+guduunf				[root=guduunf]
+gufadh				[root=gufadh]
+guggub				[root=guggub]
+gugguuf				[root=gugguuf]
+gugguut				[root=gugguut]
+gugs				[root=gugs]
+guguddis			[root=guguddis]
+gujjaaw				[root=gujjaaw]
+gulaal				[root=gulaal]
+guluf				[root=guluf]
+gumaaw				[root=gumaaw]
+gumeess				[root=gumeess]
+gundhaaw			[root=gundhaaw]
+gun				[root=gun]
+gunjaaw				[root=gunjaaw]
+gur'aachaw			[root="gur'aachaw"]
+gur'aacheess			[root="gur'aacheess"]
+gur'aaw				[root="gur'aaw"]
+gureess				[root=gureess]
+gurgur				[root=gurgur]
+gurmeess			[root=gurmeess]
+gursummaaw			[root=gursummaaw]
+guruc				[root=guruc]
+gururi'				[root="gururi'"]
+guufaw				[root=guufaw]
+guufess				[root=guufess]
+guungum				[root=guungum]
+guur				[root=guur]
+guus				[root=guus]
+guut				[root=guut]
+ha'				[root="ha'"]
+haad				[root=haad]
+haadh				[root=haadh]
+haafaw				[root=haafaw]
+haafess				[root=haafess]
+haal				[root=haal]
+haaraw				[root=haaraw]
+haar				[root=haar]
+haaress				[root=haaress]
+haaroms				[root=haaroms]
+haasaw				[root=haasaw]
+habadan				[root=habadan]
+habaqaaldh			[root=habaqaaldh]
+habuuq				[root=habuuq]
+hacceer				[root=hacceer]
+hacuuc				[root=hacuuc]
+hadhaadhiyy			[root=hadhaadhiyy]
+hadhaaw				[root=hadhaaw]
+hadheess			[root=hadheess]
+hafalaaw			[root=hafalaaw]
+hafars				[root=hafars]
+haf				[root=haf]
+hafeer				[root=hafeer]
+hag				[root=hag]
+haguug				[root=haguug]
+haguugs				[root=haguugs]
+halaaw				[root=halaaw]
+halalaaw			[root=halalaaw]
+halaleess			[root=halaleess]
+haleelch			[root=haleelch]
+haleel				[root=haleel]
+haleess				[root=haleess]
+halkanaaw			[root=halkanaaw]
+halkaneess			[root=halkaneess]
+hallag				[root=hallag]
+hallas				[root=hallas]
+hallayaaw			[root=hallayaaw]
+hallayeess			[root=hallayeess]
+halleess			[root=halleess]
+halloms				[root=halloms]
+hamadh				[root=hamadh]
+hambis				[root=hambis]
+hamileess			[root=hamileess]
+hammaar				[root=hammaar]
+hammeess			[root=hammeess]
+hamphar				[root=hamphar]
+handaqeess			[root=handaqeess]
+handhuur			[root=handhuur]
+hanga'				[root="hanga'"]
+hanqaaq				[root=hanqaaq]
+hanqooq				[root=hanqooq]
+hanxaxeess			[root=hanxaxeess]
+hanxaxiiw			[root=hanxaxiiw]
+haphis				[root=haphis]
+haqaar				[root=haqaar]
+haqadh				[root=haqadh]
+haq				[root=haq]
+haradh				[root=haradh]
+harca'				[root="harca'"]
+harcaas				[root=harcaas]
+har				[root=har]
+hareer				[root=hareer]
+hargan				[root=hargan]
+hari'				[root="hari'"]
+hariir				[root=hariir]
+harkis				[root=harkis]
+harooraw			[root=harooraw]
+harooress			[root=harooress]
+harq				[root=harq]
+harraaw				[root=harraaw]
+harreess			[root=harreess]
+hasaas				[root=hasaas]
+hatadh				[root=hatadh]
+hat				[root=hat]
+hawaasess			[root=hawaasess]
+haww				[root=haww]
+haxaaw				[root=haxaaw]
+haxxaaw				[root=haxxaaw]
+haxxeess			[root=haxxeess]
+haxxoom				[root=haxxoom]
+hayyooms			[root=hayyooms]
+hedadh				[root=hedadh]
+hed				[root=hed]
+heerum				[root=heerum]
+hidd				[root=hidd]
+hidh				[root=hidh]
+hiid				[root=hiid]
+hiik				[root=hiik]
+hiiq				[root=hiiq]
+hiiqs				[root=hiiqs]
+hiladh				[root=hiladh]
+hil				[root=hil]
+himadh				[root=himadh]
+him				[root=him]
+himeens				[root=himeens]
+hinaaff				[root=hinaaff]
+hir'				[root="hir'"]
+hir'is				[root="hir'is"]
+hiraar				[root=hiraar]
+hiradh				[root=hiradh]
+hirb				[root=hirb]
+hir				[root=hir]
+hirigg				[root=hirigg]
+hiriir				[root=hiriir]
+hiriyoom			[root=hiriyoom]
+hirkis				[root=hirkis]
+hirph				[root=hirph]
+hiyyoom				[root=hiyyoom]
+hiyyooms			[root=hiyyooms]
+hobobs				[root=hobobs]
+hodh				[root=hodh]
+hofess				[root=hofess]
+hofkalch			[root=hofkalch]
+hofkal				[root=hofkal]
+hojjedh				[root=hojjedh]
+hojjeess			[root=hojjeess]
+hokkeess			[root=hokkeess]
+hokkol				[root=hokkol]
+holooless			[root=holooless]
+holq				[root=holq]
+homtooms			[root=homtooms]
+hoo'				[root="hoo'"]
+hoo'is				[root="hoo'is"]
+hooggan				[root=hooggan]
+hoomachaaw			[root=hoomachaaw]
+hoomacheeess			[root=hoomacheeess]
+hoomish				[root=hoomish]
+hoonga'				[root="hoonga'"]
+hooq				[root=hooq]
+hoos				[root=hoos]
+hoqqis				[root=hoqqis]
+horadh				[root=horadh]
+horco'eess			[root="horco'eess"]
+hord				[root=hord]
+hordof				[root=hordof]
+hor				[root=hor]
+horf				[root=horf]
+hori'				[root="hori'"]
+hormaaw				[root=hormaaw]
+hosob				[root=hosob]
+hubadh				[root=hubadh]
+hub				[root=hub]
+hudh				[root=hudh]
+hudum				[root=hudum]
+huk				[root=huk]
+hulluuq				[root=hulluuq]
+huluuq				[root=huluuq]
+hummaaw				[root=hummaaw]
+hundeess			[root=hundeess]
+huqqis				[root=huqqis]
+huraaw				[root=huraaw]
+huradh				[root=huradh]
+hur				[root=hur]
+hureess				[root=hureess]
+hurguf				[root=hurguf]
+hurkaaw				[root=hurkaaw]
+hurk				[root=hurk]
+hurkeess			[root=hurkeess]
+hurraaw				[root=hurraaw]
+hurreess			[root=hurreess]
+hurris				[root=hurris]
+hurruub				[root=hurruub]
+huubaw				[root=huubaw]
+huubess				[root=huubess]
+huurs				[root=huurs]
+ibran				[root=ibran]
+ibs				[root=ibs]
+icciteess			[root=icciteess]
+ichim				[root=ichim]
+ida'				[root="ida'"]
+idd				[root=idd]
+ifadh				[root=ifadh]
+if				[root=if]
+iitaw				[root=iitaw]
+iitess				[root=iitess]
+ijaaj				[root=ijaaj]
+ijaar				[root=ijaar]
+ijjadh				[root=ijjadh]
+ijjeer				[root=ijjeer]
+ilaal				[root=ilaal]
+ilbiisaw			[root=ilbiisaw]
+ilbiisess			[root=ilbiisess]
+ililch				[root=ililch]
+imims				[root=imims]
+immimaanaw			[root=immimaanaw]
+immimaaness			[root=immimaaness]
+industirooms			[root=industirooms]
+ingucc				[root=ingucc]
+injir				[root=injir]
+irbaan				[root=irbaan]
+irbadh				[root=irbadh]
+irb				[root=irb]
+irra~deebi'			[root="irra-deebi'"]
+irra~jir			[root="irra-jir"]
+irra~xinn			[root="irra-xinn"]
+irraa~baat			[root="irraa-baat"]
+irraa~fuudh			[root="irraa-fuudh"]
+irracew				[root=irracew]
+ispoortess			[root=ispoortess]
+itich				[root=itich]
+itit				[root=itit]
+ittakeek			[root=ittakeek]
+ittan				[root=ittan]
+ittis				[root=ittis]
+ittisuuq			[root=ittisuuq]
+iyooness			[root=iyooness]
+iyyadh				[root=iyyadh]
+iyy				[root=iyy]
+jaanjess			[root=jaanjess]
+jaaraw				[root=jaaraw]
+jaar				[root=jaar]
+jaaress				[root=jaaress]
+jaarsaw				[root=jaarsaw]
+jaarsess			[root=jaarsess]
+jaatanaaw			[root=jaatanaaw]
+jaataneess			[root=jaataneess]
+jabeess				[root=jabeess]
+jagnoom				[root=jagnoom]
+jagnooms			[root=jagnooms]
+jajadh				[root=jajadh]
+jaji'				[root="jaji'"]
+jajjabeess			[root=jajjabeess]
+jal'aaw				[root="jal'aaw"]
+jal'eess			[root="jal'eess"]
+jal'is				[root="jal'is"]
+jal'oom				[root="jal'oom"]
+jal'ooms			[root="jal'ooms"]
+jalaa~baat			[root="jalaa-baat"]
+jalbuus				[root=jalbuus]
+jallis				[root=jallis]
+jalqab				[root=jalqab]
+jaraf				[root=jaraf]
+jarjar				[root=jarjar]
+jarjars				[root=jarjars]
+jedh				[root=jedh]
+jeejaw				[root=jeejaw]
+jeejess				[root=jeejess]
+jeekar				[root=jeekar]
+jeekars				[root=jeekars]
+jeeq				[root=jeeq]
+jibb				[root=jibb]
+jiddu~seenumm			[root="jiddu-seenumm"]
+jifaar				[root=jifaar]
+jifadh				[root=jifadh]
+jif				[root=jif]
+jig				[root=jig]
+jigs				[root=jigs]
+jiidh				[root=jiidh]
+jiilch				[root=jiilch]
+jiil				[root=jiil]
+jiis				[root=jiis]
+jijjiir				[root=jijjiir]
+jimlaaw				[root=jimlaaw]
+jinaaw				[root=jinaaw]
+jineess				[root=jineess]
+jir				[root=jir]
+joonjaw				[root=joonjaw]
+joonjess			[root=joonjess]
+joor				[root=joor]
+joors				[root=joors]
+jorgaaw				[root=jorgaaw]
+jorgeess			[root=jorgeess]
+ka'				[root="ka'"]
+kaab				[root=kaab]
+kaadh				[root=kaadh]
+kaakis				[root=kaakis]
+kaametooms			[root=kaametooms]
+kaas				[root=kaas]
+kaawuyyeess			[root=kaawuyyeess]
+kaay				[root=kaay]
+kabadh				[root=kabadh]
+kabaj				[root=kabaj]
+kabal				[root=kabal]
+kab				[root=kab]
+kabeelaw			[root=kabeelaw]
+kabeeleess			[root=kabeeleess]
+kafaf				[root=kafaf]
+kafan				[root=kafan]
+kafta'				[root="kafta'"]
+kajeel				[root=kajeel]
+kakaas				[root=kakaas]
+kakadh				[root=kakadh]
+kakkaas				[root=kakkaas]
+kakkawwaaw			[root=kakkawwaaw]
+kakkawweess			[root=kakkawweess]
+kalaabs				[root=kalaabs]
+kallattaaw			[root=kallattaaw]
+kallatteess			[root=kallatteess]
+kalsanaaw			[root=kalsanaaw]
+kantar				[root=kantar]
+kantars				[root=kantars]
+kaq				[root=kaq]
+karkars				[root=karkars]
+karoor				[root=karoor]
+kasaar				[root=kasaar]
+kash				[root=kash]
+katab				[root=katab]
+katolikooms			[root=katolikooms]
+katteess			[root=katteess]
+keessummaaw			[root=keessummaaw]
+keessummeess			[root=keessummeess]
+kenn				[root=kenn]
+kerker				[root=kerker]
+kerkers				[root=kerkers]
+kettaaw				[root=kettaaw]
+kichoom				[root=kichoom]
+kiil				[root=kiil]
+kiloob				[root=kiloob]
+kiph				[root=kiph]
+kireess				[root=kireess]
+kitaab				[root=kitaab]
+kittim				[root=kittim]
+kiyyeess			[root=kiyyeess]
+ko'oom				[root="ko'oom"]
+ko'ooms				[root="ko'ooms"]
+kokkof				[root=kokkof]
+kolaas				[root=kolaas]
+koladh				[root=koladh]
+kolb				[root=kolb]
+kolf				[root=kolf]
+kolla'				[root="kolla'"]
+kollaas				[root=kollaas]
+kollas				[root=kollas]
+kolmaaw				[root=kolmaaw]
+kolmeess			[root=kolmeess]
+kolmoom				[root=kolmoom]
+kolmooms			[root=kolmooms]
+koloms				[root=koloms]
+komadh				[root=komadh]
+kom				[root=kom]
+kompuutareess			[root=kompuutareess]
+konkon				[root=konkon]
+koob				[root=koob]
+koofaw				[root=koofaw]
+koofess				[root=koofess]
+koor				[root=koor]
+koors				[root=koors]
+koq				[root=koq]
+koradh				[root=koradh]
+kor				[root=kor]
+korkod				[root=korkod]
+korkors				[root=korkors]
+kosaaw				[root=kosaaw]
+koseess				[root=koseess]
+kottaaw				[root=kottaaw]
+kott				[root=kott]
+kotteess			[root=kotteess]
+kufadh				[root=kufadh]
+kuf				[root=kuf]
+kufis				[root=kufis]
+kukkut				[root=kukkut]
+kulkul				[root=kulkul]
+kurkum				[root=kurkum]
+kurkur				[root=kurkur]
+kurkurs				[root=kurkurs]
+kurruuf				[root=kurruuf]
+kuruudh				[root=kuruudh]
+kutadh				[root=kutadh]
+kut				[root=kut]
+kuulch				[root=kuulch]
+kuul				[root=kuul]
+kuus				[root=kuus]
+laab				[root=laab]
+laadh				[root=laadh]
+laaf				[root=laaf]
+laaffis				[root=laaffis]
+laafis				[root=laafis]
+laaless				[root=laaless]
+laaq				[root=laaq]
+lab				[root=lab]
+labs				[root=labs]
+lafafaaw			[root=lafafaaw]
+lagadh				[root=lagadh]
+lag				[root=lag]
+lakkaaw				[root=lakkaaw]
+lakkaaww			[root=lakkaaww]
+lalis				[root=lalis]
+lallaaf				[root=lallaaf]
+lallab				[root=lallab]
+lammeess			[root=lammeess]
+lammooms			[root=lammooms]
+lamshaaww			[root=lamshaaww]
+lamtaaw				[root=lamtaaw]
+lamxaaw				[root=lamxaaw]
+lamxeess			[root=lamxeess]
+lat				[root=lat]
+lee'				[root="lee'"]
+leejjis				[root=leejjis]
+leelaw				[root=leelaw]
+leeless				[root=leeless]
+leellis				[root=leellis]
+leexaw				[root=leexaw]
+leexess				[root=leexess]
+leeyyess			[root=leeyyess]
+lefaffeess			[root=lefaffeess]
+lemxeess			[root=lemxeess]
+liil				[root=liil]
+liim				[root=liim]
+lilim				[root=lilim]
+limmixaaw			[root=limmixaaw]
+limmixeess			[root=limmixeess]
+lims				[root=lims]
+liphaaliphs			[root=liphaaliphs]
+liqeess				[root=liqeess]
+liqims				[root=liqims]
+lixadh				[root=lixadh]
+lix				[root=lix]
+lixis				[root=lixis]
+lo'				[root="lo'"]
+lola'				[root="lola'"]
+lolaas				[root=lolaas]
+lol				[root=lol]
+lolla'				[root="lolla'"]
+lolloqaaw			[root=lolloqaaw]
+lolloq				[root=lolloq]
+lolloqeess			[root=lolloqeess]
+lolloqs				[root=lolloqs]
+loloos				[root=loloos]
+loog				[root=loog]
+loos				[root=loos]
+luboom				[root=luboom]
+luggaaw				[root=luggaaw]
+luggeess			[root=luggeess]
+lugnaaw				[root=lugnaaw]
+lugneess			[root=lugneess]
+lugnoom				[root=lugnoom]
+lugnooms			[root=lugnooms]
+luklukaaw			[root=luklukaaw]
+lukluk				[root=lukluk]
+luklukeess			[root=luklukeess]
+lulaaw				[root=lulaaw]
+luladh				[root=luladh]
+luleess				[root=luleess]
+lulluq				[root=lulluq]
+luqqa'				[root="luqqa'"]
+luqqis				[root=luqqis]
+luquum				[root=luquum]
+luuchaw				[root=luuchaw]
+luuchess			[root=luuchess]
+luug				[root=luug]
+luulaw				[root=luulaw]
+luuless				[root=luuless]
+luulless			[root=luulless]
+maagar				[root=maagar]
+maagaw				[root=maagaw]
+maagess				[root=maagess]
+maagnetooms			[root=maagnetooms]
+maallim				[root=maallim]
+maamaw				[root=maamaw]
+maamess				[root=maamess]
+maans				[root=maans]
+maar				[root=maar]
+maasaw				[root=maasaw]
+maasess				[root=maasess]
+machaaw				[root=machaaw]
+macheess			[root=macheess]
+madaaw				[root=madaaw]
+madan				[root=madan]
+madaqaaw			[root=madaqaaw]
+madaqeess			[root=madaqeess]
+madaqs				[root=madaqs]
+madar				[root=madar]
+maddis				[root=maddis]
+madeess				[root=madeess]
+magaalaw			[root=magaalaw]
+magaalch			[root=magaalch]
+magaaless			[root=magaaless]
+magaaloms			[root=magaaloms]
+magarooms			[root=magarooms]
+magars				[root=magars]
+makaanikeess			[root=makaanikeess]
+makadh				[root=makadh]
+makar				[root=makar]
+mak				[root=mak]
+makkal				[root=makkal]
+mala'				[root="mala'"]
+malaal				[root=malaal]
+malaas				[root=malaas]
+maladh				[root=maladh]
+malag				[root=malag]
+mal				[root=mal]
+mallataaw			[root=mallataaw]
+mallateess			[root=mallateess]
+mamadh				[root=mamadh]
+mammaak				[root=mammaak]
+mammadaaw			[root=mammadaaw]
+mams				[root=mams]
+manca'				[root="manca'"]
+mancaas				[root=mancaas]
+mandi'				[root="mandi'"]
+mankaraar			[root=mankaraar]
+maqas				[root=maqas]
+maq				[root=maq]
+maqs				[root=maqs]
+maradh				[root=maradh]
+marag				[root=marag]
+marars				[root=marars]
+mar				[root=mar]
+marg				[root=marg]
+marlaaless			[root=marlaaless]
+marmaar				[root=marmaar]
+marmaars			[root=marmaars]
+marmar				[root=marmar]
+marmars				[root=marmars]
+marm				[root=marm]
+marq				[root=marq]
+mars				[root=mars]
+maseen				[root=maseen]
+maseeness			[root=maseeness]
+massak				[root=massak]
+masseess			[root=masseess]
+maxin				[root=maxin]
+maxxan				[root=maxxan]
+maxxans				[root=maxxans]
+meetir				[root=meetir]
+meex				[root=meex]
+mi'aaw				[root="mi'aaw"]
+mi'eeffann			[root="mi'eeffann"]
+mi'eess				[root="mi'eess"]
+michoom				[root=michoom]
+miciir				[root=miciir]
+mid				[root=mid]
+miicc				[root=miicc]
+miidhag				[root=miidhag]
+miidhags			[root=miidhags]
+miidh				[root=miidh]
+miig				[root=miig]
+miijan				[root=miijan]
+miiltess			[root=miiltess]
+miiress				[root=miiress]
+mijjeess			[root=mijjeess]
+milaamildh			[root=milaamildh]
+miliq				[root=miliq]
+milkaaw				[root=milkaaw]
+mindeess			[root=mindeess]
+minyaaw				[root=minyaaw]
+mirg				[root=mirg]
+mirgis				[root=mirgis]
+miriix				[root=miriix]
+mirkaneess			[root=mirkaneess]
+mirmirs				[root=mirmirs]
+mirqaans			[root=mirqaans]
+mirs				[root=mirs]
+misooms				[root=misooms]
+mit				[root=mit]
+mitis				[root=mitis]
+mixiix				[root=mixiix]
+mo'adh				[root="mo'adh"]
+mo'				[root="mo'"]
+moggaas				[root=moggaas]
+molaaw				[root=molaaw]
+moladh				[root=moladh]
+moleess				[root=moleess]
+mommooq				[root=mommooq]
+moofaw				[root=moofaw]
+moofess				[root=moofess]
+mooq				[root=mooq]
+mootess				[root=mootess]
+mootom				[root=mootom]
+morgogaaw			[root=morgogaaw]
+morgogeess			[root=morgogeess]
+mork				[root=mork]
+morkisijs			[root=morkisijs]
+morm				[root=morm]
+morod				[root=morod]
+motorooms			[root=motorooms]
+mow				[root=mow]
+much				[root=much]
+mucucaaw			[root=mucucaaw]
+mucuceess			[root=mucuceess]
+mudd				[root=mudd]
+mudhuq				[root=mudhuq]
+mug				[root=mug]
+mujujaaw			[root=mujujaaw]
+mujuj				[root=mujuj]
+mukaaw				[root=mukaaw]
+mukeess				[root=mukeess]
+mul'is				[root="mul'is"]
+mulluuq				[root=mulluuq]
+mulluuss			[root=mulluuss]
+mulq				[root=mulq]
+mululeess			[root=mululeess]
+munyaaq				[root=munyaaq]
+munyaqs				[root=munyaqs]
+munyuuq				[root=munyuuq]
+muradh				[root=muradh]
+mur				[root=mur]
+murmur				[root=murmur]
+murteess			[root=murteess]
+mushulugs			[root=mushulugs]
+mutaaw				[root=mutaaw]
+mut				[root=mut]
+muuc				[root=muuc]
+muucess				[root=muucess]
+muusaw				[root=muusaw]
+muusess				[root=muusess]
+muusiq				[root=muusiq]
+muux				[root=muux]
+muxadh				[root=muxadh]
+mux				[root=mux]
+muxeess				[root=muxeess]
+na'				[root="na'"]
+naafaw				[root=naafaw]
+naaf				[root=naaf]
+naafess				[root=naafess]
+naafis				[root=naafis]
+naaldh				[root=naaldh]
+naannaw				[root=naannaw]
+nadiy				[root=nadiy]
+nafaaw				[root=nafaaw]
+nafess				[root=nafess]
+nagaaw				[root=nagaaw]
+nagad				[root=nagad]
+nam'				[root="nam'"]
+nannaq				[root=nannaq]
+nanness				[root=nanness]
+naqadh				[root=naqadh]
+naq				[root=naq]
+nool				[root=nool]
+nuff				[root=nuff]
+nyaadh				[root=nyaadh]
+nyal				[root=nyal]
+nyenya'				[root="nyenya'"]
+oo'				[root="oo'"]
+oo'is				[root="oo'is"]
+obaas				[root=obaas]
+obarayyeess			[root=obarayyeess]
+obobs				[root=obobs]
+obreess				[root=obreess]
+obsadh				[root=obsadh]
+obs				[root=obs]
+odeeffac			[root=odeeffac]
+odeess				[root=odeess]
+ofkal				[root=ofkal]
+oftuul				[root=oftuul]
+ogooms				[root=ogooms]
+okkol				[root=okkol]
+olaan				[root=olaan]
+olaans				[root=olaans]
+olgaldh				[root=olgaldh]
+oliiqs				[root=oliiqs]
+olloom				[root=olloom]
+olol				[root=olol]
+ololok				[root=ololok]
+onaaw				[root=onaaw]
+on				[root=on]
+oneess				[root=oneess]
+onnoom				[root=onnoom]
+ons				[root=ons]
+oobr				[root=oobr]
+ood				[root=ood]
+oofadh				[root=oofadh]
+oof				[root=oof]
+oolch				[root=oolch]
+ool				[root=ool]
+ooll				[root=ooll]
+oommar				[root=oommar]
+oos				[root=oos]
+ordof				[root=ordof]
+ori'				[root="ori'"]
+otontoraaw			[root=otontoraaw]
+otontor				[root=otontor]
+otontoreess			[root=otontoreess]
+otontors			[root=otontors]
+qaanaw				[root=qaanaw]
+qaaness				[root=qaaness]
+qaangaw				[root=qaangaw]
+qaangess			[root=qaangess]
+qaanqaw				[root=qaanqaw]
+qaanqess			[root=qaanqess]
+qaaqaw				[root=qaaqaw]
+qaaqess				[root=qaaqess]
+qaari'				[root="qaari'"]
+qaarutoom			[root=qaarutoom]
+qaaw				[root=qaaw]
+qabadh				[root=qabadh]
+qabbanaaw			[root=qabbanaaw]
+qabbaneess			[root=qabbaneess]
+qabben				[root=qabben]
+qab				[root=qab]
+qabxeess			[root=qabxeess]
+qaca'				[root="qaca'"]
+qacac				[root=qacac]
+qacar				[root=qacar]
+qadaad				[root=qadaad]
+qaggajeelch			[root=qaggajeelch]
+qajeelch			[root=qajeelch]
+qajeel				[root=qajeel]
+qak				[root=qak]
+qaladh				[root=qaladh]
+qalameess			[root=qalameess]
+qalbeess			[root=qalbeess]
+qal				[root=qal]
+qal'is				[root="qal'is"]
+qamaacaw			[root=qamaacaw]
+qamaacess			[root=qamaacess]
+qanani'				[root="qanani'"]
+qancar				[root=qancar]
+qanna'				[root="qanna'"]
+qanyis				[root=qanyis]
+qaqadh				[root=qaqadh]
+qaq				[root=qaq]
+qaqqab				[root=qaqqab]
+qarax				[root=qarax]
+qarcacaaw			[root=qarcacaaw]
+qarcaceess			[root=qarcaceess]
+qar				[root=qar]
+qarims				[root=qarims]
+qarooms				[root=qarooms]
+qasa'				[root="qasa'"]
+qasaas				[root=qasaas]
+qassaaw				[root=qassaaw]
+qasseess			[root=qasseess]
+qataar				[root=qataar]
+qawwis				[root=qawwis]
+qaxaamur			[root=qaxaamur]
+qaxxis				[root=qaxxis]
+qebel				[root=qebel]
+qeelaw				[root=qeelaw]
+qeeless				[root=qeeless]
+qeens				[root=qeens]
+qex				[root=qex]
+qiciicaw			[root=qiciicaw]
+qiciicess			[root=qiciicess]
+qiinqanaaw			[root=qiinqanaaw]
+qiinqaneess			[root=qiinqaneess]
+qiinqim				[root=qiinqim]
+qilleensaw			[root=qilleensaw]
+qilleensess			[root=qilleensess]
+qimir				[root=qimir]
+qimmid				[root=qimmid]
+qindeess			[root=qindeess]
+qiqqirix			[root=qiqqirix]
+qirca'				[root="qirca'"]
+qirceess			[root=qirceess]
+qiriciis			[root=qiriciis]
+qirimbis			[root=qirimbis]
+qirix				[root=qirix]
+qirqid				[root=qirqid]
+qirqir				[root=qirqir]
+qixaabir			[root=qixaabir]
+qixxeess			[root=qixxeess]
+qoccol				[root=qoccol]
+qocol				[root=qocol]
+qoladh				[root=qoladh]
+qollajjaaw			[root=qollajjaaw]
+qollajjeess			[root=qollajjeess]
+qolqol				[root=qolqol]
+qome~dhayiin			[root="qome-dhayiin"]
+qome~dhooft			[root="qome-dhooft"]
+qomma'				[root="qomma'"]
+qonfar				[root=qonfar]
+qonfarsiss			[root=qonfarsiss]
+qonyaaw				[root=qonyaaw]
+qonyeess			[root=qonyeess]
+qonyonyaaw			[root=qonyonyaaw]
+qonyonyeess			[root=qonyonyeess]
+qood				[root=qood]
+qoom				[root=qoom]
+qoonqaw				[root=qoonqaw]
+qoonqess			[root=qoonqess]
+qoopha'				[root="qoopha'"]
+qooqa'				[root="qooqa'"]
+qooq				[root=qooq]
+qooqs				[root=qooqs]
+qoorbess			[root=qoorbess]
+qoor				[root=qoor]
+qoors				[root=qoors]
+qoos				[root=qoos]
+qophaaw				[root=qophaaw]
+qopheess			[root=qopheess]
+qoq				[root=qoq]
+qoqob				[root=qoqob]
+qoqobs				[root=qoqobs]
+qoqoreess			[root=qoqoreess]
+qoqqis				[root=qoqqis]
+qoqqob				[root=qoqqob]
+qoqqoc				[root=qoqqoc]
+qoqqorcaas			[root=qoqqorcaas]
+qora'				[root="qora'"]
+qoraas				[root=qoraas]
+qorac				[root=qorac]
+qoradh				[root=qoradh]
+qorcaas				[root=qorcaas]
+qor				[root=qor]
+qorq				[root=qorq]
+qorqor				[root=qorqor]
+qorr				[root=qorr]
+qorreedom			[root=qorreedom]
+qoru				[root=qoru]
+qosoqqos			[root=qosoqqos]
+qossa'				[root="qossa'"]
+qot				[root=qot]
+qu'adh				[root="qu'adh"]
+qu'				[root="qu'"]
+qubadh				[root=qubadh]
+qubaqab				[root=qubaqab]
+qubeess				[root=qubeess]
+qucquc				[root=qucquc]
+qucquciis			[root=qucquciis]
+qucucaaw			[root=qucucaaw]
+qucuc				[root=qucuc]
+qucuceess			[root=qucuceess]
+qudh				[root=qudh]
+qufa'				[root="qufa'"]
+quladh				[root=quladh]
+qullaaw				[root=qullaaw]
+qulleess			[root=qulleess]
+qulqullaaw			[root=qulqullaaw]
+qulqulleess			[root=qulqulleess]
+qumaad				[root=qumaad]
+qummun				[root=qummun]
+qummuns				[root=qummuns]
+quncis				[root=quncis]
+quncucaaw			[root=quncucaaw]
+quncuc				[root=quncuc]
+quncuceess			[root=quncuceess]
+quncuciis			[root=quncuciis]
+qunxur				[root=qunxur]
+quqqumaad			[root=quqqumaad]
+quqqummaaw			[root=quqqummaaw]
+quqqummeess			[root=quqqummeess]
+quqquncis			[root=quqquncis]
+quqummaad			[root=quqummaad]
+qura'				[root="qura'"]
+qurbeess			[root=qurbeess]
+qurcaaw				[root=qurcaaw]
+qurceess			[root=qurceess]
+qurx				[root=qurx]
+qusadh				[root=qusadh]
+quubs				[root=quubs]
+quucar				[root=quucar]
+quuf				[root=quuf]
+quufs				[root=quufs]
+quuq				[root=quuq]
+quusaraaw			[root=quusaraaw]
+quusareess			[root=quusareess]
+raabs				[root=raabs]
+raag				[root=raag]
+raaj				[root=raaj]
+raammess			[root=raammess]
+raams				[root=raams]
+raanmw				[root=raanmw]
+raas				[root=raas]
+raataw				[root=raataw]
+raatess				[root=raatess]
+raf				[root=raf]
+rafis				[root=rafis]
+ragad				[root=ragad]
+raggaas				[root=raggaas]
+rakkis				[root=rakkis]
+ramad				[root=ramad]
+raqaaw				[root=raqaaw]
+raq				[root=raq]
+raqeess				[root=raqeess]
+raradh				[root=raradh]
+rar				[root=rar]
+rarra'				[root="rarra'"]
+rarraas				[root=rarraas]
+ratta'				[root="ratta'"]
+reeb				[root=reeb]
+refadh				[root=refadh]
+ri'adh				[root="ri'adh"]
+rifadh				[root=rifadh]
+rifeensaw			[root=rifeensaw]
+rigadh				[root=rigadh]
+rig				[root=rig]
+rimeess				[root=rimeess]
+rimmaw				[root=rimmaw]
+rinchichaaw			[root=rinchichaaw]
+rinchicheess			[root=rinchicheess]
+rincicaaw			[root=rincicaaw]
+rinmmeess			[root=rinmmeess]
+riph				[root=riph]
+riq				[root=riq]
+ririit				[root=ririit]
+robs				[root=robs]
+rochaaw				[root=rochaaw]
+roch				[root=roch]
+rocheess			[root=rocheess]
+rogaaw				[root=rogaaw]
+rom'				[root="rom'"]
+rom'is				[root="rom'is"]
+roob				[root=roob]
+roorraw				[root=roorraw]
+roorress			[root=roorress]
+roorris				[root=roorris]
+rukut				[root=rukut]
+rurrukut			[root=rurrukut]
+rurruuq				[root=rurruuq]
+ruug				[root=ruug]
+ruurraw				[root=ruurraw]
+ruurress			[root=ruurress]
+saafa'				[root="saafa'"]
+saag				[root=saag]
+saakarraaw			[root=saakarraaw]
+saakarreess			[root=saakarreess]
+saaq				[root=saaq]
+saasaw				[root=saasaw]
+saattess			[root=saattess]
+saaxil~baas			[root="saaxil-baas"]
+saaxil				[root=saaxil]
+sad				[root=sad]
+safar				[root=safar]
+saffax				[root=saffax]
+sagaagal			[root=sagaagal]
+sagad				[root=sagad]
+sagaggal			[root=sagaggal]
+sagaleess			[root=sagaleess]
+saganteess			[root=saganteess]
+sakatta'			[root="sakatta'"]
+saldaq				[root=saldaq]
+sal				[root=sal]
+sallaks				[root=sallaks]
+salleess			[root=salleess]
+salphis				[root=salphis]
+salxaaw				[root=salxaaw]
+samadallaaw			[root=samadallaaw]
+sammu~dhiq			[root="sammu-dhiq"]
+samph				[root=samph]
+sams				[root=sams]
+sangooms			[root=sangooms]
+sarar				[root=sarar]
+sarb				[root=sarb]
+sard				[root=sard]
+sarm				[root=sarm]
+sassaab				[root=sassaab]
+se'				[root="se'"]
+secha'				[root="secha'"]
+seeca'				[root="seeca'"]
+seelkaw				[root=seelkaw]
+seelkess			[root=seelkess]
+seen				[root=seen]
+seeness				[root=seeness]
+seeq				[root=seeq]
+seer				[root=seer]
+seeroms				[root=seeroms]
+sesseeq				[root=sesseeq]
+sesseq				[root=sesseq]
+shaaf				[root=shaaf]
+shaakal				[root=shaakal]
+shaakarraaw			[root=shaakarraaw]
+shafaaw				[root=shafaaw]
+shafeess			[root=shafeess]
+shaffax				[root=shaffax]
+shafs				[root=shafs]
+shak				[root=shak]
+shalashal			[root=shalashal]
+shallag				[root=shallag]
+shalleess			[root=shalleess]
+shaqax				[root=shaqax]
+sharaf				[root=sharaf]
+sharar				[root=sharar]
+sheekkoms			[root=sheekkoms]
+shil				[root=shil]
+shilmiitoms			[root=shilmiitoms]
+shimin				[root=shimin]
+shish				[root=shish]
+shoog				[root=shoog]
+shool				[root=shool]
+shubbis				[root=shubbis]
+shuntuur			[root=shuntuur]
+si'aaw				[root="si'aaw"]
+si'adh				[root="si'adh"]
+sifaaw				[root=sifaaw]
+sifeess				[root=sifeess]
+siilaw				[root=siilaw]
+siiless				[root=siiless]
+siimess				[root=siimess]
+siiq				[root=siiq]
+siiqs				[root=siiqs]
+siiss				[root=siiss]
+sim				[root=sim]
+singiggaaw			[root=singiggaaw]
+sinsinnaaw			[root=sinsinnaaw]
+siq				[root=siq]
+sirbamis			[root=sirbamis]
+sirb				[root=sirb]
+sirneess			[root=sirneess]
+sissisi'aaw			[root="sissisi'aaw"]
+sobadh				[root=sobadh]
+sob				[root=sob]
+socho'				[root="socho'"]
+sochoos				[root=sochoos]
+soddoom				[root=soddoom]
+sokk				[root=sokk]
+sokoks				[root=sokoks]
+sollag				[root=sollag]
+sollags				[root=sollags]
+solloq				[root=solloq]
+solloqs				[root=solloqs]
+solola'				[root="solola'"]
+sololaas			[root=sololaas]
+sololi'				[root="sololi'"]
+sololiis			[root=sololiis]
+sonaaw				[root=sonaaw]
+soneess				[root=soneess]
+soof				[root=soof]
+sookka'				[root="sookka'"]
+soom				[root=soom]
+soor				[root=soor]
+soorom				[root=soorom]
+soqadh				[root=soqadh]
+soq				[root=soq]
+soqol				[root=soqol]
+sor				[root=sor]
+sorroq				[root=sorroq]
+sossob				[root=sossob]
+sossocho'			[root="sossocho'"]
+sukkuum				[root=sukkuum]
+suksuk				[root=suksuk]
+summeess			[root=summeess]
+summuug				[root=summuug]
+sumud				[root=sumud]
+sunkeess			[root=sunkeess]
+suntuur				[root=suntuur]
+suntuurs			[root=suntuurs]
+supheens			[root=supheens]
+suph				[root=suph]
+surgiis				[root=surgiis]
+surraaw				[root=surraaw]
+sussuk				[root=sussuk]
+suuf				[root=suuf]
+suuka'				[root="suuka'"]
+suukaas				[root=suukaas]
+suuq				[root=suuq]
+suusaw				[root=suusaw]
+suusess				[root=suusess]
+suuttaw				[root=suuttaw]
+suuyoms				[root=suuyoms]
+ta'				[root="ta'"]
+taajjab				[root=taajjab]
+taay				[root=taay]
+tajaajil			[root=tajaajil]
+takaal				[root=takaal]
+takkaatess			[root=takkaatess]
+talaal				[root=talaal]
+taliig				[root=taliig]
+taliilaw			[root=taliilaw]
+taliil				[root=taliil]
+taliiless			[root=taliiless]
+tamsa'				[root="tamsa'"]
+tamsaas				[root=tamsaas]
+tarar				[root=tarar]
+tarreess			[root=tarreess]
+tarsaas				[root=tarsaas]
+tars				[root=tars]
+tartar				[root=tartar]
+tartiib				[root=tartiib]
+tasfutta'			[root="tasfutta'"]
+tiif				[root=tiif]
+tiinf				[root=tiinf]
+tik				[root=tik]
+tiks				[root=tiks]
+timjeess			[root=timjeess]
+tiradh				[root=tiradh]
+tirs				[root=tirs]
+to'adh				[root="to'adh"]
+to'				[root="to'"]
+tocho'				[root="tocho'"]
+tolch				[root=tolch]
+tol				[root=tol]
+tooftess			[root=tooftess]
+tootis				[root=tootis]
+tortoraaw			[root=tortoraaw]
+tortor				[root=tortor]
+tortors				[root=tortors]
+tottocho'			[root="tottocho'"]
+towadh				[root=towadh]
+tuf				[root=tuf]
+tugadh				[root=tugadh]
+tugga'				[root="tugga'"]
+tumadh				[root=tumadh]
+tum				[root=tum]
+tuq				[root=tuq]
+tur				[root=tur]
+tuttug				[root=tuttug]
+tuul				[root=tuul]
+tuuraaw				[root=tuuraaw]
+tuutaw				[root=tuutaw]
+tuutess				[root=tuutess]
+udum				[root=udum]
+uffadh				[root=uffadh]
+uffis				[root=uffis]
+uggum				[root=uggum]
+ukaams				[root=ukaams]
+ukkaams				[root=ukkaams]
+uladh				[root=uladh]
+ul				[root=ul]
+ulfaaw				[root=ulfaaw]
+ulfeess				[root=ulfeess]
+ulmaaw				[root=ulmaaw]
+unadh				[root=unadh]
+ungulaal			[root=ungulaal]
+unkooms				[root=unkooms]
+unkur				[root=unkur]
+urd				[root=urd]
+ur				[root=ur]
+urgaaw				[root=urgaaw]
+urgeess				[root=urgeess]
+urguf				[root=urguf]
+ururs				[root=ururs]
+usher				[root=usher]
+utaal				[root=utaal]
+utub				[root=utub]
+uumadh				[root=uumadh]
+uum				[root=uum]
+uwwis				[root=uwwis]
+waad				[root=waad]
+waaltess			[root=waaltess]
+waaqess				[root=waaqess]
+wac				[root=wac]
+wag				[root=wag]
+wajag				[root=wajag]
+wajags				[root=wajags]
+wajiij				[root=wajiij]
+wakkiil				[root=wakkiil]
+wal'aal				[root="wal'aal"]
+wal'aan				[root="wal'aan"]
+walmar				[root=walmar]
+walaaboms			[root=walaaboms]
+walakkeess			[root=walakkeess]
+walaleess			[root=walaleess]
+walarg				[root=walarg]
+walballeess			[root=walballeess]
+walcaal				[root=walcaal]
+wald				[root=wald]
+waldhaan			[root=waldhaan]
+waldid				[root=waldid]
+waleess				[root=waleess]
+walfakkeess			[root=walfakkeess]
+walgaw				[root=walgaw]
+walgeeddar			[root=walgeeddar]
+walgit				[root=walgit]
+waliigal			[root=waliigal]
+waliik				[root=waliik]
+walirraa~fuudh			[root="walirraa-fuudh"]
+walitti~fuf			[root="walitti-fuf"]
+walitti~qab			[root="walitti-qab"]
+wallaal				[root=wallaal]
+wallaayyess			[root=wallaayyess]
+walor				[root=walor]
+walqixxeess			[root=walqixxeess]
+walseen				[root=walseen]
+walta'				[root="walta'"]
+waltajjeess			[root=waltajjeess]
+walwaraan			[root=walwaraan]
+waqar				[root=waqar]
+waraab				[root=waraab]
+waraan				[root=waraan]
+warag				[root=warag]
+wararaan			[root=wararaan]
+wareeg				[root=wareeg]
+warraaq				[root=warraaq]
+warrooms			[root=warrooms]
+warshaal			[root=warshaal]
+warwareess			[root=warwareess]
+waweess				[root=waweess]
+waxal				[root=waxal]
+wayyaaw				[root=wayyaaw]
+wayy				[root=wayy]
+wayyeess			[root=wayyeess]
+we'eldh				[root="we'eldh"]
+weeddis				[root=weeddis]
+weedis				[root=weedis]
+weena'				[root="weena'"]
+weenna'				[root="weenna'"]
+weerar				[root=weerar]
+wishaal				[root=wishaal]
+wixin				[root=wixin]
+xaa'ess				[root="xaa'ess"]
+xaa'om				[root="xaa'om"]
+xaa'oms				[root="xaa'oms"]
+xaataw				[root=xaataw]
+xaaxess				[root=xaaxess]
+xacciis				[root=xacciis]
+xafxaf				[root=xafxaf]
+xafxafeess			[root=xafxafeess]
+xalaldh				[root=xalaldh]
+xambi'aaw			[root="xambi'aaw"]
+xambi'				[root="xambi'"]
+xambi'eess			[root="xambi'eess"]
+xaxadh				[root=xaxadh]
+xax				[root=xax]
+xeens				[root=xeens]
+xibiir				[root=xibiir]
+xiinxal				[root=xiinxal]
+xiix				[root=xiix]
+xilis				[root=xilis]
+ximbir				[root=ximbir]
+xiniq				[root=xiniq]
+xinneess			[root=xinneess]
+xiraaw				[root=xiraaw]
+xireess				[root=xireess]
+xixxiix				[root=xixxiix]
+xoolag				[root=xoolag]
+xooxar				[root=xooxar]
+xooxars				[root=xooxars]
+xoxora'				[root="xoxora'"]
+xumur				[root=xumur]
+xurbeess			[root=xurbeess]
+xureess				[root=xureess]
+xuux				[root=xuux]
+xuuxxuux			[root=xuuxxuux]
+yaab				[root=yaab]
+yaaddaw				[root=yaaddaw]
+yaad				[root=yaad]
+yaadeess			[root=yaadeess]
+yaal				[root=yaal]
+yaas				[root=yaas]
+yaay				[root=yaay]
+yaayyess			[root=yaayyess]
+yabbaaw				[root=yabbaaw]
+yabbeess			[root=yabbeess]
+yakk				[root=yakk]
+yayyab				[root=yayyab]
+yeelalch			[root=yeelalch]
+yeelal				[root=yeelal]
+yeella'				[root="yeella'"]

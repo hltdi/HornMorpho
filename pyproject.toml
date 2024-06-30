@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "HornMorpho"
 version = "5.1"
 requires-python = ">= 3.8"
-dependencies = ['conllu', 'requests', 'tqdm']
+dependencies = ['conllu', 'requests']
 authors = [
     {name = "Michael Gasser", email = "gasser@iu.edu"},
 ]

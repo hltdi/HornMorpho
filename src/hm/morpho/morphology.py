@@ -1460,8 +1460,9 @@ class POSMorphology:
 #        print(" %% string {}".format(string))
         pre = stem = suf = mwe_part = ''
         pos = features.get('pos')
-        if kwargs.get('degem', True):
-            string = EES.degeminate(string, elim_bounds=False)
+        string = self.postproc5(string, gemination=not kwargs.get('degem', True))
+#        if kwargs.get('degem', True):
+#            string = EES.degeminate(string, elim_bounds=False)
         if kwargs.get('mwe', False):
             premwe = postmwe = mwe_part = None
             string.replace(Morphology.mwe_sep, ' ')
@@ -1844,6 +1845,7 @@ class POSMorphology:
         Currently restricted to gemination.
         '''
 #        print("** postproc5 {}".format(form))
+        form = self.language.postprocess5(form)
         if gloss:
             form += gloss
         if not gemination:
@@ -2016,6 +2018,22 @@ class POSMorphology:
         return self.gen(root, features=feats, update_feats=upd, v5=True, ignore_default=ignore_default,
                         trace=trace)
 
+    def gen_all(self, root, feats=None, trace=False, save_feats=None):
+        output = self.gen5(root, feats=feats)
+        results = []
+        for form, fsset in output:
+            fss = []
+            for fs in fsset:
+                f = FeatStruct()
+                for feat in save_feats:
+                    value = fs.get(feat, None)
+                    if value is not None:
+                        f[feat] = value
+                fss.append(f)
+            fss = FSSet(fss)
+            results.append((form, fss))
+        return results
+
     def gen(self, root, features=None, from_dict=False,
             postproc=False, update_feats=None, del_feats=None,
             guess=False, phon=False, segment=False, ortho=False, mwe=False,
@@ -2051,8 +2069,8 @@ class POSMorphology:
             else:
                 # Use explicit FS updates
                 features = self.update_FS(FeatStruct(features), update_feats)
-        if not features:
-            return []
+#        if not features:
+#            return []
         fst = fst or self.get_fst(generate=True, guess=guess, simplified=False,
                                   phon=phon, segment=segment, mwe=mwe,
                                   v5=v5)
@@ -2073,6 +2091,8 @@ class POSMorphology:
             if oroot:
                 root = oroot
         if fst:
+            # Added gen_preproc 2024.5.29
+#            root = self.language.gen_preprocess(root)
             gens = \
               fst.transduce(root, features,
                             seg_units=self.morphology.seg_units, gen=not del_feats,

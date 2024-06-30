@@ -120,6 +120,8 @@ PREPROC_RE = re.compile(r'\s*preproc.*?:\s*(.*)')
 POSTPROC_RE = re.compile(r'\s*postproc.*?:\s*(.*)')
 PROCROOT_RE = re.compile(r'\s*procroot.*?:\s*(.*)')
 POSTPOSTPROC_RE = re.compile(r'\s*postpostproc.*?:\s*(.*)')
+# Pre-processing for generation
+GEN_PREPROC_RE = re.compile(r'\s*genpreproc.*?:\s*(.*)')
 GEMINATION_RE = re.compile(r'\s*gem.*?:\s*.*')
 # Added 2021.11.24
 FEATNORM_RE = re.compile(r'\s*feat.*?norm.*?:\s*(.*)')
@@ -184,6 +186,8 @@ class Language:
                  ldir='',
                  # Preprocessing for analysis
                  preproc=None, procroot=None,
+                 # Preprocessing for generation
+                 gen_preproc=None,
                  # Post-processing for generation
                  postproc=None, postpostproc=None,
                  # Default root postprocessing for analysis
@@ -228,6 +232,7 @@ class Language:
         self.backup = backup
         self.morphology = None
         self.preproc = preproc
+        self.gen_preproc = gen_preproc
         self.procroot = procroot
         self.postproc = postproc
         self.postpostproc = postpostproc
@@ -677,11 +682,13 @@ class Language:
             m = PREPROC_RE.match(line)
             if m:
                 preproc = m.group(1)
-#                if preproc.startswith('geez'):
-#                    from .geez import geez2sera
-#                    self.preproc = lambda form: geez2sera(None, form, lang=self.abbrev,
-#                                                          gemination='gem' in preproc)
                 self.preproc = eval(preproc)
+                continue
+
+            m = GEN_PREPROC_RE.match(line)
+            if m:
+                gen_preproc = m.group(1)
+                self.gen_preproc = eval(gen_preproc)
                 continue
 
             m = PROCROOT_RE.match(line)
@@ -696,11 +703,8 @@ class Language:
             m = POSTPROC_RE.match(line)
             if m:
                 postproc = m.group(1)
-#                if postproc.startswith('geez'):
-#                    from .geez import sera2geez
-#                    self.postproc = lambda form: sera2geez(None, form, lang=self.abbrev,
-#                                                           gemination='gem' in postproc)
                 self.postproc = eval(postproc)
+#                print("^^ postproc: {}".format(postproc))
                 continue
 
             m = POSTPOSTPROC_RE.match(line)
@@ -2002,6 +2006,22 @@ class Language:
             sentlist.append((word, analysis))
             return True
         return False
+
+    def postprocess5(self, form):
+        '''
+        Postprocess a form if there's a postproc function.
+        '''
+        if self.postproc:
+            return self.postproc(form)
+        return form
+
+    def gen_preprocess(self, form):
+        '''
+        Preprocess a form before generating if there's a gen_preproc function.
+        '''
+        if self.gen_preproc:
+            return self.gen_preproc(form)
+        return form
 
     ### Old functions (HM 4)
 

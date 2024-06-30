@@ -2,13 +2,13 @@
 
 -> start
 
-start -> start    [$;-;>]
+start -> start    [$;-;>;~]
 
-start -> C		[!]
+start -> C		[!-~]
 
-C -> CC	 		[!]
+C -> CC	 		[!-~]
 
-C -> start		[$;-;>]
+C -> start		[$;-;>;~]
 
 CC -> start		[$]
 
@@ -23,7 +23,7 @@ CC -> CCi		[i:]
 # delete it because there won't be any more changes
 CCi -> CCi+		[:-;:>]
 
-CCi+ -> start	[!]
+CCi+ -> start	[!-~]
 
 start ->
 C ->

@@ -18,6 +18,8 @@ $2 = {aa, ee, ii, oo, uu}
 
 {v2ee} = ee:a;ee:e;ee:i;ee:o;ee:u;ee:aa;ee:ii
 
+# replace ~ with - for compounds
+>v_comp<
 >T2n<
 >s2f<
 >t2x<
