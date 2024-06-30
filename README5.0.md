@@ -1,56 +1,41 @@
-# HornMorpho,version 5.1
-#### 2024.6.5
-
-## Changes since version 5.0
-
-- Starting in HornMorpho 5.1, the data for particular languages is not included in the distribution. Once you have installed HM, you will need to download the data from the language(s) you want to work with. See the [Installation](#install) section below.
-
-- Version 5.1 adds Oromo to the languages included.
-
-## Introduction
+# HornMorpho,version 5.0
+#### 2024.5.27
 
 ***HornMorpho*** (HM) is a Python program that performs morphological
 analysis and generation in various languages of the Horn of Africa.
-The languages supported in Version 5.1 are Amharic, Afaan Oromoo, and Tigrinya.
-Most examples within this document are Amharic; future versions will include more examples from the other languages.
+The languages supported in Version 5.0 are Amharic and Tigrinya.
+All examples within this document are Amharic; future versions will include Tigrinya examples as well.
 
 If your application can benefit from explicit linguistic information about the structure and grammatical properties of words in these languages, then you may want to use HM.
 HM can tell you, for example, that the verb የማይደረገው is negative, that the noun አባቴን is the object of some verb, that the lemma (basic form) of the verb እንደሚመኟቸው is ተመኘ, that is, that this verb has something to do with 'longing'.
 HM can also tell you that the word እንደሚመኟቸው consists of five segments (morphemes): እንደም+ይ+መኝ+ኡ+ኣቸው.
 
-HM is a rule-based program; that is, the knowledge in the program is based on explicit linguistic rules and a *lexicon*, a dictionary of basic word forms (stems and roots), rather than on machine learning of the knowledge from a corpus. For Amharic, the lexicon is extracted mainly from Amsalu Aklilu's *Amharic-English Dictionary* (Addis Ababa, Kuraz, 2004). For Tigrinya, the lexicon is from Thomas Leiper Kane's *Tigrinya-English Dictionary* (Kensington, MD, USA, Dunwoody Press, 2000). For Oromo, the lexicon is from two dictionaries, Gene B. Gragg's *Oromo Dictionary* (African Studies Center, Michigan State University, 1982) and Tamene Bitima's *A Dictionary of Oromo Technical Terms (Oromo-English)* (Rüdiger Köppe, Köln, 2000). The rules come from many grammars of the languages. Though HM does not make use of machine learning, it is possible to use its output in models that do. For example, [Gezmu & Nürnberger (2023)](https://dl.acm.org/doi/10.1145/3610773) uses HM's segmentation of Amharic words for neural machine translation.
+HM is a rule-based program; that is, the knowledge in the program is based on explicit linguistic rules and a *lexicon*, a dictionary of basic word forms (stems and roots), rather than on machine learning of the knowledge from a corpus. For Amharic, the lexicon is extracted mainly from Amsalu Aklilu's *Amharic-English Dictionary* (Addis Ababa, Kuraz, 2004). For Tigrinya, the lexicon is from Thomas Leiper Kane's *Tigrinya-English Dictionary* (Kensington, MD, USA, Dunwoody Press, 2000). The rules come from many grammars of the languages. Though HM does not make use of machine learning, it is possible to use its output in models that do. For example, [Gezmu & Nürnberger (2023)](https://dl.acm.org/doi/10.1145/3610773) uses HM's segmentation of Amharic words for neural machine translation.
 
 HM assigns a *part-of-speech* (POS) to each word, but if you want a POS tagger, you should look elsewhere. A word's POS often depends on the other words in the sentence in which it occurs, and HM analyzes words without looking at their context.
 
-HM has a list of Amharic person and place names, but if you want *named entity recognition*, you should look for a program that has been trained to do this. If a name is not in HM's list for Amharic, it will just be treated as an unknown word, and this will be true for almost all names in Tigrinya and Oromo.
+HM has a list of Amharic person and place names, but if you want *named entity recognition*, you should look for a program that has been trained to do this. If a name is not in HM's list for Amharic, it will just be treated as an unknown word, and this will be true for almost all names in Tigrinya.
 
-**Version 5 replaces Version 4.5 for Amharic. For other languages, see Version 4.3. Version 5.0 is not backward compatible with earlier versions. If you have used earlier versions of HM and would like to switch to Version 5.0, please contact [gasser@iu.edu](mailto:gasser@iu.edu) for help.**
+**Version 5.0 replaces Version 4.5 for Amharic. For other languages, see Version 4.3. Version 5.0 is not backward compatible with earlier versions. If you have used earlier versions of HM and would like to switch to Version 5.0, please contact [gasser@indiana.edu](mailto:gasser@indiana.edu) for help.**
 
-## <a id="install">Installation</a>
+## Installation
 
-It is highly recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
+It is recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
 If you are using a virtual environment, you will need to create the environment and activate it before running `pip install`.
 
-First download the wheel file from the `dist/` folder: [HornMorpho-5.1-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.1-py3-none-any.whl)
+First download the wheel file from the `dist/` folder: [HornMorpho-5.0-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.0-py3-none-any.whl)
 
 Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is
 
-	pip install HornMorpho-5.1-py3-none-any.whl
+	pip install HornMorpho-5.0-py3-none-any.whl
 
 If this fails, it may mean that you don't have [`wheel`](https://pypi.org/project/wheel/) installed, so try again after installing `wheel`.
 
 Then to use the program, in a Python shell, do
 
-	>>> import hm
-	
-The first time you use HornMorpho, you will need to download the data for the languages that you will be using. To download a language, do this
+	import hm
 
-	>>> hm.download(language)
-	
-where `language` is `a` for Amharic, `t` for Tigrinya, or `o` for Amharic.
-This will download the compressed file from the HornMorpho Github repository and then uncompress it.
-
-If you have problems with installation, contact [gasser@iu.edu](mailto:gasser@iu.edu).
+If you have problems with installation, contact [gasser@indiana.edu](mailto:gasser@indiana.edu).
 
 ## Quickstart
 
@@ -79,7 +64,7 @@ Some possible attributes are part-of-speech (`'pos'`), morphological features (`
 	ጫላ	PROPN	SG	ጫላ
 	ጩቤዬን	N	ACC;PSS1S;SG	ጩቤ
 	ጨብጧል	V	3;MASC;PRF;SG	ጨበጠ
-	።	PUNCT
+	።	PUNCT		
 
 ## Overview of the program
 
@@ -94,7 +79,7 @@ For generation, see the section on [Morphological Generation](#generation).
 
 The simplest HM function, `anal`, takes a word and returns an instance of the `Word` class.
 An HM `Word` is a `list` of Python `dict`s, each representing a separate analysis of the input word.[^1]
-You can use the usual Python ways of accessing the elements in a `list` or `dict`. For example, here is how you would analyze the Amharic word የቤታችን. The first argument to `anal` specifies the language;`'a'` is Amharic, `'t'` Tigrinya, `'o'` Oromo.
+You can use the usual Python ways of accessing the elements in a `list` or `dict`. For example, here is how you would analyze the Amharic word የቤታችን. The first argument to `anal` specifies the language;`'a'` is Amharic, `'t'` Tigrinya.	
 	
 	(3)
 	>>> w = hm.anal('a', "የቤታችን")
@@ -103,7 +88,7 @@ You can use the usual Python ways of accessing the elements in a `list` or `dict
 
 The keys in the `dict` for an analysis of a word represent different pieces of information that you may be interested in. For example, you may want the *lemma* of the input word.
 This is the basic form of the word.
-For nouns in the three languages, this is the stem of the word without any prefixes or suffixes.
+For Amharic and Tigrinya nouns, this is the stem of the word without any prefixes or suffixes.
 Here's how you'd get the lemma for the above analysis of the word የቤታችን.
  `w[0]` returns the first analysis `dict` in the `list` of analyses, and `w[0]['lemma']` returns the value associated with the keyword `lemma` in this `dict`.[^2]
 
@@ -155,7 +140,7 @@ Here are two other words showing prefixes and suffixes in other positions.
 	
 #### Verb roots
 
-Like nouns, verbs in all three languages have a stem, which can take suffixes and (in Amharic or Tigrinya) prefixes.
+Like nouns, verbs in Amharic and Tigrinya have a stem, which can take prefixes and suffixes.
 Here are two examples.
 	
 	(8)
@@ -193,12 +178,6 @@ The letter following the characters in the root specifies the root *class*. HM d
 	>>> w2 = hm.anal('a', 'አጥብቂው')
 	w2[0]['root']
 	'ጥብቅ:A'
-	
-Oromo verbs are simpler, but they also have a stem that is followed by one or more suffixes. You can get this stem with the keyword `'root'`.[^4]
-
-	>>> w = hm.anal('o', '
-
-[^4]: In fact an Oromo verb's stem can often be segmented into a root with one or more suffixes that modify its meaning. For example, the stem of the verb *baname* is *banam-*, which is in turn composed of the root *ban-* followed by the passive suffix *-am*.
 
 #### Morpheme variation and normalization
 
@@ -524,22 +503,16 @@ An analysis `dict` may have the following possible keywords. (Note that not all 
 	
 - `'lemma'`
 
-	The word's lemma. For nouns and adjectives, this is the stem, that is, the form of the word with no prefixes or suffixes. For Amharic and Tigrinya verbs, this is the third person singular masculine perfective form.
+	The word's lemma. For nouns and adjectives, this is the stem, that is, the form of the word with no prefixes or suffixes. For verbs, this is the third person singular masculine perfective form.
 	
 		(36)
 		>>> w = hm.anal('a', "ያነጋግሩታል")
 		>>> w[0]['lemma']            
 		'አነጋገረ'
 
-	For Oromo verbs, the lemma is the infinitive.
-	
-		>>> w = hm.anal('o', "dubbattani")
-		w[0]['lemma']
-		'dubbachuu'
-
 - `'root'`
 
-	For nouns this is the same as the lemma. For Amharic and Tigrinya verbs, it consists of the consonants in the verb's root, followed by a letter representing the root's class.
+	For nouns this is the same as the lemma. For verbs, it consists of the consonants in the verb's root, followed by a letter representing the root's class.
 For some Amharic roots, HM uses the characters እ or ይ to represent consonants that were pronounced at some point in the language's history but now only affect the particular vowels that appear.
 
 		(37)
@@ -554,20 +527,6 @@ For some Amharic roots, HM uses the characters እ or ይ to represent consonant
 		>>> w3 = hm.anal('a', "ሰለቸኝ")
 		>>> w3[0]['root']
 		'ስልችይ:E'
-		
-	For Oromo verbs, the root is either the same as the stem, or
-it is a more basic form to which suffixes representing additional meanings have been added; the possibilities, which will not be disscussed here, are passive, causative, and auto-benefactive or combinations of these.
-For many words, HornMorpho will return both possibilities as separate analyses.
-
-		>>> w = hm.anal('o', "banamaniiru")
-		>>> w[0]['seg'];w[0]['um'];w[0]['root']
-		'<banam>aniiru-'
-		'3;PFV;PL'
-		'banam'
-		>>> w[1]['seg'];w[1]['um'];w[1]['root']
-		'<ban-am>aniiru-'
-		'3;PASS;PFV;PL'
-		'ban'
 
 - `'um'`
 

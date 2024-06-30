@@ -1,41 +1,57 @@
-# HornMorpho,version 5.0
-#### 2024.5.27
+# HornMorpho,version 5.1
+#### 2024.6.30
 
-***HornMorpho*** (HM) is a Python program that performs morphological
-analysis and generation in various languages of the Horn of Africa.
-The languages supported in Version 5.0 are Amharic and Tigrinya.
-All examples within this document are Amharic; future versions will include Tigrinya examples as well.
+## Changes since version 5.0
+
+- Starting in HornMorpho 5.1, the data for particular languages is not included in the distribution. Once you have installed HM, you will need to download the data from the language(s) you want to work with. See the [Installation](#install) section below.
+
+- Version 5.1 adds Oromo to the languages included.
+
+## Introduction
+
+***HornMorpho*** (HM) is a Python program that performs morphological analysis and generation in various languages of the Horn of Africa.
+The languages supported in Version 5.1 are Amharic (አማርኛ), Oromo (Afaan Oromoo, Oromiffa), and Tigrinya (Tigrigna, ትግርኛ).
+Most examples within this document are Amharic; future versions will include more examples from the other languages.
 
 If your application can benefit from explicit linguistic information about the structure and grammatical properties of words in these languages, then you may want to use HM.
-HM can tell you, for example, that the verb የማይደረገው is negative, that the noun አባቴን is the object of some verb, that the lemma (basic form) of the verb እንደሚመኟቸው is ተመኘ, that is, that this verb has something to do with 'longing'.
+HM can tell you, for example, that the verb የማይደረገው is negative, that the noun አባቴን is the object of some verb, that the stem (the word without prefixes and suffixes) of the verb የምንፈልጋቸው is -ፈልግ-, that the lemma (basic form) of the verb እንደሚመኟቸው is ተመኘ, that is, that this verb has something to do with 'longing'.
 HM can also tell you that the word እንደሚመኟቸው consists of five segments (morphemes): እንደም+ይ+መኝ+ኡ+ኣቸው.
 
-HM is a rule-based program; that is, the knowledge in the program is based on explicit linguistic rules and a *lexicon*, a dictionary of basic word forms (stems and roots), rather than on machine learning of the knowledge from a corpus. For Amharic, the lexicon is extracted mainly from Amsalu Aklilu's *Amharic-English Dictionary* (Addis Ababa, Kuraz, 2004). For Tigrinya, the lexicon is from Thomas Leiper Kane's *Tigrinya-English Dictionary* (Kensington, MD, USA, Dunwoody Press, 2000). The rules come from many grammars of the languages. Though HM does not make use of machine learning, it is possible to use its output in models that do. For example, [Gezmu & Nürnberger (2023)](https://dl.acm.org/doi/10.1145/3610773) uses HM's segmentation of Amharic words for neural machine translation.
+HM is a rule-based program; that is, the knowledge in the program is based on explicit linguistic rules and a *lexicon*, a dictionary of basic word forms (stems and roots), rather than on machine learning of the knowledge from a corpus. For Amharic, the lexicon is extracted mainly from Amsalu Aklilu's *Amharic-English Dictionary* (Addis Ababa, Kuraz, 2004). For Tigrinya, the lexicon is from Thomas Leiper Kane's *Tigrinya-English Dictionary* (Kensington, MD, USA, Dunwoody Press, 2000). For Oromo, the lexicon is from two dictionaries, Gene B. Gragg's *Oromo Dictionary* (African Studies Center, Michigan State University, 1982) and Tamene Bitima's *A Dictionary of Oromo Technical Terms (Oromo-English)* (Rüdiger Köppe, Köln, 2000). The rules come from many grammars of the languages. Though HM does not make use of machine learning, it is possible to use its output in models that do. For example, [Gezmu & Nürnberger (2023)](https://dl.acm.org/doi/10.1145/3610773) uses HM's segmentation of Amharic words for neural machine translation.
 
 HM assigns a *part-of-speech* (POS) to each word, but if you want a POS tagger, you should look elsewhere. A word's POS often depends on the other words in the sentence in which it occurs, and HM analyzes words without looking at their context.
 
-HM has a list of Amharic person and place names, but if you want *named entity recognition*, you should look for a program that has been trained to do this. If a name is not in HM's list for Amharic, it will just be treated as an unknown word, and this will be true for almost all names in Tigrinya.
+HM has a list of Amharic person and place names, but if you want *named entity recognition*, you should look for a program that has been trained to do this. If a name is not in HM's list for Amharic, it will just be treated as an unknown word, and this will be true for almost all names in Tigrinya and Oromo.
 
-**Version 5.0 replaces Version 4.5 for Amharic. For other languages, see Version 4.3. Version 5.0 is not backward compatible with earlier versions. If you have used earlier versions of HM and would like to switch to Version 5.0, please contact [gasser@indiana.edu](mailto:gasser@indiana.edu) for help.**
+**Version 5 replaces Version 4.5 for Amharic. For other languages, see Version 4.3. Version 5 is not backward compatible with earlier versions. If you have used earlier versions of HM and would like to switch to Version 5, please contact [gasser@iu.edu](mailto:gasser@iu.edu) for help.**
 
-## Installation
+## <a id="install">Installation</a>
 
-It is recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
+It is highly recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
 If you are using a virtual environment, you will need to create the environment and activate it before running `pip install`.
 
-First download the wheel file from the `dist/` folder: [HornMorpho-5.0-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.0-py3-none-any.whl)
+First download the wheel file from the `dist/` folder: [HornMorpho-5.1-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.1-py3-none-any.whl)
 
 Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is
 
-	pip install HornMorpho-5.0-py3-none-any.whl
+	pip install HornMorpho-5.1-py3-none-any.whl
 
 If this fails, it may mean that you don't have [`wheel`](https://pypi.org/project/wheel/) installed, so try again after installing `wheel`.
 
 Then to use the program, in a Python shell, do
 
-	import hm
+	>>> import hm
+	
+The first time you use HornMorpho, you will need to download the data for the languages that you will be using. To download a language, do this
 
-If you have problems with installation, contact [gasser@indiana.edu](mailto:gasser@indiana.edu).
+	>>> hm.download(language)
+	
+where `language` is `a` for Amharic, `t` for Tigrinya, or `o` for Amharic.
+This will download the compressed file from the HornMorpho Github repository and then uncompress it.
+If you try to use any of the functions described below without first downloading the data for the relevant language, you will be prompted to
+download the data.
+
+If you have problems with installation, contact [gasser@iu.edu](mailto:gasser@iu.edu).
 
 ## Quickstart
 
@@ -47,7 +63,7 @@ To analyze the words in a corpus, use the function `anal_corpus()`, passing the 
 	(1)
 	>>> c = hm.anal_corpus('a', data=["በሶ የበላው አበበ አይደለም ።", "ጫላ ጩቤዬን ጨብጧል ።"])
 	
-This returns an instance of the class `Corpus`, which has a `write()` method that you can call to write the analyses to a file, using the keyword `path`, or to standard output.
+This returns an instance of the class `Corpus`, which has a `write()` method that you can call to write the analyses to a file, using the keyword `path`, or to standard output if you specify no path.
 You can tell which word attributes you want to write with the keyword `attribs`.
 Some possible attributes are part-of-speech (`'pos'`), morphological features (`'um'`), segmentation into morphemes (`'seg'`), and lemma (`'lemma'`).
 
@@ -64,7 +80,7 @@ Some possible attributes are part-of-speech (`'pos'`), morphological features (`
 	ጫላ	PROPN	SG	ጫላ
 	ጩቤዬን	N	ACC;PSS1S;SG	ጩቤ
 	ጨብጧል	V	3;MASC;PRF;SG	ጨበጠ
-	።	PUNCT		
+	።	PUNCT
 
 ## Overview of the program
 
@@ -79,7 +95,7 @@ For generation, see the section on [Morphological Generation](#generation).
 
 The simplest HM function, `anal`, takes a word and returns an instance of the `Word` class.
 An HM `Word` is a `list` of Python `dict`s, each representing a separate analysis of the input word.[^1]
-You can use the usual Python ways of accessing the elements in a `list` or `dict`. For example, here is how you would analyze the Amharic word የቤታችን. The first argument to `anal` specifies the language;`'a'` is Amharic, `'t'` Tigrinya.	
+You can use the usual Python ways of accessing the elements in a `list` or `dict`. For example, here is how you would analyze the Amharic word የቤታችን. The first argument to `anal` specifies the language;`'a'` is Amharic, `'t'` Tigrinya, `'o'` Oromo.
 	
 	(3)
 	>>> w = hm.anal('a', "የቤታችን")
@@ -88,7 +104,7 @@ You can use the usual Python ways of accessing the elements in a `list` or `dict
 
 The keys in the `dict` for an analysis of a word represent different pieces of information that you may be interested in. For example, you may want the *lemma* of the input word.
 This is the basic form of the word.
-For Amharic and Tigrinya nouns, this is the stem of the word without any prefixes or suffixes.
+For nouns in all of the languages, this is the stem of the word without any prefixes or suffixes.
 Here's how you'd get the lemma for the above analysis of the word የቤታችን.
  `w[0]` returns the first analysis `dict` in the `list` of analyses, and `w[0]['lemma']` returns the value associated with the keyword `lemma` in this `dict`.[^2]
 
@@ -110,7 +126,7 @@ These functions call `anal()` on the words in the sentences.
 
 A morphologically complex word consists of multiple *morphemes*, that is, more than one meaningful unit. One morpheme, the *stem*, is the part that conveys the basic meaning (the *lexical* meaning) of the word. The other morphemes, those that appear before the stem (as *prefixes*), after the stem (as *suffixes*) or within the stem (as *infixes*), modify the lexical meaning in various ways. For example, the Amharic word ለቤቶቻችን 'for our houses' consists of the stem ቤት and three additional morphemes, the prefix ለ- and the suffixes -ኦች and -ኣችን.[^3]
 
-[^3]: For prefixes and suffixes beginning with the vowel /-a/, HM uses the character ኣ. For suffixes beginning with the vowel /-ǝ/, it uses the character አ rather than the usual Amharic character ኧ.
+[^3]: For prefixes and suffixes beginning with the vowel /a/, HM uses the character ኣ. For suffixes beginning with the vowel /ǝ/, it uses the character አ rather than the usual Amharic character ኧ. This convention agrees with normal spelling rules in most other languages written with the Ge'ez script, which do not use the character ኧ.
 
 #### Segmentation
 
@@ -140,7 +156,7 @@ Here are two other words showing prefixes and suffixes in other positions.
 	
 #### Verb roots
 
-Like nouns, verbs in Amharic and Tigrinya have a stem, which can take prefixes and suffixes.
+Like nouns, verbs in all three languages have a stem, which can take suffixes and (in Amharic or Tigrinya) prefixes.
 Here are two examples.
 	
 	(8)
@@ -154,12 +170,12 @@ Here are two examples.
 
 But Amharic and Tigrinya verbs are much more complicated than nouns. As in other Semitic languges, the stem of a verb can be further separated into a *root*, consisting of a sequence of consonants, and a vowel *template*, consisting of a sequence of vowels and, in some case, the *gemination*, or lengthening of particular root consonants (Amharic: መጥበቅ).
 
-For example, the stem of the verb in (6) above, ሰበር,  could in turn be segmented into the root, consisting of the consonants /s b r/, and the template, consisting of the vowel ǝ (ኧ) between /s/ and /b/ and the same vowel between /b/ and /r/, as well as the gemination of the /b/. We could represent this in the following way, indicating gemination with `/`.
+For example, the stem of the verb in (8) above, ሰበር,  could in turn be segmented into the root, consisting of the consonants /s b r/, and the template, consisting of the vowel ǝ (ኧ) between /s/ and /b/ and the same vowel between /b/ and /r/, as well as the gemination of the /b/. We could represent this in the following way, indicating gemination with `/` before the lengthened consonant.
 
 	(10)
 	{ስ ብ ር} + {1 ǝ /2 ǝ 3}
 	
-Combining the root and template in (8), with `1=ስ`, `2=ብ`, and `3=ር`, gives the stem ሰ/በር (/sǝbbǝr/), to which the prefixes and suffixes are added to yield the final form አልሰበሩም.
+Combining the root and template in (10), with `1=ስ`, `2=ብ`, and `3=ር`, gives the stem ሰ/በር (/sǝbbǝr/), to which the prefixes and suffixes in (8) are added to yield the final form አልሰበሩም.
 
 You can get the root of a verb using the keyword `'root'`.
 
@@ -178,40 +194,47 @@ The letter following the characters in the root specifies the root *class*. HM d
 	>>> w2 = hm.anal('a', 'አጥብቂው')
 	w2[0]['root']
 	'ጥብቅ:A'
+	
+Oromo verbs are simpler, but they also have a stem that is followed by one or more suffixes, and this stem in turn can consist of a root followed by one or more suffixes. For example, the verb *adeemsiise* has the *adeemsiis-*, which in turn consists of the root *adeem-* followed by the causative suffix *-siis*.
+
+	(14)
+	>>> w = hm.anal('o', "adeemsiise")
+	>>> w[0]['seg']                            
+	'<adeem-siis>e-'
 
 #### Morpheme variation and normalization
 
 Prefixes and suffixes may take different forms depending on what precedes or follows them, and they may also affect the form of the stem that they are attached to. For example, consider the suffix that means 'my', that is, the first person singular possessive suffix.
 When this follows a consonant, it is pronounced /-e/ (ኤ) , as, for example, in ቤቴ. When it follows a vowel, however, it is usually pronounced /-ye/ (ዬ), as for example, in ሥራዬ. To indicate that these forms are actually the same morpheme, in HM they appear in one, canonical, form.
 
-	(14)
+	(15)
 	>>> w1 = hm.anal('a', "ቤቴ")
 	>>> w1[0]['seg']
 	'-<ቤት>-ኤ--'
-	(15)
+	(16)
 	>>> w2 = hm.anal('a', "ሥራዬ")
 	>>> w2[0]['seg']
 	'-<ስራ>-ኤ--'
 	
-Here is a more complicated example with verbs. It shows how the suffix ኢ /i/, indicating that the subject of the verb is second person feminine singular, can take different forms and can affect the end of the stem that it follows. In this case, HM normalizes both the stem and the suffix.
-Note how the segmentations in both (16) and (17) contain the suffix -ኢ and how the stem in the segmentations in both (17) and (18) is መርጥ.
+Here is a more complicated example with verbs. It shows how the suffix -ኢ /i/, indicating that the subject of the verb is second person feminine singular, can take different forms and can affect the end of the stem that it follows. In this case, HM normalizes both the stem and the suffix.
+Note how the segmentations in both (17) and (18) contain the suffix -ኢ and how the stem in the segmentations in both (18) and (19) is መርጥ.
 
-	(16)
+	(17)
 	>>> w1 = hm.anal('a', 'ትፈልጊያለሽ')
 	>>> w1[0]['seg']
 	'--ት<ፈልግ>ኢ---ኣለሽ--'
-	(17)
+	(18)
 	>>> w2 = hm.anal('a', 'ትመርጫለሽ')
 	>>> w2[0]['seg']
 	'--ት<መርጥ>ኢ---ኣለሽ--'
-	(18)
+	(19)
 	>>> w3 = hm.anal('a', 'ትመርጣለህ')
 	>>> w3[0]['seg']
 	'--ት<መርጥ>---ኣለህ--'
 
 #### Character normalization
 
-Example (15) illustrates another HM feature. The Amharic and Tigrinya writing systems have some characters that have the same pronunciation, for example, ስ and ሥ, and because the choice of a character within these sets is not standardized, in HM, the spelling of words is normalized. That is, characters with the same pronunciation are mapped to a single character. Thus both ሥራ and ስራ appear in HM output as ስራ; both ጸጉር and ፀጉር appear as ጸጉር. In Tigrinya, both ስራሕ and ሥራሕ appear in HM output as ስራሕ; both መጸ and መፀ appear as መጸ.
+Example (16) illustrates another HM feature. The Amharic and Tigrinya writing systems have some characters that have the same pronunciation, for example, ስ and ሥ, and because the choice of a character within these sets is not standardized, in HM, the spelling of words is normalized. That is, characters with the same pronunciation are mapped to a single character. Thus both ሥራ and ስራ appear in HM output as ስራ; both ጸጉር and ፀጉር appear as ጸጉር. In Tigrinya, both ስራሕ and ሥራሕ appear in HM output as ስራሕ; both መጸ and መፀ appear as መጸ.
 
 ### <a id="features">Morphological features</a>
 
@@ -225,7 +248,7 @@ The [Universal Morphology project](https://unimorph.github.io/) (UM) aims to dev
 The features are defined as values along 23 dimensions, for example, gender and number, but many of these are not relevant for a given language such as Amharic or Tigrinya.
 For a given word, the UM specification consists of a list of all of the feature values that apply to that word, separated by semicolons. To see the UM features for an analyzed word in HM, use the keyword `'um'`.
 
-	(19)
+	(20)
 	>>> w = hm.anal('a', 'ለቤቶቻችን')
 	>>> w[0]['um']            
 	'DAT;PL;PSS1P'
@@ -234,16 +257,16 @@ The first of these features, `DAT`, is an abbreviation of *dative*, a linguistic
 
 For verbs, the features includes ones for *subject agreement*, that is, features specifying the person, number, and gender of the subject of the verb, and ones for *aspect*, that is features related to the time of the event or state referred to by the verb.
 
-	(20)
+	(21)
 	>>> w1 = hm.anal('a', 'ትፈልጋለች')
 	>>> w1[0]['um']            
 	'3;FEM;IPFV;SG'
-	(21)
+	(22)
 	>>> w2 = hm.anal('a', 'ፈለገች')
 	>>> w2[0]['um']            
 	'3;FEM;PFV;SG'
 	
-In both (20) and (21) the subject is third person (`'3'`) singular (`'SG'`) feminine (`'FEM'`), that is, 'she'. In (20), the aspect is *imperfective* (`'IPFV'`), corresponding roughly to English present or future. In (21), the aspect is *perfective* (`'PFV'`), corresponding roughly to English past.
+In both (21) and (22) the subject is third person (`'3'`) singular (`'SG'`) feminine (`'FEM'`), that is, 'she'. In (21), the aspect is *imperfective* (`'IPFV'`), corresponding roughly to English present or future. In (22), the aspect is *perfective* (`'PFV'`), corresponding roughly to English past.
 
 The full range of grammatical features that are output by HM will not be described here.
 You can find out more about UM features in [Sylak-Glassman (2016)](https://unimorph.github.io/doc/unimorph-schema.pdf).
@@ -256,24 +279,24 @@ Syntactic structure can be represented in terms of labeled directed arcs joining
 Here is a simple Amharic example.
 The arrow from አዳነቻት to አልማዝ denotes the dependency with *head* አዳነቻት and *dependent* አልማዝ; አልማዝ is the subject (`'nsubj'`) of አዳነቻት.
 
-(22) <img src="figs/UD1.png" width=270>
+(23) <img src="figs/UD1.png" width=270>
 
 One very influential syntactic framework in NLP, similar to the Universal Morphology project, is the [Universal Depencency project] (https://universaldependencies.org/) (UD), which seeks to develop a set of universal dependencies that could adequately cover the syntactic structure of all languages.
 
 Because morphology and syntax are related, annotating sentences within the UD framework includes not only linking words with dependencies but also assigning morphological features to words and possibly linking some of the morphemes within words by dependencies.
-Here is how that might appear for the sentence in (22).
+Here is how that might appear for the sentence in (23).
 
-(23) <img src="figs/UD2.png" width=400>
+(24) <img src="figs/UD2.png" width=400>
 
 Although morphological features in UD are based on those in UM, the format is different.
 You can see the UD features in an analysis with the keyword `'udfeats'`.
 Here are the UD features for the words in examples (19) and (20).
 
-	(24)
+	(25)
 	>>> w1 = hm.anal('a', 'ለቤቶቻችን')
 	>>> w1[0]['udfeats']
 	'Case=Dat|Number=Plur|Number[psor]=Plur|Person[psor]=1'
-	(25)
+	(26)
 	>>> w2 = hm.anal('a', 'ትፈልጋለች')
 	>>> w2[0]['udfeats']
 	'Aspect=Imp|Gender=Fem|Number=Sing|Person=3'
@@ -298,13 +321,13 @@ For example, the Amharic verb ብትመጣ can mean either 'if you (masc.) come'
 
 Each HM `Word` is a `list` of analyses, one for each possible interpretation that HM finds.
 
-	(26)
+	(27)
 	>>> w1 = hm.anal('a', 'ይሰማሉ')            
 	>>> w1[0]['lemma']
 	'ሰማ'
 	>>> w1[1]['lemma']
 	'ተሰማ'
-	(27)
+	(28)
 	>>> w2 = hm.anal('a', 'ብትመጣ')
 	>>> w2[0]['um']
 	'2;COND;IPFV;MASC;SG'
@@ -314,7 +337,7 @@ Each HM `Word` is a `list` of analyses, one for each possible interpretation tha
 HM analyses include consonant gemination, but by default, the gemination is omitted in the output. To show gemination, indicated by `/` before the geminated consonant, you can use the keyword `degem=False`.
 This can show, for example, the difference in the pronunciation of the two analyses of ይሰማሉ.
 
-	(28)
+	(29)
 	>>> w3 = hm.anal('a', 'ይሰማሉ', degem=False)
 	>>> w3[0]['seg']
 	'--ይ<ሰማ>---ኣ/ሉ--'
@@ -332,18 +355,18 @@ HM attempts to order the analyses of ambiguous words on the basis of their relat
 ### <a id='anal'>`hm`.**`anal`**(*`language`*, *`word`*, *`**kwargs`*)</a>
 
 Returns an instance of the [`Word`](#Word) class belonging to
-the [`Language`](#Language) that is represented by the *`language`* argument. If that `Language` instance does not exist, it is created.
+the [`Language`](#Language) that is represented by the *`language`* argument.
 
 If *`word`* belongs HM's list of common, unanalyzed words, the analysis returns no segmentation.
 
-	(29)
+	(30)
 	>>> w = hm.anal('a', "ወደ")
 	>>> w[0]
 	{'token': 'ወደ', 'pos': 'ADP', 'nsegs': 1, 'freq': 4999}
 	
 If HM cannot analyze *`word`*, it returns an unanalyzed representation of the word, with POS `'UNK'`. Note that HM is very strict when it comes to the spelling of words.
 
-	(30)
+	(31)
 	>>> w = hm.anal('a', "አላቹ")
 	>>> w[0]
 	{'seg': 'አላቹ', 'pos': 'UNK', 'nsegs': 1}
@@ -353,7 +376,7 @@ See [below](#keywords) under the description of the `Word` class for a list of t
 	
 #### Parameters
  
-- *`language`* is a string abbreviation of the language: `'a'` for Amharic, `'t'` for Tigrinya. If the word's `Language` hasn't been instantiated, that happens when `anal()` is called.
+- *`language`* is a string abbreviation of the language: `'a'` for Amharic, `'t'` for Tigrinya, `'o'` for Oromo. If the word's `Language` hasn't been instantiated, that happens when `anal()` is called. If the data for that `Language` has not been downloaded, the user is prompted to download it when `anal()` is called.
 
 - *`word`* is a string representing an Amharic or Tigrinya word or, if `mwe=True` is specified, a multi-word phrase.
 
@@ -366,15 +389,14 @@ See [below](#keywords) under the description of the `Word` class for a list of t
    - `mwe=False`
 
    		If `True`, specifies that the *`word`* string contains one or two spaces and that HM should try to analyze it as a *multi-word expression* (MWE). HM knows a limited number of MWEs, so this will not always succeed as expected.
-
 	
-			(31)
+			(32)
 			>>> w1 = hm.anal('a', "የትምህርት ቤታቸው", mwe=True)
 			w1[0]['seg']
 			'የ--ትምህርት <ቤት>-ኣቸው--'
 			>>> w1[0]['lemma']
 			'ቤት'
-			(32)
+			(33)
 			>>> w2 = hm.anal('a', "ብድግ ብለው", mwe=True)            
 			>>> w2[0]['seg']
 			'ብድግ --<ብል>አው-----'
@@ -394,7 +416,7 @@ Returns an instance of the `Sentence` class.
 
 You can get a list of analyzed `Word` instances in the sentence using the `Sentence` attribute `words`.
 
-	(33)
+	(34)
 	>>> s = hm.anal_sentence('a', "ጫላ ጩቤ ጨበጠ ።")
 	>>> s.words
 	[W16:ጫላ[1], W18:ጩቤ[1], W19:ጨበጠ[1], W20:።[1]]
@@ -407,7 +429,7 @@ You can get a list of analyzed `Word` instances in the sentence using the `Sente
 
 `anal_sentence()` tries to find known multi-word expressions before it analyzes individual words in the sentence.
 
-	(34)
+	(35)
 	>>> s = hm.anal_sentence('a', 'ዝም ብላ ትምህርት ቤት ገባች ።')
 	>>> s.words
 	[W4:ዝም ብላ[1], W5:ትምህርት ቤት[1], W6:ገባች[1], W7:።[1]]
@@ -433,7 +455,7 @@ A `Corpus`'s `sentences` attribute is a list of `Sentence` instances.
 
 		A list of strings, each representing an unanalyzed sentence, or `None`. If `data` is not `None`, each of the sentences is analyzed with `anal_sentence()`, and the resulting `Sentence` objects are stored in the `Corpus`'s `sentences` attribute.
 
-			(35)
+			(36)
 			>>> c = hm.anal_corpus('a', data=['አበበ በሶ በላ ።', 'ጫላ ጩቤ ጭበጠ ።'])
 			>>> c.sentences
 			[S1::አበበ በሶ በላ ።, S1::ጫላ ጩቤ ጭበጠ ።]
@@ -472,7 +494,6 @@ Normally you will not need to instantiate any of these classes directly. Instead
 ### <a id="Language">*`class`* **`Language`**(**`**kwargs`**)</a>
 
 A `Language` is created using the static method `Language.make()`.
-<!--`Language`.**`make`**(*`name`*, *`abbreviation`*)-->
 
 `Language.make()` is called whenever any of the analysis methods, `anal()`, `anal_sentence()`, or `anal_corpus()`, is called for the first time with the language's abbreviation.
 
@@ -480,7 +501,7 @@ An instantiated `Language` consists of a set of properties, which are read in fr
 These FSTs include the combined lexical and grammatical information for the particular POS.
 
 Normally you should not need to change any of these files.
-If you would like to add to or correct the knowledge that HM has for a particular language, please contact [gasser@indiana.edu](mailto:gasser@indiana.edu).
+If you would like to add to or correct the knowledge that HM has for a particular language, please contact [gasser@iu.edu](mailto:gasser@iu.edu).
 
 ### <a id="Word">*`class`* **`Word`**(*`analyses`*)</a>
 
@@ -503,38 +524,59 @@ An analysis `dict` may have the following possible keywords. (Note that not all 
 	
 - `'lemma'`
 
-	The word's lemma. For nouns and adjectives, this is the stem, that is, the form of the word with no prefixes or suffixes. For verbs, this is the third person singular masculine perfective form.
-	
-		(36)
+	The word's lemma. For nouns and adjectives, this is the stem, that is, the form of the word with no prefixes or suffixes. For Amharic and Tigrinya verbs, this is the third person singular masculine perfective form.
+		
+		(37)
 		>>> w = hm.anal('a', "ያነጋግሩታል")
 		>>> w[0]['lemma']            
 		'አነጋገረ'
 
+	For Oromo verbs, the lemma is the infinitive.
+		
+		(38)
+		>>> w = hm.anal('o', "dubbattani")
+		w[0]['lemma']
+		'dubbachuu'
+
 - `'root'`
 
-	For nouns this is the same as the lemma. For verbs, it consists of the consonants in the verb's root, followed by a letter representing the root's class.
+	For nouns this is the same as the lemma. For Amharic and Tigrinya verbs, it consists of the consonants in the verb's root, followed by a letter representing the root's class.
 For some Amharic roots, HM uses the characters እ or ይ to represent consonants that were pronounced at some point in the language's history but now only affect the particular vowels that appear.
 
-		(37)
+		(39)
 		>>> w1 = hm.anal('a', "ብሉት")
 		>>> w1[0]['root']
 		'ብልእ:A'
-		(38)
+		(40)
 		>>> w2 = hm.anal('a', "ፃፈችው")
 		>>> w2[0]['root']
 		'ጽእፍ:A'
-		(39)
+		(41)
 		>>> w3 = hm.anal('a', "ሰለቸኝ")
 		>>> w3[0]['root']
 		'ስልችይ:E'
+		
+	For Oromo verbs, the root is either the same as the stem, or
+it is a more basic form to which suffixes representing additional meanings have been added. For many verbs, HornMorpho will return both possibilities as separate analyses.
+
+		(42)
+		>>> w = hm.anal('o', "banamaniiru")
+		>>> w[0]['seg'];w[0]['um'];w[0]['root']
+		'<banam>aniiru-'
+		'3;PFV;PL'
+		'banam'
+		>>> w[1]['seg'];w[1]['um'];w[1]['root']
+		'<ban-am>aniiru-'
+		'3;PASS;PFV;PL'
+		'ban'
 
 - `'um'`
 
-	The UM features for the analysis. See examples (19), (20), (21), and (27).
+	The UM features for the analysis. See examples (20), (21), (22), and (28).
 
 - `'seg'`
 
-	The segmentation of the word into its constituent morphemes, with `-` representing morpheme positions that are empty and `< >` enclosing the word's stem. See examples (5)-(9), (14)-(18), and (28).
+	The segmentation of the word into its constituent morphemes, with `-` representing morpheme positions that are empty and `< >` enclosing the word's stem. See examples (5)-(9), (15)-(19), and (29).
 
 - `'pre'`, `'suf'`, `'stem'`
 
@@ -542,7 +584,7 @@ For some Amharic roots, HM uses the characters እ or ይ to represent consonant
 	Each is a list of `dict`s, or `''` if a position is empty.
 	Each `dict` contains keys for the morpheme's form (`'seg'`); its POS (`'pos'`); the index within the word of its dependency head (`'head'`), that is, the index of the stem; its relation to the word's head (`'dep'`); and a set of features that are relevant for [UD CoNLL-U] (#conllu) format (`'udfeats'`).
 	
-		(40)
+		(43)
 		>>> w = hm.anal('a', 'ሲያጎበድዱላቸውና')
 		>>> w[0]['pre']
 		[{'seg': 'ስ', 'pos': 'SCONJ', 'dep': 'mark', 'head': 2}, '', {'seg': 'ይ', 'pos': 'PRON', 'dep': 'nsubj', 'head': 2}]
@@ -557,7 +599,7 @@ For some Amharic roots, HM uses the characters እ or ይ to represent consonant
 
 - `'udfeats'`
 
-	The set of morphological features in Universal Depencency format. See examples (24) and (25). This is only something you need to know about if you are using HM for to create a file of sentences in [CoNNL-U format](#conllu).
+	The set of morphological features in Universal Depencency format. See examples (25) and (26). This is only something you need to know about if you are using HM for to create a file of sentences in [CoNNL-U format](#conllu).
 
 ### <a id="Sentence">*`class`* **`Sentence`**(*`language`*, *`sentence`*, *`**kwargs`*)</a>
 
@@ -571,7 +613,7 @@ For some Amharic roots, HM uses the characters እ or ይ to represent consonant
 
   - `degem=True`
    		
-  		As for `anal()`, if `False`, specifies that the segments of each word are not "degeminated," that is, that consonant gemination is indicated (see example (28) above).
+  		As for `anal()`, if `False`, specifies that the segments of each word are not "degeminated," that is, that consonant gemination is indicated (see example (29) above).
 
 #### Attribute
 - `hm.Sentence.words`.
@@ -611,27 +653,27 @@ To create representations of the sentences in a corpus in CoNLL-U format,
 first pass `disambiguate=True` to `anal_corpus()` when you call it on the corpus.
 After the sentences in the corpus have been analyzed (with `anal_sentence()`), a GUI window will open so that you can select analyses for ambiguous words by hand.
 
-	(41)
+	(44)
 	>>> c = hm.anal_corpus("a", data=["ድምፅ ከቤቱ ውስጥ ይሰማል ።"], disambiguate=True)
 
-(42)	
+(45)	
 ![disambig1](figs/gui_ድምጽ.png)
 
 The GUI displays the analyses for one word at a time, beginning with the first word in the first sentence. The current word is underlined where the current sentence is displayed.
 
 To move to the next or the previous word in the current sentence, use the directional buttons under "Word ID" (or the arrow keys). To move to the next or the previous sentence, use the buttons under "Sentence ID".
 
-Unambiguous words are displayed with gray backgrounds, for example, the word  ድምፅ in figure (42) above. The word's single analysis is shown in the space at the bottom of the window.
+Unambiguous words are displayed with gray backgrounds, for example, the word  ድምፅ in figure (45) above. The word's single analysis is shown in the space at the bottom of the window.
 
-Figure (43) shows an example of an ambiguous word, ከቤቱ. The options are shown in the two yellow boxes under the ambiguous suffix, which can mean either 'his' (the upper box) or 'the' (the lower box).
+Figure (46) shows an example of an ambiguous word, ከቤቱ. The options are shown in the two yellow boxes under the ambiguous suffix, which can mean either 'his' (the upper box) or 'the' (the lower box).
 To choose one of the options, click on your choice.
 
-(43)
+(46)
 ![disambig2](figs/gui_ከቤቱ.png)
 
-Figure (44) shows another sort of ambiguity, for the word ይሰማል.  Two entire analyses are shown at the bottom of the window. The difference between the two interpretations, 'hears' and 'is heard', is represented in HM in terms of the features (one is `PASS` (passive); the other is not) and in terms of the different lemmas, ሰማ and ተሰማ. To choose one of the options for cases like this, click on the number to the left of the analysis, 2 in this case.
+Figure (47) shows another sort of ambiguity, for the word ይሰማል.  Two entire analyses are shown at the bottom of the window. The difference between the two interpretations, 'hears' and 'is heard', is represented in HM in terms of the features (one is `PASS` (passive); the other is not) and in terms of the different lemmas, ሰማ and ተሰማ. To choose one of the options for cases like this, click on the number to the left of the analysis, 2 in this case.
 
-(44)
+(47)
 ![disambig3](figs/gui_ይሰማል.png)
 
 There is an `Undo` button to allow you to undo selections that have made.
@@ -640,7 +682,7 @@ The analyses will have been updated for all of the words that you have disambigu
 
 To write the CoNLL-U representations to a file or standard output, pass `conllu=True` to the `Corpus` method `write()`.
 
-	(45)
+	(48)
 	>>> c.write(conllu=True)
                    
 	# text = ድምፅ ከቤቱ ውስጥ ይሰማል ።

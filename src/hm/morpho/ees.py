@@ -114,7 +114,7 @@ class EES:
          }
 
     def __init__(self):
-        print("Creating EES language {}".format(self))
+#        print("Creating EES language {}".format(self))
         # EES pre-and post-processing: geezification, romanization,
         # handling of multi-word lexemes
         if not self.postpostproc:

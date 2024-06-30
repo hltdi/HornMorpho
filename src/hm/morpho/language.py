@@ -294,7 +294,7 @@ class Language:
         path = os.path.join(LANGUAGE_DIR, abbrev)
         if not os.path.exists(path):
             return False
-        print("Directory for {}: {}".format(abbrev, path))
+#        print("Directory for {}: {}".format(abbrev, path))
         return path
 
     def get_dir(self):
