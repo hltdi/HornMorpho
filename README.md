@@ -46,7 +46,7 @@ The first time you use HornMorpho, you will need to download the data for the la
 
 	>>> hm.download(language)
 	
-where `language` is `a` for Amharic, `t` for Tigrinya, or `o` for Amharic.
+where `language` is `'a'` for Amharic, `'t'` for Tigrinya, or `'o'` for Amharic.
 This will download the compressed file from the HornMorpho Github repository and then uncompress it.
 If you try to use any of the functions described below without first downloading the data for the relevant language, you will be prompted to
 download the data.
