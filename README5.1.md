@@ -559,7 +559,15 @@ For some Amharic roots, HM uses the characters እ or ይ to represent consonant
 it is a more basic form to which suffixes representing additional meanings have been added; the possibilities, which will not be disscussed here, are passive, causative, and auto-benefactive or combinations of these.
 For many words, HornMorpho will return both possibilities as separate analyses.
 
-	
+		>>> w = hm.anal('o', "banamaniiru")
+		>>> w[0]['seg'];w[0]['um'];w[0]['root']
+		'<banam>aniiru-'
+		'3;PFV;PL'
+		'banam'
+		>>> w[1]['seg'];w[1]['um'];w[1]['root']
+		'<ban-am>aniiru-'
+		'3;PASS;PFV;PL'
+		'ban'
 
 - `'um'`
 

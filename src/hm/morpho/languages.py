@@ -54,7 +54,9 @@ ABBREV2LANG = {'a': 'አማርኛ',
                'ch': 'ቸሃ',
                'eng': 'English',
                'stv': 'የስልጤ አፍ',
-               'k': 'ክስታንኛ'}
+               'k': 'ክስታንኛ',
+               'አ': 'አማርኛ',
+               'ት': 'ትግርኛ'}
 
 def lang_not_found_interactive(abbrev, language):
     response = input("Would you like to download the data for {}? ([y]es/[n]o)\n--> ".format(language))

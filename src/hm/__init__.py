@@ -262,7 +262,7 @@ def download(lang_abbrev, uncompress=True):
     if morpho.is_downloaded(lang_abbrev):
         print("{} ({}) is already downloaded!".format(morpho.ABBREV2LANG[lang_abbrev], lang_abbrev))
         return
-    download_language(lang_abbrev, uncompress=uncompress)
+    morpho.download_language(lang_abbrev, uncompress=uncompress)
 
 # Internal use only.
 
