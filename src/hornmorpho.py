@@ -38,11 +38,122 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
-TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg']
+TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
+
+## New Tigre entries
+
+def te_dups():
+    dups = []
+    roots = []
+    with open("hm/languages/te/lex/words1.srf", encoding='utf8') as lex:
+        for line in lex:
+            if line[0] != lex:
+                roots.append(line.split()[0])
+    with open("data/te_new.txt", encoding='utf8') as newlex:
+        for line in newlex:
+            r = line.split()[0]
+            if r in roots:
+                dups.append(r)
+    return dups
+
+def geezify_te():
+    out = []
+    with open("../../../../Projects/LingData/Te/verbs.txt") as file:
+        for line in file:
+             out.append(hm.morpho.geez.geezify(line.strip(), lang='tig', double2gem=True))
+    with open("data/te_verbs.txt", 'w', encoding='utf8') as file:
+        for item in out:
+            print(item, file=file)
+    return out
 
 ## Generating Ti verb stems
 
-def combine_outputs(vsmorph, root, feats):
+def get_irr_tstems():
+    results = []
+    with open("hm/languages/t/fst/v_irr.root", encoding='utf8') as file:
+        contents = file.read()
+        contents = contents.split('*')[1:]
+        for entry in contents:
+            featstems = []
+            entry = [e for e in entry.split('\n') if e]
+            # first line has root, class, and global features
+            #<ብ ህ ል>	c=A,tmp=[2=L],s=1
+            root, glob_feats = entry[0]
+            root = root[1:-1]
+            feats = None
+            for line in entry[1:]:
+                if line[0] == '#':
+                    continue
+                if line[0] == '[':
+                    feats = line.strip()
+                else:
+                    feastems.append((line.strip(), feats))
+                    feats = None
+            results.append([root, glob_feats, featstems])
+    return results
+
+def gen_all_tstems():
+    results = []
+    n = 0
+    vsmorph = get_t_vstem_morph()
+
+    with open("data/t_vroots.txt", encoding='utf8') as  file:
+        for line in file:
+            if n % 25 == 0:
+                print("Generated {}".format(n))
+            line = line.strip()
+            results.append(gen_tstem(line, vsmorph=vsmorph))
+            n += 1
+    return results
+
+def gen_tstem(entry, vsmorph= None, to_string=True):
+    '''
+    entry is a line from t_vroots.txt
+    '''
+    root, feats = entry.split()
+    feats = feats.split(';;')
+    return combine_outputs(vsmorph, root, feats, to_string=to_string)
+
+def gen_from_entry(entry):
+    """
+    entry is two lines from v.root.
+    The first line is <root>\tc=*
+    The second line is a ;-separated list of combinations of values of a and v
+       <ህ ል ቅ>		c=A
+       a=0,v=0 ; a=0,v=a
+    """
+    line1, line2 = entry
+    root = re.match(r"<(.+)>", line1).groups(0)[0]
+    cls = line1.split()[-1]
+    root = root.replace(' ', '')
+    feats = cls.strip()
+    featcombs = line2.split(';')
+    result = []
+    for fc in featcombs:
+        fc = "{},{}".format(cls, fc.strip())
+        result.append(fc)
+    return root, result
+
+#def root2tmp(root):
+#    tmp = {1: 'X', 2: 'X', 3: 'X', 4: '0'}
+#    for index, c in enumerate(root):
+#        if c in ('እ', 'ዕ', 'ህ', 'ሕ'):
+#            tmp[index+1] = 'L'
+#        elif c == 'ው':
+#            tmp[index+1] = 'ው'
+#        elif c == 'ይ':
+#            tmp[index+1] = 'ይ'
+
+def rootlex2entries():
+    result = []
+    with open('hm/languages/t/lex/vroot.lex', encoding='utf8') as file:
+        contents = file.read().strip()
+        lines = contents.splitlines()
+        for i in range(0, len(lines), 2):
+            result.append((lines[i].strip(), lines[i+1].strip()))
+    return result
+        
+def combine_outputs(vsmorph, root, feats, to_string=True):
     vsmorph = vsmorph or get_t_vstem_morph()
     result = []
     for f in feats:
@@ -57,7 +168,22 @@ def combine_outputs(vsmorph, root, feats):
             grouped[form] = grouped[form].union(fss)
         else:
             grouped[form] = fss
+    if to_string:
+        strings = []
+        for form, feats in grouped.items():
+            strings.append("{}\t{}".format(form, format_FSS(feats)))
+        return '\n'.join(strings)
     return grouped
+
+def format_FSS(fss):
+    string = fss.__repr__()
+    strings = string.split(';')
+    groups = []
+    for i in range(len(strings)+1//2):
+        item = strings[2*i:2*i+2]
+        if item:
+            groups.append(';'.join(item))
+    return ';\n\t'.join(groups)
 
 def simplify_feats(formfeats):
     '''

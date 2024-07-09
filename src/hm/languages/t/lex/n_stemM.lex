@@ -1,1 +1,1 @@
-ቤት//ትምህርቲ	''	[mwe=[+hdfin,-hdaff,deppos=nmod]]
+ቤት//ትምህርቲ	''	[+hdfin,-hdaff,deppos=N]

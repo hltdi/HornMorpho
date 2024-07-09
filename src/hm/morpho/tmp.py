@@ -180,19 +180,19 @@ class Template:
     @staticmethod
     def add_template(fst, template, index, features, constraints, tmp_dict=None,
                      strong_inventory=None, weak_inventory=None, subclass='', cascade=None,
-                     gen=False, char_sets=None):
+                     gen=False, guess=False, char_sets=None):
         """
         Update strong or weak inventory and template dict.
         """
-        
-#        if any([('a=i' in c) for c in constraints]):
-#            print("*** Making states for {} : {}; constraints {}".format(template, features, constraints))
+#        print("*** Making states for {} : {}; constraints {}".format(template, features, constraints))
 
         # Add constraints to all features
         if constraints:
             mainconstraint, weakconstraint = constraints
             template_feats = Template.make_template_feats(weakconstraint, len(template), char_sets)
-            weakconstraint = Template.expand_weak_constraint(weakconstraint, char_sets)
+            if not guess:
+                weakconstraint = Template.expand_weak_constraint(weakconstraint, char_sets)
+#            print(" ** weakconstraint {}".format(weakconstraint))
             constraints = "{},{},tmp=[{}]".format(mainconstraint, weakconstraint, template_feats)
             for i, feature in enumerate(features):
                 features[i] = "{},{}]".format(feature[:-1], constraints)
@@ -323,6 +323,7 @@ class Template:
                 destfeats1[strengthfeat] = True
                 destfeats1[clsfeat] = destclass
                 tmp_feat = tmp_dict[templates[0]].get('tmp')
+#                print("  && tmp_feat {}".format(tmp_feat.__repr__()))
                 destfeats1['tmp'] = tmp_feat
                 destfeats1 = FSSet(destfeats1)
                 for template in templates:
@@ -354,6 +355,7 @@ class Template:
                 destfeats1[strengthfeat] = False
                 destfeats1[clsfeat] = destclass
                 tmp_feat = tmp_dict[templates[0]].get('tmp')
+#                print("  %% tmp_feat {}".format(tmp_feat.__repr__()))
                 destfeats1['tmp'] = tmp_feat
                 destfeats1 = FSSet(destfeats1)
                 for template in templates:
@@ -394,6 +396,7 @@ class Template:
 
     @staticmethod
     def parse(label, s, cascade=None, fst=None, gen=False, seglevel=2,
+              guess=False,
               directory='', seg_units=[], abbrevs=None,
               weight_constraint=None, verbose=False):
         """
@@ -533,7 +536,8 @@ class Template:
         for index, (template, features, constraints, subclass) in enumerate(templates):
             Template.add_template(fst, template, index+1, features, constraints, tmp_dict=tmp_dict,
                                   strong_inventory=inventory, weak_inventory=weak_inventory,
-                                  subclass=subclass, cascade=cascade, gen=gen, char_sets=char_sets)
+                                  subclass=subclass, cascade=cascade,
+                                  gen=gen, guess=guess, char_sets=char_sets)
 #        print("*** weak inventory for A")
 #        for x, y in weak_inventory.get('A').items():
 #            print()
@@ -550,8 +554,12 @@ class Template:
 #        print("*** inventory {}".format(inventory.get('A')))
 #        print("*** weak inventory {}".format(weak_inventory))
 
-#        for x, y in tmp_dict.items():
-#            print("*** {} -- {}".format(x, y))
+        for x, y in tmp_dict.items():
+            miss_tmp = [fs.__repr__() for fs in y if not fs.get('tmp')]
+            if miss_tmp:
+                print("$$ Missing tmp {}".format(x))
+                for f in miss_tmp:
+                    print("  $$ {}".format(f))
 
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen, seglevel=seglevel)
 

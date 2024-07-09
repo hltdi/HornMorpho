@@ -20,7 +20,7 @@ feats:
 
   pos: v verb
 
-  t (TAM) = pr (present) | pst (past) | imp (imperative)
+  t (TAM) = pr (present) | pst (past) | imp (imperative) | ips | opt | cnd | pot
 
   en (Eng) =
 

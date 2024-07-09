@@ -162,13 +162,22 @@ $$ L እ|ሕ|ዕ|ህ
 
 %%a=0,c=G,+strong
 
-# አተንቀጥቀጠ, ሐወሽወሸ
-[v=0|a|at,t=p]
+# ሐወሽወሸ
+# but also for at- for L-initial roots: አትሐለቅለቀ
+[v=0,t=p]
 *e	*e	*	*e	*
 
+# አተንቀጥቀጠ, አግለብለበ
+[v=a|at,t=p]
+*	*e	*	*e	*
+
 # ለሐወሽውሽ
-[v=0|a|at,t=i|j]
+[v=0,t=i|j]
 *e	*e	*	*	*
+
+# ለንቀጥቀጥ
+[v=a|at,t=i|j]
+*	*e	*	*	*
 
 ## K; STRONG
 
@@ -350,7 +359,7 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p,t=i,sp=2|3,sn=1,sg=m]
 *e	*E:	-
 
-[v=0,t=i,sn=2|3,sg=f]
+[v=0,t=i,sp=2|3,sn=2,sg=f]
 *e	*	ይ
 
 # all jussive forms without suffixes
@@ -380,18 +389,40 @@ $$ L እ|ሕ|ዕ|ህ
 *e	*e:	-
 
 %%a=0,c=B,-strong
-%1=L
+#%1=L
+#
+#[v=0|p|at,t=p]
+#[v=p,t=i|j]
+#*e	*e:	*
+#
+#[v=at,t=i|j]
+#[v=0,t=i|j,-vsuf]
+#*e	*:	*
+#
+#[v=0,t=i|j,+vsuf]
+#*e	*	*
 
-[v=0|p|at,t=p]
+%3=ው
+# also ይ
+# not sure about a- at-
+
+# ፈ/ሰ
+[v=0,t=p,sp=3,sn=1,sg=m]
+[v=0,t=p,sp=3,sn=2]
+*e	*:	-
+
+# ፈ/ሴኮ
+# what about 3fp impf?
+[v=0,t=p,sp=1|2]
+[v=0,t=p,sp=3,sn=1,sg=f]
+[v=0,t=i|j]
 [v=p,t=i|j]
-*e	*e:	*
+*e	*E:	-
 
-[v=at,t=i|j]
-[v=0,t=i|j,-vsuf]
-*e	*:	*
-
-[v=0,t=i|j,+vsuf]
-*e	*	*
+[v=p,t=p]
+[v=p,t=i,sp=2,sn=1,sg=f]
+[v=p,t=i,sn=2]
+*e	*e:	-
 
 %%a=a,c=A,-strong
 #%1=L
@@ -404,3 +435,19 @@ $$ L እ|ሕ|ዕ|ህ
 #*a	*	*
 
 #%%a=i,c=A,-strong
+
+%%a=0,c=E,-strong
+%4=ው
+
+# ፈንት
+[v=0,t=p]
+*e	*	*	-
+
+# ፈንቴ
+[v=0,t=i|j,sp=1]
+[v=0,t=i|j,sp=2|3,sn=1]
+[v=0,t=i|j,sp=2|3,sg=m]
+*e	*	*E	-
+
+[v=0,t=i|j,sp=2|3,sn=2,sg=f]
+*e	*	*	ይ

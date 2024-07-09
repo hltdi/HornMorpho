@@ -220,7 +220,10 @@ class Sentence():
     def convertPOS(analdict):
         umPOS = analdict.get('pos')
         if umPOS:
-            return Sentence.um2udPOS.get(umPOS, umPOS)
+            if isinstance(umPOS, list):
+                return [Sentence.um2udPOS.get(u, u) for u in umPOS]
+            else:
+                return Sentence.um2udPOS.get(umPOS, umPOS)
         return None
 
     @staticmethod
@@ -228,6 +231,7 @@ class Sentence():
         '''
         Create a CoNLL-U representation from a token's analysis dict.
         '''
+#        print("**anal2conllu {} : {}".format(token, analdict))
         if not analdict:
             # Unanalyzed token
             return TokenList([HMToken.create_unal(index, token)])
@@ -250,7 +254,8 @@ class Sentence():
         mwe_first = False
         mwe = 'tokens' in analdict
         if mwe:
-            mwe_feats = analdict['feats'].get('mwe')
+            mwe_feats = analdict['feats']
+#            .get('mwe')
             if mwe_feats and mwe_feats.get('segpart', False):
                 if mwe_feats.get('hdfin', False):
                     mwe_first = True
@@ -259,6 +264,7 @@ class Sentence():
                     pos = mwe_feats.get('pos', None)
                     xpos = mwe_feats.get('xpos', None)
                     head = stemdict.get('head', 0)+2
+#                    print("** MWE token {} pos {} head {}".format(token, pos, head))
                     conllu.append(
                         HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict, xpos=xpos)
                         )
@@ -266,31 +272,42 @@ class Sentence():
 #                else:
 #                    print("**  Last position")
 
-        for p in analdict['pre']:
+        for p in analdict.get('pre', []):
             if not p:
                 continue
+            # This should be a list
             pos = Sentence.convertPOS(p)
             string = p['seg']
             head = p.get('head', 0)+1
             if mwe_first:
                 head += 1
 #            print(" *** lemma for prefix {}".format(string))
-            conllu.append(
-                HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'))
-                )
-            index += 1
+            if ' ' in string:
+                strings = string.split()
+                for string, ps in zip(strings, pos):
+                    conllu.append(
+                        HMToken.create_morph(index, string, p.get('lemma', string), ps, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'))
+                        )
+                    index += 1
+            else:
+                conllu.append(
+                        HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'))
+                        )
+                index += 1
 
         pos = Sentence.convertPOS(stemdict)
         head = stemdict.get('head', 0)+1
         if mwe_first:
             head += 1
+        stem_string = stemdict['seg']
         conllu.append(
             HMToken.create_morph(
-                index, stemdict['seg'], stemdict.get('lemma', analdict['lemma']), pos, stemdict.get('udfeats'), head,
+                index, stem_string, stemdict.get('lemma', analdict.get('lemma', stem_string)), pos, stemdict.get('udfeats'), head,
                 stemdict.get('dep'), stemdict, xpos=stemdict.get('xpos')
                 ))
         index += 1
-        for s in analdict['suf']:
+
+        for s in analdict.get('suf', []):
             if not s:
                 continue
             pos = Sentence.convertPOS(s)

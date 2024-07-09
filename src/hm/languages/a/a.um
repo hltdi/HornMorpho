@@ -9,14 +9,16 @@ POS n N
 ->UD  ACC+GEN	*Case=AccGen
 ->UD  ACC	Case=Acc
 ->UD  GEN	Case=Gen
-->UD  TERM	Case=Ter
-->UD PRP	Case=Cau
-->UD EQTV	Case=Equ
-->UD ALL	Case=All
-->UD ABL	Case=Abl
-->UD INS	Case=Ins
-->UD DAT	Case=Dat
-->UD AT		Case=Loc
+# 2024.7.7: other prepositions all OBL
+->UD *OBL     *Case=Obl
+#->UD  TERM	Case=Ter
+#->UD PRP	Case=Cau
+#->UD EQTV	Case=Equ
+#->UD ALL	Case=All
+#->UD ABL	Case=Abl
+#->UD INS	Case=Ins
+#->UD DAT	Case=Dat
+#->UD AT		Case=Loc
 ->UD PL		Number=Plur
 ->UD SG		Number=Sing
 ->UD DEF	Definite=Def
@@ -35,20 +37,22 @@ POS n N
 ->UD {PSS3SM/DEF} &Poss3Def=Masc
 ->UD {PSS3SF/DEF} &Poss3Def=Fem
 # {Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def}
-->UD PASS	Voice=Pass
-->UD CAUS	Voice=Cau
-->UD RECP1	*Voice=Rcp1
-->UD RECP2	*Voice=Rcp2
-->UD ITER	Aspect=Iter
-->UD CAUS+RECP1	*Voice=CauRcp1
-->UD CAUS+RECP2	*Voice=CauRcp2
+#->UD PASS	Voice=Pass
+#->UD CAUS	Voice=Cau
+#->UD RECP1	*Voice=Rcp1
+#->UD RECP2	*Voice=Rcp2
+#->UD ITER	Aspect=Iter
+#->UD CAUS+RECP1	*Voice=CauRcp1
+#->UD CAUS+RECP2	*Voice=CauRcp2
 ->UD TOP	*Inf=Topic
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 
 pos:: NADJ:N;; NADV:N
-adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+#adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+# adp updated 2024.7.7
+adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 # unambiguous possessive suffixes
@@ -62,15 +66,6 @@ g:: m:MASC;; f:FEM
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
 
-#pp,pn,pg:: 3,1,m:PSS3SM;; 3,1,f:PSS3SF;; 2,1,m:PSS2SM;; 3,1,f:PSS2SF
-#pp,pn:: 1,1:PSS1S;; 1,2:PSS1P;; 2,2:PSS2P;; 3,2:PSS3P
-#det,pl:: True,True:DEF;PL;; False,True:PL;; True,False:DEF
-#det,fem:: True,True:DEF;FEM;; True,False:DEF;MASC
-#;; False,False:-DEF;; False,True:-DEF
-#det:: True:DEF;; False:-DEF
-# only relevant for deverbal nouns
-#a,v:: it,cs:CAUS+RECP;; it,smp:ITER;; it,ps:RECP;; smp,cs:CAUS;; smp,ps:PASS
-
 POS v V
 ->UD NEG	Polarity=Neg
 ->UD IMP	Mood=Jus
@@ -78,14 +73,25 @@ POS v V
 ->UD PFV	Aspect=Perf
 ->UD V.CVB	VerbForm=Conv
 #->UD PRF	Aspect=Prf
-->UD CAUS	Voice=Cau
-->UD TR		Voice=Trans
-->UD RECP1	*Voice=Rcp1
-->UD RECP2	*Voice=Rcp2
-->UD PASS	Voice=Pass
-->UD ITER	Aspect=Iter
-->UD CAUS+RECP1	*Voice=CauRcp1
-->UD CAUS+RECP2	*Voice=CauRcp2
+# Updated 2024.7.7
+->UD *DERAGI	*Aimad=Base
+->UD *ADRAGI	*Aimad=A
+->UD *TEDERAGI	*Aimad=Te
+->UD *ASDERAGI	*Aimad=As
+->UD *TEDARAGI	*Aimad=TeA
+->UD *ADARAGI	*Aimad=AA
+->UD *DERARAGI	*Aimad=Redup
+->UD *TEDERARAGI	*Aimad=TeRedup
+->UD *ADERARAGI	*Aimad=ARedup
+->UD *ASDERARAGI	*Aimad=AsRedup
+#->UD CAUS	Voice=Cau
+#->UD TR		Voice=Trans
+#->UD RECP1	*Voice=Rcp1
+#->UD RECP2	*Voice=Rcp2
+#->UD PASS	Voice=Pass
+#->UD ITER	Aspect=Iter
+#->UD CAUS+RECP1	*Voice=CauRcp1
+#->UD CAUS+RECP2	*Voice=CauRcp2
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
@@ -121,17 +127,18 @@ POS v V
 #->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
-->UD COND	*ClauseType=AdvCl
-->UD PURP	*ClauseType=AdvCl
 ->UD *CCOMP	*ClauseType=CComp
 ->UD *RELC	*ClauseType=ACl
 # Time
 # ስ-
+->UD *SUBORD	*ClauseType=AdvCl
+# prepositions all OBL as of 2024.7.7
+->UD *OBL      Case=Obl
+# following have been replaced
+->UD COND	*ClauseType=AdvCl
+->UD PURP	*ClauseType=AdvCl
 ->UD *TEMP	*ClauseType=AdvCl
 ->UD TERM	*ClauseType=AdvCl
-# prepositions/conjunctions
-# እንደ- (almost always complementizer)
-#->UD EQTV	Case=Equ
 # ወደ-
 ->UD ALL	Case=All
 # ከ-
@@ -154,7 +161,8 @@ rel:: True:*RELC
 
 ## morphological valence/voice
 # v=ast (አስታወቀ) -> TR
-a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
+#a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
+a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ADRAGI;; 0,test:*TEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ADERARAGI;; i,test:*TEDERARAGI;; i,as:*ASDERARAGI
 
 ## subjects
 sp:: 1:1;; 2:2;; 3:3
@@ -176,9 +184,13 @@ o,oc:: s1,b:*MAL1S;; p1,b:*MAL1P;; sm2,b:*MAL2SM;; sf2,b:*MAL2SF;; F2,b:*MAL2S;F
 
 det:: DEF
 
-adp:: እስከ:TERM;; ስለ:PURP;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+#adp:: እስከ:TERM;; ስለ:PURP;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+# 2024.7.7: simplifed adpositions to *OBL
+adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
-sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND;; እየ:*TEMP
+#sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND;; እየ:*TEMP
+# 2024.7.7: simplified subordinating conjunctions to SUBORD
+sconj:: ስ:*SUBORD;; ብ:*SUBORD;; እንድ:*SUBORD;; ል:*SUBORD;; እስክ:*SUBORD;; ከ:*SUBORD;; እየ:*SUBORD
 cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V

@@ -1598,6 +1598,7 @@ class Language:
         '''
 #        print("** analyze5 kwargs {}".format(kwargs))
         all_analyses = []
+        # Analyze multiple tokens
         mwe = kwargs.get('mwe', False)
         # There may be a cache dict where the analyses can be found or stored.
         cache = kwargs.get('cache')
@@ -1620,6 +1621,7 @@ class Language:
             # This assumes the cache stores "processed" analyses
 #            print("&& found cached token {}".format(cached))
             return cached.copy()
+        # punctuation, numerals
         special_anal = self.analyze_special(token)
         if special_anal:
             special_anal = self.check_analpos(special_anal, analpos)
@@ -1628,7 +1630,7 @@ class Language:
             if isinstance(cache, dict):
                 cache[token] = wordobj
             return wordobj
-        # Try unanalyzed words
+        # Try unanalyzed words or MWEs
         unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
         if unanalyzed:
             if analpos:
@@ -1677,11 +1679,13 @@ class Language:
             pos = ''
             feats = ''
             freq = self.morphology.get_freq(word)
-            lex = self.morphology.words1[word]
+            lex = words.get(word)
+#            lex = self.morphology.words1[word]
             if len(lex) == 1:
                 pos = lex[0]
                 return [{'token': word, 'pos': pos, 'nsegs': 1, 'freq': freq}]
-            form, cats = self.morphology.words1[word]
+#            form, cats = self.morphology.words1[word]
+            form, cats = words.get(word)
             if cats[0] == '[':
                 # These are HM features
                 feats = FeatStruct(cats)
@@ -1705,8 +1709,45 @@ class Language:
             else:
                 pos = cats
             freq = self.morphology.get_freq(word)
-            # Later have the FSS already storied in words1
-            anal = {'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq}
+            tokens = form.split()
+            nsegs = len(tokens)
+            anal = {'token': form, 'pos': pos, 'nsegs': nsegs, 'freq': freq}
+            if nsegs > 1:
+                dep = 'fixed'
+                # MWE
+                # Later have the FSS already storied in words1
+                token_list = []
+                mwe_feats = feats.get('mwe') if feats else Noe
+                token_pos = mwe_feats.get('tokpos') if mwe_feats else None
+                # There may be explicit POSs for tokens in the form of a FS tuple
+                for ti, tok in enumerate(tokens):
+                    tdict = {'token': tok}
+                    if token_pos:
+                        tdict['pos'] = token_pos[ti]
+                    token_list.append(tdict)
+                anal['tokens'] = token_list
+                if mwe_feats:
+                    if dep := mwe_feats.get('dep'):
+                        anal['dep'] = dep
+                if dep in ('fixed', 'flat'):
+                    # head is first token, other tokens are "suffixes"
+                    tok = tokens[0]
+                    anal['stem'] = {'seg': tok, 'head': 0, 'pos': pos}
+                    #token_list[0].get('pos', 'N')}
+                    anal['suf'] = []
+                    for ti, tok in enumerate(tokens[1:]):
+                        anal['suf'].append({'seg': tok, 'head': 0, 'dep': dep, 'pos': None})
+                        #token_list[ti+1].get('pos', 'N'))
+                else:
+                    # head is last token, other tokens are "prefixes"
+                    tok = tokens[-1]
+                    anal['stem'] = {'seg': tok, 'head': nsegs-1, 'pos': pos}
+                    #token_list[-1].get('pos', 'N')}
+                    anal['pre'] = []
+                    for ti, tok in enumerate(tokens[-1]):
+                        anal['pre'].append({'seg': tok, 'head': nsegs-1, 'dep': dep, 'pos': None})
+                        #token_list[ti].get('pos', 'N'), 'dep': dep})
+#            token_list = [{'token': t} for t in tokens]
             if feats:
                 anal['feats'] = feats
             if anal:
@@ -1799,6 +1840,7 @@ class Language:
             kwargs['mwe'] = True
             analyses = self.analyze(words, **kwargs)
             if analyses.is_known():
+#                print("** analyses {}".format(analyses))
                 sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
 #                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1

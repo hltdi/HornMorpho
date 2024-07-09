@@ -2894,6 +2894,8 @@
 አረር	'' [pos=N,t=[eng=bullet]]
 እ/ራሪ	'' [pos=ADJ,t=[eng=dwarfish]]
 እርስ	'' [pos=N,t=[eng=self]]
+እርስበርስ	'' [pos=N]
+ርስበርስ	እርስበርስ [pos=N]
 አራሽ	'' [pos=N,t=[eng="farmer,ploughman"]]
 እ/ራሽ	'' [pos=N,t=[eng="ploughed land"]]
 እርሻ	'' [pos=N,t=[eng=agriculture]]

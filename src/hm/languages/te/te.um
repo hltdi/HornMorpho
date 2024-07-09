@@ -17,13 +17,6 @@ POS n N
 ->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
-#->UD PASS	Voice=Pass
-#->UD CAUS	Voice=Cau
-#->UD RECP1	*Voice=Rcp1
-#->UD RECP2	*Voice=Rcp2
-#->UD ITER	Aspect=Iter
-#->UD CAUS+RECP1	*Voice=CauRcp1
-#->UD CAUS+RECP2	*Voice=CauRcp2
 
 pos:: N:N;; ADJ:ADJ;; PRON:PRON
 pl:: True:PL;; False:SG

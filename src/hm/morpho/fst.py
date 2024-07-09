@@ -511,7 +511,7 @@ class FSTCascade(list):
 
     @staticmethod
     def load(filename, seg_units=[], create_networks=True, subcasc=None, posmorph=None,
-             language=None, pos='', seglevel=2, gemination=True, mwe=False,
+             language=None, pos='', seglevel=2, gemination=True, mwe=False, guess=False,
              dirname='', weight_constraint=None, gen=False, verbose=True):
         """
         Load an FST cascade from a file.
@@ -527,14 +527,14 @@ class FSTCascade(list):
         return FSTCascade.parse(label, open(filename, encoding='utf-8').read(), directory=directory,
                                 subcasc=subcasc, create_networks=create_networks, seg_units=seg_units,
                                 posmorph=posmorph, gemination=gemination, mwe=mwe,
-                                dirname=dirname, pos=pos, seglevel=seglevel,
+                                dirname=dirname, pos=pos, seglevel=seglevel, guess=guess,
                                 language=language, weight_constraint=weight_constraint,
                                 gen=gen, verbose=verbose)
 
     @staticmethod
     def parse(label, s, directory='', create_networks=True, seg_units=[],
               posmorph=None, subcasc=None, language=None, dirname='', pos='', seglevel=2,
-              gemination=True, mwe=False,
+              gemination=True, mwe=False, guess=False,
               weight_constraint=None, gen=False, verbose=False):
         """
         Parse an FST cascade from the contents of a file as a string.
@@ -686,6 +686,7 @@ class FSTCascade(list):
                                        cascade=cascade, weighting=cascade.weighting(),
                                        posmorph=posmorph, gemination=gemination,
                                        abbrevs=abbrevs, seglevel=seglevel, mwe=mwe,
+                                       guess=guess,
                                        seg_units=seg_units, weight_constraint=weight_constraint,
                                        gen=gen, verbose=verbose)
                     else:
@@ -2066,7 +2067,7 @@ class FST:
     @staticmethod
     def load(filename, cascade=None, weighting=None, reverse=False, posmorph=None,
              seg_units=[], verbose=False, abbrevs=None, seglevel=2, gemination=True,
-             mwe=False,
+             mwe=False, guess=False,
              lex_features=False, dest_lex=False, weight_constraint=None,
              gen=False):
         """
@@ -2118,6 +2119,7 @@ class FST:
             return Template.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                   cascade=cascade, directory=directory, seglevel=seglevel,
+                                  guess=guess,
                                   seg_units=seg_units, abbrevs=abbrevs, weight_constraint=weight_constraint,
                                   gen=gen, verbose=verbose)
 
@@ -2154,7 +2156,8 @@ class FST:
                                    dest=dest_lex, verbose=False)
 
     @staticmethod
-    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, gemination=True, mwe=False, verbose=False):
+    def compile_mtax(mtax, gen=False, cascade=None, posmorph=None, seglevel=2, gemination=True,
+                     mwe=False, guess=False, verbose=False):
 #        print("** Compiling {} with {}".format(mtax, cascade))
         # Create a final state
         final_label = DFLT_FINAL

@@ -197,4 +197,5 @@ $ conj2
   --		[cconj=0]
 
 $ end
-  --		[pos=V]
+  # d=m is for manner deverbal nouns
+  --		[pos=V,d=0]
