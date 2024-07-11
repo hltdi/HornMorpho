@@ -92,7 +92,24 @@ $$ L እ|ሕ|ዕ|ህ
 [t=c,+K2,+K3]
 ^e	*:i	**
 
-%%a=i,c=B,+strong == A
+%%a=i,c=B,+strong
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+^e	*a	^:e	**
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+^e	*a	^e	**
+
+[t=i|j,v=0|a,+K2,+K3,+K4]
+^e	*a	**:	**
+
+[t=i|j,v=0|a,+K2,+K3,+K4]
+^e	*a	**	**
+
+[t=c,+K2,+K3,+K4]
+^e	*a	*i	**
 
 %%a=a,c=B,+strong == A
 
@@ -301,6 +318,7 @@ $$ L እ|ሕ|ዕ|ህ
 # መጻእ- -ካ, ተሰማዓኒ (alongside ተስምዓኒ)
 [t=p,v=0,sp=1|2,+K2,+K3]
 [t=p,v=p,+O,op=1|2,+K2,+K3]
+[t=j,v=p,+K2,+K3]
 ^e	*a	*
 
 # ይምጻእ
@@ -346,29 +364,73 @@ $$ L እ|ሕ|ዕ|ህ
 # ሞት-
 [t=p,v=0|a,+K2]
 [t=i,v=0,+suf,+K2]
+[t=p,v=a|p,+K2]
 *o	-	*
+
+# 3 alternatives for v=p: ተጾረ ተጸውረ ተጸወረ
+[t=p,v=p,+K2,-K3]
+*e	*e	*
+
+[t=p,v=p,+K2,-K3]
+*e	*	*
 
 [t=i,v=0,-suf,+K2,+K3]
 *e	*:	*
 
-# ሙት-
+[t=i,v=a,-suf,+K2,+K3]
+*	*:	*
+
+# የጽውሩ, የጽውር (t=j)
+[t=i,v=a,+suf,+K2,-K3]
+[t=j,v=a,+K2,-K3]
+*	*	*
+
+[t=i,v=p,+K2,+K3]
+*	*e:	*
+
+[t=j,v=p,+K2,+K3]
+*e	*e	*
+
+# ኣጽወረ
+[t=p,v=a,+K2,-K3]
+*	*e	*
+
+# ሙት-, የጹሩ
+[t=i,v=a,+suf,+K2]
 [t=j,v=0|a,+K2]
 *u	-	*
 
-# ሞይት-
-#[t=c,v=0,sp=1,sn=1,+K2,-K3]
-[t=c,v=0,+K2,-K3]
+# ሞይት-, ኣጾይሩ
+[t=c,v=0|p|a,+K2,-K3]
 *o	ይ	*
 
-# consonant suffixes
+# ጸዊሩ
+[t=c,v=0|p,+K2,+K3]
+*e	*i	*
+
+# ኣጽዊሩ
+[t=c,v=a,+K2,+K3]
+*	*i	*
+
+# consonant suffixes; ሜትካ
 [t=c,v=0,sp=2,+K2]
 [t=c,v=0,sp=1,sn=2,+K2]
 ^E	-	*
 
 %2=ይ
-[t=p,v=0,+K2]
+[t=0|a|p,v=0,+K2]
 [t=i,v=0,+suf,+K2]
 *e	-	*
+
+[t=i,v=p,+K2,+K3]
+*	*e:	*
+
+[t=i,v=a,-suf,+K2,+K3]
+*	*:	*
+
+# ኣሽየጠ
+[t=p,v=a,+K2,-K3]
+*	*e	*
 
 # ይሕሸኒ, ይሕሽ
 [t=i,v=0,+suf,+K2]
@@ -378,12 +440,30 @@ $$ L እ|ሕ|ዕ|ህ
 [t=i,v=0,-suf,+K2,+K3]
 *e	*:	*
 
-[t=j,v=0,+K2]
+[t=j,v=0|a,+K2]
+[t=c,v=a,+K2]
+[t=i,v=a,+suf,+K2]
 *i	-	*
 
+# ኣሽይጡ
+[t=c,v=a,+K2,-K3]
+[t=i,v=a,+suf,+K2,-K3]
+*	*	*
+
+# ኣሽጡ 
+[t=c,v=a,+K2]
+*	-	*
+
 # possible, but less common?, for sp=1|2: ከይድና
-[t=c,v=0,+K2,-K3]
+# ተሸይጠ
+[t=c,v=0|p,+K2,-K3]
+[t=p,v=p,+K2,-K3]
 *e	*	*
+
+# ተሸየጠ
+[t=p,v=p,+K2,+K3]
+[t=j,v=p,+K2,+K3]
+*e	*e	*
 
 [t=c,v=0,sp=1|2,+K2]
 *E	-	*
@@ -410,19 +490,27 @@ $$ L እ|ሕ|ዕ|ህ
 # same as for +strong
 *a	*i	*
 
-%%a=i,c=A,-strong
+%2=ው
+[t=p|i|j,v=p,+K2,+K3]
+[t=p,v=a,+K2,+K3]
+*a	*e	**
 
-#%1=L
-#
-#[t=p,+K2,+K3,+K4]
-#[t=i|j,v=p,+K2,+K3,+K4]
-#^e	*a	^e	**
-#
-#[t=i|j,v=0|a,+K2,+K3,+K4]
-#^e	*a	**	**
-#
-#[t=c,+K2,+K3,+K4]
-#^e	*a	*i	**
+[t=i|j,v=a,+K2,+K3]
+*a	*	**
+
+[t=c,v=p|a,+K2,+K3]
+*a	*i	**
+
+%2=ይ
+[t=p|i|j,v=p,+K2,+K3]
+[t=p,v=a,+K2,+K3]
+*a	*e	**
+
+[t=i|j,v=a,+K2,+K3]
+[t=c,v=p|a,+K2,+K3]
+*a	*	**
+
+%%a=i,c=A,-strong
 
 %2=L
 
@@ -465,6 +553,28 @@ $$ L እ|ሕ|ዕ|ህ
 [t=c,+K2,+K3,+K4]
 *e	*a	*i	*
 
+%2=ይ
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+^e	*a	^e	**
+
+[t=i|j,v=0|a,+K2,+K3,+K4]
+[t=c,+K2,+K3,+K4]
+^e	*a	**	**
+
+%2=ው
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+^e	*a	^e	**
+
+[t=i|j,v=0|a,+K2,+K3,+K4]
+^e	*a	**	**
+
+[t=c,+K2,+K3,+K4]
+^e	*a	*i	**
+
 %%a=0,c=B,-strong
 
 %3=L
@@ -503,6 +613,52 @@ $$ L እ|ሕ|ዕ|ህ
 
 [t=j,v=0|a,+O,-ijsuf,-K2,+K3]
 ^e	**:	*a
+
+%%a=a,c=B,-strong
+
+%3=L
+[t=p,v=p|a,sp=3,+K2,+K3]
+[t=i|j,v=a,+K2,+K3]
+*a	*	*
+
+[t=p,v=p|a,sp=1|2,+K2,+K3]
+[t=i|j,v=p,+K2,+K3]
+*a	*a	*
+
+[t=c,v=p|a,+K2,+K3]
+# same as for +strong
+*a	*i	*
+
+%%a=i,c=B,-strong
+
+%3=L
+# for some verbs, like ሰምዔ, the first vowel may be I
+# should this be in irregular file?
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,+K2,+K3,+K4]
+*e	*a	*:	*
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,+K2,+K3,+K4]
+*e	*a	*	*
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+*e	*a	*e:	*
+
+[t=p,+K2,+K3,+K4]
+[t=i|j,v=p,+K2,+K3,+K4]
+*e	*a	*e	*
+
+#[t=p,sp=1|2,+K2,+K3,+K4]
+#*e	*a	*a:	*
+
+[t=c,+K2,+K3,+K4]
+*e	*a	*i:	*
+
+[t=c,+K2,+K3,+K4]
+*e	*a	*i	*
 
 %%a=0,c=E,-strong
 

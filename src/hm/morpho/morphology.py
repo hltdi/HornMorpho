@@ -1689,7 +1689,7 @@ class POSMorphology:
             return ''
 #        print("  ^^ Processing morpheme {} (MWE?{}) (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, mwe.__repr__(), aff_index, morpheme, stem_index, udfdict, udfalts))
         is_mwe_part = props.get('mwe', False)
-        print("^^ Processing morpheme {} ({}); {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE')))
+#        print("^^ Processing morpheme {} ({}); {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE')))
         dct = {'seg': morpheme if gemination else EES.degeminate(morpheme)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
         dct['pos'] = pos
@@ -1759,7 +1759,7 @@ class POSMorphology:
         '''
         mwe is False (for single-word items) or a dict of props for MWEs.
         '''
-        print("   ^^ Looking for posspec in segdict {} {}; mwe tokens {}".format(string, segdict, mwe_tokens))
+#        print("   ^^ Looking for posspec in segdict {} {}; mwe tokens {}".format(string, segdict, mwe_tokens))
         posspec = segdict.get('pos')
         if not posspec:
 #            print("^^ No POS in segdict {}".format(segdict))
@@ -1926,7 +1926,7 @@ class POSMorphology:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
-#        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
+        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
             form = self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
             if mwe_part and add_part:
@@ -2068,7 +2068,7 @@ class POSMorphology:
         2020.9.22: Added del_feats, a list of features or feature paths
           to delete from the features specified
         """
-#        print("^^ Generating {} ({}); {}; v5 {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__(), v5))
+#        print("^^ Generating {} ({}); {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__()))
 #        print("  ^^ defaultFS {}".format(self.defaultFS.__repr__()))
         fss = None
         if del_feats:
@@ -2105,6 +2105,7 @@ class POSMorphology:
             features = fss
         else:
             features = FSSet.cast(features)
+#        print("  ^^ features {}".format(features.__repr__()))
         if ortho and self.ortho2phon:
             # Have some way to check whether the root is already phonetic
             # There might be spaces in the orthographic form

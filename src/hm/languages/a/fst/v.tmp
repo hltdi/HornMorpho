@@ -1,6 +1,6 @@
 $ c=A|B|C|E|F|G|H|J
 $ a=0|a|i
-$ v=0|p|a|as|ast|test
+$ v=0|p|a|as|ast
 $ t=p|i|j|c
 
 # abbreviation for "sibilants"; not currently used anywhere
@@ -144,6 +144,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %1=እ
 # no simplex v=a for this subclass
+!! v=a
+!! v=test
 # most instances of v=ast are in this class: አስታወቀ
 [t=p,v=0|p|as|ast]
 [t=i,v=p]
@@ -172,6 +174,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 እ	^e	**
 
 %1=እ,3=ይ
+!! v=a
+!! v=test
 # no instances of v=ast?
 [t=p,v=0|p|as|ast]
 ኣ	^e:	-
@@ -180,29 +184,31 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=p|as]
 ኣ	**	-
 
-[t=i,v=as]
+[t=i,v=as|ast]
 ኣ	**:	-
 
 [t=j,v=0]
 እ	**	-
 
-[t=c,v=0|p|as]
+[t=c,v=0|p|as|ast]
 ኣ	**	ት
 
 %1=እ,3=እ
+!! v=a
+!! v=test
 # no instances of v=ast?
-[t=p,v=0|p|as]
-[t=i,v=as]
+[t=p,v=0|p|as|ast]
+[t=i,v=as|ast]
 ኣ	^a:	-
 
 [t=i,v=0|p]
-[t=j,v=p|as]
+[t=j,v=p|as|ast]
 ኣ	^a	-
 
 [t=j,v=0]
 እ	^a	-
 
-[t=c,v=0|p|as]
+[t=c,v=0|p|as|ast]
 ኣ	**	ት
 
 %2=ው
@@ -237,6 +243,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 **	-	**
 
 %3=እ
+!! v=ast
 [t=p]
 [t=i,v=p|as]
 [t=j,v=as]
@@ -256,6 +263,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 **	**	ት
 
 %3=ይ
+!! v=ast
+!! v=test
 [t=p]
 ^e	^e:	-
 
@@ -279,6 +288,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=0,c=B,-strong
 
 %1=እ
+!! v=a
+!! v=ast
 [t=p]
 [t=i,v=p] 
 ኣ	^e:	**
@@ -302,6 +313,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^e	**:	ት
 
 %3=ይ
+!! v=ast
 [t=p]
 ^e	^e:	-
 
@@ -313,6 +325,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=0,c=C,-strong
 %3=እ
+!! v=ast
 [t=p|i]
 [t=j,v=0|a|as]
 ^a	^a:	-
@@ -325,6 +338,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	**:	ት
 
 %3=ይ
+!! v=ast
 # ፏጨ, ቃዠ
 [t=p]
 ^a	^e:	-
@@ -340,6 +354,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=0,c=E,-strong
 %1=እ
+!! v=a
+!! v = ast
 # c1=0 for derived forms
 [t=p,v=0]
 ኣ	^e	^e:	**
@@ -518,13 +534,13 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=p]
 ^a	^e	**
 
-%%a=a,c=C,+strong
+#%%a=a,c=C,+strong
 # only v=a: አ/ታገለ (other examples?)
-[t=p,v=a]
-^a	^e:	**
-
-[t=i|j|c,v=a]
-^a	**:	**
+#[t=p,v=a]
+#^a	^e:	**
+#
+#[t=i|j|c,v=a]
+#^a	**:	**
 
 %%a=a,c=E,+strong
 [t=p,v=p|a]
@@ -589,6 +605,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=a,c=B,-strong
 %3=እ
+!! v=ast
 [t=p|i,v=p|a]
 [t=j,v=a]
 ^a	^a:	-
@@ -601,6 +618,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	**:	ት
 
 %3=ይ
+!! v=ast
 [t=p,v=p|a]
 ^a	^e:	-
 
@@ -609,6 +627,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=c,v=p|a]
 ^a	**:	ት
+
+%1=እ !
+%1=እ,3=እ !
+%1=እ,3=ይ !
 
 %%a=a,c=E,-strong
 
@@ -650,6 +672,12 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=c]
 ^eo	^a	**	ት
 
+%2=እ,4=እ !
+
+%%a=a,c=G,-strong
+
+%3=እ,5=እ !
+
 %%a=i,c=A,+strong
 # Include v=as though it's rare
 [t=p,v=0|p|a|as]
@@ -690,10 +718,12 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=i,c=A,-strong
 
 %2=ው
+!! v=as
 [t=p|i|j|c]
 *Wa	*Wa	-	**
 
 %2=ይ
+!! v=as
 # ሻሻጠ
 [t=p]
 [t=i|j,v=p]
@@ -719,6 +749,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ~Yi	ያ	~Yi	**
 
 %2=እ
+!! v=as
 # aste: አስተናናቀ
 [t=p|i|j]
 ^a	^a	-	**
@@ -727,6 +758,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	**	-	**
 
 %1=እ
+!! v=as
 # v=a only for a few verbs አነቀ አመነ
 [t=p,v=p|a|ast]
 [t=i,v=p]
@@ -755,6 +787,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	**
 
 %3=እ
+!! v=as
 [t=p,v=0|a|p]
 [t=i,v=p]
 ^e	^a	^a:	-
@@ -779,6 +812,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 **	^a	**	ት
 
 %3=ይ
+!! v=as
 [t=p,v=0|p|a]
 ^e	^a	^e:	-
 
@@ -814,6 +848,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	ት
 
 %1=እ,3=ይ
+!! v=as
 [t=p,v=p|a|as|ast]
 -	^a	^e:	-
 
@@ -865,7 +900,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=i,c=E,-strong
 
 %1=እ
-
+!! v=as
 [t=p,v=0]
 ኣ	^e	^a	^e:	**
 
@@ -890,6 +925,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 -	^e	^a	^e	**
 
 %4=እ
+!! v=as
 # ገነባባ
 [t=p|i]
 ^eo	^e	^a	^a:	-
@@ -901,6 +937,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	^e	^a	**	ት
 
 %4=ይ
+!! v =as
 # ሰለቻቸ
 [t=p]
 ^eo	^e	^a	^e:	-
@@ -915,6 +952,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	^e	^a	**	ት
 
 %2=እ,4=እ
+!! v=as
 # ባባ
 [t=i|p]
 ^e	^a	-	^:a	-

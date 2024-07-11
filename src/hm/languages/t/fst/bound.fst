@@ -36,7 +36,12 @@ I.a -> stem0	[ኣ]
 C -> stem+			[:<]
 start -> stem+		[:<]
 # stem starting with anything other than ኣ
-stem+ -> stem0 		[^N;/]
+stem+ -> stem0 		[^A;/]
+
+start -> nopre		[:-]
+nopre -> nopre		[:-]
+nopre -> nopre+		[:<]
+nopre+ -> stem0		[ኣ]
 
 stem0 -> stem0		[^N;/]
 

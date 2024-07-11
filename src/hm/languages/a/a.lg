@@ -109,10 +109,10 @@ feats:
     sconj = 0 | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
     cconj = 0 | ም | ስ | ማ | ሳ | ና | ኣ | ኮ
 
-#  pos: v_stem v_stem
-#    a = 0 | a | i
-#    v = 0 | p | a | as | ast
-#    t = p | i | j | c
+  pos: v_stem v_stem
+    a = 0 | a | i
+    v = 0 | p | a | as | ast
+    t = p | i | j | c
 ##    d = 0
 
 #  pos: v_light_stem v_light_stem

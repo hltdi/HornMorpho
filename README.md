@@ -644,7 +644,10 @@ it is a more basic form to which suffixes representing additional meanings have 
 
 ## <a id="conllu">Working with CoNLL-U format</a>
 
-The features described in this section are being used as part of a project to create Amharic and Tigrinya treebanks.
+The features described in this section are being used as part of a project to create Amharic and Tigrinya treebanks.[^4]
+
+[^4]:CoNLL-U format is not yet supported for Oromo.
+
 Many of the details, in particular the way in which words are segmented and the dependencies within words,
 are being reevaluated and may change in upcoming versions of HM.
 If you would like to use HM as part of a treebank project, please contact [gasser@indiana.edu](mailto:gasser@indiana.edu). I may be able to tailor some of the features of the program to suit your needs.

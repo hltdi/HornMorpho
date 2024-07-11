@@ -123,6 +123,84 @@ VC2FEATS_L = {
     'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=a'
     }
 
+### Tigrinya verb stems
+
+def read_tvstems():
+    stems = []
+    with open("hm/languages/t/lex/v_stem.lex", encoding='utf8') as file:
+        stem = ''
+        feats = []
+        for line in file:
+            if not line.strip():
+                continue
+            if line[0] != '\t':
+                # add previous stem, except for first time
+                if stem:
+                    stems.append([stem, [FS(f, freeze=True) for f in feats]])
+                feats = []
+                stem, feat = line.strip().split()
+                feats.extend([f for f in feat.split(';') if f])
+            else:
+                feats.extend([f for f in line.strip().split(';') if f])
+        # last stem
+        stems.append([stem, [FS(f, freeze=True) for f in feats]])
+
+    return stems
+
+def prune_tvstems(stemlist):
+    pruned = 0
+    for stem, featlist in stemlist:
+        flen = len(featlist)
+        compare_FS_list(featlist, 'cons')
+        compare_FS_list(featlist, 'suf')
+        newflen = len(featlist)
+        pruned += flen - newflen
+    return pruned
+
+def write_tvstems(stemlist):
+    with open("hm/languages/t/lex/v_stem.lex", 'w', encoding='utf8') as file:
+        for stem, featlist in stemlist:
+            print("{}\t{}".format(stem, format_FSS(featlist, True)), file=file)
+
+def format_FSS(fss, islist=False):
+    '''
+    Format FSS or FS list in file.
+    '''
+    if not islist:
+        string = fss.__repr__()
+        strings = string.split(';')
+    else:
+        strings = [f.__repr__() for f in fss]
+    groups = []
+    for i in range(len(strings)+1//2):
+        item = strings[2*i:2*i+2]
+        if item:
+            groups.append(';'.join(item))
+    return ';\n\t'.join(groups)
+
+def compare_FS_list(fs, exclude):
+    to_del = []
+    to_add = []
+    for i1, fs1 in enumerate(fs[:-1]):
+#        print("Comparing {} ({})".format(fs1.__repr__(), i1))
+        for fs2 in fs[i1+1:]:
+#            print("Comparing {} and {}".format(fs1.__repr__(), fs2.__repr__()))
+            if compare_FS(fs1, fs2, exclude):
+                to_add.append(fs2.delete([exclude]))
+                to_del.extend([fs1, fs2])
+    fs.extend(to_add)
+    for d in to_del:
+        fs.remove(d)
+    return fs
+
+def compare_FS(f1, f2, exclude):
+    '''
+    Are f1 and f2 equal except for their value on feature exclude?
+    '''
+    f1x = f1.delete([exclude])
+    f2x = f2.delete([exclude])
+    return f1x.equal_values(f2x)
+
 ### Amharic root/stem frequencies
 
 AM_V_FEATS = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']

@@ -74,22 +74,27 @@ def get_irr_tstems():
         contents = file.read()
         contents = contents.split('*')[1:]
         for entry in contents:
-            featstems = []
+#            featstems = []
             entry = [e for e in entry.split('\n') if e]
             # first line has root, class, and global features
             #<ብ ህ ል>	c=A,tmp=[2=L],s=1
-            root, glob_feats = entry[0]
-            root = root[1:-1]
+            split1 = entry[0].split()
+            glob_feats = split1[-1]
+            root = ''.join(split1[:-1])[1:-1]
+            glob_feats = "{},root={}".format(glob_feats, root)
+#            print("root {}, feats {}".format(root, feats))
             feats = None
             for line in entry[1:]:
                 if line[0] == '#':
                     continue
                 if line[0] == '[':
-                    feats = line.strip()
+                    feats = line.strip()[1:-1]
                 else:
-                    feastems.append((line.strip(), feats))
+                    stem = ''.join(line.strip().split())
+                    results.append((stem, ','.join([feats, glob_feats])))
+#                    featstems.append((stem, feats))
                     feats = None
-            results.append([root, glob_feats, featstems])
+#            results.append([glob_feats, featstems])
     return results
 
 def gen_all_tstems():

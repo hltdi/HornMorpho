@@ -7,25 +7,31 @@ $$ Y	y
 %A::		1:e,I;		2:e,i,I,/I,/e;		3:I
 %A,2=L::	1:a,e,I;	2:a,i,I,E
 %A,3=L::				2:e,/e,a,/a,i,I,/I;	3:I,a
-%A,2=w::	1:o,u,e,E,WE;	2:0,I,0ይ,/I
-%A,2=y::	1:e,i,E,I;	2:0,I,/I;			3:0,I
+%A,2=w::	1:I,o,u,e,E,WE;	2:0,I,0ይ,/I,i,e,/e
+%A,2=y::	1:e,i,E,I;	2:0,I,/I,e,/e;		3:0,I
 %A,2==3::									3:0,I
 # a=a
 %A_a::		1:a;		2:e,I,i;		3:I
 %A_a,2=L::				2:a,I,i;		3:I
 %A_a,3=L::				2:a,I,i;		3:I
+%A_a,2=w::	1:a;		2:e,I,i;		3:I
+%A_a,2=y::	1:a;		2:e,I;			3:I
 # iterative, a=i
 %A_i::		1:e;		2:a|e,I,i;		3:I
-#%A_i,1=L::	1:e;		2:a|e,I,i;		3:I
 %A_i,2=L::	1:I,e,a;	2:a|a,i,I;		3:I
 %A_i,3=L::				2:a|a,i,I;		3:I
+%A_i,2=y::	1:e;		2:a|e,I;		3:I
+%A_i,2=w::	1:e;		2:a|e,I,i;		3:I
 
 ## B roots
 %B::		1:e,I;	2:/e,/i,/I;	3:I
 %B,3=L::			2:/e,/a,/i,/I;	3:I,a
 ## a=a
 %B_a::		1:a;	2:e,I,i;		3:I
-%B_i::		1:e;	2:a|e,I,i;	3:I
+%B_a,3=L::			2:a,I,i;		3:I
+## a=i
+%B_i::		1:e;	2:a|e,/e,I,/I,i;	3:I
+%B_i,3=L::			2:a|e,/e,I,/I,i,/i;		3:I
 
 ## C roots
 %C::		1:a;	2:e,i,I;	3:I

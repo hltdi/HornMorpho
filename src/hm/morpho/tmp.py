@@ -1,7 +1,7 @@
 """
 This file is part of the HornMorpho package.
 
-Copyright (C) 2023.
+Copyright (C) 2023, 2024.
 Michael Gasser <gasser@indiana.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -47,6 +47,8 @@ class Template:
     INVENTORY_RE = re.compile(r'\s*\$\s*(.+)$')
 
     CHAR_SET_RE = re.compile(r'\s*\$\$\s*(.+?)\s+(.+?)$')
+
+    EXCLUDE_FEAT_RE = re.compile(r'\s*!!(.+)$')
 
     EMPTY_CHAR = '-'
 
@@ -247,13 +249,15 @@ class Template:
         return inv
 
     @staticmethod
-    def complete_weak_inventory(weak_inventory, strong_inventory, tmp_dict, weak_constraints, gen=False):
+    def complete_weak_inventory(weak_inventory, strong_inventory, tmp_dict, weak_constraints, weak_copy_templates, gen=False, skip=False):
         '''
         Go through each weak subclass and see which feature sets in the strong inventory
         don't have templates yet. Assign the strong templates for these features sets
         to the weak subclasses unless a feature (set) in the list of weak_constraints for the subclass.
         '''
 #        print("** Completing weak inventory")
+        # FSize weak_copy_templates
+        weak_copy_templates = [(FeatStruct("[" + w[0] + "]"), w[1], w[2]) for w in weak_copy_templates]
         for cls, features in strong_inventory.items():
 #            print("  ** cls {}, features {}".format(cls, features))
             weak_class_inventory = weak_inventory.get(cls)
@@ -281,6 +285,8 @@ class Template:
                                         break
                             if prevented:
                                 continue
+                            matching_weak_copy = [t[0] for t in weak_copy_templates if t[1] == subclass]
+#                            print(" ** subclass {}, matching_weak {}".format(subclass, matching_weak_copy))
                             # There may be more than one positional constraint
                             # Create the weak feature set (add -strong, the class, e.g., c=A, and the subclass, e.g., 2=ው)
                             strength_feat = 'tstrong' if gen else 'strong'
@@ -300,9 +306,33 @@ class Template:
                                 else:
                                     new_weak_feats[feat] = value
                             new_weak_feats = FSSet(new_weak_feats)
-                            # Pick first template for this feature set for the weak subclass
-                            for template in templates:
-                                tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
+                            # Check to see whether the features match one of the weak copy attributues; if so, don't create the template
+                            weak_matched = False
+                            for weak_copy in matching_weak_copy:
+                                matched = False
+#                                print("  ** Checking matching weak copy {} against new_feats {}".format(weak_copy.__repr__(), new_weak_feats.__repr__()))
+                                if new_weak_feats.unify_FS(weak_copy) != 'fail':
+#                                    print("   ** Matches")
+                                    weak_matched = True
+                                    break
+                            if not weak_matched:
+                                print("  ** creating template for {}; {}; {}".format(subclass, weak_subclass_constraints, new_weak_feats.__repr__()))
+                                # Pick first template for this feature set for the weak subclass
+                                if not skip:
+                                    for template in templates:
+                                        tmp_dict[template] = tmp_dict[template].union(new_weak_feats)
+
+    def get_strong_tmp(tmps):
+        # From a list of tmp features, get the one with the most X values.
+        bestn = 3
+        best = None
+        for tmp in tmps:
+            tmp_values = list(tmp.values())
+            nbad = len([c for c in tmp_values if c != 'X'])
+            if nbad < bestn:
+                bestn = nbad
+                best = tmp
+        return best
 
     @staticmethod
     def copy_templates(features, sourceclass, strong_inventory, tmp_dict, gen=False):
@@ -322,7 +352,10 @@ class Template:
                 destfeats1 = feats.copy()
                 destfeats1[strengthfeat] = True
                 destfeats1[clsfeat] = destclass
-                tmp_feat = tmp_dict[templates[0]].get('tmp')
+                templates1 = tmp_dict[templates[0]]
+                tmp_feats = templates1.get_all('tmp')
+                tmp_feat = Template.get_strong_tmp(tmp_feats)
+#                print("  && tmp_feats {}".format(tmp_feats))
 #                print("  && tmp_feat {}".format(tmp_feat.__repr__()))
                 destfeats1['tmp'] = tmp_feat
                 destfeats1 = FSSet(destfeats1)
@@ -354,7 +387,10 @@ class Template:
                 destfeats1 = feats.copy()
                 destfeats1[strengthfeat] = False
                 destfeats1[clsfeat] = destclass
-                tmp_feat = tmp_dict[templates[0]].get('tmp')
+                templates1 = tmp_dict[templates[0]]
+                tmp_feats = templates1.get_all('tmp')
+                tmp_feat = Template.get_strong_tmp(tmp_feats)
+#                tmp_feat = tmp_dict[templates[0]].get('tmp')
 #                print("  %% tmp_feat {}".format(tmp_feat.__repr__()))
                 destfeats1['tmp'] = tmp_feat
                 destfeats1 = FSSet(destfeats1)
@@ -378,14 +414,23 @@ class Template:
         return ''
 
     @staticmethod
-    def add_weak_constraint(subclass, features, constraint_dict, gen=False):
+    def get_class_from_string(string, gen=False):
+        '''
+        Get the class from a pre-FS string like c=A,a=i,+string
+        '''
+        split = string.split("tc=") if gen else string.split('c=')
+        return split[-1].split(',')[0]
+
+    @staticmethod
+    def add_weak_constraint(subclass, features, constraint_dict, gen=False, cls=None):
         '''
         Add a constraint for the subclass to not have any templates for features.
         '''
         features = FeatStruct("[" + features + "]", freeze=False)
-        cls_feat = 'tc' if gen else 'c'
         strength_feat = 'tstrong' if gen else 'strong'
-        cls = features.get(cls_feat)
+        cls_feat = 'tc' if gen else 'c'
+        if not cls:
+            cls = features.get(cls_feat)
         features = features.delete([cls_feat, strength_feat])
 #        print("*** Adding constraint for class {}, subclass {}, features {}".format(cls, subclass, features.__repr__()))
         if cls not in constraint_dict:
@@ -427,6 +472,7 @@ class Template:
 
         char_sets = {}
 
+        # For particular subclasses, features that do not templates
         # Create start and end states
         if not fst.has_state(label): fst.add_state('start')
         fst._set_initial_state('start')
@@ -481,6 +527,17 @@ class Template:
                 current_class = Template.get_class(constraints)
                 continue
 
+            m = Template.EXCLUDE_FEAT_RE.match(line)
+            if m:
+                exclude_feats = m.groups()[0]
+                cls = Template.get_class_from_string(current_main_constraints[0])
+                Template.add_weak_constraint(current_subclass, exclude_feats, weak_constraints, gen=gen, cls=cls)
+#                if current_subclass not in excluded:
+#                    excluded[current_subclass] = []
+#                excluded[current_subclass].append(exclude_feats)
+#                print("** Excluding {} from subclass {}".format(exclude_feats.__repr__(), current_subclass))
+                continue
+
             m = Template.CONSTRAINT_RE.match(line)
             if m:
                 # Each of these should represent a new weak subclass within the current feature set (normally values for a and c)
@@ -517,6 +574,8 @@ class Template:
 
             print("*** Something wrong with {}".format(line))
 
+#        print("** weak constraints: {}".format(weak_constraints))
+
         inventory = Template.expand_inventory(inventory_classes, inventory, gen=gen)
 
         weak_inventory = Template.make_weak_inventory(weak_inventory_classes)
@@ -538,10 +597,6 @@ class Template:
                                   strong_inventory=inventory, weak_inventory=weak_inventory,
                                   subclass=subclass, cascade=cascade,
                                   gen=gen, guess=guess, char_sets=char_sets)
-#        print("*** weak inventory for A")
-#        for x, y in weak_inventory.get('A').items():
-#            print()
-#            print(x, y)
 
         for features, sourceclass in copy_templates:
             Template.copy_templates(features, sourceclass, inventory, tmp_dict, gen=gen)
@@ -549,10 +604,9 @@ class Template:
         for features, subclass, sourceclass in weak_copy_templates:
             Template.copy_weak_templates(features, subclass, sourceclass, weak_inventory, tmp_dict, gen=gen)
 
-        Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints, gen=gen)
-
-#        print("*** inventory {}".format(inventory.get('A')))
-#        print("*** weak inventory {}".format(weak_inventory))
+#        print("** weak copy templates {}".format(weak_copy_templates))
+        # Add missing templates for weak roots
+        Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints, weak_copy_templates, gen=gen)
 
         for x, y in tmp_dict.items():
             miss_tmp = [fs.__repr__() for fs in y if not fs.get('tmp')]

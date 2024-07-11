@@ -268,7 +268,6 @@ def download(lang_abbrev, uncompress=True):
 
 def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             translate=False, experimental=False, mwe=False, seglevel=2,
-            v5=True,
             gemination=True, split_index=0, verbose=True):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
@@ -286,7 +285,7 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                              translate=translate, recreate=True, 
                              experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
                              create_fst=True, relabel=True, gemination=gemination,
-                             v5=v5,
+                             v5=True,
                              compose_backwards=False, split_index=split_index,
                              phon=phon, verbose=verbose)
     if gen == True: # and mwe == False:
@@ -304,12 +303,12 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
                                          experimental=experimental, mwe=mwe, pos=pos, seglevel=0,
                                          create_fst=True, relabel=True, gemination=gemination,
                                          compose_backwards=False, split_index=split_index,
-                                         setit=False, v5=v5,
+                                         setit=False, v5=True,
                                          phon=phon, verbose=verbose)
             print("Inverting analysis FST for generation")
             genfst = analfst.inverted()
         pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
-                          experimental=experimental, mwe=mwe, v5=v5)
+                          experimental=experimental, mwe=mwe, v5=True)
     return pos_morph
 
 def compress(language):

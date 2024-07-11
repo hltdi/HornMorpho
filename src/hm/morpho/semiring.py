@@ -174,15 +174,17 @@ class FSSet(set, FS):
                 return value
         return default
 
-    def get_all(self, feature, default=None):
+    def get_all(self, feature, default=None, no_repeat=True):
         """
-        Get the value of the feature in all FeatStructs that have one.
+        Get the value of the feature in all FeatStructs that have one,
+        not repeating values if no_repeat is True.
         """
         values = []
         for fs in self:
             value = fs.get(feature)
             if value != None:
-                values.append(value)
+                if not no_repeat or value not in values:
+                    values.append(value)
         return values or default
 
     # def get_all_mult(self, features, default=None):

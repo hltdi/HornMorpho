@@ -54,6 +54,7 @@ src/hm/ext_data
 src/data
 src/hm/languages/*/pkl
 src/hm/languages/*/cfst
+src/hm/languages/*/tmp
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
