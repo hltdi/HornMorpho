@@ -1926,7 +1926,7 @@ class POSMorphology:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
         initfeat = ','.join(initfeat)
-        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
+#        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
             form = self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
             if mwe_part and add_part:
