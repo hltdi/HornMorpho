@@ -30,11 +30,11 @@ HM has a list of Amharic person and place names, but if you want *named entity r
 It is highly recommended that you install the program in a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/), but this is not required.
 If you are using a virtual environment, you will need to create the environment and activate it before running `pip install`.
 
-First download the wheel file from the `dist/` folder: [HornMorpho-5.1*-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.1-py3-none-any.whl)
+First download the wheel file from the `dist/` folder: [HornMorpho-5.1.1-py3-none-any.whl](https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.1.1-py3-none-any.whl)
 
 Then, to install from the wheel file, do the following in a Python shell from the folder where the wheel file is
 
-	pip install HornMorpho-5.1-py3-none-any.whl
+	pip install HornMorpho-5.1.1-py3-none-any.whl
 
 If this fails, it may mean that you don't have [`wheel`](https://pypi.org/project/wheel/) installed, so try again after installing `wheel`.
 
