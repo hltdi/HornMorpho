@@ -74,23 +74,24 @@ POS v V
 ->UD V.CVB	VerbForm=Conv
 #->UD PRF	Aspect=Prf
 # Updated 2024.7.7
-->UD *DERAGI	*Aimad=Base
-->UD *ADRAGI	*Aimad=A
-->UD *TEDERAGI	*Aimad=Te
-->UD *ASDERAGI	*Aimad=As
-->UD *TEDARAGI	*Aimad=TeA
-->UD *ADARAGI	*Aimad=AA
-->UD *DERARAGI	*Aimad=Redup
-->UD *TEDERARAGI	*Aimad=TeRedup
-->UD *ADERARAGI	*Aimad=ARedup
-->UD *ASDERARAGI	*Aimad=AsRedup
-#->UD CAUS	Voice=Cau
+->UD *DERAGI	*አዕማድ=ደራጊ
+->UD *ADRAGI	*አዕማድ=አድራጊ
+->UD *TEDERAGI	*አዕማድ=ተደራጊ
+->UD *ASDERAGI	*አዕማድ=አስደራጊ
+->UD *TEDARAGI	*አዕማድ=ተዳራጊ
+->UD *ADARAGI	*አዕማድ=አዳራጊ
+->UD *DERARAGI	*አዕማድ=ደራራጊ
+->UD *TEDERARAGI	*አዕማድ=ተደራራጊ
+->UD *ADERARAGI	*አዕማድ=አደራራጊ
+->UD *ASDERARAGI	*አዕማድ=አስደራራጊ
+# Updated 2024.7.16
+->UD CAUS	Voice=Cau
 #->UD TR		Voice=Trans
-#->UD RECP1	*Voice=Rcp1
+->UD RECP	*Voice=Rcp
 #->UD RECP2	*Voice=Rcp2
-#->UD PASS	Voice=Pass
-#->UD ITER	Aspect=Iter
-#->UD CAUS+RECP1	*Voice=CauRcp1
+->UD PASS	Voice=Pass
+->UD ITER	Aspect=Iter
+->UD CAUS+RECP	*Voice=CauRcp
 #->UD CAUS+RECP2	*Voice=CauRcp2
 ->UD 1		Person=1
 ->UD 2		Person=2
@@ -163,6 +164,13 @@ rel:: True:*RELC
 # v=ast (አስታወቀ) -> TR
 #a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
 a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ADRAGI;; 0,test:*TEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ADERARAGI;; i,test:*TEDERARAGI;; i,as:*ASDERARAGI
+
+# voice: base=0
+a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
+# voice: base=p, a, as
+a,v,base:: 0,p,a:PASS;; 0,a,p:CAUS;; 0,as,p:CAUS;; 0,ast,p:CAUS
+# voice: a=a, a=i
+a,v,base:: a,p,*:RECP;; a,a,*:CAUS+RECP;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS+RECP;; i,ast,*:CAUS+RECP;; i,test,*:RECP
 
 ## subjects
 sp:: 1:1;; 2:2;; 3:3

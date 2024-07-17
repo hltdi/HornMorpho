@@ -123,7 +123,252 @@ VC2FEATS_L = {
     'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=a'
     }
 
+LV_ROOT2LEMMA = {
+    'ብእል:base': 'አለ', 'ድርግ:caus1': 'አደረገ', 'ብእል:pass': 'ተባለ', 'ስኝይ:pass': 'ተሰነ', 'ስኝይ:caus2': 'አሰኘ', 'ድርግ:pass': 'ተደረገ'
+    }
+
+TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
+
+### Amharic roots and voice again
+### Finding roots with no simplex form
+
+def rewrite_avroots(defective):
+    with open("hm/languages/a/lex/vroot.lex", encoding='utf8') as infile:
+        with open("avroot.lex", 'w', encoding='utf8') as outfile:
+            for line in infile:
+                line = line.strip()
+                if not line:
+                    print(line, file=outfile)
+                    continue
+                if line[0] == "<":
+                    # root line; it's here where we add the base feature
+                    if "base=" in line:
+                        # feature already added
+                        print(line, file=outfile)
+                    else:
+                        root = re.match(r"<(.+)>", line).groups(0)[0]
+                        cls = line.split()[-1].strip().replace('c=', '')
+                        root = root.replace(' ', '')
+                        if cls in ["G", "H", "J"]:
+                            print("{},base=p".format(line), file=outfile)
+                        elif (root, cls) in defective:
+#                            print("{} : {} is in defective list".format(root, cls))
+                            print("{},base={}".format(line, defective[(root, cls)]), file=outfile)
+                        else:
+                            print("{},base=0".format(line), file=outfile)
+                else:
+                    # other line; just print it
+                    print(line, file=outfile)
+
+def get_am_vroots():
+    result = []
+    with open("hm/languages/a/lex/vroot.lex", encoding='utf8') as file:
+        contents = file.read().strip()
+        lines = [l for l in contents.splitlines() if l.strip() and '#' not in l]
+        ln = len(lines)
+        for i in range(0, ln, 2):
+            if i >= ln:
+                break
+            result.append((lines[i].strip(), lines[i+1].strip()))
+    return result
+
+def interactive_assign(u, assigned=None):
+    '''
+    Unassigned is a list of (root, class, voice) triples.
+    '''
+    assigned = assigned or {}
+    unassigned = {}
+    for root, cls, voice in u:
+        voice = {x.replace('v=', '') for x in voice}
+        assignment = input("Assign {} ({}) {} to P, A, or AS(TE)?\n>>> ".format(root, cls, voice))
+        if assignment.lower() == 'p':
+            assigned[(root, cls)] = 'p'
+        elif assignment.lower() == 'a':
+            assigned[(root, cls)] = 'a'
+        elif assignment.lower() == 'as':
+            assigned[(root, cls)] = 'as'
+        else:
+            unassigned[(root, cls)] = voice
+    return assigned, unassigned
+
+def group_no_base(rootfeats):
+    '''
+    Each rootfeats consist of root, cls, [a=0_feats, a=a_feats]
+    '''
+    assigned = {}
+    unassigned = []
+#    {'a': [], 'p': [], 'as': [], 2: [], 3: []}
+    for root, cls, (a0, aa) in rootfeats:
+        if not a0 and not aa:
+            assigned[(root, cls)] = 'p'
+#            result['p'].append((root, cls))
+        elif len(a0) == 1:
+            if 'v=p' in a0:
+                assigned[(root, cls)] = 'p'
+#                result['p'].append((root, cls))
+            elif 'v=a' in a0:
+                assigned[(root, cls)] = 'a'
+#                result['a'].append((root, cls))
+            else:
+                assigned[(root, cls)] = 'as'
+#                result['as'].append((root, cls))
+        else:
+            unassigned.append((root, cls, a0))
+#        elif len(a0) == 2:
+#            result[2].append((root, cls, a0))
+#        else:
+#            result[3].append((root, cls, a0))
+    return assigned, unassigned
+
+def all_group_amv_feats(entries):
+    normal = []
+    no_base = []
+    for entry in entries:
+        if r := group_amv_feats(entry):
+            if 'v=0' in r[2][0]:
+                normal.append(r)
+            else:
+                no_base.append(r)
+    return normal, no_base
+
+def group_amv_feats(entry, skip_class=['G', 'H', 'J']):
+    """
+    entry is two lines from v.root.
+    The first line is <root>\tc=*
+    The second line is a ;-separated list of combinations of values of a and v
+       <ህ ል ቅ>		c=A
+       a=0,v=0 ; a=0,v=a
+    """
+    line1, line2 = entry
+    root = re.match(r"<(.+)>", line1).groups(0)[0]
+    cls = line1.split()[-1].strip().replace('c=', '')
+    if cls in skip_class:
+#        print("Skipping {}".format(root))
+        return
+    root = root.replace(' ', '')
+    feats = [f for f in line2.split(';')]
+    a0 = [f.strip().split(',') for f in feats if 'a=0' in f]
+    a0 = [[x for x in a if 'v=' in x] for a in a0]
+    a0 = set([a[0] for a in a0])
+    aa = [f.strip().split(',') for f in feats if 'a=a' in f]
+    aa = [[x for x in a if 'v=' in x] for a in aa]
+    aa = set([a[0] for a in aa])
+#    aa = aa[0] if aa else []
+    return root, cls, [a0, aa]
+
 ### Tigrinya verb stems
+
+def get_irr_tstems():
+    results = []
+    with open("hm/languages/t/fst/v_irr.root", encoding='utf8') as file:
+        contents = file.read()
+        contents = contents.split('*')[1:]
+        for entry in contents:
+#            featstems = []
+            entry = [e for e in entry.split('\n') if e]
+            # first line has root, class, and global features
+            #<ብ ህ ል>	c=A,tmp=[2=L],s=1
+            split1 = entry[0].split()
+            glob_feats = split1[-1]
+            root = ''.join(split1[:-1])[1:-1]
+            glob_feats = "{},root={}".format(glob_feats, root)
+#            print("root {}, feats {}".format(root, feats))
+            feats = None
+            for line in entry[1:]:
+                if line[0] == '#':
+                    continue
+                if line[0] == '[':
+                    feats = line.strip()[1:-1]
+                else:
+                    stem = ''.join(line.strip().split())
+                    results.append((stem, ','.join([feats, glob_feats])))
+#                    featstems.append((stem, feats))
+                    feats = None
+#            results.append([glob_feats, featstems])
+    return results
+
+def gen_all_tstems():
+    results = []
+    n = 0
+    vsmorph = get_t_vstem_morph()
+
+    with open("data/t_vroots.txt", encoding='utf8') as  file:
+        for line in file:
+            if n % 25 == 0:
+                print("Generated {}".format(n))
+            line = line.strip()
+            results.append(gen_tstem(line, vsmorph=vsmorph))
+            n += 1
+    return results
+
+def gen_tstem(entry, vsmorph= None, to_string=True):
+    '''
+    entry is a line from t_vroots.txt
+    '''
+    root, feats = entry.split()
+    feats = feats.split(';;')
+    return combine_outputs(vsmorph, root, feats, to_string=to_string)
+
+def gen_from_entry(entry):
+    """
+    entry is two lines from v.root.
+    The first line is <root>\tc=*
+    The second line is a ;-separated list of combinations of values of a and v
+       <ህ ል ቅ>		c=A
+       a=0,v=0 ; a=0,v=a
+    """
+    line1, line2 = entry
+    root = re.match(r"<(.+)>", line1).groups(0)[0]
+    cls = line1.split()[-1]
+    root = root.replace(' ', '')
+    feats = cls.strip()
+    featcombs = line2.split(';')
+    result = []
+    for fc in featcombs:
+        fc = "{},{}".format(cls, fc.strip())
+        result.append(fc)
+    return root, result
+
+#def root2tmp(root):
+#    tmp = {1: 'X', 2: 'X', 3: 'X', 4: '0'}
+#    for index, c in enumerate(root):
+#        if c in ('እ', 'ዕ', 'ህ', 'ሕ'):
+#            tmp[index+1] = 'L'
+#        elif c == 'ው':
+#            tmp[index+1] = 'ው'
+#        elif c == 'ይ':
+#            tmp[index+1] = 'ይ'
+
+def rootlex2entries():
+    result = []
+    with open('hm/languages/t/lex/vroot.lex', encoding='utf8') as file:
+        contents = file.read().strip()
+        lines = contents.splitlines()
+        for i in range(0, len(lines), 2):
+            result.append((lines[i].strip(), lines[i+1].strip()))
+    return result
+        
+def combine_outputs(vsmorph, root, feats, to_string=True):
+    vsmorph = vsmorph or get_t_vstem_morph()
+    result = []
+    for f in feats:
+        for ff in [",+cons,+suf", ",+cons,-suf", ",-cons,+suf"]:
+            fff = "[" + f + ff + "]"
+            output = vsmorph.gen_all(root, feats=fff, save_feats=TI_VFEATS)
+            result.extend(output)
+    grouped = {}
+    for form, fss in result:
+#        print("{}  {}".format(form, fss.__repr__()))
+        if form in grouped:
+            grouped[form] = grouped[form].union(fss)
+        else:
+            grouped[form] = fss
+    if to_string:
+        strings = []
+        for form, feats in grouped.items():
+            strings.append("{}\t{}".format(form, format_FSS(feats)))
+        return '\n'.join(strings)
+    return grouped
 
 def read_tvstems():
     stems = []
@@ -200,6 +445,54 @@ def compare_FS(f1, f2, exclude):
     f1x = f1.delete([exclude])
     f2x = f2.delete([exclude])
     return f1x.equal_values(f2x)
+
+def simplify_feats(formfeats):
+    '''
+    For a single asp/voice combination, simplify the features.
+    '''
+    # Check t=c
+#    result = {}
+    allindict = {'i': [], 'p': [], 'j': [], 'c': []}
+    noneindict = {'i': [], 'p': [], 'j': [], 'c': []}
+    for form, feats in formfeats.items():
+#        print("{}".format(form))
+        for tense in ['i', 'p', 'j', 'c']:
+            allin = True
+            nonein = True
+            for feat in feats:
+                t = feat.get('t')
+#                print("  {}".format(feat.__repr__()))
+                if t != tense:
+                    allin = False
+                elif t == tense:
+                    nonein = False
+            if allin:
+                allindict[tense].append(form)
+            if nonein:
+                noneindict[tense].append(form)
+    # delete cons, suf, sp, sn, and sg
+    results = []
+    for tense in ['i', 'p', 'j', 'c']:
+        allin = allindict.get(tense)
+        if len(allin) == 1 and len(noneindict.get(tense)) == len(formfeats) - 1:
+            ff = formfeats[allin[0]]
+            feats = ff.delete(['cons', 'suf', 'sp', 'sn', 'sg'])
+            formfeats[allin[0]] = feats
+#            results.append((ff[0], feats))
+#        result[form] =  feats
+#    return result
+    return allindict, noneindict
+
+def get_t_vstem_morph():
+    return hm.morpho.get_language('t').morphology['v_stem']
+
+def get_t_vforms(root, featsets, vsmorph=None):
+    vsmorph = vsmorph or get_t_vstem_morph()
+    results = []
+    for featset in featsets:
+        output = vsmorph.gen_all(root, feats=featset, save_feats=TI_VFEATS)
+        results.extend(output)
+    return results
 
 ### Amharic root/stem frequencies
 
@@ -417,7 +710,177 @@ def filter_anals_by_um(anals, exclude=['TOP', 'NEG']):
         res.append(anal)
     return res
 
+def filter_anals_by_pos(anals, pos='V'):
+    res = []
+    for anal in anals:
+        p = anal.get('pos')
+        if not p or p != pos:
+            continue
+        res.append(anal)
+    return res
+
 ### Amharic, Tigrinya voice-valency classification.
+
+def get_vroot_png(path="data/am_classes.txt", language='a', report='', constraints=None):
+    '''
+    Returns dicts for unambiguous roots, ambiguous roots, and
+    multi-word (light verb) roots.
+    '''
+    unamb_roots = {}
+    amb_roots = {}
+    light_roots = {}
+    items = get_vclass_data(path)
+    ign_roots = IGN_ROOTS.get(language, [])
+    if constraints and 'applic' in constraints:
+        applic = constraints['applic']
+    else:
+        applic = 0
+
+    print("N items {}".format(len(items)))
+
+    # classify roots+vc by whether they have 1 or 2 person subjects
+    s12 = set()
+    reject_imp = []
+    for index, word, anals in items:
+        if len(anals) == 1:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = anal['um']
+            sense = anal.get('sense', 0)
+            vc = classify_um_vc(um, language=language)
+            pers = get_subpers(um)
+            if pers == '12':
+                s12.add((root, vc, sense))
+
+    print("N s12 {}".format(len(s12)))
+
+    for index, word, anals in items:
+        word = normalize(word, language=language)
+        if len(anals) > 1:
+            # ambiguous
+            unique_anals = set()
+            for anal in anals:
+                if 'root' not in anal:
+                    continue
+                root = anal['root']
+                um = anal['um']
+                sense = anal.get('sense', 0)
+                vc = classify_um_vc(um, language=language)
+                if (root, vc, sense) in reject_imp:
+                    continue
+                elif is_imperative(um) and (root, vc, sense) not in s12:
+                    reject_imp.append((root, vc, sense))
+#                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
+                    continue
+                um = filter_um(um, language=language, applic=applic)
+                unique_anals.add((root, um, sense))
+
+            if len(unique_anals) > 1:
+                # still ambiguous
+                tam = []
+                for root, um, sense in unique_anals:
+                    if " " in word:
+                        if ' ' not in root:
+                            root = word.split()[0] + ' ' + root
+                        if root in ign_roots:
+                            add_root_um(light_roots, root, um)
+                    elif root not in ign_roots:
+                        if sense:
+                            root += ":{}".format(sense)
+                        add_root_um(amb_roots, root, um)
+            elif len(unique_anals) == 1:
+                unique_anals = list(unique_anals)[0]
+                root = unique_anals[0]
+                um = unique_anals[1]
+                sense = unique_anals[2]
+                if " " in word:
+                    if ' ' not in root:
+                        root = word.split()[0] + ' ' + root
+                    if root not in ign_roots:
+                        add_root_um(light_roots, root, um)
+                elif root not in ign_roots:
+                    if report and report == root:
+                        print("** {}: {}".format(word, um))
+                    if sense:
+                        root += ":{}".format(sense)
+                    add_root_um(unamb_roots, root, um)
+        else:
+            anal = anals[0]
+            if 'root' not in anal:
+                continue
+            root = anal['root']
+            um = filter_um(anal['um'], language=language, applic=applic)
+            sense = anal.get('sense', 0)
+#            if um[0] == 'rcp':
+#                continue
+            if ' ' in word:
+                if ' ' not in root:
+                    root = word.split()[0] + ' ' + root
+                if root not in ign_roots:
+                    add_root_um(light_roots, root, um)
+            elif root not in ign_roots:
+                if report and report == root:
+                    print("** {}: {}".format(word, um))
+                if sense:
+                    root += ":{}".format(sense)
+                add_root_um(unamb_roots, root, um)
+    for root, dct in unamb_roots.items():
+        dct = group_by_vc(dct)
+        unamb_roots[root] = dct
+    for root, dct in amb_roots.items():
+        dct = group_by_vc(dct)
+        amb_roots[root] = dct
+    for root, dct in light_roots.items():
+        dct = group_by_vc(dct)
+        light_roots[root] = dct
+    light_roots = combine_light(light_roots)
+#    print("{} verbs analyzed".format(nverbs))
+    return unamb_roots, amb_roots, light_roots
+
+def merge_png(png):
+    '''
+    png is *_, *_*, 3sm_*, 3_*, ~3sm_, ~3sm_*.
+    '''
+    match png:
+        case '*_':
+            # intransitive
+            return ['3sm_', '12_', '3f|p_']
+        case '*_*':
+            # transitive
+            return ['3sm_12', '3sm_3', '12_o', '3f|p_o']
+        case '3sm_*':
+            return ['3sm_12', '3sm_3']
+        case '3_*':
+            return ['3sm_', '3f|p_']
+        case '~3sm_':
+            return ['12_', '3f|p_']
+        case '~3sm_*':
+            return ['12_o', '3f|p_o']
+        case _:
+            return []
+
+def vrdict_get(dct, root, aimad, png, light=False):
+    '''
+    Get the count for root, aimad, and png within the root_dict.
+    '''
+    if ':' not in root and not light:
+        root += ":A"
+    if root_png := dct.get(root):
+#        print("rpng {}".format(root_png))
+        if root_aimad := root_png.get(aimad):
+#            print("ra {}".format(root_aimad))
+            if png == '':
+                # Return all values
+                return sum(root_aimad.values())
+            if png in root_aimad:
+                return root_aimad[png]
+            pngs = merge_png(png)
+            if not pngs:
+                print("No way to merge {}".format(png))
+            return sum([root_aimad.get(p, 0) for p in pngs])
+    return
 
 def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     '''
@@ -427,8 +890,8 @@ def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     AM = morpho.get_language('a', v5=True)
     V = AM.morphology['v']
     u, a, l = get_vroot_png(constraints=constraints)
-    if light:
-        l = combine_light(l)
+#    if light:
+#        l = combine_light(l)
     if write_png:
         write_vroot_png(u, language='a', light=light, constraints=constraints)
     trans = gen_trans_cats(constraints)
@@ -440,7 +903,7 @@ def proc_am(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
 def proc_ti(light=False, constraints=None, thresh=[0, 0, 0], write_png=False):
     TI = morpho.get_language('t', v5=True)
     V = TI.morphology['v']
-    u, a, l = get_vroot_png(path='data/ti_v_classes2.txt', language='t', constraints=constraints)
+    u, a, l = get_vroot_png(path='data/ti_classes.txt', language='t', constraints=constraints)
     if write_png:
         write_vroot_png(u, language='t', light=light, constraints=constraints)
     trans = gen_trans_cats(constraints)
@@ -660,27 +1123,25 @@ def consolidate(png_dict, constraints=None, filter=False):
         for d in to_del:
             del png_dict[d]
 
-def combine_light(light_dict):
-    '''
-    Combine light verbs with different roots: አለ አደረገ ተሰኘ
-    '''
-    parts = {}
-    for root, rootdict in light_dict.items():
-        part, vroot = root.split(' ')
-        rd = {}
-#        print("part {} vroot {}".format(part, vroot))
-        for vc, vcdict in rootdict.items():
-#            print("  vc {}".format(vc))
-            vc = vc + "_" + vroot[0]
-            rd[vc] = vcdict
-        if part not in parts:
-            parts[part] = rd
-        else:
-            for v, d in rd.items():
-                if v in parts[part]:
-                    print("{} already in {} : {}".format(v, root, parts[part]))
-                parts[part][v] = d
-    return parts
+#def combine_light(light_dict):
+#    '''
+#    Combine light verbs with different roots: አለ አደረገ ተሰኘ
+#    '''
+#    parts = {}
+#    for root, rootdict in light_dict.items():
+#        part, vroot = root.split(' ')
+#        rd = {}
+#        for vc, vcdict in rootdict.items():
+#            vc = vc + "_" + vroot[0]
+#            rd[vc] = vcdict
+#        if part not in parts:
+#            parts[part] = rd
+#        else:
+#            for v, d in rd.items():
+#                if v in parts[part]:
+#                    print("{} already in {} : {}".format(v, root, parts[part]))
+#                parts[part][v] = d
+#    return parts
 
 def filter_um(um, language='a', applic=False):
     if isinstance(um, str):
@@ -766,11 +1227,13 @@ def get_vclass_data(path):
             for line in lines[1:]:
                 line = eval(line)
                 index, word, anals = line
-                anals = filter_anals_by_um(anals, exclude=['RECP', 'CAUS+RECP'])
+                anals = filter_anals_by_pos(anals)
+#                anals = filter_anals_by_um(anals, exclude=['RECP', 'CAUS+RECP'])
+#                                               #exlude=['N', 'ADJ', 'ADV', 'ADP', 'CONJ'])
                 if anals:
                     nverbs += 1
                     items.append((index, word, anals))
-    return items, nverbs
+    return items
     
 def group_by_vc(vcpng):
     '''
@@ -884,120 +1347,28 @@ def get_subpers(um):
     else:
         return '3'
 
-def get_vroot_png(path="data/am_v_classes3.txt", language='a', report='', constraints=None):
+def combine_light(dct):
     '''
-    Returns dicts for unambiguous roots, ambiguous roots, and
-    multi-word (light verb) roots.
+    Combine the pngs for roots for each particle.
     '''
-    unamb_roots = {}
-    amb_roots = {}
-    light_roots = {}
-    items, nverbs = get_vclass_data(path)
-    ign_roots = IGN_ROOTS.get(language, [])
-    if constraints and 'applic' in constraints:
-        applic = constraints['applic']
-    else:
-        applic = 0
-
-    # classify roots+vc by whether they have 1 or 2 person subjects
-    s12 = set()
-    reject_imp = []
-    for index, word, anals in items:
-        if len(anals) == 1:
-            anal = anals[0]
-            if 'root' not in anal:
-                continue
-            root = anal['root']
-            um = anal['um']
-            sense = anal.get('sense', 0)
-            vc = classify_um_vc(um, language=language)
-            pers = get_subpers(um)
-            if pers == '12':
-                s12.add((root, vc, sense))
-
-    for index, word, anals in items:
-        word = normalize(word, language=language)
-        if len(anals) > 1:
-            # ambiguous
-            unique_anals = set()
-            for anal in anals:
-                if 'root' not in anal:
-                    continue
-                root = anal['root']
-                um = anal['um']
-                sense = anal.get('sense', 0)
-                vc = classify_um_vc(um, language=language)
-#                if vc == 'rcp'
-#                    continue
-                if (root, vc, sense) in reject_imp:
-                    continue
-                elif is_imperative(um) and (root, vc, sense) not in s12:
-                    reject_imp.append((root, vc, sense))
-#                    print("** Rejecting imperative reading of {} ({},{})".format(word, root, vc))
-                    continue
-                um = filter_um(um, language=language, applic=applic)
-                unique_anals.add((root, um, sense))
-
-            if len(unique_anals) > 1:
-                # still ambiguous
-                tam = []
-                for root, um, sense in unique_anals:
-                    if " " in word:
-                        if ' ' not in root:
-                            root = word.split()[0] + ' ' + root
-                        if root in ign_roots:
-                            add_root_um(light_roots, root, um)
-                    elif root not in ign_roots:
-                        if sense:
-                            root += ":{}".format(sense)
-                        add_root_um(amb_roots, root, um)
-            elif len(unique_anals) == 1:
-                unique_anals = list(unique_anals)[0]
-                root = unique_anals[0]
-                um = unique_anals[1]
-                sense = unique_anals[2]
-                if " " in word:
-                    if ' ' not in root:
-                        root = word.split()[0] + ' ' + root
-                    if root not in ign_roots:
-                        add_root_um(light_roots, root, um)
-                elif root not in ign_roots:
-                    if report and report == root:
-                        print("** {}: {}".format(word, um))
-                    if sense:
-                        root += ":{}".format(sense)
-                    add_root_um(unamb_roots, root, um)
-        else:
-            anal = anals[0]
-            if 'root' not in anal:
-                continue
-            root = anal['root']
-            um = filter_um(anal['um'], language=language, applic=applic)
-            sense = anal.get('sense', 0)
-#            if um[0] == 'rcp':
-#                continue
-            if ' ' in word:
-                if ' ' not in root:
-                    root = word.split()[0] + ' ' + root
-                if root not in ign_roots:
-                    add_root_um(light_roots, root, um)
-            elif root not in ign_roots:
-                if report and report == root:
-                    print("** {}: {}".format(word, um))
-                if sense:
-                    root += ":{}".format(sense)
-                add_root_um(unamb_roots, root, um)
-    for root, dct in unamb_roots.items():
-        dct = group_by_vc(dct)
-        unamb_roots[root] = dct
-    for root, dct in amb_roots.items():
-        dct = group_by_vc(dct)
-        amb_roots[root] = dct
-    for root, dct in light_roots.items():
-        dct = group_by_vc(dct)
-        light_roots[root] = dct
-    print("{} verbs analyzed".format(nverbs))
-    return unamb_roots, amb_roots, light_roots
+    result = {}
+    for part_root, png in dct.items():
+        part, root = part_root.split()
+        if part not in result:
+            result[part] = {}
+        result[part][root] = png
+    result2 = {}
+    for part, root_dcts in result.items():
+        if part not in result2:
+            result2[part] = {}
+        part_dct = result2[part]
+        for root, root_dct in root_dcts.items():
+            root = root.split(':')[0]
+            for aimad, png in root_dct.items():
+                root_a = root + ':' + aimad
+                root_a = LV_ROOT2LEMMA[root_a]
+                part_dct[root_a] = png
+    return result2
 
 def count_voice_classes(dct, language='a', scale=True, trans=None, constraints=None, light=False,
                         thresh=[0, 0, 0], vmorph=None):

@@ -1,4 +1,4 @@
-*<ህ ው ን>	c=A,tmp=[1=X]
+*<ህ ው ን>	c=A,tmp=[1=X],base=0
 [a=0,v=0,t=p|i|c];[a=0,v=p,t=p|c];[a=0,v=p,t=j,sp=2,-neg]
 ሆ   ን
 
@@ -12,7 +12,7 @@
 [a=i,v=p]
 ኳ	ኋ	ን
 
-*<ብ እ ል>	c=A,tmp=[1=X],gl=say
+*<ብ እ ል>	c=A,tmp=[1=X],gl=say,base=0
 
 [a=0,t=p,v=0]
 ኣ	ል
@@ -35,7 +35,7 @@
 [a=i,t=c,v=p]
 ባ	ብ	ል
 
-*<ት ት ው>	c=A,a=0
+*<ት ት ው>	c=A,a=0,base=0
 
 [t=p|i|j,v=0|p|as]
 ተ	ው
@@ -43,7 +43,7 @@
 [t=c,v=0|p|as]
 ት	ት
 
-*<እ ም ር> c=A,tmp=[1=እ]
+*<እ ም ር> c=A,tmp=[1=እ],base=0
 # አማረ: be beautiful
 
 [a=0,t=p,v=0]
@@ -70,7 +70,7 @@
 [a=i,v=p,t=c]
 ማ	ም	ር
 
-*<ም እ ር>	c=A,tmp=[1=X],s=2
+*<ም እ ር>	c=A,tmp=[1=X],s=2,base=p
 
 [a=0,v=test,t=p|i|j]
 ማ	ር
@@ -78,7 +78,7 @@
 [a=0,v=test,t=c]
 ም	ር
 
-*<ው እ ል> c=A,tmp=[1=X],s=2
+*<ው እ ል> c=A,tmp=[1=X],s=2,base=0
 
 [a=0,v=test,t=p|i|j]
 ዋ	ል
@@ -86,7 +86,7 @@
 [a=0,v=test,t=c]
 ው	ል
 
-*<ን ግ ድ> c=B
+*<ን ግ ድ> c=B,base=0
 
 [a=a,v=test,t=p|i]
 ና   /ገ	 ድ
@@ -97,7 +97,7 @@
 [a=a,v=test,t=c]
 ና	ግ	ድ
 
-*<እ ክ ል> c=A
+*<እ ክ ል> c=A,base=0
 
 [a=i,v=test,t=p|i]
 ካ	/ከ	ል
@@ -108,7 +108,7 @@
 [a=i,v=test,t=c]
 ካ	ክ	ል
 
-*<ሽ እ>	c=A,tmp=[1=X]
+*<ሽ እ>	c=A,tmp=[1=X],base=0
 
 [a=0,t=p|i|j,v=0|p|as]
 ሻ
@@ -125,7 +125,7 @@
 [a=i,t=c]
 ሻ	ሽ	ት
 
-*<ህ ይ ድ>		c=A,tmp=[2=ይ]
+*<ህ ይ ድ>		c=A,tmp=[2=ይ],base=0
 
 [a=0,t=p|i|c,v=0]
 ሄ	ድ
