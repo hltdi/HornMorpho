@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is a project of PLoGS.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2019, 2020, 2022, 2023. PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2018-2024. PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ CONSONANTS = ["h", "l", "H", "m", "^s", "r", "s", "^s", "x", "q", "Q", "b", "t",
               "T", "C", "P", "S", "^S", "f", "p"]
 GEMINATION_GEEZ = "፟"
 GEMINATION_ROMAN = '_'
+PRE_GEMINATION = '/'
 EPENTHETIC = 'I'
 
 ## Regular expression objects for converting between "conventional" and
@@ -103,10 +104,23 @@ str.maketrans("ኅኁኂኃኄኅኆሠሡሢሣሤሥሦፀፁፂፃፄፅፆ�
 
 DEPAL = {"ሽ": "ስ", "ች": "ት", "ኝ": "ን", "ጅ": "ድ", "ጭ": "ጥ", "ዥ": "ዝ", "ይ": "ል"}
 
+# convert other abbreviations to conv file language labels (later make everything agree!)
+LANGUAGES = {'a': 'am', 't': 'ti', 'te': 'tig', 'k': 'gru', 's': 'stv'}
+    
 ### TOP-LEVEL FUNCTIONS
 
-def get_language(lang='am'):
-    if lang in GEEZ_SERA:
+def get_language(lang='am', ipa=False):
+    if lang in LANGUAGES:
+        lang = LANGUAGES[lang]
+    if ipa:
+        if lang in GEEZ_IPA:
+            return GEEZ_IPA[lang]
+        else:
+            conv_path = os.path.join(DATA_DIR, lang + "_conv_ipa.txt")
+            dicts = read_conv(conv_path)
+            GEEZ_IPA[lang] = dicts
+            return dicts
+    elif lang in GEEZ_SERA:
         return GEEZ_SERA[lang]
     else:
         conv_path = os.path.join(DATA_DIR, lang + "_conv_sera.txt")
@@ -114,8 +128,8 @@ def get_language(lang='am'):
         GEEZ_SERA[lang] = dicts
         return dicts
 
-def get_table(lang='am', fromgeez=True):
-    language = get_language(lang)
+def get_table(lang='am', fromgeez=True, ipa=False):
+    language = get_language(lang, ipa=ipa)
     return language[0 if fromgeez else 1]
 
 def geezify_alts(form, lang='am', gemination=True):
@@ -460,8 +474,8 @@ def geezify(form, lang='am', gemination=False, deepenthesize=True, laryngealA=Fa
       sera2geez(get_table(lang, False), form, lang=lang, double2gem=double2gem,
                 gemination=gemination, deepenthesize=deepenthesize, gem_geez=gem_geez)
 
-def romanize(form, lang='am', normalize=True, gemination=False):
-    return geez2sera(get_table(lang, True), form, lang=lang, gemination=gemination, simp=normalize)
+def romanize(form, lang='am', normalize=True, gemination=False, ipa=False, gem2double=False, gemconvert=True):
+    return geez2sera(get_table(lang, True, ipa=ipa), form, lang=lang, gemination=gemination, simp=normalize, ipa=ipa, gem2double=gem2double, gemconvert=gemconvert)
 
 def geezify_root(root, lang='am'):
     """Convert a sequence of root consonants (and other characters
@@ -545,10 +559,11 @@ def root2geez(table, root, lang='am'):
     return res + ROOT_RIGHT
 
 def geez2sera(table, form, lang='am', simp=False, delete='',
-              gemination=False, report_simplification=False):
+              gemination=False, report_simplification=False, ipa=False,
+              gemconvert=False, gem2double=False):
     '''Convert form in Geez to SERA, using translation table.'''
     if not table:
-        table = get_table(lang, True)
+        table = get_table(lang, True, ipa=ipa)
     if form.isdigit():
         if report_simplification:
             return form, []
@@ -588,6 +603,21 @@ def geez2sera(table, form, lang='am', simp=False, delete='',
                     res1 += '_'
             else:
                 res1 += c
+        res = res1
+    if gemconvert and PRE_GEMINATION in res:
+        res1 = ''
+        geminate = False
+        for char in res:
+            if char == PRE_GEMINATION:
+                geminate = True
+            elif geminate:
+                if gem2double:
+                    res1 += char + char
+                else:
+                    res1 += char + ":"
+                geminate = False
+            else:
+                res1 += char
         res = res1
     if report_simplification:
         return res, simplifications
@@ -786,6 +816,9 @@ GEEZ_SERA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_sera.txt'))
 #             'sgw_old': read_conv(os.path.join(DATA_DIR, 'sgw_old_conv_sera.txt')),
 #             'stv': read_conv(os.path.join(DATA_DIR, 'stv_conv_sera.txt'))
 }
+
+GEEZ_IPA = {'am': read_conv(os.path.join(DATA_DIR, 'am_conv_ipa.txt'))
+                }
 
 def geez_alpha(s1, s2, pos1 = 0, pos2 = 0):
     """Comparator function for two strings or lists using Geez order."""

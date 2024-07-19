@@ -56,6 +56,8 @@ class Morphology(dict):
     # Not clear which name is better
     morph_sep = '-'
     seg_sep = '-'
+    # Prefix for feature to include in UD misc field
+    misc_feat = '^'
 
     # Regular expressions for affix files
     pattern = re.compile(r'\s*pat.*:\s+(\w+)\s+(.+)')
@@ -1533,6 +1535,11 @@ class POSMorphology:
         mwe_extra_toks = 0
         mwe_tokens = None
         procdict['nsegs'] = len(real_prefixes) + 1 + len(real_suffixes)
+        procdict['misc'] = []
+        stemmisc = []
+        if not self.language.roman:
+            trans = self.transliterate(token)
+            procdict['misc'].append("Translit={}".format(trans))
         if mwe:
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features or self.mwe_feats
@@ -1560,6 +1567,15 @@ class POSMorphology:
 #            print("!! No udfdict for {}: {}".format(token, string))
             udfdict = udfalts = None
 #        print("$$ udfdict {}, udfalts {}".format(udfdict, udfalts))
+        # Check for misc features in udfdict
+        feat_to_del = []
+        for feat in udfdict:
+            if feat[0] == Morphology.misc_feat:
+#                print(" $$ Found misc feat {}".format(feat))
+                stemmisc.append("{}={}".format(feat[1:], udfdict.get(feat)))
+                feat_to_del.append(feat)
+        for f in feat_to_del:
+            del udfdict[f]
         udfeats = UniMorph.create_UDfeats(udfdict, udfalts)
         procdict['udfeats'] = udfeats
         stemd = None
@@ -1604,10 +1620,11 @@ class POSMorphology:
                     aff_index += 1
             suffixes = post_dicts
             if stemprops:
+                
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, real_stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
-                                         udfeats=udfeats, gemination=gemination,
+                                         udfeats=udfeats, gemination=gemination, misc=stemmisc,
                                          sep_feats=sep_feats, mwe=mwe_props if mwe else None)
                 stemd = stem_dict
         procdict['pre'] = prefixes
@@ -1629,6 +1646,9 @@ class POSMorphology:
         procdict['freq'] = self.get_root_freq(root, lemma, um)
 #        print("^^ process5: prodict {}".format(procdict))
         return procdict
+
+    def transliterate(self, token):
+        return self.language.romanize(token, ipa=True)
 
     def get_root_freq(self, root, lemma, um):
         '''
@@ -1680,7 +1700,7 @@ class POSMorphology:
 
     def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None, mwe_tokens=None,
-                          gemination=True, sep_feats=False, mwe=False):
+                          misc=None, gemination=True, sep_feats=False, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''
@@ -1689,8 +1709,9 @@ class POSMorphology:
             return ''
 #        print("  ^^ Processing morpheme {} (MWE?{}) (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, mwe.__repr__(), aff_index, morpheme, stem_index, udfdict, udfalts))
         is_mwe_part = props.get('mwe', False)
-#        print("^^ Processing morpheme {} ({}); {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE')))
-        dct = {'seg': morpheme if gemination else EES.degeminate(morpheme)}
+        print("^^ Processing morpheme {} ({}); {}; {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE'), gemination))
+        dct = {'seg': EES.elim_bounds(morpheme)}
+#                   morpheme if gemination else EES.degeminate(morpheme, elim_bounds=True)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
         dct['pos'] = pos
         dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
@@ -1702,8 +1723,11 @@ class POSMorphology:
         feats = None
         if sep_feats and udfdict:
             feats = self.get_segment_feats(morpheme, props, udfdict, udfalts)
-        elif is_stem and udfdict:
-            feats = udfeats
+        elif is_stem:
+            if udfdict:
+                feats = udfeats
+            if misc:
+                dct['misc'] = misc
         if feats:
             dct['udfeats'] = feats
         return dct
@@ -1862,7 +1886,7 @@ class POSMorphology:
 #                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
         return dep, head_index
 
-    def postproc5(self, form, gemination=True, elim_bounds=True, unicode=False, gloss=''):
+    def postproc5(self, form, gemination=True, elim_bounds=False, unicode=False, gloss=''):
         '''
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.

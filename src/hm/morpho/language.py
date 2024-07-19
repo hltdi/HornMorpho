@@ -207,6 +207,7 @@ class Language:
                  # Whether gemination is indicated in EES language
                  output_gemination=False,
                  rules=None,
+                 roman=True,
                  citation_separate=True):
 #                 msgs=None, trans=None):
         """
@@ -277,6 +278,8 @@ class Language:
         self.charcombs = None
         # Dict of type ('pos', 'udfeats', 'lemma') and merge possibilities
         self.merges = None
+        # Whether the orthography is roman
+        self.roman = roman
 #        # A tree of multi-word expressions
 #        self.mwe = {}
 #        # Feature normalization
@@ -3710,5 +3713,5 @@ class EESLanguage(EES, Language):
 
     def __init__(self, abbrev, ldir=''):
 #        print("Creating EES language...")
-        Language.__init__(self, abbrev, ldir=ldir)
+        Language.__init__(self, abbrev, ldir=ldir, roman=False)
         EES.__init__(self)

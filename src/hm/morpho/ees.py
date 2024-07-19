@@ -141,6 +141,7 @@ class EES:
         Remove gemination characters froms string (but do not replace MWE space chars //).
         If elim_bounds is True, also drop trailing morpheme boundary characters.
         '''
+#        print("** Degeminating {}; {}".format(string, elim_bounds))
         for char in EES.pre_gem_char + EES.post_gem_chars:
             string = string.replace(char, '')
         if elim_bounds:
@@ -148,6 +149,17 @@ class EES:
                 string = string[1:]
             if string[-1] == EES.morph_sep:
                 string = string[:-1]
+        return string
+
+    @staticmethod
+    def elim_bounds(string):
+        '''
+        Remove trailing morpheme boundaries.
+        '''
+        if string[0] == EES.morph_sep:
+            string = string[1:]
+        if string[-1] == EES.morph_sep:
+            string = string[:-1]
         return string
 
     @staticmethod
@@ -253,6 +265,9 @@ class EES:
         """
         return geezify(lang=self.abbrev, gemination=gemination,
                        deepenthesize=deepenthesize)
+
+    def romanize(self, form, ipa=True):
+        return romanize(form, lang=self.abbrev, ipa=ipa)
 
     ### Verb ውልድ templates
     ### A WPattern is a pattern of occurrences of particular verb ውልድ forms for
