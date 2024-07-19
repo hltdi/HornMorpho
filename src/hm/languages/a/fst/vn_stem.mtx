@@ -1,19 +1,19 @@
 $ neg
-   ኣለ-			[d=ins|inf,+neg]
+   ኣለ-	<ኣለ>	[d=ins|inf,+neg]
    --			[d=ins|inf,-neg];[d=a|m]
 
 $ pre
   # ተስተ- stems, along with +pr
   ->suf		+irr_vn_stem+	[+pr,-irr]
   [d=inf,-irr,pos=N];[d=ins,-irr,pos=N]
-    መ-			[v=0,-pr];[v=p,+pr,a=i,tmp=[3=እ]]
-    መ/-			[v=p,+pr,a=0|a,tmp=[1=X]];[v=p,+pr,a=i,tmp=[1=X]]
-    መ/ተ-			[v=p,+pr,a=i,tmp=[1=እ]];[v=p,+pr,a=0,tmp=[1=እ]]
-    ማ-			[v=a,a=0,-pr];[v=a,a=i,-pr,tmp=[3=እ]]
-    ማ/-			[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
-    ማ/ተ-			[v=a,a=i,tmp=[1=እ],-pr]
-    ማስ-			[v=as,a=0,-pr]
-    ማስተ-			[v=ast,tmp=[1=እ],a=0|i,-pr];[v=ast,a=a,tmp=[1=X],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr]
+    መ-	<መ>	[v=0,-pr];[v=p,+pr,a=i,tmp=[3=እ]]
+    መ/-	<መ/>	[v=p,+pr,a=0|a,tmp=[1=X]];[v=p,+pr,a=i,tmp=[1=X]]
+    መ/ተ-	<መ/ተ>	[v=p,+pr,a=i,tmp=[1=እ]];[v=p,+pr,a=0,tmp=[1=እ]]
+    ማ-	<ማ>		[v=a,a=0,-pr];[v=a,a=i,-pr,tmp=[3=እ]]
+    ማ/-	<ማ/>	[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
+    ማ/ተ-	<ማ/ተ>	[v=a,a=i,tmp=[1=እ],-pr]
+    ማስ-	<ማስ>	[v=as,a=0,-pr]
+    ማስተ-	<ማስተ>	[v=ast,tmp=[1=እ],a=0|i,-pr];[v=ast,a=a,tmp=[1=X],-pr];[v=ast,a=0|i,tmp=[2=እ],-pr]
   [d=m,pos=N,-irr,v=0]
     ኣ/-			[tmp=[1=X]]
     ኣ/ተ-			[tmp=[1=እ]]

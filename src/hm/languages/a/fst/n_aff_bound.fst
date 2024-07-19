@@ -23,7 +23,7 @@ eI2 -> pre2		[:እ]
 # prep before stem-initial consonant or ኢ ኤ ኦ ኡ
 pre1 -> pre2C	[:-]
 pre2C -> pre2C+	[:<]
-pre2C+ -> stem	[**v;*;ኢ;ኤ;ኦ;ኡ]
+pre2C+ -> stem	[**v;*;ኢ;ኤ;ኦ;ኡ;/]
 
 # no prep, start with pre2
 start -> pre2	[:-]

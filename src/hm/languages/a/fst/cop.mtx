@@ -28,15 +28,15 @@ $ stem1
   ና/ችሁ	[p=2,n=2]
   ና/ቸው	[p=3,n=2,-neg]
 
-$ stem_post
-  >
-
 $ neg_suf
   ም		[+neg,-sub]
   --
 
-$ neg_suf_bound
-  -
+$ stem_post
+  >
+
+#$ neg_suf_bound
+#  -
 
 $ conj
   /ና		[cnj2=ና]
@@ -45,4 +45,4 @@ $ conj
   --		[cnj2=0]
 
 $ end
-  --		[pos=COP, lemma=ነው,t=prs]
+  --		[pos=V,xpos=COP,lemma=ነው,t=prs]

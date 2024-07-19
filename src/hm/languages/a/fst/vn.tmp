@@ -77,6 +77,8 @@ $ d=a|inf|ins|m
 %%a=0,c=A,-strong
 
 %1=እ
+!! v=a
+!! v=test
 [d=inf|ins,v=0|p]
 ኣ	*e	*
 
@@ -90,6 +92,8 @@ $ d=a|inf|ins|m
 ኣ	*:a	*
 
 %1=እ,3=ይ
+!! v=a
+!! v=test
 [d=ins,v=0|p]
 ኣ	*	-
 
@@ -109,6 +113,8 @@ $ d=a|inf|ins|m
 ኣ	*:	-
 
 %1=እ,3=እ
+!! v=a
+!! v=test
 [d=ins,v=0|p]
 ኣ	*	-
 
@@ -149,6 +155,7 @@ $ d=a|inf|ins|m
 *a	-	*
 
 %3=እ
+!! v=ast
 [d=a|ins,v=p]
 [d=a,v=0]
 ^e	*	-
@@ -170,7 +177,8 @@ $ d=a|inf|ins|m
 ^e	*:a		ት
 
 %3=ይ
-
+!! v=ast
+!! v=test
 [d=a|ins,v=p]
 [d=a,v=0]
 ^e	*	-
@@ -194,6 +202,8 @@ $ d=a|inf|ins|m
 %%a=0,c=B,-strong
 
 %1=እ
+!! v=a
+!! v=ast
 [d=inf|ins,v=p]
 ኣ	*e	*
 
@@ -218,6 +228,7 @@ $ d=a|inf|ins|m
 ^e	*:a		ት
 
 %3=ይ
+!! v=ast
 [d=ins,v=p]
 ^e	*	-
 
@@ -233,6 +244,7 @@ $ d=a|inf|ins|m
 
 %%a=0,c=C,-strong
 %3=እ
+!! v=ast
 [d=a|ins]
 ^a	*	-
 
@@ -240,6 +252,7 @@ $ d=a|inf|ins|m
 ^a	*a		ት
 
 %3=ይ
+!! v=ast
 [d=a|ins]
 *a	*	-
 
@@ -248,6 +261,8 @@ $ d=a|inf|ins|m
 
 %%a=0,c=E,-strong
 %1=እ
+!! v=a
+!! v = ast
 [d=inf|ins,v=0]
 ኣ	*	*e	*
 
@@ -364,6 +379,7 @@ $ d=a|inf|ins|m
 
 %%a=a,c=B,-strong
 %3=እ
+!! v=ast
 [d=inf|ins,v=p|a]
 ^a	*	-
 
@@ -371,6 +387,7 @@ $ d=a|inf|ins|m
 ^a	*a	ት
 
 %3=ይ
+!! v=ast
 [d=inf|ins,v=p|a]
 ^a	*	-
 
@@ -423,10 +440,12 @@ $ d=a|inf|ins|m
 %%a=i,c=A,-strong
 
 %2=ው
+!! v=as
 [d=inf|ins|a|m]
 *Wa	*Wa	-	*
 
 %2=ይ
+!! v=as
 [d=inf|ins|a|m]
 ^Ya	^Ya	-	*
 
@@ -437,10 +456,12 @@ $ d=a|inf|ins|m
 ~Ya	~Yi	ያ	*
 
 %2=እ
+!! v=as
 [d=ins|inf|a|m]
 ^a	^a	-	*
 
 %1=እ
+!! v=as
 # ማዳደር
 [d=ins|inf,v=0]
 ኣ	*a	*e	*
@@ -459,6 +480,7 @@ $ d=a|inf|ins|m
 -	*a	*a	*
 
 %3=እ
+!! v=as
 [d=ins|a|m]
 ^e	*a	*	-
 
@@ -470,6 +492,7 @@ $ d=a|inf|ins|m
 **	*a	*a	ት
 
 %3=ይ
+!! v=as
 [d=ins|a|m]
 ^e	*a	*	-
 
@@ -491,6 +514,7 @@ $ d=a|inf|ins|m
 -	*a	*a	ት
 
 %1=እ,3=ይ
+!! v=as
 [d=ins|a,v=0]
 ኣ	*a	*	-
 
@@ -520,6 +544,7 @@ $ d=a|inf|ins|m
 %%a=i,c=E,-strong
 
 %1=እ
+!! v=as
 [d=inf|ins,v=0]
 ኣ	^e	^a	^e	*
 
@@ -534,6 +559,7 @@ $ d=a|inf|ins|m
 -	^e	^a	^a	*
 
 %4=እ
+!! v=as
 [d=a|ins|m]
 ^e	^e	*a	*	-
 
@@ -541,6 +567,7 @@ $ d=a|inf|ins|m
 ^e	^e	*a	*a	ት
 
 %4=ይ
+!! v=as
 [d=a|ins|m]
 ^e	^e	*a	*	-
 
@@ -548,6 +575,7 @@ $ d=a|inf|ins|m
 ^e	^e	*a	*e	ት
 
 %2=እ,4=እ
+!! v=as
 # መበባባት
 [d=ins|a|m]
 ^e	^a	-	*	-

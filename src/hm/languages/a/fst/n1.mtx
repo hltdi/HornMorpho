@@ -28,7 +28,7 @@ $ stem
   +n_place+		[pos=PROPN,-pl,p=0,d=0]
   >>vn_stem<<
   +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0]
-  +prep_n+		[pos=PRON|ADJ,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0,d=0]
+  +prep_n+		[pos=PRONADJ,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0,d=0]
   +irr_plr+		[+pl,+irr,d=0]
 
 $ poststem
