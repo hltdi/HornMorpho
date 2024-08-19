@@ -200,10 +200,19 @@ $$ L እ|ሕ|ዕ|ህ
 [v=at,t=p]
 *e	*e	*
 
-[v=0,t=p,sp=3]
-[v=0,t=i,+vsuf]
-[v=at,t=i|j]
+[v=0,t=p,sp=3,-dup23]
+[v=0,t=i,+vsuf,op=0|1|2,-dup23]
+[v=0,t=i,+vsuf,op=3,sn=2,sg=f,-dup23]
+[v=0,t=i,-vsuf,op=1|2,-dup23]
+[v=at,t=i|j,-dup23]
 *e	*	*
+
+[v=0,t=p,sp=3,+dup23]
+[v=0,t=i,+vsuf,op=0|1|2,+dup23]
+[v=0,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+[v=0,t=i,-vsuf,op=1|2,+dup23]
+[v=at,t=i|j,+dup23]
+*e	*:	-
 
 [v=0,t=i,-vsuf]
 *e	*:	*
@@ -217,13 +226,6 @@ $$ L እ|ሕ|ዕ|ህ
 
 [v=p]
 *e	*e:	*
-
-#[v=a,t=p]
-## ዓረገ with no a- voice prefix
-#*a	*e	*
-
-#[v=a,t=i|j]
-#*a	*	*
 
 %2=L
 

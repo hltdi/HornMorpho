@@ -313,7 +313,7 @@ class Morphology(dict):
 
     def get_root_freq(self, root, anal):
         rv = self.root_fv(root, anal)
-        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
+#        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
         if self.root_freqs:
             return self.root_freqs.get(rv, 0)
         return 50
@@ -1471,7 +1471,7 @@ class POSMorphology:
         if kwargs.get('mwe', False):
             premwe = postmwe = mwe_part = None
             string.replace(Morphology.mwe_sep, ' ')
-            if pos in ('N', 'PROPN'):
+            if pos in ('N', 'PROPN', 'ADJ', 'NADJ'):
                 match = POSMorphology.segment_n_mwe_re.match(string)
                 if match:
                     pre, mwe_part, stem, suf = match.groups()
@@ -1485,7 +1485,7 @@ class POSMorphology:
             mwe_part = mwe_part or premwe or postmwe
             if mwe_part:
                 mwe_part = mwe_part.strip()
-#            print(" ** pre {}; suf {}".format(pre, suf))
+#            print(" ** pre {}; suf {}; mwe_part {}".format(pre, suf, mwe_part))
         else:
 #            print(' **string {}'.format(string))
             match = POSMorphology.segment_re.match(string)
@@ -1565,9 +1565,9 @@ class POSMorphology:
             udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True)
         else:
 #            print("!! No udfdict for {}: {}".format(token, string))
-            udfdict = udfalts = None
+            udfdict = udfalts = []
 #        print("$$ udfdict {}, udfalts {}".format(udfdict, udfalts))
-        # Check for misc features in udfdict
+        # Check for misc features in udfdict; add to stem 'misc' field
         feat_to_del = []
         for feat in udfdict:
             if feat[0] == Morphology.misc_feat:
@@ -1620,7 +1620,6 @@ class POSMorphology:
                     aff_index += 1
             suffixes = post_dicts
             if stemprops:
-                
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, real_stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
@@ -1629,7 +1628,7 @@ class POSMorphology:
                 stemd = stem_dict
         procdict['pre'] = prefixes
         procdict['suf'] = suffixes
-        procdict['stem'] = stemd or stem
+        procdict['stem'] = stemd or {'seg': stem, 'pos': procdict['pos']}
         procdict['head'] = stem_index
         root = self.get_root(stem, procdict, mwe=mwe_props, mwe_part=mwe_part)
         lemma = self.gen_lemma(stem, root, features, mwe=mwe_props, gemination=gemination, mwe_part=mwe_part)
@@ -1642,6 +1641,10 @@ class POSMorphology:
         if 'gl' in features:
             procdict['gloss'] = features['gl']
         procdict['lemma'] = lemma
+        if lemma and root and stemd and lemma != root:
+            if 'misc' not in stemd:
+                stemd['misc'] = []
+            stemd['misc'].append("root={}".format(root))
         # Find the frequency
         procdict['freq'] = self.get_root_freq(root, lemma, um)
 #        print("^^ process5: prodict {}".format(procdict))
@@ -1707,9 +1710,8 @@ class POSMorphology:
         if not morpheme:
             # the morpheme could be the empty string
             return ''
-#        print("  ^^ Processing morpheme {} (MWE?{}) (real i: {}): {} (stem i: {}, udfdict: {}, udfalts: {})".format(index, mwe.__repr__(), aff_index, morpheme, stem_index, udfdict, udfalts))
         is_mwe_part = props.get('mwe', False)
-        print("^^ Processing morpheme {} ({}); {}; {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE'), gemination))
+#        print("^^ Processing morpheme {} ({}); {}; {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE'), gemination))
         dct = {'seg': EES.elim_bounds(morpheme)}
 #                   morpheme if gemination else EES.degeminate(morpheme, elim_bounds=True)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
@@ -1736,8 +1738,9 @@ class POSMorphology:
         '''
         For MWEs, mwe is a dict of properties.
         '''
-#        print("** Getting root {} {}".format(mwe, mwe_part))
+#        print("** Getting root {} {}".format(mwe.__repr__(), mwe_part))
         features = procdict['feats']
+#        print("**  features {}".format(features.__repr__()))
         rootfromfeats = features.get('root', stem)
         if not mwe:
             return rootfromfeats
@@ -1748,6 +1751,9 @@ class POSMorphology:
             # rootfeats should be a list of elements to make up the root
             # separated by whitespace
             mweroot = []
+            if isinstance(rootfeats, str):
+                # This is just the root
+                return rootfeats
             for item in rootfeats:
                 # Each 'item' is a tuple: (part, position) or 'root'
                 if isinstance(item, tuple):

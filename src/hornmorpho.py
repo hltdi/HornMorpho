@@ -40,6 +40,29 @@ TI_SKIP = \
 
 TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
 
+## Fixing treebanks
+
+def translit(path):
+    from conllu import parse
+    file = open(path, 'r', encoding='utf8')
+    data = parse(file.read())
+    for sent in data:
+        mwe_range = []
+        for word in sent:
+            id = word['id']
+            if isinstance(id, tuple):
+                mwe_range = id[0], id[2]
+                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], ipa=True))
+            elif word['upos'] != 'PUNCT' and (not mwe_range or id > mwe_range[1]):
+                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], ipa=True))
+    return data
+
+def write_ud(data, path):
+    with open(path, 'w', encoding='utf8') as file:
+        for sentence in data:
+            string = sentence.serialize()
+            print(string, file= file, end='')
+
 ## New Tigre entries
 
 def te_dups():
@@ -79,17 +102,7 @@ def gzip(file=''):
 
 def down():
     url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/a_vpkl.gz"
-#    "https://drive.google.com/drive/folders/1NNTl8TWYPJEYWoEXznutZEd6JSjRaxIk"
-#    "https://drive.google.com/file/d/1LajxOKxDyHiNM2Vgex7u8QvLj0a_foUx/view?usp=sharing"
-#    "https://drive.google.com/file/d/1h36AHBY6xqzaR9zY83cySE_ZfbMJtFvF/view?usp=sharing"
-#    ssl._create_default_https_context = ssl._create_unverified_context
     with hm.morpho.requests.get(url, stream=True) as response:
-#        content = response.raw.read()
-#        print(len(content))
-#        return response.headers
-#        return response.raw.read(100)
-#    request.urlopen(request.Request(url), timeout=100.0) as response:
-#    with hm.morpho.requests.get(, stream=True) as r:
         with open("../../../../Downloads/avpkl.gz", 'wb') as file:
             file.write(response.raw.read())
 
@@ -115,6 +128,9 @@ def ti_refcorp(language='t', path='../../EES-Res/data/tir/ti_ref.txt',
 #    hm.write_conllu(corpus=c, path=writepath)
     return c
 
+### ti_morph and am_morph analyze corpora, saving particular properties
+### and writing the results to path
+
 def ti_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
                           path="data/ti_classes.txt", cache=None, corpus=None):
     c = hm.anal_corpus(
@@ -137,7 +153,8 @@ def ti_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
     return c
 
 def am_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
-                          path="data/am_classes.txt", cache=None, corpus=None):
+                          path="data/am_classes.txt", cache=None, corpus=None, write_mode='a',
+                          report_freq=100, print_sentence=False):
     c = hm.anal_corpus(
         'a',
         path="../../TAFS/datasets/CACO/CACO.txt",
@@ -148,12 +165,14 @@ def am_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
         local_cache=cache,
         corpus=corpus,
         timeit=timeit,
+        report_freq=report_freq,
+        print_sentence=print_sentence,
         verbosity=verbosity
         )
     if file:
         c.write_props(file, start=c.start)
     elif path:
-        with open(path, 'a', encoding='utf8') as file:
+        with open(path, write_mode, encoding='utf8') as file:
             c.write_props(file, start=c.start)
     return c
 
@@ -542,111 +561,7 @@ def time(code, times=1):
     import timeit
     return timeit.timeit(code, number=times)
 
-## Analyzing a word type corpus.
-## Each line is count, word
 WORD_CORPUS = "../../../../Projects/LingData/Am/Crawl/all.txt"
-##def word_corpus(report_freq=100, start=0, n=10000, corpus=None):
-##    corpus = corpus or []
-##    with open(WORD_CORPUS, encoding='utf8') as file:
-##        linen = start
-##        lines = file.readlines()[start:start+n]
-##        for line in lines:
-##            count, word = line.split()
-##            count = int(count)
-##            if count == 1:
-##                break
-##            analyses = hm.anal_word('amh', word, um=2, phonetic=False)
-##            if analyses:
-##                anals = []
-##                for analysis in analyses:
-##                    pos = analysis.get('POS', '')
-##                    root = analysis.get('root', '')
-##                    if '|' in root:
-##                        root = root.split('|')[0]
-##                    gram = analysis.get('gram', '')
-##                    anals.append("{}.{}.{}".format(pos, root, gram))
-##                analyses = "|".join(anals)
-##                corpus.append((count, word, analyses))
-##            linen += 1
-##            if linen % report_freq == 0:
-##                print("Analyzed {} words".format(linen))
-##    return corpus
-
-##def verb_corpus(report_freq=1000, start=0, n=10000, corpus=[]):
-##    amh = get_lang('amh', guess=False, experimental=False, segment=False)
-##    with open(WORD_CORPUS, encoding='utf8') as file:
-##        linen = start
-##        lines = file.readlines()[start:start+n]
-##        for line in lines:
-##            count, word = line.split()
-##            count = int(count)
-##            if count == 1:
-##                break
-##            analyses = hm.anal_word('amh', word, um=0, phonetic=False, simplify=False)
-##            anals = []
-##            if analyses:
-##                for analysis in analyses:
-##                    pos = analysis.get('POS', '')
-##                    if pos != 'v':
-##                        continue
-##                    root = analysis.get('root')
-##                    if not root:
-##                        continue
-##                    gram = analysis.get('gram')
-##                    if not gram:
-##                        continue
-##                    asp = gram.get('as', 'smp')
-##                    if asp == 'smp':
-##                        asp = 0
-##                    vc = gram.get('vc', 'smp')
-##                    if vc == 'smp':
-##                        vc = 0
-##                    sbj = gram.get('sb')
-##                    sbj = simplify_sbj(sbj)
-##                    obj = gram.get('ob')
-##                    obj = simplify_obj(obj)
-##                    anals.append("{}::{}:{}:{}:{}".format(root, asp, vc, sbj, obj))
-##            if anals:
-##                anals = ';;'.join(anals)
-##                corpus.append("{} {} {}".format(count, word, anals))
-##            linen += 1
-##            if linen % report_freq == 0:
-##                print("Analyzed {} words".format(linen))
-##
-##def simplify_sbj(feats):
-##    if not feats:
-##        return ''
-##    person = feats.get('p1', False), feats.get('p2', False)
-##    person = 1 if person[0] else (2 if person[1] else 3)
-##    number = feats.get('plr', False)
-##    number= 'p' if number else 's'
-##    gender = ''
-##    if number == 's' and person != 1:
-##        gender = feats.get('fem', False)
-##        gender = 'f' if gender else 'm'
-##    return "{}{}{}".format(person, number, gender)
-##
-##def simplify_obj(feats):
-##    if not feats:
-##        return ''
-##    expl = feats.get('expl')
-##    if not expl:
-##        return ''
-##    person = feats.get('p1', False), feats.get('p2', False)
-##    person = 1 if person[0] else (2 if person[1] else 3)
-##    number = feats.get('plr', False)
-##    number= 'p' if number else 's'
-##    gender = ''
-##    if number == 's' and person != 1:
-##        gender = feats.get('fem', False)
-##        gender = 'f' if gender else 'm'
-##    prep = 'A'
-##    if feats.get('prp'):
-##        if feats.get('l'):
-##            prep = 'B'
-##        else:
-##            prep = 'M'
-##    return "{}{}{}{}".format(person, number, gender,prep)
 
 ## shortcuts
 FS = hm.morpho.FeatStruct

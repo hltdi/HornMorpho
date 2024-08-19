@@ -60,6 +60,7 @@ class Corpus():
                  report_freq=100,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
+                 print_sentence=False,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -128,8 +129,8 @@ class Corpus():
                         label = line[1:].strip()
                         linepos += 1
                         continue
-#                    if verbosity:
-#                        print("  $$ {}".format(line))
+                    if print_sentence:
+                        print("$$ {}".format(line))
                     if sentcount and sentcount % report_freq == 0:
                         print("Analyzed {} sentences".format(sentcount))
                     linepos += 1

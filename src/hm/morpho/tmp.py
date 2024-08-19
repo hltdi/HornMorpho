@@ -70,6 +70,8 @@ class Template:
                 feats.append("{}={}".format(i+1, constraints[i+1]))
             else:
                 feats.append("{}=X".format(i+1))
+        for i in range(templength, 5):
+            feats.append("{}=0".format(i+1))
 #        print("  ** {}".format(feats))
         return ','.join(feats)
 
@@ -198,6 +200,7 @@ class Template:
             constraints = "{},{},tmp=[{}]".format(mainconstraint, weakconstraint, template_feats)
             for i, feature in enumerate(features):
                 features[i] = "{},{}]".format(feature[:-1], constraints)
+#            print("  ** features {}".format(features))
 
         features = ';'.join(features)
 #        if 'a=i' in constraints:
@@ -316,7 +319,7 @@ class Template:
                                     weak_matched = True
                                     break
                             if not weak_matched:
-                                print("  ** creating template for {}; {}; {}".format(subclass, weak_subclass_constraints, new_weak_feats.__repr__()))
+#                                print("  ** creating template for {}; {}; {}".format(subclass, weak_subclass_constraints, new_weak_feats.__repr__()))
                                 # Pick first template for this feature set for the weak subclass
                                 if not skip:
                                     for template in templates:

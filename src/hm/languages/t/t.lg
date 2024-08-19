@@ -61,7 +61,8 @@ feats:
       {'name': 'conj1',\
         'pos':{'ዝ':'SCONJ','እ': 'SCONJ', 'ክ':'SCONJ','እንክ': 'SCONJ', 'ምስ': 'SCONJ', 'እና': 'SCONJ',\
                        'ም': 'SCONJ', 'እንዳ': 'SCONJ', 'ንኽ': 'SCONJ', 'ድ': 'CCONJ',\
-		       'እንተ': 'SCONJ', 'እንተዝ': 'SCONJ', 'እንተዘይ': 'SCONJ', 'ከምዝ': 'CCONJ', 'ከምዘይ': 'CCONJ', 'ስለዝ': 'SCONJ', 'ስለዘይ': 'SCONJ',\
+		       'እንተ': 'SCONJ', 'እንተዝ': 'SCONJ', 'እንተዘይ': 'SCONJ', 'ከምዝ': 'CCONJ',\
+                       'ከምዘይ': 'CCONJ', 'ስለዝ': 'SCONJ', 'ስለዘይ': 'SCONJ', 'እንተይ': 'SCONJ',\
 		       'ኣይ': 'SCONJ', 'ዘይ': 'SCONJ', 'ከይ': 'SCONJ', 'እንከይ': 'SCONJ', 'ኣይም': 'SCONJ', 'ንኸይ': 'SCONJ', 'ደይ': 'CCONJ'},\
         'dep': 'mark', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:m', 'feats': ['Person', 'Number', 'Gender']};;

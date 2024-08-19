@@ -200,12 +200,21 @@ $$ L እ|ሕ|ዕ|ህ
 [v=at,t=p]
 *e	*e	*
 
-[v=0,t=p,sp=3]
-[v=0,t=i,+vsuf]
-[v=at,t=i|j]
+[v=0,t=p,sp=3,-dup23]
+[v=0,t=i,+vsuf,-dup23]
+[v=at,t=i|j,-dup23]
 *e	*	*
 
+[v=0,t=p,sp=3,+dup23]
+[v=0,t=i,+vsuf,op=0|1|2,+dup23]
+[v=0,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+[v=0,t=i,-vsuf,op=1|2,+dup23]
+[v=at,t=i|j,+dup23]
+*e	*:	-
+
 [v=0,t=i,-vsuf]
+[v=0,t=i,+vsuf,op=3,sn=1]
+[v=0,t=i,+vsuf,op=3,sn=2,sg=m]
 *e	*:	*
 
 [v=0,t=j,sp=2|3]
@@ -217,13 +226,6 @@ $$ L እ|ሕ|ዕ|ህ
 
 [v=p]
 *e	*e:	*
-
-#[v=a,t=p]
-## ዓረገ with no a- voice prefix
-#*a	*e	*
-
-#[v=a,t=i|j]
-#*a	*	*
 
 %2=L
 
@@ -275,7 +277,37 @@ $$ L እ|ሕ|ዕ|ህ
 
 %1=ው
 
-[v=0,t=j,-imp]
+[v=0,t=p,sp=1|2]
+*e	*e	*
+
+[v=0,t=p,sp=3,-dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,-dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,-dup23]
+[v=0|a,t=i,-vsuf,op=1|2,-dup23]
+*e	*	*
+
+[v=0,t=p,sp=3,+dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,+dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+[v=0|a,t=i,-vsuf,op=1|2,+dup23]
+*e	*:	-
+
+[v=a|at,t=p]
+*	*e	*
+
+[v=0|a,t=i,-vsuf]
+[v=0|a,t=i,+vsuf,op=3,sn=1]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=m]
+*e	*:	*
+
+[v=p]
+*e	*e:	*
+
+[v=a,t=j]
+[v=at,t=i|j]
+*	*	*
+
+[v=0,t=j,-imp,r1=ው]
 ኢ	*e	*
 
 # ውረድ
@@ -283,23 +315,55 @@ $$ L እ|ሕ|ዕ|ህ
 *	*e	*
 
 # ረድ
-[v=0,t=j,+imp]
+[v=0,t=j,+imp,r1=ው]
 -	*e	*
 
 %1=ይ
 
-[v=0,t=j,-imp]
+[v=0,t=j,-imp,r1=ይ]
 ኢ	*e	*
 
 [v=0,t=j,+imp]
 *	*e	*
 
+# copy everything else
+
+[v=0,t=p,sp=1|2]
+*e	*e	*
+
+[v=0,t=p,sp=3,-dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,-dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,-dup23]
+[v=0|a,t=i,-vsuf,op=1|2,-dup23]
+*e	*	*
+
+[v=0,t=p,sp=3,+dup23]
+[v=0|a,t=i,+vsuf,op=0|1|2,+dup23]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=f,+dup23]
+[v=0|a,t=i,-vsuf,op=1|2,+dup23]
+*e	*:	-
+
+[v=a|at,t=p]
+*	*e	*
+
+[v=0|a,t=i,-vsuf]
+[v=0|a,t=i,+vsuf,op=3,sn=1]
+[v=0|a,t=i,+vsuf,op=3,sn=2,sg=m]
+*e	*:	*
+
+[v=p]
+*e	*e:	*
+
+[v=a,t=j]
+[v=at,t=i|j]
+*	*	*
+
 %2=ው
 
-[v=0|a,t=p,sp=3]
+[v=0|a,t=p,sp=3,r2=ው]
 *o	-	*
 
-[v=0|a,t=p,sp=1|2]
+[v=0|a,t=p,sp=1|2,r2=ው]
 *	-	*
 
 [v=p]
@@ -308,7 +372,7 @@ $$ L እ|ሕ|ዕ|ህ
 [v=0|a,t=i]
 *e	ው	*
 
-[v=0|a,t=j]
+[v=0|a,t=j,r2=ው]
 *u	-	*
 
 [v=at,t=p]
@@ -319,10 +383,10 @@ $$ L እ|ሕ|ዕ|ህ
 
 %2=ይ
 
-[v=0|a,t=p,sp=3]
+[v=0|a,t=p,sp=3,r2=ይ]
 *E	-	*
 
-[v=0|a,t=p,sp=1|2]
+[v=0|a,t=p,sp=1|2,r2=ይ]
 *	-	*
 
 [v=p]
@@ -331,7 +395,7 @@ $$ L እ|ሕ|ዕ|ህ
 [v=0|a,t=i]
 *e	ይ	*
 
-[v=0|a,t=j]
+[v=0|a,t=j,r2=ይ]
 *i	-	*
 
 [v=at,t=p]
@@ -343,49 +407,116 @@ $$ L እ|ሕ|ዕ|ህ
 %3=ው
 # also ይ
 
-# ወደ
-[v=0,t=p,sp=3,sn=1,sg=m]
-[v=0,t=p,sp=3,sn=2]
+# ሸቀ
+[v=0,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=0,t=p,sp=3,sn=2,r3=ው]
 *e	*	-
 
-# ወዴኮ ወዴት
-[v=0,t=p,sp=1|2]
-[v=0,t=p,sp=3,sn=1,sg=f]
+# ሸቄኮ ሸቄት
+[v=0,t=p,sp=1|2,r3=ው]
+[v=0,t=p,sp=3,sn=1,sg=f,r3=ው]
 *e	*E	-
 
 # all imperf forms except pl fem
-[v=0,t=i,-f2suf]
-[v=p,t=i,sp=1]
-[v=p,t=i,sp=2|3,sn=1,sg=m]
+[v=0|a,t=i,-f2suf,r3=ው]
+[v=p,t=i,sp=1,r3=ው]
+[v=p,t=i,sp=2|3,sn=1,sg=m,r3=ው]
 *e	*E:	-
 
-[v=0,t=i,sp=2|3,sn=2,sg=f]
+[v=0|a,t=i,sp=2|3,sn=2,sg=f,r3=ው]
 *e	*	ይ
 
 # all jussive forms without suffixes
 [v=0|a|at,t=j,-vsuf]
 # could vary with suffixes
-[v=at,t=i]
-[v=a,t=p,sp=1|2]
-[v=a,t=p,sp=3,sn=1,sg=f]
+[v=at,t=i,r3=ው]
+[v=a,t=p,sp=1|2,r3=ው]
+[v=a,t=p,sp=3,sn=1,sg=f,r3=ው]
 *	*E	-
 
 # jussive forms with suffixes
-[v=0|a,t=j,sp=2,sn=1,sg=f]
-[v=0|a,t=j,sp=2|3,sn=2,sg=m]
+[v=0|a,t=j,sp=2,sn=1,sg=f,r3=ው]
+[v=0|a,t=j,sp=2|3,sn=2,sg=m,r3=ው]
 *	*e	-
 
-[v=0|a,t=j,sp=2|3,sn=2,sg=f]
+[v=0|a,t=j,sp=2|3,sn=2,sg=f,r3=ው]
 *	*e	ይ
 
-[v=a,t=p,sp=3,sn=1,sg=m]
-[v=a,t=p,sp=3,sn=2]
-[v=at,t=p]
+[v=a,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=a,t=p,sp=3,sn=2,r3=ው]
+[v=at,t=p,r3=ው]
 *	*	-
 
-[v=p,t=p]
-[v=p,t=i,sp=2,sn=1,sg=f]
-[v=p,t=i,sn=2]
+[v=p,t=p,r3=ው]
+[v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
+[v=p,t=i,sn=2,r3=ው]
+*e	*e:	-
+
+%1=ው,3=ው
+# Combine features from 1=ው and 3=ው
+
+# ወደ
+[v=0,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=0,t=p,sp=3,sn=2,r3=ው]
+*e	*	-
+
+# ወዴኮ ወዴት
+[v=0,t=p,sp=1|2,r3=ው]
+[v=0,t=p,sp=3,sn=1,sg=f,r3=ው]
+*e	*E	-
+
+# all imperf forms except pl fem
+[v=0,t=i,-f2suf,r3=ው]
+[v=p,t=i,sp=1,r3=ው]
+[v=p,t=i,sp=2|3,sn=1,sg=m,r3=ው]
+*e	*E:	-
+
+[v=0|a,t=i,sp=2|3,sn=2,sg=f,r3=ው]
+*e	*	ይ
+
+# jussive forms without suffixes
+[v=0|a|at,t=j,-vsuf,r1=ው,r3=ው,-imp]
+[v=at,t=i,r1=ው,r3=ው,-imp]
+[v=a,t=p,sp=1|2,r1=ው,r3=ው,-imp]
+[v=a,t=p,sp=3,sn=1,sg=f,r1=ው,r3=ው,-imp]
+ኢ	*E	-
+
+[v=0|a|at,t=j,-vsuf,r1=ው,r3=ው,+imp]
+[v=at,t=i,r1=ው,r3=ው,+imp]
+[v=a,t=p,r1=ው,r3=ው,+imp]
+-	*E	-
+
+# jussive forms with suffixes
+[v=0|a,t=j,sp=2,sn=1,sg=f,r1=ው,r3=ው,-imp]
+[v=0|a,t=j,sp=2|3,sn=2,sg=m,r1=ው,r3=ው,-imp]
+ኢ	*e	-
+
+# 2 alternatives for imperative
+[v=0|a,t=j,sp=2,sn=1,sg=f,r1=ው,r3=ው,+imp]
+[v=0|a,t=j,sp=2,sn=2,sg=m,r1=ው,r3=ው,+imp]
+-	*e	-
+
+[v=0|a,t=j,sp=2,sn=1,sg=f,r1=ው,r3=ው,+imp]
+[v=0|a,t=j,sp=2,sn=2,sg=m,r1=ው,r3=ው,+imp]
+ው	*e	-
+
+[v=0|a,t=j,sp=2|3,sn=2,sg=f,r3=ው,-imp]
+ኢ	*e	ይ
+
+[v=0|a,t=j,sp=2|3,sn=2,sg=f,r3=ው,+imp]
+-	*e	ይ
+
+[v=0|a,t=j,sp=2|3,sn=2,sg=f,r3=ው,+imp]
+ው	*e	ይ
+
+[v=a,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=a,t=p,sp=3,sn=2,r3=ው]
+[v=at,t=p,r3=ው]
+*	*	-
+
+[v=p,t=p,r3=ው]
+[v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
+[v=p,t=i,sn=2,r3=ው]
 *e	*e:	-
 
 %%a=0,c=B,-strong
@@ -407,21 +538,21 @@ $$ L እ|ሕ|ዕ|ህ
 # not sure about a- at-
 
 # ፈ/ሰ
-[v=0,t=p,sp=3,sn=1,sg=m]
-[v=0,t=p,sp=3,sn=2]
+[v=0,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=0,t=p,sp=3,sn=2,r3=ው]
 *e	*:	-
 
 # ፈ/ሴኮ
 # what about 3fp impf?
-[v=0,t=p,sp=1|2]
-[v=0,t=p,sp=3,sn=1,sg=f]
-[v=0,t=i|j]
-[v=p,t=i|j]
+[v=0,t=p,sp=1|2,r3=ው]
+[v=0,t=p,sp=3,sn=1,sg=f,r3=ው]
+[v=0,t=i|j,r3=ው]
+[v=p,t=i|j,r3=ው]
 *e	*E:	-
 
-[v=p,t=p]
-[v=p,t=i,sp=2,sn=1,sg=f]
-[v=p,t=i,sn=2]
+[v=p,t=p,r3=ው]
+[v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
+[v=p,t=i,sn=2,r3=ው]
 *e	*e:	-
 
 %%a=a,c=A,-strong
@@ -440,14 +571,23 @@ $$ L እ|ሕ|ዕ|ህ
 %4=ው
 
 # ፈንት
-[v=0,t=p]
+[v=0|a,t=p,r4=ው]
+[v=p,r4=ው]
 *e	*	*	-
 
 # ፈንቴ
-[v=0,t=i|j,sp=1]
-[v=0,t=i|j,sp=2|3,sn=1]
-[v=0,t=i|j,sp=2|3,sg=m]
+[v=0|a,t=i|j,sp=1,r4=ው]
+[v=0|a,t=i|j,sp=2|3,sn=1,r4=ው]
+[v=0|a,t=i|j,sp=2|3,sg=m,r4=ው]
 *e	*	*E	-
 
-[v=0,t=i|j,sp=2|3,sn=2,sg=f]
+[v=0|a,t=i|j,sp=2|3,sn=2,sg=f,r4=ው]
 *e	*	*	ይ
+
+%1=L
+[v=0|a,t=p]
+[v=p]
+*e	*	*e	*
+
+[v=0|a,t=i|j]
+*e	*	*	*

@@ -1765,7 +1765,8 @@ class Language:
             return {'pos': 'PUNCT', 'token': token, 'nsegs': 1}
         if abb := self.morphology.get_abbrev(token):
             expansion, pos = abb
-            return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'tokens': expansion.split()}
+            tokens = expansion.split()
+            return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'tokens': tokens, 'nsegs': 1}
         if self.morphology.is_abbrev(token):
             return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'nsegs': 1}
         numeral = self.morphology.match_numeral(token)
@@ -1822,6 +1823,8 @@ class Language:
                     if token in skip:
                         continue
                 anal1 = self.analyze(token, **kwargs)
+                if not isinstance(anal1, Word):
+                    print("*** Analysis of {} is not a Word!".format(token))
                 sentobj.add_word5(anal1, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
@@ -1844,6 +1847,8 @@ class Language:
             analyses = self.analyze(words, **kwargs)
             if analyses.is_known():
 #                print("** analyses {}".format(analyses))
+                if not isinstance(analyses, Word):
+                    print("*** Analysis of {} is not a Word!".format(tokens))
                 sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
 #                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1
@@ -1863,6 +1868,8 @@ class Language:
         # For now just try single-word tokens.
         for token in tokens:
             wordobj = self.analyze(token, **kwargs)
+            if not isinstance(wordobj, Word):
+                print("*** Analysis of {} is not a Word!".format(token))
             sentobj.add_word5(wordobj, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
@@ -1891,6 +1898,8 @@ class Language:
                 kwargs['mwe'] = True
                 analyses = self.analyze(words, **kwargs)
                 if analyses:
+                    if not isinstance(analyses, Word):
+                        print("*** Analysis of {} is not a Word!".format(words))
                     sent_obj.add_word5(analyses, unsegment=kwargs.get('unsegment', False))
                     print("  ** Success: {}".format(analyses[0]))
                     w_index += 2
