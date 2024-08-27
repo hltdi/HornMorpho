@@ -73,6 +73,7 @@ def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, mwe=Fa
     any_out = False
     fs_cont = False
     word, out, dst, feats = None, None, None, None
+#    print("..&& treeifying {}".format(path))
     for line in infile:
         line = line.split('#')[0].strip() # strip comments
         if line:
@@ -100,6 +101,7 @@ def treeify_file(path, chars=[], seg_units=[], reverse=False, dest=False, mwe=Fa
                     words.append([word, out, (dst, feats)])
             else:
                 word, out, feats, cont = elements
+#                print("...&& word {} out {} feats {}".format(word, out, feats))
 #                if mwe:
 #                    word = word.replace("//", ' ')
                 if out:
@@ -219,6 +221,7 @@ def treeify1(words, chars):
                 tree[c] = ls[0]
             else:
                 tree[c] = treeify1(ls, chars)
+#    print("@ tree {}".format(tree))
     return tree
 
 def print_tree(tree, level=0):

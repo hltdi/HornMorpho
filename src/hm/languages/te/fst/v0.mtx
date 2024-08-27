@@ -33,8 +33,8 @@ $ voice
   አ-		[v=a,c=A,R1=X];[v=a,c=B|C|E|F|G|H|K]
   አት-	[v=at,c=B|C|E|F|G|H|K];[v=at,a=a|i];[v=at,c=A,R1=L]
   አ/ተ-	[v=at,c=A,R1=X]
-  # Not clear when ት- can be dropped
-  --		[v=0];[v=p,a=0];[v=a,c=A,R1=L]
+  # Assume t=p ት- is not dropped for guesser
+  --		[v=0]  # ;[v=p,a=0]
 
 $ stem
   >>v_stem0<<

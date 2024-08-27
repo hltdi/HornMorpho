@@ -961,6 +961,10 @@ class FeatStructParser:
             reentrance identifier.
         """
         s = s.strip()
+        if s[0] != '[':
+            s = '[' + s
+        if s[-1] != ']':
+            s += ']'
         value, position = self.partial_parse(s, 0, {}, fstruct)
         if position != len(s):
             self._error(s, 'end of string', position)

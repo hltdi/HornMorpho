@@ -995,10 +995,10 @@ class Language:
                 oldf, newf = line.strip().split('->')
                 oldf = oldf.strip()
                 newf = newf.strip()
-                if oldf[0] != '[':
-                    oldf = '[' + oldf + ']'
-                if newf[0] != '[':
-                    newf = '[' + newf + ']'
+#                if oldf[0] != '[':
+#                    oldf = '[' + oldf + ']'
+#                if newf[0] != '[':
+#                    newf = '[' + newf + ']'
                 oldf = FeatStruct(oldf)
                 newf = FeatStruct(newf)
                 featnorm[-1].append((oldf, newf))
@@ -1380,6 +1380,7 @@ class Language:
         Load words and FSTs for morphological analysis and generation.
         New method for version 5.
         """
+#        print("&& load_morpho {}".format(guess))
         fsts = fsts or (self.morphology and self.morphology.pos)
 #        opt_string = 'MWE_' if mwe else ''
         opt_string = ''
@@ -1439,7 +1440,7 @@ class Language:
             # Load guesser anal and gen FSTs
             if guess:
                 if ortho:
-                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
+                    self.morphology[pos].load_fst(gen=False, guess=True, phon=False,
                                                   segment=False, translate=translate,
                                                   pickle=pickle, create_casc=False,
                                                   experimental=False, mwe=False,
@@ -1485,7 +1486,7 @@ class Language:
             print('No {} FST available for {}!'.format(opt_string, self))
             if experimental:
                 return False
-        msg_string = Language.T.tformat('Loading FSTs for {0}{1} ...',
+        msg_string = Language.T.tformat('Loading STFs for {0}{1} ...',
                                         [self, ' (' + opt_string + ')' if opt_string else ''],
                                         self.tlanguages)
         print(msg_string)
@@ -1607,6 +1608,8 @@ class Language:
         cache = kwargs.get('cache')
         # Try different POSs, but restrict these if 'pos' is in kwargs
         analpos = kwargs.get('pos')
+        guess = kwargs.get('guess', False)
+        feats = kwargs.get('feats')
         # Character normalization
         normalized = False
         def special_word():
@@ -1645,13 +1648,13 @@ class Language:
             for pos, pmorph in self.morphology.items():
                 if pos in analpos:
                     continue
-                analyses = pmorph.anal(token, mwe=mwe)
+                analyses = pmorph.anal(token, mwe=mwe, guess=guess, feats=feats)
                 if analyses:
                     return special_word()
         for pos, pmorph in self.morphology.items():
             if analpos and pos not in analpos:
                 continue
-            analyses = pmorph.anal(token, mwe=mwe)
+            analyses = pmorph.anal(token, mwe=mwe, guess=guess, feats=feats)
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
                 all_analyses.extend(analyses)

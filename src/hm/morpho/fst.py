@@ -1893,6 +1893,7 @@ class FST:
         2021.5: returns pair with second element a boolean indicating
         whether the FST was found in a pickle.
         '''
+#        print("&& Restoring FST, guess {}, name {}".format(guess, name))
 #        guess_name = pos + '0'
         if pickle:
 #            print("Unpickling {} in {}".format(name, pkl_directory))
@@ -1940,7 +1941,7 @@ class FST:
                                  seg_units=[],
                                  create_weights=True, verbose=False):
         """Restore an FST from one or more files."""
-#        print('Restoring {}, cascade {}, paths {}'.format(label, cascade, paths))
+        print('Restoring {}, cascade {}, paths {}'.format(label, cascade, paths))
         fst = FST.restore_parse(None, None, path=paths[0], label=label,
                                 cascade=cascade,
                                 weighting=weighting,
@@ -2148,7 +2149,7 @@ class FST:
                 print('!! Loading sublexicon from {}, reverse={}, mwe={}'.format(filename, reverse, mwe))
             treeified = treeify_file(filename, seg_units=seg_units, reverse=reverse, mwe=mwe,
                                      dest=dest_lex, verbose=False)
-#            print('!! Treeified {}'.format(len(treeified)))
+#            print('!! Treeified {}'.format(treeified))
 #            print("!! Tree start {}".format(list(treeified.items())[:10]))
             return FST.tree_to_fst(treeified,
                                    label, cascade=cascade, weighting=weighting,

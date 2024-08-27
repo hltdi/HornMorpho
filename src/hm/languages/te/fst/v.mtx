@@ -35,7 +35,7 @@ $ voice
   አት-	[v=at,c=B|C|E|F|G|H|K];[v=at,a=a|i];[v=at,c=A,R1=L]
   አ/ተ-	[v=at,c=A,R1=X]
   # Not clear when ት- can be dropped
-  --		[v=0];[v=p,a=0];[v=a,c=A,R1=L]
+  --		[v=0];[v=p,a=0] # ;[v=a,c=A,R1=L]
 
 $ stem
   >>v_stem<<

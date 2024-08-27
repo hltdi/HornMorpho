@@ -65,6 +65,31 @@ def write_ud(data, path):
 
 ## New Tigre entries
 
+TE_FEATS = {
+    'p': "t=p,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-pre,-rel",
+    'i': "t=i,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel",
+    'j': "t=j,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel"
+    }
+
+def guess_te1(word, asp):
+    anals = hm.anal('te', word, guess=True, feats=TE_FEATS[asp])
+    res = set()
+    for anal in anals:
+        if anal.get('pos') == 'V':
+            feats = anal.get('feats')
+            res.add("{}: <{}{}{}{}>|{}".format(
+                feats.get('c'), feats.get('r1'), feats.get('r2'), feats.get('r3'), feats.get('r4', ''), feats.get('v')
+                ))
+    return res
+
+def guess_te_verbs():
+    results = []
+    with open("data/te_verbs.txt", encoding='utf8') as file:
+        for line in file:
+            p, i, j = line.split(" ; ")
+            if p:
+                a = hm.anal('te', p, guess=True, feats=TE_P)
+
 def te_dups():
     dups = []
     roots = []

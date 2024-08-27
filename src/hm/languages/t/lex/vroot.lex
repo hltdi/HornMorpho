@@ -1,8224 +1,8132 @@
-<ም ጽ እ>		c=A
+<ም ጽ እ>		c=A,base=0
   a=0,v=a ; a=a,v=a ; a=i,v=0
-<ህ ል ል>		c=A
+<ህ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ል ም>		c=A,s=1
+<ህ ል ም>		c=A,s=1,base=0
   a=0,v=0
-<ህ ል ም>		c=A,s=2
+<ህ ል ም>		c=A,s=2,base=0
   a=0,v=0
-<ህ ል ም>		c=A,s=3
+<ህ ል ም>		c=A,s=3,base=p
   a=0,v=p
-<ህ ል ም>		c=B
+<ህ ል ም>		c=B,base=0
   a=0,v=0
-<ህ ል ቅ>		c=A
+<ህ ል ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ል ክ>		c=A
+<ህ ል ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ል ክ>		c=B
+<ህ ል ክ>		c=B,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ህ ል ው>		c=B
+<ህ ል ው>		c=B,base=0
   a=0,v=0
-<ህ ል ይ>		c=B
+<ህ ል ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ሙ ክ>		c=B
+<ህ ሙ ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ም ህ ም>		c=E
+<ህ ም ህ ም>		c=E,base=0
   a=0,v=0
-<ህ ም ል>		c=B
+<ህ ም ል>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ህ ም ም>		c=A
+<ህ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ም ም>		c=B
+<ህ ም ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ም ብ ብ>		c=E
+<ህ ም ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ም ት>		c=B
+<ህ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ም ይ ን>		c=E
+<ህ ም ይ ን>		c=E,base=0
   a=0,v=0
-<ህ ር ህ ር>		c=E
+<ህ ር ህ ር>		c=E,base=0
   a=0,v=0
-<ህ ር ም>		c=A
+<ህ ር ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ህ ር ር>		c=B
+<ህ ር ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ር ስ>		c=B
+<ህ ር ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ህ ር ብ ት>		c=E
+<ህ ር ብ ት>		c=E,base=0
   a=0,v=0
-<ህ ር ት ው>		c=E
+<ህ ር ት ው>		c=E,base=0
   a=0,v=0
-<ህ ር ኩ ት>		c=E
+<ህ ር ኩ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ር ይ>		c=A
+<ህ ር ይ>		c=A,base=0
   a=0,v=0
-<ህ ር ጉ ም>		c=E
+<ህ ር ጉ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ር ግ ፍ>		c=E
+<ህ ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ር ጽ>		c=A
+<ህ ር ጽ>		c=A,base=0
   a=0,v=0
-<ህ ር ፍ>		c=A
+<ህ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ህ ር ፍ ፍ>		c=E
+<ህ ር ፍ ፍ>		c=E,base=0
   a=0,v=0
-<ህ ስ ስ>		c=A
+<ህ ስ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ስ ይ>		c=A
+<ህ ስ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ህ ቁ ቁ>		c=A
+<ህ ቁ ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ቅ ን>		c=B
+<ህ ቅ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ብ ህ ብ>		c=E
+<ህ ብ ህ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ብ ል ቁ>		c=E
+<ህ ብ ል ቁ>		c=E,base=0
   a=0,v=0
-<ህ ብ ር>		c=B
+<ህ ብ ር>		c=B,base=0
   a=0,v=0
-<ህ ብ ር ም>		c=E
+<ህ ብ ር ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ብ ር ር>		c=E
+<ህ ብ ር ር>		c=E,base=0
   a=0,v=0
-<ህ ብ ብ>		c=A
+<ህ ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ብ ት ም>		c=E
+<ህ ብ ት ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ብ ይ>		c=A
+<ህ ብ ይ>		c=A,base=0
   a=0,v=0
-<ህ ት ፍ>		c=A
+<ህ ት ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ት ፍ>		c=B
+<ህ ት ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ት ፍ ት ፍ>		c=G
+<ህ ት ፍ ት ፍ>		c=G,base=p
   a=0,v=a
-<ህ ን ሽ ው>		c=E
-  a=a,v=p
-<ህ ን ቅ ው>		c=E
+<ህ ን ሽ ው>		c=F,base=p
   a=0,v=p
-<ህ ን ት>		c=A
+<ህ ን ቅ ው>		c=E,base=p
+  a=0,v=p
+<ህ ን ት>		c=A,base=0
   a=0,v=0
-<ህ ን ት ይ>		c=E
+<ህ ን ት ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ህ ን ን>		c=A
+<ህ ን ን>		c=A,base=0
   a=0,v=0
-<ህ ን ን>		c=B
+<ህ ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ን እ>		c=A
+<ህ ን እ>		c=A,base=0
   a=0,v=0
-<ህ ን ኩ ት>		c=E
+<ህ ን ኩ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ህ ን ክ ት>		c=E
+<ህ ን ክ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ን ክ ፍ>		c=E
+<ህ ን ክ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ን ዝ ል>		c=E
+<ህ ን ዝ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ህ ን ዝ ው>		c=E
+<ህ ን ዝ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ን ድ ስ>		c=E
+<ህ ን ድ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ን ድ ድ>		c=E
+<ህ ን ድ ድ>		c=E,base=p
   a=0,v=p
-<ህ ን ጉ ር>		c=E
+<ህ ን ጉ ር>		c=E,base=0
   a=0,v=0
-<ህ ን ጥ ስ>		c=E
+<ህ ን ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ን ጥ ይ>		c=E
+<ህ ን ጥ ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ህ ን ጽ>		c=A
+<ህ ን ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ን ፍ>		c=A
+<ህ ን ፍ>		c=A,base=0
   a=0,v=0
-<ህ ን ፍ ጽ>		c=E
+<ህ ን ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ን ፍ ፍ>		c=E
+<ህ ን ፍ ፍ>		c=E,base=p
   a=0,v=p
-<ህ ክ ል>		c=A
+<ህ ክ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ክ ይ>		c=A
+<ህ ክ ይ>		c=A,base=0
   a=0,v=0
-<ህ ው ስ>		c=A
+<ህ ው ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ው ት ት>		c=E
+<ህ ው ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ው ክ>		c=B
+<ህ ው ክ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ህ ው ጽ>		c=B
+<ህ ው ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ዝ ህ ዝ>		c=E
+<ህ ዝ ህ ዝ>		c=E,base=0
   a=0,v=0
-<ህ ዝ ር ጥ>		c=E
+<ህ ዝ ር ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ዝ ዝ>		c=A
+<ህ ዝ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ዝ ግ>		c=A
+<ህ ዝ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ይ ው>		c=A
+<ህ ይ ው>		c=A,base=0
   a=0,v=0
-<ህ ይ ድ>		c=B
+<ህ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ህ ይ ፍ>		c=B
+<ህ ይ ፍ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ህ ድ ህ ድ>		c=E
+<ህ ድ ህ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ድ ም>		c=A
+<ህ ድ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=a ; a=0,v=a
-<ህ ድ ም>		c=B
+<ህ ድ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ድ ስ>		c=B
+<ህ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ድ ን>		c=A
+<ህ ድ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ህ ድ እ>		c=A
+<ህ ድ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ድ ድ>		c=A
+<ህ ድ ድ>		c=A,base=0
   a=0,v=0
-<ህ ድ ድ>		c=B
+<ህ ድ ድ>		c=B,base=0
   a=0,v=0
-<ህ ጅ ም>		c=A
+<ህ ጅ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ጉ ህ ጉ>		c=E
+<ህ ጉ ህ ጉ>		c=E,base=0
   a=0,v=0
-<ህ ጉ ብ>		c=A
+<ህ ጉ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ህ ጉ ጉ>		c=A
+<ህ ጉ ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ጉ ፍ>		c=A
+<ህ ጉ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ግ ር>		c=B
+<ህ ግ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ግ ር ግ ር>		c=G
+<ህ ግ ር ግ ር>		c=G,base=p
   a=0,v=a
-<ህ ግ ግ>		c=A
+<ህ ግ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ጥ ር>		c=A
+<ህ ጥ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ጽ ጽ>		c=A
+<ህ ጽ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ጽ ፍ>		c=A
+<ህ ጽ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ህ ፍ ት ም>		c=E
+<ህ ፍ ት ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ህ ፍ ፍ>		c=A
+<ህ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሉ ስ ስ>		c=B
+<ሉ ስ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሉ ቅ ሉ ቅ>		c=E
+<ሉ ቅ ሉ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ህ ል ህ>		c=E
+<ል ህ ል ህ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=p ; a=0,v=a
-<ል ህ ም>		c=A,s=1
-  a=0,v=0
-<ል ህ ም>		c=A,s=2
-  a=a,v=p
-<ል ህ ም ም>		c=E
+<ል ህ ም>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ል ህ ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ህ ም ት>		c=E
+<ል ህ ም ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ህ ቅ>		c=A
+<ል ህ ቅ>		c=A,base=a
   a=0,v=a
-<ል ህ ብ>		c=A
+<ል ህ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ል ህ ኩ>		c=A
+<ል ህ ኩ>		c=A,base=0
   a=0,v=0
-<ል ህ ዝ ዝ>		c=E
+<ል ህ ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ህ ይ>		c=A
+<ል ህ ይ>		c=A,base=p
   a=0,v=p
-<ል ል ሕ>		c=B
+<ል ል ሕ>		c=B,base=0
   a=0,v=0
-<ል ል ው>		c=A,s=1
+<ል ል ው>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p
-<ል ል ው>		c=A,s=2
+<ል ል ው>		c=A,s=2,base=p
   a=0,v=p
-<ል ል ይ>		c=A
+<ል ል ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=0
-<ል ሕ ል ሕ>		c=E
+<ል ሕ ል ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሕ ም>		c=A
+<ል ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ም ጽ>		c=E
+<ል ሕ ም ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ስ>		c=A
+<ል ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ል ሕ ስ ስ>		c=E
+<ል ሕ ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሕ ቅ>		c=A
+<ል ሕ ቅ>		c=A,base=a
   a=0,v=a
-<ል ሕ ት ት>		c=E
+<ል ሕ ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሕ ት ን>		c=E
+<ል ሕ ት ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሕ ኩ>		c=A
+<ል ሕ ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ክ>		c=A
+<ል ሕ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሕ ድ ድ>		c=E
+<ል ሕ ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ጉ ን>		c=E
+<ል ሕ ጉ ን>		c=E,base=0
   a=0,v=0
-<ል ሕ ግ>		c=A
+<ል ሕ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ጭ>		c=A
+<ል ሕ ጭ>		c=A,base=0
   a=0,v=0
-<ል ሕ ጽ>		c=A
+<ል ሕ ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ጽ ጽ>		c=E
+<ል ሕ ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ፍ>		c=A
+<ል ሕ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሕ ፍ ፍ>		c=E
+<ል ሕ ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ም ል ም>		c=E
+<ል ም ል ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ል ም ም>		c=A,s=1
+<ል ም ም>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p
-<ል ም ም>		c=A,s=2
+<ል ም ም>		c=A,s=2,base=a
   a=0,v=a
-<ል ም ም>		c=C
+<ል ም ም>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ም ስ>		c=A
+<ል ም ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ል ም ሽ>		c=B
+<ል ም ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ም ብ ድ>		c=E
+<ል ም ብ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ም ት>		c=A
+<ል ም ት>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ል ም ን>		c=B
+<ል ም ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ል ም ዕ>		c=A
+<ል ም ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ል ም ድ>		c=A
+<ል ም ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ል ም ድ ድ>		c=E
+<ል ም ድ ድ>		c=E,base=0
   a=0,v=0
-<ል ም ጥ ጥ>		c=E
+<ል ም ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ል ም ጭ ጭ>		c=E
+<ል ም ጭ ጭ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ም ጽ>		c=A
+<ል ም ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ል ም ጽ>		c=B
+<ል ም ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ስ ል ስ>		c=E
+<ል ስ ል ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ስ ን>		c=B
+<ል ስ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ሽ ው>		c=C
+<ል ሽ ው>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ል ሽ ይ>		c=C
+<ል ሽ ይ>		c=C,base=0
   a=0,v=0
-<ል ቁ ም ጽ>		c=E
+<ል ቁ ም ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ቁ ጥ>		c=A
+<ል ቁ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ቁ ጽ>		c=C
+<ል ቁ ጽ>		c=C,base=0
   a=0,v=0
-<ል ቅ ል ቁ>		c=E
+<ል ቅ ል ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ቅ ል ቅ>		c=E
+<ል ቅ ል ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ቅ ሕ>		c=B
+<ል ቅ ሕ>		c=B,base=p
   a=0,v=p ; a=0,v=a ; a=i,v=a
-<ል ቅ ም>		c=A
+<ል ቅ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ቅ ም>		c=B
+<ል ቅ ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a
-<ል ቅ ስ>		c=A
+<ል ቅ ስ>		c=A,base=p
   a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ቅ ቅ>		c=A
+<ል ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ል ቅ ብ>		c=B
+<ል ቅ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ል ቅ ይ>		c=A
+<ል ቅ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ብ ል ብ>		c=E
+<ል ብ ል ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ብ ም>		c=B
+<ል ብ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ብ ስ>		c=A
+<ል ብ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ል ብ ስ>		c=B
+<ል ብ ስ>		c=B,base=0
   a=0,v=0
-<ል ብ ብ>		c=A
+<ል ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ል ብ ው>		c=A
+<ል ብ ው>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ል ብ ዕ>		c=B
+<ል ብ ዕ>		c=B,base=0
   a=0,v=0 ; a=a,v=p
-<ል ብ ድ>		c=A
+<ል ብ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ል ብ ድ>		c=B
+<ል ብ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ብ ጥ>		c=A
+<ል ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ል ብ ጥ>		c=B
+<ል ብ ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ል ት ም>		c=A
+<ል ት ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ል ት ም>		c=B
+<ል ት ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a
-<ል ት ት>		c=B
+<ል ት ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ን ቁ ት>		c=E
+<ል ን ቁ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ን ቅ ጥ>		c=E
+<ል ን ቅ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ን ብ ጥ>		c=E
+<ል ን ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ን ጉ ድ>		c=E
+<ል ን ጉ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል እ ም>		c=A
+<ል እ ም>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ል እ ክ>		c=A
+<ል እ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ል ኩ ስ>		c=B
+<ል ኩ ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ል ኩ ስ ስ>		c=E
+<ል ኩ ስ ስ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ል ኩ ት>		c=B
+<ል ኩ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ኩ ኩ>		c=A
+<ል ኩ ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ክ ም>		c=B
+<ል ክ ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ል ክ ም ስ>		c=E
+<ል ክ ም ስ>		c=E,base=0
   a=0,v=0
-<ል ክ ብ ጥ>		c=E
+<ል ክ ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ክ ት>		c=A
+<ል ክ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ክ ት ም>		c=E
+<ል ክ ት ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ክ ዕ>		c=A
+<ል ክ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ል ክ ዕ>		c=B
+<ል ክ ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ል ክ ይ>		c=A
+<ል ክ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ል ክ ፍ>		c=A
+<ል ክ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ው ህ>		c=B
+<ል ው ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ው ስ>		c=A
+<ል ው ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ል ው ስ ስ>		c=E
+<ል ው ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ው ዝ>		c=C
+<ል ው ዝ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ል ው ይ>		c=A,s=1
+<ል ው ይ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p
-<ል ው ይ>		c=A,s=2
+<ል ው ይ>		c=A,s=2,base=p
   a=0,v=p
-<ል ው ጥ>		c=B
+<ል ው ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ል ዕ ል>		c=A
+<ል ዕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=0,v=a ; a=i,v=a ; a=i,v=a
-<ል ዕ ል ዕ>		c=E
+<ል ዕ ል ዕ>		c=E,base=0
   a=0,v=0
-<ል ዕ ብ>		c=A
+<ል ዕ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ዕ ት>		c=A
+<ል ዕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ል ዕ ጥ ጥ>		c=E
+<ል ዕ ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ል ዝ ል ዝ>		c=E
+<ል ዝ ል ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ል ዝ ብ>		c=A
+<ል ዝ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ል ዝ ዝ>		c=A
+<ል ዝ ዝ>		c=A,base=0
   a=0,v=0
-<ል ዝ ይ>		c=B
+<ል ዝ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ድ ይ>		c=C
+<ል ድ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ል ድ ድ>		c=B
+<ል ድ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ጉ ም>		c=A
+<ል ጉ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ጉ ን>		c=A
+<ል ጉ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ጉ ን>		c=B
+<ል ጉ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ል ግ ም>		c=A
+<ል ግ ም>		c=A,base=0
   a=0,v=0
-<ል ግ ስ>		c=A
+<ል ግ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ግ ስ>		c=B
+<ል ግ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ግ ብ>		c=A
+<ል ግ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ል ግ ብ>		c=B
+<ል ግ ብ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ል ግ ዕ>		c=A
+<ል ግ ዕ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ል ግ ዕ>		c=B
+<ል ግ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ል ግ ድ>		c=A
+<ል ግ ድ>		c=A,base=0
   a=0,v=0
-<ል ግ ጽ>		c=B
+<ል ግ ጽ>		c=B,base=0
   a=0,v=0
-<ል ግ ጽ>		c=C
+<ል ግ ጽ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ል ጥ ል ጥ>		c=E
+<ል ጥ ል ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ጥ ቅ>		c=A
+<ል ጥ ቅ>		c=A,base=0
   a=0,v=0
-<ል ጥ ጥ>		c=B
+<ል ጥ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ጥ ፍ>		c=B
+<ል ጥ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ጽ ቅ>		c=A
+<ል ጽ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ል ጽ ይ>		c=C
+<ል ጽ ይ>		c=C,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=0,v=a
-<ል ፍ ል ፍ>		c=E
+<ል ፍ ል ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ል ፍ ን>		c=A
+<ል ፍ ን>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ል ፍ ን>		c=B
-  a=0,v=0 ; a=0,v=p
-<ል ፍ ው>		c=C
+<ል ፍ ን>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ል ፍ ው>		c=C,base=0
   a=0,v=0
-<ል ፍ ዕ>		c=A
+<ል ፍ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ል ፍ ድ ድ>		c=E
+<ል ፍ ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ል ፍ ጥ>		c=B
+<ል ፍ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ፍ ጽ>		c=A
+<ል ፍ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ል ፍ ፍ>		c=A
+<ል ፍ ፍ>		c=A,base=0
   a=0,v=0
-<ል ፕ ስ>		c=B
+<ል ፕ ስ>		c=B,base=0
   a=0,v=0
-<ሕ ል ል>		c=A,s=1
+<ሕ ል ል>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ል ል>		c=A,s=2
+<ሕ ል ል>		c=A,s=2,base=0
   a=0,v=0
-<ሕ ል ል>		c=B
+<ሕ ል ል>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ሕ ል ሕ ል>		c=E
+<ሕ ል ሕ ል>		c=E,base=0
   a=0,v=0
-<ሕ ል ም>		c=A
+<ሕ ል ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ል ቅ>		c=A
+<ሕ ል ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ል ቅ>		c=B,s=1
+<ሕ ል ቅ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ል ቅ>		c=B,s=2
+<ሕ ል ቅ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ል ቅ ል ቅ>		c=G
+<ሕ ል ቅ ል ቅ>		c=G,base=p
   a=0,v=a
-<ሕ ል ቅ ም>		c=E
+<ሕ ል ቅ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ል ብ>		c=A
+<ሕ ል ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ል ን>		c=B
+<ሕ ል ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ል ኩ ስ>		c=E
+<ሕ ል ኩ ስ>		c=E,base=0
   a=0,v=0
-<ሕ ል ክ>		c=A
+<ሕ ል ክ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ል ክ ስ>		c=E
+<ሕ ል ክ ስ>		c=E,base=0
   a=0,v=0
-<ሕ ል ው>		c=B
+<ሕ ል ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a
-<ሕ ል ው ይ>		c=E,s=1
+<ሕ ል ው ይ>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ል ው ይ>		c=E,s=2
+<ሕ ል ው ይ>		c=E,s=2,base=p
   a=0,v=p
-<ሕ ል ይ>		c=A,s=1
+<ሕ ል ይ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ል ይ>		c=A,s=2
+<ሕ ል ይ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ል ይ>		c=B
+<ሕ ል ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ል ግ>		c=A
+<ሕ ል ግ>		c=A,base=p
   a=0,v=p
-<ሕ ል ግ>		c=B
+<ሕ ል ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ል ፍ>		c=A
+<ሕ ል ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ል ፍ>		c=B
+<ሕ ል ፍ>		c=B,base=0
   a=0,v=0 ; a=i,v=0
-<ሕ ም ል>		c=A
+<ሕ ም ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ም ሕ ም>		c=E
+<ሕ ም ሕ ም>		c=E,base=0
   a=0,v=0
-<ሕ ም ም>		c=A
+<ሕ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ር ግ>		c=E
+<ሕ ም ር ግ>		c=E,base=0
   a=0,v=0
-<ሕ ም ስ>		c=B,s=1
+<ሕ ም ስ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ስ>		c=B,s=2
+<ሕ ም ስ>		c=B,s=2,base=0
   a=0,v=0
-<ሕ ም ስ ስ>		c=E
+<ሕ ም ስ ስ>		c=E,base=0
   a=0,v=0
-<ሕ ም ሽ ሽ>		c=E
+<ሕ ም ሽ ሽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ሕ ም ሽ ኩ>		c=E
+<ሕ ም ሽ ኩ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ም ቅ>		c=A
+<ሕ ም ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ም ብ ር>		c=E
+<ሕ ም ብ ር>		c=E,base=0
   a=0,v=0
-<ሕ ም ብ ስ>		c=E
+<ሕ ም ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ብ ሽ>		c=E
+<ሕ ም ብ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ብ ብ>		c=E
+<ሕ ም ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ብ ጥ>		c=E
+<ሕ ም ብ ጥ>		c=E,base=0
   a=0,v=0
-<ሕ ም ት>		c=B
+<ሕ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ም ት ል>		c=E
+<ሕ ም ት ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ም ት ኩ>		c=E
+<ሕ ም ት ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ም ይ>		c=A
+<ሕ ም ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ም ድ>		c=B
+<ሕ ም ድ>		c=B,base=0
   a=0,v=0
-<ሕ ም ድ ም ድ>		c=G
+<ሕ ም ድ ም ድ>		c=G,base=p
   a=0,v=a
-<ሕ ም ጥ>		c=A
+<ሕ ም ጥ>		c=A,base=0
   a=0,v=0
-<ሕ ር ሕ ር>		c=E
+<ሕ ር ሕ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ር ም>		c=A
+<ሕ ር ም>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=p
-<ሕ ር ም ዝ>		c=E
+<ሕ ር ም ዝ>		c=E,base=0
   a=0,v=0
-<ሕ ር ር>		c=A
+<ሕ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ር>		c=B
+<ሕ ር ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ስ>		c=A,s=1
+<ሕ ር ስ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ር ስ>		c=A,s=2
+<ሕ ር ስ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ስ>		c=A,s=3
+<ሕ ር ስ>		c=A,s=3,base=a
   a=0,v=a
-<ሕ ር ቅ>		c=A
+<ሕ ር ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ሕ ር ቅ ም>		c=E
+<ሕ ር ቅ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ብ ት>		c=E
+<ሕ ር ብ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ት>		c=B
+<ሕ ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ን>		c=B
+<ሕ ር ን>		c=B,base=0
   a=0,v=0
-<ሕ ር ን ክ>		c=E
+<ሕ ር ን ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር እ>		c=A
+<ሕ ር እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ኩ ት>		c=E
+<ሕ ር ኩ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ር ክ ም>		c=E
+<ሕ ር ክ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ር ክ ን>		c=E
+<ሕ ር ክ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ክ ክ>		c=E
+<ሕ ር ክ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ክ ፍ>		c=E
+<ሕ ር ክ ፍ>		c=E,base=0
   a=0,v=0
-<ሕ ር ው>		c=A
+<ሕ ር ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ይ>		c=A
+<ሕ ር ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ር ድ>		c=A
+<ሕ ር ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ር ጅ>		c=B
+<ሕ ር ጅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ጉ ት>		c=E
+<ሕ ር ጉ ት>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ሕ ር ግ>		c=A,s=1
+<ሕ ር ግ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ር ግ>		c=A,s=2
+<ሕ ር ግ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ግ ግ>		c=E
+<ሕ ር ግ ግ>		c=E,base=0
   a=0,v=0
-<ሕ ር ጥ>		c=A
+<ሕ ር ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ር ጽ>		c=A
+<ሕ ር ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ር ፍ>		c=B
+<ሕ ር ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ር ፍ ፍ>		c=E
+<ሕ ር ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ስ ሕ ስ>		c=E
+<ሕ ስ ሕ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ሕ ስ ም>		c=A
+<ሕ ስ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ስ ር>		c=A
+<ሕ ስ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ሕ ስ ስ>		c=A
+<ሕ ስ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ስ ስ>		c=B
+<ሕ ስ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ስ ብ>		c=A
+<ሕ ስ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ስ እ>		c=A
+<ሕ ስ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ስ ክ>		c=B
+<ሕ ስ ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ስ ው>		c=B
+<ሕ ስ ው>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ስ ይ>		c=A
+<ሕ ስ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ስ ድ>		c=B
+<ሕ ስ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ሽ ል ኩ>		c=E
+<ሕ ሽ ል ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ሽ ሽ>		c=B
+<ሕ ሽ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ሽ ኩ ል>		c=E
+<ሕ ሽ ኩ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ሽ ኩ ሽ ኩ>		c=G
+<ሕ ሽ ኩ ሽ ኩ>		c=G,base=p
   a=0,v=a
-<ሕ ሽ ክ ር>		c=E,s=1
+<ሕ ሽ ክ ር>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ሽ ክ ር>		c=E,s=2
+<ሕ ሽ ክ ር>		c=E,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ሕ ሽ ው>		c=B
+<ሕ ሽ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ቁ ን>		c=A
+<ሕ ቁ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ቁ ፍ>		c=A
+<ሕ ቁ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ቅ ም ቅ ም>		c=G
+<ሕ ቅ ም ቅ ም>		c=G,base=p
   a=0,v=a
-<ሕ ቅ ቅ>		c=A
+<ሕ ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ቅ ን>		c=B
+<ሕ ቅ ን>		c=B,base=0
   a=0,v=0
-<ሕ ቅ ይ>		c=A
+<ሕ ቅ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ብ ል>		c=A
+<ሕ ብ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=i,v=p ; a=0,v=a
-<ሕ ብ ል>		c=B
+<ሕ ብ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ብ ል ቁ>		c=E
+<ሕ ብ ል ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ብ ሕ ብ>		c=E
+<ሕ ብ ሕ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ብ ር>		c=A
+<ሕ ብ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ብ ር>		c=B
+<ሕ ብ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ብ ስ>		c=B
+<ሕ ብ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ብ ሽ ብ ሽ>		c=G
+<ሕ ብ ሽ ብ ሽ>		c=G,base=p
   a=0,v=a
-<ሕ ብ ን>		c=A,s=1
+<ሕ ብ ን>		c=A,s=1,base=0
   a=0,v=0
-<ሕ ብ ን>		c=A,s=2
+<ሕ ብ ን>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ብ እ>		c=A
+<ሕ ብ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ብ ጥ>		c=A
+<ሕ ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ሕ ት ል>		c=B
+<ሕ ት ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ት ም>		c=A
+<ሕ ት ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ት ር>		c=A
+<ሕ ት ር>		c=A,base=0
   a=0,v=0
-<ሕ ት ት>		c=A
+<ሕ ት ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ት ት>		c=B
+<ሕ ት ት>		c=B,base=0
   a=0,v=0
-<ሕ ን ሕ ን>		c=E
+<ሕ ን ሕ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ስ ስ>		c=E
+<ሕ ን ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ሽ ር>		c=E
+<ሕ ን ሽ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ን ቁ ብ>		c=E
+<ሕ ን ቁ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ቅ>		c=A
+<ሕ ን ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ን ቅ ቅ>		c=E
+<ሕ ን ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ብ ሽ>		c=E
+<ሕ ን ብ ሽ>		c=E,base=0
   a=0,v=0
-<ሕ ን ብ ብ>		c=E
+<ሕ ን ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ን ን>		c=A
+<ሕ ን ን>		c=A,base=0
   a=0,v=0
-<ሕ ን ን>		c=B
+<ሕ ን ን>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ሕ ን ኩ ል>		c=E
+<ሕ ን ኩ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ሕ ን ኩ ር>		c=E
+<ሕ ን ኩ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ኩ ት>		c=E
+<ሕ ን ኩ ት>		c=E,base=0
   a=0,v=0
-<ሕ ን ኩ ኩ>		c=E
+<ሕ ን ኩ ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ክ>		c=A
+<ሕ ን ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ን ክ ል>		c=E
+<ሕ ን ክ ል>		c=E,base=0
   a=0,v=0
-<ሕ ን ክ ር>		c=E
+<ሕ ን ክ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ክ ስ>		c=E
+<ሕ ን ክ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ክ ሽ>		c=E
+<ሕ ን ክ ሽ>		c=E,base=0
   a=0,v=0
-<ሕ ን ክ ብ>		c=E
+<ሕ ን ክ ብ>		c=E,base=0
   a=0,v=0
-<ሕ ን ዝ ዝ>		c=E
+<ሕ ን ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ዝ ፍ>		c=E
+<ሕ ን ዝ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ይ>		c=A
+<ሕ ን ይ>		c=A,base=0
   a=0,v=0
-<ሕ ን ድ ል>		c=E
+<ሕ ን ድ ል>		c=E,base=0
   a=0,v=0
-<ሕ ን ድ ር>		c=E
+<ሕ ን ድ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ድ ው>		c=E
+<ሕ ን ድ ው>		c=E,base=0
   a=0,v=0
-<ሕ ን ድ ፍ>		c=E
+<ሕ ን ድ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ን ግ ር>		c=E
+<ሕ ን ግ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ግ ብ>		c=E
+<ሕ ን ግ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ግ ይ>		c=E
+<ሕ ን ግ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ግ ድ>		c=E
+<ሕ ን ግ ድ>		c=E,base=0
   a=0,v=0
-<ሕ ን ግ ግ>		c=E
+<ሕ ን ግ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ን ግ ጥ>		c=E
+<ሕ ን ግ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ጥ ብ>		c=E
+<ሕ ን ጥ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ጥ ጥ>		c=E
+<ሕ ን ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ሕ ን ጽ>		c=A
+<ሕ ን ጽ>		c=A,base=0
   a=0,v=0
-<ሕ ን ጽ ጽ>		c=E
+<ሕ ን ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ፍ ል>		c=E
+<ሕ ን ፍ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ፍ ጥ>		c=E
+<ሕ ን ፍ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ፍ ጽ>		c=E
+<ሕ ን ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ን ፍ ፍ>		c=E
+<ሕ ን ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሕ ኩ ር>		c=A
+<ሕ ኩ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ክ ል>		c=B
+<ሕ ክ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ክ ም>		c=B
+<ሕ ክ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ክ ት>		c=A
+<ሕ ክ ት>		c=A,base=0
   a=0,v=0
-<ሕ ክ ክ>		c=A
+<ሕ ክ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ክ ይ>		c=B
+<ሕ ክ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ው ል ል>		c=E
+<ሕ ው ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ው ር>		c=A
+<ሕ ው ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ው ስ>		c=B
+<ሕ ው ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ው ዝ>		c=B
+<ሕ ው ዝ>		c=B,base=0
   a=0,v=0
-<ሕ ው ዝ ው ዝ>		c=G
+<ሕ ው ዝ ው ዝ>		c=G,base=p
   a=0,v=a
-<ሕ ው ይ>		c=A,s=1
-  a=0,v=0 ; a=0,v=a ; a=i,v=a
-<ሕ ው ይ>		c=A,s=2
-  a=i,v=p
-<ሕ ው ጽ>		c=B
+<ሕ ው ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=i,v=a ; a=i,v=p
+<ሕ ው ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ዝ ል>		c=A
+<ሕ ዝ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ዝ ብ>		c=A
+<ሕ ዝ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ዝ ን>		c=A
+<ሕ ዝ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ዝ ን ዝ ን>		c=G
+<ሕ ዝ ን ዝ ን>		c=G,base=p
   a=0,v=a
-<ሕ ዝ እ>		c=A
+<ሕ ዝ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ይ ል>		c=B
+<ሕ ይ ል>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ይ ም>		c=B
+<ሕ ይ ም>		c=B,base=0
   a=0,v=0
-<ሕ ይ ር>		c=B
+<ሕ ይ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ይ ር ር>		c=E
+<ሕ ይ ር ር>		c=E,base=0
   a=0,v=0
-<ሕ ይ ስ>		c=A
+<ሕ ይ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ይ ሽ>		c=A
+<ሕ ይ ሽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ይ ቅ>		c=A
+<ሕ ይ ቅ>		c=A,base=0
   a=0,v=0
-<ሕ ይ ክ>		c=A
+<ሕ ይ ክ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ይ ው>		c=A
+<ሕ ይ ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ድ ም>		c=B
+<ሕ ድ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ድ ር>		c=A
+<ሕ ድ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ድ ር>		c=B
+<ሕ ድ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ድ ስ>		c=A
+<ሕ ድ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ድ ስ>		c=B
+<ሕ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ድ ግ>		c=A
+<ሕ ድ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ጉ ል>		c=A
+<ሕ ጉ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሕ ጉ ም>		c=A
+<ሕ ጉ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጉ ስ>		c=B
+<ሕ ጉ ስ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ጉ ብ>		c=B
+<ሕ ጉ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ጉ ድ>		c=A
+<ሕ ጉ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ግ ሕ ግ>		c=E
+<ሕ ግ ሕ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ግ ር>		c=B
+<ሕ ግ ር>		c=B,base=0
   a=0,v=0
-<ሕ ግ ዝ>		c=B
+<ሕ ግ ዝ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ግ ይ>		c=A
+<ሕ ግ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ግ ግ>		c=A
+<ሕ ግ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ግ ግ>		c=B
+<ሕ ግ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ጥ ስ>		c=A
+<ሕ ጥ ስ>		c=A,base=0
   a=0,v=0
-<ሕ ጥ ብ>		c=A
+<ሕ ጥ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጥ እ>		c=A
+<ሕ ጥ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጥ ጥ>		c=A
+<ሕ ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ጭ ር>		c=A
+<ሕ ጭ ር>		c=A,base=0
   a=0,v=0
-<ሕ ጭ ጭ>		c=B
+<ሕ ጭ ጭ>		c=B,base=0
   a=0,v=0
-<ሕ ጽ ር>		c=A,s=1
+<ሕ ጽ ር>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጽ ር>		c=A,s=2
+<ሕ ጽ ር>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጽ ብ>		c=A
+<ሕ ጽ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጽ ት>		c=A
+<ሕ ጽ ት>		c=A,base=0
   a=0,v=0
-<ሕ ጽ ን>		c=B
+<ሕ ጽ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጽ ው>		c=A
+<ሕ ጽ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ጽ ይ>		c=A
+<ሕ ጽ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ጽ ጽ>		c=A
+<ሕ ጽ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ፍ ል ል>		c=E
+<ሕ ፍ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ፍ ሕ ፍ>		c=E
+<ሕ ፍ ሕ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሕ ፍ ር>		c=A
+<ሕ ፍ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሕ ፍ ስ>		c=A
+<ሕ ፍ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ፍ ሽ>		c=B
+<ሕ ፍ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ፍ ት>		c=A
+<ሕ ፍ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ፍ ት ት>		c=E
+<ሕ ፍ ት ት>		c=E,base=0
   a=0,v=0
-<ሕ ፍ ት ው>		c=E
+<ሕ ፍ ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ፍ ን>		c=A
+<ሕ ፍ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሕ ፍ ው>		c=B
+<ሕ ፍ ው>		c=B,base=0
   a=0,v=0
-<ሕ ፍ ድ>		c=A
+<ሕ ፍ ድ>		c=A,base=0
   a=0,v=0
-<ሕ ፍ ጥ ር>		c=E
+<ሕ ፍ ጥ ር>		c=E,base=0
   a=0,v=0
-<ሙ ል ሙ ል>		c=E
+<ሙ ል ሙ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ል ቅ>		c=A
+<ሙ ል ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ር ቅ>		c=A
+<ሙ ር ቅ>		c=A,base=0
   a=0,v=0
-<ሙ ቅ ሙ ቅ>		c=E
+<ሙ ቅ ሙ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ክ ት>		c=B
+<ሙ ክ ት>		c=B,base=0
   a=0,v=0
-<ሙ ድ ል>		c=B
+<ሙ ድ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ድ ሽ>		c=B
+<ሙ ድ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ጅ ሙ ጅ>		c=E
+<ሙ ጅ ሙ ጅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሙ ግ ስ>		c=B
+<ሙ ግ ስ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ሙ ጥ ሙ ጥ>		c=E
+<ሙ ጥ ሙ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ህ ል ል>		c=E
+<ም ህ ል ል>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ህ ም ን>		c=E
+<ም ህ ም ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ህ ር>		c=A,s=1
+<ም ህ ር>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=0,v=a
-<ም ህ ር>		c=A,s=2
+<ም ህ ር>		c=A,s=2,base=a
   a=0,v=a
-<ም ህ ዝ>		c=A
+<ም ህ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ህ ጽ>		c=A
+<ም ህ ጽ>		c=A,base=a
   a=0,v=a
-<ም ል ሕ>		c=B
+<ም ል ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ል ሕ ስ>		c=E
-  a=a,v=p
-<ም ል ሕ ቁ>		c=E
+<ም ል ሕ ስ>		c=F,base=p
+  a=0,v=p
+<ም ል ሕ ቁ>		c=E,base=0
   a=0,v=0
-<ም ል ሕ ጥ>		c=E
+<ም ል ሕ ጥ>		c=E,base=0
   a=0,v=0
-<ም ል ም ል>		c=E
+<ም ል ም ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ል ም ስ>		c=E
+<ም ል ም ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ል ስ>		c=A
+<ም ል ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ል ስ>		c=B
+<ም ል ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ም ል ሽ>		c=B
+<ም ል ሽ>		c=B,base=0
   a=0,v=0
-<ም ል ቁ ቁ>		c=E
+<ም ል ቁ ቁ>		c=E,base=0
   a=0,v=0
-<ም ል ብ ስ>		c=E
+<ም ል ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ል እ>		c=A,s=1
-  a=0,v=0 ; a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ል እ>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ም ል እ>		c=B,s=1
+<ም ል እ>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=a,v=p
+<ም ል እ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ም ል እ>		c=B,s=2
+<ም ል እ>		c=B,s=2,base=a
   a=0,v=a
-<ም ል ክ>		c=A
+<ም ል ክ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ም ል ክ ት>		c=E
+<ም ል ክ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ል ክ ዕ>		c=E
+<ም ል ክ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ል ዕ>		c=A
-  a=a,v=p
-<ም ል ዕ ስ>		c=E
+<ም ል ዕ>		c=C,base=p
+  a=0,v=p
+<ም ል ዕ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ል ድ>		c=C
+<ም ል ድ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ል ግ>		c=B
+<ም ል ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ል ጥ>		c=A
+<ም ል ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ል ጥ ን>		c=E
+<ም ል ጥ ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ል ጥ ጥ>		c=E
+<ም ል ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ል ጭ ጭ>		c=E
+<ም ል ጭ ጭ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ም ሕ ል>		c=A
+<ም ሕ ል>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ም ሕ ል ፍ>		c=E
-  a=a,v=p ; a=a,v=a ; a=i,v=a ; a=i,v=p
-<ም ሕ ም ሕ>		c=E
+<ም ሕ ል ፍ>		c=F,base=p
+  a=0,v=p ; a=0,v=a ; a=i,v=a ; a=i,v=p
+<ም ሕ ም ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሕ ር>		c=A
+<ም ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሕ ር ሕ ር>		c=G
+<ም ሕ ር ሕ ር>		c=G,base=p
   a=0,v=a
-<ም ሕ ስ>		c=A
+<ም ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሕ ስ ብ>		c=E
-  a=a,v=p
-<ም ሕ ቁ ቁ>		c=E
+<ም ሕ ስ ብ>		c=F,base=p
+  a=0,v=p
+<ም ሕ ቁ ቁ>		c=E,base=0
   a=0,v=0
-<ም ሕ ቅ>		c=A
+<ም ሕ ቅ>		c=A,base=p
   a=0,v=a ; a=0,v=p ; a=0,v=a
-<ም ሕ ብ ር>		c=E
+<ም ሕ ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሕ ን>		c=A
+<ም ሕ ን>		c=A,base=0
   a=0,v=0
-<ም ሕ ኩ ል>		c=E
+<ም ሕ ኩ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሕ ው>		c=A
+<ም ሕ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሕ ዝ ው>		c=E
-  a=a,v=p
-<ም ሕ ይ ሽ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ሕ ድ ር>		c=E
-  a=a,v=p ; a=i,v=p ; a=a,v=a
-<ም ሕ ግ ጽ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ም ሕ ጥ እ>		c=E
-  a=a,v=p
-<ም ሕ ጽ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሕ ጽ ን>		c=E
+<ም ሕ ዝ ው>		c=F,base=p
+  a=0,v=p
+<ም ሕ ይ ሽ>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ም ሙ ጽ>		c=A
+<ም ሕ ድ ር>		c=F,base=p
+  a=0,v=p ; a=i,v=p ; a=0,v=a
+<ም ሕ ግ ጽ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ም ሕ ጥ እ>		c=F,base=p
+  a=0,v=p
+<ም ሕ ጽ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ም ሕ ጽ ን>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ም ሙ ጽ>		c=A,base=p
   a=0,v=a ; a=0,v=p
-<ም ም ት>		c=A
+<ም ም ት>		c=A,base=a
   a=0,v=a
-<ም ም ይ>		c=A
+<ም ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ር ሕ>		c=A
+<ም ር ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ር ም ር>		c=E
+<ም ር ም ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ር ር>		c=A
+<ም ር ር>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ር ር>		c=C
+<ም ር ር>		c=C,base=0
   a=0,v=0
-<ም ር ስ ሕ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ር ስ ዕ>		c=F
+<ም ር ስ ሕ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ም ር ስ ዕ>		c=F,base=a
   a=0,v=a
-<ም ር ሽ>		c=B
+<ም ር ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ቁ>		c=A
+<ም ር ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ር ቁ ቁ>		c=E
+<ም ር ቁ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ቅ>		c=B
+<ም ር ቅ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ም ር ቅ ሕ>		c=E
+<ም ር ቅ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ቅ ፍ>		c=E
+<ም ር ቅ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ት>		c=B
+<ም ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ር ት>		c=C
+<ም ር ት>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ም ር ን>		c=A
+<ም ር ን>		c=A,base=p
   a=0,v=a ; a=0,v=p
-<ም ር ኩ ስ>		c=E
+<ም ር ኩ ስ>		c=E,base=p
   a=0,v=p ; a=a,v=p ; a=0,v=a
-<ም ር ክ>		c=C
+<ም ር ክ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ው>		c=A
+<ም ር ው>		c=A,base=p
   a=0,v=a ; a=0,v=p ; a=0,v=a
-<ም ር ዕ ው>		c=E
+<ም ር ዕ ው>		c=E,base=p
   a=0,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ር ዝ>		c=B
+<ም ር ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ዝ ዝ>		c=E
+<ም ር ዝ ዝ>		c=E,base=0
   a=0,v=0
-<ም ር ይ>		c=A
+<ም ር ይ>		c=A,base=0
   a=0,v=0
-<ም ር ይ ር ይ>		c=G
+<ም ር ይ ር ይ>		c=G,base=p
   a=0,v=a
-<ም ር ድ>		c=C
+<ም ር ድ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ጉ>		c=A
+<ም ር ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ግ>		c=A
+<ም ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ግ ሕ>		c=E
+<ም ር ግ ሕ>		c=E,base=a
   a=0,v=a
-<ም ር ግ ድ>		c=E
+<ም ር ግ ድ>		c=E,base=a
   a=0,v=a
-<ም ር ግ ፍ>		c=E
+<ም ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ር ጽ>		c=A
+<ም ር ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ር ፍ ፍ>		c=E
+<ም ር ፍ ፍ>		c=E,base=0
   a=0,v=0
-<ም ስ ል>		c=A
+<ም ስ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ም ስ ል>		c=B
+<ም ስ ል>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ል ል>		c=E
+<ም ስ ል ል>		c=E,base=a
   a=0,v=a
-<ም ስ ል ም>		c=E
+<ም ስ ል ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ስ ሕ>		c=A,s=1
+<ም ስ ሕ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ስ ሕ>		c=A,s=2
+<ም ስ ሕ>		c=A,s=2,base=a
   a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ስ ም ስ>		c=E
+<ም ስ ም ስ>		c=E,base=a
   a=a,v=p ; a=0,v=a
-<ም ስ ር ሕ>		c=E
+<ም ስ ር ሕ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ስ ር ት>		c=E
+<ም ስ ር ት>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ስ>		c=A
+<ም ስ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ስ>		c=B
+<ም ስ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ስ>		c=C
+<ም ስ ስ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ስ ው>		c=I
+<ም ስ ስ ው>		c=I,base=0
   a=0,v=a
-<ም ስ ቅ ል>		c=E
+<ም ስ ቅ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ስ ት>		c=B
+<ም ስ ት>		c=B,base=0
   a=0,v=0
-<ም ስ ት ት>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ስ ን>		c=C
+<ም ስ ት ት>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ም ስ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ን ው>		c=E
+<ም ስ ን ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ እ>		c=A
+<ም ስ እ>		c=A,base=0
   a=0,v=0
-<ም ስ እ ይ>		c=E
+<ም ስ እ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ክ ር>		c=E
+<ም ስ ክ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ስ ክ ን>		c=E
+<ም ስ ክ ን>		c=E,base=0
   a=0,v=0
-<ም ስ ው>		c=A
-  a=a,v=a
-<ም ስ ው>		c=C
-  a=0,v=0 ; a=0,v=p
-<ም ስ ይ>		c=A
-  a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ም ስ ይ>		c=C
-  a=0,v=0
-<ም ስ ጉ>		c=C
+<ም ስ ው>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ግ ን>		c=E
+<ም ስ ይ>		c=A,base=0
+  a=0,v=0 ; a=a,v=a ; a=0,v=a
+<ም ስ ይ>		c=C,base=0
+  a=0,v=0
+<ም ስ ጉ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ም ስ ግ ን>		c=E,base=a
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ስ ጥ>		c=A
+<ም ስ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ስ ጥ>		c=B
+<ም ስ ጥ>		c=B,base=p
   a=0,v=a ; a=0,v=p ; a=0,v=a
-<ም ስ ጥ ር>		c=E
+<ም ስ ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ም ሽ ል ቁ>		c=E
+<ም ሽ ል ቁ>		c=E,base=0
   a=0,v=0
-<ም ሽ ም ሽ>		c=E
+<ም ሽ ም ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሽ ት>		c=A,s=1
+<ም ሽ ት>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a
-<ም ሽ ት>		c=A,s=2
+<ም ሽ ት>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሽ ኩ>		c=B
+<ም ሽ ኩ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሽ ኩ ት>		c=E
+<ም ሽ ኩ ት>		c=E,base=0
   a=0,v=0
-<ም ሽ ክ>		c=B
+<ም ሽ ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሽ ክ ን>		c=E
+<ም ሽ ክ ን>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ም ሽ ው>		c=A
+<ም ሽ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a
-<ም ሽ ይ>		c=A,s=1
+<ም ሽ ይ>		c=A,s=1,base=0
   a=0,v=0
-<ም ሽ ይ>		c=A,s=2
+<ም ሽ ይ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ም ሽ ጉ ጉ>		c=E
+<ም ሽ ጉ ጉ>		c=E,base=a
   a=0,v=a
-<ም ሽ ግ>		c=B
+<ም ሽ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ሽ ጥ>		c=B
+<ም ሽ ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a
-<ም ቁ ሕ>		c=A
+<ም ቁ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ቅ ል>		c=A
+<ም ቅ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ቅ ል ል>		c=E
+<ም ቅ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ም ቅ ል ሕ>		c=E
+<ም ቅ ል ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ቅ ሕ>		c=A
+<ም ቅ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ቅ ር>		c=B
+<ም ቅ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ቅ ር ሕ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ቅ ስ>		c=A
+<ም ቅ ር ሕ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ም ቅ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ቅ ን>		c=B
+<ም ቅ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ቅ ን ይ>		c=E
+<ም ቅ ን ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ቅ ዝ>		c=A
+<ም ቅ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ቅ ጥ>		c=C
+<ም ቅ ጥ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ብ ህ ቁ>		c=J
+<ም ብ ህ ቁ>		c=J,base=p
   a=0,v=a
-<ም ብ ል ሕ>		c=I
+<ም ብ ል ሕ>		c=I,base=0
   a=0,v=a
-<ም ብ ር ክ ክ>		c=G
+<ም ብ ር ክ ክ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ም ብ ር ጥ ጥ>		c=G
+<ም ብ ር ጥ ጥ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ም ብ ድ ብ ድ>		c=G
+<ም ብ ድ ብ ድ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ም ብ ጥ ል>		c=E
-  a=a,v=p
-<ም ብ ጽ ዕ>		c=E
-  a=a,v=p
-<ም ት ሕ ዝ>		c=E
+<ም ብ ጥ ል>		c=F,base=p
+  a=0,v=p
+<ም ብ ጽ ዕ>		c=F,base=p
+  a=0,v=p
+<ም ት ሕ ዝ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ት ር>		c=A
+<ም ት ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ት ር>		c=B
+<ም ት ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ት ር ፍ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ት ት>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ት እ>		c=A
-  a=a,v=p ; a=a,v=a
-<ም ት ክ ል>		c=E
+<ም ት ር ፍ>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ም ች እ>		c=B
+<ም ት ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ም ት እ>		c=C,base=p
+  a=0,v=p ; a=0,v=a
+<ም ት ክ ል>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ም ች እ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ም ች ው>		c=A
+<ም ች ው>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=i,v=a
-<ም ን ህ>		c=A
+<ም ን ህ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ሕ>		c=A
+<ም ን ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ን ም ን>		c=E
+<ም ን ም ን>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ም ን ሽ ር>		c=E
+<ም ን ሽ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ቁ ስ>		c=E
+<ም ን ቁ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ን ቅ ር>		c=E
+<ም ን ቅ ር>		c=E,base=0
   a=0,v=0
-<ም ን ቅ ን>		c=E
+<ም ን ቅ ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ን ብ ር>		c=E
+<ም ን ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ም ን ት ው>		c=E
+<ም ን ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ን ት ግ>		c=E
+<ም ን ት ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ም ን ት ፍ>		c=E
+<ም ን ት ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ን>		c=B
+<ም ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ኩ ስ>		c=E
+<ም ን ኩ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ም ን ክ ል>		c=E
+<ም ን ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ክ ስ>		c=E
+<ም ን ክ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ን ው>		c=A
+<ም ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ን ዕ>		c=A
+<ም ን ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ን ዝ ር>		c=E
+<ም ን ዝ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ን ዝ ዕ>		c=E
+<ም ን ዝ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ይ>		c=B,s=1
+<ም ን ይ>		c=B,s=1,base=p
   a=0,v=p ; a=0,v=a
-<ም ን ይ>		c=B,s=2
+<ም ን ይ>		c=B,s=2,base=p
   a=0,v=p
-<ም ን ድ ብ>		c=E
+<ም ን ድ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ን ጅ ር>		c=E
+<ም ን ጅ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ም ን ጉ ር>		c=E
+<ም ን ጉ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጉ ድ>		c=E
+<ም ን ጉ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ን ግ ን>		c=E
+<ም ን ግ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ን ግ ው>		c=E
+<ም ን ግ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ግ ግ>		c=E
+<ም ን ግ ግ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ን ጥ ል>		c=E
+<ም ን ጥ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ን ጥ ር>		c=E
+<ም ን ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጥ ስ>		c=E
+<ም ን ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ን ጥ ው>		c=E
+<ም ን ጥ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጭ>		c=B
+<ም ን ጭ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጭ ት>		c=E
+<ም ን ጭ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ን ጭ ክ>		c=E
+<ም ን ጭ ክ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ም ን ጭ ው>		c=E
+<ም ን ጭ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጭ ዕ>		c=E
+<ም ን ጭ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ን ጭ ጭ>		c=E
+<ም ን ጭ ጭ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ን ጽ ር>		c=E,s=1
+<ም ን ጽ ር>		c=E,s=1,base=0
   a=0,v=0
-<ም ን ጽ ር>		c=E,s=2
+<ም ን ጽ ር>		c=E,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ም እ ም ን>		c=E
+<ም እ ም ን>		c=E,base=0
   a=0,v=0
-<ም እ ም እ>		c=E
+<ም እ ም እ>		c=E,base=0
   a=0,v=0
-<ም እ ር ር>		c=E
+<ም እ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም እ ክ ል>		c=E
+<ም እ ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም እ ዝ>		c=A
+<ም እ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም እ ዝ ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ም እ ዝ ዝ>		c=E
+<ም እ ዝ ው>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ም እ ድ ድ>		c=E
+<ም እ ዝ ዝ>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ም እ ድ ድ>		c=E,base=p
   a=0,v=p
-<ም ኩ ል ይ>		c=E
+<ም ኩ ል ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ኩ ር>		c=B
+<ም ኩ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ም ኩ ስ ዕ>		c=E
+<ም ኩ ስ ዕ>		c=E,base=a
   a=0,v=a
-<ም ኩ ድ>		c=A
+<ም ኩ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ክ ል>		c=A
+<ም ክ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ክ ል እ>		c=E
+<ም ክ ል እ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ም ክ ሕ>		c=B
+<ም ክ ሕ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ክ ር>		c=A
+<ም ክ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ክ ት>		c=B
+<ም ክ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ክ ን>		c=A
+<ም ክ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ክ ን>		c=B
+<ም ክ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ም ክ ን ይ>		c=E
+<ም ክ ን ይ>		c=E,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ክ ክ>		c=A
+<ም ክ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ክ ይ ን>		c=E
+<ም ክ ይ ን>		c=E,base=0
   a=0,v=0
-<ም ው ል>		c=B
+<ም ው ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ው ስ>		c=B
+<ም ው ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ው ቅ>		c=A
+<ም ው ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ም ው ት>		c=A
+<ም ው ት>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ም ው ጽ>		c=B
+<ም ው ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ም ዕ ል>		c=A
+<ም ዕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ም ዕ ል ግ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ዕ ም ዕ>		c=E
+<ም ዕ ል ግ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ም ዕ ም ዕ>		c=E,base=0
   a=0,v=0
-<ም ዕ ር>		c=A
+<ም ዕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዕ ር ብ>		c=E
+<ም ዕ ር ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዕ ር ይ>		c=E
+<ም ዕ ር ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a ; a=i,v=0
-<ም ዕ ር ግ>		c=E
+<ም ዕ ር ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዕ ስ>		c=A
+<ም ዕ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዕ ሽ>		c=A
+<ም ዕ ሽ>		c=A,base=p
   a=0,v=p ; a=a,v=a
-<ም ዕ ቁ ቁ>		c=E
+<ም ዕ ቁ ቁ>		c=E,base=0
   a=0,v=0
-<ም ዕ ቁ ብ>		c=E
+<ም ዕ ቁ ብ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ም ዕ ብ ል>		c=E
+<ም ዕ ብ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዕ ት>		c=A
+<ም ዕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ም ዕ ት ብ>		c=E
+<ም ዕ ት ብ>		c=E,base=a
   a=0,v=a
-<ም ዕ ዝ>		c=A
+<ም ዕ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዕ ድ>		c=A
+<ም ዕ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ዕ ድ ው>		c=E
+<ም ዕ ድ ው>		c=E,base=a
   a=0,v=a
-<ም ዕ ጉ>		c=A
+<ም ዕ ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዕ ጉ ር>		c=E
+<ም ዕ ጉ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዕ ጥ ጥ>		c=E
+<ም ዕ ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ዝ ሕ ቅ>		c=E
+<ም ዝ ሕ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዝ ም ዝ>		c=E
+<ም ዝ ም ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዝ ብ ል>		c=E
+<ም ዝ ብ ል>		c=E,base=a
   a=a,v=p ; a=a,v=a ; a=0,v=a
-<ም ዝ ብ ር>		c=E
+<ም ዝ ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዝ ን>		c=A
+<ም ዝ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ም ዝ ው>		c=C
+<ም ዝ ው>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=0,v=a
-<ም ዝ ዝ>		c=A
+<ም ዝ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ም ዝ ዝ>		c=B
+<ም ዝ ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዝ ግ ብ>		c=E
+<ም ዝ ግ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ዥ ር ጥ>		c=E
+<ም ዥ ር ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ይ ም ይ>		c=E
+<ም ይ ም ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ይ ስ>		c=B
+<ም ይ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ም ይ ድ ው>		c=E
+<ም ይ ድ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ይ ጥ>		c=A
+<ም ይ ጥ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ም ይ ጽ>		c=B
+<ም ይ ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ድ ም ድ>		c=E
+<ም ድ ም ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ድ ር>		c=A
-  a=a,v=p
-<ም ድ ር>		c=B
+<ም ድ ር>		c=C,base=p
+  a=0,v=p
+<ም ድ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ድ ብ>		c=B
+<ም ድ ብ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ም ድ ው>		c=C
+<ም ድ ው>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ም ድ ይ>		c=C
+<ም ድ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ም ጅ ክ>		c=A
+<ም ጅ ክ>		c=A,base=0
   a=0,v=0
-<ም ጉ ም ጉ>		c=E
+<ም ጉ ም ጉ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጉ ስ ዕ>		c=E
+<ም ጉ ስ ዕ>		c=E,base=a
   a=0,v=a
-<ም ጉ ት>		c=B
+<ም ጉ ት>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ም ጉ ድ>		c=A
+<ም ጉ ድ>		c=A,base=0
   a=0,v=0
-<ም ግ ል>		c=A
+<ም ግ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ግ ም ግ>		c=E
+<ም ግ ም ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ግ ብ>		c=B
+<ም ግ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ግ ን>		c=A
+<ም ግ ን>		c=A,base=0
   a=0,v=0
-<ም ግ ዝ>		c=B
+<ም ግ ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ግ ድ ም>		c=E
-  a=a,v=p
-<ም ግ ድ ር>		c=E
+<ም ግ ድ ም>		c=F,base=p
+  a=0,v=p
+<ም ግ ድ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ግ ግ>		c=A
+<ም ግ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ጥ ል ዕ>		c=E
-  a=a,v=p
-<ም ጥ ም ጥ>		c=E
+<ም ጥ ል ዕ>		c=F,base=p
+  a=0,v=p
+<ም ጥ ም ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጥ ር>		c=A
+<ም ጥ ር>		c=A,base=ip
   a=i,v=p
-<ም ጥ ቅ>		c=A
+<ም ጥ ቅ>		c=A,base=0
   a=0,v=0
-<ም ጥ ን>		c=B
+<ም ጥ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ም ጥ ው>		c=A
+<ም ጥ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጥ ጉ>		c=A
+<ም ጥ ጉ>		c=A,base=0
   a=0,v=0
-<ም ጥ ግ>		c=A
+<ም ጥ ግ>		c=A,base=0
   a=0,v=0
-<ም ጥ ጥ>		c=A
+<ም ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ም ጭ ል ቁ>		c=E
+<ም ጭ ል ቁ>		c=E,base=0
   a=0,v=0
-<ም ጭ ቁ>		c=B
+<ም ጭ ቁ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ም ጭ ቁ ር>		c=E
+<ም ጭ ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ጭ ቅ>		c=B
+<ም ጭ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጭ ን>		c=B
+<ም ጭ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጭ ው>		c=B
+<ም ጭ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ም ጭ ጭ>		c=A
+<ም ጭ ጭ>		c=A,base=0
   a=0,v=0
-<ም ጽ ል ው>		c=E
+<ም ጽ ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ም ጽ ር ይ>		c=E
-  a=a,v=p ; a=a,v=a
-<ም ጽ ቅ>		c=A
+<ም ጽ ር ይ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ም ጽ ቅ>		c=A,base=0
   a=0,v=0
-<ም ጽ ብ ዕ>		c=E
-  a=a,v=p
-<ም ጽ ው ት>		c=E
+<ም ጽ ብ ዕ>		c=F,base=p
+  a=0,v=p
+<ም ጽ ው ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ም ጽ ይ>		c=A
+<ም ጽ ይ>		c=A,base=p
   a=0,v=a ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ም ጽ ድ ቅ>		c=E
-  a=a,v=p
-<ም ጽ ጉ ዕ>		c=E
+<ም ጽ ድ ቅ>		c=F,base=p
+  a=0,v=p
+<ም ጽ ጉ ዕ>		c=E,base=0
   a=0,v=0
-<ም ጽ ጽ>		c=A
+<ም ጽ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ም ፍ ል ይ>		c=E
+<ም ፍ ል ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ር ህ ር ህ>		c=E
+<ር ህ ር ህ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ር ህ ው>		c=A
+<ር ህ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ህ ድ>		c=A
+<ር ህ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ህ ጽ>		c=A
+<ር ህ ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ር ሕ ም>		c=A
+<ር ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ሕ ም ጽ>		c=E
+<ር ሕ ም ጽ>		c=E,base=0
   a=0,v=0
-<ር ሕ ር ሕ>		c=E,s=1
+<ር ሕ ር ሕ>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ር ሕ ር ሕ>		c=E,s=2
+<ር ሕ ር ሕ>		c=E,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ሕ ስ>		c=A
+<ር ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ር ሕ ቅ>		c=A
+<ር ሕ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ሕ ብ>		c=A,s=1
+<ር ሕ ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ር ሕ ብ>		c=A,s=2
+<ር ሕ ብ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ሕ ን>		c=A
+<ር ሕ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ሕ ው>		c=A,s=1
+<ር ሕ ው>		c=A,s=1,base=0
   a=0,v=0
-<ር ሕ ው>		c=A,s=2
+<ር ሕ ው>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ር ሕ ጉ ጥ>		c=E
+<ር ሕ ጉ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ር ሕ ግ ን>		c=E
+<ር ሕ ግ ን>		c=E,base=0
   a=0,v=0
-<ር ሙ ቅ>		c=B
+<ር ሙ ቅ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ር ም ም>		c=A,s=1
+<ር ም ም>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ም ም>		c=A,s=2
+<ር ም ም>		c=A,s=2,base=a
   a=0,v=a
-<ር ም ም>		c=C
+<ር ም ም>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ም ስ>		c=A
+<ር ም ስ>		c=A,base=0
   a=0,v=0
-<ር ም ስ>		c=B
+<ር ም ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ር ም ስ ስ>		c=E,s=1
+<ር ም ስ ስ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ር ም ስ ስ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ር ም ሽ ሽ>		c=E
+<ር ም ስ ስ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ር ም ሽ ሽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ር ም ቅ>		c=A
+<ር ም ቅ>		c=A,base=0
   a=0,v=0
-<ር ም ት ት>		c=E
+<ር ም ት ት>		c=E,base=0
   a=0,v=0
-<ር ም ድ>		c=A,s=1
-  a=0,v=0 ; a=0,v=a
-<ር ም ድ>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ር ም ድ>		c=A,s=3
-  a=0,v=a
-<ር ም ድ ድ>		c=E
+<ር ም ድ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p ; a=a,v=a
+<ር ም ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ም ጥ ጥ>		c=E
+<ር ም ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ር ም ጽ>		c=A
+<ር ም ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ም ጽ>		c=B
+<ር ም ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ር ር ው>		c=A
+<ር ር ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ር ስ ሕ>		c=A
+<ር ስ ሕ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ር ስ ር ስ>		c=E
+<ር ስ ር ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ር ስ ት ይ>		c=E
+<ር ስ ት ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ር ስ ን>		c=A
+<ር ስ ን>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ስ ዕ>		c=B
+<ር ስ ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ር ስ ይ>		c=C
+<ር ስ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ር ሽ ር ሽ>		c=E
+<ር ሽ ር ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ሽ ን>		c=B
+<ር ሽ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቁ ሕ>		c=A
+<ር ቁ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቁ ር ቁ>		c=E
+<ር ቁ ር ቁ>		c=E,base=0
   a=0,v=0
-<ር ቁ ት>		c=C
+<ር ቁ ት>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቁ ጥ>		c=B
+<ር ቁ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቅ ሕ>		c=A
+<ር ቅ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ር ቅ ም>		c=B
+<ር ቅ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቅ ር ቅ>		c=E
+<ር ቅ ር ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ር ቅ ቅ>		c=A
+<ር ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ር ቅ ዕ>		c=B
+<ር ቅ ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ር ቅ ይ>		c=A
+<ር ቅ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ብ ሕ>		c=A
+<ር ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ር ብ ር ብ>		c=E
+<ር ብ ር ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ር ብ ሽ>		c=B
+<ር ብ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ብ ብ>		c=A
+<ር ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ር ብ ው>		c=A
+<ር ብ ው>		c=A,base=0
   a=0,v=0
-<ር ብ ዕ>		c=B
+<ር ብ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ብ ድ>		c=A
+<ር ብ ድ>		c=A,base=a
   a=0,v=a
-<ር ብ ድ ድ>		c=E
+<ር ብ ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ር ብ ጥ>		c=A
+<ር ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ብ ጽ>		c=B
+<ር ብ ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ት ር ት>		c=E
+<ር ት ር ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ር ት ብ>		c=A
+<ር ት ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ር ት ው>		c=C
+<ር ት ው>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ት ዕ>		c=B,s=1
+<ር ት ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ር ት ዕ>		c=B,s=2
-  a=0,v=0
-<ር ት ዕ>		c=B,s=3
-  a=a,v=p ; a=a,v=a
-<ር እ ስ>		c=A
+<ር እ ስ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ር እ ይ>		c=A
+<ር እ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ኩ ም ሽ>		c=E
+<ር ኩ ም ሽ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ር ኩ ስ>		c=A
+<ር ኩ ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=i,v=a
-<ር ኩ ዕ>		c=B
+<ር ኩ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ር ክ ም>		c=B
+<ር ክ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ክ ር ክ>		c=E
+<ር ክ ር ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ር ክ ስ>		c=A
+<ር ክ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ክ ስ>		c=B
+<ር ክ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ክ ብ>		c=A
+<ር ክ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ር ክ እ>		c=A
+<ር ክ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ክ ፍ ክ ፍ>		c=G
+<ር ክ ፍ ክ ፍ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ር ው ሕ>		c=A
+<ር ው ሕ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ር ው ሕ>		c=B
+<ር ው ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a ; a=a,v=a
-<ር ው ስ>		c=A
+<ር ው ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ው እ>		c=A
+<ር ው እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ር ው ይ>		c=A
+<ር ው ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ር ዕ ም>		c=A
+<ር ዕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ዕ ር ዕ>		c=E
+<ር ዕ ር ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ዕ ት>		c=A
+<ር ዕ ት>		c=A,base=p
   a=0,v=p ; a=a,v=a ; a=0,v=a
-<ር ዕ ዝ ው>		c=E
+<ር ዕ ዝ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ር ዕ ድ>		c=A
+<ር ዕ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ዝ ር ዝ>		c=E
+<ር ዝ ር ዝ>		c=E,base=0
   a=0,v=0
-<ር ዝ ን>		c=A
+<ር ዝ ን>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ር ዝ ዝ>		c=A
+<ር ዝ ዝ>		c=A,base=0
   a=0,v=0
-<ር ይ ን>		c=A
+<ር ይ ን>		c=A,base=0
   a=0,v=0
-<ር ይ ዕ>		c=A
+<ር ይ ዕ>		c=A,base=p
   a=0,v=p
-<ር ይ ጥ>		c=B
+<ር ይ ጥ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ር ድ እ>		c=A
+<ር ድ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p,-O ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ር ድ እ>		c=B
+<ር ድ እ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ር ድ ይ>		c=A
+<ር ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ድ ድ>		c=A
+<ር ድ ድ>		c=A,base=a
   a=0,v=a
-<ር ጉ ር ጉ>		c=E
+<ር ጉ ር ጉ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ጉ ብ>		c=A
+<ር ጉ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ጉ ድ>		c=A
+<ር ጉ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ጉ ጥ>		c=B
+<ር ጉ ጥ>		c=B,base=0
   a=0,v=0
-<ር ግ ሕ>		c=A
+<ር ግ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ግ ም>		c=A
+<ር ግ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ር ግ ር ግ>		c=E
+<ር ግ ር ግ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ር ግ ስ>		c=B
+<ር ግ ስ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ር ግ ብ>		c=A
+<ር ግ ብ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ር ግ ብ ግ ብ>		c=G
+<ር ግ ብ ግ ብ>		c=G,base=p
   a=0,v=p
-<ር ግ ት>		c=B
+<ር ግ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ግ እ>		c=A
+<ር ግ እ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ግ ዝ>		c=A
+<ር ግ ዝ>		c=A,base=0
   a=0,v=0
-<ር ግ ድ>		c=A
+<ር ግ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ግ ጥ>		c=B
+<ር ግ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ግ ጽ>		c=A
+<ር ግ ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ር ግ ጽ>		c=B
+<ር ግ ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ር ግ ፍ>		c=A
+<ር ግ ፍ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ር ጥ ር ጥ>		c=E
+<ር ጥ ር ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ጥ ብ>		c=A
+<ር ጥ ብ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ር ጥ ጥ>		c=A
+<ር ጥ ጥ>		c=A,base=p
   a=0,v=p ; a=a,v=a
-<ር ጭ ን>		c=B
+<ር ጭ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ር ጽ ም>		c=A
+<ር ጽ ም>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ር ፍ ር ፍ>		c=E
+<ር ፍ ር ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ፍ ት>		c=B
+<ር ፍ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ፍ ት ት>		c=E
+<ር ፍ ት ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ር ፍ እ>		c=A
+<ር ፍ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ር ፍ ዕ>		c=B,s=1
+<ር ፍ ዕ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ር ፍ ዕ>		c=B,s=2
+<ር ፍ ዕ>		c=B,s=2,base=p
   a=0,v=p
-<ር ፍ ድ>		c=A
+<ር ፍ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ር ፕ ስ>		c=B
+<ር ፕ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሱ ም ሱ ም>		c=E
+<ሱ ም ሱ ም>		c=E,base=0
   a=0,v=0
-<ሱ ክ ል ል>		c=E
+<ሱ ክ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ህ ል>		c=A,s=1
-  a=0,v=0 ; a=a,v=p
-<ስ ህ ል>		c=A,s=2
-  a=a,v=p
-<ስ ህ ር>		c=A
+<ስ ህ ል>		c=A,s=1,base=0
+  a=0,v=0 ; a=0,v=p
+<ስ ህ ል>		c=A,s=2,base=p
+  a=0,v=p
+<ስ ህ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ህ ብ ብ>		c=E
+<ስ ህ ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ህ ን ን>		c=E
+<ስ ህ ን ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ስ ል ል>		c=A
+<ስ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ል>		c=B
+<ስ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ሕ>		c=A
+<ስ ል ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=a ; a=0,v=a
-<ስ ል ሕ>		c=C
+<ስ ል ሕ>		c=C,base=0
   a=0,v=0
-<ስ ል ሕ ም>		c=E
+<ስ ል ሕ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ም>		c=A,s=1
+<ስ ል ም>		c=A,s=1,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ስ ል ም>		c=A,s=2
+<ስ ል ም>		c=A,s=2,base=a
   a=0,v=a
-<ስ ል ም>		c=B,s=1
+<ስ ል ም>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ም>		c=B,s=2
+<ስ ል ም>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ም ት>		c=E
+<ስ ል ም ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ስ>		c=B
+<ስ ል ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ስ ል>		c=E
+<ስ ል ስ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ል ቅ>		c=A
+<ስ ል ቅ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ል ቅ>		c=B
+<ስ ል ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ብ>		c=A
+<ስ ል ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ብ ጥ>		c=E
+<ስ ል ብ ጥ>		c=E,base=p
   a=0,v=p
-<ስ ል ት>		c=A
+<ስ ል ት>		c=A,base=0
   a=0,v=0
-<ስ ል ት>		c=B
+<ስ ል ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ል ት ት>		c=E
+<ስ ል ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ኩ>		c=A
+<ስ ል ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ክ ም>		c=E
+<ስ ል ክ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ክ ይ>		c=E
+<ስ ል ክ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ው>		c=A
+<ስ ል ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ዕ>		c=A
+<ስ ል ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ስ ል ዕ>		c=B
+<ስ ል ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ዕ ድ>		c=E
+<ስ ል ዕ ድ>		c=E,base=0
   a=0,v=0
-<ስ ል ይ>		c=A
+<ስ ል ይ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ል ይ>		c=B
+<ስ ል ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ስ ል ድ>		c=B
+<ስ ል ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ጉ ም>		c=E
+<ስ ል ጉ ም>		c=E,base=0
   a=0,v=0
-<ስ ል ግ>		c=B
+<ስ ል ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ጥ>		c=A
+<ስ ል ጥ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ል ጥ ን>		c=E
+<ስ ል ጥ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ል ፍ>		c=B,s=1
+<ስ ል ፍ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ስ ል ፍ>		c=B,s=2
+<ስ ል ፍ>		c=B,s=2,base=p
   a=0,v=p ; a=0,v=a ; a=a,v=a
-<ስ ል ፍ ዕ>		c=E
+<ስ ል ፍ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ል ፍ ፍ>		c=E
+<ስ ል ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ሕ ል>		c=A,s=1
+<ስ ሕ ል>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ሕ ል>		c=A,s=2
+<ስ ሕ ል>		c=A,s=2,base=p
   a=0,v=p
-<ስ ሕ ም ም>		c=E
+<ስ ሕ ም ም>		c=E,base=0
   a=0,v=0
-<ስ ሕ ር>		c=A
+<ስ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ሕ ስ ሕ>		c=E
+<ስ ሕ ስ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ሕ ቅ>		c=A
+<ስ ሕ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ሕ ብ>		c=A
+<ስ ሕ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ስ ሕ ብ ብ>		c=E
+<ስ ሕ ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ሕ ት>		c=A
+<ስ ሕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ስ ሕ ት ት>		c=E
+<ስ ሕ ት ት>		c=E,base=0
   a=0,v=0
-<ስ ሕ ን>		c=A
+<ስ ሕ ን>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ስ ሕ ው>		c=A
+<ስ ሕ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ሕ ይ>		c=A
+<ስ ሕ ይ>		c=A,base=p
   a=0,v=p
-<ስ ሕ ድ ይ>		c=E
+<ስ ሕ ድ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ሕ ግ>		c=A
+<ስ ሕ ግ>		c=A,base=p
   a=0,v=p
-<ስ ም ል>		c=A
+<ስ ም ል>		c=A,base=p
   a=0,v=p
-<ስ ም ም>		c=B
+<ስ ም ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ም ር>		c=A
+<ስ ም ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ስ ም ር>		c=B
+<ስ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ም ስ ም>		c=E
+<ስ ም ስ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ም ቁ>		c=A
+<ስ ም ቁ>		c=A,base=0
   a=0,v=0
-<ስ ም ብ ር>		c=E
+<ስ ም ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ም ብ እ>		c=E
+<ስ ም ብ እ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ም ን>		c=B,s=1
+<ስ ም ን>		c=B,s=1,base=0
   a=0,v=0
-<ስ ም ን>		c=B,s=2
+<ስ ም ን>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ም ዕ>		c=A
+<ስ ም ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ስ ም ዕ>		c=B
+<ስ ም ዕ>		c=B,base=0
   a=0,v=0
-<ስ ም ይ>		c=A
+<ስ ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ም ድ>		c=B
+<ስ ም ድ>		c=B,base=0
   a=0,v=0
-<ስ ም ጥ>		c=A
+<ስ ም ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ር ሕ>		c=A,s=1
+<ስ ር ሕ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ስ ር ሕ>		c=A,s=2
+<ስ ር ሕ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ር ሕ>		c=B
+<ስ ር ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ር>		c=A
+<ስ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ስ ር ስ ር>		c=E,s=1
+<ስ ር ስ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ስ ር>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ስ ር ቅ>		c=A,s=1
+<ስ ር ስ ር>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ስ ር ቅ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ስ ር ቅ>		c=A,s=2
+<ስ ር ቅ>		c=A,s=2,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ስ ር ብ>		c=A
+<ስ ር ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ር ት>		c=B
+<ስ ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ን>		c=B
+<ስ ር ን>		c=B,base=0
   a=0,v=0
-<ስ ር ን ቅ>		c=E
+<ስ ር ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ው>		c=A
+<ስ ር ው>		c=A,base=0
   a=0,v=0
-<ስ ር ዕ>		c=A
+<ስ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ስ ር ዝ>		c=B
+<ስ ር ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ይ>		c=A
+<ስ ር ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ይ>		c=B,s=1
+<ስ ር ይ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ይ>		c=B,s=2
+<ስ ር ይ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ድ>		c=A
+<ስ ር ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ር ጉ ድ>		c=E
+<ስ ር ጉ ድ>		c=E,base=p
   a=0,v=p
-<ስ ር ግ>		c=A
+<ስ ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ር ግ ው>		c=E
+<ስ ር ግ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ጥ ይ>		c=E
-  a=a,v=p ; a=a,v=a
-<ስ ር ጽ>		c=A
+<ስ ር ጥ ይ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ስ ር ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ር ፍ>		c=A
+<ስ ር ፍ>		c=A,base=0
   a=0,v=0
-<ስ ስ ሕ>		c=A
+<ስ ስ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ስ ን>		c=B
+<ስ ስ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ስ ክ>		c=A
+<ስ ስ ክ>		c=A,base=0
   a=0,v=0
-<ስ ስ ዕ>		c=B
+<ስ ስ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ስ ይ>		c=A
+<ስ ስ ይ>		c=A,base=0
   a=0,v=0
-<ስ ስ ይ>		c=C
+<ስ ስ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ቁ ም ቁ ም>		c=G
+<ስ ቁ ም ቁ ም>		c=G,base=p
   a=0,v=a
-<ስ ቁ ር>		c=A
+<ስ ቁ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ቁ ር ር>		c=E
+<ስ ቁ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ቁ ር ቁ ር>		c=G
+<ስ ቁ ር ቁ ር>		c=G,base=p
   a=0,v=a
-<ስ ቁ ን ቁ ን>		c=G
+<ስ ቁ ን ቁ ን>		c=G,base=p
   a=0,v=a
-<ስ ቅ ል>		c=A
+<ስ ቅ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ቅ ስ ቅ>		c=E
+<ስ ቅ ስ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ቅ ቅ>		c=A
+<ስ ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ስ ቅ ቅ>		c=B
+<ስ ቅ ቅ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ስ ቅ ይ>		c=C
+<ስ ቅ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ቅ ጥ>		c=A
+<ስ ቅ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ል>		c=B
+<ስ ብ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p
-<ስ ብ ል ል>		c=E
+<ስ ብ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ብ ሕ>		c=A
+<ስ ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ሕ>		c=B,s=1
+<ስ ብ ሕ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ሕ>		c=B,s=2
+<ስ ብ ሕ>		c=B,s=2,base=0
   a=0,v=0
-<ስ ብ ር>		c=A
+<ስ ብ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ስ ብ ስ ብ>		c=E
+<ስ ብ ስ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ብ ቁ>		c=A
+<ስ ብ ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ቅ ል>		c=E
+<ስ ብ ቅ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ብ ብ>		c=B
+<ስ ብ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ብ ት>		c=B
+<ስ ብ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ን>		c=A
+<ስ ብ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ ን>		c=B
+<ስ ብ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ብ እ>		c=B
+<ስ ብ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ብ ክ>		c=A,s=1
+<ስ ብ ክ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ብ ክ>		c=A,s=2
+<ስ ብ ክ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ብ ዕ>		c=B,s=1
+<ስ ብ ዕ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ብ ዕ>		c=B,s=2
+<ስ ብ ዕ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ት ል>		c=B
+<ስ ት ል>		c=B,base=0
   a=0,v=0
-<ስ ት ል ም>		c=I
+<ስ ት ል ም>		c=I,base=0
   a=0,v=p ; a=0,v=a
-<ስ ት ም ስ ል>		c=G
+<ስ ት ም ስ ል>		c=G,base=p
   a=a,v=a
-<ስ ት ር>		c=A
+<ስ ት ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ት ር>		c=B
+<ስ ት ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ት ር ሕ ው>		c=G
+<ስ ት ር ሕ ው>		c=G,base=p
   a=0,v=a
-<ስ ት ር ር>		c=J
+<ስ ት ር ር>		c=J,base=p
   a=0,v=p ; a=0,v=a
-<ስ ት ት>		c=A
+<ስ ት ት>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ት ን ክ ር>		c=G
+<ስ ት ን ክ ር>		c=G,base=p
   a=0,v=a
-<ስ ት እ ም ር>		c=G
+<ስ ት እ ም ር>		c=G,base=p
   a=0,v=a ; a=0,v=p
-<ስ ት ኩ>		c=A
+<ስ ት ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ት ው ዕ ል>		c=G
+<ስ ት ው ዕ ል>		c=G,base=p
   a=0,v=a
-<ስ ት ው ድ ይ>		c=G
+<ስ ት ው ድ ይ>		c=G,base=p
   a=a,v=a
-<ስ ት ይ>		c=A
+<ስ ት ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ት ጽ ም እ>		c=G
+<ስ ት ጽ ም እ>		c=G,base=p
   a=0,v=a
-<ስ ት ፍ>		c=A
+<ስ ት ፍ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ን ስ ን>		c=E
+<ስ ን ስ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ን ቅ>		c=A
+<ስ ን ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ቅ ር>		c=E
+<ስ ን ቅ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ስ ን ቅ ብ>		c=F
+<ስ ን ቅ ብ>		c=F,base=a
   a=0,v=a
-<ስ ን ቅ ው>		c=E
+<ስ ን ቅ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ን ብ>		c=A
+<ስ ን ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ብ ት>		c=E
+<ስ ን ብ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ስ ን ብ ድ>		c=E
+<ስ ን ብ ድ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ስ ን ት ር>		c=E
+<ስ ን ት ር>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ን>		c=B,s=1
+<ስ ን ን>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ን ን>		c=B,s=2
+<ስ ን ን>		c=B,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ስ ን ኩ ር>		c=E
+<ስ ን ኩ ር>		c=E,base=p
   a=0,v=p ; a=a,v=p ; a=0,v=a
-<ስ ን ኩ ብ>		c=E
+<ስ ን ኩ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ስ ን ክ ል>		c=E
+<ስ ን ክ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ን ክ ም>		c=E
+<ስ ን ክ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ን ክ ት>		c=E
+<ስ ን ክ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ን ክ ፍ>		c=E
+<ስ ን ክ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ው>		c=A
+<ስ ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ዕ>		c=B
+<ስ ን ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ን ዝ ር>		c=E
+<ስ ን ዝ ር>		c=E,base=0
   a=0,v=0
-<ስ ን ይ>		c=A
+<ስ ን ይ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ስ ን ይ>		c=B
+<ስ ን ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ን ድ>		c=B
+<ስ ን ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ድ እ>		c=E
-  a=a,v=p ; a=a,v=a
-<ስ ን ድ ው>		c=E,s=1
+<ስ ን ድ እ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ስ ን ድ ው>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ን ድ ው>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ስ ን ድ ድ>		c=E
+<ስ ን ድ ው>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ስ ን ድ ድ>		c=E,base=0
   a=0,v=0
-<ስ ን ግ>		c=A
+<ስ ን ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ን ግ ል>		c=E
+<ስ ን ግ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ስ ን ግ ው>		c=E
+<ስ ን ግ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ጥ ቅ>		c=E
+<ስ ን ጥ ቅ>		c=E,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ስ ን ጭ ር>		c=E
+<ስ ን ጭ ር>		c=E,base=0
   a=0,v=0
-<ስ ን ፍ>		c=A
+<ስ ን ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ን ፍ>		c=B
+<ስ ን ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ እ ል>		c=A,s=1
+<ስ እ ል>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ እ ል>		c=A,s=2
+<ስ እ ል>		c=A,s=2,base=p
   a=0,v=p
-<ስ እ ን>		c=A
+<ስ እ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ኩ ስ ኩ>		c=E
+<ስ ኩ ስ ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ኩ ዕ>		c=B
+<ስ ኩ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ሕ>		c=B
+<ስ ክ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ሕ ክ ሕ>		c=G
+<ስ ክ ሕ ክ ሕ>		c=G,base=p
   a=0,v=a
-<ስ ክ ም>		c=B
+<ስ ክ ም>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ስ ክ ር>		c=A
+<ስ ክ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ክ ር ክ ር>		c=G
+<ስ ክ ር ክ ር>		c=G,base=p
   a=0,v=p
-<ስ ክ ስ ክ>		c=E
+<ስ ክ ስ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ብ>		c=A,s=1
+<ስ ክ ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ክ ብ>		c=A,s=2
+<ስ ክ ብ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ት ት>		c=E
+<ስ ክ ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ን>		c=A
+<ስ ክ ን>		c=A,base=0
   a=0,v=0
-<ስ ክ እ>		c=A
+<ስ ክ እ>		c=A,base=a
   a=0,v=a
-<ስ ክ ዕ>		c=A
+<ስ ክ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ፍ>		c=B
+<ስ ክ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ክ ፍ ክ ፍ>		c=G
+<ስ ክ ፍ ክ ፍ>		c=G,base=p
   a=0,v=a
-<ስ ው ል>		c=A
+<ስ ው ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ው ሕ>		c=B
+<ስ ው ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ው ር>		c=A
+<ስ ው ር>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ው ር>		c=B
+<ስ ው ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ው ት>		c=B
+<ስ ው ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ው ን>		c=B
+<ስ ው ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ው ን ው ን>		c=G
+<ስ ው ን ው ን>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ስ ው እ>		c=B
+<ስ ው እ>		c=B,base=0
   a=0,v=0
-<ስ ው ዕ>		c=B
+<ስ ው ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ው ይ>		c=A
+<ስ ው ይ>		c=A,base=0
   a=0,v=0
-<ስ ው ይ>		c=B
+<ስ ው ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ው ድ>		c=B
+<ስ ው ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ው ጥ>		c=B
+<ስ ው ጥ>		c=B,base=p
   a=0,v=p
-<ስ ዕ ል>		c=A,s=1
+<ስ ዕ ል>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ስ ዕ ል>		c=A,s=2
+<ስ ዕ ል>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ዕ ም>		c=A
+<ስ ዕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ስ ዕ ር>		c=A
+<ስ ዕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ስ ዕ ር ር>		c=E
+<ስ ዕ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ዕ ስ ዕ>		c=E
+<ስ ዕ ስ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a ; a=a,v=a
-<ስ ዕ ብ>		c=A
+<ስ ዕ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ስ ዕ ት>		c=A
+<ስ ዕ ት>		c=A,base=a
   a=0,v=a
-<ስ ዝ ይ>		c=A
+<ስ ዝ ይ>		c=A,base=0
   a=0,v=0
-<ስ ዝ ይ>		c=C
+<ስ ዝ ይ>		c=C,base=0
   a=0,v=0
-<ስ ይ ል>		c=B
+<ስ ይ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ይ ሕ>		c=B
+<ስ ይ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ይ ም>		c=A
+<ስ ይ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ይ ም>		c=B
+<ስ ይ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ይ ብ>		c=B
+<ስ ይ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ይ ት>		c=A
+<ስ ይ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ይ እ>		c=B
+<ስ ይ እ>		c=B,base=0
   a=0,v=0
-<ስ ይ ክ>		c=B
+<ስ ይ ክ>		c=B,base=0
   a=0,v=0
-<ስ ይ ግ>		c=B
+<ስ ይ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ይ ጥ ን>		c=E
+<ስ ይ ጥ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ይ ፍ>		c=B
+<ስ ይ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ስ ድ ም ም>		c=I
+<ስ ድ ም ም>		c=I,base=0
   a=0,v=a
-<ስ ድ ር>		c=A
+<ስ ድ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ድ ር>		c=B
+<ስ ድ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ድ ስ>		c=B
+<ስ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ድ ብ>		c=A
+<ስ ድ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ስ ድ ብ>		c=B
+<ስ ድ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ድ ዕ>		c=A
+<ስ ድ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ድ ድ>		c=A
+<ስ ድ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ድ ድ>		c=B
+<ስ ድ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ጉ ም>		c=B
+<ስ ጉ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ጉ ዕ>		c=A
+<ስ ጉ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ጉ ድ>		c=B
+<ስ ጉ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ስ ጉ ድ ም>		c=E
+<ስ ጉ ድ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ጉ ጉ>		c=A
+<ስ ጉ ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ግ ል>		c=A
+<ስ ግ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ስ ግ ም>		c=C
+<ስ ግ ም>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ር>		c=A
+<ስ ግ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ስ ግ ር>		c=B,s=1
+<ስ ግ ር>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ግ ር>		c=B,s=2
+<ስ ግ ር>		c=B,s=2,base=0
   a=0,v=0
-<ስ ግ ስ ግ>		c=E,s=1
+<ስ ግ ስ ግ>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ስ ግ>		c=E,s=2
+<ስ ግ ስ ግ>		c=E,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ግ ብ>		c=A
+<ስ ግ ብ>		c=A,base=0
   a=0,v=0
-<ስ ግ ን>		c=B
+<ስ ግ ን>		c=B,base=0
   a=0,v=0
-<ስ ግ እ>		c=A
+<ስ ግ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ው>		c=B
+<ስ ግ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ዕ>		c=A
+<ስ ግ ዕ>		c=A,base=0
   a=0,v=0
-<ስ ግ ድ>		c=A,s=1
+<ስ ግ ድ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ድ>		c=A,s=2
+<ስ ግ ድ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ግ ድ>		c=B
+<ስ ግ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ግ ድ ግ ድ>		c=G
+<ስ ግ ድ ግ ድ>		c=G,base=p
   a=0,v=a
-<ስ ግ ግ>		c=A
+<ስ ግ ግ>		c=A,base=0
   a=0,v=0
-<ስ ግ ጥ>		c=B
+<ስ ግ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ጥ ሕ>		c=A
+<ስ ጥ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ጥ ም>		c=A
+<ስ ጥ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ጥ ር>		c=A
+<ስ ጥ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ጥ ይ>		c=B
+<ስ ጥ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ስ ጥ ጥ>		c=A
+<ስ ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ጥ ፍ>		c=B
+<ስ ጥ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ስ ጽ ይ>		c=C
+<ስ ጽ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ስ ፍ ል>		c=A
+<ስ ፍ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ፍ ል ል>		c=E
+<ስ ፍ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ፍ ል ፍ ል>		c=G
+<ስ ፍ ል ፍ ል>		c=G,base=p
   a=0,v=a
-<ስ ፍ ሕ>		c=A
+<ስ ፍ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ፍ ሕ ፍ ሕ>		c=G
+<ስ ፍ ሕ ፍ ሕ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ስ ፍ ር>		c=A
+<ስ ፍ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ስ ፍ ር>		c=C
+<ስ ፍ ር>		c=C,base=0
   a=0,v=0
-<ስ ፍ ስ ፍ>		c=E
+<ስ ፍ ስ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=0,v=p
-<ስ ፍ ን>		c=A
+<ስ ፍ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ፍ ን ግ>		c=E
+<ስ ፍ ን ግ>		c=E,base=0
   a=0,v=0
-<ስ ፍ ይ>		c=A
+<ስ ፍ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ስ ፍ ይ>		c=C
+<ስ ፍ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ፍ ግ>		c=C
+<ስ ፍ ግ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ስ ፍ ጥ>		c=A
+<ስ ፍ ጥ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ስ ፍ ፍ>		c=A
+<ስ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ል ል>		c=A
+<ሽ ል ል>		c=A,base=0
   a=0,v=0
-<ሽ ል ል>		c=B
+<ሽ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ል ሕ>		c=B
+<ሽ ል ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ል ም>		c=B
+<ሽ ል ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ሽ ል ም ም>		c=E
+<ሽ ል ም ም>		c=E,base=0
   a=0,v=0
-<ሽ ል ቁ>		c=A
+<ሽ ል ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ል ብ ብ>		c=E
+<ሽ ል ብ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ሽ ል ት>		c=A
+<ሽ ል ት>		c=A,base=0
   a=0,v=0
-<ሽ ል ት>		c=B
+<ሽ ል ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ል ት ም>		c=E
+<ሽ ል ት ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ል ት ት>		c=E
+<ሽ ል ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ል ኩ ኩ>		c=E
+<ሽ ል ኩ ኩ>		c=E,base=0
   a=0,v=0
-<ሽ ል ክ ፍ>		c=E
+<ሽ ል ክ ፍ>		c=E,base=0
   a=0,v=0
-<ሽ ል ግ>		c=B
+<ሽ ል ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ሕ ር>		c=A
+<ሽ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ሕ ር ም>		c=E
+<ሽ ሕ ር ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ሕ ሽ ሕ>		c=E
+<ሽ ሕ ሽ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ሕ ን>		c=A
+<ሽ ሕ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ሕ ክ ር>		c=E
+<ሽ ሕ ክ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ሕ ግ ር>		c=E
+<ሽ ሕ ግ ር>		c=E,base=0
   a=0,v=0
-<ሽ ሕ ግ ት>		c=E
+<ሽ ሕ ግ ት>		c=E,base=0
   a=0,v=0
-<ሽ ሕ ጥ>		c=A
+<ሽ ሕ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ም ል>		c=B
+<ሽ ም ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሽ ም ል ቁ>		c=E
+<ሽ ም ል ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ም ም>		c=A
+<ሽ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ም ር ር>		c=E
+<ሽ ም ር ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ሽ ም ሽ ም>		c=E
+<ሽ ም ሽ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ም ቅ ቅ>		c=E
+<ሽ ም ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ም ብ ብ>		c=E
+<ሽ ም ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ም ት>		c=A
+<ሽ ም ት>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ሽ ም ት>		c=B
+<ሽ ም ት>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=0
-<ሽ ም እ>		c=A
-  a=a,v=p
-<ሽ ም ው>		c=A
+<ሽ ም እ>		c=C,base=p
+  a=0,v=p
+<ሽ ም ው>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ሽ ም ድ>		c=A
+<ሽ ም ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ሽ ም ድ ድ>		c=E
+<ሽ ም ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ም ግ ል>		c=E
+<ሽ ም ግ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ም ግ ግ>		c=E
+<ሽ ም ግ ግ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ም ጥ>		c=C
+<ሽ ም ጥ>		c=C,base=0
   a=0,v=0
-<ሽ ም ጥ ጥ>		c=E
+<ሽ ም ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ር ሕ>		c=B
+<ሽ ር ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ሙ ጥ>		c=E
+<ሽ ር ሙ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ር ም ም>		c=E
+<ሽ ር ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ሽ ር>		c=E
+<ሽ ር ሽ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ቁ ቁ>		c=E
+<ሽ ር ቁ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ር ብ>		c=A,s=1
+<ሽ ር ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ብ>		c=A,s=2
+<ሽ ር ብ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ር ብ ብ>		c=E
+<ሽ ር ብ ብ>		c=E,base=0
   a=0,v=0
-<ሽ ር ብ ጥ>		c=E
+<ሽ ር ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ር ት>		c=B
+<ሽ ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ር ት ፍ>		c=F
+<ሽ ር ት ፍ>		c=F,base=a
   a=0,v=a
-<ሽ ር እ>		c=B
+<ሽ ር እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ር ኩ ሕ>		c=E
+<ሽ ር ኩ ሕ>		c=E,base=0
   a=0,v=0
-<ሽ ር ክ>		c=A
+<ሽ ር ክ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ሽ ር ው>		c=A,s=1
+<ሽ ር ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ው>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ሽ ር ዕ ን>		c=E
+<ሽ ር ው>		c=C,base=p
+  a=0,v=p ; a=0,v=a
+<ሽ ር ዕ ን>		c=E,base=0
   a=0,v=0
-<ሽ ር ጉ ጥ>		c=E
+<ሽ ር ጉ ጥ>		c=E,base=0
   a=0,v=0
-<ሽ ር ጥ>		c=B
+<ሽ ር ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ጥ ጥ>		c=E
+<ሽ ር ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ር ጥ ፍ>		c=E
+<ሽ ር ጥ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ር ፍ>		c=A,s=1
+<ሽ ር ፍ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a
-<ሽ ር ፍ>		c=A,s=2
+<ሽ ር ፍ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ሽ ይ>		c=A
+<ሽ ሽ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ሽ ግ>		c=A
+<ሽ ሽ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ቁ ል>		c=B
+<ሽ ቁ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ቁ ር ር>		c=E
+<ሽ ቁ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ቁ ጥ>		c=C
+<ሽ ቁ ጥ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ቁ ጥ ቁ ጥ>		c=G
+<ሽ ቁ ጥ ቁ ጥ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ሽ ቅ ል>		c=A
+<ሽ ቅ ል>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ሽ ቅ ል>		c=B
+<ሽ ቅ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ቅ ም ጥ>		c=E
+<ሽ ቅ ም ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ቅ ሽ ቅ>		c=E
+<ሽ ቅ ሽ ቅ>		c=E,base=0
   a=0,v=0
-<ሽ ቅ ብ ጥ>		c=E
+<ሽ ቅ ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ቅ ጥ>		c=B
+<ሽ ቅ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ሽ ቡ ጥ>		c=C
+<ሽ ቡ ጥ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ብ ል ል>		c=E
+<ሽ ብ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ብ ር>		c=B
+<ሽ ብ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሽ ብ ር ር>		c=E
+<ሽ ብ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ብ ሽ ብ>		c=E
+<ሽ ብ ሽ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ብ ብ>		c=A
+<ሽ ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ብ ብ>		c=C
+<ሽ ብ ብ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ብ ት>		c=B
+<ሽ ብ ት>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ሽ ብ ን>		c=A
+<ሽ ብ ን>		c=A,base=ap
   a=a,v=p
-<ሽ ብ ዕ>		c=A
+<ሽ ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ብ ዕ>		c=B
+<ሽ ብ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ብ ድ ብ ድ>		c=G
+<ሽ ብ ድ ብ ድ>		c=G,base=p
   a=0,v=a
-<ሽ ብ ድ ዕ>		c=E
+<ሽ ብ ድ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ት ት>		c=B
+<ሽ ት ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ት እ>		c=B
+<ሽ ት እ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ሽ ን ሕ>		c=A
+<ሽ ን ሕ>		c=A,base=p
   a=0,v=p
-<ሽ ን ሽ ን>		c=E
+<ሽ ን ሽ ን>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ሽ ን ቁ ጥ>		c=E
+<ሽ ን ቁ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ቅ>		c=A
+<ሽ ን ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ን ቅ ቅ>		c=E
+<ሽ ን ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ቅ ብ>		c=F
+<ሽ ን ቅ ብ>		c=F,base=a
   a=0,v=a
-<ሽ ን ቅ ጥ>		c=E
+<ሽ ን ቅ ጥ>		c=E,base=0
   a=0,v=0
-<ሽ ን ብ ብ>		c=E
+<ሽ ን ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ን ን>		c=B
+<ሽ ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ኩ ሕ>		c=E
+<ሽ ን ኩ ሕ>		c=E,base=0
   a=0,v=0
-<ሽ ን ክ ር>		c=E
+<ሽ ን ክ ር>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ሽ ን ክ ፍ>		c=E
+<ሽ ን ክ ፍ>		c=E,base=0
   a=0,v=0
-<ሽ ን ድ ሕ>		c=E
+<ሽ ን ድ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ጉ ሕ>		c=E
+<ሽ ን ጉ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ን ጉ ጉ>		c=E
+<ሽ ን ጉ ጉ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ግ ል>		c=E
+<ሽ ን ግ ል>		c=E,base=0
   a=0,v=0
-<ሽ ን ጥ ጥ>		c=E
+<ሽ ን ጥ ጥ>		c=E,base=0
   a=0,v=0
-<ሽ ን ፍ>		c=B
+<ሽ ን ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሽ ን ፍ ው>		c=E
+<ሽ ን ፍ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ን ፍ ፍ>		c=E
+<ሽ ን ፍ ፍ>		c=E,base=0
   a=0,v=0
-<ሽ ኩ ል>		c=B
+<ሽ ኩ ል>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ኩ ሽ ኩ>		c=E
+<ሽ ኩ ሽ ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ኩ ብ>		c=B
+<ሽ ኩ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ኩ ን>		c=B
+<ሽ ኩ ን>		c=B,base=0
   a=0,v=0
-<ሽ ኩ ን ድ ር>		c=G
+<ሽ ኩ ን ድ ር>		c=G,base=p
   a=0,v=a
-<ሽ ኩ ኩ>		c=A
+<ሽ ኩ ኩ>		c=A,base=0
   a=0,v=0
-<ሽ ኩ ክ>		c=A
+<ሽ ኩ ክ>		c=A,base=a
   a=0,v=a
-<ሽ ኩ ዕ>		c=B
+<ሽ ኩ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ሽ ክ ል>		c=A
+<ሽ ክ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ክ ም>		c=B
+<ሽ ክ ም>		c=B,base=p
   a=0,v=p
-<ሽ ክ ር ክ ር>		c=G
+<ሽ ክ ር ክ ር>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ሽ ክ ሽ ክ>		c=E
+<ሽ ክ ሽ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ክ ት>		c=A
+<ሽ ክ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ክ ዕ>		c=A
+<ሽ ክ ዕ>		c=A,base=a
   a=0,v=a
-<ሽ ክ ዕ ል ል>		c=G
+<ሽ ክ ዕ ል ል>		c=G,base=p
   a=0,v=a
-<ሽ ው ህ>		c=B
+<ሽ ው ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ው ም>		c=A
+<ሽ ው ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ው ር>		c=C
+<ሽ ው ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ው ር ር>		c=E
+<ሽ ው ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ው ሽ>		c=B
+<ሽ ው ሽ>		c=B,base=0
   a=0,v=0
-<ሽ ው ዝ>		c=B
+<ሽ ው ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ይ ም>		c=A
+<ሽ ይ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ይ ብ>		c=B
+<ሽ ይ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ይ ን>		c=A
+<ሽ ይ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ይ ጥ>		c=A
+<ሽ ይ ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ሽ ድ ን>		c=B
+<ሽ ድ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ድ ድ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ሽ ድ ድ>		c=A,s=2
-  a=0,v=p ; a=0,v=a
-<ሽ ድ ድ>		c=A,s=3
-  a=a,v=a
-<ሽ ጉ ር>		c=B
+<ሽ ድ ድ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
+<ሽ ጉ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ጉ ዕ>		c=B
+<ሽ ጉ ዕ>		c=B,base=0
   a=0,v=0
-<ሽ ጉ ጥ>		c=B
+<ሽ ጉ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ግ ር>		c=B
+<ሽ ግ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ግ ሽ ግ>		c=E
-  a=a,v=p
-<ሽ ግ ት>		c=B
+<ሽ ግ ሽ ግ>		c=F,base=p
+  a=0,v=p
+<ሽ ግ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ግ ዕ>		c=A
+<ሽ ግ ዕ>		c=A,base=a
   a=0,v=a
-<ሽ ግ ግ>		c=A
+<ሽ ግ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ሽ ግ ጥ>		c=B
+<ሽ ግ ጥ>		c=B,base=0
   a=0,v=0
-<ሽ ጥ ር>		c=C
+<ሽ ጥ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ጥ ፍ>		c=B
+<ሽ ጥ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሽ ፍ ት>		c=B
+<ሽ ፍ ት>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ሽ ፍ ን>		c=B
+<ሽ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ሽ ፍ ግ>		c=A
+<ሽ ፍ ግ>		c=A,base=0
   a=0,v=0
-<ሽ ፍ ጥ>		c=B
+<ሽ ፍ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ሽ ፍ ፍ>		c=A
+<ሽ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ል ል>		c=B
+<ቁ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ል ው>		c=I
+<ቁ ል ል ው>		c=I,base=0
   a=0,v=a
-<ቁ ል ም>		c=B
+<ቁ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ም ም>		c=E
+<ቁ ል ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ል ም ጽ>		c=E
+<ቁ ል ም ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a
-<ቁ ል ቁ ል>		c=E
+<ቁ ል ቁ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ል ብ>		c=A
+<ቁ ል ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ቁ ል ዕ>		c=B,s=1
+<ቁ ል ዕ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ዕ>		c=B,s=2
+<ቁ ል ዕ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ል ዕ ም>		c=E
+<ቁ ል ዕ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ዕ ጽ>		c=E
+<ቁ ል ዕ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ፍ>		c=B,s=1
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ል ፍ>		c=B,s=2
-  a=a,v=a
-<ቁ ሕ ም>		c=A
+<ቁ ል ፍ>		c=B,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
+<ቁ ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቁ ሕ ም ም>		c=E
+<ቁ ሕ ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ም ል>		c=A
+<ቁ ም ል>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ቁ ም ር>		c=A
+<ቁ ም ር>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ቁ ም ስ>		c=B
+<ቁ ም ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ም ት>		c=B
+<ቁ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ም ት>		c=C
+<ቁ ም ት>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ቁ ም ዕ>		c=B
+<ቁ ም ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ም ጥ>		c=A
+<ቁ ም ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቁ ም ጥ ዕ>		c=E
+<ቁ ም ጥ ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቁ ም ጭ ጭ>		c=E
+<ቁ ም ጭ ጭ>		c=E,base=0
   a=0,v=0
-<ቁ ር ሕ>		c=A
+<ቁ ር ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቁ ር ም ም>		c=E
+<ቁ ር ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ር ም ር ም>		c=G
+<ቁ ር ም ር ም>		c=G,base=p
   a=0,v=a
-<ቁ ር ም ድ>		c=E,s=1
+<ቁ ር ም ድ>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=p
-<ቁ ር ም ድ>		c=E,s=2
+<ቁ ር ም ድ>		c=E,s=2,base=0
   a=0,v=0
-<ቁ ር ር>		c=A
+<ቁ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ር ር>		c=C
+<ቁ ር ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ር ስ>		c=A
+<ቁ ር ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ቁ ር ቁ ር>		c=E,s=1
+<ቁ ር ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ር ቁ ር>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ቁ ር ቁ ስ>		c=E
-  a=a,v=p ; a=a,v=a
-<ቁ ር ብ>		c=A
+<ቁ ር ቁ ር>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ቁ ር ቁ ስ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ቁ ር ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ር ብ ዕ>		c=E
+<ቁ ር ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ቁ ር ን>		c=A
+<ቁ ር ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ቁ ር ን ይ>		c=E
-  a=a,v=p ; a=a,v=a
-<ቁ ር ይ>		c=A
+<ቁ ር ን ይ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ቁ ር ይ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ቁ ር ድ ድ>		c=E
+<ቁ ር ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ር ድ ፍ>		c=E
+<ቁ ር ድ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቁ ር ጥ ም>		c=E
+<ቁ ር ጥ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቁ ር ጥ ጥ>		c=E
+<ቁ ር ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቁ ር ጭ>		c=A
+<ቁ ር ጭ>		c=A,base=0
   a=0,v=0
-<ቁ ር ጭ ጭ>		c=E
+<ቁ ር ጭ ጭ>		c=E,base=0
   a=0,v=0
-<ቁ ር ጽ>		c=A
+<ቁ ር ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ቁ ር ጽ ጽ>		c=E
+<ቁ ር ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ር ፍ>		c=C
+<ቁ ር ፍ>		c=C,base=0
   a=0,v=0
-<ቁ ር ፍ ድ>		c=E
+<ቁ ር ፍ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ር ፍ ፍ>		c=E
+<ቁ ር ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ስ ል>		c=A
+<ቁ ስ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ቁ ስ ቁ ስ>		c=E
+<ቁ ስ ቁ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ቁ ስ ይ>		c=B
+<ቁ ስ ይ>		c=A,base=aa
   a=a,v=a
-<ቁ ስ ጥ>		c=C
+<ቁ ስ ጥ>		c=C,base=a
   a=0,v=a
-<ቁ ሽ ም ድ>		c=E
+<ቁ ሽ ም ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ቁ ል>		c=A
+<ቁ ቁ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p
-<ቁ ቁ ብ>		c=B
+<ቁ ቁ ብ>		c=B,base=0
   a=0,v=0
-<ቁ ብ ቁ ብ>		c=E
+<ቁ ብ ቁ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ብ ዕ>		c=A,s=1
+<ቁ ብ ዕ>		c=A,s=1,base=0
   a=0,v=0
-<ቁ ብ ዕ>		c=A,s=2
+<ቁ ብ ዕ>		c=A,s=2,base=p
   a=0,v=p
-<ቁ ን ቁ ር>		c=E
+<ቁ ን ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ን ቁ ን>		c=E
+<ቁ ን ቁ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ን ን>		c=A
+<ቁ ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ን ን>		c=B
+<ቁ ን ን>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ቁ ን ድ ፍ>		c=E
+<ቁ ን ድ ፍ>		c=E,base=0
   a=0,v=0
-<ቁ ን ጥ ር>		c=E
+<ቁ ን ጥ ር>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ን ጥ ይ>		c=E
+<ቁ ን ጥ ይ>		c=E,base=0
   a=0,v=0
-<ቁ ን ጥ ጥ>		c=E
+<ቁ ን ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቁ ን ጭ>		c=B
+<ቁ ን ጭ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ን ጭ ል>		c=E
+<ቁ ን ጭ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቁ ን ጽ ል>		c=E
+<ቁ ን ጽ ል>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ን ጽ ብ>		c=E
+<ቁ ን ጽ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=a
-<ቁ ዕ ም>		c=A
+<ቁ ዕ ም>		c=A,base=0
   a=0,v=0
-<ቁ ዝ ም>		c=B
+<ቁ ዝ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ዝ ም ዝ ም>		c=G
+<ቁ ዝ ም ዝ ም>		c=G,base=p
   a=0,v=a
-<ቁ ይ ቁ>		c=A
+<ቁ ይ ቁ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ቁ ይ ድ>		c=B
+<ቁ ይ ድ>		c=B,base=0
   a=0,v=0
-<ቁ ይ ጥ>		c=B
+<ቁ ይ ጥ>		c=B,base=p
   a=0,v=p
-<ቁ ድ ር>		c=B
+<ቁ ድ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቁ ድ ስ>		c=A
+<ቁ ድ ስ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ቁ ጥ ም>		c=A
+<ቁ ጥ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጥ ር>		c=B
+<ቁ ጥ ር>		c=B,base=ap
   a=a,v=p
-<ቁ ጥ ስ>		c=A
+<ቁ ጥ ስ>		c=A,base=0
   a=0,v=0
-<ቁ ጥ ቁ ጥ>		c=E
+<ቁ ጥ ቁ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጥ ብ>		c=B
+<ቁ ጥ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጥ ዕ>		c=B
+<ቁ ጥ ዕ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ቁ ጥ ፍ>		c=A
+<ቁ ጥ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጭ ም>		c=B
+<ቁ ጭ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጭ ም ጭ ም>		c=G
+<ቁ ጭ ም ጭ ም>		c=G,base=p
   a=0,v=a
-<ቁ ጽ ል>		c=B
+<ቁ ጽ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቁ ጽ ል ጽ ል>		c=G
+<ቁ ጽ ል ጽ ል>		c=G,base=p
   a=0,v=a
-<ቁ ጽ ር>		c=A
+<ቁ ጽ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቁ ጽ ር>		c=C
+<ቁ ጽ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ቁ ጽ ይ>		c=A
+<ቁ ጽ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቁ ፍ ር>		c=B
+<ቁ ፍ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ቅ ህ ም>		c=A
+<ቅ ህ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ህ ም ም>		c=E
+<ቅ ህ ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ህ ም ት>		c=E
+<ቅ ህ ም ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ል ል>		c=A
+<ቅ ል ል>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ል ል ው>		c=I
+<ቅ ል ል ው>		c=I,base=0
   a=0,v=a
-<ቅ ል ሕ>		c=C
+<ቅ ል ሕ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ል ም>		c=B
+<ቅ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ል ስ>		c=B
+<ቅ ል ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ል ስ>		c=C
+<ቅ ል ስ>		c=C,base=p
   a=0,v=p
-<ቅ ል ቅ ል>		c=E
+<ቅ ል ቅ ል>		c=E,base=a
   a=a,v=p ; a=0,v=a
-<ቅ ል ብ>		c=B,s=1
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ል ብ>		c=B,s=2
-  a=a,v=a
-<ቅ ል ብ ስ>		c=E
+<ቅ ል ብ>		c=B,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
+<ቅ ል ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ል ብ ዕ>		c=E
+<ቅ ል ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a
-<ቅ ል ት>		c=A
+<ቅ ል ት>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ል ው>		c=A
+<ቅ ል ው>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ቅ ል ው ጥ>		c=E
+<ቅ ል ው ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ል ዕ>		c=A
+<ቅ ል ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ቅ ል ዕ ም>		c=E
+<ቅ ል ዕ ም>		c=E,base=0
   a=0,v=0
-<ቅ ል ዕ ጥ>		c=E
+<ቅ ል ዕ ጥ>		c=E,base=0
   a=0,v=0
-<ቅ ል ዕ ጽ>		c=E
+<ቅ ል ዕ ጽ>		c=E,base=a
   a=0,v=a
-<ቅ ል ይ>		c=A
+<ቅ ል ይ>		c=A,base=0
   a=0,v=0
-<ቅ ል ጥ>		c=A
+<ቅ ል ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ል ጥ ን>		c=E
+<ቅ ል ጥ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ል ጥ ፍ>		c=E
+<ቅ ል ጥ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ል ጽ>		c=B
+<ቅ ል ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ቅ ል ጽ ም>		c=E
+<ቅ ል ጽ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ል ፍ ጽ>		c=E
+<ቅ ል ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ሕ ል ል>		c=E
+<ቅ ሕ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ሕ ም ት>		c=E
+<ቅ ሕ ም ት>		c=E,base=0
   a=0,v=0
-<ቅ ሕ ር>		c=A
+<ቅ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ሕ ት ው>		c=E
+<ቅ ሕ ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ም ም>		c=B
+<ቅ ም ም>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ቅ ም ር>		c=A
+<ቅ ም ር>		c=A,base=0
   a=0,v=0
-<ቅ ም ር>		c=B
+<ቅ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ም ር ር>		c=E
+<ቅ ም ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ስ>		c=A
+<ቅ ም ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ም ስ ል>		c=E
+<ቅ ም ስ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ቅ ም>		c=E
+<ቅ ም ቅ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ም ብ ብ>		c=E
+<ቅ ም ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ብ ይ>		c=E
+<ቅ ም ብ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ዕ>		c=B
+<ቅ ም ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ዝ ሕ>		c=E
+<ቅ ም ዝ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ም ድ>		c=A
+<ቅ ም ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ም ጥ>		c=B
+<ቅ ም ጥ>		c=B,base=p
   a=0,v=p ; a=0,v=a ; a=a,v=a
-<ቅ ም ጥ ል>		c=F
+<ቅ ም ጥ ል>		c=F,base=0
   a=0,v=0
-<ቅ ም ጭ ጭ>		c=E
+<ቅ ም ጭ ጭ>		c=E,base=0
   a=0,v=0
-<ቅ ር ሕ>		c=A
+<ቅ ር ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ሕ ን>		c=E
+<ቅ ር ሕ ን>		c=E,base=p
   a=0,v=p ; a=a,v=p
-<ቅ ር ም>		c=B
+<ቅ ር ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ም ሕ>		c=F
+<ቅ ር ም ሕ>		c=F,base=a
   a=0,v=a
-<ቅ ር ም ት>		c=E
-  a=a,v=p ; a=a,v=a
-<ቅ ር ም ድ>		c=E,s=1
+<ቅ ር ም ት>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ቅ ር ም ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ም ድ>		c=E,s=2
-  a=0,v=0
-<ቅ ር ር>		c=A,s=1
+<ቅ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ር>		c=A,s=2
+<ቅ ር ር ይ>		c=I,base=0
   a=0,v=a
-<ቅ ር ር ይ>		c=I
-  a=0,v=a
-<ቅ ር ስ ም>		c=E
+<ቅ ር ስ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ር ስ ስ>		c=E
+<ቅ ር ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ቅ ሕ>		c=E
+<ቅ ር ቅ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ቅ ር>		c=E
+<ቅ ር ቅ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ብ>		c=A
+<ቅ ር ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ር ብ>		c=B
+<ቅ ር ብ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ቅ ር ን>		c=B
+<ቅ ር ን>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ቅ ር ን ዕ>		c=E
+<ቅ ር ን ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ዕ>		c=A
+<ቅ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ዕ>		c=C
+<ቅ ር ዕ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ዕ ን>		c=E
+<ቅ ር ዕ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ዕ ይ>		c=E
+<ቅ ር ዕ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ዝ ፍ>		c=E
+<ቅ ር ዝ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ር ይ>		c=A
+<ቅ ር ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ይ>		c=C
+<ቅ ር ይ>		c=C,base=0
   a=0,v=0
-<ቅ ር ድ>		c=B
+<ቅ ር ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ር ድ ድ>		c=E
+<ቅ ር ድ ድ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ር ጥ ም>		c=E
+<ቅ ር ጥ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ጥ ው>		c=E
+<ቅ ር ጥ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ር ጥ ፍ>		c=E
+<ቅ ር ጥ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ጽ>		c=A
+<ቅ ር ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ር ጽ>		c=B
+<ቅ ር ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ር ፍ>		c=A
+<ቅ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ር ፍ ድ>		c=E
+<ቅ ር ፍ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ስ ም>		c=A
+<ቅ ስ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ስ ስ>		c=B
+<ቅ ስ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ስ ቅ ስ>		c=E
+<ቅ ስ ቅ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ስ ብ>		c=B
+<ቅ ስ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ስ ት>		c=A,s=1
-  a=0,v=0 ; a=0,v=p
-<ቅ ስ ት>		c=A,s=2
-  a=a,v=p
-<ቅ ስ ን>		c=A
+<ቅ ስ ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p
+<ቅ ስ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ስ ጥ>		c=A
+<ቅ ስ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ስ ፍ>		c=A
+<ቅ ስ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ሽ ር>		c=A
+<ቅ ሽ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ሽ ር>		c=B
+<ቅ ሽ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ሽ ሽ>		c=B
+<ቅ ሽ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ቅ ል>		c=B
+<ቅ ቅ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ቅ ሕ>		c=A
+<ቅ ቅ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ቅ ር>		c=C
+<ቅ ቅ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ቅ ብ>		c=B
+<ቅ ቅ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ቅ ይ>		c=A
+<ቅ ቅ ይ>		c=A,base=0
   a=0,v=0
-<ቅ ቅ ጥ>		c=C
+<ቅ ቅ ጥ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ብ ል>		c=B
+<ቅ ብ ል>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ብ ር>		c=A
+<ቅ ብ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ቅ ብ ር ር>		c=E
+<ቅ ብ ር ር>		c=E,base=0
   a=0,v=0
-<ቅ ብ ቅ ብ>		c=E
+<ቅ ብ ቅ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ብ ብ>		c=A
+<ቅ ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ብ እ>		c=A
+<ቅ ብ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ብ ዕ>		c=A
+<ቅ ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ብ ዝ ብ ዝ>		c=G
+<ቅ ብ ዝ ብ ዝ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ቅ ብ ጥ>		c=A
+<ቅ ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ብ ጥ ር>		c=E
+<ቅ ብ ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ብ ጥ ር>		c=F
+<ቅ ብ ጥ ር>		c=F,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ብ ጥ ብ ጥ>		c=G
+<ቅ ብ ጥ ብ ጥ>		c=G,base=p
   a=0,v=p
-<ቅ ብ ጽ>		c=A
+<ቅ ብ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ት ል>		c=A
+<ቅ ት ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ቅ ት ር>		c=A,s=1
+<ቅ ት ር>		c=A,s=1,base=0
   a=0,v=0
-<ቅ ት ር>		c=A,s=2
+<ቅ ት ር>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ት ው>		c=A
+<ቅ ት ው>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ቅ ን ስ>		c=B
+<ቅ ን ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ቅ ን>		c=E
+<ቅ ን ቅ ን>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ን ት>		c=B
+<ቅ ን ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ን>		c=A
+<ቅ ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ን ን>		c=B,s=1
+<ቅ ን ን>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ን ን>		c=B,s=2
+<ቅ ን ን>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ን እ>		c=A
+<ቅ ን እ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ን ዕ>		c=A
+<ቅ ን ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ቅ ን ዝ ው>		c=E
+<ቅ ን ዝ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ዝ ፍ>		c=E
+<ቅ ን ዝ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ዥ ብ>		c=E
+<ቅ ን ዥ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ይ>		c=B
+<ቅ ን ይ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ይ>		c=C
+<ቅ ን ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ድ ብ>		c=F
+<ቅ ን ድ ብ>		c=F,base=a
   a=0,v=a
-<ቅ ን ጅ ሕ>		c=E
+<ቅ ን ጅ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ጅ ው>		c=E
+<ቅ ን ጅ ው>		c=E,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ቅ ን ጥ ር>		c=E
+<ቅ ን ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ጥ ስ>		c=E
+<ቅ ን ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ጥ ብ>		c=E
+<ቅ ን ጥ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ን ጥ እ>		c=E
+<ቅ ን ጥ እ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ን ጥ ው>		c=E
+<ቅ ን ጥ ው>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ቅ ን ጥ ጥ>		c=E
+<ቅ ን ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ጭ ብ>		c=E
+<ቅ ን ጭ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ን ጽ>		c=A
+<ቅ ን ጽ>		c=A,base=0
   a=0,v=0
-<ቅ ን ጽ ል>		c=E
+<ቅ ን ጽ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ቅ ን ጽ ብ>		c=E
+<ቅ ን ጽ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ጽ ው>		c=E,s=1
+<ቅ ን ጽ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ን ጽ ው>		c=E,s=2
-  a=a,v=p
-<ቅ ን ጽ ዕ>		c=E
+<ቅ ን ጽ ው>		c=F,base=p
+  a=0,v=p
+<ቅ ን ጽ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ን ፍ ጽ>		c=E
+<ቅ ን ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ው ም>		c=A
+<ቅ ው ም>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ቅ ው ም>		c=B
+<ቅ ው ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ቅ ው ስ>		c=B
+<ቅ ው ስ>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ቅ ው ዕ>		c=B
+<ቅ ው ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ው ድ>		c=A
+<ቅ ው ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ው ፍ>		c=A
+<ቅ ው ፍ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ቅ ው ፍ>		c=B
+<ቅ ው ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ዕ ት>		c=C
+<ቅ ዕ ት>		c=C,base=a
   a=0,v=a
-<ቅ ዕ ን>		c=A
+<ቅ ዕ ን>		c=A,base=0
   a=0,v=0
-<ቅ ዕ ጥ ው>		c=E
+<ቅ ዕ ጥ ው>		c=E,base=0
   a=0,v=0
-<ቅ ዝ ሕ>		c=A
+<ቅ ዝ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ዝ ር>		c=B
+<ቅ ዝ ር>		c=B,base=0
   a=0,v=0
-<ቅ ዝ ቅ ዝ>		c=E
+<ቅ ዝ ቅ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ዝ ን>		c=C
+<ቅ ዝ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ዝ ዝ>		c=A
+<ቅ ዝ ዝ>		c=A,base=0
   a=0,v=0
-<ቅ ዝ ፍ>		c=A
+<ቅ ዝ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ይ ሕ>		c=A,s=1
+<ቅ ይ ሕ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ይ ሕ>		c=A,s=2
+<ቅ ይ ሕ>		c=A,s=2,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=a
-<ቅ ይ ም>		c=B
+<ቅ ይ ም>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ይ ር>		c=B
+<ቅ ይ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ይ ስ>		c=B
+<ቅ ይ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ይ ዕ>		c=B
+<ቅ ይ ዕ>		c=B,base=0
   a=0,v=0
-<ቅ ይ ድ>		c=B
+<ቅ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ይ ጥ>		c=A
+<ቅ ይ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ይ ጽ>		c=B
+<ቅ ይ ጽ>		c=B,base=0
   a=0,v=0
-<ቅ ድ ሕ>		c=A
+<ቅ ድ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ድ ም>		c=B
+<ቅ ድ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ቅ ድ ር>		c=A
+<ቅ ድ ር>		c=A,base=0
   a=0,v=0
-<ቅ ድ ስ>		c=B
+<ቅ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ድ ው>		c=A
+<ቅ ድ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ድ ድ>		c=A
+<ቅ ድ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ጅ ል>		c=A
+<ቅ ጅ ል>		c=A,base=p
   a=0,v=p
-<ቅ ጥ ል>		c=A
+<ቅ ጥ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ቅ ጥ ር>		c=B
+<ቅ ጥ ር>		c=A,base=aa
   a=a,v=a
-<ቅ ጥ ቅ ጥ>		c=E
+<ቅ ጥ ቅ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ቅ ጥ ን>		c=A
+<ቅ ጥ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ጥ ን>		c=B
+<ቅ ጥ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጥ ዕ>		c=A,s=1
+<ቅ ጥ ዕ>		c=A,s=1,base=0
   a=0,v=0
-<ቅ ጥ ዕ>		c=A,s=2
+<ቅ ጥ ዕ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጥ ጥ>		c=A
+<ቅ ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጥ ፍ>		c=A
+<ቅ ጥ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ጭ ል>		c=C
+<ቅ ጭ ል>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጭ ን>		c=B
+<ቅ ጭ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ጭ ው ን>		c=E
+<ቅ ጭ ው ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቅ ጭ ጭ>		c=C
+<ቅ ጭ ጭ>		c=C,base=0
   a=0,v=0
-<ቅ ጽ ል>		c=A
+<ቅ ጽ ል>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ቅ ጽ ል>		c=B
+<ቅ ጽ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ጽ ር>		c=A
+<ቅ ጽ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጽ ብ>		c=A
+<ቅ ጽ ብ>		c=A,base=0
   a=0,v=0
-<ቅ ጽ እ>		c=A
+<ቅ ጽ እ>		c=A,base=0
   a=0,v=0
-<ቅ ጽ ው>		c=A
+<ቅ ጽ ው>		c=A,base=ap
   a=a,v=p
-<ቅ ጽ ዕ>		c=A
+<ቅ ጽ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ቅ ጽ ዕ>		c=C
+<ቅ ጽ ዕ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጽ ይ>		c=A,s=1
+<ቅ ጽ ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p
+<ቅ ጽ ጽ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p
+<ቅ ፍ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጽ ይ>		c=A,s=2
-  a=a,v=p
-<ቅ ጽ ጽ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ጽ ጽ>		c=A,s=2
-  a=a,v=p
-<ቅ ፍ ር>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ፍ ቅ ፍ>		c=E
+<ቅ ፍ ቅ ፍ>		c=E,base=0
   a=0,v=0
-<ቅ ፍ ን>		c=B
+<ቅ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ፍ ድ>		c=B
+<ቅ ፍ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ፍ ጽ>		c=A
+<ቅ ፍ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቅ ፍ ፍ>		c=A
+<ቅ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ቡ ሕ ጥ ጥ>		c=E
+<ቡ ሕ ጥ ጥ>		c=E,base=0
   a=0,v=0
-<ቡ ክ ቡ ክ>		c=E
+<ቡ ክ ቡ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ቡ ዝ ን>		c=B
+<ቡ ዝ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ቡ ጅ ቡ ጅ>		c=E
+<ቡ ጅ ቡ ጅ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ህ ል>		c=A,s=2
-    a=0,v=0 ; a=0,v=p
-<ብ ህ ል ል>		c=E
-  a=0,v=0
-<ብ ህ ል ግ>		c=E
-  a=0,v=0
-<ብ ህ ም>		c=A
-  a=0,v=0 ; a=0,v=a
-<ብ ህ ር ር>		c=E
-  a=0,v=0 ; a=0,v=a
-<ብ ህ ስ ስ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ህ ብ ህ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ህ ት>		c=A
-  a=0,v=0 ; a=0,v=a
-<ብ ህ ን ን>		c=E
-  a=0,v=0 ; a=0,v=a
-<ብ ህ ግ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ ል ህ>		c=A
-  a=0,v=0
-<ብ ል ህ>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ል ል>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ል ሕ>		c=A
-  a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ብ ል ሕ ት>		c=E
-  a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ብ ል ሽ ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ብ ል ብ ል>		c=E
+<ብ ህ ል>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ል ት>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ል ዕ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ብ ል ዕ ት>		c=E
+<ብ ህ ል ል>		c=E,base=0
   a=0,v=0
-<ብ ል ይ>		c=A
+<ብ ህ ል ግ>		c=E,base=0
+  a=0,v=0
+<ብ ህ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ል ድ ጉ>		c=E
+<ብ ህ ር ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ብ ህ ስ ስ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ብ ህ ብ ህ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ብ ህ ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ብ ህ ን ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ብ ህ ግ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
+<ብ ል ህ>		c=A,base=0
   a=0,v=0
-<ብ ል ግ>		c=C
+<ብ ል ህ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ብ ል ል>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ብ ል ሕ>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=a
+<ብ ል ሕ ት>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ብ ል ሽ ው>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ብ ል ብ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ብ ል ት>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ብ ል ዕ>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
+<ብ ል ዕ ት>		c=E,base=0
   a=0,v=0
-<ብ ል ጭ ል ጭ>		c=G
+<ብ ል ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ብ ል ድ ጉ>		c=E,base=0
+  a=0,v=0
+<ብ ል ግ>		c=C,base=0
+  a=0,v=0
+<ብ ል ጭ ል ጭ>		c=G,base=p
   a=0,v=a
-<ብ ል ጽ>		c=A
+<ብ ል ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ል ጽ>		c=B
+<ብ ል ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ብ ል ጽ ግ>		c=E
+<ብ ል ጽ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ሕ ቁ>		c=A
+<ብ ሕ ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ቁ ር>		c=E
+<ብ ሕ ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ቁ ቁ>		c=E
+<ብ ሕ ቁ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ብ ሕ>		c=E
+<ብ ሕ ብ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ሕ ት>		c=A
+<ብ ሕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ት ው>		c=E
+<ብ ሕ ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ዝ ር>		c=E
+<ብ ሕ ዝ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ጉ ጉ>		c=E
+<ብ ሕ ጉ ጉ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ጉ ጥ>		c=E
+<ብ ሕ ጉ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ሕ ጭ ር>		c=E
+<ብ ሕ ጭ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ብ ሩ ክ>		c=A
+<ብ ሩ ክ>		c=A,base=0
   a=0,v=0
-<ብ ር ህ>		c=A
+<ብ ር ህ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=a
-<ብ ር ሕ>		c=A
+<ብ ር ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ሕ>		c=B
+<ብ ር ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ር ር>		c=A
+<ብ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ብ ር ስ>		c=A
+<ብ ር ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ሽ ሽ>		c=E
+<ብ ር ሽ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ቁ ቁ>		c=E
+<ብ ር ቁ ቁ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ብ ር ቅ>		c=A
+<ብ ር ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ብ ር ቅ>		c=B
+<ብ ር ቅ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ብ ር ቅ ሕ>		c=E
+<ብ ር ቅ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ቅ ር ቅ>		c=G
+<ብ ር ቅ ር ቅ>		c=G,base=p
   a=0,v=a
-<ብ ር ብ ር>		c=E,s=1
+<ብ ር ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ብ ር>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ብ ር ት ዕ>		c=E
+<ብ ር ብ ር>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ብ ር ት ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ብ ር ኩ ት>		c=E
+<ብ ር ኩ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ኩ ን>		c=E
+<ብ ር ኩ ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ብ ር ክ>		c=A
+<ብ ር ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ ር ክ>		c=B
+<ብ ር ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ክ>		c=C
+<ብ ር ክ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ ር ክ ት>		c=E
+<ብ ር ክ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ው>		c=C
+<ብ ር ው>		c=C,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ዕ>		c=C
+<ብ ር ዕ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ዕ ን>		c=E
+<ብ ር ዕ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ዝ>		c=A
+<ብ ር ዝ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ር ዝ>		c=B
+<ብ ር ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ይ>		c=A
+<ብ ር ይ>		c=A,base=a
   a=a,v=p ; a=i,v=p ; a=0,v=a
-<ብ ር ድ>		c=A
+<ብ ር ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ር ጉ ድ>		c=E
+<ብ ር ጉ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ግ ግ>		c=E
+<ብ ር ግ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ር ጥ ጥ>		c=E
+<ብ ር ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ብ ር ጽ ጽ>		c=E
+<ብ ር ጽ ጽ>		c=E,base=0
   a=0,v=0
-<ብ ስ ል>		c=A
+<ብ ስ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ስ ር>		c=B
+<ብ ስ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ብ ስ ር ው>		c=E
+<ብ ስ ር ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ስ ብ ስ>		c=E
+<ብ ስ ብ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ብ ስ ን ው>		c=E
+<ብ ስ ን ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ስ ን ዕ>		c=E
+<ብ ስ ን ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ስ ው>		c=B
+<ብ ስ ው>		c=B,base=0
   a=0,v=0
-<ብ ስ ዕ>		c=A
+<ብ ስ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ ስ ጭ ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ብ ሽ ር ቅ>		c=E
+<ብ ስ ጭ ው>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ብ ሽ ር ቅ>		c=E,base=0
   a=0,v=0
-<ብ ሽ ሽ>		c=C
+<ብ ሽ ሽ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ሽ ቁ ር>		c=E
+<ብ ሽ ቁ ር>		c=E,base=0
   a=0,v=0
-<ብ ሽ ቅ ጥ>		c=E
+<ብ ሽ ቅ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ሽ ዕ>		c=A
+<ብ ሽ ዕ>		c=A,base=0
   a=0,v=0
-<ብ ቁ ል>		c=A
+<ብ ቁ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ብ ቁ ስ>		c=B
+<ብ ቁ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ቁ ብ ቁ>		c=E
+<ብ ቁ ብ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ቁ ጥ>		c=A
+<ብ ቁ ጥ>		c=A,base=0
   a=0,v=0
-<ብ ቁ ጽ>		c=B
+<ብ ቁ ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ቅ ል>		c=B
+<ብ ቅ ል>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ቅ ቅ>		c=A
+<ብ ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ቅ ዕ>		c=A
+<ብ ቅ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ብ ው>		c=B
+<ብ ብ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ት ል ዕ>		c=E
+<ብ ት ል ዕ>		c=E,base=0
   a=0,v=0
-<ብ ት ብ ት>		c=E
+<ብ ት ብ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ት ት>		c=A
+<ብ ት ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ት ን>		c=B
+<ብ ት ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ብ ት ን ሕ>		c=E
+<ብ ት ን ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ት ን ዕ>		c=E
+<ብ ት ን ዕ>		c=E,base=0
   a=0,v=0
-<ብ ት ክ>		c=A
+<ብ ት ክ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ብ ት ዕ>		c=B
+<ብ ት ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ን ቁ ር>		c=E
+<ብ ን ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ን ቁ ስ>		c=E
+<ብ ን ቁ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ን ን>		c=A
+<ብ ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ን ጥ ስ>		c=E
+<ብ ን ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ን ጭ ር>		c=E
+<ብ ን ጭ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ብ እ ስ>		c=A
+<ብ እ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ እ ብ እ>		c=E
+<ብ እ ብ እ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ኩ ር>		c=A
+<ብ ኩ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ብ ኩ ር>		c=B
+<ብ ኩ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ኩ ኩ>		c=A
+<ብ ኩ ኩ>		c=A,base=0
   a=0,v=0
-<ብ ኩ ዕ>		c=A
+<ብ ኩ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ብ ኩ ይ>		c=A
+<ብ ኩ ይ>		c=A,base=0
   a=0,v=0
-<ብ ክ ል>		c=B
+<ብ ክ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ክ ስ>		c=B
+<ብ ክ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ክ ት>		c=A
+<ብ ክ ት>		c=A,base=0
   a=0,v=0 ; a=a,v=a
-<ብ ክ ን>		c=C
+<ብ ክ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ክ እ>		c=A
+<ብ ክ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ክ ይ>		c=A
+<ብ ክ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ብ ው ል>		c=B
+<ብ ው ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ው እ>		c=A,s=1
-  a=0,v=0
-<ብ ው እ>		c=A,s=2
-  a=a,v=p
-<ብ ው ዝ>		c=B
+<ብ ው እ>		c=A,base=0
+  a=0,v=0 ; a=a,v=p
+<ብ ው ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ዕ ል>		c=A
+<ብ ዕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ዕ ል ል>		c=E
+<ብ ዕ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ል ይ>		c=E
+<ብ ዕ ል ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ል ይ>		c=F
+<ብ ዕ ል ይ>		c=F,base=a
   a=0,v=a
-<ብ ዕ ል ግ>		c=E
+<ብ ዕ ል ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ል ግ>		c=F
+<ብ ዕ ል ግ>		c=F,base=a
   a=0,v=a
-<ብ ዕ ብ ዕ>		c=E
+<ብ ዕ ብ ዕ>		c=E,base=0
   a=0,v=0
-<ብ ዕ ን ን>		c=E
+<ብ ዕ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ኩ ር>		c=E
+<ብ ዕ ኩ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ክ ክ>		c=E
+<ብ ዕ ክ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ዕ ዝ ዝ>		c=E
+<ብ ዕ ዝ ዝ>		c=E,base=0
   a=0,v=0
-<ብ ዕ ድ>		c=A
+<ብ ዕ ድ>		c=A,base=p
   a=0,v=p ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ብ ዕ ግ ግ>		c=E
+<ብ ዕ ግ ግ>		c=E,base=0
   a=0,v=0
-<ብ ዕ ጥ>		c=A
+<ብ ዕ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ዝ ል>		c=A
+<ብ ዝ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ዝ ል ግ>		c=E
+<ብ ዝ ል ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ዝ ሕ>		c=A
+<ብ ዝ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ብ ዝ ር ግ>		c=E
+<ብ ዝ ር ግ>		c=E,base=0
   a=0,v=0
-<ብ ዝ ብ ዝ>		c=E
+<ብ ዝ ብ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ብ ዝ ት>		c=B
+<ብ ዝ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ይ ን>		c=B
+<ብ ይ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ይ ዕ>		c=B
+<ብ ይ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ይ ድ>		c=B
+<ብ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ድ ህ>		c=B
+<ብ ድ ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ድ ል>		c=B,s=1
+<ብ ድ ል>		c=B,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ድ ል>		c=B,s=2
+<ብ ድ ል>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ብ ድ ም>		c=C
+<ብ ድ ም>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ድ ብ ድ>		c=E
+<ብ ድ ብ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ድ ን>		c=A
+<ብ ድ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ድ ው>		c=B
+<ብ ድ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ድ ይ>		c=A
+<ብ ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ጅ ህ>		c=B
+<ብ ጅ ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ጅ ል>		c=A
+<ብ ጅ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ብ ጅ ር ግ>		c=E
+<ብ ጅ ር ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ጅ ው>		c=B
+<ብ ጅ ው>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ብ ጅ ዕ>		c=B
+<ብ ጅ ዕ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ብ ጉ ል>		c=A
+<ብ ጉ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ጉ ም>		c=C
+<ብ ጉ ም>		c=C,base=0
   a=0,v=0
-<ብ ጉ ን>		c=A
+<ብ ጉ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ብ ግ ስ>		c=B
+<ብ ግ ስ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ጥ ል ቅ>		c=E
+<ብ ጥ ል ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ጥ ል ዕ>		c=E
+<ብ ጥ ል ዕ>		c=E,base=0
   a=0,v=0
-<ብ ጥ ሕ>		c=A
+<ብ ጥ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ጥ ር ዕ>		c=E
+<ብ ጥ ር ዕ>		c=E,base=0
   a=0,v=0
-<ብ ጥ ስ>		c=B
+<ብ ጥ ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ብ ጥ ቁ ል>		c=E
+<ብ ጥ ቁ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ጥ ቁ ር>		c=E
+<ብ ጥ ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ብ ጥ ብ ጥ>		c=E
+<ብ ጥ ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ብ ጥ ጥ>		c=A
+<ብ ጥ ጥ>		c=A,base=0
   a=0,v=0
-<ብ ጭ ር>		c=B
+<ብ ጭ ር>		c=B,base=p
   a=0,v=p
-<ብ ጭ ው>		c=A,s=1
-  a=0,v=0
-<ብ ጭ ው>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ብ ጽ ሕ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ብ ጽ ር>		c=B
-  a=0,v=p ; a=0,v=a
-<ብ ጽ ብ ጽ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ብ ጽ እ>		c=A
-  a=0,v=a
-<ብ ጽ ዕ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ቱ ም ም>		c=A
+<ብ ጭ ው>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ቱ ክ ቱ ክ>		c=E
-  a=0,v=0
-<ት ል ል>		c=B
-  a=0,v=p ; a=0,v=p ; a=0,v=a
-<ት ል ል>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ል ሕ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ል ም>		c=B
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ት ል ት ል>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ል ዝ>		c=B
-  a=0,v=p ; a=0,v=p ; a=0,v=a
-<ት ል ይ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ሕ ስ ስ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ት ሕ ት>		c=A
+<ብ ጽ ሕ>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
+<ብ ጽ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ት ሕ ዝ>		c=A,s=1
+<ብ ጽ ብ ጽ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ብ ጽ እ>		c=A,base=a
+  a=0,v=a
+<ብ ጽ ዕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ቱ ም ም>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ቱ ክ ቱ ክ>		c=E,base=0
+  a=0,v=0
+<ት ል ል>		c=B,base=p
+  a=0,v=p ; a=0,v=p ; a=0,v=a
+<ት ል ል>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ት ል ሕ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ት ል ም>		c=B,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
+<ት ል ት ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ት ል ዝ>		c=B,base=p
+  a=0,v=p ; a=0,v=p ; a=0,v=a
+<ት ል ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ት ሕ ስ ስ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ት ሕ ት>		c=A,base=p
+  a=0,v=p ; a=0,v=a
+<ት ሕ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ት ሕ ዝ>		c=A,s=2
-  a=i,v=p
-<ት ም ህ>		c=A
+<ት ም ህ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ም ህ>		c=B
+<ት ም ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ም ም>		c=A
+<ት ም ም>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ት ም ብ ህ>		c=E
+<ት ም ብ ህ>		c=E,base=a
   a=0,v=a
-<ት ም ት>		c=A
+<ት ም ት>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ት ም ት ም>		c=E
+<ት ም ት ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ት ም ን ይ>		c=E
+<ት ም ን ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ት ም ይ ን>		c=E
+<ት ም ይ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ት ር ር>		c=A
+<ት ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ስ ክ>		c=E
+<ት ር ስ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ር ሽ ኩ>		c=E
+<ት ር ሽ ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ር ብ>		c=B
+<ት ር ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ብ ብ>		c=E
+<ት ር ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ብ ው>		c=E
+<ት ር ብ ው>		c=E,base=0
   a=0,v=0
-<ት ር ብ ዕ>		c=E
+<ት ር ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ት>		c=B
+<ት ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ት ር>		c=E
+<ት ር ት ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ት ር ን ክ>		c=E
+<ት ር ን ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ን ዕ>		c=E
+<ት ር ን ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ር እ ስ>		c=E,s=1
+<ት ር እ ስ>		c=E,s=1,base=p
   a=0,v=p
-<ት ር እ ስ>		c=E,s=2
+<ት ር እ ስ>		c=E,s=2,base=p
   a=a,v=p ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ት ር ኩ ሽ>		c=E
+<ት ር ኩ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ር ኩ ዕ>		c=E
+<ት ር ኩ ዕ>		c=E,base=0
   a=0,v=0
-<ት ር ክ>		c=B
+<ት ር ክ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ት ር ክ ስ>		c=E
+<ት ር ክ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ር ጅ ግ>		c=E
+<ት ር ጅ ግ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ት ር ጉ ም>		c=E
+<ት ር ጉ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=0 ; a=0,v=a
-<ት ር ግ እ>		c=E
+<ት ር ግ እ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ት ር ፍ>		c=A
+<ት ር ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ት ስ ት ስ>		c=E
+<ት ስ ት ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ስ እ>		c=B
+<ት ስ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a ; a=i,v=a
-<ት ስ ክ ር>		c=E
+<ት ስ ክ ር>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ት ስ ፍ ው>		c=E
+<ት ስ ፍ ው>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ት ሽ ዕ>		c=B
+<ት ሽ ዕ>		c=B,base=0
   a=0,v=0
-<ት ብ ት ብ>		c=E
+<ት ብ ት ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ት ብ እ>		c=A
+<ት ብ እ>		c=A,base=0
   a=0,v=0
-<ት ብ ዕ>		c=A
+<ት ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ት ብ ዕ>		c=B
+<ት ብ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ት ዕ>		c=B
+<ት ት ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ት ይ>		c=A
+<ት ት ይ>		c=A,base=aa
   a=i,v=0 ; a=a,v=a
-<ት ን ስ እ>		c=E
+<ት ን ስ እ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ት ን ብ ህ>		c=E
+<ት ን ብ ህ>		c=E,base=a
   a=0,v=a
-<ት ን ት ን>		c=E
+<ት ን ት ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ት ን ት ግ>		c=E
+<ት ን ት ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ን ን>		c=A
+<ት ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ት ን ኩ ል>		c=E
+<ት ን ኩ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ት ን ኩ ሕ>		c=E
+<ት ን ኩ ሕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ት ን ክ ይ>		c=E
+<ት ን ክ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ን ክ ፍ>		c=E
+<ት ን ክ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ት ን ግ>		c=A
+<ት ን ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ን ፍ>		c=B
+<ት ን ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ን ፍ ስ>		c=E
+<ት ን ፍ ስ>		c=E,base=a
   a=0,v=a
-<ት ኩ ር>		c=B
+<ት ኩ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ት ኩ ስ>		c=B
+<ት ኩ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ት ኩ ብ>		c=A
+<ት ኩ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ት ኩ ት ኩ>		c=E
+<ት ኩ ት ኩ>		c=E,base=0
   a=0,v=0
-<ት ኩ ን>		c=B
+<ት ኩ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ኩ ኩ>		c=A
+<ት ኩ ኩ>		c=A,base=0
   a=0,v=0
-<ት ኩ ዕ>		c=A
+<ት ኩ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ኩ ይ>		c=A
+<ት ኩ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ት ክ ል>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ት ክ ል>		c=A,s=2
-  a=i,v=0 ; a=i,v=p ; a=i,v=a ; a=i,v=a
-<ት ክ ል>		c=B
+<ት ክ ል>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=0 ; a=i,v=p ; a=i,v=a
+<ት ክ ል>		c=B,base=0
   a=0,v=0
-<ት ክ ስ>		c=A
+<ት ክ ስ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a
-<ት ክ ብ>		c=B
+<ት ክ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ክ ት ክ>		c=E
+<ት ክ ት ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ክ ን>		c=A,s=1
-  a=0,v=p
-<ት ክ ን>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ት ክ ን>		c=B
+<ት ክ ን>		c=A,base=p
+  a=0,v=p ; a=a,v=p ; a=a,v=a
+<ት ክ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ክ እ>		c=B
+<ት ክ እ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ት ክ ክ>		c=A
+<ት ክ ክ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ት ክ ዝ>		c=B
+<ት ክ ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ክ ይ>		c=B
+<ት ክ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ት ክ ፍ>		c=B
+<ት ክ ፍ>		c=B,base=0
   a=0,v=0
-<ት ው ል ል>		c=E
+<ት ው ል ል>		c=E,base=0
   a=0,v=0
-<ት ው ል ሕ>		c=E
+<ት ው ል ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ው ሽ ሕ>		c=E
+<ት ው ሽ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ው ን>		c=B
+<ት ው ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ት ው ን>		c=C
+<ት ው ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ው ይ>		c=A
+<ት ው ይ>		c=A,base=0
   a=0,v=0
-<ት ዕ ን ን>		c=E
+<ት ዕ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ዝ ብ ብ>		c=E
+<ት ዝ ብ ብ>		c=E,base=0
   a=0,v=0
-<ት ዝ ክ ር>		c=E
+<ት ዝ ክ ር>		c=E,base=a
   a=0,v=a
-<ት ዥ ዥ>		c=A
+<ት ዥ ዥ>		c=A,base=0
   a=0,v=0
-<ት ይ ን>		c=B
+<ት ይ ን>		c=B,base=0
   a=0,v=0
-<ት ይ ዕ>		c=B
+<ት ይ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ት ጅ ር>		c=B
+<ት ጅ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ት ጉ ም>		c=A
+<ት ጉ ም>		c=A,base=ap
   a=a,v=p
-<ት ጉ ር>		c=B
+<ት ጉ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ጉ ጉ>		c=A,s=1
+<ት ጉ ጉ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ት ጉ ጉ>		c=A,s=2
+<ት ጉ ጉ>		c=A,s=2,base=0
   a=0,v=0
-<ት ግ ህ>		c=A
+<ት ግ ህ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=i,v=p ; a=0,v=a
-<ት ግ ሕ>		c=A
+<ት ግ ሕ>		c=A,base=0
   a=0,v=0
-<ት ግ ር>		c=A
+<ት ግ ር>		c=A,base=p
   a=0,v=p ; a=0,v=p ; a=0,v=a
-<ት ግ ብ ር>		c=E
+<ት ግ ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ት ግ ው>		c=B
+<ት ግ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ት ፍ ስ ህ>		c=E
+<ት ፍ ስ ህ>		c=E,base=a
   a=0,v=a
-<ት ፍ ት ፍ>		c=E
+<ት ፍ ት ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ት ፍ ን ን>		c=E
+<ት ፍ ን ን>		c=E,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ት ፍ እ>		c=A
+<ት ፍ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ች ር ች ር>		c=E
+<ች ር ች ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ች ን ች ን>		c=E
+<ች ን ች ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኑ ቁ ዕ>		c=A
+<ኑ ቁ ዕ>		c=A,base=0
   a=0,v=0
-<ን ህ ል>		c=A
+<ን ህ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ህ ር>		c=A
+<ን ህ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ህ ብ>		c=A
+<ን ህ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ህ ው>		c=A
+<ን ህ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ህ ይ>		c=A
+<ን ህ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ህ ጽ>		c=A
+<ን ህ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ሕ ል>		c=A
+<ን ሕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ሕ ር ሕ ር>		c=G
+<ን ሕ ር ሕ ር>		c=G,base=p
   a=0,v=a
-<ን ሕ ስ ይ>		c=E
+<ን ሕ ስ ይ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ን ሕ ብ>		c=A
+<ን ሕ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ሕ ን ሕ>		c=E
-  a=a,v=p
-<ን ሕ ፍ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ር ድ ር ድ>		c=G
-  a=0,v=a
-<ን ስ ህ>		c=B
+<ን ሕ ን ሕ>		c=F,base=p
   a=0,v=p
-<ን ስ ል ል>		c=J
+<ን ሕ ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ን ር ድ ር ድ>		c=G,base=p
   a=0,v=a
-<ን ስ ል ስ ል>		c=G
+<ን ስ ህ>		c=B,base=p
+  a=0,v=p
+<ን ስ ል ል>		c=J,base=p
   a=0,v=a
-<ን ስ ል ው>		c=I
+<ን ስ ል ስ ል>		c=G,base=p
+  a=0,v=a
+<ን ስ ል ው>		c=I,base=0
   a=i,v=a
-<ን ስ ሕ>		c=B
+<ን ስ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ን ስ ሕ ብ>		c=I
+<ን ስ ሕ ብ>		c=I,base=0
   a=0,v=p ; a=0,v=a
-<ን ስ ር>		c=B
+<ን ስ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ን ስ ት>		c=B
+<ን ስ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ስ ት ት>		c=J
+<ን ስ ት ት>		c=J,base=p
   a=0,v=a
-<ን ስ ን ስ>		c=E
+<ን ስ ን ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ስ እ>		c=A
+<ን ስ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ስ ዕ>		c=A
+<ን ስ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ስ ፍ ፍ>		c=J
+<ን ስ ፍ ፍ>		c=J,base=p
   a=0,v=p ; a=0,v=a
-<ን ሽ ሕ ት ት>		c=G
+<ን ሽ ሕ ት ት>		c=G,base=p
   a=0,v=p
-<ን ሽ ር ት ት>		c=G
+<ን ሽ ር ት ት>		c=G,base=p
   a=a,v=p ; a=a,v=a
-<ን ሽ ት ሕ>		c=J
+<ን ሽ ት ሕ>		c=J,base=p
   a=0,v=p ; a=0,v=a
-<ን ሽ ት ት>		c=J
+<ን ሽ ት ት>		c=J,base=p
   a=0,v=a
-<ን ሽ ው>		c=B
+<ን ሽ ው>		c=B,base=p
   a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ን ቁ ል>		c=A
+<ን ቁ ል>		c=A,base=a
   a=0,v=a
-<ን ቁ ል ሕ>		c=I
+<ን ቁ ል ሕ>		c=I,base=0
   a=0,v=a
-<ን ቁ ሕ>		c=A
+<ን ቁ ሕ>		c=A,base=0
   a=0,v=0
-<ን ቁ ር>		c=A
+<ን ቁ ር>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ቁ ት>		c=A
+<ን ቁ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ን ቁ ን ቁ>		c=E
+<ን ቁ ን ቁ>		c=E,base=0
   a=0,v=0
-<ን ቁ ጥ ቁ ጥ>		c=G
+<ን ቁ ጥ ቁ ጥ>		c=G,base=p
   a=0,v=a
-<ን ቅ ህ>		c=A
+<ን ቅ ህ>		c=A,base=0
   a=0,v=0
-<ን ቅ ል>		c=A
+<ን ቅ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ን ቅ ል ቅ ል>		c=G
+<ን ቅ ል ቅ ል>		c=G,base=p
   a=0,v=a
-<ን ቅ ል ብ ት>		c=G
+<ን ቅ ል ብ ት>		c=G,base=p
   a=a,v=a
-<ን ቅ ሕ>		c=A
+<ን ቅ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ቅ ስ>		c=A
+<ን ቅ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ን ቅ ስ ቅ ስ>		c=H
+<ን ቅ ስ ቅ ስ>		c=H,base=p
   a=0,v=p ; a=0,v=a
-<ን ቅ ብ ር ር>		c=G
+<ን ቅ ብ ር ር>		c=G,base=p
   a=a,v=p
-<ን ቅ ብ ቅ ብ>		c=G,s=1
+<ን ቅ ብ ቅ ብ>		c=G,s=1,base=p
   a=0,v=p
-<ን ቅ ብ ቅ ብ>		c=G,s=2
+<ን ቅ ብ ቅ ብ>		c=G,s=2,base=a
   a=0,v=a
-<ን ቅ ን ቅ>		c=E
+<ን ቅ ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ቅ ው>		c=B
+<ን ቅ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ቅ ዕ>		c=A
+<ን ቅ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ቅ ዕ ር ር>		c=G
+<ን ቅ ዕ ር ር>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ቅ ዝ>		c=A
+<ን ቅ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ቅ ይ>		c=B
+<ን ቅ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ቅ ድ>		c=A
+<ን ቅ ድ>		c=A,base=a
   a=0,v=a
-<ን ቅ ጥ ቅ ጥ>		c=G
+<ን ቅ ጥ ቅ ጥ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ቅ ጽ>		c=A
+<ን ቅ ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=a ; a=0,v=a
-<ን ቅ ፍ>		c=A
+<ን ቅ ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ን ቡ ሽ ብ ሽ>		c=G
+<ን ቡ ሽ ብ ሽ>		c=G,base=p
   a=0,v=a
-<ን ብ ል>		c=A
+<ን ብ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ብ ል ብ ል>		c=G
+<ን ብ ል ብ ል>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ብ ሕ>		c=A
+<ን ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ብ ር>		c=A
+<ን ብ ር>		c=A,base=0
   a=0,v=0,t=p ; a=0,v=0,t=i ; a=0,v=0,t=j ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ብ ር>		c=B
+<ን ብ ር>		c=B,base=0
   a=0,v=0
-<ን ብ ብ>		c=A
+<ን ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ብ ን ብ>		c=E
+<ን ብ ን ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ብ ዕ>		c=A
+<ን ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ብ ይ>		c=B
+<ን ብ ይ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ን ብ ይ>		c=C
+<ን ብ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ን ት ሕ>		c=B
+<ን ት ሕ>		c=B,base=0
   a=0,v=0
-<ን ት ር ት ር>		c=G
+<ን ት ር ት ር>		c=G,base=p
   a=0,v=a
-<ን ት ዕ>		c=B,s=1
+<ን ት ዕ>		c=B,s=1,base=0
   a=0,v=0
-<ን ት ዕ>		c=B,s=2
+<ን ት ዕ>		c=B,s=2,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a
-<ን ት ጉ>		c=A
+<ን ት ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ት ግ>		c=A
+<ን ት ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ን ው>		c=A
+<ን ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ን እ ር እ ር>		c=G
+<ን እ ር እ ር>		c=G,base=p
   a=0,v=a
-<ን እ ስ>		c=A
+<ን እ ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=i,v=a
-<ን እ ክ>		c=A
+<ን እ ክ>		c=A,base=p
   a=0,v=p
-<ን እ ድ>		c=A
+<ን እ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=i,v=a
-<ን ኩ ል>		c=A
+<ን ኩ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ን ኩ ል ል>		c=I
+<ን ኩ ል ል>		c=I,base=0
   a=0,v=a
-<ን ኩ ር ኩ ር>		c=G
+<ን ኩ ር ኩ ር>		c=G,base=p
   a=0,v=a
-<ን ኩ ር ድ ድ>		c=G
+<ን ኩ ር ድ ድ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ኩ ዕ>		c=A
+<ን ኩ ዕ>		c=A,base=0
   a=0,v=0
-<ን ኩ ዕ ኩ ዕ>		c=G
+<ን ኩ ዕ ኩ ዕ>		c=G,base=p
   a=0,v=a
-<ን ኩ ዕ ድ ድ>		c=G
+<ን ኩ ዕ ድ ድ>		c=G,base=p
   a=0,v=a
-<ን ክ ር>		c=A,s=1
+<ን ክ ር>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ክ ር>		c=A,s=2
+<ን ክ ር>		c=A,s=2,base=a
   a=0,v=a
-<ን ክ ር ው>		c=I
+<ን ክ ር ው>		c=I,base=0
   a=i,v=p ; a=i,v=a
-<ን ክ ር ይ>		c=I
+<ን ክ ር ይ>		c=I,base=0
   a=i,v=a
-<ን ክ ስ>		c=A
+<ን ክ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ን ክ ስ ክ ስ>		c=G
+<ን ክ ስ ክ ስ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ክ ት>		c=A
+<ን ክ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ክ ን ክ>		c=E
+<ን ክ ን ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ክ እ>		c=A
+<ን ክ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ክ እ ስ ስ>		c=G
+<ን ክ እ ስ ስ>		c=G,base=p
   a=0,v=p
-<ን ክ ዕ>		c=A
+<ን ክ ዕ>		c=A,base=0
   a=0,v=0
-<ን ክ ይ>		c=B
+<ን ክ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ክ ፍ>		c=A
+<ን ክ ፍ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ን ው ሕ>		c=A
+<ን ው ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p
-<ን ው ም>		c=A
+<ን ው ም>		c=A,base=0
   a=0,v=0
-<ን ው ር>		c=B
+<ን ው ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ው ን ው>		c=E
+<ን ው ን ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ው ጽ>		c=B
+<ን ው ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ን ዕ ር>		c=A
+<ን ዕ ር>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ን ዕ ር ር>		c=E
+<ን ዕ ር ር>		c=E,base=p
   a=0,v=p
-<ን ዕ ስ>		c=A
+<ን ዕ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ዕ ቅ>		c=A
+<ን ዕ ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ዕ ብ>		c=A
+<ን ዕ ብ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=i,v=a
-<ን ዕ ን ዕ>		c=E
+<ን ዕ ን ዕ>		c=E,base=0
   a=0,v=0
-<ን ዕ ው>		c=A
+<ን ዕ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ን ዝ ል>		c=A
+<ን ዝ ል>		c=A,base=0
   a=0,v=0
-<ን ዝ ል ሕ ጥ>		c=G
+<ን ዝ ል ሕ ጥ>		c=G,base=p
   a=0,v=a
-<ን ዝ ሕ>		c=A
+<ን ዝ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ን ዝ ር>		c=A
+<ን ዝ ር>		c=A,base=0
   a=0,v=0
-<ን ዝ ር ብ ብ>		c=G
+<ን ዝ ር ብ ብ>		c=G,base=p
   a=0,v=a
-<ን ዝ ን ዝ>		c=E
+<ን ዝ ን ዝ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ን ዝ ዕ>		c=A
+<ን ዝ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ዝ ዝ>		c=C
+<ን ዝ ዝ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ዝ ግ ዝ ግ>		c=G
+<ን ዝ ግ ዝ ግ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ይ ሕ>		c=B
+<ን ይ ሕ>		c=B,base=p
   a=0,v=p ; a=i,v=a
-<ን ይ ት>		c=B
+<ን ይ ት>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ን ድ ል>		c=A
+<ን ድ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ን ድ ል ሕ ጽ>		c=G
+<ን ድ ል ሕ ጽ>		c=G,base=p
   a=0,v=a
-<ን ድ ሕ>		c=A
+<ን ድ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ን ድ ር>		c=B
+<ን ድ ር>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ን ድ ቅ>		c=A
+<ን ድ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ድ ቅ ድ ቅ>		c=G
+<ን ድ ቅ ድ ቅ>		c=G,base=p
   a=0,v=p
-<ን ድ እ>		c=A
+<ን ድ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ድ ዕ ድ ዕ>		c=G
+<ን ድ ዕ ድ ዕ>		c=G,base=p
   a=0,v=a
-<ን ድ ይ>		c=A
+<ን ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ድ ይ>		c=C
+<ን ድ ይ>		c=C,base=p
   a=0,v=p ; a=0,v=a
-<ን ድ ድ>		c=A
+<ን ድ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ድ ፍ>		c=A
+<ን ድ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጅ ል>		c=A
+<ን ጅ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጅ ሕ ጅ ሕ>		c=G
+<ን ጅ ሕ ጅ ሕ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጅ ብ ብ>		c=J
+<ን ጅ ብ ብ>		c=J,base=p
   a=0,v=a
-<ን ጉ ል>		c=A
+<ን ጉ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=0
-<ን ጉ ል ሕ ጥ>		c=G
+<ን ጉ ል ሕ ጥ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጉ ሕ>		c=A
+<ን ጉ ሕ>		c=A,base=a
   a=0,v=a
-<ን ጉ ር ድ ድ>		c=G
+<ን ጉ ር ድ ድ>		c=G,base=p
   a=a,v=p ; a=a,v=a
-<ን ጉ ር ጉ ር>		c=G
+<ን ጉ ር ጉ ር>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጉ ት>		c=A
+<ን ጉ ት>		c=A,base=a
   a=0,v=a
-<ን ጉ ት>		c=B
+<ን ጉ ት>		c=B,base=0
   a=0,v=0
-<ን ጉ ን ጉ>		c=E
+<ን ጉ ን ጉ>		c=E,base=0
   a=0,v=0
-<ን ጉ ዕ>		c=A
+<ን ጉ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጉ ድ>		c=A
+<ን ጉ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጉ ድ ጉ ድ>		c=G
+<ን ጉ ድ ጉ ድ>		c=G,base=p
   a=0,v=a
-<ን ጉ ጽ>		c=A
+<ን ጉ ጽ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ን ግ ህ>		c=A
+<ን ግ ህ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ን ግ ሕ>		c=A
+<ን ግ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ን ግ ሕ>		c=B
+<ን ግ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ን ግ ር>		c=A
+<ን ግ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ግ ር ግ ር>		c=G
+<ን ግ ር ግ ር>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ግ ስ>		c=A
+<ን ግ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ግ ብ ግ ብ>		c=G
+<ን ግ ብ ግ ብ>		c=G,base=p
   a=0,v=a
-<ን ግ ን ግ>		c=E
+<ን ግ ን ግ>		c=E,base=0
   a=0,v=0
-<ን ግ እ>		c=B
+<ን ግ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ን ግ ድ>		c=A
+<ን ግ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ግ ጽ ግ ጽ>		c=G
+<ን ግ ጽ ግ ጽ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ግ ፍ>		c=A
+<ን ግ ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ግ ፍ ግ ፍ>		c=G
+<ን ግ ፍ ግ ፍ>		c=G,base=p
   a=0,v=a
-<ን ጡ ል ል>		c=I
+<ን ጡ ል ል>		c=I,base=0
   a=0,v=a
-<ን ጥ ል ዕ>		c=J
+<ን ጥ ል ዕ>		c=J,base=p
   a=0,v=p ; a=i,v=p
-<ን ጥ ል ጥ ል>		c=G
+<ን ጥ ል ጥ ል>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጥ ር>		c=A
+<ን ጥ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ጥ ቁ>		c=A
+<ን ጥ ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጥ ቅ>		c=A
+<ን ጥ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ን ጥ ቅ ል ል>		c=G
+<ን ጥ ቅ ል ል>		c=G,base=p
   a=0,v=p
-<ን ጥ ቅ ጥ ቅ>		c=G
+<ን ጥ ቅ ጥ ቅ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጥ ብ>		c=A
+<ን ጥ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=a ; a=0,v=a
-<ን ጥ ብ ጥ ብ>		c=G
+<ን ጥ ብ ጥ ብ>		c=G,base=p
   a=0,v=a
-<ን ጥ ዕ ጥ ዕ>		c=G
+<ን ጥ ዕ ጥ ዕ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጥ ይ>		c=A
+<ን ጥ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጥ ጥ ው>		c=I
+<ን ጥ ጥ ው>		c=I,base=0
   a=0,v=p ; a=0,v=a
-<ን ጥ ጥ ይ>		c=I
+<ን ጥ ጥ ይ>		c=I,base=0
   a=0,v=a
-<ን ጥ ፍ>		c=A
+<ን ጥ ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ጭ ር ው>		c=I
+<ን ጭ ር ው>		c=I,base=0
   a=i,v=p ; a=i,v=a
-<ን ጭ ብ>		c=A
+<ን ጭ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጭ ዕ ጭ ዕ>		c=G
+<ን ጭ ዕ ጭ ዕ>		c=G,base=p
   a=0,v=a
-<ን ጭ ጭ>		c=A
+<ን ጭ ጭ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ጽ ል>		c=A
+<ን ጽ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ጽ ል>		c=B
+<ን ጽ ል>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ን ጽ ል ው>		c=I
+<ን ጽ ል ው>		c=I,base=0
   a=i,v=p ; a=i,v=a
-<ን ጽ ሕ>		c=A,s=1
+<ን ጽ ሕ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ን ጽ ሕ>		c=A,s=2
+<ን ጽ ሕ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጽ ር>		c=A
+<ን ጽ ር>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ን ጽ ር>		c=B
+<ን ጽ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ን ጽ ር ው>		c=I
+<ን ጽ ር ው>		c=I,base=0
   a=i,v=a
-<ን ጽ ር ጽ ር>		c=G
+<ን ጽ ር ጽ ር>		c=G,base=p
   a=0,v=a
-<ን ጽ ቅ>		c=A
+<ን ጽ ቅ>		c=A,base=0
   a=0,v=0
-<ን ጽ ብ>		c=A
+<ን ጽ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ጽ ብ ል ል>		c=G
+<ን ጽ ብ ል ል>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ጽ ብ ር ቅ>		c=H
+<ን ጽ ብ ር ቅ>		c=H,base=p
   a=0,v=p ; a=0,v=a
-<ን ጽ ት>		c=A
+<ን ጽ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጽ ን ጽ>		c=E
+<ን ጽ ን ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ን ጽ ው>		c=B
+<ን ጽ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጽ ይ>		c=A
+<ን ጽ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ጽ ግ>		c=A
+<ን ጽ ግ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ጽ ጽ ይ>		c=I
+<ን ጽ ጽ ይ>		c=I,base=0
   a=0,v=p ; a=0,v=a
-<ን ጽ ፍ>		c=A,s=1
+<ን ጽ ፍ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ን ጽ ፍ>		c=A,s=2
+<ን ጽ ፍ>		c=A,s=2,base=p
   a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ን ፍ ሕ>		c=A
+<ን ፍ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ን ፍ ሕ ኩ>		c=E
-  a=a,v=p
-<ን ፍ ር>		c=A
+<ን ፍ ሕ ኩ>		c=F,base=p
+  a=0,v=p
+<ን ፍ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ን ፍ ር ር>		c=E
+<ን ፍ ር ር>		c=E,base=0
   a=0,v=0
-<ን ፍ ር ግ ጥ>		c=G
+<ን ፍ ር ግ ጥ>		c=G,base=p
   a=a,v=p
-<ን ፍ ር ፍ ር>		c=G
+<ን ፍ ር ፍ ር>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ፍ ስ>		c=A
+<ን ፍ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ን ፍ ስ ፍ ስ>		c=G
+<ን ፍ ስ ፍ ስ>		c=G,base=p
   a=0,v=a
-<ን ፍ ቅ>		c=A,s=1
+<ን ፍ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ን ፍ ቅ>		c=A,s=2
-  a=a,v=p
-<ን ፍ ቅ>		c=C
+<ን ፍ ቅ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=p ; a=i,v=a
+<ን ፍ ቅ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=0,v=a
-<ን ፍ ን ፍ>		c=E
+<ን ፍ ን ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ፍ ክ ፍ ክ>		c=G
+<ን ፍ ክ ፍ ክ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ፍ ዕ>		c=A
+<ን ፍ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ፍ ይ>		c=A
+<ን ፍ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ን ፍ ግ>		c=A
+<ን ፍ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ን ፍ ጥ>		c=B
+<ን ፍ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ን ፍ ጥ ፍ ጥ>		c=G
+<ን ፍ ጥ ፍ ጥ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ን ፍ ጽ>		c=A
+<ን ፍ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ን ፍ ፍ ው>		c=I
+<ን ፍ ፍ ው>		c=I,base=0
   a=0,v=p ; a=0,v=a
-<እ ል ም>		c=A
+<እ ል ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ል ሽ>		c=B
+<እ ል ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ል ክ>		c=A
+<እ ል ክ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=p ; a=0,v=a
-<እ ል ይ>		c=A
+<እ ል ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=p
-<እ ል ግ>		c=B
+<እ ል ግ>		c=B,base=p
   a=0,v=p
-<እ ም ም>		c=B
+<እ ም ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ም ር>		c=B
+<እ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ም ት>		c=A
+<እ ም ት>		c=A,base=p
   a=0,v=a ; a=0,v=p
-<እ ም ት>		c=B,s=1
+<እ ም ት>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ም ት>		c=B,s=2
+<እ ም ት>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p
-<እ ም ን>		c=A
+<እ ም ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<እ ም ጽ>		c=B
+<እ ም ጽ>		c=B,base=0
   a=0,v=0
-<እ ር ም>		c=B
+<እ ር ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<እ ር ን ብ>		c=E
+<እ ር ን ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<እ ር ክ>		c=A
+<እ ር ክ>		c=A,base=0
   a=0,v=0
-<እ ር ው>		c=B
+<እ ር ው>		c=B,base=0
   a=0,v=0
-<እ ር ይ>		c=A
+<እ ር ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ር ግ>		c=A
+<እ ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<እ ስ ል>		c=B
+<እ ስ ል>		c=B,base=0
   a=0,v=0
-<እ ስ ር>		c=A
+<እ ስ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<እ ስ ር>		c=B
+<እ ስ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ሽ ኩ>		c=B
+<እ ሽ ኩ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ቅ ብ>		c=B
+<እ ቅ ብ>		c=B,base=0
   a=0,v=0
-<እ ብ ስ>		c=B
+<እ ብ ስ>		c=B,base=0
   a=0,v=0
-<እ ብ ብ>		c=B
+<እ ብ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<እ ብ ን ት>		c=E
+<እ ብ ን ት>		c=E,base=0
   a=0,v=0
-<እ ብ ይ>		c=A
+<እ ብ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<እ ብ ድ>		c=A
+<እ ብ ድ>		c=A,base=0
   a=0,v=0
-<እ ብ ድ>		c=B
+<እ ብ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ት ል>		c=B
+<እ ት ል>		c=B,base=p
   a=0,v=p
-<እ ት ው>		c=A
+<እ ት ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<እ ን ም>		c=A
+<እ ን ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ን ስ ስ>		c=E
+<እ ን ስ ስ>		c=E,base=0
   a=0,v=0
-<እ ን ብ>		c=A
+<እ ን ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<እ ን ት ር>		c=E
+<እ ን ት ር>		c=E,base=p
   a=0,v=p
-<እ ን ን>		c=A
+<እ ን ን>		c=A,base=p
   a=0,v=p
-<እ ን ን>		c=B
+<እ ን ን>		c=B,base=p
   a=0,v=p
-<እ ን ክ>		c=A
+<እ ን ክ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<እ ን ግ ብ>		c=E
+<እ ን ግ ብ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<እ ን ግ ት>		c=E
+<እ ን ግ ት>		c=E,base=p
   a=0,v=p
-<እ ን ግ ድ>		c=E
+<እ ን ግ ድ>		c=E,base=p
   a=a,v=p ; a=0,v=p ; a=0,v=a
-<እ ን ፍ>		c=A
+<እ ን ፍ>		c=A,base=p
   a=0,v=p
-<እ ን ፍ ት>		c=E
+<እ ን ፍ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<እ ኩ ር>		c=B
+<እ ኩ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<እ ኩ ኩ>		c=B
+<እ ኩ ኩ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ክ ል>		c=A
+<እ ክ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=i,v=a ; a=0,v=a
-<እ ክ ስ ድ>		c=F
+<እ ክ ስ ድ>		c=F,base=0
   a=0,v=0
-<እ ክ ብ>		c=B
+<እ ክ ብ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a
-<እ ክ ይ>		c=A
+<እ ክ ይ>		c=A,base=0
   a=0,v=0
-<እ ው ል>		c=A
+<እ ው ል>		c=A,base=0
   a=0,v=0
-<እ ው ል ል>		c=E
+<እ ው ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<እ ው ይ>		c=A
+<እ ው ይ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<እ ው ድ>		c=B
+<እ ው ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ው ጅ>		c=B
+<እ ው ጅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ዝ ን>		c=B
+<እ ዝ ን>		c=B,base=a
   a=0,v=a
-<እ ዝ ክ>		c=A
+<እ ዝ ክ>		c=A,base=0
   a=0,v=0
-<እ ዝ ው>		c=B
+<እ ዝ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ዝ ዝ>		c=B
+<እ ዝ ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ይ ን>		c=B
+<እ ይ ን>		c=B,base=p
   a=0,v=p
-<እ ይ ድ>		c=B
+<እ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ድ ል>		c=B
+<እ ድ ል>		c=B,base=0
   a=0,v=0
-<እ ድ ም>		c=B
+<እ ድ ም>		c=B,base=0
   a=0,v=0
-<እ ድ ር>		c=B
+<እ ድ ር>		c=B,base=0
   a=0,v=0
-<እ ድ ብ>		c=B
+<እ ድ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<እ ድ ን>		c=A
+<እ ድ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ድ ን>		c=B
+<እ ድ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ድ ድ>		c=A
+<እ ድ ድ>		c=A,base=0
   a=0,v=0
-<እ ድ ግ>		c=B
+<እ ድ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<እ ጅ ል>		c=B
+<እ ጅ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ጅ ብ>		c=B
+<እ ጅ ብ>		c=B,base=0
   a=0,v=0
-<እ ጉ ል>		c=A
+<እ ጉ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<እ ጉ ም>		c=A
+<እ ጉ ም>		c=A,base=0
   a=0,v=0
-<እ ጉ ር>		c=A
+<እ ጉ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<እ ጉ ድ>		c=A
+<እ ጉ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<እ ግ ም>		c=B
+<እ ግ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<እ ግ ር>		c=B
+<እ ግ ር>		c=B,base=0
   a=0,v=0
-<እ ግ እ ግ>		c=E
+<እ ግ እ ግ>		c=E,base=0
   a=0,v=0
-<እ ግ ድ>		c=B
+<እ ግ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<እ ጥ ም>		c=A
+<እ ጥ ም>		c=A,base=a
   a=0,v=a
-<እ ጥ ሽ>		c=A
+<እ ጥ ሽ>		c=A,base=0
   a=0,v=0
-<እ ፍ ት>		c=A
+<እ ፍ ት>		c=A,base=0
   a=0,v=0
-<እ ፍ ፍ>		c=B
+<እ ፍ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ኩ ል ል>		c=A
+<ኩ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ኩ ል ም>		c=A
+<ኩ ል ም>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ኩ ል ም>		c=B
+<ኩ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ኩ ል ስ>		c=B
+<ኩ ል ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ኩ ል ስ ስ>		c=E
+<ኩ ል ስ ስ>		c=E,base=0
   a=0,v=0
-<ኩ ል ስ ዕ>		c=E
+<ኩ ል ስ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ል ብ>		c=B
+<ኩ ል ብ>		c=B,base=0
   a=0,v=0
-<ኩ ል ት ፍ>		c=E
+<ኩ ል ት ፍ>		c=E,base=0
   a=0,v=0
-<ኩ ል ኩ ል>		c=E,s=1
+<ኩ ል ኩ ል>		c=E,s=1,base=0
   a=0,v=0
-<ኩ ል ኩ ል>		c=E,s=2
+<ኩ ል ኩ ል>		c=E,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ል ዕ>		c=B
+<ኩ ል ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ል ዕ ስ>		c=E
+<ኩ ል ዕ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ኩ ል ፍ>		c=A
+<ኩ ል ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ኩ ሕ ል>		c=A
+<ኩ ሕ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ኩ ም ም>		c=A
+<ኩ ም ም>		c=A,base=0
   a=0,v=0
-<ኩ ም ር>		c=B
+<ኩ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ም ስ ዕ>		c=E
+<ኩ ም ስ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ኩ ም ት ር>		c=E
+<ኩ ም ት ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ኩ ም ት ት>		c=E
+<ኩ ም ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ም ኩ ም>		c=E
+<ኩ ም ኩ ም>		c=E,base=0
   a=0,v=0
-<ኩ ም ይ>		c=A
+<ኩ ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ኩ ር ም ት>		c=E
-  a=a,v=p
-<ኩ ር ም ይ>		c=E
-  a=0,v=p ; a=a,v=p ; a=0,v=a
-<ኩ ር ም ጅ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ኩ ር ስ ዕ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ር ብ ብ>		c=E
+<ኩ ር ም ት>		c=F,base=p
   a=0,v=p
-<ኩ ር ት>		c=A
-  a=0,v=a
-<ኩ ር ት ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ር ት ዕ>		c=E
-  a=0,v=0
-<ኩ ር ን ዕ>		c=E
+<ኩ ር ም ይ>		c=E,base=p
   a=0,v=p ; a=a,v=p ; a=0,v=a
-<ኩ ር ን ፍ>		c=E
+<ኩ ር ም ጅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ኩ ር ኩ ሕ>		c=E
-  a=0,v=0
-<ኩ ር ኩ ም>		c=E
-  a=0,v=0 ; a=0,v=p
-<ኩ ር ኩ ር>		c=E
-  a=0,v=0 ; a=0,v=p
-<ኩ ር ኩ ዕ>		c=E
+<ኩ ር ስ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ር ዕ>		c=A
+<ኩ ር ብ ብ>		c=E,base=p
+  a=0,v=p
+<ኩ ር ት>		c=A,base=a
+  a=0,v=a
+<ኩ ር ት ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ር ት ዕ>		c=E,base=0
+  a=0,v=0
+<ኩ ር ን ዕ>		c=E,base=p
+  a=0,v=p ; a=a,v=p ; a=0,v=a
+<ኩ ር ን ፍ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ኩ ር ኩ ሕ>		c=E,base=0
+  a=0,v=0
+<ኩ ር ኩ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ኩ ር ኩ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ኩ ር ኩ ዕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ኩ ር ይ>		c=B
+<ኩ ር ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=i,v=a
-<ኩ ር ድ>		c=A
+<ኩ ር ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ር ድ ድ>		c=E
+<ኩ ር ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ኩ ር ፍ>		c=A
+<ኩ ር ፍ>		c=A,base=a
   a=0,v=a
-<ኩ ር ፍ>		c=B
+<ኩ ር ፍ>		c=B,base=p
   a=0,v=p ; a=i,v=p
-<ኩ ር ፍ ፍ>		c=E
+<ኩ ር ፍ ፍ>		c=E,base=p
   a=0,v=p
-<ኩ ስ ሕ>		c=A
+<ኩ ስ ሕ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ኩ ስ ስ>		c=A
+<ኩ ስ ስ>		c=A,base=0
   a=0,v=0
-<ኩ ስ ት ር>		c=E
+<ኩ ስ ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ኩ ስ ኩ ስ>		c=E
+<ኩ ስ ኩ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ስ ይ>		c=C
+<ኩ ስ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ሽ ሕ>		c=A
+<ኩ ሽ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ኩ ሽ ም>		c=A
-  a=a,v=p ; a=a,v=p ; a=a,v=a
-<ኩ ብ ል ል>		c=E
-  a=0,v=0 ; a=0,v=a
-<ኩ ብ ር>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ብ ኩ ብ>		c=E,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ብ ኩ ብ>		c=E,s=2
-  a=0,v=0
-<ኩ ት ል ክ>		c=E
-  a=0,v=0
-<ኩ ት ም>		c=A
-  a=0,v=0 ; a=0,v=p
-<ኩ ት እ>		c=B
-  a=0,v=0
-<ኩ ት ኩ ት>		c=E
-  a=0,v=0
-<ኩ ት ፍ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ኩ ን ት ር>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ኩ ን ት ር>		c=E,s=2
+<ኩ ሽ ም>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ኩ ን ን>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ን ይ>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ እ ኩ እ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ኩ ር>		c=B
-  a=0,v=0
-<ኩ ኩ ዕ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ኩ ይ>		c=A
-  a=0,v=0
-<ኩ ኩ ድ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ክ ፍ>		c=A
-  a=0,v=0
-<ኩ ዕ ት>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ዕ ን ን>		c=E
-  a=0,v=0 ; a=0,v=p
-<ኩ ዝ ይ ዝ ይ>		c=G
-  a=0,v=a
-<ኩ ድ ም>		c=B
-  a=0,v=p
-<ኩ ድ ብ ድ ብ>		c=G
-  a=0,v=a
-<ኩ ድ ን>		c=B
-  a=a,v=a
-<ኩ ድ ኩ ድ>		c=E
+<ኩ ብ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ኩ ድ ድ>		c=A
-  a=0,v=a ; a=a,v=a
-<ኩ ድ ጭ>		c=A
-  a=0,v=p
-<ክ ህ ን>		c=C
-  a=0,v=0
-<ክ ል ህ>		c=B
-  a=0,v=0
-<ክ ል ል>		c=B
+<ኩ ብ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ል ሕ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ክ ል ሕ ፍ>		c=E
+<ኩ ብ ኩ ብ>		c=E,s=1,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ብ ኩ ብ>		c=E,s=2,base=0
+  a=0,v=0
+<ኩ ት ል ክ>		c=E,base=0
+  a=0,v=0
+<ኩ ት ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ክ ል ስ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ል ብ>		c=B
+<ኩ ት እ>		c=B,base=0
+  a=0,v=0
+<ኩ ት ኩ ት>		c=E,base=0
+  a=0,v=0
+<ኩ ት ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ክ ል ብ ት>		c=E
-  a=a,v=p ; a=a,v=a
-<ክ ል ት>		c=A
-  a=0,v=0
-<ክ ል እ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ክ ል እ>		c=A,s=2
-  a=0,v=0
-<ክ ል ክ ል>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ክ ሕ ስ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ክ ሕ ኩ ሕ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ኩ ሕ ኩ ሕ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ሕ ድ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ክ ም ህ>		c=A
-  a=0,v=0 ; a=0,v=p
-<ክ ም ር>		c=B
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p
-<ክ ም ስ ም ስ>		c=G
-  a=0,v=a
-<ክ ም ብ ል>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ም ክ ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ክ ር ህ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ም>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ር ም>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ም ሕ>		c=E
-  a=a,v=p
-<ክ ር ር>		c=A
+<ኩ ን ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ክ ር ሽ>		c=B
-  a=0,v=0
-<ክ ር ብ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ክ ር ብ ጥ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ት>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ር ት>		c=A,s=2
-  a=a,v=p
-<ክ ር ት ም>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ር ት ት>		c=E,s=1
-  a=0,v=0 ; a=0,v=p
-<ክ ር ት ት>		c=E,s=2
-  a=0,v=0
-<ክ ር ት ፍ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ር ን ብ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ን ን>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ክ ም>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ር ክ ር>		c=E,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ክ ር>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ክ ር ይ>		c=A,s=1
-  a=0,v=p
-<ክ ር ይ>		c=A,s=2
-  a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ክ ር ድ ን>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ድ ድ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ክ ር ጅ>		c=C
-  a=0,v=0 ; a=0,v=p
-<ክ ር ጅ ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ር ጅ ጅ>		c=E
-  a=0,v=0
-<ክ ር ፍ ሕ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ክ ስ ር>		c=A
-  a=0,v=0 ; a=0,v=a
-<ክ ስ ስ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ክ ስ ስ>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ስ ብ>		c=A
-  a=0,v=0
-<ክ ስ ት>		c=A
-  a=0,v=0 ; a=0,v=p
-<ክ ስ ት>		c=B
-  a=0,v=0 ; a=0,v=a
-<ክ ስ ት ን>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ስ እ>		c=A
-  a=0,v=p
-<ክ ስ ክ ስ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ስ ዕ>		c=B
-  a=0,v=0 ; a=0,v=a
-<ክ ስ ድ>		c=B
-  a=0,v=0
-<ክ ስ ፍ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ሽ ሕ>		c=A
-  a=0,v=0 ; a=0,v=p
-<ክ ሽ ም ሽ>		c=E
-  a=a,v=a
-<ክ ሽ ን>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ሽ ክ ሽ>		c=E
-  a=0,v=0
-<ክ ሽ ፍ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ክ ብ ህ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ብ ል ል>		c=E,s=1
-  a=0,v=0 ; a=0,v=p
-<ክ ብ ል ል>		c=E,s=2
-  a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ክ ብ ር>		c=A
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ክ ብ ስ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ብ ብ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ብ ት>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ብ ክ ብ>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ክ ብ ዕ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ብ ድ>		c=A
-  a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ክ ት ል>		c=B
-  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ክ ት ም>		c=A
-  a=0,v=0
-<ክ ት ም>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ት ር>		c=A
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ክ ት ር>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ት ብ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ት ት>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ት ክ ት>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ት ዕ>		c=B
-  a=a,v=p ; a=a,v=a
-<ክ ት ይ>		c=A
-  a=0,v=0
-<ክ ት ፍ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ች ች>		c=B
-  a=0,v=0 ; a=0,v=p
-<ክ ን ስ>		c=B,s=1
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ክ ን ስ>		c=B,s=2
-  a=0,v=0
-<ክ ን ስ ል>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ን ስ ብ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ን ሽ>		c=B
-  a=0,v=0 ; a=0,v=a
-<ክ ን ብ>		c=A,s=1
-  a=0,v=0 ; a=0,v=a
-<ክ ን ብ>		c=A,s=2
-  a=i,v=p
-<ክ ን ብ ል>		c=E
-  a=0,v=0 ; a=0,v=p
-<ክ ን ት ት>		c=E
+<ኩ ን ት ር>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ክ ን ት ፍ>		c=E
+<ኩ ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ን ን>		c=A
-  a=0,v=0 ; a=0,v=a
-<ክ ን ክ ን>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ክ ን ክ ን>		c=E,s=2
-  a=a,v=p
-<ክ ን ው ን>		c=E
-  a=a,v=p ; a=a,v=a
-<ክ ን ይ>		c=B
+<ኩ ን ይ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ እ ኩ እ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ኩ ር>		c=B,base=0
   a=0,v=0
-<ክ ን ድ>		c=A
+<ኩ ኩ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ን ድ ድ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ን ፍ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ክ እ ል>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=a
-<ክ ው ል>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ው ሕ>		c=B
+<ኩ ኩ ይ>		c=A,base=0
   a=0,v=0
-<ክ ው ም>		c=A
+<ኩ ኩ ድ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ክ ፍ>		c=A,base=0
+  a=0,v=0
+<ኩ ዕ ት>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ዕ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ክ ው ስ>		c=A
+<ኩ ዝ ይ ዝ ይ>		c=G,base=p
+  a=0,v=a
+<ኩ ድ ም>		c=B,base=p
+  a=0,v=p
+<ኩ ድ ብ ድ ብ>		c=G,base=p
+  a=0,v=a
+<ኩ ድ ን>		c=A,base=aa
+  a=a,v=a
+<ኩ ድ ኩ ድ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ኩ ድ ድ>		c=A,base=a
+  a=0,v=a ; a=a,v=a
+<ኩ ድ ጭ>		c=A,base=p
+  a=0,v=p
+<ክ ህ ን>		c=C,base=0
+  a=0,v=0
+<ክ ል ህ>		c=B,base=0
+  a=0,v=0
+<ክ ል ል>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ል ሕ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
+<ክ ል ሕ ፍ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ል ስ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ል ብ>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ል ብ ት>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ክ ል ት>		c=A,base=0
+  a=0,v=0
+<ክ ል እ>		c=A,s=1,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ክ ል እ>		c=A,s=2,base=0
+  a=0,v=0
+<ክ ል ክ ል>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
+<ክ ሕ ስ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ክ ሕ ኩ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ኩ ሕ ኩ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ሕ ድ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ክ ም ህ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ም ር>		c=B,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p
+<ክ ም ስ ም ስ>		c=G,base=p
+  a=0,v=a
+<ክ ም ብ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ም ክ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
+<ክ ር ህ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ም>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ክ ር ም>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ም ሕ>		c=F,base=p
+  a=0,v=p
+<ክ ር ር>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ር ሽ>		c=B,base=0
+  a=0,v=0
+<ክ ር ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ር ብ ጥ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=a,v=p
+<ክ ር ት ም>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ክ ር ት ት>		c=E,s=1,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ር ት ት>		c=E,s=2,base=0
+  a=0,v=0
+<ክ ር ት ፍ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ር ን ብ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ን ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ክ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ር ክ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ክ ር>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ክ ር ይ>		c=A,s=1,base=p
+  a=0,v=p
+<ክ ር ይ>		c=A,s=2,base=p
+  a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
+<ክ ር ድ ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ድ ድ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ር ጅ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ር ጅ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ር ጅ ጅ>		c=E,base=0
+  a=0,v=0
+<ክ ር ፍ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ስ ር>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ስ ስ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
+<ክ ስ ስ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ስ ብ>		c=A,base=0
+  a=0,v=0
+<ክ ስ ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ስ ት>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ስ ት ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ስ እ>		c=A,base=p
+  a=0,v=p
+<ክ ስ ክ ስ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ስ ዕ>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ስ ድ>		c=B,base=0
+  a=0,v=0
+<ክ ስ ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ሽ ሕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ሽ ም ሽ>		c=F,base=a
+  a=0,v=a
+<ክ ሽ ን>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ሽ ክ ሽ>		c=E,base=0
+  a=0,v=0
+<ክ ሽ ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ብ ህ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ብ ል ል>		c=E,s=1,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ብ ል ል>		c=E,s=2,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p
+<ክ ብ ር>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ክ ብ ስ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ክ ብ ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ክ ብ ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ብ ክ ብ>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
+<ክ ብ ዕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ብ ድ>		c=A,base=0
+  a=0,v=0 ; a=a,v=a ; a=0,v=a
+<ክ ት ል>		c=B,base=p
+  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ክ ት ም>		c=A,base=0
+  a=0,v=0
+<ክ ት ም>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ት ር>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
+<ክ ት ር>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ት ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ት ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ት ክ ት>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ክ ት ዕ>		c=A,base=ap
+  a=a,v=p ; a=a,v=a
+<ክ ት ይ>		c=A,base=0
+  a=0,v=0
+<ክ ት ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ች ች>		c=B,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ን ስ>		c=B,s=1,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
+<ክ ን ስ>		c=B,s=2,base=0
+  a=0,v=0
+<ክ ን ስ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ን ስ ብ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ን ሽ>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ን ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=i,v=p
+<ክ ን ብ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ን ት ት>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ክ ን ት ፍ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ን ን>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ን ክ ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ ን ክ ን>		c=F,base=p
+  a=0,v=p
+<ክ ን ው ን>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ክ ን ይ>		c=B,base=0
+  a=0,v=0
+<ክ ን ድ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ን ድ ድ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ን ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ክ እ ል>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=a
+<ክ ው ል>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ክ ው ሕ>		c=B,base=0
+  a=0,v=0
+<ክ ው ም>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ክ ው ስ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ክ ው ን>		c=A
+<ክ ው ን>		c=A,base=0
   a=0,v=0 ;a=a,v=p ; a=a,v=a
-<ክ ው ፍ>		c=A
+<ክ ው ፍ>		c=A,base=a
   a=0,v=a
-<ክ ዕ ብ>		c=A
+<ክ ዕ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ክ ዕ ብ ት>		c=E
+<ክ ዕ ብ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ዕ ው>		c=A
+<ክ ዕ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=a
-<ክ ዝ ን>		c=A
+<ክ ዝ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ክ ይ ር>		c=B
+<ክ ይ ር>		c=B,base=p
   a=0,v=p
-<ክ ይ ድ>		c=A
+<ክ ይ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ክ ይ ፍ>		c=B
+<ክ ይ ፍ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ክ ድ ም>		c=B
+<ክ ድ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ድ ን>		c=A
+<ክ ድ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ክ ድ ዕ>		c=A
+<ክ ድ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ክ ፍ ል>		c=A
+<ክ ፍ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ክ ፍ ሽ>		c=A
+<ክ ፍ ሽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ፍ ት>		c=A
+<ክ ፍ ት>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ክ ፍ እ>		c=A
+<ክ ፍ እ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ክ ፍ ክ ፍ>		c=E
+<ክ ፍ ክ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ክ ፍ ይ>		c=C
+<ክ ፍ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=a
-<ክ ፍ ፍ>		c=A
+<ክ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ህ ል ል>		c=E
+<ው ህ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ህ ድ>		c=A
+<ው ህ ድ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ው ል ህ>		c=B
+<ው ል ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ል ል>		c=B
+<ው ል ል>		c=B,base=p
   a=0,v=p
-<ው ል ም>		c=A
+<ው ል ም>		c=A,base=0
   a=0,v=0
-<ው ል ም ጥ>		c=E
+<ው ል ም ጥ>		c=E,base=0
   a=0,v=0
-<ው ል ቅ>		c=A,s=1
-  a=0,v=0 ; a=0,v=a
-<ው ል ቅ>		c=A,s=2
-  a=a,v=p
-<ው ል ቅ ው>		c=E
+<ው ል ቅ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p
+<ው ል ቅ ው>		c=E,base=a
   a=0,v=a
-<ው ል ት ፍ>		c=E
+<ው ል ት ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ው ል እ>		c=B
+<ው ል እ>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ው ል ው ል>		c=E,s=1
+<ው ል ው ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ል ው ል>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ው ል ዕ>		c=B
+<ው ል ው ል>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ው ል ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ል ድ>		c=A
+<ው ል ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ው ል ድ>		c=B
+<ው ል ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ል ድ ፍ>		c=E
+<ው ል ድ ፍ>		c=E,base=0
   a=0,v=0
-<ው ል ግ ድ>		c=E
+<ው ል ግ ድ>		c=E,base=0
   a=0,v=0
-<ው ል ጥ ፍ>		c=E
+<ው ል ጥ ፍ>		c=E,base=0
   a=0,v=0
-<ው ል ፍ>		c=B
+<ው ል ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ል ፍ ስ>		c=E
+<ው ል ፍ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ው ል ፍ ት>		c=E
+<ው ል ፍ ት>		c=E,base=0
   a=0,v=0
-<ው ል ፍ ጥ>		c=E
+<ው ል ፍ ጥ>		c=E,base=0
   a=0,v=0
-<ው ሕ ል ል>		c=E
+<ው ሕ ል ል>		c=E,base=0
   a=0,v=0
-<ው ሕ ስ>		c=A
+<ው ሕ ስ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ው ሕ ዝ>		c=A
+<ው ሕ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ው ሕ ድ>		c=A,s=1
+<ው ሕ ድ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=a
-<ው ሕ ድ>		c=A,s=2
+<ው ሕ ድ>		c=A,s=2,base=p
   a=0,v=p ; a=i,v=p ; a=i,v=a
-<ው ሕ ጅ>		c=A
+<ው ሕ ጅ>		c=A,base=0
   a=0,v=0
-<ው ሕ ጥ>		c=A
+<ው ሕ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ው ም ብ ድ>		c=E
+<ው ም ብ ድ>		c=E,base=0
   a=0,v=0
-<ው ር ሕ>		c=B
+<ው ር ሕ>		c=B,base=0
   a=0,v=0
-<ው ር ሕ ር ሕ>		c=G
+<ው ር ሕ ር ሕ>		c=G,base=p
   a=0,v=a
-<ው ር ም>		c=B
+<ው ር ም>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ው ር ም ብ ጥ>		c=G
+<ው ር ም ብ ጥ>		c=G,base=p
   a=0,v=a
-<ው ር ር>		c=A,s=1
+<ው ር ር>		c=A,s=1,base=p
   a=0,v=p
-<ው ር ር>		c=A,s=2
+<ው ር ር>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ው ር ስ>		c=A,s=1
+<ው ር ስ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ው ር ስ>		c=A,s=2
+<ው ር ስ>		c=A,s=2,base=p
   a=0,v=p
-<ው ር ቅ>		c=B
+<ው ር ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ር ብ>		c=B
+<ው ር ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ር ን ቅ>		c=E
+<ው ር ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ር ው ር>		c=E
+<ው ር ው ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ው ር ዕ>		c=B
+<ው ር ዕ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ው ር ዝ>		c=B
+<ው ር ዝ>		c=B,base=0
   a=0,v=0
-<ው ር ዝ ው>		c=E
+<ው ር ዝ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ው ር ዝ ይ>		c=E
+<ው ር ዝ ይ>		c=E,base=a
   a=a,v=p ; a=0,v=a
-<ው ር ይ>		c=A
+<ው ር ይ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ው ር ይ>		c=C
+<ው ር ይ>		c=C,base=0
   a=0,v=0
-<ው ር ድ>		c=A
+<ው ር ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ው ር ድ ሕ>		c=E
-  a=a,v=p
-<ው ር ጽ ጽ>		c=E
+<ው ር ድ ሕ>		c=F,base=p
+  a=0,v=p
+<ው ር ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ው ር ፍ>		c=B
+<ው ር ፍ>		c=B,base=0
   a=0,v=0
-<ው ስ ል ት>		c=E
+<ው ስ ል ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ው ስ ብ>		c=A
+<ው ስ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ስ ን>		c=B
+<ው ስ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ው ስ እ>		c=A
+<ው ስ እ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ስ ክ>		c=B
+<ው ስ ክ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ው ስ ው ስ>		c=E,s=1
+<ው ስ ው ስ>		c=E,base=0
   a=0,v=0
-<ው ስ ው ስ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ው ስ ይ>		c=A
+<ው ስ ው ስ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ው ስ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ስ ድ>		c=A
+<ው ስ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ሽ ል>		c=B
+<ው ሽ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ሽ ል ክ>		c=E
+<ው ሽ ል ክ>		c=E,base=0
   a=0,v=0
-<ው ሽ ም>		c=B
+<ው ሽ ም>		c=B,base=p
   a=0,v=p
-<ው ሽ ጥ>		c=B
+<ው ሽ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ቅ ል>		c=B
+<ው ቅ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ር>		c=A
+<ው ቅ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ር>		c=B
+<ው ቅ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ስ>		c=A
+<ው ቅ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ው ቅ ብ>		c=B
+<ው ቅ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ዕ>		c=A
+<ው ቅ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ቅ ይ>		c=A
+<ው ቅ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ጥ>		c=A
+<ው ቅ ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ው ቅ ጥ>		c=B
+<ው ቅ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ት ር>		c=A
+<ው ት ር>		c=A,base=0
   a=0,v=0
-<ው ት እ>		c=B
+<ው ት እ>		c=B,base=0
   a=0,v=0
-<ው ት ግ>		c=B
+<ው ት ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ት ፍ>		c=B
+<ው ት ፍ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ው ን ብ ድ>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ው ን ብ ድ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ው ን ን>		c=B
+<ው ን ብ ድ>	c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p ; a=a,v=a
+<ው ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ን ው ን>		c=E
-  a=a,v=p ; a=a,v=a
-<ው ን ዝ ፍ>		c=E,s=1
+<ው ን ው ን>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ው ን ዝ ፍ>		c=E,s=1,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ን ዝ ፍ>		c=E,s=2
+<ው ን ዝ ፍ>		c=E,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ው ን ይ>		c=C,s=1
+<ው ን ይ>		c=C,s=1,base=0
   a=0,v=0
-<ው ን ይ>		c=C,s=2
+<ው ን ይ>		c=C,s=2,base=p
   a=0,v=p
-<ው ን ድ ብ>		c=E
+<ው ን ድ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ን ጅ ል>		c=E
+<ው ን ጅ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ን ጅ ር>		c=E
-  a=a,v=p
-<ው ን ጥ ይ>		c=E
-  a=0,v=p ; a=0,v=a
-<ው ን ጭ ር>		c=E
-  a=0,v=0 ; a=0,v=a
-<ው ን ጭ ፍ>		c=E
-  a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ክ ል>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ክ ስ>		c=B
-  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ው ክ እ>		c=B
+<ው ን ጅ ር>		c=F,base=p
   a=0,v=p
-<ው ክ ክ>		c=B
+<ው ን ጥ ይ>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ው ን ጭ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ው ን ጭ ፍ>		c=E,base=0
+  a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ው ክ ል>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ው ክ ስ>		c=B,base=p
+  a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
+<ው ክ እ>		c=B,base=p
+  a=0,v=p
+<ው ክ ክ>		c=B,base=0
   a=0,v=0
-<ው ክ ዕ>		c=A
+<ው ክ ዕ>		c=A,base=a
   a=0,v=a
-<ው ክ ፍ>		c=B
+<ው ክ ፍ>		c=B,base=a
   a=0,v=a
-<ው ዕ ል>		c=A
+<ው ዕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ው ዕ ው ዕ>		c=E
+<ው ዕ ው ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ው ዕ ይ>		c=A
+<ው ዕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=i,v=a
-<ው ዝ ል>		c=B
+<ው ዝ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ዝ ብ>		c=B
+<ው ዝ ብ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ው ዝ ን>		c=B
+<ው ዝ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ዝ ን ዝ ን>		c=G
+<ው ዝ ን ዝ ን>		c=G,base=p
   a=0,v=a
-<ው ዝ ክ ዝ ክ>		c=G
+<ው ዝ ክ ዝ ክ>		c=G,base=p
   a=0,v=a
-<ው ዝ ው ዝ>		c=E
+<ው ዝ ው ዝ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ዝ ዕ>		c=A
+<ው ዝ ዕ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ው ዝ ዕ>		c=B
+<ው ዝ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ዝ ይ>		c=C
+<ው ዝ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ው ዝ ፍ>		c=B
+<ው ዝ ፍ>		c=B,base=0
   a=0,v=0
-<ው ዥ ብ ር>		c=E
+<ው ዥ ብ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ው ይ ል>		c=B
+<ው ይ ል>		c=B,base=0
   a=0,v=0
-<ው ይ ብ>		c=B
+<ው ይ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ይ ን>		c=B
+<ው ይ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ይ ፍ>		c=B
+<ው ይ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ድ ል>		c=B
+<ው ድ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ድ ል ድ ል>		c=G
+<ው ድ ል ድ ል>		c=G,base=p
   a=0,v=a
-<ው ድ ር>		c=A
+<ው ድ ር>		c=A,base=ip
   a=i,v=p ; a=i,v=a
-<ው ድ ስ>		c=B
+<ው ድ ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ው ድ ቅ>		c=A
+<ው ድ ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ድ ብ>		c=B
+<ው ድ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ው ድ ት>		c=B
+<ው ድ ት>		c=B,base=0
   a=0,v=0
-<ው ድ ን>		c=B
+<ው ድ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ድ እ>		c=B
+<ው ድ እ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ው ድ ክ ድ ክ>		c=G
+<ው ድ ክ ድ ክ>		c=G,base=p
   a=0,v=a
-<ው ድ ይ>		c=A
+<ው ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ድ ድ>		c=B
+<ው ድ ድ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ው ጅ ህ>		c=B
+<ው ጅ ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ጅ ብ>		c=B
+<ው ጅ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ው ጅ ዕ>		c=A
+<ው ጅ ዕ>		c=A,base=p
   a=0,v=p ; a=a,v=a ; a=0,v=a
-<ው ግ ህ>		c=A
+<ው ግ ህ>		c=A,base=aa
   a=a,v=a
-<ው ግ ሕ>		c=A
+<ው ግ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ው ግ ር>		c=A,s=1
+<ው ግ ር>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p
-<ው ግ ር>		c=A,s=2
+<ው ግ ር>		c=A,s=2,base=p
   a=0,v=p ; a=a,v=a
-<ው ግ ን>		c=B
+<ው ግ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ግ እ>		c=A
+<ው ግ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ግ ዕ>		c=A
+<ው ግ ዕ>		c=A,base=a
   a=0,v=a
-<ው ግ ዝ>		c=B
+<ው ግ ዝ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p
-<ው ግ ይ>		c=A
+<ው ግ ይ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ው ግ ድ>		c=B
+<ው ግ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ው ጥ ሕ>		c=B
+<ው ጥ ሕ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ው ጥ ም>		c=B
+<ው ጥ ም>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ው ጥ ር>		c=B
+<ው ጥ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a
-<ው ጥ ን>		c=B
+<ው ጥ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ው ጥ ው ጥ>		c=E,s=1
+<ው ጥ ው ጥ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p ; a=a,v=a
+<ው ጥ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ው ጥ ው ጥ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ው ጥ ይ>		c=C
-  a=0,v=0 ; a=0,v=a
-<ው ጥ ጥ>		c=B
+<ው ጥ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ው ጭ ል>		c=B
+<ው ጭ ል>		c=B,base=0
   a=0,v=0
-<ው ጭ ው ጭ>		c=E
+<ው ጭ ው ጭ>		c=E,base=0
   a=0,v=0
-<ው ጭ ጭ>		c=B
+<ው ጭ ጭ>		c=B,base=0
   a=0,v=0
-<ው ጽ ል>		c=B
+<ው ጽ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ው ጽ እ>		c=A
+<ው ጽ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ው ጽ ዕ>		c=B
+<ው ጽ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ው ፍ ር>		c=A
+<ው ፍ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ው ፍ ር>		c=B
+<ው ፍ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ው ፍ ይ>		c=B
+<ው ፍ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዑ ጽ ጽ>		c=A
+<ዑ ጽ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ል ል>		c=A,s=1
+<ዕ ል ል>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ል ል>		c=A,s=2
+<ዕ ል ል>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ል ል>		c=B,s=1
+<ዕ ል ል>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ል ል>		c=B,s=2
+<ዕ ል ል>		c=B,s=2,base=0
   a=0,v=0
-<ዕ ል ም>		c=B
+<ዕ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ል ስ>		c=B
+<ዕ ል ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ል ሽ>		c=A
+<ዕ ል ሽ>		c=A,base=0
   a=0,v=0
-<ዕ ል ቁ>		c=B
+<ዕ ል ቁ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ል ቅ>		c=A
+<ዕ ል ቅ>		c=A,base=0
   a=0,v=0
-<ዕ ል ቅ ል ቅ>		c=G
+<ዕ ል ቅ ል ቅ>		c=G,base=p
   a=0,v=a
-<ዕ ል ብ>		c=A
+<ዕ ል ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ል ብ>		c=B
+<ዕ ል ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ል ብ ጥ>		c=I
+<ዕ ል ብ ጥ>		c=I,base=0
   a=0,v=a
-<ዕ ል ው>		c=A
+<ዕ ል ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ል ው>		c=B
+<ዕ ል ው>		c=B,base=0
   a=0,v=0
-<ዕ ል ዕ ል>		c=E
+<ዕ ል ዕ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ሙ ቅ>		c=B
+<ዕ ሙ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ሙ ኩ>		c=A
+<ዕ ሙ ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ም ል>		c=B
+<ዕ ም ል>		c=B,base=0
   a=0,v=0
-<ዕ ም ም>		c=A
+<ዕ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ም ም>		c=B
+<ዕ ም ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ም ር>		c=B
+<ዕ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ም ር ር>		c=E
+<ዕ ም ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ም ስ>		c=A
+<ዕ ም ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ም ቁ>		c=A
+<ዕ ም ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ም ብ ስ>		c=E
+<ዕ ም ብ ስ>		c=E,base=0
   a=0,v=0
-<ዕ ም ብ ብ>		c=E
+<ዕ ም ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ም ብ ኩ>		c=E
+<ዕ ም ብ ኩ>		c=E,base=0
   a=0,v=0
-<ዕ ም ት>		c=B
+<ዕ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ዕ ም ጥ ል>		c=E
+<ዕ ም ጥ ል>		c=E,base=0
   a=0,v=0
-<ዕ ም ጥ ር>		c=E
+<ዕ ም ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ም ጥ ቁ>		c=E
+<ዕ ም ጥ ቁ>		c=E,base=0
   a=0,v=0
-<ዕ ም ጽ>		c=B
+<ዕ ም ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ም ጽ ጽ>		c=E
+<ዕ ም ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ር ም>		c=A
+<ዕ ር ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ር ም ም>		c=E
+<ዕ ር ም ም>		c=E,base=0
   a=0,v=0
-<ዕ ር ም ር ም>		c=G
+<ዕ ር ም ር ም>		c=G,base=p
   a=0,v=a
-<ዕ ር ም ው>		c=E
+<ዕ ር ም ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ስ ስ>		c=E
+<ዕ ር ስ ስ>		c=E,base=0
   a=0,v=0
-<ዕ ር ሽ ን>		c=E
+<ዕ ር ሽ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ቁ>		c=B
+<ዕ ር ቁ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ቁ ም>		c=E
+<ዕ ር ቁ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ቅ>		c=A,s=1
+<ዕ ር ቅ>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ር ቅ>		c=A,s=2
+<ዕ ር ቅ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ቅ>		c=A,s=3
+<ዕ ር ቅ>		c=A,s=3,base=a
   a=0,v=a
-<ዕ ር ብ>		c=A
+<ዕ ር ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ን ስ>		c=E
+<ዕ ር ን ስ>		c=E,base=0
   a=0,v=0
-<ዕ ር ን ን>		c=E
+<ዕ ር ን ን>		c=E,base=0
   a=0,v=0
-<ዕ ር ክ>		c=A
+<ዕ ር ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ር ዕ ር>		c=E
+<ዕ ር ዕ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ዝ ው>		c=E
+<ዕ ር ዝ ው>		c=E,base=0
   a=0,v=0
-<ዕ ር ይ>		c=A
+<ዕ ር ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ይ>		c=B
+<ዕ ር ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=a
-<ዕ ር ድ>		c=A
+<ዕ ር ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ድ ድ>		c=E
+<ዕ ር ድ ድ>		c=E,base=0
   a=0,v=0
-<ዕ ር ጅ ው>		c=E
+<ዕ ር ጅ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ጅ ፍ>		c=E
+<ዕ ር ጅ ፍ>		c=E,base=0
   a=0,v=0
-<ዕ ር ጉ ድ>		c=E
+<ዕ ር ጉ ድ>		c=E,base=0
   a=0,v=0
-<ዕ ር ግ>		c=A
+<ዕ ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ር ግ ፍ>		c=E
+<ዕ ር ግ ፍ>		c=E,base=0
   a=0,v=0
-<ዕ ር ጥ ም>		c=E
+<ዕ ር ጥ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ጥ ጥ>		c=E
+<ዕ ር ጥ ጥ>		c=E,base=0
   a=0,v=0
-<ዕ ር ጭ ም>		c=E
+<ዕ ር ጭ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ር ጭ ጭ>		c=E
+<ዕ ር ጭ ጭ>		c=E,base=0
   a=0,v=0
-<ዕ ር ፍ>		c=A
+<ዕ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ስ ል>		c=A
+<ዕ ስ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ስ ብ>		c=A,s=1
+<ዕ ስ ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ስ ብ>		c=A,s=2
+<ዕ ስ ብ>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ስ ት ክ>		c=E
+<ዕ ስ ት ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ስ ክ ር>		c=E
+<ዕ ስ ክ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ስ ው>		c=B,s=1
+<ዕ ስ ው>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ስ ው>		c=B,s=2
+<ዕ ስ ው>		c=B,s=2,base=0
   a=0,v=0
-<ዕ ስ ዕ ስ>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ዕ ስ ዕ ስ>		c=E,s=2
-  a=a,v=p
-<ዕ ሽ ር>		c=B
+<ዕ ስ ዕ ስ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p
+<ዕ ሽ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ሽ ሽ>		c=B
+<ዕ ሽ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ሽ ን ግ>		c=E
+<ዕ ሽ ን ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ሽ ው>		c=B
+<ዕ ሽ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ሽ ግ>		c=B
+<ዕ ሽ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ቁ ር>		c=A
+<ዕ ቁ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ቁ ብ>		c=A
+<ዕ ቁ ብ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ቅ ል>		c=A
+<ዕ ቅ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ቅ ብ>		c=B,s=1
+<ዕ ቅ ብ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ቅ ብ>		c=B,s=2
+<ዕ ቅ ብ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ቅ ን>		c=B
+<ዕ ቅ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ዕ ቅ ይ>		c=B
+<ዕ ቅ ይ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ቅ ጽ>		c=A
+<ዕ ቅ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ብ ል ል>		c=E
+<ዕ ብ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ብ ል ክ>		c=E
+<ዕ ብ ል ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ብ ር>		c=A
+<ዕ ብ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ብ ስ>		c=A
+<ዕ ብ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ብ ቅ>		c=A
+<ዕ ብ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ብ ዕ ብ>		c=E
+<ዕ ብ ዕ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ብ ይ>		c=A,s=1
+<ዕ ብ ይ>		c=A,s=1,base=p
   a=0,v=p
-<ዕ ብ ይ>		c=A,s=2
+<ዕ ብ ይ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ብ ይ>		c=B
+<ዕ ብ ይ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ብ ድ>		c=A
+<ዕ ብ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ዕ ብ ድ ብ ድ>		c=G
+<ዕ ብ ድ ብ ድ>		c=G,base=p
   a=0,v=a
-<ዕ ብ ጥ>		c=A
+<ዕ ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p
-<ዕ ት ር>		c=A
+<ዕ ት ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ት ር>		c=B
+<ዕ ት ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ት ብ>		c=A
+<ዕ ት ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ት ክ>		c=B
+<ዕ ት ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ት ዕ ት>		c=E
+<ዕ ት ዕ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ን ቅ ጽ>		c=E
+<ዕ ን ቅ ጽ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ዕ ን ቅ ፍ>		c=E
+<ዕ ን ቅ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ዕ ን ብ ስ>		c=E
+<ዕ ን ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ት ር>		c=E
+<ዕ ን ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ን>		c=A
+<ዕ ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ን ይ>		c=I
+<ዕ ን ን ይ>		c=I,base=0
   a=0,v=a
-<ዕ ን ኩ ር>		c=E
+<ዕ ን ኩ ር>		c=E,base=0
   a=0,v=0
-<ዕ ን ክ ል>		c=E
+<ዕ ን ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ን ክ ር>		c=E
+<ዕ ን ክ ር>		c=E,base=0
   a=0,v=0
-<ዕ ን ው>		c=A
+<ዕ ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ዕ ን>		c=E
+<ዕ ን ዕ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ዝ ር>		c=E
+<ዕ ን ዝ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ዝ ዝ>		c=E
+<ዕ ን ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ን ድ>		c=A
+<ዕ ን ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p
-<ዕ ን ድ ር>		c=E
+<ዕ ን ድ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ድ ፍ>		c=E
+<ዕ ን ድ ፍ>		c=E,base=0
   a=0,v=0
-<ዕ ን ጅ ል>		c=E
+<ዕ ን ጅ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ጅ ው>		c=E
+<ዕ ን ጅ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ጉ ር>		c=E
+<ዕ ን ጉ ር>		c=E,base=0
   a=0,v=0
-<ዕ ን ግ ል>		c=E
+<ዕ ን ግ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ን ግ ር>		c=E
+<ዕ ን ግ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ጥ ል>		c=E
+<ዕ ን ጥ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ጭ ር>		c=E
+<ዕ ን ጭ ር>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ን ፍ>		c=A
+<ዕ ን ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ን ፍ ው>		c=E
+<ዕ ን ፍ ው>		c=E,base=0
   a=0,v=0
-<ዕ ን ፍ ፍ>		c=E
+<ዕ ን ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ኩ ል ል>		c=E
+<ዕ ኩ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ዕ ኩ ም>		c=B
+<ዕ ኩ ም>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ኩ ር>		c=B
+<ዕ ኩ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ኩ ት>		c=A
+<ዕ ኩ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ኩ ኩ>		c=A
+<ዕ ኩ ኩ>		c=A,base=0
   a=0,v=0
-<ዕ ኩ ኩ>		c=B
+<ዕ ኩ ኩ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ኩ ይ>		c=A
+<ዕ ኩ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ክ ር>		c=B
+<ዕ ክ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ክ ስ>		c=B
+<ዕ ክ ስ>		c=B,base=0
   a=0,v=0
-<ዕ ክ ክ>		c=B
+<ዕ ክ ክ>		c=B,base=0
   a=0,v=0
-<ዕ ው ል>		c=A
+<ዕ ው ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ው ል>		c=B
+<ዕ ው ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ው ል ው ል>		c=G
+<ዕ ው ል ው ል>		c=G,base=p
   a=0,v=a
-<ዕ ው ር>		c=A
+<ዕ ው ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ው ት>		c=B
+<ዕ ው ት>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ው ን>		c=B
+<ዕ ው ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ው ድ>		c=A
+<ዕ ው ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ው ፍ>		c=B
+<ዕ ው ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ዝ ም>		c=B
+<ዕ ዝ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ዝ ም ዝ ም>		c=G
+<ዕ ዝ ም ዝ ም>		c=G,base=p
   a=0,v=a
-<ዕ ዝ ር>		c=A,s=1
+<ዕ ዝ ር>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=p
-<ዕ ዝ ር>		c=A,s=2
+<ዕ ዝ ር>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ዝ ር>		c=B
+<ዕ ዝ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ዝ ብ>		c=B
+<ዕ ዝ ብ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ዝ ዕ ዝ>		c=E
+<ዕ ዝ ዕ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ዝ ዝ>		c=A
+<ዕ ዝ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ዝ ፍ ዝ ፍ>		c=G
+<ዕ ዝ ፍ ዝ ፍ>		c=G,base=p
   a=0,v=a
-<ዕ ይ ም>		c=A
+<ዕ ይ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ይ ር>		c=B
+<ዕ ይ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ይ ቁ ል>		c=E
+<ዕ ይ ቁ ል>		c=E,base=0
   a=0,v=0
-<ዕ ይ ን>		c=B
+<ዕ ይ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ይ ይ>		c=A
+<ዕ ይ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ይ ግ>		c=A,s=1
+<ዕ ይ ግ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ይ ግ>		c=A,s=2
+<ዕ ይ ግ>		c=A,s=2,base=0
   a=0,v=0
-<ዕ ድ ል>		c=B
+<ዕ ድ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ዕ ድ ም>		c=B
+<ዕ ድ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ድ ስ>		c=B
+<ዕ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ድ ብ>		c=B
+<ዕ ድ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ድ ን>		c=B
+<ዕ ድ ን>		c=B,base=0
   a=0,v=0
-<ዕ ድ ኩ>		c=A
+<ዕ ድ ኩ>		c=A,base=0
   a=0,v=0
-<ዕ ድ ኩ>		c=B
+<ዕ ድ ኩ>		c=B,base=0
   a=0,v=0
-<ዕ ድ ይ>		c=A
+<ዕ ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ድ ግ>		c=B
+<ዕ ድ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ጅ ብ>		c=B,s=1
+<ዕ ጅ ብ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ጅ ብ>		c=B,s=2
+<ዕ ጅ ብ>		c=B,s=2,base=0
   a=0,v=0
-<ዕ ጅ ው ጅ ው>		c=G
+<ዕ ጅ ው ጅ ው>		c=G,base=p
   a=0,v=a
-<ዕ ጅ ዕ ጅ>		c=E
+<ዕ ጅ ዕ ጅ>		c=E,base=0
   a=0,v=0
-<ዕ ጉ ም ጉ ም>		c=G
+<ዕ ጉ ም ጉ ም>		c=G,base=p
   a=0,v=a
-<ዕ ጉ ዕ ጉ>		c=E
+<ዕ ጉ ዕ ጉ>		c=E,base=0
   a=0,v=0
-<ዕ ጉ ጉ>		c=A
+<ዕ ጉ ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ግ ር ግ ር>		c=G
+<ዕ ግ ር ግ ር>		c=G,base=p
   a=0,v=a
-<ዕ ግ ስ>		c=B
+<ዕ ግ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ግ ሽ ግ ሽ>		c=G
+<ዕ ግ ሽ ግ ሽ>		c=G,base=p
   a=0,v=a
-<ዕ ግ ብ>		c=A
+<ዕ ግ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ግ ብ>		c=B
+<ዕ ግ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዕ ግ ት>		c=A
+<ዕ ግ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ግ ን ግ ን>		c=G
+<ዕ ግ ን ግ ን>		c=G,base=p
   a=0,v=a
-<ዕ ጥ ል>		c=B
+<ዕ ጥ ል>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ዕ ጥ ር>		c=A
+<ዕ ጥ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ጥ ር ስ>		c=E
+<ዕ ጥ ር ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ጥ ቅ>		c=A
+<ዕ ጥ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ጥ ን>		c=A
+<ዕ ጥ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ጥ ን ጥ ን>		c=G
+<ዕ ጥ ን ጥ ን>		c=G,base=p
   a=0,v=a
-<ዕ ጥ ው>		c=B
+<ዕ ጥ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ጥ ይ ጥ ይ>		c=G
+<ዕ ጥ ይ ጥ ይ>		c=G,base=p
   a=0,v=a
-<ዕ ጥ ጥ>		c=A
+<ዕ ጥ ጥ>		c=A,base=0
   a=0,v=0
-<ዕ ጥ ጥ ይ>		c=I
+<ዕ ጥ ጥ ይ>		c=I,base=0
   a=0,v=a
-<ዕ ጭ ም>		c=B
+<ዕ ጭ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ጭ ቅ>		c=A
+<ዕ ጭ ቅ>		c=A,base=0
   a=0,v=0
-<ዕ ጭ ድ>		c=A
+<ዕ ጭ ድ>		c=A,base=0
   a=0,v=0
-<ዕ ጽ ም>		c=B
+<ዕ ጽ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ጽ ቅ>		c=B
+<ዕ ጽ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ጽ ብ>		c=A
+<ዕ ጽ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ዕ ጽ ው>		c=A
+<ዕ ጽ ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ጽ ድ>		c=A
+<ዕ ጽ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዕ ጽ ፍ>		c=A
+<ዕ ጽ ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=p ; a=i,v=p ; a=i,v=a ; a=0,v=a
-<ዕ ፍ ል>		c=B
+<ዕ ፍ ል>		c=B,base=0
   a=0,v=0
-<ዕ ፍ ር>		c=A
+<ዕ ፍ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ፍ ት ው>		c=E
+<ዕ ፍ ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ፍ ን>		c=B
+<ዕ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዕ ፍ ን ቁ>		c=E
+<ዕ ፍ ን ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ፍ ዕ ፍ>		c=E
+<ዕ ፍ ዕ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ፍ ጥ ር>		c=E
+<ዕ ፍ ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዕ ፍ ፍ>		c=A
+<ዕ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዙ ል ጥ>		c=B
+<ዙ ል ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ህ ል ል>		c=E
+<ዝ ህ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ህ ም>		c=A
+<ዝ ህ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ህ ን ህ ን>		c=G
+<ዝ ህ ን ህ ን>		c=G,base=p
   a=0,v=a
-<ዝ ል ል>		c=A,s=1
+<ዝ ል ል>		c=A,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ዝ ል ል>		c=A,s=2
+<ዝ ል ል>		c=A,s=2,base=a
   a=0,v=a
-<ዝ ል ል>		c=B
+<ዝ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ል ሕ>		c=B
+<ዝ ል ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ል ቅ>		c=A
+<ዝ ል ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ል ዕ ፍ>		c=E
+<ዝ ል ዕ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ል ዝ ል>		c=E
+<ዝ ል ዝ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ዝ ል ይ>		c=C
+<ዝ ል ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ል ጥ>		c=B
+<ዝ ል ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ል ፍ>		c=A
+<ዝ ል ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ዝ ሕ ል>		c=A
+<ዝ ሕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=i,v=a
-<ዝ ሕ ር>		c=A
+<ዝ ሕ ር>		c=A,base=p
   a=0,v=p
-<ዝ ሕ ቅ>		c=A
+<ዝ ሕ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ሕ ት ል>		c=E
+<ዝ ሕ ት ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ሕ ው>		c=A
+<ዝ ሕ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ሕ ዝ ሕ>		c=E
+<ዝ ሕ ዝ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ሕ ጥ>		c=A
+<ዝ ሕ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ም ም>		c=A
+<ዝ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ም ር>		c=A
+<ዝ ም ር>		c=A,base=a
   a=0,v=a
-<ዝ ም ር>		c=B
+<ዝ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ም ት>		c=A
+<ዝ ም ት>		c=A,base=p
   a=0,v=a ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ዝ ም ው>		c=B
+<ዝ ም ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ም ድ>		c=A
+<ዝ ም ድ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a
-<ዝ ር ቁ>		c=A,s=1
+<ዝ ር ቁ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ር ቁ>		c=A,s=2
+<ዝ ር ቁ>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ዝ ር ቅ>		c=A
+<ዝ ር ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ዝ ር ብ>		c=A
+<ዝ ር ብ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ዝ ር ብ ብ>		c=E
+<ዝ ር ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ር ብ ዕ>		c=E
-  a=a,v=p ; a=a,v=a
-<ዝ ር እ>		c=A
+<ዝ ር ብ ዕ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ዝ ር እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዝ ር ው>		c=A
+<ዝ ር ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ር ዕ>		c=A
+<ዝ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዝ ር ዝ ር>		c=E
+<ዝ ር ዝ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ር ይ>		c=A
+<ዝ ር ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ዝ ር ይ>		c=C
+<ዝ ር ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ር ግ>		c=A
+<ዝ ር ግ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ር ግ ሕ>		c=E
+<ዝ ር ግ ሕ>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ዝ ር ግ ፍ>		c=E
+<ዝ ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ር ጥ ጥ>		c=E
+<ዝ ር ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ር ፍ>		c=A
+<ዝ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዝ ር ፍ>		c=B
+<ዝ ር ፍ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ቁ ቁ>		c=A
+<ዝ ቁ ቁ>		c=A,base=p
   a=0,v=a ; a=0,v=p ; a=0,v=a
-<ዝ ቁ ን>		c=C
+<ዝ ቁ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ቅ ር>		c=B
+<ዝ ቅ ር>		c=B,base=0
   a=0,v=0 ; a=a,v=p
-<ዝ ቅ ብ ብ>		c=E
+<ዝ ቅ ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ቅ ዝ ቅ>		c=E
+<ዝ ቅ ዝ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ቅ ፍ>		c=A
+<ዝ ቅ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ብ ል>		c=A
+<ዝ ብ ል>		c=A,base=a
   a=0,v=a ; a=a,v=p ; a=0,v=a
-<ዝ ብ ሕ>		c=B
+<ዝ ብ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ብ ር ቁ>		c=E
+<ዝ ብ ር ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ብ ር ቅ>		c=F
+<ዝ ብ ር ቅ>		c=F,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ብ ዕ>		c=A
+<ዝ ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a
-<ዝ ብ ዝ ብ>		c=E
+<ዝ ብ ዝ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ዝ ብ ጥ>		c=A
+<ዝ ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ዝ ብ ጥ ብ ጥ>		c=G
+<ዝ ብ ጥ ብ ጥ>		c=G,base=p
   a=0,v=a
-<ዝ ት ይ>		c=B
+<ዝ ት ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a
-<ዝ ን ም>		c=A
+<ዝ ን ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ዝ ን ቅ>		c=A
+<ዝ ን ቅ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ዝ ን ብ>		c=A,s=1
+<ዝ ን ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ን ብ>		c=A,s=2
+<ዝ ን ብ>		c=A,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ዝ ን ብ ል>		c=E
+<ዝ ን ብ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ዝ ን ብ ብ>		c=E
+<ዝ ን ብ ብ>		c=E,base=0
   a=0,v=0
-<ዝ ን ብ ዕ>		c=E
+<ዝ ን ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ዝ ን ብ ይ>		c=E
+<ዝ ን ብ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ን ብ ጥ>		c=E
+<ዝ ን ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ን ት ው>		c=E
+<ዝ ን ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ን ን>		c=B
+<ዝ ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ን ዝ ር>		c=E
+<ዝ ን ዝ ር>		c=E,base=0
   a=0,v=0
-<ዝ ን ይ>		c=A
+<ዝ ን ይ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ዝ ን ይ>		c=B
+<ዝ ን ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ን ግ ር>		c=E
+<ዝ ን ግ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ን ግ ዕ>		c=E,s=1
-  a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ዝ ን ግ ዕ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ዝ ን ጥ>		c=B
+<ዝ ን ግ ዕ>		c=E,base=0
+  a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a ; a=a,v=a
+<ዝ ን ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ን ጥ ል>		c=E
+<ዝ ን ጥ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ን ፍ>		c=A
+<ዝ ን ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ዝ ክ ር>		c=B
+<ዝ ክ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ዝ ክ ር ጥ>		c=E
+<ዝ ክ ር ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ክ ት ም>		c=E
+<ዝ ክ ት ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ክ ን ን>		c=E
+<ዝ ክ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ክ ዝ ክ>		c=E
+<ዝ ክ ዝ ክ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ው ሕ>		c=B
+<ዝ ው ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ው ር>		c=A
+<ዝ ው ር>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ዝ ው ት ር>		c=E
+<ዝ ው ት ር>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ዝ ው ን>		c=C
+<ዝ ው ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ው ግ>		c=B
+<ዝ ው ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ዕ ግ>		c=A
+<ዝ ዕ ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ዕ ግ ፍ>		c=E
+<ዝ ዕ ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ዕ ፍ ፍ>		c=E
+<ዝ ዕ ፍ ፍ>		c=E,base=0
   a=0,v=0
-<ዝ ዝ ም>		c=C
+<ዝ ዝ ም>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ዝ ው>		c=A
+<ዝ ዝ ው>		c=A,base=0
   a=0,v=0 ; a=a,v=p
-<ዝ ይ ም>		c=A
+<ዝ ይ ም>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ዝ ይ ት>		c=B
+<ዝ ይ ት>		c=B,base=0
   a=0,v=0
-<ዝ ይ ድ>		c=C
+<ዝ ይ ድ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ይ ግ>		c=B
+<ዝ ይ ግ>		c=B,base=0
   a=0,v=0
-<ዝ ጉ ን ፍ>		c=E
+<ዝ ጉ ን ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ግ ል>		c=A
+<ዝ ግ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ግ ሕ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ግ ሕ>		c=A,s=2
-  a=0,v=p
-<ዝ ግ ሕ>		c=A,s=3
-  a=a,v=p
-<ዝ ግ ም>		c=A
+<ዝ ግ ሕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p
+<ዝ ግ ም>		c=A,base=a
   a=0,v=a
-<ዝ ግ ብ>		c=A
+<ዝ ግ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ግ ት>		c=A
+<ዝ ግ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ግ ን>		c=A
+<ዝ ግ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ዝ ግ ዝ ግ>		c=E
+<ዝ ግ ዝ ግ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ዝ ግ ድ ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ዝ ግ ድ ይ>		c=E
-  a=a,v=p ; a=a,v=a
-<ዝ ግ ፍ>		c=B
+<ዝ ግ ድ ው>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ዝ ግ ድ ይ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ዝ ግ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ጥ ጥ>		c=A
+<ዝ ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ዝ ፍ ር>		c=B
+<ዝ ፍ ር>		c=B,base=0
   a=0,v=0
-<ዝ ፍ ር ፍ ር>		c=G
+<ዝ ፍ ር ፍ ር>		c=G,base=p
   a=0,v=a
-<ዝ ፍ ን>		c=A
+<ዝ ፍ ን>		c=A,base=0
   a=0,v=0
-<ዝ ፍ ዝ ፍ>		c=E
+<ዝ ፍ ዝ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ዝ ፍ ጥ>		c=A
+<ዝ ፍ ጥ>		c=A,base=p
   a=0,v=p
-<ዝ ፍ ጥ ጥ>		c=E
+<ዝ ፍ ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ፍ ፍ>		c=A
+<ዝ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዥ ሕ ር>		c=A
+<ዥ ሕ ር>		c=A,base=p
   a=0,v=p
-<ዥ ዕ ቅ ቅ>		c=E
+<ዥ ዕ ቅ ቅ>		c=E,base=0
   a=0,v=0
-<ዱ ም ዱ ም>		c=E
+<ዱ ም ዱ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ዱ ሩ ን>		c=B
+<ዱ ሩ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ዱ ጭ ዱ ጭ>		c=E
+<ዱ ጭ ዱ ጭ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ህ ል>		c=A
+<ድ ህ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ህ ል ል>		c=E
+<ድ ህ ል ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ህ ም ም>		c=E
+<ድ ህ ም ም>		c=E,base=0
   a=0,v=0
-<ድ ህ ም ጽ>		c=E
+<ድ ህ ም ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ህ ር>		c=A
+<ድ ህ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ድ ህ ስ>		c=A
+<ድ ህ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ህ ስ ስ>		c=E
+<ድ ህ ስ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ድ ህ ብ>		c=A
+<ድ ህ ብ>		c=A,base=a
   a=0,v=a
-<ድ ህ ክ>		c=A
+<ድ ህ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ህ ይ>		c=A
+<ድ ህ ይ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ህ ጽ>		c=A
+<ድ ህ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ል ል>		c=B
+<ድ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ል ሕ ቅ>		c=E
+<ድ ል ሕ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ል ም>		c=A
+<ድ ል ም>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ድ ል ስ>		c=B
+<ድ ል ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ል ብ>		c=B
+<ድ ል ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ል ት>		c=B
+<ድ ል ት>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ል ክ>		c=B
+<ድ ል ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ል ው>		c=A
+<ድ ል ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ል ዕ ስ>		c=E
+<ድ ል ዕ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ል ይ>		c=A
+<ድ ል ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ል ድ ል>		c=E
+<ድ ል ድ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ል ፍ ጽ>		c=E
+<ድ ል ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ሕ ር>		c=A
+<ድ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ሕ ር ሕ ር>		c=G
+<ድ ሕ ር ሕ ር>		c=G,base=p
   a=0,v=a
-<ድ ሕ ን>		c=A
+<ድ ሕ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ድ ሕ ን ን>		c=E
+<ድ ሕ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ሕ ን ው>		c=E
+<ድ ሕ ን ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ሕ ይ>		c=A
+<ድ ሕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ሕ ድ ሕ>		c=E
+<ድ ሕ ድ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ሕ ፍ>		c=A
+<ድ ሕ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ድ ም ር>		c=B
+<ድ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ድ ም ስ ስ>		c=E
+<ድ ም ስ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ድ ም ቅ>		c=A
+<ድ ም ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ድ ም ብ ር>		c=E
+<ድ ም ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ም ብ ው>		c=E
+<ድ ም ብ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ም ን>		c=B
+<ድ ም ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ም ው>		c=A
+<ድ ም ው>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ድ ም ው>		c=B
+<ድ ም ው>		c=B,base=0
   a=0,v=0
-<ድ ም ዕ>		c=A
+<ድ ም ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ድ ም ዕ>		c=B
+<ድ ም ዕ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ድ ም ይ>		c=A
+<ድ ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ም ድ ም>		c=E
+<ድ ም ድ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ም ጽ>		c=A
+<ድ ም ጽ>		c=A,base=p
   a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ም ጽ>		c=C
+<ድ ም ጽ>		c=C,base=0
   a=0,v=0
-<ድ ር ም ም>		c=E
+<ድ ር ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ም ስ>		c=E
+<ድ ር ም ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ር>		c=A
+<ድ ር ር>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ድ ር ስ>		c=A
+<ድ ር ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ስ ስ>		c=E
+<ድ ር ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ር ቁ ስ>		c=E
+<ድ ር ቁ ስ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ድ ር ቅ>		c=A
+<ድ ር ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=a
-<ድ ር ቅ>		c=B
+<ድ ር ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ቅ ም>		c=E
+<ድ ር ቅ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ቅ ቅ>		c=E
+<ድ ር ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ብ>		c=B
+<ድ ር ብ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ር ብ ይ>		c=E
+<ድ ር ብ ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ር ት>		c=B
+<ድ ር ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ድ ር ን ቅ>		c=E
+<ድ ር ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ኩ ዕ>		c=E
+<ድ ር ኩ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ር ክ>		c=B
+<ድ ር ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ድ ር ዕ>		c=A
+<ድ ር ዕ>		c=A,base=ip
   a=i,v=p
-<ድ ር ዕ>		c=B
+<ድ ር ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ድ ር ዕ ም>		c=E
+<ድ ር ዕ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ዕ ው>		c=E
+<ድ ር ዕ ው>		c=E,base=a
   a=0,v=a
-<ድ ር ዝ>		c=A
+<ድ ር ዝ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ር ዝ ው>		c=E
+<ድ ር ዝ ው>		c=E,base=0
   a=0,v=0
-<ድ ር ድ ር>		c=E,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ድ ር>		c=E,s=2
-  a=a,v=p
-<ድ ር ጅ ቁ>		c=E
+<ድ ር ድ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p
+<ድ ር ጅ ቁ>		c=E,base=0
   a=0,v=0
-<ድ ር ጅ ው>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ድ ር ጅ ው>		c=E,s=2
-  a=a,v=p
-<ድ ር ጉ ሕ>		c=E
+<ድ ር ጅ ው>		c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p
+<ድ ር ጉ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ጉ ስ>		c=E
+<ድ ር ጉ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ጉ ጉ>		c=E
+<ድ ር ጉ ጉ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ር ግ>		c=A
+<ድ ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ር ግ>		c=C
+<ድ ር ግ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ግ ሕ>		c=E
+<ድ ር ግ ሕ>		c=E,base=0
   a=0,v=0
-<ድ ር ግ ም>		c=E
+<ድ ር ግ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ድ ር ግ ዕ>		c=E
+<ድ ር ግ ዕ>		c=E,base=a
   a=0,v=a
-<ድ ር ግ ፍ>		c=E
+<ድ ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ር ጽ>		c=A
+<ድ ር ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ር ፍ>		c=A
+<ድ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ድ ስ ቅ>		c=B
+<ድ ስ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ድ ስ ት>		c=B
+<ድ ስ ት>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ድ ስ እ>		c=B
+<ድ ስ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ስ ክ ል>		c=E
+<ድ ስ ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ስ ድ ስ>		c=E
+<ድ ስ ድ ስ>		c=E,base=0
   a=0,v=0
-<ድ ስ ድ ስ>		c=F
+<ድ ስ ድ ስ>		c=F,base=a
   a=0,v=a
-<ድ ሽ ድ ሽ>		c=E
+<ድ ሽ ድ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ቁ ስ>		c=A
+<ድ ቁ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ቁ ድ ቁ>		c=E
+<ድ ቁ ድ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ቅ ል>		c=A
+<ድ ቅ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ድ ቅ ስ>		c=B
+<ድ ቅ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ቅ ቅ>		c=A
+<ድ ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ድ ቅ ድ ቅ>		c=E
+<ድ ቅ ድ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ብ ል>		c=B
+<ድ ብ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ል ቅ>		c=E
+<ድ ብ ል ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a
-<ድ ብ ር>		c=B
+<ድ ብ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ር>		c=C
+<ድ ብ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ብ ር ክ>		c=E
+<ድ ብ ር ክ>		c=E,base=0
   a=0,v=0
-<ድ ብ ር ይ>		c=E
+<ድ ብ ር ይ>		c=E,base=0
   a=0,v=0
-<ድ ብ ስ>		c=B
+<ድ ብ ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ድ ብ ቅ>		c=B,s=1
+<ድ ብ ቅ>		c=B,s=1,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ቅ>		c=B,s=2
+<ድ ብ ቅ>		c=B,s=2,base=0
   a=0,v=0
-<ድ ብ ብ>		c=B
+<ድ ብ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ን>		c=A
+<ድ ብ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ን>		c=B
+<ድ ብ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ብ ን ው>		c=E
-  a=a,v=p
-<ድ ብ እ>		c=A
+<ድ ብ ን ው>		c=F,base=p
+  a=0,v=p
+<ድ ብ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ው>		c=A
+<ድ ብ ው>		c=A,base=ap
   a=a,v=p
-<ድ ብ ይ>		c=A
+<ድ ብ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ብ ድ ብ>		c=E
+<ድ ብ ድ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ን ስ>		c=B,s=1
+<ድ ን ስ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ስ>		c=B,s=2
+<ድ ን ስ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ን ቁ ል>		c=E
+<ድ ን ቁ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ቁ ር>		c=E
+<ድ ን ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ን ቅ>		c=B
+<ድ ን ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ድ ን ቅ ፍ>		c=E
-  a=a,v=p ; a=a,v=a
-<ድ ን ብ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ብ>		c=B
-  a=0,v=0 ; a=0,v=a
-<ድ ን ብ ር>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ድ ን ን>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ኩ ል>		c=E
-  a=0,v=0 ; a=0,v=a
-<ድ ን ክ ል>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ክ ር>		c=E
-  a=a,v=p
-<ድ ን ዝ ዝ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ድ ን ይ>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ድ ል>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ድ ን>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ን ድ ው>		c=E
+<ድ ን ቅ ፍ>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ድ ን ጉ ይ>		c=E
+<ድ ን ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ብ>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ን ብ ር>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=a
+<ድ ን ን>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ኩ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ን ክ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ክ ር>		c=F,base=p
+  a=0,v=p
+<ድ ን ዝ ዝ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ን ይ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ድ ል>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ድ ን>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ድ ን ድ ው>		c=E,base=p
+  a=0,v=p ; a=0,v=a
+<ድ ን ጉ ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ድ ን ግ ል>		c=E
+<ድ ን ግ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ን ግ ር>		c=E
-  a=a,v=p ; a=a,v=a
-<ድ ን ግ ት>		c=E
-  a=0,v=a
-<ድ ን ግ ዝ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ድ ን ግ ግ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ን ግ ጽ>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ድ ን ጽ ው>		c=E
-  a=0,v=0 ; a=0,v=a
-<ድ ን ፍ ቅ>		c=E
-  a=a,v=p ; a=a,v=a
-<ድ ን ፍ ዕ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ድ እ ድ እ>		c=E
-  a=a,v=a
-<ድ ኩ ን>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ኩ ዕ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ክ ል>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ክ ም>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ድ ክ ር>		c=A
-  a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ድ ክ ር>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ክ ይ>		c=A,s=1
-  a=0,v=0 ; a=0,v=a
-<ድ ክ ይ>		c=A,s=2
+<ድ ን ግ ር>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ድ ክ ድ ክ>		c=E
+<ድ ን ግ ት>		c=E,base=a
+  a=0,v=a
+<ድ ን ግ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ው ል>		c=B
+<ድ ን ግ ግ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ን ግ ጽ>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=a
+<ድ ን ጽ ው>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ን ፍ ቅ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ድ ን ፍ ዕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ እ ድ እ>		c=F,base=a
+  a=0,v=a
+<ድ ኩ ን>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ኩ ዕ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ድ ክ ል>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ክ ም>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
+<ድ ክ ር>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ድ ክ ር>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ድ ክ ይ>		c=A,s=1,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ክ ይ>		c=A,s=2,base=p
+  a=0,v=p ; a=0,v=a
+<ድ ክ ድ ክ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ድ ው ል>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ው ሕ>		c=B
+<ድ ው ሕ>		c=B,base=0
   a=0,v=0
-<ድ ው ር>		c=B
+<ድ ው ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ድ ው ስ>		c=B
+<ድ ው ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=i,v=a
-<ድ ው ሽ>		c=B
+<ድ ው ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ው ብ>		c=B
+<ድ ው ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ድ ው ን>		c=B
+<ድ ው ን>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ድ ው ይ>		c=A
+<ድ ው ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ዕ ም ስ>		c=E
+<ድ ዕ ም ስ>	c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ዕ ስ>		c=A
+<ድ ዕ ስ>		c=A,base=ip
   a=i,v=p ; a=i,v=a
-<ድ ዕ ብ ል>		c=E
+<ድ ዕ ብ ል>	c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ዕ ን ው>		c=E
+<ድ ዕ ን ው>	c=E,base=0
   a=0,v=0
-<ድ ዕ ኩ ር>		c=E
+<ድ ዕ ኩ ር>	c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ዕ ኩ ን>		c=E
+<ድ ዕ ኩ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ዕ ክ>		c=A
+<ድ ዕ ክ>		c=A,base=0
   a=0,v=0 ; a=a,v=p
-<ድ ዕ ድ ዕ>		c=E
+<ድ ዕ ድ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ዕ ጉ ጽ>		c=E
+<ድ ዕ ጉ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ዕ ፍ>		c=A
+<ድ ዕ ፍ>		c=A,base=0
   a=0,v=0
-<ድ ይ ር>		c=C
+<ድ ይ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ይ ስ>		c=A
+<ድ ይ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ይ ብ>		c=B
+<ድ ይ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ይ ን>		c=B
+<ድ ይ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ድ ክ>		c=B
+<ድ ድ ክ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ድ ይ>		c=A
+<ድ ድ ይ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ድ ጉ ል>		c=B
+<ድ ጉ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ጉ ል ጽ>		c=E
+<ድ ጉ ል ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ጉ ሕ>		c=A
+<ድ ጉ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ጉ ስ>		c=A
+<ድ ጉ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ጉ ን>		c=C
+<ድ ጉ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ጉ ዕ>		c=A
+<ድ ጉ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ጉ ድ ጉ>		c=E
+<ድ ጉ ድ ጉ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ድ ግ ል>		c=B
+<ድ ግ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ግ ም>		c=A
+<ድ ግ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ድ ግ ስ>		c=A
+<ድ ግ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ግ ስ>		c=B
+<ድ ግ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ግ ን>		c=C
+<ድ ግ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ግ ድ ግ>		c=E
+<ድ ግ ድ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ግ ፍ>		c=B
+<ድ ግ ፍ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ድ ፍ ር>		c=A
+<ድ ፍ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ድ ፍ ር ስ>		c=E
+<ድ ፍ ር ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ድ ፍ ን>		c=A
+<ድ ፍ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ድ ፍ ን ቅ>		c=E
-  a=a,v=p ; a=a,v=a
-<ድ ፍ እ>		c=A
+<ድ ፍ ን ቅ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ድ ፍ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ድ ፍ ዕ>		c=B
+<ድ ፍ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ድ ፍ ድ ፍ>		c=E
+<ድ ፍ ድ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ድ ፍ ጭ ጭ>		c=E
+<ድ ፍ ጭ ጭ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ህ ር>		c=A
+<ጅ ህ ር>		c=A,base=p
   a=0,v=p
-<ጅ ል ሕ>		c=B
+<ጅ ል ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ል ሕ ቅ>		c=E
+<ጅ ል ሕ ቅ>		c=E,base=0
   a=0,v=0
-<ጅ ል ብ>		c=B
+<ጅ ል ብ>		c=B,base=0
   a=0,v=0
-<ጅ ል ዕ>		c=A
+<ጅ ል ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጅ ል ዕ ፍ>		c=E
+<ጅ ል ዕ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ል ግ ዕ>		c=E
+<ጅ ል ግ ዕ>		c=E,base=0
   a=0,v=0
-<ጅ ል ግ ድ>		c=E
+<ጅ ል ግ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ል ግ ፍ>		c=E
+<ጅ ል ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ል ጥ>		c=B
+<ጅ ል ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ል ፍ ፍ>		c=E
+<ጅ ል ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ም ል>		c=A
+<ጅ ም ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጅ ም ል>		c=B
+<ጅ ም ል>		c=B,base=0
   a=0,v=0
-<ጅ ም ር>		c=B
+<ጅ ም ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጅ ም ጅ ም>		c=E
+<ጅ ም ጅ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ጅ ር ም>		c=B
+<ጅ ር ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ር ስ>		c=B
+<ጅ ር ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ጅ ር ቁ>		c=B
+<ጅ ር ቁ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ር ብ>		c=B
+<ጅ ር ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ር ብ ብ>		c=E
+<ጅ ር ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ር ግ ዕ>		c=E
+<ጅ ር ግ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ር ፍ>		c=A
+<ጅ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጅ ቅ ት>		c=A
+<ጅ ቅ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጅ ብ ር ቁ>		c=E
+<ጅ ብ ር ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ብ ጅ ብ>		c=E
+<ጅ ብ ጅ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ን ን>		c=B
+<ጅ ን ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ን ው>		c=B
+<ጅ ን ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ን ጅ ን>		c=E
+<ጅ ን ጅ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ዕ ብ ብ>		c=E
+<ጅ ዕ ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ዕ ጅ ዕ>		c=E
+<ጅ ዕ ጅ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ዕ ግ ግ>		c=E
+<ጅ ዕ ግ ግ>		c=E,base=0
   a=0,v=0
-<ጅ ጅ ው>		c=C
+<ጅ ጅ ው>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ጉ ን ን>		c=E
+<ጅ ጉ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጅ ጉ ጉ>		c=A
+<ጅ ጉ ጉ>		c=A,base=0
   a=0,v=0
-<ጅ ፍ ዕ>		c=B
+<ጅ ፍ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጅ ፍ ጅ ፍ>		c=E
+<ጅ ፍ ጅ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ህ ም ም>		c=E
+<ጉ ህ ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ህ ር>		c=A
+<ጉ ህ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a ; a=i,v=a ; a=i,v=a
-<ጉ ህ ቁ>		c=A
+<ጉ ህ ቁ>		c=A,base=0
   a=0,v=0
-<ጉ ህ ይ>		c=A
+<ጉ ህ ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=p ; a=0,v=a
-<ጉ ል ል>		c=A
+<ጉ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ል ሕ>		c=A
+<ጉ ል ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ል ሕ ይ>		c=E
+<ጉ ል ሕ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ል ም>		c=A
+<ጉ ል ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ል ም ስ>		c=E
+<ጉ ል ም ስ>		c=E,base=0
   a=0,v=0
-<ጉ ል ቁ>		c=A
+<ጉ ል ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጉ ል ብ>		c=B
+<ጉ ል ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ል ብ ብ>		c=E
+<ጉ ል ብ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጉ ል ብ ት>		c=E
+<ጉ ል ብ ት>		c=E,base=0
   a=0,v=0
-<ጉ ል ት>		c=B
+<ጉ ል ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ል ዕ>		c=A
+<ጉ ል ዕ>		c=A,base=0
   a=0,v=0
-<ጉ ል ዕ ጽ>		c=E
+<ጉ ል ዕ ጽ>		c=E,base=0
   a=0,v=0
-<ጉ ል ጉ ል>		c=E
+<ጉ ል ጉ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ል ጭ>		c=B
+<ጉ ል ጭ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ሕ ል>		c=A,s=1
+<ጉ ሕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ሕ ል>		c=A,s=2
-  a=a,v=p
-<ጉ ሕ ል ው>		c=E
+<ጉ ሕ ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ሕ ል ይ>		c=E
-  a=a,v=p ; a=a,v=a
-<ጉ ሕ ር>		c=A
-  a=0,v=0
-<ጉ ሕ ን ቁ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ሕ ይ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ሕ ጉ ሕ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ጉ ሕ ፍ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ም>		c=A
-  a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ጉ ም ር>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ብ ሕ>		c=E
-  a=0,v=p
-<ጉ ም ብ ስ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ዝ ዝ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ም ድ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጉ ም ድ>		c=C
-  a=0,v=0 ; a=0,v=p
-<ጉ ም ድ ድ>		c=E
-  a=0,v=0
-<ጉ ም ጅ ው>		c=E
-  a=0,v=0
-<ጉ ም ጅ ይ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ም ጉ ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ጥ ጥ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ጭ ጭ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ጽ>		c=B
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ም ጽ ጽ>		c=E
-  a=0,v=0
-<ጉ ር ሕ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጉ ር ም ር ም>		c=G
-  a=0,v=a
-<ጉ ር ም ድ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ም ጽ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ር ር>		c=A
-  a=0,v=a
-<ጉ ር ስ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ሽ>		c=A
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ብ>		c=A
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ብ ስ>		c=E
-  a=0,v=p
-<ጉ ር ብ ብ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ር ብ ት>		c=E,s=1
-  a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጉ ር ብ ት>		c=E,s=2
-  a=a,v=p
-<ጉ ር ብ ጥ>		c=E
-  a=0,v=0
-<ጉ ር ት>		c=C
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ን>		c=A
-  a=a,v=p
-<ጉ ር ን ቅ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ን ን>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ር ን ይ>		c=E
-  a=0,v=0
-<ጉ ር ዕ>		c=B
-  a=0,v=0
-<ጉ ር ዕ ም>		c=E
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ዕ ር ዕ>		c=G
-  a=0,v=a
-<ጉ ር ዝ ው>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ይ>		c=C
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ድ>		c=A
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ድ>		c=B
-  a=0,v=0 ; a=0,v=a
-<ጉ ር ድ ም>		c=E
-  a=0,v=0
-<ጉ ር ድ ዕ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ር ጉ ሕ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ጉ ር>		c=E
-  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጉ ር ጉ ዕ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ጉ ር ጉ ጭ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ር ጥ>		c=A
-  a=0,v=a
-<ጉ ር ጽ>		c=A
-  a=0,v=a
-<ጉ ር ፍ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ጉ ስ ም>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ስ ም ጥ>		c=E
-  a=0,v=0 ; a=0,v=p
-<ጉ ስ ስ>		c=A
-  a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ጉ ስ ቁ ል>		c=E
-  a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ጉ ስ ዕ>		c=A
-  a=0,v=0 ; a=0,v=a
-<ጉ ስ ይ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ጉ ስ ይ>		c=A,s=2
+<ጉ ሕ ል ይ>		c=F,base=p
   a=0,v=p ; a=0,v=a
-<ጉ ስ ይ>		c=C
+<ጉ ሕ ር>		c=A,base=0
+  a=0,v=0
+<ጉ ሕ ን ቁ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ሕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ስ ጉ ስ>		c=E
+<ጉ ሕ ጉ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ሕ ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ም>		c=A,base=0
+  a=0,v=0 ; a=0,v=0 ; a=0,v=a
+<ጉ ም ር>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ብ ሕ>		c=E,base=p
+  a=0,v=p
+<ጉ ም ብ ስ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ዝ ዝ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ም ድ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
+<ጉ ም ድ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ም ድ ድ>		c=E,base=0
+  a=0,v=0
+<ጉ ም ጅ ው>		c=E,base=0
+  a=0,v=0
+<ጉ ም ጅ ይ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ም ጉ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ጥ ጥ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ጭ ጭ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ጽ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ም ጽ ጽ>		c=E,base=0
+  a=0,v=0
+<ጉ ር ሕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
+<ጉ ር ም ር ም>		c=G,base=p
+  a=0,v=a
+<ጉ ር ም ድ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ም ጽ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ር ር>		c=A,base=a
+  a=0,v=a
+<ጉ ር ስ>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ሽ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ብ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ብ ስ>		c=E,base=p
+  a=0,v=p
+<ጉ ር ብ ብ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ር ብ ት>		c=E,base=p
+  a=0,v=p ; a=a,v=p ; a=0,v=a
+<ጉ ር ብ ጥ>		c=E,base=0
+  a=0,v=0
+<ጉ ር ት>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ን>		c=A,base=ap
+  a=a,v=p
+<ጉ ር ን ቅ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ን ን>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ር ን ይ>		c=E,base=0
+  a=0,v=0
+<ጉ ር ዕ>		c=B,base=0
+  a=0,v=0
+<ጉ ር ዕ ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ዕ ር ዕ>		c=G,base=p
+  a=0,v=a
+<ጉ ር ዝ ው>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ይ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ድ>		c=A,base=0
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ድ>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ር ድ ም>		c=E,base=0
+  a=0,v=0
+<ጉ ር ድ ዕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ር ጉ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ጉ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጉ ስ ጥ>		c=A
+<ጉ ር ጉ ዕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ር ጉ ጭ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ር ጥ>		c=A,base=a
+  a=0,v=a
+<ጉ ር ጽ>		c=A,base=a
+  a=0,v=a
+<ጉ ር ፍ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ስ ም>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ስ ም ጥ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p
+<ጉ ስ ስ>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ጉ ስ ቁ ል>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ጉ ስ ዕ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ስ ይ>		c=A,s=1,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=p
+<ጉ ስ ይ>		c=A,s=2,base=p
+  a=0,v=p ; a=0,v=a
+<ጉ ስ ይ>		c=C,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ስ ጉ ስ>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
+<ጉ ስ ጥ>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጉ ብ ብ>		c=B
+<ጉ ብ ብ>		c=A,base=aa
   a=a,v=a
-<ጉ ብ እ>		c=A
+<ጉ ብ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ብ ዕ>		c=A
+<ጉ ብ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ጉ ብ ዝ>		c=B
+<ጉ ብ ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ብ ጉ ብ>		c=E,s=1
-  a=0,v=0 ; a=0,v=a
-<ጉ ብ ጉ ብ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ጉ ብ ጥ>		c=A
+<ጉ ብ ጉ ብ>		c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=p ; a=a,v=a
+<ጉ ብ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ብ ጥ>		c=B
+<ጉ ብ ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ጉ ት ም>		c=A
+<ጉ ት ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ት ት>		c=A
+<ጉ ት ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a ; a=a,v=a
-<ጉ ት ን>		c=B
+<ጉ ት ን>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ት ጉ ት>		c=E
+<ጉ ት ጉ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p
-<ጉ ን ሕ>		c=A
+<ጉ ን ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ቁ>		c=A
+<ጉ ን ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ን ብ ስ>		c=E
+<ጉ ን ብ ስ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ጉ ን እ>		c=A
+<ጉ ን እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጉ ን ኩ>		c=A
+<ጉ ን ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ዕ>		c=A
+<ጉ ን ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጉ ን ዕ>		c=B
+<ጉ ን ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ን ይ>		c=A,s=1
+<ጉ ን ይ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ይ>		c=A,s=2
+<ጉ ን ይ>		c=A,s=2,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ጉ ን ድ>		c=B
+<ጉ ን ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ድ ል>		c=E
+<ጉ ን ድ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ድ ብ>		c=E
+<ጉ ን ድ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጉ ን ጉ ን>		c=E
+<ጉ ን ጉ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ን ጽ>		c=B
+<ጉ ን ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ጉ ን ጽ ፍ>		c=E
-  a=a,v=p ; a=a,v=a
-<ጉ ን ፍ>		c=A
+<ጉ ን ጽ ፍ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ጉ ን ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ጉ ን ፍ ጥ>		c=E
-  a=a,v=p
-<ጉ እ ት ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ እ ጉ እ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ እ ፍ ር>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ዕ ም ም>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ዕ ም ጽ>		c=E
-  a=0,v=0
-<ጉ ዕ ር ር>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጉ ዕ ት ይ>		c=E
+<ጉ ን ፍ ጥ>		c=F,base=p
   a=0,v=p
-<ጉ ዕ ዝ>		c=A
+<ጉ እ ት ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ እ ጉ እ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ እ ፍ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ዕ ም ም>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ጉ ዕ ም ጽ>		c=E,base=0
+  a=0,v=0
+<ጉ ዕ ር ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=a
+<ጉ ዕ ት ይ>		c=E,base=p
+  a=0,v=p
+<ጉ ዕ ዝ>		c=A,base=p
   a=0,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ጉ ዕ ድ ድ>		c=E
+<ጉ ዕ ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ጉ ዕ ጉ ዕ>		c=E
+<ጉ ዕ ጉ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ዕ ጽ ጽ>		c=E
+<ጉ ዕ ጽ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a
-<ጉ ዝ ው>		c=B
+<ጉ ዝ ው>		c=B,base=0
   a=0,v=0
-<ጉ ዝ ዝ>		c=A
+<ጉ ዝ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ዝ ይ>		c=B
+<ጉ ዝ ይ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ዝ ጉ ዝ>		c=E
+<ጉ ዝ ጉ ዝ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጉ ይ ሕ>		c=A
+<ጉ ይ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጉ ይ ቁ>		c=A
-  a=a,v=p
-<ጉ ይ ት ት>		c=E
+<ጉ ይ ቁ>		c=C,base=p
+  a=0,v=p
+<ጉ ይ ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ይ ይ>		c=A,-dup23,+strong
+<ጉ ይ ይ>		c=A,-dup23,+strong,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጉ ድ ል>		c=A
+<ጉ ድ ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጉ ድ ም>		c=A
+<ጉ ድ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ድ ብ>		c=A
+<ጉ ድ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ድ ን>		c=B
+<ጉ ድ ን>		c=B,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ጉ ድ እ>		c=A
+<ጉ ድ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጉ ድ እ>		c=B
+<ጉ ድ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ድ ጉ ድ>		c=E
+<ጉ ድ ጉ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ድ ፍ>		c=B
+<ጉ ድ ፍ>		c=B,base=0
   a=0,v=0
-<ጉ ጅ ል>		c=B
+<ጉ ጅ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ጉ ጅ ም>		c=A
-  a=a,v=p
-<ጉ ጉ ብ>		c=A
+<ጉ ጅ ም>		c=C,base=p
+  a=0,v=p
+<ጉ ጉ ብ>		c=A,base=0
   a=0,v=0
-<ጉ ጉ ን>		c=C
+<ጉ ጉ ን>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ጥ ይ>		c=A
+<ጉ ጥ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ጥ ጉ ጥ>		c=E
+<ጉ ጥ ጉ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ጥ ጥ>		c=B
+<ጉ ጥ ጥ>		c=A,base=aa
   a=a,v=a
-<ጉ ጭ ጭ>		c=A
+<ጉ ጭ ጭ>		c=A,base=0
   a=0,v=0
-<ጉ ጽ ቁ>		c=A
+<ጉ ጽ ቁ>		c=A,base=0
   a=0,v=0
-<ጉ ጽ ጉ ጽ>		c=E
+<ጉ ጽ ጉ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጉ ፍ ል ው>		c=E
+<ጉ ፍ ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ፍ ር>		c=B
+<ጉ ፍ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጉ ፍ ጉ ፍ>		c=E
+<ጉ ፍ ጉ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ህ ስ>		c=A
+<ግ ህ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ህ ድ>		c=A
+<ግ ህ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ግ ህ ጽ>		c=A
+<ግ ህ ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ህ ጽ ጽ>		c=E
+<ግ ህ ጽ ጽ>		c=E,base=0
   a=0,v=0
-<ግ ህ ፍ>		c=A
+<ግ ህ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a
-<ግ ል ህ>		c=A
+<ግ ል ህ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ግ ል ል>		c=A
+<ግ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ግ ል ል>		c=B
+<ግ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ሕ>		c=A
+<ግ ል ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ል ሕ ጥ>		c=E
+<ግ ል ሕ ጥ>		c=E,base=0
   a=0,v=0
-<ግ ል ስ>		c=A
+<ግ ል ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ብ>		c=A
+<ግ ል ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ል ብ>		c=B
+<ግ ል ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ብ>		c=C
+<ግ ል ብ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ብ ድ>		c=E
+<ግ ል ብ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ል ብ ጥ>		c=E
+<ግ ል ብ ጥ>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ል ብ ጭ>		c=E
+<ግ ል ብ ጭ>		c=E,base=0
   a=0,v=0
-<ግ ል ቭ ን>		c=E
+<ግ ል ቭ ን>		c=E,base=0
   a=0,v=0
-<ግ ል ት ት>		c=E
+<ግ ል ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ል ት ው>		c=E
+<ግ ል ት ው>		c=E,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ግ ል ው>		c=A
+<ግ ል ው>		c=A,base=0
   a=0,v=0
-<ግ ል ዕ>		c=B
+<ግ ል ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ዕ ም>		c=E
+<ግ ል ዕ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ዝ>		c=B
+<ግ ል ዝ>		c=B,base=0
   a=0,v=0
-<ግ ል ዝ ብ>		c=F
+<ግ ል ዝ ብ>		c=F,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ድ>		c=A
+<ግ ል ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ድ ም>		c=E
+<ግ ል ድ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ግ ል ጅ ጅ>		c=E
+<ግ ል ጅ ጅ>		c=E,base=0
   a=0,v=0
-<ግ ል ግ ል>		c=E,s=1
+<ግ ል ግ ል>		c=E,s=1,base=p
   a=0,v=p ; a=0,v=a
-<ግ ል ግ ል>		c=E,s=2
+<ግ ል ግ ል>		c=E,s=2,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a
-<ግ ል ጥ ም>		c=E,s=1
-  a=a,v=p ; a=a,v=a
-<ግ ል ጥ ም>		c=E,s=2
-  a=0,v=0 ; a=0,v=p
-<ግ ል ጥ ው>		c=E
+<ግ ል ጥ ም>		c=E,base=0
+  a=a,v=p ; a=a,v=a ; a=0,v=0 ; a=0,v=p
+<ግ ል ጥ ው>		c=E,base=0
   a=0,v=0
-<ግ ል ጽ>		c=A
+<ግ ል ጽ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ግ ል ፍ>		c=B
+<ግ ል ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ል ፍ ጭ>		c=E
+<ግ ል ፍ ጭ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ሕ ም>		c=A
+<ግ ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ሕ ም ጥ>		c=E
+<ግ ሕ ም ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ሕ ስ>		c=A
+<ግ ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ሕ ት ን>		c=E
+<ግ ሕ ት ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ግ ሕ ት ው>		c=E
+<ግ ሕ ት ው>		c=E,base=0
   a=0,v=0
-<ግ ሕ ግ ሕ>		c=E
+<ግ ሕ ግ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ሕ ጥ>		c=A
+<ግ ሕ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ሕ ጥ ጥ>		c=E
+<ግ ሕ ጥ ጥ>		c=E,base=0
   a=0,v=0
-<ግ ሕ ጽ>		c=A
+<ግ ሕ ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ሕ ፍ ል>		c=E
+<ግ ሕ ፍ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ም ል>		c=B
+<ግ ም ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ም ስ>		c=A
+<ግ ም ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ግ ም ስ ስ>		c=E
+<ግ ም ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ም ሽ ሕ>		c=E
+<ግ ም ሽ ሕ>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ግ ም ብ ር>		c=E
+<ግ ም ብ ር>		c=E,base=0
   a=0,v=0
-<ግ ም ብ ው>		c=E
+<ግ ም ብ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ም ት>		c=B
+<ግ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ም ዕ>		c=A
+<ግ ም ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ም ይ>		c=A
+<ግ ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ም ድ>		c=A
+<ግ ም ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ም ድ>		c=B
+<ግ ም ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ም ድ ሕ>		c=E
-  a=a,v=p ; a=a,v=a
-<ግ ም ግ ም>		c=E
+<ግ ም ድ ሕ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ግ ም ግ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ግ ም ጥ ል>		c=E
+<ግ ም ጥ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ም ጽ>		c=A
+<ግ ም ጽ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ህ>		c=A
+<ግ ር ህ>		c=A,base=0
   a=0,v=0 ; a=i,v=0
-<ግ ር ህ>		c=B
+<ግ ር ህ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ር ሕ>		c=A
+<ግ ር ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ም>		c=A
+<ግ ር ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ም>		c=B
+<ግ ር ም>		c=B,base=0
   a=0,v=0
-<ግ ር ም ዕ>		c=E
+<ግ ር ም ዕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ግ ር ር>		c=A,s=1
+<ግ ር ር>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ር>		c=A,s=2
+<ግ ር ር>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ግ ር ስ ም>		c=E
+<ግ ር ስ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ብ>		c=B
+<ግ ር ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ብ ብ>		c=E
+<ግ ር ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ን ብ>		c=E
+<ግ ር ን ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ን ው>		c=E,s=1
+<ግ ር ን ው>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ን ው>		c=E,s=2
+<ግ ር ን ው>		c=E,s=2,base=a
   a=0,v=a
-<ግ ር ዕ>		c=A
+<ግ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ዕ ድ>		c=E
+<ግ ር ዕ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ዝ>		c=A
+<ግ ር ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ዝ ም>		c=E
+<ግ ር ዝ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ዝ ው>		c=E
+<ግ ር ዝ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ድ>		c=B
+<ግ ር ድ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ግ ር ድ>		c=C
+<ግ ር ድ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ድ ፍ>		c=E
+<ግ ር ድ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ጅ ዕ>		c=E
+<ግ ር ጅ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ጅ ፍ>		c=E
+<ግ ር ጅ ፍ>		c=E,base=0
   a=0,v=0
-<ግ ር ግ ር>		c=E
+<ግ ር ግ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ግ ፍ>		c=E
+<ግ ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ር ጭ ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ግ ር ፍ>		c=A
+<ግ ር ጭ ው>	c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ግ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ግ ር ፍ ዕ>		c=E
+<ግ ር ፍ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ፍ ጥ>		c=E
+<ግ ር ፍ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ር ፍ ፍ>		c=E
+<ግ ር ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ስ ም>		c=B
+<ግ ስ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ስ ር ጥ>		c=E
+<ግ ስ ር ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ስ ስ>		c=A,s=1
-  a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ግ ስ ስ>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ግ ስ ግ ስ>		c=E
+<ግ ስ ስ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p ; a=a,v=a
+<ግ ስ ግ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ስ ጽ>		c=B
+<ግ ስ ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ግ ሽ ል ዕ>		c=E
+<ግ ሽ ል ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ብ ል>		c=B
+<ግ ብ ል>		c=B,base=0
   a=0,v=0
-<ግ ብ ሕ>		c=A
+<ግ ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ብ ር>		c=A
+<ግ ብ ር>		c=A,base=0
   a=0,v=0,t=p ; a=0,v=0,t=i ; a=0,v=0,t=j ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ግ ብ ር>		c=B
+<ግ ብ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ግ ብ ስ ስ>		c=E
+<ግ ብ ስ ስ>		c=E,base=p
   a=0,v=p
-<ግ ብ ት>		c=B
+<ግ ብ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ብ ት ር>		c=E
+<ግ ብ ት ር>		c=E,base=a
   a=0,v=a
-<ግ ብ ት እ>		c=E
+<ግ ብ ት እ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ብ ን>		c=B
+<ግ ብ ን>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ግ ብ እ>		c=A,s=1
+<ግ ብ እ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ግ ብ እ>		c=A,s=2
+<ግ ብ እ>		c=A,s=2,base=ap
   a=a,v=p ; a=a,v=a
-<ግ ብ እ>		c=B
-  a=0,v=p ; a=0,v=p
-<ግ ብ እ ብ እ>		c=G
+<ግ ብ እ>		c=B,base=p
+  a=0,v=p
+<ግ ብ እ ብ እ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ግ ብ ዕ>		c=B
+<ግ ብ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ብ ዝ>		c=B
+<ግ ብ ዝ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ብ ዝ>		c=C
+<ግ ብ ዝ>		c=C,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ብ ግ ብ>		c=E,s=1
-  a=0,v=0
-<ግ ብ ግ ብ>		c=E,s=2
-  a=a,v=p ; a=a,v=a
-<ግ ብ ጥ>		c=B
+<ግ ብ ግ ብ>		c=E,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a
+<ግ ብ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ት ር>		c=B
+<ግ ት ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ግ ት ት>		c=B
+<ግ ት ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ት እ>		c=B
+<ግ ት እ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ት ዕ>		c=B
+<ግ ት ዕ>		c=B,base=0
   a=0,v=0
-<ግ ት ግ ት>		c=E
+<ግ ት ግ ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ን ሕ>		c=A
+<ግ ን ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ግ ን ብ ው>		c=E
+<ግ ን ብ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ን ን>		c=A,s=1
-  a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ግ ን ን>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ግ ን ው>		c=B
+<ግ ን ን>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
+<ግ ን ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ን ዕ>		c=B
+<ግ ን ዕ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ግ ን ዝ>		c=A
+<ግ ን ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ግ ን ዝ ብ>		c=E
+<ግ ን ዝ ብ>		c=E,base=p
   a=a,v=p ; a=0,v=p ; a=0,v=a
-<ግ ን ይ>		c=A,s=1
+<ግ ን ይ>		c=A,s=1,base=0
   a=0,v=0
-<ግ ን ይ>		c=A,s=2
+<ግ ን ይ>		c=A,s=2,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ግ ን ድ>		c=B
+<ግ ን ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ን ጅ ር>		c=E
+<ግ ን ጅ ር>		c=E,base=0
   a=0,v=0
-<ግ ን ግ ን>		c=E
+<ግ ን ግ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ን ጥ ር>		c=E
+<ግ ን ጥ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ን ጭ ር>		c=E
+<ግ ን ጭ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ን ጽ ል>		c=E
+<ግ ን ጽ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ግ ን ፍ>		c=B
+<ግ ን ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ን ፍ ል>		c=E
+<ግ ን ፍ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ እ ዝ>		c=A,s=1
-  a=0,v=a
-<ግ እ ዝ>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ግ እ ግ እ>		c=E
+<ግ እ ዝ>		c=A,base=p
+  a=0,v=a ; a=0,v=p
+<ግ እ ግ እ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ግ ው ሕ>		c=B
+<ግ ው ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ግ ው ር>		c=A
+<ግ ው ር>		c=A,base=ap
   a=a,v=p
-<ግ ው ዕ>		c=A
+<ግ ው ዕ>		c=A,base=0
   a=0,v=0
-<ግ ው ድ>		c=B
+<ግ ው ድ>		c=B,base=0
   a=0,v=0
-<ግ ዕ ር>		c=A
+<ግ ዕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ዕ ስ>		c=A
+<ግ ዕ ስ>		c=A,base=a
   a=0,v=a
-<ግ ዕ ት>		c=A
+<ግ ዕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዕ ዝ>		c=A
+<ግ ዕ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=i,v=a
-<ግ ዕ ዝ ም>		c=E
+<ግ ዕ ዝ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዕ ዝ ይ>		c=E
+<ግ ዕ ዝ ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ግ ዕ ይ>		c=A
+<ግ ዕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ዕ ግ ዕ>		c=E
+<ግ ዕ ግ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ዕ ፍ ር>		c=E
+<ግ ዕ ፍ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ዝ ም>		c=A,s=1
+<ግ ዝ ም>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዝ ም>		c=A,s=2
+<ግ ዝ ም>		c=A,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ግ ዝ ር>		c=A
+<ግ ዝ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዝ ት>		c=B
+<ግ ዝ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዝ እ>		c=A
+<ግ ዝ እ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ግ ዝ ዕ>		c=A
+<ግ ዝ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ዝ ዝ>		c=B
+<ግ ዝ ዝ>		c=B,base=0
   a=0,v=0
-<ግ ዝ ግ ዝ>		c=E
+<ግ ዝ ግ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ዝ ፍ>		c=A
+<ግ ዝ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ይ ር>		c=B
+<ግ ይ ር>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ግ ይ ሽ>		c=A
+<ግ ይ ሽ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ግ ይ እ>		c=B
+<ግ ይ እ>		c=B,base=a
   a=0,v=a
-<ግ ይ ድ>		c=B
+<ግ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ይ ጽ>		c=A
+<ግ ይ ጽ>		c=A,base=a
   a=0,v=a ; a=a,v=a
-<ግ ይ ጽ>		c=B
+<ግ ይ ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ድ ል>		c=B
+<ግ ድ ል>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ግ ድ ም>		c=B,s=1
+<ግ ድ ም>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ድ ም>		c=B,s=2
+<ግ ድ ም>		c=B,s=2,base=p
   a=0,v=p ; a=0,v=a
-<ግ ድ ም>		c=C
+<ግ ድ ም>		c=C,base=p
   a=0,v=p ; a=0,v=a
-<ግ ድ ር>		c=B
+<ግ ድ ር>		c=B,base=p
   a=0,v=p
-<ግ ድ ስ>		c=B
+<ግ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ድ ብ>		c=B
+<ግ ድ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ድ ዕ>		c=A
+<ግ ድ ዕ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ግ ድ ዕ>		c=B
+<ግ ድ ዕ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ግ ድ ድ>		c=A
+<ግ ድ ድ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ግ ድ ድ>		c=B
+<ግ ድ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ድ ግ ድ>		c=E
+<ግ ድ ግ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ድ ፍ>		c=A
+<ግ ድ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ግ ጅ ፍ>		c=A
+<ግ ጅ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ግ ር>		c=C
+<ግ ግ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ግ ው>		c=A
+<ግ ግ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ግ ይ>		c=A
+<ግ ግ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a
-<ግ ጥ ም>		c=A
+<ግ ጥ ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ግ ጥ ም>		c=B
+<ግ ጥ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ጥ ጥ>		c=A
+<ግ ጥ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ጭ ብ>		c=B
+<ግ ጭ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ግ ጭ ው>		c=A
+<ግ ጭ ው>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ግ ጽ ብ>		c=A
+<ግ ጽ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p
-<ግ ጽ ብ>		c=B
+<ግ ጽ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ፍ ል>		c=B
+<ግ ፍ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ሕ>		c=A
+<ግ ፍ ሕ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ግ ፍ ር>		c=B
+<ግ ፍ ር>		c=A,base=aa
   a=a,v=a
-<ግ ፍ ር>		c=C
+<ግ ፍ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ግ ፍ ት>		c=B
+<ግ ፍ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ት ን>		c=E
+<ግ ፍ ት ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ግ ፍ ት እ>		c=E
+<ግ ፍ ት እ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ን>		c=B
+<ግ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ግ ፍ ዕ>		c=A
+<ግ ፍ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ግ ፍ ግ ፍ>		c=E
+<ግ ፍ ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ጥ>		c=B
+<ግ ፍ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ጥ ጥ>		c=E
+<ግ ፍ ጥ ጥ>		c=E,base=0
   a=0,v=0
-<ግ ፍ ጭ ል>		c=E
+<ግ ፍ ጭ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ግ ፍ ፍ>		c=A
+<ግ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጡ ም ሱ ቁ>		c=E
+<ጡ ም ሱ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጡ ብ ብ>		c=A
+<ጡ ብ ብ>		c=A,base=0
   a=0,v=0
-<ጥ ል ል>		c=A
+<ጥ ል ል>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ጥ ል ሕ ም>		c=E
+<ጥ ል ሕ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ል ም>		c=A
+<ጥ ል ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጥ ል ቅ>		c=A
+<ጥ ል ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጥ ል ቅ>		c=B
+<ጥ ል ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ል ቅ ል ቅ>		c=G
+<ጥ ል ቅ ል ቅ>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ጥ ል ቅ ይ>		c=E
+<ጥ ል ቅ ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ጥ ል ቅ ፍ>		c=E
+<ጥ ል ቅ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ል ብ>		c=A
+<ጥ ል ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ል ዕ>		c=B,s=1
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ል ዕ>		c=B,s=2
-  a=a,v=p
-<ጥ ል ዕ ል ዕ>		c=G
+<ጥ ል ዕ>		c=B,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=p
+<ጥ ል ዕ ል ዕ>		c=G,base=p
   a=0,v=a
-<ጥ ል ይ>		c=A
+<ጥ ል ይ>		c=A,base=0
   a=0,v=0 ; a=a,v=a
-<ጥ ል ጥ ል>		c=E
+<ጥ ል ጥ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጥ ል ፍ>		c=A
+<ጥ ል ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ል ፍ>		c=B
+<ጥ ል ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ሕ ል>		c=A
+<ጥ ሕ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ሕ ል ው>		c=E
+<ጥ ሕ ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ሕ ር>		c=A
+<ጥ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ሕ ስ>		c=A
+<ጥ ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጥ ሕ ስ ስ>		c=E
+<ጥ ሕ ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ሕ ን>		c=A
+<ጥ ሕ ን>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ም ም>		c=A
+<ጥ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ም ር>		c=A
+<ጥ ም ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጥ ም ስ ስ>		c=E
+<ጥ ም ስ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ም ስ ቅ>		c=E
+<ጥ ም ስ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ጥ ም ቅ>		c=B
+<ጥ ም ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ም ብ ስ>		c=E
+<ጥ ም ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ም ብ ቁ>		c=E
+<ጥ ም ብ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ም ብ ው>		c=E
+<ጥ ም ብ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ም ት>		c=B
+<ጥ ም ት>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጥ ም ዕ>		c=A
+<ጥ ም ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ም ዕ>		c=B
+<ጥ ም ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ም ዝ ዝ>		c=E
+<ጥ ም ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ም ይ>		c=A
+<ጥ ም ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ም ጥ ም>		c=E
+<ጥ ም ጥ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጥ ር ም ም>		c=E
+<ጥ ር ም ም>		c=E,base=a
   a=0,v=a
-<ጥ ር ር>		c=B
+<ጥ ር ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ር ስ>		c=B
+<ጥ ር ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ስ ም>		c=E
+<ጥ ር ስ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ጥ ር ስ ቅ>		c=E
+<ጥ ር ስ ቅ>		c=E,base=0
   a=0,v=0
-<ጥ ር ሽ>		c=B,s=1
+<ጥ ር ሽ>		c=B,s=1,base=0
   a=0,v=0
-<ጥ ር ሽ>		c=B,s=2
+<ጥ ር ሽ>		c=B,s=2,base=0
   a=0,v=0
-<ጥ ር ሽ ቁ>		c=E
+<ጥ ር ሽ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ቁ ሽ>		c=E
+<ጥ ር ቁ ሽ>		c=E,base=0
   a=0,v=0
-<ጥ ር ቅ>		c=B
+<ጥ ር ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ቅ ም>		c=E
+<ጥ ር ቅ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ር ቅ ም>		c=F
+<ጥ ር ቅ ም>		c=F,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ቅ ብ>		c=E
-  a=a,v=p ; a=a,v=a
-<ጥ ር ብ ስ>		c=E
+<ጥ ር ቅ ብ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ጥ ር ብ ስ>		c=E,base=0
   a=0,v=0
-<ጥ ር ን ቅ>		c=E
+<ጥ ር ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ን ብ>		c=E
+<ጥ ር ን ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጥ ር ን ፍ>		c=E
+<ጥ ር ን ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጥ ር ዕ>		c=A
+<ጥ ር ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጥ ር ዝ>		c=B
+<ጥ ር ዝ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ጥ ር ዝ ዝ>		c=E
+<ጥ ር ዝ ዝ>		c=E,base=p
   a=0,v=p
-<ጥ ር ይ>		c=A
+<ጥ ር ይ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ጥ ር ግ>		c=A
+<ጥ ር ግ>		c=A,base=a
   a=0,v=a
-<ጥ ር ጥ>		c=A
+<ጥ ር ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ር ጥ ር>		c=E
+<ጥ ር ጥ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ር ፍ>		c=B
+<ጥ ር ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ር ፍ ፍ>		c=E
+<ጥ ር ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ስ ም>		c=C
+<ጥ ስ ም>		c=C,base=0
   a=0,v=0
-<ጥ ስ ቅ>		c=B
+<ጥ ስ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ስ ን ቅ>		c=E
+<ጥ ስ ን ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ስ ጥ ስ>		c=E
+<ጥ ስ ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ቁ ል ብ>		c=E
+<ጥ ቁ ል ብ>		c=E,base=0
   a=0,v=0
-<ጥ ቁ ም>		c=B
+<ጥ ቁ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ቁ ስ>		c=A
+<ጥ ቁ ስ>		c=A,base=ap
   a=a,v=p ; a=i,v=p ; a=a,v=a
-<ጥ ቅ ል ል>		c=E
+<ጥ ቅ ል ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ቅ ም>		c=A
+<ጥ ቅ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጥ ቅ ር>		c=A
+<ጥ ቅ ር>		c=A,base=0
   a=0,v=0
-<ጥ ቅ ር>		c=B
+<ጥ ቅ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ቅ ስ>		c=A
+<ጥ ቅ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ቅ ብ>		c=A,s=1
+<ጥ ቅ ብ>		c=A,s=1,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ቅ ብ>		c=A,s=2
+<ጥ ቅ ብ>		c=A,s=2,base=0
   a=0,v=0
-<ጥ ቅ ብ>		c=B
+<ጥ ቅ ብ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ቅ ን>		c=B
+<ጥ ቅ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ቅ ው>		c=B
+<ጥ ቅ ው>		c=B,base=0
   a=0,v=0
-<ጥ ቅ ዕ>		c=A
+<ጥ ቅ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ቅ ዕ>		c=B
+<ጥ ቅ ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ቅ ጥ ቅ>		c=E
+<ጥ ቅ ጥ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ብ ል ል>		c=E
+<ጥ ብ ል ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጥ ብ ሕ>		c=A
+<ጥ ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ብ ር>		c=B
+<ጥ ብ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጥ ብ ስ>		c=A
+<ጥ ብ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ብ ቅ>		c=A
+<ጥ ብ ቅ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ብ ብ>		c=A
+<ጥ ብ ብ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ብ ት>		c=B
+<ጥ ብ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ብ ው>		c=A
+<ጥ ብ ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ብ ይ>		c=A
+<ጥ ብ ይ>		c=A,base=0
   a=0,v=0
-<ጥ ብ ጥ ብ>		c=E
+<ጥ ብ ጥ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ን ስ>		c=A
+<ጥ ን ስ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ን ቁ ል>		c=E
+<ጥ ን ቁ ል>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ን ቁ ር>		c=E
+<ጥ ን ቁ ር>		c=E,base=0
   a=0,v=0
-<ጥ ን ቅ ም>		c=E
+<ጥ ን ቅ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ን ቅ ስ>		c=E
+<ጥ ን ቅ ስ>		c=E,base=0
   a=0,v=0
-<ጥ ን ቅ ቅ>		c=E
+<ጥ ን ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ን ቅ ው>		c=E
+<ጥ ን ቅ ው>		c=E,base=0
   a=0,v=0
-<ጥ ን ብ ር>		c=E
+<ጥ ን ብ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ን ብ ስ>		c=E
+<ጥ ን ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ን ን>		c=A
+<ጥ ን ን>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ን ክ ር>		c=E
+<ጥ ን ክ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ን ግ>		c=A
+<ጥ ን ግ>		c=A,base=ip
   a=i,v=0 ; a=i,v=p
-<ጥ ን ጥ ን>		c=E
+<ጥ ን ጥ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ው ር>		c=B
+<ጥ ው ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ጥ ው ቅ>		c=B
+<ጥ ው ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ው ብ>		c=A
+<ጥ ው ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ው ይ>		c=A
+<ጥ ው ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ጥ ው ፍ>		c=B
+<ጥ ው ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ዕ ም>		c=A
+<ጥ ዕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጥ ዕ ስ>		c=A
+<ጥ ዕ ስ>		c=A,base=p
   a=0,v=p ; a=a,v=a
-<ጥ ዕ ው>		c=A
+<ጥ ዕ ው>		c=A,base=0
   a=0,v=0
-<ጥ ዕ ይ>		c=A,s=1
+<ጥ ዕ ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=a
+<ጥ ዕ ጥ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ዕ ይ>		c=A,s=2
-  a=a,v=a
-<ጥ ዕ ጥ ዕ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ጥ ዝ ዝ>		c=A
+<ጥ ዝ ዝ>		c=A,base=0
   a=0,v=0
-<ጥ ይ ር>		c=B
+<ጥ ይ ር>		c=B,base=0
   a=0,v=0
-<ጥ ይ ስ>		c=A
+<ጥ ይ ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ጥ ይ ቅ>		c=B
+<ጥ ይ ቅ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ጥ ይ ት>		c=B
+<ጥ ይ ት>		c=B,base=0
   a=0,v=0
-<ጥ ጅ እ>		c=B
+<ጥ ጅ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ግ እ>		c=A
+<ጥ ግ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ጥ ሕ>		c=B
+<ጥ ጥ ሕ>		c=B,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ጥ ጥ ም>		c=A
+<ጥ ጥ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጥ ጥ ቅ>		c=B
+<ጥ ጥ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ጥ እ>		c=A
+<ጥ ጥ እ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ጥ ጥ ዕ>		c=B
+<ጥ ጥ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ጥ ፍ>		c=A
+<ጥ ጥ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጥ ፍ ል ሕ>		c=E
+<ጥ ፍ ል ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ፍ ሕ>		c=A
+<ጥ ፍ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ፍ ሽ>		c=B
+<ጥ ፍ ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጥ ፍ ን>		c=B
+<ጥ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጥ ፍ ን ቅ>		c=E
+<ጥ ፍ ን ቅ>		c=E,base=0
   a=0,v=0
-<ጥ ፍ እ>		c=A
+<ጥ ፍ እ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጥ ፍ ጥ ፍ>		c=E
+<ጥ ፍ ጥ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጩ ር ር>		c=A
+<ጩ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ል ሕ>		c=B
+<ጭ ል ሕ>		c=B,base=0
   a=0,v=0
-<ጭ ል ም ል ም>		c=G
+<ጭ ል ም ል ም>		c=G,base=p
   a=0,v=a
-<ጭ ል ቁ>		c=A
+<ጭ ል ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ል ቅ>		c=B
+<ጭ ል ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ል ቅ ዕ>		c=E
+<ጭ ል ቅ ዕ>		c=E,base=0
   a=0,v=0
-<ጭ ል ብ ብ>		c=E
+<ጭ ል ብ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ል ው>		c=A
+<ጭ ል ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ል ድ>		c=C
+<ጭ ል ድ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ል ድ ው>		c=E
+<ጭ ል ድ ው>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ል ግ ም>		c=E
+<ጭ ል ግ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ል ግ ዕ>		c=E
+<ጭ ል ግ ዕ>		c=E,base=0
   a=0,v=0
-<ጭ ል ጥ>		c=B
+<ጭ ል ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ል ፍ>		c=B
+<ጭ ል ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ሕ ም>		c=A
+<ጭ ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ሕ ግ ር>		c=E
+<ጭ ሕ ግ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ሕ ግ ግ>		c=E
+<ጭ ሕ ግ ግ>		c=E,base=0
   a=0,v=0
-<ጭ ም ል ቅ>		c=E
-  a=a,v=p ; a=a,v=a
-<ጭ ም ል ው>		c=E
+<ጭ ም ል ቅ>		c=F,base=p
+  a=0,v=p ; a=0,v=a
+<ጭ ም ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ም ር>		c=B
+<ጭ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ም ት>		c=B
+<ጭ ም ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ም ት ል>		c=E
+<ጭ ም ት ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ም ድ ድ>		c=E
+<ጭ ም ድ ድ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a
-<ጭ ም ግ ግ>		c=E
+<ጭ ም ግ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ም ጭ ም>		c=E
+<ጭ ም ጭ ም>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ር ሕ>		c=B
+<ጭ ር ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ር ም>		c=A
+<ጭ ር ም>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጭ ር ም ም>		c=E
+<ጭ ር ም ም>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ር ስ>		c=B
+<ጭ ር ስ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ር ቅ>		c=A
+<ጭ ር ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p
-<ጭ ር ት>		c=A
+<ጭ ር ት>		c=A,base=p
   a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጭ ር ን>		c=C
+<ጭ ር ን>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ር ድ ድ>		c=E
+<ጭ ር ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ር ግ ፍ>		c=E
+<ጭ ር ግ ፍ>		c=E,base=0
   a=0,v=0
-<ጭ ር ጭ ር>		c=E
-  a=a,v=p
-<ጭ ቁ ል>		c=B
+<ጭ ር ጭ ር>		c=F,base=p
+  a=0,v=p
+<ጭ ቁ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ቁ ን>		c=A
+<ጭ ቁ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ቁ ን>		c=B
+<ጭ ቁ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ቁ ጭ ቁ>		c=E
+<ጭ ቁ ጭ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ቅ ው>		c=B
+<ጭ ቅ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ቅ ይ>		c=B
+<ጭ ቅ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ቅ ጭ ቅ>		c=E
+<ጭ ቅ ጭ ቅ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a
-<ጭ ብ ር ር>		c=E
+<ጭ ብ ር ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ብ ር ብ ር>		c=G
+<ጭ ብ ር ብ ር>		c=G,base=p
   a=0,v=p
-<ጭ ብ ጥ>		c=B
+<ጭ ብ ጥ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ጭ ብ ጭ ብ>		c=E
+<ጭ ብ ጭ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ን ቁ ር>		c=E
+<ጭ ን ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ን ቅ>		c=A
+<ጭ ን ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a
-<ጭ ን ክ ል>		c=E
+<ጭ ን ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ን ው>		c=A
+<ጭ ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጭ ን ድ ል>		c=E
+<ጭ ን ድ ል>		c=E,base=0
   a=0,v=0
-<ጭ ን ድ ሕ>		c=E
+<ጭ ን ድ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ን ድ ድ>		c=E
+<ጭ ን ድ ድ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ጭ ን ጉ ዕ>		c=E
+<ጭ ን ጉ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ን ግ ፍ>		c=E
+<ጭ ን ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ን ፍ ር>		c=E
+<ጭ ን ፍ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ጭ ኩ ም>		c=A
+<ጭ ኩ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ኩ ር>		c=A
+<ጭ ኩ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ኩ ር>		c=C
+<ጭ ኩ ር>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ክ ን>		c=B
+<ጭ ክ ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=i,v=p ; a=0,v=a
-<ጭ ው ይ>		c=A
+<ጭ ው ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ዕ ይ>		c=A
+<ጭ ዕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ይ ሕ>		c=B
+<ጭ ይ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=0
-<ጭ ይ እ>		c=A
+<ጭ ይ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ይ ፍ>		c=B
+<ጭ ይ ፍ>		c=B,base=0
   a=0,v=0
-<ጭ ድ ር>		c=B
+<ጭ ድ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ድ ድ>		c=A
+<ጭ ድ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጭ ጉ ር>		c=B
+<ጭ ጉ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ጉ ር ፍ>		c=E
+<ጭ ጉ ር ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጭ ጉ ን ን>		c=E
+<ጭ ጉ ን ን>		c=E,base=p
   a=0,v=p ; a=0,v=a
-<ጭ ግ ን>		c=B
+<ጭ ግ ን>		c=B,base=0
   a=0,v=0
-<ጭ ግ ዕ>		c=A
+<ጭ ግ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ጭ ሕ>		c=A
+<ጭ ጭ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ጭ ፍ>		c=A
+<ጭ ጭ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ፍ ል ቅ>		c=E
+<ጭ ፍ ል ቅ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ፍ ር>		c=B
+<ጭ ፍ ር>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጭ ፍ ቅ>		c=B
+<ጭ ፍ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጭ ፍ ን>		c=B
+<ጭ ፍ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጭ ፍ ን ን>		c=E
+<ጭ ፍ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ጭ ፍ ጭ ፍ>		c=E
+<ጭ ፍ ጭ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ጭ ፍ ፍ>		c=A
+<ጭ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጵ ጵ ስ>		c=B
+<ጵ ጵ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ህ ይ>		c=A
+<ጽ ህ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ህ ይ ይ>		c=E
+<ጽ ህ ይ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ሉ ቅ>		c=A
+<ጽ ሉ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ሉ ት>		c=A
+<ጽ ሉ ት>		c=A,base=p
   a=0,v=p
-<ጽ ል ል>		c=A
+<ጽ ል ል>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ጽ ል ል>		c=B
+<ጽ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ም>		c=A
+<ጽ ል ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ል ም>		c=B
+<ጽ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ል ም ት>		c=E
+<ጽ ል ም ት>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ል ቅ>		c=B
+<ጽ ል ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ት>		c=B
+<ጽ ል ት>		c=B,base=0
   a=0,v=0
-<ጽ ል እ>		c=A
+<ጽ ል እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ል ው>		c=A
+<ጽ ል ው>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ይ>		c=B
+<ጽ ል ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ግ>		c=A
+<ጽ ል ግ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ጽ ል ግ ል ግ>		c=G
+<ጽ ል ግ ል ግ>		c=G,base=p
   a=0,v=a
-<ጽ ል ጥ>		c=A
+<ጽ ል ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ጽ ል>		c=E
+<ጽ ል ጽ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ል ፍ ዕ>		c=E
+<ጽ ል ፍ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ሕ ር>		c=A
+<ጽ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ሕ ት ር>		c=E
+<ጽ ሕ ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ሕ ይ>		c=A
+<ጽ ሕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ሕ ግ ር>		c=E
+<ጽ ሕ ግ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ሕ ጽ ሕ>		c=E
+<ጽ ሕ ጽ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ሕ ፍ>		c=A
+<ጽ ሕ ፍ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጽ ም ል ው>		c=E
+<ጽ ም ል ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም ም>		c=A
+<ጽ ም ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም ም>		c=B
+<ጽ ም ም>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ም ር>		c=B
+<ጽ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጽ ም ቁ>		c=A
+<ጽ ም ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ም ብ ል>		c=E
+<ጽ ም ብ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ም ብ ር>		c=E
+<ጽ ም ብ ር>		c=E,base=0
   a=0,v=0
-<ጽ ም ብ ዕ>		c=E
+<ጽ ም ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም እ>		c=A
+<ጽ ም እ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም ው>		c=B
+<ጽ ም ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም ው>		c=C
+<ጽ ም ው>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ም ዕ>		c=B
+<ጽ ም ዕ>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ም ድ>		c=A
+<ጽ ም ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ር ሕ>		c=A
+<ጽ ር ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጽ ር ር>		c=A,s=1
+<ጽ ር ር>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ር ር>		c=A,s=2
-  a=a,v=p ; a=a,v=a
-<ጽ ር ብ>		c=A
+<ጽ ር ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጽ ር ዕ>		c=B
+<ጽ ር ዕ>		c=B,base=0
   a=0,v=0
-<ጽ ር ይ>		c=A
+<ጽ ር ይ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጽ ር ድ>		c=A
+<ጽ ር ድ>		c=A,base=ap
   a=a,v=p ; a=a,v=a
-<ጽ ር ግ>		c=A
+<ጽ ር ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ር ግ ው>		c=E
+<ጽ ር ግ ው>		c=E,base=0
   a=0,v=0
-<ጽ ር ግ ፍ>		c=E
+<ጽ ር ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ር ፍ>		c=A
+<ጽ ር ፍ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ቅ ጥ>		c=A
+<ጽ ቅ ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ቅ ጽ ቅ>		c=E
+<ጽ ቅ ጽ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ቅ ጽ ቅ>		c=F
+<ጽ ቅ ጽ ቅ>		c=F,base=a
   a=0,v=a
-<ጽ ብ ል>		c=B
+<ጽ ብ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ብ ሕ>		c=A
+<ጽ ብ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ብ ር>		c=A
+<ጽ ብ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ብ ቅ>		c=B
+<ጽ ብ ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጽ ብ ብ>		c=A
+<ጽ ብ ብ>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ብ እ>		c=A
+<ጽ ብ እ>		c=A,base=0
   a=0,v=0 ; a=a,v=p
-<ጽ ብ ይ>		c=B
+<ጽ ብ ይ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጽ ብ ድ ይ>		c=E
+<ጽ ብ ድ ይ>		c=E,base=0
   a=0,v=0
-<ጽ ብ ጥ>		c=B
+<ጽ ብ ጥ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ብ ጽ ብ>		c=E
+<ጽ ብ ጽ ብ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ን ሕ>		c=A
+<ጽ ን ሕ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ን ቅ ቅ>		c=E
+<ጽ ን ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ን ብ ር>		c=E
+<ጽ ን ብ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ጽ ን ት>		c=A
+<ጽ ን ት>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ን ት ው>		c=E
-  a=a,v=p ; a=a,v=a
-<ጽ ን ን>		c=A
+<ጽ ን ት ው>	c=F,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ን ክ ር>		c=E
+<ጽ ን ን>		c=A,base=p
+  a=0,v=p ; a=0,v=a
+<ጽ ን ክ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ን ዕ>		c=A
+<ጽ ን ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ጽ ን ዕ>		c=B
+<ጽ ን ዕ>		c=B,base=p
   a=0,v=p
-<ጽ ን ዕ ብ>		c=E
+<ጽ ን ዕ ብ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ን ግ ፍ>		c=E
+<ጽ ን ግ ፍ>		c=E,base=0
   a=0,v=0 ; a=i,v=0
-<ጽ ን ጽ ል>		c=E
+<ጽ ን ጽ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ን ጽ ር>		c=E
+<ጽ ን ጽ ር>		c=E,base=0
   a=0,v=0
-<ጽ ን ጽ ን>		c=E
-  a=a,v=p
-<ጽ ን ፍ ፍ>		c=E
+<ጽ ን ጽ ን>		c=F,base=p
+  a=0,v=p
+<ጽ ን ፍ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ው ም>		c=A
+<ጽ ው ም>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ው ር>		c=A
+<ጽ ው ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ው ት>		c=B,s=1
+<ጽ ው ት>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ው ት>		c=B,s=2
+<ጽ ው ት>		c=B,s=2,base=0
   a=0,v=0
-<ጽ ው ት>		c=C
+<ጽ ው ት>		c=C,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ው ዕ>		c=B
+<ጽ ው ዕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ጽ ው ይ>		c=A
+<ጽ ው ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ው ድ>		c=C
+<ጽ ው ድ>		c=C,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ው ግ>		c=B
+<ጽ ው ግ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ዕ ም ቁ>		c=E
+<ጽ ዕ ም ቁ>		c=E,base=0
   a=0,v=0
-<ጽ ዕ ር>		c=A
+<ጽ ዕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ዕ ቅ>		c=A
+<ጽ ዕ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ት>		c=A
+<ጽ ዕ ት>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ን>		c=A
+<ጽ ዕ ን>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ዕ ይ>		c=A
+<ጽ ዕ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ድ>		c=A
+<ጽ ዕ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ድ ው>		c=E
+<ጽ ዕ ድ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ግ ን>		c=E
+<ጽ ዕ ግ ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ዕ ጽ ዕ>		c=E
+<ጽ ዕ ጽ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ይ ቅ>		c=B
+<ጽ ይ ቅ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a
-<ጽ ይ ን>		c=B
+<ጽ ይ ን>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ይ እ>		c=B
+<ጽ ይ እ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ይ ዕ>		c=A
+<ጽ ይ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ይ ፍ>		c=B
+<ጽ ይ ፍ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ጽ ድ ቅ>		c=A
+<ጽ ድ ቅ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=a
-<ጽ ድ ይ>		c=A,s=1
+<ጽ ድ ይ>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=a,v=a
+<ጽ ድ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ድ ይ>		c=A,s=2
-  a=a,v=a
-<ጽ ድ ይ>		c=B
-  a=0,v=0 ; a=0,v=a
-<ጽ ድ ፍ>		c=A
+<ጽ ድ ፍ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ጉ ር>		c=B
+<ጽ ጉ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ግ ም>		c=B
+<ጽ ግ ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ጽ ግ ብ>		c=A
+<ጽ ግ ብ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ጽ ግ ን>		c=B
+<ጽ ግ ን>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ግ እ>		c=A
+<ጽ ግ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ግ ው>		c=B
+<ጽ ግ ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ግ ዕ>		c=B
+<ጽ ግ ዕ>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ጽ ግ ይ>		c=A
+<ጽ ግ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=0 ; a=0,v=a
-<ጽ ጥ ሕ>		c=A
+<ጽ ጥ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ጽ ር>		c=B
+<ጽ ጽ ር>		c=B,base=0
   a=0,v=0
-<ጽ ጽ ት>		c=B
+<ጽ ጽ ት>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ጽ ጽ ው>		c=A
+<ጽ ጽ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጽ ጽ ይ>		c=A
+<ጽ ጽ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ጽ ጽ ይ>		c=B
+<ጽ ጽ ይ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ፍ ሕ>		c=A
+<ጽ ፍ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ጽ ፍ ር>		c=B
+<ጽ ፍ ር>		c=B,base=0
   a=0,v=0 ; a=a,v=a
-<ጽ ፍ እ>		c=A
+<ጽ ፍ እ>		c=A,base=0
   a=0,v=0
-<ጽ ፍ ዕ>		c=A
+<ጽ ፍ ዕ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ጽ ፍ ይ>		c=A
+<ጽ ፍ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ፍ ጽ ፍ>		c=E
+<ጽ ፍ ጽ ፍ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ጽ ፍ ፍ>		c=A
+<ጽ ፍ ፍ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ፉ ግ ፉ ግ>		c=E
+<ፉ ግ ፉ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ል>		c=A
+<ፍ ል ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ል>		c=B
+<ፍ ል ል>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ል>		c=C
+<ፍ ል ል>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ሕ>		c=A
+<ፍ ል ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ሕ>		c=B
+<ፍ ል ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ሕ ቁ>		c=E
+<ፍ ል ሕ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ም>		c=B
+<ፍ ል ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ስ>		c=A,s=1
+<ፍ ል ስ>		c=A,s=1,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ል ስ>		c=A,s=2
+<ፍ ል ስ>		c=A,s=2,base=0
   a=0,v=0
-<ፍ ል ስ>		c=B,s=1
+<ፍ ል ስ>		c=B,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ስ>		c=B,s=2
+<ፍ ል ስ>		c=B,s=2,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ስ ፍ>		c=E
+<ፍ ል ስ ፍ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ል ቅ>		c=A
+<ፍ ል ቅ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ፍ ል ቅ>		c=B
+<ፍ ል ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ቅ ቅ>		c=E
+<ፍ ል ቅ ቅ>		c=E,base=p
   a=0,v=p
-<ፍ ል ዕ>		c=A
+<ፍ ል ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ፍ ል ዕ ይ>		c=E
+<ፍ ል ዕ ይ>		c=E,base=0
   a=0,v=0
-<ፍ ል ይ>		c=A
+<ፍ ል ይ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ፍ ል ይ>		c=C
+<ፍ ል ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ጉ>		c=A
+<ፍ ል ጉ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ል ግ>		c=B
+<ፍ ል ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ል ጥ>		c=A
+<ፍ ል ጥ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ፍ ል ጽ>		c=B
+<ፍ ል ጽ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ል ፍ ል>		c=E
+<ፍ ል ፍ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ሕ ም>		c=A
+<ፍ ሕ ም>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሕ ር>		c=A
+<ፍ ሕ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ሕ ስ>		c=A
+<ፍ ሕ ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ሕ ሽ ው>		c=E
+<ፍ ሕ ሽ ው>		c=E,base=0
   a=0,v=0
-<ፍ ሕ ቁ>		c=A
+<ፍ ሕ ቁ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ሕ ት ር>		c=E
+<ፍ ሕ ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ሕ ን ን>		c=E
+<ፍ ሕ ን ን>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሕ ኩ>		c=A
-  a=a,v=p
-<ፍ ሕ ጥ ር>		c=E
+<ፍ ሕ ኩ>		c=A,base=p
+  a=0,v=p
+<ፍ ሕ ጥ ር>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a ; a=i,v=a
-<ፍ ሕ ጥ ጥ>		c=E
+<ፍ ሕ ጥ ጥ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ሕ ጭ ር>		c=E
+<ፍ ሕ ጭ ር>		c=E,base=0
   a=0,v=0
-<ፍ ሕ ፍ ሕ>		c=E,s=1
-  a=a,v=p ; a=a,v=a
-<ፍ ሕ ፍ ሕ>		c=E,s=2
-  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ር ህ>		c=A
+<ፍ ሕ ፍ ሕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a ; a=a,v=p
+<ፍ ር ህ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ፍ ር ሕ>		c=C
+<ፍ ር ሕ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ም>		c=B
+<ፍ ር ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=i,v=a
-<ፍ ር ር>		c=A
+<ፍ ር ር>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ር>		c=C
+<ፍ ር ር>		c=C,base=0
   a=0,v=0
-<ፍ ር ስ>		c=A
+<ፍ ር ስ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ር ስ>		c=B
+<ፍ ር ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ሽ>		c=B
+<ፍ ር ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ሽ ሕ>		c=E
+<ፍ ር ሽ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ቁ>		c=A
+<ፍ ር ቁ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ቁ ቁ>		c=E
+<ፍ ር ቁ ቁ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ቅ>		c=B
+<ፍ ር ቅ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ፍ ር ት ት>		c=E
+<ፍ ር ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ን ሽ>		c=E
+<ፍ ር ን ሽ>		c=E,base=p
   a=0,v=p
-<ፍ ር ክ ሽ>		c=E
+<ፍ ር ክ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ፍ ር ክ ት>		c=E
+<ፍ ር ክ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ፍ ር ዕ>		c=B
+<ፍ ር ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ዝ ም>		c=E
+<ፍ ር ዝ ም>		c=E,base=0
   a=0,v=0
-<ፍ ር ዝ ዝ>		c=E
+<ፍ ር ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ዥ ዥ>		c=E
+<ፍ ር ዥ ዥ>		c=E,base=0
   a=0,v=0
-<ፍ ር ይ>		c=A
+<ፍ ር ይ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ር ድ>		c=A
+<ፍ ር ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ር ግ ግ>		c=E
+<ፍ ር ግ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ር ግ ጽ>		c=E
-  a=a,v=p
-<ፍ ር ጥ>		c=A
-  a=0,v=p ; a=0,v=a
-<ፍ ር ጥ ዕ>		c=E
-  a=0,v=0 ; a=0,v=a
-<ፍ ር ጥ ጥ>		c=E
-  a=0,v=0
-<ፍ ር ፍ ር>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ር ፍ ዕ>		c=E
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ስ ህ>		c=A
-  a=0,v=0 ; a=0,v=p
-<ፍ ስ ሕ>		c=A
+<ፍ ር ግ ጽ>		c=F,base=p
   a=0,v=p
-<ፍ ስ ሕ>		c=B
+<ፍ ር ጥ>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ፍ ስ ም>		c=B
+<ፍ ር ጥ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ስ ስ>		c=A
+<ፍ ር ጥ ጥ>		c=E,base=0
+  a=0,v=0
+<ፍ ር ፍ ር>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ፍ ር ፍ ዕ>		c=E,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ፍ ስ ህ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p
+<ፍ ስ ሕ>		c=A,base=p
+  a=0,v=p
+<ፍ ስ ሕ>		c=B,base=p
+  a=0,v=p ; a=0,v=a
+<ፍ ስ ም>		c=B,base=0
+  a=0,v=0 ; a=0,v=a
+<ፍ ስ ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=a
-<ፍ ስ ት>		c=B
+<ፍ ስ ት>		c=B,base=a
   a=0,v=a
-<ፍ ስ ክ>		c=C
+<ፍ ስ ክ>		c=C,base=a
   a=0,v=a
-<ፍ ስ ው>		c=A
+<ፍ ስ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ስ ግ>		c=C
+<ፍ ስ ግ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ስ ፍ ስ>		c=E
+<ፍ ስ ፍ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሽ ል>		c=A
+<ፍ ሽ ል>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሽ ል>		c=B
+<ፍ ሽ ል>		c=B,base=p
   a=0,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ሽ ሕ>		c=A
+<ፍ ሽ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ፍ ሽ ሕ ው>		c=E
+<ፍ ሽ ሕ ው>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሽ ሕ ይ>		c=E
+<ፍ ሽ ሕ ይ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ሽ ሽ>		c=A
+<ፍ ሽ ሽ>		c=A,base=0
   a=0,v=0
-<ፍ ሽ ኩ ል>		c=E
+<ፍ ሽ ኩ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ቅ ር>		c=A
+<ፍ ቅ ር>		c=A,base=a
   a=a,v=p ; a=0,v=a ; a=a,v=a
-<ፍ ቅ ቅ>		c=A
+<ፍ ቅ ቅ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ቅ ዕ>		c=C
+<ፍ ቅ ዕ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ቅ ይ>		c=C
+<ፍ ቅ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ቅ ድ>		c=A
+<ፍ ቅ ድ>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ት ል>		c=A
+<ፍ ት ል>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ት ሕ>		c=B
+<ፍ ት ሕ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a
-<ፍ ት ሕ ት ሕ>		c=G
+<ፍ ት ሕ ት ሕ>		c=G,base=p
   a=0,v=p
-<ፍ ት ር ኩ>		c=E
+<ፍ ት ር ኩ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ት ሽ>		c=B
+<ፍ ት ሽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a ; a=a,v=a
-<ፍ ት ት>		c=B
+<ፍ ት ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ት ን>		c=B
+<ፍ ት ን>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ፍ ት ው>		c=A
+<ፍ ት ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ት ው>		c=B
+<ፍ ት ው>		c=B,base=p
   a=0,v=p ; a=0,v=a
-<ፍ ት ግ>		c=A
+<ፍ ት ግ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ት ግ>		c=B
+<ፍ ት ግ>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ት ፍ ት>		c=E
+<ፍ ት ፍ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ሽ ር>		c=E
+<ፍ ን ሽ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ን ቅ ል>		c=E
+<ፍ ን ቅ ል>		c=E,base=0
   a=0,v=0 ; a=i,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ን ቅ ቅ>		c=E
+<ፍ ን ቅ ቅ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ት>		c=A
+<ፍ ን ት>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a
-<ፍ ን ት ር>		c=E
+<ፍ ን ት ር>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ት ት>		c=E
+<ፍ ን ት ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ት ው>		c=E
+<ፍ ን ት ው>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ን ት ይ>		c=E
+<ፍ ን ት ይ>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ፍ ን ን>		c=C,s=1
+<ፍ ን ን>		c=C,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ን>		c=C,s=2
+<ፍ ን ን>		c=C,s=2,base=p
   a=0,v=p
-<ፍ ን ክ ሕ>		c=E
+<ፍ ን ክ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ን ክ ት>		c=E
+<ፍ ን ክ ት>		c=E,base=0
   a=0,v=0 ; a=a,v=p
-<ፍ ን ው>		c=A
+<ፍ ን ው>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ው>		c=B
+<ፍ ን ው>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=0,v=a ; a=a,v=a
-<ፍ ን ድ ቁ>		c=E
+<ፍ ን ድ ቁ>		c=E,base=0
   a=0,v=0
-<ፍ ን ጉ ል>		c=E
+<ፍ ን ጉ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ጥ ሕ>		c=E
+<ፍ ን ጥ ሕ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ን ጥ ር>		c=E
+<ፍ ን ጥ ር>		c=E,base=a
   a=0,v=a
-<ፍ ን ጥ ስ>		c=E
+<ፍ ን ጥ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ን ጥ ዝ>		c=E
+<ፍ ን ጥ ዝ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ጥ ጥ>		c=E,s=1
+<ፍ ን ጥ ጥ>		c=E,s=1,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ጥ ጥ>		c=E,s=2
+<ፍ ን ጥ ጥ>		c=E,s=2,base=p
   a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ን ጭ ል>		c=E
+<ፍ ን ጭ ል>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ጭ ሕ>		c=E
+<ፍ ን ጭ ሕ>		c=E,base=0
   a=0,v=0 ; a=0,v=p
-<ፍ ን ጭ ጭ>		c=E
+<ፍ ን ጭ ጭ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ን ጽ ግ>		c=E
+<ፍ ን ጽ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ን ፍ ን>		c=E
+<ፍ ን ፍ ን>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
-<ፍ ኝ ዕ>		c=B
+<ፍ ኝ ዕ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ እ ም>		c=A
+<ፍ እ ም>		c=A,base=p
   a=0,v=p ; a=0,v=a
-<ፍ እ ድ ድ>		c=E
+<ፍ እ ድ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ እ ፍ እ>		c=E
+<ፍ እ ፍ እ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ኩ ስ>		c=A
+<ፍ ኩ ስ>		c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=0,v=a
-<ፍ ክ ል>		c=B
+<ፍ ክ ል>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ክ ር>		c=B
+<ፍ ክ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ክ ት>		c=A
+<ፍ ክ ት>		c=A,base=0
   a=0,v=0
-<ፍ ክ ት>		c=B
+<ፍ ክ ት>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ክ ን ን>		c=E
+<ፍ ክ ን ን>		c=E,base=p
   a=0,v=p
-<ፍ ክ ክ>		c=A
+<ፍ ክ ክ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ው ስ>		c=B
+<ፍ ው ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ው ዝ>		c=B
+<ፍ ው ዝ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a
-<ፍ ዕ ን ን>		c=E
+<ፍ ዕ ን ን>		c=E,base=0
   a=0,v=0
-<ፍ ዝ ር ዕ>		c=E
+<ፍ ዝ ር ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ዝ ዕ>		c=A
+<ፍ ዝ ዕ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ዝ ዝ>		c=A
+<ፍ ዝ ዝ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ዝ ግ>		c=B
+<ፍ ዝ ግ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ይ ር>		c=B
+<ፍ ይ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ይ ት>		c=C
+<ፍ ይ ት>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ይ ድ>		c=B
+<ፍ ይ ድ>		c=B,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ድ ሕ>		c=B
+<ፍ ድ ሕ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ድ ስ>		c=B
+<ፍ ድ ስ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ድ ይ>		c=A
+<ፍ ድ ይ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ድ ፍ ድ>		c=E
+<ፍ ድ ፍ ድ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ጅ ር>		c=B
+<ፍ ጅ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p
-<ፍ ግ ም>		c=B
+<ፍ ግ ም>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a
-<ፍ ግ ም ግ ም>		c=G
+<ፍ ግ ም ግ ም>		c=G,base=p
   a=0,v=p ; a=0,v=a
-<ፍ ግ ር>		c=A
+<ፍ ግ ር>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ግ ር>		c=B
+<ፍ ግ ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ግ እ>		c=A
+<ፍ ግ እ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ግ ድ>		c=A
+<ፍ ግ ድ>		c=A,base=0
   a=0,v=0 ; a=0,v=a
-<ፍ ግ ግ>		c=A
+<ፍ ግ ግ>		c=A,base=0
   a=0,v=0
-<ፍ ግ ጽ>		c=B
+<ፍ ግ ጽ>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ግ ፍ ግ>		c=E
+<ፍ ግ ፍ ግ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ጥ ር>		c=A
+<ፍ ጥ ር>		c=A,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ጥ ስ>		c=A
-  a=a,v=p ; a=a,v=a
-<ፍ ጥ ን>		c=A
-  a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
-<ፍ ጥ ጥ>		c=A
-  a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ጥ ጥ ይ>		c=I
-  a=0,v=a
-<ፍ ጭ ጭ>		c=A
-  a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ጭ ጭ>		c=B
+<ፍ ጥ ስ>		c=C,base=p
   a=0,v=p ; a=0,v=a
-<ፍ ጭ ፍ ጭ>		c=E
+<ፍ ጥ ን>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a ; a=i,v=a
+<ፍ ጥ ጥ>		c=A,base=0
+  a=0,v=0 ; a=a,v=p ; a=a,v=a ; a=0,v=a
+<ፍ ጥ ጥ ይ>		c=I,base=0
+  a=0,v=a
+<ፍ ጭ ጭ>		c=A,base=0
+  a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ፍ ጭ ጭ>		c=B,base=p
+  a=0,v=p ; a=0,v=a
+<ፍ ጭ ፍ ጭ>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=a,v=a ; a=0,v=a
-<ፍ ጽ ሕ>		c=A
+<ፍ ጽ ሕ>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ፍ ጽ ም>		c=B
+<ፍ ጽ ም>		c=B,base=0
   a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=0,v=a ; a=a,v=a ; a=i,v=a
-<ፍ ጽ ይ>		c=C
+<ፍ ጽ ይ>		c=C,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ጽ ግ>		c=A
+<ፍ ጽ ግ>		c=A,base=0
   a=0,v=0
-<ፍ ጽ ግ>		c=B
+<ፍ ጽ ግ>		c=B,base=0
   a=0,v=0
-<ፍ ጽ ፍ ጽ>		c=E
+<ፍ ጽ ፍ ጽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ፍ ፍ ው>		c=A
+<ፍ ፍ ው>		c=A,base=0
   a=0,v=0 ; a=0,v=p
-<ፍ ፍ ይ>		c=A
+<ፍ ፍ ይ>		c=A,base=0
   a=0,v=0

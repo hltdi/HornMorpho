@@ -111,10 +111,50 @@ VC2FEATS_L = {
     'pass': 'v=test', 'caus1': 'v=ast', 'csrcp2': 'a=i,v=a'
     }
 
-TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
+TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'tmp', 'base']
 
-### Amharic roots and voice again
+### Amharic and Tigrinya roots and voice again
 ### Finding roots with no simplex form
+
+def rewrite_tvroots(defective):
+    with open("hm/languages/t/lex/vroot.lex", encoding='utf8') as infile:
+        with open("tvroot.lex", 'w', encoding='utf8') as outfile:
+            for line in infile:
+                line = line.strip()
+                if not line:
+                    print(line, file=outfile)
+                    continue
+                if line[0] == "<":
+                    # root line; it's here where we add the base feature
+                    if "base=" in line:
+                        # feature already added
+                        print(line, file=outfile)
+                    else:
+                        root = re.match(r"<(.+)>", line).groups(0)[0]
+                        cls = line.split()[-1].strip().replace('c=', '')
+                        root = root.replace(' ', '')
+                        if cls in ["G", "H", "J"]:
+                            print("{},base=p".format(line), file=outfile)
+                        elif (root, cls) in defective:
+#                            print("{} : {} is in defective list".format(root, cls))
+                            print("{},base={}".format(line, defective[(root, cls)]), file=outfile)
+                        else:
+                            print("{},base=0".format(line), file=outfile)
+                else:
+                    # other line; just print it
+                    print("  " + line, file=outfile)
+
+def get_ti_vroots():
+    result = []
+    with open("hm/languages/t/lex/vroot.lex", encoding='utf8') as file:
+        contents = file.read().strip()
+        lines = [l for l in contents.splitlines() if l.strip() and '#' not in l]
+        ln = len(lines)
+        for i in range(0, ln, 2):
+            if i >= ln:
+                break
+            result.append((lines[i].strip(), lines[i+1].strip()))
+    return result
 
 def rewrite_avroots(defective):
     with open("hm/languages/a/lex/vroot.lex", encoding='utf8') as infile:
@@ -164,13 +204,13 @@ def interactive_assign(u, assigned=None):
     unassigned = {}
     for root, cls, voice in u:
         voice = {x.replace('v=', '') for x in voice}
-        assignment = input("Assign {} ({}) {} to P, A, or AS(TE)?\n>>> ".format(root, cls, voice))
+        assignment = input("Assign {} ({}) {} to P or A?\n>>> ".format(root, cls, voice))
         if assignment.lower() == 'p':
             assigned[(root, cls)] = 'p'
         elif assignment.lower() == 'a':
             assigned[(root, cls)] = 'a'
-        elif assignment.lower() == 'as':
-            assigned[(root, cls)] = 'as'
+#        elif assignment.lower() == 'as':
+#            assigned[(root, cls)] = 'as'
         else:
             unassigned[(root, cls)] = voice
     return assigned, unassigned
@@ -181,47 +221,42 @@ def group_no_base(rootfeats):
     '''
     assigned = {}
     unassigned = []
+#    errors = []
 #    {'a': [], 'p': [], 'as': [], 2: [], 3: []}
     for root, cls, (a0, aa) in rootfeats:
-        if not a0 and not aa:
-            assigned[(root, cls)] = 'p'
-#            result['p'].append((root, cls))
-        elif len(a0) == 1:
+#        if not a0:
+#            errors.append((root, cls))
+        if len(a0) == 1:
             if 'v=p' in a0:
                 assigned[(root, cls)] = 'p'
-#                result['p'].append((root, cls))
             elif 'v=a' in a0:
                 assigned[(root, cls)] = 'a'
-#                result['a'].append((root, cls))
             else:
                 assigned[(root, cls)] = 'as'
-#                result['as'].append((root, cls))
         else:
             unassigned.append((root, cls, a0))
-#        elif len(a0) == 2:
-#            result[2].append((root, cls, a0))
-#        else:
-#            result[3].append((root, cls, a0))
     return assigned, unassigned
 
 def all_group_amv_feats(entries):
     normal = []
     no_base = []
+#    cc = []
     for entry in entries:
         if r := group_amv_feats(entry):
-            if 'v=0' in r[2][0]:
+            if 'v=0' in r[2][0] or 'base' in r[1]:
                 normal.append(r)
             else:
                 no_base.append(r)
     return normal, no_base
 
-def group_amv_feats(entry, skip_class=['G', 'H', 'J']):
+def group_amv_feats(entry, skip_class=['G', 'H', 'I', 'J']):
     """
     entry is two lines from v.root.
     The first line is <root>\tc=*
     The second line is a ;-separated list of combinations of values of a and v
        <ህ ል ቅ>		c=A
        a=0,v=0 ; a=0,v=a
+    Returns root, class, [{a=0_aimads}, {a=a_aimads}]
     """
     line1, line2 = entry
     root = re.match(r"<(.+)>", line1).groups(0)[0]
@@ -241,6 +276,21 @@ def group_amv_feats(entry, skip_class=['G', 'H', 'J']):
     return root, cls, [a0, aa]
 
 ### Tigrinya verb stems
+
+def proc_ti_vroots(tvroots):
+    '''
+    tvroots is a list of pairs of strings: <r o o t>\tclass,sense,base and voice+aimad pairs
+    '''
+    result = []
+    for line1, line2 in tvroots:
+        line1split = line1.split("\t")
+        root, cls = line1split[0], line1split[-1]
+        root = ''.join(root[1:-1])
+        av = line2.split(';')
+        av = ["{},{}".format(cls, a.strip()) for a in av]
+        av = ';;'.join(av)
+        result.append("{}\t{}".format(root, av))
+    return result
 
 def get_irr_tstems():
     results = []
@@ -271,12 +321,12 @@ def get_irr_tstems():
 #            results.append([glob_feats, featstems])
     return results
 
-def gen_all_tstems():
+def gen_all_tstems(vsmorph=None):
     results = []
     n = 0
-    vsmorph = get_t_vstem_morph()
+    vsmorph = vsmorph or get_t_vstem_morph()
 
-    with open("data/t_vroots.txt", encoding='utf8') as  file:
+    with open("data/t_vroots2.txt", encoding='utf8') as  file:
         for line in file:
             if n % 25 == 0:
                 print("Generated {}".format(n))
@@ -285,11 +335,13 @@ def gen_all_tstems():
             n += 1
     return results
 
-def gen_tstem(entry, vsmorph= None, to_string=True):
+def gen_tstem(entry, vsmorph= None, to_string=True, split_char='\t'):
     '''
-    entry is a line from t_vroots.txt
+    entry is a line from t_vroots2.txt
     '''
-    root, feats = entry.split()
+    root, feats = entry.split(split_char)
+    if ' ' in root:
+        root = root.replace(' ', '')
     feats = feats.split(';;')
     return combine_outputs(vsmorph, root, feats, to_string=to_string)
 

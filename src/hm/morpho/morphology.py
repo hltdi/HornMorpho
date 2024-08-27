@@ -1158,7 +1158,7 @@ class POSMorphology:
         fst = None
         name = self.fst_name(gen, guess, simplified, phon=phon, mwe=mwe, suffix=suffix,
                              segment=segment, translate=translate, experimental=experimental)
-#        print("  ^^ load_fst {}, name {}, seglevel {}".format(pos, name, seglevel))
+#        print("  ^^ load_fst {}, name {}, seglevel {}, guess {}".format(pos, name, seglevel, guess))
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
         if verbose:
             s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}{5} (recreate {6})'
@@ -1520,7 +1520,7 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
-#        print("%% process5: string {}".format(string))
+#        print("%% process5: token {}, string {}".format(token, string))
         sep_feats = kwargs.get('sep_feats', False)
         gemination = kwargs.get('gemination', True)
         mwe = kwargs.get('mwe', False)
@@ -1544,6 +1544,7 @@ class POSMorphology:
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features or self.mwe_feats
 #            features.get('mwe') or self.mwe_feats
+#            print("*** mwe_props {}".format(mwe_props.__repr__()))
             if mwe_props:
                 mwe_tokens = self.get_mwe_tokens(token, mwe_props)
                 procdict['tokens'] = mwe_tokens
@@ -1620,6 +1621,7 @@ class POSMorphology:
                     aff_index += 1
             suffixes = post_dicts
             if stemprops:
+#                print("  *** stem {}, stemprops {}".format(stem, stemprops))
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, real_stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
@@ -1902,6 +1904,8 @@ class POSMorphology:
             form += gloss
         if not gemination:
             return EES.degeminate(form, elim_bounds=elim_bounds)
+        # Replace __ with space
+        form = form.replace("__", " ")
         # Replace _ with /
         form = form.replace('_', '/')
         if unicode:
@@ -1914,7 +1918,7 @@ class POSMorphology:
         '''
         if mwe_part:
             mwe_part = EES.degeminate(mwe_part)
-#        print("^^ generating lemma for {} | {} ; mwe {} ; mwe type {} ; mwe_part {}".format(stem, root, mwe.__repr__(), type(mwe), mwe_part))
+#        print("^^ generating lemma for {} | {} ; mwe {} ; mwe_part {}".format(stem, root, mwe.__repr__(), mwe_part))
         gloss = ''
         if features and 'lemma' in features:
             return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)
@@ -2350,9 +2354,9 @@ class POSMorphology:
         fs = fs.copy()
         # First make sure features is a FeatStruct
         if isinstance(features, str):
-            if features[0] != '[':
-                # Add [] if not there
-                features = '[' + features + ']'
+#            if features[0] != '[':
+#                # Add [] if not there
+#                features = '[' + features + ']'
             features = FeatStruct(features)
         for key, value in features.items():
             # Make True any features that are implied by key
