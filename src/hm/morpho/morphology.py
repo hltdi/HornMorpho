@@ -1743,7 +1743,7 @@ class POSMorphology:
 #        print("** Getting root {} {}".format(mwe.__repr__(), mwe_part))
         features = procdict['feats']
 #        print("**  features {}".format(features.__repr__()))
-        rootfromfeats = features.get('root', stem)
+        rootfromfeats = features.get('root', features.get('r', stem))
         if not mwe:
             return rootfromfeats
         # Get the appropriate root

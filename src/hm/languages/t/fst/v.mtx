@@ -94,10 +94,10 @@ $ voice_bound
 
 $ stem
 # Comment out for generation
-   +v_stem+		[pos=V]
-   +v_stem_irr+	[pos=V]
+#   +v_stem+		[pos=V]
+#   +v_stem_irr+	[pos=V]
 # Uncomment for generation
-#  >>v_stem<<
+  >>v_stem<<
 
 $ poststem
   >

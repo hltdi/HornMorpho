@@ -85,6 +85,7 @@ def anal_sentence(language, sentence, **kwargs):
     '''
     kwargs['guess'] = kwargs.get('guess', False)
     kwargs['v5'] = True
+
     language = morpho.get_language(language, **kwargs)
     if language:
         if kwargs.get('mwe'):

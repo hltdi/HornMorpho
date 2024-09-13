@@ -12,6 +12,15 @@
 ## other pronouns
 መን	''	[pos=PRON]
 ሚ	''	[pos=PRON]
+## demonstratives
+እ/ሊ	''	[pos=DET,-fem,-pl]
+እ/ሎም	''	[pos=DET,-fem,+pl]
+እ/ለ	''	[pos=DET,+fem,-pl]
+እ/ለን	''	[pos=DET,+fem,+pl]
+ለሀይ	''	[pos=DET,-fem,-pl]
+ለሆም	''	[pos=DET,-fem,+pl]
+ለሀ	''	[pos=DET,+fem,-pl]
+ለሀን	''	[pos=DET,+fem,+pl]
 ## numerals
 ዎሮ	ዎሮት	[pos=NUM,-fem]
 ዎሮት	ዎሮት	[pos=NUM,-fem]
@@ -460,6 +469,10 @@
 ሐጺን		''	[pos=N]
 ቸርቅ		''	[pos=N]
 ግማሽ		''	[pos=N]
+ክል		''	[pos=N,p=0|s1|p1|sm2|sf2|pm2|pf2]
+# ክ/ሉ, ኩ/ሉ, etc.
+ክ/ል		ክል	[pos=N,p=sm3|sf3|pm3|pf3]
+ኩ/ል		ክል	[pos=N,p=3]
 ዎሮት-ነፈር		''	[pos=PRON]
 ወለ-ዎሮ		''	[pos=PRON]
 ወለ-ሐ/ቴ		''	[pos=PRON]

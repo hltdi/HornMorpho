@@ -18,12 +18,14 @@ POS n N
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
 
-pos:: N:N;; ADJ:ADJ;; PRON:PRON
+pos:: N:N;; ADJ:ADJ;; PRON:PRON;; NUM:NUM
 pl:: True:PL;; False:SG
-acc:: True:ACC
-p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; p3:PSS3P
-p:: sm3:PSS3SM;; sf3:PSS3SF
+p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; sm3:PSS3SM;; sf3:PSS3SF;; pf2:PSS2PF;; pm2:PSS2PM;; pf3:PSS3PF;; pm3:PSS3PM
 g:: m:MASC;; f:FEM
+g:: m:MASC;; f:FEM
+Pp:: 1:1;; 2:2;; 3:3
+Pn:: 1:SG;; 2:PL
+Pg:: m:MASC;; f:FEM
 
 POS v V
 ->UD NEG	Polarity=Neg

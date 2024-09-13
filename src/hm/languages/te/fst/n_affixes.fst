@@ -1,8 +1,52 @@
 -> start
 
-start -> start	[^N;/;:-;:<]
+start -> start	[^N;/;:-;:<]	[-obl]
 
-# consonant-final stems
+## Prepositions + pronouns
+start -> prep0	[^N]		[+obl]
+prep0 -> prep0	[^N]
+prep0 -> prep1	[:-]
+start -> prep1	[:-]
+
+prep1 -> prepC	[*;/]
+prep1 -> prepV	[*v]
+prepV -> prepC	[*;/]
+prepV -> prepV	[*v]
+prepC -> prepC	[*;/]
+prepC -> prepV	[*v]
+
+prepC -> prepCe	[{I2e}]
+prepC -> prepCo	[{I2o}]
+prepC -> prepCu	[{I2u}]
+prepC -> prepCE/ [/:]
+prepC -> prepCyE [*~P]
+prepV -> prepCe	[{I2e}]
+prepV -> prepCo	[{I2o}]
+prepV -> prepCu	[{I2u}]
+prepV -> prepCE/ [/:]
+prepV -> prepCyE [*~P]
+prepCE/ -> prepCE	[{I2^E}]
+
+prepV -> prepV.	[:<]
+prepC -> prepC.	[:<]
+
+prepCe -> prepCe.	[:<]
+prepCo -> prepCo.	[:<]
+prepCu -> prepCu.	[:<]
+prepCE -> prepCE.	[:<]
+prepCyE -> prepCyE.	[:<]
+
+prepV. -> pron	[ሁ:ኡ;ሆ:ኦ;ሀ:አ;ዬ;ነ;ከ;ኪ;ኩ]
+prepC. -> pron	[ነ;ከ;ኪ;ኩ;ክ]
+prepCu. -> pron	[:ኡ]
+prepCo. -> pron	[:ኦ]
+prepCe. -> pron	[:አ]
+prepCE. -> pron	[:ዬ]
+prepCyE. -> pron [ዬ]
+pron -> pron	[^N]
+pron -> suff	[:>]
+
+## consonant-final stems
 start -> stemu	  [{I2u}]
 start -> stema	  [{I2e}]
 start -> stemo	  [{I2o}]
@@ -34,9 +78,12 @@ stemC. -> suff	[ኩ;ክ;ከ;ኪ;ነ]
 
 stemV -> stemV.	[:>]
 stemV. -> Vposs	[ሁ:ኡ;ሀ:አ;ሆ:ኦ;ኩ;ክ;ከ;ኪ;ነ;ዬ]
-Vposs -> end	[^N;:]
+Vposs -> end	[^N;:;:-]
 
-suff -> end	[^N;:]
+stemV. -> suff	[:-]
+stemC. -> suff	[:-]
+
+suff -> end	[^N;:;:-]
 
 end ->
 stemC. ->

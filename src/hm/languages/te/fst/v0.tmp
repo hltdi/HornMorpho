@@ -34,7 +34,7 @@ $$ L እ|ሕ|ዕ|ህ
 
 [v=a|at,t=p]
 [v=0,t=j]
-*	*e	*
+*~L	*e	*
 
 # ልሰብ/ር
 [v=0|a,t=i,-vsuf]
@@ -274,6 +274,47 @@ $$ L እ|ሕ|ዕ|ህ
 
 [v=a,t=p,sp=1|2]
 *	*	*e
+
+[v=p]
+*e	*e:	*
+
+%1=L,3=L
+
+[v=0,t=p,sp=3]
+*e	*	*
+
+# በልዐኮ
+[v=0,t=p,sp=1|2]
+*e	*	*e
+
+# ልበ/ልዕ; ትበ/ልዒ -> ትበ/ሊዕ (handle in v.cas)
+# ትጠ/ምዐ
+[v=0|a,t=i]
+[v=p]
+*e	*:	*
+
+# ልብልዑ (-> ልብሉዕ in v.cas)
+[v=0,t=j,sp=2,sn=1,sg=f]
+[v=0,t=j,sp=2|3,sn=2]
+[v=0,t=j,op=1|2|3]
+[v=a,t=p,sp=3]
+[v=a,t=j]
+*	*	*
+
+[v=a,t=p,sp=1|2]
+*	*	*e
+
+# ልብለዕ
+[v=0,t=j,sp=1,sn=2,op=0]
+[v=0,t=j,sp=2,sn=1,sg=m,op=0]
+[v=0,t=j,sp=3,sn=1,op=0]
+*	*e	*
+
+[v=0,t=j,sp=1,sn=1]
+*i	*e	*
+
+[v=p]
+*e	*e:	*
 
 %1=ው
 
@@ -519,6 +560,56 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p,t=i,sn=2,r3=ው]
 *e	*e:	-
 
+%1=L,3=ው
+# mostly like 3=ው, no v=a, special 1s jussive
+
+# ሸቀ
+[v=0,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=0,t=p,sp=3,sn=2,r3=ው]
+*e	*	-
+
+# ሸቄኮ ሸቄት
+[v=0,t=p,sp=1|2,r3=ው]
+[v=0,t=p,sp=3,sn=1,sg=f,r3=ው]
+*e	*E	-
+
+# all imperf forms except pl fem
+[v=0,t=i,-f2suf,r3=ው]
+[v=p,t=i,sp=1,r3=ው]
+[v=p,t=i,sp=2|3,sn=1,sg=m,r3=ው]
+*e	*E:	-
+
+[v=0|a,t=i,sp=2|3,sn=2,sg=f,r3=ው]
+*e	*	ይ
+
+# all jussive forms without suffixes except 1s, v=0
+[v=at,t=j,-vsuf]
+[v=0,t=j,-vsuf,sp=2|3]
+[v=0,t=j,sp=1,sn=2]
+# could vary with suffixes
+[v=at,t=i,r3=ው]
+*	*E	-
+
+# ሒዜ
+[v=0,t=j,sp=1,sn=1]
+*i	*E	-
+
+# jussive forms with suffixes
+[v=0,t=j,sp=2,sn=1,sg=f,r3=ው]
+[v=0,t=j,sp=2|3,sn=2,sg=m,r3=ው]
+*	*e	-
+
+[v=0,t=j,sp=2|3,sn=2,sg=f,r3=ው]
+*	*e	ይ
+
+[v=at,t=p,r3=ው]
+*	*	-
+
+[v=p,t=p,r3=ው]
+[v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
+[v=p,t=i,sn=2,r3=ው]
+*e	*e:	-
+
 %%a=0,c=B,-strong
 #%1=L
 #
@@ -554,6 +645,32 @@ $$ L እ|ሕ|ዕ|ህ
 [v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
 [v=p,t=i,sn=2,r3=ው]
 *e	*e:	-
+
+%%a=0,c=C,-strong
+
+%3=ው
+# not sure about a- at-
+
+# ፈ/ሰ
+[v=0,t=p,sp=3,sn=1,sg=m,r3=ው]
+[v=0,t=p,sp=3,sn=2,r3=ው]
+*a	*	-
+
+[v=0,t=p,sp=1|2,r3=ው]
+[v=0,t=p,sp=3,sn=1,sg=f,r3=ው]
+*a	*E	-
+
+# ፈ/ሴኮ
+# what about 3fp impf?
+[v=0|a,t=i,-f2suf,r3=ው]
+[v=p,t=i,sp=1,r3=ው]
+[v=p,t=i,sp=2|3,sn=1,sg=m,r3=ው]
+*a	*E:	-
+
+[v=p,t=p,r3=ው]
+[v=p,t=i,sp=2,sn=1,sg=f,r3=ው]
+[v=p,t=i,sn=2,r3=ው]
+*a	*e:	-
 
 %%a=a,c=A,-strong
 #%1=L

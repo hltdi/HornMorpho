@@ -113,6 +113,29 @@ VC2FEATS_L = {
 
 TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'tmp', 'base']
 
+### Adding new Tigre lexical items
+
+def filter_te_unsegmented(thresh=8):
+    crawled = {}
+    found = {}
+    notfound = {}
+    words = {}
+    with open("../../../../Projects/LingData/Te/tig/tig-words.txt", encoding='utf8') as file:
+        with open("hm/languages/te/lex/words1.srf", encoding='utf8') as w1:
+            for line in w1:
+                word, x, pos = line.split()
+                ungem = word.replace("/", "")
+                words[ungem] = (word, pos)
+        for line in file:
+            word, freq = line.split()
+            freq = int(freq)
+            if freq < thresh:
+                return found, notfound, words
+            if word in words:
+                found[word] = (words[word], freq)
+            else:
+                notfound[word] = freq
+
 ### Amharic and Tigrinya roots and voice again
 ### Finding roots with no simplex form
 

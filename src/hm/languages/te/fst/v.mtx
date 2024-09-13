@@ -6,6 +6,7 @@ $ rel_bound
   -
 
 $ neg
+  ->ob_suf		+bu+		[c=A,1=ብ,2=0,3=0,v=0,a=0,R3=X,op=0]
   ኢ       [+neg]
   --   [-neg]
 
@@ -77,9 +78,10 @@ $ ob_inf
 
 $ ob_suf
   [op=3]
+  # 3sm
     ዩ		[t=p,sp=3,sn=1,sg=m,on=1,og=m]
     ዎ		[t=p,sp=1,sn=1,on=1,og=m];[t=i|j,sg=m,sn=2,on=1,og=m,-finX]
-    # (1) አት of 3sm prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
+    # (1) አት of 3sf prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
     ኦ 	    	[t=p,sp=2|3,sn=2,sg=m,on=1,og=m];[t=i|j,sp=2|3,sg=m,sn=2,on=1,og=m];
                 [t=i|j,sp=2,sn=1,sg=f,on=1,og=m];[t=p,sp=3,sn=1,sg=f,on=1,og=m];
 		[t=i|j,-vsuf,on=1,og=m,-finX]
@@ -87,13 +89,55 @@ $ ob_suf
     ሁ		[t=p,sp=2,sn=1,sg=m,on=1,og=m];[t=p,sp=1,sn=2,on=1,og=m];
                 [t=p,sp=2|3,sn=2,sg=f,on=1,og=m];[t=i|j,sp=2|3,sn=2,sg=f,on=1,og=m]
     ዮ		[t=p,sp=2,sn=1,sg=f,on=1,og=m];[t=i|j,sp=2,sg=f,sn=1,on=1,og=m,-finX]
+  # 3sf
+    ወ		[t=p,sp=1,sn=1,on=1,og=f];[t=i|j,sg=m,sn=2,on=1,og=f,-finX]
+    # (1) አት of 3sf prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
+    አ 	    	[t=p,sp=2|3,sn=2,sg=m,on=1,og=f];[t=i|j,sp=2|3,sg=m,sn=2,on=1,og=f];
+                [t=i|j,sp=2,sn=1,sg=f,on=1,og=f];[t=p,sp=3,sn=1,sg=f,on=1,og=f];
+		[t=i|j,-vsuf,on=1,og=f,-finX]
+    _አ	<አ>	[t=i|j,-vsuf,on=1,og=f,+finX]
+    ሀ		[t=p,sp=2,sn=1,sg=m,on=1,og=f];[t=p,sp=1,sn=2,on=1,og=f];[t=p,sp=3,sn=1,sg=m,on=1,og=f];
+                [t=p,sp=2|3,sn=2,sg=f,on=1,og=f];[t=i|j,sp=2|3,sn=2,sg=f,on=1,og=f]
+    የ		[t=p,sp=2,sn=1,sg=f,on=1,og=f];[t=i|j,sp=2,sg=f,sn=1,on=1,og=f,-finX]
+  # 3pm
+    ዎም	[t=p,sp=1,sn=1,on=2,og=m];[t=i|j,sg=m,sn=2,on=2,og=m,-finX]
+    # (1) አት of 3sf prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
+    ኦም    	[t=p,sp=2|3,sn=2,sg=m,on=2,og=m];[t=i|j,sp=2|3,sg=m,sn=2,on=2,og=m];
+                [t=i|j,sp=2,sn=1,sg=f,on=2,og=m];[t=p,sp=3,sn=1,sg=f,on=2,og=m];
+		[t=i|j,-vsuf,on=2,og=m,-finX]
+    _ኦም	<ኦም>	[t=i|j,-vsuf,on=2,og=m,+finX]
+    ሆም	[t=p,sp=2,sn=1,sg=m,on=2,og=m];[t=p,sp=1,sn=2,on=2,og=m];[t=p,sp=3,sn=1,sg=m,on=2,og=m];
+                [t=p,sp=2|3,sn=2,sg=f,on=2,og=m];[t=i|j,sp=2|3,sn=2,sg=f,on=2,og=m]
+    ዮም	[t=p,sp=2,sn=1,sg=f,on=2,og=m];[t=i|j,sp=2,sg=f,sn=1,on=2,og=m,-finX]
+  # 3pf
+    ወን	[t=p,sp=1,sn=1,on=2,og=f];[t=i|j,sg=m,sn=2,on=2,og=f,-finX]
+    # (1) አት of 3sf prf and (2) final root consonant in all t=i|j forms without subj suffixes geminated
+    አን    	[t=p,sp=2|3,sn=2,sg=m,on=2,og=f];[t=i|j,sp=2|3,sg=m,sn=2,on=2,og=f];
+                [t=i|j,sp=2,sn=1,sg=f,on=2,og=f];[t=p,sp=3,sn=1,sg=f,on=2,og=f];
+		[t=i|j,-vsuf,on=2,og=f,-finX]
+    _አን	<አን>	[t=i|j,-vsuf,on=2,og=f,+finX]
+    ሀን	[t=p,sp=2,sn=1,sg=m,on=2,og=f];[t=p,sp=1,sn=2,on=2,og=f];[t=p,sp=3,sn=1,sg=m,on=2,og=f];
+                [t=p,sp=2|3,sn=2,sg=f,on=2,og=f];[t=i|j,sp=2|3,sn=2,sg=f,on=2,og=f]
+    የን		[t=p,sp=2,sn=1,sg=f,on=2,og=f];[t=i|j,sp=2,sg=f,sn=1,on=2,og=f,-finX]
   [op=2,sp=1|3]
     /ከ	<ከ>	[t=p,sp=3,sn=1,on=1,og=m];[t=i|j,-vsuf,on=1,og=m]
     ከ		[sp=3,sn=2];[t=p,sp=1,on=1,og=m]
+    /ኪ	<ኪ>	[t=p,sp=3,sn=1,on=1,og=f];[t=i|j,-vsuf,on=1,og=f]
+    ኪ		[sp=3,sn=2];[t=p,sp=1,on=1,og=f]
+    /ኩም	<ኩም>	[t=p,sp=3,sn=1,on=2,og=m];[t=i|j,-vsuf,on=2,og=m]
+    ኩም	[sp=3,sn=2];[t=p,sp=1,on=2,og=m]
+    /ክን	<ክን>	[t=p,sp=3,sn=1,on=2,og=f];[t=i|j,-vsuf,on=2,og=f]
+    ክን	[sp=3,sn=2];[t=p,sp=1,on=2,og=f]
   [op=1,sp=2|3]
     /ኒ	<ኒ>	[sp=2,sn=1,sg=m,on=1];[sp=3,sn=1,on=1]
     ኒ		[sp=2,sn=1,sg=f,on=1];[sn=2,on=1]
+    /ነ	<ነ>	[sp=2,sn=1,sg=m,on=2];[sp=3,sn=1,on=2]
+    ነ		[sp=2,sn=1,sg=f,on=2];[sn=2,on=2]
   --   [op=0]
 
-#$ end
-#  --   [t=j];[t=i,-prog];[t=p,-cvb]
+#$ obj_bound
+#  -
+#
+#$ conj
+#  መ		[conj=መ]
+#  --		[conj=None]

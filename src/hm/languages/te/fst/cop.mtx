@@ -1,0 +1,34 @@
+$ conj
+  ለ    [+rel]
+  እን   [conj=እት,p=3]
+  -- [-rel,conj=None]
+
+$ conj_bound
+  -
+
+$ neg
+  ኢ		[+neg]
+  --		[-neg]
+
+$ prestem
+  <
+
+$ stem
+  አነ		[p=1,n=1]
+  እንተ	[p=2,n=1,g=m]
+  እንቲ	[p=2,n=1,g=f]
+  ቱ		[p=3,n=1,g=m,-neg,-expl]
+  ትቱ		[p=3,n=1,g=m,-neg,-rel,conj=None,+expl]
+  ተ		[p=3,n=1,g=f]
+  ሕነ		[p=1,n=2]
+  እንቱም	[p=2,n=2,g=m]
+  እንተን	[p=2,n=2,g=f]
+  ቶም		[p=3,n=2,g=m]
+  ተን		[p=2,n=2,g=f]
+  ኮን		[p=3,n=1,g=m,+neg]
+
+$ poststem
+  >
+
+$ end
+  --		[pos=COP,lemma=ቱ]

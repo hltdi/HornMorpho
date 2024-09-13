@@ -611,12 +611,13 @@ class Template:
         # Add missing templates for weak roots
         Template.complete_weak_inventory(weak_inventory, inventory, tmp_dict, weak_constraints, weak_copy_templates, gen=gen)
 
-        for x, y in tmp_dict.items():
-            miss_tmp = [fs.__repr__() for fs in y if not fs.get('tmp')]
-            if miss_tmp:
-                print("$$ Missing tmp {}".format(x))
-                for f in miss_tmp:
-                    print("  $$ {}".format(f))
+        if verbose:
+            for x, y in tmp_dict.items():
+                miss_tmp = [fs.__repr__() for fs in y if not fs.get('tmp')]
+                if miss_tmp:
+                    print("$$ Missing tmp {}".format(x))
+                    for f in miss_tmp:
+                        print("  $$ {}".format(f))
 
         Template.make_all_template_states(fst, tmp_dict, default_final, gen=gen, seglevel=seglevel)
 

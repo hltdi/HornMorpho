@@ -1,5 +1,5 @@
 $ prep
-  # Don't prefix these to personal pronouns, which their own forms
+  # Don't prefix these to personal pronouns, which have their own forms
   ብ [adp=ብ,-neg,+prep,-pers]
   ን [adp=ን,-neg,+prep,-pers]
   ናይ	[adp=ናይ,-neg,pos=PRON|ADJ,+prep];[adp=ናይ,-neg,pos=DET,+prep,+dem]

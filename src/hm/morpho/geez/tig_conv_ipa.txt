@@ -1,6 +1,6 @@
-ሀ=hɛ,hə ሁ=hu ሂ=hi ሃ=ha ሄ=he ህ=h ሆ=ho
+ሀ=hə ሁ=hu ሂ=hi ሃ=ha ሄ=he ህ=h ሆ=ho
 ለ=lə ሉ=lu ሊ=li ላ=la ሌ=le ል=l ሎ=lo
-ሐ=ħɛ,ħə ሑ=ħu ሒ=ħi ሓ=ħa ሔ=ħe ሕ=ħ ሖ=ħo
+ሐ=ħə ሑ=ħu ሒ=ħi ሓ=ħa ሔ=ħe ሕ=ħ ሖ=ħo
 መ=mə ሙ=mu ሚ=mi ማ=ma ሜ=me ም=m ሞ=mo
 ረ=rə ሩ=ru ሪ=ri ራ=ra ሬ=re ር=r ሮ=ro
 ሰ=sə ሱ=su ሲ=si ሳ=sa ሴ=se ስ=s ሶ=so
@@ -13,10 +13,10 @@
 ኸ=xə ኹ=xu ኺ=xi ኻ=xa ኼ=xe ኽ=x ኾ=xo
 ነ=nə ኑ=nu ኒ=ni ና=na ኔ=ne ን=n ኖ=no
 ኘ=ňə ኙ=ňu ኚ=ňi ኛ=ňa ኜ=ňe ኝ=ň ኞ=ňo
-አ=ʔɛ,ʔə ኡ=ʔu ኢ=ʔi ኣ=ʔa ኤ=ʔe እ=ʔ ኦ=ʔo
+አ=ʔə ኡ=ʔu ኢ=ʔi ኣ=ʔa ኤ=ʔe እ=ʔ ኦ=ʔo
 ከ=kə ኩ=ku ኪ=ki ካ=ka ኬ=ke ክ=k ኮ=ko
 ወ=wə ዉ=wu ዊ=wi ዋ=wa ዌ=we ው=w ዎ=wo
-ዐ=ʕɛ,ʕə ዑ=ʕu ዒ=ʕi ዓ=ʕa ዔ=ʕe ዕ=ʕ ዖ=ʕo
+ዐ=ʕə ዑ=ʕu ዒ=ʕi ዓ=ʕa ዔ=ʕe ዕ=ʕ ዖ=ʕo
 ዘ=zə ዙ=zu ዚ=zi ዛ=za ዜ=ze ዝ=z ዞ=zo
 ዠ=žə ዡ=žu ዢ=ži ዣ=ža ዤ=že ዥ=ž ዦ=žo
 የ=yə ዩ=yu ዪ=yi ያ=ya ዬ=ye ይ=y ዮ=yo

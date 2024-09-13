@@ -63,15 +63,23 @@ feats:
     on = 1 | 2
     og = m | f
 
-#  pos: v_stem v_stem
-#
-#    a = 0 | a | i
-#
-#    v = 0 | p | a | at
-#
-#    t = p | i | j
+  pos: v_stem v_stem
+
+    a = 0 | a | i
+
+    v = 0 | p | a | at
+
+    t = p | i | j
 
   pos: n noun
+
+    morphotax::
+      {'name': 'preconj', 'pos': 'CCONJ', 'xpos': 'CCONJ:pre', 'dep': 'cc:pre'};
+      {'name': 'defprep', 'pos': ('obl', {False: 'DET', True: 'ADP'}), 'dep': ('obl', {False: 'det', True: 'case'})};;
+      {'name': 'STEM'};;
+      {'name': 'poss',  'pos': 'DET', 'xpos': 'DET:suf', 'dep': 'det:suf',\
+        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite']};
+      {'name': 'postconj', 'pos': 'CCONJ', 'xpos': 'CCONJ:suf', 'dep': 'cc:suf'}
   
     conj = None | ወ | ከ
     # ለ-

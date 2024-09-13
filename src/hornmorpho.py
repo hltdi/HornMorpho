@@ -82,13 +82,42 @@ def guess_te1(word, asp):
                 ))
     return res
 
+def guess_te(p, i, j):
+    res = set()
+    if p:
+        r = guess_te1(p, 'p')
+        if r:
+            if not res:
+                res = r
+            else:
+                res.intersection_update(r)
+    if i:
+        r = guess_te1(i, 'i')
+        if r:
+            if not res:
+                res = r
+            else:
+                res.intersection_update(r)
+    if j:
+        r = guess_te1(j, 'j')
+        if r:
+            res.intersection_update(r)
+    return res
+
 def guess_te_verbs():
     results = []
     with open("data/te_verbs.txt", encoding='utf8') as file:
         for line in file:
-            p, i, j = line.split(" ; ")
-            if p:
-                a = hm.anal('te', p, guess=True, feats=TE_P)
+            forms = line.split(';')
+            if len(forms) != 3:
+                print(forms)
+            p, i, j = [x.strip() for x in forms]
+            res = guess_te(p, i, j)
+            if res:
+                results.append(res)
+            else:
+                print("No results for {}".format(forms))
+    return results
 
 def te_dups():
     dups = []

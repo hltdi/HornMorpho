@@ -2180,11 +2180,11 @@ class FST:
                     label = in_string.split('.')[0]
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
                     if not fst1:
-                        if verbose:
-                            print('Creating FST from lex file', in_string)
+#                        if verbose:
+#                            print('** Creating FST from lex file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), in_string),
                                              weighting=mtax.weighting, cascade=cascade,
-                                             seglevel=seglevel, gen=gen, mwe=mwe,
+                                             seglevel=seglevel, gen=gen, mwe=mwe, verbose=verbose,
                                              seg_units=mtax.seg_units, reverse=cascade.r2l,
                                              lex_features=True, dest_lex=False)
                     if verbose:
@@ -2196,7 +2196,7 @@ class FST:
                     fst1 = mtax.cascade.get(label) if mtax.cascade else None
                     if not fst1:
                         casc = FSTCascade.load(os.path.join(mtax.cascade.get_cas_dir(), in_string), seg_units=mtax.seg_units,
-                                               seglevel=seglevel, gen=gen, mwe=mwe,
+                                               seglevel=seglevel, gen=gen, mwe=mwe, verbose=verbose,
                                                language=mtax.cascade.language)
                         if verbose:
                             print('Composing {}'.format(casc))
@@ -2226,7 +2226,7 @@ class FST:
                             print('Compiling FST from file', in_string)
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_fst_dir(), in_string),
                                              weighting=mtax.weighting, cascade=mtax.cascade,
-                                             seglevel=seglevel, gen=gen, mwe=mwe,
+                                             seglevel=seglevel, gen=gen, mwe=mwe, verbose=verbose,
                                              seg_units=mtax.seg_units)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
@@ -2241,7 +2241,7 @@ class FST:
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
-#                print("** Shortcut: {}, {}, {}".format(dest, file, fss))
+                print("** Shortcut: {}, {}, {}".format(dest, file, fss))
                 if file:
                     if fss:
                         wt = fss
@@ -2255,7 +2255,7 @@ class FST:
                         fst1 = mtax.fst.load(os.path.join(mtax.cascade.get_lex_dir(), file),
                                              seglevel=seglevel, gen=gen,
                                              weighting=mtax.weighting, cascade=mtax.cascade,
-                                             seg_units=mtax.seg_units,
+                                             seg_units=mtax.seg_units, verbose=verbose,
                                              lex_features=True, dest_lex=False)
                     if verbose:
                         print('Inserting', fst1.label, 'between', src, 'and', dest)
@@ -2456,7 +2456,7 @@ class FST:
                     if verbose:
                         print('Inserting cascade {} between {} and {}'.format(label, src, dst))
                     casc = FSTCascade.load(os.path.join(cascade.get_cas_dir(), casfile), seg_units=seg_units,
-                                           language=cascade.language,
+                                           language=cascade.language, 
                                            weight_constraint=weight_constraint, verbose=verbose)
                     if verbose:
                         print('Composing {}'.format(casc))
@@ -2837,6 +2837,7 @@ class FST:
     def _extend_subtree(self, state, chars, features, weighting=None, lex_features=False, dest=False,
                         weight_constraint=None, verbose=False):
         """Extend a subtree (remaining chars and features) (MG)."""
+#        print(" ** Extend subtree state {} chars {} features {}".format(state, chars, features))
         curr_state = state
         if verbose:
             print('chars {}'.format(chars))
@@ -2869,6 +2870,7 @@ class FST:
             # Add features to the arcs INTO the final state
             weight_spec = features[1] if dest else features
             weight = weighting.parse_weight(weight_spec)
+#            print(" ** Adding weight {} to final state {}".format(weight.__repr__(), curr_state))
             if weight and weight_constraint:
                 constrained_weight = weighting.multiply(weight, weight_constraint)
                 if not constrained_weight:
@@ -3574,10 +3576,12 @@ class FST:
     ## CONCATENATION, INSERTION
 
     def insert(self, insertion, src, dst, weight=None, mult_dsts=False):
-        """Insert the FST insertion between src and dst states.
+        """
+        Insert the FST insertion between src and dst states.
 
         mult_dsts=True means that different destinations are specified for each
-        final state in insertion."""
+        final state in insertion.
+        """
         no_weight = self.no_weight(weight)
         ins_start = insertion._get_initial_state()
         single_final = len(insertion._get_final_states()) == 1
@@ -3586,7 +3590,7 @@ class FST:
             self._inserted[ins_label] += 1
         else:
             self._inserted[ins_label] = 1
-#        print("** Insertion {} with weight {}, single final? {}".format(insertion, weight.__repr__(), single_final))
+#        print("** Insertion {} with weight {}, single final? {}, weighted? {}".format(insertion, weight.__repr__(), single_final, insertion.is_weighted()))
         # Copy the stringsets of insertion into those in self
         for key, value in insertion._stringsets.items():
             if key not in self._stringsets:
@@ -3609,7 +3613,7 @@ class FST:
                 # There's more than one final state, so connect each to dst
                 ins_final_weight = insertion.final_weight(ins_state)
                 final_weight = self.weighting().multiply(weight, ins_final_weight if ins_final_weight else self.default_weight())
-#                print('  ** Final arc from {0} to {1}'.format(state, dst))
+#                print('  ** Final arc from {0} to {1} with weight {2}'.format(state, dst, final_weight.__repr__()))
                 self.add_arc(state, dst, '', '', weight=final_weight)
             for arc in insertion.outgoing(ins_state):
                 arc_dst = insertion.dst(arc)
@@ -3631,8 +3635,8 @@ class FST:
                     if not self.has_state(new_arc_dst):
                         self.add_state(new_arc_dst)
                         state_pairs.append((new_arc_dst, arc_dst))
-#                print('  ** Arc from {0} to {1}; in: {2}, out: {3}'.format(state, new_arc_dst, insertion.in_string(arc),
-#                                                                       insertion.out_string(arc)))
+#                print('  ** Arc from {0} to {1}; in: {2}, out: {3}, wt: {4}'.format(state, new_arc_dst, insertion.in_string(arc),
+#                                                                       insertion.out_string(arc), arc_weight))
                 self.add_arc(state, new_arc_dst, insertion.in_string(arc), insertion.out_string(arc),
                              weight=arc_weight)
 

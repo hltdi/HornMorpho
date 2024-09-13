@@ -45,7 +45,7 @@ Morphology objects defined in morphology.py).
      for phonological cases?).
 """
 
-import os, sys, re, copy, itertools, copy
+import os, sys, re, copy, itertools, copy, time
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
 #LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
@@ -1610,6 +1610,9 @@ class Language:
         analpos = kwargs.get('pos')
         guess = kwargs.get('guess', False)
         feats = kwargs.get('feats')
+        timeit = kwargs.get('timeit')
+        if timeit:
+            starttime = time.time()
         # Character normalization
         normalized = False
         def special_word():
@@ -1663,6 +1666,8 @@ class Language:
         wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
         cache[token] = wordobj
         wordobj.arrange()
+        if timeit:
+            print("Time taken: {}".format(time.time() - starttime))
         return wordobj
 
     def check_analpos(self, analysis, analpos):
@@ -1807,6 +1812,11 @@ class Language:
 #        print("^^ sentence {}, kwargs {}".format(sentence, kwargs))
         if 'cache' not in kwargs:
             kwargs['cache'] = dict()
+        timeit = kwargs.get('timeit', False)
+        if timeit:
+            starttime = time.time()
+            # do this to prevent timing of individual token analysis
+            kwargs['timeit'] = False
         tokens = sentence.split()
         ntokens = len(tokens)
         sentobj = Sentence(sentence, language=self, batch_name=kwargs.get('batch_name', ''), sentid=kwargs.get('sentid', 1), label=kwargs.get('label'))
@@ -1831,6 +1841,8 @@ class Language:
                 sentobj.add_word5(anal1, unsegment=kwargs.get('unsegment', False))
         if 'props' in kwargs:
             sentobj.set_props(kwargs['props'])
+        if timeit:
+            print("Time taken: {}".format(time.time() - starttime))
         return sentobj
 
     def anal_mwe1(self, tokens, token_index, sent_obj, **kwargs):
@@ -1840,6 +1852,9 @@ class Language:
         max_mwe = kwargs.get('max_mwe', 3)
         words = tokens[token_index]
         end_index = token_index + 1
+        timeit = kwargs.get('timeit', False)
+        if timeit:
+            starttime = time.time()
         while end_index < len(tokens):
             next_word = tokens[end_index]
             if self.morphology.is_punctuation(next_word) or self.morphology.is_punctuation(next_word):
@@ -1856,6 +1871,8 @@ class Language:
 #                print("  ** Success: {}".format(analyses[0]))
                 return True, end_index + 1
             end_index += 1
+        if timeit:
+            print("Time taken: {}".format(time.time() - starttime))
         return False, token_index
 
     def anal_sentence5_1(self, sentence, **kwargs):

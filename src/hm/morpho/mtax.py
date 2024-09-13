@@ -1,7 +1,7 @@
 """
 This file is part of the HornMorpho package.
 
-Copyright (C) 2011, 2012, 2013, 2014, 2017, 2018, 2022, 2023, 2024
+Copyright (C) 2011-2024
 Michael Gasser <gasser@indiana.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify

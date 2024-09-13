@@ -1,14 +1,15 @@
-$ conj
-  ወ [conj=ወ]
-  ከ [conj=ከ]
-  -- [conj=None]
+$ preconj
+  ወ [conj1=ወ]
+  ከ [conj1=ከ]
+  -- [conj1=None]
 
 $ conj_bound
   -
 
 $ def
-  ለ	[+def,pos=N|ADJ]
-  --	[-def];[pos=PRON|NUM]
+  ->poss	+prep_pron+
+  ለ	[+def,pos=N|ADJ,adp=None,-obl]
+  --	[-def,adp=None,-obl]
 
 $ prestem
   <
@@ -32,3 +33,10 @@ $ poss
   ኦም 	[p=pm3,+pp]
   አን		[p=pf3,+pp]
   --		[p=0,-pp]
+
+$ postposs
+  -
+
+$ postconj
+  መ		[conj2=መ]
+  --		[conj2=None]

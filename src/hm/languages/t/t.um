@@ -45,7 +45,6 @@ pos:: NADJ:N;; NADV:N
 adp:: ብ:*OBL;; ን:*OBL;; ናይ:GEN;; ናብ:*OBL;; ካብ:*OBL;; ምስ:*OBL;; ከም:*OBL;; ብዘይ:*OBL;; ክንዲ:*OBL;; ምእንቲ:*OBL;; ስለ:*OBL
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
-# unambiguous possessive suffixes
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; sm3:PSS3SM;; sf3:PSS3SF;; pf2:PSS2PF;; pm2:PSS2PM;; pf3:PSS3PF;; pm3:PSS3PM
 g:: m:MASC;; f:FEM
 neg:: NEG
@@ -103,6 +102,15 @@ POS v V
 # ን- (also Dative, Benefactive)
 ->UD ACC	Case=Acc
 ->UD INT	Mood=Int
+# Updated 2024.7.7
+->UD *SERAHI	^ኣዕማድ=ሰራሒ
+->UD *ASRAHI	^ኣዕማድ=ኣስራሒ
+->UD *TESERAHI	^ኣዕማድ=ተሰራሒ
+->UD *TESARAHI	^ኣዕማድ=ተሳራሒ
+->UD *ASARAHI	^ኣዕማድ=ኣሳራሒ
+->UD *SERARAHI	^ኣዕማድ=ሰራራሒ
+->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
+->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
 
 t:: i:IPFV;; p:PFV;; j:IMP;; c:PFV
 #t,ax:: c,0:V.CVB ;; c,al:PRF
