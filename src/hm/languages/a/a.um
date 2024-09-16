@@ -11,14 +11,6 @@ POS n N
 ->UD  GEN	Case=Gen
 # 2024.7.7: other prepositions all OBL
 ->UD *OBL     *Case=Obl
-#->UD  TERM	Case=Ter
-#->UD PRP	Case=Cau
-#->UD EQTV	Case=Equ
-#->UD ALL	Case=All
-#->UD ABL	Case=Abl
-#->UD INS	Case=Ins
-#->UD DAT	Case=Dat
-#->UD AT		Case=Loc
 ->UD PL		Number=Plur
 ->UD SG		Number=Sing
 ->UD DEF	Definite=Def
@@ -36,15 +28,10 @@ POS n N
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD {PSS3SM/DEF} &Poss3Def=Masc
 ->UD {PSS3SF/DEF} &Poss3Def=Fem
-# {Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def}
-#->UD PASS	Voice=Pass
-#->UD CAUS	Voice=Cau
-#->UD RECP1	*Voice=Rcp1
-#->UD RECP2	*Voice=Rcp2
-#->UD ITER	Aspect=Iter
-#->UD CAUS+RECP1	*Voice=CauRcp1
-#->UD CAUS+RECP2	*Voice=CauRcp2
 ->UD TOP	*Inf=Topic
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -62,6 +49,11 @@ p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
+
+# personal pronouns
+Pp:: 1:1;; 2:2;; 3:3
+Pn:: 1:SG;; 2:PL
+Pg:: m:MASC;; f:FEM
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP

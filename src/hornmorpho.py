@@ -40,6 +40,12 @@ TI_SKIP = \
 
 TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
 
+## Timing
+
+TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝዅሕኳሕ ዝነበረ ማዕጾ ክትከፍት ከይዳ ።"
+
+TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
+
 ## Fixing treebanks
 
 def translit(path):

@@ -1,5 +1,5 @@
 $ conj_prep_pre
-  ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=0,-mc,-neg,-pr,root=ምጥእ,oc=0|l|b]
+  ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=0,-mc,-neg,-pr,r=ምጥእ,oc=0|l|b]
   # In UM and UD, የ- የም- እም- are SCONJ
   የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0]
   እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0]
@@ -28,7 +28,7 @@ $ sub_bound
   -
 
 $ neg1
-  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,root=ህልው,lemma=አ_ለ,gl=exist]
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አ_ለ,gl=exist]
   ኣ			[+neg,t=i|j]
   ኣል			[+neg,t=p]
   --   		[-neg];[t=c,-neg]
@@ -55,7 +55,7 @@ $ voice_pre
   # the 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
   # also ተተካከለ, which isn't distinguished by a feature from ተካከለ
   ->poststem	+irr_vstem+	[+pr]
-  ->conj2		+nebber+		[-pr,t=p,sp=3,sn=1,sg=m,op=0,1=ን,2=ብ,3=ር,root=ንብር,c=A,a=0,v=0,-acc,ax=0]
+  ->conj2		+nebber+		[-pr,t=p,sp=3,sn=1,sg=m,op=0,1=ን,2=ብ,3=ር,r=ንብር,c=A,a=0,v=0,-acc,ax=0]
   # transitive
   ኣ-			[v=a,a=0,-pr]
   ኣ/-		[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]

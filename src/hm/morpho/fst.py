@@ -1941,7 +1941,7 @@ class FST:
                                  seg_units=[],
                                  create_weights=True, verbose=False):
         """Restore an FST from one or more files."""
-        print('Restoring {}, cascade {}, paths {}'.format(label, cascade, paths))
+#        print('Restoring {}, cascade {}, paths {}'.format(label, cascade, paths))
         fst = FST.restore_parse(None, None, path=paths[0], label=label,
                                 cascade=cascade,
                                 weighting=weighting,

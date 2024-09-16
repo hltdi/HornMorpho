@@ -395,7 +395,7 @@ class Roots:
             feats = "{},sl={}".format(feats, labbrev)
 
         # Add root feature to feats
-        feats = "root={},{}".format(''.join(cons_chars), feats)
+        feats = "r={},{}".format(''.join(cons_chars), feats)
 
         feats = rootchar_weight(feats, verbose=show)
 
@@ -671,7 +671,7 @@ class Roots:
         elif gen:
             feats = "{},tl={}".format(feats, labbrev)
         # Add root feature to feats
-        feats = "root={},{}".format(''.join(cons), feats)
+        feats = "r={},{}".format(''.join(cons), feats)
         for index, c in enumerate(cons):
             if rev_char_sets and c in rev_char_sets:
                 cls = rev_char_sets[c]

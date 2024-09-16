@@ -163,6 +163,9 @@ feats:
     irr = False | True
     adp = 0 | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ
     cconj = 0 | ም | ስ | ማ | ሳ | ና | ኮ
+    Pp = 3 | 2 | 1
+    Pn = 1 | 2
+    Pg = m | f
 
   pos: cop copula
     morphotax::

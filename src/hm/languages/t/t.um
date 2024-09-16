@@ -6,19 +6,14 @@ POS n N
 ->UD  GEN	Case=Gen
 # 2024.8.2: other prepositions all OBL
 ->UD *OBL   *Case=Obl
-#->UD  TERM	Case=Ter
-#->UD PRP	Case=Cau
-#->UD EQTV	Case=Equ
-#->UD ALL	Case=All
-#->UD ABL	Case=Abl
-#->UD INS	Case=Ins
-#->UD DAT	Case=Dat
-#->UD AT		Case=Loc
 ->UD PL		Number=Plur
 ->UD SG		Number=Sing
 ->UD V.MSDR	VerbForm=Inf
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
 ->UD PSS1S	Number[psor]=Sing,Person[psor]=1
 ->UD PSS1P	Number[psor]=Plur,Person[psor]=1
 ->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
@@ -30,13 +25,6 @@ POS n N
 ->UD PSS3PF	Gender[psor]=Fem,Number[psor]=Plur,Person[psor]=3
 ->UD PSS3PM	Gender[psor]=Masc,Number[psor]=Plur,Person[psor]=3
 ->UD NEG	Polarity=Neg
-#->UD PASS	Voice=Pass
-#->UD CAUS	Voice=Cau
-#->UD RECP1	*Voice=Rcp1
-#->UD RECP2	*Voice=Rcp2
-#->UD ITER	Aspect=Iter
-#->UD CAUS+RECP1	*Voice=CauRcp1
-#->UD CAUS+RECP2	*Voice=CauRcp2
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -48,6 +36,11 @@ acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; sm3:PSS3SM;; sf3:PSS3SF;; pf2:PSS2PF;; pm2:PSS2PM;; pf3:PSS3PF;; pm3:PSS3PM
 g:: m:MASC;; f:FEM
 neg:: NEG
+
+# personal pronouns
+Pp:: 1:1;; 2:2;; 3:3
+Pn:: 1:SG;; 2:PL
+Pg:: m:MASC;; f:FEM
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
