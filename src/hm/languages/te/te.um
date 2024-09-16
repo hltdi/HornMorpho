@@ -8,22 +8,23 @@ POS n N
 ->UD DEF	Definite=Def
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
-->UD PSS1S	Number[psor]=Sing,Person[psor]=1
-->UD PSS1P	Number[psor]=Plur,Person[psor]=1
-->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
-->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
-->UD PSS2P	Number[psor]=Plur,Person[psor]=2
-->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
-->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
-->UD PSS3P	Number[psor]=Plur,Person[psor]=3
+->UD PSS(1,SG)	Number[psor]=Sing,Person[psor]=1
+->UD PSS(1,PL)	Number[psor]=Plur,Person[psor]=1
+->UD PSS(2,SG,FEM)	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
+->UD PSS(2,SG,MASC)	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
+->UD PSS(2,PL,FEM)		Gender[psor]=Fem,Number[psor]=Plur,Person[psor]=2
+->UD PSS(2,PL,MASC)	Gender[psor]=Masc,Number[psor]=Plur,Person[psor]=2
+->UD PSS(3,SG,FEM)		Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
+->UD PSS(3,SG,MASC)	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
+->UD PSS(3,PL,FEM)		Gender[psor]=Fem,Number[psor]=Plur,Person[psor]=3
+->UD PSS(3,PL,MASC)	Gender[psor]=Masc,Number[psor]=Plur,Person[psor]=3
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
 
 pos:: N:N;; ADJ:ADJ;; PRON:PRON;; NUM:NUM
 pl:: True:PL;; False:SG
-p:: s1:PSS(1,SG);; p1:PSS(1,PL);; sm2:PSS(2,SG,MASC);; sf2:PSS(2,SG,FEM)
-p:: sm3:PSS(3,SG,MASC);; sf3:PSS(3,SG,FEM)
+p:: s1:PSS(1,SG);; p1:PSS(1,PL);; sm2:PSS(2,SG,MASC);; sf2:PSS(2,SG,FEM);; sm3:PSS(3,SG,MASC);; sf3:PSS(3,SG,FEM)
 p:: pf2:PSS(2,PL,FEM);; pm2:PSS(2,PL,MASC);; pf3:PSS(3,PL,FEM);; pm3:PSS(3,PL,MASC)
 g:: m:MASC;; f:FEM
 g:: m:MASC;; f:FEM
@@ -50,16 +51,16 @@ POS v V
 ->UD PL		Number=Plur
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
-->UD AC1S	*AccPers=1,AccNum=Sing
-->UD AC1P	*AccPers=1,AccNum=Plur
-->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
-->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
-->UD AC2PF	*AccPers=2,AccNum=Plur,AccGen=Fem
-->UD AC2PM	*AccPers=2,AccNum=Plur,AccGen=Masc
-->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
-->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
-->UD AC3PF	*AccPers=3,AccNum=Plur,AccGen=Fem
-->UD AC3PM	*AccPers=3,AccNum=Plur,AccGen=Masc
+->UD ACC(1,SG)			*AccPers=1,AccNum=Sing
+->UD ACC(1,PL)			*AccPers=1,AccNum=Plur
+->UD ACC(2,SG,FEM)		*AccPers=2,AccNum=Sing,AccGen=Fem
+->UD ACC(2,SG,MASC)	*AccPers=2,AccNum=Sing,AccGen=Masc
+->UD ACC(2,PL,FEM)		*AccPers=2,AccNum=Plur,AccGen=Fem
+->UD ACC(2,PL,MASC)	*AccPers=2,AccNum=Plur,AccGen=Masc
+->UD ACC(3,SG,FEM)		*AccPers=3,AccNum=Sing,AccGen=Fem
+->UD ACC(3,SG,MASC)	*AccPers=3,AccNum=Sing,AccGen=Masc
+->UD ACC(3,PL,FEM)		*AccPers=3,AccNum=Plur,AccGen=Fem
+->UD ACC(3,PL,MASC)	*AccPers=3,AccNum=Plur,AccGen=Masc
 ->UD *RELC	*ClauseType=ACl
 
 t:: i:IPFV;; p:PFV;; j:IMP
@@ -80,9 +81,9 @@ sg:: m:MASC;; f:FEM
 
 ## objects
 # accusative objects (and 3SM DEF)
-op,on,og:: 3,1,m:AC3SM;; 3,1,f:AC3SF;; 3,2,m:AC3PM;; 3,2,f:AC3PF
-op,on,og:: 2,1,m:AC2SM;; 2,1,f:AC2SF;; 2,2,m:AC2PM;; 2,2,f:AC2PF
-op,on:: 1,1:AC1S;; 1,2:AC1P
+op,on,og:: 3,1,m:ACC(3,SG,MASC);; 3,1,f:ACC(3,SG,FEM);; 3,2,m:ACC(3,PL,MASC);; 3,2,f:ACC(3,PL,FEM)
+op,on,og:: 2,1,m:ACC(2,SG,MASC);; 2,1,f:ACC(2,SG,FEM);; 2,2,m:ACC(2,PL,MASC);; 2,2,f:ACC(2,PL,FEM)
+op,on:: 1,1:ACC(1,SG);; 1,2:ACC(1,PL)
 
 sconj:: ለ:*RELC
 

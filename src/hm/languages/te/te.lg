@@ -1,5 +1,6 @@
 name: ትግረ
 code: te
+version: 0.5
 
 gemination: False
 
@@ -42,6 +43,8 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 feats:
 
   pos: v verb
+
+    lemmafeats = a,v,c,s
 
     morphotax::
       {'name': 'rel', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['ClauseType']};

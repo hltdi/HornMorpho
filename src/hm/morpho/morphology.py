@@ -1918,7 +1918,7 @@ class POSMorphology:
         '''
         if mwe_part:
             mwe_part = EES.degeminate(mwe_part)
-#        print("^^ generating lemma for {} | {} ; mwe {} ; mwe_part {}".format(stem, root, mwe.__repr__(), mwe_part))
+#        print("^^ generating lemma for {} | {} | {}".format(stem, root, features.__repr__()))
         gloss = ''
         if features and 'lemma' in features:
             return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)

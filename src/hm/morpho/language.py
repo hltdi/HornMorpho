@@ -70,6 +70,8 @@ TL_NAME_RE = re.compile(r'\s*tln.*?:\s*(.*)\s+(.*)')
 # Backup language abbreviation
 # l...:
 BACKUP_RE = re.compile(r'\s*l.*?:\s*(.*)')
+# Archive version number
+VERSION_RE = re.compile(r'version:\s*(.*)')
 ## preprocessing function
 #PREPROC_RE = re.compile(r'\s*pre*?:\s*(.*)')
 # Segments (characters)
@@ -147,7 +149,7 @@ MWE_RE = re.compile(r"\s*mwe::\s*(.*)")
 NO_MWE_RE = re.compile(r"\s*nomwe")
 # Added 2023.09.06; character normalization
 NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
-# Added 2023.09.17; character combination (withing stems)
+# Added 2023.09.17; character combination (within stems)
 CHARCOMB_RE = re.compile(r"\s*charcomb\w*::\s*(.*)")
 # Added 2023.11.03; POS, UD features, lemmas to merge
 MERGE_RE = re.compile(r"\s*merge::\s*(.*)")
@@ -280,6 +282,8 @@ class Language:
         self.merges = None
         # Whether the orthography is roman
         self.roman = roman
+        # Archive version number; added 2024.09.16
+        self.version = 1.0
 #        # A tree of multi-word expressions
 #        self.mwe = {}
 #        # Feature normalization
@@ -624,6 +628,12 @@ class Language:
                 lang = m.group(1).strip()
                 self.backup = lang
                 self.tlanguages.append(lang)
+                continue
+
+            m = VERSION_RE.match(line)
+            if m:
+                version = m.group(1).strip()
+                self.version = version
                 continue
 
             m = PUNC_RE.match(line)
@@ -1388,7 +1398,7 @@ class Language:
             opt_string += 'phonetic'
         else:
             opt_string += 'analysis/generation'
-        print("Loading FSTs for {}".format(self))
+        print("Loading FSTs for {} (version {})".format(self, self.version))
         # In any case, assume the root frequencies will be needed?
         self.morphology.set_root_freqs()
 #        self.morphology.set_feat_freqs()

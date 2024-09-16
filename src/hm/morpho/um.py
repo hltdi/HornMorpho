@@ -35,7 +35,7 @@ class UniMorph:
     """
 
     pos_re = re.compile(r'\s*POS\s*(.*)\s+(.*)$')
-    feat_re = re.compile(r'\s*(.*)::\s*([ *:;,._+/{}\-\w\d]+)$')
+    feat_re = re.compile(r'\s*(.*)::\s*([ *():;,._+/{}\-\w\d]+)$')
     superfeat_re = re.compile(r'\s*(.*)::$')
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
     toUD_re = re.compile(r'\s*->UD\s+(.+)\s+(.+)$')
@@ -600,7 +600,7 @@ class UniMorph:
                         if ':' in value:
                             value = value.split(';;')
                             value = [fv.strip().split(':') for fv in value]
-#                            print("   ** value3 {}".format(value))
+#                            print("   ** value {}".format(value))
                             # values could be a list corresponding to feat list
                             for i, (mapv, uv) in enumerate(value):
                                 if ',' in mapv:

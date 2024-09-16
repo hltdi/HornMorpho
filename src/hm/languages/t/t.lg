@@ -1,5 +1,6 @@
 name: ትግርኛ
 code: t
+version: 1.0
 
 gemination: True
 
