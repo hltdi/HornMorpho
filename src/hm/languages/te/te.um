@@ -6,7 +6,6 @@ POS n N
 ->UD PL		Number=Plur
 ->UD SG		Number=Sing
 ->UD DEF	Definite=Def
-->UD V.MSDR	VerbForm=Inf
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD PSS1S	Number[psor]=Sing,Person[psor]=1
@@ -17,10 +16,15 @@ POS n N
 ->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
 
 pos:: N:N;; ADJ:ADJ;; PRON:PRON;; NUM:NUM
 pl:: True:PL;; False:SG
-p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; sm3:PSS3SM;; sf3:PSS3SF;; pf2:PSS2PF;; pm2:PSS2PM;; pf3:PSS3PF;; pm3:PSS3PM
+p:: s1:PSS(1,SG);; p1:PSS(1,PL);; sm2:PSS(2,SG,MASC);; sf2:PSS(2,SG,FEM)
+p:: sm3:PSS(3,SG,MASC);; sf3:PSS(3,SG,FEM)
+p:: pf2:PSS(2,PL,FEM);; pm2:PSS(2,PL,MASC);; pf3:PSS(3,PL,FEM);; pm3:PSS(3,PL,MASC)
 g:: m:MASC;; f:FEM
 g:: m:MASC;; f:FEM
 Pp:: 1:1;; 2:2;; 3:3

@@ -18,7 +18,9 @@ e2a+ -> stem  	[:ኣ;:አ]
 start -> eI		[*e]
 pre1 -> eI		[*e]
 eI -> eI2 		[:-]
+eI2 -> eI2+		[:<]
 eI2 -> pre2		[:እ]
+eI2+ -> stem	[:እ]
 
 # prep before stem-initial consonant or ኢ ኤ ኦ ኡ
 pre1 -> pre2C	[:-]

@@ -14,7 +14,7 @@
 ዲብ<ነ>		[Pp=1,Pn=2,adp=ዲብ,pos=PRON,p=0,+obl]
 ዲብ<ከ>		[Pp=2,Pn=1,Pg=m,adp=ዲብ,pos=PRON,p=0,+obl]
 ዲብ<ኪ>		[Pp=2,Pn=1,Pg=f,adp=ዲብ,pos=PRON,p=0,+obl]
-ዲብ<ኩም>	[Pp=2,Pn=2,Pg=m,adp=ዲብ,pos=PRON,p=0,+obl]
+ዲብ<ኩም>		[Pp=2,Pn=2,Pg=m,adp=ዲብ,pos=PRON,p=0,+obl]
 ዲብ<ክን>		[Pp=2,Pn=2,Pg=f,adp=ዲብ,pos=PRON,p=0,+obl]
 ዲብ<ኡ>		[Pp=3,Pn=1,Pg=m,adp=ዲብ,pos=PRON,p=0,+obl]
 ዲብ<አ>		[Pp=3,Pn=1,Pg=f,adp=ዲብ,pos=PRON,p=0,+obl]
