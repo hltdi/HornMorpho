@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "HornMorpho"
-version = "5.1.1"
-requires-python = ">= 3.8"
+version = "5.2"
+requires-python = ">= 3.9"
 dependencies = ['conllu', 'requests']
 authors = [
     {name = "Michael Gasser", email = "gasser@iu.edu"},
 ]
 description = "Morphological processing of languages of the Horn of Africa"
 readme = "README.md"
-keywords = ["morphology", "Amharic", "Tigrinya", "Oromo"]
+keywords = ["morphology", "Amharic", "Tigrinya", "Oromo", "Tigre"]
 classifiers = [
       'Development Status :: 5 - Production/Stable',
       'Intended Audience :: Information Technology',
