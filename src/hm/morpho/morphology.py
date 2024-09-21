@@ -1521,7 +1521,7 @@ class POSMorphology:
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
 #        print("%% process5: token {}, string {}".format(token, string))
-        sep_feats = kwargs.get('sep_feats', False)
+        sep_feats = kwargs.get('sep_feats', True)
         gemination = kwargs.get('gemination', True)
         mwe = kwargs.get('mwe', False)
         string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, features, **kwargs)
@@ -1705,7 +1705,7 @@ class POSMorphology:
 
     def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None, mwe_tokens=None,
-                          misc=None, gemination=True, sep_feats=False, mwe=False):
+                          misc=None, gemination=True, sep_feats=True, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
         '''

@@ -12,10 +12,10 @@
 <-ኣ/ለ>ኹ-	<-ኣ/ለ>ኩ-	[-neg,sp=1,sn=1];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 <-ኣ/ለ>ና-	''			[-neg,sp=1,sn=2];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 # 2
-<-ኣ/ለ>ኻ-	<-ኣ/ለ>ካ-	[-neg,sp=2, sn=1, sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
-<-ኣ/ለ>ኺ-	<-ኣ/ለ>ኪ-	[-neg,sp=2, sn=1, sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
-<-ኣ/ለ>ኹም-	<-ኣ/ለ>ኩም-	[-neg,sp=2, sn=2, sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
-<-ኣ/ለ>ኽን-	<-ኣ/ለ>ክን-	[-neg,sp=2, sn=2, sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ኻ-	<-ኣ/ለ>ካ-	[-neg,sp=2sn=1sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ኺ-	<-ኣ/ለ>ኪ-	[-neg,sp=2sn=1sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ኹም-	<-ኣ/ለ>ኩም-	[-neg,sp=2sn=2sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ኽን-	<-ኣ/ለ>ክን-	[-neg,sp=2sn=2sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 ## negative, no obj
 # 3sm
 <-የ/ለ>አ-	''			[+neg,sp=3,sn=1,sg=m,-O,-rel]

@@ -8,6 +8,7 @@ $ stem_pre
   <
 
 $ stem1
+  ኣይደል	[+neg,p=3,n=1,g=m,-m,cnj2=0,cnj1=0]
   ኣይደ/ለ	[+neg,p=3,n=1,g=m]
   ኣይደ/ለሁ	[+neg,p=1,n=1]
   ኣይደ/ለህ	[+neg,p=2,n=1,g=m]
@@ -29,14 +30,11 @@ $ stem1
   ና/ቸው	[p=3,n=2,-neg]
 
 $ neg_suf
-  ም		[+neg,-sub]
+  ም		[+neg,-sub,+m]
   --
 
 $ stem_post
   >
-
-#$ neg_suf_bound
-#  -
 
 $ conj
   /ና		[cnj2=ና]

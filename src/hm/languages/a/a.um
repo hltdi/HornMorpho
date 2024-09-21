@@ -32,6 +32,8 @@ POS n N
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
+->UD *PRSPRO	PronType=Prs
+->UD *DEMPRO	PronType=Dem
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -54,6 +56,7 @@ g:: m:MASC;; f:FEM
 Pp:: 1:1;; 2:2;; 3:3
 Pn:: 1:SG;; 2:PL
 Pg:: m:MASC;; f:FEM
+ptype:: prs:*PRSPRO;; dem:*DEMPRO
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP

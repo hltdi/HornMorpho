@@ -1608,7 +1608,7 @@ class Language:
     def analyze(self, raw_token, **kwargs):
         '''
         Analyze a token according to HM 5.0, returning a Word object.
-        kwargs: mwe=False, conllu=False, degem=True, sep_feats=False, combine_segs=False, verbosity=0
+        kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
         '''
 #        print("** analyze5 kwargs {}".format(kwargs))
         all_analyses = []

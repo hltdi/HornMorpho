@@ -48,7 +48,7 @@ TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ 
 
 ## Fixing treebanks
 
-def translit(path):
+def translit(path, language='a'):
     from conllu import parse
     file = open(path, 'r', encoding='utf8')
     data = parse(file.read())
