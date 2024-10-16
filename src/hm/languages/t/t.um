@@ -29,7 +29,7 @@ POS n N
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 
-pos:: NADJ:N;; NADV:N
+pos:: NADJ:N;; NADV:N;; DET:DET
 adp:: ብ:*OBL;; ን:*OBL;; ናይ:GEN;; ናብ:*OBL;; ካብ:*OBL;; ምስ:*OBL;; ከም:*OBL;; ብዘይ:*OBL;; ክንዲ:*OBL;; ምእንቲ:*OBL;; ስለ:*OBL
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
@@ -96,14 +96,22 @@ POS v V
 ->UD ACC	Case=Acc
 ->UD INT	Mood=Int
 # Updated 2024.7.7
-->UD *SERAHI	^ኣዕማድ=ሰራሒ
-->UD *ASRAHI	^ኣዕማድ=ኣስራሒ
-->UD *TESERAHI	^ኣዕማድ=ተሰራሒ
-->UD *TESARAHI	^ኣዕማድ=ተሳራሒ
-->UD *ASARAHI	^ኣዕማድ=ኣሳራሒ
-->UD *SERARAHI	^ኣዕማድ=ሰራራሒ
-->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
-->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
+->UD *SERAHI	^Aimad=SERAHI
+->UD *ASRAHI	^Aimad=ASRAHI
+->UD *TESERAHI	^Aimad=TESERAHI
+->UD *TESARAHI	^Aimad=TESARAHI
+->UD *ASARAHI	^Aimad=ASARAHI
+->UD *SERARAHI	^Aimad=SERARAHI
+->UD *TESERARAHI	^Aimad=TESERARAHI
+->UD *ASERARAHI	^Aimad=ASERARAHI
+#->UD *SERAHI	^ኣዕማድ=ሰራሒ
+#->UD *ASRAHI	^ኣዕማድ=ኣስራሒ
+#->UD *TESERAHI	^ኣዕማድ=ተሰራሒ
+#->UD *TESARAHI	^ኣዕማድ=ተሳራሒ
+#->UD *ASARAHI	^ኣዕማድ=ኣሳራሒ
+#->UD *SERARAHI	^ኣዕማድ=ሰራራሒ
+#->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
+#->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
 
 t:: i:IPFV;; p:PFV;; j:IMP;; c:PFV
 #t,ax:: c,0:V.CVB ;; c,al:PRF

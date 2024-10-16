@@ -50,8 +50,8 @@ $ sb_rel
   --	[-rel];[t=p];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
 
 $ sb_pre
-  ->ob_inf	 +alle+		[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አ_ለ,gl=exist]
-  ->neg2	 +allewo+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አ_ለ,gl=exist,sp=3,sn=1,sg=m,+O]
+  ->ob_inf	 +alle+		[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=ኣ_ለ,gl=exist]
+  ->neg2	 +allewo+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=ኣ_ለ,gl=exist,sp=3,sn=1,sg=m,+O]
   # counts as non-consonant for imperfective, but a consonant for jussive
   ይ   [t=i,sp=3,sn=2,-Cpre];[t=i,sp=3,sn=1,sg=m,-Cpre];[t=i,sp=1,sn=1,-Cpre];[t=j,sp=3,sn=1,sg=m,+Cpre];[t=j,sp=3,sn=2,+Cpre]
   ት   [t=i,sp=2,+Cpre];[t=i|j,sp=3,sn=1,sg=f,+Cpre];[t=j,sp=2,+neg,+Cpre]

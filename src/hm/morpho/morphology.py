@@ -1465,7 +1465,8 @@ class POSMorphology:
 #        print(" %% string {}".format(string))
         pre = stem = suf = mwe_part = ''
         pos = features.get('pos')
-        string = self.postproc5(string, gemination=not kwargs.get('degem', True), elim_bounds=False)
+        degem = kwargs.get('degem', True)
+        string = self.postproc5(string, gemination=not degem, elim_bounds=False)
 #        if kwargs.get('degem', True):
 #            string = EES.degeminate(string, elim_bounds=False)
         if kwargs.get('mwe', False):
@@ -1495,6 +1496,8 @@ class POSMorphology:
 #            print(" **pre {}".format(pre))
         if kwargs.get('combine_segs', False):
             stem = self.language.combine_segments(stem)
+            if degem:
+                stem = EES.degeminate(stem)
             string = "{}<{}>{}".format(pre, stem, suf)
         pre = pre.split(Morphology.morph_sep)
 #        print(" **pre {}".format(pre))
@@ -1572,7 +1575,6 @@ class POSMorphology:
         feat_to_del = []
         for feat in udfdict:
             if feat[0] == Morphology.misc_feat:
-#                print(" $$ Found misc feat {}".format(feat))
                 stemmisc.append("{}={}".format(feat[1:], udfdict.get(feat)))
                 feat_to_del.append(feat)
         for f in feat_to_del:
@@ -1643,10 +1645,16 @@ class POSMorphology:
         if 'gl' in features:
             procdict['gloss'] = features['gl']
         procdict['lemma'] = lemma
+#        # add root to 'misc' field for whole word
+#        if lemma and root and lemma != root:
+#            if 'misc' not in procdict:
+#                procdict['misc'] = []
+#            procdict['misc'].append("Root={}".format(root))
         if lemma and root and stemd and lemma != root:
-            if 'misc' not in stemd:
-                stemd['misc'] = []
-            stemd['misc'].append("root={}".format(root))
+#            if 'misc' not in stemd:
+#                stemd['misc'] = []
+            stemmisc.append("Root={}".format(root))
+#            stemd['misc'].append("Root={}".format(root))
         # Find the frequency
         procdict['freq'] = self.get_root_freq(root, lemma, um)
 #        print("^^ process5: prodict {}".format(procdict))
@@ -1713,11 +1721,13 @@ class POSMorphology:
             # the morpheme could be the empty string
             return ''
         is_mwe_part = props.get('mwe', False)
-#        print("^^ Processing morpheme {} ({}); {}; {}; {}".format(morpheme, index, props, ('MWE' if is_mwe_part else 'non-MWE'), gemination))
+#        print("^^ Processing morpheme {} ({}); {}; {}".format(morpheme, index, props, misc))
         dct = {'seg': EES.elim_bounds(morpheme)}
 #                   morpheme if gemination else EES.degeminate(morpheme, elim_bounds=True)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
         dct['pos'] = pos
+        if xpos := props.get('xpos'):
+            dct['xpos'] = xpos
         dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
 #        print("  ^^ dep {}, head {}".format(dep, head))
         if dep:
@@ -1730,8 +1740,9 @@ class POSMorphology:
         elif is_stem:
             if udfdict:
                 feats = udfeats
-            if misc:
-                dct['misc'] = misc
+        if is_stem:
+#            if misc:
+            dct['misc'] = misc or []
         if feats:
             dct['udfeats'] = feats
         return dct

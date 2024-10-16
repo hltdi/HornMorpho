@@ -38,10 +38,15 @@ CV -> .-o		[{I2o}]
 -.o -> -.o		[:-;:>]
 -.o -> start	[:ኦ]
 -.o -> ou		[:ኦ]
+# the usual rule ሰምቶኣል -> ሰምቶዋል -> ሰምቷል
 ou -> oua.-		[ዋ:]
 oua.- -> oua-.	[:-]
 oua-. -> oua-.	[:-]
 oua-. -> start	[:ኣ]
+# the other possibility; no change
+ou -> oua.		[:-]
+oua. -> oua.	[:-]
+oua. -> start	[ኣ]
 
 # 2sf t=i|j suffix
 # * - ኢ -> *i

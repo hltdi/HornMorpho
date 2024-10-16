@@ -2,6 +2,7 @@
 # optionally change GWe to Go and vice versa and GW to Gu and vice versa
 # a->e following laryngeal
 # delete gemination characters (change for phonetic FST)
+# optionally drop final -ኢ after palatals
 
 -> start
 

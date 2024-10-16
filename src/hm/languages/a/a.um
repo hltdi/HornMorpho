@@ -34,6 +34,7 @@ POS n N
 ->UD 3		Person=3
 ->UD *PRSPRO	PronType=Prs
 ->UD *DEMPRO	PronType=Dem
+->UD PRS	Tense=Pres
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -46,7 +47,9 @@ pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 # unambiguous possessive suffixes
 p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
-# ambiguous possessive/determiner suffixes
+hum,def:: True,True:DEF
+p,def:: 0,True:DEF
+# ambiguous and unambiguous possessive/determiner suffixes
 p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
@@ -61,6 +64,9 @@ ptype:: prs:*PRSPRO;; dem:*DEMPRO
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
 
+# attached copula
+tns:: prs:PRS
+
 POS v V
 ->UD NEG	Polarity=Neg
 ->UD IMP	Mood=Jus
@@ -69,16 +75,34 @@ POS v V
 ->UD V.CVB	VerbForm=Conv
 #->UD PRF	Aspect=Prf
 # Updated 2024.7.7
-->UD *DERAGI	^አዕማድ=ደራጊ
-->UD *ADRAGI	^አዕማድ=አድራጊ
-->UD *TEDERAGI	^አዕማድ=ተደራጊ
-->UD *ASDERAGI	^አዕማድ=አስደራጊ
-->UD *TEDARAGI	^አዕማድ=ተዳራጊ
-->UD *ADARAGI	^አዕማድ=አዳራጊ
-->UD *DERARAGI	^አዕማድ=ደራራጊ
-->UD *TEDERARAGI	^አዕማድ=ተደራራጊ
-->UD *ADERARAGI	^አዕማድ=አደራራጊ
-->UD *ASDERARAGI	^አዕማድ=አስደራራጊ
+->UD *DERAGI	^Aimad=DERAGI
+->UD *ADRAGI	^Aimad=ADRAGI
+->UD *TEDERAGI	^Aimad=TEDERAGI
+->UD *ASDERAGI	^Aimad=ASDERAGI
+->UD *TEDARAGI	^Aimad=TEDARAGI
+->UD *ADARAGI	^Aimad=ADARAGI
+->UD *DERARAGI	^Aimad=DERARAGI
+->UD *TEDERARAGI	^Aimad=TEDERARAGI
+->UD *ADERARAGI	^Aimad=ADERARAGI
+->UD *ASDERARAGI	^Aimad=ASDERARAGI
+->UD *ASTEDERAGI	^Aimad=ASTEDERAGI
+->UD *TESTEDERAGI	^Aimad=TESTEDERAGI
+->UD *ASTEDERARAGI	^Aimad=ASTEDERARAGI
+->UD *TESTEDERARAGI	^Aimad=TESTEDERARAGI
+#->UD *DERAGI	^አዕማድ=ደራጊ
+#->UD *ADRAGI	^አዕማድ=አድራጊ
+#->UD *TEDERAGI	^አዕማድ=ተደራጊ
+#->UD *ASDERAGI	^አዕማድ=አስደራጊ
+#->UD *TEDARAGI	^አዕማድ=ተዳራጊ
+#->UD *ADARAGI	^አዕማድ=አዳራጊ
+#->UD *DERARAGI	^አዕማድ=ደራራጊ
+#->UD *TEDERARAGI	^አዕማድ=ተደራራጊ
+#->UD *ADERARAGI	^አዕማድ=አደራራጊ
+#->UD *ASDERARAGI	^አዕማድ=አስደራራጊ
+#->UD *ASTEDERAGI	^አዕማድ=አስተደራጊ
+#->UD *TESTEDERAGI	^አዕማድ=ተስተደራጊ
+#->UD *ASTEDERARAGI	^አዕማድ=አስተደራራጊ
+#->UD *TESTEDERARAGI	^አዕማድ=ተስተደራራጊ
 # Updated 2024.7.16
 ->UD CAUS	Voice=Cau
 #->UD TR		Voice=Trans
@@ -158,7 +182,7 @@ rel:: True:*RELC
 ## morphological valence/voice
 # v=ast (አስታወቀ) -> TR
 #a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
-a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ADRAGI;; 0,test:*TEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ADERARAGI;; i,test:*TEDERARAGI;; i,as:*ASDERARAGI
+a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
 
 # voice: base=0
 a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
@@ -194,7 +218,8 @@ sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
 #sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND;; እየ:*TEMP
 # 2024.7.7: simplified subordinating conjunctions to SUBORD
 sconj:: ስ:*SUBORD;; ብ:*SUBORD;; እንድ:*SUBORD;; ል:*SUBORD;; እስክ:*SUBORD;; ከ:*SUBORD;; እየ:*SUBORD
-cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
+#cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
+#cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
 POS cop V
 ->UD PRS	Tense=Pres

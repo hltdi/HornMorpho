@@ -23,7 +23,8 @@ ME/ -> end		[:-]		[d=inf]
 ME/ -> stemsuf	[:-]		[d=ins]
 ME/ -> TA		[ታ:ተ]
 TA -> TA-		[:-]
-TA- -> end		[:ኣ]
+TA- -> end		[:ኣ]		[d=inf]
+TA- -> stemsuf	[:ኣ]		[d=ins]
 
 istem -> MA		[ማ]			[d=ins|inf]
 MA -> end		[:-]		[d=inf]
@@ -49,8 +50,12 @@ AS.-S -> stemsuf	[ሰ;ዘ;ሸ;ዠ;ጸ;ሳ;ዛ;ሻ;ዣ;ጻ]	[d=a|ins]
 AS.-S -> pal		[{^S2i}]				[d=a|ins]
 
 AS -> AST		[ተ]
+AS -> ASTA		[ታ:ተ]
 AST -> end		[:-]	[d=inf]
 AST -> stemsuf	[:-]	[d=a|ins]
+ASTA -> ASTA-	[:-]
+ASTA- -> end	[:ኣ]	[d=inf]
+ASTA- -> stemsuf	[:ኣ]	[d=a|ins]
 
 ME/ -> M/T		[ተ]
 MA/ -> M/T		[ተ]
@@ -78,6 +83,7 @@ T- -> stemsuf	[^^N]
 T -> AS			[ስ]
 
 stem -> A		[ኣ]		[d=a,v=a|as]
+A -> A			[/]
 A -> stemsuf	[:-]
 A -> AS			[ስ]
 A -> AS.S		[/:ስ]
@@ -87,23 +93,19 @@ stem -> TA		[ታ:ተ]	[d=a,v=p]
 stemsuf -> stemsuf	[^N;/]
 
 # agent and manner suffix
-stemsuf -> agtsuf	[{^I2i}]	[d=a]
+stemsuf -> agtsuf	[{^I2i};{^I}]	[d=a]
 agtsuf -> agtsuf-	[:-]
 agtsuf- -> fin		[:ኢ]
 
-stemsuf -> insnopal	[{~S2i}]	[d=ins]
+stemsuf -> insnopal	[{~I2i}]	[d=ins]
 insnopal -> insnopal-	[:-]
 insnopal- -> insnopalya[:ኢ]
 insnopalya -> fin		[ያ]
 
-stemsuf -> inspal		[{^S2a}]	[d=ins]
+stemsuf -> inspal		[{^I2a}]	[d=ins]
 inspal -> inspal-		[:-]
 inspal- -> inspalya	[:ኢ]
 inspalya -> fin			[:ያ]
-
-#stemsuf -> pal		[{^I2i}]
-#pal ->  pal-			[:-]
-#pal- -> end			[:ኢ]
 
 end -> end		[^N;-;/]
 

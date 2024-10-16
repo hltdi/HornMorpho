@@ -6,12 +6,18 @@ pre1 -> pre1	[^N;/;_]
 # prefix boundaries
 
 # prep before stem-initial ኣ: ላልማዝ
-start -> e2a	[{e2a}] # ;{I2a}]
+start -> e2a	[{e2a}]
 pre1 -> e2a		[{e2a}]
 e2a -> e2a		[:-]
 #e2a -> e2a+		[:<]
 # noun stems normally begin with አ
 e2a -> prestem  	[:ኣ;:አ]
+
+# but also allow ለአልማዝ
+start -> ea		[*e]
+ea -> ea 		[:-]
+#ea -> ea+		[:<]
+ea -> prestem	[ኣ;አ]
 
 # prep before እየ እነ or stem-initial እ
 # ለየቤቱ ለነሱ

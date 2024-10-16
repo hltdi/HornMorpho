@@ -33,7 +33,7 @@
 ጠ=t'ə ጡ=t'u ጢ=t'i ጣ=t'a ጤ=t'e ጥ=t' ጦ=t'o
 ጨ=č'ə ጩ=č'u ጪ=č'i ጫ=č'a ጬ=č'e ጭ=č' ጮ=č'o
 ጰ=p'ə ጱ=p'u ጲ=p'i ጳ=p'a ጴ=p'e ጵ=p' ጶ=p'o
-ፀ=s'e ፁ=s'u ፂ=s'i ፃ=s'a ፄ=s'e ፅ=s' ፆ=s'o
+ፀ=s'ə ፁ=s'u ፂ=s'i ፃ=s'a ፄ=s'e ፅ=s' ፆ=s'o
 ጸ=s'ə ጹ=s'u ጺ=s'i ጻ=s'a ጼ=s'e ጽ=s' ጾ=s'o
 ፈ=fə ፉ=fu ፊ=fi ፋ=fa ፌ=fe ፍ=f ፎ=fo
 ፐ=pə ፑ=pu ፒ=pi ፓ=pa ፔ=pe ፕ=p ፖ=po

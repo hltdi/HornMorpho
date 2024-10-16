@@ -6,7 +6,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
     Copyleft 2011-2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -48,7 +48,62 @@ TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ 
 
 ## Fixing treebanks
 
-def translit(path, language='a'):
+def add_aimad_root(path, verbs):
+    '''
+    Add the root and aimad of verbs in the treebank to the misc fields of the verb stems,
+    returning a list of lines.
+    '''
+    lines = []
+    ar = []
+    rang = []
+    with open(path, encoding='utf8') as file:
+        for line in file:
+            line = line.strip()
+            if not line or line[0] == '#':
+                lines.append(line)
+            else:
+                line_split = line.split("\t")
+                if '-' in line_split[0]:
+                    token = line_split[1]
+                    if token in verbs:
+                        rang = [line_split[0][0], line_split[0][-1]]
+                        ar = verbs[token]
+                elif rang and ar:
+                    id = line_split[0]
+                    if rang[0] <= id <= rang[1] and line_split[4] == 'VERB:stem':
+                        misc = "Aimad={}|Root={}".format(ar[1], ar[0])
+                        line_split[-1] = misc
+                        rang = []
+                        ar = []
+                        line = '\t'.join(line_split)
+                lines.append(line)
+    return lines
+
+def get_aimad_root(path, lang='a'):
+    '''
+    Use hm.anal() to get the root and aimad of all of the verbs in the treebank.
+    '''
+    verbs = {}
+    with open(path, encoding='utf8') as file:
+        for line in file:
+            if not line.strip() or line[0] == '#':
+                continue
+            line = line.split("\t")
+            if '-' in line[0]:
+                # segmented word
+                token = line[1]
+                if token in verbs:
+                    continue
+                anals = hm.anal(lang, token)
+                for anal in anals:
+                    if anal['pos'] != 'V':
+                        continue
+                    root = anal['root']
+                    aimad = anal['um'].split(';')[0][1:]
+                    verbs[token] = (root, aimad)
+    return verbs
+
+def translit(path, lang='am'):
     from conllu import parse
     file = open(path, 'r', encoding='utf8')
     data = parse(file.read())
@@ -58,12 +113,15 @@ def translit(path, language='a'):
             id = word['id']
             if isinstance(id, tuple):
                 mwe_range = id[0], id[2]
-                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], ipa=True))
+                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], lang=lang, ipa=True))
             elif word['upos'] != 'PUNCT' and (not mwe_range or id > mwe_range[1]):
-                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], ipa=True))
+                word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], lang=lang,ipa=True))
     return data
 
 def write_ud(data, path):
+    '''
+    data is a list of TokenList instances, one for each sentence.
+    '''
     with open(path, 'w', encoding='utf8') as file:
         for sentence in data:
             string = sentence.serialize()

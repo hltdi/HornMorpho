@@ -4,6 +4,15 @@ $ prep
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
   --  	[-neg,cnj1=0];[-rel,-sub,+neg,cnj1=0]
 
+#$ prep_bound
+#  -
+#
+#$ Q
+#  ም	<ምን>		[+int,-neg,cnj1=0]
+#  ምንድ	<ምንድን>	[+int,-neg,cnj1=0]
+#  ማ	<ማን>		[+ing,-neg,cnj1=0]
+#  --				[-int]
+
 $ stem_pre
   <
 
@@ -31,15 +40,18 @@ $ stem1
 
 $ neg_suf
   ም		[+neg,-sub,+m]
-  --
+  --		[-neg];[+neg,cnj2=0]
 
 $ stem_post
   >
 
 $ conj
-  /ና		[cnj2=ና]
-#  ኣ		[cnj2=ኣ]
-  /ኮ		[cnj2=ኮ]
+  /ና		[cnj2=ና,apos=CCONJ]
+  /ሳ		[cnj2=ሳ,apos=ADV]
+  /ማ		[cnj2=ማ,apos=ADV]
+  ኣ		[cnj2=ኣ,apos=ADV]
+  /ኮ		[cnj2=ኮ,apos=ADV]
+  ን		[cnj2=ን,apos=ADV]
   --		[cnj2=0]
 
 $ end

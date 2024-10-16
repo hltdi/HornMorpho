@@ -3,11 +3,11 @@
 <-ኣ/ለ>አ-	''			[-neg,sp=3,sn=1,sg=m,-O];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 <-ኣ/ሎ>አ-	<-ኣ/ለ>አ-	[-neg,sp=3,sn=1,sg=m,-O];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 # 3sf, no obj and obj
-<-ኣ/ለ>ኣ-	<-ኣ/ለ>አት-	[-neg,sp=3,sn=1,sg=f,-O];[+neg,sp=3,sn=1,sg=m,+rel,-O]
-<-ኣ/ለ>ኣ/ት-	<-ኣ/ለ>አት-	[-neg,sp=3,sn=1,sg=f,+O]
+<-ኣ/ለ>ኣ-	''			[-neg,sp=3,sn=1,sg=f,-O];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ኣ/ት-	<-ኣ/ለ>ኣ-	[-neg,sp=3,sn=1,sg=f,+O]
 # 3p
-<-ኣ/ለ>ዉ-	<-ኣ/ለ>ኡ-	[-neg,sp=3,sn=2,sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
-<-ኣ/ለ>ዋ-	<-ኣ/ለ>ኣ-	[-neg,sp=3,sn=2,sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ዉ-	''			[-neg,sp=3,sn=2,sg=m];[+neg,sp=3,sn=1,sg=m,+rel,-O]
+<-ኣ/ለ>ዋ-	''			[-neg,sp=3,sn=2,sg=f];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 # 1
 <-ኣ/ለ>ኹ-	<-ኣ/ለ>ኩ-	[-neg,sp=1,sn=1];[+neg,sp=3,sn=1,sg=m,+rel,-O]
 <-ኣ/ለ>ና-	''			[-neg,sp=1,sn=2];[+neg,sp=3,sn=1,sg=m,+rel,-O]

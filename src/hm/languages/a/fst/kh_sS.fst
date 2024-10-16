@@ -23,15 +23,17 @@ stem -> a		[ኣ]
 a -> C 			[*-ስ;/;-]
 a -> V			[*v]
 a -> as			[ስ]
-# አስተ-
-as -> V			[ተ]
+as -> C			[*;/]
+# includes አስተ-
+as -> V			[*v]
 as -> as-		[-]
-as- -> V		[^S]
+# optionally allow the full prefix before ሽ,ዝ,ዥ,ጽ,ፅ
+as- -> V		[^S;ሸ;ሻ;ዘ;ዛ;ዠ;ዣ;ጸ;ጻ;ፀ;ፃ]
 # applies
 stem -> a.sS	[ኣ]
 a.sS -> as.S	[/:ስ]
 as.S -> as.S-	[-]
-as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ሳ;ዛ;ሻ;ዣ;ጻ]
+as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ፀ;ሳ;ዛ;ሻ;ዣ;ጻ;ፃ]
 
 V -> end		[>]
 
@@ -44,7 +46,7 @@ C -> end		[>]
 V -> kgq		[/:ክ;/:ቅ;/:ግ]
 C -> kgq		[/:ክ;/:ቅ;/:ግ]
 kgq -> kgq+		[>]
-kgq+ -> end		[ክ;ኩ]
+kgq+ -> end		[ክ;ኩ;ኩ:ሁ;ክ:ህ]
 
 end -> end		[*v;*;-;/]
 

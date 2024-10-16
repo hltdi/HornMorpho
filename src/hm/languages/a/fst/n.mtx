@@ -1,4 +1,5 @@
 $ prep
+  ->poststem	 +prep_det2+		[pos=DET,-pl,p=0,d=0,ptype=dem,-dis,-col]
   በ		[adp=በ,-gen]
   ለ		[adp=ለ,-gen]
   ከ		[adp=ከ,-gen]
@@ -8,6 +9,7 @@ $ prep
   ስለ		[adp=ስለ,-gen]
   ወደ		[adp=ወደ,-gen]
   እስከ	[adp=እስከ,-gen]
+  ያለ		[adp=ያለ, -gen]
   --		[adp=0,-gen]
 
 $ prep_bound
@@ -22,24 +24,37 @@ $ prestem
   <
 
 $ stem
-  +n_stem+		[ps=oc,-irr,d=0]
-  +n_stem_an+	[ps=an,-irr,d=0]
-  +n_name+		[pos=PROPN,-pl,p=0,d=0];[pos=PROPN,+pl,p=0,d=0,+col,-irr]
-  +n_place+		[pos=PROPN,-pl,p=0,d=0]
+  ->cop_bound	+pron_cop+		[pos=PRON,+cop,adp=0,p=0,d=0,-dis,-col,ptype=int,tns=prs]
+  ->poss_bound	+hulu+			[pos=DET,-pl,-cop,d=0,-dis,-col,ptype=tot]
+  +n_stem+		[ps=oc,-irr,d=0,-cop]
+  +n_stem_an+	[ps=an,-irr,d=0,-cop]
+  +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
+  +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
   >>vn_stem<<
-  +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0,ptype=prs]
-  +prep_n+		[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|እ,p=0,d=0,ptype=dem]
-  +irr_plr+		[+pl,+irr,d=0]
+  +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0,ptype=prs,-cop]
+  +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ,p=0,d=0,ptype=dem,-cop]
+  +irr_plr+		[+pl,+irr,d=0,-cop]
 
 $ poststem
   >
 
 $ plural
-  ኦ/ች	[+pl,pos=N|ADJ|N_V,-col,-irr,ps=oc]
+  ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
   --		[-pl];[+pl,+col];[+pl,+irr]
 
 $ plur_bound
+  -
+
+$ human
+  # +-hum: the presence or absence of this suffix
+  # +-h: whether the noun is human (add to lexicon later)
+  እ/የ			[+hum,+h,p=0,-pl,-col,-dis,pos=N]
+  እ/ዬ	<እየ>	[+hum,+h,p=0,-pl,-col,-dis,pos=N]
+  እ/ዮ	<እየ>	[+hum,+h,+fem,p=0,-pl,-col,-dis,pos=N]
+  --				[-hum]
+
+$ human_bound
   -
 
 $ poss_det
@@ -51,11 +66,12 @@ $ poss_det
   ዎ		[p=F2]
   # possessive or determiner
   #{
-  ኡ		[p=sm3]  #pd=m,-det];[pd=m,+det,p=0,g=m]
-  ዋ		[p=sf3]  #pd=f,-det];[pd=f,+det,p=0,g=f]
+  ኡ		[p=sm3,-hum];[p=0,+def,g=m,+hum,pos=N]         #pd=m,-det];[pd=m,+det,p=0,g=m]
+  ዋ		[p=sf3,-hum];[p=0,+def,g=f,+hum,pos=N]         #pd=f,-det];[pd=f,+det,p=0,g=f]
+  ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,pos=N]
   #}
   ኣ/ቸው	[p=p3]
-  --		[p=0]
+  --		[p=0,-def]
 
 $ poss_bound
   -
@@ -68,11 +84,17 @@ $ acc
 $ acc_bound
   -
 
+$ cop
+  --		[-cop,tns=0]
+
+$ cop_bound
+  -
+
 $ conj
-  /ም		[cconj=ም]
-  /ስ		[cconj=ስ]
-  /ማ		[cconj=ማ]
-  /ሳ		[cconj=ሳ]
-  /ና		[cconj=ና]
-  /ኮ		[cconj=ኮ]
+  /ም		[cconj=ም,spos=ADV]
+  /ስ		[cconj=ስ,spos=ADV]
+  /ማ		[cconj=ማ,spos=ADV]
+  /ሳ		[cconj=ሳ,spos=ADV]
+  /ና		[cconj=ና,spos=CCONJ]
+  /ኮ		[cconj=ኮ,spos=ADV]
   --		[cconj=0]

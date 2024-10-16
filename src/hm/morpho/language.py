@@ -800,8 +800,9 @@ class Language:
                         pre_segs = []
                     stem_segs = eval(stem_segs)
                     # there may be no suffixes
+#                    for s in suf_segs:
+#                        print("suf seg {}".format(s))
                     suf_segs = [eval(s) for s in suf_segs]
-#                    print("**  suf_segs {}".format(suf_segs))
                     segs = [pre_segs, stem_segs, suf_segs]
                     segments[pos] = segs
                     continue
@@ -1829,7 +1830,8 @@ class Language:
             kwargs['timeit'] = False
         tokens = sentence.split()
         ntokens = len(tokens)
-        sentobj = Sentence(sentence, language=self, batch_name=kwargs.get('batch_name', ''), sentid=kwargs.get('sentid', 1), label=kwargs.get('label'))
+        sentobj = Sentence(sentence, self, **kwargs)
+#            sentence, language=self, batch_name=kwargs.get('batch_name', ''), sentid=kwargs.get('sentid', 1), label=kwargs.get('label'))
         token_index = 0
         while token_index < ntokens:
             if kwargs.get("skip_mwe", False):
@@ -1894,7 +1896,7 @@ class Language:
         if 'cache' not in kwargs:
             kwargs['cache'] = dict()
         tokens = sentence.split()
-        sentobj = Sentence(sentence, language=self)
+        sentobj = Sentence(sentence, self)
         # For now just try single-word tokens.
         for token in tokens:
             wordobj = self.analyze(token, **kwargs)
@@ -1910,7 +1912,7 @@ class Language:
         Analyze the tokens using the MWE FSTs.
         '''
         tokens = sentence.split()
-        sent_obj = sent_obj or Sentence(sentence, language=self)
+        sent_obj = sent_obj or Sentence(sentence, self)
         seglevel = kwargs.get('seglevel', 2)
         ntokens = len(tokens)
         w_index = 0
@@ -2580,7 +2582,7 @@ class Language:
                 if verbosity:
                     print("** Analyzing line {}".format(line))
 #                if csentences != False:
-                csent = Sentence(line, batch_name=batch_name, sentid=sentid, language=self)
+                csent = Sentence(line, self, batch_name=batch_name, sentid=sentid)
                 csentences.append(csent)
                 if xml:
                     xsent = add_caco_sentence(xmlroot)
@@ -2637,7 +2639,7 @@ class Language:
             preproc = self.preproc
         if postproc and not callable(postproc):
             postproc = self.postproc
-        csent = csent or Sentence(sentence, batch_name=batch_name, sentid=sentid, language=self)
+        csent = csent or Sentence(sentence, self, batch_name=batch_name, sentid=sentid)
         local_cache = local_cache if isinstance(local_cache, dict) else {}
         if not file and pathout:
             file = open(pathout, 'w', encoding='utf-8')

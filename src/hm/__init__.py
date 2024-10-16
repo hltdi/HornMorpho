@@ -38,7 +38,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 #__version__ = '4.3.1'
 
 __cat__ = ''
-__version__ = '5.1'
+__version__ = '5.2'
 
 __author__ = 'Michael Gasser'
 
@@ -55,13 +55,15 @@ SEGMENT = False
 ###
 
 def anal_corpus(language, **kwargs):
-    '''
+    """
     Create a corpus of sentences, given a list of raw sentence strings.
-    '''
+    To save unknown words, do 'save_unk' = True.
+    To save ambiguous words, do 'save_ambig' = True.
+    """
     guess = kwargs.get('guess', False)
-    language = morpho.get_language(language, v5=True, guess=guess)
+    language = morpho.get_language(language, guess=guess)
     if language:
-        corp = morpho.Corpus(language=language, v5=True, **kwargs)
+        corp = morpho.Corpus(language=language, **kwargs)
         if kwargs.get('disambiguate', False):
             corp.disambiguate()
         return corp

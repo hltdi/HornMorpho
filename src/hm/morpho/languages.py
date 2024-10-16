@@ -117,6 +117,9 @@ def compress_lang(abbrev):
     Create a compressed tarball of all of the files in the language folder, except
     compiled FST files, given language abbreviation.
     '''
+    updateQ = input("Did you update the version number?\n>>> ")
+    if updateQ[0] not in ('y', 'Y'):
+        return
     directory = Language.get_lang_dir(abbrev)
     outfile = compressed_lang_filename(abbrev)
     def exclude(tarinfo):

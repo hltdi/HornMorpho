@@ -20,12 +20,13 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	**u:	**
 
 [t=i|c,v=0,-dup23]
-[t=i,v=a]
+[t=i,v=a,-dup23]
 [t=c,v=p,-dup23]
 [t=c,+dup23,sp=1,sn=1]
 ^eo	**u	**
 
 [t=i|c,v=0,+dup23]
+[t=i,v=a,+dup23]
 [t=c,v=p,+dup23]
 ^eo	**u:	-
 
@@ -162,7 +163,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i,v=0,-dup23]
 [t=c,v=0,-dup23]
-[t=j,v=ast]
+[t=j|c,v=ast]
 [t=c,+dup23,sp=1,sn=1]
 ኣ	**	**
 
@@ -215,7 +216,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=p|i|c]
 ^o	-	**
 
-[t=j]
+# alternate converb
+[t=j|c]
 ^u	-	**
 
 %2=ይ
@@ -247,43 +249,43 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=p]
 [t=i,v=p|as]
 [t=j,v=as]
-^e	^a:	-
+^eo	^a:	-
 
 [t=i,v=0|a]
 [t=j,v=p]
-^e	^a	-
+^eo	^a	-
 
 [t=j,v=0|a]
-**	^a	-
+**u	^a	-
 
 [t=c,v=0|p|as]
-^e	**	ት
+^eo	**	ት
 
 [t=c,v=a]
-**	**	ት
+**u	**	ት
 
 %3=ይ
 !! v=ast
 !! v=test
 [t=p]
-^e	^e:	-
+^eo	^e:	-
 
 [t=i,v=p|as]
 [t=j,v=as]
-^e	**:	-
+^eo	**:	-
 
 [t=i,v=0|a]
 [t=j,v=p]
-^e	**	-
+^eo	**	-
 
 [t=j,v=0|a]
-**	**	-
+**u	**	-
 
 [t=c,v=0|p|as]
-^e	**	ት
+^eo	**	ት
 
 [t=c,v=a]
-**	**	ት
+**u	**	ት
 
 %%a=0,c=B,-strong
 
@@ -304,24 +306,24 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %3=እ
 [t=p|i]
 [t=j,v=0|a|as]
-^e	^a:	-
+^eo	^a:	-
 
 [t=j,v=p]
-^e	^a	-
+^eo	^a	-
 
 [t=c]
-^e	**:	ት
+^eo	**:	ት
 
 %3=ይ
 !! v=ast
 [t=p]
-^e	^e:	-
+^eo	^e:	-
 
 [t=i|j]
-^e	**:	-
+^eo	**:	-
 
 [t=c]
-^e	**:	ት
+^eo	**:	ት
 
 %%a=0,c=C,-strong
 %3=እ
@@ -498,6 +500,18 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=c,v=p|a]
 **	^a	-	**	ት
+
+%%a=0,c=H,-strong
+
+%5=እ
+[t=i|p,v=p|a]
+**	^e	^a	^:a	-
+
+[t=j,v=p|a]
+**	^e	^a	^a	-
+
+[t=c,v=p|a]
+**	^e	^a	**	ት
 
 %%a=a,c=A,+strong
 # initial consonant for a=a cannot be '/እ, hence ^a,^e instead of *a,*e
@@ -682,17 +696,17 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 # Include v=as though it's rare
 [t=p,v=0|p|a|as]
 [t=i,v=p]
-^e	^a	^e:	**
+^eo	^a	^e:	**
 
 [t=i,v=0|a|as]
-^e	^a	**:	**
+^eo	^a	**:	**
 
 [t=j,v=p]
-^e	^a	^e	**
+^eo	^a	^e	**
 
 [t=j,v=0|a|as]
 [t=c,v=0|p|a|as]
-^e	^a	**	**
+^eo	^a	**	**
 
 %%a=i,c=B,+strong == A
 
@@ -701,17 +715,17 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %%a=i,c=E,+strong
 [t=p]
 [t=i,v=p]
-^e	^e	^a	^e:	**
+^eo	^e	^a	^e:	**
 
 [t=i,v=0|a]
-^e	^e	^a	**:	**
+^eo	^e	^a	**:	**
 
 [t=j,v=p]
-^e	^e	^a	^e	**
+^eo	^e	^a	^e	**
 
 [t=j,v=0|a]
 [t=c]
-^e	^e	^a	**	**
+^eo	^e	^a	**	**
 
 %%a=i,c=F,+strong == E
 
@@ -787,9 +801,8 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	**
 
 %3=እ
-!! v=as
-[t=p,v=0|a|p]
-[t=i,v=p]
+[t=p,v=0|a|p|as]
+[t=i,v=p|as]
 ^e	^a	^a:	-
 
 # alternative for some roots: ተስማማ ይስማማሉ አስማማ
@@ -801,10 +814,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^e	^a	^a	-
 
 # alternative for some roots: ተስማማ
-[t=j,v=0|a|p]
+[t=j,v=0|a|p|as]
 **	^a	^a	-
 
-[t=c,v=0|a|p]
+[t=c,v=0|a|p|as]
 ^e	^a	**	ት
 
 # alternative for some roots: ተስማምቶ

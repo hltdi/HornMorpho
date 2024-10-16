@@ -48,7 +48,7 @@ class Corpus():
     ID = 0
 
     def __init__(self, data=None, path='',
-                 start=0, n_sents=500, max_sents=1000, start_sent=0,
+                 start=0, n_sents=1000, max_sents=5000, start_sent=0,
                  name='', batch_name='', sentid=0,
                  analyze=False, language='', 
                  um=1, seglevel=2, nsegment=True, fsts=None, disambiguate=False,
@@ -58,8 +58,15 @@ class Corpus():
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
                  report_freq=100,
+                 # we may want to save unknown and/or ambiguous tokens
+                 unk=None,
+                 ambig=None,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
+                 # how to treat comments in the corpus; if True convert to CoNNL-U metadata following sentence
+                 comments2meta=True,
+                 # if non-negative, only analyze sentences with this position relative to last comment line
+                 language_pos=-1,
                  print_sentence=False,
                  verbosity=0):
         self.batch_name = batch_name
@@ -78,7 +85,9 @@ class Corpus():
         self.name = name or batch_name or self.create_name()
         self.start = start
         # Unknown tokens
-        self.unks = set()
+        self.unk = {}
+        # Ambiguous tokens
+        self.ambig = {}
         # Cache for storing segmentations
         if isinstance(local_cache, dict):
             self.local_cache = local_cache
@@ -114,6 +123,9 @@ class Corpus():
                 time0 = time.time()
                 comment = ''
                 label = ''
+                meta = ''
+                # current position within language list
+                langpos = 0
                 while sentcount < n_sents and linepos < nlines:
                     line = lines[linepos]
                     line = line.strip()
@@ -126,13 +138,13 @@ class Corpus():
                     if line[0] == '#':
 #                        print("{} is a comment line".format(line))
                         comment = line
-                        label = line[1:].strip()
+                        langpos = 0
+                        if comments2meta:
+                            meta = comment
+                        else:
+                            label = line[1:].strip()
                         linepos += 1
                         continue
-                    if print_sentence:
-                        print("$$ {}".format(line))
-                    if sentcount and sentcount % report_freq == 0:
-                        print("Analyzed {} sentences".format(sentcount))
                     linepos += 1
                     if constraints: # and maxnum != None or maxpunc != None:
                         tokens = line.split()
@@ -161,15 +173,31 @@ class Corpus():
                         if start_sent and skipped == start_sent:
                             print("Skipped {} sentences".format(skipped))
                             skipped += 1
+                        if language_pos > -1 and langpos != language_pos:
+                            # Skip this sentence; it's not the right language
+                            langpos += 1
+                            continue
                         if v5:
-#                            print("&& {}".format(line))
-                            sentence_obj =\
+                            if print_sentence:
+                                print("$$ {}".format(line))
+                            if sentcount and sentcount % report_freq == 0:
+                                print("Analyzed {} sentences".format(sentcount))
+                            if sentence_obj := \
                               self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
-                                                 skip_mwe=skip_mwe, skip=skip, cache=self.local_cache,
+                                                 skip_mwe=skip_mwe, skip=skip, cache=self.local_cache, meta=meta,
                                                  unsegment=unsegment, combine_segs=combine_segs, label=label,
-                                                 batch_name=batch_name, pos=pos, verbosity=verbosity)
-                            if sentence_obj:
+                                                 batch_name=batch_name, pos=pos, verbosity=verbosity):
                                 self.data.append(line)
+                                if unk := sentence_obj.unk:
+                                    for u in unk:
+                                        if u in self.unk:
+                                            self.unk[u] += 1
+                                        else:
+                                            self.unk[u] = 1
+                                if ambig := sentence_obj.morphambig:
+                                    for a in ambig:
+                                        if a.name not in self.ambig:
+                                            self.ambig[a.name] = a
                                 sentcount += 1
                                 sentid += 1
                         elif (sentence_obj := \
@@ -191,11 +219,11 @@ class Corpus():
             except IOError:
                 print("There is no such file as {} (or it can't be opened); try another one!".format(path))
         elif data:
-            # Raw sentences
+            # Raw sentences, but they may include comments
             self.data = data
             if v5 and segment:
                 self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
-                              cache=self.local_cache, unsegment=unsegment,
+                              cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []
@@ -219,11 +247,11 @@ class Corpus():
         Segment one sentence.
         """
         if kwargs.get('verbosity', 0):
-            print("Analyzing {}".format(sentence))
+            print("Analyzing {}; meta {}".format(sentence, kwargs['meta']))
         sentence_obj = self.language.anal_sentence(sentence, **kwargs)
         if sentence_obj:
             self.sentences.append(sentence_obj)
-            self.unks.update(set(sentence_obj.unk))
+#            self.unk.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])
             sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
         return sentence_obj
@@ -240,9 +268,21 @@ class Corpus():
         sent_id = 1
         time0 = time.time()
         todelete = []
+        meta = ''
         for sindex, sentence in enumerate(self.data):
+#            print("Analyzing {}, meta={}".format(sentence, meta))
+            if sentence[0] == '#' and kwargs['comments2meta']:
+#                        print("{} is a comment line".format(line))
+                meta = sentence
+                continue
             if kwargs.get('verbosity', 0):
                 print("Segmenting {}".format(sentence))
+            # metadata from previous line or default
+            if meta:
+                kwargs['meta'] = meta
+                meta = ''
+            else:
+                kwargs['meta'] = ''
             sentence_obj = \
               self.language.anal_sentence(sentence, sent_id=sent_id, **kwargs)
             if not sentence_obj:
@@ -252,7 +292,7 @@ class Corpus():
             else:
 #                sentence_obj.merge_segmentations()
                 self.sentences.append(sentence_obj)
-                self.unks.update(set(sentence_obj.unk))
+                self.unk.update(set(sentence_obj.unk))
                 self.max_words = max([self.max_words, len(sentence_obj.words)])
                 sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
                 sent_id += 1
@@ -392,7 +432,7 @@ class Corpus():
             else:
                 sentence_obj.merge_segmentations()
                 self.sentences.append(sentence_obj)
-                self.unks.update(set(sentence_obj.unk))
+                self.unk.update(set(sentence_obj.unk))
                 self.max_words = max([self.max_words, len(sentence_obj.words)])
                 sentid += 1
         # Delete sentences that didn't pass the filter
@@ -429,7 +469,7 @@ class Corpus():
             if not analyze:
                 sentence_obj.merge_segmentations()
             self.sentences.append(sentence_obj)
-            self.unks.update(set(sentence_obj.unk))
+            self.unk.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])
             return sentence_obj
 

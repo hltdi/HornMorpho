@@ -27,7 +27,8 @@ Includes CoNLL-U and XML output options
 """
 
 import xml.etree.ElementTree as ET
-from conllu import TokenList, Token
+from conllu import TokenList, Token, Metadata
+from conllu.parser import parse_comment_line
 from .geez import degeminate
 #from .gui import SegRoot
 import sys
@@ -93,19 +94,27 @@ class Sentence():
 
     conllu_list = ['id', 'form', 'lemma', 'upos', 'xpos', 'feats', 'head', 'deprel', 'deps', 'misc']
 
-    def __init__(self, text, tokens=[], batch_name='', sentid=0, language=None, label=''):
+    def __init__(self, text, language, **kwargs):
+#                     tokens=[], batch_name='', sentid=0, language=None, label='', meta=''):
+        """
+        kwargs: 'tokens', 'batch_name', 'sentid', 'label', 'meta'
+        """
         self.language = language
         self.um = language.um
-        self.tokens = tokens
+        self.tokens = kwargs.get('tokens', [])
         self.text = text
         self.ntokens = len(text.split())
         self.words = []
-        self.batch_name = batch_name
-        self.sentid = sentid
-        self.label = label or "{}s{}".format(batch_name + "_" if batch_name else '', sentid)
+        meta = kwargs.get('meta')
+        metadata = Metadata(parse_comment_line(meta)) if meta else {}
+        if metadata and 'text' not in metadata:
+            metadata['text'] = text
+        self.sentid = metadata.get('sent_id') or kwargs.get('sentid', 1)
+        self.batch_name = kwargs.get('batch_name', '')
+        self.label = kwargs.get('label') or "{}s{}".format(self.batch_name + "_" if self.batch_name else '', self.sentid)
         self.xml = ''
         self.conllu = TokenList([])
-        self.conllu.metadata = {'text': text, 'sent_id': self.label}
+        self.conllu.metadata = metadata if metadata else Metadata({'text': text, 'sent_id': self.label})
         # For degeminated (or eventually other modified) CoNLL-U representations of sentence
         self.alt_conllu = None
         # list of unknown tokens
@@ -123,7 +132,7 @@ class Sentence():
         self.props = []
 
     def __repr__(self):
-        return "S{}::{}".format(self.sentid, self.text)
+        return "S::{}::{}".format(self.sentid, self.text)
 
     def show(self):
         '''
@@ -139,7 +148,7 @@ class Sentence():
         Version 5: given a Word object, convert it to ambiguous CoNLL-U format,
         and add it to self.words.
         '''
-#        print("$$ add_word {}".format(word))
+#        print("$$ add_word {}, known {}".format(word, word.is_known()))
 #        word.show()
         conllus = []
         for analysis in word:
@@ -150,6 +159,11 @@ class Sentence():
         word.conllu = conllus
         # Add the Word to self.words
         self.words.append(word)
+        # If Word is ambiguous, add it to morphambig
+        if len(word) > 1:
+            self.morphambig.append(word)
+        elif not word.is_known():
+            self.unk.append(word.name)
 
     def print_conllu(self, update_ids=True, file=None):
         '''
@@ -180,6 +194,7 @@ class Sentence():
             self.conllu.extend(conllu)
 #            string += conllu.serialize()
 #        c = TokenList(c)
+#        print("*** conllu {}".format(self.conllu))
         self.conllu_string = self.conllu.serialize()
 #        string
 #        return string
@@ -231,8 +246,9 @@ class Sentence():
         '''
         value is either None or a list of feature=value strings.
         '''
-        value = analdict.get('misc')
+        value = analdict.get('misc') or None
         if value:
+            value.sort()
             value = '|'.join(value)
         return value
 
@@ -896,6 +912,9 @@ class Sentence():
         if len(segmentation) == 1:
             return []
         glosses = [s.get('misc') for s in segmentation]
+        if not any(glosses):
+            return []
+        glosses = [(g if (g and "Gloss" in g) else '') for g in glosses]
         if not any(glosses):
             return []
         return glosses

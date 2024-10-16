@@ -12,7 +12,8 @@
 ተ=te ቱ=tu ቲ=ti ታ=ta ቴ=tE ት=t ቶ=to
 ቸ=ce ቹ=cu ቺ=ci ቻ=ca ቼ=cE ች=c ቾ=co
 ኸ=he ኹ=hu ኺ=hi ኻ=ha ኼ=hE ኽ=h ኾ=ho
-ኀ=^ha=ha ኁ=^hu=hu ኂ=^hi=hi ኃ=^ha=ha ኄ=^hE=hE ኅ=^h=h ኆ=^ho=ho ኃ=^hA
+ኁ=^hu=hu ኂ=^hi=hi ኃ=^ha=ha ኄ=^hE=hE ኅ=^h=h ኆ=^ho=ho ኃ=^hA
+ኀ=^ha=ha
 ሁ=hu ሂ=hi ሃ=ha ሄ=hE ህ=h ሆ=ho ሃ=hA
 ሀ=ha
 ነ=ne ኑ=nu ኒ=ni ና=na ኔ=nE ን=n ኖ=no
