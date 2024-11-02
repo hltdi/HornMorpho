@@ -564,7 +564,7 @@
 <ቅ ም ቅ ም>	c=E,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ቅ ም እ>	c=B,base=0
-  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
+  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=a ; a=i,d=m
 <ቅ ር ፅ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ቅ ር ፍ>	c=A,base=0
@@ -1612,9 +1612,9 @@
 <እ ም ም>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
 <እ ር ም>	c=B,base=0
-  a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=p
+  a=0,v=0 ; a=0,v=p ; a=0,v=as; a=i,d=m ; a=i,v=p
 <እ ር ር>	c=A,base=0
-  a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=i,d=m
+  a=0,v=0 ; a=0,v=as ; a=i,d=m
 <እ ር ግ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ሽ ግ>	c=B,base=0
@@ -1622,7 +1622,7 @@
 <እ ብ ስ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=i,d=m ; a=i,v=p
 <እ ብ ይ>	c=A,tmp=[3=ይ],base=0
-  a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m
+  a=0,v=0 ; a=0,v=p ; a=i,d=m
 <እ ብ ጥ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
 <እ ን ስ>	c=A,base=0
@@ -1636,7 +1636,7 @@
 <እ ው ር>	c=B,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ው ክ>	c=B,base=0
-  a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=i,d=m
+  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ው ጅ>	c=B,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ዝ ዝ>	c=A,base=0

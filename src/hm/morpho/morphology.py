@@ -1390,12 +1390,14 @@ class POSMorphology:
         else:
             return self.anal4(form, init_weight=init_weight, guess=guess)
 
-    def anal(self, form, feats=None, mwe=False, guess=False, reject_same=False, trace=0):
-        return self.anal4(form, v5=True, init_weight=feats, guess=guess, reject_same=reject_same, mwe=mwe, trace=trace)
+    # Version 5 POS analysis.
+    
+    def anal(self, form, feats=None, mwe=False, guess=False, reject_same=False, filter=True, trace=0):
+        return self.anal4(form, v5=True, init_weight=feats, guess=guess, reject_same=reject_same, mwe=mwe, filter=filter, trace=trace)
 
     def anal4(self, form, init_weight=None, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
-             reject_same=False,
+             reject_same=False, filter=True,
              result_limit=0, experimental=False, mwe=False, suffix='',
              to_dict=False, sep_anals=False, normalize=False, v5=False,
              timeit=False, trace=False, tracefeat='', verbosity=0):
@@ -1439,6 +1441,8 @@ class POSMorphology:
                 anals = self.anals_to_dicts(anals)
             if verbosity:
                 print("^^ anal: {}".format(anals))
+            if filter:
+                self.filter_prioritize(anals)
             return anals
         elif trace:
             print('No analysis FST loaded for', self.pos)
@@ -1454,6 +1458,22 @@ class POSMorphology:
     ##
     ## Processing output of anal or gen, v.5.
     ##
+
+    def filter_prioritize(self, analyses):
+        '''
+        analyses is the output of anal(), a list of pairs: [segstring, FSSet].
+        If there is more than one analysis, all analyses that are -prior are deleted.
+        '''
+        if len(analyses) > 1:
+            todel = []
+            for index, (string, features) in enumerate(analyses):
+                if not features.get('prior', True):
+                    todel.append(index)
+            if len(todel) == len(analyses):
+                # All analyses are -prior, so keep them all
+                return
+            for d in reversed(todel):
+                del analyses[d]
 
     def process_segstring(self, string, features, **kwargs):
         '''
@@ -1670,7 +1690,7 @@ class POSMorphology:
         are appended to root when searching for frequency in freq dict.
         '''
         umcats = self.umcats
-#        print("** umcats {}".format(umcats))
+#        print("** umcats {}, um {}".format(umcats, um))
         key = None
         umcats = self.umcats
         if umcats:
@@ -1727,7 +1747,8 @@ class POSMorphology:
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
         dct['pos'] = pos
         if xpos := props.get('xpos'):
-            dct['xpos'] = xpos
+            x = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens, xpos=True)
+            dct['xpos'] = x
         dep, head = self.get_segment_dep_head(morpheme, props, aff_index, stem_index, features, is_stem=is_stem)
 #        print("  ^^ dep {}, head {}".format(dep, head))
         if dep:
@@ -1798,12 +1819,12 @@ class POSMorphology:
 
         return features.get('root', stem)
 
-    def get_segment_pos(self, string, segdict, pos, features, mwe=False, is_stem=False, is_mwe_part=False, mwe_tokens=None):
+    def get_segment_pos(self, string, segdict, pos, features, mwe=False, is_stem=False, is_mwe_part=False, mwe_tokens=None, xpos=False):
         '''
         mwe is False (for single-word items) or a dict of props for MWEs.
         '''
 #        print("   ^^ Looking for posspec in segdict {} {}; mwe tokens {}".format(string, segdict, mwe_tokens))
-        posspec = segdict.get('pos')
+        posspec = segdict.get('xpos' if xpos else 'pos')
         if not posspec:
 #            print("^^ No POS in segdict {}".format(segdict))
             # POS for stem is POS for word by default
@@ -2113,7 +2134,7 @@ class POSMorphology:
         2020.9.22: Added del_feats, a list of features or feature paths
           to delete from the features specified
         """
-#        print("^^ Generating {} ({}); {}".format(root, 'MWE' if mwe else '1', update_feats.__repr__()))
+#        print("^^ {} generating {} ({}); {}".format(self, root, 'MWE' if mwe else '1', update_feats.__repr__()))
 #        print("  ^^ defaultFS {}".format(self.defaultFS.__repr__()))
         fss = None
         if del_feats:

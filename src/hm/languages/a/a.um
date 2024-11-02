@@ -34,7 +34,14 @@ POS n N
 ->UD 3		Person=3
 ->UD *PRSPRO	PronType=Prs
 ->UD *DEMPRO	PronType=Dem
+# suffixed copula
 ->UD PRS	Tense=Pres
+# infinitives and agentives
+->UD CAUS	Voice=Cau
+->UD TR		Voice=Trans
+->UD RECP	*Voice=Rcp
+->UD PASS	Voice=Pass
+->UD ITER	Aspect=Iter
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -54,6 +61,7 @@ p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
+postp:: ጋ:*OBL
 
 # personal pronouns
 Pp:: 1:1;; 2:2;; 3:3
@@ -66,6 +74,11 @@ cnj:: m:TOP;; s:TOP
 
 # attached copula
 tns:: prs:PRS
+
+# voice for infinitives and agentives
+a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
+a,v,base:: 0,p,a:PASS;; 0,a,p:CAUS;; 0,as,p:CAUS;; 0,ast,p:CAUS
+a,v,base:: a,a,*:CAUS;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS;; i,ast,*:CAUS;; i,test,*:RECP
 
 POS v V
 ->UD NEG	Polarity=Neg

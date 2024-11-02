@@ -197,6 +197,8 @@ class Corpus():
                                 if ambig := sentence_obj.morphambig:
                                     for a in ambig:
                                         if a.name not in self.ambig:
+                                            if len(a) == 1:
+                                                print("{} has only one analysis!".format(a.name))
                                             self.ambig[a.name] = a
                                 sentcount += 1
                                 sentid += 1
@@ -251,9 +253,8 @@ class Corpus():
         sentence_obj = self.language.anal_sentence(sentence, **kwargs)
         if sentence_obj:
             self.sentences.append(sentence_obj)
-#            self.unk.update(set(sentence_obj.unk))
             self.max_words = max([self.max_words, len(sentence_obj.words)])
-            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
+#            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
         return sentence_obj
 
     def segment5(self, **kwargs):

@@ -21,6 +21,14 @@ a.e -> start	[:ኣ]
 a.a -> a.a		[:-]
 a.a -> start	[:ኣ]
 
+# Final adverbial ኣ
+CV -> .A		[{I2a};{e2a}]
+.A -> .A		[:-;:>]
+.A -> A.		[:=ኣ]
+.A -> .Ae		[:አ]
+.Ae -> .Ae		[:-]
+.Ae -> A.		[:=ኣ]
+
 CV -> .e		[{I2e};*a;*e]
 .e -> .e		[:-;:>]
 .e -> start		[:አ]
@@ -42,7 +50,7 @@ CV -> .-o		[{I2o}]
 ou -> oua.-		[ዋ:]
 oua.- -> oua-.	[:-]
 oua-. -> oua-.	[:-]
-oua-. -> start	[:ኣ]
+oua-. -> start	[:ኣ;:=ኣ]
 # the other possibility; no change
 ou -> oua.		[:-]
 oua. -> oua.	[:-]
@@ -64,7 +72,7 @@ CV -> /-E		[/:]
 i -> ya.-		[ያ:]
 ya.- -> ya-.	[:-]
 ya-.-> ya-.		[:-]
-ya-. -> start	[:ኣ]
+ya-. -> start	[:ኣ;:=ኣ]
 
 # delete -, <, and > when followed by a consonant
 start -> -.X	[:-;:<;:>]
@@ -75,3 +83,4 @@ start -> -.X	[:-;:<;:>]
 
 start ->
 -.X ->
+A. ->

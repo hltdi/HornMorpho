@@ -39,8 +39,8 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 	  ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
 	  ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
 	  / _ ፟ < > -
-	  # 1s converb suffix
-	  =ኤ
+	  # final adverbial/interjective -ኣ
+	  =ኣ
      A B C D E F G H I J K
 
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
@@ -95,7 +95,7 @@ feats:
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
-    umcats = ['DERAGI', 'TEDERAGI', 'ADRAGI', 'ASDERAGI', 'TEDARAGI', 'ADARAGI', 'DERARAGI', 'TEDERARAGI', 'ADERARAGI', 'ASDERARAGI']
+    umcats = ['*TEDERAGI', '*ADRAGI', '*ASDERAGI', '*TEDARAGI', '*ADARAGI', '*DERARAGI', '*TEDERARAGI', '*ADERARAGI', '*ASDERARAGI']
 #    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
     pos = V
     a = 0 | a  | i
@@ -164,10 +164,13 @@ feats:
         'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case']};
       {'name': 'cop', 'pos': 'VERB', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
-      {'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
+      {'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), \
+        'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
+      {'name': 'GA', 'pos': 'ADP', 'dep': 'case:suf', 'feats':['Case']}
     lemmafeats = d;a,v
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
-#    det = False | True
+    det = False | True
+    def = False | True
 #    n = 1 | 2
 #    g = m | f
     p = 0 | s1 | p1 | sm2 | sf2 | p2 | F2 | sm3 | sf3 | p3
@@ -181,11 +184,14 @@ feats:
     col = False | True
     dis = False | True
     irr = False | True
-    adp = 0 | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ
+    adp = 0 | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ | በስተ | ያለ
+    postp = 0 | ጋ
     cconj = 0 | ም | ስ | ማ | ሳ | ና | ኮ
     Pp = 3 | 2 | 1
     Pn = 1 | 2
     Pg = m | f
+    hum = False | True
+    neg = False | True
 #    cop = False | True
 #    tns = 0 | prs
 

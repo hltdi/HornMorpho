@@ -1,5 +1,5 @@
 $ prep
-  ->poststem	 +prep_det2+		[pos=DET,-pl,p=0,d=0,ptype=dem,-dis,-col]
+  ->poststem	 +prep_det2+		[-pl,p=0,d=0,ptype=dem,-dis,-col]
   በ		[adp=በ,-gen]
   ለ		[adp=ለ,-gen]
   ከ		[adp=ከ,-gen]
@@ -9,6 +9,7 @@ $ prep
   ስለ		[adp=ስለ,-gen]
   ወደ		[adp=ወደ,-gen]
   እስከ	[adp=እስከ,-gen]
+  በስተ	[adp=በስተ,-gen]
   ያለ		[adp=ያለ, -gen]
   --		[adp=0,-gen]
 
@@ -32,7 +33,7 @@ $ stem
   +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
   >>vn_stem<<
   +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0,ptype=prs,-cop]
-  +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ,p=0,d=0,ptype=dem,-cop]
+  +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
   +irr_plr+		[+pl,+irr,d=0,-cop]
 
 $ poststem
@@ -92,9 +93,13 @@ $ cop_bound
 
 $ conj
   /ም		[cconj=ም,spos=ADV]
-  /ስ		[cconj=ስ,spos=ADV]
-  /ማ		[cconj=ማ,spos=ADV]
-  /ሳ		[cconj=ሳ,spos=ADV]
+  /ስ		[cconj=ስ,spos=ADV,-prior]
+  /ማ		[cconj=ማ,spos=ADV,-prior]
+  /ሳ		[cconj=ሳ,spos=ADV,-prior]
   /ና		[cconj=ና,spos=CCONJ]
-  /ኮ		[cconj=ኮ,spos=ADV]
+  /ኮ		[cconj=ኮ,spos=ADV,-prior]
   --		[cconj=0]
+
+$ GA
+  ጋ		[postp=ጋ,-prior]
+  --		[postp=0]

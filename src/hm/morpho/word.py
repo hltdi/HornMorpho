@@ -58,11 +58,21 @@ class Word(list):
     def copy(self):
         return Word(self, name=self.name, unk=self.unk, merges=self.merges)
 
-    def show(self):
+    def show(self, features=None):
         if len(self) == 0:
             print()
         for item in self:
-            print(item)
+            print(self.show1(item, features=features))
+
+    def show1(self, analysis, features=None):
+        if features:
+            values = []
+            for feature in features:
+                value = analysis.get(feature)
+                if value:
+                    values.append(value)
+            return " ;; ".join(values)
+        return analysis
 
 #    def string(self):
 #        return list.__repr__(self)
