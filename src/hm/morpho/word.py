@@ -34,7 +34,7 @@ class Word(list):
 
     EMPTY = None
 
-    def __init__(self, init, name='', unk=False, merges={}):
+    def __init__(self, init, name='', unk=False, merges={}, filter=True):
         '''
         init is a list of analyses returned by Language.analyze5().
         '''
@@ -51,12 +51,28 @@ class Word(list):
 #        self.is_empty = len(self) == 0
 #        self.is_known = not self.unk
         Word.id += 1
+        self.filter_prioritize()
 
     def __repr__(self):
         return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', self.name, "[{}]".format(len(self)) if self.is_known else '')
 
     def copy(self):
         return Word(self, name=self.name, unk=self.unk, merges=self.merges)
+
+    def filter_prioritize(self):
+        if not self.unk and len(self) > 1:
+            todel = []
+            for index, analysis in enumerate(self):
+                features = analysis.get('feats')
+                if features:
+                    priority = features.get('prior', True)
+                    if not priority:
+                        todel.append(index)
+            if len(todel) == len(self):
+                # All analyses are -prior, so keep them all
+                return
+            for d in reversed(todel):
+                del self[d]
 
     def show(self, features=None):
         if len(self) == 0:
@@ -114,11 +130,12 @@ class Word(list):
 #            return
 #        self.sort(key=lambda x: x.get('nsegs', 1))
 
-    def remove(self, indices, index_map):
+    def remove(self, indices, index_map=None):
         '''
         Remove the analyses at indices. Update index_map (a list of pairs)
         to reflect the deletions.
         '''
+        index_map = index_map or [[i, i] for i in range(len(self))]
 #        print(" *** removing {}".format(indices))
         # Reverse-sort indices to avoid changing items to delete.
         indices.sort(reverse=True)
@@ -150,6 +167,34 @@ class Word(list):
                 dicts.append(dct)
         return dicts
 
+    def elim_segmented_dups(self):
+        '''
+        Eliminate analyses which represent segmentations of other unsegmented analyses.
+        This happens with segmentation of derivational affixes, for example, in EES verbal nouns
+        or Oromo causative, passive, and auto-benefactive stems.
+        '''
+        todel = []
+        if len(self) == 1:
+            return
+        for index1, anal1 in enumerate(self[:-1]):
+            lemma1 = anal1.get('lemma')
+            root1 = anal1.get('root')
+            for index2, anal2 in enumerate(self[index1+1:]):
+                i2 = index1 + index2 + 1
+                lemma2 = anal2.get('lemma')
+                if lemma1 != lemma2:
+                    # The analyses are not related
+                    continue
+                root2 = anal2.get('root')
+                if lemma1 == root1 and lemma2 != root2:
+                    # anal1's root is just its lemma, e.g., unanalyzed ተማሪ
+                    todel.append(i2)
+                elif lemma2 == root2 and lemma1 != root1:
+                    # anal2 is unanalyzed
+                    todel.append(index1)
+                # handle other cases, like Oromo abdachiise
+        return todel
+
     def merge1(self, merges, to_del, gemination=False, sep_senses=False, verbosity=0):
         for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
             for index2, (segs2, csegs2) in enumerate(zip(self[index1+1:], self.conllu[index1+1:])):
@@ -159,7 +204,7 @@ class Word(list):
                 if verbosity:
                     print(" *** Comparing segmentations {} and {}".format(index1, i2))
                 c = self.compare_segs(segs1, segs2, csegs1, csegs2, gemination=gemination,
-                                      sep_senses=sep_senses)
+                                      sep_senses=sep_senses, verbosity=verbosity)
                 if c is False:
                     # seg1 and seg2 are identical
                     if verbosity:
@@ -295,7 +340,7 @@ class Word(list):
                 # and delete the second CoNLL-U and analysis
                 to_del.append(i2)
 
-    def compare_lemmas(self, segs1, segs2, gemination=False):
+    def compare_lemmas(self, segs1, segs2, gemination=False, verbosity=0):
         '''
         Compare lemmas and glosses.
         '''
@@ -310,7 +355,7 @@ class Word(list):
         leq = l1 == l2
         return leq, l1, l2
 
-    def compare_glosses(self, segs1, segs2, csegs1, csegs2, leq):
+    def compare_glosses(self, segs1, segs2, csegs1, csegs2, leq, verbosity=0):
         geq = True
         g1 = g2 = None
         gi = -1
@@ -327,7 +372,7 @@ class Word(list):
                             break
         return geq, g1, g2, gi
 
-    def compare_pos(self, segs1, segs2, csegs1, csegs2):
+    def compare_pos(self, segs1, segs2, csegs1, csegs2, verbosity=0):
         pi = -1
         pos1 = segs1.get('pos')
         pos2 = segs2.get('pos')
@@ -341,12 +386,13 @@ class Word(list):
                     pi = mindex
         return poseq, pos1, pos2, pi
 
-    def compare_segs(self, segs1, segs2, csegs1, csegs2, gemination=False, sep_senses=True):
+    def compare_segs(self, segs1, segs2, csegs1, csegs2, gemination=False, sep_senses=True, verbosity=0):
         '''
         Compare the two segmentations (dicts) and CoNLL-U segmentations to see if they can be merged.
         '''
         if segs1 == segs2:
-#            print(" ** segs are equal!")
+            if verbosity:
+                print("   *** segs are equal!")
             return False
         poseq = False
         umeq = False
@@ -361,21 +407,31 @@ class Word(list):
 #            print("  ** nsegs: {} ; {}".format(n1, n2))
             return True
 
-        poseq, pos1, pos2, pi = self.compare_pos(segs1, segs2, csegs1, csegs2)
+        poseq, pos1, pos2, pi = self.compare_pos(segs1, segs2, csegs1, csegs2, verbosity=verbosity)
+        if verbosity:
+            print("  ** compared POS: {} {} {} {}".format(poseq, pos1, pos2, pi))
 
-        leq, l1, l2 = self.compare_lemmas(segs1, segs2, gemination=gemination)
+        leq, l1, l2 = self.compare_lemmas(segs1, segs2, gemination=gemination, verbosity=verbosity)
+        if verbosity:
+            print("  ** compared lemmas: {} {} {}".format(leq, l1, l2))
 
-        geq, g1, g2, gi = self.compare_glosses(segs1, segs2, csegs1, csegs2, leq)
+        geq, g1, g2, gi = self.compare_glosses(segs1, segs2, csegs1, csegs2, leq, verbosity=verbosity)
+        if verbosity:
+            print("  ** compared glosses: {} {} {} {}".format(geq, g1, g2, gi))
 
         um1 = segs1.get('um')
         um2 = segs2.get('um')
-        i, d1, d2 = Word.compare_um(um1, um2)
+        i, d1, d2 = Word.compare_um(um1, um2, verbosity=verbosity)
+        if verbosity:
+            print("  ** compared UM: {} {} {}".format(i, d1, d2))
         if not d1 and not d2:
             umeq = True
 
         udf1 = segs1.get('udfeats')
         udf2 = segs2.get('udfeats')
-        i, d1, d2 = Word.compare_udf(udf1, udf2)
+        i, d1, d2 = Word.compare_udf(udf1, udf2,verbosity=verbosity)
+        if verbosity:
+            print("  ** compared UDF: {} {} {}".format(i, d1, d2))
         if not d1 and not d2:
             udfeq = True
         if d1 and d2:
@@ -392,6 +448,8 @@ class Word(list):
             sufeq = Word.parts_equal(segs1.get('suf'), segs2.get('suf'))
             stemeq = Word.parts_equal([segs1.get('stem')], [segs2.get('stem')])
             segseq = preeq and stemeq and sufeq
+            if verbosity:
+                print("  ** compared parts: pre {} suf {} stem {} seg {}".format(preeq, sufeq, stemeq, segseq))
         if poseq and udfeq and leq and segseq and (geq or not sep_senses):
             return False
         else:
@@ -424,7 +482,7 @@ class Word(list):
         return True
             
     @staticmethod
-    def compare_um(um1, um2):
+    def compare_um(um1, um2, verbosity=0):
         if not um1 or not um2:
             return None, None, None
         um1 = set(um1.split(';'))
@@ -437,7 +495,7 @@ class Word(list):
         return inters, diff1, diff2
 
     @staticmethod
-    def compare_udf(udf1, udf2):
+    def compare_udf(udf1, udf2, verbosity=0):
         if not udf1 or not udf2:
             return None, None, None
         udf1 = set(udf1.split('|'))
@@ -456,7 +514,7 @@ class Word(list):
         '''
         udf is a standard UDFeats string, with | separating features.
         to_replace is a string consisting of comma-separated features or a list of features.
-        replacement is a single feature-value pairs, starting with & or containing /.
+        replacement is a single feature-value pair, starting with & or containing /.
         '''
         udf = udf.split('|')
         if isinstance(to_replace, str):

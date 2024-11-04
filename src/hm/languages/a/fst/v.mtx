@@ -3,7 +3,7 @@ $ conj_prep_pre
   # In UM and UD, የ- የም- እም- are SCONJ
   የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ]
   # rare with perfective but it does occur; for now limit to non-negative, non-passive/causative, root 1=X
-  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0,tmp=[1=X],ppos=ADP];[sconj=0,t=p,+rel,-neg,-mc,+sub,adp=0,v=0,a=0,tmp=[1=X],ppos=SCONJ]
+  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0,tmp=[1=X],ppos=ADP,-prior];[sconj=0,t=p,+rel,-neg,-mc,+sub,adp=0,v=0,a=0,tmp=[1=X],ppos=SCONJ,-prior]
   ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
   ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
   እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
@@ -202,7 +202,9 @@ $ accus_bound
 
 $ cconj1
   # 2024.11.01: updated to exclude when there are other analyses (negative!)
-  /ም		[cconj1=ም,-prior]
+  # only permit ም with negative if subordinate (ባይመጣም) or main clause (አይመጣምም), but not non-subordinate and
+  # not main clause  (-sub,-mc) (*አይመጣም)
+  /ም		[cconj1=ም,-prior,-neg];[cconj1=ም,-prior,+neg,+sub];[cconj1=ም,-prior,+neg,+mc,-sub]
   /ስ		[cconj1=ስ,-prior]
 # 2024.10.14: make these ም + ኣ, ስ + ኣ  
 #  /ማ		[cconj1=ማ]
@@ -218,7 +220,7 @@ $ cconj2
   # impossible in subordinate clauses; (re)added 2024.10.14; updated 2024.10.29 to exclude ኣ following ኣ and if there are other analyses
   =ኣ	       <ኣ>		[cconj2=ኣ,spos=ADV,-sub,+mc,-prior]
   # interrogative, impossible in imperative, jussive?
-  ን		[cconj2=ን,spos=ADV,-sub,t=i|p,-prior];[cconj2=ን,spos=ADV,-sub,t=c,+mc,-prior]
+  ን		[cconj2=ን,spos=ADV,-sub,+mc,t=i|p,-prior];[cconj2=ን,spos=ADV,-sub,t=c,+mc,-prior]
   --		[cconj2=0]
 
 $ end

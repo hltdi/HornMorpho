@@ -374,6 +374,20 @@ class Sentence():
         if 'udfeats' in analdict:
             analdict['udfeats'] = udfeats
 
+    def postproc(self, verbosity=0):
+        '''
+        Attempt to simplify disambiguation by eliminating some duplication at the Word level.
+        '''
+        if verbosity:
+            print("Post processing {}".format(self))
+        # Eliminate derivational analyses that duplicated unsegmented forms.
+        for word in self.words:
+            todel = word.elim_segmented_dups()
+            if todel:
+                word.remove(todel)
+                if len(word) == 1:
+                    self.morphambig.remove(word)
+
     def merge5(self, gemination=False, sep_senses=False, verbosity=0):
         '''
         Attempt to merge segmentations of each word.

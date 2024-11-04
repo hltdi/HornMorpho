@@ -1070,6 +1070,9 @@ class Language:
     ### Character conversion of various sorts.
     ###
 
+    def transliterate(self, token):
+        return self.romanize(token, ipa=True)
+
     def normalize(self, string):
         '''
         Normalize the string using the language's charnorm translation table if there is one.
@@ -1696,7 +1699,10 @@ class Language:
         Look for the unanalyzed form of the word, returning the default in dict anal format.
         '''
         words = self.morphology.wordsM if mwe else self.morphology.words1
-            
+        anal = {'token': word, 'nsegs': 1, 'pos': ''}
+        if not self.roman:
+            trans = self.transliterate(word)
+            anal['misc'] = ["Translit={}".format(trans)]
         if word in words:
             pos = ''
             feats = ''
@@ -1705,7 +1711,9 @@ class Language:
 #            lex = self.morphology.words1[word]
             if len(lex) == 1:
                 pos = lex[0]
-                return [{'token': word, 'pos': pos, 'nsegs': 1, 'freq': freq}]
+                anal['freq'] = freq
+                return [anal]
+#                return [{'token': word, 'pos': pos, 'nsegs': 1, 'freq': freq}]
 #            form, cats = self.morphology.words1[word]
             form, cats = words.get(word)
             if cats[0] == '[':
@@ -1727,13 +1735,19 @@ class Language:
                 else:
                     f = feats[0].split('=')[1]
                     pos = f.split(';')[0]
-                    return [{'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq, 'um': f}]
+                    anal['pos'] = pos
+                    anal['um'] = f
+                    return [anal]
+#                    return [{'token': form, 'pos': pos, 'nsegs': 1, 'freq': freq, 'um': f}]
             else:
                 pos = cats
             freq = self.morphology.get_freq(word)
             tokens = form.split()
             nsegs = len(tokens)
-            anal = {'token': form, 'pos': pos, 'nsegs': nsegs, 'freq': freq}
+            anal['freq'] = freq
+            anal['nsegs'] = nsegs
+            anal['pos'] = pos
+#            anal = {'token': form, 'pos': pos, 'nsegs': nsegs, 'freq': freq}
             if nsegs > 1:
                 dep = 'fixed'
                 # MWE

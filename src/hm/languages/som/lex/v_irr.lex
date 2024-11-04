@@ -5,13 +5,13 @@ tidhi  idhi   [t=pst,a=None,-neg,p=3,n=1,g=f,en=say];[t=pst,-neg,p=2,n=1,en=say]
 nidhi  idhi   [t=pst,a=None,-neg,p=1,n=2,en=say]
 tidhaahdeen idhi  [t=pst,a=None,-neg,p=2,n=2,en=say]
 yidhaahdeen idhi  [t=pst,a=None,-neg,p=3,n=2,en=say]
-odhan       idhi  [t=pst,a=None,+neg,en=say];[t=imp,n=1,+neg];[t=inf]
-odhanin     idhi  [t=pst,a=None,+neg,en=say];[t=imp,n=1,+neg]
+odhan       idhi  [t=pst,a=None,+neg,en=say];[t=imp,n=1,+neg,en=say];[t=inf,en=say]
+odhanin     idhi  [t=pst,a=None,+neg,en=say];[t=imp,n=1,+neg,en=say]
 # Imperative
-dhe    idhi   [t=imp,n=1,-neg]
-dheh   idhi   [t=imp,n=1,-neg]
-dhaha  idhi   [t=imp,n=2,-neg]
-odhanina  idhi   [t=imp,n=2,+neg]
+dhe    idhi   [t=imp,n=1,-neg,en=say]
+dheh   idhi   [t=imp,n=1,-neg,en=say]
+dhaha  idhi   [t=imp,n=2,-neg,en=say]
+odhanina  idhi   [t=imp,n=2,+neg,en=say]
 # Present
 #idhaahdaa    idhi
 # ...

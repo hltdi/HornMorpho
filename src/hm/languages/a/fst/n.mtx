@@ -4,7 +4,7 @@ $ prep
   ለ		[adp=ለ,-gen]
   ከ		[adp=ከ,-gen]
   የ		[adp=የ,+gen]
-  እ		[adp=እ,-gen]
+  እ		[adp=እ,-gen,-prior]
   እንደ	[adp=እንደ,-gen]
   ስለ		[adp=ስለ,-gen]
   ወደ		[adp=ወደ,-gen]
@@ -65,6 +65,7 @@ $ poss_det
   ሽ		[p=sf2]
   ኣ/ችሁ	[p=p2]
   ዎ		[p=F2]
+  ዎን		[p=F2]
   # possessive or determiner
   #{
   ኡ		[p=sm3,-hum];[p=0,+def,g=m,+hum,pos=N]         #pd=m,-det];[pd=m,+det,p=0,g=m]

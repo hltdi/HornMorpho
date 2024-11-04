@@ -1441,8 +1441,8 @@ class POSMorphology:
                 anals = self.anals_to_dicts(anals)
             if verbosity:
                 print("^^ anal: {}".format(anals))
-            if filter:
-                self.filter_prioritize(anals)
+#            if filter:
+#                self.filter_prioritize(anals)
             return anals
         elif trace:
             print('No analysis FST loaded for', self.pos)
@@ -1459,21 +1459,22 @@ class POSMorphology:
     ## Processing output of anal or gen, v.5.
     ##
 
-    def filter_prioritize(self, analyses):
-        '''
-        analyses is the output of anal(), a list of pairs: [segstring, FSSet].
-        If there is more than one analysis, all analyses that are -prior are deleted.
-        '''
-        if len(analyses) > 1:
-            todel = []
-            for index, (string, features) in enumerate(analyses):
-                if not features.get('prior', True):
-                    todel.append(index)
-            if len(todel) == len(analyses):
-                # All analyses are -prior, so keep them all
-                return
-            for d in reversed(todel):
-                del analyses[d]
+#    def filter_prioritize(self, analyses):
+#        '''
+#        analyses is the output of anal(), a list of pairs: [segstring, FSSet].
+#        If there is more than one analysis, all analyses that are -prior are deleted.
+#        '''
+#        if len(analyses) > 1:
+#            todel = []
+#            for index, (string, features) in enumerate(analyses):
+#                priority = features.get('prior', True)
+#                if not priority:
+#                    todel.append(index)
+#            if len(todel) == len(analyses):
+#                # All analyses are -prior, so keep them all
+#                return
+#            for d in reversed(todel):
+#                del analyses[d]
 
     def process_segstring(self, string, features, **kwargs):
         '''
@@ -1561,7 +1562,7 @@ class POSMorphology:
         procdict['misc'] = []
         stemmisc = []
         if not self.language.roman:
-            trans = self.transliterate(token)
+            trans = self.language.transliterate(token)
             procdict['misc'].append("Translit={}".format(trans))
         if mwe:
             # For properties, prefer specific lexical ones over generic lexical ones
@@ -1680,8 +1681,8 @@ class POSMorphology:
 #        print("^^ process5: prodict {}".format(procdict))
         return procdict
 
-    def transliterate(self, token):
-        return self.language.romanize(token, ipa=True)
+#    def transliterate(self, token):
+#        return self.language.romanize(token, ipa=True)
 
     def get_root_freq(self, root, lemma, um):
         '''
@@ -1690,16 +1691,22 @@ class POSMorphology:
         are appended to root when searching for frequency in freq dict.
         '''
         umcats = self.umcats
-#        print("** umcats {}, um {}".format(umcats, um))
+#        print("*** getting root freq for {} {} {}".format(root, lemma, um))
+#        print("  ** umcats {}, um {}".format(umcats, um))
         key = None
         umcats = self.umcats
         if umcats:
             um1 = UniMorph.um_intersect(um, umcats)
-            key = "{}:{}".format(root, um1)
+            if um1:
+                key = "{}:{}".format(root, um1)
+            else:
+                key = root
+        elif root:
+            # Checking root first ensures that verbal noun frequency is based on
+            # on the verb root rather than the noun itself
+            key = root
         elif lemma:
             key = EES.degeminate(lemma)
-        elif root:
-            key = EES.degeminate(root)
         else:
             return 1
         freq = self.morphology.get_freq(key)

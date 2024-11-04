@@ -535,8 +535,8 @@
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ስ ድ ድ>	c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
-<ስ ጥ እ>	c=A,base=0
-  a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
+<ስ ጥ እ>	c=A,base=p
+  a=0,v=a ; a=0,v=p ; a=a,v=p ; a=a,v=a ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ስ ጥ ይ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ሽ ል ም>	c=B,base=0
@@ -1601,8 +1601,6 @@
   a=0,v=a ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ን ጥ ፍ>	c=A,base=0
   a=0,v=0 ; a=a,v=a ; a=a,v=p ; a=i,d=m
-<ን ጭ እ>	c=A,base=0
-  a=0,v=0 ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ን ፍ ር ቅ>	c=E,base=0
   a=0,v=0 ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ን ፍ ግ>	c=A,base=0

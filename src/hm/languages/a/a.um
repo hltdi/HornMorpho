@@ -80,6 +80,9 @@ a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
 a,v,base:: 0,p,a:PASS;; 0,a,p:CAUS;; 0,as,p:CAUS;; 0,ast,p:CAUS
 a,v,base:: a,a,*:CAUS;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS;; i,ast,*:CAUS;; i,test,*:RECP
 
+# አዕማድ for infinitives and agentives
+a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
+
 POS v V
 ->UD NEG	Polarity=Neg
 ->UD IMP	Mood=Jus

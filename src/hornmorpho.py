@@ -46,6 +46,16 @@ TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝ
 
 TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
 
+## Starter sentence analysis
+
+def anal_amh():
+    return hm.anal_corpus(
+        'a', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=1500, language_pos=1)
+
+def anal_tir():
+    return hm.anal_corpus(
+        't', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=1500, language_pos=0)
+
 ## Fixing treebanks
 
 def add_aimad_root(path, verbs):
