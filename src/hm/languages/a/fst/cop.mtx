@@ -4,46 +4,70 @@ $ prep
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
   --  	[-neg,cnj1=0];[-rel,-sub,+neg,cnj1=0]
 
-#$ prep_bound
-#  -
-#
-#$ Q
-#  ም	<ምን>		[+int,-neg,cnj1=0]
-#  ምንድ	<ምንድን>	[+int,-neg,cnj1=0]
-#  ማ	<ማን>		[+ing,-neg,cnj1=0]
-#  --				[-int]
+$ prepbound
+  -
+
+$ pastneg
+  ኣል		[+neg,t=pst]
+  --		[-neg];[t=prs]
 
 $ stem_pre
   <
 
 $ stem1
-  ኣይደል	[+neg,p=3,n=1,g=m,-m,cnj2=0,cnj1=0]
-  ኣይደ/ለ	[+neg,p=3,n=1,g=m]
-  ኣይደ/ለሁ	[+neg,p=1,n=1]
-  ኣይደ/ለህ	[+neg,p=2,n=1,g=m]
-  ኣይደ/ለሽ	[+neg,p=2,n=1,g=f]
-  ኣይደ/ለች	[+neg,p=3,n=1,g=f]
-  ኣይደ/ለን
-  ኣይደ/ላችሁ
-  ኣይደ/ሉ
-  ነ/ኝ	[p=1,n=1,-neg]
-  ነሁ		[p=1,n=1,+neg]
-  ነህ		[p=2,n=1,g=m,-frm]
-  ነሽ		[p=2,n=1,g=f,-frm]
-  ነዎት		[p=2,+frm]
-  ነው		[p=3,n=1,g=m,-neg]
-  ነ/ች		[p=3,n=1,g=f]
-  ናት		[p=3,n=1,g=f,-neg]
-  ነን		[p=1,n=2]
-  ና/ችሁ	[p=2,n=2]
-  ና/ቸው	[p=3,n=2,-neg]
-
-$ neg_suf
-  ም		[+neg,-sub,+m]
-  --		[-neg];[+neg,cnj2=0]
+  ኣይደል	[+neg,p=3,n=1,g=m,-m,cnj2=0,cnj1=0,t=prs]
+  ኣይደ/ለ	[+neg,p=3,n=1,g=m,t=prs]
+  ኣይደ/ለሁ	[+neg,p=1,n=1,t=prs]
+  ኣይደ/ለህ	[+neg,p=2,n=1,g=m,t=prs]
+  ኣይደ/ለሽ	[+neg,p=2,n=1,g=f,t=prs]
+  ኣይደ/ለች	[+neg,p=3,n=1,g=f,t=prs]
+  ኣይደ/ለን	[+neg,p=1,n=2,t=prs]
+  ኣይደ/ላችሁ	[+neg,p=2,n=2,t=prs]
+  ኣይደ/ሉ	[+neg,p=3,n=2,t=prs]
+  ነ/ኝ	[p=1,n=1,-neg,t=prs]
+  ነሁ		[p=1,n=1,+neg,t=prs]
+  ነህ		[p=2,n=1,g=m,-frm,t=prs]
+  ነሽ		[p=2,n=1,g=f,-frm,t=prs]
+  ነዎት		[p=2,+frm,t=prs]
+  ነው		[p=3,n=1,g=m,-neg,t=prs]
+  ነ/ች		[p=3,n=1,g=f,t=prs]
+  ናት		[p=3,n=1,g=f,-neg,t=prs]
+  ነን		[p=1,n=2,t=prs]
+  ና/ችሁ	[p=2,n=2,t=prs]
+  ና/ቸው	[p=3,n=2,-neg,t=prs]
+  ነ/በር	[t=pst]
+#  ነ/በርኩ	[t=pst,p=1,n=1]
+#  ነ/በርክ	[t=pst,p=2,n=1,g=m]
+#  ነ/በርሽ	[t=pst,p=2,n=1,g=f]
+#  ነ/በረ 	[t=pst,p=3,n=1,g=m]
+#  ነ/በረች	[t=pst,p=3,n=1,g=f]
+#  ነ/በርን	[t=pst,p=1,n=2]
+#  ነ/በራችሁ 	[t=pst,p=2,n=2]
+#  ነ/በሩ	[t=pst,p=3,n=2]
 
 $ stem_post
   >
+
+$ subj
+  አ		[p=3,n=1,g=m,t=pst]
+  አ/ች	[p=3,n=1,g=f,t=pst]
+  ኩ		[p=1,n=1,t=pst]
+  ክ		[p=2,n=1,g=m,t=pst]
+  ሽ		[p=2,n=1,g=f,t=pst]
+  ን		[p=1,n=2,t=pst]
+  ኣችሁ	[p=2,n=2,t=pst]
+  ኡ		[p=3,n=2,t=pst]
+  --		[t=prs];[t=pst,-neg]
+
+$ subjbound
+  -
+
+$ neg_suf
+  ም		[+neg,-sub,+m]
+  --		[-neg];[+neg,cnj2=0,t=prs];[+neg,t=pst,+rel]
+
+$ neg2bound
+  -
 
 $ conj
   /ና		[cnj2=ና,apos=CCONJ]
@@ -55,4 +79,4 @@ $ conj
   --		[cnj2=0]
 
 $ end
-  --		[pos=V,xpos=COP,lemma=ነው,t=prs]
+  --		[pos=AUX,xpos=COP,lemma=ነው]

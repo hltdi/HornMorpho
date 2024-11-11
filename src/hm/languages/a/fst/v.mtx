@@ -58,7 +58,7 @@ $ sb_pre
   ል   	 	[t=j,sp=1,sn=1];[t=i|j,sp=1,sn=1,+neg]
 # % optional gemination
   እን  	[t=i|j,sp=1,sn=2]
-  /ን  <ን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
+  /ን  <እን>	[t=i|j,sp=1,sn=2,+neg];[t=i,sp=1,sn=2,+sub]
   --  	[t=p];[t=c];[t=j,sp=2,-neg]
 
 $ prestem
@@ -68,7 +68,6 @@ $ voice_pre
   # the 4 ተስተ- verbs, along with +-pr (passive-reflexive) feature: alternative to additional v=test feature in v.tmp
   # also ተተካከለ, which isn't distinguished by a feature from ተካከለ
   ->poststem	+irr_vstem+	[+pr]
-#  ->conj2		+nebber+		[-pr,t=p,sp=3,sn=1,sg=m,op=0,1=ን,2=ብ,3=ር,r=ንብር,c=A,a=0,v=0,-acc,ax=0]
   # transitive
   ኣ-			[v=a,a=0,-pr]
   ኣ/-		[v=a,a=a,-pr];[v=a,a=i,tmp=[1=X],-pr]
@@ -110,9 +109,9 @@ $ sb_suf
   ኤ		[sp=1,sn=1,t=c]
   ን    	[sp=1,sn=2,t=p]
   አን    	[sp=1,sn=2,t=c]
-  # include exceptions: ነበር እንደሆን
+  # include exceptions: ጀመር  እንደሆን (should these be in aux?)
   --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
-		[a=0,v=0,t=p,-neg,+mc,-sub,r=ንብር|ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0];
+		[a=0,v=0,t=p,-neg,+mc,-sub,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0];
 		[a=0,v=0,t=p,-neg,sconj=እንደ,r=ህውን,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0]
 
 $ ss_bound

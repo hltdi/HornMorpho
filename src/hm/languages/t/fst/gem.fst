@@ -1,5 +1,5 @@
 -> start
 
-start -> start	[^N;:/]
+start -> start	[አ:ኣ;^N;:/]
 
 start ->

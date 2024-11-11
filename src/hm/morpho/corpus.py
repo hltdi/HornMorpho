@@ -31,6 +31,7 @@ from tkinter.ttk import *
 from tkinter.font import *
 import time
 from .gui import *
+from .cg import *
 
 # Note: these directories will probably be different for each user!
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'datasets', 'CACO')

@@ -47,7 +47,8 @@ POS n N
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 
 pos:: NADJ:N;; NADV:N
-#adp:: እስከ:TERM;; ስለ:PRP;; እንደ:EQTV;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+# added back; possible needed for CG (2024.11.10)
+adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 pl:: True:PL;; False:SG
@@ -195,6 +196,9 @@ neg:: NEG
 
 rel:: True:*RELC
 
+# Main clause vs. subordination
+rel,sub:: False,False:*MAIN
+
 ## morphological valence/voice
 # v=ast (አስታወቀ) -> TR
 #a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
@@ -227,17 +231,19 @@ o,oc:: s1,b:*MAL1S;; p1,b:*MAL1P;; sm2,b:*MAL2SM;; sf2,b:*MAL2SF;; F2,b:*MAL2S;F
 
 det:: DEF
 
-#adp:: እስከ:TERM;; ስለ:PURP;; ወደ:ALL;; ከ:ABL;; በ:INS;; ለ:DAT;; እ:AT
+# added back; possibly needed for CG (2024.11.10)
+adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
 # 2024.7.7: simplifed adpositions to *OBL
 adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
-#sconj:: ስ:*TEMP;; ብ:COND;; እንድ:PURP;; ል:PURP;; እስክ:TERM;; ከ:COND;; እየ:*TEMP
+# added back; possible needed for CG (2024.11.10)
+sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC
 # 2024.7.7: simplified subordinating conjunctions to SUBORD
 sconj:: ስ:*SUBORD;; ብ:*SUBORD;; እንድ:*SUBORD;; ል:*SUBORD;; እስክ:*SUBORD;; ከ:*SUBORD;; እየ:*SUBORD
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
-POS cop V
+POS cop AUX
 ->UD PRS	Tense=Pres
 ->UD PST	Tense=Past
 ->UD NEG	Polarity=Neg
@@ -254,4 +260,5 @@ neg:: NEG
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL
 g:: m:MASC;; f:FEM
+sub:: False:*SUBORD;; True:*MAIN
 

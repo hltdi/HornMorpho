@@ -197,8 +197,10 @@ feats:
 
   pos: cop copula
     morphotax::
-	{'name': 'conj_prep1', 'pos': 'ADP', 'dep': 'mark:pre'};;
-	{'name': 'STEM', 'pos': 'V'};;
+	{'name': 'conj_prep1', 'pos': 'ADP', 'dep': 'mark:pre'};
+	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:pre', 'feats': ['Polarity']};;
+	{'name': 'STEM', 'pos': 'V', 'feats': ['Tense']};;
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
 	{'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
     nomwe

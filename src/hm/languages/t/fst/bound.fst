@@ -60,6 +60,10 @@ stem -> stem		[^N;/]
 stem -> stemV.+		[*v]
 stemV.+ -> stemV+	[:>]
 stemV+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;^^q;:አ;:-]
+# optionally in ይ
+stem -> stemy.+		[ይ]
+stemy.+ -> stemy+	[:>]
+stemy+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ]
 
 # stem ending a consonant
 stem -> stemC.+		[*]

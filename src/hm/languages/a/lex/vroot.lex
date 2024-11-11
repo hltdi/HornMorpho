@@ -1887,7 +1887,7 @@
   a=0,v=0 ; a=0,v=p ; a=i,d=m
 <ል ብ ጥ>	c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,d=m
-<ል እ ል እ>	c=E,base=0
+<ል እ ል እ>	c=E,base=0,-pal
   a=0,v=0 ; a=0,v=a ; a=i,d=m
 <ል ኩ ስ>	c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,d=m

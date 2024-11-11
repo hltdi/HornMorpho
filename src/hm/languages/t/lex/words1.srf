@@ -33,17 +33,18 @@
 ግን  ግን  CCONJ
 ከኣ  ከኣ  CCONJ
 ኸኣ  ከኣ	CCONJ
-ሓደ  ሓደ  NUM
+ደኣ  ደኣ	CCONJ
+ድኣ  ደኣ	CCONJ
+ወይም ወይም	CCONJ
+ወይስ ወይስ	CCONJ
 ወይ  ወይ  INTJ
 ኩሉ  ኩ/ሉ  ADJ
 ጥራይ  ጥራይ  ADV
 ጥራሕ  ጥራሕ  ADV
 እዋን  እዋን  CCONJ
-ክልተ  ክል/ተ  NUM
 ገለ  ገለ  PRON
 ማለት  ማለት  N
 ካልኦት  ካልኦት  ADJ
-ሓንቲ  ሓንቲ  NUM
 ግና  ግና  CCONJ
 ስነ  ስነ  N
 እምበር  እምበር  CCONJ
@@ -51,7 +52,6 @@
 ብፍላይ  ብፍላይ n ADV
 ከመይ  ከመይ  ADV
 ኣይ  ኣይ  INTJ
-ሰለስተ  ሰለስተ  NUM
 ካልኣይ  ካልኣይ  ADJ
 ዶ  ዶ  ADV
 'ዶ ዶ  ADV
@@ -84,6 +84,7 @@
 ክንደይ  ከንደይ  ADV
 ዋላ  ዋላ  ADV
 ወላ ዋላ  ADV
+ምናልባት  ምናልባት  ADV
 ስቕ ስቕ  PART
 ሱቕ ሱቕ  PART
 ቅር ቅር  PART

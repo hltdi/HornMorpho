@@ -93,7 +93,7 @@ stem -> TA		[ታ:ተ]	[d=a,v=p]
 stemsuf -> stemsuf	[^N;/]
 
 # agent and manner suffix
-stemsuf -> agtsuf	[{^I2i};{^I}]	[d=a]
+stemsuf -> agtsuf	[{^I2i};{^I}]	[d=a,+pal]
 agtsuf -> agtsuf-	[:-]
 agtsuf- -> fin		[:ኢ]
 

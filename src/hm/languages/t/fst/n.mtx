@@ -36,13 +36,13 @@ $ prep_bound
 $ neg1
   ኣይ		[+neg,pos=ADJ|PRON,-z];[+neg,pos=N,d=inf,-z]
   ዘይ		[+neg,pos=N,d=inf,+z]
-  --		[-neg];[pos=N,d=0]
+  --		[-neg]
 
 $ prestem
   <
 
 $ stem
-  +n_stem+  [pos=N|ADJ|DET|PRON,d=0,-z]
+  +n_stem+  [pos=N|ADJ|DET|PRON|NUM,d=0,-z]
   +n_name+  [pos=PROPN,-pl,d=0,-z]
   >>vn_stem<<
 

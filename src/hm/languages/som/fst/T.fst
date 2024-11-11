@@ -4,48 +4,60 @@
 # T -> sh ; l _
 # T -> s ; [cls=2];[cls=3];[a=prg] _
 
--> stem
+-> stem0
 
-# stem
-stem -> =.       [=]
-=. -> suff       [t:T;$;!]
+# delete the stem start character
+stem0 -> stem [:<]
+
+# T -> t
+stem -> stem     [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$;I;:>]
+stem -> stem_   [:-]
+stem_ -> suff	[t:T;$;I;!;:-]
 
 # T -> d
-stem -> .d       [c;d;h;kh;q;w;x;y;']
-.d -> =.d        [=]
-.d -> stem       [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$]
-# can these consonants follow d?
-.d -> .d         [c;d;h;kh;q;w;x;y;']
+stem -> .d       [c;d;h;kh;q;w;x;y;';:>]
+.d -> stem       [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$;I;:>]
+.d -> .d         [c;d;h;kh;q;w;x;y;';:>]
 .d -> .dh        [dh]
-.d -> l.         [l]
-=.d -> suff      [d:T;$;!]
+.d -> l.	 [:l]
+.d -> l		 [l]
+.d -> .d_	 [:-]
+.d_  -> suff	 [d:T;$;I;!;:-]
 
 # T -> dh
 stem -> .dh      [dh]
-.dh -> =.dh      [=]
-.dh -> stem      [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$]
-# can these consonants follow dh?
+.dh -> stem      [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$;I;:>]
 .dh -> .d        [c;d;h;kh;q;w;x;y;']
-.dh -> .dh       [dh]
-.dh -> l.        [l]
-=.dh -> suff     [dh:T;$;!]
+.dh -> l.	 [:l]
+.dh -> l	 [l]
+.dh -> .dh       [dh;:>]
+.dh -> .dh_	 [:-]
+# second dh can be deleted orthographically
+.dh_ -> suff      [dh:T;:T;$;I;!;:-]
 
-# T -> sh
-stem -> l.       [l]
-l. -> l=.        [=]
-l=. -> suff      [sh:T;$;!]
+# lT -> sh (l deleted)
+stem -> l.       [:l]
+l. -> stem       [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$;I;:>]
 l. -> .d         [c;d;h;kh;q;w;x;y;']
-l. -> l.         [l]
+# probably not possible
+l. -> l.         [:l;:>]
 l. -> .dh        [dh]
-l. -> suff       [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$]
+l. -> l._	 [:-]
+l._ -> suff    [sh:T]
 
-# other consonants
-stem -> stem     [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$]
+# other l (not followed by T)
+stem -> l	[l]
+l -> stem	 [b;f;g;j;k;m;n;p;r;s;sh;t;v;z;$;I;:>]
+l -> .d         [c;d;h;kh;q;w;x;y;']
+l -> l          [l;:>]
+l -> .dh        [dh]
+l -> l_	 [:-]
+l_ -> suff    [$;I;!;:-]
 
 # environments for T -> s
 # causative -i...
 
-suff -> suff     [$;!;T]
+suff -> suff     [$;I;!;T;:-]
+
 suff ->
-# no suffix?
-=. ->
+

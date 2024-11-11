@@ -86,7 +86,6 @@
 አ/ማካይ/ነት	'' [g=m,pos=N,t=[eng="agency,means"]]
 መካ/ከል	'' [pos=N,t=[eng="central,medium"]]
 መሃ/ከል	መካ/ከል [pos=N,t=[eng="central,medium"]]
-ምትክ  '' [pos=N,t=[eng=substitute]]
 ዳር	'' [pos=N,t=[eng="edge,bank,border"]]
 #
 ሂስ	'' [pos=N,t=[eng=criticism]]
@@ -10153,7 +10152,6 @@
 አንዳች	'' [pos=N]
 እያንዳንዱ	'' [pos=N]
 አንጋፋ	'' [pos=N]
-እኩል	'' [pos=N]
 ትክክል	'' [pos=N]
 አውላላ	'' [pos=N]
 ታዳጊ	'' [pos=N]

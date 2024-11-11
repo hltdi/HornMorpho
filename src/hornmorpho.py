@@ -48,15 +48,30 @@ TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ 
 
 ## Starter sentence analysis
 
-def anal_amh():
+def anal_amh(n_sents=1500, disambiguate=False):
     return hm.anal_corpus(
-        'a', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=1500, language_pos=1)
+        'a', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=n_sents, language_pos=1, disambiguate=disambiguate)
 
 def anal_tir():
     return hm.anal_corpus(
         't', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=1500, language_pos=0)
 
 ## Fixing treebanks
+
+def fix_tአ():
+    '''
+    Replace word initial አ with ኣ.
+    '''
+    position = 0
+    lines = []
+    with open("../../EES-Res/text/amti/ti_am_starter.txt") as file:
+        for line in file:
+            line = line.strip()
+            if line[0] == '#':
+                lines.append(line)
+                position = 0
+            elif position == 0:
+                pass
 
 def add_aimad_root(path, verbs):
     '''

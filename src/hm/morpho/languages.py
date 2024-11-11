@@ -52,6 +52,7 @@ ABBREV2LANG = {'a': 'አማርኛ',
                'te': 'ትግረ',
                'g': 'ግዕዝ',
                'ch': 'ቸሃ',
+               'so': 'Af Soomaali',
                'eng': 'English',
                'stv': 'የስልጤ አፍ',
                'k': 'ክስታንኛ',
@@ -174,9 +175,9 @@ def load_lang(lang,
 #        print("load_lang {}, phon={}, seg={}, load_morph={}, guess={}".format(lang, phon, segment, load_morph, guess))
     lang_id = get_lang_id(lang)
     language = None
-    if lang_id == 'stv':
-        from . import stv_lang
-        language = stv_lang.STV
+#    if lang_id == 'stv':
+#        from . import stv_lang
+#        language = stv_lang.STV
     if language:
         # Attempt to load additional data from language data file;
         # and FSTs if load_morph is True.

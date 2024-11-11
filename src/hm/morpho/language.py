@@ -441,6 +441,7 @@ class Language:
             return
         self.load_attempted = True
         filename = self.get_data_file()
+        print("** Loading data from {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))

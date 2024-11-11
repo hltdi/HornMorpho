@@ -1,13 +1,16 @@
+$ prestem
+  <
+
 $ stem
   -> case  +v_irr+  [pos=v]
   +v_stem+          [pos=v]
 
-$ bound
-  =
+#$ post_stem
+#  -
 
 $ deriv
   # Classes 2, 3, and 4 have different suffixes for different TAM categories
-  in          [cls=2,t=inf];[cls=2,tm=pst|prs,a=prg]
+  in          [cls=2,t=inf];[cls=2,t=pst|prs,a=prg]
   i           [cls=2,t=imp|pst|prs|cnd|opt|pot|ips,a=None]
   an          [cls=3,t=inf];[cls=3,a=prg]
   o           [cls=3,t=imp,n=1]
@@ -20,16 +23,25 @@ $ deriv
   ey          [cls=4,t=pst|prs|opt|pot|ips|cnd,a=None];[cls=4,t=imp,n=2]
   --          [cls=1]
 
+$ poststem
+  >
+
 $ aspect
   # Not clear when -ey is preferred
   ay          [a=prg,t=prs|pst]
   ey          [a=prg,t=prs|pst]
   --          [a=None]
 
+$ postaspect
+  -
+
 $ subject
   n           [p=1,n=2]
-  T           [p=2,-rsj];[p=2,-sub];[p=3,g=f,n=1]
+  T	      <t>           [p=2,-rsj];[p=2,-sub];[p=3,g=f,n=1]
   --          [t=imp];[p=1,n=1];[p=3,n=2];[p=3,g=m,n=1];[t=pst,+neg]
+
+$ postsubj
+  -
 
 $ tense
   # also relative clauses with other cases besides sbj
