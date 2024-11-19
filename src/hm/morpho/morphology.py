@@ -140,11 +140,6 @@ class Morphology(dict):
         self.proc_num = None
         # Make punctuation regular expression objects and substitution string
         self.init_punc(self.characters, self.punctuation)
-#        self.init_num(self.characters)
-#        # Dict of feature names expanded to more readable strings
-#        self.feat_abbrevs = feat_abbrevs or {}
-        # List of feat-val pair list and abbreviations
-#        self.fv_abbrevs = fv_abbrevs or []
 
     def get_cas_dir(self):
         return os.path.join(self.directory, 'cas')
@@ -1536,6 +1531,23 @@ class POSMorphology:
         result = []
         for string, FS in analyses:
             result.append(self.process5(token, string, FS, raw_token, **kwargs))
+        # Prune analyses that have the same POS, lemma (possibly after degemination), and UM
+        # features (ignoring class and sense and morphemes that don't affect UM)
+        if kwargs.get('prune', True):
+            feats = []
+            todel = []
+            anals = []
+            for analysis in result:
+                um = analysis.get('um', '')
+                lemma = analysis.get('lemma', '')
+                pos = analysis.get('pos', '')
+                f = (lemma, pos, um)
+                if f not in feats:
+                    feats.append(f)
+                    anals.append(analysis)
+#                else:
+#                    print("** Eliminated common analysis {}".format(f))
+            return anals
         return result
 
     def process5(self, token, string, features, raw_token, **kwargs):
@@ -1938,6 +1950,7 @@ class POSMorphology:
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.
         '''
+#        print("*** Postprocessing {}".format(form))
         form = self.language.postprocess5(form)
         if gloss:
             form += gloss

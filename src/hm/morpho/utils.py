@@ -165,6 +165,14 @@ def some(predicate, seq):
         px = predicate(x)
         if  px: return px
 
+def first(predicate, seq):
+    """
+    If some element x of seq satisfies predicate(x), x.
+    """
+    for x in seq:
+        px = predicate(x)
+        if  px: return x
+
 def del_suffix(string, sufstart, last = True):
     '''String without everything after the last (or first) occurrence of sufstart.'''
     sufpos = string.rfind(sufstart) if last else string.find(sufstart)

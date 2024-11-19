@@ -46,11 +46,17 @@ TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝ
 
 TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
 
+## Little Amharic corpora
+
+AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
+
 ## Starter sentence analysis
 
-def anal_amh(n_sents=1500, disambiguate=False):
+def anal_amh(n_sents=1500, start=0, disambiguate=False):
     return hm.anal_corpus(
-        'a', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=n_sents, language_pos=1, disambiguate=disambiguate)
+        'a', path="../../EES-Res/text/amti/ti_am_starter.txt",
+        start=start, n_sents=n_sents, language_pos=1, disambiguate=disambiguate
+        )
 
 def anal_tir():
     return hm.anal_corpus(
@@ -58,20 +64,20 @@ def anal_tir():
 
 ## Fixing treebanks
 
-def fix_tአ():
-    '''
-    Replace word initial አ with ኣ.
-    '''
-    position = 0
-    lines = []
-    with open("../../EES-Res/text/amti/ti_am_starter.txt") as file:
-        for line in file:
-            line = line.strip()
-            if line[0] == '#':
-                lines.append(line)
-                position = 0
-            elif position == 0:
-                pass
+##def fix_tአ():
+##    '''
+##    Replace word initial አ with ኣ.
+##    '''
+##    position = 0
+##    lines = []
+##    with open("../../EES-Res/text/amti/ti_am_starter.txt") as file:
+##        for line in file:
+##            line = line.strip()
+##            if line[0] == '#':
+##                lines.append(line)
+##                position = 0
+##            elif position == 0:
+##                pass
 
 def add_aimad_root(path, verbs):
     '''
@@ -709,36 +715,10 @@ WORD_CORPUS = "../../../../Projects/LingData/Am/Crawl/all.txt"
 ## shortcuts
 FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
-
-R = lambda pos: recompile('amh', pos, segment=True, experimental=True)
-
-##AMTEST1 = ["አውቄ", "እወቂ", "ተዋውቄ", "አስተዋውቄ", "እዪ", "ትይ", "ታይቼ",
-##           "ተያይቷል", "ይተያይ", "ፈስሼ", "ደምስሳ", "ፈሶ", "ሰልችቼ"]
-##
-##def crawl_test_amh(limit=5000):
-##    """
-##    Test Amharic analyzer on words in Crawl list.
-##    """
-##    with open("../../LingData/Am/Crawl/all.txt", encoding='utf8') as file:
-##        nwords = 0
-##        for line in file:
-##            nwords += 1
-##            if nwords >= limit:
-##                return
-##            count, word = line.strip().split()
-##            anal = hm.anal('amh', word, raw=True)
-##            if not anal:
-##                print("Failed on {}".format(word))
-
-## shortcuts for Chaha ('sgw')
-#GA = lambda form: hm.anal('sgw', form, raw=True)
-#GG = lambda form, pos, feats=None: hm.gen('sgw', form, pos=pos, features=hm.morpho.FSSet(feats) if feats else None)
+A = lambda word: hm.morpho.anal('a', word)
 
 def main():
     pass
 
 if __name__ == "__main__": main()
 
-# am = recompile('am', 'v', verbose=True)
-# aa = am.fsts[0][0]
-# seg = am.morphology.seg_units

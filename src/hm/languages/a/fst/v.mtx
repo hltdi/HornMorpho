@@ -20,7 +20,7 @@ $ conj_prep_pre
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
   እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ]
-  --  	[t=i|p,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel]
+  --  	[t=i,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel];[t=p,-rel,sconj=0,adp=0,-sub,+mc]
 
 $ prep_bound
   -
@@ -41,7 +41,7 @@ $ sub_bound
   -
 
 $ neg1
-  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አ_ለ,gl=exist]
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አለː,gl=exist]
   ኣ			[+neg,t=i|j]
   ኣል			[+neg,t=p]
   --   		[-neg];[t=c,-neg]
@@ -112,7 +112,7 @@ $ sb_suf
   # include exceptions: ጀመር  እንደሆን (should these be in aux?)
   --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
 		[a=0,v=0,t=p,-neg,+mc,-sub,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0];
-		[a=0,v=0,t=p,-neg,sconj=እንደ,r=ህውን,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0]
+		[a=0,v=0,t=p,-neg,sconj=እንደ,r=ህውን|ንብር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0]
 
 $ ss_bound
   -

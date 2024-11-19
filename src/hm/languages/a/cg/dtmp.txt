@@ -1,0 +1,178 @@
+"<¶>"
+
+"<በበሽታው>"
+	"በሽታ" N INS OBL 3SMPOSS
+"<ምክንያት>"
+	"ምክንያት" ADP
+"<ቀረ>"
+	"ቀረ" V 3 SG MASC PFV MAIN
+"<።>"
+	"።" PUNCT
+
+"<ያልመጣው>"
+	"መጣ" V REL 3 SG MASC PFV NEG
+"<ምክንያት>"
+	"ምክንያት" N
+"<አልገባኝም>"
+	"ገባ" V PFV 3 SG MASC 1SOBJ NEG MAIN
+"<።>"
+	"።" PUNCT
+
+"<ከቤቱ>"
+	"ቤት" N ABL DEF SG OBL
+"<ላይ>"
+	"ላይ" ADP
+"<ወረዱ>"
+	"ወረደ" V PFV MAIN 3P
+"<።>"
+	"።" PUNCT
+
+"<ቆንጆ>"
+	"ቆንጆ" ADJ
+"<አበባ>"
+	"አበባ" N
+"<ገዛች>"
+	"ገዛ" V PFV 3 SG FEM MAIN
+"<።>"
+	"።" PUNCT
+
+"<አበበ>"
+	"አበበ" V PFV MAIN 3 SG MASC
+	"አበበ" PROPN
+"<አበባ>"
+	"አበባ" PROPN
+	"አበባ" N
+"<ገዛ>"
+	"ገዛ" V PFV 3 SG MASC MAIN
+"<።>"
+	"።" PUNCT
+
+"<ምን>"
+	"ምን" PRON
+"<ይደረግ>"
+	"ተደረገ" V IMP 3 SG MASC
+"<መቼስ>"
+	"መቼስ" ADV
+"<?>"
+	"?" PUNCT
+
+"<መስኮቱን>"
+	"መስኮት" N DEF ACC SG
+"<ዝጋ>"
+	"ዘጋ" V IMP 2 SG MASC
+	"ዛገ" V V.CVB 3 SG FEM
+"<!>"
+	"!" PUNC
+
+"<ገብቶ>"
+	"ገባ" V V.CVB 3 PL MASC
+	"ገብቶ" N SG
+"<ተቀመጠች>"
+	"ተቀመጠ" V PFV 3 SG FEM MAIN
+"<።>"
+	"።" PUNCT
+
+"<ጎጃም>"
+	"ጎጃም" PROPN
+"<ውስጥ>"
+	"ውስጥ" ADP
+"<ነው>"
+	"ነው" AUX PRS
+"<ያለው>"
+	"አለ_" V PRF REL DEF 3 SG MASC
+"<።>"
+	"።" PUNCT
+
+"<ቆንጆ>"
+	"ቆንጆ" ADJ
+"<ነው>"
+	"ነው" AUX PRS
+"<ቤቱ>"
+	"ቤት" N SG DEF
+"<።>"
+	"።" PUNCT
+
+"<ጥሩ>"
+	"ጥሩ" ADJ
+"<ባይሆንም>"
+	"ሆነ" V B_SC SUBORD 3 IPFV MASC NEG SG
+"<ይቅር>"
+	"ቀረ" V IMP 3 SG MASC
+"<።>"
+	"።" PUNCT
+
+"<ግድ>"
+	"ግድ" PART
+"<አለ>"
+	"አለ" V PRF 3 SG MASC MAIN
+"<።>"
+	"።" PUNCT
+
+"<ልጆቹ>"
+	"ልጅ" N PL {PSS3SM/DEF}
+"<ዛፍ>"
+	"ዛፍ" N SG
+"<ላይ>"
+	"ላይ" ADP
+"<ወጡ>"
+	"ወጣ" V DERAGI MAIN 3 PFV PL
+"<።>"
+	"።" PUNCT
+
+"<ከዛ>"
+	"ያ" DET ABL DEMPRO OBL MASC SG
+"<ይመጣ>"
+	"መጣ" V DERAGI I_PART 3 IPFV MASC SG
+	"ተመጣ" V TEDERAGI 3 IMP MASC PASS SG
+	"ተመጣ" V I_PART TEDERAGI 3 IPFV MASC PASS SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+
+"<በጣም>"
+	"በጣም" ADV
+	"እጣ" N INS OBL SG
+	"ጣም" N INS OBL SG
+"<ቆንጆ>"
+	"ቆንጆ" ADJ SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+
+"<ምግብ>"
+	"ምግብ" N SG
+"<የሚፈለገው>"
+	"ተፈለገ" V RELC TEDERAGI 3 AC3SM IPFV MASC PASS SG
+	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
+"<ወንድሜ>"
+	"ወንድም" N MASC PSS1S SG
+"<አይደለም>"
+	"ነው" AUX SUBORD 3 MASC NEG PRS SG
+"<።>"
+	"።" PUNCT
+
+"<ወንድሜ>"
+	"ወንድም" N MASC PSS1S SG
+"<አይደለም>"
+	"ነው" AUX SUBORD 3 MASC NEG PRS SG
+"<ምግብ>"
+	"ምግብ" N SG
+"<የሚፈለገው>"
+	"ተፈለገ" V RELC TEDERAGI 3 AC3SM IPFV MASC PASS SG
+	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
+"<።>"
+	"።" PUNCT
+
+"<አዲስ>"
+	"አዲስ" PROPN SG
+	"አዲስ" ADJ SG
+"<መኪና>"
+	"መኪና" N SG
+	"መኪ" N DERAGI SG
+"<ገዝተናል>"
+	"ገዛ" V DERAGI MAIN 1 PL PRF
+	"ገዘተ" V DERAGI MAIN 1 PL PRF
+"<።>"
+	"።" PUNCT

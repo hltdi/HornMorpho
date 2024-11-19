@@ -61,11 +61,21 @@ def anal_corpus(language, **kwargs):
     To save ambiguous words, do 'save_ambig' = True.
     """
     guess = kwargs.get('guess', False)
+    verbosity = kwargs.get('verbosity', 0)
+    disambiguate = kwargs.get('disambiguate', False)
+    annotate = kwargs.get('annotate', True)
     language = morpho.get_language(language, guess=guess)
     if language:
+        # Create the corpus, by default analyzing sentences and running CG disambiguation on them.
         corp = morpho.Corpus(language=language, **kwargs)
-        if kwargs.get('disambiguate', False):
-            corp.disambiguate()
+        # Run manual disambiguation on the sentences.
+        if disambiguate:
+            if verbosity:
+                print("Starting manual disambiguation...")
+            corp.disambiguate(verbosity=verbosity)
+            if annotate:
+                # Only do this after disambiguation
+                corp.annotate(verbosity=verbosity)
         return corp
 
 def analyze(language, word, **kwargs):
@@ -95,7 +105,7 @@ def anal_sentence(language, sentence, **kwargs):
         return language.anal_sentence(sentence, **kwargs)
 
 def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
-                 batch_name='', append=True, v5=True,
+                 batch_name='', append=True, v5=True, update_ids=True,
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
                  verbosity=0):
     '''
@@ -129,7 +139,7 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
             rejected.append(sentence.sentid)
             continue
         if v5:
-            sentence.print_conllu(update_ids=True, file=file)
+            sentence.print_conllu(update_ids=update_ids, file=file)
         else:
             conll = sentence.alt_conllu if degeminated else sentence.conllu
             print(conll.serialize(), file=file, end='')

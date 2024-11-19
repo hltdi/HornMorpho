@@ -1,0 +1,219 @@
+"<¶>"
+
+"<በበሽታው>"
+	"በሽታ" N INS OBL 3SMPOSS
+"<ምክንያት>"
+	"ምክንያት" N
+	"ምክንያት" ADP
+"<ቀረ>"
+	"ቀረ" V 3 SG MASC PFV MAIN
+"<።>"
+	"።" PUNCT
+
+"<በወባ>"
+	"ወባ" N INS OBL
+"<በሽታ>"
+	"በሽታ" N
+"<ምክንያት>"
+	"ምክንያት" N
+	"ምክንያት" ADP
+"<ቀረ>"
+	"ቀረ" V 3 SG MASC PFV MAIN
+"<።>"
+	"።" PUNCT
+
+"<ያልመጣው>"
+	"መጣ" V REL 3 SG MASC PFV NEG
+"<ምክንያት>"
+	"ምክንያት" N
+	"ምክንያት" ADP
+"<አልገባኝም>"
+	"ገባ" V PFV 3 SG MASC 1SOBJ NEG MAIN
+"<።>"
+	"።" PUNCT
+
+"<ከቤቱ>"
+	"ቤት" N ABL DEF SG OBL
+"<ላይ>"
+	"ላይ" ADP
+	"ላይ" N SG
+	"አይ" N OBL DAT
+	"አየ" V SUBORD L_SC IPFV
+"<ወረዱ>"
+	"ወረደ" V PFV MAIN 3P
+"<።>"
+	"።" PUNCT
+
+"<አበባ>"
+	"አበባ" PROPN
+	"አበባ" N
+"<መጣች>"
+	"መጣ"V PFV 3 SG Fem MAIN
+"<።>"
+	"።" PUNCT
+
+"<ቆንጆ>"
+	"ቆንጆ" ADJ
+"<አበባ>"
+	"አበባ" PROPN
+	"አበባ" N
+"<ገዛች>"
+	"ገዛ" V PFV 3 SG FEM MAIN
+"<።>"
+	"።" PUNCT
+
+"<አበባው>"
+	"አበባ" N DEF
+"<አበበ>"
+	"አበበ" V PFV MAIN 3 SG MASC
+	"አበበ" PROPN
+"<።>"
+	"።" PUNCT
+
+"<አበበ>"
+	"አበበ" V PFV MAIN 3 SG MASC
+	"አበበ" PROPN
+"<አበባ>"
+	"አበባ" PROPN
+	"አበባ" N
+"<ገዛ>"
+	"ገዛ" V PFV 3 SG MASC MAIN
+"<።>"
+	"።" PUNCT
+
+"<አበበ>"
+	"አበበ" V PRF MAIN 3 SG MASC
+	"አበበ" PROPN
+"<።>"
+
+"<አንበሳው>"
+	"አንበሳ" N SG DEF
+	"በሳ"   V NEG I_PART 1P ACC3SM IPFV
+"<ተንጠራራ>"
+	"ተንጠራራ" V PRF 3 SG MASC
+"<።>"
+	"።" PUNCT
+
+"<ምን>"
+	"ምን" PRON
+"<ይደረግ>"
+	"ተደረገ" V IMP 3 SG MASC
+	"ተደረገ" V IPFV 3SM I_PART
+"<መቼስ>"
+	"መቼስ" ADV
+"<?>"
+	"?" PUNCT
+
+"<ማን>"
+	"ማን" PRON
+"<ከማን>"
+	"ማን" PRON OBL ABL
+"<ጋር>"
+	"ጋር" ADP
+	"ጋረ" V IMP 2 SG MASC
+"<ምሳ>"
+	"ምሳ" N
+	"ማሰ" V V.CVB 3 SG FEM
+"<በላ>"
+	"በላ" V PFV MAIN 3 SG MASC
+"<?>"
+	"?" PUNCT
+
+"<መስኮቱን>"
+	"መስኮት" N DEF ACC SG
+"<ዝጋ>"
+	"ዘጋ" V IMP 2 SG MASC
+	"ዛገ" V V.CVB 3 SG FEM
+"<!>"
+
+"<ገብቶ>"
+	"ገባ" V V.CVB 3 PL MASC
+	"ገብቶ" N SG
+"<ተቀመጠች>"
+	"ተቀመጠ" V PFV 3 SG FEM MAIN
+"<።>"
+	"።" PUNCT
+
+"<ጎጃም>"
+	"ጎጃም" PROPN
+"<ውስጥ>"
+	"ውስጥ" ADP
+	"ውስጥ" N
+"<ነው>"
+	"ነው" AUX PRS
+"<ያለው>"
+	"አለ" V PRF REL DEF 3 SG MASC
+	"አለ" V PRF REL 3 SG MASC ACC3SM
+	"አለ_" V PRF REL DEF 3 SG MASC
+	"አለ_" V PRF REL 3 SG MASC ACC3SM
+	"ያለው" PROPN
+"<።>"
+	"።" PUNCT
+
+"<የቤት>"
+	"ቤት" N GEN
+"<ውስጥ>"
+	"ውስጥ" ADP
+	"ውስጥ" N
+"<ቆንጆ>"
+	"ቆንጆ" ADJ
+"<ነው>"
+	"ነው" AUX PRS
+"<።>"
+	"።" PUNCT
+
+"<ጥሩ>"
+	"ጠራ" IMP 2 PL
+	"ጥሩ" ADJ
+"<ባይሆንም>"
+	"ሆነ" V B_SC SUBORD 3 IPFV MASC NEG SG
+"<ይቅር>"
+	"ቀረ" V IMP 3 SG MASC
+"<።>"
+	"።" PUNCT
+
+"<ግድ>"
+	"ግድ" PART
+	"ግድ" N
+"<አለ>"
+	"አለ" V PRF 3 SG MASC MAIN
+"<።>"
+	"።" PUNCT
+
+"<ልጆቹ>"
+	"ልጅ" N PL {PSS3SM/DEF}
+"<ዛፍ>"
+	"ዛፍ" N SG
+"<ላይ>"
+	"ላይ" ADP
+	"ላይ" N SG
+	"አየ" V DERAGI L_SC SUBORD 1 IPFV SG
+	"አይ" N DAT DERAGI OBL SG
+"<ወጡ>"
+	"ወጣ" V DERAGI MAIN 3 PFV PL
+	"ወጥ" N SG {PSS3SM/DEF}
+"<።>"
+	"።" PUNCT
+
+"<ከዛ>"
+	"ያ" DET ABL DEMPRO OBL MASC SG
+"<ይመጣ>"
+	"መጣ" V DERAGI I_PART 3 IPFV MASC SG
+	"ተመጣ" V TEDERAGI 3 IMP MASC PASS SG
+	"ተመጣ" V I_PART TEDERAGI 3 IPFV MASC PASS SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+
+"<በጣም>"
+	"በጣም" ADV
+	"እጣ" N INS OBL SG
+	"ጣም" N INS OBL SG
+"<ቆንጆ>"
+	"ቆንጆ" ADJ SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+

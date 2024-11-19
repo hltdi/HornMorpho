@@ -30,6 +30,7 @@ import xml.etree.ElementTree as ET
 from conllu import TokenList, Token, Metadata
 from conllu.parser import parse_comment_line
 from .geez import degeminate
+from .cg import CG
 #from .gui import SegRoot
 import sys
 
@@ -130,6 +131,11 @@ class Sentence():
         self.merges = []
         # Given a set of properties, like 'root' and 'um', a list of lists of word property dicts.
         self.props = []
+        ## attributes added from CG rules
+        # Sentence root, unless -1
+        self.root = -1
+        # dict {child_windex: (parent_windex, relation) ...}
+        self.relations = {}
 
     def __repr__(self):
         return "S::{}::{}".format(self.sentid, self.text)
@@ -140,6 +146,11 @@ class Sentence():
         '''
         for word in self.words:
             word.show()
+
+    def reinit_conllu():
+        metadata = self.conllu.metadata
+        self.conllu = TokenList([])
+        self.conllu.metadata = metadata
 
     ### Version 5 methods
 
@@ -165,6 +176,13 @@ class Sentence():
         elif not word.is_known():
             self.unk.append(word.name)
 
+    def set_annotation(self, root, relations):
+        '''
+        Add attributes from the output of CG annotation rules.
+        '''
+        if root >= 0:
+            self.root = root
+
     def print_conllu(self, update_ids=True, file=None):
         '''
         Print the string of CoNLL-U representations for the sentence,
@@ -173,34 +191,63 @@ class Sentence():
         on each word's position in the sentence.
         '''
         file = file or sys.stdout
-        print(self.create_conllu_string(update_ids=update_ids), file=file, end='')
+        print(self.create_conllu(update_ids=update_ids), file=file, end='')
 
-    def create_conllu_string(self, update_ids=False):
+    def create_conllu(self, update_ids=True, add_rels=True, verbosity=0):
         '''
         Return the string of CoNLL-U representations for the sentence,
         using the first if there are still ambiguities.
+        Apply root and relation information from CG rules.
         If update_ids is True, update the id and head fields based
         on each word's position in the sentence.
         '''
         if not update_ids and self.conllu_string:
             return self.conllu_string
+        elif self.conllu_string:
+            # start over with new sentence conllu
+            self.reinit_conllu()
         string = ''
         index = 0
-#        c = []
-        for word in self.words:
+        windex2id = {}
+        for windex, word in enumerate(self.words):
+            # Assume disambiguation has happened or we trust the first analysis
             conllu = word.conllu[0]
             if update_ids:
-                index = self.update_conllu_ids(conllu, index=index)
+                index = self.update_conllu_ids(conllu, windex2id, windex, index=index)
             self.conllu.extend(conllu)
-#            string += conllu.serialize()
-#        c = TokenList(c)
-#        print("*** conllu {}".format(self.conllu))
+        if verbosity:
+            print("windex2id: {}".format(windex2id))
+        if add_rels:
+            self.update_conllu_rels(windex2id, verbosity=verbosity)
+        # Add the root and relation information
         self.conllu_string = self.conllu.serialize()
-#        string
-#        return string
         return self.conllu_string
 
-    def update_conllu_ids(self, conllu, index=0):
+    def update_conllu_rels(self, windex2id, verbosity=0):
+        if verbosity:
+            print("Updating relations")
+        root = self.root
+        relations = self.relations
+        idrelations = {}
+        if root >= 0:
+            rootid = windex2id[root]
+            idrelations[rootid] = (0, None)
+        if relations:
+            for childindex, (parentindex, label) in relations.items():
+                childid = windex2id[childindex]
+                parentid = windex2id[parentindex]
+                idrelations[childid] = (parentid, label)
+        if verbosity:
+            print("idrelations {}".format(idrelations))
+        for c in self.conllu:
+            id = c['id']
+            if par_rel := idrelations.get(id):
+                parent, rel = par_rel
+                c['head'] = parent
+                if rel:
+                    c['deprel'] = rel
+
+    def update_conllu_ids(self, conllu, windex2id, windex, index=0):
         '''
         Update the position fields (id and head) for a representation based on
         the word's position within the sentence.
@@ -211,7 +258,9 @@ class Sentence():
         if length == 1:
             if index:
                 conllu[0]['id'] += index
-                conllu[0]['head'] += index
+                conllu[0]['head'] = '_'
+#                conllu[0]['head'] += index
+            windex2id[windex] = conllu[0]['id']
             new_index += 1
         else:
             # Update all of the segments
@@ -227,6 +276,16 @@ class Sentence():
                 for c in conllu[1:]:
                     c['id'] += index
                     c['head'] += index
+                    if c['id'] == c['head']:
+                        # This is the head of the word, so add it to the windex2id dict
+                        windex2id[windex] = c['id']
+                        c['head'] = '_'
+            else:
+                for c in conllu[1:]:
+                    if c['id'] == c['head']:
+                        # This is the head of the word, so add it to the windex2id dict
+                        windex2id[windex] = c['id']
+                        c['head'] = '_'
             new_index += len(conllu)-1
 #        print("** Updated index: {}".format(new_index))
         return new_index
@@ -352,17 +411,6 @@ class Sentence():
         
         return conllu
 
-#    def create_pseudo_corpus(self):
-#        corpus = PseudoCorpus()
-#        corpus.data = [self.text]
-#        corpus.sentences = [self]
-#        return corpus
-#
-#    def disambiguate(self):
-#        '''
-#        Run the disambiguator GUI and update the sentence accordingly.
-#        '''
-
     @staticmethod
     def updatePOS(analdict, pos):
 #        print("&& Updating POS in {} to {}".format(analdict, pos))
@@ -380,10 +428,11 @@ class Sentence():
         '''
         if verbosity:
             print("Post processing {}".format(self))
-        # Eliminate derivational analyses that duplicated unsegmented forms.
+        # Eliminate derivational analyses that duplicate unsegmented forms.
         for word in self.words:
             todel = word.elim_segmented_dups()
             if todel:
+#                print("** postprocessing deleting {}".format(todel))
                 word.remove(todel)
                 if len(word) == 1:
                     self.morphambig.remove(word)
@@ -418,6 +467,28 @@ class Sentence():
             word_string = word.create_attrib_string(attribs, all_anals=all_anals)
             lines.append(word_string)
         return '\n'.join(lines)
+
+    def disambiguate(self, verbosity=0):
+        '''
+        Shortcut for CG disambiguation.
+        '''
+        if verbosity:
+            print("Disambiguating {}".format(self))
+        return self.language.disambiguate(self, verbosity=verbosity)
+
+    def annotate(self, verbosity=0):
+        '''
+        Shortcut for CG annotation.
+        '''
+        if verbosity:
+            print("Annotating {}".format(self))
+        return self.language.annotate(self, verbosity=verbosity)
+
+    def toCG(self, verbosity=0):
+        '''
+        Shortcut for conversion to CG format.
+        '''
+        return CG.sentence2cohorts(self, verbosity=verbosity)
 
     #####
         

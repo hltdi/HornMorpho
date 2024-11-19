@@ -48,6 +48,9 @@ class Word(list):
         self.merges = merges
         self.conllu = []
         self.id = Word.id
+        # used in CG disambiguation
+        self.analstrings = ''
+        self.readings = []
 #        self.is_empty = len(self) == 0
 #        self.is_known = not self.unk
         Word.id += 1
@@ -136,7 +139,9 @@ class Word(list):
         to reflect the deletions.
         '''
         index_map = index_map or [[i, i] for i in range(len(self))]
-#        print(" *** removing {}".format(indices))
+#        print(" *** removing {} from {}".format(indices, self))
+#        for i, x in enumerate(self):
+#            print("{} {}: {}, {}".format(i, x.get('seg', ''), x.get('pos', ''), x.get('um', '')))
         # Reverse-sort indices to avoid changing items to delete.
         indices.sort(reverse=True)
         to_del = []
@@ -144,8 +149,11 @@ class Word(list):
             if index >= len(self):
 #                print("&& {} trying to delete {}".format(self, index))
                 continue
+#            print("  *** Deleting {}".format(self[index]))
             del self[index]
             del self.conllu[index]
+            if self.readings:
+                del self.readings[index]
             if index_map:
                 for i, iold_new in enumerate(index_map):
                     if iold_new[0] == index:

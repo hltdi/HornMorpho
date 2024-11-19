@@ -11,7 +11,8 @@ pre1 -> e2a		[{e2a}]
 e2a -> e2a		[:-]
 e2a -> e2a+		[:<]
 # noun stems normally begin with አ
-e2a+ -> stem  	[:ኣ;:አ]
+# +- init feature can prevent this
+e2a+ -> stem  	[:ኣ;:አ]	    [+delinit]
 
 # but also allow ለአልማዝ
 start -> ea		[*e]

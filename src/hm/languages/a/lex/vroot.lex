@@ -4,7 +4,7 @@
 <ን እ ቅ>	     c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=as ; a=i,v=0 ; a=i,v=p ; a=i,v=a ; a=i,v=ast
 
-<ን ብ ር>	     c=A,base=0
+<ን ብ ር>	     c=A,base=0,lemma=አለ_
   a=0,v=0 ; a=0,v=a ; a=a,v=ast ; a=i,v=a ; a=i,v=ast ; a=i,d=m
 
 # ማረ: forgive, sense 1
@@ -1619,8 +1619,6 @@
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,d=m
 <እ ብ ስ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=i,d=m ; a=i,v=p
-<እ ብ ይ>	c=A,tmp=[3=ይ],base=0
-  a=0,v=0 ; a=0,v=p ; a=i,d=m
 <እ ብ ጥ>	c=A,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
 <እ ን ስ>	c=A,base=0

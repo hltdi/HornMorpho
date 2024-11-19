@@ -18,7 +18,7 @@ $ prep_bound
 
 $ distrib_collect
   እ/የ	[+dis,-col,pos=N]
-  እ/ነ	[-dis,+pl,+col,pos=N|PROPN]
+  እ/ነ	[-dis,+pl,+col,+h,pos=N|PROPN]
   --		[-dis,-col]
 
 $ prestem

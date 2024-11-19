@@ -84,6 +84,9 @@ a,v,base:: a,a,*:CAUS;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS;; i,ast,*:CAUS;; i,
 # አዕማድ for infinitives and agentives
 a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
 
+# conjunctions
+cconj:: ና:*CCONJ
+
 POS v V
 ->UD NEG	Polarity=Neg
 ->UD IMP	Mood=Jus
@@ -194,11 +197,6 @@ pos:: v:V
 
 neg:: NEG
 
-rel:: True:*RELC
-
-# Main clause vs. subordination
-rel,sub:: False,False:*MAIN
-
 ## morphological valence/voice
 # v=ast (አስታወቀ) -> TR
 #a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
@@ -237,11 +235,17 @@ adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*
 adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
 # added back; possible needed for CG (2024.11.10)
-sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC
-# 2024.7.7: simplified subordinating conjunctions to SUBORD
-sconj:: ስ:*SUBORD;; ብ:*SUBORD;; እንድ:*SUBORD;; ል:*SUBORD;; እስክ:*SUBORD;; ከ:*SUBORD;; እየ:*SUBORD
+sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
+
+## Clause type
+# Main clause vs. subordination
+rel,sub,mc:: False,False,True:*MAIN
+# 2024.7.7: simplified subordinating conjunctions to SUBORD
+sub,rel:: True,False:*SUBORD;; True,True:*RELC
+# ይሰብር: Useful (necessary?) for CG; could also be called *I_NFIN, though it's actually finite
+sub,mc,t:: False,False,i:*I_PART
 
 POS cop AUX
 ->UD PRS	Tense=Pres

@@ -1,0 +1,129 @@
+DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
+
+LIST NOM = N PRON DET PROPN ;
+LIST PREP1 = INS ABL ;
+LIST OBLPOSTP = "ምክንያት" "በኋላ" "በፊት" "ምትክ" "ፋንታ" "ይልቅ" ;
+LIST NPOSTP = "ላይ" "ውስጥ" "ታች" "ውጭ" ;
+SET POSTP = OBLPOSTP + NPOSTP ;
+LIST POSTPA = ("ምክንያት" ADP) ("በኋላ" ADP) ("ላይ" ADP) ;
+LIST POSTPN = ("ምክንያት" N) ("በኋላ" N) ("ላይ" N) ;
+LIST POSTPN2 = ("ውስጥ" N) ("ላይ" N) ("ታች" N) ("ውጭ" N) ;
+LIST POSTPA2 = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ;
+# any others
+LIST N = N ;
+LIST NMOD = REL ADJ DET NUM GEN ;
+LIST NOMCONJ = (N CCONJ) (PRON CCONJ) (DET CCONJ) (PROPN CCONJ) ;
+LIST V = V AUX ;
+LIST HELPING = AUX "ነበረ" "ሆነ" ;
+LIST SADV = "መቸስ" "መቸም" "መቼስ" "መቼም" "እኮ" "እንጂ" "እንዴ" ;
+LIST PERSON = 1 2 3 ;
+LIST GENDER = FEM MASC ;
+LIST NUMBER = SG PL ;
+LIST SAY = "አለ" "አሰኘ" "ተሰኘ" "ተባለ" "አደረገ"
+
+## Ambiguous postpositions/nouns like ምክንያት and postpositions/verbs like ላይ
+# Postposition must be preceded by PREP+N
+# ጥሩ ምክንያት
+REMOVE POSTPA
+       (-1 NMOD) ;
+
+# በበሽታው ምክንያት
+REMOVE POSTPN
+       (-1 NOM + PREP1) ;
+
+# በወባ በሽታው ምክንያት
+REMOVE POSTPN
+       (-1 (N))
+       (-2 NOM + PREP1) ;
+
+# በሜዳዎች ላይ
+"<ላይ>" REMOVE (V)
+       (-1 (OBL)) ;
+
+# እቤት ውስጥ
+REMOVE POSTPN2
+       (-1 (OBL)) ;
+
+#SELECT POSTPA2
+#       (-1 NOM) ;
+
+# %% ጎጃም ውስጥ
+REMOVE POSTPN2
+       (-1 NOM)
+       (NOT -1 (GEN)) ;
+
+# የቤት ውስጥ
+REMOVE POSTPA2
+       (-1 NOM + (GEN)) ;
+
+# %% Oblique nouns can't follow oblique nouns
+REMOVE (OBL)
+       (-1 (OBL)) ;
+
+# Imperfective "participles" have to be followed by a verb
+REMOVE (I_PART)
+       (NOT  1 HELPING) ;
+
+## ልመጣ; remove if it isn't followed by a verb
+REMOVE (L_SC)
+       (NOT 1 V) ;
+
+## Jussive/imperative has to be final (with possible intervening ADV like መቸስ) or preceding አለ
+REMOVE (IMP)
+       (NOT 1 (<<<) OR SADV OR ("አለ")) ;
+
+## %% Converb can't be last unless it's the only word. What about cleft sentences or poetry?
+REMOVE (V.CVB)
+       (1 (<<<))
+       (NOT -1 (>>>)) ;
+
+## Converbs have to be followed by another verb agreeing in PNG
+## unless the sentence is clefted or a fragment.
+REMOVE  (V.CVB) + $$GENDER + $$NUMBER + $$PERSON
+       (NOT 1* (V $$GENDER $$NUMBER $$PERSON)) ;
+
+## Ambiguous PROPN
+
+# Proper nouns can't be preceded by noun modifiers
+REMOVE (PROPN)
+       (-1 NMOD) ;
+
+# Proper nouns (አበበ) can't finish the sentence
+REMOVE (PROPN)
+       (1 (<<<)) ;
+
+# Main verbs (አበበ) can't start a sentence (unless they also end the sentence)
+REMOVE (V MAIN)
+       (-1 (>>>))
+       (NOT 1 (<<<)) ;
+
+## Proper nouns (አዲስ) are not normally followed by nouns. (No, not really true.)
+#REMOVE (PROPN)
+#       (1 (N)) ;
+
+## VERB and NOUN
+# NOUN can't be last unless there's a preceding AUX (cleft sentence) or it's the only word
+REMOVE NOM
+       (1 (<<<))
+       (NOT -1* (AUX))
+       (NOT -1 (>>>)) ;
+
+## ambiguous IPFV / IMP followed by AUX must be IPFV
+REMOVE (IMP)
+       (1 (AUX)) ;
+
+## በጣም before ADJ
+"<በጣም>" SELECT (ADV)
+       (1 (ADJ)) ;
+
+## If an ambiguous particle is followed by a form of አለ/አደረግ/ተሰኘ, it's a particle
+SELECT (PART)
+       (1 SAY) ;
+
+## If an ambiguous particle is not followed by a SAYing verb, it's not a particle
+REMOVE (PART)
+       (NOT 1 SAY) ;
+
+## A noun with -ና should not be followed by a verb
+REMOVE NOMCONJ
+       (1 V) ; 

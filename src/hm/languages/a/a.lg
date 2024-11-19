@@ -64,6 +64,8 @@ charcomb::
 
 merge:: pos:N;PROPN;NPROPN;; pos:N;ADJ;NADJ;; pos:N;ADJ;NADJ;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True;; udfeats:Aspect=Imp;Mood=Jus;&ImpJus=True;; udfeats:ClauseType=CComp;ClauseType=AdvCl;&CCompAdvCl=True
 
+CG: disambig dep
+
 feats:
 
   pos: v verb

@@ -29,7 +29,7 @@ Morphology objects defined in morphology.py).
    Languages now created from data in language file:
    Language.make(abbrev)
 -- 2013-02
-   Multilin†g, TraState, TraArc created: for phrase translation FSTs.
+   Multiling, etc. created: for phrase translation FSTs.
 -- 2014-06
    - Suffix stripping before transduction in analysis.
    - Accent and deaccent dictionaries for use in affix stripping to
@@ -58,6 +58,7 @@ from .rule import *
 from .um import *
 from .ees import *
 from .sentence import *
+from .cg import *
 
 ## Regex for extracting root from segmentation string
 SEG_ROOT_RE = re.compile(r".*{(.+)}.*")
@@ -153,6 +154,8 @@ NORM_RE = re.compile(r"\s*normal\w*::\s*(.*)")
 CHARCOMB_RE = re.compile(r"\s*charcomb\w*::\s*(.*)")
 # Added 2023.11.03; POS, UD features, lemmas to merge
 MERGE_RE = re.compile(r"\s*merge::\s*(.*)")
+# Added 2024.11.12; disambiguation and dependency assignment
+CG_RE = re.compile(r"\s*CG:\s*(.+)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -210,6 +213,9 @@ class Language:
                  output_gemination=False,
                  rules=None,
                  roman=True,
+                 # CG instances responsible for disambiguation (POS, features) and dependencies
+                 disambigCG = None,
+                 depCG = None,
                  citation_separate=True):
 #                 msgs=None, trans=None):
         """
@@ -312,15 +318,15 @@ class Language:
         """Data file for language."""
         return os.path.join(self.directory, self.abbrev + '.lg')
 
-    def get_trans_dir(self):
-        """File with cached analyses."""
-        return os.path.join(self.directory, 'trans')
+#    def get_trans_dir(self):
+#        """File with cached analyses."""
+#        return os.path.join(self.directory, 'trans')
 
-    def get_lex_dir(self):
-        return os.path.join(self.directory, 'lex')
+#    def get_lex_dir(self):
+#        return os.path.join(self.directory, 'lex')
 
-    def get_valency_file(self, pos='v'):
-        return os.path.join(self.get_lex_dir(), pos + '.val')
+#    def get_valency_file(self, pos='v'):
+#        return os.path.join(self.get_lex_dir(), pos + '.val')
 
     def get_phon_file(self):
         return os.path.join(self.directory, self.abbrev + '.ph')
@@ -334,6 +340,19 @@ class Language:
         statdir = self.get_stat_dir()
         if statdir:
             return os.path.join(statdir, 'root.frq')
+
+    def get_cg_dir(self):
+        return os.path.join(self.directory, 'cg')
+
+    def get_disambig_file(self):
+        cgdir = self.get_cg_dir()
+        if cgdir:
+            return os.path.join(cgdir, 'disamb.cg')
+
+    def get_dep_file(self):
+        cgdir = self.get_cg_dir()
+        if cgdir:
+            return os.path.join(cgdir, 'dep.cg')
 
     ## CACHING
 
@@ -441,7 +460,7 @@ class Language:
             return
         self.load_attempted = True
         filename = self.get_data_file()
-        print("** Loading data from {}".format(filename))
+        print("Loading data from {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))
@@ -680,6 +699,17 @@ class Language:
                         merges[typ][spec_key] = s3.strip()
                     else:
                         merges[typ] = {spec_key: s3.strip()}
+                continue
+
+            m = CG_RE.match(line)
+            if m:
+                types = m.group(1)
+                types = types.split()
+                for typ in types:
+                    if typ.startswith("dep"):
+                        self.depCG = CG(self, disambig=False)
+                    elif typ.startswith("dis"):
+                        self.disambigCG = CG(self, disambig=True)
                 continue
 
             m = TRANS_RE.match(line)
@@ -1796,13 +1826,13 @@ class Language:
         Handle special cases, currently abbreviations, numerals, and punctuation.
         '''
         if self.morphology.is_punctuation(token):
-            return {'pos': 'PUNCT', 'token': token, 'nsegs': 1}
+            return {'pos': 'PUNCT', 'token': token, 'lemma': token, 'nsegs': 1}
         if abb := self.morphology.get_abbrev(token):
             expansion, pos = abb
             tokens = expansion.split()
-            return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'tokens': tokens, 'nsegs': 1}
+            return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'lemma': token, 'tokens': tokens, 'nsegs': 1}
         if self.morphology.is_abbrev(token):
-            return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'nsegs': 1}
+            return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'lemma': token, 'nsegs': 1}
         numeral = self.morphology.match_numeral(token)
         if numeral:
             prenum, num, postnum = numeral
@@ -1811,7 +1841,7 @@ class Language:
             elif prenum:
                 return {'token': token, 'pos': 'N', 'lemma': num, 'nsegs': 1}
             else:
-                return {'token': token, 'pos': 'NUM', 'nsegs': 1}
+                return {'token': token, 'pos': 'NUM', 'lemma': token, 'nsegs': 1}
         return None
 
     def combine_segments(self, stem_string):
@@ -1964,6 +1994,20 @@ class Language:
                 morphid += 1
         return sent_obj
 
+    def disambiguate(self, sentence, verbosity=0):
+        '''
+        Disambiguate the sentence using the language's disamb rules if any.
+        '''
+        if self.disambigCG:
+            return self.disambigCG.run(sentence, verbosity=verbosity)
+
+    def annotate(self, sentence, verbosity=0):
+        '''
+        Annotate the sentence using the language's dependency rules if any.
+        '''
+        if self.depCG:
+            return self.depCG.run(sentence, verbosity=verbosity)
+
     def _anal_sentence5(self, sentence,
                        conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
                        sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
@@ -1972,43 +2016,12 @@ class Language:
                        remove_dups=True, seglevel=2,
                        batch_name='', local_cache=None, sentid=0, morphid=1,
                        verbosity=0):
-#        # Keep track of words that are filtered out because they match filter conditions
-#        countgrams = None
-#        if gramfilter and isinstance(gramfilter, str):
-#            gramfilter = EES.get_filter(gramfilter)
-#            # Check whether this filter counts instances of "in" words; assume this is the only condition
-#            for key, value in gramfilter.items():
-#                if isinstance(key, tuple):
-#                    # the key is (min, max); are these the only possibilities?
-#                    countgrams = key
-#        # lists of words that filter fails on and words it succeeds on
-#        filtered = [[], []]
-#        if preproc and not callable(preproc):
-#            preproc = self.preproc
-#        if postproc and not callable(postproc):
-#            postproc = self.postproc
-#        csent = csent or Sentence(sentence, batch_name=batch_name, sentid=sentid)
         sentlist = []
         local_cache = local_cache if isinstance(local_cache, dict) else {}
-#        if not file and pathout:
-#            file = open(pathout, 'w', encoding='utf-8')
-#        if not fsts:
-#            fsts = pos or self.morphology.pos
-#            skip_other_pos = False
-#        else:
-#            skip_other_pos = True
-#        if realize and not realizer:
-#            realizer = self.segmentation2string
-        # Create a list of CoNNL-U sentences.
-#        if not isinstance(csentences, list):
-#            csentences = []
         tokens = sentence.split()
         ntokens = len(tokens)
         w_index = 0
         while w_index < ntokens:
-#            if filtered[0]:
-#                # There is a failed word
-#                return
             word = tokens[w_index]
             simps = None
             words = None
@@ -2019,18 +2032,10 @@ class Language:
             if words:
                 if self.get_from_cache5(words, local_cache, um=um, seglevel=seglevel, conllu=conllu, sentlist=sentlist, morphid=morphid,
                                        verbosity=verbosity
-#                                             gramfilter=gramfilter, filtered=filtered,
-#                                             experimental=experimental, segment=segment,
-#                                             printout=file and not experimental,
-#                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
-#                                             multseg=multseg, morphid=morphid, file=file
                                                  ):
                     # MWE analysis stored in cache
                     w_index += len(words.split())
                     continue
-#                simps = None
-#                if preproc:
-#                    form, simps = self.preproc(words)
                 # Attempt to analyze MWE
                 analyses = self.analyze(words, mwe=True, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
                 if analyses:
@@ -2042,28 +2047,13 @@ class Language:
             if verbosity:
                 print("**  Analyzing word {}".format(word))
             # Lowercase on the first word, assuming a line is a sentence
-#            if lower_all or (lower and w_index == 0):
-#                word = word.lower()
             if self.get_from_cache5(word, local_cache, um=um, seglevel=seglevel, morphid=morphid, sentlist=sentlist, conllu=conllu,
                                     verbose=verbose
-#                                        gramfilter=gramfilter, filtered=filtered,
-#                                         experimental=experimental, segment=segment,
-#                                         printout=file and not experimental,
-#                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
-#                                         multseg=multseg, morphid=morphid, file=file
                                         ):
-#                print("** Got {} from local cache".format(word))
                 w_index += 1
                 continue
-#            simps = None
-#            if not skip_other_pos:
-#                analyses = self.preproc_special(word, segment=segment, print_out=False)
-#            else:
-#                analyses = None
             if not analyses:
                 ## Analyze
-#                if preproc:
-#                    form, simps = self.preproc(word)
                 analyses = \
                   self.analyze(word, mwe=False, conllu=conllu, gemination=gemination, sepfeats=sepfeats)
                 if analyses:
@@ -2073,30 +2063,8 @@ class Language:
                       morphid += len(analyses[0])
             # Go to next word
             w_index += 1
-#        if filtered[0]:
-#                # There is a failed word
-#            return
-#        if gramfilter:
-#            if not filtered[1]:
-#                return
-#            elif countgrams:
-#                print("*** accepted by filter: {}".format(filtered[1]))
-#                nfiltered = len(filtered[1])
-#                if countgrams[0] > nfiltered or countgrams[1] < nfiltered:
-#                    print("*** failed count constraints")
-#                    return
         # End of sentence
-#        csent.finalize()
-#        return csent
         return sentlist
-
-#    def add_to_cache(self, word, analyses, cache):
-#        '''
-#        cache is a dict of word keys and analyses values.
-#        analyses are what is returned by POSMorphology.anal(), a list of list pairs,
-#        each consisting of a segmentation string and and 
-#        '''
-#        cache[word] = analyses
 
     def get_from_cache5(self, word, cache, sentlist=None, sentobj=None,
                         filter_cache=None, filtered=None, gramfilter=None,

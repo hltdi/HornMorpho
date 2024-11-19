@@ -31,7 +31,6 @@ from tkinter.ttk import *
 from tkinter.font import *
 import time
 from .gui import *
-from .cg import *
 
 # Note: these directories will probably be different for each user!
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'datasets', 'CACO')
@@ -52,16 +51,24 @@ class Corpus():
                  start=0, n_sents=1000, max_sents=5000, start_sent=0,
                  name='', batch_name='', sentid=0,
                  analyze=False, language='', 
-                 um=1, seglevel=2, nsegment=True, fsts=None, disambiguate=False,
+                 um=1, seglevel=2, nsegment=True, fsts=None,
                  constraints=None, local_cache=None, timeit=False,
                  v5=True,
                  sep_feats=True, gemination=False, sep_senses=False,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
                  report_freq=100,
+                 ## ambiguity
+                 # dict of ambiguous entries (after CG disambiguation, before manual disambiguation)
+                 ambig=None,
+                 # whether to do manual disambiguation
+                 disambiguate=False,
+                 # whether to do (automatic) CG disambiguation
+                 CGdisambiguate = True,
+                 # Number of analyses eliminated using CG disambiguator.
+                 disambiguations = 0,
                  # we may want to save unknown and/or ambiguous tokens
                  unk=None,
-                 ambig=None,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
                  # how to treat comments in the corpus; if True convert to CoNNL-U metadata following sentence
@@ -89,6 +96,8 @@ class Corpus():
         self.unk = {}
         # Ambiguous tokens
         self.ambig = {}
+        # Number of disambiguations
+        self.disambiguations = disambiguations
         # Cache for storing segmentations
         if isinstance(local_cache, dict):
             self.local_cache = local_cache
@@ -184,9 +193,10 @@ class Corpus():
                             if sentcount and sentcount % report_freq == 0:
                                 print("Analyzed {} sentences".format(sentcount))
                             if sentence_obj := \
-                              self.seg_sentence5(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
+                              self.anal_sentence(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache, meta=meta,
                                                  unsegment=unsegment, combine_segs=combine_segs, label=label,
+                                                 CGdisambiguate=CGdisambiguate,
                                                  batch_name=batch_name, pos=pos, verbosity=verbosity):
                                 self.data.append(line)
                                 if unk := sentence_obj.unk:
@@ -198,7 +208,7 @@ class Corpus():
                                 if ambig := sentence_obj.morphambig:
                                     for a in ambig:
                                         if len(a) == 1:
-                                            print("{} has only one analysis!".format(a.name))
+#                                            print("{} has only one analysis!".format(a.name))
                                             continue
                                         if a.name not in self.ambig:
                                             self.ambig[a.name] = [a, 1]
@@ -229,7 +239,7 @@ class Corpus():
             # Raw sentences, but they may include comments
             self.data = data
             if v5 and segment:
-                self.segment5(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
+                self.analyze(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
                               cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
@@ -249,9 +259,9 @@ class Corpus():
         '''
         return Corpus(data=sentences, segment=False, disambiguate=disambiguate)
 
-    def seg_sentence5(self, sentence, **kwargs):
+    def anal_sentence(self, sentence, **kwargs):
         """
-        Segment one sentence.
+        Analyze one sentence.
         """
         if kwargs.get('verbosity', 0):
             print("Analyzing {}; meta {}".format(sentence, kwargs['meta']))
@@ -260,10 +270,16 @@ class Corpus():
             self.sentences.append(sentence_obj)
             self.max_words = max([self.max_words, len(sentence_obj.words)])
             sentence_obj.postproc()
+            if kwargs.get('CGdisambiguate', True):
+                # CG disambiguation
+                disambiguated = self.language.disambiguate(sentence_obj, verbosity=kwargs.get('verbosity'))
+                if disambiguated:
+                    # disambiguated is a dict:: index:list of reading indices eliminated
+                    self.disambiguations += sum([len(d) for d in disambiguated.values()])
 #            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
         return sentence_obj
 
-    def segment5(self, **kwargs):
+    def analyze(self, **kwargs):
         """
         Segment all the sentences in self.data.
         % Later have the option of segmenting only some??
@@ -299,9 +315,19 @@ class Corpus():
             else:
 #                sentence_obj.merge_segmentations()
                 self.sentences.append(sentence_obj)
-                self.unk.update(set(sentence_obj.unk))
+                if unk := sentence_obj.unk:
+                    for u in unk:
+                        if u in self.unk:
+                            self.unk[u] += 1
+                        else:
+                            self.unk[u] = 1
                 self.max_words = max([self.max_words, len(sentence_obj.words)])
-                sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
+                sentence_obj.postproc()
+                disambiguated = self.language.disambiguate(sentence_obj, verbosity=kwargs.get('verbosity'))
+                if disambiguated:
+                    # a dict:: index:list of reading indices eliminated
+                    self.disambiguations += sum([len(d) for d in disambiguated.values()])
+#                sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
                 sent_id += 1
         # Delete sentences that didn't pass the filter
         for delindex in todelete[::-1]:
@@ -321,7 +347,7 @@ class Corpus():
         path = kwargs.get('path')
         if path:
             try:
-                file = open(path, 'r', encoding='utf8')
+                file = open(path, 'w', encoding='utf8')
             except FileNotFoundError:
                 print("Something is wrong with path {}; the file can't be opened!".format(path))
         else:
@@ -373,14 +399,24 @@ class Corpus():
 
     def disambiguate(self, skip_unambig=True, seglevel=2, timeit=False, verbosity=0):
         '''
-        Show the segmentations in the GUI so words with multiple
-        segmentations can be disambiguated.
+        Manual disambiguation (following CG disambiguation).
+        Show the analyses in the GUI so words with multiple analyses can be disambiguated.
         '''
         if not self.sentences:
             # Segment all sentences before creating GUI.
-            self.segment(timeit=timeit)
+            self.analyze(timeit=timeit)
+#            self.segment(timeit=timeit)
         self.root = SegRoot(self, title=self.__repr__(), seglevel=seglevel, v5=self.v5)
         self.root.mainloop()
+
+    def annotate(self, verbosity=0):
+        '''
+        Run language's CG dependency (annotation) rules if any on disambiguated sentences.
+        '''
+        if verbosity:
+            print("Running annotation rules")
+            for sentence in self.sentences:
+                sentence.annotate(verbosity=verbosity)
 
     def write_cache(self, path):
         '''

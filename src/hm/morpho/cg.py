@@ -4,58 +4,434 @@ Constraint grammar for HornMorpho.
 
 CG3 = '/usr/local/bin/vislcg3'
 
-from subprocess import Popen, PIPE
-import sys
+import subprocess
+import re
+from .utils import first
+#from subprocess import Popen, PIPE, run
+# import sys
 
-def open_sentence_file(path):
-    return Popen(['cat', path], stdout=PIPE)
+class CG:
 
-def call_cg3(rules_path, sentence, trace=True):
-    if type(sentence) is str:
-        # path to sentence file
-        sentence = open_sentence_file(sentence)
-    args = [CG3, '-g', rules_path]
-    if trace:
-        args.append('-t')
-    PO = Popen(args, stdout=PIPE, stdin=sentence.stdout)
-    res, x = PO.communicate()
-    res = res.decode(sys.stdout.encoding)
-    return res
+    para_delim = "<¶>"
 
-#def call_cg3():
-#    vislcg3 = Popen(['/usr/local/bin/vislcg3', '--help'], stdout=PIPE)
-#    return vislcg3
+    wordform_re = re.compile(r'\"\<(.+)\>\"')
 
-def anal2cg(analysis):
+    def __init__(self, language, disambig=True):
+        self.language = language
+        # There are two kinds of rules: "disambiguation" and "annotation" ("dependencies")
+        self.disambig = disambig
+        self.rules_path = language.get_disambig_file() if disambig else language.get_dep_file()
+
+    @staticmethod
+    def open_sentence_file(path):
+        return subprocess.Popen(['cat', path], stdout=PIPE)
+
+    @staticmethod
+    def anal2reading(analysis, verbosity=1):
+        '''
+        Convert a HM analysis (one element in a Word list) to a Reading object.
+        '''
+        feats = analysis.get('pos', '')
+        um = analysis.get('um', '')
+        if um:
+            um = ' '.join([u.replace('*', '') for u in um.split(';')])
+            feats = "{} {}".format(feats, um)
+        lemma = analysis.get('lemma', analysis.get('token'))
+        string = '"{}" {}'.format(lemma, feats)
+        return Reading(string)
+
+    @staticmethod
+    def word2cohort(word, verbosity=0):
+#        if verbosity:
+#            print("  Converting {} to cohort".format(word))
+        token = word.name
+        result = ['"<{}>"'.format(token)]
+        if not word.readings:
+            readings = [CG.anal2reading(analysis, verbosity=verbosity) for analysis in word]
+#            if not self.disambig and len(readings) > 1:
+#                print("Warning: {} has more than one analysis!".format(word))
+            word.readings = readings
+        result.extend(['\t' + r.string for r in word.readings])
+        return Cohort(token, word.readings)
+
+    @staticmethod
+    def sentence2cohorts(sentence, predelim='', postdelim='', write2='', verbosity=0):
+        '''
+        Convert an HM Sentence object to a list of Cohort objects.
+        '''
+#        if verbosity:
+#            print("Converting {} to CG".format(sentence))
+        cohorts = []
+        if predelim:
+            cohorts.append(Cohort(predelim, []))
+        for word in sentence.words:
+            cohorts.append(CG.word2cohort(word, verbosity=verbosity))
+        if postdelim:
+            cohorts.append(Cohort(postdelim, []))
+        return CGSentence(cohorts)
+#        if write2:
+#            with open(write2, 'w', encoding='utf8') as file:
+#                print(result, file=file)
+
+##    @staticmethod
+##    def anal2cg(analysis, verbosity=0):
+##        '''
+##        Convert a HM analysis (one element in a Word list) to CG3 format.
+##        '''
+##        feats = analysis.get('pos', '')
+##        um = analysis.get('um', '')
+##        if um:
+##            um = ' '.join([u.replace('*', '') for u in um.split(';')])
+##            feats = "{} {}".format(feats, um)
+##        lemma = analysis.get('lemma', analysis.get('token'))
+##        return '"{}" {}'.format(lemma, feats)
+##
+##    @staticmethod
+##    def word2cg(word, verbosity=0):
+##        token = word.name
+##        result = ['"<{}>"'.format(token)]
+##        if not word.analstrings:
+##            word.analstrings = [CG.anal2cg(analysis, verbosity=verbosity) for analysis in word]
+##        result.extend(['\t' + a for a in word.analstrings])
+##        return "\n".join(result)
+##
+##    @staticmethod
+##    def sentence2cg(sentence, predelim='', postdelim='', write2='', verbosity=0):
+##        '''
+##        Convert an HM Sentence object to CG3 format.
+##        '''
+##        result = []
+##        if predelim:
+##            result.append(predelim)
+##        for word in sentence.words:
+##            result.append(CG.word2cg(word, verbosity=verbosity))
+##        if postdelim:
+##            result.append(postdelim)
+##        result = '\n'.join(result)
+##        result += '\n'
+##        if write2:
+##            with open(write2, 'w', encoding='utf8') as file:
+##                print(result, file=file)
+##        else:
+##            return result
+##
+##    @staticmethod
+##    def corpus2cg(corpus, predelim='', postdelim='', write2='tmp.txt', verbosity=0):
+##        '''
+##        Convert the sentences in corpus to CG format and write them to write2.
+##        '''
+##        result = []
+##        for sentence in corpus.sentences:
+##            sentcg = CG.sentence2cg(sentence, predelim=predelim, postdelim=postdelim, write2='', verbosity=verbosity)
+##            result.append(sentcg)
+##        if write2:
+##            with open(write2, 'w', encoding='utf8') as file:
+##                for sentcg in result:
+##                    print(sentcg, file=file)
+##        else:
+##            return result
+
+    @staticmethod
+    def sentstring2CGsent(sentstring):
+        '''
+        Convert a sentence CG string to a CGSentence.
+        '''
+        s = sentstring.split("\n")
+        wf = ''
+        cohorts = []
+        Readings = []
+        for line in s:
+            if not line.strip():
+                continue
+            match = CG.wordform_re.match(line)
+            if match:
+                wordform = match.group(1)
+                if wf:
+                    cohorts.append((wf, Readings))
+                    wf = ''
+                    Readings = []
+                # a new cohort
+                wf = wordform
+            elif line.startswith(';'):
+                # a removed reading
+                line = line[1:].strip()
+                reading = Reading(line, True)
+                Readings.append(reading)
+            else:
+                Readings.append(Reading(line.strip()))
+        cohorts.append((wf, Readings))
+        cohorts = [Cohort(w, r) for w, r in cohorts]
+        cgsent = CGSentence(cohorts)
+        return cgsent
+
+    def call_cg3(self, sentences, trace=True, verbosity=0):
+        '''
+        Run the rules in self.rules_path on the sentences in sentences,
+        a path or a stream.
+        Return the result as a string with deleted readings marked by ; (disambiguation)
+        or tags added for ID, dependencies, and relations (annotation).
+        '''
+        if verbosity:
+            print("  Running rules at {}".format(self.rules_path))
+        args = [CG3, '-g', self.rules_path]
+        if trace:
+            args.append('-t')
+        result = subprocess.run(args, input=sentences, capture_output=True, text=True)
+        return result.stdout.strip()
+
+    def realize_rules(self, sentence, sentstring, verbosity=0):
+        '''
+        sentstring is the output of rules applied to sentence.
+        Realize the rules by
+           disambiguation: removing any readings that have been marked as removed.
+           annotation: saving any relations and dependencies in the Sentence object.
+        '''
+        if verbosity:
+            if self.disambig:
+                print("  Disambiguating {}".format(sentence.words))
+            else:
+                print("  Annotating {}".format(sentence.words))
+        todel = {}
+        CGsent = CG.sentstring2CGsent(sentstring)
+        if len(sentence.words) != len(CGsent.cohorts):
+            print("Something wrong: # words {} != # cohorts {}".format(len(sentence.words), len(CGsent.cohorts)))
+            return
+        if not self.disambig:
+            root, relations = CGsent.get_relations()
+            if root >= 0:
+                if verbosity:
+                    print("  Setting sentence root to word {}".format(root))
+                sentence.root = root
+            if relations:
+                if verbosity:
+                    print("  Setting sentence relations to {}".format(relations))
+                sentence.relations = relations
+            return root, relations
+        for index, (word, cohort) in enumerate(zip(sentence.words, CGsent.cohorts)):
+            td = self.realize_rules_word(word, cohort, verbosity=verbosity)
+            if td:
+                todel[index] = td
+        return todel
+
+    def realize_rules_word(self, word, cohort, verbosity=0):
+        '''
+        Realize the output of rules, given in Cohort instance cohort, to Word instance word.
+        '''
+        readings = cohort.readings
+        if verbosity:
+            print("  Disambiguating {} / {}".format(word, cohort))
+        if len(word) != len(readings):
+            print("  Something wrong with {}: # analyses {} != # reading {}".format(word, len(word), len(readings)))
+            return
+        todel = []
+        for reading in readings:
+            if reading.removed:
+                found = False
+                for index, r in enumerate(word.readings):
+                    if reading.match(r):
+                        todel.append(index)
+                        found = True
+                        break
+                if not found:
+                    print("REMOVED READING {} FOR {} NOT FOUND!".format(rd, word))
+        if todel:
+            word.remove(todel)
+            if verbosity:
+                print("  Removed reading(s) {} from {}".format(todel, word))
+        return todel
+
+    def run(self, sentence, predelim='', postdelim='', write2='', verbosity=0):
+        '''
+        Run rules on sentence and apply the changes or updates.
+        If disambiguation, possibly delete readings of some cohorts (words).
+        If annotation, possibly set the sentence root and relations.
+        '''
+        cgsent = CG.sentence2cohorts(sentence, predelim=predelim, postdelim=postdelim, verbosity=verbosity)
+        rule_out = self.call_cg3(cgsent.format(), trace=True, verbosity=verbosity)
+        if not rule_out:
+            print("  Rules returned nothing!")
+            return
+        return self.realize_rules(sentence, rule_out, verbosity=verbosity)
+
+class Cohort:
     '''
-    Convert a HM analysis (one element in a Word list) to CG3 format.
+    A CG cohort: a word with one or more readings.
     '''
-    um = analysis.get('um', '')
-    um = ' '.join([u.replace('*', '') for u in um.split(';')])
-    pos = analysis.get('pos', '')
-    lemma = analysis.get('lemma', analysis.get('token'))
-    return '\t"{}" {} {}'.format(lemma, pos, um)
 
-def word2cg(word):
-    token = word.name
-    result = ['"<{}>"'.format(token)]
-    result.extend([anal2cg(analysis) for analysis in word])
-    return "\n".join(result)
+    def __init__(self, word, readings):
+        self.word = word
+        self.readings = readings
 
-def sentence2cg(sentence, predelim='', postdelim='', write2=''):
+    def __repr__(self, short=False):
+        if short:
+            return "{}:[{}]".format(self.word, len(self.readings))
+        return ">> {} : {} <<".format(self.word, self.readings)
+
+    def format(self):
+        return '"<{}>"\n{}'.format(self.word, '\n'.join([r.format() for r in self.readings]))
+
+    @staticmethod
+    def format_wordform(wf):
+        return '"<{}>"'.format(wf)
+
+    def get_id_tag(self):
+        return self.readings[0].get_id_tag()
+
+    def get_rel_tags(self):
+        return self.readings[0].get_rel_tags()
+
+    def get_dep_tags(self):
+        return self.readings[0].get_dep_tags()
+
+    def get_id(self):
+        return self.readings[0].get_id()
+
+    def get_rels(self):
+        return self.readings[0].get_rels()
+
+    def get_deps(self):
+        return self.readings[0].get_deps()
+
+class Reading:
     '''
-    Convert an HM Sentence object to CG3 format.
+    A CG reading: a string containing a form, a POS, and, optionally a list of features and one or more
+    tags inserted by rules.
     '''
-    result = []
-    if predelim:
-        result.append(predelim)
-    for word in sentence.words:
-        result.append(word2cg(word))
-    if postdelim:
-        result.append(postdelim)
-    result = '\n'.join(result)
-    if write2:
-        with open(write2, 'w', encoding='utf8') as file:
-            print(result, file=file)
-    else:
-        return result
+
+    def __init__(self, string, removed=False):
+        self.string = string
+        self.items = string.split()
+        self.removed = removed
+
+    def __repr__(self):
+        return ">{} {} <".format(';;' if self.removed else '', self.string)
+
+    def format(self):
+        return "\t{}".format(self.string)
+
+    def get_lemma(self):
+        return self.items[0]
+
+    def get_pos(self):
+        return self.items[1]
+
+    def get_features(self):
+        '''
+        Morphological features.
+        Note: this means that features *cannot* contain :.
+        '''
+        return [x for x in self.items[2:] if ':' not in x]
+
+    def get_tags(self):
+        return [x for x in self.items[1:] if ':' in x or x[0] == '#']
+
+    def get_dep_tags(self):
+        '''
+        Dependency tags indicate a dependency but no relation between two words/cohorts.
+        '''
+        return [x for x in self.get_tags() if x[0] == '#']
+
+    def get_rel_tags(self):
+        '''
+        Relation tags indicate a relation (and dependencey) between two words/cohorts.
+        '''
+        return [x for x in self.get_tags() if x[0] == 'R']
+
+    def get_id_tag(self):
+        '''
+        ID tags assign a number to the word.
+        '''
+        if id := first(lambda x: x.startswith('ID'), [x for x in self.get_tags()]):
+            return id
+
+    def get_id(self):
+        if tag := self.get_id_tag():
+            return int(tag.split(':')[-1])
+
+    def get_rels(self):
+        if tags := self.get_rel_tags():
+            return [tag.partition(':')[-1] for tag in tags]
+
+    def get_deps(self, drop_self=True):
+        if tags := self.get_dep_tags():
+            deps = [[int(d) for d in tag[1:].split('->')] for tag in tags]
+            if drop_self:
+                deps = [(x, y) for x, y in deps if x != y]
+            return deps
+
+    def get_analysis(self):
+        '''
+        Lemma, POS, and morphological features (everything by CG tags).
+        '''
+        return [x for x in self.items if ':' not in x]
+
+    def match(self, reading):
+        '''
+        Does this reading match another reading?
+        This assumes the order of the features is the same.
+        '''
+        return self.get_analysis() == reading.get_analysis()
+
+class CGSentence:
+
+    def __init__(self, cohorts):
+        self.cohorts = cohorts
+
+    def __repr__(self):
+        string = ' ; '.join([c.__repr__(True) for c in self.cohorts])
+        return ">>> {} <<<".format(string)
+
+    def format(self):
+        string = '\n'.join([c.format() for c in self.cohorts])
+        # Need to add \n at end to get rules to prevent extra character at the end
+        return string + '\n'
+
+    def get_relations(self, verbosity=0):
+        '''
+        Return the relations between words/cohorts in the CGSentence as child->parent dicts.
+        '''
+        # child_windex: (parent_windex relation)
+        idrelations = {}
+        # child_windex: parent_windex
+        dependencies = {}
+        # ID: windex
+        ids = {}
+        root = -1
+        for windex, cohort in enumerate(self.cohorts):
+            id = cohort.get_id()
+            if id:
+                ids[id] = windex
+            rels = cohort.get_rels()
+            if rels:
+                for rel in rels:
+                    rlabel, _, cid = rel.rpartition(':')
+                    cid = int(cid)
+                    idrelations[cid] = (id, rlabel)
+            deps = cohort.get_deps()
+            if deps:
+                for dep in deps:
+                    child, parent = dep
+                    dependencies[child] = parent
+        # Convert IDs to windex
+        relations = {}
+        for cid, (pid, label) in idrelations.items():
+            cindex = ids.get(cid)
+            if not cindex:
+                print("No index for cohort id {}!".format(cid))
+                return
+            relations[cindex] = (ids.get(pid), label)
+        for cindex, pindex in dependencies.items():
+            # dependency indeces are 1-initial cohort indices
+            cindex -= 1
+            if pindex == 0:
+                # root
+                root = cindex
+            else:
+                pindex -= 1
+                if cindex in relations:
+                    print("There is already an explicit relation for {}: {}".format(cindex, relations[cindex]))
+                    continue
+                relations[cindex] = (pindex, None)
+        if verbosity:
+            print("Cohort relations {}, root {}".format(relations, root))
+        return root, relations
