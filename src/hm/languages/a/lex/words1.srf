@@ -52,8 +52,6 @@
 ቅድም  ቅ/ድም  ADV
 በይበልጥ  በይበልጥ  ADV
 በደንብ  በደንብ  ADV
-በፊት  በፊት  ADV
-በኋላ  በኋላ  ADV
 ከቶ  ከ/ቶ  ADV
 ከቶውንም  ከቶውንም  ADV
 ማዶ  ማዶ  ADV
@@ -97,6 +95,7 @@
 ይኸኔ  ይኸ/ሄ  ADV
 ይሄኔ  ይሄ/ኔ  ADV
 አለጊዜ  አለጊዜ	ADV
+ቁጥር  ቁጥር  PARTCONJ
 # ? እንቢዮ  እንቢዮ  ADV
 #ዳግመኛ  ዳግመ/ኛ  ADV
 #ዳግሞሽ  ዳግሞሽ  ADV
@@ -281,9 +280,9 @@
 እንቢ  እንቢ  PART
 ቀደም  ቀደ/ም  PART
 # prepositions
-እንደ  እንደ  ADP
-እስከ  እስከ  ADP
-ስለ  ስለ  ADP
+እንደ  እንደ  ADPCONJ
+እስከ  እስከ  ADPCONJ
+ስለ  ስለ  ADPCONJ
 ወደ  ወደ  ADP
 ያለ  ያለ  ADP
 ባለ     ባለ     ADP
@@ -291,12 +290,12 @@
 # unambiguous postpositions
 ጋ     ጋ     ADP
 ዘንድ  ዘንድ  ADP
-ድረስ  ድረስ  ADP
+ድረስ  ድረስ  ADPCONJ
 ጋር  ጋር  ADP
 ጋራ  ጋራ  ADP
 # ambiguous postpositions
-በፊት  በፊት  ADV
-በኋላ  በኋላ  ADV
+በፊት  በፊት  ADPCONJ
+በኋላ  በኋላ  ADPCONJ
 በኩል  በ/ኩል  ADP
 በላይ  በላይ  ADP
 በስተጀርባ  በስተጀርባ  ADP
@@ -486,7 +485,7 @@
 ቅር ቅ/ር  PART
 ቅርፍፍ ቅርፍ/ፍ  PART
 ቁጭ ቁ/ጭ  PART
-ቁጥር ቁ/ጥ/ር  PART
+#ቁጥር ቁ/ጥ/ር  PART
 ቁጢጥ ቁጢጥ  PART
 ቁም/ጥ ቁ/ም/ጥ  PART
 ቅዝዝ ቅ/ዝ/ዝ  PART

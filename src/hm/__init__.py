@@ -42,6 +42,8 @@ __version__ = '5.2'
 
 __author__ = 'Michael Gasser'
 
+import os
+
 from . import morpho
 
 print('\n@@@@ This is HornMorpho{}, version {} @@@@\n'.format(__cat__, __version__))
@@ -49,6 +51,10 @@ print('\n@@@@ This is HornMorpho{}, version {} @@@@\n'.format(__cat__, __version
 #print('\n@@@@ Welcome to HornMorpho! @@@@\n')
 
 SEGMENT = False
+
+#USER_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'usr')
+
+USER_DIR = os.path.join(os.path.dirname(__file__), 'usr')
 
 ###
 ### Version 5 functions.

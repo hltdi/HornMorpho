@@ -48,7 +48,7 @@
 	"አበባ" PROPN
 	"አበባ" N
 "<መጣች>"
-	"መጣ"V PFV 3 SG Fem MAIN
+	"መጣ" V PFV 3 SG Fem MAIN
 "<።>"
 	"።" PUNCT
 
@@ -113,7 +113,7 @@
 	"ጋረ" V IMP 2 SG MASC
 "<ምሳ>"
 	"ምሳ" N
-	"ማሰ" V V.CVB 3 SG FEM
+	"ማሰ" V CVB 3 SG FEM
 "<በላ>"
 	"በላ" V PFV MAIN 3 SG MASC
 "<?>"
@@ -123,11 +123,11 @@
 	"መስኮት" N DEF ACC SG
 "<ዝጋ>"
 	"ዘጋ" V IMP 2 SG MASC
-	"ዛገ" V V.CVB 3 SG FEM
+	"ዛገ" V CVB 3 SG FEM
 "<!>"
 
 "<ገብቶ>"
-	"ገባ" V V.CVB 3 PL MASC
+	"ገባ" V CVB 3 PL MASC
 	"ገብቶ" N SG
 "<ተቀመጠች>"
 	"ተቀመጠ" V PFV 3 SG FEM MAIN
@@ -217,3 +217,159 @@
 "<።>"
 	"።" PUNCT
 
+"<እንደ>"
+	"እንደ" ADPCONJ
+"<አባቱ>"
+	"አባት" N SG  {PSS3SM/DEF}
+"<ይዘፍናል>"
+	"ዘፈነ" V PRF MAIN 3 SG MASC IPFV
+"<።>"
+	"።" PUNCT
+
+"<እንደ>"
+	"እንደ" ADPCONJ
+"<ተለመ>"
+	"ተለመደ" V RELC PRF PASS 3 SG MASC
+"<ይዘፍናል>"
+	"ዘፈነ" V PRF MAIN 3 SG MASC IPFV
+"<።>"
+	"።" PUNCT
+
+"<ስለ>"
+	"ስለ" ADPCONJ
+"<ወንድሟ>"
+	"ወንድም" N MASC PSS3SF SG
+"<አናውቅም>"
+	"አወቀ" V DERAGI MAIN 1 IPFV NEG PL
+"<።>"
+	"።" PUNCT
+
+"<ይህ>"
+	"ይህ" DET DEMPRO MASC SG
+"<ቤት>"
+	"ቤት" N SG
+"<ፈራሽ>"
+	"ፈራ" V DERAGI MAIN 3 AC2SF MASC PFV SG
+	"ፈራ" V DERAGI MAIN 2 FEM PFV SG
+	"ፈራሽ" N DERAGI SG
+	"ፈራሽ" ADJ SG
+"<ነው>"
+	"ነው" AUX 3 MASC PRS SG
+"<።>"
+	"።" PUNCT
+
+"<እሱ>"
+	"እሱ" PRON PRSPRO 3 MASC SG
+"<ነው>"
+	"ነው" AUX 3 MASC PRS SG
+"<ይላሉ>"
+	"አለ" V DERAGI MAIN 3 IPFV PL
+	"ላላ" V DERAGI 3 IMP PL
+"<።>"
+	"።" PUNCT
+
+"<ባልዘነበ>"
+	"ዘነበ" V BE_SC DERAGI SUBORD 3 MASC NEG PFV SG
+	"ዘነበ" V DERAGI INS OBL RELC 3 MASC NEG PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ምሳውን>"
+	"ምሳ" N ACC SG {PSS3SM/DEF}
+"<በላላና>"
+	"ላላ" V BE_SC DERAGI SUBORD 3 MASC PFV SG CCONJ
+	"ላላ" V DERAGI INS OBL RELC 3 MASC PFV SG CCONJ
+	"በላላ" V DERARAGI 2 IMP ITER MASC SG CCONJ
+	"በላላ" V DERARAGI MAIN 3 ITER MASC PFV SG CCONJ
+"<ሄደ>"
+	"ሄደ" V DERAGI MAIN 3 MASC PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ጋር>"
+	"ጋር" ADP
+	"ጋረ" V DERAGI 2 IMP MASC SG
+"<አትጋር>"
+	"ጋረ" V DERAGI 3 FEM IMP NEG SG
+	"ጋረ" V DERAGI 2 IMP MASC NEG SG
+	"ተጋረ" V I_PART TEDERAGI 2 IPFV MASC NEG PASS SG
+	"ተጋረ" V TEDERAGI 2 IMP MASC NEG PASS SG
+	"ተጋረ" V I_PART TEDERAGI 3 FEM IPFV NEG PASS SG
+	"ተጋረ" V TEDERAGI 3 FEM IMP NEG PASS SG
+"<አላውቅም>"
+	"አወቀ" V DERAGI MAIN 1 IPFV NEG SG
+
+"<ገንዘቡን>"
+	"ገንዘብ" N ACC SG {PSS3SM/DEF}
+"<ማን>"
+	"ማን" PRON INTPRO SG
+"<እንደሰጣት>"
+	"ሰጠ" V DERAGI INDE_SC SUBORD 3 AC3SF MASC PFV SG
+	"ሰጠ" V DERAGI EQTV OBL RELC 3 AC3SF MASC PFV SG
+"<ንገረን>"
+	"ነገረ" V DERAGI 2 AC1P IMP MASC SG
+"<?>"
+	"?" PUNCT
+
+"<ከስንት>"
+	"ስንት" ADJ ABL OBL SG
+"<ጊዜ>"
+	"ጊዜ" N SG
+"<በፊት>"
+	"ፊት" N INS OBL SG
+	"በፊት" ADV
+"<ገቡ>"
+	"ገባ" V DERAGI MAIN 3 PFV PL
+	"ገብ" N SG {PSS3SM/DEF}
+"<።>"
+	"።" PUNCT
+
+"<ልብስ>"
+	"ባሰ" V DERAGI L_SC SUBORD 1 IPFV SG
+	"ልብስ" ADJ SG
+	"ልብስ" N SG
+"<ይጠብ>"
+	"አጠበ" V DERAGI 3 IMP MASC SG
+"<።>"
+	"።" PUNCT
+
+"<ባየሁት>"
+	"አየ" V DERAGI INS OBL RELC 1 DEF PFV SG
+	"አየ" V BE_SC DERAGI SUBORD 1 AC3SM PFV SG
+	"አየ" V DERAGI INS OBL RELC 1 AC3SM PFV SG
+"<ቁጥር>"
+	"ቍጥር" N SG
+	"ቁጥር" PARTADV
+"<ጥሩ>"
+	"ጠራ" V DERAGI 2 IMP PL
+	"ጥሩ" ADJ SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+
+"<ባየሁት>"
+	"አየ" V DERAGI INS OBL RELC 1 DEF PFV SG
+	"አየ" V BE_SC DERAGI SUBORD 1 AC3SM PFV SG
+	"አየ" V DERAGI INS OBL RELC 1 AC3SM PFV SG
+"<ቁጥር>"
+	"ቍጥር" N SG
+	"ቁጥር" PARTCONJ
+"<ጥሩ>"
+	"ጠራ" V DERAGI 2 IMP PL
+	"ጥሩ" ADJ SG
+"<ነበር>"
+	"ነው" AUX PST
+"<።>"
+	"።" PUNCT
+
+"<ጥሩ>"
+	"ጠራ" V DERAGI 2 IMP PL
+	"ጥሩ" ADJ SG
+"<ሞትን>"
+	"ሞት" N ACC SG
+	"ሞተ" V DERAGI MAIN 1 PFV PL
+"<ሞተ>"
+	"ሞተ" V DERAGI MAIN 3 MASC PFV SG
+"<።>"
+	"።" PUNCT

@@ -306,12 +306,12 @@ class Morphology(dict):
     def get_freq(self, root):
         return self.root_freqs.get(root, 1)
 
-    def get_root_freq(self, root, anal):
-        rv = self.root_fv(root, anal)
-#        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
-        if self.root_freqs:
-            return self.root_freqs.get(rv, 0)
-        return 50
+#    def get_root_freq(self, root, anal):
+#        rv = self.root_fv(root, anal)
+##        print("^^ Getting root freq: {} {} ; {}".format(root, anal.__repr__(), rv))
+#        if self.root_freqs:
+#            return self.root_freqs.get(rv, 0)
+#        return 50
 
     def get_feat_freq(self, anal):
         freq = 1.0
@@ -1491,18 +1491,21 @@ class POSMorphology:
             if pos in ('N', 'PROPN', 'ADJ', 'NADJ'):
                 match = POSMorphology.segment_n_mwe_re.match(string)
                 if match:
+#                    print(" ** match groups: {}".format(match.groups()))
                     pre, mwe_part, stem, suf = match.groups()
                     if mwe_part:
                         pre = pre + mwe_part
             else:
                 match = POSMorphology.segment_mwe_re.match(string)
+#                print(" ** match groups: {}".format(match.groups()))
                 premwe, pre, stem, suf, postmwe = match.groups()
+#                pre = premwe + pre
             if not match:
                 return '', [], '', [], ''
             mwe_part = mwe_part or premwe or postmwe
             if mwe_part:
                 mwe_part = mwe_part.strip()
-#            print(" ** pre {}; suf {}; mwe_part {}".format(pre, suf, mwe_part))
+#            print("   ** MWE: premwe {}; pre {}; suf {}; postmwe {}; mwe_part {}".format(premwe, pre, suf, postmwe, mwe_part))
         else:
 #            print(' **string {}'.format(string))
             match = POSMorphology.segment_re.match(string)
@@ -1732,22 +1735,26 @@ class POSMorphology:
         tokens = tokens.split()
         token_dicts = []
 #        print("** MWE tokens: {}".format(tokens))
+#        print("   *** props: {}".format(props.__repr__()))
         if props:
             headfin = props.get('hdfin')
             deppos = props.get('deppos')
             tokpos = props.get('tokpos')
             headaff = props.get('hdaff')
-            rel = props.get('rel')
+            rel = props.get('dep')
+            if rel:
+                # ':' not permitted in FeatStructs
+                rel = rel.replace('_', ':')
             if headfin:
                 for ti, token in enumerate(tokens[:-1]):
                     pos = tokpos[str(ti+1)] if tokpos else deppos
-                    token_dicts.append({'token': token, 'pos': pos, 'head': False})
+                    token_dicts.append({'token': token, 'pos': pos, 'head': False, 'dep': rel or 'compound'})
                 token_dicts.append({'token': tokens[-1], 'pos': self.pos.upper(), 'head': True})
             else:
                 token_dicts.append({'token': tokens[0], 'pos': self.pos.upper(), 'head': True})
                 for ti, token in enumerate(tokens[1:]):
                     pos = tokpos[str(ti)] if tokpos else deppos
-                    token_dicts.append({'token': token, 'pos': pos, 'head': False})
+                    token_dicts.append({'token': token, 'pos': pos, 'head': False, 'dep': rel or 'compound'})
         return token_dicts
 
     def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
@@ -1930,7 +1937,8 @@ class POSMorphology:
         if depspec:
             if isinstance(depspec, str):
                 # string specifying the dep for all affixes in this position
-                dep = depspec
+                # ':' not permitted in FeatStruct
+                dep = depspec.replace('_', ':')
             elif isinstance(depspec, tuple):
 #                print("  ^^ depspec is tuple: {}".format(depspec))
                 # (feature, {...})

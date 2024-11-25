@@ -12,7 +12,7 @@ e2a -> e2a		[:-]
 e2a -> e2a+		[:<]
 # noun stems normally begin with አ
 # +- init feature can prevent this
-e2a+ -> stem  	[:ኣ;:አ]	    [+delinit]
+e2a+ -> stem  	[:ኣ;:አ]			[+delinit]
 
 # but also allow ለአልማዝ
 start -> ea		[*e]
@@ -27,7 +27,7 @@ pre1 -> eI		[*e]
 eI -> eI2 		[:-]
 eI2 -> eI2+		[:<]
 eI2 -> pre2		[:እ]
-eI2+ -> stem	[:እ]
+eI2+ -> stem	[:እ]		    [+delinit]
 
 # prep before stem-initial consonant or ኢ ኤ ኦ ኡ
 pre1 -> pre2C	[:-]

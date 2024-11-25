@@ -26,6 +26,8 @@ Representation of 'items': words, MWEs, punctuation, numerals.
 """
 from .ees import EES
 
+import copy
+
 class Word(list):
 
     id = 0
@@ -59,8 +61,19 @@ class Word(list):
     def __repr__(self):
         return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', self.name, "[{}]".format(len(self)) if self.is_known else '')
 
-    def copy(self):
-        return Word(self, name=self.name, unk=self.unk, merges=self.merges)
+    def copy(self, name=''):
+        '''
+        Copy the word (from cached word), setting the raw name to avoid normalization.
+        '''
+        word = copy.deepcopy(self)
+        word.name = name
+        word.unk = self.unk
+        for anal in word:
+            anal['raw'] = name
+        if word.conllu:
+            for anal in word.conllu:
+                anal[0]['form'] = name
+        return word
 
     def filter_prioritize(self):
         if not self.unk and len(self) > 1:
@@ -133,6 +146,21 @@ class Word(list):
 #            return
 #        self.sort(key=lambda x: x.get('nsegs', 1))
 
+    def change(self, index=0, pos=''):
+        '''
+        Change some feature of the indexth analysis.
+        (Currently only works for POS.)
+        '''
+        if pos:
+            self[index]['pos'] = pos
+            # Change it in the conllu and readings
+            clist = self.conllu[index]
+            for c in clist:
+                if c['id'] == c['head']:
+                    # This is the head of the word (IDs haven't been adjusted yet)
+                    c['upos'] = pos
+                    c['xpos'] = pos
+
     def remove(self, indices, index_map=None):
         '''
         Remove the analyses at indices. Update index_map (a list of pairs)
@@ -180,6 +208,7 @@ class Word(list):
         Eliminate analyses which represent segmentations of other unsegmented analyses.
         This happens with segmentation of derivational affixes, for example, in EES verbal nouns
         or Oromo causative, passive, and auto-benefactive stems.
+        But the POS has to match for the analysis to be eliminated.
         '''
         todel = []
         if len(self) == 1:
@@ -187,7 +216,11 @@ class Word(list):
         for index1, anal1 in enumerate(self[:-1]):
             lemma1 = anal1.get('lemma')
             root1 = anal1.get('root')
+            pos1 = anal1.get('pos')
             for index2, anal2 in enumerate(self[index1+1:]):
+                pos2 = anal2.get('pos')
+                if pos1 != pos2:
+                    continue
                 i2 = index1 + index2 + 1
                 lemma2 = anal2.get('lemma')
                 if lemma1 != lemma2:
@@ -202,6 +235,53 @@ class Word(list):
                     todel.append(index1)
                 # handle other cases, like Oromo abdachiise
         return todel
+
+    def compare_all(self):
+        '''
+        Compare all pairs of analyses.
+        '''
+        diffs = {}
+        nsegs = {len(x) for x in self.conllu}
+        if len(nsegs) > 1:
+            # Comparison only works if analyses have the same number of segments.
+            return {}
+        for index1, (anals1, conllu1) in enumerate(zip(self[:-1], self.conllu[:-1])):
+            diffs1 = {}
+            for index2, (anals2, conllu2) in enumerate(zip(self[index1+1:], self.conllu[index1+1:])):
+                i2 = index1+index2+1
+                c = self.compare_segs(anals1, anals2, conllu1, conllu2)
+#                print("** {}: comparing {} and {}: {}".format(self, index1, i2, c))
+                if c and type(c) is dict:
+                    if index1 not in diffs:
+                        diffs[index1] = {}
+                    if i2 not in diffs:
+                        diffs[i2] = {}
+                    for kind, value in c.items():
+                        if kind == 'segs':
+                            continue
+                        if kind == 'lemma':
+                            diffs[index1]['lemma'] = True
+                            diffs[i2]['lemma'] = True
+                        else:
+                            if kind not in diffs[index1]:
+                                diffs[index1][kind] = []
+                            if kind not in diffs[i2]:
+                                diffs[i2][kind] = []
+                            diffs[index1][kind].extend(value[0])
+                            diffs[i2][kind].extend(value[0])
+        if diffs:
+            diffdict = {}
+            for anali, d in diffs.items():
+                for dtype, dmi in d.items():
+#                    print("  ** dtype {}, dmi {}".format(dtype, dmi))
+                    if dtype == 'lemma':
+                        diffdict['lemma'] = True
+                    else:
+                        if dtype not in diffdict:
+                            diffdict[dtype] = set()
+                        diffdict[dtype].update(dmi)
+            return diffdict
+        return diffs
 
     def merge1(self, merges, to_del, gemination=False, sep_senses=False, verbosity=0):
         for index1, (segs1, csegs1) in enumerate(zip(self[:-1], self.conllu[:-1])):
@@ -352,6 +432,7 @@ class Word(list):
         '''
         Compare lemmas and glosses.
         '''
+#        print("  ** Comparing lemmas for {} and {}".format(segs1, segs2))
         l1 = segs1.get('lemma')
         l2 = segs2.get('lemma')
         if not gemination:
@@ -382,16 +463,22 @@ class Word(list):
 
     def compare_pos(self, segs1, segs2, csegs1, csegs2, verbosity=0):
         pi = -1
+#        print("  ** Comparing POS for {} {} | {} {}".format(segs1, segs2, csegs1, csegs2))
         pos1 = segs1.get('pos')
         pos2 = segs2.get('pos')
-        poseq = pos1 == pos2
+#        print("   ** pos1 {}, ** pos2 {}".format(pos1, pos2))
+        poseq = (pos1 == pos2)
         if not poseq:
-            # Get the index of the morpheme where the POS difference is
-            for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):
-                p1 = m1['upos']
-                p2 = m2['upos']
-                if p1 and p2 and p1 != p2:
-                    pi = mindex
+            if len(csegs1) == 1:
+                pi = 0
+            else:
+                # Get the index of the morpheme where the POS difference is
+                for mindex, (m1, m2) in enumerate(zip(csegs1[1:], csegs2[1:])):
+                    p1 = m1['upos']
+                    p2 = m2['upos']
+#                    print("mindex {}, p1 {}, p2 {}".format(mindex, p1, p2))
+                    if p1 and p2 and p1 != p2:
+                        pi = mindex
         return poseq, pos1, pos2, pi
 
     def compare_segs(self, segs1, segs2, csegs1, csegs2, gemination=False, sep_senses=True, verbosity=0):
@@ -399,8 +486,8 @@ class Word(list):
         Compare the two segmentations (dicts) and CoNLL-U segmentations to see if they can be merged.
         '''
         if segs1 == segs2:
-            if verbosity:
-                print("   *** segs are equal!")
+#            if verbosity:
+            print("   *** segs are equal!")
             return False
         poseq = False
         umeq = False
@@ -408,11 +495,13 @@ class Word(list):
         segseq = True
         # Morpheme index where feat differences happen
         mi = -1
-        # Morpheme index where POS differences happend
+        # Morpheme indices where feat differences happen
+        mis = []
+        # Morpheme index where POS differences happen
         n1 = segs1['nsegs']
         n2 = segs2['nsegs']
         if n1 != n2:
-#            print("  ** nsegs: {} ; {}".format(n1, n2))
+            print("  ** nsegs: {} ; {}".format(n1, n2))
             return True
 
         poseq, pos1, pos2, pi = self.compare_pos(segs1, segs2, csegs1, csegs2, verbosity=verbosity)
@@ -444,13 +533,20 @@ class Word(list):
             udfeq = True
         if d1 and d2:
             # Get the index of the morpheme where the feat difference is
-            for mindex, (m1, m2) in enumerate(zip(csegs1, csegs2)):
+            for mindex, (m1, m2) in enumerate(zip(csegs1[1:], csegs2[1:])):
                 f1 = m1['feats']
                 f2 = m2['feats']
-                if f1 and f2 and all([d in f1 for d in d1]) and all([d in f2 for d in d2]):
+#                print("  * Checking feats for {}: {} and {}".format(mindex, f1, f2))
+#                print("   * against {} and {}".format(d1, d2))
+                in1 = f1 and all([d in f1 for d in d1])
+                in2 = f2 and all([d in f2 for d in d2])
+                if in1 and in2:
                     mi = mindex
-        if not poseq and not udfeq:
-            return True
+                elif in1 or in2:
+                    mis.append(mindex)
+#        if not poseq and not udfeq:
+#            print(" not poseq and not udfeq")
+#            return True
         if n1 > 1:
             preeq = Word.parts_equal(segs1.get('pre'), segs2.get('pre'))
             sufeq = Word.parts_equal(segs1.get('suf'), segs2.get('suf'))
@@ -459,17 +555,20 @@ class Word(list):
             if verbosity:
                 print("  ** compared parts: pre {} suf {} stem {} seg {}".format(preeq, sufeq, stemeq, segseq))
         if poseq and udfeq and leq and segseq and (geq or not sep_senses):
+#            print("* all equal")
             return False
         else:
             diffs = {}
             if not leq:
                 diffs['lemma'] = [l1, l2]
             elif not geq:
-                diffs['gloss'] = [g1, g2, gi]
+                diffs['gloss'] = [[gi], g1, g2]
             if not udfeq and mi >= 0:
-                diffs['udfeats'] = [mi, ','.join(d1), ','.join(d2)]
+                diffs['udfeats'] = [[mi], ','.join(d1), ','.join(d2)]
+            if not udfeq and mis:
+                diffs['udfeats'] = [mis, ','.join(d1), ','.join(d2)]
             if not poseq:
-                diffs['pos'] = [pos1, pos2, pi]
+                diffs['pos'] = [[pi], pos1, pos2]
             if not segseq:
                 diffs['segs'] = [preeq, stemeq, sufeq]
             return diffs

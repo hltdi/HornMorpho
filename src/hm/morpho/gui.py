@@ -260,9 +260,9 @@ class SegRoot(Tk):
         '''
         wordindex = self.wordvar.get()-1
         wordsegs = self.sentenceGUI.words[wordindex]
-        if self.v5:
-            wordsegs = wordsegs.conllu
-        return wordsegs
+#        if self.v5:
+#            wordsegs = wordsegs.conllu
+        return wordsegs, wordsegs.conllu
 
     def undo(self):
         """
@@ -303,6 +303,8 @@ class SegCanvas(Canvas):
     selectcolors = ['Yellow', 'Gold', 'Orange']
     texthighlight = 'Red'
 
+    diffcolor = 'Magenta'
+
     maxfeatchars = 15
 
     def __init__(self, parent, corpus=None, seglevel=2, width=800, height=600, v5=False):
@@ -326,14 +328,14 @@ class SegCanvas(Canvas):
         self.delete('all')
 
     def update(self):
-        wordsegs = self.parent.get_word_segmentations()
-        self.show_word(wordsegs)
+        wordanals, wordconllu = self.parent.get_word_segmentations()
+        self.show_word(wordanals, wordconllu)
         
-    def show_word(self, wordsegs):
+    def show_word(self, wordobj, wordconllu):
         '''
-        Show a word's segmentations: forms, POS, features, dependency arcs, lemmas (if different from forms).
+        Show a word's analyses: forms, POS, features, dependency arcs, lemmas (if different from forms).
         '''
-#        print("* Showing {}".format(wordsegs))
+#        print("* Showing {}".format(wordconllu))
         self.clear()
         y = SegCanvas.Y0
         segYs = []
@@ -344,9 +346,19 @@ class SegCanvas(Canvas):
         posselecttags = []
         featselecttags = []
         dependencies = None
-        nwordsegs = len(wordsegs)
-        for segi, wordseg in enumerate(wordsegs):
-#            print("** wordseg {}".format(wordseg))
+        nwordanals = len(wordconllu)
+#        analdiffs = {}
+        diffs = {}
+        # Compare analyses to see where differences are
+        if nwordanals > 1:
+            diffs = wordobj.compare_all()
+#            print("**Diffs {}".format(diffs))
+            if len(diffs) >= 2:
+#                print("** Too many differences")
+                diffs = {}
+        # Here is where we can check for differences between the analyses
+        for segi, (wordseg, wordanal) in enumerate(zip(wordconllu, wordobj)):
+#            print("  ** segi {}, wordseg {}".format(segi, wordseg))
             segYs.append(y - SegCanvas.segYmargin)
             word = Sentence.get_word(wordseg)
             headindex = Sentence.get_headindex(wordseg, v5=self.v5)
@@ -364,29 +376,30 @@ class SegCanvas(Canvas):
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
             # label for the segmentations; responds to mouse enter/leave and clicks
-            if nwordsegs > 1:
+            if nwordanals > 1:
                 segboxtags.append(self.create_rectangle(SegCanvas.segIDwidth // 2 - 10, y - 10, SegCanvas.segIDwidth // 2 + 10, y + 10, fill=SegCanvas.selectcolors[0]))
                 segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.parent.roman_big))
             # Put the dependencies at the top
             if dependencies:
                 y = self.show_dependencies(dependencies, Xs, headindex, y)
-            self.show_forms(forms, Xs, y)
+            self.show_forms(forms, Xs, y, diffs=diffs)
             if pos:
+                posdiff = diffs.get('pos', [])
                 y += SegCanvas.segrowheight
-                self.show_pos(pos, Xs, y, wordseg, posselecttags)
+                self.show_pos(pos, Xs, y, wordseg, posselecttags, posdiff=posdiff)
             if any([(f[0] or f[1]) for f in features]):
                 y += SegCanvas.segrowheight
-                y = self.show_features(features, Xs, y, wordseg, featselecttags)
+                featdiff = diffs.get('udfeats', [])
+                y = self.show_features(features, Xs, y, wordseg, featselecttags, featdiff=featdiff)
             if lemmas:
-#                print("^^ showing lemmas {}".format(lemmas))
                 y += SegCanvas.segrowheight
-                self.show_lemmas(lemmas, Xs, y)
+                self.show_lemmas(lemmas, Xs, y, diff=diffs.get('lemma', False))
             if glosses:
 #                print("^^ showing glosses {}".format(glosses))
                 y += SegCanvas.segrowheight
-                self.show_glosses(glosses, Xs, y)
+                self.show_glosses(glosses, Xs, y, diffs=diffs)
             # Gap between segmentations
-            if segi < len(wordsegs) - 1:
+            if segi < len(wordconllu) - 1:
                 y += SegCanvas.seggap
             else:
                 # After last segmentation
@@ -414,10 +427,10 @@ class SegCanvas(Canvas):
                 self.tag_bind(tag1, "<ButtonRelease-1>", self.select_feat_handler(tag1, f1, seg))
                 self.tag_bind(tag2, "<ButtonRelease-1>", self.select_feat_handler(tag2, f2, seg))
                 
-        if nwordsegs > 1:
+        if nwordanals > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
-                self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordsegs[index]))
+                self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordconllu[index]))
                 self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, idtag, SegCanvas.texthighlight)) # SegCanvas.selectcolors[0]))
                 self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, idtag, 'Black')) #'white'))
         # Rectangle around each segmentation
@@ -504,6 +517,12 @@ class SegCanvas(Canvas):
         '''
         self.itemconfigure(featid, fill=color)
 
+    def highlight_morph(self, index, color):
+        '''
+        Highlight the morpheme in position index
+        to show that it's the source of the ambiguity.
+        '''
+
     def get_columnX(self, n):
         '''
         The X coordinates for the columns in a segmentation display.
@@ -514,29 +533,35 @@ class SegCanvas(Canvas):
             X.append(start + i * self.colwidth)
         return X
 
-    def show_forms(self, forms, Xs, y):
+    def create_diff_text(self, text, x, y, geez=True):
+        self.create_text((x, y), text=text, fill=SegCanvas.diffcolor, font=self.parent.geez_normal if geez else self.parent.roman_small)
+
+    def show_forms(self, forms, Xs, y, diffs=None):
         '''
         Show the forms for a segmentation.
         '''
-        for form, x in zip(forms, Xs):
-            self.create_text((x, y), text=form, font=self.parent.geez_normal)
+        for index, (form, x) in enumerate(zip(forms, Xs)):
+            color = SegCanvas.diffcolor if diffs and index in diffs else 'Black'
+            self.create_text((x, y), text=form, fill=color, font=self.parent.geez_normal)
 
-    def show_lemmas(self, lemmas, Xs, y):
+    def show_lemmas(self, lemmas, Xs, y, diff=False):
         '''
         Show the lemmas for a segmentation (if different from forms).
         '''
+        color = SegCanvas.diffcolor if diff else 'Black'
         for lemma, x in zip(lemmas, Xs):
-            self.create_text((x, y), text=lemma, font=self.parent.geez_normal)
+            self.create_text((x, y), text=lemma, fill=color, font=self.parent.geez_normal)
 
-    def show_glosses(self, glosses, Xs, y):
+    def show_glosses(self, glosses, Xs, y, diffs=None):
         '''
         Show the gloss for the stem if there is one.
         '''
-        for gloss, x in zip(glosses, Xs):
+        for index, (gloss, x) in enumerate(zip(glosses, Xs)):
             if gloss:
-                self.create_text((x, y), text="'{}'".format(gloss.replace('_', ' ')), font=self.parent.roman_small)
+                color = SegCanvas.diffcolor if diffs and index in diffs else 'Black'
+                self.create_text((x, y), text="'{}'".format(gloss.replace('_', ' ')), color=color, font=self.parent.roman_small)
 
-    def show_pos(self, pos, Xs, y, wordseg, posselecttags):
+    def show_pos(self, pos, Xs, y, wordseg, posselecttags, posdiff=None):
         '''
         Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
         '''
@@ -547,14 +572,16 @@ class SegCanvas(Canvas):
             if p in Sentence.selectpos:
                 self.create_selectPOS(p, x, y, wordseg[0], posselecttags)
             else:
-                id = self.create_text((x, y), text=p)
+                color = SegCanvas.diffcolor if posdiff and 0 in posdiff else 'Black'
+                id = self.create_text((x, y), fill=color, text=p)
         else:
             for morphi, (p, x) in enumerate(zip(pos, Xs)):
                 w = wordseg[morphi+1]
                 if p in Sentence.selectpos:
                     self.create_selectPOS(p, x, y, w, posselecttags)
                 else:
-                    id = self.create_text((x, y), text=p)
+                    color = SegCanvas.diffcolor if posdiff and morphi in posdiff else 'Black'
+                    id = self.create_text((x, y), fill=color, text=p)
 
     def create_selectPOS(self, pos, x, y, wordseg, posselecttags):
         '''
@@ -569,7 +596,7 @@ class SegCanvas(Canvas):
         id2 = self.create_text((x+30, y), text=pos2)
         posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
-    def show_features(self, feats, Xs, y, wordseg, featselecttags):
+    def show_features(self, feats, Xs, y, wordseg, featselecttags, featdiff=None):
         '''
         Show the morphological features for a segmentation if there are any.
         wordseg is a TokenList.
@@ -582,15 +609,16 @@ class SegCanvas(Canvas):
             max_y = max([self.show_features1(f, x, y, wordseg[0], featselecttags), max_y])
         else:
             for morphi, (f, x) in enumerate(zip(feats, Xs)):
+                color = SegCanvas.diffcolor if featdiff and morphi in featdiff else 'Black'
                 w = wordseg[morphi+1]
-                max_y = max([self.show_features1(f, x, y, w, featselecttags), max_y])
+                max_y = max([self.show_features1(f, x, y, w, featselecttags, color=color), max_y])
         return max_y
 
-    def show_features1(self, feats, x, y, wordseg, featselecttags):
+    def show_features1(self, feats, x, y, wordseg, featselecttags, color='Black'):
 #        print("!! show_features1 {}, {}".format(feats, wordseg))
 #        colors = ['pink', 'plum', 'hotpink']
         def show(f, coords):
-            self.create_text(coords, text=f, font=self.parent.roman_mono)
+            self.create_text(coords, text=f, fill=color, font=self.parent.roman_mono)
         def show_ambig(f, x, y, xoff, nlines=1, color='yellow'):
             self.create_rectangle(x-xoff, y-(nlines * SegCanvas.ambigrectheight), x+xoff, y+(nlines * SegCanvas.ambigrectheight),
                                   fill=color)
@@ -721,7 +749,7 @@ class SentenceGUI():
     disambig = "OliveDrab1"
     unambig = "LightGray"
 
-    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, v5=False, index=0):
+    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, v5=True, index=0):
         self.v5 = v5
         self.frame = frame
         self.canvas = canvas
@@ -739,8 +767,6 @@ class SentenceGUI():
         self.memory = {}
         self.set_word_strings()
         self.set_word_positions()
-#        self.show_sentence(True)
-#        self.make_word_tags()
         self.frame.sentenceGUIs[index] = self
 
     def show_sentence(self, first=False):
@@ -800,8 +826,8 @@ class SentenceGUI():
         position = 0
         for word_string in self.word_strings:
             start = self.sentence.find(word_string, position)
+#            print("** start position for {}: {}".format(word_string, start))
             end = start + len(word_string)
-#            print("** positions for {}: {}->{}".format(word_string, start, end))
             position = end
             self.word_positions.append((start, end))
 
@@ -810,6 +836,7 @@ class SentenceGUI():
         Create tags in the sentence Text for each word string and assign their initial colors.
         '''
         for index, (pos0, pos1) in enumerate(self.word_positions):
+#            print("** Making word tag {} {} {}".format(index, pos0, pos1))
             self.text.tag_add("word{}".format(index), "1.{}".format(pos0), "1.{}".format(pos1))
             if index == 0:
                 self.text.tag_configure("word{}".format(index), underline=1)

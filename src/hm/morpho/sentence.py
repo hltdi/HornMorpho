@@ -86,7 +86,8 @@ class Sentence():
 
     selectpos = \
       {
-       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'], 'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ']
+       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'],\
+       'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ']
       }
 
     um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
@@ -136,6 +137,10 @@ class Sentence():
         self.root = -1
         # dict {child_windex: (parent_windex, relation) ...}
         self.relations = {}
+        # number of relations added
+        self.nrelations = 0
+        # number of unlabeled dependencies added
+        self.ndependencies = 0
 
     def __repr__(self):
         return "S::{}::{}".format(self.sentid, self.text)
@@ -231,7 +236,7 @@ class Sentence():
         idrelations = {}
         if root >= 0:
             rootid = windex2id[root]
-            idrelations[rootid] = (0, None)
+            idrelations[rootid] = (0, 'root')
         if relations:
             for childindex, (parentindex, label) in relations.items():
                 childid = windex2id[childindex]
@@ -246,6 +251,9 @@ class Sentence():
                 c['head'] = parent
                 if rel:
                     c['deprel'] = rel
+                    self.nrelations += 1
+                else:
+                    self.ndependencies += 1
 
     def update_conllu_ids(self, conllu, windex2id, windex, index=0):
         '''
@@ -258,7 +266,7 @@ class Sentence():
         if length == 1:
             if index:
                 conllu[0]['id'] += index
-                conllu[0]['head'] = '_'
+                conllu[0]['head'] = None
 #                conllu[0]['head'] += index
             windex2id[windex] = conllu[0]['id']
             new_index += 1
@@ -279,13 +287,13 @@ class Sentence():
                     if c['id'] == c['head']:
                         # This is the head of the word, so add it to the windex2id dict
                         windex2id[windex] = c['id']
-                        c['head'] = '_'
+                        c['head'] = None
             else:
                 for c in conllu[1:]:
                     if c['id'] == c['head']:
                         # This is the head of the word, so add it to the windex2id dict
                         windex2id[windex] = c['id']
-                        c['head'] = '_'
+                        c['head'] = None
             new_index += len(conllu)-1
 #        print("** Updated index: {}".format(new_index))
         return new_index
@@ -316,7 +324,7 @@ class Sentence():
         '''
         Create a CoNLL-U representation from a token's analysis dict.
         '''
-#        print("**anal2conllu {} : {}".format(token, analdict))
+#        print("**anal2conllu {}".format(token))
         if not analdict:
             # Unanalyzed token
             return TokenList([HMToken.create_unal(index, token)])
@@ -343,14 +351,14 @@ class Sentence():
         mwe = 'tokens' in analdict
         if mwe:
             mwe_feats = analdict['feats']
-#            .get('mwe')
+#            print("mwe feats {}".format(mwe_feats.__repr__()))
             if mwe_feats and mwe_feats.get('segpart', False):
                 if mwe_feats.get('hdfin', False):
                     mwe_first = True
                     token = analdict['tokens'][0]
                     string = token['token']
-                    pos = mwe_feats.get('pos', None)
-                    xpos = mwe_feats.get('xpos', None)
+                    pos = token.get('pos', mwe_feats.get('pos'))
+                    xpos = token.get('xpos', None)
                     misc = Sentence.format_misc(mwe_feats)
                     head = stemdict.get('head', 0)+2
 #                    print("** MWE token {} pos {} head {}".format(token, pos, head))
@@ -489,6 +497,12 @@ class Sentence():
         Shortcut for conversion to CG format.
         '''
         return CG.sentence2cohorts(self, verbosity=verbosity)
+
+    def printCG(self, verbosity=0):
+        '''
+        Shortcut for printing out CG format.
+        '''
+        print(self.toCG().format())
 
     #####
         
@@ -1091,12 +1105,8 @@ class Sentence():
             
         if len(segmentation) == 1:
             feats = [get1(segmentation[0])]
-#            feats = [segmentation[0].get('feats', None)]
-#            feats = [Sentence.simplify_feats(segmentation[0].get('feats', None), featlevel=featlevel)]
         else:
             feats = [get1(morpheme) for morpheme in segmentation[1:]]
-#            feats = [morpheme.get('feats', '') for morpheme in segmentation[1:]]
-#            feats = [Sentence.simplify_feats(f, featlevel=featlevel) for f in feats]
         if any(feats):
 #            print("&& get_features {}".format(feats))
             return feats

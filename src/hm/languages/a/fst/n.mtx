@@ -32,7 +32,7 @@ $ stem
   +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
   +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
   >>vn_stem<<
-  +ppron+		[pos=PRON,-pl,-dis,-col,p=0,d=0,ptype=prs,-cop]
+  +ppron+		[pos=PRON,-dis,-col,p=0,d=0,ptype=prs,-cop,-irr]
   +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
   +irr_plr+		[+pl,+irr,d=0,-cop]
 
@@ -42,7 +42,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl];[+pl,+col];[+pl,+irr]
+  --		[-pl,Pn=0];[+pl,+col];[+pl,+irr];[pos=PRON,ptype=prs|int]
 
 $ plur_bound
   -
@@ -100,6 +100,9 @@ $ conj
   /ና		[cconj=ና,spos=CCONJ]
   /ኮ		[cconj=ኮ,spos=ADV,-prior]
   --		[cconj=0]
+
+$ conj_bound
+  -
 
 $ GA
   ጋ		[postp=ጋ,-prior]

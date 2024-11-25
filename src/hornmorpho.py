@@ -715,7 +715,9 @@ WORD_CORPUS = "../../../../Projects/LingData/Am/Crawl/all.txt"
 ## shortcuts
 FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
-A = lambda word: hm.morpho.anal('a', word)
+A = lambda word: hm.anal('a', word)
+AS = lambda sentence: hm.anal_sentence('a', sentence)
+AC = lambda sentence, dis: hm.anal_corpus('a', data=[sentence], disambiguate=dis)
 
 def main():
     pass

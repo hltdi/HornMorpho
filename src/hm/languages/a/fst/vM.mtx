@@ -1,29 +1,42 @@
 $ particle
-  +v_light+	[pos=V,mwe=[+segpart,+hdfin,pos=PART,dep=compound]]
+  +v_light+	[pos=V,+segpart,+hdfin,deppos=PART,dep=compound_lvc]
 
 $ gap
   //		<$ >
   
 $ conj_prep_pre
   # In UM and UD, የ- የም- እም- are SCONJ
-  የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0]
-  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0]
-  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0]
-  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=0]
-  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=0]
-  ል  		[sconj=ል,t=i,-rel,-mc,+sub,adp=0]
-  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub,adp=0]
-  # adp ከ (=from): ከሚመጣው;   # sconj ከ (=if)
-  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=0];[sconj=ከ,t=p,-rel,-mc,+sub,adp=0]
-  # adp እንደ (=like): እንደሚመጣ;   # sconj እንደ (=if)
-  እንደ	[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0];[sconj=እንደ,t=p,-rel,-mc,+sub,adp=0]
-  በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=0]
-  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub,sconj=0]
-  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=0]
-  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=0]
-  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0]
-  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=0]
-  --  	[t=i|p,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel]
+  የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ]
+  # rare with perfective but it does occur; for now limit to non-negative, non-passive/causative, root 1=X
+  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0,tmp=[1=X],ppos=ADP,-prior];[sconj=0,t=p,+rel,-neg,-mc,+sub,adp=0,v=0,a=0,tmp=[1=X],ppos=SCONJ,-prior]
+  ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  ል  		[sconj=ል,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  እስክ	[sconj=እስክ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  # adp ከ (=from): ከሚመጣው; sconj ከ (=if)
+  ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP];[sconj=ከ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  # adp እንደ (=like[acl]); sconj እንደ (ccomp: that, advcl: as, just as, as though, if)
+  እንደ	[adp=እንደ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP];[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ]
+  # adp በ (locative, instrumental, agent) ; sconj በ (=if): ባልዘነበ
+  በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP];[sconj=በ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  ለ		[adp=ለ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
+  እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
+  ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
+  ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP]
+  እ/የ	<እየ>	[sconj=እየ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ]
+  --  	[t=i,-rel,sconj=0,adp=0,-sub];[t=j|c,-sub,sconj=0,adp=0,-rel];[t=p,-rel,sconj=0,adp=0,-sub,+mc]
+
+$ prep_bound
+  -
+
+$ distrib
+  # apparently always follows adposition: በ, ወደ, ከ, ለ(?)
+  እ/የ	<እየ>   	[+distrib,sconj=0,+rel,adp=በ|ወደ|ከ|ለ|እስከ]
+  --			[-distrib]
+
+$ distrib_bound
+  -
 
 $ rel_impf
   /ም		[t=i,+rel]
@@ -170,14 +183,37 @@ $ accus
 $ accus_bound
   -
 
-$ conj2
-  /ና		[cconj=ና]
-  /ም		[cconj=ም,-neg];[cconj=ም,+neg,+mc]
-  /ማ		[cconj=ማ]
-  /ስ		[cconj=ስ]
-  /ሳ		[cconj=ሳ]
-#  ኣ		[cconj=ኣ]
-  /ኮ		[cconj=ኮ]
-  --		[cconj=0]
+$ cconj1
+  # 2024.11.01: updated to exclude when there are other analyses (negative!)
+  # only permit ም with negative if subordinate (ባይመጣም) or main clause (አይመጣምም), but not non-subordinate and
+  # not main clause  (-sub,-mc) (*አይመጣም)
+  /ም		[cconj1=ም,-prior,-neg];[cconj1=ም,-prior,+neg,+sub];[cconj1=ም,-prior,+neg,+mc,-sub]
+  /ስ		[cconj1=ስ,-prior]
+# 2024.10.14: make these ም + ኣ, ስ + ኣ  
+#  /ማ		[cconj1=ማ]
+#  /ሳ		[cconj1=ሳ]
+  --		[cconj1=0]
+
+$ ms_bound
+  -
+
+$ cconj2
+  /ኮ		[cconj2=ኮ,spos=ADV,-prior]
+  /ና		[cconj2=ና,spos=CCONJ]
+  # impossible in subordinate clauses; (re)added 2024.10.14; updated 2024.10.29 to exclude ኣ following ኣ and if there are other analyses
+  =ኣ	       <ኣ>		[cconj2=ኣ,spos=ADV,-sub,+mc,-prior]
+  # interrogative, impossible in imperative, jussive?
+  ን		[cconj2=ን,spos=ADV,-sub,+mc,t=i|p,-prior];[cconj2=ን,spos=ADV,-sub,t=c,+mc,-prior]
+  --		[cconj2=0]
+
+#$ conj2
+#  /ና		[cconj=ና]
+#  /ም		[cconj=ም,-neg];[cconj=ም,+neg,+mc]
+#  /ማ		[cconj=ማ]
+#  /ስ		[cconj=ስ]
+#  /ሳ		[cconj=ሳ]
+##  ኣ		[cconj=ኣ]
+#  /ኮ		[cconj=ኮ]
+#  --		[cconj=0]
 
 

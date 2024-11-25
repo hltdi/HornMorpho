@@ -76,6 +76,8 @@ class Corpus():
                  # if non-negative, only analyze sentences with this position relative to last comment line
                  language_pos=-1,
                  print_sentence=False,
+                 # included in case annotation is ever part of corpus creation
+                 annotate=False,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -98,6 +100,10 @@ class Corpus():
         self.ambig = {}
         # Number of disambiguations
         self.disambiguations = disambiguations
+        # Number of automatically annotated relations
+        self.nrelations = 0
+        # Number of automatically annotated unlabeled dependencies
+        self.ndependencies = 0
         # Cache for storing segmentations
         if isinstance(local_cache, dict):
             self.local_cache = local_cache
@@ -241,6 +247,7 @@ class Corpus():
             if v5 and segment:
                 self.analyze(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
                               cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
+                              verbosity=verbosity,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []
@@ -286,7 +293,7 @@ class Corpus():
         kwargs: timeit=False, gramfilter=None, um=1, seglevel=2, verbosity=0
         """
         print("Analyzing sentences in {}".format(self))
-        if kwargs.get('verbosity', 0) > 0:
+        if kwargs.get('verbosity', 0) > 1:
             print()
         sent_id = 1
         time0 = time.time()
@@ -411,12 +418,14 @@ class Corpus():
 
     def annotate(self, verbosity=0):
         '''
-        Run language's CG dependency (annotation) rules if any on disambiguated sentences.
+        Run language's CG dependency (annotation) rules, if any, on disambiguated sentences.
         '''
         if verbosity:
             print("Running annotation rules")
-            for sentence in self.sentences:
-                sentence.annotate(verbosity=verbosity)
+        for sentence in self.sentences:
+            sentence.annotate(verbosity=verbosity)
+            self.ndependencies += sentence.ndependencies
+            self.nrelations += sentence.nrelations
 
     def write_cache(self, path):
         '''

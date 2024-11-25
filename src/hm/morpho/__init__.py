@@ -32,6 +32,8 @@ Composition of weighted FSTs is also supported.
 -- 2011-07
    New modules for compiling alternation rule (altrule) and morphotactic (mtax) FSTs.
    New modules for translation dictionaries (tdict) and menus (menu).
+-- 2024
+   Many new modules added in the interim
 """
 
 __all__ = ['altrule', 'fs', 'fst', 'internals', 'language',\

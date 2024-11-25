@@ -1,56 +1,68 @@
 DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
 
 LIST NOM = N PRON DET PROPN ;
+LIST PREP = ("እንደ" ADP) ("እስከ" ADP) ("ስለ" ADP) ("በስተ" ADP) ("ያለ" ADP) ("ወደ" ADP) ("ባለ" ADP) ;
+LIST POSTP = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ("ምክንያት" ADP) ("በኋላ" ADP) ("በፊት" ADP) ;
+#LIST ADVERBIAL = ADV CVB 
 LIST NMOD = REL ADJ DET NUM GEN ;
 LIST HELPING = AUX "ነበረ" "ሆነ" ;
 LIST PERSON = 1 2 3 ;
 LIST GENDER = FEM MASC ;
 LIST NUMBER = SG PL ;
-LIST ROOTV = (V MAIN) (V IMP) ;
-# አድርጎ ያደርግ
-LIST VAUX = (V V.CVB) (V I_PART) ;
+LIST ROOTV = (V MAIN) (V IMP) (V B_SC) (V BE_SC) ;
+# Verb forms that take auxiliaries
+LIST VAUX = (V CVB) (V I_PART) (V IYE_SC) (V IPFV L_SC) (INF) ;
 
 ### ROOT
 
+# final main verb (or jussive or imperative or ብ-IPFV or በ-PRF)
 MAP (@ROOT) ROOTV
     (1 (<<<)) ;
 
+# final "VAUX" (ይሰብር or ሰብሮ or infinitive or እየ+PRF) + AUX
 MAP (@ROOT) VAUX
     (1 (AUX) LINK 1 (<<<)) ;
 
-# With final ነው AUX, the preceding word is the head.
-MAP (@ROOT) (*)
+# With final ነው AUX, the preceding word (if not an ADP) is the head.
+# Maybe this includes the last one.
+MAP (@ROOT) (N ADJ ADV V PART)
     (1 ("ነው"))
     (2 (<<<)) ;
 
-# In medial verb cleft sentences the copula is not final
+MAP (@ROOT) (N)
+    (1 (ADP))
+    (2 ("ነው"))
+    (3 (<<<)) ;
+
+# In cleft sentences the copula is not final.
 # What precedes it is the root, but prevent this if there is a later main verb,
 # which could happen if there is a quoted part.
 MAP (@ROOT) (*)
     (1 ("ነው"))
     (NOT 2* ROOTV) ;
 
-## Make nodes with @ROOT the actual root.
+## Make nodes with @ROOT the actual root (parent 0).
 SETPARENT (@ROOT) TO (@0 (*)) ;
 
-# (Inverted) cleft sentences
+### (Inverted) cleft sentences
 # Relative verb last preceded by copula
 MAP (@CLEFT) (RELC)
     (1 (<<<))
     (-1* ("ነው")) ;
 
 # "Pseudo-cleft" sentences: relative clause precedes copula
-MAP (@PSEUDOCLEFT) (RELC)
-    (1* ("ነው") LINK 1 (<<<)) ;
+# Seems difficult to distinguish:
+# የሞተው ልጅ ነው (not cleft) የሞተው ልጁ ነው (cleft)
+#MAP (@PSEUDOCLEFT) (RELC)
+#    (1* ("ነው") LINK 1 (<<<)) ;
 
-## noun modifiers; %% figure out how to do these
-#SETPARENT (RELC) TO (1 (N)) ;
-
-# relative clause followed by noun, which is not followed by copula
+## noun modifiers
+# RELC: how to distinguish from headless rel followed by noun
+# RELC followed by noun, which is not followed by copula
+# የምንወደው ቢራ የጠጣል (actually ambiguous)
 #ADDRELATION (acl:rc) (RELC) TO (1 (N) LINK 1 ("ነው")) ;
 
-#SETPARENT (ADJ) TO (1 (N)) ;
-
+# ADJ: same problem
 #ADDRELATION (amod) (ADJ) TO (1 (N)) ;
 
 # final cleanup: attach nodes without parents to root (0)
@@ -61,12 +73,41 @@ MAP (@PSEUDOCLEFT) (RELC)
 ## Final punctuation.
 ADDRELATION (punct) (@ROOT) TO (1* (PUNCT)) ;
 
-## Copula
-ADDRELATION (cop) (@ROOT) TO (1 ("ነው")) ;
+## Copula: cop relation from root
+ADDRELATION (cop) (@ROOT) (NOT 0 VAUX)  TO (1* ("ነው")) ;
+
+## Auxiliary: aux relation from root
+ADDRELATION (aux) VAUX  TO (1 ("ነው")) ;
 
 ## Cleft sentence: subject to relative clause.
 # ወንድሜን(root) ነው(cop) ያገኘሁት(nsubj:cleft;@CLEFT)
 ADDRELATION (nsubj:cleft) (@ROOT) TO (1* (@CLEFT)) ;
 
-# ያገኘሁት(nsubj;@PSEUDOCLEFT) ወንድሜን(root) ነው (cop)
-ADDRELATION (nsubj) (@ROOT) TO (-1* (@PSEUDOCLEFT)) ;
+"<በጣም>" ADDRELATION (advmod) (ADV) FROM (1 (ADJ)) ;
+
+## ያገኘሁት(nsubj;@PSEUDOCLEFT) ወንድሜን(root) ነው (cop)
+#ADDRELATION (nsubj) (@ROOT) TO (-1* (@PSEUDOCLEFT)) ;
+
+## Adpositions
+
+# Prepositions
+ADDRELATION (case) PREP FROM (1 NOM) ;
+
+# Postpositions
+ADDRELATION (case) POSTP FROM (-1 NOM) ;
+
+### Nominal and adverbial children
+
+## Nominals and adverbials followed by main root verbs with no verbs in between
+SETPARENT NOM
+    TO (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+
+ADDRELATION (advmod) (ADV)
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+
+ADDRELATION (advmod) (CVB)
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+
+## Other nominals
+
+

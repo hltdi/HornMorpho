@@ -73,64 +73,6 @@ class CG:
 #            with open(write2, 'w', encoding='utf8') as file:
 #                print(result, file=file)
 
-##    @staticmethod
-##    def anal2cg(analysis, verbosity=0):
-##        '''
-##        Convert a HM analysis (one element in a Word list) to CG3 format.
-##        '''
-##        feats = analysis.get('pos', '')
-##        um = analysis.get('um', '')
-##        if um:
-##            um = ' '.join([u.replace('*', '') for u in um.split(';')])
-##            feats = "{} {}".format(feats, um)
-##        lemma = analysis.get('lemma', analysis.get('token'))
-##        return '"{}" {}'.format(lemma, feats)
-##
-##    @staticmethod
-##    def word2cg(word, verbosity=0):
-##        token = word.name
-##        result = ['"<{}>"'.format(token)]
-##        if not word.analstrings:
-##            word.analstrings = [CG.anal2cg(analysis, verbosity=verbosity) for analysis in word]
-##        result.extend(['\t' + a for a in word.analstrings])
-##        return "\n".join(result)
-##
-##    @staticmethod
-##    def sentence2cg(sentence, predelim='', postdelim='', write2='', verbosity=0):
-##        '''
-##        Convert an HM Sentence object to CG3 format.
-##        '''
-##        result = []
-##        if predelim:
-##            result.append(predelim)
-##        for word in sentence.words:
-##            result.append(CG.word2cg(word, verbosity=verbosity))
-##        if postdelim:
-##            result.append(postdelim)
-##        result = '\n'.join(result)
-##        result += '\n'
-##        if write2:
-##            with open(write2, 'w', encoding='utf8') as file:
-##                print(result, file=file)
-##        else:
-##            return result
-##
-##    @staticmethod
-##    def corpus2cg(corpus, predelim='', postdelim='', write2='tmp.txt', verbosity=0):
-##        '''
-##        Convert the sentences in corpus to CG format and write them to write2.
-##        '''
-##        result = []
-##        for sentence in corpus.sentences:
-##            sentcg = CG.sentence2cg(sentence, predelim=predelim, postdelim=postdelim, write2='', verbosity=verbosity)
-##            result.append(sentcg)
-##        if write2:
-##            with open(write2, 'w', encoding='utf8') as file:
-##                for sentcg in result:
-##                    print(sentcg, file=file)
-##        else:
-##            return result
-
     @staticmethod
     def sentstring2CGsent(sentstring):
         '''
@@ -155,7 +97,11 @@ class CG:
             elif line.startswith(';'):
                 # a removed reading
                 line = line[1:].strip()
-                reading = Reading(line, True)
+                reading = Reading(line, removed=True)
+                Readings.append(reading)
+            elif 'SUBSTITUTE' in line:
+                line = line[1:].strip()
+                reading = Reading(line, substitution=True)
                 Readings.append(reading)
             else:
                 Readings.append(Reading(line.strip()))
@@ -193,11 +139,13 @@ class CG:
                 print("  Annotating {}".format(sentence.words))
         todel = {}
         CGsent = CG.sentstring2CGsent(sentstring)
+#        if verbosity:
+#            print("CGsent {}".format(CGsent.format()))
         if len(sentence.words) != len(CGsent.cohorts):
             print("Something wrong: # words {} != # cohorts {}".format(len(sentence.words), len(CGsent.cohorts)))
             return
         if not self.disambig:
-            root, relations = CGsent.get_relations()
+            root, relations = CGsent.get_relations(verbosity=verbosity)
             if root >= 0:
                 if verbosity:
                     print("  Setting sentence root to word {}".format(root))
@@ -224,6 +172,7 @@ class CG:
             print("  Something wrong with {}: # analyses {} != # reading {}".format(word, len(word), len(readings)))
             return
         todel = []
+        substitutions = []
         for reading in readings:
             if reading.removed:
                 found = False
@@ -234,10 +183,23 @@ class CG:
                         break
                 if not found:
                     print("REMOVED READING {} FOR {} NOT FOUND!".format(rd, word))
+            elif reading.substitution:
+                found = False
+                for index, r in enumerate(word.readings):
+                    if reading.match(r):
+                        if r.get_pos() != reading.get_pos():
+                            # This is a POS substitution
+                            substitutions.append((index, reading.get_pos()))
+                            
         if todel:
             word.remove(todel)
             if verbosity:
                 print("  Removed reading(s) {} from {}".format(todel, word))
+        if substitutions:
+            for index, pos in substitutions:
+                if verbosity:
+                    print("  Changing POS for reading {} in {} to {}".format(index, word, pos))
+                word.change(index, pos=pos)
         return todel
 
     def run(self, sentence, predelim='', postdelim='', write2='', verbosity=0):
@@ -298,10 +260,11 @@ class Reading:
     tags inserted by rules.
     '''
 
-    def __init__(self, string, removed=False):
+    def __init__(self, string, removed=False, substitution=False):
         self.string = string
         self.items = string.split()
         self.removed = removed
+        self.substitution = substitution
 
     def __repr__(self):
         return ">{} {} <".format(';;' if self.removed else '', self.string)
@@ -324,6 +287,9 @@ class Reading:
 
     def get_tags(self):
         return [x for x in self.items[1:] if ':' in x or x[0] == '#']
+
+    def get_substitution_tags(self):
+        return [x for x in self.get_tags() if x.startswith("SUBST")]
 
     def get_dep_tags(self):
         '''
@@ -370,6 +336,10 @@ class Reading:
         Does this reading match another reading?
         This assumes the order of the features is the same.
         '''
+        if self.substitution:
+            # Substitution
+            # Lemma has to match and POSs have to overlap; later make it more stringent
+            return self.get_lemma() == reading.get_lemma() and self.get_pos() in reading.get_pos()
         return self.get_analysis() == reading.get_analysis()
 
 class CGSentence:
@@ -401,6 +371,8 @@ class CGSentence:
             id = cohort.get_id()
             if id:
                 ids[id] = windex
+            if verbosity:
+                print("  ID for {}".format(cohort, id))
             rels = cohort.get_rels()
             if rels:
                 for rel in rels:
@@ -415,8 +387,8 @@ class CGSentence:
         # Convert IDs to windex
         relations = {}
         for cid, (pid, label) in idrelations.items():
-            cindex = ids.get(cid)
-            if not cindex:
+            cindex = ids.get(cid, None)
+            if cindex is None:
                 print("No index for cohort id {}!".format(cid))
                 return
             relations[cindex] = (ids.get(pid), label)

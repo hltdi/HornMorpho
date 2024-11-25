@@ -1,6 +1,7 @@
 $ prep
   የ		[+rel,+sub,+neg]
-  እንደ	[-rel,+sub,+neg,cnj1=እንደ]
+  # አንዳይደለ እንደነበር
+  እንደ	[-rel,+sub,+neg,cnj1=እንደ,t=prs];[-rel,+sub,cnj1=እንደ,t=pst]
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
   --  	[-neg,cnj1=0];[-rel,-sub,+neg,cnj1=0]
 
@@ -36,7 +37,7 @@ $ stem1
   ና/ችሁ	[p=2,n=2,-neg,t=prs]
   ና/ቸው	[p=3,n=2,-neg,t=prs]
   ነ/በር	[t=pst]
-  ኖር		[t=c,-neg,p=3,n=1,g=m]
+#  ኖር		[t=c,-neg,p=3,n=1,g=m]
 $ stem_post
   >
 
@@ -71,4 +72,4 @@ $ conj
   --		[cnj2=0]
 
 $ end
-  --		[pos=AUX,xpos=COP,lemma=ነው]
+  --		[pos=AUX,xpos=COP,lemma=ነው,r=ነው]

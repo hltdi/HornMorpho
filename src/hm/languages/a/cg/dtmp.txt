@@ -36,17 +36,6 @@
 "<።>"
 	"።" PUNCT
 
-"<አበበ>"
-	"አበበ" V PFV MAIN 3 SG MASC
-	"አበበ" PROPN
-"<አበባ>"
-	"አበባ" PROPN
-	"አበባ" N
-"<ገዛ>"
-	"ገዛ" V PFV 3 SG MASC MAIN
-"<።>"
-	"።" PUNCT
-
 "<ምን>"
 	"ምን" PRON
 "<ይደረግ>"
@@ -60,13 +49,11 @@
 	"መስኮት" N DEF ACC SG
 "<ዝጋ>"
 	"ዘጋ" V IMP 2 SG MASC
-	"ዛገ" V V.CVB 3 SG FEM
 "<!>"
 	"!" PUNC
 
 "<ገብቶ>"
-	"ገባ" V V.CVB 3 PL MASC
-	"ገብቶ" N SG
+	"ገባ" V CVB 3 PL MASC
 "<ተቀመጠች>"
 	"ተቀመጠ" V PFV 3 SG FEM MAIN
 "<።>"
@@ -123,8 +110,6 @@
 	"ያ" DET ABL DEMPRO OBL MASC SG
 "<ይመጣ>"
 	"መጣ" V DERAGI I_PART 3 IPFV MASC SG
-	"ተመጣ" V TEDERAGI 3 IMP MASC PASS SG
-	"ተመጣ" V I_PART TEDERAGI 3 IPFV MASC PASS SG
 "<ነበር>"
 	"ነው" AUX PST
 "<።>"
@@ -132,8 +117,6 @@
 
 "<በጣም>"
 	"በጣም" ADV
-	"እጣ" N INS OBL SG
-	"ጣም" N INS OBL SG
 "<ቆንጆ>"
 	"ቆንጆ" ADJ SG
 "<ነበር>"
@@ -144,7 +127,6 @@
 "<ምግብ>"
 	"ምግብ" N SG
 "<የሚፈለገው>"
-	"ተፈለገ" V RELC TEDERAGI 3 AC3SM IPFV MASC PASS SG
 	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
 "<ወንድሜ>"
 	"ወንድም" N MASC PSS1S SG
@@ -160,13 +142,11 @@
 "<ምግብ>"
 	"ምግብ" N SG
 "<የሚፈለገው>"
-	"ተፈለገ" V RELC TEDERAGI 3 AC3SM IPFV MASC PASS SG
 	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
 "<።>"
 	"።" PUNCT
 
 "<አዲስ>"
-	"አዲስ" PROPN SG
 	"አዲስ" ADJ SG
 "<መኪና>"
 	"መኪና" N SG
@@ -174,5 +154,58 @@
 "<ገዝተናል>"
 	"ገዛ" V DERAGI MAIN 1 PL PRF
 	"ገዘተ" V DERAGI MAIN 1 PL PRF
+"<።>"
+	"።" PUNCT
+
+"<ወደ>"
+	"ወደ" ADP
+"<አዲስ አበባ>"
+        "አዲስ አበባ" PROPN
+"<ሄደዋል>"
+	"ሄደ" V MAIN PRF 3 PL
+"<።>"
+	"።" PUNCT
+
+"<ልጆቹ>"
+	"ልጅ" N PL DEF
+"<ቢራ>"
+	"ቢራ" N SG
+"<ከገዙ>"
+	"ገዛ" V SUBORD 3 PL KE_SC
+"<እኛ">
+	"እኛ" PRON 1
+"<ልንጀምር>"
+	"ጀመረ" V SUBORD IPFV 1 PL
+"<እንችላለን>"
+	"ቻለ" V MAIN IPFV 1 PL
+"<።>"
+	"።" PUNCT
+
+"<ዘሎ>"
+	"ዘለለ" V DERAGI 3 MASC SG CVB
+"<ገባ>"
+	"ገባ" V DERAGI MAIN 3 MASC PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ወደ>"
+	"ወደ" ADP
+"<ቤት>"
+	"ቤት" N SG
+"<ልንሄድ>"
+	"ሄደ" V DERAGI L_SC SUBORD 1 IPFV PL
+"<ነው>"
+	"ነው" AUX 3 MASC PRS SG
+"<።>"
+	"።" PUNCT
+
+"<ወደ>"
+	"ወደ" ADP
+"<ቤት>"
+	"ቤት" N SG
+"<እየሄድን>"
+	"ሄደ" V DERAGI IYE_SC SUBORD 1 PFV PL
+"<ነው>"
+	"ነው" AUX 3 MASC PRS SG
 "<።>"
 	"።" PUNCT

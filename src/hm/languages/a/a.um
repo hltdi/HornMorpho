@@ -42,6 +42,7 @@ POS n N
 ->UD RECP	*Voice=Rcp
 ->UD PASS	Voice=Pass
 ->UD ITER	Aspect=Iter
+->UD *INF	VerbForm=Inf
 
 #v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
 #pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
@@ -68,13 +69,14 @@ postp:: ጋ:*OBL
 Pp:: 1:1;; 2:2;; 3:3
 Pn:: 1:SG;; 2:PL
 Pg:: m:MASC;; f:FEM
-ptype:: prs:*PRSPRO;; dem:*DEMPRO
+ptype:: prs:*PRSPRO;; dem:*DEMPRO;; int:*INTPRO;; ind:*INDPRO
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
 
 # attached copula
 tns:: prs:PRS
+cop:: True:*COP
 
 # voice for infinitives and agentives
 a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
@@ -84,6 +86,8 @@ a,v,base:: a,a,*:CAUS;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS;; i,ast,*:CAUS;; i,
 # አዕማድ for infinitives and agentives
 a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
 
+d:: inf:*INF;; a:*AGT
+
 # conjunctions
 cconj:: ና:*CCONJ
 
@@ -92,8 +96,8 @@ POS v V
 ->UD IMP	Mood=Jus
 ->UD IPFV	Aspect=Imp
 ->UD PFV	Aspect=Perf
-->UD V.CVB	VerbForm=Conv
-#->UD PRF	Aspect=Prf
+->UD CVB	VerbForm=Conv
+->UD PRF	Aspect=Prf
 # Updated 2024.7.7
 ->UD *DERAGI	^Aimad=DERAGI
 ->UD *ADRAGI	^Aimad=ADRAGI
@@ -174,6 +178,7 @@ POS v V
 ->UD *SUBORD	*ClauseType=AdvCl
 # prepositions all OBL as of 2024.7.7
 ->UD *OBL      Case=Obl
+->UD ACC       Case=Acc
 # following have been replaced
 ->UD COND	*ClauseType=AdvCl
 ->UD PURP	*ClauseType=AdvCl
@@ -187,9 +192,11 @@ POS v V
 ->UD INS	Case=Ins
 # ለ- (also Benefactive)
 ->UD DAT	Case=Dat
+# with copula
+->UD *COP	Tense=Pres
 
 t:: i:IPFV;; p:PFV;; j:IMP
-t,ax:: c,0:V.CVB ;; c,al:PRF
+t,ax:: c,0:CVB ;; c,al:PRF
 
 #pos!t:: v:V;; 0:ADJ;; 0:N
 
@@ -227,15 +234,17 @@ o,oc:: s1,l:DA1S;; p1,l:DA1P;; sm2,l:DA2SM;; sf2,l:DA2SF;; F2,l:DA2S;FORM;; p2,l
 o,oc:: sm3,b:*MAL3SM;; sm3,b:*MAL3SM;; sf3,b:*MAL3SF;; p3,b:*MAL3P
 o,oc:: s1,b:*MAL1S;; p1,b:*MAL1P;; sm2,b:*MAL2SM;; sf2,b:*MAL2SF;; F2,b:*MAL2S;FORM;; p2,b:*MAL2P
 
+## Determiner and accusative suffixes
+acc:: ACC
 det:: DEF
 
 # added back; possibly needed for CG (2024.11.10)
-adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
+adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT;; እንደ:*EQTV
 # 2024.7.7: simplifed adpositions to *OBL
-adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
-sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
+adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL;; እንደ:*OBL
+#sconj,rel:: እንደ,True:*CCOMP;; እንደ,False:COND
 # added back; possible needed for CG (2024.11.10)
-sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC
+sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC;; እንደ:*INDE_SC
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
@@ -243,9 +252,12 @@ sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_S
 # Main clause vs. subordination
 rel,sub,mc:: False,False,True:*MAIN
 # 2024.7.7: simplified subordinating conjunctions to SUBORD
-sub,rel:: True,False:*SUBORD;; True,True:*RELC
+sub,rel,ppos:: True,False,SCONJ:*SUBORD;; True,True,ADP:*RELC;; True,True,SCONJ:*SUBORD
 # ይሰብር: Useful (necessary?) for CG; could also be called *I_NFIN, though it's actually finite
 sub,mc,t:: False,False,i:*I_PART
+
+# conjunctions
+cconj:: ና:*CCONJ
 
 POS cop AUX
 ->UD PRS	Tense=Pres
@@ -264,5 +276,5 @@ neg:: NEG
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL
 g:: m:MASC;; f:FEM
-sub:: False:*SUBORD;; True:*MAIN
+sub:: False:*MAIN;; True:*SUBORD
 

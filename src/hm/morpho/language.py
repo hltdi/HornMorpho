@@ -48,6 +48,7 @@ Morphology objects defined in morphology.py).
 import os, sys, re, copy, itertools, copy, time
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
+
 #LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
 #LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'languages')
 
@@ -89,7 +90,7 @@ DEACC_RE = re.compile(r'\s*deaccent:\s*(.*)')
 PUNC_RE = re.compile(r'\s*pun.*?:\s*(.*)')
 # Part of speech categories
 # pos:
-# pos: v verbo
+# pos: v verb
 POS_RE = re.compile(r'\s*pos:\s*(.*)\s+(.*)')
 #POS_RE = re.compile(r'\s*pos:\s*(.*)')
 # Feature abbreviations
@@ -1672,9 +1673,10 @@ class Language:
             cache = {}
         cached = cache.get(token)
         if cached is not None:
-            # This assumes the cache stores "processed" analyses
-#            print("&& found cached token {}".format(cached))
-            return cached.copy()
+            # This assumes the cache stores "processed" analyses (Word instances)
+            copy = cached.copy(name=raw_token)
+#            print("Copying cached word {}".format(copy))
+            return copy
         # punctuation, numerals
         special_anal = self.analyze_special(token)
         if special_anal:

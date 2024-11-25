@@ -72,7 +72,7 @@ feats:
     morphotax::
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-         'እንደ':('rel', {False: 'SCONJ', True: 'ADP'}),'እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP', 'የ':'SCONJ', 'እ': 'SCONJ',\
+         'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP', 'የ':'SCONJ', 'እ': 'SCONJ',\
          'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
          'dep': 'mark:pre', 'feats': ['Case', 'ClauseType']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
@@ -93,7 +93,6 @@ feats:
       {'name': 'conj2',\
         'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
         'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
-#      {'name': 'conj2', 'pos': 'ADV', 'dep': 'advmod:suf'}
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
@@ -165,7 +164,7 @@ feats:
       {'name': 'poss', 'pos': 'DET', 'dep': 'det:suf',\
         'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case']};
-      {'name': 'cop', 'pos': 'VERB', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
+      {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
       {'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), \
         'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
       {'name': 'GA', 'pos': 'ADP', 'dep': 'case:suf', 'feats':['Case']}
@@ -198,6 +197,7 @@ feats:
 #    tns = 0 | prs
 
   pos: cop copula
+    umcats = ['PRS', 'PST']
     morphotax::
 	{'name': 'conj_prep1', 'pos': 'ADP', 'dep': 'mark:pre'};
 	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:pre', 'feats': ['Polarity']};;

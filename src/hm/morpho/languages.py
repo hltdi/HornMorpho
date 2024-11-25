@@ -34,7 +34,7 @@ import requests, tarfile
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'am': 'a',
+CODES = {'am': 'a', 'አ': 'a',
          'chh': 'ch', 'sgw': 'ch',
          'gz': 'g',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
@@ -42,7 +42,7 @@ CODES = {'am': 'a',
          'mh': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
          'so': 'som', 's': 'som',
-         'ti': 't',
+         'ti': 't', 'ት': 't',
          'T': 'te',
          'om': 'o', 'orm': 'o'}
 
