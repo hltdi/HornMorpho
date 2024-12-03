@@ -95,6 +95,7 @@
 ይኸኔ  ይኸ/ሄ  ADV
 ይሄኔ  ይሄ/ኔ  ADV
 አለጊዜ  አለጊዜ	ADV
+# really they're not the same; PART: ቁ/ጥ/ር, CONJ: ቁጥር
 ቁጥር  ቁጥር  PARTCONJ
 # ? እንቢዮ  እንቢዮ  ADV
 #ዳግመኛ  ዳግመ/ኛ  ADV
@@ -219,7 +220,7 @@
 እንካ  እንካ  INTJ
 እንኪ  እንኪ  INTJ
 እንኩ  እንኩ  INTJ
-እንዴ  እንዴ  INTJ
+እንዴ  እንዴ  ADVINTJ
 እሰይ  እ/ሰይ  INTJ
 እስቲ  እስቲ  INTJ
 እስኪ  እስኪ  INTJ

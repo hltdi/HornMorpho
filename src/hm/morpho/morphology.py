@@ -1780,10 +1780,19 @@ class POSMorphology:
         if dep:
             dct['dep'] = dep
         dct['head'] = head
+        if lemmaprops := props.get('lemma'):
+            if type(lemmaprops) is tuple:
+                lemma = features.get(lemmaprops[0])
+                if lemma:
+                    dct['lemma'] = lemma
+            elif lemmaprops1 := lemmaprops.get(morpheme):
+                lemma = self.get_segment_lemma(morpheme, lemmaprops1, features)
+                if lemma:
+                    dct['lemma'] = lemma
 #        dct['lemma'] = morpheme
         feats = None
         if sep_feats and udfdict:
-            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts)
+            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts, sep_feats=sep_feats)
         elif is_stem:
             if udfdict:
                 feats = udfeats
@@ -1845,6 +1854,24 @@ class POSMorphology:
 
         return features.get('root', stem)
 
+    def get_segment_lemma(self, string, props, features):
+        '''
+        Get the lemma for a morpheme if it's specified.
+        '''
+#        print("&& Getting the lemma for {} from {}".format(string, props))
+        if type(props) is tuple:
+            # Check the feature(s) in features to find the lemma
+            feat, featdict = props
+            if type(feat) is str:
+                # Only one feature
+                return featdict.get(features.get(feat))
+            else:
+                values = [features.get(f) for f in feat]
+#                print("  && Found values {} for {}".format(values, feat))
+                return featdict.get(tuple(values))
+        else:
+            return props
+
     def get_segment_pos(self, string, segdict, pos, features, mwe=False, is_stem=False, is_mwe_part=False, mwe_tokens=None, xpos=False):
         '''
         mwe is False (for single-word items) or a dict of props for MWEs.
@@ -1880,16 +1907,13 @@ class POSMorphology:
                     posvalue = features.get(posfeat)
                     pos = pos[1].get(posvalue)
 #                print(" ^^ Value for feat {}: {}; dep {}".format(posfeat, posvalue, pos))
-            else:
-#                if is_mwe_part and 'deppos' in mwe:
-#                    return mwe['deppos']
-#                else:
+            elif not xpos:
                 print("^^ No POS for {} in seg posdict {}".format(string, posspec))
                 return
             return pos
         return posspec
 
-    def get_segment_feats(self, string, segdict, udfdict, udfalts):
+    def get_segment_feats(self, string, segdict, udfdict, udfalts, sep_feats=True):
         '''
         Get the UD features that are specific to this segment.
         ufdict is a dict of UD features for the whole word.
@@ -1918,9 +1942,10 @@ class POSMorphology:
                             found1.append((segfeat, altfeat))
                     found.append(found1)
                 found2.append(found)
+        feat_convert = sep_feats and self.language.um.convertdict
 #                if found2:
 #                    print("  ^^ found altfeats {}".format(found2))
-        return UniMorph.udfdict2feats(features, join=True, ls=True)
+        return UniMorph.udfdict2feats(features, join=True, ls=True, feat_convert=feat_convert)
 #        features.sort()
 #        return '|'.join(['='.join([f, v]) for f, v in features])
 

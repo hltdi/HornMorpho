@@ -1,13 +1,19 @@
 abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
 abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
 abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
-abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
+#abbrev	&Poss3Def=Masc	Gender=Masc,Number=Sing,Person=3,PronType=Prs/Definite=Def
+#abbrev	&Poss3Def=Fem	Gender=Fem,Number=Sing,Person=3,PronType=Prs/Definite=Def
+#abbrev	&Acc3SMDef=True	Pers=3,Num=Sing,Gen=Masc,PronType=Prs,Case=Obj/Definite=Def
+#abbrev	&2SM3SF=True	Gender=Fem,Person=3,PronType=Prs/Gender=Masc,Person=2,PronType=Prs
 abbrev	&ImpJus=True	Aspect=Imp/Mood=Jus
 abbrev	&CCompAdvCl=True	ClauseType=CComp/ClauseType=AdvCl
 
+sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person
+
 POS n N
-->UD  ACC+GEN	*Case=AccGen
-->UD  ACC	Case=Acc
+#->UD  ACC+GEN	*Case=AccGen
+->UD  ACC+GEN	Case[inner]=Gen,Case[outer]=Obj
+->UD  ACC	Case=Obj
 ->UD  GEN	Case=Gen
 # 2024.7.7: other prepositions all OBL
 ->UD *OBL     *Case=Obl
@@ -15,8 +21,10 @@ POS n N
 ->UD SG		Number=Sing
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
-->UD FEM	Gender=Fem
-->UD MASC	Gender=Masc
+# Leave off noun gender (for now?)
+#->UD FEM	Gender=Fem
+#->UD MASC	Gender=Masc
+# These layered features are only necessary if features are assigned to the whole word rather than the suffis
 ->UD PSS1P	Number[psor]=Plur,Person[psor]=1
 ->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form
 ->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
@@ -26,12 +34,21 @@ POS n N
 ->UD PSS3P	Number[psor]=Plur,Person[psor]=3
 ->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
+#->UD PSS1P	Number=Plur,Person=1,PronType=Prs
+#->UD PSS2SFORM	Number=Sing,Person=2,Polite=Form,PronType=Prs
+#->UD PSS2SF	Gender=Fem,Number=Sing,Person=2,PronType=Prs
+#->UD PSS2P	Number=Plur,Person=2,PronType=Prs
+#->UD PSS1S	Number=Sing,Person=1,PronType=Prs
+#->UD PSS2SM	Gender=Masc,Number=Sing,Person=2,PronType=Prs
+#->UD PSS3P	Number=Plur,Person=3,PronType=Prs
+#->UD PSS3SF	Gender=Fem,Number=Sing,Person=3,PronType=Prs
+#->UD PSS3SM	Gender=Masc,Number=Sing,Person=3,PronType=Prs
 ->UD {PSS3SM/DEF} &Poss3Def=Masc
 ->UD {PSS3SF/DEF} &Poss3Def=Fem
 ->UD TOP	*Inf=Topic
-->UD 1		Person=1
-->UD 2		Person=2
-->UD 3		Person=3
+->UD 1		Person=1,PronType=Prs
+->UD 2		Person=2,PronType=Prs
+->UD 3		Person=3,PronType=Prs
 ->UD *PRSPRO	PronType=Prs
 ->UD *DEMPRO	PronType=Dem
 # suffixed copula
@@ -54,14 +71,15 @@ adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;;
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 pl:: True:PL;; False:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
-# unambiguous possessive suffixes
-p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
+p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF
 p,def:: 0,True:DEF
+# unambiguous possessive suffixes
+#p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
 # ambiguous and unambiguous possessive/determiner suffixes
-p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
-p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
-p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
+#p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
+#p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
+#p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
 postp:: ጋ:*OBL
 
@@ -136,38 +154,63 @@ POS v V
 ->UD ITER	Aspect=Iter
 #->UD CAUS+RECP	*Voice=CauRcp
 #->UD CAUS+RECP2	*Voice=CauRcp2
-->UD 1		Person=1
-->UD 2		Person=2
-->UD 3		Person=3
+->UD 1		Person=1,PronType=Prs
+->UD 2		Person=2,PronType=Prs
+->UD 3		Person=3,PronType=Prs
 ->UD SG		Number=Sing
 ->UD PL		Number=Plur
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-->UD AC1S	*AccPers=1,AccNum=Sing
-->UD AC1P	*AccPers=1,AccNum=Plur
-->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
-->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
-->UD AC2P	*AccPers=2,AccNum=Plur
-->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
-->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
-->UD AC3P	*AccPers=3,AccNum=Plur
-->UD DA1S	*DatPers=1,DatNum=Sing
-->UD DA1P	*DatPers=1,DatNum=Plur
-->UD DA2SF	*DatPers=2,DatNum=Sing,DatGen=Fem
-->UD DA2SM	*DatPers=2,DatNum=Sing,DatGen=Masc
-->UD DA2P	*DatPers=2,DatNum=Plur
-->UD DA3SF	*DatPers=3,DatNum=Sing,DatGen=Fem
-->UD DA3SM	*DatPers=3,DatNum=Sing,DatGen=Masc
-->UD DA3P	*DatPers=3,DatNum=Plur
-->UD *MAL1S	*MalPers=1,MalNum=Sing
-->UD *MAL1P	*MalPers=1,MalNum=Plur
-->UD *MAL2SF	*MalPers=2,MalNum=Sing,MalGen=Fem
-->UD *MAL2SM	*MalPers=2,MalNum=Sing,MalGen=Masc
-->UD *MAL2P	*MalPers=2,MalNum=Plur
-->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
-->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
-->UD *MAL3P	*MalPers=3,MalNum=Plur
+# Acc, Dat, and Mal only needed when features are assigned to the whole verb
+#->UD AC1S	*AccPers=1,AccNum=Sing
+#->UD AC1P	*AccPers=1,AccNum=Plur
+#->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
+#->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
+#->UD AC2P	*AccPers=2,AccNum=Plur
+#->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
+#->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
+#->UD AC3P	*AccPers=3,AccNum=Plur
+#->UD DA1S	*DatPers=1,DatNum=Sing
+#->UD DA1P	*DatPers=1,DatNum=Plur
+#->UD DA2SF	*DatPers=2,DatNum=Sing,DatGen=Fem
+#->UD DA2SM	*DatPers=2,DatNum=Sing,DatGen=Masc
+#->UD DA2P	*DatPers=2,DatNum=Plur
+#->UD DA3SF	*DatPers=3,DatNum=Sing,DatGen=Fem
+#->UD DA3SM	*DatPers=3,DatNum=Sing,DatGen=Masc
+#->UD DA3P	*DatPers=3,DatNum=Plur
+#->UD *MAL1S	*MalPers=1,MalNum=Sing
+#->UD *MAL1P	*MalPers=1,MalNum=Plur
+#->UD *MAL2SF	*MalPers=2,MalNum=Sing,MalGen=Fem
+#->UD *MAL2SM	*MalPers=2,MalNum=Sing,MalGen=Masc
+#->UD *MAL2P	*MalPers=2,MalNum=Plur
+#->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
+#->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
+#->UD *MAL3P	*MalPers=3,MalNum=Plur
+->UD AC1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=Obj
+->UD AC1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=Obj
+->UD AC2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Obj
+->UD AC2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Obj
+->UD AC2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=Obj
+->UD AC3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Obj
+->UD AC3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Obj
+->UD AC3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=Obj
+->UD DA1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=Dat
+->UD DA1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=Dat
+->UD DA2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Dat
+->UD DA2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Dat
+->UD DA2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=Dat
+->UD DA3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Dat
+->UD DA3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Dat
+->UD DA3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=Dat
+->UD *MAL1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=MalIns
+->UD *MAL1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=MalIns
+->UD *MAL2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=MalIns
+->UD *MAL2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=MalIns
+->UD *MAL2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=MalIns
+->UD *MAL3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=MalIns
+->UD *MAL3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=MalIns
+->UD *MAL3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=MalIns
 #->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
@@ -252,7 +295,7 @@ sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_S
 # Main clause vs. subordination
 rel,sub,mc:: False,False,True:*MAIN
 # 2024.7.7: simplified subordinating conjunctions to SUBORD
-sub,rel,ppos:: True,False,SCONJ:*SUBORD;; True,True,ADP:*RELC;; True,True,SCONJ:*SUBORD
+sub,rel,ppos:: True,False,SCONJ:*SUBORD;; True,True,ADP:*RELC;; True,True,SCONJ:*SUBORD;; True,True,PART:*RELC
 # ይሰብር: Useful (necessary?) for CG; could also be called *I_NFIN, though it's actually finite
 sub,mc,t:: False,False,i:*I_PART
 
@@ -271,10 +314,13 @@ POS cop AUX
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
+->UD *RELC	*ClauseType=ACl
+->UD *SUBORD	*ClauseType=AdvCl
+
 t:: prs:PRS;; pst:PST
 neg:: NEG
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL
 g:: m:MASC;; f:FEM
-sub:: False:*MAIN;; True:*SUBORD
+sub,rel:: False,False:*MAIN;; True,False:*SUBORD;; False,True:*RELC
 

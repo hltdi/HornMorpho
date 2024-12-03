@@ -209,3 +209,60 @@
 	"ነው" AUX 3 MASC PRS SG
 "<።>"
 	"።" PUNCT
+
+"<ምን>"
+	"ምን" PRON INTPRO SG
+"<ይሆን>"
+	"ሆነ" V DERAGI I_PART 3 IPFV MASC SG
+"<የሚል>"
+	"አለ" V DERAGI RELC 3 IPFV MASC SG
+"<ሐሳብ>"
+	"ሀሳብ" N SG
+"<አሸበራት>"
+	"አሸበረ" V ASDERAGI MAIN 3 AC3SF CAUS MASC PFV SG
+"<።>"
+	"።" PUNCT
+
+"<መስኮቱን>"
+	"መስኮት" N ACC SG {PSS3SM/DEF}
+"<ዝጋ>"
+	"ዘጋ" V DERAGI 2 IMP MASC SG
+	"ዛገ" V DERAGI 3 CVB FEM SG
+"<!>"
+	"!" PUNCT
+
+"<አጋዘኖች>"
+	"አጋዘን" N PL
+"<በኢትዮጵያ>"
+	"ኢትዮጵያ" PROPN INS OBL SG
+"<ሜዳዎች>"
+	"ሜዳ" N PL
+"<ላይ>"
+	"ላይ" ADP
+"<ይዘዋወራሉ>"
+	"ተዘዋወረ" V MAIN TEDERARAGI 3 IPFV PL RECP
+"<።>"
+	"።" PUNCT
+
+"<ማን>"
+	"ማን" PRON INTPRO SG
+"<ከማን>"
+	"ማን" PRON ABL INTPRO OBL SG
+"<ጋር>"
+	"ጋር" ADP
+"<ምሳ>"
+	"ምሳ" N SG
+"<በላ>"
+	"በላ" V DERAGI MAIN 3 MASC PFV SG
+"<?>"
+	"?" PUNCT
+
+"<የት>"
+	"የት" N SG
+"<እንደሚሄድ>"
+	"ሄደ" V DERAGI INDE_SC SUBORD 3 IPFV MASC SG
+"<አላውቅም>"
+	"አወቀ" V DERAGI MAIN 1 IPFV NEG SG
+"<።>"
+	"።" PUNCT
+

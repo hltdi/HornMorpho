@@ -373,3 +373,15 @@
 	"ሞተ" V DERAGI MAIN 3 MASC PFV SG
 "<።>"
 	"።" PUNCT
+
+"<በቃኝ>"
+	"በቃ" V DERAGI MAIN 3 AC1S MASC PFV SG
+	"ቃኝ" N AGT DERAGI INS OBL SG
+"<አለና>"
+	"አለ" V DERAGI MAIN 3 MASC PFV SG
+	"አለː" V DERAGI MAIN 3 MASC PFV SG
+"<ተኛ>"
+	"ተኛ" V DERAGI MAIN 3 MASC PFV SG
+	"ተኛ" V DERAGI 2 IMP MASC SG
+"<።>"
+	"።" PUNCT

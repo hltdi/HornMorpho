@@ -40,6 +40,7 @@ class UniMorph:
     subfeat_re = re.compile(r'\s*(.*):\s*(.*)$')
     toUD_re = re.compile(r'\s*->UD\s+(.+)\s+(.+)$')
     abbrev_re = re.compile(r'\s*abbrev\s*(.+)\s+(.+)$')
+    sep_convert_re = re.compile(r'\s*sepconvert\s+(.+)$')
 
     def __init__(self, language, read=True):
         # A Language instance
@@ -48,6 +49,7 @@ class UniMorph:
         self.um2hm = {}
         self.um2ud = {}
         self.abbrevs = {}
+        self.convertdict = {}
         if read:
             self.read()
             self.reverse()
@@ -72,7 +74,7 @@ class UniMorph:
         return udfeats
 
     @staticmethod
-    def udfdict2feats(udfdict, join=True, ls=False):
+    def udfdict2feats(udfdict, join=True, ls=False, feat_convert=None):
         if not udfdict:
             return ''
         if not ls:
@@ -80,6 +82,11 @@ class UniMorph:
         else:
             feats = udfdict
         feats.sort()
+        if feat_convert:
+            for index, (f, v) in enumerate(feats):
+                if fconv := feat_convert.get(f):
+                    feats[index] = (fconv, v)
+#            print("  && converted {}".format(feats))
         feats = ["{}={}".format(feat, val) for feat, val in feats]
         if join:
             return "|".join(feats)
@@ -545,6 +552,15 @@ class UniMorph:
                     if m:
                         abbrev, value = m.groups()
                         self.abbrevs[abbrev] = value
+                        continue
+
+                    m = UniMorph.sep_convert_re.match(line)
+                    if m:
+                        convertdict = m.group(1)
+                        convertdict = convertdict.split(',')
+                        convertdict = [c.split(':') for c in convertdict]
+                        convertdict = dict(convertdict)
+                        self.convertdict = convertdict
                         continue
 
                     m = UniMorph.pos_re.match(line)

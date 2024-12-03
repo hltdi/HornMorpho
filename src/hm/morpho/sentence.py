@@ -87,7 +87,7 @@ class Sentence():
     selectpos = \
       {
        'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'],\
-       'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ']
+       'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ'], 'ADVINTJ': ['ADV', 'INTJ']
       }
 
     um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
@@ -113,7 +113,7 @@ class Sentence():
             metadata['text'] = text
         self.sentid = metadata.get('sent_id') or kwargs.get('sentid', 1)
         self.batch_name = kwargs.get('batch_name', '')
-        self.label = kwargs.get('label') or "{}s{}".format(self.batch_name + "_" if self.batch_name else '', self.sentid)
+        self.label = kwargs.get('label') or "{}{}".format(self.batch_name + "_" if self.batch_name else '', self.sentid)
         self.xml = ''
         self.conllu = TokenList([])
         self.conllu.metadata = metadata if metadata else Metadata({'text': text, 'sent_id': self.label})
@@ -264,10 +264,8 @@ class Sentence():
         # Don't update if the index is 0
         length = len(conllu)
         if length == 1:
-            if index:
-                conllu[0]['id'] += index
-                conllu[0]['head'] = None
-#                conllu[0]['head'] += index
+            conllu[0]['id'] += index
+            conllu[0]['head'] = None
             windex2id[windex] = conllu[0]['id']
             new_index += 1
         else:
@@ -581,6 +579,7 @@ class Sentence():
                         count += 1
                     feats = morph.get('feats')
                     if feats and '&' in feats:
+                        # Features beginning in & need to be disambiguated manually
 #                        print("** ambiguous feats {}, appending to ambig {}".format(feats, ambig))
                         ambig.append(index)
                         count += 1
@@ -1091,11 +1090,13 @@ class Sentence():
                 amb = []
                 for ff in feats:
                     if ff[0] == '&':
+                        # Ambiguous feature, like &Acc3SMDef
 #                        print("** get features, ambig {}, ".format(ff))
                         if expand_ambig:
                             ff = um.expand_feat(ff)
                             ff = ff.split('/')
                             ff = [a.replace(',', '\n') for a in ff]
+                        print("&& ambiguous feature expanded to {}".format(ff))
                         amb.append(ff)
 #                            amb = [a.split(',') for a in amb]
                     else:

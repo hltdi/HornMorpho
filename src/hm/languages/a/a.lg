@@ -72,22 +72,28 @@ feats:
     morphotax::
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-         'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP', 'የ':'SCONJ', 'እ': 'SCONJ',\
+         'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
          'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
-         'dep': 'mark:pre', 'feats': ['Case', 'ClauseType']};
+         'xpos': {'የ': 'RLP'}, 'dep': 'mark:pre', 'feats': ['Case', 'ClauseType']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
-      {'name': 'imperf_rel', 'pos': 'SCONJ', 'dep': 'mark:pre', 'feats': ['ClauseType']};
+      {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark:pre', 'feats': ['ClauseType']};
       {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:pre', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:pre', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:pre',\
+        'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
+                             'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
+                             'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
+       'feats': ['Person', 'Number', 'Gender', 'PronType']};;
       {'name': 'STEM', 'pos': 'VERB', 'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
-      {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
+        'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'ob',\
         'pos': ('O', {False: 'DET', True: 'PRON'}),\
   	'xpos': ('O', {False: 'DET', True: 'OBJC'}),\
+	'lemma': ('olemma',),\
 	'dep': (('O','oc'), {(False,0): 'det:suf', (True,0): 'obj:suf', (True,'l'): 'obl:suf', (True,'b'): 'obl:suf'}),\
-        'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef', 'Definite']};
+        'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef', 'Definite', 'PronType', 'ObjNum', 'ObjGen', 'ObjPers']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux:suf'};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux:suf','feats':['Number','Gender','Person']};
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case']};
       {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod:suf'};
       {'name': 'conj2',\
@@ -98,6 +104,7 @@ feats:
     lemmafeats = a,v,c,s
     umcats = ['*TEDERAGI', '*ADRAGI', '*ASDERAGI', '*TEDARAGI', '*ADARAGI', '*DERARAGI', '*TEDERARAGI', '*ADERARAGI', '*ASDERARAGI']
 #    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
+#    lemmadict = {ት, {[
     pos = V
     a = 0 | a  | i
     v = 0 | p | a | as | ast | test
@@ -155,15 +162,15 @@ feats:
 
   pos: n noun_adjective
     morphotax::
-      {'name': 'prep', 'pos': 'ADP', 'dep': 'case:pre', 'feats': ['Case']};
+      {'name': 'prep', 'pos': 'ADP', 'dep': 'case:pre', 'feats': ['Case', 'Case[inner]']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
-      {'name': 'STEM'};;
+      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice']};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
-      {'name': 'poss', 'pos': 'DET', 'dep': 'det:suf',\
-        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender']};
-      {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case']};
+      {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'dep': 'det:suf', 'lemma':('plemma',),\
+        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'PronType']};
+      {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case', 'Case[outer]']};
       {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
       {'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), \
         'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
@@ -199,10 +206,10 @@ feats:
   pos: cop copula
     umcats = ['PRS', 'PST']
     morphotax::
-	{'name': 'conj_prep1', 'pos': 'ADP', 'dep': 'mark:pre'};
+	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark:pre', 'feats': ['ClauseType']};
 	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:pre', 'feats': ['Polarity']};;
-	{'name': 'STEM', 'pos': 'V', 'feats': ['Tense']};;
-	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender']};
+	{'name': 'STEM', 'pos': 'V', 'feats': ['Tense', 'Polarity']};;
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
 	{'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
     nomwe

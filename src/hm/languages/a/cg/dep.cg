@@ -1,8 +1,9 @@
 DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
 
 LIST NOM = N PRON DET PROPN ;
+LIST NOMINAL = N PRON DET ;
 LIST PREP = ("እንደ" ADP) ("እስከ" ADP) ("ስለ" ADP) ("በስተ" ADP) ("ያለ" ADP) ("ወደ" ADP) ("ባለ" ADP) ;
-LIST POSTP = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ("ምክንያት" ADP) ("በኋላ" ADP) ("በፊት" ADP) ;
+LIST POSTP = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ("ምክንያት" ADP) ("በኋላ" ADP) ("በፊት" ADP) ("ጋር" ADP) ;
 #LIST ADVERBIAL = ADV CVB 
 LIST NMOD = REL ADJ DET NUM GEN ;
 LIST HELPING = AUX "ነበረ" "ሆነ" ;
@@ -10,8 +11,10 @@ LIST PERSON = 1 2 3 ;
 LIST GENDER = FEM MASC ;
 LIST NUMBER = SG PL ;
 LIST ROOTV = (V MAIN) (V IMP) (V B_SC) (V BE_SC) ;
+SET VERBAL = (V) | (INF) ;
 # Verb forms that take auxiliaries
 LIST VAUX = (V CVB) (V I_PART) (V IYE_SC) (V IPFV L_SC) (INF) ;
+LIST KNOWSPEAK = "አለ" "ነገረ" "ገለጸ" "ተገለጸ" "ተነገረ" "አወቀ" "ታወቀ" "አሳወቀ" "ተገነዘበ" ;
 
 ### ROOT
 
@@ -68,6 +71,9 @@ MAP (@CLEFT) (RELC)
 # final cleanup: attach nodes without parents to root (0)
 #SETPARENT (*) (NEGATE p (*)) TO (@0 (*)) ;
 
+# A numeral before a noun must be its modifier.
+ADDRELATION (amod) (NUM) to (1 (N)) ;
+
 ### Simple relations from @ROOT
 
 ## Final punctuation.
@@ -98,16 +104,23 @@ ADDRELATION (case) POSTP FROM (-1 NOM) ;
 
 ### Nominal and adverbial children
 
-## Nominals and adverbials followed by main root verbs with no verbs in between
+## Nominals and adverbials followed by main root verbs with no verbs
+## or other nominals in between (the nominal may modify the other other nominal).
+SETPARENT NOMINAL
+    TO (1* (MAIN @ROOT) BARRIER VERBAL OR (N)) ;
+
+SETPARENT (PROPN)
+    TO (1* (MAIN @ROOT) BARRIER VERBAL) ;
+
+## A nominal immediately preceding a root is its child.
 SETPARENT NOM
-    TO (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+    TO (1 (@ROOT)) ;
 
 ADDRELATION (advmod) (ADV)
     FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
 
-ADDRELATION (advmod) (CVB)
+ADDRELATION (advcl) (CVB)
     FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
 
-## Other nominals
-
-
+ADDRELATION (ccomp) (INDE_SC)
+    FROM (1 KNOWSPEAK) ;

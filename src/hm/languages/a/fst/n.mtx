@@ -50,29 +50,29 @@ $ plur_bound
 $ human
   # +-hum: the presence or absence of this suffix
   # +-h: whether the noun is human (add to lexicon later)
-  እ/የ			[+hum,+h,p=0,-pl,-col,-dis,pos=N]
-  እ/ዬ	<እየ>	[+hum,+h,p=0,-pl,-col,-dis,pos=N]
-  እ/ዮ	<እየ>	[+hum,+h,+fem,p=0,-pl,-col,-dis,pos=N]
+  እ/የ			[+hum,+h,-pl,-col,-dis,pos=N]
+  እ/ዬ	<እየ>	[+hum,+h,-pl,-col,-dis,pos=N]
+  እ/ዮ	<እየ>	[+hum,+h,+fem,-pl,-col,-dis,pos=N]
   --				[-hum]
 
 $ human_bound
   -
 
 $ poss_det
-  ኤ		[p=s1]
-  ኣ/ችን	[p=p1]
-  ህ		[p=sm2]
-  ሽ		[p=sf2]
-  ኣ/ችሁ	[p=p2]
-  ዎ		[p=F2]
-  ዎን		[p=F2]
+  ኤ		[p=s1,plemma=እኔ,spos=PRON]
+  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON]
+  ህ		[p=sm2,plemma=አንተ,spos=PRON]
+  ሽ		[p=sf2,plemma=አንቺ,spos=PRON]
+  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON]
+  ዎ		[p=F2,plemma=እርስዎ,spos=PRON]
+  ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
   # possessive or determiner
   #{
-  ኡ		[p=sm3,-hum];[p=0,+def,g=m,+hum,pos=N]         #pd=m,-det];[pd=m,+det,p=0,g=m]
-  ዋ		[p=sf3,-hum];[p=0,+def,g=f,+hum,pos=N]         #pd=f,-det];[pd=f,+det,p=0,g=f]
-  ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,pos=N]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,pos=N,spos=DET]
+  ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,pos=N,spos=DET]
   #}
-  ኣ/ቸው	[p=p3]
+  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON]
   --		[p=0,-def]
 
 $ poss_bound

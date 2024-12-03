@@ -1,7 +1,7 @@
 $ conj_prep_pre
   ->ob_suf	+na+	[1=ም,2=ጥ,3=እ,c=A,a=0,v=0,t=j,adp=0,sconj=0,-mc,-neg,-pr,r=ምጥእ,oc=0|l|b]
   # In UM and UD, የ- የም- እም- are SCONJ
-  የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ]
+  የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0,ppos=PART]
   # rare with perfective but it does occur; for now limit to non-negative, non-passive/causative, root 1=X
   እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0,tmp=[1=X],ppos=ADP,-prior];[sconj=0,t=p,+rel,-neg,-mc,+sub,adp=0,v=0,a=0,tmp=[1=X],ppos=SCONJ,-prior]
   ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
@@ -91,26 +91,28 @@ $ poststem
   >
 
 $ sb_suf
-  አ		[sp=3,sn=1,sg=m,t=p]
-  ኦ    	[sp=3,sn=1,sg=m,t=c]
-  አ/ች   	[sp=3,sn=1,sg=f,t=p]
-  ኣ    	[sp=3,sn=1,sg=f,t=c]
+  አ		[sp=3,sn=1,sg=m,t=p,slemma=እሱ]
+  ኦ    	[sp=3,sn=1,sg=m,t=c,slemma=እሱ]
+  አ/ች   	[sp=3,sn=1,sg=f,t=p,slemma=እሷ]
+  ኣ    	[sp=3,sn=1,sg=f,t=c,slemma=እሷ]
   # ቢፈልጉ ይፈልጉታል አይፈልጉም ፈለጉ
-  ኡ		[t=j,sp=2|3,sn=2];[t=i,sp=2|3,sn=2,-mc];[t=i,sp=2|3,sn=2,+O];[t=i,sp=2|3,sn=2,+neg];[t=p,sp=3,sn=2]
-  አው  	[sp=3,sn=2,t=c]
-  ኣ/ችሁ 	[sp=2,sn=2,t=p|c]
-  ሽ		[sp=2,sn=1,sg=f,t=p]
-  አሽ    	[sp=2,sn=1,sg=f,t=c]
-  ኢ   	[sp=2,sn=1,sg=f,t=i|j]
-  ህ		[sp=2,sn=1,sg=m,t=p]
-  አህ		[sp=2,sn=1,sg=m,t=c]
-  ሁ		[sp=1,sn=1,t=p]
-  ሁኝ		[sp=1,sn=1,t=p,-O]
-  ኤ		[sp=1,sn=1,t=c]
-  ን    	[sp=1,sn=2,t=p]
-  አን    	[sp=1,sn=2,t=c]
+  ኡ		[t=j,sp=2,sn=2,slemma=እናንተ];[t=j,sp=3,sn=2,slemma=እነሱ];[t=i,sp=2,sn=2,-mc,slemma=እናንተ];
+  		[t=i,sp=3,sn=2,-mc,slemma=እነሱ];[t=i,sp=2,sn=2,+O,slemma=እናንተ];[t=i,sp=3,sn=2,+O,slemma=እነሱ];
+  		[t=i,sp=2,sn=2,+neg,slemma=እናንተ];[t=i,sp=3,sn=2,+neg,slemma=እነሱ];[t=p,sp=3,sn=2,slemma=እነሱ]
+  አው  	[sp=3,sn=2,t=c,slemma=እነሱ]
+  ኣ/ችሁ 	[sp=2,sn=2,t=p|c,slemma=እናንተ]
+  ሽ		[sp=2,sn=1,sg=f,t=p,slemma=አንቺ]
+  አሽ    	[sp=2,sn=1,sg=f,t=c,slemma=አንቺ]
+  ኢ   	[sp=2,sn=1,sg=f,t=i|j,slemma=አንቺ]
+  ህ		[sp=2,sn=1,sg=m,t=p,slemma=አንተ]
+  አህ		[sp=2,sn=1,sg=m,t=c,slemma=አንተ]
+  ሁ		[sp=1,sn=1,t=p,slemma=እኔ]
+  ሁኝ		[sp=1,sn=1,t=p,-O,slemma=እኔ]
+  ኤ		[sp=1,sn=1,t=c,slemma=እኔ]
+  ን    	[sp=1,sn=2,t=p,slemma=እኛ]
+  አን    	[sp=1,sn=2,t=c,slemma=እኛ]
   # include exceptions: ጀመር  እንደሆን (should these be in aux?)
-  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
+  --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m,slemma=አንተ];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
 		[a=0,v=0,t=p,-neg,+mc,-sub,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0];
 		[a=0,v=0,t=p,-neg,sconj=እንደ,r=ህውን|ንብር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0]
 
@@ -118,10 +120,10 @@ $ ss_bound
   -
 
 $ ob_suf
-  [o=sm3,oc=l|b,+O]
+  [o=sm3,oc=l|b,+O,olemma=እሱ]
       /ለት	<ለት>	[oc=l]
       /በት	<በት>	[oc=b]
-  [o=sm3,oc=0]
+  [o=sm3,oc=0,olemma=እሱ]
      # 3sm accusative suffix and relative definite suffix
       ት	[t=p,sp=1,sn=1,-det,+O,+tr];[sp=2|3,sn=2,-det,+O,+tr];[t=c,sp=3,sn=1,sg=m,-det,+O,+tr];
                 [t=p,sp=1,sn=1,+det,+rel,sconj=0,-O];[sp=2|3,sn=2,+det,+rel,sconj=0,-O];[t=c,sp=3,sn=1,sg=m,+det,sconj=0,+rel,-O]
@@ -131,39 +133,39 @@ $ ob_suf
       አው	[sp=2,sn=1,sg=m,-det,+O,+tr];[sp=1,sn=2,-det,+O,+tr];[t=i|j,sp=1,sn=1,-det,+O,+tr];[t=i|j,sp=3,sn=1,-det,+O,+tr];
                 [sp=2,sn=1,sg=m,+det,+rel,sconj=0,-O];[sp=1,sn=2,+det,+rel,sconj=0,-O];[t=i|j,sp=1,sn=1,+det,+rel,sconj=0,-O];
 		[t=i|j,sp=3,sn=1,+det,+rel,sconj=0,-O]
-  [o=sf3,+O]
+  [o=sf3,+O,olemma=እሷ]
       ኣት	[oc=0,+tr]
       /ላት	<ላት>	[oc=l]
       /ባት	<ባት>	[oc=b]
-  [o=p3,+O]
+  [o=p3,+O,olemma=እነሱ]
       ኣ/ቸው		<ኣቸው>	[oc=0,+tr]
       /ላ/ቸው	<ላቸው>	[oc=l]
       /ባ/ቸው	<ባቸው>	[oc=b]
   # allow first person subjects with first person objects for reported speech
-  [o=s1,+O]
+  [o=s1,+O,olemma=እኔ]
       አ/ኝ	<አኝ>	[oc=0,sp=2,sn=1,sg=m,+tr];[oc=0,sp=3,sn=1,t=i|j,+tr];[oc=0,sp=1,t=i|j,+tr]
       /ኝ 	<ኝ>		[oc=0,sp=2,sn=1,sg=f,+tr];[oc=0,t=p|c,sp=3,sn=1,+tr];[oc=0,sn=2,+tr,sp=2|3];[oc=0,sp=1,t=p|c,+tr]
       /ል/ኝ	<ልኝ>	[oc=l]
       /ብ/ኝ	<ብኝ>	[oc=b]
-  [o=p1,+O]
+  [o=p1,+O,olemma=እኛ]
       አን	[oc=0,sp=2,sn=1,sg=m,+tr];[oc=0,sp=3,sn=1,t=i|j,+tr];[oc=0,sp=1,t=i|j,+tr]
       ን	[oc=0,sp=2,sn=1,sg=f,+tr];[oc=0,t=p|c,sp=3,sn=1,+tr];[oc=0,sn=2,+tr,sp=2|3];[oc=0,sp=1,t=p|c,+tr]
 # allow first person applicative object
       /ልን	<ልን>	[oc=l]
       /ብን	<ብን>	[oc=b]
-  [o=sm2,sp=1|3,+O]
+  [o=sm2,sp=1|3,+O,olemma=አንተ]
       ህ	[oc=0,+tr]
       /ልህ	<ልህ>	[oc=l,og=m]
       /ብህ	<ብህ>	[oc=b,og=m]
-  [o=sf2,sp=1|3,+O]
+  [o=sf2,sp=1|3,+O,olemma=አንቺ]
       ሽ	[oc=0,+tr]
       /ልሽ	<ልሽ>	[oc=l,og=f]
       /ብሽ	<ብሽ>	[oc=b,og=f]
   [o=F2,sp=1|3,+O]
-      ዎት	[oc=0,+tr]
+      ዎት	[oc=0,+tr,olemma=እርስዎ]
       /ልዎት		<ልዎት>	[oc=l]
       /ብዎት		<ብዎት>	[oc=b]
-  [o=p2,sp=1|3,+O]
+  [o=p2,sp=1|3,+O,olemma=እናንተ]
       ኣ/ችሁ		<ኣችሁ>	[oc=0,+tr]
       /ላ/ችሁ	<ላችሁ>	[oc=l]
       /ባ/ችሁ	<ባችሁ>	[oc=b]

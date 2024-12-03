@@ -393,7 +393,7 @@ class SegCanvas(Canvas):
                 y = self.show_features(features, Xs, y, wordseg, featselecttags, featdiff=featdiff)
             if lemmas:
                 y += SegCanvas.segrowheight
-                self.show_lemmas(lemmas, Xs, y, diff=diffs.get('lemma', False))
+                self.show_lemmas(lemmas, Xs, y, wordseg, lemdiff=diffs.get('lemma', []))
             if glosses:
 #                print("^^ showing glosses {}".format(glosses))
                 y += SegCanvas.segrowheight
@@ -544,13 +544,19 @@ class SegCanvas(Canvas):
             color = SegCanvas.diffcolor if diffs and index in diffs else 'Black'
             self.create_text((x, y), text=form, fill=color, font=self.parent.geez_normal)
 
-    def show_lemmas(self, lemmas, Xs, y, diff=False):
+    def show_lemmas(self, lemmas, Xs, y, wordseg, lemdiff=False):
         '''
         Show the lemmas for a segmentation (if different from forms).
         '''
-        color = SegCanvas.diffcolor if diff else 'Black'
-        for lemma, x in zip(lemmas, Xs):
+        if len(wordseg) == 1:
+            color = SegCanvas.diffcolor if 0 in lemdiff else 'Black'
+            lemma = lemmas[0]
+            x = Xs[0]
             self.create_text((x, y), text=lemma, fill=color, font=self.parent.geez_normal)
+        else:
+            for index, (lemma, x) in enumerate(zip(lemmas, Xs)):
+                color = SegCanvas.diffcolor if index in lemdiff else 'Black'
+                self.create_text((x, y), text=lemma, fill=color, font=self.parent.geez_normal)
 
     def show_glosses(self, glosses, Xs, y, diffs=None):
         '''
@@ -601,12 +607,14 @@ class SegCanvas(Canvas):
         Show the morphological features for a segmentation if there are any.
         wordseg is a TokenList.
         '''
+#        print("*** Showing features with diff {}".format(featdiff))
         max_y = y
         if len(wordseg) == 1:
             # Unsegmented word
             f = feats[0]
             x = Xs[0]
-            max_y = max([self.show_features1(f, x, y, wordseg[0], featselecttags), max_y])
+            color = SegCanvas.diffcolor if featdiff and 0 in featdiff else 'Black'
+            max_y = max([self.show_features1(f, x, y, wordseg[0], featselecttags, color=color), max_y])
         else:
             for morphi, (f, x) in enumerate(zip(feats, Xs)):
                 color = SegCanvas.diffcolor if featdiff and morphi in featdiff else 'Black'

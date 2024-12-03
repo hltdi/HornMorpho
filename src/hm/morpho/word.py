@@ -257,11 +257,12 @@ class Word(list):
                     if i2 not in diffs:
                         diffs[i2] = {}
                     for kind, value in c.items():
+#                        print(" ** kind {}, value {}".format(kind, value))
                         if kind == 'segs':
                             continue
                         if kind == 'lemma':
-                            diffs[index1]['lemma'] = True
-                            diffs[i2]['lemma'] = True
+                            diffs[index1]['lemma'] = value
+                            diffs[i2]['lemma'] = value
                         else:
                             if kind not in diffs[index1]:
                                 diffs[index1][kind] = []
@@ -273,13 +274,9 @@ class Word(list):
             diffdict = {}
             for anali, d in diffs.items():
                 for dtype, dmi in d.items():
-#                    print("  ** dtype {}, dmi {}".format(dtype, dmi))
-                    if dtype == 'lemma':
-                        diffdict['lemma'] = True
-                    else:
-                        if dtype not in diffdict:
-                            diffdict[dtype] = set()
-                        diffdict[dtype].update(dmi)
+                    if dtype not in diffdict:
+                        diffdict[dtype] = set()
+                    diffdict[dtype].update(dmi)
             return diffdict
         return diffs
 
@@ -428,22 +425,27 @@ class Word(list):
                 # and delete the second CoNLL-U and analysis
                 to_del.append(i2)
 
-    def compare_lemmas(self, segs1, segs2, gemination=False, verbosity=0):
+    def compare_lemmas(self, segs1, segs2, csegs1, csegs2, gemination=False, verbosity=0):
         '''
         Compare lemmas and glosses.
         '''
-#        print("  ** Comparing lemmas for {} and {}".format(segs1, segs2))
-        l1 = segs1.get('lemma')
-        l2 = segs2.get('lemma')
-        if not gemination:
-            if not l1 or not l2:
-#                print("** l1 {}, l2 {}".format(l1, l2))
-                return False, l1, l2
-            l1 = EES.degeminate(l1)
-            l2 = EES.degeminate(l2)
-        leq = l1 == l2
-        return leq, l1, l2
-
+        if verbosity:
+            print("  ** Comparing lemmas for {} and {}".format(csegs1, csegs2))
+        leq = True
+        cis = []
+        if len(csegs1) == 1 or len(csegs2) == 1:
+            if csegs1[0]['lemma'] != csegs2[0]['lemma']:
+                return False, [0]
+            return True, []
+        for cindex, (c1, c2) in enumerate(zip(csegs1[1:], csegs2[1:])):
+            l1 = c1['lemma']
+            l2 = c2['lemma']
+            if l1 != l2:
+                cis.append(cindex)
+            if cis:
+                return False, cis
+            return True, []
+            
     def compare_glosses(self, segs1, segs2, csegs1, csegs2, leq, verbosity=0):
         geq = True
         g1 = g2 = None
@@ -508,9 +510,10 @@ class Word(list):
         if verbosity:
             print("  ** compared POS: {} {} {} {}".format(poseq, pos1, pos2, pi))
 
-        leq, l1, l2 = self.compare_lemmas(segs1, segs2, gemination=gemination, verbosity=verbosity)
+#        leq, l1, l2 = self.compare_lemmas(segs1, segs2, csegs1, csegs2, gemination=gemination, verbosity=verbosity)
+        leq, lis = self.compare_lemmas(segs1, segs2, csegs1, csegs2, gemination=gemination, verbosity=verbosity)
         if verbosity:
-            print("  ** compared lemmas: {} {} {}".format(leq, l1, l2))
+            print("  ** compared lemmas: {} {}".format(leq, lis))
 
         geq, g1, g2, gi = self.compare_glosses(segs1, segs2, csegs1, csegs2, leq, verbosity=verbosity)
         if verbosity:
@@ -529,24 +532,12 @@ class Word(list):
         i, d1, d2 = Word.compare_udf(udf1, udf2,verbosity=verbosity)
         if verbosity:
             print("  ** compared UDF: {} {} {}".format(i, d1, d2))
-        if not d1 and not d2:
+        udf_result = Word.compare_udf1(d1, d2, csegs1, csegs2)
+        if udf_result is True:
             udfeq = True
-        if d1 and d2:
-            # Get the index of the morpheme where the feat difference is
-            for mindex, (m1, m2) in enumerate(zip(csegs1[1:], csegs2[1:])):
-                f1 = m1['feats']
-                f2 = m2['feats']
-#                print("  * Checking feats for {}: {} and {}".format(mindex, f1, f2))
-#                print("   * against {} and {}".format(d1, d2))
-                in1 = f1 and all([d in f1 for d in d1])
-                in2 = f2 and all([d in f2 for d in d2])
-                if in1 and in2:
-                    mi = mindex
-                elif in1 or in2:
-                    mis.append(mindex)
-#        if not poseq and not udfeq:
-#            print(" not poseq and not udfeq")
-#            return True
+        else:
+            mis = udf_result
+
         if n1 > 1:
             preeq = Word.parts_equal(segs1.get('pre'), segs2.get('pre'))
             sufeq = Word.parts_equal(segs1.get('suf'), segs2.get('suf'))
@@ -560,11 +551,11 @@ class Word(list):
         else:
             diffs = {}
             if not leq:
-                diffs['lemma'] = [l1, l2]
+                diffs['lemma'] = lis
             elif not geq:
                 diffs['gloss'] = [[gi], g1, g2]
-            if not udfeq and mi >= 0:
-                diffs['udfeats'] = [[mi], ','.join(d1), ','.join(d2)]
+#            if not udfeq and mi >= 0:
+#                diffs['udfeats'] = [[mi], ','.join(d1), ','.join(d2)]
             if not udfeq and mis:
                 diffs['udfeats'] = [mis, ','.join(d1), ','.join(d2)]
             if not poseq:
@@ -615,6 +606,36 @@ class Word(list):
 #        diff1 = ','.join(diff1)
 #        diff2 = ','.join(diff2)
         return tuple(inters), tuple(diff1), tuple(diff2)
+
+    def compare_udf1(d1, d2, csegs1, csegs2):
+        mi = -1
+        mis = []
+        if not d1 and not d2:
+            return True
+        cs1 = csegs1 if len(csegs1) == 1 else csegs1[1:]
+        cs2 = csegs2 if len(csegs2) == 1 else csegs2[1:]
+        if d1 and d2:
+            # Get the index of the morpheme where the feat difference is
+            for mindex, (m1, m2) in enumerate(zip(cs1, cs2)):
+                f1 = m1['feats']
+                f2 = m2['feats']
+                in1 = f1 and all([d in f1 for d in d1])
+                in2 = f2 and all([d in f2 for d in d2])
+                if in1 and in2:
+                    mi = mindex
+                elif in1 or in2:
+                    mis.append(mindex)
+        elif d1:
+            for mindex, (m1, m2) in enumerate(zip(cs1, cs2)):
+                f1 = m1['feats']
+                f2 = m2['feats']
+                in1 = f1 and all([d in f1 for d in d1])
+                if in1:
+                    mi = mindex
+        if mi >= 0:
+            return [mi]
+        else:
+            return mis
 
     @staticmethod
     def replace_udf(udf, to_replace, replacement):

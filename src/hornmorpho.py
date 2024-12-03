@@ -50,17 +50,23 @@ TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ 
 
 AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
 
+## Writing starter CoNNL-U
+def write(corpus, start, n_sents, language='am'):
+    file = "{}_starter_{}-{}.conllu".format(language, start, n_sents)
+    path = "../tmp/" + file
+    hm.write_conllu(corpus=corpus, append=False, filter_sents=False, path=path)
+
 ## Starter sentence analysis
 
 def anal_amh(n_sents=1500, start=0, disambiguate=False):
     return hm.anal_corpus(
-        'a', path="../../EES-Res/text/amti/ti_am_starter.txt",
-        start=start, n_sents=n_sents, language_pos=1, disambiguate=disambiguate
+        'a', path="../../EES-Res/text/amti/am_ti_starter.txt",
+        start=start, n_sents=n_sents, language_pos=0, disambiguate=disambiguate
         )
 
 def anal_tir():
     return hm.anal_corpus(
-        't', path="../../EES-Res/text/amti/ti_am_starter.txt", n_sents=1500, language_pos=0)
+        't', path="../../EES-Res/text/amti/am_ti_starter.txt", n_sents=1500, language_pos=1)
 
 ## Fixing treebanks
 
@@ -717,7 +723,7 @@ FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
 A = lambda word: hm.anal('a', word)
 AS = lambda sentence: hm.anal_sentence('a', sentence)
-AC = lambda sentence, dis: hm.anal_corpus('a', data=[sentence], disambiguate=dis)
+AC = lambda sentence, dis=True: hm.anal_corpus('a', data=[sentence], disambiguate=dis)
 
 def main():
     pass

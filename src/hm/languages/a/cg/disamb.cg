@@ -4,15 +4,15 @@ LIST NOM = N PRON DET PROPN ;
 LIST NOM2 = N PRON DET PROPN ADJ ;
 LIST PREP1 = INS ABL ;
 LIST PREP = "እንደ" "እስከ" "ስለ" "በስተ" "ያለ" "ወደ" "ባለ" ;
-LIST OBLPOSTP = "ምክንያት" "<በኋላ>" "<በፊት>" "<በላይ>" "ምትክ" "ፋንታ" "ይልቅ" "ጋር" ;
+LIST OBLPOSTP = "ምክንያት" "<በኋላ>" "<በፊት>" "<በላይ>" "ምትክ" "ፋንታ" "ይልቅ" "ጋር" "<የተነሳ>" "<ወዲህ>";
 LIST NPOSTP = "ላይ" "ውስጥ" "ታች" "ውጭ" ;
 LIST POSTCONJ = "ቁጥር" "<በኋላ>" "<በፊት>" "<ድረስ>" ;
 SET POSTP = OBLPOSTP | NPOSTP ;
 LIST N = N ;
 LIST NMOD = REL ADJ DET NUM GEN ;
-LIST V = V | AUX ;
+SET V = (V) | (AUX) ;
 # V other than jussive/imperative or AUX
-LIST V2 = (V !IMP) | AUX ;
+SET V2 = (V !IMP) | (AUX) ;
 LIST HELPING = AUX "ነበረ" "ሆነ" ;
 LIST SADV = "መቸስ" "መቸም" "መቼስ" "መቼም" "እኮ" "እንጂ" "እንዴ" ;
 LIST PERSON = 1 2 3 ;
@@ -59,6 +59,11 @@ REMOVE OBLPOSTP + (N)
 "<ላይ>" REMOVE (V)
        (-1 (OBL)) ;
 
+# ልጆቹ ዛፍ ላይ ወጡ
+"<ላይ>" REMOVE (N)
+       (-1 (N))
+       (-2 (N)) ;
+
 # እቤት ውስጥ
 REMOVE NPOSTP + (N)
        (-1 (OBL)) ;
@@ -84,7 +89,7 @@ REMOVE (OBL)
 
 ### Verbs
 
-# Imperfective "participles" have to be followed by a verb
+# Imperfective "participles" have to be followed by an aux
 REMOVE (I_PART)
        (NOT  1 HELPING) ;
 
@@ -95,7 +100,7 @@ REMOVE (MAIN) - (CCONJ)
 
 # Jussive/imperative has to be final (with possible intervening ADV like መቸስ) or preceding አለ
 # or with -ና 
-# Not really true: ይምጣ አይምጣ አላውቅም
+# Not really true: ይምጣ አይምጣ አላውቅም; but the rule accommodates this
 REMOVE (IMP) - (CCONJ)
        (NOT 1 (<<<) OR SADV OR (IMP) or (MAIN) or ("አለ")) ;
 
@@ -134,6 +139,8 @@ REMOVE (RELC OBL)
 SELECT ("አለ")
        (-1 (AUX) OR (PART) OR (V)) ;
 
+## 
+
 ### Ambiguous PROPN
 
 # Proper nouns can't be preceded by noun modifiers
@@ -144,10 +151,11 @@ REMOVE (PROPN)
 REMOVE (PROPN)
        (1 (<<<)) ;
 
-# Main verbs (አበበ) can't start a sentence (unless they also end the sentence)
+# Main verbs (አበበ) can't start a sentence (unless they also end the sentence or are followed by አለ)
 REMOVE (V MAIN)
        (-1 (>>>))
-       (NOT 1 (<<<)) ;
+       (NOT 1 (<<<))
+       (NOT 1 ("አለ")) ;
 
 ## VERB and NOUN
 # NOUN can't be last unless there's a preceding AUX (cleft sentence) or it's the only word
@@ -180,4 +188,17 @@ REMOVE NOM + (CCONJ)
 ## እንደ+ before verbs like አለ ነገረ አወቀ ገለጸ and not followed by noun
 REMOVE (EQTV RELC)
        (1* KNOWSPEAK BARRIER (V))
+       (NOT 1 (N)) ;
+
+### Postpositions again
+
+# what comes before ጋር must be a nominal
+REMOVE (V)
+       (1 ("<ጋር>" ADP)) ;
+
+### Relative clause, adverbial clause
+# Relative verbs are not followed by relative verbs
+# unless there's a following noun.
+REMOVE (V RELC)
+       (-1 (V RELC))
        (NOT 1 (N)) ;
