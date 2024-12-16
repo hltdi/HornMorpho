@@ -2,11 +2,14 @@
 Constraint grammar for HornMorpho.
 '''
 
+USER_DIR = os.path.join(os.path.dirname(__file__), 'usr')
+
 CG3 = '/usr/local/bin/vislcg3'
 
 import subprocess
 import re
 from .utils import first
+from .usr import *
 #from subprocess import Popen, PIPE, run
 # import sys
 
@@ -20,6 +23,7 @@ class CG:
         self.language = language
         # There are two kinds of rules: "disambiguation" and "annotation" ("dependencies")
         self.disambig = disambig
+        self.cg_path = CG3
         self.rules_path = language.get_disambig_file() if disambig else language.get_dep_file()
 
     @staticmethod

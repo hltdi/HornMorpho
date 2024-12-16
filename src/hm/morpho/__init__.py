@@ -39,7 +39,7 @@ Composition of weighted FSTs is also supported.
 __all__ = ['altrule', 'fs', 'fst', 'internals', 'language',\
            'languages', 'letter_tree', 'logic', 'morphology', 'mtax',\
            'rule', 'semiring', 'strip', 'um', 'utils', 'anal', 'corpus', 'sentence',\
-           'roots', 'tmp', 'mut', 'lextr', 'gui', 'word', 'cg']
+           'roots', 'tmp', 'mut', 'lextr', 'gui', 'word', 'cg', 'usr']
 
 #            'menu', 'tdict', 'dev', 'trans'
 
