@@ -50,23 +50,38 @@ TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ 
 
 AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
 
-## Writing starter CoNNL-U
+TTEST1 = ["ይሰብር", "ነስብር", "ዚሰብር", "ዝሰብር", "ዝትሰብር", "እትሰበር", "እተሰብረ", "ኣይሰብርን", "ዘይሰብር"]
+TTEST2 = ["እንተሰቢሩ", "እንተትሰብር", "እንተዝሰብር", "እንተዘይትሰብር", "እንተዘይሰብር"]
+
+## Writing CoNNL-U
+
 def write(corpus, start, n_sents, language='am'):
     file = "{}_starter_{}-{}.conllu".format(language, start, n_sents)
     path = "../tmp/" + file
     hm.write_conllu(corpus=corpus, append=False, filter_sents=False, path=path)
 
+def write_ud(data, path):
+    '''
+    data is a list of TokenList instances, one for each sentence.
+    '''
+    with open(path, 'w', encoding='utf8') as file:
+        for sentence in data:
+            string = sentence.serialize()
+            print(string, file= file, end='')
+
 ## Starter sentence analysis
 
-def anal_amh(n_sents=1500, start=0, disambiguate=False):
+def anal_amh(start=0, n_sents=1500, disambiguate=False):
     return hm.anal_corpus(
         'a', path="../../EES-Res/text/amti/am_ti_starter.txt",
         start=start, n_sents=n_sents, language_pos=0, disambiguate=disambiguate
         )
 
-def anal_tir():
+def anal_tir(start=0, n_sents=1500, disambiguate=False):
     return hm.anal_corpus(
-        't', path="../../EES-Res/text/amti/am_ti_starter.txt", n_sents=1500, language_pos=1)
+        't', path="../../EES-Res/text/amti/am_ti_starter.txt",
+        start=start, n_sents=n_sents, language_pos=1, disambiguate=disambiguate
+        )
 
 ## Fixing treebanks
 
@@ -155,298 +170,250 @@ def translit(path, lang='am'):
                 word['misc'] = 'Translit={}'.format(hm.morpho.geez.romanize(word['form'], lang=lang,ipa=True))
     return data
 
-def write_ud(data, path):
-    '''
-    data is a list of TokenList instances, one for each sentence.
-    '''
-    with open(path, 'w', encoding='utf8') as file:
-        for sentence in data:
-            string = sentence.serialize()
-            print(string, file= file, end='')
-
 ## New Tigre entries
 
-TE_FEATS = {
-    'p': "t=p,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-pre,-rel",
-    'i': "t=i,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel",
-    'j': "t=j,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel"
-    }
+##TE_FEATS = {
+##    'p': "t=p,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-pre,-rel",
+##    'i': "t=i,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel",
+##    'j': "t=j,sp=3,sn=1,sg=m,-neg,op=0,pos=V,-rel"
+##    }
+##
+##def guess_te1(word, asp):
+##    anals = hm.anal('te', word, guess=True, feats=TE_FEATS[asp])
+##    res = set()
+##    for anal in anals:
+##        if anal.get('pos') == 'V':
+##            feats = anal.get('feats')
+##            res.add("{}: <{}{}{}{}>|{}".format(
+##                feats.get('c'), feats.get('r1'), feats.get('r2'), feats.get('r3'), feats.get('r4', ''), feats.get('v')
+##                ))
+##    return res
+##
+##def guess_te(p, i, j):
+##    res = set()
+##    if p:
+##        r = guess_te1(p, 'p')
+##        if r:
+##            if not res:
+##                res = r
+##            else:
+##                res.intersection_update(r)
+##    if i:
+##        r = guess_te1(i, 'i')
+##        if r:
+##            if not res:
+##                res = r
+##            else:
+##                res.intersection_update(r)
+##    if j:
+##        r = guess_te1(j, 'j')
+##        if r:
+##            res.intersection_update(r)
+##    return res
+##
+##def guess_te_verbs():
+##    results = []
+##    with open("data/te_verbs.txt", encoding='utf8') as file:
+##        for line in file:
+##            forms = line.split(';')
+##            if len(forms) != 3:
+##                print(forms)
+##            p, i, j = [x.strip() for x in forms]
+##            res = guess_te(p, i, j)
+##            if res:
+##                results.append(res)
+##            else:
+##                print("No results for {}".format(forms))
+##    return results
+##
+##def te_dups():
+##    dups = []
+##    roots = []
+##    with open("hm/languages/te/lex/words1.srf", encoding='utf8') as lex:
+##        for line in lex:
+##            if line[0] != lex:
+##                roots.append(line.split()[0])
+##    with open("data/te_new.txt", encoding='utf8') as newlex:
+##        for line in newlex:
+##            r = line.split()[0]
+##            if r in roots:
+##                dups.append(r)
+##    return dups
+##
+##def geezify_te():
+##    out = []
+##    with open("../../../../Projects/LingData/Te/verbs.txt") as file:
+##        for line in file:
+##             out.append(hm.morpho.geez.geezify(line.strip(), lang='tig', double2gem=True))
+##    with open("data/te_verbs.txt", 'w', encoding='utf8') as file:
+##        for item in out:
+##            print(item, file=file)
+##    return out
 
-def guess_te1(word, asp):
-    anals = hm.anal('te', word, guess=True, feats=TE_FEATS[asp])
-    res = set()
-    for anal in anals:
-        if anal.get('pos') == 'V':
-            feats = anal.get('feats')
-            res.add("{}: <{}{}{}{}>|{}".format(
-                feats.get('c'), feats.get('r1'), feats.get('r2'), feats.get('r3'), feats.get('r4', ''), feats.get('v')
-                ))
-    return res
+#### Testing downloading tgz file.
+###from urllib import request
+### import ssl
+##
+##def gzip(file=''):
+##    import gzip
+##    import shutil
+##    with open(file, 'rb') as f_in:
+##        with gzip.open('test.gz', 'wb') as f_out:
+##            shutil.copyfileobj(f_in, f_out)
+##
+##def down():
+##    url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/a_vpkl.gz"
+##    with hm.morpho.requests.get(url, stream=True) as response:
+##        with open("../../../../Downloads/avpkl.gz", 'wb') as file:
+##            file.write(response.raw.read())
 
-def guess_te(p, i, j):
-    res = set()
-    if p:
-        r = guess_te1(p, 'p')
-        if r:
-            if not res:
-                res = r
-            else:
-                res.intersection_update(r)
-    if i:
-        r = guess_te1(i, 'i')
-        if r:
-            if not res:
-                res = r
-            else:
-                res.intersection_update(r)
-    if j:
-        r = guess_te1(j, 'j')
-        if r:
-            res.intersection_update(r)
-    return res
+##### ti_morph and am_morph analyze corpora, saving particular properties
+##### and writing the results to path
+##
+##def ti_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+##                          path="data/ti_classes.txt", cache=None, corpus=None):
+##    c = hm.anal_corpus(
+##        't',
+##        path="../../TT/data/tlmd_v1.0.0/train1.txt",
+##        n_sents=n_sents, max_sents=n_sents, start=start,
+##        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'], skip_mwe=False,
+##        skip=TI_SKIP,
+##        gemination=False,
+##        local_cache=cache,
+##        corpus=corpus,
+##        timeit=timeit,
+##        verbosity=verbosity
+##        )
+##    if file:
+##        c.write_props(file, start=c.start)
+##    elif path:
+##        with open(path, 'a', encoding='utf8') as file:
+##            c.write_props(file, start=c.start)
+##    return c
+##
+##def am_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+##                          path="data/am_classes.txt", cache=None, corpus=None, write_mode='a',
+##                          report_freq=100, print_sentence=False):
+##    c = hm.anal_corpus(
+##        'a',
+##        path="../../TAFS/datasets/CACO/CACO.txt",
+##        n_sents=n_sents, max_sents=n_sents, start=start,
+##        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'], skip_mwe=False,
+##        skip=AM_SKIP,
+##        gemination=False,
+##        local_cache=cache,
+##        corpus=corpus,
+##        timeit=timeit,
+##        report_freq=report_freq,
+##        print_sentence=print_sentence,
+##        verbosity=verbosity
+##        )
+##    if file:
+##        c.write_props(file, start=c.start)
+##    elif path:
+##        with open(path, write_mode, encoding='utf8') as file:
+##            c.write_props(file, start=c.start)
+##    return c
+##
+##def am_morphsem3(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+##                                   path="data/am_v_classes3.txt", cache=None, corpus=None):
+##    c = hm.anal_corpus(
+##        'a',
+##        path="../../TAFS/datasets/CACO/CACO.txt",
+##        n_sents=n_sents, max_sents=n_sents, start=start,
+##        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
+##        skip=AM_SKIP,
+##        gemination=False,
+##        local_cache=cache,
+##        corpus=corpus,
+##        verbosity=verbosity
+##        )
+##    if file:
+##        c.write_props(file, start=c.start)
+##    elif path:
+##        with open(path, 'a', encoding='utf8') as file:
+##            c.write_props(file, start=c.start)
+##    return c
+##
+##def ti_morphsem2(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
+##                                   path="data/ti_v_classes2.txt", cache=None, corpus=None):
+##    c = hm.anal_corpus(
+##        't',
+##        path="../../TT/data/tlmd_v1.0.0/train1.txt",
+##        n_sents=n_sents, max_sents=n_sents, start=start,
+##        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
+##        skip=TI_SKIP,   
+##        gemination=False,
+##        local_cache=cache,
+##        corpus=corpus,
+##        verbosity=verbosity
+##        )
+##    if file:
+##        c.write_props(file, start=c.start)
+##    elif path:
+##        with open(path, 'a', encoding='utf8') as file:
+##            c.write_props(file, start=c.start)
+##    return c
 
-def guess_te_verbs():
-    results = []
-    with open("data/te_verbs.txt", encoding='utf8') as file:
-        for line in file:
-            forms = line.split(';')
-            if len(forms) != 3:
-                print(forms)
-            p, i, j = [x.strip() for x in forms]
-            res = guess_te(p, i, j)
-            if res:
-                results.append(res)
-            else:
-                print("No results for {}".format(forms))
-    return results
+#### displaying segmentations in Tkinter
+##
+##C1 =  ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
+##          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"]
+##C2 = ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"]
+##C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
+##C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
+##C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
+##C6 = ["እኔ መጣሁ ።", "ሁላችንን ይወዳሉ ።"]
+##C7 = ["እርስ በርሳቸውን ይዋደዳሉ ።"]
+##CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
+##CACO0 = "../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt"
+##CACO1 = "../../TAFS/datasets/CACO/CACO_3-7tok_B1.txt"
+##CACO2 = "../../TAFS/datasets/CACO/CACO_3-7tok_B2.txt"
+##CACO3 = "../../TAFS/datasets/CACO/CACO_3-7tok_B3.txt"
+##CACO4 = "../../TAFS/datasets/CACO/CACO_3-7tok_B4.txt"
+##CACO5 = "../../TAFS/datasets/CACO/CACO_3-7tok_B5.txt"
+##AS1 = "hm/ext_data/ከአብነት/mini1.txt"
+##CACO = "../../TAFS/datasets/CACO"
+##CACO_FILTERED = "CACO_verbs_B8.txt"
+##CONLLU = "../../TAFS/venv/conllu"
+##SEGS = "../../TAFS/segmentations"
+##LAST_CACO_LINE = 9061
 
-def te_dups():
-    dups = []
-    roots = []
-    with open("hm/languages/te/lex/words1.srf", encoding='utf8') as lex:
-        for line in lex:
-            if line[0] != lex:
-                roots.append(line.split()[0])
-    with open("data/te_new.txt", encoding='utf8') as newlex:
-        for line in newlex:
-            r = line.split()[0]
-            if r in roots:
-                dups.append(r)
-    return dups
-
-def geezify_te():
-    out = []
-    with open("../../../../Projects/LingData/Te/verbs.txt") as file:
-        for line in file:
-             out.append(hm.morpho.geez.geezify(line.strip(), lang='tig', double2gem=True))
-    with open("data/te_verbs.txt", 'w', encoding='utf8') as file:
-        for item in out:
-            print(item, file=file)
-    return out
-
-## Testing downloading tgz file.
-#from urllib import request
-# import ssl
-
-def gzip(file=''):
-    import gzip
-    import shutil
-    with open(file, 'rb') as f_in:
-        with gzip.open('test.gz', 'wb') as f_out:
-            shutil.copyfileobj(f_in, f_out)
-
-def down():
-    url = "https://github.com/hltdi/HornMorpho/raw/master/src/hm/languages/a_vpkl.gz"
-    with hm.morpho.requests.get(url, stream=True) as response:
-        with open("../../../../Downloads/avpkl.gz", 'wb') as file:
-            file.write(response.raw.read())
-
-## Testing anal_corpus
-def corptest():
-    return hm.anal_corpus('a', data=["አበበ በሶ በላ ።", "ጫላ ጩቤ ጨበጠ ።"], disambiguate=True)
-
-## Functions specific to version 5.
-
-def am_refcorp(language='a', path='../../EES-Res/data/amh/am_ref.txt',
-            writepath='../../EES-Res/treebanks/amh/am_ref_M.txt', start=0,
-            start_sent=0, n_sents=500):
-    c = hm.anal_corpus(language, path=path, disambiguate=True, start=start,
-                       start_sent=start_sent, n_sents=n_sents)
-#    hm.write_conllu(corpus=c, path=writepath)
-    return c
-
-def ti_refcorp(language='t', path='../../EES-Res/data/tir/ti_ref.txt',
-            writepath='../../EES-Res/treebanks/tir/ti_ref_M.txt',
-            start=0, start_sent=0, n_sents=500):
-    c = hm.anal_corpus(language, path=path, disambiguate=True, start=start,
-                       start_sent=start_sent, n_sents=n_sents)
-#    hm.write_conllu(corpus=c, path=writepath)
-    return c
-
-### ti_morph and am_morph analyze corpora, saving particular properties
-### and writing the results to path
-
-def ti_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
-                          path="data/ti_classes.txt", cache=None, corpus=None):
-    c = hm.anal_corpus(
-        't',
-        path="../../TT/data/tlmd_v1.0.0/train1.txt",
-        n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'], skip_mwe=False,
-        skip=TI_SKIP,
-        gemination=False,
-        local_cache=cache,
-        corpus=corpus,
-        timeit=timeit,
-        verbosity=verbosity
-        )
-    if file:
-        c.write_props(file, start=c.start)
-    elif path:
-        with open(path, 'a', encoding='utf8') as file:
-            c.write_props(file, start=c.start)
-    return c
-
-def am_morph(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
-                          path="data/am_classes.txt", cache=None, corpus=None, write_mode='a',
-                          report_freq=100, print_sentence=False):
-    c = hm.anal_corpus(
-        'a',
-        path="../../TAFS/datasets/CACO/CACO.txt",
-        n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'], skip_mwe=False,
-        skip=AM_SKIP,
-        gemination=False,
-        local_cache=cache,
-        corpus=corpus,
-        timeit=timeit,
-        report_freq=report_freq,
-        print_sentence=print_sentence,
-        verbosity=verbosity
-        )
-    if file:
-        c.write_props(file, start=c.start)
-    elif path:
-        with open(path, write_mode, encoding='utf8') as file:
-            c.write_props(file, start=c.start)
-    return c
-
-def am_morphsem3(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
-                                   path="data/am_v_classes3.txt", cache=None, corpus=None):
-    c = hm.anal_corpus(
-        'a',
-        path="../../TAFS/datasets/CACO/CACO.txt",
-        n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
-        skip=AM_SKIP,
-        gemination=False,
-        local_cache=cache,
-        corpus=corpus,
-        verbosity=verbosity
-        )
-    if file:
-        c.write_props(file, start=c.start)
-    elif path:
-        with open(path, 'a', encoding='utf8') as file:
-            c.write_props(file, start=c.start)
-    return c
-
-def ti_morphsem2(n_sents=1000, start=0, file=None, verbosity=0, timeit=True,
-                                   path="data/ti_v_classes2.txt", cache=None, corpus=None):
-    c = hm.anal_corpus(
-        't',
-        path="../../TT/data/tlmd_v1.0.0/train1.txt",
-        n_sents=n_sents, max_sents=n_sents, start=start,
-        pos=['v'], props=['root', 'um', 'lemma', 'sense'], skip_mwe=False,
-        skip=TI_SKIP,   
-        gemination=False,
-        local_cache=cache,
-        corpus=corpus,
-        verbosity=verbosity
-        )
-    if file:
-        c.write_props(file, start=c.start)
-    elif path:
-        with open(path, 'a', encoding='utf8') as file:
-            c.write_props(file, start=c.start)
-    return c
-
-def corp1(gemination=False):
-    c = hm.make_corpus5(
-        'a',
-        path="../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt",
-        gemination=gemination,
-        )
-    return c
-
-def get5(abbrev, verbose=False):
-    """
-    Return the language with abbreviation abbrev, loading it
-    if it's not already loaded.
-    """
-    return hm.morpho.get_language(abbrev, cache='', phon=False, guess=True,
-                                                                   pickle=True, segment=False, experimental=False,
-                                                                   v3=True, load=True, verbose=verbose)
-
-## displaying segmentations in Tkinter
-
-C1 =  ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
-          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"]
-C2 = ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"]
-C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
-C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
-C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
-C6 = ["እኔ መጣሁ ።", "ሁላችንን ይወዳሉ ።"]
-C7 = ["እርስ በርሳቸውን ይዋደዳሉ ።"]
-CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
-CACO0 = "../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt"
-CACO1 = "../../TAFS/datasets/CACO/CACO_3-7tok_B1.txt"
-CACO2 = "../../TAFS/datasets/CACO/CACO_3-7tok_B2.txt"
-CACO3 = "../../TAFS/datasets/CACO/CACO_3-7tok_B3.txt"
-CACO4 = "../../TAFS/datasets/CACO/CACO_3-7tok_B4.txt"
-CACO5 = "../../TAFS/datasets/CACO/CACO_3-7tok_B5.txt"
-AS1 = "hm/ext_data/ከአብነት/mini1.txt"
-CACO = "../../TAFS/datasets/CACO"
-CACO_FILTERED = "CACO_verbs_B8.txt"
-CONLLU = "../../TAFS/venv/conllu"
-SEGS = "../../TAFS/segmentations"
-LAST_CACO_LINE = 9061
-
-def ASAI(start=600, id=2, n_sents=200):
-    return \
-           hm.create_corpus(
-               read={'name': "ASAI.{}".format(id), 'id': id, 'filename': CACO_FILTERED},
-               batch= {'n_sents': n_sents, 'start': start},
-               disambiguate=False, seglevel=0, um=2
-               )
-
-def proc_ASAI(corpus, filename=False, append=False):
-    sentences =  hm.extract_corpus_features(corpus, ['VERB'], [('Number', None), ('VerbForm', 'Main')])
-    if filename:
-        write_ASAI(sentences, filename, append=append)
-    return sentences
-
-def write_ASAI(sentences, filename, append=False):
-    with open(filename, 'a' if append else 'w', encoding='utf8') as file:
-        for sentence in sentences:
-            print(sentence[0], file=file)
-            for index, word, feats in sentence[1:]:
-                print("{}\t{}\t{}".format(index, word, ','.join(feats)), file=file)
-            print(file=file)
-
-def AW(id, n_sents=100, start=0, write=True, append=True):
-    return \
-    hm.create_corpus(
-        read={'filename': CACO_FILTERED},
-        batch={'name': 'AW23.{}'.format(id), 'n_sents': n_sents, 'start': start, 'id': id, 'sentid': start},
-        disambiguate=True,
-        write={'folder': CONLLU, 'append': append}
-        )
+##def ASAI(start=600, id=2, n_sents=200):
+##    return \
+##           hm.create_corpus(
+##               read={'name': "ASAI.{}".format(id), 'id': id, 'filename': CACO_FILTERED},
+##               batch= {'n_sents': n_sents, 'start': start},
+##               disambiguate=False, seglevel=0, um=2
+##               )
+##
+##def proc_ASAI(corpus, filename=False, append=False):
+##    sentences =  hm.extract_corpus_features(corpus, ['VERB'], [('Number', None), ('VerbForm', 'Main')])
+##    if filename:
+##        write_ASAI(sentences, filename, append=append)
+##    return sentences
+##
+##def write_ASAI(sentences, filename, append=False):
+##    with open(filename, 'a' if append else 'w', encoding='utf8') as file:
+##        for sentence in sentences:
+##            print(sentence[0], file=file)
+##            for index, word, feats in sentence[1:]:
+##                print("{}\t{}\t{}".format(index, word, ','.join(feats)), file=file)
+##            print(file=file)
+##
+##def AW(id, n_sents=100, start=0, write=True, append=True):
+##    return \
+##    hm.create_corpus(
+##        read={'filename': CACO_FILTERED},
+##        batch={'name': 'AW23.{}'.format(id), 'n_sents': n_sents, 'start': start, 'id': id, 'sentid': start},
+##        disambiguate=True,
+##        write={'folder': CONLLU, 'append': append}
+##        )
 
 ## translation
 def load_trans(src, targ, pos, gen=True):
-    src_posmorph = get_pos(src, pos, fidel=True)
-    trg_posmorph = get_pos(targ, pos, fidel=True)
+    src_posmorph = get_pos(src, pos)
+    trg_posmorph = get_pos(targ, pos)
     src_posmorph.load_trans_fst(trg_posmorph, pos, gen=gen)
     return src_posmorph
 
@@ -461,23 +428,23 @@ def parse_lextr_file(src_pos, pos):
                              fst=FST('lextr', cascade=src_pos.casc, weighting=hm.morpho.UNIFICATION_SR)
                              )
 
-def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2):
-    hm.create_corpus(read={'filename': filename},
-                                        batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
-                                        write={"folder": SEGS} if write else {},
-                                        um=um, seglevel=seglevel, degeminate=False)
-
-def filtercorp(filename='CACO.txt', n_sents=50, start=0, id=1, gramfilt='verbs'):
-    return \
-    hm.create_corpus(
-                       read={'filename': filename},
-                       batch={'n_sents': n_sents, 'start': start, 'id': id},
-                       disambiguate=False,
-                       constraints={
-                                                  'grammar': gramfilt, 'maxpunc': 1, 'maxnum': 0,
-                                                  'maxunk': 3, 'maxtoks': 11, 'endpunc': True
-                                                  }
-                     )
+##def corp(filename=CACO0, id=0, n_sents=50, start=0, write=True, um=1, seglevel=2):
+##    hm.create_corpus(read={'filename': filename},
+##                                        batch={'source': 'CACO', 'id': id, 'start': start, 'n_sents': n_sents, 'sent_length': '3-7'},
+##                                        write={"folder": SEGS} if write else {},
+##                                        um=um, seglevel=seglevel, degeminate=False)
+##
+##def filtercorp(filename='CACO.txt', n_sents=50, start=0, id=1, gramfilt='verbs'):
+##    return \
+##    hm.create_corpus(
+##                       read={'filename': filename},
+##                       batch={'n_sents': n_sents, 'start': start, 'id': id},
+##                       disambiguate=False,
+##                       constraints={
+##                                                  'grammar': gramfilt, 'maxpunc': 1, 'maxnum': 0,
+##                                                  'maxunk': 3, 'maxtoks': 11, 'endpunc': True
+##                                                  }
+##                     )
 
 def convfeat(fs, oldfs, newfs, replace=False):
     if u(fs, oldfs):
@@ -486,13 +453,6 @@ def convfeat(fs, oldfs, newfs, replace=False):
         if replace:
             for oldf in oldfs.keys():
                 del fs[oldf]
-#    return fs
-
-#def biling():
-#    global AK, T
-#    AK = hm.morpho.Biling('am', 'ks', srcphon=True, targphon=False)
-#    T = hm.morpho.TransTask(AK)
-
 
 def get_lang(abbrev, segment=True, guess=True, phon=False, cache='',
                            experimental=True,  pickle=True, verbose=False):
@@ -540,67 +500,67 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
                  invert=gen, segment=segment, verbose=verbose)
     return pos.casc
 
-def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-                            translate=False, experimental=False, mwe=False, seglevel=2,
-                            fidel=False, create_fst=True, relabel=True, gemination=True,
-                            backwards=False, split_index=0, verbose=True):
-    """
-    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
-    returning the morphology POS object for that POS.
-    Note 1: this can take a very long time for some languages.
-    Note 2: the resulting FST is not saved (written to a file). To do this, use the method
-    save_fst(), with the right options, for example, gen=True, segment=True.
-    """
-    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-                                            fidel=fidel, load_morph=False, verbose=verbose)
-    fst = pos_morph.load_fst(True, segment=segment, gen=gen, invert=gen, guess=guess,
-                             translate=translate, recreate=True, fidel=fidel,
-                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
-                             create_fst=create_fst, relabel=relabel, gemination=gemination,
-                             compose_backwards=backwards, split_index=split_index,
-                             v5=True,
-                             phon=phon, verbose=verbose)
-    if not fst and gen == True:
-        print('Generation FST not found')
-        # Load analysis FST
-        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
-        # ... and invert it for generation FST
-        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-                                                 relabel=relabel, v5=True,
-                                                 fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
-    return pos_morph
-
-## Various shortcuts for working with new cascades
-
-def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True, verbose=True):
-    """
-    Shortcut for recompiling Amh (experimental) segmenter FST.
-    """
-    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, fidel=fidel,
-                                       create_fst=create_fst, seglevel=seglevel, verbose=verbose)
-
-def genrecompile(lang, pos, create_fst=True, mwe=False):
-    '''
-    Recompile the generation FST for a language in the fidel folder.
-    '''
-    return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst, mwe=mwe)
-
-def analrecompile(lang, pos, create_fst=True, seglevel=2, gemination=True):
-    '''
-    Recompile  the analysis FST for a language in the fidel folder.
-    '''
-    return recompile(lang, pos, fidel=True, create_fst=create_fst, seglevel=seglevel,
-                                       gemination=gemination)
-
-def transrecompile(src, trg, pos):
-    '''
-    Recompile analysis and generation FSTs for source and target language, and create
-    translation FST.
-    '''
-    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
-    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
-    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
-    return src_pos_morph, trg_pos_morph
+##def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
+##                            translate=False, experimental=False, mwe=False, seglevel=2,
+##                            fidel=False, create_fst=True, relabel=True, gemination=True,
+##                            backwards=False, split_index=0, verbose=True):
+##    """
+##    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
+##    returning the morphology POS object for that POS.
+##    Note 1: this can take a very long time for some languages.
+##    Note 2: the resulting FST is not saved (written to a file). To do this, use the method
+##    save_fst(), with the right options, for example, gen=True, segment=True.
+##    """
+##    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
+##                                            fidel=fidel, load_morph=False, verbose=verbose)
+##    fst = pos_morph.load_fst(True, segment=segment, gen=gen, invert=gen, guess=guess,
+##                             translate=translate, recreate=True, fidel=fidel,
+##                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
+##                             create_fst=create_fst, relabel=relabel, gemination=gemination,
+##                             compose_backwards=backwards, split_index=split_index,
+##                             v5=True,
+##                             phon=phon, verbose=verbose)
+##    if not fst and gen == True:
+##        print('Generation FST not found')
+##        # Load analysis FST
+##        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
+##        # ... and invert it for generation FST
+##        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
+##                                                 relabel=relabel, v5=True,
+##                                                 fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
+##    return pos_morph
+##
+#### Various shortcuts for working with new cascades
+##
+##def segrecompile(lang, pos, mwe=False, seglevel=2, fidel=False, create_fst=True, verbose=True):
+##    """
+##    Shortcut for recompiling Amh (experimental) segmenter FST.
+##    """
+##    return recompile(lang, pos, segment=True, experimental=True, mwe=mwe, fidel=fidel,
+##                                       create_fst=create_fst, seglevel=seglevel, verbose=verbose)
+##
+##def genrecompile(lang, pos, create_fst=True, mwe=False):
+##    '''
+##    Recompile the generation FST for a language in the fidel folder.
+##    '''
+##    return recompile(lang, pos, gen=True, fidel=True, create_fst=create_fst, mwe=mwe)
+##
+##def analrecompile(lang, pos, create_fst=True, seglevel=2, gemination=True):
+##    '''
+##    Recompile  the analysis FST for a language in the fidel folder.
+##    '''
+##    return recompile(lang, pos, fidel=True, create_fst=create_fst, seglevel=seglevel,
+##                                       gemination=gemination)
+##
+##def transrecompile(src, trg, pos):
+##    '''
+##    Recompile analysis and generation FSTs for source and target language, and create
+##    translation FST.
+##    '''
+##    src_pos_morph = get_pos(src, pos, segment=False, fidel=True, load_morph=False)
+##    trg_pos_morph = get_pos(trg, pos, segment=False, fidel=True, load_morph=False)
+##    fst = src_pos_morph.load_trans_fst(trg_pos_morph, pos)
+##    return src_pos_morph, trg_pos_morph
 
 ##def parse_lextr_file(src_pos, pos):
 ##    import os
@@ -724,6 +684,7 @@ FSS = hm.morpho.FSSet
 A = lambda word: hm.anal('a', word)
 AS = lambda sentence: hm.anal_sentence('a', sentence)
 AC = lambda sentence, dis=True: hm.anal_corpus('a', data=[sentence], disambiguate=dis)
+TC = lambda sentence, dis=True: hm.anal_corpus('t', data=[sentence], disambiguate=dis)
 
 def main():
     pass

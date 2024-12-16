@@ -7,8 +7,6 @@ $ gap
 $ conj_prep_pre
   # In UM and UD, የ- የም- እም- are SCONJ
   የ		[sconj=0,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ]
-  # rare with perfective but it does occur; for now limit to non-negative, non-passive/causative, root 1=X
-  እ		[sconj=0,t=i,+rel,-mc,+sub,adp=0,tmp=[1=X],ppos=ADP,-prior];[sconj=0,t=p,+rel,-neg,-mc,+sub,adp=0,v=0,a=0,tmp=[1=X],ppos=SCONJ,-prior]
   ብ  		[sconj=ብ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
   ስ  		[sconj=ስ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]
   እንድ	[sconj=እንድ,t=i,-rel,-mc,+sub,adp=0,ppos=SCONJ]

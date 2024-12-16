@@ -1,0 +1,20 @@
+DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
+
+LIST NOM = N PRON DET PROPN ;
+LIST NOM2 = N PRON DET PROPN ADJ ;
+LIST PREP = "ኣብ" "ናይ" "ካብ" "እንካብ" "ናብ" "ከም" "ክሳብ" "ክሳዕ" "ስጋዕ" "ልዕሊ" "ስለ" "ብዛዕባ" "ውሽጢ" "ብዘይ" "ትሕቲ" "ወጻኢ" "ማእከል" "ኣጋ" "ክንዲ" "ዳርጋ" "ምእንቲ" "ሳላ" "ብሳላ" "በጃ" ;
+LIST PERSON = 1 2 3 ;
+LIST GENDER = FEM MASC ;
+LIST NUMBER = SG PL ;
+
+# PREP has to be followed by NOM
+REMOVE  !NOM
+       (-1 PREP) ;
+
+# AUX and IMPF or CVB have to agree
+REMOVE  (V IMP) + $$GENDER + $$NUMBER + $$PERSON
+       (NOT 1 (AUX $$GENDER $$NUMBER $$PERSON)) ;
+
+
+
+

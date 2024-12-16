@@ -228,3 +228,18 @@
 
 [a=0,v=a,t=j]
 እ	ይ	ም
+
+# Behaves like c=A in v=a
+*<ሕ ጉ ስ> c=B
+[a=0,v=a,t=c]
+ሕ	ጒ	ስ
+
+[a=0,v=a,t=p]
+ሕ	ጎ	ስ
+
+[a=0,v=a,t=i,-suf]
+ሕ	/ጕ	ስ
+
+[a=0,v=a,t=j]
+[a=0,v=a,t=i,+suf]
+ሕ	ጕ	ስ

@@ -1,15 +1,16 @@
-abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
-abbrev	&1S3SM=True	Person=1/Gender=Masc,Person=3
+#abbrev	&2SM3SF=True	Gender=Fem,Person=3/Gender=Masc,Person=2
+#abbrev	&1S3SM=True	Person=1/Gender=Masc,Person=3
+
+sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,AppNum:Number,AppGen:Gender,AppPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person,ObjPronType:PronType
 
 POS n N
-->UD  ACC	Case=Acc
 ->UD  GEN	Case=Gen
 # 2024.8.2: other prepositions all OBL
 ->UD *OBL   *Case=Obl
 ->UD PL		Number=Plur
 ->UD SG		Number=Sing
 ->UD V.MSDR	VerbForm=Inf
-->UD FEM	Gender=Fem
+->UD FEM		Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD 1		Person=1
 ->UD 2		Person=2
@@ -31,25 +32,30 @@ POS n N
 
 pos:: NADJ:N;; NADV:N;; DET:DET
 adp:: ብ:*OBL;; ን:*OBL;; ናይ:GEN;; ናብ:*OBL;; ካብ:*OBL;; ምስ:*OBL;; ከም:*OBL;; ብዘይ:*OBL;; ክንዲ:*OBL;; ምእንቲ:*OBL;; ስለ:*OBL
-pl:: True:PL;; False:SG
-acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
+#acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; sm3:PSS3SM;; sf3:PSS3SF;; pf2:PSS2PF;; pm2:PSS2PM;; pf3:PSS3PF;; pm3:PSS3PM
+pl:: True:PL;; False:SG
 g:: m:MASC;; f:FEM
+fem:: False:MASC;; True:FEM
 neg:: NEG
 
 # personal pronouns
 Pp:: 1:1;; 2:2;; 3:3
 Pn:: 1:SG;; 2:PL
 Pg:: m:MASC;; f:FEM
+dem,prs:: True,False:*DEMPRO;; False,True:*PRSPRO
+ptype:: prs:*PRSPRO;; dem:*DEMPRO;; int:*INTPRO;; ind:*INDPRO
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
 
 POS v V
 ->UD NEG	Polarity=Neg
-->UD IMP	Mood=Jus
+->UD IMP	Mood=Imp
+->UD JUS	Mood=Jus
 ->UD IPFV	Aspect=Imp
 ->UD PFV	Aspect=Perf
+->UD CVB	VerbForm=Conv
 ->UD CAUS	Voice=Cau
 ->UD RECP	*Voice=Rcp
 #->UD RECP2	*Voice=Rcp2
@@ -57,33 +63,33 @@ POS v V
 ->UD ITER	Aspect=Iter
 ->UD CAUS+RECP1	*Voice=CauRcp1
 ->UD CAUS+RECP2	*Voice=CauRcp2
-->UD 1		Person=1
-->UD 2		Person=2
-->UD 3		Person=3
-->UD SG		Number=Sing
-->UD PL		Number=Plur
-->UD FEM	Gender=Fem
-->UD MASC	Gender=Masc
-->UD OB1S	*ObjPers=1,ObjNum=Sing
-->UD OB1P	*ObjPers=1,ObjNum=Plur
-->UD OB2SF	*ObjPers=2,ObjNum=Sing,ObjGen=Fem
-->UD OB2SM	*ObjPers=2,ObjNum=Sing,ObjGen=Masc
-->UD OB2PF	*ObjPers=2,ObjNum=Plur,ObjGen=Fem
-->UD OB2PM	*ObjPers=2,ObjNum=Plur,ObjGen=Masc
-->UD OB3SF	*ObjPers=3,ObjNum=Sing,ObjGen=Fem
-->UD OB3SM	*ObjPers=3,ObjNum=Sing,ObjGen=Masc
-->UD OB3PF	*ObjPers=3,ObjNum=Plur,ObjGen=Fem
-->UD OB3PM	*ObjPers=3,ObjNum=Plur,ObjGen=Masc
-->UD AP1S	*AppPers=1,AppNum=Sing
-->UD AP1P	*AppPers=1,AppNum=Plur
-->UD AP2SF	*AppPers=2,AppNum=Sing,AppGen=Fem
-->UD AP2SM	*AppPers=2,AppNum=Sing,AppGen=Masc
-->UD AP2PF	*AppPers=2,AppNum=Plur,AppGen=Fem
-->UD AP2PM	*AppPers=2,AppNum=Plur,AppGen=Masc
-->UD AP3SF	*AppPers=3,AppNum=Sing,AppGen=Fem
-->UD AP3SM	*AppPers=3,AppNum=Sing,AppGen=Masc
-->UD AP3PF	*AppPers=3,AppNum=Plur,AppGen=Fem
-->UD AP3PM	*AppPers=3,AppNum=Plur,AppGen=Masc
+->UD 1		Person=1,PronType=Prs
+->UD 2		Person=2,PronType=Prs
+->UD 3		Person=3,PronType=Prs
+->UD SG		Number=Sing,PronType=Prs
+->UD PL		Number=Plur,PronType=Prs
+->UD FEM	Gender=Fem,PronType=Prs
+->UD MASC	Gender=Masc,PronType=Prs
+->UD OB1S	*ObjPers=1,ObjNum=Sing,PronType=Prs
+->UD OB1P	*ObjPers=1,ObjNum=Plur,PronType=Prs
+->UD OB2SF	*ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs
+->UD OB2SM	*ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs
+->UD OB2PF	*ObjPers=2,ObjNum=Plur,ObjGen=Fem,PronType=Prs
+->UD OB2PM	*ObjPers=2,ObjNum=Plur,ObjGen=Masc,PronType=Prs
+->UD OB3SF	*ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs
+->UD OB3SM	*ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs
+->UD OB3PF	*ObjPers=3,ObjNum=Plur,ObjGen=Fem,PronType=Prs
+->UD OB3PM	*ObjPers=3,ObjNum=Plur,ObjGen=Masc,PronType=Prs
+->UD AP1S	*AppPers=1,AppNum=Sing,PronType=Prs
+->UD AP1P	*AppPers=1,AppNum=Plur,PronType=Prs
+->UD AP2SF	*AppPers=2,AppNum=Sing,AppGen=Fem,PronType=Prs
+->UD AP2SM	*AppPers=2,AppNum=Sing,AppGen=Masc,PronType=Prs
+->UD AP2PF	*AppPers=2,AppNum=Plur,AppGen=Fem,PronType=Prs
+->UD AP2PM	*AppPers=2,AppNum=Plur,AppGen=Masc,PronType=Prs
+->UD AP3SF	*AppPers=3,AppNum=Sing,AppGen=Fem,PronType=Prs
+->UD AP3SM	*AppPers=3,AppNum=Sing,AppGen=Masc,PronType=Prs
+->UD AP3PF	*AppPers=3,AppNum=Plur,AppGen=Fem,PronType=Prs
+->UD AP3PM	*AppPers=3,AppNum=Plur,AppGen=Masc,PronType=Prs
 ->UD TOP	*Inf=Topic
 ->UD COND	*ClauseType=AdvCl
 ->UD PURP	*ClauseType=AdvCl
@@ -113,7 +119,8 @@ POS v V
 #->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
 #->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
 
-t:: i:IPFV;; p:PFV;; j:IMP;; c:PFV
+t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS;; c,*:PFV
+#t:: i:IPFV;; p:PFV;; j:IMP;; c:PFV
 #t,ax:: c,0:V.CVB ;; c,al:PRF
 
 #pos!t:: v:V;; 0:ADJ;; 0:N
@@ -156,7 +163,7 @@ adp:: ብ:INS;; ን:ACC
 sconj:: ዝ:*RELC;; ክ:PURP;; እንክ:PURP;; ከምዝ:*CCOMP;; ምስ:*TEMP;; እና:*TEMP;; እንተ:COND;; እንተዝ:COND;; ም:COND;; እንዳ:*LOC
 #cconj:: ም:TOP;; ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
-POS cop V
+POS cop AUX
 ->UD PRS	Tense=Pres
 ->UD PST	Tense=Past
 ->UD NEG	Polarity=Neg

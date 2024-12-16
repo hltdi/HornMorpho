@@ -1,14 +1,11 @@
-abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
-abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
-abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
-#abbrev	&Poss3Def=Masc	Gender=Masc,Number=Sing,Person=3,PronType=Prs/Definite=Def
-#abbrev	&Poss3Def=Fem	Gender=Fem,Number=Sing,Person=3,PronType=Prs/Definite=Def
-#abbrev	&Acc3SMDef=True	Pers=3,Num=Sing,Gen=Masc,PronType=Prs,Case=Obj/Definite=Def
+#abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
+#abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
+#abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
 #abbrev	&2SM3SF=True	Gender=Fem,Person=3,PronType=Prs/Gender=Masc,Person=2,PronType=Prs
-abbrev	&ImpJus=True	Aspect=Imp/Mood=Jus
-abbrev	&CCompAdvCl=True	ClauseType=CComp/ClauseType=AdvCl
+#abbrev	&ImpJus=True	Aspect=Imp/Mood=Jus
+#abbrev	&CCompAdvCl=True	ClauseType=CComp/ClauseType=AdvCl
 
-sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person
+sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person,AdpCase:Case,ObjPronType:PronType
 
 POS n N
 #->UD  ACC+GEN	*Case=AccGen
@@ -43,8 +40,8 @@ POS n N
 #->UD PSS3P	Number=Plur,Person=3,PronType=Prs
 #->UD PSS3SF	Gender=Fem,Number=Sing,Person=3,PronType=Prs
 #->UD PSS3SM	Gender=Masc,Number=Sing,Person=3,PronType=Prs
-->UD {PSS3SM/DEF} &Poss3Def=Masc
-->UD {PSS3SF/DEF} &Poss3Def=Fem
+#->UD {PSS3SM/DEF} &Poss3Def=Masc
+#->UD {PSS3SF/DEF} &Poss3Def=Fem
 ->UD TOP	*Inf=Topic
 ->UD 1		Person=1,PronType=Prs
 ->UD 2		Person=2,PronType=Prs
@@ -111,7 +108,8 @@ cconj:: ና:*CCONJ
 
 POS v V
 ->UD NEG	Polarity=Neg
-->UD IMP	Mood=Jus
+->UD IMP	Mood=Imp
+->UD JUS	Mood=Jus
 ->UD IPFV	Aspect=Imp
 ->UD PFV	Aspect=Perf
 ->UD CVB	VerbForm=Conv
@@ -187,30 +185,30 @@ POS v V
 #->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
 #->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
 #->UD *MAL3P	*MalPers=3,MalNum=Plur
-->UD AC1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=Obj
-->UD AC1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=Obj
-->UD AC2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Obj
-->UD AC2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Obj
-->UD AC2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=Obj
-->UD AC3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Obj
-->UD AC3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Obj
-->UD AC3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=Obj
-->UD DA1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=Dat
-->UD DA1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=Dat
-->UD DA2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Dat
-->UD DA2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Dat
-->UD DA2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=Dat
-->UD DA3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=Dat
-->UD DA3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=Dat
-->UD DA3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=Dat
-->UD *MAL1S	ObjPers=1,ObjNum=Sing,PronType=Prs,Case=MalIns
-->UD *MAL1P	ObjPers=1,ObjNum=Plur,PronType=Prs,Case=MalIns
-->UD *MAL2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=MalIns
-->UD *MAL2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=MalIns
-->UD *MAL2P	ObjPers=2,ObjNum=Plur,PronType=Prs,Case=MalIns
-->UD *MAL3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,PronType=Prs,Case=MalIns
-->UD *MAL3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,PronType=Prs,Case=MalIns
-->UD *MAL3P	ObjPers=3,ObjNum=Plur,PronType=Prs,Case=MalIns
+->UD AC1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=Obj
+->UD AC1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=Obj
+->UD AC2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Obj
+->UD AC2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Obj
+->UD AC2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=Obj
+->UD AC3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Obj
+->UD AC3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Obj
+->UD AC3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=Obj
+->UD DA1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=Dat
+->UD DA1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=Dat
+->UD DA2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Dat
+->UD DA2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Dat
+->UD DA2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=Dat
+->UD DA3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Dat
+->UD DA3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Dat
+->UD DA3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=Dat
+->UD *MAL1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=MalIns
+->UD *MAL1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
+->UD *MAL2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=MalIns
+->UD *MAL2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=MalIns
+->UD *MAL2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
+->UD *MAL3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=MalIns
+->UD *MAL3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=MalIns
+->UD *MAL3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
 #->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
@@ -220,8 +218,8 @@ POS v V
 # ስ-
 ->UD *SUBORD	*ClauseType=AdvCl
 # prepositions all OBL as of 2024.7.7
-->UD *OBL      Case=Obl
-->UD ACC       Case=Acc
+->UD *OBL     *AdpCase=Obl
+->UD ACC       *AdpCase=Acc
 # following have been replaced
 ->UD COND	*ClauseType=AdvCl
 ->UD PURP	*ClauseType=AdvCl
@@ -238,7 +236,7 @@ POS v V
 # with copula
 ->UD *COP	Tense=Pres
 
-t:: i:IPFV;; p:PFV;; j:IMP
+t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS
 t,ax:: c,0:CVB ;; c,al:PRF
 
 #pos!t:: v:V;; 0:ADJ;; 0:N

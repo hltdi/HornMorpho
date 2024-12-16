@@ -54,7 +54,7 @@ class Corpus():
                  um=1, seglevel=2, nsegment=True, fsts=None,
                  constraints=None, local_cache=None, timeit=False,
                  v5=True,
-                 sep_feats=True, gemination=False, sep_senses=False,
+                 sep_feats=True, gemination=False, sep_senses=False, degem=True,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
                  report_freq=100,
@@ -71,6 +71,8 @@ class Corpus():
                  unk=None,
                  # a previous corpus to start from (local_cache and last_line)
                  corpus=None,
+                 # whether there are (or may be) comment lines
+                 comments=True,
                  # how to treat comments in the corpus; if True convert to CoNNL-U metadata following sentence
                  comments2meta=True,
                  # if non-negative, only analyze sentences with this position relative to last comment line
@@ -125,7 +127,9 @@ class Corpus():
             self.data = []
             try:
                 filein = open(path, 'r', encoding='utf-8')
-                lines = filein.readlines()[start:start+max_sents]
+                all_lines = filein.readlines()
+                lines = Corpus.get_corpus_lines(all_lines, start, n_sents, language_pos, comments, save_comments=comments2meta)
+#                lines = filein.readlines()[start:start+max_sents]
                 nlines = len(lines)
 #                print("$$ file {}, nlines {}".format(filein, nlines))
                 sentcount = 0
@@ -189,10 +193,10 @@ class Corpus():
                         if start_sent and skipped == start_sent:
                             print("Skipped {} sentences".format(skipped))
                             skipped += 1
-                        if language_pos > -1 and langpos != language_pos:
-                            # Skip this sentence; it's not the right language
-                            langpos += 1
-                            continue
+#                        if language_pos > -1 and langpos != language_pos:
+#                            # Skip this sentence; it's not the right language
+#                            langpos += 1
+#                            continue
                         if v5:
                             if print_sentence:
                                 print("$$ {}".format(line))
@@ -247,7 +251,7 @@ class Corpus():
             if v5 and segment:
                 self.analyze(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
                               cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
-                              verbosity=verbosity,
+                              verbosity=verbosity, combine_segs=combine_segs,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []
@@ -258,6 +262,43 @@ class Corpus():
         return "C_{}".format(self.name)
 
     ## Version 5 methods
+
+    @staticmethod
+    def get_corpus_lines(lines, start, n_sents, lang_pos, comments=True, save_comments=True):
+        '''
+        Given all the lines in a corpus, return those specified by bounds and language.
+        (Later this should take the file object rather than the lines for more efficiency.)
+        '''
+#        print("** get_corpus_lines {}".format(lang_pos))
+        if start > len(lines):
+            return []
+        elif lang_pos < 0 and not comments:
+            # All of the sentences between start and start+n_sents
+            return lines[start:start+n_sents]
+        result = []
+        position = 0
+        rel_pos = 0
+        started = False
+        n = 0
+        for line in lines:
+            if position >= start and not started:
+                started = True
+            elif n >= n_sents:
+                return result
+            line = line.strip()
+            if line[0] == '#':
+                if save_comments and started:
+                    result.append(line)
+                rel_pos = 0
+            elif lang_pos < 0 or rel_pos == lang_pos:
+                if started:
+                    result.append(line)
+                    n += 1
+                position += 1
+                rel_pos += 1
+            else:
+                rel_pos += 1
+        return result
 
     @staticmethod
     def create_seg_corpus(sentences, disambiguate=True):
@@ -366,7 +407,7 @@ class Corpus():
         for index, sentence in enumerate(self.sentences):
             string = ''
             if conllu:
-                string = sentence.create_conllu_string(update_ids=True)
+                string = sentence.create_conllu(update_ids=True)
 #                sentence.print_conllu(update_ids=True, file=file)
             else:
                 string = sentence.create_attrib_strings(attribs, all_anals=all_anals)

@@ -59,23 +59,17 @@ feats:
 
     morphotax::
       {'name': 'adp', 'pos': 'ADP', 'dep': 'mark:pre', 'feats': ['Case']};
-      {'name': 'conj1',\
-        'pos':{'ዝ':'SCONJ','እ': 'SCONJ', 'ክ':'SCONJ','እንክ': 'SCONJ', 'ምስ': 'SCONJ', 'እና': 'SCONJ',\
-                       'ም': 'SCONJ', 'እንዳ': 'SCONJ', 'ንኽ': 'SCONJ', 'ድ': 'CCONJ',\
-		       'እንተ': 'SCONJ', 'እንተዝ': 'SCONJ', 'እንተዘይ': 'SCONJ', 'ከምዝ': 'CCONJ',\
-                       'ከምዘይ': 'CCONJ', 'ስለዝ': 'SCONJ', 'ስለዘይ': 'SCONJ', 'እንተይ': 'SCONJ',\
-		       'ኣይ': 'SCONJ', 'ዘይ': 'SCONJ', 'ከይ': 'SCONJ', 'እንከይ': 'SCONJ', 'ኣይም': 'SCONJ', 'ንኸይ': 'SCONJ', 'ደይ': 'CCONJ'},\
-        'dep': 'mark:pre', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:pre', 'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'conj1', 'pos': 'SCONJ', 'dep': 'mark:pre', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:pre', 'feats': ['Person', 'Number', 'Gender', 'PronType']};;
       {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender']};
-      {'name': 'obj:m',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:suf', 'o': 'obl:suf'}),\
-        'feats': ['AccNum', 'AccPers', 'AccGen', 'OblNum', 'OblPers', 'OblGen']};
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
+      {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:suf', 'o': 'obl:suf'}),\
+        'feats': ['ObjNum', 'ObjPers', 'ObjGen', 'AppNum', 'AppPers', 'AppGen', 'PronType']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
       {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc:suf'}
 
-    mwe::
-      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
+#    mwe::
+#      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
 
     neg = False | True
     a = 0 | a | i
@@ -116,7 +110,7 @@ feats:
     neg = False | True
 
   pos: cop copula
-    pos = COP
+    pos = AUX
     p = 1 | 2 | 3
     n = 1 | 2
     g = m | f

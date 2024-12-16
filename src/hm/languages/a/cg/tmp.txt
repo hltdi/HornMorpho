@@ -385,3 +385,26 @@
 	"ተኛ" V DERAGI 2 IMP MASC SG
 "<።>"
 	"።" PUNCT
+
+"<ሥራው>"
+	"ስራ" N DEF MASC SG
+	"ስራ" N PSS3SM SG
+	"ሰራ" V DERAGI 2 AC3SM IMP MASC SG
+"<እስከ>"
+	"እስከ" ADPCONJ
+"<ተሠራ>"
+	"ተሰራ" V TEDERAGI 2 IMP MASC PASS SG
+	"ተሰራ" V MAIN TEDERAGI 3 MASC PASS PFV SG
+	"ተሰረረ" V TEDERAGI 3 CVB FEM PASS SG
+	"ተሰራ" PROPN SG
+"<ድረስ>"
+	"ደረሰ" V DERAGI 2 IMP MASC SG
+	"ድረስ" ADPCONJ
+	"ድረስ" PROPN SG
+"<ግድ>"
+	"ግድ" PART
+	"ግድ" N SG
+"<የለኝም>"
+	"አለː" V DERAGI MAIN 3 AC1S MASC NEG PFV SG
+"<።>"
+	"።" PUNCT

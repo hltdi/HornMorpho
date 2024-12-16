@@ -203,20 +203,22 @@ class Word(list):
                 dicts.append(dct)
         return dicts
 
-    def elim_segmented_dups(self):
+    def elim_segmented_dups(self, verbosity=0):
         '''
         Eliminate analyses which represent segmentations of other unsegmented analyses.
         This happens with segmentation of derivational affixes, for example, in EES verbal nouns
         or Oromo causative, passive, and auto-benefactive stems.
         But the POS has to match for the analysis to be eliminated.
         '''
-        todel = []
+        todel = set()
         if len(self) == 1:
             return
         for index1, anal1 in enumerate(self[:-1]):
             lemma1 = anal1.get('lemma')
             root1 = anal1.get('root')
             pos1 = anal1.get('pos')
+            if verbosity:
+                print("~~Word.elim_segmented_dups: l1 {}, r1 {}, p1 {}".format(lemma1, root1, pos1))
             for index2, anal2 in enumerate(self[index1+1:]):
                 pos2 = anal2.get('pos')
                 if pos1 != pos2:
@@ -227,14 +229,18 @@ class Word(list):
                     # The analyses are not related
                     continue
                 root2 = anal2.get('root')
+                if verbosity:
+                    print("  ~~Word.elim_segmented_dups: l2 {}, r2 {}, p2 {}".format(lemma2, root2, pos2))
                 if lemma1 == root1 and lemma2 != root2:
-                    # anal1's root is just its lemma, e.g., unanalyzed ተማሪ
-                    todel.append(i2)
+                    # anal1's root is just its lemma, e.g., unanalyzed, e.g., ተማሪ
+                    todel.add(i2)
                 elif lemma2 == root2 and lemma1 != root1:
                     # anal2 is unanalyzed
-                    todel.append(index1)
+                    todel.add(index1)
                 # handle other cases, like Oromo abdachiise
-        return todel
+        if verbosity:
+            print("~~Word.elim_segmented_dups: to del: {}".format(todel))
+        return list(todel)
 
     def compare_all(self):
         '''

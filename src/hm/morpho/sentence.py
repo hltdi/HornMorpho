@@ -1048,14 +1048,11 @@ class Sentence():
 #        print("  ** headindex {}".format(headindex))
         if headindex is not None:
             headid = segmentation[1:][headindex].get('id')
+#            print("  ** headid {}".format(headid))
             idiff = headid - headindex
-#            print("    ** headid {}, headindex {}, idiff {}".format(headid, headindex, idiff))
-#            if v5:
-#                dependencies = [(s.get('deprel', ''), i, s.get('head', '')) for i, s in enumerate(segmentation[1:]) if i != headindex]
-#            else:
             dependencies = [(s.get('deprel', ''), i, s.get('head', '') - idiff) for i, s in enumerate(segmentation[1:]) if i != headindex]
+            dependencies = [d for d in dependencies if d[1] != d[2]]
 #            print("  ** dependencies {}".format(dependencies))
-#        stem_dependencies = [(s.get('deprel', ''), i) for i, s in enumerate(segmentation[1:]) if i != headindex]
             left = []
             right = []
             for dependency in dependencies:

@@ -368,6 +368,8 @@ class CGSentence:
         ids = {}
         root = -1
         for windex, cohort in enumerate(self.cohorts):
+            if not cohort.readings:
+                print("*** {} in {} has not readings".format(cohort, self.cohorts))
             id = cohort.get_id()
             if id:
                 ids[id] = windex

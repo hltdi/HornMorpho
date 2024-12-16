@@ -8,8 +8,8 @@
 %A_i,3=y::	1:e,I;			2:a|/e,/I,I;	3:0,0ት
 
 <ስ ኝ ይ>		c=A
-   a=0,v=p
-   a=0,v=as
+   a=0,v=p,lemma=ተሰኘ
+   a=0,v=as,lemma=አሰኘ
    a=i,v=p
    a=i,v=a
 

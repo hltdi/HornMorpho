@@ -1454,23 +1454,6 @@ class POSMorphology:
     ## Processing output of anal or gen, v.5.
     ##
 
-#    def filter_prioritize(self, analyses):
-#        '''
-#        analyses is the output of anal(), a list of pairs: [segstring, FSSet].
-#        If there is more than one analysis, all analyses that are -prior are deleted.
-#        '''
-#        if len(analyses) > 1:
-#            todel = []
-#            for index, (string, features) in enumerate(analyses):
-#                priority = features.get('prior', True)
-#                if not priority:
-#                    todel.append(index)
-#            if len(todel) == len(analyses):
-#                # All analyses are -prior, so keep them all
-#                return
-#            for d in reversed(todel):
-#                del analyses[d]
-
     def process_segstring(self, string, features, **kwargs):
         '''
         Postprocess the segment string returned by POSMorph.anal(), degeminating and
@@ -1482,8 +1465,8 @@ class POSMorphology:
         pre = stem = suf = mwe_part = ''
         pos = features.get('pos')
         degem = kwargs.get('degem', True)
+#        print("~~ process_segstring:: {}; {}".format(string, degem))
         string = self.postproc5(string, gemination=not degem, elim_bounds=False)
-#        if kwargs.get('degem', True):
 #            string = EES.degeminate(string, elim_bounds=False)
         if kwargs.get('mwe', False):
             premwe = postmwe = mwe_part = None
@@ -1559,9 +1542,10 @@ class POSMorphology:
         features is a FeatStruct.
         kwargs: mwe=False, sep_feats=True, combine_segs=False
         """
-#        print("%% process5: token {}, string {}".format(token, string))
+#        print("%% process5: token {}, string {}, degem {}, gemination {}".format(token, string, kwargs.get('degem'), kwargs.get('gemination')))
         sep_feats = kwargs.get('sep_feats', True)
-        gemination = kwargs.get('gemination', True)
+        degem = kwargs.get('degem', True)
+        gemination = kwargs.get('gemination', not degem)
         mwe = kwargs.get('mwe', False)
         string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, features, **kwargs)
 #        print("** string {} prefixes {} stem {} suffixes {} mwe_part {}".format(string, prefixes, stem, suffixes, mwe_part))
@@ -1816,7 +1800,7 @@ class POSMorphology:
         # Get the appropriate root
         if 'root' in mwe:
             rootfeats = mwe['root']
-#            print("^^ mwe rootsfeats: {}".format(rootfeats))
+#            print("  ^^ mwe rootsfeats: {}".format(rootfeats))
             # rootfeats should be a list of elements to make up the root
             # separated by whitespace
             mweroot = []
@@ -1852,7 +1836,7 @@ class POSMorphology:
 #                    mweroot.append("{" + featroot + "}")
             return ''.join(mweroot)
 
-        return features.get('root', stem)
+        return rootfromfeats
 
     def get_segment_lemma(self, string, props, features):
         '''
@@ -1983,7 +1967,6 @@ class POSMorphology:
         Do whatever postprocessing is needed for an output form (lemma, morpheme, word).
         Currently restricted to gemination.
         '''
-#        print("*** Postprocessing {}".format(form))
         form = self.language.postprocess5(form)
         if gloss:
             form += gloss
@@ -1995,6 +1978,7 @@ class POSMorphology:
         form = form.replace('_', '/')
         if unicode:
             form = EES.unicode_geminate(form)
+        print(" *** {}".format(form))
         return form
  
     def gen_lemma(self, stem, root, features, mwe=None, gemination=True, mwe_part=None, add_part=False):
@@ -2160,8 +2144,11 @@ class POSMorphology:
                         trace=trace)
 
     def gen_all(self, root, feats=None, trace=False, save_feats=None):
+#        print("** gen all with feats={} and save_feats={}".format(feats.__repr__(), save_feats))
         output = self.gen5(root, feats=feats)
         results = []
+        if not output:
+            return results
         for form, fsset in output:
             fss = []
             for fs in fsset:

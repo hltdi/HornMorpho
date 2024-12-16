@@ -291,6 +291,9 @@ class Language:
         self.roman = roman
         # Archive version number; added 2024.09.16
         self.version = 1.0
+        # Disambiguation and syntactic CGs
+        self.disambigCG = None
+        self.depCG = None
 #        # A tree of multi-word expressions
 #        self.mwe = {}
 #        # Feature normalization
@@ -1850,8 +1853,8 @@ class Language:
         '''
         Return the string with stem segments combined.
         '''
+#        print("** combining segments in {}".format(stem_string))
         if self.charcombs:
-#            print("** combining segments in {}".format(stem_string))
             for suf, prefixes in self.charcombs:
                 if suf in stem_string:
                     previous = stem_string.split(suf)[0][-1]

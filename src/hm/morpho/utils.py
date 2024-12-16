@@ -29,6 +29,10 @@ from .menu import *
 # Character that is allowed in all segment sets
 LEGAL_CHAR = '*'
 
+def debug(obj, method, text, level=0):
+    pre = level * ' '
+    return "~~{}::{}:: {}".format(pre, obj.__name__, method.__name__, text)
+
 def allcombs(seqs):
     """Returns a list of all sequences consisting of one element from each of seqs.
     This could also be done with itertools.product."""

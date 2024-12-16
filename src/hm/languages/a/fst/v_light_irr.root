@@ -1,27 +1,27 @@
 *<ብ እ ል>	c=A
 
-[a=0,t=p,v=0]
+[a=0,t=p,v=0,lemma=አለ]
 ኣ	ል
 
-[a=0,t=p|i|c,v=p]
+[a=0,t=p|i|c,v=p,lemma=ተባለ]
 ባ	ል
 
-[a=0,t=i,v=0]
+[a=0,t=i,v=0,lemma=አለ]
 ል
 
-[a=0,t=j,v=0]
+[a=0,t=j,v=0,lemma=አለ]
 በ	ል
 
-[a=0,t=c,v=0|p]
+[a=0,t=c,v=0|p,lemma=አለ]
 ብ	ል
 
-[a=i,t=p|i|j,v=p]
+[a=i,t=p|i|j,v=p,lemma=ተባለ]
 ባ	ባ	ል
 
-[a=i,t=c,v=p]
+[a=i,t=c,v=p,lemma=ተባለ]
 ባ	ብ	ል
 
-*<ድ ር ግ> c=A
+*<ድ ር ግ> c=A,lemma=አደረገ
 
 [a=0,t=p,v=a|p];[a=0,t=i,v=p]
 ደ	/ረ	ግ

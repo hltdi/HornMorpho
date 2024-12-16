@@ -1,25 +1,47 @@
--> start
+-> prep
 
-start -> start	[:-;**v;/]
+# prep: no changes
+prep -> prep	[ብ;ን]
 
+# conj1, change final consonant ክ+ይ-> ኪ, ክ+ኣ->ከ
+prep -> start	[:-]
+start -> start	[**v;/]
 start -> C		[*]
-C ->  start		[**v;:-;/]
-C -> C			[*-ይ]
+C -> start		[**v;/]
+C -> C			[*]
+
+# subj
+# delete y if there's something before it
+start -> subj	[:-]
+C -> subj		[:-]
+subj -> subj		[*;/]
+
+# stem
+subj -> stem+	[:<]
 
 ## prefix changes
 
-# ዚሰ/ብር
-C -> C2i		[{I2i}]
+# optional; ዚሰ/ብር
+C -> C2i			[{I2i}]
 start -> C2i	[{I2i}]
+#start0 -> C2i	[{I2i}]
 C2i -> C2i		[:-]
-C2i -> start	[:ይ]
+C2i -> C2i		[:ይ]
+C2i -> stem+		[:<]
+
+# delete ይ; ዝስብር
+C -> C:			[:-]
+C: -> C2Xyi		[:ይ]
+C2Xyi -> stem+	[:<]
 
 ## stem-prefix boundary
 
 # ዘስበረ; ተስ/ብር
-C -> C2e		[{I2e}]
-start -> C2e	[{I2e}]
+C -> C2e			[{I2e}]
+start -> C2e		[{I2e}]
+subj -> C2e		[{I2e}]
 C2e -> C2e		[:-]
+C2e -> C2e		[:ይ]	[t=i,sp=1|3]
 C2e -> C2e+		[:<]
 C2e+ -> stem0	[:ኣ]
 
@@ -29,16 +51,21 @@ C2alle -> stem	[:ኣ]
 
 C -> .Ia		[:እ]
 start -> .Ia	[:እ]
+subj -> .Ia	[:እ]
 .Ia -> .Ia		[:-]
 .Ia -> I.a		[:<]
 I.a -> stem0	[ኣ]
 
 C -> stem+			[:<]
+#start0 -> stem+		[:<]
 start -> stem+		[:<]
+
 # stem starting with anything other than ኣ
 stem+ -> stem0 		[^A;/]
 
+# stem starting with ኣ
 start -> nopre		[:-]
+#start0 -> nopre		[:-]
 nopre -> nopre		[:-]
 nopre -> nopre+		[:<]
 nopre+ -> stem0		[ኣ]
@@ -52,7 +79,7 @@ stem0 -> stem1		[:-]
 # k-K, q-Q when preceded by vowel
 stem1 -> stem		[^x;/]		
 stem1 -> stem		[{q2Q}]	[+K1]
-stem1 -> stem		[^k]		[-K1]
+stem1 -> stem		[^k]	[-K1]
 
 stem -> stem		[^N;/]
 
@@ -64,6 +91,14 @@ stemV+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;^^q;:አ;:-]
 stem -> stemy.+		[ይ]
 stemy.+ -> stemy+	[:>]
 stemy+ -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ]
+
+# ይፍቶኪ
+stem -> stemO		[*o]	[oinf=e,+O]
+stemO -> stemO+		[:>]
+stemO+ -> stemO+		[:-]
+stemO+ -> suffO		[:አ]
+suffO -> suffO1		[:/]
+suffO1 -> suff		[ኻ:ካ;ኺ:ኪ;ኹ:ኩ;ኽ:ክ;ኒ;ና]
 
 # stem ending a consonant
 stem -> stemC.+		[*]
@@ -168,7 +203,7 @@ ate+ -> suff		[:አ]
 # object suffixes without vowel infixes
 suff -> suff+			[:-]
 suff+ -> suff+			[/]
-# are k,q possible?
+# is k possible?
 suff+ -> suff			[ኒ;ን;ና;ካ;ኪ;ኩ;ክ;ዎ;ዋ;ወ;ዮ;ያ;የ;ል;ለ;ሉ;ላ;ሎ;ኻ;ኺ;ኹ;ኽ]
 
 suff -> suff			[^N;/]

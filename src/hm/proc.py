@@ -362,6 +362,7 @@ def gen_tstem(entry, vsmorph= None, to_string=True, split_char='\t'):
     '''
     entry is a line from t_vroots2.txt
     '''
+    vsmorph = vsmorph or get_t_vstem_morph()
     root, feats = entry.split(split_char)
     if ' ' in root:
         root = root.replace(' ', '')
@@ -461,20 +462,119 @@ def prune_tvstems(stemlist):
         pruned += flen - newflen
     return pruned
 
-def write_tvstems(stemlist):
-    with open("hm/languages/t/lex/v_stem.lex", 'w', encoding='utf8') as file:
+def write_tvstems(stemlist, file='hm/languages/t/lex/vstems.lex'):
+    with open(file, 'w', encoding='utf8') as file:
         for stem, featlist in stemlist:
-            print("{}\t{}".format(stem, format_FSS(featlist, True)), file=file)
+            print("{}\t{}".format(stem, format_FSS(featlist, True, True)), file=file)
 
-def format_FSS(fss, islist=False):
+def read_tvstems(file="hm/languages/t/lex/v_stem.lex"):
+    '''
+    Read in the verb stems for Tigrinya, return a list of pairs: stem, feature_list.
+    '''
+    result = []
+    with open(file, encoding='utf8') as file:
+        features = []
+        stem = ''
+        cont = False
+        for line in file:
+            if not line.strip():
+                continue
+            if line[0] == '\t':
+                # Feature continuation
+                line = line.strip()
+                if line[-1] == ';':
+                    cont = True
+                    line = line[:-1]
+                feats = line.split(';')
+                features.extend(feats)
+            else:
+                # Finish the last entry
+                if stem:
+                    result.append([stem, features])
+                features = []
+                stem = ''
+                cont = False
+                # Stem features
+                stem, feats = line.strip().split()
+                if feats[-1] == ';':
+                    cont = True
+                    feats = feats[:-1]
+                features = feats.split(';')
+        if stem:
+            result.append([stem, features])
+    return result
+
+def extend_tvstems_y0(tvstems):
+    for stemtv in tvstems:
+        if match_XXy_I_SUF_0(stemtv):
+            add_ISUF0_feats(stemtv)
+
+def match_XXy_I_SUF_0(stemtv, rootre=None):
+    rootre = rootre or re.compile(r"r=\w\wይ,")
+    feats = stemtv[1]
+    feats1 = feats[0]
+    return rootre.search(feats1) and 'c=A' in feats1 and 't=c' in feats1 and len(feats) == 4 and len(stemtv[0]) == 3
+
+def add_ISUF0_feats(stemtv, rootre=None):
+    rootre = rootre or re.compile(r'r=(\w\w\w),')
+    feats = stemtv[1]
+    feats1 = feats[0]
+    root = rootre.search(feats1).group(1)
+    new_feats = "[a=0,b=0,c=A,-cons,r={},t=i,tmp=[2=X,3=X],v=0]".format(root)
+    feats.append(new_feats)
+
+def filter_stemtv(stemtv, format=False):
+    result = []
+    elim = 0
+    for stem, features in stemtv:
+        features, e = filter_tvstems(features, format=format)
+        result.append([stem, features])
+        elim += e
+    print("Eliminated {}".format(elim))
+    return result
+
+def filter_tvstems(tvstems, format=True):
+    '''
+    tvstems is a list of features, where each is a string
+    '''
+    if len(tvstems) == 1:
+        return tvstems, 0
+    def match_cons(f1, f2):
+        if f1.replace('-cons,', '') == f2.replace('+cons,', '') and 'c=A' in f1 and '[2=X,3=X]' in f1 and 't=i' in f1 and ("v=0" in f1 or "v=a" in f1):
+            return True
+        return False
+    result = []
+    skip = []
+    elim = 0
+    for index1, f1 in enumerate(tvstems):
+        if index1 in skip:
+            elim += 1
+            continue
+        index2 = index1+1
+        if index1 == len(tvstems) - 1:
+            result.append(f1)
+        else:
+            f2 = tvstems[index2]
+            if match_cons(f1, f2):
+                result.append(f1)
+                skip.append(index2)
+            else:
+                result.append(f1)
+    if format:
+        result = format_FSS(result, True, True)
+    return result, elim
+
+def format_FSS(fss, islist=False, isstring=False):
     '''
     Format FSS or FS list in file.
     '''
     if not islist:
         string = fss.__repr__()
         strings = string.split(';')
-    else:
+    elif not isstring:
         strings = [f.__repr__() for f in fss]
+    else:
+        strings = fss
     groups = []
     for i in range(len(strings)+1//2):
         item = strings[2*i:2*i+2]
@@ -543,7 +643,7 @@ def simplify_feats(formfeats):
     return allindict, noneindict
 
 def get_t_vstem_morph():
-    return hm.morpho.get_language('t').morphology['v_stem']
+    return morpho.get_language('t').morphology['v_stem']
 
 def get_t_vforms(root, featsets, vsmorph=None):
     vsmorph = vsmorph or get_t_vstem_morph()

@@ -123,14 +123,16 @@ $ ob_suf
   [o=sm3,oc=l|b,+O,olemma=እሱ]
       /ለት	<ለት>	[oc=l]
       /በት	<በት>	[oc=b]
-  [o=sm3,oc=0,olemma=እሱ]
+  [o=sm3,oc=0]
      # 3sm accusative suffix and relative definite suffix
-      ት	[t=p,sp=1,sn=1,-det,+O,+tr];[sp=2|3,sn=2,-det,+O,+tr];[t=c,sp=3,sn=1,sg=m,-det,+O,+tr];
+      ት	[t=p,sp=1,sn=1,-det,+O,+tr,olemma=እሱ];[sp=2|3,sn=2,-det,+O,+tr,olemma=እሱ];[t=c,sp=3,sn=1,sg=m,-det,+O,+tr,olemma=እሱ];
                 [t=p,sp=1,sn=1,+det,+rel,sconj=0,-O];[sp=2|3,sn=2,+det,+rel,sconj=0,-O];[t=c,sp=3,sn=1,sg=m,+det,sconj=0,+rel,-O]
-      ው       [sp=2,sn=1,sg=f,-det,+O,+tr];[t=p,sp=3,sn=1,-det,+O,+tr];[t=c,sp=1,sn=1,-det,+O,+tr];[t=c,sp=3,sn=1,sg=f,-det,+O,+tr];
+      ው       [sp=2,sn=1,sg=f,-det,+O,+tr,olemma=እሱ];[t=p,sp=3,sn=1,-det,+O,+tr,olemma=እሱ];
+      	        [t=c,sp=1,sn=1,-det,+O,+tr,olemma=እሱ];[t=c,sp=3,sn=1,sg=f,-det,+O,+tr,olemma=እሱ];
                 [sp=2,sn=1,sg=f,+det,+rel,sconj=0,-O];[t=p,sp=3,sn=1,+det,+rel,sconj=0,-O];[t=c,sp=1,sn=1,+det,+rel,sconj=0,-O];
 		[t=c,sp=3,sn=1,sg=f,+det,+rel,sconj=0,-O]
-      አው	[sp=2,sn=1,sg=m,-det,+O,+tr];[sp=1,sn=2,-det,+O,+tr];[t=i|j,sp=1,sn=1,-det,+O,+tr];[t=i|j,sp=3,sn=1,-det,+O,+tr];
+      አው	[sp=2,sn=1,sg=m,-det,+O,+tr,olemma=እሱ];[sp=1,sn=2,-det,+O,+tr,olemma=እሱ];
+      		[t=i|j,sp=1,sn=1,-det,+O,+tr,olemma=እሱ];[t=i|j,sp=3,sn=1,-det,+O,+tr,olemma=እሱ];
                 [sp=2,sn=1,sg=m,+det,+rel,sconj=0,-O];[sp=1,sn=2,+det,+rel,sconj=0,-O];[t=i|j,sp=1,sn=1,+det,+rel,sconj=0,-O];
 		[t=i|j,sp=3,sn=1,+det,+rel,sconj=0,-O]
   [o=sf3,+O,olemma=እሷ]
@@ -228,4 +230,5 @@ $ cconj2
 
 $ end
   # d=m is for manner deverbal nouns
-  --		[pos=V,d=0]
+  # Here's where we indicate that ሆነ can be a copula
+  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0]

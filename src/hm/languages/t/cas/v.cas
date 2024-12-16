@@ -45,6 +45,7 @@ weighting = UNIFICATION
 ## FSTs
 # Delete gem character.
 >gem<
+>i2I<
 >labvel<
 >bound<
 >suf<

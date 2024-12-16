@@ -1,9 +1,6 @@
 $ adp
   ብ [adp=ብ,+rel,-mc]
   ን [adp=ን,+rel,-mc]
-#  ከም [adp=ከም,+rel,t=p|i,-mc]
-#  ስለ	[adp=ስለ,+rel,t=p|i,-mc]
-#  እንተ [adp=እንተ,conj1=ዝ,+rel,-mc,t=p];[adp=እንተ,conj1=0,-rel,-mc,-neg,t=p];[adp=እንተ,-rel,-neg,t=c]
   -- [adp=0]
 
 $ adp_bound
@@ -18,19 +15,20 @@ $ conj1
   ከምዘይ	 [conj1=ከምዝ,-rel,-mc,+neg,t=p|i,adp=0]
   ስለዝ	 [conj1=ስለዝ,-rel,-mc,-neg,t=p|i,adp=0]
   ስለዘይ	 [conj1=ስለዝ,-rel,-mc,+neg,t=p|i,adp=0]
-  እንተ	 [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0]
+  እንተ	 [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0];[conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=2];[conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=1,sn=1]
   እንተዝ	 [conj1=እንተዝ,-rel,-mc,-neg,t=p|c|i,adp=0]
   እንተዘይ	 [conj1=እንተዝ,-rel,-mc,+neg,t=p|c|i,adp=0]
   ንኽ      [conj1=ንኽ,-rel,-mc,t=i,-neg,adp=0]
   ንኸይ      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
   ክ	 	 [conj1=ክ,-rel,-mc,t=i,-neg,adp=0];[conj1=ክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
-  ከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
-  እንክ	 [conj1=አንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
-  እንከይ      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
-  እንተይ      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
+  ከይ      [conj1=ክ,-rel,-mc,t=i|p,+neg,adp=0]
+  እንክ	 [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
+  እንከይ      [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
+  እንተይ      [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
   ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
-  ም   [conj1=ም,-rel,-mc,t=p,adp=0,-neg]
-  ኣይም [conj1=ም,-rel,-mc,t=p,adp=0,+neg]
+  ምስዝ  [conj1=ምስ,-rel,-mc,t=i|p,adp=0,-neg]
+  ም   [conj1=ም,-rel,+mc,t=p,adp=0,-neg]
+  ኣይም [conj1=ም,-rel,+mc,t=i|p,adp=0,+neg]
   እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
   እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0,-neg]
   # ደሎ
@@ -57,8 +55,7 @@ $ sb_pre
   ት   [t=i,sp=2,+Cpre];[t=i|j,sp=3,sn=1,sg=f,+Cpre];[t=j,sp=2,+neg,+Cpre]
   እ   [t=j,sp=1,sn=1,-neg,+Cpre];[t=i,sp=1,sn=1,+mc,-Cpre]
   ን    [t=i|j,sp=1,sn=2,+Cpre]
-  --  [t=p|c]];[t=j,sp=2,-neg,-Cpre];[t=i|j,sp=1,sn=1,+neg,-Cpre];[t=i,sp=3,sn=1,sg=m,-mc,-Cpre];
-        [t=i,sp=3,sn=2,-mc,-Cpre];[t=i,sp=1,sn=1,-mc,-Cpre]
+  --   [t=p|c]];[t=j,sp=2,-neg,-Cpre]
 
 $ prestem
   <
@@ -83,7 +80,7 @@ $ voice
   # v=0
   --		[v=0,t=j,-Cpre,-K1];[v=0,t=j,+Cpre,+K1];
   		[v=0,t=c,adp=0,-K1];[v=0,t=c,conj1=እንተ,+K1];
-  		[v=0,t=p,+mc,-K1];[v=0,t=p,-mc,+K1];
+  		[v=0,t=p,+mc,-K1];[v=0,t=p,-mc,-neg,+K1];[v=0,t=p,-mc,+neg,-K1];
                 [v=p,t=i,a=0,tmp=[2=X|w|y],c=A|B|E|G|H|I|J,+K1];
 		[v=0,t=i,+rel,-neg,+K1];[v=0,t=i,+mc,-neg,+K1];
 		[v=0,t=i,-rel,-mc,-neg,-Cpre,+K1];[v=0,t=i,-rel,-mc,-neg,+Cpre];
@@ -94,8 +91,9 @@ $ voice_bound
 
 $ stem
 # Comment out for generation or analysis without compiled stems
-   +v_stem+		[pos=V]
-   +v_stem_irr+	[pos=V]
+#   +v_stem+		[pos=V|AUX]
+   +vstem2+		[pos=V|AUX]
+   +v_stem_irr+	[pos=V|AUX]
 # Uncomment for generation
 #  >>v_stem<<
 
@@ -108,7 +106,7 @@ $ sb_suf
   ካ    [t=p|c,sp=2,sn=1,sg=m,oinf=0]
   # ኪ -> ክ before anything else.
   ኪ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,-O,-neg];[t=p,sp=2,sn=1,sg=f,oinf=0,-O,+neg,-mc]
-  ክ    [t=p|c,sp=2,sn=1,sg=f,oinf=0,+O];[t=p,sp=2,sn=1,sg=f,oinf=0,-O,+neg,+mc]
+  ክ    <ኪ>	[t=p|c,sp=2,sn=1,sg=f,oinf=0,+O];[t=p,sp=2,sn=1,sg=f,oinf=0,-O,+neg,+mc]
   ኢ  [t=i|j,sp=2,sn=1,sg=f,oinf=0,+ijsuf]
   አ   [t=p,sp=3,sn=1,sg=m,oinf=0]
   አት   [t=p,sp=3,sn=1,sg=f,oinf=0]
@@ -154,9 +152,9 @@ $ ob_suf
     ኻ		[on=1,og=m,sp=3,sn=2];[t=p,on=1,og=m,sp=1,sn=1]
     /ካ	[on=1,og=m,sp=1,sn=2];[on=1,og=m,sp=3,sn=1];[t=c|i|j,on=1,og=m,sp=1,sn=1]
     ኺ		[on=1,og=f,sp=3,sn=2];[t=p,on=1,og=f,sp=1,sn=1]
-    /ኪ	[on=1,og=f,sp=1,sn=2];[on=1,og=f,sp=3,sn=1];[t=c|i|j,on=2,og=m,sp=1,sn=1]
+    /ኪ	[on=1,og=f,sp=1,sn=2];[on=1,og=f,sp=3,sn=1];[t=c|i|j,on=1,og=f,sp=1,sn=1]
     ኹም	[on=2,og=m,sp=3,sn=2];[t=p,on=2,og=m,sp=1,sn=1]
-    /ኩም	[on=2,og=m,sp=1,sn=2];[on=2,og=m,sp=3,sn=1];[t=c|i|j,on=1,og=f,sp=1,sn=1]
+    /ኩም	[on=2,og=m,sp=1,sn=2];[on=2,og=m,sp=3,sn=1];[t=c|i|j,on=2,og=m,sp=1,sn=1]
     ኽን	[on=2,og=f,sp=3,sn=2];[t=p,on=2,og=f,sp=1,sn=1]
     /ክን	[on=2,og=f,sp=1,sn=2];[on=2,og=f,sp=3,sn=1];[t=c|i|j,on=2,og=f,sp=1,sn=1]
   [op=2,oc=o,+O,sp=1|3]
@@ -211,6 +209,7 @@ $ neg2_bound
 
 $ conj2
   ከ		[conj2=ከ,-int]
+  ኸ		[conj2=ከ,-int]
   # other sconjs might be possible.
   ዶ		[conj2=ዶ,+int,conj1=0|ክ|ምስ|ም]
   ና		[conj2=ና,t=j,sp=2,-int]
@@ -218,4 +217,5 @@ $ conj2
   --		[conj2=0]
 
 $ end
-  --		[pos=V]
+  # ነበረ and ኮነ can be AUX as well as VERB
+  --		[pos=V];[pos=AUX,r=ንብር,c=A,a=0,v=0];[pos=AUX,r=ክውን,a=0,v=0]

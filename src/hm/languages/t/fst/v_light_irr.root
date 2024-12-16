@@ -1,28 +1,28 @@
 *<ብ ህ ል>	c=A,tmp=[2=L]
-[a=0,t=p|j,v=0]
+[a=0,t=p|j,v=0,lemma=በለ]
 በ	ል
 
-[a=0,t=i,v=0]
+[a=0,t=i,v=0,lemma=በለ]
 ብ	ል
 
-[a=0,t=c,v=0]
+[a=0,t=c,v=0,lemma=በለ]
 ኢ	ል
 
-[a=0,t=p,v=p]
+[a=0,t=p,v=p,lemma=ተባህለ]
 ባ	ህ	ል
 
-[a=0,t=c,v=p]
+[a=0,t=c,v=p,lemma=ተባህለ]
 ባ	ሂ	ል
 
-[a=0,t=i|j,v=p]
+[a=0,t=i|j,v=p,lemma=ተባህለ]
 በ	ሃ	ል
 
-[a=0,t=p,v=a]
+[a=0,t=p,v=a,lemma=ኣበለ]
 /በ	ል
 
-[a=0,t=c,v=a]
+[a=0,t=c,v=a,lemma=ኣበለ]
 /ቢ	ል
 
-[a=0,t=i|j,v=a]
+[a=0,t=i|j,v=a,lemma=ኣበለ]
 /ብ	ል
 

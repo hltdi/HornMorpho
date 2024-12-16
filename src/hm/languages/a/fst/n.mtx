@@ -59,20 +59,20 @@ $ human_bound
   -
 
 $ poss_det
-  ኤ		[p=s1,plemma=እኔ,spos=PRON]
-  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON]
-  ህ		[p=sm2,plemma=አንተ,spos=PRON]
-  ሽ		[p=sf2,plemma=አንቺ,spos=PRON]
-  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON]
-  ዎ		[p=F2,plemma=እርስዎ,spos=PRON]
-  ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
+  ኤ		[p=s1,plemma=እኔ,spos=PRON,ptype=prs]
+  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON,ptype=prs]
+  ህ		[p=sm2,plemma=አንተ,spos=PRON,ptype=prs]
+  ሽ		[p=sf2,plemma=አንቺ,spos=PRON,ptype=prs]
+  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON,ptype=prs]
+  ዎ		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
+  ዎን		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
   # possessive or determiner
   #{
-  ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N,spos=DET]
-  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,pos=N,spos=DET]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON,ptype=prs];[p=0,+def,g=m,pos=N,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON,ptype=prs];[p=0,+def,g=f,pos=N,spos=DET]
   ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,pos=N,spos=DET]
   #}
-  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON]
+  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON,ptype=prs]
   --		[p=0,-def]
 
 $ poss_bound

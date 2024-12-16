@@ -676,7 +676,6 @@ class SegCanvas(Canvas):
         """
         left = dependencies[0]
         right = dependencies[1]
-#        print(" ** show deps left {}, right {}, headindex {}".format(left, right, headindex))
         headX = Xs[headindex]
         dependencydiff = len(left) - len(right)
         if dependencydiff > 0:
@@ -821,6 +820,8 @@ class SentenceGUI():
         for index, word in enumerate(self.words):
             if self.v5:
                 word = word.conllu
+            if len(word) == 0:
+                print("** problem with word {} at {} in {}".format(word, index, self.words))
             seg0 = word[0]
             whole_word = seg0[0]
             word_string = whole_word['form']

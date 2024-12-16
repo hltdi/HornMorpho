@@ -93,10 +93,12 @@ REMOVE (OBL)
 REMOVE (I_PART)
        (NOT  1 HELPING) ;
 
-# Main verbs also have to be last or preceding a form of አለ or with a CCONJ like -ና.
+# Main verbs also have to be last or preceding a form of አለ or with a CCONJ like -ና
+# or following a conjunction like እስከ
 # This works for ፈራሽ
 REMOVE (MAIN) - (CCONJ)
-       (NOT 1 (<<<) OR SADV OR ("አለ")) ;
+       (NOT 1 (<<<) OR SADV OR ("አለ"))
+       (NOT -1 (SCONJ) OR (ADPCONJ)) ;
 
 # Jussive/imperative has to be final (with possible intervening ADV like መቸስ) or preceding አለ
 # or with -ና 

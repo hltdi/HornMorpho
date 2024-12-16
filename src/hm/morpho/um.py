@@ -526,11 +526,9 @@ class UniMorph:
 
     def read(self, verbosity=0):
         """
-        Read in the UM converstion data.
+        Read in the UM conversion data.
         """
         path = self.get_path()
-#        print("** UM path {}".format(path))
-#        print("** exists? {}".format(os.path.exists(path)))
         current_pos = ''
         current_supfeat = ''
         current_feats = []
