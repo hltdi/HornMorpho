@@ -87,7 +87,7 @@ class Sentence():
     selectpos = \
       {
        'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'],\
-       'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ'], 'ADVINTJ': ['ADV', 'INTJ']
+       'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ'], 'ADVINTJ': ['ADV', 'INTJ'], 'PARTINTJ': ['PART', 'INTJ']
       }
 
     um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}

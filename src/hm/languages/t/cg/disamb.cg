@@ -3,17 +3,48 @@ DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
 LIST NOM = N PRON DET PROPN ;
 LIST NOM2 = N PRON DET PROPN ADJ ;
 LIST PREP = "ኣብ" "ናይ" "ካብ" "እንካብ" "ናብ" "ከም" "ክሳብ" "ክሳዕ" "ስጋዕ" "ልዕሊ" "ስለ" "ብዛዕባ" "ውሽጢ" "ብዘይ" "ትሕቲ" "ወጻኢ" "ማእከል" "ኣጋ" "ክንዲ" "ዳርጋ" "ምእንቲ" "ሳላ" "ብሳላ" "በጃ" ;
+SET NOMPREP = NOM | PREP ;
+SET NOTNOMPREP = (*) - NOMPREP ;
+LIST PREPADV = "ምስ" "ድሕሪ" "ቅድሚ" "ክሳብ" "ክሳዕ" ;
 LIST PERSON = 1 2 3 ;
 LIST GENDER = FEM MASC ;
 LIST NUMBER = SG PL ;
+LIST VAUX = V AUX ;
+LIST AUXROOT = "ኮነ" "ንብር" "እዩ" "ህልው" ;
 
-# PREP has to be followed by NOM
-REMOVE  !NOM
+# Anything preceded by a PREP must be a nominal or another PREP
+REMOVE  NOTNOMPREP
        (-1 PREP) ;
 
-# AUX and IMPF or CVB have to agree
-REMOVE  (V IMP) + $$GENDER + $$NUMBER + $$PERSON
-       (NOT 1 (AUX $$GENDER $$NUMBER $$PERSON)) ;
+# VERB and AUX
+
+# If a verb is followed by an AUX, it must agree with it
+# in PNG
+REMOVE  VAUX + $$GENDER + $$NUMBER + $$PERSON
+       (1 (AUX))
+       (NOT 1 ($$GENDER $$NUMBER $$PERSON)) ;
+
+REMOVE (V) + $$GENDER + $$NUMBER + $$PERSON
+       (1 AUXROOT)
+       (NOT 1 ($$GENDER $$NUMBER $$PERSON)) ;
+
+# for ambiguous VERB/AUX: AUX must be preceded by V (or AUX)
+REMOVE (AUX)
+       (NOT -1 (V));
+
+# IPFV vs. JUS; JUS not possible before AUX
+REMOVE (JUS)
+       (1 (AUX)) ;
+
+### Ambiguous POS tags
+# ADPCONJ: disambiguate before noun
+SUBSTITUTE (ADPCONJ) (ADP) PREPADV
+        (1 (N)) ;
+
+SUBSTITUTE (ADPCONJ) (SCONJ) PREPADV
+	(1 (V)) ;
+
+
 
 
 

@@ -3,7 +3,7 @@ DELIMITERS = "<።>" "<!>" "<?>" "<¶>";
 LIST NOM = N PRON DET PROPN ;
 LIST NOM2 = N PRON DET PROPN ADJ ;
 LIST PREP1 = INS ABL ;
-LIST PREP = "እንደ" "እስከ" "ስለ" "በስተ" "ያለ" "ወደ" "ባለ" ;
+LIST PREPADV = "እንደ" "እስከ" "ስለ" "በስተ" "ያለ" "ወደ" "ባለ" ;
 LIST OBLPOSTP = "ምክንያት" "<በኋላ>" "<በፊት>" "<በላይ>" "ምትክ" "ፋንታ" "ይልቅ" "ጋር" "<የተነሳ>" "<ወዲህ>";
 LIST NPOSTP = "ላይ" "ውስጥ" "ታች" "ውጭ" ;
 LIST POSTCONJ = "ቁጥር" "<በኋላ>" "<በፊት>" "<ድረስ>" ;
@@ -24,7 +24,7 @@ LIST KNOWSPEAK = "አለ" "ነገረ" "ገለጸ" "ተገለጸ" "ተነገረ" 
 
 ### Ambiguous POS tags
 # ADPCONJ: disambiguate before noun; still ambiguous before verb
-SUBSTITUTE (ADPCONJ) (ADP) PREP
+SUBSTITUTE (ADPCONJ) (ADP) PREPADV
        (1 (N)) ;
 
 SUBSTITUTE (ADPCONJ) (SCONJ) POSTCONJ
@@ -115,10 +115,10 @@ REMOVE (CVB)
        (1 (<<<))
        (NOT -1 (>>>)) ;
 
-# Converbs (normally) have to be followed by another verb agreeing in PNG
-# unless the sentence is a fragment (with CVB last?)
-REMOVE  (CVB) + $$GENDER + $$NUMBER + $$PERSON
-       (NOT 1* (V $$GENDER $$NUMBER $$PERSON)) ;
+## Converbs (normally) have to be followed by another verb agreeing in PNG
+## unless the sentence is a fragment (with CVB last?)
+#REMOVE  (CVB $$GENDER $$NUMBER $$PERSON)
+#       (NOT 1* (V $$GENDER $$NUMBER $$PERSON)) ;
 
 # ambiguous IPFV / IMP followed by AUX must be IPFV
 REMOVE (IMP)
@@ -186,11 +186,18 @@ REMOVE NOM + (CCONJ)
 
 # NADJ: disambiguate before noun?
 
-### Adverbial vs. relative clause
+### Complement vs. relative clause and adverbial clause
 ## እንደ+ before verbs like አለ ነገረ አወቀ ገለጸ and not followed by noun
 REMOVE (EQTV RELC)
        (1* KNOWSPEAK BARRIER (V))
        (NOT 1 (N)) ;
+REMOVE (INDE_SC ADVCL)
+       (1* KNOWSPEAK BARRIER (V))
+       (NOT 1 (N)) ;
+## Unless there's a knowing/speaking verb later or the clause is last
+REMOVE (INDE_SC CCOMP)
+       (NOT 1* KNOWSPEAK)
+       (NOT 1 (<<<)) ;
 
 ### Postpositions again
 

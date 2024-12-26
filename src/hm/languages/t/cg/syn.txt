@@ -1,0 +1,64 @@
+"<እንተ>"
+	"እንተ" SCONJ
+"<ፈለጥካ>"
+	"ፈለጠ" V SERAHI 2 MASC PFV SG
+"<ጽቡቕ>"
+	"ጽቡቕ" ADJ SG
+"<እዩ>"
+	"እዩ" AUX 3 MASC PRS SG
+"<።>"
+	"።" PUNCT
+
+"<እቲ>"
+	"እቲ" DET DEMPRO DET MASC SG
+"<እምኒ>"
+	"እምኒ" N SG
+"<ለስሊሱ>"
+	"ለስለሰ" V SERAHI 3 CVB MASC PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ካሕሳይ>"
+	"ካሕሳይ" PROPN SG
+"<ስገም>"
+	"ስገም" N SG
+"<እንተ>"
+	"እንተ" SCONJ
+"<ዘይኮይኑ>"
+	"ኰነ" V RELC SERAHI 3 CVB MASC NEG PFV SG
+"<፡>"
+	"፡" PUNCT
+"<ናይ>"
+	"ናይ" ADP
+"<ካልእ>"
+	"ካልእ" ADJ SG
+"<ስዋ>"
+	"ስዋ" N SG
+"<ኣይሰትን>"
+	"ሰተ" V SERAHI 3 IPFV MASC NEG SG
+"<እዩ>"
+	"እዩ" AUX 3 MASC PRS SG
+"<።>"
+	"።" PUNCT
+
+"<ነቲ>"
+	"እቲ" DET DEMPRO OBL DET MASC SG
+"<ንጉስ>"
+	"ንጉስ" N SG
+"<የኽብሩዎ>"
+	"ኣኽበረ" V ASRAHI 3 CAUS IPFV MASC OB3SM PL
+"<እዮም>"
+	"እዩ" AUX 3 MASC PL PRS
+"<።>"
+	"።" PUNCT
+
+"<ነቲ>"
+	"እቲ" DET DEMPRO OBL DET MASC SG
+"<ንብረት>"
+	"ንብረት" N SG
+"<ክዘምቱዎ>"
+	"ዝምት" V SERAHI SUBORD 3 IPFV MASC OB3SM PL
+"<እዮም>"
+	"እዩ" AUX 3 MASC PL PRS
+"<።>"
+	"።" PUNCT

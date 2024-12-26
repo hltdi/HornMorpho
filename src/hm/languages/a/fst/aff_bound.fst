@@ -56,17 +56,25 @@ ou -> oua.		[:-]
 oua. -> oua.	[:-]
 oua. -> start	[ኣ]
 
-# 2sf t=i|j suffix
+## 2sf t=i|j suffix
 # * - ኢ -> *i
 CV -> .-i		[{^I2i};{^a2i}]
 .-i -> -.i		[:>]
 -.i -> start	[:ኢ]
 -.i -> i		[:ኢ]
+## 1s t=c suffix
+# geminate the last consonant
 CV -> /-E		[/:]
+# CE
 /-E -> .-E        	[{^I2E}]
 .-E -> -.E		[:>]
 -.E -> start	[:ኤ]
 -.E -> i		[:ኤ]
+## optional E->e before -w
+#/-E -> .-ew		[{^I2e}]
+#.ew -> -.ew		[:>]
+#.ew -> ew.		[:ኤ]
+#ew. -> start		[ው]
 
 # *ኢ|*ኤ - ኣ -> ያ
 i -> ya.-		[ያ:]

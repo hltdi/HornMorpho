@@ -1836,8 +1836,7 @@ class Language:
             expansion, pos = abb
             tokens = expansion.split()
             return {'pos': pos, 'xpos': 'ABBR', 'token': token, 'lemma': token, 'tokens': tokens, 'nsegs': 1}
-        if self.morphology.is_abbrev(token):
-            return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'lemma': token, 'nsegs': 1}
+        # Check numeral before abbreviation
         numeral = self.morphology.match_numeral(token)
         if numeral:
             prenum, num, postnum = numeral
@@ -1847,13 +1846,15 @@ class Language:
                 return {'token': token, 'pos': 'N', 'lemma': num, 'nsegs': 1}
             else:
                 return {'token': token, 'pos': 'NUM', 'lemma': token, 'nsegs': 1}
+        if self.morphology.is_abbrev(token):
+            return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'lemma': token, 'nsegs': 1}
         return None
 
     def combine_segments(self, stem_string):
         '''
         Return the string with stem segments combined.
         '''
-#        print("** combining segments in {}".format(stem_string))
+        print("** combining segments in {}".format(stem_string))
         if self.charcombs:
             for suf, prefixes in self.charcombs:
                 if suf in stem_string:

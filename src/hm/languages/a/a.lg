@@ -72,18 +72,25 @@ feats:
     morphotax::
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-         'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP', 'ስለ':'ADP','ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
-         'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
-         'xpos': {'የ': 'RLP'}, 'dep': 'mark:pre', 'feats': ['ClauseType','AdpCase']};
+                      'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP',\
+		      'ስለ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
+                      'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
+	'xpos': {'የ': 'RLP'},\
+        'dep': {'ለ':'case:pre','በ':('rel', {False: 'mark:pre', True: 'case:pre'}),'ከ': ('rel', {False: 'mark:pre', True: 'case:pre'}),\
+                       'እንደ':('ppos', {'SCONJ': 'mark:pre', 'ADP': 'case:pre'}),'እስከ':'case:pre',\
+		       'ስለ':('ppos', {'SCONJ': 'mark:pre', 'ADP': 'case:pre'}),'ወደ':'case:pre',\
+                       'የ':'mark:pre', 'እ': 'mark:pre','ብ':'mark:pre','ስ':'mark:pre','ል':'mark:pre','እንድ':'mark:pre','እስክ': 'mark:pre','እየ':'mark:pre'},\
+        'feats': ['ClauseType','AdpCase']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
       {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark:pre', 'feats': ['ClauseType']};
       {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:pre', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:pre',\
         'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
-                             'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
-                             'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
+                           'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
+                           'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
        'feats': ['Person', 'Number', 'Gender', 'PronType']};;
-      {'name': 'STEM', 'pos': 'VERB', 'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
+      {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
+        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
       {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
         'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'ob',\
@@ -165,7 +172,7 @@ feats:
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case:pre', 'feats': ['Case', 'Case[inner]']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
-      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice']};;
+      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice', 'Polarity']};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\
@@ -197,7 +204,7 @@ feats:
     postp = 0 | ጋ
     cconj = 0 | ም | ስ | ማ | ሳ | ና | ኮ
     Pp = 3 | 2 | 1
-    Pn = 1 | 2
+    Pn = 0 | 1 | 2
     Pg = m | f
     hum = False | True
     neg = False | True

@@ -273,7 +273,6 @@ class Morphology(dict):
         if not self.abbrevRE:
             abbrev_chars = self.abbrev_chars or '.'
             string = r"\w+[{}](?:\w+[{}]?)*".format(abbrev_chars, abbrev_chars)
-#            string = "\w+[.](?:\w+[.]?)*"
             self.abbrevRE = re.compile(string)
         return self.abbrevRE
 
@@ -1934,6 +1933,7 @@ class POSMorphology:
 #        return '|'.join(['='.join([f, v]) for f, v in features])
 
     def get_segment_dep_head(self, string, segdict, index, stem_index, features, framework='UD', is_stem=False):
+#        print("~~get_segment_dep_head {}, {}".format(string, segdict))
         headspec = segdict.get('head')
         if headspec:
             # This is a relative index specifying the direction and distance of the head
@@ -1944,12 +1944,12 @@ class POSMorphology:
         depspec = segdict.get('dep', '')
         dep = None
         if depspec:
-            if isinstance(depspec, str):
+            dtype = type(depspec)
+            if dtype is str:
                 # string specifying the dep for all affixes in this position
                 # ':' not permitted in FeatStruct
                 dep = depspec.replace('_', ':')
-            elif isinstance(depspec, tuple):
-#                print("  ^^ depspec is tuple: {}".format(depspec))
+            elif dtype is tuple:
                 # (feature, {...})
                 depfeat = depspec[0]
                 if isinstance(depfeat, tuple):
@@ -1959,7 +1959,22 @@ class POSMorphology:
                 else:
                     depvalue = features.get(depfeat)
                     dep = depspec[1].get(depvalue)
-#                print(" ^^ Value for feat {}: {}; dep {}".format(depfeat, depvalue, dep))
+            elif dtype is dict:
+                deps = depspec.get(string)
+                if deps is None:
+                    print("!Warning: no dependency specified in {} for {}".format(depspec, string))
+                dt = type(deps)
+                if dt is str:
+                    dep = deps
+                elif dt is tuple:
+                    dfeat, ddict = deps
+                    dvalue = features.get(dfeat)
+                    if dvalue is None:
+                        print("!Warning: no value for dependency spec {} for {}".format(dfeat, string))
+                    dep = ddict.get(dvalue)
+                    if dep is None:
+                        print("!Warning: no value for dependency spec {} for {} in {}".format(dvalue, string, deps))
+                
         return dep, head_index
 
     def postproc5(self, form, gemination=True, elim_bounds=False, unicode=False, gloss=''):
@@ -1987,7 +2002,7 @@ class POSMorphology:
         '''
         if mwe_part:
             mwe_part = EES.degeminate(mwe_part)
-#        print("^^ generating lemma for {} | {} | {}".format(stem, root, features.__repr__()))
+        print("^^ generating lemma for {} | {} | {}".format(stem, root, features.__repr__()))
         gloss = ''
         if features and 'lemma' in features:
             return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)
@@ -2013,13 +2028,15 @@ class POSMorphology:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
             initfeat = ','.join(initfeat)
-#            print("    ^^ initfeat {}, root {}".format(initfeat, root))
+            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
-#                print("    ^^ gen_out {}".format(gen_out))
+                print("    ^^ gen_out {}".format(gen_out))
                 form = self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
                 if mwe_part and add_part:
                     form = mwe_part + ' ' + form
                 return form
+            else:
+                print("   Generation failed")
             return
         initfeat = []
         for lf in lemmafeats2:

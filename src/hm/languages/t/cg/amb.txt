@@ -1,1 +1,58 @@
-ካብ ገዛ ኣውጺአያ ።
+"<ዘየንብብ>"
+	"ኣንበበ" V ASRAHI RELC 1 CAUS IPFV NEG SG
+	"ኣንበበ" V ASRAHI RELC 3 CAUS IPFV MASC NEG SG
+"<እንተዝኸውን>"
+	"ኰነ" AUX SERAHI 1 IPFV SG
+	"ኰነ" V SERAHI 1 IPFV SG
+	"ኰነ" V SERAHI 3 IPFV MASC SG
+	"ኰነ" AUX SERAHI 3 IPFV MASC SG
+"<ነይረ>"
+	"ነበረ" AUX SERAHI 1 PFV SG
+	"ነበረ" V SERAHI 1 PFV SG
+"<፡>"
+	"፡" PUNCT
+"<መጽሓፍ>"
+	"መጽሓፍ" N SG
+"<ኣይምሓተትኩኻን>"
+	"ሓተተ" V SERAHI 1 NEG OB2SM PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ካሕሳይ>"
+	"ካሕሳ" N PSS1S SG
+	"ካሕሳይ" PROPN SG
+"<ስገም>"
+	"ስገም" N SG
+"<እንተ>"
+	"እንተ" SCONJ
+"<ዘይኮይኑ>"
+	"ኰነ" AUX RELC SERAHI 3 CVB MASC NEG PFV SG
+	"ኰነ" V RELC SERAHI 3 CVB MASC NEG PFV SG
+"<፡>"
+	"፡" PUNCT
+"<ናይ>"
+	"ናይ" ADP
+"<ካልእ>"
+	"ካልእ" ADJ SG
+"<ስዋ>"
+	"ስዋ" N SG
+"<ኣይሰትን>"
+	"ሰተ" V SERAHI 3 IPFV MASC NEG SG
+	"ሰተ" V SERAHI 1 IPFV NEG SG
+"<እዩ>"
+	"እዩ" AUX 3 MASC PRS SG
+"<።>"
+	"።" PUNCT
+
+"<ነቲ>"
+	"እቲ" DET DEMPRO OBL DET MASC SG
+"<ንጉስ>"
+	"ንጉስ" N SG
+"<የኽብሩዎ>"
+	"ኣኽበረ" V ASRAHI 3 CAUS JUS MASC OB3SM PL
+	"ኣኽበረ" V ASRAHI 3 CAUS IPFV MASC OB3SM PL
+"<እዮም>"
+	"እዩ" AUX 3 MASC PL PRS
+"<።>"
+	"።" PUNCT
+

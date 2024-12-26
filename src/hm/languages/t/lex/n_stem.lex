@@ -2721,7 +2721,7 @@
 እንታዋይ	''	[-pl,pos=N]
 እንታይ	''	[-pl,pos=PRON,-prep]
 ምንታይ	''	[-pl,pos=PRON]
-ስለምንታይ	''	[-pl,pos=PRON,adp=ስለ,+prep]
+#ስለምንታይ	''	[-pl,pos=PRON,adp=ስለ,+prep]
 እንዳ	''	[-pl,pos=N]
 እንዳታት	እንዳ	[+pl,pos=N]
 ኢንዱስትሪ	''	[-pl,pos=N]

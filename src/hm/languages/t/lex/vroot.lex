@@ -5720,8 +5720,8 @@
   a=0,v=a
 <ዝ ም ር>		c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ዝ ም ት>		c=A,base=p
-  a=0,v=a ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
+<ዝ ም ት>		c=A,base=0
+  a=0,v=0 ; a=0,v=a ; a=i,v=0 ; a=0,v=p ; a=i,v=p ; a=a,v=a
 <ዝ ም ው>		c=B,base=0
   a=0,v=0 ; a=0,v=a
 <ዝ ም ድ>		c=A,base=0

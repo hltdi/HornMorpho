@@ -119,9 +119,7 @@ POS v V
 #->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
 #->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
 
-t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS;; c,*:PFV
-#t:: i:IPFV;; p:PFV;; j:IMP;; c:PFV
-#t,ax:: c,0:V.CVB ;; c,al:PRF
+t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS;; c,*:PFV;CVB
 
 #pos!t:: v:V;; 0:ADJ;; 0:N
 
@@ -129,7 +127,7 @@ pos:: v:V
 
 neg:: NEG
 
-rel:: True:*RELC
+rel,mc:: True,False:*RELC;; False,False:*SUBORD
 
 int:: True:INT
 

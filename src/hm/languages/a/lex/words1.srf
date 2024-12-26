@@ -1,7 +1,7 @@
-# completely invariant AUX, like ነበር, which is included in cop.cas
+## completely invariant AUX, like ነበር, which is included in cop.cas
 ኖሮ	ኖሮ	AUX
-# should also be an INTJ
-እኮ  እ/ኮ  ADV
+## ADV
+እኮ  እ/ኮ  ADVINTJ
 አሁንለታ  አሁንለታ  ADV
 አለበለዚያ  አለበለ/ዚያ  ADV
 አለዚያ  አለበለ/ዚያ  ADV
@@ -35,7 +35,6 @@
 እንግዲያውስ  እንግዲያው/ስ  ADV
 እንግዲያውም  እንግዲያው/ም  ADV
 እንግዲያውማ  እንግዲያው/ማ  ADV
-እንጂ  እንጂ  ADV
 እንኳ  እንኳ  ADV
 እንኳን  እንኳን  ADV
 እንኳንስ  እንኳንስ  ADV
@@ -96,6 +95,8 @@
 ይሄኔ  ይሄ/ኔ  ADV
 አለጊዜ  አለጊዜ	ADV
 ምነው   ም/ነው	ADV
+# also ADJ
+ብዙ  ብዙ  ADV
 # really they're not the same; PART: ቁ/ጥ/ር, CONJ: ቁጥር
 ቁጥር  ቁጥር  PARTCONJ
 # ? እንቢዮ  እንቢዮ  ADV
@@ -187,7 +188,8 @@
 #በሹልክታ  በሹልክታ  ADV
 #በየግል  በ/የግል  ADV
 #በዘዴ  በዘዴ  ADV
-# CCONJ
+## CCONJ
+እንጂ  እንጂ  CCONJ
 እና  እ/ና  CCONJ
 እናም  እ/ናም  CCONJ
 ወይም  ወይም  CCONJ
@@ -195,7 +197,7 @@
 ወይንስ  ወይንስ  CCONJ
 ወይስ  ወይስ  CCONJ
 ነገርግን  ነገርግን  CCONJ
-# INTJ
+## INTJ
 አቤት  አቤት  INTJ
 አባባ  አ/ባ/ባ  INTJ
 አባዬ  አ/ባ/ዬ  INTJ
@@ -236,8 +238,7 @@
 ወይጉድ  ወይጉድ  INTJ
 ኤዲያ  ኤዲያ  INTJ
 እንዴታ  እንዴታ  INTJ
-# VERB
-#ጀመር  ጀ/መር  V
+## VERB
 እነሆ  እ/ነሆ  V
 እንሆ  እ/ነሆ  V
 እነኋት  እ/ነኋት  V
@@ -279,9 +280,7 @@
 እንጅላት  እንጃ/ላት  V
 እንጃላቸው  እንጃ/ላ/ቸው  V
 እንጅላቸው  እንጃ/ላ/ቸው  V
-እንቢ  እንቢ  PART
-ቀደም  ቀደ/ም  PART
-# prepositions
+## prepositions
 እንደ  እንደ  ADPCONJ
 እስከ  እስከ  ADPCONJ
 ስለ  ስለ  ADPCONJ
@@ -291,7 +290,7 @@
 በስተ  በስተ   ADP
 # unambiguous postpositions
 ጋ     ጋ     ADP
-ዘንድ  ዘንድ  ADP
+ዘንድ  ዘንድ  ADPCONJ
 ድረስ  ድረስ  ADPCONJ
 ጋር  ጋር  ADP
 ጋራ  ጋራ  ADP
@@ -313,21 +312,24 @@
 ውስጥ  ውስጥ  ADP
 ዳር  ዳር  ADP
 ፋንታ  ፋንታ  ADP
+ፈንታ  ፈንታ  ADP
 ወዲህ  ወዲህ  ADP
 አማካይነት  አ/ማካይ/ነት  ADP
 ምክንያት  ምክንያት  ADP
 የተነሳ  የተነ/ሳ  ADP
 ጅምሮ  ጅ/ምሮ  ADP
 ቀ/ደም  ቀ/ደም  ADP
-# particles from light verbs
+## particles from light verbs
 # many derived particles still missing (2024.10)
+እንቢ  እንቢ  PART
+ቀደም  ቀደ/ም  PART
 አፈፍ አፈ/ፍ  PART
 አክ አ/ክ  PART
 አለል አለ/ል  PART
 ዘለል ዘለ/ል  PART
 እብስ እ/ብ/ስ  PART
 እፍ እ/ፍ  PART
-እፎይ እ/ፎይ  PART
+እፎይ እ/ፎይ  PARTINTJ
 እፍግፍግ እፍግፍ/ግ  PART
 እልም እ/ልም  PART
 እልል እል/ል  PART

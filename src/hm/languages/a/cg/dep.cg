@@ -6,15 +6,16 @@ LIST PREP = ("እንደ" ADP) ("እስከ" ADP) ("ስለ" ADP) ("በስተ" ADP)
 LIST POSTP = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ("ምክንያት" ADP) ("በኋላ" ADP) ("በፊት" ADP) ("ጋር" ADP) ;
 #LIST ADVERBIAL = ADV CVB 
 LIST NMOD = REL ADJ DET NUM GEN ;
-LIST HELPING = AUX "ነበረ" "ሆነ" ;
 LIST PERSON = 1 2 3 ;
 LIST GENDER = FEM MASC ;
 LIST NUMBER = SG PL ;
-LIST ROOTV = (V MAIN) (V IMP) (V B_SC) (V BE_SC) ;
+LIST ROOTV = (V MAIN) (V IMP) (V JUS) (V B_SC) (V BE_SC) ;
 SET VERBAL = (V) | (INF) ;
 # Verb forms that take auxiliaries
-LIST VAUX = (V CVB) (V I_PART) (V IYE_SC) (V IPFV L_SC) (INF) ;
+LIST VAUX = (V CVB) (V I_PART) (V IYE_SC) (V IPFV L_SC) (V IPFV B_SC) (INF) ;
 LIST KNOWSPEAK = "አለ" "ነገረ" "ገለጸ" "ተገለጸ" "ተነገረ" "አወቀ" "ታወቀ" "አሳወቀ" "ተገነዘበ" ;
+LIST AUXROOT = "ነው" "ሆነ" ;
+LIST OPEN = N ADJ ADV V PART ;
 
 ### ROOT
 
@@ -28,9 +29,8 @@ MAP (@ROOT) VAUX
 
 # With final ነው AUX, the preceding word (if not an ADP) is the head.
 # Maybe this includes the last one.
-MAP (@ROOT) (N ADJ ADV V PART)
-    (1 ("ነው"))
-    (2 (<<<)) ;
+MAP (@ROOT) OPEN
+    (1 (AUX) LINK 1 (<<<)) ;
 
 MAP (@ROOT) (N)
     (1 (ADP))
@@ -117,10 +117,10 @@ SETPARENT NOM
     TO (1 (@ROOT)) ;
 
 ADDRELATION (advmod) (ADV)
-    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (ADVCL)) ;
 
 ADDRELATION (advcl) (CVB)
-    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (SUBORD)) ;
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (ADVCL)) ;
 
-ADDRELATION (ccomp) (INDE_SC)
+ADDRELATION (ccomp) (CCOMP)
     FROM (1 KNOWSPEAK) ;

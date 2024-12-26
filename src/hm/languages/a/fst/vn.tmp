@@ -390,10 +390,10 @@ $ d=a|inf|ins|m
 
 %3=ይ
 !! v=ast
-[d=inf|ins,v=p|a]
+[d=ins,v=p|a]
 ^a	*	-
 
-[d=a,v=p|a]
+[d=a|inf,v=p|a]
 ^a	*e	ት
 
 %%a=a,c=E,-strong

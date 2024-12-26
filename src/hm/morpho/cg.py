@@ -2,16 +2,17 @@
 Constraint grammar for HornMorpho.
 '''
 
-USER_DIR = os.path.join(os.path.dirname(__file__), 'usr')
-
-CG3 = '/usr/local/bin/vislcg3'
-
 import subprocess
 import re
+import os
 from .utils import first
 from .usr import *
 #from subprocess import Popen, PIPE, run
 # import sys
+
+USER_DIR = os.path.join(os.path.dirname(__file__), 'usr')
+
+CG3 = '/usr/local/bin/vislcg3'
 
 class CG:
 

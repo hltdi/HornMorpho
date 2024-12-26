@@ -26,7 +26,7 @@ $ prep
   ምእንታ	<ምእንቲ>	[adp=ምእንቲ,-neg,pos=PRON,+pers,+prep,+mult]
   ንምእንት	<ንምእንቲ>	[adp=ንምእንቲ,-neg,pos=DET,+prep,+dem,+mult];[adp=ንምእንቲ,-neg,pos=PRON,+pers,+prep,Pp=3,+mult]
   ንምእንታ	<ንምእንቲ>	[adp=ንምእንቲ,-neg,pos=PRON,+pers,+prep,+mult]
-  ስለ		[adp=ስለ,-neg,pos=DET,+prep,+dem,+mult]
+  ስለ		[adp=ስለ,-neg,pos=DET|PRON,+prep,+mult]
   ብዛዕባ	[adp=ብዛዕባ,-neg,pos=DET,+prep,+dem,+mult];[adp=ብዛዕባ,-neg,pos=PRON,+pers,+prep,+mult]
   ብዛዕብ	<ብዛዕባ>	[adp=ብዛዕባ,-neg,pos=DET,+prep,+dem,+mult];[adp=ብዛዕባ,-neg,pos=PRON,+pers,+prep,Pp=3,+mult]
   -- 	[adp=None,-prep];[pos=PRON,+pers,+prep,adp=ብ|ን,-mult]

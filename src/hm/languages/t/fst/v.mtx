@@ -8,7 +8,7 @@ $ adp_bound
 
 $ conj1
   ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,-neg];[conj1=ዝ,+rel,-mc,t=p|i,+neg,r=ህልው,+O]
-  ዘይ	  [conj1=ዝ,+rel,-mc,t=p|i,+neg]
+  ዘይ	  [conj1=ዝ,+rel,-mc,t=p|i|c,+neg]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
   እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg]
   ከምዝ	 [conj1=ከምዝ,-rel,-mc,-neg,t=p|i,adp=0]
@@ -45,7 +45,7 @@ $ sb_rel
   # geminate ት- and  ን- for +rel and optionally after ክ
   /	<> [+rel,t=i,sp=1,sn=2,-neg];[+rel,t=i,sp=2,-neg];[+rel,t=i,sp=3,sn=2,sg=f,-neg];
              [t=i,sp=2,conj1=ክ,-neg,+K1];[t=i,sp=1,sn=2,conj1=ክ,-neg,+K1];[t=i,sp=3,sn=1,sg=f,conj1=ክ,-neg,+K1]
-  --	[-rel];[t=p];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
+  --	[-rel];[t=p|c];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
 
 $ sb_pre
   ->ob_inf	 +alle+		[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=ኣ_ለ,gl=exist]
@@ -91,7 +91,6 @@ $ voice_bound
 
 $ stem
 # Comment out for generation or analysis without compiled stems
-#   +v_stem+		[pos=V|AUX]
    +vstem2+		[pos=V|AUX]
    +v_stem_irr+	[pos=V|AUX]
 # Uncomment for generation
@@ -217,5 +216,5 @@ $ conj2
   --		[conj2=0]
 
 $ end
-  # ነበረ and ኮነ can be AUX as well as VERB
-  --		[pos=V];[pos=AUX,r=ንብር,c=A,a=0,v=0];[pos=AUX,r=ክውን,a=0,v=0]
+  # ነበረ, ኮነ, and ኣሎ can be AUX as well as VERB
+  --		[pos=V];[pos=AUX,r=ንብር,c=A,a=0,v=0,-O];[pos=AUX,r=ክውን,a=0,v=0,-O];[pos=AUX,r=ህልው,a=0,v=0,-O]

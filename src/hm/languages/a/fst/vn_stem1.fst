@@ -18,13 +18,20 @@ istem -> ME2A	[ማ:መ]
 ME2A -> ME2A-	[:-]
 ME2A- -> end	[:ኣ]		[d=inf]
 ME2A- -> stemsuf	[:ኣ]		[d=ins]
+
 ME -> ME/		[/]
 ME/ -> end		[:-]		[d=inf]
 ME/ -> stemsuf	[:-]		[d=ins]
+
 ME/ -> TA		[ታ:ተ]
 TA -> TA-		[:-]
 TA- -> end		[:ኣ]		[d=inf]
 TA- -> stemsuf	[:ኣ]		[d=ins]
+
+#ME/ -> METE		[ተ]
+#METE -> METE-	[:-]
+#METE- -> end		[^N-ኣ]		[d=inf]
+#METE- -> stemsuf	[^N-ኣ]		[d=ins]
 
 istem -> MA		[ማ]			[d=ins|inf]
 MA -> end		[:-]		[d=inf]
@@ -59,8 +66,9 @@ ASTA- -> stemsuf	[:ኣ]	[d=a|ins]
 
 ME/ -> M/T		[ተ]
 MA/ -> M/T		[ተ]
-M/T -> end		[:-]	[d=inf]
-M/T -> stemsuf	[:-]	[d=ins]
+M/T -> M/T-		[:-]
+M/T- -> end		[^N-ኣ]	[d=inf]
+M/T- -> stemsuf	[^N-ኣ]	[d=ins]
 
 # manner
 stem ->	man1	[ኣ]		[d=m]
