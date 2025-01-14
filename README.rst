@@ -625,7 +625,7 @@ Functions
 ``hm.get_language(language)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Returns an instance of the :ref:`_Language` ``Language`` class, given its
+Returns an instance of the :ref:`Language` ``Language`` class, given its
 abbreviation, if the language has been loaded.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
