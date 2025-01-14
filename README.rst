@@ -246,8 +246,8 @@ the sequence of morphemes that make up the word. Morphological
 segmentation may be useful in NLP applications that make use of subword
 units, for example, language models. In these cases it provides an
 alternative to segmentation methods that are not informed by linguistic
-knowledge, such as [byte pair encoding and the WordPiece method]
-(https://arxiv.org/abs/2004.03720).
+knowledge, such as `byte pair encoding and the WordPiece method
+<https://arxiv.org/abs/2004.03720>`_.
 
 To get the segmentation of an analysis of a word, use the keyword
 ``'seg'``. HM represents the segmentation of the word ለቤቶቻችን in the
@@ -505,8 +505,8 @@ example. The arrow from አዳነቻት to አልማዝ denotes the dependency w
    :width: 300
 
 One very influential syntactic framework in NLP, similar to the
-Universal Morphology project, is the [Universal Depencency project]
-(https://universaldependencies.org/) (UD), which seeks to develop a set
+Universal Morphology project, is the `Universal Depencency project
+<https://universaldependencies.org/>`_ (UD), which seeks to develop a set
 of universal dependencies that could adequately cover the syntactic
 structure of all languages.
 
@@ -538,11 +538,11 @@ examples (19) and (20).
    'Aspect=Imp|Gender=Fem|Number=Sing|Person=3'
 
 In UD, annotated sentences are represented in a plain text format known
-as [CoNLL-U] (https://universaldependencies.org/format.html). Each word
+as `CoNLL-U <https://universaldependencies.org/format.html>`_. Each word
 is assigned a line, with ten slots for its properties, including
-morphological features and POS. There are a number of [tools for
-annotating sentences]
-(https://universaldependencies.org/tools.html#third-party-tools) using
+morphological features and POS. There are a number of `tools for
+annotating sentences
+<https://universaldependencies.org/tools.html#third-party-tools>`_ using
 files in CoNNL-U format.
 
 With the function ``anal_corpus()``, HM allows a user to analyze the
@@ -619,11 +619,13 @@ most likely one.
 Functions
 ---------
 
+.. _get_language:
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ``hm.get_language(language)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Returns an instance of the ```Language`` <#Language>`__, given its
+Returns an instance of the :ref:`_Language` ``Language`` class, given its
 abbreviation, if the language has been loaded.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -631,10 +633,10 @@ abbreviation, if the language has been loaded.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns an instance of the ```Word`` <#Word>`__ class belonging to the
-```Language`` <#Language>`__ that is represented by the *``language``*
+```Language`` <#Language>`__ that is represented by the ``language``
 argument.
 
-If *``word``* belongs HM’s list of common, unanalyzed words, the
+If ``word`` belongs to HM’s list of common, unanalyzed words, the
 analysis returns no segmentation.
 
 ::
@@ -829,6 +831,8 @@ Classes
 
 Normally you will not need to instantiate any of these classes directly.
 Instead you will be creating them using the functions above.
+
+.. _Language:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ``class Language(**kwargs)``
