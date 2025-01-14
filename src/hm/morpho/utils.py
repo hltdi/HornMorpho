@@ -29,6 +29,9 @@ from .menu import *
 # Character that is allowed in all segment sets
 LEGAL_CHAR = '*'
 
+# Positive responses to input Y/N question
+YES = ["Y", "y", "yes", "YES", "Yes", '']
+
 def debug(obj, method, text, level=0):
     pre = level * ' '
     return "~~{}::{}:: {}".format(pre, obj.__name__, method.__name__, text)

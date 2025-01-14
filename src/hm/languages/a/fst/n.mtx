@@ -68,8 +68,8 @@ $ poss_det
   ዎን		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
   # possessive or determiner
   #{
-  ኡ		[p=sm3,plemma=እሱ,spos=PRON,ptype=prs];[p=0,+def,g=m,pos=N|ADJ,spos=DET]
-  ዋ		[p=sf3,plemma=እሷ,spos=PRON,ptype=prs];[p=0,+def,g=f,d=0,pos=N|ADJ,spos=DET]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON,ptype=prs];[p=0,+def,g=m,pos=N|ADJ|PRON,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON,ptype=prs];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON,spos=DET]
   ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,d=0,pos=N,spos=DET]
   #}
   ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON,ptype=prs]
@@ -93,12 +93,12 @@ $ cop_bound
   -
 
 $ conj
-  /ም		[cconj=ም,spos=ADV]
-  /ስ		[cconj=ስ,spos=ADV,-prior]
-  /ማ		[cconj=ማ,spos=ADV,-prior]
-  /ሳ		[cconj=ሳ,spos=ADV,-prior]
-  /ና		[cconj=ና,spos=CCONJ]
-  /ኮ		[cconj=ኮ,spos=ADV,-prior]
+  /ም		[cconj=ም,acpos=ADV]
+  /ስ		[cconj=ስ,acpos=ADV,-prior]
+  /ማ		[cconj=ማ,acpos=ADV,-prior]
+  /ሳ		[cconj=ሳ,acpos=ADV,-prior]
+  /ና		[cconj=ና,acpos=CCONJ]
+  /ኮ		[cconj=ኮ,acpos=ADV,-prior]
   --		[cconj=0]
 
 $ conj_bound

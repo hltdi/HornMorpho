@@ -116,6 +116,7 @@
 እ/መቤት//<ጫ/ማ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ሴት//<በግ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 መስሪያ//<ቤት  ''  [+hdfin,-hdaff,deppos=N,pos=N]
+መኖሪያ//<ቤት  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ውቃቢ//<አምላክ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ጡት//<አ/ባት  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ርቱእ//<ተሳቢ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
@@ -2529,4 +2530,4 @@
 ፍል//<ውሃ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ፍጹም//ቅጣት//<ምት  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ፖስታ//ሳጥን//<ቁጥር  ''  [+hdfin,-hdaff,deppos=N,pos=N]
-የኔ//ቢጤ		''  [+hdfin,-hdaff,deppos=PRON,pos=N]
+የኔ//<ቢጤ		''  [+hdfin,-hdaff,deppos=PRON,pos=N]

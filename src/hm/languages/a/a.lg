@@ -1,6 +1,6 @@
 name: አማርኛ
 code: a
-version: 1.4
+version: 1.5
 
 gemination: True
 
@@ -72,7 +72,7 @@ feats:
     morphotax::
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-                      'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':'ADP',\
+                      'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),\
 		      'ስለ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
                       'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
 	'xpos': {'የ': 'RLP'},\
@@ -180,20 +180,14 @@ feats:
         'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'PronType']};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case', 'Case[outer]']};
       {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
-      {'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
-        'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
+      {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
+        'dep': ('acpos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
       {'name': 'GA', 'pos': 'ADP', 'dep': 'case:suf', 'feats':['Case']}
     lemmafeats = d;a,v
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
     det = False | True
     def = False | True
-#    n = 1 | 2
-#    g = m | f
     p = 0 | s1 | p1 | sm2 | sf2 | p2 | F2 | sm3 | sf3 | p3
-#    pp = 0 | 1 | 2 | 3
-#    pn = 1 | 2
-#    pg = m | f
-#    pf = False | True
     acc = False | True
     gen = False | True
     pl = False | True
@@ -216,13 +210,13 @@ feats:
     morphotax::
 	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark:pre', 'feats': ['ClauseType']};
 	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:pre', 'feats': ['Polarity']};;
-	{'name': 'STEM', 'pos': 'V', 'feats': ['Tense', 'Polarity']};;
+	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity']};;
 	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-	{'name': 'conj', 'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
+	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('apos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
     nomwe
     lemmafeats = neg
-    pos = COP
+    pos = AUX
     p = 1 | 2 | 3
     n = 1 | 2
     g = m | f

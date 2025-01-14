@@ -203,12 +203,14 @@ class Word(list):
                 dicts.append(dct)
         return dicts
 
-    def elim_segmented_dups(self, verbosity=0):
+    def elim_segmented_dups(self, ignore_um=True, verbosity=0):
         '''
         Eliminate analyses which represent segmentations of other unsegmented analyses.
         This happens with segmentation of derivational affixes, for example, in EES verbal nouns
         or Oromo causative, passive, and auto-benefactive stems.
         But the POS has to match for the analysis to be eliminated.
+        Also, if ignore_um is True, eliminate analyses which are identical to others otherwise,
+        in particular, wrt udfeats.
         '''
         todel = set()
         if len(self) == 1:
@@ -217,8 +219,9 @@ class Word(list):
             lemma1 = anal1.get('lemma')
             root1 = anal1.get('root')
             pos1 = anal1.get('pos')
+            udfeats1 = anal1.get('udfeats')
             if verbosity:
-                print("~~Word.elim_segmented_dups: l1 {}, r1 {}, p1 {}".format(lemma1, root1, pos1))
+                print("~~Word.elim_segmented_dups: l1 {}, r1 {}, p1 {}, u1 {}".format(lemma1, root1, pos1, udfeats1))
             for index2, anal2 in enumerate(self[index1+1:]):
                 pos2 = anal2.get('pos')
                 if pos1 != pos2:
@@ -237,6 +240,15 @@ class Word(list):
                 elif lemma2 == root2 and lemma1 != root1:
                     # anal2 is unanalyzed
                     todel.add(index1)
+                elif lemma1 == lemma2 and root1 == root2:
+                    udfeats2 = anal2.get('udfeats')
+                    if udfeats2 and udfeats1 == udfeats2:
+                        seg1 = anal1.get('seg')
+                        seg2 = anal2.get('seg')
+                        if seg1 == seg2:
+                            if verbosity:
+                                print("   ~~Word.eliem_segmented_dups: lemma {} pos {} udfeats {}".format(lemma1, pos1, udfeats1))
+                            todel.add(i2)
                 # handle other cases, like Oromo abdachiise
         if verbosity:
             print("~~Word.elim_segmented_dups: to del: {}".format(todel))

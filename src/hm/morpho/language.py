@@ -1687,7 +1687,7 @@ class Language:
             # If this is a numeral, punctuation, or abbreviation, don't bother going further.
             wordobj = Word(special_anal, name=raw_token, merges=self.merges) if special_anal else Word.create_empty(raw_token)
             if isinstance(cache, dict):
-                cache[token] = wordobj
+                cache[token] = wordobj.copy(name=raw_token)
             return wordobj
         # Try unanalyzed words or MWEs
         unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
@@ -1854,7 +1854,7 @@ class Language:
         '''
         Return the string with stem segments combined.
         '''
-        print("** combining segments in {}".format(stem_string))
+#        print("** combining segments in {}".format(stem_string))
         if self.charcombs:
             for suf, prefixes in self.charcombs:
                 if suf in stem_string:
@@ -2004,14 +2004,14 @@ class Language:
         '''
         Disambiguate the sentence using the language's disamb rules if any.
         '''
-        if self.disambigCG:
+        if self.disambigCG and self.disambigCG.initialized:
             return self.disambigCG.run(sentence, verbosity=verbosity)
 
     def annotate(self, sentence, verbosity=0):
         '''
         Annotate the sentence using the language's dependency rules if any.
         '''
-        if self.depCG:
+        if self.depCG and self.depCG.initialized:
             return self.depCG.run(sentence, verbosity=verbosity)
 
     def _anal_sentence5(self, sentence,

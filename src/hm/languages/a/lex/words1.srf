@@ -95,6 +95,7 @@
 ይሄኔ  ይሄ/ኔ  ADV
 አለጊዜ  አለጊዜ	ADV
 ምነው   ም/ነው	ADV
+ከርሞ   ከርሞ	ADV
 # also ADJ
 ብዙ  ብዙ  ADV
 # really they're not the same; PART: ቁ/ጥ/ር, CONJ: ቁጥር
@@ -206,7 +207,8 @@
 እማ   እ/ማ  INTJ
 አዎ  አዎ  INTJ
 አይ  አይ  INTJ
-አዬ  አዬ  INTJ
+አዬ  አዬ	INTJ
+አዪ  አዪ	INTJ
 አይዞህ  አይዞህ  INTJ
 አይዞሽ  አይዞሽ  INTJ
 እህ  እህ  INTJ
@@ -300,7 +302,7 @@
 በኩል  በ/ኩል  ADP
 በላይ  በላይ  ADP
 በስተጀርባ  በስተጀርባ  ADP
-በስተቀር  በስተቀር  ADP
+በስተቀር  በስተቀር  ADPCONJ
 በቀር  በቀር  ADP
 ዳፋ  ዳፋ  ADP
 ጎን  ጎን  ADP

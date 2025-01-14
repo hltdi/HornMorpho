@@ -46,7 +46,7 @@ C2e -> C2e+		[:<]
 C2e+ -> stem0	[:ኣ]
 
 # ዘሎ ከሎ etc.
-C2e+  -> C2alle	[:-]	 [root=ህልው]
+C2e+  -> C2alle	[:-]	 [root=ህልው,r=ህልው]
 C2alle -> stem	[:ኣ]
 
 C -> .Ia		[:እ]

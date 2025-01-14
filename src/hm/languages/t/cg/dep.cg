@@ -38,7 +38,12 @@ MAP (@ROOT) (N)
     (2 ("እዩ"))
     (3 (<<<)) ;
 
-## Cleft
+### Noun modifiers
+
+# A numeral before a noun must be its modifier.
+ADDRELATION (nummod) (NUM) FROM (1 (N)) ;
+
+### Cleft
 
 # Inverted
 # Relative verb last preceded by copula

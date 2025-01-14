@@ -61,7 +61,8 @@ feats:
       {'name': 'adp', 'pos': 'ADP', 'dep': 'mark:pre', 'feats': ['Case']};
       {'name': 'conj1', 'pos': 'SCONJ', 'dep': 'mark:pre', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:pre', 'feats': ['Person', 'Number', 'Gender', 'PronType']};;
-      {'name': 'STEM', 'pos': 'V', 'feats': ['Aspect', 'VerbForm', 'Voice', 'ClauseType', 'Mood']};;
+      {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
+        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
       {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:suf', 'o': 'obl:suf'}),\
         'feats': ['ObjNum', 'ObjPers', 'ObjGen', 'AppNum', 'AppPers', 'AppGen', 'PronType']};
@@ -131,7 +132,7 @@ feats:
     p = 0 | s1 | p1 | sm2 | sf2 | pm2 | pf2 | F2 | sm3 | sf3 | pm3 | pf3
     pl = False | True
     adp = None | ብ | ን
-    conj = None | ስ | ን | ከ | እውን
+    cnj = None | ስ | ን | ከ | እውን |ዶ
     Pp = 3 | 2 | 1
     Pn = 1 | 2
     Pg = m | f

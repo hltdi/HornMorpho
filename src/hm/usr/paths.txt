@@ -1,1 +1,2 @@
-CG3 = '/usr/local/bin/vislcg3'
+# This file contains paths to programs and data used by HornMorpho
+CG3 = /usr/local/bin/vislcg3

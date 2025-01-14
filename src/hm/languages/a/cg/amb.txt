@@ -455,4 +455,56 @@
 "<።>"
 	"።" PUNCT
 
+"<በዝናቡ>"
+	"ዝናብ" N INS OBL PRSPRO PSS3SM SG
+	"ዝናብ" N INS OBL DEF MASC SG
+	"ዝናቡ" PROPN INS OBL
+"<ምክንያት>"
+	"ምክንያት" ADP
+	"ምክንያት" N MASC SG
+"<ጨዋታው>"
+	"ጨዋታ" N PRSPRO PSS3SM SG
+	"ጨዋታ" N DEF MASC SG
+"<ተላለፈ>"
+	"ተላለፈ" V MAIN TEDERARAGI 3 MASC PFV RECP SG
+"<።>"
+	"።" PUNCT
 
+"<የልጅነቱን>"
+	"ልጅነት" N ACC+GEN DEF MASC SG
+	"ልጅነት" N PRSPRO ACC+GEN MASC PSS3SM SG
+"<ጊዜ>"
+	"ጊዜ" N SG
+"<አስታውሶ>"
+	"አስታወሰ" V ASTEDERAGI 3 CVB MASC SG
+"<ምንኛ>"
+	"ምንኛ" ADV
+"<ዕድለኛ>"
+	"እድለኛ" N SG
+"<እንደነበር>"
+	"ነው" AUX SUBORD PST
+	"አለ" V ADVCL DERAGI INDE_SC 3 MASC PFV SG
+	"አለ" V CCOMP DERAGI INDE_SC 3 MASC PFV SG
+"<ተገነዘበ>"
+	"ተገነዘበ" V MAIN TEDERAGI 3 MASC PFV SG
+"<።>"
+	"።" PUNCT
+
+"<ከጨረስክ>"
+	"ጨረሰ" V ABL DERAGI OBL RELC 2 MASC PFV SG
+	"ጨረሰ" V ADVCL DERAGI KE_SC 2 MASC PFV SG
+"<በኋላ>"
+	"በኋላ" ADPCONJ
+	"ኋላ" N INS OBL SG
+"<እኔ>"
+	"እኔ" PRON PRSPRO 1 SG
+"<ጋር>"
+	"ጋር" ADP
+	"ጋረ" V DERAGI 2 IMP MASC SG
+"<እንድትመጣ>"
+	"መጣ" V ADVCL DERAGI IND_SC 3 FEM IPFV SG
+	"መጣ" V ADVCL DERAGI IND_SC 2 IPFV MASC SG
+	"ተመጣ" V ADVCL IND_SC TEDERAGI 2 IPFV MASC PASS SG
+	"ተመጣ" V ADVCL IND_SC TEDERAGI 3 FEM IPFV PASS SG
+"<!>"
+	"!" PUNCT

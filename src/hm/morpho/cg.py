@@ -5,14 +5,14 @@ Constraint grammar for HornMorpho.
 import subprocess
 import re
 import os
-from .utils import first
+from .utils import first, YES
 from .usr import *
 #from subprocess import Popen, PIPE, run
 # import sys
 
 USER_DIR = os.path.join(os.path.dirname(__file__), 'usr')
 
-CG3 = '/usr/local/bin/vislcg3'
+#CG3 = '/usr/local/bin/vislcg3'
 
 class CG:
 
@@ -20,19 +20,102 @@ class CG:
 
     wordform_re = re.compile(r'\"\<(.+)\>\"')
 
+    cg_path = ''
+
+    YNprompt = "[y/n] >>> "
+
     def __init__(self, language, disambig=True):
         self.language = language
         # There are two kinds of rules: "disambiguation" and "annotation" ("dependencies")
         self.disambig = disambig
-        self.cg_path = CG3
+        self.initialized = False
+        self.init_CG()
+#        self.cg_path = CG3
+#        self.disambig_path = language.get_disambig_file()
+#        self.dep_path = language.get_dep_file()
         self.rules_path = language.get_disambig_file() if disambig else language.get_dep_file()
+
+    def __repr__(self):
+        return "CG:{}:{}".format('disamb' if self.disambig else 'dep', self.language.abbrev)
+
+    def rule_type(self):
+        return 'disambiguation' if self.disambig else 'annotation'
+
+    @staticmethod
+    def set_CG_path(path, write=True):
+        while True:
+            if file_exists(path):
+                CG.cg_path = path
+                print("Setting CG3 path to {}".format(path))
+                if write:
+                    write_path('CG3', path)
+                return True
+            else:
+                print("File at {} does not exist; try another?".format(path))
+                another = input(CG.YNprompt)
+                if another in YES:
+                    print("What's the path?")
+                    path = input(CG.YNprompt)
+                else:
+                    print("No path to a file provided")
+                    return False
+
+    def init_CG(self):
+        '''
+        Find the path to CG3 or set it or ignore CG3.
+        '''
+        def installed2path():
+            done = False
+            while not done:
+                print("Enter the path where VISL CG3 is installed (probably something like '/usr/local/bin/vislcg3')")
+                if path := input(">>> "):
+                    if CG.set_CG_path(path):
+                        self.initialized = True
+                        done = True
+                    else:
+                        return
+                else:
+                    print("You didn't enter a path; would you like to ignore CG3 {} for now?".format(self.rule_type))
+                    ignore = input(CG.YNprompt)
+                    if ignore in YES:
+                        return
+        if CG.cg_path:
+            self.initialized = True
+            return
+        if path := get_path('CG3'):
+            if CG.set_CG_path(path, write=False):
+                self.initialized = True
+                return
+            else:
+                return
+        print("I can't find the path for VISL CG3")
+        loaded = input("To use the disambiguation and annotation rules, you have to have installed VISL CG3. Have you?\n{}".format(CG.YNprompt))
+        if loaded in YES:
+            installed2path()
+        else:
+            print("Would you like to install VISL CG3?")
+            install = input(CG.YNprompt)
+            if install in YES:
+                print("Instructions for installation are here: https://edu.visl.dk/cg3/chunked/installation.html")
+                print("Have you successfully installed the program?")
+                installed = input(CG.YNprompt)
+                if installed in YES:
+                    installed2path()
+                else:
+                    print("Would you like to ignore CG3 {} for now?".format(self.rule_type()))
+                    ignore = input(CG.YNprompt)
+                    if ignore in YES:
+                        return
+            else:
+                print("Continuing without {} rules...".format(self.rule_type()))
+                return
 
     @staticmethod
     def open_sentence_file(path):
         return subprocess.Popen(['cat', path], stdout=PIPE)
 
     @staticmethod
-    def anal2reading(analysis, verbosity=1):
+    def anal2reading(analysis, verbosity=0):
         '''
         Convert a HM analysis (one element in a Word list) to a Reading object.
         '''
@@ -124,7 +207,7 @@ class CG:
         '''
         if verbosity:
             print("  Running rules at {}".format(self.rules_path))
-        args = [CG3, '-g', self.rules_path]
+        args = [CG.cg_path, '-g', self.rules_path]
         if trace:
             args.append('-t')
         result = subprocess.run(args, input=sentences, capture_output=True, text=True)
@@ -189,6 +272,8 @@ class CG:
                 if not found:
                     print("REMOVED READING {} FOR {} NOT FOUND!".format(rd, word))
             elif reading.substitution:
+                if verbosity:
+                    print("    Substitution for {}".format(reading))
                 found = False
                 for index, r in enumerate(word.readings):
                     if reading.match(r):
@@ -213,6 +298,8 @@ class CG:
         If disambiguation, possibly delete readings of some cohorts (words).
         If annotation, possibly set the sentence root and relations.
         '''
+#        if verbosity:
+        print("Running {} rules".format(self.rule_type()))
         cgsent = CG.sentence2cohorts(sentence, predelim=predelim, postdelim=postdelim, verbosity=verbosity)
         rule_out = self.call_cg3(cgsent.format(), trace=True, verbosity=verbosity)
         if not rule_out:
@@ -264,6 +351,8 @@ class Reading:
     A CG reading: a string containing a form, a POS, and, optionally a list of features and one or more
     tags inserted by rules.
     '''
+
+    POS_match = {'SCONJ': ['ADPCONJ']}
 
     def __init__(self, string, removed=False, substitution=False):
         self.string = string
@@ -343,8 +432,15 @@ class Reading:
         '''
         if self.substitution:
             # Substitution
-            # Lemma has to match and POSs have to overlap; later make it more stringent
-            return self.get_lemma() == reading.get_lemma() and self.get_pos() in reading.get_pos()
+            # Lemma has to match and POSs have to overlap (or belong to set in ; later make it more stringent
+            pos = self.get_pos()
+            rpos = reading.get_pos()
+            lemma = self.get_lemma()
+            rlemma = reading.get_lemma()
+            # %% Fix this later; POS_match dict is to handle cases where the selected POS isn't strictly within
+            # the combined POS, for example, SCONJ and ADVCONJ
+            return lemma == rlemma and (pos in rpos or rpos in Reading.POS_match.get(pos, ''))
+#        self.get_lemma() == reading.get_lemma() and self.get_pos() in reading.get_pos()
         return self.get_analysis() == reading.get_analysis()
 
 class CGSentence:

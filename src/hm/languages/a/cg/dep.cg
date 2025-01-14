@@ -63,16 +63,16 @@ MAP (@CLEFT) (RELC)
 # RELC: how to distinguish from headless rel followed by noun
 # RELC followed by noun, which is not followed by copula
 # የምንወደው ቢራ የጠጣል (actually ambiguous)
-#ADDRELATION (acl:rc) (RELC) TO (1 (N) LINK 1 ("ነው")) ;
+#ADDRELATION (acl:rc) (RELC) FROM (1 (N) LINK 1 ("ነው")) ;
 
 # ADJ: same problem
-#ADDRELATION (amod) (ADJ) TO (1 (N)) ;
+#ADDRELATION (amod) (ADJ) FROM (1 (N)) ;
 
 # final cleanup: attach nodes without parents to root (0)
 #SETPARENT (*) (NEGATE p (*)) TO (@0 (*)) ;
 
 # A numeral before a noun must be its modifier.
-ADDRELATION (amod) (NUM) to (1 (N)) ;
+ADDRELATION (nummod) (NUM) FROM (1 (N)) ;
 
 ### Simple relations from @ROOT
 

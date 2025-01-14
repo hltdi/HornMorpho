@@ -8,7 +8,6 @@
 ከም  ከም  ADP
 ስጋዕ  ስጋዕ  ADP
 ልዕሊ  ልዕሊ  ADP
-ስለ  ስለ  ADP
 ብዛዕባ  ብዛዕባ  ADP
 ውሽጢ  ውሽጢ  ADP
 ብዘይ  ብዘይ  ADP
@@ -30,6 +29,7 @@
 ቅድሚ  ቅድሚ  ADPCONJ
 ክሳብ  ክሳብ  ADPCONJ
 ክሳዕ  ክሳብ  ADPCONJ
+ስለ  ስለ  ADPCONJ
 # Adverbs
 ድማ  ድ/ማ  ADV
 ጥራይ  ጥራይ  ADV

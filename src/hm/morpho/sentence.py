@@ -152,7 +152,7 @@ class Sentence():
         for word in self.words:
             word.show()
 
-    def reinit_conllu():
+    def reinit_conllu(self):
         metadata = self.conllu.metadata
         self.conllu = TokenList([])
         self.conllu.metadata = metadata
@@ -428,7 +428,7 @@ class Sentence():
         if 'udfeats' in analdict:
             analdict['udfeats'] = udfeats
 
-    def postproc(self, verbosity=0):
+    def postproc(self, ignore_um=True, verbosity=0):
         '''
         Attempt to simplify disambiguation by eliminating some duplication at the Word level.
         '''
@@ -436,9 +436,10 @@ class Sentence():
             print("Post processing {}".format(self))
         # Eliminate derivational analyses that duplicate unsegmented forms.
         for word in self.words:
-            todel = word.elim_segmented_dups()
+            todel = word.elim_segmented_dups(ignore_um=ignore_um, verbosity=verbosity)
             if todel:
-#                print("** postprocessing deleting {}".format(todel))
+                if verbosity:
+                    print("~~Sentence:postproc:, todel {}".format(todel))
                 word.remove(todel)
                 if len(word) == 1:
                     self.morphambig.remove(word)

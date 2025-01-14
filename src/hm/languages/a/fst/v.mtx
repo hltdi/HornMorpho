@@ -17,7 +17,7 @@ $ conj_prep_pre
   ወደ		[adp=ወደ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl]
   ## ambiguous ADP / SCONJ
   እስከ	[adp=እስከ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
-		[sconj=እስከ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=acl]
+		[sconj=እስከ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl]
   # adp ከ (=from): ከሚመጣው; sconj ከ (=if)
   ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
   		[sconj=ከ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl]

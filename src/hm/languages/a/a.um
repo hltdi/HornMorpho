@@ -310,7 +310,7 @@ sub,mc,t:: False,False,i:*I_PART
 #sconj,rel,ppos:: እንደ,True,SCONJ:{ADVCL/CCOMP};; እንደ,True,ADP:*RELC
 
 # conjunctions
-cconj:: ና:*CCONJ
+cconj2:: ና:*CCONJ
 
 POS cop AUX
 ->UD PRS	Tense=Pres

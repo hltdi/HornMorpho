@@ -566,7 +566,7 @@
   a=0,v=0
 <ሕ ም ብ ስ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
-<ሕ ን ብ ስ>		c=E,base=0
+<ሕ ን ብ ስ>			c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ሕ ም ብ ሽ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a

@@ -1993,7 +1993,7 @@ class POSMorphology:
         form = form.replace('_', '/')
         if unicode:
             form = EES.unicode_geminate(form)
-        print(" *** {}".format(form))
+#        print(" *** {}".format(form))
         return form
  
     def gen_lemma(self, stem, root, features, mwe=None, gemination=True, mwe_part=None, add_part=False):
@@ -2002,7 +2002,7 @@ class POSMorphology:
         '''
         if mwe_part:
             mwe_part = EES.degeminate(mwe_part)
-        print("^^ generating lemma for {} | {} | {}".format(stem, root, features.__repr__()))
+#        print("^^ generating lemma for {} | {} | {}".format(stem, root, features.__repr__()))
         gloss = ''
         if features and 'lemma' in features:
             return self.postproc5(features['lemma'], gemination=gemination, elim_bounds=False, gloss=gloss)
@@ -2013,9 +2013,6 @@ class POSMorphology:
                 form = mwe_part + ' ' + form
             return form
         lemmafeat1, lemmafeats2 = lemmafeats
-#        if mwe_part:
-#            root = mwe_part + " " + root
-#        print("  ^^ lfeats {} ; {}".format(lemmafeat1, lemmafeats2))
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
             if not value1:
@@ -2028,15 +2025,15 @@ class POSMorphology:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
             initfeat = ','.join(initfeat)
-            print("    ^^ initfeat {}, root {}".format(initfeat, root))
+#            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
-                print("    ^^ gen_out {}".format(gen_out))
+#                print("    ^^ gen_out {}".format(gen_out))
                 form = self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
                 if mwe_part and add_part:
                     form = mwe_part + ' ' + form
                 return form
             else:
-                print("   Generation failed")
+                print("   Generation failed for {}, {}, {}".format(stem, root, features.__repr__()))
             return
         initfeat = []
         for lf in lemmafeats2:
