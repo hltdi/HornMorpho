@@ -1082,16 +1082,44 @@ Working with CoNLL-U format
 The features described in this section are being used as part of a
 project to create Amharic and Tigrinya treebanks. [4]_
 
-Many of the details, in particular the way in which words are segmented
-and the dependencies within words, are being reevaluated and may change
-in upcoming versions of HM. If you would like to use HM as part of a
-treebank project, please contact gasser@iu.edu. I may be able to
-tailor some of the features of the program to suit your needs.
+The process involves five steps. 1, 2, and 4 are automatic; 3 and 5 are manual.
+
+1. Each sentence is analyzed by HornMorpho, which treats each word (or multi-word expression in its lexicon) independently. This results in significant ambiguity.
+
+2. A set of `Constraint Grammar <https://edu.visl.dk/constraint_grammar.html>`_ disambiguation rules is run on the sentences. Given ambiguity for a word, the rules look at its context and attempt to assign the correct interpretation or at least to eliminate incorrect interpretations.
+
+3. The manual disambiguator is run on the sentences. For words that are still ambiguous following 2., the user selects the correct interpretation.
+
+4. A set of `Constraint Grammar <https://edu.visl.dk/constraint_grammar.html>`_  dependency annotation rules is run on the sentences. These rules may assign the root of a sentence, create dependencies from one word to another, with or without an associated relation label.
+
+5. The output of 4. is a partial analysis of each sentence in CoNNL-U format. For all but the simplest sentences, this will be incomplete, so the sentences will need to be annotated by hand, using one or another annotation tool.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Constraint Grammar rules
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Constraint Grammar <https://edu.visl.dk/constraint_grammar.html>`_ (CG) is a framework for the rule-based dependency parsing of sentences.
+CG rules are of two types: those that disambiguate words and those that assigning dependencies
+words.
+HornMorpho includes rules of both types for Amharic and Tigrinya, but these should be considered
+experimental since they still need to be tested on a large number of sentences.
+
+In order to use the rules while analyzing the sentences in a corpus with HM, you will need to first install
+VISL CG3, a program that reads and applies CG rules to sentences.
+Installation instructions are `here <https://edu.visl.dk/cg3/chunked/installation.html>`_.
+The first time you call `anal_corpus()` on Amharic or Tigrinya text, you will be prompted for the
+path to VISL CG3 or given the option of not using CG at all.
+
+~~~~~~~~~~~~~~~
+Disambiguation
+~~~~~~~~~~~~~~~
 
 To create representations of the sentences in a corpus in CoNLL-U
 format, first pass ``disambiguate=True`` to ``anal_corpus()`` when you
 call it on the corpus. After the sentences in the corpus have been
-analyzed (with ``anal_sentence()``), a GUI window will open so that you
+analyzed (with ``anal_sentence()``), the CG disambiguation rules will be applied if
+you have installed VISL CG3 and set the path to it.
+Next a GUI window will open so that you
 can select analyses for ambiguous words by hand.
 
 ::
@@ -1140,9 +1168,12 @@ analysis, 2 in this case.
 
 There is an ``Undo`` button to allow you to undo selections that have
 made. When you are finished disambiguating, clicking on ``Quit`` closes
-the window. The analyses will have been updated for all of the words
+the window. 
+The analyses will have been updated for all of the words
 that you have disambiguated; that is, each of these words will now have
 only one CoNNL-U style analysis.
+At this point, if you have installed VISL CG3 and set the path to it,
+the dependency annotations rules will be applied to the sentences.
 
 To write the CoNLL-U representations to a file or standard output, pass
 ``conllu=True`` to the ``Corpus`` method ``write()``.
@@ -1166,9 +1197,14 @@ To write the CoNLL-U representations to a file or standard output, pass
    8   ኣል  ኣል  AUX AUX _   7   aux _   _
    9   ።   ።   PUNCT   PUNCT   _   9   _   _   _
 
-A file with these representations can then be uploaded to a UD
+~~~~~~~~~~~~~~~~~~~~
+Syntactic annotation
+~~~~~~~~~~~~~~~~~~~~
+
+Once you have written the CoNNL-U representation of a set of sentences to a file,
+you can upload the file to a UD
 annotation tool like `Arborator <https://arboratorgrew.elizia.net>`__,
-where you can add the dependencies between words.
+where you can add the missing dependencies between words.
 
 .. [1]
    As we’ll see below, words out of context can be morphologically
@@ -1176,10 +1212,10 @@ where you can add the dependencies between words.
 
 .. [2]
    In general it’s safer to use the ``dict`` function
-   ``get``\ \ (*``keyword``*) than the ``[keyword]`` notation because
+   ``get``\ \ (``keyword``) than the ``[keyword]`` notation because
    not all analyses include all keywords, and
-   *``dict``*\ \ \ ``[keyword]`` returns an error if *``keyword``* is
-   not in *``dict``*.
+   ``dict``\ \ \ ``[keyword]`` returns an error if ``keyword`` is
+   not in ``dict``.
 
    (4) w[0][‘lemma’] ‘ቤት’
 

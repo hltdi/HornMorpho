@@ -2,4 +2,5 @@ include src/hm/languages/eng/lex/*.lex
 include src/hm/languages/eng/eng.lg
 include src/hm/languages/eng/eng.um
 include src/hm/morpho/geez/*.txt
+include src/hm/usr/paths.txt
 

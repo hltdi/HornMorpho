@@ -38,7 +38,7 @@ Author: Michael Gasser <gasser@indiana.edu>
 #__version__ = '4.3.1'
 
 __cat__ = ''
-__version__ = '5.2'
+__version__ = '5.3'
 
 __author__ = 'Michael Gasser'
 
