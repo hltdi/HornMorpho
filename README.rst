@@ -1036,6 +1036,13 @@ Attribute
 
 -  ``hm.Sentence.words``. A ``list`` of analyzed ``Word`` objects.
 
+Method
+^^^^^^
+
+-  ``hm.Sentence.print_conllu()``
+
+    Prints the CoNNL-U representation for the ``Sentence``.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ``class Corpus(**kwargs)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
