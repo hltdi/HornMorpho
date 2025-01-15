@@ -11,7 +11,7 @@ authors = [
     {name = "Michael Gasser", email = "gasser@iu.edu"},
 ]
 description = "Morphological processing of languages of the Horn of Africa"
-readme = "README.md"
+readme = "README.rst"
 keywords = ["morphology", "Amharic", "Tigrinya", "Oromo", "Tigre"]
 classifiers = [
       'Development Status :: 5 - Production/Stable',

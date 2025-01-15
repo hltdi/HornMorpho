@@ -2,7 +2,7 @@
 HornMorpho, version 5.3
 ========================
 
-**2025.01.12**
+**January 15, 2025**
 
 -------------------------
 Changes since version 5.2
@@ -625,15 +625,15 @@ Functions
 ``hm.get_language(language)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Returns an instance of the :ref:`Language` ``Language`` class, given its
+Returns an instance of the ``Language`` class, given its
 abbreviation, if the language has been loaded.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ``hm.anal(language, word, **kwargs``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Returns an instance of the ```Word`` <#Word>`__ class belonging to the
-```Language`` <#Language>`__ that is represented by the ``language``
+Returns an instance of the ``Word`` class belonging to the
+``Language`` that is represented by the ``language``
 argument.
 
 If ``word`` belongs to HM’s list of common, unanalyzed words, the
@@ -646,7 +646,7 @@ analysis returns no segmentation.
    >>> w[0]
    {'token': 'ወደ', 'pos': 'ADP', 'nsegs': 1, 'freq': 4999}
 
-If HM cannot analyze *``word``*, it returns an unanalyzed representation
+If HM cannot analyze ``word``, it returns an unanalyzed representation
 of the word, with POS ``'UNK'``. Note that HM is very strict when it
 comes to the spelling of words.
 
@@ -659,23 +659,23 @@ comes to the spelling of words.
 
 If the returned ``Word`` includes analyses, each is a ``dict``, with
 keywords for the different aspects of the analysis that you can access.
-See `below <#keywords>`__ under the description of the ``Word`` class
+See below under the description of the ``Word`` class
 for a list of these keywords.
 
 Parameters
 ^^^^^^^^^^
 
--  *``language``* is a string abbreviation of the language: ``'a'`` for
+-  ``language`` is a string abbreviation of the language: ``'a'`` for
    Amharic, ``'t'`` for Tigrinya, ``'o'`` for Oromo, ``'te'`` for Tigre.
    If the word’s ``Language`` hasn’t been instantiated, that happens
    when ``anal()`` is called. If the data for that ``Language`` has not
    been downloaded, the user is prompted to download it when ``anal()``
    is called.
 
--  *``word``* is a string representing an Amharic, Tigrinya, Oromo, or
+-  ``word`` is a string representing an Amharic, Tigrinya, Oromo, or
    Tigre word or, if ``mwe=True`` is specified, a multi-word phrase.
 
--  *``**kwargs``* (keyword arguments with default values)
+-  ``**kwargs`` (keyword arguments with default values)
 
    -  ``degem=True``
 
@@ -685,7 +685,7 @@ Parameters
 
    -  ``mwe=False``
 
-      If ``True``, specifies that the *``word``* string contains one or
+      If ``True``, specifies that the ``word`` string contains one or
       two spaces and that HM should try to analyze it as a *multi-word
       expression* (MWE). HM knows a limited number of MWEs, so this will
       not always succeed as expected.
@@ -716,10 +716,10 @@ Returns an instance of the ``Sentence`` class.
 Parameters
 ^^^^^^^^^^
 
--  *``language``* is a string abbreviation of the language, as for
-   ```anal`` <#anal>`__.
+-  ``language`` is a string abbreviation of the language, as for
+   ``anal()``.
 
--  *``sentence``* is a string representation of a sentence to be
+-  ``sentence`` is a string representation of a sentence to be
    analyzed.
 
 You can get a list of analyzed ``Word`` instances in the sentence using
@@ -758,7 +758,7 @@ analyzes individual words in the sentence.
 ``hm.anal_corpus(language, **kwargs)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Returns an instance of the ```Corpus`` <#Corpus>`__ class. A
+Returns an instance of the ``Corpus`` class. A
 ``Corpus``\ ’s ``sentences`` attribute is a list of ``Sentence``
 instances.
 
@@ -767,10 +767,10 @@ instances.
 Parameters
 ^^^^^^^^^^
 
--  *``language``* is a string abbreviation of the language, as for
-   ```anal`` <#anal>`__
+-  ``language`` is a string abbreviation of the language, as for
+   ``anal()``.
 
--  *``**kwargs``* (keyword arguments with default values)
+-  ``**kwargs`` (keyword arguments with default values)
 
    -  ``data=None``
 
@@ -799,15 +799,25 @@ Parameters
       ``Sentence`` objects are stored in the ``Corpus``\ ’s
       ``sentences`` attribute.
 
-   -  ``degem=False``: as for ``anal``
+   -  ``degem=False``: as for ``anal()``
 
    -  ``disambiguate=False``
 
       If ``True``, ``Corpus.disambiguate()`` is called, opening a GUI in
       which the user can select analyses for ambiguous words. This only
       works within the set of functions that create CoNNL-U
-      representations for sentences. See `this section <#conllu>`__ to
+      representations for sentences. See the section *Working with CoNNL-U format* below to
       find out more.
+
+   -  ``CGdisambiguate=True``
+
+      If ``True`` and VISL CG3 is installed, it is called using the Constraint Grammar disambiguation
+      rules for the language. (See *Working with CoNNL-U format* below.)
+
+   -  ``annotate=True``
+
+      If ``True`` and VISL CG3 is installed, it is called using the Constraint Grammar dependency
+      annotation rules for the language. (See *Working with CoNNL-U format* below.)
 
    -  ``start=0``
 
@@ -826,6 +836,7 @@ Parameters
       If ``name`` is not empty, the corpus is named ``C_``\ *``name``*.
       Otherwise its name is ``C_#``, where ``#`` is a unique integer.
 
+-------
 Classes
 -------
 
@@ -871,8 +882,7 @@ Attribute
 the keywords in the analysis ``dict``\ s.
 
 Instances of ``Word`` are normally created by the analysis functions,
-```anal()`` <#anal>`__, ```anal_sentence()`` <#anal_sentence>`__, and
-```anal_corpus()`` <#anal_corpus>`__.
+``anal()``, ``anal_sentence()``, and ``anal_corpus()``.
 
 Analysis keywords
 ^^^^^^^^^^^^^^^^^
@@ -1017,9 +1027,7 @@ Parameters
 
    -  ``degem=True``
 
-      ::
-
-         As for `anal()`, if `False`, specifies that the segments of each word are not "degeminated," that is, that consonant gemination is indicated (see example (29) above).
+    As for `anal()`, if `False`, specifies that the segments of each word are not "degeminated," that is, that consonant gemination is indicated (see example (29) above).
 
 .. _attribute-1:
 
@@ -1037,7 +1045,7 @@ Attribute
 Parameters
 ^^^^^^^^^^
 
--  *``**kwargs``*: see ```anal_corpus()`` <#anal_corpus>`__
+-  ``**kwargs``: see ``anal_corpus()``.
 
 .. _attribute-2:
 
@@ -1049,22 +1057,22 @@ Attribute
 Method
 ^^^^^^
 
--  ``hm.Corpus.write``\ (*``path``*, *``properties``*)
+-  ``hm.Corpus.write``\ (path, properties)``
 
    Writes specified properties of the analyses in the corpus’s sentences
    to a file or standard output. See example (2).
 
-   ##### Parameters
+   *Parameters*
 
-   -  *``path``*
+   -  ``path``
 
       A string representing a path to a file or ``None``. If ``None``,
       the analyses are written to standard output.
 
-   -  *``properties``*
+   -  ``properties``
 
       A ``list`` of strings consisting of analysis
-      `keywords <#keywords>`__ to be written, for example, ``'pos'`` and
+      keywords to be written, for example, ``'pos'`` and
       ``'seg'``.
 
 ---------------------------
