@@ -738,6 +738,7 @@
 እግረ//ሰንሰለት	እግረ//ሰንሰለት	[+hdfin,-hdaff,deppos=N,lemma=እግረ__ሰንሰለት]
 እግረ//ሽሕ	እግረ//ሽሕ	[+hdfin,-hdaff,deppos=N,lemma=እግረ__ሽሕ]
 እግረ//ጽሑፍ	እግረ//ጽሑፍ	[+hdfin,-hdaff,deppos=N,lemma=እግረ__ጽሑፍ]
+ኣፍ//ደ/ገ		ኣፍ//ደ/ገ		[+hdfin,-hdaff,deppos=N,lemma=ኣፍ__ደገ]
 መርገጽ//ግሪ	መርገጽ//ግሪ	[+hdfin,-hdaff,deppos=N,lemma=መርገጽ__ግሪ]
 መቕዘፍ//ግሪ	መቕዘፍ//ግሪ	[+hdfin,-hdaff,deppos=N,lemma=መቕዘፍ__ግሪ]
 መንገ/ዲ//ግሪ	መንገ/ዲ//ግሪ	[+hdfin,-hdaff,deppos=N,lemma=መንገዲ__ግሪ]

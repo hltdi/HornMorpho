@@ -69,7 +69,6 @@ Astem -> stemV	[ኡ;ኣ;ኦ;ኤ]	[pos=PRON,-dem]
 
 stem0 -> stemC	[*;/]
 stem0 -> stemV	[*v]
-#stem0 -> stemi	[*i]
 
 stemC -> stemC	[*;/]
 stemC -> stemV	[*v]
@@ -77,9 +76,9 @@ stemC -> stemV	[*v]
 stemV -> stemC	[*;/]
 stemV -> stemV	[*v]
 
-# C -> Cu
+# C -> Cu, etc.
 stemV -> stemu	[{I2u}]
-stemC -> stemu 	[[I2u}]
+stemC -> stemu	[{I2u}]
 stemV -> stema	[{I2a}]
 stemC -> stema	[{I2a}]
 stemV -> stemo	[{I2o}]
@@ -192,4 +191,3 @@ cnj -> cnj		[ከ]		[+neg];[-neg,p=s1];[-neg,p=pm2];[-neg,p=pf2];[-neg,p=pm3];[-n
 cnj -> cnj		[ኸ:ከ]	[-neg,p=p1];[-neg,p=sm2];[-neg,p=sf2];[-neg,p=sm3];[-neg,p=sf3];[+sv,-neg,p=0]
 
 cnj ->
-

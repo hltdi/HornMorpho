@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022, 2023, 2024.
+    Copyleft 2022-2025.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
     morfo is free software: you can redistribute it and/or modify
@@ -72,6 +72,7 @@ class HMToken(Token):
 
     @staticmethod
     def create_morph(index, string, lemma, pos, feats, head, deprel, analysis, xpos=None, misc=None):
+#        print("   ** creating HMToken {} {} {} {} {} {} {}".format(index, string, lemma, pos, feats, head, deprel))
         return HMToken(
             {'id': index, 'form': string, 'lemma': lemma, 'upos': pos, 'xpos': xpos or pos,
              'feats': feats, 'head': head, 'deprel': deprel, 'deps': None, 'misc': misc
@@ -349,21 +350,19 @@ class Sentence():
         mwe = 'tokens' in analdict
         if mwe:
             mwe_feats = analdict['feats']
-#            print("mwe feats {}".format(mwe_feats.__repr__()))
             if mwe_feats and mwe_feats.get('segpart', False):
                 if mwe_feats.get('hdfin', False):
                     mwe_first = True
-                    token = analdict['tokens'][0]
-                    string = token['token']
-                    pos = token.get('pos', mwe_feats.get('pos'))
-                    xpos = token.get('xpos', None)
                     misc = Sentence.format_misc(mwe_feats)
-                    head = stemdict.get('head', 0)+2
-#                    print("** MWE token {} pos {} head {}".format(token, pos, head))
-                    conllu.append(
-                        HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict, xpos=xpos, misc=misc)
-                        )
-                    index += 1
+                    for token in analdict['tokens'][:-1]:
+                        string = token['token']
+                        pos = token.get('pos', mwe_feats.get('pos'))
+                        xpos = token.get('xpos', None)
+                        head = stemdict.get('head', 0)+2
+                        conllu.append(
+                            HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict, xpos=xpos, misc=misc)
+                            )
+                        index += 1
 #                else:
 #                    print("**  Last position")
 
@@ -375,10 +374,14 @@ class Sentence():
             string = p['seg']
             head = p.get('head', 0)+1
             if mwe_first:
-                head += 1
-#            print(" *** lemma for prefix {}".format(string))
+                add2head = len(analdict.get('tokens', [])) - 1
+                head += add2head
             if ' ' in string:
+                # Separate MWE tokens
                 strings = string.split()
+                if type(pos) is str:
+                    # Use the same POS for all of the pre-tokens
+                    pos = [pos] * len(strings)
                 for string, ps in zip(strings, pos):
                     conllu.append(
                         HMToken.create_morph(index, string, p.get('lemma', string), ps, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'), misc=Sentence.format_misc(p))
@@ -980,6 +983,7 @@ class Sentence():
         '''
         The lemmas in a segmentation if any is different from the form.
         '''
+#        print("** Getting lemmas: {} | {}".format(segmentation, forms))
         if len(segmentation) == 1:
             lemma = segmentation[0].get('lemma')
             if not lemma:
@@ -992,6 +996,7 @@ class Sentence():
             # Only show lemmas if they're different from form, but always show the head lemma
             lm = []
             for i, (l, f) in enumerate(zip(lemmas, forms)):
+#                print("  ** lemma {} | form {} | headindex {} | i {}".format(l, f, headindex, i))
                 if i == headindex or l != f:
                     lm.append(l)
                 else:
@@ -1032,7 +1037,6 @@ class Sentence():
         All dependencies start here.
         '''
         seg0 = segmentation[0]
-#        print("  ** get_headindex seg0 {}; {}; {}".format(seg0, type(seg0), seg0.analysis))
         if v5:
             return seg0.analysis.get('head')
         return segmentation[0].get('misc')
@@ -1044,21 +1048,16 @@ class Sentence():
         '''
         if len(segmentation) == 1:
             return None
-#        print("** get dependencies; segmentation: {}, v5 {}".format(segmentation, v5))
         headindex = Sentence.get_headindex(segmentation, v5=v5)
-#        print("  ** headindex {}".format(headindex))
         if headindex is not None:
             headid = segmentation[1:][headindex].get('id')
-#            print("  ** headid {}".format(headid))
             idiff = headid - headindex
             dependencies = [(s.get('deprel', ''), i, s.get('head', '') - idiff) for i, s in enumerate(segmentation[1:]) if i != headindex]
             dependencies = [d for d in dependencies if d[1] != d[2]]
-#            print("  ** dependencies {}".format(dependencies))
             left = []
             right = []
             for dependency in dependencies:
                 source, dest = dependency[2], dependency[1]
-#                print("    *** dependency src {}, dest {}, headindex {}".format(source, dest, headindex))
                 if source >= headindex and dest >= headindex:
                     right.append(dependency)
                 elif source <= headindex and dest <= headindex:

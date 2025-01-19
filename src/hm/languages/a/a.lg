@@ -1,6 +1,6 @@
 name: አማርኛ
 code: a
-version: 1.5
+version: 1.7
 
 gemination: True
 
@@ -70,6 +70,7 @@ feats:
 
   pos: v verb
     morphotax::
+      {'name': 'mwepart', 'dep': 'compound', 'mwe': True};
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
                       'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),\

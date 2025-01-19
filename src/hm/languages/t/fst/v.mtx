@@ -164,7 +164,8 @@ $ ob_suf
     ልኩም	[on=2,og=m]
     ልክን	[on=2,og=f]
   [op=3,on=1,og=m,oc=a,+O]
-    ኦ		[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f]
+    ኦ		[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f];
+    		[sp=2|3,sn=2,sg=m]
     ዎ		[sp=2|3,sn=2,sg=m];[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ዎ	<ዎ>	[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ዮ	[t=p|c,sp=2,sn=1];[t=c,sp=1];[t=p,sp=1,sn=2];[t=i|j,sp=2,sn=1,sg=f];[t=j,-ijsuf, tmp=[3=L]]
@@ -172,7 +173,8 @@ $ ob_suf
     ሉ		[t=p|c,sp=2|3,sn=2];[t=i|j,sp=2|3,sn=2]
     /ሉ	[t=p|c,sn=1];[t=p|c,sp=1,sn=2];[t=i|j,sn=1];[t=i|j,sp=1,sn=2]
   [op=3,on=1,og=f,oc=a,+O]
-    ኣ		[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f]
+    ኣ		[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f];
+    		[sp=2|3,sn=2,sg=m]
     ዋ		[sp=2|3,sn=2,sg=m];[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ዋ	<ዋ>	[sp=2|3,sn=2,sg=m];[t=p,sp=1,sn=1]
     /ያ	[t=p|c,sp=2,sn=1];[t=c,sp=1];[t=p,sp=1,sn=2];[t=i|j,sp=2,sn=1,sg=f];[t=j,-ijsuf, tmp=[3=L]]
@@ -180,7 +182,8 @@ $ ob_suf
     ላ		[t=p|c,sp=2|3,sn=2];[t=i|j,sp=2|3,sn=2]
     /ላ	[t=p|c,sn=1];[t=p|c,sp=1,sn=2];[t=i|j,sn=1];[t=i|j,sp=1,sn=2]
   [op=3,on=2,og=m,oc=a,+O]
-    ኦም	[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f]
+    ኦም	[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f];
+	        [sp=2|3,sn=2,sg=m]
     ዎም 	[sp=2|3,sn=2,sg=m];[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ዎም	<ዎም>	[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ዮም	[t=p|c,sp=2,sn=1];[t=c,sp=1];[t=p,sp=1,sn=2];[t=i|j,sp=2,sn=1,sg=f];[t=j,-ijsuf, tmp=[3=L]]
@@ -189,7 +192,8 @@ $ ob_suf
     /ሎም	[t=p|c,sn=1];[t=p|c,sp=1,sn=2];[t=i|j,sn=1];[t=i|j,sp=1,sn=2]
     ሎም
   [op=3,on=2,og=f,oc=a,+O]
-    አን	[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f]
+    አን	[t=i,-ijsuf];[t=j,-ijsuf,tmp=[3=X]];[t=p,sp=3,sn=1];[sp=2|3,sn=2,sg=f];[t=c,sp=3,sn=1,sg=f];
+		[sp=2|3,sn=2,sg=m]    
     ወን 	[sp=2|3,sn=2,sg=m];[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /ወን	<ወን> 	[t=c,sp=3,sn=1,sg=m];[t=p,sp=1,sn=1]
     /የን	[t=p|c,sp=2,sn=1];[t=c,sp=1];[t=p,sp=1,sn=2];[t=i|j,sp=2,sn=1,sg=f];[t=j,-ijsuf, tmp=[3=L]]

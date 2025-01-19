@@ -1241,6 +1241,7 @@
 ግራ//<ጌታ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ግብር//<ውሀ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ግንባር//<ቀደም  ''  [+hdfin,-hdaff,deppos=N,pos=N]
+ግምባር//<ቀደም  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ግንደ//<ቆርቁር  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ጉልቻ//<ራስ  ''  [+hdfin,-hdaff,deppos=N,pos=N]
 ጎል//<ጠባቂ  ''  [+hdfin,-hdaff,deppos=N,pos=N]

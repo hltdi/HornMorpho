@@ -1464,6 +1464,7 @@ class POSMorphology:
         pre = stem = suf = mwe_part = ''
         pos = features.get('pos')
         degem = kwargs.get('degem', True)
+        premwe = ''
 #        print("~~ process_segstring:: {}; {}".format(string, degem))
         string = self.postproc5(string, gemination=not degem, elim_bounds=False)
 #            string = EES.degeminate(string, elim_bounds=False)
@@ -1481,7 +1482,9 @@ class POSMorphology:
                 match = POSMorphology.segment_mwe_re.match(string)
 #                print(" ** match groups: {}".format(match.groups()))
                 premwe, pre, stem, suf, postmwe = match.groups()
-#                pre = premwe + pre
+#                if premwe:
+#                    pm = [p.strip() for p in premwe.split()]
+#                    pre = pm + [pre]
             if not match:
                 return '', [], '', [], ''
             mwe_part = mwe_part or premwe or postmwe
@@ -1501,6 +1504,9 @@ class POSMorphology:
                 stem = EES.degeminate(stem)
             string = "{}<{}>{}".format(pre, stem, suf)
         pre = pre.split(Morphology.morph_sep)
+        if premwe:
+#            premwe = [p.strip() for p in premwe.split()]
+            pre = [premwe.strip()] + pre
 #        print(" **pre {}".format(pre))
         suf = suf.split(Morphology.morph_sep)
         return string, pre, stem, suf, mwe_part
@@ -1547,9 +1553,9 @@ class POSMorphology:
         gemination = kwargs.get('gemination', not degem)
         mwe = kwargs.get('mwe', False)
         string, prefixes, stem, suffixes, mwe_part = self.process_segstring(string, features, **kwargs)
-#        print("** string {} prefixes {} stem {} suffixes {} mwe_part {}".format(string, prefixes, stem, suffixes, mwe_part))
         real_prefixes = [p for p in prefixes if p]
         real_suffixes = [s for s in suffixes if s]
+#        print("** string {} prefixes {} stem {} suffixes {} mwe_part {}".format(string, prefixes, stem, suffixes, mwe_part))
         procdict = {'token': token, 'feats': features, 'seg': string}
         if raw_token:
             procdict['raw'] = raw_token
@@ -1574,6 +1580,7 @@ class POSMorphology:
                 if mwe_props.get('segpart', False):
                     procdict['nsegs'] += 1
             # Accommodate MWEs of more than 2 words
+#            print("** mwe part: {}".format(mwe_part))
             mwe_extra_toks = len(mwe_part.split()) - 1
             if mwe_extra_toks:
 #                print("** mwe_extra {}".format(mwe_extra_toks))
@@ -1602,7 +1609,13 @@ class POSMorphology:
         procdict['udfeats'] = udfeats
         stemd = None
         max_stem_index = len(prefixes)
-        stem_index = len(real_prefixes) + mwe_extra_toks
+        stem_index = len(real_prefixes)
+        if mwe:
+            if any([' ' in x for x in real_prefixes]):
+#                print("** Adding 1 to stem_index for extra PART")
+                stem_index += 1
+#            stem_index += mwe_extra_toks
+#            print(" ** mwe_extra_toks {}, stem_index {}".format(mwe_extra_toks, stem_index))
         if self.segments:
             preprops, stemprops, sufprops = self.segments
             pre_dicts = []

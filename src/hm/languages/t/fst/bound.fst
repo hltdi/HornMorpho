@@ -36,7 +36,7 @@ C2Xyi -> stem+	[:<]
 
 ## stem-prefix boundary
 
-# ዘስበረ; ተስ/ብር
+# ዘስበረ; ተስ/ብር; እንተሎ
 C -> C2e			[{I2e}]
 start -> C2e		[{I2e}]
 subj -> C2e		[{I2e}]
@@ -44,6 +44,11 @@ C2e -> C2e		[:-]
 C2e -> C2e		[:ይ]	[t=i,sp=1|3]
 C2e -> C2e+		[:<]
 C2e+ -> stem0	[:ኣ]
+
+C -> C2te		[ተ]		[root=ህልው,r=ህልው]
+C2te -> C2te		[:-]
+C2te -> C2te+	[:<]
+C2te+ -> C2alle	[:-]
 
 # ዘሎ ከሎ etc.
 C2e+  -> C2alle	[:-]	 [root=ህልው,r=ህልው]
@@ -170,22 +175,38 @@ suffi -> suffi		[:-]
 stem_E -> stem_E+	[:>]
 stem_E+ -> suff		[:ኤ]
 
-## objects
-# 3 objects with 2|3pf subjects
+### objects
+
+## 3 objects with 2|3pf subjects
 # optionally skip ኣ suffix
 stemC+ -> suff3pfA		[:ኣ]
 suff3pfA ->	suff3pfA+	[:-]
 suff3pfA+ -> suff		[:እ]
-suff -> suff3pfA+		[:-] 			
+suff -> suff3pfA+		[:-]
 
-# 23pm subjects with infixed ኡ
-suff -> suff_mu			[ሙ:ም]
+## 23pm subjects with infixed ኡ
+suff -> suff_mu		[ሙ:ም]
 suff_mu -> suff_mu+	[:-]
 suff_mu+ -> suff		[:ኡ]
-# 23pf subjects with infixed ኣ
-suff -> suff_na			[ና:ን]
+
+## 23pf subjects with infixed ኣ
+suff -> suff_na		[ና:ን]
 suff_na -> suff_na+	[:-]
 suff_na+ -> suff		[:ኣ]
+
+## 23pm subjects with 3 objects without ው
+# ሰቢሮሞ ሰቢሮሞም ሰቢርኩሞ ሰቢርኩሞም
+suff -> suff_mo	       	[ሞ:ም]
+suff_mo -> suff_mo+	[:-]
+suff_mo+ -> suff		[:ኦ]
+# ሰቢሮማ ሰቢርኩማ
+suff -> suff_ma		[ማ:ም]
+suff_ma -> suff_ma+	[:-]
+suff_ma+ -> suff		[:ኣ]
+# ሰቢሮመን ሰቢርኩመን (not sure if this happens)
+suff -> suff_me	    	 [መ:ም]
+suff_me -> suff_me+	 [:-]
+suff_me+ -> suff		 [:አ]
 
 ## 3sf subjects, 3 object; perfective and converb
 # geminate t
@@ -200,7 +221,7 @@ a.t -> ate			[ተ:ት]
 ate -> ate+			[:-]
 ate+ -> suff		[:አ]
 
-# object suffixes without vowel infixes
+## object suffixes without vowel infixes
 suff -> suff+			[:-]
 suff+ -> suff+			[/]
 # is k possible?

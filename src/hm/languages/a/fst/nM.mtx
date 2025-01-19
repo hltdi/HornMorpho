@@ -38,34 +38,33 @@ $ plural
 $ plur_bound
   -
 
+$ human
+  # +-hum: the presence or absence of this suffix
+  # +-h: whether the noun is human (add to lexicon later)
+  እ/የ			[+hum,+h,-pl,-col,-dis,pos=N]
+  እ/ዬ	<እየ>	[+hum,+h,-pl,-col,-dis,pos=N]
+  እ/ዮ	<እየ>	[+hum,+h,+fem,-pl,-col,-dis,pos=N]
+  --				[-hum]
+
+$ human_bound
+  -
+
 $ poss_det
-  ኤ		[p=s1]
-  ኣ/ችን	[p=p1]
-  ህ		[p=sm2]
-  ሽ		[p=sf2]
-  ኣ/ችሁ	[p=p2]
-  ዎ		[p=F2]
+  ኤ		[p=s1,plemma=እኔ,spos=PRON,ptype=prs]
+  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON,ptype=prs]
+  ህ		[p=sm2,plemma=አንተ,spos=PRON,ptype=prs]
+  ሽ		[p=sf2,plemma=አንቺ,spos=PRON,ptype=prs]
+  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON,ptype=prs]
+  ዎ		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
+  ዎን		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
   # possessive or determiner
   #{
-  ኡ		[p=sm3]
-  ዋ		[p=sf3]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON,ptype=prs];[p=0,+def,g=m,pos=N|ADJ|PRON,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON,ptype=prs];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON,spos=DET]
+  ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,d=0,pos=N,spos=DET]
   #}
-  ኣ/ቸው	[p=p3]
-  --		[p=0]
-
-#  ኤ		[pp=1,pn=1,-pf]
-#  ኣ/ችን	[pp=1,pn=2,-pf]
-#  ህ		[pp=2,pn=1,pg=m,-pf]
-#  ሽ		[pp=2,pn=1,pg=f,-pf]
-#  ኣ/ችሁ	[pp=2,pn=2,-pf]
-#  ዎ		[pp=2,+pf]
-#  # possessive or determiner
-#  #{
-#  ኡ		[pp=3,pn=1,pg=m,-pf,-det];[pp=0,+det,g=m]
-#  ዋ		[pp=3,pn=1,pg=f,-pf,-det];[pp=0,+det,g=f]
-#  #}
-#  ኣ/ቸው	[pp=3,pn=2,-pf];[pp=3,+pf]
-#  --		[pp=0,-det]
+  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON,ptype=prs]
+  --		[p=0,-def]
 
 $ poss_bound
   -

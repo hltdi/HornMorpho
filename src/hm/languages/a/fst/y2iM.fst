@@ -1,9 +1,16 @@
--> first
+-> particle
 
-first -> first	[^N]
-first -> /		[/]
-/ -> first		[^N]
-/ -> start		[/]
+particle -> particle    [^N]
+particle -> particle/  [/]
+particle/ -> particle  [^N]
+# There can be more than one particle
+particle/ -> particle   [/]
+particle/ -> start	   [/]
+
+#first -> first	[^N]
+#first -> /		[/]
+#/ -> first		[^N]
+#/ -> start		[/]
 
 ## following particle
 
