@@ -1894,6 +1894,8 @@
   a=0,v=0 ; a=0,v=p
 <ስ ል ት ት>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
+<ስ ል ች ው>	c=E,base=0
+  a=0,v=0 ; a=0,v=a ; a=0,v=p
 <ስ ል ኩ>		c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ስ ል ክ ም>		c=E,base=0
@@ -7165,7 +7167,7 @@
 <ጥ ም ዝ ዝ>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ጥ ም ይ>		c=A,base=0
-  a=0,v=0 ; a=0,v=a
+  a=0,v=0 ; a=0,v=a ; a=0,v=p
 <ጥ ም ጥ ም>		c=E,base=0
   a=0,v=0 ; a=a,v=p ; a=0,v=p ; a=0,v=a
 <ጥ ር ም ም>		c=E,base=a
@@ -7461,7 +7463,7 @@
 <ጭ ን ቁ ር>		c=E,base=0
   a=0,v=0 ; a=0,v=p ; a=0,v=a
 <ጭ ን ቅ>		c=A,base=0
-  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a
+  a=0,v=0 ; a=i,v=0 ; a=0,v=p ; a=a,v=p ; a=i,v=p ; a=a,v=a ; a=0,v=a
 <ጭ ን ክ ል>		c=E,base=0
   a=0,v=0 ; a=0,v=a
 <ጭ ን ው>		c=A,base=0
@@ -7597,9 +7599,9 @@
 <ጽ ም ብ ዕ>		c=E,base=0
   a=0,v=0 ; a=0,v=a
 <ጽ ም እ>		c=A,base=0
-  a=0,v=0 ; a=0,v=a
+  a=0,v=0 ; a=0,v=a ; a=0,v=p
 <ጽ ም ው>		c=B,base=0
-  a=0,v=0 ; a=0,v=a
+  a=0,v=0 ; a=0,v=a ; a=0,v=p
 <ጽ ም ው>		c=C,base=0
   a=0,v=0 ; a=0,v=a
 <ጽ ም ዕ>		c=B,base=p

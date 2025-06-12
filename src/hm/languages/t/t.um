@@ -119,7 +119,7 @@ POS v V
 #->UD *TESERARAHI	^ኣዕማድ=ተሰራራሒ
 #->UD *ASERARAHI	^ኣዕማድ=ኣሰራራሒ
 
-t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS;; c,*:PFV;CVB
+t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS;; c,*:CVB
 
 #pos!t:: v:V;; 0:ADJ;; 0:N
 

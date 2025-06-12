@@ -1,8 +1,8 @@
 """
 This file is part of the HornMorpho package.
 
-Copyright (C) 2023, 2024.
-Michael Gasser <gasser@indiana.edu>
+Copyright (C) 2023, 2024, 2025.
+Michael Gasser <gasser@iu.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

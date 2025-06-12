@@ -5,7 +5,7 @@ LIST NOMINAL = N PRON DET ;
 LIST PREP = ("እንደ" ADP) ("እስከ" ADP) ("ስለ" ADP) ("በስተ" ADP) ("ያለ" ADP) ("ወደ" ADP) ("ባለ" ADP) ;
 LIST POSTP = ("ውስጥ" ADP) ("ላይ" ADP) ("ታች" ADP) ("ውጭ" ADP) ("ምክንያት" ADP) ("በኋላ" ADP) ("በፊት" ADP) ("ጋር" ADP) ;
 #LIST ADVERBIAL = ADV CVB 
-LIST NMOD = REL ADJ DET NUM GEN ;
+LIST NMOD = RELC ADJ DET NUM GEN ;
 LIST PERSON = 1 2 3 ;
 LIST GENDER = FEM MASC ;
 LIST NUMBER = SG PL ;
@@ -27,11 +27,12 @@ MAP (@ROOT) ROOTV
 MAP (@ROOT) VAUX
     (1 (AUX) LINK 1 (<<<)) ;
 
-# With final ነው AUX, the preceding word (if not an ADP) is the head.
-# Maybe this includes the last one.
+# With final AUX, the preceding word (if not an ADP) is the head.
+# Maybe this includes the last rule.
 MAP (@ROOT) OPEN
     (1 (AUX) LINK 1 (<<<)) ;
 
+# መሄድ ላይ ነን ።
 MAP (@ROOT) (N)
     (1 (ADP))
     (2 ("ነው"))
@@ -40,8 +41,10 @@ MAP (@ROOT) (N)
 # In cleft sentences the copula is not final.
 # What precedes it is the root, but prevent this if there is a later main verb,
 # which could happen if there is a quoted part.
+# Force the last token to be a relative verb?
 MAP (@ROOT) (*)
     (1 ("ነው"))
+    (NOT 2 (<<<))
     (NOT 2* ROOTV) ;
 
 ## Make nodes with @ROOT the actual root (parent 0).
@@ -105,22 +108,23 @@ ADDRELATION (case) POSTP FROM (-1 NOM) ;
 ### Nominal and adverbial children
 
 ## Nominals and adverbials followed by main root verbs with no verbs
-## or other nominals in between (the nominal may modify the other other nominal).
+## or other nominals in between (the nominal may modify the other nominal).
 SETPARENT NOMINAL
     TO (1* (MAIN @ROOT) BARRIER VERBAL OR (N)) ;
 
+# fixed 2025.5.11 to fail in case of PROPN + PROPN (ወ/ሮ አልማዝ)
 SETPARENT (PROPN)
-    TO (1* (MAIN @ROOT) BARRIER VERBAL) ;
+    TO (1* (MAIN @ROOT) BARRIER VERBAL OR (N) OR (PROPN)) ;
 
-## A nominal immediately preceding a root is its child.
-SETPARENT NOM
-    TO (1 (@ROOT)) ;
+### A nominal immediately preceding a root is its child.
+#SETPARENT NOM
+#    TO (1 (@ROOT)) ;
 
 ADDRELATION (advmod) (ADV)
-    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (ADVCL)) ;
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (V)) ;
 
 ADDRELATION (advcl) (CVB)
-    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (ADVCL)) ;
+    FROM (1* (MAIN @ROOT) BARRIER (INF) OR (CVB) OR (ADVCL) OR (RELC)) ;
 
 ADDRELATION (ccomp) (CCOMP)
     FROM (1 KNOWSPEAK) ;

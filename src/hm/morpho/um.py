@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-    Copyleft 2020-4. Michael Gasser.
+    Copyleft 2020-2025. Michael Gasser. gasser@iu.edu
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@ This file is part of HornMorpho, which is a project of PLoGS.
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
 ------------------------------------------------------
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 Conversion of HornMorpho features to UniMorph features and vice versa.
 
@@ -42,7 +42,7 @@ class UniMorph:
     abbrev_re = re.compile(r'\s*abbrev\s*(.+)\s+(.+)$')
     sep_convert_re = re.compile(r'\s*sepconvert\s+(.+)$')
 
-    def __init__(self, language, read=True):
+    def __init__(self, language, read=True, morph_version=0):
         # A Language instance
         self.language = language
         self.hm2um = {}
@@ -51,7 +51,7 @@ class UniMorph:
         self.abbrevs = {}
         self.convertdict = {}
         if read:
-            self.read()
+            self.read(morph_version=morph_version)
             self.reverse()
 
     def __repr__(self):
@@ -472,12 +472,14 @@ class UniMorph:
             u2h[pos] = posdict
         self.um2hm = u2h
 
-    def get_path(self):
+    def get_path(self, morph_version=0):
         """
         Path for where the UM conversion data is stored for
         the language.
         """
         d = self.language.get_dir()
+        if morph_version:
+            return os.path.join(d, "{}_{}.um".format(self.language.abbrev, morph_version))
         return os.path.join(d, self.language.abbrev + ".um")
 
     def convert2ud(self, um, pos, extended=False, return_dict=False):
@@ -524,11 +526,12 @@ class UniMorph:
             return dict([u.split('=') for u in udfeats]), udalts
         return '|'.join(udfeats)
 
-    def read(self, verbosity=0):
+    def read(self, morph_version=0, verbosity=0):
         """
         Read in the UM conversion data.
         """
-        path = self.get_path()
+        path = self.get_path(morph_version=morph_version)
+        print("Loading UM and CoNNL-U conventions from {}".format(path))
         current_pos = ''
         current_supfeat = ''
         current_feats = []
@@ -559,6 +562,7 @@ class UniMorph:
                         convertdict = [c.split(':') for c in convertdict]
                         convertdict = dict(convertdict)
                         self.convertdict = convertdict
+#                        print("*** convertdict: {}".format(convertdict))
                         continue
 
                     m = UniMorph.pos_re.match(line)

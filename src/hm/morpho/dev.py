@@ -4,7 +4,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
     Copyleft 2017, 2018.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

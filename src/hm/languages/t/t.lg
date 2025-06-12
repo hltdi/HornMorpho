@@ -49,6 +49,8 @@ normalization::
 
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
 
+CG: disambig dep
+
 feats:
 
   pos: v verb
@@ -67,7 +69,7 @@ feats:
       {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:suf', 'o': 'obl:suf'}),\
         'feats': ['ObjNum', 'ObjPers', 'ObjGen', 'AppNum', 'AppPers', 'AppGen', 'PronType']};
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-      {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc:suf'}
+      {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
 
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}
@@ -78,7 +80,7 @@ feats:
     t = p | i | j | c
     adp = 0 | ብ | ን
     conj1 = 0 | ዝ | ክ | እንክ | ም | ከምዝ | እና | እንተ | እንተዝ | እ | ንኽ | ድ | እንተዘይ | ከምዝ | ከምዘይ |ደይ | ዘይ | እንከይ | ከይ | ኣይ
-    conj2 = 0 |  ዶ | ከ | ና | ንዶ
+    conj2 = 0 |  ዶ | ከ | ና | ንዶ | ን
     sp = 3 | 2 | 1
     sn = 1 | 2
     sg = m | f
@@ -88,27 +90,27 @@ feats:
     oc = a | o
     int = False | True
 
-  pos: v_stem v_stem
-    a = 0 | a | i
-    v = 0 | p | a 
-    t = p | i | j
-    cons = False | True
+#  pos: v_stem v_stem
+#    a = 0 | a | i
+#    v = 0 | p | a 
+#    t = p | i | j
+#    cons = False | True
 
-  pos: v_light_stem v_light_stem
-    a = 0 | a | i
-    v = 0 | p | a 
-    t = p | i | j
+#  pos: v_light_stem v_light_stem
+#    a = 0 | a | i
+#    v = 0 | p | a 
+#    t = p | i | j
 
-  pos: vn v_noun
-    a = 0 | a | i
-    v = 0 | p | a
-    d = inf | ins | a | m
+#  pos: vn v_noun
+#    a = 0 | a | i
+#    v = 0 | p | a
+#    d = inf | ins | a | m
 
-  pos: vn_stem v_noun_stem
-    a = 0 | a | i
-    v = 0 | p | a
-    d = inf | ins | a | m
-    neg = False | True
+#  pos: vn_stem v_noun_stem
+#    a = 0 | a | i
+#    v = 0 | p | a
+#    d = inf | ins | a | m
+#    neg = False | True
 
   pos: cop copula
     pos = AUX

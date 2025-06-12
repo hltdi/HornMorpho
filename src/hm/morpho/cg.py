@@ -130,11 +130,12 @@ class CG:
 
     @staticmethod
     def word2cohort(word, verbosity=0):
-#        if verbosity:
-#            print("  Converting {} to cohort".format(word))
+        if verbosity:
+            print("&&  Converting {} to cohort".format(word))
         token = word.name
         result = ['"<{}>"'.format(token)]
-        if not word.readings:
+        if not word.readings or len(word.readings) != len(word):
+            # Either this is the first call to CG rules or earlier rules have changed the word
             readings = [CG.anal2reading(analysis, verbosity=verbosity) for analysis in word]
 #            if not self.disambig and len(readings) > 1:
 #                print("Warning: {} has more than one analysis!".format(word))
@@ -147,8 +148,8 @@ class CG:
         '''
         Convert an HM Sentence object to a list of Cohort objects.
         '''
-#        if verbosity:
-#            print("Converting {} to CG".format(sentence))
+        if verbosity:
+            print("Converting {} to CG".format(sentence.words))
         cohorts = []
         if predelim:
             cohorts.append(Cohort(predelim, []))
@@ -157,9 +158,6 @@ class CG:
         if postdelim:
             cohorts.append(Cohort(postdelim, []))
         return CGSentence(cohorts)
-#        if write2:
-#            with open(write2, 'w', encoding='utf8') as file:
-#                print(result, file=file)
 
     @staticmethod
     def sentstring2CGsent(sentstring):
@@ -207,13 +205,14 @@ class CG:
         '''
         if verbosity:
             print("  Running rules at {}".format(self.rules_path))
+#        print("%%Running rules in {}".format(sentences))
         args = [CG.cg_path, '-g', self.rules_path]
         if trace:
             args.append('-t')
         result = subprocess.run(args, input=sentences, capture_output=True, text=True)
         return result.stdout.strip()
 
-    def realize_rules(self, sentence, sentstring, verbosity=0):
+    def realize_rules(self, sentence, sentstring, verbosity=1):
         '''
         sentstring is the output of rules applied to sentence.
         Realize the rules by
@@ -222,13 +221,13 @@ class CG:
         '''
         if verbosity:
             if self.disambig:
-                print("  Disambiguating {}".format(sentence.words))
+                print("Disambiguating {}".format(sentence.words))
             else:
-                print("  Annotating {}".format(sentence.words))
+                print("Annotating {}".format(sentence.words))
         todel = {}
         CGsent = CG.sentstring2CGsent(sentstring)
-#        if verbosity:
-#            print("CGsent {}".format(CGsent.format()))
+        if verbosity:
+            print("CGsent {}".format(CGsent.format()))
         if len(sentence.words) != len(CGsent.cohorts):
             print("Something wrong: # words {} != # cohorts {}".format(len(sentence.words), len(CGsent.cohorts)))
             return
@@ -298,9 +297,10 @@ class CG:
         If disambiguation, possibly delete readings of some cohorts (words).
         If annotation, possibly set the sentence root and relations.
         '''
-#        if verbosity:
-        print("Running {} rules".format(self.rule_type()))
+        if verbosity:
+            print("Running {} rules".format(self.rule_type()))
         cgsent = CG.sentence2cohorts(sentence, predelim=predelim, postdelim=postdelim, verbosity=verbosity)
+#        print("** cgsent {}, sentence {}".format(cgsent, sentence))
         rule_out = self.call_cg3(cgsent.format(), trace=True, verbosity=verbosity)
         if not rule_out:
             print("  Rules returned nothing!")
@@ -470,7 +470,7 @@ class CGSentence:
         root = -1
         for windex, cohort in enumerate(self.cohorts):
             if not cohort.readings:
-                print("*** {} in {} has not readings".format(cohort, self.cohorts))
+                print("*** {} in {} has no readings".format(cohort, self.cohorts))
             id = cohort.get_id()
             if id:
                 ids[id] = windex

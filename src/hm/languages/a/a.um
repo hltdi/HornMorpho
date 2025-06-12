@@ -1,3 +1,6 @@
+## Morphology: inflection features assume affixes are like words,
+## with their own PNG in the case of subject/object agreement
+
 #abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
 #abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
 #abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
@@ -19,35 +22,25 @@ POS n N
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
 # Leave off noun gender (for now?)
-#->UD FEM	Gender=Fem
-#->UD MASC	Gender=Masc
-# These layered features are only necessary if features are assigned to the whole word rather than the suffis
-->UD PSS1P	Number[psor]=Plur,Person[psor]=1
-->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form
-->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
-->UD PSS2P	Number[psor]=Plur,Person[psor]=2
-->UD PSS1S	Number[psor]=Sing,Person[psor]=1
-->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
-->UD PSS3P	Number[psor]=Plur,Person[psor]=3
-->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
-->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
-#->UD PSS1P	Number=Plur,Person=1,PronType=Prs
-#->UD PSS2SFORM	Number=Sing,Person=2,Polite=Form,PronType=Prs
-#->UD PSS2SF	Gender=Fem,Number=Sing,Person=2,PronType=Prs
-#->UD PSS2P	Number=Plur,Person=2,PronType=Prs
-#->UD PSS1S	Number=Sing,Person=1,PronType=Prs
-#->UD PSS2SM	Gender=Masc,Number=Sing,Person=2,PronType=Prs
-#->UD PSS3P	Number=Plur,Person=3,PronType=Prs
-#->UD PSS3SF	Gender=Fem,Number=Sing,Person=3,PronType=Prs
-#->UD PSS3SM	Gender=Masc,Number=Sing,Person=3,PronType=Prs
-#->UD {PSS3SM/DEF} &Poss3Def=Masc
-#->UD {PSS3SF/DEF} &Poss3Def=Fem
+# These layered features are only necessary if features are assigned to the whole word rather than the suffix
+->UD PSS1P	Number[psor]=Plur,Person[psor]=1,Possessive=Yes
+->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form,Possessive=Yes
+->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2,Possessive=Yes
+->UD PSS2P	Number[psor]=Plur,Person[psor]=2,Possessive=Yes
+->UD PSS1S	Number[psor]=Sing,Person[psor]=1,Possessive=Yes
+->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2,Possessive=Yes
+->UD PSS3P	Number[psor]=Plur,Person[psor]=3,Possessive=Yes
+->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
+->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
 ->UD TOP	*Inf=Topic
 ->UD 1		Person=1,PronType=Prs
 ->UD 2		Person=2,PronType=Prs
 ->UD 3		Person=3,PronType=Prs
+->UD FEM		Gender=Fem
+->UD MASC	Gender=Masc
 ->UD *PRSPRO	PronType=Prs
 ->UD *DEMPRO	PronType=Dem
+->UD *POSS	Possessive=Yes
 # suffixed copula
 ->UD PRS	Tense=Pres
 # infinitives and agentives
@@ -86,6 +79,7 @@ Pp:: 1:1;; 2:2;; 3:3
 Pn:: 1:SG;; 2:PL
 Pg:: m:MASC;; f:FEM
 ptype:: prs:*PRSPRO;; dem:*DEMPRO;; int:*INTPRO;; ind:*INDPRO
+pos,spos:: N,PRON:*POSS
 
 # note that -ም and -ስ are not distinguished
 cnj:: m:TOP;; s:TOP
@@ -164,15 +158,15 @@ POS v V
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-# Acc, Dat, and Mal only needed when features are assigned to the whole verb
-#->UD AC1S	*AccPers=1,AccNum=Sing
-#->UD AC1P	*AccPers=1,AccNum=Plur
-#->UD AC2SF	*AccPers=2,AccNum=Sing,AccGen=Fem
-#->UD AC2SM	*AccPers=2,AccNum=Sing,AccGen=Masc
-#->UD AC2P	*AccPers=2,AccNum=Plur
-#->UD AC3SF	*AccPers=3,AccNum=Sing,AccGen=Fem
-#->UD AC3SM	*AccPers=3,AccNum=Sing,AccGen=Masc
-#->UD AC3P	*AccPers=3,AccNum=Plur
+# Obj, Dat, and Mal only needed when features are assigned to the whole verb
+#->UD AC1S	*ObjPers=1,ObjNum=Sing
+#->UD AC1P	*ObjPers=1,ObjNum=Plur
+#->UD AC2SF	*ObjPers=2,ObjNum=Sing,ObjGen=Fem
+#->UD AC2SM	*ObjPers=2,ObjNum=Sing,ObjGen=Masc
+#->UD AC2P	*ObjPers=2,ObjNum=Plur
+#->UD AC3SF	*ObjPers=3,ObjNum=Sing,ObjGen=Fem
+#->UD AC3SM	*ObjPers=3,ObjNum=Sing,ObjGen=Masc
+#->UD AC3P	*ObjPers=3,ObjNum=Plur
 #->UD DA1S	*DatPers=1,DatNum=Sing
 #->UD DA1P	*DatPers=1,DatNum=Plur
 #->UD DA2SF	*DatPers=2,DatNum=Sing,DatGen=Fem
@@ -281,7 +275,7 @@ o,oc:: s1,0:AC1S;; p1,0:AC1P;; sm2,0:AC2SM;; sf2,0:AC2SF;; F2,0:AC2S;FORM;; p2,0
 o,oc:: sm3,l:DA3SM;; sm3,l:DA3SM;; sf3,l:DA3SF;; p3,l:DA3P
 o,oc:: s1,l:DA1S;; p1,l:DA1P;; sm2,l:DA2SM;; sf2,l:DA2SF;; F2,l:DA2S;FORM;; p2,l:DA2P
 # malefactive+ objects
-o,oc:: sm3,b:*MAL3SM;; sm3,b:*MAL3SM;; sf3,b:*MAL3SF;; p3,b:*MAL3P
+o,oc:: sm3,b:*MAL3SM;; sf3,b:*MAL3SF;; p3,b:*MAL3P
 o,oc:: s1,b:*MAL1S;; p1,b:*MAL1P;; sm2,b:*MAL2SM;; sf2,b:*MAL2SF;; F2,b:*MAL2S;FORM;; p2,b:*MAL2P
 
 ## Determiner and accusative suffixes

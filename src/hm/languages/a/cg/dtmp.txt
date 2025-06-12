@@ -1,291 +1,35 @@
 "<¶>"
 
-"<በበሽታው>"
-	"በሽታ" N INS OBL 3SMPOSS
-"<ምክንያት>"
-	"ምክንያት" ADP
-"<ቀረ>"
-	"ቀረ" V 3 SG MASC PFV MAIN
-"<።>"
-	"።" PUNCT
-
-"<ያልመጣው>"
-	"መጣ" V REL 3 SG MASC PFV NEG
-"<ምክንያት>"
-	"ምክንያት" N
-"<አልገባኝም>"
-	"ገባ" V PFV 3 SG MASC 1SOBJ NEG MAIN
-"<።>"
-	"።" PUNCT
-
-"<ከቤቱ>"
-	"ቤት" N ABL DEF SG OBL
+"<በመለማመድ>"
+	"መለማመድ" N INF INS OBL TEDERARAGI RECP SG
 "<ላይ>"
 	"ላይ" ADP
-"<ወረዱ>"
-	"ወረደ" V PFV MAIN 3P
+"<ነን>"
+	"ነው" AUX 1 PL PRS
 "<።>"
 	"።" PUNCT
 
-"<ቆንጆ>"
-	"ቆንጆ" ADJ
-"<አበባ>"
-	"አበባ" N
-"<ገዛች>"
-	"ገዛ" V PFV 3 SG FEM MAIN
+"<ወሬው>"
+	"ወሬ" N DEF MASC SG
+"<ተደፋፈነ>"
+	"ተደፋፈነ" V MAIN TEDERARAGI 3 MASC PFV RECP SG
 "<።>"
 	"።" PUNCT
 
-"<ምን>"
-	"ምን" PRON
-"<ይደረግ>"
-	"ተደረገ" V IMP 3 SG MASC
-"<መቼስ>"
-	"መቼስ" ADV
-"<?>"
-	"?" PUNCT
-
-"<መስኮቱን>"
-	"መስኮት" N DEF ACC SG
-"<ዝጋ>"
-	"ዘጋ" V IMP 2 SG MASC
-"<!>"
-	"!" PUNC
-
-"<ገብቶ>"
-	"ገባ" V CVB 3 PL MASC
-"<ተቀመጠች>"
-	"ተቀመጠ" V PFV 3 SG FEM MAIN
+"<በወንዙ>"
+	"ወንዝ" N INS OBL DEF MASC SG
+"<አጠገብ>"
+	"አጠገብ" ADP
+"<ሄዱ>"
+	"ሄደ" V DERAGI MAIN 3 PFV PL
 "<።>"
 	"።" PUNCT
 
-"<ጎጃም>"
-	"ጎጃም" PROPN
-"<ውስጥ>"
-	"ውስጥ" ADP
-"<ነው>"
-	"ነው" AUX PRS
-"<ያለው>"
-	"አለ_" V PRF REL DEF 3 SG MASC
-"<።>"
-	"።" PUNCT
-
-"<ቆንጆ>"
-	"ቆንጆ" ADJ
-"<ነው>"
-	"ነው" AUX PRS
-"<ቤቱ>"
-	"ቤት" N SG DEF
-"<።>"
-	"።" PUNCT
-
-"<ጥሩ>"
-	"ጥሩ" ADJ
-"<ባይሆንም>"
-	"ሆነ" V B_SC SUBORD 3 IPFV MASC NEG SG
-"<ይቅር>"
-	"ቀረ" V IMP 3 SG MASC
-"<።>"
-	"።" PUNCT
-
-"<ግድ>"
-	"ግድ" PART
-"<አለ>"
-	"አለ" V PRF 3 SG MASC MAIN
-"<።>"
-	"።" PUNCT
-
-"<ልጆቹ>"
-	"ልጅ" N PL {PSS3SM/DEF}
-"<ዛፍ>"
-	"ዛፍ" N SG
-"<ላይ>"
-	"ላይ" ADP
-"<ወጡ>"
-	"ወጣ" V DERAGI MAIN 3 PFV PL
-"<።>"
-	"።" PUNCT
-
-"<ከዛ>"
-	"ያ" DET ABL DEMPRO OBL MASC SG
-"<ይመጣ>"
-	"መጣ" V DERAGI I_PART 3 IPFV MASC SG
-"<ነበር>"
-	"ነው" AUX PST
-"<።>"
-	"።" PUNCT
-
-"<በጣም>"
-	"በጣም" ADV
 "<ቆንጆ>"
 	"ቆንጆ" ADJ SG
-"<ነበር>"
-	"ነው" AUX PST
+"<ልጅ>"
+	"ልጅ" N SG
+"<ነበረች>"
+	"ነው" AUX 3 FEM PST SG
 "<።>"
 	"።" PUNCT
-
-"<ምግብ>"
-	"ምግብ" N SG
-"<የሚፈለገው>"
-	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
-"<ወንድሜ>"
-	"ወንድም" N MASC PSS1S SG
-"<አይደለም>"
-	"ነው" AUX SUBORD 3 MASC NEG PRS SG
-"<።>"
-	"።" PUNCT
-
-"<ወንድሜ>"
-	"ወንድም" N MASC PSS1S SG
-"<አይደለም>"
-	"ነው" AUX SUBORD 3 MASC NEG PRS SG
-"<ምግብ>"
-	"ምግብ" N SG
-"<የሚፈለገው>"
-	"ተፈለገ" V RELC TEDERAGI 3 DEF IPFV MASC PASS SG
-"<።>"
-	"።" PUNCT
-
-"<አዲስ>"
-	"አዲስ" ADJ SG
-"<መኪና>"
-	"መኪና" N SG
-	"መኪ" N DERAGI SG
-"<ገዝተናል>"
-	"ገዛ" V DERAGI MAIN 1 PL PRF
-	"ገዘተ" V DERAGI MAIN 1 PL PRF
-"<።>"
-	"።" PUNCT
-
-"<ወደ>"
-	"ወደ" ADP
-"<አዲስ አበባ>"
-        "አዲስ አበባ" PROPN
-"<ሄደዋል>"
-	"ሄደ" V MAIN PRF 3 PL
-"<።>"
-	"።" PUNCT
-
-"<ልጆቹ>"
-	"ልጅ" N PL DEF
-"<ቢራ>"
-	"ቢራ" N SG
-"<ከገዙ>"
-	"ገዛ" V SUBORD 3 PL KE_SC
-"<እኛ">
-	"እኛ" PRON 1
-"<ልንጀምር>"
-	"ጀመረ" V SUBORD IPFV 1 PL
-"<እንችላለን>"
-	"ቻለ" V MAIN IPFV 1 PL
-"<።>"
-	"።" PUNCT
-
-"<ዘሎ>"
-	"ዘለለ" V DERAGI 3 MASC SG CVB
-"<ገባ>"
-	"ገባ" V DERAGI MAIN 3 MASC PFV SG
-"<።>"
-	"።" PUNCT
-
-"<ወደ>"
-	"ወደ" ADP
-"<ቤት>"
-	"ቤት" N SG
-"<ልንሄድ>"
-	"ሄደ" V DERAGI L_SC SUBORD 1 IPFV PL
-"<ነው>"
-	"ነው" AUX 3 MASC PRS SG
-"<።>"
-	"።" PUNCT
-
-"<ወደ>"
-	"ወደ" ADP
-"<ቤት>"
-	"ቤት" N SG
-"<እየሄድን>"
-	"ሄደ" V DERAGI IYE_SC SUBORD 1 PFV PL
-"<ነው>"
-	"ነው" AUX 3 MASC PRS SG
-"<።>"
-	"።" PUNCT
-
-"<ምን>"
-	"ምን" PRON INTPRO SG
-"<ይሆን>"
-	"ሆነ" V DERAGI I_PART 3 IPFV MASC SG
-"<የሚል>"
-	"አለ" V DERAGI RELC 3 IPFV MASC SG
-"<ሐሳብ>"
-	"ሀሳብ" N SG
-"<አሸበራት>"
-	"አሸበረ" V ASDERAGI MAIN 3 AC3SF CAUS MASC PFV SG
-"<።>"
-	"።" PUNCT
-
-"<መስኮቱን>"
-	"መስኮት" N ACC SG {PSS3SM/DEF}
-"<ዝጋ>"
-	"ዘጋ" V DERAGI 2 IMP MASC SG
-	"ዛገ" V DERAGI 3 CVB FEM SG
-"<!>"
-	"!" PUNCT
-
-"<አጋዘኖች>"
-	"አጋዘን" N PL
-"<በኢትዮጵያ>"
-	"ኢትዮጵያ" PROPN INS OBL SG
-"<ሜዳዎች>"
-	"ሜዳ" N PL
-"<ላይ>"
-	"ላይ" ADP
-"<ይዘዋወራሉ>"
-	"ተዘዋወረ" V MAIN TEDERARAGI 3 IPFV PL RECP
-"<።>"
-	"።" PUNCT
-
-"<ማን>"
-	"ማን" PRON INTPRO SG
-"<ከማን>"
-	"ማን" PRON ABL INTPRO OBL SG
-"<ጋር>"
-	"ጋር" ADP
-"<ምሳ>"
-	"ምሳ" N SG
-"<በላ>"
-	"በላ" V DERAGI MAIN 3 MASC PFV SG
-"<?>"
-	"?" PUNCT
-
-"<የት>"
-	"የት" N SG
-"<እንደሚሄድ>"
-	"ሄደ" V DERAGI INDE_SC SUBORD 3 IPFV MASC SG
-"<አላውቅም>"
-	"አወቀ" V DERAGI MAIN 1 IPFV NEG SG
-"<።>"
-	"።" PUNCT
-
-"<ምነው>"
-	"ምነው" ADV
-"<አስተማሪ>"
-	"አስተማሪ" N SG
-"<በሆንሁ>"
-	"ሆነ" AUX BE_SC DERAGI SUBORD 1 PFV SG
-"<።>"
-	"።" PUNCT
-
-"<አስተማሪ>"
-	"አስተማሪ" N SG
-"<ነው>"
-	"ነው" AUX 3 SG MASC
-"<።>"
-	"።" PUNCT
-
-"<አስተማሪ>"
-	"አስተማሪ" N SG
-"<ነበር>"
-	"ነው" AUX PST
-"<።>"
-	"።" PUNCT
-

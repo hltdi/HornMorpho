@@ -1,7 +1,14 @@
 ## completely invariant AUX, like ነበር, which is included in cop.cas
 ኖሮ	ኖሮ	AUX
+ኑሮ   ኑሮ   AUX
+# አውቀው የለም?
+የለም  የለም  AUX
+# ከመጡ አይቀር
+አይቀር  አይቀር  AUX
 ## ADV
 እኮ  እ/ኮ  ADVINTJ
+ወይ  ወይ  ADVINTJ
+ያህል  ያህል  ADV
 አሁንለታ  አሁንለታ  ADV
 አለበለዚያ  አለበለ/ዚያ  ADV
 አለዚያ  አለበለ/ዚያ  ADV
@@ -38,6 +45,7 @@
 እንኳ  እንኳ  ADV
 እንኳን  እንኳን  ADV
 እንኳንስ  እንኳንስ  ADV
+ስንኳ  ስንኳ  ADV
 ብቻ  ብ/ቻ  ADV
 በጣም  በጣም  ADV
 በጣሙን/ም  በጣሙን/ም  ADV
@@ -47,6 +55,7 @@
 መቸም  መቸም  ADV
 መቼስ  መቸስ  ADV
 መቼም  መቸም  ADV
+መች   መች	  ADV
 ገና  ገና  ADV
 ቅድም  ቅ/ድም  ADV
 በይበልጥ  በይበልጥ  ADV
@@ -57,7 +66,7 @@
 ቶሎ  ቶሎ  ADV
 ታዲያ  ታዲያ  ADV
 ታዲያስ  ታዲያስ  ADV
-ይልቅ  ይልቅ  ADV
+ይልቅ  ይልቅ  ADVADP
 ይልቅስ  ይልቅስ  ADV
 ይልቁን  ይልቁን  ADV
 ይልቁንም  ይልቁንም  ADV
@@ -69,10 +78,10 @@
 እያደር  እ/ያ/ደር  ADV
 በተለይ  በተለ/ይ  ADV
 ዳሩ  ዳሩ  ADV
-ዳሩግን  ዳሩግን  ADV
-ግን  ግን  ADV
+ክፉኛ  ክፉ/ኛ  ADV
+ዳሩግን  ዳሩግን  CCONJ
+ግን  ግን  ADVCCONJ
 እኮን  እ/ኮን  ADV
-ስንኳ  ስንኳ  ADV
 አካቴ  አ/ካ/ቴ  ADV
 እስከናካቴው  እስከ/ና/ካ/ቴው  ADV
 እስተናካቴው  እስተ/ና/ካ/ቴው  ADV
@@ -98,6 +107,8 @@
 ከርሞ   ከርሞ	ADV
 # also ADJ
 ብዙ  ብዙ  ADV
+# also DET and PRON
+ምንም  ምንም  ADV
 # really they're not the same; PART: ቁ/ጥ/ር, CONJ: ቁጥር
 ቁጥር  ቁጥር  PARTCONJ
 # ? እንቢዮ  እንቢዮ  ADV
@@ -182,7 +193,6 @@
 #ዱሮ  ዱሮ  ADV
 #ኋላ  ኋላ  ADV
 #ከኋላ  ከኋላ  ADV
-#ክፉኛ  ክፉ/ኛ  ADV
 #በተረፈ  በተ/ረፈ  ADV
 #በወግ  በወግ  ADV
 #በወቅቱ  በወቅቱ  ADV
@@ -190,7 +200,6 @@
 #በየግል  በ/የግል  ADV
 #በዘዴ  በዘዴ  ADV
 ## CCONJ
-እንጂ  እንጂ  CCONJ
 እና  እ/ና  CCONJ
 እናም  እ/ናም  CCONJ
 ወይም  ወይም  CCONJ
@@ -226,6 +235,7 @@
 እንኪ  እንኪ  INTJ
 እንኩ  እንኩ  INTJ
 እንዴ  እንዴ  ADVINTJ
+እንጂ  እንጂ  ADVINTJ
 እሰይ  እ/ሰይ  INTJ
 እስቲ  እስቲ  INTJ
 እስኪ  እስኪ  INTJ
@@ -234,7 +244,6 @@
 ጃል  ጃል  INTJ
 ጀባ  ጀባ  INTJ
 ለካ  ለ/ካ  INTJ
-ወይ  ወይ  INTJ
 ወየው  ወ/የው  INTJ
 ወዮ  ወ/ዮ  INTJ
 ወይጉድ  ወይጉድ  INTJ
@@ -299,10 +308,10 @@
 # ambiguous postpositions
 በፊት  በፊት  ADPCONJ
 በኋላ  በኋላ  ADPCONJ
+በስተቀር  በስተቀር  ADPCONJ
 በኩል  በ/ኩል  ADP
 በላይ  በላይ  ADP
 በስተጀርባ  በስተጀርባ  ADP
-በስተቀር  በስተቀር  ADPCONJ
 በቀር  በቀር  ADP
 ዳፋ  ዳፋ  ADP
 ጎን  ጎን  ADP
@@ -315,12 +324,14 @@
 ዳር  ዳር  ADP
 ፋንታ  ፋንታ  ADP
 ፈንታ  ፈንታ  ADP
-ወዲህ  ወዲህ  ADP
+ወዲህ  ወዲህ  ADPCONJ
 አማካይነት  አ/ማካይ/ነት  ADP
 ምክንያት  ምክንያት  ADP
 የተነሳ  የተነ/ሳ  ADP
 ጅምሮ  ጅ/ምሮ  ADP
 ቀ/ደም  ቀ/ደም  ADP
+ማዶ  ማዶ  ADP
+አጠገብ  አጠገብ  ADP
 ## particles from light verbs
 # many derived particles still missing (2024.10)
 እንቢ  እንቢ  PART

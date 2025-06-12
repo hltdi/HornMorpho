@@ -1,8 +1,8 @@
 """
 This file is part of the HornMorpho package.
 
-Copyright (C) 2023.
-Michael Gasser <gasser@indiana.edu>
+Copyright (C) 2023-2025.
+Michael Gasser <gasser@iu.edu>
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -54,10 +54,11 @@ def geezify_CV(c, v):
 #        print("** Geezifying {} {}".format(c, v))
         if c[-1] == 'u':
             # we need this for roots of verbs like ዶለዶመ: <ዱ ል ዱ ም>
-#            print("** Creating labial char: {} + {}".format(c, v))
             if v == 'e':
                 cv = c[0] + 'o'
             elif v in 'Iu':
+#                if c[0] == 'g':
+#                    print("** Creating labial char: {} + {}".format(c, v))
                 cv = c[0] + 'u'
             elif v == 'o':
                 cv = c[0] + 'o'
@@ -69,9 +70,11 @@ def geezify_CV(c, v):
                 else:
                     cv = c[0] + 'i'
 #        print(" ** cv {}".format(cv))
-#        print(" ** {}".format(geezify(cv, 'ees')))
+#        if c[0] == 'g' and v == 'I':
+#            print(" ** {}".format(geezify(cv, 'ees')))
     g = geezify(cv, 'ees')
     if not is_geez(Roots.remove_gem(g)):
+#        print("** NOT GEEZ")
         return ''
     return g
 

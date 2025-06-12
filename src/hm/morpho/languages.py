@@ -3,8 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2011-2025.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import requests, tarfile
 
 LANGUAGES = {}
 # maps additional language abbreviations to ISO codes
-CODES = {'am': 'a', 'አ': 'a',
+CODES = {'am': 'a',
          'chh': 'ch', 'sgw': 'ch',
          'gz': 'g',
          'sl': 'stv', 'slt': 'stv', 'S': 'stv',
@@ -42,7 +42,7 @@ CODES = {'am': 'a', 'አ': 'a',
          'mh': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
          'so': 'som', 's': 'som',
-         'ti': 't', 'ት': 't',
+         'ti': 't',
          'T': 'te',
          'om': 'o', 'orm': 'o'}
 
@@ -167,6 +167,7 @@ def get_downloaded_languages():
 def load_lang(lang,
               lang_name='', phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False,
+              morph_version=0,
               # False, '', or the name of a cache file
               cache=True, guess=False, mwe=True, gen=False,
               v5=True, experimental=False, poss=None, verbose=True):
@@ -184,6 +185,7 @@ def load_lang(lang,
         loaded = language.load_data(load_morph=load_morph, segment=segment, experimental=experimental,
                                     pickle=pickle, translate=translate, recreate=recreate, gen=gen,
                                     phon=phon, guess=guess, mwe=mwe,
+                                    morph_version=morph_version,
                                     v5=v5,
                                     poss=poss, verbose=verbose)
         if not loaded:
@@ -209,6 +211,7 @@ def load_lang(lang,
                                  experimental=experimental, mwe=mwe,
                                  segment=segment, phon=phon, guess=guess, recreate=recreate,
                                  poss=poss, ees=ees,
+                                 morph_version=morph_version,
                                  v5=v5,
                                  verbose=verbose)
         if not language:
@@ -232,15 +235,12 @@ def load_lang(lang,
     return True
 
 def get_language(language, **kwargs):
-#    load=True, pickle=True,
-#                 translate=False, experimental=False, phon=False, segment=False,
-#                 guess=True, 
-#                 v5=False,
-#                 load_morph=True, cache='', verbose=False):
     """
     Get the language with lang_id, attempting to load it if it's not found
     and load is True.
     """
+    if language in CODES:
+        language = CODES[language]
     if language not in ABBREV2LANG:
         print("HornMorpho has no language with the abbreviation {}".format(language))
         return False
@@ -263,11 +263,13 @@ def get_language(language, **kwargs):
     lang = LANGUAGES.get(lang_id, None)
     if not lang:
         if load:
+            mv = kwargs.get('morph_version', 0)
             if not load_lang(lang_id, lang_name=lang_name,
                              phon=phon, pickle=pickle,
                              segment=segment, guess=guess, experimental=experimental,
                              translate=translate, 
                              load_morph=load_morph, cache=cache,
+                             morph_version=mv,
                              v5=v5,
                              verbose=verbose):
                 return False

@@ -3,8 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2023, 2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2023-2025.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -66,13 +66,17 @@ class Word(list):
         Copy the word (from cached word), setting the raw name to avoid normalization.
         '''
         word = copy.deepcopy(self)
-        word.name = name
+        word.name = name or self.name
         word.unk = self.unk
         for anal in word:
             anal['raw'] = name
         if word.conllu:
             for anal in word.conllu:
                 anal[0]['form'] = name
+        if self.readings:
+            word.readings = self.readings.copy()
+        if self.analstrings:
+            word.analstrings = self.analstrings
         return word
 
     def filter_prioritize(self):
@@ -160,6 +164,18 @@ class Word(list):
                     # This is the head of the word (IDs haven't been adjusted yet)
                     c['upos'] = pos
                     c['xpos'] = pos
+
+    def select(self, index):
+        '''
+        Select the analysis at index, eliminating others.
+        Called in gui.py when an analysis/segmentation is selected.
+        '''
+        if len(self) == 1:
+            return
+        for i in range(len(self), 0, -1):
+            if i-1 == index:
+                continue
+            del self[i-1]
 
     def remove(self, indices, index_map=None):
         '''
@@ -686,3 +702,25 @@ class Word(list):
             line = "{}\t{}".format(self.name if index == 0 else '', attrib_string)
             lines.append(line)
         return '\n'.join(lines)
+
+class MWE(list):
+    '''
+    A multi-word expression consisting of a list of Word objects, optionally
+    with UD relations joining the stems of the words.
+    The MWE has a head_index representing the 0-based index of the word that
+    functions as the head of the MWE.
+    '''
+
+    id = 0
+
+    def __init__(self, words, head_index=-1):
+        '''
+        Instantiate the MWE with its member words.
+        '''
+        list.__init__(self, words)
+        self.head_index = head_index
+        self.id = MWE.id
+        MWE.id += 1
+
+    def __repr__(self):
+        return "MWE{}:{}".format(self.id, "_".join([w.name for w in self]))

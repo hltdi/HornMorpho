@@ -57,7 +57,9 @@ class Corpus():
                  sep_feats=True, gemination=False, sep_senses=False, degem=True,
                  combine_segs=True, unsegment=False,
                  props=None, pos=None, skip_mwe=False, skip=None,
-                 report_freq=100,
+                 report_freq=250,
+                 ## only look for these roots and POS
+                 feats=None,
                  ## ambiguity
                  # dict of ambiguous entries (after CG disambiguation, before manual disambiguation)
                  ambig=None,
@@ -80,6 +82,8 @@ class Corpus():
                  print_sentence=False,
                  # included in case annotation is ever part of corpus creation
                  annotate=False,
+                 # version of .lg and .um files to use
+                 morph_version=0,
                  verbosity=0):
         self.batch_name = batch_name
         minlen = constraints and constraints.get('minlen', 0)
@@ -206,7 +210,7 @@ class Corpus():
                               self.anal_sentence(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache, meta=meta,
                                                  unsegment=unsegment, combine_segs=combine_segs, label=label,
-                                                 CGdisambiguate=CGdisambiguate,
+                                                 CGdisambiguate=CGdisambiguate, feats=feats,
                                                  batch_name=batch_name, pos=pos, verbosity=verbosity):
                                 self.data.append(line)
                                 if unk := sentence_obj.unk:
@@ -251,7 +255,7 @@ class Corpus():
             if v5 and segment:
                 self.analyze(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
                               cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
-                              verbosity=verbosity, combine_segs=combine_segs,
+                              verbosity=verbosity, combine_segs=combine_segs, feats=feats,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
             self.data = []
@@ -324,6 +328,8 @@ class Corpus():
                 if disambiguated:
                     # disambiguated is a dict:: index:list of reading indices eliminated
                     self.disambiguations += sum([len(d) for d in disambiguated.values()])
+            if props := kwargs.get('props'):
+                sentence_obj.set_props(props)
 #            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
         return sentence_obj
 
@@ -340,6 +346,7 @@ class Corpus():
         time0 = time.time()
         todelete = []
         meta = ''
+        props = kwargs.get('props')
         for sindex, sentence in enumerate(self.data):
 #            print("Analyzing {}, meta={}".format(sentence, meta))
             if sentence[0] == '#' and kwargs['comments2meta']:
@@ -375,6 +382,8 @@ class Corpus():
                 if disambiguated:
                     # a dict:: index:list of reading indices eliminated
                     self.disambiguations += sum([len(d) for d in disambiguated.values()])
+                if props:
+                    sentence_obj.set_props(props)
 #                sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
                 sent_id += 1
         # Delete sentences that didn't pass the filter

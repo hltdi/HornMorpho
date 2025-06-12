@@ -5,7 +5,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2024.
+    Copyleft 2011-2025.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     You should have received a copy of the GNU General Public License
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 """ 
 
 import hm
@@ -38,20 +38,64 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
-TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
+#TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
 
 ## Timing
 
-TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝዅሕኳሕ ዝነበረ ማዕጾ ክትከፍት ከይዳ ።"
+#TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝዅሕኳሕ ዝነበረ ማዕጾ ክትከፍት ከይዳ ።"
 
-TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
+#TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
 
 ## Little Amharic corpora
 
-AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
+#AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
 
-TTEST1 = ["ይሰብር", "ነስብር", "ዚሰብር", "ዝሰብር", "ዝትሰብር", "እትሰበር", "እተሰብረ", "ኣይሰብርን", "ዘይሰብር"]
-TTEST2 = ["እንተሰቢሩ", "እንተትሰብር", "እንተዝሰብር", "እንተዘይትሰብር", "እንተዘይሰብር"]
+#TTEST1 = ["ይሰብር", "ነስብር", "ዚሰብር", "ዝሰብር", "ዝትሰብር", "እትሰበር", "እተሰብረ", "ኣይሰብርን", "ዘይሰብር"]
+#TTEST2 = ["እንተሰቢሩ", "እንተትሰብር", "እንተዝሰብር", "እንተዘይትሰብር", "እንተዘይሰብር"]
+
+# Tigrinya verb categories
+
+def anal_Tv(n_sents=1000, start=0, cache=None, corpus=None, disamb=True, feats=None):
+    c = hm.anal_corpus(
+        't',
+        path="../../TT/data/tlmd_v1.0.0/all6.txt",
+        n_sents=n_sents, max_sents=n_sents, start=start,
+        pos=['v'], props=['root', 'um', 'lemma', 'sense'],
+        CGdisambiguate=disamb,
+        skip_mwe=True,
+        gemination=False,
+        local_cache=cache,
+        corpus=corpus,
+        report_freq=500,
+        feats=feats
+        )    
+    first = corpus.last_line if corpus else start
+    last = c.last_line
+    dump_name = "../../SemVV/data/TI.2.25a/TClasses_{}-{}.txt".format(first, last)
+    with open(dump_name, 'w') as dump:
+        c.write_props(dump, start=c.start)
+    return c
+
+def anal_T(n_sents=10, start=0, cache=None, corpus=None, dump_name='', disamb=True):
+    c = hm.anal_corpus(
+        't',
+        path="../../TT/data/tlmd_v1.0.0/all6.txt",
+        n_sents=n_sents, max_sents=n_sents, start=start,
+        pos=['v', 'n'], props=['root', 'um', 'lemma', 'sense', 'pos'],
+        CGdisambiguate=disamb,
+        skip_mwe=False,
+        gemination=False,
+        local_cache=cache,
+        corpus=corpus,
+        )
+    first = corpus.last_line if corpus else start
+    last = c.last_line
+    dump_name = dump_name or "../../SemVV/data/TI.2.25/TClasses_{}-{}.txt".format(first, last)
+    with open(dump_name, 'w') as dump:
+        c.write_props(dump, start=c.start)
+    return c
+#    if file:
+#        c.write_props(file, start=c.start)
 
 ## Writing CoNNL-U
 
@@ -500,35 +544,6 @@ def get_cascade(abbrev, pos, guess=False, gen=False, phon=False,
                  invert=gen, segment=segment, verbose=verbose)
     return pos.casc
 
-##def recompile(abbrev, pos, gen=False, phon=False, segment=False, guess=False,
-##                            translate=False, experimental=False, mwe=False, seglevel=2,
-##                            fidel=False, create_fst=True, relabel=True, gemination=True,
-##                            backwards=False, split_index=0, verbose=True):
-##    """
-##    Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
-##    returning the morphology POS object for that POS.
-##    Note 1: this can take a very long time for some languages.
-##    Note 2: the resulting FST is not saved (written to a file). To do this, use the method
-##    save_fst(), with the right options, for example, gen=True, segment=True.
-##    """
-##    pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate,
-##                                            fidel=fidel, load_morph=False, verbose=verbose)
-##    fst = pos_morph.load_fst(True, segment=segment, gen=gen, invert=gen, guess=guess,
-##                             translate=translate, recreate=True, fidel=fidel,
-##                             experimental=experimental, mwe=mwe, pos=pos, seglevel=seglevel,
-##                             create_fst=create_fst, relabel=relabel, gemination=gemination,
-##                             compose_backwards=backwards, split_index=split_index,
-##                             v5=True,
-##                             phon=phon, verbose=verbose)
-##    if not fst and gen == True:
-##        print('Generation FST not found')
-##        # Load analysis FST
-##        pos_morph.load_fst(True, seglevel=seglevel, verbose=True)
-##        # ... and invert it for generation FST
-##        pos_morph.load_fst(generate=True, invert=True, gen=True, experimental=experimental,
-##                                                 relabel=relabel, v5=True,
-##                                                 fidel=fidel, mwe=mwe, guess=guess, verbose=verbose)
-##    return pos_morph
 ##
 #### Various shortcuts for working with new cascades
 ##
@@ -683,8 +698,14 @@ FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
 A = lambda word: hm.anal('a', word)
 AS = lambda sentence: hm.anal_sentence('a', sentence)
-AC = lambda sentence, dis=True: hm.anal_corpus('a', data=[sentence], disambiguate=dis)
+AC = lambda sentence, dis=True, ann=True: hm.anal_corpus('a', data=[sentence], disambiguate=dis, annotate=ann)
 TC = lambda sentence, dis=True: hm.anal_corpus('t', data=[sentence], disambiguate=dis)
+
+def ኮ(sentence, file='', ann=True):
+    c = hm.anal_corpus('a', data=[sentence], disambiguate=True, annotate=ann)
+    sobj = c.sentences[0]
+    sobj.print_conllu(file=file)
+    return sobj
 
 def main():
     pass

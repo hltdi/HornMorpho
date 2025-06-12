@@ -1,3 +1,6 @@
+## Morphology: inflection features assume affixes are like words,
+## with their own PNG in the case of subject/object agreement
+
 name: አማርኛ
 code: a
 version: 1.7
@@ -5,49 +8,49 @@ version: 1.7
 gemination: True
 
 seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
-          ለ ሉ ሊ ላ ሌ ል ሎ ሏ
-	  ሐ ሑ ሒ ሓ ሔ ሕ ሖ ሗ
-	  መ ሙ ሚ ማ ሜ ም ሞ ሟ
-	  ሠ ሡ ሢ ሣ ሤ ሥ ሦ ሧ
-          ረ ሩ ሪ ራ ሬ ር ሮ ሯ
-	  ሰ ሱ ሲ ሳ ሴ ስ ሶ ሷ
-	  ሸ ሹ ሺ ሻ ሼ ሽ ሾ ሿ
-	  ቀ ቁ ቂ ቃ ቄ ቅ ቆ ቈ ቊ ቋ ቌ ቍ
-          በ ቡ ቢ ባ ቤ ብ ቦ ቧ
-	  ቨ ቩ ቪ ቫ ቬ ቭ ቮ ቯ
-	  ተ ቱ ቲ ታ ቴ ት ቶ ቷ
-	  ቸ ቹ ቺ ቻ ቼ ች ቾ ቿ
-	  ኀ ኁ ኂ ኃ ኄ ኅ ኆ ኈ ኊ ኋ ኌ ኍ
-          ነ ኑ ኒ ና ኔ ን ኖ ኗ
-	  ኘ ኙ ኚ ኛ ኜ ኝ ኞ ኟ
-	  አ ኡ ኢ ኣ ኤ እ ኦ ኧ
-	  ከ ኩ ኪ ካ ኬ ክ ኮ ኰ ኲ ኳ ኴ ኵ
-	  ኸ ኹ ኺ ኻ ኼ ኽ ኾ ዃ
-          ወ ዉ ዊ ዋ ዌ ው ዎ
-	  ዐ ዑ ዒ ዓ ዔ ዕ ዖ 	
-	  ዘ ዙ ዚ ዛ ዜ ዝ ዞ ዟ
-	  ዠ ዡ ዢ ዣ ዤ ዥ ዦ ዧ
-          የ ዩ ዪ ያ ዬ ይ ዮ
-	  ደ ዱ ዲ ዳ ዴ ድ ዶ ዷ
-	  ጀ ጁ ጂ ጃ ጄ ጅ ጆ ጇ
-	  ገ ጉ ጊ ጋ ጌ ግ ጎ ጐ ጒ ጓ ጔ ጕ
-          ጠ ጡ ጢ ጣ ጤ ጥ ጦ ጧ
-	  ጨ ጩ ጪ ጫ ጬ ጭ ጮ ጯ
-	  ጰ ጱ ጲ ጳ ጴ ጵ ጶ ጷ
-          ጸ ጹ ጺ ጻ ጼ ጽ ጾ ጿ
-	  ፀ ፁ ፂ ፃ ፄ ፅ ፆ 
-	  ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
-	  ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
-	  / _ ፟ < > -
-	  # final adverbial/interjective -ኣ
-	  =ኣ
-     A B C D E F G H I J K
+      ለ ሉ ሊ ላ ሌ ል ሎ ሏ
+      ሐ ሑ ሒ ሓ ሔ ሕ ሖ ሗ
+      መ ሙ ሚ ማ ሜ ም ሞ ሟ
+      ሠ ሡ ሢ ሣ ሤ ሥ ሦ ሧ
+      ረ ሩ ሪ ራ ሬ ር ሮ ሯ
+      ሰ ሱ ሲ ሳ ሴ ስ ሶ ሷ
+      ሸ ሹ ሺ ሻ ሼ ሽ ሾ ሿ
+      ቀ ቁ ቂ ቃ ቄ ቅ ቆ ቈ ቊ ቋ ቌ ቍ
+      በ ቡ ቢ ባ ቤ ብ ቦ ቧ
+      ቨ ቩ ቪ ቫ ቬ ቭ ቮ ቯ
+      ተ ቱ ቲ ታ ቴ ት ቶ ቷ
+      ቸ ቹ ቺ ቻ ቼ ች ቾ ቿ
+      ኀ ኁ ኂ ኃ ኄ ኅ ኆ ኈ ኊ ኋ ኌ ኍ
+      ነ ኑ ኒ ና ኔ ን ኖ ኗ
+      ኘ ኙ ኚ ኛ ኜ ኝ ኞ ኟ
+      አ ኡ ኢ ኣ ኤ እ ኦ ኧ
+      ከ ኩ ኪ ካ ኬ ክ ኮ ኰ ኲ ኳ ኴ ኵ
+      ኸ ኹ ኺ ኻ ኼ ኽ ኾ ዃ
+      ወ ዉ ዊ ዋ ዌ ው ዎ
+      ዐ ዑ ዒ ዓ ዔ ዕ ዖ
+      ዘ ዙ ዚ ዛ ዜ ዝ ዞ ዟ
+      ዠ ዡ ዢ ዣ ዤ ዥ ዦ ዧ
+      የ ዩ ዪ ያ ዬ ይ ዮ
+      ደ ዱ ዲ ዳ ዴ ድ ዶ ዷ
+      ጀ ጁ ጂ ጃ ጄ ጅ ጆ ጇ
+      ገ ጉ ጊ ጋ ጌ ግ ጎ ጐ ጒ ጓ ጔ ጕ
+      ጠ ጡ ጢ ጣ ጤ ጥ ጦ ጧ
+      ጨ ጩ ጪ ጫ ጬ ጭ ጮ ጯ
+      ጰ ጱ ጲ ጳ ጴ ጵ ጶ ጷ
+      ጸ ጹ ጺ ጻ ጼ ጽ ጾ ጿ
+      ፀ ፁ ፂ ፃ ፄ ፅ ፆ
+      ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
+      ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
+      / _ ፟ < > -
+      # final adverbial/interjective -ኣ
+      =ኣ
+      A B C D E F G H I J K
 
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
 
 normalization::
-  ሃ ሐሑሒሓሔሕሖ	ኀኁኂኃኄኅኆ	ዐዑዒዓዔዕዖ		ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
-  ሀ ሀሁሂሀሄህሆ	ሀሁሂሀሄህሆ	አኡኢአኤእኦ	ሰሱሲሳሴስሶ		ጸጹጺጻጼጽጾ
+  ሃ ሐሑሒሓሔሕሖ	ኀኁኂኃኄኅኆ	ኸኹኺኻኼኽኾ	ዐዑዒዓዔዕዖ	ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
+  ሀ ሀሁሂሀሄህሆ		ሀሁሂሀሄህሆ	ሀሁሂሀሄህሆ	አኡኢአኤእኦ	ሰሱሲሳሴስሶ	ጸጹጺጻጼጽጾ
 
 charcomb::
   -ሰ: ስ /ሰ ;\
@@ -73,40 +76,43 @@ feats:
       {'name': 'mwepart', 'dep': 'compound', 'mwe': True};
       {'name': 'sconj_adp',\
         'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
-                      'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),\
-		      'ስለ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
-                      'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
+               'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),\
+	       'ስለ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
+               'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
 	'xpos': {'የ': 'RLP'},\
-        'dep': {'ለ':'case:pre','በ':('rel', {False: 'mark:pre', True: 'case:pre'}),'ከ': ('rel', {False: 'mark:pre', True: 'case:pre'}),\
-                       'እንደ':('ppos', {'SCONJ': 'mark:pre', 'ADP': 'case:pre'}),'እስከ':'case:pre',\
-		       'ስለ':('ppos', {'SCONJ': 'mark:pre', 'ADP': 'case:pre'}),'ወደ':'case:pre',\
-                       'የ':'mark:pre', 'እ': 'mark:pre','ብ':'mark:pre','ስ':'mark:pre','ል':'mark:pre','እንድ':'mark:pre','እስክ': 'mark:pre','እየ':'mark:pre'},\
-        'feats': ['ClauseType','AdpCase']};
-      {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
-      {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark:pre', 'feats': ['ClauseType']};
-      {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:pre', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:pre',\
+        'dep': {'በ':('rel', {False: 'mark', True: 'case'}),\
+                'ከ': ('rel', {False: 'mark', True: 'case'}),\
+                'እንደ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'እስከ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'ስለ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'ወደ':'case','ለ':'case',\
+                'የ':'mark', 'እ': 'mark','ብ':'mark','ስ':'mark','ል':'mark','እንድ':'mark','እስክ': 'mark','እየ':'mark'},\
+        'feats': ['AdpCase']};
+      {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
+      {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark'};
+      {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:aff',\
         'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
-                           'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
-                           'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
+                  'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
+                  'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
        'feats': ['Person', 'Number', 'Gender', 'PronType']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
-        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
+        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
       {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
-        'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
+        'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'ob',\
         'pos': ('O', {False: 'DET', True: 'PRON'}),\
   	'xpos': ('O', {False: 'DET', True: 'OBJC'}),\
 	'lemma': ('olemma',),\
-	'dep': (('O','oc'), {(False,0): 'det:suf', (True,0): 'obj:suf', (True,'l'): 'obl:suf', (True,'b'): 'obl:suf'}),\
+	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:aff', (True,'l'): 'obl:aff', (True,'b'): 'obl:aff'}),\
         'feats': ['AccNum', 'AccPers', 'AccGen', 'MalNum', 'MalPers', 'MalGen', 'DatPers', 'DatGen', 'DatNum', '&Acc3SMDef', 'Definite', 'ObjPronType', 'ObjNum', 'ObjGen', 'ObjPers']};
-      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux:suf','feats':['Number','Gender','Person']};
-      {'name': 'acc',  'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case']};
-      {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod:suf'};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux','feats':['Number','Gender','Person']};
+      {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
+      {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod'};
       {'name': 'conj2',\
-        'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
-        'dep': ('spos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
+        'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
+        'dep': ('spos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True} # , 'root': ['part',  'root']}
     lemmafeats = a,v,c,s
@@ -170,20 +176,20 @@ feats:
 
   pos: n noun_adjective
     morphotax::
-      {'name': 'prep', 'pos': 'ADP', 'dep': 'case:pre', 'feats': ['Case', 'Case[inner]']};
-      {'name': 'distrib', 'pos': 'DET', 'dep': 'det:pre'};
+      {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[inner]']};
+      {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
-      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice', 'Polarity']};;
+      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice', 'Polarity', 'Gender', 'Person']};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\
-        'dep': 'det:suf', 'lemma':('plemma',),\
-        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'PronType']};
-      {'name': 'acc', 'pos': 'ADP', 'dep': 'case:suf', 'feats': ['Case', 'Case[outer]']};
+        'dep': ('spos', {'DET': 'det', 'PRON': 'det:poss'}), 'lemma':('plemma',),\
+        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'PronType', 'Possessive']};
+      {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[outer]']};
       {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
       {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
-        'dep': ('acpos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})};
-      {'name': 'GA', 'pos': 'ADP', 'dep': 'case:suf', 'feats':['Case']}
+        'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
+      {'name': 'GA', 'pos': 'ADP', 'dep': 'case', 'feats':['Case']}
     lemmafeats = d;a,v
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
     det = False | True
@@ -209,12 +215,12 @@ feats:
   pos: cop copula
     umcats = ['PRS', 'PST']
     morphotax::
-	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark:pre', 'feats': ['ClauseType']};
-	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:pre', 'feats': ['Polarity']};;
-	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity']};;
-	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
-	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}), 'dep': ('apos', {'CCONJ': 'cc:suf', 'ADV': 'advmod:suf'})}
+	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};
+	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};;
+	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType']};;
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
+	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}), 'dep': ('apos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
     nomwe
     lemmafeats = neg
     pos = AUX

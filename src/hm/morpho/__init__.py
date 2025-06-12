@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS
 
-    Copyleft 2008-2021, 2024. Michael Gasser.
+    Copyleft 2008-2025. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@ This file is part of HornMorpho, which is a project of PLoGS
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 
 ------------------------------------------------------
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 morpho:
 

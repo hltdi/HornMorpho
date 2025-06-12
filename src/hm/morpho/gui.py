@@ -3,8 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022, 2023, 2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2022-2025.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ class SegRoot(Tk):
 
     sentencewidth = 60
 
-    def __init__(self, corpus=None, title=None, seglevel=2, v5=False):
+    def __init__(self, corpus=None, title=None, seglevel=2, record=True, v5=True):
         Tk.__init__(self)
         self.title(title if title else "Corpus")
         fontfamilies = families()
@@ -45,6 +45,8 @@ class SegRoot(Tk):
 #        print("families {}".format(fontfamilies[150:300]))
         self.v5 = v5
         self.corpus = corpus
+        # Whether to record disambiguations
+        self.record = record
         # Create int variables for sentence and word index (1-based)
         self.init_vars()
         sentindex = self.sentvar.get()-1
@@ -71,7 +73,7 @@ class SegRoot(Tk):
         # Undo and Quit buttons
         self.init_buttons()
         # Canvas and scrollbars
-        self.canvas = SegCanvas(self, corpus, seglevel=seglevel, v5=v5)
+        self.canvas = SegCanvas(self, corpus, seglevel=seglevel, record=record, v5=v5)
         self.scrollbar = Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.scrollbar.grid(row=2, column=3, sticky='ns')
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
@@ -82,7 +84,7 @@ class SegRoot(Tk):
         # First sentenceGUI
         self.sentenceGUI = \
           SentenceGUI(frame=self, canvas=self.canvas, sentence=sentence,
-                      sentenceobj=sentenceobj, index=sentindex, v5=v5)
+                      sentenceobj=sentenceobj, index=sentindex, record=record, v5=v5)
         self.sentenceGUI.show_sentence(True)
         self.sentenceGUI.show_unambig()
         self.canvas.update()
@@ -175,9 +177,14 @@ class SegRoot(Tk):
         '''
         Set the sentence ID and the corresponding sentence.
         '''
+#        print("** set_sentid {}".format(new_id))
         if 1 <= new_id <= len(self.corpus.data):
-            self.sentvar.set(new_id)
-            self.set_sentence(new_id-1)
+            if self.set_sentence(new_id-1):
+                self.sentvar.set(new_id)
+                return 1
+            else:
+                return 0
+        return -1
 
     def set_wordid(self, event):
         '''
@@ -204,8 +211,12 @@ class SegRoot(Tk):
         Delete the previous sentence and show the current one in the sentence Text.
         Make the first word the current word.
         '''
+#        print("** set_sentence() {}".format(sentindex))
         sentence = self.corpus.data[sentindex]
         sentenceobj = self.corpus.sentences[sentindex]
+        if not sentenceobj.record_ambiguities():
+#            print("Sentence {} has no ambiguities, moving to next one!".format(sentindex))
+            return False
         if sentindex in self.sentenceGUIs:
             self.sentenceGUI = self.sentenceGUIs[sentindex]
         else:
@@ -215,6 +226,7 @@ class SegRoot(Tk):
         self.sentenceGUI.show_sentence()
         self.sentenceGUI.show_unambig(True)
         self.sentenceGUI.set_wordid(1, False)
+        return True
 
     def decrease_sentid(self):
         '''
@@ -230,7 +242,14 @@ class SegRoot(Tk):
         '''
         sentid = self.sentvar.get()
         new_id = sentid + 1
-        self.set_sentid(new_id)
+        ambiguities = False
+        while not ambiguities:
+            if not self.set_sentid(new_id):
+                # No ambiguities in next sentence
+                new_id = new_id + 1
+            else:
+#                print("** Ambiguities in {}".format(new_id))
+                ambiguities = True
 
     def decrease_wordid(self):
         '''
@@ -260,8 +279,6 @@ class SegRoot(Tk):
         '''
         wordindex = self.wordvar.get()-1
         wordsegs = self.sentenceGUI.words[wordindex]
-#        if self.v5:
-#            wordsegs = wordsegs.conllu
         return wordsegs, wordsegs.conllu
 
     def undo(self):
@@ -307,11 +324,12 @@ class SegCanvas(Canvas):
 
     maxfeatchars = 15
 
-    def __init__(self, parent, corpus=None, seglevel=2, width=800, height=600, v5=False):
+    def __init__(self, parent, corpus=None, seglevel=2, width=800, height=600, record=True, v5=True):
         Canvas.__init__(self, parent, width=width, height=height, bg="white")
         self.v5 = v5
         self.parent = parent
         self.corpus = corpus
+        self.record = record
         self.UM = corpus.language.um
         self._width = width
         self._height = height
@@ -430,8 +448,8 @@ class SegCanvas(Canvas):
         if nwordanals > 1:
             # Bind label boxes to handlers
             for index, (idtag, boxtag) in enumerate(zip(segIDtags, segboxtags)):
-                self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordconllu[index]))
-                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, idtag, SegCanvas.texthighlight)) # SegCanvas.selectcolors[0]))
+                self.tag_bind(idtag, "<ButtonRelease-1>", self.select_handler(wordconllu[index], index))
+                self.tag_bind(idtag, "<Enter>", self.highlight_box_handler(boxtag, idtag, SegCanvas.texthighlight))
                 self.tag_bind(idtag, "<Leave>", self.highlight_box_handler(boxtag, idtag, 'Black')) #'white'))
         # Rectangle around each segmentation
         while i < len(segYs) - 1:
@@ -440,24 +458,24 @@ class SegCanvas(Canvas):
         # Adjusting the scroll region for the scrollbars based on new widgets
         self.configure(scrollregion=self.bbox("all"))
 
-    def select_handler(self, seg):
+    def select_handler(self, seg, index):
         '''
         Returns the selection handler for the segmentation label.
         seg: the segmentation to be selected
         '''
-        return lambda event: self.select(seg)
+        return lambda event: self.select(seg, index)
 
-    def select(self, seg):
+    def select(self, seg, index):
         '''
         Select seg as the segmentation for the current word.
         '''
-        self.parent.sentenceGUI.set_word_segmentations([seg])
+        self.parent.sentenceGUI.set_word_segmentations([seg], index)
         self.update()
         return seg
 
     def select_pos_handler(self, tag, pos, seg):
         '''
-        Returns the handler for selecting POS on the POS labels.
+        Returns the handler for selecting POS from a POS combination.
         '''
         return lambda event: self.select_pos(pos, seg)
 
@@ -476,7 +494,7 @@ class SegCanvas(Canvas):
 
     def select_feat(self, feat, seg):
         '''
-        Select pos as the POS for segmentation seg.
+        Select feat for segmentation seg.
         '''
         self.parent.sentenceGUI.set_feat(feat, seg)
         self.update()
@@ -756,8 +774,9 @@ class SentenceGUI():
     disambig = "OliveDrab1"
     unambig = "LightGray"
 
-    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, v5=True, index=0):
+    def __init__(self, frame=None, canvas=None, sentence=None, sentenceobj=None, record=True, v5=True, index=0):
         self.v5 = v5
+        self.record = record
         self.frame = frame
         self.canvas = canvas
         self.sentence = sentence
@@ -912,6 +931,7 @@ class SentenceGUI():
         self.sentenceobj.disambiguated = True
         analdict = seg.analysis
 #        print("!! setting POS {} in {}; seganal {}".format(pos, seg, analdict))
+        oldpos = analdict.get('upos', analdict.get('pos'))
         old = ((seg['upos'], seg['xpos']), seg)
 #        print("!! current POS {}".format(seg['upos']))
         if self.wordid in self.memory:
@@ -920,6 +940,7 @@ class SentenceGUI():
             self.memory[self.wordid] = [old]
         self.show_disambig_word(self.wordid)
         self.frame.enable_undo()
+        self.sentenceobj.select_POS(self.wordid, pos, oldpos)
         seg['upos'] = pos
         seg['xpos'] = pos
         Sentence.updatePOS(analdict, pos)
@@ -967,15 +988,16 @@ class SentenceGUI():
         '''
         self.text.tag_configure("word{}".format(index), background=SentenceGUI.disambig)
 
-    def set_word_segmentations(self, newsegs):
+    def set_word_segmentations(self, newsegs, index):
         '''
         Update the segmentations for the current word (based on selection by user).
         Update the word's action memory, set the color for the word, enable the Undo button.
         '''
         self.sentenceobj.disambiguated = True
         wordindex = self.frame.wordvar.get()-1
+        wordcopy = self.words[wordindex].copy()
         if self.v5:
-            old = (wordindex, self.words[wordindex].conllu)
+            old = (wordindex, (self.words[wordindex].conllu, wordcopy))
         else:
             old = (wordindex, self.words[wordindex])
         if self.wordid in self.memory:
@@ -985,7 +1007,14 @@ class SentenceGUI():
         self.show_disambig_word(self.wordid)
         self.frame.enable_undo()
         if self.v5:
-            self.words[wordindex].conllu = newsegs
+            word = self.words[wordindex]
+            self.sentenceobj.select_reading(wordindex, index)
+#            print("** newsegs {}".format(newsegs))
+#            print("** word {}".format(word))
+#            print("** selected {}: {}".format(index, word[index]))
+            word.conllu = newsegs
+            word.select(index)
+#            self.sentenceobj.add_disambiguation(wordindex, index)
         else:
             self.words[wordindex] = newsegs
 #        print("!! memory {}".format(self.memory))
@@ -1004,7 +1033,10 @@ class SentenceGUI():
         if isinstance(x, int):
             # This is a segmentation selection; x is the index, y the old segmentations
             if self.v5:
-                self.words[x].conllu = y
+                conl, word = y
+                self.words[x].conllu = conl
+#                print("** Resetting word to {}".format(word))
+                self.words[x] = word
             else:
                 self.words[x] = y
         elif isinstance(x, tuple):

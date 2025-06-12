@@ -1,0 +1,5 @@
+ማ/ንንም>----		ማ/ንም>---ን-	[-pl,-cop,ptype=int,+acc]
+ም/ነው>----		ምን>----ነው	[-pl,+cop,ptype=int,tns=prs,-acc]
+ምንድ/ነው>----		ምንድን>----ነው	[-pl,+cop,ptype=int,tns=prs,-acc]
+ማ/ነው>----		ማን>----ነው	[-pl,+cop,ptype=int,tns=prs,-acc]
+እ/ነማ/ነው>----	እ/ነማን>----ነው	[+pl,+cop,ptype=int,tns=prs,-acc]

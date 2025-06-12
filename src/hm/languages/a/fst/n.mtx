@@ -25,15 +25,17 @@ $ prestem
   <
 
 $ stem
-  ->cop_bound	+pron_cop+		[pos=PRON,+cop,adp=0,p=0,d=0,-dis,-col,ptype=int,tns=prs]
-  ->poss_bound	+hulu+			[pos=DET,-pl,-cop,d=0,-dis,-col,ptype=tot]
+#  ->cop_bound	+pron_cop+		[pos=PRON,+cop,adp=0,p=0,d=0,-dis,-col,ptype=int,tns=prs]
+  ->poss_bound	+hulu+			[pos=DET|PRON,-pl,-cop,d=0,-dis,-col,ptype=tot]
+  ->cop_bound	+pron_misc_skip+	[pos=PRON,adp=0,d=0,-dis,-col,p=0,ptype=int]
+#  [pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=int]
   +n_stem+		[ps=oc,-irr,d=0,-cop]
   +n_stem_an+	[ps=an,-irr,d=0,-cop]
   +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
   +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
   >>vn_stem<<
   +ppron+		[pos=PRON,-dis,-col,p=0,d=0,ptype=prs,-cop,-irr]
-  +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
+  +prep_det+	[pos=DET|PRON,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
   +irr_plr+		[+pl,+irr,d=0,-cop]
 
 $ poststem
@@ -42,7 +44,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl,Pn=0];[+pl,+col];[+pl,+irr];[pos=PRON,ptype=prs|int]
+  --		[-pl,Pn=0];[+pl,+col];[+pl,+irr];[pos=PRON|DET] # ,ptype=prs|int]
 
 $ plur_bound
   -
@@ -51,7 +53,7 @@ $ human
   # +-hum: the presence or absence of this suffix
   # +-h: whether the noun is human (add to lexicon later)
   እ/የ			[+hum,+h,-pl,-col,-dis,pos=N]
-  እ/ዬ	<እየ>	[+hum,+h,-pl,-col,-dis,pos=N]
+  እ/ዬ	<እየ>	[+hum,+h,-pl,-col,-dis,pos=N];[+hum,+h,-pl,-col,-dis,pos=PRON,ptype=prs]
   እ/ዮ	<እየ>	[+hum,+h,+fem,-pl,-col,-dis,pos=N]
   --				[-hum]
 
@@ -59,20 +61,20 @@ $ human_bound
   -
 
 $ poss_det
-  ኤ		[p=s1,plemma=እኔ,spos=PRON,ptype=prs]
-  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON,ptype=prs]
-  ህ		[p=sm2,plemma=አንተ,spos=PRON,ptype=prs]
-  ሽ		[p=sf2,plemma=አንቺ,spos=PRON,ptype=prs]
-  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON,ptype=prs]
-  ዎ		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
-  ዎን		[p=F2,plemma=እርስዎ,spos=PRON,ptype=prs]
+  ኤ		[p=s1,plemma=እኔ,spos=PRON]
+  ኣ/ችን	[p=p1,plemma=እኛ,spos=PRON]
+  ህ		[p=sm2,plemma=አንተ,spos=PRON]
+  ሽ		[p=sf2,plemma=አንቺ,spos=PRON]
+  ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON]
+  ዎ		[p=F2,plemma=እርስዎ,spos=PRON]
+  ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
   # possessive or determiner
   #{
-  ኡ		[p=sm3,plemma=እሱ,spos=PRON,ptype=prs];[p=0,+def,g=m,pos=N|ADJ|PRON,spos=DET]
-  ዋ		[p=sf3,plemma=እሷ,spos=PRON,ptype=prs];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON,spos=DET]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N|ADJ|PRON,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON,spos=DET]
   ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,d=0,pos=N,spos=DET]
   #}
-  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON,ptype=prs]
+  ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON]
   --		[p=0,-def]
 
 $ poss_bound

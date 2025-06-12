@@ -3,8 +3,8 @@ This file is part of HornMorpho and morfo, which are part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018, 2020, 2022, 2023, 2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2018-2025.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -166,13 +166,6 @@ class Morphology(dict):
         self.punc_after_re = re.compile(r'(' + chars + r')(' + punc + r'{1,3})', re.U)
         self.punc_before_re = re.compile(r'(' + punc + r'{1,3})(' + chars + r')', re.U)
         self.punc_sub = r'\1 \2'
-
-#    def init_num(self, chars):
-#        '''
-#        Make numeral regular expression objects and substitution string.
-#        '''
-#        self.num_before_re = re.compile(r'(\d+?)(' + chars + r')', re.U)
-#        self.num_sub = r'\1 \2'
 
     def sep_punc(self, text):
         """Separate punctuation from words."""
@@ -1332,8 +1325,8 @@ class POSMorphology:
     def save_fst(self, generate=False, guess=False, simplified=False,
                  phon=False, segment=False, translate=False, experimental=False, mwe=False,
                  features=True, defaultFS=True, stringsets=True, suffix='',
-                 v5=True,
-                 pickle=False):
+                 note='',
+                 v5=True, pickle=False):
         '''Save FST in a file.'''
         fname = self.fst_name(generate=generate, guess=guess, simplified=simplified,
                               experimental=experimental, mwe=mwe, suffix=suffix,
@@ -1359,6 +1352,10 @@ class POSMorphology:
             FST.pickle(fst, directory=self.morphology.get_pickle_dir(), replace=True)
         else:
             self.delete_pickle(fname)
+        if not note:
+            note = input("Note to add: ")
+        if note:
+            self.language.log(fname, note)
 
     def unsave_fst(self, fst_file=True):
         '''Get rid of saved FSTs.'''
@@ -1474,14 +1471,14 @@ class POSMorphology:
             if pos in ('N', 'PROPN', 'ADJ', 'NADJ'):
                 match = POSMorphology.segment_n_mwe_re.match(string)
                 if match:
-#                    print(" ** match groups: {}".format(match.groups()))
                     pre, mwe_part, stem, suf = match.groups()
+#                    print(" ** pre {} mwe_part {} stem {} suf {}".format(pre, mwe_part, stem, suf))
                     if mwe_part:
                         pre = pre + mwe_part
             else:
                 match = POSMorphology.segment_mwe_re.match(string)
-#                print(" ** match groups: {}".format(match.groups()))
                 premwe, pre, stem, suf, postmwe = match.groups()
+#                print(" ** premwe {} pre {} stem {} suf {} postmwe {}".format(premwe, pre, stem, suf, postmwe))
 #                if premwe:
 #                    pm = [p.strip() for p in premwe.split()]
 #                    pre = pm + [pre]
@@ -1490,7 +1487,7 @@ class POSMorphology:
             mwe_part = mwe_part or premwe or postmwe
             if mwe_part:
                 mwe_part = mwe_part.strip()
-#            print("   ** MWE: premwe {}; pre {}; suf {}; postmwe {}; mwe_part {}".format(premwe, pre, suf, postmwe, mwe_part))
+#            print("   ** MWE: premwe {}; pre {}({}); suf {}({}); postmwe {}; mwe_part {}".format(premwe, pre, npre, suf, nsuf, postmwe, mwe_part))
         else:
 #            print(' **string {}'.format(string))
             match = POSMorphology.segment_re.match(string)
@@ -1571,12 +1568,10 @@ class POSMorphology:
         if mwe:
             # For properties, prefer specific lexical ones over generic lexical ones
             mwe_props = features or self.mwe_feats
-#            features.get('mwe') or self.mwe_feats
 #            print("*** mwe_props {}".format(mwe_props.__repr__()))
             if mwe_props:
-                mwe_tokens = self.get_mwe_tokens(token, mwe_props)
+                mwe_tokens = self.get_mwe_tokens(token, mwe_props, prefixes, stem, suffixes)
                 procdict['tokens'] = mwe_tokens
-#                procdict['nsegs'] += len(token_dicts) - 2
                 if mwe_props.get('segpart', False):
                     procdict['nsegs'] += 1
             # Accommodate MWEs of more than 2 words
@@ -1724,13 +1719,13 @@ class POSMorphology:
 #        print("  ** key {}, freq {}".format(key, freq))
         return freq
 
-    def get_mwe_tokens(self, tokens, props):
+    def get_mwe_tokens(self, tokens, props, prefixes, stem, suffixes):
         '''
         Return the tokens and their properties for a MWE output string.
         '''
         tokens = tokens.split()
         token_dicts = []
-#        print("** MWE tokens: {}".format(tokens))
+#        print("** MWE tokens: {}; pre {} stem {} suf {}".format(tokens, prefixes, stem, suffixes))
 #        print("   *** props: {}".format(props.__repr__()))
         if props:
             headfin = props.get('hdfin')
@@ -1920,6 +1915,7 @@ class POSMorphology:
         if not segdict or 'feats' not in segdict:
             return []
         segfeats = segdict['feats']
+#        print("  ^^ processing {}, segfeats {}".format(string, segfeats))
         for segfeat in segfeats:
             wordfeat = udfdict.get(segfeat)
             if wordfeat:
@@ -1938,12 +1934,11 @@ class POSMorphology:
                             found1.append((segfeat, altfeat))
                     found.append(found1)
                 found2.append(found)
+#        print("    ^^^ features {}".format(features))
         feat_convert = sep_feats and self.language.um.convertdict
 #                if found2:
 #                    print("  ^^ found altfeats {}".format(found2))
         return UniMorph.udfdict2feats(features, join=True, ls=True, feat_convert=feat_convert)
-#        features.sort()
-#        return '|'.join(['='.join([f, v]) for f, v in features])
 
     def get_segment_dep_head(self, string, segdict, index, stem_index, features, framework='UD', is_stem=False):
 #        print("~~get_segment_dep_head {}, {}".format(string, segdict))

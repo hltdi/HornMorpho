@@ -3,8 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2024.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2011-2025.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 Language objects, with support mainly for morphology (separate
 Morphology objects defined in morphology.py).
@@ -167,11 +167,10 @@ MWE_SEG_STRING_RE = re.compile(r"(.*?)\{(.+?)\}(.*)")
 ASCII_RE = re.compile(r'[a-zA-Z]')
 
 class Language:
-    '''A single Language, currently only handling morphology.'''
+    '''A single Language.'''
 
     T = TDict()
 
-#    morphsep = '-'
     infixsep = '--'
     posmark = '@'
     featsmark = '$'
@@ -180,7 +179,6 @@ class Language:
     joinfeats = '|'
     joinpos = ','
     roottempsep = '+'
-#    mwesep = '//'
 
     namefreq = 100
 
@@ -217,8 +215,9 @@ class Language:
                  # CG instances responsible for disambiguation (POS, features) and dependencies
                  disambigCG = None,
                  depCG = None,
-                 citation_separate=True):
-#                 msgs=None, trans=None):
+                 citation_separate=True,
+                 # 2025.6.11: version to accommodate different ways of handling features in CoNNL-U
+                 morph_version=0):
         """
         Set some basic language-specific attributes.
 
@@ -276,7 +275,7 @@ class Language:
         # each entry a wordform and list of (root, FS) analyses
         self.new_anals = {}
         # If available, create a converter between HM and UM features
-        self.um = UniMorph(self)
+        self.um = UniMorph(self, morph_version=morph_version)
         # Mapping from internal phone repr to standard repr
         self.phone_map = {}
         # Stringsets for parsing FSTs
@@ -306,6 +305,8 @@ class Language:
     def __repr__(self):
         return self.label or self.abbrev
 
+    ### Paths to directories and files
+
     @staticmethod
     def get_lang_dir(abbrev):
         path = os.path.join(LANGUAGE_DIR, abbrev)
@@ -318,19 +319,17 @@ class Language:
         """Where data for this language is kept."""
         return os.path.join(LANGUAGE_DIR, self.abbrev)
 
-    def get_data_file(self):
+    def get_data_file(self, morph_version=0):
         """Data file for language."""
+        if morph_version:
+            return os.path.join(self.directory, "{}_{}.lg".format(self.abbrev, morph_version))
         return os.path.join(self.directory, self.abbrev + '.lg')
 
-#    def get_trans_dir(self):
-#        """File with cached analyses."""
-#        return os.path.join(self.directory, 'trans')
-
-#    def get_lex_dir(self):
-#        return os.path.join(self.directory, 'lex')
-
-#    def get_valency_file(self, pos='v'):
-#        return os.path.join(self.get_lex_dir(), pos + '.val')
+    def get_log_file(self):
+        '''
+        Log file for language, for recording updates.
+        '''
+        return os.path.join(self.directory, self.abbrev + '.log')
 
     def get_phon_file(self):
         return os.path.join(self.directory, self.abbrev + '.ph')
@@ -429,6 +428,15 @@ class Language:
                 return entry
         return False
 
+    def log(self, pos, note):
+        mode = 'a'
+        if not os.path.exists(self.get_log_file()):
+            mode = 'w'
+        with open(self.get_log_file(), mode, encoding='utf8') as file:
+            now = time.strftime("%Y %b %d", time.localtime())
+            string = "{}: POS {}\n\t{}".format(now, pos, note)
+            print(string, file=file)
+
     ###
     ### CREATING LANGUAGE
     ###
@@ -437,18 +445,20 @@ class Language:
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
+             morph_version=0,
              ldir='', v5=True, ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
         if ees:
-            lang = EESLanguage(abbrev=abbrev, ldir=ldir)
+            lang = EESLanguage(abbrev=abbrev, ldir=ldir, morph_version=morph_version)
         else:
-            lang = Language(abbrev=abbrev, ldir=ldir)
+            lang = Language(abbrev=abbrev, ldir=ldir, morph_version=morph_version)
         # Load data from language file
         loaded = lang.load_data(load_morph=load_morph, pickle=pickle, gen=gen,
                                 segment=segment, phon=phon, recreate=recreate,
                                 experimental=experimental, mwe=mwe,
                                 translate=translate, simplified=simplified,
+                                morph_version=morph_version,
                                 v5=v5,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
@@ -459,11 +469,12 @@ class Language:
     def load_data(self, load_morph=False, pickle=True, recreate=False,
                   segment=False, phon=False, guess=True, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
+                  morph_version=0,
                   v5=True, poss=None, verbose=True):
         if self.load_attempted:
             return
         self.load_attempted = True
-        filename = self.get_data_file()
+        filename = self.get_data_file(morph_version=morph_version)
         print("Loading data from {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
@@ -1509,106 +1520,6 @@ class Language:
         self.morpho_loaded = True
         return True
 
-    def load_morpho4(self, fsts=None, ortho=True, phon=False, simplified=False,
-                    pickle=True, experimental=False, mwe=False,
-                    segment=False, translate=False,
-                    recreate=False, guess=True, verbose=False):
-        """
-        Load words and FSTs for morphological analysis and generation.
-        """
-#        print("**** load morpho, mwe {}".format(mwe))
-        fsts = fsts or (self.morphology and self.morphology.pos)
-#        opt_string = 'MWE_' if mwe else ''
-        opt_string = ''
-        if experimental:
-            opt_string += 'experimental'
-        elif segment:
-            opt_string += 'segmentation'
-        elif phon:
-            opt_string += 'phonetic'
-        else:
-            opt_string += 'analysis/generation'
-        # Only look for MWE FSTs for segmentation
-        if not self.has_cas(generate=phon, guess=False, phon=phon,
-                            experimental=experimental, mwe=mwe, # and segment,
-                            segment=segment, simplified=simplified):
-            print('No {} FST available for {}!'.format(opt_string, self))
-            if experimental:
-                return False
-        msg_string = Language.T.tformat('Loading STFs for {0}{1} ...',
-                                        [self, ' (' + opt_string + ')' if opt_string else ''],
-                                        self.tlanguages)
-        print(msg_string)
-        # In any case, assume the root frequencies will be needed?
-        self.morphology.set_root_freqs()
-        self.morphology.set_feat_freqs()
-        if ortho:
-            # Load unanalyzed words
-            self.morphology.set_words(ortho=True)
-            self.morphology.set_suffixes(verbose=verbose)
-        if phon:
-            # Load unanalyzed words
-            self.morphology.set_words(ortho=False)
-            self.morphology.set_suffixes(verbose=verbose)
-        if not fsts:
-            return False
-        for pos in fsts:
-            # Load pre-analyzed words if any
-            self.morphology[pos].set_analyzed(ortho=ortho, simplify=simplified)
-            if ortho:
-                self.morphology[pos].make_generated()
-            # Load phonetic->orthographic dictionary if file exists
-            if ortho:
-                self.morphology[pos].set_ortho2phon()
-            # Load lexical anal and gen FSTs (no gen if segmenting)
-            if ortho:
-                self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
-                                              simplified=simplified, experimental=experimental, mwe=False,
-                                              phon=False, segment=segment, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-                if mwe:
-                    self.morphology[pos].load_fst(gen=not segment, create_casc=False, pickle=pickle,
-                                              simplified=simplified, experimental=experimental, mwe=True,
-                                              phon=False, segment=segment, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-            # Load generator for both analysis and segmentation
-#            if phon or (ortho and not segment):
-            self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-                                          simplified=simplified, experimental=False, mwe=False,
-                                          phon=True, segment=False, translate=translate,
-                                          gemination=self.output_gemination,
-                                          pos=pos, recreate=recreate, verbose=verbose)
-#            if mwe:
-#                self.morphology[pos].load_fst(gen=True, create_casc=False, pickle=pickle,
-#                                          simplified=simplified, experimental=False, mwe=True,
-#                                          phon=True, segment=False, translate=translate,
-#                                          recreate=recreate, verbose=verbose)
-                
-            # Load guesser anal and gen FSTs
-            if not segment and guess:
-                if ortho:
-                    self.morphology[pos].load_fst(gen=True, guess=True, phon=False,
-                                                  segment=segment, translate=translate,
-                                                  pickle=pickle, create_casc=False,
-                                                  simplified=simplified, experimental=experimental, mwe=False,
-                                                  gemination=self.output_gemination,
-                                                  pos=pos, recreate=recreate, verbose=verbose)
-                # Always load phonetic generation guesser
-#                if phon:
-                self.morphology[pos].load_fst(gen=True, guess=True, phon=True, segment=segment,
-                                              create_casc=False, pickle=pickle, experimental=experimental, mwe=False,
-                                              simplified=simplified, translate=translate,
-                                              gemination=self.output_gemination,
-                                              pos=pos, recreate=recreate, verbose=verbose)
-            # Load statistics for generation
-            self.morphology[pos].set_root_freqs()
-            self.morphology[pos].set_feat_freqs()
-
-        self.morpho_loaded = True
-        return True
-
     def get_fsts(self, generate=False, phon=False, experimental=False, mwe=False,
                  v5=True,
                  simplified=False, segment=False, translate=False):
@@ -1642,8 +1553,6 @@ class Language:
     ### ANALYZING WORDS AND SENTENCES
     ###
 
-    ## New functions (HM 5.0)
-
     def analyze(self, raw_token, **kwargs):
         '''
         Analyze a token according to HM 5.0, returning a Word object.
@@ -1660,6 +1569,8 @@ class Language:
         guess = kwargs.get('guess', False)
         feats = kwargs.get('feats')
         timeit = kwargs.get('timeit')
+        skip_pos = analpos and kwargs.get('skip_pos', True)
+#        roots = kwargs.get('roots', None)
         if timeit:
             starttime = time.time()
         # Character normalization
@@ -1680,24 +1591,25 @@ class Language:
             copy = cached.copy(name=raw_token)
 #            print("Copying cached word {}".format(copy))
             return copy
-        # punctuation, numerals
-        special_anal = self.analyze_special(token)
-        if special_anal:
-            special_anal = self.check_analpos(special_anal, analpos)
-            # If this is a numeral, punctuation, or abbreviation, don't bother going further.
-            wordobj = Word(special_anal, name=raw_token, merges=self.merges) if special_anal else Word.create_empty(raw_token)
-            if isinstance(cache, dict):
-                cache[token] = wordobj.copy(name=raw_token)
-            return wordobj
-        # Try unanalyzed words or MWEs
-        unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
-        if unanalyzed:
-            if analpos:
-                return special_word()
-            else:
-                all_analyses.extend(unanalyzed)
+        # punctuation, numerals; skip if feats are specified
+        if not feats:
+            special_anal = self.analyze_special(token)
+            if special_anal:
+                special_anal = self.check_analpos(special_anal, analpos)
+                # If this is a numeral, punctuation, or abbreviation, don't bother going further.
+                wordobj = Word(special_anal, name=raw_token, merges=self.merges) if special_anal else Word.create_empty(raw_token)
+                if isinstance(cache, dict):
+                    cache[token] = wordobj.copy(name=raw_token)
+                return wordobj
+            # Try unanalyzed words or MWEs
+            unanalyzed = self.analyze_unanalyzed5(token, mwe=mwe, analpos=analpos)
+            if unanalyzed:
+                if analpos:
+                    return special_word()
+                else:
+                    all_analyses.extend(unanalyzed)
         # if there is an analpos, first try other POS and fail (because of ambiguity) if any succeeds
-        if analpos:
+        if analpos and not skip_pos:
             for pos, pmorph in self.morphology.items():
                 if pos in analpos:
                     continue
@@ -1706,6 +1618,7 @@ class Language:
                     return special_word()
         for pos, pmorph in self.morphology.items():
             if analpos and pos not in analpos:
+#                print("Skipping analysis of {} for {}".format(token, pos))
                 continue
             analyses = pmorph.anal(token, mwe=mwe, guess=guess, feats=feats)
             if analyses:
@@ -1718,6 +1631,7 @@ class Language:
         wordobj.arrange()
         if timeit:
             print("Time taken: {}".format(time.time() - starttime))
+#        if not feats or not wordobj.is_empty():
         return wordobj
 
     def check_analpos(self, analysis, analpos):
@@ -1740,6 +1654,7 @@ class Language:
             trans = self.transliterate(word)
             anal['misc'] = ["Translit={}".format(trans)]
         if word in words:
+#            print("** Looking for word {}".format(word))
             pos = ''
             feats = ''
             freq = self.morphology.get_freq(word)
@@ -1872,6 +1787,7 @@ class Language:
         kwargs: degem, sep_feats, combine_segs, verbosity, pos, props
         '''
 #        print("^^ sentence {}, kwargs {}".format(sentence, kwargs))
+        skip_mwe = kwargs.get('skip_mwe', False) or kwargs.get('feats', False)
         if 'cache' not in kwargs:
             kwargs['cache'] = dict()
         timeit = kwargs.get('timeit', False)
@@ -1885,7 +1801,7 @@ class Language:
 #            sentence, language=self, batch_name=kwargs.get('batch_name', ''), sentid=kwargs.get('sentid', 1), label=kwargs.get('label'))
         token_index = 0
         while token_index < ntokens:
-            if kwargs.get("skip_mwe", False):
+            if skip_mwe:
                 mwe_anal, new_index = None, token_index
             else:
                 mwe_anal, new_index = self.anal_mwe1(tokens, token_index, sentobj, **kwargs)
@@ -1902,8 +1818,8 @@ class Language:
                 if not isinstance(anal1, Word):
                     print("*** Analysis of {} is not a Word!".format(token))
                 sentobj.add_word5(anal1, unsegment=kwargs.get('unsegment', False))
-        if 'props' in kwargs:
-            sentobj.set_props(kwargs['props'])
+#        if 'props' in kwargs:
+#            sentobj.set_props(kwargs['props'])
         if timeit:
             print("Time taken: {}".format(time.time() - starttime))
         return sentobj
@@ -2004,6 +1920,10 @@ class Language:
         '''
         Disambiguate the sentence using the language's disamb rules if any.
         '''
+#        if not self.disambigCG:
+#            print("No CG!")
+#        elif not self.disambigCG.initialized:
+#            print("CG not initialized!")
         if self.disambigCG and self.disambigCG.initialized:
             return self.disambigCG.run(sentence, verbosity=verbosity)
 
@@ -2100,30 +2020,29 @@ class Language:
 
     ### Old functions (HM 4)
 
-    def preprocess(self, form):
-        '''Preprocess a form.'''
-        if self.preproc:
-            res = self.preproc(form)
-            if type(res) == tuple:
-                # preproc() may also return number of simplifications
-                return res[0]
-            return res
-        return form
+#    def preprocess(self, form):
+#        '''Preprocess a form.'''
+#        if self.preproc:
+#            res = self.preproc(form)
+#            if type(res) == tuple:
+#                # preproc() may also return number of simplifications
+#                return res[0]
+#            return res
+#        return form
 
-    def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
-                    phonetic=True):
-        '''Postprocess a form.'''
-#        print("** Postprocessing {}".format(form))
-        if self.postproc:
-            return self.postproc(form, phon=phon, ipa=ipa,
-                                 ortho_only=ortho_only, phonetic=phonetic)
-        return form
+#    def postprocess(self, form, phon=False, ipa=False, ortho_only=False,
+#                    phonetic=True):
+#        '''Postprocess a form.'''
+#        if self.postproc:
+#            return self.postproc(form, phon=phon, ipa=ipa,
+#                                 ortho_only=ortho_only, phonetic=phonetic)
+#        return form
 
-    def postpostprocess(self, form):
-        '''Postprocess a form that has already been postprocessed.'''
-        if self.postpostproc:
-            return self.postpostproc(form)
-        return form
+#    def postpostprocess(self, form):
+#        '''Postprocess a form that has already been postprocessed.'''
+#        if self.postpostproc:
+#            return self.postpostproc(form)
+#        return form
 
     ## Methods related to segmentation
 
@@ -2146,8 +2065,6 @@ class Language:
             form = morph[0]
             if '{' in form:
                 form = form[1:-1]
-#                if pos:
-#                    form += "({}pos={})".format(Language.posmark, pos)
                 morph[0] = form
                 rootindex = index
             morphs[index] = morph
@@ -2305,13 +2222,13 @@ class Language:
 
     ### Analyze words or sentences
 
-    def analyze4(self, item, pos='v', mwe=False, guess=False, nbest=10):
-        posM = self.morphology.get(pos)
-        if not posM:
-            print(">>> No POS {} for this language <<<".format(posM))
-            return
-        analyses = posM.anal(item)
-        return analyses
+#    def analyze4(self, item, pos='v', mwe=False, guess=False, nbest=10):
+#        posM = self.morphology.get(pos)
+#        if not posM:
+#            print(">>> No POS {} for this language <<<".format(posM))
+#            return
+#        analyses = posM.anal(item)
+#        return analyses
 
     def anal_word(self, word, fsts=None, guess=True, only_guess=False,
                   phon=False, segment=False, init_weight=None, experimental=False, mwe=False,
@@ -2487,270 +2404,264 @@ class Language:
                                            phonetic=phonetic, guess=guess, postproc=postproc,
                                            freq=report_freq, verbosity=verbosity))
 
-    def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
-                  segment=False,
-                  lemma_only=False, ortho_only=False, realize=False,
-                  knowndict=None, guessdict=None, cache=False, no_anal=None,
-                  phon=False, only_guess=False, guess=True, raw=False, experimental=False, mwe=False,
-                  sep_punc=True, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=0, normalize=False,
-                  # Kind of output
-                  conllu=True, seglevel=2,
-                  # Filter for morphological properites
-                  gramfilter=None,
-                  # Ambiguity
-                  report_freq=False, nbest=100, report_n=50000,
-                  lower=True, lower_all=False, nlines=0, start=0, batch_name='',
-                  local_cache=None, xml=None, multseg=False, csentences=None, sentid=0,
-                  verbosity=0):
-        """
-        Analyze words in file, either writing results to pathout, storing in
-        knowndict or guessdict, or printing out.
-        saved is a dict of saved analyses, to save analysis time for words occurring
-        more than once.
-        """
-        preproc = preproc and self.preproc
-        postproc = postproc and self.postproc
-        storedict = True if knowndict != None else False
-        normalize = normalize and not um
-        realizer = realize and self.segmentation2string
-        batch_name = batch_name or "Batch"
-        csent = None
-        xsent = None
-#        if csentences != False:
-        if not isinstance(csentences, list):
-            # Create the list of CoNLL-U sentences
-            csentences = []
-        elif xml:
-            # This is either a CACO XML tree or True or False (or None)
-            if not isinstance(xml, ET.ElementTree):
-                # Create the CACO tree
-                xml = make_caco()
-            xmlroot = xml.getroot()
-        try:
-            filein = open(pathin, 'r', encoding='utf-8')
-            # If there's no output file and no outdict, write analyses to terminal
-            out = sys.stdout
-            if segment:
-                print('Segmenting words in', pathin)
-            else:
-                print('Analyzing words in', pathin)
-            if pathout:
-                # Where the analyses are to be written
-                fileout = open(pathout, 'w', encoding='utf-8')
-                print('Writing to', pathout)
-                out = fileout
-            fsts = pos or self.morphology.pos
-            n = 0
-            # Save words already analyzed to avoid repetition
-            if no_anal:
-                no_anal = []
-            else:
-                no_anal = None
-            # Store final representations here; these depend not only on analyses but also
-            # on various options to this method, like minim and segment
-            local_cache = local_cache if isinstance(local_cache, dict) else {}
-            # If nlines is not 0, keep track of lines read
-            lines = filein.readlines()
-            if start or nlines:
-                lines = lines[start:start+nlines]
-            for line in lines:
-                line = line.strip()
-                sentid += 1
-                n += 1
-                if n % report_n == 0:
-                    print("ANALYZED {} LINES".format(n))
-                # Separate punctuation from words
-                if sep_punc:
-                    line = self.morphology.sep_punc(line)
-                identifier = ''
-                string = ''
-                if sep_ident:
-                    # Separate identifier from line
-                    identifier, line = line.split('\t')
-                    string = "{}\t".format(identifier)
-                if verbosity:
-                    print("** Analyzing line {}".format(line))
-#                if csentences != False:
-                csent = Sentence(line, self, batch_name=batch_name, sentid=sentid)
-                csentences.append(csent)
-                if xml:
-                    xsent = add_caco_sentence(xmlroot)
-                # Segment into words
-                morphid = 1
-                csent = \
-                self.anal_sentence4(line, csent=csent, csentences=csentences, file=out,
-                                   preproc=preproc, postproc=postproc, pos=pos, fsts=fsts, segment=segment, 
-                                   realize=realize, realizer=realizer, dicts=[knowndict, guessdict] if storedict else None,
-                                   conllu=conllu, xsent=xsent, seglevel=seglevel, gramfilter=gramfilter,
-                                   phon=phon, only_guess=only_guess, guess=guess, raw=raw, experimental=experimental, mwe=mwe,
-                                   sep_punc=sep_punc, word_sep=word_sep, sep_ident=sep_ident, minim=minim, feats=feats, simpfeats=simpfeats,
-                                   um=um, normalize=normalize, report_freq=report_freq, nbest=nbest, report_n=report_n,
-                                   lower=lower, lower_all=lower_all, batch_name=batch_name,
-                                   local_cache=local_cache, xml=xml, multseg=multseg, sentid=sentid, morphid=morphid,
-                                   verbosity=0)
-            filein.close()
-            if pathout:
-                fileout.close()
-        except IOError:
-            print('No sufile or path; try another one.')
-        if xml:
-            return xml
-        elif experimental:
-            return csentences
+##    def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
+##                  segment=False,
+##                  lemma_only=False, ortho_only=False, realize=False,
+##                  knowndict=None, guessdict=None, cache=False, no_anal=None,
+##                  phon=False, only_guess=False, guess=True, raw=False, experimental=False, mwe=False,
+##                  sep_punc=True, word_sep='\n', sep_ident=False, minim=False, feats=None, simpfeats=None, um=0, normalize=False,
+##                  # Kind of output
+##                  conllu=True, seglevel=2,
+##                  # Filter for morphological properites
+##                  gramfilter=None,
+##                  # Ambiguity
+##                  report_freq=False, nbest=100, report_n=50000,
+##                  lower=True, lower_all=False, nlines=0, start=0, batch_name='',
+##                  local_cache=None, xml=None, multseg=False, csentences=None, sentid=0,
+##                  verbosity=0):
+##        """
+##        Analyze words in file, either writing results to pathout, storing in
+##        knowndict or guessdict, or printing out.
+##        saved is a dict of saved analyses, to save analysis time for words occurring
+##        more than once.
+##        """
+##        preproc = preproc and self.preproc
+##        postproc = postproc and self.postproc
+##        storedict = True if knowndict != None else False
+##        normalize = normalize and not um
+##        realizer = realize and self.segmentation2string
+##        batch_name = batch_name or "Batch"
+##        csent = None
+##        xsent = None
+###        if csentences != False:
+##        if not isinstance(csentences, list):
+##            # Create the list of CoNLL-U sentences
+##            csentences = []
+##        elif xml:
+##            # This is either a CACO XML tree or True or False (or None)
+##            if not isinstance(xml, ET.ElementTree):
+##                # Create the CACO tree
+##                xml = make_caco()
+##            xmlroot = xml.getroot()
+##        try:
+##            filein = open(pathin, 'r', encoding='utf-8')
+##            # If there's no output file and no outdict, write analyses to terminal
+##            out = sys.stdout
+##            if segment:
+##                print('Segmenting words in', pathin)
+##            else:
+##                print('Analyzing words in', pathin)
+##            if pathout:
+##                # Where the analyses are to be written
+##                fileout = open(pathout, 'w', encoding='utf-8')
+##                print('Writing to', pathout)
+##                out = fileout
+##            fsts = pos or self.morphology.pos
+##            n = 0
+##            # Save words already analyzed to avoid repetition
+##            if no_anal:
+##                no_anal = []
+##            else:
+##                no_anal = None
+##            # Store final representations here; these depend not only on analyses but also
+##            # on various options to this method, like minim and segment
+##            local_cache = local_cache if isinstance(local_cache, dict) else {}
+##            # If nlines is not 0, keep track of lines read
+##            lines = filein.readlines()
+##            if start or nlines:
+##                lines = lines[start:start+nlines]
+##            for line in lines:
+##                line = line.strip()
+##                sentid += 1
+##                n += 1
+##                if n % report_n == 0:
+##                    print("ANALYZED {} LINES".format(n))
+##                # Separate punctuation from words
+##                if sep_punc:
+##                    line = self.morphology.sep_punc(line)
+##                identifier = ''
+##                string = ''
+##                if sep_ident:
+##                    # Separate identifier from line
+##                    identifier, line = line.split('\t')
+##                    string = "{}\t".format(identifier)
+##                if verbosity:
+##                    print("** Analyzing line {}".format(line))
+###                if csentences != False:
+##                csent = Sentence(line, self, batch_name=batch_name, sentid=sentid)
+##                csentences.append(csent)
+##                if xml:
+##                    xsent = add_caco_sentence(xmlroot)
+##                # Segment into words
+##                morphid = 1
+##                csent = \
+##                self.anal_sentence4(line, csent=csent, csentences=csentences, file=out,
+##                                   preproc=preproc, postproc=postproc, pos=pos, fsts=fsts, segment=segment, 
+##                                   realize=realize, realizer=realizer, dicts=[knowndict, guessdict] if storedict else None,
+##                                   conllu=conllu, xsent=xsent, seglevel=seglevel, gramfilter=gramfilter,
+##                                   phon=phon, only_guess=only_guess, guess=guess, raw=raw, experimental=experimental, mwe=mwe,
+##                                   sep_punc=sep_punc, word_sep=word_sep, sep_ident=sep_ident, minim=minim, feats=feats, simpfeats=simpfeats,
+##                                   um=um, normalize=normalize, report_freq=report_freq, nbest=nbest, report_n=report_n,
+##                                   lower=lower, lower_all=lower_all, batch_name=batch_name,
+##                                   local_cache=local_cache, xml=xml, multseg=multseg, sentid=sentid, morphid=morphid,
+##                                   verbosity=0)
+##            filein.close()
+##            if pathout:
+##                fileout.close()
+##        except IOError:
+##            print('No sufile or path; try another one.')
+##        if xml:
+##            return xml
+##        elif experimental:
+##            return csentences
 
-    def anal_sentence4(self, sentence, csent=None, csentences=None, file=None, pathout="",
-                      preproc=True, postproc=True, pos=None, fsts=None,
-                      segment=True, realize=True, realizer=None,
-                      conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
-                      phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
-                      sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
-                      feats=None, simpfeats=None, um=0, normalize=False,
-                      nbest=100, report_freq=False, report_n=50000,
-                      remove_dups=True, seglevel=2,
-                      gramfilter=None, filter_cache=None,
-                      lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
-                      verbosity=0):
-        # Keep track of words that are filtered out because they match filter conditions
-        countgrams = None
-        if gramfilter and isinstance(gramfilter, str):
-            gramfilter = EES.get_filter(gramfilter)
-            # Check whether this filter counts instances of "in" words; assume this is the only condition
-#            print("*** gramfilter {}".format(gramfilter))
-            for key, value in gramfilter.items():
-                if isinstance(key, tuple):
-                    # the key is (min, max); are these the only possibilities?
-                    countgrams = key
-                    print("** Counting gramfilter matches")
-#        print("*** Analyzing sentence {} with filter {}".format(sentence, gramfilter))
-        # lists of words that filter fails on and words it succeeds on
-        filtered = [[], []]
-        if preproc and not callable(preproc):
-            preproc = self.preproc
-        if postproc and not callable(postproc):
-            postproc = self.postproc
-        csent = csent or Sentence(sentence, self, batch_name=batch_name, sentid=sentid)
-        local_cache = local_cache if isinstance(local_cache, dict) else {}
-        if not file and pathout:
-            file = open(pathout, 'w', encoding='utf-8')
-        if not fsts:
-            fsts = pos or self.morphology.pos
-            skip_other_pos = False
-        else:
-            skip_other_pos = True
-        if realize and not realizer:
-            realizer = self.segmentation2string
-        # Create a list of CoNNL-U sentences.
-        if not isinstance(csentences, list):
-            csentences = []
-        tokens = sentence.split()
-        ntokens = len(tokens)
-        w_index = 0
-        while w_index < ntokens:
-            if filtered[0]:
-                # There is a failed word
-#                print("*** filtered {}, rejecting sentence".format(filtered))
-                return
-            word = tokens[w_index]
-            simps = None
-            words = None
-            if w_index < len(tokens)-1:
-                next_word = tokens[w_index+1]
-                if not self.morphology.is_punctuation(word) and not self.morphology.is_punctuation(next_word):
-                    words = word + " " + next_word
-            if words:
-                if self.get_from_local_cache(words, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
-                                             experimental=experimental, segment=segment,
-                                             printout=file and not experimental,
-                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
-                                             multseg=multseg, morphid=morphid, file=file):
-                    # MWE analysis stored in cache
-                    w_index += len(words.split())
-                    continue
-                simps = None
-                if preproc:
-                    form, simps = self.preproc(words)
-                # Attempt to analyze MWE
-                analyses = \
-                    self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
-                                   segment=segment, experimental=experimental, mwe=True,
-                                   normalize=normalize, ortho_only=False,
-                                   preproc=False, postproc=postproc and not raw,
-                                   skip_other_pos=skip_other_pos,
-                                   cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
-                                   string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
-                newmorphid = \
-                   self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
-                                             experimental=experimental,
-                                             gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
-                                             local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
-                                             conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                             remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
-                                             printout=file and not experimental,
-                                             word_sep=word_sep, file=file)
-                if newmorphid:
-                    # MWE analysis succeeded
-                    w_index += len(words.split())
-                    morphid = newmorphid
-                    continue
-            # Analyze single word
-            if verbosity:
-                print("**  Analyzing word {}".format(word))
-            # Lowercase on the first word, assuming a line is a sentence
-            if lower_all or (lower and w_index == 0):
-                word = word.lower()
-            if self.get_from_local_cache(word, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
-                                         experimental=experimental, segment=segment,
-                                         printout=file and not experimental,
-                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
-                                         multseg=multseg, morphid=morphid, file=file):
-#                print("** Got {} from local cache".format(word))
-                w_index += 1
-                continue
-            simps = None
-            if not skip_other_pos:
-                analyses = self.preproc_special(word, segment=segment, print_out=False)
-            else:
-                analyses = None
-            if not analyses:
-                ## Analyze
-                if preproc:
-                    form, simps = self.preproc(word)
-                analyses = \
-                  self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
-                       segment=segment, experimental=experimental, mwe=False, 
-                       normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
-                       skip_other_pos=skip_other_pos,
-                       cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
-                       string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
-            morphid = \
-                self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
-                                          experimental=experimental,
-                                          gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
-                                          local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
-                                          conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
-                                          remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
-                                          printout=file and not experimental,
-                                          word_sep=word_sep, file=file)
-            # Go to next word
-            w_index += 1
-#            print("** Single word analysis, w_index now {}, morphid now {}".format(w_index, morphid))
-        if filtered[0]:
-                # There is a failed word
-#                print("*** filtered {}, rejecting sentence".format(filtered))
-            return
-        if gramfilter:
-            if not filtered[1]:
-#            print("*** no words passed filter cond, reject")
-                return
-            elif countgrams:
-                print("*** accepted by filter: {}".format(filtered[1]))
-                nfiltered = len(filtered[1])
-                if countgrams[0] > nfiltered or countgrams[1] < nfiltered:
-                    print("*** failed count constraints")
-                    return
-        # End of sentence
-        csent.finalize()
-        return csent
+##    def anal_sentence4(self, sentence, csent=None, csentences=None, file=None, pathout="",
+##                      preproc=True, postproc=True, pos=None, fsts=None,
+##                      segment=True, realize=True, realizer=None,
+##                      conllu=True, xml=None, multseg=False, dicts=None, xsent=None,
+##                      phon=False, only_guess=False, guess=True, raw=False, experimental=True, mwe=True,
+##                      sep_punc=False, word_sep='\n', sep_ident=False, minim=False,
+##                      feats=None, simpfeats=None, um=0, normalize=False,
+##                      nbest=100, report_freq=False, report_n=50000,
+##                      remove_dups=True, seglevel=2,
+##                      gramfilter=None, filter_cache=None,
+##                      lower=True, lower_all=False, batch_name='', local_cache=None, sentid=0, morphid=1,
+##                      verbosity=0):
+##        # Keep track of words that are filtered out because they match filter conditions
+##        countgrams = None
+##        if gramfilter and isinstance(gramfilter, str):
+##            gramfilter = EES.get_filter(gramfilter)
+##            # Check whether this filter counts instances of "in" words; assume this is the only condition
+##            for key, value in gramfilter.items():
+##                if isinstance(key, tuple):
+##                    # the key is (min, max); are these the only possibilities?
+##                    countgrams = key
+##                    print("** Counting gramfilter matches")
+##        # lists of words that filter fails on and words it succeeds on
+##        filtered = [[], []]
+##        if preproc and not callable(preproc):
+##            preproc = self.preproc
+##        if postproc and not callable(postproc):
+##            postproc = self.postproc
+##        csent = csent or Sentence(sentence, self, batch_name=batch_name, sentid=sentid)
+##        local_cache = local_cache if isinstance(local_cache, dict) else {}
+##        if not file and pathout:
+##            file = open(pathout, 'w', encoding='utf-8')
+##        if not fsts:
+##            fsts = pos or self.morphology.pos
+##            skip_other_pos = False
+##        else:
+##            skip_other_pos = True
+##        if realize and not realizer:
+##            realizer = self.segmentation2string
+##        # Create a list of CoNNL-U sentences.
+##        if not isinstance(csentences, list):
+##            csentences = []
+##        tokens = sentence.split()
+##        ntokens = len(tokens)
+##        w_index = 0
+##        while w_index < ntokens:
+##            if filtered[0]:
+##                # There is a failed word
+###                print("*** filtered {}, rejecting sentence".format(filtered))
+##                return
+##            word = tokens[w_index]
+##            simps = None
+##            words = None
+##            if w_index < len(tokens)-1:
+##                next_word = tokens[w_index+1]
+##                if not self.morphology.is_punctuation(word) and not self.morphology.is_punctuation(next_word):
+##                    words = word + " " + next_word
+##            if words:
+##                if self.get_from_local_cache(words, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
+##                                             experimental=experimental, segment=segment,
+##                                             printout=file and not experimental,
+##                                             dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
+##                                             multseg=multseg, morphid=morphid, file=file):
+##                    # MWE analysis stored in cache
+##                    w_index += len(words.split())
+##                    continue
+##                simps = None
+##                if preproc:
+##                    form, simps = self.preproc(words)
+##                # Attempt to analyze MWE
+##                analyses = \
+##                    self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
+##                                   segment=segment, experimental=experimental, mwe=True,
+##                                   normalize=normalize, ortho_only=False,
+##                                   preproc=False, postproc=postproc and not raw,
+##                                   skip_other_pos=skip_other_pos,
+##                                   cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
+##                                   string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
+##                newmorphid = \
+##                   self.handle_word_analyses(words, analyses, mwe=True, simps=simps, csent=csent, morphid=morphid,
+##                                             experimental=experimental,
+##                                             gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
+##                                             local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
+##                                             conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+##                                             remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
+##                                             printout=file and not experimental,
+##                                             word_sep=word_sep, file=file)
+##                if newmorphid:
+##                    # MWE analysis succeeded
+##                    w_index += len(words.split())
+##                    morphid = newmorphid
+##                    continue
+##            # Analyze single word
+##            if verbosity:
+##                print("**  Analyzing word {}".format(word))
+##            # Lowercase on the first word, assuming a line is a sentence
+##            if lower_all or (lower and w_index == 0):
+##                word = word.lower()
+##            if self.get_from_local_cache(word, local_cache, um=um, seglevel=seglevel, gramfilter=gramfilter, filtered=filtered,
+##                                         experimental=experimental, segment=segment,
+##                                         printout=file and not experimental,
+##                                         dicts=dicts, conllu=conllu, xml=xml, xsent=xsent, csent=csent, filter_cache=filter_cache,
+##                                         multseg=multseg, morphid=morphid, file=file):
+##                w_index += 1
+##                continue
+##            simps = None
+##            if not skip_other_pos:
+##                analyses = self.preproc_special(word, segment=segment, print_out=False)
+##            else:
+##                analyses = None
+##            if not analyses:
+##                ## Analyze
+##                if preproc:
+##                    form, simps = self.preproc(word)
+##                analyses = \
+##                  self.anal_word(form, fsts=fsts, guess=guess, phon=phon, only_guess=only_guess,
+##                       segment=segment, experimental=experimental, mwe=False, 
+##                       normalize=normalize, ortho_only=False, preproc=False, postproc=postproc and not raw,
+##                       skip_other_pos=skip_other_pos,
+##                       cache=False, no_anal=None, um=um, report_freq=report_freq, nbest=nbest,
+##                       string=not raw and not um, print_out=False, only_anal=False, verbosity=verbosity)
+##            morphid = \
+##                self.handle_word_analyses(word, analyses, mwe=False, simps=simps, csent=csent, morphid=morphid,
+##                                          experimental=experimental,
+##                                          gramfilter=gramfilter, filtered=filtered, filter_cache=filter_cache,
+##                                          local_cache=local_cache, segment=segment, realize=realize, realizer=realizer,
+##                                          conllu=conllu, xml=xml, dicts=dicts, multseg=multseg, raw=raw, um=um,
+##                                          remove_dups=remove_dups, seglevel=seglevel, verbosity=verbosity,
+##                                          printout=file and not experimental,
+##                                          word_sep=word_sep, file=file)
+##            # Go to next word
+##            w_index += 1
+##        if filtered[0]:
+##                # There is a failed word
+##            return
+##        if gramfilter:
+##            if not filtered[1]:
+##                return
+##            elif countgrams:
+##                print("*** accepted by filter: {}".format(filtered[1]))
+##                nfiltered = len(filtered[1])
+##                if countgrams[0] > nfiltered or countgrams[1] < nfiltered:
+##                    print("*** failed count constraints")
+##                    return
+##        # End of sentence
+##        csent.finalize()
+##        return csent
 
     def get_from_local_cache(self, word, local_cache, um=0, seglevel=2, gramfilter=None, filtered=None, filter_cache=None,
                              dicts=None, conllu=True, xml=False, csent=None, xsent=None, multseg=False,
@@ -3566,24 +3477,6 @@ class Language:
             print()
 
     # Version 5 sort analyses within word.
-#    def sort_word(self, word):
-#        word.sort(
-
-#        freqs = self.get_freqs(word)
-
-#    def get_freqs(self, word):
-#        '''
-#        Assign frequencies to each analysis of word.
-#        '''
-#        for analysis in word:
-#            freq = self.get_freq(analysis)
-
-#    def get_freq(self, analysis):
-#        pos = analysis.get('pos')
-#        if pos in ('v', 'V'):
-#            um = analysis.get('um')
-#            if not um:
-#                return 1
 
     def sort_analyses(self, analyses):
         '''
@@ -3741,7 +3634,7 @@ class EESLanguage(EES, Language):
     especially related to orthography.
     '''
 
-    def __init__(self, abbrev, ldir=''):
+    def __init__(self, abbrev, ldir='', morph_version=0):
 #        print("Creating EES language...")
-        Language.__init__(self, abbrev, ldir=ldir, roman=False)
+        Language.__init__(self, abbrev, ldir=ldir, roman=False, morph_version=morph_version)
         EES.__init__(self)

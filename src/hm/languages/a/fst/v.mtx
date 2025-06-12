@@ -231,15 +231,15 @@ $ ms_bound
   -
 
 $ cconj2
-  /ኮ		[cconj2=ኮ,spos=ADV,-prior]
+  /ኮ		[cconj2=ኮ,spos=INTJ,-prior]
   /ና		[cconj2=ና,spos=CCONJ]
   # impossible in subordinate clauses; (re)added 2024.10.14; updated 2024.10.29 to exclude ኣ following ኣ and if there are other analyses
-  =ኣ	       <ኣ>		[cconj2=ኣ,spos=ADV,-sub,+mc,-prior]
+  =ኣ	       <ኣ>		[cconj2=ኣ,spos=INTJ,-sub,+mc,-prior]
   # interrogative, impossible in imperative, jussive?
   ን		[cconj2=ን,spos=ADV,-sub,+mc,t=i|p,-prior];[cconj2=ን,spos=ADV,-sub,t=c,+mc,-prior]
   --		[cconj2=0]
 
 $ end
   # d=m is for manner deverbal nouns
-  # Here's where we indicate that ሆነ can be a copula
-  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0]
+  # Here's where we indicate that ሆነ can be a copula  or auxiliary and that አለ can also be an auxiliary
+  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0]

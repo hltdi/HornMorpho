@@ -26,7 +26,7 @@ segmented by HornMorph.
 Includes CoNLL-U and XML output options
 """
 
-import xml.etree.ElementTree as ET
+#import xml.etree.ElementTree as ET
 from conllu import TokenList, Token, Metadata
 from conllu.parser import parse_comment_line
 from .geez import degeminate
@@ -87,7 +87,7 @@ class Sentence():
 
     selectpos = \
       {
-       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'],\
+       'NADJ': ['NOUN', 'ADJ'], 'NPROPN': ['NOUN', 'PROPN'], 'VINTJ': ['VERB', 'INTJ'], 'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'], 'ADVCCONJ': ['ADV', 'CCONJ'],\
        'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ'], 'ADVINTJ': ['ADV', 'INTJ'], 'PARTINTJ': ['PART', 'INTJ']
       }
 
@@ -128,6 +128,9 @@ class Sentence():
         self.posambig = []
         # whether sentence has been disambiguated
         self.disambiguated = False
+        # Record of disambiguations
+        self.disambigs = None
+        self.pos_disambigs = None
         self.conllu_string = ''
         self.complexity = {'ambig': 0, 'unk': 0, 'punct': 0}
         self.merges = []
@@ -142,6 +145,8 @@ class Sentence():
         self.nrelations = 0
         # number of unlabeled dependencies added
         self.ndependencies = 0
+        # CG Sentence object, needed if disambiguations are recorded
+        self.CG = None
 
     def __repr__(self):
         return "S::{}::{}".format(self.sentid, self.text)
@@ -196,8 +201,13 @@ class Sentence():
         If update_ids is True, update the id and head fields based
         on each word's position in the sentence.
         '''
-        file = file or sys.stdout
-        print(self.create_conllu(update_ids=update_ids), file=file, end='')
+        if file:
+            out = open(file, 'w')
+        else:
+            out = sys.stdout
+        print(self.create_conllu(update_ids=update_ids), file=out, end='')
+        if file:
+            out.close()
 
     def create_conllu(self, update_ids=True, add_rels=True, verbosity=0):
         '''
@@ -323,7 +333,6 @@ class Sentence():
         '''
         Create a CoNLL-U representation from a token's analysis dict.
         '''
-#        print("**anal2conllu {}".format(token))
         if not analdict:
             # Unanalyzed token
             return TokenList([HMToken.create_unal(index, token)])
@@ -339,6 +348,7 @@ class Sentence():
             pos = Sentence.convertPOS(analdict)
             return TokenList([HMToken.create1(index, token, analdict.get('lemma', token), pos, analdict.get('udfeats'), analdict, analdict.get('xpos'), Sentence.format_misc(analdict))])
 
+        mwe = 'tokens' in analdict
         conllu = TokenList()
         # Create the line for the whole token
         conllu.append(
@@ -347,17 +357,18 @@ class Sentence():
         stemdict = analdict['stem']
 
         mwe_first = False
-        mwe = 'tokens' in analdict
         if mwe:
             mwe_feats = analdict['feats']
+#            print("** anal2conllu: compound: {} / {}".format(token, mwe_feats.__repr__()))
             if mwe_feats and mwe_feats.get('segpart', False):
                 if mwe_feats.get('hdfin', False):
                     mwe_first = True
                     misc = Sentence.format_misc(mwe_feats)
-                    for token in analdict['tokens'][:-1]:
-                        string = token['token']
-                        pos = token.get('pos', mwe_feats.get('pos'))
-                        xpos = token.get('xpos', None)
+                    for tok in analdict['tokens'][:-1]:
+#                        print("  ** token {}".format(tok))
+                        string = tok['token']
+                        pos = tok.get('pos', mwe_feats.get('pos'))
+                        xpos = tok.get('xpos', None)
                         head = stemdict.get('head', 0)+2
                         conllu.append(
                             HMToken.create_morph(index, string, string, pos, None, head, mwe_feats.get('dep'), analdict, xpos=xpos, misc=misc)
@@ -500,11 +511,83 @@ class Sentence():
         '''
         return CG.sentence2cohorts(self, verbosity=verbosity)
 
+    def setCG(self):
+        if not self.CG:
+            self.CG = self.toCG()
+
     def printCG(self, verbosity=0):
         '''
         Shortcut for printing out CG format.
         '''
         print(self.toCG().format())
+
+    ### Disambiguation within GUI
+
+    ## Recording disambiguations
+
+    def add_disambig(self, wordindex, selected, notselected):
+        if not self.disambigs:
+            self.disambigs = {}
+        self.disambigs[wordindex] = selected, notselected
+
+    def get_disambiguation(self, wordindex):
+        if self.disambigs:
+            return self.disambigs.get(wordindex, None)
+        return None
+
+    def add_pos_disambig(self, wordindex, selected, original):
+#        print("&& Setting POS for {} to {}, original {}".format(wordindex, selected, original))
+        if not self.pos_disambigs:
+            self.pos_disambigs = {}
+        self.pos_disambigs[wordindex] = selected, original
+
+    def get_pos_disambig(self, wordindex):
+        if self.pos_disambigs:
+            return self.pos_disambigs.get(wordindex, None)
+        return None
+
+    def select_reading(self, cohorti, readingi):
+        '''
+        Select the reading (analysis) for the given cohort (word)
+        chosen during GUI disambiguation.
+        '''
+#        print("&& Selecting reading {} for cohort {}".format(readingi, cohorti))
+        self.setCG()
+        cohort = self.CG.cohorts[cohorti]
+        reading = cohort.readings[readingi]
+        self.add_disambig(cohorti, reading.items, [r.items for r in cohort.readings if r != reading])
+        cohort.readings = [reading]
+
+    def select_POS(self, cohorti, newPOS, oldPOS):
+        """
+        Select the POS from a set represented by a string like 'NADJ'.
+        """
+        self.setCG()
+        cohort = self.CG.cohorts[cohorti]
+        # readingi is not provided so we have to find the reading that has the oldPOS
+        readingi = -1
+        items = []
+        reading = None
+        for ri, rding in enumerate(cohort.readings):
+            itms = rding.items
+#            print(" ** reading {}, items: {}".format(ri, itms))
+            if oldPOS in itms:
+                readingi = ri
+                items = itms
+                reading = rding
+                break
+        if not reading:
+            print("Something wrong: POS {} not in any reading in cohort {}".format(oldpos, cohort))
+#            reading = cohort.readings[0]
+            return
+        self.add_pos_disambig(cohorti, newPOS, oldPOS)
+        items[items.index(oldPOS)] = newPOS
+
+    def write_disambigs(self, path=''):
+        '''
+        Write the disambiguations (segmentations, features, or POS)
+        to the file at path.
+        '''
 
     #####
         
@@ -556,7 +639,7 @@ class Sentence():
             return True
         return False
 
-    def record_ambiguities(self, v5=False):
+    def record_ambiguities(self, v5=True):
         '''
         Return the number of ambiguities (POS, segmentation) in the sentence.
         '''
@@ -574,7 +657,6 @@ class Sentence():
             else:
                 # first segmentation
                 word = word[0]
-#                print("** word {}".format(word))
                 for morph in word:
                     pos = morph.get('upos')
                     if pos in Sentence.selectpos:
@@ -584,10 +666,8 @@ class Sentence():
                     feats = morph.get('feats')
                     if feats and '&' in feats:
                         # Features beginning in & need to be disambiguated manually
-#                        print("** ambiguous feats {}, appending to ambig {}".format(feats, ambig))
                         ambig.append(index)
                         count += 1
-#                    print("  ** feats {}".format(feats))
         return ambig
 
     @staticmethod
@@ -645,8 +725,6 @@ class Sentence():
                 # No segments: use current index
                 ws = wordseg[0]
                 ws['id'] = index
-#                # Degeminate form always
-#                ws['form'] = degeminate(ws['form'])
                 # Degem lemma too if degem is True
                 if degem:
                     altws = ws.copy()

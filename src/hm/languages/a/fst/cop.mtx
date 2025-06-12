@@ -66,8 +66,8 @@ $ conj
   /ና		[cnj2=ና,apos=CCONJ]
   /ሳ		[cnj2=ሳ,apos=ADV]
   /ማ		[cnj2=ማ,apos=ADV]
-  ኣ		[cnj2=ኣ,apos=ADV]
-  /ኮ		[cnj2=ኮ,apos=ADV]
+  ኣ		[cnj2=ኣ,apos=INTJ]
+  /ኮ		[cnj2=ኮ,apos=INTJ]
   ን		[cnj2=ን,apos=ADV]
   --		[cnj2=0]
 

@@ -1,0 +1,315 @@
+## Morphology: inflection features are features of the word
+## rather than the affix, for example, obj -ኝ is ObjPers=1 rather
+## than Pers=1
+
+name: አማርኛ
+code: a
+version: 1.7
+
+gemination: True
+
+seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
+      ለ ሉ ሊ ላ ሌ ል ሎ ሏ
+      ሐ ሑ ሒ ሓ ሔ ሕ ሖ ሗ
+      መ ሙ ሚ ማ ሜ ም ሞ ሟ
+      ሠ ሡ ሢ ሣ ሤ ሥ ሦ ሧ
+      ረ ሩ ሪ ራ ሬ ር ሮ ሯ
+      ሰ ሱ ሲ ሳ ሴ ስ ሶ ሷ
+      ሸ ሹ ሺ ሻ ሼ ሽ ሾ ሿ
+      ቀ ቁ ቂ ቃ ቄ ቅ ቆ ቈ ቊ ቋ ቌ ቍ
+      በ ቡ ቢ ባ ቤ ብ ቦ ቧ
+      ቨ ቩ ቪ ቫ ቬ ቭ ቮ ቯ
+      ተ ቱ ቲ ታ ቴ ት ቶ ቷ
+      ቸ ቹ ቺ ቻ ቼ ች ቾ ቿ
+      ኀ ኁ ኂ ኃ ኄ ኅ ኆ ኈ ኊ ኋ ኌ ኍ
+      ነ ኑ ኒ ና ኔ ን ኖ ኗ
+      ኘ ኙ ኚ ኛ ኜ ኝ ኞ ኟ
+      አ ኡ ኢ ኣ ኤ እ ኦ ኧ
+      ከ ኩ ኪ ካ ኬ ክ ኮ ኰ ኲ ኳ ኴ ኵ
+      ኸ ኹ ኺ ኻ ኼ ኽ ኾ ዃ
+      ወ ዉ ዊ ዋ ዌ ው ዎ
+      ዐ ዑ ዒ ዓ ዔ ዕ ዖ
+      ዘ ዙ ዚ ዛ ዜ ዝ ዞ ዟ
+      ዠ ዡ ዢ ዣ ዤ ዥ ዦ ዧ
+      የ ዩ ዪ ያ ዬ ይ ዮ
+      ደ ዱ ዲ ዳ ዴ ድ ዶ ዷ
+      ጀ ጁ ጂ ጃ ጄ ጅ ጆ ጇ
+      ገ ጉ ጊ ጋ ጌ ግ ጎ ጐ ጒ ጓ ጔ ጕ
+      ጠ ጡ ጢ ጣ ጤ ጥ ጦ ጧ
+      ጨ ጩ ጪ ጫ ጬ ጭ ጮ ጯ
+      ጰ ጱ ጲ ጳ ጴ ጵ ጶ ጷ
+      ጸ ጹ ጺ ጻ ጼ ጽ ጾ ጿ
+      ፀ ፁ ፂ ፃ ፄ ፅ ፆ
+      ፈ ፉ ፊ ፋ ፌ ፍ ፎ ፏ
+      ፐ ፑ ፒ ፓ ፔ ፕ ፖ ፗ
+      / _ ፟ < > -
+      # final adverbial/interjective -ኣ
+      =ኣ
+      A B C D E F G H I J K
+
+punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
+
+normalization::
+  ሃ ሐሑሒሓሔሕሖ	ኀኁኂኃኄኅኆ	ኸኹኺኻኼኽኾ	ዐዑዒዓዔዕዖ	ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
+  ሀ ሀሁሂሀሄህሆ		ሀሁሂሀሄህሆ	ሀሁሂሀሄህሆ	አኡኢአኤእኦ	ሰሱሲሳሴስሶ	ጸጹጺጻጼጽጾ
+
+charcomb::
+  -ሰ: ስ /ሰ ;\
+  -ሳ: ስ /ሳ ;\
+  -ዘ: ስ /ዘ ;\
+  -ዛ: ስ /ዛ ;\
+  -ሸ: ስ /ሸ ;\
+  -ሻ: ስ /ሻ ;\
+  -ፀ: ስ /ፀ ;\
+  -ፃ: ስ /ፃ ;\
+  -ኣ: ስ ሳ, ተ ታ, መ ማ ;\
+  -ኢያ: ት ቻ, ድ ጃ, ጥ ጫ, ስ ሻ, ዝ ዣ, ን ኛ, ል ያ, ች ቻ, ጅ ጃ, ጭ ጫ, ሽ ሻ, ዥ ዣ, ኝ ኛ, ይ ያ ;\
+  -ኢ: ብ ቢ, ም ሚ, ፍ ፊ, ት ች, ድ ጅ, ጥ ጭ, ስ ሽ, ዝ ዥ, ን ኝ, ል ይ, ች ች, ጅ ጅ, ጭ ጭ, ሽ ሽ, ዥ ዥ, ኝ ኝ, ይ ይ, ር ሪ, ክ ኪ, ግ ጊ, ቅ ቂ, ው ዊ
+
+merge:: pos:N;PROPN;NPROPN;; pos:N;ADJ;NADJ;; pos:N;ADJ;NADJ;; udfeats:Gender=Fem,Person=3;Gender=Masc,Person=2;&2SM3SF=True;; udfeats:Aspect=Imp;Mood=Jus;&ImpJus=True;; udfeats:ClauseType=CComp;ClauseType=AdvCl;&CCompAdvCl=True
+
+CG: disambig dep
+
+feats:
+
+  pos: v verb
+    morphotax::
+      {'name': 'mwepart', 'dep': 'compound', 'mwe': True};
+      {'name': 'sconj_adp',\
+        'pos':{'ለ':'ADP','በ':('rel', {False: 'SCONJ', True: 'ADP'}),'ከ': ('rel', {False: 'SCONJ', True: 'ADP'}),\
+               'እንደ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'እስከ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),\
+	       'ስለ':('ppos', {'SCONJ': 'SCONJ', 'ADP': 'ADP'}),'ወደ':'ADP', 'የ':'PART', 'እ': 'SCONJ',\
+               'ብ':'SCONJ','ስ':'SCONJ','ል':'SCONJ','እንድ':'SCONJ','እስክ': 'SCONJ','እየ':'SCONJ'},\
+	'xpos': {'የ': 'RLP'},\
+        'dep': {'በ':('rel', {False: 'mark', True: 'case'}),\
+                'ከ': ('rel', {False: 'mark', True: 'case'}),\
+                'እንደ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'እስከ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'ስለ':('ppos', {'SCONJ': 'mark', 'ADP': 'case'}),\
+		'ወደ':'case','ለ':'case',\
+                'የ':'mark', 'እ': 'mark','ብ':'mark','ስ':'mark','ል':'mark','እንድ':'mark','እስክ': 'mark','እየ':'mark'},\
+        'feats': ['ClauseType', 'Case']};
+      {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
+      {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark'};
+      {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:aff',\
+        'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
+                  'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
+                  'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
+       'feats': ['Person', 'Number', 'Gender']};;
+      {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
+        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
+      {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
+        'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'ob',\
+        'pos': ('O', {False: 'DET', True: 'PRON'}),\
+  	'xpos': ('O', {False: 'DET', True: 'OBJC'}),\
+	'lemma': ('olemma',),\
+	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:aff', (True,'l'): 'obl:aff', (True,'b'): 'obl:aff'}),\
+        'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Person[ben]', 'Person[mal]', 'Definite']};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux','feats':['Number','Gender','Person']};
+      {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
+      {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod'};
+      {'name': 'conj2',\
+        'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
+        'dep': ('spos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
+    lemmafeats = a,v,c,s
+    umcats = ['*TEDERAGI', '*ADRAGI', '*ASDERAGI', '*TEDARAGI', '*ADARAGI', '*DERARAGI', '*TEDERARAGI', '*ADERARAGI', '*ASDERARAGI']
+#    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'TR', 'CAUS']
+    pos = V
+    a = 0 | a  | i
+    v = 0 | p | a | as | ast | test
+    t = p | i | j | c
+    sp = 3 | 2 | 1
+    sn = 1 | 2
+    sg = m | f
+    o = 0 | sm3 | sf3 | p3 | s1 | p1 | sm2 | sf2 | F2 | p2
+    # object case
+    oc = 0 | b | l
+    # transitivity
+    # whether any kind of object is present
+    neg = False | True
+    sub = False | True
+    rel = False | True
+    acc = False | True
+    det = False | True
+    # 2024.9.27
+    distrib = False | True
+    # main clause
+    mc = True | False
+    # auxiliary
+    adp = 0 | ለ | በ | ከ | እስከ |ስለ | ወደ
+    sconj = 0 | ብ | ስ | ል | እንድ | እየ | ከ | እንደ
+    # changed 2024.10.8
+    cconj1 = 0 | ም | ስ | ማ | ሳ
+    cconj2 = 0 | ና | ኣ | ኮ
+
+  pos: v_stem v_stem
+    a = 0 | a | i
+    v = 0 | p | a | as | ast
+    t = p | i | j | c
+
+#  pos: v_light_stem v_light_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    t = p | i | j | c
+
+  pos: vn v_noun
+    a = 0 | a | i
+    v = 0 | p | a | as | ast
+    d = a | inf | ins | m
+    # only for infinitive
+    neg = False | True
+
+#  pos: vn_stem v_noun_stem
+#    a = 0 | a | i
+#    v = 0 | p | a | as
+#    d = a | inf | ins | m
+#    # only for infinitive
+#    neg = False | True
+
+  pos: n noun_adjective
+    morphotax::
+      {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[inner]']};
+      {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
+      {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
+      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice', 'Polarity', 'Gender', 'Person', 'PronType']};;
+      {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
+      {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
+      {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\
+        'dep': ('spos', {'DET': 'det', 'PRON': 'det:poss'}), 'lemma':('plemma',),\
+        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'Possessive']};
+      {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[outer]']};
+      {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
+      {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
+       'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
+      {'name': 'GA', 'pos': 'ADP', 'dep': 'case', 'feats':['Case']}
+    lemmafeats = d;a,v
+    pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
+    det = False | True
+    def = False | True
+    p = 0 | s1 | p1 | sm2 | sf2 | p2 | F2 | sm3 | sf3 | p3
+    acc = False | True
+    gen = False | True
+    pl = False | True
+    col = False | True
+    dis = False | True
+    irr = False | True
+    adp = 0 | የ | ለ | በ | ከ | እንደ | ወደ | እስከ | ስለ | በስተ | ያለ
+    postp = 0 | ጋ
+    cconj = 0 | ም | ስ | ማ | ሳ | ና | ኮ
+    Pp = 3 | 2 | 1
+    Pn = 0 | 1 | 2
+    Pg = m | f
+    hum = False | True
+    neg = False | True
+
+  pos: cop copula
+    umcats = ['PRS', 'PST']
+    morphotax::
+	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};
+	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};;
+	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType']};;
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
+	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
+	 'dep': ('apos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
+    nomwe
+    lemmafeats = neg
+    pos = AUX
+    p = 1 | 2 | 3
+    n = 1 | 2
+    g = m | f
+    t = prs | pst
+    neg = False | True
+    frm = False | True
+    rel = False | True
+    sub = False | True
+    cnj1 = 0 | ስለ | እንደ
+    cnj2 = 0 | ኣ | ኮ | ና | ን | ሳ | ማ
+
+## Stringsets
+
+# All characters
+^X = {ሀ, ሁ, ሂ, ሃ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, ሐ, ሑ, ሒ, ሓ, ሔ, ሖ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ሠ, ሡ, ሢ, ሣ, ሤ, ሦ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ኀ, ኁ, ኂ, ኃ, ኄ, ኆ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኣ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዐ, ዑ, ዒ, ዓ, ዔ, ዖ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጨ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጽ, ጾ, ፀ, ፁ, ፂ, ፃ, ፄ, ፅ, ፆ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ህ, ል, ሕ, ም, ሥ, ር, ስ, ቅ, ብ, ት, ኅ, ን, እ, ክ, ው, ዕ, ዝ, ይ, ድ, ግ, ጥ, ጵ, ፍ, ፕ, ቈ, ቊ, ቋ, ቌ, ቍ, ኈ, ኊ, ኋ, ኌ, ኍ,ኰ, ኲ, ኳ, ኴ, ኵ,ጐ, ጒ, ጓ, ጔ, ጕ, ሸ, ሹ, ሺ, ሻ, ሼ, ሽ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ች, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኝ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዥ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጅ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጭ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቭ, ቮ, ቯ, ኸ, ኹ, ኺ, ኻ, ኼ, ኽ, ኾ, ዃ, ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ}
+
+# All characters minus ኣ ሃ ሓ
+^^X = {ሀ, ሁ, ሂ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, ሐ, ሑ, ሒ, ሔ, ሖ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ሠ, ሡ, ሢ, ሣ, ሤ, ሦ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ኀ, ኁ, ኂ, ኃ, ኄ, ኆ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዐ, ዑ, ዒ, ዓ, ዔ, ዖ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጨ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጽ, ጾ, ፀ, ፁ, ፂ, ፃ, ፄ, ፅ, ፆ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ህ, ል, ሕ, ም, ሥ, ር, ስ, ቅ, ብ, ት, ኅ, ን, እ, ክ, ው, ዕ, ዝ, ይ, ድ, ግ, ጥ, ጵ, ፍ, ፕ, ቈ, ቊ, ቋ, ቌ, ቍ, ኈ, ኊ, ኋ, ኌ, ኍ,ኰ, ኲ, ኳ, ኴ, ኵ,ጐ, ጒ, ጓ, ጔ, ጕ, ሸ, ሹ, ሺ, ሻ, ሼ, ሽ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ች, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኝ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዥ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጅ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጭ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቭ, ቮ, ቯ, ኸ, ኹ, ኺ, ኻ, ኼ, ኽ, ኾ, ዃ, ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ}
+
+# All normalized characters
+^N = {ሀ, ሁ, ሂ, ሃ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኣ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጽ, ጾ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, እ, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ፍ, ፕ, ቈ, ቋ, ቍ, ኈ, ኋ, ኍ, ኰ, ኳ, ኵ,ጐ, ጓ, ጕ, ሸ, ሹ, ሺ, ሻ, ሼ, ሽ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ች, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኝ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዥ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጅ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጭ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቭ, ቮ, ቯ, ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ, ኸ, ፀ, ፁ, ፂ, ፃ, ፄ, ፅ, ፆ}
+
+# All normalized characters minus laryngeal + a
+^^N = {ሀ, ሁ, ሂ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጽ, ጾ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, እ, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ፍ, ፕ, ቈ, ቋ, ቍ, ኈ, ኋ, ኍ, ኰ, ኳ, ኵ,ጐ, ጓ, ጕ, ሸ, ሹ, ሺ, ሻ, ሼ, ሽ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ች, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኝ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዥ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጅ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጭ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቭ, ቮ, ቯ, ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ}
+
+# All normalized characters minus sibilants and laryngeal + a
+^S = {ሀ, ሁ, ሂ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኣ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, እ, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ፍ, ፕ, ቈ, ቋ, ቍ, ኈ, ኋ, ኍ, ኰ, ኳ, ኵ,ጐ, ጓ, ጕ, ቸ, ቹ, ቺ, ቻ, ቼ, ች, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኝ, ኞ, ኟ, ጀ, ጁ, ጂ, ጃ, ጄ, ጅ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጭ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቭ, ቮ, ቯ, ሏ, ሟ, ሯ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ፏ, ኸ}
+
+# Consonants with vowels
+*v = {ሀ, ሁ, ሂ, ሃ, ሄ, ሆ, ኸ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ነ, ኑ, ኒ, ና, ኔ, ኖ, አ, ኡ, ኢ, ኣ, ኤ, ኦ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጾ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ቈ, ቋ, ኈ, ኋ, ኰ, ኳ,ጐ, ጓ, ሸ, ሹ, ሺ, ሻ, ሼ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቮ, ቯ, ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ}
+
+# Consonants with vowels, except አ row
+**v = {ሀ, ሁ, ሂ, ሃ, ሄ, ሆ, ለ, ሉ, ሊ, ላ, ሌ, ሎ, መ, ሙ, ሚ, ማ, ሜ, ሞ, ረ, ሩ, ሪ, ራ, ሬ, ሮ, ሰ, ሱ, ሲ, ሳ, ሴ, ሶ, ቀ, ቁ, ቂ, ቃ, ቄ, ቆ, በ, ቡ, ቢ, ባ, ቤ, ቦ, ተ, ቱ, ቲ, ታ, ቴ, ቶ, ነ, ኑ, ኒ, ና, ኔ, ኖ, ከ, ኩ, ኪ, ካ, ኬ, ኮ, ወ, ዉ, ዊ, ዋ, ዌ, ዎ, ዘ, ዙ, ዚ, ዛ, ዜ, ዞ, የ, ዩ, ዪ, ያ, ዬ, ዮ, ደ, ዱ, ዲ, ዳ, ዴ, ዶ, ገ, ጉ, ጊ, ጋ, ጌ, ጎ, ጠ, ጡ, ጢ, ጣ, ጤ, ጦ, ጰ, ጱ, ጲ, ጳ, ጴ, ጶ, ጸ, ጹ, ጺ, ጻ, ጼ, ጾ, ፈ, ፉ, ፊ, ፋ, ፌ, ፎ, ፐ, ፑ, ፒ, ፓ, ፔ, ፖ, ቈ, ቋ, ኈ, ኋ, ኰ, ኳ,ጐ, ጓ, ሸ, ሹ, ሺ, ሻ, ሼ, ሾ, ሿ, ቸ, ቹ, ቺ, ቻ, ቼ, ቾ, ቿ, ኘ, ኙ, ኚ, ኛ, ኜ, ኞ, ኟ, ዠ, ዡ, ዢ, ዣ, ዤ, ዦ, ዧ, ጀ, ጁ, ጂ, ጃ, ጄ, ጆ, ጇ, ጨ, ጩ, ጪ, ጫ, ጬ, ጮ, ጯ, ቨ, ቩ, ቪ, ቫ, ቬ, ቮ, ቯ,  ሏ, ሟ, ሯ, ሷ, ቧ, ቷ, ኗ, ዟ, ዷ, ጧ, ጷ, ጿ, ፏ, ኸ, ፀ, ፁ, ፂ, ፃ, ፄ, ጾ}
+
+# Consonants with /e/
+*e = {ሀ, ኸ, ለ,መ, ረ, ሰ, ቀ, በ, ተ, ነ, ከ, ወ, ዘ, የ, ደ, ገ, ጠ, ጰ, ጸ, ፈ, ፐ, አ, ቈ, ኈ, ኰ, ጐ, ሸ, ቸ, ኘ, ዠ, ጀ, ጨ, ፀ}
+
+# Consonants with /e/, except አ
+^e = {ሀ, ለ,መ, ረ, ሰ, ቀ, በ, ተ, ነ, ከ, ወ, ዘ, የ, ደ, ገ, ጠ, ጰ, ጸ, ፈ, ፐ, ቈ, ኈ, ኰ, ጐ, ሸ, ቸ, ኘ, ዠ, ጀ, ጨ, ኸ, ፀ}
+
+# Consonants with /e/ and /o/, except አ and ኦ
+^eo = {ሀ, ለ,መ, ረ, ሰ, ቀ, በ, ተ, ነ, ከ, ወ, ዘ, የ, ደ, ገ, ጠ, ጰ, ጸ, ፈ, ፐ, ቈ, ኈ, ኰ, ጐ, ሸ, ቸ, ኘ, ዠ, ጀ, ጨ, ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ, ኸ, ፀ, ፆ}
+
+# Palatal consonants with /e/
+^Ye = {ሸ, ቸ, ኘ, ዠ, ጀ, ጨ}
+
+# Palatal consonants with /a/
+^Ya = {ሻ, ቻ, ኛ, ዣ, ጃ, ጫ}
+
+# Non-palatal consonants with /iya/
+~Yya = {ሂያ, ሚያ, ሪያ, ቂያ, ቢያ, ኪያ, ዊያ, ጊያ, ፊያ}
+
+# Consonants with /u/
+*u = {ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ኡ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ, ፁ}
+# without ኡ
+^u = {ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ, ፁ}
+
+# Consonants with /i/
+*i = {ሂ, ሊ, ሚ, ሪ, ሲ, ቂ, ቢ, ቲ, ኒ, ኪ, ዊ, ዚ, ዪ, ዲ, ጊ, ጢ, ጲ, ጺ, ፊ, ፒ, ኢ, ሺ, ቺ, ኚ, ዢ, ጂ, ጪ, ፂ}
+
+# Consonants with /a/
+*a = {ሃ, ላ, ማ, ራ, ሳ, ቃ, ባ, ታ, ና, ካ, ዋ, ዛ, ያ, ዳ, ጋ, ጣ, ጳ, ጻ, ፋ, ፓ, ኣ, ቋ, ኋ, ኳ, ጓ, ሻ, ቻ, ኛ, ዣ, ጃ, ጫ, ሟ, ቧ, ፏ, ፃ}
+# Consonants with /a/, excluding ኣ
+^a = {ሃ, ላ, ማ, ራ, ሳ, ቃ, ባ, ታ, ና, ካ, ዋ, ዛ, ያ, ዳ, ጋ, ጣ, ጳ, ጻ, ፋ, ፓ, ቋ, ኋ, ኳ, ጓ, ሻ, ቻ, ኛ, ዣ, ጃ, ጫ, ሟ, ቧ, ፏ, ፃ}
+
+# Consonants with /Wa/
+*Wa = {ሏ, ሟ, ሯ, ሷ, ቋ, ቧ, ቷ, ኗ, ኳ, ዟ, ዷ, ጓ, ጧ, ጷ, ጿ, ፏ, ኋ}
+
+# Consonants with /E/
+*E = {ሄ, ሌ, ሜ, ሬ, ሴ, ቄ, ቤ, ቴ, ኔ, ኬ, ዌ, ዜ, ዬ, ዴ, ጌ, ጤ, ጴ, ጼ, ፌ, ፔ, ኤ, ሼ, ቼ, ኜ, ዤ, ጄ, ጬ, ፄ}
+
+## 2=ይ verbs
+# Consonants with /E/ other than palatal and palatlizable consonants and '
+~YE = {ሄ, ሜ, ሬ, ቄ, ቤ, ኬ, ዌ, ጌ, ፌ}
+# Consonants with /a/ other than palatal or palatalizable consonants and '
+~Ya = {ሃ, ማ, ራ, ቃ, ባ, ካ, ዋ, ጋ, ፋ}
+# Consonants with /i/ other than palatal and palatalizable consonants and '
+~Yi = {ሂ, ሚ, ሪ, ቂ, ቢ, ኪ, ዊ, ጊ, ፊ}
+
+# Consonants with /o/
+*o = {ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ኦ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ, ፆ}
+# excluding ኦ
+^o = {ሆ, ሎ, ሞ, ሮ, ሶ, ቆ, ቦ, ቶ, ኖ, ኮ, ዎ, ዞ, ዮ, ዶ, ጎ, ጦ, ጶ, ጾ, ፎ, ፖ, ሾ, ቾ, ኞ, ዦ, ጆ, ጮ, ፆ}
+
+# Vowelless consonants
+* = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ, እ, ፅ}
+
+# Vowelless consonants, except እ
+** = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ, ፅ}
+
+# Vowelless consonants + *u, except እ, ኡ
+**u = {ህ, ል, ም, ር, ስ, ቅ, ብ, ት, ን, ክ, ው, ዝ, ይ, ድ, ግ, ጥ, ጵ, ጽ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ, ሽ, ች, ኝ, ዥ, ጅ, ጭ, ሁ, ሉ, ሙ, ሩ, ሱ, ቁ, ቡ, ቱ, ኑ, ኩ, ዉ, ዙ, ዩ, ዱ, ጉ, ጡ, ጱ, ጹ, ፉ, ፑ, ሹ, ቹ, ኙ, ዠ, ጁ, ጩ, ፁ}
+
+# Palatal vowelless consonants
+^Y = {ሽ, ች, ኝ, ዥ, ጅ, ጭ}
