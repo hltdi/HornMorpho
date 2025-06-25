@@ -242,4 +242,4 @@ $ cconj2
 $ end
   # d=m is for manner deverbal nouns
   # Here's where we indicate that ሆነ can be a copula  or auxiliary and that አለ can also be an auxiliary
-  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0]
+  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0,o=0,-O];[pos=AUX,r=ንብር,c=A,t=p,a=0,v=0,d=0]

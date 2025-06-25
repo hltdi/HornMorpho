@@ -305,8 +305,8 @@ POS cop AUX
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-->UD *RELC	*ClauseType=ACl
-->UD *SUBORD	*ClauseType=AdvCl
+->UD *RELC	*ClauseType=Subord
+->UD *SUBORD	*ClauseType=Subord
 
 t:: prs:PRS;; pst:PST
 neg:: NEG

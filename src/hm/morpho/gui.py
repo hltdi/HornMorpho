@@ -1008,10 +1008,10 @@ class SentenceGUI():
         self.frame.enable_undo()
         if self.v5:
             word = self.words[wordindex]
-            self.sentenceobj.select_reading(wordindex, index)
 #            print("** newsegs {}".format(newsegs))
 #            print("** word {}".format(word))
-#            print("** selected {}: {}".format(index, word[index]))
+#            print("** selected {}".format(index))
+            self.sentenceobj.select_reading(wordindex, index)
             word.conllu = newsegs
             word.select(index)
 #            self.sentenceobj.add_disambiguation(wordindex, index)
@@ -1036,6 +1036,7 @@ class SentenceGUI():
                 conl, word = y
                 self.words[x].conllu = conl
 #                print("** Resetting word to {}".format(word))
+                self.sentenceobj.reset_readings(x)
                 self.words[x] = word
             else:
                 self.words[x] = y
@@ -1046,6 +1047,7 @@ class SentenceGUI():
             y['xpos'] = xpos
         else:
             # This is a feature selection; x is the old feature string
+#            print("** Resetting features to {}".format(x))
             y['feats'] = x
         if not memory:
             self.text.tag_configure("word{}".format(self.wordid), background='White')

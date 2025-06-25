@@ -97,7 +97,8 @@ feats:
                   'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
        'feats': ['Person', 'Number', 'Gender', 'PronType']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
-        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
+        'xpos': 'VSTEM', 'condfeats': [{'sb1', 'sb2'}, ['Person', 'Number', 'Gender']],\
+        'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
       {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
         'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'ob',\
@@ -179,7 +180,8 @@ feats:
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[inner]']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
-      {'name': 'STEM', 'feats':['Number', 'VerbForm', 'Voice', 'Polarity', 'Gender', 'Person']};;
+      {'name': 'STEM', 'feats':['VerbForm', 'Voice', 'Polarity', 'Gender', 'Person'],\
+       'condfeats': [{'plur'}, ['Number']]};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\
@@ -215,10 +217,8 @@ feats:
   pos: cop copula
     umcats = ['PRS', 'PST']
     morphotax::
-	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};
-	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};;
-	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType']};;
-	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
+	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};;
+	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType', 'Person', 'Number', 'Gender']};;
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
 	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}), 'dep': ('apos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
     nomwe

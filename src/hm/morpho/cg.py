@@ -315,6 +315,7 @@ class Cohort:
     def __init__(self, word, readings):
         self.word = word
         self.readings = readings
+        self.reading_memory = readings
 
     def __repr__(self, short=False):
         if short:
@@ -345,6 +346,10 @@ class Cohort:
 
     def get_deps(self):
         return self.readings[0].get_deps()
+
+    def reset(self):
+#        print("  ** resetting {} readings to {}".format(self, self.readings))
+        self.readings = self.reading_memory
 
 class Reading:
     '''

@@ -56,7 +56,7 @@ class Corpus():
                  v5=True,
                  sep_feats=True, gemination=False, sep_senses=False, degem=True,
                  combine_segs=True, unsegment=False,
-                 props=None, pos=None, skip_mwe=False, skip=None,
+                 props=None, pos=None, skip_mwe=True, skip=None,
                  report_freq=250,
                  ## only look for these roots and POS
                  feats=None,

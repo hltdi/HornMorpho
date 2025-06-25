@@ -1622,13 +1622,19 @@ class POSMorphology:
             # for non-MWE "words", remove the MWE-specific slots
             if not mwe:
                 preprops = [pp for pp in preprops if not pp.get('mwe')]
+            nonemptypref = [pfprop.get('name') for pref, pfprop in zip(prefixes, preprops) if pref]
+            nonemptysuff = [sfprop.get('name') for suff, sfprop in zip(suffixes, sufprops) if suff]
+            allaff = nonemptypref + nonemptysuff
+#            print("*** allaff {}".format(allaff))
+            if not mwe:
+                sufprops = [sp for sp in sufprops if not sp.get('mwe')]
 #            print("** prefixes {}, preprops {}".format(prefixes, preprops))
             for pindex, (prefix, props) in enumerate(zip(prefixes, preprops)):
 #                print("  ** pindex {} prefix {} props {}".format(pindex, prefix, props))
                 pre_dicts.append(
                     self.process_morpheme5(prefix, props, pindex, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
-                                           udfeats=udfeats, gemination=gemination,
+                                           udfeats=udfeats, gemination=gemination, allaff=allaff,
                                            sep_feats=sep_feats, mwe=mwe_props if mwe else None)
                     )
                 if prefix:
@@ -1637,13 +1643,12 @@ class POSMorphology:
 #            print("** prefixes {}".format(pre_dicts))
             real_stem_index = aff_index
             aff_index += 1
-            if not mwe:
-                sufprops = [sp for sp in sufprops if not sp.get('mwe')]
             for sindex, (suffix, props) in enumerate(zip(suffixes, sufprops)):
+#                print("*** sindex {} suffix {} props {}".format(sindex, suffix, props))
                 post_dicts.append(
                     self.process_morpheme5(suffix, props, sindex+suff1_index, stem_index, aff_index, features, pos,
                                            is_stem=False, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
-                                           udfeats=udfeats, gemination=gemination,
+                                           udfeats=udfeats, gemination=gemination, allaff=allaff,
                                            sep_feats=sep_feats, mwe=mwe_props if mwe else None)
                     )
                 if suffix:
@@ -1654,7 +1659,7 @@ class POSMorphology:
                 stem_dict = \
                   self.process_morpheme5(stem, stemprops, stem_index, stem_index, real_stem_index, features, pos,
                                          is_stem=True, udfdict=udfdict, udfalts=udfalts, mwe_tokens=mwe_tokens,
-                                         udfeats=udfeats, gemination=gemination, misc=stemmisc,
+                                         udfeats=udfeats, gemination=gemination, misc=stemmisc, allaff=allaff,
                                          sep_feats=sep_feats, mwe=mwe_props if mwe else None)
                 stemd = stem_dict
         procdict['pre'] = prefixes
@@ -1750,6 +1755,7 @@ class POSMorphology:
 
     def process_morpheme5(self, morpheme, props, index, stem_index, aff_index, features, pos,
                           is_stem=False, udfdict=None, udfalts=None, udfeats=None, mwe_tokens=None,
+                          allaff=None,
                           misc=None, gemination=True, sep_feats=True, mwe=False):
         '''
         Create a dict for the affix or stem with properties from props.
@@ -1783,7 +1789,7 @@ class POSMorphology:
 #        dct['lemma'] = morpheme
         feats = None
         if sep_feats and udfdict:
-            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts, sep_feats=sep_feats)
+            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts, sep_feats=sep_feats, allaff=allaff)
         elif is_stem:
             if udfdict:
                 feats = udfeats
@@ -1904,10 +1910,12 @@ class POSMorphology:
             return pos
         return posspec
 
-    def get_segment_feats(self, string, segdict, udfdict, udfalts, sep_feats=True):
+    def get_segment_feats(self, string, segdict, udfdict, udfalts, sep_feats=True, allaff=None):
         '''
         Get the UD features that are specific to this segment.
         ufdict is a dict of UD features for the whole word.
+        2025.6.18: add features to segment if they're missing because of empty affix slots
+           (based on 'condfeats' value in segdict)
         '''
 #        print(" ^^ get_segment_feats; string {}, udfdict {}, udfalts {}, segdict {}".format(string, udfdict, udfalts, segdict))
         features = []
@@ -1915,11 +1923,21 @@ class POSMorphology:
         if not segdict or 'feats' not in segdict:
             return []
         segfeats = segdict['feats']
-#        print("  ^^ processing {}, segfeats {}".format(string, segfeats))
+        condfeats = segdict.get('condfeats', None)
+#        print("  ^^ processing {}, segfeats {}, condfeats {}, allaff {}".format(string, segfeats, condfeats, allaff))
         for segfeat in segfeats:
             wordfeat = udfdict.get(segfeat)
             if wordfeat:
                 features.append((segfeat, wordfeat))
+        if condfeats:
+            caffs, cfeats = condfeats
+            if not caffs.intersection(allaff):
+                # We need to add features to this segment that are missing because of empty affix slots
+#                print("condfeats {} missing".format(caffs))
+                for cf in cfeats:
+                    wordfeat = udfdict.get(cf)
+                    if wordfeat:
+                        features.append((cf, wordfeat))
         if not features:
             found2 = []
             for udfa in udfalts:

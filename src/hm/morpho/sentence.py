@@ -194,7 +194,7 @@ class Sentence():
         if root >= 0:
             self.root = root
 
-    def print_conllu(self, update_ids=True, file=None):
+    def print_conllu(self, update_ids=True, file=None, close=True):
         '''
         Print the string of CoNLL-U representations for the sentence,
         using the first if there are still ambiguities.
@@ -202,11 +202,11 @@ class Sentence():
         on each word's position in the sentence.
         '''
         if file:
-            out = open(file, 'w')
+            out = open(file, 'w') if isinstance(file, str) else file
         else:
             out = sys.stdout
         print(self.create_conllu(update_ids=update_ids), file=out, end='')
-        if file:
+        if file and close:
             out.close()
 
     def create_conllu(self, update_ids=True, add_rels=True, verbosity=0):
@@ -551,12 +551,16 @@ class Sentence():
         Select the reading (analysis) for the given cohort (word)
         chosen during GUI disambiguation.
         '''
-#        print("&& Selecting reading {} for cohort {}".format(readingi, cohorti))
         self.setCG()
         cohort = self.CG.cohorts[cohorti]
+#        print("&& Selecting reading {} for cohort {}: {}".format(readingi, cohorti, cohort))
         reading = cohort.readings[readingi]
         self.add_disambig(cohorti, reading.items, [r.items for r in cohort.readings if r != reading])
         cohort.readings = [reading]
+
+    def reset_readings(self, cohorti):
+        cohort = self.CG.cohorts[cohorti]
+        cohort.reset()
 
     def select_POS(self, cohorti, newPOS, oldPOS):
         """
@@ -577,7 +581,7 @@ class Sentence():
                 reading = rding
                 break
         if not reading:
-            print("Something wrong: POS {} not in any reading in cohort {}".format(oldpos, cohort))
+            print("Something wrong: POS {} not in any reading in cohort {}".format(oldPOS, cohort))
 #            reading = cohort.readings[0]
             return
         self.add_pos_disambig(cohorti, newPOS, oldPOS)

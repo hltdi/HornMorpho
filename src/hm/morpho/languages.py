@@ -116,7 +116,7 @@ def compressed_lang_filename(abbrev):
 def compress_lang(abbrev):
     '''
     Create a compressed tarball of all of the files in the language folder, except
-    compiled FST files, given language abbreviation.
+    compiled FST files, lexical files, cascade files, given language abbreviation.
     '''
     updateQ = input("Did you update the version number?\n>>> ")
     if updateQ[0] not in ('y', 'Y'):

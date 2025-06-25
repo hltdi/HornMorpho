@@ -26,7 +26,7 @@ $ prestem
 
 $ stem
 #  ->cop_bound	+pron_cop+		[pos=PRON,+cop,adp=0,p=0,d=0,-dis,-col,ptype=int,tns=prs]
-  ->poss_bound	+hulu+			[pos=DET|PRON,-pl,-cop,d=0,-dis,-col,ptype=tot]
+  ->poss_bound	+hulu+			[pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=tot]
   ->cop_bound	+pron_misc_skip+	[pos=PRON,adp=0,d=0,-dis,-col,p=0,ptype=int]
 #  [pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=int]
   +n_stem+		[ps=oc,-irr,d=0,-cop]
@@ -44,7 +44,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl,Pn=0];[+pl,+col];[+pl,+irr];[pos=PRON|DET] # ,ptype=prs|int]
+  --		[-pl];[+pl,+col];[+pl,+irr];[pos=PRON|DET] # ,ptype=prs|int]
 
 $ plur_bound
   -

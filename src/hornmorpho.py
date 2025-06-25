@@ -25,6 +25,7 @@ Author: Michael Gasser <gasser@iu.edu>
 """ 
 
 import hm
+import os
 
 AM_SKIP = \
   [
@@ -38,20 +39,28 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
-#TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'suf', 'sp', 'sn', 'sg', 'tmp']
+# 2025.6.22 Shortcuts for nalyzing CACO sentences
 
-## Timing
-
-#TI1 = "ስልኪ ዓጽያ ፡ ካብ 'ቲ መንበር ተሲኣ ፡ ነቲ ዝዅሕኳሕ ዝነበረ ማዕጾ ክትከፍት ከይዳ ።"
-
-#TI2 = "እታ ጸሓይ ቀስ እናበለት ክትዓርብ እንከላ ፡ ከም ካብ ናይ ሰብ ጠመተ ትህድም ሓፋር ጓል ትመስል ነይራ ።"
-
-## Little Amharic corpora
-
-#AM1 = ["ወንድሜ አይደለም ምግብ የሚፈልገው ።", "ለልጄ ዥንጉርጉር ኳስ በመቶ ብር ገዛሁለት ።"]
-
-#TTEST1 = ["ይሰብር", "ነስብር", "ዚሰብር", "ዝሰብር", "ዝትሰብር", "እትሰበር", "እተሰብረ", "ኣይሰብርን", "ዘይሰብር"]
-#TTEST2 = ["እንተሰቢሩ", "እንተትሰብር", "እንተዝሰብር", "እንተዘይትሰብር", "እንተዘይሰብር"]
+def CACO(start=0, n_sents=100, corpus=None, append=False, directory="../../EES-Res/conllu/am/New/", file=''):
+    '''
+    Skip MWE analysis and use morph_version 2.
+    '''
+    c = hm.anal_corpus(
+        'a',
+        path="../../EES-Res/text/am/CACO_3-7.txt",
+        corpus=corpus,
+        n_sents=n_sents, max_sents=n_sents, start=start,
+        skip_mwe=True,
+        disambiguate=True,
+        CGdisambiguate=True,
+        sentid=start,
+        morph_version=2)
+    first = corpus.last_line if corpus else start
+    last = c.last_line
+    file = file or "CACO_3-7T_{}-{}.conllu".format(first+1, last)
+    dump_path = os.path.join(directory, file)
+    hm.write_conllu(corpus=c, append=append, path=dump_path)
+    return c
 
 # Tigrinya verb categories
 

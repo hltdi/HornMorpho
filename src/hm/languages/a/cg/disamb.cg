@@ -135,13 +135,11 @@ REMOVE REFL1
 REMOVE (RELC OBL)
        (1 (<<<)) ;
 
-## If an ambiguous form of አለ is preceded by a verb, AUX or PART,
-## choose the አለ reading
+## If an ambiguous form of አለ is preceded by a main verb, AUX or PART,
+## choose the አለ rather than the አለ፡ reading
 ## Does this always work??
-SELECT ("አለ")
-       (-1 (AUX) OR (PART) OR (V)) ;
-
-## 
+REMOVE ("አለː")
+       (-1 (AUX) OR (PART) OR (V MAIN)) ;
 
 ### Ambiguous PROPN
 

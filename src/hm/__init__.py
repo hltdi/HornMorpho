@@ -112,7 +112,7 @@ def anal_sentence(language, sentence, **kwargs):
         return language.anal_sentence(sentence, **kwargs)
 
 def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
-                 batch_name='', append=True, v5=True, update_ids=True,
+                 batch_name='', append=True, update_ids=True,
                  filter_sents=True, unk_thresh=0.3, ambig_thresh=1.0,
                  verbosity=0):
     '''
@@ -121,7 +121,6 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
     @param sentences: list of instances of Sentence
     @param path: path to file where the sentences will be written
     @param corpus: instance of Corpus (or None); if sentences is None, use corpus.sentences
-    @param v5: whether this is HM version 5.
     @param degeminated: whether to write the degeminated sentences
     @param batch_name: name of batch of data
     @param version: version of input data (used to create batch_name if not provided)
@@ -145,11 +144,13 @@ def write_conllu(sentences=None, path='', corpus=None, degeminated=False,
             nrejected += 1
             rejected.append(sentence.sentid)
             continue
-        if v5:
-            sentence.print_conllu(update_ids=update_ids, file=file)
-        else:
-            conll = sentence.alt_conllu if degeminated else sentence.conllu
-            print(conll.serialize(), file=file, end='')
+#        if v5:
+        sentence.print_conllu(update_ids=update_ids, file=file, close=False)
+#        else:
+#            conll = sentence.alt_conllu if degeminated else sentence.conllu
+#            print(conll.serialize(), file=file, end='')
+    if path:
+        file.close()
     if rejected:
         print("Rejected sentences {}".format(','.join([str(r) for r in rejected])))
 
