@@ -113,6 +113,44 @@ VC2FEATS_L = {
 
 TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'tmp', 'base']
 
+AGT_EXCEPTIONS = ['ሻይ', 'ቀ/ኝ', 'ታ/ች', 'ነ/ጭ', 'ጋሪ', 'ጠ/ጅ', 'ላይ']
+
+### Agent nouns in Amharic lexicon
+
+def get_am_agents():
+    agents = []
+    short = []
+    lines = []
+    AN = morpho.get_language('a').morphology['n']
+    feats = FSS("[d=a,p=0,-def,adp=0,cconj=0,-pl]")
+    ANa = lambda w: AN.anal(w, feats=feats)
+    with open("hm/languages/a/lex/n_stem.lex") as file:
+        for line in file:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                lines.append(line)
+            if "NADJ" in line or "PRON" in line or "NUM" in line:
+                lines.append(line)
+            word = line.split()[0]
+            word_degem = word.replace("/", '')
+            if ANa(word_degem):
+                if word in AGT_EXCEPTIONS:
+                    agents.append(word)
+                    short.append(word)
+                    line += ";[pos=NADJ,d=a,-h]"
+                    lines.append(line)
+#                    lines.append("{}\t''\t[pos=NADJ,d=a,-h]".format(word))
+#                print("Analyzed {}".format(word))
+                else:
+                    agents.append(word)
+                    lines.append("{}\t''\t[pos=NADJ,d=a,-h]".format(word))
+            else:
+                lines.append(line)
+    with open("../tmp/n_stem.lex", 'w') as file:
+        for line in lines:
+            print(line, file=file)
+    return short, agents
+
 ### Adding new Tigre lexical items
 
 def filter_te_unsegmented(thresh=8):

@@ -82,4 +82,25 @@
 	"አለː" AUX DERAGI MAIN 3 MASC PFV SG
 "<።>"
 
+"<እኔም>"
+	"እኔ" PRON ADV PRSPRO 1 SG
+	"እኔ" PRON CCONJ PRSPRO 1 SG
+"<እመጣለሁ>"
+	"መጣ" V DERAGI MAIN 1 IPFV SG
+	"መጠጠ" V DERAGI MAIN 1 IPFV SG
+	"ተመጣ" V MAIN TEDERAGI 1 IPFV PASS SG
+"<።>"
+	"።" PUNCT
 
+"<እሱም>"
+	"እሱ" PRON ADV PRSPRO 3 MASC SG
+	"እሱ" PRON CCONJ PRSPRO 3 MASC SG
+"<እኔም>"
+	"እኔ" PRON ADV PRSPRO 1 SG
+	"እኔ" PRON CCONJ PRSPRO 1 SG
+"<እንመጣለን>"
+	"መጣ" V DERAGI MAIN 1 IPFV PL
+	"መጠጠ" V DERAGI MAIN 1 IPFV PL
+	"ተመጣ" V MAIN TEDERAGI 1 IPFV PASS PL
+"<።>"
+	"።" PUNCT

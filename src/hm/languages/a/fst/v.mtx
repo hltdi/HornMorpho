@@ -220,21 +220,22 @@ $ cconj1
   # 2024.11.01: updated to exclude when there are other analyses (negative!)
   # only permit ም with negative if subordinate (ባይመጣም) or main clause (አይመጣምም), but not non-subordinate and
   # not main clause  (-sub,-mc) (*አይመጣም)
-  /ም		[cconj1=ም,-prior,-neg];[cconj1=ም,-prior,+neg,+sub];[cconj1=ም,-prior,+neg,+mc,-sub]
-  /ስ		[cconj1=ስ,-prior]
+  /ም		[cconj1=ም,-prior,-neg];[cconj1=ም,-prior,+neg,+sub,spos=ADV];[cconj1=ም,-prior,+neg,+sub,spos=CCONJ];
+                [cconj1=ም,-prior,+neg,+mc,-sub,spos=ADV];[cconj1=ም,-prior,+neg,+mc,-sub,spos=CCONJ]
+  /ስ		[cconj1=ስ,-prior,spos=ADV]
 # 2024.10.14: make these ም + ኣ, ስ + ኣ  
-#  /ማ		[cconj1=ማ]
-#  /ሳ		[cconj1=ሳ]
+#  /ማ		[cconj1=ማ,spos=ADV]
+#  /ሳ		[cconj1=ሳ,spos=ADV]
   --		[cconj1=0]
 
 $ ms_bound
   -
 
 $ cconj2
-  /ኮ		[cconj2=ኮ,spos=INTJ,-prior]
+  /ኮ		[cconj2=ኮ,spos=ADV,-prior]
   /ና		[cconj2=ና,spos=CCONJ]
   # impossible in subordinate clauses; (re)added 2024.10.14; updated 2024.10.29 to exclude ኣ following ኣ and if there are other analyses
-  =ኣ	       <ኣ>		[cconj2=ኣ,spos=INTJ,-sub,+mc,-prior]
+  =ኣ	       <ኣ>		[cconj2=ኣ,spos=ADV,-sub,+mc,-prior]
   # interrogative, impossible in imperative, jussive?
   ን		[cconj2=ን,spos=ADV,-sub,+mc,t=i|p,-prior];[cconj2=ን,spos=ADV,-sub,t=c,+mc,-prior]
   --		[cconj2=0]

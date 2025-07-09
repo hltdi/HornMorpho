@@ -60,7 +60,7 @@ pos:: NADJ:N;; NADV:N
 adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
-pl,pos:: True,*:PL;; False,N:SG;; False,PRON:SG;; False,ADJ:SG
+pl,pos:: True,*:PL;; False,N:SG;; False,PRON:SG;; False,ADJ:SG;; False,NADJ:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF
@@ -102,7 +102,7 @@ neg:: True:NEG
 d:: inf:*INF;; a:*AGT
 
 # conjunctions
-cconj:: ና:*CCONJ
+acpos:: CCONJ:*CCONJ;; ADV:*ADV
 
 POS v V
 ->UD NEG	Polarity=Neg
@@ -286,8 +286,10 @@ det:: DEF
 adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT;; እንደ:*EQTV
 # 2024.7.7: simplifed adpositions to *OBL
 adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL;; እንደ:*OBL
+
 # added back; possible needed for CG (2024.11.10)
 sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC;; እንደ:*INDE_SC
+# added back, to prevent elimination of analyses that are otherwise the same for segments, POS, UM (2025.7.5)
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
@@ -302,9 +304,6 @@ dep:: advcl:*ADVCL;; acl:*RELC;; ccomp:*CCOMP
 sub,mc,t:: False,False,i:*I_PART
 # handle 3-way ambiguity of እንደ-
 #sconj,rel,ppos:: እንደ,True,SCONJ:{ADVCL/CCOMP};; እንደ,True,ADP:*RELC
-
-# conjunctions
-cconj2:: ና:*CCONJ
 
 POS cop AUX
 ->UD PRS	Tense=Pres

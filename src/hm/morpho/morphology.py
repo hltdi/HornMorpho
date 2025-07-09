@@ -1384,7 +1384,8 @@ class POSMorphology:
     # Version 5 POS analysis.
     
     def anal(self, form, feats=None, mwe=False, guess=False, reject_same=False, filter=True, trace=0):
-        return self.anal4(form, v5=True, init_weight=feats, guess=guess, reject_same=reject_same, mwe=mwe, filter=filter, trace=trace)
+        return self.anal4(form, v5=True, init_weight=feats, guess=guess, reject_same=reject_same,
+                          mwe=mwe, filter=filter, trace=trace)
 
     def anal4(self, form, init_weight=None, preproc=False,
              guess=False, simplified=False, phon=False, segment=False,
@@ -1525,11 +1526,16 @@ class POSMorphology:
             feats = []
             todel = []
             anals = []
+#            print("** N analyses {}".format(len(result)))
             for analysis in result:
                 um = analysis.get('um', '')
+                if um:
+                    um = [u for u in um.split(';') if u[0] != '*']
+                    um = ';'.join(um)
                 lemma = analysis.get('lemma', '')
                 pos = analysis.get('pos', '')
                 f = (lemma, pos, um)
+#                print("  ** feats {}, f {}".format(feats, f))
                 if f not in feats:
                     feats.append(f)
                     anals.append(analysis)
@@ -2038,6 +2044,9 @@ class POSMorphology:
             if mwe_part and add_part:
                 form = mwe_part + ' ' + form
             return form
+#        cls = 'A'
+#        if features and 'c' in features:
+#            cls = features['c']
         lemmafeat1, lemmafeats2 = lemmafeats
         if lemmafeat1:
             value1 = features.get(lemmafeat1, 0)
@@ -2050,6 +2059,8 @@ class POSMorphology:
             for lf in lemmafeats2:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
+#            # Add class
+#            initfeat.append("c={}".format(cls))
             initfeat = ','.join(initfeat)
 #            print("    ^^ initfeat {}, root {}".format(initfeat, root))
             if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
@@ -2068,6 +2079,8 @@ class POSMorphology:
             else:
                 value = features.get(lf)
                 initfeat.append("{}={}".format(lf, value))
+#        # Add class
+#        initfeat.append("c={}".format(cls))
         initfeat = ','.join(initfeat)
 #        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
@@ -2281,6 +2294,7 @@ class POSMorphology:
                 # Replace // with space for MWEs
                 for index, (string, feats) in enumerate(gens):
                     gens[index][0] = string.replace(Morphology.mwe_sep, ' ')
+#            print("  ^^ gens {}".format([g[0] for g in gens]))
             return gens
         elif trace:
             print('No generation FST loaded')

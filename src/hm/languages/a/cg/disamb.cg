@@ -178,9 +178,12 @@ SELECT (PART)
 REMOVE (PART)
        (NOT 1 SAY) ;
 
-## A noun with -ና should not be followed by a verb
+## A noun with CCONJ -ና or -ም (unless one of the previous two words is CCONJ: እኔም አንተም)
+## should not be followed by a verb
 REMOVE NOM + (CCONJ)
-       (1 V) ; 
+       (1 V)
+       (NOT -2 (CCONJ))
+       (NOT -1 (CCONJ)) ;
 
 # NADJ: disambiguate before noun?
 

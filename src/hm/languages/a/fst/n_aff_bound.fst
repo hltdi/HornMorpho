@@ -80,6 +80,11 @@ stem -> plurA		[{I2a}]
 plurA -> plurA		[:>]
 plurA -> plposs		[:ኣ]
 
+# ኢትዮጵያዊያን
+stem -> plurIA		[ዊ;ው:ዊ]
+plurIA -> plurIA	[:>]
+plurIA -> plposs	[ያ:ኣ]
+
 # human suffix
 stem -> a2I		[{a2I};*;*v]
 # stem and plural boundaries
@@ -93,19 +98,21 @@ humposs -> end	[ው:ኡ]
 # possessives
 # ቤቷ
 stem -> Wa		[{I2Wa}]
-plposs -> Wa	[{I2Wa}]
+plposs -> Wa		[{I2Wa}]
 Wa -> Wa 		[:-;:>]
 Wa -> end		[:ዋ]
 
+# ቤቴ
 stem -> I2E		[{I2E}]
 plposs -> I2E		[{I2E}]
 I2E -> I2E		[:-;:>]
 I2E -> end		[:ኤ]
 
+# መሪዬ መሪያቸው
 stem -> VyE		[*v]
 plposs -> VyE		[*v]
 VyE -> VyE		[:-;:>]
-VyE -> end		[ዬ:ኤ]
+VyE -> end		[ዬ:ኤ;ያ:ኣ]
 
 stem -> I2u		[{I2u}]
 plposs -> I2u	[{I2u}]

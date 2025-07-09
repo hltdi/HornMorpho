@@ -5,7 +5,7 @@ $ prep
   ከ		[adp=ከ,-gen]
   የ		[adp=የ,+gen]
   እ		[adp=እ,-gen,-prior]
-  እንደ	[adp=እንደ,-gen]
+  እንደ		[adp=እንደ,-gen]
   ስለ		[adp=ስለ,-gen]
   ወደ		[adp=ወደ,-gen]
   እስከ	[adp=እስከ,-gen]
@@ -17,7 +17,7 @@ $ prep_bound
   -
 
 $ distrib_collect
-  እ/የ	[+dis,-col,pos=N]
+  እ/የ	[+dis,-col,pos=N|ADJ]
   እ/ነ	[-dis,+pl,+col,+h,pos=N|PROPN]
   --		[-dis,-col]
 
@@ -29,7 +29,7 @@ $ stem
   ->poss_bound	+hulu+			[pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=tot]
   ->cop_bound	+pron_misc_skip+	[pos=PRON,adp=0,d=0,-dis,-col,p=0,ptype=int]
 #  [pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=int]
-  +n_stem+		[ps=oc,-irr,d=0,-cop]
+  +n_stem+		[ps=oc,-irr,-cop]
   +n_stem_an+	[ps=an,-irr,d=0,-cop]
   +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
   +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
@@ -42,9 +42,9 @@ $ poststem
   >
 
 $ plural
-  ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM,-col,-irr,ps=oc]
+  ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM|PRON,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl];[+pl,+col];[+pl,+irr];[pos=PRON|DET] # ,ptype=prs|int]
+  --		[-pl];[+pl,+col];[+pfl,+irr];[pos=DET] # ,ptype=prs|int]
 
 $ plur_bound
   -
@@ -95,7 +95,7 @@ $ cop_bound
   -
 
 $ conj
-  /ም		[cconj=ም,acpos=ADV]
+  /ም		[cconj=ም,acpos=ADV];[cconj=ም,acpos=CCONJ]
   /ስ		[cconj=ስ,acpos=ADV,-prior]
   /ማ		[cconj=ማ,acpos=ADV,-prior]
   /ሳ		[cconj=ሳ,acpos=ADV,-prior]

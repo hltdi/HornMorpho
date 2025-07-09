@@ -228,6 +228,7 @@ class Word(list):
         Also, if ignore_um is True, eliminate analyses which are identical to others otherwise,
         in particular, wrt udfeats.
         '''
+#        print("Eliminating dups: {}".format(self))
         todel = set()
         if len(self) == 1:
             return
@@ -236,8 +237,9 @@ class Word(list):
             root1 = anal1.get('root')
             pos1 = anal1.get('pos')
             udfeats1 = anal1.get('udfeats')
+            um1 = anal1.get('um')
             if verbosity:
-                print("~~Word.elim_segmented_dups: l1 {}, r1 {}, p1 {}, u1 {}".format(lemma1, root1, pos1, udfeats1))
+                print("~~Word.elim_segmented_dups: l1 {}, r1 {}, p1 {}, u1 {} um1 {}".format(lemma1, root1, pos1, udfeats1, um1))
             for index2, anal2 in enumerate(self[index1+1:]):
                 pos2 = anal2.get('pos')
                 if pos1 != pos2:
@@ -246,6 +248,10 @@ class Word(list):
                 lemma2 = anal2.get('lemma')
                 if lemma1 != lemma2:
                     # The analyses are not related
+                    continue
+                um2 = anal2.get('um')
+                if um1 != um2:
+                    # The analyses different in features
                     continue
                 root2 = anal2.get('root')
                 if verbosity:

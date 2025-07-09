@@ -1178,7 +1178,7 @@
 <ው ድ ድ>	c=A,base=0
   a=0,v=0 ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=0
 <ው ጥ ር>	c=B,base=0
-  a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
+  a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p ; a=i,v=0
 <ው ጥ ን>	c=B,base=0
   a=0,v=0 ; a=0,v=p ; a=i,d=m ; a=i,v=a ; a=i,v=p
 <ዝ ል ፍ>	c=A,base=0

@@ -1,16 +1,16 @@
-========================
-HornMorpho, version 5.3.1
-========================
+===========================
+HornMorpho, version 5.2.2
+===========================
 
-**January 19, 2025**
+**July 7, 2025**
 
--------------------------
-Changes since version 5.2
--------------------------
+----------------------------
+Changes since version 5.2.1
+----------------------------
 
-- For Amharic and Tigrinya, `Constraint Grammar <https://edu.visl.dk/constraint_grammar.html>`__ rules now perform some
-  morphological disambiguation and some Universal Dependency
-  annotation automatically (see Constraint Grammar rules below for details).
+- It is possible to have multiple sets of conventions for generating
+  Universal Morphology and Universal Dependency (Amharic and Tigrinya
+  only) from the raw HornMorpho output using the option morph_version.
 
 ------------
 Introduction
@@ -95,14 +95,14 @@ will need to create the environment and activate it before running
 ``pip install``.
 
 First download the wheel file from the ``dist/`` folder:
-`HornMorpho-5.3.1-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.3.1-py3-none-any.whl>`__
+`HornMorpho-5.2.2-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.2.2-py3-none-any.whl>`__
 
 Then, to install from the wheel file, do the following in a Python shell
 from the folder where the wheel file is
 
 ::
 
-   pip install HornMorpho-5.3.1-py3-none-any.whl
+   pip install HornMorpho-5.2.2-py3-none-any.whl
 
 If this fails, it may mean that you don’t have
 `wheel <https://pypi.org/project/wheel/>`__ installed, so try again

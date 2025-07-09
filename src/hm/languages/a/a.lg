@@ -192,7 +192,7 @@ feats:
       {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
         'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
       {'name': 'GA', 'pos': 'ADP', 'dep': 'case', 'feats':['Case']}
-    lemmafeats = d;a,v
+    lemmafeats = d;a,v,c
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
     det = False | True
     def = False | True

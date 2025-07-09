@@ -185,7 +185,7 @@ feats:
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[outer]']};
       {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
       {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
-       'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
+        'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
       {'name': 'GA', 'pos': 'ADP', 'dep': 'case', 'feats':['Case']}
     lemmafeats = d;a,v
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV

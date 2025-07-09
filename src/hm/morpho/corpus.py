@@ -4,7 +4,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
     Copyleft 2022-2025.
-    PLoGS and Michael Gasser <gasser@indiana.edu>.
+    PLoGS and Michael Gasser <gasser@iu.edu>.
 
     morfo is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     You should have received a copy of the GNU General Public License
     along with morfo.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 Corpora of sentences, raw and segmented.
 """
@@ -321,6 +321,7 @@ class Corpus():
         if sentence_obj:
             self.sentences.append(sentence_obj)
             self.max_words = max([self.max_words, len(sentence_obj.words)])
+#            print("** sentence words {}".format(sentence_obj.words))
             sentence_obj.postproc()
             if kwargs.get('CGdisambiguate', True):
                 # CG disambiguation

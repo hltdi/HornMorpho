@@ -1621,8 +1621,11 @@ class Language:
 #                print("Skipping analysis of {} for {}".format(token, pos))
                 continue
             analyses = pmorph.anal(token, mwe=mwe, guess=guess, feats=feats)
+#            if analyses:
+#                print("** analyses 1: {}".format(len(analyses)))
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
+#                print("** analyses 2: {}".format(len(analyses)))
                 all_analyses.extend(analyses)
         if not all_analyses:
             return special_word()
