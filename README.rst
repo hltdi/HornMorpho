@@ -1,16 +1,9 @@
 ===========================
-HornMorpho, version 5.2.2
+HornMorpho, version 5.3.2
 ===========================
 
-**July 7, 2025**
+**July 10, 2025**
 
-----------------------------
-Changes since version 5.2.1
-----------------------------
-
-- It is possible to have multiple sets of conventions for generating
-  Universal Morphology and Universal Dependency (Amharic and Tigrinya
-  only) from the raw HornMorpho output using the option morph_version.
 
 ------------
 Introduction
@@ -95,14 +88,14 @@ will need to create the environment and activate it before running
 ``pip install``.
 
 First download the wheel file from the ``dist/`` folder:
-`HornMorpho-5.2.2-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.2.2-py3-none-any.whl>`__
+`HornMorpho-5.3.2-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.3.2-py3-none-any.whl>`__
 
 Then, to install from the wheel file, do the following in a Python shell
 from the folder where the wheel file is
 
 ::
 
-   pip install HornMorpho-5.2.2-py3-none-any.whl
+   pip install HornMorpho-5.3.2-py3-none-any.whl
 
 If this fails, it may mean that you don’t have
 `wheel <https://pypi.org/project/wheel/>`__ installed, so try again
@@ -627,6 +620,7 @@ Functions
 
 Returns an instance of the ``Language`` class, given its
 abbreviation, if the language has been loaded.
+Creates the language if it hasn't been loaded.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ``hm.anal(language, word, **kwargs``)
@@ -687,7 +681,7 @@ Parameters
 
       If ``True``, specifies that the ``word`` string contains one or
       two spaces and that HM should try to analyze it as a *multi-word
-      expression* (MWE). HM knows a limited number of MWEs, so this will
+      expression* (MWE). HM knows only a limited number of MWEs, so this will
       not always succeed as expected.
 
       ::
