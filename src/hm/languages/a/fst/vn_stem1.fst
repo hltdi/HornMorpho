@@ -26,7 +26,7 @@ ME/ -> stemsuf	[:-]		[d=ins]
 ME/ -> TA		[ታ:ተ]
 TA -> TA-		[:-]
 TA- -> end		[:ኣ]		[d=inf]
-TA- -> stemsuf	[:ኣ]		[d=ins]
+TA- -> stemsuf	[:ኣ]		[d=ins|a]
 
 #ME/ -> METE		[ተ]
 #METE -> METE-	[:-]

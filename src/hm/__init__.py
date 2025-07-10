@@ -31,14 +31,8 @@ Author: Michael Gasser <gasser@iu.edu>
 
 # experimental CoNLL-U segmenter for Amharic
 
-#__cat__ = 'X'
-#__version__ = '4.5.2.4'
-
-#__cat__ = 'A'
-#__version__ = '4.3.1'
-
 __cat__ = ''
-__version__ = '5.3'
+__version__ = '5.2.2'
 
 __author__ = 'Michael Gasser'
 
@@ -69,9 +63,11 @@ def anal_corpus(language, **kwargs):
     guess = kwargs.get('guess', False)
     verbosity = kwargs.get('verbosity', 0)
     disambiguate = kwargs.get('disambiguate', False)
-    annotate = kwargs.get('annotate', True)
+    annotate = kwargs.get('annotate', False)
     morph_version = kwargs.get('morph_version', 0)
-    language = morpho.get_language(language, guess=guess, morph_version=morph_version)
+    cg = kwargs.get('CGdisambiguate', kwargs.get('cg', False))
+    annotate = cg and kwargs.get('annotate', False)
+    language = morpho.get_language(language, guess=guess, morph_version=morph_version, cg=cg, annotate=annotate)
     if language:
         # Create the corpus, by default analyzing sentences and running CG disambiguation on them.
         corp = morpho.Corpus(language=language, **kwargs)

@@ -53,8 +53,7 @@ def CACO(start=0, n_sents=100, corpus=None, append=False, directory="../../EES-R
         skip_mwe=True,
         disambiguate=True,
         CGdisambiguate=True,
-        sentid=start,
-        morph_version=2)
+        sentid=start)
     first = corpus.last_line if corpus else start
     last = c.last_line
     file = file or "CACO_3-7T_{}-{}.conllu".format(first+1, last)

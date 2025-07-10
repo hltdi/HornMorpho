@@ -445,7 +445,7 @@ class Language:
     def make(name, abbrev, load_morph=False,
              segment=False, phon=False, simplified=False, experimental=False, mwe=False,
              guess=True, poss=None, pickle=True, translate=False, gen=False,
-             morph_version=0,
+             morph_version=0, cg=False, annotate=False,
              ldir='', v5=True, ees=False, recreate=True,
              verbose=False):
         """Create a language using data in the language data file."""
@@ -458,7 +458,7 @@ class Language:
                                 segment=segment, phon=phon, recreate=recreate,
                                 experimental=experimental, mwe=mwe,
                                 translate=translate, simplified=simplified,
-                                morph_version=morph_version,
+                                morph_version=morph_version, cg=cg, annotate=annotate,
                                 v5=v5,
                                 guess=guess, poss=poss, verbose=verbose)
         if not loaded:
@@ -469,7 +469,7 @@ class Language:
     def load_data(self, load_morph=False, pickle=True, recreate=False,
                   segment=False, phon=False, guess=True, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
-                  morph_version=0,
+                  morph_version=0, cg=False, annotate=False,
                   v5=True, poss=None, verbose=True):
         if self.load_attempted:
             return
@@ -484,7 +484,7 @@ class Language:
                 print(Language.T.tformat('Loading language data from {}', [filename], self.tlanguages))
             with open(filename, encoding='utf-8') as stream:
                 data = stream.read()
-                self.parse(data, poss=poss, verbose=verbose)
+                self.parse(data, poss=poss, cg=cg, annotate=annotate, verbose=verbose)
 #        print("** Parsed data for {}; morphology {}".format(self, self.morphology))
         if load_morph:
             if v5:
@@ -510,7 +510,7 @@ class Language:
 #            print("** posmorph {}, dFS {}".format(posmorph, posmorph.defaultFS.__repr__()))
         return True
 
-    def parse(self, data, poss=None, verbose=False):
+    def parse(self, data, poss=None, cg=False, annotate=False, verbose=False):
         """
         Read in language data from a file.
         """
@@ -718,13 +718,18 @@ class Language:
 
             m = CG_RE.match(line)
             if m:
+                if not cg:
+                    print("Skipping Constraint Grammar")
+                    continue
                 types = m.group(1)
                 types = types.split()
                 for typ in types:
-                    if typ.startswith("dep"):
+                    if typ.startswith("dep") and annotate:
                         self.depCG = CG(self, disambig=False)
+                        print("Loading disambiguation CG rules...")
                     elif typ.startswith("dis"):
                         self.disambigCG = CG(self, disambig=True)
+                        print("Loading dependency CG rules...")
                 continue
 
             m = TRANS_RE.match(line)

@@ -1,6 +1,8 @@
-## Morphology: inflection features assume affixes are like words,
-## with their own PNG in the case of subject/object agreement
+## Morphology: inflection features are features of the word
+## rather than the affix, for example, obj -ኝ is ObjPers=1 rather
+## than Pers=1
 
+## Old ambiguous UM features
 #abbrev	&Poss3Def=Masc	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3/Definite=Def
 #abbrev	&Poss3Def=Fem	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3/Definite=Def
 #abbrev	&Acc3SMDef=True	AccPers=3,AccNum=Sing,AccGen=Masc/Definite=Def
@@ -8,7 +10,7 @@
 #abbrev	&ImpJus=True	Aspect=Imp/Mood=Jus
 #abbrev	&CCompAdvCl=True	ClauseType=CComp/ClauseType=AdvCl
 
-sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person,AdpCase:Case,ObjPronType:PronType
+# sepconvert ObjNum:Number,ObjGen:Gender,ObjPers:Person,Gender[psor]:Gender,Number[psor]:Number,Person[psor]:Person,AdpCase:Case,ObjPronType:PronType
 
 POS n N
 #->UD  ACC+GEN	*Case=AccGen
@@ -22,7 +24,6 @@ POS n N
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
 # Leave off noun gender (for now?)
-# These layered features are only necessary if features are assigned to the whole word rather than the suffix
 ->UD PSS1P	Number[psor]=Plur,Person[psor]=1,Possessive=Yes
 ->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form,Possessive=Yes
 ->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2,Possessive=Yes
@@ -33,9 +34,9 @@ POS n N
 ->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
 ->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
 ->UD TOP	*Inf=Topic
-->UD 1		Person=1,PronType=Prs
-->UD 2		Person=2,PronType=Prs
-->UD 3		Person=3,PronType=Prs
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
 ->UD FEM		Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD *PRSPRO	PronType=Prs
@@ -44,16 +45,14 @@ POS n N
 # suffixed copula
 ->UD PRS	Tense=Pres
 # infinitives and agentives
-->UD CAUS	Voice=Cau
-->UD TR		Voice=Trans
-->UD RECP	*Voice=Rcp
-->UD PASS	Voice=Pass
-->UD ITER	Aspect=Iter
+# 2025.7.9 no voice for these 
+#->UD CAUS	Voice=Cau
+#->UD TR		Voice=Trans
+#->UD RECP	*Voice=Rcp
+#->UD PASS	Voice=Pass
+#->UD ITER	Aspect=Iter
 ->UD *INF	VerbForm=Inf
 ->UD NEG	Polarity=Neg
-
-#v:: agt:*N_AGT;; inf:V.MSDR;; ins:*N_INS;; man:*N_MAN
-#pos!v:: n:N;; adj:ADJ;; nadj:N;; nadv:N;;nm_pl:PROPN;; nm_prs:PROPN;; pron:PRON
 
 pos:: NADJ:N;; NADV:N
 # added back; possible needed for CG (2024.11.10)
@@ -65,12 +64,6 @@ acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF
 p,def:: 0,True:DEF
-# unambiguous possessive suffixes
-#p,g:: s1,*:PSS1S;; p1,*:PSS1P;; sm2,*:PSS2SM;; sf2,*:PSS2SF;; F2,*:PSS2SFORM;; p2,*:PSS2P;; p3,*:PSS3P
-# ambiguous and unambiguous possessive/determiner suffixes
-#p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
-#p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
-#p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
 g:: m:MASC;; f:FEM
 postp:: ጋ:*OBL
 
@@ -150,15 +143,40 @@ POS v V
 ->UD ITER	Aspect=Iter
 #->UD CAUS+RECP	*Voice=CauRcp
 #->UD CAUS+RECP2	*Voice=CauRcp2
-->UD 1		Person=1,PronType=Prs
-->UD 2		Person=2,PronType=Prs
-->UD 3		Person=3,PronType=Prs
+## subject features
+->UD 1		Person=1
+->UD 2		Person=2
+->UD 3		Person=3
 ->UD SG		Number=Sing
 ->UD PL		Number=Plur
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-# Obj, Dat, and Mal only needed when features are assigned to the whole verb
+## object features
+->UD AC1S	*Person[obj]=1,Number[obj]=Sing
+->UD AC1P	*Person[obj]=1,Number[obj]=Plur
+->UD AC2SF	*Person[obj]=2,Number[obj]=Sing,Gender[obj]=Fem
+->UD AC2SM	*Person[obj]=2,Number[obj]=Sing,Gender[obj]=Masc
+->UD AC2P	*Person[obj]=2,Number[obj]=Plur
+->UD AC3SF	*Person[obj]=3,Number[obj]=Sing,Gender[obj]=Fem
+->UD AC3SM	*Person[obj]=3,Number[obj]=Sing,Gender[obj]=Masc
+->UD AC3P	*Person[obj]=3,Number[obj]=Plur
+->UD DA1S	*Person[ben]=1,Number[ben]=Sing
+->UD DA1P	*Person[ben]=1,Number[ben]=Plur
+->UD DA2SF	*Person[ben]=2,Number[ben]=Sing,Gender[ben]=Fem
+->UD DA2SM	*Person[ben]=2,Number[ben]=Sing,Gender[ben]=Masc
+->UD DA2P	*Person[ben]=2,Number[ben]=Plur
+->UD DA3SF	*Person[ben]=3,Number[ben]=Sing,Gender[ben]=Fem
+->UD DA3SM	*Person[ben]=3,Number[ben]=Sing,Gender[ben]=Masc
+->UD DA3P	*Person[ben]=3,Number[ben]=Plur
+->UD *MAL1S	*Person[mal]=1,Number[mal]=Sing
+->UD *MAL1P	*Person[mal]=1,Number[mal]=Plur
+->UD *MAL2SF	*Person[mal]=2,Number[mal]=Sing,Gender[mal]=Fem
+->UD *MAL2SM	*Person[mal]=2,Number[mal]=Sing,Gender[mal]=Masc
+->UD *MAL2P	*Person[mal]=2,Number[mal]=Plur
+->UD *MAL3SF	*Person[mal]=3,Number[mal]=Sing,Gender[mal]=Fem
+->UD *MAL3SM	*Person[mal]=3,Number[mal]=Sing,Gender[mal]=Masc
+->UD *MAL3P	*Person[mal]=3,Number[mal]=Plur
 #->UD AC1S	*ObjPers=1,ObjNum=Sing
 #->UD AC1P	*ObjPers=1,ObjNum=Plur
 #->UD AC2SF	*ObjPers=2,ObjNum=Sing,ObjGen=Fem
@@ -183,46 +201,15 @@ POS v V
 #->UD *MAL3SF	*MalPers=3,MalNum=Sing,MalGen=Fem
 #->UD *MAL3SM	*MalPers=3,MalNum=Sing,MalGen=Masc
 #->UD *MAL3P	*MalPers=3,MalNum=Plur
-->UD AC1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=Obj
-->UD AC1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=Obj
-->UD AC2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Obj
-->UD AC2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Obj
-->UD AC2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=Obj
-->UD AC3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Obj
-->UD AC3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Obj
-->UD AC3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=Obj
-->UD DA1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=Dat
-->UD DA1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=Dat
-->UD DA2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Dat
-->UD DA2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Dat
-->UD DA2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=Dat
-->UD DA3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=Dat
-->UD DA3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=Dat
-->UD DA3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=Dat
-->UD *MAL1S	ObjPers=1,ObjNum=Sing,ObjPronType=Prs,Case=MalIns
-->UD *MAL1P	ObjPers=1,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
-->UD *MAL2SF	ObjPers=2,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=MalIns
-->UD *MAL2SM	ObjPers=2,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=MalIns
-->UD *MAL2P	ObjPers=2,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
-->UD *MAL3SF	ObjPers=3,ObjNum=Sing,ObjGen=Fem,ObjPronType=Prs,Case=MalIns
-->UD *MAL3SM	ObjPers=3,ObjNum=Sing,ObjGen=Masc,ObjPronType=Prs,Case=MalIns
-->UD *MAL3P	ObjPers=3,ObjNum=Plur,ObjPronType=Prs,Case=MalIns
-#->UD {AC3SM/DEF} &Acc3SMDef=True
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
-# simpify ClauseType (2024.12.24)
+# simpify ClauseType; Subord for relative and adverbial clauses (2024.12.24)
 ->UD *CCOMP	*ClauseType=Subord
 ->UD *RELC	*ClauseType=Subord
 ->UD *ADVCL	*ClauseType=Subord
-#->UD *CCOMP	*ClauseType=CComp
-#->UD *RELC	*ClauseType=ACl
-#->UD *ADVCL	*ClauseType=AdvCl
-# Time
-# ስ-
-#->UD {ADVCL/CCOMP} &CCompAdvCl=True
 # prepositions all OBL as of 2024.7.7
-->UD *OBL     *AdpCase=Obl
-->UD ACC       *AdpCase=Acc
+->UD *OBL      *Case=Obl
+->UD ACC       Case=Obj
 # following have been replaced
 ->UD COND	*ClauseType=AdvCl
 ->UD PURP	*ClauseType=AdvCl
@@ -242,17 +229,18 @@ POS v V
 t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS
 t,ax:: c,0:CVB ;; c,al:PRF
 
-#pos!t:: v:V;; 0:ADJ;; 0:N
-
 pos:: v:V
 
 neg:: NEG
 
 ## morphological valence/voice
+# 2024: record አዕማድ in misc field
+a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
+# old valence/voice
 # v=ast (አስታወቀ) -> TR
 #a,v:: 0,p:PASS;; 0,a:TR;; 0,as:CAUS;; 0,ast:TR;; 0,test:PASS;; a,p:RECP1;; a,a:CAUS+RECP1;; i,0:ITER;; i,p:RECP2;; i,a:CAUS+RECP2;; i,ast:CAUS+RECP2;; i,test:RECP2
-a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
 
+## voice: only PASS, CAUS, and RECP
 # voice: base=0
 a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
 # voice: base=p, a, as
@@ -286,10 +274,8 @@ det:: DEF
 adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT;; እንደ:*EQTV
 # 2024.7.7: simplifed adpositions to *OBL
 adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL;; እንደ:*OBL
-
 # added back; possible needed for CG (2024.11.10)
 sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC;; እንደ:*INDE_SC
-# added back, to prevent elimination of analyses that are otherwise the same for segments, POS, UM (2025.7.5)
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
 
@@ -305,6 +291,9 @@ sub,mc,t:: False,False,i:*I_PART
 # handle 3-way ambiguity of እንደ-
 #sconj,rel,ppos:: እንደ,True,SCONJ:{ADVCL/CCOMP};; እንደ,True,ADP:*RELC
 
+# conjunction and adverb suffixes
+#acpos:: CCONJ:*CCONJ;; ADV:*ADV
+
 POS cop AUX
 ->UD PRS	Tense=Pres
 ->UD PST	Tense=Past
@@ -317,8 +306,8 @@ POS cop AUX
 ->UD FEM	Gender=Fem
 ->UD MASC	Gender=Masc
 ->UD FORM	Polite=Form
-->UD *RELC	*ClauseType=ACl
-->UD *SUBORD	*ClauseType=AdvCl
+->UD *RELC	*ClauseType=Subord
+->UD *SUBORD	*ClauseType=Subord
 
 t:: prs:PRS;; pst:PST
 neg:: NEG

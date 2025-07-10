@@ -66,7 +66,9 @@ class Corpus():
                  # whether to do manual disambiguation
                  disambiguate=False,
                  # whether to do (automatic) CG disambiguation
-                 CGdisambiguate = True,
+                 CGdisambiguate = False,
+                 # shortcut for CGdisambiguate
+                 cg = False,
                  # Number of analyses eliminated using CG disambiguator.
                  disambiguations = 0,
                  # we may want to save unknown and/or ambiguous tokens
@@ -138,7 +140,7 @@ class Corpus():
 #                print("$$ file {}, nlines {}".format(filein, nlines))
                 sentcount = 0
                 skipped = 0
-                sentid = sentid + 1
+#                sentid = sentid + 1
                 linepos = 0
                 if segment:
                     if gramfilt:
@@ -210,7 +212,7 @@ class Corpus():
                               self.anal_sentence(line, sentid=sentid, gemination=gemination, sep_senses=sep_senses, props=props,
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache, meta=meta,
                                                  unsegment=unsegment, combine_segs=combine_segs, label=label,
-                                                 CGdisambiguate=CGdisambiguate, feats=feats,
+                                                 CGdisambiguate=CGdisambiguate or cg, feats=feats,
                                                  batch_name=batch_name, pos=pos, verbosity=verbosity):
                                 self.data.append(line)
                                 if unk := sentence_obj.unk:
@@ -323,7 +325,7 @@ class Corpus():
             self.max_words = max([self.max_words, len(sentence_obj.words)])
 #            print("** sentence words {}".format(sentence_obj.words))
             sentence_obj.postproc()
-            if kwargs.get('CGdisambiguate', True):
+            if kwargs.get('CGdisambiguate', True) or kwargs.get('cg', True):
                 # CG disambiguation
                 disambiguated = self.language.disambiguate(sentence_obj, verbosity=kwargs.get('verbosity'))
                 if disambiguated:
@@ -421,9 +423,11 @@ class Corpus():
 #                sentence.print_conllu(update_ids=True, file=file)
             else:
                 string = sentence.create_attrib_strings(attribs, all_anals=all_anals)
-            print(string, file=file)
+            print(string, file=file, end='')
             if not conllu and index < len(self.sentences) - 1:
                 print(file=file)
+        if path:
+            file.close()
         
     def write_props(self, file, start=0):
         '''

@@ -167,7 +167,7 @@ def get_downloaded_languages():
 def load_lang(lang,
               lang_name='', phon=False, segment=False, load_morph=True,
               translate=False, pickle=True, recreate=False,
-              morph_version=0,
+              morph_version=0, cg=False, annotate=False,
               # False, '', or the name of a cache file
               cache=True, guess=False, mwe=True, gen=False,
               v5=True, experimental=False, poss=None, verbose=True):
@@ -186,7 +186,7 @@ def load_lang(lang,
                                     pickle=pickle, translate=translate, recreate=recreate, gen=gen,
                                     phon=phon, guess=guess, mwe=mwe,
                                     morph_version=morph_version,
-                                    v5=v5,
+                                    v5=v5, cg=cg, annonate=annotate,
                                     poss=poss, verbose=verbose)
         if not loaded:
             # Impossible to load data somehow
@@ -212,7 +212,7 @@ def load_lang(lang,
                                  segment=segment, phon=phon, guess=guess, recreate=recreate,
                                  poss=poss, ees=ees,
                                  morph_version=morph_version,
-                                 v5=v5,
+                                 v5=v5, cg=cg, annotate=annotate,
                                  verbose=verbose)
         if not language:
             # Impossible to make language with desired FST
@@ -256,6 +256,8 @@ def get_language(language, **kwargs):
     v5 = kwargs.get('v5', True)
     verbose = kwargs.get('verbose', False)
     cache = kwargs.get('cache', None)
+    cg = kwargs.get('cg', False)
+    annotate= kwargs.get('annotate', False)
 #    print("** Getting language, load = {}, load_morpho = {}, guess = {}".format(load, load_morph, guess))
     if isinstance(language, Language):
         return language
@@ -269,7 +271,7 @@ def get_language(language, **kwargs):
                              segment=segment, guess=guess, experimental=experimental,
                              translate=translate, 
                              load_morph=load_morph, cache=cache,
-                             morph_version=mv,
+                             morph_version=mv, cg=cg, annotate=annotate,
                              v5=v5,
                              verbose=verbose):
                 return False

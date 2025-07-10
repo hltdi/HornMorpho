@@ -209,7 +209,8 @@
 ወይስ  ወይስ  CCONJ
 ነገርግን  ነገርግን  CCONJ
 ## INTJ
-አሃ አሃ	INTJ
+አሀ አሀ	INTJ
+እሀ እሀ	INTJ
 አቤት  አቤት  INTJ
 አባባ  አ/ባ/ባ  INTJ
 አባዬ  አ/ባ/ዬ  INTJ
@@ -303,11 +304,13 @@
 በስተ  በስተ   ADP
 # unambiguous postpositions
 ጋ     ጋ     ADP
-ዘንድ  ዘንድ  ADPCONJ
-ድረስ  ድረስ  ADPCONJ
 ጋር  ጋር  ADP
 ጋራ  ጋራ  ADP
+# not sure about this
+የለሽ	የ/ለሽ	ADP
 # ambiguous postpositions
+ዘንድ  ዘንድ  ADPCONJ
+ድረስ  ድረስ  ADPCONJ
 በፊት  በፊት  ADPCONJ
 በኋላ  በኋላ  ADPCONJ
 በስተቀር  በስተቀር  ADPCONJ

@@ -501,7 +501,7 @@ class CGSentence:
                 return
             relations[cindex] = (ids.get(pid), label)
         for cindex, pindex in dependencies.items():
-            # dependency indeces are 1-initial cohort indices
+            # dependency indices are 1-initial cohort indices
             cindex -= 1
             if pindex == 0:
                 # root
