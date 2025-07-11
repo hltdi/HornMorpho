@@ -44,7 +44,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM|PRON,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl];[+pl,+col];[+pfl,+irr];[pos=DET] # ,ptype=prs|int]
+  --		[-pl];[+pl,+col];[+irr];[pos=DET] # ,ptype=prs|int]
 
 $ plur_bound
   -

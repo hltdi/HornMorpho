@@ -115,6 +115,19 @@ TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'tmp', 'base'
 
 AGT_EXCEPTIONS = ['ሻይ', 'ቀ/ኝ', 'ታ/ች', 'ነ/ጭ', 'ጋሪ', 'ጠ/ጅ', 'ላይ']
 
+### Miscellaneous fixes
+
+def fix_am_nstem():
+    lines = []
+    with open("hm/languages/a/lex/n_stem.lex") as file:
+        last = ''
+        for line in file:
+            line = line.strip()
+            if line != last:
+                lines.append(last)
+            last = line
+    return lines
+
 ### Agent nouns in Amharic lexicon
 
 def get_am_agents():

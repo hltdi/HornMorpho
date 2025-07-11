@@ -32,7 +32,7 @@ Author: Michael Gasser <gasser@iu.edu>
 # experimental CoNLL-U segmenter for Amharic
 
 __cat__ = ''
-__version__ = '5.2.2'
+__version__ = '5.3.2'
 
 __author__ = 'Michael Gasser'
 
@@ -41,8 +41,6 @@ import os
 from . import morpho
 
 print('\n@@@@ This is HornMorpho{}, version {} @@@@\n'.format(__cat__, __version__))
-
-#print('\n@@@@ Welcome to HornMorpho! @@@@\n')
 
 SEGMENT = False
 

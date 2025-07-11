@@ -19,7 +19,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     You should have received a copy of the GNU General Public License
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 """
 
@@ -134,7 +134,7 @@ def compress_lang(abbrev):
 
 def uncompress_lang(abbrev, dest='', source=''):
     '''
-    Uncompress a compressed language tarball.
+    Uncompress a compressed language tarball, replacing old files if any.
     '''
     language = ABBREV2LANG.get(abbrev)
     filename = source or compressed_lang_filename(abbrev)
