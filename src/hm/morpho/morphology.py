@@ -1528,10 +1528,13 @@ class POSMorphology:
             anals = []
 #            print("** N analyses {}".format(len(result)))
             for analysis in result:
-                um = analysis.get('um', '')
+                um = analysis.get('um', None)
                 if um:
                     um = [u for u in um.split(';') if u[0] != '*']
-                    um = ';'.join(um)
+                    if um:
+                        um = ';'.join(um)
+                    else:
+                        um = None
                 lemma = analysis.get('lemma', '')
                 pos = analysis.get('pos', '')
                 f = (lemma, pos, um)

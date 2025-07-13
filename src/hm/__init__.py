@@ -267,7 +267,7 @@ def gen(language, root, features=[], replace_features=[],
         f = um if um else features
         print("{}:{} can't be generated!".format(root, f))
 
-def download(lang_abbrev, uncompress=True):
+def download(lang_abbrev, uncompress=True, overwrite=True):
     '''
     Download language abbreviated lang_abbrev, unless it's already downloaded.
     '''
@@ -275,8 +275,12 @@ def download(lang_abbrev, uncompress=True):
         print("HornMorpho doesn't know of any language abbreviated {}.".format(lang_abbrev))
         return
     if morpho.is_downloaded(lang_abbrev):
-        print("{} ({}) is already downloaded!".format(morpho.ABBREV2LANG[lang_abbrev], lang_abbrev))
-        return
+        if not overwrite:
+            print("{} ({}) is already downloaded!".format(morpho.ABBREV2LANG[lang_abbrev], lang_abbrev))
+            if not input("Do you want to overwrite it?  ") in ('y', 'Y', 'yes', 'YES'):
+                return
+        else:
+            print("Overwriting current distribution for {}...".format(morpho.ABBREV2LANG[lang_abbrev]))
     morpho.download_language(lang_abbrev, uncompress=uncompress)
 
 # Internal use only.

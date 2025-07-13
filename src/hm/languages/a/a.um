@@ -59,12 +59,14 @@ pos:: NADJ:N;; NADV:N
 adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
-pl,pos:: True,*:PL;; False,N:SG;; False,PRON:SG;; False,ADJ:SG;; False,NADJ:SG
+# only make number for plural and for singular pronouns and determiners
+pl,pos:: True,*:PL;; False,PRON:SG;; False,DET:SG
+# False,N:SG;; False,ADJ:SG;; False,NADJ:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF
 p,def:: 0,True:DEF
-g:: m:MASC;; f:FEM
+#g:: m:MASC;; f:FEM
 postp:: ጋ:*OBL
 
 # personal pronouns
@@ -82,11 +84,14 @@ tns:: prs:PRS
 cop:: True:*COP
 
 # voice for infinitives and agentives
-a,v,base:: 0,p,0:PASS;; 0,a,0:CAUS;; 0,as,0:CAUS;; 0,ast,0:CAUS;; 0,test,0:PASS
-a,v,base:: 0,p,a:PASS;; 0,a,p:CAUS;; 0,as,p:CAUS;; 0,ast,p:CAUS
-a,v,base:: a,a,*:CAUS;; i,0,*:ITER;; i,p,*:RECP;; i,a,*:CAUS;; i,ast,*:CAUS;; i,test,*:RECP
+d,a,v,base:: inf,0,p,0:PASS;; inf,0,a,0:CAUS;; inf,0,as,0:CAUS;; inf,0,ast,0:CAUS;; inf,0,test,0:PASS
+d,a,v,base:: inf,0,p,a:PASS;; inf,0,a,p:CAUS;; inf,0,as,p:CAUS;; inf,0,ast,p:CAUS
+d,a,v,base:: inf,a,a,*:CAUS;; inf,i,0,*:ITER;; inf,i,p,*:RECP;; inf,i,a,*:CAUS;; inf,i,ast,*:CAUS;; inf,i,test,*:RECP
+d,a,v,base:: ins,0,p,0:PASS;; ins,0,a,0:CAUS;; ins,0,as,0:CAUS;; ins,0,ast,0:CAUS;; ins,0,test,0:PASS
+d,a,v,base:: ins,0,p,a:PASS;; ins,0,a,p:CAUS;; ins,0,as,p:CAUS;; ins,0,ast,p:CAUS
+d,a,v,base:: ins,a,a,*:CAUS;; ins,i,0,*:ITER;; ins,i,p,*:RECP;; ins,i,a,*:CAUS;; ins,i,ast,*:CAUS;; ins,i,test,*:RECP
 
-# አዕማድ for infinitives and agentives
+# አዕማድ for infinitives and instruments
 a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDERAGI;; 0,test:*TESTEDERAGI;; a,p:*TEDARAGI;; a,a:*ADARAGI;; i,0:*DERARAGI;; i,p:*TEDERARAGI;; i,a:*ADERARAGI;; i,ast:*ASTEDERARAGI;; i,test:*TESTEDERARAGI;; i,as:*ASDERARAGI
 
 # polarity for infinitives

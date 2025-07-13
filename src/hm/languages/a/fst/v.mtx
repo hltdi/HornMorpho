@@ -122,10 +122,11 @@ $ sb_suf
   ኤ		[sp=1,sn=1,t=c,slemma=እኔ]
   ን    	[sp=1,sn=2,t=p,slemma=እኛ]
   አን    	[sp=1,sn=2,t=c,slemma=እኛ]
-  # include exceptions: ጀመር  እንደሆን (should these be in aux?)
+  # include perfective exceptions: ጀመር  እንደሆን  ነበር  (should these be in aux?)
   --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m,slemma=አንተ];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
-		[a=0,v=0,t=p,-neg,+mc,-sub,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0];
-		[a=0,v=0,t=p,-neg,sconj=እንደ,r=ህውን|ንብር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0]
+	[a=0,v=0,t=p,-neg,+mc,-sub,c=B,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0,adp=0];
+	[a=0,v=0,t=p,-neg,+mc,-sub,c=A,r=ንብር,sp=3,sn=1,sg=m,o=0,sconj=0,adp=0];
+	[a=0,v=0,t=p,-neg,sconj=እንደ,c=A,r=ህውን|ንብር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0,adp=0]
 
 $ ss_bound
   -

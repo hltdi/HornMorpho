@@ -72,7 +72,7 @@ p,def:: 0,True:DEF
 #p,g:: sm3,None:{PSS3SM/DEF};; sf3,None:{PSS3SF/DEF}
 #p,g:: sm3,m:{PSS3SM/DEF};; sf3,m:PSS3SF
 #p,g:: sm3,f:PSS3SM;; sf3,f:{PSS3SF/DEF}
-g:: m:MASC;; f:FEM
+#g:: m:MASC;; f:FEM
 postp:: ጋ:*OBL
 
 # personal pronouns

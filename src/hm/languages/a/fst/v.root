@@ -47,7 +47,6 @@ $$ W kW gW qW mW bW fW
 %C::		1:a;	2:e,/e,I,/I;		3:I
 %C,3='::			2:a,/a,I,/I;		3:0,0ት
 %C,3=y::								3:0,0ት
-#%C_a::		1:a;	2:e,/e,I,/I;		3:I
 %C_i::		1:e;	2:a|e,/e,I,/I;	3:I
 
 ## 4-consonant roots
