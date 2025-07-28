@@ -39,24 +39,27 @@ TI_SKIP = \
             'እዝኒ', 'ስራሕ'
         ]
 
-# 2025.6.22 Shortcuts for nalyzing CACO sentences
+# 2025.6.22 Shortcuts for analyzing CACO sentences
 
-def CACO(start=0, n_sents=100, corpus=None, append=False, directory="../../EES-Res/conllu/am/New/", file=''):
+def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
+         id0=1, id1=100,
+         directory="../../EES-Res/tmp/", disambiguate=True, file=''):
     '''
-    Skip MWE analysis and use morph_version 2.
+    Skip MWE analysis and CG annotation.
     '''
     c = hm.anal_corpus(
         'a',
-        path="../../EES-Res/text/am/CACO_3-7.txt",
+        path=path or "../../EES-Res/text/am/CACO_3-7.txt",
         corpus=corpus,
         n_sents=n_sents, max_sents=n_sents, start=start,
         skip_mwe=True,
-        disambiguate=True,
+        disambiguate=disambiguate,
         CGdisambiguate=True,
-        sentid=start)
+        annotate=False,
+        sentid=start+1)
     first = corpus.last_line if corpus else start
     last = c.last_line
-    file = file or "CACO_3-7T_{}-{}.conllu".format(first+1, last)
+    file = file or "CACO_3-7T_{}-{}.conllu".format(id0, id1)
     dump_path = os.path.join(directory, file)
     hm.write_conllu(corpus=c, append=append, path=dump_path)
     return c

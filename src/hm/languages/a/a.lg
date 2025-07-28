@@ -98,8 +98,9 @@ feats:
                   'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
        'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
-        'xpos': 'VSTEM', 'condfeats': [{'sb1', 'sb2'}, ['Person', 'Number', 'Gender']],\
-        'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
+        'xpos': 'VSTEM',\
+	'condfeats': [[{'sb1', 'sb2'}, ['Person', 'Number', 'Gender']], [{'neg1', 'neg2'}, ['Polarity']]],\
+        'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
       {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
         'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
       {'name': 'ob',\
@@ -108,8 +109,9 @@ feats:
 	'lemma': ('olemma',),\
 	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:aff', (True,'l'): 'obl:aff', (True,'b'): 'obl:aff'}),\
         'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Person[ben]', 'Person[mal]', 'Definite']};
-      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
-      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux','feats':['Number','Gender','Person']};
+      {'name': 'neg2',  'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'aux',  'pos': 'AUX', 'dep': 'aux',\
+         'feats': (('t','png'), {('i',True): ['Number','Gender','Person'], ('c',True): ['Number','Gender','Person']})};
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
       {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod'};
       {'name': 'conj2',\
@@ -176,7 +178,7 @@ feats:
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
       {'name': 'STEM', 'feats':['VerbForm', 'Voice', 'Polarity', 'Gender', 'Person'],\
-       'condfeats': [{'plur'}, ['Number']]};;
+       'condfeats': [[{'plur'}, ['Number']]]};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\

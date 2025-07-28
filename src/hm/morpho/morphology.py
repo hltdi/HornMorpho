@@ -1773,7 +1773,7 @@ class POSMorphology:
             # the morpheme could be the empty string
             return ''
         is_mwe_part = props.get('mwe', False)
-#        print("^^ Processing morpheme {} ({}); {}; {}".format(morpheme, index, props, misc))
+#        print("^^ Processing morpheme {} ({}); {}; {}; {}".format(morpheme, index, props, misc, features.__repr__()))
         dct = {'seg': EES.elim_bounds(morpheme)}
 #                   morpheme if gemination else EES.degeminate(morpheme, elim_bounds=True)}
         pos = self.get_segment_pos(morpheme, props, pos, features, mwe=mwe, is_stem=is_stem, is_mwe_part=is_mwe_part, mwe_tokens=mwe_tokens)
@@ -1798,7 +1798,7 @@ class POSMorphology:
 #        dct['lemma'] = morpheme
         feats = None
         if sep_feats and udfdict:
-            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts, sep_feats=sep_feats, allaff=allaff)
+            feats = self.get_segment_feats(morpheme, props, udfdict, udfalts, features, sep_feats=sep_feats, allaff=allaff)
         elif is_stem:
             if udfdict:
                 feats = udfeats
@@ -1919,7 +1919,7 @@ class POSMorphology:
             return pos
         return posspec
 
-    def get_segment_feats(self, string, segdict, udfdict, udfalts, sep_feats=True, allaff=None):
+    def get_segment_feats(self, string, segdict, udfdict, udfalts, hmfeats, sep_feats=True, allaff=None):
         '''
         Get the UD features that are specific to this segment.
         ufdict is a dict of UD features for the whole word.
@@ -1934,19 +1934,33 @@ class POSMorphology:
         segfeats = segdict['feats']
         condfeats = segdict.get('condfeats', None)
 #        print("  ^^ processing {}, segfeats {}, condfeats {}, allaff {}".format(string, segfeats, condfeats, allaff))
+        if type(segfeats) is tuple:
+            # UM/UD features depend on particular HM features
+            hmfeat = segfeats[0]
+#            if type(hmfeat) != tuple:
+#                hmfeat = (hmfeat,)
+            if type(hmfeat) is tuple:
+                # make the default True to handle wildcard '*'
+#                print("   ^^ checking {} in {}".format(hmfeat, hmfeats.__repr__()))
+                hmvalues = tuple([hmfeats.get(hf, True) for hf in hmfeat])
+#                print("   ^^ values {}".format(hmvalues))
+            else:
+                hmvalues = hmfeats.get(hmfeat)
+            segfeatdict = segfeats[1]
+            segfeats = segfeatdict.get(hmvalues, [])
         for segfeat in segfeats:
             wordfeat = udfdict.get(segfeat)
             if wordfeat:
                 features.append((segfeat, wordfeat))
         if condfeats:
-            caffs, cfeats = condfeats
-            if not caffs.intersection(allaff):
-                # We need to add features to this segment that are missing because of empty affix slots
-#                print("condfeats {} missing".format(caffs))
-                for cf in cfeats:
-                    wordfeat = udfdict.get(cf)
-                    if wordfeat:
-                        features.append((cf, wordfeat))
+            for caffs, cfeats in condfeats:
+                if not caffs.intersection(allaff):
+                    # We need to add features to this segment that are missing because of empty affix slots
+                    # For example, PNG for ውረድ, Polarity for የ-ሌለ
+                    for cf in cfeats:
+                        wordfeat = udfdict.get(cf)
+                        if wordfeat:
+                            features.append((cf, wordfeat))
         if not features:
             found2 = []
             for udfa in udfalts:

@@ -197,9 +197,9 @@ $ neg2_bound
   -
 
 $ aux
-  ኣ/ል	[t=i,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=i,sp=3,sn=2,+O,-neg,+mc,ax=al];[t=c,sp=1,sn=2,-neg,+mc,ax=al];[t=c,sp=2,-neg,+mc,ax=al];[t=c,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=c,sp=3,sn=2,-neg,+mc,ax=al]
-  ኣ/ለሁ	[t=i|c,sp=1,sn=1,-neg,+mc,ax=al]
-  ኣ/ለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc,ax=al]
+  ኣ/ል	[t=i,sp=3,sn=1,sg=m,-neg,+mc,ax=al];[t=i,sp=3,sn=2,+O,-neg,+mc,ax=al];[t=c,sp=1,sn=2,-neg,+mc,-png,ax=al];[t=c,sp=2,-neg,+mc,-png,ax=al];[t=c,sp=3,sn=1,sg=m,-neg,+mc,-png,ax=al];[t=c,sp=3,sn=2,-neg,+mc,-png,ax=al]
+  ኣ/ለሁ	[t=i|c,sp=1,sn=1,-neg,+mc,+png,ax=al]
+  ኣ/ለች	[t=i|c,sp=3,sn=1,sg=f,-neg,+mc,+png,ax=al]
   ኣ/ለህ	[t=i,sp=2,sn=1,sg=m,-neg,+mc,ax=al]
   ኣ/ለሽ	[t=i,sp=2,sn=1,sg=f,-neg,+mc,ax=al]
   ኣ/ለን	[t=i,sp=1,sn=2,-neg,+mc,ax=al]

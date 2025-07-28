@@ -58,7 +58,7 @@ In disamguation, it can help to see if the translation in English has an object 
 	
 		ልጁ የሸጠው መጽሐፍ ትልቅ ነው ።
 		
-	I suggest we use the definite article (Definite=Def) for these cases.	
+	I suggest we use the definite article option (Definite=Def) for these cases.	
 3. Verb active vs. passive voice
 4. 3sf vs. 2sm
 

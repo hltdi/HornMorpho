@@ -25,17 +25,15 @@ $ prestem
   <
 
 $ stem
-#  ->cop_bound	+pron_cop+		[pos=PRON,+cop,adp=0,p=0,d=0,-dis,-col,ptype=int,tns=prs]
-  ->poss_bound	+hulu+			[pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=tot]
+  ->poss_bound	+hulu+			[pos=DET,-pl,-cop,d=0,-dis,-col,ptype=tot]
   ->cop_bound	+pron_misc_skip+	[pos=PRON,adp=0,d=0,-dis,-col,p=0,ptype=int]
-#  [pos=PRON,-pl,-cop,d=0,-dis,-col,ptype=int]
   +n_stem+		[ps=oc,-irr,-cop]
   +n_stem_an+	[ps=an,-irr,d=0,-cop]
   +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
   +n_place+		[pos=PROPN,-pl,p=0,d=0,-cop]
   >>vn_stem<<
   +ppron+		[pos=PRON,-dis,-col,p=0,d=0,ptype=prs,-cop,-irr]
-  +prep_det+	[pos=DET|PRON,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
+  +prep_det+	[pos=DET,-pl,adp=በ|ለ|የ|ከ|እንደ|እስከ|ስለ|ወደ|ያለ|እ|በስተ,p=0,d=0,ptype=dem,-cop]
   +irr_plr+		[+pl,+irr,d=0,-cop]
 
 $ poststem
@@ -44,7 +42,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM|PRON,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl];[+pl,+col];[+irr];[pos=DET] # ,ptype=prs|int]
+  --		[-pl];[+pl,+col];[+irr,+pl];[pos=DET,+pl] # ,ptype=prs|int]
 
 $ plur_bound
   -
@@ -70,8 +68,8 @@ $ poss_det
   ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
   # possessive or determiner
   #{
-  ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N|ADJ|PRON,spos=DET]
-  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON,spos=DET]
+  ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N|ADJ|PRON|DET,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON|DET,spos=DET]
   ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,d=0,pos=N,spos=DET]
   #}
   ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON]

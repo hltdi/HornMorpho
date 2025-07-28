@@ -24,28 +24,28 @@ POS n N
 ->UD DEF	Definite=Def
 ->UD V.MSDR	VerbForm=Inf
 # Leave off noun gender (for now?)
-->UD PSS1P	Number[psor]=Plur,Person[psor]=1,Possessive=Yes
-->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form,Possessive=Yes
-->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2,Possessive=Yes
-->UD PSS2P	Number[psor]=Plur,Person[psor]=2,Possessive=Yes
-->UD PSS1S	Number[psor]=Sing,Person[psor]=1,Possessive=Yes
-->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2,Possessive=Yes
-->UD PSS3P	Number[psor]=Plur,Person[psor]=3,Possessive=Yes
-->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
-->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3,Possessive=Yes
+->UD PSS1P	Number[psor]=Plur,Person[psor]=1
+->UD PSS2SFORM	Number[psor]=Sing,Person[psor]=2,Polite[psor]=Form
+->UD PSS2SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=2
+->UD PSS2P	Number[psor]=Plur,Person[psor]=2
+->UD PSS1S	Number[psor]=Sing,Person[psor]=1
+->UD PSS2SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=2
+->UD PSS3P	Number[psor]=Plur,Person[psor]=3
+->UD PSS3SF	Gender[psor]=Fem,Number[psor]=Sing,Person[psor]=3
+->UD PSS3SM	Gender[psor]=Masc,Number[psor]=Sing,Person[psor]=3
 ->UD TOP	*Inf=Topic
 ->UD 1		Person=1
 ->UD 2		Person=2
 ->UD 3		Person=3
 ->UD FEM		Gender=Fem
 ->UD MASC	Gender=Masc
-->UD *PRSPRO	PronType=Prs
-->UD *DEMPRO	PronType=Dem
-->UD *POSS	Possessive=Yes
+#->UD *PRSPRO	PronType=Prs
+#->UD *DEMPRO	PronType=Dem
+#->UD *POSS	Possessive=Yes
 # suffixed copula
 ->UD PRS	Tense=Pres
 # infinitives and agentives
-# 2025.7.9 no voice for these 
+# 2025.7.9 no voice for these
 #->UD CAUS	Voice=Cau
 #->UD TR		Voice=Trans
 #->UD RECP	*Voice=Rcp
@@ -60,13 +60,13 @@ adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;;
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 # only make number for plural and for singular pronouns and determiners
-pl,pos:: True,*:PL;; False,PRON:SG;; False,DET:SG
+pl,pos,ptype:: True,*,*:PL;; False,DET,*:SG;; False,PRON,dem:SG
 # False,N:SG;; False,ADJ:SG;; False,NADJ:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF
 p,def:: 0,True:DEF
-#g:: m:MASC;; f:FEM
+g,def:: m,True:MASC;; f,True:FEM
 postp:: ጋ:*OBL
 
 # personal pronouns
@@ -100,7 +100,7 @@ neg:: True:NEG
 d:: inf:*INF;; a:*AGT
 
 # conjunctions
-acpos:: CCONJ:*CCONJ;; ADV:*ADV
+acpos:: CCONJ:CCONJ;; ADV:ADV
 
 POS v V
 ->UD NEG	Polarity=Neg
@@ -283,13 +283,15 @@ adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OB
 sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC;; እንደ:*INDE_SC
 #cconj,neg,mc:: ም,False,*:TOP;; ም,True,False:TOP
 #cconj:: ስ:TOP;; ማ:TOP;; ሳ:TOP;; ኣ:TOP;; ኮ:TOP;; ና:*COORD
+# Added 2025.7.25; not starred so they keep different analyses (of ቤቱም) from being pruned
+spos:: ADV:ADV;; CCONJ:CCONJ
 
 ## Clause type
 # Main clause vs. subordination
 rel,sub,mc:: False,False,True:*MAIN
 # 2024.7.7: simplified subordinating conjunctions to SUBORD
 # 2024.12.24: new dep feature to simplify the relations into subordinate verbs
-dep:: advcl:*ADVCL;; acl:*RELC;; ccomp:*CCOMP
+dep:: advcl:ADVCL;; acl:RELC;; ccomp:CCOMP
 #sub,rel,ppos,dep:: True,False,SCONJ:*SUBORD;; True,True,ADP:*RELC;; True,True,SCONJ:*SUBORD;; True,True,PART:*RELC
 # ይሰብር: Useful (necessary?) for CG; could also be called *I_NFIN, though it's actually finite
 sub,mc,t:: False,False,i:*I_PART

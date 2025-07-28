@@ -82,7 +82,7 @@ class Corpus():
                  # if non-negative, only analyze sentences with this position relative to last comment line
                  language_pos=-1,
                  print_sentence=False,
-                 # included in case annotation is ever part of corpus creation
+                 # Use CG rules, if available, to do some word-to-word annotation
                  annotate=False,
                  # version of .lg and .um files to use
                  morph_version=0,

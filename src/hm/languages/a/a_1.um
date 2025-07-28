@@ -61,7 +61,7 @@ pos:: NADJ:N;; NADV:N
 adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
-pl,pos:: True,*:PL;; False,N:SG;; False,PRON:SG;; False,ADJ:SG;; False,NADJ:SG
+pl,pos,ptype:: True,*,*:PL;; False,DET,*:SG;; False,PRON,dem:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
 hum,def:: True,True:DEF

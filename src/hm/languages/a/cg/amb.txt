@@ -104,3 +104,21 @@
 	"ተመጣ" V MAIN TEDERAGI 1 IPFV PASS PL
 "<።>"
 	"።" PUNCT
+
+"<ኢየሱስ>"
+	"ኢየሱስ" N
+	"ኢየሱስ" PROPN
+"<በቃና>"
+	"እቃ" N INS OBL CCONJ
+	"በቃ" V DERAGI MAIN 3 CCONJ MASC PFV SG
+	"ቃና" N INS OBL
+"<ለየትኛው>"
+	"የትኛ" DET DAT INTPRO OBL ADV DEF MASC SG
+"<ዝግጅት>"
+	"ዝግጅት" N
+"<አስተዋጽኦ>"
+	"አስተዋጽኦ" N
+"<አድርጓል>"
+	"አደረገ" V ADRAGI MAIN 3 MASC PRF SG
+"<?>"
+	"?" PUNCT

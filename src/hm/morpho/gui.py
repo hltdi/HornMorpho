@@ -177,12 +177,18 @@ class SegRoot(Tk):
         '''
         Set the sentence ID and the corresponding sentence.
         '''
-#        print("** set_sentid {}".format(new_id))
+        current_id = self.sentvar.get()
+#        print("** set_sentid {}, sentvar {}".format(new_id, current_id))
         if 1 <= new_id <= len(self.corpus.data):
-            if self.set_sentence(new_id-1):
+            if new_id < current_id:
+                # moving back
+                self.sentvar.set(new_id)
+            elif self.set_sentence(new_id-1):
+                # moving forward
                 self.sentvar.set(new_id)
                 return 1
             else:
+                # skipping next one
                 return 0
         return -1
 
@@ -215,7 +221,7 @@ class SegRoot(Tk):
         sentence = self.corpus.data[sentindex]
         sentenceobj = self.corpus.sentences[sentindex]
         if not sentenceobj.record_ambiguities():
-#            print("Sentence {} has no ambiguities, moving to next one!".format(sentindex))
+#            print("  ** Sentence {} has no ambiguities, moving to next one!".format(sentindex))
             return False
         if sentindex in self.sentenceGUIs:
             self.sentenceGUI = self.sentenceGUIs[sentindex]
@@ -246,7 +252,11 @@ class SegRoot(Tk):
         while not ambiguities:
             if not self.set_sentid(new_id):
                 # No ambiguities in next sentence
-                new_id = new_id + 1
+                if new_id < len(self.corpus.data):
+                    new_id = new_id + 1
+                else:
+                    # End of sentences
+                    ambiguities = True
             else:
 #                print("** Ambiguities in {}".format(new_id))
                 ambiguities = True

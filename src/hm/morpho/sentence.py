@@ -577,7 +577,7 @@ class Sentence():
         reading = None
         for ri, rding in enumerate(cohort.readings):
             itms = rding.items
-            print(" ** reading {}, items: {}".format(ri, itms))
+#            print(" ** reading {}, items: {}".format(ri, itms))
             if oldPOS in itms:
                 readingi = ri
                 items = itms

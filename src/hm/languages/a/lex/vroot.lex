@@ -1846,7 +1846,7 @@
 <ጭ ፍ ል ቅ>	c=E,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=i,v=0
 <ጭ ፍ ቅ>	c=B,base=0
-  a=0,v=0 ; a=i,d=m ; a=i,v=a ; a=i,v=p
+  a=0,v=0 ; a=i,d=m ; a=i,v=a ; a=i,v=p ; a=0,v=p
 <ፅ ድ ቅ>	c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=i,d=m
 <ፉ ር ሽ>	c=A,base=0

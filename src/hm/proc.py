@@ -115,6 +115,211 @@ TI_VFEATS = ['c', 'root', 'sp', 'sn', 'sg', 'v', 'a', 't', 'cons', 'tmp', 'base'
 
 AGT_EXCEPTIONS = ['ሻይ', 'ቀ/ኝ', 'ታ/ች', 'ነ/ጭ', 'ጋሪ', 'ጠ/ጅ', 'ላይ']
 
+### Combined to distributed features
+
+N_FEATS = \
+    {'Definite': ('DET', 1),
+     'Case': {'Obj': ('ADP', 1),
+              'Obl': ('ADP', 0),
+              'Gen': ('ADP', 0)},
+     'Gender=Masc': ('DET', 1),
+     'Number=Sing': ('DET', 1),
+     'Number[psor]': ('PRON', 1),
+     'Person[psor]': ('PRON', 1),
+     'Gender[psor]': ('PRON', 1)}
+
+V_FEATS = \
+    {'Gender': ('SUBJC', 2),
+     'Number': ('SUBJC', 2),
+     'Person': ('SUBJC', 2),
+     'Polarity': ('advmod:aff', 2),
+     'Gender[obj]': ('OBJC', 1),
+     'Number[obj]': ('OBJC', 1),
+     'Person[obj]': ('OBJC', 1),
+     'Number[ben]': ('OBJC', 1),
+     'Person[ben]': ('OBJC', 1),
+     'Gender[ben]': ('OBJC', 1),
+     'Number[mal]': ('OBJC', 1),
+     'Person[mal]': ('OBJC', 1),
+     'Gender[mal]': ('OBJC', 1),
+     'ClauseType': ('mark', 0),
+     'Definite': ('DET', 1),
+     'Case': {'Obj': ('ADP', 1),
+              'Obl': ('ADP', 0)}}
+
+def clean_misc():
+    '''
+    Move (or remove) features in the Misc slot that should be in the Features slot.
+    '''
+    lines = []
+    with open("../../EES-Res/tmp/CACO-3-7T_1-100_vd.conllu") as file:
+        for line in file:
+            line = line.strip()
+            if not line or line[0] == '#':
+                lines.append(line)
+                continue
+            line = line.split('\t')
+            # just copy if Misc is empty
+            if line[9] == '_':
+                lines.append('\t'.join(line))
+                continue
+            misc = line[9]
+            if 'ClauseType' in misc:
+                # Eliminate ClauseType 
+                misc = misc.split('|')
+                misc = [m for m in misc if m != 'ClauseType=Subord']
+                line[9] = '|'.join(misc) or '_'
+                # Move ClauseType if this is the mark line
+                if line[7] in ('mark', 'case'):
+                    feats = line[5]
+                    feats = add_feature(feats, 'ClauseType=Subord')
+                    line[5] = feats
+                lines.append('\t'.join(line))
+            else:
+                lines.append('\t'.join(line))
+    with open("../../EES-Res/tmp/_CACO-3-7T_1-100_vd.conllu", 'w') as file:
+        for line in lines:
+            print(line, file=file)
+#    return lines
+
+def add_feature(features, newfeat):
+    features = features.split('|') if features != '_' else []
+    features.append(newfeat)
+    features.sort()
+    return '|'.join(features)
+
+def distrib_nfeats():
+    def proc_group(glines, gfeats, hi):
+        headline = []
+        for f, (prop, poskey) in gfeats:
+#            print("** searching for {}: {}/{}".format(f, prop, poskey))
+            found = False
+            for gl in glines[1:]:
+                # skip the first group line
+                # id
+                gli = int(gl[0])
+                if gli == hi:
+                    headline = gl
+                    continue
+                if gli < hi:
+                    if poskey in (0, 2) and prop in (gl[3], gl[4], gl[7]):
+                        found = True
+                        gl[5] = add_feature(gl[5], f)
+#                        print(" ** changed features for prep {} to {}".format(gl[1], gl[5]))
+                elif poskey in (1, 2) and prop in (gl[3], gl[4], gl[7]):
+                    found = True
+                    gl[5] = add_feature(gl[5], f)
+#                    print(" ** changed features for postp {} to {}".format(gl[1], gl[5]))
+            if not found:
+                # it could be imperative with no subject morphemes
+                if f.split('=')[0] in ('Person', 'Gender', 'Number'):
+                    if 'Mood=Imp' in headline[5]:
+                        continue
+                    if headline[2] == 'ነው':
+                        continue
+                if f == 'ClauseType=Subord':
+                    # the "conjunction" may be an adposition
+                    if glines[1][3] == 'ADP':
+                        continue
+                print("** NO PLACE FOUND FOR {} in {}".format(f, glines))
+
+    index = 0
+    with open("../../EES-Res/tmp/am_starter_df_17.7.conllu") as file:
+        index += 1
+        groupbounds = (-1, -1)
+        lines = []
+        grouplines = []
+        groupfeats = []
+        headi = -1
+        for line in file:
+            index += 1
+            line = line.strip()
+            if not line or line[0] == '#':
+                lines.append(line)
+                continue
+            line = line.split('\t')
+            id = line[0]
+            pos = line[3]
+            feats = line[5]
+            if grouplines and ('-' in id or int(id) > groupbounds[1]):
+                # end of group
+                proc_group(grouplines, groupfeats, headi)
+                lines.extend(["\t".join(gl) for gl in grouplines])
+                grouplines = []
+                groupfeats = []
+            if '-' in id:
+#                print("* Starting group {}".format(line))
+                # start of new group
+                start, end = id.split('-')
+                groupbounds = (int(start), int(end))
+                grouplines.append(line)
+#                print("** start of group: {}".format(groupbounds))
+            else:
+                id = int(id)
+                if grouplines:
+                    # in group; id must be in group
+                    if feats != '_':
+                        if pos in ('NOUN', 'ADJ', 'PRON', 'PROPN', 'DET', 'NUM'):
+                            featdata = N_FEATS
+                        else:
+                            featdata = V_FEATS
+                        # stem; has features
+                        headi = id
+                        feats = feats.split("|")
+                        feats_left = []
+                        for f in feats:
+                            lab, val = f.split("=")
+                            if lab in featdata:
+                                nfloc = featdata[lab]
+                                if type(nfloc) is dict:
+                                    if val not in nfloc:
+                                        print("* {} missing in {} for {}".format(val, nfloc, grouplines[0]))
+                                    nfloc = nfloc[val]
+                                # move this feature
+                                groupfeats.append((f, nfloc))
+                            else:
+                                feats_left.append(f)
+                        feats_left = '|'.join(feats_left) or '_'
+                        # replace stem features with shortened list
+                        line[5] = feats_left
+                    grouplines.append(line)
+                else:
+                    lines.append('\t'.join(line))
+    with open("../../EES-Res/tmp/am_starter_df_20.7.conllu", 'w') as file:
+        for line in lines:
+            print(line, file=file)
+    return lines
+
+def collect_feats():
+    heads = []
+    nounfeats = []
+    verbfeats = []
+    with open("../../EES-Res/tmp/am_starter_cf_17.7.conllu") as file:
+        for line in file:
+            line = line.strip()
+            if not line or line[0] == '#':
+                continue
+            line = line.split('\t')
+            f = line[5]
+            pos = line[3]
+            if f != '_':
+                f = f.split("|")
+                for ff in f:
+                    if pos in ('VERB', 'AUX'):
+                        if ff not in verbfeats:
+                            verbfeats.append(ff)
+                    else:
+                        if ff not in nounfeats:
+                            nounfeats.append(ff)
+                            if "Gender" in ff:
+                                print(line)
+                    if len(ff.split('=')) != 2:
+                        print(line)
+                    fh, fv = ff.split('=')
+                    if fh not in heads:
+                        heads.append(fh)
+    return nounfeats, verbfeats, heads
+
 ### Miscellaneous fixes
 
 def fix_am_nstem():
