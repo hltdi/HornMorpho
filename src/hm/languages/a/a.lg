@@ -4,7 +4,7 @@
 
 name: አማርኛ
 code: a
-version: 1.10
+version: 2.0
 
 gemination: True
 
@@ -108,7 +108,7 @@ feats:
   	'xpos': ('O', {False: 'DET', True: 'OBJC'}),\
 	'lemma': ('olemma',),\
 	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:aff', (True,'l'): 'obl:aff', (True,'b'): 'obl:aff'}),\
-        'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Person[ben]', 'Person[mal]', 'Definite']};
+        'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Gender[ben]', 'Gender[mal]', 'Definite']};
       {'name': 'neg2',  'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'aux',  'pos': 'AUX', 'dep': 'aux',\
          'feats': (('t','png'), {('i',True): ['Number','Gender','Person'], ('c',True): ['Number','Gender','Person']})};

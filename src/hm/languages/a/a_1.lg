@@ -1,9 +1,11 @@
 ## Morphology: inflection features assume affixes are like words,
-## with their own PNG in the case of subject/object agreement
+## with their own PNG in the case of subject/object agreement, so
+## obj -ኝ is Pers=1 rather than ObjPers=1
+## Note: this version has not been updated with latest changes
 
 name: አማርኛ
 code: a
-version: 1.10
+version: 2.0
 
 gemination: True
 
