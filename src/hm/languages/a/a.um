@@ -51,7 +51,7 @@ POS n N
 #->UD RECP	*Voice=Rcp
 #->UD PASS	Voice=Pass
 #->UD ITER	Aspect=Iter
-->UD *INF	VerbForm=Inf
+->UD INF	VerbForm=Inf
 ->UD NEG	Polarity=Neg
 
 pos:: NADJ:N;; NADV:N
@@ -60,7 +60,8 @@ adp:: እስከ:*TERM;; ስለ:*PRP;; እንደ:*EQTV;; ወደ:*ALL;; ከ:*ABL;;
 # adp updated 2024.7.7
 adp:: እስከ:*OBL;; ስለ:*OBL;; እንደ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL
 # only make number for plural and for singular pronouns and determiners
-pl,pos,ptype:: True,*,*:PL;; False,DET,*:SG;; False,PRON,dem:SG
+pl,pos,ptype:: True,*,*:PL;; False,DET,dem:SG;; False,PRON,dem:SG
+g,pos,ptype:: m,DET,dem:MASC;; f,DET,dem:FEM
 # False,N:SG;; False,ADJ:SG;; False,NADJ:SG
 acc,gen:: True,True:ACC+GEN;; True,False:ACC;; False,True:GEN
 p:: s1:PSS1S;; p1:PSS1P;; sm2:PSS2SM;; sf2:PSS2SF;; F2:PSS2SFORM;; p2:PSS2P;; sm3:PSS3SM;; sf3:PSS3SF;; p3:PSS3P
@@ -97,7 +98,7 @@ a,v:: 0,0:*DERAGI;; 0,p:*TEDERAGI;; 0,a:*ADRAGI;; 0,as:*ASDERAGI;; 0,ast:*ASTEDE
 # polarity for infinitives
 neg:: True:NEG
 
-d:: inf:*INF;; a:*AGT
+d:: inf:INF;; a:*AGT
 
 # conjunctions
 acpos:: CCONJ:CCONJ;; ADV:ADV
@@ -209,9 +210,9 @@ POS v V
 ->UD TOP	*Inf=Topic
 ->UD DEF	*Definite=Def
 # simpify ClauseType; Subord for relative and adverbial clauses (2024.12.24)
-->UD *CCOMP	*ClauseType=Subord
-->UD *RELC	*ClauseType=Subord
-->UD *ADVCL	*ClauseType=Subord
+->UD CCOMP	*ClauseType=Subord
+->UD RELC	*ClauseType=Subord
+->UD ADVCL	*ClauseType=Subord
 # prepositions all OBL as of 2024.7.7
 ->UD *OBL      *Case=Obl
 ->UD ACC       Case=Obj
@@ -277,7 +278,7 @@ det:: DEF
 
 # added back; possibly needed for CG (2024.11.10)
 adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT;; እንደ:*EQTV
-# 2024.7.7: simplifed adpositions to *OBL
+# 2024.7.7: simplifed adpositions to OBL
 adp:: እስከ:*OBL;; ስለ:*OBL;; ወደ:*OBL;; ከ:*OBL;; በ:*OBL;; ለ:*OBL;; እ:*OBL;; እንደ:*OBL
 # added back; possible needed for CG (2024.11.10)
 sconj:: ስ:*S_SC;; ብ:*B_SC;; እንድ:*IND_SC;; ል:*L_SC;; እስክ:*ISK_SC;; ከ:*KE_SC;; እየ:*IYE_SC;; በ:*BE_SC;; እንደ:*INDE_SC

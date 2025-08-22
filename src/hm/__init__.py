@@ -635,11 +635,11 @@ def show_segs(segmentation):
     for seg in segmentation.split('-'):
         print(seg)
 
-def get_language(abbrev):
+def get_language(abbrev, **kwargs):
     """Get the language with the abbreviation if it's loaded.
     Load it if it's not.
     """
-    return morpho.get_language(abbrev)
+    return morpho.get_language(abbrev, **kwargs)
 
 ## Shortcuts for Amharic
 A = lambda w: anal('a', w)

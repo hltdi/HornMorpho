@@ -57,19 +57,21 @@ feats:
 
     lemmafeats = a,v,c,s
 
-    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'CAUS']
+#    umcats = ['PASS', 'RECP1', 'RECP2', 'ITER', 'CAUS+RECP1', 'CAUS+RECP2', 'CAUS']
+     
+    umcats = ['SERAHI', 'ASRAHI', 'TESERAHI', 'TESARAHI', 'ASARAHI', 'SERARAHI', 'TESERARAHI', 'ASERARAHI']
 
     morphotax::
-      {'name': 'adp', 'pos': 'ADP', 'dep': 'mark:pre', 'feats': ['Case']};
-      {'name': 'conj1', 'pos': 'SCONJ', 'dep': 'mark:pre', 'feats': ['Polarity']};
-      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:pre', 'feats': ['Person', 'Number', 'Gender', 'PronType']};;
+      {'name': 'adp', 'pos': 'ADP', 'dep': 'mark', 'feats': ['Case']};
+      {'name': 'conj1', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['Polarity']};
+      {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
         'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;
-      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:suf', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
-      {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:suf', 'o': 'obl:suf'}),\
-        'feats': ['ObjNum', 'ObjPers', 'ObjGen', 'AppNum', 'AppPers', 'AppGen', 'PronType']};
-      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:suf', 'feats': ['Polarity']};
-      {'name': 'conj2', 'pos': 'CCONJ', 'dep': 'cc'}
+      {'name': 'sb2', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
+      {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:aff', 'o': 'obl:aff'}),\
+        'feats': ['Number[obj]', 'Person[obj]', 'Gender[obj]', 'Number[app]', 'Person[app]', 'Gender[app]']};
+      {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
+      {'name': 'conj2', 'pos': 'ADV', 'dep': 'advmod'}
 
 #    mwe::
 #      {'hdfin': True, 'deppos': 'PART', 'hdaff': True}

@@ -122,3 +122,104 @@
 	"አደረገ" V ADRAGI MAIN 3 MASC PRF SG
 "<?>"
 	"?" PUNCT
+
+"<ተቀጥረህ>"
+	"ተቀጠረ" V TEDERAGI 2 CVB MASC PASS SG
+"<ነዋ>"
+	"ነው" AUX 3 MASC PRS SG
+"<የምትሠራው>"
+	"ሰራ" V DERAGI 3 DEF FEM IPFV RELC SG
+	"ሰራ" V DERAGI 3 AC3SM FEM IPFV RELC SG
+	"ሰራ" V DERAGI 2 DEF IPFV MASC RELC SG
+	"ሰራ" V DERAGI 2 AC3SM IPFV MASC RELC SG
+	"ተሰራ" V TEDERAGI 2 AC3SM IPFV MASC PASS RELC SG
+	"ተሰራ" V TEDERAGI 3 DEF FEM IPFV PASS RELC SG
+	"ተሰራ" V TEDERAGI 3 AC3SM FEM IPFV PASS RELC SG
+	"ተሰራ" V TEDERAGI 2 DEF IPFV MASC PASS RELC SG
+"<።>"
+	"።" PUNCT
+
+"<የበለጠ>"
+	"በለጠ" V DERAGI 3 MASC PFV RELC SG
+	"በለጠ" PROPN GEN
+"<ብትጥር>"
+	"ጣረ" V B_SC DERAGI 2 ADVCL IPFV MASC SG
+	"ጣረ" V B_SC DERAGI 3 ADVCL FEM IPFV SG
+"<እንዲያውም>"
+	"እንዲያውም" ADV
+"<የተሻለ>"
+	"ተሻለ" V TEDERAGI 3 MASC PFV RELC SG
+	"ተሻለ" PROPN GEN
+"<ልታነብ>"
+	"አነበበ" V ADRAGI L_SC 2 ADVCL CAUS IPFV MASC SG
+	"አነበበ" V ADRAGI L_SC 3 ADVCL CAUS FEM IPFV SG
+"<ትችላለህ>"
+	"ቻለ" V DERAGI MAIN 2 IPFV MASC SG
+"<።>"
+	"።" PUNCT
+
+"<በል>"
+	"አለ" V DERAGI 2 IMP MASC SG
+"<ብላት>"
+	"አለ" V DERAGI 3 AC3SF CVB FEM SG
+	"አለ" V B_SC DERAGI 1 AC3SF ADVCL IPFV SG
+	"በላ" V DERAGI 2 AC3SF IMP MASC SG
+"<!>"
+	"!" PUNCT
+
+"<ከጨረስክ>"
+	"ጨረሰ" V DERAGI KE_SC 2 ADVCL MASC PFV SG
+	"ጨረሰ" V ABL DERAGI OBL 2 MASC PFV RELC SG
+"<በኋላ>"
+	"በኋላ" ADPCONJ
+	"ኋላ" N INS OBL
+"<እኔ>"
+	"እኔ" PRON PRSPRO 1 SG
+"<ጋር>"
+	"ጋር" ADP
+	"ጋረ" V DERAGI 2 IMP MASC SG
+"<እንድትመጣ>"
+	"መጣ" V DERAGI IND_SC 2 ADVCL IPFV MASC SG
+	"መጣ" V DERAGI IND_SC 3 ADVCL FEM IPFV SG
+	"ተመጣ" V IND_SC TEDERAGI 2 ADVCL IPFV MASC PASS SG
+	"ተመጣ" V IND_SC TEDERAGI 3 ADVCL FEM IPFV PASS SG
+"<!>"
+	"!" PUNCT
+
+"<ሁለት>"
+	"ሁለት" NUM
+"<መኪኖች>"
+	"መኪና" N PL
+"<አየ>"
+	"አየ" V DERAGI MAIN 3 MASC PFV SG
+"<ግን>"
+	"ግን" ADVCCONJ
+"<አንዱንም>"
+	"አነዳ" V ADRAGI 2 AC1P ADV CAUS IMP PL
+	"አነዳ" V ADRAGI 2 AC1P CAUS CCONJ IMP PL
+"<አልገዛም>"
+	"ገዛ" V DERAGI MAIN 3 MASC NEG PFV SG
+	"ገዛ" V DERAGI MAIN 1 IPFV NEG SG
+	"ተገዛ" V MAIN TEDERAGI 1 IPFV NEG PASS SG
+"<።>"
+	"።" PUNCT
+
+"<ሰው>"
+	"ሰው" N
+"<ጉድ>"
+	"ጉድ" PART
+	"ጉድ" N
+"<አለ>"
+	"አለ" V DERAGI MAIN 3 MASC PFV SG
+	"አለ" V DERAGI 3 MASC PFV RELC SG
+	"አለː" AUX DERAGI MAIN 3 MASC PFV SG
+	"አለː" V DERAGI MAIN 3 MASC PFV SG
+	"አለː" AUX DERAGI 3 MASC PFV RELC SG
+	"አለː" V DERAGI 3 MASC PFV RELC SG
+"<፤>"
+	"፤" PUNCT
+"<አጉረመረመ>"
+	"አጕረመረመ" V ADRAGI MAIN 3 CAUS MASC PFV SG
+"<።>"
+	"።" PUNCT
+

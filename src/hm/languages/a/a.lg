@@ -4,7 +4,7 @@
 
 name: አማርኛ
 code: a
-version: 2.0
+version: 2.2
 
 gemination: True
 
@@ -50,8 +50,8 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
 
 normalization::
-  ሃ ሐሑሒሓሔሕሖ	ኀኁኂኃኄኅኆ	ኸኹኺኻኼኽኾ	ዐዑዒዓዔዕዖ	ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
-  ሀ ሀሁሂሀሄህሆ		ሀሁሂሀሄህሆ	ሀሁሂሀሄህሆ	አኡኢአኤእኦ	ሰሱሲሳሴስሶ	ጸጹጺጻጼጽጾ
+  ሃ ሐሑሒሓሔሕሖ	ኀኁኂኃኄኅኆ	ኹኺኻኼኽኾ	ዐዑዒዓዔዕዖ	ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
+  ሀ ሀሁሂሀሄህሆ		ሀሁሂሀሄህሆ	ሁሂሀሄህሆ	አኡኢአኤእኦ	ሰሱሲሳሴስሶ	ጸጹጺጻጼጽጾ
 
 charcomb::
   -ሰ: ስ /ሰ ;\
@@ -93,7 +93,7 @@ feats:
       {'name': 'imperf_rel', 'pos': 'PART', 'xpos': 'IRLP', 'dep': 'mark'};
       {'name': 'neg1', 'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'xpos': 'SUBJC', 'dep': 'nsubj:aff',\
-        'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
+       'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
                   'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
                   'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
        'feats': ['Person', 'Number', 'Gender']};;
@@ -111,9 +111,11 @@ feats:
         'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Gender[ben]', 'Gender[mal]', 'Definite']};
       {'name': 'neg2',  'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'aux',  'pos': 'AUX', 'dep': 'aux',\
-         'feats': (('t','png'), {('i',True): ['Number','Gender','Person'], ('c',True): ['Number','Gender','Person']})};
+       'feats': (('t','png'), {('i',True): ['Number','Gender','Person'], ('c',True): ['Number','Gender','Person']})};
       {'name': 'acc',  'pos': 'ADP', 'dep': 'case', 'feats': ['Case']};
-      {'name': 'ms', 'pos': 'ADV', 'dep': 'advmod'};
+      {'name': 'ms',\
+        'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
+        'dep': ('spos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
       {'name': 'conj2',\
         'pos': ('spos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
         'dep': ('spos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
@@ -189,7 +191,7 @@ feats:
       {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
         'dep': ('acpos', {'CCONJ': 'cc', 'ADV': 'advmod'})};
       {'name': 'GA', 'pos': 'ADP', 'dep': 'case', 'feats':['Case']}
-    lemmafeats = d;a,v
+    lemmafeats = d;a,v,c
     pos = N | ADJ | NADJ | NADV | PRON | PRONADJ | PROPN | N_V | ADV
     det = False | True
     def = False | True
@@ -212,8 +214,10 @@ feats:
   pos: cop copula
     umcats = ['PRS', 'PST']
     morphotax::
-	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};;
+	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};
+	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};;
 	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType', 'Person', 'Number', 'Gender']};;
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
 	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
 	 'dep': ('apos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}

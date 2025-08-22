@@ -709,8 +709,10 @@ FS = hm.morpho.FeatStruct
 FSS = hm.morpho.FSSet
 A = lambda word: hm.anal('a', word)
 AS = lambda sentence: hm.anal_sentence('a', sentence)
+TS = lambda sentence: hm.anal_sentence('t', sentence)
 AC = lambda sentence, cg=True, dis=True, ann=False: hm.anal_corpus('a', data=[sentence], cg=cg, disambiguate=dis, annotate=ann)
-TC = lambda sentence, dis=True: hm.anal_corpus('t', data=[sentence], disambiguate=dis)
+TC = lambda sentence, cg=True, dis=True, ann=False: hm.anal_corpus('t', data=[sentence], cg=cg, disambiguate=dis, annotate=ann)
+
 
 def ኮ(sentence, file='', ann=True):
     c = hm.anal_corpus('a', data=[sentence], disambiguate=True, annotate=ann)

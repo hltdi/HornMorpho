@@ -28,7 +28,7 @@ $ conj_prep_pre
   # adp ስለ (= about[acl]); sconj ስለ (advcl: because)
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
   		[sconj=ስለ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl]
-  # adp በ (locative, instrumental, agent) ; sconj በ (=if): ባልዘነበ
+  # adp በ (locative, instrumental, agent) ; sconj በ (=if): ባልዘነበ and with some postpositional conjunctions
   በ		[adp=በ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
   		[sconj=በ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl]
   --  	[t=i,-rel,sconj=0,adp=0,-sub,dep=0];[t=j|c,-sub,sconj=0,adp=0,-rel,dep=0];[t=p,-rel,sconj=0,adp=0,-sub,+mc,dep=0]
@@ -52,7 +52,7 @@ $ sub_bound
   -
 
 $ neg1
-  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አለː,gl=exist]
+  ->sb_suf	 +alle+	[1=ህ,2=ል,3=ው,c=B,t=p,v=0,a=0,r=ህልው,lemma=አለː,gl=exist,tmp=[1=L]]
   ኣ			[+neg,t=i|j]
   ኣል			[+neg,t=p]
   --   		[-neg];[t=c,-neg]
@@ -126,7 +126,7 @@ $ sb_suf
   --   	[t=i|j,sp=1];[t=i|j,sp=2,sn=1,sg=m,slemma=አንተ];[t=i|j,sp=3,sn=1];[t=i,sp=2|3,sn=2,-O,+mc,ax=al];
 	[a=0,v=0,t=p,-neg,+mc,-sub,c=B,r=ጅምር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0,adp=0];
 	[a=0,v=0,t=p,-neg,+mc,-sub,c=A,r=ንብር,sp=3,sn=1,sg=m,o=0,sconj=0,adp=0];
-	[a=0,v=0,t=p,-neg,sconj=እንደ,c=A,r=ህውን|ንብር,sp=3,sn=1,sg=m,o=0,cconj1=0,cconj2=0,adp=0]
+	[a=0,v=0,t=p,-neg,sconj=እንደ,c=A,r=ህውን|ንብር,o=0,cconj1=0,cconj2=0,adp=0,pos=AUX,dep=advcl]
 
 $ ss_bound
   -
@@ -219,9 +219,10 @@ $ accus_bound
 
 $ cconj1
   # 2024.11.01: updated to exclude when there are other analyses (negative!)
+  # 2025.08.02: this causes problems with ጠላም; eliminating for now (in Word)
   # only permit ም with negative if subordinate (ባይመጣም) or main clause (አይመጣምም), but not non-subordinate and
   # not main clause  (-sub,-mc) (*አይመጣም)
-  /ም		[cconj1=ም,-prior,-neg];[cconj1=ም,-prior,+neg,+sub,spos=ADV];[cconj1=ም,-prior,+neg,+sub,spos=CCONJ];
+  /ም		[cconj1=ም,-prior,-neg,spos=ADV|CCONJ];[cconj1=ም,-prior,+neg,+sub,spos=ADV];[cconj1=ም,-prior,+neg,+sub,spos=CCONJ];
                 [cconj1=ም,-prior,+neg,+mc,-sub,spos=ADV];[cconj1=ም,-prior,+neg,+mc,-sub,spos=CCONJ]
   /ስ		[cconj1=ስ,-prior,spos=ADV]
 # 2024.10.14: make these ም + ኣ, ስ + ኣ  
@@ -244,4 +245,4 @@ $ cconj2
 $ end
   # d=m is for manner deverbal nouns
   # Here's where we indicate that ሆነ can be a copula or auxiliary and that አለ can also be an auxiliary
-  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0,o=0,-O];[pos=AUX,r=ንብር,c=A,t=p,a=0,v=0,d=0]
+  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0];[pos=AUX,r=ንብር,c=A,t=p,a=0,v=0,d=0]

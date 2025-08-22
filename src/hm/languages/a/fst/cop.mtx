@@ -5,12 +5,12 @@ $ prep
   ስለ		[-rel,+sub,+neg,cnj1=ስለ]
   --  	[-neg,cnj1=0];[-rel,-sub,+neg,cnj1=0]
 
-#$ prepbound
-#  -
+$ prepbound
+  -
 
-#$ pastneg
-#  ኣል		[+neg,t=pst]
-#  --		[-neg];[t=prs]
+$ pastneg
+  ኣል		[+neg,t=pst]
+  --		[-neg];[t=prs]
 
 $ stem_pre
   <
@@ -36,24 +36,24 @@ $ stem1
   ነን		[p=1,n=2,-neg,t=prs]
   ና/ችሁ	[p=2,n=2,-neg,t=prs]
   ና/ቸው	[p=3,n=2,-neg,t=prs]
-#  ነ/በር	[t=pst]
+  ነ/በር	[t=pst]
 #  ኖር		[t=c,-neg,p=3,n=1,g=m]
 $ stem_post
   >
 
-#$ subj
-#  አ		[p=3,n=1,g=m,t=pst]
-#  አ/ች	[p=3,n=1,g=f,t=pst]
-#  ኩ		[p=1,n=1,t=pst]
-#  ክ		[p=2,n=1,g=m,t=pst]
-#  ሽ		[p=2,n=1,g=f,t=pst]
-#  ን		[p=1,n=2,t=pst]
-#  ኣችሁ	[p=2,n=2,t=pst]
-#  ኡ		[p=3,n=2,t=pst]
-#  --		[t=prs];[t=pst,-neg]
-#
-#$ subjbound
-#  -
+$ subj
+  አ		[p=3,n=1,g=m,t=pst]
+  አ/ች	[p=3,n=1,g=f,t=pst]
+  ኩ		[p=1,n=1,t=pst]
+  ክ		[p=2,n=1,g=m,t=pst]
+  ሽ		[p=2,n=1,g=f,t=pst]
+  ን		[p=1,n=2,t=pst]
+  ኣችሁ	[p=2,n=2,t=pst]
+  ኡ		[p=3,n=2,t=pst]
+  --		[t=prs];[t=pst,-neg]
+
+$ subjbound
+  -
 
 $ neg_suf
   ም		[+neg,-sub,+m]

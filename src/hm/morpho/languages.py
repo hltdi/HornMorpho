@@ -245,12 +245,11 @@ def get_language(language, **kwargs):
         print("HornMorpho has no language with the abbreviation {}".format(language))
         return False
     lang_name = ABBREV2LANG.get(language)
-    load = kwargs.get('load') if 'load' in kwargs else True
-    pickle = kwargs.get('pickle') if 'pickle' in kwargs else True
-    guess = kwargs.get('guess') if 'guess' in kwargs else True
-    load_morph = kwargs.get('load_morph') if 'load_morph' in kwargs else True
+    load = kwargs.get('load', True)
+    pickle = kwargs.get('pickle', True)
+    guess = kwargs.get('guess', True)
+    load_morph = kwargs.get('load_morph', True) 
     translate = kwargs.get('translate', False)
-    experimental = kwargs.get('experimental', False)
     phon = kwargs.get('phon', False)
     segment = kwargs.get('segment', False)
     v5 = kwargs.get('v5', True)
@@ -268,7 +267,7 @@ def get_language(language, **kwargs):
             mv = kwargs.get('morph_version', 0)
             if not load_lang(lang_id, lang_name=lang_name,
                              phon=phon, pickle=pickle,
-                             segment=segment, guess=guess, experimental=experimental,
+                             segment=segment, guess=guess,
                              translate=translate, 
                              load_morph=load_morph, cache=cache,
                              morph_version=mv, cg=cg, annotate=annotate,
@@ -282,12 +281,11 @@ def get_language(language, **kwargs):
                               pickle=pickle, translate=translate)
         else:
             lang.load_morpho4(phon=phon, segment=segment, guess=guess,
-                             experimental=experimental,
                              pickle=pickle, translate=translate)
         return lang
     if not load_morph:
         return lang
-    fst = lang.get_fsts(phon=phon, segment=segment, experimental=experimental, v5=v5)
+    fst = lang.get_fsts(phon=phon, segment=segment, v5=v5)
 #    if not fst and load:
 #        print("You cannot do different kinds of analysis or generation in the same session!")
 #        print("Please exit() and start a new session!")

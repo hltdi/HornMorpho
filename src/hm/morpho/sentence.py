@@ -27,15 +27,29 @@ Includes CoNLL-U and XML output options
 """
 
 #import xml.etree.ElementTree as ET
-from conllu import TokenList, Token, Metadata
+from conllu import TokenList, Token, Metadata, parse
 from conllu.parser import parse_comment_line
 from .geez import degeminate
 from .cg import CG
 #from .gui import SegRoot
 import sys
+from .um import expand_udfeats
 
 #class PseudoCorpus():
 #    pass
+
+um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
+
+def simplify_ctoken(token):
+    '''
+    Return a list with selected attribs from the CoNLL-U token.
+    '''
+#    dct= {'form': token.get('form'), 'pos': token.get('upos'), 'lemma': token.get('lemma')}
+#    feats = token.get('feats')
+#    if feats:
+#        dct['feats'] = feats
+#    return dct
+    return [token.get('form'), token.get('lemma'), token.get('upos'), token.get('feats') or {}]
 
 class HMToken(Token):
 
@@ -91,10 +105,8 @@ class Sentence():
        'NADV': ['NOUN', 'ADV'], 'PRONADJ': ['PRON', 'ADJ'], 'ADVCCONJ': ['ADV', 'CCONJ'],\
        'ADPCONJ': ['ADP', 'SCONJ'], 'ADVCONJ': ['ADV', 'SCONJ'], 'ADVCCONJ': ['ADV', 'CCONJ'],\
        'ADVADP': ['ADV', 'ADP'], 'PARTCONJ': ['PART', 'SCONJ'], 'ADVINTJ': ['ADV', 'INTJ'],\
-       'PARTINTJ': ['PART', 'INTJ']
+       'ADPPART': ['ADP', 'PART'], 'PARTINTJ': ['PART', 'INTJ']
       }
-
-    um2udPOS = {'N': 'NOUN', 'V': 'VERB', 'N_V': 'NOUN'}
 
     colwidth = 20
 
@@ -165,6 +177,39 @@ class Sentence():
         metadata = self.conllu.metadata
         self.conllu = TokenList([])
         self.conllu.metadata = metadata
+
+    ## Extract main CoNNL-U properties
+
+    @staticmethod
+    def word2conllu(word):
+        '''
+        Get the lemma, POS, and UD features of each analysis, returning
+        a list of lists.
+        '''
+        anals = []
+        name = word.name
+        for anal in word:
+            feats = anal.get('udfeats')
+            feats = expand_udfeats(feats) if feats else {}
+            pos = anal.get('pos')
+            lemma = anal.get('lemma', name)
+            if pos in Sentence.selectpos:
+                # pos is combination of two POS tags, e.g., 'NADJ'
+                POSs = Sentence.selectpos[pos]
+                anals.append([name, lemma, POSs[0], feats])
+                anals.append([name, lemma, POSs[1], feats])
+            else:
+                anals.append([name, lemma, um2udPOS.get(pos, pos), feats])
+#            conllu = {}
+#            lemma = anal.get('lemma')
+#            if pos:
+#                conllu['pos'] = um2udPOS.get(pos, pos)
+#            if lemma:
+#                conllu['lemma'] = lemma
+#            if feats:
+#                conllu['feats'] = expand_udfeats(feats)
+#            anals.append(conllu)
+        return anals
 
     ### Version 5 methods
 
@@ -315,9 +360,9 @@ class Sentence():
         umPOS = analdict.get('pos')
         if umPOS:
             if isinstance(umPOS, list):
-                return [Sentence.um2udPOS.get(u, u) for u in umPOS]
+                return [um2udPOS.get(u, u) for u in umPOS]
             else:
-                return Sentence.um2udPOS.get(umPOS, umPOS)
+                return um2udPOS.get(umPOS, umPOS)
         return None
 
     @staticmethod
@@ -1239,4 +1284,5 @@ def make_caco_sentence(sentence, multseg=True):
         w = make_caco_word(word, segmentations, multseg=multseg)
         s.append(w)
     return s
+
     

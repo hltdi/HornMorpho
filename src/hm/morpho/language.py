@@ -1632,6 +1632,7 @@ class Language:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
 #                print("** analyses 2: {}".format(len(analyses)))
                 all_analyses.extend(analyses)
+#                print("** all_analyses {}".format(len(all_analyses)))
         if not all_analyses:
             return special_word()
         wordobj = Word(all_analyses, name=raw_token, merges=self.merges)
@@ -2411,6 +2412,115 @@ class Language:
                                            segment=segment, normalize=normalize,
                                            phonetic=phonetic, guess=guess, postproc=postproc,
                                            freq=report_freq, verbosity=verbosity))
+
+    ### Working with CoNLL-U sentences as input
+
+    def mult_conllu2disambigs(self, path, mwe=False, cg=True, write2=''):
+        '''
+        Example:
+        >>>a = hm.get_language('a', cg=True)
+        >>>a.mult_conllu2disambigs(
+           "../../EES-Res/conllu/am/New/CACO_3-7T_1-100_vd_20.8.2025.conllu",
+           write2="../../EES-Res/tmp/CACO1_disambigs.txt",
+           cg=True
+           ) 
+        '''
+        results = []
+        with open(path) as file:
+            conllu = file.read().split("\n\n")
+            for c in conllu:
+                if not c.strip():
+                    continue
+                disambigs = self.conllu2disambigs(c, mwe=mwe, cg=cg)
+                if disambigs:
+                    results.append(disambigs)
+        if write2:
+            with open(write2, 'w') as file:
+                n = len(results)
+                for index, result in enumerate(results):
+                    print(result[0], file=file)
+                    print(result[1].__repr__(), file=file, end='')
+                    if index < n-1:
+                        print(file=file)
+                        print(file=file)
+        return results
+
+    def conllu2disambigs(self, conllu, mwe=False, cg=True):
+        '''
+        conllu: a string representing the CoNNL-U format of a
+        sentence, including metadata.
+        '''
+        # parse the CoNLL-U into a TokenList
+        tokenlists = parse(conllu)
+        if not len(tokenlists):
+            print("** Unable to parse {}".format(conllu))
+        tokenlist = tokenlists[0]
+        text = tokenlist.metadata.get('text')
+#        print("\n** {}".format(text))
+        if not text:
+            print("CoNNL-U sentence has no text!")
+            return
+        sentobj = self.anal_sentence(text, skip_mwe=not mwe, cg=cg)
+        if cg:
+            self.disambiguate(sentobj)
+        ambig = [(index, Sentence.word2conllu(word)) for index, word in enumerate(sentobj.words) if len(word) > 1]
+        if not ambig:
+            return
+        conlluwords = []
+        conllugroup = []
+        conllufeats = {}
+        groupend = 0
+        groupstart = 0
+        for token in tokenlist:
+            tokenid = token['id']
+#            print("** Checking token {}".format(tokenid))
+#            print("  ** groupend {}".format(groupend))
+            if type(tokenid) is tuple:
+                # beginning of a new group
+                groupstart, groupend = tokenid[0], tokenid[2]
+                conllufeats = {}
+                conllugroup.append(token['form'])
+#                conllugroup['form'] = token['form']
+            elif groupend and tokenid <= groupend:
+                # this token is within the current group
+                feats = token['feats']
+                head = token['head']
+                if head is None:
+                    print("\n*** Head missing for {} in {}".format(token, text))
+                if feats:
+                    conllufeats.update(feats)
+                if head is not None and (head < groupstart or head > groupend):
+                    # this is the head of the group
+                    conllugroup.append(token['lemma'])
+                    conllugroup.append(token['upos'])
+#                    conllugroup['pos'] = token['upos']
+#                    conllugroup['lemma'] = token['lemma']
+                if tokenid == groupend:
+#                    print("  ** Adding group {} to list".format(conllugroup))
+                    # end of group
+                    conllugroup.append(conllufeats)
+                    conlluwords.append(conllugroup)
+                    conllugroup = []
+                    groupend = 0
+            else:
+                conlluwords.append(simplify_ctoken(token))
+        for i, a in ambig:
+            # find the correct analysis in conlluwords
+            cw = conlluwords[i]
+            anyfound = False
+            if any([aa == cw for aa in a]):
+#                print("Found match for {}".format(cw))
+                anyfound = True
+                # Sort, putting the correct analysis first
+                a.sort(key=lambda x: x == cw, reverse=True)
+                a = tuple(a)
+            else:
+                print("\nNo match found for {} in {}".format(cw, a))
+                print("  {}".format(sentobj))
+            conlluwords[i] = a
+        if not anyfound:
+            return
+        return text, conlluwords
 
 ##    def anal_file(self, pathin, pathout=None, preproc=True, postproc=True, pos=None,
 ##                  segment=False,

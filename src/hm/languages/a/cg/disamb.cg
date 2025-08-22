@@ -28,11 +28,11 @@ SUBSTITUTE (ADPCONJ) (ADP) PREPADV
        (1 (N)) ;
 
 SUBSTITUTE (ADPCONJ) (SCONJ) POSTCONJ
-	(-1 (V) OR (N INF)) ;
+       (-1 (V) OR (N INF)) ;
 
 # only ቁጥር
 SUBSTITUTE (PARTCONJ) (SCONJ) POSTCONJ
-	 (-1 (V PFV INS)) ;
+       (-1 (V PFV INS)) ;
 
 ### Adpositions
 
@@ -84,7 +84,7 @@ REMOVE POSTCONJ + (N)
 ### Nouns
 
 # %% Oblique nouns can't follow oblique nouns
-REMOVE (OBL)
+REMOVE (OBL NOUN)
        (-1 (OBL)) ;
 
 ### Verbs
@@ -97,7 +97,8 @@ REMOVE (I_PART)
 # or following a conjunction like እስከ
 # This works for ፈራሽ
 REMOVE (MAIN) - (CCONJ)
-       (NOT 1 (<<<) OR SADV OR ("አለ"))
+       (NOT 1 (<<<) OR SADV OR ("አለ") or ("ማለት"))
+       (NOT 1 ("<፣>") OR ("<፤>") OR ("<፥>") OR ("<፦>"))
        (NOT -1 (SCONJ) OR (ADPCONJ)) ;
 
 # Jussive/imperative has to be final (with possible intervening ADV like መቸስ) or preceding አለ
@@ -108,7 +109,7 @@ REMOVE (IMP) - (CCONJ)
 
 # ልመጣ; remove if it isn't followed by a verb or auxiliary.
 REMOVE (L_SC)
-       (NOT 1 V2) ;
+       (NOT 1 V) ;
 
 # %% Converb can't be last unless it's the only word. What about cleft sentences or poetry?
 REMOVE (CVB)
@@ -139,7 +140,14 @@ REMOVE (RELC OBL)
 ## choose the አለ rather than the አለ፡ reading
 ## Does this always work??
 REMOVE ("አለː")
-       (-1 (AUX) OR (PART) OR (V MAIN)) ;
+       (-1C (AUX) OR (PART) OR (V MAIN)) ;
+
+## 3SF vs. 2SM
+REMOVE (3 SG FEM)
+       (0C* (V 2 SG MASC)) ;
+
+REMOVE (2 SG MASC)
+       (0C* (V 3 SG FEM)) ;
 
 ### Ambiguous PROPN
 
@@ -151,10 +159,12 @@ REMOVE (PROPN)
 REMOVE (PROPN)
        (1 (<<<)) ;
 
-# Main verbs (አበበ) can't start a sentence (unless they also end the sentence or are followed by አለ)
+# Main verbs (አበበ) can't start a sentence (unless they also end the sentence or are followed by አለ
+# or by another main verb).
 REMOVE (V MAIN)
        (-1 (>>>))
        (NOT 1 (<<<))
+       (NOT 1* (V MAIN))
        (NOT 1 ("አለ")) ;
 
 ## VERB and NOUN

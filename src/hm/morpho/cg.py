@@ -260,32 +260,37 @@ class CG:
             return
         todel = []
         substitutions = []
-        for reading in readings:
-            if reading.removed:
-                found = False
-                for index, r in enumerate(word.readings):
-                    if reading.match(r):
-                        todel.append(index)
-                        found = True
-                        break
-                if not found:
-                    print("REMOVED READING {} FOR {} NOT FOUND!".format(rd, word))
-            elif reading.substitution:
-                if verbosity:
-                    print("    Substitution for {}".format(reading))
-                found = False
-                for index, r in enumerate(word.readings):
-                    if reading.match(r):
-                        if r.get_pos() != reading.get_pos():
-                            # This is a POS substitution
-                            substitutions.append((index, reading.get_pos()))
-                            
+        # Do the deletions
+        for reading in [r for r in readings if r.removed]:
+            found = False
+            for index, r in enumerate(word.readings):
+                if reading.match(r):
+                    todel.append(index)
+                    found = True
+                    break
+            if not found:
+                print("REMOVED READING {} FOR {} NOT FOUND!".format(rd, word))
         if todel:
             word.remove(todel)
             if verbosity:
                 print("  Removed reading(s) {} from {}".format(todel, word))
+        # Do the substitutions
+        for reading in [r for r in readings if r.substitution]:
+            if verbosity:
+                print("    Substitution for {}".format(reading))
+            found = False
+            for index, r in enumerate(word.readings):
+                if reading.match(r):
+                    if r.get_pos() != reading.get_pos():
+                        # This is a POS substitution
+#                       print("     POS append {}, {}".format(reading, r))
+                        substitutions.append((index, reading.get_pos()))
         if substitutions:
             for index, pos in substitutions:
+#                for td in tdel:
+#                    if td <= index:
+#                        print("** Changing substitution index from {} to {}".format(index, index-1))
+#                        index -= 1
                 if verbosity:
                     print("  Changing POS for reading {} in {} to {}".format(index, word, pos))
                 word.change(index, pos=pos)

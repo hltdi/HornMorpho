@@ -322,12 +322,12 @@
 ዳፋ  ዳፋ  ADP
 ጎን  ጎን  ADP
 ላይ  ላይ  ADP
-መሰረት  መሰረት  ADP
+መሰረት  መሰረት  ADPCONJ
 ስር  ስር  ADP
 ታች  ታ/ች  ADP
 ውጭ  ው/ጭ  ADP
 ውስጥ  ውስጥ  ADP
-ዳር  ዳር  ADP
+ዳር  ዳር  ADPPART
 ፋንታ  ፋንታ  ADP
 ፈንታ  ፈንታ  ADP
 ወዲህ  ወዲህ  ADPCONJ
@@ -411,7 +411,6 @@
 ችላ ች/ላ  PART
 ችስ ች/ስ  PART
 ዳዴ ዳዴ  PART
-ዳር ዳር  PART
 ደፍ ደ/ፍ  PART
 ደፋ ደፋ  PART
 ቀና ቀና  PART
@@ -1103,6 +1102,7 @@
 መጣ መጣ PART
 ወጣ ወጣ  PART
 ሰፋ ሰፋ  PART
+ያዝ  ያዝ  PART
 #እዚህ  እ/ዚህ  ADV
 #እዚህም  እ/ዚህም  ADV
 #እዚያ  እ/ዚያ  ADV

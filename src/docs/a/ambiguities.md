@@ -46,7 +46,7 @@ In disamguation, it can help to see if the translation in English has an object 
 		መቼ ነው ይምትሄደው ?
 		Definite=Def
 		
-	Note that the most natural translation in English may not include the article *the*: 'when is that you're going?' But we can see how the suffix makes the reference definite by rephrasing it: 'when is the time that you're going?'
+	Note that the most natural translation in English may not include the article *the*: 'when is it that you're going?' But we can see how the suffix makes the reference definite by rephrasing it: 'when is the time that you're going?'
 		
 	In other cases the suffix clearly corresponds to *him* or *it* in English.
 	
@@ -58,7 +58,7 @@ In disamguation, it can help to see if the translation in English has an object 
 	
 		ልጁ የሸጠው መጽሐፍ ትልቅ ነው ።
 		
-	I suggest we use the definite article option (Definite=Def) for these cases.	
+	I suggest we use the definite article option (Definite=Def) for these cases.
 3. Verb active vs. passive voice
 4. 3sf vs. 2sm
 

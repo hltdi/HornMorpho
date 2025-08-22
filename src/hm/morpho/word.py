@@ -56,7 +56,7 @@ class Word(list):
 #        self.is_empty = len(self) == 0
 #        self.is_known = not self.unk
         Word.id += 1
-        self.filter_prioritize()
+#        self.filter_prioritize()
 
     def __repr__(self):
         return "W{}:{}{}{}".format(self.id, '*' if self.unk else '', self.name, "[{}]".format(len(self)) if self.is_known else '')
@@ -80,11 +80,13 @@ class Word(list):
         return word
 
     def filter_prioritize(self):
+#        print("** filter {}".format(len(self)))
         if not self.unk and len(self) > 1:
             todel = []
             for index, analysis in enumerate(self):
                 features = analysis.get('feats')
                 if features:
+#                    print(" ** feats {}".format(features.__repr__()))
                     priority = features.get('prior', True)
                     if not priority:
                         todel.append(index)
@@ -146,9 +148,6 @@ class Word(list):
         '''
         if len(self) > 1:
             self.sort(key=lambda x: x.get('freq'), reverse=True)
-#        if len(self) <= 1:
-#            return
-#        self.sort(key=lambda x: x.get('nsegs', 1))
 
     def change(self, index=0, pos=''):
         '''
@@ -156,6 +155,9 @@ class Word(list):
         (Currently only works for POS.)
         '''
         if pos:
+#            print("** {} changing POS for anal {} to {} from {}".format(self, index, pos, self[index]['pos']))
+            if len(self) <= index:
+                print("** {} is too short to replace {} at anal {}".format(self, pos, index))
             self[index]['pos'] = pos
             # Change it in the conllu and readings
             clist = self.conllu[index]
@@ -164,6 +166,7 @@ class Word(list):
                     # This is the head of the word (IDs haven't been adjusted yet)
                     c['upos'] = pos
                     c['xpos'] = pos
+#            print("**   conllu now {}".format(clist))
 
     def select(self, index):
         '''

@@ -29,6 +29,13 @@ from .semiring import *
 import os, re
 from .utils import match_wild
 
+def expand_udfeats(feats):
+    '''
+    Convert a string with feature=value pairs separated by |
+    to a dict with features as keys, values as values.
+    '''
+    return dict([fv.split('=') for fv in feats.split('|')])
+
 class UniMorph:
     """
     Functions for converting between HornMorpho and UniMorph features.
@@ -58,6 +65,7 @@ class UniMorph:
         return "UM:{}".format(self.language.abbrev)
 
     ## Static methods for processing UM and UD features
+
     @staticmethod
     def create_UDfeats(udfdict, udfalts):
         '''
