@@ -136,11 +136,11 @@ REMOVE REFL1
 REMOVE (RELC OBL)
        (1 (<<<)) ;
 
-## If an ambiguous form of አለ is preceded by a main verb, AUX or PART,
+## If an ambiguous form of አለ is preceded by a main verb or PART,
 ## choose the አለ rather than the አለ፡ reading
 ## Does this always work??
 REMOVE ("አለː")
-       (-1C (AUX) OR (PART) OR (V MAIN)) ;
+       (-1C (PART) OR (V MAIN)) ;
 
 ## 3SF vs. 2SM
 REMOVE (3 SG FEM)
@@ -169,10 +169,10 @@ REMOVE (V MAIN)
 
 ## VERB and NOUN
 # NOUN can't be last unless there's a preceding AUX (cleft sentence) or it's the only word
-REMOVE NOM
-       (1 (<<<))
-       (NOT -1* (AUX))
-       (NOT -1 (>>>)) ;
+#REMOVE NOM
+#       (1 (<<<))
+#       (NOT -1* (AUX))
+#       (NOT -1 (>>>)) ;
 
 ## በጣም before ADJ
 "<በጣም>" SELECT (ADV)

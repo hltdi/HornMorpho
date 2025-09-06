@@ -179,8 +179,8 @@ feats:
       {'name': 'prep', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[inner]']};
       {'name': 'distrib', 'pos': 'DET', 'dep': 'det'};
       {'name': 'mwemod', 'dep': 'compound', 'mwe': True};;
-      {'name': 'STEM', 'feats':['VerbForm', 'Voice', 'Polarity', 'Gender', 'Person'],\
-       'condfeats': [[{'plur'}, ['Number']]]};;
+      {'name': 'STEM', 'feats':['VerbForm', 'Voice', 'Polarity', 'Person'],\
+       'condfeats': [[{'plur'}, ['Number']], [{'poss'}, ['Gender']]]};;
       {'name': 'plur', 'pos': 'DET', 'dep': 'det:pl', 'feats': ['Number']};
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\

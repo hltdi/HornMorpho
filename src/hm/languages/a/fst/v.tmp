@@ -3,6 +3,15 @@ $ a=0|a|i
 $ v=0|p|a|as|ast
 $ t=p|i|j|c
 
+# A:ሰበረ ሰለቸ በላ
+# B:ፈለገ
+# C:ጋበዘ
+# E:መረመረ ላላ
+# F:ዘባረቀ ተበላሸ ተሰነዳ
+# G:ተርገበገበ
+# H:ተሽቀዳደመ ተንጠራራ
+# J:ተንሳፈፈ
+
 # abbreviation for "sibilants"; not currently used anywhere
 $$ S ስ|ዝ|ሽ|ዥ
 # labialized consonants
@@ -813,21 +822,21 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 # alternative for some roots: ተስማማ ይስማማሉ አስማማ
 [t=p,v=p|a]
 [t=i,v=0|a|p]
-**	^a	^a:	-
+**u	^a	^a:	-
 
 [t=j,v=0|a|p]
 ^e	^a	^a	-
 
 # alternative for some roots: ተስማማ
 [t=j,v=0|a|p|as]
-**	^a	^a	-
+**u	^a	^a	-
 
 [t=c,v=0|a|p|as]
 ^e	^a	**	ት
 
 # alternative for some roots: ተስማምቶ
 [t=c,v=0|a|p]
-**	^a	**	ት
+**u	^a	**	ት
 
 %3=ይ
 !! v=as

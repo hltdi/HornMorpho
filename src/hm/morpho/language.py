@@ -726,10 +726,10 @@ class Language:
                 for typ in types:
                     if typ.startswith("dep") and annotate:
                         self.depCG = CG(self, disambig=False)
-                        print("Loading disambiguation CG rules...")
+                        print("Loading dependency CG rules...")
                     elif typ.startswith("dis"):
                         self.disambigCG = CG(self, disambig=True)
-                        print("Loading dependency CG rules...")
+                        print("Loading disambiguation CG rules...")
                 continue
 
             m = TRANS_RE.match(line)
@@ -1627,7 +1627,7 @@ class Language:
                 continue
             analyses = pmorph.anal(token, mwe=mwe, guess=guess, feats=feats)
 #            if analyses:
-#                print("** analyses 1: {}".format(len(analyses)))
+#                print("** token {} pos {} analyses 1: {}".format(token, pos, analyses.__repr__()))
             if analyses:
                 analyses = pmorph.process_all5(token, analyses, raw_token if normalized else '', **kwargs)
 #                print("** analyses 2: {}".format(len(analyses)))
@@ -1764,12 +1764,40 @@ class Language:
         numeral = self.morphology.match_numeral(token)
         if numeral:
             prenum, num, postnum = numeral
+#            seg = "{}<{}>{}".format(prenum, num, postnum)
+            result = {'token': token, 'misc': ['Translit={}'.format(self.transliterate(token))]}
+#            print("** pre {} post {} num {}".format(prenum, postnum, num))
             if postnum:
-                return {'token': token, 'pos': 'N', 'lemma': postnum, 'nsegs': 1}
+                head = 1
+                if prenum:
+                    head += 1
+                result['head'] = head
+                result['seg'] = "{}{}<{}>".format(prenum or '-', num, postnum)
+                result['pre'] = []
+                if prenum:
+                    result['pre'].append({'seg': prenum, 'pos': 'ADP', 'dep': 'case', 'head': head})
+                result['pre'].append({'seg': num, 'pos': 'NUM', 'dep': 'nummod', 'head': head})
+                result['stem'] = {'seg': postnum, 'pos': 'N', 'head': head, 'misc': []}
+                result['pos']: 'N'
+                result['lemma'] = postnum
+                result['nsegs'] = 2
+#                return {'token': token, 'pos': 'N', 'lemma': postnum, 'nsegs': 1}
             elif prenum:
-                return {'token': token, 'pos': 'N', 'lemma': num, 'nsegs': 1}
+                result['head'] = 1
+                result['seg'] = "{}<{}>".format(prenum, num)
+                result['pre'] = [{'seg': prenum, 'pos': 'ADP', 'dep': 'case', 'head': 1}]
+                result['pos'] = 'NUM'
+                result['lemma'] = num
+                result['stem'] = {'seg': num, 'pos': 'NUM', 'head': 1, 'misc': []}
+                result['nsegs'] = 2
+#                return {'token': token, 'pos': 'N', 'lemma': num, 'nsegs': 1}
             else:
-                return {'token': token, 'pos': 'NUM', 'lemma': token, 'nsegs': 1}
+                result['pos'] = 'NUM'
+#                result['seg'] = "<{}>".format(num)
+                result['lemma'] = token
+                result['nsegs'] = 1
+#                return {'token': token, 'pos': 'NUM', 'lemma': token, 'nsegs': 1}
+            return result
         if self.morphology.is_abbrev(token):
             return {'pos': 'N', 'xpos': 'ABBR', 'token': token, 'lemma': token, 'nsegs': 1}
         return None

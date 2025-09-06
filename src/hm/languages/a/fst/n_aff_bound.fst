@@ -63,7 +63,7 @@ stem -> stem	[^N;/;_;:-]
 #iya -> iya		[:-;:>]
 #iya -> plposs	[ያ:ኣ]
 
-# plurals
+## plurals
 # ቤቶች; a2o and i2o cover some plurals, like ጌቶች, ጓደኞች, ነጆች
 stem -> plur	[{I2o};{a2o};{i2o}]
 plur -> plur	[:>]
@@ -95,7 +95,7 @@ human -> end	[:-]
 human -> humposs	[:-]
 humposs -> end	[ው:ኡ]
 
-# possessives
+## possessives
 # ቤቷ
 stem -> Wa		[{I2Wa}]
 plposs -> Wa		[{I2Wa}]
@@ -114,32 +114,40 @@ plposs -> VyE		[*v]
 VyE -> VyE		[:-;:>]
 VyE -> end		[ዬ:ኤ;ያ:ኣ]
 
+# ጉዞዋቸው, ጉዞአቸው
+stem -> ou		[*u;*o]
+plposs -> ou		[*u;*o]
+ou -> ou  		[:-;:>]
+ou -> end		[ዋ:ኣ;አ:ኣ]
+
+# ቤቱ
 stem -> I2u		[{I2u}]
-plposs -> I2u	[{I2u}]
+plposs -> I2u		[{I2u}]
 I2u -> I2u		[:-;:>]
 I2u -> end		[:ኡ]
 
+# ቦታው ጉዞው
 stem -> Vwu		[*v]
-plposs -> I2u	[{I2u}]
 Vwu -> Vwu		[:-;:>]
 Vwu -> end		[ው:ኡ]
 
+# ቤታቸው
 stem -> Ca		[{I2a};^a]
-plposs -> Ca	[{I2a};^a]
+plposs -> Ca		[{I2a};^a]
 Ca -> Ca		[:-;:>]
 Ca -> end		[:ኣ]
 
 # -ኢቱ
 stem -> Ci		[{I2i}]
-plposs -> Ci	[{I2i}]
+plposs -> Ci		[{I2i}]
 Ci -> Ci		[:-;:>]
 Ci -> end		[:ኢ]
 
-stem -> Csuf	[:>]
-Csuf -> Csuf	[:-]
+stem -> Csuf		[:>]
+Csuf -> Csuf		[:-]
 Csuf -> end		[**v;*;/;_]
 
-plposs -> end	[ች;ን]
+plposs -> end		[ች;ን]
 
 Csuf ->
 

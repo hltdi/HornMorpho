@@ -181,10 +181,11 @@ class SegRoot(Tk):
 #        print("** set_sentid {}, sentvar {}".format(new_id, current_id))
         if 1 <= new_id <= len(self.corpus.data):
             if new_id < current_id:
-                # moving back
+                # moving back 1
+                self.set_sentence(new_id-1)
                 self.sentvar.set(new_id)
             elif self.set_sentence(new_id-1):
-                # moving forward
+                # moving forward 1
                 self.sentvar.set(new_id)
                 return 1
             else:

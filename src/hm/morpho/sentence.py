@@ -445,11 +445,13 @@ class Sentence():
                     conllu.append(
                         HMToken.create_morph(index, string, p.get('lemma', string), ps, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'), misc=Sentence.format_misc(p))
                         )
+                    print("** HM pre tok: {}".format(conllu[-1]))
                     index += 1
             else:
                 conllu.append(
                         HMToken.create_morph(index, string, p.get('lemma', string), pos, p.get('udfeats'), head, p.get('dep'), p, xpos=p.get('xpos'), misc=Sentence.format_misc(p))
                         )
+#                print("** HM pre tok: {}, dep {}".format(conllu[-1], conllu[-1].get('deprel')))
                 index += 1
 
         pos = Sentence.convertPOS(stemdict)
@@ -1024,7 +1026,7 @@ class Sentence():
                 # Get the index of the head
                 headi = -1
                 for i, props in enumerate(segmentation):
-#                    print("    **** i {}, all props {}".format(i, props))
+                    print("    **** i {}, all props {}".format(i, props))
                     # Check deprel
                     if Sentence.get_clist_field(props, 'deprel') is None:
 #                    if props[7][1] is None:

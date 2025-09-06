@@ -42,8 +42,9 @@ TI_SKIP = \
 # 2025.6.22 Shortcuts for analyzing CACO sentences
 
 def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
-         id0=1, id1=100,
-         directory="../../EES-Res/tmp/", disambiguate=True, file=''):
+         id0=1, id1=100, write=True,
+         directory="../../EES-Res/tmp/",
+         disambiguate=True, file=''):
     '''
     Skip MWE analysis and CG annotation.
     '''
@@ -59,9 +60,10 @@ def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
         sentid=start+1)
     first = corpus.last_line if corpus else start
     last = c.last_line
-    file = file or "CACO_3-7T_{}-{}.conllu".format(id0, id1)
-    dump_path = os.path.join(directory, file)
-    hm.write_conllu(corpus=c, append=append, path=dump_path)
+    if write:
+        file = file or "CACO_3-7T_{}-{}_hm.conllu".format(id0, id1)
+        dump_path = os.path.join(directory, file)
+        hm.write_conllu(corpus=c, append=append, path=dump_path)
     return c
 
 # Tigrinya verb categories
@@ -139,21 +141,6 @@ def anal_tir(start=0, n_sents=1500, disambiguate=False):
         )
 
 ## Fixing treebanks
-
-##def fix_tአ():
-##    '''
-##    Replace word initial አ with ኣ.
-##    '''
-##    position = 0
-##    lines = []
-##    with open("../../EES-Res/text/amti/ti_am_starter.txt") as file:
-##        for line in file:
-##            line = line.strip()
-##            if line[0] == '#':
-##                lines.append(line)
-##                position = 0
-##            elif position == 0:
-##                pass
 
 def add_aimad_root(path, verbs):
     '''
@@ -410,61 +397,6 @@ def translit(path, lang='am'):
 ##            c.write_props(file, start=c.start)
 ##    return c
 
-#### displaying segmentations in Tkinter
-##
-##C1 =  ["የውሾች ጩኸት ይሰማል ።", "ቤቴን መሸጥ እፈልጋለሁ ።", "ልጅቷ እውር ናት ።",
-##          "ተቀምጦ ነበር ።", "የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።", "እሱ ለመማር አይፈልግም ።"]
-##C2 = ["የውሾች ጩኸት ይሰማል ።", "አሁን ወደ ዋናው የጉዞ ፕሮግራም እንመለስ ።"]
-##C3 = ["በዚህም የተሻለ የሰብል ምርት ይጠበቃል ።"]
-##C4 = ["እሱ ለመማር አይፈልግም ።", "ለእውሩ ምን አደረግን ?", "እኔ መጣሁ ።"]
-##C5 = ["የሞት ቅጣት ተግባራዊ የሚያደርጉ አገሮችን እንቃወማለን ።"]
-##C6 = ["እኔ መጣሁ ።", "ሁላችንን ይወዳሉ ።"]
-##C7 = ["እርስ በርሳቸውን ይዋደዳሉ ።"]
-##CACO3_7 = "hm/ext_data/CACO/CACO1.1/CACO_TEXT_3-7tok.txt"
-##CACO0 = "../../TAFS/datasets/CACO/CACO_3-7tok_B0.txt"
-##CACO1 = "../../TAFS/datasets/CACO/CACO_3-7tok_B1.txt"
-##CACO2 = "../../TAFS/datasets/CACO/CACO_3-7tok_B2.txt"
-##CACO3 = "../../TAFS/datasets/CACO/CACO_3-7tok_B3.txt"
-##CACO4 = "../../TAFS/datasets/CACO/CACO_3-7tok_B4.txt"
-##CACO5 = "../../TAFS/datasets/CACO/CACO_3-7tok_B5.txt"
-##AS1 = "hm/ext_data/ከአብነት/mini1.txt"
-##CACO = "../../TAFS/datasets/CACO"
-##CACO_FILTERED = "CACO_verbs_B8.txt"
-##CONLLU = "../../TAFS/venv/conllu"
-##SEGS = "../../TAFS/segmentations"
-##LAST_CACO_LINE = 9061
-
-##def ASAI(start=600, id=2, n_sents=200):
-##    return \
-##           hm.create_corpus(
-##               read={'name': "ASAI.{}".format(id), 'id': id, 'filename': CACO_FILTERED},
-##               batch= {'n_sents': n_sents, 'start': start},
-##               disambiguate=False, seglevel=0, um=2
-##               )
-##
-##def proc_ASAI(corpus, filename=False, append=False):
-##    sentences =  hm.extract_corpus_features(corpus, ['VERB'], [('Number', None), ('VerbForm', 'Main')])
-##    if filename:
-##        write_ASAI(sentences, filename, append=append)
-##    return sentences
-##
-##def write_ASAI(sentences, filename, append=False):
-##    with open(filename, 'a' if append else 'w', encoding='utf8') as file:
-##        for sentence in sentences:
-##            print(sentence[0], file=file)
-##            for index, word, feats in sentence[1:]:
-##                print("{}\t{}\t{}".format(index, word, ','.join(feats)), file=file)
-##            print(file=file)
-##
-##def AW(id, n_sents=100, start=0, write=True, append=True):
-##    return \
-##    hm.create_corpus(
-##        read={'filename': CACO_FILTERED},
-##        batch={'name': 'AW23.{}'.format(id), 'n_sents': n_sents, 'start': start, 'id': id, 'sentid': start},
-##        disambiguate=True,
-##        write={'folder': CONLLU, 'append': append}
-##        )
-
 ## translation
 def load_trans(src, targ, pos, gen=True):
     src_posmorph = get_pos(src, pos)
@@ -714,7 +646,7 @@ AC = lambda sentence, cg=True, dis=True, ann=False: hm.anal_corpus('a', data=[se
 TC = lambda sentence, cg=True, dis=True, ann=False: hm.anal_corpus('t', data=[sentence], cg=cg, disambiguate=dis, annotate=ann)
 
 
-def ኮ(sentence, file='', ann=True):
+def ኮ(sentence, file='', ann=False):
     c = hm.anal_corpus('a', data=[sentence], disambiguate=True, annotate=ann)
     sobj = c.sentences[0]
     sobj.print_conllu(file=file)

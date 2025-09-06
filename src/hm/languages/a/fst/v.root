@@ -77,7 +77,7 @@ $$ W kW gW qW mW bW fW
 
 ## 5-consonant roots
 # ተጭበረበረ
-%G::		1:I;	2:e;	3:e;	4:e,I,/e,/I;	5:I
+%G::		1:I;	2:e;	3:e,I;	4:e,I,/e,/I;	5:I
 %G,3='::			2:a;	3:0
 # ተንጫጫ
 %G,5='::							4:/a,a,I;		5:0,0ት

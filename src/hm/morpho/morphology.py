@@ -1517,6 +1517,7 @@ class POSMorphology:
         Instance of Word is returned.
         '''
         analyses = self.separate_anals(analyses)
+#        print("** analyses {}".format(len(analyses)))
         result = []
         for string, FS in analyses:
             result.append(self.process5(token, string, FS, raw_token, **kwargs))
@@ -1526,7 +1527,6 @@ class POSMorphology:
             feats = []
             todel = []
             anals = []
-#            print("** N analyses {}".format(len(result)))
             for analysis in result:
                 um = analysis.get('um', None)
                 if um:
@@ -2113,9 +2113,7 @@ class POSMorphology:
         """
         result = []
         for root, anals in analyses:
-#            if isinstance(anals, FeatStruct):
-#                result.append((root, anals))
-#            else:
+#            print("** Separating {}; # anals {}".format(root, len(anals)))
             for anal in anals:
                 if normalize:
                     anal = self.featconv(anal)

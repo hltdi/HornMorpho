@@ -12,27 +12,27 @@
 [a=i,v=p]
 ኳ	ኋ	ን
 
-*<ብ እ ል>	c=A,tmp=[1=L],gl=say,base=0
+*<ብ እ ል>	c=A,gl=say,base=0
 
-[a=0,t=p,v=0]
+[a=0,t=p,v=0,tmp=[1=L]]
 ኣ	ል
 
-[a=0,t=p|i|c,v=p]
+[a=0,t=p|i|c,v=p,tmp=[1=X]]
 ባ	ል
 
-[a=0,t=i,v=0]
+[a=0,t=i,v=0,tmp=[1=X]]
 ል
 
-[a=0,t=j,v=0]
+[a=0,t=j,v=0,tmp=[1=X]]
 በ	ል
 
-[a=0,t=c,v=0|p]
+[a=0,t=c,v=0|p,tmp=[1=X]]
 ብ	ል
 
-[a=i,t=p|i|j,v=p]
+[a=i,t=p|i|j,v=p,tmp=[1=X]]
 ባ	ባ	ል
 
-[a=i,t=c,v=p]
+[a=i,t=c,v=p,tmp=[1=X]]
 ባ	ብ	ል
 
 *<ት ት ው>	c=A,a=0,base=0

@@ -26,7 +26,7 @@ $ prestem
 
 $ stem
   ->poss_bound	+hulu+			[pos=DET,-cop,d=0,-dis,-col,ptype=tot]
-  ->cop_bound	+pron_misc_skip+	[pos=PRON,adp=0,d=0,-dis,-col,p=0,ptype=int]
+  ->cop_bound	+pron_misc_skip+	[pos=PRON,d=0,-dis,-col,p=0,ptype=int]
   +n_stem+		[ps=oc,-irr,-cop]
   +n_stem_an+	[ps=an,-irr,d=0,-cop]
   +n_name+		[pos=PROPN,-pl,p=0,d=0,-cop];[pos=PROPN,+pl,p=0,d=0,+col,-irr,-cop]
@@ -53,7 +53,7 @@ $ human
   እ/የ			[+hum,+h,-pl,-col,-dis,pos=N]
   እ/ዬ	<እየ>	[+hum,+h,-pl,-col,-dis,pos=N];[+hum,+h,-pl,-col,-dis,pos=PRON,ptype=prs]
   እ/ዮ	<እየ>	[+hum,+h,+fem,-pl,-col,-dis,pos=N]
-  --				[-hum]
+  --		[-hum]
 
 $ human_bound
   -
@@ -66,10 +66,10 @@ $ poss_det
   ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON]
   ዎ		[p=F2,plemma=እርስዎ,spos=PRON]
   ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
-  # possessive or determiner
+  # possessive or determiner; -ዋ determiner only in singular
   #{
   ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N|ADJ|PRON|DET|NUM,spos=DET]
-  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,d=0,pos=N|ADJ|PRON|DET|NUM,spos=DET]
+  ዋ		[p=sf3,plemma=እሷ,spos=PRON];[p=0,+def,g=f,d=0,-pl,pos=N|ADJ|PRON|DET|NUM,spos=DET]
   ኢቱ		[+def,g=f,p=0,-pl,-col,-dis,d=0,pos=N,spos=DET]
   #}
   ኣ/ቸው	[p=p3,plemma=እነሱ,spos=PRON]
