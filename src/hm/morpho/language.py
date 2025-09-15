@@ -49,9 +49,6 @@ import os, sys, re, copy, itertools, copy, time
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'languages')
 
-#LANGUAGE_DIR = os.path.join(os.path.join(os.path.dirname(__file__), os.pardir), os.pardir, 'languages')
-#LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'languages')
-
 from .morphology import *
 from .anal import *
 from .utils import some, segment
@@ -1659,6 +1656,7 @@ class Language:
         '''
         words = self.morphology.wordsM if mwe else self.morphology.words1
         anal = {'token': word, 'nsegs': 1, 'pos': ''}
+        anal1 = {}
         if not self.roman:
             trans = self.transliterate(word)
             anal['misc'] = ["Translit={}".format(trans)]
@@ -1707,6 +1705,16 @@ class Language:
             anal['freq'] = freq
             anal['nsegs'] = nsegs
             anal['pos'] = pos
+            if pos in Sentence.selectpos:
+                # pos is a combination, like NADJ; split it
+                expanded = Sentence.selectpos[pos]
+                anal['pos'] = expanded[0]
+                anal1['pos'] = expanded[1]
+                anal1['freq'] = freq
+                anal1['nsegs'] = nsegs
+                anal1['token'] = word
+                if anal['misc']:
+                    anal1['misc'] = anal['misc'].copy()
 #            anal = {'token': form, 'pos': pos, 'nsegs': nsegs, 'freq': freq}
             if nsegs > 1:
                 dep = 'fixed'
@@ -1746,7 +1754,11 @@ class Language:
 #            token_list = [{'token': t} for t in tokens]
             if feats:
                 anal['feats'] = feats
+                if anal1:
+                    anal1['feats'] = feats
             if anal:
+                if anal1:
+                    return [anal, anal1]
                 return [anal]
 #                return self.check_analpos(anal, analpos)
 
@@ -2473,6 +2485,8 @@ class Language:
                         print(file=file)
         return results
 
+#    def sent2ambig
+
     def conllu2disambigs(self, conllu, mwe=False, cg=True):
         '''
         conllu: a string representing the CoNNL-U format of a
@@ -2491,7 +2505,8 @@ class Language:
         sentobj = self.anal_sentence(text, skip_mwe=not mwe, cg=cg)
         if cg:
             self.disambiguate(sentobj)
-        ambig = [(index, Sentence.word2conllu(word)) for index, word in enumerate(sentobj.words) if len(word) > 1]
+        ambig = sentobj.to_mini(tostring=False)
+#        [(index, Sentence.word2mini(word)) for index, word in enumerate(sentobj.words) if len(word) > 1]
         if not ambig:
             return
         conlluwords = []

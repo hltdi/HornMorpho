@@ -6,18 +6,18 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     Copyleft 2022-2025.
     PLoGS and Michael Gasser <gasser@indiana.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@indiana.edu>
 
@@ -122,7 +122,9 @@ class Sentence():
         self.tokens = kwargs.get('tokens', [])
         self.text = text
         self.ntokens = len(text.split())
+        # Word objects for each sentence token
         self.words = []
+        # CoNNL-U metadata
         meta = kwargs.get('meta')
         metadata = Metadata(parse_comment_line(meta)) if meta else {}
         if metadata and 'text' not in metadata:
@@ -130,9 +132,9 @@ class Sentence():
         self.sentid = metadata.get('sent_id') or kwargs.get('sentid', 1)
         self.batch_name = kwargs.get('batch_name', '')
         self.label = kwargs.get('label') or "{}{}".format(self.batch_name + "_" if self.batch_name else '', self.sentid)
-        self.xml = ''
         self.conllu = TokenList([])
         self.conllu.metadata = metadata if metadata else Metadata({'text': text, 'sent_id': self.label})
+        self.xml = ''
         # For degeminated (or eventually other modified) CoNLL-U representations of sentence
         self.alt_conllu = None
         # list of unknown tokens
@@ -162,6 +164,8 @@ class Sentence():
         self.ndependencies = 0
         # CG Sentence object, needed if disambiguations are recorded
         self.CG = None
+        # Word analysis indices provided by disambiguator model; keys are word indices
+        self.model_disamb = {}
 
     def __repr__(self):
         return "S::{}::{}".format(self.sentid, self.text)
@@ -180,11 +184,36 @@ class Sentence():
 
     ## Extract main CoNNL-U properties
 
+    def to_mini(self, tostring=False, include=False, indices=True):
+        '''
+        Convert the sentence to a list of abbreviated ambiguous ("mini") word representations,
+        or a string if tostring is True, as is needed for the external disambiguator
+        (see disamb.py).
+        '''
+        result = []
+        for index, word in enumerate(self.words):
+            if include or tostring or len(word) > 1:
+                # include this word
+                mini = Sentence.word2mini(word, tostring=tostring)
+                if indices:
+                    mini = index, mini
+                result.append(mini)
+        if tostring:
+            return ' '.join(result)
+        return result
+#        if not tostring:
+#            return [(index, Sentence.word2mini(word)) for index, word in enumerate(self.words) if include or len(word) > 1]
+#        else:
+#            result = []
+#            for word in self.words:
+#                result.append(Sentence.word2mini(word, tostring=True))
+#            return ' '.join(result)
+
     @staticmethod
-    def word2conllu(word):
+    def word2mini(word, tostring=False):
         '''
         Get the lemma, POS, and UD features of each analysis, returning
-        a list of lists.
+        a list of lists, a "mini" representation of the word.
         '''
         anals = []
         name = word.name
@@ -200,15 +229,8 @@ class Sentence():
                 anals.append([name, lemma, POSs[1], feats])
             else:
                 anals.append([name, lemma, um2udPOS.get(pos, pos), feats])
-#            conllu = {}
-#            lemma = anal.get('lemma')
-#            if pos:
-#                conllu['pos'] = um2udPOS.get(pos, pos)
-#            if lemma:
-#                conllu['lemma'] = lemma
-#            if feats:
-#                conllu['feats'] = expand_udfeats(feats)
-#            anals.append(conllu)
+        if tostring:
+            return name + "<" + anals.__repr__() + ">"
         return anals
 
     ### Version 5 methods

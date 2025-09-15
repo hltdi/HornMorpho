@@ -6,20 +6,20 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     Copyleft 2022-2025.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
-Author: Michael Gasser <gasser@indiana.edu>
+Author: Michael Gasser <gasser@iu.edu>
 
 GUI for displaying and disambiguating sentences.
 """
@@ -27,8 +27,6 @@ from tkinter import *
 from tkinter.ttk import *
 from tkinter.font import *
 from .sentence import Sentence
-
-import math
 
 class SegRoot(Tk):
     '''
@@ -330,6 +328,8 @@ class SegCanvas(Canvas):
 
     selectcolors = ['Yellow', 'Gold', 'Orange']
     texthighlight = 'Red'
+    modelhighlight = 'LightGreen'
+#    ambfeat = 'Yellow'
 
     diffcolor = 'Magenta'
 
@@ -352,7 +352,7 @@ class SegCanvas(Canvas):
 
     def clear(self):
         '''
-        Clear the Canvas of all widgets.
+        Clear then Canvas of all widgets.
         '''
         self.delete('all')
 
@@ -385,6 +385,7 @@ class SegCanvas(Canvas):
             if len(diffs) >= 2:
 #                print("** Too many differences")
                 diffs = {}
+        model_disamb = wordobj.model_disamb
         # Here is where we can check for differences between the analyses
         for segi, (wordseg, wordanal) in enumerate(zip(wordconllu, wordobj)):
 #            print("  ** segi {}, wordseg {}".format(segi, wordseg))
@@ -404,9 +405,17 @@ class SegCanvas(Canvas):
             n = len(forms)
             maxn = max([maxn, n])
             Xs = self.get_columnX(n)
-            # label for the segmentations; responds to mouse enter/leave and clicks
+            # label for the analysis; responds to mouse enter/leave and clicks;
+            # use modelhighlight for the analysis selected by the disambiguator model
             if nwordanals > 1:
-                segboxtags.append(self.create_rectangle(SegCanvas.segIDwidth // 2 - 10, y - 10, SegCanvas.segIDwidth // 2 + 10, y + 10, fill=SegCanvas.selectcolors[0]))
+                color = SegCanvas.modelhighlight if segi == model_disamb else SegCanvas.selectcolors[0]
+                segboxtags.append(
+                    self.create_rectangle(
+                        SegCanvas.segIDwidth // 2 - 10, y - 10,
+                        SegCanvas.segIDwidth // 2 + 10, y + 10,
+                        fill=color
+                        )
+                    )
                 segIDtags.append(self.create_text((SegCanvas.segIDwidth // 2, y), text=str(segi+1), font=self.parent.roman_big))
             # Put the dependencies at the top
             if dependencies:
@@ -415,7 +424,7 @@ class SegCanvas(Canvas):
             if pos:
                 posdiff = diffs.get('pos', [])
                 y += SegCanvas.segrowheight
-                self.show_pos(pos, Xs, y, wordseg, posselecttags, posdiff=posdiff)
+                self.show_pos(pos, Xs, y, wordseg, posselecttags, posdiff=posdiff, model_disamb=model_disamb)
             if any([(f[0] or f[1]) for f in features]):
                 y += SegCanvas.segrowheight
                 featdiff = diffs.get('udfeats', [])
@@ -596,7 +605,7 @@ class SegCanvas(Canvas):
                 color = SegCanvas.diffcolor if diffs and index in diffs else 'Black'
                 self.create_text((x, y), text="'{}'".format(gloss.replace('_', ' ')), color=color, font=self.parent.roman_small)
 
-    def show_pos(self, pos, Xs, y, wordseg, posselecttags, posdiff=None):
+    def show_pos(self, pos, Xs, y, wordseg, posselecttags, posdiff=None, model_disamb=-1):
         '''
         Show the POS tags for a segmentation, including both UPOS and XPOS if they're different only.
         '''
@@ -618,16 +627,22 @@ class SegCanvas(Canvas):
                     color = SegCanvas.diffcolor if posdiff and morphi in posdiff else 'Black'
                     id = self.create_text((x, y), fill=color, text=p)
 
-    def create_selectPOS(self, pos, x, y, wordseg, posselecttags):
+    def create_selectPOS(self, pos, x, y, wordseg, posselecttags, highlight=-1):
         '''
         Create POS labels to select between when there is a choice.
+        If the disambiguator model has selected one POS, fill the rectangle with
+        SegCanvas.modelhighlight
         '''
         selectpos = Sentence.selectpos[pos]
         pos1 = selectpos[0]
         pos2 = selectpos[1]
-        self.create_rectangle(x - 55, y - SegCanvas.ambigposheight, x - 5, y + SegCanvas.ambigposheight, fill=SegCanvas.selectcolors[0])
+        color1 = SegCanvas.modelhighlight if highlight == 0 else SegCanvas.selectcolors[0]
+        self.create_rectangle(x - 55, y - SegCanvas.ambigposheight,
+                              x - 5, y + SegCanvas.ambigposheight, fill=color1)
         id1 = self.create_text((x-30, y), text=pos1)
-        self.create_rectangle(x + 5, y - SegCanvas.ambigposheight, x + 55, y + SegCanvas.ambigposheight, fill=SegCanvas.selectcolors[0])
+        color2 = SegCanvas.modelhighlight if highlight == 1 else SegCanvas.selectcolors[0]
+        self.create_rectangle(x + 5, y - SegCanvas.ambigposheight,
+                              x + 55, y + SegCanvas.ambigposheight, fill=color2)
         id2 = self.create_text((x+30, y), text=pos2)
         posselecttags.append((wordseg, id1, id2, pos1, pos2))
 
@@ -652,12 +667,13 @@ class SegCanvas(Canvas):
         return max_y
 
     def show_features1(self, feats, x, y, wordseg, featselecttags, color='Black'):
-#        print("!! show_features1 {}, {}".format(feats, wordseg))
+#        print("!! show_features1 {}, {}, {}".format(feats, wordseg, color))
 #        colors = ['pink', 'plum', 'hotpink']
         def show(f, coords):
             self.create_text(coords, text=f, fill=color, font=self.parent.roman_mono)
-        def show_ambig(f, x, y, xoff, nlines=1, color='yellow'):
-            self.create_rectangle(x-xoff, y-(nlines * SegCanvas.ambigrectheight), x+xoff, y+(nlines * SegCanvas.ambigrectheight),
+        def show_ambig(f, x, y, xoff, nlines=1, color=SegCanvas.modelhighlight):
+            self.create_rectangle(x-xoff, y-(nlines * SegCanvas.ambigrectheight),
+                                  x+xoff, y+(nlines * SegCanvas.ambigrectheight),
                                   fill=color)
             id = self.create_text((x, y), text=f, font=self.parent.roman_mono, justify=CENTER)
             return id

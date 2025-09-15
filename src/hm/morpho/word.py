@@ -53,6 +53,8 @@ class Word(list):
         # used in CG disambiguation
         self.analstrings = ''
         self.readings = []
+        # index of the analysis selected by disambiguator model, if any
+        self.model_disamb = -1
 #        self.is_empty = len(self) == 0
 #        self.is_known = not self.unk
         Word.id += 1

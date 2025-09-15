@@ -6,31 +6,31 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     Copyleft 2022-2025.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
-    morfo is free software: you can redistribute it and/or modify
+    HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    morfo is distributed in the hope that it will be useful,
+    HornMorpho is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with morfo.  If not, see <http://www.gnu.org/licenses/>.
+    along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
 Author: Michael Gasser <gasser@iu.edu>
 
 Corpora of sentences, raw and segmented.
 """
 
-import os, re, sys
+import os, re, sys, time
 from .languages import *
-from tkinter import *
-from tkinter.ttk import *
-from tkinter.font import *
-import time
+#from tkinter import *
+#from tkinter.ttk import *
+#from tkinter.font import *
 from .gui import *
+import hm.morpho.disamb as disamb
 
 # Note: these directories will probably be different for each user!
 CACO_DIR = os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir, os.path.pardir, os.path.pardir, 'TAFS', 'datasets', 'CACO')
@@ -71,6 +71,8 @@ class Corpus():
                  cg = False,
                  # Number of analyses eliminated using CG disambiguator.
                  disambiguations = 0,
+                 # whether to run disambiguator model
+                 model_disamb = True,
                  # we may want to save unknown and/or ambiguous tokens
                  unk=None,
                  # a previous corpus to start from (local_cache and last_line)
@@ -213,6 +215,7 @@ class Corpus():
                                                  skip_mwe=skip_mwe, skip=skip, cache=self.local_cache, meta=meta,
                                                  unsegment=unsegment, combine_segs=combine_segs, label=label,
                                                  CGdisambiguate=CGdisambiguate or cg, feats=feats,
+                                                 model_disamb=model_disamb,
                                                  batch_name=batch_name, pos=pos, verbosity=verbosity):
                                 self.data.append(line)
                                 if unk := sentence_obj.unk:
@@ -257,6 +260,7 @@ class Corpus():
             if v5 and segment:
                 self.analyze(sep_feats=sep_feats, gemination=gemination, sep_senses=sep_senses,
                               cache=self.local_cache, unsegment=unsegment, comments2meta=comments2meta,
+                              model_disamb=model_disamb,
                               verbosity=verbosity, combine_segs=combine_segs, feats=feats,
                               props=props, skip_mwe=skip_mwe, pos=pos, skip=skip)
         else:
@@ -331,6 +335,9 @@ class Corpus():
                 if disambiguated:
                     # disambiguated is a dict:: index:list of reading indices eliminated
                     self.disambiguations += sum([len(d) for d in disambiguated.values()])
+            if kwargs.get('model_disamb'):
+#                print("**Calling disambiguator")
+                disamb.disambiguate_sentence(sentence_obj)
             if props := kwargs.get('props'):
                 sentence_obj.set_props(props)
 #            sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
@@ -385,6 +392,9 @@ class Corpus():
                 if disambiguated:
                     # a dict:: index:list of reading indices eliminated
                     self.disambiguations += sum([len(d) for d in disambiguated.values()])
+                if kwargs.get('model_disamb'):
+#                    print("**Calling disambiguator")
+                    disamb.disambiguate_sentence(sentence_obj)
                 if props:
                     sentence_obj.set_props(props)
 #                sentence_obj.merge5(gemination=kwargs.get('gemination'), sep_senses=kwargs.get('sep_senses'))
