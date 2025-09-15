@@ -32,7 +32,7 @@ Author: Michael Gasser <gasser@iu.edu>
 # experimental CoNLL-U segmenter for Amharic
 
 __cat__ = ''
-__version__ = '5.3.2'
+__version__ = '5.3.4'
 
 __author__ = 'Michael Gasser'
 
