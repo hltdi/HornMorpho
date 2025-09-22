@@ -1954,6 +1954,7 @@ class POSMorphology:
                 features.append((segfeat, wordfeat))
         if condfeats:
             for caffs, cfeats in condfeats:
+#                print("** condfeats {} / {}".format(caffs, cfeats))
                 if not caffs.intersection(allaff):
                     # We need to add features to this segment that are missing because of empty affix slots
                     # For example, PNG for ውረድ, Polarity for የ-ሌለ
