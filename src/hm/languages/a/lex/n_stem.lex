@@ -413,8 +413,6 @@
 መምህር/ነት	'' [g=m,pos=N,-h]
 ምሁር	'' [pos=ADJ]
 መሰረት	'' [pos=N,-h]
-# in Geez compounds
-መሰረተ	'' [pos=N,-h]
 መስራች	''	[pos=N|ADJ,-h]
 አ/መሰራረት	'' [pos=N,-h]
 መሰ/ሪ	'' [pos=ADJ]
@@ -1539,8 +1537,6 @@
 ቀርበታ	'' [pos=N,-h]
 ቅስም	'' [pos=N,-h]
 ቄስ	'' [pos=N]
-# in Geez compounds: ቄሰ ገበዝ
-ቄሰ	'' [pos=N]
 ቀሰስተ/ኛ	'' [pos=ADJ]
 ቀሰስተ/ኛ/ነት	'' [g=m,pos=N,-h]
 ቀስቃሽ	''	[pos=N|ADJ,-h]
@@ -1708,8 +1704,6 @@
 ቂጣም	'' [pos=ADJ]
 ቂ/ጥ/ኝ	'' [pos=N,-h]
 ቃል	'' [pos=N,-h]
-# part of compounds
-ቃለ	'' [pos=N,-h]
 ቃልኪዳን	'' [pos=N,-h]
 ቃሊብ	'' [pos=N,-h]
 ቃ/ል/ቻ	'' [pos=N]
@@ -11737,7 +11731,19 @@
 ፖም	   ''	[pos=N,-h]
 ኢንተር	   ''	[pos=N,-h]
 ስዊች	   ''	[pos=N,-h]
-# in compounds
-ክፍለ	   ''	[pos=N,-h]
 አማተር	   ''	[pos=N,-h]
 ሎሬት	   ''	[pos=N]
+ባለታክሲ	   ''	[pos=N,+h]
+ወፋፍራም   '' 	[pos=ADJ,+pl]
+ኪዊ	''	[pos=N,-h]
+ደመነፍስ	''	[pos=N,-h]
+ደመነብስ	ደመነፍስ	[pos=N,-h]
+## Geez compounds
+ክፍለ	   ''	[pos=N,-h]
+# ድረ ገጽ
+ድረ	   ''	[pos=N,-h]
+ደመ	   ''	[pos=N,-h]
+መሰረተ	   '' 	[pos=N,-h]
+# ቄሰ ገበዝ
+ቄሰ	''	[pos=N,+h]
+ቃለ	''	[pos=N,-h]

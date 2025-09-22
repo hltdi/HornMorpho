@@ -573,7 +573,8 @@ $ d=a|inf|ins|m
 [d=a|ins|m]
 ^e	^e	*a	*	-
 
-[d=inf]
+# alternate form for d=m
+[d=inf|m]
 ^e	^e	*a	*e	ት
 
 %2=እ,4=እ

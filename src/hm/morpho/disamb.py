@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022-2025.
+    Copyleft 2025.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -88,7 +88,33 @@ def disambiguate_word(original, formatted_sent, word_options, formatted_word, ve
             return -1, close_matches[0]
         else:
             return -1, ""
-    
+
+
+def miniword2string(token, analyses):
+    '''
+    Convert a miniature representation of a word's analyses -- a list of token, lemma, POS, feats lists --
+    to a string suitable for the model.
+    '''
+    return token + "<" + analyses.__repr__() + ">"
+
+def minisentence2string(words):
+    '''
+    Convert a miniature representation of a sentence -- a list of miniature word representations --
+    to a string suitable for the model.
+    '''
+    result = []
+    for word in words:
+        token = word[0][0]
+        result.append(miniword2string(token, word))
+    return ' '.join(result)
+
+def format_prompt(original, hm_output, amb_word):
+    fixed_instruction = "ለተሰጠው ቃል ትክክለኛውን ሲንታክስ ምረጥ። "
+    text = alpaca_prompt_2.format(fixed_instruction, original, hm_output, amb_word,"") + "<end_of_text>"
+    return text
+
+## Abnet's code
+##
 ##def disambiguate(original, hm_output, amb_word):
 ##    '''
 ##    Sample Input:
@@ -126,29 +152,6 @@ def disambiguate_word(original, formatted_sent, word_options, formatted_word, ve
 ##        else:
 ##            return ""
 
-def miniword2string(token, analyses):
-    '''
-    Convert a miniature representation of a word's analyses -- a list of token, lemma, POS, feats lists --
-    to a string suitable for the model.
-    '''
-    return token + "<" + analyses.__repr__() + ">"
-
-def minisentence2string(words):
-    '''
-    Convert a miniature representation of a sentence -- a list of miniature word representations --
-    to a string suitable for the model.
-    '''
-    result = []
-    for word in words:
-        token = word[0][0]
-        result.append(miniword2string(token, word))
-    return ' '.join(result)
-
-def format_prompt(original, hm_output, amb_word):
-    fixed_instruction = "ለተሰጠው ቃል ትክክለኛውን ሲንታክስ ምረጥ። "
-    text = alpaca_prompt_2.format(fixed_instruction, original, hm_output, amb_word,"") + "<end_of_text>"
-    return text
-
 ##def test():
 ##    with open ("../tmp/starter_disambigs_word3.json", "r", encoding="utf-8") as file:
 ##        test_dataset = json.load(file)
@@ -167,11 +170,4 @@ def format_prompt(original, hm_output, amb_word):
 ##    print("\n")       
 ##    print(cnt_correct, " was correctly disambiguated out of ", cnt_total)
 ##    print("Accuracy ", cnt_correct/cnt_total)
-##
-##@staticmethod
-##def little_test():
-##    original = "ወጥ አውጪ !"
-##    hm_output = "ወጥ<['ወጥ', 'ወጥ', 'NOUN', {}]> አውጪ<[['አውጪ', 'አወጣ', 'VERB', {'Gender': 'Fem', 'Mood': 'Imp', 'Number': 'Sing', 'Person': '2', 'Voice': 'Cau'}], ['አውጪ', 'አውጭ', 'ADJ', {}], ['አውጪ', 'አውጭ', 'NOUN', {}]]> !<['!', '!', 'PUNCT', {}]>"
-##    amb_word = "አውጪ<[['አውጪ', 'አውጭ', 'ADJ', {}], ['አውጪ', 'አወጣ', 'VERB', {'Gender': 'Fem', 'Mood': 'Imp', 'Number': 'Sing', 'Person': '2', 'Voice': 'Cau'}]]>"
-##    chosen = disambiguate(original, hm_output, amb_word)
-##    return chosen
+

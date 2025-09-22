@@ -1,92 +1,37 @@
--> prep
+-> start
 
-# prep: no changes
-prep -> prep	[ብ;ን]
+# adp/sconj
+start -> prep	[^N]
+prep -> prep	[^N]
+prep -> rel	[:-]
+start -> rel	[:-]
 
-# conj1, change final consonant ክ+ይ-> ኪ, ክ+ኣ->ከ
-prep -> start	[:-]
-start -> start	[**v;/]
-start -> C		[*]
-C -> start		[**v;/]
-C -> C			[*]
+# rel
+rel -> rela	[ዝ]	[-neg]
+rel -> rela	[ዚ:ዝ]	[sg=m,sn=1,sp=3,t=i,-neg,+rel]
+rel -> rela	[ዘ:ዝ]	[+neg]
+rel -> neg1	[:-]
+rela -> neg1	[:-]
 
-# subj
-# delete y if there's something before it
-start -> subj	[:-]
-C -> subj		[:-]
-subj -> subj		[*;/]
+# neg1
+neg1 -> neg1a	[ኣ]	[-rel]
+neg1 -> neg1a	[:ኣ]	[+rel]
+neg1a -> neg1b  [ይ]
+neg1b -> sbj1	[:<]
+neg1 -> sbj1	[:<]
 
-# stem
-subj -> stem+	[:<]
+# sbj1
+sbj1 -> sbj1a	[^N;/]	[t=j];[t=i,sn=2];[t=i,sp=2];[t=i,sg=f];[+neg];[-rel]
+sbj1a -> sbj1b	[^N;/]
+# delete the ipf 1s and 3sm subject prefix when there's a rel prefix
+sbj1 -> sbj1c 	[:ይ;:እ]
+sbj1c -> stem	[:-]	[+rel,t=i,sg=m,sn=1,sp=3,-neg];[+rel,t=i,sn=1,sp=1,-neg];[t=p|c]
+sbj1a -> stem	[:-]
+sbj1b -> stem	[:-]
 
-## prefix changes
+# stem proper
 
-# optional; ዚሰ/ብር
-C -> C2i			[{I2i}]
-start -> C2i	[{I2i}]
-#start0 -> C2i	[{I2i}]
-C2i -> C2i		[:-]
-C2i -> C2i		[:ይ]
-C2i -> stem+		[:<]
-
-# delete ይ; ዝስብር
-C -> C:			[:-]
-C: -> C2Xyi		[:ይ]
-C2Xyi -> stem+	[:<]
-
-## stem-prefix boundary
-
-# ዘስበረ; ተስ/ብር; እንተሎ
-C -> C2e			[{I2e}]
-start -> C2e		[{I2e}]
-subj -> C2e		[{I2e}]
-C2e -> C2e		[:-]
-C2e -> C2e		[:ይ]	[t=i,sp=1|3]
-C2e -> C2e+		[:<]
-C2e+ -> stem0	[:ኣ]
-
-C -> C2te		[ተ]		[root=ህልው,r=ህልው]
-C2te -> C2te		[:-]
-C2te -> C2te+	[:<]
-C2te+ -> C2alle	[:-]
-
-# ዘሎ ከሎ etc.
-C2e+  -> C2alle	[:-]	 [root=ህልው,r=ህልው]
-C2alle -> stem	[:ኣ]
-
-C -> .Ia		[:እ]
-start -> .Ia	[:እ]
-subj -> .Ia	[:እ]
-.Ia -> .Ia		[:-]
-.Ia -> I.a		[:<]
-I.a -> stem0	[ኣ]
-
-C -> stem+			[:<]
-#start0 -> stem+		[:<]
-start -> stem+		[:<]
-
-# stem starting with anything other than ኣ
-stem+ -> stem0 		[^A;/]
-
-# stem starting with ኣ
-start -> nopre		[:-]
-#start0 -> nopre		[:-]
-nopre -> nopre		[:-]
-nopre -> nopre+		[:<]
-nopre+ -> stem0		[ኣ]
-
-stem0 -> stem0		[^N;/]
-
-# First base stem consonant
-stem+ -> stem1		[:-]
-stem0 -> stem1		[:-]
-
-# k-K, q-Q when preceded by vowel
-stem1 -> stem		[^x;/]		
-stem1 -> stem		[{q2Q}]	[+K1]
-stem1 -> stem		[^k]	[-K1]
-
-stem -> stem		[^N;/]
+stem -> stem		[^N;/;:-]
 
 # stem ending in vowel
 stem -> stemV.+		[*v]

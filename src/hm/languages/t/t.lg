@@ -45,7 +45,7 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ
 
 normalization::
   ኅኁኂኃኄኅኆ	ሠሡሢሣሤሥሦ	ፀፁፂፃፄፅፆ ;\
-  ሀሁሂሀሄህሆ		ሰሱሲሳሴስሶ		ጸጹጺጻጼጽጾ
+  ሀሁሂሀሄህሆ	ሰሱሲሳሴስሶ	ጸጹጺጻጼጽጾ
 
 punctuation: “‘–—:;/,<>?.!%$()[]{}|@&*_+='"፡።፣፤፥፦፧፨
 
@@ -64,6 +64,7 @@ feats:
     morphotax::
       {'name': 'adp', 'pos': 'ADP', 'dep': 'mark', 'feats': ['Case']};
       {'name': 'conj1', 'pos': 'SCONJ', 'dep': 'mark', 'feats': ['Polarity']};
+      {'name': 'neg1',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'sb1', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
         'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType']};;

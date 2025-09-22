@@ -1,47 +1,59 @@
 $ adp
   ብ [adp=ብ,+rel,-mc]
   ን [adp=ን,+rel,-mc]
+  ከም [adp=ከም,-mc]
+  ስለ [adp=ስለ,-mc]
+  ምስ [adp=ምስ,-mc]
   -- [adp=0]
 
 $ adp_bound
   -
 
 $ conj1
-  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,-neg];[conj1=ዝ,+rel,-mc,t=p|i,+neg,r=ህልው,+O]
-  ዘይ	  [conj1=ዝ,+rel,-mc,t=p|i|c,+neg]
+  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i];[conj1=ዝ,+rel,-mc,t=p|i,+neg,r=ህልው,+O]
+#  ዘይ	<-ዝ-ኣይ>  [conj1=ዝ,+rel,-mc,t=p|i|c,+neg]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
   እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=i,sp=3,sn=1,sg=f,-neg];
   		[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg]
-  ከምዝ	 [conj1=ከምዝ,-rel,-mc,-neg,t=p|i,adp=0]
-  ከምዘይ	 [conj1=ከምዝ,-rel,-mc,+neg,t=p|i,adp=0]
-  ስለዝ	 [conj1=ስለዝ,-rel,-mc,-neg,t=p|i,adp=0]
-  ስለዘይ	 [conj1=ስለዝ,-rel,-mc,+neg,t=p|i,adp=0]
-  እንተ	 [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0];[conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=2];
-		 [conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=1,sn=1]
-  እንተዝ	 [conj1=እንተዝ,-rel,-mc,-neg,t=p|c|i,adp=0]
-  እንተዘይ	 [conj1=እንተዝ,-rel,-mc,+neg,t=p|c|i,adp=0]
-  ንኽ      [conj1=ንኽ,-rel,-mc,t=i,-neg,adp=0]
-  ንኸይ      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
-  ክ	 	 [conj1=ክ,-rel,-mc,t=i,-neg,adp=0];[conj1=ክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
-  ከይ      [conj1=ክ,-rel,-mc,t=i|p,+neg,adp=0]
-  እንክ	 [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
-  እንከይ      [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
-  እንተይ      [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
-  ምስ  [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
-  ምስዝ  [conj1=ምስ,-rel,-mc,t=i|p,adp=0,-neg]
-  ም   [conj1=ም,-rel,+mc,t=p,adp=0,-neg]
-  ኣይም [conj1=ም,-rel,+mc,t=i|p,adp=0,+neg]
-  እንዳ [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
-  እ/ና  <እና>	[conj1=እና,-rel,-mc,t=p,adp=0,-neg]
-  # ደሎ
-  ድ   [conj1=ድ,+int,conj2=0,+mc,-neg,-rel,r=ህልው,adp=0]
-  # ደይትምለስ
-  ደይ   [conj1=ድ,+int,conj2=0,+mc,+neg,-rel,adp=0]
-  ኣይ   [conj1=0,+neg,-rel,+mc,t=p|i|j,adp=0]
-  -- [-neg,-rel,conj1=0,adp=0,+mc];[+neg,-rel,r=ህልው,adp=0]
+#  ክ	  [conj1=ክ,-mc,t=i,-neg,adp=0];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=0]
+#  ኽ	  [conj1=ክ,-mc,t=i,-neg,adp=ን];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=ን]
+#  እንክ	  [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
+#  ድ   	  [conj1=ድ,+int,conj2=0,+mc,-rel,r=ህልው,adp=0]
+#  እ/ና  	  [conj1=እና,-rel,-mc,t=p,adp=0,-neg]
+#  ም      [conj1=ም,-rel,+mc,t=p,adp=0,-neg]
+#  እንዳ 	 [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
+#  ከምዝ	 <ከም-ዝ->	[conj1=ከምዝ,-rel,-mc,-neg,t=p|i,adp=0]
+#  ከምዘይ	 <ከም-ዝ-ኣይ>	 [conj1=ከምዝ,-rel,-mc,+neg,t=p|i,adp=0]
+#  ስለዝ	 <ስለ-ዝ->		 [conj1=ስለዝ,-rel,-mc,-neg,t=p|i,adp=0]
+#  ስለዘይ	 <ስለ-ዝ-ኣይ>	 [conj1=ስለዝ,-rel,-mc,+neg,t=p|i,adp=0]
+#እንተ	 <እንተ-->	 [conj1=እንተ,-rel,-mc,-neg,t=p|c,adp=0];[conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=2];
+#		 [conj1=እንተ,-rel,-mc,-neg,t=i,adp=0,sp=1,sn=1]
+#  እንተዝ	 <እንተ-ዝ-> [conj1=እንተዝ,-rel,-mc,-neg,t=p|c|i,adp=0]
+#  እንተዘይ	 <እንተ-ዝ-ኣይ>	 [conj1=እንተዝ,-rel,-mc,+neg,t=p|c|i,adp=0]
+#  ንኽ      <ንኽ-->	 [conj1=ንኽ,-rel,-mc,t=i,-neg,adp=0]
+#  ንኸይ	  <ንኽ--ኣይ>      [conj1=ንኽ,-rel,-mc,t=i,+neg,adp=0]
+#  ከይ	<ክ--ኣይ>      [conj1=ክ,-rel,-mc,t=i|p,+neg,adp=0]
+#  እንክ	 <እንክ-->     [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
+#  እንከይ	 <እንክ--ኣይ>      [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
+#  እንተይ   <እንተ--ኣይ>   [conj1=እንክ,-rel,-mc,t=i|p,+neg,adp=0]
+#  ምስ  <ምስ-->	     [conj1=ምስ,-rel,-mc,t=p,adp=0,-neg]
+#  ምስዝ  <ምስ-ዝ->	[conj1=ምስ,-rel,-mc,t=i|p,adp=0,-neg]
+##  ኣይም <ኣይ-ም>	[conj1=ም,-rel,+mc,t=i|p,adp=0,+neg]
+#  # ደሎ
+#  # ደይትምለስ
+#  ደይ   <-ድ-ኣይ>	[conj1=ድ,+int,conj2=0,+mc,+neg,-rel,adp=0]
+#  ኣይ   <--ኣይ>	[conj1=0,+neg,-rel,+mc,t=p|i|j,adp=0]
+  --   	[-rel,conj1=0,adp=0,+mc];[+neg,-rel,r=ህልው,adp=0]
 
-$ neg1_bound
+$ conj_bound
   -
+
+$ neg1
+  ኣይ	[+neg]
+  -- 	[-neg]
+
+$ prestem
+  <
 
 $ sb_rel
   # geminate ት- and  ን- for +rel and optionally after ክ
@@ -59,8 +71,8 @@ $ sb_pre
   ን    [t=i|j,sp=1,sn=2,+Cpre]
   --   [t=p|c]];[t=j,sp=2,-neg,-Cpre]
 
-$ prestem
-  <
+$ sb_pre_bound
+  -
 
 $ pass_rel
   /	[+rel,t=p,v=p,conj1=እ]
@@ -93,10 +105,10 @@ $ voice_bound
 
 $ stem
 # Comment out for generation or analysis without compiled stems
-   +vstem2+		[pos=V|AUX]
-   +v_stem_irr+	[pos=V|AUX]
+#   +vstem2+		[pos=V|AUX]
+#   +v_stem_irr+	[pos=V|AUX]
 # Uncomment for generation
-#  >>v_stem<<
+  >>v_stem<<
 
 $ poststem
   >
