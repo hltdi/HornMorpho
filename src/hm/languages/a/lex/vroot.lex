@@ -36,7 +36,8 @@
   a=0,v=0,t=p|c|i|0,-tr;a=0,v=0,t=j,sp=1|3,-tr;a=0,v=0,t=j,sp=2,+neg,-tr;a=0,v=p,-tr;a=0,v=a;a=0,v=as;a=a,v=p;a=a,v=a;a=i,v=0;a=i,v=p,-tr;a=i,v=a
 
 <ግ ኝ ይ>		c=A,base=a
-  a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=p ; a=i,v=a
+  # a=i is irregular because ኝ -> ን in second position; see in v_irr.root
+  a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p
 
 <ጽ ል ይ>	      c=B,+strong,base=0
   a=0,v=0 ; a=a,v=a ; a=a,v=a ; a=i,d=m
@@ -129,6 +130,8 @@
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=a,v=a ; a=a,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
 <ል ክ እ>	c=B,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
+<ል ዝ ን>	c=C,base=a
+  a=0,v=a ; a=i,d=m
 <ል ጉ ድ>	c=B,base=0
   a=0,v=0 ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
 <ል ጥ ፍ>	c=B,base=0
@@ -359,6 +362,8 @@
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,d=m
 <ት ኩ ስ>	c=B,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=a,v=a ; a=a,v=p ; a=i,v=0
+<ት ግ ብ ር>   	c=E,base=p
+  a=0,v=p ; a=i,d=m
 <ን ክ እ>	c=A,base=0
   a=0,v=0 ; a=0,v=a ; a=0,v=as ; a=0,v=p ; a=i,v=0 ; a=i,v=a ; a=i,v=p
 <ን ግ ር>	c=A,base=0

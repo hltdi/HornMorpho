@@ -1,4 +1,5 @@
 -<ወዲህ	ወደ-<ይህ		[adp=ወደ,pos=DET,g=m]
+-<ወዲሁ	ወደ-<ይህ		[adp=ወደ,pos=DET,g=m]
 -<ወዲያ	ወደ-<ያ		[adp=ወደ,pos=DET,g=m]
 -<እንዲህ	እንደ-<ይህ		[adp=እንደ,pos=DET,g=m]
 -<በእንዲህ	በእንደ-<ይህ	[adp=በእንደ,pos=DET,g=m]

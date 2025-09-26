@@ -28,12 +28,14 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=i|j|c,v=as]
 ^eo	**u:	**
 
+# ፈዝዤ: [t=c,+dup23,sp=1,sn=1]; but also allow ፈዝዞ, etc.: [t=c,+dup23]
 [t=i|c,v=0,-dup23]
 [t=i,v=a,-dup23]
 [t=c,v=p,-dup23]
-[t=c,+dup23,sp=1,sn=1]
+[t=c,+dup23]
 ^eo	**u	**
 
+# C2=C3, geminate C2, but still allow both in t=c
 [t=i|c,v=0,+dup23]
 [t=i,v=a,+dup23]
 [t=c,v=p,+dup23]

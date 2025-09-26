@@ -105,9 +105,10 @@ stemsuf -> agtsuf	[{^I2i};{^I}]	[d=a,+pal]
 agtsuf -> agtsuf-	[:-]
 agtsuf- -> fin		[:ኢ]
 
-stemsuf -> insnopal	[{~I2i}]	[d=ins]
+# መጀመሪያ; መጀመርያ
+stemsuf -> insnopal	[{~I2i};~Y]	[d=ins]
 insnopal -> insnopal-	[:-]
-insnopal- -> insnopalya[:ኢ]
+insnopal- -> insnopalya	[:ኢ]
 insnopalya -> fin		[ያ]
 
 stemsuf -> inspal		[{^I2a}]	[d=ins]

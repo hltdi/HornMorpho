@@ -4,7 +4,7 @@
 
 name: አማርኛ
 code: a
-version: 2.4
+version: 2.5
 
 gemination: True
 
@@ -96,19 +96,20 @@ feats:
        'lemma': {'እ':'እኔ', 'ል':'እኔ', 'እን':'እኛ',\
                   'ት':(('sp','sn','sg'),{(3,1,'f'):'እሷ',(2,1,'m'):'አንተ', (2,1,'f'):'አንቺ', (2,2,None):'እናንተ'}),\
                   'ይ':('sn', {1: 'እሱ', 2: 'እነሱ'})},\
-       'feats': ['Person', 'Number', 'Gender']};;
+       'feats': ['Person', 'Number', 'Gender', 'PronType']};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
         'xpos': 'VSTEM',\
 	'condfeats': [[{'sb1', 'sb2'}, ['Person', 'Number', 'Gender']], [{'neg1', 'neg2'}, ['Polarity']]],\
         'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood']};;
       {'name': 'sb2', 'pos': 'PRON', 'xpos': 'SUBJC', 'lemma':('slemma',),\
-        'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
+        'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
       {'name': 'ob',\
         'pos': ('O', {False: 'DET', True: 'PRON'}),\
   	'xpos': ('O', {False: 'DET', True: 'OBJC'}),\
 	'lemma': ('olemma',),\
 	'dep': (('O','oc'), {(False,0): 'det', (True,0): 'obj:aff', (True,'l'): 'obl:aff', (True,'b'): 'obl:aff'}),\
-        'feats': ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Gender[ben]', 'Gender[mal]', 'Definite']};
+	'feats': ('O', {False: ['Definite'],\
+		        True: ['Number[obj]', 'Number[ben]', 'Number[mal]', 'Person[obj]', 'Person[ben]', 'Person[mal]', 'Gender[obj]', 'Gender[ben]', 'Gender[mal]', 'PronType']})};
       {'name': 'neg2',  'pos': 'ADV', 'xpos': 'NEG', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'aux',  'pos': 'AUX', 'dep': 'aux',\
        'feats': (('t','png'), {('i',True): ['Number','Gender','Person'], ('c',True): ['Number','Gender','Person']})};
@@ -185,7 +186,8 @@ feats:
       {'name': 'human', 'pos': 'DET', 'dep': 'det:hum'};
       {'name': 'poss', 'pos': ('spos',{'DET':'DET','PRON':'PRON'}), 'xpos':('spos',{'PRON':'POSM'}),\
         'dep': ('spos', {'DET': 'det', 'PRON': 'det:poss'}), 'lemma':('plemma',),\
-        'feats': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'Possessive']};
+	'feats': ('spos', {'DET': ['Definite', 'Gender'],\
+                          'PRON': ['Person[psor]', 'Number[psor]', 'Gender[psor]', 'Definite', '&Poss3Def', 'Gender', 'PronType']})};
       {'name': 'acc', 'pos': 'ADP', 'dep': 'case', 'feats': ['Case', 'Case[outer]']};
       {'name': 'cop', 'pos': 'AUX', 'xpos': 'COP', 'dep': 'cop', 'feats': ['Tense']};
       {'name': 'conj', 'pos': ('acpos', {'CCONJ': 'CCONJ', 'ADV': 'ADV'}),\
@@ -217,7 +219,7 @@ feats:
 	{'name': 'conj_prep1', 'pos':{'የ':'PART','እንደ': 'SCONJ', 'ስለ': 'SCONJ'}, 'xpos': {'የ': 'RLP'}, 'dep': 'mark'};
 	{'name': 'neg_pre', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};;
 	{'name': 'STEM', 'pos': 'AUX', 'xpos': 'VSTEM', 'feats': ['Tense', 'Polarity', 'ClauseType', 'Person', 'Number', 'Gender']};;
-	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender']};
+	{'name': 'subj', 'pos': 'PRON', 'dep': 'nsubj:aff', 'feats': ['Person', 'Number', 'Gender', 'PronType']};
 	{'name': 'neg_suff', 'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
 	{'name': 'conj', 'pos': ('apos', {'CCONJ': 'CCONJ', 'ADV': 'ADV', 'INTJ': 'INTJ'}),\
 	 'dep': ('apos', {'CCONJ': 'cc', 'ADV': 'advmod', 'INTJ': 'discourse'})}
@@ -319,3 +321,6 @@ feats:
 
 # Palatal vowelless consonants
 ^Y = {ሽ, ች, ኝ, ዥ, ጅ, ጭ}
+
+# Unpalatalized or palatalizable vowelless consonants
+~Y = {ህ, ም, ር, ቅ, ብ, ክ, ው, ግ, ጵ, ፍ, ፕ, ቍ, ኍ, ኵ, ጕ}

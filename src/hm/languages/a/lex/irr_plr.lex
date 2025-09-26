@@ -63,6 +63,7 @@
 አዳ/ዲስ	አ/ዲስ	[pos=ADJ,t=[eng="new"]]
 አዳ/ዲሶ/ች	አ/ዲስ	[pos=ADJ,t=[eng="new"]]
 ቀጫጭን	ቀ/ጭን	[pos=ADJ,t=[eng="thin"]]
+ወፋፍራም   ወፍራም 	[pos=ADJ,t=[eng="fat"]]
 አብዛ/ኞ/ች	አብዛ/ኛው	[pos=ADJ,t=[eng="most"]]
 ወይዛዝርት	ወይዘሪት	[pos=N,t=[eng="Miss,unmarried woman"]]
 እንስሳት	እንስሳ	[pos=N,t=[eng="animal"]]
@@ -88,3 +89,4 @@
 ክቡራት	ክቡር	[pos=ADJ]
 መጽሀፍት  መጽሀፍ	[pos=N]
 መጻህፍት  መጽሀፍ	[pos=N]
+እ/ነማን	ማን 	[pos=PRON,p=0,-col,ptype=int]

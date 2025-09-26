@@ -39,8 +39,11 @@ POS n N
 ->UD 3		Person=3
 ->UD FEM		Gender=Fem
 ->UD MASC	Gender=Masc
-#->UD *PRSPRO	PronType=Prs
-#->UD *DEMPRO	PronType=Dem
+->UD *PRSPRO	PronType=Prs
+->UD *DEMPRO	PronType=Dem
+->UD *INTPRO	PronType=Int
+->UD *INDPRO	PronType=Ind
+->UD *POSS	PronType=Prs
 #->UD *POSS	Possessive=Yes
 # suffixed copula
 ->UD PRS	Tense=Pres
@@ -69,12 +72,13 @@ hum,def:: True,True:DEF
 p,def:: 0,True:DEF
 g,def:: m,True:MASC;; f,True:FEM
 postp:: ጋ:*OBL
+pos,ptype:: PRON,dem:*DEMPRO;; PRON,int:*INTPRO;; PRON,ind:*INDPRO;; PRON,prs:*PRSPRO
 
 # personal pronouns
 Pp:: 1:1;; 2:2;; 3:3
 Pn:: 1:SG;; 2:PL
 Pg:: m:MASC;; f:FEM
-ptype:: prs:*PRSPRO;; dem:*DEMPRO;; int:*INTPRO;; ind:*INDPRO
+#ptype:: prs:*PRSPRO;; dem:*DEMPRO;; int:*INTPRO;; ind:*INDPRO
 pos,spos:: N,PRON:*POSS
 
 # note that -ም and -ስ are not distinguished
@@ -104,6 +108,8 @@ d:: inf:INF;; a:*AGT
 acpos:: CCONJ:CCONJ;; ADV:ADV
 
 POS v V
+->UD V		PronType=Prs
+->UD AUX	PronType=Prs
 ->UD NEG	Polarity=Neg
 ->UD IMP	Mood=Imp
 ->UD JUS	Mood=Jus
@@ -235,7 +241,7 @@ POS v V
 t,sp:: i,*:IPFV;; p,*:PFV;; j,1:JUS;; j,2:IMP;; j,3:JUS
 t,ax:: c,0:CVB ;; c,al:PRF
 
-pos:: v:V
+pos:: V:V;; AUX:AUX
 
 neg:: NEG
 
@@ -276,6 +282,9 @@ o,oc:: s1,b:*MAL1S;; p1,b:*MAL1P;; sm2,b:*MAL2SM;; sf2,b:*MAL2SF;; F2,b:*MAL2S;F
 acc:: ACC
 det:: DEF
 
+## Pronoun type, subject and object affixes
+O:: True:*OBJPRON
+
 # added back; possibly needed for CG (2024.11.10)
 adp:: እስከ:*TERM;; ስለ:*PURP;; ወደ:*ALL;; ከ:*ABL;; በ:*INS;; ለ:*DAT;; እ:*AT;; እንደ:*EQTV
 # 2024.7.7: simplifed adpositions to OBL
@@ -303,6 +312,7 @@ sub,mc,t:: False,False,i:*I_PART
 #acpos:: CCONJ:*CCONJ;; ADV:*ADV
 
 POS cop AUX
+->UD AUX	PronType=Prs
 ->UD PRS	Tense=Pres
 ->UD PST	Tense=Past
 ->UD NEG	Polarity=Neg

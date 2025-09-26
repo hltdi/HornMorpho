@@ -1,3 +1,4 @@
+# ሲመጣ እንዲመጡ የሚያመጣ, etc.
 -> start
 
 start -> start	[*v;/;ይ]
