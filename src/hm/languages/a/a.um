@@ -329,8 +329,10 @@ POS cop AUX
 
 t:: prs:PRS;; pst:PST
 neg:: NEG
+
 p:: 1:1;; 2:2;; 3:3
 n:: 1:SG;; 2:PL
 g:: m:MASC;; f:FEM
+frm:: True:FORM
 sub,rel:: False,False:*MAIN;; True,False:*SUBORD;; False,True:*RELC
 

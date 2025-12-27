@@ -154,6 +154,8 @@ CHARCOMB_RE = re.compile(r"\s*charcomb\w*::\s*(.*)")
 MERGE_RE = re.compile(r"\s*merge::\s*(.*)")
 # Added 2024.11.12; disambiguation and dependency assignment
 CG_RE = re.compile(r"\s*CG:\s*(.+)")
+# Addied 2025.11.7; when converting from UM to UD, avoid these features for particular POS
+NON_UDFEATS_RE = re.compile(r"\s*nonudfeats\s*[:=]\s*(.+)")
 
 # Find the parts in a segmentation string: POS, FEATS, LEMMA, DEPREL, HEAD INCR
 SEG_STRING_RE = re.compile(r"\((?:@(.+?))?(?:\$(.+?))?(?:\*(.+?))?(?:\~(.+?))?(?:,\+(.+?))?\)")
@@ -539,6 +541,7 @@ class Language:
         explicit = {}
         lemmafeats = {}
         umcats = {}
+        nonudfeats = {}
         segments = {}
         mwefeats = {}
 
@@ -830,6 +833,7 @@ class Language:
                     # default values for these 3; overridden if there are specific features in data file
                     lemmafeats[pos] = []
                     umcats[pos] = {}
+                    nonudfeats[pos] = {}
                     segments[pos] = []
                     mwefeats[pos] = []
                     continue
@@ -892,6 +896,16 @@ class Language:
                         umc = set(umc)
 #                    print("umc {}".format(umc))
                     umcats[pos] = umc
+                    continue
+
+                m = NON_UDFEATS_RE.match(line)
+                if m:
+                    nonud = m.groups()[0].strip()
+                    nonud = eval(nonud)
+                    if not isinstance(nonud, set):
+                        umc = set(nonud)
+#                    print("umc {}".format(nonud))
+                    nonudfeats[pos] = nonud
                     continue
 
                 m = ABBREV_RE.match(line)
@@ -1092,7 +1106,9 @@ class Language:
                     pos_args.append((pos, feats[pos], lex_feats[pos], excl[pos], abbrev[pos],
                                      fv_abbrev[pos], fv_dependencies[pos], fv_priorities[pos],
                                      fgroups, fullpos[pos], explicit[pos], true_explicit[pos],
-                                     lemmafeats[pos], umcats[pos], segments[pos], mwefeats[pos], mwe.get(pos, True)))
+                                     lemmafeats[pos], umcats[pos], segments[pos],
+                                     nonudfeats[pos],
+                                     mwefeats[pos], mwe.get(pos, True)))
             morph = Morphology(pos_morphs=pos_args,
                                punctuation=punc, characters=chars, abbrev_chars=abbrevchars)
             self.set_morphology(morph)
@@ -1557,7 +1573,7 @@ class Language:
 
     def analyze(self, raw_token, **kwargs):
         '''
-        Analyze a token according to HM 5.0, returning a Word object.
+        Analyze a token according to HM 5, returning a Word object.
         kwargs: mwe=False, conllu=False, degem=True, sep_feats=True, combine_segs=False, verbosity=0
         '''
 #        print("** analyze5 kwargs {}".format(kwargs))
@@ -2527,6 +2543,9 @@ class Language:
             elif groupend and tokenid <= groupend:
                 # this token is within the current group
                 feats = token['feats']
+                for f in ['PronType', 'ClauseType']:
+                    if feats and f in feats:
+                        del feats[f]
                 head = token['head']
                 if head is None:
                     print("\n*** Head missing for {} in {}".format(token, text))

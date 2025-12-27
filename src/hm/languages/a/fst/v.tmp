@@ -29,16 +29,20 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^eo	**u:	**
 
 # ፈዝዤ: [t=c,+dup23,sp=1,sn=1]; but also allow ፈዝዞ, etc.: [t=c,+dup23]
+# add PNG features sp=1,sn=1 to first line for gemination
+[t=c,+dup23]
+#[t=c,+dup23,sp=1,sn=1]
 [t=i|c,v=0,-dup23]
 [t=i,v=a,-dup23]
 [t=c,v=p,-dup23]
-[t=c,+dup23]
 ^eo	**u	**
 
 # C2=C3, geminate C2, but still allow both in t=c
-[t=i|c,v=0,+dup23]
-[t=i,v=a,+dup23]
+[t=i,v=0,+dup23]
+[t=c,v=0,+dup23,sp=2|3]
+[t=c,v=0,+dup23,sp=1,sn=2]
 [t=c,v=p,+dup23]
+[t=i,v=a,+dup23]
 ^eo	**u:	-
 
 [t=j,v=0]
@@ -167,9 +171,10 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^e	**
 
 # ታ/ምሞ alongside ታ/ሞ
+# add -dup23 for generation
+[t=c,v=p]
 [t=i|j|c,v=as]
 [t=i,v=ast]
-[t=c,v=p]
 ኣ	**:	**
 
 [t=i,v=0,-dup23]
@@ -179,7 +184,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	**	**
 
 [t=i,v=0,+dup23]
-[t=c,+dup23]
+[t=c,+dup23,sp=2|3];[t=c,+dup23,sp=1,sn=2]
 ኣ	**:	-
 
 [t=j,v=0]
@@ -228,7 +233,9 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^o	-	**
 
 # alternate converb
+# drop t=c for gemination
 [t=j|c]
+#[t=j]
 ^u	-	**
 
 %2=ይ
@@ -253,7 +260,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 [t=i,v=0|a|as|ast]
 [t=c]
-**	-	**
+**u	-	**
 
 %3=እ
 !! v=ast
@@ -489,16 +496,12 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 %4=ይ
 # ተዘጋጀ
 [t=p]
-[t=j,v=as]
 ^e	^a	^e:	-
 
 [t=i]
 ^e	^a	**:	-
 
-[t=j,v=p]
-^e	^a	**	-
-
-[t=j,v=0|a]
+[t=j]
 ^e	^a	**	-
 
 [t=c]
@@ -604,13 +607,13 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %%a=a,c=A,-strong
 %3=እ
-[t=p|i,v=p|a]
+[t=p|i,v=p|a|ast]
 ^a	^a:	-
 
-[t=j,v=p|a]
+[t=j,v=p|a|ast]
 ^a	^a	-
 
-[t=c,v=p|a]
+[t=c,v=p|a|ast]
 ^a	**	ት
 
 %3=ይ
@@ -645,18 +648,18 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	^a	-
 
 [t=c,v=p|a]
-^a	**:	ት
+^a	**u:	ት
 
 %3=ይ
 !! v=ast
 [t=p,v=p|a]
-^a	^e:	-
+^a	^eo:	-
 
 [t=i|j,v=p|a]
-^a	**:	-
+^a	**u:	-
 
 [t=c,v=p|a]
-^a	**:	ት
+^a	**u:	ት
 
 %1=እ !
 %1=እ,3=እ !
@@ -693,8 +696,11 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 
 %4=ይ
 # ሰለቸ
-[t=p|i]
+[t=p]
 ^eo	^a	^e:	-
+
+[t=i]
+^eo	^a	**:	-
 
 [t=j]
 ^eo	^a	**	-
@@ -785,7 +791,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ^a	^a	-	**
 
 [t=c]
-^a	**	-	**
+^a	**u	-	**
 
 %1=እ
 !! v=as
@@ -817,6 +823,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 ኣ	^a	**	**
 
 %3=እ
+## comment out for generation
 [t=p,v=0|a|p|as]
 [t=i,v=p|as]
 ^e	^a	^a:	-
@@ -826,6 +833,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=i,v=0|a|p]
 **u	^a	^a:	-
 
+## comment out for generation
 [t=j,v=0|a|p]
 ^e	^a	^a	-
 
@@ -833,6 +841,7 @@ $$ W ኵ|ጕ|ቍ|ᎃ|ᎇ|ᎋ
 [t=j,v=0|a|p|as]
 **u	^a	^a	-
 
+## comment out for generation
 [t=c,v=0|a|p|as]
 ^e	^a	**	ት
 

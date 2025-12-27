@@ -4,7 +4,7 @@ $ neg
 
 $ pre
   # ተስተ- stems, along with +pr
-  ->suf		+irr_vn_stem+	[+pr,-irr]
+  ->suf		+irr_vn_stem+	[+pr,-irr,pos=N]
   [d=inf,-irr,pos=N];[d=ins,-irr,pos=N]
     መ-			[v=0,-pr];[v=p,+pr,a=i,tmp=[3=እ]]
     መ/-		[v=p,+pr,a=0|a,tmp=[1=X]];[v=p,+pr,a=i,tmp=[1=X]]

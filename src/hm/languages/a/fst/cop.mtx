@@ -29,14 +29,14 @@ $ stem1
 #  ነሁ		[p=1,n=1,+neg,t=prs]
   ነህ		[p=2,n=1,g=m,-neg,-frm,t=prs]
   ነሽ		[p=2,n=1,g=f,-neg,-frm,t=prs]
-  ነዎት		[p=2,+frm,-neg,t=prs]
+  ነዎት		[p=2,n=1,+frm,-neg,t=prs]
   ነው		[p=3,n=1,g=m,-neg,t=prs]
   ነ/ች		[p=3,n=1,g=f,-neg,t=prs]
   ናት		[p=3,n=1,g=f,-neg,t=prs]
   ነን		[p=1,n=2,-neg,t=prs]
   ና/ችሁ	[p=2,n=2,-neg,t=prs]
   ና/ቸው	[p=3,n=2,-neg,t=prs]
-  ነ/በር	[t=pst]
+  ነ/በር		[t=pst]
 #  ኖር		[t=c,-neg,p=3,n=1,g=m]
 $ stem_post
   >
@@ -50,7 +50,7 @@ $ subj
   ን		[p=1,n=2,t=pst]
   ኣችሁ	[p=2,n=2,t=pst]
   ኡ		[p=3,n=2,t=pst]
-  --		[t=prs];[t=pst,-neg]
+  --		[t=prs];[t=pst,-neg,p=3,n=1,g=m]
 
 $ subjbound
   -

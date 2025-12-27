@@ -1,7 +1,7 @@
 ## completely invariant AUX
 ኖሮ ኖሮ	AUX
 ኑሮ   ኑሮ   AUX
-#ነበር  ነበር  AUX
+ነበር  ነበር  AUX
 # አውቀው የለም?
 የለም  የለም  AUX
 # ከመጡ አይቀር
@@ -83,6 +83,7 @@
 በተለይ  በተለ/ይ  ADV
 ዳሩ  ዳሩ  ADV
 ክፉኛ  ክፉ/ኛ  ADV
+የምር  የምር   ADV
 ዳሩግን  ዳሩግን  CCONJ
 ግን  ግን  ADVCCONJ
 እኮን  እ/ኮን  ADV
@@ -213,6 +214,7 @@
 ነገርግን  ነገርግን  CCONJ
 ## INTJ
 ዋ ዋ	INTJ
+ውይ  ውዩ  INTJ
 አሀ አሀ	INTJ
 እሀ እሀ	INTJ
 አቤት  አቤት  INTJ
@@ -222,6 +224,7 @@
 አሜን  አሜን  INTJ
 እማ   እ/ማ  INTJ
 አዎ  አዎ  INTJ
+አዎን  አዎ  INTJ
 አይ  አይ  INTJ
 አዬ  አዬ	INTJ
 አዪ  አዪ	INTJ
@@ -243,7 +246,7 @@
 እንኪ  እንኪ  INTJ
 እንኩ  እንኩ  INTJ
 እንዴ  እንዴ  ADVINTJ
-እንጂ  እንጂ  ADVINTJ
+እንጂ  እንጂ  ADVCCONJ
 እሰይ  እ/ሰይ  INTJ
 እስቲ  እስቲ  INTJ
 እስኪ  እስኪ  INTJ
@@ -318,6 +321,7 @@
 ድረስ  ድረስ  ADPCONJ
 በፊት  በፊት  ADPCONJ
 በኋላ  በኋላ  ADPCONJ
+በሁዋላ በኋላ  ADPCONJ
 በስተቀር  በስተቀር  ADPCONJ
 በኩል  በ/ኩል  ADP
 በላይ  በላይ  ADP
@@ -344,7 +348,12 @@
 አጠገብ  አጠገብ  ADP
 ## particles from light verbs
 # many derived particles still missing (2024.10)
-እንቢ  እንቢ  PART
+# ambiguous PART / INTJ
+እሺ እ/ሺ  PARTINTJ
+እፎይ እ/ፎይ  PARTINTJ
+እንቢ  እንቢ  PARTINTJ
+እምቢ እምቢ PARTINTJ
+ፈገግ  ፈገ/ግ  PART
 ቀደም  ቀደ/ም  PART
 አፈፍ አፈ/ፍ  PART
 አክ አ/ክ  PART
@@ -352,13 +361,11 @@
 ዘለል ዘለ/ል  PART
 እብስ እ/ብ/ስ  PART
 እፍ እ/ፍ  PART
-እፎይ እ/ፎይ  PARTINTJ
 እፍግፍግ እፍግፍ/ግ  PART
 እልም እ/ልም  PART
 እልል እል/ል  PART
 እልቅ እል/ቅ  PART
 እመር እ/መ/ር  PART
-እምቢ እምቢ PART
 እንኮኮ እንኮ/ኮ  PART
 እንትፍ እንት/ፍ  PART
 እንዘጥ እንዘ/ጥ  PART
@@ -501,6 +508,7 @@
 ቋ ቋ  PART
 ቋቅ ቋ/ቅ  PART
 ቍርጥ ቍ/ርጥ  PART
+ቀጥ  ቀ/ጥ  PART
 ቀጭ ቀ/ጭ  PART
 ቀልጠፍ ቀልጠ/ፍ  PART
 ቀለል ቀለ/ል  PART
@@ -584,7 +592,6 @@
 እም እ/ም  PART
 እቅ እ/ቅ  PART
 እሽ እ/ሽ  PART
-እሺ እ/ሺ  PART
 እዝ እ/ዝ  PART
 ጭፍ ጭ/ፍ  PART
 ጭል ጭ/ል  PART
@@ -1103,6 +1110,8 @@
 ስርጕድጕድ ስርጕድጕ/ድ  PART
 ዝንኵርኵር ዝንኵርኵ/ር  PART
 ወከክ  ወከ/ክ  PART
+ሽኝት  ሽኝት  PART
+ብርክክ ብርክ/ክ	PART
 ረጋ ረጋ PART
 መጣ መጣ PART
 ወጣ ወጣ  PART

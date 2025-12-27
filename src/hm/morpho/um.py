@@ -29,12 +29,16 @@ from .semiring import *
 import os, re
 from .utils import match_wild
 
-def expand_udfeats(feats):
+def expand_udfeats(feats, exclude=None):
     '''
     Convert a string with feature=value pairs separated by |
     to a dict with features as keys, values as values.
     '''
-    return dict([fv.split('=') for fv in feats.split('|')])
+    exclude = exclude or ['PronType', 'ClauseType']
+    fv = [fv.split('=') for fv in feats.split('|')]
+#    print("** fv {}".format(fv))
+    return dict([(f, v) for f, v in fv if f not in exclude])
+#    return dict([fv.split('=') for fv in feats.split('|')])
 
 class UniMorph:
     """
@@ -490,11 +494,11 @@ class UniMorph:
             return os.path.join(d, "{}_{}.um".format(self.language.abbrev, morph_version))
         return os.path.join(d, self.language.abbrev + ".um")
 
-    def convert2ud(self, um, pos, extended=False, return_dict=False):
+    def convert2ud(self, um, pos, POS=None, extended=False, nonud=None, return_dict=False):
         """
         Convert a string consisting of UM features to a string consisting of UD features.
         """
-#        print("%% converting {} to UD".format(um))
+#        print("%% converting {} to UD; POS {}; nonud {}".format(um, pos, nonud))
         udfeats = set()
         udalts = []
         um2ud = self.um2ud.get(pos)
@@ -526,8 +530,19 @@ class UniMorph:
                             udfeats.add(udd)
                 else:
                     for udd in udfeat.split(','):
-#                        print("  %% udd {}".format(udd))
-                        udfeats.add(udd)
+                        featname = udd.split('=')[0]
+                        toadd = True
+                        if nonud:
+                            for nu in nonud:
+                                if featname in ['PronType', 'ClauseType']:
+                                    toadd = False
+                                elif type(nu) is tuple:
+                                    if nu[-1] == featname and POS in nu[:-1]:
+                                        toadd = False
+                                elif nu == featname:
+                                    toadd = False
+                        if toadd:
+                            udfeats.add(udd)
         udfeats = list(udfeats)
         udfeats.sort()
         if return_dict:

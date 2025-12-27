@@ -28,12 +28,13 @@ as -> C			[*;/]
 as -> V			[*v]
 as -> as-		[-]
 # optionally allow the full prefix before ሽ,ዝ,ዥ,ጽ,ፅ
-as- -> V		[^S;ሸ;ሻ;ዘ;ዛ;ዠ;ዣ;ጸ;ጻ;ፀ;ፃ]
+as- -> V		[^S;ሸ;ሻ;ሽ;ዘ;ዛ;ዝ;ዠ;ዣ;ዥ;ጸ;ጻ;ጽ;ፀ;ፃ;ፅ]
 # applies
 stem -> a.sS	[ኣ]
 a.sS -> as.S	[/:ስ]
 as.S -> as.S-	[-]
-as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ፀ;ሳ;ዛ;ሻ;ዣ;ጻ;ፃ]
+# for analysis; maybe restrict for generation later
+as.S- -> V		[ሰ;ዘ;ሸ;ዠ;ጸ;ፀ;ሳ;ዛ;ሻ;ዣ;ጻ;ፃ;ስ;ዝ;ሽ;ዥ;ጽ;ፅ]
 
 V -> end		[>]
 
@@ -43,6 +44,7 @@ C+ -> end		[ክ:ህ;ኩ:ሁ]
 C -> end		[>]
 
 # optional ሰ/ረቅኩ -> ሰ/ረ/ኩ
+# but drop for generation
 V -> kgq		[/:ክ;/:ቅ;/:ግ]
 C -> kgq		[/:ክ;/:ቅ;/:ግ]
 kgq -> kgq+		[>]

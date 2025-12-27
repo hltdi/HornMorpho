@@ -39,6 +39,10 @@ CV -> .-u		[{I2u};{a2u};{e2u}]
 -.u -> start	[:ኡ]
 -.u -> ou		[:ኡ]
 
+CV -> I.ou		[*]
+I.ou -> I.ou		[:-;:>]
+I.ou -> ou		[:ኡ]
+
 CV -> ou		[*u]
 
 CV -> .-o		[{I2o}]
@@ -60,15 +64,16 @@ oua. -> start	[ኣ]
 # * - ኢ -> *i
 CV -> .-i		[{^I2i};{^a2i}]
 .-i -> -.i		[:>]
--.i -> start	[:ኢ]
+-.i -> start		[:ኢ]
 -.i -> i		[:ኢ]
+
 ## 1s t=c suffix
 # geminate the last consonant
 CV -> /-E		[/:]
 # CE
 /-E -> .-E        	[{^I2E}]
 .-E -> -.E		[:>]
--.E -> start	[:ኤ]
+-.E -> start		[:ኤ]
 -.E -> i		[:ኤ]
 ## optional E->e before -w
 #/-E -> .-ew		[{^I2e}]
@@ -78,9 +83,13 @@ CV -> /-E		[/:]
 
 # *ኢ|*ኤ - ኣ -> ያ
 i -> ya.-		[ያ:]
-ya.- -> ya-.	[:-]
-ya-.-> ya-.		[:-]
+ya.- -> ya-.		[:-]
+ya-. -> ya-.		[:-]
 ya-. -> start	[:ኣ;:=ኣ]
+# also possible to keep the ኣ in the suffix
+i -> ia-.	[:-]
+ia-. -> ia-.	[:-]
+ia-. -> start	[አ:ኣ;አ:=ኣ]
 
 # delete -, <, and > when followed by a consonant
 start -> -.X	[:-;:<;:>]

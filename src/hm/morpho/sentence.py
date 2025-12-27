@@ -49,7 +49,12 @@ def simplify_ctoken(token):
 #    if feats:
 #        dct['feats'] = feats
 #    return dct
-    return [token.get('form'), token.get('lemma'), token.get('upos'), token.get('feats') or {}]
+    feats = token.get('feats')
+    if feats:
+        for f in ['PronType', 'ClauseType']:
+            if f in feats:
+                del feats[f]
+    return [token.get('form'), token.get('lemma'), token.get('upos'), feats or {}]
 
 class HMToken(Token):
 

@@ -123,7 +123,7 @@ REMOVE (CVB)
 
 # ambiguous IPFV / IMP followed by AUX must be IPFV
 REMOVE (IMP)
-       (1 (AUX)) ;
+       (1C (AUX)) ;
 
 ## rare cases where 1 subject and object is one reading
 ## only possible when followed by a saying verb
@@ -153,7 +153,7 @@ REMOVE (2 SG MASC)
 
 # Proper nouns can't be preceded by noun modifiers
 REMOVE (PROPN)
-       (-1 NMOD) ;
+       (-1C NMOD) ;
 
 # Proper nouns (አበበ) can't finish the sentence
 REMOVE (PROPN)

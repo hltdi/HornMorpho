@@ -66,7 +66,7 @@ def disambiguate_word(original, formatted_sent, word_options, formatted_word, ve
         print("  Calling disambiguator on {}".format(formatted_word))
     prompt = format_prompt(original, formatted_sent, formatted_word)
     payload = {
-        "model": "disambig_1670",  
+        "model": "disambig_latest",  
         "prompt": prompt,
         "stream": False
         }

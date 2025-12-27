@@ -17,7 +17,7 @@ $ prep_bound
   -
 
 $ distrib_collect
-  እ/የ	[+dis,-col,pos=N|ADJ]
+  እ/የ	[+dis,-col,pos=N|ADJ|PRON]
   እ/ነ	[-dis,+pl,+col,+h,pos=N|PROPN]
   --		[-dis,-col]
 
@@ -42,7 +42,7 @@ $ poststem
 $ plural
   ኦ/ች	[+pl,pos=N|ADJ|N_V|NUM|PRON,-col,-irr,ps=oc]
   ኣን		[+pl,pos=N|ADJ,-col,-irr,ps=an]
-  --		[-pl];[+pl,+col];[+irr,+pl];[pos=DET,+pl] # ,ptype=prs|int]
+  --		[-pl];[+pl,+col];[+irr,+pl,d=0];[pos=DET,+pl,d=0] # ,ptype=prs|int]
 
 $ plur_bound
   -
@@ -66,6 +66,7 @@ $ poss_det
   ኣ/ችሁ	[p=p2,plemma=እናንተ,spos=PRON]
   ዎ		[p=F2,plemma=እርስዎ,spos=PRON]
   ዎን		[p=F2,plemma=እርስዎ,spos=PRON]
+  ዎት		[p=F2,plemma=እርስዎ,spos=PRON]
   # possessive or determiner; -ዋ determiner only in singular
   #{
   ኡ		[p=sm3,plemma=እሱ,spos=PRON];[p=0,+def,g=m,pos=N|ADJ|PRON|DET|NUM,spos=DET]
@@ -87,7 +88,7 @@ $ acc_bound
   -
 
 $ cop
-  --		[-cop,tns=0]
+  --		[-cop,tns=0,sp=0,sn=0,sg=0]
 
 $ cop_bound
   -

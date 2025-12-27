@@ -285,17 +285,17 @@ $ d=a|inf|ins|m
 
 %4=እ
 [d=a|ins]
-^e	*	*	-
+^eo	*	*	-
 
 [d=inf]
-^e	*	*a	ት
+^eo	*	*a	ት
 
 %4=ይ
 [d=a|ins]
-^e	*	*	-
+^eo	*	*	-
 
 [d=inf]
-^e	*	*e	ት
+^eo	*	*e	ት
 
 %2=እ,4=እ
 
@@ -426,7 +426,7 @@ $ d=a|inf|ins|m
 %%a=i,c=E,+strong
 
 [d=inf|ins|m]
-^eo	^e	^a	^e	*
+^eo	^e	^a	^eo	*
 
 [d=a]
 ^eo	^e	^a	^a	*

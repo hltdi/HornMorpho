@@ -41,6 +41,10 @@ TI_SKIP = \
 
 # 2025.6.22 Shortcuts for analyzing CACO sentences
 
+# c = CACO(path="../../EES-Res/text/am/CACO_3-7T_601-1000.txt", disambiguate=False, n_sents=600, write=False)
+
+# c = CACO(path="../../EES-Res/text/am/CACO_3-7T_401-500.txt", disambiguate=True, id0=401, id1=500)
+
 def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
          id0=1, id1=100, write=True,
          directory="../../EES-Res/tmp/",
@@ -61,7 +65,7 @@ def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
     first = corpus.last_line if corpus else start
     last = c.last_line
     if write:
-        file = file or "CACO_3-7T_{}-{}_hm.conllu".format(id0, id1)
+        file = file or "CACO_3-7T_{}-{}_HM.conllu".format(id0, id1)
         dump_path = os.path.join(directory, file)
         hm.write_conllu(corpus=c, append=append, path=dump_path)
     return c

@@ -114,11 +114,14 @@ plposs -> VyE		[*v]
 VyE -> VyE		[:-;:>]
 VyE -> end		[ዬ:ኤ;ያ:ኣ]
 
-# ጉዞዋቸው, ጉዞአቸው
+# ጉዞዋቸው, ጉዞአቸው, ጉዟቸው
 stem -> ou		[*u;*o]
 plposs -> ou		[*u;*o]
 ou -> ou  		[:-;:>]
 ou -> end		[ዋ:ኣ;አ:ኣ]
+stem -> Wa		[{u2Wa};{o2Wa}]
+Wa -> Wa		[:-;:>]
+Wa -> end		[:ኣ]
 
 # ቤቱ
 stem -> I2u		[{I2u}]

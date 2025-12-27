@@ -1,5 +1,7 @@
--> start
+-> start0
 
-start -> start	[አ:ኣ;^N;:/]
+start0 -> start	[ኣ:አ;^N-አ]
+
+start -> start	[^N;:/]
 
 start ->

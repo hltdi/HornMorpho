@@ -722,7 +722,8 @@ class POSMorphology:
     def __init__(self, pos, feat_list=None, lex_feats=None, excl_feats=None,
                  feat_abbrevs=None, fv_abbrevs=None, fv_dependencies=None, fv_priority=None,
                  feature_groups=None, name=None, explicit=None, true_explicit=None,
-                 lemma_feats=None, umcats=None, segments=None, mwe_feats=None, mwe=True):
+                 lemma_feats=None, umcats=None, segments=None,
+                 nonudfeats=None, mwe_feats=None, mwe=True):
         # A string representing part of speech
         self.pos = pos
         # A string representing the full name of the POS
@@ -809,6 +810,8 @@ class POSMorphology:
         self.lemma_feats = lemma_feats
         # UM features for freq file
         self.umcats = umcats
+        # UM feats to avoid in UD
+        self.nonudfeats = nonudfeats
         # Segments and their properties
         self.segments = segments
         # MWE feats for this POS
@@ -1497,6 +1500,8 @@ class POSMorphology:
             pre, stem, suf = match.groups()
 #            print(" **pre {}".format(pre))
         if kwargs.get('combine_segs', False):
+            # First strip off leading and trailing -'s
+            stem = stem.lstrip('-').rstrip('-')
             stem = self.language.combine_segments(stem)
             if degem:
                 stem = EES.degeminate(stem)
@@ -1596,7 +1601,7 @@ class POSMorphology:
         if 's' in features:
             procdict['sense'] = features['s']
         if um:
-            udfdict, udfalts = self.language.um.convert2ud(um, self.pos, extended=True, return_dict=True)
+            udfdict, udfalts = self.language.um.convert2ud(um, self.pos, POS=procdict['pos'], extended=True, nonud=self.nonudfeats, return_dict=True)
         else:
 #            print("!! No udfdict for {}: {}".format(token, string))
             udfdict = udfalts = []
@@ -2100,7 +2105,6 @@ class POSMorphology:
 #        # Add class
 #        initfeat.append("c={}".format(cls))
         initfeat = ','.join(initfeat)
-#        print("    ^^ initfeat 2 {} root {}".format(initfeat, root))
         if (gen_out := self.gen(root, update_feats=initfeat, mwe=False, v5=True)):
             form = self.postproc5(gen_out[0][0], gemination=gemination, elim_bounds=False, gloss=gloss)
             if mwe_part and add_part:
