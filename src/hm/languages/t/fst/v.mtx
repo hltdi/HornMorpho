@@ -47,7 +47,7 @@ $ prestem
 $ sb_rel
   # geminate ት- and  ን- for +rel and optionally after ክ
   /	<> [+rel,t=i,sp=1,sn=2,-neg];[+rel,t=i,sp=2,-neg];[+rel,t=i,sp=3,sn=1,sg=f,-neg];
-             [t=i,sp=2,conj1=ክ,-neg,+K1];[t=i,sp=1,sn=2,conj1=ክ,-neg,+K1];[t=i,sp=3,sn=1,sg=f,conj1=ክ,-neg,+K1]
+           [t=i,sp=2,conj1=ክ,-neg,+K1];[t=i,sp=1,sn=2,conj1=ክ,-neg,+K1];[t=i,sp=3,sn=1,sg=f,conj1=ክ,-neg,+K1]
   --	[-rel];[t=p|c];[+rel,t=i,+neg];[+rel,t=i,sp=3,sn=2];[+rel,t=i, sp=1,sn=1];[+rel,t=i,sp=3,sn=1,sg=m]
 
 $ sb_pre
@@ -94,10 +94,10 @@ $ voice_bound
 
 $ stem
 # Comment out for generation or analysis without compiled stems
-#   +vstem2+	[pos=V|AUX]
+   +vstem2+	[pos=V|AUX]
    +v_stem_irr+	[pos=V|AUX]
 # Uncomment for generation
-   >>v_stem<<
+#   >>v_stem<<
 
 $ stembound
   -

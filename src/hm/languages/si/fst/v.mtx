@@ -1,0 +1,127 @@
+$ conj
+#  ት  		[cnj1=ስ,t=i,-rel,-mv]
+#  ተ		[adp=ከ,t=i|p,+rel,-mv]
+  የ		[cnj=የ,t=p,+rel,-aux]
+  ል		[cnj=ል,t=i,-rel,-aux]
+  ብ		[cnj=ብ,t=i,-rel,-aux]
+  በ		[cnj=በ,t=p,-rel,-aux]
+  --  		[-rel,cnj=None]
+
+$ conj_bound
+  -
+
+$ sb_pre
+  አል		[+neg,t=p,-aux];[+neg,t=j,sp=1]
+  አት		[+neg,t=j,sp=2];[+neg,t=j,sp=3,sn=1,sg=f,-imp]
+  አይ		[+neg,t=j,sp=3,sn=1,sg=m,-imp];[+neg,t=j,sp=3,sn=2,-imp];[+neg,t=j,sp=3,+imp]
+  እለው		[+neg,t=i,sp=1,-aux]
+  # geminated
+  እት		[+neg,t=i,sp=2,-aux];[+neg,t=i,sp=3,sn=1,sg=f,-aux,-imp]
+  እለ		[+neg,t=i,sp=3,sn=1,sg=m,-aux,-imp];[+neg,t=i,sp=3,sn=2,-aux,-imp];[+neg,t=i,sp=3,-aux,-imp]
+  እ		[-neg,t=i,sp=3,sn=2,-imp];[-neg,t=i,sp=3,sn=1,sg=m,-imp];[-neg,t=i,+imp,sp=3,sn=1,sg=m];[-neg,t=i,sp=1]
+  ት		[-neg,t=i,sp=2,-imp];[-neg,t=i,sp=3,sn=1,sg=f,-imp]
+  ለ		[-neg,t=j,sp=1]
+  ተ		[-neg,t=j,sp=2];[-neg,t=j,sp=3,sn=1,sg=f,-imp]
+  የ		[-neg,t=j,sp=3,sn=1,sg=m,-imp];[-neg,t=j,sp=3,sn=2,-imp];[-neg,t=j,sp=3,+imp];[-neg,t=j,sp=1,sn=2]
+  --  		[t=p,-neg];[t=j,sp=2,-neg]
+
+$ prestem
+  <
+
+#$ voice_pre
+#  ኣ		[v=a]
+#  # need to handle gemination
+#  ኣት  	[v=at]
+#  # ተ when word initial; ት or gemination otherwise
+#  ተ		[t=p,v=p];[t=j,sp=2,v=p]
+#  --  	[v=0];[t=i,v=p];[t=j,sp=1|3,v=p]
+
+$ stem
+   +v_stem+	[pos=v]
+
+$ poststem
+  >
+
+$ sb_V
+  ኤ		[c=Y,t=p,sp=3,sn=1,-imp];[c=Y,t=p,sp=1|2]
+  አ		[c=C|A,t=p,sp=3,sn=1,-imp]
+  ኣ		[c=A,t=p,sp=1|2,-imp]
+  ኡ		[sp=3,sn=2,-imp];[t=i|j,sp=2,sn=2,-imp]
+  ኢ		[sp=3,+imp,-pal];[t=i|j,sp=2,sn=1,sg=f,+pal]
+  ይ		[+rpal,t=i|j,sp=1,sn=1];[+rpal,t=i|j,sp=2,sn=1,sg=m];[+rpal,t=i|j,sp=3,sn=1,-imp]
+  --		[t=i|j,sp=1,sn=2];[c=C,t=p,sp=1,sn=2];[c=C,t=p,sp=1|2];[-rpal,t=i|j,sp=1,sn=1];
+  		[-rpal,t=i|j,sp=2,sn=1,sg=m];[-rpal,t=i|j,sp=3,sn=1,-imp]
+
+$ sb_C
+  ት   		[sp=3,sn=1,sg=f,t=p,-imp]
+  ኩ		[c=C,sp=1,sn=1,t=p,-imp]
+  ሁ		[c=Y|A,sp=1,sn=1,t=p,-imp]
+  ው		[c=Y|A,sp=1,sn=1,t=p,-imp]
+  ከ		[c=C,sp=2,sn=1,sg=m,t=p,-imp]
+  ሀ		[c=Y|A,sp=2,sn=1,sg=m,t=p,-imp]
+  ሽ		[sp=2,sn=1,sg=f,t=p,-imp]
+  ኩሙ		[c=C,sp=2,sn=2,t=p,-imp]
+  ሙ		[c=Y|A,sp=2,sn=2,t=p,-imp]
+  ነ		[sp=1,sn=2,-imp]
+  --		[t=i|j,sp=1,sn=1,-imp];[t=i|j,sp=2,-imp];[t=i|j,sp=3,sn=1,-imp];
+  		[t=p,sp=3,sn=1,sg=m,-imp];[sp=3,sn=2];[sp=3,+imp]
+
+$ ss_bound
+  -
+
+$ ob_V
+  አ	[+O,sp=1,sn=1,t=i|j,op=2];[+O,sp=1,sn=1,t=i|j,op=3,og=m];
+  	[+O,sp=3,sn=1,-imp,t=i|j,op=1|2];[+O,sp=3,sn=1,-imp,t=i|j,op=3,og=m];
+	[+O,sp=2,sn=1,sg=m,t=i|j,op=1];[+O,sp=2,sn=1,sg=m,t=i|j,op=3,og=m];
+	[+O,sp=3,sn=1,sg=f,t=p]
+  --	[-O];[+O,sn=2];[+O,sp=2,sn=1,sg=f];[+O,op=3,on=1,og=f];[+O,t=p];[+O,sp=1,sn=2,t=i|j]
+
+$ ob_C
+  ## simple (objective, oc=o) suffixes
+  ይ	  [+O,op=3,on=1,og=m,oc=o]
+  ኤት	  [+O,op=3,on=1,og=f,oc=o]
+  ይሙ	  [+O,op=3,on=2,oc=o]
+  ኝ	  [+O,op=1,on=1,oc=o,sp=2|3]
+  ነ  	  [+O,op=1,on=2,oc=o,sp=2|3]
+  ሀ	  [+O,op=2,on=1,og=m,oc=o,sp=1|3]
+  ሽ	  [+O,op=2,on=1,og=f,oc=o,sp=1|3]
+  ኩሙ	  [+O,op=2,on=2,oc=o,sp=1|3]
+  ሙ	  [+O,op=2,on=2,oc=o,sp=1|3]
+  ## benefactive (oc=b) suffixes
+  ንከ	  [+O,op=2,on=1,og=m,oc=b]
+  ንሽ	  [+O,op=2,on=1,og=f,oc=b]
+  ንኩም	  [+O,op=2,on=2,oc=b]
+  # geminated
+  ኒ	  [+O,op=3,on=1,og=m,oc=b]
+  ኔት	  [+O,op=3,on=1,og=f,oc=b]
+  ኒሙ	  [+O,op=3,on=2,oc=b]
+  ነ 	  [+O,op=1,on=2,oc=b]
+  ኝ 	  [+O,op=1,on=1,oc=b]
+  ## malefactive (oc=m) suffixes; these are complicated, depending on subject suffixes
+#  ቡይ	  [+O,op=3,on=1,og=m,oc=m]
+#  ቦት	  [+O,op=3,on=1,og=f,oc=m]
+  --   	  [-O,op=0,oc=0]
+
+$ ob_bound
+  -
+
+$ aux
+  ኣሁ	[+aux,sp=1,sn=1]
+  ኣው	[+aux,sp=1,sn=1]
+  ኣሀ	[+aux,sp=2,sn=1,sg=m]
+  ኣሽ	[+aux,sp=2,sn=1,sg=f]
+  ኣን	[+aux,sp=3,sn=1,sg=m];[+aux,sp=3,sn=2];[+aux,sp=1,sn=1];[+aux,sp=3,+imp]
+  ኣት	[+aux,sp=3,sn=1,sg=f]
+  ኣሙ	[+aum,sp=2,sn=2]
+  --	[-aux]
+
+$ aux_bound
+  -
+
+$ det
+  ይ	[+rel,+det]
+  --	[-rel];[+rel,-det]
+
+
+#$ end
+#  --		[pos=v]

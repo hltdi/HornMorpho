@@ -1,0 +1,30 @@
+$ stemstart
+  <
+
+$ stem
+  ->postcase	+n_irr+		[pos=N]
+  +noun+		[pos=N]
+
+$ stemend
+  >
+
+$ case
+  i		[g=m,c=s|g,n=1]
+  h		[g=f,c=g,n=1]
+  --		[c=o];[g=f,c=s]
+
+$ postcase
+  -
+
+$ pp
+  h		[pp=h,-s]
+  l		[pp=l,-s]
+  t		[pp=t,-s]
+  k		[pp=k,-s]
+  --		[pp=0]
+
+$ postpp
+  -
+
+$ conj
+  --		[cj=0]

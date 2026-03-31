@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is a project of PLoGS.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018-2025. PLoGS and Michael Gasser <gasser@indiana.edu>.
+    Copyleft 2018-2026. PLoGS and Michael Gasser <onlyskybl@gmail.com>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -105,7 +105,7 @@ str.maketrans("ኅኁኂኃኄኅኆሠሡሢሣሤሥሦፀፁፂፃፄፅፆ�
 DEPAL = {"ሽ": "ስ", "ች": "ት", "ኝ": "ን", "ጅ": "ድ", "ጭ": "ጥ", "ዥ": "ዝ", "ይ": "ል"}
 
 # convert other abbreviations to conv file language labels (later make everything agree!)
-LANGUAGES = {'a': 'am', 't': 'ti', 'te': 'tig', 'k': 'gru', 's': 'stv'}
+LANGUAGES = {'a': 'am', 't': 'ti', 'te': 'tig'}
     
 ### TOP-LEVEL FUNCTIONS
 

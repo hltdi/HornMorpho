@@ -142,7 +142,7 @@ class Roots:
                 map[char6] = [char]
             else:
                 map[char6].append(char)
-        print("** Making charmap for {}: {}".format(name, map))
+#        print("** Making charmap for {}: {}".format(name, map))
         return map
 
     @staticmethod
@@ -202,9 +202,9 @@ class Roots:
 
         def rootchar_weight(weight, verbose=False):
             if verbose:
-                print("  ** setting root char class for {}, {}".format(cons, weight))
+                print("  ** setting root char class for {}, {}; rev_char_sets {}".format(cons, weight, rev_char_sets.__repr__()))
             for index, c in enumerate(cons):
-                if c in rev_char_sets:
+                if rev_char_sets and c in rev_char_sets:
                     cls = rev_char_sets[c]
                     if verbose:
                         print("    ** class for {}: {}".format(c, cls))
@@ -252,7 +252,7 @@ class Roots:
 #            if root_chars == ['ስ', 'ብ', 'ር']:
 #                show = True
             if show:
-                print("*** Making root states for {} with weight ({}) {}".format(root_chars, type(weight), weight.__repr__()))
+                print("*** Making root states for {} with weight ({}) {} and charsets {}".format(root_chars, type(weight), weight.__repr__(), charsets))
             for index, (rchar, dest) in enumerate(zip(root_chars[:-1], states[:-1])):
                 position = index + 1
                 chars = charsets.get(position)
@@ -292,7 +292,7 @@ class Roots:
                             print(" ** char1 {}".format(char))
                         outchar = rchar if (gen or seglevel==0) else char
                         # outchar could actually be two characters, as in ተጊያጌጠ
-                        if len(char) == 2:
+                        if type(char) is not tuple and len(char) == 2:
                             dest00 = dest0 + '0'
                             if not fst.has_state(dest00):
                                 fst.add_state(dest00)
@@ -316,7 +316,7 @@ class Roots:
                             if show:
                                 print(" ** Creating iter gem arc, source {} dest {} char {} outchar {} {}".format(dest0, dest, inchar, '', wt))
                             gem_char_arc(dest0, dest, inchar, '', wt, wt)
-                        elif len(char) == 2:
+                        elif type(char) is not tuple and len(char) == 2:
                             outchar = '' if (gen or seglevel==0) else char
                             # multi-character "character"
                             dest01 = dest0 + '1'
@@ -339,7 +339,7 @@ class Roots:
                     if not fst.has_state(dest):
                         fst.add_state(dest)
                     for char in chars:
-                        if len(char) == 2:
+                        if type(char) is not tuple and len(char) == 2:
                             inchar = Roots.remove_gem(char)
                             if show:
                                 print(" ** Creating gem arc source {} dest {} char {} outchar {} {}".format(source, dest, inchar, rchar, wt))
@@ -355,7 +355,7 @@ class Roots:
             chars = charsets[len(charsets)]
             rchar = root_chars[-1]
             for char in chars:
-                if len(char) == 2:
+                if type(char) is not tuple and len(char) == 2:
                     inchar = Roots.remove_gem(char)
                     gem_char_arc(source, 'end', inchar, rchar, None, None, verbosity=0)
                 else:

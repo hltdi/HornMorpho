@@ -27,36 +27,29 @@ feats:
 
   pos: v verb
 
-  a = 0 | a | it
-
-  tv = 0 | p | a | at
+    a = 0 | a | i
+    v = 0 | p | a | at
+    t = p | i | j
   
-  neg = False | True
+    neg = False | True
 
-  tt = p | i | j
-
-  mv = True | False
-
-  cv = False | True
-
-  perf = False | True
-
-  op = 0
+    imp = False | True
+    mv = True | False
+    cv = False | True
+    perf = False | True
+    op = 0
 
   pos: v_stem v_stem
 
-  a = 0 | a | it
-
-  tv = 0 | p | a | at
+    a = 0 | a | i
+    v = 0 | p | a | at
+    t = p | i | j
   
-  neg = False | True
-
-  tt = p | i | j
+    neg = False | True
 
 # string/character sets
 
 # b=bilabials; d=dental,alveolar (except liquids); g=velar
-# r=r,l,n; R=r,l
 # y=palatalized, w=labialized consonants
 # Y=palatalized consonants or following vowels
 # v=vowels

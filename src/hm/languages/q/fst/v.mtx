@@ -1,0 +1,39 @@
+$ sbj_pre
+  t		[c=1,p=2];[c=1,p=3,n=1,g=f]
+  n		[c=1,p=1,n=2]
+  y		[c=1,p=3,n=2];[c=1,p=3,n=1,g=m]
+  --		[c=2|3];[c=1,p=1,n=1]
+
+$ prestem
+  <
+
+$ stem
+#->poststem		+v_stem_der+	[pos=V]
+  +v_stem+				[pos=V]
+
+$ poststem
+  >
+
+$ sbj_suf
+  t		[c=2|3,p=2]
+  n		[c=2|3,p=1,n=2]
+  y		[c=3,p=1,n=1]
+  --		[c=1];[c=2|3,p=3,n=2];[c=2|3,p=3,n=1,g=m]
+
+$ postsubj
+  -
+
+$ aspect
+  --		[c=3]
+
+$ postasp
+  -
+
+$ number
+  --		[n=1];[p=1,n=2]
+
+$ postnumb
+  -
+
+$ conj
+  --		[cnj=None]

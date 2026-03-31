@@ -105,7 +105,8 @@ REMOVE (MAIN) - (CCONJ)
 # or with -ና 
 # Not really true: ይምጣ አይምጣ አላውቅም; but the rule accommodates this
 REMOVE (IMP) - (CCONJ)
-       (NOT 1 (<<<) OR SADV OR (IMP) or (MAIN) or ("አለ")) ;
+       (NOT 1 (<<<) OR SADV OR (IMP) or (MAIN) or ("አለ"))
+       (NOT 1 ("<፣>") OR ("<፤>") OR ("<፥>") OR ("<፦>")) ;
 
 # ልመጣ; remove if it isn't followed by a verb or auxiliary.
 REMOVE (L_SC)

@@ -70,6 +70,184 @@ def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
         hm.write_conllu(corpus=c, append=append, path=dump_path)
     return c
 
+# Tigrinya copula and cleft
+
+def sep_relative():
+    '''Separate sentences ending with relative verb from other mid-copula sentences.'''
+    rel = []
+    ipf = []
+    prf = []
+    ki = []
+    other = []
+    t = hm.get_language('t')
+    verb = t.morphology['v']
+    with open('../../TT/data/cleft1.txt') as file:
+        for line in file:
+            line = line.strip().split()
+            last = ''
+            for word in line[-2:-4:-1]:
+                if word not in "።!?":
+                    last = word
+                    break
+#            last = line[-2]
+            if verb.anal(last, "[+rel, conj1=ክ]"):
+                ki.append(line)
+            elif verb.anal(last, "[+rel,conj1=ዝ]"):
+                rel.append(line)
+            elif verb.anal(last, "[-rel,conj1=0,t=i]"):
+                ipf.append(line)
+            elif verb.anal(last, "[-rel,t=c]"):
+                prf.append(line)
+            else:
+                other.append(line)
+    return rel, ipf, prf, ki, other
+            
+def anal_cop_subj_rel(sentstring, cop=None, verb=None):
+    sentence = sentstring.split()
+    if len(sentence) > 11 or len(sentence) < 4 or sentence[-1] not in "?!።":
+        return
+    if not cop or not verb:
+        t = hm.get_language('t')
+        cop = cop or t.morphology['cop']
+        verb = verb or t.morphology['v']
+    def anal(word):
+        if cop.anal(word) or verb.anal(word, "[t=c,r=ንብር]"):
+            return word
+        return
+    def anal_rel(word):
+        if verb.anal(word, "[+rel,conj1=ዝ]") or verb.anal(word, "[+rel,conj1=እ]"):
+            return word
+        return
+    if not anal(sentence[-2]):
+        return
+    position = 0
+    found = False
+    for word in sentence[:-2]:
+#        if word in "።?!":
+#            return
+        if anal_rel(word):
+            found = True
+            position = 1
+        elif found:
+            position += 1
+    if found and position > 2:
+        return sentstring
+    return
+
+def anal_cop_fut(sentstring, cop=None, verb=None):
+    sentence = sentstring.split()
+    if len(sentence) > 11 or len(sentence) < 4 or sentence[-1] not in "?!።":
+        return
+    if not cop or not verb:
+        t = hm.get_language('t')
+        cop = cop or t.morphology['cop']
+        verb = verb or t.morphology['v']
+    def anal(word):
+        if cop.anal(word) or verb.anal(word, "[t=c,r=ንብር]"):
+            return word
+        return
+    def anal_fut(word):
+        if verb.anal(word, "[+rel, conj1=ክ]"):
+            return word
+        return
+    if anal(sentence[-2]):
+        return
+    position = 0
+    found = False
+    for word in sentence:
+#        if word in "።?!":
+#            return
+        if found and word in '፣።?!"\'':
+            return sentstring
+        if anal(word):
+            position = 1
+        elif word in '፣።?!"\'' or position >= 3:
+            position = 0
+        elif position:
+            if anal_fut(word):
+                found = True
+            else:
+                position += 1
+    return
+
+def anal_cop_prf(sentstring, cop=None, verb=None):
+    sentence = sentstring.split()
+    if len(sentence) > 11 or len(sentence) < 4 or sentence[-1] not in "?!።":
+        return
+    if not cop or not verb:
+        t = hm.get_language('t')
+        cop = cop or t.morphology['cop']
+        verb = verb or t.morphology['v']
+    def anal(word):
+        if cop.anal(word) or verb.anal(word, "[t=c,r=ንብር]"):
+            return word
+        return
+    def anal_prf(word):
+        if verb.anal(word, "[-rel,t=c]"):
+            return word
+        return
+    if anal(sentence[-2]):
+        return
+    position = 0
+    found = False
+    for word in sentence:
+#        if word in "።?!":
+#            return
+        if found and word in '፣።?!"\'':
+            return sentstring
+        if anal(word):
+            position = 1
+        elif word in '፣።?!"\'' or position >= 3:
+            position = 0
+        elif position:
+            if anal_prf(word):
+                found = True
+            else:
+                position += 1
+    return
+    
+def anal_cop(sentstring, cop=None, verb=None):
+    sentence = sentstring.split()
+#    if len(sentence) > 11 or len(sentence) < 4 or sentence[-1] not in "?!።":
+#        return
+    if not cop or not verb:
+        t = hm.get_language('t')
+        cop = cop or t.morphology['cop']
+        verb = verb or t.morphology['v']
+    def anal(word):
+        if cop.anal(word) or verb.anal(word, "[t=c,r=ንብር]"):
+            return word
+        return
+    if anal(sentence[-2]):
+        return
+    for word in sentence[:-2]:
+        if word in "።?!":
+            return
+        if anal(word):
+            return sentstring
+    return
+
+def corpus_anal_cop(start=0, nsents=10000, report=1000, anal=anal_cop_subj_rel):
+    t = hm.get_language('t')
+    cop = t.morphology['cop']
+    verb = t.morphology['v']
+    n = 0
+    sentences = []
+    with open("../../TT/data/tlmd_v1.0.0/all6.txt") as file:
+        lines = file.readlines()
+        end = start + nsents
+        for sentence in lines[start:end]:
+            n += 1
+            if n >= nsents:
+                return sentences
+            if n % report == 0:
+                print("Analyzed {} sentences".format(n))
+            sentence = sentence.strip()
+            s = anal(sentence, cop=cop, verb=verb)
+            if s:
+                sentences.append(s)
+    return sentences
+
 # Tigrinya verb categories
 
 def anal_Tv(n_sents=1000, start=0, cache=None, corpus=None, disamb=True, feats=None):

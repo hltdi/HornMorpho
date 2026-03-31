@@ -289,3 +289,23 @@
 	"ሰማ" V DERAGI MAIN 1 NEG PFV SG V
 "<።>"
 	"።" PUNCT
+
+"<የሚልህን>"
+	"አለ" V DERAGI OBJPRON 3 AC2SM ACC IPFV MASC RELC SG V
+"<ስማ>"
+	"ሰማ" V DERAGI 2 IMP MASC SG V
+	"ሳመ" V DERAGI 3 CVB FEM SG V
+	"ስማ" PROPN
+"<፤>"
+	"፤" PUNCT
+"<ቃሉንም>"
+	"ቃል" N POSS ACC ADV PSS3SM
+	"ቃል" N ACC ADV DEF MASC
+	"ቃል" N ACC CCONJ DEF MASC
+	"ቃል" N POSS ACC CCONJ PSS3SM
+	"ቃሉ" PROPN ACC ADV
+	"ቃሉ" PROPN ACC CCONJ
+"<ታዘዝ>"
+	"ታዘዘ" V TEDERAGI 2 IMP MASC PASS SG V
+"<።>"
+	"።" PUNCT

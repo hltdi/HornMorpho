@@ -13,6 +13,7 @@
 ኘ=Na ኙ=Nu,Nuu ኚ=Nii ኛ=Naa ኜ=Ne,Nee ኝ=N,Ni ኞ=No,Noo
 አ='a ኡ='u,'uu ኢ='ii ኣ='aa ኤ='e,'ee እ=','i ኦ='o,'oo
 ከ=ka ኩ=ku,kuu ኪ=kii ካ=kaa ኬ=ke,kee ክ=k,ki ኮ=ko,koo
+ኸ=ka ኹ=ku,kuu ኺ=kii ኻ=kaa ኼ=ke,kee ኽ=k,ki ኾ=ko,koo
 ወ=wa ዉ=wu,wuu ዊ=wii ዋ=waa ዌ=we,wee ው=w,wi ዎ=wo,woo
 ዘ=za ዙ=zu,zuu ዚ=zii ዛ=zaa ዜ=ze,zee ዝ=z,zi ዞ=zo,zoo
 ዠ=Za ዡ=Zu,Zuu ዢ=Zii ዣ=Zaa ዤ=Ze,Zee ዥ=Z,Zi ዦ=Zo,Zoo
@@ -23,31 +24,13 @@
 ጠ=Ta ጡ=Tu,Tuu ጢ=Tii ጣ=Taa ጤ=Te,Tee ጥ=T,Ti ጦ=To,Too
 ጨ=Ca ጩ=Cu,Cuu ጪ=Cii ጫ=Caa ጬ=Ce,Cee ጭ=C,Ci ጮ=Co,Coo
 ጰ=Pa ጱ=Pu,Puu ጲ=Pii ጳ=Paa ጴ=Pe,Pee ጵ=P,Pi ጶ=Po,Poo
-ጸ=Sa ጹ=Su,Suu ጺ=Sii ጻ=Saa ጼ=Se,See ጽ=S,Si ጾ=So,Soo
 ፈ=fa ፉ=fu,fuu ፊ=fii ፋ=faa ፌ=fe,fee ፍ=f,fi ፎ=fo,foo
 ፐ=pa ፑ=pu,puu ፒ=pii ፓ=paa ፔ=pe,pee ፕ=p,pi ፖ=po,poo
-ሏ=lWaa
 ሟ=mWaa
-ሯ=rWaa
-ሷ=sWaa
-ሿ=šWaa
 ቈ=qWa ቋ=qWaa ቌ=qWe,qWee ቍ=qW,qWi
 ቧ=bWaa
-ቯ=vWaa
-ቷ=tWaa
-ቿ=cWaa
-ኗ=nWaa
-ኟ=NWaa
 ኰ=kWa ኳ=kWaa ኴ=kWe,kWee ኵ=kW,kWi
-ዟ=zWaa
-ዧ=ZWaa
-ዷ=dWaa
-ጇ=jWaa
 ጐ=gWa ጓ=gWaa ጔ=gWe,gWee ጕ=gW,gWi
-ጧ=TWaa
-ጯ=CWaa
-ጷ=PWaa
-ጿ=SWaa
 ፏ=fWaa
 ፗ=pWaa
 ።=. ፣=, ፤=; ፥=: ፦=: ፧=*?

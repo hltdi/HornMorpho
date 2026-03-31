@@ -1,0 +1,36 @@
+name: Qafar Af
+code: q
+version: 1.0
+
+seg: a e i o u aa ee ii oo uu
+     A E I O U
+     b c d f g h k l m n q r s t w x y '
+     B C D F G H K L M N Q R S T W X Y
+     # foreign words
+     j kh sh z v 
+     J Kh Sh Z V
+     # ~ replaces - in hyphenated words (both nouns/adjectives and verbs)
+     - ~ >
+
+postproc: lambda form: form.replace('~', '-')
+gen_preproc: lambda form: form.replace('-', '~')
+
+feats:
+
+  pos: N noun
+    c = s | o | g
+    g = m | f
+    n = 1 | 2
+    # short / long forms for some stems
+    s = True | False
+    pp = h | l | t | k
+
+  pos: V verb
+    # conjugation classes
+    c = 1 | 2 | 3
+    # Person number gender of subject
+    p = 1 | 2 | 3
+    n = 1 | 2
+    g = m | f
+    # perfective, imperfective aspect
+    a = p | i

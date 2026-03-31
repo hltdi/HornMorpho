@@ -23,34 +23,30 @@ seg:  ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሐ ሑ ሒ ሓ �
 feats:
 
   pos: v verb
+    a = 0 | a | t
+    v = 0 | p | a | at
+    t = p | i | j | c
 
-  a = 0 | a | it
-
-  v = 0 | p | a | at
+    imp = False | True
   
-  neg = False | True
+    neg = False | True
 
-  t = p | i | j | c
+    W = False | True
+    Y = False | True
 
-  W = False | True
-
-  Y = False | True
-
-  mv = True | False
+    mv = True | False
 
   pos: v_stem v_stem
 
-  a = 0 | a | it
-
+  a = 0 | a | i
   v = 0 | p | a | at
+  t = p | i | j | c
   
   neg = False | True
 
   depal = False | True
 
   hol = False | True
-
-  t = p | i | j | c
 
   W = False | True
 
@@ -69,7 +65,7 @@ feats:
 # D=voiced occlusives
 # r=rnl
 
-# Vowels beginning affixes
+# Vowel-initial affixes
 ^V = {=አ, =ኡ, =ኢ, =ኣ, =ኤ, =እ, =ኦ}
 
 # All characters

@@ -1,0 +1,15 @@
+# ሰበረ ሰበረ
+ሰበር	''	[a=0,v=0,t=p,c=C,lemma=ሰበረ]
+ሰብር	''	[a=0,v=0,t=i,c=C,-rpal,lemma=ሰበረ]
+ስበር	''	[a=0,v=0,t=j,c=C,-rpal,lemma=ሰበረ]
+# ከሼ ፈለገ
+ከስ	''	[a=0,v=0,t=i|p,c=Y,+rpal,lemma=ከሼ]
+ክስ	''	[a=0,v=0,t=j,c=Y,+rpal,lemma=ከሼ]
+# ኦንጤ ዘጋ
+ኦንጥ   ''	[a=0,v=0,t=i|p,c=Y,-rpal,lemma=ኦንጤ]
+ኡንጥ   ''	[a=0,v=0,t=j,c=Y,-rpal,lemma=ኦንጤ]
+ቶንጥ   ''	[a=0,v=p,t=i|p,c=Y,-rpal,lemma=ኦንጤ]
+ቱንጥ   ''	[a=0,v=p,t=j,c=Y,-rpal,lemma=ኦንጤ]
+# በለ በላ
+በለ	''	[a=0,v=0,t=i|p,c=A,-rpal,lemma=በለ]
+ብለ	''	[a=0,v=0,t=j,c=A,-rpal,lemma=በለ]

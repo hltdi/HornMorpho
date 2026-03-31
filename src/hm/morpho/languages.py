@@ -3,8 +3,8 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2025.
-    PLoGS and Michael Gasser <gasser@iu.edu>.
+    Copyleft 2011-2026.
+    PLoGS and Michael Gasser <onlyskybl@gmail.com>.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
     You should have received a copy of the GNU General Public License
     along with HornMorpho.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------
-Author: Michael Gasser <gasser@iu.edu>
+Author: Michael Gasser <onlyskybl@gmail.com>
 
 """
 
@@ -33,29 +33,34 @@ import requests, tarfile
 ###
 
 LANGUAGES = {}
-# maps additional language abbreviations to ISO codes
+# maps additional language abbreviations to ultimate abbreviations
 CODES = {'am': 'a',
+         'af': 'q',
          'chh': 'ch', 'sgw': 'ch',
+         'eng': 'en',
          'gz': 'g',
-         'sl': 'stv', 'slt': 'stv', 'S': 'stv',
+         'stv': 'si', 'slt': 'si', 'sil': 'si',
          'kst': 'k', 'gru': 'k', 'ks': 'k',
          'mh': 'muh',
          'ms': 'mvz', 'msq': 'mvz',
-         'so': 'som', 's': 'som',
+         'som': 'so', 's': 'so',
          'ti': 't',
          'T': 'te',
          'om': 'o', 'orm': 'o'}
+    
+# Ultimate abbreviations for languages
 
 ABBREV2LANG = {'a': 'አማርኛ',
                't': 'ትግርኛ',
                'o': 'Afaan Oromoo',
-               'te': 'ትግረ',
+               'q': 'Qaraf Af',
                'g': 'ግዕዝ',
+               'k': 'ክስታንኛ',
+               'te': 'ትግረ',
                'ch': 'ቸሃ',
                'so': 'Af Soomaali',
-               'eng': 'English',
-               'stv': 'የስልጤ አፍ',
-               'k': 'ክስታንኛ',
+               'en': 'English',
+               'si': 'የስልጤ አፍ',
                'አ': 'አማርኛ',
                'ት': 'ትግርኛ'}
 

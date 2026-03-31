@@ -7,7 +7,7 @@ prep -> rel	[:-]
 start -> rel	[:-]
 
 ### conj1
-rel -> rela	[ዝ;ክ]		[-neg]
+rel -> rela	[ዝ;ክ;እ]		[-neg]
 rel -> rela	[ዚ:ዝ;ኪ:ክ]	[sg=m,sn=1,sp=3,t=i,-neg];[sp=3,sn=2,t=i,-neg]
 rel -> rela	[ዘ:ዝ;ከ:ክ;ኸ:ኽ;ደ:ድ]	[+neg]
 rel -> rel0	[^N]	[-rel]
@@ -43,6 +43,7 @@ conj2a -> sbj1	[:<]
 
 ### sbj1
 sbj1 -> sbj1a	[^N;/]	[t=j];[t=i,sn=2];[t=i,sp=2];[t=i,sg=f,sp=2|3]
+sbj1a -> sbj1a	[^N]
 #sbj1a -> sbj1b	[^N;/]
 # delete the ipf 1s and 3sm subject prefix when there's a rel and/or neg prefix
 sbj1 -> sbj1c 	[:ይ;:እ]

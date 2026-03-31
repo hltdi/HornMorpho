@@ -26,8 +26,11 @@ $ sb_pre
   ን 	      	[t=i|j,sp=1,sn=2,-imp];[t=i,sp=1,sn=2,cnj1=ብ|ስ,-imp];[t=i,sp=1,sn=1,+neg,-imp];[t=j,sp=1,sn=1,-imp]
   --  	[t=p];[t=j,sp=2,-neg,-imp]
 
-$ sp_bound
-  -
+#$ sp_bound
+#  -
+
+$ prestem
+  <
 
 $ voice_pre
   ኣ		[v=a]
@@ -37,14 +40,11 @@ $ voice_pre
   ተ		[t=p,v=p];[t=j,sp=2,v=p]
   --  	[v=0];[t=i,v=p];[t=j,sp=1|3,v=p]
 
-$ prestem
-  +
-
 $ stem
    >>v_stem<<
 
 $ poststem
-  +
+  >
 
 $ sb_suf
   አ		[sp=3,sn=1,sg=m,t=p,-imp,-Y];[t=p,sp=3,+imp,+W,+Y]
@@ -81,7 +81,7 @@ $ ob_bound
 
 $ final
   ም		<>	[t=p,-neg,+mv];[t=i|j,-mv,+cv]
-  --		<>	[-mv,-cv];[t=i|j,+mv];[t=p,+neg,+mv]
+  --		<>	[-mv,-cv,t=p];[t=i|j,+mv,-rel];[t=p,+neg,+mv,-cv];[-mv,+rel,t=i,-cv]
 
 $ end
   --		[pos=v]

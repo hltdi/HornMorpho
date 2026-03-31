@@ -1,0 +1,59 @@
+﻿ሀ=hə ሁ=hu ሂ=hi ሃ=ha ሄ=he ህ=h ሆ=ho
+ለ=lə ሉ=lu ሊ=li ላ=la ሌ=le ል=l ሎ=lo
+ሐ=xə ሑ=xu ሒ=xi ሓ=xa ሔ=xe ሕ=x ሖ=xo
+ⷐ=çə ⷑ=çu ⷒ=çi ⷓ=ça ⷔ=çe ⷕ=ç ⷖ=ço
+=xwə ሗ=xwa =xw =xwe =xwi
+መ=mə ሙ=mu ሚ=mi ማ=ma ሜ=me ም=m ሞ=mo
+ᎀ=mwə ሟ=mwa ᎃ=mw ᎂ=mwe ᎁ=mwi
+ረ=rə ሩ=ru ሪ=ri ራ=ra ሬ=re ር=r ሮ=ro
+ሰ=sə ሱ=su ሲ=si ሳ=sa ሴ=se ስ=s ሶ=so
+ሸ=šə ሹ=šu ሺ=ši ሻ=ša ሼ=še ሽ=š ሾ=šo
+ቀ=k'ə ቁ=k'u ቂ=k'i ቃ=k'a ቄ=k'e ቅ=k' ቆ=k'o
+ቐ=c'ə ቑ=c'u ቒ=c'i ቓ=c'a ቔ=c'e ቕ=c' ቖ=c'o
+ቈ=k'wə ቊ=k'wi ቋ=k'wa ቌ=k'we ቍ=k'w
+በ=bə ቡ=bu ቢ=bi ባ=ba ቤ=be ብ=b ቦ=bo
+ᎄ=bwə ቧ=bwa ᎇ=bw ᎆ=bwe ᎅ=bwi
+ቨ=və ቩ=vu ቪ=vi ቫ=va ቬ=ve ቭ=v ቮ=vo
+ተ=tə ቱ=tu ቲ=ti ታ=ta ቴ=te ት=t ቶ=to
+ቸ=čə ቹ=ču ቺ=či ቻ=ča ቼ=če ች=č ቾ=čo
+ነ=nə ኑ=nu ኒ=ni ና=na ኔ=ne ን=n ኖ=no
+ኘ=ňə ኙ=ňu ኚ=ňi ኛ=ňa ኜ=ňe ኝ=ň ኞ=ňo
+አ=ə ኡ=u ኢ=i ኣ=a ኤ=e እ=I ኦ=o
+ከ=kə ኩ=ku ኪ=ki ካ=ka ኬ=ke ክ=k ኮ=ko
+ኸ=cə ኹ=cu ኺ=ci ኻ=ca ኼ=ce ኽ=c ኾ=co
+ኰ=kwə ኲ=kwi ኳ=kwa ኴ=kwe ኵ=kw
+ወ=wə ዉ=wu ዊ=wi ዋ=wa ዌ=we ው=w ዎ=wo
+ዘ=zə ዙ=zu ዚ=zi ዛ=za ዜ=ze ዝ=z ዞ=zo
+ዠ=žə ዡ=žu ዢ=ži ዣ=ža ዤ=že ዥ=ž ዦ=žo
+የ=yə ዩ=yu ዪ=yi ያ=ya ዬ=ye ይ=y ዮ=yo
+ደ=də ዱ=du ዲ=di ዳ=da ዴ=de ድ=d ዶ=do
+ጀ=ǰə ጁ=ǰu ጂ=ǰi ጃ=ǰa ጄ=ǰe ጅ=ǰ ጆ=ǰo
+ገ=gə ጉ=gu ጊ=gi ጋ=ga ጌ=ge ግ=g ጎ=go
+ጘ=jə ጙ=ju ጚ=ji ጛ=ja ጜ=je ጝ=j ጞ=jo
+ጐ=gwə ጒ=gwi ጓ=gwa ጔ=gwe ጕ=gw
+ጠ=t'ə ጡ=t'u ጢ=t'i ጣ=t'a ጤ=t'e ጥ=t' ጦ=t'o
+ጨ=č'ə ጩ=č'u ጪ=č'i ጫ=č'a ጬ=č'e ጭ=č' ጮ=č'o
+ጰ=p'ə ጱ=p'u ጲ=p'i ጳ=p'a ጴ=p'e ጵ=p' ጶ=p'o
+ጸ=s'ə ጹ=s'u ጺ=s'i ጻ=s'a ጼ=s'e ጽ=s' ጾ=s'o
+ፈ=fə ፉ=fu ፊ=fi ፋ=fa ፌ=fe ፍ=f ፎ=fo
+ᎈ=fwə ፏ=fwa ᎋ=fw ᎊ=fwe ᎉ=fwi
+ፐ=pə ፑ=pu ፒ=pi ፓ=pa ፔ=pe ፕ=p ፖ=po
+ᎌ=pwə ፗ=pwa ᎏ=pw ᎎ=pwe ᎍ=pwi
+ሏ=lwa
+ሯ=rwa
+ሷ=swa
+ሿ=šwa
+ቯ=vwa
+ቷ=twa
+ቿ=čwa
+ኗ=nwa
+ኟ=ňwa
+ዟ=zwa
+ዧ=žwa
+ዷ=dwa
+ጇ=ǰwa
+ጧ=t'wa
+ጯ=č'wa
+ጷ=p'wa
+ጿ=s'wa
+።=. ፣=, ፤=; ፥=: ፦=:
