@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-    Copyleft 2020-2025. Michael Gasser. gasser@iu.edu
+    Copyleft 2020-2026. Michael Gasser. gasser@iu.edu
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -554,7 +554,8 @@ class UniMorph:
         Read in the UM conversion data.
         """
         path = self.get_path(morph_version=morph_version)
-        print("Loading UM and CoNNL-U conventions from {}".format(path))
+        if verbosity:
+            print("Loading UM and CoNNL-U conventions from {}".format(path))
         current_pos = ''
         current_supfeat = ''
         current_feats = []

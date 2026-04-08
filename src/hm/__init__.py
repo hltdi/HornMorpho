@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS.
 
-Copyleft 2008-2025. Michael Gasser
+Copyleft 2008-2026. Michael Gasser
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ Author: Michael Gasser <gasser@iu.edu>
 """
 
 # Version 5.0 includes many new features, especially languages represented
-#   with fidel.  
+#   with fidel.
 # Version 4.5 includes the new segmenter for Amharic, accessed with
 # seg_word and seg_file with experimental=True (the default setting).
 # With conllu=True, the default, the segmentation functions return CoNLL-U
@@ -32,7 +32,7 @@ Author: Michael Gasser <gasser@iu.edu>
 # experimental CoNLL-U segmenter for Amharic
 
 __cat__ = ''
-__version__ = '5.3.4'
+__version__ = '5.3.6'
 
 __author__ = 'Michael Gasser'
 
@@ -63,8 +63,10 @@ def anal_corpus(language, **kwargs):
     disambiguate = kwargs.get('disambiguate', False)
     annotate = kwargs.get('annotate', False)
     morph_version = kwargs.get('morph_version', 0)
-    cg = kwargs.get('CGdisambiguate', kwargs.get('cg', False))
-    annotate = cg and kwargs.get('annotate', False)
+#    cg = kwargs.get('CGdisambiguate', kwargs.get('cg', False))
+#    annotate = cg and kwargs.get('annotate', False)
+    cg = False
+    annotate = False
     language = morpho.get_language(language, guess=guess, morph_version=morph_version, cg=cg, annotate=annotate)
     if language:
         # Create the corpus, by default analyzing sentences and running CG disambiguation on them.
@@ -285,9 +287,10 @@ def download(lang_abbrev, uncompress=True, overwrite=True):
 
 # Internal use only.
 
-def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
+def compile(abbrev, pos, gen=True, save=False,
+            phon=False, segment=False, guess=False,
             translate=False, experimental=False, mwe=False, seglevel=2,
-            gemination=True, split_index=0, verbose=True):
+            gemination=True, split_index=0, verbose=False):
     """
     Create a new composed cascade for a given language (abbrev) and part-of-speech (pos),
     returning the morphology POS object for that POS.
@@ -298,6 +301,13 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
     """
     pos_morph = get_pos(abbrev, pos, phon=phon, segment=segment, translate=translate, guess=guess,
                         load_morph=False, verbose=verbose)
+    language = pos_morph.language
+    kind = "ANALYSIS"
+    if gen:
+        kind += " AND GENERATION FSTs"
+    else:
+        kind += " FST"
+    print(">> COMPILING {} FOR {}, POS: {}. THIS WILL TAKE A WHILE!".format(kind, language, pos))
     if verbose:
         print(">>> CREATING ANALYZER <<<")
     fst = pos_morph.load_fst(True, segment=segment, gen=False, invert=False, guess=guess,
@@ -328,6 +338,19 @@ def compile(abbrev, pos, gen=True, phon=False, segment=False, guess=False,
             genfst = analfst.inverted()
         pos_morph.set_fst(genfst, generate=True, guess=False, phon=phon, segment=False, translate=translate,
                           experimental=experimental, mwe=mwe, v5=True)
+    print(">> COMPILATION COMPLETED.")
+    if save:
+        pos_morph.save_fst()
+        if gen:
+            pos_morph.save_fst()
+    else:
+        saveQ = input("Do you want to save the compiled analysis FST?\n>> ")
+        if saveQ.lower().startswith('yes'):
+            pos_morph.save_fst()
+        if gen:
+            saveQ = input("Do you want to save the compiled generation FST?\n>> ")
+            if saveQ:
+                pos_morph.save_fst(True)
     return pos_morph
 
 def compress(language):
@@ -335,6 +358,31 @@ def compress(language):
     Compress language, given abbreviation, saving resulting .tgz file in languages directory.
     '''
     morpho.compress_lang(language)
+
+def add_noun(language, noun):
+    '''
+    Add the noun to the lexicon for language.
+    User is prompted for additional features: 'name', 'place'.
+    '''
+    lg = morpho.get_language(language)
+    lexdir = lg.morphology.get_lex_dir()
+    feature = 'stem'
+    if language == 'a' and input('Is {} the name of a place?\n>> '.format(noun)) not in ['no', 'NO', 'No']:
+        feature = 'place'
+    elif input('Is {} the name of a person?\n>> '.format(noun)) not in ['no', 'NO', 'No']:
+        feature = 'name'
+    file = "n_{}.lex".format(feature)
+    path = os.path.join(lexdir, file)
+    try:
+        with open(path, 'a') as file:
+            if feature == 'stem':
+                # For Tigrinya features should be [pos=N,-pl]
+                print("{}\t''\t[pos=N,-h]".format(noun), file=file)
+            else:
+                print(noun, file=file)
+    except IOError:
+        print("File not found or no write permissions!")
+    return path
 
 def extract_corpus_features(corpus, pos=None, searchfeats=None):
     '''

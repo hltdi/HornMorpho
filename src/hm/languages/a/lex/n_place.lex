@@ -2305,3 +2305,6 @@
 ቃሊ/ቲ
 ማዣንግ
 ቃና
+# also listed as common noun
+ሻቢያ
+ፖርቶ

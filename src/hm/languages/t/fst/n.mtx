@@ -46,6 +46,7 @@ $ prestem
 $ stem
   +n_stem+  [pos=N|ADJ|DET|PRON|NUM|ADV,d=0,-z]
   +n_name+  [pos=PROPN,-pl,d=0,-z]
+  +n_place+ [pos=PROPN,-pl,d=0,-z]
   >>vn_stem<<
 
 $ poststem

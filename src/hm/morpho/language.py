@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2011-2025.
+    Copyleft 2011-2026.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -469,12 +469,13 @@ class Language:
                   segment=False, phon=False, guess=True, gen=False,
                   simplified=False, translate=False, experimental=False, mwe=False,
                   morph_version=0, cg=False, annotate=False,
-                  v5=True, poss=None, verbose=True):
+                  v5=True, poss=None, verbose=False):
         if self.load_attempted:
             return
         self.load_attempted = True
         filename = self.get_data_file(morph_version=morph_version)
-        print("Loading data from {}".format(filename))
+#        if verbose:
+#            print("Loading data from {}".format(filename))
         if not os.path.exists(filename):
             if verbose:
                 print(Language.T.tformat('(No language data file for {} at {})', [self, filename], self.tlanguages))
@@ -513,8 +514,8 @@ class Language:
         """
         Read in language data from a file.
         """
-        if verbose:
-            print('Parsing data for', self)
+#        if verbose:
+#            print('Parsing data for', self)
 
         lines = data.splitlines()[::-1]
 
@@ -719,17 +720,20 @@ class Language:
             m = CG_RE.match(line)
             if m:
                 if not cg:
-                    print("Skipping Constraint Grammar")
+                    if verbose:
+                        print("Skipping Constraint Grammar")
                     continue
                 types = m.group(1)
                 types = types.split()
                 for typ in types:
                     if typ.startswith("dep") and annotate:
                         self.depCG = CG(self, disambig=False)
-                        print("Loading dependency CG rules...")
+                        if verbose:
+                            print("Loading dependency CG rules...")
                     elif typ.startswith("dis"):
                         self.disambigCG = CG(self, disambig=True)
-                        print("Loading disambiguation CG rules...")
+                        if verbose:
+                            print("Loading disambiguation CG rules...")
                 continue
 
             m = TRANS_RE.match(line)
@@ -1466,7 +1470,8 @@ class Language:
             opt_string += 'phonetic'
         else:
             opt_string += 'analysis/generation'
-        print("Loading FSTs for {} (version {})".format(self, self.version))
+        if verbose:
+            print("Loading FSTs for {} (version {})".format(self, self.version))
         # In any case, assume the root frequencies will be needed?
         self.morphology.set_root_freqs()
 #        self.morphology.set_feat_freqs()

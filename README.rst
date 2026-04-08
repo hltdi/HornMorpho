@@ -1,8 +1,8 @@
 ===========================
-HornMorpho, version 5.3.5
+HornMorpho, version 5.3.6
 ===========================
 
-**Sept. 14, 2025**
+**April 8, 2026**
 
 ------------
 Introduction
@@ -87,14 +87,14 @@ will need to create the environment and activate it before running
 ``pip install``.
 
 First download the wheel file from the ``dist/`` folder:
-`HornMorpho-5.3.5-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.3.5-py3-none-any.whl>`__
+`HornMorpho-5.3.6-py3-none-any.whl <https://github.com/hltdi/HornMorpho/blob/master/dist/HornMorpho-5.3.6-py3-none-any.whl>`__
 
 Then, to install from the wheel file, do the following in a Python shell
 from the folder where the wheel file is
 
 ::
 
-   pip install HornMorpho-5.3.5-py3-none-any.whl
+   pip install HornMorpho-5.3.6-py3-none-any.whl
 
 If this fails, it may mean that you don’t have
 `wheel <https://pypi.org/project/wheel/>`__ installed, so try again

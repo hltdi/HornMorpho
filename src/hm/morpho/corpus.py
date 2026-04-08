@@ -3,7 +3,7 @@ This file is part of HornMorpho, which is part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2022-2025.
+    Copyleft 2022-2026.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -72,7 +72,7 @@ class Corpus():
                  # Number of analyses eliminated using CG disambiguator.
                  disambiguations = 0,
                  # whether to run disambiguator model
-                 model_disamb = True,
+                 model_disamb = False,
                  # we may want to save unknown and/or ambiguous tokens
                  unk=None,
                  # a previous corpus to start from (local_cache and last_line)
@@ -139,7 +139,6 @@ class Corpus():
                 lines = Corpus.get_corpus_lines(all_lines, start, n_sents, language_pos, comments, save_comments=comments2meta)
 #                lines = filein.readlines()[start:start+max_sents]
                 nlines = len(lines)
-#                print("$$ file {}, nlines {}".format(filein, nlines))
                 sentcount = 0
                 skipped = 0
 #                sentid = sentid + 1

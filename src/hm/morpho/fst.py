@@ -1514,7 +1514,7 @@ class FST:
         @param relabel_arcs: If false, then don't relabel the arcs.
         """
         if trace:
-            print('Relabeling')
+#            print('Relabeling')
             t0 = time.process_time()
             t = t0
             n_states = 0
@@ -2096,7 +2096,7 @@ class FST:
 
         elif suffix == 'root':
             if verbose:
-                print("Loading roots from {}, seglevel={}, posmorph {}, gen {}".format(filename, seglevel, posmorph, gen))
+                print("Loading roots from {}".format(filename))
             return Roots.parse(label, open(filename, encoding='utf-8').read(),
                                posmorph=posmorph,
                                lexdir = cascade.get_lex_dir(),
@@ -2116,7 +2116,7 @@ class FST:
 
         elif suffix == 'tmp':
             if verbose:
-                print("Loading templates from {}, gen {}, seglevel {}".format(filename, gen, seglevel))
+                print("Loading templates from {}".format(filename))
             return Template.parse(label, open(filename, encoding='utf-8').read(),
                                   fst=FST(label, cascade=cascade, weighting=UNIFICATION_SR),
                                   cascade=cascade, directory=directory, seglevel=seglevel,
@@ -2145,8 +2145,8 @@ class FST:
 
         elif suffix == 'lex':
             # It's a file in lexicon format; treeify the file, then convert the tree to an FST
-            if verbose:
-                print('!! Loading sublexicon from {}, reverse={}, mwe={}'.format(filename, reverse, mwe))
+#            if verbose:
+#                print('!! Loading sublexicon from {}, reverse={}, mwe={}'.format(filename, reverse, mwe))
             treeified = treeify_file(filename, seg_units=seg_units, reverse=reverse, mwe=mwe,
                                      dest=dest_lex, verbose=False)
 #            print('!! Treeified {}'.format(treeified))
@@ -2187,8 +2187,8 @@ class FST:
                                              seglevel=seglevel, gen=gen, mwe=mwe, verbose=verbose,
                                              seg_units=mtax.seg_units, reverse=cascade.r2l,
                                              lex_features=True, dest_lex=False)
-                    if verbose:
-                        print('Inserting', fst1.label, 'between', src, 'and', dest)
+#                    if verbose:
+#                        print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=weight, mult_dsts=False)
                 elif '.cas' in in_string:
                     # in_string is a cascade filename
@@ -2211,8 +2211,8 @@ class FST:
                         # Record the new composed FST in the higher cascade
                         if mtax.cascade:
                             mtax.cascade.add(fst1)
-                        if verbose:
-                            print('Inserting cascade {} between {} and {}, r2l? {}'.format(label, src, dest, casc.r2l))
+#                        if verbose:
+#                            print('Inserting cascade {} between {} and {}, r2l? {}'.format(label, src, dest, casc.r2l))
                         if casc.r2l:
 #                            print("{} (inserted) is right-to-left".format(casc))
                             fst1._reverse = True
@@ -2228,8 +2228,8 @@ class FST:
                                              weighting=mtax.weighting, cascade=mtax.cascade,
                                              seglevel=seglevel, gen=gen, mwe=mwe, verbose=verbose,
                                              seg_units=mtax.seg_units)
-                    if verbose:
-                        print('Inserting', fst1.label, 'between', src, 'and', dest)
+#                    if verbose:
+#                        print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=weight, mult_dsts=False)
                 elif in_string == NO_INPUT:
                     if out_string:
@@ -2241,7 +2241,8 @@ class FST:
             # Do the shortcuts
             shortcuts = state[1].get('shortcuts')
             for dest, file, fss in shortcuts:
-                print("** Shortcut: {}, {}, {}".format(dest, file, fss))
+#                if verbose:
+#                    print("** Shortcut: {}, {}, {}".format(dest, file, fss))
                 if file:
                     if fss:
                         wt = fss
@@ -2257,9 +2258,8 @@ class FST:
                                              weighting=mtax.weighting, cascade=mtax.cascade,
                                              seg_units=mtax.seg_units, verbose=verbose,
                                              lex_features=True, dest_lex=False)
-                    if verbose:
-                        print('Inserting', fst1.label, 'between', src, 'and', dest)
-#                        print(fst1)
+#                    if verbose:
+#                        print('Inserting', fst1.label, 'between', src, 'and', dest)
                     mtax.fst.insert(fst1, src, dest, weight=wt, mult_dsts=False)
                 else:
 #                    print("FS shortcut from {} to {} with weight {}".format(src, dest, fss))
@@ -2453,8 +2453,8 @@ class FST:
                     if verbose:
                         print('Cascade not yet composed')
                     casfile = label + '.cas'
-                    if verbose:
-                        print('Inserting cascade {} between {} and {}'.format(label, src, dst))
+#                    if verbose:
+#                        print('Inserting cascade {} between {} and {}'.format(label, src, dst))
                     casc = FSTCascade.load(os.path.join(cascade.get_cas_dir(), casfile), seg_units=seg_units,
                                            language=cascade.language, 
                                            weight_constraint=weight_constraint, verbose=verbose)

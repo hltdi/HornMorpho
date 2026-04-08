@@ -3,7 +3,7 @@ This file is part of HornMorpho, which are part of the PLoGS project.
 
     <http://homes.soic.indiana.edu/gasser/plogs.html>
 
-    Copyleft 2018-2025.
+    Copyleft 2018-2026.
     PLoGS and Michael Gasser <gasser@iu.edu>.
 
     HornMorpho is free software: you can redistribute it and/or modify
@@ -1150,14 +1150,14 @@ class POSMorphology:
                              segment=segment, translate=translate, experimental=experimental)
 #        print("  ^^ load_fst {}, name {}, seglevel {}, guess {}".format(pos, name, seglevel, guess))
         path = os.path.join(self.morphology.get_cas_dir(), name + '.cas')
-        if verbose:
-            s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}{5} (recreate {6})'
-            print(s1.format(('TRANSLATION' if translate else ('GENERATION' if gen else 'ANALYSIS')),
-                            self.language.label, self.pos,
-                            (' (GUESSER)' if guess else ''),
-                            (' (SEGMENTED)' if segment else (' (EXPERIMENTAL)' if experimental else '')),
-                            (' (MWE)' if mwe else ''),
-                            recreate))
+#        if verbose:
+#            s1 = 'Attempting to load {0} FST for {1} {2}{3}{4}{5} (recreate {6})'
+#            print(s1.format(('TRANSLATION' if translate else ('GENERATION' if gen else 'ANALYSIS')),
+#                            self.language.label, self.pos,
+#                            (' (GUESSER)' if guess else ''),
+#                            (' (SEGMENTED)' if segment else (' (EXPERIMENTAL)' if experimental else '')),
+#                            (' (MWE)' if mwe else ''),
+#                            recreate))
         if not compose and not recreate:
             # Load a composed FST encompassing everything in the cascade
             fst = FST.restore(name, pos,
@@ -1202,8 +1202,8 @@ class POSMorphology:
             if os.path.exists(path):
                 if recreate:
                     # Load each of the FSTs in the cascade and compose them
-                    if verbose:
-                        print('Recreating...')
+#                    if verbose:
+#                        print('Recreating...')
                     self.casc = FSTCascade.load(path, seg_units=self.morphology.seg_units, posmorph=self,
                                                 create_networks=True, subcasc=subcasc, pos=pos, seglevel=seglevel,
                                                 gemination=gemination, mwe=mwe, guess=guess,
