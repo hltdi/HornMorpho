@@ -130,7 +130,7 @@ def compress_lang(abbrev):
     outfile = compressed_lang_filename(abbrev)
     def exclude(tarinfo):
         filename = tarinfo.name
-        for suff in ('fst', '.DS', '.cas', '.txt', '.lex'):
+        for suff in ('.DS', '.txt', '.cfst'):
             if filename.endswith(suff):
                 return None
         return tarinfo
