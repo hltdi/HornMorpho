@@ -135,8 +135,11 @@ class Corpus():
             self.data = []
             try:
                 filein = open(path, 'r', encoding='utf-8')
-                all_lines = filein.readlines()
+                # skip over blank lines
+                all_lines = [line for line in filein.readlines() if line != '\n']
                 lines = Corpus.get_corpus_lines(all_lines, start, n_sents, language_pos, comments, save_comments=comments2meta)
+#                for l in lines:
+#                    print(l)
 #                lines = filein.readlines()[start:start+max_sents]
                 nlines = len(lines)
                 sentcount = 0

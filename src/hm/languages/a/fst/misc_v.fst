@@ -26,7 +26,7 @@ gkq ->
 
 # 2sf and 3sf perfective endings
 # comment out for generation!
-#end -> end	[ሺ:ሽ;ቺ:ች]
+end -> end	[ሺ:ሽ;ቺ:ች]	[sg=f]
 
 end ->
 

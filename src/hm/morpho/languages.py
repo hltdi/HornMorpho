@@ -262,14 +262,16 @@ def get_language(language, **kwargs):
     cache = kwargs.get('cache', None)
     cg = kwargs.get('cg', False)
     annotate= kwargs.get('annotate', False)
+    reload = kwargs.get('reload', False)
 #    print("** Getting language, load = {}, load_morpho = {}, guess = {}".format(load, load_morph, guess))
     if isinstance(language, Language):
         return language
     lang_id = get_lang_id(language)
     lang = LANGUAGES.get(lang_id, None)
-    if not lang:
+    if reload or not lang:
         if load:
             mv = kwargs.get('morph_version', 0)
+            print("> LOADING {}...".format(lang_name))
             if not load_lang(lang_id, lang_name=lang_name,
                              phon=phon, pickle=pickle,
                              segment=segment, guess=guess,
@@ -281,6 +283,7 @@ def get_language(language, **kwargs):
                 return False
         return LANGUAGES.get(lang_id, None)
     if load_morph and not lang.morpho_loaded:
+        print(">> Loading FSTs for {}...".format(lang_name))
         if v5:
             lang.load_morpho(phon=phon, guess=guess,
                               pickle=pickle, translate=translate)
@@ -296,6 +299,13 @@ def get_language(language, **kwargs):
 #        print("Please exit() and start a new session!")
 #        return
     return lang
+
+def remove_language(lang_id):
+    '''
+    If the language is loaded, remove it.
+    '''
+    if lang_id in LANGUAGES:
+        LANGUAGES[lang_id] = None
 
 def load_pos(language, pos, scratch=False):
     """

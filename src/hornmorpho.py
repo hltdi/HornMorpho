@@ -45,6 +45,33 @@ TI_SKIP = \
 
 # c = CACO(path="../../EES-Res/text/am/CACO_3-7T_401-500.txt", disambiguate=True, id0=401, id1=500)
 
+def T_ref(start=0, n_sents=25, path='', corpus=None, append=False,
+          write=True,
+          directory="../../EES-Res/tmp/",
+          disambiguate=True, file=''):
+    '''
+    Skip MWE analysis and CG annotation.
+    '''
+    c = hm.anal_corpus(
+        't',
+        path=path or "../../EES-Res/text/ti/ti_ref.txt",
+        corpus=corpus,
+        n_sents=n_sents, max_sents=n_sents, start=start,
+        skip_mwe=True,
+        disambiguate=disambiguate,
+        CGdisambiguate=True,
+        annotate=False,
+        sentid=start+1)
+    first = corpus.last_line if corpus else start
+    last = c.last_line 
+    id0 = start + 1
+    id1 = start + n_sents
+    if write:
+        file = file or "ti_ref_{}-{}_HM.conllu".format(id0, id1)
+        dump_path = os.path.join(directory, file)
+        hm.write_conllu(corpus=c, append=append, path=dump_path)
+    return c
+
 def CACO(start=0, n_sents=100, path='', corpus=None, append=False,
          id0=1, id1=100, write=True,
          directory="../../EES-Res/tmp/",

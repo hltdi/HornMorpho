@@ -288,7 +288,7 @@ def download(lang_abbrev, uncompress=True, overwrite=True):
 # Internal use only.
 
 def compile(abbrev, pos, gen=True, save=False,
-            phon=False, segment=False, guess=False,
+            phon=False, segment=False, guess=False, note='',
             translate=False, experimental=False, mwe=False, seglevel=2,
             gemination=True, split_index=0, verbose=False):
     """
@@ -340,16 +340,16 @@ def compile(abbrev, pos, gen=True, save=False,
                           experimental=experimental, mwe=mwe, v5=True)
     print(">> COMPILATION COMPLETED.")
     if save:
-        pos_morph.save_fst()
+        pos_morph.save_fst(note=note)
         if gen:
-            pos_morph.save_fst()
+            pos_morph.save_fst(note=note)
     else:
         saveQ = input("Do you want to save the compiled analysis FST?\n>> ")
-        if saveQ.lower().startswith('yes'):
+        if saveQ.lower().startswith('y'):
             pos_morph.save_fst()
         if gen:
             saveQ = input("Do you want to save the compiled generation FST?\n>> ")
-            if saveQ:
+            if saveQ.lower().startswith('y'):
                 pos_morph.save_fst(True)
     return pos_morph
 
@@ -366,12 +366,15 @@ def add_noun(language, noun):
     '''
     lg = morpho.get_language(language)
     lexdir = lg.morphology.get_lex_dir()
-    feature = 'stem'
-    if language == 'a' and input('Is {} the name of a place?\n>> '.format(noun)) not in ['no', 'NO', 'No']:
-        feature = 'place'
-    elif input('Is {} the name of a person?\n>> '.format(noun)) not in ['no', 'NO', 'No']:
-        feature = 'name'
-    file = "n_{}.lex".format(feature)
+    if language == 'o':
+        file = 'nouns.lex'
+    else:
+        feature = 'stem'
+        if language == 'a' and input('Is {} the name of a place?\n>> '.format(noun)) in ['y', 'Y', 'yes', 'YES']:
+            feature = 'place'
+        elif language in ['a', 't'] and input('Is {} the name of a person?\n>> '.format(noun)) in ['y', 'Y', 'yes', 'YES']:
+            feature = 'name'
+        file = "n_{}.lex".format(feature)
     path = os.path.join(lexdir, file)
     try:
         with open(path, 'a') as file:
@@ -688,6 +691,12 @@ def get_language(abbrev, **kwargs):
     Load it if it's not.
     """
     return morpho.get_language(abbrev, **kwargs)
+
+def reload_language(abbrev):
+    '''
+    Load the language, even if it's already loaded, and return it.
+    '''
+    return morpho.get_language(abbrev, reload=True)
 
 ## Shortcuts for Amharic
 A = lambda w: anal('a', w)

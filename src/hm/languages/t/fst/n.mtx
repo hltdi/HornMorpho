@@ -30,7 +30,7 @@ $ prep
 #  ስለ		[adp=ስለ,-neg,pos=DET|PRON,+prep,+mult]
 #  ብዛዕባ	[adp=ብዛዕባ,-neg,pos=DET,+prep,+dem,+mult];[adp=ብዛዕባ,-neg,pos=PRON,+pers,+prep,+mult]
 #  ብዛዕብ	<ብዛዕባ>	[adp=ብዛዕባ,-neg,pos=DET,+prep,+dem,+mult];[adp=ብዛዕባ,-neg,pos=PRON,+pers,+prep,Pp=3,+mult]
-  -- 	[adp=None,-prep,pos=N|ADJ|DET|NUM|ADV];[pos=PRON,+pers];[pos=PRON,-pers,adp=None]
+  -- 	[adp=None,-prep,pos=N|ADJ|DET|NUM|ADV|PROPN];[pos=PRON,+pers];[pos=PRON,-pers,adp=None]
 
 $ prep_bound
   -

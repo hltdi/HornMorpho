@@ -1,7 +1,7 @@
 """
 This file is part of HornMorpho, which is a project of PLoGS
 
-    Copyleft 2008-2025. Michael Gasser.
+    Copyleft 2008-2026. Michael Gasser.
 
     HornMorpho is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

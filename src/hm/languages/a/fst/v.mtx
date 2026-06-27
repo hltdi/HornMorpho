@@ -22,8 +22,9 @@ $ conj_prep_pre
   ከ		[adp=ከ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
   		[sconj=ከ,t=p,-rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl]
   # እንደ is 3-way ambiguous wrt the relation to it: acl, advcl, ccomp
+  # but (2026.4.24), there's no need in HM to distinguish deps when other features are the same
   እንደ	[adp=እንደ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
-		[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl];
+#		[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=advcl];
 		[sconj=እንደ,t=i|p,+rel,-mc,+sub,adp=0,ppos=SCONJ,dep=ccomp]
   # adp ስለ (= about[acl]); sconj ስለ (advcl: because)
   ስለ		[adp=ስለ,t=i|p,+rel,-mc,+sub,sconj=0,ppos=ADP,dep=acl];
@@ -246,4 +247,6 @@ $ cconj2
 $ end
   # d=m is for manner deverbal nouns
   # Here's where we indicate that ሆነ can be a copula or auxiliary and that አለ can also be an auxiliary
-  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0];[pos=AUX,r=ንብር,c=A,t=p,a=0,v=0,d=0]
+  # but (2026.04.24) ነበር is not included here because it's already an AUX in cop
+  --		[pos=V,d=0];[pos=AUX,r=ህውን,t=i|p,a=0,v=0,d=0];[pos=AUX,r=ህልው,c=B,t=p,a=0,v=0,d=0]
+  # ;[pos=AUX,r=ንብር,c=A,t=p,a=0,v=0,d=0]

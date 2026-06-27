@@ -1176,7 +1176,7 @@ class POSMorphology:
 #                print("   ^^ Found FST; path {}, label {}".format(path, fst.label))
 #                print("** About to pickle; defaultFS {}".format(self.defaultFS))
                 if found_pickle and verbose:
-                    print("Finished unpickling {}".format(fst.label))
+                    print("Unpickled {}".format(fst.label))
                 if pickle and not found_pickle and create_pickle:
                     print("No pickle found for {}, creating one".format(name))
                     FST.pickle(fst, directory=self.morphology.get_pickle_dir(), label=name)
@@ -1233,11 +1233,11 @@ class POSMorphology:
                                          suffix=suffix, v5=v5,
                                          segment=segment, translate=translate, experimental=experimental)
                         self.casc.append(fst)
-                elif verbose:
-                    print("Not recreating FST")
-            elif verbose:
-                print('  No cascade exists at', path, end=' ')
-                if gen: print()
+#                elif verbose:
+#                    print("Not recreating FST")
+#            elif verbose:
+#                print('  No cascade exists at', path, end=' ')
+#                if gen: print()
         if not setit:
             return fst
 #        print("** defFS: {}".format(fst._defaultFS.__repr__()))
@@ -1348,7 +1348,9 @@ class POSMorphology:
             df = ''
 #        print("** defaultFS: {}".format(df))
         directory = FST.get_pickle_dir(self.morphology.language)
-        FST.write(fst, filename=os.path.join(directory, fname + extension),
+        filename = os.path.join(directory, fname + extension)
+        print("SAVING FST {} in {}".format(fname, filename))
+        FST.write(fst, filename=filename,
                   defaultFS=df, stringsets=stringsets,
                   features=features, exclude_features=['t', 'm'])
         if pickle:

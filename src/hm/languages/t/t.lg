@@ -1,6 +1,6 @@
 name: ትግርኛ
 code: t
-version: 1.4
+version: 1.5
 
 gemination: True
 
@@ -82,9 +82,7 @@ feats:
       {'name': 'neg1',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'conj2', 'pos': 'SCONJ', 'dep': 'mark'};;
       {'name': 'STEM', 'pos': ('pos', {'V':'VERB','AUX':'AUX'}),\
-        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType', 'Person', 'Number', 'Gender']};;
-      {'name': 'obj',  'pos': 'PRON', 'dep': ('oc', {'a': 'obj:aff', 'o': 'obl:aff'}),\
-        'feats': ['Number[obj]', 'Person[obj]', 'Gender[obj]', 'Number[app]', 'Person[app]', 'Gender[app]']};
+        'xpos': 'VSTEM', 'feats': ['Aspect', 'VerbForm', 'Voice', 'Mood', 'ClauseType', 'Person', 'Number', 'Gender', 'Number[obj]', 'Person[obj]', 'Gender[obj]', 'Number[app]', 'Person[app]', 'Gender[app]']};;
       {'name': 'neg2',  'pos': 'ADV', 'dep': 'advmod:aff', 'feats': ['Polarity']};
       {'name': 'conj3', 'pos': 'ADV', 'dep': 'advmod'}
 

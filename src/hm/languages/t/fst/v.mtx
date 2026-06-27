@@ -1,29 +1,29 @@
 $ adp
-  ብ [adp=ብ,+rel,-mc]
-  ን [adp=ን,+rel,-mc]
-  ከም [adp=ከም,-mc]
-  ስለ [adp=ስለ,-mc]
-  ምስ [adp=ምስ,-mc]
-  እንተ [adp=እንተ,-mc]
-  -- [adp=0]
+  ብ [adp=ብ,+rel,-mc,+ad]
+  ን [adp=ን,+rel,-mc,+ad]
+  ከም [adp=ከም,-mc,+ad]
+  ስለ [adp=ስለ,-mc,+ad]
+  ምስ [adp=ምስ,-mc,+ad]
+  እንተ [adp=እንተ,-mc,+ad]
+  -- [adp=0,-ad]
 
 $ adp_bound
   -
 
 $ conj1
-  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i] # ;[conj1=ዝ,+rel,-mc,t=p|i,+neg,r=ህልው,+O]
+  ዝ	  [conj1=ዝ,+rel,-mc,t=p|i,+cj1] # ;[conj1=ዝ,+rel,-mc,t=p|i,+neg,r=ህልው,+O]
 #  ዘይ	<-ዝ-ኣይ>  [conj1=ዝ,+rel,-mc,t=p|i|c,+neg]
   # abbreviated relative: እ/ትፈ/ልጥ, እ/ንፈልጥ, እ/ተፈልጠ
-  እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=i,sp=3,sn=1,sg=f,-neg];
-  		[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg]
-  ክ	  [conj1=ክ,-mc,t=i,adp=0];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=0]
-  ኽ	  <ክ>	[conj1=ክ,-mc,t=i,adp=ን];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=ን]
-  እንክ	  [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0]
-  እ/ና  	  [conj1=እና,-rel,-mc,t=p,adp=0,-neg]
-  እንዳ 	 [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg]
+  እ	<ዝ>	[adp=0,conj1=እ,+rel,-mc,t=i,sp=2,-neg,+cj1];[adp=0,conj1=እ,+rel,-mc,t=i,sp=3,sn=1,sg=f,-neg,+cj1];
+  		[adp=0,conj1=እ,+rel,-mc,t=i,sp=1,sn=2,-neg,+cj1];[adp=0,conj1=እ,+rel,-mc,t=p,v=p,-neg,+cj1]
+  ክ	  [conj1=ክ,-mc,t=i,adp=0,+cj1];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=0,+cj1]
+  ኽ	  <ክ>	[conj1=ክ,-mc,t=i,adp=ን,+cj1];[conj1=ክ,-mc,t=p,-neg,r=ህልው,adp=ን,+cj1]
+  እንክ	  [conj1=እንክ,-rel,-mc,t=i,-neg,adp=0,+cj1];[conj1=እንክ,-rel,-mc,t=p,-neg,r=ህልው,adp=0,+cj1]
+  እ/ና  	  [conj1=እና,-rel,-mc,t=p,adp=0,-neg,+cj1]
+  እንዳ 	 [conj1=እንዳ,-rel,-mc,t=p,adp=0,-neg,+cj1]
 #  # ደሎ
-  ድ   	  [conj1=ድ,+int,conj2=0,+mc,-rel,r=ህልው,adp=0]
-  --   	[-rel,conj1=0]
+  ድ   	  [conj1=ድ,+int,conj2=0,+mc,-rel,r=ህልው,adp=0,+cj1]
+  --   	[-rel,conj1=0,-cj1]
 
 $ conj_bound
   -
@@ -37,9 +37,9 @@ $ neg_bound
 
 $ conj2
   # ም- and (one) ክ- go here; incompatible with conj1
-  ም    [conj2=ም,conj1=0,adp=0,t=p,-rel]
-  ክ    [conj2=ክ,conj1=0,adp=0,-rel]
-  --   [conj2=0]
+  ም    [conj2=ም,conj1=0,adp=0,t=p,-mc,-rel]
+  ክ    [conj2=ክ,conj1=0,adp=0,-mc,-rel]
+  --   [conj2=0,-cj1,-ad,+mc];[conj2=0,+cj1,-mc];[conj2=0,+ad,-mc]
 
 $ prestem
   <
@@ -216,7 +216,7 @@ $ neg2_bound
   -
 
 $ conj3
-  ን		[conj3=ን,-int]
+  ን		[conj3=ን,-int,-neg]
   ከ		[conj3=ከ,-int]
   ኸ		[conj3=ከ,-int]
   # other sconjs might be possible.

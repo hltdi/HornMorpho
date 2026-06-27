@@ -1800,7 +1800,7 @@ class FST:
             extension = '.fst'
             filename = os.path.join(directory, fst + extension)
 
-        print('Writing FST {} to {}'.format(fst.label, filename))
+#        print('Writing FST {} to {}'.format(fst.label, filename))
         out = open(filename, 'w', encoding='utf-8')
         # Write the features and values, defaultFS, and stringsets; whether FST is reversed (right-to-left)
         if fst.r2l():

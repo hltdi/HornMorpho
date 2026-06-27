@@ -2308,3 +2308,4 @@
 # also listed as common noun
 ሻቢያ
 ፖርቶ
+
